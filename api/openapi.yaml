@@ -1,6 +1,11 @@
 openapi: 3.0.1
 info:
-  title: includes all operations supported by Akeyless.
+  contact:
+    email: support@akeyless.io
+    name: Akeyless
+    url: http://akeyless.io
+  description: The purpose of this application is to provide access to Akeyless API.
+  title: Akeyless API
   version: 0.0.1
 servers:
 - url: https://api.akeyless.io/
