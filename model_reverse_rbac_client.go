@@ -3,7 +3,7 @@
  *
  * The purpose of this application is to provide access to Akeyless API.
  *
- * API version: 0.0.1
+ * API version: 2.0.0
  * Contact: support@akeyless.io
  */
 
