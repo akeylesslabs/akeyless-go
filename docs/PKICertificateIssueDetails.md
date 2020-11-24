@@ -8,10 +8,12 @@ Name | Type | Description | Notes
 **AllowSubdomains** | Pointer to **bool** |  | [optional] 
 **AllowedDomainsList** | Pointer to **[]string** |  | [optional] 
 **AllowedUriSans** | Pointer to **[]string** |  | [optional] 
+**BasicConstraintsValidForNonCa** | Pointer to **bool** |  | [optional] 
 **ClientFlag** | Pointer to **bool** |  | [optional] 
 **CodeSigningFlag** | Pointer to **bool** |  | [optional] 
 **Country** | Pointer to **[]string** |  | [optional] 
 **EnforceHostnames** | Pointer to **bool** |  | [optional] 
+**IsCa** | Pointer to **bool** |  | [optional] 
 **KeyBits** | Pointer to **int64** |  | [optional] 
 **KeyType** | Pointer to **string** |  | [optional] 
 **KeyUsageList** | Pointer to **[]string** |  | [optional] 
@@ -144,6 +146,31 @@ SetAllowedUriSans sets AllowedUriSans field to given value.
 
 HasAllowedUriSans returns a boolean if a field has been set.
 
+### GetBasicConstraintsValidForNonCa
+
+`func (o *PKICertificateIssueDetails) GetBasicConstraintsValidForNonCa() bool`
+
+GetBasicConstraintsValidForNonCa returns the BasicConstraintsValidForNonCa field if non-nil, zero value otherwise.
+
+### GetBasicConstraintsValidForNonCaOk
+
+`func (o *PKICertificateIssueDetails) GetBasicConstraintsValidForNonCaOk() (*bool, bool)`
+
+GetBasicConstraintsValidForNonCaOk returns a tuple with the BasicConstraintsValidForNonCa field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBasicConstraintsValidForNonCa
+
+`func (o *PKICertificateIssueDetails) SetBasicConstraintsValidForNonCa(v bool)`
+
+SetBasicConstraintsValidForNonCa sets BasicConstraintsValidForNonCa field to given value.
+
+### HasBasicConstraintsValidForNonCa
+
+`func (o *PKICertificateIssueDetails) HasBasicConstraintsValidForNonCa() bool`
+
+HasBasicConstraintsValidForNonCa returns a boolean if a field has been set.
+
 ### GetClientFlag
 
 `func (o *PKICertificateIssueDetails) GetClientFlag() bool`
@@ -243,6 +270,31 @@ SetEnforceHostnames sets EnforceHostnames field to given value.
 `func (o *PKICertificateIssueDetails) HasEnforceHostnames() bool`
 
 HasEnforceHostnames returns a boolean if a field has been set.
+
+### GetIsCa
+
+`func (o *PKICertificateIssueDetails) GetIsCa() bool`
+
+GetIsCa returns the IsCa field if non-nil, zero value otherwise.
+
+### GetIsCaOk
+
+`func (o *PKICertificateIssueDetails) GetIsCaOk() (*bool, bool)`
+
+GetIsCaOk returns a tuple with the IsCa field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsCa
+
+`func (o *PKICertificateIssueDetails) SetIsCa(v bool)`
+
+SetIsCa sets IsCa field to given value.
+
+### HasIsCa
+
+`func (o *PKICertificateIssueDetails) HasIsCa() bool`
+
+HasIsCa returns a boolean if a field has been set.
 
 ### GetKeyBits
 

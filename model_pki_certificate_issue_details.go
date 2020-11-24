@@ -21,10 +21,12 @@ type PKICertificateIssueDetails struct {
 	AllowSubdomains *bool `json:"allow_subdomains,omitempty"`
 	AllowedDomainsList *[]string `json:"allowed_domains_list,omitempty"`
 	AllowedUriSans *[]string `json:"allowed_uri_sans,omitempty"`
+	BasicConstraintsValidForNonCa *bool `json:"basic_constraints_valid_for_non_ca,omitempty"`
 	ClientFlag *bool `json:"client_flag,omitempty"`
 	CodeSigningFlag *bool `json:"code_signing_flag,omitempty"`
 	Country *[]string `json:"country,omitempty"`
 	EnforceHostnames *bool `json:"enforce_hostnames,omitempty"`
+	IsCa *bool `json:"is_ca,omitempty"`
 	KeyBits *int64 `json:"key_bits,omitempty"`
 	KeyType *string `json:"key_type,omitempty"`
 	KeyUsageList *[]string `json:"key_usage_list,omitempty"`
@@ -185,6 +187,38 @@ func (o *PKICertificateIssueDetails) SetAllowedUriSans(v []string) {
 	o.AllowedUriSans = &v
 }
 
+// GetBasicConstraintsValidForNonCa returns the BasicConstraintsValidForNonCa field value if set, zero value otherwise.
+func (o *PKICertificateIssueDetails) GetBasicConstraintsValidForNonCa() bool {
+	if o == nil || o.BasicConstraintsValidForNonCa == nil {
+		var ret bool
+		return ret
+	}
+	return *o.BasicConstraintsValidForNonCa
+}
+
+// GetBasicConstraintsValidForNonCaOk returns a tuple with the BasicConstraintsValidForNonCa field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PKICertificateIssueDetails) GetBasicConstraintsValidForNonCaOk() (*bool, bool) {
+	if o == nil || o.BasicConstraintsValidForNonCa == nil {
+		return nil, false
+	}
+	return o.BasicConstraintsValidForNonCa, true
+}
+
+// HasBasicConstraintsValidForNonCa returns a boolean if a field has been set.
+func (o *PKICertificateIssueDetails) HasBasicConstraintsValidForNonCa() bool {
+	if o != nil && o.BasicConstraintsValidForNonCa != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBasicConstraintsValidForNonCa gets a reference to the given bool and assigns it to the BasicConstraintsValidForNonCa field.
+func (o *PKICertificateIssueDetails) SetBasicConstraintsValidForNonCa(v bool) {
+	o.BasicConstraintsValidForNonCa = &v
+}
+
 // GetClientFlag returns the ClientFlag field value if set, zero value otherwise.
 func (o *PKICertificateIssueDetails) GetClientFlag() bool {
 	if o == nil || o.ClientFlag == nil {
@@ -311,6 +345,38 @@ func (o *PKICertificateIssueDetails) HasEnforceHostnames() bool {
 // SetEnforceHostnames gets a reference to the given bool and assigns it to the EnforceHostnames field.
 func (o *PKICertificateIssueDetails) SetEnforceHostnames(v bool) {
 	o.EnforceHostnames = &v
+}
+
+// GetIsCa returns the IsCa field value if set, zero value otherwise.
+func (o *PKICertificateIssueDetails) GetIsCa() bool {
+	if o == nil || o.IsCa == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IsCa
+}
+
+// GetIsCaOk returns a tuple with the IsCa field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PKICertificateIssueDetails) GetIsCaOk() (*bool, bool) {
+	if o == nil || o.IsCa == nil {
+		return nil, false
+	}
+	return o.IsCa, true
+}
+
+// HasIsCa returns a boolean if a field has been set.
+func (o *PKICertificateIssueDetails) HasIsCa() bool {
+	if o != nil && o.IsCa != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIsCa gets a reference to the given bool and assigns it to the IsCa field.
+func (o *PKICertificateIssueDetails) SetIsCa(v bool) {
+	o.IsCa = &v
 }
 
 // GetKeyBits returns the KeyBits field value if set, zero value otherwise.
@@ -711,6 +777,9 @@ func (o PKICertificateIssueDetails) MarshalJSON() ([]byte, error) {
 	if o.AllowedUriSans != nil {
 		toSerialize["allowed_uri_sans"] = o.AllowedUriSans
 	}
+	if o.BasicConstraintsValidForNonCa != nil {
+		toSerialize["basic_constraints_valid_for_non_ca"] = o.BasicConstraintsValidForNonCa
+	}
 	if o.ClientFlag != nil {
 		toSerialize["client_flag"] = o.ClientFlag
 	}
@@ -722,6 +791,9 @@ func (o PKICertificateIssueDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.EnforceHostnames != nil {
 		toSerialize["enforce_hostnames"] = o.EnforceHostnames
+	}
+	if o.IsCa != nil {
+		toSerialize["is_ca"] = o.IsCa
 	}
 	if o.KeyBits != nil {
 		toSerialize["key_bits"] = o.KeyBits

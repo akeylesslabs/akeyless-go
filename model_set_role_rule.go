@@ -17,13 +17,13 @@ import (
 
 // SetRoleRule struct for SetRoleRule
 type SetRoleRule struct {
-	// List of the approved/denied capabilities in the path options: [read, create, update, delete, list, deny]
+	// List of the approved/denied capabilities in the path options: [read, create, update, delete, list, deny]. For search-rule and reports-rule, only 'read' option is supported.
 	Capability []string `json:"capability"`
-	// The path the rule refers to
+	// The path the rule refers to. For search-rule and reports-rule, only self path is allowed.
 	Path string `json:"path"`
-	// The role name to be updated
+	// The role to be updated
 	RoleName string `json:"role-name"`
-	// item-rule, role-rule or auth-method-rule
+	// Type of access rule to apply: item-rule, role-rule, auth-method-rule for items, roles and auth methods, search-rule for viewing and searching audit logs, or reports-rule for viewing analytics.
 	RuleType *string `json:"rule-type,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`

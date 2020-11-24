@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Capability** | **[]string** | List of the approved/denied capabilities in the path options: [read, create, update, delete, list, deny] | 
-**Path** | **string** | The path the rule refers to | 
-**RoleName** | **string** | The role name to be updated | 
-**RuleType** | Pointer to **string** | item-rule, role-rule or auth-method-rule | [optional] [default to "item-rule"]
+**Capability** | **[]string** | List of the approved/denied capabilities in the path options: [read, create, update, delete, list, deny]. For search-rule and reports-rule, only &#39;read&#39; option is supported. | 
+**Path** | **string** | The path the rule refers to. For search-rule and reports-rule, only self path is allowed. | 
+**RoleName** | **string** | The role to be updated | 
+**RuleType** | Pointer to **string** | Type of access rule to apply: item-rule, role-rule, auth-method-rule for items, roles and auth methods, search-rule for viewing and searching audit logs, or reports-rule for viewing analytics. | [optional] [default to "item-rule"]
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
