@@ -13,7 +13,7 @@ For more information, please visit [http://akeyless.io](http://akeyless.io)
 To install this package, use:
 
 ```
-go get github.com/akeylesslabs/akeyless-go
+go get github.com/akeylesslabs/akeyless-go/v2
 ```
 
 ## Getting Started
