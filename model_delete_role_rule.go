@@ -3,7 +3,7 @@
  *
  * The purpose of this application is to provide access to Akeyless API.
  *
- * API version: 2.0.0
+ * API version: 2.0.1
  * Contact: support@akeyless.io
  */
 
@@ -17,12 +17,12 @@ import (
 
 // DeleteRoleRule struct for DeleteRoleRule
 type DeleteRoleRule struct {
-	// item-rule, role-rule or auth-method-rule
-	RuleType *string `json:"RuleType,omitempty"`
 	// The path the rule refers to
 	Path string `json:"path"`
 	// The role name to be updated
 	RoleName string `json:"role-name"`
+	// item-rule, role-rule or auth-method-rule
+	RuleType *string `json:"rule-type,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -35,10 +35,10 @@ type DeleteRoleRule struct {
 // will change when the set of required properties is changed
 func NewDeleteRoleRule(path string, roleName string, ) *DeleteRoleRule {
 	this := DeleteRoleRule{}
-	var ruleType string = "item-rule"
-	this.RuleType = &ruleType
 	this.Path = path
 	this.RoleName = roleName
+	var ruleType string = "item-rule"
+	this.RuleType = &ruleType
 	return &this
 }
 
@@ -50,38 +50,6 @@ func NewDeleteRoleRuleWithDefaults() *DeleteRoleRule {
 	var ruleType string = "item-rule"
 	this.RuleType = &ruleType
 	return &this
-}
-
-// GetRuleType returns the RuleType field value if set, zero value otherwise.
-func (o *DeleteRoleRule) GetRuleType() string {
-	if o == nil || o.RuleType == nil {
-		var ret string
-		return ret
-	}
-	return *o.RuleType
-}
-
-// GetRuleTypeOk returns a tuple with the RuleType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DeleteRoleRule) GetRuleTypeOk() (*string, bool) {
-	if o == nil || o.RuleType == nil {
-		return nil, false
-	}
-	return o.RuleType, true
-}
-
-// HasRuleType returns a boolean if a field has been set.
-func (o *DeleteRoleRule) HasRuleType() bool {
-	if o != nil && o.RuleType != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetRuleType gets a reference to the given string and assigns it to the RuleType field.
-func (o *DeleteRoleRule) SetRuleType(v string) {
-	o.RuleType = &v
 }
 
 // GetPath returns the Path field value
@@ -130,6 +98,38 @@ func (o *DeleteRoleRule) GetRoleNameOk() (*string, bool) {
 // SetRoleName sets field value
 func (o *DeleteRoleRule) SetRoleName(v string) {
 	o.RoleName = v
+}
+
+// GetRuleType returns the RuleType field value if set, zero value otherwise.
+func (o *DeleteRoleRule) GetRuleType() string {
+	if o == nil || o.RuleType == nil {
+		var ret string
+		return ret
+	}
+	return *o.RuleType
+}
+
+// GetRuleTypeOk returns a tuple with the RuleType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeleteRoleRule) GetRuleTypeOk() (*string, bool) {
+	if o == nil || o.RuleType == nil {
+		return nil, false
+	}
+	return o.RuleType, true
+}
+
+// HasRuleType returns a boolean if a field has been set.
+func (o *DeleteRoleRule) HasRuleType() bool {
+	if o != nil && o.RuleType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRuleType gets a reference to the given string and assigns it to the RuleType field.
+func (o *DeleteRoleRule) SetRuleType(v string) {
+	o.RuleType = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -198,14 +198,14 @@ func (o *DeleteRoleRule) SetUidToken(v string) {
 
 func (o DeleteRoleRule) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.RuleType != nil {
-		toSerialize["RuleType"] = o.RuleType
-	}
 	if true {
 		toSerialize["path"] = o.Path
 	}
 	if true {
 		toSerialize["role-name"] = o.RoleName
+	}
+	if o.RuleType != nil {
+		toSerialize["rule-type"] = o.RuleType
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

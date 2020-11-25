@@ -3,7 +3,7 @@
  *
  * The purpose of this application is to provide access to Akeyless API.
  *
- * API version: 2.0.0
+ * API version: 2.0.1
  * Contact: support@akeyless.io
  */
 
@@ -41,7 +41,7 @@ var (
 	xmlCheck  = regexp.MustCompile(`(?i:(?:application|text)/xml)`)
 )
 
-// APIClient manages communication with the Akeyless API API v2.0.0
+// APIClient manages communication with the Akeyless API API v2.0.1
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration

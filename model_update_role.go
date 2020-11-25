@@ -3,7 +3,7 @@
  *
  * The purpose of this application is to provide access to Akeyless API.
  *
- * API version: 2.0.0
+ * API version: 2.0.1
  * Contact: support@akeyless.io
  */
 
@@ -17,6 +17,10 @@ import (
 
 // UpdateRole struct for UpdateRole
 type UpdateRole struct {
+	// Allow this role to view analytics. Currently only 'none' and 'self' values are supported, allowing associated auth methods to view reports produced by the same auth methods.
+	AnalyticsAccess *string `json:"analytics-access,omitempty"`
+	// Allow this role to view audit logs. Currently only 'none' and 'self' values are supported, allowing associated auth methods to view audit logs produced by the same auth methods.
+	AuditAccess *string `json:"audit-access,omitempty"`
 	// Role name
 	Name string `json:"name"`
 	// New comment about the role
@@ -49,6 +53,70 @@ func NewUpdateRoleWithDefaults() *UpdateRole {
 	var newComment string = "default_comment"
 	this.NewComment = &newComment
 	return &this
+}
+
+// GetAnalyticsAccess returns the AnalyticsAccess field value if set, zero value otherwise.
+func (o *UpdateRole) GetAnalyticsAccess() string {
+	if o == nil || o.AnalyticsAccess == nil {
+		var ret string
+		return ret
+	}
+	return *o.AnalyticsAccess
+}
+
+// GetAnalyticsAccessOk returns a tuple with the AnalyticsAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRole) GetAnalyticsAccessOk() (*string, bool) {
+	if o == nil || o.AnalyticsAccess == nil {
+		return nil, false
+	}
+	return o.AnalyticsAccess, true
+}
+
+// HasAnalyticsAccess returns a boolean if a field has been set.
+func (o *UpdateRole) HasAnalyticsAccess() bool {
+	if o != nil && o.AnalyticsAccess != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAnalyticsAccess gets a reference to the given string and assigns it to the AnalyticsAccess field.
+func (o *UpdateRole) SetAnalyticsAccess(v string) {
+	o.AnalyticsAccess = &v
+}
+
+// GetAuditAccess returns the AuditAccess field value if set, zero value otherwise.
+func (o *UpdateRole) GetAuditAccess() string {
+	if o == nil || o.AuditAccess == nil {
+		var ret string
+		return ret
+	}
+	return *o.AuditAccess
+}
+
+// GetAuditAccessOk returns a tuple with the AuditAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRole) GetAuditAccessOk() (*string, bool) {
+	if o == nil || o.AuditAccess == nil {
+		return nil, false
+	}
+	return o.AuditAccess, true
+}
+
+// HasAuditAccess returns a boolean if a field has been set.
+func (o *UpdateRole) HasAuditAccess() bool {
+	if o != nil && o.AuditAccess != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAuditAccess gets a reference to the given string and assigns it to the AuditAccess field.
+func (o *UpdateRole) SetAuditAccess(v string) {
+	o.AuditAccess = &v
 }
 
 // GetName returns the Name field value
@@ -205,6 +273,12 @@ func (o *UpdateRole) SetUidToken(v string) {
 
 func (o UpdateRole) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AnalyticsAccess != nil {
+		toSerialize["analytics-access"] = o.AnalyticsAccess
+	}
+	if o.AuditAccess != nil {
+		toSerialize["audit-access"] = o.AuditAccess
+	}
 	if true {
 		toSerialize["name"] = o.Name
 	}

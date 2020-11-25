@@ -6,7 +6,7 @@ info:
     url: http://akeyless.io
   description: The purpose of this application is to provide access to Akeyless API.
   title: Akeyless API
-  version: 2.0.0
+  version: 2.0.1
 servers:
 - url: https://api.akeyless.io/
 paths:
@@ -5945,26 +5945,6 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     decryptFile:
       properties:
-        EncContext:
-          additionalProperties:
-            type: string
-          description: |-
-            The encryption context. If this was specified in the encrypt command, it
-            must be specified here or the decryption operation will fail
-          type: object
-        InputFile:
-          description: |-
-            Path to the file to be decrypted. If not provided, the content will be
-            taken from stdin
-          type: string
-        KeyName:
-          description: The name of the key to use in the decryption process
-          type: string
-        OutputFilePath:
-          description: |-
-            Path to the output file. If not provided, the output will be sent to
-            stdout
-          type: string
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -5975,9 +5955,6 @@ components:
             authentication
           type: string
           x-go-name: UIDToken
-      required:
-      - InputFile
-      - KeyName
       title: decryptFile is a command that decrypts a file using an AES key.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
@@ -6222,10 +6199,6 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     deleteRoleRule:
       properties:
-        RuleType:
-          default: item-rule
-          description: item-rule, role-rule or auth-method-rule
-          type: string
         path:
           description: The path the rule refers to
           type: string
@@ -6234,6 +6207,11 @@ components:
           description: The role name to be updated
           type: string
           x-go-name: RoleName
+        rule-type:
+          default: item-rule
+          description: item-rule, role-rule or auth-method-rule
+          type: string
+          x-go-name: RuleType
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -7004,28 +6982,22 @@ components:
         capability:
           description: |-
             List of the approved/denied capabilities in the path options: [read,
-            create, update, delete, list, deny]. For search-rule and reports-rule,
-            only 'read' option is supported.
+            create, update, delete, list, deny]
           items:
             type: string
           type: array
           x-go-name: Capabilities
         path:
-          description: |-
-            The path the rule refers to. For search-rule and reports-rule, only
-            self path is allowed.
+          description: The path the rule refers to
           type: string
           x-go-name: Path
         role-name:
-          description: The role to be updated
+          description: The role name to be updated
           type: string
           x-go-name: RoleName
         rule-type:
           default: item-rule
-          description: |-
-            Type of access rule to apply: item-rule, role-rule, auth-method-rule for
-            items, roles and auth methods, search-rule for viewing and searching
-            audit logs, or reports-rule for viewing analytics.
+          description: item-rule, role-rule or auth-method-rule
           type: string
           x-go-name: RuleType
         token:
@@ -7378,6 +7350,20 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     updateRole:
       properties:
+        analytics-access:
+          description: |-
+            Allow this role to view analytics. Currently only 'none' and 'self'
+            values are supported, allowing associated auth methods to view reports
+            produced by the same auth methods.
+          type: string
+          x-go-name: AnalyticsAccess
+        audit-access:
+          description: |-
+            Allow this role to view audit logs. Currently only 'none' and 'self'
+            values are supported, allowing associated auth methods to view audit
+            logs produced by the same auth methods.
+          type: string
+          x-go-name: AuditAccess
         name:
           description: Role name
           type: string

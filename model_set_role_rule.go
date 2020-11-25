@@ -3,7 +3,7 @@
  *
  * The purpose of this application is to provide access to Akeyless API.
  *
- * API version: 2.0.0
+ * API version: 2.0.1
  * Contact: support@akeyless.io
  */
 
@@ -17,13 +17,13 @@ import (
 
 // SetRoleRule struct for SetRoleRule
 type SetRoleRule struct {
-	// List of the approved/denied capabilities in the path options: [read, create, update, delete, list, deny]. For search-rule and reports-rule, only 'read' option is supported.
+	// List of the approved/denied capabilities in the path options: [read, create, update, delete, list, deny]
 	Capability []string `json:"capability"`
-	// The path the rule refers to. For search-rule and reports-rule, only self path is allowed.
+	// The path the rule refers to
 	Path string `json:"path"`
-	// The role to be updated
+	// The role name to be updated
 	RoleName string `json:"role-name"`
-	// Type of access rule to apply: item-rule, role-rule, auth-method-rule for items, roles and auth methods, search-rule for viewing and searching audit logs, or reports-rule for viewing analytics.
+	// item-rule, role-rule or auth-method-rule
 	RuleType *string `json:"rule-type,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`

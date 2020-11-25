@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RuleType** | Pointer to **string** | item-rule, role-rule or auth-method-rule | [optional] [default to "item-rule"]
 **Path** | **string** | The path the rule refers to | 
 **RoleName** | **string** | The role name to be updated | 
+**RuleType** | Pointer to **string** | item-rule, role-rule or auth-method-rule | [optional] [default to "item-rule"]
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
@@ -28,31 +28,6 @@ will change when the set of required properties is changed
 NewDeleteRoleRuleWithDefaults instantiates a new DeleteRoleRule object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetRuleType
-
-`func (o *DeleteRoleRule) GetRuleType() string`
-
-GetRuleType returns the RuleType field if non-nil, zero value otherwise.
-
-### GetRuleTypeOk
-
-`func (o *DeleteRoleRule) GetRuleTypeOk() (*string, bool)`
-
-GetRuleTypeOk returns a tuple with the RuleType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRuleType
-
-`func (o *DeleteRoleRule) SetRuleType(v string)`
-
-SetRuleType sets RuleType field to given value.
-
-### HasRuleType
-
-`func (o *DeleteRoleRule) HasRuleType() bool`
-
-HasRuleType returns a boolean if a field has been set.
 
 ### GetPath
 
@@ -93,6 +68,31 @@ and a boolean to check if the value has been set.
 
 SetRoleName sets RoleName field to given value.
 
+
+### GetRuleType
+
+`func (o *DeleteRoleRule) GetRuleType() string`
+
+GetRuleType returns the RuleType field if non-nil, zero value otherwise.
+
+### GetRuleTypeOk
+
+`func (o *DeleteRoleRule) GetRuleTypeOk() (*string, bool)`
+
+GetRuleTypeOk returns a tuple with the RuleType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRuleType
+
+`func (o *DeleteRoleRule) SetRuleType(v string)`
+
+SetRuleType sets RuleType field to given value.
+
+### HasRuleType
+
+`func (o *DeleteRoleRule) HasRuleType() bool`
+
+HasRuleType returns a boolean if a field has been set.
 
 ### GetToken
 

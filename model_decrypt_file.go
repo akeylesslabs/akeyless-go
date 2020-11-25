@@ -3,7 +3,7 @@
  *
  * The purpose of this application is to provide access to Akeyless API.
  *
- * API version: 2.0.0
+ * API version: 2.0.1
  * Contact: support@akeyless.io
  */
 
@@ -17,14 +17,6 @@ import (
 
 // DecryptFile struct for DecryptFile
 type DecryptFile struct {
-	// The encryption context. If this was specified in the encrypt command, it must be specified here or the decryption operation will fail
-	EncContext *map[string]string `json:"EncContext,omitempty"`
-	// Path to the file to be decrypted. If not provided, the content will be taken from stdin
-	InputFile string `json:"InputFile"`
-	// The name of the key to use in the decryption process
-	KeyName string `json:"KeyName"`
-	// Path to the output file. If not provided, the output will be sent to stdout
-	OutputFilePath *string `json:"OutputFilePath,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -35,10 +27,8 @@ type DecryptFile struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDecryptFile(inputFile string, keyName string, ) *DecryptFile {
+func NewDecryptFile() *DecryptFile {
 	this := DecryptFile{}
-	this.InputFile = inputFile
-	this.KeyName = keyName
 	return &this
 }
 
@@ -48,118 +38,6 @@ func NewDecryptFile(inputFile string, keyName string, ) *DecryptFile {
 func NewDecryptFileWithDefaults() *DecryptFile {
 	this := DecryptFile{}
 	return &this
-}
-
-// GetEncContext returns the EncContext field value if set, zero value otherwise.
-func (o *DecryptFile) GetEncContext() map[string]string {
-	if o == nil || o.EncContext == nil {
-		var ret map[string]string
-		return ret
-	}
-	return *o.EncContext
-}
-
-// GetEncContextOk returns a tuple with the EncContext field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DecryptFile) GetEncContextOk() (*map[string]string, bool) {
-	if o == nil || o.EncContext == nil {
-		return nil, false
-	}
-	return o.EncContext, true
-}
-
-// HasEncContext returns a boolean if a field has been set.
-func (o *DecryptFile) HasEncContext() bool {
-	if o != nil && o.EncContext != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEncContext gets a reference to the given map[string]string and assigns it to the EncContext field.
-func (o *DecryptFile) SetEncContext(v map[string]string) {
-	o.EncContext = &v
-}
-
-// GetInputFile returns the InputFile field value
-func (o *DecryptFile) GetInputFile() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.InputFile
-}
-
-// GetInputFileOk returns a tuple with the InputFile field value
-// and a boolean to check if the value has been set.
-func (o *DecryptFile) GetInputFileOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.InputFile, true
-}
-
-// SetInputFile sets field value
-func (o *DecryptFile) SetInputFile(v string) {
-	o.InputFile = v
-}
-
-// GetKeyName returns the KeyName field value
-func (o *DecryptFile) GetKeyName() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.KeyName
-}
-
-// GetKeyNameOk returns a tuple with the KeyName field value
-// and a boolean to check if the value has been set.
-func (o *DecryptFile) GetKeyNameOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.KeyName, true
-}
-
-// SetKeyName sets field value
-func (o *DecryptFile) SetKeyName(v string) {
-	o.KeyName = v
-}
-
-// GetOutputFilePath returns the OutputFilePath field value if set, zero value otherwise.
-func (o *DecryptFile) GetOutputFilePath() string {
-	if o == nil || o.OutputFilePath == nil {
-		var ret string
-		return ret
-	}
-	return *o.OutputFilePath
-}
-
-// GetOutputFilePathOk returns a tuple with the OutputFilePath field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DecryptFile) GetOutputFilePathOk() (*string, bool) {
-	if o == nil || o.OutputFilePath == nil {
-		return nil, false
-	}
-	return o.OutputFilePath, true
-}
-
-// HasOutputFilePath returns a boolean if a field has been set.
-func (o *DecryptFile) HasOutputFilePath() bool {
-	if o != nil && o.OutputFilePath != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetOutputFilePath gets a reference to the given string and assigns it to the OutputFilePath field.
-func (o *DecryptFile) SetOutputFilePath(v string) {
-	o.OutputFilePath = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -228,18 +106,6 @@ func (o *DecryptFile) SetUidToken(v string) {
 
 func (o DecryptFile) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.EncContext != nil {
-		toSerialize["EncContext"] = o.EncContext
-	}
-	if true {
-		toSerialize["InputFile"] = o.InputFile
-	}
-	if true {
-		toSerialize["KeyName"] = o.KeyName
-	}
-	if o.OutputFilePath != nil {
-		toSerialize["OutputFilePath"] = o.OutputFilePath
-	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
 	}
