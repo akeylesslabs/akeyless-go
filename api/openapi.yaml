@@ -6,7 +6,7 @@ info:
     url: http://akeyless.io
   description: The purpose of this application is to provide access to Akeyless API.
   title: Akeyless API
-  version: 2.0.1
+  version: "2.0"
 servers:
 - url: https://api.akeyless.io/
 paths:
