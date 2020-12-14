@@ -1453,6 +1453,33 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /raw-creds:
+    post:
+      operationId: rawCreds
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/rawCreds'
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SystemAccessCredentialsReplyObj'
+          description: rawCredsResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /refresh-key:
     post:
       operationId: refreshKey
@@ -5463,6 +5490,11 @@ components:
       type: integer
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     SystemAccessCredentialsReplyObj:
+      example:
+        auth_creds: auth_creds
+        uam_creds: uam_creds
+        kfm_creds: kfm_creds
+        expiry: 0
       properties:
         auth_creds:
           description: Temporary credentials for accessing Auth

@@ -57,6 +57,7 @@ Method | HTTP request | Description
 [**ListRoles**](V2Api.md#ListRoles) | **Post** /list-roles | 
 [**ListTargets**](V2Api.md#ListTargets) | **Post** /list-targets | 
 [**MoveObjects**](V2Api.md#MoveObjects) | **Post** /move-objects | 
+[**RawCreds**](V2Api.md#RawCreds) | **Post** /raw-creds | 
 [**RefreshKey**](V2Api.md#RefreshKey) | **Post** /refresh-key | 
 [**ReverseRBAC**](V2Api.md#ReverseRBAC) | **Post** /reverse-rbac | 
 [**RollbackSecret**](V2Api.md#RollbackSecret) | **Post** /rollback-secret | 
@@ -3463,6 +3464,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 **map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RawCreds
+
+> SystemAccessCredentialsReplyObj RawCreds(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrawCreds() // RawCreds |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RawCreds(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RawCreds``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RawCreds`: SystemAccessCredentialsReplyObj
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RawCreds`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRawCredsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RawCreds**](RawCreds.md) |  | 
+
+### Return type
+
+[**SystemAccessCredentialsReplyObj**](SystemAccessCredentialsReplyObj.md)
 
 ### Authorization
 
