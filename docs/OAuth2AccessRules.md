@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **BoundClientsId** | Pointer to **[]string** | The clients ids that login is restricted to. | [optional] 
 **Issuer** | Pointer to **string** | Issuer URL | [optional] 
 **JwksUri** | Pointer to **string** | The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. | [optional] 
+**UniqueIdentifier** | Pointer to **string** | A unique identifier to distinguish different users | [optional] 
 
 ## Methods
 
@@ -153,6 +154,31 @@ SetJwksUri sets JwksUri field to given value.
 `func (o *OAuth2AccessRules) HasJwksUri() bool`
 
 HasJwksUri returns a boolean if a field has been set.
+
+### GetUniqueIdentifier
+
+`func (o *OAuth2AccessRules) GetUniqueIdentifier() string`
+
+GetUniqueIdentifier returns the UniqueIdentifier field if non-nil, zero value otherwise.
+
+### GetUniqueIdentifierOk
+
+`func (o *OAuth2AccessRules) GetUniqueIdentifierOk() (*string, bool)`
+
+GetUniqueIdentifierOk returns a tuple with the UniqueIdentifier field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUniqueIdentifier
+
+`func (o *OAuth2AccessRules) SetUniqueIdentifier(v string)`
+
+SetUniqueIdentifier sets UniqueIdentifier field to given value.
+
+### HasUniqueIdentifier
+
+`func (o *OAuth2AccessRules) HasUniqueIdentifier() bool`
+
+HasUniqueIdentifier returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

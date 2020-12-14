@@ -20,6 +20,8 @@ type LDAPAccessRules struct {
 	Alg *string `json:"alg,omitempty"`
 	// The public key value of LDAP.
 	Key *string `json:"key,omitempty"`
+	// A unique identifier to distinguish different users
+	UniqueIdentifier *string `json:"unique_identifier,omitempty"`
 }
 
 // NewLDAPAccessRules instantiates a new LDAPAccessRules object
@@ -103,6 +105,38 @@ func (o *LDAPAccessRules) SetKey(v string) {
 	o.Key = &v
 }
 
+// GetUniqueIdentifier returns the UniqueIdentifier field value if set, zero value otherwise.
+func (o *LDAPAccessRules) GetUniqueIdentifier() string {
+	if o == nil || o.UniqueIdentifier == nil {
+		var ret string
+		return ret
+	}
+	return *o.UniqueIdentifier
+}
+
+// GetUniqueIdentifierOk returns a tuple with the UniqueIdentifier field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LDAPAccessRules) GetUniqueIdentifierOk() (*string, bool) {
+	if o == nil || o.UniqueIdentifier == nil {
+		return nil, false
+	}
+	return o.UniqueIdentifier, true
+}
+
+// HasUniqueIdentifier returns a boolean if a field has been set.
+func (o *LDAPAccessRules) HasUniqueIdentifier() bool {
+	if o != nil && o.UniqueIdentifier != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUniqueIdentifier gets a reference to the given string and assigns it to the UniqueIdentifier field.
+func (o *LDAPAccessRules) SetUniqueIdentifier(v string) {
+	o.UniqueIdentifier = &v
+}
+
 func (o LDAPAccessRules) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Alg != nil {
@@ -110,6 +144,9 @@ func (o LDAPAccessRules) MarshalJSON() ([]byte, error) {
 	}
 	if o.Key != nil {
 		toSerialize["key"] = o.Key
+	}
+	if o.UniqueIdentifier != nil {
+		toSerialize["unique_identifier"] = o.UniqueIdentifier
 	}
 	return json.Marshal(toSerialize)
 }

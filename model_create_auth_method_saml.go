@@ -29,17 +29,20 @@ type CreateAuthMethodSAML struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \"sub claim\" that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization.
+	UniqueIdentifier string `json:"unique-identifier"`
 }
 
 // NewCreateAuthMethodSAML instantiates a new CreateAuthMethodSAML object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateAuthMethodSAML(name string, ) *CreateAuthMethodSAML {
+func NewCreateAuthMethodSAML(name string, uniqueIdentifier string, ) *CreateAuthMethodSAML {
 	this := CreateAuthMethodSAML{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
 	this.Name = name
+	this.UniqueIdentifier = uniqueIdentifier
 	return &this
 }
 
@@ -237,6 +240,30 @@ func (o *CreateAuthMethodSAML) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUniqueIdentifier returns the UniqueIdentifier field value
+func (o *CreateAuthMethodSAML) GetUniqueIdentifier() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.UniqueIdentifier
+}
+
+// GetUniqueIdentifierOk returns a tuple with the UniqueIdentifier field value
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodSAML) GetUniqueIdentifierOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.UniqueIdentifier, true
+}
+
+// SetUniqueIdentifier sets field value
+func (o *CreateAuthMethodSAML) SetUniqueIdentifier(v string) {
+	o.UniqueIdentifier = v
+}
+
 func (o CreateAuthMethodSAML) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccessExpires != nil {
@@ -256,6 +283,9 @@ func (o CreateAuthMethodSAML) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if true {
+		toSerialize["unique-identifier"] = o.UniqueIdentifier
 	}
 	return json.Marshal(toSerialize)
 }

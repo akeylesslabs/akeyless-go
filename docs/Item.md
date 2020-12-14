@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **ItemSize** | Pointer to **int64** |  | [optional] 
 **ItemState** | Pointer to **string** | ItemState defines the different states an Item can be in | [optional] 
 **ItemTags** | Pointer to **[]string** |  | [optional] 
+**ItemTargetsAssoc** | Pointer to [**[]ItemTargetAssociation**](ItemTargetAssociation.md) |  | [optional] 
 **ItemType** | Pointer to **string** |  | [optional] 
 **ItemVersions** | Pointer to [**[]ItemVersion**](ItemVersion.md) |  | [optional] 
 **LastVersion** | Pointer to **int32** |  | [optional] 
@@ -370,6 +371,31 @@ SetItemTags sets ItemTags field to given value.
 `func (o *Item) HasItemTags() bool`
 
 HasItemTags returns a boolean if a field has been set.
+
+### GetItemTargetsAssoc
+
+`func (o *Item) GetItemTargetsAssoc() []ItemTargetAssociation`
+
+GetItemTargetsAssoc returns the ItemTargetsAssoc field if non-nil, zero value otherwise.
+
+### GetItemTargetsAssocOk
+
+`func (o *Item) GetItemTargetsAssocOk() (*[]ItemTargetAssociation, bool)`
+
+GetItemTargetsAssocOk returns a tuple with the ItemTargetsAssoc field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemTargetsAssoc
+
+`func (o *Item) SetItemTargetsAssoc(v []ItemTargetAssociation)`
+
+SetItemTargetsAssoc sets ItemTargetsAssoc field to given value.
+
+### HasItemTargetsAssoc
+
+`func (o *Item) HasItemTargetsAssoc() bool`
+
+HasItemTargetsAssoc returns a boolean if a field has been set.
 
 ### GetItemType
 

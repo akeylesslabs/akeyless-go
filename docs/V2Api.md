@@ -5,6 +5,7 @@ All URIs are relative to *https://api.akeyless.io*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AssocRoleAuthMethod**](V2Api.md#AssocRoleAuthMethod) | **Post** /assoc-role-am | 
+[**AssocTargetItem**](V2Api.md#AssocTargetItem) | **Post** /assoc-target-item | 
 [**Auth**](V2Api.md#Auth) | **Post** /auth | 
 [**Configure**](V2Api.md#Configure) | **Post** /configure | 
 [**CreateAuthMethod**](V2Api.md#CreateAuthMethod) | **Post** /create-auth-method | 
@@ -14,12 +15,19 @@ Method | HTTP request | Description
 [**CreateAuthMethodOAuth2**](V2Api.md#CreateAuthMethodOAuth2) | **Post** /create-auth-method-oauth2 | 
 [**CreateAuthMethodSAML**](V2Api.md#CreateAuthMethodSAML) | **Post** /create-auth-method-saml | 
 [**CreateAuthMethodUniversalIdentity**](V2Api.md#CreateAuthMethodUniversalIdentity) | **Post** /create-auth-method-universal-identity | 
+[**CreateAwsTarget**](V2Api.md#CreateAwsTarget) | **Post** /create-aws-target | 
+[**CreateDBTarget**](V2Api.md#CreateDBTarget) | **Post** /create-db-target | 
 [**CreateDynamicSecret**](V2Api.md#CreateDynamicSecret) | **Post** /create-dynamic-secret | 
 [**CreateKey**](V2Api.md#CreateKey) | **Post** /create-key | 
 [**CreatePKICertIssuer**](V2Api.md#CreatePKICertIssuer) | **Post** /create-pki-cert-issuer | 
+[**CreateRabbitMQTarget**](V2Api.md#CreateRabbitMQTarget) | **Post** /create-rabbitMQ-target | 
+[**CreateRdpTarget**](V2Api.md#CreateRdpTarget) | **Post** /create-rdp-target | 
 [**CreateRole**](V2Api.md#CreateRole) | **Post** /create-role | 
 [**CreateSSHCertIssuer**](V2Api.md#CreateSSHCertIssuer) | **Post** /create-ssh-cert-issuer | 
+[**CreateSSHTarget**](V2Api.md#CreateSSHTarget) | **Post** /create-ssh-target | 
 [**CreateSecret**](V2Api.md#CreateSecret) | **Post** /create-secret | 
+[**CreateTarget**](V2Api.md#CreateTarget) | **Post** /create-target | 
+[**CreateWebTarget**](V2Api.md#CreateWebTarget) | **Post** /create-web-target | 
 [**Decrypt**](V2Api.md#Decrypt) | **Post** /decrypt | 
 [**DecryptPKCS1**](V2Api.md#DecryptPKCS1) | **Post** /decrypt-pkcs1 | 
 [**DeleteAuthMethod**](V2Api.md#DeleteAuthMethod) | **Post** /delete-auth-method | 
@@ -30,6 +38,9 @@ Method | HTTP request | Description
 [**DeleteRoleAssociation**](V2Api.md#DeleteRoleAssociation) | **Post** /delete-assoc | 
 [**DeleteRoleRule**](V2Api.md#DeleteRoleRule) | **Post** /delete-role-rule | 
 [**DeleteRoles**](V2Api.md#DeleteRoles) | **Post** /delete-roles | 
+[**DeleteTarget**](V2Api.md#DeleteTarget) | **Post** /delete-target | 
+[**DeleteTargetAssociation**](V2Api.md#DeleteTargetAssociation) | **Post** /delete-assoc-target-item | 
+[**DeleteTargets**](V2Api.md#DeleteTargets) | **Post** /delete-targets | 
 [**DescribeItem**](V2Api.md#DescribeItem) | **Post** /describe-item | 
 [**Encrypt**](V2Api.md#Encrypt) | **Post** /encrypt | 
 [**EncryptPKCS1**](V2Api.md#EncryptPKCS1) | **Post** /encrypt-pkcs1 | 
@@ -39,9 +50,12 @@ Method | HTTP request | Description
 [**GetRole**](V2Api.md#GetRole) | **Post** /get-role | 
 [**GetSSHCertificate**](V2Api.md#GetSSHCertificate) | **Post** /get-ssh-certificate | 
 [**GetSecretValue**](V2Api.md#GetSecretValue) | **Post** /get-secret-value | 
+[**GetTarget**](V2Api.md#GetTarget) | **Post** /get-target | 
+[**GetTargetDetails**](V2Api.md#GetTargetDetails) | **Post** /get-target-details | 
 [**ListAuthMethods**](V2Api.md#ListAuthMethods) | **Post** /list-auth-methods | 
 [**ListItems**](V2Api.md#ListItems) | **Post** /list-items | 
 [**ListRoles**](V2Api.md#ListRoles) | **Post** /list-roles | 
+[**ListTargets**](V2Api.md#ListTargets) | **Post** /list-targets | 
 [**MoveObjects**](V2Api.md#MoveObjects) | **Post** /move-objects | 
 [**RefreshKey**](V2Api.md#RefreshKey) | **Post** /refresh-key | 
 [**ReverseRBAC**](V2Api.md#ReverseRBAC) | **Post** /reverse-rbac | 
@@ -56,9 +70,17 @@ Method | HTTP request | Description
 [**UidListChildren**](V2Api.md#UidListChildren) | **Post** /uid-list-children | 
 [**UidRevokeToken**](V2Api.md#UidRevokeToken) | **Post** /uid-revoke-token | 
 [**UidRotateToken**](V2Api.md#UidRotateToken) | **Post** /uid-rotate-token | 
+[**UpdateAWSTargetDetails**](V2Api.md#UpdateAWSTargetDetails) | **Post** /update-aws-target-details | 
+[**UpdateDBTargetDetails**](V2Api.md#UpdateDBTargetDetails) | **Post** /update-db-target-details | 
 [**UpdateItem**](V2Api.md#UpdateItem) | **Post** /update-item | 
+[**UpdateRDPTargetDetails**](V2Api.md#UpdateRDPTargetDetails) | **Post** /update-rdp-target-details | 
+[**UpdateRabbitMQTargetDetails**](V2Api.md#UpdateRabbitMQTargetDetails) | **Post** /update-rabbitmq-target-details | 
 [**UpdateRole**](V2Api.md#UpdateRole) | **Post** /update-role | 
+[**UpdateSSHTargetDetails**](V2Api.md#UpdateSSHTargetDetails) | **Post** /update-ssh-target-details | 
 [**UpdateSecretVal**](V2Api.md#UpdateSecretVal) | **Post** /update-secret-val | 
+[**UpdateTarget**](V2Api.md#UpdateTarget) | **Post** /update-target | 
+[**UpdateTargetDetails**](V2Api.md#UpdateTargetDetails) | **Post** /update-target-details | 
+[**UpdateWebTargetDetails**](V2Api.md#UpdateWebTargetDetails) | **Post** /update-web-target-details | 
 [**UploadRSA**](V2Api.md#UploadRSA) | **Post** /upload-rsa | 
 [**VerifyPKCS1**](V2Api.md#VerifyPKCS1) | **Post** /verify-pkcs1 | 
 
@@ -113,6 +135,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateRoleAuthMethodAssocOutput**](CreateRoleAuthMethodAssocOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AssocTargetItem
+
+> CreateTargetItemAssocOutput AssocTargetItem(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewassocTargetItem("ItemName_example", "TargetName_example") // AssocTargetItem | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.AssocTargetItem(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.AssocTargetItem``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AssocTargetItem`: CreateTargetItemAssocOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.AssocTargetItem`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAssocTargetItemRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**AssocTargetItem**](AssocTargetItem.md) |  | 
+
+### Return type
+
+[**CreateTargetItemAssocOutput**](CreateTargetItemAssocOutput.md)
 
 ### Authorization
 
@@ -531,7 +617,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateAuthMethodOAuth2("JwksUri_example", "Name_example") // CreateAuthMethodOAuth2 | 
+    body := *openapiclient.NewcreateAuthMethodOAuth2("JwksUri_example", "Name_example", "UniqueIdentifier_example") // CreateAuthMethodOAuth2 | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -595,7 +681,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateAuthMethodSAML("Name_example") // CreateAuthMethodSAML | 
+    body := *openapiclient.NewcreateAuthMethodSAML("Name_example", "UniqueIdentifier_example") // CreateAuthMethodSAML | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -689,6 +775,134 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateAuthMethodUniversalIdentityOutput**](createAuthMethodUniversalIdentityOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateAwsTarget
+
+> map[string]interface{} CreateAwsTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewcreateAwsTarget("Name_example") // CreateAwsTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.CreateAwsTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateAwsTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateAwsTarget`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateAwsTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateAwsTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateAwsTarget**](CreateAwsTarget.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateDBTarget
+
+> map[string]interface{} CreateDBTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewcreateDBTarget("Name_example") // CreateDBTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.CreateDBTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateDBTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateDBTarget`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateDBTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateDBTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateDBTarget**](CreateDBTarget.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
 
 ### Authorization
 
@@ -896,6 +1110,134 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## CreateRabbitMQTarget
+
+> map[string]interface{} CreateRabbitMQTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewcreateRabbitMQTarget("Name_example") // CreateRabbitMQTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.CreateRabbitMQTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateRabbitMQTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateRabbitMQTarget`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateRabbitMQTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateRabbitMQTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateRabbitMQTarget**](CreateRabbitMQTarget.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateRdpTarget
+
+> map[string]interface{} CreateRdpTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewcreateRdpTarget("Name_example") // CreateRdpTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.CreateRdpTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateRdpTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateRdpTarget`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateRdpTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateRdpTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateRdpTarget**](CreateRdpTarget.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## CreateRole
 
 > map[string]interface{} CreateRole(ctx).Body(body).Execute()
@@ -1024,6 +1366,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## CreateSSHTarget
+
+> map[string]interface{} CreateSSHTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewcreateSSHTarget("Name_example") // CreateSSHTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.CreateSSHTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateSSHTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateSSHTarget`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateSSHTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateSSHTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateSSHTarget**](CreateSSHTarget.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## CreateSecret
 
 > CreateSecretOutput CreateSecret(ctx).Body(body).Execute()
@@ -1073,6 +1479,134 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateSecretOutput**](createSecretOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateTarget
+
+> map[string]interface{} CreateTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := map[string]interface{}(Object) // map[string]interface{} | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.CreateTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateTarget`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | **map[string]interface{}** |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateWebTarget
+
+> map[string]interface{} CreateWebTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewcreateWebTarget("Name_example") // CreateWebTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.CreateWebTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateWebTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateWebTarget`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateWebTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateWebTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateWebTarget**](CreateWebTarget.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
 
 ### Authorization
 
@@ -1728,6 +2262,198 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## DeleteTarget
+
+> map[string]interface{} DeleteTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdeleteTarget("Name_example") // DeleteTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DeleteTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DeleteTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeleteTarget`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DeleteTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DeleteTarget**](DeleteTarget.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteTargetAssociation
+
+> map[string]interface{} DeleteTargetAssociation(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdeleteTargetAssociation("AssocId_example") // DeleteTargetAssociation | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DeleteTargetAssociation(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DeleteTargetAssociation``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeleteTargetAssociation`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DeleteTargetAssociation`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteTargetAssociationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DeleteTargetAssociation**](DeleteTargetAssociation.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteTargets
+
+> map[string]interface{} DeleteTargets(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdeleteTargets("Path_example") // DeleteTargets | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DeleteTargets(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DeleteTargets``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeleteTargets`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DeleteTargets`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteTargetsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DeleteTargets**](DeleteTargets.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## DescribeItem
 
 > Item DescribeItem(ctx).Body(body).Execute()
@@ -2304,6 +3030,134 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GetTarget
+
+> Target GetTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgetTarget("Name_example") // GetTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GetTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GetTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetTarget`: Target
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GetTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GetTarget**](GetTarget.md) |  | 
+
+### Return type
+
+[**Target**](Target.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetTargetDetails
+
+> GetTargetDetailsOutput GetTargetDetails(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgetTargetDetails("Name_example") // GetTargetDetails | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GetTargetDetails(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GetTargetDetails``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetTargetDetails`: GetTargetDetailsOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GetTargetDetails`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetTargetDetailsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GetTargetDetails**](GetTargetDetails.md) |  | 
+
+### Return type
+
+[**GetTargetDetailsOutput**](GetTargetDetailsOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ListAuthMethods
 
 > ListAuthMethodsOutput ListAuthMethods(ctx).Body(body).Execute()
@@ -2481,6 +3335,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListRolesOutput**](ListRolesOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListTargets
+
+> ListTargetsOutput ListTargets(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewlistTargets() // ListTargets | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.ListTargets(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.ListTargets``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListTargets`: ListTargetsOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.ListTargets`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListTargetsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**ListTargets**](ListTargets.md) |  | 
+
+### Return type
+
+[**ListTargetsOutput**](ListTargetsOutput.md)
 
 ### Authorization
 
@@ -3392,6 +4310,134 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## UpdateAWSTargetDetails
+
+> UpdateTargetOutput UpdateAWSTargetDetails(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewupdateAWSTargetDetails("Name_example") // UpdateAWSTargetDetails | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdateAWSTargetDetails(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateAWSTargetDetails``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateAWSTargetDetails`: UpdateTargetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateAWSTargetDetails`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateAWSTargetDetailsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateAWSTargetDetails**](UpdateAWSTargetDetails.md) |  | 
+
+### Return type
+
+[**UpdateTargetOutput**](updateTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateDBTargetDetails
+
+> UpdateTargetOutput UpdateDBTargetDetails(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewupdateDBTargetDetails("Name_example") // UpdateDBTargetDetails | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdateDBTargetDetails(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateDBTargetDetails``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateDBTargetDetails`: UpdateTargetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateDBTargetDetails`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateDBTargetDetailsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateDBTargetDetails**](UpdateDBTargetDetails.md) |  | 
+
+### Return type
+
+[**UpdateTargetOutput**](updateTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## UpdateItem
 
 > UpdateItemOutput UpdateItem(ctx).Body(body).Execute()
@@ -3441,6 +4487,134 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**UpdateItemOutput**](updateItemOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateRDPTargetDetails
+
+> UpdateTargetOutput UpdateRDPTargetDetails(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewupdateRDPTargetDetails("Name_example") // UpdateRDPTargetDetails | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdateRDPTargetDetails(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateRDPTargetDetails``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateRDPTargetDetails`: UpdateTargetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateRDPTargetDetails`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateRDPTargetDetailsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateRDPTargetDetails**](UpdateRDPTargetDetails.md) |  | 
+
+### Return type
+
+[**UpdateTargetOutput**](updateTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateRabbitMQTargetDetails
+
+> UpdateTargetOutput UpdateRabbitMQTargetDetails(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewupdateRabbitMQTargetDetails("Name_example") // UpdateRabbitMQTargetDetails | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdateRabbitMQTargetDetails(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateRabbitMQTargetDetails``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateRabbitMQTargetDetails`: UpdateTargetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateRabbitMQTargetDetails`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateRabbitMQTargetDetailsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateRabbitMQTargetDetails**](UpdateRabbitMQTargetDetails.md) |  | 
+
+### Return type
+
+[**UpdateTargetOutput**](updateTargetOutput.md)
 
 ### Authorization
 
@@ -3520,6 +4694,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## UpdateSSHTargetDetails
+
+> UpdateTargetOutput UpdateSSHTargetDetails(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewupdateSSHTargetDetails("Name_example") // UpdateSSHTargetDetails | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdateSSHTargetDetails(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateSSHTargetDetails``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateSSHTargetDetails`: UpdateTargetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateSSHTargetDetails`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateSSHTargetDetailsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateSSHTargetDetails**](UpdateSSHTargetDetails.md) |  | 
+
+### Return type
+
+[**UpdateTargetOutput**](updateTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## UpdateSecretVal
 
 > UpdateSecretValOutput UpdateSecretVal(ctx).Body(body).Execute()
@@ -3569,6 +4807,198 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**UpdateSecretValOutput**](updateSecretValOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateTarget
+
+> UpdateTargetOutput UpdateTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewupdateTarget("Name_example") // UpdateTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdateTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateTarget`: UpdateTargetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateTarget**](UpdateTarget.md) |  | 
+
+### Return type
+
+[**UpdateTargetOutput**](updateTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateTargetDetails
+
+> UpdateTargetOutput UpdateTargetDetails(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := map[string]interface{}(Object) // map[string]interface{} | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdateTargetDetails(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateTargetDetails``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateTargetDetails`: UpdateTargetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateTargetDetails`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateTargetDetailsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | **map[string]interface{}** |  | 
+
+### Return type
+
+[**UpdateTargetOutput**](updateTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateWebTargetDetails
+
+> UpdateTargetOutput UpdateWebTargetDetails(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewupdateWebTargetDetails("Name_example") // UpdateWebTargetDetails | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdateWebTargetDetails(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateWebTargetDetails``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateWebTargetDetails`: UpdateTargetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateWebTargetDetails`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateWebTargetDetailsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateWebTargetDetails**](UpdateWebTargetDetails.md) |  | 
+
+### Return type
+
+[**UpdateTargetOutput**](updateTargetOutput.md)
 
 ### Authorization
 

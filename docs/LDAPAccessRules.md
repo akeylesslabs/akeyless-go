@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Alg** | Pointer to **string** |  | [optional] 
 **Key** | Pointer to **string** | The public key value of LDAP. | [optional] 
+**UniqueIdentifier** | Pointer to **string** | A unique identifier to distinguish different users | [optional] 
 
 ## Methods
 
@@ -75,6 +76,31 @@ SetKey sets Key field to given value.
 `func (o *LDAPAccessRules) HasKey() bool`
 
 HasKey returns a boolean if a field has been set.
+
+### GetUniqueIdentifier
+
+`func (o *LDAPAccessRules) GetUniqueIdentifier() string`
+
+GetUniqueIdentifier returns the UniqueIdentifier field if non-nil, zero value otherwise.
+
+### GetUniqueIdentifierOk
+
+`func (o *LDAPAccessRules) GetUniqueIdentifierOk() (*string, bool)`
+
+GetUniqueIdentifierOk returns a tuple with the UniqueIdentifier field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUniqueIdentifier
+
+`func (o *LDAPAccessRules) SetUniqueIdentifier(v string)`
+
+SetUniqueIdentifier sets UniqueIdentifier field to given value.
+
+### HasUniqueIdentifier
+
+`func (o *LDAPAccessRules) HasUniqueIdentifier() bool`
+
+HasUniqueIdentifier returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

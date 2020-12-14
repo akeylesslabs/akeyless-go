@@ -23,6 +23,8 @@ type SAMLAccessRules struct {
 	IdpMetadataUrl *string `json:"idp_metadata_url,omitempty"`
 	// IDP metadata XML
 	IdpMetadataXml *string `json:"idp_metadata_xml,omitempty"`
+	// A unique identifier to distinguish different users
+	UniqueIdentifier *string `json:"unique_identifier,omitempty"`
 }
 
 // NewSAMLAccessRules instantiates a new SAMLAccessRules object
@@ -138,6 +140,38 @@ func (o *SAMLAccessRules) SetIdpMetadataXml(v string) {
 	o.IdpMetadataXml = &v
 }
 
+// GetUniqueIdentifier returns the UniqueIdentifier field value if set, zero value otherwise.
+func (o *SAMLAccessRules) GetUniqueIdentifier() string {
+	if o == nil || o.UniqueIdentifier == nil {
+		var ret string
+		return ret
+	}
+	return *o.UniqueIdentifier
+}
+
+// GetUniqueIdentifierOk returns a tuple with the UniqueIdentifier field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SAMLAccessRules) GetUniqueIdentifierOk() (*string, bool) {
+	if o == nil || o.UniqueIdentifier == nil {
+		return nil, false
+	}
+	return o.UniqueIdentifier, true
+}
+
+// HasUniqueIdentifier returns a boolean if a field has been set.
+func (o *SAMLAccessRules) HasUniqueIdentifier() bool {
+	if o != nil && o.UniqueIdentifier != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUniqueIdentifier gets a reference to the given string and assigns it to the UniqueIdentifier field.
+func (o *SAMLAccessRules) SetUniqueIdentifier(v string) {
+	o.UniqueIdentifier = &v
+}
+
 func (o SAMLAccessRules) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.BoundAttributes != nil {
@@ -148,6 +182,9 @@ func (o SAMLAccessRules) MarshalJSON() ([]byte, error) {
 	}
 	if o.IdpMetadataXml != nil {
 		toSerialize["idp_metadata_xml"] = o.IdpMetadataXml
+	}
+	if o.UniqueIdentifier != nil {
+		toSerialize["unique_identifier"] = o.UniqueIdentifier
 	}
 	return json.Marshal(toSerialize)
 }

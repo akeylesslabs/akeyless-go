@@ -27,6 +27,8 @@ type OAuth2AccessRules struct {
 	Issuer *string `json:"issuer,omitempty"`
 	// The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server.
 	JwksUri *string `json:"jwks_uri,omitempty"`
+	// A unique identifier to distinguish different users
+	UniqueIdentifier *string `json:"unique_identifier,omitempty"`
 }
 
 // NewOAuth2AccessRules instantiates a new OAuth2AccessRules object
@@ -206,6 +208,38 @@ func (o *OAuth2AccessRules) SetJwksUri(v string) {
 	o.JwksUri = &v
 }
 
+// GetUniqueIdentifier returns the UniqueIdentifier field value if set, zero value otherwise.
+func (o *OAuth2AccessRules) GetUniqueIdentifier() string {
+	if o == nil || o.UniqueIdentifier == nil {
+		var ret string
+		return ret
+	}
+	return *o.UniqueIdentifier
+}
+
+// GetUniqueIdentifierOk returns a tuple with the UniqueIdentifier field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuth2AccessRules) GetUniqueIdentifierOk() (*string, bool) {
+	if o == nil || o.UniqueIdentifier == nil {
+		return nil, false
+	}
+	return o.UniqueIdentifier, true
+}
+
+// HasUniqueIdentifier returns a boolean if a field has been set.
+func (o *OAuth2AccessRules) HasUniqueIdentifier() bool {
+	if o != nil && o.UniqueIdentifier != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUniqueIdentifier gets a reference to the given string and assigns it to the UniqueIdentifier field.
+func (o *OAuth2AccessRules) SetUniqueIdentifier(v string) {
+	o.UniqueIdentifier = &v
+}
+
 func (o OAuth2AccessRules) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Audience != nil {
@@ -222,6 +256,9 @@ func (o OAuth2AccessRules) MarshalJSON() ([]byte, error) {
 	}
 	if o.JwksUri != nil {
 		toSerialize["jwks_uri"] = o.JwksUri
+	}
+	if o.UniqueIdentifier != nil {
+		toSerialize["unique_identifier"] = o.UniqueIdentifier
 	}
 	return json.Marshal(toSerialize)
 }

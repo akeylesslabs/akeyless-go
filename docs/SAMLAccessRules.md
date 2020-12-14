@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **BoundAttributes** | Pointer to [**[]SAMLAttribute**](SAMLAttribute.md) | The attributes that login is restricted to. | [optional] 
 **IdpMetadataUrl** | Pointer to **string** | IDP metadata url | [optional] 
 **IdpMetadataXml** | Pointer to **string** | IDP metadata XML | [optional] 
+**UniqueIdentifier** | Pointer to **string** | A unique identifier to distinguish different users | [optional] 
 
 ## Methods
 
@@ -101,6 +102,31 @@ SetIdpMetadataXml sets IdpMetadataXml field to given value.
 `func (o *SAMLAccessRules) HasIdpMetadataXml() bool`
 
 HasIdpMetadataXml returns a boolean if a field has been set.
+
+### GetUniqueIdentifier
+
+`func (o *SAMLAccessRules) GetUniqueIdentifier() string`
+
+GetUniqueIdentifier returns the UniqueIdentifier field if non-nil, zero value otherwise.
+
+### GetUniqueIdentifierOk
+
+`func (o *SAMLAccessRules) GetUniqueIdentifierOk() (*string, bool)`
+
+GetUniqueIdentifierOk returns a tuple with the UniqueIdentifier field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUniqueIdentifier
+
+`func (o *SAMLAccessRules) SetUniqueIdentifier(v string)`
+
+SetUniqueIdentifier sets UniqueIdentifier field to given value.
+
+### HasUniqueIdentifier
+
+`func (o *SAMLAccessRules) HasUniqueIdentifier() bool`
+
+HasUniqueIdentifier returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

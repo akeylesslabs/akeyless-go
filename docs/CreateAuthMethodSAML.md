@@ -10,12 +10,13 @@ Name | Type | Description | Notes
 **Name** | **string** | Auth Method name | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**UniqueIdentifier** | **string** | A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. | 
 
 ## Methods
 
 ### NewCreateAuthMethodSAML
 
-`func NewCreateAuthMethodSAML(name string, ) *CreateAuthMethodSAML`
+`func NewCreateAuthMethodSAML(name string, uniqueIdentifier string, ) *CreateAuthMethodSAML`
 
 NewCreateAuthMethodSAML instantiates a new CreateAuthMethodSAML object
 This constructor will assign default values to properties that have it defined,
@@ -174,6 +175,26 @@ SetUidToken sets UidToken field to given value.
 `func (o *CreateAuthMethodSAML) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetUniqueIdentifier
+
+`func (o *CreateAuthMethodSAML) GetUniqueIdentifier() string`
+
+GetUniqueIdentifier returns the UniqueIdentifier field if non-nil, zero value otherwise.
+
+### GetUniqueIdentifierOk
+
+`func (o *CreateAuthMethodSAML) GetUniqueIdentifierOk() (*string, bool)`
+
+GetUniqueIdentifierOk returns a tuple with the UniqueIdentifier field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUniqueIdentifier
+
+`func (o *CreateAuthMethodSAML) SetUniqueIdentifier(v string)`
+
+SetUniqueIdentifier sets UniqueIdentifier field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

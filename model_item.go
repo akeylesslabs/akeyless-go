@@ -32,6 +32,7 @@ type Item struct {
 	// ItemState defines the different states an Item can be in
 	ItemState *string `json:"item_state,omitempty"`
 	ItemTags *[]string `json:"item_tags,omitempty"`
+	ItemTargetsAssoc *[]ItemTargetAssociation `json:"item_targets_assoc,omitempty"`
 	ItemType *string `json:"item_type,omitempty"`
 	ItemVersions *[]ItemVersion `json:"item_versions,omitempty"`
 	LastVersion *int32 `json:"last_version,omitempty"`
@@ -477,6 +478,38 @@ func (o *Item) SetItemTags(v []string) {
 	o.ItemTags = &v
 }
 
+// GetItemTargetsAssoc returns the ItemTargetsAssoc field value if set, zero value otherwise.
+func (o *Item) GetItemTargetsAssoc() []ItemTargetAssociation {
+	if o == nil || o.ItemTargetsAssoc == nil {
+		var ret []ItemTargetAssociation
+		return ret
+	}
+	return *o.ItemTargetsAssoc
+}
+
+// GetItemTargetsAssocOk returns a tuple with the ItemTargetsAssoc field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Item) GetItemTargetsAssocOk() (*[]ItemTargetAssociation, bool) {
+	if o == nil || o.ItemTargetsAssoc == nil {
+		return nil, false
+	}
+	return o.ItemTargetsAssoc, true
+}
+
+// HasItemTargetsAssoc returns a boolean if a field has been set.
+func (o *Item) HasItemTargetsAssoc() bool {
+	if o != nil && o.ItemTargetsAssoc != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetItemTargetsAssoc gets a reference to the given []ItemTargetAssociation and assigns it to the ItemTargetsAssoc field.
+func (o *Item) SetItemTargetsAssoc(v []ItemTargetAssociation) {
+	o.ItemTargetsAssoc = &v
+}
+
 // GetItemType returns the ItemType field value if set, zero value otherwise.
 func (o *Item) GetItemType() string {
 	if o == nil || o.ItemType == nil {
@@ -805,6 +838,9 @@ func (o Item) MarshalJSON() ([]byte, error) {
 	}
 	if o.ItemTags != nil {
 		toSerialize["item_tags"] = o.ItemTags
+	}
+	if o.ItemTargetsAssoc != nil {
+		toSerialize["item_targets_assoc"] = o.ItemTargetsAssoc
 	}
 	if o.ItemType != nil {
 		toSerialize["item_type"] = o.ItemType
