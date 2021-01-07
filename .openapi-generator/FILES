@@ -149,6 +149,7 @@ docs/StaticCredsAuthOutput.md
 docs/SystemAccessCredentialsReplyObj.md
 docs/Target.md
 docs/TargetItemAssociation.md
+docs/TargetTypeDetailesInput.md
 docs/UIDTokenDetails.md
 docs/UidCreateChildToken.md
 docs/UidCreateChildTokenOutput.md
@@ -161,7 +162,6 @@ docs/UidRotateTokenOutput.md
 docs/Unconfigure.md
 docs/UniversalIdentityAccessRules.md
 docs/UniversalIdentityDetails.md
-docs/Update.md
 docs/UpdateAWSTargetDetails.md
 docs/UpdateDBTargetDetails.md
 docs/UpdateItem.md
@@ -329,6 +329,7 @@ model_static_creds_auth_output.go
 model_system_access_credentials_reply_obj.go
 model_target.go
 model_target_item_association.go
+model_target_type_detailes_input.go
 model_uid_create_child_token.go
 model_uid_create_child_token_output.go
 model_uid_generate_token.go
@@ -341,7 +342,6 @@ model_uid_token_details.go
 model_unconfigure.go
 model_universal_identity_access_rules.go
 model_universal_identity_details.go
-model_update.go
 model_update_aws_target_details.go
 model_update_db_target_details.go
 model_update_item.go

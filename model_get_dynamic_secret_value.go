@@ -19,6 +19,10 @@ import (
 type GetDynamicSecretValue struct {
 	// Dynamic secret name
 	Name string `json:"name"`
+	// Host
+	TagHost *string `json:"tag-host,omitempty"`
+	// Target Name
+	Target *string `json:"target,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -65,6 +69,70 @@ func (o *GetDynamicSecretValue) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *GetDynamicSecretValue) SetName(v string) {
 	o.Name = v
+}
+
+// GetTagHost returns the TagHost field value if set, zero value otherwise.
+func (o *GetDynamicSecretValue) GetTagHost() string {
+	if o == nil || o.TagHost == nil {
+		var ret string
+		return ret
+	}
+	return *o.TagHost
+}
+
+// GetTagHostOk returns a tuple with the TagHost field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetDynamicSecretValue) GetTagHostOk() (*string, bool) {
+	if o == nil || o.TagHost == nil {
+		return nil, false
+	}
+	return o.TagHost, true
+}
+
+// HasTagHost returns a boolean if a field has been set.
+func (o *GetDynamicSecretValue) HasTagHost() bool {
+	if o != nil && o.TagHost != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTagHost gets a reference to the given string and assigns it to the TagHost field.
+func (o *GetDynamicSecretValue) SetTagHost(v string) {
+	o.TagHost = &v
+}
+
+// GetTarget returns the Target field value if set, zero value otherwise.
+func (o *GetDynamicSecretValue) GetTarget() string {
+	if o == nil || o.Target == nil {
+		var ret string
+		return ret
+	}
+	return *o.Target
+}
+
+// GetTargetOk returns a tuple with the Target field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetDynamicSecretValue) GetTargetOk() (*string, bool) {
+	if o == nil || o.Target == nil {
+		return nil, false
+	}
+	return o.Target, true
+}
+
+// HasTarget returns a boolean if a field has been set.
+func (o *GetDynamicSecretValue) HasTarget() bool {
+	if o != nil && o.Target != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTarget gets a reference to the given string and assigns it to the Target field.
+func (o *GetDynamicSecretValue) SetTarget(v string) {
+	o.Target = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -135,6 +203,12 @@ func (o GetDynamicSecretValue) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.TagHost != nil {
+		toSerialize["tag-host"] = o.TagHost
+	}
+	if o.Target != nil {
+		toSerialize["target"] = o.Target
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

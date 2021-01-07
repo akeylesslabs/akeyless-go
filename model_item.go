@@ -26,6 +26,7 @@ type Item struct {
 	DeletionDate *time.Time `json:"deletion_date,omitempty"`
 	IsEnabled *bool `json:"is_enabled,omitempty"`
 	ItemGeneralInfo *ItemGeneralInfo `json:"item_general_info,omitempty"`
+	ItemId *int64 `json:"item_id,omitempty"`
 	ItemMetadata *string `json:"item_metadata,omitempty"`
 	ItemName *string `json:"item_name,omitempty"`
 	ItemSize *int64 `json:"item_size,omitempty"`
@@ -37,8 +38,6 @@ type Item struct {
 	ItemVersions *[]ItemVersion `json:"item_versions,omitempty"`
 	LastVersion *int32 `json:"last_version,omitempty"`
 	NextRotationDate *time.Time `json:"next_rotation_date,omitempty"`
-	// ProducerStatus defines types of Producer Status
-	ProducerStatus *string `json:"producer_status,omitempty"`
 	ProtectionKeyName *string `json:"protection_key_name,omitempty"`
 	PublicValue *string `json:"public_value,omitempty"`
 	RotationInterval *int64 `json:"rotation_interval,omitempty"`
@@ -316,6 +315,38 @@ func (o *Item) HasItemGeneralInfo() bool {
 // SetItemGeneralInfo gets a reference to the given ItemGeneralInfo and assigns it to the ItemGeneralInfo field.
 func (o *Item) SetItemGeneralInfo(v ItemGeneralInfo) {
 	o.ItemGeneralInfo = &v
+}
+
+// GetItemId returns the ItemId field value if set, zero value otherwise.
+func (o *Item) GetItemId() int64 {
+	if o == nil || o.ItemId == nil {
+		var ret int64
+		return ret
+	}
+	return *o.ItemId
+}
+
+// GetItemIdOk returns a tuple with the ItemId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Item) GetItemIdOk() (*int64, bool) {
+	if o == nil || o.ItemId == nil {
+		return nil, false
+	}
+	return o.ItemId, true
+}
+
+// HasItemId returns a boolean if a field has been set.
+func (o *Item) HasItemId() bool {
+	if o != nil && o.ItemId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetItemId gets a reference to the given int64 and assigns it to the ItemId field.
+func (o *Item) SetItemId(v int64) {
+	o.ItemId = &v
 }
 
 // GetItemMetadata returns the ItemMetadata field value if set, zero value otherwise.
@@ -638,38 +669,6 @@ func (o *Item) SetNextRotationDate(v time.Time) {
 	o.NextRotationDate = &v
 }
 
-// GetProducerStatus returns the ProducerStatus field value if set, zero value otherwise.
-func (o *Item) GetProducerStatus() string {
-	if o == nil || o.ProducerStatus == nil {
-		var ret string
-		return ret
-	}
-	return *o.ProducerStatus
-}
-
-// GetProducerStatusOk returns a tuple with the ProducerStatus field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Item) GetProducerStatusOk() (*string, bool) {
-	if o == nil || o.ProducerStatus == nil {
-		return nil, false
-	}
-	return o.ProducerStatus, true
-}
-
-// HasProducerStatus returns a boolean if a field has been set.
-func (o *Item) HasProducerStatus() bool {
-	if o != nil && o.ProducerStatus != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetProducerStatus gets a reference to the given string and assigns it to the ProducerStatus field.
-func (o *Item) SetProducerStatus(v string) {
-	o.ProducerStatus = &v
-}
-
 // GetProtectionKeyName returns the ProtectionKeyName field value if set, zero value otherwise.
 func (o *Item) GetProtectionKeyName() string {
 	if o == nil || o.ProtectionKeyName == nil {
@@ -824,6 +823,9 @@ func (o Item) MarshalJSON() ([]byte, error) {
 	if o.ItemGeneralInfo != nil {
 		toSerialize["item_general_info"] = o.ItemGeneralInfo
 	}
+	if o.ItemId != nil {
+		toSerialize["item_id"] = o.ItemId
+	}
 	if o.ItemMetadata != nil {
 		toSerialize["item_metadata"] = o.ItemMetadata
 	}
@@ -853,9 +855,6 @@ func (o Item) MarshalJSON() ([]byte, error) {
 	}
 	if o.NextRotationDate != nil {
 		toSerialize["next_rotation_date"] = o.NextRotationDate
-	}
-	if o.ProducerStatus != nil {
-		toSerialize["producer_status"] = o.ProducerStatus
 	}
 	if o.ProtectionKeyName != nil {
 		toSerialize["protection_key_name"] = o.ProtectionKeyName

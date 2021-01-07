@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AuthMethodName** | Pointer to **string** | The universal identity auth method name | [optional] 
+**AuthMethodName** | Pointer to **string** | The universal identity auth method name, required only when uid-token is not provided | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 

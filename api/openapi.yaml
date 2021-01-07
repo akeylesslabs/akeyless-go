@@ -3524,10 +3524,32 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     GetTargetDetailsOutput:
       example:
-        Value: Value
+        Value:
+          rabbitmq_server_password: rabbitmq_server_password
+          aws_session_token: aws_session_token
+          host_port: host_port
+          aws_secret_access_key: aws_secret_access_key
+          ip:
+          - ip
+          - ip
+          db_pwd: db_pwd
+          mongodb_db_name: mongodb_db_name
+          url: url
+          db_host_name: db_host_name
+          mongodb_uri_connection: mongodb_uri_connection
+          rabbitmq_server_uri: rabbitmq_server_uri
+          aws_access_key_id: aws_access_key_id
+          aws_region: aws_region
+          db_user_name: db_user_name
+          port: port
+          admin_name: admin_name
+          db_port: db_port
+          rabbitmq_server_user: rabbitmq_server_user
+          host_name: host_name
+          admin_pwd: admin_pwd
       properties:
         Value:
-          type: string
+          $ref: '#/components/schemas/TargetTypeDetailesInput'
       title: GetTargetDetailsOutput defines output of GetTargetDetails operation.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
@@ -3605,6 +3627,7 @@ components:
         auto_rotate: true
         item_state: item_state
         cert_issuer_signer_key_name: cert_issuer_signer_key_name
+        item_id: 2
         item_tags:
         - item_tags
         - item_tags
@@ -3679,20 +3702,20 @@ components:
           deletion_date: 2000-01-23T04:56:07.000+00:00
           protection_key_name: protection_key_name
           creation_date: 2000-01-23T04:56:07.000+00:00
-          version: 7
+          version: 9
         - item_version_state: item_version_state
           with_customer_fragment: true
           deletion_date: 2000-01-23T04:56:07.000+00:00
           protection_key_name: protection_key_name
           creation_date: 2000-01-23T04:56:07.000+00:00
-          version: 7
+          version: 9
         item_targets_assoc:
         - assoc_id: assoc_id
           target_name: target_name
         - assoc_id: assoc_id
           target_name: target_name
         item_name: item_name
-        item_size: 2
+        item_size: 7
         is_enabled: true
         item_general_info:
           dynamic_secret_producer_details:
@@ -3762,17 +3785,16 @@ components:
               allowed_user_key_lengths:
                 key: 5
             cert_issuer_type: cert_issuer_type
-        last_version: 9
+        last_version: 3
         next_rotation_date: 2000-01-23T04:56:07.000+00:00
         client_permissions:
         - client_permissions
         - client_permissions
         with_customer_fragment: true
         certificates: certificates
-        rotation_interval: 3
+        rotation_interval: 2
         item_metadata: item_metadata
         deletion_date: 2000-01-23T04:56:07.000+00:00
-        producer_status: producer_status
         protection_key_name: protection_key_name
         public_value: public_value
       properties:
@@ -3801,6 +3823,10 @@ components:
           x-go-name: IsEnabled
         item_general_info:
           $ref: '#/components/schemas/ItemGeneralInfo'
+        item_id:
+          format: int64
+          type: integer
+          x-go-name: ItemID
         item_metadata:
           type: string
           x-go-name: ItemMetadata
@@ -3842,10 +3868,6 @@ components:
           format: date-time
           type: string
           x-go-name: NextRotationDate
-        producer_status:
-          description: ProducerStatus defines types of Producer Status
-          type: string
-          x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
         protection_key_name:
           type: string
           x-go-name: ProtectionKeyName
@@ -3970,7 +3992,7 @@ components:
         deletion_date: 2000-01-23T04:56:07.000+00:00
         protection_key_name: protection_key_name
         creation_date: 2000-01-23T04:56:07.000+00:00
-        version: 7
+        version: 9
       properties:
         creation_date:
           format: date-time
@@ -4384,6 +4406,7 @@ components:
         - auto_rotate: true
           item_state: item_state
           cert_issuer_signer_key_name: cert_issuer_signer_key_name
+          item_id: 2
           item_tags:
           - item_tags
           - item_tags
@@ -4458,20 +4481,20 @@ components:
             deletion_date: 2000-01-23T04:56:07.000+00:00
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 7
+            version: 9
           - item_version_state: item_version_state
             with_customer_fragment: true
             deletion_date: 2000-01-23T04:56:07.000+00:00
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 7
+            version: 9
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
           - assoc_id: assoc_id
             target_name: target_name
           item_name: item_name
-          item_size: 2
+          item_size: 7
           is_enabled: true
           item_general_info:
             dynamic_secret_producer_details:
@@ -4541,22 +4564,22 @@ components:
                 allowed_user_key_lengths:
                   key: 5
               cert_issuer_type: cert_issuer_type
-          last_version: 9
+          last_version: 3
           next_rotation_date: 2000-01-23T04:56:07.000+00:00
           client_permissions:
           - client_permissions
           - client_permissions
           with_customer_fragment: true
           certificates: certificates
-          rotation_interval: 3
+          rotation_interval: 2
           item_metadata: item_metadata
           deletion_date: 2000-01-23T04:56:07.000+00:00
-          producer_status: producer_status
           protection_key_name: protection_key_name
           public_value: public_value
         - auto_rotate: true
           item_state: item_state
           cert_issuer_signer_key_name: cert_issuer_signer_key_name
+          item_id: 2
           item_tags:
           - item_tags
           - item_tags
@@ -4631,20 +4654,20 @@ components:
             deletion_date: 2000-01-23T04:56:07.000+00:00
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 7
+            version: 9
           - item_version_state: item_version_state
             with_customer_fragment: true
             deletion_date: 2000-01-23T04:56:07.000+00:00
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 7
+            version: 9
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
           - assoc_id: assoc_id
             target_name: target_name
           item_name: item_name
-          item_size: 2
+          item_size: 7
           is_enabled: true
           item_general_info:
             dynamic_secret_producer_details:
@@ -4714,17 +4737,16 @@ components:
                 allowed_user_key_lengths:
                   key: 5
               cert_issuer_type: cert_issuer_type
-          last_version: 9
+          last_version: 3
           next_rotation_date: 2000-01-23T04:56:07.000+00:00
           client_permissions:
           - client_permissions
           - client_permissions
           with_customer_fragment: true
           certificates: certificates
-          rotation_interval: 3
+          rotation_interval: 2
           item_metadata: item_metadata
           deletion_date: 2000-01-23T04:56:07.000+00:00
-          producer_status: producer_status
           protection_key_name: protection_key_name
           public_value: public_value
       properties:
@@ -5572,6 +5594,96 @@ components:
         item_name:
           type: string
           x-go-name: ItemName
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    TargetTypeDetailesInput:
+      example:
+        rabbitmq_server_password: rabbitmq_server_password
+        aws_session_token: aws_session_token
+        host_port: host_port
+        aws_secret_access_key: aws_secret_access_key
+        ip:
+        - ip
+        - ip
+        db_pwd: db_pwd
+        mongodb_db_name: mongodb_db_name
+        url: url
+        db_host_name: db_host_name
+        mongodb_uri_connection: mongodb_uri_connection
+        rabbitmq_server_uri: rabbitmq_server_uri
+        aws_access_key_id: aws_access_key_id
+        aws_region: aws_region
+        db_user_name: db_user_name
+        port: port
+        admin_name: admin_name
+        db_port: db_port
+        rabbitmq_server_user: rabbitmq_server_user
+        host_name: host_name
+        admin_pwd: admin_pwd
+      properties:
+        admin_name:
+          type: string
+          x-go-name: AdminName
+        admin_pwd:
+          type: string
+          x-go-name: AdminPwd
+        aws_access_key_id:
+          type: string
+          x-go-name: AWSAccessKeyID
+        aws_region:
+          type: string
+          x-go-name: AWSRegion
+        aws_secret_access_key:
+          type: string
+          x-go-name: AWSSecretAccessKey
+        aws_session_token:
+          type: string
+          x-go-name: AWSSessionToken
+        db_host_name:
+          type: string
+          x-go-name: DbHostName
+        db_port:
+          type: string
+          x-go-name: DbPort
+        db_pwd:
+          type: string
+          x-go-name: DbPwd
+        db_user_name:
+          type: string
+          x-go-name: DbUserName
+        host_name:
+          type: string
+          x-go-name: HostName
+        host_port:
+          type: string
+          x-go-name: HostPort
+        ip:
+          items:
+            type: string
+          type: array
+          x-go-name: IP
+        mongodb_db_name:
+          type: string
+          x-go-name: MongoDBName
+        mongodb_uri_connection:
+          type: string
+          x-go-name: MongoDBURIConnection
+        port:
+          type: string
+          x-go-name: Port
+        rabbitmq_server_password:
+          type: string
+          x-go-name: RabbitmqServerPassword
+        rabbitmq_server_uri:
+          type: string
+          x-go-name: RabbitmqServerURI
+        rabbitmq_server_user:
+          type: string
+          x-go-name: RabbitmqServerUser
+        url:
+          type: string
+          x-go-name: URL
+      title: TargetTypeDetailesInput ...
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     UIDTokenDetails:
@@ -7754,6 +7866,14 @@ components:
           description: Dynamic secret name
           type: string
           x-go-name: DynamicSecretName
+        tag-host:
+          description: Host
+          type: string
+          x-go-name: Host
+        target:
+          description: Target Name
+          type: string
+          x-go-name: TargetName
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -8450,7 +8570,8 @@ components:
         Akeyless Universal Identity.
       properties:
         auth-method-name:
-          description: The universal identity auth method name
+          description: The universal identity auth method name, required only when
+            uid-token is not provided
           type: string
           x-go-name: AuthMethodName
         child-deny-inheritance:
@@ -8480,6 +8601,11 @@ components:
             authentication
           type: string
           x-go-name: UIDToken
+        uid-token-id:
+          description: The ID of the uid-token, required only when uid-token is not
+            provided
+          type: string
+          x-go-name: UIDTokenId
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     uidCreateChildTokenOutput:
@@ -8529,7 +8655,8 @@ components:
         Universal Identity.
       properties:
         auth-method-name:
-          description: The universal identity auth method name
+          description: The universal identity auth method name, required only when
+            uid-token is not provided
           type: string
           x-go-name: AuthMethodName
         token:
@@ -8627,17 +8754,6 @@ components:
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     update:
-      properties:
-        token:
-          description: Authentication token (see `/auth` and `/configure`)
-          type: string
-          x-go-name: Profile
-        uid-token:
-          description: |-
-            The universal identity token, Required only for universal_identity
-            authentication
-          type: string
-          x-go-name: UIDToken
       title: update is a command that updates to the latest AKEYLESS CLI version.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands

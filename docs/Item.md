@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **DeletionDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **IsEnabled** | Pointer to **bool** |  | [optional] 
 **ItemGeneralInfo** | Pointer to [**ItemGeneralInfo**](ItemGeneralInfo.md) |  | [optional] 
+**ItemId** | Pointer to **int64** |  | [optional] 
 **ItemMetadata** | Pointer to **string** |  | [optional] 
 **ItemName** | Pointer to **string** |  | [optional] 
 **ItemSize** | Pointer to **int64** |  | [optional] 
@@ -22,7 +23,6 @@ Name | Type | Description | Notes
 **ItemVersions** | Pointer to [**[]ItemVersion**](ItemVersion.md) |  | [optional] 
 **LastVersion** | Pointer to **int32** |  | [optional] 
 **NextRotationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
-**ProducerStatus** | Pointer to **string** | ProducerStatus defines types of Producer Status | [optional] 
 **ProtectionKeyName** | Pointer to **string** |  | [optional] 
 **PublicValue** | Pointer to **string** |  | [optional] 
 **RotationInterval** | Pointer to **int64** |  | [optional] 
@@ -246,6 +246,31 @@ SetItemGeneralInfo sets ItemGeneralInfo field to given value.
 `func (o *Item) HasItemGeneralInfo() bool`
 
 HasItemGeneralInfo returns a boolean if a field has been set.
+
+### GetItemId
+
+`func (o *Item) GetItemId() int64`
+
+GetItemId returns the ItemId field if non-nil, zero value otherwise.
+
+### GetItemIdOk
+
+`func (o *Item) GetItemIdOk() (*int64, bool)`
+
+GetItemIdOk returns a tuple with the ItemId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemId
+
+`func (o *Item) SetItemId(v int64)`
+
+SetItemId sets ItemId field to given value.
+
+### HasItemId
+
+`func (o *Item) HasItemId() bool`
+
+HasItemId returns a boolean if a field has been set.
 
 ### GetItemMetadata
 
@@ -496,31 +521,6 @@ SetNextRotationDate sets NextRotationDate field to given value.
 `func (o *Item) HasNextRotationDate() bool`
 
 HasNextRotationDate returns a boolean if a field has been set.
-
-### GetProducerStatus
-
-`func (o *Item) GetProducerStatus() string`
-
-GetProducerStatus returns the ProducerStatus field if non-nil, zero value otherwise.
-
-### GetProducerStatusOk
-
-`func (o *Item) GetProducerStatusOk() (*string, bool)`
-
-GetProducerStatusOk returns a tuple with the ProducerStatus field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProducerStatus
-
-`func (o *Item) SetProducerStatus(v string)`
-
-SetProducerStatus sets ProducerStatus field to given value.
-
-### HasProducerStatus
-
-`func (o *Item) HasProducerStatus() bool`
-
-HasProducerStatus returns a boolean if a field has been set.
 
 ### GetProtectionKeyName
 

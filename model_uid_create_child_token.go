@@ -17,7 +17,7 @@ import (
 
 // UidCreateChildToken uidCreateChildToken is a command that creates a new child token using Akeyless Universal Identity.
 type UidCreateChildToken struct {
-	// The universal identity auth method name
+	// The universal identity auth method name, required only when uid-token is not provided
 	AuthMethodName *string `json:"auth-method-name,omitempty"`
 	// Deny from new child to create their own children
 	ChildDenyInheritance *bool `json:"child-deny-inheritance,omitempty"`
@@ -31,6 +31,8 @@ type UidCreateChildToken struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// The ID of the uid-token, required only when uid-token is not provided
+	UidTokenId *string `json:"uid-token-id,omitempty"`
 }
 
 // NewUidCreateChildToken instantiates a new UidCreateChildToken object
@@ -274,6 +276,38 @@ func (o *UidCreateChildToken) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUidTokenId returns the UidTokenId field value if set, zero value otherwise.
+func (o *UidCreateChildToken) GetUidTokenId() string {
+	if o == nil || o.UidTokenId == nil {
+		var ret string
+		return ret
+	}
+	return *o.UidTokenId
+}
+
+// GetUidTokenIdOk returns a tuple with the UidTokenId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UidCreateChildToken) GetUidTokenIdOk() (*string, bool) {
+	if o == nil || o.UidTokenId == nil {
+		return nil, false
+	}
+	return o.UidTokenId, true
+}
+
+// HasUidTokenId returns a boolean if a field has been set.
+func (o *UidCreateChildToken) HasUidTokenId() bool {
+	if o != nil && o.UidTokenId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUidTokenId gets a reference to the given string and assigns it to the UidTokenId field.
+func (o *UidCreateChildToken) SetUidTokenId(v string) {
+	o.UidTokenId = &v
+}
+
 func (o UidCreateChildToken) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AuthMethodName != nil {
@@ -296,6 +330,9 @@ func (o UidCreateChildToken) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.UidTokenId != nil {
+		toSerialize["uid-token-id"] = o.UidTokenId
 	}
 	return json.Marshal(toSerialize)
 }

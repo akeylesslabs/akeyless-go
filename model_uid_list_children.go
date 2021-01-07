@@ -17,7 +17,7 @@ import (
 
 // UidListChildren uidListChildren is a command that lists child token ids of Akeyless Universal Identity.
 type UidListChildren struct {
-	// The universal identity auth method name
+	// The universal identity auth method name, required only when uid-token is not provided
 	AuthMethodName *string `json:"auth-method-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
