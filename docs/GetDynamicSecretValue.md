@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Host** | Pointer to **string** | Host | [optional] 
 **Name** | **string** | Dynamic secret name | 
-**TagHost** | Pointer to **string** | Host | [optional] 
 **Target** | Pointer to **string** | Target Name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -29,6 +29,31 @@ NewGetDynamicSecretValueWithDefaults instantiates a new GetDynamicSecretValue ob
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetHost
+
+`func (o *GetDynamicSecretValue) GetHost() string`
+
+GetHost returns the Host field if non-nil, zero value otherwise.
+
+### GetHostOk
+
+`func (o *GetDynamicSecretValue) GetHostOk() (*string, bool)`
+
+GetHostOk returns a tuple with the Host field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHost
+
+`func (o *GetDynamicSecretValue) SetHost(v string)`
+
+SetHost sets Host field to given value.
+
+### HasHost
+
+`func (o *GetDynamicSecretValue) HasHost() bool`
+
+HasHost returns a boolean if a field has been set.
+
 ### GetName
 
 `func (o *GetDynamicSecretValue) GetName() string`
@@ -48,31 +73,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
-### GetTagHost
-
-`func (o *GetDynamicSecretValue) GetTagHost() string`
-
-GetTagHost returns the TagHost field if non-nil, zero value otherwise.
-
-### GetTagHostOk
-
-`func (o *GetDynamicSecretValue) GetTagHostOk() (*string, bool)`
-
-GetTagHostOk returns a tuple with the TagHost field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTagHost
-
-`func (o *GetDynamicSecretValue) SetTagHost(v string)`
-
-SetTagHost sets TagHost field to given value.
-
-### HasTagHost
-
-`func (o *GetDynamicSecretValue) HasTagHost() bool`
-
-HasTagHost returns a boolean if a field has been set.
 
 ### GetTarget
 

@@ -7862,14 +7862,14 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     getDynamicSecretValue:
       properties:
+        host:
+          description: Host
+          type: string
+          x-go-name: Host
         name:
           description: Dynamic secret name
           type: string
           x-go-name: DynamicSecretName
-        tag-host:
-          description: Host
-          type: string
-          x-go-name: Host
         target:
           description: Target Name
           type: string
