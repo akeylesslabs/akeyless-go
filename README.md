@@ -18,7 +18,7 @@ go get github.com/akeylesslabs/akeyless-go/v2
 
 ## Getting Started
 
-Please follow the [installation procedure](#installation--usage) and then run the following:
+Please follow the installation procedure and then run the following:
 
 ```go
 package main
@@ -29,7 +29,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/akeylesslabs/akeyless-go"
+	"github.com/akeylesslabs/akeyless-go/v2"
 )
 
 func main() {
