@@ -1098,6 +1098,28 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /get-account-logo:
+    post:
+      operationId: getAccountLogo
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                additionalProperties:
+                  type: string
+                type: object
+          description: getAccountLogoResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
   /get-auth-method:
     post:
       operationId: getAuthMethod
@@ -2420,6 +2442,14 @@ components:
           schema:
             $ref: '#/components/schemas/CustomerFragmentsJson'
       description: genCustomerFragmentResponse wraps response body.
+    getAccountLogoResponse:
+      content:
+        application/json:
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      description: getAccountLogoResponse wraps response body.
     getAuthMethodResponse:
       content:
         application/json:
@@ -7862,6 +7892,12 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     getDynamicSecretValue:
       properties:
+        args:
+          description: Optional input as `key-value` pairs
+          items:
+            type: string
+          type: array
+          x-go-name: Arguments
         host:
           description: Host
           type: string

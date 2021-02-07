@@ -44,6 +44,7 @@ Method | HTTP request | Description
 [**DescribeItem**](V2Api.md#DescribeItem) | **Post** /describe-item | 
 [**Encrypt**](V2Api.md#Encrypt) | **Post** /encrypt | 
 [**EncryptPKCS1**](V2Api.md#EncryptPKCS1) | **Post** /encrypt-pkcs1 | 
+[**GetAccountLogo**](V2Api.md#GetAccountLogo) | **Post** /get-account-logo | 
 [**GetAuthMethod**](V2Api.md#GetAuthMethod) | **Post** /get-auth-method | 
 [**GetDynamicSecretValue**](V2Api.md#GetDynamicSecretValue) | **Post** /get-dynamic-secret-value | 
 [**GetRSAPublic**](V2Api.md#GetRSAPublic) | **Post** /get-rsa-public | 
@@ -2640,6 +2641,65 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetAccountLogo
+
+> map[string]string GetAccountLogo(ctx).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GetAccountLogo(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GetAccountLogo``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetAccountLogo`: map[string]string
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GetAccountLogo`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAccountLogoRequest struct via the builder pattern
+
+
+### Return type
+
+**map[string]string**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

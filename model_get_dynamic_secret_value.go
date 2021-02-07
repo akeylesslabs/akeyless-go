@@ -17,6 +17,8 @@ import (
 
 // GetDynamicSecretValue struct for GetDynamicSecretValue
 type GetDynamicSecretValue struct {
+	// Optional input as `key-value` pairs
+	Args *[]string `json:"args,omitempty"`
 	// Host
 	Host *string `json:"host,omitempty"`
 	// Dynamic secret name
@@ -45,6 +47,38 @@ func NewGetDynamicSecretValue(name string, ) *GetDynamicSecretValue {
 func NewGetDynamicSecretValueWithDefaults() *GetDynamicSecretValue {
 	this := GetDynamicSecretValue{}
 	return &this
+}
+
+// GetArgs returns the Args field value if set, zero value otherwise.
+func (o *GetDynamicSecretValue) GetArgs() []string {
+	if o == nil || o.Args == nil {
+		var ret []string
+		return ret
+	}
+	return *o.Args
+}
+
+// GetArgsOk returns a tuple with the Args field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetDynamicSecretValue) GetArgsOk() (*[]string, bool) {
+	if o == nil || o.Args == nil {
+		return nil, false
+	}
+	return o.Args, true
+}
+
+// HasArgs returns a boolean if a field has been set.
+func (o *GetDynamicSecretValue) HasArgs() bool {
+	if o != nil && o.Args != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetArgs gets a reference to the given []string and assigns it to the Args field.
+func (o *GetDynamicSecretValue) SetArgs(v []string) {
+	o.Args = &v
 }
 
 // GetHost returns the Host field value if set, zero value otherwise.
@@ -201,6 +235,9 @@ func (o *GetDynamicSecretValue) SetUidToken(v string) {
 
 func (o GetDynamicSecretValue) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Args != nil {
+		toSerialize["args"] = o.Args
+	}
 	if o.Host != nil {
 		toSerialize["host"] = o.Host
 	}

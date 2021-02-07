@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Args** | Pointer to **[]string** | Optional input as &#x60;key-value&#x60; pairs | [optional] 
 **Host** | Pointer to **string** | Host | [optional] 
 **Name** | **string** | Dynamic secret name | 
 **Target** | Pointer to **string** | Target Name | [optional] 
@@ -28,6 +29,31 @@ will change when the set of required properties is changed
 NewGetDynamicSecretValueWithDefaults instantiates a new GetDynamicSecretValue object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetArgs
+
+`func (o *GetDynamicSecretValue) GetArgs() []string`
+
+GetArgs returns the Args field if non-nil, zero value otherwise.
+
+### GetArgsOk
+
+`func (o *GetDynamicSecretValue) GetArgsOk() (*[]string, bool)`
+
+GetArgsOk returns a tuple with the Args field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetArgs
+
+`func (o *GetDynamicSecretValue) SetArgs(v []string)`
+
+SetArgs sets Args field to given value.
+
+### HasArgs
+
+`func (o *GetDynamicSecretValue) HasArgs() bool`
+
+HasArgs returns a boolean if a field has been set.
 
 ### GetHost
 
