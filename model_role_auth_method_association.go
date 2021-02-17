@@ -21,6 +21,7 @@ type RoleAuthMethodAssociation struct {
 	AuthMethodAccessId *string `json:"auth_method_access_id,omitempty"`
 	AuthMethodName *string `json:"auth_method_name,omitempty"`
 	AuthMethodSubClaims *map[string][]string `json:"auth_method_sub_claims,omitempty"`
+	SubClaimsCaseSensitive *bool `json:"sub_claims_case_sensitive,omitempty"`
 }
 
 // NewRoleAuthMethodAssociation instantiates a new RoleAuthMethodAssociation object
@@ -168,6 +169,38 @@ func (o *RoleAuthMethodAssociation) SetAuthMethodSubClaims(v map[string][]string
 	o.AuthMethodSubClaims = &v
 }
 
+// GetSubClaimsCaseSensitive returns the SubClaimsCaseSensitive field value if set, zero value otherwise.
+func (o *RoleAuthMethodAssociation) GetSubClaimsCaseSensitive() bool {
+	if o == nil || o.SubClaimsCaseSensitive == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SubClaimsCaseSensitive
+}
+
+// GetSubClaimsCaseSensitiveOk returns a tuple with the SubClaimsCaseSensitive field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RoleAuthMethodAssociation) GetSubClaimsCaseSensitiveOk() (*bool, bool) {
+	if o == nil || o.SubClaimsCaseSensitive == nil {
+		return nil, false
+	}
+	return o.SubClaimsCaseSensitive, true
+}
+
+// HasSubClaimsCaseSensitive returns a boolean if a field has been set.
+func (o *RoleAuthMethodAssociation) HasSubClaimsCaseSensitive() bool {
+	if o != nil && o.SubClaimsCaseSensitive != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSubClaimsCaseSensitive gets a reference to the given bool and assigns it to the SubClaimsCaseSensitive field.
+func (o *RoleAuthMethodAssociation) SetSubClaimsCaseSensitive(v bool) {
+	o.SubClaimsCaseSensitive = &v
+}
+
 func (o RoleAuthMethodAssociation) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AssocId != nil {
@@ -181,6 +214,9 @@ func (o RoleAuthMethodAssociation) MarshalJSON() ([]byte, error) {
 	}
 	if o.AuthMethodSubClaims != nil {
 		toSerialize["auth_method_sub_claims"] = o.AuthMethodSubClaims
+	}
+	if o.SubClaimsCaseSensitive != nil {
+		toSerialize["sub_claims_case_sensitive"] = o.SubClaimsCaseSensitive
 	}
 	return json.Marshal(toSerialize)
 }

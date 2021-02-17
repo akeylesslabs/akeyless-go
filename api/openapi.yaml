@@ -1098,6 +1098,650 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /gateway-add-sub-admins:
+    post:
+      operationId: gatewayAddSubAdmins
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayAddSubAdmins'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayAddSubAdminsOutput'
+          description: gatewayAddSubAdminsResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /gateway-create-producer-artifactory:
+    post:
+      operationId: gatewayCreateProducerArtifactory
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayCreateProducerArtifactory'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayCreateProducerArtifactoryOutput'
+          description: gatewayCreateProducerArtifactoryResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /gateway-create-producer-aws:
+    post:
+      operationId: gatewayCreateProducerAws
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayCreateProducerAws'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayCreateProducerAwsOutput'
+          description: gatewayCreateProducerAwsResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /gateway-create-producer-azure:
+    post:
+      operationId: gatewayCreateProducerAzure
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayCreateProducerAzure'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayCreateProducerAzureOutput'
+          description: gatewayCreateProducerAzureResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /gateway-create-producer-eks:
+    post:
+      operationId: gatewayCreateProducerEks
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayCreateProducerEks'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayCreateProducerEksOutput'
+          description: gatewayCreateProducerEksResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /gateway-create-producer-gke:
+    post:
+      operationId: gatewayCreateProducerGke
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayCreateProducerGke'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayCreateProducerGkeOutput'
+          description: gatewayCreateProducerGkeResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /gateway-create-producer-mongo:
+    post:
+      operationId: gatewayCreateProducerMongo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayCreateProducerMongo'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayCreateProducerMongoOutput'
+          description: gatewayCreateProducerMongoResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /gateway-create-producer-mssql:
+    post:
+      operationId: gatewayCreateProducerMSSQL
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayCreateProducerMSSQL'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayCreateProducerMSSQLOutput'
+          description: gatewayCreateProducerMSSQLResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /gateway-create-producer-mysql:
+    post:
+      operationId: gatewayCreateProducerMySQL
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayCreateProducerMySQL'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayCreateProducerMySQLOutput'
+          description: gatewayCreateProducerMySQLResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /gateway-create-producer-postgresql:
+    post:
+      operationId: gatewayCreateProducerPostgreSQL
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayCreateProducerPostgreSQL'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayCreateProducerPostgreSQLOutput'
+          description: gatewayCreateProducerPostgreSQLResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /gateway-create-producer-rabbitmq:
+    post:
+      operationId: gatewayCreateProducerRabbitMQ
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayCreateProducerRabbitMQ'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayCreateProducerRabbitMQOutput'
+          description: gatewayCreateProducerRabbitMQResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /gateway-create-producer-rdp:
+    post:
+      operationId: gatewayCreateProducerRdp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayCreateProducerRdp'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayCreateProducerRdpOutput'
+          description: gatewayCreateProducerRdpResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /gateway-create-producer-venafi:
+    post:
+      operationId: gatewayCreateProducerVenafi
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayCreateProducerAws'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayCreateProducerAwsOutput'
+          description: gatewayCreateProducerVenafiResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /gateway-delete-producer:
+    post:
+      operationId: gatewayDeleteProducer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayDeleteProducer'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayDeleteProducerOutput'
+          description: gatewayDeleteProducerResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /gateway-delete-sub-admins:
+    post:
+      operationId: gatewayDeleteSubAdmins
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayDeleteSubAdmins'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayDeleteSubAdminsOutput'
+          description: gatewayDeleteSubAdminsResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /gateway-get-config:
+    post:
+      operationId: gatewayGetConfig
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayGetConfig'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AkeylessGatewayConfig'
+          description: gatewayGetConfigResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /gateway-get-producer:
+    post:
+      operationId: gatewayGetProducer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayGetProducer'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DSProducerDetails'
+          description: gatewayGetProducerResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /gateway-get-producer-tmp-creds:
+    post:
+      operationId: gatewayGetTmpUsers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayGetTmpUsers'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/TmpUserData'
+                type: array
+          description: gatewayGetTmpUsersResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /gateway-list-SubAdmins:
+    post:
+      operationId: gatewayListSubAdmins
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayListSubAdmins'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetSubAdminsListReplyObj'
+          description: gatewayListSubAdminsResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /gateway-list-producers:
+    post:
+      operationId: gatewayListProducers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayListProducers'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetProducersListReplyObj'
+          description: gatewayListProducersResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /gateway-revoke-producer-tmp-creds:
+    post:
+      operationId: gatewayRevokeTmpUsers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayRevokeTmpUsers'
+        required: true
+      responses:
+        "200":
+          content: {}
+          description: gatewayRevokeTmpUsersResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /gateway-start-producer:
+    post:
+      operationId: gatewayStartProducer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayStartProducer'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayStartProducerOutput'
+          description: gatewayStartProducerResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /gateway-stop-producer:
+    post:
+      operationId: gatewayStopProducer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayStopProducer'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayStopProducerOutput'
+          description: gatewayStopProducerResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /gateway-update-producer-tmp-creds:
+    post:
+      operationId: gatewayUpdateTmpUsers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayUpdateTmpUsers'
+        required: true
+      responses:
+        "200":
+          content: {}
+          description: gatewayUpdateTmpUsersResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /get-account-logo:
     post:
       operationId: getAccountLogo
@@ -1147,6 +1791,28 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /get-dynamic-pki-certificate:
+    post:
+      operationId: getDynamicPkiCertificate
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                additionalProperties:
+                  type: string
+                type: object
+          description: getDynamicSecretValueResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
   /get-dynamic-secret-value:
     post:
       operationId: getDynamicSecretValue
@@ -2436,6 +3102,146 @@ components:
       description: |-
         errorResponse wraps any error to return it as a JSON object with one "error"
         field.
+    gatewayAddSubAdminsResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayAddSubAdminsOutput'
+      description: gatewayAddSubAdminsResponse wraps response body.
+    gatewayCreateProducerArtifactoryResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayCreateProducerArtifactoryOutput'
+      description: gatewayCreateProducerArtifactoryResponse wraps response body.
+    gatewayCreateProducerAwsResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayCreateProducerAwsOutput'
+      description: gatewayCreateProducerAwsResponse wraps response body.
+    gatewayCreateProducerAzureResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayCreateProducerAzureOutput'
+      description: gatewayCreateProducerAzureResponse wraps response body.
+    gatewayCreateProducerEksResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayCreateProducerEksOutput'
+      description: gatewayCreateProducerEksResponse wraps response body.
+    gatewayCreateProducerGkeResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayCreateProducerGkeOutput'
+      description: gatewayCreateProducerGkeResponse wraps response body.
+    gatewayCreateProducerMSSQLResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayCreateProducerMSSQLOutput'
+      description: gatewayCreateProducerMSSQLResponse wraps response body.
+    gatewayCreateProducerMongoResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayCreateProducerMongoOutput'
+      description: gatewayCreateProducerMongoResponse wraps response body.
+    gatewayCreateProducerMySQLResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayCreateProducerMySQLOutput'
+      description: gatewayCreateProducerMySQLResponse wraps response body.
+    gatewayCreateProducerPostgreSQLResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayCreateProducerPostgreSQLOutput'
+      description: gatewayCreateProducerPostgreSQLResponse wraps response body.
+    gatewayCreateProducerRabbitMQResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayCreateProducerRabbitMQOutput'
+      description: gatewayCreateProducerRabbitMQResponse wraps response body.
+    gatewayCreateProducerRdpResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayCreateProducerRdpOutput'
+      description: gatewayCreateProducerRdpResponse wraps response body.
+    gatewayCreateProducerVenafiResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayCreateProducerAwsOutput'
+      description: gatewayCreateProducerVenafiResponse wraps response body.
+    gatewayDeleteProducerResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayDeleteProducerOutput'
+      description: gatewayDeleteProducerResponse wraps response body.
+    gatewayDeleteSubAdminsResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayDeleteSubAdminsOutput'
+      description: gatewayDeleteSubAdminsResponse wraps response body.
+    gatewayGetConfigResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AkeylessGatewayConfig'
+      description: gatewayGetConfigResponse wraps response body.
+    gatewayGetProducerResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DSProducerDetails'
+      description: gatewayGetProducerResponse wraps response body.
+    gatewayGetTmpUsersResponse:
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/TmpUserData'
+            type: array
+      description: gatewayGetTmpUsersResponse wraps response body.
+    gatewayListProducersResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GetProducersListReplyObj'
+      description: gatewayListProducersResponse wraps response body.
+    gatewayListSubAdminsResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GetSubAdminsListReplyObj'
+      description: gatewayListSubAdminsResponse wraps response body.
+    gatewayRevokeTmpUsersResponse:
+      content: {}
+      description: gatewayRevokeTmpUsersResponse wraps response body.
+    gatewayStartProducerResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayStartProducerOutput'
+      description: gatewayStartProducerResponse wraps response body.
+    gatewayStopProducerResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayStopProducerOutput'
+      description: gatewayStopProducerResponse wraps response body.
+    gatewayUpdateTmpUsersResponse:
+      content: {}
+      description: gatewayUpdateTmpUsersResponse wraps response body.
     genCustomerFragmentResponse:
       content:
         application/json:
@@ -2711,6 +3517,9 @@ components:
       title: APIKeyAccessRules is a set of rules for API Key access type.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    AWSAccessMode:
+      type: string
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/producer/config
     AWSIAMAccessRules:
       example:
         role_name:
@@ -2785,6 +3594,283 @@ components:
       title: AWSIAMAccessRules contains access rules specific to AWS IAM.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    AWSPayload:
+      example:
+        secret: secret
+        region: region
+        key: key
+      properties:
+        key:
+          type: string
+          x-go-name: Key
+        region:
+          type: string
+          x-go-name: Region
+        secret:
+          type: string
+          x-go-name: Secret
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    AWSSecretsMigration:
+      example:
+        general:
+          prefix: prefix
+          name: name
+          id: id
+          protection_key: protection_key
+        payload:
+          secret: secret
+          region: region
+          key: key
+      properties:
+        general:
+          $ref: '#/components/schemas/MigrationGeneral'
+        payload:
+          $ref: '#/components/schemas/AWSPayload'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    AdminsConfigPart:
+      example:
+        admins:
+        - admins
+        - admins
+      properties:
+        admins:
+          items:
+            type: string
+          type: array
+          x-go-name: Admins
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    AkeylessGatewayConfig:
+      example:
+        cache:
+          proactive_cache_enable: true
+          proactive_cache_dump_interval: proactive_cache_dump_interval
+          cache_ttl: cache_ttl
+          cache_enable: true
+          proactive_cache_minimum_fetching_time: proactive_cache_minimum_fetching_time
+        cf:
+          customer_fragements:
+            key: customer_fragements
+        version: 2
+        producers:
+          producers:
+          - name: name
+            active: true
+            id: 5
+            type: type
+          - name: name
+            active: true
+            id: 5
+            type: type
+        general:
+          tcp_port: tcp_port
+          api_token_ttl: api_token_ttl
+          enable_tls: true
+          enable_tls_curl: true
+          tls_key: tls_key
+          enable_tls_configure: true
+          enable_tls_hvp: true
+          tls_cert: tls_cert
+          akeyless_url: akeyless_url
+        ldap:
+          ldap_anonymous_search: true
+          ldap_cert: ldap_cert
+          ldap_bind_password: ldap_bind_password
+          ldap_group_dn: ldap_group_dn
+          ldap_group_filter: ldap_group_filter
+          ldap_user_dn: ldap_user_dn
+          ldap_group_attr: ldap_group_attr
+          ldap_access_id: ldap_access_id
+          ldap_enable: true
+          ldap_private_key: ldap_private_key
+          ldap_bind_dn: ldap_bind_dn
+          ldap_url: ldap_url
+          ldap_token_expiration: ldap_token_expiration
+          ldap_user_attr: ldap_user_attr
+        migrations:
+          hashi_migrations:
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              protection_key: protection_key
+            payload:
+              url: url
+              namespaces:
+              - namespaces
+              - namespaces
+              token: token
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              protection_key: protection_key
+            payload:
+              url: url
+              namespaces:
+              - namespaces
+              - namespaces
+              token: token
+          azure_kv_migrations:
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              protection_key: protection_key
+            payload:
+              name: name
+              client: client
+              secret: secret
+              tenant: tenant
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              protection_key: protection_key
+            payload:
+              name: name
+              client: client
+              secret: secret
+              tenant: tenant
+          k8s_migrations:
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              protection_key: protection_key
+            payload:
+              client_key:
+              - 5
+              - 5
+              server: server
+              password: password
+              client_cert:
+              - 1
+              - 1
+              namespace: namespace
+              ca:
+              - 6
+              - 6
+              skip_system: true
+              token: token
+              username: username
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              protection_key: protection_key
+            payload:
+              client_key:
+              - 5
+              - 5
+              server: server
+              password: password
+              client_cert:
+              - 1
+              - 1
+              namespace: namespace
+              ca:
+              - 6
+              - 6
+              skip_system: true
+              token: token
+              username: username
+          aws_secrets_migrations:
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              protection_key: protection_key
+            payload:
+              secret: secret
+              region: region
+              key: key
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              protection_key: protection_key
+            payload:
+              secret: secret
+              region: region
+              key: key
+        leadership:
+          open_leadership:
+          - 0
+          - 0
+        log_forwarding:
+          logan_url: logan_url
+          syslog_config:
+            syslog_host: syslog_host
+            syslog_target_tag: syslog_target_tag
+            syslog_network: syslog_network
+          target_log_type: target_log_type
+          splunk_config:
+            splunk_token: splunk_token
+            splunk_source: splunk_source
+            splunk_index: splunk_index
+            splunk_sourcetype: splunk_sourcetype
+            splunk_url: splunk_url
+          logstash_config:
+            logstash_protocol: logstash_protocol
+            logstash_dns: logstash_dns
+          logan_enable: true
+          logz_io_config:
+            target_logz_io_protocol: target_logz_io_protocol
+            target_logz_io_token: target_logz_io_token
+          pull_interval_sec: pull_interval_sec
+          elasticsearch_config:
+            elasticsearch_index: elasticsearch_index
+            elasticsearch_nodes: elasticsearch_nodes
+            elasticsearch_host: elasticsearch_host
+        saml:
+          saml_access_id: saml_access_id
+          open_id_connect_access_id: open_id_connect_access_id
+        uidentity:
+          uid_access_id: uid_access_id
+          uid_rotate_interval: uid_rotate_interval
+          uid_status: uid_status
+          uid_enable: true
+          uid_token: uid_token
+        config_protection_key_name: config_protection_key_name
+        admins:
+          admins:
+          - admins
+          - admins
+      properties:
+        admins:
+          $ref: '#/components/schemas/AdminsConfigPart'
+        cache:
+          $ref: '#/components/schemas/CacheConfigPart'
+        cf:
+          $ref: '#/components/schemas/CFConfigPart'
+        config_protection_key_name:
+          type: string
+          x-go-name: ConfigProtectionKeyName
+        general:
+          $ref: '#/components/schemas/GeneralConfigPart'
+        ldap:
+          $ref: '#/components/schemas/LdapConfigPart'
+        leadership:
+          $ref: '#/components/schemas/LeadershipConfigPart'
+        log_forwarding:
+          $ref: '#/components/schemas/LogForwardingConfigPart'
+        migrations:
+          $ref: '#/components/schemas/MigrationsConfigPart'
+        producers:
+          $ref: '#/components/schemas/ProducersConfigPart'
+        saml:
+          $ref: '#/components/schemas/SamlConfigPart'
+        uidentity:
+          $ref: '#/components/schemas/UIdentityConfigPart'
+        version:
+          format: uint64
+          type: integer
+          x-go-name: Version
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     Algorithm:
       title: Algorithm is a type that represents a single crypto algorithm.
       type: string
@@ -2835,7 +3921,6 @@ components:
         - client_permissions
         - client_permissions
         access_info:
-          cidr_whitelist: cidr_whitelist
           azure_ad_access_rules:
             bound_group_ids:
             - bound_group_ids
@@ -2869,6 +3954,40 @@ components:
             deny_inheritance: true
             ttl: 6
             deny_rotate: true
+          oauth2_access_rules:
+            bound_claims:
+            - values:
+              - values
+              - values
+              name: name
+            - values:
+              - values
+              - values
+              name: name
+            audience: audience
+            unique_identifier: unique_identifier
+            jwks_uri: jwks_uri
+            bound_clients_id:
+            - bound_clients_id
+            - bound_clients_id
+            issuer: issuer
+          saml_access_rules:
+            unique_identifier: unique_identifier
+            idp_metadata_url: idp_metadata_url
+            bound_attributes:
+            - values:
+              - values
+              - values
+              name: name
+            - values:
+              - values
+              - values
+              name: name
+            idp_metadata_xml: idp_metadata_xml
+          api_key_access_rules:
+            alg: alg
+            key: key
+          cidr_whitelist: cidr_whitelist
           ldap_access_rules:
             unique_identifier: unique_identifier
             alg: alg
@@ -2916,41 +4035,9 @@ components:
             arn:
             - arn
             - arn
-          oauth2_access_rules:
-            bound_claims:
-            - values:
-              - values
-              - values
-              name: name
-            - values:
-              - values
-              - values
-              name: name
-            audience: audience
-            unique_identifier: unique_identifier
-            jwks_uri: jwks_uri
-            bound_clients_id:
-            - bound_clients_id
-            - bound_clients_id
-            issuer: issuer
-          saml_access_rules:
-            unique_identifier: unique_identifier
-            idp_metadata_url: idp_metadata_url
-            bound_attributes:
-            - values:
-              - values
-              - values
-              name: name
-            - values:
-              - values
-              - values
-              name: name
-            idp_metadata_xml: idp_metadata_xml
-          api_key_access_rules:
-            alg: alg
-            key: key
           rules_type: rules_type
           access_expires: 0
+          access_id_alias: access_id_alias
           email_pass_access_rules:
             hash_pass: hash_pass
             alg: alg
@@ -2984,7 +4071,6 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     AuthMethodAccessInfo:
       example:
-        cidr_whitelist: cidr_whitelist
         azure_ad_access_rules:
           bound_group_ids:
           - bound_group_ids
@@ -3018,6 +4104,40 @@ components:
           deny_inheritance: true
           ttl: 6
           deny_rotate: true
+        oauth2_access_rules:
+          bound_claims:
+          - values:
+            - values
+            - values
+            name: name
+          - values:
+            - values
+            - values
+            name: name
+          audience: audience
+          unique_identifier: unique_identifier
+          jwks_uri: jwks_uri
+          bound_clients_id:
+          - bound_clients_id
+          - bound_clients_id
+          issuer: issuer
+        saml_access_rules:
+          unique_identifier: unique_identifier
+          idp_metadata_url: idp_metadata_url
+          bound_attributes:
+          - values:
+            - values
+            - values
+            name: name
+          - values:
+            - values
+            - values
+            name: name
+          idp_metadata_xml: idp_metadata_xml
+        api_key_access_rules:
+          alg: alg
+          key: key
+        cidr_whitelist: cidr_whitelist
         ldap_access_rules:
           unique_identifier: unique_identifier
           alg: alg
@@ -3065,41 +4185,9 @@ components:
           arn:
           - arn
           - arn
-        oauth2_access_rules:
-          bound_claims:
-          - values:
-            - values
-            - values
-            name: name
-          - values:
-            - values
-            - values
-            name: name
-          audience: audience
-          unique_identifier: unique_identifier
-          jwks_uri: jwks_uri
-          bound_clients_id:
-          - bound_clients_id
-          - bound_clients_id
-          issuer: issuer
-        saml_access_rules:
-          unique_identifier: unique_identifier
-          idp_metadata_url: idp_metadata_url
-          bound_attributes:
-          - values:
-            - values
-            - values
-            name: name
-          - values:
-            - values
-            - values
-            name: name
-          idp_metadata_xml: idp_metadata_xml
-        api_key_access_rules:
-          alg: alg
-          key: key
         rules_type: rules_type
         access_expires: 0
+        access_id_alias: access_id_alias
         email_pass_access_rules:
           hash_pass: hash_pass
           alg: alg
@@ -3109,6 +4197,12 @@ components:
           format: int64
           type: integer
           x-go-name: AccessExpires
+        access_id_alias:
+          description: |-
+            for accounts where AccessId holds encrypted email this field will hold generated AccessId,
+            for accounts based on regular AccessId it will be equal to accessId itself
+          type: string
+          x-go-name: AccessIdAlias
         api_key_access_rules:
           $ref: '#/components/schemas/APIKeyAccessRules'
         aws_iam_access_rules:
@@ -3289,6 +4383,83 @@ components:
           x-go-name: JWKeySetURL
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    AzureKeyVaultMigration:
+      example:
+        general:
+          prefix: prefix
+          name: name
+          id: id
+          protection_key: protection_key
+        payload:
+          name: name
+          client: client
+          secret: secret
+          tenant: tenant
+      properties:
+        general:
+          $ref: '#/components/schemas/MigrationGeneral'
+        payload:
+          $ref: '#/components/schemas/AzurePayload'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    AzurePayload:
+      example:
+        name: name
+        client: client
+        secret: secret
+        tenant: tenant
+      properties:
+        client:
+          type: string
+          x-go-name: Client
+        name:
+          type: string
+          x-go-name: Name
+        secret:
+          type: string
+          x-go-name: Secret
+        tenant:
+          type: string
+          x-go-name: Tenant
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    CFConfigPart:
+      example:
+        customer_fragements:
+          key: customer_fragements
+      properties:
+        customer_fragements:
+          additionalProperties:
+            type: string
+          type: object
+          x-go-name: CFragments
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    CacheConfigPart:
+      example:
+        proactive_cache_enable: true
+        proactive_cache_dump_interval: proactive_cache_dump_interval
+        cache_ttl: cache_ttl
+        cache_enable: true
+        proactive_cache_minimum_fetching_time: proactive_cache_minimum_fetching_time
+      properties:
+        cache_enable:
+          type: boolean
+          x-go-name: CacheEnable
+        cache_ttl:
+          type: string
+          x-go-name: CacheTTL
+        proactive_cache_dump_interval:
+          type: string
+          x-go-name: ProActiveCacheDumpInterval
+        proactive_cache_enable:
+          type: boolean
+          x-go-name: ProActiveCacheEnable
+        proactive_cache_minimum_fetching_time:
+          type: string
+          x-go-name: ProActiveCacheMinimumFetchingTime
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     CertIssuerType:
       title: CertIssuerType represents possible certificate issuers type.
       type: string
@@ -3374,6 +4545,9 @@ components:
       title: CertificateIssueInfo defines Certificate Issuer info.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    ChefAccessMode:
+      type: string
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/producer/config
     CreateRoleAuthMethodAssocOutput:
       description: |-
         CreateRoleAuthMethodAssocOutput defines output of CreateRoleAuthMethodAssoc
@@ -3420,6 +4594,407 @@ components:
           x-go-name: Fragments
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/sdk/config
+    DSProducerDetails:
+      example:
+        artifactory_token_scope: artifactory_token_scope
+        gke_cluster_endpoint: gke_cluster_endpoint
+        allow_subdomains: true
+        dynamic_secret_type: dynamic_secret_type
+        gke_cluster_ca_certificate: gke_cluster_ca_certificate
+        allowed_domains: allowed_domains
+        dynamic_secret_key: dynamic_secret_key
+        host_port: host_port
+        chef_server_key: chef_server_key
+        db_max_open_conns: db_max_open_conns
+        enable_admin_rotation: true
+        admin_rotation_interval_days: 0
+        failure_message: failure_message
+        rabbitmq_user_read_permission: rabbitmq_user_read_permission
+        azure_client_id: azure_client_id
+        mssql_creation_statements: mssql_creation_statements
+        mongodb_uri_connection: mongodb_uri_connection
+        db_user_name: db_user_name
+        eks_region: eks_region
+        artifactory_admin_apikey: artifactory_admin_apikey
+        admin_pwd: admin_pwd
+        azure_app_object_id: azure_app_object_id
+        azure_user_roles_template_id: azure_user_roles_template_id
+        fixed_user_only: fixed_user_only
+        rabbitmq_server_password: rabbitmq_server_password
+        aws_access_mode: aws_access_mode
+        aws_user_policies: aws_user_policies
+        signer_key_name: signer_key_name
+        root_first_in_chain: true
+        aws_role_arns: aws_role_arns
+        active: true
+        gke_cluster_compute_zone: gke_cluster_compute_zone
+        aws_user_console_access: true
+        chef_server_username: chef_server_username
+        db_host_name: db_host_name
+        store_private_key: true
+        user_principal_name: user_principal_name
+        db_name: db_name
+        db_server_certificates: db_server_certificates
+        chef_skip_ssl: true
+        db_port: db_port
+        db_server_name: db_server_name
+        artifactory_base_url: artifactory_base_url
+        venafi_zone: venafi_zone
+        azure_client_secret: azure_client_secret
+        azure_user_groups_obj_id: azure_user_groups_obj_id
+        azure_user_portal_access: true
+        eks_cluster_endpoint: eks_cluster_endpoint
+        aws_session_token: aws_session_token
+        gke_service_account_key: gke_service_account_key
+        db_isolation_level: db_isolation_level
+        rabbitmq_user_vhost: rabbitmq_user_vhost
+        db_pwd: db_pwd
+        gke_service_account_name: gke_service_account_name
+        mysql_creation_statements: mysql_creation_statements
+        mongodb_roles: mongodb_roles
+        mongodb_db_name: mongodb_db_name
+        should_stop: should_stop
+        artifactory_token_audience: artifactory_token_audience
+        dynamic_secret_name: dynamic_secret_name
+        rabbitmq_server_uri: rabbitmq_server_uri
+        chef_server_access_mode: chef_server_access_mode
+        eks_access_key_id: eks_access_key_id
+        aws_user_programmatic_access: true
+        rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
+        rabbitmq_user_write_permission: rabbitmq_user_write_permission
+        rabbitmq_user_tags: rabbitmq_user_tags
+        auto_generated_folder: auto_generated_folder
+        user_ttl: user_ttl
+        create_cert_using_pki: true
+        eks_assume_role: eks_assume_role
+        azure_user_programmatic_access: true
+        eks_secret_access_key: eks_secret_access_key
+        aws_secret_access_key: aws_secret_access_key
+        groups: groups
+        postgres_creation_statements: postgres_creation_statements
+        chef_organizations: chef_organizations
+        dynamic_secret_id: 6
+        chef_server_host_name: chef_server_host_name
+        mssql_revocation_statements: mssql_revocation_statements
+        chef_server_port: chef_server_port
+        db_max_idle_conns: db_max_idle_conns
+        eks_cluster_ca_certificate: eks_cluster_ca_certificate
+        aws_access_key_id: aws_access_key_id
+        aws_region: aws_region
+        eks_cluster_name: eks_cluster_name
+        gke_project_id: gke_project_id
+        chef_server_url: chef_server_url
+        artifactory_admin_username: artifactory_admin_username
+        gke_cluster_name: gke_cluster_name
+        admin_name: admin_name
+        rabbitmq_server_user: rabbitmq_server_user
+        aws_user_groups: aws_user_groups
+        venafi_api_key: venafi_api_key
+        host_name: host_name
+        azure_tenant_id: azure_tenant_id
+      properties:
+        active:
+          type: boolean
+          x-go-name: Active
+        admin_name:
+          type: string
+          x-go-name: AdminName
+        admin_pwd:
+          type: string
+          x-go-name: AdminPwd
+        admin_rotation_interval_days:
+          format: int64
+          type: integer
+          x-go-name: RotationIntervalDays
+        allow_subdomains:
+          type: boolean
+          x-go-name: AllowSubdomains
+        allowed_domains:
+          type: string
+          x-go-name: AllowedDomains
+        artifactory_admin_apikey:
+          type: string
+          x-go-name: ArtifactoryAdminApiKey
+        artifactory_admin_username:
+          type: string
+          x-go-name: ArtifactoryAdminUsername
+        artifactory_base_url:
+          type: string
+          x-go-name: ArtifactoryBaseURL
+        artifactory_token_audience:
+          type: string
+          x-go-name: ArtifactoryTokenAudience
+        artifactory_token_scope:
+          type: string
+          x-go-name: ArtifactoryTokenScope
+        auto_generated_folder:
+          type: string
+          x-go-name: AutoGeneratedFolder
+        aws_access_key_id:
+          type: string
+          x-go-name: AWSAccessId
+        aws_access_mode:
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/producer/config
+        aws_region:
+          type: string
+          x-go-name: AWSRegion
+        aws_role_arns:
+          type: string
+          x-go-name: AWSRoleARNs
+        aws_secret_access_key:
+          type: string
+          x-go-name: AWSSecretAccessKey
+        aws_session_token:
+          type: string
+          x-go-name: AWSSessionToken
+        aws_user_console_access:
+          type: boolean
+          x-go-name: AWSUserConsoleAccess
+        aws_user_groups:
+          type: string
+          x-go-name: AWSUserGroups
+        aws_user_policies:
+          type: string
+          x-go-name: AWSUserPolicies
+        aws_user_programmatic_access:
+          type: boolean
+          x-go-name: AWSUserProgAccess
+        azure_app_object_id:
+          type: string
+          x-go-name: AzureAppObjectID
+        azure_client_id:
+          type: string
+          x-go-name: AzureClientID
+        azure_client_secret:
+          type: string
+          x-go-name: AzureClientSecret
+        azure_tenant_id:
+          type: string
+          x-go-name: AzureTenantID
+        azure_user_groups_obj_id:
+          type: string
+          x-go-name: AzureUserGroupsObjID
+        azure_user_portal_access:
+          type: boolean
+          x-go-name: AzureUserConsoleAccess
+        azure_user_programmatic_access:
+          type: boolean
+          x-go-name: AzureUserProgAccess
+        azure_user_roles_template_id:
+          type: string
+          x-go-name: AzureUserRolesTemplateID
+        chef_organizations:
+          type: string
+          x-go-name: ChefOrganizations
+        chef_server_access_mode:
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/producer/config
+        chef_server_host_name:
+          type: string
+          x-go-name: ChefServerHostName
+        chef_server_key:
+          type: string
+          x-go-name: ChefServerKey
+        chef_server_port:
+          type: string
+          x-go-name: ChefServerPort
+        chef_server_url:
+          type: string
+          x-go-name: ChefServerURL
+        chef_server_username:
+          type: string
+          x-go-name: ChefServerUsername
+        chef_skip_ssl:
+          type: boolean
+          x-go-name: ChefSkipSSL
+        create_cert_using_pki:
+          type: boolean
+          x-go-name: CreateCertUsingPKI
+        db_host_name:
+          type: string
+          x-go-name: DbHostName
+        db_isolation_level:
+          type: string
+          x-go-name: DbIsolationLevel
+        db_max_idle_conns:
+          type: string
+          x-go-name: DbMaxIdleConns
+        db_max_open_conns:
+          type: string
+          x-go-name: DbMaxOpenConns
+        db_name:
+          type: string
+          x-go-name: DbName
+        db_port:
+          type: string
+          x-go-name: DbPort
+        db_pwd:
+          type: string
+          x-go-name: DbPwd
+        db_server_certificates:
+          description: |-
+            (Optional) DBServerCertificates defines the set of root certificate authorities
+            that clients use when verifying server certificates.
+            If DBServerCertificates is empty, TLS uses the host's root CA set.
+          type: string
+          x-go-name: DBServerCertificates
+        db_server_name:
+          description: |-
+            (Optional) ServerName is used to verify the hostname on the returned
+            certificates unless InsecureSkipVerify is given. It is also included
+            in the client's handshake to support virtual hosting unless it is
+            an IP address.
+          type: string
+          x-go-name: DBServerName
+        db_user_name:
+          type: string
+          x-go-name: DbUserName
+        dynamic_secret_id:
+          format: int64
+          type: integer
+          x-go-name: DynamicSecretId
+        dynamic_secret_key:
+          type: string
+          x-go-name: ProtectionKeyName
+        dynamic_secret_name:
+          type: string
+          x-go-name: DynamicSecretName
+        dynamic_secret_type:
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/producer/config
+        eks_access_key_id:
+          type: string
+          x-go-name: EKSAccessID
+        eks_assume_role:
+          type: string
+          x-go-name: EKSAssumeRole
+        eks_cluster_ca_certificate:
+          type: string
+          x-go-name: EKSClusterCACertificate
+        eks_cluster_endpoint:
+          type: string
+          x-go-name: EKSClusterEndpoint
+        eks_cluster_name:
+          type: string
+          x-go-name: EKSClusterName
+        eks_region:
+          type: string
+          x-go-name: EKSRegion
+        eks_secret_access_key:
+          type: string
+          x-go-name: EKSSecretAccessKey
+        enable_admin_rotation:
+          type: boolean
+          x-go-name: EnableAdminRotation
+        failure_message:
+          type: string
+          x-go-name: FailureMessage
+        fixed_user_only:
+          type: string
+          x-go-name: FixedUserOnly
+        gke_cluster_ca_certificate:
+          type: string
+          x-go-name: GKEClusterCACertificate
+        gke_cluster_compute_zone:
+          type: string
+          x-go-name: GKEClusterComputeZone
+        gke_cluster_endpoint:
+          type: string
+          x-go-name: GKEClusterEndpoint
+        gke_cluster_name:
+          type: string
+          x-go-name: GKEClusterName
+        gke_project_id:
+          type: string
+          x-go-name: GKEProjectID
+        gke_service_account_key:
+          type: string
+          x-go-name: GKEServiceAccountKey
+        gke_service_account_name:
+          type: string
+          x-go-name: GKEServiceAccountName
+        groups:
+          type: string
+          x-go-name: Groups
+        host_name:
+          type: string
+          x-go-name: HostName
+        host_port:
+          type: string
+          x-go-name: HostPort
+        mongodb_db_name:
+          type: string
+          x-go-name: MongoDBName
+        mongodb_roles:
+          type: string
+          x-go-name: MongoDBRoles
+        mongodb_uri_connection:
+          type: string
+          x-go-name: MongoDBURIConnection
+        mssql_creation_statements:
+          type: string
+          x-go-name: MSSQLCreationStatements
+        mssql_revocation_statements:
+          type: string
+          x-go-name: MSSQLRevocationStatements
+        mysql_creation_statements:
+          type: string
+          x-go-name: MysqlCreationStatements
+        postgres_creation_statements:
+          type: string
+          x-go-name: PostgresCreationStatements
+        rabbitmq_server_password:
+          type: string
+          x-go-name: RabbitmqServerPassword
+        rabbitmq_server_uri:
+          type: string
+          x-go-name: RabbitmqServerURI
+        rabbitmq_server_user:
+          type: string
+          x-go-name: RabbitmqServerUser
+        rabbitmq_user_conf_permission:
+          type: string
+          x-go-name: RabbitmqUserConfigPermission
+        rabbitmq_user_read_permission:
+          type: string
+          x-go-name: RabbitmqUserReadPermission
+        rabbitmq_user_tags:
+          type: string
+          x-go-name: RabbitmqUserTags
+        rabbitmq_user_vhost:
+          type: string
+          x-go-name: RabbitmqUserVHost
+        rabbitmq_user_write_permission:
+          type: string
+          x-go-name: RabbitmqUserWritePermission
+        root_first_in_chain:
+          type: boolean
+          x-go-name: RootFirstInChain
+        should_stop:
+          description: TODO delete this after migration
+          type: string
+          x-go-name: ShouldStop
+        signer_key_name:
+          type: string
+          x-go-name: SignerKeyName
+        store_private_key:
+          type: boolean
+          x-go-name: StorePrivateKey
+        user_principal_name:
+          type: string
+          x-go-name: AzurePrincipalName
+        user_ttl:
+          type: string
+          x-go-name: UserTtl
+        venafi_api_key:
+          type: string
+          x-go-name: ApiKey
+        venafi_zone:
+          type: string
+          x-go-name: Zone
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/producer/config
     DeleteItemOutput:
       example:
         version_deleted: 0
@@ -3455,7 +5030,11 @@ components:
       example:
         producer_type: producer_type
         producer_status: producer_status
+        producer_metadata: producer_metadata
       properties:
+        producer_metadata:
+          type: string
+          x-go-name: ProducerMetadata
         producer_status:
           description: ProducerStatus defines types of Producer Status
           type: string
@@ -3465,6 +5044,26 @@ components:
           x-go-name: ProducerType
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    DynamicSecretType:
+      type: string
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/producer/config
+    ElasticsearchLogForwardingConfig:
+      example:
+        elasticsearch_index: elasticsearch_index
+        elasticsearch_nodes: elasticsearch_nodes
+        elasticsearch_host: elasticsearch_host
+      properties:
+        elasticsearch_host:
+          type: string
+          x-go-name: ElasticsearchHost
+        elasticsearch_index:
+          type: string
+          x-go-name: ElasticsearchIndex
+        elasticsearch_nodes:
+          type: string
+          x-go-name: ElasticsearchNodes
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     EmailPassAccessRules:
       example:
         hash_pass: hash_pass
@@ -3501,6 +5100,47 @@ components:
       title: EncryptOutput defines output of Encrypt operation.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    GeneralConfigPart:
+      example:
+        tcp_port: tcp_port
+        api_token_ttl: api_token_ttl
+        enable_tls: true
+        enable_tls_curl: true
+        tls_key: tls_key
+        enable_tls_configure: true
+        enable_tls_hvp: true
+        tls_cert: tls_cert
+        akeyless_url: akeyless_url
+      properties:
+        akeyless_url:
+          type: string
+          x-go-name: AkeylessUrl
+        api_token_ttl:
+          type: string
+          x-go-name: ApiTokenTtl
+        enable_tls:
+          type: boolean
+          x-go-name: EnableTLS
+        enable_tls_configure:
+          type: boolean
+          x-go-name: EnableTLSConfig
+        enable_tls_curl:
+          type: boolean
+          x-go-name: EnableTLSCurl
+        enable_tls_hvp:
+          type: boolean
+          x-go-name: EnableTLSHpv
+        tcp_port:
+          type: string
+          x-go-name: TcpPort
+        tls_cert:
+          type: string
+          x-go-name: TLSCert
+        tls_key:
+          type: string
+          x-go-name: TLSKey
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     GetPKICertificate:
       properties:
         alt-names:
@@ -3552,6 +5192,42 @@ components:
       title: GetPKICertificate is a command that generates PKI certificate.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    GetProducersListReplyObj:
+      example:
+        producers_errors: '{}'
+        producers:
+        - name: name
+          active: true
+          id: 5
+          type: type
+        - name: name
+          active: true
+          id: 5
+          type: type
+      properties:
+        producers:
+          items:
+            $ref: '#/components/schemas/Producer'
+          type: array
+          x-go-name: Producers
+        producers_errors:
+          type: object
+          x-go-name: ProducersErrors
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    GetSubAdminsListReplyObj:
+      example:
+        sub_admins:
+        - sub_admins
+        - sub_admins
+      properties:
+        sub_admins:
+          items:
+            type: string
+          type: array
+          x-go-name: SubAdmins
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     GetTargetDetailsOutput:
       example:
         Value:
@@ -3570,10 +5246,13 @@ components:
           rabbitmq_server_uri: rabbitmq_server_uri
           aws_access_key_id: aws_access_key_id
           aws_region: aws_region
+          db_name: db_name
           db_user_name: db_user_name
           port: port
+          db_server_certificates: db_server_certificates
           admin_name: admin_name
           db_port: db_port
+          db_server_name: db_server_name
           rabbitmq_server_user: rabbitmq_server_user
           host_name: host_name
           admin_pwd: admin_pwd
@@ -3587,6 +5266,47 @@ components:
       title: HashAlgorithm is a type that represents a single hash algorithm.
       type: string
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    HashiMigration:
+      example:
+        general:
+          prefix: prefix
+          name: name
+          id: id
+          protection_key: protection_key
+        payload:
+          url: url
+          namespaces:
+          - namespaces
+          - namespaces
+          token: token
+      properties:
+        general:
+          $ref: '#/components/schemas/MigrationGeneral'
+        payload:
+          $ref: '#/components/schemas/HashiPayload'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    HashiPayload:
+      example:
+        url: url
+        namespaces:
+        - namespaces
+        - namespaces
+        token: token
+      properties:
+        namespaces:
+          items:
+            type: string
+          type: array
+          x-go-name: Namespaces
+        token:
+          type: string
+          x-go-name: Token
+        url:
+          type: string
+          x-go-name: Url
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     HuaweiAccessRules:
       example:
         domain_id:
@@ -3751,6 +5471,7 @@ components:
           dynamic_secret_producer_details:
             producer_type: producer_type
             producer_status: producer_status
+            producer_metadata: producer_metadata
           cert_issue_details:
             max_ttl: 0
             pki_cert_issuer_details:
@@ -3919,6 +5640,7 @@ components:
         dynamic_secret_producer_details:
           producer_type: producer_type
           producer_status: producer_status
+          producer_metadata: producer_metadata
         cert_issue_details:
           max_ttl: 0
           pki_cert_issuer_details:
@@ -4057,6 +5779,92 @@ components:
       title: JSONError wraps an error with JSON object.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client
+    K8SMigration:
+      example:
+        general:
+          prefix: prefix
+          name: name
+          id: id
+          protection_key: protection_key
+        payload:
+          client_key:
+          - 5
+          - 5
+          server: server
+          password: password
+          client_cert:
+          - 1
+          - 1
+          namespace: namespace
+          ca:
+          - 6
+          - 6
+          skip_system: true
+          token: token
+          username: username
+      properties:
+        general:
+          $ref: '#/components/schemas/MigrationGeneral'
+        payload:
+          $ref: '#/components/schemas/K8SPayload'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    K8SPayload:
+      example:
+        client_key:
+        - 5
+        - 5
+        server: server
+        password: password
+        client_cert:
+        - 1
+        - 1
+        namespace: namespace
+        ca:
+        - 6
+        - 6
+        skip_system: true
+        token: token
+        username: username
+      properties:
+        ca:
+          items:
+            format: uint8
+            type: integer
+          type: array
+          x-go-name: CA
+        client_cert:
+          items:
+            format: uint8
+            type: integer
+          type: array
+          x-go-name: ClientCert
+        client_key:
+          items:
+            format: uint8
+            type: integer
+          type: array
+          x-go-name: ClientKey
+        namespace:
+          type: string
+          x-go-name: Namespace
+        password:
+          type: string
+          x-go-name: Password
+        server:
+          type: string
+          x-go-name: Server
+        skip_system:
+          type: boolean
+          x-go-name: SkipSystem
+        token:
+          type: string
+          x-go-name: Token
+        username:
+          type: string
+          x-go-name: Username
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     LDAPAccessRules:
       example:
         unique_identifier: unique_identifier
@@ -4078,6 +5886,81 @@ components:
       title: LDAPAccessRules includes access rules specific to LDAP authentication.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    LdapConfigPart:
+      example:
+        ldap_anonymous_search: true
+        ldap_cert: ldap_cert
+        ldap_bind_password: ldap_bind_password
+        ldap_group_dn: ldap_group_dn
+        ldap_group_filter: ldap_group_filter
+        ldap_user_dn: ldap_user_dn
+        ldap_group_attr: ldap_group_attr
+        ldap_access_id: ldap_access_id
+        ldap_enable: true
+        ldap_private_key: ldap_private_key
+        ldap_bind_dn: ldap_bind_dn
+        ldap_url: ldap_url
+        ldap_token_expiration: ldap_token_expiration
+        ldap_user_attr: ldap_user_attr
+      properties:
+        ldap_access_id:
+          type: string
+          x-go-name: LdapAccessId
+        ldap_anonymous_search:
+          type: boolean
+          x-go-name: LdapAnonymousSearch
+        ldap_bind_dn:
+          type: string
+          x-go-name: LdapBindDn
+        ldap_bind_password:
+          type: string
+          x-go-name: LdapBindPassword
+        ldap_cert:
+          type: string
+          x-go-name: LdapCertificate
+        ldap_enable:
+          type: boolean
+          x-go-name: LdapEnable
+        ldap_group_attr:
+          type: string
+          x-go-name: LdapGroupAttr
+        ldap_group_dn:
+          type: string
+          x-go-name: LdapGroupDn
+        ldap_group_filter:
+          type: string
+          x-go-name: LdapGroupFilter
+        ldap_private_key:
+          type: string
+          x-go-name: LdapPrivateKey
+        ldap_token_expiration:
+          type: string
+          x-go-name: LdapTokenExpiration
+        ldap_url:
+          type: string
+          x-go-name: LdapUrlAddress
+        ldap_user_attr:
+          type: string
+          x-go-name: LdapUserAttr
+        ldap_user_dn:
+          type: string
+          x-go-name: LdapUserDn
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    LeadershipConfigPart:
+      example:
+        open_leadership:
+        - 0
+        - 0
+      properties:
+        open_leadership:
+          items:
+            format: uint32
+            type: integer
+          type: array
+          x-go-name: OpenLeadership
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     ListAuthMethodsOutput:
       example:
         next_page: next_page
@@ -4126,7 +6009,6 @@ components:
           - client_permissions
           - client_permissions
           access_info:
-            cidr_whitelist: cidr_whitelist
             azure_ad_access_rules:
               bound_group_ids:
               - bound_group_ids
@@ -4160,6 +6042,40 @@ components:
               deny_inheritance: true
               ttl: 6
               deny_rotate: true
+            oauth2_access_rules:
+              bound_claims:
+              - values:
+                - values
+                - values
+                name: name
+              - values:
+                - values
+                - values
+                name: name
+              audience: audience
+              unique_identifier: unique_identifier
+              jwks_uri: jwks_uri
+              bound_clients_id:
+              - bound_clients_id
+              - bound_clients_id
+              issuer: issuer
+            saml_access_rules:
+              unique_identifier: unique_identifier
+              idp_metadata_url: idp_metadata_url
+              bound_attributes:
+              - values:
+                - values
+                - values
+                name: name
+              - values:
+                - values
+                - values
+                name: name
+              idp_metadata_xml: idp_metadata_xml
+            api_key_access_rules:
+              alg: alg
+              key: key
+            cidr_whitelist: cidr_whitelist
             ldap_access_rules:
               unique_identifier: unique_identifier
               alg: alg
@@ -4207,41 +6123,9 @@ components:
               arn:
               - arn
               - arn
-            oauth2_access_rules:
-              bound_claims:
-              - values:
-                - values
-                - values
-                name: name
-              - values:
-                - values
-                - values
-                name: name
-              audience: audience
-              unique_identifier: unique_identifier
-              jwks_uri: jwks_uri
-              bound_clients_id:
-              - bound_clients_id
-              - bound_clients_id
-              issuer: issuer
-            saml_access_rules:
-              unique_identifier: unique_identifier
-              idp_metadata_url: idp_metadata_url
-              bound_attributes:
-              - values:
-                - values
-                - values
-                name: name
-              - values:
-                - values
-                - values
-                name: name
-              idp_metadata_xml: idp_metadata_xml
-            api_key_access_rules:
-              alg: alg
-              key: key
             rules_type: rules_type
             access_expires: 0
+            access_id_alias: access_id_alias
             email_pass_access_rules:
               hash_pass: hash_pass
               alg: alg
@@ -4292,7 +6176,6 @@ components:
           - client_permissions
           - client_permissions
           access_info:
-            cidr_whitelist: cidr_whitelist
             azure_ad_access_rules:
               bound_group_ids:
               - bound_group_ids
@@ -4326,6 +6209,40 @@ components:
               deny_inheritance: true
               ttl: 6
               deny_rotate: true
+            oauth2_access_rules:
+              bound_claims:
+              - values:
+                - values
+                - values
+                name: name
+              - values:
+                - values
+                - values
+                name: name
+              audience: audience
+              unique_identifier: unique_identifier
+              jwks_uri: jwks_uri
+              bound_clients_id:
+              - bound_clients_id
+              - bound_clients_id
+              issuer: issuer
+            saml_access_rules:
+              unique_identifier: unique_identifier
+              idp_metadata_url: idp_metadata_url
+              bound_attributes:
+              - values:
+                - values
+                - values
+                name: name
+              - values:
+                - values
+                - values
+                name: name
+              idp_metadata_xml: idp_metadata_xml
+            api_key_access_rules:
+              alg: alg
+              key: key
+            cidr_whitelist: cidr_whitelist
             ldap_access_rules:
               unique_identifier: unique_identifier
               alg: alg
@@ -4373,41 +6290,9 @@ components:
               arn:
               - arn
               - arn
-            oauth2_access_rules:
-              bound_claims:
-              - values:
-                - values
-                - values
-                name: name
-              - values:
-                - values
-                - values
-                name: name
-              audience: audience
-              unique_identifier: unique_identifier
-              jwks_uri: jwks_uri
-              bound_clients_id:
-              - bound_clients_id
-              - bound_clients_id
-              issuer: issuer
-            saml_access_rules:
-              unique_identifier: unique_identifier
-              idp_metadata_url: idp_metadata_url
-              bound_attributes:
-              - values:
-                - values
-                - values
-                name: name
-              - values:
-                - values
-                - values
-                name: name
-              idp_metadata_xml: idp_metadata_xml
-            api_key_access_rules:
-              alg: alg
-              key: key
             rules_type: rules_type
             access_expires: 0
+            access_id_alias: access_id_alias
             email_pass_access_rules:
               hash_pass: hash_pass
               alg: alg
@@ -4530,6 +6415,7 @@ components:
             dynamic_secret_producer_details:
               producer_type: producer_type
               producer_status: producer_status
+              producer_metadata: producer_metadata
             cert_issue_details:
               max_ttl: 0
               pki_cert_issuer_details:
@@ -4703,6 +6589,7 @@ components:
             dynamic_secret_producer_details:
               producer_type: producer_type
               producer_status: producer_status
+              producer_metadata: producer_metadata
             cert_issue_details:
               max_ttl: 0
               pki_cert_issuer_details:
@@ -4813,6 +6700,7 @@ components:
               - auth_method_sub_claims
               - auth_method_sub_claims
             auth_method_access_id: auth_method_access_id
+            sub_claims_case_sensitive: true
           - assoc_id: assoc_id
             auth_method_name: auth_method_name
             auth_method_sub_claims:
@@ -4820,6 +6708,7 @@ components:
               - auth_method_sub_claims
               - auth_method_sub_claims
             auth_method_access_id: auth_method_access_id
+            sub_claims_case_sensitive: true
           comment: comment
           rules:
             path_rules:
@@ -4846,6 +6735,7 @@ components:
               - auth_method_sub_claims
               - auth_method_sub_claims
             auth_method_access_id: auth_method_access_id
+            sub_claims_case_sensitive: true
           - assoc_id: assoc_id
             auth_method_name: auth_method_name
             auth_method_sub_claims:
@@ -4853,6 +6743,7 @@ components:
               - auth_method_sub_claims
               - auth_method_sub_claims
             auth_method_access_id: auth_method_access_id
+            sub_claims_case_sensitive: true
           comment: comment
           rules:
             path_rules:
@@ -4917,6 +6808,235 @@ components:
       title: ListTargetsOutput is a list of targets.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    LogForwardingConfigPart:
+      example:
+        logan_url: logan_url
+        syslog_config:
+          syslog_host: syslog_host
+          syslog_target_tag: syslog_target_tag
+          syslog_network: syslog_network
+        target_log_type: target_log_type
+        splunk_config:
+          splunk_token: splunk_token
+          splunk_source: splunk_source
+          splunk_index: splunk_index
+          splunk_sourcetype: splunk_sourcetype
+          splunk_url: splunk_url
+        logstash_config:
+          logstash_protocol: logstash_protocol
+          logstash_dns: logstash_dns
+        logan_enable: true
+        logz_io_config:
+          target_logz_io_protocol: target_logz_io_protocol
+          target_logz_io_token: target_logz_io_token
+        pull_interval_sec: pull_interval_sec
+        elasticsearch_config:
+          elasticsearch_index: elasticsearch_index
+          elasticsearch_nodes: elasticsearch_nodes
+          elasticsearch_host: elasticsearch_host
+      properties:
+        elasticsearch_config:
+          $ref: '#/components/schemas/ElasticsearchLogForwardingConfig'
+        logan_enable:
+          type: boolean
+          x-go-name: LoganEnable
+        logan_url:
+          type: string
+          x-go-name: LoganURLConfig
+        logstash_config:
+          $ref: '#/components/schemas/LogstashLogForwardingConfig'
+        logz_io_config:
+          $ref: '#/components/schemas/LogzIoLogForwardingConfig'
+        pull_interval_sec:
+          type: string
+          x-go-name: PullIntervalSec
+        splunk_config:
+          $ref: '#/components/schemas/SplunkLogForwardingConfig'
+        syslog_config:
+          $ref: '#/components/schemas/SyslogLogForwardingConfig'
+        target_log_type:
+          type: string
+          x-go-name: TargetLogType
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    LogstashLogForwardingConfig:
+      example:
+        logstash_protocol: logstash_protocol
+        logstash_dns: logstash_dns
+      properties:
+        logstash_dns:
+          type: string
+          x-go-name: LogstashDns
+        logstash_protocol:
+          type: string
+          x-go-name: LogstashProtocol
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    LogzIoLogForwardingConfig:
+      example:
+        target_logz_io_protocol: target_logz_io_protocol
+        target_logz_io_token: target_logz_io_token
+      properties:
+        target_logz_io_protocol:
+          type: string
+          x-go-name: TargetLogzIoProtocol
+        target_logz_io_token:
+          type: string
+          x-go-name: TargetLogzIoToken
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    MigrationGeneral:
+      example:
+        prefix: prefix
+        name: name
+        id: id
+        protection_key: protection_key
+      properties:
+        id:
+          type: string
+          x-go-name: Id
+        name:
+          type: string
+          x-go-name: Name
+        prefix:
+          type: string
+          x-go-name: Prefix
+        protection_key:
+          type: string
+          x-go-name: ProtectionKey
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    MigrationsConfigPart:
+      example:
+        hashi_migrations:
+        - general:
+            prefix: prefix
+            name: name
+            id: id
+            protection_key: protection_key
+          payload:
+            url: url
+            namespaces:
+            - namespaces
+            - namespaces
+            token: token
+        - general:
+            prefix: prefix
+            name: name
+            id: id
+            protection_key: protection_key
+          payload:
+            url: url
+            namespaces:
+            - namespaces
+            - namespaces
+            token: token
+        azure_kv_migrations:
+        - general:
+            prefix: prefix
+            name: name
+            id: id
+            protection_key: protection_key
+          payload:
+            name: name
+            client: client
+            secret: secret
+            tenant: tenant
+        - general:
+            prefix: prefix
+            name: name
+            id: id
+            protection_key: protection_key
+          payload:
+            name: name
+            client: client
+            secret: secret
+            tenant: tenant
+        k8s_migrations:
+        - general:
+            prefix: prefix
+            name: name
+            id: id
+            protection_key: protection_key
+          payload:
+            client_key:
+            - 5
+            - 5
+            server: server
+            password: password
+            client_cert:
+            - 1
+            - 1
+            namespace: namespace
+            ca:
+            - 6
+            - 6
+            skip_system: true
+            token: token
+            username: username
+        - general:
+            prefix: prefix
+            name: name
+            id: id
+            protection_key: protection_key
+          payload:
+            client_key:
+            - 5
+            - 5
+            server: server
+            password: password
+            client_cert:
+            - 1
+            - 1
+            namespace: namespace
+            ca:
+            - 6
+            - 6
+            skip_system: true
+            token: token
+            username: username
+        aws_secrets_migrations:
+        - general:
+            prefix: prefix
+            name: name
+            id: id
+            protection_key: protection_key
+          payload:
+            secret: secret
+            region: region
+            key: key
+        - general:
+            prefix: prefix
+            name: name
+            id: id
+            protection_key: protection_key
+          payload:
+            secret: secret
+            region: region
+            key: key
+      properties:
+        aws_secrets_migrations:
+          items:
+            $ref: '#/components/schemas/AWSSecretsMigration'
+          type: array
+          x-go-name: AWSSecretsMigrations
+        azure_kv_migrations:
+          items:
+            $ref: '#/components/schemas/AzureKeyVaultMigration'
+          type: array
+          x-go-name: AzureKVMigrations
+        hashi_migrations:
+          items:
+            $ref: '#/components/schemas/HashiMigration'
+          type: array
+          x-go-name: HashiMigrations
+        k8s_migrations:
+          items:
+            $ref: '#/components/schemas/K8SMigration'
+          type: array
+          x-go-name: K8SMigrations
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     OAuth2AccessRules:
       description: |-
         OAuth2AccessRules contains access rules specific to OAuth2 authentication
@@ -5161,10 +7281,51 @@ components:
       title: PathRuleType defines a kind of every PathRule assigned to a Role.
       type: string
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    Producer:
+      example:
+        name: name
+        active: true
+        id: 5
+        type: type
+      properties:
+        active:
+          type: boolean
+          x-go-name: Active
+        id:
+          format: int64
+          type: integer
+          x-go-name: Id
+        name:
+          type: string
+          x-go-name: Name
+        type:
+          type: string
+          x-go-name: Type
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     ProducerStatus:
       description: ProducerStatus defines types of Producer Status
       type: string
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    ProducersConfigPart:
+      example:
+        producers:
+        - name: name
+          active: true
+          id: 5
+          type: type
+        - name: name
+          active: true
+          id: 5
+          type: type
+      properties:
+        producers:
+          items:
+            $ref: '#/components/schemas/Producer'
+          type: array
+          x-go-name: Producers
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     ReverseRBACClient:
       example:
         allowed_ops:
@@ -5297,6 +7458,7 @@ components:
             - auth_method_sub_claims
             - auth_method_sub_claims
           auth_method_access_id: auth_method_access_id
+          sub_claims_case_sensitive: true
         - assoc_id: assoc_id
           auth_method_name: auth_method_name
           auth_method_sub_claims:
@@ -5304,6 +7466,7 @@ components:
             - auth_method_sub_claims
             - auth_method_sub_claims
           auth_method_access_id: auth_method_access_id
+          sub_claims_case_sensitive: true
         comment: comment
         rules:
           path_rules:
@@ -5352,6 +7515,7 @@ components:
           - auth_method_sub_claims
           - auth_method_sub_claims
         auth_method_access_id: auth_method_access_id
+        sub_claims_case_sensitive: true
       properties:
         assoc_id:
           type: string
@@ -5369,6 +7533,9 @@ components:
             type: array
           type: object
           x-go-name: AuthMethodSubClaims
+        sub_claims_case_sensitive:
+          type: boolean
+          x-go-name: IsSubClaimsCaseSensitive
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     RotateKeyOutput:
@@ -5541,6 +7708,61 @@ components:
       title: SSHCertificateType defines the types of SSH certificates.
       type: integer
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    SamlConfigPart:
+      example:
+        saml_access_id: saml_access_id
+        open_id_connect_access_id: open_id_connect_access_id
+      properties:
+        open_id_connect_access_id:
+          type: string
+          x-go-name: OktaOpenIdConnectAccessId
+        saml_access_id:
+          type: string
+          x-go-name: SamlAccessId
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    SplunkLogForwardingConfig:
+      example:
+        splunk_token: splunk_token
+        splunk_source: splunk_source
+        splunk_index: splunk_index
+        splunk_sourcetype: splunk_sourcetype
+        splunk_url: splunk_url
+      properties:
+        splunk_index:
+          type: string
+          x-go-name: SplunkIndex
+        splunk_source:
+          type: string
+          x-go-name: SplunkSource
+        splunk_sourcetype:
+          type: string
+          x-go-name: SplunkSourcetype
+        splunk_token:
+          type: string
+          x-go-name: SplunkToken
+        splunk_url:
+          type: string
+          x-go-name: SplunkUrl
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    SyslogLogForwardingConfig:
+      example:
+        syslog_host: syslog_host
+        syslog_target_tag: syslog_target_tag
+        syslog_network: syslog_network
+      properties:
+        syslog_host:
+          type: string
+          x-go-name: SyslogHost
+        syslog_network:
+          type: string
+          x-go-name: SyslogNetwork
+        syslog_target_tag:
+          type: string
+          x-go-name: SyslogTargetTag
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     SystemAccessCredentialsReplyObj:
       example:
         auth_creds: auth_creds
@@ -5643,10 +7865,13 @@ components:
         rabbitmq_server_uri: rabbitmq_server_uri
         aws_access_key_id: aws_access_key_id
         aws_region: aws_region
+        db_name: db_name
         db_user_name: db_user_name
         port: port
+        db_server_certificates: db_server_certificates
         admin_name: admin_name
         db_port: db_port
+        db_server_name: db_server_name
         rabbitmq_server_user: rabbitmq_server_user
         host_name: host_name
         admin_pwd: admin_pwd
@@ -5672,12 +7897,30 @@ components:
         db_host_name:
           type: string
           x-go-name: DbHostName
+        db_name:
+          type: string
+          x-go-name: DbName
         db_port:
           type: string
           x-go-name: DbPort
         db_pwd:
           type: string
           x-go-name: DbPwd
+        db_server_certificates:
+          description: |-
+            (Optional) DBServerCertificates defines the set of root certificate authorities
+            that clients use when verifying server certificates.
+            If DBServerCertificates is empty, TLS uses the host's root CA set.
+          type: string
+          x-go-name: DBServerCertificates
+        db_server_name:
+          description: |-
+            (Optional) ServerName is used to verify the hostname on the returned
+            certificates unless InsecureSkipVerify is given. It is also included
+            in the client's handshake to support virtual hosting unless it is
+            an IP address.
+          type: string
+          x-go-name: DBServerName
         db_user_name:
           type: string
           x-go-name: DbUserName
@@ -5716,6 +7959,48 @@ components:
       title: TargetTypeDetailesInput ...
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    TmpUserData:
+      example:
+        custom_ttl: 0
+        sub_claims:
+          key:
+          - sub_claims
+          - sub_claims
+        dynamic_secret_type: dynamic_secret_type
+        host: host
+        access_id: access_id
+        creation_date: 2000-01-23T04:56:07.000+00:00
+        id: id
+      properties:
+        access_id:
+          type: string
+          x-go-name: AccessID
+        creation_date:
+          format: date-time
+          type: string
+          x-go-name: CreationDate
+        custom_ttl:
+          format: int64
+          type: integer
+          x-go-name: CustomTtl
+        dynamic_secret_type:
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/producer/config
+        host:
+          type: string
+          x-go-name: Host
+        id:
+          type: string
+          x-go-name: ID
+        sub_claims:
+          additionalProperties:
+            items:
+              type: string
+            type: array
+          type: object
+          x-go-name: SubClaims
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/producer/dynamicsecret/base
     UIDTokenDetails:
       example:
         deny_inheritance: true
@@ -5766,6 +8051,31 @@ components:
       title: UIDTokenDetails Universal identity type.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    UIdentityConfigPart:
+      example:
+        uid_access_id: uid_access_id
+        uid_rotate_interval: uid_rotate_interval
+        uid_status: uid_status
+        uid_enable: true
+        uid_token: uid_token
+      properties:
+        uid_access_id:
+          type: string
+          x-go-name: UIDAccessID
+        uid_enable:
+          type: boolean
+          x-go-name: UIDEnable
+        uid_rotate_interval:
+          type: string
+          x-go-name: UIDRotateInterval
+        uid_status:
+          type: string
+          x-go-name: UIDStatus
+        uid_token:
+          type: string
+          x-go-name: UIDToken
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     UniversalIdentityAccessRules:
       example:
         deny_inheritance: true
@@ -7836,6 +10146,2268 @@ components:
             type: integer
           type: array
           x-go-name: Result
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayAddSubAdmins:
+      description: gatewayAddSubAdmins is a command that adds sub-admins
+      properties:
+        gateway-url:
+          default: http://localhost:8000
+          description: Gateway url
+          type: string
+          x-go-name: GatewayUrl
+        sub-admin:
+          description: SubAdmins to add
+          items:
+            type: string
+          type: array
+          x-go-name: SubAdmins
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      required:
+      - sub-admin
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayAddSubAdminsOutput:
+      example:
+        sub-admins:
+        - sub-admins
+        - sub-admins
+      properties:
+        sub-admins:
+          items:
+            type: string
+          type: array
+          x-go-name: SubAdminsName
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayCreateProducerArtifactory:
+      description: gatewayCreateProducerArtifactory is a command that creates artifactory
+        producer
+      properties:
+        artifactory-admin-name:
+          description: Artifactory Admin Name
+          type: string
+          x-go-name: AdminName
+        artifactory-admin-pwd:
+          description: Artifactory Admin password
+          type: string
+          x-go-name: AdminPwd
+        artifactory-token-audience:
+          description: Token Audience
+          type: string
+          x-go-name: TokenAudience
+        artifactory-token-scope:
+          description: Token Scope
+          type: string
+          x-go-name: TokenScope
+        base-url:
+          description: Base URL
+          type: string
+          x-go-name: BaseUrl
+        gateway-url:
+          default: http://localhost:8000
+          description: Gateway url
+          type: string
+          x-go-name: GatewayUrl
+        name:
+          description: Producer name
+          type: string
+          x-go-name: ProducerName
+        producer-encryption-key-name:
+          description: Dynamic producer encryption key
+          type: string
+          x-go-name: ProducerEncryptionKey
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        user-ttl:
+          default: 60m
+          description: User TTL
+          type: string
+          x-go-name: UserTtl
+      required:
+      - artifactory-admin-name
+      - artifactory-admin-pwd
+      - artifactory-token-audience
+      - artifactory-token-scope
+      - base-url
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayCreateProducerArtifactoryOutput:
+      example:
+        producer_details:
+          artifactory_token_scope: artifactory_token_scope
+          gke_cluster_endpoint: gke_cluster_endpoint
+          allow_subdomains: true
+          dynamic_secret_type: dynamic_secret_type
+          gke_cluster_ca_certificate: gke_cluster_ca_certificate
+          allowed_domains: allowed_domains
+          dynamic_secret_key: dynamic_secret_key
+          host_port: host_port
+          chef_server_key: chef_server_key
+          db_max_open_conns: db_max_open_conns
+          enable_admin_rotation: true
+          admin_rotation_interval_days: 0
+          failure_message: failure_message
+          rabbitmq_user_read_permission: rabbitmq_user_read_permission
+          azure_client_id: azure_client_id
+          mssql_creation_statements: mssql_creation_statements
+          mongodb_uri_connection: mongodb_uri_connection
+          db_user_name: db_user_name
+          eks_region: eks_region
+          artifactory_admin_apikey: artifactory_admin_apikey
+          admin_pwd: admin_pwd
+          azure_app_object_id: azure_app_object_id
+          azure_user_roles_template_id: azure_user_roles_template_id
+          fixed_user_only: fixed_user_only
+          rabbitmq_server_password: rabbitmq_server_password
+          aws_access_mode: aws_access_mode
+          aws_user_policies: aws_user_policies
+          signer_key_name: signer_key_name
+          root_first_in_chain: true
+          aws_role_arns: aws_role_arns
+          active: true
+          gke_cluster_compute_zone: gke_cluster_compute_zone
+          aws_user_console_access: true
+          chef_server_username: chef_server_username
+          db_host_name: db_host_name
+          store_private_key: true
+          user_principal_name: user_principal_name
+          db_name: db_name
+          db_server_certificates: db_server_certificates
+          chef_skip_ssl: true
+          db_port: db_port
+          db_server_name: db_server_name
+          artifactory_base_url: artifactory_base_url
+          venafi_zone: venafi_zone
+          azure_client_secret: azure_client_secret
+          azure_user_groups_obj_id: azure_user_groups_obj_id
+          azure_user_portal_access: true
+          eks_cluster_endpoint: eks_cluster_endpoint
+          aws_session_token: aws_session_token
+          gke_service_account_key: gke_service_account_key
+          db_isolation_level: db_isolation_level
+          rabbitmq_user_vhost: rabbitmq_user_vhost
+          db_pwd: db_pwd
+          gke_service_account_name: gke_service_account_name
+          mysql_creation_statements: mysql_creation_statements
+          mongodb_roles: mongodb_roles
+          mongodb_db_name: mongodb_db_name
+          should_stop: should_stop
+          artifactory_token_audience: artifactory_token_audience
+          dynamic_secret_name: dynamic_secret_name
+          rabbitmq_server_uri: rabbitmq_server_uri
+          chef_server_access_mode: chef_server_access_mode
+          eks_access_key_id: eks_access_key_id
+          aws_user_programmatic_access: true
+          rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
+          rabbitmq_user_write_permission: rabbitmq_user_write_permission
+          rabbitmq_user_tags: rabbitmq_user_tags
+          auto_generated_folder: auto_generated_folder
+          user_ttl: user_ttl
+          create_cert_using_pki: true
+          eks_assume_role: eks_assume_role
+          azure_user_programmatic_access: true
+          eks_secret_access_key: eks_secret_access_key
+          aws_secret_access_key: aws_secret_access_key
+          groups: groups
+          postgres_creation_statements: postgres_creation_statements
+          chef_organizations: chef_organizations
+          dynamic_secret_id: 6
+          chef_server_host_name: chef_server_host_name
+          mssql_revocation_statements: mssql_revocation_statements
+          chef_server_port: chef_server_port
+          db_max_idle_conns: db_max_idle_conns
+          eks_cluster_ca_certificate: eks_cluster_ca_certificate
+          aws_access_key_id: aws_access_key_id
+          aws_region: aws_region
+          eks_cluster_name: eks_cluster_name
+          gke_project_id: gke_project_id
+          chef_server_url: chef_server_url
+          artifactory_admin_username: artifactory_admin_username
+          gke_cluster_name: gke_cluster_name
+          admin_name: admin_name
+          rabbitmq_server_user: rabbitmq_server_user
+          aws_user_groups: aws_user_groups
+          venafi_api_key: venafi_api_key
+          host_name: host_name
+          azure_tenant_id: azure_tenant_id
+      properties:
+        producer_details:
+          $ref: '#/components/schemas/DSProducerDetails'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayCreateProducerAws:
+      description: gatewayCreateProducerAws is a command that creates aws producer
+      properties:
+        access-key-id:
+          description: Access Key ID
+          type: string
+          x-go-name: AccessId
+        access-mode:
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/producer/config
+        access-secret-key:
+          description: Secret Access Key
+          type: string
+          x-go-name: AccessKey
+        admin-rotation-interval-days:
+          default: 0
+          description: Admin credentials rotation interval (days)
+          format: int64
+          type: integer
+          x-go-name: AdminCredsRotationInterval
+        aws-role-arns:
+          description: AWS Role ARNs to be use in the Assume Role operation (relevant
+            only for assume_rile mode)
+          type: string
+          x-go-name: RoleARNs
+        aws-user-console-access:
+          default: false
+          description: AWS User console access
+          type: boolean
+          x-go-name: UserConsoleAccess
+        aws-user-groups:
+          description: AWS User groups
+          type: string
+          x-go-name: UserGroups
+        aws-user-policies:
+          description: AWS User policies
+          type: string
+          x-go-name: UserPolicies
+        aws-user-programmatic-access:
+          default: true
+          description: AWS User programmatic access
+          type: boolean
+          x-go-name: UserProgrammaticAccess
+        enable-admin-rotation:
+          default: false
+          description: Automatic admin credentials rotation
+          type: boolean
+          x-go-name: AutomaticAdminCredsRotation
+        gateway-url:
+          default: http://localhost:8000
+          description: Gateway url
+          type: string
+          x-go-name: GatewayUrl
+        name:
+          description: Producer name
+          type: string
+          x-go-name: ProducerName
+        producer-encryption-key-name:
+          description: Dynamic producer encryption key
+          type: string
+          x-go-name: ProducerEncryptionKey
+        region:
+          default: us-east-2
+          description: Region
+          type: string
+          x-go-name: Region
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        user-ttl:
+          default: 60m
+          description: User TTL
+          type: string
+          x-go-name: UserTtl
+      required:
+      - access-key-id
+      - access-secret-key
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayCreateProducerAwsOutput:
+      example:
+        producer_details:
+          artifactory_token_scope: artifactory_token_scope
+          gke_cluster_endpoint: gke_cluster_endpoint
+          allow_subdomains: true
+          dynamic_secret_type: dynamic_secret_type
+          gke_cluster_ca_certificate: gke_cluster_ca_certificate
+          allowed_domains: allowed_domains
+          dynamic_secret_key: dynamic_secret_key
+          host_port: host_port
+          chef_server_key: chef_server_key
+          db_max_open_conns: db_max_open_conns
+          enable_admin_rotation: true
+          admin_rotation_interval_days: 0
+          failure_message: failure_message
+          rabbitmq_user_read_permission: rabbitmq_user_read_permission
+          azure_client_id: azure_client_id
+          mssql_creation_statements: mssql_creation_statements
+          mongodb_uri_connection: mongodb_uri_connection
+          db_user_name: db_user_name
+          eks_region: eks_region
+          artifactory_admin_apikey: artifactory_admin_apikey
+          admin_pwd: admin_pwd
+          azure_app_object_id: azure_app_object_id
+          azure_user_roles_template_id: azure_user_roles_template_id
+          fixed_user_only: fixed_user_only
+          rabbitmq_server_password: rabbitmq_server_password
+          aws_access_mode: aws_access_mode
+          aws_user_policies: aws_user_policies
+          signer_key_name: signer_key_name
+          root_first_in_chain: true
+          aws_role_arns: aws_role_arns
+          active: true
+          gke_cluster_compute_zone: gke_cluster_compute_zone
+          aws_user_console_access: true
+          chef_server_username: chef_server_username
+          db_host_name: db_host_name
+          store_private_key: true
+          user_principal_name: user_principal_name
+          db_name: db_name
+          db_server_certificates: db_server_certificates
+          chef_skip_ssl: true
+          db_port: db_port
+          db_server_name: db_server_name
+          artifactory_base_url: artifactory_base_url
+          venafi_zone: venafi_zone
+          azure_client_secret: azure_client_secret
+          azure_user_groups_obj_id: azure_user_groups_obj_id
+          azure_user_portal_access: true
+          eks_cluster_endpoint: eks_cluster_endpoint
+          aws_session_token: aws_session_token
+          gke_service_account_key: gke_service_account_key
+          db_isolation_level: db_isolation_level
+          rabbitmq_user_vhost: rabbitmq_user_vhost
+          db_pwd: db_pwd
+          gke_service_account_name: gke_service_account_name
+          mysql_creation_statements: mysql_creation_statements
+          mongodb_roles: mongodb_roles
+          mongodb_db_name: mongodb_db_name
+          should_stop: should_stop
+          artifactory_token_audience: artifactory_token_audience
+          dynamic_secret_name: dynamic_secret_name
+          rabbitmq_server_uri: rabbitmq_server_uri
+          chef_server_access_mode: chef_server_access_mode
+          eks_access_key_id: eks_access_key_id
+          aws_user_programmatic_access: true
+          rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
+          rabbitmq_user_write_permission: rabbitmq_user_write_permission
+          rabbitmq_user_tags: rabbitmq_user_tags
+          auto_generated_folder: auto_generated_folder
+          user_ttl: user_ttl
+          create_cert_using_pki: true
+          eks_assume_role: eks_assume_role
+          azure_user_programmatic_access: true
+          eks_secret_access_key: eks_secret_access_key
+          aws_secret_access_key: aws_secret_access_key
+          groups: groups
+          postgres_creation_statements: postgres_creation_statements
+          chef_organizations: chef_organizations
+          dynamic_secret_id: 6
+          chef_server_host_name: chef_server_host_name
+          mssql_revocation_statements: mssql_revocation_statements
+          chef_server_port: chef_server_port
+          db_max_idle_conns: db_max_idle_conns
+          eks_cluster_ca_certificate: eks_cluster_ca_certificate
+          aws_access_key_id: aws_access_key_id
+          aws_region: aws_region
+          eks_cluster_name: eks_cluster_name
+          gke_project_id: gke_project_id
+          chef_server_url: chef_server_url
+          artifactory_admin_username: artifactory_admin_username
+          gke_cluster_name: gke_cluster_name
+          admin_name: admin_name
+          rabbitmq_server_user: rabbitmq_server_user
+          aws_user_groups: aws_user_groups
+          venafi_api_key: venafi_api_key
+          host_name: host_name
+          azure_tenant_id: azure_tenant_id
+      properties:
+        producer_details:
+          $ref: '#/components/schemas/DSProducerDetails'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayCreateProducerAzure:
+      description: gatewayCreateProducerAzure is a command that creates azure producer
+      properties:
+        app-obj-id:
+          description: Azure App Object Id
+          type: string
+          x-go-name: AppObjId
+        client-id:
+          description: Azure Client ID
+          type: string
+          x-go-name: ClientId
+        client-secret:
+          description: Azure Client Secret
+          type: string
+          x-go-name: ClientSecret
+        gateway-url:
+          default: http://localhost:8000
+          description: Gateway url
+          type: string
+          x-go-name: GatewayUrl
+        name:
+          description: Producer name
+          type: string
+          x-go-name: ProducerName
+        producer-encryption-key-name:
+          description: Dynamic producer encryption key
+          type: string
+          x-go-name: ProducerEncryptionKey
+        tenant-id:
+          description: Azure Tenant ID
+          type: string
+          x-go-name: TenantId
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        user-group-obj-id:
+          description: User Group Object Id
+          type: string
+          x-go-name: UserGroupObjId
+        user-portal-access:
+          default: false
+          description: Azure User portal access
+          type: boolean
+          x-go-name: UserPortaAccess
+        user-principal-name:
+          description: User Principal Name
+          type: string
+          x-go-name: UserPrincipalName
+        user-programmatic-access:
+          default: true
+          description: Azure User programmatic access
+          type: boolean
+          x-go-name: UserProgrammaticAccess
+        user-role-template-id:
+          description: User Role Template Id
+          type: string
+          x-go-name: UserRoleTemplateId
+        user-ttl:
+          default: 60m
+          description: User TTL
+          type: string
+          x-go-name: UserTtl
+      required:
+      - client-id
+      - client-secret
+      - name
+      - tenant-id
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayCreateProducerAzureOutput:
+      example:
+        producer_details:
+          artifactory_token_scope: artifactory_token_scope
+          gke_cluster_endpoint: gke_cluster_endpoint
+          allow_subdomains: true
+          dynamic_secret_type: dynamic_secret_type
+          gke_cluster_ca_certificate: gke_cluster_ca_certificate
+          allowed_domains: allowed_domains
+          dynamic_secret_key: dynamic_secret_key
+          host_port: host_port
+          chef_server_key: chef_server_key
+          db_max_open_conns: db_max_open_conns
+          enable_admin_rotation: true
+          admin_rotation_interval_days: 0
+          failure_message: failure_message
+          rabbitmq_user_read_permission: rabbitmq_user_read_permission
+          azure_client_id: azure_client_id
+          mssql_creation_statements: mssql_creation_statements
+          mongodb_uri_connection: mongodb_uri_connection
+          db_user_name: db_user_name
+          eks_region: eks_region
+          artifactory_admin_apikey: artifactory_admin_apikey
+          admin_pwd: admin_pwd
+          azure_app_object_id: azure_app_object_id
+          azure_user_roles_template_id: azure_user_roles_template_id
+          fixed_user_only: fixed_user_only
+          rabbitmq_server_password: rabbitmq_server_password
+          aws_access_mode: aws_access_mode
+          aws_user_policies: aws_user_policies
+          signer_key_name: signer_key_name
+          root_first_in_chain: true
+          aws_role_arns: aws_role_arns
+          active: true
+          gke_cluster_compute_zone: gke_cluster_compute_zone
+          aws_user_console_access: true
+          chef_server_username: chef_server_username
+          db_host_name: db_host_name
+          store_private_key: true
+          user_principal_name: user_principal_name
+          db_name: db_name
+          db_server_certificates: db_server_certificates
+          chef_skip_ssl: true
+          db_port: db_port
+          db_server_name: db_server_name
+          artifactory_base_url: artifactory_base_url
+          venafi_zone: venafi_zone
+          azure_client_secret: azure_client_secret
+          azure_user_groups_obj_id: azure_user_groups_obj_id
+          azure_user_portal_access: true
+          eks_cluster_endpoint: eks_cluster_endpoint
+          aws_session_token: aws_session_token
+          gke_service_account_key: gke_service_account_key
+          db_isolation_level: db_isolation_level
+          rabbitmq_user_vhost: rabbitmq_user_vhost
+          db_pwd: db_pwd
+          gke_service_account_name: gke_service_account_name
+          mysql_creation_statements: mysql_creation_statements
+          mongodb_roles: mongodb_roles
+          mongodb_db_name: mongodb_db_name
+          should_stop: should_stop
+          artifactory_token_audience: artifactory_token_audience
+          dynamic_secret_name: dynamic_secret_name
+          rabbitmq_server_uri: rabbitmq_server_uri
+          chef_server_access_mode: chef_server_access_mode
+          eks_access_key_id: eks_access_key_id
+          aws_user_programmatic_access: true
+          rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
+          rabbitmq_user_write_permission: rabbitmq_user_write_permission
+          rabbitmq_user_tags: rabbitmq_user_tags
+          auto_generated_folder: auto_generated_folder
+          user_ttl: user_ttl
+          create_cert_using_pki: true
+          eks_assume_role: eks_assume_role
+          azure_user_programmatic_access: true
+          eks_secret_access_key: eks_secret_access_key
+          aws_secret_access_key: aws_secret_access_key
+          groups: groups
+          postgres_creation_statements: postgres_creation_statements
+          chef_organizations: chef_organizations
+          dynamic_secret_id: 6
+          chef_server_host_name: chef_server_host_name
+          mssql_revocation_statements: mssql_revocation_statements
+          chef_server_port: chef_server_port
+          db_max_idle_conns: db_max_idle_conns
+          eks_cluster_ca_certificate: eks_cluster_ca_certificate
+          aws_access_key_id: aws_access_key_id
+          aws_region: aws_region
+          eks_cluster_name: eks_cluster_name
+          gke_project_id: gke_project_id
+          chef_server_url: chef_server_url
+          artifactory_admin_username: artifactory_admin_username
+          gke_cluster_name: gke_cluster_name
+          admin_name: admin_name
+          rabbitmq_server_user: rabbitmq_server_user
+          aws_user_groups: aws_user_groups
+          venafi_api_key: venafi_api_key
+          host_name: host_name
+          azure_tenant_id: azure_tenant_id
+      properties:
+        producer_details:
+          $ref: '#/components/schemas/DSProducerDetails'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayCreateProducerEks:
+      description: gatewayCreateProducerEks is a command that creates eks producer
+      properties:
+        eks-access-key-id:
+          description: Access Key ID
+          type: string
+          x-go-name: AccessId
+        eks-assume-role:
+          description: IAM assume role
+          type: string
+          x-go-name: AssumeRole
+        eks-cluster-cert:
+          description: EKS cluster CA certificate
+          type: string
+          x-go-name: ClusterCACert
+        eks-cluster-endpoint:
+          description: EKS cluster URL endpoint
+          type: string
+          x-go-name: ClusterEndpoint
+        eks-cluster-name:
+          description: EKS cluster name
+          type: string
+          x-go-name: ClusterName
+        eks-region:
+          default: us-east-2
+          description: Region
+          type: string
+          x-go-name: Region
+        eks-secret-access-key:
+          description: Secret Access Key
+          type: string
+          x-go-name: AccessKey
+        gateway-url:
+          default: http://localhost:8000
+          description: Gateway url
+          type: string
+          x-go-name: GatewayUrl
+        name:
+          description: Producer name
+          type: string
+          x-go-name: ProducerName
+        producer-encryption-key-name:
+          description: Dynamic producer encryption key
+          type: string
+          x-go-name: ProducerEncryptionKey
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        user-ttl:
+          default: 60m
+          description: User TTL
+          type: string
+          x-go-name: UserTtl
+      required:
+      - eks-access-key-id
+      - eks-cluster-cert
+      - eks-cluster-endpoint
+      - eks-cluster-name
+      - eks-secret-access-key
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayCreateProducerEksOutput:
+      example:
+        producer_details:
+          artifactory_token_scope: artifactory_token_scope
+          gke_cluster_endpoint: gke_cluster_endpoint
+          allow_subdomains: true
+          dynamic_secret_type: dynamic_secret_type
+          gke_cluster_ca_certificate: gke_cluster_ca_certificate
+          allowed_domains: allowed_domains
+          dynamic_secret_key: dynamic_secret_key
+          host_port: host_port
+          chef_server_key: chef_server_key
+          db_max_open_conns: db_max_open_conns
+          enable_admin_rotation: true
+          admin_rotation_interval_days: 0
+          failure_message: failure_message
+          rabbitmq_user_read_permission: rabbitmq_user_read_permission
+          azure_client_id: azure_client_id
+          mssql_creation_statements: mssql_creation_statements
+          mongodb_uri_connection: mongodb_uri_connection
+          db_user_name: db_user_name
+          eks_region: eks_region
+          artifactory_admin_apikey: artifactory_admin_apikey
+          admin_pwd: admin_pwd
+          azure_app_object_id: azure_app_object_id
+          azure_user_roles_template_id: azure_user_roles_template_id
+          fixed_user_only: fixed_user_only
+          rabbitmq_server_password: rabbitmq_server_password
+          aws_access_mode: aws_access_mode
+          aws_user_policies: aws_user_policies
+          signer_key_name: signer_key_name
+          root_first_in_chain: true
+          aws_role_arns: aws_role_arns
+          active: true
+          gke_cluster_compute_zone: gke_cluster_compute_zone
+          aws_user_console_access: true
+          chef_server_username: chef_server_username
+          db_host_name: db_host_name
+          store_private_key: true
+          user_principal_name: user_principal_name
+          db_name: db_name
+          db_server_certificates: db_server_certificates
+          chef_skip_ssl: true
+          db_port: db_port
+          db_server_name: db_server_name
+          artifactory_base_url: artifactory_base_url
+          venafi_zone: venafi_zone
+          azure_client_secret: azure_client_secret
+          azure_user_groups_obj_id: azure_user_groups_obj_id
+          azure_user_portal_access: true
+          eks_cluster_endpoint: eks_cluster_endpoint
+          aws_session_token: aws_session_token
+          gke_service_account_key: gke_service_account_key
+          db_isolation_level: db_isolation_level
+          rabbitmq_user_vhost: rabbitmq_user_vhost
+          db_pwd: db_pwd
+          gke_service_account_name: gke_service_account_name
+          mysql_creation_statements: mysql_creation_statements
+          mongodb_roles: mongodb_roles
+          mongodb_db_name: mongodb_db_name
+          should_stop: should_stop
+          artifactory_token_audience: artifactory_token_audience
+          dynamic_secret_name: dynamic_secret_name
+          rabbitmq_server_uri: rabbitmq_server_uri
+          chef_server_access_mode: chef_server_access_mode
+          eks_access_key_id: eks_access_key_id
+          aws_user_programmatic_access: true
+          rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
+          rabbitmq_user_write_permission: rabbitmq_user_write_permission
+          rabbitmq_user_tags: rabbitmq_user_tags
+          auto_generated_folder: auto_generated_folder
+          user_ttl: user_ttl
+          create_cert_using_pki: true
+          eks_assume_role: eks_assume_role
+          azure_user_programmatic_access: true
+          eks_secret_access_key: eks_secret_access_key
+          aws_secret_access_key: aws_secret_access_key
+          groups: groups
+          postgres_creation_statements: postgres_creation_statements
+          chef_organizations: chef_organizations
+          dynamic_secret_id: 6
+          chef_server_host_name: chef_server_host_name
+          mssql_revocation_statements: mssql_revocation_statements
+          chef_server_port: chef_server_port
+          db_max_idle_conns: db_max_idle_conns
+          eks_cluster_ca_certificate: eks_cluster_ca_certificate
+          aws_access_key_id: aws_access_key_id
+          aws_region: aws_region
+          eks_cluster_name: eks_cluster_name
+          gke_project_id: gke_project_id
+          chef_server_url: chef_server_url
+          artifactory_admin_username: artifactory_admin_username
+          gke_cluster_name: gke_cluster_name
+          admin_name: admin_name
+          rabbitmq_server_user: rabbitmq_server_user
+          aws_user_groups: aws_user_groups
+          venafi_api_key: venafi_api_key
+          host_name: host_name
+          azure_tenant_id: azure_tenant_id
+      properties:
+        producer_details:
+          $ref: '#/components/schemas/DSProducerDetails'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayCreateProducerGke:
+      description: gatewayCreateProducerGke is a command that creates gke producer
+      properties:
+        gateway-url:
+          default: http://localhost:8000
+          description: Gateway url
+          type: string
+          x-go-name: GatewayUrl
+        gke-cluster-cert:
+          description: GKE cluster CA certificate
+          type: string
+          x-go-name: ClusterCACert
+        gke-cluster-endpoint:
+          description: GKE cluster URL endpoint
+          type: string
+          x-go-name: ClusterEndpoint
+        gke-cluster-name:
+          description: GKE cluster name
+          type: string
+          x-go-name: ClusterName
+        gke-service-account-email:
+          description: GKE service account email
+          type: string
+          x-go-name: ServiceAccountEmail
+        gke-service-account-key-file-path:
+          description: GKE Service Account key faile path
+          type: string
+          x-go-name: ServiceAccountKeyFilePath
+        name:
+          description: Producer name
+          type: string
+          x-go-name: ProducerName
+        producer-encryption-key-name:
+          description: Dynamic producer encryption key
+          type: string
+          x-go-name: ProducerEncryptionKey
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        user-ttl:
+          default: 60m
+          description: User TTL
+          type: string
+          x-go-name: UserTtl
+      required:
+      - gke-cluster-cert
+      - gke-cluster-endpoint
+      - gke-cluster-name
+      - gke-service-account-email
+      - gke-service-account-key-file-path
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayCreateProducerGkeOutput:
+      example:
+        producer_details:
+          artifactory_token_scope: artifactory_token_scope
+          gke_cluster_endpoint: gke_cluster_endpoint
+          allow_subdomains: true
+          dynamic_secret_type: dynamic_secret_type
+          gke_cluster_ca_certificate: gke_cluster_ca_certificate
+          allowed_domains: allowed_domains
+          dynamic_secret_key: dynamic_secret_key
+          host_port: host_port
+          chef_server_key: chef_server_key
+          db_max_open_conns: db_max_open_conns
+          enable_admin_rotation: true
+          admin_rotation_interval_days: 0
+          failure_message: failure_message
+          rabbitmq_user_read_permission: rabbitmq_user_read_permission
+          azure_client_id: azure_client_id
+          mssql_creation_statements: mssql_creation_statements
+          mongodb_uri_connection: mongodb_uri_connection
+          db_user_name: db_user_name
+          eks_region: eks_region
+          artifactory_admin_apikey: artifactory_admin_apikey
+          admin_pwd: admin_pwd
+          azure_app_object_id: azure_app_object_id
+          azure_user_roles_template_id: azure_user_roles_template_id
+          fixed_user_only: fixed_user_only
+          rabbitmq_server_password: rabbitmq_server_password
+          aws_access_mode: aws_access_mode
+          aws_user_policies: aws_user_policies
+          signer_key_name: signer_key_name
+          root_first_in_chain: true
+          aws_role_arns: aws_role_arns
+          active: true
+          gke_cluster_compute_zone: gke_cluster_compute_zone
+          aws_user_console_access: true
+          chef_server_username: chef_server_username
+          db_host_name: db_host_name
+          store_private_key: true
+          user_principal_name: user_principal_name
+          db_name: db_name
+          db_server_certificates: db_server_certificates
+          chef_skip_ssl: true
+          db_port: db_port
+          db_server_name: db_server_name
+          artifactory_base_url: artifactory_base_url
+          venafi_zone: venafi_zone
+          azure_client_secret: azure_client_secret
+          azure_user_groups_obj_id: azure_user_groups_obj_id
+          azure_user_portal_access: true
+          eks_cluster_endpoint: eks_cluster_endpoint
+          aws_session_token: aws_session_token
+          gke_service_account_key: gke_service_account_key
+          db_isolation_level: db_isolation_level
+          rabbitmq_user_vhost: rabbitmq_user_vhost
+          db_pwd: db_pwd
+          gke_service_account_name: gke_service_account_name
+          mysql_creation_statements: mysql_creation_statements
+          mongodb_roles: mongodb_roles
+          mongodb_db_name: mongodb_db_name
+          should_stop: should_stop
+          artifactory_token_audience: artifactory_token_audience
+          dynamic_secret_name: dynamic_secret_name
+          rabbitmq_server_uri: rabbitmq_server_uri
+          chef_server_access_mode: chef_server_access_mode
+          eks_access_key_id: eks_access_key_id
+          aws_user_programmatic_access: true
+          rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
+          rabbitmq_user_write_permission: rabbitmq_user_write_permission
+          rabbitmq_user_tags: rabbitmq_user_tags
+          auto_generated_folder: auto_generated_folder
+          user_ttl: user_ttl
+          create_cert_using_pki: true
+          eks_assume_role: eks_assume_role
+          azure_user_programmatic_access: true
+          eks_secret_access_key: eks_secret_access_key
+          aws_secret_access_key: aws_secret_access_key
+          groups: groups
+          postgres_creation_statements: postgres_creation_statements
+          chef_organizations: chef_organizations
+          dynamic_secret_id: 6
+          chef_server_host_name: chef_server_host_name
+          mssql_revocation_statements: mssql_revocation_statements
+          chef_server_port: chef_server_port
+          db_max_idle_conns: db_max_idle_conns
+          eks_cluster_ca_certificate: eks_cluster_ca_certificate
+          aws_access_key_id: aws_access_key_id
+          aws_region: aws_region
+          eks_cluster_name: eks_cluster_name
+          gke_project_id: gke_project_id
+          chef_server_url: chef_server_url
+          artifactory_admin_username: artifactory_admin_username
+          gke_cluster_name: gke_cluster_name
+          admin_name: admin_name
+          rabbitmq_server_user: rabbitmq_server_user
+          aws_user_groups: aws_user_groups
+          venafi_api_key: venafi_api_key
+          host_name: host_name
+          azure_tenant_id: azure_tenant_id
+      properties:
+        producer_details:
+          $ref: '#/components/schemas/DSProducerDetails'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayCreateProducerMSSQL:
+      description: gatewayCreateProducerMSSQL is a command that creates mssql producer
+      properties:
+        gateway-url:
+          default: http://localhost:8000
+          description: Gateway url
+          type: string
+          x-go-name: GatewayUrl
+        mssql-create-statements:
+          description: MSSQL Creation statements
+          type: string
+          x-go-name: CreationStatements
+        mssql-dbname:
+          description: MSSQL Name
+          type: string
+          x-go-name: DBName
+        mssql-host:
+          default: 127.0.0.1
+          description: MSSQL Host
+          type: string
+          x-go-name: DBHost
+        mssql-password:
+          description: MSSQL Password
+          type: string
+          x-go-name: DBPassword
+        mssql-port:
+          default: "1433"
+          description: MSSQL Port
+          type: string
+          x-go-name: DBPort
+        mssql-revocation-statements:
+          description: MSSQL Revocation statements
+          type: string
+          x-go-name: RevocationStatements
+        mssql-username:
+          description: MSSQL Username
+          type: string
+          x-go-name: DBUsername
+        name:
+          description: Producer name
+          type: string
+          x-go-name: ProducerName
+        producer-encryption-key-name:
+          description: Dynamic producer encryption key
+          type: string
+          x-go-name: ProducerEncryptionKey
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        user-ttl:
+          default: 60m
+          description: User TTL
+          type: string
+          x-go-name: UserTtl
+      required:
+      - mssql-dbname
+      - mssql-password
+      - mssql-username
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayCreateProducerMSSQLOutput:
+      example:
+        producer_details:
+          artifactory_token_scope: artifactory_token_scope
+          gke_cluster_endpoint: gke_cluster_endpoint
+          allow_subdomains: true
+          dynamic_secret_type: dynamic_secret_type
+          gke_cluster_ca_certificate: gke_cluster_ca_certificate
+          allowed_domains: allowed_domains
+          dynamic_secret_key: dynamic_secret_key
+          host_port: host_port
+          chef_server_key: chef_server_key
+          db_max_open_conns: db_max_open_conns
+          enable_admin_rotation: true
+          admin_rotation_interval_days: 0
+          failure_message: failure_message
+          rabbitmq_user_read_permission: rabbitmq_user_read_permission
+          azure_client_id: azure_client_id
+          mssql_creation_statements: mssql_creation_statements
+          mongodb_uri_connection: mongodb_uri_connection
+          db_user_name: db_user_name
+          eks_region: eks_region
+          artifactory_admin_apikey: artifactory_admin_apikey
+          admin_pwd: admin_pwd
+          azure_app_object_id: azure_app_object_id
+          azure_user_roles_template_id: azure_user_roles_template_id
+          fixed_user_only: fixed_user_only
+          rabbitmq_server_password: rabbitmq_server_password
+          aws_access_mode: aws_access_mode
+          aws_user_policies: aws_user_policies
+          signer_key_name: signer_key_name
+          root_first_in_chain: true
+          aws_role_arns: aws_role_arns
+          active: true
+          gke_cluster_compute_zone: gke_cluster_compute_zone
+          aws_user_console_access: true
+          chef_server_username: chef_server_username
+          db_host_name: db_host_name
+          store_private_key: true
+          user_principal_name: user_principal_name
+          db_name: db_name
+          db_server_certificates: db_server_certificates
+          chef_skip_ssl: true
+          db_port: db_port
+          db_server_name: db_server_name
+          artifactory_base_url: artifactory_base_url
+          venafi_zone: venafi_zone
+          azure_client_secret: azure_client_secret
+          azure_user_groups_obj_id: azure_user_groups_obj_id
+          azure_user_portal_access: true
+          eks_cluster_endpoint: eks_cluster_endpoint
+          aws_session_token: aws_session_token
+          gke_service_account_key: gke_service_account_key
+          db_isolation_level: db_isolation_level
+          rabbitmq_user_vhost: rabbitmq_user_vhost
+          db_pwd: db_pwd
+          gke_service_account_name: gke_service_account_name
+          mysql_creation_statements: mysql_creation_statements
+          mongodb_roles: mongodb_roles
+          mongodb_db_name: mongodb_db_name
+          should_stop: should_stop
+          artifactory_token_audience: artifactory_token_audience
+          dynamic_secret_name: dynamic_secret_name
+          rabbitmq_server_uri: rabbitmq_server_uri
+          chef_server_access_mode: chef_server_access_mode
+          eks_access_key_id: eks_access_key_id
+          aws_user_programmatic_access: true
+          rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
+          rabbitmq_user_write_permission: rabbitmq_user_write_permission
+          rabbitmq_user_tags: rabbitmq_user_tags
+          auto_generated_folder: auto_generated_folder
+          user_ttl: user_ttl
+          create_cert_using_pki: true
+          eks_assume_role: eks_assume_role
+          azure_user_programmatic_access: true
+          eks_secret_access_key: eks_secret_access_key
+          aws_secret_access_key: aws_secret_access_key
+          groups: groups
+          postgres_creation_statements: postgres_creation_statements
+          chef_organizations: chef_organizations
+          dynamic_secret_id: 6
+          chef_server_host_name: chef_server_host_name
+          mssql_revocation_statements: mssql_revocation_statements
+          chef_server_port: chef_server_port
+          db_max_idle_conns: db_max_idle_conns
+          eks_cluster_ca_certificate: eks_cluster_ca_certificate
+          aws_access_key_id: aws_access_key_id
+          aws_region: aws_region
+          eks_cluster_name: eks_cluster_name
+          gke_project_id: gke_project_id
+          chef_server_url: chef_server_url
+          artifactory_admin_username: artifactory_admin_username
+          gke_cluster_name: gke_cluster_name
+          admin_name: admin_name
+          rabbitmq_server_user: rabbitmq_server_user
+          aws_user_groups: aws_user_groups
+          venafi_api_key: venafi_api_key
+          host_name: host_name
+          azure_tenant_id: azure_tenant_id
+      properties:
+        producer_details:
+          $ref: '#/components/schemas/DSProducerDetails'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayCreateProducerMongo:
+      description: gatewayCreateProducerMongo is a command that creates mongo producer
+      properties:
+        gateway-url:
+          default: http://localhost:8000
+          description: Gateway url
+          type: string
+          x-go-name: GatewayUrl
+        mongodb-name:
+          description: MongoDB Name
+          type: string
+          x-go-name: DBName
+        mongodb-roles:
+          default: '[]'
+          description: MongoDB Roles
+          type: string
+          x-go-name: Roles
+        mongodb-server-uri:
+          description: Server URI
+          type: string
+          x-go-name: ServerURI
+        name:
+          description: Producer name
+          type: string
+          x-go-name: ProducerName
+        producer-encryption-key-name:
+          description: Dynamic producer encryption key
+          type: string
+          x-go-name: ProducerEncryptionKey
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        user-ttl:
+          default: 60m
+          description: User TTL
+          type: string
+          x-go-name: UserTtl
+      required:
+      - mongodb-name
+      - mongodb-server-uri
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayCreateProducerMongoOutput:
+      example:
+        producer_details:
+          artifactory_token_scope: artifactory_token_scope
+          gke_cluster_endpoint: gke_cluster_endpoint
+          allow_subdomains: true
+          dynamic_secret_type: dynamic_secret_type
+          gke_cluster_ca_certificate: gke_cluster_ca_certificate
+          allowed_domains: allowed_domains
+          dynamic_secret_key: dynamic_secret_key
+          host_port: host_port
+          chef_server_key: chef_server_key
+          db_max_open_conns: db_max_open_conns
+          enable_admin_rotation: true
+          admin_rotation_interval_days: 0
+          failure_message: failure_message
+          rabbitmq_user_read_permission: rabbitmq_user_read_permission
+          azure_client_id: azure_client_id
+          mssql_creation_statements: mssql_creation_statements
+          mongodb_uri_connection: mongodb_uri_connection
+          db_user_name: db_user_name
+          eks_region: eks_region
+          artifactory_admin_apikey: artifactory_admin_apikey
+          admin_pwd: admin_pwd
+          azure_app_object_id: azure_app_object_id
+          azure_user_roles_template_id: azure_user_roles_template_id
+          fixed_user_only: fixed_user_only
+          rabbitmq_server_password: rabbitmq_server_password
+          aws_access_mode: aws_access_mode
+          aws_user_policies: aws_user_policies
+          signer_key_name: signer_key_name
+          root_first_in_chain: true
+          aws_role_arns: aws_role_arns
+          active: true
+          gke_cluster_compute_zone: gke_cluster_compute_zone
+          aws_user_console_access: true
+          chef_server_username: chef_server_username
+          db_host_name: db_host_name
+          store_private_key: true
+          user_principal_name: user_principal_name
+          db_name: db_name
+          db_server_certificates: db_server_certificates
+          chef_skip_ssl: true
+          db_port: db_port
+          db_server_name: db_server_name
+          artifactory_base_url: artifactory_base_url
+          venafi_zone: venafi_zone
+          azure_client_secret: azure_client_secret
+          azure_user_groups_obj_id: azure_user_groups_obj_id
+          azure_user_portal_access: true
+          eks_cluster_endpoint: eks_cluster_endpoint
+          aws_session_token: aws_session_token
+          gke_service_account_key: gke_service_account_key
+          db_isolation_level: db_isolation_level
+          rabbitmq_user_vhost: rabbitmq_user_vhost
+          db_pwd: db_pwd
+          gke_service_account_name: gke_service_account_name
+          mysql_creation_statements: mysql_creation_statements
+          mongodb_roles: mongodb_roles
+          mongodb_db_name: mongodb_db_name
+          should_stop: should_stop
+          artifactory_token_audience: artifactory_token_audience
+          dynamic_secret_name: dynamic_secret_name
+          rabbitmq_server_uri: rabbitmq_server_uri
+          chef_server_access_mode: chef_server_access_mode
+          eks_access_key_id: eks_access_key_id
+          aws_user_programmatic_access: true
+          rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
+          rabbitmq_user_write_permission: rabbitmq_user_write_permission
+          rabbitmq_user_tags: rabbitmq_user_tags
+          auto_generated_folder: auto_generated_folder
+          user_ttl: user_ttl
+          create_cert_using_pki: true
+          eks_assume_role: eks_assume_role
+          azure_user_programmatic_access: true
+          eks_secret_access_key: eks_secret_access_key
+          aws_secret_access_key: aws_secret_access_key
+          groups: groups
+          postgres_creation_statements: postgres_creation_statements
+          chef_organizations: chef_organizations
+          dynamic_secret_id: 6
+          chef_server_host_name: chef_server_host_name
+          mssql_revocation_statements: mssql_revocation_statements
+          chef_server_port: chef_server_port
+          db_max_idle_conns: db_max_idle_conns
+          eks_cluster_ca_certificate: eks_cluster_ca_certificate
+          aws_access_key_id: aws_access_key_id
+          aws_region: aws_region
+          eks_cluster_name: eks_cluster_name
+          gke_project_id: gke_project_id
+          chef_server_url: chef_server_url
+          artifactory_admin_username: artifactory_admin_username
+          gke_cluster_name: gke_cluster_name
+          admin_name: admin_name
+          rabbitmq_server_user: rabbitmq_server_user
+          aws_user_groups: aws_user_groups
+          venafi_api_key: venafi_api_key
+          host_name: host_name
+          azure_tenant_id: azure_tenant_id
+      properties:
+        producer_details:
+          $ref: '#/components/schemas/DSProducerDetails'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayCreateProducerMySQL:
+      description: gatewayCreateProducerMySQL is a command that creates mysql producer
+      properties:
+        db-server-certificates:
+          description: (Optional) DB server certificates
+          type: string
+          x-go-name: DBServerCertificates
+        db-server-name:
+          description: (Optional) Server name for certificate verification
+          type: string
+          x-go-name: DBServerName
+        gateway-url:
+          default: http://localhost:8000
+          description: Gateway url
+          type: string
+          x-go-name: GatewayUrl
+        mysql-dbname:
+          description: MySQL DB Name
+          type: string
+          x-go-name: DBName
+        mysql-host:
+          default: 127.0.0.1
+          description: MySQL Host
+          type: string
+          x-go-name: DBHost
+        mysql-password:
+          description: MySQL Password
+          type: string
+          x-go-name: DBPassword
+        mysql-port:
+          default: "3306"
+          description: MySQL Port
+          type: string
+          x-go-name: DBPort
+        mysql-screation-statements:
+          description: MySQL Creation statements
+          type: string
+          x-go-name: CreationStatements
+        mysql-username:
+          description: MySQL Username
+          type: string
+          x-go-name: DBUsername
+        name:
+          description: Producer name
+          type: string
+          x-go-name: ProducerName
+        producer-encryption-key-name:
+          description: Dynamic producer encryption key
+          type: string
+          x-go-name: ProducerEncryptionKey
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        user-ttl:
+          default: 60m
+          description: User TTL
+          type: string
+          x-go-name: UserTtl
+      required:
+      - mysql-dbname
+      - mysql-password
+      - mysql-username
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayCreateProducerMySQLOutput:
+      example:
+        producer_details:
+          artifactory_token_scope: artifactory_token_scope
+          gke_cluster_endpoint: gke_cluster_endpoint
+          allow_subdomains: true
+          dynamic_secret_type: dynamic_secret_type
+          gke_cluster_ca_certificate: gke_cluster_ca_certificate
+          allowed_domains: allowed_domains
+          dynamic_secret_key: dynamic_secret_key
+          host_port: host_port
+          chef_server_key: chef_server_key
+          db_max_open_conns: db_max_open_conns
+          enable_admin_rotation: true
+          admin_rotation_interval_days: 0
+          failure_message: failure_message
+          rabbitmq_user_read_permission: rabbitmq_user_read_permission
+          azure_client_id: azure_client_id
+          mssql_creation_statements: mssql_creation_statements
+          mongodb_uri_connection: mongodb_uri_connection
+          db_user_name: db_user_name
+          eks_region: eks_region
+          artifactory_admin_apikey: artifactory_admin_apikey
+          admin_pwd: admin_pwd
+          azure_app_object_id: azure_app_object_id
+          azure_user_roles_template_id: azure_user_roles_template_id
+          fixed_user_only: fixed_user_only
+          rabbitmq_server_password: rabbitmq_server_password
+          aws_access_mode: aws_access_mode
+          aws_user_policies: aws_user_policies
+          signer_key_name: signer_key_name
+          root_first_in_chain: true
+          aws_role_arns: aws_role_arns
+          active: true
+          gke_cluster_compute_zone: gke_cluster_compute_zone
+          aws_user_console_access: true
+          chef_server_username: chef_server_username
+          db_host_name: db_host_name
+          store_private_key: true
+          user_principal_name: user_principal_name
+          db_name: db_name
+          db_server_certificates: db_server_certificates
+          chef_skip_ssl: true
+          db_port: db_port
+          db_server_name: db_server_name
+          artifactory_base_url: artifactory_base_url
+          venafi_zone: venafi_zone
+          azure_client_secret: azure_client_secret
+          azure_user_groups_obj_id: azure_user_groups_obj_id
+          azure_user_portal_access: true
+          eks_cluster_endpoint: eks_cluster_endpoint
+          aws_session_token: aws_session_token
+          gke_service_account_key: gke_service_account_key
+          db_isolation_level: db_isolation_level
+          rabbitmq_user_vhost: rabbitmq_user_vhost
+          db_pwd: db_pwd
+          gke_service_account_name: gke_service_account_name
+          mysql_creation_statements: mysql_creation_statements
+          mongodb_roles: mongodb_roles
+          mongodb_db_name: mongodb_db_name
+          should_stop: should_stop
+          artifactory_token_audience: artifactory_token_audience
+          dynamic_secret_name: dynamic_secret_name
+          rabbitmq_server_uri: rabbitmq_server_uri
+          chef_server_access_mode: chef_server_access_mode
+          eks_access_key_id: eks_access_key_id
+          aws_user_programmatic_access: true
+          rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
+          rabbitmq_user_write_permission: rabbitmq_user_write_permission
+          rabbitmq_user_tags: rabbitmq_user_tags
+          auto_generated_folder: auto_generated_folder
+          user_ttl: user_ttl
+          create_cert_using_pki: true
+          eks_assume_role: eks_assume_role
+          azure_user_programmatic_access: true
+          eks_secret_access_key: eks_secret_access_key
+          aws_secret_access_key: aws_secret_access_key
+          groups: groups
+          postgres_creation_statements: postgres_creation_statements
+          chef_organizations: chef_organizations
+          dynamic_secret_id: 6
+          chef_server_host_name: chef_server_host_name
+          mssql_revocation_statements: mssql_revocation_statements
+          chef_server_port: chef_server_port
+          db_max_idle_conns: db_max_idle_conns
+          eks_cluster_ca_certificate: eks_cluster_ca_certificate
+          aws_access_key_id: aws_access_key_id
+          aws_region: aws_region
+          eks_cluster_name: eks_cluster_name
+          gke_project_id: gke_project_id
+          chef_server_url: chef_server_url
+          artifactory_admin_username: artifactory_admin_username
+          gke_cluster_name: gke_cluster_name
+          admin_name: admin_name
+          rabbitmq_server_user: rabbitmq_server_user
+          aws_user_groups: aws_user_groups
+          venafi_api_key: venafi_api_key
+          host_name: host_name
+          azure_tenant_id: azure_tenant_id
+      properties:
+        producer_details:
+          $ref: '#/components/schemas/DSProducerDetails'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayCreateProducerPostgreSQL:
+      description: gatewayCreateProducerPostgreSQL is a command that creates postgresql
+        producer
+      properties:
+        creation-statements:
+          description: PostgreSQL Creation statements
+          type: string
+          x-go-name: CreationStatements
+        gateway-url:
+          default: http://localhost:8000
+          description: Gateway url
+          type: string
+          x-go-name: GatewayUrl
+        name:
+          description: Producer name
+          type: string
+          x-go-name: ProducerName
+        postgresql-db-name:
+          description: PostgreSQL DB Name
+          type: string
+          x-go-name: DBName
+        postgresql-host:
+          default: 127.0.0.1
+          description: PostgreSQL Host
+          type: string
+          x-go-name: DBHost
+        postgresql-password:
+          description: PostgreSQL Password
+          type: string
+          x-go-name: DBPassword
+        postgresql-port:
+          default: "3306"
+          description: PostgreSQL Port
+          type: string
+          x-go-name: DBPort
+        postgresql-username:
+          description: PostgreSQL Username
+          type: string
+          x-go-name: DBUsername
+        producer-encryption-key:
+          description: Dynamic producer encryption key
+          type: string
+          x-go-name: ProducerEncryptionKey
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        user-ttl:
+          default: 60m
+          description: User TTL
+          type: string
+          x-go-name: UserTtl
+      required:
+      - name
+      - postgresql-db-name
+      - postgresql-password
+      - postgresql-username
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayCreateProducerPostgreSQLOutput:
+      example:
+        producer_details:
+          artifactory_token_scope: artifactory_token_scope
+          gke_cluster_endpoint: gke_cluster_endpoint
+          allow_subdomains: true
+          dynamic_secret_type: dynamic_secret_type
+          gke_cluster_ca_certificate: gke_cluster_ca_certificate
+          allowed_domains: allowed_domains
+          dynamic_secret_key: dynamic_secret_key
+          host_port: host_port
+          chef_server_key: chef_server_key
+          db_max_open_conns: db_max_open_conns
+          enable_admin_rotation: true
+          admin_rotation_interval_days: 0
+          failure_message: failure_message
+          rabbitmq_user_read_permission: rabbitmq_user_read_permission
+          azure_client_id: azure_client_id
+          mssql_creation_statements: mssql_creation_statements
+          mongodb_uri_connection: mongodb_uri_connection
+          db_user_name: db_user_name
+          eks_region: eks_region
+          artifactory_admin_apikey: artifactory_admin_apikey
+          admin_pwd: admin_pwd
+          azure_app_object_id: azure_app_object_id
+          azure_user_roles_template_id: azure_user_roles_template_id
+          fixed_user_only: fixed_user_only
+          rabbitmq_server_password: rabbitmq_server_password
+          aws_access_mode: aws_access_mode
+          aws_user_policies: aws_user_policies
+          signer_key_name: signer_key_name
+          root_first_in_chain: true
+          aws_role_arns: aws_role_arns
+          active: true
+          gke_cluster_compute_zone: gke_cluster_compute_zone
+          aws_user_console_access: true
+          chef_server_username: chef_server_username
+          db_host_name: db_host_name
+          store_private_key: true
+          user_principal_name: user_principal_name
+          db_name: db_name
+          db_server_certificates: db_server_certificates
+          chef_skip_ssl: true
+          db_port: db_port
+          db_server_name: db_server_name
+          artifactory_base_url: artifactory_base_url
+          venafi_zone: venafi_zone
+          azure_client_secret: azure_client_secret
+          azure_user_groups_obj_id: azure_user_groups_obj_id
+          azure_user_portal_access: true
+          eks_cluster_endpoint: eks_cluster_endpoint
+          aws_session_token: aws_session_token
+          gke_service_account_key: gke_service_account_key
+          db_isolation_level: db_isolation_level
+          rabbitmq_user_vhost: rabbitmq_user_vhost
+          db_pwd: db_pwd
+          gke_service_account_name: gke_service_account_name
+          mysql_creation_statements: mysql_creation_statements
+          mongodb_roles: mongodb_roles
+          mongodb_db_name: mongodb_db_name
+          should_stop: should_stop
+          artifactory_token_audience: artifactory_token_audience
+          dynamic_secret_name: dynamic_secret_name
+          rabbitmq_server_uri: rabbitmq_server_uri
+          chef_server_access_mode: chef_server_access_mode
+          eks_access_key_id: eks_access_key_id
+          aws_user_programmatic_access: true
+          rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
+          rabbitmq_user_write_permission: rabbitmq_user_write_permission
+          rabbitmq_user_tags: rabbitmq_user_tags
+          auto_generated_folder: auto_generated_folder
+          user_ttl: user_ttl
+          create_cert_using_pki: true
+          eks_assume_role: eks_assume_role
+          azure_user_programmatic_access: true
+          eks_secret_access_key: eks_secret_access_key
+          aws_secret_access_key: aws_secret_access_key
+          groups: groups
+          postgres_creation_statements: postgres_creation_statements
+          chef_organizations: chef_organizations
+          dynamic_secret_id: 6
+          chef_server_host_name: chef_server_host_name
+          mssql_revocation_statements: mssql_revocation_statements
+          chef_server_port: chef_server_port
+          db_max_idle_conns: db_max_idle_conns
+          eks_cluster_ca_certificate: eks_cluster_ca_certificate
+          aws_access_key_id: aws_access_key_id
+          aws_region: aws_region
+          eks_cluster_name: eks_cluster_name
+          gke_project_id: gke_project_id
+          chef_server_url: chef_server_url
+          artifactory_admin_username: artifactory_admin_username
+          gke_cluster_name: gke_cluster_name
+          admin_name: admin_name
+          rabbitmq_server_user: rabbitmq_server_user
+          aws_user_groups: aws_user_groups
+          venafi_api_key: venafi_api_key
+          host_name: host_name
+          azure_tenant_id: azure_tenant_id
+      properties:
+        producer_details:
+          $ref: '#/components/schemas/DSProducerDetails'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayCreateProducerRabbitMQ:
+      description: gatewayCreateProducerRabbitMQ is a command that creates rabbitmq
+        producer
+      properties:
+        gateway-url:
+          default: http://localhost:8000
+          description: Gateway url
+          type: string
+          x-go-name: GatewayUrl
+        name:
+          description: Producer name
+          type: string
+          x-go-name: ProducerName
+        producer-encryption-key-name:
+          description: Dynamic producer encryption key
+          type: string
+          x-go-name: ProducerEncryptionKey
+        rabbitmq-admin-pwd:
+          description: RabbitMQ Admin password
+          type: string
+          x-go-name: AdminPwd
+        rabbitmq-admin-user:
+          description: RabbitMQ Admin User
+          type: string
+          x-go-name: AdminUser
+        rabbitmq-server-uri:
+          description: Server URI
+          type: string
+          x-go-name: ServerURI
+        rabbitmq-user-conf-permission:
+          description: User configuration permission
+          type: string
+          x-go-name: UserConfPermission
+        rabbitmq-user-read-permission:
+          description: User read permission
+          type: string
+          x-go-name: UserReadPermission
+        rabbitmq-user-tags:
+          description: User Tags
+          type: string
+          x-go-name: UserTags
+        rabbitmq-user-vhost:
+          description: User Virtual Host
+          type: string
+          x-go-name: UserVHost
+        rabbitmq-user-write-permission:
+          description: User write permission
+          type: string
+          x-go-name: UserWritePermission
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        user-ttl:
+          default: 60m
+          description: User TTL
+          type: string
+          x-go-name: UserTtl
+      required:
+      - name
+      - rabbitmq-admin-pwd
+      - rabbitmq-admin-user
+      - rabbitmq-server-uri
+      - rabbitmq-user-conf-permission
+      - rabbitmq-user-read-permission
+      - rabbitmq-user-write-permission
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayCreateProducerRabbitMQOutput:
+      example:
+        producer_details:
+          artifactory_token_scope: artifactory_token_scope
+          gke_cluster_endpoint: gke_cluster_endpoint
+          allow_subdomains: true
+          dynamic_secret_type: dynamic_secret_type
+          gke_cluster_ca_certificate: gke_cluster_ca_certificate
+          allowed_domains: allowed_domains
+          dynamic_secret_key: dynamic_secret_key
+          host_port: host_port
+          chef_server_key: chef_server_key
+          db_max_open_conns: db_max_open_conns
+          enable_admin_rotation: true
+          admin_rotation_interval_days: 0
+          failure_message: failure_message
+          rabbitmq_user_read_permission: rabbitmq_user_read_permission
+          azure_client_id: azure_client_id
+          mssql_creation_statements: mssql_creation_statements
+          mongodb_uri_connection: mongodb_uri_connection
+          db_user_name: db_user_name
+          eks_region: eks_region
+          artifactory_admin_apikey: artifactory_admin_apikey
+          admin_pwd: admin_pwd
+          azure_app_object_id: azure_app_object_id
+          azure_user_roles_template_id: azure_user_roles_template_id
+          fixed_user_only: fixed_user_only
+          rabbitmq_server_password: rabbitmq_server_password
+          aws_access_mode: aws_access_mode
+          aws_user_policies: aws_user_policies
+          signer_key_name: signer_key_name
+          root_first_in_chain: true
+          aws_role_arns: aws_role_arns
+          active: true
+          gke_cluster_compute_zone: gke_cluster_compute_zone
+          aws_user_console_access: true
+          chef_server_username: chef_server_username
+          db_host_name: db_host_name
+          store_private_key: true
+          user_principal_name: user_principal_name
+          db_name: db_name
+          db_server_certificates: db_server_certificates
+          chef_skip_ssl: true
+          db_port: db_port
+          db_server_name: db_server_name
+          artifactory_base_url: artifactory_base_url
+          venafi_zone: venafi_zone
+          azure_client_secret: azure_client_secret
+          azure_user_groups_obj_id: azure_user_groups_obj_id
+          azure_user_portal_access: true
+          eks_cluster_endpoint: eks_cluster_endpoint
+          aws_session_token: aws_session_token
+          gke_service_account_key: gke_service_account_key
+          db_isolation_level: db_isolation_level
+          rabbitmq_user_vhost: rabbitmq_user_vhost
+          db_pwd: db_pwd
+          gke_service_account_name: gke_service_account_name
+          mysql_creation_statements: mysql_creation_statements
+          mongodb_roles: mongodb_roles
+          mongodb_db_name: mongodb_db_name
+          should_stop: should_stop
+          artifactory_token_audience: artifactory_token_audience
+          dynamic_secret_name: dynamic_secret_name
+          rabbitmq_server_uri: rabbitmq_server_uri
+          chef_server_access_mode: chef_server_access_mode
+          eks_access_key_id: eks_access_key_id
+          aws_user_programmatic_access: true
+          rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
+          rabbitmq_user_write_permission: rabbitmq_user_write_permission
+          rabbitmq_user_tags: rabbitmq_user_tags
+          auto_generated_folder: auto_generated_folder
+          user_ttl: user_ttl
+          create_cert_using_pki: true
+          eks_assume_role: eks_assume_role
+          azure_user_programmatic_access: true
+          eks_secret_access_key: eks_secret_access_key
+          aws_secret_access_key: aws_secret_access_key
+          groups: groups
+          postgres_creation_statements: postgres_creation_statements
+          chef_organizations: chef_organizations
+          dynamic_secret_id: 6
+          chef_server_host_name: chef_server_host_name
+          mssql_revocation_statements: mssql_revocation_statements
+          chef_server_port: chef_server_port
+          db_max_idle_conns: db_max_idle_conns
+          eks_cluster_ca_certificate: eks_cluster_ca_certificate
+          aws_access_key_id: aws_access_key_id
+          aws_region: aws_region
+          eks_cluster_name: eks_cluster_name
+          gke_project_id: gke_project_id
+          chef_server_url: chef_server_url
+          artifactory_admin_username: artifactory_admin_username
+          gke_cluster_name: gke_cluster_name
+          admin_name: admin_name
+          rabbitmq_server_user: rabbitmq_server_user
+          aws_user_groups: aws_user_groups
+          venafi_api_key: venafi_api_key
+          host_name: host_name
+          azure_tenant_id: azure_tenant_id
+      properties:
+        producer_details:
+          $ref: '#/components/schemas/DSProducerDetails'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayCreateProducerRdp:
+      description: gatewayCreateProducerRdp is a command that creates rdp producer
+      properties:
+        fixed-user-only:
+          default: "false"
+          description: Fixed user
+          type: string
+          x-go-name: FixedUserOnly
+        gateway-url:
+          default: http://localhost:8000
+          description: Gateway url
+          type: string
+          x-go-name: GatewayUrl
+        name:
+          description: Producer name
+          type: string
+          x-go-name: ProducerName
+        producer-encryption-key-name:
+          description: Dynamic producer encryption key
+          type: string
+          x-go-name: ProducerEncryptionKey
+        rdp-admin-name:
+          description: RDP Admin Name
+          type: string
+          x-go-name: AdminName
+        rdp-admin-pwd:
+          description: RDP Admin password
+          type: string
+          x-go-name: AdminPwd
+        rdp-host-name:
+          description: Hostname
+          type: string
+          x-go-name: Hostname
+        rdp-host-port:
+          default: "22"
+          description: Port
+          type: string
+          x-go-name: HostPort
+        rdp-user-groups:
+          description: Groups
+          type: string
+          x-go-name: UserGroups
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        user-ttl:
+          default: 60m
+          description: User TTL
+          type: string
+          x-go-name: UserTtl
+      required:
+      - name
+      - rdp-admin-name
+      - rdp-admin-pwd
+      - rdp-host-name
+      - rdp-user-groups
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayCreateProducerRdpOutput:
+      example:
+        producer_details:
+          artifactory_token_scope: artifactory_token_scope
+          gke_cluster_endpoint: gke_cluster_endpoint
+          allow_subdomains: true
+          dynamic_secret_type: dynamic_secret_type
+          gke_cluster_ca_certificate: gke_cluster_ca_certificate
+          allowed_domains: allowed_domains
+          dynamic_secret_key: dynamic_secret_key
+          host_port: host_port
+          chef_server_key: chef_server_key
+          db_max_open_conns: db_max_open_conns
+          enable_admin_rotation: true
+          admin_rotation_interval_days: 0
+          failure_message: failure_message
+          rabbitmq_user_read_permission: rabbitmq_user_read_permission
+          azure_client_id: azure_client_id
+          mssql_creation_statements: mssql_creation_statements
+          mongodb_uri_connection: mongodb_uri_connection
+          db_user_name: db_user_name
+          eks_region: eks_region
+          artifactory_admin_apikey: artifactory_admin_apikey
+          admin_pwd: admin_pwd
+          azure_app_object_id: azure_app_object_id
+          azure_user_roles_template_id: azure_user_roles_template_id
+          fixed_user_only: fixed_user_only
+          rabbitmq_server_password: rabbitmq_server_password
+          aws_access_mode: aws_access_mode
+          aws_user_policies: aws_user_policies
+          signer_key_name: signer_key_name
+          root_first_in_chain: true
+          aws_role_arns: aws_role_arns
+          active: true
+          gke_cluster_compute_zone: gke_cluster_compute_zone
+          aws_user_console_access: true
+          chef_server_username: chef_server_username
+          db_host_name: db_host_name
+          store_private_key: true
+          user_principal_name: user_principal_name
+          db_name: db_name
+          db_server_certificates: db_server_certificates
+          chef_skip_ssl: true
+          db_port: db_port
+          db_server_name: db_server_name
+          artifactory_base_url: artifactory_base_url
+          venafi_zone: venafi_zone
+          azure_client_secret: azure_client_secret
+          azure_user_groups_obj_id: azure_user_groups_obj_id
+          azure_user_portal_access: true
+          eks_cluster_endpoint: eks_cluster_endpoint
+          aws_session_token: aws_session_token
+          gke_service_account_key: gke_service_account_key
+          db_isolation_level: db_isolation_level
+          rabbitmq_user_vhost: rabbitmq_user_vhost
+          db_pwd: db_pwd
+          gke_service_account_name: gke_service_account_name
+          mysql_creation_statements: mysql_creation_statements
+          mongodb_roles: mongodb_roles
+          mongodb_db_name: mongodb_db_name
+          should_stop: should_stop
+          artifactory_token_audience: artifactory_token_audience
+          dynamic_secret_name: dynamic_secret_name
+          rabbitmq_server_uri: rabbitmq_server_uri
+          chef_server_access_mode: chef_server_access_mode
+          eks_access_key_id: eks_access_key_id
+          aws_user_programmatic_access: true
+          rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
+          rabbitmq_user_write_permission: rabbitmq_user_write_permission
+          rabbitmq_user_tags: rabbitmq_user_tags
+          auto_generated_folder: auto_generated_folder
+          user_ttl: user_ttl
+          create_cert_using_pki: true
+          eks_assume_role: eks_assume_role
+          azure_user_programmatic_access: true
+          eks_secret_access_key: eks_secret_access_key
+          aws_secret_access_key: aws_secret_access_key
+          groups: groups
+          postgres_creation_statements: postgres_creation_statements
+          chef_organizations: chef_organizations
+          dynamic_secret_id: 6
+          chef_server_host_name: chef_server_host_name
+          mssql_revocation_statements: mssql_revocation_statements
+          chef_server_port: chef_server_port
+          db_max_idle_conns: db_max_idle_conns
+          eks_cluster_ca_certificate: eks_cluster_ca_certificate
+          aws_access_key_id: aws_access_key_id
+          aws_region: aws_region
+          eks_cluster_name: eks_cluster_name
+          gke_project_id: gke_project_id
+          chef_server_url: chef_server_url
+          artifactory_admin_username: artifactory_admin_username
+          gke_cluster_name: gke_cluster_name
+          admin_name: admin_name
+          rabbitmq_server_user: rabbitmq_server_user
+          aws_user_groups: aws_user_groups
+          venafi_api_key: venafi_api_key
+          host_name: host_name
+          azure_tenant_id: azure_tenant_id
+      properties:
+        producer_details:
+          $ref: '#/components/schemas/DSProducerDetails'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayDeleteProducer:
+      description: gatewayDeleteProducer is a command that deletes producer
+      properties:
+        gateway-url:
+          default: http://localhost:8000
+          description: Gateway url
+          type: string
+          x-go-name: GatewayUrl
+        name:
+          description: Producer name
+          type: string
+          x-go-name: ProducerName
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      required:
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayDeleteProducerOutput:
+      example:
+        producer_name: producer_name
+      properties:
+        producer_name:
+          type: string
+          x-go-name: ProducerName
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayDeleteSubAdmins:
+      description: gatewayDeleteSubAdmins is a command that deletes sub-admins
+      properties:
+        gateway-url:
+          default: http://localhost:8000
+          description: Gateway url
+          type: string
+          x-go-name: GatewayUrl
+        sub-admin:
+          description: SubAdmins to be removed
+          items:
+            type: string
+          type: array
+          x-go-name: SubAdmins
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      required:
+      - sub-admin
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayDeleteSubAdminsOutput:
+      example:
+        sub-admins:
+        - sub-admins
+        - sub-admins
+      properties:
+        sub-admins:
+          items:
+            type: string
+          type: array
+          x-go-name: SubAdminsName
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayGetConfig:
+      description: gatewayGetConfig is a command that returns gateway configuration
+      properties:
+        gateway-url:
+          default: http://localhost:8000
+          description: Gateway url
+          type: string
+          x-go-name: GatewayUrl
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayGetProducer:
+      description: gatewayGetProducer is a command that returns producer
+      properties:
+        gateway-url:
+          default: http://localhost:8000
+          description: Gateway url
+          type: string
+          x-go-name: GatewayUrl
+        name:
+          description: Producer name
+          type: string
+          x-go-name: ProducerName
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      required:
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayGetTmpUsers:
+      description: gatewayGetTmpUsers is a command that returns gateway configuration
+      properties:
+        gateway-url:
+          default: http://localhost:8000
+          description: Gateway url
+          type: string
+          x-go-name: GatewayUrl
+        name:
+          description: Producer Name
+          type: string
+          x-go-name: ProducerName
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      required:
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayListProducers:
+      description: gatewayListProducers is a command that returns producer
+      properties:
+        gateway-url:
+          default: http://localhost:8000
+          description: Gateway url
+          type: string
+          x-go-name: GatewayUrl
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayListSubAdmins:
+      description: gatewayListSubAdmins is a command that returns list sub admins
+      properties:
+        gateway-url:
+          default: http://localhost:8000
+          description: Gateway url
+          type: string
+          x-go-name: GatewayUrl
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayRevokeTmpUsers:
+      description: gatewayRevokeTmpUsers is a command that revoke producer tmp user
+      properties:
+        gateway-url:
+          description: Gateway url
+          type: string
+          x-go-name: GatewayUrl
+        host:
+          description: Host
+          type: string
+          x-go-name: Host
+        name:
+          description: Producer Name
+          type: string
+          x-go-name: ProducerName
+        soft-delete:
+          description: Soft Delete
+          type: boolean
+          x-go-name: SoftDelete
+        tmp-creds-id:
+          description: Tmp Creds ID
+          type: string
+          x-go-name: TmpCredsID
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      required:
+      - name
+      - tmp-creds-id
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayStartProducer:
+      description: gatewayStartProducer is a command that starts producer
+      properties:
+        gateway-url:
+          description: Gateway url
+          type: string
+          x-go-name: GatewayUrl
+        name:
+          description: Producer name
+          type: string
+          x-go-name: ProducerName
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      required:
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayStartProducerOutput:
+      example:
+        producer_name: producer_name
+      properties:
+        producer_name:
+          type: string
+          x-go-name: ProducerName
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayStopProducer:
+      description: gatewayStopProducer is a command that stops producer
+      properties:
+        gateway-url:
+          description: Gateway url
+          type: string
+          x-go-name: GatewayUrl
+        name:
+          description: Producer name
+          type: string
+          x-go-name: ProducerName
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      required:
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayStopProducerOutput:
+      example:
+        producer_name: producer_name
+      properties:
+        producer_name:
+          type: string
+          x-go-name: ProducerName
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayUpdateTmpUsers:
+      description: gatewayUpdateTmpUsers is a command that returns gateway configuration
+      properties:
+        gateway-url:
+          description: Gateway url
+          type: string
+          x-go-name: GatewayUrl
+        name:
+          description: Producer Name
+          type: string
+          x-go-name: ProducerName
+        new-ttl-min:
+          description: New TTL in Minutes
+          format: int64
+          type: integer
+          x-go-name: NewTTL
+        tmp-creds-id:
+          description: Tmp Creds ID
+          type: string
+          x-go-name: TmpCredsID
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      required:
+      - name
+      - new-ttl-min
+      - tmp-creds-id
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     genCustomerFragment:

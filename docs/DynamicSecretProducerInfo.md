@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ProducerMetadata** | Pointer to **string** |  | [optional] 
 **ProducerStatus** | Pointer to **string** | ProducerStatus defines types of Producer Status | [optional] 
 **ProducerType** | Pointer to **string** |  | [optional] 
 
@@ -25,6 +26,31 @@ will change when the set of required properties is changed
 NewDynamicSecretProducerInfoWithDefaults instantiates a new DynamicSecretProducerInfo object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetProducerMetadata
+
+`func (o *DynamicSecretProducerInfo) GetProducerMetadata() string`
+
+GetProducerMetadata returns the ProducerMetadata field if non-nil, zero value otherwise.
+
+### GetProducerMetadataOk
+
+`func (o *DynamicSecretProducerInfo) GetProducerMetadataOk() (*string, bool)`
+
+GetProducerMetadataOk returns a tuple with the ProducerMetadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProducerMetadata
+
+`func (o *DynamicSecretProducerInfo) SetProducerMetadata(v string)`
+
+SetProducerMetadata sets ProducerMetadata field to given value.
+
+### HasProducerMetadata
+
+`func (o *DynamicSecretProducerInfo) HasProducerMetadata() bool`
+
+HasProducerMetadata returns a boolean if a field has been set.
 
 ### GetProducerStatus
 

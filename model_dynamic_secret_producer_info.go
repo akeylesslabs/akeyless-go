@@ -17,6 +17,7 @@ import (
 
 // DynamicSecretProducerInfo DynamicSecretProducerInfo The dynamic secret producer info This parameter relevant and required only in case of create update dynamic secret.
 type DynamicSecretProducerInfo struct {
+	ProducerMetadata *string `json:"producer_metadata,omitempty"`
 	// ProducerStatus defines types of Producer Status
 	ProducerStatus *string `json:"producer_status,omitempty"`
 	ProducerType *string `json:"producer_type,omitempty"`
@@ -37,6 +38,38 @@ func NewDynamicSecretProducerInfo() *DynamicSecretProducerInfo {
 func NewDynamicSecretProducerInfoWithDefaults() *DynamicSecretProducerInfo {
 	this := DynamicSecretProducerInfo{}
 	return &this
+}
+
+// GetProducerMetadata returns the ProducerMetadata field value if set, zero value otherwise.
+func (o *DynamicSecretProducerInfo) GetProducerMetadata() string {
+	if o == nil || o.ProducerMetadata == nil {
+		var ret string
+		return ret
+	}
+	return *o.ProducerMetadata
+}
+
+// GetProducerMetadataOk returns a tuple with the ProducerMetadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretProducerInfo) GetProducerMetadataOk() (*string, bool) {
+	if o == nil || o.ProducerMetadata == nil {
+		return nil, false
+	}
+	return o.ProducerMetadata, true
+}
+
+// HasProducerMetadata returns a boolean if a field has been set.
+func (o *DynamicSecretProducerInfo) HasProducerMetadata() bool {
+	if o != nil && o.ProducerMetadata != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProducerMetadata gets a reference to the given string and assigns it to the ProducerMetadata field.
+func (o *DynamicSecretProducerInfo) SetProducerMetadata(v string) {
+	o.ProducerMetadata = &v
 }
 
 // GetProducerStatus returns the ProducerStatus field value if set, zero value otherwise.
@@ -105,6 +138,9 @@ func (o *DynamicSecretProducerInfo) SetProducerType(v string) {
 
 func (o DynamicSecretProducerInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.ProducerMetadata != nil {
+		toSerialize["producer_metadata"] = o.ProducerMetadata
+	}
 	if o.ProducerStatus != nil {
 		toSerialize["producer_status"] = o.ProducerStatus
 	}

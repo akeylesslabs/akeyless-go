@@ -18,6 +18,8 @@ import (
 // AuthMethodAccessInfo struct for AuthMethodAccessInfo
 type AuthMethodAccessInfo struct {
 	AccessExpires *int64 `json:"access_expires,omitempty"`
+	// for accounts where AccessId holds encrypted email this field will hold generated AccessId, for accounts based on regular AccessId it will be equal to accessId itself
+	AccessIdAlias *string `json:"access_id_alias,omitempty"`
 	ApiKeyAccessRules *APIKeyAccessRules `json:"api_key_access_rules,omitempty"`
 	AwsIamAccessRules *AWSIAMAccessRules `json:"aws_iam_access_rules,omitempty"`
 	AzureAdAccessRules *AzureADAccessRules `json:"azure_ad_access_rules,omitempty"`
@@ -78,6 +80,38 @@ func (o *AuthMethodAccessInfo) HasAccessExpires() bool {
 // SetAccessExpires gets a reference to the given int64 and assigns it to the AccessExpires field.
 func (o *AuthMethodAccessInfo) SetAccessExpires(v int64) {
 	o.AccessExpires = &v
+}
+
+// GetAccessIdAlias returns the AccessIdAlias field value if set, zero value otherwise.
+func (o *AuthMethodAccessInfo) GetAccessIdAlias() string {
+	if o == nil || o.AccessIdAlias == nil {
+		var ret string
+		return ret
+	}
+	return *o.AccessIdAlias
+}
+
+// GetAccessIdAliasOk returns a tuple with the AccessIdAlias field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodAccessInfo) GetAccessIdAliasOk() (*string, bool) {
+	if o == nil || o.AccessIdAlias == nil {
+		return nil, false
+	}
+	return o.AccessIdAlias, true
+}
+
+// HasAccessIdAlias returns a boolean if a field has been set.
+func (o *AuthMethodAccessInfo) HasAccessIdAlias() bool {
+	if o != nil && o.AccessIdAlias != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessIdAlias gets a reference to the given string and assigns it to the AccessIdAlias field.
+func (o *AuthMethodAccessInfo) SetAccessIdAlias(v string) {
+	o.AccessIdAlias = &v
 }
 
 // GetApiKeyAccessRules returns the ApiKeyAccessRules field value if set, zero value otherwise.
@@ -436,6 +470,9 @@ func (o AuthMethodAccessInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccessExpires != nil {
 		toSerialize["access_expires"] = o.AccessExpires
+	}
+	if o.AccessIdAlias != nil {
+		toSerialize["access_id_alias"] = o.AccessIdAlias
 	}
 	if o.ApiKeyAccessRules != nil {
 		toSerialize["api_key_access_rules"] = o.ApiKeyAccessRules

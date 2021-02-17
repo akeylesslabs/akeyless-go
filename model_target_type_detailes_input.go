@@ -24,8 +24,13 @@ type TargetTypeDetailesInput struct {
 	AwsSecretAccessKey *string `json:"aws_secret_access_key,omitempty"`
 	AwsSessionToken *string `json:"aws_session_token,omitempty"`
 	DbHostName *string `json:"db_host_name,omitempty"`
+	DbName *string `json:"db_name,omitempty"`
 	DbPort *string `json:"db_port,omitempty"`
 	DbPwd *string `json:"db_pwd,omitempty"`
+	// (Optional) DBServerCertificates defines the set of root certificate authorities that clients use when verifying server certificates. If DBServerCertificates is empty, TLS uses the host's root CA set.
+	DbServerCertificates *string `json:"db_server_certificates,omitempty"`
+	// (Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client's handshake to support virtual hosting unless it is an IP address.
+	DbServerName *string `json:"db_server_name,omitempty"`
 	DbUserName *string `json:"db_user_name,omitempty"`
 	HostName *string `json:"host_name,omitempty"`
 	HostPort *string `json:"host_port,omitempty"`
@@ -280,6 +285,38 @@ func (o *TargetTypeDetailesInput) SetDbHostName(v string) {
 	o.DbHostName = &v
 }
 
+// GetDbName returns the DbName field value if set, zero value otherwise.
+func (o *TargetTypeDetailesInput) GetDbName() string {
+	if o == nil || o.DbName == nil {
+		var ret string
+		return ret
+	}
+	return *o.DbName
+}
+
+// GetDbNameOk returns a tuple with the DbName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailesInput) GetDbNameOk() (*string, bool) {
+	if o == nil || o.DbName == nil {
+		return nil, false
+	}
+	return o.DbName, true
+}
+
+// HasDbName returns a boolean if a field has been set.
+func (o *TargetTypeDetailesInput) HasDbName() bool {
+	if o != nil && o.DbName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDbName gets a reference to the given string and assigns it to the DbName field.
+func (o *TargetTypeDetailesInput) SetDbName(v string) {
+	o.DbName = &v
+}
+
 // GetDbPort returns the DbPort field value if set, zero value otherwise.
 func (o *TargetTypeDetailesInput) GetDbPort() string {
 	if o == nil || o.DbPort == nil {
@@ -342,6 +379,70 @@ func (o *TargetTypeDetailesInput) HasDbPwd() bool {
 // SetDbPwd gets a reference to the given string and assigns it to the DbPwd field.
 func (o *TargetTypeDetailesInput) SetDbPwd(v string) {
 	o.DbPwd = &v
+}
+
+// GetDbServerCertificates returns the DbServerCertificates field value if set, zero value otherwise.
+func (o *TargetTypeDetailesInput) GetDbServerCertificates() string {
+	if o == nil || o.DbServerCertificates == nil {
+		var ret string
+		return ret
+	}
+	return *o.DbServerCertificates
+}
+
+// GetDbServerCertificatesOk returns a tuple with the DbServerCertificates field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailesInput) GetDbServerCertificatesOk() (*string, bool) {
+	if o == nil || o.DbServerCertificates == nil {
+		return nil, false
+	}
+	return o.DbServerCertificates, true
+}
+
+// HasDbServerCertificates returns a boolean if a field has been set.
+func (o *TargetTypeDetailesInput) HasDbServerCertificates() bool {
+	if o != nil && o.DbServerCertificates != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDbServerCertificates gets a reference to the given string and assigns it to the DbServerCertificates field.
+func (o *TargetTypeDetailesInput) SetDbServerCertificates(v string) {
+	o.DbServerCertificates = &v
+}
+
+// GetDbServerName returns the DbServerName field value if set, zero value otherwise.
+func (o *TargetTypeDetailesInput) GetDbServerName() string {
+	if o == nil || o.DbServerName == nil {
+		var ret string
+		return ret
+	}
+	return *o.DbServerName
+}
+
+// GetDbServerNameOk returns a tuple with the DbServerName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailesInput) GetDbServerNameOk() (*string, bool) {
+	if o == nil || o.DbServerName == nil {
+		return nil, false
+	}
+	return o.DbServerName, true
+}
+
+// HasDbServerName returns a boolean if a field has been set.
+func (o *TargetTypeDetailesInput) HasDbServerName() bool {
+	if o != nil && o.DbServerName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDbServerName gets a reference to the given string and assigns it to the DbServerName field.
+func (o *TargetTypeDetailesInput) SetDbServerName(v string) {
+	o.DbServerName = &v
 }
 
 // GetDbUserName returns the DbUserName field value if set, zero value otherwise.
@@ -719,11 +820,20 @@ func (o TargetTypeDetailesInput) MarshalJSON() ([]byte, error) {
 	if o.DbHostName != nil {
 		toSerialize["db_host_name"] = o.DbHostName
 	}
+	if o.DbName != nil {
+		toSerialize["db_name"] = o.DbName
+	}
 	if o.DbPort != nil {
 		toSerialize["db_port"] = o.DbPort
 	}
 	if o.DbPwd != nil {
 		toSerialize["db_pwd"] = o.DbPwd
+	}
+	if o.DbServerCertificates != nil {
+		toSerialize["db_server_certificates"] = o.DbServerCertificates
+	}
+	if o.DbServerName != nil {
+		toSerialize["db_server_name"] = o.DbServerName
 	}
 	if o.DbUserName != nil {
 		toSerialize["db_user_name"] = o.DbUserName

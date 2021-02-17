@@ -11,8 +11,11 @@ Name | Type | Description | Notes
 **AwsSecretAccessKey** | Pointer to **string** |  | [optional] 
 **AwsSessionToken** | Pointer to **string** |  | [optional] 
 **DbHostName** | Pointer to **string** |  | [optional] 
+**DbName** | Pointer to **string** |  | [optional] 
 **DbPort** | Pointer to **string** |  | [optional] 
 **DbPwd** | Pointer to **string** |  | [optional] 
+**DbServerCertificates** | Pointer to **string** | (Optional) DBServerCertificates defines the set of root certificate authorities that clients use when verifying server certificates. If DBServerCertificates is empty, TLS uses the host&#39;s root CA set. | [optional] 
+**DbServerName** | Pointer to **string** | (Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client&#39;s handshake to support virtual hosting unless it is an IP address. | [optional] 
 **DbUserName** | Pointer to **string** |  | [optional] 
 **HostName** | Pointer to **string** |  | [optional] 
 **HostPort** | Pointer to **string** |  | [optional] 
@@ -219,6 +222,31 @@ SetDbHostName sets DbHostName field to given value.
 
 HasDbHostName returns a boolean if a field has been set.
 
+### GetDbName
+
+`func (o *TargetTypeDetailesInput) GetDbName() string`
+
+GetDbName returns the DbName field if non-nil, zero value otherwise.
+
+### GetDbNameOk
+
+`func (o *TargetTypeDetailesInput) GetDbNameOk() (*string, bool)`
+
+GetDbNameOk returns a tuple with the DbName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDbName
+
+`func (o *TargetTypeDetailesInput) SetDbName(v string)`
+
+SetDbName sets DbName field to given value.
+
+### HasDbName
+
+`func (o *TargetTypeDetailesInput) HasDbName() bool`
+
+HasDbName returns a boolean if a field has been set.
+
 ### GetDbPort
 
 `func (o *TargetTypeDetailesInput) GetDbPort() string`
@@ -268,6 +296,56 @@ SetDbPwd sets DbPwd field to given value.
 `func (o *TargetTypeDetailesInput) HasDbPwd() bool`
 
 HasDbPwd returns a boolean if a field has been set.
+
+### GetDbServerCertificates
+
+`func (o *TargetTypeDetailesInput) GetDbServerCertificates() string`
+
+GetDbServerCertificates returns the DbServerCertificates field if non-nil, zero value otherwise.
+
+### GetDbServerCertificatesOk
+
+`func (o *TargetTypeDetailesInput) GetDbServerCertificatesOk() (*string, bool)`
+
+GetDbServerCertificatesOk returns a tuple with the DbServerCertificates field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDbServerCertificates
+
+`func (o *TargetTypeDetailesInput) SetDbServerCertificates(v string)`
+
+SetDbServerCertificates sets DbServerCertificates field to given value.
+
+### HasDbServerCertificates
+
+`func (o *TargetTypeDetailesInput) HasDbServerCertificates() bool`
+
+HasDbServerCertificates returns a boolean if a field has been set.
+
+### GetDbServerName
+
+`func (o *TargetTypeDetailesInput) GetDbServerName() string`
+
+GetDbServerName returns the DbServerName field if non-nil, zero value otherwise.
+
+### GetDbServerNameOk
+
+`func (o *TargetTypeDetailesInput) GetDbServerNameOk() (*string, bool)`
+
+GetDbServerNameOk returns a tuple with the DbServerName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDbServerName
+
+`func (o *TargetTypeDetailesInput) SetDbServerName(v string)`
+
+SetDbServerName sets DbServerName field to given value.
+
+### HasDbServerName
+
+`func (o *TargetTypeDetailesInput) HasDbServerName() bool`
+
+HasDbServerName returns a boolean if a field has been set.
 
 ### GetDbUserName
 

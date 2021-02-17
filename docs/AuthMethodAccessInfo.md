@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessExpires** | Pointer to **int64** |  | [optional] 
+**AccessIdAlias** | Pointer to **string** | for accounts where AccessId holds encrypted email this field will hold generated AccessId, for accounts based on regular AccessId it will be equal to accessId itself | [optional] 
 **ApiKeyAccessRules** | Pointer to [**APIKeyAccessRules**](APIKeyAccessRules.md) |  | [optional] 
 **AwsIamAccessRules** | Pointer to [**AWSIAMAccessRules**](AWSIAMAccessRules.md) |  | [optional] 
 **AzureAdAccessRules** | Pointer to [**AzureADAccessRules**](AzureADAccessRules.md) |  | [optional] 
@@ -60,6 +61,31 @@ SetAccessExpires sets AccessExpires field to given value.
 `func (o *AuthMethodAccessInfo) HasAccessExpires() bool`
 
 HasAccessExpires returns a boolean if a field has been set.
+
+### GetAccessIdAlias
+
+`func (o *AuthMethodAccessInfo) GetAccessIdAlias() string`
+
+GetAccessIdAlias returns the AccessIdAlias field if non-nil, zero value otherwise.
+
+### GetAccessIdAliasOk
+
+`func (o *AuthMethodAccessInfo) GetAccessIdAliasOk() (*string, bool)`
+
+GetAccessIdAliasOk returns a tuple with the AccessIdAlias field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessIdAlias
+
+`func (o *AuthMethodAccessInfo) SetAccessIdAlias(v string)`
+
+SetAccessIdAlias sets AccessIdAlias field to given value.
+
+### HasAccessIdAlias
+
+`func (o *AuthMethodAccessInfo) HasAccessIdAlias() bool`
+
+HasAccessIdAlias returns a boolean if a field has been set.
 
 ### GetApiKeyAccessRules
 
