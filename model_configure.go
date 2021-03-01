@@ -29,8 +29,6 @@ type Configure struct {
 	AdminPassword *string `json:"admin-password,omitempty"`
 	// Azure Active Directory ObjectId (relevant only for access-type=azure_ad)
 	AzureAdObjectId *string `json:"azure_ad_object_id,omitempty"`
-	// Address URL for ldap proxy (relevant only for access-type=ldap)
-	LdapProxyUrl *string `json:"ldap_proxy_url,omitempty"`
 }
 
 // NewConfigure instantiates a new Configure object
@@ -246,38 +244,6 @@ func (o *Configure) SetAzureAdObjectId(v string) {
 	o.AzureAdObjectId = &v
 }
 
-// GetLdapProxyUrl returns the LdapProxyUrl field value if set, zero value otherwise.
-func (o *Configure) GetLdapProxyUrl() string {
-	if o == nil || o.LdapProxyUrl == nil {
-		var ret string
-		return ret
-	}
-	return *o.LdapProxyUrl
-}
-
-// GetLdapProxyUrlOk returns a tuple with the LdapProxyUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Configure) GetLdapProxyUrlOk() (*string, bool) {
-	if o == nil || o.LdapProxyUrl == nil {
-		return nil, false
-	}
-	return o.LdapProxyUrl, true
-}
-
-// HasLdapProxyUrl returns a boolean if a field has been set.
-func (o *Configure) HasLdapProxyUrl() bool {
-	if o != nil && o.LdapProxyUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLdapProxyUrl gets a reference to the given string and assigns it to the LdapProxyUrl field.
-func (o *Configure) SetLdapProxyUrl(v string) {
-	o.LdapProxyUrl = &v
-}
-
 func (o Configure) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccessId != nil {
@@ -297,9 +263,6 @@ func (o Configure) MarshalJSON() ([]byte, error) {
 	}
 	if o.AzureAdObjectId != nil {
 		toSerialize["azure_ad_object_id"] = o.AzureAdObjectId
-	}
-	if o.LdapProxyUrl != nil {
-		toSerialize["ldap_proxy_url"] = o.LdapProxyUrl
 	}
 	return json.Marshal(toSerialize)
 }

@@ -12,7 +12,6 @@ Name | Type | Description | Notes
 **CloudId** | Pointer to **string** | The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam) | [optional] 
 **Jwt** | Pointer to **string** | The Json Web Token (relevant only for access-type&#x3D;jwt/oidc) | [optional] 
 **LdapPassword** | Pointer to **string** | LDAP password (relevant only for access-type&#x3D;ldap) | [optional] 
-**LdapProxyUrl** | Pointer to **string** | Address URL for LDAP proxy (relevant only for access-type&#x3D;ldap) | [optional] 
 **LdapUsername** | Pointer to **string** | LDAP username (relevant only for access-type&#x3D;ldap) | [optional] 
 **UidToken** | Pointer to **string** | The universal_identity token (relevant only for access-type&#x3D;universal_identity) | [optional] 
 
@@ -234,31 +233,6 @@ SetLdapPassword sets LdapPassword field to given value.
 `func (o *Auth) HasLdapPassword() bool`
 
 HasLdapPassword returns a boolean if a field has been set.
-
-### GetLdapProxyUrl
-
-`func (o *Auth) GetLdapProxyUrl() string`
-
-GetLdapProxyUrl returns the LdapProxyUrl field if non-nil, zero value otherwise.
-
-### GetLdapProxyUrlOk
-
-`func (o *Auth) GetLdapProxyUrlOk() (*string, bool)`
-
-GetLdapProxyUrlOk returns a tuple with the LdapProxyUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLdapProxyUrl
-
-`func (o *Auth) SetLdapProxyUrl(v string)`
-
-SetLdapProxyUrl sets LdapProxyUrl field to given value.
-
-### HasLdapProxyUrl
-
-`func (o *Auth) HasLdapProxyUrl() bool`
-
-HasLdapProxyUrl returns a boolean if a field has been set.
 
 ### GetLdapUsername
 

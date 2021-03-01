@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **LogForwarding** | Pointer to [**LogForwardingConfigPart**](LogForwardingConfigPart.md) |  | [optional] 
 **Migrations** | Pointer to [**MigrationsConfigPart**](MigrationsConfigPart.md) |  | [optional] 
 **Producers** | Pointer to [**ProducersConfigPart**](ProducersConfigPart.md) |  | [optional] 
-**Saml** | Pointer to [**SamlConfigPart**](SamlConfigPart.md) |  | [optional] 
+**Saml** | Pointer to [**DefaultConfigPart**](DefaultConfigPart.md) |  | [optional] 
 **Uidentity** | Pointer to [**UIdentityConfigPart**](UIdentityConfigPart.md) |  | [optional] 
 **Version** | Pointer to **int32** |  | [optional] 
 
@@ -289,20 +289,20 @@ HasProducers returns a boolean if a field has been set.
 
 ### GetSaml
 
-`func (o *AkeylessGatewayConfig) GetSaml() SamlConfigPart`
+`func (o *AkeylessGatewayConfig) GetSaml() DefaultConfigPart`
 
 GetSaml returns the Saml field if non-nil, zero value otherwise.
 
 ### GetSamlOk
 
-`func (o *AkeylessGatewayConfig) GetSamlOk() (*SamlConfigPart, bool)`
+`func (o *AkeylessGatewayConfig) GetSamlOk() (*DefaultConfigPart, bool)`
 
 GetSamlOk returns a tuple with the Saml field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSaml
 
-`func (o *AkeylessGatewayConfig) SetSaml(v SamlConfigPart)`
+`func (o *AkeylessGatewayConfig) SetSaml(v DefaultConfigPart)`
 
 SetSaml sets Saml field to given value.
 

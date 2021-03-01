@@ -3653,7 +3653,7 @@ components:
         cf:
           customer_fragements:
             key: customer_fragements
-        version: 2
+        version: 7
         producers:
           producers:
           - name: name
@@ -3828,6 +3828,7 @@ components:
         saml:
           saml_access_id: saml_access_id
           open_id_connect_access_id: open_id_connect_access_id
+          default_protection_key_id: 2
         uidentity:
           uid_access_id: uid_access_id
           uid_rotate_interval: uid_rotate_interval
@@ -3862,7 +3863,7 @@ components:
         producers:
           $ref: '#/components/schemas/ProducersConfigPart'
         saml:
-          $ref: '#/components/schemas/SamlConfigPart'
+          $ref: '#/components/schemas/DefaultConfigPart'
         uidentity:
           $ref: '#/components/schemas/UIdentityConfigPart'
         version:
@@ -4596,28 +4597,16 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/sdk/config
     DSProducerDetails:
       example:
-        artifactory_token_scope: artifactory_token_scope
         gke_cluster_endpoint: gke_cluster_endpoint
         allow_subdomains: true
         dynamic_secret_type: dynamic_secret_type
-        gke_cluster_ca_certificate: gke_cluster_ca_certificate
-        allowed_domains: allowed_domains
         dynamic_secret_key: dynamic_secret_key
-        host_port: host_port
+        last_admin_rotation: 1
         chef_server_key: chef_server_key
         db_max_open_conns: db_max_open_conns
-        enable_admin_rotation: true
         admin_rotation_interval_days: 0
-        failure_message: failure_message
-        rabbitmq_user_read_permission: rabbitmq_user_read_permission
-        azure_client_id: azure_client_id
         mssql_creation_statements: mssql_creation_statements
-        mongodb_uri_connection: mongodb_uri_connection
-        db_user_name: db_user_name
-        eks_region: eks_region
-        artifactory_admin_apikey: artifactory_admin_apikey
         admin_pwd: admin_pwd
-        azure_app_object_id: azure_app_object_id
         azure_user_roles_template_id: azure_user_roles_template_id
         fixed_user_only: fixed_user_only
         rabbitmq_server_password: rabbitmq_server_password
@@ -4628,68 +4617,81 @@ components:
         aws_role_arns: aws_role_arns
         active: true
         gke_cluster_compute_zone: gke_cluster_compute_zone
-        aws_user_console_access: true
         chef_server_username: chef_server_username
         db_host_name: db_host_name
         store_private_key: true
-        user_principal_name: user_principal_name
         db_name: db_name
-        db_server_certificates: db_server_certificates
         chef_skip_ssl: true
         db_port: db_port
-        db_server_name: db_server_name
         artifactory_base_url: artifactory_base_url
-        venafi_zone: venafi_zone
         azure_client_secret: azure_client_secret
         azure_user_groups_obj_id: azure_user_groups_obj_id
-        azure_user_portal_access: true
-        eks_cluster_endpoint: eks_cluster_endpoint
         aws_session_token: aws_session_token
-        gke_service_account_key: gke_service_account_key
         db_isolation_level: db_isolation_level
         rabbitmq_user_vhost: rabbitmq_user_vhost
-        db_pwd: db_pwd
-        gke_service_account_name: gke_service_account_name
-        mysql_creation_statements: mysql_creation_statements
         mongodb_roles: mongodb_roles
         mongodb_db_name: mongodb_db_name
         should_stop: should_stop
         artifactory_token_audience: artifactory_token_audience
+        eks_access_key_id: eks_access_key_id
+        user_ttl: user_ttl
+        create_cert_using_pki: true
+        eks_assume_role: eks_assume_role
+        aws_secret_access_key: aws_secret_access_key
+        postgres_creation_statements: postgres_creation_statements
+        db_max_idle_conns: db_max_idle_conns
+        gke_project_id: gke_project_id
+        artifactory_admin_username: artifactory_admin_username
+        admin_name: admin_name
+        rabbitmq_server_user: rabbitmq_server_user
+        venafi_api_key: venafi_api_key
+        artifactory_token_scope: artifactory_token_scope
+        gke_cluster_ca_certificate: gke_cluster_ca_certificate
+        allowed_domains: allowed_domains
+        host_port: host_port
+        enable_admin_rotation: true
+        failure_message: failure_message
+        rabbitmq_user_read_permission: rabbitmq_user_read_permission
+        azure_client_id: azure_client_id
+        mongodb_uri_connection: mongodb_uri_connection
+        db_user_name: db_user_name
+        eks_region: eks_region
+        artifactory_admin_apikey: artifactory_admin_apikey
+        azure_app_object_id: azure_app_object_id
+        aws_user_console_access: true
+        user_principal_name: user_principal_name
+        db_server_certificates: db_server_certificates
+        db_server_name: db_server_name
+        venafi_zone: venafi_zone
+        azure_user_portal_access: true
+        eks_cluster_endpoint: eks_cluster_endpoint
+        gke_service_account_key: gke_service_account_key
+        db_pwd: db_pwd
+        gke_service_account_name: gke_service_account_name
+        mysql_creation_statements: mysql_creation_statements
         dynamic_secret_name: dynamic_secret_name
         rabbitmq_server_uri: rabbitmq_server_uri
         chef_server_access_mode: chef_server_access_mode
-        eks_access_key_id: eks_access_key_id
         aws_user_programmatic_access: true
         rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
         rabbitmq_user_write_permission: rabbitmq_user_write_permission
         rabbitmq_user_tags: rabbitmq_user_tags
         auto_generated_folder: auto_generated_folder
-        user_ttl: user_ttl
-        create_cert_using_pki: true
-        eks_assume_role: eks_assume_role
         azure_user_programmatic_access: true
         eks_secret_access_key: eks_secret_access_key
-        aws_secret_access_key: aws_secret_access_key
         groups: groups
-        postgres_creation_statements: postgres_creation_statements
         chef_organizations: chef_organizations
         dynamic_secret_id: 6
         chef_server_host_name: chef_server_host_name
         mssql_revocation_statements: mssql_revocation_statements
         chef_server_port: chef_server_port
-        db_max_idle_conns: db_max_idle_conns
         eks_cluster_ca_certificate: eks_cluster_ca_certificate
         aws_access_key_id: aws_access_key_id
         aws_region: aws_region
         eks_cluster_name: eks_cluster_name
-        gke_project_id: gke_project_id
         chef_server_url: chef_server_url
-        artifactory_admin_username: artifactory_admin_username
         gke_cluster_name: gke_cluster_name
-        admin_name: admin_name
-        rabbitmq_server_user: rabbitmq_server_user
         aws_user_groups: aws_user_groups
-        venafi_api_key: venafi_api_key
         host_name: host_name
         azure_tenant_id: azure_tenant_id
       properties:
@@ -4923,6 +4925,10 @@ components:
         host_port:
           type: string
           x-go-name: HostPort
+        last_admin_rotation:
+          format: int64
+          type: integer
+          x-go-name: LastAdminRotation
         mongodb_db_name:
           type: string
           x-go-name: MongoDBName
@@ -4995,6 +5001,24 @@ components:
           x-go-name: Zone
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/producer/config
+    DefaultConfigPart:
+      example:
+        saml_access_id: saml_access_id
+        open_id_connect_access_id: open_id_connect_access_id
+        default_protection_key_id: 2
+      properties:
+        default_protection_key_id:
+          format: int64
+          type: integer
+          x-go-name: DefaultProtectionKeyID
+        open_id_connect_access_id:
+          type: string
+          x-go-name: OktaOpenIdConnectAccessId
+        saml_access_id:
+          type: string
+          x-go-name: SamlAccessId
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     DeleteItemOutput:
       example:
         version_deleted: 0
@@ -7708,19 +7732,6 @@ components:
       title: SSHCertificateType defines the types of SSH certificates.
       type: integer
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
-    SamlConfigPart:
-      example:
-        saml_access_id: saml_access_id
-        open_id_connect_access_id: open_id_connect_access_id
-      properties:
-        open_id_connect_access_id:
-          type: string
-          x-go-name: OktaOpenIdConnectAccessId
-        saml_access_id:
-          type: string
-          x-go-name: SamlAccessId
-      type: object
-      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     SplunkLogForwardingConfig:
       example:
         splunk_token: splunk_token
@@ -8224,10 +8235,6 @@ components:
           description: LDAP password (relevant only for access-type=ldap)
           type: string
           x-go-name: LDAPPassword
-        ldap_proxy_url:
-          description: Address URL for LDAP proxy (relevant only for access-type=ldap)
-          type: string
-          x-go-name: LDAPProxyURL
         ldap_username:
           description: LDAP username (relevant only for access-type=ldap)
           type: string
@@ -8287,10 +8294,6 @@ components:
           description: Azure Active Directory ObjectId (relevant only for access-type=azure_ad)
           type: string
           x-go-name: AzureAdObjectID
-        ldap_proxy_url:
-          description: Address URL for ldap proxy (relevant only for access-type=ldap)
-          type: string
-          x-go-name: LDAPProxyURL
       title: configure is a command that creates a new Akeyless profile.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
@@ -10253,28 +10256,16 @@ components:
     gatewayCreateProducerArtifactoryOutput:
       example:
         producer_details:
-          artifactory_token_scope: artifactory_token_scope
           gke_cluster_endpoint: gke_cluster_endpoint
           allow_subdomains: true
           dynamic_secret_type: dynamic_secret_type
-          gke_cluster_ca_certificate: gke_cluster_ca_certificate
-          allowed_domains: allowed_domains
           dynamic_secret_key: dynamic_secret_key
-          host_port: host_port
+          last_admin_rotation: 1
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
-          enable_admin_rotation: true
           admin_rotation_interval_days: 0
-          failure_message: failure_message
-          rabbitmq_user_read_permission: rabbitmq_user_read_permission
-          azure_client_id: azure_client_id
           mssql_creation_statements: mssql_creation_statements
-          mongodb_uri_connection: mongodb_uri_connection
-          db_user_name: db_user_name
-          eks_region: eks_region
-          artifactory_admin_apikey: artifactory_admin_apikey
           admin_pwd: admin_pwd
-          azure_app_object_id: azure_app_object_id
           azure_user_roles_template_id: azure_user_roles_template_id
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
@@ -10285,68 +10276,81 @@ components:
           aws_role_arns: aws_role_arns
           active: true
           gke_cluster_compute_zone: gke_cluster_compute_zone
-          aws_user_console_access: true
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           store_private_key: true
-          user_principal_name: user_principal_name
           db_name: db_name
-          db_server_certificates: db_server_certificates
           chef_skip_ssl: true
           db_port: db_port
-          db_server_name: db_server_name
           artifactory_base_url: artifactory_base_url
-          venafi_zone: venafi_zone
           azure_client_secret: azure_client_secret
           azure_user_groups_obj_id: azure_user_groups_obj_id
-          azure_user_portal_access: true
-          eks_cluster_endpoint: eks_cluster_endpoint
           aws_session_token: aws_session_token
-          gke_service_account_key: gke_service_account_key
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
-          db_pwd: db_pwd
-          gke_service_account_name: gke_service_account_name
-          mysql_creation_statements: mysql_creation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           should_stop: should_stop
           artifactory_token_audience: artifactory_token_audience
+          eks_access_key_id: eks_access_key_id
+          user_ttl: user_ttl
+          create_cert_using_pki: true
+          eks_assume_role: eks_assume_role
+          aws_secret_access_key: aws_secret_access_key
+          postgres_creation_statements: postgres_creation_statements
+          db_max_idle_conns: db_max_idle_conns
+          gke_project_id: gke_project_id
+          artifactory_admin_username: artifactory_admin_username
+          admin_name: admin_name
+          rabbitmq_server_user: rabbitmq_server_user
+          venafi_api_key: venafi_api_key
+          artifactory_token_scope: artifactory_token_scope
+          gke_cluster_ca_certificate: gke_cluster_ca_certificate
+          allowed_domains: allowed_domains
+          host_port: host_port
+          enable_admin_rotation: true
+          failure_message: failure_message
+          rabbitmq_user_read_permission: rabbitmq_user_read_permission
+          azure_client_id: azure_client_id
+          mongodb_uri_connection: mongodb_uri_connection
+          db_user_name: db_user_name
+          eks_region: eks_region
+          artifactory_admin_apikey: artifactory_admin_apikey
+          azure_app_object_id: azure_app_object_id
+          aws_user_console_access: true
+          user_principal_name: user_principal_name
+          db_server_certificates: db_server_certificates
+          db_server_name: db_server_name
+          venafi_zone: venafi_zone
+          azure_user_portal_access: true
+          eks_cluster_endpoint: eks_cluster_endpoint
+          gke_service_account_key: gke_service_account_key
+          db_pwd: db_pwd
+          gke_service_account_name: gke_service_account_name
+          mysql_creation_statements: mysql_creation_statements
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
-          eks_access_key_id: eks_access_key_id
           aws_user_programmatic_access: true
           rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           auto_generated_folder: auto_generated_folder
-          user_ttl: user_ttl
-          create_cert_using_pki: true
-          eks_assume_role: eks_assume_role
           azure_user_programmatic_access: true
           eks_secret_access_key: eks_secret_access_key
-          aws_secret_access_key: aws_secret_access_key
           groups: groups
-          postgres_creation_statements: postgres_creation_statements
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
           chef_server_host_name: chef_server_host_name
           mssql_revocation_statements: mssql_revocation_statements
           chef_server_port: chef_server_port
-          db_max_idle_conns: db_max_idle_conns
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           aws_access_key_id: aws_access_key_id
           aws_region: aws_region
           eks_cluster_name: eks_cluster_name
-          gke_project_id: gke_project_id
           chef_server_url: chef_server_url
-          artifactory_admin_username: artifactory_admin_username
           gke_cluster_name: gke_cluster_name
-          admin_name: admin_name
-          rabbitmq_server_user: rabbitmq_server_user
           aws_user_groups: aws_user_groups
-          venafi_api_key: venafi_api_key
           host_name: host_name
           azure_tenant_id: azure_tenant_id
       properties:
@@ -10444,28 +10448,16 @@ components:
     gatewayCreateProducerAwsOutput:
       example:
         producer_details:
-          artifactory_token_scope: artifactory_token_scope
           gke_cluster_endpoint: gke_cluster_endpoint
           allow_subdomains: true
           dynamic_secret_type: dynamic_secret_type
-          gke_cluster_ca_certificate: gke_cluster_ca_certificate
-          allowed_domains: allowed_domains
           dynamic_secret_key: dynamic_secret_key
-          host_port: host_port
+          last_admin_rotation: 1
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
-          enable_admin_rotation: true
           admin_rotation_interval_days: 0
-          failure_message: failure_message
-          rabbitmq_user_read_permission: rabbitmq_user_read_permission
-          azure_client_id: azure_client_id
           mssql_creation_statements: mssql_creation_statements
-          mongodb_uri_connection: mongodb_uri_connection
-          db_user_name: db_user_name
-          eks_region: eks_region
-          artifactory_admin_apikey: artifactory_admin_apikey
           admin_pwd: admin_pwd
-          azure_app_object_id: azure_app_object_id
           azure_user_roles_template_id: azure_user_roles_template_id
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
@@ -10476,68 +10468,81 @@ components:
           aws_role_arns: aws_role_arns
           active: true
           gke_cluster_compute_zone: gke_cluster_compute_zone
-          aws_user_console_access: true
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           store_private_key: true
-          user_principal_name: user_principal_name
           db_name: db_name
-          db_server_certificates: db_server_certificates
           chef_skip_ssl: true
           db_port: db_port
-          db_server_name: db_server_name
           artifactory_base_url: artifactory_base_url
-          venafi_zone: venafi_zone
           azure_client_secret: azure_client_secret
           azure_user_groups_obj_id: azure_user_groups_obj_id
-          azure_user_portal_access: true
-          eks_cluster_endpoint: eks_cluster_endpoint
           aws_session_token: aws_session_token
-          gke_service_account_key: gke_service_account_key
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
-          db_pwd: db_pwd
-          gke_service_account_name: gke_service_account_name
-          mysql_creation_statements: mysql_creation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           should_stop: should_stop
           artifactory_token_audience: artifactory_token_audience
+          eks_access_key_id: eks_access_key_id
+          user_ttl: user_ttl
+          create_cert_using_pki: true
+          eks_assume_role: eks_assume_role
+          aws_secret_access_key: aws_secret_access_key
+          postgres_creation_statements: postgres_creation_statements
+          db_max_idle_conns: db_max_idle_conns
+          gke_project_id: gke_project_id
+          artifactory_admin_username: artifactory_admin_username
+          admin_name: admin_name
+          rabbitmq_server_user: rabbitmq_server_user
+          venafi_api_key: venafi_api_key
+          artifactory_token_scope: artifactory_token_scope
+          gke_cluster_ca_certificate: gke_cluster_ca_certificate
+          allowed_domains: allowed_domains
+          host_port: host_port
+          enable_admin_rotation: true
+          failure_message: failure_message
+          rabbitmq_user_read_permission: rabbitmq_user_read_permission
+          azure_client_id: azure_client_id
+          mongodb_uri_connection: mongodb_uri_connection
+          db_user_name: db_user_name
+          eks_region: eks_region
+          artifactory_admin_apikey: artifactory_admin_apikey
+          azure_app_object_id: azure_app_object_id
+          aws_user_console_access: true
+          user_principal_name: user_principal_name
+          db_server_certificates: db_server_certificates
+          db_server_name: db_server_name
+          venafi_zone: venafi_zone
+          azure_user_portal_access: true
+          eks_cluster_endpoint: eks_cluster_endpoint
+          gke_service_account_key: gke_service_account_key
+          db_pwd: db_pwd
+          gke_service_account_name: gke_service_account_name
+          mysql_creation_statements: mysql_creation_statements
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
-          eks_access_key_id: eks_access_key_id
           aws_user_programmatic_access: true
           rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           auto_generated_folder: auto_generated_folder
-          user_ttl: user_ttl
-          create_cert_using_pki: true
-          eks_assume_role: eks_assume_role
           azure_user_programmatic_access: true
           eks_secret_access_key: eks_secret_access_key
-          aws_secret_access_key: aws_secret_access_key
           groups: groups
-          postgres_creation_statements: postgres_creation_statements
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
           chef_server_host_name: chef_server_host_name
           mssql_revocation_statements: mssql_revocation_statements
           chef_server_port: chef_server_port
-          db_max_idle_conns: db_max_idle_conns
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           aws_access_key_id: aws_access_key_id
           aws_region: aws_region
           eks_cluster_name: eks_cluster_name
-          gke_project_id: gke_project_id
           chef_server_url: chef_server_url
-          artifactory_admin_username: artifactory_admin_username
           gke_cluster_name: gke_cluster_name
-          admin_name: admin_name
-          rabbitmq_server_user: rabbitmq_server_user
           aws_user_groups: aws_user_groups
-          venafi_api_key: venafi_api_key
           host_name: host_name
           azure_tenant_id: azure_tenant_id
       properties:
@@ -10624,28 +10629,16 @@ components:
     gatewayCreateProducerAzureOutput:
       example:
         producer_details:
-          artifactory_token_scope: artifactory_token_scope
           gke_cluster_endpoint: gke_cluster_endpoint
           allow_subdomains: true
           dynamic_secret_type: dynamic_secret_type
-          gke_cluster_ca_certificate: gke_cluster_ca_certificate
-          allowed_domains: allowed_domains
           dynamic_secret_key: dynamic_secret_key
-          host_port: host_port
+          last_admin_rotation: 1
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
-          enable_admin_rotation: true
           admin_rotation_interval_days: 0
-          failure_message: failure_message
-          rabbitmq_user_read_permission: rabbitmq_user_read_permission
-          azure_client_id: azure_client_id
           mssql_creation_statements: mssql_creation_statements
-          mongodb_uri_connection: mongodb_uri_connection
-          db_user_name: db_user_name
-          eks_region: eks_region
-          artifactory_admin_apikey: artifactory_admin_apikey
           admin_pwd: admin_pwd
-          azure_app_object_id: azure_app_object_id
           azure_user_roles_template_id: azure_user_roles_template_id
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
@@ -10656,68 +10649,81 @@ components:
           aws_role_arns: aws_role_arns
           active: true
           gke_cluster_compute_zone: gke_cluster_compute_zone
-          aws_user_console_access: true
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           store_private_key: true
-          user_principal_name: user_principal_name
           db_name: db_name
-          db_server_certificates: db_server_certificates
           chef_skip_ssl: true
           db_port: db_port
-          db_server_name: db_server_name
           artifactory_base_url: artifactory_base_url
-          venafi_zone: venafi_zone
           azure_client_secret: azure_client_secret
           azure_user_groups_obj_id: azure_user_groups_obj_id
-          azure_user_portal_access: true
-          eks_cluster_endpoint: eks_cluster_endpoint
           aws_session_token: aws_session_token
-          gke_service_account_key: gke_service_account_key
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
-          db_pwd: db_pwd
-          gke_service_account_name: gke_service_account_name
-          mysql_creation_statements: mysql_creation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           should_stop: should_stop
           artifactory_token_audience: artifactory_token_audience
+          eks_access_key_id: eks_access_key_id
+          user_ttl: user_ttl
+          create_cert_using_pki: true
+          eks_assume_role: eks_assume_role
+          aws_secret_access_key: aws_secret_access_key
+          postgres_creation_statements: postgres_creation_statements
+          db_max_idle_conns: db_max_idle_conns
+          gke_project_id: gke_project_id
+          artifactory_admin_username: artifactory_admin_username
+          admin_name: admin_name
+          rabbitmq_server_user: rabbitmq_server_user
+          venafi_api_key: venafi_api_key
+          artifactory_token_scope: artifactory_token_scope
+          gke_cluster_ca_certificate: gke_cluster_ca_certificate
+          allowed_domains: allowed_domains
+          host_port: host_port
+          enable_admin_rotation: true
+          failure_message: failure_message
+          rabbitmq_user_read_permission: rabbitmq_user_read_permission
+          azure_client_id: azure_client_id
+          mongodb_uri_connection: mongodb_uri_connection
+          db_user_name: db_user_name
+          eks_region: eks_region
+          artifactory_admin_apikey: artifactory_admin_apikey
+          azure_app_object_id: azure_app_object_id
+          aws_user_console_access: true
+          user_principal_name: user_principal_name
+          db_server_certificates: db_server_certificates
+          db_server_name: db_server_name
+          venafi_zone: venafi_zone
+          azure_user_portal_access: true
+          eks_cluster_endpoint: eks_cluster_endpoint
+          gke_service_account_key: gke_service_account_key
+          db_pwd: db_pwd
+          gke_service_account_name: gke_service_account_name
+          mysql_creation_statements: mysql_creation_statements
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
-          eks_access_key_id: eks_access_key_id
           aws_user_programmatic_access: true
           rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           auto_generated_folder: auto_generated_folder
-          user_ttl: user_ttl
-          create_cert_using_pki: true
-          eks_assume_role: eks_assume_role
           azure_user_programmatic_access: true
           eks_secret_access_key: eks_secret_access_key
-          aws_secret_access_key: aws_secret_access_key
           groups: groups
-          postgres_creation_statements: postgres_creation_statements
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
           chef_server_host_name: chef_server_host_name
           mssql_revocation_statements: mssql_revocation_statements
           chef_server_port: chef_server_port
-          db_max_idle_conns: db_max_idle_conns
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           aws_access_key_id: aws_access_key_id
           aws_region: aws_region
           eks_cluster_name: eks_cluster_name
-          gke_project_id: gke_project_id
           chef_server_url: chef_server_url
-          artifactory_admin_username: artifactory_admin_username
           gke_cluster_name: gke_cluster_name
-          admin_name: admin_name
-          rabbitmq_server_user: rabbitmq_server_user
           aws_user_groups: aws_user_groups
-          venafi_api_key: venafi_api_key
           host_name: host_name
           azure_tenant_id: azure_tenant_id
       properties:
@@ -10797,28 +10803,16 @@ components:
     gatewayCreateProducerEksOutput:
       example:
         producer_details:
-          artifactory_token_scope: artifactory_token_scope
           gke_cluster_endpoint: gke_cluster_endpoint
           allow_subdomains: true
           dynamic_secret_type: dynamic_secret_type
-          gke_cluster_ca_certificate: gke_cluster_ca_certificate
-          allowed_domains: allowed_domains
           dynamic_secret_key: dynamic_secret_key
-          host_port: host_port
+          last_admin_rotation: 1
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
-          enable_admin_rotation: true
           admin_rotation_interval_days: 0
-          failure_message: failure_message
-          rabbitmq_user_read_permission: rabbitmq_user_read_permission
-          azure_client_id: azure_client_id
           mssql_creation_statements: mssql_creation_statements
-          mongodb_uri_connection: mongodb_uri_connection
-          db_user_name: db_user_name
-          eks_region: eks_region
-          artifactory_admin_apikey: artifactory_admin_apikey
           admin_pwd: admin_pwd
-          azure_app_object_id: azure_app_object_id
           azure_user_roles_template_id: azure_user_roles_template_id
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
@@ -10829,68 +10823,81 @@ components:
           aws_role_arns: aws_role_arns
           active: true
           gke_cluster_compute_zone: gke_cluster_compute_zone
-          aws_user_console_access: true
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           store_private_key: true
-          user_principal_name: user_principal_name
           db_name: db_name
-          db_server_certificates: db_server_certificates
           chef_skip_ssl: true
           db_port: db_port
-          db_server_name: db_server_name
           artifactory_base_url: artifactory_base_url
-          venafi_zone: venafi_zone
           azure_client_secret: azure_client_secret
           azure_user_groups_obj_id: azure_user_groups_obj_id
-          azure_user_portal_access: true
-          eks_cluster_endpoint: eks_cluster_endpoint
           aws_session_token: aws_session_token
-          gke_service_account_key: gke_service_account_key
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
-          db_pwd: db_pwd
-          gke_service_account_name: gke_service_account_name
-          mysql_creation_statements: mysql_creation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           should_stop: should_stop
           artifactory_token_audience: artifactory_token_audience
+          eks_access_key_id: eks_access_key_id
+          user_ttl: user_ttl
+          create_cert_using_pki: true
+          eks_assume_role: eks_assume_role
+          aws_secret_access_key: aws_secret_access_key
+          postgres_creation_statements: postgres_creation_statements
+          db_max_idle_conns: db_max_idle_conns
+          gke_project_id: gke_project_id
+          artifactory_admin_username: artifactory_admin_username
+          admin_name: admin_name
+          rabbitmq_server_user: rabbitmq_server_user
+          venafi_api_key: venafi_api_key
+          artifactory_token_scope: artifactory_token_scope
+          gke_cluster_ca_certificate: gke_cluster_ca_certificate
+          allowed_domains: allowed_domains
+          host_port: host_port
+          enable_admin_rotation: true
+          failure_message: failure_message
+          rabbitmq_user_read_permission: rabbitmq_user_read_permission
+          azure_client_id: azure_client_id
+          mongodb_uri_connection: mongodb_uri_connection
+          db_user_name: db_user_name
+          eks_region: eks_region
+          artifactory_admin_apikey: artifactory_admin_apikey
+          azure_app_object_id: azure_app_object_id
+          aws_user_console_access: true
+          user_principal_name: user_principal_name
+          db_server_certificates: db_server_certificates
+          db_server_name: db_server_name
+          venafi_zone: venafi_zone
+          azure_user_portal_access: true
+          eks_cluster_endpoint: eks_cluster_endpoint
+          gke_service_account_key: gke_service_account_key
+          db_pwd: db_pwd
+          gke_service_account_name: gke_service_account_name
+          mysql_creation_statements: mysql_creation_statements
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
-          eks_access_key_id: eks_access_key_id
           aws_user_programmatic_access: true
           rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           auto_generated_folder: auto_generated_folder
-          user_ttl: user_ttl
-          create_cert_using_pki: true
-          eks_assume_role: eks_assume_role
           azure_user_programmatic_access: true
           eks_secret_access_key: eks_secret_access_key
-          aws_secret_access_key: aws_secret_access_key
           groups: groups
-          postgres_creation_statements: postgres_creation_statements
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
           chef_server_host_name: chef_server_host_name
           mssql_revocation_statements: mssql_revocation_statements
           chef_server_port: chef_server_port
-          db_max_idle_conns: db_max_idle_conns
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           aws_access_key_id: aws_access_key_id
           aws_region: aws_region
           eks_cluster_name: eks_cluster_name
-          gke_project_id: gke_project_id
           chef_server_url: chef_server_url
-          artifactory_admin_username: artifactory_admin_username
           gke_cluster_name: gke_cluster_name
-          admin_name: admin_name
-          rabbitmq_server_user: rabbitmq_server_user
           aws_user_groups: aws_user_groups
-          venafi_api_key: venafi_api_key
           host_name: host_name
           azure_tenant_id: azure_tenant_id
       properties:
@@ -10961,28 +10968,16 @@ components:
     gatewayCreateProducerGkeOutput:
       example:
         producer_details:
-          artifactory_token_scope: artifactory_token_scope
           gke_cluster_endpoint: gke_cluster_endpoint
           allow_subdomains: true
           dynamic_secret_type: dynamic_secret_type
-          gke_cluster_ca_certificate: gke_cluster_ca_certificate
-          allowed_domains: allowed_domains
           dynamic_secret_key: dynamic_secret_key
-          host_port: host_port
+          last_admin_rotation: 1
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
-          enable_admin_rotation: true
           admin_rotation_interval_days: 0
-          failure_message: failure_message
-          rabbitmq_user_read_permission: rabbitmq_user_read_permission
-          azure_client_id: azure_client_id
           mssql_creation_statements: mssql_creation_statements
-          mongodb_uri_connection: mongodb_uri_connection
-          db_user_name: db_user_name
-          eks_region: eks_region
-          artifactory_admin_apikey: artifactory_admin_apikey
           admin_pwd: admin_pwd
-          azure_app_object_id: azure_app_object_id
           azure_user_roles_template_id: azure_user_roles_template_id
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
@@ -10993,68 +10988,81 @@ components:
           aws_role_arns: aws_role_arns
           active: true
           gke_cluster_compute_zone: gke_cluster_compute_zone
-          aws_user_console_access: true
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           store_private_key: true
-          user_principal_name: user_principal_name
           db_name: db_name
-          db_server_certificates: db_server_certificates
           chef_skip_ssl: true
           db_port: db_port
-          db_server_name: db_server_name
           artifactory_base_url: artifactory_base_url
-          venafi_zone: venafi_zone
           azure_client_secret: azure_client_secret
           azure_user_groups_obj_id: azure_user_groups_obj_id
-          azure_user_portal_access: true
-          eks_cluster_endpoint: eks_cluster_endpoint
           aws_session_token: aws_session_token
-          gke_service_account_key: gke_service_account_key
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
-          db_pwd: db_pwd
-          gke_service_account_name: gke_service_account_name
-          mysql_creation_statements: mysql_creation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           should_stop: should_stop
           artifactory_token_audience: artifactory_token_audience
+          eks_access_key_id: eks_access_key_id
+          user_ttl: user_ttl
+          create_cert_using_pki: true
+          eks_assume_role: eks_assume_role
+          aws_secret_access_key: aws_secret_access_key
+          postgres_creation_statements: postgres_creation_statements
+          db_max_idle_conns: db_max_idle_conns
+          gke_project_id: gke_project_id
+          artifactory_admin_username: artifactory_admin_username
+          admin_name: admin_name
+          rabbitmq_server_user: rabbitmq_server_user
+          venafi_api_key: venafi_api_key
+          artifactory_token_scope: artifactory_token_scope
+          gke_cluster_ca_certificate: gke_cluster_ca_certificate
+          allowed_domains: allowed_domains
+          host_port: host_port
+          enable_admin_rotation: true
+          failure_message: failure_message
+          rabbitmq_user_read_permission: rabbitmq_user_read_permission
+          azure_client_id: azure_client_id
+          mongodb_uri_connection: mongodb_uri_connection
+          db_user_name: db_user_name
+          eks_region: eks_region
+          artifactory_admin_apikey: artifactory_admin_apikey
+          azure_app_object_id: azure_app_object_id
+          aws_user_console_access: true
+          user_principal_name: user_principal_name
+          db_server_certificates: db_server_certificates
+          db_server_name: db_server_name
+          venafi_zone: venafi_zone
+          azure_user_portal_access: true
+          eks_cluster_endpoint: eks_cluster_endpoint
+          gke_service_account_key: gke_service_account_key
+          db_pwd: db_pwd
+          gke_service_account_name: gke_service_account_name
+          mysql_creation_statements: mysql_creation_statements
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
-          eks_access_key_id: eks_access_key_id
           aws_user_programmatic_access: true
           rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           auto_generated_folder: auto_generated_folder
-          user_ttl: user_ttl
-          create_cert_using_pki: true
-          eks_assume_role: eks_assume_role
           azure_user_programmatic_access: true
           eks_secret_access_key: eks_secret_access_key
-          aws_secret_access_key: aws_secret_access_key
           groups: groups
-          postgres_creation_statements: postgres_creation_statements
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
           chef_server_host_name: chef_server_host_name
           mssql_revocation_statements: mssql_revocation_statements
           chef_server_port: chef_server_port
-          db_max_idle_conns: db_max_idle_conns
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           aws_access_key_id: aws_access_key_id
           aws_region: aws_region
           eks_cluster_name: eks_cluster_name
-          gke_project_id: gke_project_id
           chef_server_url: chef_server_url
-          artifactory_admin_username: artifactory_admin_username
           gke_cluster_name: gke_cluster_name
-          admin_name: admin_name
-          rabbitmq_server_user: rabbitmq_server_user
           aws_user_groups: aws_user_groups
-          venafi_api_key: venafi_api_key
           host_name: host_name
           azure_tenant_id: azure_tenant_id
       properties:
@@ -11133,28 +11141,16 @@ components:
     gatewayCreateProducerMSSQLOutput:
       example:
         producer_details:
-          artifactory_token_scope: artifactory_token_scope
           gke_cluster_endpoint: gke_cluster_endpoint
           allow_subdomains: true
           dynamic_secret_type: dynamic_secret_type
-          gke_cluster_ca_certificate: gke_cluster_ca_certificate
-          allowed_domains: allowed_domains
           dynamic_secret_key: dynamic_secret_key
-          host_port: host_port
+          last_admin_rotation: 1
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
-          enable_admin_rotation: true
           admin_rotation_interval_days: 0
-          failure_message: failure_message
-          rabbitmq_user_read_permission: rabbitmq_user_read_permission
-          azure_client_id: azure_client_id
           mssql_creation_statements: mssql_creation_statements
-          mongodb_uri_connection: mongodb_uri_connection
-          db_user_name: db_user_name
-          eks_region: eks_region
-          artifactory_admin_apikey: artifactory_admin_apikey
           admin_pwd: admin_pwd
-          azure_app_object_id: azure_app_object_id
           azure_user_roles_template_id: azure_user_roles_template_id
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
@@ -11165,68 +11161,81 @@ components:
           aws_role_arns: aws_role_arns
           active: true
           gke_cluster_compute_zone: gke_cluster_compute_zone
-          aws_user_console_access: true
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           store_private_key: true
-          user_principal_name: user_principal_name
           db_name: db_name
-          db_server_certificates: db_server_certificates
           chef_skip_ssl: true
           db_port: db_port
-          db_server_name: db_server_name
           artifactory_base_url: artifactory_base_url
-          venafi_zone: venafi_zone
           azure_client_secret: azure_client_secret
           azure_user_groups_obj_id: azure_user_groups_obj_id
-          azure_user_portal_access: true
-          eks_cluster_endpoint: eks_cluster_endpoint
           aws_session_token: aws_session_token
-          gke_service_account_key: gke_service_account_key
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
-          db_pwd: db_pwd
-          gke_service_account_name: gke_service_account_name
-          mysql_creation_statements: mysql_creation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           should_stop: should_stop
           artifactory_token_audience: artifactory_token_audience
+          eks_access_key_id: eks_access_key_id
+          user_ttl: user_ttl
+          create_cert_using_pki: true
+          eks_assume_role: eks_assume_role
+          aws_secret_access_key: aws_secret_access_key
+          postgres_creation_statements: postgres_creation_statements
+          db_max_idle_conns: db_max_idle_conns
+          gke_project_id: gke_project_id
+          artifactory_admin_username: artifactory_admin_username
+          admin_name: admin_name
+          rabbitmq_server_user: rabbitmq_server_user
+          venafi_api_key: venafi_api_key
+          artifactory_token_scope: artifactory_token_scope
+          gke_cluster_ca_certificate: gke_cluster_ca_certificate
+          allowed_domains: allowed_domains
+          host_port: host_port
+          enable_admin_rotation: true
+          failure_message: failure_message
+          rabbitmq_user_read_permission: rabbitmq_user_read_permission
+          azure_client_id: azure_client_id
+          mongodb_uri_connection: mongodb_uri_connection
+          db_user_name: db_user_name
+          eks_region: eks_region
+          artifactory_admin_apikey: artifactory_admin_apikey
+          azure_app_object_id: azure_app_object_id
+          aws_user_console_access: true
+          user_principal_name: user_principal_name
+          db_server_certificates: db_server_certificates
+          db_server_name: db_server_name
+          venafi_zone: venafi_zone
+          azure_user_portal_access: true
+          eks_cluster_endpoint: eks_cluster_endpoint
+          gke_service_account_key: gke_service_account_key
+          db_pwd: db_pwd
+          gke_service_account_name: gke_service_account_name
+          mysql_creation_statements: mysql_creation_statements
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
-          eks_access_key_id: eks_access_key_id
           aws_user_programmatic_access: true
           rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           auto_generated_folder: auto_generated_folder
-          user_ttl: user_ttl
-          create_cert_using_pki: true
-          eks_assume_role: eks_assume_role
           azure_user_programmatic_access: true
           eks_secret_access_key: eks_secret_access_key
-          aws_secret_access_key: aws_secret_access_key
           groups: groups
-          postgres_creation_statements: postgres_creation_statements
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
           chef_server_host_name: chef_server_host_name
           mssql_revocation_statements: mssql_revocation_statements
           chef_server_port: chef_server_port
-          db_max_idle_conns: db_max_idle_conns
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           aws_access_key_id: aws_access_key_id
           aws_region: aws_region
           eks_cluster_name: eks_cluster_name
-          gke_project_id: gke_project_id
           chef_server_url: chef_server_url
-          artifactory_admin_username: artifactory_admin_username
           gke_cluster_name: gke_cluster_name
-          admin_name: admin_name
-          rabbitmq_server_user: rabbitmq_server_user
           aws_user_groups: aws_user_groups
-          venafi_api_key: venafi_api_key
           host_name: host_name
           azure_tenant_id: azure_tenant_id
       properties:
@@ -11287,28 +11296,16 @@ components:
     gatewayCreateProducerMongoOutput:
       example:
         producer_details:
-          artifactory_token_scope: artifactory_token_scope
           gke_cluster_endpoint: gke_cluster_endpoint
           allow_subdomains: true
           dynamic_secret_type: dynamic_secret_type
-          gke_cluster_ca_certificate: gke_cluster_ca_certificate
-          allowed_domains: allowed_domains
           dynamic_secret_key: dynamic_secret_key
-          host_port: host_port
+          last_admin_rotation: 1
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
-          enable_admin_rotation: true
           admin_rotation_interval_days: 0
-          failure_message: failure_message
-          rabbitmq_user_read_permission: rabbitmq_user_read_permission
-          azure_client_id: azure_client_id
           mssql_creation_statements: mssql_creation_statements
-          mongodb_uri_connection: mongodb_uri_connection
-          db_user_name: db_user_name
-          eks_region: eks_region
-          artifactory_admin_apikey: artifactory_admin_apikey
           admin_pwd: admin_pwd
-          azure_app_object_id: azure_app_object_id
           azure_user_roles_template_id: azure_user_roles_template_id
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
@@ -11319,68 +11316,81 @@ components:
           aws_role_arns: aws_role_arns
           active: true
           gke_cluster_compute_zone: gke_cluster_compute_zone
-          aws_user_console_access: true
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           store_private_key: true
-          user_principal_name: user_principal_name
           db_name: db_name
-          db_server_certificates: db_server_certificates
           chef_skip_ssl: true
           db_port: db_port
-          db_server_name: db_server_name
           artifactory_base_url: artifactory_base_url
-          venafi_zone: venafi_zone
           azure_client_secret: azure_client_secret
           azure_user_groups_obj_id: azure_user_groups_obj_id
-          azure_user_portal_access: true
-          eks_cluster_endpoint: eks_cluster_endpoint
           aws_session_token: aws_session_token
-          gke_service_account_key: gke_service_account_key
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
-          db_pwd: db_pwd
-          gke_service_account_name: gke_service_account_name
-          mysql_creation_statements: mysql_creation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           should_stop: should_stop
           artifactory_token_audience: artifactory_token_audience
+          eks_access_key_id: eks_access_key_id
+          user_ttl: user_ttl
+          create_cert_using_pki: true
+          eks_assume_role: eks_assume_role
+          aws_secret_access_key: aws_secret_access_key
+          postgres_creation_statements: postgres_creation_statements
+          db_max_idle_conns: db_max_idle_conns
+          gke_project_id: gke_project_id
+          artifactory_admin_username: artifactory_admin_username
+          admin_name: admin_name
+          rabbitmq_server_user: rabbitmq_server_user
+          venafi_api_key: venafi_api_key
+          artifactory_token_scope: artifactory_token_scope
+          gke_cluster_ca_certificate: gke_cluster_ca_certificate
+          allowed_domains: allowed_domains
+          host_port: host_port
+          enable_admin_rotation: true
+          failure_message: failure_message
+          rabbitmq_user_read_permission: rabbitmq_user_read_permission
+          azure_client_id: azure_client_id
+          mongodb_uri_connection: mongodb_uri_connection
+          db_user_name: db_user_name
+          eks_region: eks_region
+          artifactory_admin_apikey: artifactory_admin_apikey
+          azure_app_object_id: azure_app_object_id
+          aws_user_console_access: true
+          user_principal_name: user_principal_name
+          db_server_certificates: db_server_certificates
+          db_server_name: db_server_name
+          venafi_zone: venafi_zone
+          azure_user_portal_access: true
+          eks_cluster_endpoint: eks_cluster_endpoint
+          gke_service_account_key: gke_service_account_key
+          db_pwd: db_pwd
+          gke_service_account_name: gke_service_account_name
+          mysql_creation_statements: mysql_creation_statements
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
-          eks_access_key_id: eks_access_key_id
           aws_user_programmatic_access: true
           rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           auto_generated_folder: auto_generated_folder
-          user_ttl: user_ttl
-          create_cert_using_pki: true
-          eks_assume_role: eks_assume_role
           azure_user_programmatic_access: true
           eks_secret_access_key: eks_secret_access_key
-          aws_secret_access_key: aws_secret_access_key
           groups: groups
-          postgres_creation_statements: postgres_creation_statements
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
           chef_server_host_name: chef_server_host_name
           mssql_revocation_statements: mssql_revocation_statements
           chef_server_port: chef_server_port
-          db_max_idle_conns: db_max_idle_conns
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           aws_access_key_id: aws_access_key_id
           aws_region: aws_region
           eks_cluster_name: eks_cluster_name
-          gke_project_id: gke_project_id
           chef_server_url: chef_server_url
-          artifactory_admin_username: artifactory_admin_username
           gke_cluster_name: gke_cluster_name
-          admin_name: admin_name
-          rabbitmq_server_user: rabbitmq_server_user
           aws_user_groups: aws_user_groups
-          venafi_api_key: venafi_api_key
           host_name: host_name
           azure_tenant_id: azure_tenant_id
       properties:
@@ -11463,28 +11473,16 @@ components:
     gatewayCreateProducerMySQLOutput:
       example:
         producer_details:
-          artifactory_token_scope: artifactory_token_scope
           gke_cluster_endpoint: gke_cluster_endpoint
           allow_subdomains: true
           dynamic_secret_type: dynamic_secret_type
-          gke_cluster_ca_certificate: gke_cluster_ca_certificate
-          allowed_domains: allowed_domains
           dynamic_secret_key: dynamic_secret_key
-          host_port: host_port
+          last_admin_rotation: 1
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
-          enable_admin_rotation: true
           admin_rotation_interval_days: 0
-          failure_message: failure_message
-          rabbitmq_user_read_permission: rabbitmq_user_read_permission
-          azure_client_id: azure_client_id
           mssql_creation_statements: mssql_creation_statements
-          mongodb_uri_connection: mongodb_uri_connection
-          db_user_name: db_user_name
-          eks_region: eks_region
-          artifactory_admin_apikey: artifactory_admin_apikey
           admin_pwd: admin_pwd
-          azure_app_object_id: azure_app_object_id
           azure_user_roles_template_id: azure_user_roles_template_id
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
@@ -11495,68 +11493,81 @@ components:
           aws_role_arns: aws_role_arns
           active: true
           gke_cluster_compute_zone: gke_cluster_compute_zone
-          aws_user_console_access: true
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           store_private_key: true
-          user_principal_name: user_principal_name
           db_name: db_name
-          db_server_certificates: db_server_certificates
           chef_skip_ssl: true
           db_port: db_port
-          db_server_name: db_server_name
           artifactory_base_url: artifactory_base_url
-          venafi_zone: venafi_zone
           azure_client_secret: azure_client_secret
           azure_user_groups_obj_id: azure_user_groups_obj_id
-          azure_user_portal_access: true
-          eks_cluster_endpoint: eks_cluster_endpoint
           aws_session_token: aws_session_token
-          gke_service_account_key: gke_service_account_key
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
-          db_pwd: db_pwd
-          gke_service_account_name: gke_service_account_name
-          mysql_creation_statements: mysql_creation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           should_stop: should_stop
           artifactory_token_audience: artifactory_token_audience
+          eks_access_key_id: eks_access_key_id
+          user_ttl: user_ttl
+          create_cert_using_pki: true
+          eks_assume_role: eks_assume_role
+          aws_secret_access_key: aws_secret_access_key
+          postgres_creation_statements: postgres_creation_statements
+          db_max_idle_conns: db_max_idle_conns
+          gke_project_id: gke_project_id
+          artifactory_admin_username: artifactory_admin_username
+          admin_name: admin_name
+          rabbitmq_server_user: rabbitmq_server_user
+          venafi_api_key: venafi_api_key
+          artifactory_token_scope: artifactory_token_scope
+          gke_cluster_ca_certificate: gke_cluster_ca_certificate
+          allowed_domains: allowed_domains
+          host_port: host_port
+          enable_admin_rotation: true
+          failure_message: failure_message
+          rabbitmq_user_read_permission: rabbitmq_user_read_permission
+          azure_client_id: azure_client_id
+          mongodb_uri_connection: mongodb_uri_connection
+          db_user_name: db_user_name
+          eks_region: eks_region
+          artifactory_admin_apikey: artifactory_admin_apikey
+          azure_app_object_id: azure_app_object_id
+          aws_user_console_access: true
+          user_principal_name: user_principal_name
+          db_server_certificates: db_server_certificates
+          db_server_name: db_server_name
+          venafi_zone: venafi_zone
+          azure_user_portal_access: true
+          eks_cluster_endpoint: eks_cluster_endpoint
+          gke_service_account_key: gke_service_account_key
+          db_pwd: db_pwd
+          gke_service_account_name: gke_service_account_name
+          mysql_creation_statements: mysql_creation_statements
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
-          eks_access_key_id: eks_access_key_id
           aws_user_programmatic_access: true
           rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           auto_generated_folder: auto_generated_folder
-          user_ttl: user_ttl
-          create_cert_using_pki: true
-          eks_assume_role: eks_assume_role
           azure_user_programmatic_access: true
           eks_secret_access_key: eks_secret_access_key
-          aws_secret_access_key: aws_secret_access_key
           groups: groups
-          postgres_creation_statements: postgres_creation_statements
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
           chef_server_host_name: chef_server_host_name
           mssql_revocation_statements: mssql_revocation_statements
           chef_server_port: chef_server_port
-          db_max_idle_conns: db_max_idle_conns
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           aws_access_key_id: aws_access_key_id
           aws_region: aws_region
           eks_cluster_name: eks_cluster_name
-          gke_project_id: gke_project_id
           chef_server_url: chef_server_url
-          artifactory_admin_username: artifactory_admin_username
           gke_cluster_name: gke_cluster_name
-          admin_name: admin_name
-          rabbitmq_server_user: rabbitmq_server_user
           aws_user_groups: aws_user_groups
-          venafi_api_key: venafi_api_key
           host_name: host_name
           azure_tenant_id: azure_tenant_id
       properties:
@@ -11632,28 +11643,16 @@ components:
     gatewayCreateProducerPostgreSQLOutput:
       example:
         producer_details:
-          artifactory_token_scope: artifactory_token_scope
           gke_cluster_endpoint: gke_cluster_endpoint
           allow_subdomains: true
           dynamic_secret_type: dynamic_secret_type
-          gke_cluster_ca_certificate: gke_cluster_ca_certificate
-          allowed_domains: allowed_domains
           dynamic_secret_key: dynamic_secret_key
-          host_port: host_port
+          last_admin_rotation: 1
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
-          enable_admin_rotation: true
           admin_rotation_interval_days: 0
-          failure_message: failure_message
-          rabbitmq_user_read_permission: rabbitmq_user_read_permission
-          azure_client_id: azure_client_id
           mssql_creation_statements: mssql_creation_statements
-          mongodb_uri_connection: mongodb_uri_connection
-          db_user_name: db_user_name
-          eks_region: eks_region
-          artifactory_admin_apikey: artifactory_admin_apikey
           admin_pwd: admin_pwd
-          azure_app_object_id: azure_app_object_id
           azure_user_roles_template_id: azure_user_roles_template_id
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
@@ -11664,68 +11663,81 @@ components:
           aws_role_arns: aws_role_arns
           active: true
           gke_cluster_compute_zone: gke_cluster_compute_zone
-          aws_user_console_access: true
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           store_private_key: true
-          user_principal_name: user_principal_name
           db_name: db_name
-          db_server_certificates: db_server_certificates
           chef_skip_ssl: true
           db_port: db_port
-          db_server_name: db_server_name
           artifactory_base_url: artifactory_base_url
-          venafi_zone: venafi_zone
           azure_client_secret: azure_client_secret
           azure_user_groups_obj_id: azure_user_groups_obj_id
-          azure_user_portal_access: true
-          eks_cluster_endpoint: eks_cluster_endpoint
           aws_session_token: aws_session_token
-          gke_service_account_key: gke_service_account_key
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
-          db_pwd: db_pwd
-          gke_service_account_name: gke_service_account_name
-          mysql_creation_statements: mysql_creation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           should_stop: should_stop
           artifactory_token_audience: artifactory_token_audience
+          eks_access_key_id: eks_access_key_id
+          user_ttl: user_ttl
+          create_cert_using_pki: true
+          eks_assume_role: eks_assume_role
+          aws_secret_access_key: aws_secret_access_key
+          postgres_creation_statements: postgres_creation_statements
+          db_max_idle_conns: db_max_idle_conns
+          gke_project_id: gke_project_id
+          artifactory_admin_username: artifactory_admin_username
+          admin_name: admin_name
+          rabbitmq_server_user: rabbitmq_server_user
+          venafi_api_key: venafi_api_key
+          artifactory_token_scope: artifactory_token_scope
+          gke_cluster_ca_certificate: gke_cluster_ca_certificate
+          allowed_domains: allowed_domains
+          host_port: host_port
+          enable_admin_rotation: true
+          failure_message: failure_message
+          rabbitmq_user_read_permission: rabbitmq_user_read_permission
+          azure_client_id: azure_client_id
+          mongodb_uri_connection: mongodb_uri_connection
+          db_user_name: db_user_name
+          eks_region: eks_region
+          artifactory_admin_apikey: artifactory_admin_apikey
+          azure_app_object_id: azure_app_object_id
+          aws_user_console_access: true
+          user_principal_name: user_principal_name
+          db_server_certificates: db_server_certificates
+          db_server_name: db_server_name
+          venafi_zone: venafi_zone
+          azure_user_portal_access: true
+          eks_cluster_endpoint: eks_cluster_endpoint
+          gke_service_account_key: gke_service_account_key
+          db_pwd: db_pwd
+          gke_service_account_name: gke_service_account_name
+          mysql_creation_statements: mysql_creation_statements
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
-          eks_access_key_id: eks_access_key_id
           aws_user_programmatic_access: true
           rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           auto_generated_folder: auto_generated_folder
-          user_ttl: user_ttl
-          create_cert_using_pki: true
-          eks_assume_role: eks_assume_role
           azure_user_programmatic_access: true
           eks_secret_access_key: eks_secret_access_key
-          aws_secret_access_key: aws_secret_access_key
           groups: groups
-          postgres_creation_statements: postgres_creation_statements
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
           chef_server_host_name: chef_server_host_name
           mssql_revocation_statements: mssql_revocation_statements
           chef_server_port: chef_server_port
-          db_max_idle_conns: db_max_idle_conns
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           aws_access_key_id: aws_access_key_id
           aws_region: aws_region
           eks_cluster_name: eks_cluster_name
-          gke_project_id: gke_project_id
           chef_server_url: chef_server_url
-          artifactory_admin_username: artifactory_admin_username
           gke_cluster_name: gke_cluster_name
-          admin_name: admin_name
-          rabbitmq_server_user: rabbitmq_server_user
           aws_user_groups: aws_user_groups
-          venafi_api_key: venafi_api_key
           host_name: host_name
           azure_tenant_id: azure_tenant_id
       properties:
@@ -11810,28 +11822,16 @@ components:
     gatewayCreateProducerRabbitMQOutput:
       example:
         producer_details:
-          artifactory_token_scope: artifactory_token_scope
           gke_cluster_endpoint: gke_cluster_endpoint
           allow_subdomains: true
           dynamic_secret_type: dynamic_secret_type
-          gke_cluster_ca_certificate: gke_cluster_ca_certificate
-          allowed_domains: allowed_domains
           dynamic_secret_key: dynamic_secret_key
-          host_port: host_port
+          last_admin_rotation: 1
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
-          enable_admin_rotation: true
           admin_rotation_interval_days: 0
-          failure_message: failure_message
-          rabbitmq_user_read_permission: rabbitmq_user_read_permission
-          azure_client_id: azure_client_id
           mssql_creation_statements: mssql_creation_statements
-          mongodb_uri_connection: mongodb_uri_connection
-          db_user_name: db_user_name
-          eks_region: eks_region
-          artifactory_admin_apikey: artifactory_admin_apikey
           admin_pwd: admin_pwd
-          azure_app_object_id: azure_app_object_id
           azure_user_roles_template_id: azure_user_roles_template_id
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
@@ -11842,68 +11842,81 @@ components:
           aws_role_arns: aws_role_arns
           active: true
           gke_cluster_compute_zone: gke_cluster_compute_zone
-          aws_user_console_access: true
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           store_private_key: true
-          user_principal_name: user_principal_name
           db_name: db_name
-          db_server_certificates: db_server_certificates
           chef_skip_ssl: true
           db_port: db_port
-          db_server_name: db_server_name
           artifactory_base_url: artifactory_base_url
-          venafi_zone: venafi_zone
           azure_client_secret: azure_client_secret
           azure_user_groups_obj_id: azure_user_groups_obj_id
-          azure_user_portal_access: true
-          eks_cluster_endpoint: eks_cluster_endpoint
           aws_session_token: aws_session_token
-          gke_service_account_key: gke_service_account_key
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
-          db_pwd: db_pwd
-          gke_service_account_name: gke_service_account_name
-          mysql_creation_statements: mysql_creation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           should_stop: should_stop
           artifactory_token_audience: artifactory_token_audience
+          eks_access_key_id: eks_access_key_id
+          user_ttl: user_ttl
+          create_cert_using_pki: true
+          eks_assume_role: eks_assume_role
+          aws_secret_access_key: aws_secret_access_key
+          postgres_creation_statements: postgres_creation_statements
+          db_max_idle_conns: db_max_idle_conns
+          gke_project_id: gke_project_id
+          artifactory_admin_username: artifactory_admin_username
+          admin_name: admin_name
+          rabbitmq_server_user: rabbitmq_server_user
+          venafi_api_key: venafi_api_key
+          artifactory_token_scope: artifactory_token_scope
+          gke_cluster_ca_certificate: gke_cluster_ca_certificate
+          allowed_domains: allowed_domains
+          host_port: host_port
+          enable_admin_rotation: true
+          failure_message: failure_message
+          rabbitmq_user_read_permission: rabbitmq_user_read_permission
+          azure_client_id: azure_client_id
+          mongodb_uri_connection: mongodb_uri_connection
+          db_user_name: db_user_name
+          eks_region: eks_region
+          artifactory_admin_apikey: artifactory_admin_apikey
+          azure_app_object_id: azure_app_object_id
+          aws_user_console_access: true
+          user_principal_name: user_principal_name
+          db_server_certificates: db_server_certificates
+          db_server_name: db_server_name
+          venafi_zone: venafi_zone
+          azure_user_portal_access: true
+          eks_cluster_endpoint: eks_cluster_endpoint
+          gke_service_account_key: gke_service_account_key
+          db_pwd: db_pwd
+          gke_service_account_name: gke_service_account_name
+          mysql_creation_statements: mysql_creation_statements
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
-          eks_access_key_id: eks_access_key_id
           aws_user_programmatic_access: true
           rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           auto_generated_folder: auto_generated_folder
-          user_ttl: user_ttl
-          create_cert_using_pki: true
-          eks_assume_role: eks_assume_role
           azure_user_programmatic_access: true
           eks_secret_access_key: eks_secret_access_key
-          aws_secret_access_key: aws_secret_access_key
           groups: groups
-          postgres_creation_statements: postgres_creation_statements
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
           chef_server_host_name: chef_server_host_name
           mssql_revocation_statements: mssql_revocation_statements
           chef_server_port: chef_server_port
-          db_max_idle_conns: db_max_idle_conns
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           aws_access_key_id: aws_access_key_id
           aws_region: aws_region
           eks_cluster_name: eks_cluster_name
-          gke_project_id: gke_project_id
           chef_server_url: chef_server_url
-          artifactory_admin_username: artifactory_admin_username
           gke_cluster_name: gke_cluster_name
-          admin_name: admin_name
-          rabbitmq_server_user: rabbitmq_server_user
           aws_user_groups: aws_user_groups
-          venafi_api_key: venafi_api_key
           host_name: host_name
           azure_tenant_id: azure_tenant_id
       properties:
@@ -11979,28 +11992,16 @@ components:
     gatewayCreateProducerRdpOutput:
       example:
         producer_details:
-          artifactory_token_scope: artifactory_token_scope
           gke_cluster_endpoint: gke_cluster_endpoint
           allow_subdomains: true
           dynamic_secret_type: dynamic_secret_type
-          gke_cluster_ca_certificate: gke_cluster_ca_certificate
-          allowed_domains: allowed_domains
           dynamic_secret_key: dynamic_secret_key
-          host_port: host_port
+          last_admin_rotation: 1
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
-          enable_admin_rotation: true
           admin_rotation_interval_days: 0
-          failure_message: failure_message
-          rabbitmq_user_read_permission: rabbitmq_user_read_permission
-          azure_client_id: azure_client_id
           mssql_creation_statements: mssql_creation_statements
-          mongodb_uri_connection: mongodb_uri_connection
-          db_user_name: db_user_name
-          eks_region: eks_region
-          artifactory_admin_apikey: artifactory_admin_apikey
           admin_pwd: admin_pwd
-          azure_app_object_id: azure_app_object_id
           azure_user_roles_template_id: azure_user_roles_template_id
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
@@ -12011,68 +12012,81 @@ components:
           aws_role_arns: aws_role_arns
           active: true
           gke_cluster_compute_zone: gke_cluster_compute_zone
-          aws_user_console_access: true
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           store_private_key: true
-          user_principal_name: user_principal_name
           db_name: db_name
-          db_server_certificates: db_server_certificates
           chef_skip_ssl: true
           db_port: db_port
-          db_server_name: db_server_name
           artifactory_base_url: artifactory_base_url
-          venafi_zone: venafi_zone
           azure_client_secret: azure_client_secret
           azure_user_groups_obj_id: azure_user_groups_obj_id
-          azure_user_portal_access: true
-          eks_cluster_endpoint: eks_cluster_endpoint
           aws_session_token: aws_session_token
-          gke_service_account_key: gke_service_account_key
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
-          db_pwd: db_pwd
-          gke_service_account_name: gke_service_account_name
-          mysql_creation_statements: mysql_creation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           should_stop: should_stop
           artifactory_token_audience: artifactory_token_audience
+          eks_access_key_id: eks_access_key_id
+          user_ttl: user_ttl
+          create_cert_using_pki: true
+          eks_assume_role: eks_assume_role
+          aws_secret_access_key: aws_secret_access_key
+          postgres_creation_statements: postgres_creation_statements
+          db_max_idle_conns: db_max_idle_conns
+          gke_project_id: gke_project_id
+          artifactory_admin_username: artifactory_admin_username
+          admin_name: admin_name
+          rabbitmq_server_user: rabbitmq_server_user
+          venafi_api_key: venafi_api_key
+          artifactory_token_scope: artifactory_token_scope
+          gke_cluster_ca_certificate: gke_cluster_ca_certificate
+          allowed_domains: allowed_domains
+          host_port: host_port
+          enable_admin_rotation: true
+          failure_message: failure_message
+          rabbitmq_user_read_permission: rabbitmq_user_read_permission
+          azure_client_id: azure_client_id
+          mongodb_uri_connection: mongodb_uri_connection
+          db_user_name: db_user_name
+          eks_region: eks_region
+          artifactory_admin_apikey: artifactory_admin_apikey
+          azure_app_object_id: azure_app_object_id
+          aws_user_console_access: true
+          user_principal_name: user_principal_name
+          db_server_certificates: db_server_certificates
+          db_server_name: db_server_name
+          venafi_zone: venafi_zone
+          azure_user_portal_access: true
+          eks_cluster_endpoint: eks_cluster_endpoint
+          gke_service_account_key: gke_service_account_key
+          db_pwd: db_pwd
+          gke_service_account_name: gke_service_account_name
+          mysql_creation_statements: mysql_creation_statements
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
-          eks_access_key_id: eks_access_key_id
           aws_user_programmatic_access: true
           rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           auto_generated_folder: auto_generated_folder
-          user_ttl: user_ttl
-          create_cert_using_pki: true
-          eks_assume_role: eks_assume_role
           azure_user_programmatic_access: true
           eks_secret_access_key: eks_secret_access_key
-          aws_secret_access_key: aws_secret_access_key
           groups: groups
-          postgres_creation_statements: postgres_creation_statements
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
           chef_server_host_name: chef_server_host_name
           mssql_revocation_statements: mssql_revocation_statements
           chef_server_port: chef_server_port
-          db_max_idle_conns: db_max_idle_conns
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           aws_access_key_id: aws_access_key_id
           aws_region: aws_region
           eks_cluster_name: eks_cluster_name
-          gke_project_id: gke_project_id
           chef_server_url: chef_server_url
-          artifactory_admin_username: artifactory_admin_username
           gke_cluster_name: gke_cluster_name
-          admin_name: admin_name
-          rabbitmq_server_user: rabbitmq_server_user
           aws_user_groups: aws_user_groups
-          venafi_api_key: venafi_api_key
           host_name: host_name
           azure_tenant_id: azure_tenant_id
       properties:

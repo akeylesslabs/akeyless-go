@@ -92,6 +92,7 @@ type DSProducerDetails struct {
 	Groups *string `json:"groups,omitempty"`
 	HostName *string `json:"host_name,omitempty"`
 	HostPort *string `json:"host_port,omitempty"`
+	LastAdminRotation *int64 `json:"last_admin_rotation,omitempty"`
 	MongodbDbName *string `json:"mongodb_db_name,omitempty"`
 	MongodbRoles *string `json:"mongodb_roles,omitempty"`
 	MongodbUriConnection *string `json:"mongodb_uri_connection,omitempty"`
@@ -2471,6 +2472,38 @@ func (o *DSProducerDetails) SetHostPort(v string) {
 	o.HostPort = &v
 }
 
+// GetLastAdminRotation returns the LastAdminRotation field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetLastAdminRotation() int64 {
+	if o == nil || o.LastAdminRotation == nil {
+		var ret int64
+		return ret
+	}
+	return *o.LastAdminRotation
+}
+
+// GetLastAdminRotationOk returns a tuple with the LastAdminRotation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetLastAdminRotationOk() (*int64, bool) {
+	if o == nil || o.LastAdminRotation == nil {
+		return nil, false
+	}
+	return o.LastAdminRotation, true
+}
+
+// HasLastAdminRotation returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasLastAdminRotation() bool {
+	if o != nil && o.LastAdminRotation != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastAdminRotation gets a reference to the given int64 and assigns it to the LastAdminRotation field.
+func (o *DSProducerDetails) SetLastAdminRotation(v int64) {
+	o.LastAdminRotation = &v
+}
+
 // GetMongodbDbName returns the MongodbDbName field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetMongodbDbName() string {
 	if o == nil || o.MongodbDbName == nil {
@@ -3427,6 +3460,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.HostPort != nil {
 		toSerialize["host_port"] = o.HostPort
+	}
+	if o.LastAdminRotation != nil {
+		toSerialize["last_admin_rotation"] = o.LastAdminRotation
 	}
 	if o.MongodbDbName != nil {
 		toSerialize["mongodb_db_name"] = o.MongodbDbName

@@ -33,8 +33,6 @@ type Auth struct {
 	Jwt *string `json:"jwt,omitempty"`
 	// LDAP password (relevant only for access-type=ldap)
 	LdapPassword *string `json:"ldap_password,omitempty"`
-	// Address URL for LDAP proxy (relevant only for access-type=ldap)
-	LdapProxyUrl *string `json:"ldap_proxy_url,omitempty"`
 	// LDAP username (relevant only for access-type=ldap)
 	LdapUsername *string `json:"ldap_username,omitempty"`
 	// The universal_identity token (relevant only for access-type=universal_identity)
@@ -318,38 +316,6 @@ func (o *Auth) SetLdapPassword(v string) {
 	o.LdapPassword = &v
 }
 
-// GetLdapProxyUrl returns the LdapProxyUrl field value if set, zero value otherwise.
-func (o *Auth) GetLdapProxyUrl() string {
-	if o == nil || o.LdapProxyUrl == nil {
-		var ret string
-		return ret
-	}
-	return *o.LdapProxyUrl
-}
-
-// GetLdapProxyUrlOk returns a tuple with the LdapProxyUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Auth) GetLdapProxyUrlOk() (*string, bool) {
-	if o == nil || o.LdapProxyUrl == nil {
-		return nil, false
-	}
-	return o.LdapProxyUrl, true
-}
-
-// HasLdapProxyUrl returns a boolean if a field has been set.
-func (o *Auth) HasLdapProxyUrl() bool {
-	if o != nil && o.LdapProxyUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLdapProxyUrl gets a reference to the given string and assigns it to the LdapProxyUrl field.
-func (o *Auth) SetLdapProxyUrl(v string) {
-	o.LdapProxyUrl = &v
-}
-
 // GetLdapUsername returns the LdapUsername field value if set, zero value otherwise.
 func (o *Auth) GetLdapUsername() string {
 	if o == nil || o.LdapUsername == nil {
@@ -439,9 +405,6 @@ func (o Auth) MarshalJSON() ([]byte, error) {
 	}
 	if o.LdapPassword != nil {
 		toSerialize["ldap_password"] = o.LdapPassword
-	}
-	if o.LdapProxyUrl != nil {
-		toSerialize["ldap_proxy_url"] = o.LdapProxyUrl
 	}
 	if o.LdapUsername != nil {
 		toSerialize["ldap_username"] = o.LdapUsername

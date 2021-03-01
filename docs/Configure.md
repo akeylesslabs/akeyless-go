@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **AdminEmail** | Pointer to **string** | Email (relevant only for access-type&#x3D;password) | [optional] 
 **AdminPassword** | Pointer to **string** | Password (relevant only for access-type&#x3D;password) | [optional] 
 **AzureAdObjectId** | Pointer to **string** | Azure Active Directory ObjectId (relevant only for access-type&#x3D;azure_ad) | [optional] 
-**LdapProxyUrl** | Pointer to **string** | Address URL for ldap proxy (relevant only for access-type&#x3D;ldap) | [optional] 
 
 ## Methods
 
@@ -180,31 +179,6 @@ SetAzureAdObjectId sets AzureAdObjectId field to given value.
 `func (o *Configure) HasAzureAdObjectId() bool`
 
 HasAzureAdObjectId returns a boolean if a field has been set.
-
-### GetLdapProxyUrl
-
-`func (o *Configure) GetLdapProxyUrl() string`
-
-GetLdapProxyUrl returns the LdapProxyUrl field if non-nil, zero value otherwise.
-
-### GetLdapProxyUrlOk
-
-`func (o *Configure) GetLdapProxyUrlOk() (*string, bool)`
-
-GetLdapProxyUrlOk returns a tuple with the LdapProxyUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLdapProxyUrl
-
-`func (o *Configure) SetLdapProxyUrl(v string)`
-
-SetLdapProxyUrl sets LdapProxyUrl field to given value.
-
-### HasLdapProxyUrl
-
-`func (o *Configure) HasLdapProxyUrl() bool`
-
-HasLdapProxyUrl returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

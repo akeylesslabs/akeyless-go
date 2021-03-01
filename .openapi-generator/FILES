@@ -70,6 +70,7 @@ docs/DecryptFileOutput.md
 docs/DecryptOutput.md
 docs/DecryptPKCS1.md
 docs/DecryptPKCS1Output.md
+docs/DefaultConfigPart.md
 docs/DeleteAuthMethod.md
 docs/DeleteAuthMethodOutput.md
 docs/DeleteAuthMethods.md
@@ -205,7 +206,6 @@ docs/Rules.md
 docs/SAMLAccessRules.md
 docs/SAMLAttribute.md
 docs/SSHCertificateIssueDetails.md
-docs/SamlConfigPart.md
 docs/SetItemState.md
 docs/SetRoleRule.md
 docs/SignPKCS1.md
@@ -319,6 +319,7 @@ model_decrypt_file_output.go
 model_decrypt_output.go
 model_decrypt_pkcs1.go
 model_decrypt_pkcs1_output.go
+model_default_config_part.go
 model_delete_auth_method.go
 model_delete_auth_method_output.go
 model_delete_auth_methods.go
@@ -454,7 +455,6 @@ model_rotate_key_output.go
 model_rules.go
 model_saml_access_rules.go
 model_saml_attribute.go
-model_saml_config_part.go
 model_set_item_state.go
 model_set_role_rule.go
 model_sign_pkcs1.go

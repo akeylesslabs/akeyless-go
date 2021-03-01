@@ -27,7 +27,7 @@ type AkeylessGatewayConfig struct {
 	LogForwarding *LogForwardingConfigPart `json:"log_forwarding,omitempty"`
 	Migrations *MigrationsConfigPart `json:"migrations,omitempty"`
 	Producers *ProducersConfigPart `json:"producers,omitempty"`
-	Saml *SamlConfigPart `json:"saml,omitempty"`
+	Saml *DefaultConfigPart `json:"saml,omitempty"`
 	Uidentity *UIdentityConfigPart `json:"uidentity,omitempty"`
 	Version *int32 `json:"version,omitempty"`
 }
@@ -370,9 +370,9 @@ func (o *AkeylessGatewayConfig) SetProducers(v ProducersConfigPart) {
 }
 
 // GetSaml returns the Saml field value if set, zero value otherwise.
-func (o *AkeylessGatewayConfig) GetSaml() SamlConfigPart {
+func (o *AkeylessGatewayConfig) GetSaml() DefaultConfigPart {
 	if o == nil || o.Saml == nil {
-		var ret SamlConfigPart
+		var ret DefaultConfigPart
 		return ret
 	}
 	return *o.Saml
@@ -380,7 +380,7 @@ func (o *AkeylessGatewayConfig) GetSaml() SamlConfigPart {
 
 // GetSamlOk returns a tuple with the Saml field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AkeylessGatewayConfig) GetSamlOk() (*SamlConfigPart, bool) {
+func (o *AkeylessGatewayConfig) GetSamlOk() (*DefaultConfigPart, bool) {
 	if o == nil || o.Saml == nil {
 		return nil, false
 	}
@@ -396,8 +396,8 @@ func (o *AkeylessGatewayConfig) HasSaml() bool {
 	return false
 }
 
-// SetSaml gets a reference to the given SamlConfigPart and assigns it to the Saml field.
-func (o *AkeylessGatewayConfig) SetSaml(v SamlConfigPart) {
+// SetSaml gets a reference to the given DefaultConfigPart and assigns it to the Saml field.
+func (o *AkeylessGatewayConfig) SetSaml(v DefaultConfigPart) {
 	o.Saml = &v
 }
 

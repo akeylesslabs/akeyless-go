@@ -77,6 +77,7 @@ Name | Type | Description | Notes
 **Groups** | Pointer to **string** |  | [optional] 
 **HostName** | Pointer to **string** |  | [optional] 
 **HostPort** | Pointer to **string** |  | [optional] 
+**LastAdminRotation** | Pointer to **int64** |  | [optional] 
 **MongodbDbName** | Pointer to **string** |  | [optional] 
 **MongodbRoles** | Pointer to **string** |  | [optional] 
 **MongodbUriConnection** | Pointer to **string** |  | [optional] 
@@ -1944,6 +1945,31 @@ SetHostPort sets HostPort field to given value.
 `func (o *DSProducerDetails) HasHostPort() bool`
 
 HasHostPort returns a boolean if a field has been set.
+
+### GetLastAdminRotation
+
+`func (o *DSProducerDetails) GetLastAdminRotation() int64`
+
+GetLastAdminRotation returns the LastAdminRotation field if non-nil, zero value otherwise.
+
+### GetLastAdminRotationOk
+
+`func (o *DSProducerDetails) GetLastAdminRotationOk() (*int64, bool)`
+
+GetLastAdminRotationOk returns a tuple with the LastAdminRotation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastAdminRotation
+
+`func (o *DSProducerDetails) SetLastAdminRotation(v int64)`
+
+SetLastAdminRotation sets LastAdminRotation field to given value.
+
+### HasLastAdminRotation
+
+`func (o *DSProducerDetails) HasLastAdminRotation() bool`
+
+HasLastAdminRotation returns a boolean if a field has been set.
 
 ### GetMongodbDbName
 
