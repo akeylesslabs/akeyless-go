@@ -15,11 +15,13 @@ import (
 	"encoding/json"
 )
 
-// GetCloudIdentity getCloudIdentity is a command that gets Cloud Identity Token (relevant only for access-type=azure_ad, aws_iam).
+// GetCloudIdentity getCloudIdentity is a command that gets Cloud Identity Token (relevant only for access-type=azure_ad, aws_iam, gcp).
 type GetCloudIdentity struct {
 	// Azure Active Directory ObjectId (relevant only for access-type=azure_ad)
 	AzureAdObjectId *string `json:"azure_ad_object_id,omitempty"`
-	// escapes the token so it can be safely placed inside a URL query
+	// GCP JWT audience
+	GcpAudience *string `json:"gcp-audience,omitempty"`
+	// Escapes the token so it can be safely placed inside a URL query
 	UrlSafe *bool `json:"url_safe,omitempty"`
 }
 
@@ -72,6 +74,38 @@ func (o *GetCloudIdentity) SetAzureAdObjectId(v string) {
 	o.AzureAdObjectId = &v
 }
 
+// GetGcpAudience returns the GcpAudience field value if set, zero value otherwise.
+func (o *GetCloudIdentity) GetGcpAudience() string {
+	if o == nil || o.GcpAudience == nil {
+		var ret string
+		return ret
+	}
+	return *o.GcpAudience
+}
+
+// GetGcpAudienceOk returns a tuple with the GcpAudience field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetCloudIdentity) GetGcpAudienceOk() (*string, bool) {
+	if o == nil || o.GcpAudience == nil {
+		return nil, false
+	}
+	return o.GcpAudience, true
+}
+
+// HasGcpAudience returns a boolean if a field has been set.
+func (o *GetCloudIdentity) HasGcpAudience() bool {
+	if o != nil && o.GcpAudience != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpAudience gets a reference to the given string and assigns it to the GcpAudience field.
+func (o *GetCloudIdentity) SetGcpAudience(v string) {
+	o.GcpAudience = &v
+}
+
 // GetUrlSafe returns the UrlSafe field value if set, zero value otherwise.
 func (o *GetCloudIdentity) GetUrlSafe() bool {
 	if o == nil || o.UrlSafe == nil {
@@ -108,6 +142,9 @@ func (o GetCloudIdentity) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AzureAdObjectId != nil {
 		toSerialize["azure_ad_object_id"] = o.AzureAdObjectId
+	}
+	if o.GcpAudience != nil {
+		toSerialize["gcp-audience"] = o.GcpAudience
 	}
 	if o.UrlSafe != nil {
 		toSerialize["url_safe"] = o.UrlSafe

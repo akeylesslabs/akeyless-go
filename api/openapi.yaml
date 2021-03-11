@@ -2908,6 +2908,12 @@ components:
           schema:
             $ref: '#/components/schemas/createAuthMethodAzureADOutput'
       description: createAuthMethodAzureADResponse wraps response body.
+    createAuthMethodGCPResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/createAuthMethodGCPOutput'
+      description: createAuthMethodGCPResponse wraps response body.
     createAuthMethodHuaweiResponse:
       content:
         application/json:
@@ -3922,6 +3928,24 @@ components:
         - client_permissions
         - client_permissions
         access_info:
+          gcp_access_rules:
+            bound_service_accounts:
+            - bound_service_accounts
+            - bound_service_accounts
+            service_account: service_account
+            bound_projects:
+            - bound_projects
+            - bound_projects
+            audience: akeyless.io
+            bound_regions:
+            - bound_regions
+            - bound_regions
+            bound_zones:
+            - bound_zones
+            - bound_zones
+            bound_labels:
+              key: bound_labels
+            type: type
           azure_ad_access_rules:
             bound_group_ids:
             - bound_group_ids
@@ -4072,6 +4096,24 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     AuthMethodAccessInfo:
       example:
+        gcp_access_rules:
+          bound_service_accounts:
+          - bound_service_accounts
+          - bound_service_accounts
+          service_account: service_account
+          bound_projects:
+          - bound_projects
+          - bound_projects
+          audience: akeyless.io
+          bound_regions:
+          - bound_regions
+          - bound_regions
+          bound_zones:
+          - bound_zones
+          - bound_zones
+          bound_labels:
+            key: bound_labels
+          type: type
         azure_ad_access_rules:
           bound_group_ids:
           - bound_group_ids
@@ -4215,6 +4257,8 @@ components:
           x-go-name: CIDRWhitelist
         email_pass_access_rules:
           $ref: '#/components/schemas/EmailPassAccessRules'
+        gcp_access_rules:
+          $ref: '#/components/schemas/GCPAccessRules'
         huawei_access_rules:
           $ref: '#/components/schemas/HuaweiAccessRules'
         ldap_access_rules:
@@ -4629,15 +4673,19 @@ components:
         aws_session_token: aws_session_token
         db_isolation_level: db_isolation_level
         rabbitmq_user_vhost: rabbitmq_user_vhost
+        mongodb_username: mongodb_username
         mongodb_roles: mongodb_roles
         mongodb_db_name: mongodb_db_name
         should_stop: should_stop
         artifactory_token_audience: artifactory_token_audience
+        mongodb_atlas_api_public_key: mongodb_atlas_api_public_key
         eks_access_key_id: eks_access_key_id
         user_ttl: user_ttl
         create_cert_using_pki: true
         eks_assume_role: eks_assume_role
+        mongodb_password: mongodb_password
         aws_secret_access_key: aws_secret_access_key
+        mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
         postgres_creation_statements: postgres_creation_statements
         db_max_idle_conns: db_max_idle_conns
         gke_project_id: gke_project_id
@@ -4645,6 +4693,7 @@ components:
         admin_name: admin_name
         rabbitmq_server_user: rabbitmq_server_user
         venafi_api_key: venafi_api_key
+        mongodb_host_port: mongodb_host_port
         artifactory_token_scope: artifactory_token_scope
         gke_cluster_ca_certificate: gke_cluster_ca_certificate
         allowed_domains: allowed_domains
@@ -4653,7 +4702,9 @@ components:
         failure_message: failure_message
         rabbitmq_user_read_permission: rabbitmq_user_read_permission
         azure_client_id: azure_client_id
+        mongodb_default_auth_db: mongodb_default_auth_db
         mongodb_uri_connection: mongodb_uri_connection
+        mongodb_atlas_project_id: mongodb_atlas_project_id
         db_user_name: db_user_name
         eks_region: eks_region
         artifactory_admin_apikey: artifactory_admin_apikey
@@ -4666,6 +4717,7 @@ components:
         azure_user_portal_access: true
         eks_cluster_endpoint: eks_cluster_endpoint
         gke_service_account_key: gke_service_account_key
+        mongodb_uri_options: mongodb_uri_options
         db_pwd: db_pwd
         gke_service_account_name: gke_service_account_name
         mysql_creation_statements: mysql_creation_statements
@@ -4685,6 +4737,7 @@ components:
         chef_server_host_name: chef_server_host_name
         mssql_revocation_statements: mssql_revocation_statements
         chef_server_port: chef_server_port
+        mongodb_is_atlas: true
         eks_cluster_ca_certificate: eks_cluster_ca_certificate
         aws_access_key_id: aws_access_key_id
         aws_region: aws_region
@@ -4929,15 +4982,45 @@ components:
           format: int64
           type: integer
           x-go-name: LastAdminRotation
+        mongodb_atlas_api_private_key:
+          type: string
+          x-go-name: MongoDBAtlasAPIPrivateKey
+        mongodb_atlas_api_public_key:
+          type: string
+          x-go-name: MongoDBAtlasAPIPublicKey
+        mongodb_atlas_project_id:
+          description: mongodb atlas fields
+          type: string
+          x-go-name: MongoDBAtlasProjectID
         mongodb_db_name:
+          description: common fields
           type: string
           x-go-name: MongoDBName
+        mongodb_default_auth_db:
+          type: string
+          x-go-name: MongoDBDefaultAuthDB
+        mongodb_host_port:
+          type: string
+          x-go-name: MongoDBHostAndPort
+        mongodb_is_atlas:
+          type: boolean
+          x-go-name: MongoDBIsAtlas
+        mongodb_password:
+          type: string
+          x-go-name: MongoDBPassword
         mongodb_roles:
           type: string
           x-go-name: MongoDBRoles
         mongodb_uri_connection:
+          description: mongodb fields
           type: string
-          x-go-name: MongoDBURIConnection
+          x-go-name: MongoDBServerURI
+        mongodb_uri_options:
+          type: string
+          x-go-name: MongoDBURIOptions
+        mongodb_username:
+          type: string
+          x-go-name: MongoDBUsername
         mssql_creation_statements:
           type: string
           x-go-name: MSSQLCreationStatements
@@ -5123,6 +5206,89 @@ components:
           x-go-name: Result
       title: EncryptOutput defines output of Encrypt operation.
       type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    GCPAccessRules:
+      example:
+        bound_service_accounts:
+        - bound_service_accounts
+        - bound_service_accounts
+        service_account: service_account
+        bound_projects:
+        - bound_projects
+        - bound_projects
+        audience: akeyless.io
+        bound_regions:
+        - bound_regions
+        - bound_regions
+        bound_zones:
+        - bound_zones
+        - bound_zones
+        bound_labels:
+          key: bound_labels
+        type: type
+      properties:
+        audience:
+          default: akeyless.io
+          description: The audience in the JWT
+          type: string
+          x-go-name: Audience
+        bound_labels:
+          additionalProperties:
+            type: string
+          description: |-
+            A map of GCP labels formatted as "key:value" strings that must be set on authorized GCE instances.
+            TODO: Because GCP labels are not currently ACL'd ....
+          type: object
+          x-go-name: BoundLabels
+        bound_projects:
+          description: |-
+            Human and Machine authentication section
+            Array of GCP project IDs. Only entities belonging to any of the provided
+            projects can authenticate.
+          items:
+            type: string
+          type: array
+          x-go-name: BoundProjects
+        bound_regions:
+          description: |-
+            List of regions that a GCE instance must belong to in order to be authenticated.
+            TODO: If bound_instance_groups is provided, it is assumed to be a regional group and the group must belong to this region. If bound_zones are provided, this attribute is ignored.
+          items:
+            type: string
+          type: array
+          x-go-name: BoundRegions
+        bound_service_accounts:
+          description: |-
+            === Human authentication section ===
+            List of service accounts the service account must be part of in order to be authenticated
+          items:
+            type: string
+          type: array
+          x-go-name: BoundServiceAccounts
+        bound_zones:
+          description: |-
+            === Machine authentication section ===
+            List of zones that a GCE instance must belong to in order to be authenticated.
+            TODO: If bound_instance_groups is provided, it is assumed to be a zonal group and the group must belong to this zone.
+          items:
+            type: string
+          type: array
+          x-go-name: BoundZones
+        service_account:
+          description: |-
+            ServiceAccount holds the credentials file contents to be used by Akeyless
+            to validate IAM (Human) and GCE (Machine) logins against GCP
+            base64 encoded string
+          type: string
+          x-go-name: ServiceAccount
+        type:
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+      title: GCPAccessRules contains access rules specific to GCP IAM or GCE authentication.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    GCPAccessRulesType:
+      type: string
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     GeneralConfigPart:
       example:
@@ -6033,6 +6199,24 @@ components:
           - client_permissions
           - client_permissions
           access_info:
+            gcp_access_rules:
+              bound_service_accounts:
+              - bound_service_accounts
+              - bound_service_accounts
+              service_account: service_account
+              bound_projects:
+              - bound_projects
+              - bound_projects
+              audience: akeyless.io
+              bound_regions:
+              - bound_regions
+              - bound_regions
+              bound_zones:
+              - bound_zones
+              - bound_zones
+              bound_labels:
+                key: bound_labels
+              type: type
             azure_ad_access_rules:
               bound_group_ids:
               - bound_group_ids
@@ -6200,6 +6384,24 @@ components:
           - client_permissions
           - client_permissions
           access_info:
+            gcp_access_rules:
+              bound_service_accounts:
+              - bound_service_accounts
+              - bound_service_accounts
+              service_account: service_account
+              bound_projects:
+              - bound_projects
+              - bound_projects
+              audience: akeyless.io
+              bound_regions:
+              - bound_regions
+              - bound_regions
+              bound_zones:
+              - bound_zones
+              - bound_zones
+              bound_labels:
+                key: bound_labels
+              type: type
             azure_ad_access_rules:
               bound_group_ids:
               - bound_group_ids
@@ -8212,7 +8414,7 @@ components:
           default: access_key
           description: |-
             Access Type
-            (access_key/password/saml/ldap/azure_ad/aws_iam/universal_identity/jwt)
+            (access_key/password/saml/ldap/azure_ad/aws_iam/universal_identity/jwt/gcp)
           type: string
           x-go-name: AccessType
         admin-email:
@@ -8224,9 +8426,13 @@ components:
           type: string
           x-go-name: AdminPass
         cloud-id:
-          description: The cloud identity (relevant only for access-type=azure_ad,aws_iam)
+          description: The cloud identity (relevant only for access-type=azure_ad,aws_iam,gcp)
           type: string
           x-go-name: CloudIdentity
+        gcp-audience:
+          description: GCP JWT audience
+          type: string
+          x-go-name: GCPAudience
         jwt:
           description: The Json Web Token (relevant only for access-type=jwt/oidc)
           type: string
@@ -8294,6 +8500,10 @@ components:
           description: Azure Active Directory ObjectId (relevant only for access-type=azure_ad)
           type: string
           x-go-name: AzureAdObjectID
+        gcp-audience:
+          description: GCP JWT audience
+          type: string
+          x-go-name: GCPAudience
       title: configure is a command that creates a new Akeyless profile.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
@@ -8558,6 +8768,112 @@ components:
     createAuthMethodAzureADOutput:
       example:
         access_id: access_id
+      properties:
+        access_id:
+          type: string
+          x-go-name: AccessID
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    createAuthMethodGCP:
+      description: |-
+        createAuthMethodGCP is a command that creates a new auth method that
+        will be able to authenticate using GCP IAM Service Account credentials
+        or GCE instance credentials.
+      properties:
+        access-expires:
+          default: 0
+          description: |-
+            Access expiration date in Unix timestamp (select 0 for access without
+            expiry date)
+          format: int64
+          type: integer
+          x-go-name: AccessExpires
+        audience:
+          default: akeyless.io
+          description: The audience to verify in the JWT received by the client
+          type: string
+          x-go-name: Audience
+        bound-ips:
+          description: A CIDR whitelist of the IPs that the access is restricted to
+          items:
+            type: string
+          type: array
+          x-go-name: CIDRWhitelist
+        bound_labels:
+          description: |-
+            A comma-separated list of GCP labels formatted as "key:value" strings that must be set on authorized GCE instances.
+            TODO: Because GCP labels are not currently ACL'd ....
+          items:
+            type: string
+          type: array
+          x-go-name: BoundLabels
+        bound_projects:
+          description: |-
+            === Human and Machine authentication section ===
+            Array of GCP project IDs. Only entities belonging to any of the provided projects can authenticate.
+          items:
+            type: string
+          type: array
+          x-go-name: BoundProjects
+        bound_regions:
+          description: |-
+            List of regions that a GCE instance must belong to in order to be authenticated.
+            TODO: If bound_instance_groups is provided, it is assumed to be a regional group and the group must belong to this region. If bound_zones are provided, this attribute is ignored.
+          items:
+            type: string
+          type: array
+          x-go-name: BoundRegions
+        bound_service_accounts:
+          description: |-
+            === Human authentication section ===
+            List of service accounts the service account must be part of in order to be authenticated.
+          items:
+            type: string
+          type: array
+          x-go-name: BoundServiceAccounts
+        bound_zones:
+          description: |-
+            === Machine authentication section ===
+            List of zones that a GCE instance must belong to in order to be authenticated.
+            TODO: If bound_instance_groups is provided, it is assumed to be a zonal group and the group must belong to this zone.
+          items:
+            type: string
+          type: array
+          x-go-name: BoundZones
+        name:
+          description: Auth Method name
+          type: string
+          x-go-name: AuthMethodName
+        service_account_data:
+          description: ServiceAccount credentials data instead of giving a file path,
+            base64 encoded
+          type: string
+          x-go-name: ServiceAccountCredsFileData
+        service_account_file:
+          description: |-
+            ServiceAccount credentials file path to be used by Akeyless to validate
+            IAM (Human) and GCE (Machine) logins with GCP
+          type: string
+          x-go-name: ServiceAccountCredsFile
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        type:
+          description: Type of the GCP Access Rules
+          type: string
+          x-go-name: Type
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      required:
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    createAuthMethodGCPOutput:
       properties:
         access_id:
           type: string
@@ -10288,15 +10604,19 @@ components:
           aws_session_token: aws_session_token
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
+          mongodb_username: mongodb_username
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           should_stop: should_stop
           artifactory_token_audience: artifactory_token_audience
+          mongodb_atlas_api_public_key: mongodb_atlas_api_public_key
           eks_access_key_id: eks_access_key_id
           user_ttl: user_ttl
           create_cert_using_pki: true
           eks_assume_role: eks_assume_role
+          mongodb_password: mongodb_password
           aws_secret_access_key: aws_secret_access_key
+          mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
           gke_project_id: gke_project_id
@@ -10304,6 +10624,7 @@ components:
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
+          mongodb_host_port: mongodb_host_port
           artifactory_token_scope: artifactory_token_scope
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           allowed_domains: allowed_domains
@@ -10312,7 +10633,9 @@ components:
           failure_message: failure_message
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
+          mongodb_default_auth_db: mongodb_default_auth_db
           mongodb_uri_connection: mongodb_uri_connection
+          mongodb_atlas_project_id: mongodb_atlas_project_id
           db_user_name: db_user_name
           eks_region: eks_region
           artifactory_admin_apikey: artifactory_admin_apikey
@@ -10325,6 +10648,7 @@ components:
           azure_user_portal_access: true
           eks_cluster_endpoint: eks_cluster_endpoint
           gke_service_account_key: gke_service_account_key
+          mongodb_uri_options: mongodb_uri_options
           db_pwd: db_pwd
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
@@ -10344,6 +10668,7 @@ components:
           chef_server_host_name: chef_server_host_name
           mssql_revocation_statements: mssql_revocation_statements
           chef_server_port: chef_server_port
+          mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           aws_access_key_id: aws_access_key_id
           aws_region: aws_region
@@ -10379,8 +10704,8 @@ components:
           type: integer
           x-go-name: AdminCredsRotationInterval
         aws-role-arns:
-          description: AWS Role ARNs to be use in the Assume Role operation (relevant
-            only for assume_rile mode)
+          description: AWS Role ARNs to be used in the Assume Role operation (relevant
+            only for assume_role mode)
           type: string
           x-go-name: RoleARNs
         aws-user-console-access:
@@ -10480,15 +10805,19 @@ components:
           aws_session_token: aws_session_token
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
+          mongodb_username: mongodb_username
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           should_stop: should_stop
           artifactory_token_audience: artifactory_token_audience
+          mongodb_atlas_api_public_key: mongodb_atlas_api_public_key
           eks_access_key_id: eks_access_key_id
           user_ttl: user_ttl
           create_cert_using_pki: true
           eks_assume_role: eks_assume_role
+          mongodb_password: mongodb_password
           aws_secret_access_key: aws_secret_access_key
+          mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
           gke_project_id: gke_project_id
@@ -10496,6 +10825,7 @@ components:
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
+          mongodb_host_port: mongodb_host_port
           artifactory_token_scope: artifactory_token_scope
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           allowed_domains: allowed_domains
@@ -10504,7 +10834,9 @@ components:
           failure_message: failure_message
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
+          mongodb_default_auth_db: mongodb_default_auth_db
           mongodb_uri_connection: mongodb_uri_connection
+          mongodb_atlas_project_id: mongodb_atlas_project_id
           db_user_name: db_user_name
           eks_region: eks_region
           artifactory_admin_apikey: artifactory_admin_apikey
@@ -10517,6 +10849,7 @@ components:
           azure_user_portal_access: true
           eks_cluster_endpoint: eks_cluster_endpoint
           gke_service_account_key: gke_service_account_key
+          mongodb_uri_options: mongodb_uri_options
           db_pwd: db_pwd
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
@@ -10536,6 +10869,7 @@ components:
           chef_server_host_name: chef_server_host_name
           mssql_revocation_statements: mssql_revocation_statements
           chef_server_port: chef_server_port
+          mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           aws_access_key_id: aws_access_key_id
           aws_region: aws_region
@@ -10661,15 +10995,19 @@ components:
           aws_session_token: aws_session_token
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
+          mongodb_username: mongodb_username
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           should_stop: should_stop
           artifactory_token_audience: artifactory_token_audience
+          mongodb_atlas_api_public_key: mongodb_atlas_api_public_key
           eks_access_key_id: eks_access_key_id
           user_ttl: user_ttl
           create_cert_using_pki: true
           eks_assume_role: eks_assume_role
+          mongodb_password: mongodb_password
           aws_secret_access_key: aws_secret_access_key
+          mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
           gke_project_id: gke_project_id
@@ -10677,6 +11015,7 @@ components:
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
+          mongodb_host_port: mongodb_host_port
           artifactory_token_scope: artifactory_token_scope
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           allowed_domains: allowed_domains
@@ -10685,7 +11024,9 @@ components:
           failure_message: failure_message
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
+          mongodb_default_auth_db: mongodb_default_auth_db
           mongodb_uri_connection: mongodb_uri_connection
+          mongodb_atlas_project_id: mongodb_atlas_project_id
           db_user_name: db_user_name
           eks_region: eks_region
           artifactory_admin_apikey: artifactory_admin_apikey
@@ -10698,6 +11039,7 @@ components:
           azure_user_portal_access: true
           eks_cluster_endpoint: eks_cluster_endpoint
           gke_service_account_key: gke_service_account_key
+          mongodb_uri_options: mongodb_uri_options
           db_pwd: db_pwd
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
@@ -10717,6 +11059,7 @@ components:
           chef_server_host_name: chef_server_host_name
           mssql_revocation_statements: mssql_revocation_statements
           chef_server_port: chef_server_port
+          mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           aws_access_key_id: aws_access_key_id
           aws_region: aws_region
@@ -10835,15 +11178,19 @@ components:
           aws_session_token: aws_session_token
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
+          mongodb_username: mongodb_username
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           should_stop: should_stop
           artifactory_token_audience: artifactory_token_audience
+          mongodb_atlas_api_public_key: mongodb_atlas_api_public_key
           eks_access_key_id: eks_access_key_id
           user_ttl: user_ttl
           create_cert_using_pki: true
           eks_assume_role: eks_assume_role
+          mongodb_password: mongodb_password
           aws_secret_access_key: aws_secret_access_key
+          mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
           gke_project_id: gke_project_id
@@ -10851,6 +11198,7 @@ components:
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
+          mongodb_host_port: mongodb_host_port
           artifactory_token_scope: artifactory_token_scope
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           allowed_domains: allowed_domains
@@ -10859,7 +11207,9 @@ components:
           failure_message: failure_message
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
+          mongodb_default_auth_db: mongodb_default_auth_db
           mongodb_uri_connection: mongodb_uri_connection
+          mongodb_atlas_project_id: mongodb_atlas_project_id
           db_user_name: db_user_name
           eks_region: eks_region
           artifactory_admin_apikey: artifactory_admin_apikey
@@ -10872,6 +11222,7 @@ components:
           azure_user_portal_access: true
           eks_cluster_endpoint: eks_cluster_endpoint
           gke_service_account_key: gke_service_account_key
+          mongodb_uri_options: mongodb_uri_options
           db_pwd: db_pwd
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
@@ -10891,6 +11242,7 @@ components:
           chef_server_host_name: chef_server_host_name
           mssql_revocation_statements: mssql_revocation_statements
           chef_server_port: chef_server_port
+          mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           aws_access_key_id: aws_access_key_id
           aws_region: aws_region
@@ -11000,15 +11352,19 @@ components:
           aws_session_token: aws_session_token
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
+          mongodb_username: mongodb_username
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           should_stop: should_stop
           artifactory_token_audience: artifactory_token_audience
+          mongodb_atlas_api_public_key: mongodb_atlas_api_public_key
           eks_access_key_id: eks_access_key_id
           user_ttl: user_ttl
           create_cert_using_pki: true
           eks_assume_role: eks_assume_role
+          mongodb_password: mongodb_password
           aws_secret_access_key: aws_secret_access_key
+          mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
           gke_project_id: gke_project_id
@@ -11016,6 +11372,7 @@ components:
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
+          mongodb_host_port: mongodb_host_port
           artifactory_token_scope: artifactory_token_scope
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           allowed_domains: allowed_domains
@@ -11024,7 +11381,9 @@ components:
           failure_message: failure_message
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
+          mongodb_default_auth_db: mongodb_default_auth_db
           mongodb_uri_connection: mongodb_uri_connection
+          mongodb_atlas_project_id: mongodb_atlas_project_id
           db_user_name: db_user_name
           eks_region: eks_region
           artifactory_admin_apikey: artifactory_admin_apikey
@@ -11037,6 +11396,7 @@ components:
           azure_user_portal_access: true
           eks_cluster_endpoint: eks_cluster_endpoint
           gke_service_account_key: gke_service_account_key
+          mongodb_uri_options: mongodb_uri_options
           db_pwd: db_pwd
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
@@ -11056,6 +11416,7 @@ components:
           chef_server_host_name: chef_server_host_name
           mssql_revocation_statements: mssql_revocation_statements
           chef_server_port: chef_server_port
+          mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           aws_access_key_id: aws_access_key_id
           aws_region: aws_region
@@ -11173,15 +11534,19 @@ components:
           aws_session_token: aws_session_token
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
+          mongodb_username: mongodb_username
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           should_stop: should_stop
           artifactory_token_audience: artifactory_token_audience
+          mongodb_atlas_api_public_key: mongodb_atlas_api_public_key
           eks_access_key_id: eks_access_key_id
           user_ttl: user_ttl
           create_cert_using_pki: true
           eks_assume_role: eks_assume_role
+          mongodb_password: mongodb_password
           aws_secret_access_key: aws_secret_access_key
+          mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
           gke_project_id: gke_project_id
@@ -11189,6 +11554,7 @@ components:
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
+          mongodb_host_port: mongodb_host_port
           artifactory_token_scope: artifactory_token_scope
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           allowed_domains: allowed_domains
@@ -11197,7 +11563,9 @@ components:
           failure_message: failure_message
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
+          mongodb_default_auth_db: mongodb_default_auth_db
           mongodb_uri_connection: mongodb_uri_connection
+          mongodb_atlas_project_id: mongodb_atlas_project_id
           db_user_name: db_user_name
           eks_region: eks_region
           artifactory_admin_apikey: artifactory_admin_apikey
@@ -11210,6 +11578,7 @@ components:
           azure_user_portal_access: true
           eks_cluster_endpoint: eks_cluster_endpoint
           gke_service_account_key: gke_service_account_key
+          mongodb_uri_options: mongodb_uri_options
           db_pwd: db_pwd
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
@@ -11229,6 +11598,7 @@ components:
           chef_server_host_name: chef_server_host_name
           mssql_revocation_statements: mssql_revocation_statements
           chef_server_port: chef_server_port
+          mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           aws_access_key_id: aws_access_key_id
           aws_region: aws_region
@@ -11244,32 +11614,66 @@ components:
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     gatewayCreateProducerMongo:
-      description: gatewayCreateProducerMongo is a command that creates mongo producer
+      description: gatewayCreateProducerMongo is a command that creates either mongodb  producer
+        or mongodb atlas producer
       properties:
         gateway-url:
           default: http://localhost:8000
           description: Gateway url
           type: string
           x-go-name: GatewayUrl
+        mongodb-atlas-api-private-key:
+          description: MongoDB Atlas private key
+          type: string
+          x-go-name: APIPrivateKey
+        mongodb-atlas-api-public-key:
+          description: MongoDB Atlas public key
+          type: string
+          x-go-name: APIPublicKey
+        mongodb-atlas-project-id:
+          description: MongoDB Atlas project ID
+          type: string
+          x-go-name: ProjectID
+        mongodb-default-auth-db:
+          description: MongoDB server default authentication database
+          type: string
+          x-go-name: DefaultAuthDB
+        mongodb-host-port:
+          description: MongoDB server host and port
+          type: string
+          x-go-name: HostAndPort
         mongodb-name:
           description: MongoDB Name
           type: string
           x-go-name: DBName
+        mongodb-password:
+          description: MongoDB server password. You will prompted to provide a password
+            if it will not appear in CLI parameters
+          type: string
+          x-go-name: Password
         mongodb-roles:
           default: '[]'
           description: MongoDB Roles
           type: string
           x-go-name: Roles
         mongodb-server-uri:
-          description: Server URI
+          description: MongoDB server URI
           type: string
           x-go-name: ServerURI
+        mongodb-uri-options:
+          description: MongoDB server URI options
+          type: string
+          x-go-name: URIOptions
+        mongodb-username:
+          description: MongoDB server username
+          type: string
+          x-go-name: Username
         name:
           description: Producer name
           type: string
           x-go-name: ProducerName
         producer-encryption-key-name:
-          description: Dynamic producer encryption key
+          description: Encrypt producer with following key
           type: string
           x-go-name: ProducerEncryptionKey
         token:
@@ -11289,7 +11693,6 @@ components:
           x-go-name: UserTtl
       required:
       - mongodb-name
-      - mongodb-server-uri
       - name
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
@@ -11328,15 +11731,19 @@ components:
           aws_session_token: aws_session_token
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
+          mongodb_username: mongodb_username
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           should_stop: should_stop
           artifactory_token_audience: artifactory_token_audience
+          mongodb_atlas_api_public_key: mongodb_atlas_api_public_key
           eks_access_key_id: eks_access_key_id
           user_ttl: user_ttl
           create_cert_using_pki: true
           eks_assume_role: eks_assume_role
+          mongodb_password: mongodb_password
           aws_secret_access_key: aws_secret_access_key
+          mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
           gke_project_id: gke_project_id
@@ -11344,6 +11751,7 @@ components:
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
+          mongodb_host_port: mongodb_host_port
           artifactory_token_scope: artifactory_token_scope
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           allowed_domains: allowed_domains
@@ -11352,7 +11760,9 @@ components:
           failure_message: failure_message
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
+          mongodb_default_auth_db: mongodb_default_auth_db
           mongodb_uri_connection: mongodb_uri_connection
+          mongodb_atlas_project_id: mongodb_atlas_project_id
           db_user_name: db_user_name
           eks_region: eks_region
           artifactory_admin_apikey: artifactory_admin_apikey
@@ -11365,6 +11775,7 @@ components:
           azure_user_portal_access: true
           eks_cluster_endpoint: eks_cluster_endpoint
           gke_service_account_key: gke_service_account_key
+          mongodb_uri_options: mongodb_uri_options
           db_pwd: db_pwd
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
@@ -11384,6 +11795,7 @@ components:
           chef_server_host_name: chef_server_host_name
           mssql_revocation_statements: mssql_revocation_statements
           chef_server_port: chef_server_port
+          mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           aws_access_key_id: aws_access_key_id
           aws_region: aws_region
@@ -11505,15 +11917,19 @@ components:
           aws_session_token: aws_session_token
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
+          mongodb_username: mongodb_username
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           should_stop: should_stop
           artifactory_token_audience: artifactory_token_audience
+          mongodb_atlas_api_public_key: mongodb_atlas_api_public_key
           eks_access_key_id: eks_access_key_id
           user_ttl: user_ttl
           create_cert_using_pki: true
           eks_assume_role: eks_assume_role
+          mongodb_password: mongodb_password
           aws_secret_access_key: aws_secret_access_key
+          mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
           gke_project_id: gke_project_id
@@ -11521,6 +11937,7 @@ components:
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
+          mongodb_host_port: mongodb_host_port
           artifactory_token_scope: artifactory_token_scope
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           allowed_domains: allowed_domains
@@ -11529,7 +11946,9 @@ components:
           failure_message: failure_message
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
+          mongodb_default_auth_db: mongodb_default_auth_db
           mongodb_uri_connection: mongodb_uri_connection
+          mongodb_atlas_project_id: mongodb_atlas_project_id
           db_user_name: db_user_name
           eks_region: eks_region
           artifactory_admin_apikey: artifactory_admin_apikey
@@ -11542,6 +11961,7 @@ components:
           azure_user_portal_access: true
           eks_cluster_endpoint: eks_cluster_endpoint
           gke_service_account_key: gke_service_account_key
+          mongodb_uri_options: mongodb_uri_options
           db_pwd: db_pwd
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
@@ -11561,6 +11981,7 @@ components:
           chef_server_host_name: chef_server_host_name
           mssql_revocation_statements: mssql_revocation_statements
           chef_server_port: chef_server_port
+          mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           aws_access_key_id: aws_access_key_id
           aws_region: aws_region
@@ -11606,7 +12027,7 @@ components:
           type: string
           x-go-name: DBPassword
         postgresql-port:
-          default: "3306"
+          default: "5432"
           description: PostgreSQL Port
           type: string
           x-go-name: DBPort
@@ -11675,15 +12096,19 @@ components:
           aws_session_token: aws_session_token
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
+          mongodb_username: mongodb_username
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           should_stop: should_stop
           artifactory_token_audience: artifactory_token_audience
+          mongodb_atlas_api_public_key: mongodb_atlas_api_public_key
           eks_access_key_id: eks_access_key_id
           user_ttl: user_ttl
           create_cert_using_pki: true
           eks_assume_role: eks_assume_role
+          mongodb_password: mongodb_password
           aws_secret_access_key: aws_secret_access_key
+          mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
           gke_project_id: gke_project_id
@@ -11691,6 +12116,7 @@ components:
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
+          mongodb_host_port: mongodb_host_port
           artifactory_token_scope: artifactory_token_scope
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           allowed_domains: allowed_domains
@@ -11699,7 +12125,9 @@ components:
           failure_message: failure_message
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
+          mongodb_default_auth_db: mongodb_default_auth_db
           mongodb_uri_connection: mongodb_uri_connection
+          mongodb_atlas_project_id: mongodb_atlas_project_id
           db_user_name: db_user_name
           eks_region: eks_region
           artifactory_admin_apikey: artifactory_admin_apikey
@@ -11712,6 +12140,7 @@ components:
           azure_user_portal_access: true
           eks_cluster_endpoint: eks_cluster_endpoint
           gke_service_account_key: gke_service_account_key
+          mongodb_uri_options: mongodb_uri_options
           db_pwd: db_pwd
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
@@ -11731,6 +12160,7 @@ components:
           chef_server_host_name: chef_server_host_name
           mssql_revocation_statements: mssql_revocation_statements
           chef_server_port: chef_server_port
+          mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           aws_access_key_id: aws_access_key_id
           aws_region: aws_region
@@ -11854,15 +12284,19 @@ components:
           aws_session_token: aws_session_token
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
+          mongodb_username: mongodb_username
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           should_stop: should_stop
           artifactory_token_audience: artifactory_token_audience
+          mongodb_atlas_api_public_key: mongodb_atlas_api_public_key
           eks_access_key_id: eks_access_key_id
           user_ttl: user_ttl
           create_cert_using_pki: true
           eks_assume_role: eks_assume_role
+          mongodb_password: mongodb_password
           aws_secret_access_key: aws_secret_access_key
+          mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
           gke_project_id: gke_project_id
@@ -11870,6 +12304,7 @@ components:
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
+          mongodb_host_port: mongodb_host_port
           artifactory_token_scope: artifactory_token_scope
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           allowed_domains: allowed_domains
@@ -11878,7 +12313,9 @@ components:
           failure_message: failure_message
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
+          mongodb_default_auth_db: mongodb_default_auth_db
           mongodb_uri_connection: mongodb_uri_connection
+          mongodb_atlas_project_id: mongodb_atlas_project_id
           db_user_name: db_user_name
           eks_region: eks_region
           artifactory_admin_apikey: artifactory_admin_apikey
@@ -11891,6 +12328,7 @@ components:
           azure_user_portal_access: true
           eks_cluster_endpoint: eks_cluster_endpoint
           gke_service_account_key: gke_service_account_key
+          mongodb_uri_options: mongodb_uri_options
           db_pwd: db_pwd
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
@@ -11910,6 +12348,7 @@ components:
           chef_server_host_name: chef_server_host_name
           mssql_revocation_statements: mssql_revocation_statements
           chef_server_port: chef_server_port
+          mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           aws_access_key_id: aws_access_key_id
           aws_region: aws_region
@@ -12024,15 +12463,19 @@ components:
           aws_session_token: aws_session_token
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
+          mongodb_username: mongodb_username
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           should_stop: should_stop
           artifactory_token_audience: artifactory_token_audience
+          mongodb_atlas_api_public_key: mongodb_atlas_api_public_key
           eks_access_key_id: eks_access_key_id
           user_ttl: user_ttl
           create_cert_using_pki: true
           eks_assume_role: eks_assume_role
+          mongodb_password: mongodb_password
           aws_secret_access_key: aws_secret_access_key
+          mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
           gke_project_id: gke_project_id
@@ -12040,6 +12483,7 @@ components:
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
+          mongodb_host_port: mongodb_host_port
           artifactory_token_scope: artifactory_token_scope
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           allowed_domains: allowed_domains
@@ -12048,7 +12492,9 @@ components:
           failure_message: failure_message
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
+          mongodb_default_auth_db: mongodb_default_auth_db
           mongodb_uri_connection: mongodb_uri_connection
+          mongodb_atlas_project_id: mongodb_atlas_project_id
           db_user_name: db_user_name
           eks_region: eks_region
           artifactory_admin_apikey: artifactory_admin_apikey
@@ -12061,6 +12507,7 @@ components:
           azure_user_portal_access: true
           eks_cluster_endpoint: eks_cluster_endpoint
           gke_service_account_key: gke_service_account_key
+          mongodb_uri_options: mongodb_uri_options
           db_pwd: db_pwd
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
@@ -12080,6 +12527,7 @@ components:
           chef_server_host_name: chef_server_host_name
           mssql_revocation_statements: mssql_revocation_statements
           chef_server_port: chef_server_port
+          mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           aws_access_key_id: aws_access_key_id
           aws_region: aws_region
@@ -12457,14 +12905,18 @@ components:
     getCloudIdentity:
       description: |-
         getCloudIdentity is a command that gets Cloud Identity Token (relevant only
-        for access-type=azure_ad, aws_iam).
+        for access-type=azure_ad, aws_iam, gcp).
       properties:
         azure_ad_object_id:
           description: Azure Active Directory ObjectId (relevant only for access-type=azure_ad)
           type: string
           x-go-name: AzureADObjectID
+        gcp-audience:
+          description: GCP JWT audience
+          type: string
+          x-go-name: GCPAudience
         url_safe:
-          description: escapes the token so it can be safely placed inside a URL query
+          description: Escapes the token so it can be safely placed inside a URL query
           type: boolean
           x-go-name: URLEncoding
       type: object

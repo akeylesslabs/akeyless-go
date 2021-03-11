@@ -32,6 +32,8 @@ docs/CreateAuthMethodAWSIAM.md
 docs/CreateAuthMethodAWSIAMOutput.md
 docs/CreateAuthMethodAzureAD.md
 docs/CreateAuthMethodAzureADOutput.md
+docs/CreateAuthMethodGCP.md
+docs/CreateAuthMethodGCPOutput.md
 docs/CreateAuthMethodHuawei.md
 docs/CreateAuthMethodHuaweiOutput.md
 docs/CreateAuthMethodLDAP.md
@@ -97,6 +99,7 @@ docs/EncryptFileOutput.md
 docs/EncryptOutput.md
 docs/EncryptPKCS1.md
 docs/EncryptPKCS1Output.md
+docs/GCPAccessRules.md
 docs/GatewayAddSubAdmins.md
 docs/GatewayAddSubAdminsOutput.md
 docs/GatewayCreateProducerArtifactory.md
@@ -282,6 +285,8 @@ model_create_auth_method_awsiam.go
 model_create_auth_method_awsiam_output.go
 model_create_auth_method_azure_ad.go
 model_create_auth_method_azure_ad_output.go
+model_create_auth_method_gcp.go
+model_create_auth_method_gcp_output.go
 model_create_auth_method_huawei.go
 model_create_auth_method_huawei_output.go
 model_create_auth_method_ldap.go
@@ -386,6 +391,7 @@ model_gateway_start_producer_output.go
 model_gateway_stop_producer.go
 model_gateway_stop_producer_output.go
 model_gateway_update_tmp_users.go
+model_gcp_access_rules.go
 model_gen_customer_fragment.go
 model_general_config_part.go
 model_get_auth_method.go

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **AccessMode** | Pointer to **string** |  | [optional] 
 **AccessSecretKey** | **string** | Secret Access Key | 
 **AdminRotationIntervalDays** | Pointer to **int64** | Admin credentials rotation interval (days) | [optional] [default to 0]
-**AwsRoleArns** | Pointer to **string** | AWS Role ARNs to be use in the Assume Role operation (relevant only for assume_rile mode) | [optional] 
+**AwsRoleArns** | Pointer to **string** | AWS Role ARNs to be used in the Assume Role operation (relevant only for assume_role mode) | [optional] 
 **AwsUserConsoleAccess** | Pointer to **bool** | AWS User console access | [optional] [default to false]
 **AwsUserGroups** | Pointer to **string** | AWS User groups | [optional] 
 **AwsUserPolicies** | Pointer to **string** | AWS User policies | [optional] 

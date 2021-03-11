@@ -25,6 +25,7 @@ type AuthMethodAccessInfo struct {
 	AzureAdAccessRules *AzureADAccessRules `json:"azure_ad_access_rules,omitempty"`
 	CidrWhitelist *string `json:"cidr_whitelist,omitempty"`
 	EmailPassAccessRules *EmailPassAccessRules `json:"email_pass_access_rules,omitempty"`
+	GcpAccessRules *GCPAccessRules `json:"gcp_access_rules,omitempty"`
 	HuaweiAccessRules *HuaweiAccessRules `json:"huawei_access_rules,omitempty"`
 	LdapAccessRules *LDAPAccessRules `json:"ldap_access_rules,omitempty"`
 	Oauth2AccessRules *OAuth2AccessRules `json:"oauth2_access_rules,omitempty"`
@@ -274,6 +275,38 @@ func (o *AuthMethodAccessInfo) SetEmailPassAccessRules(v EmailPassAccessRules) {
 	o.EmailPassAccessRules = &v
 }
 
+// GetGcpAccessRules returns the GcpAccessRules field value if set, zero value otherwise.
+func (o *AuthMethodAccessInfo) GetGcpAccessRules() GCPAccessRules {
+	if o == nil || o.GcpAccessRules == nil {
+		var ret GCPAccessRules
+		return ret
+	}
+	return *o.GcpAccessRules
+}
+
+// GetGcpAccessRulesOk returns a tuple with the GcpAccessRules field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodAccessInfo) GetGcpAccessRulesOk() (*GCPAccessRules, bool) {
+	if o == nil || o.GcpAccessRules == nil {
+		return nil, false
+	}
+	return o.GcpAccessRules, true
+}
+
+// HasGcpAccessRules returns a boolean if a field has been set.
+func (o *AuthMethodAccessInfo) HasGcpAccessRules() bool {
+	if o != nil && o.GcpAccessRules != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpAccessRules gets a reference to the given GCPAccessRules and assigns it to the GcpAccessRules field.
+func (o *AuthMethodAccessInfo) SetGcpAccessRules(v GCPAccessRules) {
+	o.GcpAccessRules = &v
+}
+
 // GetHuaweiAccessRules returns the HuaweiAccessRules field value if set, zero value otherwise.
 func (o *AuthMethodAccessInfo) GetHuaweiAccessRules() HuaweiAccessRules {
 	if o == nil || o.HuaweiAccessRules == nil {
@@ -488,6 +521,9 @@ func (o AuthMethodAccessInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.EmailPassAccessRules != nil {
 		toSerialize["email_pass_access_rules"] = o.EmailPassAccessRules
+	}
+	if o.GcpAccessRules != nil {
+		toSerialize["gcp_access_rules"] = o.GcpAccessRules
 	}
 	if o.HuaweiAccessRules != nil {
 		toSerialize["huawei_access_rules"] = o.HuaweiAccessRules

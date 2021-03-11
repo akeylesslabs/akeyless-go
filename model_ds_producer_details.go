@@ -93,9 +93,21 @@ type DSProducerDetails struct {
 	HostName *string `json:"host_name,omitempty"`
 	HostPort *string `json:"host_port,omitempty"`
 	LastAdminRotation *int64 `json:"last_admin_rotation,omitempty"`
+	MongodbAtlasApiPrivateKey *string `json:"mongodb_atlas_api_private_key,omitempty"`
+	MongodbAtlasApiPublicKey *string `json:"mongodb_atlas_api_public_key,omitempty"`
+	// mongodb atlas fields
+	MongodbAtlasProjectId *string `json:"mongodb_atlas_project_id,omitempty"`
+	// common fields
 	MongodbDbName *string `json:"mongodb_db_name,omitempty"`
+	MongodbDefaultAuthDb *string `json:"mongodb_default_auth_db,omitempty"`
+	MongodbHostPort *string `json:"mongodb_host_port,omitempty"`
+	MongodbIsAtlas *bool `json:"mongodb_is_atlas,omitempty"`
+	MongodbPassword *string `json:"mongodb_password,omitempty"`
 	MongodbRoles *string `json:"mongodb_roles,omitempty"`
+	// mongodb fields
 	MongodbUriConnection *string `json:"mongodb_uri_connection,omitempty"`
+	MongodbUriOptions *string `json:"mongodb_uri_options,omitempty"`
+	MongodbUsername *string `json:"mongodb_username,omitempty"`
 	MssqlCreationStatements *string `json:"mssql_creation_statements,omitempty"`
 	MssqlRevocationStatements *string `json:"mssql_revocation_statements,omitempty"`
 	MysqlCreationStatements *string `json:"mysql_creation_statements,omitempty"`
@@ -2504,6 +2516,102 @@ func (o *DSProducerDetails) SetLastAdminRotation(v int64) {
 	o.LastAdminRotation = &v
 }
 
+// GetMongodbAtlasApiPrivateKey returns the MongodbAtlasApiPrivateKey field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetMongodbAtlasApiPrivateKey() string {
+	if o == nil || o.MongodbAtlasApiPrivateKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.MongodbAtlasApiPrivateKey
+}
+
+// GetMongodbAtlasApiPrivateKeyOk returns a tuple with the MongodbAtlasApiPrivateKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetMongodbAtlasApiPrivateKeyOk() (*string, bool) {
+	if o == nil || o.MongodbAtlasApiPrivateKey == nil {
+		return nil, false
+	}
+	return o.MongodbAtlasApiPrivateKey, true
+}
+
+// HasMongodbAtlasApiPrivateKey returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasMongodbAtlasApiPrivateKey() bool {
+	if o != nil && o.MongodbAtlasApiPrivateKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMongodbAtlasApiPrivateKey gets a reference to the given string and assigns it to the MongodbAtlasApiPrivateKey field.
+func (o *DSProducerDetails) SetMongodbAtlasApiPrivateKey(v string) {
+	o.MongodbAtlasApiPrivateKey = &v
+}
+
+// GetMongodbAtlasApiPublicKey returns the MongodbAtlasApiPublicKey field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetMongodbAtlasApiPublicKey() string {
+	if o == nil || o.MongodbAtlasApiPublicKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.MongodbAtlasApiPublicKey
+}
+
+// GetMongodbAtlasApiPublicKeyOk returns a tuple with the MongodbAtlasApiPublicKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetMongodbAtlasApiPublicKeyOk() (*string, bool) {
+	if o == nil || o.MongodbAtlasApiPublicKey == nil {
+		return nil, false
+	}
+	return o.MongodbAtlasApiPublicKey, true
+}
+
+// HasMongodbAtlasApiPublicKey returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasMongodbAtlasApiPublicKey() bool {
+	if o != nil && o.MongodbAtlasApiPublicKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMongodbAtlasApiPublicKey gets a reference to the given string and assigns it to the MongodbAtlasApiPublicKey field.
+func (o *DSProducerDetails) SetMongodbAtlasApiPublicKey(v string) {
+	o.MongodbAtlasApiPublicKey = &v
+}
+
+// GetMongodbAtlasProjectId returns the MongodbAtlasProjectId field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetMongodbAtlasProjectId() string {
+	if o == nil || o.MongodbAtlasProjectId == nil {
+		var ret string
+		return ret
+	}
+	return *o.MongodbAtlasProjectId
+}
+
+// GetMongodbAtlasProjectIdOk returns a tuple with the MongodbAtlasProjectId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetMongodbAtlasProjectIdOk() (*string, bool) {
+	if o == nil || o.MongodbAtlasProjectId == nil {
+		return nil, false
+	}
+	return o.MongodbAtlasProjectId, true
+}
+
+// HasMongodbAtlasProjectId returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasMongodbAtlasProjectId() bool {
+	if o != nil && o.MongodbAtlasProjectId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMongodbAtlasProjectId gets a reference to the given string and assigns it to the MongodbAtlasProjectId field.
+func (o *DSProducerDetails) SetMongodbAtlasProjectId(v string) {
+	o.MongodbAtlasProjectId = &v
+}
+
 // GetMongodbDbName returns the MongodbDbName field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetMongodbDbName() string {
 	if o == nil || o.MongodbDbName == nil {
@@ -2534,6 +2642,134 @@ func (o *DSProducerDetails) HasMongodbDbName() bool {
 // SetMongodbDbName gets a reference to the given string and assigns it to the MongodbDbName field.
 func (o *DSProducerDetails) SetMongodbDbName(v string) {
 	o.MongodbDbName = &v
+}
+
+// GetMongodbDefaultAuthDb returns the MongodbDefaultAuthDb field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetMongodbDefaultAuthDb() string {
+	if o == nil || o.MongodbDefaultAuthDb == nil {
+		var ret string
+		return ret
+	}
+	return *o.MongodbDefaultAuthDb
+}
+
+// GetMongodbDefaultAuthDbOk returns a tuple with the MongodbDefaultAuthDb field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetMongodbDefaultAuthDbOk() (*string, bool) {
+	if o == nil || o.MongodbDefaultAuthDb == nil {
+		return nil, false
+	}
+	return o.MongodbDefaultAuthDb, true
+}
+
+// HasMongodbDefaultAuthDb returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasMongodbDefaultAuthDb() bool {
+	if o != nil && o.MongodbDefaultAuthDb != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMongodbDefaultAuthDb gets a reference to the given string and assigns it to the MongodbDefaultAuthDb field.
+func (o *DSProducerDetails) SetMongodbDefaultAuthDb(v string) {
+	o.MongodbDefaultAuthDb = &v
+}
+
+// GetMongodbHostPort returns the MongodbHostPort field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetMongodbHostPort() string {
+	if o == nil || o.MongodbHostPort == nil {
+		var ret string
+		return ret
+	}
+	return *o.MongodbHostPort
+}
+
+// GetMongodbHostPortOk returns a tuple with the MongodbHostPort field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetMongodbHostPortOk() (*string, bool) {
+	if o == nil || o.MongodbHostPort == nil {
+		return nil, false
+	}
+	return o.MongodbHostPort, true
+}
+
+// HasMongodbHostPort returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasMongodbHostPort() bool {
+	if o != nil && o.MongodbHostPort != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMongodbHostPort gets a reference to the given string and assigns it to the MongodbHostPort field.
+func (o *DSProducerDetails) SetMongodbHostPort(v string) {
+	o.MongodbHostPort = &v
+}
+
+// GetMongodbIsAtlas returns the MongodbIsAtlas field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetMongodbIsAtlas() bool {
+	if o == nil || o.MongodbIsAtlas == nil {
+		var ret bool
+		return ret
+	}
+	return *o.MongodbIsAtlas
+}
+
+// GetMongodbIsAtlasOk returns a tuple with the MongodbIsAtlas field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetMongodbIsAtlasOk() (*bool, bool) {
+	if o == nil || o.MongodbIsAtlas == nil {
+		return nil, false
+	}
+	return o.MongodbIsAtlas, true
+}
+
+// HasMongodbIsAtlas returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasMongodbIsAtlas() bool {
+	if o != nil && o.MongodbIsAtlas != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMongodbIsAtlas gets a reference to the given bool and assigns it to the MongodbIsAtlas field.
+func (o *DSProducerDetails) SetMongodbIsAtlas(v bool) {
+	o.MongodbIsAtlas = &v
+}
+
+// GetMongodbPassword returns the MongodbPassword field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetMongodbPassword() string {
+	if o == nil || o.MongodbPassword == nil {
+		var ret string
+		return ret
+	}
+	return *o.MongodbPassword
+}
+
+// GetMongodbPasswordOk returns a tuple with the MongodbPassword field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetMongodbPasswordOk() (*string, bool) {
+	if o == nil || o.MongodbPassword == nil {
+		return nil, false
+	}
+	return o.MongodbPassword, true
+}
+
+// HasMongodbPassword returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasMongodbPassword() bool {
+	if o != nil && o.MongodbPassword != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMongodbPassword gets a reference to the given string and assigns it to the MongodbPassword field.
+func (o *DSProducerDetails) SetMongodbPassword(v string) {
+	o.MongodbPassword = &v
 }
 
 // GetMongodbRoles returns the MongodbRoles field value if set, zero value otherwise.
@@ -2598,6 +2834,70 @@ func (o *DSProducerDetails) HasMongodbUriConnection() bool {
 // SetMongodbUriConnection gets a reference to the given string and assigns it to the MongodbUriConnection field.
 func (o *DSProducerDetails) SetMongodbUriConnection(v string) {
 	o.MongodbUriConnection = &v
+}
+
+// GetMongodbUriOptions returns the MongodbUriOptions field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetMongodbUriOptions() string {
+	if o == nil || o.MongodbUriOptions == nil {
+		var ret string
+		return ret
+	}
+	return *o.MongodbUriOptions
+}
+
+// GetMongodbUriOptionsOk returns a tuple with the MongodbUriOptions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetMongodbUriOptionsOk() (*string, bool) {
+	if o == nil || o.MongodbUriOptions == nil {
+		return nil, false
+	}
+	return o.MongodbUriOptions, true
+}
+
+// HasMongodbUriOptions returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasMongodbUriOptions() bool {
+	if o != nil && o.MongodbUriOptions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMongodbUriOptions gets a reference to the given string and assigns it to the MongodbUriOptions field.
+func (o *DSProducerDetails) SetMongodbUriOptions(v string) {
+	o.MongodbUriOptions = &v
+}
+
+// GetMongodbUsername returns the MongodbUsername field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetMongodbUsername() string {
+	if o == nil || o.MongodbUsername == nil {
+		var ret string
+		return ret
+	}
+	return *o.MongodbUsername
+}
+
+// GetMongodbUsernameOk returns a tuple with the MongodbUsername field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetMongodbUsernameOk() (*string, bool) {
+	if o == nil || o.MongodbUsername == nil {
+		return nil, false
+	}
+	return o.MongodbUsername, true
+}
+
+// HasMongodbUsername returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasMongodbUsername() bool {
+	if o != nil && o.MongodbUsername != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMongodbUsername gets a reference to the given string and assigns it to the MongodbUsername field.
+func (o *DSProducerDetails) SetMongodbUsername(v string) {
+	o.MongodbUsername = &v
 }
 
 // GetMssqlCreationStatements returns the MssqlCreationStatements field value if set, zero value otherwise.
@@ -3464,14 +3764,41 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	if o.LastAdminRotation != nil {
 		toSerialize["last_admin_rotation"] = o.LastAdminRotation
 	}
+	if o.MongodbAtlasApiPrivateKey != nil {
+		toSerialize["mongodb_atlas_api_private_key"] = o.MongodbAtlasApiPrivateKey
+	}
+	if o.MongodbAtlasApiPublicKey != nil {
+		toSerialize["mongodb_atlas_api_public_key"] = o.MongodbAtlasApiPublicKey
+	}
+	if o.MongodbAtlasProjectId != nil {
+		toSerialize["mongodb_atlas_project_id"] = o.MongodbAtlasProjectId
+	}
 	if o.MongodbDbName != nil {
 		toSerialize["mongodb_db_name"] = o.MongodbDbName
+	}
+	if o.MongodbDefaultAuthDb != nil {
+		toSerialize["mongodb_default_auth_db"] = o.MongodbDefaultAuthDb
+	}
+	if o.MongodbHostPort != nil {
+		toSerialize["mongodb_host_port"] = o.MongodbHostPort
+	}
+	if o.MongodbIsAtlas != nil {
+		toSerialize["mongodb_is_atlas"] = o.MongodbIsAtlas
+	}
+	if o.MongodbPassword != nil {
+		toSerialize["mongodb_password"] = o.MongodbPassword
 	}
 	if o.MongodbRoles != nil {
 		toSerialize["mongodb_roles"] = o.MongodbRoles
 	}
 	if o.MongodbUriConnection != nil {
 		toSerialize["mongodb_uri_connection"] = o.MongodbUriConnection
+	}
+	if o.MongodbUriOptions != nil {
+		toSerialize["mongodb_uri_options"] = o.MongodbUriOptions
+	}
+	if o.MongodbUsername != nil {
+		toSerialize["mongodb_username"] = o.MongodbUsername
 	}
 	if o.MssqlCreationStatements != nil {
 		toSerialize["mssql_creation_statements"] = o.MssqlCreationStatements

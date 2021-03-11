@@ -24,7 +24,7 @@ type GatewayCreateProducerAws struct {
 	AccessSecretKey string `json:"access-secret-key"`
 	// Admin credentials rotation interval (days)
 	AdminRotationIntervalDays *int64 `json:"admin-rotation-interval-days,omitempty"`
-	// AWS Role ARNs to be use in the Assume Role operation (relevant only for assume_rile mode)
+	// AWS Role ARNs to be used in the Assume Role operation (relevant only for assume_role mode)
 	AwsRoleArns *string `json:"aws-role-arns,omitempty"`
 	// AWS User console access
 	AwsUserConsoleAccess *bool `json:"aws-user-console-access,omitempty"`

@@ -6,10 +6,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessId** | Pointer to **string** | Access ID | [optional] 
 **AccessKey** | Pointer to **string** | Access key (relevant only for access-type&#x3D;access_key) | [optional] 
-**AccessType** | Pointer to **string** | Access Type (access_key/password/saml/ldap/azure_ad/aws_iam/universal_identity/jwt) | [optional] [default to "access_key"]
+**AccessType** | Pointer to **string** | Access Type (access_key/password/saml/ldap/azure_ad/aws_iam/universal_identity/jwt/gcp) | [optional] [default to "access_key"]
 **AdminEmail** | Pointer to **string** | Email (relevant only for access-type&#x3D;password) | [optional] 
 **AdminPassword** | Pointer to **string** | Password (relevant only for access-type&#x3D;password) | [optional] 
-**CloudId** | Pointer to **string** | The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam) | [optional] 
+**CloudId** | Pointer to **string** | The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam,gcp) | [optional] 
+**GcpAudience** | Pointer to **string** | GCP JWT audience | [optional] 
 **Jwt** | Pointer to **string** | The Json Web Token (relevant only for access-type&#x3D;jwt/oidc) | [optional] 
 **LdapPassword** | Pointer to **string** | LDAP password (relevant only for access-type&#x3D;ldap) | [optional] 
 **LdapUsername** | Pointer to **string** | LDAP username (relevant only for access-type&#x3D;ldap) | [optional] 
@@ -183,6 +184,31 @@ SetCloudId sets CloudId field to given value.
 `func (o *Auth) HasCloudId() bool`
 
 HasCloudId returns a boolean if a field has been set.
+
+### GetGcpAudience
+
+`func (o *Auth) GetGcpAudience() string`
+
+GetGcpAudience returns the GcpAudience field if non-nil, zero value otherwise.
+
+### GetGcpAudienceOk
+
+`func (o *Auth) GetGcpAudienceOk() (*string, bool)`
+
+GetGcpAudienceOk returns a tuple with the GcpAudience field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpAudience
+
+`func (o *Auth) SetGcpAudience(v string)`
+
+SetGcpAudience sets GcpAudience field to given value.
+
+### HasGcpAudience
+
+`func (o *Auth) HasGcpAudience() bool`
+
+HasGcpAudience returns a boolean if a field has been set.
 
 ### GetJwt
 

@@ -5,7 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AzureAdObjectId** | Pointer to **string** | Azure Active Directory ObjectId (relevant only for access-type&#x3D;azure_ad) | [optional] 
-**UrlSafe** | Pointer to **bool** | escapes the token so it can be safely placed inside a URL query | [optional] 
+**GcpAudience** | Pointer to **string** | GCP JWT audience | [optional] 
+**UrlSafe** | Pointer to **bool** | Escapes the token so it can be safely placed inside a URL query | [optional] 
 
 ## Methods
 
@@ -50,6 +51,31 @@ SetAzureAdObjectId sets AzureAdObjectId field to given value.
 `func (o *GetCloudIdentity) HasAzureAdObjectId() bool`
 
 HasAzureAdObjectId returns a boolean if a field has been set.
+
+### GetGcpAudience
+
+`func (o *GetCloudIdentity) GetGcpAudience() string`
+
+GetGcpAudience returns the GcpAudience field if non-nil, zero value otherwise.
+
+### GetGcpAudienceOk
+
+`func (o *GetCloudIdentity) GetGcpAudienceOk() (*string, bool)`
+
+GetGcpAudienceOk returns a tuple with the GcpAudience field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpAudience
+
+`func (o *GetCloudIdentity) SetGcpAudience(v string)`
+
+SetGcpAudience sets GcpAudience field to given value.
+
+### HasGcpAudience
+
+`func (o *GetCloudIdentity) HasGcpAudience() bool`
+
+HasGcpAudience returns a boolean if a field has been set.
 
 ### GetUrlSafe
 

@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **AzureAdAccessRules** | Pointer to [**AzureADAccessRules**](AzureADAccessRules.md) |  | [optional] 
 **CidrWhitelist** | Pointer to **string** |  | [optional] 
 **EmailPassAccessRules** | Pointer to [**EmailPassAccessRules**](EmailPassAccessRules.md) |  | [optional] 
+**GcpAccessRules** | Pointer to [**GCPAccessRules**](GCPAccessRules.md) |  | [optional] 
 **HuaweiAccessRules** | Pointer to [**HuaweiAccessRules**](HuaweiAccessRules.md) |  | [optional] 
 **LdapAccessRules** | Pointer to [**LDAPAccessRules**](LDAPAccessRules.md) |  | [optional] 
 **Oauth2AccessRules** | Pointer to [**OAuth2AccessRules**](OAuth2AccessRules.md) |  | [optional] 
@@ -211,6 +212,31 @@ SetEmailPassAccessRules sets EmailPassAccessRules field to given value.
 `func (o *AuthMethodAccessInfo) HasEmailPassAccessRules() bool`
 
 HasEmailPassAccessRules returns a boolean if a field has been set.
+
+### GetGcpAccessRules
+
+`func (o *AuthMethodAccessInfo) GetGcpAccessRules() GCPAccessRules`
+
+GetGcpAccessRules returns the GcpAccessRules field if non-nil, zero value otherwise.
+
+### GetGcpAccessRulesOk
+
+`func (o *AuthMethodAccessInfo) GetGcpAccessRulesOk() (*GCPAccessRules, bool)`
+
+GetGcpAccessRulesOk returns a tuple with the GcpAccessRules field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpAccessRules
+
+`func (o *AuthMethodAccessInfo) SetGcpAccessRules(v GCPAccessRules)`
+
+SetGcpAccessRules sets GcpAccessRules field to given value.
+
+### HasGcpAccessRules
+
+`func (o *AuthMethodAccessInfo) HasGcpAccessRules() bool`
+
+HasGcpAccessRules returns a boolean if a field has been set.
 
 ### GetHuaweiAccessRules
 

@@ -15,19 +15,35 @@ import (
 	"encoding/json"
 )
 
-// GatewayCreateProducerMongo gatewayCreateProducerMongo is a command that creates mongo producer
+// GatewayCreateProducerMongo gatewayCreateProducerMongo is a command that creates either mongodb  producer or mongodb atlas producer
 type GatewayCreateProducerMongo struct {
 	// Gateway url
 	GatewayUrl *string `json:"gateway-url,omitempty"`
+	// MongoDB Atlas private key
+	MongodbAtlasApiPrivateKey *string `json:"mongodb-atlas-api-private-key,omitempty"`
+	// MongoDB Atlas public key
+	MongodbAtlasApiPublicKey *string `json:"mongodb-atlas-api-public-key,omitempty"`
+	// MongoDB Atlas project ID
+	MongodbAtlasProjectId *string `json:"mongodb-atlas-project-id,omitempty"`
+	// MongoDB server default authentication database
+	MongodbDefaultAuthDb *string `json:"mongodb-default-auth-db,omitempty"`
+	// MongoDB server host and port
+	MongodbHostPort *string `json:"mongodb-host-port,omitempty"`
 	// MongoDB Name
 	MongodbName string `json:"mongodb-name"`
+	// MongoDB server password. You will prompted to provide a password if it will not appear in CLI parameters
+	MongodbPassword *string `json:"mongodb-password,omitempty"`
 	// MongoDB Roles
 	MongodbRoles *string `json:"mongodb-roles,omitempty"`
-	// Server URI
-	MongodbServerUri string `json:"mongodb-server-uri"`
+	// MongoDB server URI
+	MongodbServerUri *string `json:"mongodb-server-uri,omitempty"`
+	// MongoDB server URI options
+	MongodbUriOptions *string `json:"mongodb-uri-options,omitempty"`
+	// MongoDB server username
+	MongodbUsername *string `json:"mongodb-username,omitempty"`
 	// Producer name
 	Name string `json:"name"`
-	// Dynamic producer encryption key
+	// Encrypt producer with following key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
@@ -41,14 +57,13 @@ type GatewayCreateProducerMongo struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayCreateProducerMongo(mongodbName string, mongodbServerUri string, name string, ) *GatewayCreateProducerMongo {
+func NewGatewayCreateProducerMongo(mongodbName string, name string, ) *GatewayCreateProducerMongo {
 	this := GatewayCreateProducerMongo{}
 	var gatewayUrl string = "http://localhost:8000"
 	this.GatewayUrl = &gatewayUrl
 	this.MongodbName = mongodbName
 	var mongodbRoles string = "[]"
 	this.MongodbRoles = &mongodbRoles
-	this.MongodbServerUri = mongodbServerUri
 	this.Name = name
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
@@ -101,6 +116,166 @@ func (o *GatewayCreateProducerMongo) SetGatewayUrl(v string) {
 	o.GatewayUrl = &v
 }
 
+// GetMongodbAtlasApiPrivateKey returns the MongodbAtlasApiPrivateKey field value if set, zero value otherwise.
+func (o *GatewayCreateProducerMongo) GetMongodbAtlasApiPrivateKey() string {
+	if o == nil || o.MongodbAtlasApiPrivateKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.MongodbAtlasApiPrivateKey
+}
+
+// GetMongodbAtlasApiPrivateKeyOk returns a tuple with the MongodbAtlasApiPrivateKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerMongo) GetMongodbAtlasApiPrivateKeyOk() (*string, bool) {
+	if o == nil || o.MongodbAtlasApiPrivateKey == nil {
+		return nil, false
+	}
+	return o.MongodbAtlasApiPrivateKey, true
+}
+
+// HasMongodbAtlasApiPrivateKey returns a boolean if a field has been set.
+func (o *GatewayCreateProducerMongo) HasMongodbAtlasApiPrivateKey() bool {
+	if o != nil && o.MongodbAtlasApiPrivateKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMongodbAtlasApiPrivateKey gets a reference to the given string and assigns it to the MongodbAtlasApiPrivateKey field.
+func (o *GatewayCreateProducerMongo) SetMongodbAtlasApiPrivateKey(v string) {
+	o.MongodbAtlasApiPrivateKey = &v
+}
+
+// GetMongodbAtlasApiPublicKey returns the MongodbAtlasApiPublicKey field value if set, zero value otherwise.
+func (o *GatewayCreateProducerMongo) GetMongodbAtlasApiPublicKey() string {
+	if o == nil || o.MongodbAtlasApiPublicKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.MongodbAtlasApiPublicKey
+}
+
+// GetMongodbAtlasApiPublicKeyOk returns a tuple with the MongodbAtlasApiPublicKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerMongo) GetMongodbAtlasApiPublicKeyOk() (*string, bool) {
+	if o == nil || o.MongodbAtlasApiPublicKey == nil {
+		return nil, false
+	}
+	return o.MongodbAtlasApiPublicKey, true
+}
+
+// HasMongodbAtlasApiPublicKey returns a boolean if a field has been set.
+func (o *GatewayCreateProducerMongo) HasMongodbAtlasApiPublicKey() bool {
+	if o != nil && o.MongodbAtlasApiPublicKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMongodbAtlasApiPublicKey gets a reference to the given string and assigns it to the MongodbAtlasApiPublicKey field.
+func (o *GatewayCreateProducerMongo) SetMongodbAtlasApiPublicKey(v string) {
+	o.MongodbAtlasApiPublicKey = &v
+}
+
+// GetMongodbAtlasProjectId returns the MongodbAtlasProjectId field value if set, zero value otherwise.
+func (o *GatewayCreateProducerMongo) GetMongodbAtlasProjectId() string {
+	if o == nil || o.MongodbAtlasProjectId == nil {
+		var ret string
+		return ret
+	}
+	return *o.MongodbAtlasProjectId
+}
+
+// GetMongodbAtlasProjectIdOk returns a tuple with the MongodbAtlasProjectId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerMongo) GetMongodbAtlasProjectIdOk() (*string, bool) {
+	if o == nil || o.MongodbAtlasProjectId == nil {
+		return nil, false
+	}
+	return o.MongodbAtlasProjectId, true
+}
+
+// HasMongodbAtlasProjectId returns a boolean if a field has been set.
+func (o *GatewayCreateProducerMongo) HasMongodbAtlasProjectId() bool {
+	if o != nil && o.MongodbAtlasProjectId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMongodbAtlasProjectId gets a reference to the given string and assigns it to the MongodbAtlasProjectId field.
+func (o *GatewayCreateProducerMongo) SetMongodbAtlasProjectId(v string) {
+	o.MongodbAtlasProjectId = &v
+}
+
+// GetMongodbDefaultAuthDb returns the MongodbDefaultAuthDb field value if set, zero value otherwise.
+func (o *GatewayCreateProducerMongo) GetMongodbDefaultAuthDb() string {
+	if o == nil || o.MongodbDefaultAuthDb == nil {
+		var ret string
+		return ret
+	}
+	return *o.MongodbDefaultAuthDb
+}
+
+// GetMongodbDefaultAuthDbOk returns a tuple with the MongodbDefaultAuthDb field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerMongo) GetMongodbDefaultAuthDbOk() (*string, bool) {
+	if o == nil || o.MongodbDefaultAuthDb == nil {
+		return nil, false
+	}
+	return o.MongodbDefaultAuthDb, true
+}
+
+// HasMongodbDefaultAuthDb returns a boolean if a field has been set.
+func (o *GatewayCreateProducerMongo) HasMongodbDefaultAuthDb() bool {
+	if o != nil && o.MongodbDefaultAuthDb != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMongodbDefaultAuthDb gets a reference to the given string and assigns it to the MongodbDefaultAuthDb field.
+func (o *GatewayCreateProducerMongo) SetMongodbDefaultAuthDb(v string) {
+	o.MongodbDefaultAuthDb = &v
+}
+
+// GetMongodbHostPort returns the MongodbHostPort field value if set, zero value otherwise.
+func (o *GatewayCreateProducerMongo) GetMongodbHostPort() string {
+	if o == nil || o.MongodbHostPort == nil {
+		var ret string
+		return ret
+	}
+	return *o.MongodbHostPort
+}
+
+// GetMongodbHostPortOk returns a tuple with the MongodbHostPort field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerMongo) GetMongodbHostPortOk() (*string, bool) {
+	if o == nil || o.MongodbHostPort == nil {
+		return nil, false
+	}
+	return o.MongodbHostPort, true
+}
+
+// HasMongodbHostPort returns a boolean if a field has been set.
+func (o *GatewayCreateProducerMongo) HasMongodbHostPort() bool {
+	if o != nil && o.MongodbHostPort != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMongodbHostPort gets a reference to the given string and assigns it to the MongodbHostPort field.
+func (o *GatewayCreateProducerMongo) SetMongodbHostPort(v string) {
+	o.MongodbHostPort = &v
+}
+
 // GetMongodbName returns the MongodbName field value
 func (o *GatewayCreateProducerMongo) GetMongodbName() string {
 	if o == nil  {
@@ -123,6 +298,38 @@ func (o *GatewayCreateProducerMongo) GetMongodbNameOk() (*string, bool) {
 // SetMongodbName sets field value
 func (o *GatewayCreateProducerMongo) SetMongodbName(v string) {
 	o.MongodbName = v
+}
+
+// GetMongodbPassword returns the MongodbPassword field value if set, zero value otherwise.
+func (o *GatewayCreateProducerMongo) GetMongodbPassword() string {
+	if o == nil || o.MongodbPassword == nil {
+		var ret string
+		return ret
+	}
+	return *o.MongodbPassword
+}
+
+// GetMongodbPasswordOk returns a tuple with the MongodbPassword field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerMongo) GetMongodbPasswordOk() (*string, bool) {
+	if o == nil || o.MongodbPassword == nil {
+		return nil, false
+	}
+	return o.MongodbPassword, true
+}
+
+// HasMongodbPassword returns a boolean if a field has been set.
+func (o *GatewayCreateProducerMongo) HasMongodbPassword() bool {
+	if o != nil && o.MongodbPassword != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMongodbPassword gets a reference to the given string and assigns it to the MongodbPassword field.
+func (o *GatewayCreateProducerMongo) SetMongodbPassword(v string) {
+	o.MongodbPassword = &v
 }
 
 // GetMongodbRoles returns the MongodbRoles field value if set, zero value otherwise.
@@ -157,28 +364,100 @@ func (o *GatewayCreateProducerMongo) SetMongodbRoles(v string) {
 	o.MongodbRoles = &v
 }
 
-// GetMongodbServerUri returns the MongodbServerUri field value
+// GetMongodbServerUri returns the MongodbServerUri field value if set, zero value otherwise.
 func (o *GatewayCreateProducerMongo) GetMongodbServerUri() string {
-	if o == nil  {
+	if o == nil || o.MongodbServerUri == nil {
 		var ret string
 		return ret
 	}
-
-	return o.MongodbServerUri
+	return *o.MongodbServerUri
 }
 
-// GetMongodbServerUriOk returns a tuple with the MongodbServerUri field value
+// GetMongodbServerUriOk returns a tuple with the MongodbServerUri field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerMongo) GetMongodbServerUriOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.MongodbServerUri == nil {
 		return nil, false
 	}
-	return &o.MongodbServerUri, true
+	return o.MongodbServerUri, true
 }
 
-// SetMongodbServerUri sets field value
+// HasMongodbServerUri returns a boolean if a field has been set.
+func (o *GatewayCreateProducerMongo) HasMongodbServerUri() bool {
+	if o != nil && o.MongodbServerUri != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMongodbServerUri gets a reference to the given string and assigns it to the MongodbServerUri field.
 func (o *GatewayCreateProducerMongo) SetMongodbServerUri(v string) {
-	o.MongodbServerUri = v
+	o.MongodbServerUri = &v
+}
+
+// GetMongodbUriOptions returns the MongodbUriOptions field value if set, zero value otherwise.
+func (o *GatewayCreateProducerMongo) GetMongodbUriOptions() string {
+	if o == nil || o.MongodbUriOptions == nil {
+		var ret string
+		return ret
+	}
+	return *o.MongodbUriOptions
+}
+
+// GetMongodbUriOptionsOk returns a tuple with the MongodbUriOptions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerMongo) GetMongodbUriOptionsOk() (*string, bool) {
+	if o == nil || o.MongodbUriOptions == nil {
+		return nil, false
+	}
+	return o.MongodbUriOptions, true
+}
+
+// HasMongodbUriOptions returns a boolean if a field has been set.
+func (o *GatewayCreateProducerMongo) HasMongodbUriOptions() bool {
+	if o != nil && o.MongodbUriOptions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMongodbUriOptions gets a reference to the given string and assigns it to the MongodbUriOptions field.
+func (o *GatewayCreateProducerMongo) SetMongodbUriOptions(v string) {
+	o.MongodbUriOptions = &v
+}
+
+// GetMongodbUsername returns the MongodbUsername field value if set, zero value otherwise.
+func (o *GatewayCreateProducerMongo) GetMongodbUsername() string {
+	if o == nil || o.MongodbUsername == nil {
+		var ret string
+		return ret
+	}
+	return *o.MongodbUsername
+}
+
+// GetMongodbUsernameOk returns a tuple with the MongodbUsername field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerMongo) GetMongodbUsernameOk() (*string, bool) {
+	if o == nil || o.MongodbUsername == nil {
+		return nil, false
+	}
+	return o.MongodbUsername, true
+}
+
+// HasMongodbUsername returns a boolean if a field has been set.
+func (o *GatewayCreateProducerMongo) HasMongodbUsername() bool {
+	if o != nil && o.MongodbUsername != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMongodbUsername gets a reference to the given string and assigns it to the MongodbUsername field.
+func (o *GatewayCreateProducerMongo) SetMongodbUsername(v string) {
+	o.MongodbUsername = &v
 }
 
 // GetName returns the Name field value
@@ -338,14 +617,38 @@ func (o GatewayCreateProducerMongo) MarshalJSON() ([]byte, error) {
 	if o.GatewayUrl != nil {
 		toSerialize["gateway-url"] = o.GatewayUrl
 	}
+	if o.MongodbAtlasApiPrivateKey != nil {
+		toSerialize["mongodb-atlas-api-private-key"] = o.MongodbAtlasApiPrivateKey
+	}
+	if o.MongodbAtlasApiPublicKey != nil {
+		toSerialize["mongodb-atlas-api-public-key"] = o.MongodbAtlasApiPublicKey
+	}
+	if o.MongodbAtlasProjectId != nil {
+		toSerialize["mongodb-atlas-project-id"] = o.MongodbAtlasProjectId
+	}
+	if o.MongodbDefaultAuthDb != nil {
+		toSerialize["mongodb-default-auth-db"] = o.MongodbDefaultAuthDb
+	}
+	if o.MongodbHostPort != nil {
+		toSerialize["mongodb-host-port"] = o.MongodbHostPort
+	}
 	if true {
 		toSerialize["mongodb-name"] = o.MongodbName
+	}
+	if o.MongodbPassword != nil {
+		toSerialize["mongodb-password"] = o.MongodbPassword
 	}
 	if o.MongodbRoles != nil {
 		toSerialize["mongodb-roles"] = o.MongodbRoles
 	}
-	if true {
+	if o.MongodbServerUri != nil {
 		toSerialize["mongodb-server-uri"] = o.MongodbServerUri
+	}
+	if o.MongodbUriOptions != nil {
+		toSerialize["mongodb-uri-options"] = o.MongodbUriOptions
+	}
+	if o.MongodbUsername != nil {
+		toSerialize["mongodb-username"] = o.MongodbUsername
 	}
 	if true {
 		toSerialize["name"] = o.Name

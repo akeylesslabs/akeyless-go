@@ -21,14 +21,16 @@ type Auth struct {
 	AccessId *string `json:"access-id,omitempty"`
 	// Access key (relevant only for access-type=access_key)
 	AccessKey *string `json:"access-key,omitempty"`
-	// Access Type (access_key/password/saml/ldap/azure_ad/aws_iam/universal_identity/jwt)
+	// Access Type (access_key/password/saml/ldap/azure_ad/aws_iam/universal_identity/jwt/gcp)
 	AccessType *string `json:"access-type,omitempty"`
 	// Email (relevant only for access-type=password)
 	AdminEmail *string `json:"admin-email,omitempty"`
 	// Password (relevant only for access-type=password)
 	AdminPassword *string `json:"admin-password,omitempty"`
-	// The cloud identity (relevant only for access-type=azure_ad,aws_iam)
+	// The cloud identity (relevant only for access-type=azure_ad,aws_iam,gcp)
 	CloudId *string `json:"cloud-id,omitempty"`
+	// GCP JWT audience
+	GcpAudience *string `json:"gcp-audience,omitempty"`
 	// The Json Web Token (relevant only for access-type=jwt/oidc)
 	Jwt *string `json:"jwt,omitempty"`
 	// LDAP password (relevant only for access-type=ldap)
@@ -252,6 +254,38 @@ func (o *Auth) SetCloudId(v string) {
 	o.CloudId = &v
 }
 
+// GetGcpAudience returns the GcpAudience field value if set, zero value otherwise.
+func (o *Auth) GetGcpAudience() string {
+	if o == nil || o.GcpAudience == nil {
+		var ret string
+		return ret
+	}
+	return *o.GcpAudience
+}
+
+// GetGcpAudienceOk returns a tuple with the GcpAudience field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Auth) GetGcpAudienceOk() (*string, bool) {
+	if o == nil || o.GcpAudience == nil {
+		return nil, false
+	}
+	return o.GcpAudience, true
+}
+
+// HasGcpAudience returns a boolean if a field has been set.
+func (o *Auth) HasGcpAudience() bool {
+	if o != nil && o.GcpAudience != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpAudience gets a reference to the given string and assigns it to the GcpAudience field.
+func (o *Auth) SetGcpAudience(v string) {
+	o.GcpAudience = &v
+}
+
 // GetJwt returns the Jwt field value if set, zero value otherwise.
 func (o *Auth) GetJwt() string {
 	if o == nil || o.Jwt == nil {
@@ -399,6 +433,9 @@ func (o Auth) MarshalJSON() ([]byte, error) {
 	}
 	if o.CloudId != nil {
 		toSerialize["cloud-id"] = o.CloudId
+	}
+	if o.GcpAudience != nil {
+		toSerialize["gcp-audience"] = o.GcpAudience
 	}
 	if o.Jwt != nil {
 		toSerialize["jwt"] = o.Jwt

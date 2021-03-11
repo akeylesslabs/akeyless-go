@@ -29,6 +29,8 @@ type Configure struct {
 	AdminPassword *string `json:"admin-password,omitempty"`
 	// Azure Active Directory ObjectId (relevant only for access-type=azure_ad)
 	AzureAdObjectId *string `json:"azure_ad_object_id,omitempty"`
+	// GCP JWT audience
+	GcpAudience *string `json:"gcp-audience,omitempty"`
 }
 
 // NewConfigure instantiates a new Configure object
@@ -244,6 +246,38 @@ func (o *Configure) SetAzureAdObjectId(v string) {
 	o.AzureAdObjectId = &v
 }
 
+// GetGcpAudience returns the GcpAudience field value if set, zero value otherwise.
+func (o *Configure) GetGcpAudience() string {
+	if o == nil || o.GcpAudience == nil {
+		var ret string
+		return ret
+	}
+	return *o.GcpAudience
+}
+
+// GetGcpAudienceOk returns a tuple with the GcpAudience field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Configure) GetGcpAudienceOk() (*string, bool) {
+	if o == nil || o.GcpAudience == nil {
+		return nil, false
+	}
+	return o.GcpAudience, true
+}
+
+// HasGcpAudience returns a boolean if a field has been set.
+func (o *Configure) HasGcpAudience() bool {
+	if o != nil && o.GcpAudience != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpAudience gets a reference to the given string and assigns it to the GcpAudience field.
+func (o *Configure) SetGcpAudience(v string) {
+	o.GcpAudience = &v
+}
+
 func (o Configure) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccessId != nil {
@@ -263,6 +297,9 @@ func (o Configure) MarshalJSON() ([]byte, error) {
 	}
 	if o.AzureAdObjectId != nil {
 		toSerialize["azure_ad_object_id"] = o.AzureAdObjectId
+	}
+	if o.GcpAudience != nil {
+		toSerialize["gcp-audience"] = o.GcpAudience
 	}
 	return json.Marshal(toSerialize)
 }

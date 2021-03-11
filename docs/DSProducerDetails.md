@@ -78,9 +78,18 @@ Name | Type | Description | Notes
 **HostName** | Pointer to **string** |  | [optional] 
 **HostPort** | Pointer to **string** |  | [optional] 
 **LastAdminRotation** | Pointer to **int64** |  | [optional] 
-**MongodbDbName** | Pointer to **string** |  | [optional] 
+**MongodbAtlasApiPrivateKey** | Pointer to **string** |  | [optional] 
+**MongodbAtlasApiPublicKey** | Pointer to **string** |  | [optional] 
+**MongodbAtlasProjectId** | Pointer to **string** | mongodb atlas fields | [optional] 
+**MongodbDbName** | Pointer to **string** | common fields | [optional] 
+**MongodbDefaultAuthDb** | Pointer to **string** |  | [optional] 
+**MongodbHostPort** | Pointer to **string** |  | [optional] 
+**MongodbIsAtlas** | Pointer to **bool** |  | [optional] 
+**MongodbPassword** | Pointer to **string** |  | [optional] 
 **MongodbRoles** | Pointer to **string** |  | [optional] 
-**MongodbUriConnection** | Pointer to **string** |  | [optional] 
+**MongodbUriConnection** | Pointer to **string** | mongodb fields | [optional] 
+**MongodbUriOptions** | Pointer to **string** |  | [optional] 
+**MongodbUsername** | Pointer to **string** |  | [optional] 
 **MssqlCreationStatements** | Pointer to **string** |  | [optional] 
 **MssqlRevocationStatements** | Pointer to **string** |  | [optional] 
 **MysqlCreationStatements** | Pointer to **string** |  | [optional] 
@@ -1971,6 +1980,81 @@ SetLastAdminRotation sets LastAdminRotation field to given value.
 
 HasLastAdminRotation returns a boolean if a field has been set.
 
+### GetMongodbAtlasApiPrivateKey
+
+`func (o *DSProducerDetails) GetMongodbAtlasApiPrivateKey() string`
+
+GetMongodbAtlasApiPrivateKey returns the MongodbAtlasApiPrivateKey field if non-nil, zero value otherwise.
+
+### GetMongodbAtlasApiPrivateKeyOk
+
+`func (o *DSProducerDetails) GetMongodbAtlasApiPrivateKeyOk() (*string, bool)`
+
+GetMongodbAtlasApiPrivateKeyOk returns a tuple with the MongodbAtlasApiPrivateKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMongodbAtlasApiPrivateKey
+
+`func (o *DSProducerDetails) SetMongodbAtlasApiPrivateKey(v string)`
+
+SetMongodbAtlasApiPrivateKey sets MongodbAtlasApiPrivateKey field to given value.
+
+### HasMongodbAtlasApiPrivateKey
+
+`func (o *DSProducerDetails) HasMongodbAtlasApiPrivateKey() bool`
+
+HasMongodbAtlasApiPrivateKey returns a boolean if a field has been set.
+
+### GetMongodbAtlasApiPublicKey
+
+`func (o *DSProducerDetails) GetMongodbAtlasApiPublicKey() string`
+
+GetMongodbAtlasApiPublicKey returns the MongodbAtlasApiPublicKey field if non-nil, zero value otherwise.
+
+### GetMongodbAtlasApiPublicKeyOk
+
+`func (o *DSProducerDetails) GetMongodbAtlasApiPublicKeyOk() (*string, bool)`
+
+GetMongodbAtlasApiPublicKeyOk returns a tuple with the MongodbAtlasApiPublicKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMongodbAtlasApiPublicKey
+
+`func (o *DSProducerDetails) SetMongodbAtlasApiPublicKey(v string)`
+
+SetMongodbAtlasApiPublicKey sets MongodbAtlasApiPublicKey field to given value.
+
+### HasMongodbAtlasApiPublicKey
+
+`func (o *DSProducerDetails) HasMongodbAtlasApiPublicKey() bool`
+
+HasMongodbAtlasApiPublicKey returns a boolean if a field has been set.
+
+### GetMongodbAtlasProjectId
+
+`func (o *DSProducerDetails) GetMongodbAtlasProjectId() string`
+
+GetMongodbAtlasProjectId returns the MongodbAtlasProjectId field if non-nil, zero value otherwise.
+
+### GetMongodbAtlasProjectIdOk
+
+`func (o *DSProducerDetails) GetMongodbAtlasProjectIdOk() (*string, bool)`
+
+GetMongodbAtlasProjectIdOk returns a tuple with the MongodbAtlasProjectId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMongodbAtlasProjectId
+
+`func (o *DSProducerDetails) SetMongodbAtlasProjectId(v string)`
+
+SetMongodbAtlasProjectId sets MongodbAtlasProjectId field to given value.
+
+### HasMongodbAtlasProjectId
+
+`func (o *DSProducerDetails) HasMongodbAtlasProjectId() bool`
+
+HasMongodbAtlasProjectId returns a boolean if a field has been set.
+
 ### GetMongodbDbName
 
 `func (o *DSProducerDetails) GetMongodbDbName() string`
@@ -1995,6 +2079,106 @@ SetMongodbDbName sets MongodbDbName field to given value.
 `func (o *DSProducerDetails) HasMongodbDbName() bool`
 
 HasMongodbDbName returns a boolean if a field has been set.
+
+### GetMongodbDefaultAuthDb
+
+`func (o *DSProducerDetails) GetMongodbDefaultAuthDb() string`
+
+GetMongodbDefaultAuthDb returns the MongodbDefaultAuthDb field if non-nil, zero value otherwise.
+
+### GetMongodbDefaultAuthDbOk
+
+`func (o *DSProducerDetails) GetMongodbDefaultAuthDbOk() (*string, bool)`
+
+GetMongodbDefaultAuthDbOk returns a tuple with the MongodbDefaultAuthDb field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMongodbDefaultAuthDb
+
+`func (o *DSProducerDetails) SetMongodbDefaultAuthDb(v string)`
+
+SetMongodbDefaultAuthDb sets MongodbDefaultAuthDb field to given value.
+
+### HasMongodbDefaultAuthDb
+
+`func (o *DSProducerDetails) HasMongodbDefaultAuthDb() bool`
+
+HasMongodbDefaultAuthDb returns a boolean if a field has been set.
+
+### GetMongodbHostPort
+
+`func (o *DSProducerDetails) GetMongodbHostPort() string`
+
+GetMongodbHostPort returns the MongodbHostPort field if non-nil, zero value otherwise.
+
+### GetMongodbHostPortOk
+
+`func (o *DSProducerDetails) GetMongodbHostPortOk() (*string, bool)`
+
+GetMongodbHostPortOk returns a tuple with the MongodbHostPort field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMongodbHostPort
+
+`func (o *DSProducerDetails) SetMongodbHostPort(v string)`
+
+SetMongodbHostPort sets MongodbHostPort field to given value.
+
+### HasMongodbHostPort
+
+`func (o *DSProducerDetails) HasMongodbHostPort() bool`
+
+HasMongodbHostPort returns a boolean if a field has been set.
+
+### GetMongodbIsAtlas
+
+`func (o *DSProducerDetails) GetMongodbIsAtlas() bool`
+
+GetMongodbIsAtlas returns the MongodbIsAtlas field if non-nil, zero value otherwise.
+
+### GetMongodbIsAtlasOk
+
+`func (o *DSProducerDetails) GetMongodbIsAtlasOk() (*bool, bool)`
+
+GetMongodbIsAtlasOk returns a tuple with the MongodbIsAtlas field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMongodbIsAtlas
+
+`func (o *DSProducerDetails) SetMongodbIsAtlas(v bool)`
+
+SetMongodbIsAtlas sets MongodbIsAtlas field to given value.
+
+### HasMongodbIsAtlas
+
+`func (o *DSProducerDetails) HasMongodbIsAtlas() bool`
+
+HasMongodbIsAtlas returns a boolean if a field has been set.
+
+### GetMongodbPassword
+
+`func (o *DSProducerDetails) GetMongodbPassword() string`
+
+GetMongodbPassword returns the MongodbPassword field if non-nil, zero value otherwise.
+
+### GetMongodbPasswordOk
+
+`func (o *DSProducerDetails) GetMongodbPasswordOk() (*string, bool)`
+
+GetMongodbPasswordOk returns a tuple with the MongodbPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMongodbPassword
+
+`func (o *DSProducerDetails) SetMongodbPassword(v string)`
+
+SetMongodbPassword sets MongodbPassword field to given value.
+
+### HasMongodbPassword
+
+`func (o *DSProducerDetails) HasMongodbPassword() bool`
+
+HasMongodbPassword returns a boolean if a field has been set.
 
 ### GetMongodbRoles
 
@@ -2045,6 +2229,56 @@ SetMongodbUriConnection sets MongodbUriConnection field to given value.
 `func (o *DSProducerDetails) HasMongodbUriConnection() bool`
 
 HasMongodbUriConnection returns a boolean if a field has been set.
+
+### GetMongodbUriOptions
+
+`func (o *DSProducerDetails) GetMongodbUriOptions() string`
+
+GetMongodbUriOptions returns the MongodbUriOptions field if non-nil, zero value otherwise.
+
+### GetMongodbUriOptionsOk
+
+`func (o *DSProducerDetails) GetMongodbUriOptionsOk() (*string, bool)`
+
+GetMongodbUriOptionsOk returns a tuple with the MongodbUriOptions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMongodbUriOptions
+
+`func (o *DSProducerDetails) SetMongodbUriOptions(v string)`
+
+SetMongodbUriOptions sets MongodbUriOptions field to given value.
+
+### HasMongodbUriOptions
+
+`func (o *DSProducerDetails) HasMongodbUriOptions() bool`
+
+HasMongodbUriOptions returns a boolean if a field has been set.
+
+### GetMongodbUsername
+
+`func (o *DSProducerDetails) GetMongodbUsername() string`
+
+GetMongodbUsername returns the MongodbUsername field if non-nil, zero value otherwise.
+
+### GetMongodbUsernameOk
+
+`func (o *DSProducerDetails) GetMongodbUsernameOk() (*string, bool)`
+
+GetMongodbUsernameOk returns a tuple with the MongodbUsername field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMongodbUsername
+
+`func (o *DSProducerDetails) SetMongodbUsername(v string)`
+
+SetMongodbUsername sets MongodbUsername field to given value.
+
+### HasMongodbUsername
+
+`func (o *DSProducerDetails) HasMongodbUsername() bool`
+
+HasMongodbUsername returns a boolean if a field has been set.
 
 ### GetMssqlCreationStatements
 

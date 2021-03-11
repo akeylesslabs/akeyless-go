@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **PostgresqlDbName** | **string** | PostgreSQL DB Name | 
 **PostgresqlHost** | Pointer to **string** | PostgreSQL Host | [optional] [default to "127.0.0.1"]
 **PostgresqlPassword** | **string** | PostgreSQL Password | 
-**PostgresqlPort** | Pointer to **string** | PostgreSQL Port | [optional] [default to "3306"]
+**PostgresqlPort** | Pointer to **string** | PostgreSQL Port | [optional] [default to "5432"]
 **PostgresqlUsername** | **string** | PostgreSQL Username | 
 **ProducerEncryptionKey** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

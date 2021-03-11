@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **AdminEmail** | Pointer to **string** | Email (relevant only for access-type&#x3D;password) | [optional] 
 **AdminPassword** | Pointer to **string** | Password (relevant only for access-type&#x3D;password) | [optional] 
 **AzureAdObjectId** | Pointer to **string** | Azure Active Directory ObjectId (relevant only for access-type&#x3D;azure_ad) | [optional] 
+**GcpAudience** | Pointer to **string** | GCP JWT audience | [optional] 
 
 ## Methods
 
@@ -179,6 +180,31 @@ SetAzureAdObjectId sets AzureAdObjectId field to given value.
 `func (o *Configure) HasAzureAdObjectId() bool`
 
 HasAzureAdObjectId returns a boolean if a field has been set.
+
+### GetGcpAudience
+
+`func (o *Configure) GetGcpAudience() string`
+
+GetGcpAudience returns the GcpAudience field if non-nil, zero value otherwise.
+
+### GetGcpAudienceOk
+
+`func (o *Configure) GetGcpAudienceOk() (*string, bool)`
+
+GetGcpAudienceOk returns a tuple with the GcpAudience field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpAudience
+
+`func (o *Configure) SetGcpAudience(v string)`
+
+SetGcpAudience sets GcpAudience field to given value.
+
+### HasGcpAudience
+
+`func (o *Configure) HasGcpAudience() bool`
+
+HasGcpAudience returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

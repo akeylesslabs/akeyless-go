@@ -3140,7 +3140,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerMongo("MongodbName_example", "MongodbServerUri_example", "Name_example") // GatewayCreateProducerMongo | 
+    body := *openapiclient.NewgatewayCreateProducerMongo("MongodbName_example", "Name_example") // GatewayCreateProducerMongo | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

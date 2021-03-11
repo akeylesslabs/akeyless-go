@@ -56,7 +56,7 @@ func NewGatewayCreateProducerPostgreSQL(name string, postgresqlDbName string, po
 	var postgresqlHost string = "127.0.0.1"
 	this.PostgresqlHost = &postgresqlHost
 	this.PostgresqlPassword = postgresqlPassword
-	var postgresqlPort string = "3306"
+	var postgresqlPort string = "5432"
 	this.PostgresqlPort = &postgresqlPort
 	this.PostgresqlUsername = postgresqlUsername
 	var userTtl string = "60m"
@@ -73,7 +73,7 @@ func NewGatewayCreateProducerPostgreSQLWithDefaults() *GatewayCreateProducerPost
 	this.GatewayUrl = &gatewayUrl
 	var postgresqlHost string = "127.0.0.1"
 	this.PostgresqlHost = &postgresqlHost
-	var postgresqlPort string = "3306"
+	var postgresqlPort string = "5432"
 	this.PostgresqlPort = &postgresqlPort
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl

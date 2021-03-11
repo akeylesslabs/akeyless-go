@@ -5,11 +5,19 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **GatewayUrl** | Pointer to **string** | Gateway url | [optional] [default to "http://localhost:8000"]
+**MongodbAtlasApiPrivateKey** | Pointer to **string** | MongoDB Atlas private key | [optional] 
+**MongodbAtlasApiPublicKey** | Pointer to **string** | MongoDB Atlas public key | [optional] 
+**MongodbAtlasProjectId** | Pointer to **string** | MongoDB Atlas project ID | [optional] 
+**MongodbDefaultAuthDb** | Pointer to **string** | MongoDB server default authentication database | [optional] 
+**MongodbHostPort** | Pointer to **string** | MongoDB server host and port | [optional] 
 **MongodbName** | **string** | MongoDB Name | 
+**MongodbPassword** | Pointer to **string** | MongoDB server password. You will prompted to provide a password if it will not appear in CLI parameters | [optional] 
 **MongodbRoles** | Pointer to **string** | MongoDB Roles | [optional] [default to "[]"]
-**MongodbServerUri** | **string** | Server URI | 
+**MongodbServerUri** | Pointer to **string** | MongoDB server URI | [optional] 
+**MongodbUriOptions** | Pointer to **string** | MongoDB server URI options | [optional] 
+**MongodbUsername** | Pointer to **string** | MongoDB server username | [optional] 
 **Name** | **string** | Producer name | 
-**ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
+**ProducerEncryptionKeyName** | Pointer to **string** | Encrypt producer with following key | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserTtl** | Pointer to **string** | User TTL | [optional] [default to "60m"]
@@ -18,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewGatewayCreateProducerMongo
 
-`func NewGatewayCreateProducerMongo(mongodbName string, mongodbServerUri string, name string, ) *GatewayCreateProducerMongo`
+`func NewGatewayCreateProducerMongo(mongodbName string, name string, ) *GatewayCreateProducerMongo`
 
 NewGatewayCreateProducerMongo instantiates a new GatewayCreateProducerMongo object
 This constructor will assign default values to properties that have it defined,
@@ -58,6 +66,131 @@ SetGatewayUrl sets GatewayUrl field to given value.
 
 HasGatewayUrl returns a boolean if a field has been set.
 
+### GetMongodbAtlasApiPrivateKey
+
+`func (o *GatewayCreateProducerMongo) GetMongodbAtlasApiPrivateKey() string`
+
+GetMongodbAtlasApiPrivateKey returns the MongodbAtlasApiPrivateKey field if non-nil, zero value otherwise.
+
+### GetMongodbAtlasApiPrivateKeyOk
+
+`func (o *GatewayCreateProducerMongo) GetMongodbAtlasApiPrivateKeyOk() (*string, bool)`
+
+GetMongodbAtlasApiPrivateKeyOk returns a tuple with the MongodbAtlasApiPrivateKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMongodbAtlasApiPrivateKey
+
+`func (o *GatewayCreateProducerMongo) SetMongodbAtlasApiPrivateKey(v string)`
+
+SetMongodbAtlasApiPrivateKey sets MongodbAtlasApiPrivateKey field to given value.
+
+### HasMongodbAtlasApiPrivateKey
+
+`func (o *GatewayCreateProducerMongo) HasMongodbAtlasApiPrivateKey() bool`
+
+HasMongodbAtlasApiPrivateKey returns a boolean if a field has been set.
+
+### GetMongodbAtlasApiPublicKey
+
+`func (o *GatewayCreateProducerMongo) GetMongodbAtlasApiPublicKey() string`
+
+GetMongodbAtlasApiPublicKey returns the MongodbAtlasApiPublicKey field if non-nil, zero value otherwise.
+
+### GetMongodbAtlasApiPublicKeyOk
+
+`func (o *GatewayCreateProducerMongo) GetMongodbAtlasApiPublicKeyOk() (*string, bool)`
+
+GetMongodbAtlasApiPublicKeyOk returns a tuple with the MongodbAtlasApiPublicKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMongodbAtlasApiPublicKey
+
+`func (o *GatewayCreateProducerMongo) SetMongodbAtlasApiPublicKey(v string)`
+
+SetMongodbAtlasApiPublicKey sets MongodbAtlasApiPublicKey field to given value.
+
+### HasMongodbAtlasApiPublicKey
+
+`func (o *GatewayCreateProducerMongo) HasMongodbAtlasApiPublicKey() bool`
+
+HasMongodbAtlasApiPublicKey returns a boolean if a field has been set.
+
+### GetMongodbAtlasProjectId
+
+`func (o *GatewayCreateProducerMongo) GetMongodbAtlasProjectId() string`
+
+GetMongodbAtlasProjectId returns the MongodbAtlasProjectId field if non-nil, zero value otherwise.
+
+### GetMongodbAtlasProjectIdOk
+
+`func (o *GatewayCreateProducerMongo) GetMongodbAtlasProjectIdOk() (*string, bool)`
+
+GetMongodbAtlasProjectIdOk returns a tuple with the MongodbAtlasProjectId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMongodbAtlasProjectId
+
+`func (o *GatewayCreateProducerMongo) SetMongodbAtlasProjectId(v string)`
+
+SetMongodbAtlasProjectId sets MongodbAtlasProjectId field to given value.
+
+### HasMongodbAtlasProjectId
+
+`func (o *GatewayCreateProducerMongo) HasMongodbAtlasProjectId() bool`
+
+HasMongodbAtlasProjectId returns a boolean if a field has been set.
+
+### GetMongodbDefaultAuthDb
+
+`func (o *GatewayCreateProducerMongo) GetMongodbDefaultAuthDb() string`
+
+GetMongodbDefaultAuthDb returns the MongodbDefaultAuthDb field if non-nil, zero value otherwise.
+
+### GetMongodbDefaultAuthDbOk
+
+`func (o *GatewayCreateProducerMongo) GetMongodbDefaultAuthDbOk() (*string, bool)`
+
+GetMongodbDefaultAuthDbOk returns a tuple with the MongodbDefaultAuthDb field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMongodbDefaultAuthDb
+
+`func (o *GatewayCreateProducerMongo) SetMongodbDefaultAuthDb(v string)`
+
+SetMongodbDefaultAuthDb sets MongodbDefaultAuthDb field to given value.
+
+### HasMongodbDefaultAuthDb
+
+`func (o *GatewayCreateProducerMongo) HasMongodbDefaultAuthDb() bool`
+
+HasMongodbDefaultAuthDb returns a boolean if a field has been set.
+
+### GetMongodbHostPort
+
+`func (o *GatewayCreateProducerMongo) GetMongodbHostPort() string`
+
+GetMongodbHostPort returns the MongodbHostPort field if non-nil, zero value otherwise.
+
+### GetMongodbHostPortOk
+
+`func (o *GatewayCreateProducerMongo) GetMongodbHostPortOk() (*string, bool)`
+
+GetMongodbHostPortOk returns a tuple with the MongodbHostPort field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMongodbHostPort
+
+`func (o *GatewayCreateProducerMongo) SetMongodbHostPort(v string)`
+
+SetMongodbHostPort sets MongodbHostPort field to given value.
+
+### HasMongodbHostPort
+
+`func (o *GatewayCreateProducerMongo) HasMongodbHostPort() bool`
+
+HasMongodbHostPort returns a boolean if a field has been set.
+
 ### GetMongodbName
 
 `func (o *GatewayCreateProducerMongo) GetMongodbName() string`
@@ -77,6 +210,31 @@ and a boolean to check if the value has been set.
 
 SetMongodbName sets MongodbName field to given value.
 
+
+### GetMongodbPassword
+
+`func (o *GatewayCreateProducerMongo) GetMongodbPassword() string`
+
+GetMongodbPassword returns the MongodbPassword field if non-nil, zero value otherwise.
+
+### GetMongodbPasswordOk
+
+`func (o *GatewayCreateProducerMongo) GetMongodbPasswordOk() (*string, bool)`
+
+GetMongodbPasswordOk returns a tuple with the MongodbPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMongodbPassword
+
+`func (o *GatewayCreateProducerMongo) SetMongodbPassword(v string)`
+
+SetMongodbPassword sets MongodbPassword field to given value.
+
+### HasMongodbPassword
+
+`func (o *GatewayCreateProducerMongo) HasMongodbPassword() bool`
+
+HasMongodbPassword returns a boolean if a field has been set.
 
 ### GetMongodbRoles
 
@@ -122,6 +280,61 @@ and a boolean to check if the value has been set.
 
 SetMongodbServerUri sets MongodbServerUri field to given value.
 
+### HasMongodbServerUri
+
+`func (o *GatewayCreateProducerMongo) HasMongodbServerUri() bool`
+
+HasMongodbServerUri returns a boolean if a field has been set.
+
+### GetMongodbUriOptions
+
+`func (o *GatewayCreateProducerMongo) GetMongodbUriOptions() string`
+
+GetMongodbUriOptions returns the MongodbUriOptions field if non-nil, zero value otherwise.
+
+### GetMongodbUriOptionsOk
+
+`func (o *GatewayCreateProducerMongo) GetMongodbUriOptionsOk() (*string, bool)`
+
+GetMongodbUriOptionsOk returns a tuple with the MongodbUriOptions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMongodbUriOptions
+
+`func (o *GatewayCreateProducerMongo) SetMongodbUriOptions(v string)`
+
+SetMongodbUriOptions sets MongodbUriOptions field to given value.
+
+### HasMongodbUriOptions
+
+`func (o *GatewayCreateProducerMongo) HasMongodbUriOptions() bool`
+
+HasMongodbUriOptions returns a boolean if a field has been set.
+
+### GetMongodbUsername
+
+`func (o *GatewayCreateProducerMongo) GetMongodbUsername() string`
+
+GetMongodbUsername returns the MongodbUsername field if non-nil, zero value otherwise.
+
+### GetMongodbUsernameOk
+
+`func (o *GatewayCreateProducerMongo) GetMongodbUsernameOk() (*string, bool)`
+
+GetMongodbUsernameOk returns a tuple with the MongodbUsername field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMongodbUsername
+
+`func (o *GatewayCreateProducerMongo) SetMongodbUsername(v string)`
+
+SetMongodbUsername sets MongodbUsername field to given value.
+
+### HasMongodbUsername
+
+`func (o *GatewayCreateProducerMongo) HasMongodbUsername() bool`
+
+HasMongodbUsername returns a boolean if a field has been set.
 
 ### GetName
 
