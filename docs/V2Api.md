@@ -70,7 +70,6 @@ Method | HTTP request | Description
 [**GatewayUpdateTmpUsers**](V2Api.md#GatewayUpdateTmpUsers) | **Post** /gateway-update-producer-tmp-creds | 
 [**GetAccountLogo**](V2Api.md#GetAccountLogo) | **Post** /get-account-logo | 
 [**GetAuthMethod**](V2Api.md#GetAuthMethod) | **Post** /get-auth-method | 
-[**GetDynamicPkiCertificate**](V2Api.md#GetDynamicPkiCertificate) | **Post** /get-dynamic-pki-certificate | 
 [**GetDynamicSecretValue**](V2Api.md#GetDynamicSecretValue) | **Post** /get-dynamic-secret-value | 
 [**GetRSAPublic**](V2Api.md#GetRSAPublic) | **Post** /get-rsa-public | 
 [**GetRole**](V2Api.md#GetRole) | **Post** /get-role | 
@@ -4321,65 +4320,6 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetDynamicPkiCertificate
-
-> map[string]string GetDynamicPkiCertificate(ctx).Execute()
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GetDynamicPkiCertificate(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GetDynamicPkiCertificate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetDynamicPkiCertificate`: map[string]string
-    fmt.Fprintf(os.Stdout, "Response from `V2Api.GetDynamicPkiCertificate`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetDynamicPkiCertificateRequest struct via the builder pattern
-
-
-### Return type
-
-**map[string]string**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

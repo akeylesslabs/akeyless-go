@@ -1791,28 +1791,6 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
-  /get-dynamic-pki-certificate:
-    post:
-      operationId: getDynamicPkiCertificate
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                additionalProperties:
-                  type: string
-                type: object
-          description: getDynamicSecretValueResponse wraps response body.
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/JSONError'
-          description: |-
-            errorResponse wraps any error to return it as a JSON object with one "error"
-            field.
-      tags:
-      - v2
   /get-dynamic-secret-value:
     post:
       operationId: getDynamicSecretValue
@@ -4642,8 +4620,8 @@ components:
     DSProducerDetails:
       example:
         gke_cluster_endpoint: gke_cluster_endpoint
-        allow_subdomains: true
         dynamic_secret_type: dynamic_secret_type
+        venafi_sign_using_akeyless_pki: true
         dynamic_secret_key: dynamic_secret_key
         last_admin_rotation: 1
         chef_server_key: chef_server_key
@@ -4651,19 +4629,19 @@ components:
         admin_rotation_interval_days: 0
         mssql_creation_statements: mssql_creation_statements
         admin_pwd: admin_pwd
+        venafi_allowed_domains:
+        - venafi_allowed_domains
+        - venafi_allowed_domains
         azure_user_roles_template_id: azure_user_roles_template_id
         fixed_user_only: fixed_user_only
         rabbitmq_server_password: rabbitmq_server_password
         aws_access_mode: aws_access_mode
         aws_user_policies: aws_user_policies
-        signer_key_name: signer_key_name
-        root_first_in_chain: true
         aws_role_arns: aws_role_arns
         active: true
         gke_cluster_compute_zone: gke_cluster_compute_zone
         chef_server_username: chef_server_username
         db_host_name: db_host_name
-        store_private_key: true
         db_name: db_name
         chef_skip_ssl: true
         db_port: db_port
@@ -4676,13 +4654,15 @@ components:
         mongodb_username: mongodb_username
         mongodb_roles: mongodb_roles
         mongodb_db_name: mongodb_db_name
+        venafi_signer_key_name: venafi_signer_key_name
         should_stop: should_stop
         artifactory_token_audience: artifactory_token_audience
         mongodb_atlas_api_public_key: mongodb_atlas_api_public_key
         eks_access_key_id: eks_access_key_id
+        venafi_base_url: venafi_base_url
         user_ttl: user_ttl
-        create_cert_using_pki: true
         eks_assume_role: eks_assume_role
+        venafi_use_tpp: true
         mongodb_password: mongodb_password
         aws_secret_access_key: aws_secret_access_key
         mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
@@ -4696,7 +4676,6 @@ components:
         mongodb_host_port: mongodb_host_port
         artifactory_token_scope: artifactory_token_scope
         gke_cluster_ca_certificate: gke_cluster_ca_certificate
-        allowed_domains: allowed_domains
         host_port: host_port
         enable_admin_rotation: true
         failure_message: failure_message
@@ -4709,14 +4688,19 @@ components:
         eks_region: eks_region
         artifactory_admin_apikey: artifactory_admin_apikey
         azure_app_object_id: azure_app_object_id
+        venafi_allow_subdomains: true
         aws_user_console_access: true
         user_principal_name: user_principal_name
         db_server_certificates: db_server_certificates
         db_server_name: db_server_name
         venafi_zone: venafi_zone
+        venafi_store_private_key: true
+        venafi_tpp_username: venafi_tpp_username
         azure_user_portal_access: true
+        venafi_root_first_in_chain: true
         eks_cluster_endpoint: eks_cluster_endpoint
         gke_service_account_key: gke_service_account_key
+        venafi_auto_generated_folder: venafi_auto_generated_folder
         mongodb_uri_options: mongodb_uri_options
         db_pwd: db_pwd
         gke_service_account_name: gke_service_account_name
@@ -4728,7 +4712,7 @@ components:
         rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
         rabbitmq_user_write_permission: rabbitmq_user_write_permission
         rabbitmq_user_tags: rabbitmq_user_tags
-        auto_generated_folder: auto_generated_folder
+        venafi_tpp_password: venafi_tpp_password
         azure_user_programmatic_access: true
         eks_secret_access_key: eks_secret_access_key
         groups: groups
@@ -4761,12 +4745,6 @@ components:
           format: int64
           type: integer
           x-go-name: RotationIntervalDays
-        allow_subdomains:
-          type: boolean
-          x-go-name: AllowSubdomains
-        allowed_domains:
-          type: string
-          x-go-name: AllowedDomains
         artifactory_admin_apikey:
           type: string
           x-go-name: ArtifactoryAdminApiKey
@@ -4782,9 +4760,6 @@ components:
         artifactory_token_scope:
           type: string
           x-go-name: ArtifactoryTokenScope
-        auto_generated_folder:
-          type: string
-          x-go-name: AutoGeneratedFolder
         aws_access_key_id:
           type: string
           x-go-name: AWSAccessId
@@ -4863,9 +4838,6 @@ components:
         chef_skip_ssl:
           type: boolean
           x-go-name: ChefSkipSSL
-        create_cert_using_pki:
-          type: boolean
-          x-go-name: CreateCertUsingPKI
         db_host_name:
           type: string
           x-go-name: DbHostName
@@ -4917,7 +4889,7 @@ components:
           x-go-name: DynamicSecretName
         dynamic_secret_type:
           type: string
-          x-go-package: akeyless.io/akeyless-main-repo/go/src/producer/config
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/producer
         eks_access_key_id:
           type: string
           x-go-name: EKSAccessID
@@ -5057,31 +5029,57 @@ components:
         rabbitmq_user_write_permission:
           type: string
           x-go-name: RabbitmqUserWritePermission
-        root_first_in_chain:
-          type: boolean
-          x-go-name: RootFirstInChain
         should_stop:
           description: TODO delete this after migration
           type: string
           x-go-name: ShouldStop
-        signer_key_name:
-          type: string
-          x-go-name: SignerKeyName
-        store_private_key:
-          type: boolean
-          x-go-name: StorePrivateKey
         user_principal_name:
           type: string
           x-go-name: AzurePrincipalName
         user_ttl:
           type: string
           x-go-name: UserTtl
+        venafi_allow_subdomains:
+          type: boolean
+          x-go-name: VenafiAllowSubdomains
+        venafi_allowed_domains:
+          items:
+            type: string
+          type: array
+          x-go-name: VenafiAllowedDomains
         venafi_api_key:
           type: string
-          x-go-name: ApiKey
+          x-go-name: VenafiApiKey
+        venafi_auto_generated_folder:
+          type: string
+          x-go-name: VenafiAutoGeneratedFolder
+        venafi_base_url:
+          type: string
+          x-go-name: VenafiBaseURL
+        venafi_root_first_in_chain:
+          type: boolean
+          x-go-name: VenafiRootFirstInChain
+        venafi_sign_using_akeyless_pki:
+          type: boolean
+          x-go-name: VenafiSignUsingAkeylessPKI
+        venafi_signer_key_name:
+          type: string
+          x-go-name: VenafiSignerKeyName
+        venafi_store_private_key:
+          type: boolean
+          x-go-name: VenafiStorePrivateKey
+        venafi_tpp_password:
+          type: string
+          x-go-name: VenafiTPPPassword
+        venafi_tpp_username:
+          type: string
+          x-go-name: VenafiTPPUserName
+        venafi_use_tpp:
+          type: boolean
+          x-go-name: VenafiUseTPP
         venafi_zone:
           type: string
-          x-go-name: Zone
+          x-go-name: VenafiZone
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/producer/config
     DefaultConfigPart:
@@ -5153,7 +5151,7 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     DynamicSecretType:
       type: string
-      x-go-package: akeyless.io/akeyless-main-repo/go/src/producer/config
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/producer
     ElasticsearchLogForwardingConfig:
       example:
         elasticsearch_index: elasticsearch_index
@@ -8198,7 +8196,7 @@ components:
           x-go-name: CustomTtl
         dynamic_secret_type:
           type: string
-          x-go-package: akeyless.io/akeyless-main-repo/go/src/producer/config
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/producer
         host:
           type: string
           x-go-name: Host
@@ -10573,8 +10571,8 @@ components:
       example:
         producer_details:
           gke_cluster_endpoint: gke_cluster_endpoint
-          allow_subdomains: true
           dynamic_secret_type: dynamic_secret_type
+          venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 1
           chef_server_key: chef_server_key
@@ -10582,19 +10580,19 @@ components:
           admin_rotation_interval_days: 0
           mssql_creation_statements: mssql_creation_statements
           admin_pwd: admin_pwd
+          venafi_allowed_domains:
+          - venafi_allowed_domains
+          - venafi_allowed_domains
           azure_user_roles_template_id: azure_user_roles_template_id
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
-          signer_key_name: signer_key_name
-          root_first_in_chain: true
           aws_role_arns: aws_role_arns
           active: true
           gke_cluster_compute_zone: gke_cluster_compute_zone
           chef_server_username: chef_server_username
           db_host_name: db_host_name
-          store_private_key: true
           db_name: db_name
           chef_skip_ssl: true
           db_port: db_port
@@ -10607,13 +10605,15 @@ components:
           mongodb_username: mongodb_username
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
+          venafi_signer_key_name: venafi_signer_key_name
           should_stop: should_stop
           artifactory_token_audience: artifactory_token_audience
           mongodb_atlas_api_public_key: mongodb_atlas_api_public_key
           eks_access_key_id: eks_access_key_id
+          venafi_base_url: venafi_base_url
           user_ttl: user_ttl
-          create_cert_using_pki: true
           eks_assume_role: eks_assume_role
+          venafi_use_tpp: true
           mongodb_password: mongodb_password
           aws_secret_access_key: aws_secret_access_key
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
@@ -10627,7 +10627,6 @@ components:
           mongodb_host_port: mongodb_host_port
           artifactory_token_scope: artifactory_token_scope
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
-          allowed_domains: allowed_domains
           host_port: host_port
           enable_admin_rotation: true
           failure_message: failure_message
@@ -10640,14 +10639,19 @@ components:
           eks_region: eks_region
           artifactory_admin_apikey: artifactory_admin_apikey
           azure_app_object_id: azure_app_object_id
+          venafi_allow_subdomains: true
           aws_user_console_access: true
           user_principal_name: user_principal_name
           db_server_certificates: db_server_certificates
           db_server_name: db_server_name
           venafi_zone: venafi_zone
+          venafi_store_private_key: true
+          venafi_tpp_username: venafi_tpp_username
           azure_user_portal_access: true
+          venafi_root_first_in_chain: true
           eks_cluster_endpoint: eks_cluster_endpoint
           gke_service_account_key: gke_service_account_key
+          venafi_auto_generated_folder: venafi_auto_generated_folder
           mongodb_uri_options: mongodb_uri_options
           db_pwd: db_pwd
           gke_service_account_name: gke_service_account_name
@@ -10659,7 +10663,7 @@ components:
           rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
-          auto_generated_folder: auto_generated_folder
+          venafi_tpp_password: venafi_tpp_password
           azure_user_programmatic_access: true
           eks_secret_access_key: eks_secret_access_key
           groups: groups
@@ -10774,8 +10778,8 @@ components:
       example:
         producer_details:
           gke_cluster_endpoint: gke_cluster_endpoint
-          allow_subdomains: true
           dynamic_secret_type: dynamic_secret_type
+          venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 1
           chef_server_key: chef_server_key
@@ -10783,19 +10787,19 @@ components:
           admin_rotation_interval_days: 0
           mssql_creation_statements: mssql_creation_statements
           admin_pwd: admin_pwd
+          venafi_allowed_domains:
+          - venafi_allowed_domains
+          - venafi_allowed_domains
           azure_user_roles_template_id: azure_user_roles_template_id
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
-          signer_key_name: signer_key_name
-          root_first_in_chain: true
           aws_role_arns: aws_role_arns
           active: true
           gke_cluster_compute_zone: gke_cluster_compute_zone
           chef_server_username: chef_server_username
           db_host_name: db_host_name
-          store_private_key: true
           db_name: db_name
           chef_skip_ssl: true
           db_port: db_port
@@ -10808,13 +10812,15 @@ components:
           mongodb_username: mongodb_username
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
+          venafi_signer_key_name: venafi_signer_key_name
           should_stop: should_stop
           artifactory_token_audience: artifactory_token_audience
           mongodb_atlas_api_public_key: mongodb_atlas_api_public_key
           eks_access_key_id: eks_access_key_id
+          venafi_base_url: venafi_base_url
           user_ttl: user_ttl
-          create_cert_using_pki: true
           eks_assume_role: eks_assume_role
+          venafi_use_tpp: true
           mongodb_password: mongodb_password
           aws_secret_access_key: aws_secret_access_key
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
@@ -10828,7 +10834,6 @@ components:
           mongodb_host_port: mongodb_host_port
           artifactory_token_scope: artifactory_token_scope
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
-          allowed_domains: allowed_domains
           host_port: host_port
           enable_admin_rotation: true
           failure_message: failure_message
@@ -10841,14 +10846,19 @@ components:
           eks_region: eks_region
           artifactory_admin_apikey: artifactory_admin_apikey
           azure_app_object_id: azure_app_object_id
+          venafi_allow_subdomains: true
           aws_user_console_access: true
           user_principal_name: user_principal_name
           db_server_certificates: db_server_certificates
           db_server_name: db_server_name
           venafi_zone: venafi_zone
+          venafi_store_private_key: true
+          venafi_tpp_username: venafi_tpp_username
           azure_user_portal_access: true
+          venafi_root_first_in_chain: true
           eks_cluster_endpoint: eks_cluster_endpoint
           gke_service_account_key: gke_service_account_key
+          venafi_auto_generated_folder: venafi_auto_generated_folder
           mongodb_uri_options: mongodb_uri_options
           db_pwd: db_pwd
           gke_service_account_name: gke_service_account_name
@@ -10860,7 +10870,7 @@ components:
           rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
-          auto_generated_folder: auto_generated_folder
+          venafi_tpp_password: venafi_tpp_password
           azure_user_programmatic_access: true
           eks_secret_access_key: eks_secret_access_key
           groups: groups
@@ -10964,8 +10974,8 @@ components:
       example:
         producer_details:
           gke_cluster_endpoint: gke_cluster_endpoint
-          allow_subdomains: true
           dynamic_secret_type: dynamic_secret_type
+          venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 1
           chef_server_key: chef_server_key
@@ -10973,19 +10983,19 @@ components:
           admin_rotation_interval_days: 0
           mssql_creation_statements: mssql_creation_statements
           admin_pwd: admin_pwd
+          venafi_allowed_domains:
+          - venafi_allowed_domains
+          - venafi_allowed_domains
           azure_user_roles_template_id: azure_user_roles_template_id
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
-          signer_key_name: signer_key_name
-          root_first_in_chain: true
           aws_role_arns: aws_role_arns
           active: true
           gke_cluster_compute_zone: gke_cluster_compute_zone
           chef_server_username: chef_server_username
           db_host_name: db_host_name
-          store_private_key: true
           db_name: db_name
           chef_skip_ssl: true
           db_port: db_port
@@ -10998,13 +11008,15 @@ components:
           mongodb_username: mongodb_username
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
+          venafi_signer_key_name: venafi_signer_key_name
           should_stop: should_stop
           artifactory_token_audience: artifactory_token_audience
           mongodb_atlas_api_public_key: mongodb_atlas_api_public_key
           eks_access_key_id: eks_access_key_id
+          venafi_base_url: venafi_base_url
           user_ttl: user_ttl
-          create_cert_using_pki: true
           eks_assume_role: eks_assume_role
+          venafi_use_tpp: true
           mongodb_password: mongodb_password
           aws_secret_access_key: aws_secret_access_key
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
@@ -11018,7 +11030,6 @@ components:
           mongodb_host_port: mongodb_host_port
           artifactory_token_scope: artifactory_token_scope
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
-          allowed_domains: allowed_domains
           host_port: host_port
           enable_admin_rotation: true
           failure_message: failure_message
@@ -11031,14 +11042,19 @@ components:
           eks_region: eks_region
           artifactory_admin_apikey: artifactory_admin_apikey
           azure_app_object_id: azure_app_object_id
+          venafi_allow_subdomains: true
           aws_user_console_access: true
           user_principal_name: user_principal_name
           db_server_certificates: db_server_certificates
           db_server_name: db_server_name
           venafi_zone: venafi_zone
+          venafi_store_private_key: true
+          venafi_tpp_username: venafi_tpp_username
           azure_user_portal_access: true
+          venafi_root_first_in_chain: true
           eks_cluster_endpoint: eks_cluster_endpoint
           gke_service_account_key: gke_service_account_key
+          venafi_auto_generated_folder: venafi_auto_generated_folder
           mongodb_uri_options: mongodb_uri_options
           db_pwd: db_pwd
           gke_service_account_name: gke_service_account_name
@@ -11050,7 +11066,7 @@ components:
           rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
-          auto_generated_folder: auto_generated_folder
+          venafi_tpp_password: venafi_tpp_password
           azure_user_programmatic_access: true
           eks_secret_access_key: eks_secret_access_key
           groups: groups
@@ -11147,8 +11163,8 @@ components:
       example:
         producer_details:
           gke_cluster_endpoint: gke_cluster_endpoint
-          allow_subdomains: true
           dynamic_secret_type: dynamic_secret_type
+          venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 1
           chef_server_key: chef_server_key
@@ -11156,19 +11172,19 @@ components:
           admin_rotation_interval_days: 0
           mssql_creation_statements: mssql_creation_statements
           admin_pwd: admin_pwd
+          venafi_allowed_domains:
+          - venafi_allowed_domains
+          - venafi_allowed_domains
           azure_user_roles_template_id: azure_user_roles_template_id
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
-          signer_key_name: signer_key_name
-          root_first_in_chain: true
           aws_role_arns: aws_role_arns
           active: true
           gke_cluster_compute_zone: gke_cluster_compute_zone
           chef_server_username: chef_server_username
           db_host_name: db_host_name
-          store_private_key: true
           db_name: db_name
           chef_skip_ssl: true
           db_port: db_port
@@ -11181,13 +11197,15 @@ components:
           mongodb_username: mongodb_username
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
+          venafi_signer_key_name: venafi_signer_key_name
           should_stop: should_stop
           artifactory_token_audience: artifactory_token_audience
           mongodb_atlas_api_public_key: mongodb_atlas_api_public_key
           eks_access_key_id: eks_access_key_id
+          venafi_base_url: venafi_base_url
           user_ttl: user_ttl
-          create_cert_using_pki: true
           eks_assume_role: eks_assume_role
+          venafi_use_tpp: true
           mongodb_password: mongodb_password
           aws_secret_access_key: aws_secret_access_key
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
@@ -11201,7 +11219,6 @@ components:
           mongodb_host_port: mongodb_host_port
           artifactory_token_scope: artifactory_token_scope
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
-          allowed_domains: allowed_domains
           host_port: host_port
           enable_admin_rotation: true
           failure_message: failure_message
@@ -11214,14 +11231,19 @@ components:
           eks_region: eks_region
           artifactory_admin_apikey: artifactory_admin_apikey
           azure_app_object_id: azure_app_object_id
+          venafi_allow_subdomains: true
           aws_user_console_access: true
           user_principal_name: user_principal_name
           db_server_certificates: db_server_certificates
           db_server_name: db_server_name
           venafi_zone: venafi_zone
+          venafi_store_private_key: true
+          venafi_tpp_username: venafi_tpp_username
           azure_user_portal_access: true
+          venafi_root_first_in_chain: true
           eks_cluster_endpoint: eks_cluster_endpoint
           gke_service_account_key: gke_service_account_key
+          venafi_auto_generated_folder: venafi_auto_generated_folder
           mongodb_uri_options: mongodb_uri_options
           db_pwd: db_pwd
           gke_service_account_name: gke_service_account_name
@@ -11233,7 +11255,7 @@ components:
           rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
-          auto_generated_folder: auto_generated_folder
+          venafi_tpp_password: venafi_tpp_password
           azure_user_programmatic_access: true
           eks_secret_access_key: eks_secret_access_key
           groups: groups
@@ -11321,8 +11343,8 @@ components:
       example:
         producer_details:
           gke_cluster_endpoint: gke_cluster_endpoint
-          allow_subdomains: true
           dynamic_secret_type: dynamic_secret_type
+          venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 1
           chef_server_key: chef_server_key
@@ -11330,19 +11352,19 @@ components:
           admin_rotation_interval_days: 0
           mssql_creation_statements: mssql_creation_statements
           admin_pwd: admin_pwd
+          venafi_allowed_domains:
+          - venafi_allowed_domains
+          - venafi_allowed_domains
           azure_user_roles_template_id: azure_user_roles_template_id
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
-          signer_key_name: signer_key_name
-          root_first_in_chain: true
           aws_role_arns: aws_role_arns
           active: true
           gke_cluster_compute_zone: gke_cluster_compute_zone
           chef_server_username: chef_server_username
           db_host_name: db_host_name
-          store_private_key: true
           db_name: db_name
           chef_skip_ssl: true
           db_port: db_port
@@ -11355,13 +11377,15 @@ components:
           mongodb_username: mongodb_username
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
+          venafi_signer_key_name: venafi_signer_key_name
           should_stop: should_stop
           artifactory_token_audience: artifactory_token_audience
           mongodb_atlas_api_public_key: mongodb_atlas_api_public_key
           eks_access_key_id: eks_access_key_id
+          venafi_base_url: venafi_base_url
           user_ttl: user_ttl
-          create_cert_using_pki: true
           eks_assume_role: eks_assume_role
+          venafi_use_tpp: true
           mongodb_password: mongodb_password
           aws_secret_access_key: aws_secret_access_key
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
@@ -11375,7 +11399,6 @@ components:
           mongodb_host_port: mongodb_host_port
           artifactory_token_scope: artifactory_token_scope
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
-          allowed_domains: allowed_domains
           host_port: host_port
           enable_admin_rotation: true
           failure_message: failure_message
@@ -11388,14 +11411,19 @@ components:
           eks_region: eks_region
           artifactory_admin_apikey: artifactory_admin_apikey
           azure_app_object_id: azure_app_object_id
+          venafi_allow_subdomains: true
           aws_user_console_access: true
           user_principal_name: user_principal_name
           db_server_certificates: db_server_certificates
           db_server_name: db_server_name
           venafi_zone: venafi_zone
+          venafi_store_private_key: true
+          venafi_tpp_username: venafi_tpp_username
           azure_user_portal_access: true
+          venafi_root_first_in_chain: true
           eks_cluster_endpoint: eks_cluster_endpoint
           gke_service_account_key: gke_service_account_key
+          venafi_auto_generated_folder: venafi_auto_generated_folder
           mongodb_uri_options: mongodb_uri_options
           db_pwd: db_pwd
           gke_service_account_name: gke_service_account_name
@@ -11407,7 +11435,7 @@ components:
           rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
-          auto_generated_folder: auto_generated_folder
+          venafi_tpp_password: venafi_tpp_password
           azure_user_programmatic_access: true
           eks_secret_access_key: eks_secret_access_key
           groups: groups
@@ -11503,8 +11531,8 @@ components:
       example:
         producer_details:
           gke_cluster_endpoint: gke_cluster_endpoint
-          allow_subdomains: true
           dynamic_secret_type: dynamic_secret_type
+          venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 1
           chef_server_key: chef_server_key
@@ -11512,19 +11540,19 @@ components:
           admin_rotation_interval_days: 0
           mssql_creation_statements: mssql_creation_statements
           admin_pwd: admin_pwd
+          venafi_allowed_domains:
+          - venafi_allowed_domains
+          - venafi_allowed_domains
           azure_user_roles_template_id: azure_user_roles_template_id
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
-          signer_key_name: signer_key_name
-          root_first_in_chain: true
           aws_role_arns: aws_role_arns
           active: true
           gke_cluster_compute_zone: gke_cluster_compute_zone
           chef_server_username: chef_server_username
           db_host_name: db_host_name
-          store_private_key: true
           db_name: db_name
           chef_skip_ssl: true
           db_port: db_port
@@ -11537,13 +11565,15 @@ components:
           mongodb_username: mongodb_username
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
+          venafi_signer_key_name: venafi_signer_key_name
           should_stop: should_stop
           artifactory_token_audience: artifactory_token_audience
           mongodb_atlas_api_public_key: mongodb_atlas_api_public_key
           eks_access_key_id: eks_access_key_id
+          venafi_base_url: venafi_base_url
           user_ttl: user_ttl
-          create_cert_using_pki: true
           eks_assume_role: eks_assume_role
+          venafi_use_tpp: true
           mongodb_password: mongodb_password
           aws_secret_access_key: aws_secret_access_key
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
@@ -11557,7 +11587,6 @@ components:
           mongodb_host_port: mongodb_host_port
           artifactory_token_scope: artifactory_token_scope
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
-          allowed_domains: allowed_domains
           host_port: host_port
           enable_admin_rotation: true
           failure_message: failure_message
@@ -11570,14 +11599,19 @@ components:
           eks_region: eks_region
           artifactory_admin_apikey: artifactory_admin_apikey
           azure_app_object_id: azure_app_object_id
+          venafi_allow_subdomains: true
           aws_user_console_access: true
           user_principal_name: user_principal_name
           db_server_certificates: db_server_certificates
           db_server_name: db_server_name
           venafi_zone: venafi_zone
+          venafi_store_private_key: true
+          venafi_tpp_username: venafi_tpp_username
           azure_user_portal_access: true
+          venafi_root_first_in_chain: true
           eks_cluster_endpoint: eks_cluster_endpoint
           gke_service_account_key: gke_service_account_key
+          venafi_auto_generated_folder: venafi_auto_generated_folder
           mongodb_uri_options: mongodb_uri_options
           db_pwd: db_pwd
           gke_service_account_name: gke_service_account_name
@@ -11589,7 +11623,7 @@ components:
           rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
-          auto_generated_folder: auto_generated_folder
+          venafi_tpp_password: venafi_tpp_password
           azure_user_programmatic_access: true
           eks_secret_access_key: eks_secret_access_key
           groups: groups
@@ -11700,8 +11734,8 @@ components:
       example:
         producer_details:
           gke_cluster_endpoint: gke_cluster_endpoint
-          allow_subdomains: true
           dynamic_secret_type: dynamic_secret_type
+          venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 1
           chef_server_key: chef_server_key
@@ -11709,19 +11743,19 @@ components:
           admin_rotation_interval_days: 0
           mssql_creation_statements: mssql_creation_statements
           admin_pwd: admin_pwd
+          venafi_allowed_domains:
+          - venafi_allowed_domains
+          - venafi_allowed_domains
           azure_user_roles_template_id: azure_user_roles_template_id
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
-          signer_key_name: signer_key_name
-          root_first_in_chain: true
           aws_role_arns: aws_role_arns
           active: true
           gke_cluster_compute_zone: gke_cluster_compute_zone
           chef_server_username: chef_server_username
           db_host_name: db_host_name
-          store_private_key: true
           db_name: db_name
           chef_skip_ssl: true
           db_port: db_port
@@ -11734,13 +11768,15 @@ components:
           mongodb_username: mongodb_username
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
+          venafi_signer_key_name: venafi_signer_key_name
           should_stop: should_stop
           artifactory_token_audience: artifactory_token_audience
           mongodb_atlas_api_public_key: mongodb_atlas_api_public_key
           eks_access_key_id: eks_access_key_id
+          venafi_base_url: venafi_base_url
           user_ttl: user_ttl
-          create_cert_using_pki: true
           eks_assume_role: eks_assume_role
+          venafi_use_tpp: true
           mongodb_password: mongodb_password
           aws_secret_access_key: aws_secret_access_key
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
@@ -11754,7 +11790,6 @@ components:
           mongodb_host_port: mongodb_host_port
           artifactory_token_scope: artifactory_token_scope
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
-          allowed_domains: allowed_domains
           host_port: host_port
           enable_admin_rotation: true
           failure_message: failure_message
@@ -11767,14 +11802,19 @@ components:
           eks_region: eks_region
           artifactory_admin_apikey: artifactory_admin_apikey
           azure_app_object_id: azure_app_object_id
+          venafi_allow_subdomains: true
           aws_user_console_access: true
           user_principal_name: user_principal_name
           db_server_certificates: db_server_certificates
           db_server_name: db_server_name
           venafi_zone: venafi_zone
+          venafi_store_private_key: true
+          venafi_tpp_username: venafi_tpp_username
           azure_user_portal_access: true
+          venafi_root_first_in_chain: true
           eks_cluster_endpoint: eks_cluster_endpoint
           gke_service_account_key: gke_service_account_key
+          venafi_auto_generated_folder: venafi_auto_generated_folder
           mongodb_uri_options: mongodb_uri_options
           db_pwd: db_pwd
           gke_service_account_name: gke_service_account_name
@@ -11786,7 +11826,7 @@ components:
           rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
-          auto_generated_folder: auto_generated_folder
+          venafi_tpp_password: venafi_tpp_password
           azure_user_programmatic_access: true
           eks_secret_access_key: eks_secret_access_key
           groups: groups
@@ -11886,8 +11926,8 @@ components:
       example:
         producer_details:
           gke_cluster_endpoint: gke_cluster_endpoint
-          allow_subdomains: true
           dynamic_secret_type: dynamic_secret_type
+          venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 1
           chef_server_key: chef_server_key
@@ -11895,19 +11935,19 @@ components:
           admin_rotation_interval_days: 0
           mssql_creation_statements: mssql_creation_statements
           admin_pwd: admin_pwd
+          venafi_allowed_domains:
+          - venafi_allowed_domains
+          - venafi_allowed_domains
           azure_user_roles_template_id: azure_user_roles_template_id
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
-          signer_key_name: signer_key_name
-          root_first_in_chain: true
           aws_role_arns: aws_role_arns
           active: true
           gke_cluster_compute_zone: gke_cluster_compute_zone
           chef_server_username: chef_server_username
           db_host_name: db_host_name
-          store_private_key: true
           db_name: db_name
           chef_skip_ssl: true
           db_port: db_port
@@ -11920,13 +11960,15 @@ components:
           mongodb_username: mongodb_username
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
+          venafi_signer_key_name: venafi_signer_key_name
           should_stop: should_stop
           artifactory_token_audience: artifactory_token_audience
           mongodb_atlas_api_public_key: mongodb_atlas_api_public_key
           eks_access_key_id: eks_access_key_id
+          venafi_base_url: venafi_base_url
           user_ttl: user_ttl
-          create_cert_using_pki: true
           eks_assume_role: eks_assume_role
+          venafi_use_tpp: true
           mongodb_password: mongodb_password
           aws_secret_access_key: aws_secret_access_key
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
@@ -11940,7 +11982,6 @@ components:
           mongodb_host_port: mongodb_host_port
           artifactory_token_scope: artifactory_token_scope
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
-          allowed_domains: allowed_domains
           host_port: host_port
           enable_admin_rotation: true
           failure_message: failure_message
@@ -11953,14 +11994,19 @@ components:
           eks_region: eks_region
           artifactory_admin_apikey: artifactory_admin_apikey
           azure_app_object_id: azure_app_object_id
+          venafi_allow_subdomains: true
           aws_user_console_access: true
           user_principal_name: user_principal_name
           db_server_certificates: db_server_certificates
           db_server_name: db_server_name
           venafi_zone: venafi_zone
+          venafi_store_private_key: true
+          venafi_tpp_username: venafi_tpp_username
           azure_user_portal_access: true
+          venafi_root_first_in_chain: true
           eks_cluster_endpoint: eks_cluster_endpoint
           gke_service_account_key: gke_service_account_key
+          venafi_auto_generated_folder: venafi_auto_generated_folder
           mongodb_uri_options: mongodb_uri_options
           db_pwd: db_pwd
           gke_service_account_name: gke_service_account_name
@@ -11972,7 +12018,7 @@ components:
           rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
-          auto_generated_folder: auto_generated_folder
+          venafi_tpp_password: venafi_tpp_password
           azure_user_programmatic_access: true
           eks_secret_access_key: eks_secret_access_key
           groups: groups
@@ -12065,8 +12111,8 @@ components:
       example:
         producer_details:
           gke_cluster_endpoint: gke_cluster_endpoint
-          allow_subdomains: true
           dynamic_secret_type: dynamic_secret_type
+          venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 1
           chef_server_key: chef_server_key
@@ -12074,19 +12120,19 @@ components:
           admin_rotation_interval_days: 0
           mssql_creation_statements: mssql_creation_statements
           admin_pwd: admin_pwd
+          venafi_allowed_domains:
+          - venafi_allowed_domains
+          - venafi_allowed_domains
           azure_user_roles_template_id: azure_user_roles_template_id
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
-          signer_key_name: signer_key_name
-          root_first_in_chain: true
           aws_role_arns: aws_role_arns
           active: true
           gke_cluster_compute_zone: gke_cluster_compute_zone
           chef_server_username: chef_server_username
           db_host_name: db_host_name
-          store_private_key: true
           db_name: db_name
           chef_skip_ssl: true
           db_port: db_port
@@ -12099,13 +12145,15 @@ components:
           mongodb_username: mongodb_username
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
+          venafi_signer_key_name: venafi_signer_key_name
           should_stop: should_stop
           artifactory_token_audience: artifactory_token_audience
           mongodb_atlas_api_public_key: mongodb_atlas_api_public_key
           eks_access_key_id: eks_access_key_id
+          venafi_base_url: venafi_base_url
           user_ttl: user_ttl
-          create_cert_using_pki: true
           eks_assume_role: eks_assume_role
+          venafi_use_tpp: true
           mongodb_password: mongodb_password
           aws_secret_access_key: aws_secret_access_key
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
@@ -12119,7 +12167,6 @@ components:
           mongodb_host_port: mongodb_host_port
           artifactory_token_scope: artifactory_token_scope
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
-          allowed_domains: allowed_domains
           host_port: host_port
           enable_admin_rotation: true
           failure_message: failure_message
@@ -12132,14 +12179,19 @@ components:
           eks_region: eks_region
           artifactory_admin_apikey: artifactory_admin_apikey
           azure_app_object_id: azure_app_object_id
+          venafi_allow_subdomains: true
           aws_user_console_access: true
           user_principal_name: user_principal_name
           db_server_certificates: db_server_certificates
           db_server_name: db_server_name
           venafi_zone: venafi_zone
+          venafi_store_private_key: true
+          venafi_tpp_username: venafi_tpp_username
           azure_user_portal_access: true
+          venafi_root_first_in_chain: true
           eks_cluster_endpoint: eks_cluster_endpoint
           gke_service_account_key: gke_service_account_key
+          venafi_auto_generated_folder: venafi_auto_generated_folder
           mongodb_uri_options: mongodb_uri_options
           db_pwd: db_pwd
           gke_service_account_name: gke_service_account_name
@@ -12151,7 +12203,7 @@ components:
           rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
-          auto_generated_folder: auto_generated_folder
+          venafi_tpp_password: venafi_tpp_password
           azure_user_programmatic_access: true
           eks_secret_access_key: eks_secret_access_key
           groups: groups
@@ -12253,8 +12305,8 @@ components:
       example:
         producer_details:
           gke_cluster_endpoint: gke_cluster_endpoint
-          allow_subdomains: true
           dynamic_secret_type: dynamic_secret_type
+          venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 1
           chef_server_key: chef_server_key
@@ -12262,19 +12314,19 @@ components:
           admin_rotation_interval_days: 0
           mssql_creation_statements: mssql_creation_statements
           admin_pwd: admin_pwd
+          venafi_allowed_domains:
+          - venafi_allowed_domains
+          - venafi_allowed_domains
           azure_user_roles_template_id: azure_user_roles_template_id
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
-          signer_key_name: signer_key_name
-          root_first_in_chain: true
           aws_role_arns: aws_role_arns
           active: true
           gke_cluster_compute_zone: gke_cluster_compute_zone
           chef_server_username: chef_server_username
           db_host_name: db_host_name
-          store_private_key: true
           db_name: db_name
           chef_skip_ssl: true
           db_port: db_port
@@ -12287,13 +12339,15 @@ components:
           mongodb_username: mongodb_username
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
+          venafi_signer_key_name: venafi_signer_key_name
           should_stop: should_stop
           artifactory_token_audience: artifactory_token_audience
           mongodb_atlas_api_public_key: mongodb_atlas_api_public_key
           eks_access_key_id: eks_access_key_id
+          venafi_base_url: venafi_base_url
           user_ttl: user_ttl
-          create_cert_using_pki: true
           eks_assume_role: eks_assume_role
+          venafi_use_tpp: true
           mongodb_password: mongodb_password
           aws_secret_access_key: aws_secret_access_key
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
@@ -12307,7 +12361,6 @@ components:
           mongodb_host_port: mongodb_host_port
           artifactory_token_scope: artifactory_token_scope
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
-          allowed_domains: allowed_domains
           host_port: host_port
           enable_admin_rotation: true
           failure_message: failure_message
@@ -12320,14 +12373,19 @@ components:
           eks_region: eks_region
           artifactory_admin_apikey: artifactory_admin_apikey
           azure_app_object_id: azure_app_object_id
+          venafi_allow_subdomains: true
           aws_user_console_access: true
           user_principal_name: user_principal_name
           db_server_certificates: db_server_certificates
           db_server_name: db_server_name
           venafi_zone: venafi_zone
+          venafi_store_private_key: true
+          venafi_tpp_username: venafi_tpp_username
           azure_user_portal_access: true
+          venafi_root_first_in_chain: true
           eks_cluster_endpoint: eks_cluster_endpoint
           gke_service_account_key: gke_service_account_key
+          venafi_auto_generated_folder: venafi_auto_generated_folder
           mongodb_uri_options: mongodb_uri_options
           db_pwd: db_pwd
           gke_service_account_name: gke_service_account_name
@@ -12339,7 +12397,7 @@ components:
           rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
-          auto_generated_folder: auto_generated_folder
+          venafi_tpp_password: venafi_tpp_password
           azure_user_programmatic_access: true
           eks_secret_access_key: eks_secret_access_key
           groups: groups
@@ -12432,8 +12490,8 @@ components:
       example:
         producer_details:
           gke_cluster_endpoint: gke_cluster_endpoint
-          allow_subdomains: true
           dynamic_secret_type: dynamic_secret_type
+          venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 1
           chef_server_key: chef_server_key
@@ -12441,19 +12499,19 @@ components:
           admin_rotation_interval_days: 0
           mssql_creation_statements: mssql_creation_statements
           admin_pwd: admin_pwd
+          venafi_allowed_domains:
+          - venafi_allowed_domains
+          - venafi_allowed_domains
           azure_user_roles_template_id: azure_user_roles_template_id
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
-          signer_key_name: signer_key_name
-          root_first_in_chain: true
           aws_role_arns: aws_role_arns
           active: true
           gke_cluster_compute_zone: gke_cluster_compute_zone
           chef_server_username: chef_server_username
           db_host_name: db_host_name
-          store_private_key: true
           db_name: db_name
           chef_skip_ssl: true
           db_port: db_port
@@ -12466,13 +12524,15 @@ components:
           mongodb_username: mongodb_username
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
+          venafi_signer_key_name: venafi_signer_key_name
           should_stop: should_stop
           artifactory_token_audience: artifactory_token_audience
           mongodb_atlas_api_public_key: mongodb_atlas_api_public_key
           eks_access_key_id: eks_access_key_id
+          venafi_base_url: venafi_base_url
           user_ttl: user_ttl
-          create_cert_using_pki: true
           eks_assume_role: eks_assume_role
+          venafi_use_tpp: true
           mongodb_password: mongodb_password
           aws_secret_access_key: aws_secret_access_key
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
@@ -12486,7 +12546,6 @@ components:
           mongodb_host_port: mongodb_host_port
           artifactory_token_scope: artifactory_token_scope
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
-          allowed_domains: allowed_domains
           host_port: host_port
           enable_admin_rotation: true
           failure_message: failure_message
@@ -12499,14 +12558,19 @@ components:
           eks_region: eks_region
           artifactory_admin_apikey: artifactory_admin_apikey
           azure_app_object_id: azure_app_object_id
+          venafi_allow_subdomains: true
           aws_user_console_access: true
           user_principal_name: user_principal_name
           db_server_certificates: db_server_certificates
           db_server_name: db_server_name
           venafi_zone: venafi_zone
+          venafi_store_private_key: true
+          venafi_tpp_username: venafi_tpp_username
           azure_user_portal_access: true
+          venafi_root_first_in_chain: true
           eks_cluster_endpoint: eks_cluster_endpoint
           gke_service_account_key: gke_service_account_key
+          venafi_auto_generated_folder: venafi_auto_generated_folder
           mongodb_uri_options: mongodb_uri_options
           db_pwd: db_pwd
           gke_service_account_name: gke_service_account_name
@@ -12518,7 +12582,7 @@ components:
           rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
-          auto_generated_folder: auto_generated_folder
+          venafi_tpp_password: venafi_tpp_password
           azure_user_programmatic_access: true
           eks_secret_access_key: eks_secret_access_key
           groups: groups
