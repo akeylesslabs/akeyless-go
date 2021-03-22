@@ -13,8 +13,7 @@ Name | Type | Description | Notes
 **BoundServiceAccounts** | Pointer to **[]string** | &#x3D;&#x3D;&#x3D; Human authentication section &#x3D;&#x3D;&#x3D; List of service accounts the service account must be part of in order to be authenticated. | [optional] 
 **BoundZones** | Pointer to **[]string** | &#x3D;&#x3D;&#x3D; Machine authentication section &#x3D;&#x3D;&#x3D; List of zones that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a zonal group and the group must belong to this zone. | [optional] 
 **Name** | **string** | Auth Method name | 
-**ServiceAccountData** | Pointer to **string** | ServiceAccount credentials data instead of giving a file path, base64 encoded | [optional] 
-**ServiceAccountFile** | Pointer to **string** | ServiceAccount credentials file path to be used by Akeyless to validate IAM (Human) and GCE (Machine) logins with GCP | [optional] 
+**ServiceAccountCredsData** | Pointer to **string** | ServiceAccount credentials data instead of giving a file path, base64 encoded | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **Type** | Pointer to **string** | Type of the GCP Access Rules | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -258,55 +257,30 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### GetServiceAccountData
+### GetServiceAccountCredsData
 
-`func (o *CreateAuthMethodGCP) GetServiceAccountData() string`
+`func (o *CreateAuthMethodGCP) GetServiceAccountCredsData() string`
 
-GetServiceAccountData returns the ServiceAccountData field if non-nil, zero value otherwise.
+GetServiceAccountCredsData returns the ServiceAccountCredsData field if non-nil, zero value otherwise.
 
-### GetServiceAccountDataOk
+### GetServiceAccountCredsDataOk
 
-`func (o *CreateAuthMethodGCP) GetServiceAccountDataOk() (*string, bool)`
+`func (o *CreateAuthMethodGCP) GetServiceAccountCredsDataOk() (*string, bool)`
 
-GetServiceAccountDataOk returns a tuple with the ServiceAccountData field if it's non-nil, zero value otherwise
+GetServiceAccountCredsDataOk returns a tuple with the ServiceAccountCredsData field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetServiceAccountData
+### SetServiceAccountCredsData
 
-`func (o *CreateAuthMethodGCP) SetServiceAccountData(v string)`
+`func (o *CreateAuthMethodGCP) SetServiceAccountCredsData(v string)`
 
-SetServiceAccountData sets ServiceAccountData field to given value.
+SetServiceAccountCredsData sets ServiceAccountCredsData field to given value.
 
-### HasServiceAccountData
+### HasServiceAccountCredsData
 
-`func (o *CreateAuthMethodGCP) HasServiceAccountData() bool`
+`func (o *CreateAuthMethodGCP) HasServiceAccountCredsData() bool`
 
-HasServiceAccountData returns a boolean if a field has been set.
-
-### GetServiceAccountFile
-
-`func (o *CreateAuthMethodGCP) GetServiceAccountFile() string`
-
-GetServiceAccountFile returns the ServiceAccountFile field if non-nil, zero value otherwise.
-
-### GetServiceAccountFileOk
-
-`func (o *CreateAuthMethodGCP) GetServiceAccountFileOk() (*string, bool)`
-
-GetServiceAccountFileOk returns a tuple with the ServiceAccountFile field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetServiceAccountFile
-
-`func (o *CreateAuthMethodGCP) SetServiceAccountFile(v string)`
-
-SetServiceAccountFile sets ServiceAccountFile field to given value.
-
-### HasServiceAccountFile
-
-`func (o *CreateAuthMethodGCP) HasServiceAccountFile() bool`
-
-HasServiceAccountFile returns a boolean if a field has been set.
+HasServiceAccountCredsData returns a boolean if a field has been set.
 
 ### GetToken
 

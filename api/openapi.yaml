@@ -207,6 +207,33 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /create-auth-method-gcp:
+    post:
+      operationId: createAuthMethodGCP
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createAuthMethodGCP'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAuthMethodGCPOutput'
+          description: createAuthMethodGCPResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /create-auth-method-huawei:
     post:
       operationId: createAuthMethodHuawei
@@ -8797,7 +8824,7 @@ components:
             type: string
           type: array
           x-go-name: CIDRWhitelist
-        bound_labels:
+        bound-labels:
           description: |-
             A comma-separated list of GCP labels formatted as "key:value" strings that must be set on authorized GCE instances.
             TODO: Because GCP labels are not currently ACL'd ....
@@ -8805,7 +8832,7 @@ components:
             type: string
           type: array
           x-go-name: BoundLabels
-        bound_projects:
+        bound-projects:
           description: |-
             === Human and Machine authentication section ===
             Array of GCP project IDs. Only entities belonging to any of the provided projects can authenticate.
@@ -8813,7 +8840,7 @@ components:
             type: string
           type: array
           x-go-name: BoundProjects
-        bound_regions:
+        bound-regions:
           description: |-
             List of regions that a GCE instance must belong to in order to be authenticated.
             TODO: If bound_instance_groups is provided, it is assumed to be a regional group and the group must belong to this region. If bound_zones are provided, this attribute is ignored.
@@ -8821,7 +8848,7 @@ components:
             type: string
           type: array
           x-go-name: BoundRegions
-        bound_service_accounts:
+        bound-service-accounts:
           description: |-
             === Human authentication section ===
             List of service accounts the service account must be part of in order to be authenticated.
@@ -8829,7 +8856,7 @@ components:
             type: string
           type: array
           x-go-name: BoundServiceAccounts
-        bound_zones:
+        bound-zones:
           description: |-
             === Machine authentication section ===
             List of zones that a GCE instance must belong to in order to be authenticated.
@@ -8842,17 +8869,11 @@ components:
           description: Auth Method name
           type: string
           x-go-name: AuthMethodName
-        service_account_data:
+        service-account-creds-data:
           description: ServiceAccount credentials data instead of giving a file path,
             base64 encoded
           type: string
           x-go-name: ServiceAccountCredsFileData
-        service_account_file:
-          description: |-
-            ServiceAccount credentials file path to be used by Akeyless to validate
-            IAM (Human) and GCE (Machine) logins with GCP
-          type: string
-          x-go-name: ServiceAccountCredsFile
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -8872,6 +8893,8 @@ components:
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     createAuthMethodGCPOutput:
+      example:
+        access_id: access_id
       properties:
         access_id:
           type: string
@@ -12975,6 +12998,9 @@ components:
           description: Azure Active Directory ObjectId (relevant only for access-type=azure_ad)
           type: string
           x-go-name: AzureADObjectID
+        debug:
+          type: boolean
+          x-go-name: Debug
         gcp-audience:
           description: GCP JWT audience
           type: string
@@ -12987,6 +13013,9 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     getCloudIdentityOutput:
       properties:
+        provider:
+          type: string
+          x-go-name: Provider
         token:
           type: string
           x-go-name: Token

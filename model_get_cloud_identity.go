@@ -19,6 +19,7 @@ import (
 type GetCloudIdentity struct {
 	// Azure Active Directory ObjectId (relevant only for access-type=azure_ad)
 	AzureAdObjectId *string `json:"azure_ad_object_id,omitempty"`
+	Debug *bool `json:"debug,omitempty"`
 	// GCP JWT audience
 	GcpAudience *string `json:"gcp-audience,omitempty"`
 	// Escapes the token so it can be safely placed inside a URL query
@@ -72,6 +73,38 @@ func (o *GetCloudIdentity) HasAzureAdObjectId() bool {
 // SetAzureAdObjectId gets a reference to the given string and assigns it to the AzureAdObjectId field.
 func (o *GetCloudIdentity) SetAzureAdObjectId(v string) {
 	o.AzureAdObjectId = &v
+}
+
+// GetDebug returns the Debug field value if set, zero value otherwise.
+func (o *GetCloudIdentity) GetDebug() bool {
+	if o == nil || o.Debug == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Debug
+}
+
+// GetDebugOk returns a tuple with the Debug field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetCloudIdentity) GetDebugOk() (*bool, bool) {
+	if o == nil || o.Debug == nil {
+		return nil, false
+	}
+	return o.Debug, true
+}
+
+// HasDebug returns a boolean if a field has been set.
+func (o *GetCloudIdentity) HasDebug() bool {
+	if o != nil && o.Debug != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDebug gets a reference to the given bool and assigns it to the Debug field.
+func (o *GetCloudIdentity) SetDebug(v bool) {
+	o.Debug = &v
 }
 
 // GetGcpAudience returns the GcpAudience field value if set, zero value otherwise.
@@ -142,6 +175,9 @@ func (o GetCloudIdentity) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AzureAdObjectId != nil {
 		toSerialize["azure_ad_object_id"] = o.AzureAdObjectId
+	}
+	if o.Debug != nil {
+		toSerialize["debug"] = o.Debug
 	}
 	if o.GcpAudience != nil {
 		toSerialize["gcp-audience"] = o.GcpAudience

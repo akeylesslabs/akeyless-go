@@ -24,21 +24,19 @@ type CreateAuthMethodGCP struct {
 	// A CIDR whitelist of the IPs that the access is restricted to
 	BoundIps *[]string `json:"bound-ips,omitempty"`
 	// A comma-separated list of GCP labels formatted as \"key:value\" strings that must be set on authorized GCE instances. TODO: Because GCP labels are not currently ACL'd ....
-	BoundLabels *[]string `json:"bound_labels,omitempty"`
+	BoundLabels *[]string `json:"bound-labels,omitempty"`
 	// === Human and Machine authentication section === Array of GCP project IDs. Only entities belonging to any of the provided projects can authenticate.
-	BoundProjects *[]string `json:"bound_projects,omitempty"`
+	BoundProjects *[]string `json:"bound-projects,omitempty"`
 	// List of regions that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a regional group and the group must belong to this region. If bound_zones are provided, this attribute is ignored.
-	BoundRegions *[]string `json:"bound_regions,omitempty"`
+	BoundRegions *[]string `json:"bound-regions,omitempty"`
 	// === Human authentication section === List of service accounts the service account must be part of in order to be authenticated.
-	BoundServiceAccounts *[]string `json:"bound_service_accounts,omitempty"`
+	BoundServiceAccounts *[]string `json:"bound-service-accounts,omitempty"`
 	// === Machine authentication section === List of zones that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a zonal group and the group must belong to this zone.
-	BoundZones *[]string `json:"bound_zones,omitempty"`
+	BoundZones *[]string `json:"bound-zones,omitempty"`
 	// Auth Method name
 	Name string `json:"name"`
 	// ServiceAccount credentials data instead of giving a file path, base64 encoded
-	ServiceAccountData *string `json:"service_account_data,omitempty"`
-	// ServiceAccount credentials file path to be used by Akeyless to validate IAM (Human) and GCE (Machine) logins with GCP
-	ServiceAccountFile *string `json:"service_account_file,omitempty"`
+	ServiceAccountCredsData *string `json:"service-account-creds-data,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// Type of the GCP Access Rules
@@ -353,68 +351,36 @@ func (o *CreateAuthMethodGCP) SetName(v string) {
 	o.Name = v
 }
 
-// GetServiceAccountData returns the ServiceAccountData field value if set, zero value otherwise.
-func (o *CreateAuthMethodGCP) GetServiceAccountData() string {
-	if o == nil || o.ServiceAccountData == nil {
+// GetServiceAccountCredsData returns the ServiceAccountCredsData field value if set, zero value otherwise.
+func (o *CreateAuthMethodGCP) GetServiceAccountCredsData() string {
+	if o == nil || o.ServiceAccountCredsData == nil {
 		var ret string
 		return ret
 	}
-	return *o.ServiceAccountData
+	return *o.ServiceAccountCredsData
 }
 
-// GetServiceAccountDataOk returns a tuple with the ServiceAccountData field value if set, nil otherwise
+// GetServiceAccountCredsDataOk returns a tuple with the ServiceAccountCredsData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateAuthMethodGCP) GetServiceAccountDataOk() (*string, bool) {
-	if o == nil || o.ServiceAccountData == nil {
+func (o *CreateAuthMethodGCP) GetServiceAccountCredsDataOk() (*string, bool) {
+	if o == nil || o.ServiceAccountCredsData == nil {
 		return nil, false
 	}
-	return o.ServiceAccountData, true
+	return o.ServiceAccountCredsData, true
 }
 
-// HasServiceAccountData returns a boolean if a field has been set.
-func (o *CreateAuthMethodGCP) HasServiceAccountData() bool {
-	if o != nil && o.ServiceAccountData != nil {
+// HasServiceAccountCredsData returns a boolean if a field has been set.
+func (o *CreateAuthMethodGCP) HasServiceAccountCredsData() bool {
+	if o != nil && o.ServiceAccountCredsData != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetServiceAccountData gets a reference to the given string and assigns it to the ServiceAccountData field.
-func (o *CreateAuthMethodGCP) SetServiceAccountData(v string) {
-	o.ServiceAccountData = &v
-}
-
-// GetServiceAccountFile returns the ServiceAccountFile field value if set, zero value otherwise.
-func (o *CreateAuthMethodGCP) GetServiceAccountFile() string {
-	if o == nil || o.ServiceAccountFile == nil {
-		var ret string
-		return ret
-	}
-	return *o.ServiceAccountFile
-}
-
-// GetServiceAccountFileOk returns a tuple with the ServiceAccountFile field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateAuthMethodGCP) GetServiceAccountFileOk() (*string, bool) {
-	if o == nil || o.ServiceAccountFile == nil {
-		return nil, false
-	}
-	return o.ServiceAccountFile, true
-}
-
-// HasServiceAccountFile returns a boolean if a field has been set.
-func (o *CreateAuthMethodGCP) HasServiceAccountFile() bool {
-	if o != nil && o.ServiceAccountFile != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetServiceAccountFile gets a reference to the given string and assigns it to the ServiceAccountFile field.
-func (o *CreateAuthMethodGCP) SetServiceAccountFile(v string) {
-	o.ServiceAccountFile = &v
+// SetServiceAccountCredsData gets a reference to the given string and assigns it to the ServiceAccountCredsData field.
+func (o *CreateAuthMethodGCP) SetServiceAccountCredsData(v string) {
+	o.ServiceAccountCredsData = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -525,28 +491,25 @@ func (o CreateAuthMethodGCP) MarshalJSON() ([]byte, error) {
 		toSerialize["bound-ips"] = o.BoundIps
 	}
 	if o.BoundLabels != nil {
-		toSerialize["bound_labels"] = o.BoundLabels
+		toSerialize["bound-labels"] = o.BoundLabels
 	}
 	if o.BoundProjects != nil {
-		toSerialize["bound_projects"] = o.BoundProjects
+		toSerialize["bound-projects"] = o.BoundProjects
 	}
 	if o.BoundRegions != nil {
-		toSerialize["bound_regions"] = o.BoundRegions
+		toSerialize["bound-regions"] = o.BoundRegions
 	}
 	if o.BoundServiceAccounts != nil {
-		toSerialize["bound_service_accounts"] = o.BoundServiceAccounts
+		toSerialize["bound-service-accounts"] = o.BoundServiceAccounts
 	}
 	if o.BoundZones != nil {
-		toSerialize["bound_zones"] = o.BoundZones
+		toSerialize["bound-zones"] = o.BoundZones
 	}
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.ServiceAccountData != nil {
-		toSerialize["service_account_data"] = o.ServiceAccountData
-	}
-	if o.ServiceAccountFile != nil {
-		toSerialize["service_account_file"] = o.ServiceAccountFile
+	if o.ServiceAccountCredsData != nil {
+		toSerialize["service-account-creds-data"] = o.ServiceAccountCredsData
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

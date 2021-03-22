@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AzureAdObjectId** | Pointer to **string** | Azure Active Directory ObjectId (relevant only for access-type&#x3D;azure_ad) | [optional] 
+**Debug** | Pointer to **bool** |  | [optional] 
 **GcpAudience** | Pointer to **string** | GCP JWT audience | [optional] 
 **UrlSafe** | Pointer to **bool** | Escapes the token so it can be safely placed inside a URL query | [optional] 
 
@@ -51,6 +52,31 @@ SetAzureAdObjectId sets AzureAdObjectId field to given value.
 `func (o *GetCloudIdentity) HasAzureAdObjectId() bool`
 
 HasAzureAdObjectId returns a boolean if a field has been set.
+
+### GetDebug
+
+`func (o *GetCloudIdentity) GetDebug() bool`
+
+GetDebug returns the Debug field if non-nil, zero value otherwise.
+
+### GetDebugOk
+
+`func (o *GetCloudIdentity) GetDebugOk() (*bool, bool)`
+
+GetDebugOk returns a tuple with the Debug field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDebug
+
+`func (o *GetCloudIdentity) SetDebug(v bool)`
+
+SetDebug sets Debug field to given value.
+
+### HasDebug
+
+`func (o *GetCloudIdentity) HasDebug() bool`
+
+HasDebug returns a boolean if a field has been set.
 
 ### GetGcpAudience
 
