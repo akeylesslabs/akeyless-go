@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | Target name | 
+**ShowVersions** | Pointer to **bool** | Include all target versions in reply | [optional] [default to false]
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
@@ -46,6 +47,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetShowVersions
+
+`func (o *GetTarget) GetShowVersions() bool`
+
+GetShowVersions returns the ShowVersions field if non-nil, zero value otherwise.
+
+### GetShowVersionsOk
+
+`func (o *GetTarget) GetShowVersionsOk() (*bool, bool)`
+
+GetShowVersionsOk returns a tuple with the ShowVersions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShowVersions
+
+`func (o *GetTarget) SetShowVersions(v bool)`
+
+SetShowVersions sets ShowVersions field to given value.
+
+### HasShowVersions
+
+`func (o *GetTarget) HasShowVersions() bool`
+
+HasShowVersions returns a boolean if a field has been set.
 
 ### GetToken
 

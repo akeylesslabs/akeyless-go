@@ -17,8 +17,6 @@ import (
 
 // TargetTypeDetailesInput struct for TargetTypeDetailesInput
 type TargetTypeDetailesInput struct {
-	AdminName *string `json:"admin_name,omitempty"`
-	AdminPwd *string `json:"admin_pwd,omitempty"`
 	AwsAccessKeyId *string `json:"aws_access_key_id,omitempty"`
 	AwsRegion *string `json:"aws_region,omitempty"`
 	AwsSecretAccessKey *string `json:"aws_secret_access_key,omitempty"`
@@ -32,16 +30,18 @@ type TargetTypeDetailesInput struct {
 	// (Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client's handshake to support virtual hosting unless it is an IP address.
 	DbServerName *string `json:"db_server_name,omitempty"`
 	DbUserName *string `json:"db_user_name,omitempty"`
-	HostName *string `json:"host_name,omitempty"`
-	HostPort *string `json:"host_port,omitempty"`
-	Ip *[]string `json:"ip,omitempty"`
+	Host *string `json:"host,omitempty"`
 	MongodbDbName *string `json:"mongodb_db_name,omitempty"`
 	MongodbUriConnection *string `json:"mongodb_uri_connection,omitempty"`
+	Password *string `json:"password,omitempty"`
 	Port *string `json:"port,omitempty"`
+	PrivateKey *string `json:"private_key,omitempty"`
+	PrivateKeyPassword *string `json:"private_key_password,omitempty"`
 	RabbitmqServerPassword *string `json:"rabbitmq_server_password,omitempty"`
 	RabbitmqServerUri *string `json:"rabbitmq_server_uri,omitempty"`
 	RabbitmqServerUser *string `json:"rabbitmq_server_user,omitempty"`
 	Url *string `json:"url,omitempty"`
+	Username *string `json:"username,omitempty"`
 }
 
 // NewTargetTypeDetailesInput instantiates a new TargetTypeDetailesInput object
@@ -59,70 +59,6 @@ func NewTargetTypeDetailesInput() *TargetTypeDetailesInput {
 func NewTargetTypeDetailesInputWithDefaults() *TargetTypeDetailesInput {
 	this := TargetTypeDetailesInput{}
 	return &this
-}
-
-// GetAdminName returns the AdminName field value if set, zero value otherwise.
-func (o *TargetTypeDetailesInput) GetAdminName() string {
-	if o == nil || o.AdminName == nil {
-		var ret string
-		return ret
-	}
-	return *o.AdminName
-}
-
-// GetAdminNameOk returns a tuple with the AdminName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailesInput) GetAdminNameOk() (*string, bool) {
-	if o == nil || o.AdminName == nil {
-		return nil, false
-	}
-	return o.AdminName, true
-}
-
-// HasAdminName returns a boolean if a field has been set.
-func (o *TargetTypeDetailesInput) HasAdminName() bool {
-	if o != nil && o.AdminName != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAdminName gets a reference to the given string and assigns it to the AdminName field.
-func (o *TargetTypeDetailesInput) SetAdminName(v string) {
-	o.AdminName = &v
-}
-
-// GetAdminPwd returns the AdminPwd field value if set, zero value otherwise.
-func (o *TargetTypeDetailesInput) GetAdminPwd() string {
-	if o == nil || o.AdminPwd == nil {
-		var ret string
-		return ret
-	}
-	return *o.AdminPwd
-}
-
-// GetAdminPwdOk returns a tuple with the AdminPwd field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailesInput) GetAdminPwdOk() (*string, bool) {
-	if o == nil || o.AdminPwd == nil {
-		return nil, false
-	}
-	return o.AdminPwd, true
-}
-
-// HasAdminPwd returns a boolean if a field has been set.
-func (o *TargetTypeDetailesInput) HasAdminPwd() bool {
-	if o != nil && o.AdminPwd != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAdminPwd gets a reference to the given string and assigns it to the AdminPwd field.
-func (o *TargetTypeDetailesInput) SetAdminPwd(v string) {
-	o.AdminPwd = &v
 }
 
 // GetAwsAccessKeyId returns the AwsAccessKeyId field value if set, zero value otherwise.
@@ -477,100 +413,36 @@ func (o *TargetTypeDetailesInput) SetDbUserName(v string) {
 	o.DbUserName = &v
 }
 
-// GetHostName returns the HostName field value if set, zero value otherwise.
-func (o *TargetTypeDetailesInput) GetHostName() string {
-	if o == nil || o.HostName == nil {
+// GetHost returns the Host field value if set, zero value otherwise.
+func (o *TargetTypeDetailesInput) GetHost() string {
+	if o == nil || o.Host == nil {
 		var ret string
 		return ret
 	}
-	return *o.HostName
+	return *o.Host
 }
 
-// GetHostNameOk returns a tuple with the HostName field value if set, nil otherwise
+// GetHostOk returns a tuple with the Host field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TargetTypeDetailesInput) GetHostNameOk() (*string, bool) {
-	if o == nil || o.HostName == nil {
+func (o *TargetTypeDetailesInput) GetHostOk() (*string, bool) {
+	if o == nil || o.Host == nil {
 		return nil, false
 	}
-	return o.HostName, true
+	return o.Host, true
 }
 
-// HasHostName returns a boolean if a field has been set.
-func (o *TargetTypeDetailesInput) HasHostName() bool {
-	if o != nil && o.HostName != nil {
+// HasHost returns a boolean if a field has been set.
+func (o *TargetTypeDetailesInput) HasHost() bool {
+	if o != nil && o.Host != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetHostName gets a reference to the given string and assigns it to the HostName field.
-func (o *TargetTypeDetailesInput) SetHostName(v string) {
-	o.HostName = &v
-}
-
-// GetHostPort returns the HostPort field value if set, zero value otherwise.
-func (o *TargetTypeDetailesInput) GetHostPort() string {
-	if o == nil || o.HostPort == nil {
-		var ret string
-		return ret
-	}
-	return *o.HostPort
-}
-
-// GetHostPortOk returns a tuple with the HostPort field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailesInput) GetHostPortOk() (*string, bool) {
-	if o == nil || o.HostPort == nil {
-		return nil, false
-	}
-	return o.HostPort, true
-}
-
-// HasHostPort returns a boolean if a field has been set.
-func (o *TargetTypeDetailesInput) HasHostPort() bool {
-	if o != nil && o.HostPort != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetHostPort gets a reference to the given string and assigns it to the HostPort field.
-func (o *TargetTypeDetailesInput) SetHostPort(v string) {
-	o.HostPort = &v
-}
-
-// GetIp returns the Ip field value if set, zero value otherwise.
-func (o *TargetTypeDetailesInput) GetIp() []string {
-	if o == nil || o.Ip == nil {
-		var ret []string
-		return ret
-	}
-	return *o.Ip
-}
-
-// GetIpOk returns a tuple with the Ip field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailesInput) GetIpOk() (*[]string, bool) {
-	if o == nil || o.Ip == nil {
-		return nil, false
-	}
-	return o.Ip, true
-}
-
-// HasIp returns a boolean if a field has been set.
-func (o *TargetTypeDetailesInput) HasIp() bool {
-	if o != nil && o.Ip != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetIp gets a reference to the given []string and assigns it to the Ip field.
-func (o *TargetTypeDetailesInput) SetIp(v []string) {
-	o.Ip = &v
+// SetHost gets a reference to the given string and assigns it to the Host field.
+func (o *TargetTypeDetailesInput) SetHost(v string) {
+	o.Host = &v
 }
 
 // GetMongodbDbName returns the MongodbDbName field value if set, zero value otherwise.
@@ -637,6 +509,38 @@ func (o *TargetTypeDetailesInput) SetMongodbUriConnection(v string) {
 	o.MongodbUriConnection = &v
 }
 
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *TargetTypeDetailesInput) GetPassword() string {
+	if o == nil || o.Password == nil {
+		var ret string
+		return ret
+	}
+	return *o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailesInput) GetPasswordOk() (*string, bool) {
+	if o == nil || o.Password == nil {
+		return nil, false
+	}
+	return o.Password, true
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *TargetTypeDetailesInput) HasPassword() bool {
+	if o != nil && o.Password != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *TargetTypeDetailesInput) SetPassword(v string) {
+	o.Password = &v
+}
+
 // GetPort returns the Port field value if set, zero value otherwise.
 func (o *TargetTypeDetailesInput) GetPort() string {
 	if o == nil || o.Port == nil {
@@ -667,6 +571,70 @@ func (o *TargetTypeDetailesInput) HasPort() bool {
 // SetPort gets a reference to the given string and assigns it to the Port field.
 func (o *TargetTypeDetailesInput) SetPort(v string) {
 	o.Port = &v
+}
+
+// GetPrivateKey returns the PrivateKey field value if set, zero value otherwise.
+func (o *TargetTypeDetailesInput) GetPrivateKey() string {
+	if o == nil || o.PrivateKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.PrivateKey
+}
+
+// GetPrivateKeyOk returns a tuple with the PrivateKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailesInput) GetPrivateKeyOk() (*string, bool) {
+	if o == nil || o.PrivateKey == nil {
+		return nil, false
+	}
+	return o.PrivateKey, true
+}
+
+// HasPrivateKey returns a boolean if a field has been set.
+func (o *TargetTypeDetailesInput) HasPrivateKey() bool {
+	if o != nil && o.PrivateKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivateKey gets a reference to the given string and assigns it to the PrivateKey field.
+func (o *TargetTypeDetailesInput) SetPrivateKey(v string) {
+	o.PrivateKey = &v
+}
+
+// GetPrivateKeyPassword returns the PrivateKeyPassword field value if set, zero value otherwise.
+func (o *TargetTypeDetailesInput) GetPrivateKeyPassword() string {
+	if o == nil || o.PrivateKeyPassword == nil {
+		var ret string
+		return ret
+	}
+	return *o.PrivateKeyPassword
+}
+
+// GetPrivateKeyPasswordOk returns a tuple with the PrivateKeyPassword field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailesInput) GetPrivateKeyPasswordOk() (*string, bool) {
+	if o == nil || o.PrivateKeyPassword == nil {
+		return nil, false
+	}
+	return o.PrivateKeyPassword, true
+}
+
+// HasPrivateKeyPassword returns a boolean if a field has been set.
+func (o *TargetTypeDetailesInput) HasPrivateKeyPassword() bool {
+	if o != nil && o.PrivateKeyPassword != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivateKeyPassword gets a reference to the given string and assigns it to the PrivateKeyPassword field.
+func (o *TargetTypeDetailesInput) SetPrivateKeyPassword(v string) {
+	o.PrivateKeyPassword = &v
 }
 
 // GetRabbitmqServerPassword returns the RabbitmqServerPassword field value if set, zero value otherwise.
@@ -797,14 +765,40 @@ func (o *TargetTypeDetailesInput) SetUrl(v string) {
 	o.Url = &v
 }
 
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *TargetTypeDetailesInput) GetUsername() string {
+	if o == nil || o.Username == nil {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailesInput) GetUsernameOk() (*string, bool) {
+	if o == nil || o.Username == nil {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *TargetTypeDetailesInput) HasUsername() bool {
+	if o != nil && o.Username != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *TargetTypeDetailesInput) SetUsername(v string) {
+	o.Username = &v
+}
+
 func (o TargetTypeDetailesInput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.AdminName != nil {
-		toSerialize["admin_name"] = o.AdminName
-	}
-	if o.AdminPwd != nil {
-		toSerialize["admin_pwd"] = o.AdminPwd
-	}
 	if o.AwsAccessKeyId != nil {
 		toSerialize["aws_access_key_id"] = o.AwsAccessKeyId
 	}
@@ -838,14 +832,8 @@ func (o TargetTypeDetailesInput) MarshalJSON() ([]byte, error) {
 	if o.DbUserName != nil {
 		toSerialize["db_user_name"] = o.DbUserName
 	}
-	if o.HostName != nil {
-		toSerialize["host_name"] = o.HostName
-	}
-	if o.HostPort != nil {
-		toSerialize["host_port"] = o.HostPort
-	}
-	if o.Ip != nil {
-		toSerialize["ip"] = o.Ip
+	if o.Host != nil {
+		toSerialize["host"] = o.Host
 	}
 	if o.MongodbDbName != nil {
 		toSerialize["mongodb_db_name"] = o.MongodbDbName
@@ -853,8 +841,17 @@ func (o TargetTypeDetailesInput) MarshalJSON() ([]byte, error) {
 	if o.MongodbUriConnection != nil {
 		toSerialize["mongodb_uri_connection"] = o.MongodbUriConnection
 	}
+	if o.Password != nil {
+		toSerialize["password"] = o.Password
+	}
 	if o.Port != nil {
 		toSerialize["port"] = o.Port
+	}
+	if o.PrivateKey != nil {
+		toSerialize["private_key"] = o.PrivateKey
+	}
+	if o.PrivateKeyPassword != nil {
+		toSerialize["private_key_password"] = o.PrivateKeyPassword
 	}
 	if o.RabbitmqServerPassword != nil {
 		toSerialize["rabbitmq_server_password"] = o.RabbitmqServerPassword
@@ -867,6 +864,9 @@ func (o TargetTypeDetailesInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.Url != nil {
 		toSerialize["url"] = o.Url
+	}
+	if o.Username != nil {
+		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

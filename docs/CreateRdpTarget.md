@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AdminName** | Pointer to **string** |  | [optional] 
-**AdminPwd** | Pointer to **string** |  | [optional] 
 **Comment** | Pointer to **string** | Comment about the target | [optional] 
-**HostName** | Pointer to **string** |  | [optional] 
-**HostPort** | Pointer to **string** |  | [optional] 
+**Host** | Pointer to **string** |  | [optional] 
 **Name** | **string** | Target name | 
+**Pass** | Pointer to **string** |  | [optional] 
+**Port** | Pointer to **string** |  | [optional] 
 **ProtectionKey** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**User** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -32,56 +32,6 @@ will change when the set of required properties is changed
 NewCreateRdpTargetWithDefaults instantiates a new CreateRdpTarget object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetAdminName
-
-`func (o *CreateRdpTarget) GetAdminName() string`
-
-GetAdminName returns the AdminName field if non-nil, zero value otherwise.
-
-### GetAdminNameOk
-
-`func (o *CreateRdpTarget) GetAdminNameOk() (*string, bool)`
-
-GetAdminNameOk returns a tuple with the AdminName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAdminName
-
-`func (o *CreateRdpTarget) SetAdminName(v string)`
-
-SetAdminName sets AdminName field to given value.
-
-### HasAdminName
-
-`func (o *CreateRdpTarget) HasAdminName() bool`
-
-HasAdminName returns a boolean if a field has been set.
-
-### GetAdminPwd
-
-`func (o *CreateRdpTarget) GetAdminPwd() string`
-
-GetAdminPwd returns the AdminPwd field if non-nil, zero value otherwise.
-
-### GetAdminPwdOk
-
-`func (o *CreateRdpTarget) GetAdminPwdOk() (*string, bool)`
-
-GetAdminPwdOk returns a tuple with the AdminPwd field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAdminPwd
-
-`func (o *CreateRdpTarget) SetAdminPwd(v string)`
-
-SetAdminPwd sets AdminPwd field to given value.
-
-### HasAdminPwd
-
-`func (o *CreateRdpTarget) HasAdminPwd() bool`
-
-HasAdminPwd returns a boolean if a field has been set.
 
 ### GetComment
 
@@ -108,55 +58,30 @@ SetComment sets Comment field to given value.
 
 HasComment returns a boolean if a field has been set.
 
-### GetHostName
+### GetHost
 
-`func (o *CreateRdpTarget) GetHostName() string`
+`func (o *CreateRdpTarget) GetHost() string`
 
-GetHostName returns the HostName field if non-nil, zero value otherwise.
+GetHost returns the Host field if non-nil, zero value otherwise.
 
-### GetHostNameOk
+### GetHostOk
 
-`func (o *CreateRdpTarget) GetHostNameOk() (*string, bool)`
+`func (o *CreateRdpTarget) GetHostOk() (*string, bool)`
 
-GetHostNameOk returns a tuple with the HostName field if it's non-nil, zero value otherwise
+GetHostOk returns a tuple with the Host field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetHostName
+### SetHost
 
-`func (o *CreateRdpTarget) SetHostName(v string)`
+`func (o *CreateRdpTarget) SetHost(v string)`
 
-SetHostName sets HostName field to given value.
+SetHost sets Host field to given value.
 
-### HasHostName
+### HasHost
 
-`func (o *CreateRdpTarget) HasHostName() bool`
+`func (o *CreateRdpTarget) HasHost() bool`
 
-HasHostName returns a boolean if a field has been set.
-
-### GetHostPort
-
-`func (o *CreateRdpTarget) GetHostPort() string`
-
-GetHostPort returns the HostPort field if non-nil, zero value otherwise.
-
-### GetHostPortOk
-
-`func (o *CreateRdpTarget) GetHostPortOk() (*string, bool)`
-
-GetHostPortOk returns a tuple with the HostPort field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHostPort
-
-`func (o *CreateRdpTarget) SetHostPort(v string)`
-
-SetHostPort sets HostPort field to given value.
-
-### HasHostPort
-
-`func (o *CreateRdpTarget) HasHostPort() bool`
-
-HasHostPort returns a boolean if a field has been set.
+HasHost returns a boolean if a field has been set.
 
 ### GetName
 
@@ -177,6 +102,56 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetPass
+
+`func (o *CreateRdpTarget) GetPass() string`
+
+GetPass returns the Pass field if non-nil, zero value otherwise.
+
+### GetPassOk
+
+`func (o *CreateRdpTarget) GetPassOk() (*string, bool)`
+
+GetPassOk returns a tuple with the Pass field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPass
+
+`func (o *CreateRdpTarget) SetPass(v string)`
+
+SetPass sets Pass field to given value.
+
+### HasPass
+
+`func (o *CreateRdpTarget) HasPass() bool`
+
+HasPass returns a boolean if a field has been set.
+
+### GetPort
+
+`func (o *CreateRdpTarget) GetPort() string`
+
+GetPort returns the Port field if non-nil, zero value otherwise.
+
+### GetPortOk
+
+`func (o *CreateRdpTarget) GetPortOk() (*string, bool)`
+
+GetPortOk returns a tuple with the Port field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPort
+
+`func (o *CreateRdpTarget) SetPort(v string)`
+
+SetPort sets Port field to given value.
+
+### HasPort
+
+`func (o *CreateRdpTarget) HasPort() bool`
+
+HasPort returns a boolean if a field has been set.
 
 ### GetProtectionKey
 
@@ -252,6 +227,31 @@ SetUidToken sets UidToken field to given value.
 `func (o *CreateRdpTarget) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetUser
+
+`func (o *CreateRdpTarget) GetUser() string`
+
+GetUser returns the User field if non-nil, zero value otherwise.
+
+### GetUserOk
+
+`func (o *CreateRdpTarget) GetUserOk() (*string, bool)`
+
+GetUserOk returns a tuple with the User field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUser
+
+`func (o *CreateRdpTarget) SetUser(v string)`
+
+SetUser sets User field to given value.
+
+### HasUser
+
+`func (o *CreateRdpTarget) HasUser() bool`
+
+HasUser returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -17,14 +17,16 @@ import (
 
 // UpdateAWSTargetDetails struct for UpdateAWSTargetDetails
 type UpdateAWSTargetDetails struct {
-	AccessKeyId *string `json:"access_key_id,omitempty"`
+	AccessKey *string `json:"access-key,omitempty"`
+	AccessKeyId *string `json:"access-key-id,omitempty"`
 	// Target name
 	Name string `json:"name"`
+	// Whether to create a new version of not
+	NewVersion *bool `json:"new-version,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	ProtectionKey *string `json:"protection_key,omitempty"`
 	Region *string `json:"region,omitempty"`
-	SecretAccessKey *string `json:"secret_access_key,omitempty"`
-	SessionToken *string `json:"session_token,omitempty"`
+	SessionToken *string `json:"session-token,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -38,6 +40,8 @@ type UpdateAWSTargetDetails struct {
 func NewUpdateAWSTargetDetails(name string, ) *UpdateAWSTargetDetails {
 	this := UpdateAWSTargetDetails{}
 	this.Name = name
+	var newVersion bool = false
+	this.NewVersion = &newVersion
 	return &this
 }
 
@@ -46,7 +50,41 @@ func NewUpdateAWSTargetDetails(name string, ) *UpdateAWSTargetDetails {
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateAWSTargetDetailsWithDefaults() *UpdateAWSTargetDetails {
 	this := UpdateAWSTargetDetails{}
+	var newVersion bool = false
+	this.NewVersion = &newVersion
 	return &this
+}
+
+// GetAccessKey returns the AccessKey field value if set, zero value otherwise.
+func (o *UpdateAWSTargetDetails) GetAccessKey() string {
+	if o == nil || o.AccessKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.AccessKey
+}
+
+// GetAccessKeyOk returns a tuple with the AccessKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAWSTargetDetails) GetAccessKeyOk() (*string, bool) {
+	if o == nil || o.AccessKey == nil {
+		return nil, false
+	}
+	return o.AccessKey, true
+}
+
+// HasAccessKey returns a boolean if a field has been set.
+func (o *UpdateAWSTargetDetails) HasAccessKey() bool {
+	if o != nil && o.AccessKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessKey gets a reference to the given string and assigns it to the AccessKey field.
+func (o *UpdateAWSTargetDetails) SetAccessKey(v string) {
+	o.AccessKey = &v
 }
 
 // GetAccessKeyId returns the AccessKeyId field value if set, zero value otherwise.
@@ -103,6 +141,38 @@ func (o *UpdateAWSTargetDetails) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *UpdateAWSTargetDetails) SetName(v string) {
 	o.Name = v
+}
+
+// GetNewVersion returns the NewVersion field value if set, zero value otherwise.
+func (o *UpdateAWSTargetDetails) GetNewVersion() bool {
+	if o == nil || o.NewVersion == nil {
+		var ret bool
+		return ret
+	}
+	return *o.NewVersion
+}
+
+// GetNewVersionOk returns a tuple with the NewVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAWSTargetDetails) GetNewVersionOk() (*bool, bool) {
+	if o == nil || o.NewVersion == nil {
+		return nil, false
+	}
+	return o.NewVersion, true
+}
+
+// HasNewVersion returns a boolean if a field has been set.
+func (o *UpdateAWSTargetDetails) HasNewVersion() bool {
+	if o != nil && o.NewVersion != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNewVersion gets a reference to the given bool and assigns it to the NewVersion field.
+func (o *UpdateAWSTargetDetails) SetNewVersion(v bool) {
+	o.NewVersion = &v
 }
 
 // GetProtectionKey returns the ProtectionKey field value if set, zero value otherwise.
@@ -167,38 +237,6 @@ func (o *UpdateAWSTargetDetails) HasRegion() bool {
 // SetRegion gets a reference to the given string and assigns it to the Region field.
 func (o *UpdateAWSTargetDetails) SetRegion(v string) {
 	o.Region = &v
-}
-
-// GetSecretAccessKey returns the SecretAccessKey field value if set, zero value otherwise.
-func (o *UpdateAWSTargetDetails) GetSecretAccessKey() string {
-	if o == nil || o.SecretAccessKey == nil {
-		var ret string
-		return ret
-	}
-	return *o.SecretAccessKey
-}
-
-// GetSecretAccessKeyOk returns a tuple with the SecretAccessKey field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UpdateAWSTargetDetails) GetSecretAccessKeyOk() (*string, bool) {
-	if o == nil || o.SecretAccessKey == nil {
-		return nil, false
-	}
-	return o.SecretAccessKey, true
-}
-
-// HasSecretAccessKey returns a boolean if a field has been set.
-func (o *UpdateAWSTargetDetails) HasSecretAccessKey() bool {
-	if o != nil && o.SecretAccessKey != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSecretAccessKey gets a reference to the given string and assigns it to the SecretAccessKey field.
-func (o *UpdateAWSTargetDetails) SetSecretAccessKey(v string) {
-	o.SecretAccessKey = &v
 }
 
 // GetSessionToken returns the SessionToken field value if set, zero value otherwise.
@@ -299,11 +337,17 @@ func (o *UpdateAWSTargetDetails) SetUidToken(v string) {
 
 func (o UpdateAWSTargetDetails) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AccessKey != nil {
+		toSerialize["access-key"] = o.AccessKey
+	}
 	if o.AccessKeyId != nil {
-		toSerialize["access_key_id"] = o.AccessKeyId
+		toSerialize["access-key-id"] = o.AccessKeyId
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.NewVersion != nil {
+		toSerialize["new-version"] = o.NewVersion
 	}
 	if o.ProtectionKey != nil {
 		toSerialize["protection_key"] = o.ProtectionKey
@@ -311,11 +355,8 @@ func (o UpdateAWSTargetDetails) MarshalJSON() ([]byte, error) {
 	if o.Region != nil {
 		toSerialize["region"] = o.Region
 	}
-	if o.SecretAccessKey != nil {
-		toSerialize["secret_access_key"] = o.SecretAccessKey
-	}
 	if o.SessionToken != nil {
-		toSerialize["session_token"] = o.SessionToken
+		toSerialize["session-token"] = o.SessionToken
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

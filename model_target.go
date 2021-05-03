@@ -17,12 +17,15 @@ import (
 
 // Target struct for Target
 type Target struct {
+	ClientPermissions *[]string `json:"client_permissions,omitempty"`
 	Comment *string `json:"comment,omitempty"`
+	LastVersion *int32 `json:"last_version,omitempty"`
 	ProtectionKeyName *string `json:"protection_key_name,omitempty"`
 	TargetId *int64 `json:"target_id,omitempty"`
 	TargetItemsAssoc *[]TargetItemAssociation `json:"target_items_assoc,omitempty"`
 	TargetName *string `json:"target_name,omitempty"`
 	TargetType *string `json:"target_type,omitempty"`
+	TargetVersions *[]ItemVersion `json:"target_versions,omitempty"`
 	WithCustomerFragment *bool `json:"with_customer_fragment,omitempty"`
 }
 
@@ -41,6 +44,38 @@ func NewTarget() *Target {
 func NewTargetWithDefaults() *Target {
 	this := Target{}
 	return &this
+}
+
+// GetClientPermissions returns the ClientPermissions field value if set, zero value otherwise.
+func (o *Target) GetClientPermissions() []string {
+	if o == nil || o.ClientPermissions == nil {
+		var ret []string
+		return ret
+	}
+	return *o.ClientPermissions
+}
+
+// GetClientPermissionsOk returns a tuple with the ClientPermissions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Target) GetClientPermissionsOk() (*[]string, bool) {
+	if o == nil || o.ClientPermissions == nil {
+		return nil, false
+	}
+	return o.ClientPermissions, true
+}
+
+// HasClientPermissions returns a boolean if a field has been set.
+func (o *Target) HasClientPermissions() bool {
+	if o != nil && o.ClientPermissions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetClientPermissions gets a reference to the given []string and assigns it to the ClientPermissions field.
+func (o *Target) SetClientPermissions(v []string) {
+	o.ClientPermissions = &v
 }
 
 // GetComment returns the Comment field value if set, zero value otherwise.
@@ -73,6 +108,38 @@ func (o *Target) HasComment() bool {
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *Target) SetComment(v string) {
 	o.Comment = &v
+}
+
+// GetLastVersion returns the LastVersion field value if set, zero value otherwise.
+func (o *Target) GetLastVersion() int32 {
+	if o == nil || o.LastVersion == nil {
+		var ret int32
+		return ret
+	}
+	return *o.LastVersion
+}
+
+// GetLastVersionOk returns a tuple with the LastVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Target) GetLastVersionOk() (*int32, bool) {
+	if o == nil || o.LastVersion == nil {
+		return nil, false
+	}
+	return o.LastVersion, true
+}
+
+// HasLastVersion returns a boolean if a field has been set.
+func (o *Target) HasLastVersion() bool {
+	if o != nil && o.LastVersion != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastVersion gets a reference to the given int32 and assigns it to the LastVersion field.
+func (o *Target) SetLastVersion(v int32) {
+	o.LastVersion = &v
 }
 
 // GetProtectionKeyName returns the ProtectionKeyName field value if set, zero value otherwise.
@@ -235,6 +302,38 @@ func (o *Target) SetTargetType(v string) {
 	o.TargetType = &v
 }
 
+// GetTargetVersions returns the TargetVersions field value if set, zero value otherwise.
+func (o *Target) GetTargetVersions() []ItemVersion {
+	if o == nil || o.TargetVersions == nil {
+		var ret []ItemVersion
+		return ret
+	}
+	return *o.TargetVersions
+}
+
+// GetTargetVersionsOk returns a tuple with the TargetVersions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Target) GetTargetVersionsOk() (*[]ItemVersion, bool) {
+	if o == nil || o.TargetVersions == nil {
+		return nil, false
+	}
+	return o.TargetVersions, true
+}
+
+// HasTargetVersions returns a boolean if a field has been set.
+func (o *Target) HasTargetVersions() bool {
+	if o != nil && o.TargetVersions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetVersions gets a reference to the given []ItemVersion and assigns it to the TargetVersions field.
+func (o *Target) SetTargetVersions(v []ItemVersion) {
+	o.TargetVersions = &v
+}
+
 // GetWithCustomerFragment returns the WithCustomerFragment field value if set, zero value otherwise.
 func (o *Target) GetWithCustomerFragment() bool {
 	if o == nil || o.WithCustomerFragment == nil {
@@ -269,8 +368,14 @@ func (o *Target) SetWithCustomerFragment(v bool) {
 
 func (o Target) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.ClientPermissions != nil {
+		toSerialize["client_permissions"] = o.ClientPermissions
+	}
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment
+	}
+	if o.LastVersion != nil {
+		toSerialize["last_version"] = o.LastVersion
 	}
 	if o.ProtectionKeyName != nil {
 		toSerialize["protection_key_name"] = o.ProtectionKeyName
@@ -286,6 +391,9 @@ func (o Target) MarshalJSON() ([]byte, error) {
 	}
 	if o.TargetType != nil {
 		toSerialize["target_type"] = o.TargetType
+	}
+	if o.TargetVersions != nil {
+		toSerialize["target_versions"] = o.TargetVersions
 	}
 	if o.WithCustomerFragment != nil {
 		toSerialize["with_customer_fragment"] = o.WithCustomerFragment

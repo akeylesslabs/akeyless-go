@@ -17,20 +17,20 @@ import (
 
 // CreateRdpTarget struct for CreateRdpTarget
 type CreateRdpTarget struct {
-	AdminName *string `json:"admin_name,omitempty"`
-	AdminPwd *string `json:"admin_pwd,omitempty"`
 	// Comment about the target
 	Comment *string `json:"comment,omitempty"`
-	HostName *string `json:"host_name,omitempty"`
-	HostPort *string `json:"host_port,omitempty"`
+	Host *string `json:"host,omitempty"`
 	// Target name
 	Name string `json:"name"`
+	Pass *string `json:"pass,omitempty"`
+	Port *string `json:"port,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	ProtectionKey *string `json:"protection_key,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	User *string `json:"user,omitempty"`
 }
 
 // NewCreateRdpTarget instantiates a new CreateRdpTarget object
@@ -49,70 +49,6 @@ func NewCreateRdpTarget(name string, ) *CreateRdpTarget {
 func NewCreateRdpTargetWithDefaults() *CreateRdpTarget {
 	this := CreateRdpTarget{}
 	return &this
-}
-
-// GetAdminName returns the AdminName field value if set, zero value otherwise.
-func (o *CreateRdpTarget) GetAdminName() string {
-	if o == nil || o.AdminName == nil {
-		var ret string
-		return ret
-	}
-	return *o.AdminName
-}
-
-// GetAdminNameOk returns a tuple with the AdminName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateRdpTarget) GetAdminNameOk() (*string, bool) {
-	if o == nil || o.AdminName == nil {
-		return nil, false
-	}
-	return o.AdminName, true
-}
-
-// HasAdminName returns a boolean if a field has been set.
-func (o *CreateRdpTarget) HasAdminName() bool {
-	if o != nil && o.AdminName != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAdminName gets a reference to the given string and assigns it to the AdminName field.
-func (o *CreateRdpTarget) SetAdminName(v string) {
-	o.AdminName = &v
-}
-
-// GetAdminPwd returns the AdminPwd field value if set, zero value otherwise.
-func (o *CreateRdpTarget) GetAdminPwd() string {
-	if o == nil || o.AdminPwd == nil {
-		var ret string
-		return ret
-	}
-	return *o.AdminPwd
-}
-
-// GetAdminPwdOk returns a tuple with the AdminPwd field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateRdpTarget) GetAdminPwdOk() (*string, bool) {
-	if o == nil || o.AdminPwd == nil {
-		return nil, false
-	}
-	return o.AdminPwd, true
-}
-
-// HasAdminPwd returns a boolean if a field has been set.
-func (o *CreateRdpTarget) HasAdminPwd() bool {
-	if o != nil && o.AdminPwd != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAdminPwd gets a reference to the given string and assigns it to the AdminPwd field.
-func (o *CreateRdpTarget) SetAdminPwd(v string) {
-	o.AdminPwd = &v
 }
 
 // GetComment returns the Comment field value if set, zero value otherwise.
@@ -147,68 +83,36 @@ func (o *CreateRdpTarget) SetComment(v string) {
 	o.Comment = &v
 }
 
-// GetHostName returns the HostName field value if set, zero value otherwise.
-func (o *CreateRdpTarget) GetHostName() string {
-	if o == nil || o.HostName == nil {
+// GetHost returns the Host field value if set, zero value otherwise.
+func (o *CreateRdpTarget) GetHost() string {
+	if o == nil || o.Host == nil {
 		var ret string
 		return ret
 	}
-	return *o.HostName
+	return *o.Host
 }
 
-// GetHostNameOk returns a tuple with the HostName field value if set, nil otherwise
+// GetHostOk returns a tuple with the Host field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateRdpTarget) GetHostNameOk() (*string, bool) {
-	if o == nil || o.HostName == nil {
+func (o *CreateRdpTarget) GetHostOk() (*string, bool) {
+	if o == nil || o.Host == nil {
 		return nil, false
 	}
-	return o.HostName, true
+	return o.Host, true
 }
 
-// HasHostName returns a boolean if a field has been set.
-func (o *CreateRdpTarget) HasHostName() bool {
-	if o != nil && o.HostName != nil {
+// HasHost returns a boolean if a field has been set.
+func (o *CreateRdpTarget) HasHost() bool {
+	if o != nil && o.Host != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetHostName gets a reference to the given string and assigns it to the HostName field.
-func (o *CreateRdpTarget) SetHostName(v string) {
-	o.HostName = &v
-}
-
-// GetHostPort returns the HostPort field value if set, zero value otherwise.
-func (o *CreateRdpTarget) GetHostPort() string {
-	if o == nil || o.HostPort == nil {
-		var ret string
-		return ret
-	}
-	return *o.HostPort
-}
-
-// GetHostPortOk returns a tuple with the HostPort field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateRdpTarget) GetHostPortOk() (*string, bool) {
-	if o == nil || o.HostPort == nil {
-		return nil, false
-	}
-	return o.HostPort, true
-}
-
-// HasHostPort returns a boolean if a field has been set.
-func (o *CreateRdpTarget) HasHostPort() bool {
-	if o != nil && o.HostPort != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetHostPort gets a reference to the given string and assigns it to the HostPort field.
-func (o *CreateRdpTarget) SetHostPort(v string) {
-	o.HostPort = &v
+// SetHost gets a reference to the given string and assigns it to the Host field.
+func (o *CreateRdpTarget) SetHost(v string) {
+	o.Host = &v
 }
 
 // GetName returns the Name field value
@@ -233,6 +137,70 @@ func (o *CreateRdpTarget) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *CreateRdpTarget) SetName(v string) {
 	o.Name = v
+}
+
+// GetPass returns the Pass field value if set, zero value otherwise.
+func (o *CreateRdpTarget) GetPass() string {
+	if o == nil || o.Pass == nil {
+		var ret string
+		return ret
+	}
+	return *o.Pass
+}
+
+// GetPassOk returns a tuple with the Pass field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRdpTarget) GetPassOk() (*string, bool) {
+	if o == nil || o.Pass == nil {
+		return nil, false
+	}
+	return o.Pass, true
+}
+
+// HasPass returns a boolean if a field has been set.
+func (o *CreateRdpTarget) HasPass() bool {
+	if o != nil && o.Pass != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPass gets a reference to the given string and assigns it to the Pass field.
+func (o *CreateRdpTarget) SetPass(v string) {
+	o.Pass = &v
+}
+
+// GetPort returns the Port field value if set, zero value otherwise.
+func (o *CreateRdpTarget) GetPort() string {
+	if o == nil || o.Port == nil {
+		var ret string
+		return ret
+	}
+	return *o.Port
+}
+
+// GetPortOk returns a tuple with the Port field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRdpTarget) GetPortOk() (*string, bool) {
+	if o == nil || o.Port == nil {
+		return nil, false
+	}
+	return o.Port, true
+}
+
+// HasPort returns a boolean if a field has been set.
+func (o *CreateRdpTarget) HasPort() bool {
+	if o != nil && o.Port != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPort gets a reference to the given string and assigns it to the Port field.
+func (o *CreateRdpTarget) SetPort(v string) {
+	o.Port = &v
 }
 
 // GetProtectionKey returns the ProtectionKey field value if set, zero value otherwise.
@@ -331,25 +299,54 @@ func (o *CreateRdpTarget) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUser returns the User field value if set, zero value otherwise.
+func (o *CreateRdpTarget) GetUser() string {
+	if o == nil || o.User == nil {
+		var ret string
+		return ret
+	}
+	return *o.User
+}
+
+// GetUserOk returns a tuple with the User field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRdpTarget) GetUserOk() (*string, bool) {
+	if o == nil || o.User == nil {
+		return nil, false
+	}
+	return o.User, true
+}
+
+// HasUser returns a boolean if a field has been set.
+func (o *CreateRdpTarget) HasUser() bool {
+	if o != nil && o.User != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUser gets a reference to the given string and assigns it to the User field.
+func (o *CreateRdpTarget) SetUser(v string) {
+	o.User = &v
+}
+
 func (o CreateRdpTarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.AdminName != nil {
-		toSerialize["admin_name"] = o.AdminName
-	}
-	if o.AdminPwd != nil {
-		toSerialize["admin_pwd"] = o.AdminPwd
-	}
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment
 	}
-	if o.HostName != nil {
-		toSerialize["host_name"] = o.HostName
-	}
-	if o.HostPort != nil {
-		toSerialize["host_port"] = o.HostPort
+	if o.Host != nil {
+		toSerialize["host"] = o.Host
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.Pass != nil {
+		toSerialize["pass"] = o.Pass
+	}
+	if o.Port != nil {
+		toSerialize["port"] = o.Port
 	}
 	if o.ProtectionKey != nil {
 		toSerialize["protection_key"] = o.ProtectionKey
@@ -359,6 +356,9 @@ func (o CreateRdpTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.User != nil {
+		toSerialize["user"] = o.User
 	}
 	return json.Marshal(toSerialize)
 }

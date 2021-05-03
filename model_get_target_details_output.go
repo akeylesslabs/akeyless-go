@@ -17,7 +17,8 @@ import (
 
 // GetTargetDetailsOutput struct for GetTargetDetailsOutput
 type GetTargetDetailsOutput struct {
-	Value *TargetTypeDetailesInput `json:"Value,omitempty"`
+	Target *Target `json:"target,omitempty"`
+	Value *TargetTypeDetailesInput `json:"value,omitempty"`
 }
 
 // NewGetTargetDetailsOutput instantiates a new GetTargetDetailsOutput object
@@ -35,6 +36,38 @@ func NewGetTargetDetailsOutput() *GetTargetDetailsOutput {
 func NewGetTargetDetailsOutputWithDefaults() *GetTargetDetailsOutput {
 	this := GetTargetDetailsOutput{}
 	return &this
+}
+
+// GetTarget returns the Target field value if set, zero value otherwise.
+func (o *GetTargetDetailsOutput) GetTarget() Target {
+	if o == nil || o.Target == nil {
+		var ret Target
+		return ret
+	}
+	return *o.Target
+}
+
+// GetTargetOk returns a tuple with the Target field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetTargetDetailsOutput) GetTargetOk() (*Target, bool) {
+	if o == nil || o.Target == nil {
+		return nil, false
+	}
+	return o.Target, true
+}
+
+// HasTarget returns a boolean if a field has been set.
+func (o *GetTargetDetailsOutput) HasTarget() bool {
+	if o != nil && o.Target != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTarget gets a reference to the given Target and assigns it to the Target field.
+func (o *GetTargetDetailsOutput) SetTarget(v Target) {
+	o.Target = &v
 }
 
 // GetValue returns the Value field value if set, zero value otherwise.
@@ -71,8 +104,11 @@ func (o *GetTargetDetailsOutput) SetValue(v TargetTypeDetailesInput) {
 
 func (o GetTargetDetailsOutput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Target != nil {
+		toSerialize["target"] = o.Target
+	}
 	if o.Value != nil {
-		toSerialize["Value"] = o.Value
+		toSerialize["value"] = o.Value
 	}
 	return json.Marshal(toSerialize)
 }

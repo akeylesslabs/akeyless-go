@@ -18,7 +18,7 @@ import (
 // AssocTargetItem assocTargetItem is a command that creates an association between target and item.
 type AssocTargetItem struct {
 	// The item to associate
-	ItemName string `json:"item-name"`
+	Name string `json:"name"`
 	// The target to associate
 	TargetName string `json:"target-name"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -31,9 +31,9 @@ type AssocTargetItem struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAssocTargetItem(itemName string, targetName string, ) *AssocTargetItem {
+func NewAssocTargetItem(name string, targetName string, ) *AssocTargetItem {
 	this := AssocTargetItem{}
-	this.ItemName = itemName
+	this.Name = name
 	this.TargetName = targetName
 	return &this
 }
@@ -46,28 +46,28 @@ func NewAssocTargetItemWithDefaults() *AssocTargetItem {
 	return &this
 }
 
-// GetItemName returns the ItemName field value
-func (o *AssocTargetItem) GetItemName() string {
+// GetName returns the Name field value
+func (o *AssocTargetItem) GetName() string {
 	if o == nil  {
 		var ret string
 		return ret
 	}
 
-	return o.ItemName
+	return o.Name
 }
 
-// GetItemNameOk returns a tuple with the ItemName field value
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *AssocTargetItem) GetItemNameOk() (*string, bool) {
+func (o *AssocTargetItem) GetNameOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.ItemName, true
+	return &o.Name, true
 }
 
-// SetItemName sets field value
-func (o *AssocTargetItem) SetItemName(v string) {
-	o.ItemName = v
+// SetName sets field value
+func (o *AssocTargetItem) SetName(v string) {
+	o.Name = v
 }
 
 // GetTargetName returns the TargetName field value
@@ -161,7 +161,7 @@ func (o *AssocTargetItem) SetUidToken(v string) {
 func (o AssocTargetItem) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["item-name"] = o.ItemName
+		toSerialize["name"] = o.Name
 	}
 	if true {
 		toSerialize["target-name"] = o.TargetName

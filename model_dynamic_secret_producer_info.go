@@ -17,8 +17,9 @@ import (
 
 // DynamicSecretProducerInfo DynamicSecretProducerInfo The dynamic secret producer info This parameter relevant and required only in case of create update dynamic secret.
 type DynamicSecretProducerInfo struct {
+	GwClusterId *int64 `json:"gw_cluster_id,omitempty"`
 	ProducerMetadata *string `json:"producer_metadata,omitempty"`
-	// ProducerStatus defines types of Producer Status
+	// RotationStatus defines types of rotation Status
 	ProducerStatus *string `json:"producer_status,omitempty"`
 	ProducerType *string `json:"producer_type,omitempty"`
 }
@@ -38,6 +39,38 @@ func NewDynamicSecretProducerInfo() *DynamicSecretProducerInfo {
 func NewDynamicSecretProducerInfoWithDefaults() *DynamicSecretProducerInfo {
 	this := DynamicSecretProducerInfo{}
 	return &this
+}
+
+// GetGwClusterId returns the GwClusterId field value if set, zero value otherwise.
+func (o *DynamicSecretProducerInfo) GetGwClusterId() int64 {
+	if o == nil || o.GwClusterId == nil {
+		var ret int64
+		return ret
+	}
+	return *o.GwClusterId
+}
+
+// GetGwClusterIdOk returns a tuple with the GwClusterId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretProducerInfo) GetGwClusterIdOk() (*int64, bool) {
+	if o == nil || o.GwClusterId == nil {
+		return nil, false
+	}
+	return o.GwClusterId, true
+}
+
+// HasGwClusterId returns a boolean if a field has been set.
+func (o *DynamicSecretProducerInfo) HasGwClusterId() bool {
+	if o != nil && o.GwClusterId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGwClusterId gets a reference to the given int64 and assigns it to the GwClusterId field.
+func (o *DynamicSecretProducerInfo) SetGwClusterId(v int64) {
+	o.GwClusterId = &v
 }
 
 // GetProducerMetadata returns the ProducerMetadata field value if set, zero value otherwise.
@@ -138,6 +171,9 @@ func (o *DynamicSecretProducerInfo) SetProducerType(v string) {
 
 func (o DynamicSecretProducerInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.GwClusterId != nil {
+		toSerialize["gw_cluster_id"] = o.GwClusterId
+	}
 	if o.ProducerMetadata != nil {
 		toSerialize["producer_metadata"] = o.ProducerMetadata
 	}

@@ -17,8 +17,12 @@ import (
 
 // DeleteTarget struct for DeleteTarget
 type DeleteTarget struct {
+	// Enforce deletion
+	EnforceDeletion *bool `json:"enforce-deletion,omitempty"`
 	// Target name
 	Name string `json:"name"`
+	// Target version
+	TargetVersion *int32 `json:"target-version,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -31,6 +35,8 @@ type DeleteTarget struct {
 // will change when the set of required properties is changed
 func NewDeleteTarget(name string, ) *DeleteTarget {
 	this := DeleteTarget{}
+	var enforceDeletion bool = false
+	this.EnforceDeletion = &enforceDeletion
 	this.Name = name
 	return &this
 }
@@ -40,7 +46,41 @@ func NewDeleteTarget(name string, ) *DeleteTarget {
 // but it doesn't guarantee that properties required by API are set
 func NewDeleteTargetWithDefaults() *DeleteTarget {
 	this := DeleteTarget{}
+	var enforceDeletion bool = false
+	this.EnforceDeletion = &enforceDeletion
 	return &this
+}
+
+// GetEnforceDeletion returns the EnforceDeletion field value if set, zero value otherwise.
+func (o *DeleteTarget) GetEnforceDeletion() bool {
+	if o == nil || o.EnforceDeletion == nil {
+		var ret bool
+		return ret
+	}
+	return *o.EnforceDeletion
+}
+
+// GetEnforceDeletionOk returns a tuple with the EnforceDeletion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeleteTarget) GetEnforceDeletionOk() (*bool, bool) {
+	if o == nil || o.EnforceDeletion == nil {
+		return nil, false
+	}
+	return o.EnforceDeletion, true
+}
+
+// HasEnforceDeletion returns a boolean if a field has been set.
+func (o *DeleteTarget) HasEnforceDeletion() bool {
+	if o != nil && o.EnforceDeletion != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEnforceDeletion gets a reference to the given bool and assigns it to the EnforceDeletion field.
+func (o *DeleteTarget) SetEnforceDeletion(v bool) {
+	o.EnforceDeletion = &v
 }
 
 // GetName returns the Name field value
@@ -65,6 +105,38 @@ func (o *DeleteTarget) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *DeleteTarget) SetName(v string) {
 	o.Name = v
+}
+
+// GetTargetVersion returns the TargetVersion field value if set, zero value otherwise.
+func (o *DeleteTarget) GetTargetVersion() int32 {
+	if o == nil || o.TargetVersion == nil {
+		var ret int32
+		return ret
+	}
+	return *o.TargetVersion
+}
+
+// GetTargetVersionOk returns a tuple with the TargetVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeleteTarget) GetTargetVersionOk() (*int32, bool) {
+	if o == nil || o.TargetVersion == nil {
+		return nil, false
+	}
+	return o.TargetVersion, true
+}
+
+// HasTargetVersion returns a boolean if a field has been set.
+func (o *DeleteTarget) HasTargetVersion() bool {
+	if o != nil && o.TargetVersion != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetVersion gets a reference to the given int32 and assigns it to the TargetVersion field.
+func (o *DeleteTarget) SetTargetVersion(v int32) {
+	o.TargetVersion = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -133,8 +205,14 @@ func (o *DeleteTarget) SetUidToken(v string) {
 
 func (o DeleteTarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.EnforceDeletion != nil {
+		toSerialize["enforce-deletion"] = o.EnforceDeletion
+	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.TargetVersion != nil {
+		toSerialize["target-version"] = o.TargetVersion
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

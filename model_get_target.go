@@ -19,6 +19,8 @@ import (
 type GetTarget struct {
 	// Target name
 	Name string `json:"name"`
+	// Include all target versions in reply
+	ShowVersions *bool `json:"show-versions,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -32,6 +34,8 @@ type GetTarget struct {
 func NewGetTarget(name string, ) *GetTarget {
 	this := GetTarget{}
 	this.Name = name
+	var showVersions bool = false
+	this.ShowVersions = &showVersions
 	return &this
 }
 
@@ -40,6 +44,8 @@ func NewGetTarget(name string, ) *GetTarget {
 // but it doesn't guarantee that properties required by API are set
 func NewGetTargetWithDefaults() *GetTarget {
 	this := GetTarget{}
+	var showVersions bool = false
+	this.ShowVersions = &showVersions
 	return &this
 }
 
@@ -65,6 +71,38 @@ func (o *GetTarget) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *GetTarget) SetName(v string) {
 	o.Name = v
+}
+
+// GetShowVersions returns the ShowVersions field value if set, zero value otherwise.
+func (o *GetTarget) GetShowVersions() bool {
+	if o == nil || o.ShowVersions == nil {
+		var ret bool
+		return ret
+	}
+	return *o.ShowVersions
+}
+
+// GetShowVersionsOk returns a tuple with the ShowVersions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetTarget) GetShowVersionsOk() (*bool, bool) {
+	if o == nil || o.ShowVersions == nil {
+		return nil, false
+	}
+	return o.ShowVersions, true
+}
+
+// HasShowVersions returns a boolean if a field has been set.
+func (o *GetTarget) HasShowVersions() bool {
+	if o != nil && o.ShowVersions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetShowVersions gets a reference to the given bool and assigns it to the ShowVersions field.
+func (o *GetTarget) SetShowVersions(v bool) {
+	o.ShowVersions = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -135,6 +173,9 @@ func (o GetTarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.ShowVersions != nil {
+		toSerialize["show-versions"] = o.ShowVersions
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

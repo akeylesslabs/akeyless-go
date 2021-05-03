@@ -4,11 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AccessKey** | Pointer to **string** |  | [optional] 
 **AccessKeyId** | Pointer to **string** |  | [optional] 
 **Name** | **string** | Target name | 
+**NewVersion** | Pointer to **bool** | Whether to create a new version of not | [optional] [default to false]
 **ProtectionKey** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Region** | Pointer to **string** |  | [optional] 
-**SecretAccessKey** | Pointer to **string** |  | [optional] 
 **SessionToken** | Pointer to **string** |  | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -31,6 +32,31 @@ will change when the set of required properties is changed
 NewUpdateAWSTargetDetailsWithDefaults instantiates a new UpdateAWSTargetDetails object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAccessKey
+
+`func (o *UpdateAWSTargetDetails) GetAccessKey() string`
+
+GetAccessKey returns the AccessKey field if non-nil, zero value otherwise.
+
+### GetAccessKeyOk
+
+`func (o *UpdateAWSTargetDetails) GetAccessKeyOk() (*string, bool)`
+
+GetAccessKeyOk returns a tuple with the AccessKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessKey
+
+`func (o *UpdateAWSTargetDetails) SetAccessKey(v string)`
+
+SetAccessKey sets AccessKey field to given value.
+
+### HasAccessKey
+
+`func (o *UpdateAWSTargetDetails) HasAccessKey() bool`
+
+HasAccessKey returns a boolean if a field has been set.
 
 ### GetAccessKeyId
 
@@ -76,6 +102,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetNewVersion
+
+`func (o *UpdateAWSTargetDetails) GetNewVersion() bool`
+
+GetNewVersion returns the NewVersion field if non-nil, zero value otherwise.
+
+### GetNewVersionOk
+
+`func (o *UpdateAWSTargetDetails) GetNewVersionOk() (*bool, bool)`
+
+GetNewVersionOk returns a tuple with the NewVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNewVersion
+
+`func (o *UpdateAWSTargetDetails) SetNewVersion(v bool)`
+
+SetNewVersion sets NewVersion field to given value.
+
+### HasNewVersion
+
+`func (o *UpdateAWSTargetDetails) HasNewVersion() bool`
+
+HasNewVersion returns a boolean if a field has been set.
 
 ### GetProtectionKey
 
@@ -126,31 +177,6 @@ SetRegion sets Region field to given value.
 `func (o *UpdateAWSTargetDetails) HasRegion() bool`
 
 HasRegion returns a boolean if a field has been set.
-
-### GetSecretAccessKey
-
-`func (o *UpdateAWSTargetDetails) GetSecretAccessKey() string`
-
-GetSecretAccessKey returns the SecretAccessKey field if non-nil, zero value otherwise.
-
-### GetSecretAccessKeyOk
-
-`func (o *UpdateAWSTargetDetails) GetSecretAccessKeyOk() (*string, bool)`
-
-GetSecretAccessKeyOk returns a tuple with the SecretAccessKey field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSecretAccessKey
-
-`func (o *UpdateAWSTargetDetails) SetSecretAccessKey(v string)`
-
-SetSecretAccessKey sets SecretAccessKey field to given value.
-
-### HasSecretAccessKey
-
-`func (o *UpdateAWSTargetDetails) HasSecretAccessKey() bool`
-
-HasSecretAccessKey returns a boolean if a field has been set.
 
 ### GetSessionToken
 

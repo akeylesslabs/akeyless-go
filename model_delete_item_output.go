@@ -19,6 +19,7 @@ import (
 // DeleteItemOutput struct for DeleteItemOutput
 type DeleteItemOutput struct {
 	DeletionDate *time.Time `json:"deletion_date,omitempty"`
+	ItemId *int64 `json:"item_id,omitempty"`
 	ItemName *string `json:"item_name,omitempty"`
 	VersionDeleted *int32 `json:"version_deleted,omitempty"`
 }
@@ -70,6 +71,38 @@ func (o *DeleteItemOutput) HasDeletionDate() bool {
 // SetDeletionDate gets a reference to the given time.Time and assigns it to the DeletionDate field.
 func (o *DeleteItemOutput) SetDeletionDate(v time.Time) {
 	o.DeletionDate = &v
+}
+
+// GetItemId returns the ItemId field value if set, zero value otherwise.
+func (o *DeleteItemOutput) GetItemId() int64 {
+	if o == nil || o.ItemId == nil {
+		var ret int64
+		return ret
+	}
+	return *o.ItemId
+}
+
+// GetItemIdOk returns a tuple with the ItemId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeleteItemOutput) GetItemIdOk() (*int64, bool) {
+	if o == nil || o.ItemId == nil {
+		return nil, false
+	}
+	return o.ItemId, true
+}
+
+// HasItemId returns a boolean if a field has been set.
+func (o *DeleteItemOutput) HasItemId() bool {
+	if o != nil && o.ItemId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetItemId gets a reference to the given int64 and assigns it to the ItemId field.
+func (o *DeleteItemOutput) SetItemId(v int64) {
+	o.ItemId = &v
 }
 
 // GetItemName returns the ItemName field value if set, zero value otherwise.
@@ -140,6 +173,9 @@ func (o DeleteItemOutput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DeletionDate != nil {
 		toSerialize["deletion_date"] = o.DeletionDate
+	}
+	if o.ItemId != nil {
+		toSerialize["item_id"] = o.ItemId
 	}
 	if o.ItemName != nil {
 		toSerialize["item_name"] = o.ItemName

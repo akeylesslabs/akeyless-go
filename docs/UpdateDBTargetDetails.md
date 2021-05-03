@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **MongoDbName** | Pointer to **string** |  | [optional] 
 **MongoUri** | Pointer to **string** |  | [optional] 
 **Name** | **string** | Target name | 
+**NewVersion** | Pointer to **bool** | Whether to create a new version of not | [optional] [default to false]
 **Port** | Pointer to **string** |  | [optional] 
 **ProtectionKey** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Pwd** | Pointer to **string** |  | [optional] 
@@ -154,6 +155,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetNewVersion
+
+`func (o *UpdateDBTargetDetails) GetNewVersion() bool`
+
+GetNewVersion returns the NewVersion field if non-nil, zero value otherwise.
+
+### GetNewVersionOk
+
+`func (o *UpdateDBTargetDetails) GetNewVersionOk() (*bool, bool)`
+
+GetNewVersionOk returns a tuple with the NewVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNewVersion
+
+`func (o *UpdateDBTargetDetails) SetNewVersion(v bool)`
+
+SetNewVersion sets NewVersion field to given value.
+
+### HasNewVersion
+
+`func (o *UpdateDBTargetDetails) HasNewVersion() bool`
+
+HasNewVersion returns a boolean if a field has been set.
 
 ### GetPort
 

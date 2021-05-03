@@ -52,6 +52,7 @@ type DSProducerDetails struct {
 	ChefServerUrl *string `json:"chef_server_url,omitempty"`
 	ChefServerUsername *string `json:"chef_server_username,omitempty"`
 	ChefSkipSsl *bool `json:"chef_skip_ssl,omitempty"`
+	CreateSyncUrl *string `json:"create_sync_url,omitempty"`
 	DbHostName *string `json:"db_host_name,omitempty"`
 	DbIsolationLevel *string `json:"db_isolation_level,omitempty"`
 	DbMaxIdleConns *string `json:"db_max_idle_conns,omitempty"`
@@ -78,6 +79,12 @@ type DSProducerDetails struct {
 	EnableAdminRotation *bool `json:"enable_admin_rotation,omitempty"`
 	FailureMessage *string `json:"failure_message,omitempty"`
 	FixedUserOnly *string `json:"fixed_user_only,omitempty"`
+	GcpKeyAlgo *string `json:"gcp_key_algo,omitempty"`
+	GcpServiceAccountEmail *string `json:"gcp_service_account_email,omitempty"`
+	GcpServiceAccountKey *[]int32 `json:"gcp_service_account_key,omitempty"`
+	GcpTokenLifetime *string `json:"gcp_token_lifetime,omitempty"`
+	GcpTokenScope *string `json:"gcp_token_scope,omitempty"`
+	GcpTokenType *string `json:"gcp_token_type,omitempty"`
 	GkeClusterCaCertificate *string `json:"gke_cluster_ca_certificate,omitempty"`
 	GkeClusterComputeZone *string `json:"gke_cluster_compute_zone,omitempty"`
 	GkeClusterEndpoint *string `json:"gke_cluster_endpoint,omitempty"`
@@ -107,6 +114,7 @@ type DSProducerDetails struct {
 	MssqlCreationStatements *string `json:"mssql_creation_statements,omitempty"`
 	MssqlRevocationStatements *string `json:"mssql_revocation_statements,omitempty"`
 	MysqlCreationStatements *string `json:"mysql_creation_statements,omitempty"`
+	Payload *string `json:"payload,omitempty"`
 	PostgresCreationStatements *string `json:"postgres_creation_statements,omitempty"`
 	RabbitmqServerPassword *string `json:"rabbitmq_server_password,omitempty"`
 	RabbitmqServerUri *string `json:"rabbitmq_server_uri,omitempty"`
@@ -116,8 +124,11 @@ type DSProducerDetails struct {
 	RabbitmqUserTags *string `json:"rabbitmq_user_tags,omitempty"`
 	RabbitmqUserVhost *string `json:"rabbitmq_user_vhost,omitempty"`
 	RabbitmqUserWritePermission *string `json:"rabbitmq_user_write_permission,omitempty"`
+	RevokeSyncUrl *string `json:"revoke_sync_url,omitempty"`
+	RotateSyncUrl *string `json:"rotate_sync_url,omitempty"`
 	// TODO delete this after migration
 	ShouldStop *string `json:"should_stop,omitempty"`
+	TimeoutSeconds *int64 `json:"timeout_seconds,omitempty"`
 	UserPrincipalName *string `json:"user_principal_name,omitempty"`
 	UserTtl *string `json:"user_ttl,omitempty"`
 	VenafiAllowSubdomains *bool `json:"venafi_allow_subdomains,omitempty"`
@@ -1272,6 +1283,38 @@ func (o *DSProducerDetails) SetChefSkipSsl(v bool) {
 	o.ChefSkipSsl = &v
 }
 
+// GetCreateSyncUrl returns the CreateSyncUrl field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetCreateSyncUrl() string {
+	if o == nil || o.CreateSyncUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.CreateSyncUrl
+}
+
+// GetCreateSyncUrlOk returns a tuple with the CreateSyncUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetCreateSyncUrlOk() (*string, bool) {
+	if o == nil || o.CreateSyncUrl == nil {
+		return nil, false
+	}
+	return o.CreateSyncUrl, true
+}
+
+// HasCreateSyncUrl returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasCreateSyncUrl() bool {
+	if o != nil && o.CreateSyncUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreateSyncUrl gets a reference to the given string and assigns it to the CreateSyncUrl field.
+func (o *DSProducerDetails) SetCreateSyncUrl(v string) {
+	o.CreateSyncUrl = &v
+}
+
 // GetDbHostName returns the DbHostName field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetDbHostName() string {
 	if o == nil || o.DbHostName == nil {
@@ -2038,6 +2081,198 @@ func (o *DSProducerDetails) HasFixedUserOnly() bool {
 // SetFixedUserOnly gets a reference to the given string and assigns it to the FixedUserOnly field.
 func (o *DSProducerDetails) SetFixedUserOnly(v string) {
 	o.FixedUserOnly = &v
+}
+
+// GetGcpKeyAlgo returns the GcpKeyAlgo field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGcpKeyAlgo() string {
+	if o == nil || o.GcpKeyAlgo == nil {
+		var ret string
+		return ret
+	}
+	return *o.GcpKeyAlgo
+}
+
+// GetGcpKeyAlgoOk returns a tuple with the GcpKeyAlgo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGcpKeyAlgoOk() (*string, bool) {
+	if o == nil || o.GcpKeyAlgo == nil {
+		return nil, false
+	}
+	return o.GcpKeyAlgo, true
+}
+
+// HasGcpKeyAlgo returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGcpKeyAlgo() bool {
+	if o != nil && o.GcpKeyAlgo != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpKeyAlgo gets a reference to the given string and assigns it to the GcpKeyAlgo field.
+func (o *DSProducerDetails) SetGcpKeyAlgo(v string) {
+	o.GcpKeyAlgo = &v
+}
+
+// GetGcpServiceAccountEmail returns the GcpServiceAccountEmail field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGcpServiceAccountEmail() string {
+	if o == nil || o.GcpServiceAccountEmail == nil {
+		var ret string
+		return ret
+	}
+	return *o.GcpServiceAccountEmail
+}
+
+// GetGcpServiceAccountEmailOk returns a tuple with the GcpServiceAccountEmail field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGcpServiceAccountEmailOk() (*string, bool) {
+	if o == nil || o.GcpServiceAccountEmail == nil {
+		return nil, false
+	}
+	return o.GcpServiceAccountEmail, true
+}
+
+// HasGcpServiceAccountEmail returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGcpServiceAccountEmail() bool {
+	if o != nil && o.GcpServiceAccountEmail != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpServiceAccountEmail gets a reference to the given string and assigns it to the GcpServiceAccountEmail field.
+func (o *DSProducerDetails) SetGcpServiceAccountEmail(v string) {
+	o.GcpServiceAccountEmail = &v
+}
+
+// GetGcpServiceAccountKey returns the GcpServiceAccountKey field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGcpServiceAccountKey() []int32 {
+	if o == nil || o.GcpServiceAccountKey == nil {
+		var ret []int32
+		return ret
+	}
+	return *o.GcpServiceAccountKey
+}
+
+// GetGcpServiceAccountKeyOk returns a tuple with the GcpServiceAccountKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGcpServiceAccountKeyOk() (*[]int32, bool) {
+	if o == nil || o.GcpServiceAccountKey == nil {
+		return nil, false
+	}
+	return o.GcpServiceAccountKey, true
+}
+
+// HasGcpServiceAccountKey returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGcpServiceAccountKey() bool {
+	if o != nil && o.GcpServiceAccountKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpServiceAccountKey gets a reference to the given []int32 and assigns it to the GcpServiceAccountKey field.
+func (o *DSProducerDetails) SetGcpServiceAccountKey(v []int32) {
+	o.GcpServiceAccountKey = &v
+}
+
+// GetGcpTokenLifetime returns the GcpTokenLifetime field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGcpTokenLifetime() string {
+	if o == nil || o.GcpTokenLifetime == nil {
+		var ret string
+		return ret
+	}
+	return *o.GcpTokenLifetime
+}
+
+// GetGcpTokenLifetimeOk returns a tuple with the GcpTokenLifetime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGcpTokenLifetimeOk() (*string, bool) {
+	if o == nil || o.GcpTokenLifetime == nil {
+		return nil, false
+	}
+	return o.GcpTokenLifetime, true
+}
+
+// HasGcpTokenLifetime returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGcpTokenLifetime() bool {
+	if o != nil && o.GcpTokenLifetime != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpTokenLifetime gets a reference to the given string and assigns it to the GcpTokenLifetime field.
+func (o *DSProducerDetails) SetGcpTokenLifetime(v string) {
+	o.GcpTokenLifetime = &v
+}
+
+// GetGcpTokenScope returns the GcpTokenScope field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGcpTokenScope() string {
+	if o == nil || o.GcpTokenScope == nil {
+		var ret string
+		return ret
+	}
+	return *o.GcpTokenScope
+}
+
+// GetGcpTokenScopeOk returns a tuple with the GcpTokenScope field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGcpTokenScopeOk() (*string, bool) {
+	if o == nil || o.GcpTokenScope == nil {
+		return nil, false
+	}
+	return o.GcpTokenScope, true
+}
+
+// HasGcpTokenScope returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGcpTokenScope() bool {
+	if o != nil && o.GcpTokenScope != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpTokenScope gets a reference to the given string and assigns it to the GcpTokenScope field.
+func (o *DSProducerDetails) SetGcpTokenScope(v string) {
+	o.GcpTokenScope = &v
+}
+
+// GetGcpTokenType returns the GcpTokenType field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGcpTokenType() string {
+	if o == nil || o.GcpTokenType == nil {
+		var ret string
+		return ret
+	}
+	return *o.GcpTokenType
+}
+
+// GetGcpTokenTypeOk returns a tuple with the GcpTokenType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGcpTokenTypeOk() (*string, bool) {
+	if o == nil || o.GcpTokenType == nil {
+		return nil, false
+	}
+	return o.GcpTokenType, true
+}
+
+// HasGcpTokenType returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGcpTokenType() bool {
+	if o != nil && o.GcpTokenType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpTokenType gets a reference to the given string and assigns it to the GcpTokenType field.
+func (o *DSProducerDetails) SetGcpTokenType(v string) {
+	o.GcpTokenType = &v
 }
 
 // GetGkeClusterCaCertificate returns the GkeClusterCaCertificate field value if set, zero value otherwise.
@@ -2872,6 +3107,38 @@ func (o *DSProducerDetails) SetMysqlCreationStatements(v string) {
 	o.MysqlCreationStatements = &v
 }
 
+// GetPayload returns the Payload field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetPayload() string {
+	if o == nil || o.Payload == nil {
+		var ret string
+		return ret
+	}
+	return *o.Payload
+}
+
+// GetPayloadOk returns a tuple with the Payload field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetPayloadOk() (*string, bool) {
+	if o == nil || o.Payload == nil {
+		return nil, false
+	}
+	return o.Payload, true
+}
+
+// HasPayload returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasPayload() bool {
+	if o != nil && o.Payload != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPayload gets a reference to the given string and assigns it to the Payload field.
+func (o *DSProducerDetails) SetPayload(v string) {
+	o.Payload = &v
+}
+
 // GetPostgresCreationStatements returns the PostgresCreationStatements field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetPostgresCreationStatements() string {
 	if o == nil || o.PostgresCreationStatements == nil {
@@ -3160,6 +3427,70 @@ func (o *DSProducerDetails) SetRabbitmqUserWritePermission(v string) {
 	o.RabbitmqUserWritePermission = &v
 }
 
+// GetRevokeSyncUrl returns the RevokeSyncUrl field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetRevokeSyncUrl() string {
+	if o == nil || o.RevokeSyncUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.RevokeSyncUrl
+}
+
+// GetRevokeSyncUrlOk returns a tuple with the RevokeSyncUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetRevokeSyncUrlOk() (*string, bool) {
+	if o == nil || o.RevokeSyncUrl == nil {
+		return nil, false
+	}
+	return o.RevokeSyncUrl, true
+}
+
+// HasRevokeSyncUrl returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasRevokeSyncUrl() bool {
+	if o != nil && o.RevokeSyncUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRevokeSyncUrl gets a reference to the given string and assigns it to the RevokeSyncUrl field.
+func (o *DSProducerDetails) SetRevokeSyncUrl(v string) {
+	o.RevokeSyncUrl = &v
+}
+
+// GetRotateSyncUrl returns the RotateSyncUrl field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetRotateSyncUrl() string {
+	if o == nil || o.RotateSyncUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.RotateSyncUrl
+}
+
+// GetRotateSyncUrlOk returns a tuple with the RotateSyncUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetRotateSyncUrlOk() (*string, bool) {
+	if o == nil || o.RotateSyncUrl == nil {
+		return nil, false
+	}
+	return o.RotateSyncUrl, true
+}
+
+// HasRotateSyncUrl returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasRotateSyncUrl() bool {
+	if o != nil && o.RotateSyncUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRotateSyncUrl gets a reference to the given string and assigns it to the RotateSyncUrl field.
+func (o *DSProducerDetails) SetRotateSyncUrl(v string) {
+	o.RotateSyncUrl = &v
+}
+
 // GetShouldStop returns the ShouldStop field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetShouldStop() string {
 	if o == nil || o.ShouldStop == nil {
@@ -3190,6 +3521,38 @@ func (o *DSProducerDetails) HasShouldStop() bool {
 // SetShouldStop gets a reference to the given string and assigns it to the ShouldStop field.
 func (o *DSProducerDetails) SetShouldStop(v string) {
 	o.ShouldStop = &v
+}
+
+// GetTimeoutSeconds returns the TimeoutSeconds field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetTimeoutSeconds() int64 {
+	if o == nil || o.TimeoutSeconds == nil {
+		var ret int64
+		return ret
+	}
+	return *o.TimeoutSeconds
+}
+
+// GetTimeoutSecondsOk returns a tuple with the TimeoutSeconds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetTimeoutSecondsOk() (*int64, bool) {
+	if o == nil || o.TimeoutSeconds == nil {
+		return nil, false
+	}
+	return o.TimeoutSeconds, true
+}
+
+// HasTimeoutSeconds returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasTimeoutSeconds() bool {
+	if o != nil && o.TimeoutSeconds != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTimeoutSeconds gets a reference to the given int64 and assigns it to the TimeoutSeconds field.
+func (o *DSProducerDetails) SetTimeoutSeconds(v int64) {
+	o.TimeoutSeconds = &v
 }
 
 // GetUserPrincipalName returns the UserPrincipalName field value if set, zero value otherwise.
@@ -3779,6 +4142,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	if o.ChefSkipSsl != nil {
 		toSerialize["chef_skip_ssl"] = o.ChefSkipSsl
 	}
+	if o.CreateSyncUrl != nil {
+		toSerialize["create_sync_url"] = o.CreateSyncUrl
+	}
 	if o.DbHostName != nil {
 		toSerialize["db_host_name"] = o.DbHostName
 	}
@@ -3850,6 +4216,24 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.FixedUserOnly != nil {
 		toSerialize["fixed_user_only"] = o.FixedUserOnly
+	}
+	if o.GcpKeyAlgo != nil {
+		toSerialize["gcp_key_algo"] = o.GcpKeyAlgo
+	}
+	if o.GcpServiceAccountEmail != nil {
+		toSerialize["gcp_service_account_email"] = o.GcpServiceAccountEmail
+	}
+	if o.GcpServiceAccountKey != nil {
+		toSerialize["gcp_service_account_key"] = o.GcpServiceAccountKey
+	}
+	if o.GcpTokenLifetime != nil {
+		toSerialize["gcp_token_lifetime"] = o.GcpTokenLifetime
+	}
+	if o.GcpTokenScope != nil {
+		toSerialize["gcp_token_scope"] = o.GcpTokenScope
+	}
+	if o.GcpTokenType != nil {
+		toSerialize["gcp_token_type"] = o.GcpTokenType
 	}
 	if o.GkeClusterCaCertificate != nil {
 		toSerialize["gke_cluster_ca_certificate"] = o.GkeClusterCaCertificate
@@ -3929,6 +4313,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	if o.MysqlCreationStatements != nil {
 		toSerialize["mysql_creation_statements"] = o.MysqlCreationStatements
 	}
+	if o.Payload != nil {
+		toSerialize["payload"] = o.Payload
+	}
 	if o.PostgresCreationStatements != nil {
 		toSerialize["postgres_creation_statements"] = o.PostgresCreationStatements
 	}
@@ -3956,8 +4343,17 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	if o.RabbitmqUserWritePermission != nil {
 		toSerialize["rabbitmq_user_write_permission"] = o.RabbitmqUserWritePermission
 	}
+	if o.RevokeSyncUrl != nil {
+		toSerialize["revoke_sync_url"] = o.RevokeSyncUrl
+	}
+	if o.RotateSyncUrl != nil {
+		toSerialize["rotate_sync_url"] = o.RotateSyncUrl
+	}
 	if o.ShouldStop != nil {
 		toSerialize["should_stop"] = o.ShouldStop
+	}
+	if o.TimeoutSeconds != nil {
+		toSerialize["timeout_seconds"] = o.TimeoutSeconds
 	}
 	if o.UserPrincipalName != nil {
 		toSerialize["user_principal_name"] = o.UserPrincipalName

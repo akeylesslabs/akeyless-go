@@ -19,6 +19,10 @@ import (
 type GetTargetDetails struct {
 	// Target name
 	Name string `json:"name"`
+	// Include all target versions in reply
+	ShowVersions *bool `json:"show-versions,omitempty"`
+	// Target version
+	TargetVersion *int32 `json:"target-version,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -32,6 +36,8 @@ type GetTargetDetails struct {
 func NewGetTargetDetails(name string, ) *GetTargetDetails {
 	this := GetTargetDetails{}
 	this.Name = name
+	var showVersions bool = false
+	this.ShowVersions = &showVersions
 	return &this
 }
 
@@ -40,6 +46,8 @@ func NewGetTargetDetails(name string, ) *GetTargetDetails {
 // but it doesn't guarantee that properties required by API are set
 func NewGetTargetDetailsWithDefaults() *GetTargetDetails {
 	this := GetTargetDetails{}
+	var showVersions bool = false
+	this.ShowVersions = &showVersions
 	return &this
 }
 
@@ -65,6 +73,70 @@ func (o *GetTargetDetails) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *GetTargetDetails) SetName(v string) {
 	o.Name = v
+}
+
+// GetShowVersions returns the ShowVersions field value if set, zero value otherwise.
+func (o *GetTargetDetails) GetShowVersions() bool {
+	if o == nil || o.ShowVersions == nil {
+		var ret bool
+		return ret
+	}
+	return *o.ShowVersions
+}
+
+// GetShowVersionsOk returns a tuple with the ShowVersions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetTargetDetails) GetShowVersionsOk() (*bool, bool) {
+	if o == nil || o.ShowVersions == nil {
+		return nil, false
+	}
+	return o.ShowVersions, true
+}
+
+// HasShowVersions returns a boolean if a field has been set.
+func (o *GetTargetDetails) HasShowVersions() bool {
+	if o != nil && o.ShowVersions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetShowVersions gets a reference to the given bool and assigns it to the ShowVersions field.
+func (o *GetTargetDetails) SetShowVersions(v bool) {
+	o.ShowVersions = &v
+}
+
+// GetTargetVersion returns the TargetVersion field value if set, zero value otherwise.
+func (o *GetTargetDetails) GetTargetVersion() int32 {
+	if o == nil || o.TargetVersion == nil {
+		var ret int32
+		return ret
+	}
+	return *o.TargetVersion
+}
+
+// GetTargetVersionOk returns a tuple with the TargetVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetTargetDetails) GetTargetVersionOk() (*int32, bool) {
+	if o == nil || o.TargetVersion == nil {
+		return nil, false
+	}
+	return o.TargetVersion, true
+}
+
+// HasTargetVersion returns a boolean if a field has been set.
+func (o *GetTargetDetails) HasTargetVersion() bool {
+	if o != nil && o.TargetVersion != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetVersion gets a reference to the given int32 and assigns it to the TargetVersion field.
+func (o *GetTargetDetails) SetTargetVersion(v int32) {
+	o.TargetVersion = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -135,6 +207,12 @@ func (o GetTargetDetails) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.ShowVersions != nil {
+		toSerialize["show-versions"] = o.ShowVersions
+	}
+	if o.TargetVersion != nil {
+		toSerialize["target-version"] = o.TargetVersion
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

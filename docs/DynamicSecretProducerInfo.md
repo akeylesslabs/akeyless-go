@@ -4,8 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**GwClusterId** | Pointer to **int64** |  | [optional] 
 **ProducerMetadata** | Pointer to **string** |  | [optional] 
-**ProducerStatus** | Pointer to **string** | ProducerStatus defines types of Producer Status | [optional] 
+**ProducerStatus** | Pointer to **string** | RotationStatus defines types of rotation Status | [optional] 
 **ProducerType** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -26,6 +27,31 @@ will change when the set of required properties is changed
 NewDynamicSecretProducerInfoWithDefaults instantiates a new DynamicSecretProducerInfo object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetGwClusterId
+
+`func (o *DynamicSecretProducerInfo) GetGwClusterId() int64`
+
+GetGwClusterId returns the GwClusterId field if non-nil, zero value otherwise.
+
+### GetGwClusterIdOk
+
+`func (o *DynamicSecretProducerInfo) GetGwClusterIdOk() (*int64, bool)`
+
+GetGwClusterIdOk returns a tuple with the GwClusterId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGwClusterId
+
+`func (o *DynamicSecretProducerInfo) SetGwClusterId(v int64)`
+
+SetGwClusterId sets GwClusterId field to given value.
+
+### HasGwClusterId
+
+`func (o *DynamicSecretProducerInfo) HasGwClusterId() bool`
+
+HasGwClusterId returns a boolean if a field has been set.
 
 ### GetProducerMetadata
 

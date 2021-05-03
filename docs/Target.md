@@ -4,12 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ClientPermissions** | Pointer to **[]string** |  | [optional] 
 **Comment** | Pointer to **string** |  | [optional] 
+**LastVersion** | Pointer to **int32** |  | [optional] 
 **ProtectionKeyName** | Pointer to **string** |  | [optional] 
 **TargetId** | Pointer to **int64** |  | [optional] 
 **TargetItemsAssoc** | Pointer to [**[]TargetItemAssociation**](TargetItemAssociation.md) |  | [optional] 
 **TargetName** | Pointer to **string** |  | [optional] 
 **TargetType** | Pointer to **string** |  | [optional] 
+**TargetVersions** | Pointer to [**[]ItemVersion**](ItemVersion.md) |  | [optional] 
 **WithCustomerFragment** | Pointer to **bool** |  | [optional] 
 
 ## Methods
@@ -30,6 +33,31 @@ will change when the set of required properties is changed
 NewTargetWithDefaults instantiates a new Target object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClientPermissions
+
+`func (o *Target) GetClientPermissions() []string`
+
+GetClientPermissions returns the ClientPermissions field if non-nil, zero value otherwise.
+
+### GetClientPermissionsOk
+
+`func (o *Target) GetClientPermissionsOk() (*[]string, bool)`
+
+GetClientPermissionsOk returns a tuple with the ClientPermissions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientPermissions
+
+`func (o *Target) SetClientPermissions(v []string)`
+
+SetClientPermissions sets ClientPermissions field to given value.
+
+### HasClientPermissions
+
+`func (o *Target) HasClientPermissions() bool`
+
+HasClientPermissions returns a boolean if a field has been set.
 
 ### GetComment
 
@@ -55,6 +83,31 @@ SetComment sets Comment field to given value.
 `func (o *Target) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
+
+### GetLastVersion
+
+`func (o *Target) GetLastVersion() int32`
+
+GetLastVersion returns the LastVersion field if non-nil, zero value otherwise.
+
+### GetLastVersionOk
+
+`func (o *Target) GetLastVersionOk() (*int32, bool)`
+
+GetLastVersionOk returns a tuple with the LastVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastVersion
+
+`func (o *Target) SetLastVersion(v int32)`
+
+SetLastVersion sets LastVersion field to given value.
+
+### HasLastVersion
+
+`func (o *Target) HasLastVersion() bool`
+
+HasLastVersion returns a boolean if a field has been set.
 
 ### GetProtectionKeyName
 
@@ -180,6 +233,31 @@ SetTargetType sets TargetType field to given value.
 `func (o *Target) HasTargetType() bool`
 
 HasTargetType returns a boolean if a field has been set.
+
+### GetTargetVersions
+
+`func (o *Target) GetTargetVersions() []ItemVersion`
+
+GetTargetVersions returns the TargetVersions field if non-nil, zero value otherwise.
+
+### GetTargetVersionsOk
+
+`func (o *Target) GetTargetVersionsOk() (*[]ItemVersion, bool)`
+
+GetTargetVersionsOk returns a tuple with the TargetVersions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetVersions
+
+`func (o *Target) SetTargetVersions(v []ItemVersion)`
+
+SetTargetVersions sets TargetVersions field to given value.
+
+### HasTargetVersions
+
+`func (o *Target) HasTargetVersions() bool`
+
+HasTargetVersions returns a boolean if a field has been set.
 
 ### GetWithCustomerFragment
 

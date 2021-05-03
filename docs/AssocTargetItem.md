@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ItemName** | **string** | The item to associate | 
+**Name** | **string** | The item to associate | 
 **TargetName** | **string** | The target to associate | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewAssocTargetItem
 
-`func NewAssocTargetItem(itemName string, targetName string, ) *AssocTargetItem`
+`func NewAssocTargetItem(name string, targetName string, ) *AssocTargetItem`
 
 NewAssocTargetItem instantiates a new AssocTargetItem object
 This constructor will assign default values to properties that have it defined,
@@ -28,24 +28,24 @@ NewAssocTargetItemWithDefaults instantiates a new AssocTargetItem object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetItemName
+### GetName
 
-`func (o *AssocTargetItem) GetItemName() string`
+`func (o *AssocTargetItem) GetName() string`
 
-GetItemName returns the ItemName field if non-nil, zero value otherwise.
+GetName returns the Name field if non-nil, zero value otherwise.
 
-### GetItemNameOk
+### GetNameOk
 
-`func (o *AssocTargetItem) GetItemNameOk() (*string, bool)`
+`func (o *AssocTargetItem) GetNameOk() (*string, bool)`
 
-GetItemNameOk returns a tuple with the ItemName field if it's non-nil, zero value otherwise
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetItemName
+### SetName
 
-`func (o *AssocTargetItem) SetItemName(v string)`
+`func (o *AssocTargetItem) SetName(v string)`
 
-SetItemName sets ItemName field to given value.
+SetName sets Name field to given value.
 
 
 ### GetTargetName

@@ -17,7 +17,7 @@ import (
 
 // UploadRSA struct for UploadRSA
 type UploadRSA struct {
-	// Key type. options: [RSA1024, RSA2048]
+	// Key type. options: [RSA1024, RSA2048, RSA3072, RSA4096]
 	Alg string `json:"alg"`
 	// Path to a file that contain the certificate in a PEM format.
 	Cert *string `json:"cert,omitempty"`

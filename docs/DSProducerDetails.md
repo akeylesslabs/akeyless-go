@@ -39,6 +39,7 @@ Name | Type | Description | Notes
 **ChefServerUrl** | Pointer to **string** |  | [optional] 
 **ChefServerUsername** | Pointer to **string** |  | [optional] 
 **ChefSkipSsl** | Pointer to **bool** |  | [optional] 
+**CreateSyncUrl** | Pointer to **string** |  | [optional] 
 **DbHostName** | Pointer to **string** |  | [optional] 
 **DbIsolationLevel** | Pointer to **string** |  | [optional] 
 **DbMaxIdleConns** | Pointer to **string** |  | [optional] 
@@ -63,6 +64,12 @@ Name | Type | Description | Notes
 **EnableAdminRotation** | Pointer to **bool** |  | [optional] 
 **FailureMessage** | Pointer to **string** |  | [optional] 
 **FixedUserOnly** | Pointer to **string** |  | [optional] 
+**GcpKeyAlgo** | Pointer to **string** |  | [optional] 
+**GcpServiceAccountEmail** | Pointer to **string** |  | [optional] 
+**GcpServiceAccountKey** | Pointer to **[]int32** |  | [optional] 
+**GcpTokenLifetime** | Pointer to **string** |  | [optional] 
+**GcpTokenScope** | Pointer to **string** |  | [optional] 
+**GcpTokenType** | Pointer to **string** |  | [optional] 
 **GkeClusterCaCertificate** | Pointer to **string** |  | [optional] 
 **GkeClusterComputeZone** | Pointer to **string** |  | [optional] 
 **GkeClusterEndpoint** | Pointer to **string** |  | [optional] 
@@ -89,6 +96,7 @@ Name | Type | Description | Notes
 **MssqlCreationStatements** | Pointer to **string** |  | [optional] 
 **MssqlRevocationStatements** | Pointer to **string** |  | [optional] 
 **MysqlCreationStatements** | Pointer to **string** |  | [optional] 
+**Payload** | Pointer to **string** |  | [optional] 
 **PostgresCreationStatements** | Pointer to **string** |  | [optional] 
 **RabbitmqServerPassword** | Pointer to **string** |  | [optional] 
 **RabbitmqServerUri** | Pointer to **string** |  | [optional] 
@@ -98,7 +106,10 @@ Name | Type | Description | Notes
 **RabbitmqUserTags** | Pointer to **string** |  | [optional] 
 **RabbitmqUserVhost** | Pointer to **string** |  | [optional] 
 **RabbitmqUserWritePermission** | Pointer to **string** |  | [optional] 
+**RevokeSyncUrl** | Pointer to **string** |  | [optional] 
+**RotateSyncUrl** | Pointer to **string** |  | [optional] 
 **ShouldStop** | Pointer to **string** | TODO delete this after migration | [optional] 
+**TimeoutSeconds** | Pointer to **int64** |  | [optional] 
 **UserPrincipalName** | Pointer to **string** |  | [optional] 
 **UserTtl** | Pointer to **string** |  | [optional] 
 **VenafiAllowSubdomains** | Pointer to **bool** |  | [optional] 
@@ -1009,6 +1020,31 @@ SetChefSkipSsl sets ChefSkipSsl field to given value.
 
 HasChefSkipSsl returns a boolean if a field has been set.
 
+### GetCreateSyncUrl
+
+`func (o *DSProducerDetails) GetCreateSyncUrl() string`
+
+GetCreateSyncUrl returns the CreateSyncUrl field if non-nil, zero value otherwise.
+
+### GetCreateSyncUrlOk
+
+`func (o *DSProducerDetails) GetCreateSyncUrlOk() (*string, bool)`
+
+GetCreateSyncUrlOk returns a tuple with the CreateSyncUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreateSyncUrl
+
+`func (o *DSProducerDetails) SetCreateSyncUrl(v string)`
+
+SetCreateSyncUrl sets CreateSyncUrl field to given value.
+
+### HasCreateSyncUrl
+
+`func (o *DSProducerDetails) HasCreateSyncUrl() bool`
+
+HasCreateSyncUrl returns a boolean if a field has been set.
+
 ### GetDbHostName
 
 `func (o *DSProducerDetails) GetDbHostName() string`
@@ -1608,6 +1644,156 @@ SetFixedUserOnly sets FixedUserOnly field to given value.
 `func (o *DSProducerDetails) HasFixedUserOnly() bool`
 
 HasFixedUserOnly returns a boolean if a field has been set.
+
+### GetGcpKeyAlgo
+
+`func (o *DSProducerDetails) GetGcpKeyAlgo() string`
+
+GetGcpKeyAlgo returns the GcpKeyAlgo field if non-nil, zero value otherwise.
+
+### GetGcpKeyAlgoOk
+
+`func (o *DSProducerDetails) GetGcpKeyAlgoOk() (*string, bool)`
+
+GetGcpKeyAlgoOk returns a tuple with the GcpKeyAlgo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpKeyAlgo
+
+`func (o *DSProducerDetails) SetGcpKeyAlgo(v string)`
+
+SetGcpKeyAlgo sets GcpKeyAlgo field to given value.
+
+### HasGcpKeyAlgo
+
+`func (o *DSProducerDetails) HasGcpKeyAlgo() bool`
+
+HasGcpKeyAlgo returns a boolean if a field has been set.
+
+### GetGcpServiceAccountEmail
+
+`func (o *DSProducerDetails) GetGcpServiceAccountEmail() string`
+
+GetGcpServiceAccountEmail returns the GcpServiceAccountEmail field if non-nil, zero value otherwise.
+
+### GetGcpServiceAccountEmailOk
+
+`func (o *DSProducerDetails) GetGcpServiceAccountEmailOk() (*string, bool)`
+
+GetGcpServiceAccountEmailOk returns a tuple with the GcpServiceAccountEmail field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpServiceAccountEmail
+
+`func (o *DSProducerDetails) SetGcpServiceAccountEmail(v string)`
+
+SetGcpServiceAccountEmail sets GcpServiceAccountEmail field to given value.
+
+### HasGcpServiceAccountEmail
+
+`func (o *DSProducerDetails) HasGcpServiceAccountEmail() bool`
+
+HasGcpServiceAccountEmail returns a boolean if a field has been set.
+
+### GetGcpServiceAccountKey
+
+`func (o *DSProducerDetails) GetGcpServiceAccountKey() []int32`
+
+GetGcpServiceAccountKey returns the GcpServiceAccountKey field if non-nil, zero value otherwise.
+
+### GetGcpServiceAccountKeyOk
+
+`func (o *DSProducerDetails) GetGcpServiceAccountKeyOk() (*[]int32, bool)`
+
+GetGcpServiceAccountKeyOk returns a tuple with the GcpServiceAccountKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpServiceAccountKey
+
+`func (o *DSProducerDetails) SetGcpServiceAccountKey(v []int32)`
+
+SetGcpServiceAccountKey sets GcpServiceAccountKey field to given value.
+
+### HasGcpServiceAccountKey
+
+`func (o *DSProducerDetails) HasGcpServiceAccountKey() bool`
+
+HasGcpServiceAccountKey returns a boolean if a field has been set.
+
+### GetGcpTokenLifetime
+
+`func (o *DSProducerDetails) GetGcpTokenLifetime() string`
+
+GetGcpTokenLifetime returns the GcpTokenLifetime field if non-nil, zero value otherwise.
+
+### GetGcpTokenLifetimeOk
+
+`func (o *DSProducerDetails) GetGcpTokenLifetimeOk() (*string, bool)`
+
+GetGcpTokenLifetimeOk returns a tuple with the GcpTokenLifetime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpTokenLifetime
+
+`func (o *DSProducerDetails) SetGcpTokenLifetime(v string)`
+
+SetGcpTokenLifetime sets GcpTokenLifetime field to given value.
+
+### HasGcpTokenLifetime
+
+`func (o *DSProducerDetails) HasGcpTokenLifetime() bool`
+
+HasGcpTokenLifetime returns a boolean if a field has been set.
+
+### GetGcpTokenScope
+
+`func (o *DSProducerDetails) GetGcpTokenScope() string`
+
+GetGcpTokenScope returns the GcpTokenScope field if non-nil, zero value otherwise.
+
+### GetGcpTokenScopeOk
+
+`func (o *DSProducerDetails) GetGcpTokenScopeOk() (*string, bool)`
+
+GetGcpTokenScopeOk returns a tuple with the GcpTokenScope field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpTokenScope
+
+`func (o *DSProducerDetails) SetGcpTokenScope(v string)`
+
+SetGcpTokenScope sets GcpTokenScope field to given value.
+
+### HasGcpTokenScope
+
+`func (o *DSProducerDetails) HasGcpTokenScope() bool`
+
+HasGcpTokenScope returns a boolean if a field has been set.
+
+### GetGcpTokenType
+
+`func (o *DSProducerDetails) GetGcpTokenType() string`
+
+GetGcpTokenType returns the GcpTokenType field if non-nil, zero value otherwise.
+
+### GetGcpTokenTypeOk
+
+`func (o *DSProducerDetails) GetGcpTokenTypeOk() (*string, bool)`
+
+GetGcpTokenTypeOk returns a tuple with the GcpTokenType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpTokenType
+
+`func (o *DSProducerDetails) SetGcpTokenType(v string)`
+
+SetGcpTokenType sets GcpTokenType field to given value.
+
+### HasGcpTokenType
+
+`func (o *DSProducerDetails) HasGcpTokenType() bool`
+
+HasGcpTokenType returns a boolean if a field has been set.
 
 ### GetGkeClusterCaCertificate
 
@@ -2259,6 +2445,31 @@ SetMysqlCreationStatements sets MysqlCreationStatements field to given value.
 
 HasMysqlCreationStatements returns a boolean if a field has been set.
 
+### GetPayload
+
+`func (o *DSProducerDetails) GetPayload() string`
+
+GetPayload returns the Payload field if non-nil, zero value otherwise.
+
+### GetPayloadOk
+
+`func (o *DSProducerDetails) GetPayloadOk() (*string, bool)`
+
+GetPayloadOk returns a tuple with the Payload field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPayload
+
+`func (o *DSProducerDetails) SetPayload(v string)`
+
+SetPayload sets Payload field to given value.
+
+### HasPayload
+
+`func (o *DSProducerDetails) HasPayload() bool`
+
+HasPayload returns a boolean if a field has been set.
+
 ### GetPostgresCreationStatements
 
 `func (o *DSProducerDetails) GetPostgresCreationStatements() string`
@@ -2484,6 +2695,56 @@ SetRabbitmqUserWritePermission sets RabbitmqUserWritePermission field to given v
 
 HasRabbitmqUserWritePermission returns a boolean if a field has been set.
 
+### GetRevokeSyncUrl
+
+`func (o *DSProducerDetails) GetRevokeSyncUrl() string`
+
+GetRevokeSyncUrl returns the RevokeSyncUrl field if non-nil, zero value otherwise.
+
+### GetRevokeSyncUrlOk
+
+`func (o *DSProducerDetails) GetRevokeSyncUrlOk() (*string, bool)`
+
+GetRevokeSyncUrlOk returns a tuple with the RevokeSyncUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRevokeSyncUrl
+
+`func (o *DSProducerDetails) SetRevokeSyncUrl(v string)`
+
+SetRevokeSyncUrl sets RevokeSyncUrl field to given value.
+
+### HasRevokeSyncUrl
+
+`func (o *DSProducerDetails) HasRevokeSyncUrl() bool`
+
+HasRevokeSyncUrl returns a boolean if a field has been set.
+
+### GetRotateSyncUrl
+
+`func (o *DSProducerDetails) GetRotateSyncUrl() string`
+
+GetRotateSyncUrl returns the RotateSyncUrl field if non-nil, zero value otherwise.
+
+### GetRotateSyncUrlOk
+
+`func (o *DSProducerDetails) GetRotateSyncUrlOk() (*string, bool)`
+
+GetRotateSyncUrlOk returns a tuple with the RotateSyncUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotateSyncUrl
+
+`func (o *DSProducerDetails) SetRotateSyncUrl(v string)`
+
+SetRotateSyncUrl sets RotateSyncUrl field to given value.
+
+### HasRotateSyncUrl
+
+`func (o *DSProducerDetails) HasRotateSyncUrl() bool`
+
+HasRotateSyncUrl returns a boolean if a field has been set.
+
 ### GetShouldStop
 
 `func (o *DSProducerDetails) GetShouldStop() string`
@@ -2508,6 +2769,31 @@ SetShouldStop sets ShouldStop field to given value.
 `func (o *DSProducerDetails) HasShouldStop() bool`
 
 HasShouldStop returns a boolean if a field has been set.
+
+### GetTimeoutSeconds
+
+`func (o *DSProducerDetails) GetTimeoutSeconds() int64`
+
+GetTimeoutSeconds returns the TimeoutSeconds field if non-nil, zero value otherwise.
+
+### GetTimeoutSecondsOk
+
+`func (o *DSProducerDetails) GetTimeoutSecondsOk() (*int64, bool)`
+
+GetTimeoutSecondsOk returns a tuple with the TimeoutSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTimeoutSeconds
+
+`func (o *DSProducerDetails) SetTimeoutSeconds(v int64)`
+
+SetTimeoutSeconds sets TimeoutSeconds field to given value.
+
+### HasTimeoutSeconds
+
+`func (o *DSProducerDetails) HasTimeoutSeconds() bool`
+
+HasTimeoutSeconds returns a boolean if a field has been set.
 
 ### GetUserPrincipalName
 

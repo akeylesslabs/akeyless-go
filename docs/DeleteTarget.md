@@ -4,7 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**EnforceDeletion** | Pointer to **bool** | Enforce deletion | [optional] [default to false]
 **Name** | **string** | Target name | 
+**TargetVersion** | Pointer to **int32** | Target version | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
@@ -27,6 +29,31 @@ NewDeleteTargetWithDefaults instantiates a new DeleteTarget object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetEnforceDeletion
+
+`func (o *DeleteTarget) GetEnforceDeletion() bool`
+
+GetEnforceDeletion returns the EnforceDeletion field if non-nil, zero value otherwise.
+
+### GetEnforceDeletionOk
+
+`func (o *DeleteTarget) GetEnforceDeletionOk() (*bool, bool)`
+
+GetEnforceDeletionOk returns a tuple with the EnforceDeletion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnforceDeletion
+
+`func (o *DeleteTarget) SetEnforceDeletion(v bool)`
+
+SetEnforceDeletion sets EnforceDeletion field to given value.
+
+### HasEnforceDeletion
+
+`func (o *DeleteTarget) HasEnforceDeletion() bool`
+
+HasEnforceDeletion returns a boolean if a field has been set.
+
 ### GetName
 
 `func (o *DeleteTarget) GetName() string`
@@ -46,6 +73,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetTargetVersion
+
+`func (o *DeleteTarget) GetTargetVersion() int32`
+
+GetTargetVersion returns the TargetVersion field if non-nil, zero value otherwise.
+
+### GetTargetVersionOk
+
+`func (o *DeleteTarget) GetTargetVersionOk() (*int32, bool)`
+
+GetTargetVersionOk returns a tuple with the TargetVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetVersion
+
+`func (o *DeleteTarget) SetTargetVersion(v int32)`
+
+SetTargetVersion sets TargetVersion field to given value.
+
+### HasTargetVersion
+
+`func (o *DeleteTarget) HasTargetVersion() bool`
+
+HasTargetVersion returns a boolean if a field has been set.
 
 ### GetToken
 

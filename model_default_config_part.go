@@ -18,6 +18,7 @@ import (
 // DefaultConfigPart struct for DefaultConfigPart
 type DefaultConfigPart struct {
 	DefaultProtectionKeyId *int64 `json:"default_protection_key_id,omitempty"`
+	DefaultSecretLocation *string `json:"default_secret_location,omitempty"`
 	OpenIdConnectAccessId *string `json:"open_id_connect_access_id,omitempty"`
 	SamlAccessId *string `json:"saml_access_id,omitempty"`
 }
@@ -69,6 +70,38 @@ func (o *DefaultConfigPart) HasDefaultProtectionKeyId() bool {
 // SetDefaultProtectionKeyId gets a reference to the given int64 and assigns it to the DefaultProtectionKeyId field.
 func (o *DefaultConfigPart) SetDefaultProtectionKeyId(v int64) {
 	o.DefaultProtectionKeyId = &v
+}
+
+// GetDefaultSecretLocation returns the DefaultSecretLocation field value if set, zero value otherwise.
+func (o *DefaultConfigPart) GetDefaultSecretLocation() string {
+	if o == nil || o.DefaultSecretLocation == nil {
+		var ret string
+		return ret
+	}
+	return *o.DefaultSecretLocation
+}
+
+// GetDefaultSecretLocationOk returns a tuple with the DefaultSecretLocation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DefaultConfigPart) GetDefaultSecretLocationOk() (*string, bool) {
+	if o == nil || o.DefaultSecretLocation == nil {
+		return nil, false
+	}
+	return o.DefaultSecretLocation, true
+}
+
+// HasDefaultSecretLocation returns a boolean if a field has been set.
+func (o *DefaultConfigPart) HasDefaultSecretLocation() bool {
+	if o != nil && o.DefaultSecretLocation != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDefaultSecretLocation gets a reference to the given string and assigns it to the DefaultSecretLocation field.
+func (o *DefaultConfigPart) SetDefaultSecretLocation(v string) {
+	o.DefaultSecretLocation = &v
 }
 
 // GetOpenIdConnectAccessId returns the OpenIdConnectAccessId field value if set, zero value otherwise.
@@ -139,6 +172,9 @@ func (o DefaultConfigPart) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DefaultProtectionKeyId != nil {
 		toSerialize["default_protection_key_id"] = o.DefaultProtectionKeyId
+	}
+	if o.DefaultSecretLocation != nil {
+		toSerialize["default_secret_location"] = o.DefaultSecretLocation
 	}
 	if o.OpenIdConnectAccessId != nil {
 		toSerialize["open_id_connect_access_id"] = o.OpenIdConnectAccessId

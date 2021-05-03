@@ -5,10 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Comment** | Pointer to **string** | Comment about the target | [optional] 
-**Ip** | Pointer to **[]string** |  | [optional] 
+**Host** | Pointer to **string** |  | [optional] 
 **Name** | **string** | Target name | 
 **Port** | Pointer to **string** |  | [optional] 
+**PrivateKey** | Pointer to **string** |  | [optional] 
+**PrivateKeyPassword** | Pointer to **string** |  | [optional] 
 **ProtectionKey** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
+**SshPassword** | Pointer to **string** |  | [optional] 
+**SshUsername** | Pointer to **string** |  | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
@@ -56,30 +60,30 @@ SetComment sets Comment field to given value.
 
 HasComment returns a boolean if a field has been set.
 
-### GetIp
+### GetHost
 
-`func (o *CreateSSHTarget) GetIp() []string`
+`func (o *CreateSSHTarget) GetHost() string`
 
-GetIp returns the Ip field if non-nil, zero value otherwise.
+GetHost returns the Host field if non-nil, zero value otherwise.
 
-### GetIpOk
+### GetHostOk
 
-`func (o *CreateSSHTarget) GetIpOk() (*[]string, bool)`
+`func (o *CreateSSHTarget) GetHostOk() (*string, bool)`
 
-GetIpOk returns a tuple with the Ip field if it's non-nil, zero value otherwise
+GetHostOk returns a tuple with the Host field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIp
+### SetHost
 
-`func (o *CreateSSHTarget) SetIp(v []string)`
+`func (o *CreateSSHTarget) SetHost(v string)`
 
-SetIp sets Ip field to given value.
+SetHost sets Host field to given value.
 
-### HasIp
+### HasHost
 
-`func (o *CreateSSHTarget) HasIp() bool`
+`func (o *CreateSSHTarget) HasHost() bool`
 
-HasIp returns a boolean if a field has been set.
+HasHost returns a boolean if a field has been set.
 
 ### GetName
 
@@ -126,6 +130,56 @@ SetPort sets Port field to given value.
 
 HasPort returns a boolean if a field has been set.
 
+### GetPrivateKey
+
+`func (o *CreateSSHTarget) GetPrivateKey() string`
+
+GetPrivateKey returns the PrivateKey field if non-nil, zero value otherwise.
+
+### GetPrivateKeyOk
+
+`func (o *CreateSSHTarget) GetPrivateKeyOk() (*string, bool)`
+
+GetPrivateKeyOk returns a tuple with the PrivateKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrivateKey
+
+`func (o *CreateSSHTarget) SetPrivateKey(v string)`
+
+SetPrivateKey sets PrivateKey field to given value.
+
+### HasPrivateKey
+
+`func (o *CreateSSHTarget) HasPrivateKey() bool`
+
+HasPrivateKey returns a boolean if a field has been set.
+
+### GetPrivateKeyPassword
+
+`func (o *CreateSSHTarget) GetPrivateKeyPassword() string`
+
+GetPrivateKeyPassword returns the PrivateKeyPassword field if non-nil, zero value otherwise.
+
+### GetPrivateKeyPasswordOk
+
+`func (o *CreateSSHTarget) GetPrivateKeyPasswordOk() (*string, bool)`
+
+GetPrivateKeyPasswordOk returns a tuple with the PrivateKeyPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrivateKeyPassword
+
+`func (o *CreateSSHTarget) SetPrivateKeyPassword(v string)`
+
+SetPrivateKeyPassword sets PrivateKeyPassword field to given value.
+
+### HasPrivateKeyPassword
+
+`func (o *CreateSSHTarget) HasPrivateKeyPassword() bool`
+
+HasPrivateKeyPassword returns a boolean if a field has been set.
+
 ### GetProtectionKey
 
 `func (o *CreateSSHTarget) GetProtectionKey() string`
@@ -150,6 +204,56 @@ SetProtectionKey sets ProtectionKey field to given value.
 `func (o *CreateSSHTarget) HasProtectionKey() bool`
 
 HasProtectionKey returns a boolean if a field has been set.
+
+### GetSshPassword
+
+`func (o *CreateSSHTarget) GetSshPassword() string`
+
+GetSshPassword returns the SshPassword field if non-nil, zero value otherwise.
+
+### GetSshPasswordOk
+
+`func (o *CreateSSHTarget) GetSshPasswordOk() (*string, bool)`
+
+GetSshPasswordOk returns a tuple with the SshPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSshPassword
+
+`func (o *CreateSSHTarget) SetSshPassword(v string)`
+
+SetSshPassword sets SshPassword field to given value.
+
+### HasSshPassword
+
+`func (o *CreateSSHTarget) HasSshPassword() bool`
+
+HasSshPassword returns a boolean if a field has been set.
+
+### GetSshUsername
+
+`func (o *CreateSSHTarget) GetSshUsername() string`
+
+GetSshUsername returns the SshUsername field if non-nil, zero value otherwise.
+
+### GetSshUsernameOk
+
+`func (o *CreateSSHTarget) GetSshUsernameOk() (*string, bool)`
+
+GetSshUsernameOk returns a tuple with the SshUsername field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSshUsername
+
+`func (o *CreateSSHTarget) SetSshUsername(v string)`
+
+SetSshUsername sets SshUsername field to given value.
+
+### HasSshUsername
+
+`func (o *CreateSSHTarget) HasSshUsername() bool`
+
+HasSshUsername returns a boolean if a field has been set.
 
 ### GetToken
 

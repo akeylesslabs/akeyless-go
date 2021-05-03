@@ -17,7 +17,7 @@ import (
 
 // CreateKey struct for CreateKey
 type CreateKey struct {
-	// Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048]
+	// Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096]
 	Alg string `json:"alg"`
 	// The customer fragment ID that will be used to create the key (if empty, the key will be created independently of a customer fragment)
 	CustomerFrgId *string `json:"customer-frg-id,omitempty"`

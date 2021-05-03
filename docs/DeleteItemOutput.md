@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DeletionDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**ItemId** | Pointer to **int64** |  | [optional] 
 **ItemName** | Pointer to **string** |  | [optional] 
 **VersionDeleted** | Pointer to **int32** |  | [optional] 
 
@@ -51,6 +52,31 @@ SetDeletionDate sets DeletionDate field to given value.
 `func (o *DeleteItemOutput) HasDeletionDate() bool`
 
 HasDeletionDate returns a boolean if a field has been set.
+
+### GetItemId
+
+`func (o *DeleteItemOutput) GetItemId() int64`
+
+GetItemId returns the ItemId field if non-nil, zero value otherwise.
+
+### GetItemIdOk
+
+`func (o *DeleteItemOutput) GetItemIdOk() (*int64, bool)`
+
+GetItemIdOk returns a tuple with the ItemId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemId
+
+`func (o *DeleteItemOutput) SetItemId(v int64)`
+
+SetItemId sets ItemId field to given value.
+
+### HasItemId
+
+`func (o *DeleteItemOutput) HasItemId() bool`
+
+HasItemId returns a boolean if a field has been set.
 
 ### GetItemName
 

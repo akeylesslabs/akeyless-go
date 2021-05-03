@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **LogForwarding** | Pointer to [**LogForwardingConfigPart**](LogForwardingConfigPart.md) |  | [optional] 
 **Migrations** | Pointer to [**MigrationsConfigPart**](MigrationsConfigPart.md) |  | [optional] 
 **Producers** | Pointer to [**ProducersConfigPart**](ProducersConfigPart.md) |  | [optional] 
+**Rotators** | Pointer to [**RotatorsConfigPart**](RotatorsConfigPart.md) |  | [optional] 
 **Saml** | Pointer to [**DefaultConfigPart**](DefaultConfigPart.md) |  | [optional] 
 **Uidentity** | Pointer to [**UIdentityConfigPart**](UIdentityConfigPart.md) |  | [optional] 
 **Version** | Pointer to **int32** |  | [optional] 
@@ -286,6 +287,31 @@ SetProducers sets Producers field to given value.
 `func (o *AkeylessGatewayConfig) HasProducers() bool`
 
 HasProducers returns a boolean if a field has been set.
+
+### GetRotators
+
+`func (o *AkeylessGatewayConfig) GetRotators() RotatorsConfigPart`
+
+GetRotators returns the Rotators field if non-nil, zero value otherwise.
+
+### GetRotatorsOk
+
+`func (o *AkeylessGatewayConfig) GetRotatorsOk() (*RotatorsConfigPart, bool)`
+
+GetRotatorsOk returns a tuple with the Rotators field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotators
+
+`func (o *AkeylessGatewayConfig) SetRotators(v RotatorsConfigPart)`
+
+SetRotators sets Rotators field to given value.
+
+### HasRotators
+
+`func (o *AkeylessGatewayConfig) HasRotators() bool`
+
+HasRotators returns a boolean if a field has been set.
 
 ### GetSaml
 

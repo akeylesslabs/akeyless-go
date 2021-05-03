@@ -18,7 +18,11 @@ import (
 // DeleteTargetAssociation deleteTargetAssociation is a command that deletes an association between target and item.
 type DeleteTargetAssociation struct {
 	// The association id to be deleted
-	AssocId string `json:"assoc-id"`
+	AssocId *string `json:"assoc-id,omitempty"`
+	// Item name
+	Name string `json:"name"`
+	// The target to associate
+	TargetName *string `json:"target-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -29,9 +33,9 @@ type DeleteTargetAssociation struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeleteTargetAssociation(assocId string, ) *DeleteTargetAssociation {
+func NewDeleteTargetAssociation(name string, ) *DeleteTargetAssociation {
 	this := DeleteTargetAssociation{}
-	this.AssocId = assocId
+	this.Name = name
 	return &this
 }
 
@@ -43,28 +47,92 @@ func NewDeleteTargetAssociationWithDefaults() *DeleteTargetAssociation {
 	return &this
 }
 
-// GetAssocId returns the AssocId field value
+// GetAssocId returns the AssocId field value if set, zero value otherwise.
 func (o *DeleteTargetAssociation) GetAssocId() string {
+	if o == nil || o.AssocId == nil {
+		var ret string
+		return ret
+	}
+	return *o.AssocId
+}
+
+// GetAssocIdOk returns a tuple with the AssocId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeleteTargetAssociation) GetAssocIdOk() (*string, bool) {
+	if o == nil || o.AssocId == nil {
+		return nil, false
+	}
+	return o.AssocId, true
+}
+
+// HasAssocId returns a boolean if a field has been set.
+func (o *DeleteTargetAssociation) HasAssocId() bool {
+	if o != nil && o.AssocId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAssocId gets a reference to the given string and assigns it to the AssocId field.
+func (o *DeleteTargetAssociation) SetAssocId(v string) {
+	o.AssocId = &v
+}
+
+// GetName returns the Name field value
+func (o *DeleteTargetAssociation) GetName() string {
 	if o == nil  {
 		var ret string
 		return ret
 	}
 
-	return o.AssocId
+	return o.Name
 }
 
-// GetAssocIdOk returns a tuple with the AssocId field value
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *DeleteTargetAssociation) GetAssocIdOk() (*string, bool) {
+func (o *DeleteTargetAssociation) GetNameOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.AssocId, true
+	return &o.Name, true
 }
 
-// SetAssocId sets field value
-func (o *DeleteTargetAssociation) SetAssocId(v string) {
-	o.AssocId = v
+// SetName sets field value
+func (o *DeleteTargetAssociation) SetName(v string) {
+	o.Name = v
+}
+
+// GetTargetName returns the TargetName field value if set, zero value otherwise.
+func (o *DeleteTargetAssociation) GetTargetName() string {
+	if o == nil || o.TargetName == nil {
+		var ret string
+		return ret
+	}
+	return *o.TargetName
+}
+
+// GetTargetNameOk returns a tuple with the TargetName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeleteTargetAssociation) GetTargetNameOk() (*string, bool) {
+	if o == nil || o.TargetName == nil {
+		return nil, false
+	}
+	return o.TargetName, true
+}
+
+// HasTargetName returns a boolean if a field has been set.
+func (o *DeleteTargetAssociation) HasTargetName() bool {
+	if o != nil && o.TargetName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetName gets a reference to the given string and assigns it to the TargetName field.
+func (o *DeleteTargetAssociation) SetTargetName(v string) {
+	o.TargetName = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -133,8 +201,14 @@ func (o *DeleteTargetAssociation) SetUidToken(v string) {
 
 func (o DeleteTargetAssociation) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
+	if o.AssocId != nil {
 		toSerialize["assoc-id"] = o.AssocId
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if o.TargetName != nil {
+		toSerialize["target-name"] = o.TargetName
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

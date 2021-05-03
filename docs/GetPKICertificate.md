@@ -7,8 +7,7 @@ Name | Type | Description | Notes
 **AltNames** | Pointer to **string** | The Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list) | [optional] 
 **CertIssuerName** | **string** | The name of the PKI certificate issuer | 
 **CommonName** | Pointer to **string** | The common name to be included in the PKI certificate | [optional] 
-**KeyFilePath** | **string** | The client public or private key file path (in case of a private key, it will be use to extract the public key) | 
-**Outfile** | Pointer to **string** | Output file path with the certificate. If not provided, the file with the certificate will be created in the same location of the provided public key with the -cert extension | [optional] 
+**KeyDataBase64** | Pointer to **string** | PKI key file contents. If this option is used, the certificate will be printed to stdout | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UriSans** | Pointer to **string** | The URI Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list) | [optional] 
@@ -17,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewGetPKICertificate
 
-`func NewGetPKICertificate(certIssuerName string, keyFilePath string, ) *GetPKICertificate`
+`func NewGetPKICertificate(certIssuerName string, ) *GetPKICertificate`
 
 NewGetPKICertificate instantiates a new GetPKICertificate object
 This constructor will assign default values to properties that have it defined,
@@ -102,50 +101,30 @@ SetCommonName sets CommonName field to given value.
 
 HasCommonName returns a boolean if a field has been set.
 
-### GetKeyFilePath
+### GetKeyDataBase64
 
-`func (o *GetPKICertificate) GetKeyFilePath() string`
+`func (o *GetPKICertificate) GetKeyDataBase64() string`
 
-GetKeyFilePath returns the KeyFilePath field if non-nil, zero value otherwise.
+GetKeyDataBase64 returns the KeyDataBase64 field if non-nil, zero value otherwise.
 
-### GetKeyFilePathOk
+### GetKeyDataBase64Ok
 
-`func (o *GetPKICertificate) GetKeyFilePathOk() (*string, bool)`
+`func (o *GetPKICertificate) GetKeyDataBase64Ok() (*string, bool)`
 
-GetKeyFilePathOk returns a tuple with the KeyFilePath field if it's non-nil, zero value otherwise
+GetKeyDataBase64Ok returns a tuple with the KeyDataBase64 field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetKeyFilePath
+### SetKeyDataBase64
 
-`func (o *GetPKICertificate) SetKeyFilePath(v string)`
+`func (o *GetPKICertificate) SetKeyDataBase64(v string)`
 
-SetKeyFilePath sets KeyFilePath field to given value.
+SetKeyDataBase64 sets KeyDataBase64 field to given value.
 
+### HasKeyDataBase64
 
-### GetOutfile
+`func (o *GetPKICertificate) HasKeyDataBase64() bool`
 
-`func (o *GetPKICertificate) GetOutfile() string`
-
-GetOutfile returns the Outfile field if non-nil, zero value otherwise.
-
-### GetOutfileOk
-
-`func (o *GetPKICertificate) GetOutfileOk() (*string, bool)`
-
-GetOutfileOk returns a tuple with the Outfile field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOutfile
-
-`func (o *GetPKICertificate) SetOutfile(v string)`
-
-SetOutfile sets Outfile field to given value.
-
-### HasOutfile
-
-`func (o *GetPKICertificate) HasOutfile() bool`
-
-HasOutfile returns a boolean if a field has been set.
+HasKeyDataBase64 returns a boolean if a field has been set.
 
 ### GetToken
 

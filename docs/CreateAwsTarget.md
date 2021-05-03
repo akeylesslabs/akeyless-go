@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AccessKey** | Pointer to **string** |  | [optional] 
 **AccessKeyId** | Pointer to **string** |  | [optional] 
 **Comment** | Pointer to **string** | Comment about the target | [optional] 
 **Name** | **string** | Target name | 
 **ProtectionKey** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Region** | Pointer to **string** |  | [optional] 
-**SecretAccessKey** | Pointer to **string** |  | [optional] 
 **SessionToken** | Pointer to **string** |  | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -32,6 +32,31 @@ will change when the set of required properties is changed
 NewCreateAwsTargetWithDefaults instantiates a new CreateAwsTarget object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAccessKey
+
+`func (o *CreateAwsTarget) GetAccessKey() string`
+
+GetAccessKey returns the AccessKey field if non-nil, zero value otherwise.
+
+### GetAccessKeyOk
+
+`func (o *CreateAwsTarget) GetAccessKeyOk() (*string, bool)`
+
+GetAccessKeyOk returns a tuple with the AccessKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessKey
+
+`func (o *CreateAwsTarget) SetAccessKey(v string)`
+
+SetAccessKey sets AccessKey field to given value.
+
+### HasAccessKey
+
+`func (o *CreateAwsTarget) HasAccessKey() bool`
+
+HasAccessKey returns a boolean if a field has been set.
 
 ### GetAccessKeyId
 
@@ -152,31 +177,6 @@ SetRegion sets Region field to given value.
 `func (o *CreateAwsTarget) HasRegion() bool`
 
 HasRegion returns a boolean if a field has been set.
-
-### GetSecretAccessKey
-
-`func (o *CreateAwsTarget) GetSecretAccessKey() string`
-
-GetSecretAccessKey returns the SecretAccessKey field if non-nil, zero value otherwise.
-
-### GetSecretAccessKeyOk
-
-`func (o *CreateAwsTarget) GetSecretAccessKeyOk() (*string, bool)`
-
-GetSecretAccessKeyOk returns a tuple with the SecretAccessKey field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSecretAccessKey
-
-`func (o *CreateAwsTarget) SetSecretAccessKey(v string)`
-
-SetSecretAccessKey sets SecretAccessKey field to given value.
-
-### HasSecretAccessKey
-
-`func (o *CreateAwsTarget) HasSecretAccessKey() bool`
-
-HasSecretAccessKey returns a boolean if a field has been set.
 
 ### GetSessionToken
 

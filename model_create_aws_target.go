@@ -17,7 +17,8 @@ import (
 
 // CreateAwsTarget struct for CreateAwsTarget
 type CreateAwsTarget struct {
-	AccessKeyId *string `json:"access_key_id,omitempty"`
+	AccessKey *string `json:"access-key,omitempty"`
+	AccessKeyId *string `json:"access-key-id,omitempty"`
 	// Comment about the target
 	Comment *string `json:"comment,omitempty"`
 	// Target name
@@ -25,8 +26,7 @@ type CreateAwsTarget struct {
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	ProtectionKey *string `json:"protection_key,omitempty"`
 	Region *string `json:"region,omitempty"`
-	SecretAccessKey *string `json:"secret_access_key,omitempty"`
-	SessionToken *string `json:"session_token,omitempty"`
+	SessionToken *string `json:"session-token,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -49,6 +49,38 @@ func NewCreateAwsTarget(name string, ) *CreateAwsTarget {
 func NewCreateAwsTargetWithDefaults() *CreateAwsTarget {
 	this := CreateAwsTarget{}
 	return &this
+}
+
+// GetAccessKey returns the AccessKey field value if set, zero value otherwise.
+func (o *CreateAwsTarget) GetAccessKey() string {
+	if o == nil || o.AccessKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.AccessKey
+}
+
+// GetAccessKeyOk returns a tuple with the AccessKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAwsTarget) GetAccessKeyOk() (*string, bool) {
+	if o == nil || o.AccessKey == nil {
+		return nil, false
+	}
+	return o.AccessKey, true
+}
+
+// HasAccessKey returns a boolean if a field has been set.
+func (o *CreateAwsTarget) HasAccessKey() bool {
+	if o != nil && o.AccessKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessKey gets a reference to the given string and assigns it to the AccessKey field.
+func (o *CreateAwsTarget) SetAccessKey(v string) {
+	o.AccessKey = &v
 }
 
 // GetAccessKeyId returns the AccessKeyId field value if set, zero value otherwise.
@@ -203,38 +235,6 @@ func (o *CreateAwsTarget) SetRegion(v string) {
 	o.Region = &v
 }
 
-// GetSecretAccessKey returns the SecretAccessKey field value if set, zero value otherwise.
-func (o *CreateAwsTarget) GetSecretAccessKey() string {
-	if o == nil || o.SecretAccessKey == nil {
-		var ret string
-		return ret
-	}
-	return *o.SecretAccessKey
-}
-
-// GetSecretAccessKeyOk returns a tuple with the SecretAccessKey field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateAwsTarget) GetSecretAccessKeyOk() (*string, bool) {
-	if o == nil || o.SecretAccessKey == nil {
-		return nil, false
-	}
-	return o.SecretAccessKey, true
-}
-
-// HasSecretAccessKey returns a boolean if a field has been set.
-func (o *CreateAwsTarget) HasSecretAccessKey() bool {
-	if o != nil && o.SecretAccessKey != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSecretAccessKey gets a reference to the given string and assigns it to the SecretAccessKey field.
-func (o *CreateAwsTarget) SetSecretAccessKey(v string) {
-	o.SecretAccessKey = &v
-}
-
 // GetSessionToken returns the SessionToken field value if set, zero value otherwise.
 func (o *CreateAwsTarget) GetSessionToken() string {
 	if o == nil || o.SessionToken == nil {
@@ -333,8 +333,11 @@ func (o *CreateAwsTarget) SetUidToken(v string) {
 
 func (o CreateAwsTarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AccessKey != nil {
+		toSerialize["access-key"] = o.AccessKey
+	}
 	if o.AccessKeyId != nil {
-		toSerialize["access_key_id"] = o.AccessKeyId
+		toSerialize["access-key-id"] = o.AccessKeyId
 	}
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment
@@ -348,11 +351,8 @@ func (o CreateAwsTarget) MarshalJSON() ([]byte, error) {
 	if o.Region != nil {
 		toSerialize["region"] = o.Region
 	}
-	if o.SecretAccessKey != nil {
-		toSerialize["secret_access_key"] = o.SecretAccessKey
-	}
 	if o.SessionToken != nil {
-		toSerialize["session_token"] = o.SessionToken
+		toSerialize["session-token"] = o.SessionToken
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

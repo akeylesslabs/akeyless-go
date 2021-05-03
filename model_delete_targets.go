@@ -17,7 +17,7 @@ import (
 
 // DeleteTargets struct for DeleteTargets
 type DeleteTargets struct {
-	// Path to delete the auth methods from
+	// Path to delete the targets from
 	Path string `json:"path"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`

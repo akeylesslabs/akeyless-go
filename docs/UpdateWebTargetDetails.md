@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | Target name | 
+**NewVersion** | Pointer to **bool** | Whether to create a new version of not | [optional] [default to false]
 **ProtectionKey** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -48,6 +49,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetNewVersion
+
+`func (o *UpdateWebTargetDetails) GetNewVersion() bool`
+
+GetNewVersion returns the NewVersion field if non-nil, zero value otherwise.
+
+### GetNewVersionOk
+
+`func (o *UpdateWebTargetDetails) GetNewVersionOk() (*bool, bool)`
+
+GetNewVersionOk returns a tuple with the NewVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNewVersion
+
+`func (o *UpdateWebTargetDetails) SetNewVersion(v bool)`
+
+SetNewVersion sets NewVersion field to given value.
+
+### HasNewVersion
+
+`func (o *UpdateWebTargetDetails) HasNewVersion() bool`
+
+HasNewVersion returns a boolean if a field has been set.
 
 ### GetProtectionKey
 

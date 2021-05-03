@@ -4,10 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ip** | Pointer to **[]string** |  | [optional] 
+**Host** | Pointer to **string** |  | [optional] 
 **Name** | **string** | Target name | 
+**NewVersion** | Pointer to **bool** | Whether to create a new version of not | [optional] [default to false]
 **Port** | Pointer to **string** |  | [optional] 
+**PrivateKey** | Pointer to **string** |  | [optional] 
+**PrivateKeyPassword** | Pointer to **string** |  | [optional] 
 **ProtectionKey** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
+**SshPassword** | Pointer to **string** |  | [optional] 
+**SshUsername** | Pointer to **string** |  | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
@@ -30,30 +35,30 @@ NewUpdateSSHTargetDetailsWithDefaults instantiates a new UpdateSSHTargetDetails 
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetIp
+### GetHost
 
-`func (o *UpdateSSHTargetDetails) GetIp() []string`
+`func (o *UpdateSSHTargetDetails) GetHost() string`
 
-GetIp returns the Ip field if non-nil, zero value otherwise.
+GetHost returns the Host field if non-nil, zero value otherwise.
 
-### GetIpOk
+### GetHostOk
 
-`func (o *UpdateSSHTargetDetails) GetIpOk() (*[]string, bool)`
+`func (o *UpdateSSHTargetDetails) GetHostOk() (*string, bool)`
 
-GetIpOk returns a tuple with the Ip field if it's non-nil, zero value otherwise
+GetHostOk returns a tuple with the Host field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIp
+### SetHost
 
-`func (o *UpdateSSHTargetDetails) SetIp(v []string)`
+`func (o *UpdateSSHTargetDetails) SetHost(v string)`
 
-SetIp sets Ip field to given value.
+SetHost sets Host field to given value.
 
-### HasIp
+### HasHost
 
-`func (o *UpdateSSHTargetDetails) HasIp() bool`
+`func (o *UpdateSSHTargetDetails) HasHost() bool`
 
-HasIp returns a boolean if a field has been set.
+HasHost returns a boolean if a field has been set.
 
 ### GetName
 
@@ -74,6 +79,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetNewVersion
+
+`func (o *UpdateSSHTargetDetails) GetNewVersion() bool`
+
+GetNewVersion returns the NewVersion field if non-nil, zero value otherwise.
+
+### GetNewVersionOk
+
+`func (o *UpdateSSHTargetDetails) GetNewVersionOk() (*bool, bool)`
+
+GetNewVersionOk returns a tuple with the NewVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNewVersion
+
+`func (o *UpdateSSHTargetDetails) SetNewVersion(v bool)`
+
+SetNewVersion sets NewVersion field to given value.
+
+### HasNewVersion
+
+`func (o *UpdateSSHTargetDetails) HasNewVersion() bool`
+
+HasNewVersion returns a boolean if a field has been set.
 
 ### GetPort
 
@@ -100,6 +130,56 @@ SetPort sets Port field to given value.
 
 HasPort returns a boolean if a field has been set.
 
+### GetPrivateKey
+
+`func (o *UpdateSSHTargetDetails) GetPrivateKey() string`
+
+GetPrivateKey returns the PrivateKey field if non-nil, zero value otherwise.
+
+### GetPrivateKeyOk
+
+`func (o *UpdateSSHTargetDetails) GetPrivateKeyOk() (*string, bool)`
+
+GetPrivateKeyOk returns a tuple with the PrivateKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrivateKey
+
+`func (o *UpdateSSHTargetDetails) SetPrivateKey(v string)`
+
+SetPrivateKey sets PrivateKey field to given value.
+
+### HasPrivateKey
+
+`func (o *UpdateSSHTargetDetails) HasPrivateKey() bool`
+
+HasPrivateKey returns a boolean if a field has been set.
+
+### GetPrivateKeyPassword
+
+`func (o *UpdateSSHTargetDetails) GetPrivateKeyPassword() string`
+
+GetPrivateKeyPassword returns the PrivateKeyPassword field if non-nil, zero value otherwise.
+
+### GetPrivateKeyPasswordOk
+
+`func (o *UpdateSSHTargetDetails) GetPrivateKeyPasswordOk() (*string, bool)`
+
+GetPrivateKeyPasswordOk returns a tuple with the PrivateKeyPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrivateKeyPassword
+
+`func (o *UpdateSSHTargetDetails) SetPrivateKeyPassword(v string)`
+
+SetPrivateKeyPassword sets PrivateKeyPassword field to given value.
+
+### HasPrivateKeyPassword
+
+`func (o *UpdateSSHTargetDetails) HasPrivateKeyPassword() bool`
+
+HasPrivateKeyPassword returns a boolean if a field has been set.
+
 ### GetProtectionKey
 
 `func (o *UpdateSSHTargetDetails) GetProtectionKey() string`
@@ -124,6 +204,56 @@ SetProtectionKey sets ProtectionKey field to given value.
 `func (o *UpdateSSHTargetDetails) HasProtectionKey() bool`
 
 HasProtectionKey returns a boolean if a field has been set.
+
+### GetSshPassword
+
+`func (o *UpdateSSHTargetDetails) GetSshPassword() string`
+
+GetSshPassword returns the SshPassword field if non-nil, zero value otherwise.
+
+### GetSshPasswordOk
+
+`func (o *UpdateSSHTargetDetails) GetSshPasswordOk() (*string, bool)`
+
+GetSshPasswordOk returns a tuple with the SshPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSshPassword
+
+`func (o *UpdateSSHTargetDetails) SetSshPassword(v string)`
+
+SetSshPassword sets SshPassword field to given value.
+
+### HasSshPassword
+
+`func (o *UpdateSSHTargetDetails) HasSshPassword() bool`
+
+HasSshPassword returns a boolean if a field has been set.
+
+### GetSshUsername
+
+`func (o *UpdateSSHTargetDetails) GetSshUsername() string`
+
+GetSshUsername returns the SshUsername field if non-nil, zero value otherwise.
+
+### GetSshUsernameOk
+
+`func (o *UpdateSSHTargetDetails) GetSshUsernameOk() (*string, bool)`
+
+GetSshUsernameOk returns a tuple with the SshUsername field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSshUsername
+
+`func (o *UpdateSSHTargetDetails) SetSshUsername(v string)`
+
+SetSshUsername sets SshUsername field to given value.
+
+### HasSshUsername
+
+`func (o *UpdateSSHTargetDetails) HasSshUsername() bool`
+
+HasSshUsername returns a boolean if a field has been set.
 
 ### GetToken
 

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Target** | Pointer to [**Target**](Target.md) |  | [optional] 
 **Value** | Pointer to [**TargetTypeDetailesInput**](TargetTypeDetailesInput.md) |  | [optional] 
 
 ## Methods
@@ -24,6 +25,31 @@ will change when the set of required properties is changed
 NewGetTargetDetailsOutputWithDefaults instantiates a new GetTargetDetailsOutput object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetTarget
+
+`func (o *GetTargetDetailsOutput) GetTarget() Target`
+
+GetTarget returns the Target field if non-nil, zero value otherwise.
+
+### GetTargetOk
+
+`func (o *GetTargetDetailsOutput) GetTargetOk() (*Target, bool)`
+
+GetTargetOk returns a tuple with the Target field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTarget
+
+`func (o *GetTargetDetailsOutput) SetTarget(v Target)`
+
+SetTarget sets Target field to given value.
+
+### HasTarget
+
+`func (o *GetTargetDetailsOutput) HasTarget() bool`
+
+HasTarget returns a boolean if a field has been set.
 
 ### GetValue
 

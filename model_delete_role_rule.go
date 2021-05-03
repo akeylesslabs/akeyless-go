@@ -21,7 +21,7 @@ type DeleteRoleRule struct {
 	Path string `json:"path"`
 	// The role name to be updated
 	RoleName string `json:"role-name"`
-	// item-rule, role-rule or auth-method-rule
+	// item-rule, role-rule, auth-method-rule, search-rule or reports-rule
 	RuleType *string `json:"rule-type,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`

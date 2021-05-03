@@ -23,6 +23,8 @@ type UpdateDBTargetDetails struct {
 	MongoUri *string `json:"mongo_uri,omitempty"`
 	// Target name
 	Name string `json:"name"`
+	// Whether to create a new version of not
+	NewVersion *bool `json:"new-version,omitempty"`
 	Port *string `json:"port,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	ProtectionKey *string `json:"protection_key,omitempty"`
@@ -41,6 +43,8 @@ type UpdateDBTargetDetails struct {
 func NewUpdateDBTargetDetails(name string, ) *UpdateDBTargetDetails {
 	this := UpdateDBTargetDetails{}
 	this.Name = name
+	var newVersion bool = false
+	this.NewVersion = &newVersion
 	return &this
 }
 
@@ -49,6 +53,8 @@ func NewUpdateDBTargetDetails(name string, ) *UpdateDBTargetDetails {
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateDBTargetDetailsWithDefaults() *UpdateDBTargetDetails {
 	this := UpdateDBTargetDetails{}
+	var newVersion bool = false
+	this.NewVersion = &newVersion
 	return &this
 }
 
@@ -202,6 +208,38 @@ func (o *UpdateDBTargetDetails) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *UpdateDBTargetDetails) SetName(v string) {
 	o.Name = v
+}
+
+// GetNewVersion returns the NewVersion field value if set, zero value otherwise.
+func (o *UpdateDBTargetDetails) GetNewVersion() bool {
+	if o == nil || o.NewVersion == nil {
+		var ret bool
+		return ret
+	}
+	return *o.NewVersion
+}
+
+// GetNewVersionOk returns a tuple with the NewVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateDBTargetDetails) GetNewVersionOk() (*bool, bool) {
+	if o == nil || o.NewVersion == nil {
+		return nil, false
+	}
+	return o.NewVersion, true
+}
+
+// HasNewVersion returns a boolean if a field has been set.
+func (o *UpdateDBTargetDetails) HasNewVersion() bool {
+	if o != nil && o.NewVersion != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNewVersion gets a reference to the given bool and assigns it to the NewVersion field.
+func (o *UpdateDBTargetDetails) SetNewVersion(v bool) {
+	o.NewVersion = &v
 }
 
 // GetPort returns the Port field value if set, zero value otherwise.
@@ -412,6 +450,9 @@ func (o UpdateDBTargetDetails) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.NewVersion != nil {
+		toSerialize["new-version"] = o.NewVersion
 	}
 	if o.Port != nil {
 		toSerialize["port"] = o.Port

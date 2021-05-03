@@ -17,7 +17,7 @@ import (
 
 // GetDynamicSecretValue struct for GetDynamicSecretValue
 type GetDynamicSecretValue struct {
-	// Optional input as `key-value` pairs
+	// Optional arguments as key=value pairs or JSON strings, e.g - \\\"--args=csr=base64_encoded_csr --args=common_name=bar\\\" or args='{\\\"csr\\\":\\\"base64_encoded_csr\\\"}. It is possible to combine both formats.'
 	Args *[]string `json:"args,omitempty"`
 	// Host
 	Host *string `json:"host,omitempty"`
@@ -25,6 +25,8 @@ type GetDynamicSecretValue struct {
 	Name string `json:"name"`
 	// Target Name
 	Target *string `json:"target,omitempty"`
+	// Timeout in seconds
+	Timeout *int64 `json:"timeout,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -38,6 +40,8 @@ type GetDynamicSecretValue struct {
 func NewGetDynamicSecretValue(name string, ) *GetDynamicSecretValue {
 	this := GetDynamicSecretValue{}
 	this.Name = name
+	var timeout int64 = 15
+	this.Timeout = &timeout
 	return &this
 }
 
@@ -46,6 +50,8 @@ func NewGetDynamicSecretValue(name string, ) *GetDynamicSecretValue {
 // but it doesn't guarantee that properties required by API are set
 func NewGetDynamicSecretValueWithDefaults() *GetDynamicSecretValue {
 	this := GetDynamicSecretValue{}
+	var timeout int64 = 15
+	this.Timeout = &timeout
 	return &this
 }
 
@@ -169,6 +175,38 @@ func (o *GetDynamicSecretValue) SetTarget(v string) {
 	o.Target = &v
 }
 
+// GetTimeout returns the Timeout field value if set, zero value otherwise.
+func (o *GetDynamicSecretValue) GetTimeout() int64 {
+	if o == nil || o.Timeout == nil {
+		var ret int64
+		return ret
+	}
+	return *o.Timeout
+}
+
+// GetTimeoutOk returns a tuple with the Timeout field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetDynamicSecretValue) GetTimeoutOk() (*int64, bool) {
+	if o == nil || o.Timeout == nil {
+		return nil, false
+	}
+	return o.Timeout, true
+}
+
+// HasTimeout returns a boolean if a field has been set.
+func (o *GetDynamicSecretValue) HasTimeout() bool {
+	if o != nil && o.Timeout != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTimeout gets a reference to the given int64 and assigns it to the Timeout field.
+func (o *GetDynamicSecretValue) SetTimeout(v int64) {
+	o.Timeout = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *GetDynamicSecretValue) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -246,6 +284,9 @@ func (o GetDynamicSecretValue) MarshalJSON() ([]byte, error) {
 	}
 	if o.Target != nil {
 		toSerialize["target"] = o.Target
+	}
+	if o.Timeout != nil {
+		toSerialize["timeout"] = o.Timeout
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

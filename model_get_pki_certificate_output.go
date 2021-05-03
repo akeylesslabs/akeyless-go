@@ -17,6 +17,7 @@ import (
 
 // GetPKICertificateOutput struct for GetPKICertificateOutput
 type GetPKICertificateOutput struct {
+	Data *string `json:"data,omitempty"`
 	Path *string `json:"path,omitempty"`
 }
 
@@ -35,6 +36,38 @@ func NewGetPKICertificateOutput() *GetPKICertificateOutput {
 func NewGetPKICertificateOutputWithDefaults() *GetPKICertificateOutput {
 	this := GetPKICertificateOutput{}
 	return &this
+}
+
+// GetData returns the Data field value if set, zero value otherwise.
+func (o *GetPKICertificateOutput) GetData() string {
+	if o == nil || o.Data == nil {
+		var ret string
+		return ret
+	}
+	return *o.Data
+}
+
+// GetDataOk returns a tuple with the Data field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetPKICertificateOutput) GetDataOk() (*string, bool) {
+	if o == nil || o.Data == nil {
+		return nil, false
+	}
+	return o.Data, true
+}
+
+// HasData returns a boolean if a field has been set.
+func (o *GetPKICertificateOutput) HasData() bool {
+	if o != nil && o.Data != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetData gets a reference to the given string and assigns it to the Data field.
+func (o *GetPKICertificateOutput) SetData(v string) {
+	o.Data = &v
 }
 
 // GetPath returns the Path field value if set, zero value otherwise.
@@ -71,6 +104,9 @@ func (o *GetPKICertificateOutput) SetPath(v string) {
 
 func (o GetPKICertificateOutput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Data != nil {
+		toSerialize["data"] = o.Data
+	}
 	if o.Path != nil {
 		toSerialize["path"] = o.Path
 	}

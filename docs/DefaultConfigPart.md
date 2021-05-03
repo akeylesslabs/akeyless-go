@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DefaultProtectionKeyId** | Pointer to **int64** |  | [optional] 
+**DefaultSecretLocation** | Pointer to **string** |  | [optional] 
 **OpenIdConnectAccessId** | Pointer to **string** |  | [optional] 
 **SamlAccessId** | Pointer to **string** |  | [optional] 
 
@@ -51,6 +52,31 @@ SetDefaultProtectionKeyId sets DefaultProtectionKeyId field to given value.
 `func (o *DefaultConfigPart) HasDefaultProtectionKeyId() bool`
 
 HasDefaultProtectionKeyId returns a boolean if a field has been set.
+
+### GetDefaultSecretLocation
+
+`func (o *DefaultConfigPart) GetDefaultSecretLocation() string`
+
+GetDefaultSecretLocation returns the DefaultSecretLocation field if non-nil, zero value otherwise.
+
+### GetDefaultSecretLocationOk
+
+`func (o *DefaultConfigPart) GetDefaultSecretLocationOk() (*string, bool)`
+
+GetDefaultSecretLocationOk returns a tuple with the DefaultSecretLocation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefaultSecretLocation
+
+`func (o *DefaultConfigPart) SetDefaultSecretLocation(v string)`
+
+SetDefaultSecretLocation sets DefaultSecretLocation field to given value.
+
+### HasDefaultSecretLocation
+
+`func (o *DefaultConfigPart) HasDefaultSecretLocation() bool`
+
+HasDefaultSecretLocation returns a boolean if a field has been set.
 
 ### GetOpenIdConnectAccessId
 

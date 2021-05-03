@@ -19,6 +19,8 @@ import (
 type ItemGeneralInfo struct {
 	CertIssueDetails *CertificateIssueInfo `json:"cert_issue_details,omitempty"`
 	DynamicSecretProducerDetails *DynamicSecretProducerInfo `json:"dynamic_secret_producer_details,omitempty"`
+	ManagedKeyDetails *ManagedKeyDetailsInfo `json:"managed_key_details,omitempty"`
+	RotatedSecretDetails *RotatedSecretDetailsInfo `json:"rotated_secret_details,omitempty"`
 }
 
 // NewItemGeneralInfo instantiates a new ItemGeneralInfo object
@@ -102,6 +104,70 @@ func (o *ItemGeneralInfo) SetDynamicSecretProducerDetails(v DynamicSecretProduce
 	o.DynamicSecretProducerDetails = &v
 }
 
+// GetManagedKeyDetails returns the ManagedKeyDetails field value if set, zero value otherwise.
+func (o *ItemGeneralInfo) GetManagedKeyDetails() ManagedKeyDetailsInfo {
+	if o == nil || o.ManagedKeyDetails == nil {
+		var ret ManagedKeyDetailsInfo
+		return ret
+	}
+	return *o.ManagedKeyDetails
+}
+
+// GetManagedKeyDetailsOk returns a tuple with the ManagedKeyDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ItemGeneralInfo) GetManagedKeyDetailsOk() (*ManagedKeyDetailsInfo, bool) {
+	if o == nil || o.ManagedKeyDetails == nil {
+		return nil, false
+	}
+	return o.ManagedKeyDetails, true
+}
+
+// HasManagedKeyDetails returns a boolean if a field has been set.
+func (o *ItemGeneralInfo) HasManagedKeyDetails() bool {
+	if o != nil && o.ManagedKeyDetails != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetManagedKeyDetails gets a reference to the given ManagedKeyDetailsInfo and assigns it to the ManagedKeyDetails field.
+func (o *ItemGeneralInfo) SetManagedKeyDetails(v ManagedKeyDetailsInfo) {
+	o.ManagedKeyDetails = &v
+}
+
+// GetRotatedSecretDetails returns the RotatedSecretDetails field value if set, zero value otherwise.
+func (o *ItemGeneralInfo) GetRotatedSecretDetails() RotatedSecretDetailsInfo {
+	if o == nil || o.RotatedSecretDetails == nil {
+		var ret RotatedSecretDetailsInfo
+		return ret
+	}
+	return *o.RotatedSecretDetails
+}
+
+// GetRotatedSecretDetailsOk returns a tuple with the RotatedSecretDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ItemGeneralInfo) GetRotatedSecretDetailsOk() (*RotatedSecretDetailsInfo, bool) {
+	if o == nil || o.RotatedSecretDetails == nil {
+		return nil, false
+	}
+	return o.RotatedSecretDetails, true
+}
+
+// HasRotatedSecretDetails returns a boolean if a field has been set.
+func (o *ItemGeneralInfo) HasRotatedSecretDetails() bool {
+	if o != nil && o.RotatedSecretDetails != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRotatedSecretDetails gets a reference to the given RotatedSecretDetailsInfo and assigns it to the RotatedSecretDetails field.
+func (o *ItemGeneralInfo) SetRotatedSecretDetails(v RotatedSecretDetailsInfo) {
+	o.RotatedSecretDetails = &v
+}
+
 func (o ItemGeneralInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.CertIssueDetails != nil {
@@ -109,6 +175,12 @@ func (o ItemGeneralInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.DynamicSecretProducerDetails != nil {
 		toSerialize["dynamic_secret_producer_details"] = o.DynamicSecretProducerDetails
+	}
+	if o.ManagedKeyDetails != nil {
+		toSerialize["managed_key_details"] = o.ManagedKeyDetails
+	}
+	if o.RotatedSecretDetails != nil {
+		toSerialize["rotated_secret_details"] = o.RotatedSecretDetails
 	}
 	return json.Marshal(toSerialize)
 }

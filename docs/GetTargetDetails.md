@@ -5,6 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | Target name | 
+**ShowVersions** | Pointer to **bool** | Include all target versions in reply | [optional] [default to false]
+**TargetVersion** | Pointer to **int32** | Target version | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
@@ -46,6 +48,56 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetShowVersions
+
+`func (o *GetTargetDetails) GetShowVersions() bool`
+
+GetShowVersions returns the ShowVersions field if non-nil, zero value otherwise.
+
+### GetShowVersionsOk
+
+`func (o *GetTargetDetails) GetShowVersionsOk() (*bool, bool)`
+
+GetShowVersionsOk returns a tuple with the ShowVersions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShowVersions
+
+`func (o *GetTargetDetails) SetShowVersions(v bool)`
+
+SetShowVersions sets ShowVersions field to given value.
+
+### HasShowVersions
+
+`func (o *GetTargetDetails) HasShowVersions() bool`
+
+HasShowVersions returns a boolean if a field has been set.
+
+### GetTargetVersion
+
+`func (o *GetTargetDetails) GetTargetVersion() int32`
+
+GetTargetVersion returns the TargetVersion field if non-nil, zero value otherwise.
+
+### GetTargetVersionOk
+
+`func (o *GetTargetDetails) GetTargetVersionOk() (*int32, bool)`
+
+GetTargetVersionOk returns a tuple with the TargetVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetVersion
+
+`func (o *GetTargetDetails) SetTargetVersion(v int32)`
+
+SetTargetVersion sets TargetVersion field to given value.
+
+### HasTargetVersion
+
+`func (o *GetTargetDetails) HasTargetVersion() bool`
+
+HasTargetVersion returns a boolean if a field has been set.
 
 ### GetToken
 

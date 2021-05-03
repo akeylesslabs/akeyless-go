@@ -27,6 +27,7 @@ type AkeylessGatewayConfig struct {
 	LogForwarding *LogForwardingConfigPart `json:"log_forwarding,omitempty"`
 	Migrations *MigrationsConfigPart `json:"migrations,omitempty"`
 	Producers *ProducersConfigPart `json:"producers,omitempty"`
+	Rotators *RotatorsConfigPart `json:"rotators,omitempty"`
 	Saml *DefaultConfigPart `json:"saml,omitempty"`
 	Uidentity *UIdentityConfigPart `json:"uidentity,omitempty"`
 	Version *int32 `json:"version,omitempty"`
@@ -369,6 +370,38 @@ func (o *AkeylessGatewayConfig) SetProducers(v ProducersConfigPart) {
 	o.Producers = &v
 }
 
+// GetRotators returns the Rotators field value if set, zero value otherwise.
+func (o *AkeylessGatewayConfig) GetRotators() RotatorsConfigPart {
+	if o == nil || o.Rotators == nil {
+		var ret RotatorsConfigPart
+		return ret
+	}
+	return *o.Rotators
+}
+
+// GetRotatorsOk returns a tuple with the Rotators field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AkeylessGatewayConfig) GetRotatorsOk() (*RotatorsConfigPart, bool) {
+	if o == nil || o.Rotators == nil {
+		return nil, false
+	}
+	return o.Rotators, true
+}
+
+// HasRotators returns a boolean if a field has been set.
+func (o *AkeylessGatewayConfig) HasRotators() bool {
+	if o != nil && o.Rotators != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRotators gets a reference to the given RotatorsConfigPart and assigns it to the Rotators field.
+func (o *AkeylessGatewayConfig) SetRotators(v RotatorsConfigPart) {
+	o.Rotators = &v
+}
+
 // GetSaml returns the Saml field value if set, zero value otherwise.
 func (o *AkeylessGatewayConfig) GetSaml() DefaultConfigPart {
 	if o == nil || o.Saml == nil {
@@ -496,6 +529,9 @@ func (o AkeylessGatewayConfig) MarshalJSON() ([]byte, error) {
 	}
 	if o.Producers != nil {
 		toSerialize["producers"] = o.Producers
+	}
+	if o.Rotators != nil {
+		toSerialize["rotators"] = o.Rotators
 	}
 	if o.Saml != nil {
 		toSerialize["saml"] = o.Saml

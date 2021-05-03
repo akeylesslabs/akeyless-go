@@ -17,12 +17,18 @@ import (
 
 // UpdateSSHTargetDetails struct for UpdateSSHTargetDetails
 type UpdateSSHTargetDetails struct {
-	Ip *[]string `json:"ip,omitempty"`
+	Host *string `json:"host,omitempty"`
 	// Target name
 	Name string `json:"name"`
+	// Whether to create a new version of not
+	NewVersion *bool `json:"new-version,omitempty"`
 	Port *string `json:"port,omitempty"`
+	PrivateKey *string `json:"private-key,omitempty"`
+	PrivateKeyPassword *string `json:"private-key-password,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	ProtectionKey *string `json:"protection_key,omitempty"`
+	SshPassword *string `json:"ssh-password,omitempty"`
+	SshUsername *string `json:"ssh-username,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -36,6 +42,8 @@ type UpdateSSHTargetDetails struct {
 func NewUpdateSSHTargetDetails(name string, ) *UpdateSSHTargetDetails {
 	this := UpdateSSHTargetDetails{}
 	this.Name = name
+	var newVersion bool = false
+	this.NewVersion = &newVersion
 	return &this
 }
 
@@ -44,39 +52,41 @@ func NewUpdateSSHTargetDetails(name string, ) *UpdateSSHTargetDetails {
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateSSHTargetDetailsWithDefaults() *UpdateSSHTargetDetails {
 	this := UpdateSSHTargetDetails{}
+	var newVersion bool = false
+	this.NewVersion = &newVersion
 	return &this
 }
 
-// GetIp returns the Ip field value if set, zero value otherwise.
-func (o *UpdateSSHTargetDetails) GetIp() []string {
-	if o == nil || o.Ip == nil {
-		var ret []string
+// GetHost returns the Host field value if set, zero value otherwise.
+func (o *UpdateSSHTargetDetails) GetHost() string {
+	if o == nil || o.Host == nil {
+		var ret string
 		return ret
 	}
-	return *o.Ip
+	return *o.Host
 }
 
-// GetIpOk returns a tuple with the Ip field value if set, nil otherwise
+// GetHostOk returns a tuple with the Host field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateSSHTargetDetails) GetIpOk() (*[]string, bool) {
-	if o == nil || o.Ip == nil {
+func (o *UpdateSSHTargetDetails) GetHostOk() (*string, bool) {
+	if o == nil || o.Host == nil {
 		return nil, false
 	}
-	return o.Ip, true
+	return o.Host, true
 }
 
-// HasIp returns a boolean if a field has been set.
-func (o *UpdateSSHTargetDetails) HasIp() bool {
-	if o != nil && o.Ip != nil {
+// HasHost returns a boolean if a field has been set.
+func (o *UpdateSSHTargetDetails) HasHost() bool {
+	if o != nil && o.Host != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetIp gets a reference to the given []string and assigns it to the Ip field.
-func (o *UpdateSSHTargetDetails) SetIp(v []string) {
-	o.Ip = &v
+// SetHost gets a reference to the given string and assigns it to the Host field.
+func (o *UpdateSSHTargetDetails) SetHost(v string) {
+	o.Host = &v
 }
 
 // GetName returns the Name field value
@@ -101,6 +111,38 @@ func (o *UpdateSSHTargetDetails) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *UpdateSSHTargetDetails) SetName(v string) {
 	o.Name = v
+}
+
+// GetNewVersion returns the NewVersion field value if set, zero value otherwise.
+func (o *UpdateSSHTargetDetails) GetNewVersion() bool {
+	if o == nil || o.NewVersion == nil {
+		var ret bool
+		return ret
+	}
+	return *o.NewVersion
+}
+
+// GetNewVersionOk returns a tuple with the NewVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateSSHTargetDetails) GetNewVersionOk() (*bool, bool) {
+	if o == nil || o.NewVersion == nil {
+		return nil, false
+	}
+	return o.NewVersion, true
+}
+
+// HasNewVersion returns a boolean if a field has been set.
+func (o *UpdateSSHTargetDetails) HasNewVersion() bool {
+	if o != nil && o.NewVersion != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNewVersion gets a reference to the given bool and assigns it to the NewVersion field.
+func (o *UpdateSSHTargetDetails) SetNewVersion(v bool) {
+	o.NewVersion = &v
 }
 
 // GetPort returns the Port field value if set, zero value otherwise.
@@ -135,6 +177,70 @@ func (o *UpdateSSHTargetDetails) SetPort(v string) {
 	o.Port = &v
 }
 
+// GetPrivateKey returns the PrivateKey field value if set, zero value otherwise.
+func (o *UpdateSSHTargetDetails) GetPrivateKey() string {
+	if o == nil || o.PrivateKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.PrivateKey
+}
+
+// GetPrivateKeyOk returns a tuple with the PrivateKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateSSHTargetDetails) GetPrivateKeyOk() (*string, bool) {
+	if o == nil || o.PrivateKey == nil {
+		return nil, false
+	}
+	return o.PrivateKey, true
+}
+
+// HasPrivateKey returns a boolean if a field has been set.
+func (o *UpdateSSHTargetDetails) HasPrivateKey() bool {
+	if o != nil && o.PrivateKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivateKey gets a reference to the given string and assigns it to the PrivateKey field.
+func (o *UpdateSSHTargetDetails) SetPrivateKey(v string) {
+	o.PrivateKey = &v
+}
+
+// GetPrivateKeyPassword returns the PrivateKeyPassword field value if set, zero value otherwise.
+func (o *UpdateSSHTargetDetails) GetPrivateKeyPassword() string {
+	if o == nil || o.PrivateKeyPassword == nil {
+		var ret string
+		return ret
+	}
+	return *o.PrivateKeyPassword
+}
+
+// GetPrivateKeyPasswordOk returns a tuple with the PrivateKeyPassword field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateSSHTargetDetails) GetPrivateKeyPasswordOk() (*string, bool) {
+	if o == nil || o.PrivateKeyPassword == nil {
+		return nil, false
+	}
+	return o.PrivateKeyPassword, true
+}
+
+// HasPrivateKeyPassword returns a boolean if a field has been set.
+func (o *UpdateSSHTargetDetails) HasPrivateKeyPassword() bool {
+	if o != nil && o.PrivateKeyPassword != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivateKeyPassword gets a reference to the given string and assigns it to the PrivateKeyPassword field.
+func (o *UpdateSSHTargetDetails) SetPrivateKeyPassword(v string) {
+	o.PrivateKeyPassword = &v
+}
+
 // GetProtectionKey returns the ProtectionKey field value if set, zero value otherwise.
 func (o *UpdateSSHTargetDetails) GetProtectionKey() string {
 	if o == nil || o.ProtectionKey == nil {
@@ -165,6 +271,70 @@ func (o *UpdateSSHTargetDetails) HasProtectionKey() bool {
 // SetProtectionKey gets a reference to the given string and assigns it to the ProtectionKey field.
 func (o *UpdateSSHTargetDetails) SetProtectionKey(v string) {
 	o.ProtectionKey = &v
+}
+
+// GetSshPassword returns the SshPassword field value if set, zero value otherwise.
+func (o *UpdateSSHTargetDetails) GetSshPassword() string {
+	if o == nil || o.SshPassword == nil {
+		var ret string
+		return ret
+	}
+	return *o.SshPassword
+}
+
+// GetSshPasswordOk returns a tuple with the SshPassword field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateSSHTargetDetails) GetSshPasswordOk() (*string, bool) {
+	if o == nil || o.SshPassword == nil {
+		return nil, false
+	}
+	return o.SshPassword, true
+}
+
+// HasSshPassword returns a boolean if a field has been set.
+func (o *UpdateSSHTargetDetails) HasSshPassword() bool {
+	if o != nil && o.SshPassword != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSshPassword gets a reference to the given string and assigns it to the SshPassword field.
+func (o *UpdateSSHTargetDetails) SetSshPassword(v string) {
+	o.SshPassword = &v
+}
+
+// GetSshUsername returns the SshUsername field value if set, zero value otherwise.
+func (o *UpdateSSHTargetDetails) GetSshUsername() string {
+	if o == nil || o.SshUsername == nil {
+		var ret string
+		return ret
+	}
+	return *o.SshUsername
+}
+
+// GetSshUsernameOk returns a tuple with the SshUsername field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateSSHTargetDetails) GetSshUsernameOk() (*string, bool) {
+	if o == nil || o.SshUsername == nil {
+		return nil, false
+	}
+	return o.SshUsername, true
+}
+
+// HasSshUsername returns a boolean if a field has been set.
+func (o *UpdateSSHTargetDetails) HasSshUsername() bool {
+	if o != nil && o.SshUsername != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSshUsername gets a reference to the given string and assigns it to the SshUsername field.
+func (o *UpdateSSHTargetDetails) SetSshUsername(v string) {
+	o.SshUsername = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -233,17 +403,32 @@ func (o *UpdateSSHTargetDetails) SetUidToken(v string) {
 
 func (o UpdateSSHTargetDetails) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Ip != nil {
-		toSerialize["ip"] = o.Ip
+	if o.Host != nil {
+		toSerialize["host"] = o.Host
 	}
 	if true {
 		toSerialize["name"] = o.Name
 	}
+	if o.NewVersion != nil {
+		toSerialize["new-version"] = o.NewVersion
+	}
 	if o.Port != nil {
 		toSerialize["port"] = o.Port
 	}
+	if o.PrivateKey != nil {
+		toSerialize["private-key"] = o.PrivateKey
+	}
+	if o.PrivateKeyPassword != nil {
+		toSerialize["private-key-password"] = o.PrivateKeyPassword
+	}
 	if o.ProtectionKey != nil {
 		toSerialize["protection_key"] = o.ProtectionKey
+	}
+	if o.SshPassword != nil {
+		toSerialize["ssh-password"] = o.SshPassword
+	}
+	if o.SshUsername != nil {
+		toSerialize["ssh-username"] = o.SshUsername
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

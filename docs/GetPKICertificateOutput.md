@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Data** | Pointer to **string** |  | [optional] 
 **Path** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -24,6 +25,31 @@ will change when the set of required properties is changed
 NewGetPKICertificateOutputWithDefaults instantiates a new GetPKICertificateOutput object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetData
+
+`func (o *GetPKICertificateOutput) GetData() string`
+
+GetData returns the Data field if non-nil, zero value otherwise.
+
+### GetDataOk
+
+`func (o *GetPKICertificateOutput) GetDataOk() (*string, bool)`
+
+GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetData
+
+`func (o *GetPKICertificateOutput) SetData(v string)`
+
+SetData sets Data field to given value.
+
+### HasData
+
+`func (o *GetPKICertificateOutput) HasData() bool`
+
+HasData returns a boolean if a field has been set.
 
 ### GetPath
 

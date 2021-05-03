@@ -4,7 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AssocId** | **string** | The association id to be deleted | 
+**AssocId** | Pointer to **string** | The association id to be deleted | [optional] 
+**Name** | **string** | Item name | 
+**TargetName** | Pointer to **string** | The target to associate | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
@@ -12,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewDeleteTargetAssociation
 
-`func NewDeleteTargetAssociation(assocId string, ) *DeleteTargetAssociation`
+`func NewDeleteTargetAssociation(name string, ) *DeleteTargetAssociation`
 
 NewDeleteTargetAssociation instantiates a new DeleteTargetAssociation object
 This constructor will assign default values to properties that have it defined,
@@ -46,6 +48,56 @@ and a boolean to check if the value has been set.
 
 SetAssocId sets AssocId field to given value.
 
+### HasAssocId
+
+`func (o *DeleteTargetAssociation) HasAssocId() bool`
+
+HasAssocId returns a boolean if a field has been set.
+
+### GetName
+
+`func (o *DeleteTargetAssociation) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *DeleteTargetAssociation) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *DeleteTargetAssociation) SetName(v string)`
+
+SetName sets Name field to given value.
+
+
+### GetTargetName
+
+`func (o *DeleteTargetAssociation) GetTargetName() string`
+
+GetTargetName returns the TargetName field if non-nil, zero value otherwise.
+
+### GetTargetNameOk
+
+`func (o *DeleteTargetAssociation) GetTargetNameOk() (*string, bool)`
+
+GetTargetNameOk returns a tuple with the TargetName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetName
+
+`func (o *DeleteTargetAssociation) SetTargetName(v string)`
+
+SetTargetName sets TargetName field to given value.
+
+### HasTargetName
+
+`func (o *DeleteTargetAssociation) HasTargetName() bool`
+
+HasTargetName returns a boolean if a field has been set.
 
 ### GetToken
 

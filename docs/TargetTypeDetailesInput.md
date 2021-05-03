@@ -4,8 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AdminName** | Pointer to **string** |  | [optional] 
-**AdminPwd** | Pointer to **string** |  | [optional] 
 **AwsAccessKeyId** | Pointer to **string** |  | [optional] 
 **AwsRegion** | Pointer to **string** |  | [optional] 
 **AwsSecretAccessKey** | Pointer to **string** |  | [optional] 
@@ -17,16 +15,18 @@ Name | Type | Description | Notes
 **DbServerCertificates** | Pointer to **string** | (Optional) DBServerCertificates defines the set of root certificate authorities that clients use when verifying server certificates. If DBServerCertificates is empty, TLS uses the host&#39;s root CA set. | [optional] 
 **DbServerName** | Pointer to **string** | (Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client&#39;s handshake to support virtual hosting unless it is an IP address. | [optional] 
 **DbUserName** | Pointer to **string** |  | [optional] 
-**HostName** | Pointer to **string** |  | [optional] 
-**HostPort** | Pointer to **string** |  | [optional] 
-**Ip** | Pointer to **[]string** |  | [optional] 
+**Host** | Pointer to **string** |  | [optional] 
 **MongodbDbName** | Pointer to **string** |  | [optional] 
 **MongodbUriConnection** | Pointer to **string** |  | [optional] 
+**Password** | Pointer to **string** |  | [optional] 
 **Port** | Pointer to **string** |  | [optional] 
+**PrivateKey** | Pointer to **string** |  | [optional] 
+**PrivateKeyPassword** | Pointer to **string** |  | [optional] 
 **RabbitmqServerPassword** | Pointer to **string** |  | [optional] 
 **RabbitmqServerUri** | Pointer to **string** |  | [optional] 
 **RabbitmqServerUser** | Pointer to **string** |  | [optional] 
 **Url** | Pointer to **string** |  | [optional] 
+**Username** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -46,56 +46,6 @@ will change when the set of required properties is changed
 NewTargetTypeDetailesInputWithDefaults instantiates a new TargetTypeDetailesInput object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetAdminName
-
-`func (o *TargetTypeDetailesInput) GetAdminName() string`
-
-GetAdminName returns the AdminName field if non-nil, zero value otherwise.
-
-### GetAdminNameOk
-
-`func (o *TargetTypeDetailesInput) GetAdminNameOk() (*string, bool)`
-
-GetAdminNameOk returns a tuple with the AdminName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAdminName
-
-`func (o *TargetTypeDetailesInput) SetAdminName(v string)`
-
-SetAdminName sets AdminName field to given value.
-
-### HasAdminName
-
-`func (o *TargetTypeDetailesInput) HasAdminName() bool`
-
-HasAdminName returns a boolean if a field has been set.
-
-### GetAdminPwd
-
-`func (o *TargetTypeDetailesInput) GetAdminPwd() string`
-
-GetAdminPwd returns the AdminPwd field if non-nil, zero value otherwise.
-
-### GetAdminPwdOk
-
-`func (o *TargetTypeDetailesInput) GetAdminPwdOk() (*string, bool)`
-
-GetAdminPwdOk returns a tuple with the AdminPwd field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAdminPwd
-
-`func (o *TargetTypeDetailesInput) SetAdminPwd(v string)`
-
-SetAdminPwd sets AdminPwd field to given value.
-
-### HasAdminPwd
-
-`func (o *TargetTypeDetailesInput) HasAdminPwd() bool`
-
-HasAdminPwd returns a boolean if a field has been set.
 
 ### GetAwsAccessKeyId
 
@@ -372,80 +322,30 @@ SetDbUserName sets DbUserName field to given value.
 
 HasDbUserName returns a boolean if a field has been set.
 
-### GetHostName
+### GetHost
 
-`func (o *TargetTypeDetailesInput) GetHostName() string`
+`func (o *TargetTypeDetailesInput) GetHost() string`
 
-GetHostName returns the HostName field if non-nil, zero value otherwise.
+GetHost returns the Host field if non-nil, zero value otherwise.
 
-### GetHostNameOk
+### GetHostOk
 
-`func (o *TargetTypeDetailesInput) GetHostNameOk() (*string, bool)`
+`func (o *TargetTypeDetailesInput) GetHostOk() (*string, bool)`
 
-GetHostNameOk returns a tuple with the HostName field if it's non-nil, zero value otherwise
+GetHostOk returns a tuple with the Host field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetHostName
+### SetHost
 
-`func (o *TargetTypeDetailesInput) SetHostName(v string)`
+`func (o *TargetTypeDetailesInput) SetHost(v string)`
 
-SetHostName sets HostName field to given value.
+SetHost sets Host field to given value.
 
-### HasHostName
+### HasHost
 
-`func (o *TargetTypeDetailesInput) HasHostName() bool`
+`func (o *TargetTypeDetailesInput) HasHost() bool`
 
-HasHostName returns a boolean if a field has been set.
-
-### GetHostPort
-
-`func (o *TargetTypeDetailesInput) GetHostPort() string`
-
-GetHostPort returns the HostPort field if non-nil, zero value otherwise.
-
-### GetHostPortOk
-
-`func (o *TargetTypeDetailesInput) GetHostPortOk() (*string, bool)`
-
-GetHostPortOk returns a tuple with the HostPort field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHostPort
-
-`func (o *TargetTypeDetailesInput) SetHostPort(v string)`
-
-SetHostPort sets HostPort field to given value.
-
-### HasHostPort
-
-`func (o *TargetTypeDetailesInput) HasHostPort() bool`
-
-HasHostPort returns a boolean if a field has been set.
-
-### GetIp
-
-`func (o *TargetTypeDetailesInput) GetIp() []string`
-
-GetIp returns the Ip field if non-nil, zero value otherwise.
-
-### GetIpOk
-
-`func (o *TargetTypeDetailesInput) GetIpOk() (*[]string, bool)`
-
-GetIpOk returns a tuple with the Ip field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIp
-
-`func (o *TargetTypeDetailesInput) SetIp(v []string)`
-
-SetIp sets Ip field to given value.
-
-### HasIp
-
-`func (o *TargetTypeDetailesInput) HasIp() bool`
-
-HasIp returns a boolean if a field has been set.
+HasHost returns a boolean if a field has been set.
 
 ### GetMongodbDbName
 
@@ -497,6 +397,31 @@ SetMongodbUriConnection sets MongodbUriConnection field to given value.
 
 HasMongodbUriConnection returns a boolean if a field has been set.
 
+### GetPassword
+
+`func (o *TargetTypeDetailesInput) GetPassword() string`
+
+GetPassword returns the Password field if non-nil, zero value otherwise.
+
+### GetPasswordOk
+
+`func (o *TargetTypeDetailesInput) GetPasswordOk() (*string, bool)`
+
+GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPassword
+
+`func (o *TargetTypeDetailesInput) SetPassword(v string)`
+
+SetPassword sets Password field to given value.
+
+### HasPassword
+
+`func (o *TargetTypeDetailesInput) HasPassword() bool`
+
+HasPassword returns a boolean if a field has been set.
+
 ### GetPort
 
 `func (o *TargetTypeDetailesInput) GetPort() string`
@@ -521,6 +446,56 @@ SetPort sets Port field to given value.
 `func (o *TargetTypeDetailesInput) HasPort() bool`
 
 HasPort returns a boolean if a field has been set.
+
+### GetPrivateKey
+
+`func (o *TargetTypeDetailesInput) GetPrivateKey() string`
+
+GetPrivateKey returns the PrivateKey field if non-nil, zero value otherwise.
+
+### GetPrivateKeyOk
+
+`func (o *TargetTypeDetailesInput) GetPrivateKeyOk() (*string, bool)`
+
+GetPrivateKeyOk returns a tuple with the PrivateKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrivateKey
+
+`func (o *TargetTypeDetailesInput) SetPrivateKey(v string)`
+
+SetPrivateKey sets PrivateKey field to given value.
+
+### HasPrivateKey
+
+`func (o *TargetTypeDetailesInput) HasPrivateKey() bool`
+
+HasPrivateKey returns a boolean if a field has been set.
+
+### GetPrivateKeyPassword
+
+`func (o *TargetTypeDetailesInput) GetPrivateKeyPassword() string`
+
+GetPrivateKeyPassword returns the PrivateKeyPassword field if non-nil, zero value otherwise.
+
+### GetPrivateKeyPasswordOk
+
+`func (o *TargetTypeDetailesInput) GetPrivateKeyPasswordOk() (*string, bool)`
+
+GetPrivateKeyPasswordOk returns a tuple with the PrivateKeyPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrivateKeyPassword
+
+`func (o *TargetTypeDetailesInput) SetPrivateKeyPassword(v string)`
+
+SetPrivateKeyPassword sets PrivateKeyPassword field to given value.
+
+### HasPrivateKeyPassword
+
+`func (o *TargetTypeDetailesInput) HasPrivateKeyPassword() bool`
+
+HasPrivateKeyPassword returns a boolean if a field has been set.
 
 ### GetRabbitmqServerPassword
 
@@ -621,6 +596,31 @@ SetUrl sets Url field to given value.
 `func (o *TargetTypeDetailesInput) HasUrl() bool`
 
 HasUrl returns a boolean if a field has been set.
+
+### GetUsername
+
+`func (o *TargetTypeDetailesInput) GetUsername() string`
+
+GetUsername returns the Username field if non-nil, zero value otherwise.
+
+### GetUsernameOk
+
+`func (o *TargetTypeDetailesInput) GetUsernameOk() (*string, bool)`
+
+GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsername
+
+`func (o *TargetTypeDetailesInput) SetUsername(v string)`
+
+SetUsername sets Username field to given value.
+
+### HasUsername
+
+`func (o *TargetTypeDetailesInput) HasUsername() bool`
+
+HasUsername returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -23,10 +23,8 @@ type GetKubeExecCreds struct {
 	CertIssuerName string `json:"cert-issuer-name"`
 	// The common name to be included in the PKI certificate
 	CommonName *string `json:"common-name,omitempty"`
-	// The client public or private key file path (in case of a private key, it will be use to extract the public key)
-	KeyFilePath string `json:"key-file-path"`
-	// Output file path with the certificate. If not provided, the file with the certificate will be created in the same location of the provided public key with the -cert extension
-	Outfile *string `json:"outfile,omitempty"`
+	// PKI key file contents. If this option is used, the certificate will be printed to stdout
+	KeyDataBase64 *string `json:"key-data-base64,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -39,10 +37,9 @@ type GetKubeExecCreds struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetKubeExecCreds(certIssuerName string, keyFilePath string, ) *GetKubeExecCreds {
+func NewGetKubeExecCreds(certIssuerName string, ) *GetKubeExecCreds {
 	this := GetKubeExecCreds{}
 	this.CertIssuerName = certIssuerName
-	this.KeyFilePath = keyFilePath
 	return &this
 }
 
@@ -142,60 +139,36 @@ func (o *GetKubeExecCreds) SetCommonName(v string) {
 	o.CommonName = &v
 }
 
-// GetKeyFilePath returns the KeyFilePath field value
-func (o *GetKubeExecCreds) GetKeyFilePath() string {
-	if o == nil  {
+// GetKeyDataBase64 returns the KeyDataBase64 field value if set, zero value otherwise.
+func (o *GetKubeExecCreds) GetKeyDataBase64() string {
+	if o == nil || o.KeyDataBase64 == nil {
 		var ret string
 		return ret
 	}
-
-	return o.KeyFilePath
+	return *o.KeyDataBase64
 }
 
-// GetKeyFilePathOk returns a tuple with the KeyFilePath field value
+// GetKeyDataBase64Ok returns a tuple with the KeyDataBase64 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetKubeExecCreds) GetKeyFilePathOk() (*string, bool) {
-	if o == nil  {
+func (o *GetKubeExecCreds) GetKeyDataBase64Ok() (*string, bool) {
+	if o == nil || o.KeyDataBase64 == nil {
 		return nil, false
 	}
-	return &o.KeyFilePath, true
+	return o.KeyDataBase64, true
 }
 
-// SetKeyFilePath sets field value
-func (o *GetKubeExecCreds) SetKeyFilePath(v string) {
-	o.KeyFilePath = v
-}
-
-// GetOutfile returns the Outfile field value if set, zero value otherwise.
-func (o *GetKubeExecCreds) GetOutfile() string {
-	if o == nil || o.Outfile == nil {
-		var ret string
-		return ret
-	}
-	return *o.Outfile
-}
-
-// GetOutfileOk returns a tuple with the Outfile field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GetKubeExecCreds) GetOutfileOk() (*string, bool) {
-	if o == nil || o.Outfile == nil {
-		return nil, false
-	}
-	return o.Outfile, true
-}
-
-// HasOutfile returns a boolean if a field has been set.
-func (o *GetKubeExecCreds) HasOutfile() bool {
-	if o != nil && o.Outfile != nil {
+// HasKeyDataBase64 returns a boolean if a field has been set.
+func (o *GetKubeExecCreds) HasKeyDataBase64() bool {
+	if o != nil && o.KeyDataBase64 != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetOutfile gets a reference to the given string and assigns it to the Outfile field.
-func (o *GetKubeExecCreds) SetOutfile(v string) {
-	o.Outfile = &v
+// SetKeyDataBase64 gets a reference to the given string and assigns it to the KeyDataBase64 field.
+func (o *GetKubeExecCreds) SetKeyDataBase64(v string) {
+	o.KeyDataBase64 = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -305,11 +278,8 @@ func (o GetKubeExecCreds) MarshalJSON() ([]byte, error) {
 	if o.CommonName != nil {
 		toSerialize["common-name"] = o.CommonName
 	}
-	if true {
-		toSerialize["key-file-path"] = o.KeyFilePath
-	}
-	if o.Outfile != nil {
-		toSerialize["outfile"] = o.Outfile
+	if o.KeyDataBase64 != nil {
+		toSerialize["key-data-base64"] = o.KeyDataBase64
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

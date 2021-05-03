@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Path** | **string** | The path the rule refers to | 
 **RoleName** | **string** | The role name to be updated | 
-**RuleType** | Pointer to **string** | item-rule, role-rule or auth-method-rule | [optional] [default to "item-rule"]
+**RuleType** | Pointer to **string** | item-rule, role-rule, auth-method-rule, search-rule or reports-rule | [optional] [default to "item-rule"]
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 

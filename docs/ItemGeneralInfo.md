@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CertIssueDetails** | Pointer to [**CertificateIssueInfo**](CertificateIssueInfo.md) |  | [optional] 
 **DynamicSecretProducerDetails** | Pointer to [**DynamicSecretProducerInfo**](DynamicSecretProducerInfo.md) |  | [optional] 
+**ManagedKeyDetails** | Pointer to [**ManagedKeyDetailsInfo**](ManagedKeyDetailsInfo.md) |  | [optional] 
+**RotatedSecretDetails** | Pointer to [**RotatedSecretDetailsInfo**](RotatedSecretDetailsInfo.md) |  | [optional] 
 
 ## Methods
 
@@ -75,6 +77,56 @@ SetDynamicSecretProducerDetails sets DynamicSecretProducerDetails field to given
 `func (o *ItemGeneralInfo) HasDynamicSecretProducerDetails() bool`
 
 HasDynamicSecretProducerDetails returns a boolean if a field has been set.
+
+### GetManagedKeyDetails
+
+`func (o *ItemGeneralInfo) GetManagedKeyDetails() ManagedKeyDetailsInfo`
+
+GetManagedKeyDetails returns the ManagedKeyDetails field if non-nil, zero value otherwise.
+
+### GetManagedKeyDetailsOk
+
+`func (o *ItemGeneralInfo) GetManagedKeyDetailsOk() (*ManagedKeyDetailsInfo, bool)`
+
+GetManagedKeyDetailsOk returns a tuple with the ManagedKeyDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetManagedKeyDetails
+
+`func (o *ItemGeneralInfo) SetManagedKeyDetails(v ManagedKeyDetailsInfo)`
+
+SetManagedKeyDetails sets ManagedKeyDetails field to given value.
+
+### HasManagedKeyDetails
+
+`func (o *ItemGeneralInfo) HasManagedKeyDetails() bool`
+
+HasManagedKeyDetails returns a boolean if a field has been set.
+
+### GetRotatedSecretDetails
+
+`func (o *ItemGeneralInfo) GetRotatedSecretDetails() RotatedSecretDetailsInfo`
+
+GetRotatedSecretDetails returns the RotatedSecretDetails field if non-nil, zero value otherwise.
+
+### GetRotatedSecretDetailsOk
+
+`func (o *ItemGeneralInfo) GetRotatedSecretDetailsOk() (*RotatedSecretDetailsInfo, bool)`
+
+GetRotatedSecretDetailsOk returns a tuple with the RotatedSecretDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotatedSecretDetails
+
+`func (o *ItemGeneralInfo) SetRotatedSecretDetails(v RotatedSecretDetailsInfo)`
+
+SetRotatedSecretDetails sets RotatedSecretDetails field to given value.
+
+### HasRotatedSecretDetails
+
+`func (o *ItemGeneralInfo) HasRotatedSecretDetails() bool`
+
+HasRotatedSecretDetails returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
