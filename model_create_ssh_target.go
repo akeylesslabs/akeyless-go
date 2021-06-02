@@ -20,19 +20,23 @@ type CreateSSHTarget struct {
 	// Comment about the target
 	Comment *string `json:"comment,omitempty"`
 	Host *string `json:"host,omitempty"`
+	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
+	Key *string `json:"key,omitempty"`
 	// Target name
 	Name string `json:"name"`
+	// Required only when the authentication process requires a username and password
+	Password *string `json:"password,omitempty"`
 	Port *string `json:"port,omitempty"`
 	PrivateKey *string `json:"private-key,omitempty"`
 	PrivateKeyPassword *string `json:"private-key-password,omitempty"`
-	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
-	ProtectionKey *string `json:"protection_key,omitempty"`
 	SshPassword *string `json:"ssh-password,omitempty"`
 	SshUsername *string `json:"ssh-username,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// Required only when the authentication process requires a username and password
+	Username *string `json:"username,omitempty"`
 }
 
 // NewCreateSSHTarget instantiates a new CreateSSHTarget object
@@ -117,6 +121,38 @@ func (o *CreateSSHTarget) SetHost(v string) {
 	o.Host = &v
 }
 
+// GetKey returns the Key field value if set, zero value otherwise.
+func (o *CreateSSHTarget) GetKey() string {
+	if o == nil || o.Key == nil {
+		var ret string
+		return ret
+	}
+	return *o.Key
+}
+
+// GetKeyOk returns a tuple with the Key field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSSHTarget) GetKeyOk() (*string, bool) {
+	if o == nil || o.Key == nil {
+		return nil, false
+	}
+	return o.Key, true
+}
+
+// HasKey returns a boolean if a field has been set.
+func (o *CreateSSHTarget) HasKey() bool {
+	if o != nil && o.Key != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetKey gets a reference to the given string and assigns it to the Key field.
+func (o *CreateSSHTarget) SetKey(v string) {
+	o.Key = &v
+}
+
 // GetName returns the Name field value
 func (o *CreateSSHTarget) GetName() string {
 	if o == nil  {
@@ -139,6 +175,38 @@ func (o *CreateSSHTarget) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *CreateSSHTarget) SetName(v string) {
 	o.Name = v
+}
+
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *CreateSSHTarget) GetPassword() string {
+	if o == nil || o.Password == nil {
+		var ret string
+		return ret
+	}
+	return *o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSSHTarget) GetPasswordOk() (*string, bool) {
+	if o == nil || o.Password == nil {
+		return nil, false
+	}
+	return o.Password, true
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *CreateSSHTarget) HasPassword() bool {
+	if o != nil && o.Password != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *CreateSSHTarget) SetPassword(v string) {
+	o.Password = &v
 }
 
 // GetPort returns the Port field value if set, zero value otherwise.
@@ -235,38 +303,6 @@ func (o *CreateSSHTarget) HasPrivateKeyPassword() bool {
 // SetPrivateKeyPassword gets a reference to the given string and assigns it to the PrivateKeyPassword field.
 func (o *CreateSSHTarget) SetPrivateKeyPassword(v string) {
 	o.PrivateKeyPassword = &v
-}
-
-// GetProtectionKey returns the ProtectionKey field value if set, zero value otherwise.
-func (o *CreateSSHTarget) GetProtectionKey() string {
-	if o == nil || o.ProtectionKey == nil {
-		var ret string
-		return ret
-	}
-	return *o.ProtectionKey
-}
-
-// GetProtectionKeyOk returns a tuple with the ProtectionKey field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateSSHTarget) GetProtectionKeyOk() (*string, bool) {
-	if o == nil || o.ProtectionKey == nil {
-		return nil, false
-	}
-	return o.ProtectionKey, true
-}
-
-// HasProtectionKey returns a boolean if a field has been set.
-func (o *CreateSSHTarget) HasProtectionKey() bool {
-	if o != nil && o.ProtectionKey != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetProtectionKey gets a reference to the given string and assigns it to the ProtectionKey field.
-func (o *CreateSSHTarget) SetProtectionKey(v string) {
-	o.ProtectionKey = &v
 }
 
 // GetSshPassword returns the SshPassword field value if set, zero value otherwise.
@@ -397,6 +433,38 @@ func (o *CreateSSHTarget) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *CreateSSHTarget) GetUsername() string {
+	if o == nil || o.Username == nil {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSSHTarget) GetUsernameOk() (*string, bool) {
+	if o == nil || o.Username == nil {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *CreateSSHTarget) HasUsername() bool {
+	if o != nil && o.Username != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *CreateSSHTarget) SetUsername(v string) {
+	o.Username = &v
+}
+
 func (o CreateSSHTarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Comment != nil {
@@ -405,8 +473,14 @@ func (o CreateSSHTarget) MarshalJSON() ([]byte, error) {
 	if o.Host != nil {
 		toSerialize["host"] = o.Host
 	}
+	if o.Key != nil {
+		toSerialize["key"] = o.Key
+	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.Password != nil {
+		toSerialize["password"] = o.Password
 	}
 	if o.Port != nil {
 		toSerialize["port"] = o.Port
@@ -416,9 +490,6 @@ func (o CreateSSHTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.PrivateKeyPassword != nil {
 		toSerialize["private-key-password"] = o.PrivateKeyPassword
-	}
-	if o.ProtectionKey != nil {
-		toSerialize["protection_key"] = o.ProtectionKey
 	}
 	if o.SshPassword != nil {
 		toSerialize["ssh-password"] = o.SshPassword
@@ -431,6 +502,9 @@ func (o CreateSSHTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.Username != nil {
+		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Target** | Pointer to [**Target**](Target.md) |  | [optional] 
-**Value** | Pointer to [**TargetTypeDetailesInput**](TargetTypeDetailesInput.md) |  | [optional] 
+**Value** | Pointer to [**TargetTypeDetailsInput**](TargetTypeDetailsInput.md) |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasTarget returns a boolean if a field has been set.
 
 ### GetValue
 
-`func (o *GetTargetDetailsOutput) GetValue() TargetTypeDetailesInput`
+`func (o *GetTargetDetailsOutput) GetValue() TargetTypeDetailsInput`
 
 GetValue returns the Value field if non-nil, zero value otherwise.
 
 ### GetValueOk
 
-`func (o *GetTargetDetailsOutput) GetValueOk() (*TargetTypeDetailesInput, bool)`
+`func (o *GetTargetDetailsOutput) GetValueOk() (*TargetTypeDetailsInput, bool)`
 
 GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValue
 
-`func (o *GetTargetDetailsOutput) SetValue(v TargetTypeDetailesInput)`
+`func (o *GetTargetDetailsOutput) SetValue(v TargetTypeDetailsInput)`
 
 SetValue sets Value field to given value.
 

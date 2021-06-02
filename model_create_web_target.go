@@ -19,16 +19,20 @@ import (
 type CreateWebTarget struct {
 	// Comment about the target
 	Comment *string `json:"comment,omitempty"`
+	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
+	Key *string `json:"key,omitempty"`
 	// Target name
 	Name string `json:"name"`
-	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
-	ProtectionKey *string `json:"protection_key,omitempty"`
+	// Required only when the authentication process requires a username and password
+	Password *string `json:"password,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
 	// The url
 	Url *string `json:"url,omitempty"`
+	// Required only when the authentication process requires a username and password
+	Username *string `json:"username,omitempty"`
 }
 
 // NewCreateWebTarget instantiates a new CreateWebTarget object
@@ -81,6 +85,38 @@ func (o *CreateWebTarget) SetComment(v string) {
 	o.Comment = &v
 }
 
+// GetKey returns the Key field value if set, zero value otherwise.
+func (o *CreateWebTarget) GetKey() string {
+	if o == nil || o.Key == nil {
+		var ret string
+		return ret
+	}
+	return *o.Key
+}
+
+// GetKeyOk returns a tuple with the Key field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateWebTarget) GetKeyOk() (*string, bool) {
+	if o == nil || o.Key == nil {
+		return nil, false
+	}
+	return o.Key, true
+}
+
+// HasKey returns a boolean if a field has been set.
+func (o *CreateWebTarget) HasKey() bool {
+	if o != nil && o.Key != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetKey gets a reference to the given string and assigns it to the Key field.
+func (o *CreateWebTarget) SetKey(v string) {
+	o.Key = &v
+}
+
 // GetName returns the Name field value
 func (o *CreateWebTarget) GetName() string {
 	if o == nil  {
@@ -105,36 +141,36 @@ func (o *CreateWebTarget) SetName(v string) {
 	o.Name = v
 }
 
-// GetProtectionKey returns the ProtectionKey field value if set, zero value otherwise.
-func (o *CreateWebTarget) GetProtectionKey() string {
-	if o == nil || o.ProtectionKey == nil {
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *CreateWebTarget) GetPassword() string {
+	if o == nil || o.Password == nil {
 		var ret string
 		return ret
 	}
-	return *o.ProtectionKey
+	return *o.Password
 }
 
-// GetProtectionKeyOk returns a tuple with the ProtectionKey field value if set, nil otherwise
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateWebTarget) GetProtectionKeyOk() (*string, bool) {
-	if o == nil || o.ProtectionKey == nil {
+func (o *CreateWebTarget) GetPasswordOk() (*string, bool) {
+	if o == nil || o.Password == nil {
 		return nil, false
 	}
-	return o.ProtectionKey, true
+	return o.Password, true
 }
 
-// HasProtectionKey returns a boolean if a field has been set.
-func (o *CreateWebTarget) HasProtectionKey() bool {
-	if o != nil && o.ProtectionKey != nil {
+// HasPassword returns a boolean if a field has been set.
+func (o *CreateWebTarget) HasPassword() bool {
+	if o != nil && o.Password != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetProtectionKey gets a reference to the given string and assigns it to the ProtectionKey field.
-func (o *CreateWebTarget) SetProtectionKey(v string) {
-	o.ProtectionKey = &v
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *CreateWebTarget) SetPassword(v string) {
+	o.Password = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -233,16 +269,51 @@ func (o *CreateWebTarget) SetUrl(v string) {
 	o.Url = &v
 }
 
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *CreateWebTarget) GetUsername() string {
+	if o == nil || o.Username == nil {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateWebTarget) GetUsernameOk() (*string, bool) {
+	if o == nil || o.Username == nil {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *CreateWebTarget) HasUsername() bool {
+	if o != nil && o.Username != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *CreateWebTarget) SetUsername(v string) {
+	o.Username = &v
+}
+
 func (o CreateWebTarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment
 	}
+	if o.Key != nil {
+		toSerialize["key"] = o.Key
+	}
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.ProtectionKey != nil {
-		toSerialize["protection_key"] = o.ProtectionKey
+	if o.Password != nil {
+		toSerialize["password"] = o.Password
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
@@ -252,6 +323,9 @@ func (o CreateWebTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.Url != nil {
 		toSerialize["url"] = o.Url
+	}
+	if o.Username != nil {
+		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

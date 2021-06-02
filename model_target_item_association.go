@@ -19,6 +19,7 @@ import (
 type TargetItemAssociation struct {
 	AssocId *string `json:"assoc_id,omitempty"`
 	ItemName *string `json:"item_name,omitempty"`
+	ItemType *string `json:"item_type,omitempty"`
 }
 
 // NewTargetItemAssociation instantiates a new TargetItemAssociation object
@@ -102,6 +103,38 @@ func (o *TargetItemAssociation) SetItemName(v string) {
 	o.ItemName = &v
 }
 
+// GetItemType returns the ItemType field value if set, zero value otherwise.
+func (o *TargetItemAssociation) GetItemType() string {
+	if o == nil || o.ItemType == nil {
+		var ret string
+		return ret
+	}
+	return *o.ItemType
+}
+
+// GetItemTypeOk returns a tuple with the ItemType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetItemAssociation) GetItemTypeOk() (*string, bool) {
+	if o == nil || o.ItemType == nil {
+		return nil, false
+	}
+	return o.ItemType, true
+}
+
+// HasItemType returns a boolean if a field has been set.
+func (o *TargetItemAssociation) HasItemType() bool {
+	if o != nil && o.ItemType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetItemType gets a reference to the given string and assigns it to the ItemType field.
+func (o *TargetItemAssociation) SetItemType(v string) {
+	o.ItemType = &v
+}
+
 func (o TargetItemAssociation) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AssocId != nil {
@@ -109,6 +142,9 @@ func (o TargetItemAssociation) MarshalJSON() ([]byte, error) {
 	}
 	if o.ItemName != nil {
 		toSerialize["item_name"] = o.ItemName
+	}
+	if o.ItemType != nil {
+		toSerialize["item_type"] = o.ItemType
 	}
 	return json.Marshal(toSerialize)
 }

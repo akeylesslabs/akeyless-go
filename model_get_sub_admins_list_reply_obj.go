@@ -17,7 +17,7 @@ import (
 
 // GetSubAdminsListReplyObj struct for GetSubAdminsListReplyObj
 type GetSubAdminsListReplyObj struct {
-	SubAdmins *[]string `json:"sub_admins,omitempty"`
+	AllowedAccess *map[string]AllowedAccess `json:"allowed_access,omitempty"`
 }
 
 // NewGetSubAdminsListReplyObj instantiates a new GetSubAdminsListReplyObj object
@@ -37,42 +37,42 @@ func NewGetSubAdminsListReplyObjWithDefaults() *GetSubAdminsListReplyObj {
 	return &this
 }
 
-// GetSubAdmins returns the SubAdmins field value if set, zero value otherwise.
-func (o *GetSubAdminsListReplyObj) GetSubAdmins() []string {
-	if o == nil || o.SubAdmins == nil {
-		var ret []string
+// GetAllowedAccess returns the AllowedAccess field value if set, zero value otherwise.
+func (o *GetSubAdminsListReplyObj) GetAllowedAccess() map[string]AllowedAccess {
+	if o == nil || o.AllowedAccess == nil {
+		var ret map[string]AllowedAccess
 		return ret
 	}
-	return *o.SubAdmins
+	return *o.AllowedAccess
 }
 
-// GetSubAdminsOk returns a tuple with the SubAdmins field value if set, nil otherwise
+// GetAllowedAccessOk returns a tuple with the AllowedAccess field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetSubAdminsListReplyObj) GetSubAdminsOk() (*[]string, bool) {
-	if o == nil || o.SubAdmins == nil {
+func (o *GetSubAdminsListReplyObj) GetAllowedAccessOk() (*map[string]AllowedAccess, bool) {
+	if o == nil || o.AllowedAccess == nil {
 		return nil, false
 	}
-	return o.SubAdmins, true
+	return o.AllowedAccess, true
 }
 
-// HasSubAdmins returns a boolean if a field has been set.
-func (o *GetSubAdminsListReplyObj) HasSubAdmins() bool {
-	if o != nil && o.SubAdmins != nil {
+// HasAllowedAccess returns a boolean if a field has been set.
+func (o *GetSubAdminsListReplyObj) HasAllowedAccess() bool {
+	if o != nil && o.AllowedAccess != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetSubAdmins gets a reference to the given []string and assigns it to the SubAdmins field.
-func (o *GetSubAdminsListReplyObj) SetSubAdmins(v []string) {
-	o.SubAdmins = &v
+// SetAllowedAccess gets a reference to the given map[string]AllowedAccess and assigns it to the AllowedAccess field.
+func (o *GetSubAdminsListReplyObj) SetAllowedAccess(v map[string]AllowedAccess) {
+	o.AllowedAccess = &v
 }
 
 func (o GetSubAdminsListReplyObj) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.SubAdmins != nil {
-		toSerialize["sub_admins"] = o.SubAdmins
+	if o.AllowedAccess != nil {
+		toSerialize["allowed_access"] = o.AllowedAccess
 	}
 	return json.Marshal(toSerialize)
 }

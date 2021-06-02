@@ -86,16 +86,18 @@ type DSProducerDetails struct {
 	GcpTokenScope *string `json:"gcp_token_scope,omitempty"`
 	GcpTokenType *string `json:"gcp_token_type,omitempty"`
 	GkeClusterCaCertificate *string `json:"gke_cluster_ca_certificate,omitempty"`
-	GkeClusterComputeZone *string `json:"gke_cluster_compute_zone,omitempty"`
 	GkeClusterEndpoint *string `json:"gke_cluster_endpoint,omitempty"`
+	// GKEProjectID            string `json:\"gke_project_id\"`
 	GkeClusterName *string `json:"gke_cluster_name,omitempty"`
-	GkeProjectId *string `json:"gke_project_id,omitempty"`
 	GkeServiceAccountKey *string `json:"gke_service_account_key,omitempty"`
+	// GKEClusterComputeZone   string `json:\"gke_cluster_compute_zone\"`
 	GkeServiceAccountName *string `json:"gke_service_account_name,omitempty"`
 	Groups *string `json:"groups,omitempty"`
 	HostName *string `json:"host_name,omitempty"`
 	HostPort *string `json:"host_port,omitempty"`
+	ItemTargetsAssoc *[]ItemTargetAssociation `json:"item_targets_assoc,omitempty"`
 	LastAdminRotation *int64 `json:"last_admin_rotation,omitempty"`
+	MongodbAtlas *bool `json:"mongodb_atlas,omitempty"`
 	MongodbAtlasApiPrivateKey *string `json:"mongodb_atlas_api_private_key,omitempty"`
 	MongodbAtlasApiPublicKey *string `json:"mongodb_atlas_api_public_key,omitempty"`
 	// mongodb atlas fields
@@ -106,6 +108,7 @@ type DSProducerDetails struct {
 	MongodbHostPort *string `json:"mongodb_host_port,omitempty"`
 	MongodbIsAtlas *bool `json:"mongodb_is_atlas,omitempty"`
 	MongodbPassword *string `json:"mongodb_password,omitempty"`
+	// common fields
 	MongodbRoles *string `json:"mongodb_roles,omitempty"`
 	// mongodb fields
 	MongodbUriConnection *string `json:"mongodb_uri_connection,omitempty"`
@@ -126,6 +129,10 @@ type DSProducerDetails struct {
 	RabbitmqUserWritePermission *string `json:"rabbitmq_user_write_permission,omitempty"`
 	RevokeSyncUrl *string `json:"revoke_sync_url,omitempty"`
 	RotateSyncUrl *string `json:"rotate_sync_url,omitempty"`
+	SfAccount *string `json:"sf_account,omitempty"`
+	// generated  users info
+	SfUserRole *string `json:"sf_user_role,omitempty"`
+	SfWarehouseName *string `json:"sf_warehouse_name,omitempty"`
 	// TODO delete this after migration
 	ShouldStop *string `json:"should_stop,omitempty"`
 	TimeoutSeconds *int64 `json:"timeout_seconds,omitempty"`
@@ -2307,38 +2314,6 @@ func (o *DSProducerDetails) SetGkeClusterCaCertificate(v string) {
 	o.GkeClusterCaCertificate = &v
 }
 
-// GetGkeClusterComputeZone returns the GkeClusterComputeZone field value if set, zero value otherwise.
-func (o *DSProducerDetails) GetGkeClusterComputeZone() string {
-	if o == nil || o.GkeClusterComputeZone == nil {
-		var ret string
-		return ret
-	}
-	return *o.GkeClusterComputeZone
-}
-
-// GetGkeClusterComputeZoneOk returns a tuple with the GkeClusterComputeZone field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DSProducerDetails) GetGkeClusterComputeZoneOk() (*string, bool) {
-	if o == nil || o.GkeClusterComputeZone == nil {
-		return nil, false
-	}
-	return o.GkeClusterComputeZone, true
-}
-
-// HasGkeClusterComputeZone returns a boolean if a field has been set.
-func (o *DSProducerDetails) HasGkeClusterComputeZone() bool {
-	if o != nil && o.GkeClusterComputeZone != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGkeClusterComputeZone gets a reference to the given string and assigns it to the GkeClusterComputeZone field.
-func (o *DSProducerDetails) SetGkeClusterComputeZone(v string) {
-	o.GkeClusterComputeZone = &v
-}
-
 // GetGkeClusterEndpoint returns the GkeClusterEndpoint field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetGkeClusterEndpoint() string {
 	if o == nil || o.GkeClusterEndpoint == nil {
@@ -2401,38 +2376,6 @@ func (o *DSProducerDetails) HasGkeClusterName() bool {
 // SetGkeClusterName gets a reference to the given string and assigns it to the GkeClusterName field.
 func (o *DSProducerDetails) SetGkeClusterName(v string) {
 	o.GkeClusterName = &v
-}
-
-// GetGkeProjectId returns the GkeProjectId field value if set, zero value otherwise.
-func (o *DSProducerDetails) GetGkeProjectId() string {
-	if o == nil || o.GkeProjectId == nil {
-		var ret string
-		return ret
-	}
-	return *o.GkeProjectId
-}
-
-// GetGkeProjectIdOk returns a tuple with the GkeProjectId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DSProducerDetails) GetGkeProjectIdOk() (*string, bool) {
-	if o == nil || o.GkeProjectId == nil {
-		return nil, false
-	}
-	return o.GkeProjectId, true
-}
-
-// HasGkeProjectId returns a boolean if a field has been set.
-func (o *DSProducerDetails) HasGkeProjectId() bool {
-	if o != nil && o.GkeProjectId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGkeProjectId gets a reference to the given string and assigns it to the GkeProjectId field.
-func (o *DSProducerDetails) SetGkeProjectId(v string) {
-	o.GkeProjectId = &v
 }
 
 // GetGkeServiceAccountKey returns the GkeServiceAccountKey field value if set, zero value otherwise.
@@ -2595,6 +2538,38 @@ func (o *DSProducerDetails) SetHostPort(v string) {
 	o.HostPort = &v
 }
 
+// GetItemTargetsAssoc returns the ItemTargetsAssoc field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetItemTargetsAssoc() []ItemTargetAssociation {
+	if o == nil || o.ItemTargetsAssoc == nil {
+		var ret []ItemTargetAssociation
+		return ret
+	}
+	return *o.ItemTargetsAssoc
+}
+
+// GetItemTargetsAssocOk returns a tuple with the ItemTargetsAssoc field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetItemTargetsAssocOk() (*[]ItemTargetAssociation, bool) {
+	if o == nil || o.ItemTargetsAssoc == nil {
+		return nil, false
+	}
+	return o.ItemTargetsAssoc, true
+}
+
+// HasItemTargetsAssoc returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasItemTargetsAssoc() bool {
+	if o != nil && o.ItemTargetsAssoc != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetItemTargetsAssoc gets a reference to the given []ItemTargetAssociation and assigns it to the ItemTargetsAssoc field.
+func (o *DSProducerDetails) SetItemTargetsAssoc(v []ItemTargetAssociation) {
+	o.ItemTargetsAssoc = &v
+}
+
 // GetLastAdminRotation returns the LastAdminRotation field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetLastAdminRotation() int64 {
 	if o == nil || o.LastAdminRotation == nil {
@@ -2625,6 +2600,38 @@ func (o *DSProducerDetails) HasLastAdminRotation() bool {
 // SetLastAdminRotation gets a reference to the given int64 and assigns it to the LastAdminRotation field.
 func (o *DSProducerDetails) SetLastAdminRotation(v int64) {
 	o.LastAdminRotation = &v
+}
+
+// GetMongodbAtlas returns the MongodbAtlas field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetMongodbAtlas() bool {
+	if o == nil || o.MongodbAtlas == nil {
+		var ret bool
+		return ret
+	}
+	return *o.MongodbAtlas
+}
+
+// GetMongodbAtlasOk returns a tuple with the MongodbAtlas field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetMongodbAtlasOk() (*bool, bool) {
+	if o == nil || o.MongodbAtlas == nil {
+		return nil, false
+	}
+	return o.MongodbAtlas, true
+}
+
+// HasMongodbAtlas returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasMongodbAtlas() bool {
+	if o != nil && o.MongodbAtlas != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMongodbAtlas gets a reference to the given bool and assigns it to the MongodbAtlas field.
+func (o *DSProducerDetails) SetMongodbAtlas(v bool) {
+	o.MongodbAtlas = &v
 }
 
 // GetMongodbAtlasApiPrivateKey returns the MongodbAtlasApiPrivateKey field value if set, zero value otherwise.
@@ -3491,6 +3498,102 @@ func (o *DSProducerDetails) SetRotateSyncUrl(v string) {
 	o.RotateSyncUrl = &v
 }
 
+// GetSfAccount returns the SfAccount field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetSfAccount() string {
+	if o == nil || o.SfAccount == nil {
+		var ret string
+		return ret
+	}
+	return *o.SfAccount
+}
+
+// GetSfAccountOk returns a tuple with the SfAccount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetSfAccountOk() (*string, bool) {
+	if o == nil || o.SfAccount == nil {
+		return nil, false
+	}
+	return o.SfAccount, true
+}
+
+// HasSfAccount returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasSfAccount() bool {
+	if o != nil && o.SfAccount != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSfAccount gets a reference to the given string and assigns it to the SfAccount field.
+func (o *DSProducerDetails) SetSfAccount(v string) {
+	o.SfAccount = &v
+}
+
+// GetSfUserRole returns the SfUserRole field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetSfUserRole() string {
+	if o == nil || o.SfUserRole == nil {
+		var ret string
+		return ret
+	}
+	return *o.SfUserRole
+}
+
+// GetSfUserRoleOk returns a tuple with the SfUserRole field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetSfUserRoleOk() (*string, bool) {
+	if o == nil || o.SfUserRole == nil {
+		return nil, false
+	}
+	return o.SfUserRole, true
+}
+
+// HasSfUserRole returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasSfUserRole() bool {
+	if o != nil && o.SfUserRole != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSfUserRole gets a reference to the given string and assigns it to the SfUserRole field.
+func (o *DSProducerDetails) SetSfUserRole(v string) {
+	o.SfUserRole = &v
+}
+
+// GetSfWarehouseName returns the SfWarehouseName field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetSfWarehouseName() string {
+	if o == nil || o.SfWarehouseName == nil {
+		var ret string
+		return ret
+	}
+	return *o.SfWarehouseName
+}
+
+// GetSfWarehouseNameOk returns a tuple with the SfWarehouseName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetSfWarehouseNameOk() (*string, bool) {
+	if o == nil || o.SfWarehouseName == nil {
+		return nil, false
+	}
+	return o.SfWarehouseName, true
+}
+
+// HasSfWarehouseName returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasSfWarehouseName() bool {
+	if o != nil && o.SfWarehouseName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSfWarehouseName gets a reference to the given string and assigns it to the SfWarehouseName field.
+func (o *DSProducerDetails) SetSfWarehouseName(v string) {
+	o.SfWarehouseName = &v
+}
+
 // GetShouldStop returns the ShouldStop field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetShouldStop() string {
 	if o == nil || o.ShouldStop == nil {
@@ -4238,17 +4341,11 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	if o.GkeClusterCaCertificate != nil {
 		toSerialize["gke_cluster_ca_certificate"] = o.GkeClusterCaCertificate
 	}
-	if o.GkeClusterComputeZone != nil {
-		toSerialize["gke_cluster_compute_zone"] = o.GkeClusterComputeZone
-	}
 	if o.GkeClusterEndpoint != nil {
 		toSerialize["gke_cluster_endpoint"] = o.GkeClusterEndpoint
 	}
 	if o.GkeClusterName != nil {
 		toSerialize["gke_cluster_name"] = o.GkeClusterName
-	}
-	if o.GkeProjectId != nil {
-		toSerialize["gke_project_id"] = o.GkeProjectId
 	}
 	if o.GkeServiceAccountKey != nil {
 		toSerialize["gke_service_account_key"] = o.GkeServiceAccountKey
@@ -4265,8 +4362,14 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	if o.HostPort != nil {
 		toSerialize["host_port"] = o.HostPort
 	}
+	if o.ItemTargetsAssoc != nil {
+		toSerialize["item_targets_assoc"] = o.ItemTargetsAssoc
+	}
 	if o.LastAdminRotation != nil {
 		toSerialize["last_admin_rotation"] = o.LastAdminRotation
+	}
+	if o.MongodbAtlas != nil {
+		toSerialize["mongodb_atlas"] = o.MongodbAtlas
 	}
 	if o.MongodbAtlasApiPrivateKey != nil {
 		toSerialize["mongodb_atlas_api_private_key"] = o.MongodbAtlasApiPrivateKey
@@ -4348,6 +4451,15 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.RotateSyncUrl != nil {
 		toSerialize["rotate_sync_url"] = o.RotateSyncUrl
+	}
+	if o.SfAccount != nil {
+		toSerialize["sf_account"] = o.SfAccount
+	}
+	if o.SfUserRole != nil {
+		toSerialize["sf_user_role"] = o.SfUserRole
+	}
+	if o.SfWarehouseName != nil {
+		toSerialize["sf_warehouse_name"] = o.SfWarehouseName
 	}
 	if o.ShouldStop != nil {
 		toSerialize["should_stop"] = o.ShouldStop

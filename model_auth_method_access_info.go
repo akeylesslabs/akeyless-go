@@ -25,6 +25,8 @@ type AuthMethodAccessInfo struct {
 	AzureAdAccessRules *AzureADAccessRules `json:"azure_ad_access_rules,omitempty"`
 	CidrWhitelist *string `json:"cidr_whitelist,omitempty"`
 	EmailPassAccessRules *EmailPassAccessRules `json:"email_pass_access_rules,omitempty"`
+	// if true the role associated with this auth method must include sub claims
+	ForceSubClaims *bool `json:"force_sub_claims,omitempty"`
 	GcpAccessRules *GCPAccessRules `json:"gcp_access_rules,omitempty"`
 	HuaweiAccessRules *HuaweiAccessRules `json:"huawei_access_rules,omitempty"`
 	LdapAccessRules *LDAPAccessRules `json:"ldap_access_rules,omitempty"`
@@ -275,6 +277,38 @@ func (o *AuthMethodAccessInfo) SetEmailPassAccessRules(v EmailPassAccessRules) {
 	o.EmailPassAccessRules = &v
 }
 
+// GetForceSubClaims returns the ForceSubClaims field value if set, zero value otherwise.
+func (o *AuthMethodAccessInfo) GetForceSubClaims() bool {
+	if o == nil || o.ForceSubClaims == nil {
+		var ret bool
+		return ret
+	}
+	return *o.ForceSubClaims
+}
+
+// GetForceSubClaimsOk returns a tuple with the ForceSubClaims field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodAccessInfo) GetForceSubClaimsOk() (*bool, bool) {
+	if o == nil || o.ForceSubClaims == nil {
+		return nil, false
+	}
+	return o.ForceSubClaims, true
+}
+
+// HasForceSubClaims returns a boolean if a field has been set.
+func (o *AuthMethodAccessInfo) HasForceSubClaims() bool {
+	if o != nil && o.ForceSubClaims != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetForceSubClaims gets a reference to the given bool and assigns it to the ForceSubClaims field.
+func (o *AuthMethodAccessInfo) SetForceSubClaims(v bool) {
+	o.ForceSubClaims = &v
+}
+
 // GetGcpAccessRules returns the GcpAccessRules field value if set, zero value otherwise.
 func (o *AuthMethodAccessInfo) GetGcpAccessRules() GCPAccessRules {
 	if o == nil || o.GcpAccessRules == nil {
@@ -521,6 +555,9 @@ func (o AuthMethodAccessInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.EmailPassAccessRules != nil {
 		toSerialize["email_pass_access_rules"] = o.EmailPassAccessRules
+	}
+	if o.ForceSubClaims != nil {
+		toSerialize["force_sub_claims"] = o.ForceSubClaims
 	}
 	if o.GcpAccessRules != nil {
 		toSerialize["gcp_access_rules"] = o.GcpAccessRules

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Admins** | Pointer to **[]string** |  | [optional] 
+**AllowedAccess** | Pointer to [**map[string]AllowedAccess**](AllowedAccess.md) |  | [optional] 
 
 ## Methods
 
@@ -25,30 +25,30 @@ NewAdminsConfigPartWithDefaults instantiates a new AdminsConfigPart object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetAdmins
+### GetAllowedAccess
 
-`func (o *AdminsConfigPart) GetAdmins() []string`
+`func (o *AdminsConfigPart) GetAllowedAccess() map[string]AllowedAccess`
 
-GetAdmins returns the Admins field if non-nil, zero value otherwise.
+GetAllowedAccess returns the AllowedAccess field if non-nil, zero value otherwise.
 
-### GetAdminsOk
+### GetAllowedAccessOk
 
-`func (o *AdminsConfigPart) GetAdminsOk() (*[]string, bool)`
+`func (o *AdminsConfigPart) GetAllowedAccessOk() (*map[string]AllowedAccess, bool)`
 
-GetAdminsOk returns a tuple with the Admins field if it's non-nil, zero value otherwise
+GetAllowedAccessOk returns a tuple with the AllowedAccess field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAdmins
+### SetAllowedAccess
 
-`func (o *AdminsConfigPart) SetAdmins(v []string)`
+`func (o *AdminsConfigPart) SetAllowedAccess(v map[string]AllowedAccess)`
 
-SetAdmins sets Admins field to given value.
+SetAllowedAccess sets AllowedAccess field to given value.
 
-### HasAdmins
+### HasAllowedAccess
 
-`func (o *AdminsConfigPart) HasAdmins() bool`
+`func (o *AdminsConfigPart) HasAllowedAccess() bool`
 
-HasAdmins returns a boolean if a field has been set.
+HasAllowedAccess returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

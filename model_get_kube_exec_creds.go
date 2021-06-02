@@ -25,12 +25,16 @@ type GetKubeExecCreds struct {
 	CommonName *string `json:"common-name,omitempty"`
 	// PKI key file contents. If this option is used, the certificate will be printed to stdout
 	KeyDataBase64 *string `json:"key-data-base64,omitempty"`
+	// Required only when the authentication process requires a username and password
+	Password *string `json:"password,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
 	// The URI Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list)
 	UriSans *string `json:"uri-sans,omitempty"`
+	// Required only when the authentication process requires a username and password
+	Username *string `json:"username,omitempty"`
 }
 
 // NewGetKubeExecCreds instantiates a new GetKubeExecCreds object
@@ -171,6 +175,38 @@ func (o *GetKubeExecCreds) SetKeyDataBase64(v string) {
 	o.KeyDataBase64 = &v
 }
 
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *GetKubeExecCreds) GetPassword() string {
+	if o == nil || o.Password == nil {
+		var ret string
+		return ret
+	}
+	return *o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetKubeExecCreds) GetPasswordOk() (*string, bool) {
+	if o == nil || o.Password == nil {
+		return nil, false
+	}
+	return o.Password, true
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *GetKubeExecCreds) HasPassword() bool {
+	if o != nil && o.Password != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *GetKubeExecCreds) SetPassword(v string) {
+	o.Password = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *GetKubeExecCreds) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -267,6 +303,38 @@ func (o *GetKubeExecCreds) SetUriSans(v string) {
 	o.UriSans = &v
 }
 
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *GetKubeExecCreds) GetUsername() string {
+	if o == nil || o.Username == nil {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetKubeExecCreds) GetUsernameOk() (*string, bool) {
+	if o == nil || o.Username == nil {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *GetKubeExecCreds) HasUsername() bool {
+	if o != nil && o.Username != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *GetKubeExecCreds) SetUsername(v string) {
+	o.Username = &v
+}
+
 func (o GetKubeExecCreds) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AltNames != nil {
@@ -281,6 +349,9 @@ func (o GetKubeExecCreds) MarshalJSON() ([]byte, error) {
 	if o.KeyDataBase64 != nil {
 		toSerialize["key-data-base64"] = o.KeyDataBase64
 	}
+	if o.Password != nil {
+		toSerialize["password"] = o.Password
+	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
 	}
@@ -289,6 +360,9 @@ func (o GetKubeExecCreds) MarshalJSON() ([]byte, error) {
 	}
 	if o.UriSans != nil {
 		toSerialize["uri-sans"] = o.UriSans
+	}
+	if o.Username != nil {
+		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

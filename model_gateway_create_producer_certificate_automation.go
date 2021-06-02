@@ -31,6 +31,8 @@ type GatewayCreateProducerCertificateAutomation struct {
 	GatewayUrl *string `json:"gateway-url,omitempty"`
 	// Producer name
 	Name string `json:"name"`
+	// Required only when the authentication process requires a username and password
+	Password *string `json:"password,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
 	// Root first in chain
@@ -47,6 +49,8 @@ type GatewayCreateProducerCertificateAutomation struct {
 	UidToken *string `json:"uid-token,omitempty"`
 	// User TTL in time.Duration format (2160h / 129600m / etc...). When using sign-using-akeyless-pki certificates created will have this validity period, otherwise the user-ttl is taken from the Validity Period field of the Zone's' Issuing Template. When using cert-manager it is advised to have a TTL of above 60 days (1440h). For more information - https://cert-manager.io/docs/usage/certificate/
 	UserTtl *string `json:"user-ttl,omitempty"`
+	// Required only when the authentication process requires a username and password
+	Username *string `json:"username,omitempty"`
 	// Venafi API key
 	VenafiApiKey *string `json:"venafi-api-key,omitempty"`
 	// Venafi Baseurl
@@ -308,6 +312,38 @@ func (o *GatewayCreateProducerCertificateAutomation) SetName(v string) {
 	o.Name = v
 }
 
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *GatewayCreateProducerCertificateAutomation) GetPassword() string {
+	if o == nil || o.Password == nil {
+		var ret string
+		return ret
+	}
+	return *o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerCertificateAutomation) GetPasswordOk() (*string, bool) {
+	if o == nil || o.Password == nil {
+		return nil, false
+	}
+	return o.Password, true
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *GatewayCreateProducerCertificateAutomation) HasPassword() bool {
+	if o != nil && o.Password != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *GatewayCreateProducerCertificateAutomation) SetPassword(v string) {
+	o.Password = &v
+}
+
 // GetProducerEncryptionKeyName returns the ProducerEncryptionKeyName field value if set, zero value otherwise.
 func (o *GatewayCreateProducerCertificateAutomation) GetProducerEncryptionKeyName() string {
 	if o == nil || o.ProducerEncryptionKeyName == nil {
@@ -564,6 +600,38 @@ func (o *GatewayCreateProducerCertificateAutomation) SetUserTtl(v string) {
 	o.UserTtl = &v
 }
 
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *GatewayCreateProducerCertificateAutomation) GetUsername() string {
+	if o == nil || o.Username == nil {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerCertificateAutomation) GetUsernameOk() (*string, bool) {
+	if o == nil || o.Username == nil {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *GatewayCreateProducerCertificateAutomation) HasUsername() bool {
+	if o != nil && o.Username != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *GatewayCreateProducerCertificateAutomation) SetUsername(v string) {
+	o.Username = &v
+}
+
 // GetVenafiApiKey returns the VenafiApiKey field value if set, zero value otherwise.
 func (o *GatewayCreateProducerCertificateAutomation) GetVenafiApiKey() string {
 	if o == nil || o.VenafiApiKey == nil {
@@ -771,6 +839,9 @@ func (o GatewayCreateProducerCertificateAutomation) MarshalJSON() ([]byte, error
 	if true {
 		toSerialize["name"] = o.Name
 	}
+	if o.Password != nil {
+		toSerialize["password"] = o.Password
+	}
 	if o.ProducerEncryptionKeyName != nil {
 		toSerialize["producer-encryption-key-name"] = o.ProducerEncryptionKeyName
 	}
@@ -794,6 +865,9 @@ func (o GatewayCreateProducerCertificateAutomation) MarshalJSON() ([]byte, error
 	}
 	if o.UserTtl != nil {
 		toSerialize["user-ttl"] = o.UserTtl
+	}
+	if o.Username != nil {
+		toSerialize["username"] = o.Username
 	}
 	if o.VenafiApiKey != nil {
 		toSerialize["venafi-api-key"] = o.VenafiApiKey

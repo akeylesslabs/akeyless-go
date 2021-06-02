@@ -19,17 +19,21 @@ import (
 type CreateRabbitMQTarget struct {
 	// Comment about the target
 	Comment *string `json:"comment,omitempty"`
+	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
+	Key *string `json:"key,omitempty"`
 	// Target name
 	Name string `json:"name"`
-	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
-	ProtectionKey *string `json:"protection_key,omitempty"`
-	RabbitmqServerPassword *string `json:"rabbitmq_server_password,omitempty"`
-	RabbitmqServerUri *string `json:"rabbitmq_server_uri,omitempty"`
-	RabbitmqServerUser *string `json:"rabbitmq_server_user,omitempty"`
+	// Required only when the authentication process requires a username and password
+	Password *string `json:"password,omitempty"`
+	RabbitmqServerPassword *string `json:"rabbitmq-server-password,omitempty"`
+	RabbitmqServerUri *string `json:"rabbitmq-server-uri,omitempty"`
+	RabbitmqServerUser *string `json:"rabbitmq-server-user,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// Required only when the authentication process requires a username and password
+	Username *string `json:"username,omitempty"`
 }
 
 // NewCreateRabbitMQTarget instantiates a new CreateRabbitMQTarget object
@@ -82,6 +86,38 @@ func (o *CreateRabbitMQTarget) SetComment(v string) {
 	o.Comment = &v
 }
 
+// GetKey returns the Key field value if set, zero value otherwise.
+func (o *CreateRabbitMQTarget) GetKey() string {
+	if o == nil || o.Key == nil {
+		var ret string
+		return ret
+	}
+	return *o.Key
+}
+
+// GetKeyOk returns a tuple with the Key field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRabbitMQTarget) GetKeyOk() (*string, bool) {
+	if o == nil || o.Key == nil {
+		return nil, false
+	}
+	return o.Key, true
+}
+
+// HasKey returns a boolean if a field has been set.
+func (o *CreateRabbitMQTarget) HasKey() bool {
+	if o != nil && o.Key != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetKey gets a reference to the given string and assigns it to the Key field.
+func (o *CreateRabbitMQTarget) SetKey(v string) {
+	o.Key = &v
+}
+
 // GetName returns the Name field value
 func (o *CreateRabbitMQTarget) GetName() string {
 	if o == nil  {
@@ -106,36 +142,36 @@ func (o *CreateRabbitMQTarget) SetName(v string) {
 	o.Name = v
 }
 
-// GetProtectionKey returns the ProtectionKey field value if set, zero value otherwise.
-func (o *CreateRabbitMQTarget) GetProtectionKey() string {
-	if o == nil || o.ProtectionKey == nil {
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *CreateRabbitMQTarget) GetPassword() string {
+	if o == nil || o.Password == nil {
 		var ret string
 		return ret
 	}
-	return *o.ProtectionKey
+	return *o.Password
 }
 
-// GetProtectionKeyOk returns a tuple with the ProtectionKey field value if set, nil otherwise
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateRabbitMQTarget) GetProtectionKeyOk() (*string, bool) {
-	if o == nil || o.ProtectionKey == nil {
+func (o *CreateRabbitMQTarget) GetPasswordOk() (*string, bool) {
+	if o == nil || o.Password == nil {
 		return nil, false
 	}
-	return o.ProtectionKey, true
+	return o.Password, true
 }
 
-// HasProtectionKey returns a boolean if a field has been set.
-func (o *CreateRabbitMQTarget) HasProtectionKey() bool {
-	if o != nil && o.ProtectionKey != nil {
+// HasPassword returns a boolean if a field has been set.
+func (o *CreateRabbitMQTarget) HasPassword() bool {
+	if o != nil && o.Password != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetProtectionKey gets a reference to the given string and assigns it to the ProtectionKey field.
-func (o *CreateRabbitMQTarget) SetProtectionKey(v string) {
-	o.ProtectionKey = &v
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *CreateRabbitMQTarget) SetPassword(v string) {
+	o.Password = &v
 }
 
 // GetRabbitmqServerPassword returns the RabbitmqServerPassword field value if set, zero value otherwise.
@@ -298,31 +334,69 @@ func (o *CreateRabbitMQTarget) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *CreateRabbitMQTarget) GetUsername() string {
+	if o == nil || o.Username == nil {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRabbitMQTarget) GetUsernameOk() (*string, bool) {
+	if o == nil || o.Username == nil {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *CreateRabbitMQTarget) HasUsername() bool {
+	if o != nil && o.Username != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *CreateRabbitMQTarget) SetUsername(v string) {
+	o.Username = &v
+}
+
 func (o CreateRabbitMQTarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment
 	}
+	if o.Key != nil {
+		toSerialize["key"] = o.Key
+	}
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.ProtectionKey != nil {
-		toSerialize["protection_key"] = o.ProtectionKey
+	if o.Password != nil {
+		toSerialize["password"] = o.Password
 	}
 	if o.RabbitmqServerPassword != nil {
-		toSerialize["rabbitmq_server_password"] = o.RabbitmqServerPassword
+		toSerialize["rabbitmq-server-password"] = o.RabbitmqServerPassword
 	}
 	if o.RabbitmqServerUri != nil {
-		toSerialize["rabbitmq_server_uri"] = o.RabbitmqServerUri
+		toSerialize["rabbitmq-server-uri"] = o.RabbitmqServerUri
 	}
 	if o.RabbitmqServerUser != nil {
-		toSerialize["rabbitmq_server_user"] = o.RabbitmqServerUser
+		toSerialize["rabbitmq-server-user"] = o.RabbitmqServerUser
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.Username != nil {
+		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

@@ -21,6 +21,8 @@ type UpdateWebTargetDetails struct {
 	Name string `json:"name"`
 	// Whether to create a new version of not
 	NewVersion *bool `json:"new-version,omitempty"`
+	// Required only when the authentication process requires a username and password
+	Password *string `json:"password,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	ProtectionKey *string `json:"protection_key,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -28,6 +30,8 @@ type UpdateWebTargetDetails struct {
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
 	Url *string `json:"url,omitempty"`
+	// Required only when the authentication process requires a username and password
+	Username *string `json:"username,omitempty"`
 }
 
 // NewUpdateWebTargetDetails instantiates a new UpdateWebTargetDetails object
@@ -106,6 +110,38 @@ func (o *UpdateWebTargetDetails) HasNewVersion() bool {
 // SetNewVersion gets a reference to the given bool and assigns it to the NewVersion field.
 func (o *UpdateWebTargetDetails) SetNewVersion(v bool) {
 	o.NewVersion = &v
+}
+
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *UpdateWebTargetDetails) GetPassword() string {
+	if o == nil || o.Password == nil {
+		var ret string
+		return ret
+	}
+	return *o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateWebTargetDetails) GetPasswordOk() (*string, bool) {
+	if o == nil || o.Password == nil {
+		return nil, false
+	}
+	return o.Password, true
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *UpdateWebTargetDetails) HasPassword() bool {
+	if o != nil && o.Password != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *UpdateWebTargetDetails) SetPassword(v string) {
+	o.Password = &v
 }
 
 // GetProtectionKey returns the ProtectionKey field value if set, zero value otherwise.
@@ -236,6 +272,38 @@ func (o *UpdateWebTargetDetails) SetUrl(v string) {
 	o.Url = &v
 }
 
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *UpdateWebTargetDetails) GetUsername() string {
+	if o == nil || o.Username == nil {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateWebTargetDetails) GetUsernameOk() (*string, bool) {
+	if o == nil || o.Username == nil {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *UpdateWebTargetDetails) HasUsername() bool {
+	if o != nil && o.Username != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *UpdateWebTargetDetails) SetUsername(v string) {
+	o.Username = &v
+}
+
 func (o UpdateWebTargetDetails) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -243,6 +311,9 @@ func (o UpdateWebTargetDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.NewVersion != nil {
 		toSerialize["new-version"] = o.NewVersion
+	}
+	if o.Password != nil {
+		toSerialize["password"] = o.Password
 	}
 	if o.ProtectionKey != nil {
 		toSerialize["protection_key"] = o.ProtectionKey
@@ -255,6 +326,9 @@ func (o UpdateWebTargetDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.Url != nil {
 		toSerialize["url"] = o.Url
+	}
+	if o.Username != nil {
+		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

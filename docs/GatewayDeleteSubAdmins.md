@@ -5,15 +5,17 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **GatewayUrl** | Pointer to **string** | Gateway url | [optional] [default to "http://localhost:8000"]
-**SubAdmin** | **[]string** | SubAdmins to be removed | 
+**Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
+**SubAdminId** | **string** | SubAdminID to be removed | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 
 ## Methods
 
 ### NewGatewayDeleteSubAdmins
 
-`func NewGatewayDeleteSubAdmins(subAdmin []string, ) *GatewayDeleteSubAdmins`
+`func NewGatewayDeleteSubAdmins(subAdminId string, ) *GatewayDeleteSubAdmins`
 
 NewGatewayDeleteSubAdmins instantiates a new GatewayDeleteSubAdmins object
 This constructor will assign default values to properties that have it defined,
@@ -53,24 +55,49 @@ SetGatewayUrl sets GatewayUrl field to given value.
 
 HasGatewayUrl returns a boolean if a field has been set.
 
-### GetSubAdmin
+### GetPassword
 
-`func (o *GatewayDeleteSubAdmins) GetSubAdmin() []string`
+`func (o *GatewayDeleteSubAdmins) GetPassword() string`
 
-GetSubAdmin returns the SubAdmin field if non-nil, zero value otherwise.
+GetPassword returns the Password field if non-nil, zero value otherwise.
 
-### GetSubAdminOk
+### GetPasswordOk
 
-`func (o *GatewayDeleteSubAdmins) GetSubAdminOk() (*[]string, bool)`
+`func (o *GatewayDeleteSubAdmins) GetPasswordOk() (*string, bool)`
 
-GetSubAdminOk returns a tuple with the SubAdmin field if it's non-nil, zero value otherwise
+GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSubAdmin
+### SetPassword
 
-`func (o *GatewayDeleteSubAdmins) SetSubAdmin(v []string)`
+`func (o *GatewayDeleteSubAdmins) SetPassword(v string)`
 
-SetSubAdmin sets SubAdmin field to given value.
+SetPassword sets Password field to given value.
+
+### HasPassword
+
+`func (o *GatewayDeleteSubAdmins) HasPassword() bool`
+
+HasPassword returns a boolean if a field has been set.
+
+### GetSubAdminId
+
+`func (o *GatewayDeleteSubAdmins) GetSubAdminId() string`
+
+GetSubAdminId returns the SubAdminId field if non-nil, zero value otherwise.
+
+### GetSubAdminIdOk
+
+`func (o *GatewayDeleteSubAdmins) GetSubAdminIdOk() (*string, bool)`
+
+GetSubAdminIdOk returns a tuple with the SubAdminId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSubAdminId
+
+`func (o *GatewayDeleteSubAdmins) SetSubAdminId(v string)`
+
+SetSubAdminId sets SubAdminId field to given value.
 
 
 ### GetToken
@@ -122,6 +149,31 @@ SetUidToken sets UidToken field to given value.
 `func (o *GatewayDeleteSubAdmins) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetUsername
+
+`func (o *GatewayDeleteSubAdmins) GetUsername() string`
+
+GetUsername returns the Username field if non-nil, zero value otherwise.
+
+### GetUsernameOk
+
+`func (o *GatewayDeleteSubAdmins) GetUsernameOk() (*string, bool)`
+
+GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsername
+
+`func (o *GatewayDeleteSubAdmins) SetUsername(v string)`
+
+SetUsername sets Username field to given value.
+
+### HasUsername
+
+`func (o *GatewayDeleteSubAdmins) HasUsername() bool`
+
+HasUsername returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

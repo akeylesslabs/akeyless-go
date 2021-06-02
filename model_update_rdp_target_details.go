@@ -25,12 +25,16 @@ type UpdateRDPTargetDetails struct {
 	Name string `json:"name"`
 	// Whether to create a new version of not
 	NewVersion *bool `json:"new-version,omitempty"`
+	// Required only when the authentication process requires a username and password
+	Password *string `json:"password,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	ProtectionKey *string `json:"protection_key,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// Required only when the authentication process requires a username and password
+	Username *string `json:"username,omitempty"`
 }
 
 // NewUpdateRDPTargetDetails instantiates a new UpdateRDPTargetDetails object
@@ -239,6 +243,38 @@ func (o *UpdateRDPTargetDetails) SetNewVersion(v bool) {
 	o.NewVersion = &v
 }
 
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *UpdateRDPTargetDetails) GetPassword() string {
+	if o == nil || o.Password == nil {
+		var ret string
+		return ret
+	}
+	return *o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRDPTargetDetails) GetPasswordOk() (*string, bool) {
+	if o == nil || o.Password == nil {
+		return nil, false
+	}
+	return o.Password, true
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *UpdateRDPTargetDetails) HasPassword() bool {
+	if o != nil && o.Password != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *UpdateRDPTargetDetails) SetPassword(v string) {
+	o.Password = &v
+}
+
 // GetProtectionKey returns the ProtectionKey field value if set, zero value otherwise.
 func (o *UpdateRDPTargetDetails) GetProtectionKey() string {
 	if o == nil || o.ProtectionKey == nil {
@@ -335,6 +371,38 @@ func (o *UpdateRDPTargetDetails) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *UpdateRDPTargetDetails) GetUsername() string {
+	if o == nil || o.Username == nil {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRDPTargetDetails) GetUsernameOk() (*string, bool) {
+	if o == nil || o.Username == nil {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *UpdateRDPTargetDetails) HasUsername() bool {
+	if o != nil && o.Username != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *UpdateRDPTargetDetails) SetUsername(v string) {
+	o.Username = &v
+}
+
 func (o UpdateRDPTargetDetails) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AdminName != nil {
@@ -355,6 +423,9 @@ func (o UpdateRDPTargetDetails) MarshalJSON() ([]byte, error) {
 	if o.NewVersion != nil {
 		toSerialize["new-version"] = o.NewVersion
 	}
+	if o.Password != nil {
+		toSerialize["password"] = o.Password
+	}
 	if o.ProtectionKey != nil {
 		toSerialize["protection_key"] = o.ProtectionKey
 	}
@@ -363,6 +434,9 @@ func (o UpdateRDPTargetDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.Username != nil {
+		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

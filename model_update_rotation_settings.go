@@ -21,12 +21,16 @@ type UpdateRotationSettings struct {
 	AutoRotate bool `json:"auto-rotate"`
 	// Key name
 	Name string `json:"name"`
+	// Required only when the authentication process requires a username and password
+	Password *string `json:"password,omitempty"`
 	// The number of days to wait between every automatic key rotation (7-365)
 	RotationInterval *int64 `json:"rotation-interval,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// Required only when the authentication process requires a username and password
+	Username *string `json:"username,omitempty"`
 }
 
 // NewUpdateRotationSettings instantiates a new UpdateRotationSettings object
@@ -94,6 +98,38 @@ func (o *UpdateRotationSettings) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *UpdateRotationSettings) SetName(v string) {
 	o.Name = v
+}
+
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *UpdateRotationSettings) GetPassword() string {
+	if o == nil || o.Password == nil {
+		var ret string
+		return ret
+	}
+	return *o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotationSettings) GetPasswordOk() (*string, bool) {
+	if o == nil || o.Password == nil {
+		return nil, false
+	}
+	return o.Password, true
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *UpdateRotationSettings) HasPassword() bool {
+	if o != nil && o.Password != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *UpdateRotationSettings) SetPassword(v string) {
+	o.Password = &v
 }
 
 // GetRotationInterval returns the RotationInterval field value if set, zero value otherwise.
@@ -192,6 +228,38 @@ func (o *UpdateRotationSettings) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *UpdateRotationSettings) GetUsername() string {
+	if o == nil || o.Username == nil {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotationSettings) GetUsernameOk() (*string, bool) {
+	if o == nil || o.Username == nil {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *UpdateRotationSettings) HasUsername() bool {
+	if o != nil && o.Username != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *UpdateRotationSettings) SetUsername(v string) {
+	o.Username = &v
+}
+
 func (o UpdateRotationSettings) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -199,6 +267,9 @@ func (o UpdateRotationSettings) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.Password != nil {
+		toSerialize["password"] = o.Password
 	}
 	if o.RotationInterval != nil {
 		toSerialize["rotation-interval"] = o.RotationInterval
@@ -208,6 +279,9 @@ func (o UpdateRotationSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.Username != nil {
+		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

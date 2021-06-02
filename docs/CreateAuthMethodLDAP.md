@@ -6,16 +6,18 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessExpires** | Pointer to **int64** | Access expiration date in Unix timestamp (select 0 for access without expiry date) | [optional] [default to 0]
 **BoundIps** | Pointer to **[]string** | A CIDR whitelist of the IPs that the access is restricted to | [optional] 
+**ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
 **Name** | **string** | Auth Method name | 
-**PublicKeyFilePath** | **string** | A public key generated for LDAP authentication method on Akeyless [RSA2048] | 
+**Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 
 ## Methods
 
 ### NewCreateAuthMethodLDAP
 
-`func NewCreateAuthMethodLDAP(name string, publicKeyFilePath string, ) *CreateAuthMethodLDAP`
+`func NewCreateAuthMethodLDAP(name string, ) *CreateAuthMethodLDAP`
 
 NewCreateAuthMethodLDAP instantiates a new CreateAuthMethodLDAP object
 This constructor will assign default values to properties that have it defined,
@@ -80,6 +82,31 @@ SetBoundIps sets BoundIps field to given value.
 
 HasBoundIps returns a boolean if a field has been set.
 
+### GetForceSubClaims
+
+`func (o *CreateAuthMethodLDAP) GetForceSubClaims() bool`
+
+GetForceSubClaims returns the ForceSubClaims field if non-nil, zero value otherwise.
+
+### GetForceSubClaimsOk
+
+`func (o *CreateAuthMethodLDAP) GetForceSubClaimsOk() (*bool, bool)`
+
+GetForceSubClaimsOk returns a tuple with the ForceSubClaims field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetForceSubClaims
+
+`func (o *CreateAuthMethodLDAP) SetForceSubClaims(v bool)`
+
+SetForceSubClaims sets ForceSubClaims field to given value.
+
+### HasForceSubClaims
+
+`func (o *CreateAuthMethodLDAP) HasForceSubClaims() bool`
+
+HasForceSubClaims returns a boolean if a field has been set.
+
 ### GetName
 
 `func (o *CreateAuthMethodLDAP) GetName() string`
@@ -100,25 +127,30 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### GetPublicKeyFilePath
+### GetPassword
 
-`func (o *CreateAuthMethodLDAP) GetPublicKeyFilePath() string`
+`func (o *CreateAuthMethodLDAP) GetPassword() string`
 
-GetPublicKeyFilePath returns the PublicKeyFilePath field if non-nil, zero value otherwise.
+GetPassword returns the Password field if non-nil, zero value otherwise.
 
-### GetPublicKeyFilePathOk
+### GetPasswordOk
 
-`func (o *CreateAuthMethodLDAP) GetPublicKeyFilePathOk() (*string, bool)`
+`func (o *CreateAuthMethodLDAP) GetPasswordOk() (*string, bool)`
 
-GetPublicKeyFilePathOk returns a tuple with the PublicKeyFilePath field if it's non-nil, zero value otherwise
+GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPublicKeyFilePath
+### SetPassword
 
-`func (o *CreateAuthMethodLDAP) SetPublicKeyFilePath(v string)`
+`func (o *CreateAuthMethodLDAP) SetPassword(v string)`
 
-SetPublicKeyFilePath sets PublicKeyFilePath field to given value.
+SetPassword sets Password field to given value.
 
+### HasPassword
+
+`func (o *CreateAuthMethodLDAP) HasPassword() bool`
+
+HasPassword returns a boolean if a field has been set.
 
 ### GetToken
 
@@ -169,6 +201,31 @@ SetUidToken sets UidToken field to given value.
 `func (o *CreateAuthMethodLDAP) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetUsername
+
+`func (o *CreateAuthMethodLDAP) GetUsername() string`
+
+GetUsername returns the Username field if non-nil, zero value otherwise.
+
+### GetUsernameOk
+
+`func (o *CreateAuthMethodLDAP) GetUsernameOk() (*string, bool)`
+
+GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsername
+
+`func (o *CreateAuthMethodLDAP) SetUsername(v string)`
+
+SetUsername sets Username field to given value.
+
+### HasUsername
+
+`func (o *CreateAuthMethodLDAP) HasUsername() bool`
+
+HasUsername returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

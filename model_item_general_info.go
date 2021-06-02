@@ -18,8 +18,8 @@ import (
 // ItemGeneralInfo struct for ItemGeneralInfo
 type ItemGeneralInfo struct {
 	CertIssueDetails *CertificateIssueInfo `json:"cert_issue_details,omitempty"`
+	ClassicKeyDetails *ClassicKeyDetailsInfo `json:"classic_key_details,omitempty"`
 	DynamicSecretProducerDetails *DynamicSecretProducerInfo `json:"dynamic_secret_producer_details,omitempty"`
-	ManagedKeyDetails *ManagedKeyDetailsInfo `json:"managed_key_details,omitempty"`
 	RotatedSecretDetails *RotatedSecretDetailsInfo `json:"rotated_secret_details,omitempty"`
 }
 
@@ -72,6 +72,38 @@ func (o *ItemGeneralInfo) SetCertIssueDetails(v CertificateIssueInfo) {
 	o.CertIssueDetails = &v
 }
 
+// GetClassicKeyDetails returns the ClassicKeyDetails field value if set, zero value otherwise.
+func (o *ItemGeneralInfo) GetClassicKeyDetails() ClassicKeyDetailsInfo {
+	if o == nil || o.ClassicKeyDetails == nil {
+		var ret ClassicKeyDetailsInfo
+		return ret
+	}
+	return *o.ClassicKeyDetails
+}
+
+// GetClassicKeyDetailsOk returns a tuple with the ClassicKeyDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ItemGeneralInfo) GetClassicKeyDetailsOk() (*ClassicKeyDetailsInfo, bool) {
+	if o == nil || o.ClassicKeyDetails == nil {
+		return nil, false
+	}
+	return o.ClassicKeyDetails, true
+}
+
+// HasClassicKeyDetails returns a boolean if a field has been set.
+func (o *ItemGeneralInfo) HasClassicKeyDetails() bool {
+	if o != nil && o.ClassicKeyDetails != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetClassicKeyDetails gets a reference to the given ClassicKeyDetailsInfo and assigns it to the ClassicKeyDetails field.
+func (o *ItemGeneralInfo) SetClassicKeyDetails(v ClassicKeyDetailsInfo) {
+	o.ClassicKeyDetails = &v
+}
+
 // GetDynamicSecretProducerDetails returns the DynamicSecretProducerDetails field value if set, zero value otherwise.
 func (o *ItemGeneralInfo) GetDynamicSecretProducerDetails() DynamicSecretProducerInfo {
 	if o == nil || o.DynamicSecretProducerDetails == nil {
@@ -102,38 +134,6 @@ func (o *ItemGeneralInfo) HasDynamicSecretProducerDetails() bool {
 // SetDynamicSecretProducerDetails gets a reference to the given DynamicSecretProducerInfo and assigns it to the DynamicSecretProducerDetails field.
 func (o *ItemGeneralInfo) SetDynamicSecretProducerDetails(v DynamicSecretProducerInfo) {
 	o.DynamicSecretProducerDetails = &v
-}
-
-// GetManagedKeyDetails returns the ManagedKeyDetails field value if set, zero value otherwise.
-func (o *ItemGeneralInfo) GetManagedKeyDetails() ManagedKeyDetailsInfo {
-	if o == nil || o.ManagedKeyDetails == nil {
-		var ret ManagedKeyDetailsInfo
-		return ret
-	}
-	return *o.ManagedKeyDetails
-}
-
-// GetManagedKeyDetailsOk returns a tuple with the ManagedKeyDetails field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ItemGeneralInfo) GetManagedKeyDetailsOk() (*ManagedKeyDetailsInfo, bool) {
-	if o == nil || o.ManagedKeyDetails == nil {
-		return nil, false
-	}
-	return o.ManagedKeyDetails, true
-}
-
-// HasManagedKeyDetails returns a boolean if a field has been set.
-func (o *ItemGeneralInfo) HasManagedKeyDetails() bool {
-	if o != nil && o.ManagedKeyDetails != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetManagedKeyDetails gets a reference to the given ManagedKeyDetailsInfo and assigns it to the ManagedKeyDetails field.
-func (o *ItemGeneralInfo) SetManagedKeyDetails(v ManagedKeyDetailsInfo) {
-	o.ManagedKeyDetails = &v
 }
 
 // GetRotatedSecretDetails returns the RotatedSecretDetails field value if set, zero value otherwise.
@@ -173,11 +173,11 @@ func (o ItemGeneralInfo) MarshalJSON() ([]byte, error) {
 	if o.CertIssueDetails != nil {
 		toSerialize["cert_issue_details"] = o.CertIssueDetails
 	}
+	if o.ClassicKeyDetails != nil {
+		toSerialize["classic_key_details"] = o.ClassicKeyDetails
+	}
 	if o.DynamicSecretProducerDetails != nil {
 		toSerialize["dynamic_secret_producer_details"] = o.DynamicSecretProducerDetails
-	}
-	if o.ManagedKeyDetails != nil {
-		toSerialize["managed_key_details"] = o.ManagedKeyDetails
 	}
 	if o.RotatedSecretDetails != nil {
 		toSerialize["rotated_secret_details"] = o.RotatedSecretDetails

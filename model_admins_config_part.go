@@ -17,7 +17,7 @@ import (
 
 // AdminsConfigPart struct for AdminsConfigPart
 type AdminsConfigPart struct {
-	Admins *[]string `json:"admins,omitempty"`
+	AllowedAccess *map[string]AllowedAccess `json:"allowed_access,omitempty"`
 }
 
 // NewAdminsConfigPart instantiates a new AdminsConfigPart object
@@ -37,42 +37,42 @@ func NewAdminsConfigPartWithDefaults() *AdminsConfigPart {
 	return &this
 }
 
-// GetAdmins returns the Admins field value if set, zero value otherwise.
-func (o *AdminsConfigPart) GetAdmins() []string {
-	if o == nil || o.Admins == nil {
-		var ret []string
+// GetAllowedAccess returns the AllowedAccess field value if set, zero value otherwise.
+func (o *AdminsConfigPart) GetAllowedAccess() map[string]AllowedAccess {
+	if o == nil || o.AllowedAccess == nil {
+		var ret map[string]AllowedAccess
 		return ret
 	}
-	return *o.Admins
+	return *o.AllowedAccess
 }
 
-// GetAdminsOk returns a tuple with the Admins field value if set, nil otherwise
+// GetAllowedAccessOk returns a tuple with the AllowedAccess field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AdminsConfigPart) GetAdminsOk() (*[]string, bool) {
-	if o == nil || o.Admins == nil {
+func (o *AdminsConfigPart) GetAllowedAccessOk() (*map[string]AllowedAccess, bool) {
+	if o == nil || o.AllowedAccess == nil {
 		return nil, false
 	}
-	return o.Admins, true
+	return o.AllowedAccess, true
 }
 
-// HasAdmins returns a boolean if a field has been set.
-func (o *AdminsConfigPart) HasAdmins() bool {
-	if o != nil && o.Admins != nil {
+// HasAllowedAccess returns a boolean if a field has been set.
+func (o *AdminsConfigPart) HasAllowedAccess() bool {
+	if o != nil && o.AllowedAccess != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAdmins gets a reference to the given []string and assigns it to the Admins field.
-func (o *AdminsConfigPart) SetAdmins(v []string) {
-	o.Admins = &v
+// SetAllowedAccess gets a reference to the given map[string]AllowedAccess and assigns it to the AllowedAccess field.
+func (o *AdminsConfigPart) SetAllowedAccess(v map[string]AllowedAccess) {
+	o.AllowedAccess = &v
 }
 
 func (o AdminsConfigPart) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Admins != nil {
-		toSerialize["admins"] = o.Admins
+	if o.AllowedAccess != nil {
+		toSerialize["allowed_access"] = o.AllowedAccess
 	}
 	return json.Marshal(toSerialize)
 }

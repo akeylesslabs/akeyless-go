@@ -27,12 +27,16 @@ type UidCreateChildToken struct {
 	ChildTtl *int32 `json:"child-ttl,omitempty"`
 	// New Token comment
 	Comment *string `json:"comment,omitempty"`
+	// Required only when the authentication process requires a username and password
+	Password *string `json:"password,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
 	// The ID of the uid-token, required only when uid-token is not provided
 	UidTokenId *string `json:"uid-token-id,omitempty"`
+	// Required only when the authentication process requires a username and password
+	Username *string `json:"username,omitempty"`
 }
 
 // NewUidCreateChildToken instantiates a new UidCreateChildToken object
@@ -212,6 +216,38 @@ func (o *UidCreateChildToken) SetComment(v string) {
 	o.Comment = &v
 }
 
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *UidCreateChildToken) GetPassword() string {
+	if o == nil || o.Password == nil {
+		var ret string
+		return ret
+	}
+	return *o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UidCreateChildToken) GetPasswordOk() (*string, bool) {
+	if o == nil || o.Password == nil {
+		return nil, false
+	}
+	return o.Password, true
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *UidCreateChildToken) HasPassword() bool {
+	if o != nil && o.Password != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *UidCreateChildToken) SetPassword(v string) {
+	o.Password = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *UidCreateChildToken) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -308,6 +344,38 @@ func (o *UidCreateChildToken) SetUidTokenId(v string) {
 	o.UidTokenId = &v
 }
 
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *UidCreateChildToken) GetUsername() string {
+	if o == nil || o.Username == nil {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UidCreateChildToken) GetUsernameOk() (*string, bool) {
+	if o == nil || o.Username == nil {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *UidCreateChildToken) HasUsername() bool {
+	if o != nil && o.Username != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *UidCreateChildToken) SetUsername(v string) {
+	o.Username = &v
+}
+
 func (o UidCreateChildToken) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AuthMethodName != nil {
@@ -325,6 +393,9 @@ func (o UidCreateChildToken) MarshalJSON() ([]byte, error) {
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment
 	}
+	if o.Password != nil {
+		toSerialize["password"] = o.Password
+	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
 	}
@@ -333,6 +404,9 @@ func (o UidCreateChildToken) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidTokenId != nil {
 		toSerialize["uid-token-id"] = o.UidTokenId
+	}
+	if o.Username != nil {
+		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

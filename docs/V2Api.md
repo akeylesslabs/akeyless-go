@@ -8,6 +8,8 @@ Method | HTTP request | Description
 [**AssocTargetItem**](V2Api.md#AssocTargetItem) | **Post** /assoc-target-item | 
 [**Auth**](V2Api.md#Auth) | **Post** /auth | 
 [**Configure**](V2Api.md#Configure) | **Post** /configure | 
+[**CreateAWSTarget**](V2Api.md#CreateAWSTarget) | **Post** /create-aws-target | 
+[**CreateArtifactoryTarget**](V2Api.md#CreateArtifactoryTarget) | **Post** /create-artifactory-target | 
 [**CreateAuthMethod**](V2Api.md#CreateAuthMethod) | **Post** /create-auth-method | 
 [**CreateAuthMethodAWSIAM**](V2Api.md#CreateAuthMethodAWSIAM) | **Post** /create-auth-method-aws-iam | 
 [**CreateAuthMethodAzureAD**](V2Api.md#CreateAuthMethodAzureAD) | **Post** /create-auth-method-azure-ad | 
@@ -16,20 +18,22 @@ Method | HTTP request | Description
 [**CreateAuthMethodOAuth2**](V2Api.md#CreateAuthMethodOAuth2) | **Post** /create-auth-method-oauth2 | 
 [**CreateAuthMethodSAML**](V2Api.md#CreateAuthMethodSAML) | **Post** /create-auth-method-saml | 
 [**CreateAuthMethodUniversalIdentity**](V2Api.md#CreateAuthMethodUniversalIdentity) | **Post** /create-auth-method-universal-identity | 
-[**CreateAwsTarget**](V2Api.md#CreateAwsTarget) | **Post** /create-aws-target | 
+[**CreateAzureTarget**](V2Api.md#CreateAzureTarget) | **Post** /create-azure-target | 
+[**CreateClassicKey**](V2Api.md#CreateClassicKey) | **Post** /create-classic-key | 
 [**CreateDBTarget**](V2Api.md#CreateDBTarget) | **Post** /create-db-target | 
+[**CreateDFCKey**](V2Api.md#CreateDFCKey) | **Post** /create-dfc-key | 
 [**CreateDynamicSecret**](V2Api.md#CreateDynamicSecret) | **Post** /create-dynamic-secret | 
+[**CreateEKSTarget**](V2Api.md#CreateEKSTarget) | **Post** /create-eks-target | 
+[**CreateGKETarget**](V2Api.md#CreateGKETarget) | **Post** /create-gke-target | 
+[**CreateGcpTarget**](V2Api.md#CreateGcpTarget) | **Post** /create-gcp-target | 
 [**CreateKey**](V2Api.md#CreateKey) | **Post** /create-key | 
-[**CreateManagedKey**](V2Api.md#CreateManagedKey) | **Post** /create-managed-key | 
 [**CreatePKICertIssuer**](V2Api.md#CreatePKICertIssuer) | **Post** /create-pki-cert-issuer | 
-[**CreateRabbitMQTarget**](V2Api.md#CreateRabbitMQTarget) | **Post** /create-rabbitMQ-target | 
-[**CreateRdpTarget**](V2Api.md#CreateRdpTarget) | **Post** /create-rdp-target | 
+[**CreateRabbitMQTarget**](V2Api.md#CreateRabbitMQTarget) | **Post** /create-rabbitmq-target | 
 [**CreateRole**](V2Api.md#CreateRole) | **Post** /create-role | 
 [**CreateRotatedSecret**](V2Api.md#CreateRotatedSecret) | **Post** /create-rotated-secret | 
 [**CreateSSHCertIssuer**](V2Api.md#CreateSSHCertIssuer) | **Post** /create-ssh-cert-issuer | 
 [**CreateSSHTarget**](V2Api.md#CreateSSHTarget) | **Post** /create-ssh-target | 
 [**CreateSecret**](V2Api.md#CreateSecret) | **Post** /create-secret | 
-[**CreateTarget**](V2Api.md#CreateTarget) | **Post** /create-target | 
 [**CreateWebTarget**](V2Api.md#CreateWebTarget) | **Post** /create-web-target | 
 [**Decrypt**](V2Api.md#Decrypt) | **Post** /decrypt | 
 [**DecryptPKCS1**](V2Api.md#DecryptPKCS1) | **Post** /decrypt-pkcs1 | 
@@ -63,6 +67,7 @@ Method | HTTP request | Description
 [**GatewayCreateProducerPostgreSQL**](V2Api.md#GatewayCreateProducerPostgreSQL) | **Post** /gateway-create-producer-postgresql | 
 [**GatewayCreateProducerRabbitMQ**](V2Api.md#GatewayCreateProducerRabbitMQ) | **Post** /gateway-create-producer-rabbitmq | 
 [**GatewayCreateProducerRdp**](V2Api.md#GatewayCreateProducerRdp) | **Post** /gateway-create-producer-rdp | 
+[**GatewayCreateProducerSnowflake**](V2Api.md#GatewayCreateProducerSnowflake) | **Post** /gateway-create-producer-snowflake | 
 [**GatewayDeleteProducer**](V2Api.md#GatewayDeleteProducer) | **Post** /gateway-delete-producer | 
 [**GatewayDeleteSubAdmins**](V2Api.md#GatewayDeleteSubAdmins) | **Post** /gateway-delete-sub-admins | 
 [**GatewayGetConfig**](V2Api.md#GatewayGetConfig) | **Post** /gateway-get-config | 
@@ -73,7 +78,6 @@ Method | HTTP request | Description
 [**GatewayRevokeTmpUsers**](V2Api.md#GatewayRevokeTmpUsers) | **Post** /gateway-revoke-producer-tmp-creds | 
 [**GatewayStartProducer**](V2Api.md#GatewayStartProducer) | **Post** /gateway-start-producer | 
 [**GatewayStopProducer**](V2Api.md#GatewayStopProducer) | **Post** /gateway-stop-producer | 
-[**GatewayUpdateItem**](V2Api.md#GatewayUpdateItem) | **Post** /update-managed-key | 
 [**GatewayUpdateTmpUsers**](V2Api.md#GatewayUpdateTmpUsers) | **Post** /gateway-update-producer-tmp-creds | 
 [**GetAccountLogo**](V2Api.md#GetAccountLogo) | **Post** /get-account-logo | 
 [**GetAuthMethod**](V2Api.md#GetAuthMethod) | **Post** /get-auth-method | 
@@ -107,6 +111,7 @@ Method | HTTP request | Description
 [**UidRevokeToken**](V2Api.md#UidRevokeToken) | **Post** /uid-revoke-token | 
 [**UidRotateToken**](V2Api.md#UidRotateToken) | **Post** /uid-rotate-token | 
 [**UpdateAWSTargetDetails**](V2Api.md#UpdateAWSTargetDetails) | **Post** /update-aws-target-details | 
+[**UpdateAssoc**](V2Api.md#UpdateAssoc) | **Post** /update-assoc | 
 [**UpdateDBTargetDetails**](V2Api.md#UpdateDBTargetDetails) | **Post** /update-db-target-details | 
 [**UpdateItem**](V2Api.md#UpdateItem) | **Post** /update-item | 
 [**UpdateRDPTargetDetails**](V2Api.md#UpdateRDPTargetDetails) | **Post** /update-rdp-target-details | 
@@ -365,6 +370,134 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ConfigureOutput**](configureOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateAWSTarget
+
+> CreateAWSTargetOutput CreateAWSTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewcreateAWSTarget("Name_example") // CreateAWSTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.CreateAWSTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateAWSTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateAWSTarget`: CreateAWSTargetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateAWSTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateAWSTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateAWSTarget**](CreateAWSTarget.md) |  | 
+
+### Return type
+
+[**CreateAWSTargetOutput**](createAWSTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateArtifactoryTarget
+
+> CreateArtifactoryTargetOutput CreateArtifactoryTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewcreateArtifactoryTarget("ArtifactoryAdminName_example", "ArtifactoryAdminPwd_example", "BaseUrl_example", "Name_example") // CreateArtifactoryTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.CreateArtifactoryTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateArtifactoryTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateArtifactoryTarget`: CreateArtifactoryTargetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateArtifactoryTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateArtifactoryTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateArtifactoryTarget**](CreateArtifactoryTarget.md) |  | 
+
+### Return type
+
+[**CreateArtifactoryTargetOutput**](createArtifactoryTargetOutput.md)
 
 ### Authorization
 
@@ -892,9 +1025,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## CreateAwsTarget
+## CreateAzureTarget
 
-> CreateTargetOutput CreateAwsTarget(ctx).Body(body).Execute()
+> CreateAzureTargetOutput CreateAzureTarget(ctx).Body(body).Execute()
 
 
 
@@ -911,17 +1044,17 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateAwsTarget("Name_example") // CreateAwsTarget | 
+    body := *openapiclient.NewcreateAzureTarget("Name_example") // CreateAzureTarget | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateAwsTarget(context.Background()).Body(body).Execute()
+    resp, r, err := api_client.V2Api.CreateAzureTarget(context.Background()).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateAwsTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateAzureTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateAwsTarget`: CreateTargetOutput
-    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateAwsTarget`: %v\n", resp)
+    // response from `CreateAzureTarget`: CreateAzureTargetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateAzureTarget`: %v\n", resp)
 }
 ```
 
@@ -931,16 +1064,80 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateAwsTargetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateAzureTargetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**CreateAwsTarget**](CreateAwsTarget.md) |  | 
+ **body** | [**CreateAzureTarget**](CreateAzureTarget.md) |  | 
 
 ### Return type
 
-[**CreateTargetOutput**](createTargetOutput.md)
+[**CreateAzureTargetOutput**](createAzureTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateClassicKey
+
+> CreateClassicKeyOutput CreateClassicKey(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewCreateClassicKey("Alg_example", "Name_example") // CreateClassicKey | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.CreateClassicKey(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateClassicKey``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateClassicKey`: CreateClassicKeyOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateClassicKey`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateClassicKeyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateClassicKey**](CreateClassicKey.md) |  | 
+
+### Return type
+
+[**CreateClassicKeyOutput**](CreateClassicKeyOutput.md)
 
 ### Authorization
 
@@ -958,7 +1155,7 @@ No authorization required
 
 ## CreateDBTarget
 
-> CreateTargetOutput CreateDBTarget(ctx).Body(body).Execute()
+> CreateDBTargetOutput CreateDBTarget(ctx).Body(body).Execute()
 
 
 
@@ -984,7 +1181,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateDBTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateDBTarget`: CreateTargetOutput
+    // response from `CreateDBTarget`: CreateDBTargetOutput
     fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateDBTarget`: %v\n", resp)
 }
 ```
@@ -1004,7 +1201,71 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateTargetOutput**](createTargetOutput.md)
+[**CreateDBTargetOutput**](createDBTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateDFCKey
+
+> CreateDFCKeyOutput CreateDFCKey(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewcreateDFCKey("Alg_example", "Name_example") // CreateDFCKey | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.CreateDFCKey(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateDFCKey``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateDFCKey`: CreateDFCKeyOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateDFCKey`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateDFCKeyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateDFCKey**](CreateDFCKey.md) |  | 
+
+### Return type
+
+[**CreateDFCKeyOutput**](createDFCKeyOutput.md)
 
 ### Authorization
 
@@ -1084,6 +1345,198 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## CreateEKSTarget
+
+> CreateEKSTargetOutput CreateEKSTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewcreateEKSTarget("EksAccessKeyId_example", "EksClusterCert_example", "EksClusterEndpoint_example", "EksClusterName_example", "EksSecretAccessKey_example", "Name_example") // CreateEKSTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.CreateEKSTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateEKSTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateEKSTarget`: CreateEKSTargetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateEKSTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateEKSTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateEKSTarget**](CreateEKSTarget.md) |  | 
+
+### Return type
+
+[**CreateEKSTargetOutput**](createEKSTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateGKETarget
+
+> CreateGKETargetOutput CreateGKETarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewcreateGKETarget("GkeClusterCert_example", "GkeClusterEndpoint_example", "GkeClusterName_example", "GkeServiceAccountEmail_example", "Name_example") // CreateGKETarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.CreateGKETarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateGKETarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateGKETarget`: CreateGKETargetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateGKETarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateGKETargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateGKETarget**](CreateGKETarget.md) |  | 
+
+### Return type
+
+[**CreateGKETargetOutput**](createGKETargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateGcpTarget
+
+> CreateGcpTargetOutput CreateGcpTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewcreateGcpTarget("Name_example") // CreateGcpTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.CreateGcpTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateGcpTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateGcpTarget`: CreateGcpTargetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateGcpTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateGcpTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateGcpTarget**](CreateGcpTarget.md) |  | 
+
+### Return type
+
+[**CreateGcpTargetOutput**](createGcpTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## CreateKey
 
 > CreateKeyOutput CreateKey(ctx).Body(body).Execute()
@@ -1133,70 +1586,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateKeyOutput**](createKeyOutput.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CreateManagedKey
-
-> CreateManagedKeyOutput CreateManagedKey(ctx).Body(body).Execute()
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    body := *openapiclient.NewCreateManagedKey("Alg_example", "Name_example") // CreateManagedKey | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateManagedKey(context.Background()).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateManagedKey``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateManagedKey`: CreateManagedKeyOutput
-    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateManagedKey`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateManagedKeyRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateManagedKey**](CreateManagedKey.md) |  | 
-
-### Return type
-
-[**CreateManagedKeyOutput**](CreateManagedKeyOutput.md)
 
 ### Authorization
 
@@ -1278,7 +1667,7 @@ No authorization required
 
 ## CreateRabbitMQTarget
 
-> CreateTargetOutput CreateRabbitMQTarget(ctx).Body(body).Execute()
+> CreateRabbitMQTargetOutput CreateRabbitMQTarget(ctx).Body(body).Execute()
 
 
 
@@ -1304,7 +1693,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateRabbitMQTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateRabbitMQTarget`: CreateTargetOutput
+    // response from `CreateRabbitMQTarget`: CreateRabbitMQTargetOutput
     fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateRabbitMQTarget`: %v\n", resp)
 }
 ```
@@ -1324,71 +1713,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateTargetOutput**](createTargetOutput.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CreateRdpTarget
-
-> CreateTargetOutput CreateRdpTarget(ctx).Body(body).Execute()
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    body := *openapiclient.NewcreateRdpTarget("Name_example") // CreateRdpTarget | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateRdpTarget(context.Background()).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateRdpTarget``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateRdpTarget`: CreateTargetOutput
-    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateRdpTarget`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateRdpTargetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateRdpTarget**](CreateRdpTarget.md) |  | 
-
-### Return type
-
-[**CreateTargetOutput**](createTargetOutput.md)
+[**CreateRabbitMQTargetOutput**](createRabbitMQTargetOutput.md)
 
 ### Authorization
 
@@ -1598,7 +1923,7 @@ No authorization required
 
 ## CreateSSHTarget
 
-> CreateTargetOutput CreateSSHTarget(ctx).Body(body).Execute()
+> CreateSSHTargetOutput CreateSSHTarget(ctx).Body(body).Execute()
 
 
 
@@ -1624,7 +1949,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateSSHTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateSSHTarget`: CreateTargetOutput
+    // response from `CreateSSHTarget`: CreateSSHTargetOutput
     fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateSSHTarget`: %v\n", resp)
 }
 ```
@@ -1644,7 +1969,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateTargetOutput**](createTargetOutput.md)
+[**CreateSSHTargetOutput**](createSSHTargetOutput.md)
 
 ### Authorization
 
@@ -1724,73 +2049,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## CreateTarget
-
-> CreateTargetOutput CreateTarget(ctx).Body(body).Execute()
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    body := map[string]interface{}(Object) // map[string]interface{} | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateTarget(context.Background()).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateTarget``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateTarget`: CreateTargetOutput
-    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateTarget`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateTargetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | **map[string]interface{}** |  | 
-
-### Return type
-
-[**CreateTargetOutput**](createTargetOutput.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## CreateWebTarget
 
-> CreateTargetOutput CreateWebTarget(ctx).Body(body).Execute()
+> CreateWebTargetOutput CreateWebTarget(ctx).Body(body).Execute()
 
 
 
@@ -1816,7 +2077,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateWebTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateWebTarget`: CreateTargetOutput
+    // response from `CreateWebTarget`: CreateWebTargetOutput
     fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateWebTarget`: %v\n", resp)
 }
 ```
@@ -1836,7 +2097,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateTargetOutput**](createTargetOutput.md)
+[**CreateWebTargetOutput**](createWebTargetOutput.md)
 
 ### Authorization
 
@@ -2942,7 +3203,7 @@ No authorization required
 
 ## GatewayAddSubAdmins
 
-> GatewayAddSubAdminsOutput GatewayAddSubAdmins(ctx).Body(body).Execute()
+> map[string]interface{} GatewayAddSubAdmins(ctx).Body(body).Execute()
 
 
 
@@ -2959,7 +3220,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayAddSubAdmins([]string{"SubAdmin_example"}) // GatewayAddSubAdmins | 
+    body := *openapiclient.NewgatewayAddSubAdmins("SubAdminAccessId_example") // GatewayAddSubAdmins | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -2968,7 +3229,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayAddSubAdmins``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GatewayAddSubAdmins`: GatewayAddSubAdminsOutput
+    // response from `GatewayAddSubAdmins`: map[string]interface{}
     fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayAddSubAdmins`: %v\n", resp)
 }
 ```
@@ -2988,7 +3249,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayAddSubAdminsOutput**](gatewayAddSubAdminsOutput.md)
+**map[string]interface{}**
 
 ### Authorization
 
@@ -3471,7 +3732,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerGke("GkeClusterCert_example", "GkeClusterEndpoint_example", "GkeClusterName_example", "GkeServiceAccountEmail_example", "GkeServiceAccountKeyFilePath_example", "Name_example") // GatewayCreateProducerGke | 
+    body := *openapiclient.NewgatewayCreateProducerGke("GkeClusterCert_example", "GkeClusterEndpoint_example", "GkeClusterName_example", "GkeServiceAccountEmail_example", "Name_example") // GatewayCreateProducerGke | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -3900,6 +4161,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GatewayCreateProducerSnowflake
+
+> GatewayCreateProducerSnowflakeOutput GatewayCreateProducerSnowflake(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayCreateProducerSnowflake("Account_example", "DbName_example", "Name_example") // GatewayCreateProducerSnowflake | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayCreateProducerSnowflake(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerSnowflake``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayCreateProducerSnowflake`: GatewayCreateProducerSnowflakeOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayCreateProducerSnowflake`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayCreateProducerSnowflakeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayCreateProducerSnowflake**](GatewayCreateProducerSnowflake.md) |  | 
+
+### Return type
+
+[**GatewayCreateProducerSnowflakeOutput**](gatewayCreateProducerSnowflakeOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GatewayDeleteProducer
 
 > GatewayDeleteProducerOutput GatewayDeleteProducer(ctx).Body(body).Execute()
@@ -3966,7 +4291,7 @@ No authorization required
 
 ## GatewayDeleteSubAdmins
 
-> GatewayDeleteSubAdminsOutput GatewayDeleteSubAdmins(ctx).Body(body).Execute()
+> map[string]interface{} GatewayDeleteSubAdmins(ctx).Body(body).Execute()
 
 
 
@@ -3983,7 +4308,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayDeleteSubAdmins([]string{"SubAdmin_example"}) // GatewayDeleteSubAdmins | 
+    body := *openapiclient.NewgatewayDeleteSubAdmins("SubAdminId_example") // GatewayDeleteSubAdmins | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -3992,7 +4317,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayDeleteSubAdmins``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GatewayDeleteSubAdmins`: GatewayDeleteSubAdminsOutput
+    // response from `GatewayDeleteSubAdmins`: map[string]interface{}
     fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayDeleteSubAdmins`: %v\n", resp)
 }
 ```
@@ -4012,7 +4337,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayDeleteSubAdminsOutput**](gatewayDeleteSubAdminsOutput.md)
+**map[string]interface{}**
 
 ### Authorization
 
@@ -4538,63 +4863,6 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## GatewayUpdateItem
-
-> GatewayUpdateItem(ctx).Execute()
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayUpdateItem(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateItem``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGatewayUpdateItemRequest struct via the builder pattern
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## GatewayUpdateTmpUsers
 
 > GatewayUpdateTmpUsers(ctx).Body(body).Execute()
@@ -4910,7 +5178,7 @@ No authorization required
 
 ## GetPKICertificate
 
-> GetPKICertificateOutput GetPKICertificate(ctx).Execute()
+> GetPKICertificateOutput GetPKICertificate(ctx).Body(body).Execute()
 
 
 
@@ -4927,10 +5195,11 @@ import (
 )
 
 func main() {
+    body := *openapiclient.NewGetPKICertificate("CertIssuerName_example") // GetPKICertificate | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GetPKICertificate(context.Background()).Execute()
+    resp, r, err := api_client.V2Api.GetPKICertificate(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GetPKICertificate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4942,12 +5211,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetPKICertificateRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GetPKICertificate**](GetPKICertificate.md) |  | 
 
 ### Return type
 
@@ -4959,7 +5232,7 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -6680,6 +6953,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**UpdateTargetOutput**](updateTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateAssoc
+
+> map[string]interface{} UpdateAssoc(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewupdateAssoc("AssocId_example") // UpdateAssoc | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdateAssoc(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateAssoc``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateAssoc`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateAssoc`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateAssocRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateAssoc**](UpdateAssoc.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
 
 ### Authorization
 

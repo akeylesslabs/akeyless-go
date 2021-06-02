@@ -29,6 +29,8 @@ type UploadPKCS12 struct {
 	Name string `json:"name"`
 	// Passphrase to unlock the pkcs#12 bundle
 	Passphrase string `json:"passphrase"`
+	// Required only when the authentication process requires a username and password
+	Password *string `json:"password,omitempty"`
 	// The number of fragments that the item will be split into
 	SplitLevel *int64 `json:"split-level,omitempty"`
 	// List of the tags attached to this key
@@ -37,6 +39,8 @@ type UploadPKCS12 struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// Required only when the authentication process requires a username and password
+	Username *string `json:"username,omitempty"`
 }
 
 // NewUploadPKCS12 instantiates a new UploadPKCS12 object
@@ -231,6 +235,38 @@ func (o *UploadPKCS12) SetPassphrase(v string) {
 	o.Passphrase = v
 }
 
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *UploadPKCS12) GetPassword() string {
+	if o == nil || o.Password == nil {
+		var ret string
+		return ret
+	}
+	return *o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UploadPKCS12) GetPasswordOk() (*string, bool) {
+	if o == nil || o.Password == nil {
+		return nil, false
+	}
+	return o.Password, true
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *UploadPKCS12) HasPassword() bool {
+	if o != nil && o.Password != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *UploadPKCS12) SetPassword(v string) {
+	o.Password = &v
+}
+
 // GetSplitLevel returns the SplitLevel field value if set, zero value otherwise.
 func (o *UploadPKCS12) GetSplitLevel() int64 {
 	if o == nil || o.SplitLevel == nil {
@@ -359,6 +395,38 @@ func (o *UploadPKCS12) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *UploadPKCS12) GetUsername() string {
+	if o == nil || o.Username == nil {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UploadPKCS12) GetUsernameOk() (*string, bool) {
+	if o == nil || o.Username == nil {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *UploadPKCS12) HasUsername() bool {
+	if o != nil && o.Username != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *UploadPKCS12) SetUsername(v string) {
+	o.Username = &v
+}
+
 func (o UploadPKCS12) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Cert != nil {
@@ -379,6 +447,9 @@ func (o UploadPKCS12) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["passphrase"] = o.Passphrase
 	}
+	if o.Password != nil {
+		toSerialize["password"] = o.Password
+	}
 	if o.SplitLevel != nil {
 		toSerialize["split-level"] = o.SplitLevel
 	}
@@ -390,6 +461,9 @@ func (o UploadPKCS12) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.Username != nil {
+		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

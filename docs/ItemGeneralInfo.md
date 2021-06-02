@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CertIssueDetails** | Pointer to [**CertificateIssueInfo**](CertificateIssueInfo.md) |  | [optional] 
+**ClassicKeyDetails** | Pointer to [**ClassicKeyDetailsInfo**](ClassicKeyDetailsInfo.md) |  | [optional] 
 **DynamicSecretProducerDetails** | Pointer to [**DynamicSecretProducerInfo**](DynamicSecretProducerInfo.md) |  | [optional] 
-**ManagedKeyDetails** | Pointer to [**ManagedKeyDetailsInfo**](ManagedKeyDetailsInfo.md) |  | [optional] 
 **RotatedSecretDetails** | Pointer to [**RotatedSecretDetailsInfo**](RotatedSecretDetailsInfo.md) |  | [optional] 
 
 ## Methods
@@ -53,6 +53,31 @@ SetCertIssueDetails sets CertIssueDetails field to given value.
 
 HasCertIssueDetails returns a boolean if a field has been set.
 
+### GetClassicKeyDetails
+
+`func (o *ItemGeneralInfo) GetClassicKeyDetails() ClassicKeyDetailsInfo`
+
+GetClassicKeyDetails returns the ClassicKeyDetails field if non-nil, zero value otherwise.
+
+### GetClassicKeyDetailsOk
+
+`func (o *ItemGeneralInfo) GetClassicKeyDetailsOk() (*ClassicKeyDetailsInfo, bool)`
+
+GetClassicKeyDetailsOk returns a tuple with the ClassicKeyDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassicKeyDetails
+
+`func (o *ItemGeneralInfo) SetClassicKeyDetails(v ClassicKeyDetailsInfo)`
+
+SetClassicKeyDetails sets ClassicKeyDetails field to given value.
+
+### HasClassicKeyDetails
+
+`func (o *ItemGeneralInfo) HasClassicKeyDetails() bool`
+
+HasClassicKeyDetails returns a boolean if a field has been set.
+
 ### GetDynamicSecretProducerDetails
 
 `func (o *ItemGeneralInfo) GetDynamicSecretProducerDetails() DynamicSecretProducerInfo`
@@ -77,31 +102,6 @@ SetDynamicSecretProducerDetails sets DynamicSecretProducerDetails field to given
 `func (o *ItemGeneralInfo) HasDynamicSecretProducerDetails() bool`
 
 HasDynamicSecretProducerDetails returns a boolean if a field has been set.
-
-### GetManagedKeyDetails
-
-`func (o *ItemGeneralInfo) GetManagedKeyDetails() ManagedKeyDetailsInfo`
-
-GetManagedKeyDetails returns the ManagedKeyDetails field if non-nil, zero value otherwise.
-
-### GetManagedKeyDetailsOk
-
-`func (o *ItemGeneralInfo) GetManagedKeyDetailsOk() (*ManagedKeyDetailsInfo, bool)`
-
-GetManagedKeyDetailsOk returns a tuple with the ManagedKeyDetails field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetManagedKeyDetails
-
-`func (o *ItemGeneralInfo) SetManagedKeyDetails(v ManagedKeyDetailsInfo)`
-
-SetManagedKeyDetails sets ManagedKeyDetails field to given value.
-
-### HasManagedKeyDetails
-
-`func (o *ItemGeneralInfo) HasManagedKeyDetails() bool`
-
-HasManagedKeyDetails returns a boolean if a field has been set.
 
 ### GetRotatedSecretDetails
 

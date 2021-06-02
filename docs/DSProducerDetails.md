@@ -71,16 +71,16 @@ Name | Type | Description | Notes
 **GcpTokenScope** | Pointer to **string** |  | [optional] 
 **GcpTokenType** | Pointer to **string** |  | [optional] 
 **GkeClusterCaCertificate** | Pointer to **string** |  | [optional] 
-**GkeClusterComputeZone** | Pointer to **string** |  | [optional] 
 **GkeClusterEndpoint** | Pointer to **string** |  | [optional] 
-**GkeClusterName** | Pointer to **string** |  | [optional] 
-**GkeProjectId** | Pointer to **string** |  | [optional] 
+**GkeClusterName** | Pointer to **string** | GKEProjectID            string &#x60;json:\&quot;gke_project_id\&quot;&#x60; | [optional] 
 **GkeServiceAccountKey** | Pointer to **string** |  | [optional] 
-**GkeServiceAccountName** | Pointer to **string** |  | [optional] 
+**GkeServiceAccountName** | Pointer to **string** | GKEClusterComputeZone   string &#x60;json:\&quot;gke_cluster_compute_zone\&quot;&#x60; | [optional] 
 **Groups** | Pointer to **string** |  | [optional] 
 **HostName** | Pointer to **string** |  | [optional] 
 **HostPort** | Pointer to **string** |  | [optional] 
+**ItemTargetsAssoc** | Pointer to [**[]ItemTargetAssociation**](ItemTargetAssociation.md) |  | [optional] 
 **LastAdminRotation** | Pointer to **int64** |  | [optional] 
+**MongodbAtlas** | Pointer to **bool** |  | [optional] 
 **MongodbAtlasApiPrivateKey** | Pointer to **string** |  | [optional] 
 **MongodbAtlasApiPublicKey** | Pointer to **string** |  | [optional] 
 **MongodbAtlasProjectId** | Pointer to **string** | mongodb atlas fields | [optional] 
@@ -89,7 +89,7 @@ Name | Type | Description | Notes
 **MongodbHostPort** | Pointer to **string** |  | [optional] 
 **MongodbIsAtlas** | Pointer to **bool** |  | [optional] 
 **MongodbPassword** | Pointer to **string** |  | [optional] 
-**MongodbRoles** | Pointer to **string** |  | [optional] 
+**MongodbRoles** | Pointer to **string** | common fields | [optional] 
 **MongodbUriConnection** | Pointer to **string** | mongodb fields | [optional] 
 **MongodbUriOptions** | Pointer to **string** |  | [optional] 
 **MongodbUsername** | Pointer to **string** |  | [optional] 
@@ -108,6 +108,9 @@ Name | Type | Description | Notes
 **RabbitmqUserWritePermission** | Pointer to **string** |  | [optional] 
 **RevokeSyncUrl** | Pointer to **string** |  | [optional] 
 **RotateSyncUrl** | Pointer to **string** |  | [optional] 
+**SfAccount** | Pointer to **string** |  | [optional] 
+**SfUserRole** | Pointer to **string** | generated  users info | [optional] 
+**SfWarehouseName** | Pointer to **string** |  | [optional] 
 **ShouldStop** | Pointer to **string** | TODO delete this after migration | [optional] 
 **TimeoutSeconds** | Pointer to **int64** |  | [optional] 
 **UserPrincipalName** | Pointer to **string** |  | [optional] 
@@ -1820,31 +1823,6 @@ SetGkeClusterCaCertificate sets GkeClusterCaCertificate field to given value.
 
 HasGkeClusterCaCertificate returns a boolean if a field has been set.
 
-### GetGkeClusterComputeZone
-
-`func (o *DSProducerDetails) GetGkeClusterComputeZone() string`
-
-GetGkeClusterComputeZone returns the GkeClusterComputeZone field if non-nil, zero value otherwise.
-
-### GetGkeClusterComputeZoneOk
-
-`func (o *DSProducerDetails) GetGkeClusterComputeZoneOk() (*string, bool)`
-
-GetGkeClusterComputeZoneOk returns a tuple with the GkeClusterComputeZone field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGkeClusterComputeZone
-
-`func (o *DSProducerDetails) SetGkeClusterComputeZone(v string)`
-
-SetGkeClusterComputeZone sets GkeClusterComputeZone field to given value.
-
-### HasGkeClusterComputeZone
-
-`func (o *DSProducerDetails) HasGkeClusterComputeZone() bool`
-
-HasGkeClusterComputeZone returns a boolean if a field has been set.
-
 ### GetGkeClusterEndpoint
 
 `func (o *DSProducerDetails) GetGkeClusterEndpoint() string`
@@ -1894,31 +1872,6 @@ SetGkeClusterName sets GkeClusterName field to given value.
 `func (o *DSProducerDetails) HasGkeClusterName() bool`
 
 HasGkeClusterName returns a boolean if a field has been set.
-
-### GetGkeProjectId
-
-`func (o *DSProducerDetails) GetGkeProjectId() string`
-
-GetGkeProjectId returns the GkeProjectId field if non-nil, zero value otherwise.
-
-### GetGkeProjectIdOk
-
-`func (o *DSProducerDetails) GetGkeProjectIdOk() (*string, bool)`
-
-GetGkeProjectIdOk returns a tuple with the GkeProjectId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGkeProjectId
-
-`func (o *DSProducerDetails) SetGkeProjectId(v string)`
-
-SetGkeProjectId sets GkeProjectId field to given value.
-
-### HasGkeProjectId
-
-`func (o *DSProducerDetails) HasGkeProjectId() bool`
-
-HasGkeProjectId returns a boolean if a field has been set.
 
 ### GetGkeServiceAccountKey
 
@@ -2045,6 +1998,31 @@ SetHostPort sets HostPort field to given value.
 
 HasHostPort returns a boolean if a field has been set.
 
+### GetItemTargetsAssoc
+
+`func (o *DSProducerDetails) GetItemTargetsAssoc() []ItemTargetAssociation`
+
+GetItemTargetsAssoc returns the ItemTargetsAssoc field if non-nil, zero value otherwise.
+
+### GetItemTargetsAssocOk
+
+`func (o *DSProducerDetails) GetItemTargetsAssocOk() (*[]ItemTargetAssociation, bool)`
+
+GetItemTargetsAssocOk returns a tuple with the ItemTargetsAssoc field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemTargetsAssoc
+
+`func (o *DSProducerDetails) SetItemTargetsAssoc(v []ItemTargetAssociation)`
+
+SetItemTargetsAssoc sets ItemTargetsAssoc field to given value.
+
+### HasItemTargetsAssoc
+
+`func (o *DSProducerDetails) HasItemTargetsAssoc() bool`
+
+HasItemTargetsAssoc returns a boolean if a field has been set.
+
 ### GetLastAdminRotation
 
 `func (o *DSProducerDetails) GetLastAdminRotation() int64`
@@ -2069,6 +2047,31 @@ SetLastAdminRotation sets LastAdminRotation field to given value.
 `func (o *DSProducerDetails) HasLastAdminRotation() bool`
 
 HasLastAdminRotation returns a boolean if a field has been set.
+
+### GetMongodbAtlas
+
+`func (o *DSProducerDetails) GetMongodbAtlas() bool`
+
+GetMongodbAtlas returns the MongodbAtlas field if non-nil, zero value otherwise.
+
+### GetMongodbAtlasOk
+
+`func (o *DSProducerDetails) GetMongodbAtlasOk() (*bool, bool)`
+
+GetMongodbAtlasOk returns a tuple with the MongodbAtlas field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMongodbAtlas
+
+`func (o *DSProducerDetails) SetMongodbAtlas(v bool)`
+
+SetMongodbAtlas sets MongodbAtlas field to given value.
+
+### HasMongodbAtlas
+
+`func (o *DSProducerDetails) HasMongodbAtlas() bool`
+
+HasMongodbAtlas returns a boolean if a field has been set.
 
 ### GetMongodbAtlasApiPrivateKey
 
@@ -2744,6 +2747,81 @@ SetRotateSyncUrl sets RotateSyncUrl field to given value.
 `func (o *DSProducerDetails) HasRotateSyncUrl() bool`
 
 HasRotateSyncUrl returns a boolean if a field has been set.
+
+### GetSfAccount
+
+`func (o *DSProducerDetails) GetSfAccount() string`
+
+GetSfAccount returns the SfAccount field if non-nil, zero value otherwise.
+
+### GetSfAccountOk
+
+`func (o *DSProducerDetails) GetSfAccountOk() (*string, bool)`
+
+GetSfAccountOk returns a tuple with the SfAccount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSfAccount
+
+`func (o *DSProducerDetails) SetSfAccount(v string)`
+
+SetSfAccount sets SfAccount field to given value.
+
+### HasSfAccount
+
+`func (o *DSProducerDetails) HasSfAccount() bool`
+
+HasSfAccount returns a boolean if a field has been set.
+
+### GetSfUserRole
+
+`func (o *DSProducerDetails) GetSfUserRole() string`
+
+GetSfUserRole returns the SfUserRole field if non-nil, zero value otherwise.
+
+### GetSfUserRoleOk
+
+`func (o *DSProducerDetails) GetSfUserRoleOk() (*string, bool)`
+
+GetSfUserRoleOk returns a tuple with the SfUserRole field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSfUserRole
+
+`func (o *DSProducerDetails) SetSfUserRole(v string)`
+
+SetSfUserRole sets SfUserRole field to given value.
+
+### HasSfUserRole
+
+`func (o *DSProducerDetails) HasSfUserRole() bool`
+
+HasSfUserRole returns a boolean if a field has been set.
+
+### GetSfWarehouseName
+
+`func (o *DSProducerDetails) GetSfWarehouseName() string`
+
+GetSfWarehouseName returns the SfWarehouseName field if non-nil, zero value otherwise.
+
+### GetSfWarehouseNameOk
+
+`func (o *DSProducerDetails) GetSfWarehouseNameOk() (*string, bool)`
+
+GetSfWarehouseNameOk returns a tuple with the SfWarehouseName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSfWarehouseName
+
+`func (o *DSProducerDetails) SetSfWarehouseName(v string)`
+
+SetSfWarehouseName sets SfWarehouseName field to given value.
+
+### HasSfWarehouseName
+
+`func (o *DSProducerDetails) HasSfWarehouseName() bool`
+
+HasSfWarehouseName returns a boolean if a field has been set.
 
 ### GetShouldStop
 

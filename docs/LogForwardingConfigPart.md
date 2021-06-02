@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AwsS3Config** | Pointer to [**AwsS3LogForwardingConfig**](AwsS3LogForwardingConfig.md) |  | [optional] 
+**AzureAnalyticsConfig** | Pointer to [**AzureLogAnalyticsForwardingConfig**](AzureLogAnalyticsForwardingConfig.md) |  | [optional] 
 **ElasticsearchConfig** | Pointer to [**ElasticsearchLogForwardingConfig**](ElasticsearchLogForwardingConfig.md) |  | [optional] 
 **LoganEnable** | Pointer to **bool** |  | [optional] 
 **LoganUrl** | Pointer to **string** |  | [optional] 
@@ -32,6 +34,56 @@ will change when the set of required properties is changed
 NewLogForwardingConfigPartWithDefaults instantiates a new LogForwardingConfigPart object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAwsS3Config
+
+`func (o *LogForwardingConfigPart) GetAwsS3Config() AwsS3LogForwardingConfig`
+
+GetAwsS3Config returns the AwsS3Config field if non-nil, zero value otherwise.
+
+### GetAwsS3ConfigOk
+
+`func (o *LogForwardingConfigPart) GetAwsS3ConfigOk() (*AwsS3LogForwardingConfig, bool)`
+
+GetAwsS3ConfigOk returns a tuple with the AwsS3Config field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsS3Config
+
+`func (o *LogForwardingConfigPart) SetAwsS3Config(v AwsS3LogForwardingConfig)`
+
+SetAwsS3Config sets AwsS3Config field to given value.
+
+### HasAwsS3Config
+
+`func (o *LogForwardingConfigPart) HasAwsS3Config() bool`
+
+HasAwsS3Config returns a boolean if a field has been set.
+
+### GetAzureAnalyticsConfig
+
+`func (o *LogForwardingConfigPart) GetAzureAnalyticsConfig() AzureLogAnalyticsForwardingConfig`
+
+GetAzureAnalyticsConfig returns the AzureAnalyticsConfig field if non-nil, zero value otherwise.
+
+### GetAzureAnalyticsConfigOk
+
+`func (o *LogForwardingConfigPart) GetAzureAnalyticsConfigOk() (*AzureLogAnalyticsForwardingConfig, bool)`
+
+GetAzureAnalyticsConfigOk returns a tuple with the AzureAnalyticsConfig field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureAnalyticsConfig
+
+`func (o *LogForwardingConfigPart) SetAzureAnalyticsConfig(v AzureLogAnalyticsForwardingConfig)`
+
+SetAzureAnalyticsConfig sets AzureAnalyticsConfig field to given value.
+
+### HasAzureAnalyticsConfig
+
+`func (o *LogForwardingConfigPart) HasAzureAnalyticsConfig() bool`
+
+HasAzureAnalyticsConfig returns a boolean if a field has been set.
 
 ### GetElasticsearchConfig
 

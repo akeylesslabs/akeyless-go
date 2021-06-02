@@ -6,11 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AutoRotate** | Pointer to **string** | Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation | [optional] 
 **GatewayUrl** | Pointer to **string** | Gateway url | [optional] [default to "http://localhost:8000"]
+**Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Metadata** | Pointer to **string** | Metadata about the secret | [optional] 
 **Name** | **string** | Secret name | 
-**ProtectionKey** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
-**RotationInterval** | Pointer to **string** | The number of days to wait between every automatic key rotation (7-365) | [optional] 
+**Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **RotationHour** | Pointer to **int32** |  | [optional] 
+**RotationInterval** | Pointer to **string** | The number of days to wait between every automatic key rotation (7-365) | [optional] 
 **RotatorCredsType** | Pointer to **string** |  | [optional] 
 **RotatorType** | Pointer to **string** |  | [optional] 
 **SshPassword** | Pointer to **string** |  | [optional] 
@@ -19,6 +20,7 @@ Name | Type | Description | Notes
 **TargetName** | Pointer to **string** |  | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 
 ## Methods
 
@@ -89,6 +91,31 @@ SetGatewayUrl sets GatewayUrl field to given value.
 
 HasGatewayUrl returns a boolean if a field has been set.
 
+### GetKey
+
+`func (o *CreateRotatedSecret) GetKey() string`
+
+GetKey returns the Key field if non-nil, zero value otherwise.
+
+### GetKeyOk
+
+`func (o *CreateRotatedSecret) GetKeyOk() (*string, bool)`
+
+GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKey
+
+`func (o *CreateRotatedSecret) SetKey(v string)`
+
+SetKey sets Key field to given value.
+
+### HasKey
+
+`func (o *CreateRotatedSecret) HasKey() bool`
+
+HasKey returns a boolean if a field has been set.
+
 ### GetMetadata
 
 `func (o *CreateRotatedSecret) GetMetadata() string`
@@ -134,55 +161,30 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### GetProtectionKey
+### GetPassword
 
-`func (o *CreateRotatedSecret) GetProtectionKey() string`
+`func (o *CreateRotatedSecret) GetPassword() string`
 
-GetProtectionKey returns the ProtectionKey field if non-nil, zero value otherwise.
+GetPassword returns the Password field if non-nil, zero value otherwise.
 
-### GetProtectionKeyOk
+### GetPasswordOk
 
-`func (o *CreateRotatedSecret) GetProtectionKeyOk() (*string, bool)`
+`func (o *CreateRotatedSecret) GetPasswordOk() (*string, bool)`
 
-GetProtectionKeyOk returns a tuple with the ProtectionKey field if it's non-nil, zero value otherwise
+GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetProtectionKey
+### SetPassword
 
-`func (o *CreateRotatedSecret) SetProtectionKey(v string)`
+`func (o *CreateRotatedSecret) SetPassword(v string)`
 
-SetProtectionKey sets ProtectionKey field to given value.
+SetPassword sets Password field to given value.
 
-### HasProtectionKey
+### HasPassword
 
-`func (o *CreateRotatedSecret) HasProtectionKey() bool`
+`func (o *CreateRotatedSecret) HasPassword() bool`
 
-HasProtectionKey returns a boolean if a field has been set.
-
-### GetRotationInterval
-
-`func (o *CreateRotatedSecret) GetRotationInterval() string`
-
-GetRotationInterval returns the RotationInterval field if non-nil, zero value otherwise.
-
-### GetRotationIntervalOk
-
-`func (o *CreateRotatedSecret) GetRotationIntervalOk() (*string, bool)`
-
-GetRotationIntervalOk returns a tuple with the RotationInterval field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRotationInterval
-
-`func (o *CreateRotatedSecret) SetRotationInterval(v string)`
-
-SetRotationInterval sets RotationInterval field to given value.
-
-### HasRotationInterval
-
-`func (o *CreateRotatedSecret) HasRotationInterval() bool`
-
-HasRotationInterval returns a boolean if a field has been set.
+HasPassword returns a boolean if a field has been set.
 
 ### GetRotationHour
 
@@ -208,6 +210,31 @@ SetRotationHour sets RotationHour field to given value.
 `func (o *CreateRotatedSecret) HasRotationHour() bool`
 
 HasRotationHour returns a boolean if a field has been set.
+
+### GetRotationInterval
+
+`func (o *CreateRotatedSecret) GetRotationInterval() string`
+
+GetRotationInterval returns the RotationInterval field if non-nil, zero value otherwise.
+
+### GetRotationIntervalOk
+
+`func (o *CreateRotatedSecret) GetRotationIntervalOk() (*string, bool)`
+
+GetRotationIntervalOk returns a tuple with the RotationInterval field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotationInterval
+
+`func (o *CreateRotatedSecret) SetRotationInterval(v string)`
+
+SetRotationInterval sets RotationInterval field to given value.
+
+### HasRotationInterval
+
+`func (o *CreateRotatedSecret) HasRotationInterval() bool`
+
+HasRotationInterval returns a boolean if a field has been set.
 
 ### GetRotatorCredsType
 
@@ -408,6 +435,31 @@ SetUidToken sets UidToken field to given value.
 `func (o *CreateRotatedSecret) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetUsername
+
+`func (o *CreateRotatedSecret) GetUsername() string`
+
+GetUsername returns the Username field if non-nil, zero value otherwise.
+
+### GetUsernameOk
+
+`func (o *CreateRotatedSecret) GetUsernameOk() (*string, bool)`
+
+GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsername
+
+`func (o *CreateRotatedSecret) SetUsername(v string)`
+
+SetUsername sets Username field to given value.
+
+### HasUsername
+
+`func (o *CreateRotatedSecret) HasUsername() bool`
+
+HasUsername returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

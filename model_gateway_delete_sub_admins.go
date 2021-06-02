@@ -19,23 +19,27 @@ import (
 type GatewayDeleteSubAdmins struct {
 	// Gateway url
 	GatewayUrl *string `json:"gateway-url,omitempty"`
-	// SubAdmins to be removed
-	SubAdmin []string `json:"sub-admin"`
+	// Required only when the authentication process requires a username and password
+	Password *string `json:"password,omitempty"`
+	// SubAdminID to be removed
+	SubAdminId string `json:"sub-admin-id"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// Required only when the authentication process requires a username and password
+	Username *string `json:"username,omitempty"`
 }
 
 // NewGatewayDeleteSubAdmins instantiates a new GatewayDeleteSubAdmins object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayDeleteSubAdmins(subAdmin []string, ) *GatewayDeleteSubAdmins {
+func NewGatewayDeleteSubAdmins(subAdminId string, ) *GatewayDeleteSubAdmins {
 	this := GatewayDeleteSubAdmins{}
 	var gatewayUrl string = "http://localhost:8000"
 	this.GatewayUrl = &gatewayUrl
-	this.SubAdmin = subAdmin
+	this.SubAdminId = subAdminId
 	return &this
 }
 
@@ -81,28 +85,60 @@ func (o *GatewayDeleteSubAdmins) SetGatewayUrl(v string) {
 	o.GatewayUrl = &v
 }
 
-// GetSubAdmin returns the SubAdmin field value
-func (o *GatewayDeleteSubAdmins) GetSubAdmin() []string {
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *GatewayDeleteSubAdmins) GetPassword() string {
+	if o == nil || o.Password == nil {
+		var ret string
+		return ret
+	}
+	return *o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayDeleteSubAdmins) GetPasswordOk() (*string, bool) {
+	if o == nil || o.Password == nil {
+		return nil, false
+	}
+	return o.Password, true
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *GatewayDeleteSubAdmins) HasPassword() bool {
+	if o != nil && o.Password != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *GatewayDeleteSubAdmins) SetPassword(v string) {
+	o.Password = &v
+}
+
+// GetSubAdminId returns the SubAdminId field value
+func (o *GatewayDeleteSubAdmins) GetSubAdminId() string {
 	if o == nil  {
-		var ret []string
+		var ret string
 		return ret
 	}
 
-	return o.SubAdmin
+	return o.SubAdminId
 }
 
-// GetSubAdminOk returns a tuple with the SubAdmin field value
+// GetSubAdminIdOk returns a tuple with the SubAdminId field value
 // and a boolean to check if the value has been set.
-func (o *GatewayDeleteSubAdmins) GetSubAdminOk() (*[]string, bool) {
+func (o *GatewayDeleteSubAdmins) GetSubAdminIdOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.SubAdmin, true
+	return &o.SubAdminId, true
 }
 
-// SetSubAdmin sets field value
-func (o *GatewayDeleteSubAdmins) SetSubAdmin(v []string) {
-	o.SubAdmin = v
+// SetSubAdminId sets field value
+func (o *GatewayDeleteSubAdmins) SetSubAdminId(v string) {
+	o.SubAdminId = v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -169,19 +205,57 @@ func (o *GatewayDeleteSubAdmins) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *GatewayDeleteSubAdmins) GetUsername() string {
+	if o == nil || o.Username == nil {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayDeleteSubAdmins) GetUsernameOk() (*string, bool) {
+	if o == nil || o.Username == nil {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *GatewayDeleteSubAdmins) HasUsername() bool {
+	if o != nil && o.Username != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *GatewayDeleteSubAdmins) SetUsername(v string) {
+	o.Username = &v
+}
+
 func (o GatewayDeleteSubAdmins) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.GatewayUrl != nil {
 		toSerialize["gateway-url"] = o.GatewayUrl
 	}
+	if o.Password != nil {
+		toSerialize["password"] = o.Password
+	}
 	if true {
-		toSerialize["sub-admin"] = o.SubAdmin
+		toSerialize["sub-admin-id"] = o.SubAdminId
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.Username != nil {
+		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

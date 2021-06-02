@@ -10,10 +10,12 @@ Name | Type | Description | Notes
 **Metadata** | Pointer to **string** | A metadata about the key | [optional] 
 **Name** | **string** | Name of key to be created | 
 **Passphrase** | **string** | Passphrase to unlock the pkcs#12 bundle | 
+**Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **SplitLevel** | Pointer to **int64** | The number of fragments that the item will be split into | [optional] [default to 2]
 **Tag** | Pointer to **[]string** | List of the tags attached to this key | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 
 ## Methods
 
@@ -169,6 +171,31 @@ and a boolean to check if the value has been set.
 SetPassphrase sets Passphrase field to given value.
 
 
+### GetPassword
+
+`func (o *UploadPKCS12) GetPassword() string`
+
+GetPassword returns the Password field if non-nil, zero value otherwise.
+
+### GetPasswordOk
+
+`func (o *UploadPKCS12) GetPasswordOk() (*string, bool)`
+
+GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPassword
+
+`func (o *UploadPKCS12) SetPassword(v string)`
+
+SetPassword sets Password field to given value.
+
+### HasPassword
+
+`func (o *UploadPKCS12) HasPassword() bool`
+
+HasPassword returns a boolean if a field has been set.
+
 ### GetSplitLevel
 
 `func (o *UploadPKCS12) GetSplitLevel() int64`
@@ -268,6 +295,31 @@ SetUidToken sets UidToken field to given value.
 `func (o *UploadPKCS12) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetUsername
+
+`func (o *UploadPKCS12) GetUsername() string`
+
+GetUsername returns the Username field if non-nil, zero value otherwise.
+
+### GetUsernameOk
+
+`func (o *UploadPKCS12) GetUsernameOk() (*string, bool)`
+
+GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsername
+
+`func (o *UploadPKCS12) SetUsername(v string)`
+
+SetUsername sets Username field to given value.
+
+### HasUsername
+
+`func (o *UploadPKCS12) HasUsername() bool`
+
+HasUsername returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

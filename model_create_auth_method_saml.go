@@ -21,16 +21,22 @@ type CreateAuthMethodSAML struct {
 	AccessExpires *int64 `json:"access-expires,omitempty"`
 	// A CIDR whitelist of the IPs that the access is restricted to
 	BoundIps *[]string `json:"bound-ips,omitempty"`
+	// if true: enforce role-association must include sub claims
+	ForceSubClaims *bool `json:"force-sub-claims,omitempty"`
 	// IDP metadata url
 	IdpMetadataUrl *string `json:"idp-metadata-url,omitempty"`
 	// Auth Method name
 	Name string `json:"name"`
+	// Required only when the authentication process requires a username and password
+	Password *string `json:"password,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
 	// A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \"sub claim\" that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization.
 	UniqueIdentifier string `json:"unique-identifier"`
+	// Required only when the authentication process requires a username and password
+	Username *string `json:"username,omitempty"`
 }
 
 // NewCreateAuthMethodSAML instantiates a new CreateAuthMethodSAML object
@@ -120,6 +126,38 @@ func (o *CreateAuthMethodSAML) SetBoundIps(v []string) {
 	o.BoundIps = &v
 }
 
+// GetForceSubClaims returns the ForceSubClaims field value if set, zero value otherwise.
+func (o *CreateAuthMethodSAML) GetForceSubClaims() bool {
+	if o == nil || o.ForceSubClaims == nil {
+		var ret bool
+		return ret
+	}
+	return *o.ForceSubClaims
+}
+
+// GetForceSubClaimsOk returns a tuple with the ForceSubClaims field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodSAML) GetForceSubClaimsOk() (*bool, bool) {
+	if o == nil || o.ForceSubClaims == nil {
+		return nil, false
+	}
+	return o.ForceSubClaims, true
+}
+
+// HasForceSubClaims returns a boolean if a field has been set.
+func (o *CreateAuthMethodSAML) HasForceSubClaims() bool {
+	if o != nil && o.ForceSubClaims != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetForceSubClaims gets a reference to the given bool and assigns it to the ForceSubClaims field.
+func (o *CreateAuthMethodSAML) SetForceSubClaims(v bool) {
+	o.ForceSubClaims = &v
+}
+
 // GetIdpMetadataUrl returns the IdpMetadataUrl field value if set, zero value otherwise.
 func (o *CreateAuthMethodSAML) GetIdpMetadataUrl() string {
 	if o == nil || o.IdpMetadataUrl == nil {
@@ -174,6 +212,38 @@ func (o *CreateAuthMethodSAML) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *CreateAuthMethodSAML) SetName(v string) {
 	o.Name = v
+}
+
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *CreateAuthMethodSAML) GetPassword() string {
+	if o == nil || o.Password == nil {
+		var ret string
+		return ret
+	}
+	return *o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodSAML) GetPasswordOk() (*string, bool) {
+	if o == nil || o.Password == nil {
+		return nil, false
+	}
+	return o.Password, true
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *CreateAuthMethodSAML) HasPassword() bool {
+	if o != nil && o.Password != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *CreateAuthMethodSAML) SetPassword(v string) {
+	o.Password = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -264,6 +334,38 @@ func (o *CreateAuthMethodSAML) SetUniqueIdentifier(v string) {
 	o.UniqueIdentifier = v
 }
 
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *CreateAuthMethodSAML) GetUsername() string {
+	if o == nil || o.Username == nil {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodSAML) GetUsernameOk() (*string, bool) {
+	if o == nil || o.Username == nil {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *CreateAuthMethodSAML) HasUsername() bool {
+	if o != nil && o.Username != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *CreateAuthMethodSAML) SetUsername(v string) {
+	o.Username = &v
+}
+
 func (o CreateAuthMethodSAML) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccessExpires != nil {
@@ -272,11 +374,17 @@ func (o CreateAuthMethodSAML) MarshalJSON() ([]byte, error) {
 	if o.BoundIps != nil {
 		toSerialize["bound-ips"] = o.BoundIps
 	}
+	if o.ForceSubClaims != nil {
+		toSerialize["force-sub-claims"] = o.ForceSubClaims
+	}
 	if o.IdpMetadataUrl != nil {
 		toSerialize["idp-metadata-url"] = o.IdpMetadataUrl
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.Password != nil {
+		toSerialize["password"] = o.Password
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
@@ -286,6 +394,9 @@ func (o CreateAuthMethodSAML) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["unique-identifier"] = o.UniqueIdentifier
+	}
+	if o.Username != nil {
+		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

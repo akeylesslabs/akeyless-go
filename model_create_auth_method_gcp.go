@@ -33,8 +33,12 @@ type CreateAuthMethodGCP struct {
 	BoundServiceAccounts *[]string `json:"bound-service-accounts,omitempty"`
 	// === Machine authentication section === List of zones that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a zonal group and the group must belong to this zone.
 	BoundZones *[]string `json:"bound-zones,omitempty"`
+	// if true: enforce role-association must include sub claims
+	ForceSubClaims *bool `json:"force-sub-claims,omitempty"`
 	// Auth Method name
 	Name string `json:"name"`
+	// Required only when the authentication process requires a username and password
+	Password *string `json:"password,omitempty"`
 	// ServiceAccount credentials data instead of giving a file path, base64 encoded
 	ServiceAccountCredsData *string `json:"service-account-creds-data,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -43,6 +47,8 @@ type CreateAuthMethodGCP struct {
 	Type *string `json:"type,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// Required only when the authentication process requires a username and password
+	Username *string `json:"username,omitempty"`
 }
 
 // NewCreateAuthMethodGCP instantiates a new CreateAuthMethodGCP object
@@ -327,6 +333,38 @@ func (o *CreateAuthMethodGCP) SetBoundZones(v []string) {
 	o.BoundZones = &v
 }
 
+// GetForceSubClaims returns the ForceSubClaims field value if set, zero value otherwise.
+func (o *CreateAuthMethodGCP) GetForceSubClaims() bool {
+	if o == nil || o.ForceSubClaims == nil {
+		var ret bool
+		return ret
+	}
+	return *o.ForceSubClaims
+}
+
+// GetForceSubClaimsOk returns a tuple with the ForceSubClaims field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodGCP) GetForceSubClaimsOk() (*bool, bool) {
+	if o == nil || o.ForceSubClaims == nil {
+		return nil, false
+	}
+	return o.ForceSubClaims, true
+}
+
+// HasForceSubClaims returns a boolean if a field has been set.
+func (o *CreateAuthMethodGCP) HasForceSubClaims() bool {
+	if o != nil && o.ForceSubClaims != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetForceSubClaims gets a reference to the given bool and assigns it to the ForceSubClaims field.
+func (o *CreateAuthMethodGCP) SetForceSubClaims(v bool) {
+	o.ForceSubClaims = &v
+}
+
 // GetName returns the Name field value
 func (o *CreateAuthMethodGCP) GetName() string {
 	if o == nil  {
@@ -349,6 +387,38 @@ func (o *CreateAuthMethodGCP) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *CreateAuthMethodGCP) SetName(v string) {
 	o.Name = v
+}
+
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *CreateAuthMethodGCP) GetPassword() string {
+	if o == nil || o.Password == nil {
+		var ret string
+		return ret
+	}
+	return *o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodGCP) GetPasswordOk() (*string, bool) {
+	if o == nil || o.Password == nil {
+		return nil, false
+	}
+	return o.Password, true
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *CreateAuthMethodGCP) HasPassword() bool {
+	if o != nil && o.Password != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *CreateAuthMethodGCP) SetPassword(v string) {
+	o.Password = &v
 }
 
 // GetServiceAccountCredsData returns the ServiceAccountCredsData field value if set, zero value otherwise.
@@ -479,6 +549,38 @@ func (o *CreateAuthMethodGCP) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *CreateAuthMethodGCP) GetUsername() string {
+	if o == nil || o.Username == nil {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodGCP) GetUsernameOk() (*string, bool) {
+	if o == nil || o.Username == nil {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *CreateAuthMethodGCP) HasUsername() bool {
+	if o != nil && o.Username != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *CreateAuthMethodGCP) SetUsername(v string) {
+	o.Username = &v
+}
+
 func (o CreateAuthMethodGCP) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccessExpires != nil {
@@ -505,8 +607,14 @@ func (o CreateAuthMethodGCP) MarshalJSON() ([]byte, error) {
 	if o.BoundZones != nil {
 		toSerialize["bound-zones"] = o.BoundZones
 	}
+	if o.ForceSubClaims != nil {
+		toSerialize["force-sub-claims"] = o.ForceSubClaims
+	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.Password != nil {
+		toSerialize["password"] = o.Password
 	}
 	if o.ServiceAccountCredsData != nil {
 		toSerialize["service-account-creds-data"] = o.ServiceAccountCredsData
@@ -519,6 +627,9 @@ func (o CreateAuthMethodGCP) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.Username != nil {
+		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

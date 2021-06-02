@@ -17,6 +17,8 @@ import (
 
 // DescribePermissions describePermissions is a command that shows which permissions your have to a particular path.
 type DescribePermissions struct {
+	// Required only when the authentication process requires a username and password
+	Password *string `json:"password,omitempty"`
 	// Path to an object
 	Path string `json:"path"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -25,6 +27,8 @@ type DescribePermissions struct {
 	Type string `json:"type"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// Required only when the authentication process requires a username and password
+	Username *string `json:"username,omitempty"`
 }
 
 // NewDescribePermissions instantiates a new DescribePermissions object
@@ -44,6 +48,38 @@ func NewDescribePermissions(path string, type_ string, ) *DescribePermissions {
 func NewDescribePermissionsWithDefaults() *DescribePermissions {
 	this := DescribePermissions{}
 	return &this
+}
+
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *DescribePermissions) GetPassword() string {
+	if o == nil || o.Password == nil {
+		var ret string
+		return ret
+	}
+	return *o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DescribePermissions) GetPasswordOk() (*string, bool) {
+	if o == nil || o.Password == nil {
+		return nil, false
+	}
+	return o.Password, true
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *DescribePermissions) HasPassword() bool {
+	if o != nil && o.Password != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *DescribePermissions) SetPassword(v string) {
+	o.Password = &v
 }
 
 // GetPath returns the Path field value
@@ -158,8 +194,43 @@ func (o *DescribePermissions) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *DescribePermissions) GetUsername() string {
+	if o == nil || o.Username == nil {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DescribePermissions) GetUsernameOk() (*string, bool) {
+	if o == nil || o.Username == nil {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *DescribePermissions) HasUsername() bool {
+	if o != nil && o.Username != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *DescribePermissions) SetUsername(v string) {
+	o.Username = &v
+}
+
 func (o DescribePermissions) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Password != nil {
+		toSerialize["password"] = o.Password
+	}
 	if true {
 		toSerialize["path"] = o.Path
 	}
@@ -171,6 +242,9 @@ func (o DescribePermissions) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.Username != nil {
+		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

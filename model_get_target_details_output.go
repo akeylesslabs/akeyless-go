@@ -18,7 +18,7 @@ import (
 // GetTargetDetailsOutput struct for GetTargetDetailsOutput
 type GetTargetDetailsOutput struct {
 	Target *Target `json:"target,omitempty"`
-	Value *TargetTypeDetailesInput `json:"value,omitempty"`
+	Value *TargetTypeDetailsInput `json:"value,omitempty"`
 }
 
 // NewGetTargetDetailsOutput instantiates a new GetTargetDetailsOutput object
@@ -71,9 +71,9 @@ func (o *GetTargetDetailsOutput) SetTarget(v Target) {
 }
 
 // GetValue returns the Value field value if set, zero value otherwise.
-func (o *GetTargetDetailsOutput) GetValue() TargetTypeDetailesInput {
+func (o *GetTargetDetailsOutput) GetValue() TargetTypeDetailsInput {
 	if o == nil || o.Value == nil {
-		var ret TargetTypeDetailesInput
+		var ret TargetTypeDetailsInput
 		return ret
 	}
 	return *o.Value
@@ -81,7 +81,7 @@ func (o *GetTargetDetailsOutput) GetValue() TargetTypeDetailesInput {
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetTargetDetailsOutput) GetValueOk() (*TargetTypeDetailesInput, bool) {
+func (o *GetTargetDetailsOutput) GetValueOk() (*TargetTypeDetailsInput, bool) {
 	if o == nil || o.Value == nil {
 		return nil, false
 	}
@@ -97,8 +97,8 @@ func (o *GetTargetDetailsOutput) HasValue() bool {
 	return false
 }
 
-// SetValue gets a reference to the given TargetTypeDetailesInput and assigns it to the Value field.
-func (o *GetTargetDetailsOutput) SetValue(v TargetTypeDetailesInput) {
+// SetValue gets a reference to the given TargetTypeDetailsInput and assigns it to the Value field.
+func (o *GetTargetDetailsOutput) SetValue(v TargetTypeDetailsInput) {
 	o.Value = &v
 }
 

@@ -17,6 +17,8 @@ import (
 
 // LogForwardingConfigPart struct for LogForwardingConfigPart
 type LogForwardingConfigPart struct {
+	AwsS3Config *AwsS3LogForwardingConfig `json:"aws_s3_config,omitempty"`
+	AzureAnalyticsConfig *AzureLogAnalyticsForwardingConfig `json:"azure_analytics_config,omitempty"`
 	ElasticsearchConfig *ElasticsearchLogForwardingConfig `json:"elasticsearch_config,omitempty"`
 	LoganEnable *bool `json:"logan_enable,omitempty"`
 	LoganUrl *string `json:"logan_url,omitempty"`
@@ -43,6 +45,70 @@ func NewLogForwardingConfigPart() *LogForwardingConfigPart {
 func NewLogForwardingConfigPartWithDefaults() *LogForwardingConfigPart {
 	this := LogForwardingConfigPart{}
 	return &this
+}
+
+// GetAwsS3Config returns the AwsS3Config field value if set, zero value otherwise.
+func (o *LogForwardingConfigPart) GetAwsS3Config() AwsS3LogForwardingConfig {
+	if o == nil || o.AwsS3Config == nil {
+		var ret AwsS3LogForwardingConfig
+		return ret
+	}
+	return *o.AwsS3Config
+}
+
+// GetAwsS3ConfigOk returns a tuple with the AwsS3Config field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LogForwardingConfigPart) GetAwsS3ConfigOk() (*AwsS3LogForwardingConfig, bool) {
+	if o == nil || o.AwsS3Config == nil {
+		return nil, false
+	}
+	return o.AwsS3Config, true
+}
+
+// HasAwsS3Config returns a boolean if a field has been set.
+func (o *LogForwardingConfigPart) HasAwsS3Config() bool {
+	if o != nil && o.AwsS3Config != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsS3Config gets a reference to the given AwsS3LogForwardingConfig and assigns it to the AwsS3Config field.
+func (o *LogForwardingConfigPart) SetAwsS3Config(v AwsS3LogForwardingConfig) {
+	o.AwsS3Config = &v
+}
+
+// GetAzureAnalyticsConfig returns the AzureAnalyticsConfig field value if set, zero value otherwise.
+func (o *LogForwardingConfigPart) GetAzureAnalyticsConfig() AzureLogAnalyticsForwardingConfig {
+	if o == nil || o.AzureAnalyticsConfig == nil {
+		var ret AzureLogAnalyticsForwardingConfig
+		return ret
+	}
+	return *o.AzureAnalyticsConfig
+}
+
+// GetAzureAnalyticsConfigOk returns a tuple with the AzureAnalyticsConfig field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LogForwardingConfigPart) GetAzureAnalyticsConfigOk() (*AzureLogAnalyticsForwardingConfig, bool) {
+	if o == nil || o.AzureAnalyticsConfig == nil {
+		return nil, false
+	}
+	return o.AzureAnalyticsConfig, true
+}
+
+// HasAzureAnalyticsConfig returns a boolean if a field has been set.
+func (o *LogForwardingConfigPart) HasAzureAnalyticsConfig() bool {
+	if o != nil && o.AzureAnalyticsConfig != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureAnalyticsConfig gets a reference to the given AzureLogAnalyticsForwardingConfig and assigns it to the AzureAnalyticsConfig field.
+func (o *LogForwardingConfigPart) SetAzureAnalyticsConfig(v AzureLogAnalyticsForwardingConfig) {
+	o.AzureAnalyticsConfig = &v
 }
 
 // GetElasticsearchConfig returns the ElasticsearchConfig field value if set, zero value otherwise.
@@ -335,6 +401,12 @@ func (o *LogForwardingConfigPart) SetTargetLogType(v string) {
 
 func (o LogForwardingConfigPart) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AwsS3Config != nil {
+		toSerialize["aws_s3_config"] = o.AwsS3Config
+	}
+	if o.AzureAnalyticsConfig != nil {
+		toSerialize["azure_analytics_config"] = o.AzureAnalyticsConfig
+	}
 	if o.ElasticsearchConfig != nil {
 		toSerialize["elasticsearch_config"] = o.ElasticsearchConfig
 	}

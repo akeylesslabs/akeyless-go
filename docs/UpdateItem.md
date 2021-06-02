@@ -8,9 +8,11 @@ Name | Type | Description | Notes
 **Name** | **string** | Current item name | 
 **NewMetadata** | Pointer to **string** | New item metadata | [optional] [default to "default_metadata"]
 **NewName** | Pointer to **string** | New item name | [optional] 
+**Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **RmTag** | Pointer to **[]string** | List of the existent tags that will be removed from this item | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 
 ## Methods
 
@@ -126,6 +128,31 @@ SetNewName sets NewName field to given value.
 
 HasNewName returns a boolean if a field has been set.
 
+### GetPassword
+
+`func (o *UpdateItem) GetPassword() string`
+
+GetPassword returns the Password field if non-nil, zero value otherwise.
+
+### GetPasswordOk
+
+`func (o *UpdateItem) GetPasswordOk() (*string, bool)`
+
+GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPassword
+
+`func (o *UpdateItem) SetPassword(v string)`
+
+SetPassword sets Password field to given value.
+
+### HasPassword
+
+`func (o *UpdateItem) HasPassword() bool`
+
+HasPassword returns a boolean if a field has been set.
+
 ### GetRmTag
 
 `func (o *UpdateItem) GetRmTag() []string`
@@ -200,6 +227,31 @@ SetUidToken sets UidToken field to given value.
 `func (o *UpdateItem) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetUsername
+
+`func (o *UpdateItem) GetUsername() string`
+
+GetUsername returns the Username field if non-nil, zero value otherwise.
+
+### GetUsernameOk
+
+`func (o *UpdateItem) GetUsernameOk() (*string, bool)`
+
+GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsername
+
+`func (o *UpdateItem) SetUsername(v string)`
+
+SetUsername sets Username field to given value.
+
+### HasUsername
+
+`func (o *UpdateItem) HasUsername() bool`
+
+HasUsername returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

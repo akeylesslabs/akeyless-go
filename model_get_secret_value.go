@@ -19,10 +19,14 @@ import (
 type GetSecretValue struct {
 	// Secret name
 	Names []string `json:"names"`
+	// Required only when the authentication process requires a username and password
+	Password *string `json:"password,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// Required only when the authentication process requires a username and password
+	Username *string `json:"username,omitempty"`
 	// Secret version
 	Version *int32 `json:"version,omitempty"`
 }
@@ -67,6 +71,38 @@ func (o *GetSecretValue) GetNamesOk() (*[]string, bool) {
 // SetNames sets field value
 func (o *GetSecretValue) SetNames(v []string) {
 	o.Names = v
+}
+
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *GetSecretValue) GetPassword() string {
+	if o == nil || o.Password == nil {
+		var ret string
+		return ret
+	}
+	return *o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetSecretValue) GetPasswordOk() (*string, bool) {
+	if o == nil || o.Password == nil {
+		return nil, false
+	}
+	return o.Password, true
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *GetSecretValue) HasPassword() bool {
+	if o != nil && o.Password != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *GetSecretValue) SetPassword(v string) {
+	o.Password = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -133,6 +169,38 @@ func (o *GetSecretValue) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *GetSecretValue) GetUsername() string {
+	if o == nil || o.Username == nil {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetSecretValue) GetUsernameOk() (*string, bool) {
+	if o == nil || o.Username == nil {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *GetSecretValue) HasUsername() bool {
+	if o != nil && o.Username != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *GetSecretValue) SetUsername(v string) {
+	o.Username = &v
+}
+
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *GetSecretValue) GetVersion() int32 {
 	if o == nil || o.Version == nil {
@@ -170,11 +238,17 @@ func (o GetSecretValue) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["names"] = o.Names
 	}
+	if o.Password != nil {
+		toSerialize["password"] = o.Password
+	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.Username != nil {
+		toSerialize["username"] = o.Username
 	}
 	if o.Version != nil {
 		toSerialize["version"] = o.Version

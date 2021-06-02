@@ -25,6 +25,8 @@ type UpdateDBTargetDetails struct {
 	Name string `json:"name"`
 	// Whether to create a new version of not
 	NewVersion *bool `json:"new-version,omitempty"`
+	// Required only when the authentication process requires a username and password
+	Password *string `json:"password,omitempty"`
 	Port *string `json:"port,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	ProtectionKey *string `json:"protection_key,omitempty"`
@@ -34,6 +36,8 @@ type UpdateDBTargetDetails struct {
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
 	UserName *string `json:"user_name,omitempty"`
+	// Required only when the authentication process requires a username and password
+	Username *string `json:"username,omitempty"`
 }
 
 // NewUpdateDBTargetDetails instantiates a new UpdateDBTargetDetails object
@@ -242,6 +246,38 @@ func (o *UpdateDBTargetDetails) SetNewVersion(v bool) {
 	o.NewVersion = &v
 }
 
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *UpdateDBTargetDetails) GetPassword() string {
+	if o == nil || o.Password == nil {
+		var ret string
+		return ret
+	}
+	return *o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateDBTargetDetails) GetPasswordOk() (*string, bool) {
+	if o == nil || o.Password == nil {
+		return nil, false
+	}
+	return o.Password, true
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *UpdateDBTargetDetails) HasPassword() bool {
+	if o != nil && o.Password != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *UpdateDBTargetDetails) SetPassword(v string) {
+	o.Password = &v
+}
+
 // GetPort returns the Port field value if set, zero value otherwise.
 func (o *UpdateDBTargetDetails) GetPort() string {
 	if o == nil || o.Port == nil {
@@ -434,6 +470,38 @@ func (o *UpdateDBTargetDetails) SetUserName(v string) {
 	o.UserName = &v
 }
 
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *UpdateDBTargetDetails) GetUsername() string {
+	if o == nil || o.Username == nil {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateDBTargetDetails) GetUsernameOk() (*string, bool) {
+	if o == nil || o.Username == nil {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *UpdateDBTargetDetails) HasUsername() bool {
+	if o != nil && o.Username != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *UpdateDBTargetDetails) SetUsername(v string) {
+	o.Username = &v
+}
+
 func (o UpdateDBTargetDetails) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DbType != nil {
@@ -454,6 +522,9 @@ func (o UpdateDBTargetDetails) MarshalJSON() ([]byte, error) {
 	if o.NewVersion != nil {
 		toSerialize["new-version"] = o.NewVersion
 	}
+	if o.Password != nil {
+		toSerialize["password"] = o.Password
+	}
 	if o.Port != nil {
 		toSerialize["port"] = o.Port
 	}
@@ -471,6 +542,9 @@ func (o UpdateDBTargetDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.UserName != nil {
 		toSerialize["user_name"] = o.UserName
+	}
+	if o.Username != nil {
+		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

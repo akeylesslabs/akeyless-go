@@ -35,14 +35,20 @@ type CreateAuthMethodAWSIAM struct {
 	BoundUserId *[]string `json:"bound-user-id,omitempty"`
 	// A list of full user-name that the access is restricted to
 	BoundUserName *[]string `json:"bound-user-name,omitempty"`
+	// if true: enforce role-association must include sub claims
+	ForceSubClaims *bool `json:"force-sub-claims,omitempty"`
 	// Auth Method name
 	Name string `json:"name"`
+	// Required only when the authentication process requires a username and password
+	Password *string `json:"password,omitempty"`
 	// sts URL
 	StsUrl *string `json:"sts-url,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// Required only when the authentication process requires a username and password
+	Username *string `json:"username,omitempty"`
 }
 
 // NewCreateAuthMethodAWSIAM instantiates a new CreateAuthMethodAWSIAM object
@@ -352,6 +358,38 @@ func (o *CreateAuthMethodAWSIAM) SetBoundUserName(v []string) {
 	o.BoundUserName = &v
 }
 
+// GetForceSubClaims returns the ForceSubClaims field value if set, zero value otherwise.
+func (o *CreateAuthMethodAWSIAM) GetForceSubClaims() bool {
+	if o == nil || o.ForceSubClaims == nil {
+		var ret bool
+		return ret
+	}
+	return *o.ForceSubClaims
+}
+
+// GetForceSubClaimsOk returns a tuple with the ForceSubClaims field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodAWSIAM) GetForceSubClaimsOk() (*bool, bool) {
+	if o == nil || o.ForceSubClaims == nil {
+		return nil, false
+	}
+	return o.ForceSubClaims, true
+}
+
+// HasForceSubClaims returns a boolean if a field has been set.
+func (o *CreateAuthMethodAWSIAM) HasForceSubClaims() bool {
+	if o != nil && o.ForceSubClaims != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetForceSubClaims gets a reference to the given bool and assigns it to the ForceSubClaims field.
+func (o *CreateAuthMethodAWSIAM) SetForceSubClaims(v bool) {
+	o.ForceSubClaims = &v
+}
+
 // GetName returns the Name field value
 func (o *CreateAuthMethodAWSIAM) GetName() string {
 	if o == nil  {
@@ -374,6 +412,38 @@ func (o *CreateAuthMethodAWSIAM) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *CreateAuthMethodAWSIAM) SetName(v string) {
 	o.Name = v
+}
+
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *CreateAuthMethodAWSIAM) GetPassword() string {
+	if o == nil || o.Password == nil {
+		var ret string
+		return ret
+	}
+	return *o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodAWSIAM) GetPasswordOk() (*string, bool) {
+	if o == nil || o.Password == nil {
+		return nil, false
+	}
+	return o.Password, true
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *CreateAuthMethodAWSIAM) HasPassword() bool {
+	if o != nil && o.Password != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *CreateAuthMethodAWSIAM) SetPassword(v string) {
+	o.Password = &v
 }
 
 // GetStsUrl returns the StsUrl field value if set, zero value otherwise.
@@ -472,6 +542,38 @@ func (o *CreateAuthMethodAWSIAM) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *CreateAuthMethodAWSIAM) GetUsername() string {
+	if o == nil || o.Username == nil {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodAWSIAM) GetUsernameOk() (*string, bool) {
+	if o == nil || o.Username == nil {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *CreateAuthMethodAWSIAM) HasUsername() bool {
+	if o != nil && o.Username != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *CreateAuthMethodAWSIAM) SetUsername(v string) {
+	o.Username = &v
+}
+
 func (o CreateAuthMethodAWSIAM) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccessExpires != nil {
@@ -501,8 +603,14 @@ func (o CreateAuthMethodAWSIAM) MarshalJSON() ([]byte, error) {
 	if o.BoundUserName != nil {
 		toSerialize["bound-user-name"] = o.BoundUserName
 	}
+	if o.ForceSubClaims != nil {
+		toSerialize["force-sub-claims"] = o.ForceSubClaims
+	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.Password != nil {
+		toSerialize["password"] = o.Password
 	}
 	if o.StsUrl != nil {
 		toSerialize["sts-url"] = o.StsUrl
@@ -512,6 +620,9 @@ func (o CreateAuthMethodAWSIAM) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.Username != nil {
+		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

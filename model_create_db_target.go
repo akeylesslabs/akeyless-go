@@ -19,21 +19,48 @@ import (
 type CreateDBTarget struct {
 	// Comment about the target
 	Comment *string `json:"comment,omitempty"`
-	DbType *string `json:"db_type,omitempty"`
-	HostName *string `json:"host_name,omitempty"`
-	MongoDbName *string `json:"mongo_db_name,omitempty"`
-	MongoUri *string `json:"mongo_uri,omitempty"`
+	DbName *string `json:"db-name,omitempty"`
+	// (Optional) DB server certificates
+	DbServerCertificates *string `json:"db-server-certificates,omitempty"`
+	// (Optional) Server name for certificate verification
+	DbServerName *string `json:"db-server-name,omitempty"`
+	DbType *string `json:"db-type,omitempty"`
+	Host *string `json:"host,omitempty"`
+	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
+	Key *string `json:"key,omitempty"`
+	MongodbAtlas *bool `json:"mongodb-atlas,omitempty"`
+	// MongoDB Atlas private key
+	MongodbAtlasApiPrivateKey *string `json:"mongodb-atlas-api-private-key,omitempty"`
+	// MongoDB Atlas public key
+	MongodbAtlasApiPublicKey *string `json:"mongodb-atlas-api-public-key,omitempty"`
+	// MongoDB Atlas project ID
+	MongodbAtlasProjectId *string `json:"mongodb-atlas-project-id,omitempty"`
+	// MongoDB server default authentication database
+	MongodbDefaultAuthDb *string `json:"mongodb-default-auth-db,omitempty"`
+	// MongoDB server host and port
+	MongodbHostPort *string `json:"mongodb-host-port,omitempty"`
+	// MongoDB server password. You will prompted to provide a password if it will not appear in CLI parameters
+	MongodbPassword *string `json:"mongodb-password,omitempty"`
+	// MongoDB server URI
+	MongodbServerUri *string `json:"mongodb-server-uri,omitempty"`
+	// MongoDB server URI options
+	MongodbUriOptions *string `json:"mongodb-uri-options,omitempty"`
+	// MongoDB server username
+	MongodbUsername *string `json:"mongodb-username,omitempty"`
 	// Target name
 	Name string `json:"name"`
+	// Required only when the authentication process requires a username and password
+	Password *string `json:"password,omitempty"`
 	Port *string `json:"port,omitempty"`
-	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
-	ProtectionKey *string `json:"protection_key,omitempty"`
 	Pwd *string `json:"pwd,omitempty"`
+	SnowflakeAccount *string `json:"snowflake-account,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	UserName *string `json:"user_name,omitempty"`
+	UserName *string `json:"user-name,omitempty"`
+	// Required only when the authentication process requires a username and password
+	Username *string `json:"username,omitempty"`
 }
 
 // NewCreateDBTarget instantiates a new CreateDBTarget object
@@ -86,6 +113,102 @@ func (o *CreateDBTarget) SetComment(v string) {
 	o.Comment = &v
 }
 
+// GetDbName returns the DbName field value if set, zero value otherwise.
+func (o *CreateDBTarget) GetDbName() string {
+	if o == nil || o.DbName == nil {
+		var ret string
+		return ret
+	}
+	return *o.DbName
+}
+
+// GetDbNameOk returns a tuple with the DbName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDBTarget) GetDbNameOk() (*string, bool) {
+	if o == nil || o.DbName == nil {
+		return nil, false
+	}
+	return o.DbName, true
+}
+
+// HasDbName returns a boolean if a field has been set.
+func (o *CreateDBTarget) HasDbName() bool {
+	if o != nil && o.DbName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDbName gets a reference to the given string and assigns it to the DbName field.
+func (o *CreateDBTarget) SetDbName(v string) {
+	o.DbName = &v
+}
+
+// GetDbServerCertificates returns the DbServerCertificates field value if set, zero value otherwise.
+func (o *CreateDBTarget) GetDbServerCertificates() string {
+	if o == nil || o.DbServerCertificates == nil {
+		var ret string
+		return ret
+	}
+	return *o.DbServerCertificates
+}
+
+// GetDbServerCertificatesOk returns a tuple with the DbServerCertificates field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDBTarget) GetDbServerCertificatesOk() (*string, bool) {
+	if o == nil || o.DbServerCertificates == nil {
+		return nil, false
+	}
+	return o.DbServerCertificates, true
+}
+
+// HasDbServerCertificates returns a boolean if a field has been set.
+func (o *CreateDBTarget) HasDbServerCertificates() bool {
+	if o != nil && o.DbServerCertificates != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDbServerCertificates gets a reference to the given string and assigns it to the DbServerCertificates field.
+func (o *CreateDBTarget) SetDbServerCertificates(v string) {
+	o.DbServerCertificates = &v
+}
+
+// GetDbServerName returns the DbServerName field value if set, zero value otherwise.
+func (o *CreateDBTarget) GetDbServerName() string {
+	if o == nil || o.DbServerName == nil {
+		var ret string
+		return ret
+	}
+	return *o.DbServerName
+}
+
+// GetDbServerNameOk returns a tuple with the DbServerName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDBTarget) GetDbServerNameOk() (*string, bool) {
+	if o == nil || o.DbServerName == nil {
+		return nil, false
+	}
+	return o.DbServerName, true
+}
+
+// HasDbServerName returns a boolean if a field has been set.
+func (o *CreateDBTarget) HasDbServerName() bool {
+	if o != nil && o.DbServerName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDbServerName gets a reference to the given string and assigns it to the DbServerName field.
+func (o *CreateDBTarget) SetDbServerName(v string) {
+	o.DbServerName = &v
+}
+
 // GetDbType returns the DbType field value if set, zero value otherwise.
 func (o *CreateDBTarget) GetDbType() string {
 	if o == nil || o.DbType == nil {
@@ -118,100 +241,388 @@ func (o *CreateDBTarget) SetDbType(v string) {
 	o.DbType = &v
 }
 
-// GetHostName returns the HostName field value if set, zero value otherwise.
-func (o *CreateDBTarget) GetHostName() string {
-	if o == nil || o.HostName == nil {
+// GetHost returns the Host field value if set, zero value otherwise.
+func (o *CreateDBTarget) GetHost() string {
+	if o == nil || o.Host == nil {
 		var ret string
 		return ret
 	}
-	return *o.HostName
+	return *o.Host
 }
 
-// GetHostNameOk returns a tuple with the HostName field value if set, nil otherwise
+// GetHostOk returns a tuple with the Host field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateDBTarget) GetHostNameOk() (*string, bool) {
-	if o == nil || o.HostName == nil {
+func (o *CreateDBTarget) GetHostOk() (*string, bool) {
+	if o == nil || o.Host == nil {
 		return nil, false
 	}
-	return o.HostName, true
+	return o.Host, true
 }
 
-// HasHostName returns a boolean if a field has been set.
-func (o *CreateDBTarget) HasHostName() bool {
-	if o != nil && o.HostName != nil {
+// HasHost returns a boolean if a field has been set.
+func (o *CreateDBTarget) HasHost() bool {
+	if o != nil && o.Host != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetHostName gets a reference to the given string and assigns it to the HostName field.
-func (o *CreateDBTarget) SetHostName(v string) {
-	o.HostName = &v
+// SetHost gets a reference to the given string and assigns it to the Host field.
+func (o *CreateDBTarget) SetHost(v string) {
+	o.Host = &v
 }
 
-// GetMongoDbName returns the MongoDbName field value if set, zero value otherwise.
-func (o *CreateDBTarget) GetMongoDbName() string {
-	if o == nil || o.MongoDbName == nil {
+// GetKey returns the Key field value if set, zero value otherwise.
+func (o *CreateDBTarget) GetKey() string {
+	if o == nil || o.Key == nil {
 		var ret string
 		return ret
 	}
-	return *o.MongoDbName
+	return *o.Key
 }
 
-// GetMongoDbNameOk returns a tuple with the MongoDbName field value if set, nil otherwise
+// GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateDBTarget) GetMongoDbNameOk() (*string, bool) {
-	if o == nil || o.MongoDbName == nil {
+func (o *CreateDBTarget) GetKeyOk() (*string, bool) {
+	if o == nil || o.Key == nil {
 		return nil, false
 	}
-	return o.MongoDbName, true
+	return o.Key, true
 }
 
-// HasMongoDbName returns a boolean if a field has been set.
-func (o *CreateDBTarget) HasMongoDbName() bool {
-	if o != nil && o.MongoDbName != nil {
+// HasKey returns a boolean if a field has been set.
+func (o *CreateDBTarget) HasKey() bool {
+	if o != nil && o.Key != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetMongoDbName gets a reference to the given string and assigns it to the MongoDbName field.
-func (o *CreateDBTarget) SetMongoDbName(v string) {
-	o.MongoDbName = &v
+// SetKey gets a reference to the given string and assigns it to the Key field.
+func (o *CreateDBTarget) SetKey(v string) {
+	o.Key = &v
 }
 
-// GetMongoUri returns the MongoUri field value if set, zero value otherwise.
-func (o *CreateDBTarget) GetMongoUri() string {
-	if o == nil || o.MongoUri == nil {
-		var ret string
+// GetMongodbAtlas returns the MongodbAtlas field value if set, zero value otherwise.
+func (o *CreateDBTarget) GetMongodbAtlas() bool {
+	if o == nil || o.MongodbAtlas == nil {
+		var ret bool
 		return ret
 	}
-	return *o.MongoUri
+	return *o.MongodbAtlas
 }
 
-// GetMongoUriOk returns a tuple with the MongoUri field value if set, nil otherwise
+// GetMongodbAtlasOk returns a tuple with the MongodbAtlas field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateDBTarget) GetMongoUriOk() (*string, bool) {
-	if o == nil || o.MongoUri == nil {
+func (o *CreateDBTarget) GetMongodbAtlasOk() (*bool, bool) {
+	if o == nil || o.MongodbAtlas == nil {
 		return nil, false
 	}
-	return o.MongoUri, true
+	return o.MongodbAtlas, true
 }
 
-// HasMongoUri returns a boolean if a field has been set.
-func (o *CreateDBTarget) HasMongoUri() bool {
-	if o != nil && o.MongoUri != nil {
+// HasMongodbAtlas returns a boolean if a field has been set.
+func (o *CreateDBTarget) HasMongodbAtlas() bool {
+	if o != nil && o.MongodbAtlas != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetMongoUri gets a reference to the given string and assigns it to the MongoUri field.
-func (o *CreateDBTarget) SetMongoUri(v string) {
-	o.MongoUri = &v
+// SetMongodbAtlas gets a reference to the given bool and assigns it to the MongodbAtlas field.
+func (o *CreateDBTarget) SetMongodbAtlas(v bool) {
+	o.MongodbAtlas = &v
+}
+
+// GetMongodbAtlasApiPrivateKey returns the MongodbAtlasApiPrivateKey field value if set, zero value otherwise.
+func (o *CreateDBTarget) GetMongodbAtlasApiPrivateKey() string {
+	if o == nil || o.MongodbAtlasApiPrivateKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.MongodbAtlasApiPrivateKey
+}
+
+// GetMongodbAtlasApiPrivateKeyOk returns a tuple with the MongodbAtlasApiPrivateKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDBTarget) GetMongodbAtlasApiPrivateKeyOk() (*string, bool) {
+	if o == nil || o.MongodbAtlasApiPrivateKey == nil {
+		return nil, false
+	}
+	return o.MongodbAtlasApiPrivateKey, true
+}
+
+// HasMongodbAtlasApiPrivateKey returns a boolean if a field has been set.
+func (o *CreateDBTarget) HasMongodbAtlasApiPrivateKey() bool {
+	if o != nil && o.MongodbAtlasApiPrivateKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMongodbAtlasApiPrivateKey gets a reference to the given string and assigns it to the MongodbAtlasApiPrivateKey field.
+func (o *CreateDBTarget) SetMongodbAtlasApiPrivateKey(v string) {
+	o.MongodbAtlasApiPrivateKey = &v
+}
+
+// GetMongodbAtlasApiPublicKey returns the MongodbAtlasApiPublicKey field value if set, zero value otherwise.
+func (o *CreateDBTarget) GetMongodbAtlasApiPublicKey() string {
+	if o == nil || o.MongodbAtlasApiPublicKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.MongodbAtlasApiPublicKey
+}
+
+// GetMongodbAtlasApiPublicKeyOk returns a tuple with the MongodbAtlasApiPublicKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDBTarget) GetMongodbAtlasApiPublicKeyOk() (*string, bool) {
+	if o == nil || o.MongodbAtlasApiPublicKey == nil {
+		return nil, false
+	}
+	return o.MongodbAtlasApiPublicKey, true
+}
+
+// HasMongodbAtlasApiPublicKey returns a boolean if a field has been set.
+func (o *CreateDBTarget) HasMongodbAtlasApiPublicKey() bool {
+	if o != nil && o.MongodbAtlasApiPublicKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMongodbAtlasApiPublicKey gets a reference to the given string and assigns it to the MongodbAtlasApiPublicKey field.
+func (o *CreateDBTarget) SetMongodbAtlasApiPublicKey(v string) {
+	o.MongodbAtlasApiPublicKey = &v
+}
+
+// GetMongodbAtlasProjectId returns the MongodbAtlasProjectId field value if set, zero value otherwise.
+func (o *CreateDBTarget) GetMongodbAtlasProjectId() string {
+	if o == nil || o.MongodbAtlasProjectId == nil {
+		var ret string
+		return ret
+	}
+	return *o.MongodbAtlasProjectId
+}
+
+// GetMongodbAtlasProjectIdOk returns a tuple with the MongodbAtlasProjectId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDBTarget) GetMongodbAtlasProjectIdOk() (*string, bool) {
+	if o == nil || o.MongodbAtlasProjectId == nil {
+		return nil, false
+	}
+	return o.MongodbAtlasProjectId, true
+}
+
+// HasMongodbAtlasProjectId returns a boolean if a field has been set.
+func (o *CreateDBTarget) HasMongodbAtlasProjectId() bool {
+	if o != nil && o.MongodbAtlasProjectId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMongodbAtlasProjectId gets a reference to the given string and assigns it to the MongodbAtlasProjectId field.
+func (o *CreateDBTarget) SetMongodbAtlasProjectId(v string) {
+	o.MongodbAtlasProjectId = &v
+}
+
+// GetMongodbDefaultAuthDb returns the MongodbDefaultAuthDb field value if set, zero value otherwise.
+func (o *CreateDBTarget) GetMongodbDefaultAuthDb() string {
+	if o == nil || o.MongodbDefaultAuthDb == nil {
+		var ret string
+		return ret
+	}
+	return *o.MongodbDefaultAuthDb
+}
+
+// GetMongodbDefaultAuthDbOk returns a tuple with the MongodbDefaultAuthDb field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDBTarget) GetMongodbDefaultAuthDbOk() (*string, bool) {
+	if o == nil || o.MongodbDefaultAuthDb == nil {
+		return nil, false
+	}
+	return o.MongodbDefaultAuthDb, true
+}
+
+// HasMongodbDefaultAuthDb returns a boolean if a field has been set.
+func (o *CreateDBTarget) HasMongodbDefaultAuthDb() bool {
+	if o != nil && o.MongodbDefaultAuthDb != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMongodbDefaultAuthDb gets a reference to the given string and assigns it to the MongodbDefaultAuthDb field.
+func (o *CreateDBTarget) SetMongodbDefaultAuthDb(v string) {
+	o.MongodbDefaultAuthDb = &v
+}
+
+// GetMongodbHostPort returns the MongodbHostPort field value if set, zero value otherwise.
+func (o *CreateDBTarget) GetMongodbHostPort() string {
+	if o == nil || o.MongodbHostPort == nil {
+		var ret string
+		return ret
+	}
+	return *o.MongodbHostPort
+}
+
+// GetMongodbHostPortOk returns a tuple with the MongodbHostPort field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDBTarget) GetMongodbHostPortOk() (*string, bool) {
+	if o == nil || o.MongodbHostPort == nil {
+		return nil, false
+	}
+	return o.MongodbHostPort, true
+}
+
+// HasMongodbHostPort returns a boolean if a field has been set.
+func (o *CreateDBTarget) HasMongodbHostPort() bool {
+	if o != nil && o.MongodbHostPort != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMongodbHostPort gets a reference to the given string and assigns it to the MongodbHostPort field.
+func (o *CreateDBTarget) SetMongodbHostPort(v string) {
+	o.MongodbHostPort = &v
+}
+
+// GetMongodbPassword returns the MongodbPassword field value if set, zero value otherwise.
+func (o *CreateDBTarget) GetMongodbPassword() string {
+	if o == nil || o.MongodbPassword == nil {
+		var ret string
+		return ret
+	}
+	return *o.MongodbPassword
+}
+
+// GetMongodbPasswordOk returns a tuple with the MongodbPassword field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDBTarget) GetMongodbPasswordOk() (*string, bool) {
+	if o == nil || o.MongodbPassword == nil {
+		return nil, false
+	}
+	return o.MongodbPassword, true
+}
+
+// HasMongodbPassword returns a boolean if a field has been set.
+func (o *CreateDBTarget) HasMongodbPassword() bool {
+	if o != nil && o.MongodbPassword != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMongodbPassword gets a reference to the given string and assigns it to the MongodbPassword field.
+func (o *CreateDBTarget) SetMongodbPassword(v string) {
+	o.MongodbPassword = &v
+}
+
+// GetMongodbServerUri returns the MongodbServerUri field value if set, zero value otherwise.
+func (o *CreateDBTarget) GetMongodbServerUri() string {
+	if o == nil || o.MongodbServerUri == nil {
+		var ret string
+		return ret
+	}
+	return *o.MongodbServerUri
+}
+
+// GetMongodbServerUriOk returns a tuple with the MongodbServerUri field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDBTarget) GetMongodbServerUriOk() (*string, bool) {
+	if o == nil || o.MongodbServerUri == nil {
+		return nil, false
+	}
+	return o.MongodbServerUri, true
+}
+
+// HasMongodbServerUri returns a boolean if a field has been set.
+func (o *CreateDBTarget) HasMongodbServerUri() bool {
+	if o != nil && o.MongodbServerUri != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMongodbServerUri gets a reference to the given string and assigns it to the MongodbServerUri field.
+func (o *CreateDBTarget) SetMongodbServerUri(v string) {
+	o.MongodbServerUri = &v
+}
+
+// GetMongodbUriOptions returns the MongodbUriOptions field value if set, zero value otherwise.
+func (o *CreateDBTarget) GetMongodbUriOptions() string {
+	if o == nil || o.MongodbUriOptions == nil {
+		var ret string
+		return ret
+	}
+	return *o.MongodbUriOptions
+}
+
+// GetMongodbUriOptionsOk returns a tuple with the MongodbUriOptions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDBTarget) GetMongodbUriOptionsOk() (*string, bool) {
+	if o == nil || o.MongodbUriOptions == nil {
+		return nil, false
+	}
+	return o.MongodbUriOptions, true
+}
+
+// HasMongodbUriOptions returns a boolean if a field has been set.
+func (o *CreateDBTarget) HasMongodbUriOptions() bool {
+	if o != nil && o.MongodbUriOptions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMongodbUriOptions gets a reference to the given string and assigns it to the MongodbUriOptions field.
+func (o *CreateDBTarget) SetMongodbUriOptions(v string) {
+	o.MongodbUriOptions = &v
+}
+
+// GetMongodbUsername returns the MongodbUsername field value if set, zero value otherwise.
+func (o *CreateDBTarget) GetMongodbUsername() string {
+	if o == nil || o.MongodbUsername == nil {
+		var ret string
+		return ret
+	}
+	return *o.MongodbUsername
+}
+
+// GetMongodbUsernameOk returns a tuple with the MongodbUsername field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDBTarget) GetMongodbUsernameOk() (*string, bool) {
+	if o == nil || o.MongodbUsername == nil {
+		return nil, false
+	}
+	return o.MongodbUsername, true
+}
+
+// HasMongodbUsername returns a boolean if a field has been set.
+func (o *CreateDBTarget) HasMongodbUsername() bool {
+	if o != nil && o.MongodbUsername != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMongodbUsername gets a reference to the given string and assigns it to the MongodbUsername field.
+func (o *CreateDBTarget) SetMongodbUsername(v string) {
+	o.MongodbUsername = &v
 }
 
 // GetName returns the Name field value
@@ -236,6 +647,38 @@ func (o *CreateDBTarget) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *CreateDBTarget) SetName(v string) {
 	o.Name = v
+}
+
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *CreateDBTarget) GetPassword() string {
+	if o == nil || o.Password == nil {
+		var ret string
+		return ret
+	}
+	return *o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDBTarget) GetPasswordOk() (*string, bool) {
+	if o == nil || o.Password == nil {
+		return nil, false
+	}
+	return o.Password, true
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *CreateDBTarget) HasPassword() bool {
+	if o != nil && o.Password != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *CreateDBTarget) SetPassword(v string) {
+	o.Password = &v
 }
 
 // GetPort returns the Port field value if set, zero value otherwise.
@@ -270,38 +713,6 @@ func (o *CreateDBTarget) SetPort(v string) {
 	o.Port = &v
 }
 
-// GetProtectionKey returns the ProtectionKey field value if set, zero value otherwise.
-func (o *CreateDBTarget) GetProtectionKey() string {
-	if o == nil || o.ProtectionKey == nil {
-		var ret string
-		return ret
-	}
-	return *o.ProtectionKey
-}
-
-// GetProtectionKeyOk returns a tuple with the ProtectionKey field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateDBTarget) GetProtectionKeyOk() (*string, bool) {
-	if o == nil || o.ProtectionKey == nil {
-		return nil, false
-	}
-	return o.ProtectionKey, true
-}
-
-// HasProtectionKey returns a boolean if a field has been set.
-func (o *CreateDBTarget) HasProtectionKey() bool {
-	if o != nil && o.ProtectionKey != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetProtectionKey gets a reference to the given string and assigns it to the ProtectionKey field.
-func (o *CreateDBTarget) SetProtectionKey(v string) {
-	o.ProtectionKey = &v
-}
-
 // GetPwd returns the Pwd field value if set, zero value otherwise.
 func (o *CreateDBTarget) GetPwd() string {
 	if o == nil || o.Pwd == nil {
@@ -332,6 +743,38 @@ func (o *CreateDBTarget) HasPwd() bool {
 // SetPwd gets a reference to the given string and assigns it to the Pwd field.
 func (o *CreateDBTarget) SetPwd(v string) {
 	o.Pwd = &v
+}
+
+// GetSnowflakeAccount returns the SnowflakeAccount field value if set, zero value otherwise.
+func (o *CreateDBTarget) GetSnowflakeAccount() string {
+	if o == nil || o.SnowflakeAccount == nil {
+		var ret string
+		return ret
+	}
+	return *o.SnowflakeAccount
+}
+
+// GetSnowflakeAccountOk returns a tuple with the SnowflakeAccount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDBTarget) GetSnowflakeAccountOk() (*string, bool) {
+	if o == nil || o.SnowflakeAccount == nil {
+		return nil, false
+	}
+	return o.SnowflakeAccount, true
+}
+
+// HasSnowflakeAccount returns a boolean if a field has been set.
+func (o *CreateDBTarget) HasSnowflakeAccount() bool {
+	if o != nil && o.SnowflakeAccount != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSnowflakeAccount gets a reference to the given string and assigns it to the SnowflakeAccount field.
+func (o *CreateDBTarget) SetSnowflakeAccount(v string) {
+	o.SnowflakeAccount = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -430,34 +873,105 @@ func (o *CreateDBTarget) SetUserName(v string) {
 	o.UserName = &v
 }
 
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *CreateDBTarget) GetUsername() string {
+	if o == nil || o.Username == nil {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDBTarget) GetUsernameOk() (*string, bool) {
+	if o == nil || o.Username == nil {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *CreateDBTarget) HasUsername() bool {
+	if o != nil && o.Username != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *CreateDBTarget) SetUsername(v string) {
+	o.Username = &v
+}
+
 func (o CreateDBTarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment
 	}
+	if o.DbName != nil {
+		toSerialize["db-name"] = o.DbName
+	}
+	if o.DbServerCertificates != nil {
+		toSerialize["db-server-certificates"] = o.DbServerCertificates
+	}
+	if o.DbServerName != nil {
+		toSerialize["db-server-name"] = o.DbServerName
+	}
 	if o.DbType != nil {
-		toSerialize["db_type"] = o.DbType
+		toSerialize["db-type"] = o.DbType
 	}
-	if o.HostName != nil {
-		toSerialize["host_name"] = o.HostName
+	if o.Host != nil {
+		toSerialize["host"] = o.Host
 	}
-	if o.MongoDbName != nil {
-		toSerialize["mongo_db_name"] = o.MongoDbName
+	if o.Key != nil {
+		toSerialize["key"] = o.Key
 	}
-	if o.MongoUri != nil {
-		toSerialize["mongo_uri"] = o.MongoUri
+	if o.MongodbAtlas != nil {
+		toSerialize["mongodb-atlas"] = o.MongodbAtlas
+	}
+	if o.MongodbAtlasApiPrivateKey != nil {
+		toSerialize["mongodb-atlas-api-private-key"] = o.MongodbAtlasApiPrivateKey
+	}
+	if o.MongodbAtlasApiPublicKey != nil {
+		toSerialize["mongodb-atlas-api-public-key"] = o.MongodbAtlasApiPublicKey
+	}
+	if o.MongodbAtlasProjectId != nil {
+		toSerialize["mongodb-atlas-project-id"] = o.MongodbAtlasProjectId
+	}
+	if o.MongodbDefaultAuthDb != nil {
+		toSerialize["mongodb-default-auth-db"] = o.MongodbDefaultAuthDb
+	}
+	if o.MongodbHostPort != nil {
+		toSerialize["mongodb-host-port"] = o.MongodbHostPort
+	}
+	if o.MongodbPassword != nil {
+		toSerialize["mongodb-password"] = o.MongodbPassword
+	}
+	if o.MongodbServerUri != nil {
+		toSerialize["mongodb-server-uri"] = o.MongodbServerUri
+	}
+	if o.MongodbUriOptions != nil {
+		toSerialize["mongodb-uri-options"] = o.MongodbUriOptions
+	}
+	if o.MongodbUsername != nil {
+		toSerialize["mongodb-username"] = o.MongodbUsername
 	}
 	if true {
 		toSerialize["name"] = o.Name
 	}
+	if o.Password != nil {
+		toSerialize["password"] = o.Password
+	}
 	if o.Port != nil {
 		toSerialize["port"] = o.Port
 	}
-	if o.ProtectionKey != nil {
-		toSerialize["protection_key"] = o.ProtectionKey
-	}
 	if o.Pwd != nil {
 		toSerialize["pwd"] = o.Pwd
+	}
+	if o.SnowflakeAccount != nil {
+		toSerialize["snowflake-account"] = o.SnowflakeAccount
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
@@ -466,7 +980,10 @@ func (o CreateDBTarget) MarshalJSON() ([]byte, error) {
 		toSerialize["uid-token"] = o.UidToken
 	}
 	if o.UserName != nil {
-		toSerialize["user_name"] = o.UserName
+		toSerialize["user-name"] = o.UserName
+	}
+	if o.Username != nil {
+		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

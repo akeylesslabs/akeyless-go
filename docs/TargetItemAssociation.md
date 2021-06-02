@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AssocId** | Pointer to **string** |  | [optional] 
 **ItemName** | Pointer to **string** |  | [optional] 
+**ItemType** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -75,6 +76,31 @@ SetItemName sets ItemName field to given value.
 `func (o *TargetItemAssociation) HasItemName() bool`
 
 HasItemName returns a boolean if a field has been set.
+
+### GetItemType
+
+`func (o *TargetItemAssociation) GetItemType() string`
+
+GetItemType returns the ItemType field if non-nil, zero value otherwise.
+
+### GetItemTypeOk
+
+`func (o *TargetItemAssociation) GetItemTypeOk() (*string, bool)`
+
+GetItemTypeOk returns a tuple with the ItemType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemType
+
+`func (o *TargetItemAssociation) SetItemType(v string)`
+
+SetItemType sets ItemType field to given value.
+
+### HasItemType
+
+`func (o *TargetItemAssociation) HasItemType() bool`
+
+HasItemType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

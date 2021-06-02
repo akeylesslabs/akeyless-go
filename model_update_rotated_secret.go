@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// UpdateRotatedSecret struct for UpdateRotatedSecret
+// UpdateRotatedSecret updateRotatedSecret is a command that updates rotated secret. [Deprecated: Use gateway-update-item command]
 type UpdateRotatedSecret struct {
 	// List of the new tags that will be attached to this item
 	AddTag *[]string `json:"add-tag,omitempty"`
@@ -33,18 +33,22 @@ type UpdateRotatedSecret struct {
 	NewName *string `json:"new-name,omitempty"`
 	// Whether to create a new version of not
 	NewVersion *bool `json:"new-version,omitempty"`
+	// Required only when the authentication process requires a username and password
+	Password *string `json:"password,omitempty"`
 	// List of the existent tags that will be removed from this item
 	RmTag *[]string `json:"rm-tag,omitempty"`
+	RotationHour *int32 `json:"rotation-hour,omitempty"`
 	// The number of days to wait between every automatic key rotation (7-365)
 	RotationInterval *string `json:"rotation-interval,omitempty"`
-	RotationHour *int32 `json:"rotation_hour,omitempty"`
-	RotatorCredsType *string `json:"rotator_creds_type,omitempty"`
+	RotatorCredsType *string `json:"rotator-creds-type,omitempty"`
 	SshPassword *string `json:"ssh-password,omitempty"`
 	SshUsername *string `json:"ssh-username,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// Required only when the authentication process requires a username and password
+	Username *string `json:"username,omitempty"`
 }
 
 // NewUpdateRotatedSecret instantiates a new UpdateRotatedSecret object
@@ -325,6 +329,38 @@ func (o *UpdateRotatedSecret) SetNewVersion(v bool) {
 	o.NewVersion = &v
 }
 
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetPassword() string {
+	if o == nil || o.Password == nil {
+		var ret string
+		return ret
+	}
+	return *o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetPasswordOk() (*string, bool) {
+	if o == nil || o.Password == nil {
+		return nil, false
+	}
+	return o.Password, true
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasPassword() bool {
+	if o != nil && o.Password != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *UpdateRotatedSecret) SetPassword(v string) {
+	o.Password = &v
+}
+
 // GetRmTag returns the RmTag field value if set, zero value otherwise.
 func (o *UpdateRotatedSecret) GetRmTag() []string {
 	if o == nil || o.RmTag == nil {
@@ -357,38 +393,6 @@ func (o *UpdateRotatedSecret) SetRmTag(v []string) {
 	o.RmTag = &v
 }
 
-// GetRotationInterval returns the RotationInterval field value if set, zero value otherwise.
-func (o *UpdateRotatedSecret) GetRotationInterval() string {
-	if o == nil || o.RotationInterval == nil {
-		var ret string
-		return ret
-	}
-	return *o.RotationInterval
-}
-
-// GetRotationIntervalOk returns a tuple with the RotationInterval field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UpdateRotatedSecret) GetRotationIntervalOk() (*string, bool) {
-	if o == nil || o.RotationInterval == nil {
-		return nil, false
-	}
-	return o.RotationInterval, true
-}
-
-// HasRotationInterval returns a boolean if a field has been set.
-func (o *UpdateRotatedSecret) HasRotationInterval() bool {
-	if o != nil && o.RotationInterval != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetRotationInterval gets a reference to the given string and assigns it to the RotationInterval field.
-func (o *UpdateRotatedSecret) SetRotationInterval(v string) {
-	o.RotationInterval = &v
-}
-
 // GetRotationHour returns the RotationHour field value if set, zero value otherwise.
 func (o *UpdateRotatedSecret) GetRotationHour() int32 {
 	if o == nil || o.RotationHour == nil {
@@ -419,6 +423,38 @@ func (o *UpdateRotatedSecret) HasRotationHour() bool {
 // SetRotationHour gets a reference to the given int32 and assigns it to the RotationHour field.
 func (o *UpdateRotatedSecret) SetRotationHour(v int32) {
 	o.RotationHour = &v
+}
+
+// GetRotationInterval returns the RotationInterval field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetRotationInterval() string {
+	if o == nil || o.RotationInterval == nil {
+		var ret string
+		return ret
+	}
+	return *o.RotationInterval
+}
+
+// GetRotationIntervalOk returns a tuple with the RotationInterval field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetRotationIntervalOk() (*string, bool) {
+	if o == nil || o.RotationInterval == nil {
+		return nil, false
+	}
+	return o.RotationInterval, true
+}
+
+// HasRotationInterval returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasRotationInterval() bool {
+	if o != nil && o.RotationInterval != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRotationInterval gets a reference to the given string and assigns it to the RotationInterval field.
+func (o *UpdateRotatedSecret) SetRotationInterval(v string) {
+	o.RotationInterval = &v
 }
 
 // GetRotatorCredsType returns the RotatorCredsType field value if set, zero value otherwise.
@@ -581,6 +617,38 @@ func (o *UpdateRotatedSecret) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetUsername() string {
+	if o == nil || o.Username == nil {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetUsernameOk() (*string, bool) {
+	if o == nil || o.Username == nil {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasUsername() bool {
+	if o != nil && o.Username != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *UpdateRotatedSecret) SetUsername(v string) {
+	o.Username = &v
+}
+
 func (o UpdateRotatedSecret) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AddTag != nil {
@@ -607,17 +675,20 @@ func (o UpdateRotatedSecret) MarshalJSON() ([]byte, error) {
 	if o.NewVersion != nil {
 		toSerialize["new-version"] = o.NewVersion
 	}
+	if o.Password != nil {
+		toSerialize["password"] = o.Password
+	}
 	if o.RmTag != nil {
 		toSerialize["rm-tag"] = o.RmTag
+	}
+	if o.RotationHour != nil {
+		toSerialize["rotation-hour"] = o.RotationHour
 	}
 	if o.RotationInterval != nil {
 		toSerialize["rotation-interval"] = o.RotationInterval
 	}
-	if o.RotationHour != nil {
-		toSerialize["rotation_hour"] = o.RotationHour
-	}
 	if o.RotatorCredsType != nil {
-		toSerialize["rotator_creds_type"] = o.RotatorCredsType
+		toSerialize["rotator-creds-type"] = o.RotatorCredsType
 	}
 	if o.SshPassword != nil {
 		toSerialize["ssh-password"] = o.SshPassword
@@ -630,6 +701,9 @@ func (o UpdateRotatedSecret) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.Username != nil {
+		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

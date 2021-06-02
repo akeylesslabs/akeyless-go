@@ -13,9 +13,12 @@ Name | Type | Description | Notes
 **BoundTenantName** | Pointer to **[]string** | A list of full tenant names that the access is restricted to | [optional] 
 **BoundUserId** | Pointer to **[]string** | A list of full user ids that the access is restricted to | [optional] 
 **BoundUserName** | Pointer to **[]string** | A list of full user-name that the access is restricted to | [optional] 
+**ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
 **Name** | **string** | Auth Method name | 
+**Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 
 ## Methods
 
@@ -261,6 +264,31 @@ SetBoundUserName sets BoundUserName field to given value.
 
 HasBoundUserName returns a boolean if a field has been set.
 
+### GetForceSubClaims
+
+`func (o *CreateAuthMethodHuawei) GetForceSubClaims() bool`
+
+GetForceSubClaims returns the ForceSubClaims field if non-nil, zero value otherwise.
+
+### GetForceSubClaimsOk
+
+`func (o *CreateAuthMethodHuawei) GetForceSubClaimsOk() (*bool, bool)`
+
+GetForceSubClaimsOk returns a tuple with the ForceSubClaims field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetForceSubClaims
+
+`func (o *CreateAuthMethodHuawei) SetForceSubClaims(v bool)`
+
+SetForceSubClaims sets ForceSubClaims field to given value.
+
+### HasForceSubClaims
+
+`func (o *CreateAuthMethodHuawei) HasForceSubClaims() bool`
+
+HasForceSubClaims returns a boolean if a field has been set.
+
 ### GetName
 
 `func (o *CreateAuthMethodHuawei) GetName() string`
@@ -280,6 +308,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetPassword
+
+`func (o *CreateAuthMethodHuawei) GetPassword() string`
+
+GetPassword returns the Password field if non-nil, zero value otherwise.
+
+### GetPasswordOk
+
+`func (o *CreateAuthMethodHuawei) GetPasswordOk() (*string, bool)`
+
+GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPassword
+
+`func (o *CreateAuthMethodHuawei) SetPassword(v string)`
+
+SetPassword sets Password field to given value.
+
+### HasPassword
+
+`func (o *CreateAuthMethodHuawei) HasPassword() bool`
+
+HasPassword returns a boolean if a field has been set.
 
 ### GetToken
 
@@ -330,6 +383,31 @@ SetUidToken sets UidToken field to given value.
 `func (o *CreateAuthMethodHuawei) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetUsername
+
+`func (o *CreateAuthMethodHuawei) GetUsername() string`
+
+GetUsername returns the Username field if non-nil, zero value otherwise.
+
+### GetUsernameOk
+
+`func (o *CreateAuthMethodHuawei) GetUsernameOk() (*string, bool)`
+
+GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsername
+
+`func (o *CreateAuthMethodHuawei) SetUsername(v string)`
+
+SetUsername sets Username field to given value.
+
+### HasUsername
+
+`func (o *CreateAuthMethodHuawei) HasUsername() bool`
+
+HasUsername returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

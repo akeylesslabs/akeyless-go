@@ -5,8 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Names** | **[]string** | Secret name | 
+**Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **Version** | Pointer to **int32** | Secret version | [optional] 
 
 ## Methods
@@ -47,6 +49,31 @@ and a boolean to check if the value has been set.
 
 SetNames sets Names field to given value.
 
+
+### GetPassword
+
+`func (o *GetSecretValue) GetPassword() string`
+
+GetPassword returns the Password field if non-nil, zero value otherwise.
+
+### GetPasswordOk
+
+`func (o *GetSecretValue) GetPasswordOk() (*string, bool)`
+
+GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPassword
+
+`func (o *GetSecretValue) SetPassword(v string)`
+
+SetPassword sets Password field to given value.
+
+### HasPassword
+
+`func (o *GetSecretValue) HasPassword() bool`
+
+HasPassword returns a boolean if a field has been set.
 
 ### GetToken
 
@@ -97,6 +124,31 @@ SetUidToken sets UidToken field to given value.
 `func (o *GetSecretValue) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetUsername
+
+`func (o *GetSecretValue) GetUsername() string`
+
+GetUsername returns the Username field if non-nil, zero value otherwise.
+
+### GetUsernameOk
+
+`func (o *GetSecretValue) GetUsernameOk() (*string, bool)`
+
+GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsername
+
+`func (o *GetSecretValue) SetUsername(v string)`
+
+SetUsername sets Username field to given value.
+
+### HasUsername
+
+`func (o *GetSecretValue) HasUsername() bool`
+
+HasUsername returns a boolean if a field has been set.
 
 ### GetVersion
 

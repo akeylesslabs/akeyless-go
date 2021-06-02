@@ -15,44 +15,48 @@ import (
 	"encoding/json"
 )
 
-// CreateAwsTarget struct for CreateAwsTarget
-type CreateAwsTarget struct {
+// CreateAWSTarget struct for CreateAWSTarget
+type CreateAWSTarget struct {
 	AccessKey *string `json:"access-key,omitempty"`
 	AccessKeyId *string `json:"access-key-id,omitempty"`
 	// Comment about the target
 	Comment *string `json:"comment,omitempty"`
+	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
+	Key *string `json:"key,omitempty"`
 	// Target name
 	Name string `json:"name"`
-	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
-	ProtectionKey *string `json:"protection_key,omitempty"`
+	// Required only when the authentication process requires a username and password
+	Password *string `json:"password,omitempty"`
 	Region *string `json:"region,omitempty"`
 	SessionToken *string `json:"session-token,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// Required only when the authentication process requires a username and password
+	Username *string `json:"username,omitempty"`
 }
 
-// NewCreateAwsTarget instantiates a new CreateAwsTarget object
+// NewCreateAWSTarget instantiates a new CreateAWSTarget object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateAwsTarget(name string, ) *CreateAwsTarget {
-	this := CreateAwsTarget{}
+func NewCreateAWSTarget(name string, ) *CreateAWSTarget {
+	this := CreateAWSTarget{}
 	this.Name = name
 	return &this
 }
 
-// NewCreateAwsTargetWithDefaults instantiates a new CreateAwsTarget object
+// NewCreateAWSTargetWithDefaults instantiates a new CreateAWSTarget object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCreateAwsTargetWithDefaults() *CreateAwsTarget {
-	this := CreateAwsTarget{}
+func NewCreateAWSTargetWithDefaults() *CreateAWSTarget {
+	this := CreateAWSTarget{}
 	return &this
 }
 
 // GetAccessKey returns the AccessKey field value if set, zero value otherwise.
-func (o *CreateAwsTarget) GetAccessKey() string {
+func (o *CreateAWSTarget) GetAccessKey() string {
 	if o == nil || o.AccessKey == nil {
 		var ret string
 		return ret
@@ -62,7 +66,7 @@ func (o *CreateAwsTarget) GetAccessKey() string {
 
 // GetAccessKeyOk returns a tuple with the AccessKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateAwsTarget) GetAccessKeyOk() (*string, bool) {
+func (o *CreateAWSTarget) GetAccessKeyOk() (*string, bool) {
 	if o == nil || o.AccessKey == nil {
 		return nil, false
 	}
@@ -70,7 +74,7 @@ func (o *CreateAwsTarget) GetAccessKeyOk() (*string, bool) {
 }
 
 // HasAccessKey returns a boolean if a field has been set.
-func (o *CreateAwsTarget) HasAccessKey() bool {
+func (o *CreateAWSTarget) HasAccessKey() bool {
 	if o != nil && o.AccessKey != nil {
 		return true
 	}
@@ -79,12 +83,12 @@ func (o *CreateAwsTarget) HasAccessKey() bool {
 }
 
 // SetAccessKey gets a reference to the given string and assigns it to the AccessKey field.
-func (o *CreateAwsTarget) SetAccessKey(v string) {
+func (o *CreateAWSTarget) SetAccessKey(v string) {
 	o.AccessKey = &v
 }
 
 // GetAccessKeyId returns the AccessKeyId field value if set, zero value otherwise.
-func (o *CreateAwsTarget) GetAccessKeyId() string {
+func (o *CreateAWSTarget) GetAccessKeyId() string {
 	if o == nil || o.AccessKeyId == nil {
 		var ret string
 		return ret
@@ -94,7 +98,7 @@ func (o *CreateAwsTarget) GetAccessKeyId() string {
 
 // GetAccessKeyIdOk returns a tuple with the AccessKeyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateAwsTarget) GetAccessKeyIdOk() (*string, bool) {
+func (o *CreateAWSTarget) GetAccessKeyIdOk() (*string, bool) {
 	if o == nil || o.AccessKeyId == nil {
 		return nil, false
 	}
@@ -102,7 +106,7 @@ func (o *CreateAwsTarget) GetAccessKeyIdOk() (*string, bool) {
 }
 
 // HasAccessKeyId returns a boolean if a field has been set.
-func (o *CreateAwsTarget) HasAccessKeyId() bool {
+func (o *CreateAWSTarget) HasAccessKeyId() bool {
 	if o != nil && o.AccessKeyId != nil {
 		return true
 	}
@@ -111,12 +115,12 @@ func (o *CreateAwsTarget) HasAccessKeyId() bool {
 }
 
 // SetAccessKeyId gets a reference to the given string and assigns it to the AccessKeyId field.
-func (o *CreateAwsTarget) SetAccessKeyId(v string) {
+func (o *CreateAWSTarget) SetAccessKeyId(v string) {
 	o.AccessKeyId = &v
 }
 
 // GetComment returns the Comment field value if set, zero value otherwise.
-func (o *CreateAwsTarget) GetComment() string {
+func (o *CreateAWSTarget) GetComment() string {
 	if o == nil || o.Comment == nil {
 		var ret string
 		return ret
@@ -126,7 +130,7 @@ func (o *CreateAwsTarget) GetComment() string {
 
 // GetCommentOk returns a tuple with the Comment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateAwsTarget) GetCommentOk() (*string, bool) {
+func (o *CreateAWSTarget) GetCommentOk() (*string, bool) {
 	if o == nil || o.Comment == nil {
 		return nil, false
 	}
@@ -134,7 +138,7 @@ func (o *CreateAwsTarget) GetCommentOk() (*string, bool) {
 }
 
 // HasComment returns a boolean if a field has been set.
-func (o *CreateAwsTarget) HasComment() bool {
+func (o *CreateAWSTarget) HasComment() bool {
 	if o != nil && o.Comment != nil {
 		return true
 	}
@@ -143,12 +147,44 @@ func (o *CreateAwsTarget) HasComment() bool {
 }
 
 // SetComment gets a reference to the given string and assigns it to the Comment field.
-func (o *CreateAwsTarget) SetComment(v string) {
+func (o *CreateAWSTarget) SetComment(v string) {
 	o.Comment = &v
 }
 
+// GetKey returns the Key field value if set, zero value otherwise.
+func (o *CreateAWSTarget) GetKey() string {
+	if o == nil || o.Key == nil {
+		var ret string
+		return ret
+	}
+	return *o.Key
+}
+
+// GetKeyOk returns a tuple with the Key field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAWSTarget) GetKeyOk() (*string, bool) {
+	if o == nil || o.Key == nil {
+		return nil, false
+	}
+	return o.Key, true
+}
+
+// HasKey returns a boolean if a field has been set.
+func (o *CreateAWSTarget) HasKey() bool {
+	if o != nil && o.Key != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetKey gets a reference to the given string and assigns it to the Key field.
+func (o *CreateAWSTarget) SetKey(v string) {
+	o.Key = &v
+}
+
 // GetName returns the Name field value
-func (o *CreateAwsTarget) GetName() string {
+func (o *CreateAWSTarget) GetName() string {
 	if o == nil  {
 		var ret string
 		return ret
@@ -159,7 +195,7 @@ func (o *CreateAwsTarget) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *CreateAwsTarget) GetNameOk() (*string, bool) {
+func (o *CreateAWSTarget) GetNameOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -167,44 +203,44 @@ func (o *CreateAwsTarget) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *CreateAwsTarget) SetName(v string) {
+func (o *CreateAWSTarget) SetName(v string) {
 	o.Name = v
 }
 
-// GetProtectionKey returns the ProtectionKey field value if set, zero value otherwise.
-func (o *CreateAwsTarget) GetProtectionKey() string {
-	if o == nil || o.ProtectionKey == nil {
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *CreateAWSTarget) GetPassword() string {
+	if o == nil || o.Password == nil {
 		var ret string
 		return ret
 	}
-	return *o.ProtectionKey
+	return *o.Password
 }
 
-// GetProtectionKeyOk returns a tuple with the ProtectionKey field value if set, nil otherwise
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateAwsTarget) GetProtectionKeyOk() (*string, bool) {
-	if o == nil || o.ProtectionKey == nil {
+func (o *CreateAWSTarget) GetPasswordOk() (*string, bool) {
+	if o == nil || o.Password == nil {
 		return nil, false
 	}
-	return o.ProtectionKey, true
+	return o.Password, true
 }
 
-// HasProtectionKey returns a boolean if a field has been set.
-func (o *CreateAwsTarget) HasProtectionKey() bool {
-	if o != nil && o.ProtectionKey != nil {
+// HasPassword returns a boolean if a field has been set.
+func (o *CreateAWSTarget) HasPassword() bool {
+	if o != nil && o.Password != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetProtectionKey gets a reference to the given string and assigns it to the ProtectionKey field.
-func (o *CreateAwsTarget) SetProtectionKey(v string) {
-	o.ProtectionKey = &v
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *CreateAWSTarget) SetPassword(v string) {
+	o.Password = &v
 }
 
 // GetRegion returns the Region field value if set, zero value otherwise.
-func (o *CreateAwsTarget) GetRegion() string {
+func (o *CreateAWSTarget) GetRegion() string {
 	if o == nil || o.Region == nil {
 		var ret string
 		return ret
@@ -214,7 +250,7 @@ func (o *CreateAwsTarget) GetRegion() string {
 
 // GetRegionOk returns a tuple with the Region field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateAwsTarget) GetRegionOk() (*string, bool) {
+func (o *CreateAWSTarget) GetRegionOk() (*string, bool) {
 	if o == nil || o.Region == nil {
 		return nil, false
 	}
@@ -222,7 +258,7 @@ func (o *CreateAwsTarget) GetRegionOk() (*string, bool) {
 }
 
 // HasRegion returns a boolean if a field has been set.
-func (o *CreateAwsTarget) HasRegion() bool {
+func (o *CreateAWSTarget) HasRegion() bool {
 	if o != nil && o.Region != nil {
 		return true
 	}
@@ -231,12 +267,12 @@ func (o *CreateAwsTarget) HasRegion() bool {
 }
 
 // SetRegion gets a reference to the given string and assigns it to the Region field.
-func (o *CreateAwsTarget) SetRegion(v string) {
+func (o *CreateAWSTarget) SetRegion(v string) {
 	o.Region = &v
 }
 
 // GetSessionToken returns the SessionToken field value if set, zero value otherwise.
-func (o *CreateAwsTarget) GetSessionToken() string {
+func (o *CreateAWSTarget) GetSessionToken() string {
 	if o == nil || o.SessionToken == nil {
 		var ret string
 		return ret
@@ -246,7 +282,7 @@ func (o *CreateAwsTarget) GetSessionToken() string {
 
 // GetSessionTokenOk returns a tuple with the SessionToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateAwsTarget) GetSessionTokenOk() (*string, bool) {
+func (o *CreateAWSTarget) GetSessionTokenOk() (*string, bool) {
 	if o == nil || o.SessionToken == nil {
 		return nil, false
 	}
@@ -254,7 +290,7 @@ func (o *CreateAwsTarget) GetSessionTokenOk() (*string, bool) {
 }
 
 // HasSessionToken returns a boolean if a field has been set.
-func (o *CreateAwsTarget) HasSessionToken() bool {
+func (o *CreateAWSTarget) HasSessionToken() bool {
 	if o != nil && o.SessionToken != nil {
 		return true
 	}
@@ -263,12 +299,12 @@ func (o *CreateAwsTarget) HasSessionToken() bool {
 }
 
 // SetSessionToken gets a reference to the given string and assigns it to the SessionToken field.
-func (o *CreateAwsTarget) SetSessionToken(v string) {
+func (o *CreateAWSTarget) SetSessionToken(v string) {
 	o.SessionToken = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
-func (o *CreateAwsTarget) GetToken() string {
+func (o *CreateAWSTarget) GetToken() string {
 	if o == nil || o.Token == nil {
 		var ret string
 		return ret
@@ -278,7 +314,7 @@ func (o *CreateAwsTarget) GetToken() string {
 
 // GetTokenOk returns a tuple with the Token field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateAwsTarget) GetTokenOk() (*string, bool) {
+func (o *CreateAWSTarget) GetTokenOk() (*string, bool) {
 	if o == nil || o.Token == nil {
 		return nil, false
 	}
@@ -286,7 +322,7 @@ func (o *CreateAwsTarget) GetTokenOk() (*string, bool) {
 }
 
 // HasToken returns a boolean if a field has been set.
-func (o *CreateAwsTarget) HasToken() bool {
+func (o *CreateAWSTarget) HasToken() bool {
 	if o != nil && o.Token != nil {
 		return true
 	}
@@ -295,12 +331,12 @@ func (o *CreateAwsTarget) HasToken() bool {
 }
 
 // SetToken gets a reference to the given string and assigns it to the Token field.
-func (o *CreateAwsTarget) SetToken(v string) {
+func (o *CreateAWSTarget) SetToken(v string) {
 	o.Token = &v
 }
 
 // GetUidToken returns the UidToken field value if set, zero value otherwise.
-func (o *CreateAwsTarget) GetUidToken() string {
+func (o *CreateAWSTarget) GetUidToken() string {
 	if o == nil || o.UidToken == nil {
 		var ret string
 		return ret
@@ -310,7 +346,7 @@ func (o *CreateAwsTarget) GetUidToken() string {
 
 // GetUidTokenOk returns a tuple with the UidToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateAwsTarget) GetUidTokenOk() (*string, bool) {
+func (o *CreateAWSTarget) GetUidTokenOk() (*string, bool) {
 	if o == nil || o.UidToken == nil {
 		return nil, false
 	}
@@ -318,7 +354,7 @@ func (o *CreateAwsTarget) GetUidTokenOk() (*string, bool) {
 }
 
 // HasUidToken returns a boolean if a field has been set.
-func (o *CreateAwsTarget) HasUidToken() bool {
+func (o *CreateAWSTarget) HasUidToken() bool {
 	if o != nil && o.UidToken != nil {
 		return true
 	}
@@ -327,11 +363,43 @@ func (o *CreateAwsTarget) HasUidToken() bool {
 }
 
 // SetUidToken gets a reference to the given string and assigns it to the UidToken field.
-func (o *CreateAwsTarget) SetUidToken(v string) {
+func (o *CreateAWSTarget) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
-func (o CreateAwsTarget) MarshalJSON() ([]byte, error) {
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *CreateAWSTarget) GetUsername() string {
+	if o == nil || o.Username == nil {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAWSTarget) GetUsernameOk() (*string, bool) {
+	if o == nil || o.Username == nil {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *CreateAWSTarget) HasUsername() bool {
+	if o != nil && o.Username != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *CreateAWSTarget) SetUsername(v string) {
+	o.Username = &v
+}
+
+func (o CreateAWSTarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccessKey != nil {
 		toSerialize["access-key"] = o.AccessKey
@@ -342,11 +410,14 @@ func (o CreateAwsTarget) MarshalJSON() ([]byte, error) {
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment
 	}
+	if o.Key != nil {
+		toSerialize["key"] = o.Key
+	}
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.ProtectionKey != nil {
-		toSerialize["protection_key"] = o.ProtectionKey
+	if o.Password != nil {
+		toSerialize["password"] = o.Password
 	}
 	if o.Region != nil {
 		toSerialize["region"] = o.Region
@@ -360,41 +431,44 @@ func (o CreateAwsTarget) MarshalJSON() ([]byte, error) {
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
 	}
+	if o.Username != nil {
+		toSerialize["username"] = o.Username
+	}
 	return json.Marshal(toSerialize)
 }
 
-type NullableCreateAwsTarget struct {
-	value *CreateAwsTarget
+type NullableCreateAWSTarget struct {
+	value *CreateAWSTarget
 	isSet bool
 }
 
-func (v NullableCreateAwsTarget) Get() *CreateAwsTarget {
+func (v NullableCreateAWSTarget) Get() *CreateAWSTarget {
 	return v.value
 }
 
-func (v *NullableCreateAwsTarget) Set(val *CreateAwsTarget) {
+func (v *NullableCreateAWSTarget) Set(val *CreateAWSTarget) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCreateAwsTarget) IsSet() bool {
+func (v NullableCreateAWSTarget) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCreateAwsTarget) Unset() {
+func (v *NullableCreateAWSTarget) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCreateAwsTarget(val *CreateAwsTarget) *NullableCreateAwsTarget {
-	return &NullableCreateAwsTarget{value: val, isSet: true}
+func NewNullableCreateAWSTarget(val *CreateAWSTarget) *NullableCreateAWSTarget {
+	return &NullableCreateAWSTarget{value: val, isSet: true}
 }
 
-func (v NullableCreateAwsTarget) MarshalJSON() ([]byte, error) {
+func (v NullableCreateAWSTarget) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCreateAwsTarget) UnmarshalJSON(src []byte) error {
+func (v *NullableCreateAWSTarget) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

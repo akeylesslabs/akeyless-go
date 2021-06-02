@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SubAdmins** | Pointer to **[]string** |  | [optional] 
+**AllowedAccess** | Pointer to [**map[string]AllowedAccess**](AllowedAccess.md) |  | [optional] 
 
 ## Methods
 
@@ -25,30 +25,30 @@ NewGetSubAdminsListReplyObjWithDefaults instantiates a new GetSubAdminsListReply
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetSubAdmins
+### GetAllowedAccess
 
-`func (o *GetSubAdminsListReplyObj) GetSubAdmins() []string`
+`func (o *GetSubAdminsListReplyObj) GetAllowedAccess() map[string]AllowedAccess`
 
-GetSubAdmins returns the SubAdmins field if non-nil, zero value otherwise.
+GetAllowedAccess returns the AllowedAccess field if non-nil, zero value otherwise.
 
-### GetSubAdminsOk
+### GetAllowedAccessOk
 
-`func (o *GetSubAdminsListReplyObj) GetSubAdminsOk() (*[]string, bool)`
+`func (o *GetSubAdminsListReplyObj) GetAllowedAccessOk() (*map[string]AllowedAccess, bool)`
 
-GetSubAdminsOk returns a tuple with the SubAdmins field if it's non-nil, zero value otherwise
+GetAllowedAccessOk returns a tuple with the AllowedAccess field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSubAdmins
+### SetAllowedAccess
 
-`func (o *GetSubAdminsListReplyObj) SetSubAdmins(v []string)`
+`func (o *GetSubAdminsListReplyObj) SetAllowedAccess(v map[string]AllowedAccess)`
 
-SetSubAdmins sets SubAdmins field to given value.
+SetAllowedAccess sets AllowedAccess field to given value.
 
-### HasSubAdmins
+### HasAllowedAccess
 
-`func (o *GetSubAdminsListReplyObj) HasSubAdmins() bool`
+`func (o *GetSubAdminsListReplyObj) HasAllowedAccess() bool`
 
-HasSubAdmins returns a boolean if a field has been set.
+HasAllowedAccess returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

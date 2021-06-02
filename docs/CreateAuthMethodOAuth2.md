@@ -8,12 +8,15 @@ Name | Type | Description | Notes
 **Audience** | Pointer to **string** | The audience in the JWT | [optional] 
 **BoundClientIds** | Pointer to **[]string** | The clients ids that the access is restricted to | [optional] 
 **BoundIps** | Pointer to **[]string** | A CIDR whitelist of the IPs that the access is restricted to | [optional] 
+**ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
 **Issuer** | Pointer to **string** | Issuer URL | [optional] 
 **JwksUri** | **string** | The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. | 
 **Name** | **string** | Auth Method name | 
+**Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UniqueIdentifier** | **string** | A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. | 
+**Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 
 ## Methods
 
@@ -134,6 +137,31 @@ SetBoundIps sets BoundIps field to given value.
 
 HasBoundIps returns a boolean if a field has been set.
 
+### GetForceSubClaims
+
+`func (o *CreateAuthMethodOAuth2) GetForceSubClaims() bool`
+
+GetForceSubClaims returns the ForceSubClaims field if non-nil, zero value otherwise.
+
+### GetForceSubClaimsOk
+
+`func (o *CreateAuthMethodOAuth2) GetForceSubClaimsOk() (*bool, bool)`
+
+GetForceSubClaimsOk returns a tuple with the ForceSubClaims field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetForceSubClaims
+
+`func (o *CreateAuthMethodOAuth2) SetForceSubClaims(v bool)`
+
+SetForceSubClaims sets ForceSubClaims field to given value.
+
+### HasForceSubClaims
+
+`func (o *CreateAuthMethodOAuth2) HasForceSubClaims() bool`
+
+HasForceSubClaims returns a boolean if a field has been set.
+
 ### GetIssuer
 
 `func (o *CreateAuthMethodOAuth2) GetIssuer() string`
@@ -198,6 +226,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetPassword
+
+`func (o *CreateAuthMethodOAuth2) GetPassword() string`
+
+GetPassword returns the Password field if non-nil, zero value otherwise.
+
+### GetPasswordOk
+
+`func (o *CreateAuthMethodOAuth2) GetPasswordOk() (*string, bool)`
+
+GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPassword
+
+`func (o *CreateAuthMethodOAuth2) SetPassword(v string)`
+
+SetPassword sets Password field to given value.
+
+### HasPassword
+
+`func (o *CreateAuthMethodOAuth2) HasPassword() bool`
+
+HasPassword returns a boolean if a field has been set.
 
 ### GetToken
 
@@ -268,6 +321,31 @@ and a boolean to check if the value has been set.
 
 SetUniqueIdentifier sets UniqueIdentifier field to given value.
 
+
+### GetUsername
+
+`func (o *CreateAuthMethodOAuth2) GetUsername() string`
+
+GetUsername returns the Username field if non-nil, zero value otherwise.
+
+### GetUsernameOk
+
+`func (o *CreateAuthMethodOAuth2) GetUsernameOk() (*string, bool)`
+
+GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsername
+
+`func (o *CreateAuthMethodOAuth2) SetUsername(v string)`
+
+SetUsername sets Username field to given value.
+
+### HasUsername
+
+`func (o *CreateAuthMethodOAuth2) HasUsername() bool`
+
+HasUsername returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

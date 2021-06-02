@@ -17,25 +17,33 @@ import (
 
 // GatewayAddSubAdmins gatewayAddSubAdmins is a command that adds sub-admins
 type GatewayAddSubAdmins struct {
+	AllowGwApi *bool `json:"allow-gw-api,omitempty"`
+	AllowGwLogin *bool `json:"allow-gw-login,omitempty"`
 	// Gateway url
 	GatewayUrl *string `json:"gateway-url,omitempty"`
+	// Required only when the authentication process requires a username and password
+	Password *string `json:"password,omitempty"`
 	// SubAdmins to add
-	SubAdmin []string `json:"sub-admin"`
+	SubAdminAccessId string `json:"sub-admin-access-id"`
+	// key/val of sub claims, e.g group=admins,developers
+	SubClaims *map[string]string `json:"sub-claims,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// Required only when the authentication process requires a username and password
+	Username *string `json:"username,omitempty"`
 }
 
 // NewGatewayAddSubAdmins instantiates a new GatewayAddSubAdmins object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayAddSubAdmins(subAdmin []string, ) *GatewayAddSubAdmins {
+func NewGatewayAddSubAdmins(subAdminAccessId string, ) *GatewayAddSubAdmins {
 	this := GatewayAddSubAdmins{}
 	var gatewayUrl string = "http://localhost:8000"
 	this.GatewayUrl = &gatewayUrl
-	this.SubAdmin = subAdmin
+	this.SubAdminAccessId = subAdminAccessId
 	return &this
 }
 
@@ -47,6 +55,70 @@ func NewGatewayAddSubAdminsWithDefaults() *GatewayAddSubAdmins {
 	var gatewayUrl string = "http://localhost:8000"
 	this.GatewayUrl = &gatewayUrl
 	return &this
+}
+
+// GetAllowGwApi returns the AllowGwApi field value if set, zero value otherwise.
+func (o *GatewayAddSubAdmins) GetAllowGwApi() bool {
+	if o == nil || o.AllowGwApi == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AllowGwApi
+}
+
+// GetAllowGwApiOk returns a tuple with the AllowGwApi field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayAddSubAdmins) GetAllowGwApiOk() (*bool, bool) {
+	if o == nil || o.AllowGwApi == nil {
+		return nil, false
+	}
+	return o.AllowGwApi, true
+}
+
+// HasAllowGwApi returns a boolean if a field has been set.
+func (o *GatewayAddSubAdmins) HasAllowGwApi() bool {
+	if o != nil && o.AllowGwApi != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowGwApi gets a reference to the given bool and assigns it to the AllowGwApi field.
+func (o *GatewayAddSubAdmins) SetAllowGwApi(v bool) {
+	o.AllowGwApi = &v
+}
+
+// GetAllowGwLogin returns the AllowGwLogin field value if set, zero value otherwise.
+func (o *GatewayAddSubAdmins) GetAllowGwLogin() bool {
+	if o == nil || o.AllowGwLogin == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AllowGwLogin
+}
+
+// GetAllowGwLoginOk returns a tuple with the AllowGwLogin field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayAddSubAdmins) GetAllowGwLoginOk() (*bool, bool) {
+	if o == nil || o.AllowGwLogin == nil {
+		return nil, false
+	}
+	return o.AllowGwLogin, true
+}
+
+// HasAllowGwLogin returns a boolean if a field has been set.
+func (o *GatewayAddSubAdmins) HasAllowGwLogin() bool {
+	if o != nil && o.AllowGwLogin != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowGwLogin gets a reference to the given bool and assigns it to the AllowGwLogin field.
+func (o *GatewayAddSubAdmins) SetAllowGwLogin(v bool) {
+	o.AllowGwLogin = &v
 }
 
 // GetGatewayUrl returns the GatewayUrl field value if set, zero value otherwise.
@@ -81,28 +153,92 @@ func (o *GatewayAddSubAdmins) SetGatewayUrl(v string) {
 	o.GatewayUrl = &v
 }
 
-// GetSubAdmin returns the SubAdmin field value
-func (o *GatewayAddSubAdmins) GetSubAdmin() []string {
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *GatewayAddSubAdmins) GetPassword() string {
+	if o == nil || o.Password == nil {
+		var ret string
+		return ret
+	}
+	return *o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayAddSubAdmins) GetPasswordOk() (*string, bool) {
+	if o == nil || o.Password == nil {
+		return nil, false
+	}
+	return o.Password, true
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *GatewayAddSubAdmins) HasPassword() bool {
+	if o != nil && o.Password != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *GatewayAddSubAdmins) SetPassword(v string) {
+	o.Password = &v
+}
+
+// GetSubAdminAccessId returns the SubAdminAccessId field value
+func (o *GatewayAddSubAdmins) GetSubAdminAccessId() string {
 	if o == nil  {
-		var ret []string
+		var ret string
 		return ret
 	}
 
-	return o.SubAdmin
+	return o.SubAdminAccessId
 }
 
-// GetSubAdminOk returns a tuple with the SubAdmin field value
+// GetSubAdminAccessIdOk returns a tuple with the SubAdminAccessId field value
 // and a boolean to check if the value has been set.
-func (o *GatewayAddSubAdmins) GetSubAdminOk() (*[]string, bool) {
+func (o *GatewayAddSubAdmins) GetSubAdminAccessIdOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.SubAdmin, true
+	return &o.SubAdminAccessId, true
 }
 
-// SetSubAdmin sets field value
-func (o *GatewayAddSubAdmins) SetSubAdmin(v []string) {
-	o.SubAdmin = v
+// SetSubAdminAccessId sets field value
+func (o *GatewayAddSubAdmins) SetSubAdminAccessId(v string) {
+	o.SubAdminAccessId = v
+}
+
+// GetSubClaims returns the SubClaims field value if set, zero value otherwise.
+func (o *GatewayAddSubAdmins) GetSubClaims() map[string]string {
+	if o == nil || o.SubClaims == nil {
+		var ret map[string]string
+		return ret
+	}
+	return *o.SubClaims
+}
+
+// GetSubClaimsOk returns a tuple with the SubClaims field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayAddSubAdmins) GetSubClaimsOk() (*map[string]string, bool) {
+	if o == nil || o.SubClaims == nil {
+		return nil, false
+	}
+	return o.SubClaims, true
+}
+
+// HasSubClaims returns a boolean if a field has been set.
+func (o *GatewayAddSubAdmins) HasSubClaims() bool {
+	if o != nil && o.SubClaims != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSubClaims gets a reference to the given map[string]string and assigns it to the SubClaims field.
+func (o *GatewayAddSubAdmins) SetSubClaims(v map[string]string) {
+	o.SubClaims = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -169,19 +305,66 @@ func (o *GatewayAddSubAdmins) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *GatewayAddSubAdmins) GetUsername() string {
+	if o == nil || o.Username == nil {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayAddSubAdmins) GetUsernameOk() (*string, bool) {
+	if o == nil || o.Username == nil {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *GatewayAddSubAdmins) HasUsername() bool {
+	if o != nil && o.Username != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *GatewayAddSubAdmins) SetUsername(v string) {
+	o.Username = &v
+}
+
 func (o GatewayAddSubAdmins) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AllowGwApi != nil {
+		toSerialize["allow-gw-api"] = o.AllowGwApi
+	}
+	if o.AllowGwLogin != nil {
+		toSerialize["allow-gw-login"] = o.AllowGwLogin
+	}
 	if o.GatewayUrl != nil {
 		toSerialize["gateway-url"] = o.GatewayUrl
 	}
+	if o.Password != nil {
+		toSerialize["password"] = o.Password
+	}
 	if true {
-		toSerialize["sub-admin"] = o.SubAdmin
+		toSerialize["sub-admin-access-id"] = o.SubAdminAccessId
+	}
+	if o.SubClaims != nil {
+		toSerialize["sub-claims"] = o.SubClaims
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.Username != nil {
+		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

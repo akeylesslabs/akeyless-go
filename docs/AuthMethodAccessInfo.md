@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **AzureAdAccessRules** | Pointer to [**AzureADAccessRules**](AzureADAccessRules.md) |  | [optional] 
 **CidrWhitelist** | Pointer to **string** |  | [optional] 
 **EmailPassAccessRules** | Pointer to [**EmailPassAccessRules**](EmailPassAccessRules.md) |  | [optional] 
+**ForceSubClaims** | Pointer to **bool** | if true the role associated with this auth method must include sub claims | [optional] 
 **GcpAccessRules** | Pointer to [**GCPAccessRules**](GCPAccessRules.md) |  | [optional] 
 **HuaweiAccessRules** | Pointer to [**HuaweiAccessRules**](HuaweiAccessRules.md) |  | [optional] 
 **LdapAccessRules** | Pointer to [**LDAPAccessRules**](LDAPAccessRules.md) |  | [optional] 
@@ -212,6 +213,31 @@ SetEmailPassAccessRules sets EmailPassAccessRules field to given value.
 `func (o *AuthMethodAccessInfo) HasEmailPassAccessRules() bool`
 
 HasEmailPassAccessRules returns a boolean if a field has been set.
+
+### GetForceSubClaims
+
+`func (o *AuthMethodAccessInfo) GetForceSubClaims() bool`
+
+GetForceSubClaims returns the ForceSubClaims field if non-nil, zero value otherwise.
+
+### GetForceSubClaimsOk
+
+`func (o *AuthMethodAccessInfo) GetForceSubClaimsOk() (*bool, bool)`
+
+GetForceSubClaimsOk returns a tuple with the ForceSubClaims field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetForceSubClaims
+
+`func (o *AuthMethodAccessInfo) SetForceSubClaims(v bool)`
+
+SetForceSubClaims sets ForceSubClaims field to given value.
+
+### HasForceSubClaims
+
+`func (o *AuthMethodAccessInfo) HasForceSubClaims() bool`
+
+HasForceSubClaims returns a boolean if a field has been set.
 
 ### GetGcpAccessRules
 
