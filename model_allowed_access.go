@@ -22,6 +22,7 @@ type AllowedAccess struct {
 	AllowedApi *bool `json:"allowed_api,omitempty"`
 	AllowedsLogin *bool `json:"alloweds_login,omitempty"`
 	ErrMsg *string `json:"err_msg,omitempty"`
+	Hash *string `json:"hash,omitempty"`
 	IsValid *bool `json:"is_valid,omitempty"`
 	Name *string `json:"name,omitempty"`
 	SubClaims *map[string][]string `json:"sub_claims,omitempty"`
@@ -204,6 +205,38 @@ func (o *AllowedAccess) SetErrMsg(v string) {
 	o.ErrMsg = &v
 }
 
+// GetHash returns the Hash field value if set, zero value otherwise.
+func (o *AllowedAccess) GetHash() string {
+	if o == nil || o.Hash == nil {
+		var ret string
+		return ret
+	}
+	return *o.Hash
+}
+
+// GetHashOk returns a tuple with the Hash field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AllowedAccess) GetHashOk() (*string, bool) {
+	if o == nil || o.Hash == nil {
+		return nil, false
+	}
+	return o.Hash, true
+}
+
+// HasHash returns a boolean if a field has been set.
+func (o *AllowedAccess) HasHash() bool {
+	if o != nil && o.Hash != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHash gets a reference to the given string and assigns it to the Hash field.
+func (o *AllowedAccess) SetHash(v string) {
+	o.Hash = &v
+}
+
 // GetIsValid returns the IsValid field value if set, zero value otherwise.
 func (o *AllowedAccess) GetIsValid() bool {
 	if o == nil || o.IsValid == nil {
@@ -316,6 +349,9 @@ func (o AllowedAccess) MarshalJSON() ([]byte, error) {
 	}
 	if o.ErrMsg != nil {
 		toSerialize["err_msg"] = o.ErrMsg
+	}
+	if o.Hash != nil {
+		toSerialize["hash"] = o.Hash
 	}
 	if o.IsValid != nil {
 		toSerialize["is_valid"] = o.IsValid

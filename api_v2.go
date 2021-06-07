@@ -5652,123 +5652,6 @@ func (a *V2ApiService) EncryptPKCS1Execute(r ApiEncryptPKCS1Request) (EncryptPKC
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGatewayAddSubAdminsRequest struct {
-	ctx _context.Context
-	ApiService *V2ApiService
-	body *GatewayAddSubAdmins
-}
-
-func (r ApiGatewayAddSubAdminsRequest) Body(body GatewayAddSubAdmins) ApiGatewayAddSubAdminsRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiGatewayAddSubAdminsRequest) Execute() (map[string]interface{}, *_nethttp.Response, error) {
-	return r.ApiService.GatewayAddSubAdminsExecute(r)
-}
-
-/*
- * GatewayAddSubAdmins Method for GatewayAddSubAdmins
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGatewayAddSubAdminsRequest
- */
-func (a *V2ApiService) GatewayAddSubAdmins(ctx _context.Context) ApiGatewayAddSubAdminsRequest {
-	return ApiGatewayAddSubAdminsRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-/*
- * Execute executes the request
- * @return map[string]interface{}
- */
-func (a *V2ApiService) GatewayAddSubAdminsExecute(r ApiGatewayAddSubAdminsRequest) (map[string]interface{}, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  map[string]interface{}
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.GatewayAddSubAdmins")
-	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/gateway-add-sub-admins"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-	if r.body == nil {
-		return localVarReturnValue, nil, reportError("body is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-			var v JSONError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ApiGatewayCreateProducerArtifactoryRequest struct {
 	ctx _context.Context
 	ApiService *V2ApiService
@@ -7521,28 +7404,28 @@ func (a *V2ApiService) GatewayCreateProducerSnowflakeExecute(r ApiGatewayCreateP
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGatewayDeleteProducerRequest struct {
+type ApiGatewayDeleteAllowedManagementAccessRequest struct {
 	ctx _context.Context
 	ApiService *V2ApiService
-	body *GatewayDeleteProducer
+	body *GatewayDeleteAllowedManagementAccess
 }
 
-func (r ApiGatewayDeleteProducerRequest) Body(body GatewayDeleteProducer) ApiGatewayDeleteProducerRequest {
+func (r ApiGatewayDeleteAllowedManagementAccessRequest) Body(body GatewayDeleteAllowedManagementAccess) ApiGatewayDeleteAllowedManagementAccessRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiGatewayDeleteProducerRequest) Execute() (GatewayDeleteProducerOutput, *_nethttp.Response, error) {
-	return r.ApiService.GatewayDeleteProducerExecute(r)
+func (r ApiGatewayDeleteAllowedManagementAccessRequest) Execute() (map[string]interface{}, *_nethttp.Response, error) {
+	return r.ApiService.GatewayDeleteAllowedManagementAccessExecute(r)
 }
 
 /*
- * GatewayDeleteProducer Method for GatewayDeleteProducer
+ * GatewayDeleteAllowedManagementAccess Method for GatewayDeleteAllowedManagementAccess
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGatewayDeleteProducerRequest
+ * @return ApiGatewayDeleteAllowedManagementAccessRequest
  */
-func (a *V2ApiService) GatewayDeleteProducer(ctx _context.Context) ApiGatewayDeleteProducerRequest {
-	return ApiGatewayDeleteProducerRequest{
+func (a *V2ApiService) GatewayDeleteAllowedManagementAccess(ctx _context.Context) ApiGatewayDeleteAllowedManagementAccessRequest {
+	return ApiGatewayDeleteAllowedManagementAccessRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -7550,24 +7433,24 @@ func (a *V2ApiService) GatewayDeleteProducer(ctx _context.Context) ApiGatewayDel
 
 /*
  * Execute executes the request
- * @return GatewayDeleteProducerOutput
+ * @return map[string]interface{}
  */
-func (a *V2ApiService) GatewayDeleteProducerExecute(r ApiGatewayDeleteProducerRequest) (GatewayDeleteProducerOutput, *_nethttp.Response, error) {
+func (a *V2ApiService) GatewayDeleteAllowedManagementAccessExecute(r ApiGatewayDeleteAllowedManagementAccessRequest) (map[string]interface{}, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  GatewayDeleteProducerOutput
+		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.GatewayDeleteProducer")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.GatewayDeleteAllowedManagementAccess")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/gateway-delete-producer"
+	localVarPath := localBasePath + "/gateway-delete-allowed-management-access"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -7638,28 +7521,28 @@ func (a *V2ApiService) GatewayDeleteProducerExecute(r ApiGatewayDeleteProducerRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGatewayDeleteSubAdminsRequest struct {
+type ApiGatewayDeleteProducerRequest struct {
 	ctx _context.Context
 	ApiService *V2ApiService
-	body *GatewayDeleteSubAdmins
+	body *GatewayDeleteProducer
 }
 
-func (r ApiGatewayDeleteSubAdminsRequest) Body(body GatewayDeleteSubAdmins) ApiGatewayDeleteSubAdminsRequest {
+func (r ApiGatewayDeleteProducerRequest) Body(body GatewayDeleteProducer) ApiGatewayDeleteProducerRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiGatewayDeleteSubAdminsRequest) Execute() (map[string]interface{}, *_nethttp.Response, error) {
-	return r.ApiService.GatewayDeleteSubAdminsExecute(r)
+func (r ApiGatewayDeleteProducerRequest) Execute() (GatewayDeleteProducerOutput, *_nethttp.Response, error) {
+	return r.ApiService.GatewayDeleteProducerExecute(r)
 }
 
 /*
- * GatewayDeleteSubAdmins Method for GatewayDeleteSubAdmins
+ * GatewayDeleteProducer Method for GatewayDeleteProducer
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGatewayDeleteSubAdminsRequest
+ * @return ApiGatewayDeleteProducerRequest
  */
-func (a *V2ApiService) GatewayDeleteSubAdmins(ctx _context.Context) ApiGatewayDeleteSubAdminsRequest {
-	return ApiGatewayDeleteSubAdminsRequest{
+func (a *V2ApiService) GatewayDeleteProducer(ctx _context.Context) ApiGatewayDeleteProducerRequest {
+	return ApiGatewayDeleteProducerRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -7667,24 +7550,24 @@ func (a *V2ApiService) GatewayDeleteSubAdmins(ctx _context.Context) ApiGatewayDe
 
 /*
  * Execute executes the request
- * @return map[string]interface{}
+ * @return GatewayDeleteProducerOutput
  */
-func (a *V2ApiService) GatewayDeleteSubAdminsExecute(r ApiGatewayDeleteSubAdminsRequest) (map[string]interface{}, *_nethttp.Response, error) {
+func (a *V2ApiService) GatewayDeleteProducerExecute(r ApiGatewayDeleteProducerRequest) (GatewayDeleteProducerOutput, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  GatewayDeleteProducerOutput
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.GatewayDeleteSubAdmins")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.GatewayDeleteProducer")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/gateway-delete-sub-admins"
+	localVarPath := localBasePath + "/gateway-delete-producer"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -8106,28 +7989,28 @@ func (a *V2ApiService) GatewayGetTmpUsersExecute(r ApiGatewayGetTmpUsersRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGatewayListProducersRequest struct {
+type ApiGatewayListAllowedManagementAccessRequest struct {
 	ctx _context.Context
 	ApiService *V2ApiService
-	body *GatewayListProducers
+	body *GatewayListAllowedManagementAccess
 }
 
-func (r ApiGatewayListProducersRequest) Body(body GatewayListProducers) ApiGatewayListProducersRequest {
+func (r ApiGatewayListAllowedManagementAccessRequest) Body(body GatewayListAllowedManagementAccess) ApiGatewayListAllowedManagementAccessRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiGatewayListProducersRequest) Execute() (GetProducersListReplyObj, *_nethttp.Response, error) {
-	return r.ApiService.GatewayListProducersExecute(r)
+func (r ApiGatewayListAllowedManagementAccessRequest) Execute() (GetSubAdminsListReplyObj, *_nethttp.Response, error) {
+	return r.ApiService.GatewayListAllowedManagementAccessExecute(r)
 }
 
 /*
- * GatewayListProducers Method for GatewayListProducers
+ * GatewayListAllowedManagementAccess Method for GatewayListAllowedManagementAccess
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGatewayListProducersRequest
+ * @return ApiGatewayListAllowedManagementAccessRequest
  */
-func (a *V2ApiService) GatewayListProducers(ctx _context.Context) ApiGatewayListProducersRequest {
-	return ApiGatewayListProducersRequest{
+func (a *V2ApiService) GatewayListAllowedManagementAccess(ctx _context.Context) ApiGatewayListAllowedManagementAccessRequest {
+	return ApiGatewayListAllowedManagementAccessRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -8135,24 +8018,24 @@ func (a *V2ApiService) GatewayListProducers(ctx _context.Context) ApiGatewayList
 
 /*
  * Execute executes the request
- * @return GetProducersListReplyObj
+ * @return GetSubAdminsListReplyObj
  */
-func (a *V2ApiService) GatewayListProducersExecute(r ApiGatewayListProducersRequest) (GetProducersListReplyObj, *_nethttp.Response, error) {
+func (a *V2ApiService) GatewayListAllowedManagementAccessExecute(r ApiGatewayListAllowedManagementAccessRequest) (GetSubAdminsListReplyObj, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  GetProducersListReplyObj
+		localVarReturnValue  GetSubAdminsListReplyObj
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.GatewayListProducers")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.GatewayListAllowedManagementAccess")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/gateway-list-producers"
+	localVarPath := localBasePath + "/gateway-list-allowed-management-access"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -8223,28 +8106,28 @@ func (a *V2ApiService) GatewayListProducersExecute(r ApiGatewayListProducersRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGatewayListSubAdminsRequest struct {
+type ApiGatewayListProducersRequest struct {
 	ctx _context.Context
 	ApiService *V2ApiService
-	body *GatewayListSubAdmins
+	body *GatewayListProducers
 }
 
-func (r ApiGatewayListSubAdminsRequest) Body(body GatewayListSubAdmins) ApiGatewayListSubAdminsRequest {
+func (r ApiGatewayListProducersRequest) Body(body GatewayListProducers) ApiGatewayListProducersRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiGatewayListSubAdminsRequest) Execute() (GetSubAdminsListReplyObj, *_nethttp.Response, error) {
-	return r.ApiService.GatewayListSubAdminsExecute(r)
+func (r ApiGatewayListProducersRequest) Execute() (GetProducersListReplyObj, *_nethttp.Response, error) {
+	return r.ApiService.GatewayListProducersExecute(r)
 }
 
 /*
- * GatewayListSubAdmins Method for GatewayListSubAdmins
+ * GatewayListProducers Method for GatewayListProducers
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGatewayListSubAdminsRequest
+ * @return ApiGatewayListProducersRequest
  */
-func (a *V2ApiService) GatewayListSubAdmins(ctx _context.Context) ApiGatewayListSubAdminsRequest {
-	return ApiGatewayListSubAdminsRequest{
+func (a *V2ApiService) GatewayListProducers(ctx _context.Context) ApiGatewayListProducersRequest {
+	return ApiGatewayListProducersRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -8252,24 +8135,24 @@ func (a *V2ApiService) GatewayListSubAdmins(ctx _context.Context) ApiGatewayList
 
 /*
  * Execute executes the request
- * @return GetSubAdminsListReplyObj
+ * @return GetProducersListReplyObj
  */
-func (a *V2ApiService) GatewayListSubAdminsExecute(r ApiGatewayListSubAdminsRequest) (GetSubAdminsListReplyObj, *_nethttp.Response, error) {
+func (a *V2ApiService) GatewayListProducersExecute(r ApiGatewayListProducersRequest) (GetProducersListReplyObj, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  GetSubAdminsListReplyObj
+		localVarReturnValue  GetProducersListReplyObj
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.GatewayListSubAdmins")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.GatewayListProducers")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/gateway-list-SubAdmins"
+	localVarPath := localBasePath + "/gateway-list-producers"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}

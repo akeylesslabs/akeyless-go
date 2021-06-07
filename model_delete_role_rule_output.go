@@ -17,6 +17,7 @@ import (
 
 // DeleteRoleRuleOutput struct for DeleteRoleRuleOutput
 type DeleteRoleRuleOutput struct {
+	Deleted *bool `json:"deleted,omitempty"`
 	Result *string `json:"result,omitempty"`
 }
 
@@ -35,6 +36,38 @@ func NewDeleteRoleRuleOutput() *DeleteRoleRuleOutput {
 func NewDeleteRoleRuleOutputWithDefaults() *DeleteRoleRuleOutput {
 	this := DeleteRoleRuleOutput{}
 	return &this
+}
+
+// GetDeleted returns the Deleted field value if set, zero value otherwise.
+func (o *DeleteRoleRuleOutput) GetDeleted() bool {
+	if o == nil || o.Deleted == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Deleted
+}
+
+// GetDeletedOk returns a tuple with the Deleted field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeleteRoleRuleOutput) GetDeletedOk() (*bool, bool) {
+	if o == nil || o.Deleted == nil {
+		return nil, false
+	}
+	return o.Deleted, true
+}
+
+// HasDeleted returns a boolean if a field has been set.
+func (o *DeleteRoleRuleOutput) HasDeleted() bool {
+	if o != nil && o.Deleted != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleted gets a reference to the given bool and assigns it to the Deleted field.
+func (o *DeleteRoleRuleOutput) SetDeleted(v bool) {
+	o.Deleted = &v
 }
 
 // GetResult returns the Result field value if set, zero value otherwise.
@@ -71,6 +104,9 @@ func (o *DeleteRoleRuleOutput) SetResult(v string) {
 
 func (o DeleteRoleRuleOutput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Deleted != nil {
+		toSerialize["deleted"] = o.Deleted
+	}
 	if o.Result != nil {
 		toSerialize["result"] = o.Result
 	}

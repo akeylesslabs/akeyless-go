@@ -52,7 +52,6 @@ Method | HTTP request | Description
 [**DescribePermissions**](V2Api.md#DescribePermissions) | **Post** /describe-permissions | 
 [**Encrypt**](V2Api.md#Encrypt) | **Post** /encrypt | 
 [**EncryptPKCS1**](V2Api.md#EncryptPKCS1) | **Post** /encrypt-pkcs1 | 
-[**GatewayAddSubAdmins**](V2Api.md#GatewayAddSubAdmins) | **Post** /gateway-add-sub-admins | 
 [**GatewayCreateProducerArtifactory**](V2Api.md#GatewayCreateProducerArtifactory) | **Post** /gateway-create-producer-artifactory | 
 [**GatewayCreateProducerAws**](V2Api.md#GatewayCreateProducerAws) | **Post** /gateway-create-producer-aws | 
 [**GatewayCreateProducerAzure**](V2Api.md#GatewayCreateProducerAzure) | **Post** /gateway-create-producer-azure | 
@@ -68,13 +67,13 @@ Method | HTTP request | Description
 [**GatewayCreateProducerRabbitMQ**](V2Api.md#GatewayCreateProducerRabbitMQ) | **Post** /gateway-create-producer-rabbitmq | 
 [**GatewayCreateProducerRdp**](V2Api.md#GatewayCreateProducerRdp) | **Post** /gateway-create-producer-rdp | 
 [**GatewayCreateProducerSnowflake**](V2Api.md#GatewayCreateProducerSnowflake) | **Post** /gateway-create-producer-snowflake | 
+[**GatewayDeleteAllowedManagementAccess**](V2Api.md#GatewayDeleteAllowedManagementAccess) | **Post** /gateway-delete-allowed-management-access | 
 [**GatewayDeleteProducer**](V2Api.md#GatewayDeleteProducer) | **Post** /gateway-delete-producer | 
-[**GatewayDeleteSubAdmins**](V2Api.md#GatewayDeleteSubAdmins) | **Post** /gateway-delete-sub-admins | 
 [**GatewayGetConfig**](V2Api.md#GatewayGetConfig) | **Post** /gateway-get-config | 
 [**GatewayGetProducer**](V2Api.md#GatewayGetProducer) | **Post** /gateway-get-producer | 
 [**GatewayGetTmpUsers**](V2Api.md#GatewayGetTmpUsers) | **Post** /gateway-get-producer-tmp-creds | 
+[**GatewayListAllowedManagementAccess**](V2Api.md#GatewayListAllowedManagementAccess) | **Post** /gateway-list-allowed-management-access | 
 [**GatewayListProducers**](V2Api.md#GatewayListProducers) | **Post** /gateway-list-producers | 
-[**GatewayListSubAdmins**](V2Api.md#GatewayListSubAdmins) | **Post** /gateway-list-SubAdmins | 
 [**GatewayRevokeTmpUsers**](V2Api.md#GatewayRevokeTmpUsers) | **Post** /gateway-revoke-producer-tmp-creds | 
 [**GatewayStartProducer**](V2Api.md#GatewayStartProducer) | **Post** /gateway-start-producer | 
 [**GatewayStopProducer**](V2Api.md#GatewayStopProducer) | **Post** /gateway-stop-producer | 
@@ -3201,70 +3200,6 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## GatewayAddSubAdmins
-
-> map[string]interface{} GatewayAddSubAdmins(ctx).Body(body).Execute()
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    body := *openapiclient.NewgatewayAddSubAdmins("SubAdminAccessId_example") // GatewayAddSubAdmins | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayAddSubAdmins(context.Background()).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayAddSubAdmins``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GatewayAddSubAdmins`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayAddSubAdmins`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGatewayAddSubAdminsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayAddSubAdmins**](GatewayAddSubAdmins.md) |  | 
-
-### Return type
-
-**map[string]interface{}**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## GatewayCreateProducerArtifactory
 
 > GatewayCreateProducerArtifactoryOutput GatewayCreateProducerArtifactory(ctx).Body(body).Execute()
@@ -4225,6 +4160,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GatewayDeleteAllowedManagementAccess
+
+> map[string]interface{} GatewayDeleteAllowedManagementAccess(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayDeleteAllowedManagementAccess("SubAdminId_example") // GatewayDeleteAllowedManagementAccess | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayDeleteAllowedManagementAccess(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayDeleteAllowedManagementAccess``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayDeleteAllowedManagementAccess`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayDeleteAllowedManagementAccess`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayDeleteAllowedManagementAccessRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayDeleteAllowedManagementAccess**](GatewayDeleteAllowedManagementAccess.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GatewayDeleteProducer
 
 > GatewayDeleteProducerOutput GatewayDeleteProducer(ctx).Body(body).Execute()
@@ -4274,70 +4273,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GatewayDeleteProducerOutput**](gatewayDeleteProducerOutput.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GatewayDeleteSubAdmins
-
-> map[string]interface{} GatewayDeleteSubAdmins(ctx).Body(body).Execute()
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    body := *openapiclient.NewgatewayDeleteSubAdmins("SubAdminId_example") // GatewayDeleteSubAdmins | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayDeleteSubAdmins(context.Background()).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayDeleteSubAdmins``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GatewayDeleteSubAdmins`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayDeleteSubAdmins`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGatewayDeleteSubAdminsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayDeleteSubAdmins**](GatewayDeleteSubAdmins.md) |  | 
-
-### Return type
-
-**map[string]interface{}**
 
 ### Authorization
 
@@ -4545,6 +4480,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GatewayListAllowedManagementAccess
+
+> GetSubAdminsListReplyObj GatewayListAllowedManagementAccess(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayListAllowedManagementAccess() // GatewayListAllowedManagementAccess | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayListAllowedManagementAccess(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayListAllowedManagementAccess``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayListAllowedManagementAccess`: GetSubAdminsListReplyObj
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayListAllowedManagementAccess`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayListAllowedManagementAccessRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayListAllowedManagementAccess**](GatewayListAllowedManagementAccess.md) |  | 
+
+### Return type
+
+[**GetSubAdminsListReplyObj**](GetSubAdminsListReplyObj.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GatewayListProducers
 
 > GetProducersListReplyObj GatewayListProducers(ctx).Body(body).Execute()
@@ -4594,70 +4593,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GetProducersListReplyObj**](GetProducersListReplyObj.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GatewayListSubAdmins
-
-> GetSubAdminsListReplyObj GatewayListSubAdmins(ctx).Body(body).Execute()
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    body := *openapiclient.NewgatewayListSubAdmins() // GatewayListSubAdmins | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayListSubAdmins(context.Background()).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayListSubAdmins``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GatewayListSubAdmins`: GetSubAdminsListReplyObj
-    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayListSubAdmins`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGatewayListSubAdminsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayListSubAdmins**](GatewayListSubAdmins.md) |  | 
-
-### Return type
-
-[**GetSubAdminsListReplyObj**](GetSubAdminsListReplyObj.md)
 
 ### Authorization
 

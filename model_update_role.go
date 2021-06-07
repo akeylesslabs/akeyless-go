@@ -17,9 +17,9 @@ import (
 
 // UpdateRole struct for UpdateRole
 type UpdateRole struct {
-	// Allow this role to view analytics. Currently only 'none' and 'self' values are supported, allowing associated auth methods to view reports produced by the same auth methods.
+	// Allow this role to view analytics. Currently only 'none', 'own', 'all' values are supported, allowing associated auth methods to view reports produced by the same auth methods.
 	AnalyticsAccess *string `json:"analytics-access,omitempty"`
-	// Allow this role to view audit logs. Currently only 'none' and 'self' values are supported, allowing associated auth methods to view audit logs produced by the same auth methods.
+	// Allow this role to view audit logs. Currently only 'none', 'own' and 'all' values are supported, allowing associated auth methods to view audit logs produced by the same auth methods.
 	AuditAccess *string `json:"audit-access,omitempty"`
 	// Role name
 	Name string `json:"name"`

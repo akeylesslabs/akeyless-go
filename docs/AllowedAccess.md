@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **AllowedApi** | Pointer to **bool** |  | [optional] 
 **AllowedsLogin** | Pointer to **bool** |  | [optional] 
 **ErrMsg** | Pointer to **string** |  | [optional] 
+**Hash** | Pointer to **string** |  | [optional] 
 **IsValid** | Pointer to **bool** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **SubClaims** | Pointer to [**map[string][]string**](array.md) |  | [optional] 
@@ -156,6 +157,31 @@ SetErrMsg sets ErrMsg field to given value.
 `func (o *AllowedAccess) HasErrMsg() bool`
 
 HasErrMsg returns a boolean if a field has been set.
+
+### GetHash
+
+`func (o *AllowedAccess) GetHash() string`
+
+GetHash returns the Hash field if non-nil, zero value otherwise.
+
+### GetHashOk
+
+`func (o *AllowedAccess) GetHashOk() (*string, bool)`
+
+GetHashOk returns a tuple with the Hash field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHash
+
+`func (o *AllowedAccess) SetHash(v string)`
+
+SetHash sets Hash field to given value.
+
+### HasHash
+
+`func (o *AllowedAccess) HasHash() bool`
+
+HasHash returns a boolean if a field has been set.
 
 ### GetIsValid
 
