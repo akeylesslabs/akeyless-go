@@ -43,7 +43,6 @@ type TargetTypeDetailsInput struct {
 	DbServerName *string `json:"db_server_name,omitempty"`
 	DbUserName *string `json:"db_user_name,omitempty"`
 	EksAccessKeyId *string `json:"eks_access_key_id,omitempty"`
-	EksAssumeRole *string `json:"eks_assume_role,omitempty"`
 	EksClusterCaCertificate *string `json:"eks_cluster_ca_certificate,omitempty"`
 	EksClusterEndpoint *string `json:"eks_cluster_endpoint,omitempty"`
 	EksClusterName *string `json:"eks_cluster_name,omitempty"`
@@ -53,13 +52,13 @@ type TargetTypeDetailsInput struct {
 	GcpServiceAccountKey *[]int32 `json:"gcp_service_account_key,omitempty"`
 	GkeClusterCaCertificate *string `json:"gke_cluster_ca_certificate,omitempty"`
 	GkeClusterEndpoint *string `json:"gke_cluster_endpoint,omitempty"`
-	// GKEProjectID            string `json:\"gke_project_id\"`
 	GkeClusterName *string `json:"gke_cluster_name,omitempty"`
 	GkeServiceAccountKey *string `json:"gke_service_account_key,omitempty"`
-	// GKEClusterComputeZone   string `json:\"gke_cluster_compute_zone\"`
 	GkeServiceAccountName *string `json:"gke_service_account_name,omitempty"`
 	Host *string `json:"host,omitempty"`
-	MongodbAtlas *bool `json:"mongodb_atlas,omitempty"`
+	K8sBearerToken *string `json:"k8s_bearer_token,omitempty"`
+	K8sClusterCaCertificate *string `json:"k8s_cluster_ca_certificate,omitempty"`
+	K8sClusterEndpoint *string `json:"k8s_cluster_endpoint,omitempty"`
 	MongodbAtlasApiPrivateKey *string `json:"mongodb_atlas_api_private_key,omitempty"`
 	MongodbAtlasApiPublicKey *string `json:"mongodb_atlas_api_public_key,omitempty"`
 	// mongodb atlas fields
@@ -68,6 +67,7 @@ type TargetTypeDetailsInput struct {
 	MongodbDbName *string `json:"mongodb_db_name,omitempty"`
 	MongodbDefaultAuthDb *string `json:"mongodb_default_auth_db,omitempty"`
 	MongodbHostPort *string `json:"mongodb_host_port,omitempty"`
+	MongodbIsAtlas *bool `json:"mongodb_is_atlas,omitempty"`
 	MongodbPassword *string `json:"mongodb_password,omitempty"`
 	// mongodb fields
 	MongodbUriConnection *string `json:"mongodb_uri_connection,omitempty"`
@@ -876,38 +876,6 @@ func (o *TargetTypeDetailsInput) SetEksAccessKeyId(v string) {
 	o.EksAccessKeyId = &v
 }
 
-// GetEksAssumeRole returns the EksAssumeRole field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetEksAssumeRole() string {
-	if o == nil || o.EksAssumeRole == nil {
-		var ret string
-		return ret
-	}
-	return *o.EksAssumeRole
-}
-
-// GetEksAssumeRoleOk returns a tuple with the EksAssumeRole field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetEksAssumeRoleOk() (*string, bool) {
-	if o == nil || o.EksAssumeRole == nil {
-		return nil, false
-	}
-	return o.EksAssumeRole, true
-}
-
-// HasEksAssumeRole returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasEksAssumeRole() bool {
-	if o != nil && o.EksAssumeRole != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEksAssumeRole gets a reference to the given string and assigns it to the EksAssumeRole field.
-func (o *TargetTypeDetailsInput) SetEksAssumeRole(v string) {
-	o.EksAssumeRole = &v
-}
-
 // GetEksClusterCaCertificate returns the EksClusterCaCertificate field value if set, zero value otherwise.
 func (o *TargetTypeDetailsInput) GetEksClusterCaCertificate() string {
 	if o == nil || o.EksClusterCaCertificate == nil {
@@ -1324,36 +1292,100 @@ func (o *TargetTypeDetailsInput) SetHost(v string) {
 	o.Host = &v
 }
 
-// GetMongodbAtlas returns the MongodbAtlas field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetMongodbAtlas() bool {
-	if o == nil || o.MongodbAtlas == nil {
-		var ret bool
+// GetK8sBearerToken returns the K8sBearerToken field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetK8sBearerToken() string {
+	if o == nil || o.K8sBearerToken == nil {
+		var ret string
 		return ret
 	}
-	return *o.MongodbAtlas
+	return *o.K8sBearerToken
 }
 
-// GetMongodbAtlasOk returns a tuple with the MongodbAtlas field value if set, nil otherwise
+// GetK8sBearerTokenOk returns a tuple with the K8sBearerToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetMongodbAtlasOk() (*bool, bool) {
-	if o == nil || o.MongodbAtlas == nil {
+func (o *TargetTypeDetailsInput) GetK8sBearerTokenOk() (*string, bool) {
+	if o == nil || o.K8sBearerToken == nil {
 		return nil, false
 	}
-	return o.MongodbAtlas, true
+	return o.K8sBearerToken, true
 }
 
-// HasMongodbAtlas returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasMongodbAtlas() bool {
-	if o != nil && o.MongodbAtlas != nil {
+// HasK8sBearerToken returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasK8sBearerToken() bool {
+	if o != nil && o.K8sBearerToken != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetMongodbAtlas gets a reference to the given bool and assigns it to the MongodbAtlas field.
-func (o *TargetTypeDetailsInput) SetMongodbAtlas(v bool) {
-	o.MongodbAtlas = &v
+// SetK8sBearerToken gets a reference to the given string and assigns it to the K8sBearerToken field.
+func (o *TargetTypeDetailsInput) SetK8sBearerToken(v string) {
+	o.K8sBearerToken = &v
+}
+
+// GetK8sClusterCaCertificate returns the K8sClusterCaCertificate field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetK8sClusterCaCertificate() string {
+	if o == nil || o.K8sClusterCaCertificate == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sClusterCaCertificate
+}
+
+// GetK8sClusterCaCertificateOk returns a tuple with the K8sClusterCaCertificate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetK8sClusterCaCertificateOk() (*string, bool) {
+	if o == nil || o.K8sClusterCaCertificate == nil {
+		return nil, false
+	}
+	return o.K8sClusterCaCertificate, true
+}
+
+// HasK8sClusterCaCertificate returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasK8sClusterCaCertificate() bool {
+	if o != nil && o.K8sClusterCaCertificate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sClusterCaCertificate gets a reference to the given string and assigns it to the K8sClusterCaCertificate field.
+func (o *TargetTypeDetailsInput) SetK8sClusterCaCertificate(v string) {
+	o.K8sClusterCaCertificate = &v
+}
+
+// GetK8sClusterEndpoint returns the K8sClusterEndpoint field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetK8sClusterEndpoint() string {
+	if o == nil || o.K8sClusterEndpoint == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sClusterEndpoint
+}
+
+// GetK8sClusterEndpointOk returns a tuple with the K8sClusterEndpoint field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetK8sClusterEndpointOk() (*string, bool) {
+	if o == nil || o.K8sClusterEndpoint == nil {
+		return nil, false
+	}
+	return o.K8sClusterEndpoint, true
+}
+
+// HasK8sClusterEndpoint returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasK8sClusterEndpoint() bool {
+	if o != nil && o.K8sClusterEndpoint != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sClusterEndpoint gets a reference to the given string and assigns it to the K8sClusterEndpoint field.
+func (o *TargetTypeDetailsInput) SetK8sClusterEndpoint(v string) {
+	o.K8sClusterEndpoint = &v
 }
 
 // GetMongodbAtlasApiPrivateKey returns the MongodbAtlasApiPrivateKey field value if set, zero value otherwise.
@@ -1546,6 +1578,38 @@ func (o *TargetTypeDetailsInput) HasMongodbHostPort() bool {
 // SetMongodbHostPort gets a reference to the given string and assigns it to the MongodbHostPort field.
 func (o *TargetTypeDetailsInput) SetMongodbHostPort(v string) {
 	o.MongodbHostPort = &v
+}
+
+// GetMongodbIsAtlas returns the MongodbIsAtlas field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetMongodbIsAtlas() bool {
+	if o == nil || o.MongodbIsAtlas == nil {
+		var ret bool
+		return ret
+	}
+	return *o.MongodbIsAtlas
+}
+
+// GetMongodbIsAtlasOk returns a tuple with the MongodbIsAtlas field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetMongodbIsAtlasOk() (*bool, bool) {
+	if o == nil || o.MongodbIsAtlas == nil {
+		return nil, false
+	}
+	return o.MongodbIsAtlas, true
+}
+
+// HasMongodbIsAtlas returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasMongodbIsAtlas() bool {
+	if o != nil && o.MongodbIsAtlas != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMongodbIsAtlas gets a reference to the given bool and assigns it to the MongodbIsAtlas field.
+func (o *TargetTypeDetailsInput) SetMongodbIsAtlas(v bool) {
+	o.MongodbIsAtlas = &v
 }
 
 // GetMongodbPassword returns the MongodbPassword field value if set, zero value otherwise.
@@ -2262,9 +2326,6 @@ func (o TargetTypeDetailsInput) MarshalJSON() ([]byte, error) {
 	if o.EksAccessKeyId != nil {
 		toSerialize["eks_access_key_id"] = o.EksAccessKeyId
 	}
-	if o.EksAssumeRole != nil {
-		toSerialize["eks_assume_role"] = o.EksAssumeRole
-	}
 	if o.EksClusterCaCertificate != nil {
 		toSerialize["eks_cluster_ca_certificate"] = o.EksClusterCaCertificate
 	}
@@ -2304,8 +2365,14 @@ func (o TargetTypeDetailsInput) MarshalJSON() ([]byte, error) {
 	if o.Host != nil {
 		toSerialize["host"] = o.Host
 	}
-	if o.MongodbAtlas != nil {
-		toSerialize["mongodb_atlas"] = o.MongodbAtlas
+	if o.K8sBearerToken != nil {
+		toSerialize["k8s_bearer_token"] = o.K8sBearerToken
+	}
+	if o.K8sClusterCaCertificate != nil {
+		toSerialize["k8s_cluster_ca_certificate"] = o.K8sClusterCaCertificate
+	}
+	if o.K8sClusterEndpoint != nil {
+		toSerialize["k8s_cluster_endpoint"] = o.K8sClusterEndpoint
 	}
 	if o.MongodbAtlasApiPrivateKey != nil {
 		toSerialize["mongodb_atlas_api_private_key"] = o.MongodbAtlasApiPrivateKey
@@ -2324,6 +2391,9 @@ func (o TargetTypeDetailsInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.MongodbHostPort != nil {
 		toSerialize["mongodb_host_port"] = o.MongodbHostPort
+	}
+	if o.MongodbIsAtlas != nil {
+		toSerialize["mongodb_is_atlas"] = o.MongodbIsAtlas
 	}
 	if o.MongodbPassword != nil {
 		toSerialize["mongodb_password"] = o.MongodbPassword

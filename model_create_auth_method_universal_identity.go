@@ -50,6 +50,8 @@ func NewCreateAuthMethodUniversalIdentity(name string, ) *CreateAuthMethodUniver
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
 	this.Name = name
+	var ttl int32 = 60
+	this.Ttl = &ttl
 	return &this
 }
 
@@ -60,6 +62,8 @@ func NewCreateAuthMethodUniversalIdentityWithDefaults() *CreateAuthMethodUnivers
 	this := CreateAuthMethodUniversalIdentity{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var ttl int32 = 60
+	this.Ttl = &ttl
 	return &this
 }
 

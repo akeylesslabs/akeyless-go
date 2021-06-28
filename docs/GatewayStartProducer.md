@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**GatewayUrl** | Pointer to **string** | Gateway url | [optional] 
 **Name** | **string** | Producer name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -29,31 +28,6 @@ will change when the set of required properties is changed
 NewGatewayStartProducerWithDefaults instantiates a new GatewayStartProducer object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetGatewayUrl
-
-`func (o *GatewayStartProducer) GetGatewayUrl() string`
-
-GetGatewayUrl returns the GatewayUrl field if non-nil, zero value otherwise.
-
-### GetGatewayUrlOk
-
-`func (o *GatewayStartProducer) GetGatewayUrlOk() (*string, bool)`
-
-GetGatewayUrlOk returns a tuple with the GatewayUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGatewayUrl
-
-`func (o *GatewayStartProducer) SetGatewayUrl(v string)`
-
-SetGatewayUrl sets GatewayUrl field to given value.
-
-### HasGatewayUrl
-
-`func (o *GatewayStartProducer) HasGatewayUrl() bool`
-
-HasGatewayUrl returns a boolean if a field has been set.
 
 ### GetName
 

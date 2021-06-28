@@ -19,8 +19,6 @@ import (
 type GatewayCreateProducerRdp struct {
 	// Fixed user
 	FixedUserOnly *string `json:"fixed-user-only,omitempty"`
-	// Gateway url
-	GatewayUrl *string `json:"gateway-url,omitempty"`
 	// Producer name
 	Name string `json:"name"`
 	// Required only when the authentication process requires a username and password
@@ -55,8 +53,6 @@ func NewGatewayCreateProducerRdp(name string, rdpAdminName string, rdpAdminPwd s
 	this := GatewayCreateProducerRdp{}
 	var fixedUserOnly string = "false"
 	this.FixedUserOnly = &fixedUserOnly
-	var gatewayUrl string = "http://localhost:8000"
-	this.GatewayUrl = &gatewayUrl
 	this.Name = name
 	this.RdpAdminName = rdpAdminName
 	this.RdpAdminPwd = rdpAdminPwd
@@ -76,8 +72,6 @@ func NewGatewayCreateProducerRdpWithDefaults() *GatewayCreateProducerRdp {
 	this := GatewayCreateProducerRdp{}
 	var fixedUserOnly string = "false"
 	this.FixedUserOnly = &fixedUserOnly
-	var gatewayUrl string = "http://localhost:8000"
-	this.GatewayUrl = &gatewayUrl
 	var rdpHostPort string = "22"
 	this.RdpHostPort = &rdpHostPort
 	var userTtl string = "60m"
@@ -115,38 +109,6 @@ func (o *GatewayCreateProducerRdp) HasFixedUserOnly() bool {
 // SetFixedUserOnly gets a reference to the given string and assigns it to the FixedUserOnly field.
 func (o *GatewayCreateProducerRdp) SetFixedUserOnly(v string) {
 	o.FixedUserOnly = &v
-}
-
-// GetGatewayUrl returns the GatewayUrl field value if set, zero value otherwise.
-func (o *GatewayCreateProducerRdp) GetGatewayUrl() string {
-	if o == nil || o.GatewayUrl == nil {
-		var ret string
-		return ret
-	}
-	return *o.GatewayUrl
-}
-
-// GetGatewayUrlOk returns a tuple with the GatewayUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerRdp) GetGatewayUrlOk() (*string, bool) {
-	if o == nil || o.GatewayUrl == nil {
-		return nil, false
-	}
-	return o.GatewayUrl, true
-}
-
-// HasGatewayUrl returns a boolean if a field has been set.
-func (o *GatewayCreateProducerRdp) HasGatewayUrl() bool {
-	if o != nil && o.GatewayUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGatewayUrl gets a reference to the given string and assigns it to the GatewayUrl field.
-func (o *GatewayCreateProducerRdp) SetGatewayUrl(v string) {
-	o.GatewayUrl = &v
 }
 
 // GetName returns the Name field value
@@ -497,9 +459,6 @@ func (o GatewayCreateProducerRdp) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.FixedUserOnly != nil {
 		toSerialize["fixed-user-only"] = o.FixedUserOnly
-	}
-	if o.GatewayUrl != nil {
-		toSerialize["gateway-url"] = o.GatewayUrl
 	}
 	if true {
 		toSerialize["name"] = o.Name

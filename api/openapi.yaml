@@ -612,6 +612,26 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /create-k8s-target:
+    post:
+      operationId: createNativeK8STarget
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createNativeK8STarget'
+          description: createNativeK8STarget
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
   /create-key:
     post:
       operationId: createKey
@@ -1274,7 +1294,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EncryptOutput'
+                $ref: '#/components/schemas/encryptOutput'
           description: encryptResponse wraps response body.
         default:
           content:
@@ -1531,6 +1551,26 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /gateway-create-producer-k8s-native:
+    post:
+      operationId: gatewayCreateProducerNativeK8S
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayCreateProducerNativeK8SOutput'
+          description: gatewayCreateProducerNativeK8SResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
   /gateway-create-producer-mongo:
     post:
       operationId: gatewayCreateProducerMongo
@@ -2878,6 +2918,33 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /update-aws-target:
+    put:
+      operationId: updateAWSTarget
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateAWSTarget'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/updateAWSTargetOutput'
+          description: updateAWSTargetResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /update-aws-target-details:
     post:
       operationId: updateAWSTargetDetails
@@ -2894,6 +2961,60 @@ paths:
               schema:
                 $ref: '#/components/schemas/updateTargetOutput'
           description: updateTargetResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /update-azure-target:
+    put:
+      operationId: updateAzureTarget
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateAzureTarget'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/updateAzureTargetOutput'
+          description: updateAzureTargetResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /update-db-target:
+    post:
+      operationId: updateDBTarget
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateDBTarget'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/updateDBTargetOutput'
+          description: updateDBTargetResponse wraps response body.
         default:
           content:
             application/json:
@@ -2932,6 +3053,87 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /update-eks-target:
+    put:
+      operationId: updateEKSTarget
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateEKSTarget'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/updateEKSTargetOutput'
+          description: updateEKSTargetResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /update-gcp-target:
+    put:
+      operationId: updateGcpTarget
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateGcpTarget'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/updateGcpTargetOutput'
+          description: updateGcpTargetResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /update-gke-target:
+    put:
+      operationId: updateGKETarget
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateGKETarget'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/updateGKETargetOutput'
+          description: updateGKETargetResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /update-item:
     post:
       operationId: updateItem
@@ -2948,6 +3150,60 @@ paths:
               schema:
                 $ref: '#/components/schemas/updateItemOutput'
           description: updateItemResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /update-k8s-target:
+    put:
+      operationId: updateNativeK8STarget
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateNativeK8STarget'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/updateNativeK8STarget'
+          description: updateNativeK8STarget
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /update-rabbitmq-target:
+    put:
+      operationId: updateRabbitMQTarget
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateRabbitMQTarget'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/updateRabbitMQTargetOutput'
+          description: updateRabbitMQTargetResponse wraps response body.
         default:
           content:
             application/json:
@@ -3114,6 +3370,33 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /update-ssh-target:
+    post:
+      operationId: updateSSHTarget
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateSSHTarget'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/updateSSHTargetOutput'
+          description: updateSSHTargetResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /update-ssh-target-details:
     post:
       operationId: updateSSHTargetDetails
@@ -3184,6 +3467,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/updateTargetOutput'
           description: updateTargetResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /update-web-target:
+    post:
+      operationId: updateWebTarget
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateWebTarget'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/updateWebTargetOutput'
+          description: updateWebTargetResponse wraps response body.
         default:
           content:
             application/json:
@@ -3428,6 +3738,12 @@ components:
           schema:
             $ref: '#/components/schemas/createKeyOutput'
       description: createKeyResponse wraps response body.
+    createNativeK8STargetResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/createNativeK8STargetOutput'
+      description: createNativeK8STargetResponse wraps response body.
     createPKICertIssuerResponse:
       content:
         application/json:
@@ -3582,7 +3898,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/EncryptOutput'
+            $ref: '#/components/schemas/encryptOutput'
       description: encryptResponse wraps response body.
     errorResponse:
       content:
@@ -3671,6 +3987,12 @@ components:
           schema:
             $ref: '#/components/schemas/gatewayCreateProducerMySQLOutput'
       description: gatewayCreateProducerMySQLResponse wraps response body.
+    gatewayCreateProducerNativeK8SResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayCreateProducerNativeK8SOutput'
+      description: gatewayCreateProducerNativeK8SResponse wraps response body.
     gatewayCreateProducerPostgreSQLResponse:
       content:
         application/json:
@@ -3975,18 +4297,66 @@ components:
           schema:
             $ref: '#/components/schemas/unconfigureOutput'
       description: unconfigureResponse wraps response body.
+    updateAWSTargetResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/updateAWSTargetOutput'
+      description: updateAWSTargetResponse wraps response body.
     updateAssocResponse:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/updateAssocOutput'
       description: updateAssocResponse wraps response body.
+    updateAzureTargetResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/updateAzureTargetOutput'
+      description: updateAzureTargetResponse wraps response body.
+    updateDBTargetResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/updateDBTargetOutput'
+      description: updateDBTargetResponse wraps response body.
+    updateEKSTargetResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/updateEKSTargetOutput'
+      description: updateEKSTargetResponse wraps response body.
+    updateGKETargetResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/updateGKETargetOutput'
+      description: updateGKETargetResponse wraps response body.
+    updateGcpTargetResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/updateGcpTargetOutput'
+      description: updateGcpTargetResponse wraps response body.
     updateItemResponse:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/updateItemOutput'
       description: updateItemResponse wraps response body.
+    updateNativeK8STargetResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/updateNativeK8STargetOutput'
+      description: updateNativeK8STargetResponse wraps response body.
+    updateRabbitMQTargetResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/updateRabbitMQTargetOutput'
+      description: updateRabbitMQTargetResponse wraps response body.
     updateResponse:
       content:
         application/json:
@@ -4005,6 +4375,12 @@ components:
           schema:
             $ref: '#/components/schemas/updateRotatedSecretOutput'
       description: updateRotatedSecretResponse wraps response body.
+    updateSSHTargetResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/updateSSHTargetOutput'
+      description: updateSSHTargetResponse wraps response body.
     updateSecretValResponse:
       content:
         application/json:
@@ -4023,6 +4399,12 @@ components:
           schema:
             $ref: '#/components/schemas/updateTargetOutput'
       description: updateTargetResponse wraps response body.
+    updateWebTargetResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/updateWebTargetOutput'
+      description: updateWebTargetResponse wraps response body.
     uploadPKCS12Response:
       content:
         application/json:
@@ -4219,6 +4601,7 @@ components:
         general:
           tcp_port: tcp_port
           api_token_ttl: api_token_ttl
+          gw_cluster_url: gw_cluster_url
           enable_tls: true
           enable_tls_curl: true
           tls_key: tls_key
@@ -4391,6 +4774,21 @@ components:
           open_id_connect_access_id: open_id_connect_access_id
           default_protection_key_id: 7
           default_secret_location: default_secret_location
+        kmip_clients:
+          clients:
+            key:
+              name: name
+              rules:
+              - path: path
+                capabilities:
+                - capabilities
+                - capabilities
+                type: type
+              - path: path
+                capabilities:
+                - capabilities
+                - capabilities
+                type: type
         uidentity:
           uid_access_id: uid_access_id
           uid_rotate_interval: uid_rotate_interval
@@ -4435,6 +4833,8 @@ components:
           x-go-name: ConfigProtectionKeyName
         general:
           $ref: '#/components/schemas/GeneralConfigPart'
+        kmip_clients:
+          $ref: '#/components/schemas/KMIPClientsConfigPart'
         ldap:
           $ref: '#/components/schemas/LdapConfigPart'
         leadership:
@@ -5555,6 +5955,7 @@ components:
       example:
         gke_cluster_endpoint: gke_cluster_endpoint
         dynamic_secret_type: dynamic_secret_type
+        k8s_namespace: k8s_namespace
         venafi_sign_using_akeyless_pki: true
         dynamic_secret_key: dynamic_secret_key
         last_admin_rotation: 5
@@ -5578,13 +5979,17 @@ components:
         item_targets_assoc:
         - assoc_id: assoc_id
           target_name: target_name
+          target_id: 1
         - assoc_id: assoc_id
           target_name: target_name
+          target_id: 1
         chef_server_username: chef_server_username
         db_host_name: db_host_name
         db_name: db_name
+        k8s_service_account: k8s_service_account
         chef_skip_ssl: true
         db_port: db_port
+        k8s_cluster_endpoint: k8s_cluster_endpoint
         artifactory_base_url: artifactory_base_url
         azure_client_secret: azure_client_secret
         azure_user_groups_obj_id: azure_user_groups_obj_id
@@ -5612,7 +6017,6 @@ components:
         mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
         postgres_creation_statements: postgres_creation_statements
         db_max_idle_conns: db_max_idle_conns
-        mongodb_atlas: true
         artifactory_admin_username: artifactory_admin_username
         admin_name: admin_name
         rabbitmq_server_user: rabbitmq_server_user
@@ -5623,6 +6027,7 @@ components:
         revoke_sync_url: revoke_sync_url
         gke_cluster_ca_certificate: gke_cluster_ca_certificate
         host_port: host_port
+        k8s_bearer_token: k8s_bearer_token
         enable_admin_rotation: true
         failure_message: failure_message
         rabbitmq_user_read_permission: rabbitmq_user_read_permission
@@ -5666,6 +6071,7 @@ components:
         rabbitmq_user_tags: rabbitmq_user_tags
         venafi_tpp_password: venafi_tpp_password
         azure_user_programmatic_access: true
+        k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
         eks_secret_access_key: eks_secret_access_key
         sf_account: sf_account
         groups: groups
@@ -5905,14 +6311,12 @@ components:
           type: string
           x-go-name: GKEClusterEndpoint
         gke_cluster_name:
-          description: GKEProjectID            string `json:"gke_project_id"`
           type: string
           x-go-name: GKEClusterName
         gke_service_account_key:
           type: string
           x-go-name: GKEServiceAccountKey
         gke_service_account_name:
-          description: GKEClusterComputeZone   string `json:"gke_cluster_compute_zone"`
           type: string
           x-go-name: GKEServiceAccountName
         groups:
@@ -5929,13 +6333,25 @@ components:
             $ref: '#/components/schemas/ItemTargetAssociation'
           type: array
           x-go-name: ItemTargetsAssoc
+        k8s_bearer_token:
+          type: string
+          x-go-name: K8sBearerToken
+        k8s_cluster_ca_certificate:
+          type: string
+          x-go-name: K8sClusterCACertificate
+        k8s_cluster_endpoint:
+          type: string
+          x-go-name: K8sClusterEndpoint
+        k8s_namespace:
+          type: string
+          x-go-name: K8sNamespace
+        k8s_service_account:
+          type: string
+          x-go-name: K8sServiceAccount
         last_admin_rotation:
           format: int64
           type: integer
           x-go-name: LastAdminRotation
-        mongodb_atlas:
-          type: boolean
-          x-go-name: MongoDBAtlas
         mongodb_atlas_api_private_key:
           type: string
           x-go-name: MongoDBAtlasAPIPrivateKey
@@ -5958,7 +6374,7 @@ components:
           x-go-name: MongoDBHostAndPort
         mongodb_is_atlas:
           type: boolean
-          x-go-name: MongoDBIsAtlas
+          x-go-name: MongoDBAtlas
         mongodb_password:
           type: string
           x-go-name: MongoDBPassword
@@ -6226,21 +6642,6 @@ components:
       title: EmailPassAccessRules is a set of rules for email password access type.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
-    EncryptOutput:
-      example:
-        result:
-        - 0
-        - 0
-      properties:
-        result:
-          items:
-            format: uint8
-            type: integer
-          type: array
-          x-go-name: Result
-      title: EncryptOutput defines output of Encrypt operation.
-      type: object
-      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     ExternalKMSKeyId:
       example:
         key_id: key_id
@@ -6344,6 +6745,7 @@ components:
       example:
         tcp_port: tcp_port
         api_token_ttl: api_token_ttl
+        gw_cluster_url: gw_cluster_url
         enable_tls: true
         enable_tls_curl: true
         tls_key: tls_key
@@ -6370,6 +6772,9 @@ components:
         enable_tls_hvp:
           type: boolean
           x-go-name: EnableTLSHpv
+        gw_cluster_url:
+          type: string
+          x-go-name: GwClusterUrl
         tcp_port:
           type: string
           x-go-name: TcpPort
@@ -6496,6 +6901,7 @@ components:
         value:
           gke_cluster_endpoint: gke_cluster_endpoint
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
+          k8s_bearer_token: k8s_bearer_token
           chef_server_key: chef_server_key
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -6516,6 +6922,7 @@ components:
           chef_skip_ssl: true
           db_port: db_port
           db_server_name: db_server_name
+          k8s_cluster_endpoint: k8s_cluster_endpoint
           artifactory_base_url: artifactory_base_url
           venafi_zone: venafi_zone
           azure_client_secret: azure_client_secret
@@ -6537,8 +6944,8 @@ components:
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           venafi_tpp_password: venafi_tpp_password
-          eks_assume_role: eks_assume_role
           venafi_use_tpp: true
+          k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
           mongodb_password: mongodb_password
           eks_secret_access_key: eks_secret_access_key
           sf_account: sf_account
@@ -6547,7 +6954,7 @@ components:
           chef_server_host_name: chef_server_host_name
           url: url
           chef_server_port: chef_server_port
-          mongodb_atlas: true
+          mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           aws_access_key_id: aws_access_key_id
           aws_region: aws_region
@@ -6715,6 +7122,7 @@ components:
         auto_rotate: true
         item_state: item_state
         cert_issuer_signer_key_name: cert_issuer_signer_key_name
+        display_id: display_id
         item_id: 7
         item_tags:
         - item_tags
@@ -6800,8 +7208,10 @@ components:
         item_targets_assoc:
         - assoc_id: assoc_id
           target_name: target_name
+          target_id: 1
         - assoc_id: assoc_id
           target_name: target_name
+          target_id: 1
         item_name: item_name
         item_size: 1
         is_enabled: true
@@ -6923,14 +7333,14 @@ components:
               allowed_user_key_lengths:
                 key: 5
             cert_issuer_type: cert_issuer_type
-        last_version: 1
+        last_version: 6
         next_rotation_date: 2000-01-23T04:56:07.000+00:00
         client_permissions:
         - client_permissions
         - client_permissions
         with_customer_fragment: true
         certificates: certificates
-        rotation_interval: 6
+        rotation_interval: 7
         item_metadata: item_metadata
         deletion_date: 2000-01-23T04:56:07.000+00:00
         protection_key_name: protection_key_name
@@ -6956,6 +7366,9 @@ components:
           format: date-time
           type: string
           x-go-name: DeletionDate
+        display_id:
+          type: string
+          x-go-name: DisplayId
         is_enabled:
           type: boolean
           x-go-name: IsEnabled
@@ -7164,10 +7577,15 @@ components:
       example:
         assoc_id: assoc_id
         target_name: target_name
+        target_id: 1
       properties:
         assoc_id:
           type: string
           x-go-name: AssociationID
+        target_id:
+          format: int64
+          type: integer
+          x-go-name: TargetID
         target_name:
           type: string
           x-go-name: TargetName
@@ -7303,6 +7721,55 @@ components:
         username:
           type: string
           x-go-name: Username
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    KMIPClient:
+      example:
+        name: name
+        rules:
+        - path: path
+          capabilities:
+          - capabilities
+          - capabilities
+          type: type
+        - path: path
+          capabilities:
+          - capabilities
+          - capabilities
+          type: type
+      properties:
+        name:
+          type: string
+          x-go-name: Name
+        rules:
+          items:
+            $ref: '#/components/schemas/PathRule'
+          type: array
+          x-go-name: Rules
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    KMIPClientsConfigPart:
+      example:
+        clients:
+          key:
+            name: name
+            rules:
+            - path: path
+              capabilities:
+              - capabilities
+              - capabilities
+              type: type
+            - path: path
+              capabilities:
+              - capabilities
+              - capabilities
+              type: type
+      properties:
+        clients:
+          additionalProperties:
+            $ref: '#/components/schemas/KMIPClient'
+          type: object
+          x-go-name: Clients
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     LDAPAccessRules:
@@ -7799,6 +8266,7 @@ components:
         - auto_rotate: true
           item_state: item_state
           cert_issuer_signer_key_name: cert_issuer_signer_key_name
+          display_id: display_id
           item_id: 7
           item_tags:
           - item_tags
@@ -7884,8 +8352,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_id: 1
           - assoc_id: assoc_id
             target_name: target_name
+            target_id: 1
           item_name: item_name
           item_size: 1
           is_enabled: true
@@ -8007,14 +8477,14 @@ components:
                 allowed_user_key_lengths:
                   key: 5
               cert_issuer_type: cert_issuer_type
-          last_version: 1
+          last_version: 6
           next_rotation_date: 2000-01-23T04:56:07.000+00:00
           client_permissions:
           - client_permissions
           - client_permissions
           with_customer_fragment: true
           certificates: certificates
-          rotation_interval: 6
+          rotation_interval: 7
           item_metadata: item_metadata
           deletion_date: 2000-01-23T04:56:07.000+00:00
           protection_key_name: protection_key_name
@@ -8022,6 +8492,7 @@ components:
         - auto_rotate: true
           item_state: item_state
           cert_issuer_signer_key_name: cert_issuer_signer_key_name
+          display_id: display_id
           item_id: 7
           item_tags:
           - item_tags
@@ -8107,8 +8578,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_id: 1
           - assoc_id: assoc_id
             target_name: target_name
+            target_id: 1
           item_name: item_name
           item_size: 1
           is_enabled: true
@@ -8230,14 +8703,14 @@ components:
                 allowed_user_key_lengths:
                   key: 5
               cert_issuer_type: cert_issuer_type
-          last_version: 1
+          last_version: 6
           next_rotation_date: 2000-01-23T04:56:07.000+00:00
           client_permissions:
           - client_permissions
           - client_permissions
           with_customer_fragment: true
           certificates: certificates
-          rotation_interval: 6
+          rotation_interval: 7
           item_metadata: item_metadata
           deletion_date: 2000-01-23T04:56:07.000+00:00
           protection_key_name: protection_key_name
@@ -9609,6 +10082,7 @@ components:
       example:
         gke_cluster_endpoint: gke_cluster_endpoint
         gke_cluster_ca_certificate: gke_cluster_ca_certificate
+        k8s_bearer_token: k8s_bearer_token
         chef_server_key: chef_server_key
         azure_client_id: azure_client_id
         mongodb_default_auth_db: mongodb_default_auth_db
@@ -9629,6 +10103,7 @@ components:
         chef_skip_ssl: true
         db_port: db_port
         db_server_name: db_server_name
+        k8s_cluster_endpoint: k8s_cluster_endpoint
         artifactory_base_url: artifactory_base_url
         venafi_zone: venafi_zone
         azure_client_secret: azure_client_secret
@@ -9650,8 +10125,8 @@ components:
         eks_access_key_id: eks_access_key_id
         venafi_base_url: venafi_base_url
         venafi_tpp_password: venafi_tpp_password
-        eks_assume_role: eks_assume_role
         venafi_use_tpp: true
+        k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
         mongodb_password: mongodb_password
         eks_secret_access_key: eks_secret_access_key
         sf_account: sf_account
@@ -9660,7 +10135,7 @@ components:
         chef_server_host_name: chef_server_host_name
         url: url
         chef_server_port: chef_server_port
-        mongodb_atlas: true
+        mongodb_is_atlas: true
         eks_cluster_ca_certificate: eks_cluster_ca_certificate
         aws_access_key_id: aws_access_key_id
         aws_region: aws_region
@@ -9756,9 +10231,6 @@ components:
         eks_access_key_id:
           type: string
           x-go-name: EKSAccessID
-        eks_assume_role:
-          type: string
-          x-go-name: EKSAssumeRole
         eks_cluster_ca_certificate:
           type: string
           x-go-name: EKSClusterCACertificate
@@ -9790,22 +10262,26 @@ components:
           type: string
           x-go-name: GKEClusterEndpoint
         gke_cluster_name:
-          description: GKEProjectID            string `json:"gke_project_id"`
           type: string
           x-go-name: GKEClusterName
         gke_service_account_key:
           type: string
           x-go-name: GKEServiceAccountKey
         gke_service_account_name:
-          description: GKEClusterComputeZone   string `json:"gke_cluster_compute_zone"`
           type: string
           x-go-name: GKEServiceAccountName
         host:
           type: string
           x-go-name: HostName
-        mongodb_atlas:
-          type: boolean
-          x-go-name: MongoDBAtlas
+        k8s_bearer_token:
+          type: string
+          x-go-name: K8sBearerToken
+        k8s_cluster_ca_certificate:
+          type: string
+          x-go-name: K8sClusterCACertificate
+        k8s_cluster_endpoint:
+          type: string
+          x-go-name: K8sClusterEndpoint
         mongodb_atlas_api_private_key:
           type: string
           x-go-name: MongoDBAtlasAPIPrivateKey
@@ -9826,6 +10302,9 @@ components:
         mongodb_host_port:
           type: string
           x-go-name: MongoDBHostAndPort
+        mongodb_is_atlas:
+          type: boolean
+          x-go-name: MongoDBAtlas
         mongodb_password:
           type: string
           x-go-name: MongoDBPassword
@@ -10205,6 +10684,7 @@ components:
       example:
         clientKeyData: clientKeyData
         clientCertificateData: clientCertificateData
+        parentCertificateData: parentCertificateData
       properties:
         clientCertificateData:
           type: string
@@ -10212,6 +10692,9 @@ components:
         clientKeyData:
           type: string
           x-go-name: ClientKeyData
+        parentCertificateData:
+          type: string
+          x-go-name: ParentCertificateData
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     configure:
@@ -11195,6 +11678,7 @@ components:
           type: string
           x-go-name: Profile
         ttl:
+          default: 60
           description: Token ttl
           format: int32
           type: integer
@@ -11225,10 +11709,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     createAzureTarget:
       properties:
-        client_id:
+        client-id:
           type: string
           x-go-name: AzureClientID
-        client_secret:
+        client-secret:
           type: string
           x-go-name: AzureClientSecret
         comment:
@@ -11250,7 +11734,7 @@ components:
             and password
           type: string
           x-go-name: Password
-        tenant_id:
+        tenant-id:
           type: string
           x-go-name: AzureTenantID
         token:
@@ -11539,10 +12023,6 @@ components:
           description: Access Key ID
           type: string
           x-go-name: AccessId
-        eks-assume-role:
-          description: IAM assume role
-          type: string
-          x-go-name: AssumeRole
         eks-cluster-cert:
           description: EKS cluster CA certificate
           type: string
@@ -11620,6 +12100,10 @@ components:
           description: Comment about the target
           type: string
           x-go-name: Comment
+        gke-account-key:
+          description: GKE Service Account key file path
+          type: string
+          x-go-name: ServiceAccountKey
         gke-cluster-cert:
           description: GKE cluster CA certificate
           type: string
@@ -11814,6 +12298,81 @@ components:
             $ref: '#/components/schemas/Duration'
           type: array
           x-go-name: FragmentResults
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    createNativeK8STarget:
+      example:
+        k8s-cluster-endpoint: k8s-cluster-endpoint
+        password: password
+        k8s-cluster-ca-cert: k8s-cluster-ca-cert
+        name: name
+        k8s-cluster-token: k8s-cluster-token
+        comment: comment
+        key: key
+        uid-token: uid-token
+        token: token
+        username: username
+      properties:
+        comment:
+          description: Comment about the target
+          type: string
+          x-go-name: Comment
+        k8s-cluster-ca-cert:
+          description: K8S cluster CA certificate
+          type: string
+          x-go-name: ClusterCACert
+        k8s-cluster-endpoint:
+          description: K8S cluster URL endpoint
+          type: string
+          x-go-name: ClusterEndpoint
+        k8s-cluster-token:
+          description: K8S cluster Bearer token
+          type: string
+          x-go-name: ClusterBearerToken
+        key:
+          description: |-
+            The name of a key that used to encrypt the target secret value (if empty, the
+            account default protectionKey key will be used)
+          type: string
+          x-go-name: ProtectionKey
+        name:
+          description: Target name
+          type: string
+          x-go-name: TargetName
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+      required:
+      - k8s-cluster-ca-cert
+      - k8s-cluster-endpoint
+      - k8s-cluster-token
+      - name
+      title: createNativeK8STarget is a command that creates a new target.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    createNativeK8STargetOutput:
+      properties:
+        target_id:
+          format: int64
+          type: integer
+          x-go-name: TargetID
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     createPKICertIssuer:
@@ -12064,17 +12623,18 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     createRotatedSecret:
       properties:
+        api-id:
+          type: string
+          x-go-name: ApiId
+        api-key:
+          type: string
+          x-go-name: ApiKey
         auto-rotate:
           description: |-
             Whether to automatically rotate every --rotation-interval days, or
             disable existing automatic rotation
           type: string
           x-go-name: AutoRotate
-        gateway-url:
-          default: http://localhost:8000
-          description: Gateway url
-          type: string
-          x-go-name: GatewayUrl
         key:
           description: |-
             The name of a key that used to encrypt the secret value (if empty, the
@@ -13189,6 +13749,15 @@ components:
           x-go-name: Result
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    encryptOutput:
+      example:
+        result: result
+      properties:
+        result:
+          type: string
+          x-go-name: Result
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     encryptPKCS1:
       properties:
         key-name:
@@ -13249,11 +13818,6 @@ components:
         allow-gw-login:
           type: boolean
           x-go-name: AllowLogin
-        gateway-url:
-          default: http://localhost:8000
-          description: Gateway url
-          type: string
-          x-go-name: GatewayUrl
         password:
           description: Required only when the authentication process requires a username
             and password
@@ -13315,11 +13879,6 @@ components:
           description: Base URL
           type: string
           x-go-name: BaseUrl
-        gateway-url:
-          default: http://localhost:8000
-          description: Gateway url
-          type: string
-          x-go-name: GatewayUrl
         name:
           description: Producer name
           type: string
@@ -13367,6 +13926,7 @@ components:
         producer_details:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
+          k8s_namespace: k8s_namespace
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 5
@@ -13390,13 +13950,17 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_id: 1
           - assoc_id: assoc_id
             target_name: target_name
+            target_id: 1
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           db_name: db_name
+          k8s_service_account: k8s_service_account
           chef_skip_ssl: true
           db_port: db_port
+          k8s_cluster_endpoint: k8s_cluster_endpoint
           artifactory_base_url: artifactory_base_url
           azure_client_secret: azure_client_secret
           azure_user_groups_obj_id: azure_user_groups_obj_id
@@ -13424,7 +13988,6 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
-          mongodb_atlas: true
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -13435,6 +13998,7 @@ components:
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
+          k8s_bearer_token: k8s_bearer_token
           enable_admin_rotation: true
           failure_message: failure_message
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
@@ -13478,6 +14042,7 @@ components:
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
           azure_user_programmatic_access: true
+          k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
           eks_secret_access_key: eks_secret_access_key
           sf_account: sf_account
           groups: groups
@@ -13550,11 +14115,6 @@ components:
           description: Automatic admin credentials rotation
           type: boolean
           x-go-name: AutomaticAdminCredsRotation
-        gateway-url:
-          default: http://localhost:8000
-          description: Gateway url
-          type: string
-          x-go-name: GatewayUrl
         name:
           description: Producer name
           type: string
@@ -13604,6 +14164,7 @@ components:
         producer_details:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
+          k8s_namespace: k8s_namespace
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 5
@@ -13627,13 +14188,17 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_id: 1
           - assoc_id: assoc_id
             target_name: target_name
+            target_id: 1
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           db_name: db_name
+          k8s_service_account: k8s_service_account
           chef_skip_ssl: true
           db_port: db_port
+          k8s_cluster_endpoint: k8s_cluster_endpoint
           artifactory_base_url: artifactory_base_url
           azure_client_secret: azure_client_secret
           azure_user_groups_obj_id: azure_user_groups_obj_id
@@ -13661,7 +14226,6 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
-          mongodb_atlas: true
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -13672,6 +14236,7 @@ components:
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
+          k8s_bearer_token: k8s_bearer_token
           enable_admin_rotation: true
           failure_message: failure_message
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
@@ -13715,6 +14280,7 @@ components:
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
           azure_user_programmatic_access: true
+          k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
           eks_secret_access_key: eks_secret_access_key
           sf_account: sf_account
           groups: groups
@@ -13754,11 +14320,6 @@ components:
           description: Azure Client Secret
           type: string
           x-go-name: ClientSecret
-        gateway-url:
-          default: http://localhost:8000
-          description: Gateway url
-          type: string
-          x-go-name: GatewayUrl
         name:
           description: Producer name
           type: string
@@ -13830,6 +14391,7 @@ components:
         producer_details:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
+          k8s_namespace: k8s_namespace
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 5
@@ -13853,13 +14415,17 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_id: 1
           - assoc_id: assoc_id
             target_name: target_name
+            target_id: 1
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           db_name: db_name
+          k8s_service_account: k8s_service_account
           chef_skip_ssl: true
           db_port: db_port
+          k8s_cluster_endpoint: k8s_cluster_endpoint
           artifactory_base_url: artifactory_base_url
           azure_client_secret: azure_client_secret
           azure_user_groups_obj_id: azure_user_groups_obj_id
@@ -13887,7 +14453,6 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
-          mongodb_atlas: true
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -13898,6 +14463,7 @@ components:
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
+          k8s_bearer_token: k8s_bearer_token
           enable_admin_rotation: true
           failure_message: failure_message
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
@@ -13941,6 +14507,7 @@ components:
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
           azure_user_programmatic_access: true
+          k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
           eks_secret_access_key: eks_secret_access_key
           sf_account: sf_account
           groups: groups
@@ -13996,11 +14563,6 @@ components:
           description: Automatic admin credentials rotation
           type: boolean
           x-go-name: AutomaticAdminCredsRotation
-        gateway-url:
-          default: http://localhost:8000
-          description: Gateway url
-          type: string
-          x-go-name: GatewayUrl
         name:
           description: Producer name
           type: string
@@ -14087,6 +14649,7 @@ components:
         producer_details:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
+          k8s_namespace: k8s_namespace
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 5
@@ -14110,13 +14673,17 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_id: 1
           - assoc_id: assoc_id
             target_name: target_name
+            target_id: 1
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           db_name: db_name
+          k8s_service_account: k8s_service_account
           chef_skip_ssl: true
           db_port: db_port
+          k8s_cluster_endpoint: k8s_cluster_endpoint
           artifactory_base_url: artifactory_base_url
           azure_client_secret: azure_client_secret
           azure_user_groups_obj_id: azure_user_groups_obj_id
@@ -14144,7 +14711,6 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
-          mongodb_atlas: true
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -14155,6 +14721,7 @@ components:
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
+          k8s_bearer_token: k8s_bearer_token
           enable_admin_rotation: true
           failure_message: failure_message
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
@@ -14198,6 +14765,7 @@ components:
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
           azure_user_programmatic_access: true
+          k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
           eks_secret_access_key: eks_secret_access_key
           sf_account: sf_account
           groups: groups
@@ -14241,11 +14809,6 @@ components:
           description: Server username
           type: string
           x-go-name: ServerUsername
-        gateway-url:
-          default: http://localhost:8000
-          description: Gateway url
-          type: string
-          x-go-name: GatewayUrl
         name:
           description: Producer name
           type: string
@@ -14306,11 +14869,6 @@ components:
             https://webhook.example.com/sync/create
           type: string
           x-go-name: CreateSyncURL
-        gateway-url:
-          default: http://localhost:8000
-          description: Gateway url
-          type: string
-          x-go-name: GatewayURL
         name:
           description: Producer name
           type: string
@@ -14379,6 +14937,7 @@ components:
         producer_details:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
+          k8s_namespace: k8s_namespace
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 5
@@ -14402,13 +14961,17 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_id: 1
           - assoc_id: assoc_id
             target_name: target_name
+            target_id: 1
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           db_name: db_name
+          k8s_service_account: k8s_service_account
           chef_skip_ssl: true
           db_port: db_port
+          k8s_cluster_endpoint: k8s_cluster_endpoint
           artifactory_base_url: artifactory_base_url
           azure_client_secret: azure_client_secret
           azure_user_groups_obj_id: azure_user_groups_obj_id
@@ -14436,7 +14999,6 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
-          mongodb_atlas: true
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -14447,6 +15009,7 @@ components:
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
+          k8s_bearer_token: k8s_bearer_token
           enable_admin_rotation: true
           failure_message: failure_message
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
@@ -14490,6 +15053,7 @@ components:
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
           azure_user_programmatic_access: true
+          k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
           eks_secret_access_key: eks_secret_access_key
           sf_account: sf_account
           groups: groups
@@ -14546,11 +15110,6 @@ components:
           description: Secret Access Key
           type: string
           x-go-name: AccessKey
-        gateway-url:
-          default: http://localhost:8000
-          description: Gateway url
-          type: string
-          x-go-name: GatewayUrl
         name:
           description: Producer name
           type: string
@@ -14598,6 +15157,7 @@ components:
         producer_details:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
+          k8s_namespace: k8s_namespace
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 5
@@ -14621,13 +15181,17 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_id: 1
           - assoc_id: assoc_id
             target_name: target_name
+            target_id: 1
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           db_name: db_name
+          k8s_service_account: k8s_service_account
           chef_skip_ssl: true
           db_port: db_port
+          k8s_cluster_endpoint: k8s_cluster_endpoint
           artifactory_base_url: artifactory_base_url
           azure_client_secret: azure_client_secret
           azure_user_groups_obj_id: azure_user_groups_obj_id
@@ -14655,7 +15219,6 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
-          mongodb_atlas: true
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -14666,6 +15229,7 @@ components:
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
+          k8s_bearer_token: k8s_bearer_token
           enable_admin_rotation: true
           failure_message: failure_message
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
@@ -14709,6 +15273,7 @@ components:
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
           azure_user_programmatic_access: true
+          k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
           eks_secret_access_key: eks_secret_access_key
           sf_account: sf_account
           groups: groups
@@ -14736,11 +15301,6 @@ components:
     gatewayCreateProducerGcp:
       description: gatewayCreateProducerGcp is a command that creates a GCP producer
       properties:
-        gateway-url:
-          default: http://localhost:8000
-          description: Gateway url
-          type: string
-          x-go-name: GatewayUrl
         gcp-cred-type:
           type: string
           x-go-package: akeyless.io/akeyless-main-repo/go/src/producer/config
@@ -14804,6 +15364,7 @@ components:
         producer_details:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
+          k8s_namespace: k8s_namespace
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 5
@@ -14827,13 +15388,17 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_id: 1
           - assoc_id: assoc_id
             target_name: target_name
+            target_id: 1
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           db_name: db_name
+          k8s_service_account: k8s_service_account
           chef_skip_ssl: true
           db_port: db_port
+          k8s_cluster_endpoint: k8s_cluster_endpoint
           artifactory_base_url: artifactory_base_url
           azure_client_secret: azure_client_secret
           azure_user_groups_obj_id: azure_user_groups_obj_id
@@ -14861,7 +15426,6 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
-          mongodb_atlas: true
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -14872,6 +15436,7 @@ components:
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
+          k8s_bearer_token: k8s_bearer_token
           enable_admin_rotation: true
           failure_message: failure_message
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
@@ -14915,6 +15480,7 @@ components:
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
           azure_user_programmatic_access: true
+          k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
           eks_secret_access_key: eks_secret_access_key
           sf_account: sf_account
           groups: groups
@@ -14942,11 +15508,10 @@ components:
     gatewayCreateProducerGke:
       description: gatewayCreateProducerGke is a command that creates gke producer
       properties:
-        gateway-url:
-          default: http://localhost:8000
-          description: Gateway url
+        gke-account-key:
+          description: GKE Service Account key file path
           type: string
-          x-go-name: GatewayUrl
+          x-go-name: ServiceAccountKey
         gke-cluster-cert:
           description: GKE cluster CA certificate
           type: string
@@ -15009,6 +15574,7 @@ components:
         producer_details:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
+          k8s_namespace: k8s_namespace
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 5
@@ -15032,13 +15598,17 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_id: 1
           - assoc_id: assoc_id
             target_name: target_name
+            target_id: 1
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           db_name: db_name
+          k8s_service_account: k8s_service_account
           chef_skip_ssl: true
           db_port: db_port
+          k8s_cluster_endpoint: k8s_cluster_endpoint
           artifactory_base_url: artifactory_base_url
           azure_client_secret: azure_client_secret
           azure_user_groups_obj_id: azure_user_groups_obj_id
@@ -15066,7 +15636,6 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
-          mongodb_atlas: true
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -15077,6 +15646,7 @@ components:
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
+          k8s_bearer_token: k8s_bearer_token
           enable_admin_rotation: true
           failure_message: failure_message
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
@@ -15120,6 +15690,7 @@ components:
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
           azure_user_programmatic_access: true
+          k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
           eks_secret_access_key: eks_secret_access_key
           sf_account: sf_account
           groups: groups
@@ -15147,11 +15718,6 @@ components:
     gatewayCreateProducerMSSQL:
       description: gatewayCreateProducerMSSQL is a command that creates mssql producer
       properties:
-        gateway-url:
-          default: http://localhost:8000
-          description: Gateway url
-          type: string
-          x-go-name: GatewayUrl
         mssql-create-statements:
           description: MSSQL Creation statements
           type: string
@@ -15227,6 +15793,7 @@ components:
         producer_details:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
+          k8s_namespace: k8s_namespace
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 5
@@ -15250,13 +15817,17 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_id: 1
           - assoc_id: assoc_id
             target_name: target_name
+            target_id: 1
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           db_name: db_name
+          k8s_service_account: k8s_service_account
           chef_skip_ssl: true
           db_port: db_port
+          k8s_cluster_endpoint: k8s_cluster_endpoint
           artifactory_base_url: artifactory_base_url
           azure_client_secret: azure_client_secret
           azure_user_groups_obj_id: azure_user_groups_obj_id
@@ -15284,7 +15855,6 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
-          mongodb_atlas: true
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -15295,6 +15865,7 @@ components:
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
+          k8s_bearer_token: k8s_bearer_token
           enable_admin_rotation: true
           failure_message: failure_message
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
@@ -15338,6 +15909,7 @@ components:
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
           azure_user_programmatic_access: true
+          k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
           eks_secret_access_key: eks_secret_access_key
           sf_account: sf_account
           groups: groups
@@ -15366,11 +15938,6 @@ components:
       description: gatewayCreateProducerMongo is a command that creates either mongodb  producer
         or mongodb atlas producer
       properties:
-        gateway-url:
-          default: http://localhost:8000
-          description: Gateway url
-          type: string
-          x-go-name: GatewayUrl
         mongodb-atlas-api-private-key:
           description: MongoDB Atlas private key
           type: string
@@ -15460,6 +16027,7 @@ components:
         producer_details:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
+          k8s_namespace: k8s_namespace
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 5
@@ -15483,13 +16051,17 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_id: 1
           - assoc_id: assoc_id
             target_name: target_name
+            target_id: 1
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           db_name: db_name
+          k8s_service_account: k8s_service_account
           chef_skip_ssl: true
           db_port: db_port
+          k8s_cluster_endpoint: k8s_cluster_endpoint
           artifactory_base_url: artifactory_base_url
           azure_client_secret: azure_client_secret
           azure_user_groups_obj_id: azure_user_groups_obj_id
@@ -15517,7 +16089,6 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
-          mongodb_atlas: true
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -15528,6 +16099,7 @@ components:
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
+          k8s_bearer_token: k8s_bearer_token
           enable_admin_rotation: true
           failure_message: failure_message
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
@@ -15571,6 +16143,7 @@ components:
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
           azure_user_programmatic_access: true
+          k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
           eks_secret_access_key: eks_secret_access_key
           sf_account: sf_account
           groups: groups
@@ -15606,11 +16179,6 @@ components:
           description: (Optional) Server name for certificate verification
           type: string
           x-go-name: DBServerName
-        gateway-url:
-          default: http://localhost:8000
-          description: Gateway url
-          type: string
-          x-go-name: GatewayUrl
         mysql-dbname:
           description: MySQL DB Name
           type: string
@@ -15682,6 +16250,7 @@ components:
         producer_details:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
+          k8s_namespace: k8s_namespace
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 5
@@ -15705,13 +16274,17 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_id: 1
           - assoc_id: assoc_id
             target_name: target_name
+            target_id: 1
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           db_name: db_name
+          k8s_service_account: k8s_service_account
           chef_skip_ssl: true
           db_port: db_port
+          k8s_cluster_endpoint: k8s_cluster_endpoint
           artifactory_base_url: artifactory_base_url
           azure_client_secret: azure_client_secret
           azure_user_groups_obj_id: azure_user_groups_obj_id
@@ -15739,7 +16312,6 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
-          mongodb_atlas: true
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -15750,6 +16322,7 @@ components:
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
+          k8s_bearer_token: k8s_bearer_token
           enable_admin_rotation: true
           failure_message: failure_message
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
@@ -15793,6 +16366,217 @@ components:
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
           azure_user_programmatic_access: true
+          k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
+          eks_secret_access_key: eks_secret_access_key
+          sf_account: sf_account
+          groups: groups
+          chef_organizations: chef_organizations
+          dynamic_secret_id: 6
+          chef_server_host_name: chef_server_host_name
+          mssql_revocation_statements: mssql_revocation_statements
+          chef_server_port: chef_server_port
+          mongodb_is_atlas: true
+          eks_cluster_ca_certificate: eks_cluster_ca_certificate
+          rotate_sync_url: rotate_sync_url
+          aws_access_key_id: aws_access_key_id
+          aws_region: aws_region
+          eks_cluster_name: eks_cluster_name
+          chef_server_url: chef_server_url
+          gke_cluster_name: gke_cluster_name
+          aws_user_groups: aws_user_groups
+          host_name: host_name
+          azure_tenant_id: azure_tenant_id
+      properties:
+        producer_details:
+          $ref: '#/components/schemas/DSProducerDetails'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayCreateProducerNativeK8S:
+      description: gatewayCreateProducerNativeK8S is a command that creates k8s producer
+      properties:
+        k8s-cluster-ca-cert:
+          description: K8S cluster CA certificate
+          type: string
+          x-go-name: ClusterCACert
+        k8s-cluster-endpoint:
+          description: K8S cluster URL endpoint
+          type: string
+          x-go-name: ClusterEndpoint
+        k8s-cluster-token:
+          description: K8S cluster Bearer token
+          type: string
+          x-go-name: ClusterBearerToken
+        k8s-namespace:
+          description: K8S namespace
+          type: string
+          x-go-name: Namespace
+        k8s-service-account:
+          description: K8S service account
+          type: string
+          x-go-name: ServiceAccount
+        name:
+          description: Producer name
+          type: string
+          x-go-name: ProducerName
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        producer-encryption-key-name:
+          description: Dynamic producer encryption key
+          type: string
+          x-go-name: ProducerEncryptionKey
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        user-ttl:
+          default: 60m
+          description: User TTL
+          type: string
+          x-go-name: UserTtl
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+      required:
+      - k8s-cluster-ca-cert
+      - k8s-cluster-endpoint
+      - k8s-cluster-token
+      - k8s-service-account
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayCreateProducerNativeK8SOutput:
+      example:
+        producer_details:
+          gke_cluster_endpoint: gke_cluster_endpoint
+          dynamic_secret_type: dynamic_secret_type
+          k8s_namespace: k8s_namespace
+          venafi_sign_using_akeyless_pki: true
+          dynamic_secret_key: dynamic_secret_key
+          last_admin_rotation: 5
+          chef_server_key: chef_server_key
+          db_max_open_conns: db_max_open_conns
+          admin_rotation_interval_days: 0
+          mssql_creation_statements: mssql_creation_statements
+          sf_user_role: sf_user_role
+          admin_pwd: admin_pwd
+          gcp_token_scope: gcp_token_scope
+          venafi_allowed_domains:
+          - venafi_allowed_domains
+          - venafi_allowed_domains
+          azure_user_roles_template_id: azure_user_roles_template_id
+          fixed_user_only: fixed_user_only
+          rabbitmq_server_password: rabbitmq_server_password
+          aws_access_mode: aws_access_mode
+          aws_user_policies: aws_user_policies
+          aws_role_arns: aws_role_arns
+          active: true
+          item_targets_assoc:
+          - assoc_id: assoc_id
+            target_name: target_name
+            target_id: 1
+          - assoc_id: assoc_id
+            target_name: target_name
+            target_id: 1
+          chef_server_username: chef_server_username
+          db_host_name: db_host_name
+          db_name: db_name
+          k8s_service_account: k8s_service_account
+          chef_skip_ssl: true
+          db_port: db_port
+          k8s_cluster_endpoint: k8s_cluster_endpoint
+          artifactory_base_url: artifactory_base_url
+          azure_client_secret: azure_client_secret
+          azure_user_groups_obj_id: azure_user_groups_obj_id
+          gcp_token_type: gcp_token_type
+          create_sync_url: create_sync_url
+          aws_session_token: aws_session_token
+          gcp_token_lifetime: gcp_token_lifetime
+          db_isolation_level: db_isolation_level
+          rabbitmq_user_vhost: rabbitmq_user_vhost
+          mongodb_username: mongodb_username
+          mongodb_roles: mongodb_roles
+          mongodb_db_name: mongodb_db_name
+          venafi_signer_key_name: venafi_signer_key_name
+          should_stop: should_stop
+          artifactory_token_audience: artifactory_token_audience
+          mongodb_atlas_api_public_key: mongodb_atlas_api_public_key
+          eks_access_key_id: eks_access_key_id
+          venafi_base_url: venafi_base_url
+          user_ttl: user_ttl
+          timeout_seconds: 5
+          eks_assume_role: eks_assume_role
+          venafi_use_tpp: true
+          mongodb_password: mongodb_password
+          aws_secret_access_key: aws_secret_access_key
+          mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
+          postgres_creation_statements: postgres_creation_statements
+          db_max_idle_conns: db_max_idle_conns
+          artifactory_admin_username: artifactory_admin_username
+          admin_name: admin_name
+          rabbitmq_server_user: rabbitmq_server_user
+          venafi_api_key: venafi_api_key
+          mongodb_host_port: mongodb_host_port
+          sf_warehouse_name: sf_warehouse_name
+          artifactory_token_scope: artifactory_token_scope
+          revoke_sync_url: revoke_sync_url
+          gke_cluster_ca_certificate: gke_cluster_ca_certificate
+          host_port: host_port
+          k8s_bearer_token: k8s_bearer_token
+          enable_admin_rotation: true
+          failure_message: failure_message
+          rabbitmq_user_read_permission: rabbitmq_user_read_permission
+          azure_client_id: azure_client_id
+          mongodb_default_auth_db: mongodb_default_auth_db
+          mongodb_uri_connection: mongodb_uri_connection
+          mongodb_atlas_project_id: mongodb_atlas_project_id
+          db_user_name: db_user_name
+          eks_region: eks_region
+          payload: payload
+          artifactory_admin_apikey: artifactory_admin_apikey
+          azure_app_object_id: azure_app_object_id
+          venafi_allow_subdomains: true
+          aws_user_console_access: true
+          user_principal_name: user_principal_name
+          db_server_certificates: db_server_certificates
+          gcp_key_algo: gcp_key_algo
+          db_server_name: db_server_name
+          venafi_zone: venafi_zone
+          gcp_service_account_key:
+          - 1
+          - 1
+          venafi_store_private_key: true
+          venafi_tpp_username: venafi_tpp_username
+          azure_user_portal_access: true
+          venafi_root_first_in_chain: true
+          eks_cluster_endpoint: eks_cluster_endpoint
+          gke_service_account_key: gke_service_account_key
+          venafi_auto_generated_folder: venafi_auto_generated_folder
+          mongodb_uri_options: mongodb_uri_options
+          db_pwd: db_pwd
+          gke_service_account_name: gke_service_account_name
+          mysql_creation_statements: mysql_creation_statements
+          gcp_service_account_email: gcp_service_account_email
+          dynamic_secret_name: dynamic_secret_name
+          rabbitmq_server_uri: rabbitmq_server_uri
+          chef_server_access_mode: chef_server_access_mode
+          aws_user_programmatic_access: true
+          rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
+          rabbitmq_user_write_permission: rabbitmq_user_write_permission
+          rabbitmq_user_tags: rabbitmq_user_tags
+          venafi_tpp_password: venafi_tpp_password
+          azure_user_programmatic_access: true
+          k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
           eks_secret_access_key: eks_secret_access_key
           sf_account: sf_account
           groups: groups
@@ -15825,11 +16609,6 @@ components:
           description: PostgreSQL Creation statements
           type: string
           x-go-name: CreationStatements
-        gateway-url:
-          default: http://localhost:8000
-          description: Gateway url
-          type: string
-          x-go-name: GatewayUrl
         name:
           description: Producer name
           type: string
@@ -15897,6 +16676,7 @@ components:
         producer_details:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
+          k8s_namespace: k8s_namespace
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 5
@@ -15920,13 +16700,17 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_id: 1
           - assoc_id: assoc_id
             target_name: target_name
+            target_id: 1
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           db_name: db_name
+          k8s_service_account: k8s_service_account
           chef_skip_ssl: true
           db_port: db_port
+          k8s_cluster_endpoint: k8s_cluster_endpoint
           artifactory_base_url: artifactory_base_url
           azure_client_secret: azure_client_secret
           azure_user_groups_obj_id: azure_user_groups_obj_id
@@ -15954,7 +16738,6 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
-          mongodb_atlas: true
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -15965,6 +16748,7 @@ components:
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
+          k8s_bearer_token: k8s_bearer_token
           enable_admin_rotation: true
           failure_message: failure_message
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
@@ -16008,6 +16792,7 @@ components:
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
           azure_user_programmatic_access: true
+          k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
           eks_secret_access_key: eks_secret_access_key
           sf_account: sf_account
           groups: groups
@@ -16036,11 +16821,6 @@ components:
       description: gatewayCreateProducerRabbitMQ is a command that creates rabbitmq
         producer
       properties:
-        gateway-url:
-          default: http://localhost:8000
-          description: Gateway url
-          type: string
-          x-go-name: GatewayUrl
         name:
           description: Producer name
           type: string
@@ -16121,6 +16901,7 @@ components:
         producer_details:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
+          k8s_namespace: k8s_namespace
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 5
@@ -16144,13 +16925,17 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_id: 1
           - assoc_id: assoc_id
             target_name: target_name
+            target_id: 1
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           db_name: db_name
+          k8s_service_account: k8s_service_account
           chef_skip_ssl: true
           db_port: db_port
+          k8s_cluster_endpoint: k8s_cluster_endpoint
           artifactory_base_url: artifactory_base_url
           azure_client_secret: azure_client_secret
           azure_user_groups_obj_id: azure_user_groups_obj_id
@@ -16178,7 +16963,6 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
-          mongodb_atlas: true
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -16189,6 +16973,7 @@ components:
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
+          k8s_bearer_token: k8s_bearer_token
           enable_admin_rotation: true
           failure_message: failure_message
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
@@ -16232,6 +17017,7 @@ components:
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
           azure_user_programmatic_access: true
+          k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
           eks_secret_access_key: eks_secret_access_key
           sf_account: sf_account
           groups: groups
@@ -16264,11 +17050,6 @@ components:
           description: Fixed user
           type: string
           x-go-name: FixedUserOnly
-        gateway-url:
-          default: http://localhost:8000
-          description: Gateway url
-          type: string
-          x-go-name: GatewayUrl
         name:
           description: Producer name
           type: string
@@ -16336,6 +17117,7 @@ components:
         producer_details:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
+          k8s_namespace: k8s_namespace
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 5
@@ -16359,13 +17141,17 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_id: 1
           - assoc_id: assoc_id
             target_name: target_name
+            target_id: 1
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           db_name: db_name
+          k8s_service_account: k8s_service_account
           chef_skip_ssl: true
           db_port: db_port
+          k8s_cluster_endpoint: k8s_cluster_endpoint
           artifactory_base_url: artifactory_base_url
           azure_client_secret: azure_client_secret
           azure_user_groups_obj_id: azure_user_groups_obj_id
@@ -16393,7 +17179,6 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
-          mongodb_atlas: true
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -16404,6 +17189,7 @@ components:
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
+          k8s_bearer_token: k8s_bearer_token
           enable_admin_rotation: true
           failure_message: failure_message
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
@@ -16447,6 +17233,7 @@ components:
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
           azure_user_programmatic_access: true
+          k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
           eks_secret_access_key: eks_secret_access_key
           sf_account: sf_account
           groups: groups
@@ -16483,11 +17270,6 @@ components:
           description: Database name
           type: string
           x-go-name: DBName
-        gateway-url:
-          default: http://localhost:8000
-          description: Gateway url
-          type: string
-          x-go-name: GatewayUrl
         name:
           description: Producer name
           type: string
@@ -16536,6 +17318,7 @@ components:
         producer_details:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
+          k8s_namespace: k8s_namespace
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 5
@@ -16559,13 +17342,17 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_id: 1
           - assoc_id: assoc_id
             target_name: target_name
+            target_id: 1
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           db_name: db_name
+          k8s_service_account: k8s_service_account
           chef_skip_ssl: true
           db_port: db_port
+          k8s_cluster_endpoint: k8s_cluster_endpoint
           artifactory_base_url: artifactory_base_url
           azure_client_secret: azure_client_secret
           azure_user_groups_obj_id: azure_user_groups_obj_id
@@ -16593,7 +17380,6 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
-          mongodb_atlas: true
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -16604,6 +17390,7 @@ components:
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
+          k8s_bearer_token: k8s_bearer_token
           enable_admin_rotation: true
           failure_message: failure_message
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
@@ -16647,6 +17434,7 @@ components:
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
           azure_user_programmatic_access: true
+          k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
           eks_secret_access_key: eks_secret_access_key
           sf_account: sf_account
           groups: groups
@@ -16675,11 +17463,6 @@ components:
       description: gatewayDeleteAllowedManagementAccess is a command that deletes
         sub-admins
       properties:
-        gateway-url:
-          default: http://localhost:8000
-          description: Gateway url
-          type: string
-          x-go-name: GatewayUrl
         password:
           description: Required only when the authentication process requires a username
             and password
@@ -16711,11 +17494,6 @@ components:
     gatewayDeleteProducer:
       description: gatewayDeleteProducer is a command that deletes producer
       properties:
-        gateway-url:
-          default: http://localhost:8000
-          description: Gateway url
-          type: string
-          x-go-name: GatewayUrl
         name:
           description: Producer name
           type: string
@@ -16759,11 +17537,6 @@ components:
     gatewayGetConfig:
       description: gatewayGetConfig is a command that returns gateway configuration
       properties:
-        gateway-url:
-          default: http://localhost:8000
-          description: Gateway url
-          type: string
-          x-go-name: GatewayUrl
         password:
           description: Required only when the authentication process requires a username
             and password
@@ -16789,11 +17562,6 @@ components:
     gatewayGetProducer:
       description: gatewayGetProducer is a command that returns producer
       properties:
-        gateway-url:
-          default: http://localhost:8000
-          description: Gateway url
-          type: string
-          x-go-name: GatewayUrl
         name:
           description: Producer name
           type: string
@@ -16825,11 +17593,6 @@ components:
     gatewayGetTmpUsers:
       description: gatewayGetTmpUsers is a command that returns gateway configuration
       properties:
-        gateway-url:
-          default: http://localhost:8000
-          description: Gateway url
-          type: string
-          x-go-name: GatewayUrl
         name:
           description: Producer Name
           type: string
@@ -16862,11 +17625,6 @@ components:
       description: gatewayListAllowedManagementAccess is a command that returns list
         sub admins
       properties:
-        gateway-url:
-          default: http://localhost:8000
-          description: Gateway url
-          type: string
-          x-go-name: GatewayUrl
         password:
           description: Required only when the authentication process requires a username
             and password
@@ -16892,11 +17650,6 @@ components:
     gatewayListProducers:
       description: gatewayListProducers is a command that returns producer
       properties:
-        gateway-url:
-          default: http://localhost:8000
-          description: Gateway url
-          type: string
-          x-go-name: GatewayUrl
         password:
           description: Required only when the authentication process requires a username
             and password
@@ -16922,10 +17675,6 @@ components:
     gatewayRevokeTmpUsers:
       description: gatewayRevokeTmpUsers is a command that revoke producer tmp user
       properties:
-        gateway-url:
-          description: Gateway url
-          type: string
-          x-go-name: GatewayUrl
         host:
           description: Host
           type: string
@@ -16970,10 +17719,6 @@ components:
     gatewayStartProducer:
       description: gatewayStartProducer is a command that starts producer
       properties:
-        gateway-url:
-          description: Gateway url
-          type: string
-          x-go-name: GatewayUrl
         name:
           description: Producer name
           type: string
@@ -17014,10 +17759,6 @@ components:
     gatewayStopProducer:
       description: gatewayStopProducer is a command that stops producer
       properties:
-        gateway-url:
-          description: Gateway url
-          type: string
-          x-go-name: GatewayUrl
         name:
           description: Producer name
           type: string
@@ -17065,10 +17806,6 @@ components:
     gatewayUpdateTmpUsers:
       description: gatewayUpdateTmpUsers is a command that returns gateway configuration
       properties:
-        gateway-url:
-          description: Gateway url
-          type: string
-          x-go-name: GatewayUrl
         name:
           description: Producer Name
           type: string
@@ -17297,6 +18034,7 @@ components:
         status:
           clientKeyData: clientKeyData
           clientCertificateData: clientCertificateData
+          parentCertificateData: parentCertificateData
       properties:
         apiVersion:
           type: string
@@ -17311,11 +18049,15 @@ components:
     getPKICertificateOutput:
       example:
         path: path
+        parent_cert: parent_cert
         data: data
       properties:
         data:
           type: string
           x-go-name: Data
+        parent_cert:
+          type: string
+          x-go-name: ParentCert
         path:
           type: string
           x-go-name: Path
@@ -18389,6 +19131,69 @@ components:
       title: update is a command that updates to the latest AKEYLESS CLI version.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    updateAWSTarget:
+      properties:
+        access-key:
+          type: string
+          x-go-name: AWSSecretAccessKey
+        access-key-id:
+          type: string
+          x-go-name: AWSAccessKeyID
+        comment:
+          description: Comment about the target
+          type: string
+          x-go-name: Comment
+        key:
+          description: |-
+            The name of a key that used to encrypt the target secret value (if empty, the
+            account default protectionKey key will be used)
+          type: string
+          x-go-name: ProtectionKey
+        name:
+          description: Target name
+          type: string
+          x-go-name: TargetName
+        new-name:
+          description: New target name
+          type: string
+          x-go-name: NewTargetName
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        region:
+          type: string
+          x-go-name: AWSRegion
+        session-token:
+          type: string
+          x-go-name: AWSSessionToken
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        update-version:
+          default: false
+          description: Create new version for the target
+          type: boolean
+          x-go-name: CreateNewVersion
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+      required:
+      - name
+      - new-name
+      title: updateAWSTarget is a command that updates a new target.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     updateAWSTargetDetails:
       properties:
         access-key:
@@ -18443,6 +19248,9 @@ components:
       title: updateAWSTargetDetails is a command that updates an existing target.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    updateAWSTargetOutput:
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     updateAssoc:
       description: |-
         updateAssoc is a command that updates the sub-claims of an association between role
@@ -18483,6 +19291,197 @@ components:
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     updateAssocOutput:
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    updateAzureTarget:
+      properties:
+        client-id:
+          type: string
+          x-go-name: AzureClientID
+        client-secret:
+          type: string
+          x-go-name: AzureClientSecret
+        comment:
+          description: Comment about the target
+          type: string
+          x-go-name: Comment
+        key:
+          description: |-
+            The name of a key that used to encrypt the target secret value (if empty, the
+            account default protectionKey key will be used)
+          type: string
+          x-go-name: ProtectionKey
+        name:
+          description: Target name
+          type: string
+          x-go-name: TargetName
+        new-name:
+          description: New target name
+          type: string
+          x-go-name: NewTargetName
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        tenant-id:
+          type: string
+          x-go-name: AzureTenantID
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        update-version:
+          default: false
+          description: Create new version for the target
+          type: boolean
+          x-go-name: CreateNewVersion
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+      required:
+      - name
+      - new-name
+      title: updateAzureTarget is a command that updates an existing target.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    updateAzureTargetOutput:
+      example:
+        target_id: 0
+      properties:
+        target_id:
+          format: int64
+          type: integer
+          x-go-name: TargetID
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    updateDBTarget:
+      properties:
+        comment:
+          description: Comment about the target
+          type: string
+          x-go-name: Comment
+        db-name:
+          type: string
+          x-go-name: DbName
+        db-server-certificates:
+          description: (Optional) DB server certificates
+          type: string
+          x-go-name: DBServerCertificates
+        db-server-name:
+          description: (Optional) Server name for certificate verification
+          type: string
+          x-go-name: DBServerName
+        db-type:
+          title: TargetType ..
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+        host:
+          type: string
+          x-go-name: DbHostName
+        key:
+          description: |-
+            The name of a key that used to encrypt the target secret value (if empty, the
+            account default protectionKey key will be used)
+          type: string
+          x-go-name: ProtectionKey
+        mongodb-atlas:
+          type: boolean
+          x-go-name: MongoDBAtlas
+        mongodb-atlas-api-private-key:
+          description: MongoDB Atlas private key
+          type: string
+          x-go-name: MongoAPIPrivateKey
+        mongodb-atlas-api-public-key:
+          description: MongoDB Atlas public key
+          type: string
+          x-go-name: MongoAPIPublicKey
+        mongodb-atlas-project-id:
+          description: MongoDB Atlas project ID
+          type: string
+          x-go-name: MongoProjectID
+        mongodb-default-auth-db:
+          description: MongoDB server default authentication database
+          type: string
+          x-go-name: MongoDefaultAuthDB
+        mongodb-host-port:
+          description: MongoDB server host and port
+          type: string
+          x-go-name: MongoHostAndPort
+        mongodb-password:
+          description: MongoDB server password. You will prompted to provide a password
+            if it will not appear in CLI parameters
+          type: string
+          x-go-name: MongoPassword
+        mongodb-server-uri:
+          description: MongoDB server URI
+          type: string
+          x-go-name: MongoServerURI
+        mongodb-uri-options:
+          description: MongoDB server URI options
+          type: string
+          x-go-name: MongoURIOptions
+        mongodb-username:
+          description: MongoDB server username
+          type: string
+          x-go-name: MongoUsername
+        name:
+          description: Target name
+          type: string
+          x-go-name: TargetName
+        new-name:
+          description: New target name
+          type: string
+          x-go-name: NewTargetName
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        port:
+          type: string
+          x-go-name: DbPort
+        pwd:
+          type: string
+          x-go-name: DbPwd
+        snowflake-account:
+          type: string
+          x-go-name: SnowflakeAccount
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        update-version:
+          default: false
+          description: Create new version for the target
+          type: boolean
+          x-go-name: CreateNewVersion
+        user-name:
+          type: string
+          x-go-name: DbUserName
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+      required:
+      - name
+      - new-name
+      title: updateDBTarget is a command that updates an existing target.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     updateDBTargetDetails:
@@ -18548,6 +19547,257 @@ components:
       title: updateDBTargetDetails is a command that updates an existing target.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    updateDBTargetOutput:
+      example:
+        target_id: 0
+      properties:
+        target_id:
+          format: int64
+          type: integer
+          x-go-name: TargetID
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    updateEKSTarget:
+      properties:
+        comment:
+          description: Comment about the target
+          type: string
+          x-go-name: Comment
+        eks-access-key-id:
+          description: Access Key ID
+          type: string
+          x-go-name: AccessId
+        eks-cluster-cert:
+          description: EKS cluster CA certificate
+          type: string
+          x-go-name: ClusterCACert
+        eks-cluster-endpoint:
+          description: EKS cluster URL endpoint
+          type: string
+          x-go-name: ClusterEndpoint
+        eks-cluster-name:
+          description: EKS cluster name
+          type: string
+          x-go-name: ClusterName
+        eks-region:
+          default: us-east-2
+          description: Region
+          type: string
+          x-go-name: Region
+        eks-secret-access-key:
+          description: Secret Access Key
+          type: string
+          x-go-name: AccessKey
+        key:
+          description: |-
+            The name of a key that used to encrypt the target secret value (if empty, the
+            account default protectionKey key will be used)
+          type: string
+          x-go-name: ProtectionKey
+        name:
+          description: Target name
+          type: string
+          x-go-name: TargetName
+        new-name:
+          description: New target name
+          type: string
+          x-go-name: NewTargetName
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        update-version:
+          default: false
+          description: Create new version for the target
+          type: boolean
+          x-go-name: CreateNewVersion
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+      required:
+      - eks-access-key-id
+      - eks-cluster-cert
+      - eks-cluster-endpoint
+      - eks-cluster-name
+      - eks-secret-access-key
+      - name
+      - new-name
+      title: updateEKSTarget is a command that updates an existing target.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    updateEKSTargetOutput:
+      example:
+        target_id: 0
+      properties:
+        target_id:
+          format: int64
+          type: integer
+          x-go-name: TargetID
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    updateGKETarget:
+      properties:
+        comment:
+          description: Comment about the target
+          type: string
+          x-go-name: Comment
+        gke-account-key:
+          description: GKE Service Account key file path
+          type: string
+          x-go-name: ServiceAccountKey
+        gke-cluster-cert:
+          description: GKE cluster CA certificate
+          type: string
+          x-go-name: ClusterCACert
+        gke-cluster-endpoint:
+          description: GKE cluster URL endpoint
+          type: string
+          x-go-name: ClusterEndpoint
+        gke-cluster-name:
+          description: GKE cluster name
+          type: string
+          x-go-name: ClusterName
+        gke-service-account-email:
+          description: GKE service account email
+          type: string
+          x-go-name: ServiceAccountEmail
+        key:
+          description: |-
+            The name of a key that used to encrypt the target secret value (if empty, the
+            account default protectionKey key will be used)
+          type: string
+          x-go-name: ProtectionKey
+        name:
+          description: Target name
+          type: string
+          x-go-name: TargetName
+        new-name:
+          description: New target name
+          type: string
+          x-go-name: NewTargetName
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        update-version:
+          default: false
+          description: Create new version for the target
+          type: boolean
+          x-go-name: CreateNewVersion
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+      required:
+      - gke-cluster-cert
+      - gke-cluster-endpoint
+      - gke-cluster-name
+      - gke-service-account-email
+      - name
+      - new-name
+      title: updateGKETarget is a command that updates an existing target.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    updateGKETargetOutput:
+      example:
+        target_id: 0
+      properties:
+        target_id:
+          format: int64
+          type: integer
+          x-go-name: TargetID
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    updateGcpTarget:
+      properties:
+        comment:
+          description: Comment about the target
+          type: string
+          x-go-name: Comment
+        gcp-key:
+          description: Base64-encoded service account private key text
+          type: string
+          x-go-name: ServiceAccountKey
+        key:
+          description: |-
+            The name of a key that used to encrypt the target secret value (if empty, the
+            account default protectionKey key will be used)
+          type: string
+          x-go-name: ProtectionKey
+        name:
+          description: Target name
+          type: string
+          x-go-name: TargetName
+        new-name:
+          description: New target name
+          type: string
+          x-go-name: NewTargetName
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        update-version:
+          default: false
+          description: Create new version for the target
+          type: boolean
+          x-go-name: CreateNewVersion
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+      required:
+      - name
+      - new-name
+      title: updateGcpTarget is a command that updates an existing target.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    updateGcpTargetOutput:
+      example:
+        target_id: 0
+      properties:
+        target_id:
+          format: int64
+          type: integer
+          x-go-name: TargetID
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     updateItem:
       properties:
         add-tag:
@@ -18607,6 +19857,93 @@ components:
         updated:
           type: boolean
           x-go-name: Updated
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    updateNativeK8STarget:
+      example:
+        k8s-cluster-endpoint: k8s-cluster-endpoint
+        password: password
+        k8s-cluster-ca-cert: k8s-cluster-ca-cert
+        name: name
+        k8s-cluster-token: k8s-cluster-token
+        update-version: false
+        comment: comment
+        new-name: new-name
+        key: key
+        uid-token: uid-token
+        token: token
+        username: username
+      properties:
+        comment:
+          description: Comment about the target
+          type: string
+          x-go-name: Comment
+        k8s-cluster-ca-cert:
+          description: K8S cluster CA certificate
+          type: string
+          x-go-name: ClusterCACert
+        k8s-cluster-endpoint:
+          description: K8S cluster URL endpoint
+          type: string
+          x-go-name: ClusterEndpoint
+        k8s-cluster-token:
+          description: K8S cluster Bearer token
+          type: string
+          x-go-name: ClusterBearerToken
+        key:
+          description: |-
+            The name of a key that used to encrypt the target secret value (if empty, the
+            account default protectionKey key will be used)
+          type: string
+          x-go-name: ProtectionKey
+        name:
+          description: Target name
+          type: string
+          x-go-name: TargetName
+        new-name:
+          description: New target name
+          type: string
+          x-go-name: NewTargetName
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        update-version:
+          default: false
+          description: Create new version for the target
+          type: boolean
+          x-go-name: CreateNewVersion
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+      required:
+      - k8s-cluster-ca-cert
+      - k8s-cluster-endpoint
+      - k8s-cluster-token
+      - name
+      - new-name
+      title: updateNativeK8STarget is a command that updates an existing target.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    updateNativeK8STargetOutput:
+      properties:
+        target_id:
+          format: int64
+          type: integer
+          x-go-name: TargetID
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     updateOutput:
@@ -18673,6 +20010,66 @@ components:
       title: updateRDPTargetDetails is a command that updates an existing target.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    updateRabbitMQTarget:
+      properties:
+        comment:
+          description: Comment about the target
+          type: string
+          x-go-name: Comment
+        key:
+          description: |-
+            The name of a key that used to encrypt the target secret value (if empty, the
+            account default protectionKey key will be used)
+          type: string
+          x-go-name: ProtectionKey
+        name:
+          description: Target name
+          type: string
+          x-go-name: TargetName
+        new-name:
+          description: New target name
+          type: string
+          x-go-name: NewTargetName
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        rabbitmq-server-password:
+          type: string
+          x-go-name: RabbitmqServerPassword
+        rabbitmq-server-uri:
+          type: string
+          x-go-name: RabbitmqServerURI
+        rabbitmq-server-user:
+          type: string
+          x-go-name: RabbitmqServerUser
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        update-version:
+          default: false
+          description: Create new version for the target
+          type: boolean
+          x-go-name: CreateNewVersion
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+      required:
+      - name
+      - new-name
+      title: updateRabbitMQTarget is a command that updates a new target.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     updateRabbitMQTargetDetails:
       properties:
         name:
@@ -18724,6 +20121,16 @@ components:
       title: updateRabbitMQTargetDetails is a command that updates an existing target.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    updateRabbitMQTargetOutput:
+      example:
+        target_id: 0
+      properties:
+        target_id:
+          format: int64
+          type: integer
+          x-go-name: TargetID
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     updateRole:
       properties:
         analytics-access:
@@ -18740,6 +20147,13 @@ components:
             logs produced by the same auth methods.
           type: string
           x-go-name: AuditAccess
+        gw-analytics-access:
+          description: |-
+            Allow this role to view gw analytics. Currently only 'none', 'own', 'all'
+            values are supported, allowing associated auth methods to view reports
+            produced by the same auth methods.
+          type: string
+          x-go-name: GwAnalyticsAccess
         name:
           description: Role name
           type: string
@@ -18797,17 +20211,18 @@ components:
             type: string
           type: array
           x-go-name: AddTags
+        api-id:
+          type: string
+          x-go-name: ApiId
+        api-key:
+          type: string
+          x-go-name: ApiKey
         auto-rotate:
           description: |-
             Whether to automatically rotate every --rotation-interval days, or
             disable existing automatic rotation
           type: string
           x-go-name: AutoRotate
-        gateway-url:
-          default: http://localhost:8000
-          description: Gateway url
-          type: string
-          x-go-name: GatewayUrl
         key:
           description: |-
             The name of a key that used to encrypt the secret value (if empty, the
@@ -18933,6 +20348,75 @@ components:
       - name
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    updateSSHTarget:
+      properties:
+        comment:
+          description: Comment about the target
+          type: string
+          x-go-name: Comment
+        host:
+          type: string
+          x-go-name: HostName
+        key:
+          description: |-
+            The name of a key that used to encrypt the target secret value (if empty, the
+            account default protectionKey key will be used)
+          type: string
+          x-go-name: ProtectionKey
+        name:
+          description: Target name
+          type: string
+          x-go-name: TargetName
+        new-name:
+          description: New target name
+          type: string
+          x-go-name: NewTargetName
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        port:
+          type: string
+          x-go-name: HostPort
+        private-key:
+          type: string
+          x-go-name: PrivateKey
+        private-key-password:
+          type: string
+          x-go-name: PrivateKeyPassword
+        ssh-password:
+          type: string
+          x-go-name: SshPassword
+        ssh-username:
+          type: string
+          x-go-name: SshUser
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        update-version:
+          default: false
+          description: Create new version for the target
+          type: boolean
+          x-go-name: CreateNewVersion
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+      required:
+      - name
+      - new-name
+      title: updateSSHTarget is a command that updates an existing target.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     updateSSHTargetDetails:
       properties:
         host:
@@ -18991,6 +20475,16 @@ components:
       required:
       - name
       title: updateSSHTargetDetails is a command that updates an existing target.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    updateSSHTargetOutput:
+      example:
+        target_id: 0
+      properties:
+        target_id:
+          format: int64
+          type: integer
+          x-go-name: TargetID
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     updateSecretVal:
@@ -19113,6 +20607,61 @@ components:
           x-go-name: Updated
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    updateWebTarget:
+      properties:
+        comment:
+          description: Comment about the target
+          type: string
+          x-go-name: Comment
+        key:
+          description: |-
+            The name of a key that used to encrypt the target secret value (if empty, the
+            account default protectionKey key will be used)
+          type: string
+          x-go-name: ProtectionKey
+        name:
+          description: Target name
+          type: string
+          x-go-name: TargetName
+        new-name:
+          description: New target name
+          type: string
+          x-go-name: NewTargetName
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        update-version:
+          default: false
+          description: Create new version for the target
+          type: boolean
+          x-go-name: CreateNewVersion
+        url:
+          description: The url
+          type: string
+          x-go-name: URL
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+      required:
+      - name
+      - new-name
+      title: updateWebTarget is a command that updates an existing target.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     updateWebTargetDetails:
       properties:
         name:
@@ -19156,6 +20705,16 @@ components:
       required:
       - name
       title: updateWebTargetDetails is a command that updates an existing target.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    updateWebTargetOutput:
+      example:
+        target_id: 0
+      properties:
+        target_id:
+          format: int64
+          type: integer
+          x-go-name: TargetID
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     uploadPKCS12:

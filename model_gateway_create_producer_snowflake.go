@@ -21,8 +21,6 @@ type GatewayCreateProducerSnowflake struct {
 	Account string `json:"account"`
 	// Database name
 	DbName string `json:"db-name"`
-	// Gateway url
-	GatewayUrl *string `json:"gateway-url,omitempty"`
 	// Producer name
 	Name string `json:"name"`
 	// Required only when the authentication process requires a username and password
@@ -49,8 +47,6 @@ func NewGatewayCreateProducerSnowflake(account string, dbName string, name strin
 	this := GatewayCreateProducerSnowflake{}
 	this.Account = account
 	this.DbName = dbName
-	var gatewayUrl string = "http://localhost:8000"
-	this.GatewayUrl = &gatewayUrl
 	this.Name = name
 	var userTtl string = "24h"
 	this.UserTtl = &userTtl
@@ -62,8 +58,6 @@ func NewGatewayCreateProducerSnowflake(account string, dbName string, name strin
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayCreateProducerSnowflakeWithDefaults() *GatewayCreateProducerSnowflake {
 	this := GatewayCreateProducerSnowflake{}
-	var gatewayUrl string = "http://localhost:8000"
-	this.GatewayUrl = &gatewayUrl
 	var userTtl string = "24h"
 	this.UserTtl = &userTtl
 	return &this
@@ -115,38 +109,6 @@ func (o *GatewayCreateProducerSnowflake) GetDbNameOk() (*string, bool) {
 // SetDbName sets field value
 func (o *GatewayCreateProducerSnowflake) SetDbName(v string) {
 	o.DbName = v
-}
-
-// GetGatewayUrl returns the GatewayUrl field value if set, zero value otherwise.
-func (o *GatewayCreateProducerSnowflake) GetGatewayUrl() string {
-	if o == nil || o.GatewayUrl == nil {
-		var ret string
-		return ret
-	}
-	return *o.GatewayUrl
-}
-
-// GetGatewayUrlOk returns a tuple with the GatewayUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerSnowflake) GetGatewayUrlOk() (*string, bool) {
-	if o == nil || o.GatewayUrl == nil {
-		return nil, false
-	}
-	return o.GatewayUrl, true
-}
-
-// HasGatewayUrl returns a boolean if a field has been set.
-func (o *GatewayCreateProducerSnowflake) HasGatewayUrl() bool {
-	if o != nil && o.GatewayUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGatewayUrl gets a reference to the given string and assigns it to the GatewayUrl field.
-func (o *GatewayCreateProducerSnowflake) SetGatewayUrl(v string) {
-	o.GatewayUrl = &v
 }
 
 // GetName returns the Name field value
@@ -404,9 +366,6 @@ func (o GatewayCreateProducerSnowflake) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["db-name"] = o.DbName
-	}
-	if o.GatewayUrl != nil {
-		toSerialize["gateway-url"] = o.GatewayUrl
 	}
 	if true {
 		toSerialize["name"] = o.Name

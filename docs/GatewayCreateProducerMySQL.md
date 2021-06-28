@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DbServerCertificates** | Pointer to **string** | (Optional) DB server certificates | [optional] 
 **DbServerName** | Pointer to **string** | (Optional) Server name for certificate verification | [optional] 
-**GatewayUrl** | Pointer to **string** | Gateway url | [optional] [default to "http://localhost:8000"]
 **MysqlDbname** | **string** | MySQL DB Name | 
 **MysqlHost** | Pointer to **string** | MySQL Host | [optional] [default to "127.0.0.1"]
 **MysqlPassword** | **string** | MySQL Password | 
@@ -89,31 +88,6 @@ SetDbServerName sets DbServerName field to given value.
 `func (o *GatewayCreateProducerMySQL) HasDbServerName() bool`
 
 HasDbServerName returns a boolean if a field has been set.
-
-### GetGatewayUrl
-
-`func (o *GatewayCreateProducerMySQL) GetGatewayUrl() string`
-
-GetGatewayUrl returns the GatewayUrl field if non-nil, zero value otherwise.
-
-### GetGatewayUrlOk
-
-`func (o *GatewayCreateProducerMySQL) GetGatewayUrlOk() (*string, bool)`
-
-GetGatewayUrlOk returns a tuple with the GatewayUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGatewayUrl
-
-`func (o *GatewayCreateProducerMySQL) SetGatewayUrl(v string)`
-
-SetGatewayUrl sets GatewayUrl field to given value.
-
-### HasGatewayUrl
-
-`func (o *GatewayCreateProducerMySQL) HasGatewayUrl() bool`
-
-HasGatewayUrl returns a boolean if a field has been set.
 
 ### GetMysqlDbname
 

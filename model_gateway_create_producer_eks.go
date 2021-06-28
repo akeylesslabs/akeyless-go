@@ -31,8 +31,6 @@ type GatewayCreateProducerEks struct {
 	EksRegion *string `json:"eks-region,omitempty"`
 	// Secret Access Key
 	EksSecretAccessKey string `json:"eks-secret-access-key"`
-	// Gateway url
-	GatewayUrl *string `json:"gateway-url,omitempty"`
 	// Producer name
 	Name string `json:"name"`
 	// Required only when the authentication process requires a username and password
@@ -62,8 +60,6 @@ func NewGatewayCreateProducerEks(eksAccessKeyId string, eksClusterCert string, e
 	var eksRegion string = "us-east-2"
 	this.EksRegion = &eksRegion
 	this.EksSecretAccessKey = eksSecretAccessKey
-	var gatewayUrl string = "http://localhost:8000"
-	this.GatewayUrl = &gatewayUrl
 	this.Name = name
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
@@ -77,8 +73,6 @@ func NewGatewayCreateProducerEksWithDefaults() *GatewayCreateProducerEks {
 	this := GatewayCreateProducerEks{}
 	var eksRegion string = "us-east-2"
 	this.EksRegion = &eksRegion
-	var gatewayUrl string = "http://localhost:8000"
-	this.GatewayUrl = &gatewayUrl
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
@@ -266,38 +260,6 @@ func (o *GatewayCreateProducerEks) GetEksSecretAccessKeyOk() (*string, bool) {
 // SetEksSecretAccessKey sets field value
 func (o *GatewayCreateProducerEks) SetEksSecretAccessKey(v string) {
 	o.EksSecretAccessKey = v
-}
-
-// GetGatewayUrl returns the GatewayUrl field value if set, zero value otherwise.
-func (o *GatewayCreateProducerEks) GetGatewayUrl() string {
-	if o == nil || o.GatewayUrl == nil {
-		var ret string
-		return ret
-	}
-	return *o.GatewayUrl
-}
-
-// GetGatewayUrlOk returns a tuple with the GatewayUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerEks) GetGatewayUrlOk() (*string, bool) {
-	if o == nil || o.GatewayUrl == nil {
-		return nil, false
-	}
-	return o.GatewayUrl, true
-}
-
-// HasGatewayUrl returns a boolean if a field has been set.
-func (o *GatewayCreateProducerEks) HasGatewayUrl() bool {
-	if o != nil && o.GatewayUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGatewayUrl gets a reference to the given string and assigns it to the GatewayUrl field.
-func (o *GatewayCreateProducerEks) SetGatewayUrl(v string) {
-	o.GatewayUrl = &v
 }
 
 // GetName returns the Name field value
@@ -538,9 +500,6 @@ func (o GatewayCreateProducerEks) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["eks-secret-access-key"] = o.EksSecretAccessKey
-	}
-	if o.GatewayUrl != nil {
-		toSerialize["gateway-url"] = o.GatewayUrl
 	}
 	if true {
 		toSerialize["name"] = o.Name

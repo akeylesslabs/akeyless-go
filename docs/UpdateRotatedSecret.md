@@ -5,8 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AddTag** | Pointer to **[]string** | List of the new tags that will be attached to this item | [optional] 
+**ApiId** | Pointer to **string** |  | [optional] 
+**ApiKey** | Pointer to **string** |  | [optional] 
 **AutoRotate** | Pointer to **string** | Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation | [optional] 
-**GatewayUrl** | Pointer to **string** | Gateway url | [optional] [default to "http://localhost:8000"]
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Secret name | 
 **NewMetadata** | Pointer to **string** | New item metadata | [optional] [default to "default_metadata"]
@@ -67,6 +68,56 @@ SetAddTag sets AddTag field to given value.
 
 HasAddTag returns a boolean if a field has been set.
 
+### GetApiId
+
+`func (o *UpdateRotatedSecret) GetApiId() string`
+
+GetApiId returns the ApiId field if non-nil, zero value otherwise.
+
+### GetApiIdOk
+
+`func (o *UpdateRotatedSecret) GetApiIdOk() (*string, bool)`
+
+GetApiIdOk returns a tuple with the ApiId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApiId
+
+`func (o *UpdateRotatedSecret) SetApiId(v string)`
+
+SetApiId sets ApiId field to given value.
+
+### HasApiId
+
+`func (o *UpdateRotatedSecret) HasApiId() bool`
+
+HasApiId returns a boolean if a field has been set.
+
+### GetApiKey
+
+`func (o *UpdateRotatedSecret) GetApiKey() string`
+
+GetApiKey returns the ApiKey field if non-nil, zero value otherwise.
+
+### GetApiKeyOk
+
+`func (o *UpdateRotatedSecret) GetApiKeyOk() (*string, bool)`
+
+GetApiKeyOk returns a tuple with the ApiKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApiKey
+
+`func (o *UpdateRotatedSecret) SetApiKey(v string)`
+
+SetApiKey sets ApiKey field to given value.
+
+### HasApiKey
+
+`func (o *UpdateRotatedSecret) HasApiKey() bool`
+
+HasApiKey returns a boolean if a field has been set.
+
 ### GetAutoRotate
 
 `func (o *UpdateRotatedSecret) GetAutoRotate() string`
@@ -91,31 +142,6 @@ SetAutoRotate sets AutoRotate field to given value.
 `func (o *UpdateRotatedSecret) HasAutoRotate() bool`
 
 HasAutoRotate returns a boolean if a field has been set.
-
-### GetGatewayUrl
-
-`func (o *UpdateRotatedSecret) GetGatewayUrl() string`
-
-GetGatewayUrl returns the GatewayUrl field if non-nil, zero value otherwise.
-
-### GetGatewayUrlOk
-
-`func (o *UpdateRotatedSecret) GetGatewayUrlOk() (*string, bool)`
-
-GetGatewayUrlOk returns a tuple with the GatewayUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGatewayUrl
-
-`func (o *UpdateRotatedSecret) SetGatewayUrl(v string)`
-
-SetGatewayUrl sets GatewayUrl field to given value.
-
-### HasGatewayUrl
-
-`func (o *UpdateRotatedSecret) HasGatewayUrl() bool`
-
-HasGatewayUrl returns a boolean if a field has been set.
 
 ### GetKey
 

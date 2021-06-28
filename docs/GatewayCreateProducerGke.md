@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**GatewayUrl** | Pointer to **string** | Gateway url | [optional] [default to "http://localhost:8000"]
+**GkeAccountKey** | Pointer to **string** | GKE Service Account key file path | [optional] 
 **GkeClusterCert** | **string** | GKE cluster CA certificate | 
 **GkeClusterEndpoint** | **string** | GKE cluster URL endpoint | 
 **GkeClusterName** | **string** | GKE cluster name | 
@@ -36,30 +36,30 @@ NewGatewayCreateProducerGkeWithDefaults instantiates a new GatewayCreateProducer
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetGatewayUrl
+### GetGkeAccountKey
 
-`func (o *GatewayCreateProducerGke) GetGatewayUrl() string`
+`func (o *GatewayCreateProducerGke) GetGkeAccountKey() string`
 
-GetGatewayUrl returns the GatewayUrl field if non-nil, zero value otherwise.
+GetGkeAccountKey returns the GkeAccountKey field if non-nil, zero value otherwise.
 
-### GetGatewayUrlOk
+### GetGkeAccountKeyOk
 
-`func (o *GatewayCreateProducerGke) GetGatewayUrlOk() (*string, bool)`
+`func (o *GatewayCreateProducerGke) GetGkeAccountKeyOk() (*string, bool)`
 
-GetGatewayUrlOk returns a tuple with the GatewayUrl field if it's non-nil, zero value otherwise
+GetGkeAccountKeyOk returns a tuple with the GkeAccountKey field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetGatewayUrl
+### SetGkeAccountKey
 
-`func (o *GatewayCreateProducerGke) SetGatewayUrl(v string)`
+`func (o *GatewayCreateProducerGke) SetGkeAccountKey(v string)`
 
-SetGatewayUrl sets GatewayUrl field to given value.
+SetGkeAccountKey sets GkeAccountKey field to given value.
 
-### HasGatewayUrl
+### HasGkeAccountKey
 
-`func (o *GatewayCreateProducerGke) HasGatewayUrl() bool`
+`func (o *GatewayCreateProducerGke) HasGkeAccountKey() bool`
 
-HasGatewayUrl returns a boolean if a field has been set.
+HasGkeAccountKey returns a boolean if a field has been set.
 
 ### GetGkeClusterCert
 

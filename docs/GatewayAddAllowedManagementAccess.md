@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AllowGwApi** | Pointer to **bool** |  | [optional] 
 **AllowGwLogin** | Pointer to **bool** |  | [optional] 
-**GatewayUrl** | Pointer to **string** | Gateway url | [optional] [default to "http://localhost:8000"]
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **SubAdminAccessId** | **string** | SubAdmins to add | 
 **SubClaims** | Pointer to **map[string]string** | key/val of sub claims, e.g group&#x3D;admins,developers | [optional] 
@@ -82,31 +81,6 @@ SetAllowGwLogin sets AllowGwLogin field to given value.
 `func (o *GatewayAddAllowedManagementAccess) HasAllowGwLogin() bool`
 
 HasAllowGwLogin returns a boolean if a field has been set.
-
-### GetGatewayUrl
-
-`func (o *GatewayAddAllowedManagementAccess) GetGatewayUrl() string`
-
-GetGatewayUrl returns the GatewayUrl field if non-nil, zero value otherwise.
-
-### GetGatewayUrlOk
-
-`func (o *GatewayAddAllowedManagementAccess) GetGatewayUrlOk() (*string, bool)`
-
-GetGatewayUrlOk returns a tuple with the GatewayUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGatewayUrl
-
-`func (o *GatewayAddAllowedManagementAccess) SetGatewayUrl(v string)`
-
-SetGatewayUrl sets GatewayUrl field to given value.
-
-### HasGatewayUrl
-
-`func (o *GatewayAddAllowedManagementAccess) HasGatewayUrl() bool`
-
-HasGatewayUrl returns a boolean if a field has been set.
 
 ### GetPassword
 

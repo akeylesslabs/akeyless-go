@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **EnableTlsConfigure** | Pointer to **bool** |  | [optional] 
 **EnableTlsCurl** | Pointer to **bool** |  | [optional] 
 **EnableTlsHvp** | Pointer to **bool** |  | [optional] 
+**GwClusterUrl** | Pointer to **string** |  | [optional] 
 **TcpPort** | Pointer to **string** |  | [optional] 
 **TlsCert** | Pointer to **string** |  | [optional] 
 **TlsKey** | Pointer to **string** |  | [optional] 
@@ -182,6 +183,31 @@ SetEnableTlsHvp sets EnableTlsHvp field to given value.
 `func (o *GeneralConfigPart) HasEnableTlsHvp() bool`
 
 HasEnableTlsHvp returns a boolean if a field has been set.
+
+### GetGwClusterUrl
+
+`func (o *GeneralConfigPart) GetGwClusterUrl() string`
+
+GetGwClusterUrl returns the GwClusterUrl field if non-nil, zero value otherwise.
+
+### GetGwClusterUrlOk
+
+`func (o *GeneralConfigPart) GetGwClusterUrlOk() (*string, bool)`
+
+GetGwClusterUrlOk returns a tuple with the GwClusterUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGwClusterUrl
+
+`func (o *GeneralConfigPart) SetGwClusterUrl(v string)`
+
+SetGwClusterUrl sets GwClusterUrl field to given value.
+
+### HasGwClusterUrl
+
+`func (o *GeneralConfigPart) HasGwClusterUrl() bool`
+
+HasGwClusterUrl returns a boolean if a field has been set.
 
 ### GetTcpPort
 

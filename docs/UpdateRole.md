@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AnalyticsAccess** | Pointer to **string** | Allow this role to view analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods. | [optional] 
 **AuditAccess** | Pointer to **string** | Allow this role to view audit logs. Currently only &#39;none&#39;, &#39;own&#39; and &#39;all&#39; values are supported, allowing associated auth methods to view audit logs produced by the same auth methods. | [optional] 
+**GwAnalyticsAccess** | Pointer to **string** | Allow this role to view gw analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods. | [optional] 
 **Name** | **string** | Role name | 
 **NewComment** | Pointer to **string** | New comment about the role | [optional] [default to "default_comment"]
 **NewName** | Pointer to **string** | New Role name | [optional] 
@@ -82,6 +83,31 @@ SetAuditAccess sets AuditAccess field to given value.
 `func (o *UpdateRole) HasAuditAccess() bool`
 
 HasAuditAccess returns a boolean if a field has been set.
+
+### GetGwAnalyticsAccess
+
+`func (o *UpdateRole) GetGwAnalyticsAccess() string`
+
+GetGwAnalyticsAccess returns the GwAnalyticsAccess field if non-nil, zero value otherwise.
+
+### GetGwAnalyticsAccessOk
+
+`func (o *UpdateRole) GetGwAnalyticsAccessOk() (*string, bool)`
+
+GetGwAnalyticsAccessOk returns a tuple with the GwAnalyticsAccess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGwAnalyticsAccess
+
+`func (o *UpdateRole) SetGwAnalyticsAccess(v string)`
+
+SetGwAnalyticsAccess sets GwAnalyticsAccess field to given value.
+
+### HasGwAnalyticsAccess
+
+`func (o *UpdateRole) HasGwAnalyticsAccess() bool`
+
+HasGwAnalyticsAccess returns a boolean if a field has been set.
 
 ### GetName
 

@@ -17,10 +17,10 @@ import (
 
 // CreateRotatedSecret struct for CreateRotatedSecret
 type CreateRotatedSecret struct {
+	ApiId *string `json:"api-id,omitempty"`
+	ApiKey *string `json:"api-key,omitempty"`
 	// Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation
 	AutoRotate *string `json:"auto-rotate,omitempty"`
-	// Gateway url
-	GatewayUrl *string `json:"gateway-url,omitempty"`
 	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
 	// Metadata about the secret
@@ -53,8 +53,6 @@ type CreateRotatedSecret struct {
 // will change when the set of required properties is changed
 func NewCreateRotatedSecret(name string, ) *CreateRotatedSecret {
 	this := CreateRotatedSecret{}
-	var gatewayUrl string = "http://localhost:8000"
-	this.GatewayUrl = &gatewayUrl
 	this.Name = name
 	return &this
 }
@@ -64,9 +62,71 @@ func NewCreateRotatedSecret(name string, ) *CreateRotatedSecret {
 // but it doesn't guarantee that properties required by API are set
 func NewCreateRotatedSecretWithDefaults() *CreateRotatedSecret {
 	this := CreateRotatedSecret{}
-	var gatewayUrl string = "http://localhost:8000"
-	this.GatewayUrl = &gatewayUrl
 	return &this
+}
+
+// GetApiId returns the ApiId field value if set, zero value otherwise.
+func (o *CreateRotatedSecret) GetApiId() string {
+	if o == nil || o.ApiId == nil {
+		var ret string
+		return ret
+	}
+	return *o.ApiId
+}
+
+// GetApiIdOk returns a tuple with the ApiId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRotatedSecret) GetApiIdOk() (*string, bool) {
+	if o == nil || o.ApiId == nil {
+		return nil, false
+	}
+	return o.ApiId, true
+}
+
+// HasApiId returns a boolean if a field has been set.
+func (o *CreateRotatedSecret) HasApiId() bool {
+	if o != nil && o.ApiId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetApiId gets a reference to the given string and assigns it to the ApiId field.
+func (o *CreateRotatedSecret) SetApiId(v string) {
+	o.ApiId = &v
+}
+
+// GetApiKey returns the ApiKey field value if set, zero value otherwise.
+func (o *CreateRotatedSecret) GetApiKey() string {
+	if o == nil || o.ApiKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.ApiKey
+}
+
+// GetApiKeyOk returns a tuple with the ApiKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRotatedSecret) GetApiKeyOk() (*string, bool) {
+	if o == nil || o.ApiKey == nil {
+		return nil, false
+	}
+	return o.ApiKey, true
+}
+
+// HasApiKey returns a boolean if a field has been set.
+func (o *CreateRotatedSecret) HasApiKey() bool {
+	if o != nil && o.ApiKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetApiKey gets a reference to the given string and assigns it to the ApiKey field.
+func (o *CreateRotatedSecret) SetApiKey(v string) {
+	o.ApiKey = &v
 }
 
 // GetAutoRotate returns the AutoRotate field value if set, zero value otherwise.
@@ -99,38 +159,6 @@ func (o *CreateRotatedSecret) HasAutoRotate() bool {
 // SetAutoRotate gets a reference to the given string and assigns it to the AutoRotate field.
 func (o *CreateRotatedSecret) SetAutoRotate(v string) {
 	o.AutoRotate = &v
-}
-
-// GetGatewayUrl returns the GatewayUrl field value if set, zero value otherwise.
-func (o *CreateRotatedSecret) GetGatewayUrl() string {
-	if o == nil || o.GatewayUrl == nil {
-		var ret string
-		return ret
-	}
-	return *o.GatewayUrl
-}
-
-// GetGatewayUrlOk returns a tuple with the GatewayUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateRotatedSecret) GetGatewayUrlOk() (*string, bool) {
-	if o == nil || o.GatewayUrl == nil {
-		return nil, false
-	}
-	return o.GatewayUrl, true
-}
-
-// HasGatewayUrl returns a boolean if a field has been set.
-func (o *CreateRotatedSecret) HasGatewayUrl() bool {
-	if o != nil && o.GatewayUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGatewayUrl gets a reference to the given string and assigns it to the GatewayUrl field.
-func (o *CreateRotatedSecret) SetGatewayUrl(v string) {
-	o.GatewayUrl = &v
 }
 
 // GetKey returns the Key field value if set, zero value otherwise.
@@ -607,11 +635,14 @@ func (o *CreateRotatedSecret) SetUsername(v string) {
 
 func (o CreateRotatedSecret) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.ApiId != nil {
+		toSerialize["api-id"] = o.ApiId
+	}
+	if o.ApiKey != nil {
+		toSerialize["api-key"] = o.ApiKey
+	}
 	if o.AutoRotate != nil {
 		toSerialize["auto-rotate"] = o.AutoRotate
-	}
-	if o.GatewayUrl != nil {
-		toSerialize["gateway-url"] = o.GatewayUrl
 	}
 	if o.Key != nil {
 		toSerialize["key"] = o.Key

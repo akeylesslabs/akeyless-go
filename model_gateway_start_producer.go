@@ -17,8 +17,6 @@ import (
 
 // GatewayStartProducer gatewayStartProducer is a command that starts producer
 type GatewayStartProducer struct {
-	// Gateway url
-	GatewayUrl *string `json:"gateway-url,omitempty"`
 	// Producer name
 	Name string `json:"name"`
 	// Required only when the authentication process requires a username and password
@@ -47,38 +45,6 @@ func NewGatewayStartProducer(name string, ) *GatewayStartProducer {
 func NewGatewayStartProducerWithDefaults() *GatewayStartProducer {
 	this := GatewayStartProducer{}
 	return &this
-}
-
-// GetGatewayUrl returns the GatewayUrl field value if set, zero value otherwise.
-func (o *GatewayStartProducer) GetGatewayUrl() string {
-	if o == nil || o.GatewayUrl == nil {
-		var ret string
-		return ret
-	}
-	return *o.GatewayUrl
-}
-
-// GetGatewayUrlOk returns a tuple with the GatewayUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayStartProducer) GetGatewayUrlOk() (*string, bool) {
-	if o == nil || o.GatewayUrl == nil {
-		return nil, false
-	}
-	return o.GatewayUrl, true
-}
-
-// HasGatewayUrl returns a boolean if a field has been set.
-func (o *GatewayStartProducer) HasGatewayUrl() bool {
-	if o != nil && o.GatewayUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGatewayUrl gets a reference to the given string and assigns it to the GatewayUrl field.
-func (o *GatewayStartProducer) SetGatewayUrl(v string) {
-	o.GatewayUrl = &v
 }
 
 // GetName returns the Name field value
@@ -235,9 +201,6 @@ func (o *GatewayStartProducer) SetUsername(v string) {
 
 func (o GatewayStartProducer) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.GatewayUrl != nil {
-		toSerialize["gateway-url"] = o.GatewayUrl
-	}
 	if true {
 		toSerialize["name"] = o.Name
 	}

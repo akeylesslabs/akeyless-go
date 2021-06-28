@@ -17,8 +17,8 @@ import (
 
 // CreateAzureTarget struct for CreateAzureTarget
 type CreateAzureTarget struct {
-	ClientId *string `json:"client_id,omitempty"`
-	ClientSecret *string `json:"client_secret,omitempty"`
+	ClientId *string `json:"client-id,omitempty"`
+	ClientSecret *string `json:"client-secret,omitempty"`
 	// Comment about the target
 	Comment *string `json:"comment,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
@@ -27,7 +27,7 @@ type CreateAzureTarget struct {
 	Name string `json:"name"`
 	// Required only when the authentication process requires a username and password
 	Password *string `json:"password,omitempty"`
-	TenantId *string `json:"tenant_id,omitempty"`
+	TenantId *string `json:"tenant-id,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -369,10 +369,10 @@ func (o *CreateAzureTarget) SetUsername(v string) {
 func (o CreateAzureTarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ClientId != nil {
-		toSerialize["client_id"] = o.ClientId
+		toSerialize["client-id"] = o.ClientId
 	}
 	if o.ClientSecret != nil {
-		toSerialize["client_secret"] = o.ClientSecret
+		toSerialize["client-secret"] = o.ClientSecret
 	}
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment
@@ -387,7 +387,7 @@ func (o CreateAzureTarget) MarshalJSON() ([]byte, error) {
 		toSerialize["password"] = o.Password
 	}
 	if o.TenantId != nil {
-		toSerialize["tenant_id"] = o.TenantId
+		toSerialize["tenant-id"] = o.TenantId
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

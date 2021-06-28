@@ -11,7 +11,6 @@ Name | Type | Description | Notes
 **EksClusterName** | **string** | EKS cluster name | 
 **EksRegion** | Pointer to **string** | Region | [optional] [default to "us-east-2"]
 **EksSecretAccessKey** | **string** | Secret Access Key | 
-**GatewayUrl** | Pointer to **string** | Gateway url | [optional] [default to "http://localhost:8000"]
 **Name** | **string** | Producer name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
@@ -188,31 +187,6 @@ and a boolean to check if the value has been set.
 
 SetEksSecretAccessKey sets EksSecretAccessKey field to given value.
 
-
-### GetGatewayUrl
-
-`func (o *GatewayCreateProducerEks) GetGatewayUrl() string`
-
-GetGatewayUrl returns the GatewayUrl field if non-nil, zero value otherwise.
-
-### GetGatewayUrlOk
-
-`func (o *GatewayCreateProducerEks) GetGatewayUrlOk() (*string, bool)`
-
-GetGatewayUrlOk returns a tuple with the GatewayUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGatewayUrl
-
-`func (o *GatewayCreateProducerEks) SetGatewayUrl(v string)`
-
-SetGatewayUrl sets GatewayUrl field to given value.
-
-### HasGatewayUrl
-
-`func (o *GatewayCreateProducerEks) HasGatewayUrl() bool`
-
-HasGatewayUrl returns a boolean if a field has been set.
 
 ### GetName
 

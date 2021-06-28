@@ -19,6 +19,8 @@ import (
 type CreateGKETarget struct {
 	// Comment about the target
 	Comment *string `json:"comment,omitempty"`
+	// GKE Service Account key file path
+	GkeAccountKey *string `json:"gke-account-key,omitempty"`
 	// GKE cluster CA certificate
 	GkeClusterCert string `json:"gke-cluster-cert"`
 	// GKE cluster URL endpoint
@@ -93,6 +95,38 @@ func (o *CreateGKETarget) HasComment() bool {
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *CreateGKETarget) SetComment(v string) {
 	o.Comment = &v
+}
+
+// GetGkeAccountKey returns the GkeAccountKey field value if set, zero value otherwise.
+func (o *CreateGKETarget) GetGkeAccountKey() string {
+	if o == nil || o.GkeAccountKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.GkeAccountKey
+}
+
+// GetGkeAccountKeyOk returns a tuple with the GkeAccountKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateGKETarget) GetGkeAccountKeyOk() (*string, bool) {
+	if o == nil || o.GkeAccountKey == nil {
+		return nil, false
+	}
+	return o.GkeAccountKey, true
+}
+
+// HasGkeAccountKey returns a boolean if a field has been set.
+func (o *CreateGKETarget) HasGkeAccountKey() bool {
+	if o != nil && o.GkeAccountKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGkeAccountKey gets a reference to the given string and assigns it to the GkeAccountKey field.
+func (o *CreateGKETarget) SetGkeAccountKey(v string) {
+	o.GkeAccountKey = &v
 }
 
 // GetGkeClusterCert returns the GkeClusterCert field value
@@ -379,6 +413,9 @@ func (o CreateGKETarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment
+	}
+	if o.GkeAccountKey != nil {
+		toSerialize["gke-account-key"] = o.GkeAccountKey
 	}
 	if true {
 		toSerialize["gke-cluster-cert"] = o.GkeClusterCert

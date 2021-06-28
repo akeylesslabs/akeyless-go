@@ -17,7 +17,7 @@ import (
 
 // EncryptOutput struct for EncryptOutput
 type EncryptOutput struct {
-	Result *[]int32 `json:"result,omitempty"`
+	Result *string `json:"result,omitempty"`
 }
 
 // NewEncryptOutput instantiates a new EncryptOutput object
@@ -38,9 +38,9 @@ func NewEncryptOutputWithDefaults() *EncryptOutput {
 }
 
 // GetResult returns the Result field value if set, zero value otherwise.
-func (o *EncryptOutput) GetResult() []int32 {
+func (o *EncryptOutput) GetResult() string {
 	if o == nil || o.Result == nil {
-		var ret []int32
+		var ret string
 		return ret
 	}
 	return *o.Result
@@ -48,7 +48,7 @@ func (o *EncryptOutput) GetResult() []int32 {
 
 // GetResultOk returns a tuple with the Result field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EncryptOutput) GetResultOk() (*[]int32, bool) {
+func (o *EncryptOutput) GetResultOk() (*string, bool) {
 	if o == nil || o.Result == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *EncryptOutput) HasResult() bool {
 	return false
 }
 
-// SetResult gets a reference to the given []int32 and assigns it to the Result field.
-func (o *EncryptOutput) SetResult(v []int32) {
+// SetResult gets a reference to the given string and assigns it to the Result field.
+func (o *EncryptOutput) SetResult(v string) {
 	o.Result = &v
 }
 

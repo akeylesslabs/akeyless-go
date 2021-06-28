@@ -25,8 +25,6 @@ type GatewayCreateProducerChef struct {
 	ChefServerUrl string `json:"chef-server-url"`
 	// Server username
 	ChefServerUsername string `json:"chef-server-username"`
-	// Gateway url
-	GatewayUrl *string `json:"gateway-url,omitempty"`
 	// Producer name
 	Name string `json:"name"`
 	// Required only when the authentication process requires a username and password
@@ -55,8 +53,6 @@ func NewGatewayCreateProducerChef(chefOrgs string, chefServerKey string, chefSer
 	this.ChefServerKey = chefServerKey
 	this.ChefServerUrl = chefServerUrl
 	this.ChefServerUsername = chefServerUsername
-	var gatewayUrl string = "http://localhost:8000"
-	this.GatewayUrl = &gatewayUrl
 	this.Name = name
 	var skipSsl bool = true
 	this.SkipSsl = &skipSsl
@@ -70,8 +66,6 @@ func NewGatewayCreateProducerChef(chefOrgs string, chefServerKey string, chefSer
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayCreateProducerChefWithDefaults() *GatewayCreateProducerChef {
 	this := GatewayCreateProducerChef{}
-	var gatewayUrl string = "http://localhost:8000"
-	this.GatewayUrl = &gatewayUrl
 	var skipSsl bool = true
 	this.SkipSsl = &skipSsl
 	var userTtl string = "60m"
@@ -173,38 +167,6 @@ func (o *GatewayCreateProducerChef) GetChefServerUsernameOk() (*string, bool) {
 // SetChefServerUsername sets field value
 func (o *GatewayCreateProducerChef) SetChefServerUsername(v string) {
 	o.ChefServerUsername = v
-}
-
-// GetGatewayUrl returns the GatewayUrl field value if set, zero value otherwise.
-func (o *GatewayCreateProducerChef) GetGatewayUrl() string {
-	if o == nil || o.GatewayUrl == nil {
-		var ret string
-		return ret
-	}
-	return *o.GatewayUrl
-}
-
-// GetGatewayUrlOk returns a tuple with the GatewayUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerChef) GetGatewayUrlOk() (*string, bool) {
-	if o == nil || o.GatewayUrl == nil {
-		return nil, false
-	}
-	return o.GatewayUrl, true
-}
-
-// HasGatewayUrl returns a boolean if a field has been set.
-func (o *GatewayCreateProducerChef) HasGatewayUrl() bool {
-	if o != nil && o.GatewayUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGatewayUrl gets a reference to the given string and assigns it to the GatewayUrl field.
-func (o *GatewayCreateProducerChef) SetGatewayUrl(v string) {
-	o.GatewayUrl = &v
 }
 
 // GetName returns the Name field value
@@ -468,9 +430,6 @@ func (o GatewayCreateProducerChef) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["chef-server-username"] = o.ChefServerUsername
-	}
-	if o.GatewayUrl != nil {
-		toSerialize["gateway-url"] = o.GatewayUrl
 	}
 	if true {
 		toSerialize["name"] = o.Name

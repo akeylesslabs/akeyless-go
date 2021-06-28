@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Result** | Pointer to **[]int32** |  | [optional] 
+**Result** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResult
 
-`func (o *EncryptOutput) GetResult() []int32`
+`func (o *EncryptOutput) GetResult() string`
 
 GetResult returns the Result field if non-nil, zero value otherwise.
 
 ### GetResultOk
 
-`func (o *EncryptOutput) GetResultOk() (*[]int32, bool)`
+`func (o *EncryptOutput) GetResultOk() (*string, bool)`
 
 GetResultOk returns a tuple with the Result field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResult
 
-`func (o *EncryptOutput) SetResult(v []int32)`
+`func (o *EncryptOutput) SetResult(v string)`
 
 SetResult sets Result field to given value.
 

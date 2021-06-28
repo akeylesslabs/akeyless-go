@@ -18,6 +18,7 @@ import (
 // ItemTargetAssociation ItemTargetAssociation includes details of an association between an item and a target.
 type ItemTargetAssociation struct {
 	AssocId *string `json:"assoc_id,omitempty"`
+	TargetId *int64 `json:"target_id,omitempty"`
 	TargetName *string `json:"target_name,omitempty"`
 }
 
@@ -70,6 +71,38 @@ func (o *ItemTargetAssociation) SetAssocId(v string) {
 	o.AssocId = &v
 }
 
+// GetTargetId returns the TargetId field value if set, zero value otherwise.
+func (o *ItemTargetAssociation) GetTargetId() int64 {
+	if o == nil || o.TargetId == nil {
+		var ret int64
+		return ret
+	}
+	return *o.TargetId
+}
+
+// GetTargetIdOk returns a tuple with the TargetId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ItemTargetAssociation) GetTargetIdOk() (*int64, bool) {
+	if o == nil || o.TargetId == nil {
+		return nil, false
+	}
+	return o.TargetId, true
+}
+
+// HasTargetId returns a boolean if a field has been set.
+func (o *ItemTargetAssociation) HasTargetId() bool {
+	if o != nil && o.TargetId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetId gets a reference to the given int64 and assigns it to the TargetId field.
+func (o *ItemTargetAssociation) SetTargetId(v int64) {
+	o.TargetId = &v
+}
+
 // GetTargetName returns the TargetName field value if set, zero value otherwise.
 func (o *ItemTargetAssociation) GetTargetName() string {
 	if o == nil || o.TargetName == nil {
@@ -106,6 +139,9 @@ func (o ItemTargetAssociation) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AssocId != nil {
 		toSerialize["assoc_id"] = o.AssocId
+	}
+	if o.TargetId != nil {
+		toSerialize["target_id"] = o.TargetId
 	}
 	if o.TargetName != nil {
 		toSerialize["target_name"] = o.TargetName

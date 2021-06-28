@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**GatewayUrl** | Pointer to **string** | Gateway url | [optional] [default to "http://localhost:8000"]
 **MssqlCreateStatements** | Pointer to **string** | MSSQL Creation statements | [optional] 
 **MssqlDbname** | **string** | MSSQL Name | 
 **MssqlHost** | Pointer to **string** | MSSQL Host | [optional] [default to "127.0.0.1"]
@@ -38,31 +37,6 @@ will change when the set of required properties is changed
 NewGatewayCreateProducerMSSQLWithDefaults instantiates a new GatewayCreateProducerMSSQL object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetGatewayUrl
-
-`func (o *GatewayCreateProducerMSSQL) GetGatewayUrl() string`
-
-GetGatewayUrl returns the GatewayUrl field if non-nil, zero value otherwise.
-
-### GetGatewayUrlOk
-
-`func (o *GatewayCreateProducerMSSQL) GetGatewayUrlOk() (*string, bool)`
-
-GetGatewayUrlOk returns a tuple with the GatewayUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGatewayUrl
-
-`func (o *GatewayCreateProducerMSSQL) SetGatewayUrl(v string)`
-
-SetGatewayUrl sets GatewayUrl field to given value.
-
-### HasGatewayUrl
-
-`func (o *GatewayCreateProducerMSSQL) HasGatewayUrl() bool`
-
-HasGatewayUrl returns a boolean if a field has been set.
 
 ### GetMssqlCreateStatements
 

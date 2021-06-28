@@ -87,17 +87,19 @@ type DSProducerDetails struct {
 	GcpTokenType *string `json:"gcp_token_type,omitempty"`
 	GkeClusterCaCertificate *string `json:"gke_cluster_ca_certificate,omitempty"`
 	GkeClusterEndpoint *string `json:"gke_cluster_endpoint,omitempty"`
-	// GKEProjectID            string `json:\"gke_project_id\"`
 	GkeClusterName *string `json:"gke_cluster_name,omitempty"`
 	GkeServiceAccountKey *string `json:"gke_service_account_key,omitempty"`
-	// GKEClusterComputeZone   string `json:\"gke_cluster_compute_zone\"`
 	GkeServiceAccountName *string `json:"gke_service_account_name,omitempty"`
 	Groups *string `json:"groups,omitempty"`
 	HostName *string `json:"host_name,omitempty"`
 	HostPort *string `json:"host_port,omitempty"`
 	ItemTargetsAssoc *[]ItemTargetAssociation `json:"item_targets_assoc,omitempty"`
+	K8sBearerToken *string `json:"k8s_bearer_token,omitempty"`
+	K8sClusterCaCertificate *string `json:"k8s_cluster_ca_certificate,omitempty"`
+	K8sClusterEndpoint *string `json:"k8s_cluster_endpoint,omitempty"`
+	K8sNamespace *string `json:"k8s_namespace,omitempty"`
+	K8sServiceAccount *string `json:"k8s_service_account,omitempty"`
 	LastAdminRotation *int64 `json:"last_admin_rotation,omitempty"`
-	MongodbAtlas *bool `json:"mongodb_atlas,omitempty"`
 	MongodbAtlasApiPrivateKey *string `json:"mongodb_atlas_api_private_key,omitempty"`
 	MongodbAtlasApiPublicKey *string `json:"mongodb_atlas_api_public_key,omitempty"`
 	// mongodb atlas fields
@@ -2570,6 +2572,166 @@ func (o *DSProducerDetails) SetItemTargetsAssoc(v []ItemTargetAssociation) {
 	o.ItemTargetsAssoc = &v
 }
 
+// GetK8sBearerToken returns the K8sBearerToken field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetK8sBearerToken() string {
+	if o == nil || o.K8sBearerToken == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sBearerToken
+}
+
+// GetK8sBearerTokenOk returns a tuple with the K8sBearerToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetK8sBearerTokenOk() (*string, bool) {
+	if o == nil || o.K8sBearerToken == nil {
+		return nil, false
+	}
+	return o.K8sBearerToken, true
+}
+
+// HasK8sBearerToken returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasK8sBearerToken() bool {
+	if o != nil && o.K8sBearerToken != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sBearerToken gets a reference to the given string and assigns it to the K8sBearerToken field.
+func (o *DSProducerDetails) SetK8sBearerToken(v string) {
+	o.K8sBearerToken = &v
+}
+
+// GetK8sClusterCaCertificate returns the K8sClusterCaCertificate field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetK8sClusterCaCertificate() string {
+	if o == nil || o.K8sClusterCaCertificate == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sClusterCaCertificate
+}
+
+// GetK8sClusterCaCertificateOk returns a tuple with the K8sClusterCaCertificate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetK8sClusterCaCertificateOk() (*string, bool) {
+	if o == nil || o.K8sClusterCaCertificate == nil {
+		return nil, false
+	}
+	return o.K8sClusterCaCertificate, true
+}
+
+// HasK8sClusterCaCertificate returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasK8sClusterCaCertificate() bool {
+	if o != nil && o.K8sClusterCaCertificate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sClusterCaCertificate gets a reference to the given string and assigns it to the K8sClusterCaCertificate field.
+func (o *DSProducerDetails) SetK8sClusterCaCertificate(v string) {
+	o.K8sClusterCaCertificate = &v
+}
+
+// GetK8sClusterEndpoint returns the K8sClusterEndpoint field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetK8sClusterEndpoint() string {
+	if o == nil || o.K8sClusterEndpoint == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sClusterEndpoint
+}
+
+// GetK8sClusterEndpointOk returns a tuple with the K8sClusterEndpoint field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetK8sClusterEndpointOk() (*string, bool) {
+	if o == nil || o.K8sClusterEndpoint == nil {
+		return nil, false
+	}
+	return o.K8sClusterEndpoint, true
+}
+
+// HasK8sClusterEndpoint returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasK8sClusterEndpoint() bool {
+	if o != nil && o.K8sClusterEndpoint != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sClusterEndpoint gets a reference to the given string and assigns it to the K8sClusterEndpoint field.
+func (o *DSProducerDetails) SetK8sClusterEndpoint(v string) {
+	o.K8sClusterEndpoint = &v
+}
+
+// GetK8sNamespace returns the K8sNamespace field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetK8sNamespace() string {
+	if o == nil || o.K8sNamespace == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sNamespace
+}
+
+// GetK8sNamespaceOk returns a tuple with the K8sNamespace field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetK8sNamespaceOk() (*string, bool) {
+	if o == nil || o.K8sNamespace == nil {
+		return nil, false
+	}
+	return o.K8sNamespace, true
+}
+
+// HasK8sNamespace returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasK8sNamespace() bool {
+	if o != nil && o.K8sNamespace != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sNamespace gets a reference to the given string and assigns it to the K8sNamespace field.
+func (o *DSProducerDetails) SetK8sNamespace(v string) {
+	o.K8sNamespace = &v
+}
+
+// GetK8sServiceAccount returns the K8sServiceAccount field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetK8sServiceAccount() string {
+	if o == nil || o.K8sServiceAccount == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sServiceAccount
+}
+
+// GetK8sServiceAccountOk returns a tuple with the K8sServiceAccount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetK8sServiceAccountOk() (*string, bool) {
+	if o == nil || o.K8sServiceAccount == nil {
+		return nil, false
+	}
+	return o.K8sServiceAccount, true
+}
+
+// HasK8sServiceAccount returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasK8sServiceAccount() bool {
+	if o != nil && o.K8sServiceAccount != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sServiceAccount gets a reference to the given string and assigns it to the K8sServiceAccount field.
+func (o *DSProducerDetails) SetK8sServiceAccount(v string) {
+	o.K8sServiceAccount = &v
+}
+
 // GetLastAdminRotation returns the LastAdminRotation field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetLastAdminRotation() int64 {
 	if o == nil || o.LastAdminRotation == nil {
@@ -2600,38 +2762,6 @@ func (o *DSProducerDetails) HasLastAdminRotation() bool {
 // SetLastAdminRotation gets a reference to the given int64 and assigns it to the LastAdminRotation field.
 func (o *DSProducerDetails) SetLastAdminRotation(v int64) {
 	o.LastAdminRotation = &v
-}
-
-// GetMongodbAtlas returns the MongodbAtlas field value if set, zero value otherwise.
-func (o *DSProducerDetails) GetMongodbAtlas() bool {
-	if o == nil || o.MongodbAtlas == nil {
-		var ret bool
-		return ret
-	}
-	return *o.MongodbAtlas
-}
-
-// GetMongodbAtlasOk returns a tuple with the MongodbAtlas field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DSProducerDetails) GetMongodbAtlasOk() (*bool, bool) {
-	if o == nil || o.MongodbAtlas == nil {
-		return nil, false
-	}
-	return o.MongodbAtlas, true
-}
-
-// HasMongodbAtlas returns a boolean if a field has been set.
-func (o *DSProducerDetails) HasMongodbAtlas() bool {
-	if o != nil && o.MongodbAtlas != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMongodbAtlas gets a reference to the given bool and assigns it to the MongodbAtlas field.
-func (o *DSProducerDetails) SetMongodbAtlas(v bool) {
-	o.MongodbAtlas = &v
 }
 
 // GetMongodbAtlasApiPrivateKey returns the MongodbAtlasApiPrivateKey field value if set, zero value otherwise.
@@ -4365,11 +4495,23 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	if o.ItemTargetsAssoc != nil {
 		toSerialize["item_targets_assoc"] = o.ItemTargetsAssoc
 	}
+	if o.K8sBearerToken != nil {
+		toSerialize["k8s_bearer_token"] = o.K8sBearerToken
+	}
+	if o.K8sClusterCaCertificate != nil {
+		toSerialize["k8s_cluster_ca_certificate"] = o.K8sClusterCaCertificate
+	}
+	if o.K8sClusterEndpoint != nil {
+		toSerialize["k8s_cluster_endpoint"] = o.K8sClusterEndpoint
+	}
+	if o.K8sNamespace != nil {
+		toSerialize["k8s_namespace"] = o.K8sNamespace
+	}
+	if o.K8sServiceAccount != nil {
+		toSerialize["k8s_service_account"] = o.K8sServiceAccount
+	}
 	if o.LastAdminRotation != nil {
 		toSerialize["last_admin_rotation"] = o.LastAdminRotation
-	}
-	if o.MongodbAtlas != nil {
-		toSerialize["mongodb_atlas"] = o.MongodbAtlas
 	}
 	if o.MongodbAtlasApiPrivateKey != nil {
 		toSerialize["mongodb_atlas_api_private_key"] = o.MongodbAtlasApiPrivateKey

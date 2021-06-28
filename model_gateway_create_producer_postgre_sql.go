@@ -19,8 +19,6 @@ import (
 type GatewayCreateProducerPostgreSQL struct {
 	// PostgreSQL Creation statements
 	CreationStatements *string `json:"creation-statements,omitempty"`
-	// Gateway url
-	GatewayUrl *string `json:"gateway-url,omitempty"`
 	// Producer name
 	Name string `json:"name"`
 	// Required only when the authentication process requires a username and password
@@ -53,8 +51,6 @@ type GatewayCreateProducerPostgreSQL struct {
 // will change when the set of required properties is changed
 func NewGatewayCreateProducerPostgreSQL(name string, postgresqlDbName string, postgresqlPassword string, postgresqlUsername string, ) *GatewayCreateProducerPostgreSQL {
 	this := GatewayCreateProducerPostgreSQL{}
-	var gatewayUrl string = "http://localhost:8000"
-	this.GatewayUrl = &gatewayUrl
 	this.Name = name
 	this.PostgresqlDbName = postgresqlDbName
 	var postgresqlHost string = "127.0.0.1"
@@ -73,8 +69,6 @@ func NewGatewayCreateProducerPostgreSQL(name string, postgresqlDbName string, po
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayCreateProducerPostgreSQLWithDefaults() *GatewayCreateProducerPostgreSQL {
 	this := GatewayCreateProducerPostgreSQL{}
-	var gatewayUrl string = "http://localhost:8000"
-	this.GatewayUrl = &gatewayUrl
 	var postgresqlHost string = "127.0.0.1"
 	this.PostgresqlHost = &postgresqlHost
 	var postgresqlPort string = "5432"
@@ -114,38 +108,6 @@ func (o *GatewayCreateProducerPostgreSQL) HasCreationStatements() bool {
 // SetCreationStatements gets a reference to the given string and assigns it to the CreationStatements field.
 func (o *GatewayCreateProducerPostgreSQL) SetCreationStatements(v string) {
 	o.CreationStatements = &v
-}
-
-// GetGatewayUrl returns the GatewayUrl field value if set, zero value otherwise.
-func (o *GatewayCreateProducerPostgreSQL) GetGatewayUrl() string {
-	if o == nil || o.GatewayUrl == nil {
-		var ret string
-		return ret
-	}
-	return *o.GatewayUrl
-}
-
-// GetGatewayUrlOk returns a tuple with the GatewayUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerPostgreSQL) GetGatewayUrlOk() (*string, bool) {
-	if o == nil || o.GatewayUrl == nil {
-		return nil, false
-	}
-	return o.GatewayUrl, true
-}
-
-// HasGatewayUrl returns a boolean if a field has been set.
-func (o *GatewayCreateProducerPostgreSQL) HasGatewayUrl() bool {
-	if o != nil && o.GatewayUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGatewayUrl gets a reference to the given string and assigns it to the GatewayUrl field.
-func (o *GatewayCreateProducerPostgreSQL) SetGatewayUrl(v string) {
-	o.GatewayUrl = &v
 }
 
 // GetName returns the Name field value
@@ -504,9 +466,6 @@ func (o GatewayCreateProducerPostgreSQL) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.CreationStatements != nil {
 		toSerialize["creation-statements"] = o.CreationStatements
-	}
-	if o.GatewayUrl != nil {
-		toSerialize["gateway-url"] = o.GatewayUrl
 	}
 	if true {
 		toSerialize["name"] = o.Name

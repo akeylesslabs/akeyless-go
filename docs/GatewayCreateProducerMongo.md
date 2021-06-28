@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**GatewayUrl** | Pointer to **string** | Gateway url | [optional] [default to "http://localhost:8000"]
 **MongodbAtlasApiPrivateKey** | Pointer to **string** | MongoDB Atlas private key | [optional] 
 **MongodbAtlasApiPublicKey** | Pointer to **string** | MongoDB Atlas public key | [optional] 
 **MongodbAtlasProjectId** | Pointer to **string** | MongoDB Atlas project ID | [optional] 
@@ -42,31 +41,6 @@ will change when the set of required properties is changed
 NewGatewayCreateProducerMongoWithDefaults instantiates a new GatewayCreateProducerMongo object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetGatewayUrl
-
-`func (o *GatewayCreateProducerMongo) GetGatewayUrl() string`
-
-GetGatewayUrl returns the GatewayUrl field if non-nil, zero value otherwise.
-
-### GetGatewayUrlOk
-
-`func (o *GatewayCreateProducerMongo) GetGatewayUrlOk() (*string, bool)`
-
-GetGatewayUrlOk returns a tuple with the GatewayUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGatewayUrl
-
-`func (o *GatewayCreateProducerMongo) SetGatewayUrl(v string)`
-
-SetGatewayUrl sets GatewayUrl field to given value.
-
-### HasGatewayUrl
-
-`func (o *GatewayCreateProducerMongo) HasGatewayUrl() bool`
-
-HasGatewayUrl returns a boolean if a field has been set.
 
 ### GetMongodbAtlasApiPrivateKey
 

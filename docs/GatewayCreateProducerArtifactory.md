@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **ArtifactoryTokenAudience** | **string** | Token Audience | 
 **ArtifactoryTokenScope** | **string** | Token Scope | 
 **BaseUrl** | **string** | Base URL | 
-**GatewayUrl** | Pointer to **string** | Gateway url | [optional] [default to "http://localhost:8000"]
 **Name** | **string** | Producer name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
@@ -136,31 +135,6 @@ and a boolean to check if the value has been set.
 
 SetBaseUrl sets BaseUrl field to given value.
 
-
-### GetGatewayUrl
-
-`func (o *GatewayCreateProducerArtifactory) GetGatewayUrl() string`
-
-GetGatewayUrl returns the GatewayUrl field if non-nil, zero value otherwise.
-
-### GetGatewayUrlOk
-
-`func (o *GatewayCreateProducerArtifactory) GetGatewayUrlOk() (*string, bool)`
-
-GetGatewayUrlOk returns a tuple with the GatewayUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGatewayUrl
-
-`func (o *GatewayCreateProducerArtifactory) SetGatewayUrl(v string)`
-
-SetGatewayUrl sets GatewayUrl field to given value.
-
-### HasGatewayUrl
-
-`func (o *GatewayCreateProducerArtifactory) HasGatewayUrl() bool`
-
-HasGatewayUrl returns a boolean if a field has been set.
 
 ### GetName
 

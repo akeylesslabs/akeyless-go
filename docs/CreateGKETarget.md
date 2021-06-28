@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Comment** | Pointer to **string** | Comment about the target | [optional] 
+**GkeAccountKey** | Pointer to **string** | GKE Service Account key file path | [optional] 
 **GkeClusterCert** | **string** | GKE cluster CA certificate | 
 **GkeClusterEndpoint** | **string** | GKE cluster URL endpoint | 
 **GkeClusterName** | **string** | GKE cluster name | 
@@ -59,6 +60,31 @@ SetComment sets Comment field to given value.
 `func (o *CreateGKETarget) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
+
+### GetGkeAccountKey
+
+`func (o *CreateGKETarget) GetGkeAccountKey() string`
+
+GetGkeAccountKey returns the GkeAccountKey field if non-nil, zero value otherwise.
+
+### GetGkeAccountKeyOk
+
+`func (o *CreateGKETarget) GetGkeAccountKeyOk() (*string, bool)`
+
+GetGkeAccountKeyOk returns a tuple with the GkeAccountKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGkeAccountKey
+
+`func (o *CreateGKETarget) SetGkeAccountKey(v string)`
+
+SetGkeAccountKey sets GkeAccountKey field to given value.
+
+### HasGkeAccountKey
+
+`func (o *CreateGKETarget) HasGkeAccountKey() bool`
+
+HasGkeAccountKey returns a boolean if a field has been set.
 
 ### GetGkeClusterCert
 

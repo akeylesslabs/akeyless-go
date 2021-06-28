@@ -72,15 +72,19 @@ Name | Type | Description | Notes
 **GcpTokenType** | Pointer to **string** |  | [optional] 
 **GkeClusterCaCertificate** | Pointer to **string** |  | [optional] 
 **GkeClusterEndpoint** | Pointer to **string** |  | [optional] 
-**GkeClusterName** | Pointer to **string** | GKEProjectID            string &#x60;json:\&quot;gke_project_id\&quot;&#x60; | [optional] 
+**GkeClusterName** | Pointer to **string** |  | [optional] 
 **GkeServiceAccountKey** | Pointer to **string** |  | [optional] 
-**GkeServiceAccountName** | Pointer to **string** | GKEClusterComputeZone   string &#x60;json:\&quot;gke_cluster_compute_zone\&quot;&#x60; | [optional] 
+**GkeServiceAccountName** | Pointer to **string** |  | [optional] 
 **Groups** | Pointer to **string** |  | [optional] 
 **HostName** | Pointer to **string** |  | [optional] 
 **HostPort** | Pointer to **string** |  | [optional] 
 **ItemTargetsAssoc** | Pointer to [**[]ItemTargetAssociation**](ItemTargetAssociation.md) |  | [optional] 
+**K8sBearerToken** | Pointer to **string** |  | [optional] 
+**K8sClusterCaCertificate** | Pointer to **string** |  | [optional] 
+**K8sClusterEndpoint** | Pointer to **string** |  | [optional] 
+**K8sNamespace** | Pointer to **string** |  | [optional] 
+**K8sServiceAccount** | Pointer to **string** |  | [optional] 
 **LastAdminRotation** | Pointer to **int64** |  | [optional] 
-**MongodbAtlas** | Pointer to **bool** |  | [optional] 
 **MongodbAtlasApiPrivateKey** | Pointer to **string** |  | [optional] 
 **MongodbAtlasApiPublicKey** | Pointer to **string** |  | [optional] 
 **MongodbAtlasProjectId** | Pointer to **string** | mongodb atlas fields | [optional] 
@@ -2023,6 +2027,131 @@ SetItemTargetsAssoc sets ItemTargetsAssoc field to given value.
 
 HasItemTargetsAssoc returns a boolean if a field has been set.
 
+### GetK8sBearerToken
+
+`func (o *DSProducerDetails) GetK8sBearerToken() string`
+
+GetK8sBearerToken returns the K8sBearerToken field if non-nil, zero value otherwise.
+
+### GetK8sBearerTokenOk
+
+`func (o *DSProducerDetails) GetK8sBearerTokenOk() (*string, bool)`
+
+GetK8sBearerTokenOk returns a tuple with the K8sBearerToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sBearerToken
+
+`func (o *DSProducerDetails) SetK8sBearerToken(v string)`
+
+SetK8sBearerToken sets K8sBearerToken field to given value.
+
+### HasK8sBearerToken
+
+`func (o *DSProducerDetails) HasK8sBearerToken() bool`
+
+HasK8sBearerToken returns a boolean if a field has been set.
+
+### GetK8sClusterCaCertificate
+
+`func (o *DSProducerDetails) GetK8sClusterCaCertificate() string`
+
+GetK8sClusterCaCertificate returns the K8sClusterCaCertificate field if non-nil, zero value otherwise.
+
+### GetK8sClusterCaCertificateOk
+
+`func (o *DSProducerDetails) GetK8sClusterCaCertificateOk() (*string, bool)`
+
+GetK8sClusterCaCertificateOk returns a tuple with the K8sClusterCaCertificate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sClusterCaCertificate
+
+`func (o *DSProducerDetails) SetK8sClusterCaCertificate(v string)`
+
+SetK8sClusterCaCertificate sets K8sClusterCaCertificate field to given value.
+
+### HasK8sClusterCaCertificate
+
+`func (o *DSProducerDetails) HasK8sClusterCaCertificate() bool`
+
+HasK8sClusterCaCertificate returns a boolean if a field has been set.
+
+### GetK8sClusterEndpoint
+
+`func (o *DSProducerDetails) GetK8sClusterEndpoint() string`
+
+GetK8sClusterEndpoint returns the K8sClusterEndpoint field if non-nil, zero value otherwise.
+
+### GetK8sClusterEndpointOk
+
+`func (o *DSProducerDetails) GetK8sClusterEndpointOk() (*string, bool)`
+
+GetK8sClusterEndpointOk returns a tuple with the K8sClusterEndpoint field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sClusterEndpoint
+
+`func (o *DSProducerDetails) SetK8sClusterEndpoint(v string)`
+
+SetK8sClusterEndpoint sets K8sClusterEndpoint field to given value.
+
+### HasK8sClusterEndpoint
+
+`func (o *DSProducerDetails) HasK8sClusterEndpoint() bool`
+
+HasK8sClusterEndpoint returns a boolean if a field has been set.
+
+### GetK8sNamespace
+
+`func (o *DSProducerDetails) GetK8sNamespace() string`
+
+GetK8sNamespace returns the K8sNamespace field if non-nil, zero value otherwise.
+
+### GetK8sNamespaceOk
+
+`func (o *DSProducerDetails) GetK8sNamespaceOk() (*string, bool)`
+
+GetK8sNamespaceOk returns a tuple with the K8sNamespace field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sNamespace
+
+`func (o *DSProducerDetails) SetK8sNamespace(v string)`
+
+SetK8sNamespace sets K8sNamespace field to given value.
+
+### HasK8sNamespace
+
+`func (o *DSProducerDetails) HasK8sNamespace() bool`
+
+HasK8sNamespace returns a boolean if a field has been set.
+
+### GetK8sServiceAccount
+
+`func (o *DSProducerDetails) GetK8sServiceAccount() string`
+
+GetK8sServiceAccount returns the K8sServiceAccount field if non-nil, zero value otherwise.
+
+### GetK8sServiceAccountOk
+
+`func (o *DSProducerDetails) GetK8sServiceAccountOk() (*string, bool)`
+
+GetK8sServiceAccountOk returns a tuple with the K8sServiceAccount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sServiceAccount
+
+`func (o *DSProducerDetails) SetK8sServiceAccount(v string)`
+
+SetK8sServiceAccount sets K8sServiceAccount field to given value.
+
+### HasK8sServiceAccount
+
+`func (o *DSProducerDetails) HasK8sServiceAccount() bool`
+
+HasK8sServiceAccount returns a boolean if a field has been set.
+
 ### GetLastAdminRotation
 
 `func (o *DSProducerDetails) GetLastAdminRotation() int64`
@@ -2047,31 +2176,6 @@ SetLastAdminRotation sets LastAdminRotation field to given value.
 `func (o *DSProducerDetails) HasLastAdminRotation() bool`
 
 HasLastAdminRotation returns a boolean if a field has been set.
-
-### GetMongodbAtlas
-
-`func (o *DSProducerDetails) GetMongodbAtlas() bool`
-
-GetMongodbAtlas returns the MongodbAtlas field if non-nil, zero value otherwise.
-
-### GetMongodbAtlasOk
-
-`func (o *DSProducerDetails) GetMongodbAtlasOk() (*bool, bool)`
-
-GetMongodbAtlasOk returns a tuple with the MongodbAtlas field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMongodbAtlas
-
-`func (o *DSProducerDetails) SetMongodbAtlas(v bool)`
-
-SetMongodbAtlas sets MongodbAtlas field to given value.
-
-### HasMongodbAtlas
-
-`func (o *DSProducerDetails) HasMongodbAtlas() bool`
-
-HasMongodbAtlas returns a boolean if a field has been set.
 
 ### GetMongodbAtlasApiPrivateKey
 

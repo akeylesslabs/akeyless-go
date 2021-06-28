@@ -28,7 +28,6 @@ Name | Type | Description | Notes
 **DbServerName** | Pointer to **string** | (Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client&#39;s handshake to support virtual hosting unless it is an IP address. | [optional] 
 **DbUserName** | Pointer to **string** |  | [optional] 
 **EksAccessKeyId** | Pointer to **string** |  | [optional] 
-**EksAssumeRole** | Pointer to **string** |  | [optional] 
 **EksClusterCaCertificate** | Pointer to **string** |  | [optional] 
 **EksClusterEndpoint** | Pointer to **string** |  | [optional] 
 **EksClusterName** | Pointer to **string** |  | [optional] 
@@ -38,17 +37,20 @@ Name | Type | Description | Notes
 **GcpServiceAccountKey** | Pointer to **[]int32** |  | [optional] 
 **GkeClusterCaCertificate** | Pointer to **string** |  | [optional] 
 **GkeClusterEndpoint** | Pointer to **string** |  | [optional] 
-**GkeClusterName** | Pointer to **string** | GKEProjectID            string &#x60;json:\&quot;gke_project_id\&quot;&#x60; | [optional] 
+**GkeClusterName** | Pointer to **string** |  | [optional] 
 **GkeServiceAccountKey** | Pointer to **string** |  | [optional] 
-**GkeServiceAccountName** | Pointer to **string** | GKEClusterComputeZone   string &#x60;json:\&quot;gke_cluster_compute_zone\&quot;&#x60; | [optional] 
+**GkeServiceAccountName** | Pointer to **string** |  | [optional] 
 **Host** | Pointer to **string** |  | [optional] 
-**MongodbAtlas** | Pointer to **bool** |  | [optional] 
+**K8sBearerToken** | Pointer to **string** |  | [optional] 
+**K8sClusterCaCertificate** | Pointer to **string** |  | [optional] 
+**K8sClusterEndpoint** | Pointer to **string** |  | [optional] 
 **MongodbAtlasApiPrivateKey** | Pointer to **string** |  | [optional] 
 **MongodbAtlasApiPublicKey** | Pointer to **string** |  | [optional] 
 **MongodbAtlasProjectId** | Pointer to **string** | mongodb atlas fields | [optional] 
 **MongodbDbName** | Pointer to **string** | common fields | [optional] 
 **MongodbDefaultAuthDb** | Pointer to **string** |  | [optional] 
 **MongodbHostPort** | Pointer to **string** |  | [optional] 
+**MongodbIsAtlas** | Pointer to **bool** |  | [optional] 
 **MongodbPassword** | Pointer to **string** |  | [optional] 
 **MongodbUriConnection** | Pointer to **string** | mongodb fields | [optional] 
 **MongodbUriOptions** | Pointer to **string** |  | [optional] 
@@ -689,31 +691,6 @@ SetEksAccessKeyId sets EksAccessKeyId field to given value.
 
 HasEksAccessKeyId returns a boolean if a field has been set.
 
-### GetEksAssumeRole
-
-`func (o *TargetTypeDetailsInput) GetEksAssumeRole() string`
-
-GetEksAssumeRole returns the EksAssumeRole field if non-nil, zero value otherwise.
-
-### GetEksAssumeRoleOk
-
-`func (o *TargetTypeDetailsInput) GetEksAssumeRoleOk() (*string, bool)`
-
-GetEksAssumeRoleOk returns a tuple with the EksAssumeRole field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEksAssumeRole
-
-`func (o *TargetTypeDetailsInput) SetEksAssumeRole(v string)`
-
-SetEksAssumeRole sets EksAssumeRole field to given value.
-
-### HasEksAssumeRole
-
-`func (o *TargetTypeDetailsInput) HasEksAssumeRole() bool`
-
-HasEksAssumeRole returns a boolean if a field has been set.
-
 ### GetEksClusterCaCertificate
 
 `func (o *TargetTypeDetailsInput) GetEksClusterCaCertificate() string`
@@ -1039,30 +1016,80 @@ SetHost sets Host field to given value.
 
 HasHost returns a boolean if a field has been set.
 
-### GetMongodbAtlas
+### GetK8sBearerToken
 
-`func (o *TargetTypeDetailsInput) GetMongodbAtlas() bool`
+`func (o *TargetTypeDetailsInput) GetK8sBearerToken() string`
 
-GetMongodbAtlas returns the MongodbAtlas field if non-nil, zero value otherwise.
+GetK8sBearerToken returns the K8sBearerToken field if non-nil, zero value otherwise.
 
-### GetMongodbAtlasOk
+### GetK8sBearerTokenOk
 
-`func (o *TargetTypeDetailsInput) GetMongodbAtlasOk() (*bool, bool)`
+`func (o *TargetTypeDetailsInput) GetK8sBearerTokenOk() (*string, bool)`
 
-GetMongodbAtlasOk returns a tuple with the MongodbAtlas field if it's non-nil, zero value otherwise
+GetK8sBearerTokenOk returns a tuple with the K8sBearerToken field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetMongodbAtlas
+### SetK8sBearerToken
 
-`func (o *TargetTypeDetailsInput) SetMongodbAtlas(v bool)`
+`func (o *TargetTypeDetailsInput) SetK8sBearerToken(v string)`
 
-SetMongodbAtlas sets MongodbAtlas field to given value.
+SetK8sBearerToken sets K8sBearerToken field to given value.
 
-### HasMongodbAtlas
+### HasK8sBearerToken
 
-`func (o *TargetTypeDetailsInput) HasMongodbAtlas() bool`
+`func (o *TargetTypeDetailsInput) HasK8sBearerToken() bool`
 
-HasMongodbAtlas returns a boolean if a field has been set.
+HasK8sBearerToken returns a boolean if a field has been set.
+
+### GetK8sClusterCaCertificate
+
+`func (o *TargetTypeDetailsInput) GetK8sClusterCaCertificate() string`
+
+GetK8sClusterCaCertificate returns the K8sClusterCaCertificate field if non-nil, zero value otherwise.
+
+### GetK8sClusterCaCertificateOk
+
+`func (o *TargetTypeDetailsInput) GetK8sClusterCaCertificateOk() (*string, bool)`
+
+GetK8sClusterCaCertificateOk returns a tuple with the K8sClusterCaCertificate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sClusterCaCertificate
+
+`func (o *TargetTypeDetailsInput) SetK8sClusterCaCertificate(v string)`
+
+SetK8sClusterCaCertificate sets K8sClusterCaCertificate field to given value.
+
+### HasK8sClusterCaCertificate
+
+`func (o *TargetTypeDetailsInput) HasK8sClusterCaCertificate() bool`
+
+HasK8sClusterCaCertificate returns a boolean if a field has been set.
+
+### GetK8sClusterEndpoint
+
+`func (o *TargetTypeDetailsInput) GetK8sClusterEndpoint() string`
+
+GetK8sClusterEndpoint returns the K8sClusterEndpoint field if non-nil, zero value otherwise.
+
+### GetK8sClusterEndpointOk
+
+`func (o *TargetTypeDetailsInput) GetK8sClusterEndpointOk() (*string, bool)`
+
+GetK8sClusterEndpointOk returns a tuple with the K8sClusterEndpoint field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sClusterEndpoint
+
+`func (o *TargetTypeDetailsInput) SetK8sClusterEndpoint(v string)`
+
+SetK8sClusterEndpoint sets K8sClusterEndpoint field to given value.
+
+### HasK8sClusterEndpoint
+
+`func (o *TargetTypeDetailsInput) HasK8sClusterEndpoint() bool`
+
+HasK8sClusterEndpoint returns a boolean if a field has been set.
 
 ### GetMongodbAtlasApiPrivateKey
 
@@ -1213,6 +1240,31 @@ SetMongodbHostPort sets MongodbHostPort field to given value.
 `func (o *TargetTypeDetailsInput) HasMongodbHostPort() bool`
 
 HasMongodbHostPort returns a boolean if a field has been set.
+
+### GetMongodbIsAtlas
+
+`func (o *TargetTypeDetailsInput) GetMongodbIsAtlas() bool`
+
+GetMongodbIsAtlas returns the MongodbIsAtlas field if non-nil, zero value otherwise.
+
+### GetMongodbIsAtlasOk
+
+`func (o *TargetTypeDetailsInput) GetMongodbIsAtlasOk() (*bool, bool)`
+
+GetMongodbIsAtlasOk returns a tuple with the MongodbIsAtlas field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMongodbIsAtlas
+
+`func (o *TargetTypeDetailsInput) SetMongodbIsAtlas(v bool)`
+
+SetMongodbIsAtlas sets MongodbIsAtlas field to given value.
+
+### HasMongodbIsAtlas
+
+`func (o *TargetTypeDetailsInput) HasMongodbIsAtlas() bool`
+
+HasMongodbIsAtlas returns a boolean if a field has been set.
 
 ### GetMongodbPassword
 

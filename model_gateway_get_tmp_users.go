@@ -17,8 +17,6 @@ import (
 
 // GatewayGetTmpUsers gatewayGetTmpUsers is a command that returns gateway configuration
 type GatewayGetTmpUsers struct {
-	// Gateway url
-	GatewayUrl *string `json:"gateway-url,omitempty"`
 	// Producer Name
 	Name string `json:"name"`
 	// Required only when the authentication process requires a username and password
@@ -37,8 +35,6 @@ type GatewayGetTmpUsers struct {
 // will change when the set of required properties is changed
 func NewGatewayGetTmpUsers(name string, ) *GatewayGetTmpUsers {
 	this := GatewayGetTmpUsers{}
-	var gatewayUrl string = "http://localhost:8000"
-	this.GatewayUrl = &gatewayUrl
 	this.Name = name
 	return &this
 }
@@ -48,41 +44,7 @@ func NewGatewayGetTmpUsers(name string, ) *GatewayGetTmpUsers {
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayGetTmpUsersWithDefaults() *GatewayGetTmpUsers {
 	this := GatewayGetTmpUsers{}
-	var gatewayUrl string = "http://localhost:8000"
-	this.GatewayUrl = &gatewayUrl
 	return &this
-}
-
-// GetGatewayUrl returns the GatewayUrl field value if set, zero value otherwise.
-func (o *GatewayGetTmpUsers) GetGatewayUrl() string {
-	if o == nil || o.GatewayUrl == nil {
-		var ret string
-		return ret
-	}
-	return *o.GatewayUrl
-}
-
-// GetGatewayUrlOk returns a tuple with the GatewayUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayGetTmpUsers) GetGatewayUrlOk() (*string, bool) {
-	if o == nil || o.GatewayUrl == nil {
-		return nil, false
-	}
-	return o.GatewayUrl, true
-}
-
-// HasGatewayUrl returns a boolean if a field has been set.
-func (o *GatewayGetTmpUsers) HasGatewayUrl() bool {
-	if o != nil && o.GatewayUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGatewayUrl gets a reference to the given string and assigns it to the GatewayUrl field.
-func (o *GatewayGetTmpUsers) SetGatewayUrl(v string) {
-	o.GatewayUrl = &v
 }
 
 // GetName returns the Name field value
@@ -239,9 +201,6 @@ func (o *GatewayGetTmpUsers) SetUsername(v string) {
 
 func (o GatewayGetTmpUsers) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.GatewayUrl != nil {
-		toSerialize["gateway-url"] = o.GatewayUrl
-	}
 	if true {
 		toSerialize["name"] = o.Name
 	}

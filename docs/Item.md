@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Certificates** | Pointer to **string** |  | [optional] 
 **ClientPermissions** | Pointer to **[]string** |  | [optional] 
 **DeletionDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**DisplayId** | Pointer to **string** |  | [optional] 
 **IsEnabled** | Pointer to **bool** |  | [optional] 
 **ItemGeneralInfo** | Pointer to [**ItemGeneralInfo**](ItemGeneralInfo.md) |  | [optional] 
 **ItemId** | Pointer to **int64** |  | [optional] 
@@ -196,6 +197,31 @@ SetDeletionDate sets DeletionDate field to given value.
 `func (o *Item) HasDeletionDate() bool`
 
 HasDeletionDate returns a boolean if a field has been set.
+
+### GetDisplayId
+
+`func (o *Item) GetDisplayId() string`
+
+GetDisplayId returns the DisplayId field if non-nil, zero value otherwise.
+
+### GetDisplayIdOk
+
+`func (o *Item) GetDisplayIdOk() (*string, bool)`
+
+GetDisplayIdOk returns a tuple with the DisplayId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisplayId
+
+`func (o *Item) SetDisplayId(v string)`
+
+SetDisplayId sets DisplayId field to given value.
+
+### HasDisplayId
+
+`func (o *Item) HasDisplayId() bool`
+
+HasDisplayId returns a boolean if a field has been set.
 
 ### GetIsEnabled
 

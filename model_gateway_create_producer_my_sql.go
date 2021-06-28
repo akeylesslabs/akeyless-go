@@ -21,8 +21,6 @@ type GatewayCreateProducerMySQL struct {
 	DbServerCertificates *string `json:"db-server-certificates,omitempty"`
 	// (Optional) Server name for certificate verification
 	DbServerName *string `json:"db-server-name,omitempty"`
-	// Gateway url
-	GatewayUrl *string `json:"gateway-url,omitempty"`
 	// MySQL DB Name
 	MysqlDbname string `json:"mysql-dbname"`
 	// MySQL Host
@@ -57,8 +55,6 @@ type GatewayCreateProducerMySQL struct {
 // will change when the set of required properties is changed
 func NewGatewayCreateProducerMySQL(mysqlDbname string, mysqlPassword string, mysqlUsername string, name string, ) *GatewayCreateProducerMySQL {
 	this := GatewayCreateProducerMySQL{}
-	var gatewayUrl string = "http://localhost:8000"
-	this.GatewayUrl = &gatewayUrl
 	this.MysqlDbname = mysqlDbname
 	var mysqlHost string = "127.0.0.1"
 	this.MysqlHost = &mysqlHost
@@ -77,8 +73,6 @@ func NewGatewayCreateProducerMySQL(mysqlDbname string, mysqlPassword string, mys
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayCreateProducerMySQLWithDefaults() *GatewayCreateProducerMySQL {
 	this := GatewayCreateProducerMySQL{}
-	var gatewayUrl string = "http://localhost:8000"
-	this.GatewayUrl = &gatewayUrl
 	var mysqlHost string = "127.0.0.1"
 	this.MysqlHost = &mysqlHost
 	var mysqlPort string = "3306"
@@ -150,38 +144,6 @@ func (o *GatewayCreateProducerMySQL) HasDbServerName() bool {
 // SetDbServerName gets a reference to the given string and assigns it to the DbServerName field.
 func (o *GatewayCreateProducerMySQL) SetDbServerName(v string) {
 	o.DbServerName = &v
-}
-
-// GetGatewayUrl returns the GatewayUrl field value if set, zero value otherwise.
-func (o *GatewayCreateProducerMySQL) GetGatewayUrl() string {
-	if o == nil || o.GatewayUrl == nil {
-		var ret string
-		return ret
-	}
-	return *o.GatewayUrl
-}
-
-// GetGatewayUrlOk returns a tuple with the GatewayUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerMySQL) GetGatewayUrlOk() (*string, bool) {
-	if o == nil || o.GatewayUrl == nil {
-		return nil, false
-	}
-	return o.GatewayUrl, true
-}
-
-// HasGatewayUrl returns a boolean if a field has been set.
-func (o *GatewayCreateProducerMySQL) HasGatewayUrl() bool {
-	if o != nil && o.GatewayUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGatewayUrl gets a reference to the given string and assigns it to the GatewayUrl field.
-func (o *GatewayCreateProducerMySQL) SetGatewayUrl(v string) {
-	o.GatewayUrl = &v
 }
 
 // GetMysqlDbname returns the MysqlDbname field value
@@ -575,9 +537,6 @@ func (o GatewayCreateProducerMySQL) MarshalJSON() ([]byte, error) {
 	}
 	if o.DbServerName != nil {
 		toSerialize["db-server-name"] = o.DbServerName
-	}
-	if o.GatewayUrl != nil {
-		toSerialize["gateway-url"] = o.GatewayUrl
 	}
 	if true {
 		toSerialize["mysql-dbname"] = o.MysqlDbname

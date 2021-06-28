@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **AppObjId** | Pointer to **string** | Azure App Object Id | [optional] 
 **ClientId** | **string** | Azure Client ID | 
 **ClientSecret** | **string** | Azure Client Secret | 
-**GatewayUrl** | Pointer to **string** | Gateway url | [optional] [default to "http://localhost:8000"]
 **Name** | **string** | Producer name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
@@ -105,31 +104,6 @@ and a boolean to check if the value has been set.
 
 SetClientSecret sets ClientSecret field to given value.
 
-
-### GetGatewayUrl
-
-`func (o *GatewayCreateProducerAzure) GetGatewayUrl() string`
-
-GetGatewayUrl returns the GatewayUrl field if non-nil, zero value otherwise.
-
-### GetGatewayUrlOk
-
-`func (o *GatewayCreateProducerAzure) GetGatewayUrlOk() (*string, bool)`
-
-GetGatewayUrlOk returns a tuple with the GatewayUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGatewayUrl
-
-`func (o *GatewayCreateProducerAzure) SetGatewayUrl(v string)`
-
-SetGatewayUrl sets GatewayUrl field to given value.
-
-### HasGatewayUrl
-
-`func (o *GatewayCreateProducerAzure) HasGatewayUrl() bool`
-
-HasGatewayUrl returns a boolean if a field has been set.
 
 ### GetName
 

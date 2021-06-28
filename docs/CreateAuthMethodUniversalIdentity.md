@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Auth Method name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
-**Ttl** | Pointer to **int32** | Token ttl | [optional] 
+**Ttl** | Pointer to **int32** | Token ttl | [optional] [default to 60]
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 

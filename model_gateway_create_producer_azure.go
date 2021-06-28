@@ -23,8 +23,6 @@ type GatewayCreateProducerAzure struct {
 	ClientId string `json:"client-id"`
 	// Azure Client Secret
 	ClientSecret string `json:"client-secret"`
-	// Gateway url
-	GatewayUrl *string `json:"gateway-url,omitempty"`
 	// Producer name
 	Name string `json:"name"`
 	// Required only when the authentication process requires a username and password
@@ -61,8 +59,6 @@ func NewGatewayCreateProducerAzure(clientId string, clientSecret string, name st
 	this := GatewayCreateProducerAzure{}
 	this.ClientId = clientId
 	this.ClientSecret = clientSecret
-	var gatewayUrl string = "http://localhost:8000"
-	this.GatewayUrl = &gatewayUrl
 	this.Name = name
 	this.TenantId = tenantId
 	var userPortalAccess bool = false
@@ -79,8 +75,6 @@ func NewGatewayCreateProducerAzure(clientId string, clientSecret string, name st
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayCreateProducerAzureWithDefaults() *GatewayCreateProducerAzure {
 	this := GatewayCreateProducerAzure{}
-	var gatewayUrl string = "http://localhost:8000"
-	this.GatewayUrl = &gatewayUrl
 	var userPortalAccess bool = false
 	this.UserPortalAccess = &userPortalAccess
 	var userProgrammaticAccess bool = true
@@ -168,38 +162,6 @@ func (o *GatewayCreateProducerAzure) GetClientSecretOk() (*string, bool) {
 // SetClientSecret sets field value
 func (o *GatewayCreateProducerAzure) SetClientSecret(v string) {
 	o.ClientSecret = v
-}
-
-// GetGatewayUrl returns the GatewayUrl field value if set, zero value otherwise.
-func (o *GatewayCreateProducerAzure) GetGatewayUrl() string {
-	if o == nil || o.GatewayUrl == nil {
-		var ret string
-		return ret
-	}
-	return *o.GatewayUrl
-}
-
-// GetGatewayUrlOk returns a tuple with the GatewayUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerAzure) GetGatewayUrlOk() (*string, bool) {
-	if o == nil || o.GatewayUrl == nil {
-		return nil, false
-	}
-	return o.GatewayUrl, true
-}
-
-// HasGatewayUrl returns a boolean if a field has been set.
-func (o *GatewayCreateProducerAzure) HasGatewayUrl() bool {
-	if o != nil && o.GatewayUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGatewayUrl gets a reference to the given string and assigns it to the GatewayUrl field.
-func (o *GatewayCreateProducerAzure) SetGatewayUrl(v string) {
-	o.GatewayUrl = &v
 }
 
 // GetName returns the Name field value
@@ -612,9 +574,6 @@ func (o GatewayCreateProducerAzure) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["client-secret"] = o.ClientSecret
-	}
-	if o.GatewayUrl != nil {
-		toSerialize["gateway-url"] = o.GatewayUrl
 	}
 	if true {
 		toSerialize["name"] = o.Name

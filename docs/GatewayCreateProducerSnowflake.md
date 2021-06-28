@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Account** | **string** | Account name | 
 **DbName** | **string** | Database name | 
-**GatewayUrl** | Pointer to **string** | Gateway url | [optional] [default to "http://localhost:8000"]
 **Name** | **string** | Producer name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **Role** | Pointer to **string** | User role | [optional] 
@@ -74,31 +73,6 @@ and a boolean to check if the value has been set.
 
 SetDbName sets DbName field to given value.
 
-
-### GetGatewayUrl
-
-`func (o *GatewayCreateProducerSnowflake) GetGatewayUrl() string`
-
-GetGatewayUrl returns the GatewayUrl field if non-nil, zero value otherwise.
-
-### GetGatewayUrlOk
-
-`func (o *GatewayCreateProducerSnowflake) GetGatewayUrlOk() (*string, bool)`
-
-GetGatewayUrlOk returns a tuple with the GatewayUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGatewayUrl
-
-`func (o *GatewayCreateProducerSnowflake) SetGatewayUrl(v string)`
-
-SetGatewayUrl sets GatewayUrl field to given value.
-
-### HasGatewayUrl
-
-`func (o *GatewayCreateProducerSnowflake) HasGatewayUrl() bool`
-
-HasGatewayUrl returns a boolean if a field has been set.
 
 ### GetName
 

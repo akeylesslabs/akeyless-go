@@ -19,6 +19,7 @@ import (
 type ClientData struct {
 	ClientCertificateData *string `json:"clientCertificateData,omitempty"`
 	ClientKeyData *string `json:"clientKeyData,omitempty"`
+	ParentCertificateData *string `json:"parentCertificateData,omitempty"`
 }
 
 // NewClientData instantiates a new ClientData object
@@ -102,6 +103,38 @@ func (o *ClientData) SetClientKeyData(v string) {
 	o.ClientKeyData = &v
 }
 
+// GetParentCertificateData returns the ParentCertificateData field value if set, zero value otherwise.
+func (o *ClientData) GetParentCertificateData() string {
+	if o == nil || o.ParentCertificateData == nil {
+		var ret string
+		return ret
+	}
+	return *o.ParentCertificateData
+}
+
+// GetParentCertificateDataOk returns a tuple with the ParentCertificateData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClientData) GetParentCertificateDataOk() (*string, bool) {
+	if o == nil || o.ParentCertificateData == nil {
+		return nil, false
+	}
+	return o.ParentCertificateData, true
+}
+
+// HasParentCertificateData returns a boolean if a field has been set.
+func (o *ClientData) HasParentCertificateData() bool {
+	if o != nil && o.ParentCertificateData != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetParentCertificateData gets a reference to the given string and assigns it to the ParentCertificateData field.
+func (o *ClientData) SetParentCertificateData(v string) {
+	o.ParentCertificateData = &v
+}
+
 func (o ClientData) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ClientCertificateData != nil {
@@ -109,6 +142,9 @@ func (o ClientData) MarshalJSON() ([]byte, error) {
 	}
 	if o.ClientKeyData != nil {
 		toSerialize["clientKeyData"] = o.ClientKeyData
+	}
+	if o.ParentCertificateData != nil {
+		toSerialize["parentCertificateData"] = o.ParentCertificateData
 	}
 	return json.Marshal(toSerialize)
 }

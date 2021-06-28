@@ -17,8 +17,6 @@ import (
 
 // GatewayCreateProducerMongo gatewayCreateProducerMongo is a command that creates either mongodb  producer or mongodb atlas producer
 type GatewayCreateProducerMongo struct {
-	// Gateway url
-	GatewayUrl *string `json:"gateway-url,omitempty"`
 	// MongoDB Atlas private key
 	MongodbAtlasApiPrivateKey *string `json:"mongodb-atlas-api-private-key,omitempty"`
 	// MongoDB Atlas public key
@@ -63,8 +61,6 @@ type GatewayCreateProducerMongo struct {
 // will change when the set of required properties is changed
 func NewGatewayCreateProducerMongo(mongodbName string, name string, ) *GatewayCreateProducerMongo {
 	this := GatewayCreateProducerMongo{}
-	var gatewayUrl string = "http://localhost:8000"
-	this.GatewayUrl = &gatewayUrl
 	this.MongodbName = mongodbName
 	var mongodbRoles string = "[]"
 	this.MongodbRoles = &mongodbRoles
@@ -79,45 +75,11 @@ func NewGatewayCreateProducerMongo(mongodbName string, name string, ) *GatewayCr
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayCreateProducerMongoWithDefaults() *GatewayCreateProducerMongo {
 	this := GatewayCreateProducerMongo{}
-	var gatewayUrl string = "http://localhost:8000"
-	this.GatewayUrl = &gatewayUrl
 	var mongodbRoles string = "[]"
 	this.MongodbRoles = &mongodbRoles
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
-}
-
-// GetGatewayUrl returns the GatewayUrl field value if set, zero value otherwise.
-func (o *GatewayCreateProducerMongo) GetGatewayUrl() string {
-	if o == nil || o.GatewayUrl == nil {
-		var ret string
-		return ret
-	}
-	return *o.GatewayUrl
-}
-
-// GetGatewayUrlOk returns a tuple with the GatewayUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerMongo) GetGatewayUrlOk() (*string, bool) {
-	if o == nil || o.GatewayUrl == nil {
-		return nil, false
-	}
-	return o.GatewayUrl, true
-}
-
-// HasGatewayUrl returns a boolean if a field has been set.
-func (o *GatewayCreateProducerMongo) HasGatewayUrl() bool {
-	if o != nil && o.GatewayUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGatewayUrl gets a reference to the given string and assigns it to the GatewayUrl field.
-func (o *GatewayCreateProducerMongo) SetGatewayUrl(v string) {
-	o.GatewayUrl = &v
 }
 
 // GetMongodbAtlasApiPrivateKey returns the MongodbAtlasApiPrivateKey field value if set, zero value otherwise.
@@ -682,9 +644,6 @@ func (o *GatewayCreateProducerMongo) SetUsername(v string) {
 
 func (o GatewayCreateProducerMongo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.GatewayUrl != nil {
-		toSerialize["gateway-url"] = o.GatewayUrl
-	}
 	if o.MongodbAtlasApiPrivateKey != nil {
 		toSerialize["mongodb-atlas-api-private-key"] = o.MongodbAtlasApiPrivateKey
 	}

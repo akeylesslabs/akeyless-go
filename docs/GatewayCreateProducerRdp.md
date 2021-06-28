@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **FixedUserOnly** | Pointer to **string** | Fixed user | [optional] [default to "false"]
-**GatewayUrl** | Pointer to **string** | Gateway url | [optional] [default to "http://localhost:8000"]
 **Name** | **string** | Producer name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
@@ -62,31 +61,6 @@ SetFixedUserOnly sets FixedUserOnly field to given value.
 `func (o *GatewayCreateProducerRdp) HasFixedUserOnly() bool`
 
 HasFixedUserOnly returns a boolean if a field has been set.
-
-### GetGatewayUrl
-
-`func (o *GatewayCreateProducerRdp) GetGatewayUrl() string`
-
-GetGatewayUrl returns the GatewayUrl field if non-nil, zero value otherwise.
-
-### GetGatewayUrlOk
-
-`func (o *GatewayCreateProducerRdp) GetGatewayUrlOk() (*string, bool)`
-
-GetGatewayUrlOk returns a tuple with the GatewayUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGatewayUrl
-
-`func (o *GatewayCreateProducerRdp) SetGatewayUrl(v string)`
-
-SetGatewayUrl sets GatewayUrl field to given value.
-
-### HasGatewayUrl
-
-`func (o *GatewayCreateProducerRdp) HasGatewayUrl() bool`
-
-HasGatewayUrl returns a boolean if a field has been set.
 
 ### GetName
 

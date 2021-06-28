@@ -23,6 +23,7 @@ type GeneralConfigPart struct {
 	EnableTlsConfigure *bool `json:"enable_tls_configure,omitempty"`
 	EnableTlsCurl *bool `json:"enable_tls_curl,omitempty"`
 	EnableTlsHvp *bool `json:"enable_tls_hvp,omitempty"`
+	GwClusterUrl *string `json:"gw_cluster_url,omitempty"`
 	TcpPort *string `json:"tcp_port,omitempty"`
 	TlsCert *string `json:"tls_cert,omitempty"`
 	TlsKey *string `json:"tls_key,omitempty"`
@@ -237,6 +238,38 @@ func (o *GeneralConfigPart) SetEnableTlsHvp(v bool) {
 	o.EnableTlsHvp = &v
 }
 
+// GetGwClusterUrl returns the GwClusterUrl field value if set, zero value otherwise.
+func (o *GeneralConfigPart) GetGwClusterUrl() string {
+	if o == nil || o.GwClusterUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.GwClusterUrl
+}
+
+// GetGwClusterUrlOk returns a tuple with the GwClusterUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GeneralConfigPart) GetGwClusterUrlOk() (*string, bool) {
+	if o == nil || o.GwClusterUrl == nil {
+		return nil, false
+	}
+	return o.GwClusterUrl, true
+}
+
+// HasGwClusterUrl returns a boolean if a field has been set.
+func (o *GeneralConfigPart) HasGwClusterUrl() bool {
+	if o != nil && o.GwClusterUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGwClusterUrl gets a reference to the given string and assigns it to the GwClusterUrl field.
+func (o *GeneralConfigPart) SetGwClusterUrl(v string) {
+	o.GwClusterUrl = &v
+}
+
 // GetTcpPort returns the TcpPort field value if set, zero value otherwise.
 func (o *GeneralConfigPart) GetTcpPort() string {
 	if o == nil || o.TcpPort == nil {
@@ -352,6 +385,9 @@ func (o GeneralConfigPart) MarshalJSON() ([]byte, error) {
 	}
 	if o.EnableTlsHvp != nil {
 		toSerialize["enable_tls_hvp"] = o.EnableTlsHvp
+	}
+	if o.GwClusterUrl != nil {
+		toSerialize["gw_cluster_url"] = o.GwClusterUrl
 	}
 	if o.TcpPort != nil {
 		toSerialize["tcp_port"] = o.TcpPort

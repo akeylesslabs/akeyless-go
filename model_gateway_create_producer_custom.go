@@ -19,8 +19,6 @@ import (
 type GatewayCreateProducerCustom struct {
 	// URL of an endpoint that implements /sync/create method, for example https://webhook.example.com/sync/create
 	CreateSyncUrl string `json:"create-sync-url"`
-	// Gateway url
-	GatewayUrl *string `json:"gateway-url,omitempty"`
 	// Producer name
 	Name string `json:"name"`
 	// Required only when the authentication process requires a username and password
@@ -52,8 +50,6 @@ type GatewayCreateProducerCustom struct {
 func NewGatewayCreateProducerCustom(createSyncUrl string, name string, revokeSyncUrl string, ) *GatewayCreateProducerCustom {
 	this := GatewayCreateProducerCustom{}
 	this.CreateSyncUrl = createSyncUrl
-	var gatewayUrl string = "http://localhost:8000"
-	this.GatewayUrl = &gatewayUrl
 	this.Name = name
 	this.RevokeSyncUrl = revokeSyncUrl
 	var timeoutSec int64 = 60
@@ -68,8 +64,6 @@ func NewGatewayCreateProducerCustom(createSyncUrl string, name string, revokeSyn
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayCreateProducerCustomWithDefaults() *GatewayCreateProducerCustom {
 	this := GatewayCreateProducerCustom{}
-	var gatewayUrl string = "http://localhost:8000"
-	this.GatewayUrl = &gatewayUrl
 	var timeoutSec int64 = 60
 	this.TimeoutSec = &timeoutSec
 	var userTtl string = "60m"
@@ -99,38 +93,6 @@ func (o *GatewayCreateProducerCustom) GetCreateSyncUrlOk() (*string, bool) {
 // SetCreateSyncUrl sets field value
 func (o *GatewayCreateProducerCustom) SetCreateSyncUrl(v string) {
 	o.CreateSyncUrl = v
-}
-
-// GetGatewayUrl returns the GatewayUrl field value if set, zero value otherwise.
-func (o *GatewayCreateProducerCustom) GetGatewayUrl() string {
-	if o == nil || o.GatewayUrl == nil {
-		var ret string
-		return ret
-	}
-	return *o.GatewayUrl
-}
-
-// GetGatewayUrlOk returns a tuple with the GatewayUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerCustom) GetGatewayUrlOk() (*string, bool) {
-	if o == nil || o.GatewayUrl == nil {
-		return nil, false
-	}
-	return o.GatewayUrl, true
-}
-
-// HasGatewayUrl returns a boolean if a field has been set.
-func (o *GatewayCreateProducerCustom) HasGatewayUrl() bool {
-	if o != nil && o.GatewayUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGatewayUrl gets a reference to the given string and assigns it to the GatewayUrl field.
-func (o *GatewayCreateProducerCustom) SetGatewayUrl(v string) {
-	o.GatewayUrl = &v
 }
 
 // GetName returns the Name field value
@@ -473,9 +435,6 @@ func (o GatewayCreateProducerCustom) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["create-sync-url"] = o.CreateSyncUrl
-	}
-	if o.GatewayUrl != nil {
-		toSerialize["gateway-url"] = o.GatewayUrl
 	}
 	if true {
 		toSerialize["name"] = o.Name

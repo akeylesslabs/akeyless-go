@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Cf** | Pointer to [**CFConfigPart**](CFConfigPart.md) |  | [optional] 
 **ConfigProtectionKeyName** | Pointer to **string** |  | [optional] 
 **General** | Pointer to [**GeneralConfigPart**](GeneralConfigPart.md) |  | [optional] 
+**KmipClients** | Pointer to [**KMIPClientsConfigPart**](KMIPClientsConfigPart.md) |  | [optional] 
 **Ldap** | Pointer to [**LdapConfigPart**](LdapConfigPart.md) |  | [optional] 
 **Leadership** | Pointer to [**LeadershipConfigPart**](LeadershipConfigPart.md) |  | [optional] 
 **LogForwarding** | Pointer to [**LogForwardingConfigPart**](LogForwardingConfigPart.md) |  | [optional] 
@@ -162,6 +163,31 @@ SetGeneral sets General field to given value.
 `func (o *AkeylessGatewayConfig) HasGeneral() bool`
 
 HasGeneral returns a boolean if a field has been set.
+
+### GetKmipClients
+
+`func (o *AkeylessGatewayConfig) GetKmipClients() KMIPClientsConfigPart`
+
+GetKmipClients returns the KmipClients field if non-nil, zero value otherwise.
+
+### GetKmipClientsOk
+
+`func (o *AkeylessGatewayConfig) GetKmipClientsOk() (*KMIPClientsConfigPart, bool)`
+
+GetKmipClientsOk returns a tuple with the KmipClients field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKmipClients
+
+`func (o *AkeylessGatewayConfig) SetKmipClients(v KMIPClientsConfigPart)`
+
+SetKmipClients sets KmipClients field to given value.
+
+### HasKmipClients
+
+`func (o *AkeylessGatewayConfig) HasKmipClients() bool`
+
+HasKmipClients returns a boolean if a field has been set.
 
 ### GetLdap
 

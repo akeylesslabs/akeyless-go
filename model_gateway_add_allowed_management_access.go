@@ -19,8 +19,6 @@ import (
 type GatewayAddAllowedManagementAccess struct {
 	AllowGwApi *bool `json:"allow-gw-api,omitempty"`
 	AllowGwLogin *bool `json:"allow-gw-login,omitempty"`
-	// Gateway url
-	GatewayUrl *string `json:"gateway-url,omitempty"`
 	// Required only when the authentication process requires a username and password
 	Password *string `json:"password,omitempty"`
 	// SubAdmins to add
@@ -41,8 +39,6 @@ type GatewayAddAllowedManagementAccess struct {
 // will change when the set of required properties is changed
 func NewGatewayAddAllowedManagementAccess(subAdminAccessId string, ) *GatewayAddAllowedManagementAccess {
 	this := GatewayAddAllowedManagementAccess{}
-	var gatewayUrl string = "http://localhost:8000"
-	this.GatewayUrl = &gatewayUrl
 	this.SubAdminAccessId = subAdminAccessId
 	return &this
 }
@@ -52,8 +48,6 @@ func NewGatewayAddAllowedManagementAccess(subAdminAccessId string, ) *GatewayAdd
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayAddAllowedManagementAccessWithDefaults() *GatewayAddAllowedManagementAccess {
 	this := GatewayAddAllowedManagementAccess{}
-	var gatewayUrl string = "http://localhost:8000"
-	this.GatewayUrl = &gatewayUrl
 	return &this
 }
 
@@ -119,38 +113,6 @@ func (o *GatewayAddAllowedManagementAccess) HasAllowGwLogin() bool {
 // SetAllowGwLogin gets a reference to the given bool and assigns it to the AllowGwLogin field.
 func (o *GatewayAddAllowedManagementAccess) SetAllowGwLogin(v bool) {
 	o.AllowGwLogin = &v
-}
-
-// GetGatewayUrl returns the GatewayUrl field value if set, zero value otherwise.
-func (o *GatewayAddAllowedManagementAccess) GetGatewayUrl() string {
-	if o == nil || o.GatewayUrl == nil {
-		var ret string
-		return ret
-	}
-	return *o.GatewayUrl
-}
-
-// GetGatewayUrlOk returns a tuple with the GatewayUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayAddAllowedManagementAccess) GetGatewayUrlOk() (*string, bool) {
-	if o == nil || o.GatewayUrl == nil {
-		return nil, false
-	}
-	return o.GatewayUrl, true
-}
-
-// HasGatewayUrl returns a boolean if a field has been set.
-func (o *GatewayAddAllowedManagementAccess) HasGatewayUrl() bool {
-	if o != nil && o.GatewayUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGatewayUrl gets a reference to the given string and assigns it to the GatewayUrl field.
-func (o *GatewayAddAllowedManagementAccess) SetGatewayUrl(v string) {
-	o.GatewayUrl = &v
 }
 
 // GetPassword returns the Password field value if set, zero value otherwise.
@@ -344,9 +306,6 @@ func (o GatewayAddAllowedManagementAccess) MarshalJSON() ([]byte, error) {
 	}
 	if o.AllowGwLogin != nil {
 		toSerialize["allow-gw-login"] = o.AllowGwLogin
-	}
-	if o.GatewayUrl != nil {
-		toSerialize["gateway-url"] = o.GatewayUrl
 	}
 	if o.Password != nil {
 		toSerialize["password"] = o.Password

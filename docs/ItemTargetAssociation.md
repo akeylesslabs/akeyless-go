@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AssocId** | Pointer to **string** |  | [optional] 
+**TargetId** | Pointer to **int64** |  | [optional] 
 **TargetName** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -50,6 +51,31 @@ SetAssocId sets AssocId field to given value.
 `func (o *ItemTargetAssociation) HasAssocId() bool`
 
 HasAssocId returns a boolean if a field has been set.
+
+### GetTargetId
+
+`func (o *ItemTargetAssociation) GetTargetId() int64`
+
+GetTargetId returns the TargetId field if non-nil, zero value otherwise.
+
+### GetTargetIdOk
+
+`func (o *ItemTargetAssociation) GetTargetIdOk() (*int64, bool)`
+
+GetTargetIdOk returns a tuple with the TargetId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetId
+
+`func (o *ItemTargetAssociation) SetTargetId(v int64)`
+
+SetTargetId sets TargetId field to given value.
+
+### HasTargetId
+
+`func (o *ItemTargetAssociation) HasTargetId() bool`
+
+HasTargetId returns a boolean if a field has been set.
 
 ### GetTargetName
 

@@ -17,8 +17,6 @@ import (
 
 // GatewayRevokeTmpUsers gatewayRevokeTmpUsers is a command that revoke producer tmp user
 type GatewayRevokeTmpUsers struct {
-	// Gateway url
-	GatewayUrl *string `json:"gateway-url,omitempty"`
 	// Host
 	Host *string `json:"host,omitempty"`
 	// Producer Name
@@ -54,38 +52,6 @@ func NewGatewayRevokeTmpUsers(name string, tmpCredsId string, ) *GatewayRevokeTm
 func NewGatewayRevokeTmpUsersWithDefaults() *GatewayRevokeTmpUsers {
 	this := GatewayRevokeTmpUsers{}
 	return &this
-}
-
-// GetGatewayUrl returns the GatewayUrl field value if set, zero value otherwise.
-func (o *GatewayRevokeTmpUsers) GetGatewayUrl() string {
-	if o == nil || o.GatewayUrl == nil {
-		var ret string
-		return ret
-	}
-	return *o.GatewayUrl
-}
-
-// GetGatewayUrlOk returns a tuple with the GatewayUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayRevokeTmpUsers) GetGatewayUrlOk() (*string, bool) {
-	if o == nil || o.GatewayUrl == nil {
-		return nil, false
-	}
-	return o.GatewayUrl, true
-}
-
-// HasGatewayUrl returns a boolean if a field has been set.
-func (o *GatewayRevokeTmpUsers) HasGatewayUrl() bool {
-	if o != nil && o.GatewayUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGatewayUrl gets a reference to the given string and assigns it to the GatewayUrl field.
-func (o *GatewayRevokeTmpUsers) SetGatewayUrl(v string) {
-	o.GatewayUrl = &v
 }
 
 // GetHost returns the Host field value if set, zero value otherwise.
@@ -330,9 +296,6 @@ func (o *GatewayRevokeTmpUsers) SetUsername(v string) {
 
 func (o GatewayRevokeTmpUsers) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.GatewayUrl != nil {
-		toSerialize["gateway-url"] = o.GatewayUrl
-	}
 	if o.Host != nil {
 		toSerialize["host"] = o.Host
 	}

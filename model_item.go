@@ -24,6 +24,7 @@ type Item struct {
 	Certificates *string `json:"certificates,omitempty"`
 	ClientPermissions *[]string `json:"client_permissions,omitempty"`
 	DeletionDate *time.Time `json:"deletion_date,omitempty"`
+	DisplayId *string `json:"display_id,omitempty"`
 	IsEnabled *bool `json:"is_enabled,omitempty"`
 	ItemGeneralInfo *ItemGeneralInfo `json:"item_general_info,omitempty"`
 	ItemId *int64 `json:"item_id,omitempty"`
@@ -251,6 +252,38 @@ func (o *Item) HasDeletionDate() bool {
 // SetDeletionDate gets a reference to the given time.Time and assigns it to the DeletionDate field.
 func (o *Item) SetDeletionDate(v time.Time) {
 	o.DeletionDate = &v
+}
+
+// GetDisplayId returns the DisplayId field value if set, zero value otherwise.
+func (o *Item) GetDisplayId() string {
+	if o == nil || o.DisplayId == nil {
+		var ret string
+		return ret
+	}
+	return *o.DisplayId
+}
+
+// GetDisplayIdOk returns a tuple with the DisplayId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Item) GetDisplayIdOk() (*string, bool) {
+	if o == nil || o.DisplayId == nil {
+		return nil, false
+	}
+	return o.DisplayId, true
+}
+
+// HasDisplayId returns a boolean if a field has been set.
+func (o *Item) HasDisplayId() bool {
+	if o != nil && o.DisplayId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDisplayId gets a reference to the given string and assigns it to the DisplayId field.
+func (o *Item) SetDisplayId(v string) {
+	o.DisplayId = &v
 }
 
 // GetIsEnabled returns the IsEnabled field value if set, zero value otherwise.
@@ -816,6 +849,9 @@ func (o Item) MarshalJSON() ([]byte, error) {
 	}
 	if o.DeletionDate != nil {
 		toSerialize["deletion_date"] = o.DeletionDate
+	}
+	if o.DisplayId != nil {
+		toSerialize["display_id"] = o.DisplayId
 	}
 	if o.IsEnabled != nil {
 		toSerialize["is_enabled"] = o.IsEnabled

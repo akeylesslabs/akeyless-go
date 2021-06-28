@@ -17,8 +17,6 @@ import (
 
 // GatewayDeleteAllowedManagementAccess gatewayDeleteAllowedManagementAccess is a command that deletes sub-admins
 type GatewayDeleteAllowedManagementAccess struct {
-	// Gateway url
-	GatewayUrl *string `json:"gateway-url,omitempty"`
 	// Required only when the authentication process requires a username and password
 	Password *string `json:"password,omitempty"`
 	// SubAdminID to be removed
@@ -37,8 +35,6 @@ type GatewayDeleteAllowedManagementAccess struct {
 // will change when the set of required properties is changed
 func NewGatewayDeleteAllowedManagementAccess(subAdminId string, ) *GatewayDeleteAllowedManagementAccess {
 	this := GatewayDeleteAllowedManagementAccess{}
-	var gatewayUrl string = "http://localhost:8000"
-	this.GatewayUrl = &gatewayUrl
 	this.SubAdminId = subAdminId
 	return &this
 }
@@ -48,41 +44,7 @@ func NewGatewayDeleteAllowedManagementAccess(subAdminId string, ) *GatewayDelete
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayDeleteAllowedManagementAccessWithDefaults() *GatewayDeleteAllowedManagementAccess {
 	this := GatewayDeleteAllowedManagementAccess{}
-	var gatewayUrl string = "http://localhost:8000"
-	this.GatewayUrl = &gatewayUrl
 	return &this
-}
-
-// GetGatewayUrl returns the GatewayUrl field value if set, zero value otherwise.
-func (o *GatewayDeleteAllowedManagementAccess) GetGatewayUrl() string {
-	if o == nil || o.GatewayUrl == nil {
-		var ret string
-		return ret
-	}
-	return *o.GatewayUrl
-}
-
-// GetGatewayUrlOk returns a tuple with the GatewayUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayDeleteAllowedManagementAccess) GetGatewayUrlOk() (*string, bool) {
-	if o == nil || o.GatewayUrl == nil {
-		return nil, false
-	}
-	return o.GatewayUrl, true
-}
-
-// HasGatewayUrl returns a boolean if a field has been set.
-func (o *GatewayDeleteAllowedManagementAccess) HasGatewayUrl() bool {
-	if o != nil && o.GatewayUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGatewayUrl gets a reference to the given string and assigns it to the GatewayUrl field.
-func (o *GatewayDeleteAllowedManagementAccess) SetGatewayUrl(v string) {
-	o.GatewayUrl = &v
 }
 
 // GetPassword returns the Password field value if set, zero value otherwise.
@@ -239,9 +201,6 @@ func (o *GatewayDeleteAllowedManagementAccess) SetUsername(v string) {
 
 func (o GatewayDeleteAllowedManagementAccess) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.GatewayUrl != nil {
-		toSerialize["gateway-url"] = o.GatewayUrl
-	}
 	if o.Password != nil {
 		toSerialize["password"] = o.Password
 	}

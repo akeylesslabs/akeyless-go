@@ -21,6 +21,8 @@ type UpdateRole struct {
 	AnalyticsAccess *string `json:"analytics-access,omitempty"`
 	// Allow this role to view audit logs. Currently only 'none', 'own' and 'all' values are supported, allowing associated auth methods to view audit logs produced by the same auth methods.
 	AuditAccess *string `json:"audit-access,omitempty"`
+	// Allow this role to view gw analytics. Currently only 'none', 'own', 'all' values are supported, allowing associated auth methods to view reports produced by the same auth methods.
+	GwAnalyticsAccess *string `json:"gw-analytics-access,omitempty"`
 	// Role name
 	Name string `json:"name"`
 	// New comment about the role
@@ -121,6 +123,38 @@ func (o *UpdateRole) HasAuditAccess() bool {
 // SetAuditAccess gets a reference to the given string and assigns it to the AuditAccess field.
 func (o *UpdateRole) SetAuditAccess(v string) {
 	o.AuditAccess = &v
+}
+
+// GetGwAnalyticsAccess returns the GwAnalyticsAccess field value if set, zero value otherwise.
+func (o *UpdateRole) GetGwAnalyticsAccess() string {
+	if o == nil || o.GwAnalyticsAccess == nil {
+		var ret string
+		return ret
+	}
+	return *o.GwAnalyticsAccess
+}
+
+// GetGwAnalyticsAccessOk returns a tuple with the GwAnalyticsAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRole) GetGwAnalyticsAccessOk() (*string, bool) {
+	if o == nil || o.GwAnalyticsAccess == nil {
+		return nil, false
+	}
+	return o.GwAnalyticsAccess, true
+}
+
+// HasGwAnalyticsAccess returns a boolean if a field has been set.
+func (o *UpdateRole) HasGwAnalyticsAccess() bool {
+	if o != nil && o.GwAnalyticsAccess != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGwAnalyticsAccess gets a reference to the given string and assigns it to the GwAnalyticsAccess field.
+func (o *UpdateRole) SetGwAnalyticsAccess(v string) {
+	o.GwAnalyticsAccess = &v
 }
 
 // GetName returns the Name field value
@@ -346,6 +380,9 @@ func (o UpdateRole) MarshalJSON() ([]byte, error) {
 	}
 	if o.AuditAccess != nil {
 		toSerialize["audit-access"] = o.AuditAccess
+	}
+	if o.GwAnalyticsAccess != nil {
+		toSerialize["gw-analytics-access"] = o.GwAnalyticsAccess
 	}
 	if true {
 		toSerialize["name"] = o.Name

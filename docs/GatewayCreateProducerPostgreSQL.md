@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreationStatements** | Pointer to **string** | PostgreSQL Creation statements | [optional] 
-**GatewayUrl** | Pointer to **string** | Gateway url | [optional] [default to "http://localhost:8000"]
 **Name** | **string** | Producer name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **PostgresqlDbName** | **string** | PostgreSQL DB Name | 
@@ -62,31 +61,6 @@ SetCreationStatements sets CreationStatements field to given value.
 `func (o *GatewayCreateProducerPostgreSQL) HasCreationStatements() bool`
 
 HasCreationStatements returns a boolean if a field has been set.
-
-### GetGatewayUrl
-
-`func (o *GatewayCreateProducerPostgreSQL) GetGatewayUrl() string`
-
-GetGatewayUrl returns the GatewayUrl field if non-nil, zero value otherwise.
-
-### GetGatewayUrlOk
-
-`func (o *GatewayCreateProducerPostgreSQL) GetGatewayUrlOk() (*string, bool)`
-
-GetGatewayUrlOk returns a tuple with the GatewayUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGatewayUrl
-
-`func (o *GatewayCreateProducerPostgreSQL) SetGatewayUrl(v string)`
-
-SetGatewayUrl sets GatewayUrl field to given value.
-
-### HasGatewayUrl
-
-`func (o *GatewayCreateProducerPostgreSQL) HasGatewayUrl() bool`
-
-HasGatewayUrl returns a boolean if a field has been set.
 
 ### GetName
 

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Data** | Pointer to **string** |  | [optional] 
+**ParentCert** | Pointer to **string** |  | [optional] 
 **Path** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -50,6 +51,31 @@ SetData sets Data field to given value.
 `func (o *GetPKICertificateOutput) HasData() bool`
 
 HasData returns a boolean if a field has been set.
+
+### GetParentCert
+
+`func (o *GetPKICertificateOutput) GetParentCert() string`
+
+GetParentCert returns the ParentCert field if non-nil, zero value otherwise.
+
+### GetParentCertOk
+
+`func (o *GetPKICertificateOutput) GetParentCertOk() (*string, bool)`
+
+GetParentCertOk returns a tuple with the ParentCert field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetParentCert
+
+`func (o *GetPKICertificateOutput) SetParentCert(v string)`
+
+SetParentCert sets ParentCert field to given value.
+
+### HasParentCert
+
+`func (o *GetPKICertificateOutput) HasParentCert() bool`
+
+HasParentCert returns a boolean if a field has been set.
 
 ### GetPath
 

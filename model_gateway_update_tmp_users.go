@@ -17,8 +17,6 @@ import (
 
 // GatewayUpdateTmpUsers gatewayUpdateTmpUsers is a command that returns gateway configuration
 type GatewayUpdateTmpUsers struct {
-	// Gateway url
-	GatewayUrl *string `json:"gateway-url,omitempty"`
 	// Producer Name
 	Name string `json:"name"`
 	// New TTL in Minutes
@@ -53,38 +51,6 @@ func NewGatewayUpdateTmpUsers(name string, newTtlMin int64, tmpCredsId string, )
 func NewGatewayUpdateTmpUsersWithDefaults() *GatewayUpdateTmpUsers {
 	this := GatewayUpdateTmpUsers{}
 	return &this
-}
-
-// GetGatewayUrl returns the GatewayUrl field value if set, zero value otherwise.
-func (o *GatewayUpdateTmpUsers) GetGatewayUrl() string {
-	if o == nil || o.GatewayUrl == nil {
-		var ret string
-		return ret
-	}
-	return *o.GatewayUrl
-}
-
-// GetGatewayUrlOk returns a tuple with the GatewayUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayUpdateTmpUsers) GetGatewayUrlOk() (*string, bool) {
-	if o == nil || o.GatewayUrl == nil {
-		return nil, false
-	}
-	return o.GatewayUrl, true
-}
-
-// HasGatewayUrl returns a boolean if a field has been set.
-func (o *GatewayUpdateTmpUsers) HasGatewayUrl() bool {
-	if o != nil && o.GatewayUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGatewayUrl gets a reference to the given string and assigns it to the GatewayUrl field.
-func (o *GatewayUpdateTmpUsers) SetGatewayUrl(v string) {
-	o.GatewayUrl = &v
 }
 
 // GetName returns the Name field value
@@ -289,9 +255,6 @@ func (o *GatewayUpdateTmpUsers) SetUsername(v string) {
 
 func (o GatewayUpdateTmpUsers) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.GatewayUrl != nil {
-		toSerialize["gateway-url"] = o.GatewayUrl
-	}
 	if true {
 		toSerialize["name"] = o.Name
 	}

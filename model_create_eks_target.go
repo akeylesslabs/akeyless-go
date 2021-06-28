@@ -21,8 +21,6 @@ type CreateEKSTarget struct {
 	Comment *string `json:"comment,omitempty"`
 	// Access Key ID
 	EksAccessKeyId string `json:"eks-access-key-id"`
-	// IAM assume role
-	EksAssumeRole *string `json:"eks-assume-role,omitempty"`
 	// EKS cluster CA certificate
 	EksClusterCert string `json:"eks-cluster-cert"`
 	// EKS cluster URL endpoint
@@ -128,38 +126,6 @@ func (o *CreateEKSTarget) GetEksAccessKeyIdOk() (*string, bool) {
 // SetEksAccessKeyId sets field value
 func (o *CreateEKSTarget) SetEksAccessKeyId(v string) {
 	o.EksAccessKeyId = v
-}
-
-// GetEksAssumeRole returns the EksAssumeRole field value if set, zero value otherwise.
-func (o *CreateEKSTarget) GetEksAssumeRole() string {
-	if o == nil || o.EksAssumeRole == nil {
-		var ret string
-		return ret
-	}
-	return *o.EksAssumeRole
-}
-
-// GetEksAssumeRoleOk returns a tuple with the EksAssumeRole field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateEKSTarget) GetEksAssumeRoleOk() (*string, bool) {
-	if o == nil || o.EksAssumeRole == nil {
-		return nil, false
-	}
-	return o.EksAssumeRole, true
-}
-
-// HasEksAssumeRole returns a boolean if a field has been set.
-func (o *CreateEKSTarget) HasEksAssumeRole() bool {
-	if o != nil && o.EksAssumeRole != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEksAssumeRole gets a reference to the given string and assigns it to the EksAssumeRole field.
-func (o *CreateEKSTarget) SetEksAssumeRole(v string) {
-	o.EksAssumeRole = &v
 }
 
 // GetEksClusterCert returns the EksClusterCert field value
@@ -481,9 +447,6 @@ func (o CreateEKSTarget) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["eks-access-key-id"] = o.EksAccessKeyId
-	}
-	if o.EksAssumeRole != nil {
-		toSerialize["eks-assume-role"] = o.EksAssumeRole
 	}
 	if true {
 		toSerialize["eks-cluster-cert"] = o.EksClusterCert

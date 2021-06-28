@@ -36,8 +36,6 @@ type GatewayCreateProducerAws struct {
 	AwsUserProgrammaticAccess *bool `json:"aws-user-programmatic-access,omitempty"`
 	// Automatic admin credentials rotation
 	EnableAdminRotation *bool `json:"enable-admin-rotation,omitempty"`
-	// Gateway url
-	GatewayUrl *string `json:"gateway-url,omitempty"`
 	// Producer name
 	Name string `json:"name"`
 	// Required only when the authentication process requires a username and password
@@ -72,8 +70,6 @@ func NewGatewayCreateProducerAws(accessKeyId string, accessSecretKey string, nam
 	this.AwsUserProgrammaticAccess = &awsUserProgrammaticAccess
 	var enableAdminRotation bool = false
 	this.EnableAdminRotation = &enableAdminRotation
-	var gatewayUrl string = "http://localhost:8000"
-	this.GatewayUrl = &gatewayUrl
 	this.Name = name
 	var region string = "us-east-2"
 	this.Region = &region
@@ -95,8 +91,6 @@ func NewGatewayCreateProducerAwsWithDefaults() *GatewayCreateProducerAws {
 	this.AwsUserProgrammaticAccess = &awsUserProgrammaticAccess
 	var enableAdminRotation bool = false
 	this.EnableAdminRotation = &enableAdminRotation
-	var gatewayUrl string = "http://localhost:8000"
-	this.GatewayUrl = &gatewayUrl
 	var region string = "us-east-2"
 	this.Region = &region
 	var userTtl string = "60m"
@@ -408,38 +402,6 @@ func (o *GatewayCreateProducerAws) SetEnableAdminRotation(v bool) {
 	o.EnableAdminRotation = &v
 }
 
-// GetGatewayUrl returns the GatewayUrl field value if set, zero value otherwise.
-func (o *GatewayCreateProducerAws) GetGatewayUrl() string {
-	if o == nil || o.GatewayUrl == nil {
-		var ret string
-		return ret
-	}
-	return *o.GatewayUrl
-}
-
-// GetGatewayUrlOk returns a tuple with the GatewayUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerAws) GetGatewayUrlOk() (*string, bool) {
-	if o == nil || o.GatewayUrl == nil {
-		return nil, false
-	}
-	return o.GatewayUrl, true
-}
-
-// HasGatewayUrl returns a boolean if a field has been set.
-func (o *GatewayCreateProducerAws) HasGatewayUrl() bool {
-	if o != nil && o.GatewayUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGatewayUrl gets a reference to the given string and assigns it to the GatewayUrl field.
-func (o *GatewayCreateProducerAws) SetGatewayUrl(v string) {
-	o.GatewayUrl = &v
-}
-
 // GetName returns the Name field value
 func (o *GatewayCreateProducerAws) GetName() string {
 	if o == nil  {
@@ -719,9 +681,6 @@ func (o GatewayCreateProducerAws) MarshalJSON() ([]byte, error) {
 	}
 	if o.EnableAdminRotation != nil {
 		toSerialize["enable-admin-rotation"] = o.EnableAdminRotation
-	}
-	if o.GatewayUrl != nil {
-		toSerialize["gateway-url"] = o.GatewayUrl
 	}
 	if true {
 		toSerialize["name"] = o.Name

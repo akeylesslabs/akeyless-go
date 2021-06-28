@@ -17,8 +17,6 @@ import (
 
 // GatewayCreateProducerGcp gatewayCreateProducerGcp is a command that creates a GCP producer
 type GatewayCreateProducerGcp struct {
-	// Gateway url
-	GatewayUrl *string `json:"gateway-url,omitempty"`
 	GcpCredType string `json:"gcp-cred-type"`
 	// Base64-encoded service account private key text
 	GcpKey *string `json:"gcp-key,omitempty"`
@@ -50,8 +48,6 @@ type GatewayCreateProducerGcp struct {
 // will change when the set of required properties is changed
 func NewGatewayCreateProducerGcp(gcpCredType string, gcpSaEmail string, name string, ) *GatewayCreateProducerGcp {
 	this := GatewayCreateProducerGcp{}
-	var gatewayUrl string = "http://localhost:8000"
-	this.GatewayUrl = &gatewayUrl
 	this.GcpCredType = gcpCredType
 	this.GcpSaEmail = gcpSaEmail
 	this.Name = name
@@ -65,43 +61,9 @@ func NewGatewayCreateProducerGcp(gcpCredType string, gcpSaEmail string, name str
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayCreateProducerGcpWithDefaults() *GatewayCreateProducerGcp {
 	this := GatewayCreateProducerGcp{}
-	var gatewayUrl string = "http://localhost:8000"
-	this.GatewayUrl = &gatewayUrl
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
-}
-
-// GetGatewayUrl returns the GatewayUrl field value if set, zero value otherwise.
-func (o *GatewayCreateProducerGcp) GetGatewayUrl() string {
-	if o == nil || o.GatewayUrl == nil {
-		var ret string
-		return ret
-	}
-	return *o.GatewayUrl
-}
-
-// GetGatewayUrlOk returns a tuple with the GatewayUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerGcp) GetGatewayUrlOk() (*string, bool) {
-	if o == nil || o.GatewayUrl == nil {
-		return nil, false
-	}
-	return o.GatewayUrl, true
-}
-
-// HasGatewayUrl returns a boolean if a field has been set.
-func (o *GatewayCreateProducerGcp) HasGatewayUrl() bool {
-	if o != nil && o.GatewayUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGatewayUrl gets a reference to the given string and assigns it to the GatewayUrl field.
-func (o *GatewayCreateProducerGcp) SetGatewayUrl(v string) {
-	o.GatewayUrl = &v
 }
 
 // GetGcpCredType returns the GcpCredType field value
@@ -466,9 +428,6 @@ func (o *GatewayCreateProducerGcp) SetUsername(v string) {
 
 func (o GatewayCreateProducerGcp) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.GatewayUrl != nil {
-		toSerialize["gateway-url"] = o.GatewayUrl
-	}
 	if true {
 		toSerialize["gcp-cred-type"] = o.GcpCredType
 	}

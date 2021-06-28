@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Comment** | Pointer to **string** | Comment about the target | [optional] 
 **EksAccessKeyId** | **string** | Access Key ID | 
-**EksAssumeRole** | Pointer to **string** | IAM assume role | [optional] 
 **EksClusterCert** | **string** | EKS cluster CA certificate | 
 **EksClusterEndpoint** | **string** | EKS cluster URL endpoint | 
 **EksClusterName** | **string** | EKS cluster name | 
@@ -82,31 +81,6 @@ and a boolean to check if the value has been set.
 
 SetEksAccessKeyId sets EksAccessKeyId field to given value.
 
-
-### GetEksAssumeRole
-
-`func (o *CreateEKSTarget) GetEksAssumeRole() string`
-
-GetEksAssumeRole returns the EksAssumeRole field if non-nil, zero value otherwise.
-
-### GetEksAssumeRoleOk
-
-`func (o *CreateEKSTarget) GetEksAssumeRoleOk() (*string, bool)`
-
-GetEksAssumeRoleOk returns a tuple with the EksAssumeRole field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEksAssumeRole
-
-`func (o *CreateEKSTarget) SetEksAssumeRole(v string)`
-
-SetEksAssumeRole sets EksAssumeRole field to given value.
-
-### HasEksAssumeRole
-
-`func (o *CreateEKSTarget) HasEksAssumeRole() bool`
-
-HasEksAssumeRole returns a boolean if a field has been set.
 
 ### GetEksClusterCert
 

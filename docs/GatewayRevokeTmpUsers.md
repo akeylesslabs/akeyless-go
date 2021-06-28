@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**GatewayUrl** | Pointer to **string** | Gateway url | [optional] 
 **Host** | Pointer to **string** | Host | [optional] 
 **Name** | **string** | Producer Name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
@@ -32,31 +31,6 @@ will change when the set of required properties is changed
 NewGatewayRevokeTmpUsersWithDefaults instantiates a new GatewayRevokeTmpUsers object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetGatewayUrl
-
-`func (o *GatewayRevokeTmpUsers) GetGatewayUrl() string`
-
-GetGatewayUrl returns the GatewayUrl field if non-nil, zero value otherwise.
-
-### GetGatewayUrlOk
-
-`func (o *GatewayRevokeTmpUsers) GetGatewayUrlOk() (*string, bool)`
-
-GetGatewayUrlOk returns a tuple with the GatewayUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGatewayUrl
-
-`func (o *GatewayRevokeTmpUsers) SetGatewayUrl(v string)`
-
-SetGatewayUrl sets GatewayUrl field to given value.
-
-### HasGatewayUrl
-
-`func (o *GatewayRevokeTmpUsers) HasGatewayUrl() bool`
-
-HasGatewayUrl returns a boolean if a field has been set.
 
 ### GetHost
 

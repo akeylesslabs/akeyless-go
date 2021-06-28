@@ -27,8 +27,6 @@ type GatewayCreateProducerArtifactory struct {
 	ArtifactoryTokenScope string `json:"artifactory-token-scope"`
 	// Base URL
 	BaseUrl string `json:"base-url"`
-	// Gateway url
-	GatewayUrl *string `json:"gateway-url,omitempty"`
 	// Producer name
 	Name string `json:"name"`
 	// Required only when the authentication process requires a username and password
@@ -56,8 +54,6 @@ func NewGatewayCreateProducerArtifactory(artifactoryAdminName string, artifactor
 	this.ArtifactoryTokenAudience = artifactoryTokenAudience
 	this.ArtifactoryTokenScope = artifactoryTokenScope
 	this.BaseUrl = baseUrl
-	var gatewayUrl string = "http://localhost:8000"
-	this.GatewayUrl = &gatewayUrl
 	this.Name = name
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
@@ -69,8 +65,6 @@ func NewGatewayCreateProducerArtifactory(artifactoryAdminName string, artifactor
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayCreateProducerArtifactoryWithDefaults() *GatewayCreateProducerArtifactory {
 	this := GatewayCreateProducerArtifactory{}
-	var gatewayUrl string = "http://localhost:8000"
-	this.GatewayUrl = &gatewayUrl
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
@@ -194,38 +188,6 @@ func (o *GatewayCreateProducerArtifactory) GetBaseUrlOk() (*string, bool) {
 // SetBaseUrl sets field value
 func (o *GatewayCreateProducerArtifactory) SetBaseUrl(v string) {
 	o.BaseUrl = v
-}
-
-// GetGatewayUrl returns the GatewayUrl field value if set, zero value otherwise.
-func (o *GatewayCreateProducerArtifactory) GetGatewayUrl() string {
-	if o == nil || o.GatewayUrl == nil {
-		var ret string
-		return ret
-	}
-	return *o.GatewayUrl
-}
-
-// GetGatewayUrlOk returns a tuple with the GatewayUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerArtifactory) GetGatewayUrlOk() (*string, bool) {
-	if o == nil || o.GatewayUrl == nil {
-		return nil, false
-	}
-	return o.GatewayUrl, true
-}
-
-// HasGatewayUrl returns a boolean if a field has been set.
-func (o *GatewayCreateProducerArtifactory) HasGatewayUrl() bool {
-	if o != nil && o.GatewayUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGatewayUrl gets a reference to the given string and assigns it to the GatewayUrl field.
-func (o *GatewayCreateProducerArtifactory) SetGatewayUrl(v string) {
-	o.GatewayUrl = &v
 }
 
 // GetName returns the Name field value
@@ -460,9 +422,6 @@ func (o GatewayCreateProducerArtifactory) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["base-url"] = o.BaseUrl
-	}
-	if o.GatewayUrl != nil {
-		toSerialize["gateway-url"] = o.GatewayUrl
 	}
 	if true {
 		toSerialize["name"] = o.Name

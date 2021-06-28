@@ -17,8 +17,8 @@ import (
 
 // GatewayCreateProducerGke gatewayCreateProducerGke is a command that creates gke producer
 type GatewayCreateProducerGke struct {
-	// Gateway url
-	GatewayUrl *string `json:"gateway-url,omitempty"`
+	// GKE Service Account key file path
+	GkeAccountKey *string `json:"gke-account-key,omitempty"`
 	// GKE cluster CA certificate
 	GkeClusterCert string `json:"gke-cluster-cert"`
 	// GKE cluster URL endpoint
@@ -49,8 +49,6 @@ type GatewayCreateProducerGke struct {
 // will change when the set of required properties is changed
 func NewGatewayCreateProducerGke(gkeClusterCert string, gkeClusterEndpoint string, gkeClusterName string, gkeServiceAccountEmail string, name string, ) *GatewayCreateProducerGke {
 	this := GatewayCreateProducerGke{}
-	var gatewayUrl string = "http://localhost:8000"
-	this.GatewayUrl = &gatewayUrl
 	this.GkeClusterCert = gkeClusterCert
 	this.GkeClusterEndpoint = gkeClusterEndpoint
 	this.GkeClusterName = gkeClusterName
@@ -66,43 +64,41 @@ func NewGatewayCreateProducerGke(gkeClusterCert string, gkeClusterEndpoint strin
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayCreateProducerGkeWithDefaults() *GatewayCreateProducerGke {
 	this := GatewayCreateProducerGke{}
-	var gatewayUrl string = "http://localhost:8000"
-	this.GatewayUrl = &gatewayUrl
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
 }
 
-// GetGatewayUrl returns the GatewayUrl field value if set, zero value otherwise.
-func (o *GatewayCreateProducerGke) GetGatewayUrl() string {
-	if o == nil || o.GatewayUrl == nil {
+// GetGkeAccountKey returns the GkeAccountKey field value if set, zero value otherwise.
+func (o *GatewayCreateProducerGke) GetGkeAccountKey() string {
+	if o == nil || o.GkeAccountKey == nil {
 		var ret string
 		return ret
 	}
-	return *o.GatewayUrl
+	return *o.GkeAccountKey
 }
 
-// GetGatewayUrlOk returns a tuple with the GatewayUrl field value if set, nil otherwise
+// GetGkeAccountKeyOk returns a tuple with the GkeAccountKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerGke) GetGatewayUrlOk() (*string, bool) {
-	if o == nil || o.GatewayUrl == nil {
+func (o *GatewayCreateProducerGke) GetGkeAccountKeyOk() (*string, bool) {
+	if o == nil || o.GkeAccountKey == nil {
 		return nil, false
 	}
-	return o.GatewayUrl, true
+	return o.GkeAccountKey, true
 }
 
-// HasGatewayUrl returns a boolean if a field has been set.
-func (o *GatewayCreateProducerGke) HasGatewayUrl() bool {
-	if o != nil && o.GatewayUrl != nil {
+// HasGkeAccountKey returns a boolean if a field has been set.
+func (o *GatewayCreateProducerGke) HasGkeAccountKey() bool {
+	if o != nil && o.GkeAccountKey != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetGatewayUrl gets a reference to the given string and assigns it to the GatewayUrl field.
-func (o *GatewayCreateProducerGke) SetGatewayUrl(v string) {
-	o.GatewayUrl = &v
+// SetGkeAccountKey gets a reference to the given string and assigns it to the GkeAccountKey field.
+func (o *GatewayCreateProducerGke) SetGkeAccountKey(v string) {
+	o.GkeAccountKey = &v
 }
 
 // GetGkeClusterCert returns the GkeClusterCert field value
@@ -419,8 +415,8 @@ func (o *GatewayCreateProducerGke) SetUsername(v string) {
 
 func (o GatewayCreateProducerGke) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.GatewayUrl != nil {
-		toSerialize["gateway-url"] = o.GatewayUrl
+	if o.GkeAccountKey != nil {
+		toSerialize["gke-account-key"] = o.GkeAccountKey
 	}
 	if true {
 		toSerialize["gke-cluster-cert"] = o.GkeClusterCert
