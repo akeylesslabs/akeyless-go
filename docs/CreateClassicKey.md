@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Alg** | **string** | Classic Key type; options: [AES256GCM, RSA2048] | 
+**Alg** | **string** | Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384] | 
+**CertFileData** | Pointer to **string** | Certificate in a PEM format. | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **KeyData** | Pointer to **string** | Base64-encoded classic key value | [optional] 
 **Metadata** | Pointer to **string** | Metadata about the classic key | [optional] 
@@ -54,6 +55,31 @@ and a boolean to check if the value has been set.
 
 SetAlg sets Alg field to given value.
 
+
+### GetCertFileData
+
+`func (o *CreateClassicKey) GetCertFileData() string`
+
+GetCertFileData returns the CertFileData field if non-nil, zero value otherwise.
+
+### GetCertFileDataOk
+
+`func (o *CreateClassicKey) GetCertFileDataOk() (*string, bool)`
+
+GetCertFileDataOk returns a tuple with the CertFileData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertFileData
+
+`func (o *CreateClassicKey) SetCertFileData(v string)`
+
+SetCertFileData sets CertFileData field to given value.
+
+### HasCertFileData
+
+`func (o *CreateClassicKey) HasCertFileData() bool`
+
+HasCertFileData returns a boolean if a field has been set.
 
 ### GetKey
 

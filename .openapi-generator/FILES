@@ -100,6 +100,8 @@ docs/DecryptFileOutput.md
 docs/DecryptOutput.md
 docs/DecryptPKCS1.md
 docs/DecryptPKCS1Output.md
+docs/DecryptWithClassicKey.md
+docs/DecryptWithClassicKeyOutput.md
 docs/DefaultConfigPart.md
 docs/DeleteAuthMethod.md
 docs/DeleteAuthMethodOutput.md
@@ -129,6 +131,8 @@ docs/EncryptFileOutput.md
 docs/EncryptOutput.md
 docs/EncryptPKCS1.md
 docs/EncryptPKCS1Output.md
+docs/EncryptWithClassicKey.md
+docs/EncryptWithClassicKeyOutput.md
 docs/ExternalKMSKeyId.md
 docs/GCPAccessRules.md
 docs/GatewayAddAllowedManagementAccess.md
@@ -259,8 +263,12 @@ docs/SAMLAttribute.md
 docs/SSHCertificateIssueDetails.md
 docs/SetItemState.md
 docs/SetRoleRule.md
+docs/SignJWTOutput.md
+docs/SignJWTWithClassicKey.md
 docs/SignPKCS1.md
 docs/SignPKCS1Output.md
+docs/SignPKICertOutput.md
+docs/SignPKICertWithClassicKey.md
 docs/SplunkLogForwardingConfig.md
 docs/StaticCredsAuth.md
 docs/StaticCredsAuthOutput.md
@@ -325,7 +333,11 @@ docs/UpdateWebTargetOutput.md
 docs/UploadPKCS12.md
 docs/UploadRSA.md
 docs/V2Api.md
+docs/VerifyJWTOutput.md
+docs/VerifyJWTWithClassicKey.md
 docs/VerifyPKCS1.md
+docs/VerifyPKICertOutput.md
+docs/VerifyPKICertWithClassicKey.md
 git_push.sh
 go.mod
 go.sum
@@ -423,6 +435,8 @@ model_decrypt_file_output.go
 model_decrypt_output.go
 model_decrypt_pkcs1.go
 model_decrypt_pkcs1_output.go
+model_decrypt_with_classic_key.go
+model_decrypt_with_classic_key_output.go
 model_default_config_part.go
 model_delete_auth_method.go
 model_delete_auth_method_output.go
@@ -453,6 +467,8 @@ model_encrypt_file_output.go
 model_encrypt_output.go
 model_encrypt_pkcs1.go
 model_encrypt_pkcs1_output.go
+model_encrypt_with_classic_key.go
+model_encrypt_with_classic_key_output.go
 model_external_kms_key_id.go
 model_gateway_add_allowed_management_access.go
 model_gateway_create_producer_artifactory.go
@@ -582,8 +598,12 @@ model_saml_access_rules.go
 model_saml_attribute.go
 model_set_item_state.go
 model_set_role_rule.go
+model_sign_jwt_output.go
+model_sign_jwt_with_classic_key.go
 model_sign_pkcs1.go
 model_sign_pkcs1_output.go
+model_sign_pki_cert_output.go
+model_sign_pki_cert_with_classic_key.go
 model_splunk_log_forwarding_config.go
 model_ssh_certificate_issue_details.go
 model_static_creds_auth.go
@@ -648,6 +668,10 @@ model_update_web_target_details.go
 model_update_web_target_output.go
 model_upload_pkcs12.go
 model_upload_rsa.go
+model_verify_jwt_output.go
+model_verify_jwt_with_classic_key.go
 model_verify_pkcs1.go
+model_verify_pki_cert_output.go
+model_verify_pki_cert_with_classic_key.go
 response.go
 utils.go

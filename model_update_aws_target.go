@@ -26,7 +26,7 @@ type UpdateAWSTarget struct {
 	// Target name
 	Name string `json:"name"`
 	// New target name
-	NewName string `json:"new-name"`
+	NewName *string `json:"new-name,omitempty"`
 	// Required only when the authentication process requires a username and password
 	Password *string `json:"password,omitempty"`
 	Region *string `json:"region,omitempty"`
@@ -45,10 +45,9 @@ type UpdateAWSTarget struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateAWSTarget(name string, newName string, ) *UpdateAWSTarget {
+func NewUpdateAWSTarget(name string, ) *UpdateAWSTarget {
 	this := UpdateAWSTarget{}
 	this.Name = name
-	this.NewName = newName
 	var updateVersion bool = false
 	this.UpdateVersion = &updateVersion
 	return &this
@@ -216,28 +215,36 @@ func (o *UpdateAWSTarget) SetName(v string) {
 	o.Name = v
 }
 
-// GetNewName returns the NewName field value
+// GetNewName returns the NewName field value if set, zero value otherwise.
 func (o *UpdateAWSTarget) GetNewName() string {
-	if o == nil  {
+	if o == nil || o.NewName == nil {
 		var ret string
 		return ret
 	}
-
-	return o.NewName
+	return *o.NewName
 }
 
-// GetNewNameOk returns a tuple with the NewName field value
+// GetNewNameOk returns a tuple with the NewName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateAWSTarget) GetNewNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.NewName == nil {
 		return nil, false
 	}
-	return &o.NewName, true
+	return o.NewName, true
 }
 
-// SetNewName sets field value
+// HasNewName returns a boolean if a field has been set.
+func (o *UpdateAWSTarget) HasNewName() bool {
+	if o != nil && o.NewName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNewName gets a reference to the given string and assigns it to the NewName field.
 func (o *UpdateAWSTarget) SetNewName(v string) {
-	o.NewName = v
+	o.NewName = &v
 }
 
 // GetPassword returns the Password field value if set, zero value otherwise.
@@ -481,7 +488,7 @@ func (o UpdateAWSTarget) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if true {
+	if o.NewName != nil {
 		toSerialize["new-name"] = o.NewName
 	}
 	if o.Password != nil {

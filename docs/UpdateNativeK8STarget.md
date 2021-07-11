@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **K8sClusterToken** | **string** | K8S cluster Bearer token | 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Target name | 
-**NewName** | **string** | New target name | 
+**NewName** | Pointer to **string** | New target name | [optional] 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewUpdateNativeK8STarget
 
-`func NewUpdateNativeK8STarget(k8sClusterCaCert string, k8sClusterEndpoint string, k8sClusterToken string, name string, newName string, ) *UpdateNativeK8STarget`
+`func NewUpdateNativeK8STarget(k8sClusterCaCert string, k8sClusterEndpoint string, k8sClusterToken string, name string, ) *UpdateNativeK8STarget`
 
 NewUpdateNativeK8STarget instantiates a new UpdateNativeK8STarget object
 This constructor will assign default values to properties that have it defined,
@@ -185,6 +185,11 @@ and a boolean to check if the value has been set.
 
 SetNewName sets NewName field to given value.
 
+### HasNewName
+
+`func (o *UpdateNativeK8STarget) HasNewName() bool`
+
+HasNewName returns a boolean if a field has been set.
 
 ### GetPassword
 

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Comment** | Pointer to **string** | Comment about the target | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Target name | 
-**NewName** | **string** | New target name | 
+**NewName** | Pointer to **string** | New target name | [optional] 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewUpdateWebTarget
 
-`func NewUpdateWebTarget(name string, newName string, ) *UpdateWebTarget`
+`func NewUpdateWebTarget(name string, ) *UpdateWebTarget`
 
 NewUpdateWebTarget instantiates a new UpdateWebTarget object
 This constructor will assign default values to properties that have it defined,
@@ -123,6 +123,11 @@ and a boolean to check if the value has been set.
 
 SetNewName sets NewName field to given value.
 
+### HasNewName
+
+`func (o *UpdateWebTarget) HasNewName() bool`
+
+HasNewName returns a boolean if a field has been set.
 
 ### GetPassword
 

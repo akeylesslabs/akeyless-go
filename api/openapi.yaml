@@ -661,12 +661,12 @@ paths:
       x-codegen-request-body-name: body
   /create-pki-cert-issuer:
     post:
-      operationId: createPKICertIssuer
+      operationId: CreatePKICertIssuer
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/createPKICertIssuer'
+              $ref: '#/components/schemas/CreatePKICertIssuer'
         required: true
       responses:
         "200":
@@ -918,6 +918,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/decryptPKCS1Output'
           description: decryptPKCS1Response wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /decrypt-with-classic-key:
+    post:
+      operationId: decryptWithClassicKey
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/decryptWithClassicKey'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/decryptWithClassicKeyOutput'
+          description: decryptWithClassicKeyResponse wraps response body.
         default:
           content:
             application/json:
@@ -1323,6 +1350,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/encryptPKCS1Output'
           description: encryptPKCS1Response wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /encrypt-with-classic-key:
+    post:
+      operationId: encryptWithClassicKey
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/encryptWithClassicKey'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/encryptOutput'
+          description: encryptResponse wraps response body.
         default:
           content:
             application/json:
@@ -2702,6 +2756,29 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /sign-jwt-with-classic-key:
+    post:
+      operationId: signJWTWithClassicKey
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/signJWTWithClassicKey'
+        required: true
+      responses:
+        "200":
+          $ref: '#/components/responses/signJWTResponse'
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /sign-pkcs1:
     post:
       operationId: signPKCS1
@@ -2718,6 +2795,29 @@ paths:
               schema:
                 $ref: '#/components/schemas/signPKCS1Output'
           description: signPKCS1Response wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /sign-pki-cert-with-classic-key:
+    post:
+      operationId: signPKICertWithClassicKey
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/signPKICertWithClassicKey'
+        required: true
+      responses:
+        "200":
+          $ref: '#/components/responses/signPKICertResponse'
         default:
           content:
             application/json:
@@ -3559,6 +3659,29 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /verify-jwt-with-classic-key:
+    post:
+      operationId: verifyJWTWithClassicKey
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/verifyJWTWithClassicKey'
+        required: true
+      responses:
+        "200":
+          $ref: '#/components/responses/verifyJWTResponse'
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /verify-pkcs1:
     post:
       operationId: verifyPKCS1
@@ -3575,6 +3698,29 @@ paths:
               schema:
                 $ref: '#/components/schemas/verifyPKCS1Output'
           description: verifyPKCS1Response wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /verify-pki-cert-with-classic-key:
+    post:
+      operationId: verifyPKICertWithClassicKey
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/verifyPKICertWithClassicKey'
+        required: true
+      responses:
+        "200":
+          $ref: '#/components/responses/verifyPKICertResponse'
         default:
           content:
             application/json:
@@ -3810,6 +3956,12 @@ components:
           schema:
             $ref: '#/components/schemas/decryptOutput'
       description: decryptResponse wraps response body.
+    decryptWithClassicKeyResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/decryptWithClassicKeyOutput'
+      description: decryptWithClassicKeyResponse wraps response body.
     deleteAuthMethodResponse:
       content:
         application/json:
@@ -3900,6 +4052,12 @@ components:
           schema:
             $ref: '#/components/schemas/encryptOutput'
       description: encryptResponse wraps response body.
+    encryptWithClassicKeyResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/encryptWithClassicKeyOutput'
+      description: encryptWithClassicKeyResponse wraps response body.
     errorResponse:
       content:
         application/json:
@@ -4249,12 +4407,24 @@ components:
           schema:
             $ref: '#/components/schemas/setRoleRuleOutput'
       description: setRoleRuleResponse wraps response body.
+    signJWTWithClassicKeyResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/signJWTOutput'
+      description: signJWTWithClassicKeyResponse wraps response body.
     signPKCS1Response:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/signPKCS1Output'
       description: signPKCS1Response wraps response body.
+    signPKICertWithClassicKeyResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/signPKICertOutput'
+      description: signPKICertWithClassicKeyResponse wraps response body.
     staticCredsAuthResponse:
       content:
         application/json:
@@ -4417,12 +4587,24 @@ components:
           schema:
             $ref: '#/components/schemas/uploadRSAOutput'
       description: uploadRSAResponse wraps response body.
+    verifyJWTWithClassicKeyResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/verifyJWTOutput'
+      description: verifyJWTWithClassicKeyResponse wraps response body.
     verifyPKCS1Response:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/verifyPKCS1Output'
       description: verifyPKCS1Response wraps response body.
+    verifyPKICertWithClassicKeyResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/verifyPKICertOutput'
+      description: verifyPKICertWithClassicKeyResponse wraps response body.
   schemas:
     APIKeyAccessRules:
       example:
@@ -4765,6 +4947,7 @@ components:
             target_logz_io_protocol: target_logz_io_protocol
             target_logz_io_token: target_logz_io_token
           pull_interval_sec: pull_interval_sec
+          std_out: true
           elasticsearch_config:
             elasticsearch_index: elasticsearch_index
             elasticsearch_nodes: elasticsearch_nodes
@@ -5820,6 +6003,7 @@ components:
         name: name
         target-name: target-name
         alg: alg
+        cert-file-data: cert-file-data
         key: key
         key-data: key-data
         uid-token: uid-token
@@ -5830,9 +6014,14 @@ components:
         username: username
       properties:
         alg:
-          description: 'Classic Key type; options: [AES256GCM, RSA2048]'
+          description: 'Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV,
+            AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384]'
           type: string
           x-go-name: Alg
+        cert-file-data:
+          description: Certificate in a PEM format.
+          type: string
+          x-go-name: CertFileData
         key:
           description: The name of a key that used to encrypt the secret value (if
             empty, the account default protectionKey key will be used)
@@ -5887,13 +6076,12 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     CreateClassicKeyOutput:
       example:
-        classic_key_id: 0
+        classic_key_id: classic_key_id
         classic_key_type: classic_key_type
         classic_key_name: classic_key_name
       properties:
         classic_key_id:
-          format: int64
-          type: integer
+          type: string
           x-go-name: ClassicKeyId
         classic_key_name:
           type: string
@@ -5903,6 +6091,171 @@ components:
             supported by AKEYLESS.
           type: string
           x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    CreatePKICertIssuer:
+      example:
+        key-usage: DigitalSignature,KeyAgreement,KeyEncipherment
+        country: country
+        metadata: metadata
+        organizational-units: organizational-units
+        uid-token: uid-token
+        allow-subdomains: true
+        not-require-cn: true
+        allowed-uri-sans: allowed-uri-sans
+        password: password
+        province: province
+        street-address: street-address
+        signer-key-name: signer-key-name
+        code-signing-flag: true
+        locality: locality
+        allowed-domains: allowed-domains
+        allow-any-name: true
+        ttl: 0
+        token: token
+        client-flag: true
+        postal-code: postal-code
+        server-flag: true
+        name: name
+        organizations: organizations
+        not-enforce-hostnames: true
+        username: username
+      properties:
+        allow-any-name:
+          description: If set, clients can request certificates for any CN
+          type: boolean
+          x-go-name: AllowAnyName
+        allow-subdomains:
+          description: |-
+            If set, clients can request certificates for subdomains and wildcard
+            subdomains of the allowed domains
+          type: boolean
+          x-go-name: AllowSubdomains
+        allowed-domains:
+          description: |-
+            A list of the allowed domains that clients can request to be included in
+            the certificate (in a comma-delimited list)
+          type: string
+          x-go-name: AllowedDomains
+        allowed-uri-sans:
+          description: |-
+            A list of the allowed URIs that clients can request to be included in
+            the certificate as part of the URI Subject Alternative Names (in a
+            comma-delimited list)
+          type: string
+          x-go-name: AllowedURISANs
+        client-flag:
+          description: If set, certificates will be flagged for client auth use
+          type: boolean
+          x-go-name: ClientFlag
+        code-signing-flag:
+          description: If set, certificates will be flagged for code signing use
+          type: boolean
+          x-go-name: CodeSigningFlag
+        country:
+          description: |-
+            A comma-separated list of the country that will be set in the issued
+            certificate
+          type: string
+          x-go-name: Country
+        key-usage:
+          default: DigitalSignature,KeyAgreement,KeyEncipherment
+          description: key-usage
+          type: string
+          x-go-name: KeyUsage
+        locality:
+          description: |-
+            A comma-separated list of the locality that will be set in the issued
+            certificate
+          type: string
+          x-go-name: Locality
+        metadata:
+          description: A metadata about the issuer
+          type: string
+          x-go-name: Metadata
+        name:
+          description: PKI certificate issuer name
+          type: string
+          x-go-name: IssuerName
+        not-enforce-hostnames:
+          description: |-
+            If set, any names are allowed for CN and SANs in the certificate and not
+            only a valid host name
+          type: boolean
+          x-go-name: NotEnforceHostnames
+        not-require-cn:
+          description: If set, clients can request certificates without a CN
+          type: boolean
+          x-go-name: NotRequireCN
+        organizational-units:
+          description: |-
+            A comma-separated list of organizational units (OU) that will be set in
+            the issued certificate
+          type: string
+          x-go-name: OrganizationalUnits
+        organizations:
+          description: |-
+            A comma-separated list of organizations (O) that will be set in the
+            issued certificate
+          type: string
+          x-go-name: Organizations
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        postal-code:
+          description: |-
+            A comma-separated list of the postal code that will be set in the issued
+            certificate
+          type: string
+          x-go-name: PostalCode
+        province:
+          description: |-
+            A comma-separated list of the province that will be set in the issued
+            certificate
+          type: string
+          x-go-name: Province
+        server-flag:
+          description: If set, certificates will be flagged for server auth use
+          type: boolean
+          x-go-name: ServerFlag
+        signer-key-name:
+          description: A key to sign the certificate with
+          type: string
+          x-go-name: SignerKeyName
+        street-address:
+          description: |-
+            A comma-separated list of the street address that will be set in the
+            issued certificate
+          type: string
+          x-go-name: StreetAddress
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        ttl:
+          description: The requested Time To Live for the certificate, use second
+            units
+          format: int64
+          type: integer
+          x-go-name: TTL
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+      required:
+      - name
+      - signer-key-name
+      - ttl
+      title: CreatePKICertIssuer is a command that creates a new PKI certificate issuer.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     CreateRoleAuthMethodAssocOutput:
@@ -8926,6 +9279,7 @@ components:
           target_logz_io_protocol: target_logz_io_protocol
           target_logz_io_token: target_logz_io_token
         pull_interval_sec: pull_interval_sec
+        std_out: true
         elasticsearch_config:
           elasticsearch_index: elasticsearch_index
           elasticsearch_nodes: elasticsearch_nodes
@@ -8952,6 +9306,9 @@ components:
           x-go-name: PullIntervalSec
         splunk_config:
           $ref: '#/components/schemas/SplunkLogForwardingConfig'
+        std_out:
+          type: boolean
+          x-go-name: PrintToStdOut
         syslog_config:
           $ref: '#/components/schemas/SyslogLogForwardingConfig'
         target_log_type:
@@ -11273,7 +11630,9 @@ components:
           type: string
           x-go-name: Username
       required:
+      - audience
       - name
+      - type
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     createAuthMethodGCPOutput:
@@ -11874,6 +12233,7 @@ components:
           type: string
           x-go-name: Username
       required:
+      - db-type
       - name
       title: createDBTarget is a command that creates a new target.
       type: object
@@ -12023,7 +12383,7 @@ components:
           description: Access Key ID
           type: string
           x-go-name: AccessId
-        eks-cluster-cert:
+        eks-cluster-ca-cert:
           description: EKS cluster CA certificate
           type: string
           x-go-name: ClusterCACert
@@ -12076,7 +12436,7 @@ components:
           x-go-name: Username
       required:
       - eks-access-key-id
-      - eks-cluster-cert
+      - eks-cluster-ca-cert
       - eks-cluster-endpoint
       - eks-cluster-name
       - eks-secret-access-key
@@ -12375,145 +12735,6 @@ components:
           x-go-name: TargetID
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
-    createPKICertIssuer:
-      properties:
-        allow-any-name:
-          description: If set, clients can request certificates for any CN
-          type: boolean
-          x-go-name: AllowAnyName
-        allow-subdomains:
-          description: |-
-            If set, clients can request certificates for subdomains and wildcard
-            subdomains of the allowed domains
-          type: boolean
-          x-go-name: AllowSubdomains
-        allowed-domains:
-          description: |-
-            A list of the allowed domains that clients can request to be included in
-            the certificate (in a comma-delimited list)
-          type: string
-          x-go-name: AllowedDomains
-        allowed-uri-sans:
-          description: |-
-            A list of the allowed URIs that clients can request to be included in
-            the certificate as part of the URI Subject Alternative Names (in a
-            comma-delimited list)
-          type: string
-          x-go-name: AllowedURISANs
-        client-flag:
-          description: If set, certificates will be flagged for client auth use
-          type: boolean
-          x-go-name: ClientFlag
-        code-signing-flag:
-          description: If set, certificates will be flagged for code signing use
-          type: boolean
-          x-go-name: CodeSigningFlag
-        country:
-          description: |-
-            A comma-separated list of the country that will be set in the issued
-            certificate
-          type: string
-          x-go-name: Country
-        key-usage:
-          default: DigitalSignature,KeyAgreement,KeyEncipherment
-          description: key-usage
-          type: string
-          x-go-name: KeyUsage
-        locality:
-          description: |-
-            A comma-separated list of the locality that will be set in the issued
-            certificate
-          type: string
-          x-go-name: Locality
-        metadata:
-          description: A metadata about the issuer
-          type: string
-          x-go-name: Metadata
-        name:
-          description: PKI certificate issuer name
-          type: string
-          x-go-name: IssuerName
-        not-enforce-hostnames:
-          description: |-
-            If set, any names are allowed for CN and SANs in the certificate and not
-            only a valid host name
-          type: boolean
-          x-go-name: NotEnforceHostnames
-        not-require-cn:
-          description: If set, clients can request certificates without a CN
-          type: boolean
-          x-go-name: NotRequireCN
-        organizational-units:
-          description: |-
-            A comma-separated list of organizational units (OU) that will be set in
-            the issued certificate
-          type: string
-          x-go-name: OrganizationalUnits
-        organizations:
-          description: |-
-            A comma-separated list of organizations (O) that will be set in the
-            issued certificate
-          type: string
-          x-go-name: Organizations
-        password:
-          description: Required only when the authentication process requires a username
-            and password
-          type: string
-          x-go-name: Password
-        postal-code:
-          description: |-
-            A comma-separated list of the postal code that will be set in the issued
-            certificate
-          type: string
-          x-go-name: PostalCode
-        province:
-          description: |-
-            A comma-separated list of the province that will be set in the issued
-            certificate
-          type: string
-          x-go-name: Province
-        server-flag:
-          description: If set, certificates will be flagged for server auth use
-          type: boolean
-          x-go-name: ServerFlag
-        signer-key-name:
-          description: A key to sign the certificate with
-          type: string
-          x-go-name: SignerKeyName
-        street-address:
-          description: |-
-            A comma-separated list of the street address that will be set in the
-            issued certificate
-          type: string
-          x-go-name: StreetAddress
-        token:
-          description: Authentication token (see `/auth` and `/configure`)
-          type: string
-          x-go-name: Profile
-        ttl:
-          description: The requested Time To Live for the certificate, use second
-            units
-          format: int64
-          type: integer
-          x-go-name: TTL
-        uid-token:
-          description: |-
-            The universal identity token, Required only for universal_identity
-            authentication
-          type: string
-          x-go-name: UIDToken
-        username:
-          description: Required only when the authentication process requires a username
-            and password
-          type: string
-          x-go-name: Username
-      required:
-      - name
-      - signer-key-name
-      - ttl
-      title: createPKICertIssuer is a command that creates a new PKI certificate issuer.
-      type: object
-      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     createPKICertIssuerOutput:
       example:
         name: name
@@ -12682,6 +12903,7 @@ components:
           type: array
           x-go-name: Tags
         target-name:
+          description: Target name
           type: string
           x-go-name: TargetName
         token:
@@ -12701,6 +12923,7 @@ components:
           x-go-name: Username
       required:
       - name
+      - target-name
       title: createRotatedSecret is a command that creates a rotated secret.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
@@ -13107,6 +13330,58 @@ components:
         plaintext:
           type: string
           x-go-name: Plaintext
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    decryptWithClassicKey:
+      properties:
+        ciphertext:
+          description: Ciphertext to be decrypted in base64 encoded format
+          type: string
+          x-go-name: Ciphertext
+        display-id:
+          description: The name of the key to use in the encryption process
+          type: string
+          x-go-name: DisplayId
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+        version:
+          description: classic key version
+          format: int32
+          type: integer
+          x-go-name: Version
+      required:
+      - ciphertext
+      - display-id
+      - version
+      title: decryptWithClassicKey is a command that decryptWithClassicKeys ciphertext
+        into plaintext by using a classic key.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    decryptWithClassicKeyOutput:
+      example:
+        result: result
+      properties:
+        result:
+          type: string
+          x-go-name: Result
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     deleteAuthMethod:
@@ -13809,6 +14084,56 @@ components:
           x-go-name: Result
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    encryptWithClassicKey:
+      properties:
+        display-id:
+          description: The name of the key to use in the encryption process
+          type: string
+          x-go-name: DisplayId
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        plaintext:
+          description: Data to be encrypted
+          type: string
+          x-go-name: Plaintext
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+        version:
+          description: classic key version
+          format: int32
+          type: integer
+          x-go-name: Version
+      required:
+      - display-id
+      - plaintext
+      - version
+      title: encryptWithClassicKey is a command that encrypts plaintext into ciphertext
+        by using an Classic Key key.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    encryptWithClassicKeyOutput:
+      properties:
+        result:
+          type: string
+          x-go-name: Result
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     gatewayAddAllowedManagementAccess:
       description: gatewayAddAllowedManagementAccess is a command that adds sub-admins
       properties:
@@ -14070,23 +14395,23 @@ components:
     gatewayCreateProducerAws:
       description: gatewayCreateProducerAws is a command that creates aws producer
       properties:
-        access-key-id:
-          description: Access Key ID
-          type: string
-          x-go-name: AccessId
         access-mode:
           type: string
           x-go-package: akeyless.io/akeyless-main-repo/go/src/producer/config
-        access-secret-key:
-          description: Secret Access Key
-          type: string
-          x-go-name: AccessKey
         admin-rotation-interval-days:
           default: 0
           description: Admin credentials rotation interval (days)
           format: int64
           type: integer
           x-go-name: AdminCredsRotationInterval
+        aws-access-key-id:
+          description: Access Key ID
+          type: string
+          x-go-name: AccessId
+        aws-access-secret-key:
+          description: Secret Access Key
+          type: string
+          x-go-name: AccessKey
         aws-role-arns:
           description: AWS Role ARNs to be used in the Assume Role operation (relevant
             only for assume_role mode)
@@ -14154,8 +14479,8 @@ components:
           type: string
           x-go-name: Username
       required:
-      - access-key-id
-      - access-secret-key
+      - aws-access-key-id
+      - aws-access-secret-key
       - name
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
@@ -14312,14 +14637,18 @@ components:
           description: Azure App Object Id
           type: string
           x-go-name: AppObjId
-        client-id:
+        azure-client-id:
           description: Azure Client ID
           type: string
           x-go-name: ClientId
-        client-secret:
+        azure-client-secret:
           description: Azure Client Secret
           type: string
           x-go-name: ClientSecret
+        azure-tenant-id:
+          description: Azure Tenant ID
+          type: string
+          x-go-name: TenantId
         name:
           description: Producer name
           type: string
@@ -14333,10 +14662,6 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
-        tenant-id:
-          description: Azure Tenant ID
-          type: string
-          x-go-name: TenantId
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -14380,10 +14705,10 @@ components:
           type: string
           x-go-name: Username
       required:
-      - client-id
-      - client-secret
+      - azure-client-id
+      - azure-client-secret
+      - azure-tenant-id
       - name
-      - tenant-id
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     gatewayCreateProducerAzureOutput:
@@ -15089,7 +15414,7 @@ components:
           description: IAM assume role
           type: string
           x-go-name: AssumeRole
-        eks-cluster-cert:
+        eks-cluster-ca-cert:
           description: EKS cluster CA certificate
           type: string
           x-go-name: ClusterCACert
@@ -15145,7 +15470,7 @@ components:
           x-go-name: Username
       required:
       - eks-access-key-id
-      - eks-cluster-cert
+      - eks-cluster-ca-cert
       - eks-cluster-endpoint
       - eks-cluster-name
       - eks-secret-access-key
@@ -18818,6 +19143,61 @@ components:
     setRoleRuleOutput:
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    signJWTOutput:
+      properties:
+        result:
+          type: string
+          x-go-name: Result
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    signJWTWithClassicKey:
+      properties:
+        display-id:
+          description: The name of the key to use in the sign JWT process
+          type: string
+          x-go-name: DisplayId
+        jwt-claims:
+          description: JWTClaims
+          type: string
+          x-go-name: JWTClaims
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        signing-method:
+          description: SigningMethod
+          type: string
+          x-go-name: SigningMethod
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+        version:
+          description: classic key version
+          format: int32
+          type: integer
+          x-go-name: Version
+      required:
+      - display-id
+      - jwt-claims
+      - signing-method
+      - version
+      title: signJWTWithClassicKey is a command that signs JWT by using an Classic
+        key.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     signPKCS1:
       description: |-
         signPKCS1 is a command that calculates the signature of hashed data using
@@ -18868,6 +19248,128 @@ components:
             type: integer
           type: array
           x-go-name: Result
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    signPKICertOutput:
+      properties:
+        result:
+          type: string
+          x-go-name: Result
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    signPKICertWithClassicKey:
+      properties:
+        common-name:
+          description: The common name to be included in the PKI certificate
+          type: string
+          x-go-name: CommonName
+        country:
+          description: |-
+            A comma-separated list of the country that will be set in the issued
+            certificate
+          type: string
+          x-go-name: Country
+        display-id:
+          description: The name of the key to use in the sign PKI Cert process
+          type: string
+          x-go-name: DisplayId
+        dns-names:
+          description: DNS Names to be included in the PKI certificate (in a comma-delimited
+            list)
+          type: string
+          x-go-name: DNSNames
+        key-usage:
+          default: DigitalSignature,KeyAgreement,KeyEncipherment
+          description: key-usage
+          type: string
+          x-go-name: KeyUsage
+        locality:
+          description: |-
+            A comma-separated list of the locality that will be set in the issued
+            certificate
+          type: string
+          x-go-name: Locality
+        organizational-units:
+          description: |-
+            A comma-separated list of organizational units (OU) that will be set in
+            the issued certificate
+          type: string
+          x-go-name: OrganizationalUnits
+        organizations:
+          description: |-
+            A comma-separated list of organizations (O) that will be set in the
+            issued certificate
+          type: string
+          x-go-name: Organizations
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        postal-code:
+          description: |-
+            A comma-separated list of the postal code that will be set in the issued
+            certificate
+          type: string
+          x-go-name: PostalCode
+        province:
+          description: |-
+            A comma-separated list of the province that will be set in the issued
+            certificate
+          type: string
+          x-go-name: Province
+        public-key-pem-data:
+          description: PublicKey using for signing in a PEM format.
+          type: string
+          x-go-name: PublicKeyPEMData
+        signing-method:
+          description: SigningMethod
+          type: string
+          x-go-name: SigningMethod
+        street-address:
+          description: |-
+            A comma-separated list of the street address that will be set in the
+            issued certificate
+          type: string
+          x-go-name: StreetAddress
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        ttl:
+          description: The requested Time To Live for the certificate, use second
+            units
+          format: int64
+          type: integer
+          x-go-name: TTL
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        uri-sans:
+          description: The URI Subject Alternative Names to be included in the PKI
+            certificate (in a comma-delimited list)
+          type: string
+          x-go-name: URISANs
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+        version:
+          description: classic key version
+          format: int32
+          type: integer
+          x-go-name: Version
+      required:
+      - display-id
+      - signing-method
+      - ttl
+      - version
+      title: signPKICertWithClassicKey is a command that signs PKI certificate by
+        using an Classic key.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     staticCredsAuth:
@@ -19190,7 +19692,6 @@ components:
           x-go-name: Username
       required:
       - name
-      - new-name
       title: updateAWSTarget is a command that updates a new target.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
@@ -19349,7 +19850,6 @@ components:
           x-go-name: Username
       required:
       - name
-      - new-name
       title: updateAzureTarget is a command that updates an existing target.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
@@ -19479,8 +19979,8 @@ components:
           type: string
           x-go-name: Username
       required:
+      - db-type
       - name
-      - new-name
       title: updateDBTarget is a command that updates an existing target.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
@@ -19567,7 +20067,7 @@ components:
           description: Access Key ID
           type: string
           x-go-name: AccessId
-        eks-cluster-cert:
+        eks-cluster-ca-cert:
           description: EKS cluster CA certificate
           type: string
           x-go-name: ClusterCACert
@@ -19629,12 +20129,11 @@ components:
           x-go-name: Username
       required:
       - eks-access-key-id
-      - eks-cluster-cert
+      - eks-cluster-ca-cert
       - eks-cluster-endpoint
       - eks-cluster-name
       - eks-secret-access-key
       - name
-      - new-name
       title: updateEKSTarget is a command that updates an existing target.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
@@ -19719,7 +20218,6 @@ components:
       - gke-cluster-name
       - gke-service-account-email
       - name
-      - new-name
       title: updateGKETarget is a command that updates an existing target.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
@@ -19784,7 +20282,6 @@ components:
           x-go-name: Username
       required:
       - name
-      - new-name
       title: updateGcpTarget is a command that updates an existing target.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
@@ -19934,7 +20431,6 @@ components:
       - k8s-cluster-endpoint
       - k8s-cluster-token
       - name
-      - new-name
       title: updateNativeK8STarget is a command that updates an existing target.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
@@ -20066,7 +20562,6 @@ components:
           x-go-name: Username
       required:
       - name
-      - new-name
       title: updateRabbitMQTarget is a command that updates a new target.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
@@ -20413,7 +20908,6 @@ components:
           x-go-name: Username
       required:
       - name
-      - new-name
       title: updateSSHTarget is a command that updates an existing target.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
@@ -20658,7 +21152,6 @@ components:
           x-go-name: Username
       required:
       - name
-      - new-name
       title: updateWebTarget is a command that updates an existing target.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
@@ -20719,13 +21212,6 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     uploadPKCS12:
       properties:
-        cert:
-          description: |-
-            Path to a file that contain the certificate in a PEM format. If this
-            parameter is not empty, the certificate will be taken from here and not
-            from the PKCS#12 input file
-          type: string
-          x-go-name: CertFile
         customer-frg-id:
           description: |-
             The customer fragment ID that will be used to split the key (if empty,
@@ -20796,10 +21282,6 @@ components:
           description: 'Key type. options: [RSA1024, RSA2048, RSA3072, RSA4096]'
           type: string
           x-go-name: Alg
-        cert:
-          description: Path to a file that contain the certificate in a PEM format.
-          type: string
-          x-go-name: CertFile
         cert-file-data:
           description: Certificate in a PEM format.
           type: string
@@ -20863,6 +21345,61 @@ components:
     uploadRSAOutput:
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    verifyJWTOutput:
+      properties:
+        result:
+          type: string
+          x-go-name: Result
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    verifyJWTWithClassicKey:
+      properties:
+        display-id:
+          description: The name of the key to use in the verify JWT process
+          type: string
+          x-go-name: DisplayId
+        jwt-claims:
+          description: JWTClaims
+          type: string
+          x-go-name: JWTClaims
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        signature:
+          description: Signature
+          type: string
+          x-go-name: Signature
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+        version:
+          description: classic key version
+          format: int32
+          type: integer
+          x-go-name: Version
+      required:
+      - display-id
+      - jwt-claims
+      - signature
+      - version
+      title: verifyJWTWithClassicKey is a command that verifys JWT by using an Classic
+        key.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     verifyPKCS1:
       properties:
         key-name:
@@ -20905,5 +21442,55 @@ components:
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     verifyPKCS1Output:
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    verifyPKICertOutput:
+      properties:
+        result:
+          type: string
+          x-go-name: Result
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    verifyPKICertWithClassicKey:
+      properties:
+        display-id:
+          description: The name of the key to use in the verify PKICert process
+          type: string
+          x-go-name: DisplayId
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        pki-cert:
+          description: PkiCert
+          type: string
+          x-go-name: PkiCert
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+        version:
+          description: classic key version
+          format: int32
+          type: integer
+          x-go-name: Version
+      required:
+      - display-id
+      - pki-cert
+      - version
+      title: verifyPKICertWithClassicKey is a command that verifys PKICert by using
+        an Classic key.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands

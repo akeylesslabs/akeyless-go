@@ -17,13 +17,13 @@ import (
 
 // GatewayCreateProducerAws gatewayCreateProducerAws is a command that creates aws producer
 type GatewayCreateProducerAws struct {
-	// Access Key ID
-	AccessKeyId string `json:"access-key-id"`
 	AccessMode *string `json:"access-mode,omitempty"`
-	// Secret Access Key
-	AccessSecretKey string `json:"access-secret-key"`
 	// Admin credentials rotation interval (days)
 	AdminRotationIntervalDays *int64 `json:"admin-rotation-interval-days,omitempty"`
+	// Access Key ID
+	AwsAccessKeyId string `json:"aws-access-key-id"`
+	// Secret Access Key
+	AwsAccessSecretKey string `json:"aws-access-secret-key"`
 	// AWS Role ARNs to be used in the Assume Role operation (relevant only for assume_role mode)
 	AwsRoleArns *string `json:"aws-role-arns,omitempty"`
 	// AWS User console access
@@ -58,12 +58,12 @@ type GatewayCreateProducerAws struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayCreateProducerAws(accessKeyId string, accessSecretKey string, name string, ) *GatewayCreateProducerAws {
+func NewGatewayCreateProducerAws(awsAccessKeyId string, awsAccessSecretKey string, name string, ) *GatewayCreateProducerAws {
 	this := GatewayCreateProducerAws{}
-	this.AccessKeyId = accessKeyId
-	this.AccessSecretKey = accessSecretKey
 	var adminRotationIntervalDays int64 = 0
 	this.AdminRotationIntervalDays = &adminRotationIntervalDays
+	this.AwsAccessKeyId = awsAccessKeyId
+	this.AwsAccessSecretKey = awsAccessSecretKey
 	var awsUserConsoleAccess bool = false
 	this.AwsUserConsoleAccess = &awsUserConsoleAccess
 	var awsUserProgrammaticAccess bool = true
@@ -98,30 +98,6 @@ func NewGatewayCreateProducerAwsWithDefaults() *GatewayCreateProducerAws {
 	return &this
 }
 
-// GetAccessKeyId returns the AccessKeyId field value
-func (o *GatewayCreateProducerAws) GetAccessKeyId() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.AccessKeyId
-}
-
-// GetAccessKeyIdOk returns a tuple with the AccessKeyId field value
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerAws) GetAccessKeyIdOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.AccessKeyId, true
-}
-
-// SetAccessKeyId sets field value
-func (o *GatewayCreateProducerAws) SetAccessKeyId(v string) {
-	o.AccessKeyId = v
-}
-
 // GetAccessMode returns the AccessMode field value if set, zero value otherwise.
 func (o *GatewayCreateProducerAws) GetAccessMode() string {
 	if o == nil || o.AccessMode == nil {
@@ -154,30 +130,6 @@ func (o *GatewayCreateProducerAws) SetAccessMode(v string) {
 	o.AccessMode = &v
 }
 
-// GetAccessSecretKey returns the AccessSecretKey field value
-func (o *GatewayCreateProducerAws) GetAccessSecretKey() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.AccessSecretKey
-}
-
-// GetAccessSecretKeyOk returns a tuple with the AccessSecretKey field value
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerAws) GetAccessSecretKeyOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.AccessSecretKey, true
-}
-
-// SetAccessSecretKey sets field value
-func (o *GatewayCreateProducerAws) SetAccessSecretKey(v string) {
-	o.AccessSecretKey = v
-}
-
 // GetAdminRotationIntervalDays returns the AdminRotationIntervalDays field value if set, zero value otherwise.
 func (o *GatewayCreateProducerAws) GetAdminRotationIntervalDays() int64 {
 	if o == nil || o.AdminRotationIntervalDays == nil {
@@ -208,6 +160,54 @@ func (o *GatewayCreateProducerAws) HasAdminRotationIntervalDays() bool {
 // SetAdminRotationIntervalDays gets a reference to the given int64 and assigns it to the AdminRotationIntervalDays field.
 func (o *GatewayCreateProducerAws) SetAdminRotationIntervalDays(v int64) {
 	o.AdminRotationIntervalDays = &v
+}
+
+// GetAwsAccessKeyId returns the AwsAccessKeyId field value
+func (o *GatewayCreateProducerAws) GetAwsAccessKeyId() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.AwsAccessKeyId
+}
+
+// GetAwsAccessKeyIdOk returns a tuple with the AwsAccessKeyId field value
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerAws) GetAwsAccessKeyIdOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.AwsAccessKeyId, true
+}
+
+// SetAwsAccessKeyId sets field value
+func (o *GatewayCreateProducerAws) SetAwsAccessKeyId(v string) {
+	o.AwsAccessKeyId = v
+}
+
+// GetAwsAccessSecretKey returns the AwsAccessSecretKey field value
+func (o *GatewayCreateProducerAws) GetAwsAccessSecretKey() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.AwsAccessSecretKey
+}
+
+// GetAwsAccessSecretKeyOk returns a tuple with the AwsAccessSecretKey field value
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerAws) GetAwsAccessSecretKeyOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.AwsAccessSecretKey, true
+}
+
+// SetAwsAccessSecretKey sets field value
+func (o *GatewayCreateProducerAws) SetAwsAccessSecretKey(v string) {
+	o.AwsAccessSecretKey = v
 }
 
 // GetAwsRoleArns returns the AwsRoleArns field value if set, zero value otherwise.
@@ -652,17 +652,17 @@ func (o *GatewayCreateProducerAws) SetUsername(v string) {
 
 func (o GatewayCreateProducerAws) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["access-key-id"] = o.AccessKeyId
-	}
 	if o.AccessMode != nil {
 		toSerialize["access-mode"] = o.AccessMode
 	}
-	if true {
-		toSerialize["access-secret-key"] = o.AccessSecretKey
-	}
 	if o.AdminRotationIntervalDays != nil {
 		toSerialize["admin-rotation-interval-days"] = o.AdminRotationIntervalDays
+	}
+	if true {
+		toSerialize["aws-access-key-id"] = o.AwsAccessKeyId
+	}
+	if true {
+		toSerialize["aws-access-secret-key"] = o.AwsAccessSecretKey
 	}
 	if o.AwsRoleArns != nil {
 		toSerialize["aws-role-arns"] = o.AwsRoleArns

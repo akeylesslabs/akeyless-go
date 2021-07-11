@@ -6,14 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Comment** | Pointer to **string** | Comment about the target | [optional] 
 **EksAccessKeyId** | **string** | Access Key ID | 
-**EksClusterCert** | **string** | EKS cluster CA certificate | 
+**EksClusterCaCert** | **string** | EKS cluster CA certificate | 
 **EksClusterEndpoint** | **string** | EKS cluster URL endpoint | 
 **EksClusterName** | **string** | EKS cluster name | 
 **EksRegion** | Pointer to **string** | Region | [optional] [default to "us-east-2"]
 **EksSecretAccessKey** | **string** | Secret Access Key | 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Target name | 
-**NewName** | **string** | New target name | 
+**NewName** | Pointer to **string** | New target name | [optional] 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 
 ### NewUpdateEKSTarget
 
-`func NewUpdateEKSTarget(eksAccessKeyId string, eksClusterCert string, eksClusterEndpoint string, eksClusterName string, eksSecretAccessKey string, name string, newName string, ) *UpdateEKSTarget`
+`func NewUpdateEKSTarget(eksAccessKeyId string, eksClusterCaCert string, eksClusterEndpoint string, eksClusterName string, eksSecretAccessKey string, name string, ) *UpdateEKSTarget`
 
 NewUpdateEKSTarget instantiates a new UpdateEKSTarget object
 This constructor will assign default values to properties that have it defined,
@@ -84,24 +84,24 @@ and a boolean to check if the value has been set.
 SetEksAccessKeyId sets EksAccessKeyId field to given value.
 
 
-### GetEksClusterCert
+### GetEksClusterCaCert
 
-`func (o *UpdateEKSTarget) GetEksClusterCert() string`
+`func (o *UpdateEKSTarget) GetEksClusterCaCert() string`
 
-GetEksClusterCert returns the EksClusterCert field if non-nil, zero value otherwise.
+GetEksClusterCaCert returns the EksClusterCaCert field if non-nil, zero value otherwise.
 
-### GetEksClusterCertOk
+### GetEksClusterCaCertOk
 
-`func (o *UpdateEKSTarget) GetEksClusterCertOk() (*string, bool)`
+`func (o *UpdateEKSTarget) GetEksClusterCaCertOk() (*string, bool)`
 
-GetEksClusterCertOk returns a tuple with the EksClusterCert field if it's non-nil, zero value otherwise
+GetEksClusterCaCertOk returns a tuple with the EksClusterCaCert field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEksClusterCert
+### SetEksClusterCaCert
 
-`func (o *UpdateEKSTarget) SetEksClusterCert(v string)`
+`func (o *UpdateEKSTarget) SetEksClusterCaCert(v string)`
 
-SetEksClusterCert sets EksClusterCert field to given value.
+SetEksClusterCaCert sets EksClusterCaCert field to given value.
 
 
 ### GetEksClusterEndpoint
@@ -253,6 +253,11 @@ and a boolean to check if the value has been set.
 
 SetNewName sets NewName field to given value.
 
+### HasNewName
+
+`func (o *UpdateEKSTarget) HasNewName() bool`
+
+HasNewName returns a boolean if a field has been set.
 
 ### GetPassword
 

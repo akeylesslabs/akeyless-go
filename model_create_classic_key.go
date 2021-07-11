@@ -17,8 +17,10 @@ import (
 
 // CreateClassicKey CreateClassicKey is a command that creates classic key
 type CreateClassicKey struct {
-	// Classic Key type; options: [AES256GCM, RSA2048]
+	// Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384]
 	Alg string `json:"alg"`
+	// Certificate in a PEM format.
+	CertFileData *string `json:"cert-file-data,omitempty"`
 	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
 	// Base64-encoded classic key value
@@ -82,6 +84,38 @@ func (o *CreateClassicKey) GetAlgOk() (*string, bool) {
 // SetAlg sets field value
 func (o *CreateClassicKey) SetAlg(v string) {
 	o.Alg = v
+}
+
+// GetCertFileData returns the CertFileData field value if set, zero value otherwise.
+func (o *CreateClassicKey) GetCertFileData() string {
+	if o == nil || o.CertFileData == nil {
+		var ret string
+		return ret
+	}
+	return *o.CertFileData
+}
+
+// GetCertFileDataOk returns a tuple with the CertFileData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateClassicKey) GetCertFileDataOk() (*string, bool) {
+	if o == nil || o.CertFileData == nil {
+		return nil, false
+	}
+	return o.CertFileData, true
+}
+
+// HasCertFileData returns a boolean if a field has been set.
+func (o *CreateClassicKey) HasCertFileData() bool {
+	if o != nil && o.CertFileData != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCertFileData gets a reference to the given string and assigns it to the CertFileData field.
+func (o *CreateClassicKey) SetCertFileData(v string) {
+	o.CertFileData = &v
 }
 
 // GetKey returns the Key field value if set, zero value otherwise.
@@ -400,6 +434,9 @@ func (o CreateClassicKey) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["alg"] = o.Alg
+	}
+	if o.CertFileData != nil {
+		toSerialize["cert-file-data"] = o.CertFileData
 	}
 	if o.Key != nil {
 		toSerialize["key"] = o.Key

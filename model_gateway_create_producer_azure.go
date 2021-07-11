@@ -20,17 +20,17 @@ type GatewayCreateProducerAzure struct {
 	// Azure App Object Id
 	AppObjId *string `json:"app-obj-id,omitempty"`
 	// Azure Client ID
-	ClientId string `json:"client-id"`
+	AzureClientId string `json:"azure-client-id"`
 	// Azure Client Secret
-	ClientSecret string `json:"client-secret"`
+	AzureClientSecret string `json:"azure-client-secret"`
+	// Azure Tenant ID
+	AzureTenantId string `json:"azure-tenant-id"`
 	// Producer name
 	Name string `json:"name"`
 	// Required only when the authentication process requires a username and password
 	Password *string `json:"password,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
-	// Azure Tenant ID
-	TenantId string `json:"tenant-id"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -55,12 +55,12 @@ type GatewayCreateProducerAzure struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayCreateProducerAzure(clientId string, clientSecret string, name string, tenantId string, ) *GatewayCreateProducerAzure {
+func NewGatewayCreateProducerAzure(azureClientId string, azureClientSecret string, azureTenantId string, name string, ) *GatewayCreateProducerAzure {
 	this := GatewayCreateProducerAzure{}
-	this.ClientId = clientId
-	this.ClientSecret = clientSecret
+	this.AzureClientId = azureClientId
+	this.AzureClientSecret = azureClientSecret
+	this.AzureTenantId = azureTenantId
 	this.Name = name
-	this.TenantId = tenantId
 	var userPortalAccess bool = false
 	this.UserPortalAccess = &userPortalAccess
 	var userProgrammaticAccess bool = true
@@ -116,52 +116,76 @@ func (o *GatewayCreateProducerAzure) SetAppObjId(v string) {
 	o.AppObjId = &v
 }
 
-// GetClientId returns the ClientId field value
-func (o *GatewayCreateProducerAzure) GetClientId() string {
+// GetAzureClientId returns the AzureClientId field value
+func (o *GatewayCreateProducerAzure) GetAzureClientId() string {
 	if o == nil  {
 		var ret string
 		return ret
 	}
 
-	return o.ClientId
+	return o.AzureClientId
 }
 
-// GetClientIdOk returns a tuple with the ClientId field value
+// GetAzureClientIdOk returns a tuple with the AzureClientId field value
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerAzure) GetClientIdOk() (*string, bool) {
+func (o *GatewayCreateProducerAzure) GetAzureClientIdOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.ClientId, true
+	return &o.AzureClientId, true
 }
 
-// SetClientId sets field value
-func (o *GatewayCreateProducerAzure) SetClientId(v string) {
-	o.ClientId = v
+// SetAzureClientId sets field value
+func (o *GatewayCreateProducerAzure) SetAzureClientId(v string) {
+	o.AzureClientId = v
 }
 
-// GetClientSecret returns the ClientSecret field value
-func (o *GatewayCreateProducerAzure) GetClientSecret() string {
+// GetAzureClientSecret returns the AzureClientSecret field value
+func (o *GatewayCreateProducerAzure) GetAzureClientSecret() string {
 	if o == nil  {
 		var ret string
 		return ret
 	}
 
-	return o.ClientSecret
+	return o.AzureClientSecret
 }
 
-// GetClientSecretOk returns a tuple with the ClientSecret field value
+// GetAzureClientSecretOk returns a tuple with the AzureClientSecret field value
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerAzure) GetClientSecretOk() (*string, bool) {
+func (o *GatewayCreateProducerAzure) GetAzureClientSecretOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.ClientSecret, true
+	return &o.AzureClientSecret, true
 }
 
-// SetClientSecret sets field value
-func (o *GatewayCreateProducerAzure) SetClientSecret(v string) {
-	o.ClientSecret = v
+// SetAzureClientSecret sets field value
+func (o *GatewayCreateProducerAzure) SetAzureClientSecret(v string) {
+	o.AzureClientSecret = v
+}
+
+// GetAzureTenantId returns the AzureTenantId field value
+func (o *GatewayCreateProducerAzure) GetAzureTenantId() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.AzureTenantId
+}
+
+// GetAzureTenantIdOk returns a tuple with the AzureTenantId field value
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerAzure) GetAzureTenantIdOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.AzureTenantId, true
+}
+
+// SetAzureTenantId sets field value
+func (o *GatewayCreateProducerAzure) SetAzureTenantId(v string) {
+	o.AzureTenantId = v
 }
 
 // GetName returns the Name field value
@@ -250,30 +274,6 @@ func (o *GatewayCreateProducerAzure) HasProducerEncryptionKeyName() bool {
 // SetProducerEncryptionKeyName gets a reference to the given string and assigns it to the ProducerEncryptionKeyName field.
 func (o *GatewayCreateProducerAzure) SetProducerEncryptionKeyName(v string) {
 	o.ProducerEncryptionKeyName = &v
-}
-
-// GetTenantId returns the TenantId field value
-func (o *GatewayCreateProducerAzure) GetTenantId() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.TenantId
-}
-
-// GetTenantIdOk returns a tuple with the TenantId field value
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerAzure) GetTenantIdOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.TenantId, true
-}
-
-// SetTenantId sets field value
-func (o *GatewayCreateProducerAzure) SetTenantId(v string) {
-	o.TenantId = v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -570,10 +570,13 @@ func (o GatewayCreateProducerAzure) MarshalJSON() ([]byte, error) {
 		toSerialize["app-obj-id"] = o.AppObjId
 	}
 	if true {
-		toSerialize["client-id"] = o.ClientId
+		toSerialize["azure-client-id"] = o.AzureClientId
 	}
 	if true {
-		toSerialize["client-secret"] = o.ClientSecret
+		toSerialize["azure-client-secret"] = o.AzureClientSecret
+	}
+	if true {
+		toSerialize["azure-tenant-id"] = o.AzureTenantId
 	}
 	if true {
 		toSerialize["name"] = o.Name
@@ -583,9 +586,6 @@ func (o GatewayCreateProducerAzure) MarshalJSON() ([]byte, error) {
 	}
 	if o.ProducerEncryptionKeyName != nil {
 		toSerialize["producer-encryption-key-name"] = o.ProducerEncryptionKeyName
-	}
-	if true {
-		toSerialize["tenant-id"] = o.TenantId
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

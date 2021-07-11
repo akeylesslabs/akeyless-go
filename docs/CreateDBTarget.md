@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **DbName** | Pointer to **string** |  | [optional] 
 **DbServerCertificates** | Pointer to **string** | (Optional) DB server certificates | [optional] 
 **DbServerName** | Pointer to **string** | (Optional) Server name for certificate verification | [optional] 
-**DbType** | Pointer to **string** |  | [optional] 
+**DbType** | **string** |  | 
 **Host** | Pointer to **string** |  | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **MongodbAtlas** | Pointer to **bool** |  | [optional] 
@@ -35,7 +35,7 @@ Name | Type | Description | Notes
 
 ### NewCreateDBTarget
 
-`func NewCreateDBTarget(name string, ) *CreateDBTarget`
+`func NewCreateDBTarget(dbType string, name string, ) *CreateDBTarget`
 
 NewCreateDBTarget instantiates a new CreateDBTarget object
 This constructor will assign default values to properties that have it defined,
@@ -169,11 +169,6 @@ and a boolean to check if the value has been set.
 
 SetDbType sets DbType field to given value.
 
-### HasDbType
-
-`func (o *CreateDBTarget) HasDbType() bool`
-
-HasDbType returns a boolean if a field has been set.
 
 ### GetHost
 

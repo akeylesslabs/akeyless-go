@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **SshPassword** | Pointer to **string** |  | [optional] 
 **SshUsername** | Pointer to **string** |  | [optional] 
 **Tags** | Pointer to **[]string** | List of the tags attached to this secret | [optional] 
-**TargetName** | Pointer to **string** |  | [optional] 
+**TargetName** | **string** | Target name | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 
 ### NewCreateRotatedSecret
 
-`func NewCreateRotatedSecret(name string, ) *CreateRotatedSecret`
+`func NewCreateRotatedSecret(name string, targetName string, ) *CreateRotatedSecret`
 
 NewCreateRotatedSecret instantiates a new CreateRotatedSecret object
 This constructor will assign default values to properties that have it defined,
@@ -406,11 +406,6 @@ and a boolean to check if the value has been set.
 
 SetTargetName sets TargetName field to given value.
 
-### HasTargetName
-
-`func (o *CreateRotatedSecret) HasTargetName() bool`
-
-HasTargetName returns a boolean if a field has been set.
 
 ### GetToken
 

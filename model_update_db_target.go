@@ -24,7 +24,7 @@ type UpdateDBTarget struct {
 	DbServerCertificates *string `json:"db-server-certificates,omitempty"`
 	// (Optional) Server name for certificate verification
 	DbServerName *string `json:"db-server-name,omitempty"`
-	DbType *string `json:"db-type,omitempty"`
+	DbType string `json:"db-type"`
 	Host *string `json:"host,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
@@ -50,7 +50,7 @@ type UpdateDBTarget struct {
 	// Target name
 	Name string `json:"name"`
 	// New target name
-	NewName string `json:"new-name"`
+	NewName *string `json:"new-name,omitempty"`
 	// Required only when the authentication process requires a username and password
 	Password *string `json:"password,omitempty"`
 	Port *string `json:"port,omitempty"`
@@ -71,10 +71,10 @@ type UpdateDBTarget struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateDBTarget(name string, newName string, ) *UpdateDBTarget {
+func NewUpdateDBTarget(dbType string, name string, ) *UpdateDBTarget {
 	this := UpdateDBTarget{}
+	this.DbType = dbType
 	this.Name = name
-	this.NewName = newName
 	var updateVersion bool = false
 	this.UpdateVersion = &updateVersion
 	return &this
@@ -218,36 +218,28 @@ func (o *UpdateDBTarget) SetDbServerName(v string) {
 	o.DbServerName = &v
 }
 
-// GetDbType returns the DbType field value if set, zero value otherwise.
+// GetDbType returns the DbType field value
 func (o *UpdateDBTarget) GetDbType() string {
-	if o == nil || o.DbType == nil {
+	if o == nil  {
 		var ret string
 		return ret
 	}
-	return *o.DbType
+
+	return o.DbType
 }
 
-// GetDbTypeOk returns a tuple with the DbType field value if set, nil otherwise
+// GetDbTypeOk returns a tuple with the DbType field value
 // and a boolean to check if the value has been set.
 func (o *UpdateDBTarget) GetDbTypeOk() (*string, bool) {
-	if o == nil || o.DbType == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.DbType, true
+	return &o.DbType, true
 }
 
-// HasDbType returns a boolean if a field has been set.
-func (o *UpdateDBTarget) HasDbType() bool {
-	if o != nil && o.DbType != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDbType gets a reference to the given string and assigns it to the DbType field.
+// SetDbType sets field value
 func (o *UpdateDBTarget) SetDbType(v string) {
-	o.DbType = &v
+	o.DbType = v
 }
 
 // GetHost returns the Host field value if set, zero value otherwise.
@@ -658,28 +650,36 @@ func (o *UpdateDBTarget) SetName(v string) {
 	o.Name = v
 }
 
-// GetNewName returns the NewName field value
+// GetNewName returns the NewName field value if set, zero value otherwise.
 func (o *UpdateDBTarget) GetNewName() string {
-	if o == nil  {
+	if o == nil || o.NewName == nil {
 		var ret string
 		return ret
 	}
-
-	return o.NewName
+	return *o.NewName
 }
 
-// GetNewNameOk returns a tuple with the NewName field value
+// GetNewNameOk returns a tuple with the NewName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateDBTarget) GetNewNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.NewName == nil {
 		return nil, false
 	}
-	return &o.NewName, true
+	return o.NewName, true
 }
 
-// SetNewName sets field value
+// HasNewName returns a boolean if a field has been set.
+func (o *UpdateDBTarget) HasNewName() bool {
+	if o != nil && o.NewName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNewName gets a reference to the given string and assigns it to the NewName field.
 func (o *UpdateDBTarget) SetNewName(v string) {
-	o.NewName = v
+	o.NewName = &v
 }
 
 // GetPassword returns the Password field value if set, zero value otherwise.
@@ -984,7 +984,7 @@ func (o UpdateDBTarget) MarshalJSON() ([]byte, error) {
 	if o.DbServerName != nil {
 		toSerialize["db-server-name"] = o.DbServerName
 	}
-	if o.DbType != nil {
+	if true {
 		toSerialize["db-type"] = o.DbType
 	}
 	if o.Host != nil {
@@ -1026,7 +1026,7 @@ func (o UpdateDBTarget) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if true {
+	if o.NewName != nil {
 		toSerialize["new-name"] = o.NewName
 	}
 	if o.Password != nil {

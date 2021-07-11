@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **DbName** | Pointer to **string** |  | [optional] 
 **DbServerCertificates** | Pointer to **string** | (Optional) DB server certificates | [optional] 
 **DbServerName** | Pointer to **string** | (Optional) Server name for certificate verification | [optional] 
-**DbType** | Pointer to **string** |  | [optional] 
+**DbType** | **string** |  | 
 **Host** | Pointer to **string** |  | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **MongodbAtlas** | Pointer to **bool** |  | [optional] 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **MongodbUriOptions** | Pointer to **string** | MongoDB server URI options | [optional] 
 **MongodbUsername** | Pointer to **string** | MongoDB server username | [optional] 
 **Name** | **string** | Target name | 
-**NewName** | **string** | New target name | 
+**NewName** | Pointer to **string** | New target name | [optional] 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **Port** | Pointer to **string** |  | [optional] 
 **Pwd** | Pointer to **string** |  | [optional] 
@@ -37,7 +37,7 @@ Name | Type | Description | Notes
 
 ### NewUpdateDBTarget
 
-`func NewUpdateDBTarget(name string, newName string, ) *UpdateDBTarget`
+`func NewUpdateDBTarget(dbType string, name string, ) *UpdateDBTarget`
 
 NewUpdateDBTarget instantiates a new UpdateDBTarget object
 This constructor will assign default values to properties that have it defined,
@@ -171,11 +171,6 @@ and a boolean to check if the value has been set.
 
 SetDbType sets DbType field to given value.
 
-### HasDbType
-
-`func (o *UpdateDBTarget) HasDbType() bool`
-
-HasDbType returns a boolean if a field has been set.
 
 ### GetHost
 
@@ -516,6 +511,11 @@ and a boolean to check if the value has been set.
 
 SetNewName sets NewName field to given value.
 
+### HasNewName
+
+`func (o *UpdateDBTarget) HasNewName() bool`
+
+HasNewName returns a boolean if a field has been set.
 
 ### GetPassword
 

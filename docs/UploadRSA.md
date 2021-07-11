@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Alg** | **string** | Key type. options: [RSA1024, RSA2048, RSA3072, RSA4096] | 
-**Cert** | Pointer to **string** | Path to a file that contain the certificate in a PEM format. | [optional] 
 **CertFileData** | Pointer to **string** | Certificate in a PEM format. | [optional] 
 **CustomerFrgId** | Pointer to **string** | The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment) | [optional] 
 **Metadata** | Pointer to **string** | A metadata about the key | [optional] 
@@ -56,31 +55,6 @@ and a boolean to check if the value has been set.
 
 SetAlg sets Alg field to given value.
 
-
-### GetCert
-
-`func (o *UploadRSA) GetCert() string`
-
-GetCert returns the Cert field if non-nil, zero value otherwise.
-
-### GetCertOk
-
-`func (o *UploadRSA) GetCertOk() (*string, bool)`
-
-GetCertOk returns a tuple with the Cert field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCert
-
-`func (o *UploadRSA) SetCert(v string)`
-
-SetCert sets Cert field to given value.
-
-### HasCert
-
-`func (o *UploadRSA) HasCert() bool`
-
-HasCert returns a boolean if a field has been set.
 
 ### GetCertFileData
 

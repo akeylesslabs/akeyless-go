@@ -19,8 +19,6 @@ import (
 type UploadRSA struct {
 	// Key type. options: [RSA1024, RSA2048, RSA3072, RSA4096]
 	Alg string `json:"alg"`
-	// Path to a file that contain the certificate in a PEM format.
-	Cert *string `json:"cert,omitempty"`
 	// Certificate in a PEM format.
 	CertFileData *string `json:"cert-file-data,omitempty"`
 	// The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment)
@@ -90,38 +88,6 @@ func (o *UploadRSA) GetAlgOk() (*string, bool) {
 // SetAlg sets field value
 func (o *UploadRSA) SetAlg(v string) {
 	o.Alg = v
-}
-
-// GetCert returns the Cert field value if set, zero value otherwise.
-func (o *UploadRSA) GetCert() string {
-	if o == nil || o.Cert == nil {
-		var ret string
-		return ret
-	}
-	return *o.Cert
-}
-
-// GetCertOk returns a tuple with the Cert field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UploadRSA) GetCertOk() (*string, bool) {
-	if o == nil || o.Cert == nil {
-		return nil, false
-	}
-	return o.Cert, true
-}
-
-// HasCert returns a boolean if a field has been set.
-func (o *UploadRSA) HasCert() bool {
-	if o != nil && o.Cert != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCert gets a reference to the given string and assigns it to the Cert field.
-func (o *UploadRSA) SetCert(v string) {
-	o.Cert = &v
 }
 
 // GetCertFileData returns the CertFileData field value if set, zero value otherwise.
@@ -472,9 +438,6 @@ func (o UploadRSA) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["alg"] = o.Alg
-	}
-	if o.Cert != nil {
-		toSerialize["cert"] = o.Cert
 	}
 	if o.CertFileData != nil {
 		toSerialize["cert-file-data"] = o.CertFileData

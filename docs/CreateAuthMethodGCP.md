@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessExpires** | Pointer to **int64** | Access expiration date in Unix timestamp (select 0 for access without expiry date) | [optional] [default to 0]
-**Audience** | Pointer to **string** | The audience to verify in the JWT received by the client | [optional] [default to "akeyless.io"]
+**Audience** | **string** | The audience to verify in the JWT received by the client | [default to "akeyless.io"]
 **BoundIps** | Pointer to **[]string** | A CIDR whitelist of the IPs that the access is restricted to | [optional] 
 **BoundLabels** | Pointer to **[]string** | A comma-separated list of GCP labels formatted as \&quot;key:value\&quot; strings that must be set on authorized GCE instances. TODO: Because GCP labels are not currently ACL&#39;d .... | [optional] 
 **BoundProjects** | Pointer to **[]string** | &#x3D;&#x3D;&#x3D; Human and Machine authentication section &#x3D;&#x3D;&#x3D; Array of GCP project IDs. Only entities belonging to any of the provided projects can authenticate. | [optional] 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **ServiceAccountCredsData** | Pointer to **string** | ServiceAccount credentials data instead of giving a file path, base64 encoded | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
-**Type** | Pointer to **string** | Type of the GCP Access Rules | [optional] 
+**Type** | **string** | Type of the GCP Access Rules | 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 
@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 
 ### NewCreateAuthMethodGCP
 
-`func NewCreateAuthMethodGCP(name string, ) *CreateAuthMethodGCP`
+`func NewCreateAuthMethodGCP(audience string, name string, type_ string, ) *CreateAuthMethodGCP`
 
 NewCreateAuthMethodGCP instantiates a new CreateAuthMethodGCP object
 This constructor will assign default values to properties that have it defined,
@@ -84,11 +84,6 @@ and a boolean to check if the value has been set.
 
 SetAudience sets Audience field to given value.
 
-### HasAudience
-
-`func (o *CreateAuthMethodGCP) HasAudience() bool`
-
-HasAudience returns a boolean if a field has been set.
 
 ### GetBoundIps
 
@@ -379,11 +374,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-### HasType
-
-`func (o *CreateAuthMethodGCP) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 ### GetUidToken
 

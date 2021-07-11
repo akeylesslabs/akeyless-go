@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ClassicKeyId** | Pointer to **int64** |  | [optional] 
+**ClassicKeyId** | Pointer to **string** |  | [optional] 
 **ClassicKeyName** | Pointer to **string** |  | [optional] 
 **ClassicKeyType** | Pointer to **string** |  | [optional] 
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetClassicKeyId
 
-`func (o *CreateClassicKeyOutput) GetClassicKeyId() int64`
+`func (o *CreateClassicKeyOutput) GetClassicKeyId() string`
 
 GetClassicKeyId returns the ClassicKeyId field if non-nil, zero value otherwise.
 
 ### GetClassicKeyIdOk
 
-`func (o *CreateClassicKeyOutput) GetClassicKeyIdOk() (*int64, bool)`
+`func (o *CreateClassicKeyOutput) GetClassicKeyIdOk() (*string, bool)`
 
 GetClassicKeyIdOk returns a tuple with the ClassicKeyId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetClassicKeyId
 
-`func (o *CreateClassicKeyOutput) SetClassicKeyId(v int64)`
+`func (o *CreateClassicKeyOutput) SetClassicKeyId(v string)`
 
 SetClassicKeyId sets ClassicKeyId field to given value.
 

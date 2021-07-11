@@ -17,7 +17,7 @@ import (
 
 // CreateClassicKeyOutput struct for CreateClassicKeyOutput
 type CreateClassicKeyOutput struct {
-	ClassicKeyId *int64 `json:"classic_key_id,omitempty"`
+	ClassicKeyId *string `json:"classic_key_id,omitempty"`
 	ClassicKeyName *string `json:"classic_key_name,omitempty"`
 	ClassicKeyType *string `json:"classic_key_type,omitempty"`
 }
@@ -40,9 +40,9 @@ func NewCreateClassicKeyOutputWithDefaults() *CreateClassicKeyOutput {
 }
 
 // GetClassicKeyId returns the ClassicKeyId field value if set, zero value otherwise.
-func (o *CreateClassicKeyOutput) GetClassicKeyId() int64 {
+func (o *CreateClassicKeyOutput) GetClassicKeyId() string {
 	if o == nil || o.ClassicKeyId == nil {
-		var ret int64
+		var ret string
 		return ret
 	}
 	return *o.ClassicKeyId
@@ -50,7 +50,7 @@ func (o *CreateClassicKeyOutput) GetClassicKeyId() int64 {
 
 // GetClassicKeyIdOk returns a tuple with the ClassicKeyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateClassicKeyOutput) GetClassicKeyIdOk() (*int64, bool) {
+func (o *CreateClassicKeyOutput) GetClassicKeyIdOk() (*string, bool) {
 	if o == nil || o.ClassicKeyId == nil {
 		return nil, false
 	}
@@ -66,8 +66,8 @@ func (o *CreateClassicKeyOutput) HasClassicKeyId() bool {
 	return false
 }
 
-// SetClassicKeyId gets a reference to the given int64 and assigns it to the ClassicKeyId field.
-func (o *CreateClassicKeyOutput) SetClassicKeyId(v int64) {
+// SetClassicKeyId gets a reference to the given string and assigns it to the ClassicKeyId field.
+func (o *CreateClassicKeyOutput) SetClassicKeyId(v string) {
 	o.ClassicKeyId = &v
 }
 

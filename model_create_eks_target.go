@@ -22,7 +22,7 @@ type CreateEKSTarget struct {
 	// Access Key ID
 	EksAccessKeyId string `json:"eks-access-key-id"`
 	// EKS cluster CA certificate
-	EksClusterCert string `json:"eks-cluster-cert"`
+	EksClusterCaCert string `json:"eks-cluster-ca-cert"`
 	// EKS cluster URL endpoint
 	EksClusterEndpoint string `json:"eks-cluster-endpoint"`
 	// EKS cluster name
@@ -49,10 +49,10 @@ type CreateEKSTarget struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateEKSTarget(eksAccessKeyId string, eksClusterCert string, eksClusterEndpoint string, eksClusterName string, eksSecretAccessKey string, name string, ) *CreateEKSTarget {
+func NewCreateEKSTarget(eksAccessKeyId string, eksClusterCaCert string, eksClusterEndpoint string, eksClusterName string, eksSecretAccessKey string, name string, ) *CreateEKSTarget {
 	this := CreateEKSTarget{}
 	this.EksAccessKeyId = eksAccessKeyId
-	this.EksClusterCert = eksClusterCert
+	this.EksClusterCaCert = eksClusterCaCert
 	this.EksClusterEndpoint = eksClusterEndpoint
 	this.EksClusterName = eksClusterName
 	var eksRegion string = "us-east-2"
@@ -128,28 +128,28 @@ func (o *CreateEKSTarget) SetEksAccessKeyId(v string) {
 	o.EksAccessKeyId = v
 }
 
-// GetEksClusterCert returns the EksClusterCert field value
-func (o *CreateEKSTarget) GetEksClusterCert() string {
+// GetEksClusterCaCert returns the EksClusterCaCert field value
+func (o *CreateEKSTarget) GetEksClusterCaCert() string {
 	if o == nil  {
 		var ret string
 		return ret
 	}
 
-	return o.EksClusterCert
+	return o.EksClusterCaCert
 }
 
-// GetEksClusterCertOk returns a tuple with the EksClusterCert field value
+// GetEksClusterCaCertOk returns a tuple with the EksClusterCaCert field value
 // and a boolean to check if the value has been set.
-func (o *CreateEKSTarget) GetEksClusterCertOk() (*string, bool) {
+func (o *CreateEKSTarget) GetEksClusterCaCertOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.EksClusterCert, true
+	return &o.EksClusterCaCert, true
 }
 
-// SetEksClusterCert sets field value
-func (o *CreateEKSTarget) SetEksClusterCert(v string) {
-	o.EksClusterCert = v
+// SetEksClusterCaCert sets field value
+func (o *CreateEKSTarget) SetEksClusterCaCert(v string) {
+	o.EksClusterCaCert = v
 }
 
 // GetEksClusterEndpoint returns the EksClusterEndpoint field value
@@ -449,7 +449,7 @@ func (o CreateEKSTarget) MarshalJSON() ([]byte, error) {
 		toSerialize["eks-access-key-id"] = o.EksAccessKeyId
 	}
 	if true {
-		toSerialize["eks-cluster-cert"] = o.EksClusterCert
+		toSerialize["eks-cluster-ca-cert"] = o.EksClusterCaCert
 	}
 	if true {
 		toSerialize["eks-cluster-endpoint"] = o.EksClusterEndpoint

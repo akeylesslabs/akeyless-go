@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Comment** | Pointer to **string** | Comment about the target | [optional] 
 **EksAccessKeyId** | **string** | Access Key ID | 
-**EksClusterCert** | **string** | EKS cluster CA certificate | 
+**EksClusterCaCert** | **string** | EKS cluster CA certificate | 
 **EksClusterEndpoint** | **string** | EKS cluster URL endpoint | 
 **EksClusterName** | **string** | EKS cluster name | 
 **EksRegion** | Pointer to **string** | Region | [optional] [default to "us-east-2"]
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewCreateEKSTarget
 
-`func NewCreateEKSTarget(eksAccessKeyId string, eksClusterCert string, eksClusterEndpoint string, eksClusterName string, eksSecretAccessKey string, name string, ) *CreateEKSTarget`
+`func NewCreateEKSTarget(eksAccessKeyId string, eksClusterCaCert string, eksClusterEndpoint string, eksClusterName string, eksSecretAccessKey string, name string, ) *CreateEKSTarget`
 
 NewCreateEKSTarget instantiates a new CreateEKSTarget object
 This constructor will assign default values to properties that have it defined,
@@ -82,24 +82,24 @@ and a boolean to check if the value has been set.
 SetEksAccessKeyId sets EksAccessKeyId field to given value.
 
 
-### GetEksClusterCert
+### GetEksClusterCaCert
 
-`func (o *CreateEKSTarget) GetEksClusterCert() string`
+`func (o *CreateEKSTarget) GetEksClusterCaCert() string`
 
-GetEksClusterCert returns the EksClusterCert field if non-nil, zero value otherwise.
+GetEksClusterCaCert returns the EksClusterCaCert field if non-nil, zero value otherwise.
 
-### GetEksClusterCertOk
+### GetEksClusterCaCertOk
 
-`func (o *CreateEKSTarget) GetEksClusterCertOk() (*string, bool)`
+`func (o *CreateEKSTarget) GetEksClusterCaCertOk() (*string, bool)`
 
-GetEksClusterCertOk returns a tuple with the EksClusterCert field if it's non-nil, zero value otherwise
+GetEksClusterCaCertOk returns a tuple with the EksClusterCaCert field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEksClusterCert
+### SetEksClusterCaCert
 
-`func (o *CreateEKSTarget) SetEksClusterCert(v string)`
+`func (o *CreateEKSTarget) SetEksClusterCaCert(v string)`
 
-SetEksClusterCert sets EksClusterCert field to given value.
+SetEksClusterCaCert sets EksClusterCaCert field to given value.
 
 
 ### GetEksClusterEndpoint

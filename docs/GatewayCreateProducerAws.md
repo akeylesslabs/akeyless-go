@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessKeyId** | **string** | Access Key ID | 
 **AccessMode** | Pointer to **string** |  | [optional] 
-**AccessSecretKey** | **string** | Secret Access Key | 
 **AdminRotationIntervalDays** | Pointer to **int64** | Admin credentials rotation interval (days) | [optional] [default to 0]
+**AwsAccessKeyId** | **string** | Access Key ID | 
+**AwsAccessSecretKey** | **string** | Secret Access Key | 
 **AwsRoleArns** | Pointer to **string** | AWS Role ARNs to be used in the Assume Role operation (relevant only for assume_role mode) | [optional] 
 **AwsUserConsoleAccess** | Pointer to **bool** | AWS User console access | [optional] [default to false]
 **AwsUserGroups** | Pointer to **string** | AWS User groups | [optional] 
@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 
 ### NewGatewayCreateProducerAws
 
-`func NewGatewayCreateProducerAws(accessKeyId string, accessSecretKey string, name string, ) *GatewayCreateProducerAws`
+`func NewGatewayCreateProducerAws(awsAccessKeyId string, awsAccessSecretKey string, name string, ) *GatewayCreateProducerAws`
 
 NewGatewayCreateProducerAws instantiates a new GatewayCreateProducerAws object
 This constructor will assign default values to properties that have it defined,
@@ -41,26 +41,6 @@ will change when the set of required properties is changed
 NewGatewayCreateProducerAwsWithDefaults instantiates a new GatewayCreateProducerAws object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetAccessKeyId
-
-`func (o *GatewayCreateProducerAws) GetAccessKeyId() string`
-
-GetAccessKeyId returns the AccessKeyId field if non-nil, zero value otherwise.
-
-### GetAccessKeyIdOk
-
-`func (o *GatewayCreateProducerAws) GetAccessKeyIdOk() (*string, bool)`
-
-GetAccessKeyIdOk returns a tuple with the AccessKeyId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAccessKeyId
-
-`func (o *GatewayCreateProducerAws) SetAccessKeyId(v string)`
-
-SetAccessKeyId sets AccessKeyId field to given value.
-
 
 ### GetAccessMode
 
@@ -87,26 +67,6 @@ SetAccessMode sets AccessMode field to given value.
 
 HasAccessMode returns a boolean if a field has been set.
 
-### GetAccessSecretKey
-
-`func (o *GatewayCreateProducerAws) GetAccessSecretKey() string`
-
-GetAccessSecretKey returns the AccessSecretKey field if non-nil, zero value otherwise.
-
-### GetAccessSecretKeyOk
-
-`func (o *GatewayCreateProducerAws) GetAccessSecretKeyOk() (*string, bool)`
-
-GetAccessSecretKeyOk returns a tuple with the AccessSecretKey field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAccessSecretKey
-
-`func (o *GatewayCreateProducerAws) SetAccessSecretKey(v string)`
-
-SetAccessSecretKey sets AccessSecretKey field to given value.
-
-
 ### GetAdminRotationIntervalDays
 
 `func (o *GatewayCreateProducerAws) GetAdminRotationIntervalDays() int64`
@@ -131,6 +91,46 @@ SetAdminRotationIntervalDays sets AdminRotationIntervalDays field to given value
 `func (o *GatewayCreateProducerAws) HasAdminRotationIntervalDays() bool`
 
 HasAdminRotationIntervalDays returns a boolean if a field has been set.
+
+### GetAwsAccessKeyId
+
+`func (o *GatewayCreateProducerAws) GetAwsAccessKeyId() string`
+
+GetAwsAccessKeyId returns the AwsAccessKeyId field if non-nil, zero value otherwise.
+
+### GetAwsAccessKeyIdOk
+
+`func (o *GatewayCreateProducerAws) GetAwsAccessKeyIdOk() (*string, bool)`
+
+GetAwsAccessKeyIdOk returns a tuple with the AwsAccessKeyId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsAccessKeyId
+
+`func (o *GatewayCreateProducerAws) SetAwsAccessKeyId(v string)`
+
+SetAwsAccessKeyId sets AwsAccessKeyId field to given value.
+
+
+### GetAwsAccessSecretKey
+
+`func (o *GatewayCreateProducerAws) GetAwsAccessSecretKey() string`
+
+GetAwsAccessSecretKey returns the AwsAccessSecretKey field if non-nil, zero value otherwise.
+
+### GetAwsAccessSecretKeyOk
+
+`func (o *GatewayCreateProducerAws) GetAwsAccessSecretKeyOk() (*string, bool)`
+
+GetAwsAccessSecretKeyOk returns a tuple with the AwsAccessSecretKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsAccessSecretKey
+
+`func (o *GatewayCreateProducerAws) SetAwsAccessSecretKey(v string)`
+
+SetAwsAccessSecretKey sets AwsAccessSecretKey field to given value.
+
 
 ### GetAwsRoleArns
 

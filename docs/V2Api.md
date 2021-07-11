@@ -38,6 +38,7 @@ Method | HTTP request | Description
 [**CreateWebTarget**](V2Api.md#CreateWebTarget) | **Post** /create-web-target | 
 [**Decrypt**](V2Api.md#Decrypt) | **Post** /decrypt | 
 [**DecryptPKCS1**](V2Api.md#DecryptPKCS1) | **Post** /decrypt-pkcs1 | 
+[**DecryptWithClassicKey**](V2Api.md#DecryptWithClassicKey) | **Post** /decrypt-with-classic-key | 
 [**DeleteAuthMethod**](V2Api.md#DeleteAuthMethod) | **Post** /delete-auth-method | 
 [**DeleteAuthMethods**](V2Api.md#DeleteAuthMethods) | **Post** /delete-auth-methods | 
 [**DeleteItem**](V2Api.md#DeleteItem) | **Post** /delete-item | 
@@ -53,6 +54,7 @@ Method | HTTP request | Description
 [**DescribePermissions**](V2Api.md#DescribePermissions) | **Post** /describe-permissions | 
 [**Encrypt**](V2Api.md#Encrypt) | **Post** /encrypt | 
 [**EncryptPKCS1**](V2Api.md#EncryptPKCS1) | **Post** /encrypt-pkcs1 | 
+[**EncryptWithClassicKey**](V2Api.md#EncryptWithClassicKey) | **Post** /encrypt-with-classic-key | 
 [**GatewayCreateProducerArtifactory**](V2Api.md#GatewayCreateProducerArtifactory) | **Post** /gateway-create-producer-artifactory | 
 [**GatewayCreateProducerAws**](V2Api.md#GatewayCreateProducerAws) | **Post** /gateway-create-producer-aws | 
 [**GatewayCreateProducerAzure**](V2Api.md#GatewayCreateProducerAzure) | **Post** /gateway-create-producer-azure | 
@@ -104,7 +106,9 @@ Method | HTTP request | Description
 [**RotateKey**](V2Api.md#RotateKey) | **Post** /rotate-key | 
 [**SetItemState**](V2Api.md#SetItemState) | **Post** /set-item-state | 
 [**SetRoleRule**](V2Api.md#SetRoleRule) | **Post** /set-role-rule | 
+[**SignJWTWithClassicKey**](V2Api.md#SignJWTWithClassicKey) | **Post** /sign-jwt-with-classic-key | 
 [**SignPKCS1**](V2Api.md#SignPKCS1) | **Post** /sign-pkcs1 | 
+[**SignPKICertWithClassicKey**](V2Api.md#SignPKICertWithClassicKey) | **Post** /sign-pki-cert-with-classic-key | 
 [**StaticCredsAuth**](V2Api.md#StaticCredsAuth) | **Post** /static-creds-auth | 
 [**UidCreateChildToken**](V2Api.md#UidCreateChildToken) | **Post** /uid-create-child-token | 
 [**UidGenerateToken**](V2Api.md#UidGenerateToken) | **Post** /uid-generate-token | 
@@ -136,7 +140,9 @@ Method | HTTP request | Description
 [**UpdateWebTarget**](V2Api.md#UpdateWebTarget) | **Post** /update-web-target | 
 [**UpdateWebTargetDetails**](V2Api.md#UpdateWebTargetDetails) | **Post** /update-web-target-details | 
 [**UploadRSA**](V2Api.md#UploadRSA) | **Post** /upload-rsa | 
+[**VerifyJWTWithClassicKey**](V2Api.md#VerifyJWTWithClassicKey) | **Post** /verify-jwt-with-classic-key | 
 [**VerifyPKCS1**](V2Api.md#VerifyPKCS1) | **Post** /verify-pkcs1 | 
+[**VerifyPKICertWithClassicKey**](V2Api.md#VerifyPKICertWithClassicKey) | **Post** /verify-pki-cert-with-classic-key | 
 
 
 
@@ -735,7 +741,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateAuthMethodGCP("Name_example") // CreateAuthMethodGCP | 
+    body := *openapiclient.NewcreateAuthMethodGCP("Audience_example", "Name_example", "Type_example") // CreateAuthMethodGCP | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -1183,7 +1189,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateDBTarget("Name_example") // CreateDBTarget | 
+    body := *openapiclient.NewcreateDBTarget("DbType_example", "Name_example") // CreateDBTarget | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -1375,7 +1381,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateEKSTarget("EksAccessKeyId_example", "EksClusterCert_example", "EksClusterEndpoint_example", "EksClusterName_example", "EksSecretAccessKey_example", "Name_example") // CreateEKSTarget | 
+    body := *openapiclient.NewcreateEKSTarget("EksAccessKeyId_example", "EksClusterCaCert_example", "EksClusterEndpoint_example", "EksClusterName_example", "EksSecretAccessKey_example", "Name_example") // CreateEKSTarget | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -1690,7 +1696,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreatePKICertIssuer("Name_example", "SignerKeyName_example", int64(123)) // CreatePKICertIssuer | 
+    body := *openapiclient.NewCreatePKICertIssuer("Name_example", "SignerKeyName_example", int64(123)) // CreatePKICertIssuer | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -1882,7 +1888,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateRotatedSecret("Name_example") // CreateRotatedSecret | 
+    body := *openapiclient.NewcreateRotatedSecret("Name_example", "TargetName_example") // CreateRotatedSecret | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -2296,6 +2302,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DecryptPKCS1Output**](decryptPKCS1Output.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DecryptWithClassicKey
+
+> DecryptWithClassicKeyOutput DecryptWithClassicKey(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdecryptWithClassicKey("Ciphertext_example", "DisplayId_example", int32(123)) // DecryptWithClassicKey | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DecryptWithClassicKey(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DecryptWithClassicKey``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DecryptWithClassicKey`: DecryptWithClassicKeyOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DecryptWithClassicKey`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDecryptWithClassicKeyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DecryptWithClassicKey**](DecryptWithClassicKey.md) |  | 
+
+### Return type
+
+[**DecryptWithClassicKeyOutput**](decryptWithClassicKeyOutput.md)
 
 ### Authorization
 
@@ -3271,6 +3341,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## EncryptWithClassicKey
+
+> EncryptOutput EncryptWithClassicKey(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewencryptWithClassicKey("DisplayId_example", "Plaintext_example", int32(123)) // EncryptWithClassicKey | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.EncryptWithClassicKey(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.EncryptWithClassicKey``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EncryptWithClassicKey`: EncryptOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.EncryptWithClassicKey`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEncryptWithClassicKeyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**EncryptWithClassicKey**](EncryptWithClassicKey.md) |  | 
+
+### Return type
+
+[**EncryptOutput**](encryptOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GatewayCreateProducerArtifactory
 
 > GatewayCreateProducerArtifactoryOutput GatewayCreateProducerArtifactory(ctx).Body(body).Execute()
@@ -3354,7 +3488,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerAws("AccessKeyId_example", "AccessSecretKey_example", "Name_example") // GatewayCreateProducerAws | 
+    body := *openapiclient.NewgatewayCreateProducerAws("AwsAccessKeyId_example", "AwsAccessSecretKey_example", "Name_example") // GatewayCreateProducerAws | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -3418,7 +3552,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerAzure("ClientId_example", "ClientSecret_example", "Name_example", "TenantId_example") // GatewayCreateProducerAzure | 
+    body := *openapiclient.NewgatewayCreateProducerAzure("AzureClientId_example", "AzureClientSecret_example", "AzureTenantId_example", "Name_example") // GatewayCreateProducerAzure | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -3610,7 +3744,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerEks("EksAccessKeyId_example", "EksClusterCert_example", "EksClusterEndpoint_example", "EksClusterName_example", "EksSecretAccessKey_example", "Name_example") // GatewayCreateProducerEks | 
+    body := *openapiclient.NewgatewayCreateProducerEks("EksAccessKeyId_example", "EksClusterCaCert_example", "EksClusterEndpoint_example", "EksClusterName_example", "EksSecretAccessKey_example", "Name_example") // GatewayCreateProducerEks | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -6521,6 +6655,68 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## SignJWTWithClassicKey
+
+> SignJWTWithClassicKey(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewsignJWTWithClassicKey("DisplayId_example", "JwtClaims_example", "SigningMethod_example", int32(123)) // SignJWTWithClassicKey | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.SignJWTWithClassicKey(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.SignJWTWithClassicKey``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSignJWTWithClassicKeyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**SignJWTWithClassicKey**](SignJWTWithClassicKey.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## SignPKCS1
 
 > SignPKCS1Output SignPKCS1(ctx).Body(body).Execute()
@@ -6570,6 +6766,68 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**SignPKCS1Output**](signPKCS1Output.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SignPKICertWithClassicKey
+
+> SignPKICertWithClassicKey(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewsignPKICertWithClassicKey("DisplayId_example", "SigningMethod_example", int64(123), int32(123)) // SignPKICertWithClassicKey | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.SignPKICertWithClassicKey(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.SignPKICertWithClassicKey``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSignPKICertWithClassicKeyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**SignPKICertWithClassicKey**](SignPKICertWithClassicKey.md) |  | 
+
+### Return type
+
+ (empty response body)
 
 ### Authorization
 
@@ -6988,7 +7246,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateAWSTarget("Name_example", "NewName_example") // UpdateAWSTarget | 
+    body := *openapiclient.NewupdateAWSTarget("Name_example") // UpdateAWSTarget | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -7180,7 +7438,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateAzureTarget("Name_example", "NewName_example") // UpdateAzureTarget | 
+    body := *openapiclient.NewupdateAzureTarget("Name_example") // UpdateAzureTarget | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -7244,7 +7502,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateDBTarget("Name_example", "NewName_example") // UpdateDBTarget | 
+    body := *openapiclient.NewupdateDBTarget("DbType_example", "Name_example") // UpdateDBTarget | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -7372,7 +7630,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateEKSTarget("EksAccessKeyId_example", "EksClusterCert_example", "EksClusterEndpoint_example", "EksClusterName_example", "EksSecretAccessKey_example", "Name_example", "NewName_example") // UpdateEKSTarget | 
+    body := *openapiclient.NewupdateEKSTarget("EksAccessKeyId_example", "EksClusterCaCert_example", "EksClusterEndpoint_example", "EksClusterName_example", "EksSecretAccessKey_example", "Name_example") // UpdateEKSTarget | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -7436,7 +7694,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateGKETarget("GkeClusterCert_example", "GkeClusterEndpoint_example", "GkeClusterName_example", "GkeServiceAccountEmail_example", "Name_example", "NewName_example") // UpdateGKETarget | 
+    body := *openapiclient.NewupdateGKETarget("GkeClusterCert_example", "GkeClusterEndpoint_example", "GkeClusterName_example", "GkeServiceAccountEmail_example", "Name_example") // UpdateGKETarget | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -7500,7 +7758,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateGcpTarget("Name_example", "NewName_example") // UpdateGcpTarget | 
+    body := *openapiclient.NewupdateGcpTarget("Name_example") // UpdateGcpTarget | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -7628,7 +7886,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateNativeK8STarget("K8sClusterCaCert_example", "K8sClusterEndpoint_example", "K8sClusterToken_example", "Name_example", "NewName_example") // UpdateNativeK8STarget | 
+    body := *openapiclient.NewupdateNativeK8STarget("K8sClusterCaCert_example", "K8sClusterEndpoint_example", "K8sClusterToken_example", "Name_example") // UpdateNativeK8STarget | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -7756,7 +8014,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateRabbitMQTarget("Name_example", "NewName_example") // UpdateRabbitMQTarget | 
+    body := *openapiclient.NewupdateRabbitMQTarget("Name_example") // UpdateRabbitMQTarget | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -8071,7 +8329,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateSSHTarget("Name_example", "NewName_example") // UpdateSSHTarget | 
+    body := *openapiclient.NewupdateSSHTarget("Name_example") // UpdateSSHTarget | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -8391,7 +8649,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateWebTarget("Name_example", "NewName_example") // UpdateWebTarget | 
+    body := *openapiclient.NewupdateWebTarget("Name_example") // UpdateWebTarget | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -8564,6 +8822,68 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## VerifyJWTWithClassicKey
+
+> VerifyJWTWithClassicKey(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewverifyJWTWithClassicKey("DisplayId_example", "JwtClaims_example", "Signature_example", int32(123)) // VerifyJWTWithClassicKey | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.VerifyJWTWithClassicKey(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.VerifyJWTWithClassicKey``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiVerifyJWTWithClassicKeyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**VerifyJWTWithClassicKey**](VerifyJWTWithClassicKey.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## VerifyPKCS1
 
 > map[string]interface{} VerifyPKCS1(ctx).Body(body).Execute()
@@ -8613,6 +8933,68 @@ Name | Type | Description  | Notes
 ### Return type
 
 **map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## VerifyPKICertWithClassicKey
+
+> VerifyPKICertWithClassicKey(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewverifyPKICertWithClassicKey("DisplayId_example", "PkiCert_example", int32(123)) // VerifyPKICertWithClassicKey | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.VerifyPKICertWithClassicKey(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.VerifyPKICertWithClassicKey``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiVerifyPKICertWithClassicKeyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**VerifyPKICertWithClassicKey**](VerifyPKICertWithClassicKey.md) |  | 
+
+### Return type
+
+ (empty response body)
 
 ### Authorization
 

@@ -38,7 +38,8 @@ type CreateRotatedSecret struct {
 	SshUsername *string `json:"ssh-username,omitempty"`
 	// List of the tags attached to this secret
 	Tags *[]string `json:"tags,omitempty"`
-	TargetName *string `json:"target-name,omitempty"`
+	// Target name
+	TargetName string `json:"target-name"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -51,9 +52,10 @@ type CreateRotatedSecret struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateRotatedSecret(name string, ) *CreateRotatedSecret {
+func NewCreateRotatedSecret(name string, targetName string, ) *CreateRotatedSecret {
 	this := CreateRotatedSecret{}
 	this.Name = name
+	this.TargetName = targetName
 	return &this
 }
 
@@ -505,36 +507,28 @@ func (o *CreateRotatedSecret) SetTags(v []string) {
 	o.Tags = &v
 }
 
-// GetTargetName returns the TargetName field value if set, zero value otherwise.
+// GetTargetName returns the TargetName field value
 func (o *CreateRotatedSecret) GetTargetName() string {
-	if o == nil || o.TargetName == nil {
+	if o == nil  {
 		var ret string
 		return ret
 	}
-	return *o.TargetName
+
+	return o.TargetName
 }
 
-// GetTargetNameOk returns a tuple with the TargetName field value if set, nil otherwise
+// GetTargetNameOk returns a tuple with the TargetName field value
 // and a boolean to check if the value has been set.
 func (o *CreateRotatedSecret) GetTargetNameOk() (*string, bool) {
-	if o == nil || o.TargetName == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.TargetName, true
+	return &o.TargetName, true
 }
 
-// HasTargetName returns a boolean if a field has been set.
-func (o *CreateRotatedSecret) HasTargetName() bool {
-	if o != nil && o.TargetName != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetTargetName gets a reference to the given string and assigns it to the TargetName field.
+// SetTargetName sets field value
 func (o *CreateRotatedSecret) SetTargetName(v string) {
-	o.TargetName = &v
+	o.TargetName = v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -677,7 +671,7 @@ func (o CreateRotatedSecret) MarshalJSON() ([]byte, error) {
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags
 	}
-	if o.TargetName != nil {
+	if true {
 		toSerialize["target-name"] = o.TargetName
 	}
 	if o.Token != nil {

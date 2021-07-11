@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **EksAccessKeyId** | **string** | Access Key ID | 
 **EksAssumeRole** | Pointer to **string** | IAM assume role | [optional] 
-**EksClusterCert** | **string** | EKS cluster CA certificate | 
+**EksClusterCaCert** | **string** | EKS cluster CA certificate | 
 **EksClusterEndpoint** | **string** | EKS cluster URL endpoint | 
 **EksClusterName** | **string** | EKS cluster name | 
 **EksRegion** | Pointer to **string** | Region | [optional] [default to "us-east-2"]
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 
 ### NewGatewayCreateProducerEks
 
-`func NewGatewayCreateProducerEks(eksAccessKeyId string, eksClusterCert string, eksClusterEndpoint string, eksClusterName string, eksSecretAccessKey string, name string, ) *GatewayCreateProducerEks`
+`func NewGatewayCreateProducerEks(eksAccessKeyId string, eksClusterCaCert string, eksClusterEndpoint string, eksClusterName string, eksSecretAccessKey string, name string, ) *GatewayCreateProducerEks`
 
 NewGatewayCreateProducerEks instantiates a new GatewayCreateProducerEks object
 This constructor will assign default values to properties that have it defined,
@@ -83,24 +83,24 @@ SetEksAssumeRole sets EksAssumeRole field to given value.
 
 HasEksAssumeRole returns a boolean if a field has been set.
 
-### GetEksClusterCert
+### GetEksClusterCaCert
 
-`func (o *GatewayCreateProducerEks) GetEksClusterCert() string`
+`func (o *GatewayCreateProducerEks) GetEksClusterCaCert() string`
 
-GetEksClusterCert returns the EksClusterCert field if non-nil, zero value otherwise.
+GetEksClusterCaCert returns the EksClusterCaCert field if non-nil, zero value otherwise.
 
-### GetEksClusterCertOk
+### GetEksClusterCaCertOk
 
-`func (o *GatewayCreateProducerEks) GetEksClusterCertOk() (*string, bool)`
+`func (o *GatewayCreateProducerEks) GetEksClusterCaCertOk() (*string, bool)`
 
-GetEksClusterCertOk returns a tuple with the EksClusterCert field if it's non-nil, zero value otherwise
+GetEksClusterCaCertOk returns a tuple with the EksClusterCaCert field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEksClusterCert
+### SetEksClusterCaCert
 
-`func (o *GatewayCreateProducerEks) SetEksClusterCert(v string)`
+`func (o *GatewayCreateProducerEks) SetEksClusterCaCert(v string)`
 
-SetEksClusterCert sets EksClusterCert field to given value.
+SetEksClusterCaCert sets EksClusterCaCert field to given value.
 
 
 ### GetEksClusterEndpoint

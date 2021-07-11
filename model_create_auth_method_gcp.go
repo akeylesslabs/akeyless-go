@@ -20,7 +20,7 @@ type CreateAuthMethodGCP struct {
 	// Access expiration date in Unix timestamp (select 0 for access without expiry date)
 	AccessExpires *int64 `json:"access-expires,omitempty"`
 	// The audience to verify in the JWT received by the client
-	Audience *string `json:"audience,omitempty"`
+	Audience string `json:"audience"`
 	// A CIDR whitelist of the IPs that the access is restricted to
 	BoundIps *[]string `json:"bound-ips,omitempty"`
 	// A comma-separated list of GCP labels formatted as \"key:value\" strings that must be set on authorized GCE instances. TODO: Because GCP labels are not currently ACL'd ....
@@ -44,7 +44,7 @@ type CreateAuthMethodGCP struct {
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// Type of the GCP Access Rules
-	Type *string `json:"type,omitempty"`
+	Type string `json:"type"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
 	// Required only when the authentication process requires a username and password
@@ -55,13 +55,13 @@ type CreateAuthMethodGCP struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateAuthMethodGCP(name string, ) *CreateAuthMethodGCP {
+func NewCreateAuthMethodGCP(audience string, name string, type_ string, ) *CreateAuthMethodGCP {
 	this := CreateAuthMethodGCP{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
-	var audience string = "akeyless.io"
-	this.Audience = &audience
+	this.Audience = audience
 	this.Name = name
+	this.Type = type_
 	return &this
 }
 
@@ -73,7 +73,7 @@ func NewCreateAuthMethodGCPWithDefaults() *CreateAuthMethodGCP {
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
 	var audience string = "akeyless.io"
-	this.Audience = &audience
+	this.Audience = audience
 	return &this
 }
 
@@ -109,36 +109,28 @@ func (o *CreateAuthMethodGCP) SetAccessExpires(v int64) {
 	o.AccessExpires = &v
 }
 
-// GetAudience returns the Audience field value if set, zero value otherwise.
+// GetAudience returns the Audience field value
 func (o *CreateAuthMethodGCP) GetAudience() string {
-	if o == nil || o.Audience == nil {
+	if o == nil  {
 		var ret string
 		return ret
 	}
-	return *o.Audience
+
+	return o.Audience
 }
 
-// GetAudienceOk returns a tuple with the Audience field value if set, nil otherwise
+// GetAudienceOk returns a tuple with the Audience field value
 // and a boolean to check if the value has been set.
 func (o *CreateAuthMethodGCP) GetAudienceOk() (*string, bool) {
-	if o == nil || o.Audience == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Audience, true
+	return &o.Audience, true
 }
 
-// HasAudience returns a boolean if a field has been set.
-func (o *CreateAuthMethodGCP) HasAudience() bool {
-	if o != nil && o.Audience != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAudience gets a reference to the given string and assigns it to the Audience field.
+// SetAudience sets field value
 func (o *CreateAuthMethodGCP) SetAudience(v string) {
-	o.Audience = &v
+	o.Audience = v
 }
 
 // GetBoundIps returns the BoundIps field value if set, zero value otherwise.
@@ -485,36 +477,28 @@ func (o *CreateAuthMethodGCP) SetToken(v string) {
 	o.Token = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value
 func (o *CreateAuthMethodGCP) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil  {
 		var ret string
 		return ret
 	}
-	return *o.Type
+
+	return o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *CreateAuthMethodGCP) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *CreateAuthMethodGCP) HasType() bool {
-	if o != nil && o.Type != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given string and assigns it to the Type field.
+// SetType sets field value
 func (o *CreateAuthMethodGCP) SetType(v string) {
-	o.Type = &v
+	o.Type = v
 }
 
 // GetUidToken returns the UidToken field value if set, zero value otherwise.
@@ -586,7 +570,7 @@ func (o CreateAuthMethodGCP) MarshalJSON() ([]byte, error) {
 	if o.AccessExpires != nil {
 		toSerialize["access-expires"] = o.AccessExpires
 	}
-	if o.Audience != nil {
+	if true {
 		toSerialize["audience"] = o.Audience
 	}
 	if o.BoundIps != nil {
@@ -622,7 +606,7 @@ func (o CreateAuthMethodGCP) MarshalJSON() ([]byte, error) {
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
 	}
-	if o.Type != nil {
+	if true {
 		toSerialize["type"] = o.Type
 	}
 	if o.UidToken != nil {

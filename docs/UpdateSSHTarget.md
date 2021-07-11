@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Host** | Pointer to **string** |  | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Target name | 
-**NewName** | **string** | New target name | 
+**NewName** | Pointer to **string** | New target name | [optional] 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **Port** | Pointer to **string** |  | [optional] 
 **PrivateKey** | Pointer to **string** |  | [optional] 
@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 
 ### NewUpdateSSHTarget
 
-`func NewUpdateSSHTarget(name string, newName string, ) *UpdateSSHTarget`
+`func NewUpdateSSHTarget(name string, ) *UpdateSSHTarget`
 
 NewUpdateSSHTarget instantiates a new UpdateSSHTarget object
 This constructor will assign default values to properties that have it defined,
@@ -153,6 +153,11 @@ and a boolean to check if the value has been set.
 
 SetNewName sets NewName field to given value.
 
+### HasNewName
+
+`func (o *UpdateSSHTarget) HasNewName() bool`
+
+HasNewName returns a boolean if a field has been set.
 
 ### GetPassword
 

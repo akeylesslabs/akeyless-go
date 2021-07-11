@@ -22,7 +22,7 @@ type UpdateEKSTarget struct {
 	// Access Key ID
 	EksAccessKeyId string `json:"eks-access-key-id"`
 	// EKS cluster CA certificate
-	EksClusterCert string `json:"eks-cluster-cert"`
+	EksClusterCaCert string `json:"eks-cluster-ca-cert"`
 	// EKS cluster URL endpoint
 	EksClusterEndpoint string `json:"eks-cluster-endpoint"`
 	// EKS cluster name
@@ -36,7 +36,7 @@ type UpdateEKSTarget struct {
 	// Target name
 	Name string `json:"name"`
 	// New target name
-	NewName string `json:"new-name"`
+	NewName *string `json:"new-name,omitempty"`
 	// Required only when the authentication process requires a username and password
 	Password *string `json:"password,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -53,17 +53,16 @@ type UpdateEKSTarget struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateEKSTarget(eksAccessKeyId string, eksClusterCert string, eksClusterEndpoint string, eksClusterName string, eksSecretAccessKey string, name string, newName string, ) *UpdateEKSTarget {
+func NewUpdateEKSTarget(eksAccessKeyId string, eksClusterCaCert string, eksClusterEndpoint string, eksClusterName string, eksSecretAccessKey string, name string, ) *UpdateEKSTarget {
 	this := UpdateEKSTarget{}
 	this.EksAccessKeyId = eksAccessKeyId
-	this.EksClusterCert = eksClusterCert
+	this.EksClusterCaCert = eksClusterCaCert
 	this.EksClusterEndpoint = eksClusterEndpoint
 	this.EksClusterName = eksClusterName
 	var eksRegion string = "us-east-2"
 	this.EksRegion = &eksRegion
 	this.EksSecretAccessKey = eksSecretAccessKey
 	this.Name = name
-	this.NewName = newName
 	var updateVersion bool = false
 	this.UpdateVersion = &updateVersion
 	return &this
@@ -137,28 +136,28 @@ func (o *UpdateEKSTarget) SetEksAccessKeyId(v string) {
 	o.EksAccessKeyId = v
 }
 
-// GetEksClusterCert returns the EksClusterCert field value
-func (o *UpdateEKSTarget) GetEksClusterCert() string {
+// GetEksClusterCaCert returns the EksClusterCaCert field value
+func (o *UpdateEKSTarget) GetEksClusterCaCert() string {
 	if o == nil  {
 		var ret string
 		return ret
 	}
 
-	return o.EksClusterCert
+	return o.EksClusterCaCert
 }
 
-// GetEksClusterCertOk returns a tuple with the EksClusterCert field value
+// GetEksClusterCaCertOk returns a tuple with the EksClusterCaCert field value
 // and a boolean to check if the value has been set.
-func (o *UpdateEKSTarget) GetEksClusterCertOk() (*string, bool) {
+func (o *UpdateEKSTarget) GetEksClusterCaCertOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.EksClusterCert, true
+	return &o.EksClusterCaCert, true
 }
 
-// SetEksClusterCert sets field value
-func (o *UpdateEKSTarget) SetEksClusterCert(v string) {
-	o.EksClusterCert = v
+// SetEksClusterCaCert sets field value
+func (o *UpdateEKSTarget) SetEksClusterCaCert(v string) {
+	o.EksClusterCaCert = v
 }
 
 // GetEksClusterEndpoint returns the EksClusterEndpoint field value
@@ -321,28 +320,36 @@ func (o *UpdateEKSTarget) SetName(v string) {
 	o.Name = v
 }
 
-// GetNewName returns the NewName field value
+// GetNewName returns the NewName field value if set, zero value otherwise.
 func (o *UpdateEKSTarget) GetNewName() string {
-	if o == nil  {
+	if o == nil || o.NewName == nil {
 		var ret string
 		return ret
 	}
-
-	return o.NewName
+	return *o.NewName
 }
 
-// GetNewNameOk returns a tuple with the NewName field value
+// GetNewNameOk returns a tuple with the NewName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateEKSTarget) GetNewNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.NewName == nil {
 		return nil, false
 	}
-	return &o.NewName, true
+	return o.NewName, true
 }
 
-// SetNewName sets field value
+// HasNewName returns a boolean if a field has been set.
+func (o *UpdateEKSTarget) HasNewName() bool {
+	if o != nil && o.NewName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNewName gets a reference to the given string and assigns it to the NewName field.
 func (o *UpdateEKSTarget) SetNewName(v string) {
-	o.NewName = v
+	o.NewName = &v
 }
 
 // GetPassword returns the Password field value if set, zero value otherwise.
@@ -514,7 +521,7 @@ func (o UpdateEKSTarget) MarshalJSON() ([]byte, error) {
 		toSerialize["eks-access-key-id"] = o.EksAccessKeyId
 	}
 	if true {
-		toSerialize["eks-cluster-cert"] = o.EksClusterCert
+		toSerialize["eks-cluster-ca-cert"] = o.EksClusterCaCert
 	}
 	if true {
 		toSerialize["eks-cluster-endpoint"] = o.EksClusterEndpoint
@@ -534,7 +541,7 @@ func (o UpdateEKSTarget) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if true {
+	if o.NewName != nil {
 		toSerialize["new-name"] = o.NewName
 	}
 	if o.Password != nil {

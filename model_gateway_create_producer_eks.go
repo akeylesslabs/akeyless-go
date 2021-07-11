@@ -22,7 +22,7 @@ type GatewayCreateProducerEks struct {
 	// IAM assume role
 	EksAssumeRole *string `json:"eks-assume-role,omitempty"`
 	// EKS cluster CA certificate
-	EksClusterCert string `json:"eks-cluster-cert"`
+	EksClusterCaCert string `json:"eks-cluster-ca-cert"`
 	// EKS cluster URL endpoint
 	EksClusterEndpoint string `json:"eks-cluster-endpoint"`
 	// EKS cluster name
@@ -51,10 +51,10 @@ type GatewayCreateProducerEks struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayCreateProducerEks(eksAccessKeyId string, eksClusterCert string, eksClusterEndpoint string, eksClusterName string, eksSecretAccessKey string, name string, ) *GatewayCreateProducerEks {
+func NewGatewayCreateProducerEks(eksAccessKeyId string, eksClusterCaCert string, eksClusterEndpoint string, eksClusterName string, eksSecretAccessKey string, name string, ) *GatewayCreateProducerEks {
 	this := GatewayCreateProducerEks{}
 	this.EksAccessKeyId = eksAccessKeyId
-	this.EksClusterCert = eksClusterCert
+	this.EksClusterCaCert = eksClusterCaCert
 	this.EksClusterEndpoint = eksClusterEndpoint
 	this.EksClusterName = eksClusterName
 	var eksRegion string = "us-east-2"
@@ -134,28 +134,28 @@ func (o *GatewayCreateProducerEks) SetEksAssumeRole(v string) {
 	o.EksAssumeRole = &v
 }
 
-// GetEksClusterCert returns the EksClusterCert field value
-func (o *GatewayCreateProducerEks) GetEksClusterCert() string {
+// GetEksClusterCaCert returns the EksClusterCaCert field value
+func (o *GatewayCreateProducerEks) GetEksClusterCaCert() string {
 	if o == nil  {
 		var ret string
 		return ret
 	}
 
-	return o.EksClusterCert
+	return o.EksClusterCaCert
 }
 
-// GetEksClusterCertOk returns a tuple with the EksClusterCert field value
+// GetEksClusterCaCertOk returns a tuple with the EksClusterCaCert field value
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerEks) GetEksClusterCertOk() (*string, bool) {
+func (o *GatewayCreateProducerEks) GetEksClusterCaCertOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.EksClusterCert, true
+	return &o.EksClusterCaCert, true
 }
 
-// SetEksClusterCert sets field value
-func (o *GatewayCreateProducerEks) SetEksClusterCert(v string) {
-	o.EksClusterCert = v
+// SetEksClusterCaCert sets field value
+func (o *GatewayCreateProducerEks) SetEksClusterCaCert(v string) {
+	o.EksClusterCaCert = v
 }
 
 // GetEksClusterEndpoint returns the EksClusterEndpoint field value
@@ -487,7 +487,7 @@ func (o GatewayCreateProducerEks) MarshalJSON() ([]byte, error) {
 		toSerialize["eks-assume-role"] = o.EksAssumeRole
 	}
 	if true {
-		toSerialize["eks-cluster-cert"] = o.EksClusterCert
+		toSerialize["eks-cluster-ca-cert"] = o.EksClusterCaCert
 	}
 	if true {
 		toSerialize["eks-cluster-endpoint"] = o.EksClusterEndpoint

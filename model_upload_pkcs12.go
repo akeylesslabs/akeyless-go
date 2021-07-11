@@ -17,8 +17,6 @@ import (
 
 // UploadPKCS12 struct for UploadPKCS12
 type UploadPKCS12 struct {
-	// Path to a file that contain the certificate in a PEM format. If this parameter is not empty, the certificate will be taken from here and not from the PKCS#12 input file
-	Cert *string `json:"cert,omitempty"`
 	// The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment)
 	CustomerFrgId *string `json:"customer-frg-id,omitempty"`
 	// PKCS#12 input file (private key and certificate only)
@@ -65,38 +63,6 @@ func NewUploadPKCS12WithDefaults() *UploadPKCS12 {
 	var splitLevel int64 = 2
 	this.SplitLevel = &splitLevel
 	return &this
-}
-
-// GetCert returns the Cert field value if set, zero value otherwise.
-func (o *UploadPKCS12) GetCert() string {
-	if o == nil || o.Cert == nil {
-		var ret string
-		return ret
-	}
-	return *o.Cert
-}
-
-// GetCertOk returns a tuple with the Cert field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UploadPKCS12) GetCertOk() (*string, bool) {
-	if o == nil || o.Cert == nil {
-		return nil, false
-	}
-	return o.Cert, true
-}
-
-// HasCert returns a boolean if a field has been set.
-func (o *UploadPKCS12) HasCert() bool {
-	if o != nil && o.Cert != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCert gets a reference to the given string and assigns it to the Cert field.
-func (o *UploadPKCS12) SetCert(v string) {
-	o.Cert = &v
 }
 
 // GetCustomerFrgId returns the CustomerFrgId field value if set, zero value otherwise.
@@ -429,9 +395,6 @@ func (o *UploadPKCS12) SetUsername(v string) {
 
 func (o UploadPKCS12) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Cert != nil {
-		toSerialize["cert"] = o.Cert
-	}
 	if o.CustomerFrgId != nil {
 		toSerialize["customer-frg-id"] = o.CustomerFrgId
 	}

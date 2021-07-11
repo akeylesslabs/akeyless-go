@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Cert** | Pointer to **string** | Path to a file that contain the certificate in a PEM format. If this parameter is not empty, the certificate will be taken from here and not from the PKCS#12 input file | [optional] 
 **CustomerFrgId** | Pointer to **string** | The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment) | [optional] 
 **In** | **string** | PKCS#12 input file (private key and certificate only) | 
 **Metadata** | Pointer to **string** | A metadata about the key | [optional] 
@@ -35,31 +34,6 @@ will change when the set of required properties is changed
 NewUploadPKCS12WithDefaults instantiates a new UploadPKCS12 object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetCert
-
-`func (o *UploadPKCS12) GetCert() string`
-
-GetCert returns the Cert field if non-nil, zero value otherwise.
-
-### GetCertOk
-
-`func (o *UploadPKCS12) GetCertOk() (*string, bool)`
-
-GetCertOk returns a tuple with the Cert field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCert
-
-`func (o *UploadPKCS12) SetCert(v string)`
-
-SetCert sets Cert field to given value.
-
-### HasCert
-
-`func (o *UploadPKCS12) HasCert() bool`
-
-HasCert returns a boolean if a field has been set.
 
 ### GetCustomerFrgId
 

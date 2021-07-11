@@ -24,7 +24,7 @@ type CreateDBTarget struct {
 	DbServerCertificates *string `json:"db-server-certificates,omitempty"`
 	// (Optional) Server name for certificate verification
 	DbServerName *string `json:"db-server-name,omitempty"`
-	DbType *string `json:"db-type,omitempty"`
+	DbType string `json:"db-type"`
 	Host *string `json:"host,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
@@ -67,8 +67,9 @@ type CreateDBTarget struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateDBTarget(name string, ) *CreateDBTarget {
+func NewCreateDBTarget(dbType string, name string, ) *CreateDBTarget {
 	this := CreateDBTarget{}
+	this.DbType = dbType
 	this.Name = name
 	return &this
 }
@@ -209,36 +210,28 @@ func (o *CreateDBTarget) SetDbServerName(v string) {
 	o.DbServerName = &v
 }
 
-// GetDbType returns the DbType field value if set, zero value otherwise.
+// GetDbType returns the DbType field value
 func (o *CreateDBTarget) GetDbType() string {
-	if o == nil || o.DbType == nil {
+	if o == nil  {
 		var ret string
 		return ret
 	}
-	return *o.DbType
+
+	return o.DbType
 }
 
-// GetDbTypeOk returns a tuple with the DbType field value if set, nil otherwise
+// GetDbTypeOk returns a tuple with the DbType field value
 // and a boolean to check if the value has been set.
 func (o *CreateDBTarget) GetDbTypeOk() (*string, bool) {
-	if o == nil || o.DbType == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.DbType, true
+	return &o.DbType, true
 }
 
-// HasDbType returns a boolean if a field has been set.
-func (o *CreateDBTarget) HasDbType() bool {
-	if o != nil && o.DbType != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDbType gets a reference to the given string and assigns it to the DbType field.
+// SetDbType sets field value
 func (o *CreateDBTarget) SetDbType(v string) {
-	o.DbType = &v
+	o.DbType = v
 }
 
 // GetHost returns the Host field value if set, zero value otherwise.
@@ -919,7 +912,7 @@ func (o CreateDBTarget) MarshalJSON() ([]byte, error) {
 	if o.DbServerName != nil {
 		toSerialize["db-server-name"] = o.DbServerName
 	}
-	if o.DbType != nil {
+	if true {
 		toSerialize["db-type"] = o.DbType
 	}
 	if o.Host != nil {
