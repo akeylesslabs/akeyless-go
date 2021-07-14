@@ -17,6 +17,8 @@ import (
 
 // KMIPClient struct for KMIPClient
 type KMIPClient struct {
+	Environment *string `json:"environment,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Rules *[]PathRule `json:"rules,omitempty"`
 }
@@ -36,6 +38,70 @@ func NewKMIPClient() *KMIPClient {
 func NewKMIPClientWithDefaults() *KMIPClient {
 	this := KMIPClient{}
 	return &this
+}
+
+// GetEnvironment returns the Environment field value if set, zero value otherwise.
+func (o *KMIPClient) GetEnvironment() string {
+	if o == nil || o.Environment == nil {
+		var ret string
+		return ret
+	}
+	return *o.Environment
+}
+
+// GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KMIPClient) GetEnvironmentOk() (*string, bool) {
+	if o == nil || o.Environment == nil {
+		return nil, false
+	}
+	return o.Environment, true
+}
+
+// HasEnvironment returns a boolean if a field has been set.
+func (o *KMIPClient) HasEnvironment() bool {
+	if o != nil && o.Environment != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEnvironment gets a reference to the given string and assigns it to the Environment field.
+func (o *KMIPClient) SetEnvironment(v string) {
+	o.Environment = &v
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *KMIPClient) GetId() string {
+	if o == nil || o.Id == nil {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KMIPClient) GetIdOk() (*string, bool) {
+	if o == nil || o.Id == nil {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *KMIPClient) HasId() bool {
+	if o != nil && o.Id != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *KMIPClient) SetId(v string) {
+	o.Id = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -104,6 +170,12 @@ func (o *KMIPClient) SetRules(v []PathRule) {
 
 func (o KMIPClient) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Environment != nil {
+		toSerialize["environment"] = o.Environment
+	}
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
+	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}

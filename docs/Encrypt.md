@@ -4,8 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DisplayId** | Pointer to **string** | The display id of the key to use in the encryption process | [optional] 
 **EncryptionContext** | Pointer to **map[string]string** | name-value pair that specifies the encryption context to be used for authenticated encryption. If used here, the same value must be supplied to the decrypt command or decryption will fail | [optional] 
-**KeyName** | **string** | The name of the key to use in the encryption process | 
+**KeyName** | Pointer to **string** | The name of the key to use in the encryption process | [optional] 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **Plaintext** | **string** | Data to be encrypted | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -16,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewEncrypt
 
-`func NewEncrypt(keyName string, plaintext string, ) *Encrypt`
+`func NewEncrypt(plaintext string, ) *Encrypt`
 
 NewEncrypt instantiates a new Encrypt object
 This constructor will assign default values to properties that have it defined,
@@ -30,6 +31,31 @@ will change when the set of required properties is changed
 NewEncryptWithDefaults instantiates a new Encrypt object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetDisplayId
+
+`func (o *Encrypt) GetDisplayId() string`
+
+GetDisplayId returns the DisplayId field if non-nil, zero value otherwise.
+
+### GetDisplayIdOk
+
+`func (o *Encrypt) GetDisplayIdOk() (*string, bool)`
+
+GetDisplayIdOk returns a tuple with the DisplayId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisplayId
+
+`func (o *Encrypt) SetDisplayId(v string)`
+
+SetDisplayId sets DisplayId field to given value.
+
+### HasDisplayId
+
+`func (o *Encrypt) HasDisplayId() bool`
+
+HasDisplayId returns a boolean if a field has been set.
 
 ### GetEncryptionContext
 
@@ -75,6 +101,11 @@ and a boolean to check if the value has been set.
 
 SetKeyName sets KeyName field to given value.
 
+### HasKeyName
+
+`func (o *Encrypt) HasKeyName() bool`
+
+HasKeyName returns a boolean if a field has been set.
 
 ### GetPassword
 

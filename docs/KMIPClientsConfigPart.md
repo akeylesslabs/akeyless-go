@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Clients** | Pointer to [**map[string]KMIPClient**](KMIPClient.md) |  | [optional] 
+**Environments** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -49,6 +50,31 @@ SetClients sets Clients field to given value.
 `func (o *KMIPClientsConfigPart) HasClients() bool`
 
 HasClients returns a boolean if a field has been set.
+
+### GetEnvironments
+
+`func (o *KMIPClientsConfigPart) GetEnvironments() []string`
+
+GetEnvironments returns the Environments field if non-nil, zero value otherwise.
+
+### GetEnvironmentsOk
+
+`func (o *KMIPClientsConfigPart) GetEnvironmentsOk() (*[]string, bool)`
+
+GetEnvironmentsOk returns a tuple with the Environments field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvironments
+
+`func (o *KMIPClientsConfigPart) SetEnvironments(v []string)`
+
+SetEnvironments sets Environments field to given value.
+
+### HasEnvironments
+
+`func (o *KMIPClientsConfigPart) HasEnvironments() bool`
+
+HasEnvironments returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

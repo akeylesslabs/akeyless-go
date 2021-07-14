@@ -4960,6 +4960,7 @@ components:
         kmip_clients:
           clients:
             key:
+              environment: environment
               name: name
               rules:
               - path: path
@@ -4972,6 +4973,10 @@ components:
                 - capabilities
                 - capabilities
                 type: type
+              id: id
+          environments:
+          - environments
+          - environments
         uidentity:
           uid_access_id: uid_access_id
           uid_rotate_interval: uid_rotate_interval
@@ -8078,6 +8083,7 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     KMIPClient:
       example:
+        environment: environment
         name: name
         rules:
         - path: path
@@ -8090,7 +8096,14 @@ components:
           - capabilities
           - capabilities
           type: type
+        id: id
       properties:
+        environment:
+          type: string
+          x-go-name: Environment
+        id:
+          type: string
+          x-go-name: ID
         name:
           type: string
           x-go-name: Name
@@ -8100,11 +8113,12 @@ components:
           type: array
           x-go-name: Rules
       type: object
-      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     KMIPClientsConfigPart:
       example:
         clients:
           key:
+            environment: environment
             name: name
             rules:
             - path: path
@@ -8117,12 +8131,21 @@ components:
               - capabilities
               - capabilities
               type: type
+            id: id
+        environments:
+        - environments
+        - environments
       properties:
         clients:
           additionalProperties:
             $ref: '#/components/schemas/KMIPClient'
           type: object
           x-go-name: Clients
+        environments:
+          items:
+            type: string
+          type: array
+          x-go-name: Environments
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     LDAPAccessRules:
@@ -13205,6 +13228,10 @@ components:
           description: Ciphertext to be decrypted in base64 encoded format
           type: string
           x-go-name: Ciphertext
+        display-id:
+          description: The display id of the key to use in the decryption process
+          type: string
+          x-go-name: DisplayId
         encryption-context:
           additionalProperties:
             type: string
@@ -13239,7 +13266,6 @@ components:
           x-go-name: Username
       required:
       - ciphertext
-      - key-name
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     decryptFile:
@@ -13920,6 +13946,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     encrypt:
       properties:
+        display-id:
+          description: The display id of the key to use in the encryption process
+          type: string
+          x-go-name: DisplayId
         encryption-context:
           additionalProperties:
             type: string
@@ -13958,7 +13988,6 @@ components:
           type: string
           x-go-name: Username
       required:
-      - key-name
       - plaintext
       title: encrypt is a command that encrypts plaintext into ciphertext by using
         an AES key.

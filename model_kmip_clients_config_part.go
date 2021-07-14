@@ -18,6 +18,7 @@ import (
 // KMIPClientsConfigPart struct for KMIPClientsConfigPart
 type KMIPClientsConfigPart struct {
 	Clients *map[string]KMIPClient `json:"clients,omitempty"`
+	Environments *[]string `json:"environments,omitempty"`
 }
 
 // NewKMIPClientsConfigPart instantiates a new KMIPClientsConfigPart object
@@ -69,10 +70,45 @@ func (o *KMIPClientsConfigPart) SetClients(v map[string]KMIPClient) {
 	o.Clients = &v
 }
 
+// GetEnvironments returns the Environments field value if set, zero value otherwise.
+func (o *KMIPClientsConfigPart) GetEnvironments() []string {
+	if o == nil || o.Environments == nil {
+		var ret []string
+		return ret
+	}
+	return *o.Environments
+}
+
+// GetEnvironmentsOk returns a tuple with the Environments field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KMIPClientsConfigPart) GetEnvironmentsOk() (*[]string, bool) {
+	if o == nil || o.Environments == nil {
+		return nil, false
+	}
+	return o.Environments, true
+}
+
+// HasEnvironments returns a boolean if a field has been set.
+func (o *KMIPClientsConfigPart) HasEnvironments() bool {
+	if o != nil && o.Environments != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEnvironments gets a reference to the given []string and assigns it to the Environments field.
+func (o *KMIPClientsConfigPart) SetEnvironments(v []string) {
+	o.Environments = &v
+}
+
 func (o KMIPClientsConfigPart) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Clients != nil {
 		toSerialize["clients"] = o.Clients
+	}
+	if o.Environments != nil {
+		toSerialize["environments"] = o.Environments
 	}
 	return json.Marshal(toSerialize)
 }

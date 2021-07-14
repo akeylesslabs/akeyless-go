@@ -2208,7 +2208,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.Newdecrypt("Ciphertext_example", "KeyName_example") // Decrypt | 
+    body := *openapiclient.Newdecrypt("Ciphertext_example") // Decrypt | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -3232,7 +3232,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.Newencrypt("KeyName_example", "Plaintext_example") // Encrypt | 
+    body := *openapiclient.Newencrypt("Plaintext_example") // Encrypt | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
