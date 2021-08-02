@@ -33,6 +33,12 @@ type GatewayCreateProducerNativeK8S struct {
 	Password *string `json:"password,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
+	SecureAccessAllowPortForwading *bool `json:"secure-access-allow-port-forwading,omitempty"`
+	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
+	SecureAccessClusterEndpoint *string `json:"secure-access-cluster-endpoint,omitempty"`
+	SecureAccessDashboardUrl *string `json:"secure-access-dashboard-url,omitempty"`
+	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -285,6 +291,198 @@ func (o *GatewayCreateProducerNativeK8S) SetProducerEncryptionKeyName(v string) 
 	o.ProducerEncryptionKeyName = &v
 }
 
+// GetSecureAccessAllowPortForwading returns the SecureAccessAllowPortForwading field value if set, zero value otherwise.
+func (o *GatewayCreateProducerNativeK8S) GetSecureAccessAllowPortForwading() bool {
+	if o == nil || o.SecureAccessAllowPortForwading == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessAllowPortForwading
+}
+
+// GetSecureAccessAllowPortForwadingOk returns a tuple with the SecureAccessAllowPortForwading field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerNativeK8S) GetSecureAccessAllowPortForwadingOk() (*bool, bool) {
+	if o == nil || o.SecureAccessAllowPortForwading == nil {
+		return nil, false
+	}
+	return o.SecureAccessAllowPortForwading, true
+}
+
+// HasSecureAccessAllowPortForwading returns a boolean if a field has been set.
+func (o *GatewayCreateProducerNativeK8S) HasSecureAccessAllowPortForwading() bool {
+	if o != nil && o.SecureAccessAllowPortForwading != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessAllowPortForwading gets a reference to the given bool and assigns it to the SecureAccessAllowPortForwading field.
+func (o *GatewayCreateProducerNativeK8S) SetSecureAccessAllowPortForwading(v bool) {
+	o.SecureAccessAllowPortForwading = &v
+}
+
+// GetSecureAccessBastionIssuer returns the SecureAccessBastionIssuer field value if set, zero value otherwise.
+func (o *GatewayCreateProducerNativeK8S) GetSecureAccessBastionIssuer() string {
+	if o == nil || o.SecureAccessBastionIssuer == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessBastionIssuer
+}
+
+// GetSecureAccessBastionIssuerOk returns a tuple with the SecureAccessBastionIssuer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerNativeK8S) GetSecureAccessBastionIssuerOk() (*string, bool) {
+	if o == nil || o.SecureAccessBastionIssuer == nil {
+		return nil, false
+	}
+	return o.SecureAccessBastionIssuer, true
+}
+
+// HasSecureAccessBastionIssuer returns a boolean if a field has been set.
+func (o *GatewayCreateProducerNativeK8S) HasSecureAccessBastionIssuer() bool {
+	if o != nil && o.SecureAccessBastionIssuer != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessBastionIssuer gets a reference to the given string and assigns it to the SecureAccessBastionIssuer field.
+func (o *GatewayCreateProducerNativeK8S) SetSecureAccessBastionIssuer(v string) {
+	o.SecureAccessBastionIssuer = &v
+}
+
+// GetSecureAccessClusterEndpoint returns the SecureAccessClusterEndpoint field value if set, zero value otherwise.
+func (o *GatewayCreateProducerNativeK8S) GetSecureAccessClusterEndpoint() string {
+	if o == nil || o.SecureAccessClusterEndpoint == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessClusterEndpoint
+}
+
+// GetSecureAccessClusterEndpointOk returns a tuple with the SecureAccessClusterEndpoint field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerNativeK8S) GetSecureAccessClusterEndpointOk() (*string, bool) {
+	if o == nil || o.SecureAccessClusterEndpoint == nil {
+		return nil, false
+	}
+	return o.SecureAccessClusterEndpoint, true
+}
+
+// HasSecureAccessClusterEndpoint returns a boolean if a field has been set.
+func (o *GatewayCreateProducerNativeK8S) HasSecureAccessClusterEndpoint() bool {
+	if o != nil && o.SecureAccessClusterEndpoint != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessClusterEndpoint gets a reference to the given string and assigns it to the SecureAccessClusterEndpoint field.
+func (o *GatewayCreateProducerNativeK8S) SetSecureAccessClusterEndpoint(v string) {
+	o.SecureAccessClusterEndpoint = &v
+}
+
+// GetSecureAccessDashboardUrl returns the SecureAccessDashboardUrl field value if set, zero value otherwise.
+func (o *GatewayCreateProducerNativeK8S) GetSecureAccessDashboardUrl() string {
+	if o == nil || o.SecureAccessDashboardUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessDashboardUrl
+}
+
+// GetSecureAccessDashboardUrlOk returns a tuple with the SecureAccessDashboardUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerNativeK8S) GetSecureAccessDashboardUrlOk() (*string, bool) {
+	if o == nil || o.SecureAccessDashboardUrl == nil {
+		return nil, false
+	}
+	return o.SecureAccessDashboardUrl, true
+}
+
+// HasSecureAccessDashboardUrl returns a boolean if a field has been set.
+func (o *GatewayCreateProducerNativeK8S) HasSecureAccessDashboardUrl() bool {
+	if o != nil && o.SecureAccessDashboardUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessDashboardUrl gets a reference to the given string and assigns it to the SecureAccessDashboardUrl field.
+func (o *GatewayCreateProducerNativeK8S) SetSecureAccessDashboardUrl(v string) {
+	o.SecureAccessDashboardUrl = &v
+}
+
+// GetSecureAccessEnable returns the SecureAccessEnable field value if set, zero value otherwise.
+func (o *GatewayCreateProducerNativeK8S) GetSecureAccessEnable() string {
+	if o == nil || o.SecureAccessEnable == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessEnable
+}
+
+// GetSecureAccessEnableOk returns a tuple with the SecureAccessEnable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerNativeK8S) GetSecureAccessEnableOk() (*string, bool) {
+	if o == nil || o.SecureAccessEnable == nil {
+		return nil, false
+	}
+	return o.SecureAccessEnable, true
+}
+
+// HasSecureAccessEnable returns a boolean if a field has been set.
+func (o *GatewayCreateProducerNativeK8S) HasSecureAccessEnable() bool {
+	if o != nil && o.SecureAccessEnable != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessEnable gets a reference to the given string and assigns it to the SecureAccessEnable field.
+func (o *GatewayCreateProducerNativeK8S) SetSecureAccessEnable(v string) {
+	o.SecureAccessEnable = &v
+}
+
+// GetSecureAccessWebBrowsing returns the SecureAccessWebBrowsing field value if set, zero value otherwise.
+func (o *GatewayCreateProducerNativeK8S) GetSecureAccessWebBrowsing() bool {
+	if o == nil || o.SecureAccessWebBrowsing == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessWebBrowsing
+}
+
+// GetSecureAccessWebBrowsingOk returns a tuple with the SecureAccessWebBrowsing field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerNativeK8S) GetSecureAccessWebBrowsingOk() (*bool, bool) {
+	if o == nil || o.SecureAccessWebBrowsing == nil {
+		return nil, false
+	}
+	return o.SecureAccessWebBrowsing, true
+}
+
+// HasSecureAccessWebBrowsing returns a boolean if a field has been set.
+func (o *GatewayCreateProducerNativeK8S) HasSecureAccessWebBrowsing() bool {
+	if o != nil && o.SecureAccessWebBrowsing != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessWebBrowsing gets a reference to the given bool and assigns it to the SecureAccessWebBrowsing field.
+func (o *GatewayCreateProducerNativeK8S) SetSecureAccessWebBrowsing(v bool) {
+	o.SecureAccessWebBrowsing = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *GatewayCreateProducerNativeK8S) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -438,6 +636,24 @@ func (o GatewayCreateProducerNativeK8S) MarshalJSON() ([]byte, error) {
 	}
 	if o.ProducerEncryptionKeyName != nil {
 		toSerialize["producer-encryption-key-name"] = o.ProducerEncryptionKeyName
+	}
+	if o.SecureAccessAllowPortForwading != nil {
+		toSerialize["secure-access-allow-port-forwading"] = o.SecureAccessAllowPortForwading
+	}
+	if o.SecureAccessBastionIssuer != nil {
+		toSerialize["secure-access-bastion-issuer"] = o.SecureAccessBastionIssuer
+	}
+	if o.SecureAccessClusterEndpoint != nil {
+		toSerialize["secure-access-cluster-endpoint"] = o.SecureAccessClusterEndpoint
+	}
+	if o.SecureAccessDashboardUrl != nil {
+		toSerialize["secure-access-dashboard-url"] = o.SecureAccessDashboardUrl
+	}
+	if o.SecureAccessEnable != nil {
+		toSerialize["secure-access-enable"] = o.SecureAccessEnable
+	}
+	if o.SecureAccessWebBrowsing != nil {
+		toSerialize["secure-access-web-browsing"] = o.SecureAccessWebBrowsing
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

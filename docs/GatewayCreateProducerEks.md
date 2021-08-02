@@ -14,6 +14,10 @@ Name | Type | Description | Notes
 **Name** | **string** | Producer name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
+**SecureAccessAllowPortForwading** | Pointer to **bool** |  | [optional] 
+**SecureAccessBastionIssuer** | Pointer to **string** |  | [optional] 
+**SecureAccessClusterEndpoint** | Pointer to **string** |  | [optional] 
+**SecureAccessEnable** | Pointer to **string** |  | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserTtl** | Pointer to **string** | User TTL | [optional] [default to "60m"]
@@ -257,6 +261,106 @@ SetProducerEncryptionKeyName sets ProducerEncryptionKeyName field to given value
 `func (o *GatewayCreateProducerEks) HasProducerEncryptionKeyName() bool`
 
 HasProducerEncryptionKeyName returns a boolean if a field has been set.
+
+### GetSecureAccessAllowPortForwading
+
+`func (o *GatewayCreateProducerEks) GetSecureAccessAllowPortForwading() bool`
+
+GetSecureAccessAllowPortForwading returns the SecureAccessAllowPortForwading field if non-nil, zero value otherwise.
+
+### GetSecureAccessAllowPortForwadingOk
+
+`func (o *GatewayCreateProducerEks) GetSecureAccessAllowPortForwadingOk() (*bool, bool)`
+
+GetSecureAccessAllowPortForwadingOk returns a tuple with the SecureAccessAllowPortForwading field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessAllowPortForwading
+
+`func (o *GatewayCreateProducerEks) SetSecureAccessAllowPortForwading(v bool)`
+
+SetSecureAccessAllowPortForwading sets SecureAccessAllowPortForwading field to given value.
+
+### HasSecureAccessAllowPortForwading
+
+`func (o *GatewayCreateProducerEks) HasSecureAccessAllowPortForwading() bool`
+
+HasSecureAccessAllowPortForwading returns a boolean if a field has been set.
+
+### GetSecureAccessBastionIssuer
+
+`func (o *GatewayCreateProducerEks) GetSecureAccessBastionIssuer() string`
+
+GetSecureAccessBastionIssuer returns the SecureAccessBastionIssuer field if non-nil, zero value otherwise.
+
+### GetSecureAccessBastionIssuerOk
+
+`func (o *GatewayCreateProducerEks) GetSecureAccessBastionIssuerOk() (*string, bool)`
+
+GetSecureAccessBastionIssuerOk returns a tuple with the SecureAccessBastionIssuer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessBastionIssuer
+
+`func (o *GatewayCreateProducerEks) SetSecureAccessBastionIssuer(v string)`
+
+SetSecureAccessBastionIssuer sets SecureAccessBastionIssuer field to given value.
+
+### HasSecureAccessBastionIssuer
+
+`func (o *GatewayCreateProducerEks) HasSecureAccessBastionIssuer() bool`
+
+HasSecureAccessBastionIssuer returns a boolean if a field has been set.
+
+### GetSecureAccessClusterEndpoint
+
+`func (o *GatewayCreateProducerEks) GetSecureAccessClusterEndpoint() string`
+
+GetSecureAccessClusterEndpoint returns the SecureAccessClusterEndpoint field if non-nil, zero value otherwise.
+
+### GetSecureAccessClusterEndpointOk
+
+`func (o *GatewayCreateProducerEks) GetSecureAccessClusterEndpointOk() (*string, bool)`
+
+GetSecureAccessClusterEndpointOk returns a tuple with the SecureAccessClusterEndpoint field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessClusterEndpoint
+
+`func (o *GatewayCreateProducerEks) SetSecureAccessClusterEndpoint(v string)`
+
+SetSecureAccessClusterEndpoint sets SecureAccessClusterEndpoint field to given value.
+
+### HasSecureAccessClusterEndpoint
+
+`func (o *GatewayCreateProducerEks) HasSecureAccessClusterEndpoint() bool`
+
+HasSecureAccessClusterEndpoint returns a boolean if a field has been set.
+
+### GetSecureAccessEnable
+
+`func (o *GatewayCreateProducerEks) GetSecureAccessEnable() string`
+
+GetSecureAccessEnable returns the SecureAccessEnable field if non-nil, zero value otherwise.
+
+### GetSecureAccessEnableOk
+
+`func (o *GatewayCreateProducerEks) GetSecureAccessEnableOk() (*string, bool)`
+
+GetSecureAccessEnableOk returns a tuple with the SecureAccessEnable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessEnable
+
+`func (o *GatewayCreateProducerEks) SetSecureAccessEnable(v string)`
+
+SetSecureAccessEnable sets SecureAccessEnable field to given value.
+
+### HasSecureAccessEnable
+
+`func (o *GatewayCreateProducerEks) HasSecureAccessEnable() bool`
+
+HasSecureAccessEnable returns a boolean if a field has been set.
 
 ### GetToken
 

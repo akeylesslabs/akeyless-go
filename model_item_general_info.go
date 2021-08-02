@@ -21,6 +21,7 @@ type ItemGeneralInfo struct {
 	ClassicKeyDetails *ClassicKeyDetailsInfo `json:"classic_key_details,omitempty"`
 	DynamicSecretProducerDetails *DynamicSecretProducerInfo `json:"dynamic_secret_producer_details,omitempty"`
 	RotatedSecretDetails *RotatedSecretDetailsInfo `json:"rotated_secret_details,omitempty"`
+	SecureRemoteAccessDetails *SecureRemoteAccess `json:"secure_remote_access_details,omitempty"`
 }
 
 // NewItemGeneralInfo instantiates a new ItemGeneralInfo object
@@ -168,6 +169,38 @@ func (o *ItemGeneralInfo) SetRotatedSecretDetails(v RotatedSecretDetailsInfo) {
 	o.RotatedSecretDetails = &v
 }
 
+// GetSecureRemoteAccessDetails returns the SecureRemoteAccessDetails field value if set, zero value otherwise.
+func (o *ItemGeneralInfo) GetSecureRemoteAccessDetails() SecureRemoteAccess {
+	if o == nil || o.SecureRemoteAccessDetails == nil {
+		var ret SecureRemoteAccess
+		return ret
+	}
+	return *o.SecureRemoteAccessDetails
+}
+
+// GetSecureRemoteAccessDetailsOk returns a tuple with the SecureRemoteAccessDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ItemGeneralInfo) GetSecureRemoteAccessDetailsOk() (*SecureRemoteAccess, bool) {
+	if o == nil || o.SecureRemoteAccessDetails == nil {
+		return nil, false
+	}
+	return o.SecureRemoteAccessDetails, true
+}
+
+// HasSecureRemoteAccessDetails returns a boolean if a field has been set.
+func (o *ItemGeneralInfo) HasSecureRemoteAccessDetails() bool {
+	if o != nil && o.SecureRemoteAccessDetails != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureRemoteAccessDetails gets a reference to the given SecureRemoteAccess and assigns it to the SecureRemoteAccessDetails field.
+func (o *ItemGeneralInfo) SetSecureRemoteAccessDetails(v SecureRemoteAccess) {
+	o.SecureRemoteAccessDetails = &v
+}
+
 func (o ItemGeneralInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.CertIssueDetails != nil {
@@ -181,6 +214,9 @@ func (o ItemGeneralInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.RotatedSecretDetails != nil {
 		toSerialize["rotated_secret_details"] = o.RotatedSecretDetails
+	}
+	if o.SecureRemoteAccessDetails != nil {
+		toSerialize["secure_remote_access_details"] = o.SecureRemoteAccessDetails
 	}
 	return json.Marshal(toSerialize)
 }

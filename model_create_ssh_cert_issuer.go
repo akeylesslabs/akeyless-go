@@ -29,6 +29,11 @@ type CreateSSHCertIssuer struct {
 	Password *string `json:"password,omitempty"`
 	// Signed certificates with principal, e.g example_role1,example_role2
 	Principals *string `json:"principals,omitempty"`
+	SecureAccessBastionApi *string `json:"secure-access-bastion-api,omitempty"`
+	SecureAccessBastionSsh *string `json:"secure-access-bastion-ssh,omitempty"`
+	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
+	SecureAccessSshCredsUser *string `json:"secure-access-ssh-creds-user,omitempty"`
 	// A key to sign the certificate with
 	SignerKeyName string `json:"signer-key-name"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -238,6 +243,166 @@ func (o *CreateSSHCertIssuer) SetPrincipals(v string) {
 	o.Principals = &v
 }
 
+// GetSecureAccessBastionApi returns the SecureAccessBastionApi field value if set, zero value otherwise.
+func (o *CreateSSHCertIssuer) GetSecureAccessBastionApi() string {
+	if o == nil || o.SecureAccessBastionApi == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessBastionApi
+}
+
+// GetSecureAccessBastionApiOk returns a tuple with the SecureAccessBastionApi field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSSHCertIssuer) GetSecureAccessBastionApiOk() (*string, bool) {
+	if o == nil || o.SecureAccessBastionApi == nil {
+		return nil, false
+	}
+	return o.SecureAccessBastionApi, true
+}
+
+// HasSecureAccessBastionApi returns a boolean if a field has been set.
+func (o *CreateSSHCertIssuer) HasSecureAccessBastionApi() bool {
+	if o != nil && o.SecureAccessBastionApi != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessBastionApi gets a reference to the given string and assigns it to the SecureAccessBastionApi field.
+func (o *CreateSSHCertIssuer) SetSecureAccessBastionApi(v string) {
+	o.SecureAccessBastionApi = &v
+}
+
+// GetSecureAccessBastionSsh returns the SecureAccessBastionSsh field value if set, zero value otherwise.
+func (o *CreateSSHCertIssuer) GetSecureAccessBastionSsh() string {
+	if o == nil || o.SecureAccessBastionSsh == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessBastionSsh
+}
+
+// GetSecureAccessBastionSshOk returns a tuple with the SecureAccessBastionSsh field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSSHCertIssuer) GetSecureAccessBastionSshOk() (*string, bool) {
+	if o == nil || o.SecureAccessBastionSsh == nil {
+		return nil, false
+	}
+	return o.SecureAccessBastionSsh, true
+}
+
+// HasSecureAccessBastionSsh returns a boolean if a field has been set.
+func (o *CreateSSHCertIssuer) HasSecureAccessBastionSsh() bool {
+	if o != nil && o.SecureAccessBastionSsh != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessBastionSsh gets a reference to the given string and assigns it to the SecureAccessBastionSsh field.
+func (o *CreateSSHCertIssuer) SetSecureAccessBastionSsh(v string) {
+	o.SecureAccessBastionSsh = &v
+}
+
+// GetSecureAccessEnable returns the SecureAccessEnable field value if set, zero value otherwise.
+func (o *CreateSSHCertIssuer) GetSecureAccessEnable() string {
+	if o == nil || o.SecureAccessEnable == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessEnable
+}
+
+// GetSecureAccessEnableOk returns a tuple with the SecureAccessEnable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSSHCertIssuer) GetSecureAccessEnableOk() (*string, bool) {
+	if o == nil || o.SecureAccessEnable == nil {
+		return nil, false
+	}
+	return o.SecureAccessEnable, true
+}
+
+// HasSecureAccessEnable returns a boolean if a field has been set.
+func (o *CreateSSHCertIssuer) HasSecureAccessEnable() bool {
+	if o != nil && o.SecureAccessEnable != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessEnable gets a reference to the given string and assigns it to the SecureAccessEnable field.
+func (o *CreateSSHCertIssuer) SetSecureAccessEnable(v string) {
+	o.SecureAccessEnable = &v
+}
+
+// GetSecureAccessHost returns the SecureAccessHost field value if set, zero value otherwise.
+func (o *CreateSSHCertIssuer) GetSecureAccessHost() []string {
+	if o == nil || o.SecureAccessHost == nil {
+		var ret []string
+		return ret
+	}
+	return *o.SecureAccessHost
+}
+
+// GetSecureAccessHostOk returns a tuple with the SecureAccessHost field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSSHCertIssuer) GetSecureAccessHostOk() (*[]string, bool) {
+	if o == nil || o.SecureAccessHost == nil {
+		return nil, false
+	}
+	return o.SecureAccessHost, true
+}
+
+// HasSecureAccessHost returns a boolean if a field has been set.
+func (o *CreateSSHCertIssuer) HasSecureAccessHost() bool {
+	if o != nil && o.SecureAccessHost != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessHost gets a reference to the given []string and assigns it to the SecureAccessHost field.
+func (o *CreateSSHCertIssuer) SetSecureAccessHost(v []string) {
+	o.SecureAccessHost = &v
+}
+
+// GetSecureAccessSshCredsUser returns the SecureAccessSshCredsUser field value if set, zero value otherwise.
+func (o *CreateSSHCertIssuer) GetSecureAccessSshCredsUser() string {
+	if o == nil || o.SecureAccessSshCredsUser == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessSshCredsUser
+}
+
+// GetSecureAccessSshCredsUserOk returns a tuple with the SecureAccessSshCredsUser field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSSHCertIssuer) GetSecureAccessSshCredsUserOk() (*string, bool) {
+	if o == nil || o.SecureAccessSshCredsUser == nil {
+		return nil, false
+	}
+	return o.SecureAccessSshCredsUser, true
+}
+
+// HasSecureAccessSshCredsUser returns a boolean if a field has been set.
+func (o *CreateSSHCertIssuer) HasSecureAccessSshCredsUser() bool {
+	if o != nil && o.SecureAccessSshCredsUser != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessSshCredsUser gets a reference to the given string and assigns it to the SecureAccessSshCredsUser field.
+func (o *CreateSSHCertIssuer) SetSecureAccessSshCredsUser(v string) {
+	o.SecureAccessSshCredsUser = &v
+}
+
 // GetSignerKeyName returns the SignerKeyName field value
 func (o *CreateSSHCertIssuer) GetSignerKeyName() string {
 	if o == nil  {
@@ -401,6 +566,21 @@ func (o CreateSSHCertIssuer) MarshalJSON() ([]byte, error) {
 	}
 	if o.Principals != nil {
 		toSerialize["principals"] = o.Principals
+	}
+	if o.SecureAccessBastionApi != nil {
+		toSerialize["secure-access-bastion-api"] = o.SecureAccessBastionApi
+	}
+	if o.SecureAccessBastionSsh != nil {
+		toSerialize["secure-access-bastion-ssh"] = o.SecureAccessBastionSsh
+	}
+	if o.SecureAccessEnable != nil {
+		toSerialize["secure-access-enable"] = o.SecureAccessEnable
+	}
+	if o.SecureAccessHost != nil {
+		toSerialize["secure-access-host"] = o.SecureAccessHost
+	}
+	if o.SecureAccessSshCredsUser != nil {
+		toSerialize["secure-access-ssh-creds-user"] = o.SecureAccessSshCredsUser
 	}
 	if true {
 		toSerialize["signer-key-name"] = o.SignerKeyName

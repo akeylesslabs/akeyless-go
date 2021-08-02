@@ -20,7 +20,7 @@ import (
 type ClassicKeyStatusInfo struct {
 	ErrorDate *time.Time `json:"error_date,omitempty"`
 	LastError *string `json:"last_error,omitempty"`
-	// ClassicKeyTargetStatus defines status of managed key target
+	// ClassicKeyTargetStatus defines status of classic key target
 	LastStatus *string `json:"last_status,omitempty"`
 	Version *int64 `json:"version,omitempty"`
 }

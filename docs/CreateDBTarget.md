@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **MongodbUriOptions** | Pointer to **string** | MongoDB server URI options | [optional] 
 **MongodbUsername** | Pointer to **string** | MongoDB server username | [optional] 
 **Name** | **string** | Target name | 
+**OracleServiceName** | Pointer to **string** |  | [optional] 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **Port** | Pointer to **string** |  | [optional] 
 **Pwd** | Pointer to **string** |  | [optional] 
@@ -489,6 +490,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetOracleServiceName
+
+`func (o *CreateDBTarget) GetOracleServiceName() string`
+
+GetOracleServiceName returns the OracleServiceName field if non-nil, zero value otherwise.
+
+### GetOracleServiceNameOk
+
+`func (o *CreateDBTarget) GetOracleServiceNameOk() (*string, bool)`
+
+GetOracleServiceNameOk returns a tuple with the OracleServiceName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOracleServiceName
+
+`func (o *CreateDBTarget) SetOracleServiceName(v string)`
+
+SetOracleServiceName sets OracleServiceName field to given value.
+
+### HasOracleServiceName
+
+`func (o *CreateDBTarget) HasOracleServiceName() bool`
+
+HasOracleServiceName returns a boolean if a field has been set.
 
 ### GetPassword
 

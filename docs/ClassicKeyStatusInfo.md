@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ErrorDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **LastError** | Pointer to **string** |  | [optional] 
-**LastStatus** | Pointer to **string** | ClassicKeyTargetStatus defines status of managed key target | [optional] 
+**LastStatus** | Pointer to **string** | ClassicKeyTargetStatus defines status of classic key target | [optional] 
 **Version** | Pointer to **int64** |  | [optional] 
 
 ## Methods

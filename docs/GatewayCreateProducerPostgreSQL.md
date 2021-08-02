@@ -13,6 +13,10 @@ Name | Type | Description | Notes
 **PostgresqlPort** | Pointer to **string** | PostgreSQL Port | [optional] [default to "5432"]
 **PostgresqlUsername** | **string** | PostgreSQL Username | 
 **ProducerEncryptionKey** | Pointer to **string** | Dynamic producer encryption key | [optional] 
+**SecureAccessBastionIssuer** | Pointer to **string** |  | [optional] 
+**SecureAccessDbSchema** | Pointer to **string** |  | [optional] 
+**SecureAccessEnable** | Pointer to **string** |  | [optional] 
+**SecureAccessHost** | Pointer to **[]string** |  | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserTtl** | Pointer to **string** | User TTL | [optional] [default to "60m"]
@@ -241,6 +245,106 @@ SetProducerEncryptionKey sets ProducerEncryptionKey field to given value.
 `func (o *GatewayCreateProducerPostgreSQL) HasProducerEncryptionKey() bool`
 
 HasProducerEncryptionKey returns a boolean if a field has been set.
+
+### GetSecureAccessBastionIssuer
+
+`func (o *GatewayCreateProducerPostgreSQL) GetSecureAccessBastionIssuer() string`
+
+GetSecureAccessBastionIssuer returns the SecureAccessBastionIssuer field if non-nil, zero value otherwise.
+
+### GetSecureAccessBastionIssuerOk
+
+`func (o *GatewayCreateProducerPostgreSQL) GetSecureAccessBastionIssuerOk() (*string, bool)`
+
+GetSecureAccessBastionIssuerOk returns a tuple with the SecureAccessBastionIssuer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessBastionIssuer
+
+`func (o *GatewayCreateProducerPostgreSQL) SetSecureAccessBastionIssuer(v string)`
+
+SetSecureAccessBastionIssuer sets SecureAccessBastionIssuer field to given value.
+
+### HasSecureAccessBastionIssuer
+
+`func (o *GatewayCreateProducerPostgreSQL) HasSecureAccessBastionIssuer() bool`
+
+HasSecureAccessBastionIssuer returns a boolean if a field has been set.
+
+### GetSecureAccessDbSchema
+
+`func (o *GatewayCreateProducerPostgreSQL) GetSecureAccessDbSchema() string`
+
+GetSecureAccessDbSchema returns the SecureAccessDbSchema field if non-nil, zero value otherwise.
+
+### GetSecureAccessDbSchemaOk
+
+`func (o *GatewayCreateProducerPostgreSQL) GetSecureAccessDbSchemaOk() (*string, bool)`
+
+GetSecureAccessDbSchemaOk returns a tuple with the SecureAccessDbSchema field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessDbSchema
+
+`func (o *GatewayCreateProducerPostgreSQL) SetSecureAccessDbSchema(v string)`
+
+SetSecureAccessDbSchema sets SecureAccessDbSchema field to given value.
+
+### HasSecureAccessDbSchema
+
+`func (o *GatewayCreateProducerPostgreSQL) HasSecureAccessDbSchema() bool`
+
+HasSecureAccessDbSchema returns a boolean if a field has been set.
+
+### GetSecureAccessEnable
+
+`func (o *GatewayCreateProducerPostgreSQL) GetSecureAccessEnable() string`
+
+GetSecureAccessEnable returns the SecureAccessEnable field if non-nil, zero value otherwise.
+
+### GetSecureAccessEnableOk
+
+`func (o *GatewayCreateProducerPostgreSQL) GetSecureAccessEnableOk() (*string, bool)`
+
+GetSecureAccessEnableOk returns a tuple with the SecureAccessEnable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessEnable
+
+`func (o *GatewayCreateProducerPostgreSQL) SetSecureAccessEnable(v string)`
+
+SetSecureAccessEnable sets SecureAccessEnable field to given value.
+
+### HasSecureAccessEnable
+
+`func (o *GatewayCreateProducerPostgreSQL) HasSecureAccessEnable() bool`
+
+HasSecureAccessEnable returns a boolean if a field has been set.
+
+### GetSecureAccessHost
+
+`func (o *GatewayCreateProducerPostgreSQL) GetSecureAccessHost() []string`
+
+GetSecureAccessHost returns the SecureAccessHost field if non-nil, zero value otherwise.
+
+### GetSecureAccessHostOk
+
+`func (o *GatewayCreateProducerPostgreSQL) GetSecureAccessHostOk() (*[]string, bool)`
+
+GetSecureAccessHostOk returns a tuple with the SecureAccessHost field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessHost
+
+`func (o *GatewayCreateProducerPostgreSQL) SetSecureAccessHost(v []string)`
+
+SetSecureAccessHost sets SecureAccessHost field to given value.
+
+### HasSecureAccessHost
+
+`func (o *GatewayCreateProducerPostgreSQL) HasSecureAccessHost() bool`
+
+HasSecureAccessHost returns a boolean if a field has been set.
 
 ### GetToken
 

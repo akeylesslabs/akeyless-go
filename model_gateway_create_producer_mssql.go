@@ -37,6 +37,10 @@ type GatewayCreateProducerMSSQL struct {
 	Password *string `json:"password,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
+	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
+	SecureAccessDbSchema *string `json:"secure-access-db-schema,omitempty"`
+	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -368,6 +372,134 @@ func (o *GatewayCreateProducerMSSQL) SetProducerEncryptionKeyName(v string) {
 	o.ProducerEncryptionKeyName = &v
 }
 
+// GetSecureAccessBastionIssuer returns the SecureAccessBastionIssuer field value if set, zero value otherwise.
+func (o *GatewayCreateProducerMSSQL) GetSecureAccessBastionIssuer() string {
+	if o == nil || o.SecureAccessBastionIssuer == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessBastionIssuer
+}
+
+// GetSecureAccessBastionIssuerOk returns a tuple with the SecureAccessBastionIssuer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerMSSQL) GetSecureAccessBastionIssuerOk() (*string, bool) {
+	if o == nil || o.SecureAccessBastionIssuer == nil {
+		return nil, false
+	}
+	return o.SecureAccessBastionIssuer, true
+}
+
+// HasSecureAccessBastionIssuer returns a boolean if a field has been set.
+func (o *GatewayCreateProducerMSSQL) HasSecureAccessBastionIssuer() bool {
+	if o != nil && o.SecureAccessBastionIssuer != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessBastionIssuer gets a reference to the given string and assigns it to the SecureAccessBastionIssuer field.
+func (o *GatewayCreateProducerMSSQL) SetSecureAccessBastionIssuer(v string) {
+	o.SecureAccessBastionIssuer = &v
+}
+
+// GetSecureAccessDbSchema returns the SecureAccessDbSchema field value if set, zero value otherwise.
+func (o *GatewayCreateProducerMSSQL) GetSecureAccessDbSchema() string {
+	if o == nil || o.SecureAccessDbSchema == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessDbSchema
+}
+
+// GetSecureAccessDbSchemaOk returns a tuple with the SecureAccessDbSchema field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerMSSQL) GetSecureAccessDbSchemaOk() (*string, bool) {
+	if o == nil || o.SecureAccessDbSchema == nil {
+		return nil, false
+	}
+	return o.SecureAccessDbSchema, true
+}
+
+// HasSecureAccessDbSchema returns a boolean if a field has been set.
+func (o *GatewayCreateProducerMSSQL) HasSecureAccessDbSchema() bool {
+	if o != nil && o.SecureAccessDbSchema != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessDbSchema gets a reference to the given string and assigns it to the SecureAccessDbSchema field.
+func (o *GatewayCreateProducerMSSQL) SetSecureAccessDbSchema(v string) {
+	o.SecureAccessDbSchema = &v
+}
+
+// GetSecureAccessEnable returns the SecureAccessEnable field value if set, zero value otherwise.
+func (o *GatewayCreateProducerMSSQL) GetSecureAccessEnable() string {
+	if o == nil || o.SecureAccessEnable == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessEnable
+}
+
+// GetSecureAccessEnableOk returns a tuple with the SecureAccessEnable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerMSSQL) GetSecureAccessEnableOk() (*string, bool) {
+	if o == nil || o.SecureAccessEnable == nil {
+		return nil, false
+	}
+	return o.SecureAccessEnable, true
+}
+
+// HasSecureAccessEnable returns a boolean if a field has been set.
+func (o *GatewayCreateProducerMSSQL) HasSecureAccessEnable() bool {
+	if o != nil && o.SecureAccessEnable != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessEnable gets a reference to the given string and assigns it to the SecureAccessEnable field.
+func (o *GatewayCreateProducerMSSQL) SetSecureAccessEnable(v string) {
+	o.SecureAccessEnable = &v
+}
+
+// GetSecureAccessHost returns the SecureAccessHost field value if set, zero value otherwise.
+func (o *GatewayCreateProducerMSSQL) GetSecureAccessHost() []string {
+	if o == nil || o.SecureAccessHost == nil {
+		var ret []string
+		return ret
+	}
+	return *o.SecureAccessHost
+}
+
+// GetSecureAccessHostOk returns a tuple with the SecureAccessHost field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerMSSQL) GetSecureAccessHostOk() (*[]string, bool) {
+	if o == nil || o.SecureAccessHost == nil {
+		return nil, false
+	}
+	return o.SecureAccessHost, true
+}
+
+// HasSecureAccessHost returns a boolean if a field has been set.
+func (o *GatewayCreateProducerMSSQL) HasSecureAccessHost() bool {
+	if o != nil && o.SecureAccessHost != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessHost gets a reference to the given []string and assigns it to the SecureAccessHost field.
+func (o *GatewayCreateProducerMSSQL) SetSecureAccessHost(v []string) {
+	o.SecureAccessHost = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *GatewayCreateProducerMSSQL) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -527,6 +659,18 @@ func (o GatewayCreateProducerMSSQL) MarshalJSON() ([]byte, error) {
 	}
 	if o.ProducerEncryptionKeyName != nil {
 		toSerialize["producer-encryption-key-name"] = o.ProducerEncryptionKeyName
+	}
+	if o.SecureAccessBastionIssuer != nil {
+		toSerialize["secure-access-bastion-issuer"] = o.SecureAccessBastionIssuer
+	}
+	if o.SecureAccessDbSchema != nil {
+		toSerialize["secure-access-db-schema"] = o.SecureAccessDbSchema
+	}
+	if o.SecureAccessEnable != nil {
+		toSerialize["secure-access-enable"] = o.SecureAccessEnable
+	}
+	if o.SecureAccessHost != nil {
+		toSerialize["secure-access-host"] = o.SecureAccessHost
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

@@ -22,7 +22,7 @@ type AkeylessGatewayConfig struct {
 	Cf *CFConfigPart `json:"cf,omitempty"`
 	ConfigProtectionKeyName *string `json:"config_protection_key_name,omitempty"`
 	General *GeneralConfigPart `json:"general,omitempty"`
-	KmipClients *KMIPClientsConfigPart `json:"kmip_clients,omitempty"`
+	KmipClients *KMIPConfigPart `json:"kmip_clients,omitempty"`
 	Ldap *LdapConfigPart `json:"ldap,omitempty"`
 	Leadership *LeadershipConfigPart `json:"leadership,omitempty"`
 	LogForwarding *LogForwardingConfigPart `json:"log_forwarding,omitempty"`
@@ -212,9 +212,9 @@ func (o *AkeylessGatewayConfig) SetGeneral(v GeneralConfigPart) {
 }
 
 // GetKmipClients returns the KmipClients field value if set, zero value otherwise.
-func (o *AkeylessGatewayConfig) GetKmipClients() KMIPClientsConfigPart {
+func (o *AkeylessGatewayConfig) GetKmipClients() KMIPConfigPart {
 	if o == nil || o.KmipClients == nil {
-		var ret KMIPClientsConfigPart
+		var ret KMIPConfigPart
 		return ret
 	}
 	return *o.KmipClients
@@ -222,7 +222,7 @@ func (o *AkeylessGatewayConfig) GetKmipClients() KMIPClientsConfigPart {
 
 // GetKmipClientsOk returns a tuple with the KmipClients field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AkeylessGatewayConfig) GetKmipClientsOk() (*KMIPClientsConfigPart, bool) {
+func (o *AkeylessGatewayConfig) GetKmipClientsOk() (*KMIPConfigPart, bool) {
 	if o == nil || o.KmipClients == nil {
 		return nil, false
 	}
@@ -238,8 +238,8 @@ func (o *AkeylessGatewayConfig) HasKmipClients() bool {
 	return false
 }
 
-// SetKmipClients gets a reference to the given KMIPClientsConfigPart and assigns it to the KmipClients field.
-func (o *AkeylessGatewayConfig) SetKmipClients(v KMIPClientsConfigPart) {
+// SetKmipClients gets a reference to the given KMIPConfigPart and assigns it to the KmipClients field.
+func (o *AkeylessGatewayConfig) SetKmipClients(v KMIPConfigPart) {
 	o.KmipClients = &v
 }
 

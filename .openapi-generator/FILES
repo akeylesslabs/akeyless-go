@@ -162,6 +162,8 @@ docs/GatewayCreateProducerMySQL.md
 docs/GatewayCreateProducerMySQLOutput.md
 docs/GatewayCreateProducerNativeK8S.md
 docs/GatewayCreateProducerNativeK8SOutput.md
+docs/GatewayCreateProducerOracleDb.md
+docs/GatewayCreateProducerOracleDbOutput.md
 docs/GatewayCreateProducerPostgreSQL.md
 docs/GatewayCreateProducerPostgreSQLOutput.md
 docs/GatewayCreateProducerRabbitMQ.md
@@ -218,7 +220,7 @@ docs/JSONError.md
 docs/K8SMigration.md
 docs/K8SPayload.md
 docs/KMIPClient.md
-docs/KMIPClientsConfigPart.md
+docs/KMIPConfigPart.md
 docs/LDAPAccessRules.md
 docs/LdapConfigPart.md
 docs/LeadershipConfigPart.md
@@ -261,6 +263,7 @@ docs/Rules.md
 docs/SAMLAccessRules.md
 docs/SAMLAttribute.md
 docs/SSHCertificateIssueDetails.md
+docs/SecureRemoteAccess.md
 docs/SetItemState.md
 docs/SetRoleRule.md
 docs/SignJWTOutput.md
@@ -497,6 +500,8 @@ model_gateway_create_producer_my_sql.go
 model_gateway_create_producer_my_sql_output.go
 model_gateway_create_producer_native_k8_s.go
 model_gateway_create_producer_native_k8_s_output.go
+model_gateway_create_producer_oracle_db.go
+model_gateway_create_producer_oracle_db_output.go
 model_gateway_create_producer_postgre_sql.go
 model_gateway_create_producer_postgre_sql_output.go
 model_gateway_create_producer_rabbit_mq.go
@@ -554,7 +559,7 @@ model_json_error.go
 model_k8_s_migration.go
 model_k8_s_payload.go
 model_kmip_client.go
-model_kmip_clients_config_part.go
+model_kmip_config_part.go
 model_ldap_access_rules.go
 model_ldap_config_part.go
 model_leadership_config_part.go
@@ -596,6 +601,7 @@ model_rotators_config_part.go
 model_rules.go
 model_saml_access_rules.go
 model_saml_attribute.go
+model_secure_remote_access.go
 model_set_item_state.go
 model_set_role_rule.go
 model_sign_jwt_output.go

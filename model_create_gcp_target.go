@@ -21,6 +21,8 @@ type CreateGcpTarget struct {
 	Comment *string `json:"comment,omitempty"`
 	// Base64-encoded service account private key text
 	GcpKey *string `json:"gcp-key,omitempty"`
+	// GCP service account email
+	GcpSaEmail string `json:"gcp-sa-email"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
 	// Target name
@@ -39,8 +41,9 @@ type CreateGcpTarget struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateGcpTarget(name string, ) *CreateGcpTarget {
+func NewCreateGcpTarget(gcpSaEmail string, name string, ) *CreateGcpTarget {
 	this := CreateGcpTarget{}
+	this.GcpSaEmail = gcpSaEmail
 	this.Name = name
 	return &this
 }
@@ -115,6 +118,30 @@ func (o *CreateGcpTarget) HasGcpKey() bool {
 // SetGcpKey gets a reference to the given string and assigns it to the GcpKey field.
 func (o *CreateGcpTarget) SetGcpKey(v string) {
 	o.GcpKey = &v
+}
+
+// GetGcpSaEmail returns the GcpSaEmail field value
+func (o *CreateGcpTarget) GetGcpSaEmail() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.GcpSaEmail
+}
+
+// GetGcpSaEmailOk returns a tuple with the GcpSaEmail field value
+// and a boolean to check if the value has been set.
+func (o *CreateGcpTarget) GetGcpSaEmailOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.GcpSaEmail, true
+}
+
+// SetGcpSaEmail sets field value
+func (o *CreateGcpTarget) SetGcpSaEmail(v string) {
+	o.GcpSaEmail = v
 }
 
 // GetKey returns the Key field value if set, zero value otherwise.
@@ -308,6 +335,9 @@ func (o CreateGcpTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.GcpKey != nil {
 		toSerialize["gcp-key"] = o.GcpKey
+	}
+	if true {
+		toSerialize["gcp-sa-email"] = o.GcpSaEmail
 	}
 	if o.Key != nil {
 		toSerialize["key"] = o.Key

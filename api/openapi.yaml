@@ -1706,6 +1706,33 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /gateway-create-producer-oracle:
+    post:
+      operationId: gatewayCreateProducerOracleDb
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayCreateProducerOracleDb'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayCreateProducerOracleDbOutput'
+          description: gatewayCreateProducerOracleDbResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /gateway-create-producer-postgresql:
     post:
       operationId: gatewayCreateProducerPostgreSQL
@@ -4151,6 +4178,12 @@ components:
           schema:
             $ref: '#/components/schemas/gatewayCreateProducerNativeK8SOutput'
       description: gatewayCreateProducerNativeK8SResponse wraps response body.
+    gatewayCreateProducerOracleDbResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayCreateProducerOracleDbOutput'
+      description: gatewayCreateProducerOracleDbResponse wraps response body.
     gatewayCreateProducerPostgreSQLResponse:
       content:
         application/json:
@@ -4769,16 +4802,16 @@ components:
         cf:
           customer_fragements:
             key: customer_fragements
-        version: 9
+        version: 3
         producers:
           producers:
           - name: name
             active: true
-            id: 5
+            id: 2
             type: type
           - name: name
             active: true
-            id: 5
+            id: 2
             type: type
         general:
           tcp_port: tcp_port
@@ -4864,12 +4897,12 @@ components:
               server: server
               password: password
               client_cert:
-              - 1
-              - 1
+              - 5
+              - 5
               namespace: namespace
               ca:
-              - 6
-              - 6
+              - 1
+              - 1
               skip_system: true
               token: token
               username: username
@@ -4885,12 +4918,12 @@ components:
               server: server
               password: password
               client_cert:
-              - 1
-              - 1
+              - 5
+              - 5
               namespace: namespace
               ca:
-              - 6
-              - 6
+              - 1
+              - 1
               skip_system: true
               token: token
               username: username
@@ -4915,8 +4948,8 @@ components:
               key: key
         leadership:
           open_leadership:
-          - 0
-          - 0
+          - 6
+          - 6
         log_forwarding:
           aws_s3_config:
             aws_access_id: aws_access_id
@@ -4955,12 +4988,14 @@ components:
         saml:
           saml_access_id: saml_access_id
           open_id_connect_access_id: open_id_connect_access_id
-          default_protection_key_id: 7
+          default_protection_key_id: 9
           default_secret_location: default_secret_location
         kmip_clients:
+          server_enc:
+          - 0
+          - 0
           clients:
             key:
-              environment: environment
               name: name
               rules:
               - path: path
@@ -4974,9 +5009,6 @@ components:
                 - capabilities
                 type: type
               id: id
-          environments:
-          - environments
-          - environments
         uidentity:
           uid_access_id: uid_access_id
           uid_rotate_interval: uid_rotate_interval
@@ -5002,11 +5034,11 @@ components:
         rotators:
           rotators:
           - name: name
-            id: 2
+            id: 7
             last_error: last_error
             type: type
           - name: name
-            id: 2
+            id: 7
             last_error: last_error
             type: type
       properties:
@@ -5022,7 +5054,7 @@ components:
         general:
           $ref: '#/components/schemas/GeneralConfigPart'
         kmip_clients:
-          $ref: '#/components/schemas/KMIPClientsConfigPart'
+          $ref: '#/components/schemas/KMIPConfigPart'
         ldap:
           $ref: '#/components/schemas/LdapConfigPart'
         leadership:
@@ -5859,6 +5891,10 @@ components:
         target_alias_helper: target_alias_helper
         is_provided_by_user: true
         key_type: key_type
+        classic_key_attributes:
+          key:
+          - classic_key_attributes
+          - classic_key_attributes
         key_state: key_state
         last_error: last_error
         targets:
@@ -5893,6 +5929,13 @@ components:
         - target_types
         - target_types
       properties:
+        classic_key_attributes:
+          additionalProperties:
+            items:
+              type: string
+            type: array
+          type: object
+          x-go-name: ClassicKeyAttributes
         classic_key_id:
           type: string
           x-go-name: ClassicKeyId
@@ -5930,7 +5973,7 @@ components:
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     ClassicKeyPurpose:
-      description: ClassicKeyPurpose defines purpose for managed keys
+      description: ClassicKeyPurpose defines purpose for classic keys
       type: string
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     ClassicKeyStatusInfo:
@@ -5948,7 +5991,7 @@ components:
           type: string
           x-go-name: LastError
         last_status:
-          description: ClassicKeyTargetStatus defines status of managed key target
+          description: ClassicKeyTargetStatus defines status of classic key target
           type: string
           x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
         version:
@@ -5992,7 +6035,7 @@ components:
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     ClassicKeyTargetStatus:
-      description: ClassicKeyTargetStatus defines status of managed key target
+      description: ClassicKeyTargetStatus defines status of classic key target
       type: string
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     ClassicKeyType:
@@ -6320,6 +6363,7 @@ components:
         chef_server_key: chef_server_key
         db_max_open_conns: db_max_open_conns
         admin_rotation_interval_days: 0
+        oracle_creation_statements: oracle_creation_statements
         mssql_creation_statements: mssql_creation_statements
         sf_user_role: sf_user_role
         admin_pwd: admin_pwd
@@ -6759,6 +6803,9 @@ components:
         mysql_creation_statements:
           type: string
           x-go-name: MysqlCreationStatements
+        oracle_creation_statements:
+          type: string
+          x-go-name: OracleDBCreationStatements
         payload:
           type: string
           x-go-name: Payload
@@ -6866,7 +6913,7 @@ components:
       example:
         saml_access_id: saml_access_id
         open_id_connect_access_id: open_id_connect_access_id
-        default_protection_key_id: 7
+        default_protection_key_id: 9
         default_secret_location: default_secret_location
       properties:
         default_protection_key_id:
@@ -6938,6 +6985,7 @@ components:
         This parameter relevant and required only in case of create update dynamic secret.
       example:
         gw_cluster_id: 7
+        producer_last_keep_alive: producer_last_keep_alive
         producer_type: producer_type
         producer_status: producer_status
         producer_metadata: producer_metadata
@@ -6946,6 +6994,9 @@ components:
           format: int64
           type: integer
           x-go-name: GWClusterID
+        producer_last_keep_alive:
+          type: string
+          x-go-name: ProducerLastKeepAlive
         producer_metadata:
           type: string
           x-go-name: ProducerMetadata
@@ -7213,11 +7264,11 @@ components:
         producers:
         - name: name
           active: true
-          id: 5
+          id: 2
           type: type
         - name: name
           active: true
-          id: 5
+          id: 2
           type: type
       properties:
         producers:
@@ -7346,13 +7397,13 @@ components:
             deletion_date: 2000-01-23T04:56:07.000+00:00
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 1
+            version: 6
           - item_version_state: item_version_state
             with_customer_fragment: true
             deletion_date: 2000-01-23T04:56:07.000+00:00
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 1
+            version: 6
           target_type: target_type
           comment: comment
           protection_key_name: protection_key_name
@@ -7481,7 +7532,7 @@ components:
         item_state: item_state
         cert_issuer_signer_key_name: cert_issuer_signer_key_name
         display_id: display_id
-        item_id: 7
+        item_id: 1
         item_tags:
         - item_tags
         - item_tags
@@ -7556,13 +7607,13 @@ components:
           deletion_date: 2000-01-23T04:56:07.000+00:00
           protection_key_name: protection_key_name
           creation_date: 2000-01-23T04:56:07.000+00:00
-          version: 1
+          version: 6
         - item_version_state: item_version_state
           with_customer_fragment: true
           deletion_date: 2000-01-23T04:56:07.000+00:00
           protection_key_name: protection_key_name
           creation_date: 2000-01-23T04:56:07.000+00:00
-          version: 1
+          version: 6
         item_targets_assoc:
         - assoc_id: assoc_id
           target_name: target_name
@@ -7579,6 +7630,10 @@ components:
             target_alias_helper: target_alias_helper
             is_provided_by_user: true
             key_type: key_type
+            classic_key_attributes:
+              key:
+              - classic_key_attributes
+              - classic_key_attributes
             key_state: key_state
             last_error: last_error
             targets:
@@ -7622,8 +7677,35 @@ components:
             delete_previous_version_in_days: 9
             last_rotation_error: last_rotation_error
             number_of_versions_to_save: 2
+          secure_remote_access_details:
+            schema: schema
+            is_cli: true
+            bastion_ssh: bastion_ssh
+            isolated: true
+            ssh_private_key: true
+            url: url
+            allow_port_forwarding: true
+            is_web: true
+            endpoint: endpoint
+            account_id: account_id
+            db_name: db_name
+            native: true
+            enable: true
+            domain: domain
+            host:
+            - host
+            - host
+            bastion_api: bastion_api
+            category: category
+            dashboard_url: dashboard_url
+            region: region
+            ssh_password: true
+            bastion_issuer_id: 7
+            bastion_issuer: bastion_issuer
+            ssh_user: ssh_user
           dynamic_secret_producer_details:
             gw_cluster_id: 7
+            producer_last_keep_alive: producer_last_keep_alive
             producer_type: producer_type
             producer_status: producer_status
             producer_metadata: producer_metadata
@@ -7691,14 +7773,14 @@ components:
               allowed_user_key_lengths:
                 key: 5
             cert_issuer_type: cert_issuer_type
-        last_version: 6
+        last_version: 7
         next_rotation_date: 2000-01-23T04:56:07.000+00:00
         client_permissions:
         - client_permissions
         - client_permissions
         with_customer_fragment: true
         certificates: certificates
-        rotation_interval: 7
+        rotation_interval: 1
         item_metadata: item_metadata
         deletion_date: 2000-01-23T04:56:07.000+00:00
         protection_key_name: protection_key_name
@@ -7800,6 +7882,10 @@ components:
           target_alias_helper: target_alias_helper
           is_provided_by_user: true
           key_type: key_type
+          classic_key_attributes:
+            key:
+            - classic_key_attributes
+            - classic_key_attributes
           key_state: key_state
           last_error: last_error
           targets:
@@ -7843,8 +7929,35 @@ components:
           delete_previous_version_in_days: 9
           last_rotation_error: last_rotation_error
           number_of_versions_to_save: 2
+        secure_remote_access_details:
+          schema: schema
+          is_cli: true
+          bastion_ssh: bastion_ssh
+          isolated: true
+          ssh_private_key: true
+          url: url
+          allow_port_forwarding: true
+          is_web: true
+          endpoint: endpoint
+          account_id: account_id
+          db_name: db_name
+          native: true
+          enable: true
+          domain: domain
+          host:
+          - host
+          - host
+          bastion_api: bastion_api
+          category: category
+          dashboard_url: dashboard_url
+          region: region
+          ssh_password: true
+          bastion_issuer_id: 7
+          bastion_issuer: bastion_issuer
+          ssh_user: ssh_user
         dynamic_secret_producer_details:
           gw_cluster_id: 7
+          producer_last_keep_alive: producer_last_keep_alive
           producer_type: producer_type
           producer_status: producer_status
           producer_metadata: producer_metadata
@@ -7921,6 +8034,8 @@ components:
           $ref: '#/components/schemas/DynamicSecretProducerInfo'
         rotated_secret_details:
           $ref: '#/components/schemas/RotatedSecretDetailsInfo'
+        secure_remote_access_details:
+          $ref: '#/components/schemas/SecureRemoteAccess'
       title: ItemGeneralInfo defines item general info.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
@@ -7960,7 +8075,7 @@ components:
         deletion_date: 2000-01-23T04:56:07.000+00:00
         protection_key_name: protection_key_name
         creation_date: 2000-01-23T04:56:07.000+00:00
-        version: 1
+        version: 6
       properties:
         creation_date:
           format: date-time
@@ -8009,12 +8124,12 @@ components:
           server: server
           password: password
           client_cert:
-          - 1
-          - 1
+          - 5
+          - 5
           namespace: namespace
           ca:
-          - 6
-          - 6
+          - 1
+          - 1
           skip_system: true
           token: token
           username: username
@@ -8033,12 +8148,12 @@ components:
         server: server
         password: password
         client_cert:
-        - 1
-        - 1
+        - 5
+        - 5
         namespace: namespace
         ca:
-        - 6
-        - 6
+        - 1
+        - 1
         skip_system: true
         token: token
         username: username
@@ -8083,7 +8198,6 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     KMIPClient:
       example:
-        environment: environment
         name: name
         rules:
         - path: path
@@ -8098,9 +8212,6 @@ components:
           type: type
         id: id
       properties:
-        environment:
-          type: string
-          x-go-name: Environment
         id:
           type: string
           x-go-name: ID
@@ -8114,11 +8225,13 @@ components:
           x-go-name: Rules
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
-    KMIPClientsConfigPart:
+    KMIPConfigPart:
       example:
+        server_enc:
+        - 0
+        - 0
         clients:
           key:
-            environment: environment
             name: name
             rules:
             - path: path
@@ -8132,20 +8245,18 @@ components:
               - capabilities
               type: type
             id: id
-        environments:
-        - environments
-        - environments
       properties:
         clients:
           additionalProperties:
             $ref: '#/components/schemas/KMIPClient'
           type: object
           x-go-name: Clients
-        environments:
+        server_enc:
           items:
-            type: string
+            format: uint8
+            type: integer
           type: array
-          x-go-name: Environments
+          x-go-name: ServerEnc
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     LDAPAccessRules:
@@ -8233,8 +8344,8 @@ components:
     LeadershipConfigPart:
       example:
         open_leadership:
-        - 0
-        - 0
+        - 6
+        - 6
       properties:
         open_leadership:
           items:
@@ -8643,7 +8754,7 @@ components:
           item_state: item_state
           cert_issuer_signer_key_name: cert_issuer_signer_key_name
           display_id: display_id
-          item_id: 7
+          item_id: 1
           item_tags:
           - item_tags
           - item_tags
@@ -8718,13 +8829,13 @@ components:
             deletion_date: 2000-01-23T04:56:07.000+00:00
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 1
+            version: 6
           - item_version_state: item_version_state
             with_customer_fragment: true
             deletion_date: 2000-01-23T04:56:07.000+00:00
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 1
+            version: 6
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
@@ -8741,6 +8852,10 @@ components:
               target_alias_helper: target_alias_helper
               is_provided_by_user: true
               key_type: key_type
+              classic_key_attributes:
+                key:
+                - classic_key_attributes
+                - classic_key_attributes
               key_state: key_state
               last_error: last_error
               targets:
@@ -8784,8 +8899,35 @@ components:
               delete_previous_version_in_days: 9
               last_rotation_error: last_rotation_error
               number_of_versions_to_save: 2
+            secure_remote_access_details:
+              schema: schema
+              is_cli: true
+              bastion_ssh: bastion_ssh
+              isolated: true
+              ssh_private_key: true
+              url: url
+              allow_port_forwarding: true
+              is_web: true
+              endpoint: endpoint
+              account_id: account_id
+              db_name: db_name
+              native: true
+              enable: true
+              domain: domain
+              host:
+              - host
+              - host
+              bastion_api: bastion_api
+              category: category
+              dashboard_url: dashboard_url
+              region: region
+              ssh_password: true
+              bastion_issuer_id: 7
+              bastion_issuer: bastion_issuer
+              ssh_user: ssh_user
             dynamic_secret_producer_details:
               gw_cluster_id: 7
+              producer_last_keep_alive: producer_last_keep_alive
               producer_type: producer_type
               producer_status: producer_status
               producer_metadata: producer_metadata
@@ -8853,14 +8995,14 @@ components:
                 allowed_user_key_lengths:
                   key: 5
               cert_issuer_type: cert_issuer_type
-          last_version: 6
+          last_version: 7
           next_rotation_date: 2000-01-23T04:56:07.000+00:00
           client_permissions:
           - client_permissions
           - client_permissions
           with_customer_fragment: true
           certificates: certificates
-          rotation_interval: 7
+          rotation_interval: 1
           item_metadata: item_metadata
           deletion_date: 2000-01-23T04:56:07.000+00:00
           protection_key_name: protection_key_name
@@ -8869,7 +9011,7 @@ components:
           item_state: item_state
           cert_issuer_signer_key_name: cert_issuer_signer_key_name
           display_id: display_id
-          item_id: 7
+          item_id: 1
           item_tags:
           - item_tags
           - item_tags
@@ -8944,13 +9086,13 @@ components:
             deletion_date: 2000-01-23T04:56:07.000+00:00
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 1
+            version: 6
           - item_version_state: item_version_state
             with_customer_fragment: true
             deletion_date: 2000-01-23T04:56:07.000+00:00
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 1
+            version: 6
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
@@ -8967,6 +9109,10 @@ components:
               target_alias_helper: target_alias_helper
               is_provided_by_user: true
               key_type: key_type
+              classic_key_attributes:
+                key:
+                - classic_key_attributes
+                - classic_key_attributes
               key_state: key_state
               last_error: last_error
               targets:
@@ -9010,8 +9156,35 @@ components:
               delete_previous_version_in_days: 9
               last_rotation_error: last_rotation_error
               number_of_versions_to_save: 2
+            secure_remote_access_details:
+              schema: schema
+              is_cli: true
+              bastion_ssh: bastion_ssh
+              isolated: true
+              ssh_private_key: true
+              url: url
+              allow_port_forwarding: true
+              is_web: true
+              endpoint: endpoint
+              account_id: account_id
+              db_name: db_name
+              native: true
+              enable: true
+              domain: domain
+              host:
+              - host
+              - host
+              bastion_api: bastion_api
+              category: category
+              dashboard_url: dashboard_url
+              region: region
+              ssh_password: true
+              bastion_issuer_id: 7
+              bastion_issuer: bastion_issuer
+              ssh_user: ssh_user
             dynamic_secret_producer_details:
               gw_cluster_id: 7
+              producer_last_keep_alive: producer_last_keep_alive
               producer_type: producer_type
               producer_status: producer_status
               producer_metadata: producer_metadata
@@ -9079,14 +9252,14 @@ components:
                 allowed_user_key_lengths:
                   key: 5
               cert_issuer_type: cert_issuer_type
-          last_version: 6
+          last_version: 7
           next_rotation_date: 2000-01-23T04:56:07.000+00:00
           client_permissions:
           - client_permissions
           - client_permissions
           with_customer_fragment: true
           certificates: certificates
-          rotation_interval: 7
+          rotation_interval: 1
           item_metadata: item_metadata
           deletion_date: 2000-01-23T04:56:07.000+00:00
           protection_key_name: protection_key_name
@@ -9218,13 +9391,13 @@ components:
             deletion_date: 2000-01-23T04:56:07.000+00:00
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 1
+            version: 6
           - item_version_state: item_version_state
             with_customer_fragment: true
             deletion_date: 2000-01-23T04:56:07.000+00:00
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 1
+            version: 6
           target_type: target_type
           comment: comment
           protection_key_name: protection_key_name
@@ -9248,13 +9421,13 @@ components:
             deletion_date: 2000-01-23T04:56:07.000+00:00
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 1
+            version: 6
           - item_version_state: item_version_state
             with_customer_fragment: true
             deletion_date: 2000-01-23T04:56:07.000+00:00
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 1
+            version: 6
           target_type: target_type
           comment: comment
           protection_key_name: protection_key_name
@@ -9445,12 +9618,12 @@ components:
             server: server
             password: password
             client_cert:
-            - 1
-            - 1
+            - 5
+            - 5
             namespace: namespace
             ca:
-            - 6
-            - 6
+            - 1
+            - 1
             skip_system: true
             token: token
             username: username
@@ -9466,12 +9639,12 @@ components:
             server: server
             password: password
             client_cert:
-            - 1
-            - 1
+            - 5
+            - 5
             namespace: namespace
             ca:
-            - 6
-            - 6
+            - 1
+            - 1
             skip_system: true
             token: token
             username: username
@@ -9765,7 +9938,7 @@ components:
       example:
         name: name
         active: true
-        id: 5
+        id: 2
         type: type
       properties:
         active:
@@ -9793,11 +9966,11 @@ components:
         producers:
         - name: name
           active: true
-          id: 5
+          id: 2
           type: type
         - name: name
           active: true
-          id: 5
+          id: 2
           type: type
       properties:
         producers:
@@ -10088,7 +10261,7 @@ components:
     Rotator:
       example:
         name: name
-        id: 2
+        id: 7
         last_error: last_error
         type: type
       properties:
@@ -10119,11 +10292,11 @@ components:
       example:
         rotators:
         - name: name
-          id: 2
+          id: 7
           last_error: last_error
           type: type
         - name: name
-          id: 2
+          id: 7
           last_error: last_error
           type: type
       properties:
@@ -10288,6 +10461,111 @@ components:
       title: SSHCertificateType defines the types of SSH certificates.
       type: integer
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    SecureRemoteAccess:
+      example:
+        schema: schema
+        is_cli: true
+        bastion_ssh: bastion_ssh
+        isolated: true
+        ssh_private_key: true
+        url: url
+        allow_port_forwarding: true
+        is_web: true
+        endpoint: endpoint
+        account_id: account_id
+        db_name: db_name
+        native: true
+        enable: true
+        domain: domain
+        host:
+        - host
+        - host
+        bastion_api: bastion_api
+        category: category
+        dashboard_url: dashboard_url
+        region: region
+        ssh_password: true
+        bastion_issuer_id: 7
+        bastion_issuer: bastion_issuer
+        ssh_user: ssh_user
+      properties:
+        account_id:
+          type: string
+          x-go-name: AwsAccountId
+        allow_port_forwarding:
+          type: boolean
+          x-go-name: K8SAllowPortForwading
+        bastion_api:
+          type: string
+          x-go-name: BastionAPI
+        bastion_issuer:
+          type: string
+          x-go-name: BastionIssuer
+        bastion_issuer_id:
+          format: int64
+          type: integer
+          x-go-name: BastionIssuerID
+        bastion_ssh:
+          type: string
+          x-go-name: BastionSSH
+        category:
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+        dashboard_url:
+          type: string
+          x-go-name: K8SDashboardURL
+        db_name:
+          type: string
+          x-go-name: DbName
+        domain:
+          type: string
+          x-go-name: RDPDomain
+        enable:
+          type: boolean
+          x-go-name: Enable
+        endpoint:
+          type: string
+          x-go-name: K8SEndpoint
+        host:
+          items:
+            type: string
+          type: array
+          x-go-name: Host
+        is_cli:
+          type: boolean
+          x-go-name: AccessCliCategory
+        is_web:
+          type: boolean
+          x-go-name: AccessWebCategory
+        isolated:
+          type: boolean
+          x-go-name: Isolated
+        native:
+          type: boolean
+          x-go-name: AwsNativeCli
+        region:
+          type: string
+          x-go-name: AwsRegion
+        schema:
+          type: string
+          x-go-name: Schema
+        ssh_password:
+          type: boolean
+          x-go-name: SSHPassword
+        ssh_private_key:
+          type: boolean
+          x-go-name: SSHPrivateKey
+        ssh_user:
+          type: string
+          x-go-name: SSHUser
+        url:
+          type: string
+          x-go-name: URL
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    SecureRemoteAccessCategory:
+      type: string
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     SplunkLogForwardingConfig:
       example:
         splunk_token: splunk_token
@@ -10379,13 +10657,13 @@ components:
           deletion_date: 2000-01-23T04:56:07.000+00:00
           protection_key_name: protection_key_name
           creation_date: 2000-01-23T04:56:07.000+00:00
-          version: 1
+          version: 6
         - item_version_state: item_version_state
           with_customer_fragment: true
           deletion_date: 2000-01-23T04:56:07.000+00:00
           protection_key_name: protection_key_name
           creation_date: 2000-01-23T04:56:07.000+00:00
-          version: 1
+          version: 6
         target_type: target_type
         comment: comment
         protection_key_name: protection_key_name
@@ -12223,6 +12501,9 @@ components:
           description: Target name
           type: string
           x-go-name: TargetName
+        oracle-service-name:
+          type: string
+          x-go-name: OracleServiceName
         password:
           description: Required only when the authentication process requires a username
             and password
@@ -12562,6 +12843,10 @@ components:
           description: Base64-encoded service account private key text
           type: string
           x-go-name: ServiceAccountKey
+        gcp-sa-email:
+          description: GCP service account email
+          type: string
+          x-go-name: ServiceAccountEmail
         key:
           description: |-
             The name of a key that used to encrypt the target secret value (if empty, the
@@ -12593,6 +12878,7 @@ components:
           type: string
           x-go-name: Username
       required:
+      - gcp-sa-email
       - name
       title: createGcpTarget is a command that creates a new target.
       type: object
@@ -12898,6 +13184,12 @@ components:
             and password
           type: string
           x-go-name: Password
+        rotated-password:
+          type: string
+          x-go-name: RotatedPassword
+        rotated-username:
+          type: string
+          x-go-name: RotatedUser
         rotation-hour:
           format: int32
           type: integer
@@ -12914,9 +13206,11 @@ components:
           type: string
           x-go-name: RotatorType
         ssh-password:
+          description: 'Deprecated: use RotatedPassword'
           type: string
           x-go-name: SshPassword
         ssh-username:
+          description: 'Deprecated: use RotatedUser'
           type: string
           x-go-name: SshUser
         tags:
@@ -12988,6 +13282,23 @@ components:
           description: Signed certificates with principal, e.g example_role1,example_role2
           type: string
           x-go-name: Principals
+        secure-access-bastion-api:
+          type: string
+          x-go-name: SecureAccessBastionAPI
+        secure-access-bastion-ssh:
+          type: string
+          x-go-name: SecureAccessBastionSSH
+        secure-access-enable:
+          type: string
+          x-go-name: SecureAccessEnabled
+        secure-access-host:
+          items:
+            type: string
+          type: array
+          x-go-name: SecureAccessHost
+        secure-access-ssh-creds-user:
+          type: string
+          x-go-name: SecureAccessSSHUser
         signer-key-name:
           description: A key to sign the certificate with
           type: string
@@ -13124,6 +13435,26 @@ components:
             account default protectionKey key will be used)
           type: string
           x-go-name: ProtectionKey
+        secure-access-bastion-issuer:
+          type: string
+          x-go-name: SecureAccessBastionIssuer
+        secure-access-enable:
+          type: string
+          x-go-name: SecureAccessEnabled
+        secure-access-host:
+          items:
+            type: string
+          type: array
+          x-go-name: SecureAccessHost
+        secure-access-ssh-creds:
+          type: string
+          x-go-name: SecureAccessSSHCategory
+        secure-access-url:
+          type: string
+          x-go-name: SecureAccessURL
+        secure-access-web-browsing:
+          type: boolean
+          x-go-name: SecureAccessIsolated
         tags:
           description: List of the tags attached to this secret
           items:
@@ -14287,6 +14618,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
           admin_pwd: admin_pwd
@@ -14487,6 +14819,21 @@ components:
           description: Region
           type: string
           x-go-name: Region
+        secure-access-aws-account-id:
+          type: string
+          x-go-name: SecureAccessAccountId
+        secure-access-aws-native-cli:
+          type: boolean
+          x-go-name: SecureAccessAwsNativeCli
+        secure-access-bastion-issuer:
+          type: string
+          x-go-name: SecureAccessBastionIssuer
+        secure-access-enable:
+          type: string
+          x-go-name: SecureAccessEnabled
+        secure-access-web-browsing:
+          type: boolean
+          x-go-name: SecureAccessIsolated
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -14525,6 +14872,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
           admin_pwd: admin_pwd
@@ -14691,6 +15039,12 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
+        secure-access-enable:
+          type: string
+          x-go-name: SecureAccessEnabled
+        secure-access-web-browsing:
+          type: boolean
+          x-go-name: SecureAccessIsolated
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -14752,6 +15106,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
           admin_pwd: admin_pwd
@@ -15010,6 +15365,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
           admin_pwd: admin_pwd
@@ -15298,6 +15654,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
           admin_pwd: admin_pwd
@@ -15477,6 +15834,18 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
+        secure-access-allow-port-forwading:
+          type: boolean
+          x-go-name: SecureAccessK8SAllowPortForwading
+        secure-access-bastion-issuer:
+          type: string
+          x-go-name: SecureAccessBastionIssuer
+        secure-access-cluster-endpoint:
+          type: string
+          x-go-name: SecureAccessEndpoint
+        secure-access-enable:
+          type: string
+          x-go-name: SecureAccessEnabled
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -15518,6 +15887,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
           admin_pwd: admin_pwd
@@ -15725,6 +16095,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
           admin_pwd: admin_pwd
@@ -15895,6 +16266,18 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
+        secure-access-allow-port-forwading:
+          type: boolean
+          x-go-name: SecureAccessK8SAllowPortForwading
+        secure-access-bastion-issuer:
+          type: string
+          x-go-name: SecureAccessBastionIssuer
+        secure-access-cluster-endpoint:
+          type: string
+          x-go-name: SecureAccessEndpoint
+        secure-access-enable:
+          type: string
+          x-go-name: SecureAccessEnabled
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -15935,6 +16318,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
           admin_pwd: admin_pwd
@@ -16115,6 +16499,20 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
+        secure-access-bastion-issuer:
+          type: string
+          x-go-name: SecureAccessBastionIssuer
+        secure-access-db-schema:
+          type: string
+          x-go-name: SecureAccessSchema
+        secure-access-enable:
+          type: string
+          x-go-name: SecureAccessEnabled
+        secure-access-host:
+          items:
+            type: string
+          type: array
+          x-go-name: SecureAccessHost
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -16154,6 +16552,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
           admin_pwd: admin_pwd
@@ -16351,6 +16750,17 @@ components:
           description: Encrypt producer with following key
           type: string
           x-go-name: ProducerEncryptionKey
+        secure-access-bastion-issuer:
+          type: string
+          x-go-name: SecureAccessBastionIssuer
+        secure-access-enable:
+          type: string
+          x-go-name: SecureAccessEnabled
+        secure-access-host:
+          items:
+            type: string
+          type: array
+          x-go-name: SecureAccessHost
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -16388,6 +16798,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
           admin_pwd: admin_pwd
@@ -16572,6 +16983,17 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
+        secure-access-bastion-issuer:
+          type: string
+          x-go-name: SecureAccessBastionIssuer
+        secure-access-enable:
+          type: string
+          x-go-name: SecureAccessEnabled
+        secure-access-host:
+          items:
+            type: string
+          type: array
+          x-go-name: SecureAccessHost
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -16611,6 +17033,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
           admin_pwd: admin_pwd
@@ -16781,6 +17204,24 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
+        secure-access-allow-port-forwading:
+          type: boolean
+          x-go-name: SecureAccessK8SAllowPortForwading
+        secure-access-bastion-issuer:
+          type: string
+          x-go-name: SecureAccessBastionIssuer
+        secure-access-cluster-endpoint:
+          type: string
+          x-go-name: SecureAccessEndpoint
+        secure-access-dashboard-url:
+          type: string
+          x-go-name: SecureAccessDashboardURL
+        secure-access-enable:
+          type: string
+          x-go-name: SecureAccessEnabled
+        secure-access-web-browsing:
+          type: boolean
+          x-go-name: SecureAccessIsolated
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -16821,6 +17262,232 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          oracle_creation_statements: oracle_creation_statements
+          mssql_creation_statements: mssql_creation_statements
+          sf_user_role: sf_user_role
+          admin_pwd: admin_pwd
+          gcp_token_scope: gcp_token_scope
+          venafi_allowed_domains:
+          - venafi_allowed_domains
+          - venafi_allowed_domains
+          azure_user_roles_template_id: azure_user_roles_template_id
+          fixed_user_only: fixed_user_only
+          rabbitmq_server_password: rabbitmq_server_password
+          aws_access_mode: aws_access_mode
+          aws_user_policies: aws_user_policies
+          aws_role_arns: aws_role_arns
+          active: true
+          item_targets_assoc:
+          - assoc_id: assoc_id
+            target_name: target_name
+            target_id: 1
+          - assoc_id: assoc_id
+            target_name: target_name
+            target_id: 1
+          chef_server_username: chef_server_username
+          db_host_name: db_host_name
+          db_name: db_name
+          k8s_service_account: k8s_service_account
+          chef_skip_ssl: true
+          db_port: db_port
+          k8s_cluster_endpoint: k8s_cluster_endpoint
+          artifactory_base_url: artifactory_base_url
+          azure_client_secret: azure_client_secret
+          azure_user_groups_obj_id: azure_user_groups_obj_id
+          gcp_token_type: gcp_token_type
+          create_sync_url: create_sync_url
+          aws_session_token: aws_session_token
+          gcp_token_lifetime: gcp_token_lifetime
+          db_isolation_level: db_isolation_level
+          rabbitmq_user_vhost: rabbitmq_user_vhost
+          mongodb_username: mongodb_username
+          mongodb_roles: mongodb_roles
+          mongodb_db_name: mongodb_db_name
+          venafi_signer_key_name: venafi_signer_key_name
+          should_stop: should_stop
+          artifactory_token_audience: artifactory_token_audience
+          mongodb_atlas_api_public_key: mongodb_atlas_api_public_key
+          eks_access_key_id: eks_access_key_id
+          venafi_base_url: venafi_base_url
+          user_ttl: user_ttl
+          timeout_seconds: 5
+          eks_assume_role: eks_assume_role
+          venafi_use_tpp: true
+          mongodb_password: mongodb_password
+          aws_secret_access_key: aws_secret_access_key
+          mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
+          postgres_creation_statements: postgres_creation_statements
+          db_max_idle_conns: db_max_idle_conns
+          artifactory_admin_username: artifactory_admin_username
+          admin_name: admin_name
+          rabbitmq_server_user: rabbitmq_server_user
+          venafi_api_key: venafi_api_key
+          mongodb_host_port: mongodb_host_port
+          sf_warehouse_name: sf_warehouse_name
+          artifactory_token_scope: artifactory_token_scope
+          revoke_sync_url: revoke_sync_url
+          gke_cluster_ca_certificate: gke_cluster_ca_certificate
+          host_port: host_port
+          k8s_bearer_token: k8s_bearer_token
+          enable_admin_rotation: true
+          failure_message: failure_message
+          rabbitmq_user_read_permission: rabbitmq_user_read_permission
+          azure_client_id: azure_client_id
+          mongodb_default_auth_db: mongodb_default_auth_db
+          mongodb_uri_connection: mongodb_uri_connection
+          mongodb_atlas_project_id: mongodb_atlas_project_id
+          db_user_name: db_user_name
+          eks_region: eks_region
+          payload: payload
+          artifactory_admin_apikey: artifactory_admin_apikey
+          azure_app_object_id: azure_app_object_id
+          venafi_allow_subdomains: true
+          aws_user_console_access: true
+          user_principal_name: user_principal_name
+          db_server_certificates: db_server_certificates
+          gcp_key_algo: gcp_key_algo
+          db_server_name: db_server_name
+          venafi_zone: venafi_zone
+          gcp_service_account_key:
+          - 1
+          - 1
+          venafi_store_private_key: true
+          venafi_tpp_username: venafi_tpp_username
+          azure_user_portal_access: true
+          venafi_root_first_in_chain: true
+          eks_cluster_endpoint: eks_cluster_endpoint
+          gke_service_account_key: gke_service_account_key
+          venafi_auto_generated_folder: venafi_auto_generated_folder
+          mongodb_uri_options: mongodb_uri_options
+          db_pwd: db_pwd
+          gke_service_account_name: gke_service_account_name
+          mysql_creation_statements: mysql_creation_statements
+          gcp_service_account_email: gcp_service_account_email
+          dynamic_secret_name: dynamic_secret_name
+          rabbitmq_server_uri: rabbitmq_server_uri
+          chef_server_access_mode: chef_server_access_mode
+          aws_user_programmatic_access: true
+          rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
+          rabbitmq_user_write_permission: rabbitmq_user_write_permission
+          rabbitmq_user_tags: rabbitmq_user_tags
+          venafi_tpp_password: venafi_tpp_password
+          azure_user_programmatic_access: true
+          k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
+          eks_secret_access_key: eks_secret_access_key
+          sf_account: sf_account
+          groups: groups
+          chef_organizations: chef_organizations
+          dynamic_secret_id: 6
+          chef_server_host_name: chef_server_host_name
+          mssql_revocation_statements: mssql_revocation_statements
+          chef_server_port: chef_server_port
+          mongodb_is_atlas: true
+          eks_cluster_ca_certificate: eks_cluster_ca_certificate
+          rotate_sync_url: rotate_sync_url
+          aws_access_key_id: aws_access_key_id
+          aws_region: aws_region
+          eks_cluster_name: eks_cluster_name
+          chef_server_url: chef_server_url
+          gke_cluster_name: gke_cluster_name
+          aws_user_groups: aws_user_groups
+          host_name: host_name
+          azure_tenant_id: azure_tenant_id
+      properties:
+        producer_details:
+          $ref: '#/components/schemas/DSProducerDetails'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayCreateProducerOracleDb:
+      description: gatewayCreateProducerOracleDb is a command that creates oracle
+        db producer
+      properties:
+        db-server-certificates:
+          description: (Optional) DB server certificates
+          type: string
+          x-go-name: DBServerCertificates
+        db-server-name:
+          description: (Optional) Server name for certificate verification
+          type: string
+          x-go-name: DBServerName
+        name:
+          description: Producer name
+          type: string
+          x-go-name: ProducerName
+        oracle-host:
+          default: 127.0.0.1
+          description: Oracle Host
+          type: string
+          x-go-name: DBHost
+        oracle-password:
+          description: Oracle Password
+          type: string
+          x-go-name: DBPassword
+        oracle-port:
+          default: "1521"
+          description: Oracle Port
+          type: string
+          x-go-name: DBPort
+        oracle-screation-statements:
+          description: Oracle Creation statements
+          type: string
+          x-go-name: CreationStatements
+        oracle-service-name:
+          description: Oracle DB Name
+          type: string
+          x-go-name: DBName
+        oracle-username:
+          description: Oracle Username
+          type: string
+          x-go-name: DBUsername
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        producer-encryption-key-name:
+          description: Dynamic producer encryption key
+          type: string
+          x-go-name: ProducerEncryptionKey
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        user-ttl:
+          default: 60m
+          description: User TTL
+          type: string
+          x-go-name: UserTtl
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+      required:
+      - name
+      - oracle-password
+      - oracle-service-name
+      - oracle-username
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayCreateProducerOracleDbOutput:
+      example:
+        producer_details:
+          gke_cluster_endpoint: gke_cluster_endpoint
+          dynamic_secret_type: dynamic_secret_type
+          k8s_namespace: k8s_namespace
+          venafi_sign_using_akeyless_pki: true
+          dynamic_secret_key: dynamic_secret_key
+          last_admin_rotation: 5
+          chef_server_key: chef_server_key
+          db_max_open_conns: db_max_open_conns
+          admin_rotation_interval_days: 0
+          oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
           admin_pwd: admin_pwd
@@ -16998,6 +17665,20 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
+        secure-access-bastion-issuer:
+          type: string
+          x-go-name: SecureAccessBastionIssuer
+        secure-access-db-schema:
+          type: string
+          x-go-name: SecureAccessSchema
+        secure-access-enable:
+          type: string
+          x-go-name: SecureAccessEnabled
+        secure-access-host:
+          items:
+            type: string
+          type: array
+          x-go-name: SecureAccessHost
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -17037,6 +17718,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
           admin_pwd: admin_pwd
@@ -17220,6 +17902,15 @@ components:
           description: User write permission
           type: string
           x-go-name: UserWritePermission
+        secure-access-enable:
+          type: string
+          x-go-name: SecureAccessEnabled
+        secure-access-url:
+          type: string
+          x-go-name: SecureAccessURL
+        secure-access-web-browsing:
+          type: boolean
+          x-go-name: SecureAccessIsolated
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -17262,6 +17953,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
           admin_pwd: admin_pwd
@@ -17438,6 +18130,17 @@ components:
           description: Groups
           type: string
           x-go-name: UserGroups
+        secure-access-enable:
+          type: string
+          x-go-name: SecureAccessEnabled
+        secure-access-host:
+          items:
+            type: string
+          type: array
+          x-go-name: SecureAccessHost
+        secure-access-rdp-domain:
+          type: string
+          x-go-name: SecureAccessDomain
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -17478,6 +18181,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
           admin_pwd: admin_pwd
@@ -17679,6 +18383,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
           admin_pwd: admin_pwd
@@ -19970,6 +20675,9 @@ components:
           description: New target name
           type: string
           x-go-name: NewTargetName
+        oracle-service-name:
+          type: string
+          x-go-name: OracleServiceName
         password:
           description: Required only when the authentication process requires a username
             and password
@@ -20270,6 +20978,10 @@ components:
           description: Base64-encoded service account private key text
           type: string
           x-go-name: ServiceAccountKey
+        gcp-sa-email:
+          description: GCP service account email
+          type: string
+          x-go-name: ServiceAccountEmail
         key:
           description: |-
             The name of a key that used to encrypt the target secret value (if empty, the
@@ -20310,6 +21022,7 @@ components:
           type: string
           x-go-name: Username
       required:
+      - gcp-sa-email
       - name
       title: updateGcpTarget is a command that updates an existing target.
       type: object
@@ -20356,6 +21069,62 @@ components:
             type: string
           type: array
           x-go-name: RemoveTags
+        secure-access-allow-port-forwading:
+          type: boolean
+          x-go-name: SecureAccessK8SAllowPortForwading
+        secure-access-aws-account-id:
+          type: string
+          x-go-name: SecureAccessAccountId
+        secure-access-aws-native-cli:
+          type: boolean
+          x-go-name: SecureAccessAwsNativeCli
+        secure-access-aws-region:
+          type: string
+          x-go-name: SecureAccessAwsRegion
+        secure-access-bastion-api:
+          type: string
+          x-go-name: SecureAccessBastionAPI
+        secure-access-bastion-issuer:
+          type: string
+          x-go-name: SecureAccessBastionIssuer
+        secure-access-bastion-ssh:
+          type: string
+          x-go-name: SecureAccessBastionSSH
+        secure-access-cluster-endpoint:
+          type: string
+          x-go-name: SecureAccessEndpoint
+        secure-access-dashboard-url:
+          type: string
+          x-go-name: SecureAccessDashboardURL
+        secure-access-db-name:
+          type: string
+          x-go-name: SecureAccessDBName
+        secure-access-db-schema:
+          type: string
+          x-go-name: SecureAccessSchema
+        secure-access-enable:
+          type: string
+          x-go-name: SecureAccessEnabled
+        secure-access-host:
+          items:
+            type: string
+          type: array
+          x-go-name: SecureAccessHost
+        secure-access-rdp-domain:
+          type: string
+          x-go-name: SecureAccessDomain
+        secure-access-ssh-creds:
+          type: string
+          x-go-name: SecureAccessSSHCategory
+        secure-access-ssh-creds-user:
+          type: string
+          x-go-name: SecureAccessSSHUser
+        secure-access-url:
+          type: string
+          x-go-name: SecureAccessURL
+        secure-access-web-browsing:
+          type: boolean
+          x-go-name: SecureAccessIsolated
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -20782,6 +21551,12 @@ components:
             type: string
           type: array
           x-go-name: RemoveTags
+        rotated-password:
+          type: string
+          x-go-name: RotatedPassword
+        rotated-username:
+          type: string
+          x-go-name: RotatedUser
         rotation-hour:
           format: int32
           type: integer
@@ -20795,9 +21570,11 @@ components:
           type: string
           x-go-name: RotatorCredsType
         ssh-password:
+          description: 'Deprecated: use RotatedPassword'
           type: string
           x-go-name: SshPassword
         ssh-username:
+          description: 'Deprecated: use RotatedUser'
           type: string
           x-go-name: SshUser
         token:

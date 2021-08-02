@@ -51,6 +51,7 @@ type UpdateDBTarget struct {
 	Name string `json:"name"`
 	// New target name
 	NewName *string `json:"new-name,omitempty"`
+	OracleServiceName *string `json:"oracle-service-name,omitempty"`
 	// Required only when the authentication process requires a username and password
 	Password *string `json:"password,omitempty"`
 	Port *string `json:"port,omitempty"`
@@ -682,6 +683,38 @@ func (o *UpdateDBTarget) SetNewName(v string) {
 	o.NewName = &v
 }
 
+// GetOracleServiceName returns the OracleServiceName field value if set, zero value otherwise.
+func (o *UpdateDBTarget) GetOracleServiceName() string {
+	if o == nil || o.OracleServiceName == nil {
+		var ret string
+		return ret
+	}
+	return *o.OracleServiceName
+}
+
+// GetOracleServiceNameOk returns a tuple with the OracleServiceName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateDBTarget) GetOracleServiceNameOk() (*string, bool) {
+	if o == nil || o.OracleServiceName == nil {
+		return nil, false
+	}
+	return o.OracleServiceName, true
+}
+
+// HasOracleServiceName returns a boolean if a field has been set.
+func (o *UpdateDBTarget) HasOracleServiceName() bool {
+	if o != nil && o.OracleServiceName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOracleServiceName gets a reference to the given string and assigns it to the OracleServiceName field.
+func (o *UpdateDBTarget) SetOracleServiceName(v string) {
+	o.OracleServiceName = &v
+}
+
 // GetPassword returns the Password field value if set, zero value otherwise.
 func (o *UpdateDBTarget) GetPassword() string {
 	if o == nil || o.Password == nil {
@@ -1028,6 +1061,9 @@ func (o UpdateDBTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.NewName != nil {
 		toSerialize["new-name"] = o.NewName
+	}
+	if o.OracleServiceName != nil {
+		toSerialize["oracle-service-name"] = o.OracleServiceName
 	}
 	if o.Password != nil {
 		toSerialize["password"] = o.Password

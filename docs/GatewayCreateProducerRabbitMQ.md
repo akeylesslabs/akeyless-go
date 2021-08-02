@@ -15,6 +15,9 @@ Name | Type | Description | Notes
 **RabbitmqUserTags** | Pointer to **string** | User Tags | [optional] 
 **RabbitmqUserVhost** | Pointer to **string** | User Virtual Host | [optional] 
 **RabbitmqUserWritePermission** | **string** | User write permission | 
+**SecureAccessEnable** | Pointer to **string** |  | [optional] 
+**SecureAccessUrl** | Pointer to **string** |  | [optional] 
+**SecureAccessWebBrowsing** | Pointer to **bool** |  | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserTtl** | Pointer to **string** | User TTL | [optional] [default to "60m"]
@@ -278,6 +281,81 @@ and a boolean to check if the value has been set.
 
 SetRabbitmqUserWritePermission sets RabbitmqUserWritePermission field to given value.
 
+
+### GetSecureAccessEnable
+
+`func (o *GatewayCreateProducerRabbitMQ) GetSecureAccessEnable() string`
+
+GetSecureAccessEnable returns the SecureAccessEnable field if non-nil, zero value otherwise.
+
+### GetSecureAccessEnableOk
+
+`func (o *GatewayCreateProducerRabbitMQ) GetSecureAccessEnableOk() (*string, bool)`
+
+GetSecureAccessEnableOk returns a tuple with the SecureAccessEnable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessEnable
+
+`func (o *GatewayCreateProducerRabbitMQ) SetSecureAccessEnable(v string)`
+
+SetSecureAccessEnable sets SecureAccessEnable field to given value.
+
+### HasSecureAccessEnable
+
+`func (o *GatewayCreateProducerRabbitMQ) HasSecureAccessEnable() bool`
+
+HasSecureAccessEnable returns a boolean if a field has been set.
+
+### GetSecureAccessUrl
+
+`func (o *GatewayCreateProducerRabbitMQ) GetSecureAccessUrl() string`
+
+GetSecureAccessUrl returns the SecureAccessUrl field if non-nil, zero value otherwise.
+
+### GetSecureAccessUrlOk
+
+`func (o *GatewayCreateProducerRabbitMQ) GetSecureAccessUrlOk() (*string, bool)`
+
+GetSecureAccessUrlOk returns a tuple with the SecureAccessUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessUrl
+
+`func (o *GatewayCreateProducerRabbitMQ) SetSecureAccessUrl(v string)`
+
+SetSecureAccessUrl sets SecureAccessUrl field to given value.
+
+### HasSecureAccessUrl
+
+`func (o *GatewayCreateProducerRabbitMQ) HasSecureAccessUrl() bool`
+
+HasSecureAccessUrl returns a boolean if a field has been set.
+
+### GetSecureAccessWebBrowsing
+
+`func (o *GatewayCreateProducerRabbitMQ) GetSecureAccessWebBrowsing() bool`
+
+GetSecureAccessWebBrowsing returns the SecureAccessWebBrowsing field if non-nil, zero value otherwise.
+
+### GetSecureAccessWebBrowsingOk
+
+`func (o *GatewayCreateProducerRabbitMQ) GetSecureAccessWebBrowsingOk() (*bool, bool)`
+
+GetSecureAccessWebBrowsingOk returns a tuple with the SecureAccessWebBrowsing field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessWebBrowsing
+
+`func (o *GatewayCreateProducerRabbitMQ) SetSecureAccessWebBrowsing(v bool)`
+
+SetSecureAccessWebBrowsing sets SecureAccessWebBrowsing field to given value.
+
+### HasSecureAccessWebBrowsing
+
+`func (o *GatewayCreateProducerRabbitMQ) HasSecureAccessWebBrowsing() bool`
+
+HasSecureAccessWebBrowsing returns a boolean if a field has been set.
 
 ### GetToken
 

@@ -27,6 +27,12 @@ type CreateSecret struct {
 	Password *string `json:"password,omitempty"`
 	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
 	ProtectionKey *string `json:"protection_key,omitempty"`
+	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
+	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
+	SecureAccessSshCreds *string `json:"secure-access-ssh-creds,omitempty"`
+	SecureAccessUrl *string `json:"secure-access-url,omitempty"`
+	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
 	// List of the tags attached to this secret
 	Tags *[]string `json:"tags,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -210,6 +216,198 @@ func (o *CreateSecret) SetProtectionKey(v string) {
 	o.ProtectionKey = &v
 }
 
+// GetSecureAccessBastionIssuer returns the SecureAccessBastionIssuer field value if set, zero value otherwise.
+func (o *CreateSecret) GetSecureAccessBastionIssuer() string {
+	if o == nil || o.SecureAccessBastionIssuer == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessBastionIssuer
+}
+
+// GetSecureAccessBastionIssuerOk returns a tuple with the SecureAccessBastionIssuer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSecret) GetSecureAccessBastionIssuerOk() (*string, bool) {
+	if o == nil || o.SecureAccessBastionIssuer == nil {
+		return nil, false
+	}
+	return o.SecureAccessBastionIssuer, true
+}
+
+// HasSecureAccessBastionIssuer returns a boolean if a field has been set.
+func (o *CreateSecret) HasSecureAccessBastionIssuer() bool {
+	if o != nil && o.SecureAccessBastionIssuer != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessBastionIssuer gets a reference to the given string and assigns it to the SecureAccessBastionIssuer field.
+func (o *CreateSecret) SetSecureAccessBastionIssuer(v string) {
+	o.SecureAccessBastionIssuer = &v
+}
+
+// GetSecureAccessEnable returns the SecureAccessEnable field value if set, zero value otherwise.
+func (o *CreateSecret) GetSecureAccessEnable() string {
+	if o == nil || o.SecureAccessEnable == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessEnable
+}
+
+// GetSecureAccessEnableOk returns a tuple with the SecureAccessEnable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSecret) GetSecureAccessEnableOk() (*string, bool) {
+	if o == nil || o.SecureAccessEnable == nil {
+		return nil, false
+	}
+	return o.SecureAccessEnable, true
+}
+
+// HasSecureAccessEnable returns a boolean if a field has been set.
+func (o *CreateSecret) HasSecureAccessEnable() bool {
+	if o != nil && o.SecureAccessEnable != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessEnable gets a reference to the given string and assigns it to the SecureAccessEnable field.
+func (o *CreateSecret) SetSecureAccessEnable(v string) {
+	o.SecureAccessEnable = &v
+}
+
+// GetSecureAccessHost returns the SecureAccessHost field value if set, zero value otherwise.
+func (o *CreateSecret) GetSecureAccessHost() []string {
+	if o == nil || o.SecureAccessHost == nil {
+		var ret []string
+		return ret
+	}
+	return *o.SecureAccessHost
+}
+
+// GetSecureAccessHostOk returns a tuple with the SecureAccessHost field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSecret) GetSecureAccessHostOk() (*[]string, bool) {
+	if o == nil || o.SecureAccessHost == nil {
+		return nil, false
+	}
+	return o.SecureAccessHost, true
+}
+
+// HasSecureAccessHost returns a boolean if a field has been set.
+func (o *CreateSecret) HasSecureAccessHost() bool {
+	if o != nil && o.SecureAccessHost != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessHost gets a reference to the given []string and assigns it to the SecureAccessHost field.
+func (o *CreateSecret) SetSecureAccessHost(v []string) {
+	o.SecureAccessHost = &v
+}
+
+// GetSecureAccessSshCreds returns the SecureAccessSshCreds field value if set, zero value otherwise.
+func (o *CreateSecret) GetSecureAccessSshCreds() string {
+	if o == nil || o.SecureAccessSshCreds == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessSshCreds
+}
+
+// GetSecureAccessSshCredsOk returns a tuple with the SecureAccessSshCreds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSecret) GetSecureAccessSshCredsOk() (*string, bool) {
+	if o == nil || o.SecureAccessSshCreds == nil {
+		return nil, false
+	}
+	return o.SecureAccessSshCreds, true
+}
+
+// HasSecureAccessSshCreds returns a boolean if a field has been set.
+func (o *CreateSecret) HasSecureAccessSshCreds() bool {
+	if o != nil && o.SecureAccessSshCreds != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessSshCreds gets a reference to the given string and assigns it to the SecureAccessSshCreds field.
+func (o *CreateSecret) SetSecureAccessSshCreds(v string) {
+	o.SecureAccessSshCreds = &v
+}
+
+// GetSecureAccessUrl returns the SecureAccessUrl field value if set, zero value otherwise.
+func (o *CreateSecret) GetSecureAccessUrl() string {
+	if o == nil || o.SecureAccessUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessUrl
+}
+
+// GetSecureAccessUrlOk returns a tuple with the SecureAccessUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSecret) GetSecureAccessUrlOk() (*string, bool) {
+	if o == nil || o.SecureAccessUrl == nil {
+		return nil, false
+	}
+	return o.SecureAccessUrl, true
+}
+
+// HasSecureAccessUrl returns a boolean if a field has been set.
+func (o *CreateSecret) HasSecureAccessUrl() bool {
+	if o != nil && o.SecureAccessUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessUrl gets a reference to the given string and assigns it to the SecureAccessUrl field.
+func (o *CreateSecret) SetSecureAccessUrl(v string) {
+	o.SecureAccessUrl = &v
+}
+
+// GetSecureAccessWebBrowsing returns the SecureAccessWebBrowsing field value if set, zero value otherwise.
+func (o *CreateSecret) GetSecureAccessWebBrowsing() bool {
+	if o == nil || o.SecureAccessWebBrowsing == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessWebBrowsing
+}
+
+// GetSecureAccessWebBrowsingOk returns a tuple with the SecureAccessWebBrowsing field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSecret) GetSecureAccessWebBrowsingOk() (*bool, bool) {
+	if o == nil || o.SecureAccessWebBrowsing == nil {
+		return nil, false
+	}
+	return o.SecureAccessWebBrowsing, true
+}
+
+// HasSecureAccessWebBrowsing returns a boolean if a field has been set.
+func (o *CreateSecret) HasSecureAccessWebBrowsing() bool {
+	if o != nil && o.SecureAccessWebBrowsing != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessWebBrowsing gets a reference to the given bool and assigns it to the SecureAccessWebBrowsing field.
+func (o *CreateSecret) SetSecureAccessWebBrowsing(v bool) {
+	o.SecureAccessWebBrowsing = &v
+}
+
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *CreateSecret) GetTags() []string {
 	if o == nil || o.Tags == nil {
@@ -378,6 +576,24 @@ func (o CreateSecret) MarshalJSON() ([]byte, error) {
 	}
 	if o.ProtectionKey != nil {
 		toSerialize["protection_key"] = o.ProtectionKey
+	}
+	if o.SecureAccessBastionIssuer != nil {
+		toSerialize["secure-access-bastion-issuer"] = o.SecureAccessBastionIssuer
+	}
+	if o.SecureAccessEnable != nil {
+		toSerialize["secure-access-enable"] = o.SecureAccessEnable
+	}
+	if o.SecureAccessHost != nil {
+		toSerialize["secure-access-host"] = o.SecureAccessHost
+	}
+	if o.SecureAccessSshCreds != nil {
+		toSerialize["secure-access-ssh-creds"] = o.SecureAccessSshCreds
+	}
+	if o.SecureAccessUrl != nil {
+		toSerialize["secure-access-url"] = o.SecureAccessUrl
+	}
+	if o.SecureAccessWebBrowsing != nil {
+		toSerialize["secure-access-web-browsing"] = o.SecureAccessWebBrowsing
 	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags

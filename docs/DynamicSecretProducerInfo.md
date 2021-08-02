@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **GwClusterId** | Pointer to **int64** |  | [optional] 
+**ProducerLastKeepAlive** | Pointer to **string** |  | [optional] 
 **ProducerMetadata** | Pointer to **string** |  | [optional] 
 **ProducerStatus** | Pointer to **string** | RotationStatus defines types of rotation Status | [optional] 
 **ProducerType** | Pointer to **string** |  | [optional] 
@@ -52,6 +53,31 @@ SetGwClusterId sets GwClusterId field to given value.
 `func (o *DynamicSecretProducerInfo) HasGwClusterId() bool`
 
 HasGwClusterId returns a boolean if a field has been set.
+
+### GetProducerLastKeepAlive
+
+`func (o *DynamicSecretProducerInfo) GetProducerLastKeepAlive() string`
+
+GetProducerLastKeepAlive returns the ProducerLastKeepAlive field if non-nil, zero value otherwise.
+
+### GetProducerLastKeepAliveOk
+
+`func (o *DynamicSecretProducerInfo) GetProducerLastKeepAliveOk() (*string, bool)`
+
+GetProducerLastKeepAliveOk returns a tuple with the ProducerLastKeepAlive field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProducerLastKeepAlive
+
+`func (o *DynamicSecretProducerInfo) SetProducerLastKeepAlive(v string)`
+
+SetProducerLastKeepAlive sets ProducerLastKeepAlive field to given value.
+
+### HasProducerLastKeepAlive
+
+`func (o *DynamicSecretProducerInfo) HasProducerLastKeepAlive() bool`
+
+HasProducerLastKeepAlive returns a boolean if a field has been set.
 
 ### GetProducerMetadata
 

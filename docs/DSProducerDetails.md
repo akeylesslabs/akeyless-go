@@ -100,6 +100,7 @@ Name | Type | Description | Notes
 **MssqlCreationStatements** | Pointer to **string** |  | [optional] 
 **MssqlRevocationStatements** | Pointer to **string** |  | [optional] 
 **MysqlCreationStatements** | Pointer to **string** |  | [optional] 
+**OracleCreationStatements** | Pointer to **string** |  | [optional] 
 **Payload** | Pointer to **string** |  | [optional] 
 **PostgresCreationStatements** | Pointer to **string** |  | [optional] 
 **RabbitmqServerPassword** | Pointer to **string** |  | [optional] 
@@ -2551,6 +2552,31 @@ SetMysqlCreationStatements sets MysqlCreationStatements field to given value.
 `func (o *DSProducerDetails) HasMysqlCreationStatements() bool`
 
 HasMysqlCreationStatements returns a boolean if a field has been set.
+
+### GetOracleCreationStatements
+
+`func (o *DSProducerDetails) GetOracleCreationStatements() string`
+
+GetOracleCreationStatements returns the OracleCreationStatements field if non-nil, zero value otherwise.
+
+### GetOracleCreationStatementsOk
+
+`func (o *DSProducerDetails) GetOracleCreationStatementsOk() (*string, bool)`
+
+GetOracleCreationStatementsOk returns a tuple with the OracleCreationStatements field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOracleCreationStatements
+
+`func (o *DSProducerDetails) SetOracleCreationStatements(v string)`
+
+SetOracleCreationStatements sets OracleCreationStatements field to given value.
+
+### HasOracleCreationStatements
+
+`func (o *DSProducerDetails) HasOracleCreationStatements() bool`
+
+HasOracleCreationStatements returns a boolean if a field has been set.
 
 ### GetPayload
 

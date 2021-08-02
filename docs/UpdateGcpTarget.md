@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Comment** | Pointer to **string** | Comment about the target | [optional] 
 **GcpKey** | Pointer to **string** | Base64-encoded service account private key text | [optional] 
+**GcpSaEmail** | **string** | GCP service account email | 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Target name | 
 **NewName** | Pointer to **string** | New target name | [optional] 
@@ -19,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewUpdateGcpTarget
 
-`func NewUpdateGcpTarget(name string, ) *UpdateGcpTarget`
+`func NewUpdateGcpTarget(gcpSaEmail string, name string, ) *UpdateGcpTarget`
 
 NewUpdateGcpTarget instantiates a new UpdateGcpTarget object
 This constructor will assign default values to properties that have it defined,
@@ -83,6 +84,26 @@ SetGcpKey sets GcpKey field to given value.
 `func (o *UpdateGcpTarget) HasGcpKey() bool`
 
 HasGcpKey returns a boolean if a field has been set.
+
+### GetGcpSaEmail
+
+`func (o *UpdateGcpTarget) GetGcpSaEmail() string`
+
+GetGcpSaEmail returns the GcpSaEmail field if non-nil, zero value otherwise.
+
+### GetGcpSaEmailOk
+
+`func (o *UpdateGcpTarget) GetGcpSaEmailOk() (*string, bool)`
+
+GetGcpSaEmailOk returns a tuple with the GcpSaEmail field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpSaEmail
+
+`func (o *UpdateGcpTarget) SetGcpSaEmail(v string)`
+
+SetGcpSaEmail sets GcpSaEmail field to given value.
+
 
 ### GetKey
 

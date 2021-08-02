@@ -119,6 +119,7 @@ type DSProducerDetails struct {
 	MssqlCreationStatements *string `json:"mssql_creation_statements,omitempty"`
 	MssqlRevocationStatements *string `json:"mssql_revocation_statements,omitempty"`
 	MysqlCreationStatements *string `json:"mysql_creation_statements,omitempty"`
+	OracleCreationStatements *string `json:"oracle_creation_statements,omitempty"`
 	Payload *string `json:"payload,omitempty"`
 	PostgresCreationStatements *string `json:"postgres_creation_statements,omitempty"`
 	RabbitmqServerPassword *string `json:"rabbitmq_server_password,omitempty"`
@@ -3244,6 +3245,38 @@ func (o *DSProducerDetails) SetMysqlCreationStatements(v string) {
 	o.MysqlCreationStatements = &v
 }
 
+// GetOracleCreationStatements returns the OracleCreationStatements field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetOracleCreationStatements() string {
+	if o == nil || o.OracleCreationStatements == nil {
+		var ret string
+		return ret
+	}
+	return *o.OracleCreationStatements
+}
+
+// GetOracleCreationStatementsOk returns a tuple with the OracleCreationStatements field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetOracleCreationStatementsOk() (*string, bool) {
+	if o == nil || o.OracleCreationStatements == nil {
+		return nil, false
+	}
+	return o.OracleCreationStatements, true
+}
+
+// HasOracleCreationStatements returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasOracleCreationStatements() bool {
+	if o != nil && o.OracleCreationStatements != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOracleCreationStatements gets a reference to the given string and assigns it to the OracleCreationStatements field.
+func (o *DSProducerDetails) SetOracleCreationStatements(v string) {
+	o.OracleCreationStatements = &v
+}
+
 // GetPayload returns the Payload field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetPayload() string {
 	if o == nil || o.Payload == nil {
@@ -4557,6 +4590,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.MysqlCreationStatements != nil {
 		toSerialize["mysql_creation_statements"] = o.MysqlCreationStatements
+	}
+	if o.OracleCreationStatements != nil {
+		toSerialize["oracle_creation_statements"] = o.OracleCreationStatements
 	}
 	if o.Payload != nil {
 		toSerialize["payload"] = o.Payload

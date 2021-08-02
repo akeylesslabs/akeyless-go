@@ -10,6 +10,11 @@ Name | Type | Description | Notes
 **Name** | **string** | SSH certificate issuer name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **Principals** | Pointer to **string** | Signed certificates with principal, e.g example_role1,example_role2 | [optional] 
+**SecureAccessBastionApi** | Pointer to **string** |  | [optional] 
+**SecureAccessBastionSsh** | Pointer to **string** |  | [optional] 
+**SecureAccessEnable** | Pointer to **string** |  | [optional] 
+**SecureAccessHost** | Pointer to **[]string** |  | [optional] 
+**SecureAccessSshCredsUser** | Pointer to **string** |  | [optional] 
 **SignerKeyName** | **string** | A key to sign the certificate with | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **Ttl** | **int64** | The requested Time To Live for the certificate, use second units | 
@@ -174,6 +179,131 @@ SetPrincipals sets Principals field to given value.
 `func (o *CreateSSHCertIssuer) HasPrincipals() bool`
 
 HasPrincipals returns a boolean if a field has been set.
+
+### GetSecureAccessBastionApi
+
+`func (o *CreateSSHCertIssuer) GetSecureAccessBastionApi() string`
+
+GetSecureAccessBastionApi returns the SecureAccessBastionApi field if non-nil, zero value otherwise.
+
+### GetSecureAccessBastionApiOk
+
+`func (o *CreateSSHCertIssuer) GetSecureAccessBastionApiOk() (*string, bool)`
+
+GetSecureAccessBastionApiOk returns a tuple with the SecureAccessBastionApi field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessBastionApi
+
+`func (o *CreateSSHCertIssuer) SetSecureAccessBastionApi(v string)`
+
+SetSecureAccessBastionApi sets SecureAccessBastionApi field to given value.
+
+### HasSecureAccessBastionApi
+
+`func (o *CreateSSHCertIssuer) HasSecureAccessBastionApi() bool`
+
+HasSecureAccessBastionApi returns a boolean if a field has been set.
+
+### GetSecureAccessBastionSsh
+
+`func (o *CreateSSHCertIssuer) GetSecureAccessBastionSsh() string`
+
+GetSecureAccessBastionSsh returns the SecureAccessBastionSsh field if non-nil, zero value otherwise.
+
+### GetSecureAccessBastionSshOk
+
+`func (o *CreateSSHCertIssuer) GetSecureAccessBastionSshOk() (*string, bool)`
+
+GetSecureAccessBastionSshOk returns a tuple with the SecureAccessBastionSsh field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessBastionSsh
+
+`func (o *CreateSSHCertIssuer) SetSecureAccessBastionSsh(v string)`
+
+SetSecureAccessBastionSsh sets SecureAccessBastionSsh field to given value.
+
+### HasSecureAccessBastionSsh
+
+`func (o *CreateSSHCertIssuer) HasSecureAccessBastionSsh() bool`
+
+HasSecureAccessBastionSsh returns a boolean if a field has been set.
+
+### GetSecureAccessEnable
+
+`func (o *CreateSSHCertIssuer) GetSecureAccessEnable() string`
+
+GetSecureAccessEnable returns the SecureAccessEnable field if non-nil, zero value otherwise.
+
+### GetSecureAccessEnableOk
+
+`func (o *CreateSSHCertIssuer) GetSecureAccessEnableOk() (*string, bool)`
+
+GetSecureAccessEnableOk returns a tuple with the SecureAccessEnable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessEnable
+
+`func (o *CreateSSHCertIssuer) SetSecureAccessEnable(v string)`
+
+SetSecureAccessEnable sets SecureAccessEnable field to given value.
+
+### HasSecureAccessEnable
+
+`func (o *CreateSSHCertIssuer) HasSecureAccessEnable() bool`
+
+HasSecureAccessEnable returns a boolean if a field has been set.
+
+### GetSecureAccessHost
+
+`func (o *CreateSSHCertIssuer) GetSecureAccessHost() []string`
+
+GetSecureAccessHost returns the SecureAccessHost field if non-nil, zero value otherwise.
+
+### GetSecureAccessHostOk
+
+`func (o *CreateSSHCertIssuer) GetSecureAccessHostOk() (*[]string, bool)`
+
+GetSecureAccessHostOk returns a tuple with the SecureAccessHost field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessHost
+
+`func (o *CreateSSHCertIssuer) SetSecureAccessHost(v []string)`
+
+SetSecureAccessHost sets SecureAccessHost field to given value.
+
+### HasSecureAccessHost
+
+`func (o *CreateSSHCertIssuer) HasSecureAccessHost() bool`
+
+HasSecureAccessHost returns a boolean if a field has been set.
+
+### GetSecureAccessSshCredsUser
+
+`func (o *CreateSSHCertIssuer) GetSecureAccessSshCredsUser() string`
+
+GetSecureAccessSshCredsUser returns the SecureAccessSshCredsUser field if non-nil, zero value otherwise.
+
+### GetSecureAccessSshCredsUserOk
+
+`func (o *CreateSSHCertIssuer) GetSecureAccessSshCredsUserOk() (*string, bool)`
+
+GetSecureAccessSshCredsUserOk returns a tuple with the SecureAccessSshCredsUser field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessSshCredsUser
+
+`func (o *CreateSSHCertIssuer) SetSecureAccessSshCredsUser(v string)`
+
+SetSecureAccessSshCredsUser sets SecureAccessSshCredsUser field to given value.
+
+### HasSecureAccessSshCredsUser
+
+`func (o *CreateSSHCertIssuer) HasSecureAccessSshCredsUser() bool`
+
+HasSecureAccessSshCredsUser returns a boolean if a field has been set.
 
 ### GetSignerKeyName
 

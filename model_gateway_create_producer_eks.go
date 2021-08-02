@@ -37,6 +37,10 @@ type GatewayCreateProducerEks struct {
 	Password *string `json:"password,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
+	SecureAccessAllowPortForwading *bool `json:"secure-access-allow-port-forwading,omitempty"`
+	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
+	SecureAccessClusterEndpoint *string `json:"secure-access-cluster-endpoint,omitempty"`
+	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -350,6 +354,134 @@ func (o *GatewayCreateProducerEks) SetProducerEncryptionKeyName(v string) {
 	o.ProducerEncryptionKeyName = &v
 }
 
+// GetSecureAccessAllowPortForwading returns the SecureAccessAllowPortForwading field value if set, zero value otherwise.
+func (o *GatewayCreateProducerEks) GetSecureAccessAllowPortForwading() bool {
+	if o == nil || o.SecureAccessAllowPortForwading == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessAllowPortForwading
+}
+
+// GetSecureAccessAllowPortForwadingOk returns a tuple with the SecureAccessAllowPortForwading field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerEks) GetSecureAccessAllowPortForwadingOk() (*bool, bool) {
+	if o == nil || o.SecureAccessAllowPortForwading == nil {
+		return nil, false
+	}
+	return o.SecureAccessAllowPortForwading, true
+}
+
+// HasSecureAccessAllowPortForwading returns a boolean if a field has been set.
+func (o *GatewayCreateProducerEks) HasSecureAccessAllowPortForwading() bool {
+	if o != nil && o.SecureAccessAllowPortForwading != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessAllowPortForwading gets a reference to the given bool and assigns it to the SecureAccessAllowPortForwading field.
+func (o *GatewayCreateProducerEks) SetSecureAccessAllowPortForwading(v bool) {
+	o.SecureAccessAllowPortForwading = &v
+}
+
+// GetSecureAccessBastionIssuer returns the SecureAccessBastionIssuer field value if set, zero value otherwise.
+func (o *GatewayCreateProducerEks) GetSecureAccessBastionIssuer() string {
+	if o == nil || o.SecureAccessBastionIssuer == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessBastionIssuer
+}
+
+// GetSecureAccessBastionIssuerOk returns a tuple with the SecureAccessBastionIssuer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerEks) GetSecureAccessBastionIssuerOk() (*string, bool) {
+	if o == nil || o.SecureAccessBastionIssuer == nil {
+		return nil, false
+	}
+	return o.SecureAccessBastionIssuer, true
+}
+
+// HasSecureAccessBastionIssuer returns a boolean if a field has been set.
+func (o *GatewayCreateProducerEks) HasSecureAccessBastionIssuer() bool {
+	if o != nil && o.SecureAccessBastionIssuer != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessBastionIssuer gets a reference to the given string and assigns it to the SecureAccessBastionIssuer field.
+func (o *GatewayCreateProducerEks) SetSecureAccessBastionIssuer(v string) {
+	o.SecureAccessBastionIssuer = &v
+}
+
+// GetSecureAccessClusterEndpoint returns the SecureAccessClusterEndpoint field value if set, zero value otherwise.
+func (o *GatewayCreateProducerEks) GetSecureAccessClusterEndpoint() string {
+	if o == nil || o.SecureAccessClusterEndpoint == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessClusterEndpoint
+}
+
+// GetSecureAccessClusterEndpointOk returns a tuple with the SecureAccessClusterEndpoint field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerEks) GetSecureAccessClusterEndpointOk() (*string, bool) {
+	if o == nil || o.SecureAccessClusterEndpoint == nil {
+		return nil, false
+	}
+	return o.SecureAccessClusterEndpoint, true
+}
+
+// HasSecureAccessClusterEndpoint returns a boolean if a field has been set.
+func (o *GatewayCreateProducerEks) HasSecureAccessClusterEndpoint() bool {
+	if o != nil && o.SecureAccessClusterEndpoint != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessClusterEndpoint gets a reference to the given string and assigns it to the SecureAccessClusterEndpoint field.
+func (o *GatewayCreateProducerEks) SetSecureAccessClusterEndpoint(v string) {
+	o.SecureAccessClusterEndpoint = &v
+}
+
+// GetSecureAccessEnable returns the SecureAccessEnable field value if set, zero value otherwise.
+func (o *GatewayCreateProducerEks) GetSecureAccessEnable() string {
+	if o == nil || o.SecureAccessEnable == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessEnable
+}
+
+// GetSecureAccessEnableOk returns a tuple with the SecureAccessEnable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerEks) GetSecureAccessEnableOk() (*string, bool) {
+	if o == nil || o.SecureAccessEnable == nil {
+		return nil, false
+	}
+	return o.SecureAccessEnable, true
+}
+
+// HasSecureAccessEnable returns a boolean if a field has been set.
+func (o *GatewayCreateProducerEks) HasSecureAccessEnable() bool {
+	if o != nil && o.SecureAccessEnable != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessEnable gets a reference to the given string and assigns it to the SecureAccessEnable field.
+func (o *GatewayCreateProducerEks) SetSecureAccessEnable(v string) {
+	o.SecureAccessEnable = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *GatewayCreateProducerEks) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -509,6 +641,18 @@ func (o GatewayCreateProducerEks) MarshalJSON() ([]byte, error) {
 	}
 	if o.ProducerEncryptionKeyName != nil {
 		toSerialize["producer-encryption-key-name"] = o.ProducerEncryptionKeyName
+	}
+	if o.SecureAccessAllowPortForwading != nil {
+		toSerialize["secure-access-allow-port-forwading"] = o.SecureAccessAllowPortForwading
+	}
+	if o.SecureAccessBastionIssuer != nil {
+		toSerialize["secure-access-bastion-issuer"] = o.SecureAccessBastionIssuer
+	}
+	if o.SecureAccessClusterEndpoint != nil {
+		toSerialize["secure-access-cluster-endpoint"] = o.SecureAccessClusterEndpoint
+	}
+	if o.SecureAccessEnable != nil {
+		toSerialize["secure-access-enable"] = o.SecureAccessEnable
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

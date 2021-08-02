@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Comment** | Pointer to **string** | Comment about the target | [optional] 
 **GcpKey** | Pointer to **string** | Base64-encoded service account private key text | [optional] 
+**GcpSaEmail** | **string** | GCP service account email | 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Target name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
@@ -17,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewCreateGcpTarget
 
-`func NewCreateGcpTarget(name string, ) *CreateGcpTarget`
+`func NewCreateGcpTarget(gcpSaEmail string, name string, ) *CreateGcpTarget`
 
 NewCreateGcpTarget instantiates a new CreateGcpTarget object
 This constructor will assign default values to properties that have it defined,
@@ -81,6 +82,26 @@ SetGcpKey sets GcpKey field to given value.
 `func (o *CreateGcpTarget) HasGcpKey() bool`
 
 HasGcpKey returns a boolean if a field has been set.
+
+### GetGcpSaEmail
+
+`func (o *CreateGcpTarget) GetGcpSaEmail() string`
+
+GetGcpSaEmail returns the GcpSaEmail field if non-nil, zero value otherwise.
+
+### GetGcpSaEmailOk
+
+`func (o *CreateGcpTarget) GetGcpSaEmailOk() (*string, bool)`
+
+GetGcpSaEmailOk returns a tuple with the GcpSaEmail field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpSaEmail
+
+`func (o *CreateGcpTarget) SetGcpSaEmail(v string)`
+
+SetGcpSaEmail sets GcpSaEmail field to given value.
+
 
 ### GetKey
 

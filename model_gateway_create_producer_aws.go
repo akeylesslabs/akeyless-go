@@ -44,6 +44,11 @@ type GatewayCreateProducerAws struct {
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
 	// Region
 	Region *string `json:"region,omitempty"`
+	SecureAccessAwsAccountId *string `json:"secure-access-aws-account-id,omitempty"`
+	SecureAccessAwsNativeCli *bool `json:"secure-access-aws-native-cli,omitempty"`
+	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
+	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -522,6 +527,166 @@ func (o *GatewayCreateProducerAws) SetRegion(v string) {
 	o.Region = &v
 }
 
+// GetSecureAccessAwsAccountId returns the SecureAccessAwsAccountId field value if set, zero value otherwise.
+func (o *GatewayCreateProducerAws) GetSecureAccessAwsAccountId() string {
+	if o == nil || o.SecureAccessAwsAccountId == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessAwsAccountId
+}
+
+// GetSecureAccessAwsAccountIdOk returns a tuple with the SecureAccessAwsAccountId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerAws) GetSecureAccessAwsAccountIdOk() (*string, bool) {
+	if o == nil || o.SecureAccessAwsAccountId == nil {
+		return nil, false
+	}
+	return o.SecureAccessAwsAccountId, true
+}
+
+// HasSecureAccessAwsAccountId returns a boolean if a field has been set.
+func (o *GatewayCreateProducerAws) HasSecureAccessAwsAccountId() bool {
+	if o != nil && o.SecureAccessAwsAccountId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessAwsAccountId gets a reference to the given string and assigns it to the SecureAccessAwsAccountId field.
+func (o *GatewayCreateProducerAws) SetSecureAccessAwsAccountId(v string) {
+	o.SecureAccessAwsAccountId = &v
+}
+
+// GetSecureAccessAwsNativeCli returns the SecureAccessAwsNativeCli field value if set, zero value otherwise.
+func (o *GatewayCreateProducerAws) GetSecureAccessAwsNativeCli() bool {
+	if o == nil || o.SecureAccessAwsNativeCli == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessAwsNativeCli
+}
+
+// GetSecureAccessAwsNativeCliOk returns a tuple with the SecureAccessAwsNativeCli field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerAws) GetSecureAccessAwsNativeCliOk() (*bool, bool) {
+	if o == nil || o.SecureAccessAwsNativeCli == nil {
+		return nil, false
+	}
+	return o.SecureAccessAwsNativeCli, true
+}
+
+// HasSecureAccessAwsNativeCli returns a boolean if a field has been set.
+func (o *GatewayCreateProducerAws) HasSecureAccessAwsNativeCli() bool {
+	if o != nil && o.SecureAccessAwsNativeCli != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessAwsNativeCli gets a reference to the given bool and assigns it to the SecureAccessAwsNativeCli field.
+func (o *GatewayCreateProducerAws) SetSecureAccessAwsNativeCli(v bool) {
+	o.SecureAccessAwsNativeCli = &v
+}
+
+// GetSecureAccessBastionIssuer returns the SecureAccessBastionIssuer field value if set, zero value otherwise.
+func (o *GatewayCreateProducerAws) GetSecureAccessBastionIssuer() string {
+	if o == nil || o.SecureAccessBastionIssuer == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessBastionIssuer
+}
+
+// GetSecureAccessBastionIssuerOk returns a tuple with the SecureAccessBastionIssuer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerAws) GetSecureAccessBastionIssuerOk() (*string, bool) {
+	if o == nil || o.SecureAccessBastionIssuer == nil {
+		return nil, false
+	}
+	return o.SecureAccessBastionIssuer, true
+}
+
+// HasSecureAccessBastionIssuer returns a boolean if a field has been set.
+func (o *GatewayCreateProducerAws) HasSecureAccessBastionIssuer() bool {
+	if o != nil && o.SecureAccessBastionIssuer != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessBastionIssuer gets a reference to the given string and assigns it to the SecureAccessBastionIssuer field.
+func (o *GatewayCreateProducerAws) SetSecureAccessBastionIssuer(v string) {
+	o.SecureAccessBastionIssuer = &v
+}
+
+// GetSecureAccessEnable returns the SecureAccessEnable field value if set, zero value otherwise.
+func (o *GatewayCreateProducerAws) GetSecureAccessEnable() string {
+	if o == nil || o.SecureAccessEnable == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessEnable
+}
+
+// GetSecureAccessEnableOk returns a tuple with the SecureAccessEnable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerAws) GetSecureAccessEnableOk() (*string, bool) {
+	if o == nil || o.SecureAccessEnable == nil {
+		return nil, false
+	}
+	return o.SecureAccessEnable, true
+}
+
+// HasSecureAccessEnable returns a boolean if a field has been set.
+func (o *GatewayCreateProducerAws) HasSecureAccessEnable() bool {
+	if o != nil && o.SecureAccessEnable != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessEnable gets a reference to the given string and assigns it to the SecureAccessEnable field.
+func (o *GatewayCreateProducerAws) SetSecureAccessEnable(v string) {
+	o.SecureAccessEnable = &v
+}
+
+// GetSecureAccessWebBrowsing returns the SecureAccessWebBrowsing field value if set, zero value otherwise.
+func (o *GatewayCreateProducerAws) GetSecureAccessWebBrowsing() bool {
+	if o == nil || o.SecureAccessWebBrowsing == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessWebBrowsing
+}
+
+// GetSecureAccessWebBrowsingOk returns a tuple with the SecureAccessWebBrowsing field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerAws) GetSecureAccessWebBrowsingOk() (*bool, bool) {
+	if o == nil || o.SecureAccessWebBrowsing == nil {
+		return nil, false
+	}
+	return o.SecureAccessWebBrowsing, true
+}
+
+// HasSecureAccessWebBrowsing returns a boolean if a field has been set.
+func (o *GatewayCreateProducerAws) HasSecureAccessWebBrowsing() bool {
+	if o != nil && o.SecureAccessWebBrowsing != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessWebBrowsing gets a reference to the given bool and assigns it to the SecureAccessWebBrowsing field.
+func (o *GatewayCreateProducerAws) SetSecureAccessWebBrowsing(v bool) {
+	o.SecureAccessWebBrowsing = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *GatewayCreateProducerAws) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -693,6 +858,21 @@ func (o GatewayCreateProducerAws) MarshalJSON() ([]byte, error) {
 	}
 	if o.Region != nil {
 		toSerialize["region"] = o.Region
+	}
+	if o.SecureAccessAwsAccountId != nil {
+		toSerialize["secure-access-aws-account-id"] = o.SecureAccessAwsAccountId
+	}
+	if o.SecureAccessAwsNativeCli != nil {
+		toSerialize["secure-access-aws-native-cli"] = o.SecureAccessAwsNativeCli
+	}
+	if o.SecureAccessBastionIssuer != nil {
+		toSerialize["secure-access-bastion-issuer"] = o.SecureAccessBastionIssuer
+	}
+	if o.SecureAccessEnable != nil {
+		toSerialize["secure-access-enable"] = o.SecureAccessEnable
+	}
+	if o.SecureAccessWebBrowsing != nil {
+		toSerialize["secure-access-web-browsing"] = o.SecureAccessWebBrowsing
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

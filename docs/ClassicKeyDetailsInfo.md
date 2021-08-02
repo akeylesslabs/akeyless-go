@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ClassicKeyAttributes** | Pointer to [**map[string][]string**](array.md) |  | [optional] 
 **ClassicKeyId** | Pointer to **string** |  | [optional] 
 **IsProvidedByUser** | Pointer to **bool** |  | [optional] 
 **IsUnexportable** | Pointer to **bool** |  | [optional] 
@@ -32,6 +33,31 @@ will change when the set of required properties is changed
 NewClassicKeyDetailsInfoWithDefaults instantiates a new ClassicKeyDetailsInfo object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClassicKeyAttributes
+
+`func (o *ClassicKeyDetailsInfo) GetClassicKeyAttributes() map[string][]string`
+
+GetClassicKeyAttributes returns the ClassicKeyAttributes field if non-nil, zero value otherwise.
+
+### GetClassicKeyAttributesOk
+
+`func (o *ClassicKeyDetailsInfo) GetClassicKeyAttributesOk() (*map[string][]string, bool)`
+
+GetClassicKeyAttributesOk returns a tuple with the ClassicKeyAttributes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassicKeyAttributes
+
+`func (o *ClassicKeyDetailsInfo) SetClassicKeyAttributes(v map[string][]string)`
+
+SetClassicKeyAttributes sets ClassicKeyAttributes field to given value.
+
+### HasClassicKeyAttributes
+
+`func (o *ClassicKeyDetailsInfo) HasClassicKeyAttributes() bool`
+
+HasClassicKeyAttributes returns a boolean if a field has been set.
 
 ### GetClassicKeyId
 

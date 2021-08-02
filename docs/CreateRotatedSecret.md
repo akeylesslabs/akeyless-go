@@ -11,12 +11,14 @@ Name | Type | Description | Notes
 **Metadata** | Pointer to **string** | Metadata about the secret | [optional] 
 **Name** | **string** | Secret name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
+**RotatedPassword** | Pointer to **string** |  | [optional] 
+**RotatedUsername** | Pointer to **string** |  | [optional] 
 **RotationHour** | Pointer to **int32** |  | [optional] 
 **RotationInterval** | Pointer to **string** | The number of days to wait between every automatic key rotation (7-365) | [optional] 
 **RotatorCredsType** | Pointer to **string** |  | [optional] 
 **RotatorType** | Pointer to **string** |  | [optional] 
-**SshPassword** | Pointer to **string** |  | [optional] 
-**SshUsername** | Pointer to **string** |  | [optional] 
+**SshPassword** | Pointer to **string** | Deprecated: use RotatedPassword | [optional] 
+**SshUsername** | Pointer to **string** | Deprecated: use RotatedUser | [optional] 
 **Tags** | Pointer to **[]string** | List of the tags attached to this secret | [optional] 
 **TargetName** | **string** | Target name | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -211,6 +213,56 @@ SetPassword sets Password field to given value.
 `func (o *CreateRotatedSecret) HasPassword() bool`
 
 HasPassword returns a boolean if a field has been set.
+
+### GetRotatedPassword
+
+`func (o *CreateRotatedSecret) GetRotatedPassword() string`
+
+GetRotatedPassword returns the RotatedPassword field if non-nil, zero value otherwise.
+
+### GetRotatedPasswordOk
+
+`func (o *CreateRotatedSecret) GetRotatedPasswordOk() (*string, bool)`
+
+GetRotatedPasswordOk returns a tuple with the RotatedPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotatedPassword
+
+`func (o *CreateRotatedSecret) SetRotatedPassword(v string)`
+
+SetRotatedPassword sets RotatedPassword field to given value.
+
+### HasRotatedPassword
+
+`func (o *CreateRotatedSecret) HasRotatedPassword() bool`
+
+HasRotatedPassword returns a boolean if a field has been set.
+
+### GetRotatedUsername
+
+`func (o *CreateRotatedSecret) GetRotatedUsername() string`
+
+GetRotatedUsername returns the RotatedUsername field if non-nil, zero value otherwise.
+
+### GetRotatedUsernameOk
+
+`func (o *CreateRotatedSecret) GetRotatedUsernameOk() (*string, bool)`
+
+GetRotatedUsernameOk returns a tuple with the RotatedUsername field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotatedUsername
+
+`func (o *CreateRotatedSecret) SetRotatedUsername(v string)`
+
+SetRotatedUsername sets RotatedUsername field to given value.
+
+### HasRotatedUsername
+
+`func (o *CreateRotatedSecret) HasRotatedUsername() bool`
+
+HasRotatedUsername returns a boolean if a field has been set.
 
 ### GetRotationHour
 

@@ -18,6 +18,11 @@ Name | Type | Description | Notes
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **Region** | Pointer to **string** | Region | [optional] [default to "us-east-2"]
+**SecureAccessAwsAccountId** | Pointer to **string** |  | [optional] 
+**SecureAccessAwsNativeCli** | Pointer to **bool** |  | [optional] 
+**SecureAccessBastionIssuer** | Pointer to **string** |  | [optional] 
+**SecureAccessEnable** | Pointer to **string** |  | [optional] 
+**SecureAccessWebBrowsing** | Pointer to **bool** |  | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserTtl** | Pointer to **string** | User TTL | [optional] [default to "60m"]
@@ -376,6 +381,131 @@ SetRegion sets Region field to given value.
 `func (o *GatewayCreateProducerAws) HasRegion() bool`
 
 HasRegion returns a boolean if a field has been set.
+
+### GetSecureAccessAwsAccountId
+
+`func (o *GatewayCreateProducerAws) GetSecureAccessAwsAccountId() string`
+
+GetSecureAccessAwsAccountId returns the SecureAccessAwsAccountId field if non-nil, zero value otherwise.
+
+### GetSecureAccessAwsAccountIdOk
+
+`func (o *GatewayCreateProducerAws) GetSecureAccessAwsAccountIdOk() (*string, bool)`
+
+GetSecureAccessAwsAccountIdOk returns a tuple with the SecureAccessAwsAccountId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessAwsAccountId
+
+`func (o *GatewayCreateProducerAws) SetSecureAccessAwsAccountId(v string)`
+
+SetSecureAccessAwsAccountId sets SecureAccessAwsAccountId field to given value.
+
+### HasSecureAccessAwsAccountId
+
+`func (o *GatewayCreateProducerAws) HasSecureAccessAwsAccountId() bool`
+
+HasSecureAccessAwsAccountId returns a boolean if a field has been set.
+
+### GetSecureAccessAwsNativeCli
+
+`func (o *GatewayCreateProducerAws) GetSecureAccessAwsNativeCli() bool`
+
+GetSecureAccessAwsNativeCli returns the SecureAccessAwsNativeCli field if non-nil, zero value otherwise.
+
+### GetSecureAccessAwsNativeCliOk
+
+`func (o *GatewayCreateProducerAws) GetSecureAccessAwsNativeCliOk() (*bool, bool)`
+
+GetSecureAccessAwsNativeCliOk returns a tuple with the SecureAccessAwsNativeCli field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessAwsNativeCli
+
+`func (o *GatewayCreateProducerAws) SetSecureAccessAwsNativeCli(v bool)`
+
+SetSecureAccessAwsNativeCli sets SecureAccessAwsNativeCli field to given value.
+
+### HasSecureAccessAwsNativeCli
+
+`func (o *GatewayCreateProducerAws) HasSecureAccessAwsNativeCli() bool`
+
+HasSecureAccessAwsNativeCli returns a boolean if a field has been set.
+
+### GetSecureAccessBastionIssuer
+
+`func (o *GatewayCreateProducerAws) GetSecureAccessBastionIssuer() string`
+
+GetSecureAccessBastionIssuer returns the SecureAccessBastionIssuer field if non-nil, zero value otherwise.
+
+### GetSecureAccessBastionIssuerOk
+
+`func (o *GatewayCreateProducerAws) GetSecureAccessBastionIssuerOk() (*string, bool)`
+
+GetSecureAccessBastionIssuerOk returns a tuple with the SecureAccessBastionIssuer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessBastionIssuer
+
+`func (o *GatewayCreateProducerAws) SetSecureAccessBastionIssuer(v string)`
+
+SetSecureAccessBastionIssuer sets SecureAccessBastionIssuer field to given value.
+
+### HasSecureAccessBastionIssuer
+
+`func (o *GatewayCreateProducerAws) HasSecureAccessBastionIssuer() bool`
+
+HasSecureAccessBastionIssuer returns a boolean if a field has been set.
+
+### GetSecureAccessEnable
+
+`func (o *GatewayCreateProducerAws) GetSecureAccessEnable() string`
+
+GetSecureAccessEnable returns the SecureAccessEnable field if non-nil, zero value otherwise.
+
+### GetSecureAccessEnableOk
+
+`func (o *GatewayCreateProducerAws) GetSecureAccessEnableOk() (*string, bool)`
+
+GetSecureAccessEnableOk returns a tuple with the SecureAccessEnable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessEnable
+
+`func (o *GatewayCreateProducerAws) SetSecureAccessEnable(v string)`
+
+SetSecureAccessEnable sets SecureAccessEnable field to given value.
+
+### HasSecureAccessEnable
+
+`func (o *GatewayCreateProducerAws) HasSecureAccessEnable() bool`
+
+HasSecureAccessEnable returns a boolean if a field has been set.
+
+### GetSecureAccessWebBrowsing
+
+`func (o *GatewayCreateProducerAws) GetSecureAccessWebBrowsing() bool`
+
+GetSecureAccessWebBrowsing returns the SecureAccessWebBrowsing field if non-nil, zero value otherwise.
+
+### GetSecureAccessWebBrowsingOk
+
+`func (o *GatewayCreateProducerAws) GetSecureAccessWebBrowsingOk() (*bool, bool)`
+
+GetSecureAccessWebBrowsingOk returns a tuple with the SecureAccessWebBrowsing field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessWebBrowsing
+
+`func (o *GatewayCreateProducerAws) SetSecureAccessWebBrowsing(v bool)`
+
+SetSecureAccessWebBrowsing sets SecureAccessWebBrowsing field to given value.
+
+### HasSecureAccessWebBrowsing
+
+`func (o *GatewayCreateProducerAws) HasSecureAccessWebBrowsing() bool`
+
+HasSecureAccessWebBrowsing returns a boolean if a field has been set.
 
 ### GetToken
 

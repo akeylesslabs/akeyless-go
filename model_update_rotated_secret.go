@@ -37,11 +37,15 @@ type UpdateRotatedSecret struct {
 	Password *string `json:"password,omitempty"`
 	// List of the existent tags that will be removed from this item
 	RmTag *[]string `json:"rm-tag,omitempty"`
+	RotatedPassword *string `json:"rotated-password,omitempty"`
+	RotatedUsername *string `json:"rotated-username,omitempty"`
 	RotationHour *int32 `json:"rotation-hour,omitempty"`
 	// The number of days to wait between every automatic key rotation (7-365)
 	RotationInterval *string `json:"rotation-interval,omitempty"`
 	RotatorCredsType *string `json:"rotator-creds-type,omitempty"`
+	// Deprecated: use RotatedPassword
 	SshPassword *string `json:"ssh-password,omitempty"`
+	// Deprecated: use RotatedUser
 	SshUsername *string `json:"ssh-username,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
@@ -421,6 +425,70 @@ func (o *UpdateRotatedSecret) SetRmTag(v []string) {
 	o.RmTag = &v
 }
 
+// GetRotatedPassword returns the RotatedPassword field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetRotatedPassword() string {
+	if o == nil || o.RotatedPassword == nil {
+		var ret string
+		return ret
+	}
+	return *o.RotatedPassword
+}
+
+// GetRotatedPasswordOk returns a tuple with the RotatedPassword field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetRotatedPasswordOk() (*string, bool) {
+	if o == nil || o.RotatedPassword == nil {
+		return nil, false
+	}
+	return o.RotatedPassword, true
+}
+
+// HasRotatedPassword returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasRotatedPassword() bool {
+	if o != nil && o.RotatedPassword != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRotatedPassword gets a reference to the given string and assigns it to the RotatedPassword field.
+func (o *UpdateRotatedSecret) SetRotatedPassword(v string) {
+	o.RotatedPassword = &v
+}
+
+// GetRotatedUsername returns the RotatedUsername field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetRotatedUsername() string {
+	if o == nil || o.RotatedUsername == nil {
+		var ret string
+		return ret
+	}
+	return *o.RotatedUsername
+}
+
+// GetRotatedUsernameOk returns a tuple with the RotatedUsername field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetRotatedUsernameOk() (*string, bool) {
+	if o == nil || o.RotatedUsername == nil {
+		return nil, false
+	}
+	return o.RotatedUsername, true
+}
+
+// HasRotatedUsername returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasRotatedUsername() bool {
+	if o != nil && o.RotatedUsername != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRotatedUsername gets a reference to the given string and assigns it to the RotatedUsername field.
+func (o *UpdateRotatedSecret) SetRotatedUsername(v string) {
+	o.RotatedUsername = &v
+}
+
 // GetRotationHour returns the RotationHour field value if set, zero value otherwise.
 func (o *UpdateRotatedSecret) GetRotationHour() int32 {
 	if o == nil || o.RotationHour == nil {
@@ -711,6 +779,12 @@ func (o UpdateRotatedSecret) MarshalJSON() ([]byte, error) {
 	}
 	if o.RmTag != nil {
 		toSerialize["rm-tag"] = o.RmTag
+	}
+	if o.RotatedPassword != nil {
+		toSerialize["rotated-password"] = o.RotatedPassword
+	}
+	if o.RotatedUsername != nil {
+		toSerialize["rotated-username"] = o.RotatedUsername
 	}
 	if o.RotationHour != nil {
 		toSerialize["rotation-hour"] = o.RotationHour

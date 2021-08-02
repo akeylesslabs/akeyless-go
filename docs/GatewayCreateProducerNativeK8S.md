@@ -12,6 +12,12 @@ Name | Type | Description | Notes
 **Name** | **string** | Producer name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
+**SecureAccessAllowPortForwading** | Pointer to **bool** |  | [optional] 
+**SecureAccessBastionIssuer** | Pointer to **string** |  | [optional] 
+**SecureAccessClusterEndpoint** | Pointer to **string** |  | [optional] 
+**SecureAccessDashboardUrl** | Pointer to **string** |  | [optional] 
+**SecureAccessEnable** | Pointer to **string** |  | [optional] 
+**SecureAccessWebBrowsing** | Pointer to **bool** |  | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserTtl** | Pointer to **string** | User TTL | [optional] [default to "60m"]
@@ -210,6 +216,156 @@ SetProducerEncryptionKeyName sets ProducerEncryptionKeyName field to given value
 `func (o *GatewayCreateProducerNativeK8S) HasProducerEncryptionKeyName() bool`
 
 HasProducerEncryptionKeyName returns a boolean if a field has been set.
+
+### GetSecureAccessAllowPortForwading
+
+`func (o *GatewayCreateProducerNativeK8S) GetSecureAccessAllowPortForwading() bool`
+
+GetSecureAccessAllowPortForwading returns the SecureAccessAllowPortForwading field if non-nil, zero value otherwise.
+
+### GetSecureAccessAllowPortForwadingOk
+
+`func (o *GatewayCreateProducerNativeK8S) GetSecureAccessAllowPortForwadingOk() (*bool, bool)`
+
+GetSecureAccessAllowPortForwadingOk returns a tuple with the SecureAccessAllowPortForwading field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessAllowPortForwading
+
+`func (o *GatewayCreateProducerNativeK8S) SetSecureAccessAllowPortForwading(v bool)`
+
+SetSecureAccessAllowPortForwading sets SecureAccessAllowPortForwading field to given value.
+
+### HasSecureAccessAllowPortForwading
+
+`func (o *GatewayCreateProducerNativeK8S) HasSecureAccessAllowPortForwading() bool`
+
+HasSecureAccessAllowPortForwading returns a boolean if a field has been set.
+
+### GetSecureAccessBastionIssuer
+
+`func (o *GatewayCreateProducerNativeK8S) GetSecureAccessBastionIssuer() string`
+
+GetSecureAccessBastionIssuer returns the SecureAccessBastionIssuer field if non-nil, zero value otherwise.
+
+### GetSecureAccessBastionIssuerOk
+
+`func (o *GatewayCreateProducerNativeK8S) GetSecureAccessBastionIssuerOk() (*string, bool)`
+
+GetSecureAccessBastionIssuerOk returns a tuple with the SecureAccessBastionIssuer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessBastionIssuer
+
+`func (o *GatewayCreateProducerNativeK8S) SetSecureAccessBastionIssuer(v string)`
+
+SetSecureAccessBastionIssuer sets SecureAccessBastionIssuer field to given value.
+
+### HasSecureAccessBastionIssuer
+
+`func (o *GatewayCreateProducerNativeK8S) HasSecureAccessBastionIssuer() bool`
+
+HasSecureAccessBastionIssuer returns a boolean if a field has been set.
+
+### GetSecureAccessClusterEndpoint
+
+`func (o *GatewayCreateProducerNativeK8S) GetSecureAccessClusterEndpoint() string`
+
+GetSecureAccessClusterEndpoint returns the SecureAccessClusterEndpoint field if non-nil, zero value otherwise.
+
+### GetSecureAccessClusterEndpointOk
+
+`func (o *GatewayCreateProducerNativeK8S) GetSecureAccessClusterEndpointOk() (*string, bool)`
+
+GetSecureAccessClusterEndpointOk returns a tuple with the SecureAccessClusterEndpoint field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessClusterEndpoint
+
+`func (o *GatewayCreateProducerNativeK8S) SetSecureAccessClusterEndpoint(v string)`
+
+SetSecureAccessClusterEndpoint sets SecureAccessClusterEndpoint field to given value.
+
+### HasSecureAccessClusterEndpoint
+
+`func (o *GatewayCreateProducerNativeK8S) HasSecureAccessClusterEndpoint() bool`
+
+HasSecureAccessClusterEndpoint returns a boolean if a field has been set.
+
+### GetSecureAccessDashboardUrl
+
+`func (o *GatewayCreateProducerNativeK8S) GetSecureAccessDashboardUrl() string`
+
+GetSecureAccessDashboardUrl returns the SecureAccessDashboardUrl field if non-nil, zero value otherwise.
+
+### GetSecureAccessDashboardUrlOk
+
+`func (o *GatewayCreateProducerNativeK8S) GetSecureAccessDashboardUrlOk() (*string, bool)`
+
+GetSecureAccessDashboardUrlOk returns a tuple with the SecureAccessDashboardUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessDashboardUrl
+
+`func (o *GatewayCreateProducerNativeK8S) SetSecureAccessDashboardUrl(v string)`
+
+SetSecureAccessDashboardUrl sets SecureAccessDashboardUrl field to given value.
+
+### HasSecureAccessDashboardUrl
+
+`func (o *GatewayCreateProducerNativeK8S) HasSecureAccessDashboardUrl() bool`
+
+HasSecureAccessDashboardUrl returns a boolean if a field has been set.
+
+### GetSecureAccessEnable
+
+`func (o *GatewayCreateProducerNativeK8S) GetSecureAccessEnable() string`
+
+GetSecureAccessEnable returns the SecureAccessEnable field if non-nil, zero value otherwise.
+
+### GetSecureAccessEnableOk
+
+`func (o *GatewayCreateProducerNativeK8S) GetSecureAccessEnableOk() (*string, bool)`
+
+GetSecureAccessEnableOk returns a tuple with the SecureAccessEnable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessEnable
+
+`func (o *GatewayCreateProducerNativeK8S) SetSecureAccessEnable(v string)`
+
+SetSecureAccessEnable sets SecureAccessEnable field to given value.
+
+### HasSecureAccessEnable
+
+`func (o *GatewayCreateProducerNativeK8S) HasSecureAccessEnable() bool`
+
+HasSecureAccessEnable returns a boolean if a field has been set.
+
+### GetSecureAccessWebBrowsing
+
+`func (o *GatewayCreateProducerNativeK8S) GetSecureAccessWebBrowsing() bool`
+
+GetSecureAccessWebBrowsing returns the SecureAccessWebBrowsing field if non-nil, zero value otherwise.
+
+### GetSecureAccessWebBrowsingOk
+
+`func (o *GatewayCreateProducerNativeK8S) GetSecureAccessWebBrowsingOk() (*bool, bool)`
+
+GetSecureAccessWebBrowsingOk returns a tuple with the SecureAccessWebBrowsing field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessWebBrowsing
+
+`func (o *GatewayCreateProducerNativeK8S) SetSecureAccessWebBrowsing(v bool)`
+
+SetSecureAccessWebBrowsing sets SecureAccessWebBrowsing field to given value.
+
+### HasSecureAccessWebBrowsing
+
+`func (o *GatewayCreateProducerNativeK8S) HasSecureAccessWebBrowsing() bool`
+
+HasSecureAccessWebBrowsing returns a boolean if a field has been set.
 
 ### GetToken
 

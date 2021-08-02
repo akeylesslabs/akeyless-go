@@ -15,11 +15,13 @@ Name | Type | Description | Notes
 **NewVersion** | Pointer to **bool** | Whether to create a new version of not | [optional] [default to false]
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **RmTag** | Pointer to **[]string** | List of the existent tags that will be removed from this item | [optional] 
+**RotatedPassword** | Pointer to **string** |  | [optional] 
+**RotatedUsername** | Pointer to **string** |  | [optional] 
 **RotationHour** | Pointer to **int32** |  | [optional] 
 **RotationInterval** | Pointer to **string** | The number of days to wait between every automatic key rotation (7-365) | [optional] 
 **RotatorCredsType** | Pointer to **string** |  | [optional] 
-**SshPassword** | Pointer to **string** |  | [optional] 
-**SshUsername** | Pointer to **string** |  | [optional] 
+**SshPassword** | Pointer to **string** | Deprecated: use RotatedPassword | [optional] 
+**SshUsername** | Pointer to **string** | Deprecated: use RotatedUser | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
@@ -312,6 +314,56 @@ SetRmTag sets RmTag field to given value.
 `func (o *UpdateRotatedSecret) HasRmTag() bool`
 
 HasRmTag returns a boolean if a field has been set.
+
+### GetRotatedPassword
+
+`func (o *UpdateRotatedSecret) GetRotatedPassword() string`
+
+GetRotatedPassword returns the RotatedPassword field if non-nil, zero value otherwise.
+
+### GetRotatedPasswordOk
+
+`func (o *UpdateRotatedSecret) GetRotatedPasswordOk() (*string, bool)`
+
+GetRotatedPasswordOk returns a tuple with the RotatedPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotatedPassword
+
+`func (o *UpdateRotatedSecret) SetRotatedPassword(v string)`
+
+SetRotatedPassword sets RotatedPassword field to given value.
+
+### HasRotatedPassword
+
+`func (o *UpdateRotatedSecret) HasRotatedPassword() bool`
+
+HasRotatedPassword returns a boolean if a field has been set.
+
+### GetRotatedUsername
+
+`func (o *UpdateRotatedSecret) GetRotatedUsername() string`
+
+GetRotatedUsername returns the RotatedUsername field if non-nil, zero value otherwise.
+
+### GetRotatedUsernameOk
+
+`func (o *UpdateRotatedSecret) GetRotatedUsernameOk() (*string, bool)`
+
+GetRotatedUsernameOk returns a tuple with the RotatedUsername field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotatedUsername
+
+`func (o *UpdateRotatedSecret) SetRotatedUsername(v string)`
+
+SetRotatedUsername sets RotatedUsername field to given value.
+
+### HasRotatedUsername
+
+`func (o *UpdateRotatedSecret) HasRotatedUsername() bool`
+
+HasRotatedUsername returns a boolean if a field has been set.
 
 ### GetRotationHour
 

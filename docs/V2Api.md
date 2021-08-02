@@ -67,6 +67,7 @@ Method | HTTP request | Description
 [**GatewayCreateProducerMongo**](V2Api.md#GatewayCreateProducerMongo) | **Post** /gateway-create-producer-mongo | 
 [**GatewayCreateProducerMySQL**](V2Api.md#GatewayCreateProducerMySQL) | **Post** /gateway-create-producer-mysql | 
 [**GatewayCreateProducerNativeK8S**](V2Api.md#GatewayCreateProducerNativeK8S) | **Post** /gateway-create-producer-k8s-native | 
+[**GatewayCreateProducerOracleDb**](V2Api.md#GatewayCreateProducerOracleDb) | **Post** /gateway-create-producer-oracle | 
 [**GatewayCreateProducerPostgreSQL**](V2Api.md#GatewayCreateProducerPostgreSQL) | **Post** /gateway-create-producer-postgresql | 
 [**GatewayCreateProducerRabbitMQ**](V2Api.md#GatewayCreateProducerRabbitMQ) | **Post** /gateway-create-producer-rabbitmq | 
 [**GatewayCreateProducerRdp**](V2Api.md#GatewayCreateProducerRdp) | **Post** /gateway-create-producer-rdp | 
@@ -1509,7 +1510,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateGcpTarget("Name_example") // CreateGcpTarget | 
+    body := *openapiclient.NewcreateGcpTarget("GcpSaEmail_example", "Name_example") // CreateGcpTarget | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -4161,6 +4162,70 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayCreateProducerOracleDb
+
+> GatewayCreateProducerOracleDbOutput GatewayCreateProducerOracleDb(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayCreateProducerOracleDb("Name_example", "OraclePassword_example", "OracleServiceName_example", "OracleUsername_example") // GatewayCreateProducerOracleDb | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayCreateProducerOracleDb(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerOracleDb``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayCreateProducerOracleDb`: GatewayCreateProducerOracleDbOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayCreateProducerOracleDb`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayCreateProducerOracleDbRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayCreateProducerOracleDb**](GatewayCreateProducerOracleDb.md) |  | 
+
+### Return type
+
+[**GatewayCreateProducerOracleDbOutput**](gatewayCreateProducerOracleDbOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -7758,7 +7823,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateGcpTarget("Name_example") // UpdateGcpTarget | 
+    body := *openapiclient.NewupdateGcpTarget("GcpSaEmail_example", "Name_example") // UpdateGcpTarget | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

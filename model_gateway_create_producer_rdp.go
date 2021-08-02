@@ -35,6 +35,9 @@ type GatewayCreateProducerRdp struct {
 	RdpHostPort *string `json:"rdp-host-port,omitempty"`
 	// Groups
 	RdpUserGroups string `json:"rdp-user-groups"`
+	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
+	SecureAccessRdpDomain *string `json:"secure-access-rdp-domain,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -327,6 +330,102 @@ func (o *GatewayCreateProducerRdp) SetRdpUserGroups(v string) {
 	o.RdpUserGroups = v
 }
 
+// GetSecureAccessEnable returns the SecureAccessEnable field value if set, zero value otherwise.
+func (o *GatewayCreateProducerRdp) GetSecureAccessEnable() string {
+	if o == nil || o.SecureAccessEnable == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessEnable
+}
+
+// GetSecureAccessEnableOk returns a tuple with the SecureAccessEnable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerRdp) GetSecureAccessEnableOk() (*string, bool) {
+	if o == nil || o.SecureAccessEnable == nil {
+		return nil, false
+	}
+	return o.SecureAccessEnable, true
+}
+
+// HasSecureAccessEnable returns a boolean if a field has been set.
+func (o *GatewayCreateProducerRdp) HasSecureAccessEnable() bool {
+	if o != nil && o.SecureAccessEnable != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessEnable gets a reference to the given string and assigns it to the SecureAccessEnable field.
+func (o *GatewayCreateProducerRdp) SetSecureAccessEnable(v string) {
+	o.SecureAccessEnable = &v
+}
+
+// GetSecureAccessHost returns the SecureAccessHost field value if set, zero value otherwise.
+func (o *GatewayCreateProducerRdp) GetSecureAccessHost() []string {
+	if o == nil || o.SecureAccessHost == nil {
+		var ret []string
+		return ret
+	}
+	return *o.SecureAccessHost
+}
+
+// GetSecureAccessHostOk returns a tuple with the SecureAccessHost field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerRdp) GetSecureAccessHostOk() (*[]string, bool) {
+	if o == nil || o.SecureAccessHost == nil {
+		return nil, false
+	}
+	return o.SecureAccessHost, true
+}
+
+// HasSecureAccessHost returns a boolean if a field has been set.
+func (o *GatewayCreateProducerRdp) HasSecureAccessHost() bool {
+	if o != nil && o.SecureAccessHost != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessHost gets a reference to the given []string and assigns it to the SecureAccessHost field.
+func (o *GatewayCreateProducerRdp) SetSecureAccessHost(v []string) {
+	o.SecureAccessHost = &v
+}
+
+// GetSecureAccessRdpDomain returns the SecureAccessRdpDomain field value if set, zero value otherwise.
+func (o *GatewayCreateProducerRdp) GetSecureAccessRdpDomain() string {
+	if o == nil || o.SecureAccessRdpDomain == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessRdpDomain
+}
+
+// GetSecureAccessRdpDomainOk returns a tuple with the SecureAccessRdpDomain field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerRdp) GetSecureAccessRdpDomainOk() (*string, bool) {
+	if o == nil || o.SecureAccessRdpDomain == nil {
+		return nil, false
+	}
+	return o.SecureAccessRdpDomain, true
+}
+
+// HasSecureAccessRdpDomain returns a boolean if a field has been set.
+func (o *GatewayCreateProducerRdp) HasSecureAccessRdpDomain() bool {
+	if o != nil && o.SecureAccessRdpDomain != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessRdpDomain gets a reference to the given string and assigns it to the SecureAccessRdpDomain field.
+func (o *GatewayCreateProducerRdp) SetSecureAccessRdpDomain(v string) {
+	o.SecureAccessRdpDomain = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *GatewayCreateProducerRdp) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -483,6 +582,15 @@ func (o GatewayCreateProducerRdp) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["rdp-user-groups"] = o.RdpUserGroups
+	}
+	if o.SecureAccessEnable != nil {
+		toSerialize["secure-access-enable"] = o.SecureAccessEnable
+	}
+	if o.SecureAccessHost != nil {
+		toSerialize["secure-access-host"] = o.SecureAccessHost
+	}
+	if o.SecureAccessRdpDomain != nil {
+		toSerialize["secure-access-rdp-domain"] = o.SecureAccessRdpDomain
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

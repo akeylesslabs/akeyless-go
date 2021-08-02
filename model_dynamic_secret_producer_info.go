@@ -18,6 +18,7 @@ import (
 // DynamicSecretProducerInfo DynamicSecretProducerInfo The dynamic secret producer info This parameter relevant and required only in case of create update dynamic secret.
 type DynamicSecretProducerInfo struct {
 	GwClusterId *int64 `json:"gw_cluster_id,omitempty"`
+	ProducerLastKeepAlive *string `json:"producer_last_keep_alive,omitempty"`
 	ProducerMetadata *string `json:"producer_metadata,omitempty"`
 	// RotationStatus defines types of rotation Status
 	ProducerStatus *string `json:"producer_status,omitempty"`
@@ -71,6 +72,38 @@ func (o *DynamicSecretProducerInfo) HasGwClusterId() bool {
 // SetGwClusterId gets a reference to the given int64 and assigns it to the GwClusterId field.
 func (o *DynamicSecretProducerInfo) SetGwClusterId(v int64) {
 	o.GwClusterId = &v
+}
+
+// GetProducerLastKeepAlive returns the ProducerLastKeepAlive field value if set, zero value otherwise.
+func (o *DynamicSecretProducerInfo) GetProducerLastKeepAlive() string {
+	if o == nil || o.ProducerLastKeepAlive == nil {
+		var ret string
+		return ret
+	}
+	return *o.ProducerLastKeepAlive
+}
+
+// GetProducerLastKeepAliveOk returns a tuple with the ProducerLastKeepAlive field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretProducerInfo) GetProducerLastKeepAliveOk() (*string, bool) {
+	if o == nil || o.ProducerLastKeepAlive == nil {
+		return nil, false
+	}
+	return o.ProducerLastKeepAlive, true
+}
+
+// HasProducerLastKeepAlive returns a boolean if a field has been set.
+func (o *DynamicSecretProducerInfo) HasProducerLastKeepAlive() bool {
+	if o != nil && o.ProducerLastKeepAlive != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProducerLastKeepAlive gets a reference to the given string and assigns it to the ProducerLastKeepAlive field.
+func (o *DynamicSecretProducerInfo) SetProducerLastKeepAlive(v string) {
+	o.ProducerLastKeepAlive = &v
 }
 
 // GetProducerMetadata returns the ProducerMetadata field value if set, zero value otherwise.
@@ -173,6 +206,9 @@ func (o DynamicSecretProducerInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.GwClusterId != nil {
 		toSerialize["gw_cluster_id"] = o.GwClusterId
+	}
+	if o.ProducerLastKeepAlive != nil {
+		toSerialize["producer_last_keep_alive"] = o.ProducerLastKeepAlive
 	}
 	if o.ProducerMetadata != nil {
 		toSerialize["producer_metadata"] = o.ProducerMetadata

@@ -17,6 +17,7 @@ import (
 
 // ClassicKeyDetailsInfo struct for ClassicKeyDetailsInfo
 type ClassicKeyDetailsInfo struct {
+	ClassicKeyAttributes *map[string][]string `json:"classic_key_attributes,omitempty"`
 	ClassicKeyId *string `json:"classic_key_id,omitempty"`
 	IsProvidedByUser *bool `json:"is_provided_by_user,omitempty"`
 	IsUnexportable *bool `json:"is_unexportable,omitempty"`
@@ -44,6 +45,38 @@ func NewClassicKeyDetailsInfo() *ClassicKeyDetailsInfo {
 func NewClassicKeyDetailsInfoWithDefaults() *ClassicKeyDetailsInfo {
 	this := ClassicKeyDetailsInfo{}
 	return &this
+}
+
+// GetClassicKeyAttributes returns the ClassicKeyAttributes field value if set, zero value otherwise.
+func (o *ClassicKeyDetailsInfo) GetClassicKeyAttributes() map[string][]string {
+	if o == nil || o.ClassicKeyAttributes == nil {
+		var ret map[string][]string
+		return ret
+	}
+	return *o.ClassicKeyAttributes
+}
+
+// GetClassicKeyAttributesOk returns a tuple with the ClassicKeyAttributes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClassicKeyDetailsInfo) GetClassicKeyAttributesOk() (*map[string][]string, bool) {
+	if o == nil || o.ClassicKeyAttributes == nil {
+		return nil, false
+	}
+	return o.ClassicKeyAttributes, true
+}
+
+// HasClassicKeyAttributes returns a boolean if a field has been set.
+func (o *ClassicKeyDetailsInfo) HasClassicKeyAttributes() bool {
+	if o != nil && o.ClassicKeyAttributes != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetClassicKeyAttributes gets a reference to the given map[string][]string and assigns it to the ClassicKeyAttributes field.
+func (o *ClassicKeyDetailsInfo) SetClassicKeyAttributes(v map[string][]string) {
+	o.ClassicKeyAttributes = &v
 }
 
 // GetClassicKeyId returns the ClassicKeyId field value if set, zero value otherwise.
@@ -336,6 +369,9 @@ func (o *ClassicKeyDetailsInfo) SetTargets(v []ClassicKeyTargetInfo) {
 
 func (o ClassicKeyDetailsInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.ClassicKeyAttributes != nil {
+		toSerialize["classic_key_attributes"] = o.ClassicKeyAttributes
+	}
 	if o.ClassicKeyId != nil {
 		toSerialize["classic_key_id"] = o.ClassicKeyId
 	}

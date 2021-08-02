@@ -13,6 +13,9 @@ Name | Type | Description | Notes
 **RdpHostName** | **string** | Hostname | 
 **RdpHostPort** | Pointer to **string** | Port | [optional] [default to "22"]
 **RdpUserGroups** | **string** | Groups | 
+**SecureAccessEnable** | Pointer to **string** |  | [optional] 
+**SecureAccessHost** | Pointer to **[]string** |  | [optional] 
+**SecureAccessRdpDomain** | Pointer to **string** |  | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserTtl** | Pointer to **string** | User TTL | [optional] [default to "60m"]
@@ -236,6 +239,81 @@ and a boolean to check if the value has been set.
 
 SetRdpUserGroups sets RdpUserGroups field to given value.
 
+
+### GetSecureAccessEnable
+
+`func (o *GatewayCreateProducerRdp) GetSecureAccessEnable() string`
+
+GetSecureAccessEnable returns the SecureAccessEnable field if non-nil, zero value otherwise.
+
+### GetSecureAccessEnableOk
+
+`func (o *GatewayCreateProducerRdp) GetSecureAccessEnableOk() (*string, bool)`
+
+GetSecureAccessEnableOk returns a tuple with the SecureAccessEnable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessEnable
+
+`func (o *GatewayCreateProducerRdp) SetSecureAccessEnable(v string)`
+
+SetSecureAccessEnable sets SecureAccessEnable field to given value.
+
+### HasSecureAccessEnable
+
+`func (o *GatewayCreateProducerRdp) HasSecureAccessEnable() bool`
+
+HasSecureAccessEnable returns a boolean if a field has been set.
+
+### GetSecureAccessHost
+
+`func (o *GatewayCreateProducerRdp) GetSecureAccessHost() []string`
+
+GetSecureAccessHost returns the SecureAccessHost field if non-nil, zero value otherwise.
+
+### GetSecureAccessHostOk
+
+`func (o *GatewayCreateProducerRdp) GetSecureAccessHostOk() (*[]string, bool)`
+
+GetSecureAccessHostOk returns a tuple with the SecureAccessHost field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessHost
+
+`func (o *GatewayCreateProducerRdp) SetSecureAccessHost(v []string)`
+
+SetSecureAccessHost sets SecureAccessHost field to given value.
+
+### HasSecureAccessHost
+
+`func (o *GatewayCreateProducerRdp) HasSecureAccessHost() bool`
+
+HasSecureAccessHost returns a boolean if a field has been set.
+
+### GetSecureAccessRdpDomain
+
+`func (o *GatewayCreateProducerRdp) GetSecureAccessRdpDomain() string`
+
+GetSecureAccessRdpDomain returns the SecureAccessRdpDomain field if non-nil, zero value otherwise.
+
+### GetSecureAccessRdpDomainOk
+
+`func (o *GatewayCreateProducerRdp) GetSecureAccessRdpDomainOk() (*string, bool)`
+
+GetSecureAccessRdpDomainOk returns a tuple with the SecureAccessRdpDomain field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessRdpDomain
+
+`func (o *GatewayCreateProducerRdp) SetSecureAccessRdpDomain(v string)`
+
+SetSecureAccessRdpDomain sets SecureAccessRdpDomain field to given value.
+
+### HasSecureAccessRdpDomain
+
+`func (o *GatewayCreateProducerRdp) HasSecureAccessRdpDomain() bool`
+
+HasSecureAccessRdpDomain returns a boolean if a field has been set.
 
 ### GetToken
 
