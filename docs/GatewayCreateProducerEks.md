@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EksAccessKeyId** | **string** | Access Key ID | 
+**EksAccessKeyId** | Pointer to **string** | Access Key ID | [optional] 
 **EksAssumeRole** | Pointer to **string** | IAM assume role | [optional] 
-**EksClusterCaCert** | **string** | EKS cluster CA certificate | 
-**EksClusterEndpoint** | **string** | EKS cluster URL endpoint | 
-**EksClusterName** | **string** | EKS cluster name | 
+**EksClusterCaCert** | Pointer to **string** | EKS cluster CA certificate | [optional] 
+**EksClusterEndpoint** | Pointer to **string** | EKS cluster URL endpoint | [optional] 
+**EksClusterName** | Pointer to **string** | EKS cluster name | [optional] 
 **EksRegion** | Pointer to **string** | Region | [optional] [default to "us-east-2"]
-**EksSecretAccessKey** | **string** | Secret Access Key | 
+**EksSecretAccessKey** | Pointer to **string** | Secret Access Key | [optional] 
 **Name** | **string** | Producer name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **SecureAccessBastionIssuer** | Pointer to **string** |  | [optional] 
 **SecureAccessClusterEndpoint** | Pointer to **string** |  | [optional] 
 **SecureAccessEnable** | Pointer to **string** |  | [optional] 
+**TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserTtl** | Pointer to **string** | User TTL | [optional] [default to "60m"]
@@ -27,7 +28,7 @@ Name | Type | Description | Notes
 
 ### NewGatewayCreateProducerEks
 
-`func NewGatewayCreateProducerEks(eksAccessKeyId string, eksClusterCaCert string, eksClusterEndpoint string, eksClusterName string, eksSecretAccessKey string, name string, ) *GatewayCreateProducerEks`
+`func NewGatewayCreateProducerEks(name string, ) *GatewayCreateProducerEks`
 
 NewGatewayCreateProducerEks instantiates a new GatewayCreateProducerEks object
 This constructor will assign default values to properties that have it defined,
@@ -61,6 +62,11 @@ and a boolean to check if the value has been set.
 
 SetEksAccessKeyId sets EksAccessKeyId field to given value.
 
+### HasEksAccessKeyId
+
+`func (o *GatewayCreateProducerEks) HasEksAccessKeyId() bool`
+
+HasEksAccessKeyId returns a boolean if a field has been set.
 
 ### GetEksAssumeRole
 
@@ -106,6 +112,11 @@ and a boolean to check if the value has been set.
 
 SetEksClusterCaCert sets EksClusterCaCert field to given value.
 
+### HasEksClusterCaCert
+
+`func (o *GatewayCreateProducerEks) HasEksClusterCaCert() bool`
+
+HasEksClusterCaCert returns a boolean if a field has been set.
 
 ### GetEksClusterEndpoint
 
@@ -126,6 +137,11 @@ and a boolean to check if the value has been set.
 
 SetEksClusterEndpoint sets EksClusterEndpoint field to given value.
 
+### HasEksClusterEndpoint
+
+`func (o *GatewayCreateProducerEks) HasEksClusterEndpoint() bool`
+
+HasEksClusterEndpoint returns a boolean if a field has been set.
 
 ### GetEksClusterName
 
@@ -146,6 +162,11 @@ and a boolean to check if the value has been set.
 
 SetEksClusterName sets EksClusterName field to given value.
 
+### HasEksClusterName
+
+`func (o *GatewayCreateProducerEks) HasEksClusterName() bool`
+
+HasEksClusterName returns a boolean if a field has been set.
 
 ### GetEksRegion
 
@@ -191,6 +212,11 @@ and a boolean to check if the value has been set.
 
 SetEksSecretAccessKey sets EksSecretAccessKey field to given value.
 
+### HasEksSecretAccessKey
+
+`func (o *GatewayCreateProducerEks) HasEksSecretAccessKey() bool`
+
+HasEksSecretAccessKey returns a boolean if a field has been set.
 
 ### GetName
 
@@ -361,6 +387,31 @@ SetSecureAccessEnable sets SecureAccessEnable field to given value.
 `func (o *GatewayCreateProducerEks) HasSecureAccessEnable() bool`
 
 HasSecureAccessEnable returns a boolean if a field has been set.
+
+### GetTargetName
+
+`func (o *GatewayCreateProducerEks) GetTargetName() string`
+
+GetTargetName returns the TargetName field if non-nil, zero value otherwise.
+
+### GetTargetNameOk
+
+`func (o *GatewayCreateProducerEks) GetTargetNameOk() (*string, bool)`
+
+GetTargetNameOk returns a tuple with the TargetName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetName
+
+`func (o *GatewayCreateProducerEks) SetTargetName(v string)`
+
+SetTargetName sets TargetName field to given value.
+
+### HasTargetName
+
+`func (o *GatewayCreateProducerEks) HasTargetName() bool`
+
+HasTargetName returns a boolean if a field has been set.
 
 ### GetToken
 

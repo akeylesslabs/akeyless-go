@@ -24,24 +24,26 @@ type GatewayCreateProducerRabbitMQ struct {
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
 	// RabbitMQ Admin password
-	RabbitmqAdminPwd string `json:"rabbitmq-admin-pwd"`
+	RabbitmqAdminPwd *string `json:"rabbitmq-admin-pwd,omitempty"`
 	// RabbitMQ Admin User
-	RabbitmqAdminUser string `json:"rabbitmq-admin-user"`
+	RabbitmqAdminUser *string `json:"rabbitmq-admin-user,omitempty"`
 	// Server URI
-	RabbitmqServerUri string `json:"rabbitmq-server-uri"`
+	RabbitmqServerUri *string `json:"rabbitmq-server-uri,omitempty"`
 	// User configuration permission
-	RabbitmqUserConfPermission string `json:"rabbitmq-user-conf-permission"`
+	RabbitmqUserConfPermission *string `json:"rabbitmq-user-conf-permission,omitempty"`
 	// User read permission
-	RabbitmqUserReadPermission string `json:"rabbitmq-user-read-permission"`
+	RabbitmqUserReadPermission *string `json:"rabbitmq-user-read-permission,omitempty"`
 	// User Tags
 	RabbitmqUserTags *string `json:"rabbitmq-user-tags,omitempty"`
 	// User Virtual Host
 	RabbitmqUserVhost *string `json:"rabbitmq-user-vhost,omitempty"`
 	// User write permission
-	RabbitmqUserWritePermission string `json:"rabbitmq-user-write-permission"`
+	RabbitmqUserWritePermission *string `json:"rabbitmq-user-write-permission,omitempty"`
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
 	SecureAccessUrl *string `json:"secure-access-url,omitempty"`
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
+	// Target name
+	TargetName *string `json:"target-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -56,15 +58,9 @@ type GatewayCreateProducerRabbitMQ struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayCreateProducerRabbitMQ(name string, rabbitmqAdminPwd string, rabbitmqAdminUser string, rabbitmqServerUri string, rabbitmqUserConfPermission string, rabbitmqUserReadPermission string, rabbitmqUserWritePermission string, ) *GatewayCreateProducerRabbitMQ {
+func NewGatewayCreateProducerRabbitMQ(name string, ) *GatewayCreateProducerRabbitMQ {
 	this := GatewayCreateProducerRabbitMQ{}
 	this.Name = name
-	this.RabbitmqAdminPwd = rabbitmqAdminPwd
-	this.RabbitmqAdminUser = rabbitmqAdminUser
-	this.RabbitmqServerUri = rabbitmqServerUri
-	this.RabbitmqUserConfPermission = rabbitmqUserConfPermission
-	this.RabbitmqUserReadPermission = rabbitmqUserReadPermission
-	this.RabbitmqUserWritePermission = rabbitmqUserWritePermission
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
@@ -168,124 +164,164 @@ func (o *GatewayCreateProducerRabbitMQ) SetProducerEncryptionKeyName(v string) {
 	o.ProducerEncryptionKeyName = &v
 }
 
-// GetRabbitmqAdminPwd returns the RabbitmqAdminPwd field value
+// GetRabbitmqAdminPwd returns the RabbitmqAdminPwd field value if set, zero value otherwise.
 func (o *GatewayCreateProducerRabbitMQ) GetRabbitmqAdminPwd() string {
-	if o == nil  {
+	if o == nil || o.RabbitmqAdminPwd == nil {
 		var ret string
 		return ret
 	}
-
-	return o.RabbitmqAdminPwd
+	return *o.RabbitmqAdminPwd
 }
 
-// GetRabbitmqAdminPwdOk returns a tuple with the RabbitmqAdminPwd field value
+// GetRabbitmqAdminPwdOk returns a tuple with the RabbitmqAdminPwd field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerRabbitMQ) GetRabbitmqAdminPwdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.RabbitmqAdminPwd == nil {
 		return nil, false
 	}
-	return &o.RabbitmqAdminPwd, true
+	return o.RabbitmqAdminPwd, true
 }
 
-// SetRabbitmqAdminPwd sets field value
+// HasRabbitmqAdminPwd returns a boolean if a field has been set.
+func (o *GatewayCreateProducerRabbitMQ) HasRabbitmqAdminPwd() bool {
+	if o != nil && o.RabbitmqAdminPwd != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRabbitmqAdminPwd gets a reference to the given string and assigns it to the RabbitmqAdminPwd field.
 func (o *GatewayCreateProducerRabbitMQ) SetRabbitmqAdminPwd(v string) {
-	o.RabbitmqAdminPwd = v
+	o.RabbitmqAdminPwd = &v
 }
 
-// GetRabbitmqAdminUser returns the RabbitmqAdminUser field value
+// GetRabbitmqAdminUser returns the RabbitmqAdminUser field value if set, zero value otherwise.
 func (o *GatewayCreateProducerRabbitMQ) GetRabbitmqAdminUser() string {
-	if o == nil  {
+	if o == nil || o.RabbitmqAdminUser == nil {
 		var ret string
 		return ret
 	}
-
-	return o.RabbitmqAdminUser
+	return *o.RabbitmqAdminUser
 }
 
-// GetRabbitmqAdminUserOk returns a tuple with the RabbitmqAdminUser field value
+// GetRabbitmqAdminUserOk returns a tuple with the RabbitmqAdminUser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerRabbitMQ) GetRabbitmqAdminUserOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.RabbitmqAdminUser == nil {
 		return nil, false
 	}
-	return &o.RabbitmqAdminUser, true
+	return o.RabbitmqAdminUser, true
 }
 
-// SetRabbitmqAdminUser sets field value
+// HasRabbitmqAdminUser returns a boolean if a field has been set.
+func (o *GatewayCreateProducerRabbitMQ) HasRabbitmqAdminUser() bool {
+	if o != nil && o.RabbitmqAdminUser != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRabbitmqAdminUser gets a reference to the given string and assigns it to the RabbitmqAdminUser field.
 func (o *GatewayCreateProducerRabbitMQ) SetRabbitmqAdminUser(v string) {
-	o.RabbitmqAdminUser = v
+	o.RabbitmqAdminUser = &v
 }
 
-// GetRabbitmqServerUri returns the RabbitmqServerUri field value
+// GetRabbitmqServerUri returns the RabbitmqServerUri field value if set, zero value otherwise.
 func (o *GatewayCreateProducerRabbitMQ) GetRabbitmqServerUri() string {
-	if o == nil  {
+	if o == nil || o.RabbitmqServerUri == nil {
 		var ret string
 		return ret
 	}
-
-	return o.RabbitmqServerUri
+	return *o.RabbitmqServerUri
 }
 
-// GetRabbitmqServerUriOk returns a tuple with the RabbitmqServerUri field value
+// GetRabbitmqServerUriOk returns a tuple with the RabbitmqServerUri field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerRabbitMQ) GetRabbitmqServerUriOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.RabbitmqServerUri == nil {
 		return nil, false
 	}
-	return &o.RabbitmqServerUri, true
+	return o.RabbitmqServerUri, true
 }
 
-// SetRabbitmqServerUri sets field value
+// HasRabbitmqServerUri returns a boolean if a field has been set.
+func (o *GatewayCreateProducerRabbitMQ) HasRabbitmqServerUri() bool {
+	if o != nil && o.RabbitmqServerUri != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRabbitmqServerUri gets a reference to the given string and assigns it to the RabbitmqServerUri field.
 func (o *GatewayCreateProducerRabbitMQ) SetRabbitmqServerUri(v string) {
-	o.RabbitmqServerUri = v
+	o.RabbitmqServerUri = &v
 }
 
-// GetRabbitmqUserConfPermission returns the RabbitmqUserConfPermission field value
+// GetRabbitmqUserConfPermission returns the RabbitmqUserConfPermission field value if set, zero value otherwise.
 func (o *GatewayCreateProducerRabbitMQ) GetRabbitmqUserConfPermission() string {
-	if o == nil  {
+	if o == nil || o.RabbitmqUserConfPermission == nil {
 		var ret string
 		return ret
 	}
-
-	return o.RabbitmqUserConfPermission
+	return *o.RabbitmqUserConfPermission
 }
 
-// GetRabbitmqUserConfPermissionOk returns a tuple with the RabbitmqUserConfPermission field value
+// GetRabbitmqUserConfPermissionOk returns a tuple with the RabbitmqUserConfPermission field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerRabbitMQ) GetRabbitmqUserConfPermissionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.RabbitmqUserConfPermission == nil {
 		return nil, false
 	}
-	return &o.RabbitmqUserConfPermission, true
+	return o.RabbitmqUserConfPermission, true
 }
 
-// SetRabbitmqUserConfPermission sets field value
+// HasRabbitmqUserConfPermission returns a boolean if a field has been set.
+func (o *GatewayCreateProducerRabbitMQ) HasRabbitmqUserConfPermission() bool {
+	if o != nil && o.RabbitmqUserConfPermission != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRabbitmqUserConfPermission gets a reference to the given string and assigns it to the RabbitmqUserConfPermission field.
 func (o *GatewayCreateProducerRabbitMQ) SetRabbitmqUserConfPermission(v string) {
-	o.RabbitmqUserConfPermission = v
+	o.RabbitmqUserConfPermission = &v
 }
 
-// GetRabbitmqUserReadPermission returns the RabbitmqUserReadPermission field value
+// GetRabbitmqUserReadPermission returns the RabbitmqUserReadPermission field value if set, zero value otherwise.
 func (o *GatewayCreateProducerRabbitMQ) GetRabbitmqUserReadPermission() string {
-	if o == nil  {
+	if o == nil || o.RabbitmqUserReadPermission == nil {
 		var ret string
 		return ret
 	}
-
-	return o.RabbitmqUserReadPermission
+	return *o.RabbitmqUserReadPermission
 }
 
-// GetRabbitmqUserReadPermissionOk returns a tuple with the RabbitmqUserReadPermission field value
+// GetRabbitmqUserReadPermissionOk returns a tuple with the RabbitmqUserReadPermission field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerRabbitMQ) GetRabbitmqUserReadPermissionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.RabbitmqUserReadPermission == nil {
 		return nil, false
 	}
-	return &o.RabbitmqUserReadPermission, true
+	return o.RabbitmqUserReadPermission, true
 }
 
-// SetRabbitmqUserReadPermission sets field value
+// HasRabbitmqUserReadPermission returns a boolean if a field has been set.
+func (o *GatewayCreateProducerRabbitMQ) HasRabbitmqUserReadPermission() bool {
+	if o != nil && o.RabbitmqUserReadPermission != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRabbitmqUserReadPermission gets a reference to the given string and assigns it to the RabbitmqUserReadPermission field.
 func (o *GatewayCreateProducerRabbitMQ) SetRabbitmqUserReadPermission(v string) {
-	o.RabbitmqUserReadPermission = v
+	o.RabbitmqUserReadPermission = &v
 }
 
 // GetRabbitmqUserTags returns the RabbitmqUserTags field value if set, zero value otherwise.
@@ -352,28 +388,36 @@ func (o *GatewayCreateProducerRabbitMQ) SetRabbitmqUserVhost(v string) {
 	o.RabbitmqUserVhost = &v
 }
 
-// GetRabbitmqUserWritePermission returns the RabbitmqUserWritePermission field value
+// GetRabbitmqUserWritePermission returns the RabbitmqUserWritePermission field value if set, zero value otherwise.
 func (o *GatewayCreateProducerRabbitMQ) GetRabbitmqUserWritePermission() string {
-	if o == nil  {
+	if o == nil || o.RabbitmqUserWritePermission == nil {
 		var ret string
 		return ret
 	}
-
-	return o.RabbitmqUserWritePermission
+	return *o.RabbitmqUserWritePermission
 }
 
-// GetRabbitmqUserWritePermissionOk returns a tuple with the RabbitmqUserWritePermission field value
+// GetRabbitmqUserWritePermissionOk returns a tuple with the RabbitmqUserWritePermission field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerRabbitMQ) GetRabbitmqUserWritePermissionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.RabbitmqUserWritePermission == nil {
 		return nil, false
 	}
-	return &o.RabbitmqUserWritePermission, true
+	return o.RabbitmqUserWritePermission, true
 }
 
-// SetRabbitmqUserWritePermission sets field value
+// HasRabbitmqUserWritePermission returns a boolean if a field has been set.
+func (o *GatewayCreateProducerRabbitMQ) HasRabbitmqUserWritePermission() bool {
+	if o != nil && o.RabbitmqUserWritePermission != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRabbitmqUserWritePermission gets a reference to the given string and assigns it to the RabbitmqUserWritePermission field.
 func (o *GatewayCreateProducerRabbitMQ) SetRabbitmqUserWritePermission(v string) {
-	o.RabbitmqUserWritePermission = v
+	o.RabbitmqUserWritePermission = &v
 }
 
 // GetSecureAccessEnable returns the SecureAccessEnable field value if set, zero value otherwise.
@@ -470,6 +514,38 @@ func (o *GatewayCreateProducerRabbitMQ) HasSecureAccessWebBrowsing() bool {
 // SetSecureAccessWebBrowsing gets a reference to the given bool and assigns it to the SecureAccessWebBrowsing field.
 func (o *GatewayCreateProducerRabbitMQ) SetSecureAccessWebBrowsing(v bool) {
 	o.SecureAccessWebBrowsing = &v
+}
+
+// GetTargetName returns the TargetName field value if set, zero value otherwise.
+func (o *GatewayCreateProducerRabbitMQ) GetTargetName() string {
+	if o == nil || o.TargetName == nil {
+		var ret string
+		return ret
+	}
+	return *o.TargetName
+}
+
+// GetTargetNameOk returns a tuple with the TargetName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerRabbitMQ) GetTargetNameOk() (*string, bool) {
+	if o == nil || o.TargetName == nil {
+		return nil, false
+	}
+	return o.TargetName, true
+}
+
+// HasTargetName returns a boolean if a field has been set.
+func (o *GatewayCreateProducerRabbitMQ) HasTargetName() bool {
+	if o != nil && o.TargetName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetName gets a reference to the given string and assigns it to the TargetName field.
+func (o *GatewayCreateProducerRabbitMQ) SetTargetName(v string) {
+	o.TargetName = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -611,19 +687,19 @@ func (o GatewayCreateProducerRabbitMQ) MarshalJSON() ([]byte, error) {
 	if o.ProducerEncryptionKeyName != nil {
 		toSerialize["producer-encryption-key-name"] = o.ProducerEncryptionKeyName
 	}
-	if true {
+	if o.RabbitmqAdminPwd != nil {
 		toSerialize["rabbitmq-admin-pwd"] = o.RabbitmqAdminPwd
 	}
-	if true {
+	if o.RabbitmqAdminUser != nil {
 		toSerialize["rabbitmq-admin-user"] = o.RabbitmqAdminUser
 	}
-	if true {
+	if o.RabbitmqServerUri != nil {
 		toSerialize["rabbitmq-server-uri"] = o.RabbitmqServerUri
 	}
-	if true {
+	if o.RabbitmqUserConfPermission != nil {
 		toSerialize["rabbitmq-user-conf-permission"] = o.RabbitmqUserConfPermission
 	}
-	if true {
+	if o.RabbitmqUserReadPermission != nil {
 		toSerialize["rabbitmq-user-read-permission"] = o.RabbitmqUserReadPermission
 	}
 	if o.RabbitmqUserTags != nil {
@@ -632,7 +708,7 @@ func (o GatewayCreateProducerRabbitMQ) MarshalJSON() ([]byte, error) {
 	if o.RabbitmqUserVhost != nil {
 		toSerialize["rabbitmq-user-vhost"] = o.RabbitmqUserVhost
 	}
-	if true {
+	if o.RabbitmqUserWritePermission != nil {
 		toSerialize["rabbitmq-user-write-permission"] = o.RabbitmqUserWritePermission
 	}
 	if o.SecureAccessEnable != nil {
@@ -643,6 +719,9 @@ func (o GatewayCreateProducerRabbitMQ) MarshalJSON() ([]byte, error) {
 	}
 	if o.SecureAccessWebBrowsing != nil {
 		toSerialize["secure-access-web-browsing"] = o.SecureAccessWebBrowsing
+	}
+	if o.TargetName != nil {
+		toSerialize["target-name"] = o.TargetName
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

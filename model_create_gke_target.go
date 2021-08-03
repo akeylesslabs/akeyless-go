@@ -22,13 +22,13 @@ type CreateGKETarget struct {
 	// GKE Service Account key file path
 	GkeAccountKey *string `json:"gke-account-key,omitempty"`
 	// GKE cluster CA certificate
-	GkeClusterCert string `json:"gke-cluster-cert"`
+	GkeClusterCert *string `json:"gke-cluster-cert,omitempty"`
 	// GKE cluster URL endpoint
-	GkeClusterEndpoint string `json:"gke-cluster-endpoint"`
+	GkeClusterEndpoint *string `json:"gke-cluster-endpoint,omitempty"`
 	// GKE cluster name
 	GkeClusterName string `json:"gke-cluster-name"`
 	// GKE service account email
-	GkeServiceAccountEmail string `json:"gke-service-account-email"`
+	GkeServiceAccountEmail *string `json:"gke-service-account-email,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
 	// Target name
@@ -47,12 +47,9 @@ type CreateGKETarget struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateGKETarget(gkeClusterCert string, gkeClusterEndpoint string, gkeClusterName string, gkeServiceAccountEmail string, name string, ) *CreateGKETarget {
+func NewCreateGKETarget(gkeClusterName string, name string, ) *CreateGKETarget {
 	this := CreateGKETarget{}
-	this.GkeClusterCert = gkeClusterCert
-	this.GkeClusterEndpoint = gkeClusterEndpoint
 	this.GkeClusterName = gkeClusterName
-	this.GkeServiceAccountEmail = gkeServiceAccountEmail
 	this.Name = name
 	return &this
 }
@@ -129,52 +126,68 @@ func (o *CreateGKETarget) SetGkeAccountKey(v string) {
 	o.GkeAccountKey = &v
 }
 
-// GetGkeClusterCert returns the GkeClusterCert field value
+// GetGkeClusterCert returns the GkeClusterCert field value if set, zero value otherwise.
 func (o *CreateGKETarget) GetGkeClusterCert() string {
-	if o == nil  {
+	if o == nil || o.GkeClusterCert == nil {
 		var ret string
 		return ret
 	}
-
-	return o.GkeClusterCert
+	return *o.GkeClusterCert
 }
 
-// GetGkeClusterCertOk returns a tuple with the GkeClusterCert field value
+// GetGkeClusterCertOk returns a tuple with the GkeClusterCert field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateGKETarget) GetGkeClusterCertOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.GkeClusterCert == nil {
 		return nil, false
 	}
-	return &o.GkeClusterCert, true
+	return o.GkeClusterCert, true
 }
 
-// SetGkeClusterCert sets field value
+// HasGkeClusterCert returns a boolean if a field has been set.
+func (o *CreateGKETarget) HasGkeClusterCert() bool {
+	if o != nil && o.GkeClusterCert != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGkeClusterCert gets a reference to the given string and assigns it to the GkeClusterCert field.
 func (o *CreateGKETarget) SetGkeClusterCert(v string) {
-	o.GkeClusterCert = v
+	o.GkeClusterCert = &v
 }
 
-// GetGkeClusterEndpoint returns the GkeClusterEndpoint field value
+// GetGkeClusterEndpoint returns the GkeClusterEndpoint field value if set, zero value otherwise.
 func (o *CreateGKETarget) GetGkeClusterEndpoint() string {
-	if o == nil  {
+	if o == nil || o.GkeClusterEndpoint == nil {
 		var ret string
 		return ret
 	}
-
-	return o.GkeClusterEndpoint
+	return *o.GkeClusterEndpoint
 }
 
-// GetGkeClusterEndpointOk returns a tuple with the GkeClusterEndpoint field value
+// GetGkeClusterEndpointOk returns a tuple with the GkeClusterEndpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateGKETarget) GetGkeClusterEndpointOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.GkeClusterEndpoint == nil {
 		return nil, false
 	}
-	return &o.GkeClusterEndpoint, true
+	return o.GkeClusterEndpoint, true
 }
 
-// SetGkeClusterEndpoint sets field value
+// HasGkeClusterEndpoint returns a boolean if a field has been set.
+func (o *CreateGKETarget) HasGkeClusterEndpoint() bool {
+	if o != nil && o.GkeClusterEndpoint != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGkeClusterEndpoint gets a reference to the given string and assigns it to the GkeClusterEndpoint field.
 func (o *CreateGKETarget) SetGkeClusterEndpoint(v string) {
-	o.GkeClusterEndpoint = v
+	o.GkeClusterEndpoint = &v
 }
 
 // GetGkeClusterName returns the GkeClusterName field value
@@ -201,28 +214,36 @@ func (o *CreateGKETarget) SetGkeClusterName(v string) {
 	o.GkeClusterName = v
 }
 
-// GetGkeServiceAccountEmail returns the GkeServiceAccountEmail field value
+// GetGkeServiceAccountEmail returns the GkeServiceAccountEmail field value if set, zero value otherwise.
 func (o *CreateGKETarget) GetGkeServiceAccountEmail() string {
-	if o == nil  {
+	if o == nil || o.GkeServiceAccountEmail == nil {
 		var ret string
 		return ret
 	}
-
-	return o.GkeServiceAccountEmail
+	return *o.GkeServiceAccountEmail
 }
 
-// GetGkeServiceAccountEmailOk returns a tuple with the GkeServiceAccountEmail field value
+// GetGkeServiceAccountEmailOk returns a tuple with the GkeServiceAccountEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateGKETarget) GetGkeServiceAccountEmailOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.GkeServiceAccountEmail == nil {
 		return nil, false
 	}
-	return &o.GkeServiceAccountEmail, true
+	return o.GkeServiceAccountEmail, true
 }
 
-// SetGkeServiceAccountEmail sets field value
+// HasGkeServiceAccountEmail returns a boolean if a field has been set.
+func (o *CreateGKETarget) HasGkeServiceAccountEmail() bool {
+	if o != nil && o.GkeServiceAccountEmail != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGkeServiceAccountEmail gets a reference to the given string and assigns it to the GkeServiceAccountEmail field.
 func (o *CreateGKETarget) SetGkeServiceAccountEmail(v string) {
-	o.GkeServiceAccountEmail = v
+	o.GkeServiceAccountEmail = &v
 }
 
 // GetKey returns the Key field value if set, zero value otherwise.
@@ -417,16 +438,16 @@ func (o CreateGKETarget) MarshalJSON() ([]byte, error) {
 	if o.GkeAccountKey != nil {
 		toSerialize["gke-account-key"] = o.GkeAccountKey
 	}
-	if true {
+	if o.GkeClusterCert != nil {
 		toSerialize["gke-cluster-cert"] = o.GkeClusterCert
 	}
-	if true {
+	if o.GkeClusterEndpoint != nil {
 		toSerialize["gke-cluster-endpoint"] = o.GkeClusterEndpoint
 	}
 	if true {
 		toSerialize["gke-cluster-name"] = o.GkeClusterName
 	}
-	if true {
+	if o.GkeServiceAccountEmail != nil {
 		toSerialize["gke-service-account-email"] = o.GkeServiceAccountEmail
 	}
 	if o.Key != nil {

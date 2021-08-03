@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **SignUsingAkeylessPki** | Pointer to **bool** | Use Akeyless PKI issuer or Venafi issuer | [optional] 
 **SignerKeyName** | Pointer to **string** | Signer key name | [optional] 
 **StorePrivateKey** | Pointer to **bool** | Store private key | [optional] 
+**TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserTtl** | Pointer to **string** | User TTL in time.Duration format (2160h / 129600m / etc...). When using sign-using-akeyless-pki certificates created will have this validity period, otherwise the user-ttl is taken from the Validity Period field of the Zone&#39;s&#39; Issuing Template. When using cert-manager it is advised to have a TTL of above 60 days (1440h). For more information - https://cert-manager.io/docs/usage/certificate/ | [optional] 
@@ -25,13 +26,13 @@ Name | Type | Description | Notes
 **VenafiPassword** | Pointer to **string** | Venafi Password | [optional] 
 **VenafiUseTpp** | Pointer to **bool** | Venafi using TPP | [optional] 
 **VenafiUsername** | Pointer to **string** | Venafi Username | [optional] 
-**VenafiZone** | **string** | Venafi Zone | 
+**VenafiZone** | Pointer to **string** | Venafi Zone | [optional] 
 
 ## Methods
 
 ### NewGatewayCreateProducerCertificateAutomation
 
-`func NewGatewayCreateProducerCertificateAutomation(name string, venafiZone string, ) *GatewayCreateProducerCertificateAutomation`
+`func NewGatewayCreateProducerCertificateAutomation(name string, ) *GatewayCreateProducerCertificateAutomation`
 
 NewGatewayCreateProducerCertificateAutomation instantiates a new GatewayCreateProducerCertificateAutomation object
 This constructor will assign default values to properties that have it defined,
@@ -341,6 +342,31 @@ SetStorePrivateKey sets StorePrivateKey field to given value.
 
 HasStorePrivateKey returns a boolean if a field has been set.
 
+### GetTargetName
+
+`func (o *GatewayCreateProducerCertificateAutomation) GetTargetName() string`
+
+GetTargetName returns the TargetName field if non-nil, zero value otherwise.
+
+### GetTargetNameOk
+
+`func (o *GatewayCreateProducerCertificateAutomation) GetTargetNameOk() (*string, bool)`
+
+GetTargetNameOk returns a tuple with the TargetName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetName
+
+`func (o *GatewayCreateProducerCertificateAutomation) SetTargetName(v string)`
+
+SetTargetName sets TargetName field to given value.
+
+### HasTargetName
+
+`func (o *GatewayCreateProducerCertificateAutomation) HasTargetName() bool`
+
+HasTargetName returns a boolean if a field has been set.
+
 ### GetToken
 
 `func (o *GatewayCreateProducerCertificateAutomation) GetToken() string`
@@ -585,6 +611,11 @@ and a boolean to check if the value has been set.
 
 SetVenafiZone sets VenafiZone field to given value.
 
+### HasVenafiZone
+
+`func (o *GatewayCreateProducerCertificateAutomation) HasVenafiZone() bool`
+
+HasVenafiZone returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

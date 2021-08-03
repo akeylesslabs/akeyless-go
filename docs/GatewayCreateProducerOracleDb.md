@@ -8,13 +8,14 @@ Name | Type | Description | Notes
 **DbServerName** | Pointer to **string** | (Optional) Server name for certificate verification | [optional] 
 **Name** | **string** | Producer name | 
 **OracleHost** | Pointer to **string** | Oracle Host | [optional] [default to "127.0.0.1"]
-**OraclePassword** | **string** | Oracle Password | 
+**OraclePassword** | Pointer to **string** | Oracle Password | [optional] 
 **OraclePort** | Pointer to **string** | Oracle Port | [optional] [default to "1521"]
 **OracleScreationStatements** | Pointer to **string** | Oracle Creation statements | [optional] 
-**OracleServiceName** | **string** | Oracle DB Name | 
-**OracleUsername** | **string** | Oracle Username | 
+**OracleServiceName** | Pointer to **string** | Oracle DB Name | [optional] 
+**OracleUsername** | Pointer to **string** | Oracle Username | [optional] 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
+**TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserTtl** | Pointer to **string** | User TTL | [optional] [default to "60m"]
@@ -24,7 +25,7 @@ Name | Type | Description | Notes
 
 ### NewGatewayCreateProducerOracleDb
 
-`func NewGatewayCreateProducerOracleDb(name string, oraclePassword string, oracleServiceName string, oracleUsername string, ) *GatewayCreateProducerOracleDb`
+`func NewGatewayCreateProducerOracleDb(name string, ) *GatewayCreateProducerOracleDb`
 
 NewGatewayCreateProducerOracleDb instantiates a new GatewayCreateProducerOracleDb object
 This constructor will assign default values to properties that have it defined,
@@ -153,6 +154,11 @@ and a boolean to check if the value has been set.
 
 SetOraclePassword sets OraclePassword field to given value.
 
+### HasOraclePassword
+
+`func (o *GatewayCreateProducerOracleDb) HasOraclePassword() bool`
+
+HasOraclePassword returns a boolean if a field has been set.
 
 ### GetOraclePort
 
@@ -223,6 +229,11 @@ and a boolean to check if the value has been set.
 
 SetOracleServiceName sets OracleServiceName field to given value.
 
+### HasOracleServiceName
+
+`func (o *GatewayCreateProducerOracleDb) HasOracleServiceName() bool`
+
+HasOracleServiceName returns a boolean if a field has been set.
 
 ### GetOracleUsername
 
@@ -243,6 +254,11 @@ and a boolean to check if the value has been set.
 
 SetOracleUsername sets OracleUsername field to given value.
 
+### HasOracleUsername
+
+`func (o *GatewayCreateProducerOracleDb) HasOracleUsername() bool`
+
+HasOracleUsername returns a boolean if a field has been set.
 
 ### GetPassword
 
@@ -293,6 +309,31 @@ SetProducerEncryptionKeyName sets ProducerEncryptionKeyName field to given value
 `func (o *GatewayCreateProducerOracleDb) HasProducerEncryptionKeyName() bool`
 
 HasProducerEncryptionKeyName returns a boolean if a field has been set.
+
+### GetTargetName
+
+`func (o *GatewayCreateProducerOracleDb) GetTargetName() string`
+
+GetTargetName returns the TargetName field if non-nil, zero value otherwise.
+
+### GetTargetNameOk
+
+`func (o *GatewayCreateProducerOracleDb) GetTargetNameOk() (*string, bool)`
+
+GetTargetNameOk returns a tuple with the TargetName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetName
+
+`func (o *GatewayCreateProducerOracleDb) SetTargetName(v string)`
+
+SetTargetName sets TargetName field to given value.
+
+### HasTargetName
+
+`func (o *GatewayCreateProducerOracleDb) HasTargetName() bool`
+
+HasTargetName returns a boolean if a field has been set.
 
 ### GetToken
 

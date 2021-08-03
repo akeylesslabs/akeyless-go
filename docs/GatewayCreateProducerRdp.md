@@ -10,12 +10,13 @@ Name | Type | Description | Notes
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **RdpAdminName** | **string** | RDP Admin Name | 
 **RdpAdminPwd** | **string** | RDP Admin password | 
-**RdpHostName** | **string** | Hostname | 
+**RdpHostName** | Pointer to **string** | Hostname | [optional] 
 **RdpHostPort** | Pointer to **string** | Port | [optional] [default to "22"]
-**RdpUserGroups** | **string** | Groups | 
+**RdpUserGroups** | Pointer to **string** | Groups | [optional] 
 **SecureAccessEnable** | Pointer to **string** |  | [optional] 
 **SecureAccessHost** | Pointer to **[]string** |  | [optional] 
 **SecureAccessRdpDomain** | Pointer to **string** |  | [optional] 
+**TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserTtl** | Pointer to **string** | User TTL | [optional] [default to "60m"]
@@ -25,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewGatewayCreateProducerRdp
 
-`func NewGatewayCreateProducerRdp(name string, rdpAdminName string, rdpAdminPwd string, rdpHostName string, rdpUserGroups string, ) *GatewayCreateProducerRdp`
+`func NewGatewayCreateProducerRdp(name string, rdpAdminName string, rdpAdminPwd string, ) *GatewayCreateProducerRdp`
 
 NewGatewayCreateProducerRdp instantiates a new GatewayCreateProducerRdp object
 This constructor will assign default values to properties that have it defined,
@@ -194,6 +195,11 @@ and a boolean to check if the value has been set.
 
 SetRdpHostName sets RdpHostName field to given value.
 
+### HasRdpHostName
+
+`func (o *GatewayCreateProducerRdp) HasRdpHostName() bool`
+
+HasRdpHostName returns a boolean if a field has been set.
 
 ### GetRdpHostPort
 
@@ -239,6 +245,11 @@ and a boolean to check if the value has been set.
 
 SetRdpUserGroups sets RdpUserGroups field to given value.
 
+### HasRdpUserGroups
+
+`func (o *GatewayCreateProducerRdp) HasRdpUserGroups() bool`
+
+HasRdpUserGroups returns a boolean if a field has been set.
 
 ### GetSecureAccessEnable
 
@@ -314,6 +325,31 @@ SetSecureAccessRdpDomain sets SecureAccessRdpDomain field to given value.
 `func (o *GatewayCreateProducerRdp) HasSecureAccessRdpDomain() bool`
 
 HasSecureAccessRdpDomain returns a boolean if a field has been set.
+
+### GetTargetName
+
+`func (o *GatewayCreateProducerRdp) GetTargetName() string`
+
+GetTargetName returns the TargetName field if non-nil, zero value otherwise.
+
+### GetTargetNameOk
+
+`func (o *GatewayCreateProducerRdp) GetTargetNameOk() (*string, bool)`
+
+GetTargetNameOk returns a tuple with the TargetName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetName
+
+`func (o *GatewayCreateProducerRdp) SetTargetName(v string)`
+
+SetTargetName sets TargetName field to given value.
+
+### HasTargetName
+
+`func (o *GatewayCreateProducerRdp) HasTargetName() bool`
+
+HasTargetName returns a boolean if a field has been set.
 
 ### GetToken
 

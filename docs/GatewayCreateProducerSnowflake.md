@@ -4,11 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Account** | **string** | Account name | 
-**DbName** | **string** | Database name | 
+**Account** | Pointer to **string** | Account name | [optional] 
+**DbName** | Pointer to **string** | Database name | [optional] 
 **Name** | **string** | Producer name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **Role** | Pointer to **string** | User role | [optional] 
+**TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserTtl** | Pointer to **string** | User TTL | [optional] [default to "24h"]
@@ -19,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewGatewayCreateProducerSnowflake
 
-`func NewGatewayCreateProducerSnowflake(account string, dbName string, name string, ) *GatewayCreateProducerSnowflake`
+`func NewGatewayCreateProducerSnowflake(name string, ) *GatewayCreateProducerSnowflake`
 
 NewGatewayCreateProducerSnowflake instantiates a new GatewayCreateProducerSnowflake object
 This constructor will assign default values to properties that have it defined,
@@ -53,6 +54,11 @@ and a boolean to check if the value has been set.
 
 SetAccount sets Account field to given value.
 
+### HasAccount
+
+`func (o *GatewayCreateProducerSnowflake) HasAccount() bool`
+
+HasAccount returns a boolean if a field has been set.
 
 ### GetDbName
 
@@ -73,6 +79,11 @@ and a boolean to check if the value has been set.
 
 SetDbName sets DbName field to given value.
 
+### HasDbName
+
+`func (o *GatewayCreateProducerSnowflake) HasDbName() bool`
+
+HasDbName returns a boolean if a field has been set.
 
 ### GetName
 
@@ -143,6 +154,31 @@ SetRole sets Role field to given value.
 `func (o *GatewayCreateProducerSnowflake) HasRole() bool`
 
 HasRole returns a boolean if a field has been set.
+
+### GetTargetName
+
+`func (o *GatewayCreateProducerSnowflake) GetTargetName() string`
+
+GetTargetName returns the TargetName field if non-nil, zero value otherwise.
+
+### GetTargetNameOk
+
+`func (o *GatewayCreateProducerSnowflake) GetTargetNameOk() (*string, bool)`
+
+GetTargetNameOk returns a tuple with the TargetName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetName
+
+`func (o *GatewayCreateProducerSnowflake) SetTargetName(v string)`
+
+SetTargetName sets TargetName field to given value.
+
+### HasTargetName
+
+`func (o *GatewayCreateProducerSnowflake) HasTargetName() bool`
+
+HasTargetName returns a boolean if a field has been set.
 
 ### GetToken
 

@@ -4,14 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ChefOrgs** | **string** | Organizations | 
-**ChefServerKey** | **string** | Server key | 
-**ChefServerUrl** | **string** | Server URL | 
-**ChefServerUsername** | **string** | Server username | 
+**ChefOrgs** | Pointer to **string** | Organizations | [optional] 
+**ChefServerKey** | Pointer to **string** | Server key | [optional] 
+**ChefServerUrl** | Pointer to **string** | Server URL | [optional] 
+**ChefServerUsername** | Pointer to **string** | Server username | [optional] 
 **Name** | **string** | Producer name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **SkipSsl** | Pointer to **bool** | Skip SSL | [optional] [default to true]
+**TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserTtl** | Pointer to **string** | User TTL | [optional] [default to "60m"]
@@ -21,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewGatewayCreateProducerChef
 
-`func NewGatewayCreateProducerChef(chefOrgs string, chefServerKey string, chefServerUrl string, chefServerUsername string, name string, ) *GatewayCreateProducerChef`
+`func NewGatewayCreateProducerChef(name string, ) *GatewayCreateProducerChef`
 
 NewGatewayCreateProducerChef instantiates a new GatewayCreateProducerChef object
 This constructor will assign default values to properties that have it defined,
@@ -55,6 +56,11 @@ and a boolean to check if the value has been set.
 
 SetChefOrgs sets ChefOrgs field to given value.
 
+### HasChefOrgs
+
+`func (o *GatewayCreateProducerChef) HasChefOrgs() bool`
+
+HasChefOrgs returns a boolean if a field has been set.
 
 ### GetChefServerKey
 
@@ -75,6 +81,11 @@ and a boolean to check if the value has been set.
 
 SetChefServerKey sets ChefServerKey field to given value.
 
+### HasChefServerKey
+
+`func (o *GatewayCreateProducerChef) HasChefServerKey() bool`
+
+HasChefServerKey returns a boolean if a field has been set.
 
 ### GetChefServerUrl
 
@@ -95,6 +106,11 @@ and a boolean to check if the value has been set.
 
 SetChefServerUrl sets ChefServerUrl field to given value.
 
+### HasChefServerUrl
+
+`func (o *GatewayCreateProducerChef) HasChefServerUrl() bool`
+
+HasChefServerUrl returns a boolean if a field has been set.
 
 ### GetChefServerUsername
 
@@ -115,6 +131,11 @@ and a boolean to check if the value has been set.
 
 SetChefServerUsername sets ChefServerUsername field to given value.
 
+### HasChefServerUsername
+
+`func (o *GatewayCreateProducerChef) HasChefServerUsername() bool`
+
+HasChefServerUsername returns a boolean if a field has been set.
 
 ### GetName
 
@@ -210,6 +231,31 @@ SetSkipSsl sets SkipSsl field to given value.
 `func (o *GatewayCreateProducerChef) HasSkipSsl() bool`
 
 HasSkipSsl returns a boolean if a field has been set.
+
+### GetTargetName
+
+`func (o *GatewayCreateProducerChef) GetTargetName() string`
+
+GetTargetName returns the TargetName field if non-nil, zero value otherwise.
+
+### GetTargetNameOk
+
+`func (o *GatewayCreateProducerChef) GetTargetNameOk() (*string, bool)`
+
+GetTargetNameOk returns a tuple with the TargetName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetName
+
+`func (o *GatewayCreateProducerChef) SetTargetName(v string)`
+
+SetTargetName sets TargetName field to given value.
+
+### HasTargetName
+
+`func (o *GatewayCreateProducerChef) HasTargetName() bool`
+
+HasTargetName returns a boolean if a field has been set.
 
 ### GetToken
 

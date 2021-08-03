@@ -22,17 +22,17 @@ type GatewayCreateProducerMySQL struct {
 	// (Optional) Server name for certificate verification
 	DbServerName *string `json:"db-server-name,omitempty"`
 	// MySQL DB Name
-	MysqlDbname string `json:"mysql-dbname"`
+	MysqlDbname *string `json:"mysql-dbname,omitempty"`
 	// MySQL Host
 	MysqlHost *string `json:"mysql-host,omitempty"`
 	// MySQL Password
-	MysqlPassword string `json:"mysql-password"`
+	MysqlPassword *string `json:"mysql-password,omitempty"`
 	// MySQL Port
 	MysqlPort *string `json:"mysql-port,omitempty"`
 	// MySQL Creation statements
 	MysqlScreationStatements *string `json:"mysql-screation-statements,omitempty"`
 	// MySQL Username
-	MysqlUsername string `json:"mysql-username"`
+	MysqlUsername *string `json:"mysql-username,omitempty"`
 	// Producer name
 	Name string `json:"name"`
 	// Required only when the authentication process requires a username and password
@@ -42,6 +42,8 @@ type GatewayCreateProducerMySQL struct {
 	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
 	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
+	// Target name
+	TargetName *string `json:"target-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -56,15 +58,12 @@ type GatewayCreateProducerMySQL struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayCreateProducerMySQL(mysqlDbname string, mysqlPassword string, mysqlUsername string, name string, ) *GatewayCreateProducerMySQL {
+func NewGatewayCreateProducerMySQL(name string, ) *GatewayCreateProducerMySQL {
 	this := GatewayCreateProducerMySQL{}
-	this.MysqlDbname = mysqlDbname
 	var mysqlHost string = "127.0.0.1"
 	this.MysqlHost = &mysqlHost
-	this.MysqlPassword = mysqlPassword
 	var mysqlPort string = "3306"
 	this.MysqlPort = &mysqlPort
-	this.MysqlUsername = mysqlUsername
 	this.Name = name
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
@@ -149,28 +148,36 @@ func (o *GatewayCreateProducerMySQL) SetDbServerName(v string) {
 	o.DbServerName = &v
 }
 
-// GetMysqlDbname returns the MysqlDbname field value
+// GetMysqlDbname returns the MysqlDbname field value if set, zero value otherwise.
 func (o *GatewayCreateProducerMySQL) GetMysqlDbname() string {
-	if o == nil  {
+	if o == nil || o.MysqlDbname == nil {
 		var ret string
 		return ret
 	}
-
-	return o.MysqlDbname
+	return *o.MysqlDbname
 }
 
-// GetMysqlDbnameOk returns a tuple with the MysqlDbname field value
+// GetMysqlDbnameOk returns a tuple with the MysqlDbname field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerMySQL) GetMysqlDbnameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.MysqlDbname == nil {
 		return nil, false
 	}
-	return &o.MysqlDbname, true
+	return o.MysqlDbname, true
 }
 
-// SetMysqlDbname sets field value
+// HasMysqlDbname returns a boolean if a field has been set.
+func (o *GatewayCreateProducerMySQL) HasMysqlDbname() bool {
+	if o != nil && o.MysqlDbname != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMysqlDbname gets a reference to the given string and assigns it to the MysqlDbname field.
 func (o *GatewayCreateProducerMySQL) SetMysqlDbname(v string) {
-	o.MysqlDbname = v
+	o.MysqlDbname = &v
 }
 
 // GetMysqlHost returns the MysqlHost field value if set, zero value otherwise.
@@ -205,28 +212,36 @@ func (o *GatewayCreateProducerMySQL) SetMysqlHost(v string) {
 	o.MysqlHost = &v
 }
 
-// GetMysqlPassword returns the MysqlPassword field value
+// GetMysqlPassword returns the MysqlPassword field value if set, zero value otherwise.
 func (o *GatewayCreateProducerMySQL) GetMysqlPassword() string {
-	if o == nil  {
+	if o == nil || o.MysqlPassword == nil {
 		var ret string
 		return ret
 	}
-
-	return o.MysqlPassword
+	return *o.MysqlPassword
 }
 
-// GetMysqlPasswordOk returns a tuple with the MysqlPassword field value
+// GetMysqlPasswordOk returns a tuple with the MysqlPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerMySQL) GetMysqlPasswordOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.MysqlPassword == nil {
 		return nil, false
 	}
-	return &o.MysqlPassword, true
+	return o.MysqlPassword, true
 }
 
-// SetMysqlPassword sets field value
+// HasMysqlPassword returns a boolean if a field has been set.
+func (o *GatewayCreateProducerMySQL) HasMysqlPassword() bool {
+	if o != nil && o.MysqlPassword != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMysqlPassword gets a reference to the given string and assigns it to the MysqlPassword field.
 func (o *GatewayCreateProducerMySQL) SetMysqlPassword(v string) {
-	o.MysqlPassword = v
+	o.MysqlPassword = &v
 }
 
 // GetMysqlPort returns the MysqlPort field value if set, zero value otherwise.
@@ -293,28 +308,36 @@ func (o *GatewayCreateProducerMySQL) SetMysqlScreationStatements(v string) {
 	o.MysqlScreationStatements = &v
 }
 
-// GetMysqlUsername returns the MysqlUsername field value
+// GetMysqlUsername returns the MysqlUsername field value if set, zero value otherwise.
 func (o *GatewayCreateProducerMySQL) GetMysqlUsername() string {
-	if o == nil  {
+	if o == nil || o.MysqlUsername == nil {
 		var ret string
 		return ret
 	}
-
-	return o.MysqlUsername
+	return *o.MysqlUsername
 }
 
-// GetMysqlUsernameOk returns a tuple with the MysqlUsername field value
+// GetMysqlUsernameOk returns a tuple with the MysqlUsername field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerMySQL) GetMysqlUsernameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.MysqlUsername == nil {
 		return nil, false
 	}
-	return &o.MysqlUsername, true
+	return o.MysqlUsername, true
 }
 
-// SetMysqlUsername sets field value
+// HasMysqlUsername returns a boolean if a field has been set.
+func (o *GatewayCreateProducerMySQL) HasMysqlUsername() bool {
+	if o != nil && o.MysqlUsername != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMysqlUsername gets a reference to the given string and assigns it to the MysqlUsername field.
 func (o *GatewayCreateProducerMySQL) SetMysqlUsername(v string) {
-	o.MysqlUsername = v
+	o.MysqlUsername = &v
 }
 
 // GetName returns the Name field value
@@ -501,6 +524,38 @@ func (o *GatewayCreateProducerMySQL) SetSecureAccessHost(v []string) {
 	o.SecureAccessHost = &v
 }
 
+// GetTargetName returns the TargetName field value if set, zero value otherwise.
+func (o *GatewayCreateProducerMySQL) GetTargetName() string {
+	if o == nil || o.TargetName == nil {
+		var ret string
+		return ret
+	}
+	return *o.TargetName
+}
+
+// GetTargetNameOk returns a tuple with the TargetName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerMySQL) GetTargetNameOk() (*string, bool) {
+	if o == nil || o.TargetName == nil {
+		return nil, false
+	}
+	return o.TargetName, true
+}
+
+// HasTargetName returns a boolean if a field has been set.
+func (o *GatewayCreateProducerMySQL) HasTargetName() bool {
+	if o != nil && o.TargetName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetName gets a reference to the given string and assigns it to the TargetName field.
+func (o *GatewayCreateProducerMySQL) SetTargetName(v string) {
+	o.TargetName = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *GatewayCreateProducerMySQL) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -637,13 +692,13 @@ func (o GatewayCreateProducerMySQL) MarshalJSON() ([]byte, error) {
 	if o.DbServerName != nil {
 		toSerialize["db-server-name"] = o.DbServerName
 	}
-	if true {
+	if o.MysqlDbname != nil {
 		toSerialize["mysql-dbname"] = o.MysqlDbname
 	}
 	if o.MysqlHost != nil {
 		toSerialize["mysql-host"] = o.MysqlHost
 	}
-	if true {
+	if o.MysqlPassword != nil {
 		toSerialize["mysql-password"] = o.MysqlPassword
 	}
 	if o.MysqlPort != nil {
@@ -652,7 +707,7 @@ func (o GatewayCreateProducerMySQL) MarshalJSON() ([]byte, error) {
 	if o.MysqlScreationStatements != nil {
 		toSerialize["mysql-screation-statements"] = o.MysqlScreationStatements
 	}
-	if true {
+	if o.MysqlUsername != nil {
 		toSerialize["mysql-username"] = o.MysqlUsername
 	}
 	if true {
@@ -672,6 +727,9 @@ func (o GatewayCreateProducerMySQL) MarshalJSON() ([]byte, error) {
 	}
 	if o.SecureAccessHost != nil {
 		toSerialize["secure-access-host"] = o.SecureAccessHost
+	}
+	if o.TargetName != nil {
+		toSerialize["target-name"] = o.TargetName
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

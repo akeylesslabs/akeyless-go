@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **GkeAccountKey** | Pointer to **string** | GKE Service Account key file path | [optional] 
-**GkeClusterCert** | **string** | GKE cluster CA certificate | 
-**GkeClusterEndpoint** | **string** | GKE cluster URL endpoint | 
+**GkeClusterCert** | Pointer to **string** | GKE cluster CA certificate | [optional] 
+**GkeClusterEndpoint** | Pointer to **string** | GKE cluster URL endpoint | [optional] 
 **GkeClusterName** | **string** | GKE cluster name | 
-**GkeServiceAccountEmail** | **string** | GKE service account email | 
+**GkeServiceAccountEmail** | Pointer to **string** | GKE service account email | [optional] 
 **Name** | **string** | Producer name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **SecureAccessBastionIssuer** | Pointer to **string** |  | [optional] 
 **SecureAccessClusterEndpoint** | Pointer to **string** |  | [optional] 
 **SecureAccessEnable** | Pointer to **string** |  | [optional] 
+**TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserTtl** | Pointer to **string** | User TTL | [optional] [default to "60m"]
@@ -25,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewGatewayCreateProducerGke
 
-`func NewGatewayCreateProducerGke(gkeClusterCert string, gkeClusterEndpoint string, gkeClusterName string, gkeServiceAccountEmail string, name string, ) *GatewayCreateProducerGke`
+`func NewGatewayCreateProducerGke(gkeClusterName string, name string, ) *GatewayCreateProducerGke`
 
 NewGatewayCreateProducerGke instantiates a new GatewayCreateProducerGke object
 This constructor will assign default values to properties that have it defined,
@@ -84,6 +85,11 @@ and a boolean to check if the value has been set.
 
 SetGkeClusterCert sets GkeClusterCert field to given value.
 
+### HasGkeClusterCert
+
+`func (o *GatewayCreateProducerGke) HasGkeClusterCert() bool`
+
+HasGkeClusterCert returns a boolean if a field has been set.
 
 ### GetGkeClusterEndpoint
 
@@ -104,6 +110,11 @@ and a boolean to check if the value has been set.
 
 SetGkeClusterEndpoint sets GkeClusterEndpoint field to given value.
 
+### HasGkeClusterEndpoint
+
+`func (o *GatewayCreateProducerGke) HasGkeClusterEndpoint() bool`
+
+HasGkeClusterEndpoint returns a boolean if a field has been set.
 
 ### GetGkeClusterName
 
@@ -144,6 +155,11 @@ and a boolean to check if the value has been set.
 
 SetGkeServiceAccountEmail sets GkeServiceAccountEmail field to given value.
 
+### HasGkeServiceAccountEmail
+
+`func (o *GatewayCreateProducerGke) HasGkeServiceAccountEmail() bool`
+
+HasGkeServiceAccountEmail returns a boolean if a field has been set.
 
 ### GetName
 
@@ -314,6 +330,31 @@ SetSecureAccessEnable sets SecureAccessEnable field to given value.
 `func (o *GatewayCreateProducerGke) HasSecureAccessEnable() bool`
 
 HasSecureAccessEnable returns a boolean if a field has been set.
+
+### GetTargetName
+
+`func (o *GatewayCreateProducerGke) GetTargetName() string`
+
+GetTargetName returns the TargetName field if non-nil, zero value otherwise.
+
+### GetTargetNameOk
+
+`func (o *GatewayCreateProducerGke) GetTargetNameOk() (*string, bool)`
+
+GetTargetNameOk returns a tuple with the TargetName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetName
+
+`func (o *GatewayCreateProducerGke) SetTargetName(v string)`
+
+SetTargetName sets TargetName field to given value.
+
+### HasTargetName
+
+`func (o *GatewayCreateProducerGke) HasTargetName() bool`
+
+HasTargetName returns a boolean if a field has been set.
 
 ### GetToken
 

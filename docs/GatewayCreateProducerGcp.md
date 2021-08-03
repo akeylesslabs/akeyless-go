@@ -4,14 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**GcpCredType** | **string** |  | 
+**GcpCredType** | Pointer to **string** |  | [optional] 
 **GcpKey** | Pointer to **string** | Base64-encoded service account private key text | [optional] 
 **GcpKeyAlgo** | Pointer to **string** | Service account key algorithm, e.g. KEY_ALG_RSA_1024 | [optional] 
-**GcpSaEmail** | **string** | GCP service account email | 
+**GcpSaEmail** | Pointer to **string** | GCP service account email | [optional] 
 **GcpTokenScopes** | Pointer to **string** | Access token scopes list, e.g. scope1,scope2 | [optional] 
 **Name** | **string** | Producer name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
+**TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserTtl** | Pointer to **string** | User TTL | [optional] [default to "60m"]
@@ -21,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewGatewayCreateProducerGcp
 
-`func NewGatewayCreateProducerGcp(gcpCredType string, gcpSaEmail string, name string, ) *GatewayCreateProducerGcp`
+`func NewGatewayCreateProducerGcp(name string, ) *GatewayCreateProducerGcp`
 
 NewGatewayCreateProducerGcp instantiates a new GatewayCreateProducerGcp object
 This constructor will assign default values to properties that have it defined,
@@ -55,6 +56,11 @@ and a boolean to check if the value has been set.
 
 SetGcpCredType sets GcpCredType field to given value.
 
+### HasGcpCredType
+
+`func (o *GatewayCreateProducerGcp) HasGcpCredType() bool`
+
+HasGcpCredType returns a boolean if a field has been set.
 
 ### GetGcpKey
 
@@ -125,6 +131,11 @@ and a boolean to check if the value has been set.
 
 SetGcpSaEmail sets GcpSaEmail field to given value.
 
+### HasGcpSaEmail
+
+`func (o *GatewayCreateProducerGcp) HasGcpSaEmail() bool`
+
+HasGcpSaEmail returns a boolean if a field has been set.
 
 ### GetGcpTokenScopes
 
@@ -220,6 +231,31 @@ SetProducerEncryptionKeyName sets ProducerEncryptionKeyName field to given value
 `func (o *GatewayCreateProducerGcp) HasProducerEncryptionKeyName() bool`
 
 HasProducerEncryptionKeyName returns a boolean if a field has been set.
+
+### GetTargetName
+
+`func (o *GatewayCreateProducerGcp) GetTargetName() string`
+
+GetTargetName returns the TargetName field if non-nil, zero value otherwise.
+
+### GetTargetNameOk
+
+`func (o *GatewayCreateProducerGcp) GetTargetNameOk() (*string, bool)`
+
+GetTargetNameOk returns a tuple with the TargetName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetName
+
+`func (o *GatewayCreateProducerGcp) SetTargetName(v string)`
+
+SetTargetName sets TargetName field to given value.
+
+### HasTargetName
+
+`func (o *GatewayCreateProducerGcp) HasTargetName() bool`
+
+HasTargetName returns a boolean if a field has been set.
 
 ### GetToken
 

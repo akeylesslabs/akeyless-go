@@ -4,14 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ArtifactoryAdminName** | **string** | Artifactory Admin Name | 
-**ArtifactoryAdminPwd** | **string** | Artifactory Admin password | 
+**ArtifactoryAdminName** | Pointer to **string** | Artifactory Admin Name | [optional] 
+**ArtifactoryAdminPwd** | Pointer to **string** | Artifactory Admin password | [optional] 
 **ArtifactoryTokenAudience** | **string** | Token Audience | 
 **ArtifactoryTokenScope** | **string** | Token Scope | 
-**BaseUrl** | **string** | Base URL | 
+**BaseUrl** | Pointer to **string** | Base URL | [optional] 
 **Name** | **string** | Producer name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
+**TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserTtl** | Pointer to **string** | User TTL | [optional] [default to "60m"]
@@ -21,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewGatewayCreateProducerArtifactory
 
-`func NewGatewayCreateProducerArtifactory(artifactoryAdminName string, artifactoryAdminPwd string, artifactoryTokenAudience string, artifactoryTokenScope string, baseUrl string, name string, ) *GatewayCreateProducerArtifactory`
+`func NewGatewayCreateProducerArtifactory(artifactoryTokenAudience string, artifactoryTokenScope string, name string, ) *GatewayCreateProducerArtifactory`
 
 NewGatewayCreateProducerArtifactory instantiates a new GatewayCreateProducerArtifactory object
 This constructor will assign default values to properties that have it defined,
@@ -55,6 +56,11 @@ and a boolean to check if the value has been set.
 
 SetArtifactoryAdminName sets ArtifactoryAdminName field to given value.
 
+### HasArtifactoryAdminName
+
+`func (o *GatewayCreateProducerArtifactory) HasArtifactoryAdminName() bool`
+
+HasArtifactoryAdminName returns a boolean if a field has been set.
 
 ### GetArtifactoryAdminPwd
 
@@ -75,6 +81,11 @@ and a boolean to check if the value has been set.
 
 SetArtifactoryAdminPwd sets ArtifactoryAdminPwd field to given value.
 
+### HasArtifactoryAdminPwd
+
+`func (o *GatewayCreateProducerArtifactory) HasArtifactoryAdminPwd() bool`
+
+HasArtifactoryAdminPwd returns a boolean if a field has been set.
 
 ### GetArtifactoryTokenAudience
 
@@ -135,6 +146,11 @@ and a boolean to check if the value has been set.
 
 SetBaseUrl sets BaseUrl field to given value.
 
+### HasBaseUrl
+
+`func (o *GatewayCreateProducerArtifactory) HasBaseUrl() bool`
+
+HasBaseUrl returns a boolean if a field has been set.
 
 ### GetName
 
@@ -205,6 +221,31 @@ SetProducerEncryptionKeyName sets ProducerEncryptionKeyName field to given value
 `func (o *GatewayCreateProducerArtifactory) HasProducerEncryptionKeyName() bool`
 
 HasProducerEncryptionKeyName returns a boolean if a field has been set.
+
+### GetTargetName
+
+`func (o *GatewayCreateProducerArtifactory) GetTargetName() string`
+
+GetTargetName returns the TargetName field if non-nil, zero value otherwise.
+
+### GetTargetNameOk
+
+`func (o *GatewayCreateProducerArtifactory) GetTargetNameOk() (*string, bool)`
+
+GetTargetNameOk returns a tuple with the TargetName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetName
+
+`func (o *GatewayCreateProducerArtifactory) SetTargetName(v string)`
+
+SetTargetName sets TargetName field to given value.
+
+### HasTargetName
+
+`func (o *GatewayCreateProducerArtifactory) HasTargetName() bool`
+
+HasTargetName returns a boolean if a field has been set.
 
 ### GetToken
 

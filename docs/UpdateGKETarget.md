@@ -6,10 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Comment** | Pointer to **string** | Comment about the target | [optional] 
 **GkeAccountKey** | Pointer to **string** | GKE Service Account key file path | [optional] 
-**GkeClusterCert** | **string** | GKE cluster CA certificate | 
-**GkeClusterEndpoint** | **string** | GKE cluster URL endpoint | 
+**GkeClusterCert** | Pointer to **string** | GKE cluster CA certificate | [optional] 
+**GkeClusterEndpoint** | Pointer to **string** | GKE cluster URL endpoint | [optional] 
 **GkeClusterName** | **string** | GKE cluster name | 
-**GkeServiceAccountEmail** | **string** | GKE service account email | 
+**GkeServiceAccountEmail** | Pointer to **string** | GKE service account email | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Target name | 
 **NewName** | Pointer to **string** | New target name | [optional] 
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 
 ### NewUpdateGKETarget
 
-`func NewUpdateGKETarget(gkeClusterCert string, gkeClusterEndpoint string, gkeClusterName string, gkeServiceAccountEmail string, name string, ) *UpdateGKETarget`
+`func NewUpdateGKETarget(gkeClusterName string, name string, ) *UpdateGKETarget`
 
 NewUpdateGKETarget instantiates a new UpdateGKETarget object
 This constructor will assign default values to properties that have it defined,
@@ -107,6 +107,11 @@ and a boolean to check if the value has been set.
 
 SetGkeClusterCert sets GkeClusterCert field to given value.
 
+### HasGkeClusterCert
+
+`func (o *UpdateGKETarget) HasGkeClusterCert() bool`
+
+HasGkeClusterCert returns a boolean if a field has been set.
 
 ### GetGkeClusterEndpoint
 
@@ -127,6 +132,11 @@ and a boolean to check if the value has been set.
 
 SetGkeClusterEndpoint sets GkeClusterEndpoint field to given value.
 
+### HasGkeClusterEndpoint
+
+`func (o *UpdateGKETarget) HasGkeClusterEndpoint() bool`
+
+HasGkeClusterEndpoint returns a boolean if a field has been set.
 
 ### GetGkeClusterName
 
@@ -167,6 +177,11 @@ and a boolean to check if the value has been set.
 
 SetGkeServiceAccountEmail sets GkeServiceAccountEmail field to given value.
 
+### HasGkeServiceAccountEmail
+
+`func (o *UpdateGKETarget) HasGkeServiceAccountEmail() bool`
+
+HasGkeServiceAccountEmail returns a boolean if a field has been set.
 
 ### GetKey
 

@@ -30,14 +30,16 @@ type GatewayCreateProducerRdp struct {
 	// RDP Admin password
 	RdpAdminPwd string `json:"rdp-admin-pwd"`
 	// Hostname
-	RdpHostName string `json:"rdp-host-name"`
+	RdpHostName *string `json:"rdp-host-name,omitempty"`
 	// Port
 	RdpHostPort *string `json:"rdp-host-port,omitempty"`
 	// Groups
-	RdpUserGroups string `json:"rdp-user-groups"`
+	RdpUserGroups *string `json:"rdp-user-groups,omitempty"`
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
 	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
 	SecureAccessRdpDomain *string `json:"secure-access-rdp-domain,omitempty"`
+	// Target name
+	TargetName *string `json:"target-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -52,17 +54,15 @@ type GatewayCreateProducerRdp struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayCreateProducerRdp(name string, rdpAdminName string, rdpAdminPwd string, rdpHostName string, rdpUserGroups string, ) *GatewayCreateProducerRdp {
+func NewGatewayCreateProducerRdp(name string, rdpAdminName string, rdpAdminPwd string, ) *GatewayCreateProducerRdp {
 	this := GatewayCreateProducerRdp{}
 	var fixedUserOnly string = "false"
 	this.FixedUserOnly = &fixedUserOnly
 	this.Name = name
 	this.RdpAdminName = rdpAdminName
 	this.RdpAdminPwd = rdpAdminPwd
-	this.RdpHostName = rdpHostName
 	var rdpHostPort string = "22"
 	this.RdpHostPort = &rdpHostPort
-	this.RdpUserGroups = rdpUserGroups
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
@@ -250,28 +250,36 @@ func (o *GatewayCreateProducerRdp) SetRdpAdminPwd(v string) {
 	o.RdpAdminPwd = v
 }
 
-// GetRdpHostName returns the RdpHostName field value
+// GetRdpHostName returns the RdpHostName field value if set, zero value otherwise.
 func (o *GatewayCreateProducerRdp) GetRdpHostName() string {
-	if o == nil  {
+	if o == nil || o.RdpHostName == nil {
 		var ret string
 		return ret
 	}
-
-	return o.RdpHostName
+	return *o.RdpHostName
 }
 
-// GetRdpHostNameOk returns a tuple with the RdpHostName field value
+// GetRdpHostNameOk returns a tuple with the RdpHostName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerRdp) GetRdpHostNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.RdpHostName == nil {
 		return nil, false
 	}
-	return &o.RdpHostName, true
+	return o.RdpHostName, true
 }
 
-// SetRdpHostName sets field value
+// HasRdpHostName returns a boolean if a field has been set.
+func (o *GatewayCreateProducerRdp) HasRdpHostName() bool {
+	if o != nil && o.RdpHostName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRdpHostName gets a reference to the given string and assigns it to the RdpHostName field.
 func (o *GatewayCreateProducerRdp) SetRdpHostName(v string) {
-	o.RdpHostName = v
+	o.RdpHostName = &v
 }
 
 // GetRdpHostPort returns the RdpHostPort field value if set, zero value otherwise.
@@ -306,28 +314,36 @@ func (o *GatewayCreateProducerRdp) SetRdpHostPort(v string) {
 	o.RdpHostPort = &v
 }
 
-// GetRdpUserGroups returns the RdpUserGroups field value
+// GetRdpUserGroups returns the RdpUserGroups field value if set, zero value otherwise.
 func (o *GatewayCreateProducerRdp) GetRdpUserGroups() string {
-	if o == nil  {
+	if o == nil || o.RdpUserGroups == nil {
 		var ret string
 		return ret
 	}
-
-	return o.RdpUserGroups
+	return *o.RdpUserGroups
 }
 
-// GetRdpUserGroupsOk returns a tuple with the RdpUserGroups field value
+// GetRdpUserGroupsOk returns a tuple with the RdpUserGroups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerRdp) GetRdpUserGroupsOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.RdpUserGroups == nil {
 		return nil, false
 	}
-	return &o.RdpUserGroups, true
+	return o.RdpUserGroups, true
 }
 
-// SetRdpUserGroups sets field value
+// HasRdpUserGroups returns a boolean if a field has been set.
+func (o *GatewayCreateProducerRdp) HasRdpUserGroups() bool {
+	if o != nil && o.RdpUserGroups != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRdpUserGroups gets a reference to the given string and assigns it to the RdpUserGroups field.
 func (o *GatewayCreateProducerRdp) SetRdpUserGroups(v string) {
-	o.RdpUserGroups = v
+	o.RdpUserGroups = &v
 }
 
 // GetSecureAccessEnable returns the SecureAccessEnable field value if set, zero value otherwise.
@@ -424,6 +440,38 @@ func (o *GatewayCreateProducerRdp) HasSecureAccessRdpDomain() bool {
 // SetSecureAccessRdpDomain gets a reference to the given string and assigns it to the SecureAccessRdpDomain field.
 func (o *GatewayCreateProducerRdp) SetSecureAccessRdpDomain(v string) {
 	o.SecureAccessRdpDomain = &v
+}
+
+// GetTargetName returns the TargetName field value if set, zero value otherwise.
+func (o *GatewayCreateProducerRdp) GetTargetName() string {
+	if o == nil || o.TargetName == nil {
+		var ret string
+		return ret
+	}
+	return *o.TargetName
+}
+
+// GetTargetNameOk returns a tuple with the TargetName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerRdp) GetTargetNameOk() (*string, bool) {
+	if o == nil || o.TargetName == nil {
+		return nil, false
+	}
+	return o.TargetName, true
+}
+
+// HasTargetName returns a boolean if a field has been set.
+func (o *GatewayCreateProducerRdp) HasTargetName() bool {
+	if o != nil && o.TargetName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetName gets a reference to the given string and assigns it to the TargetName field.
+func (o *GatewayCreateProducerRdp) SetTargetName(v string) {
+	o.TargetName = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -574,13 +622,13 @@ func (o GatewayCreateProducerRdp) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["rdp-admin-pwd"] = o.RdpAdminPwd
 	}
-	if true {
+	if o.RdpHostName != nil {
 		toSerialize["rdp-host-name"] = o.RdpHostName
 	}
 	if o.RdpHostPort != nil {
 		toSerialize["rdp-host-port"] = o.RdpHostPort
 	}
-	if true {
+	if o.RdpUserGroups != nil {
 		toSerialize["rdp-user-groups"] = o.RdpUserGroups
 	}
 	if o.SecureAccessEnable != nil {
@@ -591,6 +639,9 @@ func (o GatewayCreateProducerRdp) MarshalJSON() ([]byte, error) {
 	}
 	if o.SecureAccessRdpDomain != nil {
 		toSerialize["secure-access-rdp-domain"] = o.SecureAccessRdpDomain
+	}
+	if o.TargetName != nil {
+		toSerialize["target-name"] = o.TargetName
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

@@ -21,9 +21,9 @@ type GatewayCreateProducerAws struct {
 	// Admin credentials rotation interval (days)
 	AdminRotationIntervalDays *int64 `json:"admin-rotation-interval-days,omitempty"`
 	// Access Key ID
-	AwsAccessKeyId string `json:"aws-access-key-id"`
+	AwsAccessKeyId *string `json:"aws-access-key-id,omitempty"`
 	// Secret Access Key
-	AwsAccessSecretKey string `json:"aws-access-secret-key"`
+	AwsAccessSecretKey *string `json:"aws-access-secret-key,omitempty"`
 	// AWS Role ARNs to be used in the Assume Role operation (relevant only for assume_role mode)
 	AwsRoleArns *string `json:"aws-role-arns,omitempty"`
 	// AWS User console access
@@ -49,6 +49,8 @@ type GatewayCreateProducerAws struct {
 	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
+	// Target name
+	TargetName *string `json:"target-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -63,12 +65,10 @@ type GatewayCreateProducerAws struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayCreateProducerAws(awsAccessKeyId string, awsAccessSecretKey string, name string, ) *GatewayCreateProducerAws {
+func NewGatewayCreateProducerAws(name string, ) *GatewayCreateProducerAws {
 	this := GatewayCreateProducerAws{}
 	var adminRotationIntervalDays int64 = 0
 	this.AdminRotationIntervalDays = &adminRotationIntervalDays
-	this.AwsAccessKeyId = awsAccessKeyId
-	this.AwsAccessSecretKey = awsAccessSecretKey
 	var awsUserConsoleAccess bool = false
 	this.AwsUserConsoleAccess = &awsUserConsoleAccess
 	var awsUserProgrammaticAccess bool = true
@@ -167,52 +167,68 @@ func (o *GatewayCreateProducerAws) SetAdminRotationIntervalDays(v int64) {
 	o.AdminRotationIntervalDays = &v
 }
 
-// GetAwsAccessKeyId returns the AwsAccessKeyId field value
+// GetAwsAccessKeyId returns the AwsAccessKeyId field value if set, zero value otherwise.
 func (o *GatewayCreateProducerAws) GetAwsAccessKeyId() string {
-	if o == nil  {
+	if o == nil || o.AwsAccessKeyId == nil {
 		var ret string
 		return ret
 	}
-
-	return o.AwsAccessKeyId
+	return *o.AwsAccessKeyId
 }
 
-// GetAwsAccessKeyIdOk returns a tuple with the AwsAccessKeyId field value
+// GetAwsAccessKeyIdOk returns a tuple with the AwsAccessKeyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerAws) GetAwsAccessKeyIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.AwsAccessKeyId == nil {
 		return nil, false
 	}
-	return &o.AwsAccessKeyId, true
+	return o.AwsAccessKeyId, true
 }
 
-// SetAwsAccessKeyId sets field value
+// HasAwsAccessKeyId returns a boolean if a field has been set.
+func (o *GatewayCreateProducerAws) HasAwsAccessKeyId() bool {
+	if o != nil && o.AwsAccessKeyId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsAccessKeyId gets a reference to the given string and assigns it to the AwsAccessKeyId field.
 func (o *GatewayCreateProducerAws) SetAwsAccessKeyId(v string) {
-	o.AwsAccessKeyId = v
+	o.AwsAccessKeyId = &v
 }
 
-// GetAwsAccessSecretKey returns the AwsAccessSecretKey field value
+// GetAwsAccessSecretKey returns the AwsAccessSecretKey field value if set, zero value otherwise.
 func (o *GatewayCreateProducerAws) GetAwsAccessSecretKey() string {
-	if o == nil  {
+	if o == nil || o.AwsAccessSecretKey == nil {
 		var ret string
 		return ret
 	}
-
-	return o.AwsAccessSecretKey
+	return *o.AwsAccessSecretKey
 }
 
-// GetAwsAccessSecretKeyOk returns a tuple with the AwsAccessSecretKey field value
+// GetAwsAccessSecretKeyOk returns a tuple with the AwsAccessSecretKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerAws) GetAwsAccessSecretKeyOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.AwsAccessSecretKey == nil {
 		return nil, false
 	}
-	return &o.AwsAccessSecretKey, true
+	return o.AwsAccessSecretKey, true
 }
 
-// SetAwsAccessSecretKey sets field value
+// HasAwsAccessSecretKey returns a boolean if a field has been set.
+func (o *GatewayCreateProducerAws) HasAwsAccessSecretKey() bool {
+	if o != nil && o.AwsAccessSecretKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsAccessSecretKey gets a reference to the given string and assigns it to the AwsAccessSecretKey field.
 func (o *GatewayCreateProducerAws) SetAwsAccessSecretKey(v string) {
-	o.AwsAccessSecretKey = v
+	o.AwsAccessSecretKey = &v
 }
 
 // GetAwsRoleArns returns the AwsRoleArns field value if set, zero value otherwise.
@@ -687,6 +703,38 @@ func (o *GatewayCreateProducerAws) SetSecureAccessWebBrowsing(v bool) {
 	o.SecureAccessWebBrowsing = &v
 }
 
+// GetTargetName returns the TargetName field value if set, zero value otherwise.
+func (o *GatewayCreateProducerAws) GetTargetName() string {
+	if o == nil || o.TargetName == nil {
+		var ret string
+		return ret
+	}
+	return *o.TargetName
+}
+
+// GetTargetNameOk returns a tuple with the TargetName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerAws) GetTargetNameOk() (*string, bool) {
+	if o == nil || o.TargetName == nil {
+		return nil, false
+	}
+	return o.TargetName, true
+}
+
+// HasTargetName returns a boolean if a field has been set.
+func (o *GatewayCreateProducerAws) HasTargetName() bool {
+	if o != nil && o.TargetName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetName gets a reference to the given string and assigns it to the TargetName field.
+func (o *GatewayCreateProducerAws) SetTargetName(v string) {
+	o.TargetName = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *GatewayCreateProducerAws) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -823,10 +871,10 @@ func (o GatewayCreateProducerAws) MarshalJSON() ([]byte, error) {
 	if o.AdminRotationIntervalDays != nil {
 		toSerialize["admin-rotation-interval-days"] = o.AdminRotationIntervalDays
 	}
-	if true {
+	if o.AwsAccessKeyId != nil {
 		toSerialize["aws-access-key-id"] = o.AwsAccessKeyId
 	}
-	if true {
+	if o.AwsAccessSecretKey != nil {
 		toSerialize["aws-access-secret-key"] = o.AwsAccessSecretKey
 	}
 	if o.AwsRoleArns != nil {
@@ -873,6 +921,9 @@ func (o GatewayCreateProducerAws) MarshalJSON() ([]byte, error) {
 	}
 	if o.SecureAccessWebBrowsing != nil {
 		toSerialize["secure-access-web-browsing"] = o.SecureAccessWebBrowsing
+	}
+	if o.TargetName != nil {
+		toSerialize["target-name"] = o.TargetName
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

@@ -41,6 +41,8 @@ type GatewayCreateProducerCertificateAutomation struct {
 	SignerKeyName *string `json:"signer-key-name,omitempty"`
 	// Store private key
 	StorePrivateKey *bool `json:"store-private-key,omitempty"`
+	// Target name
+	TargetName *string `json:"target-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -60,21 +62,20 @@ type GatewayCreateProducerCertificateAutomation struct {
 	// Venafi Username
 	VenafiUsername *string `json:"venafi-username,omitempty"`
 	// Venafi Zone
-	VenafiZone string `json:"venafi-zone"`
+	VenafiZone *string `json:"venafi-zone,omitempty"`
 }
 
 // NewGatewayCreateProducerCertificateAutomation instantiates a new GatewayCreateProducerCertificateAutomation object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayCreateProducerCertificateAutomation(name string, venafiZone string, ) *GatewayCreateProducerCertificateAutomation {
+func NewGatewayCreateProducerCertificateAutomation(name string, ) *GatewayCreateProducerCertificateAutomation {
 	this := GatewayCreateProducerCertificateAutomation{}
 	var adminRotationIntervalDays int64 = 0
 	this.AdminRotationIntervalDays = &adminRotationIntervalDays
 	var enableAdminRotation bool = false
 	this.EnableAdminRotation = &enableAdminRotation
 	this.Name = name
-	this.VenafiZone = venafiZone
 	return &this
 }
 
@@ -466,6 +467,38 @@ func (o *GatewayCreateProducerCertificateAutomation) SetStorePrivateKey(v bool) 
 	o.StorePrivateKey = &v
 }
 
+// GetTargetName returns the TargetName field value if set, zero value otherwise.
+func (o *GatewayCreateProducerCertificateAutomation) GetTargetName() string {
+	if o == nil || o.TargetName == nil {
+		var ret string
+		return ret
+	}
+	return *o.TargetName
+}
+
+// GetTargetNameOk returns a tuple with the TargetName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerCertificateAutomation) GetTargetNameOk() (*string, bool) {
+	if o == nil || o.TargetName == nil {
+		return nil, false
+	}
+	return o.TargetName, true
+}
+
+// HasTargetName returns a boolean if a field has been set.
+func (o *GatewayCreateProducerCertificateAutomation) HasTargetName() bool {
+	if o != nil && o.TargetName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetName gets a reference to the given string and assigns it to the TargetName field.
+func (o *GatewayCreateProducerCertificateAutomation) SetTargetName(v string) {
+	o.TargetName = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *GatewayCreateProducerCertificateAutomation) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -754,28 +787,36 @@ func (o *GatewayCreateProducerCertificateAutomation) SetVenafiUsername(v string)
 	o.VenafiUsername = &v
 }
 
-// GetVenafiZone returns the VenafiZone field value
+// GetVenafiZone returns the VenafiZone field value if set, zero value otherwise.
 func (o *GatewayCreateProducerCertificateAutomation) GetVenafiZone() string {
-	if o == nil  {
+	if o == nil || o.VenafiZone == nil {
 		var ret string
 		return ret
 	}
-
-	return o.VenafiZone
+	return *o.VenafiZone
 }
 
-// GetVenafiZoneOk returns a tuple with the VenafiZone field value
+// GetVenafiZoneOk returns a tuple with the VenafiZone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerCertificateAutomation) GetVenafiZoneOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.VenafiZone == nil {
 		return nil, false
 	}
-	return &o.VenafiZone, true
+	return o.VenafiZone, true
 }
 
-// SetVenafiZone sets field value
+// HasVenafiZone returns a boolean if a field has been set.
+func (o *GatewayCreateProducerCertificateAutomation) HasVenafiZone() bool {
+	if o != nil && o.VenafiZone != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVenafiZone gets a reference to the given string and assigns it to the VenafiZone field.
 func (o *GatewayCreateProducerCertificateAutomation) SetVenafiZone(v string) {
-	o.VenafiZone = v
+	o.VenafiZone = &v
 }
 
 func (o GatewayCreateProducerCertificateAutomation) MarshalJSON() ([]byte, error) {
@@ -816,6 +857,9 @@ func (o GatewayCreateProducerCertificateAutomation) MarshalJSON() ([]byte, error
 	if o.StorePrivateKey != nil {
 		toSerialize["store-private-key"] = o.StorePrivateKey
 	}
+	if o.TargetName != nil {
+		toSerialize["target-name"] = o.TargetName
+	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
 	}
@@ -843,7 +887,7 @@ func (o GatewayCreateProducerCertificateAutomation) MarshalJSON() ([]byte, error
 	if o.VenafiUsername != nil {
 		toSerialize["venafi-username"] = o.VenafiUsername
 	}
-	if true {
+	if o.VenafiZone != nil {
 		toSerialize["venafi-zone"] = o.VenafiZone
 	}
 	return json.Marshal(toSerialize)

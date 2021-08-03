@@ -12040,7 +12040,7 @@ func (r ApiSignJWTWithClassicKeyRequest) Body(body SignJWTWithClassicKey) ApiSig
 	return r
 }
 
-func (r ApiSignJWTWithClassicKeyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiSignJWTWithClassicKeyRequest) Execute() (SignJWTOutput, *_nethttp.Response, error) {
 	return r.ApiService.SignJWTWithClassicKeyExecute(r)
 }
 
@@ -12058,19 +12058,21 @@ func (a *V2ApiService) SignJWTWithClassicKey(ctx _context.Context) ApiSignJWTWit
 
 /*
  * Execute executes the request
+ * @return SignJWTOutput
  */
-func (a *V2ApiService) SignJWTWithClassicKeyExecute(r ApiSignJWTWithClassicKeyRequest) (*_nethttp.Response, error) {
+func (a *V2ApiService) SignJWTWithClassicKeyExecute(r ApiSignJWTWithClassicKeyRequest) (SignJWTOutput, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  SignJWTOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.SignJWTWithClassicKey")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sign-jwt-with-classic-key"
@@ -12079,7 +12081,7 @@ func (a *V2ApiService) SignJWTWithClassicKeyExecute(r ApiSignJWTWithClassicKeyRe
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 	if r.body == nil {
-		return nil, reportError("body is required and must be specified")
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -12103,18 +12105,18 @@ func (a *V2ApiService) SignJWTWithClassicKeyExecute(r ApiSignJWTWithClassicKeyRe
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -12126,13 +12128,22 @@ func (a *V2ApiService) SignJWTWithClassicKeyExecute(r ApiSignJWTWithClassicKeyRe
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiSignPKCS1Request struct {
@@ -12263,7 +12274,7 @@ func (r ApiSignPKICertWithClassicKeyRequest) Body(body SignPKICertWithClassicKey
 	return r
 }
 
-func (r ApiSignPKICertWithClassicKeyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiSignPKICertWithClassicKeyRequest) Execute() (SignPKICertOutput, *_nethttp.Response, error) {
 	return r.ApiService.SignPKICertWithClassicKeyExecute(r)
 }
 
@@ -12281,19 +12292,21 @@ func (a *V2ApiService) SignPKICertWithClassicKey(ctx _context.Context) ApiSignPK
 
 /*
  * Execute executes the request
+ * @return SignPKICertOutput
  */
-func (a *V2ApiService) SignPKICertWithClassicKeyExecute(r ApiSignPKICertWithClassicKeyRequest) (*_nethttp.Response, error) {
+func (a *V2ApiService) SignPKICertWithClassicKeyExecute(r ApiSignPKICertWithClassicKeyRequest) (SignPKICertOutput, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  SignPKICertOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.SignPKICertWithClassicKey")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sign-pki-cert-with-classic-key"
@@ -12302,7 +12315,7 @@ func (a *V2ApiService) SignPKICertWithClassicKeyExecute(r ApiSignPKICertWithClas
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 	if r.body == nil {
-		return nil, reportError("body is required and must be specified")
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -12326,18 +12339,18 @@ func (a *V2ApiService) SignPKICertWithClassicKeyExecute(r ApiSignPKICertWithClas
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -12349,13 +12362,22 @@ func (a *V2ApiService) SignPKICertWithClassicKeyExecute(r ApiSignPKICertWithClas
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiStaticCredsAuthRequest struct {
@@ -15986,7 +16008,7 @@ func (r ApiVerifyJWTWithClassicKeyRequest) Body(body VerifyJWTWithClassicKey) Ap
 	return r
 }
 
-func (r ApiVerifyJWTWithClassicKeyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiVerifyJWTWithClassicKeyRequest) Execute() (VerifyJWTOutput, *_nethttp.Response, error) {
 	return r.ApiService.VerifyJWTWithClassicKeyExecute(r)
 }
 
@@ -16004,19 +16026,21 @@ func (a *V2ApiService) VerifyJWTWithClassicKey(ctx _context.Context) ApiVerifyJW
 
 /*
  * Execute executes the request
+ * @return VerifyJWTOutput
  */
-func (a *V2ApiService) VerifyJWTWithClassicKeyExecute(r ApiVerifyJWTWithClassicKeyRequest) (*_nethttp.Response, error) {
+func (a *V2ApiService) VerifyJWTWithClassicKeyExecute(r ApiVerifyJWTWithClassicKeyRequest) (VerifyJWTOutput, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  VerifyJWTOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.VerifyJWTWithClassicKey")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/verify-jwt-with-classic-key"
@@ -16025,7 +16049,7 @@ func (a *V2ApiService) VerifyJWTWithClassicKeyExecute(r ApiVerifyJWTWithClassicK
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 	if r.body == nil {
-		return nil, reportError("body is required and must be specified")
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -16049,18 +16073,18 @@ func (a *V2ApiService) VerifyJWTWithClassicKeyExecute(r ApiVerifyJWTWithClassicK
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -16072,13 +16096,22 @@ func (a *V2ApiService) VerifyJWTWithClassicKeyExecute(r ApiVerifyJWTWithClassicK
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiVerifyPKCS1Request struct {
@@ -16209,7 +16242,7 @@ func (r ApiVerifyPKICertWithClassicKeyRequest) Body(body VerifyPKICertWithClassi
 	return r
 }
 
-func (r ApiVerifyPKICertWithClassicKeyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiVerifyPKICertWithClassicKeyRequest) Execute() (VerifyPKICertOutput, *_nethttp.Response, error) {
 	return r.ApiService.VerifyPKICertWithClassicKeyExecute(r)
 }
 
@@ -16227,19 +16260,21 @@ func (a *V2ApiService) VerifyPKICertWithClassicKey(ctx _context.Context) ApiVeri
 
 /*
  * Execute executes the request
+ * @return VerifyPKICertOutput
  */
-func (a *V2ApiService) VerifyPKICertWithClassicKeyExecute(r ApiVerifyPKICertWithClassicKeyRequest) (*_nethttp.Response, error) {
+func (a *V2ApiService) VerifyPKICertWithClassicKeyExecute(r ApiVerifyPKICertWithClassicKeyRequest) (VerifyPKICertOutput, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  VerifyPKICertOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.VerifyPKICertWithClassicKey")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/verify-pki-cert-with-classic-key"
@@ -16248,7 +16283,7 @@ func (a *V2ApiService) VerifyPKICertWithClassicKeyExecute(r ApiVerifyPKICertWith
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 	if r.body == nil {
-		return nil, reportError("body is required and must be specified")
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -16272,18 +16307,18 @@ func (a *V2ApiService) VerifyPKICertWithClassicKeyExecute(r ApiVerifyPKICertWith
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -16295,11 +16330,20 @@ func (a *V2ApiService) VerifyPKICertWithClassicKeyExecute(r ApiVerifyPKICertWith
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

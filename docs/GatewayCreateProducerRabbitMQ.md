@@ -7,17 +7,18 @@ Name | Type | Description | Notes
 **Name** | **string** | Producer name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
-**RabbitmqAdminPwd** | **string** | RabbitMQ Admin password | 
-**RabbitmqAdminUser** | **string** | RabbitMQ Admin User | 
-**RabbitmqServerUri** | **string** | Server URI | 
-**RabbitmqUserConfPermission** | **string** | User configuration permission | 
-**RabbitmqUserReadPermission** | **string** | User read permission | 
+**RabbitmqAdminPwd** | Pointer to **string** | RabbitMQ Admin password | [optional] 
+**RabbitmqAdminUser** | Pointer to **string** | RabbitMQ Admin User | [optional] 
+**RabbitmqServerUri** | Pointer to **string** | Server URI | [optional] 
+**RabbitmqUserConfPermission** | Pointer to **string** | User configuration permission | [optional] 
+**RabbitmqUserReadPermission** | Pointer to **string** | User read permission | [optional] 
 **RabbitmqUserTags** | Pointer to **string** | User Tags | [optional] 
 **RabbitmqUserVhost** | Pointer to **string** | User Virtual Host | [optional] 
-**RabbitmqUserWritePermission** | **string** | User write permission | 
+**RabbitmqUserWritePermission** | Pointer to **string** | User write permission | [optional] 
 **SecureAccessEnable** | Pointer to **string** |  | [optional] 
 **SecureAccessUrl** | Pointer to **string** |  | [optional] 
 **SecureAccessWebBrowsing** | Pointer to **bool** |  | [optional] 
+**TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserTtl** | Pointer to **string** | User TTL | [optional] [default to "60m"]
@@ -27,7 +28,7 @@ Name | Type | Description | Notes
 
 ### NewGatewayCreateProducerRabbitMQ
 
-`func NewGatewayCreateProducerRabbitMQ(name string, rabbitmqAdminPwd string, rabbitmqAdminUser string, rabbitmqServerUri string, rabbitmqUserConfPermission string, rabbitmqUserReadPermission string, rabbitmqUserWritePermission string, ) *GatewayCreateProducerRabbitMQ`
+`func NewGatewayCreateProducerRabbitMQ(name string, ) *GatewayCreateProducerRabbitMQ`
 
 NewGatewayCreateProducerRabbitMQ instantiates a new GatewayCreateProducerRabbitMQ object
 This constructor will assign default values to properties that have it defined,
@@ -131,6 +132,11 @@ and a boolean to check if the value has been set.
 
 SetRabbitmqAdminPwd sets RabbitmqAdminPwd field to given value.
 
+### HasRabbitmqAdminPwd
+
+`func (o *GatewayCreateProducerRabbitMQ) HasRabbitmqAdminPwd() bool`
+
+HasRabbitmqAdminPwd returns a boolean if a field has been set.
 
 ### GetRabbitmqAdminUser
 
@@ -151,6 +157,11 @@ and a boolean to check if the value has been set.
 
 SetRabbitmqAdminUser sets RabbitmqAdminUser field to given value.
 
+### HasRabbitmqAdminUser
+
+`func (o *GatewayCreateProducerRabbitMQ) HasRabbitmqAdminUser() bool`
+
+HasRabbitmqAdminUser returns a boolean if a field has been set.
 
 ### GetRabbitmqServerUri
 
@@ -171,6 +182,11 @@ and a boolean to check if the value has been set.
 
 SetRabbitmqServerUri sets RabbitmqServerUri field to given value.
 
+### HasRabbitmqServerUri
+
+`func (o *GatewayCreateProducerRabbitMQ) HasRabbitmqServerUri() bool`
+
+HasRabbitmqServerUri returns a boolean if a field has been set.
 
 ### GetRabbitmqUserConfPermission
 
@@ -191,6 +207,11 @@ and a boolean to check if the value has been set.
 
 SetRabbitmqUserConfPermission sets RabbitmqUserConfPermission field to given value.
 
+### HasRabbitmqUserConfPermission
+
+`func (o *GatewayCreateProducerRabbitMQ) HasRabbitmqUserConfPermission() bool`
+
+HasRabbitmqUserConfPermission returns a boolean if a field has been set.
 
 ### GetRabbitmqUserReadPermission
 
@@ -211,6 +232,11 @@ and a boolean to check if the value has been set.
 
 SetRabbitmqUserReadPermission sets RabbitmqUserReadPermission field to given value.
 
+### HasRabbitmqUserReadPermission
+
+`func (o *GatewayCreateProducerRabbitMQ) HasRabbitmqUserReadPermission() bool`
+
+HasRabbitmqUserReadPermission returns a boolean if a field has been set.
 
 ### GetRabbitmqUserTags
 
@@ -281,6 +307,11 @@ and a boolean to check if the value has been set.
 
 SetRabbitmqUserWritePermission sets RabbitmqUserWritePermission field to given value.
 
+### HasRabbitmqUserWritePermission
+
+`func (o *GatewayCreateProducerRabbitMQ) HasRabbitmqUserWritePermission() bool`
+
+HasRabbitmqUserWritePermission returns a boolean if a field has been set.
 
 ### GetSecureAccessEnable
 
@@ -356,6 +387,31 @@ SetSecureAccessWebBrowsing sets SecureAccessWebBrowsing field to given value.
 `func (o *GatewayCreateProducerRabbitMQ) HasSecureAccessWebBrowsing() bool`
 
 HasSecureAccessWebBrowsing returns a boolean if a field has been set.
+
+### GetTargetName
+
+`func (o *GatewayCreateProducerRabbitMQ) GetTargetName() string`
+
+GetTargetName returns the TargetName field if non-nil, zero value otherwise.
+
+### GetTargetNameOk
+
+`func (o *GatewayCreateProducerRabbitMQ) GetTargetNameOk() (*string, bool)`
+
+GetTargetNameOk returns a tuple with the TargetName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetName
+
+`func (o *GatewayCreateProducerRabbitMQ) SetTargetName(v string)`
+
+SetTargetName sets TargetName field to given value.
+
+### HasTargetName
+
+`func (o *GatewayCreateProducerRabbitMQ) HasTargetName() bool`
+
+HasTargetName returns a boolean if a field has been set.
 
 ### GetToken
 

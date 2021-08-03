@@ -18,13 +18,13 @@ import (
 // GatewayCreateProducerChef gatewayCreateProducerChef is a command that creates chef producer
 type GatewayCreateProducerChef struct {
 	// Organizations
-	ChefOrgs string `json:"chef-orgs"`
+	ChefOrgs *string `json:"chef-orgs,omitempty"`
 	// Server key
-	ChefServerKey string `json:"chef-server-key"`
+	ChefServerKey *string `json:"chef-server-key,omitempty"`
 	// Server URL
-	ChefServerUrl string `json:"chef-server-url"`
+	ChefServerUrl *string `json:"chef-server-url,omitempty"`
 	// Server username
-	ChefServerUsername string `json:"chef-server-username"`
+	ChefServerUsername *string `json:"chef-server-username,omitempty"`
 	// Producer name
 	Name string `json:"name"`
 	// Required only when the authentication process requires a username and password
@@ -33,6 +33,8 @@ type GatewayCreateProducerChef struct {
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
 	// Skip SSL
 	SkipSsl *bool `json:"skip-ssl,omitempty"`
+	// Target name
+	TargetName *string `json:"target-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -47,12 +49,8 @@ type GatewayCreateProducerChef struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayCreateProducerChef(chefOrgs string, chefServerKey string, chefServerUrl string, chefServerUsername string, name string, ) *GatewayCreateProducerChef {
+func NewGatewayCreateProducerChef(name string, ) *GatewayCreateProducerChef {
 	this := GatewayCreateProducerChef{}
-	this.ChefOrgs = chefOrgs
-	this.ChefServerKey = chefServerKey
-	this.ChefServerUrl = chefServerUrl
-	this.ChefServerUsername = chefServerUsername
 	this.Name = name
 	var skipSsl bool = true
 	this.SkipSsl = &skipSsl
@@ -73,100 +71,132 @@ func NewGatewayCreateProducerChefWithDefaults() *GatewayCreateProducerChef {
 	return &this
 }
 
-// GetChefOrgs returns the ChefOrgs field value
+// GetChefOrgs returns the ChefOrgs field value if set, zero value otherwise.
 func (o *GatewayCreateProducerChef) GetChefOrgs() string {
-	if o == nil  {
+	if o == nil || o.ChefOrgs == nil {
 		var ret string
 		return ret
 	}
-
-	return o.ChefOrgs
+	return *o.ChefOrgs
 }
 
-// GetChefOrgsOk returns a tuple with the ChefOrgs field value
+// GetChefOrgsOk returns a tuple with the ChefOrgs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerChef) GetChefOrgsOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.ChefOrgs == nil {
 		return nil, false
 	}
-	return &o.ChefOrgs, true
+	return o.ChefOrgs, true
 }
 
-// SetChefOrgs sets field value
+// HasChefOrgs returns a boolean if a field has been set.
+func (o *GatewayCreateProducerChef) HasChefOrgs() bool {
+	if o != nil && o.ChefOrgs != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetChefOrgs gets a reference to the given string and assigns it to the ChefOrgs field.
 func (o *GatewayCreateProducerChef) SetChefOrgs(v string) {
-	o.ChefOrgs = v
+	o.ChefOrgs = &v
 }
 
-// GetChefServerKey returns the ChefServerKey field value
+// GetChefServerKey returns the ChefServerKey field value if set, zero value otherwise.
 func (o *GatewayCreateProducerChef) GetChefServerKey() string {
-	if o == nil  {
+	if o == nil || o.ChefServerKey == nil {
 		var ret string
 		return ret
 	}
-
-	return o.ChefServerKey
+	return *o.ChefServerKey
 }
 
-// GetChefServerKeyOk returns a tuple with the ChefServerKey field value
+// GetChefServerKeyOk returns a tuple with the ChefServerKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerChef) GetChefServerKeyOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.ChefServerKey == nil {
 		return nil, false
 	}
-	return &o.ChefServerKey, true
+	return o.ChefServerKey, true
 }
 
-// SetChefServerKey sets field value
+// HasChefServerKey returns a boolean if a field has been set.
+func (o *GatewayCreateProducerChef) HasChefServerKey() bool {
+	if o != nil && o.ChefServerKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetChefServerKey gets a reference to the given string and assigns it to the ChefServerKey field.
 func (o *GatewayCreateProducerChef) SetChefServerKey(v string) {
-	o.ChefServerKey = v
+	o.ChefServerKey = &v
 }
 
-// GetChefServerUrl returns the ChefServerUrl field value
+// GetChefServerUrl returns the ChefServerUrl field value if set, zero value otherwise.
 func (o *GatewayCreateProducerChef) GetChefServerUrl() string {
-	if o == nil  {
+	if o == nil || o.ChefServerUrl == nil {
 		var ret string
 		return ret
 	}
-
-	return o.ChefServerUrl
+	return *o.ChefServerUrl
 }
 
-// GetChefServerUrlOk returns a tuple with the ChefServerUrl field value
+// GetChefServerUrlOk returns a tuple with the ChefServerUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerChef) GetChefServerUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.ChefServerUrl == nil {
 		return nil, false
 	}
-	return &o.ChefServerUrl, true
+	return o.ChefServerUrl, true
 }
 
-// SetChefServerUrl sets field value
+// HasChefServerUrl returns a boolean if a field has been set.
+func (o *GatewayCreateProducerChef) HasChefServerUrl() bool {
+	if o != nil && o.ChefServerUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetChefServerUrl gets a reference to the given string and assigns it to the ChefServerUrl field.
 func (o *GatewayCreateProducerChef) SetChefServerUrl(v string) {
-	o.ChefServerUrl = v
+	o.ChefServerUrl = &v
 }
 
-// GetChefServerUsername returns the ChefServerUsername field value
+// GetChefServerUsername returns the ChefServerUsername field value if set, zero value otherwise.
 func (o *GatewayCreateProducerChef) GetChefServerUsername() string {
-	if o == nil  {
+	if o == nil || o.ChefServerUsername == nil {
 		var ret string
 		return ret
 	}
-
-	return o.ChefServerUsername
+	return *o.ChefServerUsername
 }
 
-// GetChefServerUsernameOk returns a tuple with the ChefServerUsername field value
+// GetChefServerUsernameOk returns a tuple with the ChefServerUsername field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerChef) GetChefServerUsernameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.ChefServerUsername == nil {
 		return nil, false
 	}
-	return &o.ChefServerUsername, true
+	return o.ChefServerUsername, true
 }
 
-// SetChefServerUsername sets field value
+// HasChefServerUsername returns a boolean if a field has been set.
+func (o *GatewayCreateProducerChef) HasChefServerUsername() bool {
+	if o != nil && o.ChefServerUsername != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetChefServerUsername gets a reference to the given string and assigns it to the ChefServerUsername field.
 func (o *GatewayCreateProducerChef) SetChefServerUsername(v string) {
-	o.ChefServerUsername = v
+	o.ChefServerUsername = &v
 }
 
 // GetName returns the Name field value
@@ -287,6 +317,38 @@ func (o *GatewayCreateProducerChef) HasSkipSsl() bool {
 // SetSkipSsl gets a reference to the given bool and assigns it to the SkipSsl field.
 func (o *GatewayCreateProducerChef) SetSkipSsl(v bool) {
 	o.SkipSsl = &v
+}
+
+// GetTargetName returns the TargetName field value if set, zero value otherwise.
+func (o *GatewayCreateProducerChef) GetTargetName() string {
+	if o == nil || o.TargetName == nil {
+		var ret string
+		return ret
+	}
+	return *o.TargetName
+}
+
+// GetTargetNameOk returns a tuple with the TargetName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerChef) GetTargetNameOk() (*string, bool) {
+	if o == nil || o.TargetName == nil {
+		return nil, false
+	}
+	return o.TargetName, true
+}
+
+// HasTargetName returns a boolean if a field has been set.
+func (o *GatewayCreateProducerChef) HasTargetName() bool {
+	if o != nil && o.TargetName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetName gets a reference to the given string and assigns it to the TargetName field.
+func (o *GatewayCreateProducerChef) SetTargetName(v string) {
+	o.TargetName = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -419,16 +481,16 @@ func (o *GatewayCreateProducerChef) SetUsername(v string) {
 
 func (o GatewayCreateProducerChef) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
+	if o.ChefOrgs != nil {
 		toSerialize["chef-orgs"] = o.ChefOrgs
 	}
-	if true {
+	if o.ChefServerKey != nil {
 		toSerialize["chef-server-key"] = o.ChefServerKey
 	}
-	if true {
+	if o.ChefServerUrl != nil {
 		toSerialize["chef-server-url"] = o.ChefServerUrl
 	}
-	if true {
+	if o.ChefServerUsername != nil {
 		toSerialize["chef-server-username"] = o.ChefServerUsername
 	}
 	if true {
@@ -442,6 +504,9 @@ func (o GatewayCreateProducerChef) MarshalJSON() ([]byte, error) {
 	}
 	if o.SkipSsl != nil {
 		toSerialize["skip-ssl"] = o.SkipSsl
+	}
+	if o.TargetName != nil {
+		toSerialize["target-name"] = o.TargetName
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessMode** | Pointer to **string** |  | [optional] 
 **AdminRotationIntervalDays** | Pointer to **int64** | Admin credentials rotation interval (days) | [optional] [default to 0]
-**AwsAccessKeyId** | **string** | Access Key ID | 
-**AwsAccessSecretKey** | **string** | Secret Access Key | 
+**AwsAccessKeyId** | Pointer to **string** | Access Key ID | [optional] 
+**AwsAccessSecretKey** | Pointer to **string** | Secret Access Key | [optional] 
 **AwsRoleArns** | Pointer to **string** | AWS Role ARNs to be used in the Assume Role operation (relevant only for assume_role mode) | [optional] 
 **AwsUserConsoleAccess** | Pointer to **bool** | AWS User console access | [optional] [default to false]
 **AwsUserGroups** | Pointer to **string** | AWS User groups | [optional] 
@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **SecureAccessBastionIssuer** | Pointer to **string** |  | [optional] 
 **SecureAccessEnable** | Pointer to **string** |  | [optional] 
 **SecureAccessWebBrowsing** | Pointer to **bool** |  | [optional] 
+**TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserTtl** | Pointer to **string** | User TTL | [optional] [default to "60m"]
@@ -32,7 +33,7 @@ Name | Type | Description | Notes
 
 ### NewGatewayCreateProducerAws
 
-`func NewGatewayCreateProducerAws(awsAccessKeyId string, awsAccessSecretKey string, name string, ) *GatewayCreateProducerAws`
+`func NewGatewayCreateProducerAws(name string, ) *GatewayCreateProducerAws`
 
 NewGatewayCreateProducerAws instantiates a new GatewayCreateProducerAws object
 This constructor will assign default values to properties that have it defined,
@@ -116,6 +117,11 @@ and a boolean to check if the value has been set.
 
 SetAwsAccessKeyId sets AwsAccessKeyId field to given value.
 
+### HasAwsAccessKeyId
+
+`func (o *GatewayCreateProducerAws) HasAwsAccessKeyId() bool`
+
+HasAwsAccessKeyId returns a boolean if a field has been set.
 
 ### GetAwsAccessSecretKey
 
@@ -136,6 +142,11 @@ and a boolean to check if the value has been set.
 
 SetAwsAccessSecretKey sets AwsAccessSecretKey field to given value.
 
+### HasAwsAccessSecretKey
+
+`func (o *GatewayCreateProducerAws) HasAwsAccessSecretKey() bool`
+
+HasAwsAccessSecretKey returns a boolean if a field has been set.
 
 ### GetAwsRoleArns
 
@@ -506,6 +517,31 @@ SetSecureAccessWebBrowsing sets SecureAccessWebBrowsing field to given value.
 `func (o *GatewayCreateProducerAws) HasSecureAccessWebBrowsing() bool`
 
 HasSecureAccessWebBrowsing returns a boolean if a field has been set.
+
+### GetTargetName
+
+`func (o *GatewayCreateProducerAws) GetTargetName() string`
+
+GetTargetName returns the TargetName field if non-nil, zero value otherwise.
+
+### GetTargetNameOk
+
+`func (o *GatewayCreateProducerAws) GetTargetNameOk() (*string, bool)`
+
+GetTargetNameOk returns a tuple with the TargetName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetName
+
+`func (o *GatewayCreateProducerAws) SetTargetName(v string)`
+
+SetTargetName sets TargetName field to given value.
+
+### HasTargetName
+
+`func (o *GatewayCreateProducerAws) HasTargetName() bool`
+
+HasTargetName returns a boolean if a field has been set.
 
 ### GetToken
 

@@ -18,21 +18,23 @@ import (
 // GatewayCreateProducerArtifactory gatewayCreateProducerArtifactory is a command that creates artifactory producer
 type GatewayCreateProducerArtifactory struct {
 	// Artifactory Admin Name
-	ArtifactoryAdminName string `json:"artifactory-admin-name"`
+	ArtifactoryAdminName *string `json:"artifactory-admin-name,omitempty"`
 	// Artifactory Admin password
-	ArtifactoryAdminPwd string `json:"artifactory-admin-pwd"`
+	ArtifactoryAdminPwd *string `json:"artifactory-admin-pwd,omitempty"`
 	// Token Audience
 	ArtifactoryTokenAudience string `json:"artifactory-token-audience"`
 	// Token Scope
 	ArtifactoryTokenScope string `json:"artifactory-token-scope"`
 	// Base URL
-	BaseUrl string `json:"base-url"`
+	BaseUrl *string `json:"base-url,omitempty"`
 	// Producer name
 	Name string `json:"name"`
 	// Required only when the authentication process requires a username and password
 	Password *string `json:"password,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
+	// Target name
+	TargetName *string `json:"target-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -47,13 +49,10 @@ type GatewayCreateProducerArtifactory struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayCreateProducerArtifactory(artifactoryAdminName string, artifactoryAdminPwd string, artifactoryTokenAudience string, artifactoryTokenScope string, baseUrl string, name string, ) *GatewayCreateProducerArtifactory {
+func NewGatewayCreateProducerArtifactory(artifactoryTokenAudience string, artifactoryTokenScope string, name string, ) *GatewayCreateProducerArtifactory {
 	this := GatewayCreateProducerArtifactory{}
-	this.ArtifactoryAdminName = artifactoryAdminName
-	this.ArtifactoryAdminPwd = artifactoryAdminPwd
 	this.ArtifactoryTokenAudience = artifactoryTokenAudience
 	this.ArtifactoryTokenScope = artifactoryTokenScope
-	this.BaseUrl = baseUrl
 	this.Name = name
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
@@ -70,52 +69,68 @@ func NewGatewayCreateProducerArtifactoryWithDefaults() *GatewayCreateProducerArt
 	return &this
 }
 
-// GetArtifactoryAdminName returns the ArtifactoryAdminName field value
+// GetArtifactoryAdminName returns the ArtifactoryAdminName field value if set, zero value otherwise.
 func (o *GatewayCreateProducerArtifactory) GetArtifactoryAdminName() string {
-	if o == nil  {
+	if o == nil || o.ArtifactoryAdminName == nil {
 		var ret string
 		return ret
 	}
-
-	return o.ArtifactoryAdminName
+	return *o.ArtifactoryAdminName
 }
 
-// GetArtifactoryAdminNameOk returns a tuple with the ArtifactoryAdminName field value
+// GetArtifactoryAdminNameOk returns a tuple with the ArtifactoryAdminName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerArtifactory) GetArtifactoryAdminNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.ArtifactoryAdminName == nil {
 		return nil, false
 	}
-	return &o.ArtifactoryAdminName, true
+	return o.ArtifactoryAdminName, true
 }
 
-// SetArtifactoryAdminName sets field value
+// HasArtifactoryAdminName returns a boolean if a field has been set.
+func (o *GatewayCreateProducerArtifactory) HasArtifactoryAdminName() bool {
+	if o != nil && o.ArtifactoryAdminName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetArtifactoryAdminName gets a reference to the given string and assigns it to the ArtifactoryAdminName field.
 func (o *GatewayCreateProducerArtifactory) SetArtifactoryAdminName(v string) {
-	o.ArtifactoryAdminName = v
+	o.ArtifactoryAdminName = &v
 }
 
-// GetArtifactoryAdminPwd returns the ArtifactoryAdminPwd field value
+// GetArtifactoryAdminPwd returns the ArtifactoryAdminPwd field value if set, zero value otherwise.
 func (o *GatewayCreateProducerArtifactory) GetArtifactoryAdminPwd() string {
-	if o == nil  {
+	if o == nil || o.ArtifactoryAdminPwd == nil {
 		var ret string
 		return ret
 	}
-
-	return o.ArtifactoryAdminPwd
+	return *o.ArtifactoryAdminPwd
 }
 
-// GetArtifactoryAdminPwdOk returns a tuple with the ArtifactoryAdminPwd field value
+// GetArtifactoryAdminPwdOk returns a tuple with the ArtifactoryAdminPwd field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerArtifactory) GetArtifactoryAdminPwdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.ArtifactoryAdminPwd == nil {
 		return nil, false
 	}
-	return &o.ArtifactoryAdminPwd, true
+	return o.ArtifactoryAdminPwd, true
 }
 
-// SetArtifactoryAdminPwd sets field value
+// HasArtifactoryAdminPwd returns a boolean if a field has been set.
+func (o *GatewayCreateProducerArtifactory) HasArtifactoryAdminPwd() bool {
+	if o != nil && o.ArtifactoryAdminPwd != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetArtifactoryAdminPwd gets a reference to the given string and assigns it to the ArtifactoryAdminPwd field.
 func (o *GatewayCreateProducerArtifactory) SetArtifactoryAdminPwd(v string) {
-	o.ArtifactoryAdminPwd = v
+	o.ArtifactoryAdminPwd = &v
 }
 
 // GetArtifactoryTokenAudience returns the ArtifactoryTokenAudience field value
@@ -166,28 +181,36 @@ func (o *GatewayCreateProducerArtifactory) SetArtifactoryTokenScope(v string) {
 	o.ArtifactoryTokenScope = v
 }
 
-// GetBaseUrl returns the BaseUrl field value
+// GetBaseUrl returns the BaseUrl field value if set, zero value otherwise.
 func (o *GatewayCreateProducerArtifactory) GetBaseUrl() string {
-	if o == nil  {
+	if o == nil || o.BaseUrl == nil {
 		var ret string
 		return ret
 	}
-
-	return o.BaseUrl
+	return *o.BaseUrl
 }
 
-// GetBaseUrlOk returns a tuple with the BaseUrl field value
+// GetBaseUrlOk returns a tuple with the BaseUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerArtifactory) GetBaseUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.BaseUrl == nil {
 		return nil, false
 	}
-	return &o.BaseUrl, true
+	return o.BaseUrl, true
 }
 
-// SetBaseUrl sets field value
+// HasBaseUrl returns a boolean if a field has been set.
+func (o *GatewayCreateProducerArtifactory) HasBaseUrl() bool {
+	if o != nil && o.BaseUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBaseUrl gets a reference to the given string and assigns it to the BaseUrl field.
 func (o *GatewayCreateProducerArtifactory) SetBaseUrl(v string) {
-	o.BaseUrl = v
+	o.BaseUrl = &v
 }
 
 // GetName returns the Name field value
@@ -276,6 +299,38 @@ func (o *GatewayCreateProducerArtifactory) HasProducerEncryptionKeyName() bool {
 // SetProducerEncryptionKeyName gets a reference to the given string and assigns it to the ProducerEncryptionKeyName field.
 func (o *GatewayCreateProducerArtifactory) SetProducerEncryptionKeyName(v string) {
 	o.ProducerEncryptionKeyName = &v
+}
+
+// GetTargetName returns the TargetName field value if set, zero value otherwise.
+func (o *GatewayCreateProducerArtifactory) GetTargetName() string {
+	if o == nil || o.TargetName == nil {
+		var ret string
+		return ret
+	}
+	return *o.TargetName
+}
+
+// GetTargetNameOk returns a tuple with the TargetName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerArtifactory) GetTargetNameOk() (*string, bool) {
+	if o == nil || o.TargetName == nil {
+		return nil, false
+	}
+	return o.TargetName, true
+}
+
+// HasTargetName returns a boolean if a field has been set.
+func (o *GatewayCreateProducerArtifactory) HasTargetName() bool {
+	if o != nil && o.TargetName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetName gets a reference to the given string and assigns it to the TargetName field.
+func (o *GatewayCreateProducerArtifactory) SetTargetName(v string) {
+	o.TargetName = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -408,10 +463,10 @@ func (o *GatewayCreateProducerArtifactory) SetUsername(v string) {
 
 func (o GatewayCreateProducerArtifactory) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
+	if o.ArtifactoryAdminName != nil {
 		toSerialize["artifactory-admin-name"] = o.ArtifactoryAdminName
 	}
-	if true {
+	if o.ArtifactoryAdminPwd != nil {
 		toSerialize["artifactory-admin-pwd"] = o.ArtifactoryAdminPwd
 	}
 	if true {
@@ -420,7 +475,7 @@ func (o GatewayCreateProducerArtifactory) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["artifactory-token-scope"] = o.ArtifactoryTokenScope
 	}
-	if true {
+	if o.BaseUrl != nil {
 		toSerialize["base-url"] = o.BaseUrl
 	}
 	if true {
@@ -431,6 +486,9 @@ func (o GatewayCreateProducerArtifactory) MarshalJSON() ([]byte, error) {
 	}
 	if o.ProducerEncryptionKeyName != nil {
 		toSerialize["producer-encryption-key-name"] = o.ProducerEncryptionKeyName
+	}
+	if o.TargetName != nil {
+		toSerialize["target-name"] = o.TargetName
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

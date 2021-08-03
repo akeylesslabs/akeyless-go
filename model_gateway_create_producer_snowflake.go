@@ -18,15 +18,17 @@ import (
 // GatewayCreateProducerSnowflake gatewayCreateProducerSnowflakeCmd is a command that creates a Snowflake producer
 type GatewayCreateProducerSnowflake struct {
 	// Account name
-	Account string `json:"account"`
+	Account *string `json:"account,omitempty"`
 	// Database name
-	DbName string `json:"db-name"`
+	DbName *string `json:"db-name,omitempty"`
 	// Producer name
 	Name string `json:"name"`
 	// Required only when the authentication process requires a username and password
 	Password *string `json:"password,omitempty"`
 	// User role
 	Role *string `json:"role,omitempty"`
+	// Target name
+	TargetName *string `json:"target-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -43,10 +45,8 @@ type GatewayCreateProducerSnowflake struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayCreateProducerSnowflake(account string, dbName string, name string, ) *GatewayCreateProducerSnowflake {
+func NewGatewayCreateProducerSnowflake(name string, ) *GatewayCreateProducerSnowflake {
 	this := GatewayCreateProducerSnowflake{}
-	this.Account = account
-	this.DbName = dbName
 	this.Name = name
 	var userTtl string = "24h"
 	this.UserTtl = &userTtl
@@ -63,52 +63,68 @@ func NewGatewayCreateProducerSnowflakeWithDefaults() *GatewayCreateProducerSnowf
 	return &this
 }
 
-// GetAccount returns the Account field value
+// GetAccount returns the Account field value if set, zero value otherwise.
 func (o *GatewayCreateProducerSnowflake) GetAccount() string {
-	if o == nil  {
+	if o == nil || o.Account == nil {
 		var ret string
 		return ret
 	}
-
-	return o.Account
+	return *o.Account
 }
 
-// GetAccountOk returns a tuple with the Account field value
+// GetAccountOk returns a tuple with the Account field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerSnowflake) GetAccountOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.Account == nil {
 		return nil, false
 	}
-	return &o.Account, true
+	return o.Account, true
 }
 
-// SetAccount sets field value
+// HasAccount returns a boolean if a field has been set.
+func (o *GatewayCreateProducerSnowflake) HasAccount() bool {
+	if o != nil && o.Account != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAccount gets a reference to the given string and assigns it to the Account field.
 func (o *GatewayCreateProducerSnowflake) SetAccount(v string) {
-	o.Account = v
+	o.Account = &v
 }
 
-// GetDbName returns the DbName field value
+// GetDbName returns the DbName field value if set, zero value otherwise.
 func (o *GatewayCreateProducerSnowflake) GetDbName() string {
-	if o == nil  {
+	if o == nil || o.DbName == nil {
 		var ret string
 		return ret
 	}
-
-	return o.DbName
+	return *o.DbName
 }
 
-// GetDbNameOk returns a tuple with the DbName field value
+// GetDbNameOk returns a tuple with the DbName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerSnowflake) GetDbNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.DbName == nil {
 		return nil, false
 	}
-	return &o.DbName, true
+	return o.DbName, true
 }
 
-// SetDbName sets field value
+// HasDbName returns a boolean if a field has been set.
+func (o *GatewayCreateProducerSnowflake) HasDbName() bool {
+	if o != nil && o.DbName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDbName gets a reference to the given string and assigns it to the DbName field.
 func (o *GatewayCreateProducerSnowflake) SetDbName(v string) {
-	o.DbName = v
+	o.DbName = &v
 }
 
 // GetName returns the Name field value
@@ -197,6 +213,38 @@ func (o *GatewayCreateProducerSnowflake) HasRole() bool {
 // SetRole gets a reference to the given string and assigns it to the Role field.
 func (o *GatewayCreateProducerSnowflake) SetRole(v string) {
 	o.Role = &v
+}
+
+// GetTargetName returns the TargetName field value if set, zero value otherwise.
+func (o *GatewayCreateProducerSnowflake) GetTargetName() string {
+	if o == nil || o.TargetName == nil {
+		var ret string
+		return ret
+	}
+	return *o.TargetName
+}
+
+// GetTargetNameOk returns a tuple with the TargetName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerSnowflake) GetTargetNameOk() (*string, bool) {
+	if o == nil || o.TargetName == nil {
+		return nil, false
+	}
+	return o.TargetName, true
+}
+
+// HasTargetName returns a boolean if a field has been set.
+func (o *GatewayCreateProducerSnowflake) HasTargetName() bool {
+	if o != nil && o.TargetName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetName gets a reference to the given string and assigns it to the TargetName field.
+func (o *GatewayCreateProducerSnowflake) SetTargetName(v string) {
+	o.TargetName = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -361,10 +409,10 @@ func (o *GatewayCreateProducerSnowflake) SetWarehouse(v string) {
 
 func (o GatewayCreateProducerSnowflake) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
+	if o.Account != nil {
 		toSerialize["account"] = o.Account
 	}
-	if true {
+	if o.DbName != nil {
 		toSerialize["db-name"] = o.DbName
 	}
 	if true {
@@ -375,6 +423,9 @@ func (o GatewayCreateProducerSnowflake) MarshalJSON() ([]byte, error) {
 	}
 	if o.Role != nil {
 		toSerialize["role"] = o.Role
+	}
+	if o.TargetName != nil {
+		toSerialize["target-name"] = o.TargetName
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

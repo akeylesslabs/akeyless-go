@@ -18,19 +18,19 @@ import (
 // GatewayCreateProducerEks gatewayCreateProducerEks is a command that creates eks producer
 type GatewayCreateProducerEks struct {
 	// Access Key ID
-	EksAccessKeyId string `json:"eks-access-key-id"`
+	EksAccessKeyId *string `json:"eks-access-key-id,omitempty"`
 	// IAM assume role
 	EksAssumeRole *string `json:"eks-assume-role,omitempty"`
 	// EKS cluster CA certificate
-	EksClusterCaCert string `json:"eks-cluster-ca-cert"`
+	EksClusterCaCert *string `json:"eks-cluster-ca-cert,omitempty"`
 	// EKS cluster URL endpoint
-	EksClusterEndpoint string `json:"eks-cluster-endpoint"`
+	EksClusterEndpoint *string `json:"eks-cluster-endpoint,omitempty"`
 	// EKS cluster name
-	EksClusterName string `json:"eks-cluster-name"`
+	EksClusterName *string `json:"eks-cluster-name,omitempty"`
 	// Region
 	EksRegion *string `json:"eks-region,omitempty"`
 	// Secret Access Key
-	EksSecretAccessKey string `json:"eks-secret-access-key"`
+	EksSecretAccessKey *string `json:"eks-secret-access-key,omitempty"`
 	// Producer name
 	Name string `json:"name"`
 	// Required only when the authentication process requires a username and password
@@ -41,6 +41,8 @@ type GatewayCreateProducerEks struct {
 	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
 	SecureAccessClusterEndpoint *string `json:"secure-access-cluster-endpoint,omitempty"`
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Target name
+	TargetName *string `json:"target-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -55,15 +57,10 @@ type GatewayCreateProducerEks struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayCreateProducerEks(eksAccessKeyId string, eksClusterCaCert string, eksClusterEndpoint string, eksClusterName string, eksSecretAccessKey string, name string, ) *GatewayCreateProducerEks {
+func NewGatewayCreateProducerEks(name string, ) *GatewayCreateProducerEks {
 	this := GatewayCreateProducerEks{}
-	this.EksAccessKeyId = eksAccessKeyId
-	this.EksClusterCaCert = eksClusterCaCert
-	this.EksClusterEndpoint = eksClusterEndpoint
-	this.EksClusterName = eksClusterName
 	var eksRegion string = "us-east-2"
 	this.EksRegion = &eksRegion
-	this.EksSecretAccessKey = eksSecretAccessKey
 	this.Name = name
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
@@ -82,28 +79,36 @@ func NewGatewayCreateProducerEksWithDefaults() *GatewayCreateProducerEks {
 	return &this
 }
 
-// GetEksAccessKeyId returns the EksAccessKeyId field value
+// GetEksAccessKeyId returns the EksAccessKeyId field value if set, zero value otherwise.
 func (o *GatewayCreateProducerEks) GetEksAccessKeyId() string {
-	if o == nil  {
+	if o == nil || o.EksAccessKeyId == nil {
 		var ret string
 		return ret
 	}
-
-	return o.EksAccessKeyId
+	return *o.EksAccessKeyId
 }
 
-// GetEksAccessKeyIdOk returns a tuple with the EksAccessKeyId field value
+// GetEksAccessKeyIdOk returns a tuple with the EksAccessKeyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerEks) GetEksAccessKeyIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.EksAccessKeyId == nil {
 		return nil, false
 	}
-	return &o.EksAccessKeyId, true
+	return o.EksAccessKeyId, true
 }
 
-// SetEksAccessKeyId sets field value
+// HasEksAccessKeyId returns a boolean if a field has been set.
+func (o *GatewayCreateProducerEks) HasEksAccessKeyId() bool {
+	if o != nil && o.EksAccessKeyId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEksAccessKeyId gets a reference to the given string and assigns it to the EksAccessKeyId field.
 func (o *GatewayCreateProducerEks) SetEksAccessKeyId(v string) {
-	o.EksAccessKeyId = v
+	o.EksAccessKeyId = &v
 }
 
 // GetEksAssumeRole returns the EksAssumeRole field value if set, zero value otherwise.
@@ -138,76 +143,100 @@ func (o *GatewayCreateProducerEks) SetEksAssumeRole(v string) {
 	o.EksAssumeRole = &v
 }
 
-// GetEksClusterCaCert returns the EksClusterCaCert field value
+// GetEksClusterCaCert returns the EksClusterCaCert field value if set, zero value otherwise.
 func (o *GatewayCreateProducerEks) GetEksClusterCaCert() string {
-	if o == nil  {
+	if o == nil || o.EksClusterCaCert == nil {
 		var ret string
 		return ret
 	}
-
-	return o.EksClusterCaCert
+	return *o.EksClusterCaCert
 }
 
-// GetEksClusterCaCertOk returns a tuple with the EksClusterCaCert field value
+// GetEksClusterCaCertOk returns a tuple with the EksClusterCaCert field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerEks) GetEksClusterCaCertOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.EksClusterCaCert == nil {
 		return nil, false
 	}
-	return &o.EksClusterCaCert, true
+	return o.EksClusterCaCert, true
 }
 
-// SetEksClusterCaCert sets field value
+// HasEksClusterCaCert returns a boolean if a field has been set.
+func (o *GatewayCreateProducerEks) HasEksClusterCaCert() bool {
+	if o != nil && o.EksClusterCaCert != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEksClusterCaCert gets a reference to the given string and assigns it to the EksClusterCaCert field.
 func (o *GatewayCreateProducerEks) SetEksClusterCaCert(v string) {
-	o.EksClusterCaCert = v
+	o.EksClusterCaCert = &v
 }
 
-// GetEksClusterEndpoint returns the EksClusterEndpoint field value
+// GetEksClusterEndpoint returns the EksClusterEndpoint field value if set, zero value otherwise.
 func (o *GatewayCreateProducerEks) GetEksClusterEndpoint() string {
-	if o == nil  {
+	if o == nil || o.EksClusterEndpoint == nil {
 		var ret string
 		return ret
 	}
-
-	return o.EksClusterEndpoint
+	return *o.EksClusterEndpoint
 }
 
-// GetEksClusterEndpointOk returns a tuple with the EksClusterEndpoint field value
+// GetEksClusterEndpointOk returns a tuple with the EksClusterEndpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerEks) GetEksClusterEndpointOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.EksClusterEndpoint == nil {
 		return nil, false
 	}
-	return &o.EksClusterEndpoint, true
+	return o.EksClusterEndpoint, true
 }
 
-// SetEksClusterEndpoint sets field value
+// HasEksClusterEndpoint returns a boolean if a field has been set.
+func (o *GatewayCreateProducerEks) HasEksClusterEndpoint() bool {
+	if o != nil && o.EksClusterEndpoint != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEksClusterEndpoint gets a reference to the given string and assigns it to the EksClusterEndpoint field.
 func (o *GatewayCreateProducerEks) SetEksClusterEndpoint(v string) {
-	o.EksClusterEndpoint = v
+	o.EksClusterEndpoint = &v
 }
 
-// GetEksClusterName returns the EksClusterName field value
+// GetEksClusterName returns the EksClusterName field value if set, zero value otherwise.
 func (o *GatewayCreateProducerEks) GetEksClusterName() string {
-	if o == nil  {
+	if o == nil || o.EksClusterName == nil {
 		var ret string
 		return ret
 	}
-
-	return o.EksClusterName
+	return *o.EksClusterName
 }
 
-// GetEksClusterNameOk returns a tuple with the EksClusterName field value
+// GetEksClusterNameOk returns a tuple with the EksClusterName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerEks) GetEksClusterNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.EksClusterName == nil {
 		return nil, false
 	}
-	return &o.EksClusterName, true
+	return o.EksClusterName, true
 }
 
-// SetEksClusterName sets field value
+// HasEksClusterName returns a boolean if a field has been set.
+func (o *GatewayCreateProducerEks) HasEksClusterName() bool {
+	if o != nil && o.EksClusterName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEksClusterName gets a reference to the given string and assigns it to the EksClusterName field.
 func (o *GatewayCreateProducerEks) SetEksClusterName(v string) {
-	o.EksClusterName = v
+	o.EksClusterName = &v
 }
 
 // GetEksRegion returns the EksRegion field value if set, zero value otherwise.
@@ -242,28 +271,36 @@ func (o *GatewayCreateProducerEks) SetEksRegion(v string) {
 	o.EksRegion = &v
 }
 
-// GetEksSecretAccessKey returns the EksSecretAccessKey field value
+// GetEksSecretAccessKey returns the EksSecretAccessKey field value if set, zero value otherwise.
 func (o *GatewayCreateProducerEks) GetEksSecretAccessKey() string {
-	if o == nil  {
+	if o == nil || o.EksSecretAccessKey == nil {
 		var ret string
 		return ret
 	}
-
-	return o.EksSecretAccessKey
+	return *o.EksSecretAccessKey
 }
 
-// GetEksSecretAccessKeyOk returns a tuple with the EksSecretAccessKey field value
+// GetEksSecretAccessKeyOk returns a tuple with the EksSecretAccessKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerEks) GetEksSecretAccessKeyOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.EksSecretAccessKey == nil {
 		return nil, false
 	}
-	return &o.EksSecretAccessKey, true
+	return o.EksSecretAccessKey, true
 }
 
-// SetEksSecretAccessKey sets field value
+// HasEksSecretAccessKey returns a boolean if a field has been set.
+func (o *GatewayCreateProducerEks) HasEksSecretAccessKey() bool {
+	if o != nil && o.EksSecretAccessKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEksSecretAccessKey gets a reference to the given string and assigns it to the EksSecretAccessKey field.
 func (o *GatewayCreateProducerEks) SetEksSecretAccessKey(v string) {
-	o.EksSecretAccessKey = v
+	o.EksSecretAccessKey = &v
 }
 
 // GetName returns the Name field value
@@ -482,6 +519,38 @@ func (o *GatewayCreateProducerEks) SetSecureAccessEnable(v string) {
 	o.SecureAccessEnable = &v
 }
 
+// GetTargetName returns the TargetName field value if set, zero value otherwise.
+func (o *GatewayCreateProducerEks) GetTargetName() string {
+	if o == nil || o.TargetName == nil {
+		var ret string
+		return ret
+	}
+	return *o.TargetName
+}
+
+// GetTargetNameOk returns a tuple with the TargetName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerEks) GetTargetNameOk() (*string, bool) {
+	if o == nil || o.TargetName == nil {
+		return nil, false
+	}
+	return o.TargetName, true
+}
+
+// HasTargetName returns a boolean if a field has been set.
+func (o *GatewayCreateProducerEks) HasTargetName() bool {
+	if o != nil && o.TargetName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetName gets a reference to the given string and assigns it to the TargetName field.
+func (o *GatewayCreateProducerEks) SetTargetName(v string) {
+	o.TargetName = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *GatewayCreateProducerEks) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -612,25 +681,25 @@ func (o *GatewayCreateProducerEks) SetUsername(v string) {
 
 func (o GatewayCreateProducerEks) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
+	if o.EksAccessKeyId != nil {
 		toSerialize["eks-access-key-id"] = o.EksAccessKeyId
 	}
 	if o.EksAssumeRole != nil {
 		toSerialize["eks-assume-role"] = o.EksAssumeRole
 	}
-	if true {
+	if o.EksClusterCaCert != nil {
 		toSerialize["eks-cluster-ca-cert"] = o.EksClusterCaCert
 	}
-	if true {
+	if o.EksClusterEndpoint != nil {
 		toSerialize["eks-cluster-endpoint"] = o.EksClusterEndpoint
 	}
-	if true {
+	if o.EksClusterName != nil {
 		toSerialize["eks-cluster-name"] = o.EksClusterName
 	}
 	if o.EksRegion != nil {
 		toSerialize["eks-region"] = o.EksRegion
 	}
-	if true {
+	if o.EksSecretAccessKey != nil {
 		toSerialize["eks-secret-access-key"] = o.EksSecretAccessKey
 	}
 	if true {
@@ -653,6 +722,9 @@ func (o GatewayCreateProducerEks) MarshalJSON() ([]byte, error) {
 	}
 	if o.SecureAccessEnable != nil {
 		toSerialize["secure-access-enable"] = o.SecureAccessEnable
+	}
+	if o.TargetName != nil {
+		toSerialize["target-name"] = o.TargetName
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

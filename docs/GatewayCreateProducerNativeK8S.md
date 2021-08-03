@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**K8sClusterCaCert** | **string** | K8S cluster CA certificate | 
-**K8sClusterEndpoint** | **string** | K8S cluster URL endpoint | 
+**K8sClusterCaCert** | Pointer to **string** | K8S cluster CA certificate | [optional] 
+**K8sClusterEndpoint** | Pointer to **string** | K8S cluster URL endpoint | [optional] 
 **K8sClusterToken** | **string** | K8S cluster Bearer token | 
 **K8sNamespace** | Pointer to **string** | K8S namespace | [optional] 
-**K8sServiceAccount** | **string** | K8S service account | 
+**K8sServiceAccount** | Pointer to **string** | K8S service account | [optional] 
 **Name** | **string** | Producer name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **SecureAccessDashboardUrl** | Pointer to **string** |  | [optional] 
 **SecureAccessEnable** | Pointer to **string** |  | [optional] 
 **SecureAccessWebBrowsing** | Pointer to **bool** |  | [optional] 
+**TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserTtl** | Pointer to **string** | User TTL | [optional] [default to "60m"]
@@ -27,7 +28,7 @@ Name | Type | Description | Notes
 
 ### NewGatewayCreateProducerNativeK8S
 
-`func NewGatewayCreateProducerNativeK8S(k8sClusterCaCert string, k8sClusterEndpoint string, k8sClusterToken string, k8sServiceAccount string, name string, ) *GatewayCreateProducerNativeK8S`
+`func NewGatewayCreateProducerNativeK8S(k8sClusterToken string, name string, ) *GatewayCreateProducerNativeK8S`
 
 NewGatewayCreateProducerNativeK8S instantiates a new GatewayCreateProducerNativeK8S object
 This constructor will assign default values to properties that have it defined,
@@ -61,6 +62,11 @@ and a boolean to check if the value has been set.
 
 SetK8sClusterCaCert sets K8sClusterCaCert field to given value.
 
+### HasK8sClusterCaCert
+
+`func (o *GatewayCreateProducerNativeK8S) HasK8sClusterCaCert() bool`
+
+HasK8sClusterCaCert returns a boolean if a field has been set.
 
 ### GetK8sClusterEndpoint
 
@@ -81,6 +87,11 @@ and a boolean to check if the value has been set.
 
 SetK8sClusterEndpoint sets K8sClusterEndpoint field to given value.
 
+### HasK8sClusterEndpoint
+
+`func (o *GatewayCreateProducerNativeK8S) HasK8sClusterEndpoint() bool`
+
+HasK8sClusterEndpoint returns a boolean if a field has been set.
 
 ### GetK8sClusterToken
 
@@ -146,6 +157,11 @@ and a boolean to check if the value has been set.
 
 SetK8sServiceAccount sets K8sServiceAccount field to given value.
 
+### HasK8sServiceAccount
+
+`func (o *GatewayCreateProducerNativeK8S) HasK8sServiceAccount() bool`
+
+HasK8sServiceAccount returns a boolean if a field has been set.
 
 ### GetName
 
@@ -366,6 +382,31 @@ SetSecureAccessWebBrowsing sets SecureAccessWebBrowsing field to given value.
 `func (o *GatewayCreateProducerNativeK8S) HasSecureAccessWebBrowsing() bool`
 
 HasSecureAccessWebBrowsing returns a boolean if a field has been set.
+
+### GetTargetName
+
+`func (o *GatewayCreateProducerNativeK8S) GetTargetName() string`
+
+GetTargetName returns the TargetName field if non-nil, zero value otherwise.
+
+### GetTargetNameOk
+
+`func (o *GatewayCreateProducerNativeK8S) GetTargetNameOk() (*string, bool)`
+
+GetTargetNameOk returns a tuple with the TargetName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetName
+
+`func (o *GatewayCreateProducerNativeK8S) SetTargetName(v string)`
+
+SetTargetName sets TargetName field to given value.
+
+### HasTargetName
+
+`func (o *GatewayCreateProducerNativeK8S) HasTargetName() bool`
+
+HasTargetName returns a boolean if a field has been set.
 
 ### GetToken
 

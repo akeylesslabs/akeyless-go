@@ -5,12 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **MssqlCreateStatements** | Pointer to **string** | MSSQL Creation statements | [optional] 
-**MssqlDbname** | **string** | MSSQL Name | 
+**MssqlDbname** | Pointer to **string** | MSSQL Name | [optional] 
 **MssqlHost** | Pointer to **string** | MSSQL Host | [optional] [default to "127.0.0.1"]
-**MssqlPassword** | **string** | MSSQL Password | 
+**MssqlPassword** | Pointer to **string** | MSSQL Password | [optional] 
 **MssqlPort** | Pointer to **string** | MSSQL Port | [optional] [default to "1433"]
 **MssqlRevocationStatements** | Pointer to **string** | MSSQL Revocation statements | [optional] 
-**MssqlUsername** | **string** | MSSQL Username | 
+**MssqlUsername** | Pointer to **string** | MSSQL Username | [optional] 
 **Name** | **string** | Producer name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **SecureAccessDbSchema** | Pointer to **string** |  | [optional] 
 **SecureAccessEnable** | Pointer to **string** |  | [optional] 
 **SecureAccessHost** | Pointer to **[]string** |  | [optional] 
+**TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserTtl** | Pointer to **string** | User TTL | [optional] [default to "60m"]
@@ -27,7 +28,7 @@ Name | Type | Description | Notes
 
 ### NewGatewayCreateProducerMSSQL
 
-`func NewGatewayCreateProducerMSSQL(mssqlDbname string, mssqlPassword string, mssqlUsername string, name string, ) *GatewayCreateProducerMSSQL`
+`func NewGatewayCreateProducerMSSQL(name string, ) *GatewayCreateProducerMSSQL`
 
 NewGatewayCreateProducerMSSQL instantiates a new GatewayCreateProducerMSSQL object
 This constructor will assign default values to properties that have it defined,
@@ -86,6 +87,11 @@ and a boolean to check if the value has been set.
 
 SetMssqlDbname sets MssqlDbname field to given value.
 
+### HasMssqlDbname
+
+`func (o *GatewayCreateProducerMSSQL) HasMssqlDbname() bool`
+
+HasMssqlDbname returns a boolean if a field has been set.
 
 ### GetMssqlHost
 
@@ -131,6 +137,11 @@ and a boolean to check if the value has been set.
 
 SetMssqlPassword sets MssqlPassword field to given value.
 
+### HasMssqlPassword
+
+`func (o *GatewayCreateProducerMSSQL) HasMssqlPassword() bool`
+
+HasMssqlPassword returns a boolean if a field has been set.
 
 ### GetMssqlPort
 
@@ -201,6 +212,11 @@ and a boolean to check if the value has been set.
 
 SetMssqlUsername sets MssqlUsername field to given value.
 
+### HasMssqlUsername
+
+`func (o *GatewayCreateProducerMSSQL) HasMssqlUsername() bool`
+
+HasMssqlUsername returns a boolean if a field has been set.
 
 ### GetName
 
@@ -371,6 +387,31 @@ SetSecureAccessHost sets SecureAccessHost field to given value.
 `func (o *GatewayCreateProducerMSSQL) HasSecureAccessHost() bool`
 
 HasSecureAccessHost returns a boolean if a field has been set.
+
+### GetTargetName
+
+`func (o *GatewayCreateProducerMSSQL) GetTargetName() string`
+
+GetTargetName returns the TargetName field if non-nil, zero value otherwise.
+
+### GetTargetNameOk
+
+`func (o *GatewayCreateProducerMSSQL) GetTargetNameOk() (*string, bool)`
+
+GetTargetNameOk returns a tuple with the TargetName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetName
+
+`func (o *GatewayCreateProducerMSSQL) SetTargetName(v string)`
+
+SetTargetName sets TargetName field to given value.
+
+### HasTargetName
+
+`func (o *GatewayCreateProducerMSSQL) HasTargetName() bool`
+
+HasTargetName returns a boolean if a field has been set.
 
 ### GetToken
 

@@ -20,17 +20,17 @@ type GatewayCreateProducerMSSQL struct {
 	// MSSQL Creation statements
 	MssqlCreateStatements *string `json:"mssql-create-statements,omitempty"`
 	// MSSQL Name
-	MssqlDbname string `json:"mssql-dbname"`
+	MssqlDbname *string `json:"mssql-dbname,omitempty"`
 	// MSSQL Host
 	MssqlHost *string `json:"mssql-host,omitempty"`
 	// MSSQL Password
-	MssqlPassword string `json:"mssql-password"`
+	MssqlPassword *string `json:"mssql-password,omitempty"`
 	// MSSQL Port
 	MssqlPort *string `json:"mssql-port,omitempty"`
 	// MSSQL Revocation statements
 	MssqlRevocationStatements *string `json:"mssql-revocation-statements,omitempty"`
 	// MSSQL Username
-	MssqlUsername string `json:"mssql-username"`
+	MssqlUsername *string `json:"mssql-username,omitempty"`
 	// Producer name
 	Name string `json:"name"`
 	// Required only when the authentication process requires a username and password
@@ -41,6 +41,8 @@ type GatewayCreateProducerMSSQL struct {
 	SecureAccessDbSchema *string `json:"secure-access-db-schema,omitempty"`
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
 	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
+	// Target name
+	TargetName *string `json:"target-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -55,15 +57,12 @@ type GatewayCreateProducerMSSQL struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayCreateProducerMSSQL(mssqlDbname string, mssqlPassword string, mssqlUsername string, name string, ) *GatewayCreateProducerMSSQL {
+func NewGatewayCreateProducerMSSQL(name string, ) *GatewayCreateProducerMSSQL {
 	this := GatewayCreateProducerMSSQL{}
-	this.MssqlDbname = mssqlDbname
 	var mssqlHost string = "127.0.0.1"
 	this.MssqlHost = &mssqlHost
-	this.MssqlPassword = mssqlPassword
 	var mssqlPort string = "1433"
 	this.MssqlPort = &mssqlPort
-	this.MssqlUsername = mssqlUsername
 	this.Name = name
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
@@ -116,28 +115,36 @@ func (o *GatewayCreateProducerMSSQL) SetMssqlCreateStatements(v string) {
 	o.MssqlCreateStatements = &v
 }
 
-// GetMssqlDbname returns the MssqlDbname field value
+// GetMssqlDbname returns the MssqlDbname field value if set, zero value otherwise.
 func (o *GatewayCreateProducerMSSQL) GetMssqlDbname() string {
-	if o == nil  {
+	if o == nil || o.MssqlDbname == nil {
 		var ret string
 		return ret
 	}
-
-	return o.MssqlDbname
+	return *o.MssqlDbname
 }
 
-// GetMssqlDbnameOk returns a tuple with the MssqlDbname field value
+// GetMssqlDbnameOk returns a tuple with the MssqlDbname field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerMSSQL) GetMssqlDbnameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.MssqlDbname == nil {
 		return nil, false
 	}
-	return &o.MssqlDbname, true
+	return o.MssqlDbname, true
 }
 
-// SetMssqlDbname sets field value
+// HasMssqlDbname returns a boolean if a field has been set.
+func (o *GatewayCreateProducerMSSQL) HasMssqlDbname() bool {
+	if o != nil && o.MssqlDbname != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMssqlDbname gets a reference to the given string and assigns it to the MssqlDbname field.
 func (o *GatewayCreateProducerMSSQL) SetMssqlDbname(v string) {
-	o.MssqlDbname = v
+	o.MssqlDbname = &v
 }
 
 // GetMssqlHost returns the MssqlHost field value if set, zero value otherwise.
@@ -172,28 +179,36 @@ func (o *GatewayCreateProducerMSSQL) SetMssqlHost(v string) {
 	o.MssqlHost = &v
 }
 
-// GetMssqlPassword returns the MssqlPassword field value
+// GetMssqlPassword returns the MssqlPassword field value if set, zero value otherwise.
 func (o *GatewayCreateProducerMSSQL) GetMssqlPassword() string {
-	if o == nil  {
+	if o == nil || o.MssqlPassword == nil {
 		var ret string
 		return ret
 	}
-
-	return o.MssqlPassword
+	return *o.MssqlPassword
 }
 
-// GetMssqlPasswordOk returns a tuple with the MssqlPassword field value
+// GetMssqlPasswordOk returns a tuple with the MssqlPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerMSSQL) GetMssqlPasswordOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.MssqlPassword == nil {
 		return nil, false
 	}
-	return &o.MssqlPassword, true
+	return o.MssqlPassword, true
 }
 
-// SetMssqlPassword sets field value
+// HasMssqlPassword returns a boolean if a field has been set.
+func (o *GatewayCreateProducerMSSQL) HasMssqlPassword() bool {
+	if o != nil && o.MssqlPassword != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMssqlPassword gets a reference to the given string and assigns it to the MssqlPassword field.
 func (o *GatewayCreateProducerMSSQL) SetMssqlPassword(v string) {
-	o.MssqlPassword = v
+	o.MssqlPassword = &v
 }
 
 // GetMssqlPort returns the MssqlPort field value if set, zero value otherwise.
@@ -260,28 +275,36 @@ func (o *GatewayCreateProducerMSSQL) SetMssqlRevocationStatements(v string) {
 	o.MssqlRevocationStatements = &v
 }
 
-// GetMssqlUsername returns the MssqlUsername field value
+// GetMssqlUsername returns the MssqlUsername field value if set, zero value otherwise.
 func (o *GatewayCreateProducerMSSQL) GetMssqlUsername() string {
-	if o == nil  {
+	if o == nil || o.MssqlUsername == nil {
 		var ret string
 		return ret
 	}
-
-	return o.MssqlUsername
+	return *o.MssqlUsername
 }
 
-// GetMssqlUsernameOk returns a tuple with the MssqlUsername field value
+// GetMssqlUsernameOk returns a tuple with the MssqlUsername field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerMSSQL) GetMssqlUsernameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.MssqlUsername == nil {
 		return nil, false
 	}
-	return &o.MssqlUsername, true
+	return o.MssqlUsername, true
 }
 
-// SetMssqlUsername sets field value
+// HasMssqlUsername returns a boolean if a field has been set.
+func (o *GatewayCreateProducerMSSQL) HasMssqlUsername() bool {
+	if o != nil && o.MssqlUsername != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMssqlUsername gets a reference to the given string and assigns it to the MssqlUsername field.
 func (o *GatewayCreateProducerMSSQL) SetMssqlUsername(v string) {
-	o.MssqlUsername = v
+	o.MssqlUsername = &v
 }
 
 // GetName returns the Name field value
@@ -500,6 +523,38 @@ func (o *GatewayCreateProducerMSSQL) SetSecureAccessHost(v []string) {
 	o.SecureAccessHost = &v
 }
 
+// GetTargetName returns the TargetName field value if set, zero value otherwise.
+func (o *GatewayCreateProducerMSSQL) GetTargetName() string {
+	if o == nil || o.TargetName == nil {
+		var ret string
+		return ret
+	}
+	return *o.TargetName
+}
+
+// GetTargetNameOk returns a tuple with the TargetName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerMSSQL) GetTargetNameOk() (*string, bool) {
+	if o == nil || o.TargetName == nil {
+		return nil, false
+	}
+	return o.TargetName, true
+}
+
+// HasTargetName returns a boolean if a field has been set.
+func (o *GatewayCreateProducerMSSQL) HasTargetName() bool {
+	if o != nil && o.TargetName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetName gets a reference to the given string and assigns it to the TargetName field.
+func (o *GatewayCreateProducerMSSQL) SetTargetName(v string) {
+	o.TargetName = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *GatewayCreateProducerMSSQL) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -633,13 +688,13 @@ func (o GatewayCreateProducerMSSQL) MarshalJSON() ([]byte, error) {
 	if o.MssqlCreateStatements != nil {
 		toSerialize["mssql-create-statements"] = o.MssqlCreateStatements
 	}
-	if true {
+	if o.MssqlDbname != nil {
 		toSerialize["mssql-dbname"] = o.MssqlDbname
 	}
 	if o.MssqlHost != nil {
 		toSerialize["mssql-host"] = o.MssqlHost
 	}
-	if true {
+	if o.MssqlPassword != nil {
 		toSerialize["mssql-password"] = o.MssqlPassword
 	}
 	if o.MssqlPort != nil {
@@ -648,7 +703,7 @@ func (o GatewayCreateProducerMSSQL) MarshalJSON() ([]byte, error) {
 	if o.MssqlRevocationStatements != nil {
 		toSerialize["mssql-revocation-statements"] = o.MssqlRevocationStatements
 	}
-	if true {
+	if o.MssqlUsername != nil {
 		toSerialize["mssql-username"] = o.MssqlUsername
 	}
 	if true {
@@ -671,6 +726,9 @@ func (o GatewayCreateProducerMSSQL) MarshalJSON() ([]byte, error) {
 	}
 	if o.SecureAccessHost != nil {
 		toSerialize["secure-access-host"] = o.SecureAccessHost
+	}
+	if o.TargetName != nil {
+		toSerialize["target-name"] = o.TargetName
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

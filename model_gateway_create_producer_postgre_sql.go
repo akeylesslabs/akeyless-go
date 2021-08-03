@@ -24,21 +24,23 @@ type GatewayCreateProducerPostgreSQL struct {
 	// Required only when the authentication process requires a username and password
 	Password *string `json:"password,omitempty"`
 	// PostgreSQL DB Name
-	PostgresqlDbName string `json:"postgresql-db-name"`
+	PostgresqlDbName *string `json:"postgresql-db-name,omitempty"`
 	// PostgreSQL Host
 	PostgresqlHost *string `json:"postgresql-host,omitempty"`
 	// PostgreSQL Password
-	PostgresqlPassword string `json:"postgresql-password"`
+	PostgresqlPassword *string `json:"postgresql-password,omitempty"`
 	// PostgreSQL Port
 	PostgresqlPort *string `json:"postgresql-port,omitempty"`
 	// PostgreSQL Username
-	PostgresqlUsername string `json:"postgresql-username"`
+	PostgresqlUsername *string `json:"postgresql-username,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKey *string `json:"producer-encryption-key,omitempty"`
 	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
 	SecureAccessDbSchema *string `json:"secure-access-db-schema,omitempty"`
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
 	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
+	// Target name
+	TargetName *string `json:"target-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -53,16 +55,13 @@ type GatewayCreateProducerPostgreSQL struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayCreateProducerPostgreSQL(name string, postgresqlDbName string, postgresqlPassword string, postgresqlUsername string, ) *GatewayCreateProducerPostgreSQL {
+func NewGatewayCreateProducerPostgreSQL(name string, ) *GatewayCreateProducerPostgreSQL {
 	this := GatewayCreateProducerPostgreSQL{}
 	this.Name = name
-	this.PostgresqlDbName = postgresqlDbName
 	var postgresqlHost string = "127.0.0.1"
 	this.PostgresqlHost = &postgresqlHost
-	this.PostgresqlPassword = postgresqlPassword
 	var postgresqlPort string = "5432"
 	this.PostgresqlPort = &postgresqlPort
-	this.PostgresqlUsername = postgresqlUsername
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
@@ -170,28 +169,36 @@ func (o *GatewayCreateProducerPostgreSQL) SetPassword(v string) {
 	o.Password = &v
 }
 
-// GetPostgresqlDbName returns the PostgresqlDbName field value
+// GetPostgresqlDbName returns the PostgresqlDbName field value if set, zero value otherwise.
 func (o *GatewayCreateProducerPostgreSQL) GetPostgresqlDbName() string {
-	if o == nil  {
+	if o == nil || o.PostgresqlDbName == nil {
 		var ret string
 		return ret
 	}
-
-	return o.PostgresqlDbName
+	return *o.PostgresqlDbName
 }
 
-// GetPostgresqlDbNameOk returns a tuple with the PostgresqlDbName field value
+// GetPostgresqlDbNameOk returns a tuple with the PostgresqlDbName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerPostgreSQL) GetPostgresqlDbNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.PostgresqlDbName == nil {
 		return nil, false
 	}
-	return &o.PostgresqlDbName, true
+	return o.PostgresqlDbName, true
 }
 
-// SetPostgresqlDbName sets field value
+// HasPostgresqlDbName returns a boolean if a field has been set.
+func (o *GatewayCreateProducerPostgreSQL) HasPostgresqlDbName() bool {
+	if o != nil && o.PostgresqlDbName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPostgresqlDbName gets a reference to the given string and assigns it to the PostgresqlDbName field.
 func (o *GatewayCreateProducerPostgreSQL) SetPostgresqlDbName(v string) {
-	o.PostgresqlDbName = v
+	o.PostgresqlDbName = &v
 }
 
 // GetPostgresqlHost returns the PostgresqlHost field value if set, zero value otherwise.
@@ -226,28 +233,36 @@ func (o *GatewayCreateProducerPostgreSQL) SetPostgresqlHost(v string) {
 	o.PostgresqlHost = &v
 }
 
-// GetPostgresqlPassword returns the PostgresqlPassword field value
+// GetPostgresqlPassword returns the PostgresqlPassword field value if set, zero value otherwise.
 func (o *GatewayCreateProducerPostgreSQL) GetPostgresqlPassword() string {
-	if o == nil  {
+	if o == nil || o.PostgresqlPassword == nil {
 		var ret string
 		return ret
 	}
-
-	return o.PostgresqlPassword
+	return *o.PostgresqlPassword
 }
 
-// GetPostgresqlPasswordOk returns a tuple with the PostgresqlPassword field value
+// GetPostgresqlPasswordOk returns a tuple with the PostgresqlPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerPostgreSQL) GetPostgresqlPasswordOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.PostgresqlPassword == nil {
 		return nil, false
 	}
-	return &o.PostgresqlPassword, true
+	return o.PostgresqlPassword, true
 }
 
-// SetPostgresqlPassword sets field value
+// HasPostgresqlPassword returns a boolean if a field has been set.
+func (o *GatewayCreateProducerPostgreSQL) HasPostgresqlPassword() bool {
+	if o != nil && o.PostgresqlPassword != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPostgresqlPassword gets a reference to the given string and assigns it to the PostgresqlPassword field.
 func (o *GatewayCreateProducerPostgreSQL) SetPostgresqlPassword(v string) {
-	o.PostgresqlPassword = v
+	o.PostgresqlPassword = &v
 }
 
 // GetPostgresqlPort returns the PostgresqlPort field value if set, zero value otherwise.
@@ -282,28 +297,36 @@ func (o *GatewayCreateProducerPostgreSQL) SetPostgresqlPort(v string) {
 	o.PostgresqlPort = &v
 }
 
-// GetPostgresqlUsername returns the PostgresqlUsername field value
+// GetPostgresqlUsername returns the PostgresqlUsername field value if set, zero value otherwise.
 func (o *GatewayCreateProducerPostgreSQL) GetPostgresqlUsername() string {
-	if o == nil  {
+	if o == nil || o.PostgresqlUsername == nil {
 		var ret string
 		return ret
 	}
-
-	return o.PostgresqlUsername
+	return *o.PostgresqlUsername
 }
 
-// GetPostgresqlUsernameOk returns a tuple with the PostgresqlUsername field value
+// GetPostgresqlUsernameOk returns a tuple with the PostgresqlUsername field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerPostgreSQL) GetPostgresqlUsernameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.PostgresqlUsername == nil {
 		return nil, false
 	}
-	return &o.PostgresqlUsername, true
+	return o.PostgresqlUsername, true
 }
 
-// SetPostgresqlUsername sets field value
+// HasPostgresqlUsername returns a boolean if a field has been set.
+func (o *GatewayCreateProducerPostgreSQL) HasPostgresqlUsername() bool {
+	if o != nil && o.PostgresqlUsername != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPostgresqlUsername gets a reference to the given string and assigns it to the PostgresqlUsername field.
 func (o *GatewayCreateProducerPostgreSQL) SetPostgresqlUsername(v string) {
-	o.PostgresqlUsername = v
+	o.PostgresqlUsername = &v
 }
 
 // GetProducerEncryptionKey returns the ProducerEncryptionKey field value if set, zero value otherwise.
@@ -466,6 +489,38 @@ func (o *GatewayCreateProducerPostgreSQL) SetSecureAccessHost(v []string) {
 	o.SecureAccessHost = &v
 }
 
+// GetTargetName returns the TargetName field value if set, zero value otherwise.
+func (o *GatewayCreateProducerPostgreSQL) GetTargetName() string {
+	if o == nil || o.TargetName == nil {
+		var ret string
+		return ret
+	}
+	return *o.TargetName
+}
+
+// GetTargetNameOk returns a tuple with the TargetName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerPostgreSQL) GetTargetNameOk() (*string, bool) {
+	if o == nil || o.TargetName == nil {
+		return nil, false
+	}
+	return o.TargetName, true
+}
+
+// HasTargetName returns a boolean if a field has been set.
+func (o *GatewayCreateProducerPostgreSQL) HasTargetName() bool {
+	if o != nil && o.TargetName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetName gets a reference to the given string and assigns it to the TargetName field.
+func (o *GatewayCreateProducerPostgreSQL) SetTargetName(v string) {
+	o.TargetName = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *GatewayCreateProducerPostgreSQL) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -605,19 +660,19 @@ func (o GatewayCreateProducerPostgreSQL) MarshalJSON() ([]byte, error) {
 	if o.Password != nil {
 		toSerialize["password"] = o.Password
 	}
-	if true {
+	if o.PostgresqlDbName != nil {
 		toSerialize["postgresql-db-name"] = o.PostgresqlDbName
 	}
 	if o.PostgresqlHost != nil {
 		toSerialize["postgresql-host"] = o.PostgresqlHost
 	}
-	if true {
+	if o.PostgresqlPassword != nil {
 		toSerialize["postgresql-password"] = o.PostgresqlPassword
 	}
 	if o.PostgresqlPort != nil {
 		toSerialize["postgresql-port"] = o.PostgresqlPort
 	}
-	if true {
+	if o.PostgresqlUsername != nil {
 		toSerialize["postgresql-username"] = o.PostgresqlUsername
 	}
 	if o.ProducerEncryptionKey != nil {
@@ -634,6 +689,9 @@ func (o GatewayCreateProducerPostgreSQL) MarshalJSON() ([]byte, error) {
 	}
 	if o.SecureAccessHost != nil {
 		toSerialize["secure-access-host"] = o.SecureAccessHost
+	}
+	if o.TargetName != nil {
+		toSerialize["target-name"] = o.TargetName
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

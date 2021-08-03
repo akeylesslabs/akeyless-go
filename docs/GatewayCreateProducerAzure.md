@@ -5,14 +5,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AppObjId** | Pointer to **string** | Azure App Object Id | [optional] 
-**AzureClientId** | **string** | Azure Client ID | 
-**AzureClientSecret** | **string** | Azure Client Secret | 
-**AzureTenantId** | **string** | Azure Tenant ID | 
+**AzureClientId** | Pointer to **string** | Azure Client ID | [optional] 
+**AzureClientSecret** | Pointer to **string** | Azure Client Secret | [optional] 
+**AzureTenantId** | Pointer to **string** | Azure Tenant ID | [optional] 
 **Name** | **string** | Producer name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **SecureAccessEnable** | Pointer to **string** |  | [optional] 
 **SecureAccessWebBrowsing** | Pointer to **bool** |  | [optional] 
+**TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserGroupObjId** | Pointer to **string** | User Group Object Id | [optional] 
@@ -27,7 +28,7 @@ Name | Type | Description | Notes
 
 ### NewGatewayCreateProducerAzure
 
-`func NewGatewayCreateProducerAzure(azureClientId string, azureClientSecret string, azureTenantId string, name string, ) *GatewayCreateProducerAzure`
+`func NewGatewayCreateProducerAzure(name string, ) *GatewayCreateProducerAzure`
 
 NewGatewayCreateProducerAzure instantiates a new GatewayCreateProducerAzure object
 This constructor will assign default values to properties that have it defined,
@@ -86,6 +87,11 @@ and a boolean to check if the value has been set.
 
 SetAzureClientId sets AzureClientId field to given value.
 
+### HasAzureClientId
+
+`func (o *GatewayCreateProducerAzure) HasAzureClientId() bool`
+
+HasAzureClientId returns a boolean if a field has been set.
 
 ### GetAzureClientSecret
 
@@ -106,6 +112,11 @@ and a boolean to check if the value has been set.
 
 SetAzureClientSecret sets AzureClientSecret field to given value.
 
+### HasAzureClientSecret
+
+`func (o *GatewayCreateProducerAzure) HasAzureClientSecret() bool`
+
+HasAzureClientSecret returns a boolean if a field has been set.
 
 ### GetAzureTenantId
 
@@ -126,6 +137,11 @@ and a boolean to check if the value has been set.
 
 SetAzureTenantId sets AzureTenantId field to given value.
 
+### HasAzureTenantId
+
+`func (o *GatewayCreateProducerAzure) HasAzureTenantId() bool`
+
+HasAzureTenantId returns a boolean if a field has been set.
 
 ### GetName
 
@@ -246,6 +262,31 @@ SetSecureAccessWebBrowsing sets SecureAccessWebBrowsing field to given value.
 `func (o *GatewayCreateProducerAzure) HasSecureAccessWebBrowsing() bool`
 
 HasSecureAccessWebBrowsing returns a boolean if a field has been set.
+
+### GetTargetName
+
+`func (o *GatewayCreateProducerAzure) GetTargetName() string`
+
+GetTargetName returns the TargetName field if non-nil, zero value otherwise.
+
+### GetTargetNameOk
+
+`func (o *GatewayCreateProducerAzure) GetTargetNameOk() (*string, bool)`
+
+GetTargetNameOk returns a tuple with the TargetName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetName
+
+`func (o *GatewayCreateProducerAzure) SetTargetName(v string)`
+
+SetTargetName sets TargetName field to given value.
+
+### HasTargetName
+
+`func (o *GatewayCreateProducerAzure) HasTargetName() bool`
+
+HasTargetName returns a boolean if a field has been set.
 
 ### GetToken
 

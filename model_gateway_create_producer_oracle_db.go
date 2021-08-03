@@ -26,19 +26,21 @@ type GatewayCreateProducerOracleDb struct {
 	// Oracle Host
 	OracleHost *string `json:"oracle-host,omitempty"`
 	// Oracle Password
-	OraclePassword string `json:"oracle-password"`
+	OraclePassword *string `json:"oracle-password,omitempty"`
 	// Oracle Port
 	OraclePort *string `json:"oracle-port,omitempty"`
 	// Oracle Creation statements
 	OracleScreationStatements *string `json:"oracle-screation-statements,omitempty"`
 	// Oracle DB Name
-	OracleServiceName string `json:"oracle-service-name"`
+	OracleServiceName *string `json:"oracle-service-name,omitempty"`
 	// Oracle Username
-	OracleUsername string `json:"oracle-username"`
+	OracleUsername *string `json:"oracle-username,omitempty"`
 	// Required only when the authentication process requires a username and password
 	Password *string `json:"password,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
+	// Target name
+	TargetName *string `json:"target-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -53,16 +55,13 @@ type GatewayCreateProducerOracleDb struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayCreateProducerOracleDb(name string, oraclePassword string, oracleServiceName string, oracleUsername string, ) *GatewayCreateProducerOracleDb {
+func NewGatewayCreateProducerOracleDb(name string, ) *GatewayCreateProducerOracleDb {
 	this := GatewayCreateProducerOracleDb{}
 	this.Name = name
 	var oracleHost string = "127.0.0.1"
 	this.OracleHost = &oracleHost
-	this.OraclePassword = oraclePassword
 	var oraclePort string = "1521"
 	this.OraclePort = &oraclePort
-	this.OracleServiceName = oracleServiceName
-	this.OracleUsername = oracleUsername
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
@@ -202,28 +201,36 @@ func (o *GatewayCreateProducerOracleDb) SetOracleHost(v string) {
 	o.OracleHost = &v
 }
 
-// GetOraclePassword returns the OraclePassword field value
+// GetOraclePassword returns the OraclePassword field value if set, zero value otherwise.
 func (o *GatewayCreateProducerOracleDb) GetOraclePassword() string {
-	if o == nil  {
+	if o == nil || o.OraclePassword == nil {
 		var ret string
 		return ret
 	}
-
-	return o.OraclePassword
+	return *o.OraclePassword
 }
 
-// GetOraclePasswordOk returns a tuple with the OraclePassword field value
+// GetOraclePasswordOk returns a tuple with the OraclePassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerOracleDb) GetOraclePasswordOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.OraclePassword == nil {
 		return nil, false
 	}
-	return &o.OraclePassword, true
+	return o.OraclePassword, true
 }
 
-// SetOraclePassword sets field value
+// HasOraclePassword returns a boolean if a field has been set.
+func (o *GatewayCreateProducerOracleDb) HasOraclePassword() bool {
+	if o != nil && o.OraclePassword != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOraclePassword gets a reference to the given string and assigns it to the OraclePassword field.
 func (o *GatewayCreateProducerOracleDb) SetOraclePassword(v string) {
-	o.OraclePassword = v
+	o.OraclePassword = &v
 }
 
 // GetOraclePort returns the OraclePort field value if set, zero value otherwise.
@@ -290,52 +297,68 @@ func (o *GatewayCreateProducerOracleDb) SetOracleScreationStatements(v string) {
 	o.OracleScreationStatements = &v
 }
 
-// GetOracleServiceName returns the OracleServiceName field value
+// GetOracleServiceName returns the OracleServiceName field value if set, zero value otherwise.
 func (o *GatewayCreateProducerOracleDb) GetOracleServiceName() string {
-	if o == nil  {
+	if o == nil || o.OracleServiceName == nil {
 		var ret string
 		return ret
 	}
-
-	return o.OracleServiceName
+	return *o.OracleServiceName
 }
 
-// GetOracleServiceNameOk returns a tuple with the OracleServiceName field value
+// GetOracleServiceNameOk returns a tuple with the OracleServiceName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerOracleDb) GetOracleServiceNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.OracleServiceName == nil {
 		return nil, false
 	}
-	return &o.OracleServiceName, true
+	return o.OracleServiceName, true
 }
 
-// SetOracleServiceName sets field value
+// HasOracleServiceName returns a boolean if a field has been set.
+func (o *GatewayCreateProducerOracleDb) HasOracleServiceName() bool {
+	if o != nil && o.OracleServiceName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOracleServiceName gets a reference to the given string and assigns it to the OracleServiceName field.
 func (o *GatewayCreateProducerOracleDb) SetOracleServiceName(v string) {
-	o.OracleServiceName = v
+	o.OracleServiceName = &v
 }
 
-// GetOracleUsername returns the OracleUsername field value
+// GetOracleUsername returns the OracleUsername field value if set, zero value otherwise.
 func (o *GatewayCreateProducerOracleDb) GetOracleUsername() string {
-	if o == nil  {
+	if o == nil || o.OracleUsername == nil {
 		var ret string
 		return ret
 	}
-
-	return o.OracleUsername
+	return *o.OracleUsername
 }
 
-// GetOracleUsernameOk returns a tuple with the OracleUsername field value
+// GetOracleUsernameOk returns a tuple with the OracleUsername field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerOracleDb) GetOracleUsernameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.OracleUsername == nil {
 		return nil, false
 	}
-	return &o.OracleUsername, true
+	return o.OracleUsername, true
 }
 
-// SetOracleUsername sets field value
+// HasOracleUsername returns a boolean if a field has been set.
+func (o *GatewayCreateProducerOracleDb) HasOracleUsername() bool {
+	if o != nil && o.OracleUsername != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOracleUsername gets a reference to the given string and assigns it to the OracleUsername field.
 func (o *GatewayCreateProducerOracleDb) SetOracleUsername(v string) {
-	o.OracleUsername = v
+	o.OracleUsername = &v
 }
 
 // GetPassword returns the Password field value if set, zero value otherwise.
@@ -400,6 +423,38 @@ func (o *GatewayCreateProducerOracleDb) HasProducerEncryptionKeyName() bool {
 // SetProducerEncryptionKeyName gets a reference to the given string and assigns it to the ProducerEncryptionKeyName field.
 func (o *GatewayCreateProducerOracleDb) SetProducerEncryptionKeyName(v string) {
 	o.ProducerEncryptionKeyName = &v
+}
+
+// GetTargetName returns the TargetName field value if set, zero value otherwise.
+func (o *GatewayCreateProducerOracleDb) GetTargetName() string {
+	if o == nil || o.TargetName == nil {
+		var ret string
+		return ret
+	}
+	return *o.TargetName
+}
+
+// GetTargetNameOk returns a tuple with the TargetName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerOracleDb) GetTargetNameOk() (*string, bool) {
+	if o == nil || o.TargetName == nil {
+		return nil, false
+	}
+	return o.TargetName, true
+}
+
+// HasTargetName returns a boolean if a field has been set.
+func (o *GatewayCreateProducerOracleDb) HasTargetName() bool {
+	if o != nil && o.TargetName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetName gets a reference to the given string and assigns it to the TargetName field.
+func (o *GatewayCreateProducerOracleDb) SetTargetName(v string) {
+	o.TargetName = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -544,7 +599,7 @@ func (o GatewayCreateProducerOracleDb) MarshalJSON() ([]byte, error) {
 	if o.OracleHost != nil {
 		toSerialize["oracle-host"] = o.OracleHost
 	}
-	if true {
+	if o.OraclePassword != nil {
 		toSerialize["oracle-password"] = o.OraclePassword
 	}
 	if o.OraclePort != nil {
@@ -553,10 +608,10 @@ func (o GatewayCreateProducerOracleDb) MarshalJSON() ([]byte, error) {
 	if o.OracleScreationStatements != nil {
 		toSerialize["oracle-screation-statements"] = o.OracleScreationStatements
 	}
-	if true {
+	if o.OracleServiceName != nil {
 		toSerialize["oracle-service-name"] = o.OracleServiceName
 	}
-	if true {
+	if o.OracleUsername != nil {
 		toSerialize["oracle-username"] = o.OracleUsername
 	}
 	if o.Password != nil {
@@ -564,6 +619,9 @@ func (o GatewayCreateProducerOracleDb) MarshalJSON() ([]byte, error) {
 	}
 	if o.ProducerEncryptionKeyName != nil {
 		toSerialize["producer-encryption-key-name"] = o.ProducerEncryptionKeyName
+	}
+	if o.TargetName != nil {
+		toSerialize["target-name"] = o.TargetName
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

@@ -17,13 +17,13 @@ import (
 
 // GatewayCreateProducerGcp gatewayCreateProducerGcp is a command that creates a GCP producer
 type GatewayCreateProducerGcp struct {
-	GcpCredType string `json:"gcp-cred-type"`
+	GcpCredType *string `json:"gcp-cred-type,omitempty"`
 	// Base64-encoded service account private key text
 	GcpKey *string `json:"gcp-key,omitempty"`
 	// Service account key algorithm, e.g. KEY_ALG_RSA_1024
 	GcpKeyAlgo *string `json:"gcp-key-algo,omitempty"`
 	// GCP service account email
-	GcpSaEmail string `json:"gcp-sa-email"`
+	GcpSaEmail *string `json:"gcp-sa-email,omitempty"`
 	// Access token scopes list, e.g. scope1,scope2
 	GcpTokenScopes *string `json:"gcp-token-scopes,omitempty"`
 	// Producer name
@@ -32,6 +32,8 @@ type GatewayCreateProducerGcp struct {
 	Password *string `json:"password,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
+	// Target name
+	TargetName *string `json:"target-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -46,10 +48,8 @@ type GatewayCreateProducerGcp struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayCreateProducerGcp(gcpCredType string, gcpSaEmail string, name string, ) *GatewayCreateProducerGcp {
+func NewGatewayCreateProducerGcp(name string, ) *GatewayCreateProducerGcp {
 	this := GatewayCreateProducerGcp{}
-	this.GcpCredType = gcpCredType
-	this.GcpSaEmail = gcpSaEmail
 	this.Name = name
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
@@ -66,28 +66,36 @@ func NewGatewayCreateProducerGcpWithDefaults() *GatewayCreateProducerGcp {
 	return &this
 }
 
-// GetGcpCredType returns the GcpCredType field value
+// GetGcpCredType returns the GcpCredType field value if set, zero value otherwise.
 func (o *GatewayCreateProducerGcp) GetGcpCredType() string {
-	if o == nil  {
+	if o == nil || o.GcpCredType == nil {
 		var ret string
 		return ret
 	}
-
-	return o.GcpCredType
+	return *o.GcpCredType
 }
 
-// GetGcpCredTypeOk returns a tuple with the GcpCredType field value
+// GetGcpCredTypeOk returns a tuple with the GcpCredType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerGcp) GetGcpCredTypeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.GcpCredType == nil {
 		return nil, false
 	}
-	return &o.GcpCredType, true
+	return o.GcpCredType, true
 }
 
-// SetGcpCredType sets field value
+// HasGcpCredType returns a boolean if a field has been set.
+func (o *GatewayCreateProducerGcp) HasGcpCredType() bool {
+	if o != nil && o.GcpCredType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpCredType gets a reference to the given string and assigns it to the GcpCredType field.
 func (o *GatewayCreateProducerGcp) SetGcpCredType(v string) {
-	o.GcpCredType = v
+	o.GcpCredType = &v
 }
 
 // GetGcpKey returns the GcpKey field value if set, zero value otherwise.
@@ -154,28 +162,36 @@ func (o *GatewayCreateProducerGcp) SetGcpKeyAlgo(v string) {
 	o.GcpKeyAlgo = &v
 }
 
-// GetGcpSaEmail returns the GcpSaEmail field value
+// GetGcpSaEmail returns the GcpSaEmail field value if set, zero value otherwise.
 func (o *GatewayCreateProducerGcp) GetGcpSaEmail() string {
-	if o == nil  {
+	if o == nil || o.GcpSaEmail == nil {
 		var ret string
 		return ret
 	}
-
-	return o.GcpSaEmail
+	return *o.GcpSaEmail
 }
 
-// GetGcpSaEmailOk returns a tuple with the GcpSaEmail field value
+// GetGcpSaEmailOk returns a tuple with the GcpSaEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerGcp) GetGcpSaEmailOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.GcpSaEmail == nil {
 		return nil, false
 	}
-	return &o.GcpSaEmail, true
+	return o.GcpSaEmail, true
 }
 
-// SetGcpSaEmail sets field value
+// HasGcpSaEmail returns a boolean if a field has been set.
+func (o *GatewayCreateProducerGcp) HasGcpSaEmail() bool {
+	if o != nil && o.GcpSaEmail != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpSaEmail gets a reference to the given string and assigns it to the GcpSaEmail field.
 func (o *GatewayCreateProducerGcp) SetGcpSaEmail(v string) {
-	o.GcpSaEmail = v
+	o.GcpSaEmail = &v
 }
 
 // GetGcpTokenScopes returns the GcpTokenScopes field value if set, zero value otherwise.
@@ -296,6 +312,38 @@ func (o *GatewayCreateProducerGcp) HasProducerEncryptionKeyName() bool {
 // SetProducerEncryptionKeyName gets a reference to the given string and assigns it to the ProducerEncryptionKeyName field.
 func (o *GatewayCreateProducerGcp) SetProducerEncryptionKeyName(v string) {
 	o.ProducerEncryptionKeyName = &v
+}
+
+// GetTargetName returns the TargetName field value if set, zero value otherwise.
+func (o *GatewayCreateProducerGcp) GetTargetName() string {
+	if o == nil || o.TargetName == nil {
+		var ret string
+		return ret
+	}
+	return *o.TargetName
+}
+
+// GetTargetNameOk returns a tuple with the TargetName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerGcp) GetTargetNameOk() (*string, bool) {
+	if o == nil || o.TargetName == nil {
+		return nil, false
+	}
+	return o.TargetName, true
+}
+
+// HasTargetName returns a boolean if a field has been set.
+func (o *GatewayCreateProducerGcp) HasTargetName() bool {
+	if o != nil && o.TargetName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetName gets a reference to the given string and assigns it to the TargetName field.
+func (o *GatewayCreateProducerGcp) SetTargetName(v string) {
+	o.TargetName = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -428,7 +476,7 @@ func (o *GatewayCreateProducerGcp) SetUsername(v string) {
 
 func (o GatewayCreateProducerGcp) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
+	if o.GcpCredType != nil {
 		toSerialize["gcp-cred-type"] = o.GcpCredType
 	}
 	if o.GcpKey != nil {
@@ -437,7 +485,7 @@ func (o GatewayCreateProducerGcp) MarshalJSON() ([]byte, error) {
 	if o.GcpKeyAlgo != nil {
 		toSerialize["gcp-key-algo"] = o.GcpKeyAlgo
 	}
-	if true {
+	if o.GcpSaEmail != nil {
 		toSerialize["gcp-sa-email"] = o.GcpSaEmail
 	}
 	if o.GcpTokenScopes != nil {
@@ -451,6 +499,9 @@ func (o GatewayCreateProducerGcp) MarshalJSON() ([]byte, error) {
 	}
 	if o.ProducerEncryptionKeyName != nil {
 		toSerialize["producer-encryption-key-name"] = o.ProducerEncryptionKeyName
+	}
+	if o.TargetName != nil {
+		toSerialize["target-name"] = o.TargetName
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

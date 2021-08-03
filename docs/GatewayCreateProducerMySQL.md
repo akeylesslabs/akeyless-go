@@ -6,18 +6,19 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DbServerCertificates** | Pointer to **string** | (Optional) DB server certificates | [optional] 
 **DbServerName** | Pointer to **string** | (Optional) Server name for certificate verification | [optional] 
-**MysqlDbname** | **string** | MySQL DB Name | 
+**MysqlDbname** | Pointer to **string** | MySQL DB Name | [optional] 
 **MysqlHost** | Pointer to **string** | MySQL Host | [optional] [default to "127.0.0.1"]
-**MysqlPassword** | **string** | MySQL Password | 
+**MysqlPassword** | Pointer to **string** | MySQL Password | [optional] 
 **MysqlPort** | Pointer to **string** | MySQL Port | [optional] [default to "3306"]
 **MysqlScreationStatements** | Pointer to **string** | MySQL Creation statements | [optional] 
-**MysqlUsername** | **string** | MySQL Username | 
+**MysqlUsername** | Pointer to **string** | MySQL Username | [optional] 
 **Name** | **string** | Producer name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **SecureAccessBastionIssuer** | Pointer to **string** |  | [optional] 
 **SecureAccessEnable** | Pointer to **string** |  | [optional] 
 **SecureAccessHost** | Pointer to **[]string** |  | [optional] 
+**TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserTtl** | Pointer to **string** | User TTL | [optional] [default to "60m"]
@@ -27,7 +28,7 @@ Name | Type | Description | Notes
 
 ### NewGatewayCreateProducerMySQL
 
-`func NewGatewayCreateProducerMySQL(mysqlDbname string, mysqlPassword string, mysqlUsername string, name string, ) *GatewayCreateProducerMySQL`
+`func NewGatewayCreateProducerMySQL(name string, ) *GatewayCreateProducerMySQL`
 
 NewGatewayCreateProducerMySQL instantiates a new GatewayCreateProducerMySQL object
 This constructor will assign default values to properties that have it defined,
@@ -111,6 +112,11 @@ and a boolean to check if the value has been set.
 
 SetMysqlDbname sets MysqlDbname field to given value.
 
+### HasMysqlDbname
+
+`func (o *GatewayCreateProducerMySQL) HasMysqlDbname() bool`
+
+HasMysqlDbname returns a boolean if a field has been set.
 
 ### GetMysqlHost
 
@@ -156,6 +162,11 @@ and a boolean to check if the value has been set.
 
 SetMysqlPassword sets MysqlPassword field to given value.
 
+### HasMysqlPassword
+
+`func (o *GatewayCreateProducerMySQL) HasMysqlPassword() bool`
+
+HasMysqlPassword returns a boolean if a field has been set.
 
 ### GetMysqlPort
 
@@ -226,6 +237,11 @@ and a boolean to check if the value has been set.
 
 SetMysqlUsername sets MysqlUsername field to given value.
 
+### HasMysqlUsername
+
+`func (o *GatewayCreateProducerMySQL) HasMysqlUsername() bool`
+
+HasMysqlUsername returns a boolean if a field has been set.
 
 ### GetName
 
@@ -371,6 +387,31 @@ SetSecureAccessHost sets SecureAccessHost field to given value.
 `func (o *GatewayCreateProducerMySQL) HasSecureAccessHost() bool`
 
 HasSecureAccessHost returns a boolean if a field has been set.
+
+### GetTargetName
+
+`func (o *GatewayCreateProducerMySQL) GetTargetName() string`
+
+GetTargetName returns the TargetName field if non-nil, zero value otherwise.
+
+### GetTargetNameOk
+
+`func (o *GatewayCreateProducerMySQL) GetTargetNameOk() (*string, bool)`
+
+GetTargetNameOk returns a tuple with the TargetName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetName
+
+`func (o *GatewayCreateProducerMySQL) SetTargetName(v string)`
+
+SetTargetName sets TargetName field to given value.
+
+### HasTargetName
+
+`func (o *GatewayCreateProducerMySQL) HasTargetName() bool`
+
+HasTargetName returns a boolean if a field has been set.
 
 ### GetToken
 

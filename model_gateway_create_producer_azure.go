@@ -20,11 +20,11 @@ type GatewayCreateProducerAzure struct {
 	// Azure App Object Id
 	AppObjId *string `json:"app-obj-id,omitempty"`
 	// Azure Client ID
-	AzureClientId string `json:"azure-client-id"`
+	AzureClientId *string `json:"azure-client-id,omitempty"`
 	// Azure Client Secret
-	AzureClientSecret string `json:"azure-client-secret"`
+	AzureClientSecret *string `json:"azure-client-secret,omitempty"`
 	// Azure Tenant ID
-	AzureTenantId string `json:"azure-tenant-id"`
+	AzureTenantId *string `json:"azure-tenant-id,omitempty"`
 	// Producer name
 	Name string `json:"name"`
 	// Required only when the authentication process requires a username and password
@@ -33,6 +33,8 @@ type GatewayCreateProducerAzure struct {
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
+	// Target name
+	TargetName *string `json:"target-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -57,11 +59,8 @@ type GatewayCreateProducerAzure struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayCreateProducerAzure(azureClientId string, azureClientSecret string, azureTenantId string, name string, ) *GatewayCreateProducerAzure {
+func NewGatewayCreateProducerAzure(name string, ) *GatewayCreateProducerAzure {
 	this := GatewayCreateProducerAzure{}
-	this.AzureClientId = azureClientId
-	this.AzureClientSecret = azureClientSecret
-	this.AzureTenantId = azureTenantId
 	this.Name = name
 	var userPortalAccess bool = false
 	this.UserPortalAccess = &userPortalAccess
@@ -118,76 +117,100 @@ func (o *GatewayCreateProducerAzure) SetAppObjId(v string) {
 	o.AppObjId = &v
 }
 
-// GetAzureClientId returns the AzureClientId field value
+// GetAzureClientId returns the AzureClientId field value if set, zero value otherwise.
 func (o *GatewayCreateProducerAzure) GetAzureClientId() string {
-	if o == nil  {
+	if o == nil || o.AzureClientId == nil {
 		var ret string
 		return ret
 	}
-
-	return o.AzureClientId
+	return *o.AzureClientId
 }
 
-// GetAzureClientIdOk returns a tuple with the AzureClientId field value
+// GetAzureClientIdOk returns a tuple with the AzureClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerAzure) GetAzureClientIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.AzureClientId == nil {
 		return nil, false
 	}
-	return &o.AzureClientId, true
+	return o.AzureClientId, true
 }
 
-// SetAzureClientId sets field value
+// HasAzureClientId returns a boolean if a field has been set.
+func (o *GatewayCreateProducerAzure) HasAzureClientId() bool {
+	if o != nil && o.AzureClientId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureClientId gets a reference to the given string and assigns it to the AzureClientId field.
 func (o *GatewayCreateProducerAzure) SetAzureClientId(v string) {
-	o.AzureClientId = v
+	o.AzureClientId = &v
 }
 
-// GetAzureClientSecret returns the AzureClientSecret field value
+// GetAzureClientSecret returns the AzureClientSecret field value if set, zero value otherwise.
 func (o *GatewayCreateProducerAzure) GetAzureClientSecret() string {
-	if o == nil  {
+	if o == nil || o.AzureClientSecret == nil {
 		var ret string
 		return ret
 	}
-
-	return o.AzureClientSecret
+	return *o.AzureClientSecret
 }
 
-// GetAzureClientSecretOk returns a tuple with the AzureClientSecret field value
+// GetAzureClientSecretOk returns a tuple with the AzureClientSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerAzure) GetAzureClientSecretOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.AzureClientSecret == nil {
 		return nil, false
 	}
-	return &o.AzureClientSecret, true
+	return o.AzureClientSecret, true
 }
 
-// SetAzureClientSecret sets field value
+// HasAzureClientSecret returns a boolean if a field has been set.
+func (o *GatewayCreateProducerAzure) HasAzureClientSecret() bool {
+	if o != nil && o.AzureClientSecret != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureClientSecret gets a reference to the given string and assigns it to the AzureClientSecret field.
 func (o *GatewayCreateProducerAzure) SetAzureClientSecret(v string) {
-	o.AzureClientSecret = v
+	o.AzureClientSecret = &v
 }
 
-// GetAzureTenantId returns the AzureTenantId field value
+// GetAzureTenantId returns the AzureTenantId field value if set, zero value otherwise.
 func (o *GatewayCreateProducerAzure) GetAzureTenantId() string {
-	if o == nil  {
+	if o == nil || o.AzureTenantId == nil {
 		var ret string
 		return ret
 	}
-
-	return o.AzureTenantId
+	return *o.AzureTenantId
 }
 
-// GetAzureTenantIdOk returns a tuple with the AzureTenantId field value
+// GetAzureTenantIdOk returns a tuple with the AzureTenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerAzure) GetAzureTenantIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.AzureTenantId == nil {
 		return nil, false
 	}
-	return &o.AzureTenantId, true
+	return o.AzureTenantId, true
 }
 
-// SetAzureTenantId sets field value
+// HasAzureTenantId returns a boolean if a field has been set.
+func (o *GatewayCreateProducerAzure) HasAzureTenantId() bool {
+	if o != nil && o.AzureTenantId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureTenantId gets a reference to the given string and assigns it to the AzureTenantId field.
 func (o *GatewayCreateProducerAzure) SetAzureTenantId(v string) {
-	o.AzureTenantId = v
+	o.AzureTenantId = &v
 }
 
 // GetName returns the Name field value
@@ -340,6 +363,38 @@ func (o *GatewayCreateProducerAzure) HasSecureAccessWebBrowsing() bool {
 // SetSecureAccessWebBrowsing gets a reference to the given bool and assigns it to the SecureAccessWebBrowsing field.
 func (o *GatewayCreateProducerAzure) SetSecureAccessWebBrowsing(v bool) {
 	o.SecureAccessWebBrowsing = &v
+}
+
+// GetTargetName returns the TargetName field value if set, zero value otherwise.
+func (o *GatewayCreateProducerAzure) GetTargetName() string {
+	if o == nil || o.TargetName == nil {
+		var ret string
+		return ret
+	}
+	return *o.TargetName
+}
+
+// GetTargetNameOk returns a tuple with the TargetName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerAzure) GetTargetNameOk() (*string, bool) {
+	if o == nil || o.TargetName == nil {
+		return nil, false
+	}
+	return o.TargetName, true
+}
+
+// HasTargetName returns a boolean if a field has been set.
+func (o *GatewayCreateProducerAzure) HasTargetName() bool {
+	if o != nil && o.TargetName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetName gets a reference to the given string and assigns it to the TargetName field.
+func (o *GatewayCreateProducerAzure) SetTargetName(v string) {
+	o.TargetName = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -635,13 +690,13 @@ func (o GatewayCreateProducerAzure) MarshalJSON() ([]byte, error) {
 	if o.AppObjId != nil {
 		toSerialize["app-obj-id"] = o.AppObjId
 	}
-	if true {
+	if o.AzureClientId != nil {
 		toSerialize["azure-client-id"] = o.AzureClientId
 	}
-	if true {
+	if o.AzureClientSecret != nil {
 		toSerialize["azure-client-secret"] = o.AzureClientSecret
 	}
-	if true {
+	if o.AzureTenantId != nil {
 		toSerialize["azure-tenant-id"] = o.AzureTenantId
 	}
 	if true {
@@ -658,6 +713,9 @@ func (o GatewayCreateProducerAzure) MarshalJSON() ([]byte, error) {
 	}
 	if o.SecureAccessWebBrowsing != nil {
 		toSerialize["secure-access-web-browsing"] = o.SecureAccessWebBrowsing
+	}
+	if o.TargetName != nil {
+		toSerialize["target-name"] = o.TargetName
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

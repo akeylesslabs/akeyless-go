@@ -20,13 +20,13 @@ type GatewayCreateProducerGke struct {
 	// GKE Service Account key file path
 	GkeAccountKey *string `json:"gke-account-key,omitempty"`
 	// GKE cluster CA certificate
-	GkeClusterCert string `json:"gke-cluster-cert"`
+	GkeClusterCert *string `json:"gke-cluster-cert,omitempty"`
 	// GKE cluster URL endpoint
-	GkeClusterEndpoint string `json:"gke-cluster-endpoint"`
+	GkeClusterEndpoint *string `json:"gke-cluster-endpoint,omitempty"`
 	// GKE cluster name
 	GkeClusterName string `json:"gke-cluster-name"`
 	// GKE service account email
-	GkeServiceAccountEmail string `json:"gke-service-account-email"`
+	GkeServiceAccountEmail *string `json:"gke-service-account-email,omitempty"`
 	// Producer name
 	Name string `json:"name"`
 	// Required only when the authentication process requires a username and password
@@ -37,6 +37,8 @@ type GatewayCreateProducerGke struct {
 	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
 	SecureAccessClusterEndpoint *string `json:"secure-access-cluster-endpoint,omitempty"`
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Target name
+	TargetName *string `json:"target-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -51,12 +53,9 @@ type GatewayCreateProducerGke struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayCreateProducerGke(gkeClusterCert string, gkeClusterEndpoint string, gkeClusterName string, gkeServiceAccountEmail string, name string, ) *GatewayCreateProducerGke {
+func NewGatewayCreateProducerGke(gkeClusterName string, name string, ) *GatewayCreateProducerGke {
 	this := GatewayCreateProducerGke{}
-	this.GkeClusterCert = gkeClusterCert
-	this.GkeClusterEndpoint = gkeClusterEndpoint
 	this.GkeClusterName = gkeClusterName
-	this.GkeServiceAccountEmail = gkeServiceAccountEmail
 	this.Name = name
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
@@ -105,52 +104,68 @@ func (o *GatewayCreateProducerGke) SetGkeAccountKey(v string) {
 	o.GkeAccountKey = &v
 }
 
-// GetGkeClusterCert returns the GkeClusterCert field value
+// GetGkeClusterCert returns the GkeClusterCert field value if set, zero value otherwise.
 func (o *GatewayCreateProducerGke) GetGkeClusterCert() string {
-	if o == nil  {
+	if o == nil || o.GkeClusterCert == nil {
 		var ret string
 		return ret
 	}
-
-	return o.GkeClusterCert
+	return *o.GkeClusterCert
 }
 
-// GetGkeClusterCertOk returns a tuple with the GkeClusterCert field value
+// GetGkeClusterCertOk returns a tuple with the GkeClusterCert field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerGke) GetGkeClusterCertOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.GkeClusterCert == nil {
 		return nil, false
 	}
-	return &o.GkeClusterCert, true
+	return o.GkeClusterCert, true
 }
 
-// SetGkeClusterCert sets field value
+// HasGkeClusterCert returns a boolean if a field has been set.
+func (o *GatewayCreateProducerGke) HasGkeClusterCert() bool {
+	if o != nil && o.GkeClusterCert != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGkeClusterCert gets a reference to the given string and assigns it to the GkeClusterCert field.
 func (o *GatewayCreateProducerGke) SetGkeClusterCert(v string) {
-	o.GkeClusterCert = v
+	o.GkeClusterCert = &v
 }
 
-// GetGkeClusterEndpoint returns the GkeClusterEndpoint field value
+// GetGkeClusterEndpoint returns the GkeClusterEndpoint field value if set, zero value otherwise.
 func (o *GatewayCreateProducerGke) GetGkeClusterEndpoint() string {
-	if o == nil  {
+	if o == nil || o.GkeClusterEndpoint == nil {
 		var ret string
 		return ret
 	}
-
-	return o.GkeClusterEndpoint
+	return *o.GkeClusterEndpoint
 }
 
-// GetGkeClusterEndpointOk returns a tuple with the GkeClusterEndpoint field value
+// GetGkeClusterEndpointOk returns a tuple with the GkeClusterEndpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerGke) GetGkeClusterEndpointOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.GkeClusterEndpoint == nil {
 		return nil, false
 	}
-	return &o.GkeClusterEndpoint, true
+	return o.GkeClusterEndpoint, true
 }
 
-// SetGkeClusterEndpoint sets field value
+// HasGkeClusterEndpoint returns a boolean if a field has been set.
+func (o *GatewayCreateProducerGke) HasGkeClusterEndpoint() bool {
+	if o != nil && o.GkeClusterEndpoint != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGkeClusterEndpoint gets a reference to the given string and assigns it to the GkeClusterEndpoint field.
 func (o *GatewayCreateProducerGke) SetGkeClusterEndpoint(v string) {
-	o.GkeClusterEndpoint = v
+	o.GkeClusterEndpoint = &v
 }
 
 // GetGkeClusterName returns the GkeClusterName field value
@@ -177,28 +192,36 @@ func (o *GatewayCreateProducerGke) SetGkeClusterName(v string) {
 	o.GkeClusterName = v
 }
 
-// GetGkeServiceAccountEmail returns the GkeServiceAccountEmail field value
+// GetGkeServiceAccountEmail returns the GkeServiceAccountEmail field value if set, zero value otherwise.
 func (o *GatewayCreateProducerGke) GetGkeServiceAccountEmail() string {
-	if o == nil  {
+	if o == nil || o.GkeServiceAccountEmail == nil {
 		var ret string
 		return ret
 	}
-
-	return o.GkeServiceAccountEmail
+	return *o.GkeServiceAccountEmail
 }
 
-// GetGkeServiceAccountEmailOk returns a tuple with the GkeServiceAccountEmail field value
+// GetGkeServiceAccountEmailOk returns a tuple with the GkeServiceAccountEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerGke) GetGkeServiceAccountEmailOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.GkeServiceAccountEmail == nil {
 		return nil, false
 	}
-	return &o.GkeServiceAccountEmail, true
+	return o.GkeServiceAccountEmail, true
 }
 
-// SetGkeServiceAccountEmail sets field value
+// HasGkeServiceAccountEmail returns a boolean if a field has been set.
+func (o *GatewayCreateProducerGke) HasGkeServiceAccountEmail() bool {
+	if o != nil && o.GkeServiceAccountEmail != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGkeServiceAccountEmail gets a reference to the given string and assigns it to the GkeServiceAccountEmail field.
 func (o *GatewayCreateProducerGke) SetGkeServiceAccountEmail(v string) {
-	o.GkeServiceAccountEmail = v
+	o.GkeServiceAccountEmail = &v
 }
 
 // GetName returns the Name field value
@@ -417,6 +440,38 @@ func (o *GatewayCreateProducerGke) SetSecureAccessEnable(v string) {
 	o.SecureAccessEnable = &v
 }
 
+// GetTargetName returns the TargetName field value if set, zero value otherwise.
+func (o *GatewayCreateProducerGke) GetTargetName() string {
+	if o == nil || o.TargetName == nil {
+		var ret string
+		return ret
+	}
+	return *o.TargetName
+}
+
+// GetTargetNameOk returns a tuple with the TargetName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerGke) GetTargetNameOk() (*string, bool) {
+	if o == nil || o.TargetName == nil {
+		return nil, false
+	}
+	return o.TargetName, true
+}
+
+// HasTargetName returns a boolean if a field has been set.
+func (o *GatewayCreateProducerGke) HasTargetName() bool {
+	if o != nil && o.TargetName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetName gets a reference to the given string and assigns it to the TargetName field.
+func (o *GatewayCreateProducerGke) SetTargetName(v string) {
+	o.TargetName = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *GatewayCreateProducerGke) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -550,16 +605,16 @@ func (o GatewayCreateProducerGke) MarshalJSON() ([]byte, error) {
 	if o.GkeAccountKey != nil {
 		toSerialize["gke-account-key"] = o.GkeAccountKey
 	}
-	if true {
+	if o.GkeClusterCert != nil {
 		toSerialize["gke-cluster-cert"] = o.GkeClusterCert
 	}
-	if true {
+	if o.GkeClusterEndpoint != nil {
 		toSerialize["gke-cluster-endpoint"] = o.GkeClusterEndpoint
 	}
 	if true {
 		toSerialize["gke-cluster-name"] = o.GkeClusterName
 	}
-	if true {
+	if o.GkeServiceAccountEmail != nil {
 		toSerialize["gke-service-account-email"] = o.GkeServiceAccountEmail
 	}
 	if true {
@@ -582,6 +637,9 @@ func (o GatewayCreateProducerGke) MarshalJSON() ([]byte, error) {
 	}
 	if o.SecureAccessEnable != nil {
 		toSerialize["secure-access-enable"] = o.SecureAccessEnable
+	}
+	if o.TargetName != nil {
+		toSerialize["target-name"] = o.TargetName
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

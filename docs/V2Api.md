@@ -1446,7 +1446,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateGKETarget("GkeClusterCert_example", "GkeClusterEndpoint_example", "GkeClusterName_example", "GkeServiceAccountEmail_example", "Name_example") // CreateGKETarget | 
+    body := *openapiclient.NewcreateGKETarget("GkeClusterName_example", "Name_example") // CreateGKETarget | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -3425,7 +3425,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerArtifactory("ArtifactoryAdminName_example", "ArtifactoryAdminPwd_example", "ArtifactoryTokenAudience_example", "ArtifactoryTokenScope_example", "BaseUrl_example", "Name_example") // GatewayCreateProducerArtifactory | 
+    body := *openapiclient.NewgatewayCreateProducerArtifactory("ArtifactoryTokenAudience_example", "ArtifactoryTokenScope_example", "Name_example") // GatewayCreateProducerArtifactory | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -3489,7 +3489,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerAws("AwsAccessKeyId_example", "AwsAccessSecretKey_example", "Name_example") // GatewayCreateProducerAws | 
+    body := *openapiclient.NewgatewayCreateProducerAws("Name_example") // GatewayCreateProducerAws | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -3553,7 +3553,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerAzure("AzureClientId_example", "AzureClientSecret_example", "AzureTenantId_example", "Name_example") // GatewayCreateProducerAzure | 
+    body := *openapiclient.NewgatewayCreateProducerAzure("Name_example") // GatewayCreateProducerAzure | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -3617,7 +3617,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerCertificateAutomation("Name_example", "VenafiZone_example") // GatewayCreateProducerCertificateAutomation | 
+    body := *openapiclient.NewgatewayCreateProducerCertificateAutomation("Name_example") // GatewayCreateProducerCertificateAutomation | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -3745,7 +3745,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerEks("EksAccessKeyId_example", "EksClusterCaCert_example", "EksClusterEndpoint_example", "EksClusterName_example", "EksSecretAccessKey_example", "Name_example") // GatewayCreateProducerEks | 
+    body := *openapiclient.NewgatewayCreateProducerEks("Name_example") // GatewayCreateProducerEks | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -3809,7 +3809,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerGcp("GcpCredType_example", "GcpSaEmail_example", "Name_example") // GatewayCreateProducerGcp | 
+    body := *openapiclient.NewgatewayCreateProducerGcp("Name_example") // GatewayCreateProducerGcp | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -3873,7 +3873,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerGke("GkeClusterCert_example", "GkeClusterEndpoint_example", "GkeClusterName_example", "GkeServiceAccountEmail_example", "Name_example") // GatewayCreateProducerGke | 
+    body := *openapiclient.NewgatewayCreateProducerGke("GkeClusterName_example", "Name_example") // GatewayCreateProducerGke | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -3937,7 +3937,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerMSSQL("MssqlDbname_example", "MssqlPassword_example", "MssqlUsername_example", "Name_example") // GatewayCreateProducerMSSQL | 
+    body := *openapiclient.NewgatewayCreateProducerMSSQL("Name_example") // GatewayCreateProducerMSSQL | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -4065,7 +4065,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerMySQL("MysqlDbname_example", "MysqlPassword_example", "MysqlUsername_example", "Name_example") // GatewayCreateProducerMySQL | 
+    body := *openapiclient.NewgatewayCreateProducerMySQL("Name_example") // GatewayCreateProducerMySQL | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -4188,7 +4188,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerOracleDb("Name_example", "OraclePassword_example", "OracleServiceName_example", "OracleUsername_example") // GatewayCreateProducerOracleDb | 
+    body := *openapiclient.NewgatewayCreateProducerOracleDb("Name_example") // GatewayCreateProducerOracleDb | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -4252,7 +4252,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerPostgreSQL("Name_example", "PostgresqlDbName_example", "PostgresqlPassword_example", "PostgresqlUsername_example") // GatewayCreateProducerPostgreSQL | 
+    body := *openapiclient.NewgatewayCreateProducerPostgreSQL("Name_example") // GatewayCreateProducerPostgreSQL | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -4316,7 +4316,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerRabbitMQ("Name_example", "RabbitmqAdminPwd_example", "RabbitmqAdminUser_example", "RabbitmqServerUri_example", "RabbitmqUserConfPermission_example", "RabbitmqUserReadPermission_example", "RabbitmqUserWritePermission_example") // GatewayCreateProducerRabbitMQ | 
+    body := *openapiclient.NewgatewayCreateProducerRabbitMQ("Name_example") // GatewayCreateProducerRabbitMQ | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -4380,7 +4380,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerRdp("Name_example", "RdpAdminName_example", "RdpAdminPwd_example", "RdpHostName_example", "RdpUserGroups_example") // GatewayCreateProducerRdp | 
+    body := *openapiclient.NewgatewayCreateProducerRdp("Name_example", "RdpAdminName_example", "RdpAdminPwd_example") // GatewayCreateProducerRdp | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -4444,7 +4444,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerSnowflake("Account_example", "DbName_example", "Name_example") // GatewayCreateProducerSnowflake | 
+    body := *openapiclient.NewgatewayCreateProducerSnowflake("Name_example") // GatewayCreateProducerSnowflake | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -6722,7 +6722,7 @@ No authorization required
 
 ## SignJWTWithClassicKey
 
-> SignJWTWithClassicKey(ctx).Body(body).Execute()
+> SignJWTOutput SignJWTWithClassicKey(ctx).Body(body).Execute()
 
 
 
@@ -6748,6 +6748,8 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.SignJWTWithClassicKey``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `SignJWTWithClassicKey`: SignJWTOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.SignJWTWithClassicKey`: %v\n", resp)
 }
 ```
 
@@ -6766,7 +6768,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**SignJWTOutput**](signJWTOutput.md)
 
 ### Authorization
 
@@ -6848,7 +6850,7 @@ No authorization required
 
 ## SignPKICertWithClassicKey
 
-> SignPKICertWithClassicKey(ctx).Body(body).Execute()
+> SignPKICertOutput SignPKICertWithClassicKey(ctx).Body(body).Execute()
 
 
 
@@ -6874,6 +6876,8 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.SignPKICertWithClassicKey``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `SignPKICertWithClassicKey`: SignPKICertOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.SignPKICertWithClassicKey`: %v\n", resp)
 }
 ```
 
@@ -6892,7 +6896,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**SignPKICertOutput**](signPKICertOutput.md)
 
 ### Authorization
 
@@ -7759,7 +7763,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateGKETarget("GkeClusterCert_example", "GkeClusterEndpoint_example", "GkeClusterName_example", "GkeServiceAccountEmail_example", "Name_example") // UpdateGKETarget | 
+    body := *openapiclient.NewupdateGKETarget("GkeClusterName_example", "Name_example") // UpdateGKETarget | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -8889,7 +8893,7 @@ No authorization required
 
 ## VerifyJWTWithClassicKey
 
-> VerifyJWTWithClassicKey(ctx).Body(body).Execute()
+> VerifyJWTOutput VerifyJWTWithClassicKey(ctx).Body(body).Execute()
 
 
 
@@ -8915,6 +8919,8 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.VerifyJWTWithClassicKey``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `VerifyJWTWithClassicKey`: VerifyJWTOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.VerifyJWTWithClassicKey`: %v\n", resp)
 }
 ```
 
@@ -8933,7 +8939,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**VerifyJWTOutput**](verifyJWTOutput.md)
 
 ### Authorization
 
@@ -9015,7 +9021,7 @@ No authorization required
 
 ## VerifyPKICertWithClassicKey
 
-> VerifyPKICertWithClassicKey(ctx).Body(body).Execute()
+> VerifyPKICertOutput VerifyPKICertWithClassicKey(ctx).Body(body).Execute()
 
 
 
@@ -9041,6 +9047,8 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.VerifyPKICertWithClassicKey``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `VerifyPKICertWithClassicKey`: VerifyPKICertOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.VerifyPKICertWithClassicKey`: %v\n", resp)
 }
 ```
 
@@ -9059,7 +9067,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**VerifyPKICertOutput**](verifyPKICertOutput.md)
 
 ### Authorization
 

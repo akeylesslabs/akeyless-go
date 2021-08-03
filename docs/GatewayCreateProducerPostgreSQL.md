@@ -7,16 +7,17 @@ Name | Type | Description | Notes
 **CreationStatements** | Pointer to **string** | PostgreSQL Creation statements | [optional] 
 **Name** | **string** | Producer name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
-**PostgresqlDbName** | **string** | PostgreSQL DB Name | 
+**PostgresqlDbName** | Pointer to **string** | PostgreSQL DB Name | [optional] 
 **PostgresqlHost** | Pointer to **string** | PostgreSQL Host | [optional] [default to "127.0.0.1"]
-**PostgresqlPassword** | **string** | PostgreSQL Password | 
+**PostgresqlPassword** | Pointer to **string** | PostgreSQL Password | [optional] 
 **PostgresqlPort** | Pointer to **string** | PostgreSQL Port | [optional] [default to "5432"]
-**PostgresqlUsername** | **string** | PostgreSQL Username | 
+**PostgresqlUsername** | Pointer to **string** | PostgreSQL Username | [optional] 
 **ProducerEncryptionKey** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **SecureAccessBastionIssuer** | Pointer to **string** |  | [optional] 
 **SecureAccessDbSchema** | Pointer to **string** |  | [optional] 
 **SecureAccessEnable** | Pointer to **string** |  | [optional] 
 **SecureAccessHost** | Pointer to **[]string** |  | [optional] 
+**TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserTtl** | Pointer to **string** | User TTL | [optional] [default to "60m"]
@@ -26,7 +27,7 @@ Name | Type | Description | Notes
 
 ### NewGatewayCreateProducerPostgreSQL
 
-`func NewGatewayCreateProducerPostgreSQL(name string, postgresqlDbName string, postgresqlPassword string, postgresqlUsername string, ) *GatewayCreateProducerPostgreSQL`
+`func NewGatewayCreateProducerPostgreSQL(name string, ) *GatewayCreateProducerPostgreSQL`
 
 NewGatewayCreateProducerPostgreSQL instantiates a new GatewayCreateProducerPostgreSQL object
 This constructor will assign default values to properties that have it defined,
@@ -130,6 +131,11 @@ and a boolean to check if the value has been set.
 
 SetPostgresqlDbName sets PostgresqlDbName field to given value.
 
+### HasPostgresqlDbName
+
+`func (o *GatewayCreateProducerPostgreSQL) HasPostgresqlDbName() bool`
+
+HasPostgresqlDbName returns a boolean if a field has been set.
 
 ### GetPostgresqlHost
 
@@ -175,6 +181,11 @@ and a boolean to check if the value has been set.
 
 SetPostgresqlPassword sets PostgresqlPassword field to given value.
 
+### HasPostgresqlPassword
+
+`func (o *GatewayCreateProducerPostgreSQL) HasPostgresqlPassword() bool`
+
+HasPostgresqlPassword returns a boolean if a field has been set.
 
 ### GetPostgresqlPort
 
@@ -220,6 +231,11 @@ and a boolean to check if the value has been set.
 
 SetPostgresqlUsername sets PostgresqlUsername field to given value.
 
+### HasPostgresqlUsername
+
+`func (o *GatewayCreateProducerPostgreSQL) HasPostgresqlUsername() bool`
+
+HasPostgresqlUsername returns a boolean if a field has been set.
 
 ### GetProducerEncryptionKey
 
@@ -345,6 +361,31 @@ SetSecureAccessHost sets SecureAccessHost field to given value.
 `func (o *GatewayCreateProducerPostgreSQL) HasSecureAccessHost() bool`
 
 HasSecureAccessHost returns a boolean if a field has been set.
+
+### GetTargetName
+
+`func (o *GatewayCreateProducerPostgreSQL) GetTargetName() string`
+
+GetTargetName returns the TargetName field if non-nil, zero value otherwise.
+
+### GetTargetNameOk
+
+`func (o *GatewayCreateProducerPostgreSQL) GetTargetNameOk() (*string, bool)`
+
+GetTargetNameOk returns a tuple with the TargetName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetName
+
+`func (o *GatewayCreateProducerPostgreSQL) SetTargetName(v string)`
+
+SetTargetName sets TargetName field to given value.
+
+### HasTargetName
+
+`func (o *GatewayCreateProducerPostgreSQL) HasTargetName() bool`
+
+HasTargetName returns a boolean if a field has been set.
 
 ### GetToken
 
