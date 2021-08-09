@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CertificateIssueDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Rules** | Pointer to [**[]PathRule**](PathRule.md) |  | [optional] 
@@ -26,6 +27,31 @@ will change when the set of required properties is changed
 NewKMIPClientWithDefaults instantiates a new KMIPClient object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCertificateIssueDate
+
+`func (o *KMIPClient) GetCertificateIssueDate() time.Time`
+
+GetCertificateIssueDate returns the CertificateIssueDate field if non-nil, zero value otherwise.
+
+### GetCertificateIssueDateOk
+
+`func (o *KMIPClient) GetCertificateIssueDateOk() (*time.Time, bool)`
+
+GetCertificateIssueDateOk returns a tuple with the CertificateIssueDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificateIssueDate
+
+`func (o *KMIPClient) SetCertificateIssueDate(v time.Time)`
+
+SetCertificateIssueDate sets CertificateIssueDate field to given value.
+
+### HasCertificateIssueDate
+
+`func (o *KMIPClient) HasCertificateIssueDate() bool`
+
+HasCertificateIssueDate returns a boolean if a field has been set.
 
 ### GetId
 

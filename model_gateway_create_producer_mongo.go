@@ -28,7 +28,7 @@ type GatewayCreateProducerMongo struct {
 	// MongoDB server host and port
 	MongodbHostPort *string `json:"mongodb-host-port,omitempty"`
 	// MongoDB Name
-	MongodbName string `json:"mongodb-name"`
+	MongodbName *string `json:"mongodb-name,omitempty"`
 	// MongoDB server password. You will prompted to provide a password if it will not appear in CLI parameters
 	MongodbPassword *string `json:"mongodb-password,omitempty"`
 	// MongoDB Roles
@@ -64,9 +64,8 @@ type GatewayCreateProducerMongo struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayCreateProducerMongo(mongodbName string, name string, ) *GatewayCreateProducerMongo {
+func NewGatewayCreateProducerMongo(name string, ) *GatewayCreateProducerMongo {
 	this := GatewayCreateProducerMongo{}
-	this.MongodbName = mongodbName
 	var mongodbRoles string = "[]"
 	this.MongodbRoles = &mongodbRoles
 	this.Name = name
@@ -247,28 +246,36 @@ func (o *GatewayCreateProducerMongo) SetMongodbHostPort(v string) {
 	o.MongodbHostPort = &v
 }
 
-// GetMongodbName returns the MongodbName field value
+// GetMongodbName returns the MongodbName field value if set, zero value otherwise.
 func (o *GatewayCreateProducerMongo) GetMongodbName() string {
-	if o == nil  {
+	if o == nil || o.MongodbName == nil {
 		var ret string
 		return ret
 	}
-
-	return o.MongodbName
+	return *o.MongodbName
 }
 
-// GetMongodbNameOk returns a tuple with the MongodbName field value
+// GetMongodbNameOk returns a tuple with the MongodbName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerMongo) GetMongodbNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.MongodbName == nil {
 		return nil, false
 	}
-	return &o.MongodbName, true
+	return o.MongodbName, true
 }
 
-// SetMongodbName sets field value
+// HasMongodbName returns a boolean if a field has been set.
+func (o *GatewayCreateProducerMongo) HasMongodbName() bool {
+	if o != nil && o.MongodbName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMongodbName gets a reference to the given string and assigns it to the MongodbName field.
 func (o *GatewayCreateProducerMongo) SetMongodbName(v string) {
-	o.MongodbName = v
+	o.MongodbName = &v
 }
 
 // GetMongodbPassword returns the MongodbPassword field value if set, zero value otherwise.
@@ -792,7 +799,7 @@ func (o GatewayCreateProducerMongo) MarshalJSON() ([]byte, error) {
 	if o.MongodbHostPort != nil {
 		toSerialize["mongodb-host-port"] = o.MongodbHostPort
 	}
-	if true {
+	if o.MongodbName != nil {
 		toSerialize["mongodb-name"] = o.MongodbName
 	}
 	if o.MongodbPassword != nil {

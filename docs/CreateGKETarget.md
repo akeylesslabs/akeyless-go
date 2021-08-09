@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **GkeAccountKey** | Pointer to **string** | GKE Service Account key file path | [optional] 
 **GkeClusterCert** | Pointer to **string** | GKE cluster CA certificate | [optional] 
 **GkeClusterEndpoint** | Pointer to **string** | GKE cluster URL endpoint | [optional] 
-**GkeClusterName** | **string** | GKE cluster name | 
+**GkeClusterName** | Pointer to **string** | GKE cluster name | [optional] 
 **GkeServiceAccountEmail** | Pointer to **string** | GKE service account email | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Target name | 
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewCreateGKETarget
 
-`func NewCreateGKETarget(gkeClusterName string, name string, ) *CreateGKETarget`
+`func NewCreateGKETarget(name string, ) *CreateGKETarget`
 
 NewCreateGKETarget instantiates a new CreateGKETarget object
 This constructor will assign default values to properties that have it defined,
@@ -155,6 +155,11 @@ and a boolean to check if the value has been set.
 
 SetGkeClusterName sets GkeClusterName field to given value.
 
+### HasGkeClusterName
+
+`func (o *CreateGKETarget) HasGkeClusterName() bool`
+
+HasGkeClusterName returns a boolean if a field has been set.
 
 ### GetGkeServiceAccountEmail
 

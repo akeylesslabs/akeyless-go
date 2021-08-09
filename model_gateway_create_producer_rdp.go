@@ -26,9 +26,9 @@ type GatewayCreateProducerRdp struct {
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
 	// RDP Admin Name
-	RdpAdminName string `json:"rdp-admin-name"`
+	RdpAdminName *string `json:"rdp-admin-name,omitempty"`
 	// RDP Admin password
-	RdpAdminPwd string `json:"rdp-admin-pwd"`
+	RdpAdminPwd *string `json:"rdp-admin-pwd,omitempty"`
 	// Hostname
 	RdpHostName *string `json:"rdp-host-name,omitempty"`
 	// Port
@@ -54,13 +54,11 @@ type GatewayCreateProducerRdp struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayCreateProducerRdp(name string, rdpAdminName string, rdpAdminPwd string, ) *GatewayCreateProducerRdp {
+func NewGatewayCreateProducerRdp(name string, ) *GatewayCreateProducerRdp {
 	this := GatewayCreateProducerRdp{}
 	var fixedUserOnly string = "false"
 	this.FixedUserOnly = &fixedUserOnly
 	this.Name = name
-	this.RdpAdminName = rdpAdminName
-	this.RdpAdminPwd = rdpAdminPwd
 	var rdpHostPort string = "22"
 	this.RdpHostPort = &rdpHostPort
 	var userTtl string = "60m"
@@ -202,52 +200,68 @@ func (o *GatewayCreateProducerRdp) SetProducerEncryptionKeyName(v string) {
 	o.ProducerEncryptionKeyName = &v
 }
 
-// GetRdpAdminName returns the RdpAdminName field value
+// GetRdpAdminName returns the RdpAdminName field value if set, zero value otherwise.
 func (o *GatewayCreateProducerRdp) GetRdpAdminName() string {
-	if o == nil  {
+	if o == nil || o.RdpAdminName == nil {
 		var ret string
 		return ret
 	}
-
-	return o.RdpAdminName
+	return *o.RdpAdminName
 }
 
-// GetRdpAdminNameOk returns a tuple with the RdpAdminName field value
+// GetRdpAdminNameOk returns a tuple with the RdpAdminName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerRdp) GetRdpAdminNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.RdpAdminName == nil {
 		return nil, false
 	}
-	return &o.RdpAdminName, true
+	return o.RdpAdminName, true
 }
 
-// SetRdpAdminName sets field value
+// HasRdpAdminName returns a boolean if a field has been set.
+func (o *GatewayCreateProducerRdp) HasRdpAdminName() bool {
+	if o != nil && o.RdpAdminName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRdpAdminName gets a reference to the given string and assigns it to the RdpAdminName field.
 func (o *GatewayCreateProducerRdp) SetRdpAdminName(v string) {
-	o.RdpAdminName = v
+	o.RdpAdminName = &v
 }
 
-// GetRdpAdminPwd returns the RdpAdminPwd field value
+// GetRdpAdminPwd returns the RdpAdminPwd field value if set, zero value otherwise.
 func (o *GatewayCreateProducerRdp) GetRdpAdminPwd() string {
-	if o == nil  {
+	if o == nil || o.RdpAdminPwd == nil {
 		var ret string
 		return ret
 	}
-
-	return o.RdpAdminPwd
+	return *o.RdpAdminPwd
 }
 
-// GetRdpAdminPwdOk returns a tuple with the RdpAdminPwd field value
+// GetRdpAdminPwdOk returns a tuple with the RdpAdminPwd field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerRdp) GetRdpAdminPwdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.RdpAdminPwd == nil {
 		return nil, false
 	}
-	return &o.RdpAdminPwd, true
+	return o.RdpAdminPwd, true
 }
 
-// SetRdpAdminPwd sets field value
+// HasRdpAdminPwd returns a boolean if a field has been set.
+func (o *GatewayCreateProducerRdp) HasRdpAdminPwd() bool {
+	if o != nil && o.RdpAdminPwd != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRdpAdminPwd gets a reference to the given string and assigns it to the RdpAdminPwd field.
 func (o *GatewayCreateProducerRdp) SetRdpAdminPwd(v string) {
-	o.RdpAdminPwd = v
+	o.RdpAdminPwd = &v
 }
 
 // GetRdpHostName returns the RdpHostName field value if set, zero value otherwise.
@@ -616,10 +630,10 @@ func (o GatewayCreateProducerRdp) MarshalJSON() ([]byte, error) {
 	if o.ProducerEncryptionKeyName != nil {
 		toSerialize["producer-encryption-key-name"] = o.ProducerEncryptionKeyName
 	}
-	if true {
+	if o.RdpAdminName != nil {
 		toSerialize["rdp-admin-name"] = o.RdpAdminName
 	}
-	if true {
+	if o.RdpAdminPwd != nil {
 		toSerialize["rdp-admin-pwd"] = o.RdpAdminPwd
 	}
 	if o.RdpHostName != nil {

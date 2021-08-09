@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **GkeAccountKey** | Pointer to **string** | GKE Service Account key file path | [optional] 
 **GkeClusterCert** | Pointer to **string** | GKE cluster CA certificate | [optional] 
 **GkeClusterEndpoint** | Pointer to **string** | GKE cluster URL endpoint | [optional] 
-**GkeClusterName** | **string** | GKE cluster name | 
+**GkeClusterName** | Pointer to **string** | GKE cluster name | [optional] 
 **GkeServiceAccountEmail** | Pointer to **string** | GKE service account email | [optional] 
 **Name** | **string** | Producer name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewGatewayCreateProducerGke
 
-`func NewGatewayCreateProducerGke(gkeClusterName string, name string, ) *GatewayCreateProducerGke`
+`func NewGatewayCreateProducerGke(name string, ) *GatewayCreateProducerGke`
 
 NewGatewayCreateProducerGke instantiates a new GatewayCreateProducerGke object
 This constructor will assign default values to properties that have it defined,
@@ -135,6 +135,11 @@ and a boolean to check if the value has been set.
 
 SetGkeClusterName sets GkeClusterName field to given value.
 
+### HasGkeClusterName
+
+`func (o *GatewayCreateProducerGke) HasGkeClusterName() bool`
+
+HasGkeClusterName returns a boolean if a field has been set.
 
 ### GetGkeServiceAccountEmail
 

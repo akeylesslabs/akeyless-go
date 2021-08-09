@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **MongodbAtlasProjectId** | Pointer to **string** | MongoDB Atlas project ID | [optional] 
 **MongodbDefaultAuthDb** | Pointer to **string** | MongoDB server default authentication database | [optional] 
 **MongodbHostPort** | Pointer to **string** | MongoDB server host and port | [optional] 
-**MongodbName** | **string** | MongoDB Name | 
+**MongodbName** | Pointer to **string** | MongoDB Name | [optional] 
 **MongodbPassword** | Pointer to **string** | MongoDB server password. You will prompted to provide a password if it will not appear in CLI parameters | [optional] 
 **MongodbRoles** | Pointer to **string** | MongoDB Roles | [optional] [default to "[]"]
 **MongodbServerUri** | Pointer to **string** | MongoDB server URI | [optional] 
@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 
 ### NewGatewayCreateProducerMongo
 
-`func NewGatewayCreateProducerMongo(mongodbName string, name string, ) *GatewayCreateProducerMongo`
+`func NewGatewayCreateProducerMongo(name string, ) *GatewayCreateProducerMongo`
 
 NewGatewayCreateProducerMongo instantiates a new GatewayCreateProducerMongo object
 This constructor will assign default values to properties that have it defined,
@@ -190,6 +190,11 @@ and a boolean to check if the value has been set.
 
 SetMongodbName sets MongodbName field to given value.
 
+### HasMongodbName
+
+`func (o *GatewayCreateProducerMongo) HasMongodbName() bool`
+
+HasMongodbName returns a boolean if a field has been set.
 
 ### GetMongodbPassword
 

@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **Name** | **string** | Producer name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
-**RdpAdminName** | **string** | RDP Admin Name | 
-**RdpAdminPwd** | **string** | RDP Admin password | 
+**RdpAdminName** | Pointer to **string** | RDP Admin Name | [optional] 
+**RdpAdminPwd** | Pointer to **string** | RDP Admin password | [optional] 
 **RdpHostName** | Pointer to **string** | Hostname | [optional] 
 **RdpHostPort** | Pointer to **string** | Port | [optional] [default to "22"]
 **RdpUserGroups** | Pointer to **string** | Groups | [optional] 
@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewGatewayCreateProducerRdp
 
-`func NewGatewayCreateProducerRdp(name string, rdpAdminName string, rdpAdminPwd string, ) *GatewayCreateProducerRdp`
+`func NewGatewayCreateProducerRdp(name string, ) *GatewayCreateProducerRdp`
 
 NewGatewayCreateProducerRdp instantiates a new GatewayCreateProducerRdp object
 This constructor will assign default values to properties that have it defined,
@@ -155,6 +155,11 @@ and a boolean to check if the value has been set.
 
 SetRdpAdminName sets RdpAdminName field to given value.
 
+### HasRdpAdminName
+
+`func (o *GatewayCreateProducerRdp) HasRdpAdminName() bool`
+
+HasRdpAdminName returns a boolean if a field has been set.
 
 ### GetRdpAdminPwd
 
@@ -175,6 +180,11 @@ and a boolean to check if the value has been set.
 
 SetRdpAdminPwd sets RdpAdminPwd field to given value.
 
+### HasRdpAdminPwd
+
+`func (o *GatewayCreateProducerRdp) HasRdpAdminPwd() bool`
+
+HasRdpAdminPwd returns a boolean if a field has been set.
 
 ### GetRdpHostName
 

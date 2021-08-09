@@ -13,10 +13,12 @@ package akeyless
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // KMIPClient struct for KMIPClient
 type KMIPClient struct {
+	CertificateIssueDate *time.Time `json:"certificate_issue_date,omitempty"`
 	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Rules *[]PathRule `json:"rules,omitempty"`
@@ -37,6 +39,38 @@ func NewKMIPClient() *KMIPClient {
 func NewKMIPClientWithDefaults() *KMIPClient {
 	this := KMIPClient{}
 	return &this
+}
+
+// GetCertificateIssueDate returns the CertificateIssueDate field value if set, zero value otherwise.
+func (o *KMIPClient) GetCertificateIssueDate() time.Time {
+	if o == nil || o.CertificateIssueDate == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.CertificateIssueDate
+}
+
+// GetCertificateIssueDateOk returns a tuple with the CertificateIssueDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KMIPClient) GetCertificateIssueDateOk() (*time.Time, bool) {
+	if o == nil || o.CertificateIssueDate == nil {
+		return nil, false
+	}
+	return o.CertificateIssueDate, true
+}
+
+// HasCertificateIssueDate returns a boolean if a field has been set.
+func (o *KMIPClient) HasCertificateIssueDate() bool {
+	if o != nil && o.CertificateIssueDate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificateIssueDate gets a reference to the given time.Time and assigns it to the CertificateIssueDate field.
+func (o *KMIPClient) SetCertificateIssueDate(v time.Time) {
+	o.CertificateIssueDate = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -137,6 +171,9 @@ func (o *KMIPClient) SetRules(v []PathRule) {
 
 func (o KMIPClient) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.CertificateIssueDate != nil {
+		toSerialize["certificate_issue_date"] = o.CertificateIssueDate
+	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}

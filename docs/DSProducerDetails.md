@@ -31,6 +31,7 @@ Name | Type | Description | Notes
 **AzureUserPortalAccess** | Pointer to **bool** |  | [optional] 
 **AzureUserProgrammaticAccess** | Pointer to **bool** |  | [optional] 
 **AzureUserRolesTemplateId** | Pointer to **string** |  | [optional] 
+**CassandraCreationStatements** | Pointer to **string** |  | [optional] 
 **ChefOrganizations** | Pointer to **string** |  | [optional] 
 **ChefServerAccessMode** | Pointer to **string** |  | [optional] 
 **ChefServerHostName** | Pointer to **string** |  | [optional] 
@@ -827,6 +828,31 @@ SetAzureUserRolesTemplateId sets AzureUserRolesTemplateId field to given value.
 `func (o *DSProducerDetails) HasAzureUserRolesTemplateId() bool`
 
 HasAzureUserRolesTemplateId returns a boolean if a field has been set.
+
+### GetCassandraCreationStatements
+
+`func (o *DSProducerDetails) GetCassandraCreationStatements() string`
+
+GetCassandraCreationStatements returns the CassandraCreationStatements field if non-nil, zero value otherwise.
+
+### GetCassandraCreationStatementsOk
+
+`func (o *DSProducerDetails) GetCassandraCreationStatementsOk() (*string, bool)`
+
+GetCassandraCreationStatementsOk returns a tuple with the CassandraCreationStatements field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCassandraCreationStatements
+
+`func (o *DSProducerDetails) SetCassandraCreationStatements(v string)`
+
+SetCassandraCreationStatements sets CassandraCreationStatements field to given value.
+
+### HasCassandraCreationStatements
+
+`func (o *DSProducerDetails) HasCassandraCreationStatements() bool`
+
+HasCassandraCreationStatements returns a boolean if a field has been set.
 
 ### GetChefOrganizations
 

@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**AssocTargetItem**](V2Api.md#AssocTargetItem) | **Post** /assoc-target-item | 
 [**Auth**](V2Api.md#Auth) | **Post** /auth | 
 [**Configure**](V2Api.md#Configure) | **Post** /configure | 
+[**Connect**](V2Api.md#Connect) | **Post** /connect | 
 [**CreateAWSTarget**](V2Api.md#CreateAWSTarget) | **Post** /create-aws-target | 
 [**CreateArtifactoryTarget**](V2Api.md#CreateArtifactoryTarget) | **Post** /create-artifactory-target | 
 [**CreateAuthMethod**](V2Api.md#CreateAuthMethod) | **Post** /create-auth-method | 
@@ -58,6 +59,7 @@ Method | HTTP request | Description
 [**GatewayCreateProducerArtifactory**](V2Api.md#GatewayCreateProducerArtifactory) | **Post** /gateway-create-producer-artifactory | 
 [**GatewayCreateProducerAws**](V2Api.md#GatewayCreateProducerAws) | **Post** /gateway-create-producer-aws | 
 [**GatewayCreateProducerAzure**](V2Api.md#GatewayCreateProducerAzure) | **Post** /gateway-create-producer-azure | 
+[**GatewayCreateProducerCassandra**](V2Api.md#GatewayCreateProducerCassandra) | **Post** /gateway-create-producer-cassandra | 
 [**GatewayCreateProducerCertificateAutomation**](V2Api.md#GatewayCreateProducerCertificateAutomation) | **Post** /gateway-create-producer-certificate-automation | 
 [**GatewayCreateProducerCustom**](V2Api.md#GatewayCreateProducerCustom) | **Post** /gateway-create-producer-custom | 
 [**GatewayCreateProducerEks**](V2Api.md#GatewayCreateProducerEks) | **Post** /gateway-create-producer-eks | 
@@ -95,6 +97,17 @@ Method | HTTP request | Description
 [**GetSecretValue**](V2Api.md#GetSecretValue) | **Post** /get-secret-value | 
 [**GetTarget**](V2Api.md#GetTarget) | **Post** /get-target | 
 [**GetTargetDetails**](V2Api.md#GetTargetDetails) | **Post** /get-target-details | 
+[**KmipClientDeleteRule**](V2Api.md#KmipClientDeleteRule) | **Post** /kmip-client-delete-rule | 
+[**KmipClientSetRule**](V2Api.md#KmipClientSetRule) | **Post** /kmip-client-set-rule | 
+[**KmipCreateClient**](V2Api.md#KmipCreateClient) | **Post** /kmip-create-client | 
+[**KmipDeleteClient**](V2Api.md#KmipDeleteClient) | **Post** /kmip-delete-client | 
+[**KmipDescribeClient**](V2Api.md#KmipDescribeClient) | **Post** /kmip-get-client | 
+[**KmipDescribeServer**](V2Api.md#KmipDescribeServer) | **Post** /kmip-get-environment | 
+[**KmipListClients**](V2Api.md#KmipListClients) | **Post** /kmip-list-clients | 
+[**KmipRenewClientCertificate**](V2Api.md#KmipRenewClientCertificate) | **Post** /kmip-renew-client | 
+[**KmipRenewServerCertificate**](V2Api.md#KmipRenewServerCertificate) | **Post** /kmip-renew-environment | 
+[**KmipServerSetup**](V2Api.md#KmipServerSetup) | **Post** /kmip-create-environment | 
+[**KmipSetServerState**](V2Api.md#KmipSetServerState) | **Post** /kmip-set-environment-state | 
 [**ListAuthMethods**](V2Api.md#ListAuthMethods) | **Post** /list-auth-methods | 
 [**ListItems**](V2Api.md#ListItems) | **Post** /list-items | 
 [**ListRoles**](V2Api.md#ListRoles) | **Post** /list-roles | 
@@ -388,6 +401,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ConfigureOutput**](configureOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Connect
+
+> map[string]interface{} Connect(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.Newconnect() // Connect | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.Connect(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.Connect``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `Connect`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.Connect`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiConnectRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**Connect**](Connect.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
 
 ### Authorization
 
@@ -1446,7 +1523,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateGKETarget("GkeClusterName_example", "Name_example") // CreateGKETarget | 
+    body := *openapiclient.NewcreateGKETarget("Name_example") // CreateGKETarget | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -3598,6 +3675,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GatewayCreateProducerCassandra
+
+> GatewayCreateProducerCassandraOutput GatewayCreateProducerCassandra(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayCreateProducerCassandra("Name_example") // GatewayCreateProducerCassandra | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayCreateProducerCassandra(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerCassandra``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayCreateProducerCassandra`: GatewayCreateProducerCassandraOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayCreateProducerCassandra`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayCreateProducerCassandraRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayCreateProducerCassandra**](GatewayCreateProducerCassandra.md) |  | 
+
+### Return type
+
+[**GatewayCreateProducerCassandraOutput**](gatewayCreateProducerCassandraOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GatewayCreateProducerCertificateAutomation
 
 > GatewayCreateProducerCertificateAutomationOutput GatewayCreateProducerCertificateAutomation(ctx).Body(body).Execute()
@@ -3873,7 +4014,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerGke("GkeClusterName_example", "Name_example") // GatewayCreateProducerGke | 
+    body := *openapiclient.NewgatewayCreateProducerGke("Name_example") // GatewayCreateProducerGke | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -4001,7 +4142,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerMongo("MongodbName_example", "Name_example") // GatewayCreateProducerMongo | 
+    body := *openapiclient.NewgatewayCreateProducerMongo("Name_example") // GatewayCreateProducerMongo | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -4112,7 +4253,7 @@ No authorization required
 
 ## GatewayCreateProducerNativeK8S
 
-> GatewayCreateProducerNativeK8SOutput GatewayCreateProducerNativeK8S(ctx).Execute()
+> GatewayCreateProducerNativeK8SOutput GatewayCreateProducerNativeK8S(ctx).Body(body).Execute()
 
 
 
@@ -4129,10 +4270,11 @@ import (
 )
 
 func main() {
+    body := *openapiclient.NewgatewayCreateProducerNativeK8S("Name_example") // GatewayCreateProducerNativeK8S | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayCreateProducerNativeK8S(context.Background()).Execute()
+    resp, r, err := api_client.V2Api.GatewayCreateProducerNativeK8S(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerNativeK8S``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4144,12 +4286,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGatewayCreateProducerNativeK8SRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayCreateProducerNativeK8S**](GatewayCreateProducerNativeK8S.md) |  | 
 
 ### Return type
 
@@ -4161,7 +4307,7 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -4380,7 +4526,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerRdp("Name_example", "RdpAdminName_example", "RdpAdminPwd_example") // GatewayCreateProducerRdp | 
+    body := *openapiclient.NewgatewayCreateProducerRdp("Name_example") // GatewayCreateProducerRdp | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -5937,6 +6083,710 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GetTargetDetailsOutput**](GetTargetDetailsOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## KmipClientDeleteRule
+
+> KMIPClientUpdateResponse KmipClientDeleteRule(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewkmipClientDeleteRule("Path_example") // KmipClientDeleteRule |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.KmipClientDeleteRule(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.KmipClientDeleteRule``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `KmipClientDeleteRule`: KMIPClientUpdateResponse
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.KmipClientDeleteRule`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiKmipClientDeleteRuleRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**KmipClientDeleteRule**](KmipClientDeleteRule.md) |  | 
+
+### Return type
+
+[**KMIPClientUpdateResponse**](KMIPClientUpdateResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## KmipClientSetRule
+
+> KMIPClientUpdateResponse KmipClientSetRule(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewkmipClientSetRule([]string{"Capability_example"}, "Path_example") // KmipClientSetRule |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.KmipClientSetRule(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.KmipClientSetRule``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `KmipClientSetRule`: KMIPClientUpdateResponse
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.KmipClientSetRule`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiKmipClientSetRuleRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**KmipClientSetRule**](KmipClientSetRule.md) |  | 
+
+### Return type
+
+[**KMIPClientUpdateResponse**](KMIPClientUpdateResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## KmipCreateClient
+
+> KmipCreateClientOutput KmipCreateClient(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewkmipCreateClient("Name_example") // KmipCreateClient |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.KmipCreateClient(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.KmipCreateClient``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `KmipCreateClient`: KmipCreateClientOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.KmipCreateClient`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiKmipCreateClientRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**KmipCreateClient**](KmipCreateClient.md) |  | 
+
+### Return type
+
+[**KmipCreateClientOutput**](kmipCreateClientOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## KmipDeleteClient
+
+> map[string]interface{} KmipDeleteClient(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewkmipDeleteClient() // KmipDeleteClient |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.KmipDeleteClient(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.KmipDeleteClient``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `KmipDeleteClient`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.KmipDeleteClient`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiKmipDeleteClientRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**KmipDeleteClient**](KmipDeleteClient.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## KmipDescribeClient
+
+> KMIPClientGetResponse KmipDescribeClient(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewkmipDescribeClient() // KmipDescribeClient |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.KmipDescribeClient(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.KmipDescribeClient``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `KmipDescribeClient`: KMIPClientGetResponse
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.KmipDescribeClient`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiKmipDescribeClientRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**KmipDescribeClient**](KmipDescribeClient.md) |  | 
+
+### Return type
+
+[**KMIPClientGetResponse**](KMIPClientGetResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## KmipDescribeServer
+
+> KmipDescribeServerOutput KmipDescribeServer(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewkmipDescribeServer() // KmipDescribeServer |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.KmipDescribeServer(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.KmipDescribeServer``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `KmipDescribeServer`: KmipDescribeServerOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.KmipDescribeServer`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiKmipDescribeServerRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**KmipDescribeServer**](KmipDescribeServer.md) |  | 
+
+### Return type
+
+[**KmipDescribeServerOutput**](kmipDescribeServerOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## KmipListClients
+
+> KMIPClientListResponse KmipListClients(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewkmipListClients() // KmipListClients |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.KmipListClients(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.KmipListClients``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `KmipListClients`: KMIPClientListResponse
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.KmipListClients`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiKmipListClientsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**KmipListClients**](KmipListClients.md) |  | 
+
+### Return type
+
+[**KMIPClientListResponse**](KMIPClientListResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## KmipRenewClientCertificate
+
+> KmipRenewClientCertificateOutput KmipRenewClientCertificate(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewkmipRenewClientCertificate() // KmipRenewClientCertificate |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.KmipRenewClientCertificate(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.KmipRenewClientCertificate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `KmipRenewClientCertificate`: KmipRenewClientCertificateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.KmipRenewClientCertificate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiKmipRenewClientCertificateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**KmipRenewClientCertificate**](KmipRenewClientCertificate.md) |  | 
+
+### Return type
+
+[**KmipRenewClientCertificateOutput**](kmipRenewClientCertificateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## KmipRenewServerCertificate
+
+> KmipRenewServerCertificateOutput KmipRenewServerCertificate(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewkmipRenewServerCertificate() // KmipRenewServerCertificate |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.KmipRenewServerCertificate(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.KmipRenewServerCertificate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `KmipRenewServerCertificate`: KmipRenewServerCertificateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.KmipRenewServerCertificate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiKmipRenewServerCertificateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**KmipRenewServerCertificate**](KmipRenewServerCertificate.md) |  | 
+
+### Return type
+
+[**KmipRenewServerCertificateOutput**](kmipRenewServerCertificateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## KmipServerSetup
+
+> KMIPEnvironmentCreateResponse KmipServerSetup(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewkmipServerSetup("Hostname_example") // KmipServerSetup |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.KmipServerSetup(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.KmipServerSetup``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `KmipServerSetup`: KMIPEnvironmentCreateResponse
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.KmipServerSetup`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiKmipServerSetupRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**KmipServerSetup**](KmipServerSetup.md) |  | 
+
+### Return type
+
+[**KMIPEnvironmentCreateResponse**](KMIPEnvironmentCreateResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## KmipSetServerState
+
+> KmipSetServerStateOutput KmipSetServerState(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewkmipSetServerState("State_example") // KmipSetServerState |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.KmipSetServerState(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.KmipSetServerState``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `KmipSetServerState`: KmipSetServerStateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.KmipSetServerState`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiKmipSetServerStateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**KmipSetServerState**](KmipSetServerState.md) |  | 
+
+### Return type
+
+[**KmipSetServerStateOutput**](kmipSetServerStateOutput.md)
 
 ### Authorization
 
@@ -7763,7 +8613,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateGKETarget("GkeClusterName_example", "Name_example") // UpdateGKETarget | 
+    body := *openapiclient.NewupdateGKETarget("Name_example") // UpdateGKETarget | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

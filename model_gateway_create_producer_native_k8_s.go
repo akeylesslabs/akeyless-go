@@ -22,7 +22,7 @@ type GatewayCreateProducerNativeK8S struct {
 	// K8S cluster URL endpoint
 	K8sClusterEndpoint *string `json:"k8s-cluster-endpoint,omitempty"`
 	// K8S cluster Bearer token
-	K8sClusterToken string `json:"k8s-cluster-token"`
+	K8sClusterToken *string `json:"k8s-cluster-token,omitempty"`
 	// K8S namespace
 	K8sNamespace *string `json:"k8s-namespace,omitempty"`
 	// K8S service account
@@ -55,9 +55,8 @@ type GatewayCreateProducerNativeK8S struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayCreateProducerNativeK8S(k8sClusterToken string, name string, ) *GatewayCreateProducerNativeK8S {
+func NewGatewayCreateProducerNativeK8S(name string, ) *GatewayCreateProducerNativeK8S {
 	this := GatewayCreateProducerNativeK8S{}
-	this.K8sClusterToken = k8sClusterToken
 	this.Name = name
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
@@ -138,28 +137,36 @@ func (o *GatewayCreateProducerNativeK8S) SetK8sClusterEndpoint(v string) {
 	o.K8sClusterEndpoint = &v
 }
 
-// GetK8sClusterToken returns the K8sClusterToken field value
+// GetK8sClusterToken returns the K8sClusterToken field value if set, zero value otherwise.
 func (o *GatewayCreateProducerNativeK8S) GetK8sClusterToken() string {
-	if o == nil  {
+	if o == nil || o.K8sClusterToken == nil {
 		var ret string
 		return ret
 	}
-
-	return o.K8sClusterToken
+	return *o.K8sClusterToken
 }
 
-// GetK8sClusterTokenOk returns a tuple with the K8sClusterToken field value
+// GetK8sClusterTokenOk returns a tuple with the K8sClusterToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateProducerNativeK8S) GetK8sClusterTokenOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.K8sClusterToken == nil {
 		return nil, false
 	}
-	return &o.K8sClusterToken, true
+	return o.K8sClusterToken, true
 }
 
-// SetK8sClusterToken sets field value
+// HasK8sClusterToken returns a boolean if a field has been set.
+func (o *GatewayCreateProducerNativeK8S) HasK8sClusterToken() bool {
+	if o != nil && o.K8sClusterToken != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sClusterToken gets a reference to the given string and assigns it to the K8sClusterToken field.
 func (o *GatewayCreateProducerNativeK8S) SetK8sClusterToken(v string) {
-	o.K8sClusterToken = v
+	o.K8sClusterToken = &v
 }
 
 // GetK8sNamespace returns the K8sNamespace field value if set, zero value otherwise.
@@ -674,7 +681,7 @@ func (o GatewayCreateProducerNativeK8S) MarshalJSON() ([]byte, error) {
 	if o.K8sClusterEndpoint != nil {
 		toSerialize["k8s-cluster-endpoint"] = o.K8sClusterEndpoint
 	}
-	if true {
+	if o.K8sClusterToken != nil {
 		toSerialize["k8s-cluster-token"] = o.K8sClusterToken
 	}
 	if o.K8sNamespace != nil {

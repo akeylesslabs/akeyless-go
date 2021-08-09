@@ -26,7 +26,7 @@ type CreateGKETarget struct {
 	// GKE cluster URL endpoint
 	GkeClusterEndpoint *string `json:"gke-cluster-endpoint,omitempty"`
 	// GKE cluster name
-	GkeClusterName string `json:"gke-cluster-name"`
+	GkeClusterName *string `json:"gke-cluster-name,omitempty"`
 	// GKE service account email
 	GkeServiceAccountEmail *string `json:"gke-service-account-email,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
@@ -47,9 +47,8 @@ type CreateGKETarget struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateGKETarget(gkeClusterName string, name string, ) *CreateGKETarget {
+func NewCreateGKETarget(name string, ) *CreateGKETarget {
 	this := CreateGKETarget{}
-	this.GkeClusterName = gkeClusterName
 	this.Name = name
 	return &this
 }
@@ -190,28 +189,36 @@ func (o *CreateGKETarget) SetGkeClusterEndpoint(v string) {
 	o.GkeClusterEndpoint = &v
 }
 
-// GetGkeClusterName returns the GkeClusterName field value
+// GetGkeClusterName returns the GkeClusterName field value if set, zero value otherwise.
 func (o *CreateGKETarget) GetGkeClusterName() string {
-	if o == nil  {
+	if o == nil || o.GkeClusterName == nil {
 		var ret string
 		return ret
 	}
-
-	return o.GkeClusterName
+	return *o.GkeClusterName
 }
 
-// GetGkeClusterNameOk returns a tuple with the GkeClusterName field value
+// GetGkeClusterNameOk returns a tuple with the GkeClusterName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateGKETarget) GetGkeClusterNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.GkeClusterName == nil {
 		return nil, false
 	}
-	return &o.GkeClusterName, true
+	return o.GkeClusterName, true
 }
 
-// SetGkeClusterName sets field value
+// HasGkeClusterName returns a boolean if a field has been set.
+func (o *CreateGKETarget) HasGkeClusterName() bool {
+	if o != nil && o.GkeClusterName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGkeClusterName gets a reference to the given string and assigns it to the GkeClusterName field.
 func (o *CreateGKETarget) SetGkeClusterName(v string) {
-	o.GkeClusterName = v
+	o.GkeClusterName = &v
 }
 
 // GetGkeServiceAccountEmail returns the GkeServiceAccountEmail field value if set, zero value otherwise.
@@ -444,7 +451,7 @@ func (o CreateGKETarget) MarshalJSON() ([]byte, error) {
 	if o.GkeClusterEndpoint != nil {
 		toSerialize["gke-cluster-endpoint"] = o.GkeClusterEndpoint
 	}
-	if true {
+	if o.GkeClusterName != nil {
 		toSerialize["gke-cluster-name"] = o.GkeClusterName
 	}
 	if o.GkeServiceAccountEmail != nil {

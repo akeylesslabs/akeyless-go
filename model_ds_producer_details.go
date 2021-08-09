@@ -44,6 +44,7 @@ type DSProducerDetails struct {
 	AzureUserPortalAccess *bool `json:"azure_user_portal_access,omitempty"`
 	AzureUserProgrammaticAccess *bool `json:"azure_user_programmatic_access,omitempty"`
 	AzureUserRolesTemplateId *string `json:"azure_user_roles_template_id,omitempty"`
+	CassandraCreationStatements *string `json:"cassandra_creation_statements,omitempty"`
 	ChefOrganizations *string `json:"chef_organizations,omitempty"`
 	ChefServerAccessMode *string `json:"chef_server_access_mode,omitempty"`
 	ChefServerHostName *string `json:"chef_server_host_name,omitempty"`
@@ -1035,6 +1036,38 @@ func (o *DSProducerDetails) HasAzureUserRolesTemplateId() bool {
 // SetAzureUserRolesTemplateId gets a reference to the given string and assigns it to the AzureUserRolesTemplateId field.
 func (o *DSProducerDetails) SetAzureUserRolesTemplateId(v string) {
 	o.AzureUserRolesTemplateId = &v
+}
+
+// GetCassandraCreationStatements returns the CassandraCreationStatements field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetCassandraCreationStatements() string {
+	if o == nil || o.CassandraCreationStatements == nil {
+		var ret string
+		return ret
+	}
+	return *o.CassandraCreationStatements
+}
+
+// GetCassandraCreationStatementsOk returns a tuple with the CassandraCreationStatements field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetCassandraCreationStatementsOk() (*string, bool) {
+	if o == nil || o.CassandraCreationStatements == nil {
+		return nil, false
+	}
+	return o.CassandraCreationStatements, true
+}
+
+// HasCassandraCreationStatements returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasCassandraCreationStatements() bool {
+	if o != nil && o.CassandraCreationStatements != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCassandraCreationStatements gets a reference to the given string and assigns it to the CassandraCreationStatements field.
+func (o *DSProducerDetails) SetCassandraCreationStatements(v string) {
+	o.CassandraCreationStatements = &v
 }
 
 // GetChefOrganizations returns the ChefOrganizations field value if set, zero value otherwise.
@@ -4383,6 +4416,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.AzureUserRolesTemplateId != nil {
 		toSerialize["azure_user_roles_template_id"] = o.AzureUserRolesTemplateId
+	}
+	if o.CassandraCreationStatements != nil {
+		toSerialize["cassandra_creation_statements"] = o.CassandraCreationStatements
 	}
 	if o.ChefOrganizations != nil {
 		toSerialize["chef_organizations"] = o.ChefOrganizations

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **K8sClusterCaCert** | Pointer to **string** | K8S cluster CA certificate | [optional] 
 **K8sClusterEndpoint** | Pointer to **string** | K8S cluster URL endpoint | [optional] 
-**K8sClusterToken** | **string** | K8S cluster Bearer token | 
+**K8sClusterToken** | Pointer to **string** | K8S cluster Bearer token | [optional] 
 **K8sNamespace** | Pointer to **string** | K8S namespace | [optional] 
 **K8sServiceAccount** | Pointer to **string** | K8S service account | [optional] 
 **Name** | **string** | Producer name | 
@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 
 ### NewGatewayCreateProducerNativeK8S
 
-`func NewGatewayCreateProducerNativeK8S(k8sClusterToken string, name string, ) *GatewayCreateProducerNativeK8S`
+`func NewGatewayCreateProducerNativeK8S(name string, ) *GatewayCreateProducerNativeK8S`
 
 NewGatewayCreateProducerNativeK8S instantiates a new GatewayCreateProducerNativeK8S object
 This constructor will assign default values to properties that have it defined,
@@ -112,6 +112,11 @@ and a boolean to check if the value has been set.
 
 SetK8sClusterToken sets K8sClusterToken field to given value.
 
+### HasK8sClusterToken
+
+`func (o *GatewayCreateProducerNativeK8S) HasK8sClusterToken() bool`
+
+HasK8sClusterToken returns a boolean if a field has been set.
 
 ### GetK8sNamespace
 
