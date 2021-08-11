@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DisplayId** | **string** | The name of the key to use in the verify JWT process | 
-**JwtClaims** | **string** | JWTClaims | 
+**Jwt** | **string** | JWT | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
-**Signature** | **string** | Signature | 
+**RequiredClaims** | **string** | RequiredClaims | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewVerifyJWTWithClassicKey
 
-`func NewVerifyJWTWithClassicKey(displayId string, jwtClaims string, signature string, version int32, ) *VerifyJWTWithClassicKey`
+`func NewVerifyJWTWithClassicKey(displayId string, jwt string, requiredClaims string, version int32, ) *VerifyJWTWithClassicKey`
 
 NewVerifyJWTWithClassicKey instantiates a new VerifyJWTWithClassicKey object
 This constructor will assign default values to properties that have it defined,
@@ -52,24 +52,24 @@ and a boolean to check if the value has been set.
 SetDisplayId sets DisplayId field to given value.
 
 
-### GetJwtClaims
+### GetJwt
 
-`func (o *VerifyJWTWithClassicKey) GetJwtClaims() string`
+`func (o *VerifyJWTWithClassicKey) GetJwt() string`
 
-GetJwtClaims returns the JwtClaims field if non-nil, zero value otherwise.
+GetJwt returns the Jwt field if non-nil, zero value otherwise.
 
-### GetJwtClaimsOk
+### GetJwtOk
 
-`func (o *VerifyJWTWithClassicKey) GetJwtClaimsOk() (*string, bool)`
+`func (o *VerifyJWTWithClassicKey) GetJwtOk() (*string, bool)`
 
-GetJwtClaimsOk returns a tuple with the JwtClaims field if it's non-nil, zero value otherwise
+GetJwtOk returns a tuple with the Jwt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetJwtClaims
+### SetJwt
 
-`func (o *VerifyJWTWithClassicKey) SetJwtClaims(v string)`
+`func (o *VerifyJWTWithClassicKey) SetJwt(v string)`
 
-SetJwtClaims sets JwtClaims field to given value.
+SetJwt sets Jwt field to given value.
 
 
 ### GetPassword
@@ -97,24 +97,24 @@ SetPassword sets Password field to given value.
 
 HasPassword returns a boolean if a field has been set.
 
-### GetSignature
+### GetRequiredClaims
 
-`func (o *VerifyJWTWithClassicKey) GetSignature() string`
+`func (o *VerifyJWTWithClassicKey) GetRequiredClaims() string`
 
-GetSignature returns the Signature field if non-nil, zero value otherwise.
+GetRequiredClaims returns the RequiredClaims field if non-nil, zero value otherwise.
 
-### GetSignatureOk
+### GetRequiredClaimsOk
 
-`func (o *VerifyJWTWithClassicKey) GetSignatureOk() (*string, bool)`
+`func (o *VerifyJWTWithClassicKey) GetRequiredClaimsOk() (*string, bool)`
 
-GetSignatureOk returns a tuple with the Signature field if it's non-nil, zero value otherwise
+GetRequiredClaimsOk returns a tuple with the RequiredClaims field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSignature
+### SetRequiredClaims
 
-`func (o *VerifyJWTWithClassicKey) SetSignature(v string)`
+`func (o *VerifyJWTWithClassicKey) SetRequiredClaims(v string)`
 
-SetSignature sets Signature field to given value.
+SetRequiredClaims sets RequiredClaims field to given value.
 
 
 ### GetToken

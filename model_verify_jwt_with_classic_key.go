@@ -19,12 +19,12 @@ import (
 type VerifyJWTWithClassicKey struct {
 	// The name of the key to use in the verify JWT process
 	DisplayId string `json:"display-id"`
-	// JWTClaims
-	JwtClaims string `json:"jwt-claims"`
+	// JWT
+	Jwt string `json:"jwt"`
 	// Required only when the authentication process requires a username and password
 	Password *string `json:"password,omitempty"`
-	// Signature
-	Signature string `json:"signature"`
+	// RequiredClaims
+	RequiredClaims string `json:"required-claims"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -39,11 +39,11 @@ type VerifyJWTWithClassicKey struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVerifyJWTWithClassicKey(displayId string, jwtClaims string, signature string, version int32, ) *VerifyJWTWithClassicKey {
+func NewVerifyJWTWithClassicKey(displayId string, jwt string, requiredClaims string, version int32, ) *VerifyJWTWithClassicKey {
 	this := VerifyJWTWithClassicKey{}
 	this.DisplayId = displayId
-	this.JwtClaims = jwtClaims
-	this.Signature = signature
+	this.Jwt = jwt
+	this.RequiredClaims = requiredClaims
 	this.Version = version
 	return &this
 }
@@ -80,28 +80,28 @@ func (o *VerifyJWTWithClassicKey) SetDisplayId(v string) {
 	o.DisplayId = v
 }
 
-// GetJwtClaims returns the JwtClaims field value
-func (o *VerifyJWTWithClassicKey) GetJwtClaims() string {
+// GetJwt returns the Jwt field value
+func (o *VerifyJWTWithClassicKey) GetJwt() string {
 	if o == nil  {
 		var ret string
 		return ret
 	}
 
-	return o.JwtClaims
+	return o.Jwt
 }
 
-// GetJwtClaimsOk returns a tuple with the JwtClaims field value
+// GetJwtOk returns a tuple with the Jwt field value
 // and a boolean to check if the value has been set.
-func (o *VerifyJWTWithClassicKey) GetJwtClaimsOk() (*string, bool) {
+func (o *VerifyJWTWithClassicKey) GetJwtOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.JwtClaims, true
+	return &o.Jwt, true
 }
 
-// SetJwtClaims sets field value
-func (o *VerifyJWTWithClassicKey) SetJwtClaims(v string) {
-	o.JwtClaims = v
+// SetJwt sets field value
+func (o *VerifyJWTWithClassicKey) SetJwt(v string) {
+	o.Jwt = v
 }
 
 // GetPassword returns the Password field value if set, zero value otherwise.
@@ -136,28 +136,28 @@ func (o *VerifyJWTWithClassicKey) SetPassword(v string) {
 	o.Password = &v
 }
 
-// GetSignature returns the Signature field value
-func (o *VerifyJWTWithClassicKey) GetSignature() string {
+// GetRequiredClaims returns the RequiredClaims field value
+func (o *VerifyJWTWithClassicKey) GetRequiredClaims() string {
 	if o == nil  {
 		var ret string
 		return ret
 	}
 
-	return o.Signature
+	return o.RequiredClaims
 }
 
-// GetSignatureOk returns a tuple with the Signature field value
+// GetRequiredClaimsOk returns a tuple with the RequiredClaims field value
 // and a boolean to check if the value has been set.
-func (o *VerifyJWTWithClassicKey) GetSignatureOk() (*string, bool) {
+func (o *VerifyJWTWithClassicKey) GetRequiredClaimsOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.Signature, true
+	return &o.RequiredClaims, true
 }
 
-// SetSignature sets field value
-func (o *VerifyJWTWithClassicKey) SetSignature(v string) {
-	o.Signature = v
+// SetRequiredClaims sets field value
+func (o *VerifyJWTWithClassicKey) SetRequiredClaims(v string) {
+	o.RequiredClaims = v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -286,13 +286,13 @@ func (o VerifyJWTWithClassicKey) MarshalJSON() ([]byte, error) {
 		toSerialize["display-id"] = o.DisplayId
 	}
 	if true {
-		toSerialize["jwt-claims"] = o.JwtClaims
+		toSerialize["jwt"] = o.Jwt
 	}
 	if o.Password != nil {
 		toSerialize["password"] = o.Password
 	}
 	if true {
-		toSerialize["signature"] = o.Signature
+		toSerialize["required-claims"] = o.RequiredClaims
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

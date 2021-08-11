@@ -21,8 +21,6 @@ type CreateClassicKey struct {
 	Alg string `json:"alg"`
 	// Certificate in a PEM format.
 	CertFileData *string `json:"cert-file-data,omitempty"`
-	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
-	Key *string `json:"key,omitempty"`
 	// Base64-encoded classic key value
 	KeyData *string `json:"key-data,omitempty"`
 	// Metadata about the classic key
@@ -31,6 +29,8 @@ type CreateClassicKey struct {
 	Name string `json:"name"`
 	// Required only when the authentication process requires a username and password
 	Password *string `json:"password,omitempty"`
+	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
+	ProtectionKeyName *string `json:"protection-key-name,omitempty"`
 	// List of the tags attached to this classic key
 	Tags *[]string `json:"tags,omitempty"`
 	// Target name
@@ -116,38 +116,6 @@ func (o *CreateClassicKey) HasCertFileData() bool {
 // SetCertFileData gets a reference to the given string and assigns it to the CertFileData field.
 func (o *CreateClassicKey) SetCertFileData(v string) {
 	o.CertFileData = &v
-}
-
-// GetKey returns the Key field value if set, zero value otherwise.
-func (o *CreateClassicKey) GetKey() string {
-	if o == nil || o.Key == nil {
-		var ret string
-		return ret
-	}
-	return *o.Key
-}
-
-// GetKeyOk returns a tuple with the Key field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateClassicKey) GetKeyOk() (*string, bool) {
-	if o == nil || o.Key == nil {
-		return nil, false
-	}
-	return o.Key, true
-}
-
-// HasKey returns a boolean if a field has been set.
-func (o *CreateClassicKey) HasKey() bool {
-	if o != nil && o.Key != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetKey gets a reference to the given string and assigns it to the Key field.
-func (o *CreateClassicKey) SetKey(v string) {
-	o.Key = &v
 }
 
 // GetKeyData returns the KeyData field value if set, zero value otherwise.
@@ -268,6 +236,38 @@ func (o *CreateClassicKey) HasPassword() bool {
 // SetPassword gets a reference to the given string and assigns it to the Password field.
 func (o *CreateClassicKey) SetPassword(v string) {
 	o.Password = &v
+}
+
+// GetProtectionKeyName returns the ProtectionKeyName field value if set, zero value otherwise.
+func (o *CreateClassicKey) GetProtectionKeyName() string {
+	if o == nil || o.ProtectionKeyName == nil {
+		var ret string
+		return ret
+	}
+	return *o.ProtectionKeyName
+}
+
+// GetProtectionKeyNameOk returns a tuple with the ProtectionKeyName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateClassicKey) GetProtectionKeyNameOk() (*string, bool) {
+	if o == nil || o.ProtectionKeyName == nil {
+		return nil, false
+	}
+	return o.ProtectionKeyName, true
+}
+
+// HasProtectionKeyName returns a boolean if a field has been set.
+func (o *CreateClassicKey) HasProtectionKeyName() bool {
+	if o != nil && o.ProtectionKeyName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProtectionKeyName gets a reference to the given string and assigns it to the ProtectionKeyName field.
+func (o *CreateClassicKey) SetProtectionKeyName(v string) {
+	o.ProtectionKeyName = &v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
@@ -438,9 +438,6 @@ func (o CreateClassicKey) MarshalJSON() ([]byte, error) {
 	if o.CertFileData != nil {
 		toSerialize["cert-file-data"] = o.CertFileData
 	}
-	if o.Key != nil {
-		toSerialize["key"] = o.Key
-	}
 	if o.KeyData != nil {
 		toSerialize["key-data"] = o.KeyData
 	}
@@ -452,6 +449,9 @@ func (o CreateClassicKey) MarshalJSON() ([]byte, error) {
 	}
 	if o.Password != nil {
 		toSerialize["password"] = o.Password
+	}
+	if o.ProtectionKeyName != nil {
+		toSerialize["protection-key-name"] = o.ProtectionKeyName
 	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags

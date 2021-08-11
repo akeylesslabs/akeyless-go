@@ -6499,13 +6499,13 @@ components:
     CreateClassicKey:
       description: CreateClassicKey is a command that creates classic key
       example:
+        protection-key-name: protection-key-name
         metadata: metadata
         password: password
         name: name
         target-name: target-name
         alg: alg
         cert-file-data: cert-file-data
-        key: key
         key-data: key-data
         uid-token: uid-token
         tags:
@@ -6523,11 +6523,6 @@ components:
           description: Certificate in a PEM format.
           type: string
           x-go-name: CertFileData
-        key:
-          description: The name of a key that used to encrypt the secret value (if
-            empty, the account default protectionKey key will be used)
-          type: string
-          x-go-name: ProtectionKey
         key-data:
           description: Base64-encoded classic key value
           type: string
@@ -6545,6 +6540,11 @@ components:
             and password
           type: string
           x-go-name: Password
+        protection-key-name:
+          description: The name of a key that used to encrypt the secret value (if
+            empty, the account default protectionKey key will be used)
+          type: string
+          x-go-name: ProtectionKey
         tags:
           description: List of the tags attached to this classic key
           items:
@@ -23479,19 +23479,19 @@ components:
           description: The name of the key to use in the verify JWT process
           type: string
           x-go-name: DisplayId
-        jwt-claims:
-          description: JWTClaims
+        jwt:
+          description: JWT
           type: string
-          x-go-name: JWTClaims
+          x-go-name: JWT
         password:
           description: Required only when the authentication process requires a username
             and password
           type: string
           x-go-name: Password
-        signature:
-          description: Signature
+        required-claims:
+          description: RequiredClaims
           type: string
-          x-go-name: Signature
+          x-go-name: RequiredClaims
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -23514,8 +23514,8 @@ components:
           x-go-name: Version
       required:
       - display-id
-      - jwt-claims
-      - signature
+      - jwt
+      - required-claims
       - version
       title: verifyJWTWithClassicKey is a command that verifies JWT by using an Classic
         key.

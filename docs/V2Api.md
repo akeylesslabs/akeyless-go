@@ -9760,7 +9760,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewverifyJWTWithClassicKey("DisplayId_example", "JwtClaims_example", "Signature_example", int32(123)) // VerifyJWTWithClassicKey | 
+    body := *openapiclient.NewverifyJWTWithClassicKey("DisplayId_example", "Jwt_example", "RequiredClaims_example", int32(123)) // VerifyJWTWithClassicKey | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

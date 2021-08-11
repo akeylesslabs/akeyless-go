@@ -6,11 +6,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Alg** | **string** | Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384] | 
 **CertFileData** | Pointer to **string** | Certificate in a PEM format. | [optional] 
-**Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **KeyData** | Pointer to **string** | Base64-encoded classic key value | [optional] 
 **Metadata** | Pointer to **string** | Metadata about the classic key | [optional] 
 **Name** | **string** | ClassicKey name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
+**ProtectionKeyName** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Tags** | Pointer to **[]string** | List of the tags attached to this classic key | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -80,31 +80,6 @@ SetCertFileData sets CertFileData field to given value.
 `func (o *CreateClassicKey) HasCertFileData() bool`
 
 HasCertFileData returns a boolean if a field has been set.
-
-### GetKey
-
-`func (o *CreateClassicKey) GetKey() string`
-
-GetKey returns the Key field if non-nil, zero value otherwise.
-
-### GetKeyOk
-
-`func (o *CreateClassicKey) GetKeyOk() (*string, bool)`
-
-GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetKey
-
-`func (o *CreateClassicKey) SetKey(v string)`
-
-SetKey sets Key field to given value.
-
-### HasKey
-
-`func (o *CreateClassicKey) HasKey() bool`
-
-HasKey returns a boolean if a field has been set.
 
 ### GetKeyData
 
@@ -200,6 +175,31 @@ SetPassword sets Password field to given value.
 `func (o *CreateClassicKey) HasPassword() bool`
 
 HasPassword returns a boolean if a field has been set.
+
+### GetProtectionKeyName
+
+`func (o *CreateClassicKey) GetProtectionKeyName() string`
+
+GetProtectionKeyName returns the ProtectionKeyName field if non-nil, zero value otherwise.
+
+### GetProtectionKeyNameOk
+
+`func (o *CreateClassicKey) GetProtectionKeyNameOk() (*string, bool)`
+
+GetProtectionKeyNameOk returns a tuple with the ProtectionKeyName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProtectionKeyName
+
+`func (o *CreateClassicKey) SetProtectionKeyName(v string)`
+
+SetProtectionKeyName sets ProtectionKeyName field to given value.
+
+### HasProtectionKeyName
+
+`func (o *CreateClassicKey) HasProtectionKeyName() bool`
+
+HasProtectionKeyName returns a boolean if a field has been set.
 
 ### GetTags
 
