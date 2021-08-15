@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **RotationHour** | Pointer to **int32** |  | [optional] 
 **RotationInterval** | Pointer to **string** | The number of days to wait between every automatic key rotation (7-365) | [optional] 
 **RotatorCredsType** | Pointer to **string** |  | [optional] 
+**RotatorCustomCmd** | Pointer to **string** |  | [optional] 
 **RotatorType** | Pointer to **string** |  | [optional] 
 **SshPassword** | Pointer to **string** | Deprecated: use RotatedPassword | [optional] 
 **SshUsername** | Pointer to **string** | Deprecated: use RotatedUser | [optional] 
@@ -338,6 +339,31 @@ SetRotatorCredsType sets RotatorCredsType field to given value.
 `func (o *CreateRotatedSecret) HasRotatorCredsType() bool`
 
 HasRotatorCredsType returns a boolean if a field has been set.
+
+### GetRotatorCustomCmd
+
+`func (o *CreateRotatedSecret) GetRotatorCustomCmd() string`
+
+GetRotatorCustomCmd returns the RotatorCustomCmd field if non-nil, zero value otherwise.
+
+### GetRotatorCustomCmdOk
+
+`func (o *CreateRotatedSecret) GetRotatorCustomCmdOk() (*string, bool)`
+
+GetRotatorCustomCmdOk returns a tuple with the RotatorCustomCmd field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotatorCustomCmd
+
+`func (o *CreateRotatedSecret) SetRotatorCustomCmd(v string)`
+
+SetRotatorCustomCmd sets RotatorCustomCmd field to given value.
+
+### HasRotatorCustomCmd
+
+`func (o *CreateRotatedSecret) HasRotatorCustomCmd() bool`
+
+HasRotatorCustomCmd returns a boolean if a field has been set.
 
 ### GetRotatorType
 

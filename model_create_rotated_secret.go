@@ -35,6 +35,7 @@ type CreateRotatedSecret struct {
 	// The number of days to wait between every automatic key rotation (7-365)
 	RotationInterval *string `json:"rotation-interval,omitempty"`
 	RotatorCredsType *string `json:"rotator-creds-type,omitempty"`
+	RotatorCustomCmd *string `json:"rotator-custom-cmd,omitempty"`
 	RotatorType *string `json:"rotator-type,omitempty"`
 	// Deprecated: use RotatedPassword
 	SshPassword *string `json:"ssh-password,omitempty"`
@@ -447,6 +448,38 @@ func (o *CreateRotatedSecret) SetRotatorCredsType(v string) {
 	o.RotatorCredsType = &v
 }
 
+// GetRotatorCustomCmd returns the RotatorCustomCmd field value if set, zero value otherwise.
+func (o *CreateRotatedSecret) GetRotatorCustomCmd() string {
+	if o == nil || o.RotatorCustomCmd == nil {
+		var ret string
+		return ret
+	}
+	return *o.RotatorCustomCmd
+}
+
+// GetRotatorCustomCmdOk returns a tuple with the RotatorCustomCmd field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRotatedSecret) GetRotatorCustomCmdOk() (*string, bool) {
+	if o == nil || o.RotatorCustomCmd == nil {
+		return nil, false
+	}
+	return o.RotatorCustomCmd, true
+}
+
+// HasRotatorCustomCmd returns a boolean if a field has been set.
+func (o *CreateRotatedSecret) HasRotatorCustomCmd() bool {
+	if o != nil && o.RotatorCustomCmd != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRotatorCustomCmd gets a reference to the given string and assigns it to the RotatorCustomCmd field.
+func (o *CreateRotatedSecret) SetRotatorCustomCmd(v string) {
+	o.RotatorCustomCmd = &v
+}
+
 // GetRotatorType returns the RotatorType field value if set, zero value otherwise.
 func (o *CreateRotatedSecret) GetRotatorType() string {
 	if o == nil || o.RotatorType == nil {
@@ -732,6 +765,9 @@ func (o CreateRotatedSecret) MarshalJSON() ([]byte, error) {
 	}
 	if o.RotatorCredsType != nil {
 		toSerialize["rotator-creds-type"] = o.RotatorCredsType
+	}
+	if o.RotatorCustomCmd != nil {
+		toSerialize["rotator-custom-cmd"] = o.RotatorCustomCmd
 	}
 	if o.RotatorType != nil {
 		toSerialize["rotator-type"] = o.RotatorType

@@ -43,6 +43,7 @@ type UpdateRotatedSecret struct {
 	// The number of days to wait between every automatic key rotation (7-365)
 	RotationInterval *string `json:"rotation-interval,omitempty"`
 	RotatorCredsType *string `json:"rotator-creds-type,omitempty"`
+	RotatorCustomCmd *string `json:"rotator-custom-cmd,omitempty"`
 	// Deprecated: use RotatedPassword
 	SshPassword *string `json:"ssh-password,omitempty"`
 	// Deprecated: use RotatedUser
@@ -585,6 +586,38 @@ func (o *UpdateRotatedSecret) SetRotatorCredsType(v string) {
 	o.RotatorCredsType = &v
 }
 
+// GetRotatorCustomCmd returns the RotatorCustomCmd field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetRotatorCustomCmd() string {
+	if o == nil || o.RotatorCustomCmd == nil {
+		var ret string
+		return ret
+	}
+	return *o.RotatorCustomCmd
+}
+
+// GetRotatorCustomCmdOk returns a tuple with the RotatorCustomCmd field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetRotatorCustomCmdOk() (*string, bool) {
+	if o == nil || o.RotatorCustomCmd == nil {
+		return nil, false
+	}
+	return o.RotatorCustomCmd, true
+}
+
+// HasRotatorCustomCmd returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasRotatorCustomCmd() bool {
+	if o != nil && o.RotatorCustomCmd != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRotatorCustomCmd gets a reference to the given string and assigns it to the RotatorCustomCmd field.
+func (o *UpdateRotatedSecret) SetRotatorCustomCmd(v string) {
+	o.RotatorCustomCmd = &v
+}
+
 // GetSshPassword returns the SshPassword field value if set, zero value otherwise.
 func (o *UpdateRotatedSecret) GetSshPassword() string {
 	if o == nil || o.SshPassword == nil {
@@ -794,6 +827,9 @@ func (o UpdateRotatedSecret) MarshalJSON() ([]byte, error) {
 	}
 	if o.RotatorCredsType != nil {
 		toSerialize["rotator-creds-type"] = o.RotatorCredsType
+	}
+	if o.RotatorCustomCmd != nil {
+		toSerialize["rotator-custom-cmd"] = o.RotatorCustomCmd
 	}
 	if o.SshPassword != nil {
 		toSerialize["ssh-password"] = o.SshPassword
