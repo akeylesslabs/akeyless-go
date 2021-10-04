@@ -19,6 +19,7 @@ import (
 type GeneralConfigPart struct {
 	AkeylessUrl *string `json:"akeyless_url,omitempty"`
 	ApiTokenTtl *string `json:"api_token_ttl,omitempty"`
+	DisplayName *string `json:"display_name,omitempty"`
 	EnableTls *bool `json:"enable_tls,omitempty"`
 	EnableTlsConfigure *bool `json:"enable_tls_configure,omitempty"`
 	EnableTlsCurl *bool `json:"enable_tls_curl,omitempty"`
@@ -108,6 +109,38 @@ func (o *GeneralConfigPart) HasApiTokenTtl() bool {
 // SetApiTokenTtl gets a reference to the given string and assigns it to the ApiTokenTtl field.
 func (o *GeneralConfigPart) SetApiTokenTtl(v string) {
 	o.ApiTokenTtl = &v
+}
+
+// GetDisplayName returns the DisplayName field value if set, zero value otherwise.
+func (o *GeneralConfigPart) GetDisplayName() string {
+	if o == nil || o.DisplayName == nil {
+		var ret string
+		return ret
+	}
+	return *o.DisplayName
+}
+
+// GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GeneralConfigPart) GetDisplayNameOk() (*string, bool) {
+	if o == nil || o.DisplayName == nil {
+		return nil, false
+	}
+	return o.DisplayName, true
+}
+
+// HasDisplayName returns a boolean if a field has been set.
+func (o *GeneralConfigPart) HasDisplayName() bool {
+	if o != nil && o.DisplayName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDisplayName gets a reference to the given string and assigns it to the DisplayName field.
+func (o *GeneralConfigPart) SetDisplayName(v string) {
+	o.DisplayName = &v
 }
 
 // GetEnableTls returns the EnableTls field value if set, zero value otherwise.
@@ -373,6 +406,9 @@ func (o GeneralConfigPart) MarshalJSON() ([]byte, error) {
 	}
 	if o.ApiTokenTtl != nil {
 		toSerialize["api_token_ttl"] = o.ApiTokenTtl
+	}
+	if o.DisplayName != nil {
+		toSerialize["display_name"] = o.DisplayName
 	}
 	if o.EnableTls != nil {
 		toSerialize["enable_tls"] = o.EnableTls

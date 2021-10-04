@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AkeylessUrl** | Pointer to **string** |  | [optional] 
 **ApiTokenTtl** | Pointer to **string** |  | [optional] 
+**DisplayName** | Pointer to **string** |  | [optional] 
 **EnableTls** | Pointer to **bool** |  | [optional] 
 **EnableTlsConfigure** | Pointer to **bool** |  | [optional] 
 **EnableTlsCurl** | Pointer to **bool** |  | [optional] 
@@ -83,6 +84,31 @@ SetApiTokenTtl sets ApiTokenTtl field to given value.
 `func (o *GeneralConfigPart) HasApiTokenTtl() bool`
 
 HasApiTokenTtl returns a boolean if a field has been set.
+
+### GetDisplayName
+
+`func (o *GeneralConfigPart) GetDisplayName() string`
+
+GetDisplayName returns the DisplayName field if non-nil, zero value otherwise.
+
+### GetDisplayNameOk
+
+`func (o *GeneralConfigPart) GetDisplayNameOk() (*string, bool)`
+
+GetDisplayNameOk returns a tuple with the DisplayName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisplayName
+
+`func (o *GeneralConfigPart) SetDisplayName(v string)`
+
+SetDisplayName sets DisplayName field to given value.
+
+### HasDisplayName
+
+`func (o *GeneralConfigPart) HasDisplayName() bool`
+
+HasDisplayName returns a boolean if a field has been set.
 
 ### GetEnableTls
 

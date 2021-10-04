@@ -6,19 +6,20 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Comment** | Pointer to **string** | Comment about the target | [optional] 
 **GcpKey** | Pointer to **string** | Base64-encoded service account private key text | [optional] 
-**GcpSaEmail** | **string** | GCP service account email | 
+**GcpSaEmail** | Pointer to **string** | GCP service account email | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Target name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**UseGwCloudIdentity** | Pointer to **bool** |  | [optional] 
 **Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 
 ## Methods
 
 ### NewCreateGcpTarget
 
-`func NewCreateGcpTarget(gcpSaEmail string, name string, ) *CreateGcpTarget`
+`func NewCreateGcpTarget(name string, ) *CreateGcpTarget`
 
 NewCreateGcpTarget instantiates a new CreateGcpTarget object
 This constructor will assign default values to properties that have it defined,
@@ -102,6 +103,11 @@ and a boolean to check if the value has been set.
 
 SetGcpSaEmail sets GcpSaEmail field to given value.
 
+### HasGcpSaEmail
+
+`func (o *CreateGcpTarget) HasGcpSaEmail() bool`
+
+HasGcpSaEmail returns a boolean if a field has been set.
 
 ### GetKey
 
@@ -222,6 +228,31 @@ SetUidToken sets UidToken field to given value.
 `func (o *CreateGcpTarget) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetUseGwCloudIdentity
+
+`func (o *CreateGcpTarget) GetUseGwCloudIdentity() bool`
+
+GetUseGwCloudIdentity returns the UseGwCloudIdentity field if non-nil, zero value otherwise.
+
+### GetUseGwCloudIdentityOk
+
+`func (o *CreateGcpTarget) GetUseGwCloudIdentityOk() (*bool, bool)`
+
+GetUseGwCloudIdentityOk returns a tuple with the UseGwCloudIdentity field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseGwCloudIdentity
+
+`func (o *CreateGcpTarget) SetUseGwCloudIdentity(v bool)`
+
+SetUseGwCloudIdentity sets UseGwCloudIdentity field to given value.
+
+### HasUseGwCloudIdentity
+
+`func (o *CreateGcpTarget) HasUseGwCloudIdentity() bool`
+
+HasUseGwCloudIdentity returns a boolean if a field has been set.
 
 ### GetUsername
 

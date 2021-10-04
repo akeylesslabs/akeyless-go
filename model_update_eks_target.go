@@ -45,6 +45,7 @@ type UpdateEKSTarget struct {
 	UidToken *string `json:"uid-token,omitempty"`
 	// Create new version for the target
 	UpdateVersion *bool `json:"update-version,omitempty"`
+	UseGwCloudIdentity *bool `json:"use-gw-cloud-identity,omitempty"`
 	// Required only when the authentication process requires a username and password
 	Username *string `json:"username,omitempty"`
 }
@@ -480,6 +481,38 @@ func (o *UpdateEKSTarget) SetUpdateVersion(v bool) {
 	o.UpdateVersion = &v
 }
 
+// GetUseGwCloudIdentity returns the UseGwCloudIdentity field value if set, zero value otherwise.
+func (o *UpdateEKSTarget) GetUseGwCloudIdentity() bool {
+	if o == nil || o.UseGwCloudIdentity == nil {
+		var ret bool
+		return ret
+	}
+	return *o.UseGwCloudIdentity
+}
+
+// GetUseGwCloudIdentityOk returns a tuple with the UseGwCloudIdentity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateEKSTarget) GetUseGwCloudIdentityOk() (*bool, bool) {
+	if o == nil || o.UseGwCloudIdentity == nil {
+		return nil, false
+	}
+	return o.UseGwCloudIdentity, true
+}
+
+// HasUseGwCloudIdentity returns a boolean if a field has been set.
+func (o *UpdateEKSTarget) HasUseGwCloudIdentity() bool {
+	if o != nil && o.UseGwCloudIdentity != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUseGwCloudIdentity gets a reference to the given bool and assigns it to the UseGwCloudIdentity field.
+func (o *UpdateEKSTarget) SetUseGwCloudIdentity(v bool) {
+	o.UseGwCloudIdentity = &v
+}
+
 // GetUsername returns the Username field value if set, zero value otherwise.
 func (o *UpdateEKSTarget) GetUsername() string {
 	if o == nil || o.Username == nil {
@@ -555,6 +588,9 @@ func (o UpdateEKSTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.UpdateVersion != nil {
 		toSerialize["update-version"] = o.UpdateVersion
+	}
+	if o.UseGwCloudIdentity != nil {
+		toSerialize["use-gw-cloud-identity"] = o.UseGwCloudIdentity
 	}
 	if o.Username != nil {
 		toSerialize["username"] = o.Username

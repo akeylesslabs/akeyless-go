@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **RotationInterval** | Pointer to **string** | The number of days to wait between every automatic key rotation (7-365) | [optional] 
 **RotatorCredsType** | Pointer to **string** |  | [optional] 
 **RotatorCustomCmd** | Pointer to **string** |  | [optional] 
-**RotatorType** | Pointer to **string** |  | [optional] 
+**RotatorType** | **string** | Rotator Type | 
 **SshPassword** | Pointer to **string** | Deprecated: use RotatedPassword | [optional] 
 **SshUsername** | Pointer to **string** | Deprecated: use RotatedUser | [optional] 
 **Tags** | Pointer to **[]string** | List of the tags attached to this secret | [optional] 
@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 
 ### NewCreateRotatedSecret
 
-`func NewCreateRotatedSecret(name string, targetName string, ) *CreateRotatedSecret`
+`func NewCreateRotatedSecret(name string, rotatorType string, targetName string, ) *CreateRotatedSecret`
 
 NewCreateRotatedSecret instantiates a new CreateRotatedSecret object
 This constructor will assign default values to properties that have it defined,
@@ -384,11 +384,6 @@ and a boolean to check if the value has been set.
 
 SetRotatorType sets RotatorType field to given value.
 
-### HasRotatorType
-
-`func (o *CreateRotatedSecret) HasRotatorType() bool`
-
-HasRotatorType returns a boolean if a field has been set.
 
 ### GetSshPassword
 

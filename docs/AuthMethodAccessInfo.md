@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **HuaweiAccessRules** | Pointer to [**HuaweiAccessRules**](HuaweiAccessRules.md) |  | [optional] 
 **LdapAccessRules** | Pointer to [**LDAPAccessRules**](LDAPAccessRules.md) |  | [optional] 
 **Oauth2AccessRules** | Pointer to [**OAuth2AccessRules**](OAuth2AccessRules.md) |  | [optional] 
+**OidcAccessRules** | Pointer to [**OIDCAccessRules**](OIDCAccessRules.md) |  | [optional] 
 **RulesType** | Pointer to **string** |  | [optional] 
 **SamlAccessRules** | Pointer to [**SAMLAccessRules**](SAMLAccessRules.md) |  | [optional] 
 **UniversalIdentityAccessRules** | Pointer to [**UniversalIdentityAccessRules**](UniversalIdentityAccessRules.md) |  | [optional] 
@@ -338,6 +339,31 @@ SetOauth2AccessRules sets Oauth2AccessRules field to given value.
 `func (o *AuthMethodAccessInfo) HasOauth2AccessRules() bool`
 
 HasOauth2AccessRules returns a boolean if a field has been set.
+
+### GetOidcAccessRules
+
+`func (o *AuthMethodAccessInfo) GetOidcAccessRules() OIDCAccessRules`
+
+GetOidcAccessRules returns the OidcAccessRules field if non-nil, zero value otherwise.
+
+### GetOidcAccessRulesOk
+
+`func (o *AuthMethodAccessInfo) GetOidcAccessRulesOk() (*OIDCAccessRules, bool)`
+
+GetOidcAccessRulesOk returns a tuple with the OidcAccessRules field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOidcAccessRules
+
+`func (o *AuthMethodAccessInfo) SetOidcAccessRules(v OIDCAccessRules)`
+
+SetOidcAccessRules sets OidcAccessRules field to given value.
+
+### HasOidcAccessRules
+
+`func (o *AuthMethodAccessInfo) HasOidcAccessRules() bool`
+
+HasOidcAccessRules returns a boolean if a field has been set.
 
 ### GetRulesType
 

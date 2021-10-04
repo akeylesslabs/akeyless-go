@@ -22,7 +22,7 @@ type CreateGcpTarget struct {
 	// Base64-encoded service account private key text
 	GcpKey *string `json:"gcp-key,omitempty"`
 	// GCP service account email
-	GcpSaEmail string `json:"gcp-sa-email"`
+	GcpSaEmail *string `json:"gcp-sa-email,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
 	// Target name
@@ -33,6 +33,7 @@ type CreateGcpTarget struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	UseGwCloudIdentity *bool `json:"use-gw-cloud-identity,omitempty"`
 	// Required only when the authentication process requires a username and password
 	Username *string `json:"username,omitempty"`
 }
@@ -41,9 +42,8 @@ type CreateGcpTarget struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateGcpTarget(gcpSaEmail string, name string, ) *CreateGcpTarget {
+func NewCreateGcpTarget(name string, ) *CreateGcpTarget {
 	this := CreateGcpTarget{}
-	this.GcpSaEmail = gcpSaEmail
 	this.Name = name
 	return &this
 }
@@ -120,28 +120,36 @@ func (o *CreateGcpTarget) SetGcpKey(v string) {
 	o.GcpKey = &v
 }
 
-// GetGcpSaEmail returns the GcpSaEmail field value
+// GetGcpSaEmail returns the GcpSaEmail field value if set, zero value otherwise.
 func (o *CreateGcpTarget) GetGcpSaEmail() string {
-	if o == nil  {
+	if o == nil || o.GcpSaEmail == nil {
 		var ret string
 		return ret
 	}
-
-	return o.GcpSaEmail
+	return *o.GcpSaEmail
 }
 
-// GetGcpSaEmailOk returns a tuple with the GcpSaEmail field value
+// GetGcpSaEmailOk returns a tuple with the GcpSaEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateGcpTarget) GetGcpSaEmailOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.GcpSaEmail == nil {
 		return nil, false
 	}
-	return &o.GcpSaEmail, true
+	return o.GcpSaEmail, true
 }
 
-// SetGcpSaEmail sets field value
+// HasGcpSaEmail returns a boolean if a field has been set.
+func (o *CreateGcpTarget) HasGcpSaEmail() bool {
+	if o != nil && o.GcpSaEmail != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpSaEmail gets a reference to the given string and assigns it to the GcpSaEmail field.
 func (o *CreateGcpTarget) SetGcpSaEmail(v string) {
-	o.GcpSaEmail = v
+	o.GcpSaEmail = &v
 }
 
 // GetKey returns the Key field value if set, zero value otherwise.
@@ -296,6 +304,38 @@ func (o *CreateGcpTarget) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUseGwCloudIdentity returns the UseGwCloudIdentity field value if set, zero value otherwise.
+func (o *CreateGcpTarget) GetUseGwCloudIdentity() bool {
+	if o == nil || o.UseGwCloudIdentity == nil {
+		var ret bool
+		return ret
+	}
+	return *o.UseGwCloudIdentity
+}
+
+// GetUseGwCloudIdentityOk returns a tuple with the UseGwCloudIdentity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateGcpTarget) GetUseGwCloudIdentityOk() (*bool, bool) {
+	if o == nil || o.UseGwCloudIdentity == nil {
+		return nil, false
+	}
+	return o.UseGwCloudIdentity, true
+}
+
+// HasUseGwCloudIdentity returns a boolean if a field has been set.
+func (o *CreateGcpTarget) HasUseGwCloudIdentity() bool {
+	if o != nil && o.UseGwCloudIdentity != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUseGwCloudIdentity gets a reference to the given bool and assigns it to the UseGwCloudIdentity field.
+func (o *CreateGcpTarget) SetUseGwCloudIdentity(v bool) {
+	o.UseGwCloudIdentity = &v
+}
+
 // GetUsername returns the Username field value if set, zero value otherwise.
 func (o *CreateGcpTarget) GetUsername() string {
 	if o == nil || o.Username == nil {
@@ -336,7 +376,7 @@ func (o CreateGcpTarget) MarshalJSON() ([]byte, error) {
 	if o.GcpKey != nil {
 		toSerialize["gcp-key"] = o.GcpKey
 	}
-	if true {
+	if o.GcpSaEmail != nil {
 		toSerialize["gcp-sa-email"] = o.GcpSaEmail
 	}
 	if o.Key != nil {
@@ -353,6 +393,9 @@ func (o CreateGcpTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.UseGwCloudIdentity != nil {
+		toSerialize["use-gw-cloud-identity"] = o.UseGwCloudIdentity
 	}
 	if o.Username != nil {
 		toSerialize["username"] = o.Username

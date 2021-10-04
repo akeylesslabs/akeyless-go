@@ -32,6 +32,7 @@ type CreateAzureTarget struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	UseGwCloudIdentity *bool `json:"use-gw-cloud-identity,omitempty"`
 	// Required only when the authentication process requires a username and password
 	Username *string `json:"username,omitempty"`
 }
@@ -334,6 +335,38 @@ func (o *CreateAzureTarget) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUseGwCloudIdentity returns the UseGwCloudIdentity field value if set, zero value otherwise.
+func (o *CreateAzureTarget) GetUseGwCloudIdentity() bool {
+	if o == nil || o.UseGwCloudIdentity == nil {
+		var ret bool
+		return ret
+	}
+	return *o.UseGwCloudIdentity
+}
+
+// GetUseGwCloudIdentityOk returns a tuple with the UseGwCloudIdentity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAzureTarget) GetUseGwCloudIdentityOk() (*bool, bool) {
+	if o == nil || o.UseGwCloudIdentity == nil {
+		return nil, false
+	}
+	return o.UseGwCloudIdentity, true
+}
+
+// HasUseGwCloudIdentity returns a boolean if a field has been set.
+func (o *CreateAzureTarget) HasUseGwCloudIdentity() bool {
+	if o != nil && o.UseGwCloudIdentity != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUseGwCloudIdentity gets a reference to the given bool and assigns it to the UseGwCloudIdentity field.
+func (o *CreateAzureTarget) SetUseGwCloudIdentity(v bool) {
+	o.UseGwCloudIdentity = &v
+}
+
 // GetUsername returns the Username field value if set, zero value otherwise.
 func (o *CreateAzureTarget) GetUsername() string {
 	if o == nil || o.Username == nil {
@@ -394,6 +427,9 @@ func (o CreateAzureTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.UseGwCloudIdentity != nil {
+		toSerialize["use-gw-cloud-identity"] = o.UseGwCloudIdentity
 	}
 	if o.Username != nil {
 		toSerialize["username"] = o.Username

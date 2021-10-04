@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **SigningMethod** | **string** | SigningMethod | 
 **StreetAddress** | Pointer to **string** | A comma-separated list of the street address that will be set in the issued certificate | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
-**Ttl** | **int64** | The requested Time To Live for the certificate, use second units | 
+**Ttl** | **int64** | he requested Time To Live for the certificate, in seconds | 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UriSans** | Pointer to **string** | The URI Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list) | [optional] 
 **Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 

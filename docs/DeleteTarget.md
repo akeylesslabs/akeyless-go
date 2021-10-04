@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EnforceDeletion** | Pointer to **bool** | Enforce deletion | [optional] [default to false]
+**ForceDeletion** | Pointer to **bool** | Enforce deletion | [optional] [default to false]
 **Name** | **string** | Target name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **TargetVersion** | Pointer to **int32** | Target version | [optional] 
@@ -31,30 +31,30 @@ NewDeleteTargetWithDefaults instantiates a new DeleteTarget object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetEnforceDeletion
+### GetForceDeletion
 
-`func (o *DeleteTarget) GetEnforceDeletion() bool`
+`func (o *DeleteTarget) GetForceDeletion() bool`
 
-GetEnforceDeletion returns the EnforceDeletion field if non-nil, zero value otherwise.
+GetForceDeletion returns the ForceDeletion field if non-nil, zero value otherwise.
 
-### GetEnforceDeletionOk
+### GetForceDeletionOk
 
-`func (o *DeleteTarget) GetEnforceDeletionOk() (*bool, bool)`
+`func (o *DeleteTarget) GetForceDeletionOk() (*bool, bool)`
 
-GetEnforceDeletionOk returns a tuple with the EnforceDeletion field if it's non-nil, zero value otherwise
+GetForceDeletionOk returns a tuple with the ForceDeletion field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEnforceDeletion
+### SetForceDeletion
 
-`func (o *DeleteTarget) SetEnforceDeletion(v bool)`
+`func (o *DeleteTarget) SetForceDeletion(v bool)`
 
-SetEnforceDeletion sets EnforceDeletion field to given value.
+SetForceDeletion sets ForceDeletion field to given value.
 
-### HasEnforceDeletion
+### HasForceDeletion
 
-`func (o *DeleteTarget) HasEnforceDeletion() bool`
+`func (o *DeleteTarget) HasForceDeletion() bool`
 
-HasEnforceDeletion returns a boolean if a field has been set.
+HasForceDeletion returns a boolean if a field has been set.
 
 ### GetName
 

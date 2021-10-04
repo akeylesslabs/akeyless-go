@@ -112,13 +112,16 @@ Name | Type | Description | Notes
 **RabbitmqUserTags** | Pointer to **string** |  | [optional] 
 **RabbitmqUserVhost** | Pointer to **string** |  | [optional] 
 **RabbitmqUserWritePermission** | Pointer to **string** |  | [optional] 
+**RedshiftCreationStatements** | Pointer to **string** |  | [optional] 
 **RevokeSyncUrl** | Pointer to **string** |  | [optional] 
 **RotateSyncUrl** | Pointer to **string** |  | [optional] 
+**SecureRemoteAccessDetails** | Pointer to [**SecureRemoteAccess**](SecureRemoteAccess.md) |  | [optional] 
 **SfAccount** | Pointer to **string** |  | [optional] 
 **SfUserRole** | Pointer to **string** | generated  users info | [optional] 
 **SfWarehouseName** | Pointer to **string** |  | [optional] 
 **ShouldStop** | Pointer to **string** | TODO delete this after migration | [optional] 
 **TimeoutSeconds** | Pointer to **int64** |  | [optional] 
+**UseGwCloudIdentity** | Pointer to **bool** |  | [optional] 
 **UserPrincipalName** | Pointer to **string** |  | [optional] 
 **UserTtl** | Pointer to **string** |  | [optional] 
 **VenafiAllowSubdomains** | Pointer to **bool** |  | [optional] 
@@ -2854,6 +2857,31 @@ SetRabbitmqUserWritePermission sets RabbitmqUserWritePermission field to given v
 
 HasRabbitmqUserWritePermission returns a boolean if a field has been set.
 
+### GetRedshiftCreationStatements
+
+`func (o *DSProducerDetails) GetRedshiftCreationStatements() string`
+
+GetRedshiftCreationStatements returns the RedshiftCreationStatements field if non-nil, zero value otherwise.
+
+### GetRedshiftCreationStatementsOk
+
+`func (o *DSProducerDetails) GetRedshiftCreationStatementsOk() (*string, bool)`
+
+GetRedshiftCreationStatementsOk returns a tuple with the RedshiftCreationStatements field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRedshiftCreationStatements
+
+`func (o *DSProducerDetails) SetRedshiftCreationStatements(v string)`
+
+SetRedshiftCreationStatements sets RedshiftCreationStatements field to given value.
+
+### HasRedshiftCreationStatements
+
+`func (o *DSProducerDetails) HasRedshiftCreationStatements() bool`
+
+HasRedshiftCreationStatements returns a boolean if a field has been set.
+
 ### GetRevokeSyncUrl
 
 `func (o *DSProducerDetails) GetRevokeSyncUrl() string`
@@ -2903,6 +2931,31 @@ SetRotateSyncUrl sets RotateSyncUrl field to given value.
 `func (o *DSProducerDetails) HasRotateSyncUrl() bool`
 
 HasRotateSyncUrl returns a boolean if a field has been set.
+
+### GetSecureRemoteAccessDetails
+
+`func (o *DSProducerDetails) GetSecureRemoteAccessDetails() SecureRemoteAccess`
+
+GetSecureRemoteAccessDetails returns the SecureRemoteAccessDetails field if non-nil, zero value otherwise.
+
+### GetSecureRemoteAccessDetailsOk
+
+`func (o *DSProducerDetails) GetSecureRemoteAccessDetailsOk() (*SecureRemoteAccess, bool)`
+
+GetSecureRemoteAccessDetailsOk returns a tuple with the SecureRemoteAccessDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureRemoteAccessDetails
+
+`func (o *DSProducerDetails) SetSecureRemoteAccessDetails(v SecureRemoteAccess)`
+
+SetSecureRemoteAccessDetails sets SecureRemoteAccessDetails field to given value.
+
+### HasSecureRemoteAccessDetails
+
+`func (o *DSProducerDetails) HasSecureRemoteAccessDetails() bool`
+
+HasSecureRemoteAccessDetails returns a boolean if a field has been set.
 
 ### GetSfAccount
 
@@ -3028,6 +3081,31 @@ SetTimeoutSeconds sets TimeoutSeconds field to given value.
 `func (o *DSProducerDetails) HasTimeoutSeconds() bool`
 
 HasTimeoutSeconds returns a boolean if a field has been set.
+
+### GetUseGwCloudIdentity
+
+`func (o *DSProducerDetails) GetUseGwCloudIdentity() bool`
+
+GetUseGwCloudIdentity returns the UseGwCloudIdentity field if non-nil, zero value otherwise.
+
+### GetUseGwCloudIdentityOk
+
+`func (o *DSProducerDetails) GetUseGwCloudIdentityOk() (*bool, bool)`
+
+GetUseGwCloudIdentityOk returns a tuple with the UseGwCloudIdentity field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseGwCloudIdentity
+
+`func (o *DSProducerDetails) SetUseGwCloudIdentity(v bool)`
+
+SetUseGwCloudIdentity sets UseGwCloudIdentity field to given value.
+
+### HasUseGwCloudIdentity
+
+`func (o *DSProducerDetails) HasUseGwCloudIdentity() bool`
+
+HasUseGwCloudIdentity returns a boolean if a field has been set.
 
 ### GetUserPrincipalName
 

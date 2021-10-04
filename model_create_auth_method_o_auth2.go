@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// CreateAuthMethodOAuth2 createAuthMethodOAuth2 is a command that creates a new auth method that will be able to authenticate using OpenID/Oauth2.
+// CreateAuthMethodOAuth2 createAuthMethodOAuth2 is a command that creates a new auth method that will be able to authenticate using Oauth2.
 type CreateAuthMethodOAuth2 struct {
 	// Access expiration date in Unix timestamp (select 0 for access without expiry date)
 	AccessExpires *int64 `json:"access-expires,omitempty"`

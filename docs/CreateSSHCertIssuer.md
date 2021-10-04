@@ -15,9 +15,10 @@ Name | Type | Description | Notes
 **SecureAccessEnable** | Pointer to **string** |  | [optional] 
 **SecureAccessHost** | Pointer to **[]string** |  | [optional] 
 **SecureAccessSshCredsUser** | Pointer to **string** |  | [optional] 
+**SecureAccessUseInternalBastion** | Pointer to **bool** |  | [optional] 
 **SignerKeyName** | **string** | A key to sign the certificate with | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
-**Ttl** | **int64** | The requested Time To Live for the certificate, use second units | 
+**Ttl** | **int64** | he requested Time To Live for the certificate, in seconds | 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 
@@ -304,6 +305,31 @@ SetSecureAccessSshCredsUser sets SecureAccessSshCredsUser field to given value.
 `func (o *CreateSSHCertIssuer) HasSecureAccessSshCredsUser() bool`
 
 HasSecureAccessSshCredsUser returns a boolean if a field has been set.
+
+### GetSecureAccessUseInternalBastion
+
+`func (o *CreateSSHCertIssuer) GetSecureAccessUseInternalBastion() bool`
+
+GetSecureAccessUseInternalBastion returns the SecureAccessUseInternalBastion field if non-nil, zero value otherwise.
+
+### GetSecureAccessUseInternalBastionOk
+
+`func (o *CreateSSHCertIssuer) GetSecureAccessUseInternalBastionOk() (*bool, bool)`
+
+GetSecureAccessUseInternalBastionOk returns a tuple with the SecureAccessUseInternalBastion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessUseInternalBastion
+
+`func (o *CreateSSHCertIssuer) SetSecureAccessUseInternalBastion(v bool)`
+
+SetSecureAccessUseInternalBastion sets SecureAccessUseInternalBastion field to given value.
+
+### HasSecureAccessUseInternalBastion
+
+`func (o *CreateSSHCertIssuer) HasSecureAccessUseInternalBastion() bool`
+
+HasSecureAccessUseInternalBastion returns a boolean if a field has been set.
 
 ### GetSignerKeyName
 

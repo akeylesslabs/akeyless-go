@@ -342,6 +342,33 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /create-auth-method-oidc:
+    post:
+      operationId: createAuthMethodOIDC
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createAuthMethodOIDC'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAuthMethodOIDCOutput'
+          description: createAuthMethodOIDCResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /create-auth-method-saml:
     post:
       operationId: createAuthMethodSAML
@@ -675,6 +702,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/createKeyOutput'
           description: createKeyResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /create-ldap-target:
+    post:
+      operationId: createldapTarget
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createLdapTarget'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createLdapTargetOutput'
+          description: createldapTargetResponse wraps response body.
         default:
           content:
             application/json:
@@ -1864,6 +1918,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/gatewayCreateProducerRdpOutput'
           description: gatewayCreateProducerRdpResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /gateway-create-producer-redshift:
+    post:
+      operationId: gatewayCreateProducerRedshift
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayCreateProducerRedshift'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayCreateProducerRedshiftOutput'
+          description: gatewayCreateProducerRedshiftResponse wraps response body.
         default:
           content:
             application/json:
@@ -4225,6 +4306,12 @@ components:
           schema:
             $ref: '#/components/schemas/createAuthMethodOAuth2Output'
       description: createAuthMethodOAuth2Response wraps response body.
+    createAuthMethodOIDCResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/createAuthMethodOIDCOutput'
+      description: createAuthMethodOIDCResponse wraps response body.
     createAuthMethodResponse:
       content:
         application/json:
@@ -4345,6 +4432,12 @@ components:
           schema:
             $ref: '#/components/schemas/createWebTargetOutput'
       description: createWebTargetResponse wraps response body.
+    createldapTargetResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/createLdapTargetOutput'
+      description: createldapTargetResponse wraps response body.
     decryptFileResponse:
       content:
         application/json:
@@ -4588,6 +4681,12 @@ components:
           schema:
             $ref: '#/components/schemas/gatewayCreateProducerRdpOutput'
       description: gatewayCreateProducerRdpResponse wraps response body.
+    gatewayCreateProducerRedshiftResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayCreateProducerRedshiftOutput'
+      description: gatewayCreateProducerRedshiftResponse wraps response body.
     gatewayCreateProducerSnowflakeResponse:
       content:
         application/json:
@@ -5276,6 +5375,7 @@ components:
           enable_tls_hvp: true
           tls_cert: tls_cert
           akeyless_url: akeyless_url
+          display_name: display_name
         ldap:
           ldap_anonymous_search: true
           ldap_cert: ldap_cert
@@ -5439,8 +5539,8 @@ components:
             elasticsearch_host: elasticsearch_host
         saml:
           saml_access_id: saml_access_id
-          open_id_connect_access_id: open_id_connect_access_id
           default_protection_key_id: 9
+          oidc_access_id: oidc_access_id
           default_secret_location: default_secret_location
         kmip_clients:
           server_enc:
@@ -5696,6 +5796,20 @@ components:
             - bound_clients_id
             - bound_clients_id
             issuer: issuer
+          oidc_access_rules:
+            bound_claims:
+            - values:
+              - values
+              - values
+              name: name
+            - values:
+              - values
+              - values
+              name: name
+            unique_identifier: unique_identifier
+            client_secret: client_secret
+            client_id: client_id
+            issuer: issuer
           saml_access_rules:
             unique_identifier: unique_identifier
             idp_metadata_url: idp_metadata_url
@@ -5865,6 +5979,20 @@ components:
           - bound_clients_id
           - bound_clients_id
           issuer: issuer
+        oidc_access_rules:
+          bound_claims:
+          - values:
+            - values
+            - values
+            name: name
+          - values:
+            - values
+            - values
+            name: name
+          unique_identifier: unique_identifier
+          client_secret: client_secret
+          client_id: client_id
+          issuer: issuer
         saml_access_rules:
           unique_identifier: unique_identifier
           idp_metadata_url: idp_metadata_url
@@ -5972,6 +6100,8 @@ components:
           $ref: '#/components/schemas/LDAPAccessRules'
         oauth2_access_rules:
           $ref: '#/components/schemas/OAuth2AccessRules'
+        oidc_access_rules:
+          $ref: '#/components/schemas/OIDCAccessRules'
         rules_type:
           type: string
           x-go-name: AccessRulesType
@@ -6736,8 +6866,7 @@ components:
           type: string
           x-go-name: Profile
         ttl:
-          description: The requested Time To Live for the certificate, use second
-            units
+          description: he requested Time To Live for the certificate, in seconds
           format: int64
           type: integer
           x-go-name: TTL
@@ -6895,6 +7024,7 @@ components:
         eks_region: eks_region
         payload: payload
         artifactory_admin_apikey: artifactory_admin_apikey
+        redshift_creation_statements: redshift_creation_statements
         azure_app_object_id: azure_app_object_id
         venafi_allow_subdomains: true
         aws_user_console_access: true
@@ -6926,10 +7056,38 @@ components:
         rabbitmq_user_write_permission: rabbitmq_user_write_permission
         rabbitmq_user_tags: rabbitmq_user_tags
         venafi_tpp_password: venafi_tpp_password
+        use_gw_cloud_identity: true
         azure_user_programmatic_access: true
         k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
         eks_secret_access_key: eks_secret_access_key
         sf_account: sf_account
+        secure_remote_access_details:
+          schema: schema
+          is_cli: true
+          use_internal_bastion: true
+          bastion_ssh: bastion_ssh
+          isolated: true
+          ssh_private_key: true
+          url: url
+          allow_port_forwarding: true
+          is_web: true
+          endpoint: endpoint
+          account_id: account_id
+          db_name: db_name
+          native: true
+          enable: true
+          domain: domain
+          host:
+          - host
+          - host
+          bastion_api: bastion_api
+          category: category
+          dashboard_url: dashboard_url
+          region: region
+          ssh_password: true
+          bastion_issuer_id: 7
+          bastion_issuer: bastion_issuer
+          ssh_user: ssh_user
         groups: groups
         chef_organizations: chef_organizations
         dynamic_secret_id: 6
@@ -7293,12 +7451,17 @@ components:
         rabbitmq_user_write_permission:
           type: string
           x-go-name: RabbitmqUserWritePermission
+        redshift_creation_statements:
+          type: string
+          x-go-name: RedshiftCreationStatements
         revoke_sync_url:
           type: string
           x-go-name: RevokeSyncURL
         rotate_sync_url:
           type: string
           x-go-name: RotateSyncURL
+        secure_remote_access_details:
+          $ref: '#/components/schemas/SecureRemoteAccess'
         sf_account:
           type: string
           x-go-name: SnowflakeAccountName
@@ -7317,6 +7480,9 @@ components:
           format: int64
           type: integer
           x-go-name: TimeoutSeconds
+        use_gw_cloud_identity:
+          type: boolean
+          x-go-name: EKSUseDefaultIdentity
         user_principal_name:
           type: string
           x-go-name: AzurePrincipalName
@@ -7369,8 +7535,8 @@ components:
     DefaultConfigPart:
       example:
         saml_access_id: saml_access_id
-        open_id_connect_access_id: open_id_connect_access_id
         default_protection_key_id: 9
+        oidc_access_id: oidc_access_id
         default_secret_location: default_secret_location
       properties:
         default_protection_key_id:
@@ -7380,9 +7546,9 @@ components:
         default_secret_location:
           type: string
           x-go-name: SecretLocation
-        open_id_connect_access_id:
+        oidc_access_id:
           type: string
-          x-go-name: OktaOpenIdConnectAccessId
+          x-go-name: OIDCAccessId
         saml_access_id:
           type: string
           x-go-name: SamlAccessId
@@ -7619,6 +7785,7 @@ components:
         enable_tls_hvp: true
         tls_cert: tls_cert
         akeyless_url: akeyless_url
+        display_name: display_name
       properties:
         akeyless_url:
           type: string
@@ -7626,6 +7793,9 @@ components:
         api_token_ttl:
           type: string
           x-go-name: ApiTokenTtl
+        display_name:
+          type: string
+          x-go-name: DisplayName
         enable_tls:
           type: boolean
           x-go-name: EnableTLS
@@ -7769,8 +7939,10 @@ components:
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           k8s_bearer_token: k8s_bearer_token
           chef_server_key: chef_server_key
+          ldap_group_filter: ldap_group_filter
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
+          ldap_group_attr: ldap_group_attr
           mongodb_uri_connection: mongodb_uri_connection
           mongodb_atlas_project_id: mongodb_atlas_project_id
           password: password
@@ -7778,10 +7950,17 @@ components:
           eks_region: eks_region
           artifactory_admin_apikey: artifactory_admin_apikey
           host: host
+          ldap_certificate: ldap_certificate
+          ldap_private_key: ldap_private_key
+          ldap_audience: ldap_audience
+          ldap_bind_dn: ldap_bind_dn
+          ldap_url: ldap_url
           rabbitmq_server_password: rabbitmq_server_password
+          ldap_bind_password: ldap_bind_password
           private_key: private_key
           chef_server_username: chef_server_username
           db_host_name: db_host_name
+          ldap_user_dn: ldap_user_dn
           db_name: db_name
           port: port
           db_server_certificates: db_server_certificates
@@ -7810,18 +7989,24 @@ components:
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           venafi_tpp_password: venafi_tpp_password
+          ldap_token_expiration: ldap_token_expiration
+          ldap_user_attr: ldap_user_attr
+          use_gw_cloud_identity: true
           venafi_use_tpp: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
           mongodb_password: mongodb_password
           eks_secret_access_key: eks_secret_access_key
+          ldap_anonymous_search: true
           sf_account: sf_account
           aws_secret_access_key: aws_secret_access_key
+          ldap_group_dn: ldap_group_dn
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           chef_server_host_name: chef_server_host_name
           url: url
           chef_server_port: chef_server_port
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
+          ldap_access_id: ldap_access_id
           aws_access_key_id: aws_access_key_id
           aws_region: aws_region
           eks_cluster_name: eks_cluster_name
@@ -8137,6 +8322,7 @@ components:
           secure_remote_access_details:
             schema: schema
             is_cli: true
+            use_internal_bastion: true
             bastion_ssh: bastion_ssh
             isolated: true
             ssh_private_key: true
@@ -8389,6 +8575,7 @@ components:
         secure_remote_access_details:
           schema: schema
           is_cli: true
+          use_internal_bastion: true
           bastion_ssh: bastion_ssh
           isolated: true
           ssh_private_key: true
@@ -9035,6 +9222,20 @@ components:
               - bound_clients_id
               - bound_clients_id
               issuer: issuer
+            oidc_access_rules:
+              bound_claims:
+              - values:
+                - values
+                - values
+                name: name
+              - values:
+                - values
+                - values
+                name: name
+              unique_identifier: unique_identifier
+              client_secret: client_secret
+              client_id: client_id
+              issuer: issuer
             saml_access_rules:
               unique_identifier: unique_identifier
               idp_metadata_url: idp_metadata_url
@@ -9220,6 +9421,20 @@ components:
               bound_clients_id:
               - bound_clients_id
               - bound_clients_id
+              issuer: issuer
+            oidc_access_rules:
+              bound_claims:
+              - values:
+                - values
+                - values
+                name: name
+              - values:
+                - values
+                - values
+                name: name
+              unique_identifier: unique_identifier
+              client_secret: client_secret
+              client_id: client_id
               issuer: issuer
             saml_access_rules:
               unique_identifier: unique_identifier
@@ -9466,6 +9681,7 @@ components:
             secure_remote_access_details:
               schema: schema
               is_cli: true
+              use_internal_bastion: true
               bastion_ssh: bastion_ssh
               isolated: true
               ssh_private_key: true
@@ -9723,6 +9939,7 @@ components:
             secure_remote_access_details:
               schema: schema
               is_cli: true
+              use_internal_bastion: true
               bastion_ssh: bastion_ssh
               isolated: true
               ssh_private_key: true
@@ -10312,6 +10529,69 @@ components:
     OAuth2CustomClaim:
       description: |-
         OAuth2CustomClaim is a custom claim specific to OAuth2 authentication
+        method.
+      example:
+        values:
+        - values
+        - values
+        name: name
+      properties:
+        name:
+          type: string
+          x-go-name: Name
+        values:
+          items:
+            type: string
+          type: array
+          x-go-name: Values
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    OIDCAccessRules:
+      description: |-
+        OIDCAccessRules contains access rules specific to Open Id Connect authentication
+        method.
+      example:
+        bound_claims:
+        - values:
+          - values
+          - values
+          name: name
+        - values:
+          - values
+          - values
+          name: name
+        unique_identifier: unique_identifier
+        client_secret: client_secret
+        client_id: client_id
+        issuer: issuer
+      properties:
+        bound_claims:
+          description: The claims that login is restricted to.
+          items:
+            $ref: '#/components/schemas/OIDCCustomClaim'
+          type: array
+          x-go-name: BoundCustomClaims
+        client_id:
+          description: Client ID
+          type: string
+          x-go-name: ClientID
+        client_secret:
+          description: Client Secret
+          type: string
+          x-go-name: ClientSecret
+        issuer:
+          description: Issuer URL
+          type: string
+          x-go-name: Issuer
+        unique_identifier:
+          description: A unique identifier to distinguish different users
+          type: string
+          x-go-name: UniqueIdentifier
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    OIDCCustomClaim:
+      description: |-
+        OIDCCustomClaim is a custom claim specific to OIDC authentication
         method.
       example:
         values:
@@ -11029,6 +11309,7 @@ components:
       example:
         schema: schema
         is_cli: true
+        use_internal_bastion: true
         bastion_ssh: bastion_ssh
         isolated: true
         ssh_private_key: true
@@ -11125,6 +11406,9 @@ components:
         url:
           type: string
           x-go-name: URL
+        use_internal_bastion:
+          type: boolean
+          x-go-name: UseInternalBastion
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     SecureRemoteAccessCategory:
@@ -11306,8 +11590,10 @@ components:
         gke_cluster_ca_certificate: gke_cluster_ca_certificate
         k8s_bearer_token: k8s_bearer_token
         chef_server_key: chef_server_key
+        ldap_group_filter: ldap_group_filter
         azure_client_id: azure_client_id
         mongodb_default_auth_db: mongodb_default_auth_db
+        ldap_group_attr: ldap_group_attr
         mongodb_uri_connection: mongodb_uri_connection
         mongodb_atlas_project_id: mongodb_atlas_project_id
         password: password
@@ -11315,10 +11601,17 @@ components:
         eks_region: eks_region
         artifactory_admin_apikey: artifactory_admin_apikey
         host: host
+        ldap_certificate: ldap_certificate
+        ldap_private_key: ldap_private_key
+        ldap_audience: ldap_audience
+        ldap_bind_dn: ldap_bind_dn
+        ldap_url: ldap_url
         rabbitmq_server_password: rabbitmq_server_password
+        ldap_bind_password: ldap_bind_password
         private_key: private_key
         chef_server_username: chef_server_username
         db_host_name: db_host_name
+        ldap_user_dn: ldap_user_dn
         db_name: db_name
         port: port
         db_server_certificates: db_server_certificates
@@ -11347,18 +11640,24 @@ components:
         eks_access_key_id: eks_access_key_id
         venafi_base_url: venafi_base_url
         venafi_tpp_password: venafi_tpp_password
+        ldap_token_expiration: ldap_token_expiration
+        ldap_user_attr: ldap_user_attr
+        use_gw_cloud_identity: true
         venafi_use_tpp: true
         k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
         mongodb_password: mongodb_password
         eks_secret_access_key: eks_secret_access_key
+        ldap_anonymous_search: true
         sf_account: sf_account
         aws_secret_access_key: aws_secret_access_key
+        ldap_group_dn: ldap_group_dn
         mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
         chef_server_host_name: chef_server_host_name
         url: url
         chef_server_port: chef_server_port
         mongodb_is_atlas: true
         eks_cluster_ca_certificate: eks_cluster_ca_certificate
+        ldap_access_id: ldap_access_id
         aws_access_key_id: aws_access_key_id
         aws_region: aws_region
         eks_cluster_name: eks_cluster_name
@@ -11504,6 +11803,48 @@ components:
         k8s_cluster_endpoint:
           type: string
           x-go-name: K8sClusterEndpoint
+        ldap_access_id:
+          type: string
+          x-go-name: AccessId
+        ldap_anonymous_search:
+          type: boolean
+          x-go-name: AnonymousSearch
+        ldap_audience:
+          type: string
+          x-go-name: Audience
+        ldap_bind_dn:
+          type: string
+          x-go-name: BindDn
+        ldap_bind_password:
+          type: string
+          x-go-name: BindPass
+        ldap_certificate:
+          type: string
+          x-go-name: Certificate
+        ldap_group_attr:
+          type: string
+          x-go-name: GroupAttr
+        ldap_group_dn:
+          type: string
+          x-go-name: GroupDn
+        ldap_group_filter:
+          type: string
+          x-go-name: GroupFilter
+        ldap_private_key:
+          type: string
+          x-go-name: PrivateKey
+        ldap_token_expiration:
+          type: string
+          x-go-name: TokenExpirationInSec
+        ldap_url:
+          type: string
+          x-go-name: Url
+        ldap_user_attr:
+          type: string
+          x-go-name: UserAttr
+        ldap_user_dn:
+          type: string
+          x-go-name: UserDn
         mongodb_atlas_api_private_key:
           type: string
           x-go-name: MongoDBAtlasAPIPrivateKey
@@ -11567,6 +11908,9 @@ components:
         url:
           type: string
           x-go-name: URL
+        use_gw_cloud_identity:
+          type: boolean
+          x-go-name: GCPUseDefaultIdentity
         username:
           type: string
           x-go-name: AdminName
@@ -11931,7 +12275,7 @@ components:
           x-go-name: AccessKey
         access-type:
           default: access_key
-          description: Access Type (access_key/password/azure_ad/saml/ldap/aws_iam)
+          description: Access Type (access_key/password/azure_ad/saml/oidc/ldap/aws_iam)
           type: string
           x-go-name: AccessType
         admin-email:
@@ -12081,6 +12425,9 @@ components:
             authentication
           type: string
           x-go-name: UIDToken
+        use-gw-cloud-identity:
+          type: boolean
+          x-go-name: AWSUseDefaultIdentity
         username:
           description: Required only when the authentication process requires a username
             and password
@@ -12743,7 +13090,7 @@ components:
     createAuthMethodOAuth2:
       description: |-
         createAuthMethodOAuth2 is a command that creates a new auth method that will
-        be able to authenticate using OpenID/Oauth2.
+        be able to authenticate using Oauth2.
       properties:
         access-expires:
           default: 0
@@ -12827,6 +13174,91 @@ components:
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     createAuthMethodOAuth2Output:
+      example:
+        access_id: access_id
+      properties:
+        access_id:
+          type: string
+          x-go-name: AccessID
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    createAuthMethodOIDC:
+      description: |-
+        createAuthMethodOIDC is a command that creates a new auth method that will
+        be available to authenticate using OIDC.
+      properties:
+        access-expires:
+          default: 0
+          description: |-
+            Access expiration date in Unix timestamp (select 0 for access without
+            expiry date)
+          format: int64
+          type: integer
+          x-go-name: AccessExpires
+        bound-ips:
+          description: A CIDR whitelist of the IPs that the access is restricted to
+          items:
+            type: string
+          type: array
+          x-go-name: CIDRWhitelist
+        client-id:
+          description: Client ID
+          type: string
+          x-go-name: ClientID
+        client-secret:
+          description: Client Secret
+          type: string
+          x-go-name: ClientSecret
+        force-sub-claims:
+          description: 'if true: enforce role-association must include sub claims'
+          type: boolean
+          x-go-name: ForceSubClaims
+        issuer:
+          description: Issuer URL
+          type: string
+          x-go-name: Issuer
+        name:
+          description: Auth Method name
+          type: string
+          x-go-name: AuthMethodName
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        unique-identifier:
+          description: |-
+            A unique identifier (ID) value should be configured for OIDC, OAuth2,
+            LDAP and SAML authentication method types and is usually a value such
+            as the email, username, or upn for example.
+            Whenever a user logs in with a token, these authentication types issue
+            a "sub claim" that contains details uniquely identifying that user.
+            This sub claim includes a key containing the ID value that you
+            configured, and is used to distinguish between different users from
+            within the same organization.
+          type: string
+          x-go-name: UniqueIdentifier
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+      required:
+      - name
+      - unique-identifier
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    createAuthMethodOIDCOutput:
       example:
         access_id: access_id
       properties:
@@ -13043,6 +13475,9 @@ components:
             authentication
           type: string
           x-go-name: UIDToken
+        use-gw-cloud-identity:
+          type: boolean
+          x-go-name: AzureUseDefaultIdentity
         username:
           description: Required only when the authentication process requires a username
             and password
@@ -13112,27 +13547,10 @@ components:
           description: MongoDB server default authentication database
           type: string
           x-go-name: MongoDefaultAuthDB
-        mongodb-host-port:
-          description: MongoDB server host and port
-          type: string
-          x-go-name: MongoHostAndPort
-        mongodb-password:
-          description: MongoDB server password. You will prompted to provide a password
-            if it will not appear in CLI parameters
-          type: string
-          x-go-name: MongoPassword
-        mongodb-server-uri:
-          description: MongoDB server URI
-          type: string
-          x-go-name: MongoServerURI
         mongodb-uri-options:
           description: MongoDB server URI options
           type: string
           x-go-name: MongoURIOptions
-        mongodb-username:
-          description: MongoDB server username
-          type: string
-          x-go-name: MongoUsername
         name:
           description: Target name
           type: string
@@ -13369,6 +13787,9 @@ components:
             authentication
           type: string
           x-go-name: UIDToken
+        use-gw-cloud-identity:
+          type: boolean
+          x-go-name: UseDefaultIdentity
         username:
           description: Required only when the authentication process requires a username
             and password
@@ -13445,6 +13866,9 @@ components:
             authentication
           type: string
           x-go-name: UIDToken
+        use-gw-cloud-identity:
+          type: boolean
+          x-go-name: UseDefaultIdentity
         username:
           description: Required only when the authentication process requires a username
             and password
@@ -13504,13 +13928,15 @@ components:
             authentication
           type: string
           x-go-name: UIDToken
+        use-gw-cloud-identity:
+          type: boolean
+          x-go-name: GCPUseDefaultIdentity
         username:
           description: Required only when the authentication process requires a username
             and password
           type: string
           x-go-name: Username
       required:
-      - gcp-sa-email
       - name
       title: createGcpTarget is a command that creates a new target.
       type: object
@@ -13599,6 +14025,112 @@ components:
             $ref: '#/components/schemas/Duration'
           type: array
           x-go-name: FragmentResults
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    createLdapTarget:
+      properties:
+        access-id:
+          description: Access ID
+          type: string
+          x-go-name: AccessID
+        bind-dn:
+          description: Bind DN
+          type: string
+          x-go-name: BindDn
+        bind-dn-password:
+          description: Bind DN Password
+          type: string
+          x-go-name: BindDnPassword
+        comment:
+          description: Comment about the target
+          type: string
+          x-go-name: Comment
+        enable-anonym-search:
+          description: EnableAnonymousSearch
+          type: boolean
+          x-go-name: EnableAnonymSearch
+        group-attribute:
+          description: Group attribute
+          type: string
+          x-go-name: GroupAttribute
+        group-dn:
+          description: Group DN
+          type: string
+          x-go-name: GroupDn
+        group-filter:
+          description: Group attribute
+          type: string
+          x-go-name: GroupFilter
+        key:
+          description: |-
+            The name of a key that used to encrypt the target secret value (if empty, the
+            account default protectionKey key will be used)
+          type: string
+          x-go-name: ProtectionKey
+        ldap-ca-cert:
+          description: CA Certificate File Content
+          type: string
+          x-go-name: LdapCACert
+        ldap-url:
+          description: LDAP Server URL
+          type: string
+          x-go-name: LdapUrl
+        name:
+          description: Target name
+          type: string
+          x-go-name: TargetName
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        private-key:
+          description: Base64-encoded ldap private key text
+          type: string
+          x-go-name: PrivateKey
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        token-expiration:
+          description: Token expiration
+          type: string
+          x-go-name: TokenExpiration
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        user-attribute:
+          description: User Attribute
+          type: string
+          x-go-name: UserAttribute
+        user-dn:
+          description: User DN
+          type: string
+          x-go-name: UserDn
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+      required:
+      - access-id
+      - ldap-url
+      - name
+      - user-dn
+      title: createldapTarget is a command that creates a new target.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    createLdapTargetOutput:
+      example:
+        target_id: 0
+      properties:
+        target_id:
+          format: int64
+          type: integer
+          x-go-name: TargetID
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     createNativeK8STarget:
@@ -13838,6 +14370,7 @@ components:
           type: string
           x-go-name: RotatorCustomCmd
         rotator-type:
+          description: Rotator Type
           type: string
           x-go-name: RotatorType
         ssh-password:
@@ -13875,6 +14408,7 @@ components:
           x-go-name: Username
       required:
       - name
+      - rotator-type
       - target-name
       title: createRotatedSecret is a command that creates a rotated secret.
       type: object
@@ -13934,6 +14468,9 @@ components:
         secure-access-ssh-creds-user:
           type: string
           x-go-name: SecureAccessSSHUser
+        secure-access-use-internal-bastion:
+          type: boolean
+          x-go-name: SecureAccessUseInternalBastion
         signer-key-name:
           description: A key to sign the certificate with
           type: string
@@ -13943,8 +14480,7 @@ components:
           type: string
           x-go-name: Profile
         ttl:
-          description: The requested Time To Live for the certificate, use second
-            units
+          description: he requested Time To Live for the certificate, in seconds
           format: int64
           type: integer
           x-go-name: TTL
@@ -14710,11 +15246,11 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     deleteTarget:
       properties:
-        enforce-deletion:
+        force-deletion:
           default: false
           description: Enforce deletion
           type: boolean
-          x-go-name: EnforceDeletion
+          x-go-name: ForceDeletion
         name:
           description: Target name
           type: string
@@ -14798,11 +15334,11 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     deleteTargets:
       properties:
-        enforce-deletion:
+        force-deletion:
           default: false
           description: Enforce deletion
           type: boolean
-          x-go-name: EnforceDeletion
+          x-go-name: ForceDeletion
         password:
           description: Required only when the authentication process requires a username
             and password
@@ -15333,6 +15869,7 @@ components:
           eks_region: eks_region
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
+          redshift_creation_statements: redshift_creation_statements
           azure_app_object_id: azure_app_object_id
           venafi_allow_subdomains: true
           aws_user_console_access: true
@@ -15364,10 +15901,38 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
           eks_secret_access_key: eks_secret_access_key
           sf_account: sf_account
+          secure_remote_access_details:
+            schema: schema
+            is_cli: true
+            use_internal_bastion: true
+            bastion_ssh: bastion_ssh
+            isolated: true
+            ssh_private_key: true
+            url: url
+            allow_port_forwarding: true
+            is_web: true
+            endpoint: endpoint
+            account_id: account_id
+            db_name: db_name
+            native: true
+            enable: true
+            domain: domain
+            host:
+            - host
+            - host
+            bastion_api: bastion_api
+            category: category
+            dashboard_url: dashboard_url
+            region: region
+            ssh_password: true
+            bastion_issuer_id: 7
+            bastion_issuer: bastion_issuer
+            ssh_user: ssh_user
           groups: groups
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
@@ -15468,6 +16033,9 @@ components:
         secure-access-enable:
           type: string
           x-go-name: SecureAccessEnabled
+        secure-access-web:
+          type: boolean
+          x-go-name: AccessWebCategory
         secure-access-web-browsing:
           type: boolean
           x-go-name: SecureAccessIsolated
@@ -15590,6 +16158,7 @@ components:
           eks_region: eks_region
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
+          redshift_creation_statements: redshift_creation_statements
           azure_app_object_id: azure_app_object_id
           venafi_allow_subdomains: true
           aws_user_console_access: true
@@ -15621,10 +16190,38 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
           eks_secret_access_key: eks_secret_access_key
           sf_account: sf_account
+          secure_remote_access_details:
+            schema: schema
+            is_cli: true
+            use_internal_bastion: true
+            bastion_ssh: bastion_ssh
+            isolated: true
+            ssh_private_key: true
+            url: url
+            allow_port_forwarding: true
+            is_web: true
+            endpoint: endpoint
+            account_id: account_id
+            db_name: db_name
+            native: true
+            enable: true
+            domain: domain
+            host:
+            - host
+            - host
+            bastion_api: bastion_api
+            category: category
+            dashboard_url: dashboard_url
+            region: region
+            ssh_password: true
+            bastion_issuer_id: 7
+            bastion_issuer: bastion_issuer
+            ssh_user: ssh_user
           groups: groups
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
@@ -15682,6 +16279,9 @@ components:
         secure-access-enable:
           type: string
           x-go-name: SecureAccessEnabled
+        secure-access-web:
+          type: boolean
+          x-go-name: AccessWebCategory
         secure-access-web-browsing:
           type: boolean
           x-go-name: SecureAccessIsolated
@@ -15826,6 +16426,7 @@ components:
           eks_region: eks_region
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
+          redshift_creation_statements: redshift_creation_statements
           azure_app_object_id: azure_app_object_id
           venafi_allow_subdomains: true
           aws_user_console_access: true
@@ -15857,10 +16458,38 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
           eks_secret_access_key: eks_secret_access_key
           sf_account: sf_account
+          secure_remote_access_details:
+            schema: schema
+            is_cli: true
+            use_internal_bastion: true
+            bastion_ssh: bastion_ssh
+            isolated: true
+            ssh_private_key: true
+            url: url
+            allow_port_forwarding: true
+            is_web: true
+            endpoint: endpoint
+            account_id: account_id
+            db_name: db_name
+            native: true
+            enable: true
+            domain: domain
+            host:
+            - host
+            - host
+            bastion_api: bastion_api
+            category: category
+            dashboard_url: dashboard_url
+            region: region
+            ssh_password: true
+            bastion_issuer_id: 7
+            bastion_issuer: bastion_issuer
+            ssh_user: ssh_user
           groups: groups
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
@@ -16040,6 +16669,7 @@ components:
           eks_region: eks_region
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
+          redshift_creation_statements: redshift_creation_statements
           azure_app_object_id: azure_app_object_id
           venafi_allow_subdomains: true
           aws_user_console_access: true
@@ -16071,10 +16701,38 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
           eks_secret_access_key: eks_secret_access_key
           sf_account: sf_account
+          secure_remote_access_details:
+            schema: schema
+            is_cli: true
+            use_internal_bastion: true
+            bastion_ssh: bastion_ssh
+            isolated: true
+            ssh_private_key: true
+            url: url
+            allow_port_forwarding: true
+            is_web: true
+            endpoint: endpoint
+            account_id: account_id
+            db_name: db_name
+            native: true
+            enable: true
+            domain: domain
+            host:
+            - host
+            - host
+            bastion_api: bastion_api
+            category: category
+            dashboard_url: dashboard_url
+            region: region
+            ssh_password: true
+            bastion_issuer_id: 7
+            bastion_issuer: bastion_issuer
+            ssh_user: ssh_user
           groups: groups
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
@@ -16303,6 +16961,7 @@ components:
           eks_region: eks_region
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
+          redshift_creation_statements: redshift_creation_statements
           azure_app_object_id: azure_app_object_id
           venafi_allow_subdomains: true
           aws_user_console_access: true
@@ -16334,10 +16993,38 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
           eks_secret_access_key: eks_secret_access_key
           sf_account: sf_account
+          secure_remote_access_details:
+            schema: schema
+            is_cli: true
+            use_internal_bastion: true
+            bastion_ssh: bastion_ssh
+            isolated: true
+            ssh_private_key: true
+            url: url
+            allow_port_forwarding: true
+            is_web: true
+            endpoint: endpoint
+            account_id: account_id
+            db_name: db_name
+            native: true
+            enable: true
+            domain: domain
+            host:
+            - host
+            - host
+            bastion_api: bastion_api
+            category: category
+            dashboard_url: dashboard_url
+            region: region
+            ssh_password: true
+            bastion_issuer_id: 7
+            bastion_issuer: bastion_issuer
+            ssh_user: ssh_user
           groups: groups
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
@@ -16593,6 +17280,7 @@ components:
           eks_region: eks_region
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
+          redshift_creation_statements: redshift_creation_statements
           azure_app_object_id: azure_app_object_id
           venafi_allow_subdomains: true
           aws_user_console_access: true
@@ -16624,10 +17312,38 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
           eks_secret_access_key: eks_secret_access_key
           sf_account: sf_account
+          secure_remote_access_details:
+            schema: schema
+            is_cli: true
+            use_internal_bastion: true
+            bastion_ssh: bastion_ssh
+            isolated: true
+            ssh_private_key: true
+            url: url
+            allow_port_forwarding: true
+            is_web: true
+            endpoint: endpoint
+            account_id: account_id
+            db_name: db_name
+            native: true
+            enable: true
+            domain: domain
+            host:
+            - host
+            - host
+            bastion_api: bastion_api
+            category: category
+            dashboard_url: dashboard_url
+            region: region
+            ssh_password: true
+            bastion_issuer_id: 7
+            bastion_issuer: bastion_issuer
+            ssh_user: ssh_user
           groups: groups
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
@@ -16707,6 +17423,9 @@ components:
         secure-access-enable:
           type: string
           x-go-name: SecureAccessEnabled
+        secure-access-web:
+          type: boolean
+          x-go-name: AccessWebCategory
         target-name:
           description: Target name
           type: string
@@ -16826,6 +17545,7 @@ components:
           eks_region: eks_region
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
+          redshift_creation_statements: redshift_creation_statements
           azure_app_object_id: azure_app_object_id
           venafi_allow_subdomains: true
           aws_user_console_access: true
@@ -16857,10 +17577,38 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
           eks_secret_access_key: eks_secret_access_key
           sf_account: sf_account
+          secure_remote_access_details:
+            schema: schema
+            is_cli: true
+            use_internal_bastion: true
+            bastion_ssh: bastion_ssh
+            isolated: true
+            ssh_private_key: true
+            url: url
+            allow_port_forwarding: true
+            is_web: true
+            endpoint: endpoint
+            account_id: account_id
+            db_name: db_name
+            native: true
+            enable: true
+            domain: domain
+            host:
+            - host
+            - host
+            bastion_api: bastion_api
+            category: category
+            dashboard_url: dashboard_url
+            region: region
+            ssh_password: true
+            bastion_issuer_id: 7
+            bastion_issuer: bastion_issuer
+            ssh_user: ssh_user
           groups: groups
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
@@ -17037,6 +17785,7 @@ components:
           eks_region: eks_region
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
+          redshift_creation_statements: redshift_creation_statements
           azure_app_object_id: azure_app_object_id
           venafi_allow_subdomains: true
           aws_user_console_access: true
@@ -17068,10 +17817,38 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
           eks_secret_access_key: eks_secret_access_key
           sf_account: sf_account
+          secure_remote_access_details:
+            schema: schema
+            is_cli: true
+            use_internal_bastion: true
+            bastion_ssh: bastion_ssh
+            isolated: true
+            ssh_private_key: true
+            url: url
+            allow_port_forwarding: true
+            is_web: true
+            endpoint: endpoint
+            account_id: account_id
+            db_name: db_name
+            native: true
+            enable: true
+            domain: domain
+            host:
+            - host
+            - host
+            bastion_api: bastion_api
+            category: category
+            dashboard_url: dashboard_url
+            region: region
+            ssh_password: true
+            bastion_issuer_id: 7
+            bastion_issuer: bastion_issuer
+            ssh_user: ssh_user
           groups: groups
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
@@ -17142,6 +17919,9 @@ components:
         secure-access-enable:
           type: string
           x-go-name: SecureAccessEnabled
+        secure-access-web:
+          type: boolean
+          x-go-name: AccessWebCategory
         target-name:
           description: Target name
           type: string
@@ -17261,6 +18041,7 @@ components:
           eks_region: eks_region
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
+          redshift_creation_statements: redshift_creation_statements
           azure_app_object_id: azure_app_object_id
           venafi_allow_subdomains: true
           aws_user_console_access: true
@@ -17292,10 +18073,38 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
           eks_secret_access_key: eks_secret_access_key
           sf_account: sf_account
+          secure_remote_access_details:
+            schema: schema
+            is_cli: true
+            use_internal_bastion: true
+            bastion_ssh: bastion_ssh
+            isolated: true
+            ssh_private_key: true
+            url: url
+            allow_port_forwarding: true
+            is_web: true
+            endpoint: endpoint
+            account_id: account_id
+            db_name: db_name
+            native: true
+            enable: true
+            domain: domain
+            host:
+            - host
+            - host
+            bastion_api: bastion_api
+            category: category
+            dashboard_url: dashboard_url
+            region: region
+            ssh_password: true
+            bastion_issuer_id: 7
+            bastion_issuer: bastion_issuer
+            ssh_user: ssh_user
           groups: groups
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
@@ -17378,6 +18187,9 @@ components:
             type: string
           type: array
           x-go-name: SecureAccessHost
+        secure-access-web:
+          type: boolean
+          x-go-name: AccessWebCategory
         target-name:
           description: Target name
           type: string
@@ -17497,6 +18309,7 @@ components:
           eks_region: eks_region
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
+          redshift_creation_statements: redshift_creation_statements
           azure_app_object_id: azure_app_object_id
           venafi_allow_subdomains: true
           aws_user_console_access: true
@@ -17528,10 +18341,38 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
           eks_secret_access_key: eks_secret_access_key
           sf_account: sf_account
+          secure_remote_access_details:
+            schema: schema
+            is_cli: true
+            use_internal_bastion: true
+            bastion_ssh: bastion_ssh
+            isolated: true
+            ssh_private_key: true
+            url: url
+            allow_port_forwarding: true
+            is_web: true
+            endpoint: endpoint
+            account_id: account_id
+            db_name: db_name
+            native: true
+            enable: true
+            domain: domain
+            host:
+            - host
+            - host
+            bastion_api: bastion_api
+            category: category
+            dashboard_url: dashboard_url
+            region: region
+            ssh_password: true
+            bastion_issuer_id: 7
+            bastion_issuer: bastion_issuer
+            ssh_user: ssh_user
           groups: groups
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
@@ -17628,6 +18469,9 @@ components:
             type: string
           type: array
           x-go-name: SecureAccessHost
+        secure-access-web:
+          type: boolean
+          x-go-name: AccessWebCategory
         target-name:
           description: Target name
           type: string
@@ -17747,6 +18591,7 @@ components:
           eks_region: eks_region
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
+          redshift_creation_statements: redshift_creation_statements
           azure_app_object_id: azure_app_object_id
           venafi_allow_subdomains: true
           aws_user_console_access: true
@@ -17778,10 +18623,38 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
           eks_secret_access_key: eks_secret_access_key
           sf_account: sf_account
+          secure_remote_access_details:
+            schema: schema
+            is_cli: true
+            use_internal_bastion: true
+            bastion_ssh: bastion_ssh
+            isolated: true
+            ssh_private_key: true
+            url: url
+            allow_port_forwarding: true
+            is_web: true
+            endpoint: endpoint
+            account_id: account_id
+            db_name: db_name
+            native: true
+            enable: true
+            domain: domain
+            host:
+            - host
+            - host
+            bastion_api: bastion_api
+            category: category
+            dashboard_url: dashboard_url
+            region: region
+            ssh_password: true
+            bastion_issuer_id: 7
+            bastion_issuer: bastion_issuer
+            ssh_user: ssh_user
           groups: groups
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
@@ -17865,6 +18738,9 @@ components:
             type: string
           type: array
           x-go-name: SecureAccessHost
+        secure-access-web:
+          type: boolean
+          x-go-name: AccessWebCategory
         target-name:
           description: Target name
           type: string
@@ -17984,6 +18860,7 @@ components:
           eks_region: eks_region
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
+          redshift_creation_statements: redshift_creation_statements
           azure_app_object_id: azure_app_object_id
           venafi_allow_subdomains: true
           aws_user_console_access: true
@@ -18015,10 +18892,38 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
           eks_secret_access_key: eks_secret_access_key
           sf_account: sf_account
+          secure_remote_access_details:
+            schema: schema
+            is_cli: true
+            use_internal_bastion: true
+            bastion_ssh: bastion_ssh
+            isolated: true
+            ssh_private_key: true
+            url: url
+            allow_port_forwarding: true
+            is_web: true
+            endpoint: endpoint
+            account_id: account_id
+            db_name: db_name
+            native: true
+            enable: true
+            domain: domain
+            host:
+            - host
+            - host
+            bastion_api: bastion_api
+            category: category
+            dashboard_url: dashboard_url
+            region: region
+            ssh_password: true
+            bastion_issuer_id: 7
+            bastion_issuer: bastion_issuer
+            ssh_user: ssh_user
           groups: groups
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
@@ -18092,6 +18997,9 @@ components:
         secure-access-enable:
           type: string
           x-go-name: SecureAccessEnabled
+        secure-access-web:
+          type: boolean
+          x-go-name: AccessWebCategory
         secure-access-web-browsing:
           type: boolean
           x-go-name: SecureAccessIsolated
@@ -18214,6 +19122,7 @@ components:
           eks_region: eks_region
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
+          redshift_creation_statements: redshift_creation_statements
           azure_app_object_id: azure_app_object_id
           venafi_allow_subdomains: true
           aws_user_console_access: true
@@ -18245,10 +19154,38 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
           eks_secret_access_key: eks_secret_access_key
           sf_account: sf_account
+          secure_remote_access_details:
+            schema: schema
+            is_cli: true
+            use_internal_bastion: true
+            bastion_ssh: bastion_ssh
+            isolated: true
+            ssh_private_key: true
+            url: url
+            allow_port_forwarding: true
+            is_web: true
+            endpoint: endpoint
+            account_id: account_id
+            db_name: db_name
+            native: true
+            enable: true
+            domain: domain
+            host:
+            - host
+            - host
+            bastion_api: bastion_api
+            category: category
+            dashboard_url: dashboard_url
+            region: region
+            ssh_password: true
+            bastion_issuer_id: 7
+            bastion_issuer: bastion_issuer
+            ssh_user: ssh_user
           groups: groups
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
@@ -18441,6 +19378,7 @@ components:
           eks_region: eks_region
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
+          redshift_creation_statements: redshift_creation_statements
           azure_app_object_id: azure_app_object_id
           venafi_allow_subdomains: true
           aws_user_console_access: true
@@ -18472,10 +19410,38 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
           eks_secret_access_key: eks_secret_access_key
           sf_account: sf_account
+          secure_remote_access_details:
+            schema: schema
+            is_cli: true
+            use_internal_bastion: true
+            bastion_ssh: bastion_ssh
+            isolated: true
+            ssh_private_key: true
+            url: url
+            allow_port_forwarding: true
+            is_web: true
+            endpoint: endpoint
+            account_id: account_id
+            db_name: db_name
+            native: true
+            enable: true
+            domain: domain
+            host:
+            - host
+            - host
+            bastion_api: bastion_api
+            category: category
+            dashboard_url: dashboard_url
+            region: region
+            ssh_password: true
+            bastion_issuer_id: 7
+            bastion_issuer: bastion_issuer
+            ssh_user: ssh_user
           groups: groups
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
@@ -18555,6 +19521,9 @@ components:
             type: string
           type: array
           x-go-name: SecureAccessHost
+        secure-access-web:
+          type: boolean
+          x-go-name: AccessWebCategory
         target-name:
           description: Target name
           type: string
@@ -18674,6 +19643,7 @@ components:
           eks_region: eks_region
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
+          redshift_creation_statements: redshift_creation_statements
           azure_app_object_id: azure_app_object_id
           venafi_allow_subdomains: true
           aws_user_console_access: true
@@ -18705,10 +19675,38 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
           eks_secret_access_key: eks_secret_access_key
           sf_account: sf_account
+          secure_remote_access_details:
+            schema: schema
+            is_cli: true
+            use_internal_bastion: true
+            bastion_ssh: bastion_ssh
+            isolated: true
+            ssh_private_key: true
+            url: url
+            allow_port_forwarding: true
+            is_web: true
+            endpoint: endpoint
+            account_id: account_id
+            db_name: db_name
+            native: true
+            enable: true
+            domain: domain
+            host:
+            - host
+            - host
+            bastion_api: bastion_api
+            category: category
+            dashboard_url: dashboard_url
+            region: region
+            ssh_password: true
+            bastion_issuer_id: 7
+            bastion_issuer: bastion_issuer
+            ssh_user: ssh_user
           groups: groups
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
@@ -18908,6 +19906,7 @@ components:
           eks_region: eks_region
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
+          redshift_creation_statements: redshift_creation_statements
           azure_app_object_id: azure_app_object_id
           venafi_allow_subdomains: true
           aws_user_console_access: true
@@ -18939,10 +19938,38 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
           eks_secret_access_key: eks_secret_access_key
           sf_account: sf_account
+          secure_remote_access_details:
+            schema: schema
+            is_cli: true
+            use_internal_bastion: true
+            bastion_ssh: bastion_ssh
+            isolated: true
+            ssh_private_key: true
+            url: url
+            allow_port_forwarding: true
+            is_web: true
+            endpoint: endpoint
+            account_id: account_id
+            db_name: db_name
+            native: true
+            enable: true
+            domain: domain
+            host:
+            - host
+            - host
+            bastion_api: bastion_api
+            category: category
+            dashboard_url: dashboard_url
+            region: region
+            ssh_password: true
+            bastion_issuer_id: 7
+            bastion_issuer: bastion_issuer
+            ssh_user: ssh_user
           groups: groups
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
@@ -19137,6 +20164,7 @@ components:
           eks_region: eks_region
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
+          redshift_creation_statements: redshift_creation_statements
           azure_app_object_id: azure_app_object_id
           venafi_allow_subdomains: true
           aws_user_console_access: true
@@ -19168,10 +20196,286 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
           eks_secret_access_key: eks_secret_access_key
           sf_account: sf_account
+          secure_remote_access_details:
+            schema: schema
+            is_cli: true
+            use_internal_bastion: true
+            bastion_ssh: bastion_ssh
+            isolated: true
+            ssh_private_key: true
+            url: url
+            allow_port_forwarding: true
+            is_web: true
+            endpoint: endpoint
+            account_id: account_id
+            db_name: db_name
+            native: true
+            enable: true
+            domain: domain
+            host:
+            - host
+            - host
+            bastion_api: bastion_api
+            category: category
+            dashboard_url: dashboard_url
+            region: region
+            ssh_password: true
+            bastion_issuer_id: 7
+            bastion_issuer: bastion_issuer
+            ssh_user: ssh_user
+          groups: groups
+          chef_organizations: chef_organizations
+          dynamic_secret_id: 6
+          chef_server_host_name: chef_server_host_name
+          mssql_revocation_statements: mssql_revocation_statements
+          chef_server_port: chef_server_port
+          mongodb_is_atlas: true
+          eks_cluster_ca_certificate: eks_cluster_ca_certificate
+          rotate_sync_url: rotate_sync_url
+          aws_access_key_id: aws_access_key_id
+          aws_region: aws_region
+          eks_cluster_name: eks_cluster_name
+          chef_server_url: chef_server_url
+          gke_cluster_name: gke_cluster_name
+          aws_user_groups: aws_user_groups
+          host_name: host_name
+          azure_tenant_id: azure_tenant_id
+      properties:
+        producer_details:
+          $ref: '#/components/schemas/DSProducerDetails'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayCreateProducerRedshift:
+      description: gatewayCreateProducerRedshift is a command that creates redshift
+        producer
+      properties:
+        creation-statements:
+          description: Redshift Creation statements
+          type: string
+          x-go-name: CreationStatements
+        name:
+          description: Producer name
+          type: string
+          x-go-name: ProducerName
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        producer-encryption-key:
+          description: Dynamic producer encryption key
+          type: string
+          x-go-name: ProducerEncryptionKey
+        redshift-db-name:
+          description: Redshift DB Name
+          type: string
+          x-go-name: DBName
+        redshift-host:
+          default: 127.0.0.1
+          description: Redshift Host
+          type: string
+          x-go-name: DBHost
+        redshift-password:
+          description: Redshift Password
+          type: string
+          x-go-name: DBPassword
+        redshift-port:
+          default: "5439"
+          description: Redshift Port
+          type: string
+          x-go-name: DBPort
+        redshift-username:
+          description: Redshift Username
+          type: string
+          x-go-name: DBUsername
+        target-name:
+          description: Target name
+          type: string
+          x-go-name: TargetName
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        user-ttl:
+          default: 60m
+          description: User TTL
+          type: string
+          x-go-name: UserTtl
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+      required:
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayCreateProducerRedshiftOutput:
+      example:
+        producer_details:
+          gke_cluster_endpoint: gke_cluster_endpoint
+          dynamic_secret_type: dynamic_secret_type
+          k8s_namespace: k8s_namespace
+          venafi_sign_using_akeyless_pki: true
+          dynamic_secret_key: dynamic_secret_key
+          last_admin_rotation: 5
+          chef_server_key: chef_server_key
+          db_max_open_conns: db_max_open_conns
+          admin_rotation_interval_days: 0
+          oracle_creation_statements: oracle_creation_statements
+          mssql_creation_statements: mssql_creation_statements
+          sf_user_role: sf_user_role
+          admin_pwd: admin_pwd
+          gcp_token_scope: gcp_token_scope
+          venafi_allowed_domains:
+          - venafi_allowed_domains
+          - venafi_allowed_domains
+          azure_user_roles_template_id: azure_user_roles_template_id
+          fixed_user_only: fixed_user_only
+          rabbitmq_server_password: rabbitmq_server_password
+          aws_access_mode: aws_access_mode
+          aws_user_policies: aws_user_policies
+          aws_role_arns: aws_role_arns
+          active: true
+          item_targets_assoc:
+          - assoc_id: assoc_id
+            target_name: target_name
+            target_id: 1
+          - assoc_id: assoc_id
+            target_name: target_name
+            target_id: 1
+          chef_server_username: chef_server_username
+          db_host_name: db_host_name
+          db_name: db_name
+          k8s_service_account: k8s_service_account
+          chef_skip_ssl: true
+          db_port: db_port
+          k8s_cluster_endpoint: k8s_cluster_endpoint
+          artifactory_base_url: artifactory_base_url
+          azure_client_secret: azure_client_secret
+          azure_user_groups_obj_id: azure_user_groups_obj_id
+          gcp_token_type: gcp_token_type
+          create_sync_url: create_sync_url
+          aws_session_token: aws_session_token
+          gcp_token_lifetime: gcp_token_lifetime
+          db_isolation_level: db_isolation_level
+          rabbitmq_user_vhost: rabbitmq_user_vhost
+          mongodb_username: mongodb_username
+          mongodb_roles: mongodb_roles
+          mongodb_db_name: mongodb_db_name
+          venafi_signer_key_name: venafi_signer_key_name
+          should_stop: should_stop
+          artifactory_token_audience: artifactory_token_audience
+          mongodb_atlas_api_public_key: mongodb_atlas_api_public_key
+          eks_access_key_id: eks_access_key_id
+          venafi_base_url: venafi_base_url
+          user_ttl: user_ttl
+          timeout_seconds: 5
+          eks_assume_role: eks_assume_role
+          venafi_use_tpp: true
+          mongodb_password: mongodb_password
+          aws_secret_access_key: aws_secret_access_key
+          mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
+          postgres_creation_statements: postgres_creation_statements
+          db_max_idle_conns: db_max_idle_conns
+          artifactory_admin_username: artifactory_admin_username
+          admin_name: admin_name
+          rabbitmq_server_user: rabbitmq_server_user
+          venafi_api_key: venafi_api_key
+          mongodb_host_port: mongodb_host_port
+          sf_warehouse_name: sf_warehouse_name
+          artifactory_token_scope: artifactory_token_scope
+          revoke_sync_url: revoke_sync_url
+          gke_cluster_ca_certificate: gke_cluster_ca_certificate
+          host_port: host_port
+          k8s_bearer_token: k8s_bearer_token
+          enable_admin_rotation: true
+          cassandra_creation_statements: cassandra_creation_statements
+          failure_message: failure_message
+          rabbitmq_user_read_permission: rabbitmq_user_read_permission
+          azure_client_id: azure_client_id
+          mongodb_default_auth_db: mongodb_default_auth_db
+          mongodb_uri_connection: mongodb_uri_connection
+          mongodb_atlas_project_id: mongodb_atlas_project_id
+          db_user_name: db_user_name
+          eks_region: eks_region
+          payload: payload
+          artifactory_admin_apikey: artifactory_admin_apikey
+          redshift_creation_statements: redshift_creation_statements
+          azure_app_object_id: azure_app_object_id
+          venafi_allow_subdomains: true
+          aws_user_console_access: true
+          user_principal_name: user_principal_name
+          db_server_certificates: db_server_certificates
+          gcp_key_algo: gcp_key_algo
+          db_server_name: db_server_name
+          venafi_zone: venafi_zone
+          gcp_service_account_key:
+          - 1
+          - 1
+          venafi_store_private_key: true
+          venafi_tpp_username: venafi_tpp_username
+          azure_user_portal_access: true
+          venafi_root_first_in_chain: true
+          eks_cluster_endpoint: eks_cluster_endpoint
+          gke_service_account_key: gke_service_account_key
+          venafi_auto_generated_folder: venafi_auto_generated_folder
+          mongodb_uri_options: mongodb_uri_options
+          db_pwd: db_pwd
+          gke_service_account_name: gke_service_account_name
+          mysql_creation_statements: mysql_creation_statements
+          gcp_service_account_email: gcp_service_account_email
+          dynamic_secret_name: dynamic_secret_name
+          rabbitmq_server_uri: rabbitmq_server_uri
+          chef_server_access_mode: chef_server_access_mode
+          aws_user_programmatic_access: true
+          rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
+          rabbitmq_user_write_permission: rabbitmq_user_write_permission
+          rabbitmq_user_tags: rabbitmq_user_tags
+          venafi_tpp_password: venafi_tpp_password
+          use_gw_cloud_identity: true
+          azure_user_programmatic_access: true
+          k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
+          eks_secret_access_key: eks_secret_access_key
+          sf_account: sf_account
+          secure_remote_access_details:
+            schema: schema
+            is_cli: true
+            use_internal_bastion: true
+            bastion_ssh: bastion_ssh
+            isolated: true
+            ssh_private_key: true
+            url: url
+            allow_port_forwarding: true
+            is_web: true
+            endpoint: endpoint
+            account_id: account_id
+            db_name: db_name
+            native: true
+            enable: true
+            domain: domain
+            host:
+            - host
+            - host
+            bastion_api: bastion_api
+            category: category
+            dashboard_url: dashboard_url
+            region: region
+            ssh_password: true
+            bastion_issuer_id: 7
+            bastion_issuer: bastion_issuer
+            ssh_user: ssh_user
           groups: groups
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
@@ -19342,6 +20646,7 @@ components:
           eks_region: eks_region
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
+          redshift_creation_statements: redshift_creation_statements
           azure_app_object_id: azure_app_object_id
           venafi_allow_subdomains: true
           aws_user_console_access: true
@@ -19373,10 +20678,38 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
           eks_secret_access_key: eks_secret_access_key
           sf_account: sf_account
+          secure_remote_access_details:
+            schema: schema
+            is_cli: true
+            use_internal_bastion: true
+            bastion_ssh: bastion_ssh
+            isolated: true
+            ssh_private_key: true
+            url: url
+            allow_port_forwarding: true
+            is_web: true
+            endpoint: endpoint
+            account_id: account_id
+            db_name: db_name
+            native: true
+            enable: true
+            domain: domain
+            host:
+            - host
+            - host
+            bastion_api: bastion_api
+            category: category
+            dashboard_url: dashboard_url
+            region: region
+            ssh_password: true
+            bastion_issuer_id: 7
+            bastion_issuer: bastion_issuer
+            ssh_user: ssh_user
           groups: groups
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
@@ -21391,8 +22724,7 @@ components:
           type: string
           x-go-name: Profile
         ttl:
-          description: The requested Time To Live for the certificate, use second
-            units
+          description: he requested Time To Live for the certificate, in seconds
           format: int64
           type: integer
           x-go-name: TTL
@@ -21739,6 +23071,9 @@ components:
           description: Create new version for the target
           type: boolean
           x-go-name: CreateNewVersion
+        use-gw-cloud-identity:
+          type: boolean
+          x-go-name: AWSUseDefaultIdentity
         username:
           description: Required only when the authentication process requires a username
             and password
@@ -21897,6 +23232,9 @@ components:
           description: Create new version for the target
           type: boolean
           x-go-name: CreateNewVersion
+        use-gw-cloud-identity:
+          type: boolean
+          x-go-name: AzureUseDefaultIdentity
         username:
           description: Required only when the authentication process requires a username
             and password
@@ -21966,27 +23304,10 @@ components:
           description: MongoDB server default authentication database
           type: string
           x-go-name: MongoDefaultAuthDB
-        mongodb-host-port:
-          description: MongoDB server host and port
-          type: string
-          x-go-name: MongoHostAndPort
-        mongodb-password:
-          description: MongoDB server password. You will prompted to provide a password
-            if it will not appear in CLI parameters
-          type: string
-          x-go-name: MongoPassword
-        mongodb-server-uri:
-          description: MongoDB server URI
-          type: string
-          x-go-name: MongoServerURI
         mongodb-uri-options:
           description: MongoDB server URI options
           type: string
           x-go-name: MongoURIOptions
-        mongodb-username:
-          description: MongoDB server username
-          type: string
-          x-go-name: MongoUsername
         name:
           description: Target name
           type: string
@@ -22179,6 +23500,9 @@ components:
           description: Create new version for the target
           type: boolean
           x-go-name: CreateNewVersion
+        use-gw-cloud-identity:
+          type: boolean
+          x-go-name: UseDefaultIdentity
         username:
           description: Required only when the authentication process requires a username
             and password
@@ -22264,6 +23588,9 @@ components:
           description: Create new version for the target
           type: boolean
           x-go-name: CreateNewVersion
+        use-gw-cloud-identity:
+          type: boolean
+          x-go-name: UseDefaultIdentity
         username:
           description: Required only when the authentication process requires a username
             and password
@@ -22332,6 +23659,9 @@ components:
           description: Create new version for the target
           type: boolean
           x-go-name: CreateNewVersion
+        use-gw-cloud-identity:
+          type: boolean
+          x-go-name: GCPUseDefaultIdentity
         username:
           description: Required only when the authentication process requires a username
             and password
@@ -22438,6 +23768,9 @@ components:
         secure-access-url:
           type: string
           x-go-name: SecureAccessURL
+        secure-access-use-internal-bastion:
+          type: boolean
+          x-go-name: SecureAccessUseInternalBastion
         secure-access-web-browsing:
           type: boolean
           x-go-name: SecureAccessIsolated

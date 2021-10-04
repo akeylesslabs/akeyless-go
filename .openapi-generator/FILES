@@ -51,6 +51,8 @@ docs/CreateAuthMethodLDAP.md
 docs/CreateAuthMethodLDAPOutput.md
 docs/CreateAuthMethodOAuth2.md
 docs/CreateAuthMethodOAuth2Output.md
+docs/CreateAuthMethodOIDC.md
+docs/CreateAuthMethodOIDCOutput.md
 docs/CreateAuthMethodOutput.md
 docs/CreateAuthMethodSAML.md
 docs/CreateAuthMethodSAMLOutput.md
@@ -73,6 +75,8 @@ docs/CreateGcpTarget.md
 docs/CreateGcpTargetOutput.md
 docs/CreateKey.md
 docs/CreateKeyOutput.md
+docs/CreateLdapTarget.md
+docs/CreateLdapTargetOutput.md
 docs/CreateNativeK8STarget.md
 docs/CreateNativeK8STargetOutput.md
 docs/CreatePKICertIssuer.md
@@ -173,6 +177,8 @@ docs/GatewayCreateProducerRabbitMQ.md
 docs/GatewayCreateProducerRabbitMQOutput.md
 docs/GatewayCreateProducerRdp.md
 docs/GatewayCreateProducerRdpOutput.md
+docs/GatewayCreateProducerRedshift.md
+docs/GatewayCreateProducerRedshiftOutput.md
 docs/GatewayCreateProducerSnowflake.md
 docs/GatewayCreateProducerSnowflakeOutput.md
 docs/GatewayDeleteAllowedManagementAccess.md
@@ -263,6 +269,8 @@ docs/MigrationsConfigPart.md
 docs/MoveObjects.md
 docs/OAuth2AccessRules.md
 docs/OAuth2CustomClaim.md
+docs/OIDCAccessRules.md
+docs/OIDCCustomClaim.md
 docs/PKICertificateIssueDetails.md
 docs/PathRule.md
 docs/Producer.md
@@ -411,6 +419,8 @@ model_create_auth_method_ldap.go
 model_create_auth_method_ldap_output.go
 model_create_auth_method_o_auth2.go
 model_create_auth_method_o_auth2_output.go
+model_create_auth_method_oidc.go
+model_create_auth_method_oidc_output.go
 model_create_auth_method_output.go
 model_create_auth_method_saml.go
 model_create_auth_method_saml_output.go
@@ -435,6 +445,8 @@ model_create_gke_target.go
 model_create_gke_target_output.go
 model_create_key.go
 model_create_key_output.go
+model_create_ldap_target.go
+model_create_ldap_target_output.go
 model_create_native_k8_s_target.go
 model_create_native_k8_s_target_output.go
 model_create_pki_cert_issuer.go
@@ -534,6 +546,8 @@ model_gateway_create_producer_rabbit_mq.go
 model_gateway_create_producer_rabbit_mq_output.go
 model_gateway_create_producer_rdp.go
 model_gateway_create_producer_rdp_output.go
+model_gateway_create_producer_redshift.go
+model_gateway_create_producer_redshift_output.go
 model_gateway_create_producer_snowflake.go
 model_gateway_create_producer_snowflake_output.go
 model_gateway_delete_allowed_management_access.go
@@ -625,6 +639,8 @@ model_migrations_config_part.go
 model_move_objects.go
 model_o_auth2_access_rules.go
 model_o_auth2_custom_claim.go
+model_oidc_access_rules.go
+model_oidc_custom_claim.go
 model_path_rule.go
 model_pki_certificate_issue_details.go
 model_producer.go

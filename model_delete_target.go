@@ -18,7 +18,7 @@ import (
 // DeleteTarget struct for DeleteTarget
 type DeleteTarget struct {
 	// Enforce deletion
-	EnforceDeletion *bool `json:"enforce-deletion,omitempty"`
+	ForceDeletion *bool `json:"force-deletion,omitempty"`
 	// Target name
 	Name string `json:"name"`
 	// Required only when the authentication process requires a username and password
@@ -39,8 +39,8 @@ type DeleteTarget struct {
 // will change when the set of required properties is changed
 func NewDeleteTarget(name string, ) *DeleteTarget {
 	this := DeleteTarget{}
-	var enforceDeletion bool = false
-	this.EnforceDeletion = &enforceDeletion
+	var forceDeletion bool = false
+	this.ForceDeletion = &forceDeletion
 	this.Name = name
 	return &this
 }
@@ -50,41 +50,41 @@ func NewDeleteTarget(name string, ) *DeleteTarget {
 // but it doesn't guarantee that properties required by API are set
 func NewDeleteTargetWithDefaults() *DeleteTarget {
 	this := DeleteTarget{}
-	var enforceDeletion bool = false
-	this.EnforceDeletion = &enforceDeletion
+	var forceDeletion bool = false
+	this.ForceDeletion = &forceDeletion
 	return &this
 }
 
-// GetEnforceDeletion returns the EnforceDeletion field value if set, zero value otherwise.
-func (o *DeleteTarget) GetEnforceDeletion() bool {
-	if o == nil || o.EnforceDeletion == nil {
+// GetForceDeletion returns the ForceDeletion field value if set, zero value otherwise.
+func (o *DeleteTarget) GetForceDeletion() bool {
+	if o == nil || o.ForceDeletion == nil {
 		var ret bool
 		return ret
 	}
-	return *o.EnforceDeletion
+	return *o.ForceDeletion
 }
 
-// GetEnforceDeletionOk returns a tuple with the EnforceDeletion field value if set, nil otherwise
+// GetForceDeletionOk returns a tuple with the ForceDeletion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeleteTarget) GetEnforceDeletionOk() (*bool, bool) {
-	if o == nil || o.EnforceDeletion == nil {
+func (o *DeleteTarget) GetForceDeletionOk() (*bool, bool) {
+	if o == nil || o.ForceDeletion == nil {
 		return nil, false
 	}
-	return o.EnforceDeletion, true
+	return o.ForceDeletion, true
 }
 
-// HasEnforceDeletion returns a boolean if a field has been set.
-func (o *DeleteTarget) HasEnforceDeletion() bool {
-	if o != nil && o.EnforceDeletion != nil {
+// HasForceDeletion returns a boolean if a field has been set.
+func (o *DeleteTarget) HasForceDeletion() bool {
+	if o != nil && o.ForceDeletion != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetEnforceDeletion gets a reference to the given bool and assigns it to the EnforceDeletion field.
-func (o *DeleteTarget) SetEnforceDeletion(v bool) {
-	o.EnforceDeletion = &v
+// SetForceDeletion gets a reference to the given bool and assigns it to the ForceDeletion field.
+func (o *DeleteTarget) SetForceDeletion(v bool) {
+	o.ForceDeletion = &v
 }
 
 // GetName returns the Name field value
@@ -273,8 +273,8 @@ func (o *DeleteTarget) SetUsername(v string) {
 
 func (o DeleteTarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.EnforceDeletion != nil {
-		toSerialize["enforce-deletion"] = o.EnforceDeletion
+	if o.ForceDeletion != nil {
+		toSerialize["force-deletion"] = o.ForceDeletion
 	}
 	if true {
 		toSerialize["name"] = o.Name

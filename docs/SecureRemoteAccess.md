@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **SshPrivateKey** | Pointer to **bool** |  | [optional] 
 **SshUser** | Pointer to **string** |  | [optional] 
 **Url** | Pointer to **string** |  | [optional] 
+**UseInternalBastion** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -621,6 +622,31 @@ SetUrl sets Url field to given value.
 `func (o *SecureRemoteAccess) HasUrl() bool`
 
 HasUrl returns a boolean if a field has been set.
+
+### GetUseInternalBastion
+
+`func (o *SecureRemoteAccess) GetUseInternalBastion() bool`
+
+GetUseInternalBastion returns the UseInternalBastion field if non-nil, zero value otherwise.
+
+### GetUseInternalBastionOk
+
+`func (o *SecureRemoteAccess) GetUseInternalBastionOk() (*bool, bool)`
+
+GetUseInternalBastionOk returns a tuple with the UseInternalBastion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseInternalBastion
+
+`func (o *SecureRemoteAccess) SetUseInternalBastion(v bool)`
+
+SetUseInternalBastion sets UseInternalBastion field to given value.
+
+### HasUseInternalBastion
+
+`func (o *SecureRemoteAccess) HasUseInternalBastion() bool`
+
+HasUseInternalBastion returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

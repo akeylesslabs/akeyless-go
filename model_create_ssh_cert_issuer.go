@@ -34,11 +34,12 @@ type CreateSSHCertIssuer struct {
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
 	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
 	SecureAccessSshCredsUser *string `json:"secure-access-ssh-creds-user,omitempty"`
+	SecureAccessUseInternalBastion *bool `json:"secure-access-use-internal-bastion,omitempty"`
 	// A key to sign the certificate with
 	SignerKeyName string `json:"signer-key-name"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
-	// The requested Time To Live for the certificate, use second units
+	// he requested Time To Live for the certificate, in seconds
 	Ttl int64 `json:"ttl"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
@@ -403,6 +404,38 @@ func (o *CreateSSHCertIssuer) SetSecureAccessSshCredsUser(v string) {
 	o.SecureAccessSshCredsUser = &v
 }
 
+// GetSecureAccessUseInternalBastion returns the SecureAccessUseInternalBastion field value if set, zero value otherwise.
+func (o *CreateSSHCertIssuer) GetSecureAccessUseInternalBastion() bool {
+	if o == nil || o.SecureAccessUseInternalBastion == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessUseInternalBastion
+}
+
+// GetSecureAccessUseInternalBastionOk returns a tuple with the SecureAccessUseInternalBastion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSSHCertIssuer) GetSecureAccessUseInternalBastionOk() (*bool, bool) {
+	if o == nil || o.SecureAccessUseInternalBastion == nil {
+		return nil, false
+	}
+	return o.SecureAccessUseInternalBastion, true
+}
+
+// HasSecureAccessUseInternalBastion returns a boolean if a field has been set.
+func (o *CreateSSHCertIssuer) HasSecureAccessUseInternalBastion() bool {
+	if o != nil && o.SecureAccessUseInternalBastion != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessUseInternalBastion gets a reference to the given bool and assigns it to the SecureAccessUseInternalBastion field.
+func (o *CreateSSHCertIssuer) SetSecureAccessUseInternalBastion(v bool) {
+	o.SecureAccessUseInternalBastion = &v
+}
+
 // GetSignerKeyName returns the SignerKeyName field value
 func (o *CreateSSHCertIssuer) GetSignerKeyName() string {
 	if o == nil  {
@@ -581,6 +614,9 @@ func (o CreateSSHCertIssuer) MarshalJSON() ([]byte, error) {
 	}
 	if o.SecureAccessSshCredsUser != nil {
 		toSerialize["secure-access-ssh-creds-user"] = o.SecureAccessSshCredsUser
+	}
+	if o.SecureAccessUseInternalBastion != nil {
+		toSerialize["secure-access-use-internal-bastion"] = o.SecureAccessUseInternalBastion
 	}
 	if true {
 		toSerialize["signer-key-name"] = o.SignerKeyName

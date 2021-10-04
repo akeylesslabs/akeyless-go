@@ -48,6 +48,7 @@ type GatewayCreateProducerAws struct {
 	SecureAccessAwsNativeCli *bool `json:"secure-access-aws-native-cli,omitempty"`
 	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
 	// Target name
 	TargetName *string `json:"target-name,omitempty"`
@@ -671,6 +672,38 @@ func (o *GatewayCreateProducerAws) SetSecureAccessEnable(v string) {
 	o.SecureAccessEnable = &v
 }
 
+// GetSecureAccessWeb returns the SecureAccessWeb field value if set, zero value otherwise.
+func (o *GatewayCreateProducerAws) GetSecureAccessWeb() bool {
+	if o == nil || o.SecureAccessWeb == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessWeb
+}
+
+// GetSecureAccessWebOk returns a tuple with the SecureAccessWeb field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerAws) GetSecureAccessWebOk() (*bool, bool) {
+	if o == nil || o.SecureAccessWeb == nil {
+		return nil, false
+	}
+	return o.SecureAccessWeb, true
+}
+
+// HasSecureAccessWeb returns a boolean if a field has been set.
+func (o *GatewayCreateProducerAws) HasSecureAccessWeb() bool {
+	if o != nil && o.SecureAccessWeb != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessWeb gets a reference to the given bool and assigns it to the SecureAccessWeb field.
+func (o *GatewayCreateProducerAws) SetSecureAccessWeb(v bool) {
+	o.SecureAccessWeb = &v
+}
+
 // GetSecureAccessWebBrowsing returns the SecureAccessWebBrowsing field value if set, zero value otherwise.
 func (o *GatewayCreateProducerAws) GetSecureAccessWebBrowsing() bool {
 	if o == nil || o.SecureAccessWebBrowsing == nil {
@@ -918,6 +951,9 @@ func (o GatewayCreateProducerAws) MarshalJSON() ([]byte, error) {
 	}
 	if o.SecureAccessEnable != nil {
 		toSerialize["secure-access-enable"] = o.SecureAccessEnable
+	}
+	if o.SecureAccessWeb != nil {
+		toSerialize["secure-access-web"] = o.SecureAccessWeb
 	}
 	if o.SecureAccessWebBrowsing != nil {
 		toSerialize["secure-access-web-browsing"] = o.SecureAccessWebBrowsing

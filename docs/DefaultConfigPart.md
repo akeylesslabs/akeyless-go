@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DefaultProtectionKeyId** | Pointer to **int64** |  | [optional] 
 **DefaultSecretLocation** | Pointer to **string** |  | [optional] 
-**OpenIdConnectAccessId** | Pointer to **string** |  | [optional] 
+**OidcAccessId** | Pointer to **string** |  | [optional] 
 **SamlAccessId** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -78,30 +78,30 @@ SetDefaultSecretLocation sets DefaultSecretLocation field to given value.
 
 HasDefaultSecretLocation returns a boolean if a field has been set.
 
-### GetOpenIdConnectAccessId
+### GetOidcAccessId
 
-`func (o *DefaultConfigPart) GetOpenIdConnectAccessId() string`
+`func (o *DefaultConfigPart) GetOidcAccessId() string`
 
-GetOpenIdConnectAccessId returns the OpenIdConnectAccessId field if non-nil, zero value otherwise.
+GetOidcAccessId returns the OidcAccessId field if non-nil, zero value otherwise.
 
-### GetOpenIdConnectAccessIdOk
+### GetOidcAccessIdOk
 
-`func (o *DefaultConfigPart) GetOpenIdConnectAccessIdOk() (*string, bool)`
+`func (o *DefaultConfigPart) GetOidcAccessIdOk() (*string, bool)`
 
-GetOpenIdConnectAccessIdOk returns a tuple with the OpenIdConnectAccessId field if it's non-nil, zero value otherwise
+GetOidcAccessIdOk returns a tuple with the OidcAccessId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetOpenIdConnectAccessId
+### SetOidcAccessId
 
-`func (o *DefaultConfigPart) SetOpenIdConnectAccessId(v string)`
+`func (o *DefaultConfigPart) SetOidcAccessId(v string)`
 
-SetOpenIdConnectAccessId sets OpenIdConnectAccessId field to given value.
+SetOidcAccessId sets OidcAccessId field to given value.
 
-### HasOpenIdConnectAccessId
+### HasOidcAccessId
 
-`func (o *DefaultConfigPart) HasOpenIdConnectAccessId() bool`
+`func (o *DefaultConfigPart) HasOidcAccessId() bool`
 
-HasOpenIdConnectAccessId returns a boolean if a field has been set.
+HasOidcAccessId returns a boolean if a field has been set.
 
 ### GetSamlAccessId
 

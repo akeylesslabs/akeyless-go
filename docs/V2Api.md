@@ -17,6 +17,7 @@ Method | HTTP request | Description
 [**CreateAuthMethodGCP**](V2Api.md#CreateAuthMethodGCP) | **Post** /create-auth-method-gcp | 
 [**CreateAuthMethodHuawei**](V2Api.md#CreateAuthMethodHuawei) | **Post** /create-auth-method-huawei | 
 [**CreateAuthMethodOAuth2**](V2Api.md#CreateAuthMethodOAuth2) | **Post** /create-auth-method-oauth2 | 
+[**CreateAuthMethodOIDC**](V2Api.md#CreateAuthMethodOIDC) | **Post** /create-auth-method-oidc | 
 [**CreateAuthMethodSAML**](V2Api.md#CreateAuthMethodSAML) | **Post** /create-auth-method-saml | 
 [**CreateAuthMethodUniversalIdentity**](V2Api.md#CreateAuthMethodUniversalIdentity) | **Post** /create-auth-method-universal-identity | 
 [**CreateAzureTarget**](V2Api.md#CreateAzureTarget) | **Post** /create-azure-target | 
@@ -37,6 +38,7 @@ Method | HTTP request | Description
 [**CreateSSHTarget**](V2Api.md#CreateSSHTarget) | **Post** /create-ssh-target | 
 [**CreateSecret**](V2Api.md#CreateSecret) | **Post** /create-secret | 
 [**CreateWebTarget**](V2Api.md#CreateWebTarget) | **Post** /create-web-target | 
+[**CreateldapTarget**](V2Api.md#CreateldapTarget) | **Post** /create-ldap-target | 
 [**Decrypt**](V2Api.md#Decrypt) | **Post** /decrypt | 
 [**DecryptPKCS1**](V2Api.md#DecryptPKCS1) | **Post** /decrypt-pkcs1 | 
 [**DecryptWithClassicKey**](V2Api.md#DecryptWithClassicKey) | **Post** /decrypt-with-classic-key | 
@@ -73,6 +75,7 @@ Method | HTTP request | Description
 [**GatewayCreateProducerPostgreSQL**](V2Api.md#GatewayCreateProducerPostgreSQL) | **Post** /gateway-create-producer-postgresql | 
 [**GatewayCreateProducerRabbitMQ**](V2Api.md#GatewayCreateProducerRabbitMQ) | **Post** /gateway-create-producer-rabbitmq | 
 [**GatewayCreateProducerRdp**](V2Api.md#GatewayCreateProducerRdp) | **Post** /gateway-create-producer-rdp | 
+[**GatewayCreateProducerRedshift**](V2Api.md#GatewayCreateProducerRedshift) | **Post** /gateway-create-producer-redshift | 
 [**GatewayCreateProducerSnowflake**](V2Api.md#GatewayCreateProducerSnowflake) | **Post** /gateway-create-producer-snowflake | 
 [**GatewayDeleteAllowedManagementAccess**](V2Api.md#GatewayDeleteAllowedManagementAccess) | **Post** /gateway-delete-allowed-management-access | 
 [**GatewayDeleteProducer**](V2Api.md#GatewayDeleteProducer) | **Post** /gateway-delete-producer | 
@@ -992,6 +995,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## CreateAuthMethodOIDC
+
+> CreateAuthMethodOIDCOutput CreateAuthMethodOIDC(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewcreateAuthMethodOIDC("Name_example", "UniqueIdentifier_example") // CreateAuthMethodOIDC | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.CreateAuthMethodOIDC(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateAuthMethodOIDC``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateAuthMethodOIDC`: CreateAuthMethodOIDCOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateAuthMethodOIDC`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateAuthMethodOIDCRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateAuthMethodOIDC**](CreateAuthMethodOIDC.md) |  | 
+
+### Return type
+
+[**CreateAuthMethodOIDCOutput**](createAuthMethodOIDCOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## CreateAuthMethodSAML
 
 > CreateAuthMethodSAMLOutput CreateAuthMethodSAML(ctx).Body(body).Execute()
@@ -1587,7 +1654,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateGcpTarget("GcpSaEmail_example", "Name_example") // CreateGcpTarget | 
+    body := *openapiclient.NewcreateGcpTarget("Name_example") // CreateGcpTarget | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -1966,7 +2033,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateRotatedSecret("Name_example", "TargetName_example") // CreateRotatedSecret | 
+    body := *openapiclient.NewcreateRotatedSecret("Name_example", "RotatorType_example", "TargetName_example") // CreateRotatedSecret | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -2252,6 +2319,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateWebTargetOutput**](createWebTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateldapTarget
+
+> CreateLdapTargetOutput CreateldapTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewcreateLdapTarget("AccessId_example", "LdapUrl_example", "Name_example", "UserDn_example") // CreateLdapTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.CreateldapTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateldapTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateldapTarget`: CreateLdapTargetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateldapTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateldapTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateLdapTarget**](CreateLdapTarget.md) |  | 
+
+### Return type
+
+[**CreateLdapTargetOutput**](createLdapTargetOutput.md)
 
 ### Authorization
 
@@ -4556,6 +4687,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GatewayCreateProducerRdpOutput**](gatewayCreateProducerRdpOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayCreateProducerRedshift
+
+> GatewayCreateProducerRedshiftOutput GatewayCreateProducerRedshift(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayCreateProducerRedshift("Name_example") // GatewayCreateProducerRedshift | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayCreateProducerRedshift(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerRedshift``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayCreateProducerRedshift`: GatewayCreateProducerRedshiftOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayCreateProducerRedshift`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayCreateProducerRedshiftRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayCreateProducerRedshift**](GatewayCreateProducerRedshift.md) |  | 
+
+### Return type
+
+[**GatewayCreateProducerRedshiftOutput**](gatewayCreateProducerRedshiftOutput.md)
 
 ### Authorization
 

@@ -46,6 +46,7 @@ type UpdateItem struct {
 	SecureAccessSshCreds *string `json:"secure-access-ssh-creds,omitempty"`
 	SecureAccessSshCredsUser *string `json:"secure-access-ssh-creds-user,omitempty"`
 	SecureAccessUrl *string `json:"secure-access-url,omitempty"`
+	SecureAccessUseInternalBastion *bool `json:"secure-access-use-internal-bastion,omitempty"`
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
@@ -805,6 +806,38 @@ func (o *UpdateItem) SetSecureAccessUrl(v string) {
 	o.SecureAccessUrl = &v
 }
 
+// GetSecureAccessUseInternalBastion returns the SecureAccessUseInternalBastion field value if set, zero value otherwise.
+func (o *UpdateItem) GetSecureAccessUseInternalBastion() bool {
+	if o == nil || o.SecureAccessUseInternalBastion == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessUseInternalBastion
+}
+
+// GetSecureAccessUseInternalBastionOk returns a tuple with the SecureAccessUseInternalBastion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateItem) GetSecureAccessUseInternalBastionOk() (*bool, bool) {
+	if o == nil || o.SecureAccessUseInternalBastion == nil {
+		return nil, false
+	}
+	return o.SecureAccessUseInternalBastion, true
+}
+
+// HasSecureAccessUseInternalBastion returns a boolean if a field has been set.
+func (o *UpdateItem) HasSecureAccessUseInternalBastion() bool {
+	if o != nil && o.SecureAccessUseInternalBastion != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessUseInternalBastion gets a reference to the given bool and assigns it to the SecureAccessUseInternalBastion field.
+func (o *UpdateItem) SetSecureAccessUseInternalBastion(v bool) {
+	o.SecureAccessUseInternalBastion = &v
+}
+
 // GetSecureAccessWebBrowsing returns the SecureAccessWebBrowsing field value if set, zero value otherwise.
 func (o *UpdateItem) GetSecureAccessWebBrowsing() bool {
 	if o == nil || o.SecureAccessWebBrowsing == nil {
@@ -1003,6 +1036,9 @@ func (o UpdateItem) MarshalJSON() ([]byte, error) {
 	}
 	if o.SecureAccessUrl != nil {
 		toSerialize["secure-access-url"] = o.SecureAccessUrl
+	}
+	if o.SecureAccessUseInternalBastion != nil {
+		toSerialize["secure-access-use-internal-bastion"] = o.SecureAccessUseInternalBastion
 	}
 	if o.SecureAccessWebBrowsing != nil {
 		toSerialize["secure-access-web-browsing"] = o.SecureAccessWebBrowsing

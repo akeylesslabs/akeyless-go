@@ -37,16 +37,8 @@ type CreateDBTarget struct {
 	MongodbAtlasProjectId *string `json:"mongodb-atlas-project-id,omitempty"`
 	// MongoDB server default authentication database
 	MongodbDefaultAuthDb *string `json:"mongodb-default-auth-db,omitempty"`
-	// MongoDB server host and port
-	MongodbHostPort *string `json:"mongodb-host-port,omitempty"`
-	// MongoDB server password. You will prompted to provide a password if it will not appear in CLI parameters
-	MongodbPassword *string `json:"mongodb-password,omitempty"`
-	// MongoDB server URI
-	MongodbServerUri *string `json:"mongodb-server-uri,omitempty"`
 	// MongoDB server URI options
 	MongodbUriOptions *string `json:"mongodb-uri-options,omitempty"`
-	// MongoDB server username
-	MongodbUsername *string `json:"mongodb-username,omitempty"`
 	// Target name
 	Name string `json:"name"`
 	OracleServiceName *string `json:"oracle-service-name,omitempty"`
@@ -459,102 +451,6 @@ func (o *CreateDBTarget) SetMongodbDefaultAuthDb(v string) {
 	o.MongodbDefaultAuthDb = &v
 }
 
-// GetMongodbHostPort returns the MongodbHostPort field value if set, zero value otherwise.
-func (o *CreateDBTarget) GetMongodbHostPort() string {
-	if o == nil || o.MongodbHostPort == nil {
-		var ret string
-		return ret
-	}
-	return *o.MongodbHostPort
-}
-
-// GetMongodbHostPortOk returns a tuple with the MongodbHostPort field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateDBTarget) GetMongodbHostPortOk() (*string, bool) {
-	if o == nil || o.MongodbHostPort == nil {
-		return nil, false
-	}
-	return o.MongodbHostPort, true
-}
-
-// HasMongodbHostPort returns a boolean if a field has been set.
-func (o *CreateDBTarget) HasMongodbHostPort() bool {
-	if o != nil && o.MongodbHostPort != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMongodbHostPort gets a reference to the given string and assigns it to the MongodbHostPort field.
-func (o *CreateDBTarget) SetMongodbHostPort(v string) {
-	o.MongodbHostPort = &v
-}
-
-// GetMongodbPassword returns the MongodbPassword field value if set, zero value otherwise.
-func (o *CreateDBTarget) GetMongodbPassword() string {
-	if o == nil || o.MongodbPassword == nil {
-		var ret string
-		return ret
-	}
-	return *o.MongodbPassword
-}
-
-// GetMongodbPasswordOk returns a tuple with the MongodbPassword field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateDBTarget) GetMongodbPasswordOk() (*string, bool) {
-	if o == nil || o.MongodbPassword == nil {
-		return nil, false
-	}
-	return o.MongodbPassword, true
-}
-
-// HasMongodbPassword returns a boolean if a field has been set.
-func (o *CreateDBTarget) HasMongodbPassword() bool {
-	if o != nil && o.MongodbPassword != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMongodbPassword gets a reference to the given string and assigns it to the MongodbPassword field.
-func (o *CreateDBTarget) SetMongodbPassword(v string) {
-	o.MongodbPassword = &v
-}
-
-// GetMongodbServerUri returns the MongodbServerUri field value if set, zero value otherwise.
-func (o *CreateDBTarget) GetMongodbServerUri() string {
-	if o == nil || o.MongodbServerUri == nil {
-		var ret string
-		return ret
-	}
-	return *o.MongodbServerUri
-}
-
-// GetMongodbServerUriOk returns a tuple with the MongodbServerUri field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateDBTarget) GetMongodbServerUriOk() (*string, bool) {
-	if o == nil || o.MongodbServerUri == nil {
-		return nil, false
-	}
-	return o.MongodbServerUri, true
-}
-
-// HasMongodbServerUri returns a boolean if a field has been set.
-func (o *CreateDBTarget) HasMongodbServerUri() bool {
-	if o != nil && o.MongodbServerUri != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMongodbServerUri gets a reference to the given string and assigns it to the MongodbServerUri field.
-func (o *CreateDBTarget) SetMongodbServerUri(v string) {
-	o.MongodbServerUri = &v
-}
-
 // GetMongodbUriOptions returns the MongodbUriOptions field value if set, zero value otherwise.
 func (o *CreateDBTarget) GetMongodbUriOptions() string {
 	if o == nil || o.MongodbUriOptions == nil {
@@ -585,38 +481,6 @@ func (o *CreateDBTarget) HasMongodbUriOptions() bool {
 // SetMongodbUriOptions gets a reference to the given string and assigns it to the MongodbUriOptions field.
 func (o *CreateDBTarget) SetMongodbUriOptions(v string) {
 	o.MongodbUriOptions = &v
-}
-
-// GetMongodbUsername returns the MongodbUsername field value if set, zero value otherwise.
-func (o *CreateDBTarget) GetMongodbUsername() string {
-	if o == nil || o.MongodbUsername == nil {
-		var ret string
-		return ret
-	}
-	return *o.MongodbUsername
-}
-
-// GetMongodbUsernameOk returns a tuple with the MongodbUsername field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateDBTarget) GetMongodbUsernameOk() (*string, bool) {
-	if o == nil || o.MongodbUsername == nil {
-		return nil, false
-	}
-	return o.MongodbUsername, true
-}
-
-// HasMongodbUsername returns a boolean if a field has been set.
-func (o *CreateDBTarget) HasMongodbUsername() bool {
-	if o != nil && o.MongodbUsername != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMongodbUsername gets a reference to the given string and assigns it to the MongodbUsername field.
-func (o *CreateDBTarget) SetMongodbUsername(v string) {
-	o.MongodbUsername = &v
 }
 
 // GetName returns the Name field value
@@ -969,20 +833,8 @@ func (o CreateDBTarget) MarshalJSON() ([]byte, error) {
 	if o.MongodbDefaultAuthDb != nil {
 		toSerialize["mongodb-default-auth-db"] = o.MongodbDefaultAuthDb
 	}
-	if o.MongodbHostPort != nil {
-		toSerialize["mongodb-host-port"] = o.MongodbHostPort
-	}
-	if o.MongodbPassword != nil {
-		toSerialize["mongodb-password"] = o.MongodbPassword
-	}
-	if o.MongodbServerUri != nil {
-		toSerialize["mongodb-server-uri"] = o.MongodbServerUri
-	}
 	if o.MongodbUriOptions != nil {
 		toSerialize["mongodb-uri-options"] = o.MongodbUriOptions
-	}
-	if o.MongodbUsername != nil {
-		toSerialize["mongodb-username"] = o.MongodbUsername
 	}
 	if true {
 		toSerialize["name"] = o.Name

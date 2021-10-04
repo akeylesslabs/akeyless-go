@@ -41,6 +41,7 @@ type GatewayCreateProducerEks struct {
 	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
 	SecureAccessClusterEndpoint *string `json:"secure-access-cluster-endpoint,omitempty"`
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
 	// Target name
 	TargetName *string `json:"target-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -519,6 +520,38 @@ func (o *GatewayCreateProducerEks) SetSecureAccessEnable(v string) {
 	o.SecureAccessEnable = &v
 }
 
+// GetSecureAccessWeb returns the SecureAccessWeb field value if set, zero value otherwise.
+func (o *GatewayCreateProducerEks) GetSecureAccessWeb() bool {
+	if o == nil || o.SecureAccessWeb == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessWeb
+}
+
+// GetSecureAccessWebOk returns a tuple with the SecureAccessWeb field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerEks) GetSecureAccessWebOk() (*bool, bool) {
+	if o == nil || o.SecureAccessWeb == nil {
+		return nil, false
+	}
+	return o.SecureAccessWeb, true
+}
+
+// HasSecureAccessWeb returns a boolean if a field has been set.
+func (o *GatewayCreateProducerEks) HasSecureAccessWeb() bool {
+	if o != nil && o.SecureAccessWeb != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessWeb gets a reference to the given bool and assigns it to the SecureAccessWeb field.
+func (o *GatewayCreateProducerEks) SetSecureAccessWeb(v bool) {
+	o.SecureAccessWeb = &v
+}
+
 // GetTargetName returns the TargetName field value if set, zero value otherwise.
 func (o *GatewayCreateProducerEks) GetTargetName() string {
 	if o == nil || o.TargetName == nil {
@@ -722,6 +755,9 @@ func (o GatewayCreateProducerEks) MarshalJSON() ([]byte, error) {
 	}
 	if o.SecureAccessEnable != nil {
 		toSerialize["secure-access-enable"] = o.SecureAccessEnable
+	}
+	if o.SecureAccessWeb != nil {
+		toSerialize["secure-access-web"] = o.SecureAccessWeb
 	}
 	if o.TargetName != nil {
 		toSerialize["target-name"] = o.TargetName

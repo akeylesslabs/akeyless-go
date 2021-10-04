@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **SecureAccessSshCreds** | Pointer to **string** |  | [optional] 
 **SecureAccessSshCredsUser** | Pointer to **string** |  | [optional] 
 **SecureAccessUrl** | Pointer to **string** |  | [optional] 
+**SecureAccessUseInternalBastion** | Pointer to **bool** |  | [optional] 
 **SecureAccessWebBrowsing** | Pointer to **bool** |  | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -620,6 +621,31 @@ SetSecureAccessUrl sets SecureAccessUrl field to given value.
 `func (o *UpdateItem) HasSecureAccessUrl() bool`
 
 HasSecureAccessUrl returns a boolean if a field has been set.
+
+### GetSecureAccessUseInternalBastion
+
+`func (o *UpdateItem) GetSecureAccessUseInternalBastion() bool`
+
+GetSecureAccessUseInternalBastion returns the SecureAccessUseInternalBastion field if non-nil, zero value otherwise.
+
+### GetSecureAccessUseInternalBastionOk
+
+`func (o *UpdateItem) GetSecureAccessUseInternalBastionOk() (*bool, bool)`
+
+GetSecureAccessUseInternalBastionOk returns a tuple with the SecureAccessUseInternalBastion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessUseInternalBastion
+
+`func (o *UpdateItem) SetSecureAccessUseInternalBastion(v bool)`
+
+SetSecureAccessUseInternalBastion sets SecureAccessUseInternalBastion field to given value.
+
+### HasSecureAccessUseInternalBastion
+
+`func (o *UpdateItem) HasSecureAccessUseInternalBastion() bool`
+
+HasSecureAccessUseInternalBastion returns a boolean if a field has been set.
 
 ### GetSecureAccessWebBrowsing
 

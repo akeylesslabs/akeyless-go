@@ -36,7 +36,8 @@ type CreateRotatedSecret struct {
 	RotationInterval *string `json:"rotation-interval,omitempty"`
 	RotatorCredsType *string `json:"rotator-creds-type,omitempty"`
 	RotatorCustomCmd *string `json:"rotator-custom-cmd,omitempty"`
-	RotatorType *string `json:"rotator-type,omitempty"`
+	// Rotator Type
+	RotatorType string `json:"rotator-type"`
 	// Deprecated: use RotatedPassword
 	SshPassword *string `json:"ssh-password,omitempty"`
 	// Deprecated: use RotatedUser
@@ -57,9 +58,10 @@ type CreateRotatedSecret struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateRotatedSecret(name string, targetName string, ) *CreateRotatedSecret {
+func NewCreateRotatedSecret(name string, rotatorType string, targetName string, ) *CreateRotatedSecret {
 	this := CreateRotatedSecret{}
 	this.Name = name
+	this.RotatorType = rotatorType
 	this.TargetName = targetName
 	return &this
 }
@@ -480,36 +482,28 @@ func (o *CreateRotatedSecret) SetRotatorCustomCmd(v string) {
 	o.RotatorCustomCmd = &v
 }
 
-// GetRotatorType returns the RotatorType field value if set, zero value otherwise.
+// GetRotatorType returns the RotatorType field value
 func (o *CreateRotatedSecret) GetRotatorType() string {
-	if o == nil || o.RotatorType == nil {
+	if o == nil  {
 		var ret string
 		return ret
 	}
-	return *o.RotatorType
+
+	return o.RotatorType
 }
 
-// GetRotatorTypeOk returns a tuple with the RotatorType field value if set, nil otherwise
+// GetRotatorTypeOk returns a tuple with the RotatorType field value
 // and a boolean to check if the value has been set.
 func (o *CreateRotatedSecret) GetRotatorTypeOk() (*string, bool) {
-	if o == nil || o.RotatorType == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.RotatorType, true
+	return &o.RotatorType, true
 }
 
-// HasRotatorType returns a boolean if a field has been set.
-func (o *CreateRotatedSecret) HasRotatorType() bool {
-	if o != nil && o.RotatorType != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetRotatorType gets a reference to the given string and assigns it to the RotatorType field.
+// SetRotatorType sets field value
 func (o *CreateRotatedSecret) SetRotatorType(v string) {
-	o.RotatorType = &v
+	o.RotatorType = v
 }
 
 // GetSshPassword returns the SshPassword field value if set, zero value otherwise.
@@ -769,7 +763,7 @@ func (o CreateRotatedSecret) MarshalJSON() ([]byte, error) {
 	if o.RotatorCustomCmd != nil {
 		toSerialize["rotator-custom-cmd"] = o.RotatorCustomCmd
 	}
-	if o.RotatorType != nil {
+	if true {
 		toSerialize["rotator-type"] = o.RotatorType
 	}
 	if o.SshPassword != nil {

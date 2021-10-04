@@ -40,6 +40,7 @@ type SecureRemoteAccess struct {
 	SshPrivateKey *bool `json:"ssh_private_key,omitempty"`
 	SshUser *string `json:"ssh_user,omitempty"`
 	Url *string `json:"url,omitempty"`
+	UseInternalBastion *bool `json:"use_internal_bastion,omitempty"`
 }
 
 // NewSecureRemoteAccess instantiates a new SecureRemoteAccess object
@@ -795,6 +796,38 @@ func (o *SecureRemoteAccess) SetUrl(v string) {
 	o.Url = &v
 }
 
+// GetUseInternalBastion returns the UseInternalBastion field value if set, zero value otherwise.
+func (o *SecureRemoteAccess) GetUseInternalBastion() bool {
+	if o == nil || o.UseInternalBastion == nil {
+		var ret bool
+		return ret
+	}
+	return *o.UseInternalBastion
+}
+
+// GetUseInternalBastionOk returns a tuple with the UseInternalBastion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SecureRemoteAccess) GetUseInternalBastionOk() (*bool, bool) {
+	if o == nil || o.UseInternalBastion == nil {
+		return nil, false
+	}
+	return o.UseInternalBastion, true
+}
+
+// HasUseInternalBastion returns a boolean if a field has been set.
+func (o *SecureRemoteAccess) HasUseInternalBastion() bool {
+	if o != nil && o.UseInternalBastion != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUseInternalBastion gets a reference to the given bool and assigns it to the UseInternalBastion field.
+func (o *SecureRemoteAccess) SetUseInternalBastion(v bool) {
+	o.UseInternalBastion = &v
+}
+
 func (o SecureRemoteAccess) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccountId != nil {
@@ -865,6 +898,9 @@ func (o SecureRemoteAccess) MarshalJSON() ([]byte, error) {
 	}
 	if o.Url != nil {
 		toSerialize["url"] = o.Url
+	}
+	if o.UseInternalBastion != nil {
+		toSerialize["use_internal_bastion"] = o.UseInternalBastion
 	}
 	return json.Marshal(toSerialize)
 }

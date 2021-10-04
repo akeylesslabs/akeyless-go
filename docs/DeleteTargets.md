@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EnforceDeletion** | Pointer to **bool** | Enforce deletion | [optional] [default to false]
+**ForceDeletion** | Pointer to **bool** | Enforce deletion | [optional] [default to false]
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **Path** | **string** | Path to delete the targets from | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -30,30 +30,30 @@ NewDeleteTargetsWithDefaults instantiates a new DeleteTargets object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetEnforceDeletion
+### GetForceDeletion
 
-`func (o *DeleteTargets) GetEnforceDeletion() bool`
+`func (o *DeleteTargets) GetForceDeletion() bool`
 
-GetEnforceDeletion returns the EnforceDeletion field if non-nil, zero value otherwise.
+GetForceDeletion returns the ForceDeletion field if non-nil, zero value otherwise.
 
-### GetEnforceDeletionOk
+### GetForceDeletionOk
 
-`func (o *DeleteTargets) GetEnforceDeletionOk() (*bool, bool)`
+`func (o *DeleteTargets) GetForceDeletionOk() (*bool, bool)`
 
-GetEnforceDeletionOk returns a tuple with the EnforceDeletion field if it's non-nil, zero value otherwise
+GetForceDeletionOk returns a tuple with the ForceDeletion field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEnforceDeletion
+### SetForceDeletion
 
-`func (o *DeleteTargets) SetEnforceDeletion(v bool)`
+`func (o *DeleteTargets) SetForceDeletion(v bool)`
 
-SetEnforceDeletion sets EnforceDeletion field to given value.
+SetForceDeletion sets ForceDeletion field to given value.
 
-### HasEnforceDeletion
+### HasForceDeletion
 
-`func (o *DeleteTargets) HasEnforceDeletion() bool`
+`func (o *DeleteTargets) HasForceDeletion() bool`
 
-HasEnforceDeletion returns a boolean if a field has been set.
+HasForceDeletion returns a boolean if a field has been set.
 
 ### GetPassword
 

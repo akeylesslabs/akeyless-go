@@ -131,8 +131,10 @@ type DSProducerDetails struct {
 	RabbitmqUserTags *string `json:"rabbitmq_user_tags,omitempty"`
 	RabbitmqUserVhost *string `json:"rabbitmq_user_vhost,omitempty"`
 	RabbitmqUserWritePermission *string `json:"rabbitmq_user_write_permission,omitempty"`
+	RedshiftCreationStatements *string `json:"redshift_creation_statements,omitempty"`
 	RevokeSyncUrl *string `json:"revoke_sync_url,omitempty"`
 	RotateSyncUrl *string `json:"rotate_sync_url,omitempty"`
+	SecureRemoteAccessDetails *SecureRemoteAccess `json:"secure_remote_access_details,omitempty"`
 	SfAccount *string `json:"sf_account,omitempty"`
 	// generated  users info
 	SfUserRole *string `json:"sf_user_role,omitempty"`
@@ -140,6 +142,7 @@ type DSProducerDetails struct {
 	// TODO delete this after migration
 	ShouldStop *string `json:"should_stop,omitempty"`
 	TimeoutSeconds *int64 `json:"timeout_seconds,omitempty"`
+	UseGwCloudIdentity *bool `json:"use_gw_cloud_identity,omitempty"`
 	UserPrincipalName *string `json:"user_principal_name,omitempty"`
 	UserTtl *string `json:"user_ttl,omitempty"`
 	VenafiAllowSubdomains *bool `json:"venafi_allow_subdomains,omitempty"`
@@ -3630,6 +3633,38 @@ func (o *DSProducerDetails) SetRabbitmqUserWritePermission(v string) {
 	o.RabbitmqUserWritePermission = &v
 }
 
+// GetRedshiftCreationStatements returns the RedshiftCreationStatements field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetRedshiftCreationStatements() string {
+	if o == nil || o.RedshiftCreationStatements == nil {
+		var ret string
+		return ret
+	}
+	return *o.RedshiftCreationStatements
+}
+
+// GetRedshiftCreationStatementsOk returns a tuple with the RedshiftCreationStatements field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetRedshiftCreationStatementsOk() (*string, bool) {
+	if o == nil || o.RedshiftCreationStatements == nil {
+		return nil, false
+	}
+	return o.RedshiftCreationStatements, true
+}
+
+// HasRedshiftCreationStatements returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasRedshiftCreationStatements() bool {
+	if o != nil && o.RedshiftCreationStatements != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRedshiftCreationStatements gets a reference to the given string and assigns it to the RedshiftCreationStatements field.
+func (o *DSProducerDetails) SetRedshiftCreationStatements(v string) {
+	o.RedshiftCreationStatements = &v
+}
+
 // GetRevokeSyncUrl returns the RevokeSyncUrl field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetRevokeSyncUrl() string {
 	if o == nil || o.RevokeSyncUrl == nil {
@@ -3692,6 +3727,38 @@ func (o *DSProducerDetails) HasRotateSyncUrl() bool {
 // SetRotateSyncUrl gets a reference to the given string and assigns it to the RotateSyncUrl field.
 func (o *DSProducerDetails) SetRotateSyncUrl(v string) {
 	o.RotateSyncUrl = &v
+}
+
+// GetSecureRemoteAccessDetails returns the SecureRemoteAccessDetails field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetSecureRemoteAccessDetails() SecureRemoteAccess {
+	if o == nil || o.SecureRemoteAccessDetails == nil {
+		var ret SecureRemoteAccess
+		return ret
+	}
+	return *o.SecureRemoteAccessDetails
+}
+
+// GetSecureRemoteAccessDetailsOk returns a tuple with the SecureRemoteAccessDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetSecureRemoteAccessDetailsOk() (*SecureRemoteAccess, bool) {
+	if o == nil || o.SecureRemoteAccessDetails == nil {
+		return nil, false
+	}
+	return o.SecureRemoteAccessDetails, true
+}
+
+// HasSecureRemoteAccessDetails returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasSecureRemoteAccessDetails() bool {
+	if o != nil && o.SecureRemoteAccessDetails != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureRemoteAccessDetails gets a reference to the given SecureRemoteAccess and assigns it to the SecureRemoteAccessDetails field.
+func (o *DSProducerDetails) SetSecureRemoteAccessDetails(v SecureRemoteAccess) {
+	o.SecureRemoteAccessDetails = &v
 }
 
 // GetSfAccount returns the SfAccount field value if set, zero value otherwise.
@@ -3852,6 +3919,38 @@ func (o *DSProducerDetails) HasTimeoutSeconds() bool {
 // SetTimeoutSeconds gets a reference to the given int64 and assigns it to the TimeoutSeconds field.
 func (o *DSProducerDetails) SetTimeoutSeconds(v int64) {
 	o.TimeoutSeconds = &v
+}
+
+// GetUseGwCloudIdentity returns the UseGwCloudIdentity field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetUseGwCloudIdentity() bool {
+	if o == nil || o.UseGwCloudIdentity == nil {
+		var ret bool
+		return ret
+	}
+	return *o.UseGwCloudIdentity
+}
+
+// GetUseGwCloudIdentityOk returns a tuple with the UseGwCloudIdentity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetUseGwCloudIdentityOk() (*bool, bool) {
+	if o == nil || o.UseGwCloudIdentity == nil {
+		return nil, false
+	}
+	return o.UseGwCloudIdentity, true
+}
+
+// HasUseGwCloudIdentity returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasUseGwCloudIdentity() bool {
+	if o != nil && o.UseGwCloudIdentity != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUseGwCloudIdentity gets a reference to the given bool and assigns it to the UseGwCloudIdentity field.
+func (o *DSProducerDetails) SetUseGwCloudIdentity(v bool) {
+	o.UseGwCloudIdentity = &v
 }
 
 // GetUserPrincipalName returns the UserPrincipalName field value if set, zero value otherwise.
@@ -4660,11 +4759,17 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	if o.RabbitmqUserWritePermission != nil {
 		toSerialize["rabbitmq_user_write_permission"] = o.RabbitmqUserWritePermission
 	}
+	if o.RedshiftCreationStatements != nil {
+		toSerialize["redshift_creation_statements"] = o.RedshiftCreationStatements
+	}
 	if o.RevokeSyncUrl != nil {
 		toSerialize["revoke_sync_url"] = o.RevokeSyncUrl
 	}
 	if o.RotateSyncUrl != nil {
 		toSerialize["rotate_sync_url"] = o.RotateSyncUrl
+	}
+	if o.SecureRemoteAccessDetails != nil {
+		toSerialize["secure_remote_access_details"] = o.SecureRemoteAccessDetails
 	}
 	if o.SfAccount != nil {
 		toSerialize["sf_account"] = o.SfAccount
@@ -4680,6 +4785,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.TimeoutSeconds != nil {
 		toSerialize["timeout_seconds"] = o.TimeoutSeconds
+	}
+	if o.UseGwCloudIdentity != nil {
+		toSerialize["use_gw_cloud_identity"] = o.UseGwCloudIdentity
 	}
 	if o.UserPrincipalName != nil {
 		toSerialize["user_principal_name"] = o.UserPrincipalName

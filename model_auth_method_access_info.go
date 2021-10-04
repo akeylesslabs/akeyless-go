@@ -31,6 +31,7 @@ type AuthMethodAccessInfo struct {
 	HuaweiAccessRules *HuaweiAccessRules `json:"huawei_access_rules,omitempty"`
 	LdapAccessRules *LDAPAccessRules `json:"ldap_access_rules,omitempty"`
 	Oauth2AccessRules *OAuth2AccessRules `json:"oauth2_access_rules,omitempty"`
+	OidcAccessRules *OIDCAccessRules `json:"oidc_access_rules,omitempty"`
 	RulesType *string `json:"rules_type,omitempty"`
 	SamlAccessRules *SAMLAccessRules `json:"saml_access_rules,omitempty"`
 	UniversalIdentityAccessRules *UniversalIdentityAccessRules `json:"universal_identity_access_rules,omitempty"`
@@ -437,6 +438,38 @@ func (o *AuthMethodAccessInfo) SetOauth2AccessRules(v OAuth2AccessRules) {
 	o.Oauth2AccessRules = &v
 }
 
+// GetOidcAccessRules returns the OidcAccessRules field value if set, zero value otherwise.
+func (o *AuthMethodAccessInfo) GetOidcAccessRules() OIDCAccessRules {
+	if o == nil || o.OidcAccessRules == nil {
+		var ret OIDCAccessRules
+		return ret
+	}
+	return *o.OidcAccessRules
+}
+
+// GetOidcAccessRulesOk returns a tuple with the OidcAccessRules field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodAccessInfo) GetOidcAccessRulesOk() (*OIDCAccessRules, bool) {
+	if o == nil || o.OidcAccessRules == nil {
+		return nil, false
+	}
+	return o.OidcAccessRules, true
+}
+
+// HasOidcAccessRules returns a boolean if a field has been set.
+func (o *AuthMethodAccessInfo) HasOidcAccessRules() bool {
+	if o != nil && o.OidcAccessRules != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOidcAccessRules gets a reference to the given OIDCAccessRules and assigns it to the OidcAccessRules field.
+func (o *AuthMethodAccessInfo) SetOidcAccessRules(v OIDCAccessRules) {
+	o.OidcAccessRules = &v
+}
+
 // GetRulesType returns the RulesType field value if set, zero value otherwise.
 func (o *AuthMethodAccessInfo) GetRulesType() string {
 	if o == nil || o.RulesType == nil {
@@ -570,6 +603,9 @@ func (o AuthMethodAccessInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.Oauth2AccessRules != nil {
 		toSerialize["oauth2_access_rules"] = o.Oauth2AccessRules
+	}
+	if o.OidcAccessRules != nil {
+		toSerialize["oidc_access_rules"] = o.OidcAccessRules
 	}
 	if o.RulesType != nil {
 		toSerialize["rules_type"] = o.RulesType

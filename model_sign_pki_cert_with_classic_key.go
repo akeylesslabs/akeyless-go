@@ -47,7 +47,7 @@ type SignPKICertWithClassicKey struct {
 	StreetAddress *string `json:"street-address,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
-	// The requested Time To Live for the certificate, use second units
+	// he requested Time To Live for the certificate, in seconds
 	Ttl int64 `json:"ttl"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`

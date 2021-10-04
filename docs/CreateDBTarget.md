@@ -16,11 +16,7 @@ Name | Type | Description | Notes
 **MongodbAtlasApiPublicKey** | Pointer to **string** | MongoDB Atlas public key | [optional] 
 **MongodbAtlasProjectId** | Pointer to **string** | MongoDB Atlas project ID | [optional] 
 **MongodbDefaultAuthDb** | Pointer to **string** | MongoDB server default authentication database | [optional] 
-**MongodbHostPort** | Pointer to **string** | MongoDB server host and port | [optional] 
-**MongodbPassword** | Pointer to **string** | MongoDB server password. You will prompted to provide a password if it will not appear in CLI parameters | [optional] 
-**MongodbServerUri** | Pointer to **string** | MongoDB server URI | [optional] 
 **MongodbUriOptions** | Pointer to **string** | MongoDB server URI options | [optional] 
-**MongodbUsername** | Pointer to **string** | MongoDB server username | [optional] 
 **Name** | **string** | Target name | 
 **OracleServiceName** | Pointer to **string** |  | [optional] 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
@@ -346,81 +342,6 @@ SetMongodbDefaultAuthDb sets MongodbDefaultAuthDb field to given value.
 
 HasMongodbDefaultAuthDb returns a boolean if a field has been set.
 
-### GetMongodbHostPort
-
-`func (o *CreateDBTarget) GetMongodbHostPort() string`
-
-GetMongodbHostPort returns the MongodbHostPort field if non-nil, zero value otherwise.
-
-### GetMongodbHostPortOk
-
-`func (o *CreateDBTarget) GetMongodbHostPortOk() (*string, bool)`
-
-GetMongodbHostPortOk returns a tuple with the MongodbHostPort field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMongodbHostPort
-
-`func (o *CreateDBTarget) SetMongodbHostPort(v string)`
-
-SetMongodbHostPort sets MongodbHostPort field to given value.
-
-### HasMongodbHostPort
-
-`func (o *CreateDBTarget) HasMongodbHostPort() bool`
-
-HasMongodbHostPort returns a boolean if a field has been set.
-
-### GetMongodbPassword
-
-`func (o *CreateDBTarget) GetMongodbPassword() string`
-
-GetMongodbPassword returns the MongodbPassword field if non-nil, zero value otherwise.
-
-### GetMongodbPasswordOk
-
-`func (o *CreateDBTarget) GetMongodbPasswordOk() (*string, bool)`
-
-GetMongodbPasswordOk returns a tuple with the MongodbPassword field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMongodbPassword
-
-`func (o *CreateDBTarget) SetMongodbPassword(v string)`
-
-SetMongodbPassword sets MongodbPassword field to given value.
-
-### HasMongodbPassword
-
-`func (o *CreateDBTarget) HasMongodbPassword() bool`
-
-HasMongodbPassword returns a boolean if a field has been set.
-
-### GetMongodbServerUri
-
-`func (o *CreateDBTarget) GetMongodbServerUri() string`
-
-GetMongodbServerUri returns the MongodbServerUri field if non-nil, zero value otherwise.
-
-### GetMongodbServerUriOk
-
-`func (o *CreateDBTarget) GetMongodbServerUriOk() (*string, bool)`
-
-GetMongodbServerUriOk returns a tuple with the MongodbServerUri field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMongodbServerUri
-
-`func (o *CreateDBTarget) SetMongodbServerUri(v string)`
-
-SetMongodbServerUri sets MongodbServerUri field to given value.
-
-### HasMongodbServerUri
-
-`func (o *CreateDBTarget) HasMongodbServerUri() bool`
-
-HasMongodbServerUri returns a boolean if a field has been set.
-
 ### GetMongodbUriOptions
 
 `func (o *CreateDBTarget) GetMongodbUriOptions() string`
@@ -445,31 +366,6 @@ SetMongodbUriOptions sets MongodbUriOptions field to given value.
 `func (o *CreateDBTarget) HasMongodbUriOptions() bool`
 
 HasMongodbUriOptions returns a boolean if a field has been set.
-
-### GetMongodbUsername
-
-`func (o *CreateDBTarget) GetMongodbUsername() string`
-
-GetMongodbUsername returns the MongodbUsername field if non-nil, zero value otherwise.
-
-### GetMongodbUsernameOk
-
-`func (o *CreateDBTarget) GetMongodbUsernameOk() (*string, bool)`
-
-GetMongodbUsernameOk returns a tuple with the MongodbUsername field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMongodbUsername
-
-`func (o *CreateDBTarget) SetMongodbUsername(v string)`
-
-SetMongodbUsername sets MongodbUsername field to given value.
-
-### HasMongodbUsername
-
-`func (o *CreateDBTarget) HasMongodbUsername() bool`
-
-HasMongodbUsername returns a boolean if a field has been set.
 
 ### GetName
 

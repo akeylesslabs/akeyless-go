@@ -19,7 +19,7 @@ import (
 type DefaultConfigPart struct {
 	DefaultProtectionKeyId *int64 `json:"default_protection_key_id,omitempty"`
 	DefaultSecretLocation *string `json:"default_secret_location,omitempty"`
-	OpenIdConnectAccessId *string `json:"open_id_connect_access_id,omitempty"`
+	OidcAccessId *string `json:"oidc_access_id,omitempty"`
 	SamlAccessId *string `json:"saml_access_id,omitempty"`
 }
 
@@ -104,36 +104,36 @@ func (o *DefaultConfigPart) SetDefaultSecretLocation(v string) {
 	o.DefaultSecretLocation = &v
 }
 
-// GetOpenIdConnectAccessId returns the OpenIdConnectAccessId field value if set, zero value otherwise.
-func (o *DefaultConfigPart) GetOpenIdConnectAccessId() string {
-	if o == nil || o.OpenIdConnectAccessId == nil {
+// GetOidcAccessId returns the OidcAccessId field value if set, zero value otherwise.
+func (o *DefaultConfigPart) GetOidcAccessId() string {
+	if o == nil || o.OidcAccessId == nil {
 		var ret string
 		return ret
 	}
-	return *o.OpenIdConnectAccessId
+	return *o.OidcAccessId
 }
 
-// GetOpenIdConnectAccessIdOk returns a tuple with the OpenIdConnectAccessId field value if set, nil otherwise
+// GetOidcAccessIdOk returns a tuple with the OidcAccessId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DefaultConfigPart) GetOpenIdConnectAccessIdOk() (*string, bool) {
-	if o == nil || o.OpenIdConnectAccessId == nil {
+func (o *DefaultConfigPart) GetOidcAccessIdOk() (*string, bool) {
+	if o == nil || o.OidcAccessId == nil {
 		return nil, false
 	}
-	return o.OpenIdConnectAccessId, true
+	return o.OidcAccessId, true
 }
 
-// HasOpenIdConnectAccessId returns a boolean if a field has been set.
-func (o *DefaultConfigPart) HasOpenIdConnectAccessId() bool {
-	if o != nil && o.OpenIdConnectAccessId != nil {
+// HasOidcAccessId returns a boolean if a field has been set.
+func (o *DefaultConfigPart) HasOidcAccessId() bool {
+	if o != nil && o.OidcAccessId != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetOpenIdConnectAccessId gets a reference to the given string and assigns it to the OpenIdConnectAccessId field.
-func (o *DefaultConfigPart) SetOpenIdConnectAccessId(v string) {
-	o.OpenIdConnectAccessId = &v
+// SetOidcAccessId gets a reference to the given string and assigns it to the OidcAccessId field.
+func (o *DefaultConfigPart) SetOidcAccessId(v string) {
+	o.OidcAccessId = &v
 }
 
 // GetSamlAccessId returns the SamlAccessId field value if set, zero value otherwise.
@@ -176,8 +176,8 @@ func (o DefaultConfigPart) MarshalJSON() ([]byte, error) {
 	if o.DefaultSecretLocation != nil {
 		toSerialize["default_secret_location"] = o.DefaultSecretLocation
 	}
-	if o.OpenIdConnectAccessId != nil {
-		toSerialize["open_id_connect_access_id"] = o.OpenIdConnectAccessId
+	if o.OidcAccessId != nil {
+		toSerialize["oidc_access_id"] = o.OidcAccessId
 	}
 	if o.SamlAccessId != nil {
 		toSerialize["saml_access_id"] = o.SamlAccessId
