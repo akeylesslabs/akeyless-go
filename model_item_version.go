@@ -19,6 +19,7 @@ import (
 // ItemVersion struct for ItemVersion
 type ItemVersion struct {
 	CreationDate *time.Time `json:"creation_date,omitempty"`
+	CustomerFragmentId *string `json:"customer_fragment_id,omitempty"`
 	DeletionDate *time.Time `json:"deletion_date,omitempty"`
 	// ItemState defines the different states an Item can be in
 	ItemVersionState *string `json:"item_version_state,omitempty"`
@@ -74,6 +75,38 @@ func (o *ItemVersion) HasCreationDate() bool {
 // SetCreationDate gets a reference to the given time.Time and assigns it to the CreationDate field.
 func (o *ItemVersion) SetCreationDate(v time.Time) {
 	o.CreationDate = &v
+}
+
+// GetCustomerFragmentId returns the CustomerFragmentId field value if set, zero value otherwise.
+func (o *ItemVersion) GetCustomerFragmentId() string {
+	if o == nil || o.CustomerFragmentId == nil {
+		var ret string
+		return ret
+	}
+	return *o.CustomerFragmentId
+}
+
+// GetCustomerFragmentIdOk returns a tuple with the CustomerFragmentId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ItemVersion) GetCustomerFragmentIdOk() (*string, bool) {
+	if o == nil || o.CustomerFragmentId == nil {
+		return nil, false
+	}
+	return o.CustomerFragmentId, true
+}
+
+// HasCustomerFragmentId returns a boolean if a field has been set.
+func (o *ItemVersion) HasCustomerFragmentId() bool {
+	if o != nil && o.CustomerFragmentId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomerFragmentId gets a reference to the given string and assigns it to the CustomerFragmentId field.
+func (o *ItemVersion) SetCustomerFragmentId(v string) {
+	o.CustomerFragmentId = &v
 }
 
 // GetDeletionDate returns the DeletionDate field value if set, zero value otherwise.
@@ -240,6 +273,9 @@ func (o ItemVersion) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.CreationDate != nil {
 		toSerialize["creation_date"] = o.CreationDate
+	}
+	if o.CustomerFragmentId != nil {
+		toSerialize["customer_fragment_id"] = o.CustomerFragmentId
 	}
 	if o.DeletionDate != nil {
 		toSerialize["deletion_date"] = o.DeletionDate

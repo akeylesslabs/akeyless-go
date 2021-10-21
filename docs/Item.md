@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **CertificateIssueDetails** | Pointer to [**CertificateIssueInfo**](CertificateIssueInfo.md) |  | [optional] 
 **Certificates** | Pointer to **string** |  | [optional] 
 **ClientPermissions** | Pointer to **[]string** |  | [optional] 
+**CustomerFragmentId** | Pointer to **string** |  | [optional] 
 **DeletionDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **DisplayId** | Pointer to **string** |  | [optional] 
 **IsEnabled** | Pointer to **bool** |  | [optional] 
@@ -172,6 +173,31 @@ SetClientPermissions sets ClientPermissions field to given value.
 `func (o *Item) HasClientPermissions() bool`
 
 HasClientPermissions returns a boolean if a field has been set.
+
+### GetCustomerFragmentId
+
+`func (o *Item) GetCustomerFragmentId() string`
+
+GetCustomerFragmentId returns the CustomerFragmentId field if non-nil, zero value otherwise.
+
+### GetCustomerFragmentIdOk
+
+`func (o *Item) GetCustomerFragmentIdOk() (*string, bool)`
+
+GetCustomerFragmentIdOk returns a tuple with the CustomerFragmentId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomerFragmentId
+
+`func (o *Item) SetCustomerFragmentId(v string)`
+
+SetCustomerFragmentId sets CustomerFragmentId field to given value.
+
+### HasCustomerFragmentId
+
+`func (o *Item) HasCustomerFragmentId() bool`
+
+HasCustomerFragmentId returns a boolean if a field has been set.
 
 ### GetDeletionDate
 

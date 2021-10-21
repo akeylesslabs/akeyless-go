@@ -50,14 +50,9 @@ Name | Type | Description | Notes
 **LdapBindDn** | Pointer to **string** |  | [optional] 
 **LdapBindPassword** | Pointer to **string** |  | [optional] 
 **LdapCertificate** | Pointer to **string** |  | [optional] 
-**LdapGroupAttr** | Pointer to **string** |  | [optional] 
-**LdapGroupDn** | Pointer to **string** |  | [optional] 
-**LdapGroupFilter** | Pointer to **string** |  | [optional] 
 **LdapPrivateKey** | Pointer to **string** |  | [optional] 
 **LdapTokenExpiration** | Pointer to **string** |  | [optional] 
 **LdapUrl** | Pointer to **string** |  | [optional] 
-**LdapUserAttr** | Pointer to **string** |  | [optional] 
-**LdapUserDn** | Pointer to **string** |  | [optional] 
 **MongodbAtlasApiPrivateKey** | Pointer to **string** |  | [optional] 
 **MongodbAtlasApiPublicKey** | Pointer to **string** |  | [optional] 
 **MongodbAtlasProjectId** | Pointer to **string** | mongodb atlas fields | [optional] 
@@ -70,6 +65,7 @@ Name | Type | Description | Notes
 **MongodbUriOptions** | Pointer to **string** |  | [optional] 
 **MongodbUsername** | Pointer to **string** |  | [optional] 
 **Password** | Pointer to **string** |  | [optional] 
+**Payload** | Pointer to **string** |  | [optional] 
 **Port** | Pointer to **string** |  | [optional] 
 **PrivateKey** | Pointer to **string** |  | [optional] 
 **PrivateKeyPassword** | Pointer to **string** |  | [optional] 
@@ -1256,81 +1252,6 @@ SetLdapCertificate sets LdapCertificate field to given value.
 
 HasLdapCertificate returns a boolean if a field has been set.
 
-### GetLdapGroupAttr
-
-`func (o *TargetTypeDetailsInput) GetLdapGroupAttr() string`
-
-GetLdapGroupAttr returns the LdapGroupAttr field if non-nil, zero value otherwise.
-
-### GetLdapGroupAttrOk
-
-`func (o *TargetTypeDetailsInput) GetLdapGroupAttrOk() (*string, bool)`
-
-GetLdapGroupAttrOk returns a tuple with the LdapGroupAttr field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLdapGroupAttr
-
-`func (o *TargetTypeDetailsInput) SetLdapGroupAttr(v string)`
-
-SetLdapGroupAttr sets LdapGroupAttr field to given value.
-
-### HasLdapGroupAttr
-
-`func (o *TargetTypeDetailsInput) HasLdapGroupAttr() bool`
-
-HasLdapGroupAttr returns a boolean if a field has been set.
-
-### GetLdapGroupDn
-
-`func (o *TargetTypeDetailsInput) GetLdapGroupDn() string`
-
-GetLdapGroupDn returns the LdapGroupDn field if non-nil, zero value otherwise.
-
-### GetLdapGroupDnOk
-
-`func (o *TargetTypeDetailsInput) GetLdapGroupDnOk() (*string, bool)`
-
-GetLdapGroupDnOk returns a tuple with the LdapGroupDn field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLdapGroupDn
-
-`func (o *TargetTypeDetailsInput) SetLdapGroupDn(v string)`
-
-SetLdapGroupDn sets LdapGroupDn field to given value.
-
-### HasLdapGroupDn
-
-`func (o *TargetTypeDetailsInput) HasLdapGroupDn() bool`
-
-HasLdapGroupDn returns a boolean if a field has been set.
-
-### GetLdapGroupFilter
-
-`func (o *TargetTypeDetailsInput) GetLdapGroupFilter() string`
-
-GetLdapGroupFilter returns the LdapGroupFilter field if non-nil, zero value otherwise.
-
-### GetLdapGroupFilterOk
-
-`func (o *TargetTypeDetailsInput) GetLdapGroupFilterOk() (*string, bool)`
-
-GetLdapGroupFilterOk returns a tuple with the LdapGroupFilter field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLdapGroupFilter
-
-`func (o *TargetTypeDetailsInput) SetLdapGroupFilter(v string)`
-
-SetLdapGroupFilter sets LdapGroupFilter field to given value.
-
-### HasLdapGroupFilter
-
-`func (o *TargetTypeDetailsInput) HasLdapGroupFilter() bool`
-
-HasLdapGroupFilter returns a boolean if a field has been set.
-
 ### GetLdapPrivateKey
 
 `func (o *TargetTypeDetailsInput) GetLdapPrivateKey() string`
@@ -1405,56 +1326,6 @@ SetLdapUrl sets LdapUrl field to given value.
 `func (o *TargetTypeDetailsInput) HasLdapUrl() bool`
 
 HasLdapUrl returns a boolean if a field has been set.
-
-### GetLdapUserAttr
-
-`func (o *TargetTypeDetailsInput) GetLdapUserAttr() string`
-
-GetLdapUserAttr returns the LdapUserAttr field if non-nil, zero value otherwise.
-
-### GetLdapUserAttrOk
-
-`func (o *TargetTypeDetailsInput) GetLdapUserAttrOk() (*string, bool)`
-
-GetLdapUserAttrOk returns a tuple with the LdapUserAttr field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLdapUserAttr
-
-`func (o *TargetTypeDetailsInput) SetLdapUserAttr(v string)`
-
-SetLdapUserAttr sets LdapUserAttr field to given value.
-
-### HasLdapUserAttr
-
-`func (o *TargetTypeDetailsInput) HasLdapUserAttr() bool`
-
-HasLdapUserAttr returns a boolean if a field has been set.
-
-### GetLdapUserDn
-
-`func (o *TargetTypeDetailsInput) GetLdapUserDn() string`
-
-GetLdapUserDn returns the LdapUserDn field if non-nil, zero value otherwise.
-
-### GetLdapUserDnOk
-
-`func (o *TargetTypeDetailsInput) GetLdapUserDnOk() (*string, bool)`
-
-GetLdapUserDnOk returns a tuple with the LdapUserDn field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLdapUserDn
-
-`func (o *TargetTypeDetailsInput) SetLdapUserDn(v string)`
-
-SetLdapUserDn sets LdapUserDn field to given value.
-
-### HasLdapUserDn
-
-`func (o *TargetTypeDetailsInput) HasLdapUserDn() bool`
-
-HasLdapUserDn returns a boolean if a field has been set.
 
 ### GetMongodbAtlasApiPrivateKey
 
@@ -1755,6 +1626,31 @@ SetPassword sets Password field to given value.
 `func (o *TargetTypeDetailsInput) HasPassword() bool`
 
 HasPassword returns a boolean if a field has been set.
+
+### GetPayload
+
+`func (o *TargetTypeDetailsInput) GetPayload() string`
+
+GetPayload returns the Payload field if non-nil, zero value otherwise.
+
+### GetPayloadOk
+
+`func (o *TargetTypeDetailsInput) GetPayloadOk() (*string, bool)`
+
+GetPayloadOk returns a tuple with the Payload field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPayload
+
+`func (o *TargetTypeDetailsInput) SetPayload(v string)`
+
+SetPayload sets Payload field to given value.
+
+### HasPayload
+
+`func (o *TargetTypeDetailsInput) HasPayload() bool`
+
+HasPayload returns a boolean if a field has been set.
 
 ### GetPort
 

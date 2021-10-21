@@ -6,11 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessId** | Pointer to **string** | Access ID | [optional] 
 **AccessKey** | Pointer to **string** | Access Key | [optional] 
-**AccessType** | Pointer to **string** | Access Type (access_key/password/azure_ad/saml/oidc/ldap/aws_iam) | [optional] [default to "access_key"]
+**AccessType** | Pointer to **string** | Access Type (access_key/password/azure_ad/saml/oidc/ldap/aws_iam/k8s) | [optional] [default to "access_key"]
 **AdminEmail** | Pointer to **string** | Email (relevant only for access-type&#x3D;password) | [optional] 
 **AdminPassword** | Pointer to **string** | Password (relevant only for access-type&#x3D;password) | [optional] 
 **AzureAdObjectId** | Pointer to **string** | Azure Active Directory ObjectId (relevant only for access-type&#x3D;azure_ad) | [optional] 
 **GcpAudience** | Pointer to **string** | GCP JWT audience | [optional] 
+**K8sAuthConfigName** | Pointer to **string** | The K8S Auth config name (relevant only for access-type&#x3D;k8s) | [optional] 
 
 ## Methods
 
@@ -205,6 +206,31 @@ SetGcpAudience sets GcpAudience field to given value.
 `func (o *Configure) HasGcpAudience() bool`
 
 HasGcpAudience returns a boolean if a field has been set.
+
+### GetK8sAuthConfigName
+
+`func (o *Configure) GetK8sAuthConfigName() string`
+
+GetK8sAuthConfigName returns the K8sAuthConfigName field if non-nil, zero value otherwise.
+
+### GetK8sAuthConfigNameOk
+
+`func (o *Configure) GetK8sAuthConfigNameOk() (*string, bool)`
+
+GetK8sAuthConfigNameOk returns a tuple with the K8sAuthConfigName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sAuthConfigName
+
+`func (o *Configure) SetK8sAuthConfigName(v string)`
+
+SetK8sAuthConfigName sets K8sAuthConfigName field to given value.
+
+### HasK8sAuthConfigName
+
+`func (o *Configure) HasK8sAuthConfigName() bool`
+
+HasK8sAuthConfigName returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

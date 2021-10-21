@@ -17,6 +17,8 @@ import (
 
 // OIDCAccessRules OIDCAccessRules contains access rules specific to Open Id Connect authentication method.
 type OIDCAccessRules struct {
+	// Allowed redirect URIs after the authentication
+	AllowedRedirectURIs *[]string `json:"allowed_redirect_URIs,omitempty"`
 	// The claims that login is restricted to.
 	BoundClaims *[]OIDCCustomClaim `json:"bound_claims,omitempty"`
 	// Client ID
@@ -44,6 +46,38 @@ func NewOIDCAccessRules() *OIDCAccessRules {
 func NewOIDCAccessRulesWithDefaults() *OIDCAccessRules {
 	this := OIDCAccessRules{}
 	return &this
+}
+
+// GetAllowedRedirectURIs returns the AllowedRedirectURIs field value if set, zero value otherwise.
+func (o *OIDCAccessRules) GetAllowedRedirectURIs() []string {
+	if o == nil || o.AllowedRedirectURIs == nil {
+		var ret []string
+		return ret
+	}
+	return *o.AllowedRedirectURIs
+}
+
+// GetAllowedRedirectURIsOk returns a tuple with the AllowedRedirectURIs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OIDCAccessRules) GetAllowedRedirectURIsOk() (*[]string, bool) {
+	if o == nil || o.AllowedRedirectURIs == nil {
+		return nil, false
+	}
+	return o.AllowedRedirectURIs, true
+}
+
+// HasAllowedRedirectURIs returns a boolean if a field has been set.
+func (o *OIDCAccessRules) HasAllowedRedirectURIs() bool {
+	if o != nil && o.AllowedRedirectURIs != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowedRedirectURIs gets a reference to the given []string and assigns it to the AllowedRedirectURIs field.
+func (o *OIDCAccessRules) SetAllowedRedirectURIs(v []string) {
+	o.AllowedRedirectURIs = &v
 }
 
 // GetBoundClaims returns the BoundClaims field value if set, zero value otherwise.
@@ -208,6 +242,9 @@ func (o *OIDCAccessRules) SetUniqueIdentifier(v string) {
 
 func (o OIDCAccessRules) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AllowedRedirectURIs != nil {
+		toSerialize["allowed_redirect_URIs"] = o.AllowedRedirectURIs
+	}
 	if o.BoundClaims != nil {
 		toSerialize["bound_claims"] = o.BoundClaims
 	}

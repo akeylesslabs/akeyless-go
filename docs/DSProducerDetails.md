@@ -79,6 +79,7 @@ Name | Type | Description | Notes
 **Groups** | Pointer to **string** |  | [optional] 
 **HostName** | Pointer to **string** |  | [optional] 
 **HostPort** | Pointer to **string** |  | [optional] 
+**IsFixedUser** | Pointer to **string** |  | [optional] 
 **ItemTargetsAssoc** | Pointer to [**[]ItemTargetAssociation**](ItemTargetAssociation.md) |  | [optional] 
 **K8sBearerToken** | Pointer to **string** |  | [optional] 
 **K8sClusterCaCertificate** | Pointer to **string** |  | [optional] 
@@ -86,6 +87,20 @@ Name | Type | Description | Notes
 **K8sNamespace** | Pointer to **string** |  | [optional] 
 **K8sServiceAccount** | Pointer to **string** |  | [optional] 
 **LastAdminRotation** | Pointer to **int64** |  | [optional] 
+**LdapAccessId** | Pointer to **string** |  | [optional] 
+**LdapAnonymousSearch** | Pointer to **bool** |  | [optional] 
+**LdapAudience** | Pointer to **string** |  | [optional] 
+**LdapBindDn** | Pointer to **string** |  | [optional] 
+**LdapBindPassword** | Pointer to **string** |  | [optional] 
+**LdapCertificate** | Pointer to **string** |  | [optional] 
+**LdapGroupAttr** | Pointer to **string** |  | [optional] 
+**LdapGroupDn** | Pointer to **string** |  | [optional] 
+**LdapGroupFilter** | Pointer to **string** |  | [optional] 
+**LdapPrivateKey** | Pointer to **string** |  | [optional] 
+**LdapTokenExpiration** | Pointer to **string** |  | [optional] 
+**LdapUrl** | Pointer to **string** |  | [optional] 
+**LdapUserAttr** | Pointer to **string** |  | [optional] 
+**LdapUserDn** | Pointer to **string** |  | [optional] 
 **MongodbAtlasApiPrivateKey** | Pointer to **string** |  | [optional] 
 **MongodbAtlasApiPublicKey** | Pointer to **string** |  | [optional] 
 **MongodbAtlasProjectId** | Pointer to **string** | mongodb atlas fields | [optional] 
@@ -2032,6 +2047,31 @@ SetHostPort sets HostPort field to given value.
 
 HasHostPort returns a boolean if a field has been set.
 
+### GetIsFixedUser
+
+`func (o *DSProducerDetails) GetIsFixedUser() string`
+
+GetIsFixedUser returns the IsFixedUser field if non-nil, zero value otherwise.
+
+### GetIsFixedUserOk
+
+`func (o *DSProducerDetails) GetIsFixedUserOk() (*string, bool)`
+
+GetIsFixedUserOk returns a tuple with the IsFixedUser field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsFixedUser
+
+`func (o *DSProducerDetails) SetIsFixedUser(v string)`
+
+SetIsFixedUser sets IsFixedUser field to given value.
+
+### HasIsFixedUser
+
+`func (o *DSProducerDetails) HasIsFixedUser() bool`
+
+HasIsFixedUser returns a boolean if a field has been set.
+
 ### GetItemTargetsAssoc
 
 `func (o *DSProducerDetails) GetItemTargetsAssoc() []ItemTargetAssociation`
@@ -2206,6 +2246,356 @@ SetLastAdminRotation sets LastAdminRotation field to given value.
 `func (o *DSProducerDetails) HasLastAdminRotation() bool`
 
 HasLastAdminRotation returns a boolean if a field has been set.
+
+### GetLdapAccessId
+
+`func (o *DSProducerDetails) GetLdapAccessId() string`
+
+GetLdapAccessId returns the LdapAccessId field if non-nil, zero value otherwise.
+
+### GetLdapAccessIdOk
+
+`func (o *DSProducerDetails) GetLdapAccessIdOk() (*string, bool)`
+
+GetLdapAccessIdOk returns a tuple with the LdapAccessId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLdapAccessId
+
+`func (o *DSProducerDetails) SetLdapAccessId(v string)`
+
+SetLdapAccessId sets LdapAccessId field to given value.
+
+### HasLdapAccessId
+
+`func (o *DSProducerDetails) HasLdapAccessId() bool`
+
+HasLdapAccessId returns a boolean if a field has been set.
+
+### GetLdapAnonymousSearch
+
+`func (o *DSProducerDetails) GetLdapAnonymousSearch() bool`
+
+GetLdapAnonymousSearch returns the LdapAnonymousSearch field if non-nil, zero value otherwise.
+
+### GetLdapAnonymousSearchOk
+
+`func (o *DSProducerDetails) GetLdapAnonymousSearchOk() (*bool, bool)`
+
+GetLdapAnonymousSearchOk returns a tuple with the LdapAnonymousSearch field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLdapAnonymousSearch
+
+`func (o *DSProducerDetails) SetLdapAnonymousSearch(v bool)`
+
+SetLdapAnonymousSearch sets LdapAnonymousSearch field to given value.
+
+### HasLdapAnonymousSearch
+
+`func (o *DSProducerDetails) HasLdapAnonymousSearch() bool`
+
+HasLdapAnonymousSearch returns a boolean if a field has been set.
+
+### GetLdapAudience
+
+`func (o *DSProducerDetails) GetLdapAudience() string`
+
+GetLdapAudience returns the LdapAudience field if non-nil, zero value otherwise.
+
+### GetLdapAudienceOk
+
+`func (o *DSProducerDetails) GetLdapAudienceOk() (*string, bool)`
+
+GetLdapAudienceOk returns a tuple with the LdapAudience field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLdapAudience
+
+`func (o *DSProducerDetails) SetLdapAudience(v string)`
+
+SetLdapAudience sets LdapAudience field to given value.
+
+### HasLdapAudience
+
+`func (o *DSProducerDetails) HasLdapAudience() bool`
+
+HasLdapAudience returns a boolean if a field has been set.
+
+### GetLdapBindDn
+
+`func (o *DSProducerDetails) GetLdapBindDn() string`
+
+GetLdapBindDn returns the LdapBindDn field if non-nil, zero value otherwise.
+
+### GetLdapBindDnOk
+
+`func (o *DSProducerDetails) GetLdapBindDnOk() (*string, bool)`
+
+GetLdapBindDnOk returns a tuple with the LdapBindDn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLdapBindDn
+
+`func (o *DSProducerDetails) SetLdapBindDn(v string)`
+
+SetLdapBindDn sets LdapBindDn field to given value.
+
+### HasLdapBindDn
+
+`func (o *DSProducerDetails) HasLdapBindDn() bool`
+
+HasLdapBindDn returns a boolean if a field has been set.
+
+### GetLdapBindPassword
+
+`func (o *DSProducerDetails) GetLdapBindPassword() string`
+
+GetLdapBindPassword returns the LdapBindPassword field if non-nil, zero value otherwise.
+
+### GetLdapBindPasswordOk
+
+`func (o *DSProducerDetails) GetLdapBindPasswordOk() (*string, bool)`
+
+GetLdapBindPasswordOk returns a tuple with the LdapBindPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLdapBindPassword
+
+`func (o *DSProducerDetails) SetLdapBindPassword(v string)`
+
+SetLdapBindPassword sets LdapBindPassword field to given value.
+
+### HasLdapBindPassword
+
+`func (o *DSProducerDetails) HasLdapBindPassword() bool`
+
+HasLdapBindPassword returns a boolean if a field has been set.
+
+### GetLdapCertificate
+
+`func (o *DSProducerDetails) GetLdapCertificate() string`
+
+GetLdapCertificate returns the LdapCertificate field if non-nil, zero value otherwise.
+
+### GetLdapCertificateOk
+
+`func (o *DSProducerDetails) GetLdapCertificateOk() (*string, bool)`
+
+GetLdapCertificateOk returns a tuple with the LdapCertificate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLdapCertificate
+
+`func (o *DSProducerDetails) SetLdapCertificate(v string)`
+
+SetLdapCertificate sets LdapCertificate field to given value.
+
+### HasLdapCertificate
+
+`func (o *DSProducerDetails) HasLdapCertificate() bool`
+
+HasLdapCertificate returns a boolean if a field has been set.
+
+### GetLdapGroupAttr
+
+`func (o *DSProducerDetails) GetLdapGroupAttr() string`
+
+GetLdapGroupAttr returns the LdapGroupAttr field if non-nil, zero value otherwise.
+
+### GetLdapGroupAttrOk
+
+`func (o *DSProducerDetails) GetLdapGroupAttrOk() (*string, bool)`
+
+GetLdapGroupAttrOk returns a tuple with the LdapGroupAttr field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLdapGroupAttr
+
+`func (o *DSProducerDetails) SetLdapGroupAttr(v string)`
+
+SetLdapGroupAttr sets LdapGroupAttr field to given value.
+
+### HasLdapGroupAttr
+
+`func (o *DSProducerDetails) HasLdapGroupAttr() bool`
+
+HasLdapGroupAttr returns a boolean if a field has been set.
+
+### GetLdapGroupDn
+
+`func (o *DSProducerDetails) GetLdapGroupDn() string`
+
+GetLdapGroupDn returns the LdapGroupDn field if non-nil, zero value otherwise.
+
+### GetLdapGroupDnOk
+
+`func (o *DSProducerDetails) GetLdapGroupDnOk() (*string, bool)`
+
+GetLdapGroupDnOk returns a tuple with the LdapGroupDn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLdapGroupDn
+
+`func (o *DSProducerDetails) SetLdapGroupDn(v string)`
+
+SetLdapGroupDn sets LdapGroupDn field to given value.
+
+### HasLdapGroupDn
+
+`func (o *DSProducerDetails) HasLdapGroupDn() bool`
+
+HasLdapGroupDn returns a boolean if a field has been set.
+
+### GetLdapGroupFilter
+
+`func (o *DSProducerDetails) GetLdapGroupFilter() string`
+
+GetLdapGroupFilter returns the LdapGroupFilter field if non-nil, zero value otherwise.
+
+### GetLdapGroupFilterOk
+
+`func (o *DSProducerDetails) GetLdapGroupFilterOk() (*string, bool)`
+
+GetLdapGroupFilterOk returns a tuple with the LdapGroupFilter field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLdapGroupFilter
+
+`func (o *DSProducerDetails) SetLdapGroupFilter(v string)`
+
+SetLdapGroupFilter sets LdapGroupFilter field to given value.
+
+### HasLdapGroupFilter
+
+`func (o *DSProducerDetails) HasLdapGroupFilter() bool`
+
+HasLdapGroupFilter returns a boolean if a field has been set.
+
+### GetLdapPrivateKey
+
+`func (o *DSProducerDetails) GetLdapPrivateKey() string`
+
+GetLdapPrivateKey returns the LdapPrivateKey field if non-nil, zero value otherwise.
+
+### GetLdapPrivateKeyOk
+
+`func (o *DSProducerDetails) GetLdapPrivateKeyOk() (*string, bool)`
+
+GetLdapPrivateKeyOk returns a tuple with the LdapPrivateKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLdapPrivateKey
+
+`func (o *DSProducerDetails) SetLdapPrivateKey(v string)`
+
+SetLdapPrivateKey sets LdapPrivateKey field to given value.
+
+### HasLdapPrivateKey
+
+`func (o *DSProducerDetails) HasLdapPrivateKey() bool`
+
+HasLdapPrivateKey returns a boolean if a field has been set.
+
+### GetLdapTokenExpiration
+
+`func (o *DSProducerDetails) GetLdapTokenExpiration() string`
+
+GetLdapTokenExpiration returns the LdapTokenExpiration field if non-nil, zero value otherwise.
+
+### GetLdapTokenExpirationOk
+
+`func (o *DSProducerDetails) GetLdapTokenExpirationOk() (*string, bool)`
+
+GetLdapTokenExpirationOk returns a tuple with the LdapTokenExpiration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLdapTokenExpiration
+
+`func (o *DSProducerDetails) SetLdapTokenExpiration(v string)`
+
+SetLdapTokenExpiration sets LdapTokenExpiration field to given value.
+
+### HasLdapTokenExpiration
+
+`func (o *DSProducerDetails) HasLdapTokenExpiration() bool`
+
+HasLdapTokenExpiration returns a boolean if a field has been set.
+
+### GetLdapUrl
+
+`func (o *DSProducerDetails) GetLdapUrl() string`
+
+GetLdapUrl returns the LdapUrl field if non-nil, zero value otherwise.
+
+### GetLdapUrlOk
+
+`func (o *DSProducerDetails) GetLdapUrlOk() (*string, bool)`
+
+GetLdapUrlOk returns a tuple with the LdapUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLdapUrl
+
+`func (o *DSProducerDetails) SetLdapUrl(v string)`
+
+SetLdapUrl sets LdapUrl field to given value.
+
+### HasLdapUrl
+
+`func (o *DSProducerDetails) HasLdapUrl() bool`
+
+HasLdapUrl returns a boolean if a field has been set.
+
+### GetLdapUserAttr
+
+`func (o *DSProducerDetails) GetLdapUserAttr() string`
+
+GetLdapUserAttr returns the LdapUserAttr field if non-nil, zero value otherwise.
+
+### GetLdapUserAttrOk
+
+`func (o *DSProducerDetails) GetLdapUserAttrOk() (*string, bool)`
+
+GetLdapUserAttrOk returns a tuple with the LdapUserAttr field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLdapUserAttr
+
+`func (o *DSProducerDetails) SetLdapUserAttr(v string)`
+
+SetLdapUserAttr sets LdapUserAttr field to given value.
+
+### HasLdapUserAttr
+
+`func (o *DSProducerDetails) HasLdapUserAttr() bool`
+
+HasLdapUserAttr returns a boolean if a field has been set.
+
+### GetLdapUserDn
+
+`func (o *DSProducerDetails) GetLdapUserDn() string`
+
+GetLdapUserDn returns the LdapUserDn field if non-nil, zero value otherwise.
+
+### GetLdapUserDnOk
+
+`func (o *DSProducerDetails) GetLdapUserDnOk() (*string, bool)`
+
+GetLdapUserDnOk returns a tuple with the LdapUserDn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLdapUserDn
+
+`func (o *DSProducerDetails) SetLdapUserDn(v string)`
+
+SetLdapUserDn sets LdapUserDn field to given value.
+
+### HasLdapUserDn
+
+`func (o *DSProducerDetails) HasLdapUserDn() bool`
+
+HasLdapUserDn returns a boolean if a field has been set.
 
 ### GetMongodbAtlasApiPrivateKey
 

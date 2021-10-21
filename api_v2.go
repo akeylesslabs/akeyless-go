@@ -6344,6 +6344,123 @@ func (a *V2ApiService) EncryptWithClassicKeyExecute(r ApiEncryptWithClassicKeyRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiGatewayCreateK8SAuthConfigRequest struct {
+	ctx _context.Context
+	ApiService *V2ApiService
+	body *GatewayCreateK8SAuthConfig
+}
+
+func (r ApiGatewayCreateK8SAuthConfigRequest) Body(body GatewayCreateK8SAuthConfig) ApiGatewayCreateK8SAuthConfigRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiGatewayCreateK8SAuthConfigRequest) Execute() (GatewayCreateK8SAuthConfigOutput, *_nethttp.Response, error) {
+	return r.ApiService.GatewayCreateK8SAuthConfigExecute(r)
+}
+
+/*
+ * GatewayCreateK8SAuthConfig Method for GatewayCreateK8SAuthConfig
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @return ApiGatewayCreateK8SAuthConfigRequest
+ */
+func (a *V2ApiService) GatewayCreateK8SAuthConfig(ctx _context.Context) ApiGatewayCreateK8SAuthConfigRequest {
+	return ApiGatewayCreateK8SAuthConfigRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return GatewayCreateK8SAuthConfigOutput
+ */
+func (a *V2ApiService) GatewayCreateK8SAuthConfigExecute(r ApiGatewayCreateK8SAuthConfigRequest) (GatewayCreateK8SAuthConfigOutput, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  GatewayCreateK8SAuthConfigOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.GatewayCreateK8SAuthConfig")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/gateway-create-k8s-auth-config"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiGatewayCreateProducerArtifactoryRequest struct {
 	ctx _context.Context
 	ApiService *V2ApiService
@@ -7324,6 +7441,123 @@ func (a *V2ApiService) GatewayCreateProducerGkeExecute(r ApiGatewayCreateProduce
 	}
 
 	localVarPath := localBasePath + "/gateway-create-producer-gke"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGatewayCreateProducerLdapRequest struct {
+	ctx _context.Context
+	ApiService *V2ApiService
+	body *GatewayCreateProducerLdap
+}
+
+func (r ApiGatewayCreateProducerLdapRequest) Body(body GatewayCreateProducerLdap) ApiGatewayCreateProducerLdapRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiGatewayCreateProducerLdapRequest) Execute() (GatewayCreateProducerLdapOutput, *_nethttp.Response, error) {
+	return r.ApiService.GatewayCreateProducerLdapExecute(r)
+}
+
+/*
+ * GatewayCreateProducerLdap Method for GatewayCreateProducerLdap
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @return ApiGatewayCreateProducerLdapRequest
+ */
+func (a *V2ApiService) GatewayCreateProducerLdap(ctx _context.Context) ApiGatewayCreateProducerLdapRequest {
+	return ApiGatewayCreateProducerLdapRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return GatewayCreateProducerLdapOutput
+ */
+func (a *V2ApiService) GatewayCreateProducerLdapExecute(r ApiGatewayCreateProducerLdapRequest) (GatewayCreateProducerLdapOutput, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  GatewayCreateProducerLdapOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.GatewayCreateProducerLdap")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/gateway-create-producer-ldap"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -8681,6 +8915,123 @@ func (a *V2ApiService) GatewayDeleteAllowedManagementAccessExecute(r ApiGatewayD
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiGatewayDeleteK8SAuthConfigRequest struct {
+	ctx _context.Context
+	ApiService *V2ApiService
+	body *GatewayDeleteK8SAuthConfig
+}
+
+func (r ApiGatewayDeleteK8SAuthConfigRequest) Body(body GatewayDeleteK8SAuthConfig) ApiGatewayDeleteK8SAuthConfigRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiGatewayDeleteK8SAuthConfigRequest) Execute() (GatewayDeleteK8SAuthConfigOutput, *_nethttp.Response, error) {
+	return r.ApiService.GatewayDeleteK8SAuthConfigExecute(r)
+}
+
+/*
+ * GatewayDeleteK8SAuthConfig Method for GatewayDeleteK8SAuthConfig
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @return ApiGatewayDeleteK8SAuthConfigRequest
+ */
+func (a *V2ApiService) GatewayDeleteK8SAuthConfig(ctx _context.Context) ApiGatewayDeleteK8SAuthConfigRequest {
+	return ApiGatewayDeleteK8SAuthConfigRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return GatewayDeleteK8SAuthConfigOutput
+ */
+func (a *V2ApiService) GatewayDeleteK8SAuthConfigExecute(r ApiGatewayDeleteK8SAuthConfigRequest) (GatewayDeleteK8SAuthConfigOutput, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  GatewayDeleteK8SAuthConfigOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.GatewayDeleteK8SAuthConfig")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/gateway-delete-k8s-auth-config"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiGatewayDeleteProducerRequest struct {
 	ctx _context.Context
 	ApiService *V2ApiService
@@ -8845,6 +9196,123 @@ func (a *V2ApiService) GatewayGetConfigExecute(r ApiGatewayGetConfigRequest) (Ak
 	}
 
 	localVarPath := localBasePath + "/gateway-get-config"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGatewayGetK8SAuthConfigRequest struct {
+	ctx _context.Context
+	ApiService *V2ApiService
+	body *GatewayGetK8SAuthConfig
+}
+
+func (r ApiGatewayGetK8SAuthConfigRequest) Body(body GatewayGetK8SAuthConfig) ApiGatewayGetK8SAuthConfigRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiGatewayGetK8SAuthConfigRequest) Execute() (GatewayGetK8SAuthConfigOutput, *_nethttp.Response, error) {
+	return r.ApiService.GatewayGetK8SAuthConfigExecute(r)
+}
+
+/*
+ * GatewayGetK8SAuthConfig Method for GatewayGetK8SAuthConfig
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @return ApiGatewayGetK8SAuthConfigRequest
+ */
+func (a *V2ApiService) GatewayGetK8SAuthConfig(ctx _context.Context) ApiGatewayGetK8SAuthConfigRequest {
+	return ApiGatewayGetK8SAuthConfigRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return GatewayGetK8SAuthConfigOutput
+ */
+func (a *V2ApiService) GatewayGetK8SAuthConfigExecute(r ApiGatewayGetK8SAuthConfigRequest) (GatewayGetK8SAuthConfigOutput, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  GatewayGetK8SAuthConfigOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.GatewayGetK8SAuthConfig")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/gateway-get-k8s-auth-config"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -10649,7 +11117,7 @@ func (r ApiGetRotatedSecretValueRequest) Body(body GetRotatedSecretValue) ApiGet
 	return r
 }
 
-func (r ApiGetRotatedSecretValueRequest) Execute() (map[string]string, *_nethttp.Response, error) {
+func (r ApiGetRotatedSecretValueRequest) Execute() (map[string]map[string]interface{}, *_nethttp.Response, error) {
 	return r.ApiService.GetRotatedSecretValueExecute(r)
 }
 
@@ -10667,16 +11135,16 @@ func (a *V2ApiService) GetRotatedSecretValue(ctx _context.Context) ApiGetRotated
 
 /*
  * Execute executes the request
- * @return map[string]string
+ * @return map[string]map[string]interface{}
  */
-func (a *V2ApiService) GetRotatedSecretValueExecute(r ApiGetRotatedSecretValueRequest) (map[string]string, *_nethttp.Response, error) {
+func (a *V2ApiService) GetRotatedSecretValueExecute(r ApiGetRotatedSecretValueRequest) (map[string]map[string]interface{}, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  map[string]string
+		localVarReturnValue  map[string]map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.GetRotatedSecretValue")

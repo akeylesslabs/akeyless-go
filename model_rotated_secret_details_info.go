@@ -22,6 +22,7 @@ type RotatedSecretDetailsInfo struct {
 	LastRotationError *string `json:"last_rotation_error,omitempty"`
 	NumberOfVersionsToSave *int32 `json:"number_of_versions_to_save,omitempty"`
 	RotationHour *int32 `json:"rotation_hour,omitempty"`
+	RotationIntervalMin *bool `json:"rotation_interval_min,omitempty"`
 	RotationStatement *string `json:"rotation_statement,omitempty"`
 	RotatorCredsType *string `json:"rotator_creds_type,omitempty"`
 	// RotationStatus defines types of rotation Status
@@ -206,6 +207,38 @@ func (o *RotatedSecretDetailsInfo) SetRotationHour(v int32) {
 	o.RotationHour = &v
 }
 
+// GetRotationIntervalMin returns the RotationIntervalMin field value if set, zero value otherwise.
+func (o *RotatedSecretDetailsInfo) GetRotationIntervalMin() bool {
+	if o == nil || o.RotationIntervalMin == nil {
+		var ret bool
+		return ret
+	}
+	return *o.RotationIntervalMin
+}
+
+// GetRotationIntervalMinOk returns a tuple with the RotationIntervalMin field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretDetailsInfo) GetRotationIntervalMinOk() (*bool, bool) {
+	if o == nil || o.RotationIntervalMin == nil {
+		return nil, false
+	}
+	return o.RotationIntervalMin, true
+}
+
+// HasRotationIntervalMin returns a boolean if a field has been set.
+func (o *RotatedSecretDetailsInfo) HasRotationIntervalMin() bool {
+	if o != nil && o.RotationIntervalMin != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRotationIntervalMin gets a reference to the given bool and assigns it to the RotationIntervalMin field.
+func (o *RotatedSecretDetailsInfo) SetRotationIntervalMin(v bool) {
+	o.RotationIntervalMin = &v
+}
+
 // GetRotationStatement returns the RotationStatement field value if set, zero value otherwise.
 func (o *RotatedSecretDetailsInfo) GetRotationStatement() string {
 	if o == nil || o.RotationStatement == nil {
@@ -350,6 +383,9 @@ func (o RotatedSecretDetailsInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.RotationHour != nil {
 		toSerialize["rotation_hour"] = o.RotationHour
+	}
+	if o.RotationIntervalMin != nil {
+		toSerialize["rotation_interval_min"] = o.RotationIntervalMin
 	}
 	if o.RotationStatement != nil {
 		toSerialize["rotation_statement"] = o.RotationStatement

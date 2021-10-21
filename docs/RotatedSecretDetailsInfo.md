@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **LastRotationError** | Pointer to **string** |  | [optional] 
 **NumberOfVersionsToSave** | Pointer to **int32** |  | [optional] 
 **RotationHour** | Pointer to **int32** |  | [optional] 
+**RotationIntervalMin** | Pointer to **bool** |  | [optional] 
 **RotationStatement** | Pointer to **string** |  | [optional] 
 **RotatorCredsType** | Pointer to **string** |  | [optional] 
 **RotatorStatus** | Pointer to **string** | RotationStatus defines types of rotation Status | [optional] 
@@ -157,6 +158,31 @@ SetRotationHour sets RotationHour field to given value.
 `func (o *RotatedSecretDetailsInfo) HasRotationHour() bool`
 
 HasRotationHour returns a boolean if a field has been set.
+
+### GetRotationIntervalMin
+
+`func (o *RotatedSecretDetailsInfo) GetRotationIntervalMin() bool`
+
+GetRotationIntervalMin returns the RotationIntervalMin field if non-nil, zero value otherwise.
+
+### GetRotationIntervalMinOk
+
+`func (o *RotatedSecretDetailsInfo) GetRotationIntervalMinOk() (*bool, bool)`
+
+GetRotationIntervalMinOk returns a tuple with the RotationIntervalMin field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotationIntervalMin
+
+`func (o *RotatedSecretDetailsInfo) SetRotationIntervalMin(v bool)`
+
+SetRotationIntervalMin sets RotationIntervalMin field to given value.
+
+### HasRotationIntervalMin
+
+`func (o *RotatedSecretDetailsInfo) HasRotationIntervalMin() bool`
+
+HasRotationIntervalMin returns a boolean if a field has been set.
 
 ### GetRotationStatement
 

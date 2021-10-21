@@ -21,7 +21,7 @@ type Auth struct {
 	AccessId *string `json:"access-id,omitempty"`
 	// Access key (relevant only for access-type=access_key)
 	AccessKey *string `json:"access-key,omitempty"`
-	// Access Type (access_key/password/saml/ldap/azure_ad/aws_iam/universal_identity/jwt/gcp)
+	// Access Type (access_key/password/saml/ldap/k8s/azure_ad/aws_iam/universal_identity/jwt/gcp)
 	AccessType *string `json:"access-type,omitempty"`
 	// Email (relevant only for access-type=password)
 	AdminEmail *string `json:"admin-email,omitempty"`
@@ -33,6 +33,10 @@ type Auth struct {
 	GcpAudience *string `json:"gcp-audience,omitempty"`
 	// The Json Web Token (relevant only for access-type=jwt/oidc)
 	Jwt *string `json:"jwt,omitempty"`
+	// The K8S Auth config name (relevant only for access-type=k8s)
+	K8sAuthConfigName *string `json:"k8s-auth-config-name,omitempty"`
+	// The K8S service account token. (relevant only for access-type=k8s)
+	K8sServiceAccountToken *string `json:"k8s-service-account-token,omitempty"`
 	// LDAP password (relevant only for access-type=ldap)
 	LdapPassword *string `json:"ldap_password,omitempty"`
 	// LDAP username (relevant only for access-type=ldap)
@@ -318,6 +322,70 @@ func (o *Auth) SetJwt(v string) {
 	o.Jwt = &v
 }
 
+// GetK8sAuthConfigName returns the K8sAuthConfigName field value if set, zero value otherwise.
+func (o *Auth) GetK8sAuthConfigName() string {
+	if o == nil || o.K8sAuthConfigName == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sAuthConfigName
+}
+
+// GetK8sAuthConfigNameOk returns a tuple with the K8sAuthConfigName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Auth) GetK8sAuthConfigNameOk() (*string, bool) {
+	if o == nil || o.K8sAuthConfigName == nil {
+		return nil, false
+	}
+	return o.K8sAuthConfigName, true
+}
+
+// HasK8sAuthConfigName returns a boolean if a field has been set.
+func (o *Auth) HasK8sAuthConfigName() bool {
+	if o != nil && o.K8sAuthConfigName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sAuthConfigName gets a reference to the given string and assigns it to the K8sAuthConfigName field.
+func (o *Auth) SetK8sAuthConfigName(v string) {
+	o.K8sAuthConfigName = &v
+}
+
+// GetK8sServiceAccountToken returns the K8sServiceAccountToken field value if set, zero value otherwise.
+func (o *Auth) GetK8sServiceAccountToken() string {
+	if o == nil || o.K8sServiceAccountToken == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sServiceAccountToken
+}
+
+// GetK8sServiceAccountTokenOk returns a tuple with the K8sServiceAccountToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Auth) GetK8sServiceAccountTokenOk() (*string, bool) {
+	if o == nil || o.K8sServiceAccountToken == nil {
+		return nil, false
+	}
+	return o.K8sServiceAccountToken, true
+}
+
+// HasK8sServiceAccountToken returns a boolean if a field has been set.
+func (o *Auth) HasK8sServiceAccountToken() bool {
+	if o != nil && o.K8sServiceAccountToken != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sServiceAccountToken gets a reference to the given string and assigns it to the K8sServiceAccountToken field.
+func (o *Auth) SetK8sServiceAccountToken(v string) {
+	o.K8sServiceAccountToken = &v
+}
+
 // GetLdapPassword returns the LdapPassword field value if set, zero value otherwise.
 func (o *Auth) GetLdapPassword() string {
 	if o == nil || o.LdapPassword == nil {
@@ -439,6 +507,12 @@ func (o Auth) MarshalJSON() ([]byte, error) {
 	}
 	if o.Jwt != nil {
 		toSerialize["jwt"] = o.Jwt
+	}
+	if o.K8sAuthConfigName != nil {
+		toSerialize["k8s-auth-config-name"] = o.K8sAuthConfigName
+	}
+	if o.K8sServiceAccountToken != nil {
+		toSerialize["k8s-service-account-token"] = o.K8sServiceAccountToken
 	}
 	if o.LdapPassword != nil {
 		toSerialize["ldap_password"] = o.LdapPassword

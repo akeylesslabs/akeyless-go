@@ -5,13 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessId** | **string** | Access ID | 
-**BindDn** | Pointer to **string** | Bind DN | [optional] 
-**BindDnPassword** | Pointer to **string** | Bind DN Password | [optional] 
+**BindDn** | **string** | Bind DN | 
+**BindDnPassword** | **string** | Bind DN Password | 
 **Comment** | Pointer to **string** | Comment about the target | [optional] 
 **EnableAnonymSearch** | Pointer to **bool** | EnableAnonymousSearch | [optional] 
-**GroupAttribute** | Pointer to **string** | Group attribute | [optional] 
-**GroupDn** | Pointer to **string** | Group DN | [optional] 
-**GroupFilter** | Pointer to **string** | Group attribute | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **LdapCaCert** | Pointer to **string** | CA Certificate File Content | [optional] 
 **LdapUrl** | **string** | LDAP Server URL | 
@@ -21,15 +18,13 @@ Name | Type | Description | Notes
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **TokenExpiration** | Pointer to **string** | Token expiration | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
-**UserAttribute** | Pointer to **string** | User Attribute | [optional] 
-**UserDn** | **string** | User DN | 
 **Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 
 ## Methods
 
 ### NewCreateLdapTarget
 
-`func NewCreateLdapTarget(accessId string, ldapUrl string, name string, userDn string, ) *CreateLdapTarget`
+`func NewCreateLdapTarget(accessId string, bindDn string, bindDnPassword string, ldapUrl string, name string, ) *CreateLdapTarget`
 
 NewCreateLdapTarget instantiates a new CreateLdapTarget object
 This constructor will assign default values to properties that have it defined,
@@ -83,11 +78,6 @@ and a boolean to check if the value has been set.
 
 SetBindDn sets BindDn field to given value.
 
-### HasBindDn
-
-`func (o *CreateLdapTarget) HasBindDn() bool`
-
-HasBindDn returns a boolean if a field has been set.
 
 ### GetBindDnPassword
 
@@ -108,11 +98,6 @@ and a boolean to check if the value has been set.
 
 SetBindDnPassword sets BindDnPassword field to given value.
 
-### HasBindDnPassword
-
-`func (o *CreateLdapTarget) HasBindDnPassword() bool`
-
-HasBindDnPassword returns a boolean if a field has been set.
 
 ### GetComment
 
@@ -163,81 +148,6 @@ SetEnableAnonymSearch sets EnableAnonymSearch field to given value.
 `func (o *CreateLdapTarget) HasEnableAnonymSearch() bool`
 
 HasEnableAnonymSearch returns a boolean if a field has been set.
-
-### GetGroupAttribute
-
-`func (o *CreateLdapTarget) GetGroupAttribute() string`
-
-GetGroupAttribute returns the GroupAttribute field if non-nil, zero value otherwise.
-
-### GetGroupAttributeOk
-
-`func (o *CreateLdapTarget) GetGroupAttributeOk() (*string, bool)`
-
-GetGroupAttributeOk returns a tuple with the GroupAttribute field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGroupAttribute
-
-`func (o *CreateLdapTarget) SetGroupAttribute(v string)`
-
-SetGroupAttribute sets GroupAttribute field to given value.
-
-### HasGroupAttribute
-
-`func (o *CreateLdapTarget) HasGroupAttribute() bool`
-
-HasGroupAttribute returns a boolean if a field has been set.
-
-### GetGroupDn
-
-`func (o *CreateLdapTarget) GetGroupDn() string`
-
-GetGroupDn returns the GroupDn field if non-nil, zero value otherwise.
-
-### GetGroupDnOk
-
-`func (o *CreateLdapTarget) GetGroupDnOk() (*string, bool)`
-
-GetGroupDnOk returns a tuple with the GroupDn field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGroupDn
-
-`func (o *CreateLdapTarget) SetGroupDn(v string)`
-
-SetGroupDn sets GroupDn field to given value.
-
-### HasGroupDn
-
-`func (o *CreateLdapTarget) HasGroupDn() bool`
-
-HasGroupDn returns a boolean if a field has been set.
-
-### GetGroupFilter
-
-`func (o *CreateLdapTarget) GetGroupFilter() string`
-
-GetGroupFilter returns the GroupFilter field if non-nil, zero value otherwise.
-
-### GetGroupFilterOk
-
-`func (o *CreateLdapTarget) GetGroupFilterOk() (*string, bool)`
-
-GetGroupFilterOk returns a tuple with the GroupFilter field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGroupFilter
-
-`func (o *CreateLdapTarget) SetGroupFilter(v string)`
-
-SetGroupFilter sets GroupFilter field to given value.
-
-### HasGroupFilter
-
-`func (o *CreateLdapTarget) HasGroupFilter() bool`
-
-HasGroupFilter returns a boolean if a field has been set.
 
 ### GetKey
 
@@ -453,51 +363,6 @@ SetUidToken sets UidToken field to given value.
 `func (o *CreateLdapTarget) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
-
-### GetUserAttribute
-
-`func (o *CreateLdapTarget) GetUserAttribute() string`
-
-GetUserAttribute returns the UserAttribute field if non-nil, zero value otherwise.
-
-### GetUserAttributeOk
-
-`func (o *CreateLdapTarget) GetUserAttributeOk() (*string, bool)`
-
-GetUserAttributeOk returns a tuple with the UserAttribute field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUserAttribute
-
-`func (o *CreateLdapTarget) SetUserAttribute(v string)`
-
-SetUserAttribute sets UserAttribute field to given value.
-
-### HasUserAttribute
-
-`func (o *CreateLdapTarget) HasUserAttribute() bool`
-
-HasUserAttribute returns a boolean if a field has been set.
-
-### GetUserDn
-
-`func (o *CreateLdapTarget) GetUserDn() string`
-
-GetUserDn returns the UserDn field if non-nil, zero value otherwise.
-
-### GetUserDnOk
-
-`func (o *CreateLdapTarget) GetUserDnOk() (*string, bool)`
-
-GetUserDnOk returns a tuple with the UserDn field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUserDn
-
-`func (o *CreateLdapTarget) SetUserDn(v string)`
-
-SetUserDn sets UserDn field to given value.
-
 
 ### GetUsername
 

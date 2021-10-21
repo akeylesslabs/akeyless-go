@@ -1469,6 +1469,33 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /gateway-create-k8s-auth-config:
+    post:
+      operationId: gatewayCreateK8SAuthConfig
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayCreateK8SAuthConfig'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayCreateK8SAuthConfigOutput'
+          description: gatewayCreateK8SAuthConfigResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /gateway-create-producer-artifactory:
     post:
       operationId: gatewayCreateProducerArtifactory
@@ -1729,6 +1756,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/gatewayCreateProducerNativeK8SOutput'
           description: gatewayCreateProducerNativeK8SResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /gateway-create-producer-ldap:
+    post:
+      operationId: gatewayCreateProducerLdap
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayCreateProducerLdap'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayCreateProducerLdapOutput'
+          description: gatewayCreateProducerLdapResponse wraps response body.
         default:
           content:
             application/json:
@@ -2010,6 +2064,33 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /gateway-delete-k8s-auth-config:
+    post:
+      operationId: gatewayDeleteK8SAuthConfig
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayDeleteK8SAuthConfig'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayDeleteK8SAuthConfigOutput'
+          description: gatewayDeleteK8SAuthConfigResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /gateway-delete-producer:
     post:
       operationId: gatewayDeleteProducer
@@ -2053,6 +2134,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/AkeylessGatewayConfig'
           description: gatewayGetConfigResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /gateway-get-k8s-auth-config:
+    post:
+      operationId: gatewayGetK8SAuthConfig
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayGetK8SAuthConfig'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayGetK8SAuthConfigOutput'
+          description: gatewayGetK8SAuthConfigResponse wraps response body.
         default:
           content:
             application/json:
@@ -2450,7 +2558,8 @@ paths:
             application/json:
               schema:
                 additionalProperties:
-                  type: string
+                  properties: {}
+                  type: object
                 type: object
           description: getRotatedSecretValueResponse wraps response body.
         default:
@@ -4294,6 +4403,12 @@ components:
           schema:
             $ref: '#/components/schemas/createAuthMethodHuaweiOutput'
       description: createAuthMethodHuaweiResponse wraps response body.
+    createAuthMethodK8SResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/createAuthMethodK8SOutput'
+      description: createAuthMethodK8SResponse wraps response body.
     createAuthMethodLDAPResponse:
       content:
         application/json:
@@ -4572,6 +4687,12 @@ components:
           schema:
             $ref: '#/components/schemas/gatewayAddSubAdminsOutput'
       description: gatewayAddSubAdminsResponse wraps response body.
+    gatewayCreateK8SAuthConfigResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayCreateK8SAuthConfigOutput'
+      description: gatewayCreateK8SAuthConfigResponse wraps response body.
     gatewayCreateProducerArtifactoryResponse:
       content:
         application/json:
@@ -4633,6 +4754,12 @@ components:
           schema:
             $ref: '#/components/schemas/gatewayCreateProducerGkeOutput'
       description: gatewayCreateProducerGkeResponse wraps response body.
+    gatewayCreateProducerLdapResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayCreateProducerLdapOutput'
+      description: gatewayCreateProducerLdapResponse wraps response body.
     gatewayCreateProducerMSSQLResponse:
       content:
         application/json:
@@ -4693,6 +4820,12 @@ components:
           schema:
             $ref: '#/components/schemas/gatewayCreateProducerSnowflakeOutput'
       description: gatewayCreateProducerSnowflakeResponse wraps response body.
+    gatewayDeleteK8SAuthConfigResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayDeleteK8SAuthConfigOutput'
+      description: gatewayDeleteK8SAuthConfigResponse wraps response body.
     gatewayDeleteProducerResponse:
       content:
         application/json:
@@ -4711,6 +4844,12 @@ components:
           schema:
             $ref: '#/components/schemas/AkeylessGatewayConfig'
       description: gatewayGetConfigResponse wraps response body.
+    gatewayGetK8SAuthConfigResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayGetK8SAuthConfigOutput'
+      description: gatewayGetK8SAuthConfigResponse wraps response body.
     gatewayGetProducerResponse:
       content:
         application/json:
@@ -4824,7 +4963,8 @@ components:
         application/json:
           schema:
             additionalProperties:
-              type: string
+              properties: {}
+              type: object
             type: object
       description: getRotatedSecretValueResponse wraps response body.
     getSSHCertificateResponse:
@@ -5344,6 +5484,38 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     AkeylessGatewayConfig:
       example:
+        k8s_auths:
+          k8s_auths:
+          - k8s_ca_cert: k8s_ca_cert
+            k8s_host: k8s_host
+            k8s_token_reviewer_jwt: k8s_token_reviewer_jwt
+            k8s_issuer: k8s_issuer
+            protection_key: protection_key
+            auth_method_access_id: auth_method_access_id
+            k8s_pub_keys_pem:
+            - k8s_pub_keys_pem
+            - k8s_pub_keys_pem
+            am_token_expiration: 0
+            name: name
+            auth_method_prv_key_pem: auth_method_prv_key_pem
+            disable_iss_validation: true
+            id: id
+            use_local_ca_jwt: true
+          - k8s_ca_cert: k8s_ca_cert
+            k8s_host: k8s_host
+            k8s_token_reviewer_jwt: k8s_token_reviewer_jwt
+            k8s_issuer: k8s_issuer
+            protection_key: protection_key
+            auth_method_access_id: auth_method_access_id
+            k8s_pub_keys_pem:
+            - k8s_pub_keys_pem
+            - k8s_pub_keys_pem
+            am_token_expiration: 0
+            name: name
+            auth_method_prv_key_pem: auth_method_prv_key_pem
+            disable_iss_validation: true
+            id: id
+            use_local_ca_jwt: true
         cache:
           proactive_cache_enable: true
           proactive_cache_dump_interval: proactive_cache_dump_interval
@@ -5353,16 +5525,16 @@ components:
         cf:
           customer_fragements:
             key: customer_fragements
-        version: 3
+        version: 4
         producers:
           producers:
           - name: name
             active: true
-            id: 2
+            id: 7
             type: type
           - name: name
             active: true
-            id: 2
+            id: 7
             type: type
         general:
           tcp_port: tcp_port
@@ -5444,8 +5616,8 @@ components:
               protection_key: protection_key
             payload:
               client_key:
-              - 5
-              - 5
+              - 2
+              - 2
               server: server
               password: password
               client_cert:
@@ -5453,8 +5625,8 @@ components:
               - 5
               namespace: namespace
               ca:
-              - 1
-              - 1
+              - 5
+              - 5
               skip_system: true
               token: token
               username: username
@@ -5465,8 +5637,8 @@ components:
               protection_key: protection_key
             payload:
               client_key:
-              - 5
-              - 5
+              - 2
+              - 2
               server: server
               password: password
               client_cert:
@@ -5474,8 +5646,8 @@ components:
               - 5
               namespace: namespace
               ca:
-              - 1
-              - 1
+              - 5
+              - 5
               skip_system: true
               token: token
               username: username
@@ -5500,8 +5672,8 @@ components:
               key: key
         leadership:
           open_leadership:
-          - 6
-          - 6
+          - 1
+          - 1
         log_forwarding:
           aws_s3_config:
             aws_access_id: aws_access_id
@@ -5539,13 +5711,13 @@ components:
             elasticsearch_host: elasticsearch_host
         saml:
           saml_access_id: saml_access_id
-          default_protection_key_id: 9
+          default_protection_key_id: 2
           oidc_access_id: oidc_access_id
           default_secret_location: default_secret_location
         kmip_clients:
           server_enc:
-          - 0
-          - 0
+          - 6
+          - 6
           clients:
             key:
               name: name
@@ -5586,12 +5758,14 @@ components:
               hash: hash
         rotators:
           rotators:
-          - name: name
-            id: 7
+          - rotation_interval: 3
+            name: name
+            id: 9
             last_error: last_error
             type: type
-          - name: name
-            id: 7
+          - rotation_interval: 3
+            name: name
+            id: 9
             last_error: last_error
             type: type
       properties:
@@ -5606,6 +5780,8 @@ components:
           x-go-name: ConfigProtectionKeyName
         general:
           $ref: '#/components/schemas/GeneralConfigPart'
+        k8s_auths:
+          $ref: '#/components/schemas/K8SAuthsConfigPart'
         kmip_clients:
           $ref: '#/components/schemas/KMIPConfigPart'
         ldap:
@@ -5807,12 +5983,18 @@ components:
               - values
               name: name
             unique_identifier: unique_identifier
+            allowed_redirect_URIs:
+            - allowed_redirect_URIs
+            - allowed_redirect_URIs
             client_secret: client_secret
             client_id: client_id
             issuer: issuer
           saml_access_rules:
             unique_identifier: unique_identifier
             idp_metadata_url: idp_metadata_url
+            allowed_redirect_URIs:
+            - allowed_redirect_URIs
+            - allowed_redirect_URIs
             bound_attributes:
             - values:
               - values
@@ -5875,6 +6057,19 @@ components:
             arn:
             - arn
             - arn
+          k8s_access_rules:
+            audience: audience
+            bound_service_account_names:
+            - bound_service_account_names
+            - bound_service_account_names
+            bound_namespaces:
+            - bound_namespaces
+            - bound_namespaces
+            bound_pod_names:
+            - bound_pod_names
+            - bound_pod_names
+            alg: alg
+            pub_key: pub_key
           rules_type: rules_type
           access_expires: 0
           access_id_alias: access_id_alias
@@ -5990,12 +6185,18 @@ components:
             - values
             name: name
           unique_identifier: unique_identifier
+          allowed_redirect_URIs:
+          - allowed_redirect_URIs
+          - allowed_redirect_URIs
           client_secret: client_secret
           client_id: client_id
           issuer: issuer
         saml_access_rules:
           unique_identifier: unique_identifier
           idp_metadata_url: idp_metadata_url
+          allowed_redirect_URIs:
+          - allowed_redirect_URIs
+          - allowed_redirect_URIs
           bound_attributes:
           - values:
             - values
@@ -6058,6 +6259,19 @@ components:
           arn:
           - arn
           - arn
+        k8s_access_rules:
+          audience: audience
+          bound_service_account_names:
+          - bound_service_account_names
+          - bound_service_account_names
+          bound_namespaces:
+          - bound_namespaces
+          - bound_namespaces
+          bound_pod_names:
+          - bound_pod_names
+          - bound_pod_names
+          alg: alg
+          pub_key: pub_key
         rules_type: rules_type
         access_expires: 0
         access_id_alias: access_id_alias
@@ -6096,6 +6310,8 @@ components:
           $ref: '#/components/schemas/GCPAccessRules'
         huawei_access_rules:
           $ref: '#/components/schemas/HuaweiAccessRules'
+        k8s_access_rules:
+          $ref: '#/components/schemas/KubernetesAccessRules'
         ldap_access_rules:
           $ref: '#/components/schemas/LDAPAccessRules'
         oauth2_access_rules:
@@ -6626,6 +6842,131 @@ components:
         supported by AKEYLESS.
       type: string
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    ConfigChange:
+      example:
+        required_activity:
+          migrations_required_activity:
+            key: true
+        last_change:
+          last_k8s_auths_change:
+            created_k8s_auths_ids:
+            - created_k8s_auths_ids
+            - created_k8s_auths_ids
+            deleted_k8s_auths_ids:
+            - deleted_k8s_auths_ids
+            - deleted_k8s_auths_ids
+            changed_k8s_auths_ids:
+            - changed_k8s_auths_ids
+            - changed_k8s_auths_ids
+          last_migrations_change:
+            deleted_migrations:
+            - deleted_migrations
+            - deleted_migrations
+            changed_migrations:
+            - changed_migrations
+            - changed_migrations
+            created_migrations:
+            - created_migrations
+            - created_migrations
+        last_status:
+          migrations_status:
+            last_messages:
+              key: last_messages
+            last_statuses:
+              key: last_statuses
+          producers_errors: '{}'
+        update_stamp: 0
+        config_hash:
+          k8s_auths: k8s_auths
+          cache: cache
+          universal_identity: universal_identity
+          customer_fragements: customer_fragements
+          producers: '{}'
+          general: general
+          ldap: ldap
+          migrations: migrations
+          leadership: leadership
+          log_forwarding: log_forwarding
+          saml: saml
+          kmip: kmip
+          admins: admins
+          rotators: '{}'
+      properties:
+        config_hash:
+          $ref: '#/components/schemas/ConfigHash'
+        last_change:
+          $ref: '#/components/schemas/LastConfigChange'
+        last_status:
+          $ref: '#/components/schemas/LastStatusInfo'
+        required_activity:
+          $ref: '#/components/schemas/RequiredActivity'
+        update_stamp:
+          format: int64
+          type: integer
+          x-go-name: UpdateStamp
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    ConfigHash:
+      example:
+        k8s_auths: k8s_auths
+        cache: cache
+        universal_identity: universal_identity
+        customer_fragements: customer_fragements
+        producers: '{}'
+        general: general
+        ldap: ldap
+        migrations: migrations
+        leadership: leadership
+        log_forwarding: log_forwarding
+        saml: saml
+        kmip: kmip
+        admins: admins
+        rotators: '{}'
+      properties:
+        admins:
+          type: string
+          x-go-name: Admins
+        cache:
+          type: string
+          x-go-name: Cache
+        customer_fragements:
+          type: string
+          x-go-name: CFragements
+        general:
+          type: string
+          x-go-name: General
+        k8s_auths:
+          type: string
+          x-go-name: K8SAuths
+        kmip:
+          type: string
+          x-go-name: KMIP
+        ldap:
+          type: string
+          x-go-name: Ldap
+        leadership:
+          type: string
+          x-go-name: Leadership
+        log_forwarding:
+          type: string
+          x-go-name: LogForwarding
+        migrations:
+          type: string
+          x-go-name: Migrations
+        producers:
+          type: object
+          x-go-name: Producers
+        rotators:
+          type: object
+          x-go-name: Rotators
+        saml:
+          type: string
+          x-go-name: Default
+        universal_identity:
+          type: string
+          x-go-name: UIdentity
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     CreateClassicKey:
       description: CreateClassicKey is a command that creates classic key
       example:
@@ -6945,9 +7286,14 @@ components:
         chef_server_key: chef_server_key
         db_max_open_conns: db_max_open_conns
         admin_rotation_interval_days: 0
+        ldap_group_filter: ldap_group_filter
         oracle_creation_statements: oracle_creation_statements
         mssql_creation_statements: mssql_creation_statements
         sf_user_role: sf_user_role
+        ldap_certificate: ldap_certificate
+        ldap_private_key: ldap_private_key
+        ldap_bind_dn: ldap_bind_dn
+        ldap_url: ldap_url
         admin_pwd: admin_pwd
         gcp_token_scope: gcp_token_scope
         venafi_allowed_domains:
@@ -6969,6 +7315,7 @@ components:
           target_id: 1
         chef_server_username: chef_server_username
         db_host_name: db_host_name
+        ldap_user_dn: ldap_user_dn
         db_name: db_name
         k8s_service_account: k8s_service_account
         chef_skip_ssl: true
@@ -6995,12 +7342,15 @@ components:
         user_ttl: user_ttl
         timeout_seconds: 5
         eks_assume_role: eks_assume_role
+        ldap_token_expiration: ldap_token_expiration
         venafi_use_tpp: true
         mongodb_password: mongodb_password
+        ldap_anonymous_search: true
         aws_secret_access_key: aws_secret_access_key
         mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
         postgres_creation_statements: postgres_creation_statements
         db_max_idle_conns: db_max_idle_conns
+        ldap_access_id: ldap_access_id
         artifactory_admin_username: artifactory_admin_username
         admin_name: admin_name
         rabbitmq_server_user: rabbitmq_server_user
@@ -7018,6 +7368,7 @@ components:
         rabbitmq_user_read_permission: rabbitmq_user_read_permission
         azure_client_id: azure_client_id
         mongodb_default_auth_db: mongodb_default_auth_db
+        ldap_group_attr: ldap_group_attr
         mongodb_uri_connection: mongodb_uri_connection
         mongodb_atlas_project_id: mongodb_atlas_project_id
         db_user_name: db_user_name
@@ -7025,7 +7376,9 @@ components:
         payload: payload
         artifactory_admin_apikey: artifactory_admin_apikey
         redshift_creation_statements: redshift_creation_statements
+        ldap_audience: ldap_audience
         azure_app_object_id: azure_app_object_id
+        ldap_bind_password: ldap_bind_password
         venafi_allow_subdomains: true
         aws_user_console_access: true
         user_principal_name: user_principal_name
@@ -7056,6 +7409,8 @@ components:
         rabbitmq_user_write_permission: rabbitmq_user_write_permission
         rabbitmq_user_tags: rabbitmq_user_tags
         venafi_tpp_password: venafi_tpp_password
+        is_fixed_user: is_fixed_user
+        ldap_user_attr: ldap_user_attr
         use_gw_cloud_identity: true
         azure_user_programmatic_access: true
         k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
@@ -7089,6 +7444,7 @@ components:
           bastion_issuer: bastion_issuer
           ssh_user: ssh_user
         groups: groups
+        ldap_group_dn: ldap_group_dn
         chef_organizations: chef_organizations
         dynamic_secret_id: 6
         chef_server_host_name: chef_server_host_name
@@ -7345,6 +7701,9 @@ components:
         host_port:
           type: string
           x-go-name: HostPort
+        is_fixed_user:
+          type: string
+          x-go-name: IsFixedUser
         item_targets_assoc:
           items:
             $ref: '#/components/schemas/ItemTargetAssociation'
@@ -7369,6 +7728,48 @@ components:
           format: int64
           type: integer
           x-go-name: LastAdminRotation
+        ldap_access_id:
+          type: string
+          x-go-name: AccessId
+        ldap_anonymous_search:
+          type: boolean
+          x-go-name: AnonymousSearch
+        ldap_audience:
+          type: string
+          x-go-name: Audience
+        ldap_bind_dn:
+          type: string
+          x-go-name: BindDn
+        ldap_bind_password:
+          type: string
+          x-go-name: BindPass
+        ldap_certificate:
+          type: string
+          x-go-name: Certificate
+        ldap_group_attr:
+          type: string
+          x-go-name: GroupAttr
+        ldap_group_dn:
+          type: string
+          x-go-name: GroupDn
+        ldap_group_filter:
+          type: string
+          x-go-name: GroupFilter
+        ldap_private_key:
+          type: string
+          x-go-name: PrivateKey
+        ldap_token_expiration:
+          type: string
+          x-go-name: TokenExpirationInSec
+        ldap_url:
+          type: string
+          x-go-name: Url
+        ldap_user_attr:
+          type: string
+          x-go-name: UserAttr
+        ldap_user_dn:
+          type: string
+          x-go-name: UserDn
         mongodb_atlas_api_private_key:
           type: string
           x-go-name: MongoDBAtlasAPIPrivateKey
@@ -7535,7 +7936,7 @@ components:
     DefaultConfigPart:
       example:
         saml_access_id: saml_access_id
-        default_protection_key_id: 9
+        default_protection_key_id: 2
         oidc_access_id: oidc_access_id
         default_secret_location: default_secret_location
       properties:
@@ -7891,11 +8292,11 @@ components:
         producers:
         - name: name
           active: true
-          id: 2
+          id: 7
           type: type
         - name: name
           active: true
-          id: 2
+          id: 7
           type: type
       properties:
         producers:
@@ -7939,15 +8340,14 @@ components:
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           k8s_bearer_token: k8s_bearer_token
           chef_server_key: chef_server_key
-          ldap_group_filter: ldap_group_filter
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
-          ldap_group_attr: ldap_group_attr
           mongodb_uri_connection: mongodb_uri_connection
           mongodb_atlas_project_id: mongodb_atlas_project_id
           password: password
           db_user_name: db_user_name
           eks_region: eks_region
+          payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
           host: host
           ldap_certificate: ldap_certificate
@@ -7960,7 +8360,6 @@ components:
           private_key: private_key
           chef_server_username: chef_server_username
           db_host_name: db_host_name
-          ldap_user_dn: ldap_user_dn
           db_name: db_name
           port: port
           db_server_certificates: db_server_certificates
@@ -7990,7 +8389,6 @@ components:
           venafi_base_url: venafi_base_url
           venafi_tpp_password: venafi_tpp_password
           ldap_token_expiration: ldap_token_expiration
-          ldap_user_attr: ldap_user_attr
           use_gw_cloud_identity: true
           venafi_use_tpp: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
@@ -7999,7 +8397,6 @@ components:
           ldap_anonymous_search: true
           sf_account: sf_account
           aws_secret_access_key: aws_secret_access_key
-          ldap_group_dn: ldap_group_dn
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           chef_server_host_name: chef_server_host_name
           url: url
@@ -8040,12 +8437,14 @@ components:
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
             version: 6
+            customer_fragment_id: customer_fragment_id
           - item_version_state: item_version_state
             with_customer_fragment: true
             deletion_date: 2000-01-23T04:56:07.000+00:00
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
             version: 6
+            customer_fragment_id: customer_fragment_id
           target_type: target_type
           comment: comment
           protection_key_name: protection_key_name
@@ -8172,13 +8571,33 @@ components:
       example:
         auto_rotate: true
         item_state: item_state
-        cert_issuer_signer_key_name: cert_issuer_signer_key_name
         display_id: display_id
+        item_type: item_type
+        item_versions:
+        - item_version_state: item_version_state
+          with_customer_fragment: true
+          deletion_date: 2000-01-23T04:56:07.000+00:00
+          protection_key_name: protection_key_name
+          creation_date: 2000-01-23T04:56:07.000+00:00
+          version: 6
+          customer_fragment_id: customer_fragment_id
+        - item_version_state: item_version_state
+          with_customer_fragment: true
+          deletion_date: 2000-01-23T04:56:07.000+00:00
+          protection_key_name: protection_key_name
+          creation_date: 2000-01-23T04:56:07.000+00:00
+          version: 6
+          customer_fragment_id: customer_fragment_id
+        item_size: 1
+        is_enabled: true
+        rotation_interval: 1
+        item_metadata: item_metadata
+        protection_key_name: protection_key_name
+        cert_issuer_signer_key_name: cert_issuer_signer_key_name
         item_id: 1
         item_tags:
         - item_tags
         - item_tags
-        item_type: item_type
         certificate_issue_details:
           max_ttl: 0
           pki_cert_issuer_details:
@@ -8243,19 +8662,6 @@ components:
             allowed_user_key_lengths:
               key: 5
           cert_issuer_type: cert_issuer_type
-        item_versions:
-        - item_version_state: item_version_state
-          with_customer_fragment: true
-          deletion_date: 2000-01-23T04:56:07.000+00:00
-          protection_key_name: protection_key_name
-          creation_date: 2000-01-23T04:56:07.000+00:00
-          version: 6
-        - item_version_state: item_version_state
-          with_customer_fragment: true
-          deletion_date: 2000-01-23T04:56:07.000+00:00
-          protection_key_name: protection_key_name
-          creation_date: 2000-01-23T04:56:07.000+00:00
-          version: 6
         item_targets_assoc:
         - assoc_id: assoc_id
           target_name: target_name
@@ -8264,8 +8670,7 @@ components:
           target_name: target_name
           target_id: 1
         item_name: item_name
-        item_size: 1
-        is_enabled: true
+        customer_fragment_id: customer_fragment_id
         item_general_info:
           classic_key_details:
             classic_key_id: classic_key_id
@@ -8315,6 +8720,7 @@ components:
             rotation_hour: 4
             rotation_statement: rotation_statement
             rotator_status: rotator_status
+            rotation_interval_min: true
             rotator_type: rotator_type
             delete_previous_version_in_days: 9
             last_rotation_error: last_rotation_error
@@ -8423,10 +8829,7 @@ components:
         - client_permissions
         with_customer_fragment: true
         certificates: certificates
-        rotation_interval: 1
-        item_metadata: item_metadata
         deletion_date: 2000-01-23T04:56:07.000+00:00
-        protection_key_name: protection_key_name
         public_value: public_value
       properties:
         auto_rotate:
@@ -8445,6 +8848,9 @@ components:
             type: string
           type: array
           x-go-name: ClientPermissions
+        customer_fragment_id:
+          type: string
+          x-go-name: CustomerFragmentId
         deletion_date:
           format: date-time
           type: string
@@ -8568,6 +8974,7 @@ components:
           rotation_hour: 4
           rotation_statement: rotation_statement
           rotator_status: rotator_status
+          rotation_interval_min: true
           rotator_type: rotator_type
           delete_previous_version_in_days: 9
           last_rotation_error: last_rotation_error
@@ -8720,11 +9127,15 @@ components:
         protection_key_name: protection_key_name
         creation_date: 2000-01-23T04:56:07.000+00:00
         version: 6
+        customer_fragment_id: customer_fragment_id
       properties:
         creation_date:
           format: date-time
           type: string
           x-go-name: CreationDate
+        customer_fragment_id:
+          type: string
+          x-go-name: CustomerFragmentId
         deletion_date:
           format: date-time
           type: string
@@ -8754,6 +9165,158 @@ components:
       title: JSONError wraps an error with JSON object.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client
+    K8SAuth:
+      example:
+        k8s_ca_cert: k8s_ca_cert
+        k8s_host: k8s_host
+        k8s_token_reviewer_jwt: k8s_token_reviewer_jwt
+        k8s_issuer: k8s_issuer
+        protection_key: protection_key
+        auth_method_access_id: auth_method_access_id
+        k8s_pub_keys_pem:
+        - k8s_pub_keys_pem
+        - k8s_pub_keys_pem
+        am_token_expiration: 0
+        name: name
+        auth_method_prv_key_pem: auth_method_prv_key_pem
+        disable_iss_validation: true
+        id: id
+        use_local_ca_jwt: true
+      properties:
+        am_token_expiration:
+          description: AuthMethodTokenExpiration is time in seconds of expiration
+            of the Akeyless Kube Auth Method token
+          format: int64
+          type: integer
+          x-go-name: AuthMethodTokenExpiration
+        auth_method_access_id:
+          description: AuthMethodAccessId of the Kubernetes auth method
+          type: string
+          x-go-name: AuthMethodAccessId
+        auth_method_prv_key_pem:
+          description: |-
+            AuthMethodSigningKey is the private key (in base64 of the PEM format) associated with the public key defined in the
+            Kubernetes auth method, that used to sign the internal token for the Akeyless Kubernetes Auth Method
+          type: string
+          x-go-name: AuthMethodSigningKey
+        disable_iss_validation:
+          description: DisableISSValidation is optional parameter to disable ISS validation
+          type: boolean
+          x-go-name: DisableISSValidation
+        id:
+          type: string
+          x-go-name: Id
+        k8s_ca_cert:
+          description: K8SCACert is the CA Cert to use to call into the kubernetes
+            API
+          type: string
+          x-go-name: K8SCACert
+        k8s_host:
+          description: K8SHost is the url string for the kubernetes API
+          type: string
+          x-go-name: K8SHost
+        k8s_issuer:
+          description: K8SIssuer is the claim that specifies who issued the Kubernetes
+            token
+          type: string
+          x-go-name: K8SIssuer
+        k8s_pub_keys_pem:
+          description: K8SPublicKeysPEM is the list of public key in PEM format
+          items:
+            type: string
+          type: array
+          x-go-name: K8SPublicKeysPEM
+        k8s_token_reviewer_jwt:
+          description: K8STokenReviewerJW"K8S Auth config %v successfully created\n",
+            clictx.Color().Bold(c.K8SAuthConfigName)T is the bearer to use during
+            the TokenReview API call
+          type: string
+          x-go-name: K8STokenReviewerJWT
+        name:
+          type: string
+          x-go-name: Name
+        protection_key:
+          type: string
+          x-go-name: ProtectionKey
+        use_local_ca_jwt:
+          description: |-
+            UseLocalCAJwt is an optional parameter to set defaulting to using
+            the local CA cert and service account jwt when running in a Kubernetes
+            pod
+          type: boolean
+          x-go-name: UseLocalCAJwt
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    K8SAuthsConfigLastChange:
+      example:
+        created_k8s_auths_ids:
+        - created_k8s_auths_ids
+        - created_k8s_auths_ids
+        deleted_k8s_auths_ids:
+        - deleted_k8s_auths_ids
+        - deleted_k8s_auths_ids
+        changed_k8s_auths_ids:
+        - changed_k8s_auths_ids
+        - changed_k8s_auths_ids
+      properties:
+        changed_k8s_auths_ids:
+          items:
+            type: string
+          type: array
+          x-go-name: ChangedK8SAuthsIDs
+        created_k8s_auths_ids:
+          items:
+            type: string
+          type: array
+          x-go-name: CreatedK8SAuthsIDs
+        deleted_k8s_auths_ids:
+          items:
+            type: string
+          type: array
+          x-go-name: DeletedK8SAuthsIDs
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    K8SAuthsConfigPart:
+      example:
+        k8s_auths:
+        - k8s_ca_cert: k8s_ca_cert
+          k8s_host: k8s_host
+          k8s_token_reviewer_jwt: k8s_token_reviewer_jwt
+          k8s_issuer: k8s_issuer
+          protection_key: protection_key
+          auth_method_access_id: auth_method_access_id
+          k8s_pub_keys_pem:
+          - k8s_pub_keys_pem
+          - k8s_pub_keys_pem
+          am_token_expiration: 0
+          name: name
+          auth_method_prv_key_pem: auth_method_prv_key_pem
+          disable_iss_validation: true
+          id: id
+          use_local_ca_jwt: true
+        - k8s_ca_cert: k8s_ca_cert
+          k8s_host: k8s_host
+          k8s_token_reviewer_jwt: k8s_token_reviewer_jwt
+          k8s_issuer: k8s_issuer
+          protection_key: protection_key
+          auth_method_access_id: auth_method_access_id
+          k8s_pub_keys_pem:
+          - k8s_pub_keys_pem
+          - k8s_pub_keys_pem
+          am_token_expiration: 0
+          name: name
+          auth_method_prv_key_pem: auth_method_prv_key_pem
+          disable_iss_validation: true
+          id: id
+          use_local_ca_jwt: true
+      properties:
+        k8s_auths:
+          items:
+            $ref: '#/components/schemas/K8SAuth'
+          type: array
+          x-go-name: K8SAuths
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     K8SMigration:
       example:
         general:
@@ -8763,8 +9326,8 @@ components:
           protection_key: protection_key
         payload:
           client_key:
-          - 5
-          - 5
+          - 2
+          - 2
           server: server
           password: password
           client_cert:
@@ -8772,8 +9335,8 @@ components:
           - 5
           namespace: namespace
           ca:
-          - 1
-          - 1
+          - 5
+          - 5
           skip_system: true
           token: token
           username: username
@@ -8787,8 +9350,8 @@ components:
     K8SPayload:
       example:
         client_key:
-        - 5
-        - 5
+        - 2
+        - 2
         server: server
         password: password
         client_cert:
@@ -8796,8 +9359,8 @@ components:
         - 5
         namespace: namespace
         ca:
-        - 1
-        - 1
+        - 5
+        - 5
         skip_system: true
         token: token
         username: username
@@ -8960,8 +9523,8 @@ components:
     KMIPConfigPart:
       example:
         server_enc:
-        - 0
-        - 0
+        - 6
+        - 6
         clients:
           key:
             name: name
@@ -9010,6 +9573,59 @@ components:
           x-go-name: Root
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/akeyless-api-proxy/config
+    KubernetesAccessRules:
+      example:
+        audience: audience
+        bound_service_account_names:
+        - bound_service_account_names
+        - bound_service_account_names
+        bound_namespaces:
+        - bound_namespaces
+        - bound_namespaces
+        bound_pod_names:
+        - bound_pod_names
+        - bound_pod_names
+        alg: alg
+        pub_key: pub_key
+      properties:
+        alg:
+          title: Algorithm is a type that represents a single crypto algorithm.
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+        audience:
+          description: Audience is an optional Kubernetes jwt claim to verify
+          type: string
+          x-go-name: Audience
+        bound_namespaces:
+          description: A list of namespaces that the authentication is restricted
+            to.
+          items:
+            type: string
+          type: array
+          x-go-name: Namespaces
+        bound_pod_names:
+          description: A list of pods names that the authentication is restricted
+            to.
+          items:
+            type: string
+          type: array
+          x-go-name: PodNames
+        bound_service_account_names:
+          description: A list of service account names that the authentication is
+            restricted to.
+          items:
+            type: string
+          type: array
+          x-go-name: ServiceAccountNames
+        pub_key:
+          description: The public key value of the Kubernetes auth method configuration
+            in the Akeyless Gateway.
+          type: string
+          x-go-name: PubKeyValue
+      title: KubernetesAccessRules includes access rules specific to the Kubernetes
+        auth method.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     LDAPAccessRules:
       example:
         unique_identifier: unique_identifier
@@ -9031,6 +9647,51 @@ components:
       title: LDAPAccessRules includes access rules specific to LDAP authentication.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    LastConfigChange:
+      example:
+        last_k8s_auths_change:
+          created_k8s_auths_ids:
+          - created_k8s_auths_ids
+          - created_k8s_auths_ids
+          deleted_k8s_auths_ids:
+          - deleted_k8s_auths_ids
+          - deleted_k8s_auths_ids
+          changed_k8s_auths_ids:
+          - changed_k8s_auths_ids
+          - changed_k8s_auths_ids
+        last_migrations_change:
+          deleted_migrations:
+          - deleted_migrations
+          - deleted_migrations
+          changed_migrations:
+          - changed_migrations
+          - changed_migrations
+          created_migrations:
+          - created_migrations
+          - created_migrations
+      properties:
+        last_k8s_auths_change:
+          $ref: '#/components/schemas/K8SAuthsConfigLastChange'
+        last_migrations_change:
+          $ref: '#/components/schemas/MigrationsConfigLastChange'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    LastStatusInfo:
+      example:
+        migrations_status:
+          last_messages:
+            key: last_messages
+          last_statuses:
+            key: last_statuses
+        producers_errors: '{}'
+      properties:
+        migrations_status:
+          $ref: '#/components/schemas/MigrationStatus'
+        producers_errors:
+          type: object
+          x-go-name: Producers
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     LdapConfigPart:
       example:
         ldap_anonymous_search: true
@@ -9095,8 +9756,8 @@ components:
     LeadershipConfigPart:
       example:
         open_leadership:
-        - 6
-        - 6
+        - 1
+        - 1
       properties:
         open_leadership:
           items:
@@ -9233,12 +9894,18 @@ components:
                 - values
                 name: name
               unique_identifier: unique_identifier
+              allowed_redirect_URIs:
+              - allowed_redirect_URIs
+              - allowed_redirect_URIs
               client_secret: client_secret
               client_id: client_id
               issuer: issuer
             saml_access_rules:
               unique_identifier: unique_identifier
               idp_metadata_url: idp_metadata_url
+              allowed_redirect_URIs:
+              - allowed_redirect_URIs
+              - allowed_redirect_URIs
               bound_attributes:
               - values:
                 - values
@@ -9301,6 +9968,19 @@ components:
               arn:
               - arn
               - arn
+            k8s_access_rules:
+              audience: audience
+              bound_service_account_names:
+              - bound_service_account_names
+              - bound_service_account_names
+              bound_namespaces:
+              - bound_namespaces
+              - bound_namespaces
+              bound_pod_names:
+              - bound_pod_names
+              - bound_pod_names
+              alg: alg
+              pub_key: pub_key
             rules_type: rules_type
             access_expires: 0
             access_id_alias: access_id_alias
@@ -9433,12 +10113,18 @@ components:
                 - values
                 name: name
               unique_identifier: unique_identifier
+              allowed_redirect_URIs:
+              - allowed_redirect_URIs
+              - allowed_redirect_URIs
               client_secret: client_secret
               client_id: client_id
               issuer: issuer
             saml_access_rules:
               unique_identifier: unique_identifier
               idp_metadata_url: idp_metadata_url
+              allowed_redirect_URIs:
+              - allowed_redirect_URIs
+              - allowed_redirect_URIs
               bound_attributes:
               - values:
                 - values
@@ -9501,6 +10187,19 @@ components:
               arn:
               - arn
               - arn
+            k8s_access_rules:
+              audience: audience
+              bound_service_account_names:
+              - bound_service_account_names
+              - bound_service_account_names
+              bound_namespaces:
+              - bound_namespaces
+              - bound_namespaces
+              bound_pod_names:
+              - bound_pod_names
+              - bound_pod_names
+              alg: alg
+              pub_key: pub_key
             rules_type: rules_type
             access_expires: 0
             access_id_alias: access_id_alias
@@ -9531,13 +10230,33 @@ components:
         items:
         - auto_rotate: true
           item_state: item_state
-          cert_issuer_signer_key_name: cert_issuer_signer_key_name
           display_id: display_id
+          item_type: item_type
+          item_versions:
+          - item_version_state: item_version_state
+            with_customer_fragment: true
+            deletion_date: 2000-01-23T04:56:07.000+00:00
+            protection_key_name: protection_key_name
+            creation_date: 2000-01-23T04:56:07.000+00:00
+            version: 6
+            customer_fragment_id: customer_fragment_id
+          - item_version_state: item_version_state
+            with_customer_fragment: true
+            deletion_date: 2000-01-23T04:56:07.000+00:00
+            protection_key_name: protection_key_name
+            creation_date: 2000-01-23T04:56:07.000+00:00
+            version: 6
+            customer_fragment_id: customer_fragment_id
+          item_size: 1
+          is_enabled: true
+          rotation_interval: 1
+          item_metadata: item_metadata
+          protection_key_name: protection_key_name
+          cert_issuer_signer_key_name: cert_issuer_signer_key_name
           item_id: 1
           item_tags:
           - item_tags
           - item_tags
-          item_type: item_type
           certificate_issue_details:
             max_ttl: 0
             pki_cert_issuer_details:
@@ -9602,19 +10321,6 @@ components:
               allowed_user_key_lengths:
                 key: 5
             cert_issuer_type: cert_issuer_type
-          item_versions:
-          - item_version_state: item_version_state
-            with_customer_fragment: true
-            deletion_date: 2000-01-23T04:56:07.000+00:00
-            protection_key_name: protection_key_name
-            creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 6
-          - item_version_state: item_version_state
-            with_customer_fragment: true
-            deletion_date: 2000-01-23T04:56:07.000+00:00
-            protection_key_name: protection_key_name
-            creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 6
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
@@ -9623,8 +10329,7 @@ components:
             target_name: target_name
             target_id: 1
           item_name: item_name
-          item_size: 1
-          is_enabled: true
+          customer_fragment_id: customer_fragment_id
           item_general_info:
             classic_key_details:
               classic_key_id: classic_key_id
@@ -9674,6 +10379,7 @@ components:
               rotation_hour: 4
               rotation_statement: rotation_statement
               rotator_status: rotator_status
+              rotation_interval_min: true
               rotator_type: rotator_type
               delete_previous_version_in_days: 9
               last_rotation_error: last_rotation_error
@@ -9782,20 +10488,37 @@ components:
           - client_permissions
           with_customer_fragment: true
           certificates: certificates
-          rotation_interval: 1
-          item_metadata: item_metadata
           deletion_date: 2000-01-23T04:56:07.000+00:00
-          protection_key_name: protection_key_name
           public_value: public_value
         - auto_rotate: true
           item_state: item_state
-          cert_issuer_signer_key_name: cert_issuer_signer_key_name
           display_id: display_id
+          item_type: item_type
+          item_versions:
+          - item_version_state: item_version_state
+            with_customer_fragment: true
+            deletion_date: 2000-01-23T04:56:07.000+00:00
+            protection_key_name: protection_key_name
+            creation_date: 2000-01-23T04:56:07.000+00:00
+            version: 6
+            customer_fragment_id: customer_fragment_id
+          - item_version_state: item_version_state
+            with_customer_fragment: true
+            deletion_date: 2000-01-23T04:56:07.000+00:00
+            protection_key_name: protection_key_name
+            creation_date: 2000-01-23T04:56:07.000+00:00
+            version: 6
+            customer_fragment_id: customer_fragment_id
+          item_size: 1
+          is_enabled: true
+          rotation_interval: 1
+          item_metadata: item_metadata
+          protection_key_name: protection_key_name
+          cert_issuer_signer_key_name: cert_issuer_signer_key_name
           item_id: 1
           item_tags:
           - item_tags
           - item_tags
-          item_type: item_type
           certificate_issue_details:
             max_ttl: 0
             pki_cert_issuer_details:
@@ -9860,19 +10583,6 @@ components:
               allowed_user_key_lengths:
                 key: 5
             cert_issuer_type: cert_issuer_type
-          item_versions:
-          - item_version_state: item_version_state
-            with_customer_fragment: true
-            deletion_date: 2000-01-23T04:56:07.000+00:00
-            protection_key_name: protection_key_name
-            creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 6
-          - item_version_state: item_version_state
-            with_customer_fragment: true
-            deletion_date: 2000-01-23T04:56:07.000+00:00
-            protection_key_name: protection_key_name
-            creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 6
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
@@ -9881,8 +10591,7 @@ components:
             target_name: target_name
             target_id: 1
           item_name: item_name
-          item_size: 1
-          is_enabled: true
+          customer_fragment_id: customer_fragment_id
           item_general_info:
             classic_key_details:
               classic_key_id: classic_key_id
@@ -9932,6 +10641,7 @@ components:
               rotation_hour: 4
               rotation_statement: rotation_statement
               rotator_status: rotator_status
+              rotation_interval_min: true
               rotator_type: rotator_type
               delete_previous_version_in_days: 9
               last_rotation_error: last_rotation_error
@@ -10040,10 +10750,7 @@ components:
           - client_permissions
           with_customer_fragment: true
           certificates: certificates
-          rotation_interval: 1
-          item_metadata: item_metadata
           deletion_date: 2000-01-23T04:56:07.000+00:00
-          protection_key_name: protection_key_name
           public_value: public_value
       properties:
         folders:
@@ -10173,12 +10880,14 @@ components:
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
             version: 6
+            customer_fragment_id: customer_fragment_id
           - item_version_state: item_version_state
             with_customer_fragment: true
             deletion_date: 2000-01-23T04:56:07.000+00:00
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
             version: 6
+            customer_fragment_id: customer_fragment_id
           target_type: target_type
           comment: comment
           protection_key_name: protection_key_name
@@ -10203,12 +10912,14 @@ components:
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
             version: 6
+            customer_fragment_id: customer_fragment_id
           - item_version_state: item_version_state
             with_customer_fragment: true
             deletion_date: 2000-01-23T04:56:07.000+00:00
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
             version: 6
+            customer_fragment_id: customer_fragment_id
           target_type: target_type
           comment: comment
           protection_key_name: protection_key_name
@@ -10340,6 +11051,54 @@ components:
           x-go-name: ProtectionKey
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    MigrationStatus:
+      example:
+        last_messages:
+          key: last_messages
+        last_statuses:
+          key: last_statuses
+      properties:
+        last_messages:
+          additionalProperties:
+            type: string
+          type: object
+          x-go-name: LastMessages
+        last_statuses:
+          additionalProperties:
+            type: string
+          type: object
+          x-go-name: LastStatuses
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    MigrationsConfigLastChange:
+      example:
+        deleted_migrations:
+        - deleted_migrations
+        - deleted_migrations
+        changed_migrations:
+        - changed_migrations
+        - changed_migrations
+        created_migrations:
+        - created_migrations
+        - created_migrations
+      properties:
+        changed_migrations:
+          items:
+            type: string
+          type: array
+          x-go-name: ChangedMigrations
+        created_migrations:
+          items:
+            type: string
+          type: array
+          x-go-name: CreatedMigrations
+        deleted_migrations:
+          items:
+            type: string
+          type: array
+          x-go-name: DeletedMigrations
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     MigrationsConfigPart:
       example:
         hashi_migrations:
@@ -10394,8 +11153,8 @@ components:
             protection_key: protection_key
           payload:
             client_key:
-            - 5
-            - 5
+            - 2
+            - 2
             server: server
             password: password
             client_cert:
@@ -10403,8 +11162,8 @@ components:
             - 5
             namespace: namespace
             ca:
-            - 1
-            - 1
+            - 5
+            - 5
             skip_system: true
             token: token
             username: username
@@ -10415,8 +11174,8 @@ components:
             protection_key: protection_key
           payload:
             client_key:
-            - 5
-            - 5
+            - 2
+            - 2
             server: server
             password: password
             client_cert:
@@ -10424,8 +11183,8 @@ components:
             - 5
             namespace: namespace
             ca:
-            - 1
-            - 1
+            - 5
+            - 5
             skip_system: true
             token: token
             username: username
@@ -10561,10 +11320,19 @@ components:
           - values
           name: name
         unique_identifier: unique_identifier
+        allowed_redirect_URIs:
+        - allowed_redirect_URIs
+        - allowed_redirect_URIs
         client_secret: client_secret
         client_id: client_id
         issuer: issuer
       properties:
+        allowed_redirect_URIs:
+          description: Allowed redirect URIs after the authentication
+          items:
+            type: string
+          type: array
+          x-go-name: AllowedRedirectURIs
         bound_claims:
           description: The claims that login is restricted to.
           items:
@@ -10782,7 +11550,7 @@ components:
       example:
         name: name
         active: true
-        id: 2
+        id: 7
         type: type
       properties:
         active:
@@ -10810,11 +11578,11 @@ components:
         producers:
         - name: name
           active: true
-          id: 2
+          id: 7
           type: type
         - name: name
           active: true
-          id: 2
+          id: 7
           type: type
       properties:
         producers:
@@ -10822,6 +11590,18 @@ components:
             $ref: '#/components/schemas/Producer'
           type: array
           x-go-name: Producers
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    RequiredActivity:
+      example:
+        migrations_required_activity:
+          key: true
+      properties:
+        migrations_required_activity:
+          additionalProperties:
+            type: boolean
+          type: object
+          x-go-name: Migrations
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     ReverseRBACClient:
@@ -11060,6 +11840,7 @@ components:
         rotation_hour: 4
         rotation_statement: rotation_statement
         rotator_status: rotator_status
+        rotation_interval_min: true
         rotator_type: rotator_type
         delete_previous_version_in_days: 9
         last_rotation_error: last_rotation_error
@@ -11084,6 +11865,9 @@ components:
           format: int32
           type: integer
           x-go-name: RotationHour
+        rotation_interval_min:
+          type: boolean
+          x-go-name: RotationIntervalMin
         rotation_statement:
           type: string
           x-go-name: RotationStatement
@@ -11104,8 +11888,9 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     Rotator:
       example:
+        rotation_interval: 3
         name: name
-        id: 7
+        id: 9
         last_error: last_error
         type: type
       properties:
@@ -11119,6 +11904,10 @@ components:
         name:
           type: string
           x-go-name: Name
+        rotation_interval:
+          format: int32
+          type: integer
+          x-go-name: RotationInterval
         type:
           type: string
           x-go-name: Type
@@ -11135,12 +11924,14 @@ components:
     RotatorsConfigPart:
       example:
         rotators:
-        - name: name
-          id: 7
+        - rotation_interval: 3
+          name: name
+          id: 9
           last_error: last_error
           type: type
-        - name: name
-          id: 7
+        - rotation_interval: 3
+          name: name
+          id: 9
           last_error: last_error
           type: type
       properties:
@@ -11183,6 +11974,9 @@ components:
       example:
         unique_identifier: unique_identifier
         idp_metadata_url: idp_metadata_url
+        allowed_redirect_URIs:
+        - allowed_redirect_URIs
+        - allowed_redirect_URIs
         bound_attributes:
         - values:
           - values
@@ -11194,6 +11988,12 @@ components:
           name: name
         idp_metadata_xml: idp_metadata_xml
       properties:
+        allowed_redirect_URIs:
+          description: Allowed redirect URIs after the authentication
+          items:
+            type: string
+          type: array
+          x-go-name: AllowedRedirectURIs
         bound_attributes:
           description: The attributes that login is restricted to.
           items:
@@ -11506,12 +12306,14 @@ components:
           protection_key_name: protection_key_name
           creation_date: 2000-01-23T04:56:07.000+00:00
           version: 6
+          customer_fragment_id: customer_fragment_id
         - item_version_state: item_version_state
           with_customer_fragment: true
           deletion_date: 2000-01-23T04:56:07.000+00:00
           protection_key_name: protection_key_name
           creation_date: 2000-01-23T04:56:07.000+00:00
           version: 6
+          customer_fragment_id: customer_fragment_id
         target_type: target_type
         comment: comment
         protection_key_name: protection_key_name
@@ -11590,15 +12392,14 @@ components:
         gke_cluster_ca_certificate: gke_cluster_ca_certificate
         k8s_bearer_token: k8s_bearer_token
         chef_server_key: chef_server_key
-        ldap_group_filter: ldap_group_filter
         azure_client_id: azure_client_id
         mongodb_default_auth_db: mongodb_default_auth_db
-        ldap_group_attr: ldap_group_attr
         mongodb_uri_connection: mongodb_uri_connection
         mongodb_atlas_project_id: mongodb_atlas_project_id
         password: password
         db_user_name: db_user_name
         eks_region: eks_region
+        payload: payload
         artifactory_admin_apikey: artifactory_admin_apikey
         host: host
         ldap_certificate: ldap_certificate
@@ -11611,7 +12412,6 @@ components:
         private_key: private_key
         chef_server_username: chef_server_username
         db_host_name: db_host_name
-        ldap_user_dn: ldap_user_dn
         db_name: db_name
         port: port
         db_server_certificates: db_server_certificates
@@ -11641,7 +12441,6 @@ components:
         venafi_base_url: venafi_base_url
         venafi_tpp_password: venafi_tpp_password
         ldap_token_expiration: ldap_token_expiration
-        ldap_user_attr: ldap_user_attr
         use_gw_cloud_identity: true
         venafi_use_tpp: true
         k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
@@ -11650,7 +12449,6 @@ components:
         ldap_anonymous_search: true
         sf_account: sf_account
         aws_secret_access_key: aws_secret_access_key
-        ldap_group_dn: ldap_group_dn
         mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
         chef_server_host_name: chef_server_host_name
         url: url
@@ -11821,15 +12619,6 @@ components:
         ldap_certificate:
           type: string
           x-go-name: Certificate
-        ldap_group_attr:
-          type: string
-          x-go-name: GroupAttr
-        ldap_group_dn:
-          type: string
-          x-go-name: GroupDn
-        ldap_group_filter:
-          type: string
-          x-go-name: GroupFilter
         ldap_private_key:
           type: string
           x-go-name: PrivateKey
@@ -11839,12 +12628,6 @@ components:
         ldap_url:
           type: string
           x-go-name: Url
-        ldap_user_attr:
-          type: string
-          x-go-name: UserAttr
-        ldap_user_dn:
-          type: string
-          x-go-name: UserDn
         mongodb_atlas_api_private_key:
           type: string
           x-go-name: MongoDBAtlasAPIPrivateKey
@@ -11884,6 +12667,9 @@ components:
         password:
           type: string
           x-go-name: AdminPwd
+        payload:
+          type: string
+          x-go-name: Payload
         port:
           type: string
           x-go-name: HostPort
@@ -12197,7 +12983,7 @@ components:
           default: access_key
           description: |-
             Access Type
-            (access_key/password/saml/ldap/azure_ad/aws_iam/universal_identity/jwt/gcp)
+            (access_key/password/saml/ldap/k8s/azure_ad/aws_iam/universal_identity/jwt/gcp)
           type: string
           x-go-name: AccessType
         admin-email:
@@ -12220,6 +13006,14 @@ components:
           description: The Json Web Token (relevant only for access-type=jwt/oidc)
           type: string
           x-go-name: JWT
+        k8s-auth-config-name:
+          description: The K8S Auth config name (relevant only for access-type=k8s)
+          type: string
+          x-go-name: K8SAuthConfigName
+        k8s-service-account-token:
+          description: The K8S service account token. (relevant only for access-type=k8s)
+          type: string
+          x-go-name: K8SServiceAccountToken
         ldap_password:
           description: LDAP password (relevant only for access-type=ldap)
           type: string
@@ -12275,7 +13069,7 @@ components:
           x-go-name: AccessKey
         access-type:
           default: access_key
-          description: Access Type (access_key/password/azure_ad/saml/oidc/ldap/aws_iam)
+          description: Access Type (access_key/password/azure_ad/saml/oidc/ldap/aws_iam/k8s)
           type: string
           x-go-name: AccessType
         admin-email:
@@ -12294,6 +13088,10 @@ components:
           description: GCP JWT audience
           type: string
           x-go-name: GCPAudience
+        k8s-auth-config-name:
+          description: The K8S Auth config name (relevant only for access-type=k8s)
+          type: string
+          x-go-name: K8SAuthConfigName
       title: configure is a command that creates a new Akeyless profile.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
@@ -13029,6 +13827,100 @@ components:
           x-go-name: AccessID
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    createAuthMethodK8S:
+      description: |-
+        createAuthMethodK8S is a command that creates a new auth method that will
+        be able to authenticate using K8S.
+      properties:
+        access-expires:
+          default: 0
+          description: |-
+            Access expiration date in Unix timestamp (select 0 for access without
+            expiry date)
+          format: int64
+          type: integer
+          x-go-name: AccessExpires
+        audience:
+          description: The audience in the Kubernetes JWT that the access is restricted
+            to
+          type: string
+          x-go-name: Audience
+        bound-ips:
+          description: A CIDR whitelist of the IPs that the access is restricted to
+          items:
+            type: string
+          type: array
+          x-go-name: CIDRWhitelist
+        bound-namespaces:
+          description: A list of namespaces that the access is restricted to
+          items:
+            type: string
+          type: array
+          x-go-name: BoundNamespaces
+        bound-pod-names:
+          description: A list of pod names that the access is restricted to
+          items:
+            type: string
+          type: array
+          x-go-name: BoundPodNames
+        bound-sa-names:
+          description: A list of service account names that the access is restricted
+            to
+          items:
+            type: string
+          type: array
+          x-go-name: BoundServiceAccountNames
+        force-sub-claims:
+          description: 'if true: enforce role-association must include sub claims'
+          type: boolean
+          x-go-name: ForceSubClaims
+        gen-key:
+          default: "true"
+          description: If this flag is set to true, there is no need to manually provide
+            a public key for the Kubernetes Auth Method, and instead, a key pair,
+            will be generated as part of the command and the private part of the key
+            will be returned (the private key is required for the K8S Auth Config
+            in the Akeyless Gateway)
+          type: string
+          x-go-name: GenerateKeyPair
+        name:
+          description: Auth Method name
+          type: string
+          x-go-name: AuthMethodName
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+      required:
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    createAuthMethodK8SOutput:
+      properties:
+        access_id:
+          type: string
+          x-go-name: AccessID
+        prv_key:
+          type: string
+          x-go-name: PrivateKey
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     createAuthMethodLDAP:
       description: |-
         createAuthMethodLDAP is a command that creates a new auth method that will
@@ -13195,6 +14087,12 @@ components:
           format: int64
           type: integer
           x-go-name: AccessExpires
+        allowed-redirect-uri:
+          description: Allowed redirect URIs after the authentication
+          items:
+            type: string
+          type: array
+          x-go-name: AllowedRedirectURIs
         bound-ips:
           description: A CIDR whitelist of the IPs that the access is restricted to
           items:
@@ -13297,6 +14195,12 @@ components:
           format: int64
           type: integer
           x-go-name: AccessExpires
+        allowed-redirect-uri:
+          description: Allowed redirect URIs after the authentication
+          items:
+            type: string
+          type: array
+          x-go-name: AllowedRedirectURIs
         bound-ips:
           description: A CIDR whitelist of the IPs that the access is restricted to
           items:
@@ -14049,18 +14953,6 @@ components:
           description: EnableAnonymousSearch
           type: boolean
           x-go-name: EnableAnonymSearch
-        group-attribute:
-          description: Group attribute
-          type: string
-          x-go-name: GroupAttribute
-        group-dn:
-          description: Group DN
-          type: string
-          x-go-name: GroupDn
-        group-filter:
-          description: Group attribute
-          type: string
-          x-go-name: GroupFilter
         key:
           description: |-
             The name of a key that used to encrypt the target secret value (if empty, the
@@ -14102,14 +14994,6 @@ components:
             authentication
           type: string
           x-go-name: UIDToken
-        user-attribute:
-          description: User Attribute
-          type: string
-          x-go-name: UserAttribute
-        user-dn:
-          description: User DN
-          type: string
-          x-go-name: UserDn
         username:
           description: Required only when the authentication process requires a username
             and password
@@ -14117,9 +15001,10 @@ components:
           x-go-name: Username
       required:
       - access-id
+      - bind-dn
+      - bind-dn-password
       - ldap-url
       - name
-      - user-dn
       title: createldapTarget is a command that creates a new target.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
@@ -14329,6 +15214,21 @@ components:
             disable existing automatic rotation
           type: string
           x-go-name: AutoRotate
+        custom-payload:
+          type: string
+          x-go-name: Payload
+        group-attribute:
+          description: Group attribute
+          type: string
+          x-go-name: GroupAttribute
+        group-dn:
+          description: Group DN
+          type: string
+          x-go-name: GroupDn
+        group-filter:
+          description: Group attribute
+          type: string
+          x-go-name: GroupFilter
         key:
           description: |-
             The name of a key that used to encrypt the secret value (if empty, the
@@ -14360,7 +15260,7 @@ components:
           x-go-name: RotationHour
         rotation-interval:
           description: The number of days to wait between every automatic key rotation
-            (7-365)
+            (1-365)
           type: string
           x-go-name: RotationInterval
         rotator-creds-type:
@@ -14401,6 +15301,14 @@ components:
             authentication
           type: string
           x-go-name: UIDToken
+        user-attribute:
+          description: User Attribute
+          type: string
+          x-go-name: UserAttribute
+        user-dn:
+          description: User DN
+          type: string
+          x-go-name: UserDn
         username:
           description: Required only when the authentication process requires a username
             and password
@@ -15711,6 +16619,142 @@ components:
     gatewayAddSubAdminsOutput:
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayCreateK8SAuthConfig:
+      description: gatewayCreateK8SAuth is a command that creates k8s auth config
+      properties:
+        access-id:
+          description: The access ID of the Kubernetes auth method
+          type: string
+          x-go-name: AuthMethodAccessId
+        config-encryption-key-name:
+          description: Config encryption key
+          type: string
+          x-go-name: ConfigEncryptionKey
+        k8s-ca-cert:
+          description: The CA Cert (in PEM format) to use to call into the kubernetes
+            API server
+          type: string
+          x-go-name: K8SCACert
+        k8s-host:
+          description: The URL of the kubernetes API server
+          type: string
+          x-go-name: K8SHost
+        k8s-issuer:
+          description: The Kubernetes JWT issuer name. If not set, kubernetes/serviceaccount
+            will use as an issuer.
+          type: string
+          x-go-name: K8SIssuer
+        name:
+          description: K8S Auth config name
+          type: string
+          x-go-name: K8SAuthConfigName
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        signing-key:
+          description: The private key (in base64 encoded of the PEM format) associated
+            with the public key defined in the Kubernetes auth
+          type: string
+          x-go-name: AuthMethodSigningKey
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        token-exp:
+          description: Time in seconds of expiration of the Akeyless Kube Auth Method
+            token
+          format: int64
+          type: integer
+          x-go-name: AuthMethodTokenExpiration
+        token-reviewer-jwt:
+          description: |-
+            A Kubernetes service account JWT used to access the TokenReview API to validate other JWTs.
+            If not set, the JWT submitted in the authentication process will be used to access the Kubernetes TokenReview API.
+          type: string
+          x-go-name: K8STokenReviewerJWT
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+      required:
+      - access-id
+      - k8s-host
+      - name
+      - signing-key
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayCreateK8SAuthConfigOutput:
+      example:
+        cluster_id: cluster_id
+        total_hash: total_hash
+        parts_change:
+          required_activity:
+            migrations_required_activity:
+              key: true
+          last_change:
+            last_k8s_auths_change:
+              created_k8s_auths_ids:
+              - created_k8s_auths_ids
+              - created_k8s_auths_ids
+              deleted_k8s_auths_ids:
+              - deleted_k8s_auths_ids
+              - deleted_k8s_auths_ids
+              changed_k8s_auths_ids:
+              - changed_k8s_auths_ids
+              - changed_k8s_auths_ids
+            last_migrations_change:
+              deleted_migrations:
+              - deleted_migrations
+              - deleted_migrations
+              changed_migrations:
+              - changed_migrations
+              - changed_migrations
+              created_migrations:
+              - created_migrations
+              - created_migrations
+          last_status:
+            migrations_status:
+              last_messages:
+                key: last_messages
+              last_statuses:
+                key: last_statuses
+            producers_errors: '{}'
+          update_stamp: 0
+          config_hash:
+            k8s_auths: k8s_auths
+            cache: cache
+            universal_identity: universal_identity
+            customer_fragements: customer_fragements
+            producers: '{}'
+            general: general
+            ldap: ldap
+            migrations: migrations
+            leadership: leadership
+            log_forwarding: log_forwarding
+            saml: saml
+            kmip: kmip
+            admins: admins
+            rotators: '{}'
+      properties:
+        cluster_id:
+          type: string
+          x-go-name: ClusterId
+        parts_change:
+          $ref: '#/components/schemas/ConfigChange'
+        total_hash:
+          type: string
+          x-go-name: TotalHash
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     gatewayCreateProducerArtifactory:
       description: gatewayCreateProducerArtifactory is a command that creates artifactory
         producer
@@ -15790,9 +16834,14 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ldap_group_filter: ldap_group_filter
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
+          ldap_certificate: ldap_certificate
+          ldap_private_key: ldap_private_key
+          ldap_bind_dn: ldap_bind_dn
+          ldap_url: ldap_url
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -15814,6 +16863,7 @@ components:
             target_id: 1
           chef_server_username: chef_server_username
           db_host_name: db_host_name
+          ldap_user_dn: ldap_user_dn
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -15840,12 +16890,15 @@ components:
           user_ttl: user_ttl
           timeout_seconds: 5
           eks_assume_role: eks_assume_role
+          ldap_token_expiration: ldap_token_expiration
           venafi_use_tpp: true
           mongodb_password: mongodb_password
+          ldap_anonymous_search: true
           aws_secret_access_key: aws_secret_access_key
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          ldap_access_id: ldap_access_id
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -15863,6 +16916,7 @@ components:
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
+          ldap_group_attr: ldap_group_attr
           mongodb_uri_connection: mongodb_uri_connection
           mongodb_atlas_project_id: mongodb_atlas_project_id
           db_user_name: db_user_name
@@ -15870,7 +16924,9 @@ components:
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
           redshift_creation_statements: redshift_creation_statements
+          ldap_audience: ldap_audience
           azure_app_object_id: azure_app_object_id
+          ldap_bind_password: ldap_bind_password
           venafi_allow_subdomains: true
           aws_user_console_access: true
           user_principal_name: user_principal_name
@@ -15901,6 +16957,8 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          is_fixed_user: is_fixed_user
+          ldap_user_attr: ldap_user_attr
           use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
@@ -15934,6 +16992,7 @@ components:
             bastion_issuer: bastion_issuer
             ssh_user: ssh_user
           groups: groups
+          ldap_group_dn: ldap_group_dn
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
           chef_server_host_name: chef_server_host_name
@@ -16079,9 +17138,14 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ldap_group_filter: ldap_group_filter
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
+          ldap_certificate: ldap_certificate
+          ldap_private_key: ldap_private_key
+          ldap_bind_dn: ldap_bind_dn
+          ldap_url: ldap_url
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -16103,6 +17167,7 @@ components:
             target_id: 1
           chef_server_username: chef_server_username
           db_host_name: db_host_name
+          ldap_user_dn: ldap_user_dn
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -16129,12 +17194,15 @@ components:
           user_ttl: user_ttl
           timeout_seconds: 5
           eks_assume_role: eks_assume_role
+          ldap_token_expiration: ldap_token_expiration
           venafi_use_tpp: true
           mongodb_password: mongodb_password
+          ldap_anonymous_search: true
           aws_secret_access_key: aws_secret_access_key
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          ldap_access_id: ldap_access_id
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -16152,6 +17220,7 @@ components:
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
+          ldap_group_attr: ldap_group_attr
           mongodb_uri_connection: mongodb_uri_connection
           mongodb_atlas_project_id: mongodb_atlas_project_id
           db_user_name: db_user_name
@@ -16159,7 +17228,9 @@ components:
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
           redshift_creation_statements: redshift_creation_statements
+          ldap_audience: ldap_audience
           azure_app_object_id: azure_app_object_id
+          ldap_bind_password: ldap_bind_password
           venafi_allow_subdomains: true
           aws_user_console_access: true
           user_principal_name: user_principal_name
@@ -16190,6 +17261,8 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          is_fixed_user: is_fixed_user
+          ldap_user_attr: ldap_user_attr
           use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
@@ -16223,6 +17296,7 @@ components:
             bastion_issuer: bastion_issuer
             ssh_user: ssh_user
           groups: groups
+          ldap_group_dn: ldap_group_dn
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
           chef_server_host_name: chef_server_host_name
@@ -16347,9 +17421,14 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ldap_group_filter: ldap_group_filter
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
+          ldap_certificate: ldap_certificate
+          ldap_private_key: ldap_private_key
+          ldap_bind_dn: ldap_bind_dn
+          ldap_url: ldap_url
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -16371,6 +17450,7 @@ components:
             target_id: 1
           chef_server_username: chef_server_username
           db_host_name: db_host_name
+          ldap_user_dn: ldap_user_dn
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -16397,12 +17477,15 @@ components:
           user_ttl: user_ttl
           timeout_seconds: 5
           eks_assume_role: eks_assume_role
+          ldap_token_expiration: ldap_token_expiration
           venafi_use_tpp: true
           mongodb_password: mongodb_password
+          ldap_anonymous_search: true
           aws_secret_access_key: aws_secret_access_key
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          ldap_access_id: ldap_access_id
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -16420,6 +17503,7 @@ components:
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
+          ldap_group_attr: ldap_group_attr
           mongodb_uri_connection: mongodb_uri_connection
           mongodb_atlas_project_id: mongodb_atlas_project_id
           db_user_name: db_user_name
@@ -16427,7 +17511,9 @@ components:
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
           redshift_creation_statements: redshift_creation_statements
+          ldap_audience: ldap_audience
           azure_app_object_id: azure_app_object_id
+          ldap_bind_password: ldap_bind_password
           venafi_allow_subdomains: true
           aws_user_console_access: true
           user_principal_name: user_principal_name
@@ -16458,6 +17544,8 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          is_fixed_user: is_fixed_user
+          ldap_user_attr: ldap_user_attr
           use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
@@ -16491,6 +17579,7 @@ components:
             bastion_issuer: bastion_issuer
             ssh_user: ssh_user
           groups: groups
+          ldap_group_dn: ldap_group_dn
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
           chef_server_host_name: chef_server_host_name
@@ -16590,9 +17679,14 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ldap_group_filter: ldap_group_filter
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
+          ldap_certificate: ldap_certificate
+          ldap_private_key: ldap_private_key
+          ldap_bind_dn: ldap_bind_dn
+          ldap_url: ldap_url
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -16614,6 +17708,7 @@ components:
             target_id: 1
           chef_server_username: chef_server_username
           db_host_name: db_host_name
+          ldap_user_dn: ldap_user_dn
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -16640,12 +17735,15 @@ components:
           user_ttl: user_ttl
           timeout_seconds: 5
           eks_assume_role: eks_assume_role
+          ldap_token_expiration: ldap_token_expiration
           venafi_use_tpp: true
           mongodb_password: mongodb_password
+          ldap_anonymous_search: true
           aws_secret_access_key: aws_secret_access_key
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          ldap_access_id: ldap_access_id
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -16663,6 +17761,7 @@ components:
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
+          ldap_group_attr: ldap_group_attr
           mongodb_uri_connection: mongodb_uri_connection
           mongodb_atlas_project_id: mongodb_atlas_project_id
           db_user_name: db_user_name
@@ -16670,7 +17769,9 @@ components:
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
           redshift_creation_statements: redshift_creation_statements
+          ldap_audience: ldap_audience
           azure_app_object_id: azure_app_object_id
+          ldap_bind_password: ldap_bind_password
           venafi_allow_subdomains: true
           aws_user_console_access: true
           user_principal_name: user_principal_name
@@ -16701,6 +17802,8 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          is_fixed_user: is_fixed_user
+          ldap_user_attr: ldap_user_attr
           use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
@@ -16734,6 +17837,7 @@ components:
             bastion_issuer: bastion_issuer
             ssh_user: ssh_user
           groups: groups
+          ldap_group_dn: ldap_group_dn
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
           chef_server_host_name: chef_server_host_name
@@ -16882,9 +17986,14 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ldap_group_filter: ldap_group_filter
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
+          ldap_certificate: ldap_certificate
+          ldap_private_key: ldap_private_key
+          ldap_bind_dn: ldap_bind_dn
+          ldap_url: ldap_url
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -16906,6 +18015,7 @@ components:
             target_id: 1
           chef_server_username: chef_server_username
           db_host_name: db_host_name
+          ldap_user_dn: ldap_user_dn
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -16932,12 +18042,15 @@ components:
           user_ttl: user_ttl
           timeout_seconds: 5
           eks_assume_role: eks_assume_role
+          ldap_token_expiration: ldap_token_expiration
           venafi_use_tpp: true
           mongodb_password: mongodb_password
+          ldap_anonymous_search: true
           aws_secret_access_key: aws_secret_access_key
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          ldap_access_id: ldap_access_id
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -16955,6 +18068,7 @@ components:
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
+          ldap_group_attr: ldap_group_attr
           mongodb_uri_connection: mongodb_uri_connection
           mongodb_atlas_project_id: mongodb_atlas_project_id
           db_user_name: db_user_name
@@ -16962,7 +18076,9 @@ components:
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
           redshift_creation_statements: redshift_creation_statements
+          ldap_audience: ldap_audience
           azure_app_object_id: azure_app_object_id
+          ldap_bind_password: ldap_bind_password
           venafi_allow_subdomains: true
           aws_user_console_access: true
           user_principal_name: user_principal_name
@@ -16993,6 +18109,8 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          is_fixed_user: is_fixed_user
+          ldap_user_attr: ldap_user_attr
           use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
@@ -17026,6 +18144,7 @@ components:
             bastion_issuer: bastion_issuer
             ssh_user: ssh_user
           groups: groups
+          ldap_group_dn: ldap_group_dn
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
           chef_server_host_name: chef_server_host_name
@@ -17201,9 +18320,14 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ldap_group_filter: ldap_group_filter
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
+          ldap_certificate: ldap_certificate
+          ldap_private_key: ldap_private_key
+          ldap_bind_dn: ldap_bind_dn
+          ldap_url: ldap_url
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -17225,6 +18349,7 @@ components:
             target_id: 1
           chef_server_username: chef_server_username
           db_host_name: db_host_name
+          ldap_user_dn: ldap_user_dn
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -17251,12 +18376,15 @@ components:
           user_ttl: user_ttl
           timeout_seconds: 5
           eks_assume_role: eks_assume_role
+          ldap_token_expiration: ldap_token_expiration
           venafi_use_tpp: true
           mongodb_password: mongodb_password
+          ldap_anonymous_search: true
           aws_secret_access_key: aws_secret_access_key
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          ldap_access_id: ldap_access_id
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -17274,6 +18402,7 @@ components:
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
+          ldap_group_attr: ldap_group_attr
           mongodb_uri_connection: mongodb_uri_connection
           mongodb_atlas_project_id: mongodb_atlas_project_id
           db_user_name: db_user_name
@@ -17281,7 +18410,9 @@ components:
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
           redshift_creation_statements: redshift_creation_statements
+          ldap_audience: ldap_audience
           azure_app_object_id: azure_app_object_id
+          ldap_bind_password: ldap_bind_password
           venafi_allow_subdomains: true
           aws_user_console_access: true
           user_principal_name: user_principal_name
@@ -17312,6 +18443,8 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          is_fixed_user: is_fixed_user
+          ldap_user_attr: ldap_user_attr
           use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
@@ -17345,6 +18478,7 @@ components:
             bastion_issuer: bastion_issuer
             ssh_user: ssh_user
           groups: groups
+          ldap_group_dn: ldap_group_dn
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
           chef_server_host_name: chef_server_host_name
@@ -17466,9 +18600,14 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ldap_group_filter: ldap_group_filter
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
+          ldap_certificate: ldap_certificate
+          ldap_private_key: ldap_private_key
+          ldap_bind_dn: ldap_bind_dn
+          ldap_url: ldap_url
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -17490,6 +18629,7 @@ components:
             target_id: 1
           chef_server_username: chef_server_username
           db_host_name: db_host_name
+          ldap_user_dn: ldap_user_dn
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -17516,12 +18656,15 @@ components:
           user_ttl: user_ttl
           timeout_seconds: 5
           eks_assume_role: eks_assume_role
+          ldap_token_expiration: ldap_token_expiration
           venafi_use_tpp: true
           mongodb_password: mongodb_password
+          ldap_anonymous_search: true
           aws_secret_access_key: aws_secret_access_key
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          ldap_access_id: ldap_access_id
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -17539,6 +18682,7 @@ components:
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
+          ldap_group_attr: ldap_group_attr
           mongodb_uri_connection: mongodb_uri_connection
           mongodb_atlas_project_id: mongodb_atlas_project_id
           db_user_name: db_user_name
@@ -17546,7 +18690,9 @@ components:
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
           redshift_creation_statements: redshift_creation_statements
+          ldap_audience: ldap_audience
           azure_app_object_id: azure_app_object_id
+          ldap_bind_password: ldap_bind_password
           venafi_allow_subdomains: true
           aws_user_console_access: true
           user_principal_name: user_principal_name
@@ -17577,6 +18723,8 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          is_fixed_user: is_fixed_user
+          ldap_user_attr: ldap_user_attr
           use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
@@ -17610,6 +18758,7 @@ components:
             bastion_issuer: bastion_issuer
             ssh_user: ssh_user
           groups: groups
+          ldap_group_dn: ldap_group_dn
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
           chef_server_host_name: chef_server_host_name
@@ -17706,9 +18855,14 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ldap_group_filter: ldap_group_filter
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
+          ldap_certificate: ldap_certificate
+          ldap_private_key: ldap_private_key
+          ldap_bind_dn: ldap_bind_dn
+          ldap_url: ldap_url
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -17730,6 +18884,7 @@ components:
             target_id: 1
           chef_server_username: chef_server_username
           db_host_name: db_host_name
+          ldap_user_dn: ldap_user_dn
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -17756,12 +18911,15 @@ components:
           user_ttl: user_ttl
           timeout_seconds: 5
           eks_assume_role: eks_assume_role
+          ldap_token_expiration: ldap_token_expiration
           venafi_use_tpp: true
           mongodb_password: mongodb_password
+          ldap_anonymous_search: true
           aws_secret_access_key: aws_secret_access_key
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          ldap_access_id: ldap_access_id
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -17779,6 +18937,7 @@ components:
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
+          ldap_group_attr: ldap_group_attr
           mongodb_uri_connection: mongodb_uri_connection
           mongodb_atlas_project_id: mongodb_atlas_project_id
           db_user_name: db_user_name
@@ -17786,7 +18945,9 @@ components:
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
           redshift_creation_statements: redshift_creation_statements
+          ldap_audience: ldap_audience
           azure_app_object_id: azure_app_object_id
+          ldap_bind_password: ldap_bind_password
           venafi_allow_subdomains: true
           aws_user_console_access: true
           user_principal_name: user_principal_name
@@ -17817,6 +18978,8 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          is_fixed_user: is_fixed_user
+          ldap_user_attr: ldap_user_attr
           use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
@@ -17850,6 +19013,7 @@ components:
             bastion_issuer: bastion_issuer
             ssh_user: ssh_user
           groups: groups
+          ldap_group_dn: ldap_group_dn
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
           chef_server_host_name: chef_server_host_name
@@ -17962,9 +19126,14 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ldap_group_filter: ldap_group_filter
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
+          ldap_certificate: ldap_certificate
+          ldap_private_key: ldap_private_key
+          ldap_bind_dn: ldap_bind_dn
+          ldap_url: ldap_url
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -17986,6 +19155,7 @@ components:
             target_id: 1
           chef_server_username: chef_server_username
           db_host_name: db_host_name
+          ldap_user_dn: ldap_user_dn
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -18012,12 +19182,15 @@ components:
           user_ttl: user_ttl
           timeout_seconds: 5
           eks_assume_role: eks_assume_role
+          ldap_token_expiration: ldap_token_expiration
           venafi_use_tpp: true
           mongodb_password: mongodb_password
+          ldap_anonymous_search: true
           aws_secret_access_key: aws_secret_access_key
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          ldap_access_id: ldap_access_id
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -18035,6 +19208,7 @@ components:
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
+          ldap_group_attr: ldap_group_attr
           mongodb_uri_connection: mongodb_uri_connection
           mongodb_atlas_project_id: mongodb_atlas_project_id
           db_user_name: db_user_name
@@ -18042,7 +19216,9 @@ components:
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
           redshift_creation_statements: redshift_creation_statements
+          ldap_audience: ldap_audience
           azure_app_object_id: azure_app_object_id
+          ldap_bind_password: ldap_bind_password
           venafi_allow_subdomains: true
           aws_user_console_access: true
           user_principal_name: user_principal_name
@@ -18073,6 +19249,8 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          is_fixed_user: is_fixed_user
+          ldap_user_attr: ldap_user_attr
           use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
@@ -18106,6 +19284,300 @@ components:
             bastion_issuer: bastion_issuer
             ssh_user: ssh_user
           groups: groups
+          ldap_group_dn: ldap_group_dn
+          chef_organizations: chef_organizations
+          dynamic_secret_id: 6
+          chef_server_host_name: chef_server_host_name
+          mssql_revocation_statements: mssql_revocation_statements
+          chef_server_port: chef_server_port
+          mongodb_is_atlas: true
+          eks_cluster_ca_certificate: eks_cluster_ca_certificate
+          rotate_sync_url: rotate_sync_url
+          aws_access_key_id: aws_access_key_id
+          aws_region: aws_region
+          eks_cluster_name: eks_cluster_name
+          chef_server_url: chef_server_url
+          gke_cluster_name: gke_cluster_name
+          aws_user_groups: aws_user_groups
+          host_name: host_name
+          azure_tenant_id: azure_tenant_id
+      properties:
+        producer_details:
+          $ref: '#/components/schemas/DSProducerDetails'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayCreateProducerLdap:
+      description: gatewayCreateProducerLdap is a command that creates ldap producer
+      properties:
+        access-id:
+          description: Access ID
+          type: string
+          x-go-name: AccessID
+        bind-dn:
+          description: Bind DN
+          type: string
+          x-go-name: BindDn
+        bind-dn-password:
+          description: Bind DN Password
+          type: string
+          x-go-name: BindDnPassword
+        enable-anonym-search:
+          description: EnableAnonymousSearch
+          type: boolean
+          x-go-name: EnableAnonymSearch
+        fixed-user-only:
+          default: "false"
+          description: Fixed user
+          type: string
+          x-go-name: FixedUserOnly
+        group-attribute:
+          description: Group attribute
+          type: string
+          x-go-name: GroupAttribute
+        group-dn:
+          description: Group DN
+          type: string
+          x-go-name: GroupDn
+        group-filter:
+          description: Group attribute
+          type: string
+          x-go-name: GroupFilter
+        ldap-ca-cert:
+          description: CA Certificate File Content
+          type: string
+          x-go-name: LdapCACert
+        ldap-url:
+          description: LDAP Server URL
+          type: string
+          x-go-name: LdapUrl
+        name:
+          description: Producer name
+          type: string
+          x-go-name: ProducerName
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        private-key:
+          description: Base64-encoded ldap private key text
+          type: string
+          x-go-name: PrivateKey
+        producer-encryption-key-name:
+          description: Dynamic producer encryption key
+          type: string
+          x-go-name: ProducerEncryptionKey
+        target-name:
+          description: Target name
+          type: string
+          x-go-name: TargetName
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        token-expiration:
+          description: Token expiration
+          type: string
+          x-go-name: TokenExpiration
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        user-attribute:
+          description: User Attribute
+          type: string
+          x-go-name: UserAttribute
+        user-dn:
+          description: User DN
+          type: string
+          x-go-name: UserDn
+        user-ttl:
+          default: 60m
+          description: User TTL
+          type: string
+          x-go-name: UserTtl
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+      required:
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayCreateProducerLdapOutput:
+      example:
+        producer_details:
+          gke_cluster_endpoint: gke_cluster_endpoint
+          dynamic_secret_type: dynamic_secret_type
+          k8s_namespace: k8s_namespace
+          venafi_sign_using_akeyless_pki: true
+          dynamic_secret_key: dynamic_secret_key
+          last_admin_rotation: 5
+          chef_server_key: chef_server_key
+          db_max_open_conns: db_max_open_conns
+          admin_rotation_interval_days: 0
+          ldap_group_filter: ldap_group_filter
+          oracle_creation_statements: oracle_creation_statements
+          mssql_creation_statements: mssql_creation_statements
+          sf_user_role: sf_user_role
+          ldap_certificate: ldap_certificate
+          ldap_private_key: ldap_private_key
+          ldap_bind_dn: ldap_bind_dn
+          ldap_url: ldap_url
+          admin_pwd: admin_pwd
+          gcp_token_scope: gcp_token_scope
+          venafi_allowed_domains:
+          - venafi_allowed_domains
+          - venafi_allowed_domains
+          azure_user_roles_template_id: azure_user_roles_template_id
+          fixed_user_only: fixed_user_only
+          rabbitmq_server_password: rabbitmq_server_password
+          aws_access_mode: aws_access_mode
+          aws_user_policies: aws_user_policies
+          aws_role_arns: aws_role_arns
+          active: true
+          item_targets_assoc:
+          - assoc_id: assoc_id
+            target_name: target_name
+            target_id: 1
+          - assoc_id: assoc_id
+            target_name: target_name
+            target_id: 1
+          chef_server_username: chef_server_username
+          db_host_name: db_host_name
+          ldap_user_dn: ldap_user_dn
+          db_name: db_name
+          k8s_service_account: k8s_service_account
+          chef_skip_ssl: true
+          db_port: db_port
+          k8s_cluster_endpoint: k8s_cluster_endpoint
+          artifactory_base_url: artifactory_base_url
+          azure_client_secret: azure_client_secret
+          azure_user_groups_obj_id: azure_user_groups_obj_id
+          gcp_token_type: gcp_token_type
+          create_sync_url: create_sync_url
+          aws_session_token: aws_session_token
+          gcp_token_lifetime: gcp_token_lifetime
+          db_isolation_level: db_isolation_level
+          rabbitmq_user_vhost: rabbitmq_user_vhost
+          mongodb_username: mongodb_username
+          mongodb_roles: mongodb_roles
+          mongodb_db_name: mongodb_db_name
+          venafi_signer_key_name: venafi_signer_key_name
+          should_stop: should_stop
+          artifactory_token_audience: artifactory_token_audience
+          mongodb_atlas_api_public_key: mongodb_atlas_api_public_key
+          eks_access_key_id: eks_access_key_id
+          venafi_base_url: venafi_base_url
+          user_ttl: user_ttl
+          timeout_seconds: 5
+          eks_assume_role: eks_assume_role
+          ldap_token_expiration: ldap_token_expiration
+          venafi_use_tpp: true
+          mongodb_password: mongodb_password
+          ldap_anonymous_search: true
+          aws_secret_access_key: aws_secret_access_key
+          mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
+          postgres_creation_statements: postgres_creation_statements
+          db_max_idle_conns: db_max_idle_conns
+          ldap_access_id: ldap_access_id
+          artifactory_admin_username: artifactory_admin_username
+          admin_name: admin_name
+          rabbitmq_server_user: rabbitmq_server_user
+          venafi_api_key: venafi_api_key
+          mongodb_host_port: mongodb_host_port
+          sf_warehouse_name: sf_warehouse_name
+          artifactory_token_scope: artifactory_token_scope
+          revoke_sync_url: revoke_sync_url
+          gke_cluster_ca_certificate: gke_cluster_ca_certificate
+          host_port: host_port
+          k8s_bearer_token: k8s_bearer_token
+          enable_admin_rotation: true
+          cassandra_creation_statements: cassandra_creation_statements
+          failure_message: failure_message
+          rabbitmq_user_read_permission: rabbitmq_user_read_permission
+          azure_client_id: azure_client_id
+          mongodb_default_auth_db: mongodb_default_auth_db
+          ldap_group_attr: ldap_group_attr
+          mongodb_uri_connection: mongodb_uri_connection
+          mongodb_atlas_project_id: mongodb_atlas_project_id
+          db_user_name: db_user_name
+          eks_region: eks_region
+          payload: payload
+          artifactory_admin_apikey: artifactory_admin_apikey
+          redshift_creation_statements: redshift_creation_statements
+          ldap_audience: ldap_audience
+          azure_app_object_id: azure_app_object_id
+          ldap_bind_password: ldap_bind_password
+          venafi_allow_subdomains: true
+          aws_user_console_access: true
+          user_principal_name: user_principal_name
+          db_server_certificates: db_server_certificates
+          gcp_key_algo: gcp_key_algo
+          db_server_name: db_server_name
+          venafi_zone: venafi_zone
+          gcp_service_account_key:
+          - 1
+          - 1
+          venafi_store_private_key: true
+          venafi_tpp_username: venafi_tpp_username
+          azure_user_portal_access: true
+          venafi_root_first_in_chain: true
+          eks_cluster_endpoint: eks_cluster_endpoint
+          gke_service_account_key: gke_service_account_key
+          venafi_auto_generated_folder: venafi_auto_generated_folder
+          mongodb_uri_options: mongodb_uri_options
+          db_pwd: db_pwd
+          gke_service_account_name: gke_service_account_name
+          mysql_creation_statements: mysql_creation_statements
+          gcp_service_account_email: gcp_service_account_email
+          dynamic_secret_name: dynamic_secret_name
+          rabbitmq_server_uri: rabbitmq_server_uri
+          chef_server_access_mode: chef_server_access_mode
+          aws_user_programmatic_access: true
+          rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
+          rabbitmq_user_write_permission: rabbitmq_user_write_permission
+          rabbitmq_user_tags: rabbitmq_user_tags
+          venafi_tpp_password: venafi_tpp_password
+          is_fixed_user: is_fixed_user
+          ldap_user_attr: ldap_user_attr
+          use_gw_cloud_identity: true
+          azure_user_programmatic_access: true
+          k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
+          eks_secret_access_key: eks_secret_access_key
+          sf_account: sf_account
+          secure_remote_access_details:
+            schema: schema
+            is_cli: true
+            use_internal_bastion: true
+            bastion_ssh: bastion_ssh
+            isolated: true
+            ssh_private_key: true
+            url: url
+            allow_port_forwarding: true
+            is_web: true
+            endpoint: endpoint
+            account_id: account_id
+            db_name: db_name
+            native: true
+            enable: true
+            domain: domain
+            host:
+            - host
+            - host
+            bastion_api: bastion_api
+            category: category
+            dashboard_url: dashboard_url
+            region: region
+            ssh_password: true
+            bastion_issuer_id: 7
+            bastion_issuer: bastion_issuer
+            ssh_user: ssh_user
+          groups: groups
+          ldap_group_dn: ldap_group_dn
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
           chef_server_host_name: chef_server_host_name
@@ -18230,9 +19702,14 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ldap_group_filter: ldap_group_filter
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
+          ldap_certificate: ldap_certificate
+          ldap_private_key: ldap_private_key
+          ldap_bind_dn: ldap_bind_dn
+          ldap_url: ldap_url
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -18254,6 +19731,7 @@ components:
             target_id: 1
           chef_server_username: chef_server_username
           db_host_name: db_host_name
+          ldap_user_dn: ldap_user_dn
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -18280,12 +19758,15 @@ components:
           user_ttl: user_ttl
           timeout_seconds: 5
           eks_assume_role: eks_assume_role
+          ldap_token_expiration: ldap_token_expiration
           venafi_use_tpp: true
           mongodb_password: mongodb_password
+          ldap_anonymous_search: true
           aws_secret_access_key: aws_secret_access_key
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          ldap_access_id: ldap_access_id
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -18303,6 +19784,7 @@ components:
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
+          ldap_group_attr: ldap_group_attr
           mongodb_uri_connection: mongodb_uri_connection
           mongodb_atlas_project_id: mongodb_atlas_project_id
           db_user_name: db_user_name
@@ -18310,7 +19792,9 @@ components:
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
           redshift_creation_statements: redshift_creation_statements
+          ldap_audience: ldap_audience
           azure_app_object_id: azure_app_object_id
+          ldap_bind_password: ldap_bind_password
           venafi_allow_subdomains: true
           aws_user_console_access: true
           user_principal_name: user_principal_name
@@ -18341,6 +19825,8 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          is_fixed_user: is_fixed_user
+          ldap_user_attr: ldap_user_attr
           use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
@@ -18374,6 +19860,7 @@ components:
             bastion_issuer: bastion_issuer
             ssh_user: ssh_user
           groups: groups
+          ldap_group_dn: ldap_group_dn
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
           chef_server_host_name: chef_server_host_name
@@ -18512,9 +19999,14 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ldap_group_filter: ldap_group_filter
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
+          ldap_certificate: ldap_certificate
+          ldap_private_key: ldap_private_key
+          ldap_bind_dn: ldap_bind_dn
+          ldap_url: ldap_url
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -18536,6 +20028,7 @@ components:
             target_id: 1
           chef_server_username: chef_server_username
           db_host_name: db_host_name
+          ldap_user_dn: ldap_user_dn
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -18562,12 +20055,15 @@ components:
           user_ttl: user_ttl
           timeout_seconds: 5
           eks_assume_role: eks_assume_role
+          ldap_token_expiration: ldap_token_expiration
           venafi_use_tpp: true
           mongodb_password: mongodb_password
+          ldap_anonymous_search: true
           aws_secret_access_key: aws_secret_access_key
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          ldap_access_id: ldap_access_id
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -18585,6 +20081,7 @@ components:
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
+          ldap_group_attr: ldap_group_attr
           mongodb_uri_connection: mongodb_uri_connection
           mongodb_atlas_project_id: mongodb_atlas_project_id
           db_user_name: db_user_name
@@ -18592,7 +20089,9 @@ components:
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
           redshift_creation_statements: redshift_creation_statements
+          ldap_audience: ldap_audience
           azure_app_object_id: azure_app_object_id
+          ldap_bind_password: ldap_bind_password
           venafi_allow_subdomains: true
           aws_user_console_access: true
           user_principal_name: user_principal_name
@@ -18623,6 +20122,8 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          is_fixed_user: is_fixed_user
+          ldap_user_attr: ldap_user_attr
           use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
@@ -18656,6 +20157,7 @@ components:
             bastion_issuer: bastion_issuer
             ssh_user: ssh_user
           groups: groups
+          ldap_group_dn: ldap_group_dn
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
           chef_server_host_name: chef_server_host_name
@@ -18781,9 +20283,14 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ldap_group_filter: ldap_group_filter
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
+          ldap_certificate: ldap_certificate
+          ldap_private_key: ldap_private_key
+          ldap_bind_dn: ldap_bind_dn
+          ldap_url: ldap_url
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -18805,6 +20312,7 @@ components:
             target_id: 1
           chef_server_username: chef_server_username
           db_host_name: db_host_name
+          ldap_user_dn: ldap_user_dn
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -18831,12 +20339,15 @@ components:
           user_ttl: user_ttl
           timeout_seconds: 5
           eks_assume_role: eks_assume_role
+          ldap_token_expiration: ldap_token_expiration
           venafi_use_tpp: true
           mongodb_password: mongodb_password
+          ldap_anonymous_search: true
           aws_secret_access_key: aws_secret_access_key
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          ldap_access_id: ldap_access_id
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -18854,6 +20365,7 @@ components:
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
+          ldap_group_attr: ldap_group_attr
           mongodb_uri_connection: mongodb_uri_connection
           mongodb_atlas_project_id: mongodb_atlas_project_id
           db_user_name: db_user_name
@@ -18861,7 +20373,9 @@ components:
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
           redshift_creation_statements: redshift_creation_statements
+          ldap_audience: ldap_audience
           azure_app_object_id: azure_app_object_id
+          ldap_bind_password: ldap_bind_password
           venafi_allow_subdomains: true
           aws_user_console_access: true
           user_principal_name: user_principal_name
@@ -18892,6 +20406,8 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          is_fixed_user: is_fixed_user
+          ldap_user_attr: ldap_user_attr
           use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
@@ -18925,6 +20441,7 @@ components:
             bastion_issuer: bastion_issuer
             ssh_user: ssh_user
           groups: groups
+          ldap_group_dn: ldap_group_dn
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
           chef_server_host_name: chef_server_host_name
@@ -19043,9 +20560,14 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ldap_group_filter: ldap_group_filter
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
+          ldap_certificate: ldap_certificate
+          ldap_private_key: ldap_private_key
+          ldap_bind_dn: ldap_bind_dn
+          ldap_url: ldap_url
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -19067,6 +20589,7 @@ components:
             target_id: 1
           chef_server_username: chef_server_username
           db_host_name: db_host_name
+          ldap_user_dn: ldap_user_dn
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -19093,12 +20616,15 @@ components:
           user_ttl: user_ttl
           timeout_seconds: 5
           eks_assume_role: eks_assume_role
+          ldap_token_expiration: ldap_token_expiration
           venafi_use_tpp: true
           mongodb_password: mongodb_password
+          ldap_anonymous_search: true
           aws_secret_access_key: aws_secret_access_key
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          ldap_access_id: ldap_access_id
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -19116,6 +20642,7 @@ components:
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
+          ldap_group_attr: ldap_group_attr
           mongodb_uri_connection: mongodb_uri_connection
           mongodb_atlas_project_id: mongodb_atlas_project_id
           db_user_name: db_user_name
@@ -19123,7 +20650,9 @@ components:
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
           redshift_creation_statements: redshift_creation_statements
+          ldap_audience: ldap_audience
           azure_app_object_id: azure_app_object_id
+          ldap_bind_password: ldap_bind_password
           venafi_allow_subdomains: true
           aws_user_console_access: true
           user_principal_name: user_principal_name
@@ -19154,6 +20683,8 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          is_fixed_user: is_fixed_user
+          ldap_user_attr: ldap_user_attr
           use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
@@ -19187,6 +20718,7 @@ components:
             bastion_issuer: bastion_issuer
             ssh_user: ssh_user
           groups: groups
+          ldap_group_dn: ldap_group_dn
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
           chef_server_host_name: chef_server_host_name
@@ -19299,9 +20831,14 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ldap_group_filter: ldap_group_filter
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
+          ldap_certificate: ldap_certificate
+          ldap_private_key: ldap_private_key
+          ldap_bind_dn: ldap_bind_dn
+          ldap_url: ldap_url
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -19323,6 +20860,7 @@ components:
             target_id: 1
           chef_server_username: chef_server_username
           db_host_name: db_host_name
+          ldap_user_dn: ldap_user_dn
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -19349,12 +20887,15 @@ components:
           user_ttl: user_ttl
           timeout_seconds: 5
           eks_assume_role: eks_assume_role
+          ldap_token_expiration: ldap_token_expiration
           venafi_use_tpp: true
           mongodb_password: mongodb_password
+          ldap_anonymous_search: true
           aws_secret_access_key: aws_secret_access_key
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          ldap_access_id: ldap_access_id
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -19372,6 +20913,7 @@ components:
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
+          ldap_group_attr: ldap_group_attr
           mongodb_uri_connection: mongodb_uri_connection
           mongodb_atlas_project_id: mongodb_atlas_project_id
           db_user_name: db_user_name
@@ -19379,7 +20921,9 @@ components:
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
           redshift_creation_statements: redshift_creation_statements
+          ldap_audience: ldap_audience
           azure_app_object_id: azure_app_object_id
+          ldap_bind_password: ldap_bind_password
           venafi_allow_subdomains: true
           aws_user_console_access: true
           user_principal_name: user_principal_name
@@ -19410,6 +20954,8 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          is_fixed_user: is_fixed_user
+          ldap_user_attr: ldap_user_attr
           use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
@@ -19443,6 +20989,7 @@ components:
             bastion_issuer: bastion_issuer
             ssh_user: ssh_user
           groups: groups
+          ldap_group_dn: ldap_group_dn
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
           chef_server_host_name: chef_server_host_name
@@ -19564,9 +21111,14 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ldap_group_filter: ldap_group_filter
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
+          ldap_certificate: ldap_certificate
+          ldap_private_key: ldap_private_key
+          ldap_bind_dn: ldap_bind_dn
+          ldap_url: ldap_url
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -19588,6 +21140,7 @@ components:
             target_id: 1
           chef_server_username: chef_server_username
           db_host_name: db_host_name
+          ldap_user_dn: ldap_user_dn
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -19614,12 +21167,15 @@ components:
           user_ttl: user_ttl
           timeout_seconds: 5
           eks_assume_role: eks_assume_role
+          ldap_token_expiration: ldap_token_expiration
           venafi_use_tpp: true
           mongodb_password: mongodb_password
+          ldap_anonymous_search: true
           aws_secret_access_key: aws_secret_access_key
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          ldap_access_id: ldap_access_id
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -19637,6 +21193,7 @@ components:
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
+          ldap_group_attr: ldap_group_attr
           mongodb_uri_connection: mongodb_uri_connection
           mongodb_atlas_project_id: mongodb_atlas_project_id
           db_user_name: db_user_name
@@ -19644,7 +21201,9 @@ components:
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
           redshift_creation_statements: redshift_creation_statements
+          ldap_audience: ldap_audience
           azure_app_object_id: azure_app_object_id
+          ldap_bind_password: ldap_bind_password
           venafi_allow_subdomains: true
           aws_user_console_access: true
           user_principal_name: user_principal_name
@@ -19675,6 +21234,8 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          is_fixed_user: is_fixed_user
+          ldap_user_attr: ldap_user_attr
           use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
@@ -19708,6 +21269,7 @@ components:
             bastion_issuer: bastion_issuer
             ssh_user: ssh_user
           groups: groups
+          ldap_group_dn: ldap_group_dn
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
           chef_server_host_name: chef_server_host_name
@@ -19827,9 +21389,14 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ldap_group_filter: ldap_group_filter
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
+          ldap_certificate: ldap_certificate
+          ldap_private_key: ldap_private_key
+          ldap_bind_dn: ldap_bind_dn
+          ldap_url: ldap_url
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -19851,6 +21418,7 @@ components:
             target_id: 1
           chef_server_username: chef_server_username
           db_host_name: db_host_name
+          ldap_user_dn: ldap_user_dn
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -19877,12 +21445,15 @@ components:
           user_ttl: user_ttl
           timeout_seconds: 5
           eks_assume_role: eks_assume_role
+          ldap_token_expiration: ldap_token_expiration
           venafi_use_tpp: true
           mongodb_password: mongodb_password
+          ldap_anonymous_search: true
           aws_secret_access_key: aws_secret_access_key
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          ldap_access_id: ldap_access_id
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -19900,6 +21471,7 @@ components:
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
+          ldap_group_attr: ldap_group_attr
           mongodb_uri_connection: mongodb_uri_connection
           mongodb_atlas_project_id: mongodb_atlas_project_id
           db_user_name: db_user_name
@@ -19907,7 +21479,9 @@ components:
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
           redshift_creation_statements: redshift_creation_statements
+          ldap_audience: ldap_audience
           azure_app_object_id: azure_app_object_id
+          ldap_bind_password: ldap_bind_password
           venafi_allow_subdomains: true
           aws_user_console_access: true
           user_principal_name: user_principal_name
@@ -19938,6 +21512,8 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          is_fixed_user: is_fixed_user
+          ldap_user_attr: ldap_user_attr
           use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
@@ -19971,6 +21547,7 @@ components:
             bastion_issuer: bastion_issuer
             ssh_user: ssh_user
           groups: groups
+          ldap_group_dn: ldap_group_dn
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
           chef_server_host_name: chef_server_host_name
@@ -20085,9 +21662,14 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ldap_group_filter: ldap_group_filter
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
+          ldap_certificate: ldap_certificate
+          ldap_private_key: ldap_private_key
+          ldap_bind_dn: ldap_bind_dn
+          ldap_url: ldap_url
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -20109,6 +21691,7 @@ components:
             target_id: 1
           chef_server_username: chef_server_username
           db_host_name: db_host_name
+          ldap_user_dn: ldap_user_dn
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -20135,12 +21718,15 @@ components:
           user_ttl: user_ttl
           timeout_seconds: 5
           eks_assume_role: eks_assume_role
+          ldap_token_expiration: ldap_token_expiration
           venafi_use_tpp: true
           mongodb_password: mongodb_password
+          ldap_anonymous_search: true
           aws_secret_access_key: aws_secret_access_key
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          ldap_access_id: ldap_access_id
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -20158,6 +21744,7 @@ components:
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
+          ldap_group_attr: ldap_group_attr
           mongodb_uri_connection: mongodb_uri_connection
           mongodb_atlas_project_id: mongodb_atlas_project_id
           db_user_name: db_user_name
@@ -20165,7 +21752,9 @@ components:
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
           redshift_creation_statements: redshift_creation_statements
+          ldap_audience: ldap_audience
           azure_app_object_id: azure_app_object_id
+          ldap_bind_password: ldap_bind_password
           venafi_allow_subdomains: true
           aws_user_console_access: true
           user_principal_name: user_principal_name
@@ -20196,6 +21785,8 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          is_fixed_user: is_fixed_user
+          ldap_user_attr: ldap_user_attr
           use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
@@ -20229,6 +21820,7 @@ components:
             bastion_issuer: bastion_issuer
             ssh_user: ssh_user
           groups: groups
+          ldap_group_dn: ldap_group_dn
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
           chef_server_host_name: chef_server_host_name
@@ -20333,9 +21925,14 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ldap_group_filter: ldap_group_filter
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
+          ldap_certificate: ldap_certificate
+          ldap_private_key: ldap_private_key
+          ldap_bind_dn: ldap_bind_dn
+          ldap_url: ldap_url
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -20357,6 +21954,7 @@ components:
             target_id: 1
           chef_server_username: chef_server_username
           db_host_name: db_host_name
+          ldap_user_dn: ldap_user_dn
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -20383,12 +21981,15 @@ components:
           user_ttl: user_ttl
           timeout_seconds: 5
           eks_assume_role: eks_assume_role
+          ldap_token_expiration: ldap_token_expiration
           venafi_use_tpp: true
           mongodb_password: mongodb_password
+          ldap_anonymous_search: true
           aws_secret_access_key: aws_secret_access_key
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          ldap_access_id: ldap_access_id
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -20406,6 +22007,7 @@ components:
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
+          ldap_group_attr: ldap_group_attr
           mongodb_uri_connection: mongodb_uri_connection
           mongodb_atlas_project_id: mongodb_atlas_project_id
           db_user_name: db_user_name
@@ -20413,7 +22015,9 @@ components:
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
           redshift_creation_statements: redshift_creation_statements
+          ldap_audience: ldap_audience
           azure_app_object_id: azure_app_object_id
+          ldap_bind_password: ldap_bind_password
           venafi_allow_subdomains: true
           aws_user_console_access: true
           user_principal_name: user_principal_name
@@ -20444,6 +22048,8 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          is_fixed_user: is_fixed_user
+          ldap_user_attr: ldap_user_attr
           use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
@@ -20477,6 +22083,7 @@ components:
             bastion_issuer: bastion_issuer
             ssh_user: ssh_user
           groups: groups
+          ldap_group_dn: ldap_group_dn
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
           chef_server_host_name: chef_server_host_name
@@ -20567,9 +22174,14 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ldap_group_filter: ldap_group_filter
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
+          ldap_certificate: ldap_certificate
+          ldap_private_key: ldap_private_key
+          ldap_bind_dn: ldap_bind_dn
+          ldap_url: ldap_url
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -20591,6 +22203,7 @@ components:
             target_id: 1
           chef_server_username: chef_server_username
           db_host_name: db_host_name
+          ldap_user_dn: ldap_user_dn
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -20617,12 +22230,15 @@ components:
           user_ttl: user_ttl
           timeout_seconds: 5
           eks_assume_role: eks_assume_role
+          ldap_token_expiration: ldap_token_expiration
           venafi_use_tpp: true
           mongodb_password: mongodb_password
+          ldap_anonymous_search: true
           aws_secret_access_key: aws_secret_access_key
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          ldap_access_id: ldap_access_id
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -20640,6 +22256,7 @@ components:
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
+          ldap_group_attr: ldap_group_attr
           mongodb_uri_connection: mongodb_uri_connection
           mongodb_atlas_project_id: mongodb_atlas_project_id
           db_user_name: db_user_name
@@ -20647,7 +22264,9 @@ components:
           payload: payload
           artifactory_admin_apikey: artifactory_admin_apikey
           redshift_creation_statements: redshift_creation_statements
+          ldap_audience: ldap_audience
           azure_app_object_id: azure_app_object_id
+          ldap_bind_password: ldap_bind_password
           venafi_allow_subdomains: true
           aws_user_console_access: true
           user_principal_name: user_principal_name
@@ -20678,6 +22297,8 @@ components:
           rabbitmq_user_write_permission: rabbitmq_user_write_permission
           rabbitmq_user_tags: rabbitmq_user_tags
           venafi_tpp_password: venafi_tpp_password
+          is_fixed_user: is_fixed_user
+          ldap_user_attr: ldap_user_attr
           use_gw_cloud_identity: true
           azure_user_programmatic_access: true
           k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
@@ -20711,6 +22332,7 @@ components:
             bastion_issuer: bastion_issuer
             ssh_user: ssh_user
           groups: groups
+          ldap_group_dn: ldap_group_dn
           chef_organizations: chef_organizations
           dynamic_secret_id: 6
           chef_server_host_name: chef_server_host_name
@@ -20762,6 +22384,100 @@ components:
           x-go-name: Username
       required:
       - sub-admin-id
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayDeleteK8SAuthConfig:
+      description: gatewayDeleteK8SAuth is a command that deletes k8s auth config
+      properties:
+        name:
+          description: K8S Auth config name
+          type: string
+          x-go-name: K8SAuthConfigName
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+      required:
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayDeleteK8SAuthConfigOutput:
+      example:
+        cluster_id: cluster_id
+        total_hash: total_hash
+        parts_change:
+          required_activity:
+            migrations_required_activity:
+              key: true
+          last_change:
+            last_k8s_auths_change:
+              created_k8s_auths_ids:
+              - created_k8s_auths_ids
+              - created_k8s_auths_ids
+              deleted_k8s_auths_ids:
+              - deleted_k8s_auths_ids
+              - deleted_k8s_auths_ids
+              changed_k8s_auths_ids:
+              - changed_k8s_auths_ids
+              - changed_k8s_auths_ids
+            last_migrations_change:
+              deleted_migrations:
+              - deleted_migrations
+              - deleted_migrations
+              changed_migrations:
+              - changed_migrations
+              - changed_migrations
+              created_migrations:
+              - created_migrations
+              - created_migrations
+          last_status:
+            migrations_status:
+              last_messages:
+                key: last_messages
+              last_statuses:
+                key: last_statuses
+            producers_errors: '{}'
+          update_stamp: 0
+          config_hash:
+            k8s_auths: k8s_auths
+            cache: cache
+            universal_identity: universal_identity
+            customer_fragements: customer_fragements
+            producers: '{}'
+            general: general
+            ldap: ldap
+            migrations: migrations
+            leadership: leadership
+            log_forwarding: log_forwarding
+            saml: saml
+            kmip: kmip
+            admins: admins
+            rotators: '{}'
+      properties:
+        cluster_id:
+          type: string
+          x-go-name: ClusterId
+        parts_change:
+          $ref: '#/components/schemas/ConfigChange'
+        total_hash:
+          type: string
+          x-go-name: TotalHash
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     gatewayDeleteProducer:
@@ -20830,6 +22546,119 @@ components:
             and password
           type: string
           x-go-name: Username
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayGetK8SAuthConfig:
+      description: gatewayGetK8SAuth is a command that gets k8s auth config
+      properties:
+        name:
+          description: K8S Auth config name
+          type: string
+          x-go-name: K8SAuthConfigName
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+      required:
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayGetK8SAuthConfigOutput:
+      example:
+        k8s_ca_cert: k8s_ca_cert
+        k8s_host: k8s_host
+        k8s_token_reviewer_jwt: k8s_token_reviewer_jwt
+        k8s_issuer: k8s_issuer
+        protection_key: protection_key
+        auth_method_access_id: auth_method_access_id
+        k8s_pub_keys_pem:
+        - k8s_pub_keys_pem
+        - k8s_pub_keys_pem
+        am_token_expiration: 0
+        name: name
+        auth_method_prv_key_pem: auth_method_prv_key_pem
+        disable_iss_validation: true
+        id: id
+        use_local_ca_jwt: true
+      properties:
+        am_token_expiration:
+          description: AuthMethodTokenExpiration is time in seconds of expiration
+            of the Akeyless Kube Auth Method token
+          format: int64
+          type: integer
+          x-go-name: AuthMethodTokenExpiration
+        auth_method_access_id:
+          description: AuthMethodAccessId of the Kubernetes auth method
+          type: string
+          x-go-name: AuthMethodAccessId
+        auth_method_prv_key_pem:
+          description: |-
+            AuthMethodSigningKey is the private key (in base64 of the PEM format) associated with the public key defined in the
+            Kubernetes auth method, that used to sign the internal token for the Akeyless Kubernetes Auth Method
+          type: string
+          x-go-name: AuthMethodSigningKey
+        disable_iss_validation:
+          description: DisableISSValidation is optional parameter to disable ISS validation
+          type: boolean
+          x-go-name: DisableISSValidation
+        id:
+          type: string
+          x-go-name: Id
+        k8s_ca_cert:
+          description: K8SCACert is the CA Cert to use to call into the kubernetes
+            API
+          type: string
+          x-go-name: K8SCACert
+        k8s_host:
+          description: K8SHost is the url string for the kubernetes API
+          type: string
+          x-go-name: K8SHost
+        k8s_issuer:
+          description: K8SIssuer is the claim that specifies who issued the Kubernetes
+            token
+          type: string
+          x-go-name: K8SIssuer
+        k8s_pub_keys_pem:
+          description: K8SPublicKeysPEM is the list of public key in PEM format
+          items:
+            type: string
+          type: array
+          x-go-name: K8SPublicKeysPEM
+        k8s_token_reviewer_jwt:
+          description: K8STokenReviewerJW"K8S Auth config %v successfully created\n",
+            clictx.Color().Bold(c.K8SAuthConfigName)T is the bearer to use during
+            the TokenReview API call
+          type: string
+          x-go-name: K8STokenReviewerJWT
+        name:
+          type: string
+          x-go-name: Name
+        protection_key:
+          type: string
+          x-go-name: ProtectionKey
+        use_local_ca_jwt:
+          description: |-
+            UseLocalCAJwt is an optional parameter to set defaulting to using
+            the local CA cert and service account jwt when running in a Kubernetes
+            pod
+          type: boolean
+          x-go-name: UseLocalCAJwt
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     gatewayGetProducer:
@@ -24165,6 +25994,9 @@ components:
             disable existing automatic rotation
           type: string
           x-go-name: AutoRotate
+        custom-payload:
+          type: string
+          x-go-name: Payload
         key:
           description: |-
             The name of a key that used to encrypt the secret value (if empty, the

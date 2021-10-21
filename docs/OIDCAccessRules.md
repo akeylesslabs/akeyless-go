@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AllowedRedirectURIs** | Pointer to **[]string** | Allowed redirect URIs after the authentication | [optional] 
 **BoundClaims** | Pointer to [**[]OIDCCustomClaim**](OIDCCustomClaim.md) | The claims that login is restricted to. | [optional] 
 **ClientId** | Pointer to **string** | Client ID | [optional] 
 **ClientSecret** | Pointer to **string** | Client Secret | [optional] 
@@ -28,6 +29,31 @@ will change when the set of required properties is changed
 NewOIDCAccessRulesWithDefaults instantiates a new OIDCAccessRules object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAllowedRedirectURIs
+
+`func (o *OIDCAccessRules) GetAllowedRedirectURIs() []string`
+
+GetAllowedRedirectURIs returns the AllowedRedirectURIs field if non-nil, zero value otherwise.
+
+### GetAllowedRedirectURIsOk
+
+`func (o *OIDCAccessRules) GetAllowedRedirectURIsOk() (*[]string, bool)`
+
+GetAllowedRedirectURIsOk returns a tuple with the AllowedRedirectURIs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowedRedirectURIs
+
+`func (o *OIDCAccessRules) SetAllowedRedirectURIs(v []string)`
+
+SetAllowedRedirectURIs sets AllowedRedirectURIs field to given value.
+
+### HasAllowedRedirectURIs
+
+`func (o *OIDCAccessRules) HasAllowedRedirectURIs() bool`
+
+HasAllowedRedirectURIs returns a boolean if a field has been set.
 
 ### GetBoundClaims
 

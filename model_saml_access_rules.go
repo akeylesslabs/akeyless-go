@@ -17,6 +17,8 @@ import (
 
 // SAMLAccessRules struct for SAMLAccessRules
 type SAMLAccessRules struct {
+	// Allowed redirect URIs after the authentication
+	AllowedRedirectURIs *[]string `json:"allowed_redirect_URIs,omitempty"`
 	// The attributes that login is restricted to.
 	BoundAttributes *[]SAMLAttribute `json:"bound_attributes,omitempty"`
 	// IDP metadata url
@@ -42,6 +44,38 @@ func NewSAMLAccessRules() *SAMLAccessRules {
 func NewSAMLAccessRulesWithDefaults() *SAMLAccessRules {
 	this := SAMLAccessRules{}
 	return &this
+}
+
+// GetAllowedRedirectURIs returns the AllowedRedirectURIs field value if set, zero value otherwise.
+func (o *SAMLAccessRules) GetAllowedRedirectURIs() []string {
+	if o == nil || o.AllowedRedirectURIs == nil {
+		var ret []string
+		return ret
+	}
+	return *o.AllowedRedirectURIs
+}
+
+// GetAllowedRedirectURIsOk returns a tuple with the AllowedRedirectURIs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SAMLAccessRules) GetAllowedRedirectURIsOk() (*[]string, bool) {
+	if o == nil || o.AllowedRedirectURIs == nil {
+		return nil, false
+	}
+	return o.AllowedRedirectURIs, true
+}
+
+// HasAllowedRedirectURIs returns a boolean if a field has been set.
+func (o *SAMLAccessRules) HasAllowedRedirectURIs() bool {
+	if o != nil && o.AllowedRedirectURIs != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowedRedirectURIs gets a reference to the given []string and assigns it to the AllowedRedirectURIs field.
+func (o *SAMLAccessRules) SetAllowedRedirectURIs(v []string) {
+	o.AllowedRedirectURIs = &v
 }
 
 // GetBoundAttributes returns the BoundAttributes field value if set, zero value otherwise.
@@ -174,6 +208,9 @@ func (o *SAMLAccessRules) SetUniqueIdentifier(v string) {
 
 func (o SAMLAccessRules) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AllowedRedirectURIs != nil {
+		toSerialize["allowed_redirect_URIs"] = o.AllowedRedirectURIs
+	}
 	if o.BoundAttributes != nil {
 		toSerialize["bound_attributes"] = o.BoundAttributes
 	}

@@ -19,6 +19,8 @@ import (
 type CreateAuthMethodOIDC struct {
 	// Access expiration date in Unix timestamp (select 0 for access without expiry date)
 	AccessExpires *int64 `json:"access-expires,omitempty"`
+	// Allowed redirect URIs after the authentication
+	AllowedRedirectUri *[]string `json:"allowed-redirect-uri,omitempty"`
 	// A CIDR whitelist of the IPs that the access is restricted to
 	BoundIps *[]string `json:"bound-ips,omitempty"`
 	// Client ID
@@ -96,6 +98,38 @@ func (o *CreateAuthMethodOIDC) HasAccessExpires() bool {
 // SetAccessExpires gets a reference to the given int64 and assigns it to the AccessExpires field.
 func (o *CreateAuthMethodOIDC) SetAccessExpires(v int64) {
 	o.AccessExpires = &v
+}
+
+// GetAllowedRedirectUri returns the AllowedRedirectUri field value if set, zero value otherwise.
+func (o *CreateAuthMethodOIDC) GetAllowedRedirectUri() []string {
+	if o == nil || o.AllowedRedirectUri == nil {
+		var ret []string
+		return ret
+	}
+	return *o.AllowedRedirectUri
+}
+
+// GetAllowedRedirectUriOk returns a tuple with the AllowedRedirectUri field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodOIDC) GetAllowedRedirectUriOk() (*[]string, bool) {
+	if o == nil || o.AllowedRedirectUri == nil {
+		return nil, false
+	}
+	return o.AllowedRedirectUri, true
+}
+
+// HasAllowedRedirectUri returns a boolean if a field has been set.
+func (o *CreateAuthMethodOIDC) HasAllowedRedirectUri() bool {
+	if o != nil && o.AllowedRedirectUri != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowedRedirectUri gets a reference to the given []string and assigns it to the AllowedRedirectUri field.
+func (o *CreateAuthMethodOIDC) SetAllowedRedirectUri(v []string) {
+	o.AllowedRedirectUri = &v
 }
 
 // GetBoundIps returns the BoundIps field value if set, zero value otherwise.
@@ -438,6 +472,9 @@ func (o CreateAuthMethodOIDC) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccessExpires != nil {
 		toSerialize["access-expires"] = o.AccessExpires
+	}
+	if o.AllowedRedirectUri != nil {
+		toSerialize["allowed-redirect-uri"] = o.AllowedRedirectUri
 	}
 	if o.BoundIps != nil {
 		toSerialize["bound-ips"] = o.BoundIps

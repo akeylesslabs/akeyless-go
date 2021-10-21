@@ -31,6 +31,8 @@ docs/ClassicKeyDetailsInfo.md
 docs/ClassicKeyStatusInfo.md
 docs/ClassicKeyTargetInfo.md
 docs/ClientData.md
+docs/ConfigChange.md
+docs/ConfigHash.md
 docs/Configure.md
 docs/ConfigureOutput.md
 docs/Connect.md
@@ -47,6 +49,8 @@ docs/CreateAuthMethodGCP.md
 docs/CreateAuthMethodGCPOutput.md
 docs/CreateAuthMethodHuawei.md
 docs/CreateAuthMethodHuaweiOutput.md
+docs/CreateAuthMethodK8S.md
+docs/CreateAuthMethodK8SOutput.md
 docs/CreateAuthMethodLDAP.md
 docs/CreateAuthMethodLDAPOutput.md
 docs/CreateAuthMethodOAuth2.md
@@ -141,6 +145,8 @@ docs/EncryptWithClassicKeyOutput.md
 docs/ExternalKMSKeyId.md
 docs/GCPAccessRules.md
 docs/GatewayAddAllowedManagementAccess.md
+docs/GatewayCreateK8SAuthConfig.md
+docs/GatewayCreateK8SAuthConfigOutput.md
 docs/GatewayCreateProducerArtifactory.md
 docs/GatewayCreateProducerArtifactoryOutput.md
 docs/GatewayCreateProducerAws.md
@@ -161,6 +167,8 @@ docs/GatewayCreateProducerGcp.md
 docs/GatewayCreateProducerGcpOutput.md
 docs/GatewayCreateProducerGke.md
 docs/GatewayCreateProducerGkeOutput.md
+docs/GatewayCreateProducerLdap.md
+docs/GatewayCreateProducerLdapOutput.md
 docs/GatewayCreateProducerMSSQL.md
 docs/GatewayCreateProducerMSSQLOutput.md
 docs/GatewayCreateProducerMongo.md
@@ -182,9 +190,13 @@ docs/GatewayCreateProducerRedshiftOutput.md
 docs/GatewayCreateProducerSnowflake.md
 docs/GatewayCreateProducerSnowflakeOutput.md
 docs/GatewayDeleteAllowedManagementAccess.md
+docs/GatewayDeleteK8SAuthConfig.md
+docs/GatewayDeleteK8SAuthConfigOutput.md
 docs/GatewayDeleteProducer.md
 docs/GatewayDeleteProducerOutput.md
 docs/GatewayGetConfig.md
+docs/GatewayGetK8SAuthConfig.md
+docs/GatewayGetK8SAuthConfigOutput.md
 docs/GatewayGetProducer.md
 docs/GatewayGetTmpUsers.md
 docs/GatewayListAllowedManagementAccess.md
@@ -226,6 +238,9 @@ docs/ItemGeneralInfo.md
 docs/ItemTargetAssociation.md
 docs/ItemVersion.md
 docs/JSONError.md
+docs/K8SAuth.md
+docs/K8SAuthsConfigLastChange.md
+docs/K8SAuthsConfigPart.md
 docs/K8SMigration.md
 docs/K8SPayload.md
 docs/KMIPClient.md
@@ -250,7 +265,10 @@ docs/KmipRenewServerCertificateOutput.md
 docs/KmipServerSetup.md
 docs/KmipSetServerState.md
 docs/KmipSetServerStateOutput.md
+docs/KubernetesAccessRules.md
 docs/LDAPAccessRules.md
+docs/LastConfigChange.md
+docs/LastStatusInfo.md
 docs/LdapConfigPart.md
 docs/LeadershipConfigPart.md
 docs/ListAuthMethods.md
@@ -265,6 +283,8 @@ docs/LogForwardingConfigPart.md
 docs/LogstashLogForwardingConfig.md
 docs/LogzIoLogForwardingConfig.md
 docs/MigrationGeneral.md
+docs/MigrationStatus.md
+docs/MigrationsConfigLastChange.md
 docs/MigrationsConfigPart.md
 docs/MoveObjects.md
 docs/OAuth2AccessRules.md
@@ -278,6 +298,7 @@ docs/ProducersConfigPart.md
 docs/RawCreds.md
 docs/RefreshKey.md
 docs/RefreshKeyOutput.md
+docs/RequiredActivity.md
 docs/ReverseRBAC.md
 docs/ReverseRBACClient.md
 docs/ReverseRBACOutput.md
@@ -401,6 +422,8 @@ model_classic_key_details_info.go
 model_classic_key_status_info.go
 model_classic_key_target_info.go
 model_client_data.go
+model_config_change.go
+model_config_hash.go
 model_configure.go
 model_configure_output.go
 model_connect.go
@@ -415,6 +438,8 @@ model_create_auth_method_gcp.go
 model_create_auth_method_gcp_output.go
 model_create_auth_method_huawei.go
 model_create_auth_method_huawei_output.go
+model_create_auth_method_k8_s.go
+model_create_auth_method_k8_s_output.go
 model_create_auth_method_ldap.go
 model_create_auth_method_ldap_output.go
 model_create_auth_method_o_auth2.go
@@ -510,6 +535,8 @@ model_encrypt_with_classic_key.go
 model_encrypt_with_classic_key_output.go
 model_external_kms_key_id.go
 model_gateway_add_allowed_management_access.go
+model_gateway_create_k8_s_auth_config.go
+model_gateway_create_k8_s_auth_config_output.go
 model_gateway_create_producer_artifactory.go
 model_gateway_create_producer_artifactory_output.go
 model_gateway_create_producer_aws.go
@@ -530,6 +557,8 @@ model_gateway_create_producer_gcp.go
 model_gateway_create_producer_gcp_output.go
 model_gateway_create_producer_gke.go
 model_gateway_create_producer_gke_output.go
+model_gateway_create_producer_ldap.go
+model_gateway_create_producer_ldap_output.go
 model_gateway_create_producer_mongo.go
 model_gateway_create_producer_mongo_output.go
 model_gateway_create_producer_mssql.go
@@ -551,9 +580,13 @@ model_gateway_create_producer_redshift_output.go
 model_gateway_create_producer_snowflake.go
 model_gateway_create_producer_snowflake_output.go
 model_gateway_delete_allowed_management_access.go
+model_gateway_delete_k8_s_auth_config.go
+model_gateway_delete_k8_s_auth_config_output.go
 model_gateway_delete_producer.go
 model_gateway_delete_producer_output.go
 model_gateway_get_config.go
+model_gateway_get_k8_s_auth_config.go
+model_gateway_get_k8_s_auth_config_output.go
 model_gateway_get_producer.go
 model_gateway_get_tmp_users.go
 model_gateway_list_allowed_management_access.go
@@ -596,6 +629,9 @@ model_item_general_info.go
 model_item_target_association.go
 model_item_version.go
 model_json_error.go
+model_k8_s_auth.go
+model_k8_s_auths_config_last_change.go
+model_k8_s_auths_config_part.go
 model_k8_s_migration.go
 model_k8_s_payload.go
 model_kmip_client.go
@@ -620,6 +656,9 @@ model_kmip_renew_server_certificate_output.go
 model_kmip_server_setup.go
 model_kmip_set_server_state.go
 model_kmip_set_server_state_output.go
+model_kubernetes_access_rules.go
+model_last_config_change.go
+model_last_status_info.go
 model_ldap_access_rules.go
 model_ldap_config_part.go
 model_leadership_config_part.go
@@ -635,6 +674,8 @@ model_log_forwarding_config_part.go
 model_logstash_log_forwarding_config.go
 model_logz_io_log_forwarding_config.go
 model_migration_general.go
+model_migration_status.go
+model_migrations_config_last_change.go
 model_migrations_config_part.go
 model_move_objects.go
 model_o_auth2_access_rules.go
@@ -648,6 +689,7 @@ model_producers_config_part.go
 model_raw_creds.go
 model_refresh_key.go
 model_refresh_key_output.go
+model_required_activity.go
 model_reverse_rbac.go
 model_reverse_rbac_client.go
 model_reverse_rbac_output.go

@@ -29,6 +29,7 @@ type AuthMethodAccessInfo struct {
 	ForceSubClaims *bool `json:"force_sub_claims,omitempty"`
 	GcpAccessRules *GCPAccessRules `json:"gcp_access_rules,omitempty"`
 	HuaweiAccessRules *HuaweiAccessRules `json:"huawei_access_rules,omitempty"`
+	K8sAccessRules *KubernetesAccessRules `json:"k8s_access_rules,omitempty"`
 	LdapAccessRules *LDAPAccessRules `json:"ldap_access_rules,omitempty"`
 	Oauth2AccessRules *OAuth2AccessRules `json:"oauth2_access_rules,omitempty"`
 	OidcAccessRules *OIDCAccessRules `json:"oidc_access_rules,omitempty"`
@@ -374,6 +375,38 @@ func (o *AuthMethodAccessInfo) SetHuaweiAccessRules(v HuaweiAccessRules) {
 	o.HuaweiAccessRules = &v
 }
 
+// GetK8sAccessRules returns the K8sAccessRules field value if set, zero value otherwise.
+func (o *AuthMethodAccessInfo) GetK8sAccessRules() KubernetesAccessRules {
+	if o == nil || o.K8sAccessRules == nil {
+		var ret KubernetesAccessRules
+		return ret
+	}
+	return *o.K8sAccessRules
+}
+
+// GetK8sAccessRulesOk returns a tuple with the K8sAccessRules field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodAccessInfo) GetK8sAccessRulesOk() (*KubernetesAccessRules, bool) {
+	if o == nil || o.K8sAccessRules == nil {
+		return nil, false
+	}
+	return o.K8sAccessRules, true
+}
+
+// HasK8sAccessRules returns a boolean if a field has been set.
+func (o *AuthMethodAccessInfo) HasK8sAccessRules() bool {
+	if o != nil && o.K8sAccessRules != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sAccessRules gets a reference to the given KubernetesAccessRules and assigns it to the K8sAccessRules field.
+func (o *AuthMethodAccessInfo) SetK8sAccessRules(v KubernetesAccessRules) {
+	o.K8sAccessRules = &v
+}
+
 // GetLdapAccessRules returns the LdapAccessRules field value if set, zero value otherwise.
 func (o *AuthMethodAccessInfo) GetLdapAccessRules() LDAPAccessRules {
 	if o == nil || o.LdapAccessRules == nil {
@@ -597,6 +630,9 @@ func (o AuthMethodAccessInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.HuaweiAccessRules != nil {
 		toSerialize["huawei_access_rules"] = o.HuaweiAccessRules
+	}
+	if o.K8sAccessRules != nil {
+		toSerialize["k8s_access_rules"] = o.K8sAccessRules
 	}
 	if o.LdapAccessRules != nil {
 		toSerialize["ldap_access_rules"] = o.LdapAccessRules

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **ApiId** | Pointer to **string** |  | [optional] 
 **ApiKey** | Pointer to **string** |  | [optional] 
 **AutoRotate** | Pointer to **string** | Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation | [optional] 
+**CustomPayload** | Pointer to **string** |  | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Secret name | 
 **NewMetadata** | Pointer to **string** | New item metadata | [optional] [default to "default_metadata"]
@@ -145,6 +146,31 @@ SetAutoRotate sets AutoRotate field to given value.
 `func (o *UpdateRotatedSecret) HasAutoRotate() bool`
 
 HasAutoRotate returns a boolean if a field has been set.
+
+### GetCustomPayload
+
+`func (o *UpdateRotatedSecret) GetCustomPayload() string`
+
+GetCustomPayload returns the CustomPayload field if non-nil, zero value otherwise.
+
+### GetCustomPayloadOk
+
+`func (o *UpdateRotatedSecret) GetCustomPayloadOk() (*string, bool)`
+
+GetCustomPayloadOk returns a tuple with the CustomPayload field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomPayload
+
+`func (o *UpdateRotatedSecret) SetCustomPayload(v string)`
+
+SetCustomPayload sets CustomPayload field to given value.
+
+### HasCustomPayload
+
+`func (o *UpdateRotatedSecret) HasCustomPayload() bool`
+
+HasCustomPayload returns a boolean if a field has been set.
 
 ### GetKey
 

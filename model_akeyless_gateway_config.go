@@ -22,6 +22,7 @@ type AkeylessGatewayConfig struct {
 	Cf *CFConfigPart `json:"cf,omitempty"`
 	ConfigProtectionKeyName *string `json:"config_protection_key_name,omitempty"`
 	General *GeneralConfigPart `json:"general,omitempty"`
+	K8sAuths *K8SAuthsConfigPart `json:"k8s_auths,omitempty"`
 	KmipClients *KMIPConfigPart `json:"kmip_clients,omitempty"`
 	Ldap *LdapConfigPart `json:"ldap,omitempty"`
 	Leadership *LeadershipConfigPart `json:"leadership,omitempty"`
@@ -209,6 +210,38 @@ func (o *AkeylessGatewayConfig) HasGeneral() bool {
 // SetGeneral gets a reference to the given GeneralConfigPart and assigns it to the General field.
 func (o *AkeylessGatewayConfig) SetGeneral(v GeneralConfigPart) {
 	o.General = &v
+}
+
+// GetK8sAuths returns the K8sAuths field value if set, zero value otherwise.
+func (o *AkeylessGatewayConfig) GetK8sAuths() K8SAuthsConfigPart {
+	if o == nil || o.K8sAuths == nil {
+		var ret K8SAuthsConfigPart
+		return ret
+	}
+	return *o.K8sAuths
+}
+
+// GetK8sAuthsOk returns a tuple with the K8sAuths field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AkeylessGatewayConfig) GetK8sAuthsOk() (*K8SAuthsConfigPart, bool) {
+	if o == nil || o.K8sAuths == nil {
+		return nil, false
+	}
+	return o.K8sAuths, true
+}
+
+// HasK8sAuths returns a boolean if a field has been set.
+func (o *AkeylessGatewayConfig) HasK8sAuths() bool {
+	if o != nil && o.K8sAuths != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sAuths gets a reference to the given K8SAuthsConfigPart and assigns it to the K8sAuths field.
+func (o *AkeylessGatewayConfig) SetK8sAuths(v K8SAuthsConfigPart) {
+	o.K8sAuths = &v
 }
 
 // GetKmipClients returns the KmipClients field value if set, zero value otherwise.
@@ -547,6 +580,9 @@ func (o AkeylessGatewayConfig) MarshalJSON() ([]byte, error) {
 	}
 	if o.General != nil {
 		toSerialize["general"] = o.General
+	}
+	if o.K8sAuths != nil {
+		toSerialize["k8s_auths"] = o.K8sAuths
 	}
 	if o.KmipClients != nil {
 		toSerialize["kmip_clients"] = o.KmipClients

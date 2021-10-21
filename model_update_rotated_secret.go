@@ -23,6 +23,7 @@ type UpdateRotatedSecret struct {
 	ApiKey *string `json:"api-key,omitempty"`
 	// Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation
 	AutoRotate *string `json:"auto-rotate,omitempty"`
+	CustomPayload *string `json:"custom-payload,omitempty"`
 	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
 	// Secret name
@@ -208,6 +209,38 @@ func (o *UpdateRotatedSecret) HasAutoRotate() bool {
 // SetAutoRotate gets a reference to the given string and assigns it to the AutoRotate field.
 func (o *UpdateRotatedSecret) SetAutoRotate(v string) {
 	o.AutoRotate = &v
+}
+
+// GetCustomPayload returns the CustomPayload field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetCustomPayload() string {
+	if o == nil || o.CustomPayload == nil {
+		var ret string
+		return ret
+	}
+	return *o.CustomPayload
+}
+
+// GetCustomPayloadOk returns a tuple with the CustomPayload field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetCustomPayloadOk() (*string, bool) {
+	if o == nil || o.CustomPayload == nil {
+		return nil, false
+	}
+	return o.CustomPayload, true
+}
+
+// HasCustomPayload returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasCustomPayload() bool {
+	if o != nil && o.CustomPayload != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomPayload gets a reference to the given string and assigns it to the CustomPayload field.
+func (o *UpdateRotatedSecret) SetCustomPayload(v string) {
+	o.CustomPayload = &v
 }
 
 // GetKey returns the Key field value if set, zero value otherwise.
@@ -791,6 +824,9 @@ func (o UpdateRotatedSecret) MarshalJSON() ([]byte, error) {
 	}
 	if o.AutoRotate != nil {
 		toSerialize["auto-rotate"] = o.AutoRotate
+	}
+	if o.CustomPayload != nil {
+		toSerialize["custom-payload"] = o.CustomPayload
 	}
 	if o.Key != nil {
 		toSerialize["key"] = o.Key

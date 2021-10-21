@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**CustomerFragmentId** | Pointer to **string** |  | [optional] 
 **DeletionDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **ItemVersionState** | Pointer to **string** | ItemState defines the different states an Item can be in | [optional] 
 **ProtectionKeyName** | Pointer to **string** |  | [optional] 
@@ -54,6 +55,31 @@ SetCreationDate sets CreationDate field to given value.
 `func (o *ItemVersion) HasCreationDate() bool`
 
 HasCreationDate returns a boolean if a field has been set.
+
+### GetCustomerFragmentId
+
+`func (o *ItemVersion) GetCustomerFragmentId() string`
+
+GetCustomerFragmentId returns the CustomerFragmentId field if non-nil, zero value otherwise.
+
+### GetCustomerFragmentIdOk
+
+`func (o *ItemVersion) GetCustomerFragmentIdOk() (*string, bool)`
+
+GetCustomerFragmentIdOk returns a tuple with the CustomerFragmentId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomerFragmentId
+
+`func (o *ItemVersion) SetCustomerFragmentId(v string)`
+
+SetCustomerFragmentId sets CustomerFragmentId field to given value.
+
+### HasCustomerFragmentId
+
+`func (o *ItemVersion) HasCustomerFragmentId() bool`
+
+HasCustomerFragmentId returns a boolean if a field has been set.
 
 ### GetDeletionDate
 

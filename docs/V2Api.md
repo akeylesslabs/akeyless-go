@@ -58,6 +58,7 @@ Method | HTTP request | Description
 [**Encrypt**](V2Api.md#Encrypt) | **Post** /encrypt | 
 [**EncryptPKCS1**](V2Api.md#EncryptPKCS1) | **Post** /encrypt-pkcs1 | 
 [**EncryptWithClassicKey**](V2Api.md#EncryptWithClassicKey) | **Post** /encrypt-with-classic-key | 
+[**GatewayCreateK8SAuthConfig**](V2Api.md#GatewayCreateK8SAuthConfig) | **Post** /gateway-create-k8s-auth-config | 
 [**GatewayCreateProducerArtifactory**](V2Api.md#GatewayCreateProducerArtifactory) | **Post** /gateway-create-producer-artifactory | 
 [**GatewayCreateProducerAws**](V2Api.md#GatewayCreateProducerAws) | **Post** /gateway-create-producer-aws | 
 [**GatewayCreateProducerAzure**](V2Api.md#GatewayCreateProducerAzure) | **Post** /gateway-create-producer-azure | 
@@ -67,6 +68,7 @@ Method | HTTP request | Description
 [**GatewayCreateProducerEks**](V2Api.md#GatewayCreateProducerEks) | **Post** /gateway-create-producer-eks | 
 [**GatewayCreateProducerGcp**](V2Api.md#GatewayCreateProducerGcp) | **Post** /gateway-create-producer-gcp | 
 [**GatewayCreateProducerGke**](V2Api.md#GatewayCreateProducerGke) | **Post** /gateway-create-producer-gke | 
+[**GatewayCreateProducerLdap**](V2Api.md#GatewayCreateProducerLdap) | **Post** /gateway-create-producer-ldap | 
 [**GatewayCreateProducerMSSQL**](V2Api.md#GatewayCreateProducerMSSQL) | **Post** /gateway-create-producer-mssql | 
 [**GatewayCreateProducerMongo**](V2Api.md#GatewayCreateProducerMongo) | **Post** /gateway-create-producer-mongo | 
 [**GatewayCreateProducerMySQL**](V2Api.md#GatewayCreateProducerMySQL) | **Post** /gateway-create-producer-mysql | 
@@ -78,8 +80,10 @@ Method | HTTP request | Description
 [**GatewayCreateProducerRedshift**](V2Api.md#GatewayCreateProducerRedshift) | **Post** /gateway-create-producer-redshift | 
 [**GatewayCreateProducerSnowflake**](V2Api.md#GatewayCreateProducerSnowflake) | **Post** /gateway-create-producer-snowflake | 
 [**GatewayDeleteAllowedManagementAccess**](V2Api.md#GatewayDeleteAllowedManagementAccess) | **Post** /gateway-delete-allowed-management-access | 
+[**GatewayDeleteK8SAuthConfig**](V2Api.md#GatewayDeleteK8SAuthConfig) | **Post** /gateway-delete-k8s-auth-config | 
 [**GatewayDeleteProducer**](V2Api.md#GatewayDeleteProducer) | **Post** /gateway-delete-producer | 
 [**GatewayGetConfig**](V2Api.md#GatewayGetConfig) | **Post** /gateway-get-config | 
+[**GatewayGetK8SAuthConfig**](V2Api.md#GatewayGetK8SAuthConfig) | **Post** /gateway-get-k8s-auth-config | 
 [**GatewayGetProducer**](V2Api.md#GatewayGetProducer) | **Post** /gateway-get-producer | 
 [**GatewayGetTmpUsers**](V2Api.md#GatewayGetTmpUsers) | **Post** /gateway-get-producer-tmp-creds | 
 [**GatewayListAllowedManagementAccess**](V2Api.md#GatewayListAllowedManagementAccess) | **Post** /gateway-list-allowed-management-access | 
@@ -2353,7 +2357,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateLdapTarget("AccessId_example", "LdapUrl_example", "Name_example", "UserDn_example") // CreateLdapTarget | 
+    body := *openapiclient.NewcreateLdapTarget("AccessId_example", "BindDn_example", "BindDnPassword_example", "LdapUrl_example", "Name_example") // CreateLdapTarget | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -3614,6 +3618,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GatewayCreateK8SAuthConfig
+
+> GatewayCreateK8SAuthConfigOutput GatewayCreateK8SAuthConfig(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayCreateK8SAuthConfig("AccessId_example", "K8sHost_example", "Name_example", "SigningKey_example") // GatewayCreateK8SAuthConfig | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayCreateK8SAuthConfig(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateK8SAuthConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayCreateK8SAuthConfig`: GatewayCreateK8SAuthConfigOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayCreateK8SAuthConfig`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayCreateK8SAuthConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayCreateK8SAuthConfig**](GatewayCreateK8SAuthConfig.md) |  | 
+
+### Return type
+
+[**GatewayCreateK8SAuthConfigOutput**](gatewayCreateK8SAuthConfigOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GatewayCreateProducerArtifactory
 
 > GatewayCreateProducerArtifactoryOutput GatewayCreateProducerArtifactory(ctx).Body(body).Execute()
@@ -4175,6 +4243,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GatewayCreateProducerGkeOutput**](gatewayCreateProducerGkeOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayCreateProducerLdap
+
+> GatewayCreateProducerLdapOutput GatewayCreateProducerLdap(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayCreateProducerLdap("Name_example") // GatewayCreateProducerLdap | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayCreateProducerLdap(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerLdap``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayCreateProducerLdap`: GatewayCreateProducerLdapOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayCreateProducerLdap`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayCreateProducerLdapRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayCreateProducerLdap**](GatewayCreateProducerLdap.md) |  | 
+
+### Return type
+
+[**GatewayCreateProducerLdapOutput**](gatewayCreateProducerLdapOutput.md)
 
 ### Authorization
 
@@ -4894,6 +5026,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GatewayDeleteK8SAuthConfig
+
+> GatewayDeleteK8SAuthConfigOutput GatewayDeleteK8SAuthConfig(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayDeleteK8SAuthConfig("Name_example") // GatewayDeleteK8SAuthConfig | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayDeleteK8SAuthConfig(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayDeleteK8SAuthConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayDeleteK8SAuthConfig`: GatewayDeleteK8SAuthConfigOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayDeleteK8SAuthConfig`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayDeleteK8SAuthConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayDeleteK8SAuthConfig**](GatewayDeleteK8SAuthConfig.md) |  | 
+
+### Return type
+
+[**GatewayDeleteK8SAuthConfigOutput**](gatewayDeleteK8SAuthConfigOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GatewayDeleteProducer
 
 > GatewayDeleteProducerOutput GatewayDeleteProducer(ctx).Body(body).Execute()
@@ -5007,6 +5203,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AkeylessGatewayConfig**](AkeylessGatewayConfig.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayGetK8SAuthConfig
+
+> GatewayGetK8SAuthConfigOutput GatewayGetK8SAuthConfig(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayGetK8SAuthConfig("Name_example") // GatewayGetK8SAuthConfig | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayGetK8SAuthConfig(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayGetK8SAuthConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayGetK8SAuthConfig`: GatewayGetK8SAuthConfigOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayGetK8SAuthConfig`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayGetK8SAuthConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayGetK8SAuthConfig**](GatewayGetK8SAuthConfig.md) |  | 
+
+### Return type
+
+[**GatewayGetK8SAuthConfigOutput**](gatewayGetK8SAuthConfigOutput.md)
 
 ### Authorization
 
@@ -5975,7 +6235,7 @@ No authorization required
 
 ## GetRotatedSecretValue
 
-> map[string]string GetRotatedSecretValue(ctx).Body(body).Execute()
+> map[string]map[string]interface{} GetRotatedSecretValue(ctx).Body(body).Execute()
 
 
 
@@ -6001,7 +6261,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GetRotatedSecretValue``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetRotatedSecretValue`: map[string]string
+    // response from `GetRotatedSecretValue`: map[string]map[string]interface{}
     fmt.Fprintf(os.Stdout, "Response from `V2Api.GetRotatedSecretValue`: %v\n", resp)
 }
 ```
@@ -6021,7 +6281,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]string**
+**map[string]map[string]interface{}**
 
 ### Authorization
 

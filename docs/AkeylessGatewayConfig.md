@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Cf** | Pointer to [**CFConfigPart**](CFConfigPart.md) |  | [optional] 
 **ConfigProtectionKeyName** | Pointer to **string** |  | [optional] 
 **General** | Pointer to [**GeneralConfigPart**](GeneralConfigPart.md) |  | [optional] 
+**K8sAuths** | Pointer to [**K8SAuthsConfigPart**](K8SAuthsConfigPart.md) |  | [optional] 
 **KmipClients** | Pointer to [**KMIPConfigPart**](KMIPConfigPart.md) |  | [optional] 
 **Ldap** | Pointer to [**LdapConfigPart**](LdapConfigPart.md) |  | [optional] 
 **Leadership** | Pointer to [**LeadershipConfigPart**](LeadershipConfigPart.md) |  | [optional] 
@@ -163,6 +164,31 @@ SetGeneral sets General field to given value.
 `func (o *AkeylessGatewayConfig) HasGeneral() bool`
 
 HasGeneral returns a boolean if a field has been set.
+
+### GetK8sAuths
+
+`func (o *AkeylessGatewayConfig) GetK8sAuths() K8SAuthsConfigPart`
+
+GetK8sAuths returns the K8sAuths field if non-nil, zero value otherwise.
+
+### GetK8sAuthsOk
+
+`func (o *AkeylessGatewayConfig) GetK8sAuthsOk() (*K8SAuthsConfigPart, bool)`
+
+GetK8sAuthsOk returns a tuple with the K8sAuths field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sAuths
+
+`func (o *AkeylessGatewayConfig) SetK8sAuths(v K8SAuthsConfigPart)`
+
+SetK8sAuths sets K8sAuths field to given value.
+
+### HasK8sAuths
+
+`func (o *AkeylessGatewayConfig) HasK8sAuths() bool`
+
+HasK8sAuths returns a boolean if a field has been set.
 
 ### GetKmipClients
 

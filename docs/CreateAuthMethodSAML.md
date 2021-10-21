@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessExpires** | Pointer to **int64** | Access expiration date in Unix timestamp (select 0 for access without expiry date) | [optional] [default to 0]
+**AllowedRedirectUri** | Pointer to **[]string** | Allowed redirect URIs after the authentication | [optional] 
 **BoundIps** | Pointer to **[]string** | A CIDR whitelist of the IPs that the access is restricted to | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
 **IdpMetadataUrl** | Pointer to **string** | IDP metadata url | [optional] 
@@ -58,6 +59,31 @@ SetAccessExpires sets AccessExpires field to given value.
 `func (o *CreateAuthMethodSAML) HasAccessExpires() bool`
 
 HasAccessExpires returns a boolean if a field has been set.
+
+### GetAllowedRedirectUri
+
+`func (o *CreateAuthMethodSAML) GetAllowedRedirectUri() []string`
+
+GetAllowedRedirectUri returns the AllowedRedirectUri field if non-nil, zero value otherwise.
+
+### GetAllowedRedirectUriOk
+
+`func (o *CreateAuthMethodSAML) GetAllowedRedirectUriOk() (*[]string, bool)`
+
+GetAllowedRedirectUriOk returns a tuple with the AllowedRedirectUri field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowedRedirectUri
+
+`func (o *CreateAuthMethodSAML) SetAllowedRedirectUri(v []string)`
+
+SetAllowedRedirectUri sets AllowedRedirectUri field to given value.
+
+### HasAllowedRedirectUri
+
+`func (o *CreateAuthMethodSAML) HasAllowedRedirectUri() bool`
+
+HasAllowedRedirectUri returns a boolean if a field has been set.
 
 ### GetBoundIps
 

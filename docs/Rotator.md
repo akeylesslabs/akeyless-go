@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **int64** |  | [optional] 
 **LastError** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
+**RotationInterval** | Pointer to **int32** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -102,6 +103,31 @@ SetName sets Name field to given value.
 `func (o *Rotator) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetRotationInterval
+
+`func (o *Rotator) GetRotationInterval() int32`
+
+GetRotationInterval returns the RotationInterval field if non-nil, zero value otherwise.
+
+### GetRotationIntervalOk
+
+`func (o *Rotator) GetRotationIntervalOk() (*int32, bool)`
+
+GetRotationIntervalOk returns a tuple with the RotationInterval field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotationInterval
+
+`func (o *Rotator) SetRotationInterval(v int32)`
+
+SetRotationInterval sets RotationInterval field to given value.
+
+### HasRotationInterval
+
+`func (o *Rotator) HasRotationInterval() bool`
+
+HasRotationInterval returns a boolean if a field has been set.
 
 ### GetType
 

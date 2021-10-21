@@ -23,6 +23,7 @@ type Item struct {
 	CertificateIssueDetails *CertificateIssueInfo `json:"certificate_issue_details,omitempty"`
 	Certificates *string `json:"certificates,omitempty"`
 	ClientPermissions *[]string `json:"client_permissions,omitempty"`
+	CustomerFragmentId *string `json:"customer_fragment_id,omitempty"`
 	DeletionDate *time.Time `json:"deletion_date,omitempty"`
 	DisplayId *string `json:"display_id,omitempty"`
 	IsEnabled *bool `json:"is_enabled,omitempty"`
@@ -220,6 +221,38 @@ func (o *Item) HasClientPermissions() bool {
 // SetClientPermissions gets a reference to the given []string and assigns it to the ClientPermissions field.
 func (o *Item) SetClientPermissions(v []string) {
 	o.ClientPermissions = &v
+}
+
+// GetCustomerFragmentId returns the CustomerFragmentId field value if set, zero value otherwise.
+func (o *Item) GetCustomerFragmentId() string {
+	if o == nil || o.CustomerFragmentId == nil {
+		var ret string
+		return ret
+	}
+	return *o.CustomerFragmentId
+}
+
+// GetCustomerFragmentIdOk returns a tuple with the CustomerFragmentId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Item) GetCustomerFragmentIdOk() (*string, bool) {
+	if o == nil || o.CustomerFragmentId == nil {
+		return nil, false
+	}
+	return o.CustomerFragmentId, true
+}
+
+// HasCustomerFragmentId returns a boolean if a field has been set.
+func (o *Item) HasCustomerFragmentId() bool {
+	if o != nil && o.CustomerFragmentId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomerFragmentId gets a reference to the given string and assigns it to the CustomerFragmentId field.
+func (o *Item) SetCustomerFragmentId(v string) {
+	o.CustomerFragmentId = &v
 }
 
 // GetDeletionDate returns the DeletionDate field value if set, zero value otherwise.
@@ -846,6 +879,9 @@ func (o Item) MarshalJSON() ([]byte, error) {
 	}
 	if o.ClientPermissions != nil {
 		toSerialize["client_permissions"] = o.ClientPermissions
+	}
+	if o.CustomerFragmentId != nil {
+		toSerialize["customer_fragment_id"] = o.CustomerFragmentId
 	}
 	if o.DeletionDate != nil {
 		toSerialize["deletion_date"] = o.DeletionDate

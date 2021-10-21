@@ -20,6 +20,7 @@ type Rotator struct {
 	Id *int64 `json:"id,omitempty"`
 	LastError *string `json:"last_error,omitempty"`
 	Name *string `json:"name,omitempty"`
+	RotationInterval *int32 `json:"rotation_interval,omitempty"`
 	Type *string `json:"type,omitempty"`
 }
 
@@ -136,6 +137,38 @@ func (o *Rotator) SetName(v string) {
 	o.Name = &v
 }
 
+// GetRotationInterval returns the RotationInterval field value if set, zero value otherwise.
+func (o *Rotator) GetRotationInterval() int32 {
+	if o == nil || o.RotationInterval == nil {
+		var ret int32
+		return ret
+	}
+	return *o.RotationInterval
+}
+
+// GetRotationIntervalOk returns a tuple with the RotationInterval field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Rotator) GetRotationIntervalOk() (*int32, bool) {
+	if o == nil || o.RotationInterval == nil {
+		return nil, false
+	}
+	return o.RotationInterval, true
+}
+
+// HasRotationInterval returns a boolean if a field has been set.
+func (o *Rotator) HasRotationInterval() bool {
+	if o != nil && o.RotationInterval != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRotationInterval gets a reference to the given int32 and assigns it to the RotationInterval field.
+func (o *Rotator) SetRotationInterval(v int32) {
+	o.RotationInterval = &v
+}
+
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *Rotator) GetType() string {
 	if o == nil || o.Type == nil {
@@ -178,6 +211,9 @@ func (o Rotator) MarshalJSON() ([]byte, error) {
 	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
+	}
+	if o.RotationInterval != nil {
+		toSerialize["rotation_interval"] = o.RotationInterval
 	}
 	if o.Type != nil {
 		toSerialize["type"] = o.Type

@@ -20,19 +20,13 @@ type CreateLdapTarget struct {
 	// Access ID
 	AccessId string `json:"access-id"`
 	// Bind DN
-	BindDn *string `json:"bind-dn,omitempty"`
+	BindDn string `json:"bind-dn"`
 	// Bind DN Password
-	BindDnPassword *string `json:"bind-dn-password,omitempty"`
+	BindDnPassword string `json:"bind-dn-password"`
 	// Comment about the target
 	Comment *string `json:"comment,omitempty"`
 	// EnableAnonymousSearch
 	EnableAnonymSearch *bool `json:"enable-anonym-search,omitempty"`
-	// Group attribute
-	GroupAttribute *string `json:"group-attribute,omitempty"`
-	// Group DN
-	GroupDn *string `json:"group-dn,omitempty"`
-	// Group attribute
-	GroupFilter *string `json:"group-filter,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
 	// CA Certificate File Content
@@ -51,10 +45,6 @@ type CreateLdapTarget struct {
 	TokenExpiration *string `json:"token-expiration,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// User Attribute
-	UserAttribute *string `json:"user-attribute,omitempty"`
-	// User DN
-	UserDn string `json:"user-dn"`
 	// Required only when the authentication process requires a username and password
 	Username *string `json:"username,omitempty"`
 }
@@ -63,12 +53,13 @@ type CreateLdapTarget struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateLdapTarget(accessId string, ldapUrl string, name string, userDn string, ) *CreateLdapTarget {
+func NewCreateLdapTarget(accessId string, bindDn string, bindDnPassword string, ldapUrl string, name string, ) *CreateLdapTarget {
 	this := CreateLdapTarget{}
 	this.AccessId = accessId
+	this.BindDn = bindDn
+	this.BindDnPassword = bindDnPassword
 	this.LdapUrl = ldapUrl
 	this.Name = name
-	this.UserDn = userDn
 	return &this
 }
 
@@ -104,68 +95,52 @@ func (o *CreateLdapTarget) SetAccessId(v string) {
 	o.AccessId = v
 }
 
-// GetBindDn returns the BindDn field value if set, zero value otherwise.
+// GetBindDn returns the BindDn field value
 func (o *CreateLdapTarget) GetBindDn() string {
-	if o == nil || o.BindDn == nil {
+	if o == nil  {
 		var ret string
 		return ret
 	}
-	return *o.BindDn
+
+	return o.BindDn
 }
 
-// GetBindDnOk returns a tuple with the BindDn field value if set, nil otherwise
+// GetBindDnOk returns a tuple with the BindDn field value
 // and a boolean to check if the value has been set.
 func (o *CreateLdapTarget) GetBindDnOk() (*string, bool) {
-	if o == nil || o.BindDn == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.BindDn, true
+	return &o.BindDn, true
 }
 
-// HasBindDn returns a boolean if a field has been set.
-func (o *CreateLdapTarget) HasBindDn() bool {
-	if o != nil && o.BindDn != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBindDn gets a reference to the given string and assigns it to the BindDn field.
+// SetBindDn sets field value
 func (o *CreateLdapTarget) SetBindDn(v string) {
-	o.BindDn = &v
+	o.BindDn = v
 }
 
-// GetBindDnPassword returns the BindDnPassword field value if set, zero value otherwise.
+// GetBindDnPassword returns the BindDnPassword field value
 func (o *CreateLdapTarget) GetBindDnPassword() string {
-	if o == nil || o.BindDnPassword == nil {
+	if o == nil  {
 		var ret string
 		return ret
 	}
-	return *o.BindDnPassword
+
+	return o.BindDnPassword
 }
 
-// GetBindDnPasswordOk returns a tuple with the BindDnPassword field value if set, nil otherwise
+// GetBindDnPasswordOk returns a tuple with the BindDnPassword field value
 // and a boolean to check if the value has been set.
 func (o *CreateLdapTarget) GetBindDnPasswordOk() (*string, bool) {
-	if o == nil || o.BindDnPassword == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.BindDnPassword, true
+	return &o.BindDnPassword, true
 }
 
-// HasBindDnPassword returns a boolean if a field has been set.
-func (o *CreateLdapTarget) HasBindDnPassword() bool {
-	if o != nil && o.BindDnPassword != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBindDnPassword gets a reference to the given string and assigns it to the BindDnPassword field.
+// SetBindDnPassword sets field value
 func (o *CreateLdapTarget) SetBindDnPassword(v string) {
-	o.BindDnPassword = &v
+	o.BindDnPassword = v
 }
 
 // GetComment returns the Comment field value if set, zero value otherwise.
@@ -230,102 +205,6 @@ func (o *CreateLdapTarget) HasEnableAnonymSearch() bool {
 // SetEnableAnonymSearch gets a reference to the given bool and assigns it to the EnableAnonymSearch field.
 func (o *CreateLdapTarget) SetEnableAnonymSearch(v bool) {
 	o.EnableAnonymSearch = &v
-}
-
-// GetGroupAttribute returns the GroupAttribute field value if set, zero value otherwise.
-func (o *CreateLdapTarget) GetGroupAttribute() string {
-	if o == nil || o.GroupAttribute == nil {
-		var ret string
-		return ret
-	}
-	return *o.GroupAttribute
-}
-
-// GetGroupAttributeOk returns a tuple with the GroupAttribute field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateLdapTarget) GetGroupAttributeOk() (*string, bool) {
-	if o == nil || o.GroupAttribute == nil {
-		return nil, false
-	}
-	return o.GroupAttribute, true
-}
-
-// HasGroupAttribute returns a boolean if a field has been set.
-func (o *CreateLdapTarget) HasGroupAttribute() bool {
-	if o != nil && o.GroupAttribute != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGroupAttribute gets a reference to the given string and assigns it to the GroupAttribute field.
-func (o *CreateLdapTarget) SetGroupAttribute(v string) {
-	o.GroupAttribute = &v
-}
-
-// GetGroupDn returns the GroupDn field value if set, zero value otherwise.
-func (o *CreateLdapTarget) GetGroupDn() string {
-	if o == nil || o.GroupDn == nil {
-		var ret string
-		return ret
-	}
-	return *o.GroupDn
-}
-
-// GetGroupDnOk returns a tuple with the GroupDn field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateLdapTarget) GetGroupDnOk() (*string, bool) {
-	if o == nil || o.GroupDn == nil {
-		return nil, false
-	}
-	return o.GroupDn, true
-}
-
-// HasGroupDn returns a boolean if a field has been set.
-func (o *CreateLdapTarget) HasGroupDn() bool {
-	if o != nil && o.GroupDn != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGroupDn gets a reference to the given string and assigns it to the GroupDn field.
-func (o *CreateLdapTarget) SetGroupDn(v string) {
-	o.GroupDn = &v
-}
-
-// GetGroupFilter returns the GroupFilter field value if set, zero value otherwise.
-func (o *CreateLdapTarget) GetGroupFilter() string {
-	if o == nil || o.GroupFilter == nil {
-		var ret string
-		return ret
-	}
-	return *o.GroupFilter
-}
-
-// GetGroupFilterOk returns a tuple with the GroupFilter field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateLdapTarget) GetGroupFilterOk() (*string, bool) {
-	if o == nil || o.GroupFilter == nil {
-		return nil, false
-	}
-	return o.GroupFilter, true
-}
-
-// HasGroupFilter returns a boolean if a field has been set.
-func (o *CreateLdapTarget) HasGroupFilter() bool {
-	if o != nil && o.GroupFilter != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGroupFilter gets a reference to the given string and assigns it to the GroupFilter field.
-func (o *CreateLdapTarget) SetGroupFilter(v string) {
-	o.GroupFilter = &v
 }
 
 // GetKey returns the Key field value if set, zero value otherwise.
@@ -600,62 +479,6 @@ func (o *CreateLdapTarget) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
-// GetUserAttribute returns the UserAttribute field value if set, zero value otherwise.
-func (o *CreateLdapTarget) GetUserAttribute() string {
-	if o == nil || o.UserAttribute == nil {
-		var ret string
-		return ret
-	}
-	return *o.UserAttribute
-}
-
-// GetUserAttributeOk returns a tuple with the UserAttribute field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateLdapTarget) GetUserAttributeOk() (*string, bool) {
-	if o == nil || o.UserAttribute == nil {
-		return nil, false
-	}
-	return o.UserAttribute, true
-}
-
-// HasUserAttribute returns a boolean if a field has been set.
-func (o *CreateLdapTarget) HasUserAttribute() bool {
-	if o != nil && o.UserAttribute != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUserAttribute gets a reference to the given string and assigns it to the UserAttribute field.
-func (o *CreateLdapTarget) SetUserAttribute(v string) {
-	o.UserAttribute = &v
-}
-
-// GetUserDn returns the UserDn field value
-func (o *CreateLdapTarget) GetUserDn() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.UserDn
-}
-
-// GetUserDnOk returns a tuple with the UserDn field value
-// and a boolean to check if the value has been set.
-func (o *CreateLdapTarget) GetUserDnOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.UserDn, true
-}
-
-// SetUserDn sets field value
-func (o *CreateLdapTarget) SetUserDn(v string) {
-	o.UserDn = v
-}
-
 // GetUsername returns the Username field value if set, zero value otherwise.
 func (o *CreateLdapTarget) GetUsername() string {
 	if o == nil || o.Username == nil {
@@ -693,10 +516,10 @@ func (o CreateLdapTarget) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["access-id"] = o.AccessId
 	}
-	if o.BindDn != nil {
+	if true {
 		toSerialize["bind-dn"] = o.BindDn
 	}
-	if o.BindDnPassword != nil {
+	if true {
 		toSerialize["bind-dn-password"] = o.BindDnPassword
 	}
 	if o.Comment != nil {
@@ -704,15 +527,6 @@ func (o CreateLdapTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.EnableAnonymSearch != nil {
 		toSerialize["enable-anonym-search"] = o.EnableAnonymSearch
-	}
-	if o.GroupAttribute != nil {
-		toSerialize["group-attribute"] = o.GroupAttribute
-	}
-	if o.GroupDn != nil {
-		toSerialize["group-dn"] = o.GroupDn
-	}
-	if o.GroupFilter != nil {
-		toSerialize["group-filter"] = o.GroupFilter
 	}
 	if o.Key != nil {
 		toSerialize["key"] = o.Key
@@ -740,12 +554,6 @@ func (o CreateLdapTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
-	}
-	if o.UserAttribute != nil {
-		toSerialize["user-attribute"] = o.UserAttribute
-	}
-	if true {
-		toSerialize["user-dn"] = o.UserDn
 	}
 	if o.Username != nil {
 		toSerialize["username"] = o.Username

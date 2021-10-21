@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **ForceSubClaims** | Pointer to **bool** | if true the role associated with this auth method must include sub claims | [optional] 
 **GcpAccessRules** | Pointer to [**GCPAccessRules**](GCPAccessRules.md) |  | [optional] 
 **HuaweiAccessRules** | Pointer to [**HuaweiAccessRules**](HuaweiAccessRules.md) |  | [optional] 
+**K8sAccessRules** | Pointer to [**KubernetesAccessRules**](KubernetesAccessRules.md) |  | [optional] 
 **LdapAccessRules** | Pointer to [**LDAPAccessRules**](LDAPAccessRules.md) |  | [optional] 
 **Oauth2AccessRules** | Pointer to [**OAuth2AccessRules**](OAuth2AccessRules.md) |  | [optional] 
 **OidcAccessRules** | Pointer to [**OIDCAccessRules**](OIDCAccessRules.md) |  | [optional] 
@@ -289,6 +290,31 @@ SetHuaweiAccessRules sets HuaweiAccessRules field to given value.
 `func (o *AuthMethodAccessInfo) HasHuaweiAccessRules() bool`
 
 HasHuaweiAccessRules returns a boolean if a field has been set.
+
+### GetK8sAccessRules
+
+`func (o *AuthMethodAccessInfo) GetK8sAccessRules() KubernetesAccessRules`
+
+GetK8sAccessRules returns the K8sAccessRules field if non-nil, zero value otherwise.
+
+### GetK8sAccessRulesOk
+
+`func (o *AuthMethodAccessInfo) GetK8sAccessRulesOk() (*KubernetesAccessRules, bool)`
+
+GetK8sAccessRulesOk returns a tuple with the K8sAccessRules field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sAccessRules
+
+`func (o *AuthMethodAccessInfo) SetK8sAccessRules(v KubernetesAccessRules)`
+
+SetK8sAccessRules sets K8sAccessRules field to given value.
+
+### HasK8sAccessRules
+
+`func (o *AuthMethodAccessInfo) HasK8sAccessRules() bool`
+
+HasK8sAccessRules returns a boolean if a field has been set.
 
 ### GetLdapAccessRules
 

@@ -21,6 +21,13 @@ type CreateRotatedSecret struct {
 	ApiKey *string `json:"api-key,omitempty"`
 	// Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation
 	AutoRotate *string `json:"auto-rotate,omitempty"`
+	CustomPayload *string `json:"custom-payload,omitempty"`
+	// Group attribute
+	GroupAttribute *string `json:"group-attribute,omitempty"`
+	// Group DN
+	GroupDn *string `json:"group-dn,omitempty"`
+	// Group attribute
+	GroupFilter *string `json:"group-filter,omitempty"`
 	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
 	// Metadata about the secret
@@ -32,7 +39,7 @@ type CreateRotatedSecret struct {
 	RotatedPassword *string `json:"rotated-password,omitempty"`
 	RotatedUsername *string `json:"rotated-username,omitempty"`
 	RotationHour *int32 `json:"rotation-hour,omitempty"`
-	// The number of days to wait between every automatic key rotation (7-365)
+	// The number of days to wait between every automatic key rotation (1-365)
 	RotationInterval *string `json:"rotation-interval,omitempty"`
 	RotatorCredsType *string `json:"rotator-creds-type,omitempty"`
 	RotatorCustomCmd *string `json:"rotator-custom-cmd,omitempty"`
@@ -50,6 +57,10 @@ type CreateRotatedSecret struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// User Attribute
+	UserAttribute *string `json:"user-attribute,omitempty"`
+	// User DN
+	UserDn *string `json:"user-dn,omitempty"`
 	// Required only when the authentication process requires a username and password
 	Username *string `json:"username,omitempty"`
 }
@@ -168,6 +179,134 @@ func (o *CreateRotatedSecret) HasAutoRotate() bool {
 // SetAutoRotate gets a reference to the given string and assigns it to the AutoRotate field.
 func (o *CreateRotatedSecret) SetAutoRotate(v string) {
 	o.AutoRotate = &v
+}
+
+// GetCustomPayload returns the CustomPayload field value if set, zero value otherwise.
+func (o *CreateRotatedSecret) GetCustomPayload() string {
+	if o == nil || o.CustomPayload == nil {
+		var ret string
+		return ret
+	}
+	return *o.CustomPayload
+}
+
+// GetCustomPayloadOk returns a tuple with the CustomPayload field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRotatedSecret) GetCustomPayloadOk() (*string, bool) {
+	if o == nil || o.CustomPayload == nil {
+		return nil, false
+	}
+	return o.CustomPayload, true
+}
+
+// HasCustomPayload returns a boolean if a field has been set.
+func (o *CreateRotatedSecret) HasCustomPayload() bool {
+	if o != nil && o.CustomPayload != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomPayload gets a reference to the given string and assigns it to the CustomPayload field.
+func (o *CreateRotatedSecret) SetCustomPayload(v string) {
+	o.CustomPayload = &v
+}
+
+// GetGroupAttribute returns the GroupAttribute field value if set, zero value otherwise.
+func (o *CreateRotatedSecret) GetGroupAttribute() string {
+	if o == nil || o.GroupAttribute == nil {
+		var ret string
+		return ret
+	}
+	return *o.GroupAttribute
+}
+
+// GetGroupAttributeOk returns a tuple with the GroupAttribute field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRotatedSecret) GetGroupAttributeOk() (*string, bool) {
+	if o == nil || o.GroupAttribute == nil {
+		return nil, false
+	}
+	return o.GroupAttribute, true
+}
+
+// HasGroupAttribute returns a boolean if a field has been set.
+func (o *CreateRotatedSecret) HasGroupAttribute() bool {
+	if o != nil && o.GroupAttribute != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGroupAttribute gets a reference to the given string and assigns it to the GroupAttribute field.
+func (o *CreateRotatedSecret) SetGroupAttribute(v string) {
+	o.GroupAttribute = &v
+}
+
+// GetGroupDn returns the GroupDn field value if set, zero value otherwise.
+func (o *CreateRotatedSecret) GetGroupDn() string {
+	if o == nil || o.GroupDn == nil {
+		var ret string
+		return ret
+	}
+	return *o.GroupDn
+}
+
+// GetGroupDnOk returns a tuple with the GroupDn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRotatedSecret) GetGroupDnOk() (*string, bool) {
+	if o == nil || o.GroupDn == nil {
+		return nil, false
+	}
+	return o.GroupDn, true
+}
+
+// HasGroupDn returns a boolean if a field has been set.
+func (o *CreateRotatedSecret) HasGroupDn() bool {
+	if o != nil && o.GroupDn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGroupDn gets a reference to the given string and assigns it to the GroupDn field.
+func (o *CreateRotatedSecret) SetGroupDn(v string) {
+	o.GroupDn = &v
+}
+
+// GetGroupFilter returns the GroupFilter field value if set, zero value otherwise.
+func (o *CreateRotatedSecret) GetGroupFilter() string {
+	if o == nil || o.GroupFilter == nil {
+		var ret string
+		return ret
+	}
+	return *o.GroupFilter
+}
+
+// GetGroupFilterOk returns a tuple with the GroupFilter field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRotatedSecret) GetGroupFilterOk() (*string, bool) {
+	if o == nil || o.GroupFilter == nil {
+		return nil, false
+	}
+	return o.GroupFilter, true
+}
+
+// HasGroupFilter returns a boolean if a field has been set.
+func (o *CreateRotatedSecret) HasGroupFilter() bool {
+	if o != nil && o.GroupFilter != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGroupFilter gets a reference to the given string and assigns it to the GroupFilter field.
+func (o *CreateRotatedSecret) SetGroupFilter(v string) {
+	o.GroupFilter = &v
 }
 
 // GetKey returns the Key field value if set, zero value otherwise.
@@ -690,6 +829,70 @@ func (o *CreateRotatedSecret) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUserAttribute returns the UserAttribute field value if set, zero value otherwise.
+func (o *CreateRotatedSecret) GetUserAttribute() string {
+	if o == nil || o.UserAttribute == nil {
+		var ret string
+		return ret
+	}
+	return *o.UserAttribute
+}
+
+// GetUserAttributeOk returns a tuple with the UserAttribute field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRotatedSecret) GetUserAttributeOk() (*string, bool) {
+	if o == nil || o.UserAttribute == nil {
+		return nil, false
+	}
+	return o.UserAttribute, true
+}
+
+// HasUserAttribute returns a boolean if a field has been set.
+func (o *CreateRotatedSecret) HasUserAttribute() bool {
+	if o != nil && o.UserAttribute != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserAttribute gets a reference to the given string and assigns it to the UserAttribute field.
+func (o *CreateRotatedSecret) SetUserAttribute(v string) {
+	o.UserAttribute = &v
+}
+
+// GetUserDn returns the UserDn field value if set, zero value otherwise.
+func (o *CreateRotatedSecret) GetUserDn() string {
+	if o == nil || o.UserDn == nil {
+		var ret string
+		return ret
+	}
+	return *o.UserDn
+}
+
+// GetUserDnOk returns a tuple with the UserDn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRotatedSecret) GetUserDnOk() (*string, bool) {
+	if o == nil || o.UserDn == nil {
+		return nil, false
+	}
+	return o.UserDn, true
+}
+
+// HasUserDn returns a boolean if a field has been set.
+func (o *CreateRotatedSecret) HasUserDn() bool {
+	if o != nil && o.UserDn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserDn gets a reference to the given string and assigns it to the UserDn field.
+func (o *CreateRotatedSecret) SetUserDn(v string) {
+	o.UserDn = &v
+}
+
 // GetUsername returns the Username field value if set, zero value otherwise.
 func (o *CreateRotatedSecret) GetUsername() string {
 	if o == nil || o.Username == nil {
@@ -732,6 +935,18 @@ func (o CreateRotatedSecret) MarshalJSON() ([]byte, error) {
 	}
 	if o.AutoRotate != nil {
 		toSerialize["auto-rotate"] = o.AutoRotate
+	}
+	if o.CustomPayload != nil {
+		toSerialize["custom-payload"] = o.CustomPayload
+	}
+	if o.GroupAttribute != nil {
+		toSerialize["group-attribute"] = o.GroupAttribute
+	}
+	if o.GroupDn != nil {
+		toSerialize["group-dn"] = o.GroupDn
+	}
+	if o.GroupFilter != nil {
+		toSerialize["group-filter"] = o.GroupFilter
 	}
 	if o.Key != nil {
 		toSerialize["key"] = o.Key
@@ -783,6 +998,12 @@ func (o CreateRotatedSecret) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.UserAttribute != nil {
+		toSerialize["user-attribute"] = o.UserAttribute
+	}
+	if o.UserDn != nil {
+		toSerialize["user-dn"] = o.UserDn
 	}
 	if o.Username != nil {
 		toSerialize["username"] = o.Username

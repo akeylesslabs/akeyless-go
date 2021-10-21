@@ -65,14 +65,9 @@ type TargetTypeDetailsInput struct {
 	LdapBindDn *string `json:"ldap_bind_dn,omitempty"`
 	LdapBindPassword *string `json:"ldap_bind_password,omitempty"`
 	LdapCertificate *string `json:"ldap_certificate,omitempty"`
-	LdapGroupAttr *string `json:"ldap_group_attr,omitempty"`
-	LdapGroupDn *string `json:"ldap_group_dn,omitempty"`
-	LdapGroupFilter *string `json:"ldap_group_filter,omitempty"`
 	LdapPrivateKey *string `json:"ldap_private_key,omitempty"`
 	LdapTokenExpiration *string `json:"ldap_token_expiration,omitempty"`
 	LdapUrl *string `json:"ldap_url,omitempty"`
-	LdapUserAttr *string `json:"ldap_user_attr,omitempty"`
-	LdapUserDn *string `json:"ldap_user_dn,omitempty"`
 	MongodbAtlasApiPrivateKey *string `json:"mongodb_atlas_api_private_key,omitempty"`
 	MongodbAtlasApiPublicKey *string `json:"mongodb_atlas_api_public_key,omitempty"`
 	// mongodb atlas fields
@@ -88,6 +83,7 @@ type TargetTypeDetailsInput struct {
 	MongodbUriOptions *string `json:"mongodb_uri_options,omitempty"`
 	MongodbUsername *string `json:"mongodb_username,omitempty"`
 	Password *string `json:"password,omitempty"`
+	Payload *string `json:"payload,omitempty"`
 	Port *string `json:"port,omitempty"`
 	PrivateKey *string `json:"private_key,omitempty"`
 	PrivateKeyPassword *string `json:"private_key_password,omitempty"`
@@ -1595,102 +1591,6 @@ func (o *TargetTypeDetailsInput) SetLdapCertificate(v string) {
 	o.LdapCertificate = &v
 }
 
-// GetLdapGroupAttr returns the LdapGroupAttr field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetLdapGroupAttr() string {
-	if o == nil || o.LdapGroupAttr == nil {
-		var ret string
-		return ret
-	}
-	return *o.LdapGroupAttr
-}
-
-// GetLdapGroupAttrOk returns a tuple with the LdapGroupAttr field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetLdapGroupAttrOk() (*string, bool) {
-	if o == nil || o.LdapGroupAttr == nil {
-		return nil, false
-	}
-	return o.LdapGroupAttr, true
-}
-
-// HasLdapGroupAttr returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasLdapGroupAttr() bool {
-	if o != nil && o.LdapGroupAttr != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLdapGroupAttr gets a reference to the given string and assigns it to the LdapGroupAttr field.
-func (o *TargetTypeDetailsInput) SetLdapGroupAttr(v string) {
-	o.LdapGroupAttr = &v
-}
-
-// GetLdapGroupDn returns the LdapGroupDn field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetLdapGroupDn() string {
-	if o == nil || o.LdapGroupDn == nil {
-		var ret string
-		return ret
-	}
-	return *o.LdapGroupDn
-}
-
-// GetLdapGroupDnOk returns a tuple with the LdapGroupDn field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetLdapGroupDnOk() (*string, bool) {
-	if o == nil || o.LdapGroupDn == nil {
-		return nil, false
-	}
-	return o.LdapGroupDn, true
-}
-
-// HasLdapGroupDn returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasLdapGroupDn() bool {
-	if o != nil && o.LdapGroupDn != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLdapGroupDn gets a reference to the given string and assigns it to the LdapGroupDn field.
-func (o *TargetTypeDetailsInput) SetLdapGroupDn(v string) {
-	o.LdapGroupDn = &v
-}
-
-// GetLdapGroupFilter returns the LdapGroupFilter field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetLdapGroupFilter() string {
-	if o == nil || o.LdapGroupFilter == nil {
-		var ret string
-		return ret
-	}
-	return *o.LdapGroupFilter
-}
-
-// GetLdapGroupFilterOk returns a tuple with the LdapGroupFilter field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetLdapGroupFilterOk() (*string, bool) {
-	if o == nil || o.LdapGroupFilter == nil {
-		return nil, false
-	}
-	return o.LdapGroupFilter, true
-}
-
-// HasLdapGroupFilter returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasLdapGroupFilter() bool {
-	if o != nil && o.LdapGroupFilter != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLdapGroupFilter gets a reference to the given string and assigns it to the LdapGroupFilter field.
-func (o *TargetTypeDetailsInput) SetLdapGroupFilter(v string) {
-	o.LdapGroupFilter = &v
-}
-
 // GetLdapPrivateKey returns the LdapPrivateKey field value if set, zero value otherwise.
 func (o *TargetTypeDetailsInput) GetLdapPrivateKey() string {
 	if o == nil || o.LdapPrivateKey == nil {
@@ -1785,70 +1685,6 @@ func (o *TargetTypeDetailsInput) HasLdapUrl() bool {
 // SetLdapUrl gets a reference to the given string and assigns it to the LdapUrl field.
 func (o *TargetTypeDetailsInput) SetLdapUrl(v string) {
 	o.LdapUrl = &v
-}
-
-// GetLdapUserAttr returns the LdapUserAttr field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetLdapUserAttr() string {
-	if o == nil || o.LdapUserAttr == nil {
-		var ret string
-		return ret
-	}
-	return *o.LdapUserAttr
-}
-
-// GetLdapUserAttrOk returns a tuple with the LdapUserAttr field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetLdapUserAttrOk() (*string, bool) {
-	if o == nil || o.LdapUserAttr == nil {
-		return nil, false
-	}
-	return o.LdapUserAttr, true
-}
-
-// HasLdapUserAttr returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasLdapUserAttr() bool {
-	if o != nil && o.LdapUserAttr != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLdapUserAttr gets a reference to the given string and assigns it to the LdapUserAttr field.
-func (o *TargetTypeDetailsInput) SetLdapUserAttr(v string) {
-	o.LdapUserAttr = &v
-}
-
-// GetLdapUserDn returns the LdapUserDn field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetLdapUserDn() string {
-	if o == nil || o.LdapUserDn == nil {
-		var ret string
-		return ret
-	}
-	return *o.LdapUserDn
-}
-
-// GetLdapUserDnOk returns a tuple with the LdapUserDn field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetLdapUserDnOk() (*string, bool) {
-	if o == nil || o.LdapUserDn == nil {
-		return nil, false
-	}
-	return o.LdapUserDn, true
-}
-
-// HasLdapUserDn returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasLdapUserDn() bool {
-	if o != nil && o.LdapUserDn != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLdapUserDn gets a reference to the given string and assigns it to the LdapUserDn field.
-func (o *TargetTypeDetailsInput) SetLdapUserDn(v string) {
-	o.LdapUserDn = &v
 }
 
 // GetMongodbAtlasApiPrivateKey returns the MongodbAtlasApiPrivateKey field value if set, zero value otherwise.
@@ -2233,6 +2069,38 @@ func (o *TargetTypeDetailsInput) HasPassword() bool {
 // SetPassword gets a reference to the given string and assigns it to the Password field.
 func (o *TargetTypeDetailsInput) SetPassword(v string) {
 	o.Password = &v
+}
+
+// GetPayload returns the Payload field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetPayload() string {
+	if o == nil || o.Payload == nil {
+		var ret string
+		return ret
+	}
+	return *o.Payload
+}
+
+// GetPayloadOk returns a tuple with the Payload field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetPayloadOk() (*string, bool) {
+	if o == nil || o.Payload == nil {
+		return nil, false
+	}
+	return o.Payload, true
+}
+
+// HasPayload returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasPayload() bool {
+	if o != nil && o.Payload != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPayload gets a reference to the given string and assigns it to the Payload field.
+func (o *TargetTypeDetailsInput) SetPayload(v string) {
+	o.Payload = &v
 }
 
 // GetPort returns the Port field value if set, zero value otherwise.
@@ -2887,15 +2755,6 @@ func (o TargetTypeDetailsInput) MarshalJSON() ([]byte, error) {
 	if o.LdapCertificate != nil {
 		toSerialize["ldap_certificate"] = o.LdapCertificate
 	}
-	if o.LdapGroupAttr != nil {
-		toSerialize["ldap_group_attr"] = o.LdapGroupAttr
-	}
-	if o.LdapGroupDn != nil {
-		toSerialize["ldap_group_dn"] = o.LdapGroupDn
-	}
-	if o.LdapGroupFilter != nil {
-		toSerialize["ldap_group_filter"] = o.LdapGroupFilter
-	}
 	if o.LdapPrivateKey != nil {
 		toSerialize["ldap_private_key"] = o.LdapPrivateKey
 	}
@@ -2904,12 +2763,6 @@ func (o TargetTypeDetailsInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.LdapUrl != nil {
 		toSerialize["ldap_url"] = o.LdapUrl
-	}
-	if o.LdapUserAttr != nil {
-		toSerialize["ldap_user_attr"] = o.LdapUserAttr
-	}
-	if o.LdapUserDn != nil {
-		toSerialize["ldap_user_dn"] = o.LdapUserDn
 	}
 	if o.MongodbAtlasApiPrivateKey != nil {
 		toSerialize["mongodb_atlas_api_private_key"] = o.MongodbAtlasApiPrivateKey
@@ -2946,6 +2799,9 @@ func (o TargetTypeDetailsInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.Password != nil {
 		toSerialize["password"] = o.Password
+	}
+	if o.Payload != nil {
+		toSerialize["payload"] = o.Payload
 	}
 	if o.Port != nil {
 		toSerialize["port"] = o.Port

@@ -21,7 +21,7 @@ type Configure struct {
 	AccessId *string `json:"access-id,omitempty"`
 	// Access Key
 	AccessKey *string `json:"access-key,omitempty"`
-	// Access Type (access_key/password/azure_ad/saml/oidc/ldap/aws_iam)
+	// Access Type (access_key/password/azure_ad/saml/oidc/ldap/aws_iam/k8s)
 	AccessType *string `json:"access-type,omitempty"`
 	// Email (relevant only for access-type=password)
 	AdminEmail *string `json:"admin-email,omitempty"`
@@ -31,6 +31,8 @@ type Configure struct {
 	AzureAdObjectId *string `json:"azure_ad_object_id,omitempty"`
 	// GCP JWT audience
 	GcpAudience *string `json:"gcp-audience,omitempty"`
+	// The K8S Auth config name (relevant only for access-type=k8s)
+	K8sAuthConfigName *string `json:"k8s-auth-config-name,omitempty"`
 }
 
 // NewConfigure instantiates a new Configure object
@@ -278,6 +280,38 @@ func (o *Configure) SetGcpAudience(v string) {
 	o.GcpAudience = &v
 }
 
+// GetK8sAuthConfigName returns the K8sAuthConfigName field value if set, zero value otherwise.
+func (o *Configure) GetK8sAuthConfigName() string {
+	if o == nil || o.K8sAuthConfigName == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sAuthConfigName
+}
+
+// GetK8sAuthConfigNameOk returns a tuple with the K8sAuthConfigName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Configure) GetK8sAuthConfigNameOk() (*string, bool) {
+	if o == nil || o.K8sAuthConfigName == nil {
+		return nil, false
+	}
+	return o.K8sAuthConfigName, true
+}
+
+// HasK8sAuthConfigName returns a boolean if a field has been set.
+func (o *Configure) HasK8sAuthConfigName() bool {
+	if o != nil && o.K8sAuthConfigName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sAuthConfigName gets a reference to the given string and assigns it to the K8sAuthConfigName field.
+func (o *Configure) SetK8sAuthConfigName(v string) {
+	o.K8sAuthConfigName = &v
+}
+
 func (o Configure) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccessId != nil {
@@ -300,6 +334,9 @@ func (o Configure) MarshalJSON() ([]byte, error) {
 	}
 	if o.GcpAudience != nil {
 		toSerialize["gcp-audience"] = o.GcpAudience
+	}
+	if o.K8sAuthConfigName != nil {
+		toSerialize["k8s-auth-config-name"] = o.K8sAuthConfigName
 	}
 	return json.Marshal(toSerialize)
 }
