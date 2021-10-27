@@ -19,6 +19,7 @@ import (
 type SecureRemoteAccess struct {
 	AccountId *string `json:"account_id,omitempty"`
 	AllowPortForwarding *bool `json:"allow_port_forwarding,omitempty"`
+	AllowProvidingExternalUsername *bool `json:"allow_providing_external_username,omitempty"`
 	BastionApi *string `json:"bastion_api,omitempty"`
 	BastionIssuer *string `json:"bastion_issuer,omitempty"`
 	BastionIssuerId *int64 `json:"bastion_issuer_id,omitempty"`
@@ -34,6 +35,7 @@ type SecureRemoteAccess struct {
 	IsWeb *bool `json:"is_web,omitempty"`
 	Isolated *bool `json:"isolated,omitempty"`
 	Native *bool `json:"native,omitempty"`
+	RdpUser *string `json:"rdp_user,omitempty"`
 	Region *string `json:"region,omitempty"`
 	Schema *string `json:"schema,omitempty"`
 	SshPassword *bool `json:"ssh_password,omitempty"`
@@ -122,6 +124,38 @@ func (o *SecureRemoteAccess) HasAllowPortForwarding() bool {
 // SetAllowPortForwarding gets a reference to the given bool and assigns it to the AllowPortForwarding field.
 func (o *SecureRemoteAccess) SetAllowPortForwarding(v bool) {
 	o.AllowPortForwarding = &v
+}
+
+// GetAllowProvidingExternalUsername returns the AllowProvidingExternalUsername field value if set, zero value otherwise.
+func (o *SecureRemoteAccess) GetAllowProvidingExternalUsername() bool {
+	if o == nil || o.AllowProvidingExternalUsername == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AllowProvidingExternalUsername
+}
+
+// GetAllowProvidingExternalUsernameOk returns a tuple with the AllowProvidingExternalUsername field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SecureRemoteAccess) GetAllowProvidingExternalUsernameOk() (*bool, bool) {
+	if o == nil || o.AllowProvidingExternalUsername == nil {
+		return nil, false
+	}
+	return o.AllowProvidingExternalUsername, true
+}
+
+// HasAllowProvidingExternalUsername returns a boolean if a field has been set.
+func (o *SecureRemoteAccess) HasAllowProvidingExternalUsername() bool {
+	if o != nil && o.AllowProvidingExternalUsername != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowProvidingExternalUsername gets a reference to the given bool and assigns it to the AllowProvidingExternalUsername field.
+func (o *SecureRemoteAccess) SetAllowProvidingExternalUsername(v bool) {
+	o.AllowProvidingExternalUsername = &v
 }
 
 // GetBastionApi returns the BastionApi field value if set, zero value otherwise.
@@ -604,6 +638,38 @@ func (o *SecureRemoteAccess) SetNative(v bool) {
 	o.Native = &v
 }
 
+// GetRdpUser returns the RdpUser field value if set, zero value otherwise.
+func (o *SecureRemoteAccess) GetRdpUser() string {
+	if o == nil || o.RdpUser == nil {
+		var ret string
+		return ret
+	}
+	return *o.RdpUser
+}
+
+// GetRdpUserOk returns a tuple with the RdpUser field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SecureRemoteAccess) GetRdpUserOk() (*string, bool) {
+	if o == nil || o.RdpUser == nil {
+		return nil, false
+	}
+	return o.RdpUser, true
+}
+
+// HasRdpUser returns a boolean if a field has been set.
+func (o *SecureRemoteAccess) HasRdpUser() bool {
+	if o != nil && o.RdpUser != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRdpUser gets a reference to the given string and assigns it to the RdpUser field.
+func (o *SecureRemoteAccess) SetRdpUser(v string) {
+	o.RdpUser = &v
+}
+
 // GetRegion returns the Region field value if set, zero value otherwise.
 func (o *SecureRemoteAccess) GetRegion() string {
 	if o == nil || o.Region == nil {
@@ -836,6 +902,9 @@ func (o SecureRemoteAccess) MarshalJSON() ([]byte, error) {
 	if o.AllowPortForwarding != nil {
 		toSerialize["allow_port_forwarding"] = o.AllowPortForwarding
 	}
+	if o.AllowProvidingExternalUsername != nil {
+		toSerialize["allow_providing_external_username"] = o.AllowProvidingExternalUsername
+	}
 	if o.BastionApi != nil {
 		toSerialize["bastion_api"] = o.BastionApi
 	}
@@ -880,6 +949,9 @@ func (o SecureRemoteAccess) MarshalJSON() ([]byte, error) {
 	}
 	if o.Native != nil {
 		toSerialize["native"] = o.Native
+	}
+	if o.RdpUser != nil {
+		toSerialize["rdp_user"] = o.RdpUser
 	}
 	if o.Region != nil {
 		toSerialize["region"] = o.Region

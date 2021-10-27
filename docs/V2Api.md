@@ -87,10 +87,12 @@ Method | HTTP request | Description
 [**GatewayGetProducer**](V2Api.md#GatewayGetProducer) | **Post** /gateway-get-producer | 
 [**GatewayGetTmpUsers**](V2Api.md#GatewayGetTmpUsers) | **Post** /gateway-get-producer-tmp-creds | 
 [**GatewayListAllowedManagementAccess**](V2Api.md#GatewayListAllowedManagementAccess) | **Post** /gateway-list-allowed-management-access | 
+[**GatewayListMigration**](V2Api.md#GatewayListMigration) | **Post** /gateway-list-migration | 
 [**GatewayListProducers**](V2Api.md#GatewayListProducers) | **Post** /gateway-list-producers | 
 [**GatewayRevokeTmpUsers**](V2Api.md#GatewayRevokeTmpUsers) | **Post** /gateway-revoke-producer-tmp-creds | 
 [**GatewayStartProducer**](V2Api.md#GatewayStartProducer) | **Post** /gateway-start-producer | 
 [**GatewayStopProducer**](V2Api.md#GatewayStopProducer) | **Post** /gateway-stop-producer | 
+[**GatewaySyncMigration**](V2Api.md#GatewaySyncMigration) | **Post** /gateway-sync-migration | 
 [**GatewayUpdateTmpUsers**](V2Api.md#GatewayUpdateTmpUsers) | **Post** /gateway-update-producer-tmp-creds | 
 [**GetAccountLogo**](V2Api.md#GetAccountLogo) | **Post** /get-account-logo | 
 [**GetAuthMethod**](V2Api.md#GetAuthMethod) | **Post** /get-auth-method | 
@@ -5474,6 +5476,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GatewayListMigration
+
+> GatewayMigrationListOutput GatewayListMigration(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayListMigration() // GatewayListMigration | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayListMigration(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayListMigration``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayListMigration`: GatewayMigrationListOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayListMigration`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayListMigrationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayListMigration**](GatewayListMigration.md) |  | 
+
+### Return type
+
+[**GatewayMigrationListOutput**](gatewayMigrationListOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GatewayListProducers
 
 > GetProducersListReplyObj GatewayListProducers(ctx).Body(body).Execute()
@@ -5713,6 +5779,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GatewayStopProducerOutput**](gatewayStopProducerOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewaySyncMigration
+
+> GatewayMigrationSyncOutput GatewaySyncMigration(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewaySyncMigration("Name_example") // GatewaySyncMigration | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewaySyncMigration(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewaySyncMigration``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewaySyncMigration`: GatewayMigrationSyncOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewaySyncMigration`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewaySyncMigrationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewaySyncMigration**](GatewaySyncMigration.md) |  | 
+
+### Return type
+
+[**GatewayMigrationSyncOutput**](gatewayMigrationSyncOutput.md)
 
 ### Authorization
 

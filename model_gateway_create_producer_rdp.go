@@ -38,6 +38,7 @@ type GatewayCreateProducerRdp struct {
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
 	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
 	SecureAccessRdpDomain *string `json:"secure-access-rdp-domain,omitempty"`
+	SecureAccessRdpUser *string `json:"secure-access-rdp-user,omitempty"`
 	// Target name
 	TargetName *string `json:"target-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -456,6 +457,38 @@ func (o *GatewayCreateProducerRdp) SetSecureAccessRdpDomain(v string) {
 	o.SecureAccessRdpDomain = &v
 }
 
+// GetSecureAccessRdpUser returns the SecureAccessRdpUser field value if set, zero value otherwise.
+func (o *GatewayCreateProducerRdp) GetSecureAccessRdpUser() string {
+	if o == nil || o.SecureAccessRdpUser == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessRdpUser
+}
+
+// GetSecureAccessRdpUserOk returns a tuple with the SecureAccessRdpUser field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerRdp) GetSecureAccessRdpUserOk() (*string, bool) {
+	if o == nil || o.SecureAccessRdpUser == nil {
+		return nil, false
+	}
+	return o.SecureAccessRdpUser, true
+}
+
+// HasSecureAccessRdpUser returns a boolean if a field has been set.
+func (o *GatewayCreateProducerRdp) HasSecureAccessRdpUser() bool {
+	if o != nil && o.SecureAccessRdpUser != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessRdpUser gets a reference to the given string and assigns it to the SecureAccessRdpUser field.
+func (o *GatewayCreateProducerRdp) SetSecureAccessRdpUser(v string) {
+	o.SecureAccessRdpUser = &v
+}
+
 // GetTargetName returns the TargetName field value if set, zero value otherwise.
 func (o *GatewayCreateProducerRdp) GetTargetName() string {
 	if o == nil || o.TargetName == nil {
@@ -653,6 +686,9 @@ func (o GatewayCreateProducerRdp) MarshalJSON() ([]byte, error) {
 	}
 	if o.SecureAccessRdpDomain != nil {
 		toSerialize["secure-access-rdp-domain"] = o.SecureAccessRdpDomain
+	}
+	if o.SecureAccessRdpUser != nil {
+		toSerialize["secure-access-rdp-user"] = o.SecureAccessRdpUser
 	}
 	if o.TargetName != nil {
 		toSerialize["target-name"] = o.TargetName

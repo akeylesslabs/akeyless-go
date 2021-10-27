@@ -31,6 +31,7 @@ type CreateSecret struct {
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
 	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
 	SecureAccessSshCreds *string `json:"secure-access-ssh-creds,omitempty"`
+	SecureAccessSshUser *string `json:"secure-access-ssh-user,omitempty"`
 	SecureAccessUrl *string `json:"secure-access-url,omitempty"`
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
 	// List of the tags attached to this secret
@@ -344,6 +345,38 @@ func (o *CreateSecret) SetSecureAccessSshCreds(v string) {
 	o.SecureAccessSshCreds = &v
 }
 
+// GetSecureAccessSshUser returns the SecureAccessSshUser field value if set, zero value otherwise.
+func (o *CreateSecret) GetSecureAccessSshUser() string {
+	if o == nil || o.SecureAccessSshUser == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessSshUser
+}
+
+// GetSecureAccessSshUserOk returns a tuple with the SecureAccessSshUser field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSecret) GetSecureAccessSshUserOk() (*string, bool) {
+	if o == nil || o.SecureAccessSshUser == nil {
+		return nil, false
+	}
+	return o.SecureAccessSshUser, true
+}
+
+// HasSecureAccessSshUser returns a boolean if a field has been set.
+func (o *CreateSecret) HasSecureAccessSshUser() bool {
+	if o != nil && o.SecureAccessSshUser != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessSshUser gets a reference to the given string and assigns it to the SecureAccessSshUser field.
+func (o *CreateSecret) SetSecureAccessSshUser(v string) {
+	o.SecureAccessSshUser = &v
+}
+
 // GetSecureAccessUrl returns the SecureAccessUrl field value if set, zero value otherwise.
 func (o *CreateSecret) GetSecureAccessUrl() string {
 	if o == nil || o.SecureAccessUrl == nil {
@@ -588,6 +621,9 @@ func (o CreateSecret) MarshalJSON() ([]byte, error) {
 	}
 	if o.SecureAccessSshCreds != nil {
 		toSerialize["secure-access-ssh-creds"] = o.SecureAccessSshCreds
+	}
+	if o.SecureAccessSshUser != nil {
+		toSerialize["secure-access-ssh-user"] = o.SecureAccessSshUser
 	}
 	if o.SecureAccessUrl != nil {
 		toSerialize["secure-access-url"] = o.SecureAccessUrl

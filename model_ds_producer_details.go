@@ -78,6 +78,7 @@ type DSProducerDetails struct {
 	EksRegion *string `json:"eks_region,omitempty"`
 	EksSecretAccessKey *string `json:"eks_secret_access_key,omitempty"`
 	EnableAdminRotation *bool `json:"enable_admin_rotation,omitempty"`
+	ExternallyProvidedUser *string `json:"externally_provided_user,omitempty"`
 	FailureMessage *string `json:"failure_message,omitempty"`
 	FixedUserOnly *string `json:"fixed_user_only,omitempty"`
 	GcpKeyAlgo *string `json:"gcp_key_algo,omitempty"`
@@ -2078,6 +2079,38 @@ func (o *DSProducerDetails) HasEnableAdminRotation() bool {
 // SetEnableAdminRotation gets a reference to the given bool and assigns it to the EnableAdminRotation field.
 func (o *DSProducerDetails) SetEnableAdminRotation(v bool) {
 	o.EnableAdminRotation = &v
+}
+
+// GetExternallyProvidedUser returns the ExternallyProvidedUser field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetExternallyProvidedUser() string {
+	if o == nil || o.ExternallyProvidedUser == nil {
+		var ret string
+		return ret
+	}
+	return *o.ExternallyProvidedUser
+}
+
+// GetExternallyProvidedUserOk returns a tuple with the ExternallyProvidedUser field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetExternallyProvidedUserOk() (*string, bool) {
+	if o == nil || o.ExternallyProvidedUser == nil {
+		return nil, false
+	}
+	return o.ExternallyProvidedUser, true
+}
+
+// HasExternallyProvidedUser returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasExternallyProvidedUser() bool {
+	if o != nil && o.ExternallyProvidedUser != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExternallyProvidedUser gets a reference to the given string and assigns it to the ExternallyProvidedUser field.
+func (o *DSProducerDetails) SetExternallyProvidedUser(v string) {
+	o.ExternallyProvidedUser = &v
 }
 
 // GetFailureMessage returns the FailureMessage field value if set, zero value otherwise.
@@ -5106,6 +5139,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.EnableAdminRotation != nil {
 		toSerialize["enable_admin_rotation"] = o.EnableAdminRotation
+	}
+	if o.ExternallyProvidedUser != nil {
+		toSerialize["externally_provided_user"] = o.ExternallyProvidedUser
 	}
 	if o.FailureMessage != nil {
 		toSerialize["failure_message"] = o.FailureMessage

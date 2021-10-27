@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Ldap** | Pointer to **string** |  | [optional] 
 **Leadership** | Pointer to **string** |  | [optional] 
 **LogForwarding** | Pointer to **string** |  | [optional] 
+**MQueue** | Pointer to **string** |  | [optional] 
 **Migrations** | Pointer to **string** |  | [optional] 
 **Producers** | Pointer to **map[string]interface{}** |  | [optional] 
 **Rotators** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -262,6 +263,31 @@ SetLogForwarding sets LogForwarding field to given value.
 `func (o *ConfigHash) HasLogForwarding() bool`
 
 HasLogForwarding returns a boolean if a field has been set.
+
+### GetMQueue
+
+`func (o *ConfigHash) GetMQueue() string`
+
+GetMQueue returns the MQueue field if non-nil, zero value otherwise.
+
+### GetMQueueOk
+
+`func (o *ConfigHash) GetMQueueOk() (*string, bool)`
+
+GetMQueueOk returns a tuple with the MQueue field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMQueue
+
+`func (o *ConfigHash) SetMQueue(v string)`
+
+SetMQueue sets MQueue field to given value.
+
+### HasMQueue
+
+`func (o *ConfigHash) HasMQueue() bool`
+
+HasMQueue returns a boolean if a field has been set.
 
 ### GetMigrations
 

@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **SecureAccessEnable** | Pointer to **string** |  | [optional] 
 **SecureAccessHost** | Pointer to **[]string** |  | [optional] 
 **SecureAccessSshCreds** | Pointer to **string** |  | [optional] 
+**SecureAccessSshUser** | Pointer to **string** |  | [optional] 
 **SecureAccessUrl** | Pointer to **string** |  | [optional] 
 **SecureAccessWebBrowsing** | Pointer to **bool** |  | [optional] 
 **Tags** | Pointer to **[]string** | List of the tags attached to this secret | [optional] 
@@ -259,6 +260,31 @@ SetSecureAccessSshCreds sets SecureAccessSshCreds field to given value.
 `func (o *CreateSecret) HasSecureAccessSshCreds() bool`
 
 HasSecureAccessSshCreds returns a boolean if a field has been set.
+
+### GetSecureAccessSshUser
+
+`func (o *CreateSecret) GetSecureAccessSshUser() string`
+
+GetSecureAccessSshUser returns the SecureAccessSshUser field if non-nil, zero value otherwise.
+
+### GetSecureAccessSshUserOk
+
+`func (o *CreateSecret) GetSecureAccessSshUserOk() (*string, bool)`
+
+GetSecureAccessSshUserOk returns a tuple with the SecureAccessSshUser field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessSshUser
+
+`func (o *CreateSecret) SetSecureAccessSshUser(v string)`
+
+SetSecureAccessSshUser sets SecureAccessSshUser field to given value.
+
+### HasSecureAccessSshUser
+
+`func (o *CreateSecret) HasSecureAccessSshUser() bool`
+
+HasSecureAccessSshUser returns a boolean if a field has been set.
 
 ### GetSecureAccessUrl
 

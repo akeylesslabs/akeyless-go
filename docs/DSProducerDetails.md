@@ -63,6 +63,7 @@ Name | Type | Description | Notes
 **EksRegion** | Pointer to **string** |  | [optional] 
 **EksSecretAccessKey** | Pointer to **string** |  | [optional] 
 **EnableAdminRotation** | Pointer to **bool** |  | [optional] 
+**ExternallyProvidedUser** | Pointer to **string** |  | [optional] 
 **FailureMessage** | Pointer to **string** |  | [optional] 
 **FixedUserOnly** | Pointer to **string** |  | [optional] 
 **GcpKeyAlgo** | Pointer to **string** |  | [optional] 
@@ -1646,6 +1647,31 @@ SetEnableAdminRotation sets EnableAdminRotation field to given value.
 `func (o *DSProducerDetails) HasEnableAdminRotation() bool`
 
 HasEnableAdminRotation returns a boolean if a field has been set.
+
+### GetExternallyProvidedUser
+
+`func (o *DSProducerDetails) GetExternallyProvidedUser() string`
+
+GetExternallyProvidedUser returns the ExternallyProvidedUser field if non-nil, zero value otherwise.
+
+### GetExternallyProvidedUserOk
+
+`func (o *DSProducerDetails) GetExternallyProvidedUserOk() (*string, bool)`
+
+GetExternallyProvidedUserOk returns a tuple with the ExternallyProvidedUser field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExternallyProvidedUser
+
+`func (o *DSProducerDetails) SetExternallyProvidedUser(v string)`
+
+SetExternallyProvidedUser sets ExternallyProvidedUser field to given value.
+
+### HasExternallyProvidedUser
+
+`func (o *DSProducerDetails) HasExternallyProvidedUser() bool`
+
+HasExternallyProvidedUser returns a boolean if a field has been set.
 
 ### GetFailureMessage
 

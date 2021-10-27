@@ -29,6 +29,7 @@ type UpdateItem struct {
 	Password *string `json:"password,omitempty"`
 	// List of the existent tags that will be removed from this item
 	RmTag *[]string `json:"rm-tag,omitempty"`
+	SecureAccessAddHost *[]string `json:"secure-access-add-host,omitempty"`
 	SecureAccessAllowPortForwading *bool `json:"secure-access-allow-port-forwading,omitempty"`
 	SecureAccessAwsAccountId *string `json:"secure-access-aws-account-id,omitempty"`
 	SecureAccessAwsNativeCli *bool `json:"secure-access-aws-native-cli,omitempty"`
@@ -43,6 +44,8 @@ type UpdateItem struct {
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
 	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
 	SecureAccessRdpDomain *string `json:"secure-access-rdp-domain,omitempty"`
+	SecureAccessRdpUser *string `json:"secure-access-rdp-user,omitempty"`
+	SecureAccessRmHost *[]string `json:"secure-access-rm-host,omitempty"`
 	SecureAccessSshCreds *string `json:"secure-access-ssh-creds,omitempty"`
 	SecureAccessSshCredsUser *string `json:"secure-access-ssh-creds-user,omitempty"`
 	SecureAccessUrl *string `json:"secure-access-url,omitempty"`
@@ -260,6 +263,38 @@ func (o *UpdateItem) HasRmTag() bool {
 // SetRmTag gets a reference to the given []string and assigns it to the RmTag field.
 func (o *UpdateItem) SetRmTag(v []string) {
 	o.RmTag = &v
+}
+
+// GetSecureAccessAddHost returns the SecureAccessAddHost field value if set, zero value otherwise.
+func (o *UpdateItem) GetSecureAccessAddHost() []string {
+	if o == nil || o.SecureAccessAddHost == nil {
+		var ret []string
+		return ret
+	}
+	return *o.SecureAccessAddHost
+}
+
+// GetSecureAccessAddHostOk returns a tuple with the SecureAccessAddHost field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateItem) GetSecureAccessAddHostOk() (*[]string, bool) {
+	if o == nil || o.SecureAccessAddHost == nil {
+		return nil, false
+	}
+	return o.SecureAccessAddHost, true
+}
+
+// HasSecureAccessAddHost returns a boolean if a field has been set.
+func (o *UpdateItem) HasSecureAccessAddHost() bool {
+	if o != nil && o.SecureAccessAddHost != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessAddHost gets a reference to the given []string and assigns it to the SecureAccessAddHost field.
+func (o *UpdateItem) SetSecureAccessAddHost(v []string) {
+	o.SecureAccessAddHost = &v
 }
 
 // GetSecureAccessAllowPortForwading returns the SecureAccessAllowPortForwading field value if set, zero value otherwise.
@@ -710,6 +745,70 @@ func (o *UpdateItem) SetSecureAccessRdpDomain(v string) {
 	o.SecureAccessRdpDomain = &v
 }
 
+// GetSecureAccessRdpUser returns the SecureAccessRdpUser field value if set, zero value otherwise.
+func (o *UpdateItem) GetSecureAccessRdpUser() string {
+	if o == nil || o.SecureAccessRdpUser == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessRdpUser
+}
+
+// GetSecureAccessRdpUserOk returns a tuple with the SecureAccessRdpUser field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateItem) GetSecureAccessRdpUserOk() (*string, bool) {
+	if o == nil || o.SecureAccessRdpUser == nil {
+		return nil, false
+	}
+	return o.SecureAccessRdpUser, true
+}
+
+// HasSecureAccessRdpUser returns a boolean if a field has been set.
+func (o *UpdateItem) HasSecureAccessRdpUser() bool {
+	if o != nil && o.SecureAccessRdpUser != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessRdpUser gets a reference to the given string and assigns it to the SecureAccessRdpUser field.
+func (o *UpdateItem) SetSecureAccessRdpUser(v string) {
+	o.SecureAccessRdpUser = &v
+}
+
+// GetSecureAccessRmHost returns the SecureAccessRmHost field value if set, zero value otherwise.
+func (o *UpdateItem) GetSecureAccessRmHost() []string {
+	if o == nil || o.SecureAccessRmHost == nil {
+		var ret []string
+		return ret
+	}
+	return *o.SecureAccessRmHost
+}
+
+// GetSecureAccessRmHostOk returns a tuple with the SecureAccessRmHost field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateItem) GetSecureAccessRmHostOk() (*[]string, bool) {
+	if o == nil || o.SecureAccessRmHost == nil {
+		return nil, false
+	}
+	return o.SecureAccessRmHost, true
+}
+
+// HasSecureAccessRmHost returns a boolean if a field has been set.
+func (o *UpdateItem) HasSecureAccessRmHost() bool {
+	if o != nil && o.SecureAccessRmHost != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessRmHost gets a reference to the given []string and assigns it to the SecureAccessRmHost field.
+func (o *UpdateItem) SetSecureAccessRmHost(v []string) {
+	o.SecureAccessRmHost = &v
+}
+
 // GetSecureAccessSshCreds returns the SecureAccessSshCreds field value if set, zero value otherwise.
 func (o *UpdateItem) GetSecureAccessSshCreds() string {
 	if o == nil || o.SecureAccessSshCreds == nil {
@@ -986,6 +1085,9 @@ func (o UpdateItem) MarshalJSON() ([]byte, error) {
 	if o.RmTag != nil {
 		toSerialize["rm-tag"] = o.RmTag
 	}
+	if o.SecureAccessAddHost != nil {
+		toSerialize["secure-access-add-host"] = o.SecureAccessAddHost
+	}
 	if o.SecureAccessAllowPortForwading != nil {
 		toSerialize["secure-access-allow-port-forwading"] = o.SecureAccessAllowPortForwading
 	}
@@ -1027,6 +1129,12 @@ func (o UpdateItem) MarshalJSON() ([]byte, error) {
 	}
 	if o.SecureAccessRdpDomain != nil {
 		toSerialize["secure-access-rdp-domain"] = o.SecureAccessRdpDomain
+	}
+	if o.SecureAccessRdpUser != nil {
+		toSerialize["secure-access-rdp-user"] = o.SecureAccessRdpUser
+	}
+	if o.SecureAccessRmHost != nil {
+		toSerialize["secure-access-rm-host"] = o.SecureAccessRmHost
 	}
 	if o.SecureAccessSshCreds != nil {
 		toSerialize["secure-access-ssh-creds"] = o.SecureAccessSshCreds

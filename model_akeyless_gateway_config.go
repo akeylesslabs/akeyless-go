@@ -27,6 +27,7 @@ type AkeylessGatewayConfig struct {
 	Ldap *LdapConfigPart `json:"ldap,omitempty"`
 	Leadership *LeadershipConfigPart `json:"leadership,omitempty"`
 	LogForwarding *LogForwardingConfigPart `json:"log_forwarding,omitempty"`
+	MessageQueueInfo *GatewayMessageQueueInfo `json:"message_queue_info,omitempty"`
 	Migrations *MigrationsConfigPart `json:"migrations,omitempty"`
 	Producers *ProducersConfigPart `json:"producers,omitempty"`
 	Rotators *RotatorsConfigPart `json:"rotators,omitempty"`
@@ -372,6 +373,38 @@ func (o *AkeylessGatewayConfig) SetLogForwarding(v LogForwardingConfigPart) {
 	o.LogForwarding = &v
 }
 
+// GetMessageQueueInfo returns the MessageQueueInfo field value if set, zero value otherwise.
+func (o *AkeylessGatewayConfig) GetMessageQueueInfo() GatewayMessageQueueInfo {
+	if o == nil || o.MessageQueueInfo == nil {
+		var ret GatewayMessageQueueInfo
+		return ret
+	}
+	return *o.MessageQueueInfo
+}
+
+// GetMessageQueueInfoOk returns a tuple with the MessageQueueInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AkeylessGatewayConfig) GetMessageQueueInfoOk() (*GatewayMessageQueueInfo, bool) {
+	if o == nil || o.MessageQueueInfo == nil {
+		return nil, false
+	}
+	return o.MessageQueueInfo, true
+}
+
+// HasMessageQueueInfo returns a boolean if a field has been set.
+func (o *AkeylessGatewayConfig) HasMessageQueueInfo() bool {
+	if o != nil && o.MessageQueueInfo != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMessageQueueInfo gets a reference to the given GatewayMessageQueueInfo and assigns it to the MessageQueueInfo field.
+func (o *AkeylessGatewayConfig) SetMessageQueueInfo(v GatewayMessageQueueInfo) {
+	o.MessageQueueInfo = &v
+}
+
 // GetMigrations returns the Migrations field value if set, zero value otherwise.
 func (o *AkeylessGatewayConfig) GetMigrations() MigrationsConfigPart {
 	if o == nil || o.Migrations == nil {
@@ -595,6 +628,9 @@ func (o AkeylessGatewayConfig) MarshalJSON() ([]byte, error) {
 	}
 	if o.LogForwarding != nil {
 		toSerialize["log_forwarding"] = o.LogForwarding
+	}
+	if o.MessageQueueInfo != nil {
+		toSerialize["message_queue_info"] = o.MessageQueueInfo
 	}
 	if o.Migrations != nil {
 		toSerialize["migrations"] = o.Migrations

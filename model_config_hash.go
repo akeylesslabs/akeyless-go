@@ -26,6 +26,7 @@ type ConfigHash struct {
 	Ldap *string `json:"ldap,omitempty"`
 	Leadership *string `json:"leadership,omitempty"`
 	LogForwarding *string `json:"log_forwarding,omitempty"`
+	MQueue *string `json:"m_queue,omitempty"`
 	Migrations *string `json:"migrations,omitempty"`
 	Producers *map[string]interface{} `json:"producers,omitempty"`
 	Rotators *map[string]interface{} `json:"rotators,omitempty"`
@@ -338,6 +339,38 @@ func (o *ConfigHash) SetLogForwarding(v string) {
 	o.LogForwarding = &v
 }
 
+// GetMQueue returns the MQueue field value if set, zero value otherwise.
+func (o *ConfigHash) GetMQueue() string {
+	if o == nil || o.MQueue == nil {
+		var ret string
+		return ret
+	}
+	return *o.MQueue
+}
+
+// GetMQueueOk returns a tuple with the MQueue field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConfigHash) GetMQueueOk() (*string, bool) {
+	if o == nil || o.MQueue == nil {
+		return nil, false
+	}
+	return o.MQueue, true
+}
+
+// HasMQueue returns a boolean if a field has been set.
+func (o *ConfigHash) HasMQueue() bool {
+	if o != nil && o.MQueue != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMQueue gets a reference to the given string and assigns it to the MQueue field.
+func (o *ConfigHash) SetMQueue(v string) {
+	o.MQueue = &v
+}
+
 // GetMigrations returns the Migrations field value if set, zero value otherwise.
 func (o *ConfigHash) GetMigrations() string {
 	if o == nil || o.Migrations == nil {
@@ -526,6 +559,9 @@ func (o ConfigHash) MarshalJSON() ([]byte, error) {
 	}
 	if o.LogForwarding != nil {
 		toSerialize["log_forwarding"] = o.LogForwarding
+	}
+	if o.MQueue != nil {
+		toSerialize["m_queue"] = o.MQueue
 	}
 	if o.Migrations != nil {
 		toSerialize["migrations"] = o.Migrations

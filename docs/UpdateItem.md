@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **NewName** | Pointer to **string** | New item name | [optional] 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **RmTag** | Pointer to **[]string** | List of the existent tags that will be removed from this item | [optional] 
+**SecureAccessAddHost** | Pointer to **[]string** |  | [optional] 
 **SecureAccessAllowPortForwading** | Pointer to **bool** |  | [optional] 
 **SecureAccessAwsAccountId** | Pointer to **string** |  | [optional] 
 **SecureAccessAwsNativeCli** | Pointer to **bool** |  | [optional] 
@@ -24,6 +25,8 @@ Name | Type | Description | Notes
 **SecureAccessEnable** | Pointer to **string** |  | [optional] 
 **SecureAccessHost** | Pointer to **[]string** |  | [optional] 
 **SecureAccessRdpDomain** | Pointer to **string** |  | [optional] 
+**SecureAccessRdpUser** | Pointer to **string** |  | [optional] 
+**SecureAccessRmHost** | Pointer to **[]string** |  | [optional] 
 **SecureAccessSshCreds** | Pointer to **string** |  | [optional] 
 **SecureAccessSshCredsUser** | Pointer to **string** |  | [optional] 
 **SecureAccessUrl** | Pointer to **string** |  | [optional] 
@@ -196,6 +199,31 @@ SetRmTag sets RmTag field to given value.
 `func (o *UpdateItem) HasRmTag() bool`
 
 HasRmTag returns a boolean if a field has been set.
+
+### GetSecureAccessAddHost
+
+`func (o *UpdateItem) GetSecureAccessAddHost() []string`
+
+GetSecureAccessAddHost returns the SecureAccessAddHost field if non-nil, zero value otherwise.
+
+### GetSecureAccessAddHostOk
+
+`func (o *UpdateItem) GetSecureAccessAddHostOk() (*[]string, bool)`
+
+GetSecureAccessAddHostOk returns a tuple with the SecureAccessAddHost field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessAddHost
+
+`func (o *UpdateItem) SetSecureAccessAddHost(v []string)`
+
+SetSecureAccessAddHost sets SecureAccessAddHost field to given value.
+
+### HasSecureAccessAddHost
+
+`func (o *UpdateItem) HasSecureAccessAddHost() bool`
+
+HasSecureAccessAddHost returns a boolean if a field has been set.
 
 ### GetSecureAccessAllowPortForwading
 
@@ -546,6 +574,56 @@ SetSecureAccessRdpDomain sets SecureAccessRdpDomain field to given value.
 `func (o *UpdateItem) HasSecureAccessRdpDomain() bool`
 
 HasSecureAccessRdpDomain returns a boolean if a field has been set.
+
+### GetSecureAccessRdpUser
+
+`func (o *UpdateItem) GetSecureAccessRdpUser() string`
+
+GetSecureAccessRdpUser returns the SecureAccessRdpUser field if non-nil, zero value otherwise.
+
+### GetSecureAccessRdpUserOk
+
+`func (o *UpdateItem) GetSecureAccessRdpUserOk() (*string, bool)`
+
+GetSecureAccessRdpUserOk returns a tuple with the SecureAccessRdpUser field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessRdpUser
+
+`func (o *UpdateItem) SetSecureAccessRdpUser(v string)`
+
+SetSecureAccessRdpUser sets SecureAccessRdpUser field to given value.
+
+### HasSecureAccessRdpUser
+
+`func (o *UpdateItem) HasSecureAccessRdpUser() bool`
+
+HasSecureAccessRdpUser returns a boolean if a field has been set.
+
+### GetSecureAccessRmHost
+
+`func (o *UpdateItem) GetSecureAccessRmHost() []string`
+
+GetSecureAccessRmHost returns the SecureAccessRmHost field if non-nil, zero value otherwise.
+
+### GetSecureAccessRmHostOk
+
+`func (o *UpdateItem) GetSecureAccessRmHostOk() (*[]string, bool)`
+
+GetSecureAccessRmHostOk returns a tuple with the SecureAccessRmHost field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessRmHost
+
+`func (o *UpdateItem) SetSecureAccessRmHost(v []string)`
+
+SetSecureAccessRmHost sets SecureAccessRmHost field to given value.
+
+### HasSecureAccessRmHost
+
+`func (o *UpdateItem) HasSecureAccessRmHost() bool`
+
+HasSecureAccessRmHost returns a boolean if a field has been set.
 
 ### GetSecureAccessSshCreds
 

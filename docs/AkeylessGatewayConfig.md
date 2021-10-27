@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **Ldap** | Pointer to [**LdapConfigPart**](LdapConfigPart.md) |  | [optional] 
 **Leadership** | Pointer to [**LeadershipConfigPart**](LeadershipConfigPart.md) |  | [optional] 
 **LogForwarding** | Pointer to [**LogForwardingConfigPart**](LogForwardingConfigPart.md) |  | [optional] 
+**MessageQueueInfo** | Pointer to [**GatewayMessageQueueInfo**](GatewayMessageQueueInfo.md) |  | [optional] 
 **Migrations** | Pointer to [**MigrationsConfigPart**](MigrationsConfigPart.md) |  | [optional] 
 **Producers** | Pointer to [**ProducersConfigPart**](ProducersConfigPart.md) |  | [optional] 
 **Rotators** | Pointer to [**RotatorsConfigPart**](RotatorsConfigPart.md) |  | [optional] 
@@ -289,6 +290,31 @@ SetLogForwarding sets LogForwarding field to given value.
 `func (o *AkeylessGatewayConfig) HasLogForwarding() bool`
 
 HasLogForwarding returns a boolean if a field has been set.
+
+### GetMessageQueueInfo
+
+`func (o *AkeylessGatewayConfig) GetMessageQueueInfo() GatewayMessageQueueInfo`
+
+GetMessageQueueInfo returns the MessageQueueInfo field if non-nil, zero value otherwise.
+
+### GetMessageQueueInfoOk
+
+`func (o *AkeylessGatewayConfig) GetMessageQueueInfoOk() (*GatewayMessageQueueInfo, bool)`
+
+GetMessageQueueInfoOk returns a tuple with the MessageQueueInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMessageQueueInfo
+
+`func (o *AkeylessGatewayConfig) SetMessageQueueInfo(v GatewayMessageQueueInfo)`
+
+SetMessageQueueInfo sets MessageQueueInfo field to given value.
+
+### HasMessageQueueInfo
+
+`func (o *AkeylessGatewayConfig) HasMessageQueueInfo() bool`
+
+HasMessageQueueInfo returns a boolean if a field has been set.
 
 ### GetMigrations
 

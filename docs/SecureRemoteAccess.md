@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccountId** | Pointer to **string** |  | [optional] 
 **AllowPortForwarding** | Pointer to **bool** |  | [optional] 
+**AllowProvidingExternalUsername** | Pointer to **bool** |  | [optional] 
 **BastionApi** | Pointer to **string** |  | [optional] 
 **BastionIssuer** | Pointer to **string** |  | [optional] 
 **BastionIssuerId** | Pointer to **int64** |  | [optional] 
@@ -21,6 +22,7 @@ Name | Type | Description | Notes
 **IsWeb** | Pointer to **bool** |  | [optional] 
 **Isolated** | Pointer to **bool** |  | [optional] 
 **Native** | Pointer to **bool** |  | [optional] 
+**RdpUser** | Pointer to **string** |  | [optional] 
 **Region** | Pointer to **string** |  | [optional] 
 **Schema** | Pointer to **string** |  | [optional] 
 **SshPassword** | Pointer to **bool** |  | [optional] 
@@ -97,6 +99,31 @@ SetAllowPortForwarding sets AllowPortForwarding field to given value.
 `func (o *SecureRemoteAccess) HasAllowPortForwarding() bool`
 
 HasAllowPortForwarding returns a boolean if a field has been set.
+
+### GetAllowProvidingExternalUsername
+
+`func (o *SecureRemoteAccess) GetAllowProvidingExternalUsername() bool`
+
+GetAllowProvidingExternalUsername returns the AllowProvidingExternalUsername field if non-nil, zero value otherwise.
+
+### GetAllowProvidingExternalUsernameOk
+
+`func (o *SecureRemoteAccess) GetAllowProvidingExternalUsernameOk() (*bool, bool)`
+
+GetAllowProvidingExternalUsernameOk returns a tuple with the AllowProvidingExternalUsername field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowProvidingExternalUsername
+
+`func (o *SecureRemoteAccess) SetAllowProvidingExternalUsername(v bool)`
+
+SetAllowProvidingExternalUsername sets AllowProvidingExternalUsername field to given value.
+
+### HasAllowProvidingExternalUsername
+
+`func (o *SecureRemoteAccess) HasAllowProvidingExternalUsername() bool`
+
+HasAllowProvidingExternalUsername returns a boolean if a field has been set.
 
 ### GetBastionApi
 
@@ -472,6 +499,31 @@ SetNative sets Native field to given value.
 `func (o *SecureRemoteAccess) HasNative() bool`
 
 HasNative returns a boolean if a field has been set.
+
+### GetRdpUser
+
+`func (o *SecureRemoteAccess) GetRdpUser() string`
+
+GetRdpUser returns the RdpUser field if non-nil, zero value otherwise.
+
+### GetRdpUserOk
+
+`func (o *SecureRemoteAccess) GetRdpUserOk() (*string, bool)`
+
+GetRdpUserOk returns a tuple with the RdpUser field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRdpUser
+
+`func (o *SecureRemoteAccess) SetRdpUser(v string)`
+
+SetRdpUser sets RdpUser field to given value.
+
+### HasRdpUser
+
+`func (o *SecureRemoteAccess) HasRdpUser() bool`
+
+HasRdpUser returns a boolean if a field has been set.
 
 ### GetRegion
 

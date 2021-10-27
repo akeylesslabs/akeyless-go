@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **SecureAccessEnable** | Pointer to **string** |  | [optional] 
 **SecureAccessHost** | Pointer to **[]string** |  | [optional] 
 **SecureAccessRdpDomain** | Pointer to **string** |  | [optional] 
+**SecureAccessRdpUser** | Pointer to **string** |  | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -335,6 +336,31 @@ SetSecureAccessRdpDomain sets SecureAccessRdpDomain field to given value.
 `func (o *GatewayCreateProducerRdp) HasSecureAccessRdpDomain() bool`
 
 HasSecureAccessRdpDomain returns a boolean if a field has been set.
+
+### GetSecureAccessRdpUser
+
+`func (o *GatewayCreateProducerRdp) GetSecureAccessRdpUser() string`
+
+GetSecureAccessRdpUser returns the SecureAccessRdpUser field if non-nil, zero value otherwise.
+
+### GetSecureAccessRdpUserOk
+
+`func (o *GatewayCreateProducerRdp) GetSecureAccessRdpUserOk() (*string, bool)`
+
+GetSecureAccessRdpUserOk returns a tuple with the SecureAccessRdpUser field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessRdpUser
+
+`func (o *GatewayCreateProducerRdp) SetSecureAccessRdpUser(v string)`
+
+SetSecureAccessRdpUser sets SecureAccessRdpUser field to given value.
+
+### HasSecureAccessRdpUser
+
+`func (o *GatewayCreateProducerRdp) HasSecureAccessRdpUser() bool`
+
+HasSecureAccessRdpUser returns a boolean if a field has been set.
 
 ### GetTargetName
 
