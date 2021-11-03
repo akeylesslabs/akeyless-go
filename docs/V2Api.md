@@ -2359,7 +2359,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateLdapTarget("AccessId_example", "BindDn_example", "BindDnPassword_example", "LdapUrl_example", "Name_example") // CreateLdapTarget | 
+    body := *openapiclient.NewcreateLdapTarget("BindDn_example", "BindDnPassword_example", "LdapUrl_example", "Name_example") // CreateLdapTarget | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

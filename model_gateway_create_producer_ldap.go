@@ -17,22 +17,12 @@ import (
 
 // GatewayCreateProducerLdap gatewayCreateProducerLdap is a command that creates ldap producer
 type GatewayCreateProducerLdap struct {
-	// Access ID
-	AccessId *string `json:"access-id,omitempty"`
 	// Bind DN
 	BindDn *string `json:"bind-dn,omitempty"`
 	// Bind DN Password
 	BindDnPassword *string `json:"bind-dn-password,omitempty"`
-	// EnableAnonymousSearch
-	EnableAnonymSearch *bool `json:"enable-anonym-search,omitempty"`
 	// Fixed user
-	FixedUserOnly *string `json:"fixed-user-only,omitempty"`
-	// Group attribute
-	GroupAttribute *string `json:"group-attribute,omitempty"`
-	// Group DN
-	GroupDn *string `json:"group-dn,omitempty"`
-	// Group attribute
-	GroupFilter *string `json:"group-filter,omitempty"`
+	ExternalUsername *string `json:"external-username,omitempty"`
 	// CA Certificate File Content
 	LdapCaCert *string `json:"ldap-ca-cert,omitempty"`
 	// LDAP Server URL
@@ -41,8 +31,6 @@ type GatewayCreateProducerLdap struct {
 	Name string `json:"name"`
 	// Required only when the authentication process requires a username and password
 	Password *string `json:"password,omitempty"`
-	// Base64-encoded ldap private key text
-	PrivateKey *string `json:"private-key,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
 	// Target name
@@ -69,8 +57,8 @@ type GatewayCreateProducerLdap struct {
 // will change when the set of required properties is changed
 func NewGatewayCreateProducerLdap(name string, ) *GatewayCreateProducerLdap {
 	this := GatewayCreateProducerLdap{}
-	var fixedUserOnly string = "false"
-	this.FixedUserOnly = &fixedUserOnly
+	var externalUsername string = "false"
+	this.ExternalUsername = &externalUsername
 	this.Name = name
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
@@ -82,43 +70,11 @@ func NewGatewayCreateProducerLdap(name string, ) *GatewayCreateProducerLdap {
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayCreateProducerLdapWithDefaults() *GatewayCreateProducerLdap {
 	this := GatewayCreateProducerLdap{}
-	var fixedUserOnly string = "false"
-	this.FixedUserOnly = &fixedUserOnly
+	var externalUsername string = "false"
+	this.ExternalUsername = &externalUsername
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
-}
-
-// GetAccessId returns the AccessId field value if set, zero value otherwise.
-func (o *GatewayCreateProducerLdap) GetAccessId() string {
-	if o == nil || o.AccessId == nil {
-		var ret string
-		return ret
-	}
-	return *o.AccessId
-}
-
-// GetAccessIdOk returns a tuple with the AccessId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerLdap) GetAccessIdOk() (*string, bool) {
-	if o == nil || o.AccessId == nil {
-		return nil, false
-	}
-	return o.AccessId, true
-}
-
-// HasAccessId returns a boolean if a field has been set.
-func (o *GatewayCreateProducerLdap) HasAccessId() bool {
-	if o != nil && o.AccessId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAccessId gets a reference to the given string and assigns it to the AccessId field.
-func (o *GatewayCreateProducerLdap) SetAccessId(v string) {
-	o.AccessId = &v
 }
 
 // GetBindDn returns the BindDn field value if set, zero value otherwise.
@@ -185,164 +141,36 @@ func (o *GatewayCreateProducerLdap) SetBindDnPassword(v string) {
 	o.BindDnPassword = &v
 }
 
-// GetEnableAnonymSearch returns the EnableAnonymSearch field value if set, zero value otherwise.
-func (o *GatewayCreateProducerLdap) GetEnableAnonymSearch() bool {
-	if o == nil || o.EnableAnonymSearch == nil {
-		var ret bool
-		return ret
-	}
-	return *o.EnableAnonymSearch
-}
-
-// GetEnableAnonymSearchOk returns a tuple with the EnableAnonymSearch field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerLdap) GetEnableAnonymSearchOk() (*bool, bool) {
-	if o == nil || o.EnableAnonymSearch == nil {
-		return nil, false
-	}
-	return o.EnableAnonymSearch, true
-}
-
-// HasEnableAnonymSearch returns a boolean if a field has been set.
-func (o *GatewayCreateProducerLdap) HasEnableAnonymSearch() bool {
-	if o != nil && o.EnableAnonymSearch != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEnableAnonymSearch gets a reference to the given bool and assigns it to the EnableAnonymSearch field.
-func (o *GatewayCreateProducerLdap) SetEnableAnonymSearch(v bool) {
-	o.EnableAnonymSearch = &v
-}
-
-// GetFixedUserOnly returns the FixedUserOnly field value if set, zero value otherwise.
-func (o *GatewayCreateProducerLdap) GetFixedUserOnly() string {
-	if o == nil || o.FixedUserOnly == nil {
+// GetExternalUsername returns the ExternalUsername field value if set, zero value otherwise.
+func (o *GatewayCreateProducerLdap) GetExternalUsername() string {
+	if o == nil || o.ExternalUsername == nil {
 		var ret string
 		return ret
 	}
-	return *o.FixedUserOnly
+	return *o.ExternalUsername
 }
 
-// GetFixedUserOnlyOk returns a tuple with the FixedUserOnly field value if set, nil otherwise
+// GetExternalUsernameOk returns a tuple with the ExternalUsername field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerLdap) GetFixedUserOnlyOk() (*string, bool) {
-	if o == nil || o.FixedUserOnly == nil {
+func (o *GatewayCreateProducerLdap) GetExternalUsernameOk() (*string, bool) {
+	if o == nil || o.ExternalUsername == nil {
 		return nil, false
 	}
-	return o.FixedUserOnly, true
+	return o.ExternalUsername, true
 }
 
-// HasFixedUserOnly returns a boolean if a field has been set.
-func (o *GatewayCreateProducerLdap) HasFixedUserOnly() bool {
-	if o != nil && o.FixedUserOnly != nil {
+// HasExternalUsername returns a boolean if a field has been set.
+func (o *GatewayCreateProducerLdap) HasExternalUsername() bool {
+	if o != nil && o.ExternalUsername != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetFixedUserOnly gets a reference to the given string and assigns it to the FixedUserOnly field.
-func (o *GatewayCreateProducerLdap) SetFixedUserOnly(v string) {
-	o.FixedUserOnly = &v
-}
-
-// GetGroupAttribute returns the GroupAttribute field value if set, zero value otherwise.
-func (o *GatewayCreateProducerLdap) GetGroupAttribute() string {
-	if o == nil || o.GroupAttribute == nil {
-		var ret string
-		return ret
-	}
-	return *o.GroupAttribute
-}
-
-// GetGroupAttributeOk returns a tuple with the GroupAttribute field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerLdap) GetGroupAttributeOk() (*string, bool) {
-	if o == nil || o.GroupAttribute == nil {
-		return nil, false
-	}
-	return o.GroupAttribute, true
-}
-
-// HasGroupAttribute returns a boolean if a field has been set.
-func (o *GatewayCreateProducerLdap) HasGroupAttribute() bool {
-	if o != nil && o.GroupAttribute != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGroupAttribute gets a reference to the given string and assigns it to the GroupAttribute field.
-func (o *GatewayCreateProducerLdap) SetGroupAttribute(v string) {
-	o.GroupAttribute = &v
-}
-
-// GetGroupDn returns the GroupDn field value if set, zero value otherwise.
-func (o *GatewayCreateProducerLdap) GetGroupDn() string {
-	if o == nil || o.GroupDn == nil {
-		var ret string
-		return ret
-	}
-	return *o.GroupDn
-}
-
-// GetGroupDnOk returns a tuple with the GroupDn field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerLdap) GetGroupDnOk() (*string, bool) {
-	if o == nil || o.GroupDn == nil {
-		return nil, false
-	}
-	return o.GroupDn, true
-}
-
-// HasGroupDn returns a boolean if a field has been set.
-func (o *GatewayCreateProducerLdap) HasGroupDn() bool {
-	if o != nil && o.GroupDn != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGroupDn gets a reference to the given string and assigns it to the GroupDn field.
-func (o *GatewayCreateProducerLdap) SetGroupDn(v string) {
-	o.GroupDn = &v
-}
-
-// GetGroupFilter returns the GroupFilter field value if set, zero value otherwise.
-func (o *GatewayCreateProducerLdap) GetGroupFilter() string {
-	if o == nil || o.GroupFilter == nil {
-		var ret string
-		return ret
-	}
-	return *o.GroupFilter
-}
-
-// GetGroupFilterOk returns a tuple with the GroupFilter field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerLdap) GetGroupFilterOk() (*string, bool) {
-	if o == nil || o.GroupFilter == nil {
-		return nil, false
-	}
-	return o.GroupFilter, true
-}
-
-// HasGroupFilter returns a boolean if a field has been set.
-func (o *GatewayCreateProducerLdap) HasGroupFilter() bool {
-	if o != nil && o.GroupFilter != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGroupFilter gets a reference to the given string and assigns it to the GroupFilter field.
-func (o *GatewayCreateProducerLdap) SetGroupFilter(v string) {
-	o.GroupFilter = &v
+// SetExternalUsername gets a reference to the given string and assigns it to the ExternalUsername field.
+func (o *GatewayCreateProducerLdap) SetExternalUsername(v string) {
+	o.ExternalUsername = &v
 }
 
 // GetLdapCaCert returns the LdapCaCert field value if set, zero value otherwise.
@@ -463,38 +291,6 @@ func (o *GatewayCreateProducerLdap) HasPassword() bool {
 // SetPassword gets a reference to the given string and assigns it to the Password field.
 func (o *GatewayCreateProducerLdap) SetPassword(v string) {
 	o.Password = &v
-}
-
-// GetPrivateKey returns the PrivateKey field value if set, zero value otherwise.
-func (o *GatewayCreateProducerLdap) GetPrivateKey() string {
-	if o == nil || o.PrivateKey == nil {
-		var ret string
-		return ret
-	}
-	return *o.PrivateKey
-}
-
-// GetPrivateKeyOk returns a tuple with the PrivateKey field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerLdap) GetPrivateKeyOk() (*string, bool) {
-	if o == nil || o.PrivateKey == nil {
-		return nil, false
-	}
-	return o.PrivateKey, true
-}
-
-// HasPrivateKey returns a boolean if a field has been set.
-func (o *GatewayCreateProducerLdap) HasPrivateKey() bool {
-	if o != nil && o.PrivateKey != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPrivateKey gets a reference to the given string and assigns it to the PrivateKey field.
-func (o *GatewayCreateProducerLdap) SetPrivateKey(v string) {
-	o.PrivateKey = &v
 }
 
 // GetProducerEncryptionKeyName returns the ProducerEncryptionKeyName field value if set, zero value otherwise.
@@ -787,29 +583,14 @@ func (o *GatewayCreateProducerLdap) SetUsername(v string) {
 
 func (o GatewayCreateProducerLdap) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.AccessId != nil {
-		toSerialize["access-id"] = o.AccessId
-	}
 	if o.BindDn != nil {
 		toSerialize["bind-dn"] = o.BindDn
 	}
 	if o.BindDnPassword != nil {
 		toSerialize["bind-dn-password"] = o.BindDnPassword
 	}
-	if o.EnableAnonymSearch != nil {
-		toSerialize["enable-anonym-search"] = o.EnableAnonymSearch
-	}
-	if o.FixedUserOnly != nil {
-		toSerialize["fixed-user-only"] = o.FixedUserOnly
-	}
-	if o.GroupAttribute != nil {
-		toSerialize["group-attribute"] = o.GroupAttribute
-	}
-	if o.GroupDn != nil {
-		toSerialize["group-dn"] = o.GroupDn
-	}
-	if o.GroupFilter != nil {
-		toSerialize["group-filter"] = o.GroupFilter
+	if o.ExternalUsername != nil {
+		toSerialize["external-username"] = o.ExternalUsername
 	}
 	if o.LdapCaCert != nil {
 		toSerialize["ldap-ca-cert"] = o.LdapCaCert
@@ -822,9 +603,6 @@ func (o GatewayCreateProducerLdap) MarshalJSON() ([]byte, error) {
 	}
 	if o.Password != nil {
 		toSerialize["password"] = o.Password
-	}
-	if o.PrivateKey != nil {
-		toSerialize["private-key"] = o.PrivateKey
 	}
 	if o.ProducerEncryptionKeyName != nil {
 		toSerialize["producer-encryption-key-name"] = o.ProducerEncryptionKeyName

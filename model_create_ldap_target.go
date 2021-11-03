@@ -17,16 +17,12 @@ import (
 
 // CreateLdapTarget struct for CreateLdapTarget
 type CreateLdapTarget struct {
-	// Access ID
-	AccessId string `json:"access-id"`
 	// Bind DN
 	BindDn string `json:"bind-dn"`
 	// Bind DN Password
 	BindDnPassword string `json:"bind-dn-password"`
 	// Comment about the target
 	Comment *string `json:"comment,omitempty"`
-	// EnableAnonymousSearch
-	EnableAnonymSearch *bool `json:"enable-anonym-search,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
 	// CA Certificate File Content
@@ -37,8 +33,6 @@ type CreateLdapTarget struct {
 	Name string `json:"name"`
 	// Required only when the authentication process requires a username and password
 	Password *string `json:"password,omitempty"`
-	// Base64-encoded ldap private key text
-	PrivateKey *string `json:"private-key,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// Token expiration
@@ -53,9 +47,8 @@ type CreateLdapTarget struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateLdapTarget(accessId string, bindDn string, bindDnPassword string, ldapUrl string, name string, ) *CreateLdapTarget {
+func NewCreateLdapTarget(bindDn string, bindDnPassword string, ldapUrl string, name string, ) *CreateLdapTarget {
 	this := CreateLdapTarget{}
-	this.AccessId = accessId
 	this.BindDn = bindDn
 	this.BindDnPassword = bindDnPassword
 	this.LdapUrl = ldapUrl
@@ -69,30 +62,6 @@ func NewCreateLdapTarget(accessId string, bindDn string, bindDnPassword string, 
 func NewCreateLdapTargetWithDefaults() *CreateLdapTarget {
 	this := CreateLdapTarget{}
 	return &this
-}
-
-// GetAccessId returns the AccessId field value
-func (o *CreateLdapTarget) GetAccessId() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.AccessId
-}
-
-// GetAccessIdOk returns a tuple with the AccessId field value
-// and a boolean to check if the value has been set.
-func (o *CreateLdapTarget) GetAccessIdOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.AccessId, true
-}
-
-// SetAccessId sets field value
-func (o *CreateLdapTarget) SetAccessId(v string) {
-	o.AccessId = v
 }
 
 // GetBindDn returns the BindDn field value
@@ -173,38 +142,6 @@ func (o *CreateLdapTarget) HasComment() bool {
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *CreateLdapTarget) SetComment(v string) {
 	o.Comment = &v
-}
-
-// GetEnableAnonymSearch returns the EnableAnonymSearch field value if set, zero value otherwise.
-func (o *CreateLdapTarget) GetEnableAnonymSearch() bool {
-	if o == nil || o.EnableAnonymSearch == nil {
-		var ret bool
-		return ret
-	}
-	return *o.EnableAnonymSearch
-}
-
-// GetEnableAnonymSearchOk returns a tuple with the EnableAnonymSearch field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateLdapTarget) GetEnableAnonymSearchOk() (*bool, bool) {
-	if o == nil || o.EnableAnonymSearch == nil {
-		return nil, false
-	}
-	return o.EnableAnonymSearch, true
-}
-
-// HasEnableAnonymSearch returns a boolean if a field has been set.
-func (o *CreateLdapTarget) HasEnableAnonymSearch() bool {
-	if o != nil && o.EnableAnonymSearch != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEnableAnonymSearch gets a reference to the given bool and assigns it to the EnableAnonymSearch field.
-func (o *CreateLdapTarget) SetEnableAnonymSearch(v bool) {
-	o.EnableAnonymSearch = &v
 }
 
 // GetKey returns the Key field value if set, zero value otherwise.
@@ -351,38 +288,6 @@ func (o *CreateLdapTarget) SetPassword(v string) {
 	o.Password = &v
 }
 
-// GetPrivateKey returns the PrivateKey field value if set, zero value otherwise.
-func (o *CreateLdapTarget) GetPrivateKey() string {
-	if o == nil || o.PrivateKey == nil {
-		var ret string
-		return ret
-	}
-	return *o.PrivateKey
-}
-
-// GetPrivateKeyOk returns a tuple with the PrivateKey field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateLdapTarget) GetPrivateKeyOk() (*string, bool) {
-	if o == nil || o.PrivateKey == nil {
-		return nil, false
-	}
-	return o.PrivateKey, true
-}
-
-// HasPrivateKey returns a boolean if a field has been set.
-func (o *CreateLdapTarget) HasPrivateKey() bool {
-	if o != nil && o.PrivateKey != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPrivateKey gets a reference to the given string and assigns it to the PrivateKey field.
-func (o *CreateLdapTarget) SetPrivateKey(v string) {
-	o.PrivateKey = &v
-}
-
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *CreateLdapTarget) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -514,9 +419,6 @@ func (o *CreateLdapTarget) SetUsername(v string) {
 func (o CreateLdapTarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["access-id"] = o.AccessId
-	}
-	if true {
 		toSerialize["bind-dn"] = o.BindDn
 	}
 	if true {
@@ -524,9 +426,6 @@ func (o CreateLdapTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment
-	}
-	if o.EnableAnonymSearch != nil {
-		toSerialize["enable-anonym-search"] = o.EnableAnonymSearch
 	}
 	if o.Key != nil {
 		toSerialize["key"] = o.Key
@@ -542,9 +441,6 @@ func (o CreateLdapTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.Password != nil {
 		toSerialize["password"] = o.Password
-	}
-	if o.PrivateKey != nil {
-		toSerialize["private-key"] = o.PrivateKey
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

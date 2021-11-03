@@ -59,13 +59,10 @@ type TargetTypeDetailsInput struct {
 	K8sBearerToken *string `json:"k8s_bearer_token,omitempty"`
 	K8sClusterCaCertificate *string `json:"k8s_cluster_ca_certificate,omitempty"`
 	K8sClusterEndpoint *string `json:"k8s_cluster_endpoint,omitempty"`
-	LdapAccessId *string `json:"ldap_access_id,omitempty"`
-	LdapAnonymousSearch *bool `json:"ldap_anonymous_search,omitempty"`
 	LdapAudience *string `json:"ldap_audience,omitempty"`
 	LdapBindDn *string `json:"ldap_bind_dn,omitempty"`
 	LdapBindPassword *string `json:"ldap_bind_password,omitempty"`
 	LdapCertificate *string `json:"ldap_certificate,omitempty"`
-	LdapPrivateKey *string `json:"ldap_private_key,omitempty"`
 	LdapTokenExpiration *string `json:"ldap_token_expiration,omitempty"`
 	LdapUrl *string `json:"ldap_url,omitempty"`
 	MongodbAtlasApiPrivateKey *string `json:"mongodb_atlas_api_private_key,omitempty"`
@@ -1399,70 +1396,6 @@ func (o *TargetTypeDetailsInput) SetK8sClusterEndpoint(v string) {
 	o.K8sClusterEndpoint = &v
 }
 
-// GetLdapAccessId returns the LdapAccessId field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetLdapAccessId() string {
-	if o == nil || o.LdapAccessId == nil {
-		var ret string
-		return ret
-	}
-	return *o.LdapAccessId
-}
-
-// GetLdapAccessIdOk returns a tuple with the LdapAccessId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetLdapAccessIdOk() (*string, bool) {
-	if o == nil || o.LdapAccessId == nil {
-		return nil, false
-	}
-	return o.LdapAccessId, true
-}
-
-// HasLdapAccessId returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasLdapAccessId() bool {
-	if o != nil && o.LdapAccessId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLdapAccessId gets a reference to the given string and assigns it to the LdapAccessId field.
-func (o *TargetTypeDetailsInput) SetLdapAccessId(v string) {
-	o.LdapAccessId = &v
-}
-
-// GetLdapAnonymousSearch returns the LdapAnonymousSearch field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetLdapAnonymousSearch() bool {
-	if o == nil || o.LdapAnonymousSearch == nil {
-		var ret bool
-		return ret
-	}
-	return *o.LdapAnonymousSearch
-}
-
-// GetLdapAnonymousSearchOk returns a tuple with the LdapAnonymousSearch field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetLdapAnonymousSearchOk() (*bool, bool) {
-	if o == nil || o.LdapAnonymousSearch == nil {
-		return nil, false
-	}
-	return o.LdapAnonymousSearch, true
-}
-
-// HasLdapAnonymousSearch returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasLdapAnonymousSearch() bool {
-	if o != nil && o.LdapAnonymousSearch != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLdapAnonymousSearch gets a reference to the given bool and assigns it to the LdapAnonymousSearch field.
-func (o *TargetTypeDetailsInput) SetLdapAnonymousSearch(v bool) {
-	o.LdapAnonymousSearch = &v
-}
-
 // GetLdapAudience returns the LdapAudience field value if set, zero value otherwise.
 func (o *TargetTypeDetailsInput) GetLdapAudience() string {
 	if o == nil || o.LdapAudience == nil {
@@ -1589,38 +1522,6 @@ func (o *TargetTypeDetailsInput) HasLdapCertificate() bool {
 // SetLdapCertificate gets a reference to the given string and assigns it to the LdapCertificate field.
 func (o *TargetTypeDetailsInput) SetLdapCertificate(v string) {
 	o.LdapCertificate = &v
-}
-
-// GetLdapPrivateKey returns the LdapPrivateKey field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetLdapPrivateKey() string {
-	if o == nil || o.LdapPrivateKey == nil {
-		var ret string
-		return ret
-	}
-	return *o.LdapPrivateKey
-}
-
-// GetLdapPrivateKeyOk returns a tuple with the LdapPrivateKey field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetLdapPrivateKeyOk() (*string, bool) {
-	if o == nil || o.LdapPrivateKey == nil {
-		return nil, false
-	}
-	return o.LdapPrivateKey, true
-}
-
-// HasLdapPrivateKey returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasLdapPrivateKey() bool {
-	if o != nil && o.LdapPrivateKey != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLdapPrivateKey gets a reference to the given string and assigns it to the LdapPrivateKey field.
-func (o *TargetTypeDetailsInput) SetLdapPrivateKey(v string) {
-	o.LdapPrivateKey = &v
 }
 
 // GetLdapTokenExpiration returns the LdapTokenExpiration field value if set, zero value otherwise.
@@ -2737,12 +2638,6 @@ func (o TargetTypeDetailsInput) MarshalJSON() ([]byte, error) {
 	if o.K8sClusterEndpoint != nil {
 		toSerialize["k8s_cluster_endpoint"] = o.K8sClusterEndpoint
 	}
-	if o.LdapAccessId != nil {
-		toSerialize["ldap_access_id"] = o.LdapAccessId
-	}
-	if o.LdapAnonymousSearch != nil {
-		toSerialize["ldap_anonymous_search"] = o.LdapAnonymousSearch
-	}
 	if o.LdapAudience != nil {
 		toSerialize["ldap_audience"] = o.LdapAudience
 	}
@@ -2754,9 +2649,6 @@ func (o TargetTypeDetailsInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.LdapCertificate != nil {
 		toSerialize["ldap_certificate"] = o.LdapCertificate
-	}
-	if o.LdapPrivateKey != nil {
-		toSerialize["ldap_private_key"] = o.LdapPrivateKey
 	}
 	if o.LdapTokenExpiration != nil {
 		toSerialize["ldap_token_expiration"] = o.LdapTokenExpiration

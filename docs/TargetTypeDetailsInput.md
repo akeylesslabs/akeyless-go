@@ -44,13 +44,10 @@ Name | Type | Description | Notes
 **K8sBearerToken** | Pointer to **string** |  | [optional] 
 **K8sClusterCaCertificate** | Pointer to **string** |  | [optional] 
 **K8sClusterEndpoint** | Pointer to **string** |  | [optional] 
-**LdapAccessId** | Pointer to **string** |  | [optional] 
-**LdapAnonymousSearch** | Pointer to **bool** |  | [optional] 
 **LdapAudience** | Pointer to **string** |  | [optional] 
 **LdapBindDn** | Pointer to **string** |  | [optional] 
 **LdapBindPassword** | Pointer to **string** |  | [optional] 
 **LdapCertificate** | Pointer to **string** |  | [optional] 
-**LdapPrivateKey** | Pointer to **string** |  | [optional] 
 **LdapTokenExpiration** | Pointer to **string** |  | [optional] 
 **LdapUrl** | Pointer to **string** |  | [optional] 
 **MongodbAtlasApiPrivateKey** | Pointer to **string** |  | [optional] 
@@ -1102,56 +1099,6 @@ SetK8sClusterEndpoint sets K8sClusterEndpoint field to given value.
 
 HasK8sClusterEndpoint returns a boolean if a field has been set.
 
-### GetLdapAccessId
-
-`func (o *TargetTypeDetailsInput) GetLdapAccessId() string`
-
-GetLdapAccessId returns the LdapAccessId field if non-nil, zero value otherwise.
-
-### GetLdapAccessIdOk
-
-`func (o *TargetTypeDetailsInput) GetLdapAccessIdOk() (*string, bool)`
-
-GetLdapAccessIdOk returns a tuple with the LdapAccessId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLdapAccessId
-
-`func (o *TargetTypeDetailsInput) SetLdapAccessId(v string)`
-
-SetLdapAccessId sets LdapAccessId field to given value.
-
-### HasLdapAccessId
-
-`func (o *TargetTypeDetailsInput) HasLdapAccessId() bool`
-
-HasLdapAccessId returns a boolean if a field has been set.
-
-### GetLdapAnonymousSearch
-
-`func (o *TargetTypeDetailsInput) GetLdapAnonymousSearch() bool`
-
-GetLdapAnonymousSearch returns the LdapAnonymousSearch field if non-nil, zero value otherwise.
-
-### GetLdapAnonymousSearchOk
-
-`func (o *TargetTypeDetailsInput) GetLdapAnonymousSearchOk() (*bool, bool)`
-
-GetLdapAnonymousSearchOk returns a tuple with the LdapAnonymousSearch field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLdapAnonymousSearch
-
-`func (o *TargetTypeDetailsInput) SetLdapAnonymousSearch(v bool)`
-
-SetLdapAnonymousSearch sets LdapAnonymousSearch field to given value.
-
-### HasLdapAnonymousSearch
-
-`func (o *TargetTypeDetailsInput) HasLdapAnonymousSearch() bool`
-
-HasLdapAnonymousSearch returns a boolean if a field has been set.
-
 ### GetLdapAudience
 
 `func (o *TargetTypeDetailsInput) GetLdapAudience() string`
@@ -1251,31 +1198,6 @@ SetLdapCertificate sets LdapCertificate field to given value.
 `func (o *TargetTypeDetailsInput) HasLdapCertificate() bool`
 
 HasLdapCertificate returns a boolean if a field has been set.
-
-### GetLdapPrivateKey
-
-`func (o *TargetTypeDetailsInput) GetLdapPrivateKey() string`
-
-GetLdapPrivateKey returns the LdapPrivateKey field if non-nil, zero value otherwise.
-
-### GetLdapPrivateKeyOk
-
-`func (o *TargetTypeDetailsInput) GetLdapPrivateKeyOk() (*string, bool)`
-
-GetLdapPrivateKeyOk returns a tuple with the LdapPrivateKey field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLdapPrivateKey
-
-`func (o *TargetTypeDetailsInput) SetLdapPrivateKey(v string)`
-
-SetLdapPrivateKey sets LdapPrivateKey field to given value.
-
-### HasLdapPrivateKey
-
-`func (o *TargetTypeDetailsInput) HasLdapPrivateKey() bool`
-
-HasLdapPrivateKey returns a boolean if a field has been set.
 
 ### GetLdapTokenExpiration
 

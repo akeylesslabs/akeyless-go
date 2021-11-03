@@ -22,12 +22,6 @@ type CreateRotatedSecret struct {
 	// Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation
 	AutoRotate *string `json:"auto-rotate,omitempty"`
 	CustomPayload *string `json:"custom-payload,omitempty"`
-	// Group attribute
-	GroupAttribute *string `json:"group-attribute,omitempty"`
-	// Group DN
-	GroupDn *string `json:"group-dn,omitempty"`
-	// Group attribute
-	GroupFilter *string `json:"group-filter,omitempty"`
 	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
 	// Metadata about the secret
@@ -211,102 +205,6 @@ func (o *CreateRotatedSecret) HasCustomPayload() bool {
 // SetCustomPayload gets a reference to the given string and assigns it to the CustomPayload field.
 func (o *CreateRotatedSecret) SetCustomPayload(v string) {
 	o.CustomPayload = &v
-}
-
-// GetGroupAttribute returns the GroupAttribute field value if set, zero value otherwise.
-func (o *CreateRotatedSecret) GetGroupAttribute() string {
-	if o == nil || o.GroupAttribute == nil {
-		var ret string
-		return ret
-	}
-	return *o.GroupAttribute
-}
-
-// GetGroupAttributeOk returns a tuple with the GroupAttribute field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateRotatedSecret) GetGroupAttributeOk() (*string, bool) {
-	if o == nil || o.GroupAttribute == nil {
-		return nil, false
-	}
-	return o.GroupAttribute, true
-}
-
-// HasGroupAttribute returns a boolean if a field has been set.
-func (o *CreateRotatedSecret) HasGroupAttribute() bool {
-	if o != nil && o.GroupAttribute != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGroupAttribute gets a reference to the given string and assigns it to the GroupAttribute field.
-func (o *CreateRotatedSecret) SetGroupAttribute(v string) {
-	o.GroupAttribute = &v
-}
-
-// GetGroupDn returns the GroupDn field value if set, zero value otherwise.
-func (o *CreateRotatedSecret) GetGroupDn() string {
-	if o == nil || o.GroupDn == nil {
-		var ret string
-		return ret
-	}
-	return *o.GroupDn
-}
-
-// GetGroupDnOk returns a tuple with the GroupDn field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateRotatedSecret) GetGroupDnOk() (*string, bool) {
-	if o == nil || o.GroupDn == nil {
-		return nil, false
-	}
-	return o.GroupDn, true
-}
-
-// HasGroupDn returns a boolean if a field has been set.
-func (o *CreateRotatedSecret) HasGroupDn() bool {
-	if o != nil && o.GroupDn != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGroupDn gets a reference to the given string and assigns it to the GroupDn field.
-func (o *CreateRotatedSecret) SetGroupDn(v string) {
-	o.GroupDn = &v
-}
-
-// GetGroupFilter returns the GroupFilter field value if set, zero value otherwise.
-func (o *CreateRotatedSecret) GetGroupFilter() string {
-	if o == nil || o.GroupFilter == nil {
-		var ret string
-		return ret
-	}
-	return *o.GroupFilter
-}
-
-// GetGroupFilterOk returns a tuple with the GroupFilter field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateRotatedSecret) GetGroupFilterOk() (*string, bool) {
-	if o == nil || o.GroupFilter == nil {
-		return nil, false
-	}
-	return o.GroupFilter, true
-}
-
-// HasGroupFilter returns a boolean if a field has been set.
-func (o *CreateRotatedSecret) HasGroupFilter() bool {
-	if o != nil && o.GroupFilter != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGroupFilter gets a reference to the given string and assigns it to the GroupFilter field.
-func (o *CreateRotatedSecret) SetGroupFilter(v string) {
-	o.GroupFilter = &v
 }
 
 // GetKey returns the Key field value if set, zero value otherwise.
@@ -938,15 +836,6 @@ func (o CreateRotatedSecret) MarshalJSON() ([]byte, error) {
 	}
 	if o.CustomPayload != nil {
 		toSerialize["custom-payload"] = o.CustomPayload
-	}
-	if o.GroupAttribute != nil {
-		toSerialize["group-attribute"] = o.GroupAttribute
-	}
-	if o.GroupDn != nil {
-		toSerialize["group-dn"] = o.GroupDn
-	}
-	if o.GroupFilter != nil {
-		toSerialize["group-filter"] = o.GroupFilter
 	}
 	if o.Key != nil {
 		toSerialize["key"] = o.Key

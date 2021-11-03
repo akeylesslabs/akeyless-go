@@ -8,9 +8,6 @@ Name | Type | Description | Notes
 **ApiKey** | Pointer to **string** |  | [optional] 
 **AutoRotate** | Pointer to **string** | Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation | [optional] 
 **CustomPayload** | Pointer to **string** |  | [optional] 
-**GroupAttribute** | Pointer to **string** | Group attribute | [optional] 
-**GroupDn** | Pointer to **string** | Group DN | [optional] 
-**GroupFilter** | Pointer to **string** | Group attribute | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Metadata** | Pointer to **string** | Metadata about the secret | [optional] 
 **Name** | **string** | Secret name | 
@@ -150,81 +147,6 @@ SetCustomPayload sets CustomPayload field to given value.
 `func (o *CreateRotatedSecret) HasCustomPayload() bool`
 
 HasCustomPayload returns a boolean if a field has been set.
-
-### GetGroupAttribute
-
-`func (o *CreateRotatedSecret) GetGroupAttribute() string`
-
-GetGroupAttribute returns the GroupAttribute field if non-nil, zero value otherwise.
-
-### GetGroupAttributeOk
-
-`func (o *CreateRotatedSecret) GetGroupAttributeOk() (*string, bool)`
-
-GetGroupAttributeOk returns a tuple with the GroupAttribute field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGroupAttribute
-
-`func (o *CreateRotatedSecret) SetGroupAttribute(v string)`
-
-SetGroupAttribute sets GroupAttribute field to given value.
-
-### HasGroupAttribute
-
-`func (o *CreateRotatedSecret) HasGroupAttribute() bool`
-
-HasGroupAttribute returns a boolean if a field has been set.
-
-### GetGroupDn
-
-`func (o *CreateRotatedSecret) GetGroupDn() string`
-
-GetGroupDn returns the GroupDn field if non-nil, zero value otherwise.
-
-### GetGroupDnOk
-
-`func (o *CreateRotatedSecret) GetGroupDnOk() (*string, bool)`
-
-GetGroupDnOk returns a tuple with the GroupDn field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGroupDn
-
-`func (o *CreateRotatedSecret) SetGroupDn(v string)`
-
-SetGroupDn sets GroupDn field to given value.
-
-### HasGroupDn
-
-`func (o *CreateRotatedSecret) HasGroupDn() bool`
-
-HasGroupDn returns a boolean if a field has been set.
-
-### GetGroupFilter
-
-`func (o *CreateRotatedSecret) GetGroupFilter() string`
-
-GetGroupFilter returns the GroupFilter field if non-nil, zero value otherwise.
-
-### GetGroupFilterOk
-
-`func (o *CreateRotatedSecret) GetGroupFilterOk() (*string, bool)`
-
-GetGroupFilterOk returns a tuple with the GroupFilter field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGroupFilter
-
-`func (o *CreateRotatedSecret) SetGroupFilter(v string)`
-
-SetGroupFilter sets GroupFilter field to given value.
-
-### HasGroupFilter
-
-`func (o *CreateRotatedSecret) HasGroupFilter() bool`
-
-HasGroupFilter returns a boolean if a field has been set.
 
 ### GetKey
 

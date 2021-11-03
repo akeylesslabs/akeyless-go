@@ -4,17 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessId** | **string** | Access ID | 
 **BindDn** | **string** | Bind DN | 
 **BindDnPassword** | **string** | Bind DN Password | 
 **Comment** | Pointer to **string** | Comment about the target | [optional] 
-**EnableAnonymSearch** | Pointer to **bool** | EnableAnonymousSearch | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **LdapCaCert** | Pointer to **string** | CA Certificate File Content | [optional] 
 **LdapUrl** | **string** | LDAP Server URL | 
 **Name** | **string** | Target name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
-**PrivateKey** | Pointer to **string** | Base64-encoded ldap private key text | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **TokenExpiration** | Pointer to **string** | Token expiration | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -24,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewCreateLdapTarget
 
-`func NewCreateLdapTarget(accessId string, bindDn string, bindDnPassword string, ldapUrl string, name string, ) *CreateLdapTarget`
+`func NewCreateLdapTarget(bindDn string, bindDnPassword string, ldapUrl string, name string, ) *CreateLdapTarget`
 
 NewCreateLdapTarget instantiates a new CreateLdapTarget object
 This constructor will assign default values to properties that have it defined,
@@ -38,26 +35,6 @@ will change when the set of required properties is changed
 NewCreateLdapTargetWithDefaults instantiates a new CreateLdapTarget object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetAccessId
-
-`func (o *CreateLdapTarget) GetAccessId() string`
-
-GetAccessId returns the AccessId field if non-nil, zero value otherwise.
-
-### GetAccessIdOk
-
-`func (o *CreateLdapTarget) GetAccessIdOk() (*string, bool)`
-
-GetAccessIdOk returns a tuple with the AccessId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAccessId
-
-`func (o *CreateLdapTarget) SetAccessId(v string)`
-
-SetAccessId sets AccessId field to given value.
-
 
 ### GetBindDn
 
@@ -123,31 +100,6 @@ SetComment sets Comment field to given value.
 `func (o *CreateLdapTarget) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
-
-### GetEnableAnonymSearch
-
-`func (o *CreateLdapTarget) GetEnableAnonymSearch() bool`
-
-GetEnableAnonymSearch returns the EnableAnonymSearch field if non-nil, zero value otherwise.
-
-### GetEnableAnonymSearchOk
-
-`func (o *CreateLdapTarget) GetEnableAnonymSearchOk() (*bool, bool)`
-
-GetEnableAnonymSearchOk returns a tuple with the EnableAnonymSearch field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEnableAnonymSearch
-
-`func (o *CreateLdapTarget) SetEnableAnonymSearch(v bool)`
-
-SetEnableAnonymSearch sets EnableAnonymSearch field to given value.
-
-### HasEnableAnonymSearch
-
-`func (o *CreateLdapTarget) HasEnableAnonymSearch() bool`
-
-HasEnableAnonymSearch returns a boolean if a field has been set.
 
 ### GetKey
 
@@ -263,31 +215,6 @@ SetPassword sets Password field to given value.
 `func (o *CreateLdapTarget) HasPassword() bool`
 
 HasPassword returns a boolean if a field has been set.
-
-### GetPrivateKey
-
-`func (o *CreateLdapTarget) GetPrivateKey() string`
-
-GetPrivateKey returns the PrivateKey field if non-nil, zero value otherwise.
-
-### GetPrivateKeyOk
-
-`func (o *CreateLdapTarget) GetPrivateKeyOk() (*string, bool)`
-
-GetPrivateKeyOk returns a tuple with the PrivateKey field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPrivateKey
-
-`func (o *CreateLdapTarget) SetPrivateKey(v string)`
-
-SetPrivateKey sets PrivateKey field to given value.
-
-### HasPrivateKey
-
-`func (o *CreateLdapTarget) HasPrivateKey() bool`
-
-HasPrivateKey returns a boolean if a field has been set.
 
 ### GetToken
 

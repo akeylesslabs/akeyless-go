@@ -4,19 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessId** | Pointer to **string** | Access ID | [optional] 
 **BindDn** | Pointer to **string** | Bind DN | [optional] 
 **BindDnPassword** | Pointer to **string** | Bind DN Password | [optional] 
-**EnableAnonymSearch** | Pointer to **bool** | EnableAnonymousSearch | [optional] 
-**FixedUserOnly** | Pointer to **string** | Fixed user | [optional] [default to "false"]
-**GroupAttribute** | Pointer to **string** | Group attribute | [optional] 
-**GroupDn** | Pointer to **string** | Group DN | [optional] 
-**GroupFilter** | Pointer to **string** | Group attribute | [optional] 
+**ExternalUsername** | Pointer to **string** | Fixed user | [optional] [default to "false"]
 **LdapCaCert** | Pointer to **string** | CA Certificate File Content | [optional] 
 **LdapUrl** | Pointer to **string** | LDAP Server URL | [optional] 
 **Name** | **string** | Producer name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
-**PrivateKey** | Pointer to **string** | Base64-encoded ldap private key text | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -45,31 +39,6 @@ will change when the set of required properties is changed
 NewGatewayCreateProducerLdapWithDefaults instantiates a new GatewayCreateProducerLdap object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetAccessId
-
-`func (o *GatewayCreateProducerLdap) GetAccessId() string`
-
-GetAccessId returns the AccessId field if non-nil, zero value otherwise.
-
-### GetAccessIdOk
-
-`func (o *GatewayCreateProducerLdap) GetAccessIdOk() (*string, bool)`
-
-GetAccessIdOk returns a tuple with the AccessId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAccessId
-
-`func (o *GatewayCreateProducerLdap) SetAccessId(v string)`
-
-SetAccessId sets AccessId field to given value.
-
-### HasAccessId
-
-`func (o *GatewayCreateProducerLdap) HasAccessId() bool`
-
-HasAccessId returns a boolean if a field has been set.
 
 ### GetBindDn
 
@@ -121,130 +90,30 @@ SetBindDnPassword sets BindDnPassword field to given value.
 
 HasBindDnPassword returns a boolean if a field has been set.
 
-### GetEnableAnonymSearch
+### GetExternalUsername
 
-`func (o *GatewayCreateProducerLdap) GetEnableAnonymSearch() bool`
+`func (o *GatewayCreateProducerLdap) GetExternalUsername() string`
 
-GetEnableAnonymSearch returns the EnableAnonymSearch field if non-nil, zero value otherwise.
+GetExternalUsername returns the ExternalUsername field if non-nil, zero value otherwise.
 
-### GetEnableAnonymSearchOk
+### GetExternalUsernameOk
 
-`func (o *GatewayCreateProducerLdap) GetEnableAnonymSearchOk() (*bool, bool)`
+`func (o *GatewayCreateProducerLdap) GetExternalUsernameOk() (*string, bool)`
 
-GetEnableAnonymSearchOk returns a tuple with the EnableAnonymSearch field if it's non-nil, zero value otherwise
+GetExternalUsernameOk returns a tuple with the ExternalUsername field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEnableAnonymSearch
+### SetExternalUsername
 
-`func (o *GatewayCreateProducerLdap) SetEnableAnonymSearch(v bool)`
+`func (o *GatewayCreateProducerLdap) SetExternalUsername(v string)`
 
-SetEnableAnonymSearch sets EnableAnonymSearch field to given value.
+SetExternalUsername sets ExternalUsername field to given value.
 
-### HasEnableAnonymSearch
+### HasExternalUsername
 
-`func (o *GatewayCreateProducerLdap) HasEnableAnonymSearch() bool`
+`func (o *GatewayCreateProducerLdap) HasExternalUsername() bool`
 
-HasEnableAnonymSearch returns a boolean if a field has been set.
-
-### GetFixedUserOnly
-
-`func (o *GatewayCreateProducerLdap) GetFixedUserOnly() string`
-
-GetFixedUserOnly returns the FixedUserOnly field if non-nil, zero value otherwise.
-
-### GetFixedUserOnlyOk
-
-`func (o *GatewayCreateProducerLdap) GetFixedUserOnlyOk() (*string, bool)`
-
-GetFixedUserOnlyOk returns a tuple with the FixedUserOnly field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFixedUserOnly
-
-`func (o *GatewayCreateProducerLdap) SetFixedUserOnly(v string)`
-
-SetFixedUserOnly sets FixedUserOnly field to given value.
-
-### HasFixedUserOnly
-
-`func (o *GatewayCreateProducerLdap) HasFixedUserOnly() bool`
-
-HasFixedUserOnly returns a boolean if a field has been set.
-
-### GetGroupAttribute
-
-`func (o *GatewayCreateProducerLdap) GetGroupAttribute() string`
-
-GetGroupAttribute returns the GroupAttribute field if non-nil, zero value otherwise.
-
-### GetGroupAttributeOk
-
-`func (o *GatewayCreateProducerLdap) GetGroupAttributeOk() (*string, bool)`
-
-GetGroupAttributeOk returns a tuple with the GroupAttribute field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGroupAttribute
-
-`func (o *GatewayCreateProducerLdap) SetGroupAttribute(v string)`
-
-SetGroupAttribute sets GroupAttribute field to given value.
-
-### HasGroupAttribute
-
-`func (o *GatewayCreateProducerLdap) HasGroupAttribute() bool`
-
-HasGroupAttribute returns a boolean if a field has been set.
-
-### GetGroupDn
-
-`func (o *GatewayCreateProducerLdap) GetGroupDn() string`
-
-GetGroupDn returns the GroupDn field if non-nil, zero value otherwise.
-
-### GetGroupDnOk
-
-`func (o *GatewayCreateProducerLdap) GetGroupDnOk() (*string, bool)`
-
-GetGroupDnOk returns a tuple with the GroupDn field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGroupDn
-
-`func (o *GatewayCreateProducerLdap) SetGroupDn(v string)`
-
-SetGroupDn sets GroupDn field to given value.
-
-### HasGroupDn
-
-`func (o *GatewayCreateProducerLdap) HasGroupDn() bool`
-
-HasGroupDn returns a boolean if a field has been set.
-
-### GetGroupFilter
-
-`func (o *GatewayCreateProducerLdap) GetGroupFilter() string`
-
-GetGroupFilter returns the GroupFilter field if non-nil, zero value otherwise.
-
-### GetGroupFilterOk
-
-`func (o *GatewayCreateProducerLdap) GetGroupFilterOk() (*string, bool)`
-
-GetGroupFilterOk returns a tuple with the GroupFilter field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGroupFilter
-
-`func (o *GatewayCreateProducerLdap) SetGroupFilter(v string)`
-
-SetGroupFilter sets GroupFilter field to given value.
-
-### HasGroupFilter
-
-`func (o *GatewayCreateProducerLdap) HasGroupFilter() bool`
-
-HasGroupFilter returns a boolean if a field has been set.
+HasExternalUsername returns a boolean if a field has been set.
 
 ### GetLdapCaCert
 
@@ -340,31 +209,6 @@ SetPassword sets Password field to given value.
 `func (o *GatewayCreateProducerLdap) HasPassword() bool`
 
 HasPassword returns a boolean if a field has been set.
-
-### GetPrivateKey
-
-`func (o *GatewayCreateProducerLdap) GetPrivateKey() string`
-
-GetPrivateKey returns the PrivateKey field if non-nil, zero value otherwise.
-
-### GetPrivateKeyOk
-
-`func (o *GatewayCreateProducerLdap) GetPrivateKeyOk() (*string, bool)`
-
-GetPrivateKeyOk returns a tuple with the PrivateKey field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPrivateKey
-
-`func (o *GatewayCreateProducerLdap) SetPrivateKey(v string)`
-
-SetPrivateKey sets PrivateKey field to given value.
-
-### HasPrivateKey
-
-`func (o *GatewayCreateProducerLdap) HasPrivateKey() bool`
-
-HasPrivateKey returns a boolean if a field has been set.
 
 ### GetProducerEncryptionKeyName
 
