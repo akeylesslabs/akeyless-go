@@ -1,4 +1,4 @@
-# GatewayCreateProducerRdp
+# GatewayUpdateProducerRdp
 
 ## Properties
 
@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **FixedUserOnly** | Pointer to **string** | Fixed user | [optional] [default to "false"]
 **Name** | **string** | Producer name | 
+**NewName** | Pointer to **string** | Producer name | [optional] 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **RdpAdminName** | Pointer to **string** | RDP Admin Name | [optional] 
@@ -26,490 +27,515 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewGatewayCreateProducerRdp
+### NewGatewayUpdateProducerRdp
 
-`func NewGatewayCreateProducerRdp(name string, ) *GatewayCreateProducerRdp`
+`func NewGatewayUpdateProducerRdp(name string, ) *GatewayUpdateProducerRdp`
 
-NewGatewayCreateProducerRdp instantiates a new GatewayCreateProducerRdp object
+NewGatewayUpdateProducerRdp instantiates a new GatewayUpdateProducerRdp object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewGatewayCreateProducerRdpWithDefaults
+### NewGatewayUpdateProducerRdpWithDefaults
 
-`func NewGatewayCreateProducerRdpWithDefaults() *GatewayCreateProducerRdp`
+`func NewGatewayUpdateProducerRdpWithDefaults() *GatewayUpdateProducerRdp`
 
-NewGatewayCreateProducerRdpWithDefaults instantiates a new GatewayCreateProducerRdp object
+NewGatewayUpdateProducerRdpWithDefaults instantiates a new GatewayUpdateProducerRdp object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetFixedUserOnly
 
-`func (o *GatewayCreateProducerRdp) GetFixedUserOnly() string`
+`func (o *GatewayUpdateProducerRdp) GetFixedUserOnly() string`
 
 GetFixedUserOnly returns the FixedUserOnly field if non-nil, zero value otherwise.
 
 ### GetFixedUserOnlyOk
 
-`func (o *GatewayCreateProducerRdp) GetFixedUserOnlyOk() (*string, bool)`
+`func (o *GatewayUpdateProducerRdp) GetFixedUserOnlyOk() (*string, bool)`
 
 GetFixedUserOnlyOk returns a tuple with the FixedUserOnly field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFixedUserOnly
 
-`func (o *GatewayCreateProducerRdp) SetFixedUserOnly(v string)`
+`func (o *GatewayUpdateProducerRdp) SetFixedUserOnly(v string)`
 
 SetFixedUserOnly sets FixedUserOnly field to given value.
 
 ### HasFixedUserOnly
 
-`func (o *GatewayCreateProducerRdp) HasFixedUserOnly() bool`
+`func (o *GatewayUpdateProducerRdp) HasFixedUserOnly() bool`
 
 HasFixedUserOnly returns a boolean if a field has been set.
 
 ### GetName
 
-`func (o *GatewayCreateProducerRdp) GetName() string`
+`func (o *GatewayUpdateProducerRdp) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *GatewayCreateProducerRdp) GetNameOk() (*string, bool)`
+`func (o *GatewayUpdateProducerRdp) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *GatewayCreateProducerRdp) SetName(v string)`
+`func (o *GatewayUpdateProducerRdp) SetName(v string)`
 
 SetName sets Name field to given value.
 
 
+### GetNewName
+
+`func (o *GatewayUpdateProducerRdp) GetNewName() string`
+
+GetNewName returns the NewName field if non-nil, zero value otherwise.
+
+### GetNewNameOk
+
+`func (o *GatewayUpdateProducerRdp) GetNewNameOk() (*string, bool)`
+
+GetNewNameOk returns a tuple with the NewName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNewName
+
+`func (o *GatewayUpdateProducerRdp) SetNewName(v string)`
+
+SetNewName sets NewName field to given value.
+
+### HasNewName
+
+`func (o *GatewayUpdateProducerRdp) HasNewName() bool`
+
+HasNewName returns a boolean if a field has been set.
+
 ### GetPassword
 
-`func (o *GatewayCreateProducerRdp) GetPassword() string`
+`func (o *GatewayUpdateProducerRdp) GetPassword() string`
 
 GetPassword returns the Password field if non-nil, zero value otherwise.
 
 ### GetPasswordOk
 
-`func (o *GatewayCreateProducerRdp) GetPasswordOk() (*string, bool)`
+`func (o *GatewayUpdateProducerRdp) GetPasswordOk() (*string, bool)`
 
 GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPassword
 
-`func (o *GatewayCreateProducerRdp) SetPassword(v string)`
+`func (o *GatewayUpdateProducerRdp) SetPassword(v string)`
 
 SetPassword sets Password field to given value.
 
 ### HasPassword
 
-`func (o *GatewayCreateProducerRdp) HasPassword() bool`
+`func (o *GatewayUpdateProducerRdp) HasPassword() bool`
 
 HasPassword returns a boolean if a field has been set.
 
 ### GetProducerEncryptionKeyName
 
-`func (o *GatewayCreateProducerRdp) GetProducerEncryptionKeyName() string`
+`func (o *GatewayUpdateProducerRdp) GetProducerEncryptionKeyName() string`
 
 GetProducerEncryptionKeyName returns the ProducerEncryptionKeyName field if non-nil, zero value otherwise.
 
 ### GetProducerEncryptionKeyNameOk
 
-`func (o *GatewayCreateProducerRdp) GetProducerEncryptionKeyNameOk() (*string, bool)`
+`func (o *GatewayUpdateProducerRdp) GetProducerEncryptionKeyNameOk() (*string, bool)`
 
 GetProducerEncryptionKeyNameOk returns a tuple with the ProducerEncryptionKeyName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProducerEncryptionKeyName
 
-`func (o *GatewayCreateProducerRdp) SetProducerEncryptionKeyName(v string)`
+`func (o *GatewayUpdateProducerRdp) SetProducerEncryptionKeyName(v string)`
 
 SetProducerEncryptionKeyName sets ProducerEncryptionKeyName field to given value.
 
 ### HasProducerEncryptionKeyName
 
-`func (o *GatewayCreateProducerRdp) HasProducerEncryptionKeyName() bool`
+`func (o *GatewayUpdateProducerRdp) HasProducerEncryptionKeyName() bool`
 
 HasProducerEncryptionKeyName returns a boolean if a field has been set.
 
 ### GetRdpAdminName
 
-`func (o *GatewayCreateProducerRdp) GetRdpAdminName() string`
+`func (o *GatewayUpdateProducerRdp) GetRdpAdminName() string`
 
 GetRdpAdminName returns the RdpAdminName field if non-nil, zero value otherwise.
 
 ### GetRdpAdminNameOk
 
-`func (o *GatewayCreateProducerRdp) GetRdpAdminNameOk() (*string, bool)`
+`func (o *GatewayUpdateProducerRdp) GetRdpAdminNameOk() (*string, bool)`
 
 GetRdpAdminNameOk returns a tuple with the RdpAdminName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRdpAdminName
 
-`func (o *GatewayCreateProducerRdp) SetRdpAdminName(v string)`
+`func (o *GatewayUpdateProducerRdp) SetRdpAdminName(v string)`
 
 SetRdpAdminName sets RdpAdminName field to given value.
 
 ### HasRdpAdminName
 
-`func (o *GatewayCreateProducerRdp) HasRdpAdminName() bool`
+`func (o *GatewayUpdateProducerRdp) HasRdpAdminName() bool`
 
 HasRdpAdminName returns a boolean if a field has been set.
 
 ### GetRdpAdminPwd
 
-`func (o *GatewayCreateProducerRdp) GetRdpAdminPwd() string`
+`func (o *GatewayUpdateProducerRdp) GetRdpAdminPwd() string`
 
 GetRdpAdminPwd returns the RdpAdminPwd field if non-nil, zero value otherwise.
 
 ### GetRdpAdminPwdOk
 
-`func (o *GatewayCreateProducerRdp) GetRdpAdminPwdOk() (*string, bool)`
+`func (o *GatewayUpdateProducerRdp) GetRdpAdminPwdOk() (*string, bool)`
 
 GetRdpAdminPwdOk returns a tuple with the RdpAdminPwd field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRdpAdminPwd
 
-`func (o *GatewayCreateProducerRdp) SetRdpAdminPwd(v string)`
+`func (o *GatewayUpdateProducerRdp) SetRdpAdminPwd(v string)`
 
 SetRdpAdminPwd sets RdpAdminPwd field to given value.
 
 ### HasRdpAdminPwd
 
-`func (o *GatewayCreateProducerRdp) HasRdpAdminPwd() bool`
+`func (o *GatewayUpdateProducerRdp) HasRdpAdminPwd() bool`
 
 HasRdpAdminPwd returns a boolean if a field has been set.
 
 ### GetRdpHostName
 
-`func (o *GatewayCreateProducerRdp) GetRdpHostName() string`
+`func (o *GatewayUpdateProducerRdp) GetRdpHostName() string`
 
 GetRdpHostName returns the RdpHostName field if non-nil, zero value otherwise.
 
 ### GetRdpHostNameOk
 
-`func (o *GatewayCreateProducerRdp) GetRdpHostNameOk() (*string, bool)`
+`func (o *GatewayUpdateProducerRdp) GetRdpHostNameOk() (*string, bool)`
 
 GetRdpHostNameOk returns a tuple with the RdpHostName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRdpHostName
 
-`func (o *GatewayCreateProducerRdp) SetRdpHostName(v string)`
+`func (o *GatewayUpdateProducerRdp) SetRdpHostName(v string)`
 
 SetRdpHostName sets RdpHostName field to given value.
 
 ### HasRdpHostName
 
-`func (o *GatewayCreateProducerRdp) HasRdpHostName() bool`
+`func (o *GatewayUpdateProducerRdp) HasRdpHostName() bool`
 
 HasRdpHostName returns a boolean if a field has been set.
 
 ### GetRdpHostPort
 
-`func (o *GatewayCreateProducerRdp) GetRdpHostPort() string`
+`func (o *GatewayUpdateProducerRdp) GetRdpHostPort() string`
 
 GetRdpHostPort returns the RdpHostPort field if non-nil, zero value otherwise.
 
 ### GetRdpHostPortOk
 
-`func (o *GatewayCreateProducerRdp) GetRdpHostPortOk() (*string, bool)`
+`func (o *GatewayUpdateProducerRdp) GetRdpHostPortOk() (*string, bool)`
 
 GetRdpHostPortOk returns a tuple with the RdpHostPort field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRdpHostPort
 
-`func (o *GatewayCreateProducerRdp) SetRdpHostPort(v string)`
+`func (o *GatewayUpdateProducerRdp) SetRdpHostPort(v string)`
 
 SetRdpHostPort sets RdpHostPort field to given value.
 
 ### HasRdpHostPort
 
-`func (o *GatewayCreateProducerRdp) HasRdpHostPort() bool`
+`func (o *GatewayUpdateProducerRdp) HasRdpHostPort() bool`
 
 HasRdpHostPort returns a boolean if a field has been set.
 
 ### GetRdpUserGroups
 
-`func (o *GatewayCreateProducerRdp) GetRdpUserGroups() string`
+`func (o *GatewayUpdateProducerRdp) GetRdpUserGroups() string`
 
 GetRdpUserGroups returns the RdpUserGroups field if non-nil, zero value otherwise.
 
 ### GetRdpUserGroupsOk
 
-`func (o *GatewayCreateProducerRdp) GetRdpUserGroupsOk() (*string, bool)`
+`func (o *GatewayUpdateProducerRdp) GetRdpUserGroupsOk() (*string, bool)`
 
 GetRdpUserGroupsOk returns a tuple with the RdpUserGroups field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRdpUserGroups
 
-`func (o *GatewayCreateProducerRdp) SetRdpUserGroups(v string)`
+`func (o *GatewayUpdateProducerRdp) SetRdpUserGroups(v string)`
 
 SetRdpUserGroups sets RdpUserGroups field to given value.
 
 ### HasRdpUserGroups
 
-`func (o *GatewayCreateProducerRdp) HasRdpUserGroups() bool`
+`func (o *GatewayUpdateProducerRdp) HasRdpUserGroups() bool`
 
 HasRdpUserGroups returns a boolean if a field has been set.
 
 ### GetSecureAccessAllowExternalUser
 
-`func (o *GatewayCreateProducerRdp) GetSecureAccessAllowExternalUser() bool`
+`func (o *GatewayUpdateProducerRdp) GetSecureAccessAllowExternalUser() bool`
 
 GetSecureAccessAllowExternalUser returns the SecureAccessAllowExternalUser field if non-nil, zero value otherwise.
 
 ### GetSecureAccessAllowExternalUserOk
 
-`func (o *GatewayCreateProducerRdp) GetSecureAccessAllowExternalUserOk() (*bool, bool)`
+`func (o *GatewayUpdateProducerRdp) GetSecureAccessAllowExternalUserOk() (*bool, bool)`
 
 GetSecureAccessAllowExternalUserOk returns a tuple with the SecureAccessAllowExternalUser field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSecureAccessAllowExternalUser
 
-`func (o *GatewayCreateProducerRdp) SetSecureAccessAllowExternalUser(v bool)`
+`func (o *GatewayUpdateProducerRdp) SetSecureAccessAllowExternalUser(v bool)`
 
 SetSecureAccessAllowExternalUser sets SecureAccessAllowExternalUser field to given value.
 
 ### HasSecureAccessAllowExternalUser
 
-`func (o *GatewayCreateProducerRdp) HasSecureAccessAllowExternalUser() bool`
+`func (o *GatewayUpdateProducerRdp) HasSecureAccessAllowExternalUser() bool`
 
 HasSecureAccessAllowExternalUser returns a boolean if a field has been set.
 
 ### GetSecureAccessEnable
 
-`func (o *GatewayCreateProducerRdp) GetSecureAccessEnable() string`
+`func (o *GatewayUpdateProducerRdp) GetSecureAccessEnable() string`
 
 GetSecureAccessEnable returns the SecureAccessEnable field if non-nil, zero value otherwise.
 
 ### GetSecureAccessEnableOk
 
-`func (o *GatewayCreateProducerRdp) GetSecureAccessEnableOk() (*string, bool)`
+`func (o *GatewayUpdateProducerRdp) GetSecureAccessEnableOk() (*string, bool)`
 
 GetSecureAccessEnableOk returns a tuple with the SecureAccessEnable field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSecureAccessEnable
 
-`func (o *GatewayCreateProducerRdp) SetSecureAccessEnable(v string)`
+`func (o *GatewayUpdateProducerRdp) SetSecureAccessEnable(v string)`
 
 SetSecureAccessEnable sets SecureAccessEnable field to given value.
 
 ### HasSecureAccessEnable
 
-`func (o *GatewayCreateProducerRdp) HasSecureAccessEnable() bool`
+`func (o *GatewayUpdateProducerRdp) HasSecureAccessEnable() bool`
 
 HasSecureAccessEnable returns a boolean if a field has been set.
 
 ### GetSecureAccessHost
 
-`func (o *GatewayCreateProducerRdp) GetSecureAccessHost() []string`
+`func (o *GatewayUpdateProducerRdp) GetSecureAccessHost() []string`
 
 GetSecureAccessHost returns the SecureAccessHost field if non-nil, zero value otherwise.
 
 ### GetSecureAccessHostOk
 
-`func (o *GatewayCreateProducerRdp) GetSecureAccessHostOk() (*[]string, bool)`
+`func (o *GatewayUpdateProducerRdp) GetSecureAccessHostOk() (*[]string, bool)`
 
 GetSecureAccessHostOk returns a tuple with the SecureAccessHost field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSecureAccessHost
 
-`func (o *GatewayCreateProducerRdp) SetSecureAccessHost(v []string)`
+`func (o *GatewayUpdateProducerRdp) SetSecureAccessHost(v []string)`
 
 SetSecureAccessHost sets SecureAccessHost field to given value.
 
 ### HasSecureAccessHost
 
-`func (o *GatewayCreateProducerRdp) HasSecureAccessHost() bool`
+`func (o *GatewayUpdateProducerRdp) HasSecureAccessHost() bool`
 
 HasSecureAccessHost returns a boolean if a field has been set.
 
 ### GetSecureAccessRdpDomain
 
-`func (o *GatewayCreateProducerRdp) GetSecureAccessRdpDomain() string`
+`func (o *GatewayUpdateProducerRdp) GetSecureAccessRdpDomain() string`
 
 GetSecureAccessRdpDomain returns the SecureAccessRdpDomain field if non-nil, zero value otherwise.
 
 ### GetSecureAccessRdpDomainOk
 
-`func (o *GatewayCreateProducerRdp) GetSecureAccessRdpDomainOk() (*string, bool)`
+`func (o *GatewayUpdateProducerRdp) GetSecureAccessRdpDomainOk() (*string, bool)`
 
 GetSecureAccessRdpDomainOk returns a tuple with the SecureAccessRdpDomain field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSecureAccessRdpDomain
 
-`func (o *GatewayCreateProducerRdp) SetSecureAccessRdpDomain(v string)`
+`func (o *GatewayUpdateProducerRdp) SetSecureAccessRdpDomain(v string)`
 
 SetSecureAccessRdpDomain sets SecureAccessRdpDomain field to given value.
 
 ### HasSecureAccessRdpDomain
 
-`func (o *GatewayCreateProducerRdp) HasSecureAccessRdpDomain() bool`
+`func (o *GatewayUpdateProducerRdp) HasSecureAccessRdpDomain() bool`
 
 HasSecureAccessRdpDomain returns a boolean if a field has been set.
 
 ### GetSecureAccessRdpUser
 
-`func (o *GatewayCreateProducerRdp) GetSecureAccessRdpUser() string`
+`func (o *GatewayUpdateProducerRdp) GetSecureAccessRdpUser() string`
 
 GetSecureAccessRdpUser returns the SecureAccessRdpUser field if non-nil, zero value otherwise.
 
 ### GetSecureAccessRdpUserOk
 
-`func (o *GatewayCreateProducerRdp) GetSecureAccessRdpUserOk() (*string, bool)`
+`func (o *GatewayUpdateProducerRdp) GetSecureAccessRdpUserOk() (*string, bool)`
 
 GetSecureAccessRdpUserOk returns a tuple with the SecureAccessRdpUser field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSecureAccessRdpUser
 
-`func (o *GatewayCreateProducerRdp) SetSecureAccessRdpUser(v string)`
+`func (o *GatewayUpdateProducerRdp) SetSecureAccessRdpUser(v string)`
 
 SetSecureAccessRdpUser sets SecureAccessRdpUser field to given value.
 
 ### HasSecureAccessRdpUser
 
-`func (o *GatewayCreateProducerRdp) HasSecureAccessRdpUser() bool`
+`func (o *GatewayUpdateProducerRdp) HasSecureAccessRdpUser() bool`
 
 HasSecureAccessRdpUser returns a boolean if a field has been set.
 
 ### GetTargetName
 
-`func (o *GatewayCreateProducerRdp) GetTargetName() string`
+`func (o *GatewayUpdateProducerRdp) GetTargetName() string`
 
 GetTargetName returns the TargetName field if non-nil, zero value otherwise.
 
 ### GetTargetNameOk
 
-`func (o *GatewayCreateProducerRdp) GetTargetNameOk() (*string, bool)`
+`func (o *GatewayUpdateProducerRdp) GetTargetNameOk() (*string, bool)`
 
 GetTargetNameOk returns a tuple with the TargetName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTargetName
 
-`func (o *GatewayCreateProducerRdp) SetTargetName(v string)`
+`func (o *GatewayUpdateProducerRdp) SetTargetName(v string)`
 
 SetTargetName sets TargetName field to given value.
 
 ### HasTargetName
 
-`func (o *GatewayCreateProducerRdp) HasTargetName() bool`
+`func (o *GatewayUpdateProducerRdp) HasTargetName() bool`
 
 HasTargetName returns a boolean if a field has been set.
 
 ### GetToken
 
-`func (o *GatewayCreateProducerRdp) GetToken() string`
+`func (o *GatewayUpdateProducerRdp) GetToken() string`
 
 GetToken returns the Token field if non-nil, zero value otherwise.
 
 ### GetTokenOk
 
-`func (o *GatewayCreateProducerRdp) GetTokenOk() (*string, bool)`
+`func (o *GatewayUpdateProducerRdp) GetTokenOk() (*string, bool)`
 
 GetTokenOk returns a tuple with the Token field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetToken
 
-`func (o *GatewayCreateProducerRdp) SetToken(v string)`
+`func (o *GatewayUpdateProducerRdp) SetToken(v string)`
 
 SetToken sets Token field to given value.
 
 ### HasToken
 
-`func (o *GatewayCreateProducerRdp) HasToken() bool`
+`func (o *GatewayUpdateProducerRdp) HasToken() bool`
 
 HasToken returns a boolean if a field has been set.
 
 ### GetUidToken
 
-`func (o *GatewayCreateProducerRdp) GetUidToken() string`
+`func (o *GatewayUpdateProducerRdp) GetUidToken() string`
 
 GetUidToken returns the UidToken field if non-nil, zero value otherwise.
 
 ### GetUidTokenOk
 
-`func (o *GatewayCreateProducerRdp) GetUidTokenOk() (*string, bool)`
+`func (o *GatewayUpdateProducerRdp) GetUidTokenOk() (*string, bool)`
 
 GetUidTokenOk returns a tuple with the UidToken field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUidToken
 
-`func (o *GatewayCreateProducerRdp) SetUidToken(v string)`
+`func (o *GatewayUpdateProducerRdp) SetUidToken(v string)`
 
 SetUidToken sets UidToken field to given value.
 
 ### HasUidToken
 
-`func (o *GatewayCreateProducerRdp) HasUidToken() bool`
+`func (o *GatewayUpdateProducerRdp) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
 
 ### GetUserTtl
 
-`func (o *GatewayCreateProducerRdp) GetUserTtl() string`
+`func (o *GatewayUpdateProducerRdp) GetUserTtl() string`
 
 GetUserTtl returns the UserTtl field if non-nil, zero value otherwise.
 
 ### GetUserTtlOk
 
-`func (o *GatewayCreateProducerRdp) GetUserTtlOk() (*string, bool)`
+`func (o *GatewayUpdateProducerRdp) GetUserTtlOk() (*string, bool)`
 
 GetUserTtlOk returns a tuple with the UserTtl field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUserTtl
 
-`func (o *GatewayCreateProducerRdp) SetUserTtl(v string)`
+`func (o *GatewayUpdateProducerRdp) SetUserTtl(v string)`
 
 SetUserTtl sets UserTtl field to given value.
 
 ### HasUserTtl
 
-`func (o *GatewayCreateProducerRdp) HasUserTtl() bool`
+`func (o *GatewayUpdateProducerRdp) HasUserTtl() bool`
 
 HasUserTtl returns a boolean if a field has been set.
 
 ### GetUsername
 
-`func (o *GatewayCreateProducerRdp) GetUsername() string`
+`func (o *GatewayUpdateProducerRdp) GetUsername() string`
 
 GetUsername returns the Username field if non-nil, zero value otherwise.
 
 ### GetUsernameOk
 
-`func (o *GatewayCreateProducerRdp) GetUsernameOk() (*string, bool)`
+`func (o *GatewayUpdateProducerRdp) GetUsernameOk() (*string, bool)`
 
 GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUsername
 
-`func (o *GatewayCreateProducerRdp) SetUsername(v string)`
+`func (o *GatewayUpdateProducerRdp) SetUsername(v string)`
 
 SetUsername sets Username field to given value.
 
 ### HasUsername
 
-`func (o *GatewayCreateProducerRdp) HasUsername() bool`
+`func (o *GatewayUpdateProducerRdp) HasUsername() bool`
 
 HasUsername returns a boolean if a field has been set.
 

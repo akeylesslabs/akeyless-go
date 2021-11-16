@@ -2414,6 +2414,168 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /gateway-update-producer-aws:
+    post:
+      operationId: gatewayUpdateProducerAws
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayUpdateProducerAws'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayUpdateProducerAwsOutput'
+          description: gatewayUpdateProducerAwsResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /gateway-update-producer-gcp:
+    post:
+      operationId: gatewayUpdateProducerGcp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayUpdateProducerGcp'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayUpdateProducerGcpOutput'
+          description: gatewayUpdateProducerGcpResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /gateway-update-producer-mongo:
+    post:
+      operationId: gatewayUpdateProducerMongo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayUpdateProducerMongo'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayUpdateProducerMongoOutput'
+          description: gatewayUpdateProducerMongoResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /gateway-update-producer-mssql:
+    post:
+      operationId: gatewayUpdateProducerMSSQL
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayUpdateProducerMSSQL'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayUpdateProducerMSSQLOutput'
+          description: gatewayUpdateProducerMSSQLResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /gateway-update-producer-mysql:
+    post:
+      operationId: gatewayUpdateProducerMySQL
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayUpdateProducerMySQL'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayUpdateProducerMySQLOutput'
+          description: gatewayUpdateProducerMySQLResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /gateway-update-producer-rdp:
+    post:
+      operationId: gatewayUpdateProducerRdp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayUpdateProducerRdp'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayUpdateProducerRdpOutput'
+          description: gatewayUpdateProducerRdpResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /gateway-update-producer-tmp-creds:
     post:
       operationId: gatewayUpdateTmpUsers
@@ -4963,6 +5125,42 @@ components:
           schema:
             $ref: '#/components/schemas/gatewayUpdateItemOutput'
       description: gatewayUpdateItemResponse wraps response body.
+    gatewayUpdateProducerAwsResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayUpdateProducerAwsOutput'
+      description: gatewayUpdateProducerAwsResponse wraps response body.
+    gatewayUpdateProducerGcpResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayUpdateProducerGcpOutput'
+      description: gatewayUpdateProducerGcpResponse wraps response body.
+    gatewayUpdateProducerMSSQLResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayUpdateProducerMSSQLOutput'
+      description: gatewayUpdateProducerMSSQLResponse wraps response body.
+    gatewayUpdateProducerMongoResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayUpdateProducerMongoOutput'
+      description: gatewayUpdateProducerMongoResponse wraps response body.
+    gatewayUpdateProducerMySQLResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayUpdateProducerMySQLOutput'
+      description: gatewayUpdateProducerMySQLResponse wraps response body.
+    gatewayUpdateProducerRdpResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayUpdateProducerRdpOutput'
+      description: gatewayUpdateProducerRdpResponse wraps response body.
     gatewayUpdateTmpUsersResponse:
       content: {}
       description: gatewayUpdateTmpUsersResponse wraps response body.
@@ -5598,11 +5796,13 @@ components:
         version: 4
         producers:
           producers:
-          - name: name
+          - init: true
+            name: name
             active: true
             id: 7
             type: type
-          - name: name
+          - init: true
+            name: name
             active: true
             id: 7
             type: type
@@ -8366,11 +8566,13 @@ components:
       example:
         producers_errors: '{}'
         producers:
-        - name: name
+        - init: true
+          name: name
           active: true
           id: 7
           type: type
-        - name: name
+        - init: true
+          name: name
           active: true
           id: 7
           type: type
@@ -11629,6 +11831,7 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     Producer:
       example:
+        init: true
         name: name
         active: true
         id: 7
@@ -11641,6 +11844,9 @@ components:
           format: int64
           type: integer
           x-go-name: Id
+        init:
+          type: boolean
+          x-go-name: Init
         name:
           type: string
           x-go-name: Name
@@ -11657,11 +11863,13 @@ components:
     ProducersConfigPart:
       example:
         producers:
-        - name: name
+        - init: true
+          name: name
           active: true
           id: 7
           type: type
-        - name: name
+        - init: true
+          name: name
           active: true
           id: 7
           type: type
@@ -13060,7 +13268,7 @@ components:
           default: access_key
           description: |-
             Access Type
-            (access_key/password/saml/ldap/k8s/azure_ad/aws_iam/universal_identity/jwt/gcp)
+            (access_key/password/saml/ldap/k8s/azure_ad/aws_iam/universal_identity/jwt/gcp/k8s)
           type: string
           x-go-name: AccessType
         admin-email:
@@ -13146,7 +13354,7 @@ components:
           x-go-name: AccessKey
         access-type:
           default: access_key
-          description: Access Type (access_key/password/azure_ad/saml/oidc/ldap/aws_iam/k8s)
+          description: Access Type (access_key/password/azure_ad/saml/oidc/ldap/aws_iam/gcp/k8s)
           type: string
           x-go-name: AccessType
         admin-email:
@@ -21592,6 +21800,9 @@ components:
           description: Groups
           type: string
           x-go-name: UserGroups
+        secure-access-allow-external-user:
+          type: boolean
+          x-go-name: SecureAccessAllowProvidingExternalUser
         secure-access-enable:
           type: string
           x-go-name: SecureAccessEnabled
@@ -23061,6 +23272,1714 @@ components:
         name:
           type: string
           x-go-name: Name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayUpdateProducerAws:
+      description: gatewayUpdateProducerAws is a command that Updates aws producer
+      properties:
+        access-mode:
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/producer/config
+        admin-rotation-interval-days:
+          default: 0
+          description: Admin credentials rotation interval (days)
+          format: int64
+          type: integer
+          x-go-name: AdminCredsRotationInterval
+        aws-access-key-id:
+          description: Access Key ID
+          type: string
+          x-go-name: AccessId
+        aws-access-secret-key:
+          description: Secret Access Key
+          type: string
+          x-go-name: AccessKey
+        aws-role-arns:
+          description: AWS Role ARNs to be used in the Assume Role operation (relevant
+            only for assume_role mode)
+          type: string
+          x-go-name: RoleARNs
+        aws-user-console-access:
+          default: false
+          description: AWS User console access
+          type: boolean
+          x-go-name: UserConsoleAccess
+        aws-user-groups:
+          description: AWS User groups
+          type: string
+          x-go-name: UserGroups
+        aws-user-policies:
+          description: AWS User policies
+          type: string
+          x-go-name: UserPolicies
+        aws-user-programmatic-access:
+          default: true
+          description: AWS User programmatic access
+          type: boolean
+          x-go-name: UserProgrammaticAccess
+        enable-admin-rotation:
+          default: false
+          description: Automatic admin credentials rotation
+          type: boolean
+          x-go-name: AutomaticAdminCredsRotation
+        name:
+          description: Producer name
+          type: string
+          x-go-name: ProducerName
+        new-name:
+          description: Producer name
+          type: string
+          x-go-name: ProducerNewName
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        producer-encryption-key-name:
+          description: Dynamic producer encryption key
+          type: string
+          x-go-name: ProducerEncryptionKey
+        region:
+          default: us-east-2
+          description: Region
+          type: string
+          x-go-name: Region
+        secure-access-aws-account-id:
+          type: string
+          x-go-name: SecureAccessAccountId
+        secure-access-aws-native-cli:
+          type: boolean
+          x-go-name: SecureAccessAwsNativeCli
+        secure-access-bastion-issuer:
+          type: string
+          x-go-name: SecureAccessBastionIssuer
+        secure-access-enable:
+          type: string
+          x-go-name: SecureAccessEnabled
+        secure-access-web:
+          type: boolean
+          x-go-name: AccessWebCategory
+        secure-access-web-browsing:
+          type: boolean
+          x-go-name: SecureAccessIsolated
+        target-name:
+          description: Target name
+          type: string
+          x-go-name: TargetName
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        user-ttl:
+          default: 60m
+          description: User TTL
+          type: string
+          x-go-name: UserTtl
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+      required:
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayUpdateProducerAwsOutput:
+      example:
+        producer_details:
+          gke_cluster_endpoint: gke_cluster_endpoint
+          dynamic_secret_type: dynamic_secret_type
+          k8s_namespace: k8s_namespace
+          venafi_sign_using_akeyless_pki: true
+          dynamic_secret_key: dynamic_secret_key
+          last_admin_rotation: 5
+          chef_server_key: chef_server_key
+          db_max_open_conns: db_max_open_conns
+          admin_rotation_interval_days: 0
+          oracle_creation_statements: oracle_creation_statements
+          mssql_creation_statements: mssql_creation_statements
+          sf_user_role: sf_user_role
+          ldap_certificate: ldap_certificate
+          ldap_bind_dn: ldap_bind_dn
+          ldap_url: ldap_url
+          admin_pwd: admin_pwd
+          gcp_token_scope: gcp_token_scope
+          venafi_allowed_domains:
+          - venafi_allowed_domains
+          - venafi_allowed_domains
+          azure_user_roles_template_id: azure_user_roles_template_id
+          fixed_user_only: fixed_user_only
+          rabbitmq_server_password: rabbitmq_server_password
+          aws_access_mode: aws_access_mode
+          aws_user_policies: aws_user_policies
+          aws_role_arns: aws_role_arns
+          active: true
+          item_targets_assoc:
+          - assoc_id: assoc_id
+            target_name: target_name
+            target_id: 1
+          - assoc_id: assoc_id
+            target_name: target_name
+            target_id: 1
+          chef_server_username: chef_server_username
+          db_host_name: db_host_name
+          ldap_user_dn: ldap_user_dn
+          db_name: db_name
+          k8s_service_account: k8s_service_account
+          chef_skip_ssl: true
+          db_port: db_port
+          k8s_cluster_endpoint: k8s_cluster_endpoint
+          artifactory_base_url: artifactory_base_url
+          azure_client_secret: azure_client_secret
+          azure_user_groups_obj_id: azure_user_groups_obj_id
+          gcp_token_type: gcp_token_type
+          create_sync_url: create_sync_url
+          aws_session_token: aws_session_token
+          gcp_token_lifetime: gcp_token_lifetime
+          db_isolation_level: db_isolation_level
+          rabbitmq_user_vhost: rabbitmq_user_vhost
+          mongodb_username: mongodb_username
+          mongodb_roles: mongodb_roles
+          mongodb_db_name: mongodb_db_name
+          venafi_signer_key_name: venafi_signer_key_name
+          should_stop: should_stop
+          artifactory_token_audience: artifactory_token_audience
+          mongodb_atlas_api_public_key: mongodb_atlas_api_public_key
+          eks_access_key_id: eks_access_key_id
+          venafi_base_url: venafi_base_url
+          user_ttl: user_ttl
+          timeout_seconds: 5
+          eks_assume_role: eks_assume_role
+          ldap_token_expiration: ldap_token_expiration
+          venafi_use_tpp: true
+          mongodb_password: mongodb_password
+          aws_secret_access_key: aws_secret_access_key
+          mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
+          postgres_creation_statements: postgres_creation_statements
+          db_max_idle_conns: db_max_idle_conns
+          artifactory_admin_username: artifactory_admin_username
+          admin_name: admin_name
+          rabbitmq_server_user: rabbitmq_server_user
+          venafi_api_key: venafi_api_key
+          mongodb_host_port: mongodb_host_port
+          sf_warehouse_name: sf_warehouse_name
+          artifactory_token_scope: artifactory_token_scope
+          revoke_sync_url: revoke_sync_url
+          gke_cluster_ca_certificate: gke_cluster_ca_certificate
+          host_port: host_port
+          k8s_bearer_token: k8s_bearer_token
+          enable_admin_rotation: true
+          cassandra_creation_statements: cassandra_creation_statements
+          failure_message: failure_message
+          rabbitmq_user_read_permission: rabbitmq_user_read_permission
+          azure_client_id: azure_client_id
+          mongodb_default_auth_db: mongodb_default_auth_db
+          mongodb_uri_connection: mongodb_uri_connection
+          mongodb_atlas_project_id: mongodb_atlas_project_id
+          db_user_name: db_user_name
+          eks_region: eks_region
+          payload: payload
+          artifactory_admin_apikey: artifactory_admin_apikey
+          redshift_creation_statements: redshift_creation_statements
+          ldap_audience: ldap_audience
+          azure_app_object_id: azure_app_object_id
+          ldap_bind_password: ldap_bind_password
+          venafi_allow_subdomains: true
+          aws_user_console_access: true
+          user_principal_name: user_principal_name
+          externally_provided_user: externally_provided_user
+          db_server_certificates: db_server_certificates
+          gcp_key_algo: gcp_key_algo
+          db_server_name: db_server_name
+          venafi_zone: venafi_zone
+          gcp_service_account_key:
+          - 1
+          - 1
+          venafi_store_private_key: true
+          venafi_tpp_username: venafi_tpp_username
+          azure_user_portal_access: true
+          venafi_root_first_in_chain: true
+          eks_cluster_endpoint: eks_cluster_endpoint
+          gke_service_account_key: gke_service_account_key
+          venafi_auto_generated_folder: venafi_auto_generated_folder
+          mongodb_uri_options: mongodb_uri_options
+          db_pwd: db_pwd
+          gke_service_account_name: gke_service_account_name
+          mysql_creation_statements: mysql_creation_statements
+          gcp_service_account_email: gcp_service_account_email
+          dynamic_secret_name: dynamic_secret_name
+          rabbitmq_server_uri: rabbitmq_server_uri
+          chef_server_access_mode: chef_server_access_mode
+          aws_user_programmatic_access: true
+          rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
+          rabbitmq_user_write_permission: rabbitmq_user_write_permission
+          rabbitmq_user_tags: rabbitmq_user_tags
+          venafi_tpp_password: venafi_tpp_password
+          is_fixed_user: is_fixed_user
+          ldap_user_attr: ldap_user_attr
+          use_gw_cloud_identity: true
+          azure_user_programmatic_access: true
+          k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
+          eks_secret_access_key: eks_secret_access_key
+          sf_account: sf_account
+          secure_remote_access_details:
+            schema: schema
+            bastion_ssh: bastion_ssh
+            isolated: true
+            ssh_private_key: true
+            allow_port_forwarding: true
+            is_web: true
+            endpoint: endpoint
+            native: true
+            enable: true
+            host:
+            - host
+            - host
+            dashboard_url: dashboard_url
+            bastion_issuer: bastion_issuer
+            ssh_user: ssh_user
+            is_cli: true
+            use_internal_bastion: true
+            rdp_user: rdp_user
+            url: url
+            account_id: account_id
+            db_name: db_name
+            allow_providing_external_username: true
+            domain: domain
+            bastion_api: bastion_api
+            category: category
+            region: region
+            ssh_password: true
+            bastion_issuer_id: 7
+          groups: groups
+          chef_organizations: chef_organizations
+          dynamic_secret_id: 6
+          chef_server_host_name: chef_server_host_name
+          mssql_revocation_statements: mssql_revocation_statements
+          chef_server_port: chef_server_port
+          mongodb_is_atlas: true
+          eks_cluster_ca_certificate: eks_cluster_ca_certificate
+          rotate_sync_url: rotate_sync_url
+          aws_access_key_id: aws_access_key_id
+          aws_region: aws_region
+          eks_cluster_name: eks_cluster_name
+          chef_server_url: chef_server_url
+          gke_cluster_name: gke_cluster_name
+          aws_user_groups: aws_user_groups
+          host_name: host_name
+          azure_tenant_id: azure_tenant_id
+      properties:
+        producer_details:
+          $ref: '#/components/schemas/DSProducerDetails'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayUpdateProducerGcp:
+      description: gatewayUpdateProducerGcp is a command that updates a GCP producer
+      properties:
+        gcp-cred-type:
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/producer/config
+        gcp-key:
+          description: Base64-encoded service account private key text
+          type: string
+          x-go-name: ServiceAccountKey
+        gcp-key-algo:
+          description: Service account key algorithm, e.g. KEY_ALG_RSA_1024
+          type: string
+          x-go-name: KeyAlgorithm
+        gcp-sa-email:
+          description: GCP service account email
+          type: string
+          x-go-name: ServiceAccountEmail
+        gcp-token-scopes:
+          description: Access token scopes list, e.g. scope1,scope2
+          type: string
+          x-go-name: TokenScopes
+        name:
+          description: Producer name
+          type: string
+          x-go-name: ProducerName
+        new-name:
+          description: Producer name
+          type: string
+          x-go-name: ProducerNewName
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        producer-encryption-key-name:
+          description: Dynamic producer encryption key
+          type: string
+          x-go-name: ProducerEncryptionKey
+        target-name:
+          description: Target name
+          type: string
+          x-go-name: TargetName
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        user-ttl:
+          default: 60m
+          description: User TTL
+          type: string
+          x-go-name: UserTtl
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+      required:
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayUpdateProducerGcpOutput:
+      example:
+        producer_details:
+          gke_cluster_endpoint: gke_cluster_endpoint
+          dynamic_secret_type: dynamic_secret_type
+          k8s_namespace: k8s_namespace
+          venafi_sign_using_akeyless_pki: true
+          dynamic_secret_key: dynamic_secret_key
+          last_admin_rotation: 5
+          chef_server_key: chef_server_key
+          db_max_open_conns: db_max_open_conns
+          admin_rotation_interval_days: 0
+          oracle_creation_statements: oracle_creation_statements
+          mssql_creation_statements: mssql_creation_statements
+          sf_user_role: sf_user_role
+          ldap_certificate: ldap_certificate
+          ldap_bind_dn: ldap_bind_dn
+          ldap_url: ldap_url
+          admin_pwd: admin_pwd
+          gcp_token_scope: gcp_token_scope
+          venafi_allowed_domains:
+          - venafi_allowed_domains
+          - venafi_allowed_domains
+          azure_user_roles_template_id: azure_user_roles_template_id
+          fixed_user_only: fixed_user_only
+          rabbitmq_server_password: rabbitmq_server_password
+          aws_access_mode: aws_access_mode
+          aws_user_policies: aws_user_policies
+          aws_role_arns: aws_role_arns
+          active: true
+          item_targets_assoc:
+          - assoc_id: assoc_id
+            target_name: target_name
+            target_id: 1
+          - assoc_id: assoc_id
+            target_name: target_name
+            target_id: 1
+          chef_server_username: chef_server_username
+          db_host_name: db_host_name
+          ldap_user_dn: ldap_user_dn
+          db_name: db_name
+          k8s_service_account: k8s_service_account
+          chef_skip_ssl: true
+          db_port: db_port
+          k8s_cluster_endpoint: k8s_cluster_endpoint
+          artifactory_base_url: artifactory_base_url
+          azure_client_secret: azure_client_secret
+          azure_user_groups_obj_id: azure_user_groups_obj_id
+          gcp_token_type: gcp_token_type
+          create_sync_url: create_sync_url
+          aws_session_token: aws_session_token
+          gcp_token_lifetime: gcp_token_lifetime
+          db_isolation_level: db_isolation_level
+          rabbitmq_user_vhost: rabbitmq_user_vhost
+          mongodb_username: mongodb_username
+          mongodb_roles: mongodb_roles
+          mongodb_db_name: mongodb_db_name
+          venafi_signer_key_name: venafi_signer_key_name
+          should_stop: should_stop
+          artifactory_token_audience: artifactory_token_audience
+          mongodb_atlas_api_public_key: mongodb_atlas_api_public_key
+          eks_access_key_id: eks_access_key_id
+          venafi_base_url: venafi_base_url
+          user_ttl: user_ttl
+          timeout_seconds: 5
+          eks_assume_role: eks_assume_role
+          ldap_token_expiration: ldap_token_expiration
+          venafi_use_tpp: true
+          mongodb_password: mongodb_password
+          aws_secret_access_key: aws_secret_access_key
+          mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
+          postgres_creation_statements: postgres_creation_statements
+          db_max_idle_conns: db_max_idle_conns
+          artifactory_admin_username: artifactory_admin_username
+          admin_name: admin_name
+          rabbitmq_server_user: rabbitmq_server_user
+          venafi_api_key: venafi_api_key
+          mongodb_host_port: mongodb_host_port
+          sf_warehouse_name: sf_warehouse_name
+          artifactory_token_scope: artifactory_token_scope
+          revoke_sync_url: revoke_sync_url
+          gke_cluster_ca_certificate: gke_cluster_ca_certificate
+          host_port: host_port
+          k8s_bearer_token: k8s_bearer_token
+          enable_admin_rotation: true
+          cassandra_creation_statements: cassandra_creation_statements
+          failure_message: failure_message
+          rabbitmq_user_read_permission: rabbitmq_user_read_permission
+          azure_client_id: azure_client_id
+          mongodb_default_auth_db: mongodb_default_auth_db
+          mongodb_uri_connection: mongodb_uri_connection
+          mongodb_atlas_project_id: mongodb_atlas_project_id
+          db_user_name: db_user_name
+          eks_region: eks_region
+          payload: payload
+          artifactory_admin_apikey: artifactory_admin_apikey
+          redshift_creation_statements: redshift_creation_statements
+          ldap_audience: ldap_audience
+          azure_app_object_id: azure_app_object_id
+          ldap_bind_password: ldap_bind_password
+          venafi_allow_subdomains: true
+          aws_user_console_access: true
+          user_principal_name: user_principal_name
+          externally_provided_user: externally_provided_user
+          db_server_certificates: db_server_certificates
+          gcp_key_algo: gcp_key_algo
+          db_server_name: db_server_name
+          venafi_zone: venafi_zone
+          gcp_service_account_key:
+          - 1
+          - 1
+          venafi_store_private_key: true
+          venafi_tpp_username: venafi_tpp_username
+          azure_user_portal_access: true
+          venafi_root_first_in_chain: true
+          eks_cluster_endpoint: eks_cluster_endpoint
+          gke_service_account_key: gke_service_account_key
+          venafi_auto_generated_folder: venafi_auto_generated_folder
+          mongodb_uri_options: mongodb_uri_options
+          db_pwd: db_pwd
+          gke_service_account_name: gke_service_account_name
+          mysql_creation_statements: mysql_creation_statements
+          gcp_service_account_email: gcp_service_account_email
+          dynamic_secret_name: dynamic_secret_name
+          rabbitmq_server_uri: rabbitmq_server_uri
+          chef_server_access_mode: chef_server_access_mode
+          aws_user_programmatic_access: true
+          rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
+          rabbitmq_user_write_permission: rabbitmq_user_write_permission
+          rabbitmq_user_tags: rabbitmq_user_tags
+          venafi_tpp_password: venafi_tpp_password
+          is_fixed_user: is_fixed_user
+          ldap_user_attr: ldap_user_attr
+          use_gw_cloud_identity: true
+          azure_user_programmatic_access: true
+          k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
+          eks_secret_access_key: eks_secret_access_key
+          sf_account: sf_account
+          secure_remote_access_details:
+            schema: schema
+            bastion_ssh: bastion_ssh
+            isolated: true
+            ssh_private_key: true
+            allow_port_forwarding: true
+            is_web: true
+            endpoint: endpoint
+            native: true
+            enable: true
+            host:
+            - host
+            - host
+            dashboard_url: dashboard_url
+            bastion_issuer: bastion_issuer
+            ssh_user: ssh_user
+            is_cli: true
+            use_internal_bastion: true
+            rdp_user: rdp_user
+            url: url
+            account_id: account_id
+            db_name: db_name
+            allow_providing_external_username: true
+            domain: domain
+            bastion_api: bastion_api
+            category: category
+            region: region
+            ssh_password: true
+            bastion_issuer_id: 7
+          groups: groups
+          chef_organizations: chef_organizations
+          dynamic_secret_id: 6
+          chef_server_host_name: chef_server_host_name
+          mssql_revocation_statements: mssql_revocation_statements
+          chef_server_port: chef_server_port
+          mongodb_is_atlas: true
+          eks_cluster_ca_certificate: eks_cluster_ca_certificate
+          rotate_sync_url: rotate_sync_url
+          aws_access_key_id: aws_access_key_id
+          aws_region: aws_region
+          eks_cluster_name: eks_cluster_name
+          chef_server_url: chef_server_url
+          gke_cluster_name: gke_cluster_name
+          aws_user_groups: aws_user_groups
+          host_name: host_name
+          azure_tenant_id: azure_tenant_id
+      properties:
+        producer_details:
+          $ref: '#/components/schemas/DSProducerDetails'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayUpdateProducerMSSQL:
+      description: gatewayUpdateProducerMSSQL is a command that updates mssql producer
+      properties:
+        mssql-create-statements:
+          description: MSSQL Creation statements
+          type: string
+          x-go-name: CreationStatements
+        mssql-dbname:
+          description: MSSQL Name
+          type: string
+          x-go-name: DBName
+        mssql-host:
+          default: 127.0.0.1
+          description: MSSQL Host
+          type: string
+          x-go-name: DBHost
+        mssql-password:
+          description: MSSQL Password
+          type: string
+          x-go-name: DBPassword
+        mssql-port:
+          default: "1433"
+          description: MSSQL Port
+          type: string
+          x-go-name: DBPort
+        mssql-revocation-statements:
+          description: MSSQL Revocation statements
+          type: string
+          x-go-name: RevocationStatements
+        mssql-username:
+          description: MSSQL Username
+          type: string
+          x-go-name: DBUsername
+        name:
+          description: Producer name
+          type: string
+          x-go-name: ProducerName
+        new-name:
+          description: Producer name
+          type: string
+          x-go-name: ProducerNewName
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        producer-encryption-key-name:
+          description: Dynamic producer encryption key
+          type: string
+          x-go-name: ProducerEncryptionKey
+        secure-access-bastion-issuer:
+          type: string
+          x-go-name: SecureAccessBastionIssuer
+        secure-access-db-schema:
+          type: string
+          x-go-name: SecureAccessSchema
+        secure-access-enable:
+          type: string
+          x-go-name: SecureAccessEnabled
+        secure-access-host:
+          items:
+            type: string
+          type: array
+          x-go-name: SecureAccessHost
+        secure-access-web:
+          type: boolean
+          x-go-name: AccessWebCategory
+        target-name:
+          description: Target name
+          type: string
+          x-go-name: TargetName
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        user-ttl:
+          default: 60m
+          description: User TTL
+          type: string
+          x-go-name: UserTtl
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+      required:
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayUpdateProducerMSSQLOutput:
+      example:
+        producer_details:
+          gke_cluster_endpoint: gke_cluster_endpoint
+          dynamic_secret_type: dynamic_secret_type
+          k8s_namespace: k8s_namespace
+          venafi_sign_using_akeyless_pki: true
+          dynamic_secret_key: dynamic_secret_key
+          last_admin_rotation: 5
+          chef_server_key: chef_server_key
+          db_max_open_conns: db_max_open_conns
+          admin_rotation_interval_days: 0
+          oracle_creation_statements: oracle_creation_statements
+          mssql_creation_statements: mssql_creation_statements
+          sf_user_role: sf_user_role
+          ldap_certificate: ldap_certificate
+          ldap_bind_dn: ldap_bind_dn
+          ldap_url: ldap_url
+          admin_pwd: admin_pwd
+          gcp_token_scope: gcp_token_scope
+          venafi_allowed_domains:
+          - venafi_allowed_domains
+          - venafi_allowed_domains
+          azure_user_roles_template_id: azure_user_roles_template_id
+          fixed_user_only: fixed_user_only
+          rabbitmq_server_password: rabbitmq_server_password
+          aws_access_mode: aws_access_mode
+          aws_user_policies: aws_user_policies
+          aws_role_arns: aws_role_arns
+          active: true
+          item_targets_assoc:
+          - assoc_id: assoc_id
+            target_name: target_name
+            target_id: 1
+          - assoc_id: assoc_id
+            target_name: target_name
+            target_id: 1
+          chef_server_username: chef_server_username
+          db_host_name: db_host_name
+          ldap_user_dn: ldap_user_dn
+          db_name: db_name
+          k8s_service_account: k8s_service_account
+          chef_skip_ssl: true
+          db_port: db_port
+          k8s_cluster_endpoint: k8s_cluster_endpoint
+          artifactory_base_url: artifactory_base_url
+          azure_client_secret: azure_client_secret
+          azure_user_groups_obj_id: azure_user_groups_obj_id
+          gcp_token_type: gcp_token_type
+          create_sync_url: create_sync_url
+          aws_session_token: aws_session_token
+          gcp_token_lifetime: gcp_token_lifetime
+          db_isolation_level: db_isolation_level
+          rabbitmq_user_vhost: rabbitmq_user_vhost
+          mongodb_username: mongodb_username
+          mongodb_roles: mongodb_roles
+          mongodb_db_name: mongodb_db_name
+          venafi_signer_key_name: venafi_signer_key_name
+          should_stop: should_stop
+          artifactory_token_audience: artifactory_token_audience
+          mongodb_atlas_api_public_key: mongodb_atlas_api_public_key
+          eks_access_key_id: eks_access_key_id
+          venafi_base_url: venafi_base_url
+          user_ttl: user_ttl
+          timeout_seconds: 5
+          eks_assume_role: eks_assume_role
+          ldap_token_expiration: ldap_token_expiration
+          venafi_use_tpp: true
+          mongodb_password: mongodb_password
+          aws_secret_access_key: aws_secret_access_key
+          mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
+          postgres_creation_statements: postgres_creation_statements
+          db_max_idle_conns: db_max_idle_conns
+          artifactory_admin_username: artifactory_admin_username
+          admin_name: admin_name
+          rabbitmq_server_user: rabbitmq_server_user
+          venafi_api_key: venafi_api_key
+          mongodb_host_port: mongodb_host_port
+          sf_warehouse_name: sf_warehouse_name
+          artifactory_token_scope: artifactory_token_scope
+          revoke_sync_url: revoke_sync_url
+          gke_cluster_ca_certificate: gke_cluster_ca_certificate
+          host_port: host_port
+          k8s_bearer_token: k8s_bearer_token
+          enable_admin_rotation: true
+          cassandra_creation_statements: cassandra_creation_statements
+          failure_message: failure_message
+          rabbitmq_user_read_permission: rabbitmq_user_read_permission
+          azure_client_id: azure_client_id
+          mongodb_default_auth_db: mongodb_default_auth_db
+          mongodb_uri_connection: mongodb_uri_connection
+          mongodb_atlas_project_id: mongodb_atlas_project_id
+          db_user_name: db_user_name
+          eks_region: eks_region
+          payload: payload
+          artifactory_admin_apikey: artifactory_admin_apikey
+          redshift_creation_statements: redshift_creation_statements
+          ldap_audience: ldap_audience
+          azure_app_object_id: azure_app_object_id
+          ldap_bind_password: ldap_bind_password
+          venafi_allow_subdomains: true
+          aws_user_console_access: true
+          user_principal_name: user_principal_name
+          externally_provided_user: externally_provided_user
+          db_server_certificates: db_server_certificates
+          gcp_key_algo: gcp_key_algo
+          db_server_name: db_server_name
+          venafi_zone: venafi_zone
+          gcp_service_account_key:
+          - 1
+          - 1
+          venafi_store_private_key: true
+          venafi_tpp_username: venafi_tpp_username
+          azure_user_portal_access: true
+          venafi_root_first_in_chain: true
+          eks_cluster_endpoint: eks_cluster_endpoint
+          gke_service_account_key: gke_service_account_key
+          venafi_auto_generated_folder: venafi_auto_generated_folder
+          mongodb_uri_options: mongodb_uri_options
+          db_pwd: db_pwd
+          gke_service_account_name: gke_service_account_name
+          mysql_creation_statements: mysql_creation_statements
+          gcp_service_account_email: gcp_service_account_email
+          dynamic_secret_name: dynamic_secret_name
+          rabbitmq_server_uri: rabbitmq_server_uri
+          chef_server_access_mode: chef_server_access_mode
+          aws_user_programmatic_access: true
+          rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
+          rabbitmq_user_write_permission: rabbitmq_user_write_permission
+          rabbitmq_user_tags: rabbitmq_user_tags
+          venafi_tpp_password: venafi_tpp_password
+          is_fixed_user: is_fixed_user
+          ldap_user_attr: ldap_user_attr
+          use_gw_cloud_identity: true
+          azure_user_programmatic_access: true
+          k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
+          eks_secret_access_key: eks_secret_access_key
+          sf_account: sf_account
+          secure_remote_access_details:
+            schema: schema
+            bastion_ssh: bastion_ssh
+            isolated: true
+            ssh_private_key: true
+            allow_port_forwarding: true
+            is_web: true
+            endpoint: endpoint
+            native: true
+            enable: true
+            host:
+            - host
+            - host
+            dashboard_url: dashboard_url
+            bastion_issuer: bastion_issuer
+            ssh_user: ssh_user
+            is_cli: true
+            use_internal_bastion: true
+            rdp_user: rdp_user
+            url: url
+            account_id: account_id
+            db_name: db_name
+            allow_providing_external_username: true
+            domain: domain
+            bastion_api: bastion_api
+            category: category
+            region: region
+            ssh_password: true
+            bastion_issuer_id: 7
+          groups: groups
+          chef_organizations: chef_organizations
+          dynamic_secret_id: 6
+          chef_server_host_name: chef_server_host_name
+          mssql_revocation_statements: mssql_revocation_statements
+          chef_server_port: chef_server_port
+          mongodb_is_atlas: true
+          eks_cluster_ca_certificate: eks_cluster_ca_certificate
+          rotate_sync_url: rotate_sync_url
+          aws_access_key_id: aws_access_key_id
+          aws_region: aws_region
+          eks_cluster_name: eks_cluster_name
+          chef_server_url: chef_server_url
+          gke_cluster_name: gke_cluster_name
+          aws_user_groups: aws_user_groups
+          host_name: host_name
+          azure_tenant_id: azure_tenant_id
+      properties:
+        producer_details:
+          $ref: '#/components/schemas/DSProducerDetails'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayUpdateProducerMongo:
+      description: gatewayUpdateProducerMongo is a command that updates either mongodb  producer
+        or mongodb atlas producer
+      properties:
+        mongodb-atlas-api-private-key:
+          description: MongoDB Atlas private key
+          type: string
+          x-go-name: MongoAPIPrivateKey
+        mongodb-atlas-api-public-key:
+          description: MongoDB Atlas public key
+          type: string
+          x-go-name: MongoAPIPublicKey
+        mongodb-atlas-project-id:
+          description: MongoDB Atlas project ID
+          type: string
+          x-go-name: MongoProjectID
+        mongodb-default-auth-db:
+          description: MongoDB server default authentication database
+          type: string
+          x-go-name: MongoDefaultAuthDB
+        mongodb-host-port:
+          description: MongoDB server host and port
+          type: string
+          x-go-name: MongoHostAndPort
+        mongodb-name:
+          description: MongoDB Name
+          type: string
+          x-go-name: DBName
+        mongodb-password:
+          description: MongoDB server password. You will prompted to provide a password
+            if it will not appear in CLI parameters
+          type: string
+          x-go-name: MongoPassword
+        mongodb-roles:
+          default: '[]'
+          description: MongoDB Roles
+          type: string
+          x-go-name: Roles
+        mongodb-server-uri:
+          description: MongoDB server URI
+          type: string
+          x-go-name: MongoServerURI
+        mongodb-uri-options:
+          description: MongoDB server URI options
+          type: string
+          x-go-name: MongoURIOptions
+        mongodb-username:
+          description: MongoDB server username
+          type: string
+          x-go-name: MongoUsername
+        name:
+          description: Producer name
+          type: string
+          x-go-name: ProducerName
+        new-name:
+          description: Producer name
+          type: string
+          x-go-name: ProducerNewName
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        producer-encryption-key-name:
+          description: Encrypt producer with following key
+          type: string
+          x-go-name: ProducerEncryptionKey
+        secure-access-bastion-issuer:
+          type: string
+          x-go-name: SecureAccessBastionIssuer
+        secure-access-enable:
+          type: string
+          x-go-name: SecureAccessEnabled
+        secure-access-host:
+          items:
+            type: string
+          type: array
+          x-go-name: SecureAccessHost
+        secure-access-web:
+          type: boolean
+          x-go-name: AccessWebCategory
+        target-name:
+          description: Target name
+          type: string
+          x-go-name: TargetName
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        user-ttl:
+          default: 60m
+          description: User TTL
+          type: string
+          x-go-name: UserTtl
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+      required:
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayUpdateProducerMongoOutput:
+      example:
+        producer_details:
+          gke_cluster_endpoint: gke_cluster_endpoint
+          dynamic_secret_type: dynamic_secret_type
+          k8s_namespace: k8s_namespace
+          venafi_sign_using_akeyless_pki: true
+          dynamic_secret_key: dynamic_secret_key
+          last_admin_rotation: 5
+          chef_server_key: chef_server_key
+          db_max_open_conns: db_max_open_conns
+          admin_rotation_interval_days: 0
+          oracle_creation_statements: oracle_creation_statements
+          mssql_creation_statements: mssql_creation_statements
+          sf_user_role: sf_user_role
+          ldap_certificate: ldap_certificate
+          ldap_bind_dn: ldap_bind_dn
+          ldap_url: ldap_url
+          admin_pwd: admin_pwd
+          gcp_token_scope: gcp_token_scope
+          venafi_allowed_domains:
+          - venafi_allowed_domains
+          - venafi_allowed_domains
+          azure_user_roles_template_id: azure_user_roles_template_id
+          fixed_user_only: fixed_user_only
+          rabbitmq_server_password: rabbitmq_server_password
+          aws_access_mode: aws_access_mode
+          aws_user_policies: aws_user_policies
+          aws_role_arns: aws_role_arns
+          active: true
+          item_targets_assoc:
+          - assoc_id: assoc_id
+            target_name: target_name
+            target_id: 1
+          - assoc_id: assoc_id
+            target_name: target_name
+            target_id: 1
+          chef_server_username: chef_server_username
+          db_host_name: db_host_name
+          ldap_user_dn: ldap_user_dn
+          db_name: db_name
+          k8s_service_account: k8s_service_account
+          chef_skip_ssl: true
+          db_port: db_port
+          k8s_cluster_endpoint: k8s_cluster_endpoint
+          artifactory_base_url: artifactory_base_url
+          azure_client_secret: azure_client_secret
+          azure_user_groups_obj_id: azure_user_groups_obj_id
+          gcp_token_type: gcp_token_type
+          create_sync_url: create_sync_url
+          aws_session_token: aws_session_token
+          gcp_token_lifetime: gcp_token_lifetime
+          db_isolation_level: db_isolation_level
+          rabbitmq_user_vhost: rabbitmq_user_vhost
+          mongodb_username: mongodb_username
+          mongodb_roles: mongodb_roles
+          mongodb_db_name: mongodb_db_name
+          venafi_signer_key_name: venafi_signer_key_name
+          should_stop: should_stop
+          artifactory_token_audience: artifactory_token_audience
+          mongodb_atlas_api_public_key: mongodb_atlas_api_public_key
+          eks_access_key_id: eks_access_key_id
+          venafi_base_url: venafi_base_url
+          user_ttl: user_ttl
+          timeout_seconds: 5
+          eks_assume_role: eks_assume_role
+          ldap_token_expiration: ldap_token_expiration
+          venafi_use_tpp: true
+          mongodb_password: mongodb_password
+          aws_secret_access_key: aws_secret_access_key
+          mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
+          postgres_creation_statements: postgres_creation_statements
+          db_max_idle_conns: db_max_idle_conns
+          artifactory_admin_username: artifactory_admin_username
+          admin_name: admin_name
+          rabbitmq_server_user: rabbitmq_server_user
+          venafi_api_key: venafi_api_key
+          mongodb_host_port: mongodb_host_port
+          sf_warehouse_name: sf_warehouse_name
+          artifactory_token_scope: artifactory_token_scope
+          revoke_sync_url: revoke_sync_url
+          gke_cluster_ca_certificate: gke_cluster_ca_certificate
+          host_port: host_port
+          k8s_bearer_token: k8s_bearer_token
+          enable_admin_rotation: true
+          cassandra_creation_statements: cassandra_creation_statements
+          failure_message: failure_message
+          rabbitmq_user_read_permission: rabbitmq_user_read_permission
+          azure_client_id: azure_client_id
+          mongodb_default_auth_db: mongodb_default_auth_db
+          mongodb_uri_connection: mongodb_uri_connection
+          mongodb_atlas_project_id: mongodb_atlas_project_id
+          db_user_name: db_user_name
+          eks_region: eks_region
+          payload: payload
+          artifactory_admin_apikey: artifactory_admin_apikey
+          redshift_creation_statements: redshift_creation_statements
+          ldap_audience: ldap_audience
+          azure_app_object_id: azure_app_object_id
+          ldap_bind_password: ldap_bind_password
+          venafi_allow_subdomains: true
+          aws_user_console_access: true
+          user_principal_name: user_principal_name
+          externally_provided_user: externally_provided_user
+          db_server_certificates: db_server_certificates
+          gcp_key_algo: gcp_key_algo
+          db_server_name: db_server_name
+          venafi_zone: venafi_zone
+          gcp_service_account_key:
+          - 1
+          - 1
+          venafi_store_private_key: true
+          venafi_tpp_username: venafi_tpp_username
+          azure_user_portal_access: true
+          venafi_root_first_in_chain: true
+          eks_cluster_endpoint: eks_cluster_endpoint
+          gke_service_account_key: gke_service_account_key
+          venafi_auto_generated_folder: venafi_auto_generated_folder
+          mongodb_uri_options: mongodb_uri_options
+          db_pwd: db_pwd
+          gke_service_account_name: gke_service_account_name
+          mysql_creation_statements: mysql_creation_statements
+          gcp_service_account_email: gcp_service_account_email
+          dynamic_secret_name: dynamic_secret_name
+          rabbitmq_server_uri: rabbitmq_server_uri
+          chef_server_access_mode: chef_server_access_mode
+          aws_user_programmatic_access: true
+          rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
+          rabbitmq_user_write_permission: rabbitmq_user_write_permission
+          rabbitmq_user_tags: rabbitmq_user_tags
+          venafi_tpp_password: venafi_tpp_password
+          is_fixed_user: is_fixed_user
+          ldap_user_attr: ldap_user_attr
+          use_gw_cloud_identity: true
+          azure_user_programmatic_access: true
+          k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
+          eks_secret_access_key: eks_secret_access_key
+          sf_account: sf_account
+          secure_remote_access_details:
+            schema: schema
+            bastion_ssh: bastion_ssh
+            isolated: true
+            ssh_private_key: true
+            allow_port_forwarding: true
+            is_web: true
+            endpoint: endpoint
+            native: true
+            enable: true
+            host:
+            - host
+            - host
+            dashboard_url: dashboard_url
+            bastion_issuer: bastion_issuer
+            ssh_user: ssh_user
+            is_cli: true
+            use_internal_bastion: true
+            rdp_user: rdp_user
+            url: url
+            account_id: account_id
+            db_name: db_name
+            allow_providing_external_username: true
+            domain: domain
+            bastion_api: bastion_api
+            category: category
+            region: region
+            ssh_password: true
+            bastion_issuer_id: 7
+          groups: groups
+          chef_organizations: chef_organizations
+          dynamic_secret_id: 6
+          chef_server_host_name: chef_server_host_name
+          mssql_revocation_statements: mssql_revocation_statements
+          chef_server_port: chef_server_port
+          mongodb_is_atlas: true
+          eks_cluster_ca_certificate: eks_cluster_ca_certificate
+          rotate_sync_url: rotate_sync_url
+          aws_access_key_id: aws_access_key_id
+          aws_region: aws_region
+          eks_cluster_name: eks_cluster_name
+          chef_server_url: chef_server_url
+          gke_cluster_name: gke_cluster_name
+          aws_user_groups: aws_user_groups
+          host_name: host_name
+          azure_tenant_id: azure_tenant_id
+      properties:
+        producer_details:
+          $ref: '#/components/schemas/DSProducerDetails'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayUpdateProducerMySQL:
+      description: gatewayUpdateProducerMySQL is a command that updates mysql producer
+      properties:
+        db-server-certificates:
+          description: (Optional) DB server certificates
+          type: string
+          x-go-name: DBServerCertificates
+        db-server-name:
+          description: (Optional) Server name for certificate verification
+          type: string
+          x-go-name: DBServerName
+        mysql-dbname:
+          description: MySQL DB Name
+          type: string
+          x-go-name: DBName
+        mysql-host:
+          default: 127.0.0.1
+          description: MySQL Host
+          type: string
+          x-go-name: DBHost
+        mysql-password:
+          description: MySQL Password
+          type: string
+          x-go-name: DBPassword
+        mysql-port:
+          default: "3306"
+          description: MySQL Port
+          type: string
+          x-go-name: DBPort
+        mysql-screation-statements:
+          description: MySQL Creation statements
+          type: string
+          x-go-name: CreationStatements
+        mysql-username:
+          description: MySQL Username
+          type: string
+          x-go-name: DBUsername
+        name:
+          description: Producer name
+          type: string
+          x-go-name: ProducerName
+        new-name:
+          description: Producer name
+          type: string
+          x-go-name: ProducerNewName
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        producer-encryption-key-name:
+          description: Dynamic producer encryption key
+          type: string
+          x-go-name: ProducerEncryptionKey
+        secure-access-bastion-issuer:
+          type: string
+          x-go-name: SecureAccessBastionIssuer
+        secure-access-enable:
+          type: string
+          x-go-name: SecureAccessEnabled
+        secure-access-host:
+          items:
+            type: string
+          type: array
+          x-go-name: SecureAccessHost
+        secure-access-web:
+          type: boolean
+          x-go-name: AccessWebCategory
+        target-name:
+          description: Target name
+          type: string
+          x-go-name: TargetName
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        user-ttl:
+          default: 60m
+          description: User TTL
+          type: string
+          x-go-name: UserTtl
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+      required:
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayUpdateProducerMySQLOutput:
+      example:
+        producer_details:
+          gke_cluster_endpoint: gke_cluster_endpoint
+          dynamic_secret_type: dynamic_secret_type
+          k8s_namespace: k8s_namespace
+          venafi_sign_using_akeyless_pki: true
+          dynamic_secret_key: dynamic_secret_key
+          last_admin_rotation: 5
+          chef_server_key: chef_server_key
+          db_max_open_conns: db_max_open_conns
+          admin_rotation_interval_days: 0
+          oracle_creation_statements: oracle_creation_statements
+          mssql_creation_statements: mssql_creation_statements
+          sf_user_role: sf_user_role
+          ldap_certificate: ldap_certificate
+          ldap_bind_dn: ldap_bind_dn
+          ldap_url: ldap_url
+          admin_pwd: admin_pwd
+          gcp_token_scope: gcp_token_scope
+          venafi_allowed_domains:
+          - venafi_allowed_domains
+          - venafi_allowed_domains
+          azure_user_roles_template_id: azure_user_roles_template_id
+          fixed_user_only: fixed_user_only
+          rabbitmq_server_password: rabbitmq_server_password
+          aws_access_mode: aws_access_mode
+          aws_user_policies: aws_user_policies
+          aws_role_arns: aws_role_arns
+          active: true
+          item_targets_assoc:
+          - assoc_id: assoc_id
+            target_name: target_name
+            target_id: 1
+          - assoc_id: assoc_id
+            target_name: target_name
+            target_id: 1
+          chef_server_username: chef_server_username
+          db_host_name: db_host_name
+          ldap_user_dn: ldap_user_dn
+          db_name: db_name
+          k8s_service_account: k8s_service_account
+          chef_skip_ssl: true
+          db_port: db_port
+          k8s_cluster_endpoint: k8s_cluster_endpoint
+          artifactory_base_url: artifactory_base_url
+          azure_client_secret: azure_client_secret
+          azure_user_groups_obj_id: azure_user_groups_obj_id
+          gcp_token_type: gcp_token_type
+          create_sync_url: create_sync_url
+          aws_session_token: aws_session_token
+          gcp_token_lifetime: gcp_token_lifetime
+          db_isolation_level: db_isolation_level
+          rabbitmq_user_vhost: rabbitmq_user_vhost
+          mongodb_username: mongodb_username
+          mongodb_roles: mongodb_roles
+          mongodb_db_name: mongodb_db_name
+          venafi_signer_key_name: venafi_signer_key_name
+          should_stop: should_stop
+          artifactory_token_audience: artifactory_token_audience
+          mongodb_atlas_api_public_key: mongodb_atlas_api_public_key
+          eks_access_key_id: eks_access_key_id
+          venafi_base_url: venafi_base_url
+          user_ttl: user_ttl
+          timeout_seconds: 5
+          eks_assume_role: eks_assume_role
+          ldap_token_expiration: ldap_token_expiration
+          venafi_use_tpp: true
+          mongodb_password: mongodb_password
+          aws_secret_access_key: aws_secret_access_key
+          mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
+          postgres_creation_statements: postgres_creation_statements
+          db_max_idle_conns: db_max_idle_conns
+          artifactory_admin_username: artifactory_admin_username
+          admin_name: admin_name
+          rabbitmq_server_user: rabbitmq_server_user
+          venafi_api_key: venafi_api_key
+          mongodb_host_port: mongodb_host_port
+          sf_warehouse_name: sf_warehouse_name
+          artifactory_token_scope: artifactory_token_scope
+          revoke_sync_url: revoke_sync_url
+          gke_cluster_ca_certificate: gke_cluster_ca_certificate
+          host_port: host_port
+          k8s_bearer_token: k8s_bearer_token
+          enable_admin_rotation: true
+          cassandra_creation_statements: cassandra_creation_statements
+          failure_message: failure_message
+          rabbitmq_user_read_permission: rabbitmq_user_read_permission
+          azure_client_id: azure_client_id
+          mongodb_default_auth_db: mongodb_default_auth_db
+          mongodb_uri_connection: mongodb_uri_connection
+          mongodb_atlas_project_id: mongodb_atlas_project_id
+          db_user_name: db_user_name
+          eks_region: eks_region
+          payload: payload
+          artifactory_admin_apikey: artifactory_admin_apikey
+          redshift_creation_statements: redshift_creation_statements
+          ldap_audience: ldap_audience
+          azure_app_object_id: azure_app_object_id
+          ldap_bind_password: ldap_bind_password
+          venafi_allow_subdomains: true
+          aws_user_console_access: true
+          user_principal_name: user_principal_name
+          externally_provided_user: externally_provided_user
+          db_server_certificates: db_server_certificates
+          gcp_key_algo: gcp_key_algo
+          db_server_name: db_server_name
+          venafi_zone: venafi_zone
+          gcp_service_account_key:
+          - 1
+          - 1
+          venafi_store_private_key: true
+          venafi_tpp_username: venafi_tpp_username
+          azure_user_portal_access: true
+          venafi_root_first_in_chain: true
+          eks_cluster_endpoint: eks_cluster_endpoint
+          gke_service_account_key: gke_service_account_key
+          venafi_auto_generated_folder: venafi_auto_generated_folder
+          mongodb_uri_options: mongodb_uri_options
+          db_pwd: db_pwd
+          gke_service_account_name: gke_service_account_name
+          mysql_creation_statements: mysql_creation_statements
+          gcp_service_account_email: gcp_service_account_email
+          dynamic_secret_name: dynamic_secret_name
+          rabbitmq_server_uri: rabbitmq_server_uri
+          chef_server_access_mode: chef_server_access_mode
+          aws_user_programmatic_access: true
+          rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
+          rabbitmq_user_write_permission: rabbitmq_user_write_permission
+          rabbitmq_user_tags: rabbitmq_user_tags
+          venafi_tpp_password: venafi_tpp_password
+          is_fixed_user: is_fixed_user
+          ldap_user_attr: ldap_user_attr
+          use_gw_cloud_identity: true
+          azure_user_programmatic_access: true
+          k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
+          eks_secret_access_key: eks_secret_access_key
+          sf_account: sf_account
+          secure_remote_access_details:
+            schema: schema
+            bastion_ssh: bastion_ssh
+            isolated: true
+            ssh_private_key: true
+            allow_port_forwarding: true
+            is_web: true
+            endpoint: endpoint
+            native: true
+            enable: true
+            host:
+            - host
+            - host
+            dashboard_url: dashboard_url
+            bastion_issuer: bastion_issuer
+            ssh_user: ssh_user
+            is_cli: true
+            use_internal_bastion: true
+            rdp_user: rdp_user
+            url: url
+            account_id: account_id
+            db_name: db_name
+            allow_providing_external_username: true
+            domain: domain
+            bastion_api: bastion_api
+            category: category
+            region: region
+            ssh_password: true
+            bastion_issuer_id: 7
+          groups: groups
+          chef_organizations: chef_organizations
+          dynamic_secret_id: 6
+          chef_server_host_name: chef_server_host_name
+          mssql_revocation_statements: mssql_revocation_statements
+          chef_server_port: chef_server_port
+          mongodb_is_atlas: true
+          eks_cluster_ca_certificate: eks_cluster_ca_certificate
+          rotate_sync_url: rotate_sync_url
+          aws_access_key_id: aws_access_key_id
+          aws_region: aws_region
+          eks_cluster_name: eks_cluster_name
+          chef_server_url: chef_server_url
+          gke_cluster_name: gke_cluster_name
+          aws_user_groups: aws_user_groups
+          host_name: host_name
+          azure_tenant_id: azure_tenant_id
+      properties:
+        producer_details:
+          $ref: '#/components/schemas/DSProducerDetails'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayUpdateProducerRdp:
+      description: gatewayUpdateProducerRdp is a command that updates rdp producer
+      properties:
+        fixed-user-only:
+          default: "false"
+          description: Fixed user
+          type: string
+          x-go-name: FixedUserOnly
+        name:
+          description: Producer name
+          type: string
+          x-go-name: ProducerName
+        new-name:
+          description: Producer name
+          type: string
+          x-go-name: ProducerNewName
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        producer-encryption-key-name:
+          description: Dynamic producer encryption key
+          type: string
+          x-go-name: ProducerEncryptionKey
+        rdp-admin-name:
+          description: RDP Admin Name
+          type: string
+          x-go-name: AdminName
+        rdp-admin-pwd:
+          description: RDP Admin password
+          type: string
+          x-go-name: AdminPwd
+        rdp-host-name:
+          description: Hostname
+          type: string
+          x-go-name: Hostname
+        rdp-host-port:
+          default: "22"
+          description: Port
+          type: string
+          x-go-name: HostPort
+        rdp-user-groups:
+          description: Groups
+          type: string
+          x-go-name: UserGroups
+        secure-access-allow-external-user:
+          type: boolean
+          x-go-name: SecureAccessAllowProvidingExternalUser
+        secure-access-enable:
+          type: string
+          x-go-name: SecureAccessEnabled
+        secure-access-host:
+          items:
+            type: string
+          type: array
+          x-go-name: SecureAccessHost
+        secure-access-rdp-domain:
+          type: string
+          x-go-name: SecureAccessDomain
+        secure-access-rdp-user:
+          type: string
+          x-go-name: SecureAccessOverrideUser
+        target-name:
+          description: Target name
+          type: string
+          x-go-name: TargetName
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        user-ttl:
+          default: 60m
+          description: User TTL
+          type: string
+          x-go-name: UserTtl
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+      required:
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayUpdateProducerRdpOutput:
+      example:
+        producer_details:
+          gke_cluster_endpoint: gke_cluster_endpoint
+          dynamic_secret_type: dynamic_secret_type
+          k8s_namespace: k8s_namespace
+          venafi_sign_using_akeyless_pki: true
+          dynamic_secret_key: dynamic_secret_key
+          last_admin_rotation: 5
+          chef_server_key: chef_server_key
+          db_max_open_conns: db_max_open_conns
+          admin_rotation_interval_days: 0
+          oracle_creation_statements: oracle_creation_statements
+          mssql_creation_statements: mssql_creation_statements
+          sf_user_role: sf_user_role
+          ldap_certificate: ldap_certificate
+          ldap_bind_dn: ldap_bind_dn
+          ldap_url: ldap_url
+          admin_pwd: admin_pwd
+          gcp_token_scope: gcp_token_scope
+          venafi_allowed_domains:
+          - venafi_allowed_domains
+          - venafi_allowed_domains
+          azure_user_roles_template_id: azure_user_roles_template_id
+          fixed_user_only: fixed_user_only
+          rabbitmq_server_password: rabbitmq_server_password
+          aws_access_mode: aws_access_mode
+          aws_user_policies: aws_user_policies
+          aws_role_arns: aws_role_arns
+          active: true
+          item_targets_assoc:
+          - assoc_id: assoc_id
+            target_name: target_name
+            target_id: 1
+          - assoc_id: assoc_id
+            target_name: target_name
+            target_id: 1
+          chef_server_username: chef_server_username
+          db_host_name: db_host_name
+          ldap_user_dn: ldap_user_dn
+          db_name: db_name
+          k8s_service_account: k8s_service_account
+          chef_skip_ssl: true
+          db_port: db_port
+          k8s_cluster_endpoint: k8s_cluster_endpoint
+          artifactory_base_url: artifactory_base_url
+          azure_client_secret: azure_client_secret
+          azure_user_groups_obj_id: azure_user_groups_obj_id
+          gcp_token_type: gcp_token_type
+          create_sync_url: create_sync_url
+          aws_session_token: aws_session_token
+          gcp_token_lifetime: gcp_token_lifetime
+          db_isolation_level: db_isolation_level
+          rabbitmq_user_vhost: rabbitmq_user_vhost
+          mongodb_username: mongodb_username
+          mongodb_roles: mongodb_roles
+          mongodb_db_name: mongodb_db_name
+          venafi_signer_key_name: venafi_signer_key_name
+          should_stop: should_stop
+          artifactory_token_audience: artifactory_token_audience
+          mongodb_atlas_api_public_key: mongodb_atlas_api_public_key
+          eks_access_key_id: eks_access_key_id
+          venafi_base_url: venafi_base_url
+          user_ttl: user_ttl
+          timeout_seconds: 5
+          eks_assume_role: eks_assume_role
+          ldap_token_expiration: ldap_token_expiration
+          venafi_use_tpp: true
+          mongodb_password: mongodb_password
+          aws_secret_access_key: aws_secret_access_key
+          mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
+          postgres_creation_statements: postgres_creation_statements
+          db_max_idle_conns: db_max_idle_conns
+          artifactory_admin_username: artifactory_admin_username
+          admin_name: admin_name
+          rabbitmq_server_user: rabbitmq_server_user
+          venafi_api_key: venafi_api_key
+          mongodb_host_port: mongodb_host_port
+          sf_warehouse_name: sf_warehouse_name
+          artifactory_token_scope: artifactory_token_scope
+          revoke_sync_url: revoke_sync_url
+          gke_cluster_ca_certificate: gke_cluster_ca_certificate
+          host_port: host_port
+          k8s_bearer_token: k8s_bearer_token
+          enable_admin_rotation: true
+          cassandra_creation_statements: cassandra_creation_statements
+          failure_message: failure_message
+          rabbitmq_user_read_permission: rabbitmq_user_read_permission
+          azure_client_id: azure_client_id
+          mongodb_default_auth_db: mongodb_default_auth_db
+          mongodb_uri_connection: mongodb_uri_connection
+          mongodb_atlas_project_id: mongodb_atlas_project_id
+          db_user_name: db_user_name
+          eks_region: eks_region
+          payload: payload
+          artifactory_admin_apikey: artifactory_admin_apikey
+          redshift_creation_statements: redshift_creation_statements
+          ldap_audience: ldap_audience
+          azure_app_object_id: azure_app_object_id
+          ldap_bind_password: ldap_bind_password
+          venafi_allow_subdomains: true
+          aws_user_console_access: true
+          user_principal_name: user_principal_name
+          externally_provided_user: externally_provided_user
+          db_server_certificates: db_server_certificates
+          gcp_key_algo: gcp_key_algo
+          db_server_name: db_server_name
+          venafi_zone: venafi_zone
+          gcp_service_account_key:
+          - 1
+          - 1
+          venafi_store_private_key: true
+          venafi_tpp_username: venafi_tpp_username
+          azure_user_portal_access: true
+          venafi_root_first_in_chain: true
+          eks_cluster_endpoint: eks_cluster_endpoint
+          gke_service_account_key: gke_service_account_key
+          venafi_auto_generated_folder: venafi_auto_generated_folder
+          mongodb_uri_options: mongodb_uri_options
+          db_pwd: db_pwd
+          gke_service_account_name: gke_service_account_name
+          mysql_creation_statements: mysql_creation_statements
+          gcp_service_account_email: gcp_service_account_email
+          dynamic_secret_name: dynamic_secret_name
+          rabbitmq_server_uri: rabbitmq_server_uri
+          chef_server_access_mode: chef_server_access_mode
+          aws_user_programmatic_access: true
+          rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
+          rabbitmq_user_write_permission: rabbitmq_user_write_permission
+          rabbitmq_user_tags: rabbitmq_user_tags
+          venafi_tpp_password: venafi_tpp_password
+          is_fixed_user: is_fixed_user
+          ldap_user_attr: ldap_user_attr
+          use_gw_cloud_identity: true
+          azure_user_programmatic_access: true
+          k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
+          eks_secret_access_key: eks_secret_access_key
+          sf_account: sf_account
+          secure_remote_access_details:
+            schema: schema
+            bastion_ssh: bastion_ssh
+            isolated: true
+            ssh_private_key: true
+            allow_port_forwarding: true
+            is_web: true
+            endpoint: endpoint
+            native: true
+            enable: true
+            host:
+            - host
+            - host
+            dashboard_url: dashboard_url
+            bastion_issuer: bastion_issuer
+            ssh_user: ssh_user
+            is_cli: true
+            use_internal_bastion: true
+            rdp_user: rdp_user
+            url: url
+            account_id: account_id
+            db_name: db_name
+            allow_providing_external_username: true
+            domain: domain
+            bastion_api: bastion_api
+            category: category
+            region: region
+            ssh_password: true
+            bastion_issuer_id: 7
+          groups: groups
+          chef_organizations: chef_organizations
+          dynamic_secret_id: 6
+          chef_server_host_name: chef_server_host_name
+          mssql_revocation_statements: mssql_revocation_statements
+          chef_server_port: chef_server_port
+          mongodb_is_atlas: true
+          eks_cluster_ca_certificate: eks_cluster_ca_certificate
+          rotate_sync_url: rotate_sync_url
+          aws_access_key_id: aws_access_key_id
+          aws_region: aws_region
+          eks_cluster_name: eks_cluster_name
+          chef_server_url: chef_server_url
+          gke_cluster_name: gke_cluster_name
+          aws_user_groups: aws_user_groups
+          host_name: host_name
+          azure_tenant_id: azure_tenant_id
+      properties:
+        producer_details:
+          $ref: '#/components/schemas/DSProducerDetails'
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     gatewayUpdateTmpUsers:
@@ -25707,6 +27626,9 @@ components:
             type: string
           type: array
           x-go-name: SecureAccessAddHost
+        secure-access-allow-external-user:
+          type: string
+          x-go-name: SecureAccessAllowProvidingExternalUser
         secure-access-allow-port-forwading:
           type: boolean
           x-go-name: SecureAccessK8SAllowPortForwading

@@ -93,6 +93,12 @@ Method | HTTP request | Description
 [**GatewayStartProducer**](V2Api.md#GatewayStartProducer) | **Post** /gateway-start-producer | 
 [**GatewayStopProducer**](V2Api.md#GatewayStopProducer) | **Post** /gateway-stop-producer | 
 [**GatewaySyncMigration**](V2Api.md#GatewaySyncMigration) | **Post** /gateway-sync-migration | 
+[**GatewayUpdateProducerAws**](V2Api.md#GatewayUpdateProducerAws) | **Post** /gateway-update-producer-aws | 
+[**GatewayUpdateProducerGcp**](V2Api.md#GatewayUpdateProducerGcp) | **Post** /gateway-update-producer-gcp | 
+[**GatewayUpdateProducerMSSQL**](V2Api.md#GatewayUpdateProducerMSSQL) | **Post** /gateway-update-producer-mssql | 
+[**GatewayUpdateProducerMongo**](V2Api.md#GatewayUpdateProducerMongo) | **Post** /gateway-update-producer-mongo | 
+[**GatewayUpdateProducerMySQL**](V2Api.md#GatewayUpdateProducerMySQL) | **Post** /gateway-update-producer-mysql | 
+[**GatewayUpdateProducerRdp**](V2Api.md#GatewayUpdateProducerRdp) | **Post** /gateway-update-producer-rdp | 
 [**GatewayUpdateTmpUsers**](V2Api.md#GatewayUpdateTmpUsers) | **Post** /gateway-update-producer-tmp-creds | 
 [**GetAccountLogo**](V2Api.md#GetAccountLogo) | **Post** /get-account-logo | 
 [**GetAuthMethod**](V2Api.md#GetAuthMethod) | **Post** /get-auth-method | 
@@ -5843,6 +5849,390 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GatewayMigrationSyncOutput**](gatewayMigrationSyncOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateProducerAws
+
+> GatewayUpdateProducerAwsOutput GatewayUpdateProducerAws(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateProducerAws("Name_example") // GatewayUpdateProducerAws | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateProducerAws(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerAws``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateProducerAws`: GatewayUpdateProducerAwsOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateProducerAws`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateProducerAwsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerAws**](GatewayUpdateProducerAws.md) |  | 
+
+### Return type
+
+[**GatewayUpdateProducerAwsOutput**](gatewayUpdateProducerAwsOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateProducerGcp
+
+> GatewayUpdateProducerGcpOutput GatewayUpdateProducerGcp(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateProducerGcp("Name_example") // GatewayUpdateProducerGcp | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateProducerGcp(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerGcp``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateProducerGcp`: GatewayUpdateProducerGcpOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateProducerGcp`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateProducerGcpRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerGcp**](GatewayUpdateProducerGcp.md) |  | 
+
+### Return type
+
+[**GatewayUpdateProducerGcpOutput**](gatewayUpdateProducerGcpOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateProducerMSSQL
+
+> GatewayUpdateProducerMSSQLOutput GatewayUpdateProducerMSSQL(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateProducerMSSQL("Name_example") // GatewayUpdateProducerMSSQL | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateProducerMSSQL(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerMSSQL``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateProducerMSSQL`: GatewayUpdateProducerMSSQLOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateProducerMSSQL`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateProducerMSSQLRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerMSSQL**](GatewayUpdateProducerMSSQL.md) |  | 
+
+### Return type
+
+[**GatewayUpdateProducerMSSQLOutput**](gatewayUpdateProducerMSSQLOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateProducerMongo
+
+> GatewayUpdateProducerMongoOutput GatewayUpdateProducerMongo(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateProducerMongo("Name_example") // GatewayUpdateProducerMongo | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateProducerMongo(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerMongo``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateProducerMongo`: GatewayUpdateProducerMongoOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateProducerMongo`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateProducerMongoRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerMongo**](GatewayUpdateProducerMongo.md) |  | 
+
+### Return type
+
+[**GatewayUpdateProducerMongoOutput**](gatewayUpdateProducerMongoOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateProducerMySQL
+
+> GatewayUpdateProducerMySQLOutput GatewayUpdateProducerMySQL(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateProducerMySQL("Name_example") // GatewayUpdateProducerMySQL | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateProducerMySQL(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerMySQL``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateProducerMySQL`: GatewayUpdateProducerMySQLOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateProducerMySQL`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateProducerMySQLRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerMySQL**](GatewayUpdateProducerMySQL.md) |  | 
+
+### Return type
+
+[**GatewayUpdateProducerMySQLOutput**](gatewayUpdateProducerMySQLOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateProducerRdp
+
+> GatewayUpdateProducerRdpOutput GatewayUpdateProducerRdp(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateProducerRdp("Name_example") // GatewayUpdateProducerRdp | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateProducerRdp(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerRdp``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateProducerRdp`: GatewayUpdateProducerRdpOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateProducerRdp`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateProducerRdpRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerRdp**](GatewayUpdateProducerRdp.md) |  | 
+
+### Return type
+
+[**GatewayUpdateProducerRdpOutput**](gatewayUpdateProducerRdpOutput.md)
 
 ### Authorization
 

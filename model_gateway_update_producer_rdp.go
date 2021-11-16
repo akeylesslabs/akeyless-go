@@ -15,12 +15,14 @@ import (
 	"encoding/json"
 )
 
-// GatewayCreateProducerRdp gatewayCreateProducerRdp is a command that creates rdp producer
-type GatewayCreateProducerRdp struct {
+// GatewayUpdateProducerRdp gatewayUpdateProducerRdp is a command that updates rdp producer
+type GatewayUpdateProducerRdp struct {
 	// Fixed user
 	FixedUserOnly *string `json:"fixed-user-only,omitempty"`
 	// Producer name
 	Name string `json:"name"`
+	// Producer name
+	NewName *string `json:"new-name,omitempty"`
 	// Required only when the authentication process requires a username and password
 	Password *string `json:"password,omitempty"`
 	// Dynamic producer encryption key
@@ -52,12 +54,12 @@ type GatewayCreateProducerRdp struct {
 	Username *string `json:"username,omitempty"`
 }
 
-// NewGatewayCreateProducerRdp instantiates a new GatewayCreateProducerRdp object
+// NewGatewayUpdateProducerRdp instantiates a new GatewayUpdateProducerRdp object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayCreateProducerRdp(name string, ) *GatewayCreateProducerRdp {
-	this := GatewayCreateProducerRdp{}
+func NewGatewayUpdateProducerRdp(name string, ) *GatewayUpdateProducerRdp {
+	this := GatewayUpdateProducerRdp{}
 	var fixedUserOnly string = "false"
 	this.FixedUserOnly = &fixedUserOnly
 	this.Name = name
@@ -68,11 +70,11 @@ func NewGatewayCreateProducerRdp(name string, ) *GatewayCreateProducerRdp {
 	return &this
 }
 
-// NewGatewayCreateProducerRdpWithDefaults instantiates a new GatewayCreateProducerRdp object
+// NewGatewayUpdateProducerRdpWithDefaults instantiates a new GatewayUpdateProducerRdp object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewGatewayCreateProducerRdpWithDefaults() *GatewayCreateProducerRdp {
-	this := GatewayCreateProducerRdp{}
+func NewGatewayUpdateProducerRdpWithDefaults() *GatewayUpdateProducerRdp {
+	this := GatewayUpdateProducerRdp{}
 	var fixedUserOnly string = "false"
 	this.FixedUserOnly = &fixedUserOnly
 	var rdpHostPort string = "22"
@@ -83,7 +85,7 @@ func NewGatewayCreateProducerRdpWithDefaults() *GatewayCreateProducerRdp {
 }
 
 // GetFixedUserOnly returns the FixedUserOnly field value if set, zero value otherwise.
-func (o *GatewayCreateProducerRdp) GetFixedUserOnly() string {
+func (o *GatewayUpdateProducerRdp) GetFixedUserOnly() string {
 	if o == nil || o.FixedUserOnly == nil {
 		var ret string
 		return ret
@@ -93,7 +95,7 @@ func (o *GatewayCreateProducerRdp) GetFixedUserOnly() string {
 
 // GetFixedUserOnlyOk returns a tuple with the FixedUserOnly field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerRdp) GetFixedUserOnlyOk() (*string, bool) {
+func (o *GatewayUpdateProducerRdp) GetFixedUserOnlyOk() (*string, bool) {
 	if o == nil || o.FixedUserOnly == nil {
 		return nil, false
 	}
@@ -101,7 +103,7 @@ func (o *GatewayCreateProducerRdp) GetFixedUserOnlyOk() (*string, bool) {
 }
 
 // HasFixedUserOnly returns a boolean if a field has been set.
-func (o *GatewayCreateProducerRdp) HasFixedUserOnly() bool {
+func (o *GatewayUpdateProducerRdp) HasFixedUserOnly() bool {
 	if o != nil && o.FixedUserOnly != nil {
 		return true
 	}
@@ -110,12 +112,12 @@ func (o *GatewayCreateProducerRdp) HasFixedUserOnly() bool {
 }
 
 // SetFixedUserOnly gets a reference to the given string and assigns it to the FixedUserOnly field.
-func (o *GatewayCreateProducerRdp) SetFixedUserOnly(v string) {
+func (o *GatewayUpdateProducerRdp) SetFixedUserOnly(v string) {
 	o.FixedUserOnly = &v
 }
 
 // GetName returns the Name field value
-func (o *GatewayCreateProducerRdp) GetName() string {
+func (o *GatewayUpdateProducerRdp) GetName() string {
 	if o == nil  {
 		var ret string
 		return ret
@@ -126,7 +128,7 @@ func (o *GatewayCreateProducerRdp) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerRdp) GetNameOk() (*string, bool) {
+func (o *GatewayUpdateProducerRdp) GetNameOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -134,12 +136,44 @@ func (o *GatewayCreateProducerRdp) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *GatewayCreateProducerRdp) SetName(v string) {
+func (o *GatewayUpdateProducerRdp) SetName(v string) {
 	o.Name = v
 }
 
+// GetNewName returns the NewName field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerRdp) GetNewName() string {
+	if o == nil || o.NewName == nil {
+		var ret string
+		return ret
+	}
+	return *o.NewName
+}
+
+// GetNewNameOk returns a tuple with the NewName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerRdp) GetNewNameOk() (*string, bool) {
+	if o == nil || o.NewName == nil {
+		return nil, false
+	}
+	return o.NewName, true
+}
+
+// HasNewName returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerRdp) HasNewName() bool {
+	if o != nil && o.NewName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNewName gets a reference to the given string and assigns it to the NewName field.
+func (o *GatewayUpdateProducerRdp) SetNewName(v string) {
+	o.NewName = &v
+}
+
 // GetPassword returns the Password field value if set, zero value otherwise.
-func (o *GatewayCreateProducerRdp) GetPassword() string {
+func (o *GatewayUpdateProducerRdp) GetPassword() string {
 	if o == nil || o.Password == nil {
 		var ret string
 		return ret
@@ -149,7 +183,7 @@ func (o *GatewayCreateProducerRdp) GetPassword() string {
 
 // GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerRdp) GetPasswordOk() (*string, bool) {
+func (o *GatewayUpdateProducerRdp) GetPasswordOk() (*string, bool) {
 	if o == nil || o.Password == nil {
 		return nil, false
 	}
@@ -157,7 +191,7 @@ func (o *GatewayCreateProducerRdp) GetPasswordOk() (*string, bool) {
 }
 
 // HasPassword returns a boolean if a field has been set.
-func (o *GatewayCreateProducerRdp) HasPassword() bool {
+func (o *GatewayUpdateProducerRdp) HasPassword() bool {
 	if o != nil && o.Password != nil {
 		return true
 	}
@@ -166,12 +200,12 @@ func (o *GatewayCreateProducerRdp) HasPassword() bool {
 }
 
 // SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *GatewayCreateProducerRdp) SetPassword(v string) {
+func (o *GatewayUpdateProducerRdp) SetPassword(v string) {
 	o.Password = &v
 }
 
 // GetProducerEncryptionKeyName returns the ProducerEncryptionKeyName field value if set, zero value otherwise.
-func (o *GatewayCreateProducerRdp) GetProducerEncryptionKeyName() string {
+func (o *GatewayUpdateProducerRdp) GetProducerEncryptionKeyName() string {
 	if o == nil || o.ProducerEncryptionKeyName == nil {
 		var ret string
 		return ret
@@ -181,7 +215,7 @@ func (o *GatewayCreateProducerRdp) GetProducerEncryptionKeyName() string {
 
 // GetProducerEncryptionKeyNameOk returns a tuple with the ProducerEncryptionKeyName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerRdp) GetProducerEncryptionKeyNameOk() (*string, bool) {
+func (o *GatewayUpdateProducerRdp) GetProducerEncryptionKeyNameOk() (*string, bool) {
 	if o == nil || o.ProducerEncryptionKeyName == nil {
 		return nil, false
 	}
@@ -189,7 +223,7 @@ func (o *GatewayCreateProducerRdp) GetProducerEncryptionKeyNameOk() (*string, bo
 }
 
 // HasProducerEncryptionKeyName returns a boolean if a field has been set.
-func (o *GatewayCreateProducerRdp) HasProducerEncryptionKeyName() bool {
+func (o *GatewayUpdateProducerRdp) HasProducerEncryptionKeyName() bool {
 	if o != nil && o.ProducerEncryptionKeyName != nil {
 		return true
 	}
@@ -198,12 +232,12 @@ func (o *GatewayCreateProducerRdp) HasProducerEncryptionKeyName() bool {
 }
 
 // SetProducerEncryptionKeyName gets a reference to the given string and assigns it to the ProducerEncryptionKeyName field.
-func (o *GatewayCreateProducerRdp) SetProducerEncryptionKeyName(v string) {
+func (o *GatewayUpdateProducerRdp) SetProducerEncryptionKeyName(v string) {
 	o.ProducerEncryptionKeyName = &v
 }
 
 // GetRdpAdminName returns the RdpAdminName field value if set, zero value otherwise.
-func (o *GatewayCreateProducerRdp) GetRdpAdminName() string {
+func (o *GatewayUpdateProducerRdp) GetRdpAdminName() string {
 	if o == nil || o.RdpAdminName == nil {
 		var ret string
 		return ret
@@ -213,7 +247,7 @@ func (o *GatewayCreateProducerRdp) GetRdpAdminName() string {
 
 // GetRdpAdminNameOk returns a tuple with the RdpAdminName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerRdp) GetRdpAdminNameOk() (*string, bool) {
+func (o *GatewayUpdateProducerRdp) GetRdpAdminNameOk() (*string, bool) {
 	if o == nil || o.RdpAdminName == nil {
 		return nil, false
 	}
@@ -221,7 +255,7 @@ func (o *GatewayCreateProducerRdp) GetRdpAdminNameOk() (*string, bool) {
 }
 
 // HasRdpAdminName returns a boolean if a field has been set.
-func (o *GatewayCreateProducerRdp) HasRdpAdminName() bool {
+func (o *GatewayUpdateProducerRdp) HasRdpAdminName() bool {
 	if o != nil && o.RdpAdminName != nil {
 		return true
 	}
@@ -230,12 +264,12 @@ func (o *GatewayCreateProducerRdp) HasRdpAdminName() bool {
 }
 
 // SetRdpAdminName gets a reference to the given string and assigns it to the RdpAdminName field.
-func (o *GatewayCreateProducerRdp) SetRdpAdminName(v string) {
+func (o *GatewayUpdateProducerRdp) SetRdpAdminName(v string) {
 	o.RdpAdminName = &v
 }
 
 // GetRdpAdminPwd returns the RdpAdminPwd field value if set, zero value otherwise.
-func (o *GatewayCreateProducerRdp) GetRdpAdminPwd() string {
+func (o *GatewayUpdateProducerRdp) GetRdpAdminPwd() string {
 	if o == nil || o.RdpAdminPwd == nil {
 		var ret string
 		return ret
@@ -245,7 +279,7 @@ func (o *GatewayCreateProducerRdp) GetRdpAdminPwd() string {
 
 // GetRdpAdminPwdOk returns a tuple with the RdpAdminPwd field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerRdp) GetRdpAdminPwdOk() (*string, bool) {
+func (o *GatewayUpdateProducerRdp) GetRdpAdminPwdOk() (*string, bool) {
 	if o == nil || o.RdpAdminPwd == nil {
 		return nil, false
 	}
@@ -253,7 +287,7 @@ func (o *GatewayCreateProducerRdp) GetRdpAdminPwdOk() (*string, bool) {
 }
 
 // HasRdpAdminPwd returns a boolean if a field has been set.
-func (o *GatewayCreateProducerRdp) HasRdpAdminPwd() bool {
+func (o *GatewayUpdateProducerRdp) HasRdpAdminPwd() bool {
 	if o != nil && o.RdpAdminPwd != nil {
 		return true
 	}
@@ -262,12 +296,12 @@ func (o *GatewayCreateProducerRdp) HasRdpAdminPwd() bool {
 }
 
 // SetRdpAdminPwd gets a reference to the given string and assigns it to the RdpAdminPwd field.
-func (o *GatewayCreateProducerRdp) SetRdpAdminPwd(v string) {
+func (o *GatewayUpdateProducerRdp) SetRdpAdminPwd(v string) {
 	o.RdpAdminPwd = &v
 }
 
 // GetRdpHostName returns the RdpHostName field value if set, zero value otherwise.
-func (o *GatewayCreateProducerRdp) GetRdpHostName() string {
+func (o *GatewayUpdateProducerRdp) GetRdpHostName() string {
 	if o == nil || o.RdpHostName == nil {
 		var ret string
 		return ret
@@ -277,7 +311,7 @@ func (o *GatewayCreateProducerRdp) GetRdpHostName() string {
 
 // GetRdpHostNameOk returns a tuple with the RdpHostName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerRdp) GetRdpHostNameOk() (*string, bool) {
+func (o *GatewayUpdateProducerRdp) GetRdpHostNameOk() (*string, bool) {
 	if o == nil || o.RdpHostName == nil {
 		return nil, false
 	}
@@ -285,7 +319,7 @@ func (o *GatewayCreateProducerRdp) GetRdpHostNameOk() (*string, bool) {
 }
 
 // HasRdpHostName returns a boolean if a field has been set.
-func (o *GatewayCreateProducerRdp) HasRdpHostName() bool {
+func (o *GatewayUpdateProducerRdp) HasRdpHostName() bool {
 	if o != nil && o.RdpHostName != nil {
 		return true
 	}
@@ -294,12 +328,12 @@ func (o *GatewayCreateProducerRdp) HasRdpHostName() bool {
 }
 
 // SetRdpHostName gets a reference to the given string and assigns it to the RdpHostName field.
-func (o *GatewayCreateProducerRdp) SetRdpHostName(v string) {
+func (o *GatewayUpdateProducerRdp) SetRdpHostName(v string) {
 	o.RdpHostName = &v
 }
 
 // GetRdpHostPort returns the RdpHostPort field value if set, zero value otherwise.
-func (o *GatewayCreateProducerRdp) GetRdpHostPort() string {
+func (o *GatewayUpdateProducerRdp) GetRdpHostPort() string {
 	if o == nil || o.RdpHostPort == nil {
 		var ret string
 		return ret
@@ -309,7 +343,7 @@ func (o *GatewayCreateProducerRdp) GetRdpHostPort() string {
 
 // GetRdpHostPortOk returns a tuple with the RdpHostPort field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerRdp) GetRdpHostPortOk() (*string, bool) {
+func (o *GatewayUpdateProducerRdp) GetRdpHostPortOk() (*string, bool) {
 	if o == nil || o.RdpHostPort == nil {
 		return nil, false
 	}
@@ -317,7 +351,7 @@ func (o *GatewayCreateProducerRdp) GetRdpHostPortOk() (*string, bool) {
 }
 
 // HasRdpHostPort returns a boolean if a field has been set.
-func (o *GatewayCreateProducerRdp) HasRdpHostPort() bool {
+func (o *GatewayUpdateProducerRdp) HasRdpHostPort() bool {
 	if o != nil && o.RdpHostPort != nil {
 		return true
 	}
@@ -326,12 +360,12 @@ func (o *GatewayCreateProducerRdp) HasRdpHostPort() bool {
 }
 
 // SetRdpHostPort gets a reference to the given string and assigns it to the RdpHostPort field.
-func (o *GatewayCreateProducerRdp) SetRdpHostPort(v string) {
+func (o *GatewayUpdateProducerRdp) SetRdpHostPort(v string) {
 	o.RdpHostPort = &v
 }
 
 // GetRdpUserGroups returns the RdpUserGroups field value if set, zero value otherwise.
-func (o *GatewayCreateProducerRdp) GetRdpUserGroups() string {
+func (o *GatewayUpdateProducerRdp) GetRdpUserGroups() string {
 	if o == nil || o.RdpUserGroups == nil {
 		var ret string
 		return ret
@@ -341,7 +375,7 @@ func (o *GatewayCreateProducerRdp) GetRdpUserGroups() string {
 
 // GetRdpUserGroupsOk returns a tuple with the RdpUserGroups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerRdp) GetRdpUserGroupsOk() (*string, bool) {
+func (o *GatewayUpdateProducerRdp) GetRdpUserGroupsOk() (*string, bool) {
 	if o == nil || o.RdpUserGroups == nil {
 		return nil, false
 	}
@@ -349,7 +383,7 @@ func (o *GatewayCreateProducerRdp) GetRdpUserGroupsOk() (*string, bool) {
 }
 
 // HasRdpUserGroups returns a boolean if a field has been set.
-func (o *GatewayCreateProducerRdp) HasRdpUserGroups() bool {
+func (o *GatewayUpdateProducerRdp) HasRdpUserGroups() bool {
 	if o != nil && o.RdpUserGroups != nil {
 		return true
 	}
@@ -358,12 +392,12 @@ func (o *GatewayCreateProducerRdp) HasRdpUserGroups() bool {
 }
 
 // SetRdpUserGroups gets a reference to the given string and assigns it to the RdpUserGroups field.
-func (o *GatewayCreateProducerRdp) SetRdpUserGroups(v string) {
+func (o *GatewayUpdateProducerRdp) SetRdpUserGroups(v string) {
 	o.RdpUserGroups = &v
 }
 
 // GetSecureAccessAllowExternalUser returns the SecureAccessAllowExternalUser field value if set, zero value otherwise.
-func (o *GatewayCreateProducerRdp) GetSecureAccessAllowExternalUser() bool {
+func (o *GatewayUpdateProducerRdp) GetSecureAccessAllowExternalUser() bool {
 	if o == nil || o.SecureAccessAllowExternalUser == nil {
 		var ret bool
 		return ret
@@ -373,7 +407,7 @@ func (o *GatewayCreateProducerRdp) GetSecureAccessAllowExternalUser() bool {
 
 // GetSecureAccessAllowExternalUserOk returns a tuple with the SecureAccessAllowExternalUser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerRdp) GetSecureAccessAllowExternalUserOk() (*bool, bool) {
+func (o *GatewayUpdateProducerRdp) GetSecureAccessAllowExternalUserOk() (*bool, bool) {
 	if o == nil || o.SecureAccessAllowExternalUser == nil {
 		return nil, false
 	}
@@ -381,7 +415,7 @@ func (o *GatewayCreateProducerRdp) GetSecureAccessAllowExternalUserOk() (*bool, 
 }
 
 // HasSecureAccessAllowExternalUser returns a boolean if a field has been set.
-func (o *GatewayCreateProducerRdp) HasSecureAccessAllowExternalUser() bool {
+func (o *GatewayUpdateProducerRdp) HasSecureAccessAllowExternalUser() bool {
 	if o != nil && o.SecureAccessAllowExternalUser != nil {
 		return true
 	}
@@ -390,12 +424,12 @@ func (o *GatewayCreateProducerRdp) HasSecureAccessAllowExternalUser() bool {
 }
 
 // SetSecureAccessAllowExternalUser gets a reference to the given bool and assigns it to the SecureAccessAllowExternalUser field.
-func (o *GatewayCreateProducerRdp) SetSecureAccessAllowExternalUser(v bool) {
+func (o *GatewayUpdateProducerRdp) SetSecureAccessAllowExternalUser(v bool) {
 	o.SecureAccessAllowExternalUser = &v
 }
 
 // GetSecureAccessEnable returns the SecureAccessEnable field value if set, zero value otherwise.
-func (o *GatewayCreateProducerRdp) GetSecureAccessEnable() string {
+func (o *GatewayUpdateProducerRdp) GetSecureAccessEnable() string {
 	if o == nil || o.SecureAccessEnable == nil {
 		var ret string
 		return ret
@@ -405,7 +439,7 @@ func (o *GatewayCreateProducerRdp) GetSecureAccessEnable() string {
 
 // GetSecureAccessEnableOk returns a tuple with the SecureAccessEnable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerRdp) GetSecureAccessEnableOk() (*string, bool) {
+func (o *GatewayUpdateProducerRdp) GetSecureAccessEnableOk() (*string, bool) {
 	if o == nil || o.SecureAccessEnable == nil {
 		return nil, false
 	}
@@ -413,7 +447,7 @@ func (o *GatewayCreateProducerRdp) GetSecureAccessEnableOk() (*string, bool) {
 }
 
 // HasSecureAccessEnable returns a boolean if a field has been set.
-func (o *GatewayCreateProducerRdp) HasSecureAccessEnable() bool {
+func (o *GatewayUpdateProducerRdp) HasSecureAccessEnable() bool {
 	if o != nil && o.SecureAccessEnable != nil {
 		return true
 	}
@@ -422,12 +456,12 @@ func (o *GatewayCreateProducerRdp) HasSecureAccessEnable() bool {
 }
 
 // SetSecureAccessEnable gets a reference to the given string and assigns it to the SecureAccessEnable field.
-func (o *GatewayCreateProducerRdp) SetSecureAccessEnable(v string) {
+func (o *GatewayUpdateProducerRdp) SetSecureAccessEnable(v string) {
 	o.SecureAccessEnable = &v
 }
 
 // GetSecureAccessHost returns the SecureAccessHost field value if set, zero value otherwise.
-func (o *GatewayCreateProducerRdp) GetSecureAccessHost() []string {
+func (o *GatewayUpdateProducerRdp) GetSecureAccessHost() []string {
 	if o == nil || o.SecureAccessHost == nil {
 		var ret []string
 		return ret
@@ -437,7 +471,7 @@ func (o *GatewayCreateProducerRdp) GetSecureAccessHost() []string {
 
 // GetSecureAccessHostOk returns a tuple with the SecureAccessHost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerRdp) GetSecureAccessHostOk() (*[]string, bool) {
+func (o *GatewayUpdateProducerRdp) GetSecureAccessHostOk() (*[]string, bool) {
 	if o == nil || o.SecureAccessHost == nil {
 		return nil, false
 	}
@@ -445,7 +479,7 @@ func (o *GatewayCreateProducerRdp) GetSecureAccessHostOk() (*[]string, bool) {
 }
 
 // HasSecureAccessHost returns a boolean if a field has been set.
-func (o *GatewayCreateProducerRdp) HasSecureAccessHost() bool {
+func (o *GatewayUpdateProducerRdp) HasSecureAccessHost() bool {
 	if o != nil && o.SecureAccessHost != nil {
 		return true
 	}
@@ -454,12 +488,12 @@ func (o *GatewayCreateProducerRdp) HasSecureAccessHost() bool {
 }
 
 // SetSecureAccessHost gets a reference to the given []string and assigns it to the SecureAccessHost field.
-func (o *GatewayCreateProducerRdp) SetSecureAccessHost(v []string) {
+func (o *GatewayUpdateProducerRdp) SetSecureAccessHost(v []string) {
 	o.SecureAccessHost = &v
 }
 
 // GetSecureAccessRdpDomain returns the SecureAccessRdpDomain field value if set, zero value otherwise.
-func (o *GatewayCreateProducerRdp) GetSecureAccessRdpDomain() string {
+func (o *GatewayUpdateProducerRdp) GetSecureAccessRdpDomain() string {
 	if o == nil || o.SecureAccessRdpDomain == nil {
 		var ret string
 		return ret
@@ -469,7 +503,7 @@ func (o *GatewayCreateProducerRdp) GetSecureAccessRdpDomain() string {
 
 // GetSecureAccessRdpDomainOk returns a tuple with the SecureAccessRdpDomain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerRdp) GetSecureAccessRdpDomainOk() (*string, bool) {
+func (o *GatewayUpdateProducerRdp) GetSecureAccessRdpDomainOk() (*string, bool) {
 	if o == nil || o.SecureAccessRdpDomain == nil {
 		return nil, false
 	}
@@ -477,7 +511,7 @@ func (o *GatewayCreateProducerRdp) GetSecureAccessRdpDomainOk() (*string, bool) 
 }
 
 // HasSecureAccessRdpDomain returns a boolean if a field has been set.
-func (o *GatewayCreateProducerRdp) HasSecureAccessRdpDomain() bool {
+func (o *GatewayUpdateProducerRdp) HasSecureAccessRdpDomain() bool {
 	if o != nil && o.SecureAccessRdpDomain != nil {
 		return true
 	}
@@ -486,12 +520,12 @@ func (o *GatewayCreateProducerRdp) HasSecureAccessRdpDomain() bool {
 }
 
 // SetSecureAccessRdpDomain gets a reference to the given string and assigns it to the SecureAccessRdpDomain field.
-func (o *GatewayCreateProducerRdp) SetSecureAccessRdpDomain(v string) {
+func (o *GatewayUpdateProducerRdp) SetSecureAccessRdpDomain(v string) {
 	o.SecureAccessRdpDomain = &v
 }
 
 // GetSecureAccessRdpUser returns the SecureAccessRdpUser field value if set, zero value otherwise.
-func (o *GatewayCreateProducerRdp) GetSecureAccessRdpUser() string {
+func (o *GatewayUpdateProducerRdp) GetSecureAccessRdpUser() string {
 	if o == nil || o.SecureAccessRdpUser == nil {
 		var ret string
 		return ret
@@ -501,7 +535,7 @@ func (o *GatewayCreateProducerRdp) GetSecureAccessRdpUser() string {
 
 // GetSecureAccessRdpUserOk returns a tuple with the SecureAccessRdpUser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerRdp) GetSecureAccessRdpUserOk() (*string, bool) {
+func (o *GatewayUpdateProducerRdp) GetSecureAccessRdpUserOk() (*string, bool) {
 	if o == nil || o.SecureAccessRdpUser == nil {
 		return nil, false
 	}
@@ -509,7 +543,7 @@ func (o *GatewayCreateProducerRdp) GetSecureAccessRdpUserOk() (*string, bool) {
 }
 
 // HasSecureAccessRdpUser returns a boolean if a field has been set.
-func (o *GatewayCreateProducerRdp) HasSecureAccessRdpUser() bool {
+func (o *GatewayUpdateProducerRdp) HasSecureAccessRdpUser() bool {
 	if o != nil && o.SecureAccessRdpUser != nil {
 		return true
 	}
@@ -518,12 +552,12 @@ func (o *GatewayCreateProducerRdp) HasSecureAccessRdpUser() bool {
 }
 
 // SetSecureAccessRdpUser gets a reference to the given string and assigns it to the SecureAccessRdpUser field.
-func (o *GatewayCreateProducerRdp) SetSecureAccessRdpUser(v string) {
+func (o *GatewayUpdateProducerRdp) SetSecureAccessRdpUser(v string) {
 	o.SecureAccessRdpUser = &v
 }
 
 // GetTargetName returns the TargetName field value if set, zero value otherwise.
-func (o *GatewayCreateProducerRdp) GetTargetName() string {
+func (o *GatewayUpdateProducerRdp) GetTargetName() string {
 	if o == nil || o.TargetName == nil {
 		var ret string
 		return ret
@@ -533,7 +567,7 @@ func (o *GatewayCreateProducerRdp) GetTargetName() string {
 
 // GetTargetNameOk returns a tuple with the TargetName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerRdp) GetTargetNameOk() (*string, bool) {
+func (o *GatewayUpdateProducerRdp) GetTargetNameOk() (*string, bool) {
 	if o == nil || o.TargetName == nil {
 		return nil, false
 	}
@@ -541,7 +575,7 @@ func (o *GatewayCreateProducerRdp) GetTargetNameOk() (*string, bool) {
 }
 
 // HasTargetName returns a boolean if a field has been set.
-func (o *GatewayCreateProducerRdp) HasTargetName() bool {
+func (o *GatewayUpdateProducerRdp) HasTargetName() bool {
 	if o != nil && o.TargetName != nil {
 		return true
 	}
@@ -550,12 +584,12 @@ func (o *GatewayCreateProducerRdp) HasTargetName() bool {
 }
 
 // SetTargetName gets a reference to the given string and assigns it to the TargetName field.
-func (o *GatewayCreateProducerRdp) SetTargetName(v string) {
+func (o *GatewayUpdateProducerRdp) SetTargetName(v string) {
 	o.TargetName = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
-func (o *GatewayCreateProducerRdp) GetToken() string {
+func (o *GatewayUpdateProducerRdp) GetToken() string {
 	if o == nil || o.Token == nil {
 		var ret string
 		return ret
@@ -565,7 +599,7 @@ func (o *GatewayCreateProducerRdp) GetToken() string {
 
 // GetTokenOk returns a tuple with the Token field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerRdp) GetTokenOk() (*string, bool) {
+func (o *GatewayUpdateProducerRdp) GetTokenOk() (*string, bool) {
 	if o == nil || o.Token == nil {
 		return nil, false
 	}
@@ -573,7 +607,7 @@ func (o *GatewayCreateProducerRdp) GetTokenOk() (*string, bool) {
 }
 
 // HasToken returns a boolean if a field has been set.
-func (o *GatewayCreateProducerRdp) HasToken() bool {
+func (o *GatewayUpdateProducerRdp) HasToken() bool {
 	if o != nil && o.Token != nil {
 		return true
 	}
@@ -582,12 +616,12 @@ func (o *GatewayCreateProducerRdp) HasToken() bool {
 }
 
 // SetToken gets a reference to the given string and assigns it to the Token field.
-func (o *GatewayCreateProducerRdp) SetToken(v string) {
+func (o *GatewayUpdateProducerRdp) SetToken(v string) {
 	o.Token = &v
 }
 
 // GetUidToken returns the UidToken field value if set, zero value otherwise.
-func (o *GatewayCreateProducerRdp) GetUidToken() string {
+func (o *GatewayUpdateProducerRdp) GetUidToken() string {
 	if o == nil || o.UidToken == nil {
 		var ret string
 		return ret
@@ -597,7 +631,7 @@ func (o *GatewayCreateProducerRdp) GetUidToken() string {
 
 // GetUidTokenOk returns a tuple with the UidToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerRdp) GetUidTokenOk() (*string, bool) {
+func (o *GatewayUpdateProducerRdp) GetUidTokenOk() (*string, bool) {
 	if o == nil || o.UidToken == nil {
 		return nil, false
 	}
@@ -605,7 +639,7 @@ func (o *GatewayCreateProducerRdp) GetUidTokenOk() (*string, bool) {
 }
 
 // HasUidToken returns a boolean if a field has been set.
-func (o *GatewayCreateProducerRdp) HasUidToken() bool {
+func (o *GatewayUpdateProducerRdp) HasUidToken() bool {
 	if o != nil && o.UidToken != nil {
 		return true
 	}
@@ -614,12 +648,12 @@ func (o *GatewayCreateProducerRdp) HasUidToken() bool {
 }
 
 // SetUidToken gets a reference to the given string and assigns it to the UidToken field.
-func (o *GatewayCreateProducerRdp) SetUidToken(v string) {
+func (o *GatewayUpdateProducerRdp) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
 // GetUserTtl returns the UserTtl field value if set, zero value otherwise.
-func (o *GatewayCreateProducerRdp) GetUserTtl() string {
+func (o *GatewayUpdateProducerRdp) GetUserTtl() string {
 	if o == nil || o.UserTtl == nil {
 		var ret string
 		return ret
@@ -629,7 +663,7 @@ func (o *GatewayCreateProducerRdp) GetUserTtl() string {
 
 // GetUserTtlOk returns a tuple with the UserTtl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerRdp) GetUserTtlOk() (*string, bool) {
+func (o *GatewayUpdateProducerRdp) GetUserTtlOk() (*string, bool) {
 	if o == nil || o.UserTtl == nil {
 		return nil, false
 	}
@@ -637,7 +671,7 @@ func (o *GatewayCreateProducerRdp) GetUserTtlOk() (*string, bool) {
 }
 
 // HasUserTtl returns a boolean if a field has been set.
-func (o *GatewayCreateProducerRdp) HasUserTtl() bool {
+func (o *GatewayUpdateProducerRdp) HasUserTtl() bool {
 	if o != nil && o.UserTtl != nil {
 		return true
 	}
@@ -646,12 +680,12 @@ func (o *GatewayCreateProducerRdp) HasUserTtl() bool {
 }
 
 // SetUserTtl gets a reference to the given string and assigns it to the UserTtl field.
-func (o *GatewayCreateProducerRdp) SetUserTtl(v string) {
+func (o *GatewayUpdateProducerRdp) SetUserTtl(v string) {
 	o.UserTtl = &v
 }
 
 // GetUsername returns the Username field value if set, zero value otherwise.
-func (o *GatewayCreateProducerRdp) GetUsername() string {
+func (o *GatewayUpdateProducerRdp) GetUsername() string {
 	if o == nil || o.Username == nil {
 		var ret string
 		return ret
@@ -661,7 +695,7 @@ func (o *GatewayCreateProducerRdp) GetUsername() string {
 
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerRdp) GetUsernameOk() (*string, bool) {
+func (o *GatewayUpdateProducerRdp) GetUsernameOk() (*string, bool) {
 	if o == nil || o.Username == nil {
 		return nil, false
 	}
@@ -669,7 +703,7 @@ func (o *GatewayCreateProducerRdp) GetUsernameOk() (*string, bool) {
 }
 
 // HasUsername returns a boolean if a field has been set.
-func (o *GatewayCreateProducerRdp) HasUsername() bool {
+func (o *GatewayUpdateProducerRdp) HasUsername() bool {
 	if o != nil && o.Username != nil {
 		return true
 	}
@@ -678,17 +712,20 @@ func (o *GatewayCreateProducerRdp) HasUsername() bool {
 }
 
 // SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *GatewayCreateProducerRdp) SetUsername(v string) {
+func (o *GatewayUpdateProducerRdp) SetUsername(v string) {
 	o.Username = &v
 }
 
-func (o GatewayCreateProducerRdp) MarshalJSON() ([]byte, error) {
+func (o GatewayUpdateProducerRdp) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.FixedUserOnly != nil {
 		toSerialize["fixed-user-only"] = o.FixedUserOnly
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.NewName != nil {
+		toSerialize["new-name"] = o.NewName
 	}
 	if o.Password != nil {
 		toSerialize["password"] = o.Password
@@ -744,38 +781,38 @@ func (o GatewayCreateProducerRdp) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableGatewayCreateProducerRdp struct {
-	value *GatewayCreateProducerRdp
+type NullableGatewayUpdateProducerRdp struct {
+	value *GatewayUpdateProducerRdp
 	isSet bool
 }
 
-func (v NullableGatewayCreateProducerRdp) Get() *GatewayCreateProducerRdp {
+func (v NullableGatewayUpdateProducerRdp) Get() *GatewayUpdateProducerRdp {
 	return v.value
 }
 
-func (v *NullableGatewayCreateProducerRdp) Set(val *GatewayCreateProducerRdp) {
+func (v *NullableGatewayUpdateProducerRdp) Set(val *GatewayUpdateProducerRdp) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableGatewayCreateProducerRdp) IsSet() bool {
+func (v NullableGatewayUpdateProducerRdp) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableGatewayCreateProducerRdp) Unset() {
+func (v *NullableGatewayUpdateProducerRdp) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableGatewayCreateProducerRdp(val *GatewayCreateProducerRdp) *NullableGatewayCreateProducerRdp {
-	return &NullableGatewayCreateProducerRdp{value: val, isSet: true}
+func NewNullableGatewayUpdateProducerRdp(val *GatewayUpdateProducerRdp) *NullableGatewayUpdateProducerRdp {
+	return &NullableGatewayUpdateProducerRdp{value: val, isSet: true}
 }
 
-func (v NullableGatewayCreateProducerRdp) MarshalJSON() ([]byte, error) {
+func (v NullableGatewayUpdateProducerRdp) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableGatewayCreateProducerRdp) UnmarshalJSON(src []byte) error {
+func (v *NullableGatewayUpdateProducerRdp) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

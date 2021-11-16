@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessId** | Pointer to **string** | Access ID | [optional] 
 **AccessKey** | Pointer to **string** | Access Key | [optional] 
-**AccessType** | Pointer to **string** | Access Type (access_key/password/azure_ad/saml/oidc/ldap/aws_iam/k8s) | [optional] [default to "access_key"]
+**AccessType** | Pointer to **string** | Access Type (access_key/password/azure_ad/saml/oidc/ldap/aws_iam/gcp/k8s) | [optional] [default to "access_key"]
 **AdminEmail** | Pointer to **string** | Email (relevant only for access-type&#x3D;password) | [optional] 
 **AdminPassword** | Pointer to **string** | Password (relevant only for access-type&#x3D;password) | [optional] 
 **AzureAdObjectId** | Pointer to **string** | Azure Active Directory ObjectId (relevant only for access-type&#x3D;azure_ad) | [optional] 

@@ -30,6 +30,7 @@ type UpdateItem struct {
 	// List of the existent tags that will be removed from this item
 	RmTag *[]string `json:"rm-tag,omitempty"`
 	SecureAccessAddHost *[]string `json:"secure-access-add-host,omitempty"`
+	SecureAccessAllowExternalUser *string `json:"secure-access-allow-external-user,omitempty"`
 	SecureAccessAllowPortForwading *bool `json:"secure-access-allow-port-forwading,omitempty"`
 	SecureAccessAwsAccountId *string `json:"secure-access-aws-account-id,omitempty"`
 	SecureAccessAwsNativeCli *bool `json:"secure-access-aws-native-cli,omitempty"`
@@ -295,6 +296,38 @@ func (o *UpdateItem) HasSecureAccessAddHost() bool {
 // SetSecureAccessAddHost gets a reference to the given []string and assigns it to the SecureAccessAddHost field.
 func (o *UpdateItem) SetSecureAccessAddHost(v []string) {
 	o.SecureAccessAddHost = &v
+}
+
+// GetSecureAccessAllowExternalUser returns the SecureAccessAllowExternalUser field value if set, zero value otherwise.
+func (o *UpdateItem) GetSecureAccessAllowExternalUser() string {
+	if o == nil || o.SecureAccessAllowExternalUser == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessAllowExternalUser
+}
+
+// GetSecureAccessAllowExternalUserOk returns a tuple with the SecureAccessAllowExternalUser field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateItem) GetSecureAccessAllowExternalUserOk() (*string, bool) {
+	if o == nil || o.SecureAccessAllowExternalUser == nil {
+		return nil, false
+	}
+	return o.SecureAccessAllowExternalUser, true
+}
+
+// HasSecureAccessAllowExternalUser returns a boolean if a field has been set.
+func (o *UpdateItem) HasSecureAccessAllowExternalUser() bool {
+	if o != nil && o.SecureAccessAllowExternalUser != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessAllowExternalUser gets a reference to the given string and assigns it to the SecureAccessAllowExternalUser field.
+func (o *UpdateItem) SetSecureAccessAllowExternalUser(v string) {
+	o.SecureAccessAllowExternalUser = &v
 }
 
 // GetSecureAccessAllowPortForwading returns the SecureAccessAllowPortForwading field value if set, zero value otherwise.
@@ -1087,6 +1120,9 @@ func (o UpdateItem) MarshalJSON() ([]byte, error) {
 	}
 	if o.SecureAccessAddHost != nil {
 		toSerialize["secure-access-add-host"] = o.SecureAccessAddHost
+	}
+	if o.SecureAccessAllowExternalUser != nil {
+		toSerialize["secure-access-allow-external-user"] = o.SecureAccessAllowExternalUser
 	}
 	if o.SecureAccessAllowPortForwading != nil {
 		toSerialize["secure-access-allow-port-forwading"] = o.SecureAccessAllowPortForwading

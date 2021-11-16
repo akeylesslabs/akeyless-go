@@ -21,7 +21,7 @@ type Auth struct {
 	AccessId *string `json:"access-id,omitempty"`
 	// Access key (relevant only for access-type=access_key)
 	AccessKey *string `json:"access-key,omitempty"`
-	// Access Type (access_key/password/saml/ldap/k8s/azure_ad/aws_iam/universal_identity/jwt/gcp)
+	// Access Type (access_key/password/saml/ldap/k8s/azure_ad/aws_iam/universal_identity/jwt/gcp/k8s)
 	AccessType *string `json:"access-type,omitempty"`
 	// Email (relevant only for access-type=password)
 	AdminEmail *string `json:"admin-email,omitempty"`

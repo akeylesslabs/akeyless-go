@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **RmTag** | Pointer to **[]string** | List of the existent tags that will be removed from this item | [optional] 
 **SecureAccessAddHost** | Pointer to **[]string** |  | [optional] 
+**SecureAccessAllowExternalUser** | Pointer to **string** |  | [optional] 
 **SecureAccessAllowPortForwading** | Pointer to **bool** |  | [optional] 
 **SecureAccessAwsAccountId** | Pointer to **string** |  | [optional] 
 **SecureAccessAwsNativeCli** | Pointer to **bool** |  | [optional] 
@@ -224,6 +225,31 @@ SetSecureAccessAddHost sets SecureAccessAddHost field to given value.
 `func (o *UpdateItem) HasSecureAccessAddHost() bool`
 
 HasSecureAccessAddHost returns a boolean if a field has been set.
+
+### GetSecureAccessAllowExternalUser
+
+`func (o *UpdateItem) GetSecureAccessAllowExternalUser() string`
+
+GetSecureAccessAllowExternalUser returns the SecureAccessAllowExternalUser field if non-nil, zero value otherwise.
+
+### GetSecureAccessAllowExternalUserOk
+
+`func (o *UpdateItem) GetSecureAccessAllowExternalUserOk() (*string, bool)`
+
+GetSecureAccessAllowExternalUserOk returns a tuple with the SecureAccessAllowExternalUser field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessAllowExternalUser
+
+`func (o *UpdateItem) SetSecureAccessAllowExternalUser(v string)`
+
+SetSecureAccessAllowExternalUser sets SecureAccessAllowExternalUser field to given value.
+
+### HasSecureAccessAllowExternalUser
+
+`func (o *UpdateItem) HasSecureAccessAllowExternalUser() bool`
+
+HasSecureAccessAllowExternalUser returns a boolean if a field has been set.
 
 ### GetSecureAccessAllowPortForwading
 

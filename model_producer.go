@@ -19,6 +19,7 @@ import (
 type Producer struct {
 	Active *bool `json:"active,omitempty"`
 	Id *int64 `json:"id,omitempty"`
+	Init *bool `json:"init,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Type *string `json:"type,omitempty"`
 }
@@ -104,6 +105,38 @@ func (o *Producer) SetId(v int64) {
 	o.Id = &v
 }
 
+// GetInit returns the Init field value if set, zero value otherwise.
+func (o *Producer) GetInit() bool {
+	if o == nil || o.Init == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Init
+}
+
+// GetInitOk returns a tuple with the Init field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Producer) GetInitOk() (*bool, bool) {
+	if o == nil || o.Init == nil {
+		return nil, false
+	}
+	return o.Init, true
+}
+
+// HasInit returns a boolean if a field has been set.
+func (o *Producer) HasInit() bool {
+	if o != nil && o.Init != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInit gets a reference to the given bool and assigns it to the Init field.
+func (o *Producer) SetInit(v bool) {
+	o.Init = &v
+}
+
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Producer) GetName() string {
 	if o == nil || o.Name == nil {
@@ -175,6 +208,9 @@ func (o Producer) MarshalJSON() ([]byte, error) {
 	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
+	}
+	if o.Init != nil {
+		toSerialize["init"] = o.Init
 	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name

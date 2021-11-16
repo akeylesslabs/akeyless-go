@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Active** | Pointer to **bool** |  | [optional] 
 **Id** | Pointer to **int64** |  | [optional] 
+**Init** | Pointer to **bool** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
 
@@ -77,6 +78,31 @@ SetId sets Id field to given value.
 `func (o *Producer) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### GetInit
+
+`func (o *Producer) GetInit() bool`
+
+GetInit returns the Init field if non-nil, zero value otherwise.
+
+### GetInitOk
+
+`func (o *Producer) GetInitOk() (*bool, bool)`
+
+GetInitOk returns a tuple with the Init field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInit
+
+`func (o *Producer) SetInit(v bool)`
+
+SetInit sets Init field to given value.
+
+### HasInit
+
+`func (o *Producer) HasInit() bool`
+
+HasInit returns a boolean if a field has been set.
 
 ### GetName
 

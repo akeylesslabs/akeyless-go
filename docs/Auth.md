@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessId** | Pointer to **string** | Access ID | [optional] 
 **AccessKey** | Pointer to **string** | Access key (relevant only for access-type&#x3D;access_key) | [optional] 
-**AccessType** | Pointer to **string** | Access Type (access_key/password/saml/ldap/k8s/azure_ad/aws_iam/universal_identity/jwt/gcp) | [optional] [default to "access_key"]
+**AccessType** | Pointer to **string** | Access Type (access_key/password/saml/ldap/k8s/azure_ad/aws_iam/universal_identity/jwt/gcp/k8s) | [optional] [default to "access_key"]
 **AdminEmail** | Pointer to **string** | Email (relevant only for access-type&#x3D;password) | [optional] 
 **AdminPassword** | Pointer to **string** | Password (relevant only for access-type&#x3D;password) | [optional] 
 **CloudId** | Pointer to **string** | The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam,gcp) | [optional] 

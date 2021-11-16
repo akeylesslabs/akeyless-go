@@ -21,7 +21,7 @@ type Configure struct {
 	AccessId *string `json:"access-id,omitempty"`
 	// Access Key
 	AccessKey *string `json:"access-key,omitempty"`
-	// Access Type (access_key/password/azure_ad/saml/oidc/ldap/aws_iam/k8s)
+	// Access Type (access_key/password/azure_ad/saml/oidc/ldap/aws_iam/gcp/k8s)
 	AccessType *string `json:"access-type,omitempty"`
 	// Email (relevant only for access-type=password)
 	AdminEmail *string `json:"admin-email,omitempty"`
