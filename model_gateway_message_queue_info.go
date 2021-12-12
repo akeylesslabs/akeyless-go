@@ -20,6 +20,7 @@ type GatewayMessageQueueInfo struct {
 	MqType *string `json:"mq_type,omitempty"`
 	QueueName *string `json:"queue_name,omitempty"`
 	QueueUrl *string `json:"queue_url,omitempty"`
+	UseNewQueue *bool `json:"use_new_queue,omitempty"`
 }
 
 // NewGatewayMessageQueueInfo instantiates a new GatewayMessageQueueInfo object
@@ -135,6 +136,38 @@ func (o *GatewayMessageQueueInfo) SetQueueUrl(v string) {
 	o.QueueUrl = &v
 }
 
+// GetUseNewQueue returns the UseNewQueue field value if set, zero value otherwise.
+func (o *GatewayMessageQueueInfo) GetUseNewQueue() bool {
+	if o == nil || o.UseNewQueue == nil {
+		var ret bool
+		return ret
+	}
+	return *o.UseNewQueue
+}
+
+// GetUseNewQueueOk returns a tuple with the UseNewQueue field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayMessageQueueInfo) GetUseNewQueueOk() (*bool, bool) {
+	if o == nil || o.UseNewQueue == nil {
+		return nil, false
+	}
+	return o.UseNewQueue, true
+}
+
+// HasUseNewQueue returns a boolean if a field has been set.
+func (o *GatewayMessageQueueInfo) HasUseNewQueue() bool {
+	if o != nil && o.UseNewQueue != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUseNewQueue gets a reference to the given bool and assigns it to the UseNewQueue field.
+func (o *GatewayMessageQueueInfo) SetUseNewQueue(v bool) {
+	o.UseNewQueue = &v
+}
+
 func (o GatewayMessageQueueInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.MqType != nil {
@@ -145,6 +178,9 @@ func (o GatewayMessageQueueInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.QueueUrl != nil {
 		toSerialize["queue_url"] = o.QueueUrl
+	}
+	if o.UseNewQueue != nil {
+		toSerialize["use_new_queue"] = o.UseNewQueue
 	}
 	return json.Marshal(toSerialize)
 }

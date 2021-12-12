@@ -23,7 +23,7 @@ type CreateAuthMethodOAuth2 struct {
 	Audience *string `json:"audience,omitempty"`
 	// The clients ids that the access is restricted to
 	BoundClientIds *[]string `json:"bound-client-ids,omitempty"`
-	// A CIDR whitelist of the IPs that the access is restricted to
+	// A CIDR whitelist with the IPs that the access is restricted to
 	BoundIps *[]string `json:"bound-ips,omitempty"`
 	// if true: enforce role-association must include sub claims
 	ForceSubClaims *bool `json:"force-sub-claims,omitempty"`

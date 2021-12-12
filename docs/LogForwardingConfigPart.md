@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AwsS3Config** | Pointer to [**AwsS3LogForwardingConfig**](AwsS3LogForwardingConfig.md) |  | [optional] 
 **AzureAnalyticsConfig** | Pointer to [**AzureLogAnalyticsForwardingConfig**](AzureLogAnalyticsForwardingConfig.md) |  | [optional] 
+**DatadogConfig** | Pointer to [**DatadogForwardingConfig**](DatadogForwardingConfig.md) |  | [optional] 
 **ElasticsearchConfig** | Pointer to [**ElasticsearchLogForwardingConfig**](ElasticsearchLogForwardingConfig.md) |  | [optional] 
 **LoganEnable** | Pointer to **bool** |  | [optional] 
 **LoganUrl** | Pointer to **string** |  | [optional] 
@@ -85,6 +86,31 @@ SetAzureAnalyticsConfig sets AzureAnalyticsConfig field to given value.
 `func (o *LogForwardingConfigPart) HasAzureAnalyticsConfig() bool`
 
 HasAzureAnalyticsConfig returns a boolean if a field has been set.
+
+### GetDatadogConfig
+
+`func (o *LogForwardingConfigPart) GetDatadogConfig() DatadogForwardingConfig`
+
+GetDatadogConfig returns the DatadogConfig field if non-nil, zero value otherwise.
+
+### GetDatadogConfigOk
+
+`func (o *LogForwardingConfigPart) GetDatadogConfigOk() (*DatadogForwardingConfig, bool)`
+
+GetDatadogConfigOk returns a tuple with the DatadogConfig field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDatadogConfig
+
+`func (o *LogForwardingConfigPart) SetDatadogConfig(v DatadogForwardingConfig)`
+
+SetDatadogConfig sets DatadogConfig field to given value.
+
+### HasDatadogConfig
+
+`func (o *LogForwardingConfigPart) HasDatadogConfig() bool`
+
+HasDatadogConfig returns a boolean if a field has been set.
 
 ### GetElasticsearchConfig
 

@@ -19,6 +19,7 @@ import (
 type LogForwardingConfigPart struct {
 	AwsS3Config *AwsS3LogForwardingConfig `json:"aws_s3_config,omitempty"`
 	AzureAnalyticsConfig *AzureLogAnalyticsForwardingConfig `json:"azure_analytics_config,omitempty"`
+	DatadogConfig *DatadogForwardingConfig `json:"datadog_config,omitempty"`
 	ElasticsearchConfig *ElasticsearchLogForwardingConfig `json:"elasticsearch_config,omitempty"`
 	LoganEnable *bool `json:"logan_enable,omitempty"`
 	LoganUrl *string `json:"logan_url,omitempty"`
@@ -110,6 +111,38 @@ func (o *LogForwardingConfigPart) HasAzureAnalyticsConfig() bool {
 // SetAzureAnalyticsConfig gets a reference to the given AzureLogAnalyticsForwardingConfig and assigns it to the AzureAnalyticsConfig field.
 func (o *LogForwardingConfigPart) SetAzureAnalyticsConfig(v AzureLogAnalyticsForwardingConfig) {
 	o.AzureAnalyticsConfig = &v
+}
+
+// GetDatadogConfig returns the DatadogConfig field value if set, zero value otherwise.
+func (o *LogForwardingConfigPart) GetDatadogConfig() DatadogForwardingConfig {
+	if o == nil || o.DatadogConfig == nil {
+		var ret DatadogForwardingConfig
+		return ret
+	}
+	return *o.DatadogConfig
+}
+
+// GetDatadogConfigOk returns a tuple with the DatadogConfig field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LogForwardingConfigPart) GetDatadogConfigOk() (*DatadogForwardingConfig, bool) {
+	if o == nil || o.DatadogConfig == nil {
+		return nil, false
+	}
+	return o.DatadogConfig, true
+}
+
+// HasDatadogConfig returns a boolean if a field has been set.
+func (o *LogForwardingConfigPart) HasDatadogConfig() bool {
+	if o != nil && o.DatadogConfig != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDatadogConfig gets a reference to the given DatadogForwardingConfig and assigns it to the DatadogConfig field.
+func (o *LogForwardingConfigPart) SetDatadogConfig(v DatadogForwardingConfig) {
+	o.DatadogConfig = &v
 }
 
 // GetElasticsearchConfig returns the ElasticsearchConfig field value if set, zero value otherwise.
@@ -439,6 +472,9 @@ func (o LogForwardingConfigPart) MarshalJSON() ([]byte, error) {
 	}
 	if o.AzureAnalyticsConfig != nil {
 		toSerialize["azure_analytics_config"] = o.AzureAnalyticsConfig
+	}
+	if o.DatadogConfig != nil {
+		toSerialize["datadog_config"] = o.DatadogConfig
 	}
 	if o.ElasticsearchConfig != nil {
 		toSerialize["elasticsearch_config"] = o.ElasticsearchConfig

@@ -21,7 +21,7 @@ type CreateAuthMethodGCP struct {
 	AccessExpires *int64 `json:"access-expires,omitempty"`
 	// The audience to verify in the JWT received by the client
 	Audience string `json:"audience"`
-	// A CIDR whitelist of the IPs that the access is restricted to
+	// A CIDR whitelist with the IPs that the access is restricted to
 	BoundIps *[]string `json:"bound-ips,omitempty"`
 	// A comma-separated list of GCP labels formatted as \"key:value\" strings that must be set on authorized GCE instances. TODO: Because GCP labels are not currently ACL'd ....
 	BoundLabels *[]string `json:"bound-labels,omitempty"`
@@ -29,7 +29,7 @@ type CreateAuthMethodGCP struct {
 	BoundProjects *[]string `json:"bound-projects,omitempty"`
 	// List of regions that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a regional group and the group must belong to this region. If bound_zones are provided, this attribute is ignored.
 	BoundRegions *[]string `json:"bound-regions,omitempty"`
-	// === Human authentication section === List of service accounts the service account must be part of in order to be authenticated.
+	// List of service accounts the service account must be part of in order to be authenticated.
 	BoundServiceAccounts *[]string `json:"bound-service-accounts,omitempty"`
 	// === Machine authentication section === List of zones that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a zonal group and the group must belong to this zone.
 	BoundZones *[]string `json:"bound-zones,omitempty"`

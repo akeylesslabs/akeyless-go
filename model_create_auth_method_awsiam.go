@@ -23,7 +23,7 @@ type CreateAuthMethodAWSIAM struct {
 	BoundArn *[]string `json:"bound-arn,omitempty"`
 	// A list of AWS account-IDs that the access is restricted to
 	BoundAwsAccountId []string `json:"bound-aws-account-id"`
-	// A CIDR whitelist of the IPs that the access is restricted to
+	// A CIDR whitelist with the IPs that the access is restricted to
 	BoundIps *[]string `json:"bound-ips,omitempty"`
 	// A list of full resource ids that the access is restricted to
 	BoundResourceId *[]string `json:"bound-resource-id,omitempty"`

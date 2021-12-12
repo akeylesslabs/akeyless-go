@@ -40,6 +40,8 @@ type GatewayCreateProducerRdp struct {
 	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
 	SecureAccessRdpDomain *string `json:"secure-access-rdp-domain,omitempty"`
 	SecureAccessRdpUser *string `json:"secure-access-rdp-user,omitempty"`
+	// List of the tags attached to this secret
+	Tags *[]string `json:"tags,omitempty"`
 	// Target name
 	TargetName *string `json:"target-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -522,6 +524,38 @@ func (o *GatewayCreateProducerRdp) SetSecureAccessRdpUser(v string) {
 	o.SecureAccessRdpUser = &v
 }
 
+// GetTags returns the Tags field value if set, zero value otherwise.
+func (o *GatewayCreateProducerRdp) GetTags() []string {
+	if o == nil || o.Tags == nil {
+		var ret []string
+		return ret
+	}
+	return *o.Tags
+}
+
+// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerRdp) GetTagsOk() (*[]string, bool) {
+	if o == nil || o.Tags == nil {
+		return nil, false
+	}
+	return o.Tags, true
+}
+
+// HasTags returns a boolean if a field has been set.
+func (o *GatewayCreateProducerRdp) HasTags() bool {
+	if o != nil && o.Tags != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTags gets a reference to the given []string and assigns it to the Tags field.
+func (o *GatewayCreateProducerRdp) SetTags(v []string) {
+	o.Tags = &v
+}
+
 // GetTargetName returns the TargetName field value if set, zero value otherwise.
 func (o *GatewayCreateProducerRdp) GetTargetName() string {
 	if o == nil || o.TargetName == nil {
@@ -725,6 +759,9 @@ func (o GatewayCreateProducerRdp) MarshalJSON() ([]byte, error) {
 	}
 	if o.SecureAccessRdpUser != nil {
 		toSerialize["secure-access-rdp-user"] = o.SecureAccessRdpUser
+	}
+	if o.Tags != nil {
+		toSerialize["tags"] = o.Tags
 	}
 	if o.TargetName != nil {
 		toSerialize["target-name"] = o.TargetName

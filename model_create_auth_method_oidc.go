@@ -21,7 +21,7 @@ type CreateAuthMethodOIDC struct {
 	AccessExpires *int64 `json:"access-expires,omitempty"`
 	// Allowed redirect URIs after the authentication
 	AllowedRedirectUri *[]string `json:"allowed-redirect-uri,omitempty"`
-	// A CIDR whitelist of the IPs that the access is restricted to
+	// A CIDR whitelist with the IPs that the access is restricted to
 	BoundIps *[]string `json:"bound-ips,omitempty"`
 	// Client ID
 	ClientId *string `json:"client-id,omitempty"`

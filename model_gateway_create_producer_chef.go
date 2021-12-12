@@ -33,6 +33,8 @@ type GatewayCreateProducerChef struct {
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
 	// Skip SSL
 	SkipSsl *bool `json:"skip-ssl,omitempty"`
+	// List of the tags attached to this secret
+	Tags *[]string `json:"tags,omitempty"`
 	// Target name
 	TargetName *string `json:"target-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -319,6 +321,38 @@ func (o *GatewayCreateProducerChef) SetSkipSsl(v bool) {
 	o.SkipSsl = &v
 }
 
+// GetTags returns the Tags field value if set, zero value otherwise.
+func (o *GatewayCreateProducerChef) GetTags() []string {
+	if o == nil || o.Tags == nil {
+		var ret []string
+		return ret
+	}
+	return *o.Tags
+}
+
+// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerChef) GetTagsOk() (*[]string, bool) {
+	if o == nil || o.Tags == nil {
+		return nil, false
+	}
+	return o.Tags, true
+}
+
+// HasTags returns a boolean if a field has been set.
+func (o *GatewayCreateProducerChef) HasTags() bool {
+	if o != nil && o.Tags != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTags gets a reference to the given []string and assigns it to the Tags field.
+func (o *GatewayCreateProducerChef) SetTags(v []string) {
+	o.Tags = &v
+}
+
 // GetTargetName returns the TargetName field value if set, zero value otherwise.
 func (o *GatewayCreateProducerChef) GetTargetName() string {
 	if o == nil || o.TargetName == nil {
@@ -504,6 +538,9 @@ func (o GatewayCreateProducerChef) MarshalJSON() ([]byte, error) {
 	}
 	if o.SkipSsl != nil {
 		toSerialize["skip-ssl"] = o.SkipSsl
+	}
+	if o.Tags != nil {
+		toSerialize["tags"] = o.Tags
 	}
 	if o.TargetName != nil {
 		toSerialize["target-name"] = o.TargetName

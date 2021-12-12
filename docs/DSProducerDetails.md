@@ -130,6 +130,7 @@ Name | Type | Description | Notes
 **SfUserRole** | Pointer to **string** | generated  users info | [optional] 
 **SfWarehouseName** | Pointer to **string** |  | [optional] 
 **ShouldStop** | Pointer to **string** | TODO delete this after migration | [optional] 
+**Tags** | Pointer to **[]string** |  | [optional] 
 **TimeoutSeconds** | Pointer to **int64** |  | [optional] 
 **UseGwCloudIdentity** | Pointer to **bool** |  | [optional] 
 **UserPrincipalName** | Pointer to **string** |  | [optional] 
@@ -3316,6 +3317,31 @@ SetShouldStop sets ShouldStop field to given value.
 `func (o *DSProducerDetails) HasShouldStop() bool`
 
 HasShouldStop returns a boolean if a field has been set.
+
+### GetTags
+
+`func (o *DSProducerDetails) GetTags() []string`
+
+GetTags returns the Tags field if non-nil, zero value otherwise.
+
+### GetTagsOk
+
+`func (o *DSProducerDetails) GetTagsOk() (*[]string, bool)`
+
+GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTags
+
+`func (o *DSProducerDetails) SetTags(v []string)`
+
+SetTags sets Tags field to given value.
+
+### HasTags
+
+`func (o *DSProducerDetails) HasTags() bool`
+
+HasTags returns a boolean if a field has been set.
 
 ### GetTimeoutSeconds
 

@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Producer name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
+**Tags** | Pointer to **[]string** | List of the tags attached to this secret | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **TokenExpiration** | Pointer to **string** | Token expiration | [optional] 
@@ -234,6 +235,31 @@ SetProducerEncryptionKeyName sets ProducerEncryptionKeyName field to given value
 `func (o *GatewayCreateProducerLdap) HasProducerEncryptionKeyName() bool`
 
 HasProducerEncryptionKeyName returns a boolean if a field has been set.
+
+### GetTags
+
+`func (o *GatewayCreateProducerLdap) GetTags() []string`
+
+GetTags returns the Tags field if non-nil, zero value otherwise.
+
+### GetTagsOk
+
+`func (o *GatewayCreateProducerLdap) GetTagsOk() (*[]string, bool)`
+
+GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTags
+
+`func (o *GatewayCreateProducerLdap) SetTags(v []string)`
+
+SetTags sets Tags field to given value.
+
+### HasTags
+
+`func (o *GatewayCreateProducerLdap) HasTags() bool`
+
+HasTags returns a boolean if a field has been set.
 
 ### GetTargetName
 

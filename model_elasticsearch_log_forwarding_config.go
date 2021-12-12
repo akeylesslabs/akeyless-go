@@ -17,9 +17,14 @@ import (
 
 // ElasticsearchLogForwardingConfig struct for ElasticsearchLogForwardingConfig
 type ElasticsearchLogForwardingConfig struct {
-	ElasticsearchHost *string `json:"elasticsearch_host,omitempty"`
+	ElasticsearchApiKey *string `json:"elasticsearch_api_key,omitempty"`
+	ElasticsearchAuthType *string `json:"elasticsearch_auth_type,omitempty"`
+	ElasticsearchCloudId *string `json:"elasticsearch_cloud_id,omitempty"`
 	ElasticsearchIndex *string `json:"elasticsearch_index,omitempty"`
 	ElasticsearchNodes *string `json:"elasticsearch_nodes,omitempty"`
+	ElasticsearchPassword *string `json:"elasticsearch_password,omitempty"`
+	ElasticsearchServerType *string `json:"elasticsearch_server_type,omitempty"`
+	ElasticsearchUserName *string `json:"elasticsearch_user_name,omitempty"`
 }
 
 // NewElasticsearchLogForwardingConfig instantiates a new ElasticsearchLogForwardingConfig object
@@ -39,36 +44,100 @@ func NewElasticsearchLogForwardingConfigWithDefaults() *ElasticsearchLogForwardi
 	return &this
 }
 
-// GetElasticsearchHost returns the ElasticsearchHost field value if set, zero value otherwise.
-func (o *ElasticsearchLogForwardingConfig) GetElasticsearchHost() string {
-	if o == nil || o.ElasticsearchHost == nil {
+// GetElasticsearchApiKey returns the ElasticsearchApiKey field value if set, zero value otherwise.
+func (o *ElasticsearchLogForwardingConfig) GetElasticsearchApiKey() string {
+	if o == nil || o.ElasticsearchApiKey == nil {
 		var ret string
 		return ret
 	}
-	return *o.ElasticsearchHost
+	return *o.ElasticsearchApiKey
 }
 
-// GetElasticsearchHostOk returns a tuple with the ElasticsearchHost field value if set, nil otherwise
+// GetElasticsearchApiKeyOk returns a tuple with the ElasticsearchApiKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ElasticsearchLogForwardingConfig) GetElasticsearchHostOk() (*string, bool) {
-	if o == nil || o.ElasticsearchHost == nil {
+func (o *ElasticsearchLogForwardingConfig) GetElasticsearchApiKeyOk() (*string, bool) {
+	if o == nil || o.ElasticsearchApiKey == nil {
 		return nil, false
 	}
-	return o.ElasticsearchHost, true
+	return o.ElasticsearchApiKey, true
 }
 
-// HasElasticsearchHost returns a boolean if a field has been set.
-func (o *ElasticsearchLogForwardingConfig) HasElasticsearchHost() bool {
-	if o != nil && o.ElasticsearchHost != nil {
+// HasElasticsearchApiKey returns a boolean if a field has been set.
+func (o *ElasticsearchLogForwardingConfig) HasElasticsearchApiKey() bool {
+	if o != nil && o.ElasticsearchApiKey != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetElasticsearchHost gets a reference to the given string and assigns it to the ElasticsearchHost field.
-func (o *ElasticsearchLogForwardingConfig) SetElasticsearchHost(v string) {
-	o.ElasticsearchHost = &v
+// SetElasticsearchApiKey gets a reference to the given string and assigns it to the ElasticsearchApiKey field.
+func (o *ElasticsearchLogForwardingConfig) SetElasticsearchApiKey(v string) {
+	o.ElasticsearchApiKey = &v
+}
+
+// GetElasticsearchAuthType returns the ElasticsearchAuthType field value if set, zero value otherwise.
+func (o *ElasticsearchLogForwardingConfig) GetElasticsearchAuthType() string {
+	if o == nil || o.ElasticsearchAuthType == nil {
+		var ret string
+		return ret
+	}
+	return *o.ElasticsearchAuthType
+}
+
+// GetElasticsearchAuthTypeOk returns a tuple with the ElasticsearchAuthType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ElasticsearchLogForwardingConfig) GetElasticsearchAuthTypeOk() (*string, bool) {
+	if o == nil || o.ElasticsearchAuthType == nil {
+		return nil, false
+	}
+	return o.ElasticsearchAuthType, true
+}
+
+// HasElasticsearchAuthType returns a boolean if a field has been set.
+func (o *ElasticsearchLogForwardingConfig) HasElasticsearchAuthType() bool {
+	if o != nil && o.ElasticsearchAuthType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetElasticsearchAuthType gets a reference to the given string and assigns it to the ElasticsearchAuthType field.
+func (o *ElasticsearchLogForwardingConfig) SetElasticsearchAuthType(v string) {
+	o.ElasticsearchAuthType = &v
+}
+
+// GetElasticsearchCloudId returns the ElasticsearchCloudId field value if set, zero value otherwise.
+func (o *ElasticsearchLogForwardingConfig) GetElasticsearchCloudId() string {
+	if o == nil || o.ElasticsearchCloudId == nil {
+		var ret string
+		return ret
+	}
+	return *o.ElasticsearchCloudId
+}
+
+// GetElasticsearchCloudIdOk returns a tuple with the ElasticsearchCloudId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ElasticsearchLogForwardingConfig) GetElasticsearchCloudIdOk() (*string, bool) {
+	if o == nil || o.ElasticsearchCloudId == nil {
+		return nil, false
+	}
+	return o.ElasticsearchCloudId, true
+}
+
+// HasElasticsearchCloudId returns a boolean if a field has been set.
+func (o *ElasticsearchLogForwardingConfig) HasElasticsearchCloudId() bool {
+	if o != nil && o.ElasticsearchCloudId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetElasticsearchCloudId gets a reference to the given string and assigns it to the ElasticsearchCloudId field.
+func (o *ElasticsearchLogForwardingConfig) SetElasticsearchCloudId(v string) {
+	o.ElasticsearchCloudId = &v
 }
 
 // GetElasticsearchIndex returns the ElasticsearchIndex field value if set, zero value otherwise.
@@ -135,16 +204,127 @@ func (o *ElasticsearchLogForwardingConfig) SetElasticsearchNodes(v string) {
 	o.ElasticsearchNodes = &v
 }
 
+// GetElasticsearchPassword returns the ElasticsearchPassword field value if set, zero value otherwise.
+func (o *ElasticsearchLogForwardingConfig) GetElasticsearchPassword() string {
+	if o == nil || o.ElasticsearchPassword == nil {
+		var ret string
+		return ret
+	}
+	return *o.ElasticsearchPassword
+}
+
+// GetElasticsearchPasswordOk returns a tuple with the ElasticsearchPassword field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ElasticsearchLogForwardingConfig) GetElasticsearchPasswordOk() (*string, bool) {
+	if o == nil || o.ElasticsearchPassword == nil {
+		return nil, false
+	}
+	return o.ElasticsearchPassword, true
+}
+
+// HasElasticsearchPassword returns a boolean if a field has been set.
+func (o *ElasticsearchLogForwardingConfig) HasElasticsearchPassword() bool {
+	if o != nil && o.ElasticsearchPassword != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetElasticsearchPassword gets a reference to the given string and assigns it to the ElasticsearchPassword field.
+func (o *ElasticsearchLogForwardingConfig) SetElasticsearchPassword(v string) {
+	o.ElasticsearchPassword = &v
+}
+
+// GetElasticsearchServerType returns the ElasticsearchServerType field value if set, zero value otherwise.
+func (o *ElasticsearchLogForwardingConfig) GetElasticsearchServerType() string {
+	if o == nil || o.ElasticsearchServerType == nil {
+		var ret string
+		return ret
+	}
+	return *o.ElasticsearchServerType
+}
+
+// GetElasticsearchServerTypeOk returns a tuple with the ElasticsearchServerType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ElasticsearchLogForwardingConfig) GetElasticsearchServerTypeOk() (*string, bool) {
+	if o == nil || o.ElasticsearchServerType == nil {
+		return nil, false
+	}
+	return o.ElasticsearchServerType, true
+}
+
+// HasElasticsearchServerType returns a boolean if a field has been set.
+func (o *ElasticsearchLogForwardingConfig) HasElasticsearchServerType() bool {
+	if o != nil && o.ElasticsearchServerType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetElasticsearchServerType gets a reference to the given string and assigns it to the ElasticsearchServerType field.
+func (o *ElasticsearchLogForwardingConfig) SetElasticsearchServerType(v string) {
+	o.ElasticsearchServerType = &v
+}
+
+// GetElasticsearchUserName returns the ElasticsearchUserName field value if set, zero value otherwise.
+func (o *ElasticsearchLogForwardingConfig) GetElasticsearchUserName() string {
+	if o == nil || o.ElasticsearchUserName == nil {
+		var ret string
+		return ret
+	}
+	return *o.ElasticsearchUserName
+}
+
+// GetElasticsearchUserNameOk returns a tuple with the ElasticsearchUserName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ElasticsearchLogForwardingConfig) GetElasticsearchUserNameOk() (*string, bool) {
+	if o == nil || o.ElasticsearchUserName == nil {
+		return nil, false
+	}
+	return o.ElasticsearchUserName, true
+}
+
+// HasElasticsearchUserName returns a boolean if a field has been set.
+func (o *ElasticsearchLogForwardingConfig) HasElasticsearchUserName() bool {
+	if o != nil && o.ElasticsearchUserName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetElasticsearchUserName gets a reference to the given string and assigns it to the ElasticsearchUserName field.
+func (o *ElasticsearchLogForwardingConfig) SetElasticsearchUserName(v string) {
+	o.ElasticsearchUserName = &v
+}
+
 func (o ElasticsearchLogForwardingConfig) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ElasticsearchHost != nil {
-		toSerialize["elasticsearch_host"] = o.ElasticsearchHost
+	if o.ElasticsearchApiKey != nil {
+		toSerialize["elasticsearch_api_key"] = o.ElasticsearchApiKey
+	}
+	if o.ElasticsearchAuthType != nil {
+		toSerialize["elasticsearch_auth_type"] = o.ElasticsearchAuthType
+	}
+	if o.ElasticsearchCloudId != nil {
+		toSerialize["elasticsearch_cloud_id"] = o.ElasticsearchCloudId
 	}
 	if o.ElasticsearchIndex != nil {
 		toSerialize["elasticsearch_index"] = o.ElasticsearchIndex
 	}
 	if o.ElasticsearchNodes != nil {
 		toSerialize["elasticsearch_nodes"] = o.ElasticsearchNodes
+	}
+	if o.ElasticsearchPassword != nil {
+		toSerialize["elasticsearch_password"] = o.ElasticsearchPassword
+	}
+	if o.ElasticsearchServerType != nil {
+		toSerialize["elasticsearch_server_type"] = o.ElasticsearchServerType
+	}
+	if o.ElasticsearchUserName != nil {
+		toSerialize["elasticsearch_user_name"] = o.ElasticsearchUserName
 	}
 	return json.Marshal(toSerialize)
 }

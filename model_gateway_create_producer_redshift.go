@@ -35,6 +35,10 @@ type GatewayCreateProducerRedshift struct {
 	RedshiftPort *string `json:"redshift-port,omitempty"`
 	// Redshift Username
 	RedshiftUsername *string `json:"redshift-username,omitempty"`
+	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
+	// List of the tags attached to this secret
+	Tags *[]string `json:"tags,omitempty"`
 	// Target name
 	TargetName *string `json:"target-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -357,6 +361,102 @@ func (o *GatewayCreateProducerRedshift) SetRedshiftUsername(v string) {
 	o.RedshiftUsername = &v
 }
 
+// GetSecureAccessEnable returns the SecureAccessEnable field value if set, zero value otherwise.
+func (o *GatewayCreateProducerRedshift) GetSecureAccessEnable() string {
+	if o == nil || o.SecureAccessEnable == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessEnable
+}
+
+// GetSecureAccessEnableOk returns a tuple with the SecureAccessEnable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerRedshift) GetSecureAccessEnableOk() (*string, bool) {
+	if o == nil || o.SecureAccessEnable == nil {
+		return nil, false
+	}
+	return o.SecureAccessEnable, true
+}
+
+// HasSecureAccessEnable returns a boolean if a field has been set.
+func (o *GatewayCreateProducerRedshift) HasSecureAccessEnable() bool {
+	if o != nil && o.SecureAccessEnable != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessEnable gets a reference to the given string and assigns it to the SecureAccessEnable field.
+func (o *GatewayCreateProducerRedshift) SetSecureAccessEnable(v string) {
+	o.SecureAccessEnable = &v
+}
+
+// GetSecureAccessHost returns the SecureAccessHost field value if set, zero value otherwise.
+func (o *GatewayCreateProducerRedshift) GetSecureAccessHost() []string {
+	if o == nil || o.SecureAccessHost == nil {
+		var ret []string
+		return ret
+	}
+	return *o.SecureAccessHost
+}
+
+// GetSecureAccessHostOk returns a tuple with the SecureAccessHost field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerRedshift) GetSecureAccessHostOk() (*[]string, bool) {
+	if o == nil || o.SecureAccessHost == nil {
+		return nil, false
+	}
+	return o.SecureAccessHost, true
+}
+
+// HasSecureAccessHost returns a boolean if a field has been set.
+func (o *GatewayCreateProducerRedshift) HasSecureAccessHost() bool {
+	if o != nil && o.SecureAccessHost != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessHost gets a reference to the given []string and assigns it to the SecureAccessHost field.
+func (o *GatewayCreateProducerRedshift) SetSecureAccessHost(v []string) {
+	o.SecureAccessHost = &v
+}
+
+// GetTags returns the Tags field value if set, zero value otherwise.
+func (o *GatewayCreateProducerRedshift) GetTags() []string {
+	if o == nil || o.Tags == nil {
+		var ret []string
+		return ret
+	}
+	return *o.Tags
+}
+
+// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerRedshift) GetTagsOk() (*[]string, bool) {
+	if o == nil || o.Tags == nil {
+		return nil, false
+	}
+	return o.Tags, true
+}
+
+// HasTags returns a boolean if a field has been set.
+func (o *GatewayCreateProducerRedshift) HasTags() bool {
+	if o != nil && o.Tags != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTags gets a reference to the given []string and assigns it to the Tags field.
+func (o *GatewayCreateProducerRedshift) SetTags(v []string) {
+	o.Tags = &v
+}
+
 // GetTargetName returns the TargetName field value if set, zero value otherwise.
 func (o *GatewayCreateProducerRedshift) GetTargetName() string {
 	if o == nil || o.TargetName == nil {
@@ -545,6 +645,15 @@ func (o GatewayCreateProducerRedshift) MarshalJSON() ([]byte, error) {
 	}
 	if o.RedshiftUsername != nil {
 		toSerialize["redshift-username"] = o.RedshiftUsername
+	}
+	if o.SecureAccessEnable != nil {
+		toSerialize["secure-access-enable"] = o.SecureAccessEnable
+	}
+	if o.SecureAccessHost != nil {
+		toSerialize["secure-access-host"] = o.SecureAccessHost
+	}
+	if o.Tags != nil {
+		toSerialize["tags"] = o.Tags
 	}
 	if o.TargetName != nil {
 		toSerialize["target-name"] = o.TargetName

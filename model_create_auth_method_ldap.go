@@ -19,7 +19,7 @@ import (
 type CreateAuthMethodLDAP struct {
 	// Access expiration date in Unix timestamp (select 0 for access without expiry date)
 	AccessExpires *int64 `json:"access-expires,omitempty"`
-	// A CIDR whitelist of the IPs that the access is restricted to
+	// A CIDR whitelist with the IPs that the access is restricted to
 	BoundIps *[]string `json:"bound-ips,omitempty"`
 	// if true: enforce role-association must include sub claims
 	ForceSubClaims *bool `json:"force-sub-claims,omitempty"`

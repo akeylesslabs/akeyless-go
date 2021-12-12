@@ -27,6 +27,8 @@ type GatewayCreateProducerSnowflake struct {
 	Password *string `json:"password,omitempty"`
 	// User role
 	Role *string `json:"role,omitempty"`
+	// List of the tags attached to this secret
+	Tags *[]string `json:"tags,omitempty"`
 	// Target name
 	TargetName *string `json:"target-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -213,6 +215,38 @@ func (o *GatewayCreateProducerSnowflake) HasRole() bool {
 // SetRole gets a reference to the given string and assigns it to the Role field.
 func (o *GatewayCreateProducerSnowflake) SetRole(v string) {
 	o.Role = &v
+}
+
+// GetTags returns the Tags field value if set, zero value otherwise.
+func (o *GatewayCreateProducerSnowflake) GetTags() []string {
+	if o == nil || o.Tags == nil {
+		var ret []string
+		return ret
+	}
+	return *o.Tags
+}
+
+// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerSnowflake) GetTagsOk() (*[]string, bool) {
+	if o == nil || o.Tags == nil {
+		return nil, false
+	}
+	return o.Tags, true
+}
+
+// HasTags returns a boolean if a field has been set.
+func (o *GatewayCreateProducerSnowflake) HasTags() bool {
+	if o != nil && o.Tags != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTags gets a reference to the given []string and assigns it to the Tags field.
+func (o *GatewayCreateProducerSnowflake) SetTags(v []string) {
+	o.Tags = &v
 }
 
 // GetTargetName returns the TargetName field value if set, zero value otherwise.
@@ -423,6 +457,9 @@ func (o GatewayCreateProducerSnowflake) MarshalJSON() ([]byte, error) {
 	}
 	if o.Role != nil {
 		toSerialize["role"] = o.Role
+	}
+	if o.Tags != nil {
+		toSerialize["tags"] = o.Tags
 	}
 	if o.TargetName != nil {
 		toSerialize["target-name"] = o.TargetName

@@ -16,6 +16,8 @@ Method | HTTP request | Description
 [**CreateAuthMethodAzureAD**](V2Api.md#CreateAuthMethodAzureAD) | **Post** /create-auth-method-azure-ad | 
 [**CreateAuthMethodGCP**](V2Api.md#CreateAuthMethodGCP) | **Post** /create-auth-method-gcp | 
 [**CreateAuthMethodHuawei**](V2Api.md#CreateAuthMethodHuawei) | **Post** /create-auth-method-huawei | 
+[**CreateAuthMethodK8S**](V2Api.md#CreateAuthMethodK8S) | **Post** /create-auth-method-k8s | 
+[**CreateAuthMethodLDAP**](V2Api.md#CreateAuthMethodLDAP) | **Post** /create-auth-method-ldap | 
 [**CreateAuthMethodOAuth2**](V2Api.md#CreateAuthMethodOAuth2) | **Post** /create-auth-method-oauth2 | 
 [**CreateAuthMethodOIDC**](V2Api.md#CreateAuthMethodOIDC) | **Post** /create-auth-method-oidc | 
 [**CreateAuthMethodSAML**](V2Api.md#CreateAuthMethodSAML) | **Post** /create-auth-method-saml | 
@@ -93,12 +95,25 @@ Method | HTTP request | Description
 [**GatewayStartProducer**](V2Api.md#GatewayStartProducer) | **Post** /gateway-start-producer | 
 [**GatewayStopProducer**](V2Api.md#GatewayStopProducer) | **Post** /gateway-stop-producer | 
 [**GatewaySyncMigration**](V2Api.md#GatewaySyncMigration) | **Post** /gateway-sync-migration | 
+[**GatewayUpdateItem**](V2Api.md#GatewayUpdateItem) | **Post** /gateway-update-item | 
+[**GatewayUpdateProducerArtifactory**](V2Api.md#GatewayUpdateProducerArtifactory) | **Post** /gateway-update-producer-artifactory | 
 [**GatewayUpdateProducerAws**](V2Api.md#GatewayUpdateProducerAws) | **Post** /gateway-update-producer-aws | 
+[**GatewayUpdateProducerAzure**](V2Api.md#GatewayUpdateProducerAzure) | **Post** /gateway-update-producer-azure | 
+[**GatewayUpdateProducerCassandra**](V2Api.md#GatewayUpdateProducerCassandra) | **Post** /gateway-update-producer-cassandra | 
+[**GatewayUpdateProducerCustom**](V2Api.md#GatewayUpdateProducerCustom) | **Post** /gateway-update-producer-custom | 
+[**GatewayUpdateProducerEks**](V2Api.md#GatewayUpdateProducerEks) | **Post** /gateway-update-producer-eks | 
 [**GatewayUpdateProducerGcp**](V2Api.md#GatewayUpdateProducerGcp) | **Post** /gateway-update-producer-gcp | 
+[**GatewayUpdateProducerGke**](V2Api.md#GatewayUpdateProducerGke) | **Post** /gateway-update-producer-gke | 
+[**GatewayUpdateProducerLdap**](V2Api.md#GatewayUpdateProducerLdap) | **Post** /gateway-update-producer-ldap | 
 [**GatewayUpdateProducerMSSQL**](V2Api.md#GatewayUpdateProducerMSSQL) | **Post** /gateway-update-producer-mssql | 
 [**GatewayUpdateProducerMongo**](V2Api.md#GatewayUpdateProducerMongo) | **Post** /gateway-update-producer-mongo | 
 [**GatewayUpdateProducerMySQL**](V2Api.md#GatewayUpdateProducerMySQL) | **Post** /gateway-update-producer-mysql | 
+[**GatewayUpdateProducerNativeK8S**](V2Api.md#GatewayUpdateProducerNativeK8S) | **Post** /gateway-update-producer-k8s-native | 
+[**GatewayUpdateProducerOracleDb**](V2Api.md#GatewayUpdateProducerOracleDb) | **Post** /gateway-update-producer-oracle | 
+[**GatewayUpdateProducerPostgreSQL**](V2Api.md#GatewayUpdateProducerPostgreSQL) | **Post** /gateway-update-producer-postgresql | 
+[**GatewayUpdateProducerRabbitMQ**](V2Api.md#GatewayUpdateProducerRabbitMQ) | **Post** /gateway-update-producer-rabbitmq | 
 [**GatewayUpdateProducerRdp**](V2Api.md#GatewayUpdateProducerRdp) | **Post** /gateway-update-producer-rdp | 
+[**GatewayUpdateProducerRedshift**](V2Api.md#GatewayUpdateProducerRedshift) | **Post** /gateway-update-producer-redshift | 
 [**GatewayUpdateTmpUsers**](V2Api.md#GatewayUpdateTmpUsers) | **Post** /gateway-update-producer-tmp-creds | 
 [**GetAccountLogo**](V2Api.md#GetAccountLogo) | **Post** /get-account-logo | 
 [**GetAuthMethod**](V2Api.md#GetAuthMethod) | **Post** /get-auth-method | 
@@ -110,6 +125,7 @@ Method | HTTP request | Description
 [**GetRotatedSecretValue**](V2Api.md#GetRotatedSecretValue) | **Post** /get-rotated-secret-value | 
 [**GetSSHCertificate**](V2Api.md#GetSSHCertificate) | **Post** /get-ssh-certificate | 
 [**GetSecretValue**](V2Api.md#GetSecretValue) | **Post** /get-secret-value | 
+[**GetTags**](V2Api.md#GetTags) | **Post** /get-tags | 
 [**GetTarget**](V2Api.md#GetTarget) | **Post** /get-target | 
 [**GetTargetDetails**](V2Api.md#GetTargetDetails) | **Post** /get-target-details | 
 [**KmipClientDeleteRule**](V2Api.md#KmipClientDeleteRule) | **Post** /kmip-client-delete-rule | 
@@ -144,23 +160,36 @@ Method | HTTP request | Description
 [**UidListChildren**](V2Api.md#UidListChildren) | **Post** /uid-list-children | 
 [**UidRevokeToken**](V2Api.md#UidRevokeToken) | **Post** /uid-revoke-token | 
 [**UidRotateToken**](V2Api.md#UidRotateToken) | **Post** /uid-rotate-token | 
-[**UpdateAWSTarget**](V2Api.md#UpdateAWSTarget) | **Put** /update-aws-target | 
+[**UpdateAWSTarget**](V2Api.md#UpdateAWSTarget) | **Post** /update-aws-target | 
 [**UpdateAWSTargetDetails**](V2Api.md#UpdateAWSTargetDetails) | **Post** /update-aws-target-details | 
+[**UpdateArtifactoryTarget**](V2Api.md#UpdateArtifactoryTarget) | **Post** /update-artifactory-target | 
 [**UpdateAssoc**](V2Api.md#UpdateAssoc) | **Post** /update-assoc | 
-[**UpdateAzureTarget**](V2Api.md#UpdateAzureTarget) | **Put** /update-azure-target | 
+[**UpdateAuthMethod**](V2Api.md#UpdateAuthMethod) | **Post** /update-auth-method | 
+[**UpdateAuthMethodAWSIAM**](V2Api.md#UpdateAuthMethodAWSIAM) | **Post** /update-auth-method-aws-iam | 
+[**UpdateAuthMethodAzureAD**](V2Api.md#UpdateAuthMethodAzureAD) | **Post** /update-auth-method-azure-ad | 
+[**UpdateAuthMethodGCP**](V2Api.md#UpdateAuthMethodGCP) | **Post** /update-auth-method-gcp | 
+[**UpdateAuthMethodK8S**](V2Api.md#UpdateAuthMethodK8S) | **Post** /update-auth-method-k8s | 
+[**UpdateAuthMethodLDAP**](V2Api.md#UpdateAuthMethodLDAP) | **Post** /update-auth-method-ldap | 
+[**UpdateAuthMethodOAuth2**](V2Api.md#UpdateAuthMethodOAuth2) | **Post** /update-auth-method-oauth2 | 
+[**UpdateAuthMethodOIDC**](V2Api.md#UpdateAuthMethodOIDC) | **Post** /update-auth-method-oidc | 
+[**UpdateAuthMethodSAML**](V2Api.md#UpdateAuthMethodSAML) | **Post** /update-auth-method-saml | 
+[**UpdateAuthMethodUniversalIdentity**](V2Api.md#UpdateAuthMethodUniversalIdentity) | **Post** /update-auth-method-universal-identity | 
+[**UpdateAzureTarget**](V2Api.md#UpdateAzureTarget) | **Post** /update-azure-target | 
 [**UpdateDBTarget**](V2Api.md#UpdateDBTarget) | **Post** /update-db-target | 
 [**UpdateDBTargetDetails**](V2Api.md#UpdateDBTargetDetails) | **Post** /update-db-target-details | 
-[**UpdateEKSTarget**](V2Api.md#UpdateEKSTarget) | **Put** /update-eks-target | 
-[**UpdateGKETarget**](V2Api.md#UpdateGKETarget) | **Put** /update-gke-target | 
-[**UpdateGcpTarget**](V2Api.md#UpdateGcpTarget) | **Put** /update-gcp-target | 
+[**UpdateEKSTarget**](V2Api.md#UpdateEKSTarget) | **Post** /update-eks-target | 
+[**UpdateGKETarget**](V2Api.md#UpdateGKETarget) | **Post** /update-gke-target | 
+[**UpdateGcpTarget**](V2Api.md#UpdateGcpTarget) | **Post** /update-gcp-target | 
 [**UpdateItem**](V2Api.md#UpdateItem) | **Post** /update-item | 
-[**UpdateNativeK8STarget**](V2Api.md#UpdateNativeK8STarget) | **Put** /update-k8s-target | 
+[**UpdateNativeK8STarget**](V2Api.md#UpdateNativeK8STarget) | **Post** /update-k8s-target | 
+[**UpdatePKICertIssuer**](V2Api.md#UpdatePKICertIssuer) | **Post** /update-pki-cert-issuer | 
 [**UpdateRDPTargetDetails**](V2Api.md#UpdateRDPTargetDetails) | **Post** /update-rdp-target-details | 
-[**UpdateRabbitMQTarget**](V2Api.md#UpdateRabbitMQTarget) | **Put** /update-rabbitmq-target | 
+[**UpdateRabbitMQTarget**](V2Api.md#UpdateRabbitMQTarget) | **Post** /update-rabbitmq-target | 
 [**UpdateRabbitMQTargetDetails**](V2Api.md#UpdateRabbitMQTargetDetails) | **Post** /update-rabbitmq-target-details | 
 [**UpdateRole**](V2Api.md#UpdateRole) | **Post** /update-role | 
 [**UpdateRotatedSecret**](V2Api.md#UpdateRotatedSecret) | **Post** /update-rotated-secret | 
 [**UpdateRotationSettings**](V2Api.md#UpdateRotationSettings) | **Post** /update-rotation-settingsrotate-key | 
+[**UpdateSSHCertIssuer**](V2Api.md#UpdateSSHCertIssuer) | **Post** /update-ssh-cert-issuer | 
 [**UpdateSSHTarget**](V2Api.md#UpdateSSHTarget) | **Post** /update-ssh-target | 
 [**UpdateSSHTargetDetails**](V2Api.md#UpdateSSHTargetDetails) | **Post** /update-ssh-target-details | 
 [**UpdateSecretVal**](V2Api.md#UpdateSecretVal) | **Post** /update-secret-val | 
@@ -928,6 +957,134 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateAuthMethodHuaweiOutput**](createAuthMethodHuaweiOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateAuthMethodK8S
+
+> CreateAuthMethodK8SOutput CreateAuthMethodK8S(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewcreateAuthMethodK8S("Name_example") // CreateAuthMethodK8S | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.CreateAuthMethodK8S(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateAuthMethodK8S``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateAuthMethodK8S`: CreateAuthMethodK8SOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateAuthMethodK8S`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateAuthMethodK8SRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateAuthMethodK8S**](CreateAuthMethodK8S.md) |  | 
+
+### Return type
+
+[**CreateAuthMethodK8SOutput**](createAuthMethodK8SOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateAuthMethodLDAP
+
+> CreateAuthMethodLDAPOutput CreateAuthMethodLDAP(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewcreateAuthMethodLDAP("Name_example") // CreateAuthMethodLDAP | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.CreateAuthMethodLDAP(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateAuthMethodLDAP``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateAuthMethodLDAP`: CreateAuthMethodLDAPOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateAuthMethodLDAP`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateAuthMethodLDAPRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateAuthMethodLDAP**](CreateAuthMethodLDAP.md) |  | 
+
+### Return type
+
+[**CreateAuthMethodLDAPOutput**](createAuthMethodLDAPOutput.md)
 
 ### Authorization
 
@@ -1777,7 +1934,7 @@ No authorization required
 
 ## CreateNativeK8STarget
 
-> CreateNativeK8STarget CreateNativeK8STarget(ctx).Execute()
+> CreateNativeK8STargetOutput CreateNativeK8STarget(ctx).Body(body).Execute()
 
 
 
@@ -1794,31 +1951,36 @@ import (
 )
 
 func main() {
+    body := *openapiclient.NewcreateNativeK8STarget("K8sClusterCaCert_example", "K8sClusterEndpoint_example", "K8sClusterToken_example", "Name_example") // CreateNativeK8STarget | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateNativeK8STarget(context.Background()).Execute()
+    resp, r, err := api_client.V2Api.CreateNativeK8STarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateNativeK8STarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateNativeK8STarget`: CreateNativeK8STarget
+    // response from `CreateNativeK8STarget`: CreateNativeK8STargetOutput
     fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateNativeK8STarget`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiCreateNativeK8STargetRequest struct via the builder pattern
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateNativeK8STarget**](CreateNativeK8STarget.md) |  | 
+
 ### Return type
 
-[**CreateNativeK8STarget**](createNativeK8STarget.md)
+[**CreateNativeK8STargetOutput**](createNativeK8STargetOutput.md)
 
 ### Authorization
 
@@ -1826,7 +1988,7 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -5864,6 +6026,134 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GatewayUpdateItem
+
+> GatewayUpdateItemOutput GatewayUpdateItem(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateItem("Name_example", "Type_example") // GatewayUpdateItem | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateItem(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateItem``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateItem`: GatewayUpdateItemOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateItem`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateItemRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateItem**](GatewayUpdateItem.md) |  | 
+
+### Return type
+
+[**GatewayUpdateItemOutput**](gatewayUpdateItemOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateProducerArtifactory
+
+> GatewayUpdateProducerArtifactoryOutput GatewayUpdateProducerArtifactory(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateProducerArtifactory("ArtifactoryTokenAudience_example", "ArtifactoryTokenScope_example", "Name_example") // GatewayUpdateProducerArtifactory | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateProducerArtifactory(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerArtifactory``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateProducerArtifactory`: GatewayUpdateProducerArtifactoryOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateProducerArtifactory`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateProducerArtifactoryRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerArtifactory**](GatewayUpdateProducerArtifactory.md) |  | 
+
+### Return type
+
+[**GatewayUpdateProducerArtifactoryOutput**](gatewayUpdateProducerArtifactoryOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GatewayUpdateProducerAws
 
 > GatewayUpdateProducerAwsOutput GatewayUpdateProducerAws(ctx).Body(body).Execute()
@@ -5928,6 +6218,262 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GatewayUpdateProducerAzure
+
+> GatewayUpdateProducerAzureOutput GatewayUpdateProducerAzure(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateProducerAzure("Name_example") // GatewayUpdateProducerAzure | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateProducerAzure(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerAzure``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateProducerAzure`: GatewayUpdateProducerAzureOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateProducerAzure`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateProducerAzureRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerAzure**](GatewayUpdateProducerAzure.md) |  | 
+
+### Return type
+
+[**GatewayUpdateProducerAzureOutput**](gatewayUpdateProducerAzureOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateProducerCassandra
+
+> GatewayUpdateProducerCassandraOutput GatewayUpdateProducerCassandra(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateProducerCassandra("Name_example") // GatewayUpdateProducerCassandra | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateProducerCassandra(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerCassandra``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateProducerCassandra`: GatewayUpdateProducerCassandraOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateProducerCassandra`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateProducerCassandraRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerCassandra**](GatewayUpdateProducerCassandra.md) |  | 
+
+### Return type
+
+[**GatewayUpdateProducerCassandraOutput**](gatewayUpdateProducerCassandraOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateProducerCustom
+
+> GatewayUpdateProducerCustomOutput GatewayUpdateProducerCustom(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateProducerCustom("CreateSyncUrl_example", "Name_example", "RevokeSyncUrl_example") // GatewayUpdateProducerCustom |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateProducerCustom(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerCustom``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateProducerCustom`: GatewayUpdateProducerCustomOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateProducerCustom`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateProducerCustomRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerCustom**](GatewayUpdateProducerCustom.md) |  | 
+
+### Return type
+
+[**GatewayUpdateProducerCustomOutput**](gatewayUpdateProducerCustomOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateProducerEks
+
+> GatewayUpdateProducerEksOutput GatewayUpdateProducerEks(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateProducerEks("Name_example") // GatewayUpdateProducerEks | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateProducerEks(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerEks``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateProducerEks`: GatewayUpdateProducerEksOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateProducerEks`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateProducerEksRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerEks**](GatewayUpdateProducerEks.md) |  | 
+
+### Return type
+
+[**GatewayUpdateProducerEksOutput**](gatewayUpdateProducerEksOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GatewayUpdateProducerGcp
 
 > GatewayUpdateProducerGcpOutput GatewayUpdateProducerGcp(ctx).Body(body).Execute()
@@ -5977,6 +6523,134 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GatewayUpdateProducerGcpOutput**](gatewayUpdateProducerGcpOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateProducerGke
+
+> GatewayUpdateProducerGkeOutput GatewayUpdateProducerGke(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateProducerGke("Name_example") // GatewayUpdateProducerGke | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateProducerGke(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerGke``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateProducerGke`: GatewayUpdateProducerGkeOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateProducerGke`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateProducerGkeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerGke**](GatewayUpdateProducerGke.md) |  | 
+
+### Return type
+
+[**GatewayUpdateProducerGkeOutput**](gatewayUpdateProducerGkeOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateProducerLdap
+
+> GatewayUpdateProducerLdapOutput GatewayUpdateProducerLdap(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateProducerLdap("Name_example") // GatewayUpdateProducerLdap | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateProducerLdap(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerLdap``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateProducerLdap`: GatewayUpdateProducerLdapOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateProducerLdap`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateProducerLdapRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerLdap**](GatewayUpdateProducerLdap.md) |  | 
+
+### Return type
+
+[**GatewayUpdateProducerLdapOutput**](gatewayUpdateProducerLdapOutput.md)
 
 ### Authorization
 
@@ -6184,6 +6858,262 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GatewayUpdateProducerNativeK8S
+
+> GatewayUpdateProducerNativeK8SOutput GatewayUpdateProducerNativeK8S(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateProducerNativeK8S("Name_example") // GatewayUpdateProducerNativeK8S | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateProducerNativeK8S(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerNativeK8S``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateProducerNativeK8S`: GatewayUpdateProducerNativeK8SOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateProducerNativeK8S`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateProducerNativeK8SRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerNativeK8S**](GatewayUpdateProducerNativeK8S.md) |  | 
+
+### Return type
+
+[**GatewayUpdateProducerNativeK8SOutput**](gatewayUpdateProducerNativeK8SOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateProducerOracleDb
+
+> GatewayUpdateProducerOracleDbOutput GatewayUpdateProducerOracleDb(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateProducerOracleDb("Name_example") // GatewayUpdateProducerOracleDb | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateProducerOracleDb(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerOracleDb``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateProducerOracleDb`: GatewayUpdateProducerOracleDbOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateProducerOracleDb`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateProducerOracleDbRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerOracleDb**](GatewayUpdateProducerOracleDb.md) |  | 
+
+### Return type
+
+[**GatewayUpdateProducerOracleDbOutput**](gatewayUpdateProducerOracleDbOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateProducerPostgreSQL
+
+> GatewayUpdateProducerPostgreSQLOutput GatewayUpdateProducerPostgreSQL(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateProducerPostgreSQL("Name_example") // GatewayUpdateProducerPostgreSQL | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateProducerPostgreSQL(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerPostgreSQL``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateProducerPostgreSQL`: GatewayUpdateProducerPostgreSQLOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateProducerPostgreSQL`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateProducerPostgreSQLRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerPostgreSQL**](GatewayUpdateProducerPostgreSQL.md) |  | 
+
+### Return type
+
+[**GatewayUpdateProducerPostgreSQLOutput**](gatewayUpdateProducerPostgreSQLOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateProducerRabbitMQ
+
+> GatewayUpdateProducerRabbitMQOutput GatewayUpdateProducerRabbitMQ(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateProducerRabbitMQ("Name_example") // GatewayUpdateProducerRabbitMQ | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateProducerRabbitMQ(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerRabbitMQ``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateProducerRabbitMQ`: GatewayUpdateProducerRabbitMQOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateProducerRabbitMQ`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateProducerRabbitMQRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerRabbitMQ**](GatewayUpdateProducerRabbitMQ.md) |  | 
+
+### Return type
+
+[**GatewayUpdateProducerRabbitMQOutput**](gatewayUpdateProducerRabbitMQOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GatewayUpdateProducerRdp
 
 > GatewayUpdateProducerRdpOutput GatewayUpdateProducerRdp(ctx).Body(body).Execute()
@@ -6233,6 +7163,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GatewayUpdateProducerRdpOutput**](gatewayUpdateProducerRdpOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateProducerRedshift
+
+> GatewayUpdateProducerRedshiftOutput GatewayUpdateProducerRedshift(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateProducerRedshift("Name_example") // GatewayUpdateProducerRedshift | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateProducerRedshift(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerRedshift``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateProducerRedshift`: GatewayUpdateProducerRedshiftOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateProducerRedshift`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateProducerRedshiftRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerRedshift**](GatewayUpdateProducerRedshift.md) |  | 
+
+### Return type
+
+[**GatewayUpdateProducerRedshiftOutput**](gatewayUpdateProducerRedshiftOutput.md)
 
 ### Authorization
 
@@ -6930,6 +7924,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 **map[string]string**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetTags
+
+> []string GetTags(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgetTags("Name_example") // GetTags | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GetTags(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GetTags``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetTags`: []string
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GetTags`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetTagsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GetTags**](GetTags.md) |  | 
+
+### Return type
+
+**[]string**
 
 ### Authorization
 
@@ -9249,6 +10307,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## UpdateArtifactoryTarget
+
+> UpdateArtifactoryTargetOutput UpdateArtifactoryTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewupdateArtifactoryTarget("ArtifactoryAdminName_example", "ArtifactoryAdminPwd_example", "BaseUrl_example", "Name_example") // UpdateArtifactoryTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdateArtifactoryTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateArtifactoryTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateArtifactoryTarget`: UpdateArtifactoryTargetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateArtifactoryTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateArtifactoryTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateArtifactoryTarget**](UpdateArtifactoryTarget.md) |  | 
+
+### Return type
+
+[**UpdateArtifactoryTargetOutput**](updateArtifactoryTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## UpdateAssoc
 
 > map[string]interface{} UpdateAssoc(ctx).Body(body).Execute()
@@ -9294,6 +10416,646 @@ Other parameters are passed through a pointer to a apiUpdateAssocRequest struct 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**UpdateAssoc**](UpdateAssoc.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateAuthMethod
+
+> UpdateAuthMethodOutput UpdateAuthMethod(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewupdateAuthMethod("Name_example") // UpdateAuthMethod | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdateAuthMethod(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateAuthMethod``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateAuthMethod`: UpdateAuthMethodOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateAuthMethod`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateAuthMethodRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateAuthMethod**](UpdateAuthMethod.md) |  | 
+
+### Return type
+
+[**UpdateAuthMethodOutput**](updateAuthMethodOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateAuthMethodAWSIAM
+
+> map[string]interface{} UpdateAuthMethodAWSIAM(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewupdateAuthMethodAWSIAM([]string{"BoundAwsAccountId_example"}, "Name_example") // UpdateAuthMethodAWSIAM | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdateAuthMethodAWSIAM(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateAuthMethodAWSIAM``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateAuthMethodAWSIAM`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateAuthMethodAWSIAM`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateAuthMethodAWSIAMRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateAuthMethodAWSIAM**](UpdateAuthMethodAWSIAM.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateAuthMethodAzureAD
+
+> map[string]interface{} UpdateAuthMethodAzureAD(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewupdateAuthMethodAzureAD("BoundTenantId_example", "Name_example") // UpdateAuthMethodAzureAD | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdateAuthMethodAzureAD(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateAuthMethodAzureAD``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateAuthMethodAzureAD`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateAuthMethodAzureAD`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateAuthMethodAzureADRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateAuthMethodAzureAD**](UpdateAuthMethodAzureAD.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateAuthMethodGCP
+
+> map[string]interface{} UpdateAuthMethodGCP(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewupdateAuthMethodGCP("Audience_example", "Name_example", "Type_example") // UpdateAuthMethodGCP | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdateAuthMethodGCP(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateAuthMethodGCP``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateAuthMethodGCP`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateAuthMethodGCP`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateAuthMethodGCPRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateAuthMethodGCP**](UpdateAuthMethodGCP.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateAuthMethodK8S
+
+> UpdateAuthMethodK8SOutput UpdateAuthMethodK8S(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewupdateAuthMethodK8S("Name_example") // UpdateAuthMethodK8S | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdateAuthMethodK8S(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateAuthMethodK8S``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateAuthMethodK8S`: UpdateAuthMethodK8SOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateAuthMethodK8S`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateAuthMethodK8SRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateAuthMethodK8S**](UpdateAuthMethodK8S.md) |  | 
+
+### Return type
+
+[**UpdateAuthMethodK8SOutput**](updateAuthMethodK8SOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateAuthMethodLDAP
+
+> map[string]interface{} UpdateAuthMethodLDAP(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewupdateAuthMethodLDAP("Name_example") // UpdateAuthMethodLDAP | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdateAuthMethodLDAP(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateAuthMethodLDAP``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateAuthMethodLDAP`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateAuthMethodLDAP`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateAuthMethodLDAPRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateAuthMethodLDAP**](UpdateAuthMethodLDAP.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateAuthMethodOAuth2
+
+> map[string]interface{} UpdateAuthMethodOAuth2(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewupdateAuthMethodOAuth2("JwksUri_example", "Name_example", "UniqueIdentifier_example") // UpdateAuthMethodOAuth2 | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdateAuthMethodOAuth2(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateAuthMethodOAuth2``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateAuthMethodOAuth2`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateAuthMethodOAuth2`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateAuthMethodOAuth2Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateAuthMethodOAuth2**](UpdateAuthMethodOAuth2.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateAuthMethodOIDC
+
+> map[string]interface{} UpdateAuthMethodOIDC(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewupdateAuthMethodOIDC("Name_example", "UniqueIdentifier_example") // UpdateAuthMethodOIDC | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdateAuthMethodOIDC(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateAuthMethodOIDC``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateAuthMethodOIDC`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateAuthMethodOIDC`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateAuthMethodOIDCRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateAuthMethodOIDC**](UpdateAuthMethodOIDC.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateAuthMethodSAML
+
+> map[string]interface{} UpdateAuthMethodSAML(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewupdateAuthMethodSAML("Name_example", "UniqueIdentifier_example") // UpdateAuthMethodSAML | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdateAuthMethodSAML(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateAuthMethodSAML``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateAuthMethodSAML`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateAuthMethodSAML`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateAuthMethodSAMLRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateAuthMethodSAML**](UpdateAuthMethodSAML.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateAuthMethodUniversalIdentity
+
+> map[string]interface{} UpdateAuthMethodUniversalIdentity(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewupdateAuthMethodUniversalIdentity("Name_example") // UpdateAuthMethodUniversalIdentity | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdateAuthMethodUniversalIdentity(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateAuthMethodUniversalIdentity``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateAuthMethodUniversalIdentity`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateAuthMethodUniversalIdentity`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateAuthMethodUniversalIdentityRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateAuthMethodUniversalIdentity**](UpdateAuthMethodUniversalIdentity.md) |  | 
 
 ### Return type
 
@@ -9825,6 +11587,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## UpdatePKICertIssuer
+
+> UpdatePKICertIssuerOutput UpdatePKICertIssuer(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewUpdatePKICertIssuer("Name_example", "SignerKeyName_example", int64(123)) // UpdatePKICertIssuer | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdatePKICertIssuer(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdatePKICertIssuer``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdatePKICertIssuer`: UpdatePKICertIssuerOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdatePKICertIssuer`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdatePKICertIssuerRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdatePKICertIssuer**](UpdatePKICertIssuer.md) |  | 
+
+### Return type
+
+[**UpdatePKICertIssuerOutput**](updatePKICertIssuerOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## UpdateRDPTargetDetails
 
 > UpdateTargetOutput UpdateRDPTargetDetails(ctx).Body(body).Execute()
@@ -10197,6 +12023,70 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateSSHCertIssuer
+
+> UpdateSSHCertIssuerOutput UpdateSSHCertIssuer(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewupdateSSHCertIssuer("AllowedUsers_example", "Name_example", "SignerKeyName_example", int64(123)) // UpdateSSHCertIssuer | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdateSSHCertIssuer(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateSSHCertIssuer``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateSSHCertIssuer`: UpdateSSHCertIssuerOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateSSHCertIssuer`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateSSHCertIssuerRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateSSHCertIssuer**](UpdateSSHCertIssuer.md) |  | 
+
+### Return type
+
+[**UpdateSSHCertIssuerOutput**](updateSSHCertIssuerOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

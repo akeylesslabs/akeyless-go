@@ -13,6 +13,9 @@ Name | Type | Description | Notes
 **RedshiftPassword** | Pointer to **string** | Redshift Password | [optional] 
 **RedshiftPort** | Pointer to **string** | Redshift Port | [optional] [default to "5439"]
 **RedshiftUsername** | Pointer to **string** | Redshift Username | [optional] 
+**SecureAccessEnable** | Pointer to **string** |  | [optional] 
+**SecureAccessHost** | Pointer to **[]string** |  | [optional] 
+**Tags** | Pointer to **[]string** | List of the tags attached to this secret | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -257,6 +260,81 @@ SetRedshiftUsername sets RedshiftUsername field to given value.
 `func (o *GatewayCreateProducerRedshift) HasRedshiftUsername() bool`
 
 HasRedshiftUsername returns a boolean if a field has been set.
+
+### GetSecureAccessEnable
+
+`func (o *GatewayCreateProducerRedshift) GetSecureAccessEnable() string`
+
+GetSecureAccessEnable returns the SecureAccessEnable field if non-nil, zero value otherwise.
+
+### GetSecureAccessEnableOk
+
+`func (o *GatewayCreateProducerRedshift) GetSecureAccessEnableOk() (*string, bool)`
+
+GetSecureAccessEnableOk returns a tuple with the SecureAccessEnable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessEnable
+
+`func (o *GatewayCreateProducerRedshift) SetSecureAccessEnable(v string)`
+
+SetSecureAccessEnable sets SecureAccessEnable field to given value.
+
+### HasSecureAccessEnable
+
+`func (o *GatewayCreateProducerRedshift) HasSecureAccessEnable() bool`
+
+HasSecureAccessEnable returns a boolean if a field has been set.
+
+### GetSecureAccessHost
+
+`func (o *GatewayCreateProducerRedshift) GetSecureAccessHost() []string`
+
+GetSecureAccessHost returns the SecureAccessHost field if non-nil, zero value otherwise.
+
+### GetSecureAccessHostOk
+
+`func (o *GatewayCreateProducerRedshift) GetSecureAccessHostOk() (*[]string, bool)`
+
+GetSecureAccessHostOk returns a tuple with the SecureAccessHost field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessHost
+
+`func (o *GatewayCreateProducerRedshift) SetSecureAccessHost(v []string)`
+
+SetSecureAccessHost sets SecureAccessHost field to given value.
+
+### HasSecureAccessHost
+
+`func (o *GatewayCreateProducerRedshift) HasSecureAccessHost() bool`
+
+HasSecureAccessHost returns a boolean if a field has been set.
+
+### GetTags
+
+`func (o *GatewayCreateProducerRedshift) GetTags() []string`
+
+GetTags returns the Tags field if non-nil, zero value otherwise.
+
+### GetTagsOk
+
+`func (o *GatewayCreateProducerRedshift) GetTagsOk() (*[]string, bool)`
+
+GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTags
+
+`func (o *GatewayCreateProducerRedshift) SetTags(v []string)`
+
+SetTags sets Tags field to given value.
+
+### HasTags
+
+`func (o *GatewayCreateProducerRedshift) HasTags() bool`
+
+HasTags returns a boolean if a field has been set.
 
 ### GetTargetName
 

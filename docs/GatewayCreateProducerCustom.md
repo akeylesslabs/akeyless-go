@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **RevokeSyncUrl** | **string** | URL of an endpoint that implements /sync/revoke method, for example https://webhook.example.com/sync/revoke | 
 **RotateSyncUrl** | Pointer to **string** | URL of an endpoint that implements /sync/rotate method, for example https://webhook.example.com/sync/rotate | [optional] 
+**Tags** | Pointer to **[]string** | List of the tags attached to this secret | [optional] 
 **TimeoutSec** | Pointer to **int64** | Maximum allowed time in seconds for the webhook to return the results | [optional] [default to 60]
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -195,6 +196,31 @@ SetRotateSyncUrl sets RotateSyncUrl field to given value.
 `func (o *GatewayCreateProducerCustom) HasRotateSyncUrl() bool`
 
 HasRotateSyncUrl returns a boolean if a field has been set.
+
+### GetTags
+
+`func (o *GatewayCreateProducerCustom) GetTags() []string`
+
+GetTags returns the Tags field if non-nil, zero value otherwise.
+
+### GetTagsOk
+
+`func (o *GatewayCreateProducerCustom) GetTagsOk() (*[]string, bool)`
+
+GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTags
+
+`func (o *GatewayCreateProducerCustom) SetTags(v []string)`
+
+SetTags sets Tags field to given value.
+
+### HasTags
+
+`func (o *GatewayCreateProducerCustom) HasTags() bool`
+
+HasTags returns a boolean if a field has been set.
 
 ### GetTimeoutSec
 

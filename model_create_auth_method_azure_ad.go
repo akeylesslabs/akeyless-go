@@ -23,7 +23,7 @@ type CreateAuthMethodAzureAD struct {
 	Audience *string `json:"audience,omitempty"`
 	// A list of group ids that the access is restricted to
 	BoundGroupId *[]string `json:"bound-group-id,omitempty"`
-	// A CIDR whitelist of the IPs that the access is restricted to
+	// A CIDR whitelist with the IPs that the access is restricted to
 	BoundIps *[]string `json:"bound-ips,omitempty"`
 	// A list of resource providers that the access is restricted to (e.g, Microsoft.Compute, Microsoft.ManagedIdentity, etc)
 	BoundProviders *[]string `json:"bound-providers,omitempty"`

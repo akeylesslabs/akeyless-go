@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **ServerFlag** | Pointer to **bool** | If set, certificates will be flagged for server auth use | [optional] 
 **SignerKeyName** | **string** | A key to sign the certificate with | 
 **StreetAddress** | Pointer to **string** | A comma-separated list of the street address that will be set in the issued certificate | [optional] 
+**Tag** | Pointer to **[]string** | List of the tags attached to this key | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **Ttl** | **int64** | he requested Time To Live for the certificate, in seconds | 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -563,6 +564,31 @@ SetStreetAddress sets StreetAddress field to given value.
 `func (o *CreatePKICertIssuer) HasStreetAddress() bool`
 
 HasStreetAddress returns a boolean if a field has been set.
+
+### GetTag
+
+`func (o *CreatePKICertIssuer) GetTag() []string`
+
+GetTag returns the Tag field if non-nil, zero value otherwise.
+
+### GetTagOk
+
+`func (o *CreatePKICertIssuer) GetTagOk() (*[]string, bool)`
+
+GetTagOk returns a tuple with the Tag field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTag
+
+`func (o *CreatePKICertIssuer) SetTag(v []string)`
+
+SetTag sets Tag field to given value.
+
+### HasTag
+
+`func (o *CreatePKICertIssuer) HasTag() bool`
+
+HasTag returns a boolean if a field has been set.
 
 ### GetToken
 

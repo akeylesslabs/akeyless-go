@@ -21,7 +21,7 @@ type CreateAuthMethodK8S struct {
 	AccessExpires *int64 `json:"access-expires,omitempty"`
 	// The audience in the Kubernetes JWT that the access is restricted to
 	Audience *string `json:"audience,omitempty"`
-	// A CIDR whitelist of the IPs that the access is restricted to
+	// A CIDR whitelist with the IPs that the access is restricted to
 	BoundIps *[]string `json:"bound-ips,omitempty"`
 	// A list of namespaces that the access is restricted to
 	BoundNamespaces *[]string `json:"bound-namespaces,omitempty"`
@@ -37,6 +37,8 @@ type CreateAuthMethodK8S struct {
 	Name string `json:"name"`
 	// Required only when the authentication process requires a username and password
 	Password *string `json:"password,omitempty"`
+	// Base64-encoded public key text for K8S authentication method is required [RSA2048]
+	PublicKey *string `json:"public-key,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -383,6 +385,38 @@ func (o *CreateAuthMethodK8S) SetPassword(v string) {
 	o.Password = &v
 }
 
+// GetPublicKey returns the PublicKey field value if set, zero value otherwise.
+func (o *CreateAuthMethodK8S) GetPublicKey() string {
+	if o == nil || o.PublicKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.PublicKey
+}
+
+// GetPublicKeyOk returns a tuple with the PublicKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodK8S) GetPublicKeyOk() (*string, bool) {
+	if o == nil || o.PublicKey == nil {
+		return nil, false
+	}
+	return o.PublicKey, true
+}
+
+// HasPublicKey returns a boolean if a field has been set.
+func (o *CreateAuthMethodK8S) HasPublicKey() bool {
+	if o != nil && o.PublicKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPublicKey gets a reference to the given string and assigns it to the PublicKey field.
+func (o *CreateAuthMethodK8S) SetPublicKey(v string) {
+	o.PublicKey = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *CreateAuthMethodK8S) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -510,6 +544,9 @@ func (o CreateAuthMethodK8S) MarshalJSON() ([]byte, error) {
 	}
 	if o.Password != nil {
 		toSerialize["password"] = o.Password
+	}
+	if o.PublicKey != nil {
+		toSerialize["public-key"] = o.PublicKey
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **AccessExpires** | Pointer to **int64** | Access expiration date in Unix timestamp (select 0 for access without expiry date) | [optional] [default to 0]
 **Audience** | Pointer to **string** | The audience in the JWT | [optional] [default to "https://management.azure.com/"]
 **BoundGroupId** | Pointer to **[]string** | A list of group ids that the access is restricted to | [optional] 
-**BoundIps** | Pointer to **[]string** | A CIDR whitelist of the IPs that the access is restricted to | [optional] 
+**BoundIps** | Pointer to **[]string** | A CIDR whitelist with the IPs that the access is restricted to | [optional] 
 **BoundProviders** | Pointer to **[]string** | A list of resource providers that the access is restricted to (e.g, Microsoft.Compute, Microsoft.ManagedIdentity, etc) | [optional] 
 **BoundResourceId** | Pointer to **[]string** | A list of full resource ids that the access is restricted to | [optional] 
 **BoundResourceNames** | Pointer to **[]string** | A list of resource names that the access is restricted to (e.g, a virtual machine name, scale set name, etc). | [optional] 

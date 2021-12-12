@@ -151,6 +151,7 @@ type DSProducerDetails struct {
 	SfWarehouseName *string `json:"sf_warehouse_name,omitempty"`
 	// TODO delete this after migration
 	ShouldStop *string `json:"should_stop,omitempty"`
+	Tags *[]string `json:"tags,omitempty"`
 	TimeoutSeconds *int64 `json:"timeout_seconds,omitempty"`
 	UseGwCloudIdentity *bool `json:"use_gw_cloud_identity,omitempty"`
 	UserPrincipalName *string `json:"user_principal_name,omitempty"`
@@ -4219,6 +4220,38 @@ func (o *DSProducerDetails) SetShouldStop(v string) {
 	o.ShouldStop = &v
 }
 
+// GetTags returns the Tags field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetTags() []string {
+	if o == nil || o.Tags == nil {
+		var ret []string
+		return ret
+	}
+	return *o.Tags
+}
+
+// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetTagsOk() (*[]string, bool) {
+	if o == nil || o.Tags == nil {
+		return nil, false
+	}
+	return o.Tags, true
+}
+
+// HasTags returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasTags() bool {
+	if o != nil && o.Tags != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTags gets a reference to the given []string and assigns it to the Tags field.
+func (o *DSProducerDetails) SetTags(v []string) {
+	o.Tags = &v
+}
+
 // GetTimeoutSeconds returns the TimeoutSeconds field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetTimeoutSeconds() int64 {
 	if o == nil || o.TimeoutSeconds == nil {
@@ -5142,6 +5175,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.ShouldStop != nil {
 		toSerialize["should_stop"] = o.ShouldStop
+	}
+	if o.Tags != nil {
+		toSerialize["tags"] = o.Tags
 	}
 	if o.TimeoutSeconds != nil {
 		toSerialize["timeout_seconds"] = o.TimeoutSeconds

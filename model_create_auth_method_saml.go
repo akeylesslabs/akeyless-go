@@ -21,7 +21,7 @@ type CreateAuthMethodSAML struct {
 	AccessExpires *int64 `json:"access-expires,omitempty"`
 	// Allowed redirect URIs after the authentication
 	AllowedRedirectUri *[]string `json:"allowed-redirect-uri,omitempty"`
-	// A CIDR whitelist of the IPs that the access is restricted to
+	// A CIDR whitelist with the IPs that the access is restricted to
 	BoundIps *[]string `json:"bound-ips,omitempty"`
 	// if true: enforce role-association must include sub claims
 	ForceSubClaims *bool `json:"force-sub-claims,omitempty"`

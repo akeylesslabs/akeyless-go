@@ -25,7 +25,7 @@ type GCPAccessRules struct {
 	BoundProjects *[]string `json:"bound_projects,omitempty"`
 	// List of regions that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a regional group and the group must belong to this region. If bound_zones are provided, this attribute is ignored.
 	BoundRegions *[]string `json:"bound_regions,omitempty"`
-	// === Human authentication section === List of service accounts the service account must be part of in order to be authenticated
+	// List of service accounts the service account must be part of in order to be authenticated
 	BoundServiceAccounts *[]string `json:"bound_service_accounts,omitempty"`
 	// === Machine authentication section === List of zones that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a zonal group and the group must belong to this zone.
 	BoundZones *[]string `json:"bound_zones,omitempty"`

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessExpires** | Pointer to **int64** | Access expiration date in Unix timestamp (select 0 for access without expiry date) | [optional] [default to 0]
 **Audience** | Pointer to **string** | The audience in the Kubernetes JWT that the access is restricted to | [optional] 
-**BoundIps** | Pointer to **[]string** | A CIDR whitelist of the IPs that the access is restricted to | [optional] 
+**BoundIps** | Pointer to **[]string** | A CIDR whitelist with the IPs that the access is restricted to | [optional] 
 **BoundNamespaces** | Pointer to **[]string** | A list of namespaces that the access is restricted to | [optional] 
 **BoundPodNames** | Pointer to **[]string** | A list of pod names that the access is restricted to | [optional] 
 **BoundSaNames** | Pointer to **[]string** | A list of service account names that the access is restricted to | [optional] 
@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **GenKey** | Pointer to **string** | If this flag is set to true, there is no need to manually provide a public key for the Kubernetes Auth Method, and instead, a key pair, will be generated as part of the command and the private part of the key will be returned (the private key is required for the K8S Auth Config in the Akeyless Gateway) | [optional] [default to "true"]
 **Name** | **string** | Auth Method name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
+**PublicKey** | Pointer to **string** | Base64-encoded public key text for K8S authentication method is required [RSA2048] | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
@@ -281,6 +282,31 @@ SetPassword sets Password field to given value.
 `func (o *CreateAuthMethodK8S) HasPassword() bool`
 
 HasPassword returns a boolean if a field has been set.
+
+### GetPublicKey
+
+`func (o *CreateAuthMethodK8S) GetPublicKey() string`
+
+GetPublicKey returns the PublicKey field if non-nil, zero value otherwise.
+
+### GetPublicKeyOk
+
+`func (o *CreateAuthMethodK8S) GetPublicKeyOk() (*string, bool)`
+
+GetPublicKeyOk returns a tuple with the PublicKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPublicKey
+
+`func (o *CreateAuthMethodK8S) SetPublicKey(v string)`
+
+SetPublicKey sets PublicKey field to given value.
+
+### HasPublicKey
+
+`func (o *CreateAuthMethodK8S) HasPublicKey() bool`
+
+HasPublicKey returns a boolean if a field has been set.
 
 ### GetToken
 

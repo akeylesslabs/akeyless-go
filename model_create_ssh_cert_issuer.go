@@ -37,6 +37,8 @@ type CreateSSHCertIssuer struct {
 	SecureAccessUseInternalBastion *bool `json:"secure-access-use-internal-bastion,omitempty"`
 	// A key to sign the certificate with
 	SignerKeyName string `json:"signer-key-name"`
+	// List of the tags attached to this key
+	Tag *[]string `json:"tag,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// he requested Time To Live for the certificate, in seconds
@@ -460,6 +462,38 @@ func (o *CreateSSHCertIssuer) SetSignerKeyName(v string) {
 	o.SignerKeyName = v
 }
 
+// GetTag returns the Tag field value if set, zero value otherwise.
+func (o *CreateSSHCertIssuer) GetTag() []string {
+	if o == nil || o.Tag == nil {
+		var ret []string
+		return ret
+	}
+	return *o.Tag
+}
+
+// GetTagOk returns a tuple with the Tag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSSHCertIssuer) GetTagOk() (*[]string, bool) {
+	if o == nil || o.Tag == nil {
+		return nil, false
+	}
+	return o.Tag, true
+}
+
+// HasTag returns a boolean if a field has been set.
+func (o *CreateSSHCertIssuer) HasTag() bool {
+	if o != nil && o.Tag != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTag gets a reference to the given []string and assigns it to the Tag field.
+func (o *CreateSSHCertIssuer) SetTag(v []string) {
+	o.Tag = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *CreateSSHCertIssuer) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -620,6 +654,9 @@ func (o CreateSSHCertIssuer) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["signer-key-name"] = o.SignerKeyName
+	}
+	if o.Tag != nil {
+		toSerialize["tag"] = o.Tag
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

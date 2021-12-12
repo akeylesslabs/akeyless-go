@@ -33,6 +33,8 @@ type GatewayCreateProducerArtifactory struct {
 	Password *string `json:"password,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
+	// List of the tags attached to this secret
+	Tags *[]string `json:"tags,omitempty"`
 	// Target name
 	TargetName *string `json:"target-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -301,6 +303,38 @@ func (o *GatewayCreateProducerArtifactory) SetProducerEncryptionKeyName(v string
 	o.ProducerEncryptionKeyName = &v
 }
 
+// GetTags returns the Tags field value if set, zero value otherwise.
+func (o *GatewayCreateProducerArtifactory) GetTags() []string {
+	if o == nil || o.Tags == nil {
+		var ret []string
+		return ret
+	}
+	return *o.Tags
+}
+
+// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerArtifactory) GetTagsOk() (*[]string, bool) {
+	if o == nil || o.Tags == nil {
+		return nil, false
+	}
+	return o.Tags, true
+}
+
+// HasTags returns a boolean if a field has been set.
+func (o *GatewayCreateProducerArtifactory) HasTags() bool {
+	if o != nil && o.Tags != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTags gets a reference to the given []string and assigns it to the Tags field.
+func (o *GatewayCreateProducerArtifactory) SetTags(v []string) {
+	o.Tags = &v
+}
+
 // GetTargetName returns the TargetName field value if set, zero value otherwise.
 func (o *GatewayCreateProducerArtifactory) GetTargetName() string {
 	if o == nil || o.TargetName == nil {
@@ -486,6 +520,9 @@ func (o GatewayCreateProducerArtifactory) MarshalJSON() ([]byte, error) {
 	}
 	if o.ProducerEncryptionKeyName != nil {
 		toSerialize["producer-encryption-key-name"] = o.ProducerEncryptionKeyName
+	}
+	if o.Tags != nil {
+		toSerialize["tags"] = o.Tags
 	}
 	if o.TargetName != nil {
 		toSerialize["target-name"] = o.TargetName

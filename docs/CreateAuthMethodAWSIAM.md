@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **AccessExpires** | Pointer to **int64** | Access expiration date in Unix timestamp (select 0 for access without expiry date) | [optional] [default to 0]
 **BoundArn** | Pointer to **[]string** | A list of full arns that the access is restricted to | [optional] 
 **BoundAwsAccountId** | **[]string** | A list of AWS account-IDs that the access is restricted to | 
-**BoundIps** | Pointer to **[]string** | A CIDR whitelist of the IPs that the access is restricted to | [optional] 
+**BoundIps** | Pointer to **[]string** | A CIDR whitelist with the IPs that the access is restricted to | [optional] 
 **BoundResourceId** | Pointer to **[]string** | A list of full resource ids that the access is restricted to | [optional] 
 **BoundRoleId** | Pointer to **[]string** | A list of full role ids that the access is restricted to | [optional] 
 **BoundRoleName** | Pointer to **[]string** | A list of full role-name that the access is restricted to | [optional] 

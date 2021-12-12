@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **SecureAccessHost** | Pointer to **[]string** |  | [optional] 
 **SecureAccessRdpDomain** | Pointer to **string** |  | [optional] 
 **SecureAccessRdpUser** | Pointer to **string** |  | [optional] 
+**Tags** | Pointer to **[]string** | List of the tags attached to this secret | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -387,6 +388,31 @@ SetSecureAccessRdpUser sets SecureAccessRdpUser field to given value.
 `func (o *GatewayCreateProducerRdp) HasSecureAccessRdpUser() bool`
 
 HasSecureAccessRdpUser returns a boolean if a field has been set.
+
+### GetTags
+
+`func (o *GatewayCreateProducerRdp) GetTags() []string`
+
+GetTags returns the Tags field if non-nil, zero value otherwise.
+
+### GetTagsOk
+
+`func (o *GatewayCreateProducerRdp) GetTagsOk() (*[]string, bool)`
+
+GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTags
+
+`func (o *GatewayCreateProducerRdp) SetTags(v []string)`
+
+SetTags sets Tags field to given value.
+
+### HasTags
+
+`func (o *GatewayCreateProducerRdp) HasTags() bool`
+
+HasTags returns a boolean if a field has been set.
 
 ### GetTargetName
 
