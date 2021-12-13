@@ -5250,6 +5250,41 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /validate-token:
+    post:
+      operationId: validateToken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/validateToken'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/validateTokenOutput'
+          description: validateTokenResponse wraps response body.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /verify-jwt-with-classic-key:
     post:
       operationId: verifyJWTWithClassicKey
@@ -6525,6 +6560,12 @@ components:
           schema:
             $ref: '#/components/schemas/uploadRSAOutput'
       description: uploadRSAResponse wraps response body.
+    validateTokenResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/validateTokenOutput'
+      description: validateTokenResponse wraps response body.
     verifyJWTWithClassicKeyResponse:
       content:
         application/json:
@@ -34845,6 +34886,32 @@ components:
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     uploadRSAOutput:
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    validateToken:
+      description: validate-token is a command that validaties token
+      properties:
+        validate-token:
+          description: Token
+          type: string
+          x-go-name: Token
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    validateTokenOutput:
+      example:
+        reason: reason
+        is_valid: true
+        expiration: expiration
+      properties:
+        expiration:
+          type: string
+          x-go-name: ExpirationTime
+        is_valid:
+          type: boolean
+          x-go-name: IsValid
+        reason:
+          type: string
+          x-go-name: Reason
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     verifyJWTOutput:

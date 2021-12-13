@@ -450,6 +450,8 @@ docs/UpdateWebTargetOutput.md
 docs/UploadPKCS12.md
 docs/UploadRSA.md
 docs/V2Api.md
+docs/ValidateToken.md
+docs/ValidateTokenOutput.md
 docs/VerifyJWTOutput.md
 docs/VerifyJWTWithClassicKey.md
 docs/VerifyPKCS1.md
@@ -902,6 +904,8 @@ model_update_web_target_details.go
 model_update_web_target_output.go
 model_upload_pkcs12.go
 model_upload_rsa.go
+model_validate_token.go
+model_validate_token_output.go
 model_verify_jwt_output.go
 model_verify_jwt_with_classic_key.go
 model_verify_pkcs1.go
