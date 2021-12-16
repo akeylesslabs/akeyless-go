@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ValidateToken** | Pointer to **string** | Token | [optional] 
+**Token** | Pointer to **string** | Token | [optional] 
 
 ## Methods
 
@@ -25,30 +25,30 @@ NewValidateTokenWithDefaults instantiates a new ValidateToken object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetValidateToken
+### GetToken
 
-`func (o *ValidateToken) GetValidateToken() string`
+`func (o *ValidateToken) GetToken() string`
 
-GetValidateToken returns the ValidateToken field if non-nil, zero value otherwise.
+GetToken returns the Token field if non-nil, zero value otherwise.
 
-### GetValidateTokenOk
+### GetTokenOk
 
-`func (o *ValidateToken) GetValidateTokenOk() (*string, bool)`
+`func (o *ValidateToken) GetTokenOk() (*string, bool)`
 
-GetValidateTokenOk returns a tuple with the ValidateToken field if it's non-nil, zero value otherwise
+GetTokenOk returns a tuple with the Token field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetValidateToken
+### SetToken
 
-`func (o *ValidateToken) SetValidateToken(v string)`
+`func (o *ValidateToken) SetToken(v string)`
 
-SetValidateToken sets ValidateToken field to given value.
+SetToken sets Token field to given value.
 
-### HasValidateToken
+### HasToken
 
-`func (o *ValidateToken) HasValidateToken() bool`
+`func (o *ValidateToken) HasToken() bool`
 
-HasValidateToken returns a boolean if a field has been set.
+HasToken returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

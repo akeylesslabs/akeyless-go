@@ -19,6 +19,7 @@ import (
 type ClassicKeyDetailsInfo struct {
 	ClassicKeyAttributes *map[string][]string `json:"classic_key_attributes,omitempty"`
 	ClassicKeyId *string `json:"classic_key_id,omitempty"`
+	GwClusterId *int64 `json:"gw_cluster_id,omitempty"`
 	IsProvidedByUser *bool `json:"is_provided_by_user,omitempty"`
 	IsUnexportable *bool `json:"is_unexportable,omitempty"`
 	// ItemState defines the different states an Item can be in
@@ -109,6 +110,38 @@ func (o *ClassicKeyDetailsInfo) HasClassicKeyId() bool {
 // SetClassicKeyId gets a reference to the given string and assigns it to the ClassicKeyId field.
 func (o *ClassicKeyDetailsInfo) SetClassicKeyId(v string) {
 	o.ClassicKeyId = &v
+}
+
+// GetGwClusterId returns the GwClusterId field value if set, zero value otherwise.
+func (o *ClassicKeyDetailsInfo) GetGwClusterId() int64 {
+	if o == nil || o.GwClusterId == nil {
+		var ret int64
+		return ret
+	}
+	return *o.GwClusterId
+}
+
+// GetGwClusterIdOk returns a tuple with the GwClusterId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClassicKeyDetailsInfo) GetGwClusterIdOk() (*int64, bool) {
+	if o == nil || o.GwClusterId == nil {
+		return nil, false
+	}
+	return o.GwClusterId, true
+}
+
+// HasGwClusterId returns a boolean if a field has been set.
+func (o *ClassicKeyDetailsInfo) HasGwClusterId() bool {
+	if o != nil && o.GwClusterId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGwClusterId gets a reference to the given int64 and assigns it to the GwClusterId field.
+func (o *ClassicKeyDetailsInfo) SetGwClusterId(v int64) {
+	o.GwClusterId = &v
 }
 
 // GetIsProvidedByUser returns the IsProvidedByUser field value if set, zero value otherwise.
@@ -374,6 +407,9 @@ func (o ClassicKeyDetailsInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.ClassicKeyId != nil {
 		toSerialize["classic_key_id"] = o.ClassicKeyId
+	}
+	if o.GwClusterId != nil {
+		toSerialize["gw_cluster_id"] = o.GwClusterId
 	}
 	if o.IsProvidedByUser != nil {
 		toSerialize["is_provided_by_user"] = o.IsProvidedByUser

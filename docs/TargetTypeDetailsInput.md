@@ -34,7 +34,7 @@ Name | Type | Description | Notes
 **EksRegion** | Pointer to **string** |  | [optional] 
 **EksSecretAccessKey** | Pointer to **string** |  | [optional] 
 **GcpServiceAccountEmail** | Pointer to **string** |  | [optional] 
-**GcpServiceAccountKey** | Pointer to **[]int32** |  | [optional] 
+**GcpServiceAccountKey** | Pointer to **string** |  | [optional] 
 **GkeClusterCaCertificate** | Pointer to **string** |  | [optional] 
 **GkeClusterEndpoint** | Pointer to **string** |  | [optional] 
 **GkeClusterName** | Pointer to **string** |  | [optional] 
@@ -851,20 +851,20 @@ HasGcpServiceAccountEmail returns a boolean if a field has been set.
 
 ### GetGcpServiceAccountKey
 
-`func (o *TargetTypeDetailsInput) GetGcpServiceAccountKey() []int32`
+`func (o *TargetTypeDetailsInput) GetGcpServiceAccountKey() string`
 
 GetGcpServiceAccountKey returns the GcpServiceAccountKey field if non-nil, zero value otherwise.
 
 ### GetGcpServiceAccountKeyOk
 
-`func (o *TargetTypeDetailsInput) GetGcpServiceAccountKeyOk() (*[]int32, bool)`
+`func (o *TargetTypeDetailsInput) GetGcpServiceAccountKeyOk() (*string, bool)`
 
 GetGcpServiceAccountKeyOk returns a tuple with the GcpServiceAccountKey field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGcpServiceAccountKey
 
-`func (o *TargetTypeDetailsInput) SetGcpServiceAccountKey(v []int32)`
+`func (o *TargetTypeDetailsInput) SetGcpServiceAccountKey(v string)`
 
 SetGcpServiceAccountKey sets GcpServiceAccountKey field to given value.
 

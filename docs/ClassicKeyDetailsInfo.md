@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClassicKeyAttributes** | Pointer to [**map[string][]string**](array.md) |  | [optional] 
 **ClassicKeyId** | Pointer to **string** |  | [optional] 
+**GwClusterId** | Pointer to **int64** |  | [optional] 
 **IsProvidedByUser** | Pointer to **bool** |  | [optional] 
 **IsUnexportable** | Pointer to **bool** |  | [optional] 
 **KeyState** | Pointer to **string** | ItemState defines the different states an Item can be in | [optional] 
@@ -83,6 +84,31 @@ SetClassicKeyId sets ClassicKeyId field to given value.
 `func (o *ClassicKeyDetailsInfo) HasClassicKeyId() bool`
 
 HasClassicKeyId returns a boolean if a field has been set.
+
+### GetGwClusterId
+
+`func (o *ClassicKeyDetailsInfo) GetGwClusterId() int64`
+
+GetGwClusterId returns the GwClusterId field if non-nil, zero value otherwise.
+
+### GetGwClusterIdOk
+
+`func (o *ClassicKeyDetailsInfo) GetGwClusterIdOk() (*int64, bool)`
+
+GetGwClusterIdOk returns a tuple with the GwClusterId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGwClusterId
+
+`func (o *ClassicKeyDetailsInfo) SetGwClusterId(v int64)`
+
+SetGwClusterId sets GwClusterId field to given value.
+
+### HasGwClusterId
+
+`func (o *ClassicKeyDetailsInfo) HasGwClusterId() bool`
+
+HasGwClusterId returns a boolean if a field has been set.
 
 ### GetIsProvidedByUser
 

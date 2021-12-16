@@ -222,6 +222,10 @@ docs/GatewayUpdateProducerAzure.md
 docs/GatewayUpdateProducerAzureOutput.md
 docs/GatewayUpdateProducerCassandra.md
 docs/GatewayUpdateProducerCassandraOutput.md
+docs/GatewayUpdateProducerCertificateAutomation.md
+docs/GatewayUpdateProducerCertificateAutomationOutput.md
+docs/GatewayUpdateProducerChef.md
+docs/GatewayUpdateProducerChefOutput.md
 docs/GatewayUpdateProducerCustom.md
 docs/GatewayUpdateProducerCustomOutput.md
 docs/GatewayUpdateProducerEks.md
@@ -250,6 +254,8 @@ docs/GatewayUpdateProducerRdp.md
 docs/GatewayUpdateProducerRdpOutput.md
 docs/GatewayUpdateProducerRedshift.md
 docs/GatewayUpdateProducerRedshiftOutput.md
+docs/GatewayUpdateProducerSnowflake.md
+docs/GatewayUpdateProducerSnowflakeOutput.md
 docs/GatewayUpdateTmpUsers.md
 docs/GenCustomerFragment.md
 docs/GeneralConfigPart.md
@@ -375,6 +381,7 @@ docs/SyslogLogForwardingConfig.md
 docs/SystemAccessCredentialsReplyObj.md
 docs/Target.md
 docs/TargetItemAssociation.md
+docs/TargetItemVersion.md
 docs/TargetTypeDetailsInput.md
 docs/TmpUserData.md
 docs/UIDTokenDetails.md
@@ -676,6 +683,10 @@ model_gateway_update_producer_azure.go
 model_gateway_update_producer_azure_output.go
 model_gateway_update_producer_cassandra.go
 model_gateway_update_producer_cassandra_output.go
+model_gateway_update_producer_certificate_automation.go
+model_gateway_update_producer_certificate_automation_output.go
+model_gateway_update_producer_chef.go
+model_gateway_update_producer_chef_output.go
 model_gateway_update_producer_custom.go
 model_gateway_update_producer_custom_output.go
 model_gateway_update_producer_eks.go
@@ -704,6 +715,8 @@ model_gateway_update_producer_rdp.go
 model_gateway_update_producer_rdp_output.go
 model_gateway_update_producer_redshift.go
 model_gateway_update_producer_redshift_output.go
+model_gateway_update_producer_snowflake.go
+model_gateway_update_producer_snowflake_output.go
 model_gateway_update_tmp_users.go
 model_gcp_access_rules.go
 model_gen_customer_fragment.go
@@ -830,6 +843,7 @@ model_syslog_log_forwarding_config.go
 model_system_access_credentials_reply_obj.go
 model_target.go
 model_target_item_association.go
+model_target_item_version.go
 model_target_type_details_input.go
 model_tmp_user_data.go
 model_u_identity_config_part.go

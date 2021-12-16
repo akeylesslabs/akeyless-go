@@ -43,6 +43,7 @@ type Item struct {
 	ProtectionKeyName *string `json:"protection_key_name,omitempty"`
 	PublicValue *string `json:"public_value,omitempty"`
 	RotationInterval *int64 `json:"rotation_interval,omitempty"`
+	TargetVersions *[]TargetItemVersion `json:"target_versions,omitempty"`
 	WithCustomerFragment *bool `json:"with_customer_fragment,omitempty"`
 }
 
@@ -831,6 +832,38 @@ func (o *Item) SetRotationInterval(v int64) {
 	o.RotationInterval = &v
 }
 
+// GetTargetVersions returns the TargetVersions field value if set, zero value otherwise.
+func (o *Item) GetTargetVersions() []TargetItemVersion {
+	if o == nil || o.TargetVersions == nil {
+		var ret []TargetItemVersion
+		return ret
+	}
+	return *o.TargetVersions
+}
+
+// GetTargetVersionsOk returns a tuple with the TargetVersions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Item) GetTargetVersionsOk() (*[]TargetItemVersion, bool) {
+	if o == nil || o.TargetVersions == nil {
+		return nil, false
+	}
+	return o.TargetVersions, true
+}
+
+// HasTargetVersions returns a boolean if a field has been set.
+func (o *Item) HasTargetVersions() bool {
+	if o != nil && o.TargetVersions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetVersions gets a reference to the given []TargetItemVersion and assigns it to the TargetVersions field.
+func (o *Item) SetTargetVersions(v []TargetItemVersion) {
+	o.TargetVersions = &v
+}
+
 // GetWithCustomerFragment returns the WithCustomerFragment field value if set, zero value otherwise.
 func (o *Item) GetWithCustomerFragment() bool {
 	if o == nil || o.WithCustomerFragment == nil {
@@ -936,6 +969,9 @@ func (o Item) MarshalJSON() ([]byte, error) {
 	}
 	if o.RotationInterval != nil {
 		toSerialize["rotation_interval"] = o.RotationInterval
+	}
+	if o.TargetVersions != nil {
+		toSerialize["target_versions"] = o.TargetVersions
 	}
 	if o.WithCustomerFragment != nil {
 		toSerialize["with_customer_fragment"] = o.WithCustomerFragment

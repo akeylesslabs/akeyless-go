@@ -15,8 +15,8 @@ import (
 	"encoding/json"
 )
 
-// GatewayCreateProducerSnowflake gatewayCreateProducerSnowflakeCmd is a command that creates a Snowflake producer
-type GatewayCreateProducerSnowflake struct {
+// GatewayUpdateProducerSnowflake gatewayUpdateProducerSnowflakeCmd is a command that updates a Snowflake producer
+type GatewayUpdateProducerSnowflake struct {
 	// Account name
 	Account *string `json:"account,omitempty"`
 	// Database Password
@@ -27,6 +27,8 @@ type GatewayCreateProducerSnowflake struct {
 	DbName *string `json:"db-name,omitempty"`
 	// Producer name
 	Name string `json:"name"`
+	// Producer name
+	NewName *string `json:"new-name,omitempty"`
 	// Required only when the authentication process requires a username and password
 	Password *string `json:"password,omitempty"`
 	// User role
@@ -47,30 +49,30 @@ type GatewayCreateProducerSnowflake struct {
 	Warehouse *string `json:"warehouse,omitempty"`
 }
 
-// NewGatewayCreateProducerSnowflake instantiates a new GatewayCreateProducerSnowflake object
+// NewGatewayUpdateProducerSnowflake instantiates a new GatewayUpdateProducerSnowflake object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayCreateProducerSnowflake(name string, ) *GatewayCreateProducerSnowflake {
-	this := GatewayCreateProducerSnowflake{}
+func NewGatewayUpdateProducerSnowflake(name string, ) *GatewayUpdateProducerSnowflake {
+	this := GatewayUpdateProducerSnowflake{}
 	this.Name = name
 	var userTtl string = "24h"
 	this.UserTtl = &userTtl
 	return &this
 }
 
-// NewGatewayCreateProducerSnowflakeWithDefaults instantiates a new GatewayCreateProducerSnowflake object
+// NewGatewayUpdateProducerSnowflakeWithDefaults instantiates a new GatewayUpdateProducerSnowflake object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewGatewayCreateProducerSnowflakeWithDefaults() *GatewayCreateProducerSnowflake {
-	this := GatewayCreateProducerSnowflake{}
+func NewGatewayUpdateProducerSnowflakeWithDefaults() *GatewayUpdateProducerSnowflake {
+	this := GatewayUpdateProducerSnowflake{}
 	var userTtl string = "24h"
 	this.UserTtl = &userTtl
 	return &this
 }
 
 // GetAccount returns the Account field value if set, zero value otherwise.
-func (o *GatewayCreateProducerSnowflake) GetAccount() string {
+func (o *GatewayUpdateProducerSnowflake) GetAccount() string {
 	if o == nil || o.Account == nil {
 		var ret string
 		return ret
@@ -80,7 +82,7 @@ func (o *GatewayCreateProducerSnowflake) GetAccount() string {
 
 // GetAccountOk returns a tuple with the Account field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerSnowflake) GetAccountOk() (*string, bool) {
+func (o *GatewayUpdateProducerSnowflake) GetAccountOk() (*string, bool) {
 	if o == nil || o.Account == nil {
 		return nil, false
 	}
@@ -88,7 +90,7 @@ func (o *GatewayCreateProducerSnowflake) GetAccountOk() (*string, bool) {
 }
 
 // HasAccount returns a boolean if a field has been set.
-func (o *GatewayCreateProducerSnowflake) HasAccount() bool {
+func (o *GatewayUpdateProducerSnowflake) HasAccount() bool {
 	if o != nil && o.Account != nil {
 		return true
 	}
@@ -97,12 +99,12 @@ func (o *GatewayCreateProducerSnowflake) HasAccount() bool {
 }
 
 // SetAccount gets a reference to the given string and assigns it to the Account field.
-func (o *GatewayCreateProducerSnowflake) SetAccount(v string) {
+func (o *GatewayUpdateProducerSnowflake) SetAccount(v string) {
 	o.Account = &v
 }
 
 // GetAccountPassword returns the AccountPassword field value if set, zero value otherwise.
-func (o *GatewayCreateProducerSnowflake) GetAccountPassword() string {
+func (o *GatewayUpdateProducerSnowflake) GetAccountPassword() string {
 	if o == nil || o.AccountPassword == nil {
 		var ret string
 		return ret
@@ -112,7 +114,7 @@ func (o *GatewayCreateProducerSnowflake) GetAccountPassword() string {
 
 // GetAccountPasswordOk returns a tuple with the AccountPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerSnowflake) GetAccountPasswordOk() (*string, bool) {
+func (o *GatewayUpdateProducerSnowflake) GetAccountPasswordOk() (*string, bool) {
 	if o == nil || o.AccountPassword == nil {
 		return nil, false
 	}
@@ -120,7 +122,7 @@ func (o *GatewayCreateProducerSnowflake) GetAccountPasswordOk() (*string, bool) 
 }
 
 // HasAccountPassword returns a boolean if a field has been set.
-func (o *GatewayCreateProducerSnowflake) HasAccountPassword() bool {
+func (o *GatewayUpdateProducerSnowflake) HasAccountPassword() bool {
 	if o != nil && o.AccountPassword != nil {
 		return true
 	}
@@ -129,12 +131,12 @@ func (o *GatewayCreateProducerSnowflake) HasAccountPassword() bool {
 }
 
 // SetAccountPassword gets a reference to the given string and assigns it to the AccountPassword field.
-func (o *GatewayCreateProducerSnowflake) SetAccountPassword(v string) {
+func (o *GatewayUpdateProducerSnowflake) SetAccountPassword(v string) {
 	o.AccountPassword = &v
 }
 
 // GetAccountUsername returns the AccountUsername field value if set, zero value otherwise.
-func (o *GatewayCreateProducerSnowflake) GetAccountUsername() string {
+func (o *GatewayUpdateProducerSnowflake) GetAccountUsername() string {
 	if o == nil || o.AccountUsername == nil {
 		var ret string
 		return ret
@@ -144,7 +146,7 @@ func (o *GatewayCreateProducerSnowflake) GetAccountUsername() string {
 
 // GetAccountUsernameOk returns a tuple with the AccountUsername field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerSnowflake) GetAccountUsernameOk() (*string, bool) {
+func (o *GatewayUpdateProducerSnowflake) GetAccountUsernameOk() (*string, bool) {
 	if o == nil || o.AccountUsername == nil {
 		return nil, false
 	}
@@ -152,7 +154,7 @@ func (o *GatewayCreateProducerSnowflake) GetAccountUsernameOk() (*string, bool) 
 }
 
 // HasAccountUsername returns a boolean if a field has been set.
-func (o *GatewayCreateProducerSnowflake) HasAccountUsername() bool {
+func (o *GatewayUpdateProducerSnowflake) HasAccountUsername() bool {
 	if o != nil && o.AccountUsername != nil {
 		return true
 	}
@@ -161,12 +163,12 @@ func (o *GatewayCreateProducerSnowflake) HasAccountUsername() bool {
 }
 
 // SetAccountUsername gets a reference to the given string and assigns it to the AccountUsername field.
-func (o *GatewayCreateProducerSnowflake) SetAccountUsername(v string) {
+func (o *GatewayUpdateProducerSnowflake) SetAccountUsername(v string) {
 	o.AccountUsername = &v
 }
 
 // GetDbName returns the DbName field value if set, zero value otherwise.
-func (o *GatewayCreateProducerSnowflake) GetDbName() string {
+func (o *GatewayUpdateProducerSnowflake) GetDbName() string {
 	if o == nil || o.DbName == nil {
 		var ret string
 		return ret
@@ -176,7 +178,7 @@ func (o *GatewayCreateProducerSnowflake) GetDbName() string {
 
 // GetDbNameOk returns a tuple with the DbName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerSnowflake) GetDbNameOk() (*string, bool) {
+func (o *GatewayUpdateProducerSnowflake) GetDbNameOk() (*string, bool) {
 	if o == nil || o.DbName == nil {
 		return nil, false
 	}
@@ -184,7 +186,7 @@ func (o *GatewayCreateProducerSnowflake) GetDbNameOk() (*string, bool) {
 }
 
 // HasDbName returns a boolean if a field has been set.
-func (o *GatewayCreateProducerSnowflake) HasDbName() bool {
+func (o *GatewayUpdateProducerSnowflake) HasDbName() bool {
 	if o != nil && o.DbName != nil {
 		return true
 	}
@@ -193,12 +195,12 @@ func (o *GatewayCreateProducerSnowflake) HasDbName() bool {
 }
 
 // SetDbName gets a reference to the given string and assigns it to the DbName field.
-func (o *GatewayCreateProducerSnowflake) SetDbName(v string) {
+func (o *GatewayUpdateProducerSnowflake) SetDbName(v string) {
 	o.DbName = &v
 }
 
 // GetName returns the Name field value
-func (o *GatewayCreateProducerSnowflake) GetName() string {
+func (o *GatewayUpdateProducerSnowflake) GetName() string {
 	if o == nil  {
 		var ret string
 		return ret
@@ -209,7 +211,7 @@ func (o *GatewayCreateProducerSnowflake) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerSnowflake) GetNameOk() (*string, bool) {
+func (o *GatewayUpdateProducerSnowflake) GetNameOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -217,12 +219,44 @@ func (o *GatewayCreateProducerSnowflake) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *GatewayCreateProducerSnowflake) SetName(v string) {
+func (o *GatewayUpdateProducerSnowflake) SetName(v string) {
 	o.Name = v
 }
 
+// GetNewName returns the NewName field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerSnowflake) GetNewName() string {
+	if o == nil || o.NewName == nil {
+		var ret string
+		return ret
+	}
+	return *o.NewName
+}
+
+// GetNewNameOk returns a tuple with the NewName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerSnowflake) GetNewNameOk() (*string, bool) {
+	if o == nil || o.NewName == nil {
+		return nil, false
+	}
+	return o.NewName, true
+}
+
+// HasNewName returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerSnowflake) HasNewName() bool {
+	if o != nil && o.NewName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNewName gets a reference to the given string and assigns it to the NewName field.
+func (o *GatewayUpdateProducerSnowflake) SetNewName(v string) {
+	o.NewName = &v
+}
+
 // GetPassword returns the Password field value if set, zero value otherwise.
-func (o *GatewayCreateProducerSnowflake) GetPassword() string {
+func (o *GatewayUpdateProducerSnowflake) GetPassword() string {
 	if o == nil || o.Password == nil {
 		var ret string
 		return ret
@@ -232,7 +266,7 @@ func (o *GatewayCreateProducerSnowflake) GetPassword() string {
 
 // GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerSnowflake) GetPasswordOk() (*string, bool) {
+func (o *GatewayUpdateProducerSnowflake) GetPasswordOk() (*string, bool) {
 	if o == nil || o.Password == nil {
 		return nil, false
 	}
@@ -240,7 +274,7 @@ func (o *GatewayCreateProducerSnowflake) GetPasswordOk() (*string, bool) {
 }
 
 // HasPassword returns a boolean if a field has been set.
-func (o *GatewayCreateProducerSnowflake) HasPassword() bool {
+func (o *GatewayUpdateProducerSnowflake) HasPassword() bool {
 	if o != nil && o.Password != nil {
 		return true
 	}
@@ -249,12 +283,12 @@ func (o *GatewayCreateProducerSnowflake) HasPassword() bool {
 }
 
 // SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *GatewayCreateProducerSnowflake) SetPassword(v string) {
+func (o *GatewayUpdateProducerSnowflake) SetPassword(v string) {
 	o.Password = &v
 }
 
 // GetRole returns the Role field value if set, zero value otherwise.
-func (o *GatewayCreateProducerSnowflake) GetRole() string {
+func (o *GatewayUpdateProducerSnowflake) GetRole() string {
 	if o == nil || o.Role == nil {
 		var ret string
 		return ret
@@ -264,7 +298,7 @@ func (o *GatewayCreateProducerSnowflake) GetRole() string {
 
 // GetRoleOk returns a tuple with the Role field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerSnowflake) GetRoleOk() (*string, bool) {
+func (o *GatewayUpdateProducerSnowflake) GetRoleOk() (*string, bool) {
 	if o == nil || o.Role == nil {
 		return nil, false
 	}
@@ -272,7 +306,7 @@ func (o *GatewayCreateProducerSnowflake) GetRoleOk() (*string, bool) {
 }
 
 // HasRole returns a boolean if a field has been set.
-func (o *GatewayCreateProducerSnowflake) HasRole() bool {
+func (o *GatewayUpdateProducerSnowflake) HasRole() bool {
 	if o != nil && o.Role != nil {
 		return true
 	}
@@ -281,12 +315,12 @@ func (o *GatewayCreateProducerSnowflake) HasRole() bool {
 }
 
 // SetRole gets a reference to the given string and assigns it to the Role field.
-func (o *GatewayCreateProducerSnowflake) SetRole(v string) {
+func (o *GatewayUpdateProducerSnowflake) SetRole(v string) {
 	o.Role = &v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
-func (o *GatewayCreateProducerSnowflake) GetTags() []string {
+func (o *GatewayUpdateProducerSnowflake) GetTags() []string {
 	if o == nil || o.Tags == nil {
 		var ret []string
 		return ret
@@ -296,7 +330,7 @@ func (o *GatewayCreateProducerSnowflake) GetTags() []string {
 
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerSnowflake) GetTagsOk() (*[]string, bool) {
+func (o *GatewayUpdateProducerSnowflake) GetTagsOk() (*[]string, bool) {
 	if o == nil || o.Tags == nil {
 		return nil, false
 	}
@@ -304,7 +338,7 @@ func (o *GatewayCreateProducerSnowflake) GetTagsOk() (*[]string, bool) {
 }
 
 // HasTags returns a boolean if a field has been set.
-func (o *GatewayCreateProducerSnowflake) HasTags() bool {
+func (o *GatewayUpdateProducerSnowflake) HasTags() bool {
 	if o != nil && o.Tags != nil {
 		return true
 	}
@@ -313,12 +347,12 @@ func (o *GatewayCreateProducerSnowflake) HasTags() bool {
 }
 
 // SetTags gets a reference to the given []string and assigns it to the Tags field.
-func (o *GatewayCreateProducerSnowflake) SetTags(v []string) {
+func (o *GatewayUpdateProducerSnowflake) SetTags(v []string) {
 	o.Tags = &v
 }
 
 // GetTargetName returns the TargetName field value if set, zero value otherwise.
-func (o *GatewayCreateProducerSnowflake) GetTargetName() string {
+func (o *GatewayUpdateProducerSnowflake) GetTargetName() string {
 	if o == nil || o.TargetName == nil {
 		var ret string
 		return ret
@@ -328,7 +362,7 @@ func (o *GatewayCreateProducerSnowflake) GetTargetName() string {
 
 // GetTargetNameOk returns a tuple with the TargetName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerSnowflake) GetTargetNameOk() (*string, bool) {
+func (o *GatewayUpdateProducerSnowflake) GetTargetNameOk() (*string, bool) {
 	if o == nil || o.TargetName == nil {
 		return nil, false
 	}
@@ -336,7 +370,7 @@ func (o *GatewayCreateProducerSnowflake) GetTargetNameOk() (*string, bool) {
 }
 
 // HasTargetName returns a boolean if a field has been set.
-func (o *GatewayCreateProducerSnowflake) HasTargetName() bool {
+func (o *GatewayUpdateProducerSnowflake) HasTargetName() bool {
 	if o != nil && o.TargetName != nil {
 		return true
 	}
@@ -345,12 +379,12 @@ func (o *GatewayCreateProducerSnowflake) HasTargetName() bool {
 }
 
 // SetTargetName gets a reference to the given string and assigns it to the TargetName field.
-func (o *GatewayCreateProducerSnowflake) SetTargetName(v string) {
+func (o *GatewayUpdateProducerSnowflake) SetTargetName(v string) {
 	o.TargetName = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
-func (o *GatewayCreateProducerSnowflake) GetToken() string {
+func (o *GatewayUpdateProducerSnowflake) GetToken() string {
 	if o == nil || o.Token == nil {
 		var ret string
 		return ret
@@ -360,7 +394,7 @@ func (o *GatewayCreateProducerSnowflake) GetToken() string {
 
 // GetTokenOk returns a tuple with the Token field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerSnowflake) GetTokenOk() (*string, bool) {
+func (o *GatewayUpdateProducerSnowflake) GetTokenOk() (*string, bool) {
 	if o == nil || o.Token == nil {
 		return nil, false
 	}
@@ -368,7 +402,7 @@ func (o *GatewayCreateProducerSnowflake) GetTokenOk() (*string, bool) {
 }
 
 // HasToken returns a boolean if a field has been set.
-func (o *GatewayCreateProducerSnowflake) HasToken() bool {
+func (o *GatewayUpdateProducerSnowflake) HasToken() bool {
 	if o != nil && o.Token != nil {
 		return true
 	}
@@ -377,12 +411,12 @@ func (o *GatewayCreateProducerSnowflake) HasToken() bool {
 }
 
 // SetToken gets a reference to the given string and assigns it to the Token field.
-func (o *GatewayCreateProducerSnowflake) SetToken(v string) {
+func (o *GatewayUpdateProducerSnowflake) SetToken(v string) {
 	o.Token = &v
 }
 
 // GetUidToken returns the UidToken field value if set, zero value otherwise.
-func (o *GatewayCreateProducerSnowflake) GetUidToken() string {
+func (o *GatewayUpdateProducerSnowflake) GetUidToken() string {
 	if o == nil || o.UidToken == nil {
 		var ret string
 		return ret
@@ -392,7 +426,7 @@ func (o *GatewayCreateProducerSnowflake) GetUidToken() string {
 
 // GetUidTokenOk returns a tuple with the UidToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerSnowflake) GetUidTokenOk() (*string, bool) {
+func (o *GatewayUpdateProducerSnowflake) GetUidTokenOk() (*string, bool) {
 	if o == nil || o.UidToken == nil {
 		return nil, false
 	}
@@ -400,7 +434,7 @@ func (o *GatewayCreateProducerSnowflake) GetUidTokenOk() (*string, bool) {
 }
 
 // HasUidToken returns a boolean if a field has been set.
-func (o *GatewayCreateProducerSnowflake) HasUidToken() bool {
+func (o *GatewayUpdateProducerSnowflake) HasUidToken() bool {
 	if o != nil && o.UidToken != nil {
 		return true
 	}
@@ -409,12 +443,12 @@ func (o *GatewayCreateProducerSnowflake) HasUidToken() bool {
 }
 
 // SetUidToken gets a reference to the given string and assigns it to the UidToken field.
-func (o *GatewayCreateProducerSnowflake) SetUidToken(v string) {
+func (o *GatewayUpdateProducerSnowflake) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
 // GetUserTtl returns the UserTtl field value if set, zero value otherwise.
-func (o *GatewayCreateProducerSnowflake) GetUserTtl() string {
+func (o *GatewayUpdateProducerSnowflake) GetUserTtl() string {
 	if o == nil || o.UserTtl == nil {
 		var ret string
 		return ret
@@ -424,7 +458,7 @@ func (o *GatewayCreateProducerSnowflake) GetUserTtl() string {
 
 // GetUserTtlOk returns a tuple with the UserTtl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerSnowflake) GetUserTtlOk() (*string, bool) {
+func (o *GatewayUpdateProducerSnowflake) GetUserTtlOk() (*string, bool) {
 	if o == nil || o.UserTtl == nil {
 		return nil, false
 	}
@@ -432,7 +466,7 @@ func (o *GatewayCreateProducerSnowflake) GetUserTtlOk() (*string, bool) {
 }
 
 // HasUserTtl returns a boolean if a field has been set.
-func (o *GatewayCreateProducerSnowflake) HasUserTtl() bool {
+func (o *GatewayUpdateProducerSnowflake) HasUserTtl() bool {
 	if o != nil && o.UserTtl != nil {
 		return true
 	}
@@ -441,12 +475,12 @@ func (o *GatewayCreateProducerSnowflake) HasUserTtl() bool {
 }
 
 // SetUserTtl gets a reference to the given string and assigns it to the UserTtl field.
-func (o *GatewayCreateProducerSnowflake) SetUserTtl(v string) {
+func (o *GatewayUpdateProducerSnowflake) SetUserTtl(v string) {
 	o.UserTtl = &v
 }
 
 // GetUsername returns the Username field value if set, zero value otherwise.
-func (o *GatewayCreateProducerSnowflake) GetUsername() string {
+func (o *GatewayUpdateProducerSnowflake) GetUsername() string {
 	if o == nil || o.Username == nil {
 		var ret string
 		return ret
@@ -456,7 +490,7 @@ func (o *GatewayCreateProducerSnowflake) GetUsername() string {
 
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerSnowflake) GetUsernameOk() (*string, bool) {
+func (o *GatewayUpdateProducerSnowflake) GetUsernameOk() (*string, bool) {
 	if o == nil || o.Username == nil {
 		return nil, false
 	}
@@ -464,7 +498,7 @@ func (o *GatewayCreateProducerSnowflake) GetUsernameOk() (*string, bool) {
 }
 
 // HasUsername returns a boolean if a field has been set.
-func (o *GatewayCreateProducerSnowflake) HasUsername() bool {
+func (o *GatewayUpdateProducerSnowflake) HasUsername() bool {
 	if o != nil && o.Username != nil {
 		return true
 	}
@@ -473,12 +507,12 @@ func (o *GatewayCreateProducerSnowflake) HasUsername() bool {
 }
 
 // SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *GatewayCreateProducerSnowflake) SetUsername(v string) {
+func (o *GatewayUpdateProducerSnowflake) SetUsername(v string) {
 	o.Username = &v
 }
 
 // GetWarehouse returns the Warehouse field value if set, zero value otherwise.
-func (o *GatewayCreateProducerSnowflake) GetWarehouse() string {
+func (o *GatewayUpdateProducerSnowflake) GetWarehouse() string {
 	if o == nil || o.Warehouse == nil {
 		var ret string
 		return ret
@@ -488,7 +522,7 @@ func (o *GatewayCreateProducerSnowflake) GetWarehouse() string {
 
 // GetWarehouseOk returns a tuple with the Warehouse field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerSnowflake) GetWarehouseOk() (*string, bool) {
+func (o *GatewayUpdateProducerSnowflake) GetWarehouseOk() (*string, bool) {
 	if o == nil || o.Warehouse == nil {
 		return nil, false
 	}
@@ -496,7 +530,7 @@ func (o *GatewayCreateProducerSnowflake) GetWarehouseOk() (*string, bool) {
 }
 
 // HasWarehouse returns a boolean if a field has been set.
-func (o *GatewayCreateProducerSnowflake) HasWarehouse() bool {
+func (o *GatewayUpdateProducerSnowflake) HasWarehouse() bool {
 	if o != nil && o.Warehouse != nil {
 		return true
 	}
@@ -505,11 +539,11 @@ func (o *GatewayCreateProducerSnowflake) HasWarehouse() bool {
 }
 
 // SetWarehouse gets a reference to the given string and assigns it to the Warehouse field.
-func (o *GatewayCreateProducerSnowflake) SetWarehouse(v string) {
+func (o *GatewayUpdateProducerSnowflake) SetWarehouse(v string) {
 	o.Warehouse = &v
 }
 
-func (o GatewayCreateProducerSnowflake) MarshalJSON() ([]byte, error) {
+func (o GatewayUpdateProducerSnowflake) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Account != nil {
 		toSerialize["account"] = o.Account
@@ -525,6 +559,9 @@ func (o GatewayCreateProducerSnowflake) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.NewName != nil {
+		toSerialize["new-name"] = o.NewName
 	}
 	if o.Password != nil {
 		toSerialize["password"] = o.Password
@@ -556,38 +593,38 @@ func (o GatewayCreateProducerSnowflake) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableGatewayCreateProducerSnowflake struct {
-	value *GatewayCreateProducerSnowflake
+type NullableGatewayUpdateProducerSnowflake struct {
+	value *GatewayUpdateProducerSnowflake
 	isSet bool
 }
 
-func (v NullableGatewayCreateProducerSnowflake) Get() *GatewayCreateProducerSnowflake {
+func (v NullableGatewayUpdateProducerSnowflake) Get() *GatewayUpdateProducerSnowflake {
 	return v.value
 }
 
-func (v *NullableGatewayCreateProducerSnowflake) Set(val *GatewayCreateProducerSnowflake) {
+func (v *NullableGatewayUpdateProducerSnowflake) Set(val *GatewayUpdateProducerSnowflake) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableGatewayCreateProducerSnowflake) IsSet() bool {
+func (v NullableGatewayUpdateProducerSnowflake) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableGatewayCreateProducerSnowflake) Unset() {
+func (v *NullableGatewayUpdateProducerSnowflake) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableGatewayCreateProducerSnowflake(val *GatewayCreateProducerSnowflake) *NullableGatewayCreateProducerSnowflake {
-	return &NullableGatewayCreateProducerSnowflake{value: val, isSet: true}
+func NewNullableGatewayUpdateProducerSnowflake(val *GatewayUpdateProducerSnowflake) *NullableGatewayUpdateProducerSnowflake {
+	return &NullableGatewayUpdateProducerSnowflake{value: val, isSet: true}
 }
 
-func (v NullableGatewayCreateProducerSnowflake) MarshalJSON() ([]byte, error) {
+func (v NullableGatewayUpdateProducerSnowflake) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableGatewayCreateProducerSnowflake) UnmarshalJSON(src []byte) error {
+func (v *NullableGatewayUpdateProducerSnowflake) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -68,7 +68,7 @@ Name | Type | Description | Notes
 **FixedUserOnly** | Pointer to **string** |  | [optional] 
 **GcpKeyAlgo** | Pointer to **string** |  | [optional] 
 **GcpServiceAccountEmail** | Pointer to **string** |  | [optional] 
-**GcpServiceAccountKey** | Pointer to **[]int32** |  | [optional] 
+**GcpServiceAccountKey** | Pointer to **string** |  | [optional] 
 **GcpTokenLifetime** | Pointer to **string** |  | [optional] 
 **GcpTokenScope** | Pointer to **string** |  | [optional] 
 **GcpTokenType** | Pointer to **string** |  | [optional] 
@@ -1770,20 +1770,20 @@ HasGcpServiceAccountEmail returns a boolean if a field has been set.
 
 ### GetGcpServiceAccountKey
 
-`func (o *DSProducerDetails) GetGcpServiceAccountKey() []int32`
+`func (o *DSProducerDetails) GetGcpServiceAccountKey() string`
 
 GetGcpServiceAccountKey returns the GcpServiceAccountKey field if non-nil, zero value otherwise.
 
 ### GetGcpServiceAccountKeyOk
 
-`func (o *DSProducerDetails) GetGcpServiceAccountKeyOk() (*[]int32, bool)`
+`func (o *DSProducerDetails) GetGcpServiceAccountKeyOk() (*string, bool)`
 
 GetGcpServiceAccountKeyOk returns a tuple with the GcpServiceAccountKey field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGcpServiceAccountKey
 
-`func (o *DSProducerDetails) SetGcpServiceAccountKey(v []int32)`
+`func (o *DSProducerDetails) SetGcpServiceAccountKey(v string)`
 
 SetGcpServiceAccountKey sets GcpServiceAccountKey field to given value.
 

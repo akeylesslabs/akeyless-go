@@ -1,4 +1,4 @@
-# GatewayCreateProducerSnowflake
+# GatewayUpdateProducerSnowflake
 
 ## Properties
 
@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **AccountUsername** | Pointer to **string** | Database Username | [optional] 
 **DbName** | Pointer to **string** | Database name | [optional] 
 **Name** | **string** | Producer name | 
+**NewName** | Pointer to **string** | Producer name | [optional] 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **Role** | Pointer to **string** | User role | [optional] 
 **Tags** | Pointer to **[]string** | List of the tags attached to this secret | [optional] 
@@ -21,365 +22,390 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewGatewayCreateProducerSnowflake
+### NewGatewayUpdateProducerSnowflake
 
-`func NewGatewayCreateProducerSnowflake(name string, ) *GatewayCreateProducerSnowflake`
+`func NewGatewayUpdateProducerSnowflake(name string, ) *GatewayUpdateProducerSnowflake`
 
-NewGatewayCreateProducerSnowflake instantiates a new GatewayCreateProducerSnowflake object
+NewGatewayUpdateProducerSnowflake instantiates a new GatewayUpdateProducerSnowflake object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewGatewayCreateProducerSnowflakeWithDefaults
+### NewGatewayUpdateProducerSnowflakeWithDefaults
 
-`func NewGatewayCreateProducerSnowflakeWithDefaults() *GatewayCreateProducerSnowflake`
+`func NewGatewayUpdateProducerSnowflakeWithDefaults() *GatewayUpdateProducerSnowflake`
 
-NewGatewayCreateProducerSnowflakeWithDefaults instantiates a new GatewayCreateProducerSnowflake object
+NewGatewayUpdateProducerSnowflakeWithDefaults instantiates a new GatewayUpdateProducerSnowflake object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetAccount
 
-`func (o *GatewayCreateProducerSnowflake) GetAccount() string`
+`func (o *GatewayUpdateProducerSnowflake) GetAccount() string`
 
 GetAccount returns the Account field if non-nil, zero value otherwise.
 
 ### GetAccountOk
 
-`func (o *GatewayCreateProducerSnowflake) GetAccountOk() (*string, bool)`
+`func (o *GatewayUpdateProducerSnowflake) GetAccountOk() (*string, bool)`
 
 GetAccountOk returns a tuple with the Account field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccount
 
-`func (o *GatewayCreateProducerSnowflake) SetAccount(v string)`
+`func (o *GatewayUpdateProducerSnowflake) SetAccount(v string)`
 
 SetAccount sets Account field to given value.
 
 ### HasAccount
 
-`func (o *GatewayCreateProducerSnowflake) HasAccount() bool`
+`func (o *GatewayUpdateProducerSnowflake) HasAccount() bool`
 
 HasAccount returns a boolean if a field has been set.
 
 ### GetAccountPassword
 
-`func (o *GatewayCreateProducerSnowflake) GetAccountPassword() string`
+`func (o *GatewayUpdateProducerSnowflake) GetAccountPassword() string`
 
 GetAccountPassword returns the AccountPassword field if non-nil, zero value otherwise.
 
 ### GetAccountPasswordOk
 
-`func (o *GatewayCreateProducerSnowflake) GetAccountPasswordOk() (*string, bool)`
+`func (o *GatewayUpdateProducerSnowflake) GetAccountPasswordOk() (*string, bool)`
 
 GetAccountPasswordOk returns a tuple with the AccountPassword field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccountPassword
 
-`func (o *GatewayCreateProducerSnowflake) SetAccountPassword(v string)`
+`func (o *GatewayUpdateProducerSnowflake) SetAccountPassword(v string)`
 
 SetAccountPassword sets AccountPassword field to given value.
 
 ### HasAccountPassword
 
-`func (o *GatewayCreateProducerSnowflake) HasAccountPassword() bool`
+`func (o *GatewayUpdateProducerSnowflake) HasAccountPassword() bool`
 
 HasAccountPassword returns a boolean if a field has been set.
 
 ### GetAccountUsername
 
-`func (o *GatewayCreateProducerSnowflake) GetAccountUsername() string`
+`func (o *GatewayUpdateProducerSnowflake) GetAccountUsername() string`
 
 GetAccountUsername returns the AccountUsername field if non-nil, zero value otherwise.
 
 ### GetAccountUsernameOk
 
-`func (o *GatewayCreateProducerSnowflake) GetAccountUsernameOk() (*string, bool)`
+`func (o *GatewayUpdateProducerSnowflake) GetAccountUsernameOk() (*string, bool)`
 
 GetAccountUsernameOk returns a tuple with the AccountUsername field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccountUsername
 
-`func (o *GatewayCreateProducerSnowflake) SetAccountUsername(v string)`
+`func (o *GatewayUpdateProducerSnowflake) SetAccountUsername(v string)`
 
 SetAccountUsername sets AccountUsername field to given value.
 
 ### HasAccountUsername
 
-`func (o *GatewayCreateProducerSnowflake) HasAccountUsername() bool`
+`func (o *GatewayUpdateProducerSnowflake) HasAccountUsername() bool`
 
 HasAccountUsername returns a boolean if a field has been set.
 
 ### GetDbName
 
-`func (o *GatewayCreateProducerSnowflake) GetDbName() string`
+`func (o *GatewayUpdateProducerSnowflake) GetDbName() string`
 
 GetDbName returns the DbName field if non-nil, zero value otherwise.
 
 ### GetDbNameOk
 
-`func (o *GatewayCreateProducerSnowflake) GetDbNameOk() (*string, bool)`
+`func (o *GatewayUpdateProducerSnowflake) GetDbNameOk() (*string, bool)`
 
 GetDbNameOk returns a tuple with the DbName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDbName
 
-`func (o *GatewayCreateProducerSnowflake) SetDbName(v string)`
+`func (o *GatewayUpdateProducerSnowflake) SetDbName(v string)`
 
 SetDbName sets DbName field to given value.
 
 ### HasDbName
 
-`func (o *GatewayCreateProducerSnowflake) HasDbName() bool`
+`func (o *GatewayUpdateProducerSnowflake) HasDbName() bool`
 
 HasDbName returns a boolean if a field has been set.
 
 ### GetName
 
-`func (o *GatewayCreateProducerSnowflake) GetName() string`
+`func (o *GatewayUpdateProducerSnowflake) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *GatewayCreateProducerSnowflake) GetNameOk() (*string, bool)`
+`func (o *GatewayUpdateProducerSnowflake) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *GatewayCreateProducerSnowflake) SetName(v string)`
+`func (o *GatewayUpdateProducerSnowflake) SetName(v string)`
 
 SetName sets Name field to given value.
 
 
+### GetNewName
+
+`func (o *GatewayUpdateProducerSnowflake) GetNewName() string`
+
+GetNewName returns the NewName field if non-nil, zero value otherwise.
+
+### GetNewNameOk
+
+`func (o *GatewayUpdateProducerSnowflake) GetNewNameOk() (*string, bool)`
+
+GetNewNameOk returns a tuple with the NewName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNewName
+
+`func (o *GatewayUpdateProducerSnowflake) SetNewName(v string)`
+
+SetNewName sets NewName field to given value.
+
+### HasNewName
+
+`func (o *GatewayUpdateProducerSnowflake) HasNewName() bool`
+
+HasNewName returns a boolean if a field has been set.
+
 ### GetPassword
 
-`func (o *GatewayCreateProducerSnowflake) GetPassword() string`
+`func (o *GatewayUpdateProducerSnowflake) GetPassword() string`
 
 GetPassword returns the Password field if non-nil, zero value otherwise.
 
 ### GetPasswordOk
 
-`func (o *GatewayCreateProducerSnowflake) GetPasswordOk() (*string, bool)`
+`func (o *GatewayUpdateProducerSnowflake) GetPasswordOk() (*string, bool)`
 
 GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPassword
 
-`func (o *GatewayCreateProducerSnowflake) SetPassword(v string)`
+`func (o *GatewayUpdateProducerSnowflake) SetPassword(v string)`
 
 SetPassword sets Password field to given value.
 
 ### HasPassword
 
-`func (o *GatewayCreateProducerSnowflake) HasPassword() bool`
+`func (o *GatewayUpdateProducerSnowflake) HasPassword() bool`
 
 HasPassword returns a boolean if a field has been set.
 
 ### GetRole
 
-`func (o *GatewayCreateProducerSnowflake) GetRole() string`
+`func (o *GatewayUpdateProducerSnowflake) GetRole() string`
 
 GetRole returns the Role field if non-nil, zero value otherwise.
 
 ### GetRoleOk
 
-`func (o *GatewayCreateProducerSnowflake) GetRoleOk() (*string, bool)`
+`func (o *GatewayUpdateProducerSnowflake) GetRoleOk() (*string, bool)`
 
 GetRoleOk returns a tuple with the Role field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRole
 
-`func (o *GatewayCreateProducerSnowflake) SetRole(v string)`
+`func (o *GatewayUpdateProducerSnowflake) SetRole(v string)`
 
 SetRole sets Role field to given value.
 
 ### HasRole
 
-`func (o *GatewayCreateProducerSnowflake) HasRole() bool`
+`func (o *GatewayUpdateProducerSnowflake) HasRole() bool`
 
 HasRole returns a boolean if a field has been set.
 
 ### GetTags
 
-`func (o *GatewayCreateProducerSnowflake) GetTags() []string`
+`func (o *GatewayUpdateProducerSnowflake) GetTags() []string`
 
 GetTags returns the Tags field if non-nil, zero value otherwise.
 
 ### GetTagsOk
 
-`func (o *GatewayCreateProducerSnowflake) GetTagsOk() (*[]string, bool)`
+`func (o *GatewayUpdateProducerSnowflake) GetTagsOk() (*[]string, bool)`
 
 GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTags
 
-`func (o *GatewayCreateProducerSnowflake) SetTags(v []string)`
+`func (o *GatewayUpdateProducerSnowflake) SetTags(v []string)`
 
 SetTags sets Tags field to given value.
 
 ### HasTags
 
-`func (o *GatewayCreateProducerSnowflake) HasTags() bool`
+`func (o *GatewayUpdateProducerSnowflake) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
 
 ### GetTargetName
 
-`func (o *GatewayCreateProducerSnowflake) GetTargetName() string`
+`func (o *GatewayUpdateProducerSnowflake) GetTargetName() string`
 
 GetTargetName returns the TargetName field if non-nil, zero value otherwise.
 
 ### GetTargetNameOk
 
-`func (o *GatewayCreateProducerSnowflake) GetTargetNameOk() (*string, bool)`
+`func (o *GatewayUpdateProducerSnowflake) GetTargetNameOk() (*string, bool)`
 
 GetTargetNameOk returns a tuple with the TargetName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTargetName
 
-`func (o *GatewayCreateProducerSnowflake) SetTargetName(v string)`
+`func (o *GatewayUpdateProducerSnowflake) SetTargetName(v string)`
 
 SetTargetName sets TargetName field to given value.
 
 ### HasTargetName
 
-`func (o *GatewayCreateProducerSnowflake) HasTargetName() bool`
+`func (o *GatewayUpdateProducerSnowflake) HasTargetName() bool`
 
 HasTargetName returns a boolean if a field has been set.
 
 ### GetToken
 
-`func (o *GatewayCreateProducerSnowflake) GetToken() string`
+`func (o *GatewayUpdateProducerSnowflake) GetToken() string`
 
 GetToken returns the Token field if non-nil, zero value otherwise.
 
 ### GetTokenOk
 
-`func (o *GatewayCreateProducerSnowflake) GetTokenOk() (*string, bool)`
+`func (o *GatewayUpdateProducerSnowflake) GetTokenOk() (*string, bool)`
 
 GetTokenOk returns a tuple with the Token field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetToken
 
-`func (o *GatewayCreateProducerSnowflake) SetToken(v string)`
+`func (o *GatewayUpdateProducerSnowflake) SetToken(v string)`
 
 SetToken sets Token field to given value.
 
 ### HasToken
 
-`func (o *GatewayCreateProducerSnowflake) HasToken() bool`
+`func (o *GatewayUpdateProducerSnowflake) HasToken() bool`
 
 HasToken returns a boolean if a field has been set.
 
 ### GetUidToken
 
-`func (o *GatewayCreateProducerSnowflake) GetUidToken() string`
+`func (o *GatewayUpdateProducerSnowflake) GetUidToken() string`
 
 GetUidToken returns the UidToken field if non-nil, zero value otherwise.
 
 ### GetUidTokenOk
 
-`func (o *GatewayCreateProducerSnowflake) GetUidTokenOk() (*string, bool)`
+`func (o *GatewayUpdateProducerSnowflake) GetUidTokenOk() (*string, bool)`
 
 GetUidTokenOk returns a tuple with the UidToken field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUidToken
 
-`func (o *GatewayCreateProducerSnowflake) SetUidToken(v string)`
+`func (o *GatewayUpdateProducerSnowflake) SetUidToken(v string)`
 
 SetUidToken sets UidToken field to given value.
 
 ### HasUidToken
 
-`func (o *GatewayCreateProducerSnowflake) HasUidToken() bool`
+`func (o *GatewayUpdateProducerSnowflake) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
 
 ### GetUserTtl
 
-`func (o *GatewayCreateProducerSnowflake) GetUserTtl() string`
+`func (o *GatewayUpdateProducerSnowflake) GetUserTtl() string`
 
 GetUserTtl returns the UserTtl field if non-nil, zero value otherwise.
 
 ### GetUserTtlOk
 
-`func (o *GatewayCreateProducerSnowflake) GetUserTtlOk() (*string, bool)`
+`func (o *GatewayUpdateProducerSnowflake) GetUserTtlOk() (*string, bool)`
 
 GetUserTtlOk returns a tuple with the UserTtl field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUserTtl
 
-`func (o *GatewayCreateProducerSnowflake) SetUserTtl(v string)`
+`func (o *GatewayUpdateProducerSnowflake) SetUserTtl(v string)`
 
 SetUserTtl sets UserTtl field to given value.
 
 ### HasUserTtl
 
-`func (o *GatewayCreateProducerSnowflake) HasUserTtl() bool`
+`func (o *GatewayUpdateProducerSnowflake) HasUserTtl() bool`
 
 HasUserTtl returns a boolean if a field has been set.
 
 ### GetUsername
 
-`func (o *GatewayCreateProducerSnowflake) GetUsername() string`
+`func (o *GatewayUpdateProducerSnowflake) GetUsername() string`
 
 GetUsername returns the Username field if non-nil, zero value otherwise.
 
 ### GetUsernameOk
 
-`func (o *GatewayCreateProducerSnowflake) GetUsernameOk() (*string, bool)`
+`func (o *GatewayUpdateProducerSnowflake) GetUsernameOk() (*string, bool)`
 
 GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUsername
 
-`func (o *GatewayCreateProducerSnowflake) SetUsername(v string)`
+`func (o *GatewayUpdateProducerSnowflake) SetUsername(v string)`
 
 SetUsername sets Username field to given value.
 
 ### HasUsername
 
-`func (o *GatewayCreateProducerSnowflake) HasUsername() bool`
+`func (o *GatewayUpdateProducerSnowflake) HasUsername() bool`
 
 HasUsername returns a boolean if a field has been set.
 
 ### GetWarehouse
 
-`func (o *GatewayCreateProducerSnowflake) GetWarehouse() string`
+`func (o *GatewayUpdateProducerSnowflake) GetWarehouse() string`
 
 GetWarehouse returns the Warehouse field if non-nil, zero value otherwise.
 
 ### GetWarehouseOk
 
-`func (o *GatewayCreateProducerSnowflake) GetWarehouseOk() (*string, bool)`
+`func (o *GatewayUpdateProducerSnowflake) GetWarehouseOk() (*string, bool)`
 
 GetWarehouseOk returns a tuple with the Warehouse field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetWarehouse
 
-`func (o *GatewayCreateProducerSnowflake) SetWarehouse(v string)`
+`func (o *GatewayUpdateProducerSnowflake) SetWarehouse(v string)`
 
 SetWarehouse sets Warehouse field to given value.
 
 ### HasWarehouse
 
-`func (o *GatewayCreateProducerSnowflake) HasWarehouse() bool`
+`func (o *GatewayUpdateProducerSnowflake) HasWarehouse() bool`
 
 HasWarehouse returns a boolean if a field has been set.
 

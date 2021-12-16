@@ -18,7 +18,7 @@ import (
 // ValidateToken validate-token is a command that validaties token
 type ValidateToken struct {
 	// Token
-	ValidateToken *string `json:"validate-token,omitempty"`
+	Token *string `json:"token,omitempty"`
 }
 
 // NewValidateToken instantiates a new ValidateToken object
@@ -38,42 +38,42 @@ func NewValidateTokenWithDefaults() *ValidateToken {
 	return &this
 }
 
-// GetValidateToken returns the ValidateToken field value if set, zero value otherwise.
-func (o *ValidateToken) GetValidateToken() string {
-	if o == nil || o.ValidateToken == nil {
+// GetToken returns the Token field value if set, zero value otherwise.
+func (o *ValidateToken) GetToken() string {
+	if o == nil || o.Token == nil {
 		var ret string
 		return ret
 	}
-	return *o.ValidateToken
+	return *o.Token
 }
 
-// GetValidateTokenOk returns a tuple with the ValidateToken field value if set, nil otherwise
+// GetTokenOk returns a tuple with the Token field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ValidateToken) GetValidateTokenOk() (*string, bool) {
-	if o == nil || o.ValidateToken == nil {
+func (o *ValidateToken) GetTokenOk() (*string, bool) {
+	if o == nil || o.Token == nil {
 		return nil, false
 	}
-	return o.ValidateToken, true
+	return o.Token, true
 }
 
-// HasValidateToken returns a boolean if a field has been set.
-func (o *ValidateToken) HasValidateToken() bool {
-	if o != nil && o.ValidateToken != nil {
+// HasToken returns a boolean if a field has been set.
+func (o *ValidateToken) HasToken() bool {
+	if o != nil && o.Token != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetValidateToken gets a reference to the given string and assigns it to the ValidateToken field.
-func (o *ValidateToken) SetValidateToken(v string) {
-	o.ValidateToken = &v
+// SetToken gets a reference to the given string and assigns it to the Token field.
+func (o *ValidateToken) SetToken(v string) {
+	o.Token = &v
 }
 
 func (o ValidateToken) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ValidateToken != nil {
-		toSerialize["validate-token"] = o.ValidateToken
+	if o.Token != nil {
+		toSerialize["token"] = o.Token
 	}
 	return json.Marshal(toSerialize)
 }

@@ -49,7 +49,7 @@ type TargetTypeDetailsInput struct {
 	EksRegion *string `json:"eks_region,omitempty"`
 	EksSecretAccessKey *string `json:"eks_secret_access_key,omitempty"`
 	GcpServiceAccountEmail *string `json:"gcp_service_account_email,omitempty"`
-	GcpServiceAccountKey *[]int32 `json:"gcp_service_account_key,omitempty"`
+	GcpServiceAccountKey *string `json:"gcp_service_account_key,omitempty"`
 	GkeClusterCaCertificate *string `json:"gke_cluster_ca_certificate,omitempty"`
 	GkeClusterEndpoint *string `json:"gke_cluster_endpoint,omitempty"`
 	GkeClusterName *string `json:"gke_cluster_name,omitempty"`
@@ -1077,9 +1077,9 @@ func (o *TargetTypeDetailsInput) SetGcpServiceAccountEmail(v string) {
 }
 
 // GetGcpServiceAccountKey returns the GcpServiceAccountKey field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetGcpServiceAccountKey() []int32 {
+func (o *TargetTypeDetailsInput) GetGcpServiceAccountKey() string {
 	if o == nil || o.GcpServiceAccountKey == nil {
-		var ret []int32
+		var ret string
 		return ret
 	}
 	return *o.GcpServiceAccountKey
@@ -1087,7 +1087,7 @@ func (o *TargetTypeDetailsInput) GetGcpServiceAccountKey() []int32 {
 
 // GetGcpServiceAccountKeyOk returns a tuple with the GcpServiceAccountKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetGcpServiceAccountKeyOk() (*[]int32, bool) {
+func (o *TargetTypeDetailsInput) GetGcpServiceAccountKeyOk() (*string, bool) {
 	if o == nil || o.GcpServiceAccountKey == nil {
 		return nil, false
 	}
@@ -1103,8 +1103,8 @@ func (o *TargetTypeDetailsInput) HasGcpServiceAccountKey() bool {
 	return false
 }
 
-// SetGcpServiceAccountKey gets a reference to the given []int32 and assigns it to the GcpServiceAccountKey field.
-func (o *TargetTypeDetailsInput) SetGcpServiceAccountKey(v []int32) {
+// SetGcpServiceAccountKey gets a reference to the given string and assigns it to the GcpServiceAccountKey field.
+func (o *TargetTypeDetailsInput) SetGcpServiceAccountKey(v string) {
 	o.GcpServiceAccountKey = &v
 }
 

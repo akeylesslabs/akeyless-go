@@ -100,6 +100,7 @@ Method | HTTP request | Description
 [**GatewayUpdateProducerAws**](V2Api.md#GatewayUpdateProducerAws) | **Post** /gateway-update-producer-aws | 
 [**GatewayUpdateProducerAzure**](V2Api.md#GatewayUpdateProducerAzure) | **Post** /gateway-update-producer-azure | 
 [**GatewayUpdateProducerCassandra**](V2Api.md#GatewayUpdateProducerCassandra) | **Post** /gateway-update-producer-cassandra | 
+[**GatewayUpdateProducerCertificateAutomation**](V2Api.md#GatewayUpdateProducerCertificateAutomation) | **Post** /gateway-update-producer-certificate-automation | 
 [**GatewayUpdateProducerCustom**](V2Api.md#GatewayUpdateProducerCustom) | **Post** /gateway-update-producer-custom | 
 [**GatewayUpdateProducerEks**](V2Api.md#GatewayUpdateProducerEks) | **Post** /gateway-update-producer-eks | 
 [**GatewayUpdateProducerGcp**](V2Api.md#GatewayUpdateProducerGcp) | **Post** /gateway-update-producer-gcp | 
@@ -114,6 +115,7 @@ Method | HTTP request | Description
 [**GatewayUpdateProducerRabbitMQ**](V2Api.md#GatewayUpdateProducerRabbitMQ) | **Post** /gateway-update-producer-rabbitmq | 
 [**GatewayUpdateProducerRdp**](V2Api.md#GatewayUpdateProducerRdp) | **Post** /gateway-update-producer-rdp | 
 [**GatewayUpdateProducerRedshift**](V2Api.md#GatewayUpdateProducerRedshift) | **Post** /gateway-update-producer-redshift | 
+[**GatewayUpdateProducerSnowflake**](V2Api.md#GatewayUpdateProducerSnowflake) | **Post** /gateway-update-producer-snowflake | 
 [**GatewayUpdateTmpUsers**](V2Api.md#GatewayUpdateTmpUsers) | **Post** /gateway-update-producer-tmp-creds | 
 [**GetAccountLogo**](V2Api.md#GetAccountLogo) | **Post** /get-account-logo | 
 [**GetAuthMethod**](V2Api.md#GetAuthMethod) | **Post** /get-auth-method | 
@@ -6347,6 +6349,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GatewayUpdateProducerCertificateAutomation
+
+> GatewayUpdateProducerCertificateAutomationOutput GatewayUpdateProducerCertificateAutomation(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateProducerCertificateAutomation("Name_example") // GatewayUpdateProducerCertificateAutomation | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateProducerCertificateAutomation(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerCertificateAutomation``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateProducerCertificateAutomation`: GatewayUpdateProducerCertificateAutomationOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateProducerCertificateAutomation`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateProducerCertificateAutomationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerCertificateAutomation**](GatewayUpdateProducerCertificateAutomation.md) |  | 
+
+### Return type
+
+[**GatewayUpdateProducerCertificateAutomationOutput**](gatewayUpdateProducerCertificateAutomationOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GatewayUpdateProducerCustom
 
 > GatewayUpdateProducerCustomOutput GatewayUpdateProducerCustom(ctx).Body(body).Execute()
@@ -7228,6 +7294,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GatewayUpdateProducerRedshiftOutput**](gatewayUpdateProducerRedshiftOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateProducerSnowflake
+
+> GatewayUpdateProducerSnowflakeOutput GatewayUpdateProducerSnowflake(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateProducerSnowflake("Name_example") // GatewayUpdateProducerSnowflake | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateProducerSnowflake(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerSnowflake``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateProducerSnowflake`: GatewayUpdateProducerSnowflakeOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateProducerSnowflake`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateProducerSnowflakeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerSnowflake**](GatewayUpdateProducerSnowflake.md) |  | 
+
+### Return type
+
+[**GatewayUpdateProducerSnowflakeOutput**](gatewayUpdateProducerSnowflakeOutput.md)
 
 ### Authorization
 

@@ -11254,6 +11254,123 @@ func (a *V2ApiService) GatewayUpdateProducerCassandraExecute(r ApiGatewayUpdateP
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiGatewayUpdateProducerCertificateAutomationRequest struct {
+	ctx _context.Context
+	ApiService *V2ApiService
+	body *GatewayUpdateProducerCertificateAutomation
+}
+
+func (r ApiGatewayUpdateProducerCertificateAutomationRequest) Body(body GatewayUpdateProducerCertificateAutomation) ApiGatewayUpdateProducerCertificateAutomationRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiGatewayUpdateProducerCertificateAutomationRequest) Execute() (GatewayUpdateProducerCertificateAutomationOutput, *_nethttp.Response, error) {
+	return r.ApiService.GatewayUpdateProducerCertificateAutomationExecute(r)
+}
+
+/*
+ * GatewayUpdateProducerCertificateAutomation Method for GatewayUpdateProducerCertificateAutomation
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @return ApiGatewayUpdateProducerCertificateAutomationRequest
+ */
+func (a *V2ApiService) GatewayUpdateProducerCertificateAutomation(ctx _context.Context) ApiGatewayUpdateProducerCertificateAutomationRequest {
+	return ApiGatewayUpdateProducerCertificateAutomationRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return GatewayUpdateProducerCertificateAutomationOutput
+ */
+func (a *V2ApiService) GatewayUpdateProducerCertificateAutomationExecute(r ApiGatewayUpdateProducerCertificateAutomationRequest) (GatewayUpdateProducerCertificateAutomationOutput, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  GatewayUpdateProducerCertificateAutomationOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.GatewayUpdateProducerCertificateAutomation")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/gateway-update-producer-certificate-automation"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiGatewayUpdateProducerCustomRequest struct {
 	ctx _context.Context
 	ApiService *V2ApiService
@@ -12819,6 +12936,123 @@ func (a *V2ApiService) GatewayUpdateProducerRedshiftExecute(r ApiGatewayUpdatePr
 	}
 
 	localVarPath := localBasePath + "/gateway-update-producer-redshift"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGatewayUpdateProducerSnowflakeRequest struct {
+	ctx _context.Context
+	ApiService *V2ApiService
+	body *GatewayUpdateProducerSnowflake
+}
+
+func (r ApiGatewayUpdateProducerSnowflakeRequest) Body(body GatewayUpdateProducerSnowflake) ApiGatewayUpdateProducerSnowflakeRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiGatewayUpdateProducerSnowflakeRequest) Execute() (GatewayUpdateProducerSnowflakeOutput, *_nethttp.Response, error) {
+	return r.ApiService.GatewayUpdateProducerSnowflakeExecute(r)
+}
+
+/*
+ * GatewayUpdateProducerSnowflake Method for GatewayUpdateProducerSnowflake
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @return ApiGatewayUpdateProducerSnowflakeRequest
+ */
+func (a *V2ApiService) GatewayUpdateProducerSnowflake(ctx _context.Context) ApiGatewayUpdateProducerSnowflakeRequest {
+	return ApiGatewayUpdateProducerSnowflakeRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return GatewayUpdateProducerSnowflakeOutput
+ */
+func (a *V2ApiService) GatewayUpdateProducerSnowflakeExecute(r ApiGatewayUpdateProducerSnowflakeRequest) (GatewayUpdateProducerSnowflakeOutput, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  GatewayUpdateProducerSnowflakeOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.GatewayUpdateProducerSnowflake")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/gateway-update-producer-snowflake"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}

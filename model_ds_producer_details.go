@@ -83,7 +83,7 @@ type DSProducerDetails struct {
 	FixedUserOnly *string `json:"fixed_user_only,omitempty"`
 	GcpKeyAlgo *string `json:"gcp_key_algo,omitempty"`
 	GcpServiceAccountEmail *string `json:"gcp_service_account_email,omitempty"`
-	GcpServiceAccountKey *[]int32 `json:"gcp_service_account_key,omitempty"`
+	GcpServiceAccountKey *string `json:"gcp_service_account_key,omitempty"`
 	GcpTokenLifetime *string `json:"gcp_token_lifetime,omitempty"`
 	GcpTokenScope *string `json:"gcp_token_scope,omitempty"`
 	GcpTokenType *string `json:"gcp_token_type,omitempty"`
@@ -2237,9 +2237,9 @@ func (o *DSProducerDetails) SetGcpServiceAccountEmail(v string) {
 }
 
 // GetGcpServiceAccountKey returns the GcpServiceAccountKey field value if set, zero value otherwise.
-func (o *DSProducerDetails) GetGcpServiceAccountKey() []int32 {
+func (o *DSProducerDetails) GetGcpServiceAccountKey() string {
 	if o == nil || o.GcpServiceAccountKey == nil {
-		var ret []int32
+		var ret string
 		return ret
 	}
 	return *o.GcpServiceAccountKey
@@ -2247,7 +2247,7 @@ func (o *DSProducerDetails) GetGcpServiceAccountKey() []int32 {
 
 // GetGcpServiceAccountKeyOk returns a tuple with the GcpServiceAccountKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DSProducerDetails) GetGcpServiceAccountKeyOk() (*[]int32, bool) {
+func (o *DSProducerDetails) GetGcpServiceAccountKeyOk() (*string, bool) {
 	if o == nil || o.GcpServiceAccountKey == nil {
 		return nil, false
 	}
@@ -2263,8 +2263,8 @@ func (o *DSProducerDetails) HasGcpServiceAccountKey() bool {
 	return false
 }
 
-// SetGcpServiceAccountKey gets a reference to the given []int32 and assigns it to the GcpServiceAccountKey field.
-func (o *DSProducerDetails) SetGcpServiceAccountKey(v []int32) {
+// SetGcpServiceAccountKey gets a reference to the given string and assigns it to the GcpServiceAccountKey field.
+func (o *DSProducerDetails) SetGcpServiceAccountKey(v string) {
 	o.GcpServiceAccountKey = &v
 }
 

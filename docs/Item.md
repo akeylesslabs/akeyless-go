@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **ProtectionKeyName** | Pointer to **string** |  | [optional] 
 **PublicValue** | Pointer to **string** |  | [optional] 
 **RotationInterval** | Pointer to **int64** |  | [optional] 
+**TargetVersions** | Pointer to [**[]TargetItemVersion**](TargetItemVersion.md) |  | [optional] 
 **WithCustomerFragment** | Pointer to **bool** |  | [optional] 
 
 ## Methods
@@ -648,6 +649,31 @@ SetRotationInterval sets RotationInterval field to given value.
 `func (o *Item) HasRotationInterval() bool`
 
 HasRotationInterval returns a boolean if a field has been set.
+
+### GetTargetVersions
+
+`func (o *Item) GetTargetVersions() []TargetItemVersion`
+
+GetTargetVersions returns the TargetVersions field if non-nil, zero value otherwise.
+
+### GetTargetVersionsOk
+
+`func (o *Item) GetTargetVersionsOk() (*[]TargetItemVersion, bool)`
+
+GetTargetVersionsOk returns a tuple with the TargetVersions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetVersions
+
+`func (o *Item) SetTargetVersions(v []TargetItemVersion)`
+
+SetTargetVersions sets TargetVersions field to given value.
+
+### HasTargetVersions
+
+`func (o *Item) HasTargetVersions() bool`
+
+HasTargetVersions returns a boolean if a field has been set.
 
 ### GetWithCustomerFragment
 
