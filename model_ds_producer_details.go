@@ -131,6 +131,8 @@ type DSProducerDetails struct {
 	MssqlRevocationStatements *string `json:"mssql_revocation_statements,omitempty"`
 	MysqlCreationStatements *string `json:"mysql_creation_statements,omitempty"`
 	OracleCreationStatements *string `json:"oracle_creation_statements,omitempty"`
+	PasswordLength *int64 `json:"password_length,omitempty"`
+	PasswordPolicy *string `json:"password_policy,omitempty"`
 	Payload *string `json:"payload,omitempty"`
 	PostgresCreationStatements *string `json:"postgres_creation_statements,omitempty"`
 	RabbitmqServerPassword *string `json:"rabbitmq_server_password,omitempty"`
@@ -156,6 +158,8 @@ type DSProducerDetails struct {
 	UseGwCloudIdentity *bool `json:"use_gw_cloud_identity,omitempty"`
 	UserPrincipalName *string `json:"user_principal_name,omitempty"`
 	UserTtl *string `json:"user_ttl,omitempty"`
+	UsernameLength *int64 `json:"username_length,omitempty"`
+	UsernamePolicy *string `json:"username_policy,omitempty"`
 	VenafiAllowSubdomains *bool `json:"venafi_allow_subdomains,omitempty"`
 	VenafiAllowedDomains *[]string `json:"venafi_allowed_domains,omitempty"`
 	VenafiApiKey *string `json:"venafi_api_key,omitempty"`
@@ -3644,6 +3648,70 @@ func (o *DSProducerDetails) SetOracleCreationStatements(v string) {
 	o.OracleCreationStatements = &v
 }
 
+// GetPasswordLength returns the PasswordLength field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetPasswordLength() int64 {
+	if o == nil || o.PasswordLength == nil {
+		var ret int64
+		return ret
+	}
+	return *o.PasswordLength
+}
+
+// GetPasswordLengthOk returns a tuple with the PasswordLength field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetPasswordLengthOk() (*int64, bool) {
+	if o == nil || o.PasswordLength == nil {
+		return nil, false
+	}
+	return o.PasswordLength, true
+}
+
+// HasPasswordLength returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasPasswordLength() bool {
+	if o != nil && o.PasswordLength != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPasswordLength gets a reference to the given int64 and assigns it to the PasswordLength field.
+func (o *DSProducerDetails) SetPasswordLength(v int64) {
+	o.PasswordLength = &v
+}
+
+// GetPasswordPolicy returns the PasswordPolicy field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetPasswordPolicy() string {
+	if o == nil || o.PasswordPolicy == nil {
+		var ret string
+		return ret
+	}
+	return *o.PasswordPolicy
+}
+
+// GetPasswordPolicyOk returns a tuple with the PasswordPolicy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetPasswordPolicyOk() (*string, bool) {
+	if o == nil || o.PasswordPolicy == nil {
+		return nil, false
+	}
+	return o.PasswordPolicy, true
+}
+
+// HasPasswordPolicy returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasPasswordPolicy() bool {
+	if o != nil && o.PasswordPolicy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPasswordPolicy gets a reference to the given string and assigns it to the PasswordPolicy field.
+func (o *DSProducerDetails) SetPasswordPolicy(v string) {
+	o.PasswordPolicy = &v
+}
+
 // GetPayload returns the Payload field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetPayload() string {
 	if o == nil || o.Payload == nil {
@@ -4378,6 +4446,70 @@ func (o *DSProducerDetails) HasUserTtl() bool {
 // SetUserTtl gets a reference to the given string and assigns it to the UserTtl field.
 func (o *DSProducerDetails) SetUserTtl(v string) {
 	o.UserTtl = &v
+}
+
+// GetUsernameLength returns the UsernameLength field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetUsernameLength() int64 {
+	if o == nil || o.UsernameLength == nil {
+		var ret int64
+		return ret
+	}
+	return *o.UsernameLength
+}
+
+// GetUsernameLengthOk returns a tuple with the UsernameLength field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetUsernameLengthOk() (*int64, bool) {
+	if o == nil || o.UsernameLength == nil {
+		return nil, false
+	}
+	return o.UsernameLength, true
+}
+
+// HasUsernameLength returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasUsernameLength() bool {
+	if o != nil && o.UsernameLength != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsernameLength gets a reference to the given int64 and assigns it to the UsernameLength field.
+func (o *DSProducerDetails) SetUsernameLength(v int64) {
+	o.UsernameLength = &v
+}
+
+// GetUsernamePolicy returns the UsernamePolicy field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetUsernamePolicy() string {
+	if o == nil || o.UsernamePolicy == nil {
+		var ret string
+		return ret
+	}
+	return *o.UsernamePolicy
+}
+
+// GetUsernamePolicyOk returns a tuple with the UsernamePolicy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetUsernamePolicyOk() (*string, bool) {
+	if o == nil || o.UsernamePolicy == nil {
+		return nil, false
+	}
+	return o.UsernamePolicy, true
+}
+
+// HasUsernamePolicy returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasUsernamePolicy() bool {
+	if o != nil && o.UsernamePolicy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsernamePolicy gets a reference to the given string and assigns it to the UsernamePolicy field.
+func (o *DSProducerDetails) SetUsernamePolicy(v string) {
+	o.UsernamePolicy = &v
 }
 
 // GetVenafiAllowSubdomains returns the VenafiAllowSubdomains field value if set, zero value otherwise.
@@ -5122,6 +5254,12 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	if o.OracleCreationStatements != nil {
 		toSerialize["oracle_creation_statements"] = o.OracleCreationStatements
 	}
+	if o.PasswordLength != nil {
+		toSerialize["password_length"] = o.PasswordLength
+	}
+	if o.PasswordPolicy != nil {
+		toSerialize["password_policy"] = o.PasswordPolicy
+	}
 	if o.Payload != nil {
 		toSerialize["payload"] = o.Payload
 	}
@@ -5190,6 +5328,12 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.UserTtl != nil {
 		toSerialize["user_ttl"] = o.UserTtl
+	}
+	if o.UsernameLength != nil {
+		toSerialize["username_length"] = o.UsernameLength
+	}
+	if o.UsernamePolicy != nil {
+		toSerialize["username_policy"] = o.UsernamePolicy
 	}
 	if o.VenafiAllowSubdomains != nil {
 		toSerialize["venafi_allow_subdomains"] = o.VenafiAllowSubdomains

@@ -8660,6 +8660,7 @@ components:
         ldap_certificate: ldap_certificate
         ldap_bind_dn: ldap_bind_dn
         ldap_url: ldap_url
+        username_policy: username_policy
         admin_pwd: admin_pwd
         gcp_token_scope: gcp_token_scope
         venafi_allowed_domains:
@@ -8671,6 +8672,7 @@ components:
         aws_access_mode: aws_access_mode
         aws_user_policies: aws_user_policies
         aws_role_arns: aws_role_arns
+        username_length: 2
         active: true
         item_targets_assoc:
         - assoc_id: assoc_id
@@ -8718,6 +8720,7 @@ components:
         mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
         postgres_creation_statements: postgres_creation_statements
         db_max_idle_conns: db_max_idle_conns
+        password_policy: password_policy
         artifactory_admin_username: artifactory_admin_username
         admin_name: admin_name
         rabbitmq_server_user: rabbitmq_server_user
@@ -8766,6 +8769,7 @@ components:
         gke_service_account_name: gke_service_account_name
         mysql_creation_statements: mysql_creation_statements
         gcp_service_account_email: gcp_service_account_email
+        password_length: 5
         dynamic_secret_name: dynamic_secret_name
         rabbitmq_server_uri: rabbitmq_server_uri
         chef_server_access_mode: chef_server_access_mode
@@ -9170,6 +9174,13 @@ components:
         oracle_creation_statements:
           type: string
           x-go-name: OracleDBCreationStatements
+        password_length:
+          format: int64
+          type: integer
+          x-go-name: PasswordLen
+        password_policy:
+          type: string
+          x-go-name: PasswordPolicy
         payload:
           type: string
           x-go-name: Payload
@@ -9243,6 +9254,13 @@ components:
         user_ttl:
           type: string
           x-go-name: UserTtl
+        username_length:
+          format: int64
+          type: integer
+          x-go-name: UsernameLen
+        username_policy:
+          type: string
+          x-go-name: UsernamePolicy
         venafi_allow_subdomains:
           type: boolean
           x-go-name: VenafiAllowSubdomains
@@ -18562,6 +18580,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -18573,6 +18592,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -18620,6 +18640,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -18668,6 +18689,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -18870,6 +18892,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -18881,6 +18904,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -18928,6 +18952,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -18976,6 +19001,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -19157,6 +19183,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -19168,6 +19195,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -19215,6 +19243,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -19263,6 +19292,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -19419,6 +19449,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -19430,6 +19461,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -19477,6 +19509,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -19525,6 +19558,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -19730,6 +19764,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -19741,6 +19776,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -19788,6 +19824,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -19836,6 +19873,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -20074,6 +20112,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -20085,6 +20124,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -20132,6 +20172,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -20180,6 +20221,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -20358,6 +20400,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -20369,6 +20412,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -20416,6 +20460,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -20464,6 +20509,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -20617,6 +20663,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -20628,6 +20675,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -20675,6 +20723,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -20723,6 +20772,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -20892,6 +20942,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -20903,6 +20954,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -20950,6 +21002,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -20998,6 +21051,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -21165,6 +21219,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -21176,6 +21231,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -21223,6 +21279,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -21271,6 +21328,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -21452,6 +21510,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -21463,6 +21522,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -21510,6 +21570,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -21558,6 +21619,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -21753,6 +21815,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -21764,6 +21827,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -21811,6 +21875,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -21859,6 +21924,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -22041,6 +22107,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -22052,6 +22119,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -22099,6 +22167,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -22147,6 +22216,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -22322,6 +22392,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -22333,6 +22404,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -22380,6 +22452,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -22428,6 +22501,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -22597,6 +22671,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -22608,6 +22683,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -22655,6 +22731,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -22703,6 +22780,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -22881,6 +22959,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -22892,6 +22971,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -22939,6 +23019,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -22987,6 +23068,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -23163,6 +23245,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -23174,6 +23257,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -23221,6 +23305,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -23269,6 +23354,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -23446,6 +23532,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -23457,6 +23544,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -23504,6 +23592,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -23552,6 +23641,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -23721,6 +23811,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -23732,6 +23823,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -23779,6 +23871,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -23827,6 +23920,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -23982,6 +24076,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -23993,6 +24088,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -24040,6 +24136,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -24088,6 +24185,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -25087,6 +25185,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -25098,6 +25197,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -25145,6 +25245,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -25193,6 +25294,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -25399,6 +25501,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -25410,6 +25513,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -25457,6 +25561,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -25505,6 +25610,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -25690,6 +25796,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -25701,6 +25808,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -25748,6 +25856,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -25796,6 +25905,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -25956,6 +26066,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -25967,6 +26078,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -26014,6 +26126,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -26062,6 +26175,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -26271,6 +26385,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -26282,6 +26397,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -26329,6 +26445,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -26377,6 +26494,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -26623,6 +26741,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -26634,6 +26753,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -26681,6 +26801,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -26729,6 +26850,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -26911,6 +27033,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -26922,6 +27045,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -26969,6 +27093,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -27017,6 +27142,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -27174,6 +27300,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -27185,6 +27312,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -27232,6 +27360,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -27280,6 +27409,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -27453,6 +27583,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -27464,6 +27595,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -27511,6 +27643,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -27559,6 +27692,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -27730,6 +27864,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -27741,6 +27876,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -27788,6 +27924,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -27836,6 +27973,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -28021,6 +28159,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -28032,6 +28171,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -28079,6 +28219,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -28127,6 +28268,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -28326,6 +28468,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -28337,6 +28480,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -28384,6 +28528,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -28432,6 +28577,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -28618,6 +28764,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -28629,6 +28776,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -28676,6 +28824,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -28724,6 +28873,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -28903,6 +29053,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -28914,6 +29065,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -28961,6 +29113,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -29009,6 +29162,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -29182,6 +29336,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -29193,6 +29348,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -29240,6 +29396,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -29288,6 +29445,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -29470,6 +29628,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -29481,6 +29640,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -29528,6 +29688,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -29576,6 +29737,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -29756,6 +29918,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -29767,6 +29930,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -29814,6 +29978,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -29862,6 +30027,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -30043,6 +30209,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -30054,6 +30221,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -30101,6 +30269,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -30149,6 +30318,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -30322,6 +30492,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -30333,6 +30504,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -30380,6 +30552,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -30428,6 +30601,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -30587,6 +30761,7 @@ components:
           ldap_certificate: ldap_certificate
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          username_policy: username_policy
           admin_pwd: admin_pwd
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
@@ -30598,6 +30773,7 @@ components:
           aws_access_mode: aws_access_mode
           aws_user_policies: aws_user_policies
           aws_role_arns: aws_role_arns
+          username_length: 2
           active: true
           item_targets_assoc:
           - assoc_id: assoc_id
@@ -30645,6 +30821,7 @@ components:
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           postgres_creation_statements: postgres_creation_statements
           db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
           artifactory_admin_username: artifactory_admin_username
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
@@ -30693,6 +30870,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          password_length: 5
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode

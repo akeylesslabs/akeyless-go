@@ -112,6 +112,8 @@ Name | Type | Description | Notes
 **MssqlRevocationStatements** | Pointer to **string** |  | [optional] 
 **MysqlCreationStatements** | Pointer to **string** |  | [optional] 
 **OracleCreationStatements** | Pointer to **string** |  | [optional] 
+**PasswordLength** | Pointer to **int64** |  | [optional] 
+**PasswordPolicy** | Pointer to **string** |  | [optional] 
 **Payload** | Pointer to **string** |  | [optional] 
 **PostgresCreationStatements** | Pointer to **string** |  | [optional] 
 **RabbitmqServerPassword** | Pointer to **string** |  | [optional] 
@@ -135,6 +137,8 @@ Name | Type | Description | Notes
 **UseGwCloudIdentity** | Pointer to **bool** |  | [optional] 
 **UserPrincipalName** | Pointer to **string** |  | [optional] 
 **UserTtl** | Pointer to **string** |  | [optional] 
+**UsernameLength** | Pointer to **int64** |  | [optional] 
+**UsernamePolicy** | Pointer to **string** |  | [optional] 
 **VenafiAllowSubdomains** | Pointer to **bool** |  | [optional] 
 **VenafiAllowedDomains** | Pointer to **[]string** |  | [optional] 
 **VenafiApiKey** | Pointer to **string** |  | [optional] 
@@ -2868,6 +2872,56 @@ SetOracleCreationStatements sets OracleCreationStatements field to given value.
 
 HasOracleCreationStatements returns a boolean if a field has been set.
 
+### GetPasswordLength
+
+`func (o *DSProducerDetails) GetPasswordLength() int64`
+
+GetPasswordLength returns the PasswordLength field if non-nil, zero value otherwise.
+
+### GetPasswordLengthOk
+
+`func (o *DSProducerDetails) GetPasswordLengthOk() (*int64, bool)`
+
+GetPasswordLengthOk returns a tuple with the PasswordLength field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasswordLength
+
+`func (o *DSProducerDetails) SetPasswordLength(v int64)`
+
+SetPasswordLength sets PasswordLength field to given value.
+
+### HasPasswordLength
+
+`func (o *DSProducerDetails) HasPasswordLength() bool`
+
+HasPasswordLength returns a boolean if a field has been set.
+
+### GetPasswordPolicy
+
+`func (o *DSProducerDetails) GetPasswordPolicy() string`
+
+GetPasswordPolicy returns the PasswordPolicy field if non-nil, zero value otherwise.
+
+### GetPasswordPolicyOk
+
+`func (o *DSProducerDetails) GetPasswordPolicyOk() (*string, bool)`
+
+GetPasswordPolicyOk returns a tuple with the PasswordPolicy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasswordPolicy
+
+`func (o *DSProducerDetails) SetPasswordPolicy(v string)`
+
+SetPasswordPolicy sets PasswordPolicy field to given value.
+
+### HasPasswordPolicy
+
+`func (o *DSProducerDetails) HasPasswordPolicy() bool`
+
+HasPasswordPolicy returns a boolean if a field has been set.
+
 ### GetPayload
 
 `func (o *DSProducerDetails) GetPayload() string`
@@ -3442,6 +3496,56 @@ SetUserTtl sets UserTtl field to given value.
 `func (o *DSProducerDetails) HasUserTtl() bool`
 
 HasUserTtl returns a boolean if a field has been set.
+
+### GetUsernameLength
+
+`func (o *DSProducerDetails) GetUsernameLength() int64`
+
+GetUsernameLength returns the UsernameLength field if non-nil, zero value otherwise.
+
+### GetUsernameLengthOk
+
+`func (o *DSProducerDetails) GetUsernameLengthOk() (*int64, bool)`
+
+GetUsernameLengthOk returns a tuple with the UsernameLength field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsernameLength
+
+`func (o *DSProducerDetails) SetUsernameLength(v int64)`
+
+SetUsernameLength sets UsernameLength field to given value.
+
+### HasUsernameLength
+
+`func (o *DSProducerDetails) HasUsernameLength() bool`
+
+HasUsernameLength returns a boolean if a field has been set.
+
+### GetUsernamePolicy
+
+`func (o *DSProducerDetails) GetUsernamePolicy() string`
+
+GetUsernamePolicy returns the UsernamePolicy field if non-nil, zero value otherwise.
+
+### GetUsernamePolicyOk
+
+`func (o *DSProducerDetails) GetUsernamePolicyOk() (*string, bool)`
+
+GetUsernamePolicyOk returns a tuple with the UsernamePolicy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsernamePolicy
+
+`func (o *DSProducerDetails) SetUsernamePolicy(v string)`
+
+SetUsernamePolicy sets UsernamePolicy field to given value.
+
+### HasUsernamePolicy
+
+`func (o *DSProducerDetails) HasUsernamePolicy() bool`
+
+HasUsernamePolicy returns a boolean if a field has been set.
 
 ### GetVenafiAllowSubdomains
 
