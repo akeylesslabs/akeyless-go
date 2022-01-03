@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ApiId** | Pointer to **string** |  | [optional] 
 **ApiKey** | Pointer to **string** |  | [optional] 
+**AuthenticationCredentials** | Pointer to **string** |  | [optional] 
 **AutoRotate** | Pointer to **string** | Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation | [optional] 
 **CustomPayload** | Pointer to **string** |  | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
@@ -97,6 +98,31 @@ SetApiKey sets ApiKey field to given value.
 `func (o *CreateRotatedSecret) HasApiKey() bool`
 
 HasApiKey returns a boolean if a field has been set.
+
+### GetAuthenticationCredentials
+
+`func (o *CreateRotatedSecret) GetAuthenticationCredentials() string`
+
+GetAuthenticationCredentials returns the AuthenticationCredentials field if non-nil, zero value otherwise.
+
+### GetAuthenticationCredentialsOk
+
+`func (o *CreateRotatedSecret) GetAuthenticationCredentialsOk() (*string, bool)`
+
+GetAuthenticationCredentialsOk returns a tuple with the AuthenticationCredentials field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthenticationCredentials
+
+`func (o *CreateRotatedSecret) SetAuthenticationCredentials(v string)`
+
+SetAuthenticationCredentials sets AuthenticationCredentials field to given value.
+
+### HasAuthenticationCredentials
+
+`func (o *CreateRotatedSecret) HasAuthenticationCredentials() bool`
+
+HasAuthenticationCredentials returns a boolean if a field has been set.
 
 ### GetAutoRotate
 

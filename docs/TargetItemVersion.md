@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **CustomerFragmentId** | Pointer to **string** |  | [optional] 
 **DeletionDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **ItemVersionState** | Pointer to **string** | ItemState defines the different states an Item can be in | [optional] 
+**LatestVersion** | Pointer to **bool** |  | [optional] 
 **ProtectionKeyName** | Pointer to **string** |  | [optional] 
 **TargetName** | Pointer to **string** |  | [optional] 
 **Version** | Pointer to **int32** |  | [optional] 
@@ -131,6 +132,31 @@ SetItemVersionState sets ItemVersionState field to given value.
 `func (o *TargetItemVersion) HasItemVersionState() bool`
 
 HasItemVersionState returns a boolean if a field has been set.
+
+### GetLatestVersion
+
+`func (o *TargetItemVersion) GetLatestVersion() bool`
+
+GetLatestVersion returns the LatestVersion field if non-nil, zero value otherwise.
+
+### GetLatestVersionOk
+
+`func (o *TargetItemVersion) GetLatestVersionOk() (*bool, bool)`
+
+GetLatestVersionOk returns a tuple with the LatestVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLatestVersion
+
+`func (o *TargetItemVersion) SetLatestVersion(v bool)`
+
+SetLatestVersion sets LatestVersion field to given value.
+
+### HasLatestVersion
+
+`func (o *TargetItemVersion) HasLatestVersion() bool`
+
+HasLatestVersion returns a boolean if a field has been set.
 
 ### GetProtectionKeyName
 

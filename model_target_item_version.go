@@ -23,6 +23,7 @@ type TargetItemVersion struct {
 	DeletionDate *time.Time `json:"deletion_date,omitempty"`
 	// ItemState defines the different states an Item can be in
 	ItemVersionState *string `json:"item_version_state,omitempty"`
+	LatestVersion *bool `json:"latest_version,omitempty"`
 	ProtectionKeyName *string `json:"protection_key_name,omitempty"`
 	TargetName *string `json:"target_name,omitempty"`
 	Version *int32 `json:"version,omitempty"`
@@ -174,6 +175,38 @@ func (o *TargetItemVersion) SetItemVersionState(v string) {
 	o.ItemVersionState = &v
 }
 
+// GetLatestVersion returns the LatestVersion field value if set, zero value otherwise.
+func (o *TargetItemVersion) GetLatestVersion() bool {
+	if o == nil || o.LatestVersion == nil {
+		var ret bool
+		return ret
+	}
+	return *o.LatestVersion
+}
+
+// GetLatestVersionOk returns a tuple with the LatestVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetItemVersion) GetLatestVersionOk() (*bool, bool) {
+	if o == nil || o.LatestVersion == nil {
+		return nil, false
+	}
+	return o.LatestVersion, true
+}
+
+// HasLatestVersion returns a boolean if a field has been set.
+func (o *TargetItemVersion) HasLatestVersion() bool {
+	if o != nil && o.LatestVersion != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLatestVersion gets a reference to the given bool and assigns it to the LatestVersion field.
+func (o *TargetItemVersion) SetLatestVersion(v bool) {
+	o.LatestVersion = &v
+}
+
 // GetProtectionKeyName returns the ProtectionKeyName field value if set, zero value otherwise.
 func (o *TargetItemVersion) GetProtectionKeyName() string {
 	if o == nil || o.ProtectionKeyName == nil {
@@ -315,6 +348,9 @@ func (o TargetItemVersion) MarshalJSON() ([]byte, error) {
 	}
 	if o.ItemVersionState != nil {
 		toSerialize["item_version_state"] = o.ItemVersionState
+	}
+	if o.LatestVersion != nil {
+		toSerialize["latest_version"] = o.LatestVersion
 	}
 	if o.ProtectionKeyName != nil {
 		toSerialize["protection_key_name"] = o.ProtectionKeyName

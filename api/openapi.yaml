@@ -10027,6 +10027,7 @@ components:
         target_versions:
         - item_version_state: item_version_state
           with_customer_fragment: true
+          latest_version: true
           target_name: target_name
           deletion_date: 2000-01-23T04:56:07.000+00:00
           protection_key_name: protection_key_name
@@ -10035,6 +10036,7 @@ components:
           customer_fragment_id: customer_fragment_id
         - item_version_state: item_version_state
           with_customer_fragment: true
+          latest_version: true
           target_name: target_name
           deletion_date: 2000-01-23T04:56:07.000+00:00
           protection_key_name: protection_key_name
@@ -11714,6 +11716,7 @@ components:
           target_versions:
           - item_version_state: item_version_state
             with_customer_fragment: true
+            latest_version: true
             target_name: target_name
             deletion_date: 2000-01-23T04:56:07.000+00:00
             protection_key_name: protection_key_name
@@ -11722,6 +11725,7 @@ components:
             customer_fragment_id: customer_fragment_id
           - item_version_state: item_version_state
             with_customer_fragment: true
+            latest_version: true
             target_name: target_name
             deletion_date: 2000-01-23T04:56:07.000+00:00
             protection_key_name: protection_key_name
@@ -11996,6 +12000,7 @@ components:
           target_versions:
           - item_version_state: item_version_state
             with_customer_fragment: true
+            latest_version: true
             target_name: target_name
             deletion_date: 2000-01-23T04:56:07.000+00:00
             protection_key_name: protection_key_name
@@ -12004,6 +12009,7 @@ components:
             customer_fragment_id: customer_fragment_id
           - item_version_state: item_version_state
             with_customer_fragment: true
+            latest_version: true
             target_name: target_name
             deletion_date: 2000-01-23T04:56:07.000+00:00
             protection_key_name: protection_key_name
@@ -13914,6 +13920,7 @@ components:
       example:
         item_version_state: item_version_state
         with_customer_fragment: true
+        latest_version: true
         target_name: target_name
         deletion_date: 2000-01-23T04:56:07.000+00:00
         protection_key_name: protection_key_name
@@ -13936,6 +13943,9 @@ components:
           description: ItemState defines the different states an Item can be in
           type: string
           x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+        latest_version:
+          type: boolean
+          x-go-name: IsLatestVersion
         protection_key_name:
           type: string
           x-go-name: ProtectionKeyName
@@ -16944,6 +16954,9 @@ components:
         api-key:
           type: string
           x-go-name: ApiKey
+        authentication-credentials:
+          type: string
+          x-go-name: RotatorCredsType
         auto-rotate:
           description: |-
             Whether to automatically rotate every --rotation-interval days, or
@@ -16989,7 +17002,7 @@ components:
           x-go-name: RotationInterval
         rotator-creds-type:
           type: string
-          x-go-name: RotatorCredsType
+          x-go-name: RotatorCredsTypeBC
         rotator-custom-cmd:
           type: string
           x-go-name: RotatorCustomCmd

@@ -19,6 +19,7 @@ import (
 type CreateRotatedSecret struct {
 	ApiId *string `json:"api-id,omitempty"`
 	ApiKey *string `json:"api-key,omitempty"`
+	AuthenticationCredentials *string `json:"authentication-credentials,omitempty"`
 	// Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation
 	AutoRotate *string `json:"auto-rotate,omitempty"`
 	CustomPayload *string `json:"custom-payload,omitempty"`
@@ -141,6 +142,38 @@ func (o *CreateRotatedSecret) HasApiKey() bool {
 // SetApiKey gets a reference to the given string and assigns it to the ApiKey field.
 func (o *CreateRotatedSecret) SetApiKey(v string) {
 	o.ApiKey = &v
+}
+
+// GetAuthenticationCredentials returns the AuthenticationCredentials field value if set, zero value otherwise.
+func (o *CreateRotatedSecret) GetAuthenticationCredentials() string {
+	if o == nil || o.AuthenticationCredentials == nil {
+		var ret string
+		return ret
+	}
+	return *o.AuthenticationCredentials
+}
+
+// GetAuthenticationCredentialsOk returns a tuple with the AuthenticationCredentials field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRotatedSecret) GetAuthenticationCredentialsOk() (*string, bool) {
+	if o == nil || o.AuthenticationCredentials == nil {
+		return nil, false
+	}
+	return o.AuthenticationCredentials, true
+}
+
+// HasAuthenticationCredentials returns a boolean if a field has been set.
+func (o *CreateRotatedSecret) HasAuthenticationCredentials() bool {
+	if o != nil && o.AuthenticationCredentials != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthenticationCredentials gets a reference to the given string and assigns it to the AuthenticationCredentials field.
+func (o *CreateRotatedSecret) SetAuthenticationCredentials(v string) {
+	o.AuthenticationCredentials = &v
 }
 
 // GetAutoRotate returns the AutoRotate field value if set, zero value otherwise.
@@ -830,6 +863,9 @@ func (o CreateRotatedSecret) MarshalJSON() ([]byte, error) {
 	}
 	if o.ApiKey != nil {
 		toSerialize["api-key"] = o.ApiKey
+	}
+	if o.AuthenticationCredentials != nil {
+		toSerialize["authentication-credentials"] = o.AuthenticationCredentials
 	}
 	if o.AutoRotate != nil {
 		toSerialize["auto-rotate"] = o.AutoRotate
