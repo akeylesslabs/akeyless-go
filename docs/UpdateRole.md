@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **NewComment** | Pointer to **string** | New comment about the role | [optional] [default to "default_comment"]
 **NewName** | Pointer to **string** | New Role name | [optional] 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
+**SraReportsAccess** | Pointer to **string** | Allow this role to view SRA Clusters. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported. | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
@@ -203,6 +204,31 @@ SetPassword sets Password field to given value.
 `func (o *UpdateRole) HasPassword() bool`
 
 HasPassword returns a boolean if a field has been set.
+
+### GetSraReportsAccess
+
+`func (o *UpdateRole) GetSraReportsAccess() string`
+
+GetSraReportsAccess returns the SraReportsAccess field if non-nil, zero value otherwise.
+
+### GetSraReportsAccessOk
+
+`func (o *UpdateRole) GetSraReportsAccessOk() (*string, bool)`
+
+GetSraReportsAccessOk returns a tuple with the SraReportsAccess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSraReportsAccess
+
+`func (o *UpdateRole) SetSraReportsAccess(v string)`
+
+SetSraReportsAccess sets SraReportsAccess field to given value.
+
+### HasSraReportsAccess
+
+`func (o *UpdateRole) HasSraReportsAccess() bool`
+
+HasSraReportsAccess returns a boolean if a field has been set.
 
 ### GetToken
 

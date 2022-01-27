@@ -47,6 +47,8 @@ type UpdateAuthMethodAzureAD struct {
 	Issuer *string `json:"issuer,omitempty"`
 	// The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server.
 	JwksUri *string `json:"jwks-uri,omitempty"`
+	// Jwt TTL
+	JwtTtl *int64 `json:"jwt-ttl,omitempty"`
 	// Auth Method name
 	Name string `json:"name"`
 	// Auth Method new name
@@ -76,6 +78,8 @@ func NewUpdateAuthMethodAzureAD(boundTenantId string, name string, ) *UpdateAuth
 	this.Issuer = &issuer
 	var jwksUri string = "https://login.microsoftonline.com/common/discovery/keys"
 	this.JwksUri = &jwksUri
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	this.Name = name
 	return &this
 }
@@ -93,6 +97,8 @@ func NewUpdateAuthMethodAzureADWithDefaults() *UpdateAuthMethodAzureAD {
 	this.Issuer = &issuer
 	var jwksUri string = "https://login.microsoftonline.com/common/discovery/keys"
 	this.JwksUri = &jwksUri
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	return &this
 }
 
@@ -568,6 +574,38 @@ func (o *UpdateAuthMethodAzureAD) SetJwksUri(v string) {
 	o.JwksUri = &v
 }
 
+// GetJwtTtl returns the JwtTtl field value if set, zero value otherwise.
+func (o *UpdateAuthMethodAzureAD) GetJwtTtl() int64 {
+	if o == nil || o.JwtTtl == nil {
+		var ret int64
+		return ret
+	}
+	return *o.JwtTtl
+}
+
+// GetJwtTtlOk returns a tuple with the JwtTtl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAuthMethodAzureAD) GetJwtTtlOk() (*int64, bool) {
+	if o == nil || o.JwtTtl == nil {
+		return nil, false
+	}
+	return o.JwtTtl, true
+}
+
+// HasJwtTtl returns a boolean if a field has been set.
+func (o *UpdateAuthMethodAzureAD) HasJwtTtl() bool {
+	if o != nil && o.JwtTtl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJwtTtl gets a reference to the given int64 and assigns it to the JwtTtl field.
+func (o *UpdateAuthMethodAzureAD) SetJwtTtl(v int64) {
+	o.JwtTtl = &v
+}
+
 // GetName returns the Name field value
 func (o *UpdateAuthMethodAzureAD) GetName() string {
 	if o == nil  {
@@ -798,6 +836,9 @@ func (o UpdateAuthMethodAzureAD) MarshalJSON() ([]byte, error) {
 	}
 	if o.JwksUri != nil {
 		toSerialize["jwks-uri"] = o.JwksUri
+	}
+	if o.JwtTtl != nil {
+		toSerialize["jwt-ttl"] = o.JwtTtl
 	}
 	if true {
 		toSerialize["name"] = o.Name

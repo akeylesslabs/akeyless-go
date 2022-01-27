@@ -27,6 +27,8 @@ type CreateAuthMethodUniversalIdentity struct {
 	DenyRotate *bool `json:"deny-rotate,omitempty"`
 	// if true: enforce role-association must include sub claims
 	ForceSubClaims *bool `json:"force-sub-claims,omitempty"`
+	// Jwt TTL
+	JwtTtl *int64 `json:"jwt-ttl,omitempty"`
 	// Auth Method name
 	Name string `json:"name"`
 	// Required only when the authentication process requires a username and password
@@ -49,6 +51,8 @@ func NewCreateAuthMethodUniversalIdentity(name string, ) *CreateAuthMethodUniver
 	this := CreateAuthMethodUniversalIdentity{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	this.Name = name
 	var ttl int32 = 60
 	this.Ttl = &ttl
@@ -62,6 +66,8 @@ func NewCreateAuthMethodUniversalIdentityWithDefaults() *CreateAuthMethodUnivers
 	this := CreateAuthMethodUniversalIdentity{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	var ttl int32 = 60
 	this.Ttl = &ttl
 	return &this
@@ -225,6 +231,38 @@ func (o *CreateAuthMethodUniversalIdentity) HasForceSubClaims() bool {
 // SetForceSubClaims gets a reference to the given bool and assigns it to the ForceSubClaims field.
 func (o *CreateAuthMethodUniversalIdentity) SetForceSubClaims(v bool) {
 	o.ForceSubClaims = &v
+}
+
+// GetJwtTtl returns the JwtTtl field value if set, zero value otherwise.
+func (o *CreateAuthMethodUniversalIdentity) GetJwtTtl() int64 {
+	if o == nil || o.JwtTtl == nil {
+		var ret int64
+		return ret
+	}
+	return *o.JwtTtl
+}
+
+// GetJwtTtlOk returns a tuple with the JwtTtl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodUniversalIdentity) GetJwtTtlOk() (*int64, bool) {
+	if o == nil || o.JwtTtl == nil {
+		return nil, false
+	}
+	return o.JwtTtl, true
+}
+
+// HasJwtTtl returns a boolean if a field has been set.
+func (o *CreateAuthMethodUniversalIdentity) HasJwtTtl() bool {
+	if o != nil && o.JwtTtl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJwtTtl gets a reference to the given int64 and assigns it to the JwtTtl field.
+func (o *CreateAuthMethodUniversalIdentity) SetJwtTtl(v int64) {
+	o.JwtTtl = &v
 }
 
 // GetName returns the Name field value
@@ -427,6 +465,9 @@ func (o CreateAuthMethodUniversalIdentity) MarshalJSON() ([]byte, error) {
 	}
 	if o.ForceSubClaims != nil {
 		toSerialize["force-sub-claims"] = o.ForceSubClaims
+	}
+	if o.JwtTtl != nil {
+		toSerialize["jwt-ttl"] = o.JwtTtl
 	}
 	if true {
 		toSerialize["name"] = o.Name

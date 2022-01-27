@@ -31,6 +31,8 @@ type UpdateAuthMethodOAuth2 struct {
 	Issuer *string `json:"issuer,omitempty"`
 	// The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server.
 	JwksUri string `json:"jwks-uri"`
+	// Jwt TTL
+	JwtTtl *int64 `json:"jwt-ttl,omitempty"`
 	// Auth Method name
 	Name string `json:"name"`
 	// Auth Method new name
@@ -56,6 +58,8 @@ func NewUpdateAuthMethodOAuth2(jwksUri string, name string, uniqueIdentifier str
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
 	this.JwksUri = jwksUri
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	this.Name = name
 	this.UniqueIdentifier = uniqueIdentifier
 	return &this
@@ -68,6 +72,8 @@ func NewUpdateAuthMethodOAuth2WithDefaults() *UpdateAuthMethodOAuth2 {
 	this := UpdateAuthMethodOAuth2{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	return &this
 }
 
@@ -285,6 +291,38 @@ func (o *UpdateAuthMethodOAuth2) GetJwksUriOk() (*string, bool) {
 // SetJwksUri sets field value
 func (o *UpdateAuthMethodOAuth2) SetJwksUri(v string) {
 	o.JwksUri = v
+}
+
+// GetJwtTtl returns the JwtTtl field value if set, zero value otherwise.
+func (o *UpdateAuthMethodOAuth2) GetJwtTtl() int64 {
+	if o == nil || o.JwtTtl == nil {
+		var ret int64
+		return ret
+	}
+	return *o.JwtTtl
+}
+
+// GetJwtTtlOk returns a tuple with the JwtTtl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAuthMethodOAuth2) GetJwtTtlOk() (*int64, bool) {
+	if o == nil || o.JwtTtl == nil {
+		return nil, false
+	}
+	return o.JwtTtl, true
+}
+
+// HasJwtTtl returns a boolean if a field has been set.
+func (o *UpdateAuthMethodOAuth2) HasJwtTtl() bool {
+	if o != nil && o.JwtTtl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJwtTtl gets a reference to the given int64 and assigns it to the JwtTtl field.
+func (o *UpdateAuthMethodOAuth2) SetJwtTtl(v int64) {
+	o.JwtTtl = &v
 }
 
 // GetName returns the Name field value
@@ -517,6 +555,9 @@ func (o UpdateAuthMethodOAuth2) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["jwks-uri"] = o.JwksUri
+	}
+	if o.JwtTtl != nil {
+		toSerialize["jwt-ttl"] = o.JwtTtl
 	}
 	if true {
 		toSerialize["name"] = o.Name

@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **BoundSaNames** | Pointer to **[]string** | A list of service account names that the access is restricted to | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
 **GenKey** | Pointer to **string** | If this flag is set to true, there is no need to manually provide a public key for the Kubernetes Auth Method, and instead, a key pair, will be generated as part of the command and the private part of the key will be returned (the private key is required for the K8S Auth Config in the Akeyless Gateway) | [optional] [default to "true"]
+**JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] [default to 0]
 **Name** | **string** | Auth Method name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **PublicKey** | Pointer to **string** | Base64-encoded public key text for K8S authentication method is required [RSA2048] | [optional] 
@@ -237,6 +238,31 @@ SetGenKey sets GenKey field to given value.
 `func (o *CreateAuthMethodK8S) HasGenKey() bool`
 
 HasGenKey returns a boolean if a field has been set.
+
+### GetJwtTtl
+
+`func (o *CreateAuthMethodK8S) GetJwtTtl() int64`
+
+GetJwtTtl returns the JwtTtl field if non-nil, zero value otherwise.
+
+### GetJwtTtlOk
+
+`func (o *CreateAuthMethodK8S) GetJwtTtlOk() (*int64, bool)`
+
+GetJwtTtlOk returns a tuple with the JwtTtl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJwtTtl
+
+`func (o *CreateAuthMethodK8S) SetJwtTtl(v int64)`
+
+SetJwtTtl sets JwtTtl field to given value.
+
+### HasJwtTtl
+
+`func (o *CreateAuthMethodK8S) HasJwtTtl() bool`
+
+HasJwtTtl returns a boolean if a field has been set.
 
 ### GetName
 

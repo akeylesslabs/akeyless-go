@@ -31,6 +31,8 @@ type UpdateAuthMethodOIDC struct {
 	ForceSubClaims *bool `json:"force-sub-claims,omitempty"`
 	// Issuer URL
 	Issuer *string `json:"issuer,omitempty"`
+	// Jwt TTL
+	JwtTtl *int64 `json:"jwt-ttl,omitempty"`
 	// Auth Method name
 	Name string `json:"name"`
 	// Auth Method new name
@@ -55,6 +57,8 @@ func NewUpdateAuthMethodOIDC(name string, uniqueIdentifier string, ) *UpdateAuth
 	this := UpdateAuthMethodOIDC{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	this.Name = name
 	this.UniqueIdentifier = uniqueIdentifier
 	return &this
@@ -67,6 +71,8 @@ func NewUpdateAuthMethodOIDCWithDefaults() *UpdateAuthMethodOIDC {
 	this := UpdateAuthMethodOIDC{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	return &this
 }
 
@@ -292,6 +298,38 @@ func (o *UpdateAuthMethodOIDC) HasIssuer() bool {
 // SetIssuer gets a reference to the given string and assigns it to the Issuer field.
 func (o *UpdateAuthMethodOIDC) SetIssuer(v string) {
 	o.Issuer = &v
+}
+
+// GetJwtTtl returns the JwtTtl field value if set, zero value otherwise.
+func (o *UpdateAuthMethodOIDC) GetJwtTtl() int64 {
+	if o == nil || o.JwtTtl == nil {
+		var ret int64
+		return ret
+	}
+	return *o.JwtTtl
+}
+
+// GetJwtTtlOk returns a tuple with the JwtTtl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAuthMethodOIDC) GetJwtTtlOk() (*int64, bool) {
+	if o == nil || o.JwtTtl == nil {
+		return nil, false
+	}
+	return o.JwtTtl, true
+}
+
+// HasJwtTtl returns a boolean if a field has been set.
+func (o *UpdateAuthMethodOIDC) HasJwtTtl() bool {
+	if o != nil && o.JwtTtl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJwtTtl gets a reference to the given int64 and assigns it to the JwtTtl field.
+func (o *UpdateAuthMethodOIDC) SetJwtTtl(v int64) {
+	o.JwtTtl = &v
 }
 
 // GetName returns the Name field value
@@ -524,6 +562,9 @@ func (o UpdateAuthMethodOIDC) MarshalJSON() ([]byte, error) {
 	}
 	if o.Issuer != nil {
 		toSerialize["issuer"] = o.Issuer
+	}
+	if o.JwtTtl != nil {
+		toSerialize["jwt-ttl"] = o.JwtTtl
 	}
 	if true {
 		toSerialize["name"] = o.Name

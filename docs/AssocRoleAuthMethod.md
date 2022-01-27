@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AmName** | **string** | The auth method to associate | 
+**CaseSensitive** | Pointer to **string** |  | [optional] 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **RoleName** | **string** | The role to associate | 
 **SubClaims** | Pointer to **map[string]string** | key/val of sub claims, e.g group&#x3D;admins,developers | [optional] 
@@ -50,6 +51,31 @@ and a boolean to check if the value has been set.
 
 SetAmName sets AmName field to given value.
 
+
+### GetCaseSensitive
+
+`func (o *AssocRoleAuthMethod) GetCaseSensitive() string`
+
+GetCaseSensitive returns the CaseSensitive field if non-nil, zero value otherwise.
+
+### GetCaseSensitiveOk
+
+`func (o *AssocRoleAuthMethod) GetCaseSensitiveOk() (*string, bool)`
+
+GetCaseSensitiveOk returns a tuple with the CaseSensitive field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCaseSensitive
+
+`func (o *AssocRoleAuthMethod) SetCaseSensitive(v string)`
+
+SetCaseSensitive sets CaseSensitive field to given value.
+
+### HasCaseSensitive
+
+`func (o *AssocRoleAuthMethod) HasCaseSensitive() bool`
+
+HasCaseSensitive returns a boolean if a field has been set.
 
 ### GetPassword
 

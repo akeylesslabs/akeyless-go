@@ -29,6 +29,7 @@ type AuthMethodAccessInfo struct {
 	ForceSubClaims *bool `json:"force_sub_claims,omitempty"`
 	GcpAccessRules *GCPAccessRules `json:"gcp_access_rules,omitempty"`
 	HuaweiAccessRules *HuaweiAccessRules `json:"huawei_access_rules,omitempty"`
+	JwtTtl *int64 `json:"jwt_ttl,omitempty"`
 	K8sAccessRules *KubernetesAccessRules `json:"k8s_access_rules,omitempty"`
 	LdapAccessRules *LDAPAccessRules `json:"ldap_access_rules,omitempty"`
 	Oauth2AccessRules *OAuth2AccessRules `json:"oauth2_access_rules,omitempty"`
@@ -375,6 +376,38 @@ func (o *AuthMethodAccessInfo) SetHuaweiAccessRules(v HuaweiAccessRules) {
 	o.HuaweiAccessRules = &v
 }
 
+// GetJwtTtl returns the JwtTtl field value if set, zero value otherwise.
+func (o *AuthMethodAccessInfo) GetJwtTtl() int64 {
+	if o == nil || o.JwtTtl == nil {
+		var ret int64
+		return ret
+	}
+	return *o.JwtTtl
+}
+
+// GetJwtTtlOk returns a tuple with the JwtTtl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodAccessInfo) GetJwtTtlOk() (*int64, bool) {
+	if o == nil || o.JwtTtl == nil {
+		return nil, false
+	}
+	return o.JwtTtl, true
+}
+
+// HasJwtTtl returns a boolean if a field has been set.
+func (o *AuthMethodAccessInfo) HasJwtTtl() bool {
+	if o != nil && o.JwtTtl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJwtTtl gets a reference to the given int64 and assigns it to the JwtTtl field.
+func (o *AuthMethodAccessInfo) SetJwtTtl(v int64) {
+	o.JwtTtl = &v
+}
+
 // GetK8sAccessRules returns the K8sAccessRules field value if set, zero value otherwise.
 func (o *AuthMethodAccessInfo) GetK8sAccessRules() KubernetesAccessRules {
 	if o == nil || o.K8sAccessRules == nil {
@@ -630,6 +663,9 @@ func (o AuthMethodAccessInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.HuaweiAccessRules != nil {
 		toSerialize["huawei_access_rules"] = o.HuaweiAccessRules
+	}
+	if o.JwtTtl != nil {
+		toSerialize["jwt_ttl"] = o.JwtTtl
 	}
 	if o.K8sAccessRules != nil {
 		toSerialize["k8s_access_rules"] = o.K8sAccessRules

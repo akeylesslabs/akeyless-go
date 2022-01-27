@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
 **Issuer** | Pointer to **string** | Issuer URL | [optional] 
 **JwksUri** | **string** | The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. | 
+**JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] [default to 0]
 **Name** | **string** | Auth Method name | 
 **NewName** | Pointer to **string** | Auth Method new name | [optional] 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
@@ -207,6 +208,31 @@ and a boolean to check if the value has been set.
 
 SetJwksUri sets JwksUri field to given value.
 
+
+### GetJwtTtl
+
+`func (o *UpdateAuthMethodOAuth2) GetJwtTtl() int64`
+
+GetJwtTtl returns the JwtTtl field if non-nil, zero value otherwise.
+
+### GetJwtTtlOk
+
+`func (o *UpdateAuthMethodOAuth2) GetJwtTtlOk() (*int64, bool)`
+
+GetJwtTtlOk returns a tuple with the JwtTtl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJwtTtl
+
+`func (o *UpdateAuthMethodOAuth2) SetJwtTtl(v int64)`
+
+SetJwtTtl sets JwtTtl field to given value.
+
+### HasJwtTtl
+
+`func (o *UpdateAuthMethodOAuth2) HasJwtTtl() bool`
+
+HasJwtTtl returns a boolean if a field has been set.
 
 ### GetName
 

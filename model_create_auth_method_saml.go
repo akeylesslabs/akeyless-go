@@ -27,6 +27,8 @@ type CreateAuthMethodSAML struct {
 	ForceSubClaims *bool `json:"force-sub-claims,omitempty"`
 	// IDP metadata url
 	IdpMetadataUrl *string `json:"idp-metadata-url,omitempty"`
+	// Jwt TTL
+	JwtTtl *int64 `json:"jwt-ttl,omitempty"`
 	// Auth Method name
 	Name string `json:"name"`
 	// Required only when the authentication process requires a username and password
@@ -49,6 +51,8 @@ func NewCreateAuthMethodSAML(name string, uniqueIdentifier string, ) *CreateAuth
 	this := CreateAuthMethodSAML{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	this.Name = name
 	this.UniqueIdentifier = uniqueIdentifier
 	return &this
@@ -61,6 +65,8 @@ func NewCreateAuthMethodSAMLWithDefaults() *CreateAuthMethodSAML {
 	this := CreateAuthMethodSAML{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	return &this
 }
 
@@ -222,6 +228,38 @@ func (o *CreateAuthMethodSAML) HasIdpMetadataUrl() bool {
 // SetIdpMetadataUrl gets a reference to the given string and assigns it to the IdpMetadataUrl field.
 func (o *CreateAuthMethodSAML) SetIdpMetadataUrl(v string) {
 	o.IdpMetadataUrl = &v
+}
+
+// GetJwtTtl returns the JwtTtl field value if set, zero value otherwise.
+func (o *CreateAuthMethodSAML) GetJwtTtl() int64 {
+	if o == nil || o.JwtTtl == nil {
+		var ret int64
+		return ret
+	}
+	return *o.JwtTtl
+}
+
+// GetJwtTtlOk returns a tuple with the JwtTtl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodSAML) GetJwtTtlOk() (*int64, bool) {
+	if o == nil || o.JwtTtl == nil {
+		return nil, false
+	}
+	return o.JwtTtl, true
+}
+
+// HasJwtTtl returns a boolean if a field has been set.
+func (o *CreateAuthMethodSAML) HasJwtTtl() bool {
+	if o != nil && o.JwtTtl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJwtTtl gets a reference to the given int64 and assigns it to the JwtTtl field.
+func (o *CreateAuthMethodSAML) SetJwtTtl(v int64) {
+	o.JwtTtl = &v
 }
 
 // GetName returns the Name field value
@@ -416,6 +454,9 @@ func (o CreateAuthMethodSAML) MarshalJSON() ([]byte, error) {
 	}
 	if o.IdpMetadataUrl != nil {
 		toSerialize["idp-metadata-url"] = o.IdpMetadataUrl
+	}
+	if o.JwtTtl != nil {
+		toSerialize["jwt-ttl"] = o.JwtTtl
 	}
 	if true {
 		toSerialize["name"] = o.Name

@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **BoundServiceAccounts** | Pointer to **[]string** | List of service accounts the service account must be part of in order to be authenticated. | [optional] 
 **BoundZones** | Pointer to **[]string** | &#x3D;&#x3D;&#x3D; Machine authentication section &#x3D;&#x3D;&#x3D; List of zones that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a zonal group and the group must belong to this zone. | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
+**JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] [default to 0]
 **Name** | **string** | Auth Method name | 
 **NewName** | Pointer to **string** | Auth Method new name | [optional] 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
@@ -260,6 +261,31 @@ SetForceSubClaims sets ForceSubClaims field to given value.
 `func (o *UpdateAuthMethodGCP) HasForceSubClaims() bool`
 
 HasForceSubClaims returns a boolean if a field has been set.
+
+### GetJwtTtl
+
+`func (o *UpdateAuthMethodGCP) GetJwtTtl() int64`
+
+GetJwtTtl returns the JwtTtl field if non-nil, zero value otherwise.
+
+### GetJwtTtlOk
+
+`func (o *UpdateAuthMethodGCP) GetJwtTtlOk() (*int64, bool)`
+
+GetJwtTtlOk returns a tuple with the JwtTtl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJwtTtl
+
+`func (o *UpdateAuthMethodGCP) SetJwtTtl(v int64)`
+
+SetJwtTtl sets JwtTtl field to given value.
+
+### HasJwtTtl
+
+`func (o *UpdateAuthMethodGCP) HasJwtTtl() bool`
+
+HasJwtTtl returns a boolean if a field has been set.
 
 ### GetName
 

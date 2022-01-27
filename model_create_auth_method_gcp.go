@@ -35,6 +35,8 @@ type CreateAuthMethodGCP struct {
 	BoundZones *[]string `json:"bound-zones,omitempty"`
 	// if true: enforce role-association must include sub claims
 	ForceSubClaims *bool `json:"force-sub-claims,omitempty"`
+	// Jwt TTL
+	JwtTtl *int64 `json:"jwt-ttl,omitempty"`
 	// Auth Method name
 	Name string `json:"name"`
 	// Required only when the authentication process requires a username and password
@@ -60,6 +62,8 @@ func NewCreateAuthMethodGCP(audience string, name string, type_ string, ) *Creat
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
 	this.Audience = audience
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	this.Name = name
 	this.Type = type_
 	return &this
@@ -74,6 +78,8 @@ func NewCreateAuthMethodGCPWithDefaults() *CreateAuthMethodGCP {
 	this.AccessExpires = &accessExpires
 	var audience string = "akeyless.io"
 	this.Audience = audience
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	return &this
 }
 
@@ -357,6 +363,38 @@ func (o *CreateAuthMethodGCP) SetForceSubClaims(v bool) {
 	o.ForceSubClaims = &v
 }
 
+// GetJwtTtl returns the JwtTtl field value if set, zero value otherwise.
+func (o *CreateAuthMethodGCP) GetJwtTtl() int64 {
+	if o == nil || o.JwtTtl == nil {
+		var ret int64
+		return ret
+	}
+	return *o.JwtTtl
+}
+
+// GetJwtTtlOk returns a tuple with the JwtTtl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodGCP) GetJwtTtlOk() (*int64, bool) {
+	if o == nil || o.JwtTtl == nil {
+		return nil, false
+	}
+	return o.JwtTtl, true
+}
+
+// HasJwtTtl returns a boolean if a field has been set.
+func (o *CreateAuthMethodGCP) HasJwtTtl() bool {
+	if o != nil && o.JwtTtl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJwtTtl gets a reference to the given int64 and assigns it to the JwtTtl field.
+func (o *CreateAuthMethodGCP) SetJwtTtl(v int64) {
+	o.JwtTtl = &v
+}
+
 // GetName returns the Name field value
 func (o *CreateAuthMethodGCP) GetName() string {
 	if o == nil  {
@@ -593,6 +631,9 @@ func (o CreateAuthMethodGCP) MarshalJSON() ([]byte, error) {
 	}
 	if o.ForceSubClaims != nil {
 		toSerialize["force-sub-claims"] = o.ForceSubClaims
+	}
+	if o.JwtTtl != nil {
+		toSerialize["jwt-ttl"] = o.JwtTtl
 	}
 	if true {
 		toSerialize["name"] = o.Name

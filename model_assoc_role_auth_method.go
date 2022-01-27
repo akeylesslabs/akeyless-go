@@ -19,6 +19,7 @@ import (
 type AssocRoleAuthMethod struct {
 	// The auth method to associate
 	AmName string `json:"am-name"`
+	CaseSensitive *string `json:"case-sensitive,omitempty"`
 	// Required only when the authentication process requires a username and password
 	Password *string `json:"password,omitempty"`
 	// The role to associate
@@ -74,6 +75,38 @@ func (o *AssocRoleAuthMethod) GetAmNameOk() (*string, bool) {
 // SetAmName sets field value
 func (o *AssocRoleAuthMethod) SetAmName(v string) {
 	o.AmName = v
+}
+
+// GetCaseSensitive returns the CaseSensitive field value if set, zero value otherwise.
+func (o *AssocRoleAuthMethod) GetCaseSensitive() string {
+	if o == nil || o.CaseSensitive == nil {
+		var ret string
+		return ret
+	}
+	return *o.CaseSensitive
+}
+
+// GetCaseSensitiveOk returns a tuple with the CaseSensitive field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssocRoleAuthMethod) GetCaseSensitiveOk() (*string, bool) {
+	if o == nil || o.CaseSensitive == nil {
+		return nil, false
+	}
+	return o.CaseSensitive, true
+}
+
+// HasCaseSensitive returns a boolean if a field has been set.
+func (o *AssocRoleAuthMethod) HasCaseSensitive() bool {
+	if o != nil && o.CaseSensitive != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCaseSensitive gets a reference to the given string and assigns it to the CaseSensitive field.
+func (o *AssocRoleAuthMethod) SetCaseSensitive(v string) {
+	o.CaseSensitive = &v
 }
 
 // GetPassword returns the Password field value if set, zero value otherwise.
@@ -264,6 +297,9 @@ func (o AssocRoleAuthMethod) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["am-name"] = o.AmName
+	}
+	if o.CaseSensitive != nil {
+		toSerialize["case-sensitive"] = o.CaseSensitive
 	}
 	if o.Password != nil {
 		toSerialize["password"] = o.Password

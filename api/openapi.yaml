@@ -2502,6 +2502,33 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /gateway-update-k8s-auth-config:
+    post:
+      operationId: gatewayUpdateK8SAuthConfig
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayUpdateK8SAuthConfig'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayUpdateK8SAuthConfigOutput'
+          description: gatewayUpdateK8SAuthConfigResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /gateway-update-producer-artifactory:
     post:
       operationId: gatewayUpdateProducerArtifactory
@@ -3089,6 +3116,33 @@ paths:
             field.
       tags:
       - v2
+  /get-account-settings:
+    post:
+      operationId: getAccountSettings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/getAccountSettings'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAccountSettingsCommandOutput'
+          description: getAccountSettingsResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /get-auth-method:
     post:
       operationId: getAuthMethod
@@ -3935,6 +3989,26 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /revoke-creds:
+    post:
+      operationId: revoke-creds
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/revokeCredsOutput'
+          description: revokeCredsResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
   /rollback-secret:
     post:
       operationId: rollbackSecret
@@ -4275,6 +4349,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/uidRotateTokenOutput'
           description: uidRotateTokenResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /update-account-settings:
+    post:
+      operationId: updateAccountSettings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateAccountSettings'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/updateAccountSettingsOutput'
+          description: updateAccountSettingsResponse wraps response body.
         default:
           content:
             application/json:
@@ -6007,6 +6108,12 @@ components:
           schema:
             $ref: '#/components/schemas/gatewayUpdateItemOutput'
       description: gatewayUpdateItemResponse wraps response body.
+    gatewayUpdateK8SAuthConfigResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayUpdateK8SAuthConfigOutput'
+      description: gatewayUpdateK8SAuthConfigResponse wraps response body.
     gatewayUpdateProducerArtifactoryResponse:
       content:
         application/json:
@@ -6151,6 +6258,12 @@ components:
               type: string
             type: object
       description: getAccountLogoResponse wraps response body.
+    getAccountSettingsResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GetAccountSettingsCommandOutput'
+      description: getAccountSettingsResponse wraps response body.
     getAuthMethodResponse:
       content:
         application/json:
@@ -6352,6 +6465,12 @@ components:
           schema:
             $ref: '#/components/schemas/ReverseRBACOutput'
       description: reverseRBACResponse wraps response body.
+    revokeCredsResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/revokeCredsOutput'
+      description: revokeCredsResponse wraps response body.
     rollbackSecretResponse:
       content:
         application/json:
@@ -6442,6 +6561,12 @@ components:
           schema:
             $ref: '#/components/schemas/updateAWSTargetOutput'
       description: updateAWSTargetResponse wraps response body.
+    updateAccountSettingsResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/updateAccountSettingsOutput'
+      description: updateAccountSettingsResponse wraps response body.
     updateArtifactoryTargetResponse:
       content:
         application/json:
@@ -7253,6 +7378,7 @@ components:
         - client_permissions
         - client_permissions
         access_info:
+          jwt_ttl: 6
           gcp_access_rules:
             bound_service_accounts:
             - bound_service_accounts
@@ -7302,7 +7428,7 @@ components:
             issuer: issuer
           universal_identity_access_rules:
             deny_inheritance: true
-            ttl: 6
+            ttl: 1
             deny_rotate: true
           oauth2_access_rules:
             bound_claims:
@@ -7455,6 +7581,7 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     AuthMethodAccessInfo:
       example:
+        jwt_ttl: 6
         gcp_access_rules:
           bound_service_accounts:
           - bound_service_accounts
@@ -7504,7 +7631,7 @@ components:
           issuer: issuer
         universal_identity_access_rules:
           deny_inheritance: true
-          ttl: 6
+          ttl: 1
           deny_rotate: true
         oauth2_access_rules:
           bound_claims:
@@ -7659,6 +7786,10 @@ components:
           $ref: '#/components/schemas/GCPAccessRules'
         huawei_access_rules:
           $ref: '#/components/schemas/HuaweiAccessRules'
+        jwt_ttl:
+          format: int64
+          type: integer
+          x-go-name: JwtTtl
         k8s_access_rules:
           $ref: '#/components/schemas/KubernetesAccessRules'
         ldap_access_rules:
@@ -8643,6 +8774,27 @@ components:
           x-go-name: Fragments
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/sdk/config
+    CustomerFullAddress:
+      example:
+        country: country
+        city: city
+        street: street
+        postal_code: postal_code
+      properties:
+        city:
+          type: string
+          x-go-name: City
+        country:
+          type: string
+          x-go-name: Country
+        postal_code:
+          type: string
+          x-go-name: PostalCode
+        street:
+          type: string
+          x-go-name: Street
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     DSProducerDetails:
       example:
         gke_cluster_endpoint: gke_cluster_endpoint
@@ -9625,6 +9777,12 @@ components:
         display_name: display_name
       properties:
         akeyless_url:
+          description: |-
+            AkeylessUrl is here for BC only. Gator will still return it if it exists in
+            the configuration, but new clients (>=2.34.0) will ignore it and override it with what exists in
+            their local file.
+            It will no longer be sent to Gator for update, so new clusters will only have
+            the default value saved in the DB.
           type: string
           x-go-name: AkeylessUrl
         api_token_ttl:
@@ -9659,6 +9817,53 @@ components:
           x-go-name: TLSKey
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    GetAccountSettingsCommandOutput:
+      example:
+        secure_remote_access:
+          package: package
+          user_type: user_type
+          tier: tier
+        account_id: account_id
+        address:
+          country: country
+          city: city
+          street: street
+          postal_code: postal_code
+        phone: phone
+        company_name: company_name
+        secret_management:
+          package: package
+          tier: tier
+        system_access_creds_settings:
+          jwt_ttl_maximum: 6
+          jwt_ttl_minimum: 1
+          jwt_ttl_default: 0
+        email: email
+      properties:
+        account_id:
+          type: string
+          x-go-name: AccountID
+        address:
+          $ref: '#/components/schemas/CustomerFullAddress'
+        company_name:
+          type: string
+          x-go-name: CompanyName
+        email:
+          type: string
+          x-go-name: CustomerEmail
+        phone:
+          type: string
+          x-go-name: CustomerPhone
+        secret_management:
+          $ref: '#/components/schemas/SmInfo'
+        secure_remote_access:
+          $ref: '#/components/schemas/SraInfo'
+        system_access_creds_settings:
+          $ref: '#/components/schemas/SystemAccessCredsSettings'
+      title: GetAccountSettingsCommandOutput defines cli output of get-account-settings
+        command.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     GetPKICertificate:
       example:
         alt-names: alt-names
@@ -11278,6 +11483,7 @@ components:
           - client_permissions
           - client_permissions
           access_info:
+            jwt_ttl: 6
             gcp_access_rules:
               bound_service_accounts:
               - bound_service_accounts
@@ -11327,7 +11533,7 @@ components:
               issuer: issuer
             universal_identity_access_rules:
               deny_inheritance: true
-              ttl: 6
+              ttl: 1
               deny_rotate: true
             oauth2_access_rules:
               bound_claims:
@@ -11497,6 +11703,7 @@ components:
           - client_permissions
           - client_permissions
           access_info:
+            jwt_ttl: 6
             gcp_access_rules:
               bound_service_accounts:
               - bound_service_accounts
@@ -11546,7 +11753,7 @@ components:
               issuer: issuer
             universal_identity_access_rules:
               deny_inheritance: true
-              ttl: 6
+              ttl: 1
               deny_rotate: true
             oauth2_access_rules:
               bound_claims:
@@ -13748,6 +13955,19 @@ components:
     SecureRemoteAccessCategory:
       type: string
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    SmInfo:
+      example:
+        package: package
+        tier: tier
+      properties:
+        package:
+          type: string
+          x-go-name: Package
+        tier:
+          type: string
+          x-go-name: Tier
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     SplunkLogForwardingConfig:
       example:
         splunk_token: splunk_token
@@ -13773,6 +13993,23 @@ components:
           x-go-name: SplunkUrl
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    SraInfo:
+      example:
+        package: package
+        user_type: user_type
+        tier: tier
+      properties:
+        package:
+          type: string
+          x-go-name: Package
+        tier:
+          type: string
+          x-go-name: Tier
+        user_type:
+          type: string
+          x-go-name: UserType
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     SyslogLogForwardingConfig:
       example:
         syslog_host: syslog_host
@@ -13818,6 +14055,28 @@ components:
         Auth, UAM and KFMs instances.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/auth
+    SystemAccessCredsSettings:
+      description: SystemAccessCredsSettings describes system access credential settings
+        for account by minutes
+      example:
+        jwt_ttl_maximum: 6
+        jwt_ttl_minimum: 1
+        jwt_ttl_default: 0
+      properties:
+        jwt_ttl_default:
+          format: int64
+          type: integer
+          x-go-name: JwtTtlDefault
+        jwt_ttl_maximum:
+          format: int64
+          type: integer
+          x-go-name: JwtTtlMaximum
+        jwt_ttl_minimum:
+          format: int64
+          type: integer
+          x-go-name: JwtTtlMinimum
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     Target:
       example:
         last_version: 0
@@ -14404,7 +14663,7 @@ components:
     UniversalIdentityAccessRules:
       example:
         deny_inheritance: true
-        ttl: 6
+        ttl: 1
         deny_rotate: true
       properties:
         deny_inheritance:
@@ -14646,6 +14905,9 @@ components:
           description: The auth method to associate
           type: string
           x-go-name: AuthMethodName
+        case-sensitive:
+          type: string
+          x-go-name: IsSubClaimsCaseSensitive
         password:
           description: Required only when the authentication process requires a username
             and password
@@ -15083,6 +15345,12 @@ components:
           description: 'if true: enforce role-association must include sub claims'
           type: boolean
           x-go-name: ForceSubClaims
+        jwt-ttl:
+          default: 0
+          description: Jwt TTL
+          format: int64
+          type: integer
+          x-go-name: JwtTtl
         name:
           description: Auth Method name
           type: string
@@ -15178,6 +15446,12 @@ components:
           description: 'if true: enforce role-association must include sub claims'
           type: boolean
           x-go-name: ForceSubClaims
+        jwt-ttl:
+          default: 0
+          description: Jwt TTL
+          format: int64
+          type: integer
+          x-go-name: JwtTtl
         name:
           description: Auth Method name
           type: string
@@ -15322,6 +15596,12 @@ components:
             authorization server.
           type: string
           x-go-name: JWKeySetURL
+        jwt-ttl:
+          default: 0
+          description: Jwt TTL
+          format: int64
+          type: integer
+          x-go-name: JwtTtl
         name:
           description: Auth Method name
           type: string
@@ -15430,6 +15710,12 @@ components:
           description: 'if true: enforce role-association must include sub claims'
           type: boolean
           x-go-name: ForceSubClaims
+        jwt-ttl:
+          default: 0
+          description: Jwt TTL
+          format: int64
+          type: integer
+          x-go-name: JwtTtl
         name:
           description: Auth Method name
           type: string
@@ -15509,7 +15795,8 @@ components:
           type: array
           x-go-name: BoundDomainIDName
         bound-ips:
-          description: A CIDR whitelist of the IPs that the access is restricted to
+          description: A CIDR whitelist with the IPs that the access is restricted
+            to
           items:
             type: string
           type: array
@@ -15542,6 +15829,12 @@ components:
           description: 'if true: enforce role-association must include sub claims'
           type: boolean
           x-go-name: ForceSubClaims
+        jwt-ttl:
+          default: 0
+          description: Jwt TTL
+          format: int64
+          type: integer
+          x-go-name: JwtTtl
         name:
           description: Auth Method name
           type: string
@@ -15636,6 +15929,12 @@ components:
             in the Akeyless Gateway)
           type: string
           x-go-name: GenerateKeyPair
+        jwt-ttl:
+          default: 0
+          description: Jwt TTL
+          format: int64
+          type: integer
+          x-go-name: JwtTtl
         name:
           description: Auth Method name
           type: string
@@ -15706,6 +16005,12 @@ components:
           description: 'if true: enforce role-association must include sub claims'
           type: boolean
           x-go-name: ForceSubClaims
+        jwt-ttl:
+          default: 0
+          description: Jwt TTL
+          format: int64
+          type: integer
+          x-go-name: JwtTtl
         name:
           description: Auth Method name
           type: string
@@ -15788,6 +16093,12 @@ components:
             authorization server.
           type: string
           x-go-name: JWKeySetURL
+        jwt-ttl:
+          default: 0
+          description: Jwt TTL
+          format: int64
+          type: integer
+          x-go-name: JwtTtl
         name:
           description: Auth Method name
           type: string
@@ -15881,6 +16192,12 @@ components:
           description: Issuer URL
           type: string
           x-go-name: Issuer
+        jwt-ttl:
+          default: 0
+          description: Jwt TTL
+          format: int64
+          type: integer
+          x-go-name: JwtTtl
         name:
           description: Auth Method name
           type: string
@@ -15982,6 +16299,12 @@ components:
           description: IDP metadata url
           type: string
           x-go-name: IDPMetadataURL
+        jwt-ttl:
+          default: 0
+          description: Jwt TTL
+          format: int64
+          type: integer
+          x-go-name: JwtTtl
         name:
           description: Auth Method name
           type: string
@@ -16064,6 +16387,12 @@ components:
           description: 'if true: enforce role-association must include sub claims'
           type: boolean
           x-go-name: ForceSubClaims
+        jwt-ttl:
+          default: 0
+          description: Jwt TTL
+          format: int64
+          type: integer
+          x-go-name: JwtTtl
         name:
           description: Auth Method name
           type: string
@@ -25103,6 +25432,148 @@ components:
           x-go-name: Name
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayUpdateK8SAuthConfig:
+      description: gatewayUpdateK8SAuth is a command that updates k8s auth config
+      properties:
+        access-id:
+          description: The access ID of the Kubernetes auth method
+          type: string
+          x-go-name: AuthMethodAccessId
+        config-encryption-key-name:
+          description: Config encryption key
+          type: string
+          x-go-name: ConfigEncryptionKey
+        k8s-ca-cert:
+          description: The CA Cert (in PEM format) to use to call into the kubernetes
+            API server
+          type: string
+          x-go-name: K8SCACert
+        k8s-host:
+          description: The URL of the kubernetes API server
+          type: string
+          x-go-name: K8SHost
+        k8s-issuer:
+          description: The Kubernetes JWT issuer name. If not set, kubernetes/serviceaccount
+            will use as an issuer.
+          type: string
+          x-go-name: K8SIssuer
+        name:
+          description: K8S Auth config name
+          type: string
+          x-go-name: K8SAuthConfigName
+        new-name:
+          description: K8S Auth config new name
+          type: string
+          x-go-name: K8SAuthConfigNewName
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        signing-key:
+          description: The private key (in base64 encoded of the PEM format) associated
+            with the public key defined in the Kubernetes auth
+          type: string
+          x-go-name: AuthMethodSigningKey
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        token-exp:
+          description: Time in seconds of expiration of the Akeyless Kube Auth Method
+            token
+          format: int64
+          type: integer
+          x-go-name: AuthMethodTokenExpiration
+        token-reviewer-jwt:
+          description: |-
+            A Kubernetes service account JWT used to access the TokenReview API to validate other JWTs.
+            If not set, the JWT submitted in the authentication process will be used to access the Kubernetes TokenReview API.
+          type: string
+          x-go-name: K8STokenReviewerJWT
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+      required:
+      - access-id
+      - k8s-host
+      - name
+      - new-name
+      - signing-key
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayUpdateK8SAuthConfigOutput:
+      example:
+        cluster_id: cluster_id
+        total_hash: total_hash
+        parts_change:
+          required_activity:
+            migrations_required_activity:
+              key: true
+          last_change:
+            last_k8s_auths_change:
+              created_k8s_auths_ids:
+              - created_k8s_auths_ids
+              - created_k8s_auths_ids
+              deleted_k8s_auths_ids:
+              - deleted_k8s_auths_ids
+              - deleted_k8s_auths_ids
+              changed_k8s_auths_ids:
+              - changed_k8s_auths_ids
+              - changed_k8s_auths_ids
+            last_migrations_change:
+              deleted_migrations:
+              - deleted_migrations
+              - deleted_migrations
+              changed_migrations:
+              - changed_migrations
+              - changed_migrations
+              created_migrations:
+              - created_migrations
+              - created_migrations
+          last_status:
+            migrations_status:
+              last_messages:
+                key: last_messages
+              last_statuses:
+                key: last_statuses
+            producers_errors: '{}'
+          update_stamp: 0
+          config_hash:
+            k8s_auths: k8s_auths
+            cache: cache
+            universal_identity: universal_identity
+            customer_fragements: customer_fragements
+            m_queue: m_queue
+            producers: '{}'
+            general: general
+            ldap: ldap
+            migrations: migrations
+            leadership: leadership
+            log_forwarding: log_forwarding
+            saml: saml
+            kmip: kmip
+            admins: admins
+            rotators: '{}'
+      properties:
+        cluster_id:
+          type: string
+          x-go-name: ClusterId
+        parts_change:
+          $ref: '#/components/schemas/ConfigChange'
+        total_hash:
+          type: string
+          x-go-name: TotalHash
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     gatewayUpdateProducerArtifactory:
       description: gatewayUpdateProducerArtifactory is a command that updates artifactory
         producer
@@ -31001,6 +31472,31 @@ components:
       title: genCustomerFragment is a command that generates customer fragment.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    getAccountSettings:
+      properties:
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+      title: getAccountSettings is a command that returns account settings.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     getAuthMethod:
       properties:
         name:
@@ -32236,6 +32732,36 @@ components:
       - type
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    revokeCreds:
+      description: |-
+        revokeCreds will permanently revoke the credentials associated with the
+        provided token or profile.
+      properties:
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    revokeCredsOutput:
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     rollbackSecret:
       properties:
         name:
@@ -33046,6 +33572,79 @@ components:
     updateAWSTargetOutput:
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    updateAccountSettings:
+      properties:
+        address:
+          description: Address
+          type: string
+          x-go-name: Address
+        city:
+          description: City
+          type: string
+          x-go-name: City
+        company-name:
+          description: Company name
+          type: string
+          x-go-name: CompanyName
+        country:
+          description: Country
+          type: string
+          x-go-name: Country
+        jwt-ttl-default:
+          description: Default ttl
+          format: int64
+          type: integer
+          x-go-name: JwtTtlDefault
+        jwt-ttl-max:
+          description: Maximum ttl
+          format: int64
+          type: integer
+          x-go-name: JwtTtlMax
+        jwt-ttl-min:
+          description: Minimum ttl
+          format: int64
+          type: integer
+          x-go-name: JwtTtlMin
+        password:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Password
+        phone:
+          description: Phone number
+          type: string
+          x-go-name: Phone
+        postal-code:
+          description: Postal code
+          type: string
+          x-go-name: PostalCode
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        username:
+          description: Required only when the authentication process requires a username
+            and password
+          type: string
+          x-go-name: Username
+      title: updateAccountSettings is a command that updates an existing account.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    updateAccountSettingsOutput:
+      example:
+        updated: true
+      properties:
+        updated:
+          type: boolean
+          x-go-name: Updated
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     updateArtifactoryTarget:
       properties:
         artifactory-admin-name:
@@ -33184,6 +33783,12 @@ components:
           description: 'if true: enforce role-association must include sub claims'
           type: boolean
           x-go-name: ForceSubClaims
+        jwt-ttl:
+          default: 0
+          description: Jwt TTL
+          format: int64
+          type: integer
+          x-go-name: JwtTtl
         name:
           description: Auth Method name
           type: string
@@ -33283,6 +33888,12 @@ components:
           description: 'if true: enforce role-association must include sub claims'
           type: boolean
           x-go-name: ForceSubClaims
+        jwt-ttl:
+          default: 0
+          description: Jwt TTL
+          format: int64
+          type: integer
+          x-go-name: JwtTtl
         name:
           description: Auth Method name
           type: string
@@ -33425,6 +34036,12 @@ components:
             authorization server.
           type: string
           x-go-name: JWKeySetURL
+        jwt-ttl:
+          default: 0
+          description: Jwt TTL
+          format: int64
+          type: integer
+          x-go-name: JwtTtl
         name:
           description: Auth Method name
           type: string
@@ -33531,6 +34148,12 @@ components:
           description: 'if true: enforce role-association must include sub claims'
           type: boolean
           x-go-name: ForceSubClaims
+        jwt-ttl:
+          default: 0
+          description: Jwt TTL
+          format: int64
+          type: integer
+          x-go-name: JwtTtl
         name:
           description: Auth Method name
           type: string
@@ -33634,6 +34257,12 @@ components:
             in the Akeyless Gateway)
           type: string
           x-go-name: GenerateKeyPair
+        jwt-ttl:
+          default: 0
+          description: Jwt TTL
+          format: int64
+          type: integer
+          x-go-name: JwtTtl
         name:
           description: Auth Method name
           type: string
@@ -33704,6 +34333,12 @@ components:
           description: 'if true: enforce role-association must include sub claims'
           type: boolean
           x-go-name: ForceSubClaims
+        jwt-ttl:
+          default: 0
+          description: Jwt TTL
+          format: int64
+          type: integer
+          x-go-name: JwtTtl
         name:
           description: Auth Method name
           type: string
@@ -33784,6 +34419,12 @@ components:
             authorization server.
           type: string
           x-go-name: JWKeySetURL
+        jwt-ttl:
+          default: 0
+          description: Jwt TTL
+          format: int64
+          type: integer
+          x-go-name: JwtTtl
         name:
           description: Auth Method name
           type: string
@@ -33875,6 +34516,12 @@ components:
           description: Issuer URL
           type: string
           x-go-name: Issuer
+        jwt-ttl:
+          default: 0
+          description: Jwt TTL
+          format: int64
+          type: integer
+          x-go-name: JwtTtl
         name:
           description: Auth Method name
           type: string
@@ -33966,6 +34613,12 @@ components:
           description: IDP metadata url
           type: string
           x-go-name: IDPMetadataURL
+        jwt-ttl:
+          default: 0
+          description: Jwt TTL
+          format: int64
+          type: integer
+          x-go-name: JwtTtl
         name:
           description: Auth Method name
           type: string
@@ -34046,6 +34699,12 @@ components:
           description: 'if true: enforce role-association must include sub claims'
           type: boolean
           x-go-name: ForceSubClaims
+        jwt-ttl:
+          default: 0
+          description: Jwt TTL
+          format: int64
+          type: integer
+          x-go-name: JwtTtl
         name:
           description: Auth Method name
           type: string
@@ -35043,6 +35702,12 @@ components:
             and password
           type: string
           x-go-name: Password
+        sra-reports-access:
+          description: |-
+            Allow this role to view SRA Clusters. Currently only 'none', 'own',
+            'all' values are supported.
+          type: string
+          x-go-name: SRAReportsAccess
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string

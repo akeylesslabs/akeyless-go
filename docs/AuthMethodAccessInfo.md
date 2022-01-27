@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **ForceSubClaims** | Pointer to **bool** | if true the role associated with this auth method must include sub claims | [optional] 
 **GcpAccessRules** | Pointer to [**GCPAccessRules**](GCPAccessRules.md) |  | [optional] 
 **HuaweiAccessRules** | Pointer to [**HuaweiAccessRules**](HuaweiAccessRules.md) |  | [optional] 
+**JwtTtl** | Pointer to **int64** |  | [optional] 
 **K8sAccessRules** | Pointer to [**KubernetesAccessRules**](KubernetesAccessRules.md) |  | [optional] 
 **LdapAccessRules** | Pointer to [**LDAPAccessRules**](LDAPAccessRules.md) |  | [optional] 
 **Oauth2AccessRules** | Pointer to [**OAuth2AccessRules**](OAuth2AccessRules.md) |  | [optional] 
@@ -290,6 +291,31 @@ SetHuaweiAccessRules sets HuaweiAccessRules field to given value.
 `func (o *AuthMethodAccessInfo) HasHuaweiAccessRules() bool`
 
 HasHuaweiAccessRules returns a boolean if a field has been set.
+
+### GetJwtTtl
+
+`func (o *AuthMethodAccessInfo) GetJwtTtl() int64`
+
+GetJwtTtl returns the JwtTtl field if non-nil, zero value otherwise.
+
+### GetJwtTtlOk
+
+`func (o *AuthMethodAccessInfo) GetJwtTtlOk() (*int64, bool)`
+
+GetJwtTtlOk returns a tuple with the JwtTtl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJwtTtl
+
+`func (o *AuthMethodAccessInfo) SetJwtTtl(v int64)`
+
+SetJwtTtl sets JwtTtl field to given value.
+
+### HasJwtTtl
+
+`func (o *AuthMethodAccessInfo) HasJwtTtl() bool`
+
+HasJwtTtl returns a boolean if a field has been set.
 
 ### GetK8sAccessRules
 

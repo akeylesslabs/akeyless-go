@@ -96,6 +96,7 @@ Method | HTTP request | Description
 [**GatewayStopProducer**](V2Api.md#GatewayStopProducer) | **Post** /gateway-stop-producer | 
 [**GatewaySyncMigration**](V2Api.md#GatewaySyncMigration) | **Post** /gateway-sync-migration | 
 [**GatewayUpdateItem**](V2Api.md#GatewayUpdateItem) | **Post** /gateway-update-item | 
+[**GatewayUpdateK8SAuthConfig**](V2Api.md#GatewayUpdateK8SAuthConfig) | **Post** /gateway-update-k8s-auth-config | 
 [**GatewayUpdateProducerArtifactory**](V2Api.md#GatewayUpdateProducerArtifactory) | **Post** /gateway-update-producer-artifactory | 
 [**GatewayUpdateProducerAws**](V2Api.md#GatewayUpdateProducerAws) | **Post** /gateway-update-producer-aws | 
 [**GatewayUpdateProducerAzure**](V2Api.md#GatewayUpdateProducerAzure) | **Post** /gateway-update-producer-azure | 
@@ -118,6 +119,7 @@ Method | HTTP request | Description
 [**GatewayUpdateProducerSnowflake**](V2Api.md#GatewayUpdateProducerSnowflake) | **Post** /gateway-update-producer-snowflake | 
 [**GatewayUpdateTmpUsers**](V2Api.md#GatewayUpdateTmpUsers) | **Post** /gateway-update-producer-tmp-creds | 
 [**GetAccountLogo**](V2Api.md#GetAccountLogo) | **Post** /get-account-logo | 
+[**GetAccountSettings**](V2Api.md#GetAccountSettings) | **Post** /get-account-settings | 
 [**GetAuthMethod**](V2Api.md#GetAuthMethod) | **Post** /get-auth-method | 
 [**GetDynamicSecretValue**](V2Api.md#GetDynamicSecretValue) | **Post** /get-dynamic-secret-value | 
 [**GetKubeExecCreds**](V2Api.md#GetKubeExecCreds) | **Post** /get-kube-exec-creds | 
@@ -149,6 +151,7 @@ Method | HTTP request | Description
 [**RawCreds**](V2Api.md#RawCreds) | **Post** /raw-creds | 
 [**RefreshKey**](V2Api.md#RefreshKey) | **Post** /refresh-key | 
 [**ReverseRBAC**](V2Api.md#ReverseRBAC) | **Post** /reverse-rbac | 
+[**RevokeCreds**](V2Api.md#RevokeCreds) | **Post** /revoke-creds | 
 [**RollbackSecret**](V2Api.md#RollbackSecret) | **Post** /rollback-secret | 
 [**RotateKey**](V2Api.md#RotateKey) | **Post** /rotate-key | 
 [**SetItemState**](V2Api.md#SetItemState) | **Post** /set-item-state | 
@@ -164,6 +167,7 @@ Method | HTTP request | Description
 [**UidRotateToken**](V2Api.md#UidRotateToken) | **Post** /uid-rotate-token | 
 [**UpdateAWSTarget**](V2Api.md#UpdateAWSTarget) | **Post** /update-aws-target | 
 [**UpdateAWSTargetDetails**](V2Api.md#UpdateAWSTargetDetails) | **Post** /update-aws-target-details | 
+[**UpdateAccountSettings**](V2Api.md#UpdateAccountSettings) | **Post** /update-account-settings | 
 [**UpdateArtifactoryTarget**](V2Api.md#UpdateArtifactoryTarget) | **Post** /update-artifactory-target | 
 [**UpdateAssoc**](V2Api.md#UpdateAssoc) | **Post** /update-assoc | 
 [**UpdateAuthMethod**](V2Api.md#UpdateAuthMethod) | **Post** /update-auth-method | 
@@ -6093,6 +6097,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GatewayUpdateK8SAuthConfig
+
+> GatewayUpdateK8SAuthConfigOutput GatewayUpdateK8SAuthConfig(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateK8SAuthConfig("AccessId_example", "K8sHost_example", "Name_example", "NewName_example", "SigningKey_example") // GatewayUpdateK8SAuthConfig | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateK8SAuthConfig(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateK8SAuthConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateK8SAuthConfig`: GatewayUpdateK8SAuthConfigOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateK8SAuthConfig`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateK8SAuthConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateK8SAuthConfig**](GatewayUpdateK8SAuthConfig.md) |  | 
+
+### Return type
+
+[**GatewayUpdateK8SAuthConfigOutput**](gatewayUpdateK8SAuthConfigOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GatewayUpdateProducerArtifactory
 
 > GatewayUpdateProducerArtifactoryOutput GatewayUpdateProducerArtifactory(ctx).Body(body).Execute()
@@ -7487,6 +7555,70 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetAccountSettings
+
+> GetAccountSettingsCommandOutput GetAccountSettings(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgetAccountSettings() // GetAccountSettings | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GetAccountSettings(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GetAccountSettings``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetAccountSettings`: GetAccountSettingsCommandOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GetAccountSettings`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAccountSettingsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GetAccountSettings**](GetAccountSettings.md) |  | 
+
+### Return type
+
+[**GetAccountSettingsCommandOutput**](GetAccountSettingsCommandOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -9478,6 +9610,65 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## RevokeCreds
+
+> map[string]interface{} RevokeCreds(ctx).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RevokeCreds(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RevokeCreds``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RevokeCreds`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RevokeCreds`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRevokeCredsRequest struct via the builder pattern
+
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## RollbackSecret
 
 > RollbackSecretOutput RollbackSecret(ctx).Body(body).Execute()
@@ -10423,6 +10614,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**UpdateTargetOutput**](updateTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateAccountSettings
+
+> UpdateAccountSettingsOutput UpdateAccountSettings(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewupdateAccountSettings() // UpdateAccountSettings | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdateAccountSettings(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateAccountSettings``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateAccountSettings`: UpdateAccountSettingsOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateAccountSettings`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateAccountSettingsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateAccountSettings**](UpdateAccountSettings.md) |  | 
+
+### Return type
+
+[**UpdateAccountSettingsOutput**](updateAccountSettingsOutput.md)
 
 ### Authorization
 

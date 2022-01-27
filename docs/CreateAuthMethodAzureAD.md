@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
 **Issuer** | Pointer to **string** | Issuer URL | [optional] [default to "https://sts.windows.net/---bound_tenant_id---"]
 **JwksUri** | Pointer to **string** | The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. | [optional] [default to "https://login.microsoftonline.com/common/discovery/keys"]
+**JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] [default to 0]
 **Name** | **string** | Auth Method name | 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -413,6 +414,31 @@ SetJwksUri sets JwksUri field to given value.
 `func (o *CreateAuthMethodAzureAD) HasJwksUri() bool`
 
 HasJwksUri returns a boolean if a field has been set.
+
+### GetJwtTtl
+
+`func (o *CreateAuthMethodAzureAD) GetJwtTtl() int64`
+
+GetJwtTtl returns the JwtTtl field if non-nil, zero value otherwise.
+
+### GetJwtTtlOk
+
+`func (o *CreateAuthMethodAzureAD) GetJwtTtlOk() (*int64, bool)`
+
+GetJwtTtlOk returns a tuple with the JwtTtl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJwtTtl
+
+`func (o *CreateAuthMethodAzureAD) SetJwtTtl(v int64)`
+
+SetJwtTtl sets JwtTtl field to given value.
+
+### HasJwtTtl
+
+`func (o *CreateAuthMethodAzureAD) HasJwtTtl() bool`
+
+HasJwtTtl returns a boolean if a field has been set.
 
 ### GetName
 

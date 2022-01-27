@@ -25,7 +25,7 @@ type CreateAuthMethodHuawei struct {
 	BoundDomainId *[]string `json:"bound-domain-id,omitempty"`
 	// A list of domain names that the access is restricted to
 	BoundDomainName *[]string `json:"bound-domain-name,omitempty"`
-	// A CIDR whitelist of the IPs that the access is restricted to
+	// A CIDR whitelist with the IPs that the access is restricted to
 	BoundIps *[]string `json:"bound-ips,omitempty"`
 	// A list of full tenant ids that the access is restricted to
 	BoundTenantId *[]string `json:"bound-tenant-id,omitempty"`
@@ -37,6 +37,8 @@ type CreateAuthMethodHuawei struct {
 	BoundUserName *[]string `json:"bound-user-name,omitempty"`
 	// if true: enforce role-association must include sub claims
 	ForceSubClaims *bool `json:"force-sub-claims,omitempty"`
+	// Jwt TTL
+	JwtTtl *int64 `json:"jwt-ttl,omitempty"`
 	// Auth Method name
 	Name string `json:"name"`
 	// Required only when the authentication process requires a username and password
@@ -59,6 +61,8 @@ func NewCreateAuthMethodHuawei(name string, ) *CreateAuthMethodHuawei {
 	this.AccessExpires = &accessExpires
 	var authUrl string = "https://iam.myhwclouds.com:443/v3"
 	this.AuthUrl = &authUrl
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	this.Name = name
 	return &this
 }
@@ -72,6 +76,8 @@ func NewCreateAuthMethodHuaweiWithDefaults() *CreateAuthMethodHuawei {
 	this.AccessExpires = &accessExpires
 	var authUrl string = "https://iam.myhwclouds.com:443/v3"
 	this.AuthUrl = &authUrl
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	return &this
 }
 
@@ -395,6 +401,38 @@ func (o *CreateAuthMethodHuawei) SetForceSubClaims(v bool) {
 	o.ForceSubClaims = &v
 }
 
+// GetJwtTtl returns the JwtTtl field value if set, zero value otherwise.
+func (o *CreateAuthMethodHuawei) GetJwtTtl() int64 {
+	if o == nil || o.JwtTtl == nil {
+		var ret int64
+		return ret
+	}
+	return *o.JwtTtl
+}
+
+// GetJwtTtlOk returns a tuple with the JwtTtl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodHuawei) GetJwtTtlOk() (*int64, bool) {
+	if o == nil || o.JwtTtl == nil {
+		return nil, false
+	}
+	return o.JwtTtl, true
+}
+
+// HasJwtTtl returns a boolean if a field has been set.
+func (o *CreateAuthMethodHuawei) HasJwtTtl() bool {
+	if o != nil && o.JwtTtl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJwtTtl gets a reference to the given int64 and assigns it to the JwtTtl field.
+func (o *CreateAuthMethodHuawei) SetJwtTtl(v int64) {
+	o.JwtTtl = &v
+}
+
 // GetName returns the Name field value
 func (o *CreateAuthMethodHuawei) GetName() string {
 	if o == nil  {
@@ -578,6 +616,9 @@ func (o CreateAuthMethodHuawei) MarshalJSON() ([]byte, error) {
 	}
 	if o.ForceSubClaims != nil {
 		toSerialize["force-sub-claims"] = o.ForceSubClaims
+	}
+	if o.JwtTtl != nil {
+		toSerialize["jwt-ttl"] = o.JwtTtl
 	}
 	if true {
 		toSerialize["name"] = o.Name

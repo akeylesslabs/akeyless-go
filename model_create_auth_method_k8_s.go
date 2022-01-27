@@ -33,6 +33,8 @@ type CreateAuthMethodK8S struct {
 	ForceSubClaims *bool `json:"force-sub-claims,omitempty"`
 	// If this flag is set to true, there is no need to manually provide a public key for the Kubernetes Auth Method, and instead, a key pair, will be generated as part of the command and the private part of the key will be returned (the private key is required for the K8S Auth Config in the Akeyless Gateway)
 	GenKey *string `json:"gen-key,omitempty"`
+	// Jwt TTL
+	JwtTtl *int64 `json:"jwt-ttl,omitempty"`
 	// Auth Method name
 	Name string `json:"name"`
 	// Required only when the authentication process requires a username and password
@@ -57,6 +59,8 @@ func NewCreateAuthMethodK8S(name string, ) *CreateAuthMethodK8S {
 	this.AccessExpires = &accessExpires
 	var genKey string = "true"
 	this.GenKey = &genKey
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	this.Name = name
 	return &this
 }
@@ -70,6 +74,8 @@ func NewCreateAuthMethodK8SWithDefaults() *CreateAuthMethodK8S {
 	this.AccessExpires = &accessExpires
 	var genKey string = "true"
 	this.GenKey = &genKey
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	return &this
 }
 
@@ -329,6 +335,38 @@ func (o *CreateAuthMethodK8S) SetGenKey(v string) {
 	o.GenKey = &v
 }
 
+// GetJwtTtl returns the JwtTtl field value if set, zero value otherwise.
+func (o *CreateAuthMethodK8S) GetJwtTtl() int64 {
+	if o == nil || o.JwtTtl == nil {
+		var ret int64
+		return ret
+	}
+	return *o.JwtTtl
+}
+
+// GetJwtTtlOk returns a tuple with the JwtTtl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodK8S) GetJwtTtlOk() (*int64, bool) {
+	if o == nil || o.JwtTtl == nil {
+		return nil, false
+	}
+	return o.JwtTtl, true
+}
+
+// HasJwtTtl returns a boolean if a field has been set.
+func (o *CreateAuthMethodK8S) HasJwtTtl() bool {
+	if o != nil && o.JwtTtl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJwtTtl gets a reference to the given int64 and assigns it to the JwtTtl field.
+func (o *CreateAuthMethodK8S) SetJwtTtl(v int64) {
+	o.JwtTtl = &v
+}
+
 // GetName returns the Name field value
 func (o *CreateAuthMethodK8S) GetName() string {
 	if o == nil  {
@@ -538,6 +576,9 @@ func (o CreateAuthMethodK8S) MarshalJSON() ([]byte, error) {
 	}
 	if o.GenKey != nil {
 		toSerialize["gen-key"] = o.GenKey
+	}
+	if o.JwtTtl != nil {
+		toSerialize["jwt-ttl"] = o.JwtTtl
 	}
 	if true {
 		toSerialize["name"] = o.Name

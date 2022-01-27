@@ -31,6 +31,8 @@ type UpdateRole struct {
 	NewName *string `json:"new-name,omitempty"`
 	// Required only when the authentication process requires a username and password
 	Password *string `json:"password,omitempty"`
+	// Allow this role to view SRA Clusters. Currently only 'none', 'own', 'all' values are supported.
+	SraReportsAccess *string `json:"sra-reports-access,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -277,6 +279,38 @@ func (o *UpdateRole) SetPassword(v string) {
 	o.Password = &v
 }
 
+// GetSraReportsAccess returns the SraReportsAccess field value if set, zero value otherwise.
+func (o *UpdateRole) GetSraReportsAccess() string {
+	if o == nil || o.SraReportsAccess == nil {
+		var ret string
+		return ret
+	}
+	return *o.SraReportsAccess
+}
+
+// GetSraReportsAccessOk returns a tuple with the SraReportsAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRole) GetSraReportsAccessOk() (*string, bool) {
+	if o == nil || o.SraReportsAccess == nil {
+		return nil, false
+	}
+	return o.SraReportsAccess, true
+}
+
+// HasSraReportsAccess returns a boolean if a field has been set.
+func (o *UpdateRole) HasSraReportsAccess() bool {
+	if o != nil && o.SraReportsAccess != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSraReportsAccess gets a reference to the given string and assigns it to the SraReportsAccess field.
+func (o *UpdateRole) SetSraReportsAccess(v string) {
+	o.SraReportsAccess = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *UpdateRole) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -395,6 +429,9 @@ func (o UpdateRole) MarshalJSON() ([]byte, error) {
 	}
 	if o.Password != nil {
 		toSerialize["password"] = o.Password
+	}
+	if o.SraReportsAccess != nil {
+		toSerialize["sra-reports-access"] = o.SraReportsAccess
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

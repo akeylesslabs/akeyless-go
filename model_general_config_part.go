@@ -17,6 +17,7 @@ import (
 
 // GeneralConfigPart struct for GeneralConfigPart
 type GeneralConfigPart struct {
+	// AkeylessUrl is here for BC only. Gator will still return it if it exists in the configuration, but new clients (>=2.34.0) will ignore it and override it with what exists in their local file. It will no longer be sent to Gator for update, so new clusters will only have the default value saved in the DB.
 	AkeylessUrl *string `json:"akeyless_url,omitempty"`
 	ApiTokenTtl *string `json:"api_token_ttl,omitempty"`
 	DisplayName *string `json:"display_name,omitempty"`
