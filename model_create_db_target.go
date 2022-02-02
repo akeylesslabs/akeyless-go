@@ -47,6 +47,10 @@ type CreateDBTarget struct {
 	Port *string `json:"port,omitempty"`
 	Pwd *string `json:"pwd,omitempty"`
 	SnowflakeAccount *string `json:"snowflake-account,omitempty"`
+	// SSL connection mode
+	Ssl *bool `json:"ssl,omitempty"`
+	// SSL connection certificate
+	SslCertificate *string `json:"ssl-certificate,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -667,6 +671,70 @@ func (o *CreateDBTarget) SetSnowflakeAccount(v string) {
 	o.SnowflakeAccount = &v
 }
 
+// GetSsl returns the Ssl field value if set, zero value otherwise.
+func (o *CreateDBTarget) GetSsl() bool {
+	if o == nil || o.Ssl == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Ssl
+}
+
+// GetSslOk returns a tuple with the Ssl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDBTarget) GetSslOk() (*bool, bool) {
+	if o == nil || o.Ssl == nil {
+		return nil, false
+	}
+	return o.Ssl, true
+}
+
+// HasSsl returns a boolean if a field has been set.
+func (o *CreateDBTarget) HasSsl() bool {
+	if o != nil && o.Ssl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSsl gets a reference to the given bool and assigns it to the Ssl field.
+func (o *CreateDBTarget) SetSsl(v bool) {
+	o.Ssl = &v
+}
+
+// GetSslCertificate returns the SslCertificate field value if set, zero value otherwise.
+func (o *CreateDBTarget) GetSslCertificate() string {
+	if o == nil || o.SslCertificate == nil {
+		var ret string
+		return ret
+	}
+	return *o.SslCertificate
+}
+
+// GetSslCertificateOk returns a tuple with the SslCertificate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDBTarget) GetSslCertificateOk() (*string, bool) {
+	if o == nil || o.SslCertificate == nil {
+		return nil, false
+	}
+	return o.SslCertificate, true
+}
+
+// HasSslCertificate returns a boolean if a field has been set.
+func (o *CreateDBTarget) HasSslCertificate() bool {
+	if o != nil && o.SslCertificate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSslCertificate gets a reference to the given string and assigns it to the SslCertificate field.
+func (o *CreateDBTarget) SetSslCertificate(v string) {
+	o.SslCertificate = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *CreateDBTarget) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -853,6 +921,12 @@ func (o CreateDBTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.SnowflakeAccount != nil {
 		toSerialize["snowflake-account"] = o.SnowflakeAccount
+	}
+	if o.Ssl != nil {
+		toSerialize["ssl"] = o.Ssl
+	}
+	if o.SslCertificate != nil {
+		toSerialize["ssl-certificate"] = o.SslCertificate
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

@@ -135,6 +135,7 @@ type DSProducerDetails struct {
 	PasswordPolicy *string `json:"password_policy,omitempty"`
 	Payload *string `json:"payload,omitempty"`
 	PostgresCreationStatements *string `json:"postgres_creation_statements,omitempty"`
+	PostgresRevocationStatements *string `json:"postgres_revocation_statements,omitempty"`
 	RabbitmqServerPassword *string `json:"rabbitmq_server_password,omitempty"`
 	RabbitmqServerUri *string `json:"rabbitmq_server_uri,omitempty"`
 	RabbitmqServerUser *string `json:"rabbitmq_server_user,omitempty"`
@@ -153,6 +154,10 @@ type DSProducerDetails struct {
 	SfWarehouseName *string `json:"sf_warehouse_name,omitempty"`
 	// TODO delete this after migration
 	ShouldStop *string `json:"should_stop,omitempty"`
+	// (Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field
+	SslConnectionCertificate *string `json:"ssl_connection_certificate,omitempty"`
+	// (Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB
+	SslConnectionMode *bool `json:"ssl_connection_mode,omitempty"`
 	Tags *[]string `json:"tags,omitempty"`
 	TimeoutSeconds *int64 `json:"timeout_seconds,omitempty"`
 	UseGwCloudIdentity *bool `json:"use_gw_cloud_identity,omitempty"`
@@ -3776,6 +3781,38 @@ func (o *DSProducerDetails) SetPostgresCreationStatements(v string) {
 	o.PostgresCreationStatements = &v
 }
 
+// GetPostgresRevocationStatements returns the PostgresRevocationStatements field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetPostgresRevocationStatements() string {
+	if o == nil || o.PostgresRevocationStatements == nil {
+		var ret string
+		return ret
+	}
+	return *o.PostgresRevocationStatements
+}
+
+// GetPostgresRevocationStatementsOk returns a tuple with the PostgresRevocationStatements field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetPostgresRevocationStatementsOk() (*string, bool) {
+	if o == nil || o.PostgresRevocationStatements == nil {
+		return nil, false
+	}
+	return o.PostgresRevocationStatements, true
+}
+
+// HasPostgresRevocationStatements returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasPostgresRevocationStatements() bool {
+	if o != nil && o.PostgresRevocationStatements != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPostgresRevocationStatements gets a reference to the given string and assigns it to the PostgresRevocationStatements field.
+func (o *DSProducerDetails) SetPostgresRevocationStatements(v string) {
+	o.PostgresRevocationStatements = &v
+}
+
 // GetRabbitmqServerPassword returns the RabbitmqServerPassword field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetRabbitmqServerPassword() string {
 	if o == nil || o.RabbitmqServerPassword == nil {
@@ -4286,6 +4323,70 @@ func (o *DSProducerDetails) HasShouldStop() bool {
 // SetShouldStop gets a reference to the given string and assigns it to the ShouldStop field.
 func (o *DSProducerDetails) SetShouldStop(v string) {
 	o.ShouldStop = &v
+}
+
+// GetSslConnectionCertificate returns the SslConnectionCertificate field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetSslConnectionCertificate() string {
+	if o == nil || o.SslConnectionCertificate == nil {
+		var ret string
+		return ret
+	}
+	return *o.SslConnectionCertificate
+}
+
+// GetSslConnectionCertificateOk returns a tuple with the SslConnectionCertificate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetSslConnectionCertificateOk() (*string, bool) {
+	if o == nil || o.SslConnectionCertificate == nil {
+		return nil, false
+	}
+	return o.SslConnectionCertificate, true
+}
+
+// HasSslConnectionCertificate returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasSslConnectionCertificate() bool {
+	if o != nil && o.SslConnectionCertificate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSslConnectionCertificate gets a reference to the given string and assigns it to the SslConnectionCertificate field.
+func (o *DSProducerDetails) SetSslConnectionCertificate(v string) {
+	o.SslConnectionCertificate = &v
+}
+
+// GetSslConnectionMode returns the SslConnectionMode field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetSslConnectionMode() bool {
+	if o == nil || o.SslConnectionMode == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SslConnectionMode
+}
+
+// GetSslConnectionModeOk returns a tuple with the SslConnectionMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetSslConnectionModeOk() (*bool, bool) {
+	if o == nil || o.SslConnectionMode == nil {
+		return nil, false
+	}
+	return o.SslConnectionMode, true
+}
+
+// HasSslConnectionMode returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasSslConnectionMode() bool {
+	if o != nil && o.SslConnectionMode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSslConnectionMode gets a reference to the given bool and assigns it to the SslConnectionMode field.
+func (o *DSProducerDetails) SetSslConnectionMode(v bool) {
+	o.SslConnectionMode = &v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
@@ -5266,6 +5367,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	if o.PostgresCreationStatements != nil {
 		toSerialize["postgres_creation_statements"] = o.PostgresCreationStatements
 	}
+	if o.PostgresRevocationStatements != nil {
+		toSerialize["postgres_revocation_statements"] = o.PostgresRevocationStatements
+	}
 	if o.RabbitmqServerPassword != nil {
 		toSerialize["rabbitmq_server_password"] = o.RabbitmqServerPassword
 	}
@@ -5313,6 +5417,12 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.ShouldStop != nil {
 		toSerialize["should_stop"] = o.ShouldStop
+	}
+	if o.SslConnectionCertificate != nil {
+		toSerialize["ssl_connection_certificate"] = o.SslConnectionCertificate
+	}
+	if o.SslConnectionMode != nil {
+		toSerialize["ssl_connection_mode"] = o.SslConnectionMode
 	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags

@@ -20,6 +20,8 @@ Name | Type | Description | Notes
 **SecureAccessEnable** | Pointer to **string** |  | [optional] 
 **SecureAccessHost** | Pointer to **[]string** |  | [optional] 
 **SecureAccessWeb** | Pointer to **bool** |  | [optional] 
+**Ssl** | Pointer to **bool** | SSL connection mode | [optional] 
+**SslCertificate** | Pointer to **string** | SSL connection certificate | [optional] 
 **Tags** | Pointer to **[]string** | List of the tags attached to this secret | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -440,6 +442,56 @@ SetSecureAccessWeb sets SecureAccessWeb field to given value.
 `func (o *GatewayUpdateProducerMySQL) HasSecureAccessWeb() bool`
 
 HasSecureAccessWeb returns a boolean if a field has been set.
+
+### GetSsl
+
+`func (o *GatewayUpdateProducerMySQL) GetSsl() bool`
+
+GetSsl returns the Ssl field if non-nil, zero value otherwise.
+
+### GetSslOk
+
+`func (o *GatewayUpdateProducerMySQL) GetSslOk() (*bool, bool)`
+
+GetSslOk returns a tuple with the Ssl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSsl
+
+`func (o *GatewayUpdateProducerMySQL) SetSsl(v bool)`
+
+SetSsl sets Ssl field to given value.
+
+### HasSsl
+
+`func (o *GatewayUpdateProducerMySQL) HasSsl() bool`
+
+HasSsl returns a boolean if a field has been set.
+
+### GetSslCertificate
+
+`func (o *GatewayUpdateProducerMySQL) GetSslCertificate() string`
+
+GetSslCertificate returns the SslCertificate field if non-nil, zero value otherwise.
+
+### GetSslCertificateOk
+
+`func (o *GatewayUpdateProducerMySQL) GetSslCertificateOk() (*string, bool)`
+
+GetSslCertificateOk returns a tuple with the SslCertificate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSslCertificate
+
+`func (o *GatewayUpdateProducerMySQL) SetSslCertificate(v string)`
+
+SetSslCertificate sets SslCertificate field to given value.
+
+### HasSslCertificate
+
+`func (o *GatewayUpdateProducerMySQL) HasSslCertificate() bool`
+
+HasSslCertificate returns a boolean if a field has been set.
 
 ### GetTags
 

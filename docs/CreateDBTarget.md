@@ -23,6 +23,8 @@ Name | Type | Description | Notes
 **Port** | Pointer to **string** |  | [optional] 
 **Pwd** | Pointer to **string** |  | [optional] 
 **SnowflakeAccount** | Pointer to **string** |  | [optional] 
+**Ssl** | Pointer to **bool** | SSL connection mode | [optional] 
+**SslCertificate** | Pointer to **string** | SSL connection certificate | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserName** | Pointer to **string** |  | [optional] 
@@ -511,6 +513,56 @@ SetSnowflakeAccount sets SnowflakeAccount field to given value.
 `func (o *CreateDBTarget) HasSnowflakeAccount() bool`
 
 HasSnowflakeAccount returns a boolean if a field has been set.
+
+### GetSsl
+
+`func (o *CreateDBTarget) GetSsl() bool`
+
+GetSsl returns the Ssl field if non-nil, zero value otherwise.
+
+### GetSslOk
+
+`func (o *CreateDBTarget) GetSslOk() (*bool, bool)`
+
+GetSslOk returns a tuple with the Ssl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSsl
+
+`func (o *CreateDBTarget) SetSsl(v bool)`
+
+SetSsl sets Ssl field to given value.
+
+### HasSsl
+
+`func (o *CreateDBTarget) HasSsl() bool`
+
+HasSsl returns a boolean if a field has been set.
+
+### GetSslCertificate
+
+`func (o *CreateDBTarget) GetSslCertificate() string`
+
+GetSslCertificate returns the SslCertificate field if non-nil, zero value otherwise.
+
+### GetSslCertificateOk
+
+`func (o *CreateDBTarget) GetSslCertificateOk() (*string, bool)`
+
+GetSslCertificateOk returns a tuple with the SslCertificate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSslCertificate
+
+`func (o *CreateDBTarget) SetSslCertificate(v string)`
+
+SetSslCertificate sets SslCertificate field to given value.
+
+### HasSslCertificate
+
+`func (o *CreateDBTarget) HasSslCertificate() bool`
+
+HasSslCertificate returns a boolean if a field has been set.
 
 ### GetToken
 

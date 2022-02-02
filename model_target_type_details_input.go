@@ -88,6 +88,10 @@ type TargetTypeDetailsInput struct {
 	RabbitmqServerUri *string `json:"rabbitmq_server_uri,omitempty"`
 	RabbitmqServerUser *string `json:"rabbitmq_server_user,omitempty"`
 	SfAccount *string `json:"sf_account,omitempty"`
+	// (Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field
+	SslConnectionCertificate *string `json:"ssl_connection_certificate,omitempty"`
+	// (Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB
+	SslConnectionMode *bool `json:"ssl_connection_mode,omitempty"`
 	Url *string `json:"url,omitempty"`
 	UseGwCloudIdentity *bool `json:"use_gw_cloud_identity,omitempty"`
 	Username *string `json:"username,omitempty"`
@@ -2228,6 +2232,70 @@ func (o *TargetTypeDetailsInput) SetSfAccount(v string) {
 	o.SfAccount = &v
 }
 
+// GetSslConnectionCertificate returns the SslConnectionCertificate field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetSslConnectionCertificate() string {
+	if o == nil || o.SslConnectionCertificate == nil {
+		var ret string
+		return ret
+	}
+	return *o.SslConnectionCertificate
+}
+
+// GetSslConnectionCertificateOk returns a tuple with the SslConnectionCertificate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetSslConnectionCertificateOk() (*string, bool) {
+	if o == nil || o.SslConnectionCertificate == nil {
+		return nil, false
+	}
+	return o.SslConnectionCertificate, true
+}
+
+// HasSslConnectionCertificate returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasSslConnectionCertificate() bool {
+	if o != nil && o.SslConnectionCertificate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSslConnectionCertificate gets a reference to the given string and assigns it to the SslConnectionCertificate field.
+func (o *TargetTypeDetailsInput) SetSslConnectionCertificate(v string) {
+	o.SslConnectionCertificate = &v
+}
+
+// GetSslConnectionMode returns the SslConnectionMode field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetSslConnectionMode() bool {
+	if o == nil || o.SslConnectionMode == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SslConnectionMode
+}
+
+// GetSslConnectionModeOk returns a tuple with the SslConnectionMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetSslConnectionModeOk() (*bool, bool) {
+	if o == nil || o.SslConnectionMode == nil {
+		return nil, false
+	}
+	return o.SslConnectionMode, true
+}
+
+// HasSslConnectionMode returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasSslConnectionMode() bool {
+	if o != nil && o.SslConnectionMode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSslConnectionMode gets a reference to the given bool and assigns it to the SslConnectionMode field.
+func (o *TargetTypeDetailsInput) SetSslConnectionMode(v bool) {
+	o.SslConnectionMode = &v
+}
+
 // GetUrl returns the Url field value if set, zero value otherwise.
 func (o *TargetTypeDetailsInput) GetUrl() string {
 	if o == nil || o.Url == nil {
@@ -2715,6 +2783,12 @@ func (o TargetTypeDetailsInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.SfAccount != nil {
 		toSerialize["sf_account"] = o.SfAccount
+	}
+	if o.SslConnectionCertificate != nil {
+		toSerialize["ssl_connection_certificate"] = o.SslConnectionCertificate
+	}
+	if o.SslConnectionMode != nil {
+		toSerialize["ssl_connection_mode"] = o.SslConnectionMode
 	}
 	if o.Url != nil {
 		toSerialize["url"] = o.Url

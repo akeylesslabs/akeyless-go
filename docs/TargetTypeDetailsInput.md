@@ -70,6 +70,8 @@ Name | Type | Description | Notes
 **RabbitmqServerUri** | Pointer to **string** |  | [optional] 
 **RabbitmqServerUser** | Pointer to **string** |  | [optional] 
 **SfAccount** | Pointer to **string** |  | [optional] 
+**SslConnectionCertificate** | Pointer to **string** | (Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field | [optional] 
+**SslConnectionMode** | Pointer to **bool** | (Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB | [optional] 
 **Url** | Pointer to **string** |  | [optional] 
 **UseGwCloudIdentity** | Pointer to **bool** |  | [optional] 
 **Username** | Pointer to **string** |  | [optional] 
@@ -1748,6 +1750,56 @@ SetSfAccount sets SfAccount field to given value.
 `func (o *TargetTypeDetailsInput) HasSfAccount() bool`
 
 HasSfAccount returns a boolean if a field has been set.
+
+### GetSslConnectionCertificate
+
+`func (o *TargetTypeDetailsInput) GetSslConnectionCertificate() string`
+
+GetSslConnectionCertificate returns the SslConnectionCertificate field if non-nil, zero value otherwise.
+
+### GetSslConnectionCertificateOk
+
+`func (o *TargetTypeDetailsInput) GetSslConnectionCertificateOk() (*string, bool)`
+
+GetSslConnectionCertificateOk returns a tuple with the SslConnectionCertificate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSslConnectionCertificate
+
+`func (o *TargetTypeDetailsInput) SetSslConnectionCertificate(v string)`
+
+SetSslConnectionCertificate sets SslConnectionCertificate field to given value.
+
+### HasSslConnectionCertificate
+
+`func (o *TargetTypeDetailsInput) HasSslConnectionCertificate() bool`
+
+HasSslConnectionCertificate returns a boolean if a field has been set.
+
+### GetSslConnectionMode
+
+`func (o *TargetTypeDetailsInput) GetSslConnectionMode() bool`
+
+GetSslConnectionMode returns the SslConnectionMode field if non-nil, zero value otherwise.
+
+### GetSslConnectionModeOk
+
+`func (o *TargetTypeDetailsInput) GetSslConnectionModeOk() (*bool, bool)`
+
+GetSslConnectionModeOk returns a tuple with the SslConnectionMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSslConnectionMode
+
+`func (o *TargetTypeDetailsInput) SetSslConnectionMode(v bool)`
+
+SetSslConnectionMode sets SslConnectionMode field to given value.
+
+### HasSslConnectionMode
+
+`func (o *TargetTypeDetailsInput) HasSslConnectionMode() bool`
+
+HasSslConnectionMode returns a boolean if a field has been set.
 
 ### GetUrl
 

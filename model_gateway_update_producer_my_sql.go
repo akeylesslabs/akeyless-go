@@ -45,6 +45,10 @@ type GatewayUpdateProducerMySQL struct {
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
 	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
 	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
+	// SSL connection mode
+	Ssl *bool `json:"ssl,omitempty"`
+	// SSL connection certificate
+	SslCertificate *string `json:"ssl-certificate,omitempty"`
 	// List of the tags attached to this secret
 	Tags *[]string `json:"tags,omitempty"`
 	// Target name
@@ -593,6 +597,70 @@ func (o *GatewayUpdateProducerMySQL) SetSecureAccessWeb(v bool) {
 	o.SecureAccessWeb = &v
 }
 
+// GetSsl returns the Ssl field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerMySQL) GetSsl() bool {
+	if o == nil || o.Ssl == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Ssl
+}
+
+// GetSslOk returns a tuple with the Ssl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerMySQL) GetSslOk() (*bool, bool) {
+	if o == nil || o.Ssl == nil {
+		return nil, false
+	}
+	return o.Ssl, true
+}
+
+// HasSsl returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerMySQL) HasSsl() bool {
+	if o != nil && o.Ssl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSsl gets a reference to the given bool and assigns it to the Ssl field.
+func (o *GatewayUpdateProducerMySQL) SetSsl(v bool) {
+	o.Ssl = &v
+}
+
+// GetSslCertificate returns the SslCertificate field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerMySQL) GetSslCertificate() string {
+	if o == nil || o.SslCertificate == nil {
+		var ret string
+		return ret
+	}
+	return *o.SslCertificate
+}
+
+// GetSslCertificateOk returns a tuple with the SslCertificate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerMySQL) GetSslCertificateOk() (*string, bool) {
+	if o == nil || o.SslCertificate == nil {
+		return nil, false
+	}
+	return o.SslCertificate, true
+}
+
+// HasSslCertificate returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerMySQL) HasSslCertificate() bool {
+	if o != nil && o.SslCertificate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSslCertificate gets a reference to the given string and assigns it to the SslCertificate field.
+func (o *GatewayUpdateProducerMySQL) SetSslCertificate(v string) {
+	o.SslCertificate = &v
+}
+
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *GatewayUpdateProducerMySQL) GetTags() []string {
 	if o == nil || o.Tags == nil {
@@ -834,6 +902,12 @@ func (o GatewayUpdateProducerMySQL) MarshalJSON() ([]byte, error) {
 	}
 	if o.SecureAccessWeb != nil {
 		toSerialize["secure-access-web"] = o.SecureAccessWeb
+	}
+	if o.Ssl != nil {
+		toSerialize["ssl"] = o.Ssl
+	}
+	if o.SslCertificate != nil {
+		toSerialize["ssl-certificate"] = o.SslCertificate
 	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags

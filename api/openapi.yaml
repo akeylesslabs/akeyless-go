@@ -8806,6 +8806,7 @@ components:
         chef_server_key: chef_server_key
         db_max_open_conns: db_max_open_conns
         admin_rotation_interval_days: 0
+        ssl_connection_certificate: ssl_connection_certificate
         oracle_creation_statements: oracle_creation_statements
         mssql_creation_statements: mssql_creation_statements
         sf_user_role: sf_user_role
@@ -8854,6 +8855,8 @@ components:
         db_isolation_level: db_isolation_level
         rabbitmq_user_vhost: rabbitmq_user_vhost
         mongodb_username: mongodb_username
+        ssl_connection_mode: true
+        postgres_revocation_statements: postgres_revocation_statements
         mongodb_roles: mongodb_roles
         mongodb_db_name: mongodb_db_name
         venafi_signer_key_name: venafi_signer_key_name
@@ -9339,6 +9342,9 @@ components:
         postgres_creation_statements:
           type: string
           x-go-name: PostgresCreationStatements
+        postgres_revocation_statements:
+          type: string
+          x-go-name: PostgresRevocationStatements
         rabbitmq_server_password:
           type: string
           x-go-name: RabbitmqServerPassword
@@ -9388,6 +9394,17 @@ components:
           description: TODO delete this after migration
           type: string
           x-go-name: ShouldStop
+        ssl_connection_certificate:
+          description: (Optional) SSLConnectionCertificate defines the certificate
+            for SSL connection. Must be base64 certificate loaded by UI using file
+            loader field
+          type: string
+          x-go-name: SSLConnectionCertificate
+        ssl_connection_mode:
+          description: (Optional) SSLConnectionMode defines if SSL mode will be used
+            to connect to DB
+          type: boolean
+          x-go-name: SSLConnectionMode
         tags:
           items:
             type: string
@@ -9983,6 +10000,7 @@ components:
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           k8s_bearer_token: k8s_bearer_token
           chef_server_key: chef_server_key
+          ssl_connection_certificate: ssl_connection_certificate
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
           mongodb_uri_connection: mongodb_uri_connection
@@ -10019,6 +10037,7 @@ components:
           gke_service_account_key: gke_service_account_key
           mongodb_uri_options: mongodb_uri_options
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
           db_pwd: db_pwd
           gke_service_account_name: gke_service_account_name
           gcp_service_account_email: gcp_service_account_email
@@ -14231,6 +14250,7 @@ components:
         gke_cluster_ca_certificate: gke_cluster_ca_certificate
         k8s_bearer_token: k8s_bearer_token
         chef_server_key: chef_server_key
+        ssl_connection_certificate: ssl_connection_certificate
         azure_client_id: azure_client_id
         mongodb_default_auth_db: mongodb_default_auth_db
         mongodb_uri_connection: mongodb_uri_connection
@@ -14267,6 +14287,7 @@ components:
         gke_service_account_key: gke_service_account_key
         mongodb_uri_options: mongodb_uri_options
         mongodb_username: mongodb_username
+        ssl_connection_mode: true
         db_pwd: db_pwd
         gke_service_account_name: gke_service_account_name
         gcp_service_account_email: gcp_service_account_email
@@ -14513,6 +14534,17 @@ components:
         sf_account:
           type: string
           x-go-name: SnowflakeAccountName
+        ssl_connection_certificate:
+          description: (Optional) SSLConnectionCertificate defines the certificate
+            for SSL connection. Must be base64 certificate loaded by UI using file
+            loader field
+          type: string
+          x-go-name: SSLConnectionCertificate
+        ssl_connection_mode:
+          description: (Optional) SSLConnectionMode defines if SSL mode will be used
+            to connect to DB
+          type: boolean
+          x-go-name: SSLConnectionMode
         url:
           type: string
           x-go-name: URL
@@ -16573,6 +16605,14 @@ components:
         snowflake-account:
           type: string
           x-go-name: SnowflakeAccount
+        ssl:
+          description: SSL connection mode
+          type: boolean
+          x-go-name: SSLConnection
+        ssl-certificate:
+          description: SSL connection certificate
+          type: string
+          x-go-name: SSLConnectionCertificate
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -18916,6 +18956,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -18964,6 +19005,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -19228,6 +19271,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -19276,6 +19320,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -19519,6 +19565,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -19567,6 +19614,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -19785,6 +19834,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -19833,6 +19883,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -20100,6 +20152,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -20148,6 +20201,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -20448,6 +20503,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -20496,6 +20552,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -20736,6 +20794,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -20784,6 +20843,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -20999,6 +21060,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -21047,6 +21109,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -21278,6 +21342,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -21326,6 +21391,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -21555,6 +21622,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -21603,6 +21671,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -21846,6 +21916,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -21894,6 +21965,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -22151,6 +22224,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -22199,6 +22273,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -22397,6 +22473,14 @@ components:
         secure-access-web:
           type: boolean
           x-go-name: AccessWebCategory
+        ssl:
+          description: SSL connection mode
+          type: boolean
+          x-go-name: SSLConnection
+        ssl-certificate:
+          description: SSL connection certificate
+          type: string
+          x-go-name: SSLConnectionCertificate
         tags:
           description: List of the tags attached to this secret
           items:
@@ -22443,6 +22527,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -22491,6 +22576,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -22728,6 +22815,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -22776,6 +22864,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -23007,6 +23097,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -23055,6 +23146,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -23232,6 +23325,10 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
+        revocation-statement:
+          description: PostgreSQL Revocation statements
+          type: string
+          x-go-name: RevocationStatements
         secure-access-bastion-issuer:
           type: string
           x-go-name: SecureAccessBastionIssuer
@@ -23249,6 +23346,10 @@ components:
         secure-access-web:
           type: boolean
           x-go-name: AccessWebCategory
+        ssl:
+          description: SSL connection mode
+          type: boolean
+          x-go-name: SSLConnection
         tags:
           description: List of the tags attached to this secret
           items:
@@ -23295,6 +23396,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -23343,6 +23445,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -23581,6 +23685,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -23629,6 +23734,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -23868,6 +23975,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -23916,6 +24024,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -24147,6 +24257,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -24195,6 +24306,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -24412,6 +24525,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -24460,6 +24574,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -25663,6 +25779,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -25711,6 +25828,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -25979,6 +26098,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -26027,6 +26147,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -26274,6 +26396,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -26322,6 +26445,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -26544,6 +26669,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -26592,6 +26718,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -26863,6 +26991,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -26911,6 +27040,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -27219,6 +27350,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -27267,6 +27399,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -27511,6 +27645,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -27559,6 +27694,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -27778,6 +27915,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -27826,6 +27964,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -28061,6 +28201,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -28109,6 +28250,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -28342,6 +28485,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -28390,6 +28534,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -28637,6 +28783,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -28685,6 +28832,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -28946,6 +29095,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -28994,6 +29144,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -29196,6 +29348,14 @@ components:
         secure-access-web:
           type: boolean
           x-go-name: AccessWebCategory
+        ssl:
+          description: SSL connection mode
+          type: boolean
+          x-go-name: SSLConnection
+        ssl-certificate:
+          description: SSL connection certificate
+          type: string
+          x-go-name: SSLConnectionCertificate
         tags:
           description: List of the tags attached to this secret
           items:
@@ -29242,6 +29402,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -29290,6 +29451,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -29531,6 +29694,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -29579,6 +29743,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -29814,6 +29980,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -29862,6 +30029,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -30043,6 +30212,10 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
+        revocation-statement:
+          description: PostgreSQL Revocation statements
+          type: string
+          x-go-name: RevocationStatements
         secure-access-bastion-issuer:
           type: string
           x-go-name: SecureAccessBastionIssuer
@@ -30060,6 +30233,10 @@ components:
         secure-access-web:
           type: boolean
           x-go-name: AccessWebCategory
+        ssl:
+          description: SSL connection mode
+          type: boolean
+          x-go-name: SSLConnection
         tags:
           description: List of the tags attached to this secret
           items:
@@ -30106,6 +30283,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -30154,6 +30332,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -30396,6 +30576,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -30444,6 +30625,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -30687,6 +30870,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -30735,6 +30919,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -30970,6 +31156,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -31018,6 +31205,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name
@@ -31239,6 +31428,7 @@ components:
           chef_server_key: chef_server_key
           db_max_open_conns: db_max_open_conns
           admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
           oracle_creation_statements: oracle_creation_statements
           mssql_creation_statements: mssql_creation_statements
           sf_user_role: sf_user_role
@@ -31287,6 +31477,8 @@ components:
           db_isolation_level: db_isolation_level
           rabbitmq_user_vhost: rabbitmq_user_vhost
           mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
           mongodb_roles: mongodb_roles
           mongodb_db_name: mongodb_db_name
           venafi_signer_key_name: venafi_signer_key_name

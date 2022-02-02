@@ -14,11 +14,13 @@ Name | Type | Description | Notes
 **PostgresqlPort** | Pointer to **string** | PostgreSQL Port | [optional] [default to "5432"]
 **PostgresqlUsername** | Pointer to **string** | PostgreSQL Username | [optional] 
 **ProducerEncryptionKey** | Pointer to **string** | Dynamic producer encryption key | [optional] 
+**RevocationStatement** | Pointer to **string** | PostgreSQL Revocation statements | [optional] 
 **SecureAccessBastionIssuer** | Pointer to **string** |  | [optional] 
 **SecureAccessDbSchema** | Pointer to **string** |  | [optional] 
 **SecureAccessEnable** | Pointer to **string** |  | [optional] 
 **SecureAccessHost** | Pointer to **[]string** |  | [optional] 
 **SecureAccessWeb** | Pointer to **bool** |  | [optional] 
+**Ssl** | Pointer to **bool** | SSL connection mode | [optional] 
 **Tags** | Pointer to **[]string** | List of the tags attached to this secret | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -290,6 +292,31 @@ SetProducerEncryptionKey sets ProducerEncryptionKey field to given value.
 
 HasProducerEncryptionKey returns a boolean if a field has been set.
 
+### GetRevocationStatement
+
+`func (o *GatewayUpdateProducerPostgreSQL) GetRevocationStatement() string`
+
+GetRevocationStatement returns the RevocationStatement field if non-nil, zero value otherwise.
+
+### GetRevocationStatementOk
+
+`func (o *GatewayUpdateProducerPostgreSQL) GetRevocationStatementOk() (*string, bool)`
+
+GetRevocationStatementOk returns a tuple with the RevocationStatement field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRevocationStatement
+
+`func (o *GatewayUpdateProducerPostgreSQL) SetRevocationStatement(v string)`
+
+SetRevocationStatement sets RevocationStatement field to given value.
+
+### HasRevocationStatement
+
+`func (o *GatewayUpdateProducerPostgreSQL) HasRevocationStatement() bool`
+
+HasRevocationStatement returns a boolean if a field has been set.
+
 ### GetSecureAccessBastionIssuer
 
 `func (o *GatewayUpdateProducerPostgreSQL) GetSecureAccessBastionIssuer() string`
@@ -414,6 +441,31 @@ SetSecureAccessWeb sets SecureAccessWeb field to given value.
 `func (o *GatewayUpdateProducerPostgreSQL) HasSecureAccessWeb() bool`
 
 HasSecureAccessWeb returns a boolean if a field has been set.
+
+### GetSsl
+
+`func (o *GatewayUpdateProducerPostgreSQL) GetSsl() bool`
+
+GetSsl returns the Ssl field if non-nil, zero value otherwise.
+
+### GetSslOk
+
+`func (o *GatewayUpdateProducerPostgreSQL) GetSslOk() (*bool, bool)`
+
+GetSslOk returns a tuple with the Ssl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSsl
+
+`func (o *GatewayUpdateProducerPostgreSQL) SetSsl(v bool)`
+
+SetSsl sets Ssl field to given value.
+
+### HasSsl
+
+`func (o *GatewayUpdateProducerPostgreSQL) HasSsl() bool`
+
+HasSsl returns a boolean if a field has been set.
 
 ### GetTags
 

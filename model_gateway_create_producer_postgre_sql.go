@@ -35,11 +35,15 @@ type GatewayCreateProducerPostgreSQL struct {
 	PostgresqlUsername *string `json:"postgresql-username,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKey *string `json:"producer-encryption-key,omitempty"`
+	// PostgreSQL Revocation statements
+	RevocationStatement *string `json:"revocation-statement,omitempty"`
 	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
 	SecureAccessDbSchema *string `json:"secure-access-db-schema,omitempty"`
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
 	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
 	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
+	// SSL connection mode
+	Ssl *bool `json:"ssl,omitempty"`
 	// List of the tags attached to this secret
 	Tags *[]string `json:"tags,omitempty"`
 	// Target name
@@ -364,6 +368,38 @@ func (o *GatewayCreateProducerPostgreSQL) SetProducerEncryptionKey(v string) {
 	o.ProducerEncryptionKey = &v
 }
 
+// GetRevocationStatement returns the RevocationStatement field value if set, zero value otherwise.
+func (o *GatewayCreateProducerPostgreSQL) GetRevocationStatement() string {
+	if o == nil || o.RevocationStatement == nil {
+		var ret string
+		return ret
+	}
+	return *o.RevocationStatement
+}
+
+// GetRevocationStatementOk returns a tuple with the RevocationStatement field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerPostgreSQL) GetRevocationStatementOk() (*string, bool) {
+	if o == nil || o.RevocationStatement == nil {
+		return nil, false
+	}
+	return o.RevocationStatement, true
+}
+
+// HasRevocationStatement returns a boolean if a field has been set.
+func (o *GatewayCreateProducerPostgreSQL) HasRevocationStatement() bool {
+	if o != nil && o.RevocationStatement != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRevocationStatement gets a reference to the given string and assigns it to the RevocationStatement field.
+func (o *GatewayCreateProducerPostgreSQL) SetRevocationStatement(v string) {
+	o.RevocationStatement = &v
+}
+
 // GetSecureAccessBastionIssuer returns the SecureAccessBastionIssuer field value if set, zero value otherwise.
 func (o *GatewayCreateProducerPostgreSQL) GetSecureAccessBastionIssuer() string {
 	if o == nil || o.SecureAccessBastionIssuer == nil {
@@ -522,6 +558,38 @@ func (o *GatewayCreateProducerPostgreSQL) HasSecureAccessWeb() bool {
 // SetSecureAccessWeb gets a reference to the given bool and assigns it to the SecureAccessWeb field.
 func (o *GatewayCreateProducerPostgreSQL) SetSecureAccessWeb(v bool) {
 	o.SecureAccessWeb = &v
+}
+
+// GetSsl returns the Ssl field value if set, zero value otherwise.
+func (o *GatewayCreateProducerPostgreSQL) GetSsl() bool {
+	if o == nil || o.Ssl == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Ssl
+}
+
+// GetSslOk returns a tuple with the Ssl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerPostgreSQL) GetSslOk() (*bool, bool) {
+	if o == nil || o.Ssl == nil {
+		return nil, false
+	}
+	return o.Ssl, true
+}
+
+// HasSsl returns a boolean if a field has been set.
+func (o *GatewayCreateProducerPostgreSQL) HasSsl() bool {
+	if o != nil && o.Ssl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSsl gets a reference to the given bool and assigns it to the Ssl field.
+func (o *GatewayCreateProducerPostgreSQL) SetSsl(v bool) {
+	o.Ssl = &v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
@@ -745,6 +813,9 @@ func (o GatewayCreateProducerPostgreSQL) MarshalJSON() ([]byte, error) {
 	if o.ProducerEncryptionKey != nil {
 		toSerialize["producer-encryption-key"] = o.ProducerEncryptionKey
 	}
+	if o.RevocationStatement != nil {
+		toSerialize["revocation-statement"] = o.RevocationStatement
+	}
 	if o.SecureAccessBastionIssuer != nil {
 		toSerialize["secure-access-bastion-issuer"] = o.SecureAccessBastionIssuer
 	}
@@ -759,6 +830,9 @@ func (o GatewayCreateProducerPostgreSQL) MarshalJSON() ([]byte, error) {
 	}
 	if o.SecureAccessWeb != nil {
 		toSerialize["secure-access-web"] = o.SecureAccessWeb
+	}
+	if o.Ssl != nil {
+		toSerialize["ssl"] = o.Ssl
 	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags

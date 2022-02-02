@@ -116,6 +116,7 @@ Name | Type | Description | Notes
 **PasswordPolicy** | Pointer to **string** |  | [optional] 
 **Payload** | Pointer to **string** |  | [optional] 
 **PostgresCreationStatements** | Pointer to **string** |  | [optional] 
+**PostgresRevocationStatements** | Pointer to **string** |  | [optional] 
 **RabbitmqServerPassword** | Pointer to **string** |  | [optional] 
 **RabbitmqServerUri** | Pointer to **string** |  | [optional] 
 **RabbitmqServerUser** | Pointer to **string** |  | [optional] 
@@ -132,6 +133,8 @@ Name | Type | Description | Notes
 **SfUserRole** | Pointer to **string** | generated  users info | [optional] 
 **SfWarehouseName** | Pointer to **string** |  | [optional] 
 **ShouldStop** | Pointer to **string** | TODO delete this after migration | [optional] 
+**SslConnectionCertificate** | Pointer to **string** | (Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field | [optional] 
+**SslConnectionMode** | Pointer to **bool** | (Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
 **TimeoutSeconds** | Pointer to **int64** |  | [optional] 
 **UseGwCloudIdentity** | Pointer to **bool** |  | [optional] 
@@ -2972,6 +2975,31 @@ SetPostgresCreationStatements sets PostgresCreationStatements field to given val
 
 HasPostgresCreationStatements returns a boolean if a field has been set.
 
+### GetPostgresRevocationStatements
+
+`func (o *DSProducerDetails) GetPostgresRevocationStatements() string`
+
+GetPostgresRevocationStatements returns the PostgresRevocationStatements field if non-nil, zero value otherwise.
+
+### GetPostgresRevocationStatementsOk
+
+`func (o *DSProducerDetails) GetPostgresRevocationStatementsOk() (*string, bool)`
+
+GetPostgresRevocationStatementsOk returns a tuple with the PostgresRevocationStatements field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPostgresRevocationStatements
+
+`func (o *DSProducerDetails) SetPostgresRevocationStatements(v string)`
+
+SetPostgresRevocationStatements sets PostgresRevocationStatements field to given value.
+
+### HasPostgresRevocationStatements
+
+`func (o *DSProducerDetails) HasPostgresRevocationStatements() bool`
+
+HasPostgresRevocationStatements returns a boolean if a field has been set.
+
 ### GetRabbitmqServerPassword
 
 `func (o *DSProducerDetails) GetRabbitmqServerPassword() string`
@@ -3371,6 +3399,56 @@ SetShouldStop sets ShouldStop field to given value.
 `func (o *DSProducerDetails) HasShouldStop() bool`
 
 HasShouldStop returns a boolean if a field has been set.
+
+### GetSslConnectionCertificate
+
+`func (o *DSProducerDetails) GetSslConnectionCertificate() string`
+
+GetSslConnectionCertificate returns the SslConnectionCertificate field if non-nil, zero value otherwise.
+
+### GetSslConnectionCertificateOk
+
+`func (o *DSProducerDetails) GetSslConnectionCertificateOk() (*string, bool)`
+
+GetSslConnectionCertificateOk returns a tuple with the SslConnectionCertificate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSslConnectionCertificate
+
+`func (o *DSProducerDetails) SetSslConnectionCertificate(v string)`
+
+SetSslConnectionCertificate sets SslConnectionCertificate field to given value.
+
+### HasSslConnectionCertificate
+
+`func (o *DSProducerDetails) HasSslConnectionCertificate() bool`
+
+HasSslConnectionCertificate returns a boolean if a field has been set.
+
+### GetSslConnectionMode
+
+`func (o *DSProducerDetails) GetSslConnectionMode() bool`
+
+GetSslConnectionMode returns the SslConnectionMode field if non-nil, zero value otherwise.
+
+### GetSslConnectionModeOk
+
+`func (o *DSProducerDetails) GetSslConnectionModeOk() (*bool, bool)`
+
+GetSslConnectionModeOk returns a tuple with the SslConnectionMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSslConnectionMode
+
+`func (o *DSProducerDetails) SetSslConnectionMode(v bool)`
+
+SetSslConnectionMode sets SslConnectionMode field to given value.
+
+### HasSslConnectionMode
+
+`func (o *DSProducerDetails) HasSslConnectionMode() bool`
+
+HasSslConnectionMode returns a boolean if a field has been set.
 
 ### GetTags
 
