@@ -19,6 +19,7 @@ import (
 type UpdateAssoc struct {
 	// The association id to be updated
 	AssocId string `json:"assoc-id"`
+	CaseSensitive *string `json:"case-sensitive,omitempty"`
 	// Required only when the authentication process requires a username and password
 	Password *string `json:"password,omitempty"`
 	// key/val of sub claims, e.g group=admins,developers
@@ -71,6 +72,38 @@ func (o *UpdateAssoc) GetAssocIdOk() (*string, bool) {
 // SetAssocId sets field value
 func (o *UpdateAssoc) SetAssocId(v string) {
 	o.AssocId = v
+}
+
+// GetCaseSensitive returns the CaseSensitive field value if set, zero value otherwise.
+func (o *UpdateAssoc) GetCaseSensitive() string {
+	if o == nil || o.CaseSensitive == nil {
+		var ret string
+		return ret
+	}
+	return *o.CaseSensitive
+}
+
+// GetCaseSensitiveOk returns a tuple with the CaseSensitive field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAssoc) GetCaseSensitiveOk() (*string, bool) {
+	if o == nil || o.CaseSensitive == nil {
+		return nil, false
+	}
+	return o.CaseSensitive, true
+}
+
+// HasCaseSensitive returns a boolean if a field has been set.
+func (o *UpdateAssoc) HasCaseSensitive() bool {
+	if o != nil && o.CaseSensitive != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCaseSensitive gets a reference to the given string and assigns it to the CaseSensitive field.
+func (o *UpdateAssoc) SetCaseSensitive(v string) {
+	o.CaseSensitive = &v
 }
 
 // GetPassword returns the Password field value if set, zero value otherwise.
@@ -237,6 +270,9 @@ func (o UpdateAssoc) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["assoc-id"] = o.AssocId
+	}
+	if o.CaseSensitive != nil {
+		toSerialize["case-sensitive"] = o.CaseSensitive
 	}
 	if o.Password != nil {
 		toSerialize["password"] = o.Password

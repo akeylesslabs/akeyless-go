@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ApiId** | Pointer to **string** |  | [optional] 
 **ApiKey** | Pointer to **string** |  | [optional] 
+**ApplicationId** | **string** | ApplicationId (used in azure) | 
 **AuthenticationCredentials** | Pointer to **string** |  | [optional] 
 **AutoRotate** | Pointer to **string** | Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation | [optional] 
 **CustomPayload** | Pointer to **string** |  | [optional] 
@@ -34,7 +35,7 @@ Name | Type | Description | Notes
 
 ### NewCreateRotatedSecret
 
-`func NewCreateRotatedSecret(name string, rotatorType string, targetName string, ) *CreateRotatedSecret`
+`func NewCreateRotatedSecret(applicationId string, name string, rotatorType string, targetName string, ) *CreateRotatedSecret`
 
 NewCreateRotatedSecret instantiates a new CreateRotatedSecret object
 This constructor will assign default values to properties that have it defined,
@@ -98,6 +99,26 @@ SetApiKey sets ApiKey field to given value.
 `func (o *CreateRotatedSecret) HasApiKey() bool`
 
 HasApiKey returns a boolean if a field has been set.
+
+### GetApplicationId
+
+`func (o *CreateRotatedSecret) GetApplicationId() string`
+
+GetApplicationId returns the ApplicationId field if non-nil, zero value otherwise.
+
+### GetApplicationIdOk
+
+`func (o *CreateRotatedSecret) GetApplicationIdOk() (*string, bool)`
+
+GetApplicationIdOk returns a tuple with the ApplicationId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApplicationId
+
+`func (o *CreateRotatedSecret) SetApplicationId(v string)`
+
+SetApplicationId sets ApplicationId field to given value.
+
 
 ### GetAuthenticationCredentials
 

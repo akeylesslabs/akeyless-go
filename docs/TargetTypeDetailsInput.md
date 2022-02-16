@@ -35,6 +35,9 @@ Name | Type | Description | Notes
 **EksSecretAccessKey** | Pointer to **string** |  | [optional] 
 **GcpServiceAccountEmail** | Pointer to **string** |  | [optional] 
 **GcpServiceAccountKey** | Pointer to **string** |  | [optional] 
+**GithubAppId** | Pointer to **int64** |  | [optional] 
+**GithubAppPrivateKey** | Pointer to **string** |  | [optional] 
+**GithubBaseUrl** | Pointer to **string** |  | [optional] 
 **GkeClusterCaCertificate** | Pointer to **string** |  | [optional] 
 **GkeClusterEndpoint** | Pointer to **string** |  | [optional] 
 **GkeClusterName** | Pointer to **string** |  | [optional] 
@@ -875,6 +878,81 @@ SetGcpServiceAccountKey sets GcpServiceAccountKey field to given value.
 `func (o *TargetTypeDetailsInput) HasGcpServiceAccountKey() bool`
 
 HasGcpServiceAccountKey returns a boolean if a field has been set.
+
+### GetGithubAppId
+
+`func (o *TargetTypeDetailsInput) GetGithubAppId() int64`
+
+GetGithubAppId returns the GithubAppId field if non-nil, zero value otherwise.
+
+### GetGithubAppIdOk
+
+`func (o *TargetTypeDetailsInput) GetGithubAppIdOk() (*int64, bool)`
+
+GetGithubAppIdOk returns a tuple with the GithubAppId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGithubAppId
+
+`func (o *TargetTypeDetailsInput) SetGithubAppId(v int64)`
+
+SetGithubAppId sets GithubAppId field to given value.
+
+### HasGithubAppId
+
+`func (o *TargetTypeDetailsInput) HasGithubAppId() bool`
+
+HasGithubAppId returns a boolean if a field has been set.
+
+### GetGithubAppPrivateKey
+
+`func (o *TargetTypeDetailsInput) GetGithubAppPrivateKey() string`
+
+GetGithubAppPrivateKey returns the GithubAppPrivateKey field if non-nil, zero value otherwise.
+
+### GetGithubAppPrivateKeyOk
+
+`func (o *TargetTypeDetailsInput) GetGithubAppPrivateKeyOk() (*string, bool)`
+
+GetGithubAppPrivateKeyOk returns a tuple with the GithubAppPrivateKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGithubAppPrivateKey
+
+`func (o *TargetTypeDetailsInput) SetGithubAppPrivateKey(v string)`
+
+SetGithubAppPrivateKey sets GithubAppPrivateKey field to given value.
+
+### HasGithubAppPrivateKey
+
+`func (o *TargetTypeDetailsInput) HasGithubAppPrivateKey() bool`
+
+HasGithubAppPrivateKey returns a boolean if a field has been set.
+
+### GetGithubBaseUrl
+
+`func (o *TargetTypeDetailsInput) GetGithubBaseUrl() string`
+
+GetGithubBaseUrl returns the GithubBaseUrl field if non-nil, zero value otherwise.
+
+### GetGithubBaseUrlOk
+
+`func (o *TargetTypeDetailsInput) GetGithubBaseUrlOk() (*string, bool)`
+
+GetGithubBaseUrlOk returns a tuple with the GithubBaseUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGithubBaseUrl
+
+`func (o *TargetTypeDetailsInput) SetGithubBaseUrl(v string)`
+
+SetGithubBaseUrl sets GithubBaseUrl field to given value.
+
+### HasGithubBaseUrl
+
+`func (o *TargetTypeDetailsInput) HasGithubBaseUrl() bool`
+
+HasGithubBaseUrl returns a boolean if a field has been set.
 
 ### GetGkeClusterCaCertificate
 

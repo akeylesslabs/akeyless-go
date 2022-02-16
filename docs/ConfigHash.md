@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **MQueue** | Pointer to **string** |  | [optional] 
 **Migrations** | Pointer to **string** |  | [optional] 
 **Producers** | Pointer to **map[string]interface{}** |  | [optional] 
+**ProducersStatus** | Pointer to **string** |  | [optional] 
 **Rotators** | Pointer to **map[string]interface{}** |  | [optional] 
 **Saml** | Pointer to **string** |  | [optional] 
 **UniversalIdentity** | Pointer to **string** |  | [optional] 
@@ -338,6 +339,31 @@ SetProducers sets Producers field to given value.
 `func (o *ConfigHash) HasProducers() bool`
 
 HasProducers returns a boolean if a field has been set.
+
+### GetProducersStatus
+
+`func (o *ConfigHash) GetProducersStatus() string`
+
+GetProducersStatus returns the ProducersStatus field if non-nil, zero value otherwise.
+
+### GetProducersStatusOk
+
+`func (o *ConfigHash) GetProducersStatusOk() (*string, bool)`
+
+GetProducersStatusOk returns a tuple with the ProducersStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProducersStatus
+
+`func (o *ConfigHash) SetProducersStatus(v string)`
+
+SetProducersStatus sets ProducersStatus field to given value.
+
+### HasProducersStatus
+
+`func (o *ConfigHash) HasProducersStatus() bool`
+
+HasProducersStatus returns a boolean if a field has been set.
 
 ### GetRotators
 

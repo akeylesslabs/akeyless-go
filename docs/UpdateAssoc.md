@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AssocId** | **string** | The association id to be updated | 
+**CaseSensitive** | Pointer to **string** |  | [optional] 
 **Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **SubClaims** | Pointer to **map[string]string** | key/val of sub claims, e.g group&#x3D;admins,developers | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -49,6 +50,31 @@ and a boolean to check if the value has been set.
 
 SetAssocId sets AssocId field to given value.
 
+
+### GetCaseSensitive
+
+`func (o *UpdateAssoc) GetCaseSensitive() string`
+
+GetCaseSensitive returns the CaseSensitive field if non-nil, zero value otherwise.
+
+### GetCaseSensitiveOk
+
+`func (o *UpdateAssoc) GetCaseSensitiveOk() (*string, bool)`
+
+GetCaseSensitiveOk returns a tuple with the CaseSensitive field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCaseSensitive
+
+`func (o *UpdateAssoc) SetCaseSensitive(v string)`
+
+SetCaseSensitive sets CaseSensitive field to given value.
+
+### HasCaseSensitive
+
+`func (o *UpdateAssoc) HasCaseSensitive() bool`
+
+HasCaseSensitive returns a boolean if a field has been set.
 
 ### GetPassword
 

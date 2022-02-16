@@ -19,6 +19,8 @@ import (
 type CreateRotatedSecret struct {
 	ApiId *string `json:"api-id,omitempty"`
 	ApiKey *string `json:"api-key,omitempty"`
+	// ApplicationId (used in azure)
+	ApplicationId string `json:"application-id"`
 	AuthenticationCredentials *string `json:"authentication-credentials,omitempty"`
 	// Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation
 	AutoRotate *string `json:"auto-rotate,omitempty"`
@@ -64,8 +66,9 @@ type CreateRotatedSecret struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateRotatedSecret(name string, rotatorType string, targetName string, ) *CreateRotatedSecret {
+func NewCreateRotatedSecret(applicationId string, name string, rotatorType string, targetName string, ) *CreateRotatedSecret {
 	this := CreateRotatedSecret{}
+	this.ApplicationId = applicationId
 	this.Name = name
 	this.RotatorType = rotatorType
 	this.TargetName = targetName
@@ -142,6 +145,30 @@ func (o *CreateRotatedSecret) HasApiKey() bool {
 // SetApiKey gets a reference to the given string and assigns it to the ApiKey field.
 func (o *CreateRotatedSecret) SetApiKey(v string) {
 	o.ApiKey = &v
+}
+
+// GetApplicationId returns the ApplicationId field value
+func (o *CreateRotatedSecret) GetApplicationId() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.ApplicationId
+}
+
+// GetApplicationIdOk returns a tuple with the ApplicationId field value
+// and a boolean to check if the value has been set.
+func (o *CreateRotatedSecret) GetApplicationIdOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.ApplicationId, true
+}
+
+// SetApplicationId sets field value
+func (o *CreateRotatedSecret) SetApplicationId(v string) {
+	o.ApplicationId = v
 }
 
 // GetAuthenticationCredentials returns the AuthenticationCredentials field value if set, zero value otherwise.
@@ -863,6 +890,9 @@ func (o CreateRotatedSecret) MarshalJSON() ([]byte, error) {
 	}
 	if o.ApiKey != nil {
 		toSerialize["api-key"] = o.ApiKey
+	}
+	if true {
+		toSerialize["application-id"] = o.ApplicationId
 	}
 	if o.AuthenticationCredentials != nil {
 		toSerialize["authentication-credentials"] = o.AuthenticationCredentials

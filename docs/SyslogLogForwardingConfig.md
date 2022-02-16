@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**SyslogFormatter** | Pointer to **string** |  | [optional] 
 **SyslogHost** | Pointer to **string** |  | [optional] 
 **SyslogNetwork** | Pointer to **string** |  | [optional] 
 **SyslogTargetTag** | Pointer to **string** |  | [optional] 
@@ -26,6 +27,31 @@ will change when the set of required properties is changed
 NewSyslogLogForwardingConfigWithDefaults instantiates a new SyslogLogForwardingConfig object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetSyslogFormatter
+
+`func (o *SyslogLogForwardingConfig) GetSyslogFormatter() string`
+
+GetSyslogFormatter returns the SyslogFormatter field if non-nil, zero value otherwise.
+
+### GetSyslogFormatterOk
+
+`func (o *SyslogLogForwardingConfig) GetSyslogFormatterOk() (*string, bool)`
+
+GetSyslogFormatterOk returns a tuple with the SyslogFormatter field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSyslogFormatter
+
+`func (o *SyslogLogForwardingConfig) SetSyslogFormatter(v string)`
+
+SetSyslogFormatter sets SyslogFormatter field to given value.
+
+### HasSyslogFormatter
+
+`func (o *SyslogLogForwardingConfig) HasSyslogFormatter() bool`
+
+HasSyslogFormatter returns a boolean if a field has been set.
 
 ### GetSyslogHost
 

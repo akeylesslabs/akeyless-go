@@ -30,6 +30,7 @@ Method | HTTP request | Description
 [**CreateEKSTarget**](V2Api.md#CreateEKSTarget) | **Post** /create-eks-target | 
 [**CreateGKETarget**](V2Api.md#CreateGKETarget) | **Post** /create-gke-target | 
 [**CreateGcpTarget**](V2Api.md#CreateGcpTarget) | **Post** /create-gcp-target | 
+[**CreateGithubTarget**](V2Api.md#CreateGithubTarget) | **Post** /create-github-target | 
 [**CreateKey**](V2Api.md#CreateKey) | **Post** /create-key | 
 [**CreateNativeK8STarget**](V2Api.md#CreateNativeK8STarget) | **Post** /create-k8s-target | 
 [**CreatePKICertIssuer**](V2Api.md#CreatePKICertIssuer) | **Post** /create-pki-cert-issuer | 
@@ -69,6 +70,7 @@ Method | HTTP request | Description
 [**GatewayCreateProducerCustom**](V2Api.md#GatewayCreateProducerCustom) | **Post** /gateway-create-producer-custom | 
 [**GatewayCreateProducerEks**](V2Api.md#GatewayCreateProducerEks) | **Post** /gateway-create-producer-eks | 
 [**GatewayCreateProducerGcp**](V2Api.md#GatewayCreateProducerGcp) | **Post** /gateway-create-producer-gcp | 
+[**GatewayCreateProducerGithub**](V2Api.md#GatewayCreateProducerGithub) | **Post** /gateway-create-producer-github | 
 [**GatewayCreateProducerGke**](V2Api.md#GatewayCreateProducerGke) | **Post** /gateway-create-producer-gke | 
 [**GatewayCreateProducerLdap**](V2Api.md#GatewayCreateProducerLdap) | **Post** /gateway-create-producer-ldap | 
 [**GatewayCreateProducerMSSQL**](V2Api.md#GatewayCreateProducerMSSQL) | **Post** /gateway-create-producer-mssql | 
@@ -105,6 +107,7 @@ Method | HTTP request | Description
 [**GatewayUpdateProducerCustom**](V2Api.md#GatewayUpdateProducerCustom) | **Post** /gateway-update-producer-custom | 
 [**GatewayUpdateProducerEks**](V2Api.md#GatewayUpdateProducerEks) | **Post** /gateway-update-producer-eks | 
 [**GatewayUpdateProducerGcp**](V2Api.md#GatewayUpdateProducerGcp) | **Post** /gateway-update-producer-gcp | 
+[**GatewayUpdateProducerGithub**](V2Api.md#GatewayUpdateProducerGithub) | **Post** /gateway-update-producer-github | 
 [**GatewayUpdateProducerGke**](V2Api.md#GatewayUpdateProducerGke) | **Post** /gateway-update-producer-gke | 
 [**GatewayUpdateProducerLdap**](V2Api.md#GatewayUpdateProducerLdap) | **Post** /gateway-update-producer-ldap | 
 [**GatewayUpdateProducerMSSQL**](V2Api.md#GatewayUpdateProducerMSSQL) | **Post** /gateway-update-producer-mssql | 
@@ -186,6 +189,7 @@ Method | HTTP request | Description
 [**UpdateEKSTarget**](V2Api.md#UpdateEKSTarget) | **Post** /update-eks-target | 
 [**UpdateGKETarget**](V2Api.md#UpdateGKETarget) | **Post** /update-gke-target | 
 [**UpdateGcpTarget**](V2Api.md#UpdateGcpTarget) | **Post** /update-gcp-target | 
+[**UpdateGithubTarget**](V2Api.md#UpdateGithubTarget) | **Post** /update-github-target | 
 [**UpdateItem**](V2Api.md#UpdateItem) | **Post** /update-item | 
 [**UpdateNativeK8STarget**](V2Api.md#UpdateNativeK8STarget) | **Post** /update-k8s-target | 
 [**UpdatePKICertIssuer**](V2Api.md#UpdatePKICertIssuer) | **Post** /update-pki-cert-issuer | 
@@ -486,7 +490,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.Newconnect() // Connect | 
+    body := *openapiclient.NewConnect() // Connect | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -1875,6 +1879,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## CreateGithubTarget
+
+> CreateGithubTargetOutput CreateGithubTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewcreateGithubTarget("Name_example") // CreateGithubTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.CreateGithubTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateGithubTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateGithubTarget`: CreateGithubTargetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateGithubTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateGithubTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateGithubTarget**](CreateGithubTarget.md) |  | 
+
+### Return type
+
+[**CreateGithubTargetOutput**](createGithubTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## CreateKey
 
 > CreateKeyOutput CreateKey(ctx).Body(body).Execute()
@@ -2214,7 +2282,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateRotatedSecret("Name_example", "RotatorType_example", "TargetName_example") // CreateRotatedSecret | 
+    body := *openapiclient.NewcreateRotatedSecret("ApplicationId_example", "Name_example", "RotatorType_example", "TargetName_example") // CreateRotatedSecret | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -4356,6 +4424,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GatewayCreateProducerGcpOutput**](gatewayCreateProducerGcpOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayCreateProducerGithub
+
+> GatewayCreateProducerGithubOutput GatewayCreateProducerGithub(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayCreateProducerGithub("Name_example") // GatewayCreateProducerGithub | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayCreateProducerGithub(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerGithub``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayCreateProducerGithub`: GatewayCreateProducerGithubOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayCreateProducerGithub`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayCreateProducerGithubRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayCreateProducerGithub**](GatewayCreateProducerGithub.md) |  | 
+
+### Return type
+
+[**GatewayCreateProducerGithubOutput**](gatewayCreateProducerGithubOutput.md)
 
 ### Authorization
 
@@ -6658,6 +6790,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GatewayUpdateProducerGcpOutput**](gatewayUpdateProducerGcpOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateProducerGithub
+
+> GatewayUpdateProducerGithubOutput GatewayUpdateProducerGithub(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateProducerGithub("Name_example") // GatewayUpdateProducerGithub | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateProducerGithub(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerGithub``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateProducerGithub`: GatewayUpdateProducerGithubOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateProducerGithub`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateProducerGithubRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerGithub**](GatewayUpdateProducerGithub.md) |  | 
+
+### Return type
+
+[**GatewayUpdateProducerGithubOutput**](gatewayUpdateProducerGithubOutput.md)
 
 ### Authorization
 
@@ -11830,6 +12026,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**UpdateGcpTargetOutput**](updateGcpTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateGithubTarget
+
+> UpdateGithubTargetOutput UpdateGithubTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewupdateGithubTarget("Name_example") // UpdateGithubTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdateGithubTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateGithubTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateGithubTarget`: UpdateGithubTargetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateGithubTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateGithubTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateGithubTarget**](UpdateGithubTarget.md) |  | 
+
+### Return type
+
+[**UpdateGithubTargetOutput**](updateGithubTargetOutput.md)
 
 ### Authorization
 

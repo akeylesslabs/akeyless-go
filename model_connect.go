@@ -15,8 +15,10 @@ import (
 	"encoding/json"
 )
 
-// Connect connect is a command that performs secure remote access
+// Connect Connect is a command that performs secure remote access
 type Connect struct {
+	// used to override .akeyless-connect.rc in tests
+	RcFileOverride *string `json:"RcFileOverride,omitempty"`
 	// The Bastion API path
 	BastionCtrlPath *string `json:"bastion-ctrl-path,omitempty"`
 	// The Bastion API Port
@@ -70,6 +72,38 @@ func NewConnectWithDefaults() *Connect {
 	var bastionCtrlProto string = "http"
 	this.BastionCtrlProto = &bastionCtrlProto
 	return &this
+}
+
+// GetRcFileOverride returns the RcFileOverride field value if set, zero value otherwise.
+func (o *Connect) GetRcFileOverride() string {
+	if o == nil || o.RcFileOverride == nil {
+		var ret string
+		return ret
+	}
+	return *o.RcFileOverride
+}
+
+// GetRcFileOverrideOk returns a tuple with the RcFileOverride field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Connect) GetRcFileOverrideOk() (*string, bool) {
+	if o == nil || o.RcFileOverride == nil {
+		return nil, false
+	}
+	return o.RcFileOverride, true
+}
+
+// HasRcFileOverride returns a boolean if a field has been set.
+func (o *Connect) HasRcFileOverride() bool {
+	if o != nil && o.RcFileOverride != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRcFileOverride gets a reference to the given string and assigns it to the RcFileOverride field.
+func (o *Connect) SetRcFileOverride(v string) {
+	o.RcFileOverride = &v
 }
 
 // GetBastionCtrlPath returns the BastionCtrlPath field value if set, zero value otherwise.
@@ -522,6 +556,9 @@ func (o *Connect) SetViaBastion(v string) {
 
 func (o Connect) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.RcFileOverride != nil {
+		toSerialize["RcFileOverride"] = o.RcFileOverride
+	}
 	if o.BastionCtrlPath != nil {
 		toSerialize["bastion-ctrl-path"] = o.BastionCtrlPath
 	}

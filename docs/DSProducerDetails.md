@@ -72,6 +72,14 @@ Name | Type | Description | Notes
 **GcpTokenLifetime** | Pointer to **string** |  | [optional] 
 **GcpTokenScope** | Pointer to **string** |  | [optional] 
 **GcpTokenType** | Pointer to **string** |  | [optional] 
+**GithubAppId** | Pointer to **int64** |  | [optional] 
+**GithubAppPrivateKey** | Pointer to **string** |  | [optional] 
+**GithubBaseUrl** | Pointer to **string** |  | [optional] 
+**GithubInstallationId** | Pointer to **int64** |  | [optional] 
+**GithubInstallationTokenPermissions** | Pointer to **map[string]string** |  | [optional] 
+**GithubInstallationTokenRepositories** | Pointer to **[]string** |  | [optional] 
+**GithubInstallationTokenRepositoriesIds** | Pointer to **[]int64** |  | [optional] 
+**GithubRepositoryPath** | Pointer to **string** |  | [optional] 
 **GkeClusterCaCertificate** | Pointer to **string** |  | [optional] 
 **GkeClusterEndpoint** | Pointer to **string** |  | [optional] 
 **GkeClusterName** | Pointer to **string** |  | [optional] 
@@ -1874,6 +1882,206 @@ SetGcpTokenType sets GcpTokenType field to given value.
 `func (o *DSProducerDetails) HasGcpTokenType() bool`
 
 HasGcpTokenType returns a boolean if a field has been set.
+
+### GetGithubAppId
+
+`func (o *DSProducerDetails) GetGithubAppId() int64`
+
+GetGithubAppId returns the GithubAppId field if non-nil, zero value otherwise.
+
+### GetGithubAppIdOk
+
+`func (o *DSProducerDetails) GetGithubAppIdOk() (*int64, bool)`
+
+GetGithubAppIdOk returns a tuple with the GithubAppId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGithubAppId
+
+`func (o *DSProducerDetails) SetGithubAppId(v int64)`
+
+SetGithubAppId sets GithubAppId field to given value.
+
+### HasGithubAppId
+
+`func (o *DSProducerDetails) HasGithubAppId() bool`
+
+HasGithubAppId returns a boolean if a field has been set.
+
+### GetGithubAppPrivateKey
+
+`func (o *DSProducerDetails) GetGithubAppPrivateKey() string`
+
+GetGithubAppPrivateKey returns the GithubAppPrivateKey field if non-nil, zero value otherwise.
+
+### GetGithubAppPrivateKeyOk
+
+`func (o *DSProducerDetails) GetGithubAppPrivateKeyOk() (*string, bool)`
+
+GetGithubAppPrivateKeyOk returns a tuple with the GithubAppPrivateKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGithubAppPrivateKey
+
+`func (o *DSProducerDetails) SetGithubAppPrivateKey(v string)`
+
+SetGithubAppPrivateKey sets GithubAppPrivateKey field to given value.
+
+### HasGithubAppPrivateKey
+
+`func (o *DSProducerDetails) HasGithubAppPrivateKey() bool`
+
+HasGithubAppPrivateKey returns a boolean if a field has been set.
+
+### GetGithubBaseUrl
+
+`func (o *DSProducerDetails) GetGithubBaseUrl() string`
+
+GetGithubBaseUrl returns the GithubBaseUrl field if non-nil, zero value otherwise.
+
+### GetGithubBaseUrlOk
+
+`func (o *DSProducerDetails) GetGithubBaseUrlOk() (*string, bool)`
+
+GetGithubBaseUrlOk returns a tuple with the GithubBaseUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGithubBaseUrl
+
+`func (o *DSProducerDetails) SetGithubBaseUrl(v string)`
+
+SetGithubBaseUrl sets GithubBaseUrl field to given value.
+
+### HasGithubBaseUrl
+
+`func (o *DSProducerDetails) HasGithubBaseUrl() bool`
+
+HasGithubBaseUrl returns a boolean if a field has been set.
+
+### GetGithubInstallationId
+
+`func (o *DSProducerDetails) GetGithubInstallationId() int64`
+
+GetGithubInstallationId returns the GithubInstallationId field if non-nil, zero value otherwise.
+
+### GetGithubInstallationIdOk
+
+`func (o *DSProducerDetails) GetGithubInstallationIdOk() (*int64, bool)`
+
+GetGithubInstallationIdOk returns a tuple with the GithubInstallationId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGithubInstallationId
+
+`func (o *DSProducerDetails) SetGithubInstallationId(v int64)`
+
+SetGithubInstallationId sets GithubInstallationId field to given value.
+
+### HasGithubInstallationId
+
+`func (o *DSProducerDetails) HasGithubInstallationId() bool`
+
+HasGithubInstallationId returns a boolean if a field has been set.
+
+### GetGithubInstallationTokenPermissions
+
+`func (o *DSProducerDetails) GetGithubInstallationTokenPermissions() map[string]string`
+
+GetGithubInstallationTokenPermissions returns the GithubInstallationTokenPermissions field if non-nil, zero value otherwise.
+
+### GetGithubInstallationTokenPermissionsOk
+
+`func (o *DSProducerDetails) GetGithubInstallationTokenPermissionsOk() (*map[string]string, bool)`
+
+GetGithubInstallationTokenPermissionsOk returns a tuple with the GithubInstallationTokenPermissions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGithubInstallationTokenPermissions
+
+`func (o *DSProducerDetails) SetGithubInstallationTokenPermissions(v map[string]string)`
+
+SetGithubInstallationTokenPermissions sets GithubInstallationTokenPermissions field to given value.
+
+### HasGithubInstallationTokenPermissions
+
+`func (o *DSProducerDetails) HasGithubInstallationTokenPermissions() bool`
+
+HasGithubInstallationTokenPermissions returns a boolean if a field has been set.
+
+### GetGithubInstallationTokenRepositories
+
+`func (o *DSProducerDetails) GetGithubInstallationTokenRepositories() []string`
+
+GetGithubInstallationTokenRepositories returns the GithubInstallationTokenRepositories field if non-nil, zero value otherwise.
+
+### GetGithubInstallationTokenRepositoriesOk
+
+`func (o *DSProducerDetails) GetGithubInstallationTokenRepositoriesOk() (*[]string, bool)`
+
+GetGithubInstallationTokenRepositoriesOk returns a tuple with the GithubInstallationTokenRepositories field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGithubInstallationTokenRepositories
+
+`func (o *DSProducerDetails) SetGithubInstallationTokenRepositories(v []string)`
+
+SetGithubInstallationTokenRepositories sets GithubInstallationTokenRepositories field to given value.
+
+### HasGithubInstallationTokenRepositories
+
+`func (o *DSProducerDetails) HasGithubInstallationTokenRepositories() bool`
+
+HasGithubInstallationTokenRepositories returns a boolean if a field has been set.
+
+### GetGithubInstallationTokenRepositoriesIds
+
+`func (o *DSProducerDetails) GetGithubInstallationTokenRepositoriesIds() []int64`
+
+GetGithubInstallationTokenRepositoriesIds returns the GithubInstallationTokenRepositoriesIds field if non-nil, zero value otherwise.
+
+### GetGithubInstallationTokenRepositoriesIdsOk
+
+`func (o *DSProducerDetails) GetGithubInstallationTokenRepositoriesIdsOk() (*[]int64, bool)`
+
+GetGithubInstallationTokenRepositoriesIdsOk returns a tuple with the GithubInstallationTokenRepositoriesIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGithubInstallationTokenRepositoriesIds
+
+`func (o *DSProducerDetails) SetGithubInstallationTokenRepositoriesIds(v []int64)`
+
+SetGithubInstallationTokenRepositoriesIds sets GithubInstallationTokenRepositoriesIds field to given value.
+
+### HasGithubInstallationTokenRepositoriesIds
+
+`func (o *DSProducerDetails) HasGithubInstallationTokenRepositoriesIds() bool`
+
+HasGithubInstallationTokenRepositoriesIds returns a boolean if a field has been set.
+
+### GetGithubRepositoryPath
+
+`func (o *DSProducerDetails) GetGithubRepositoryPath() string`
+
+GetGithubRepositoryPath returns the GithubRepositoryPath field if non-nil, zero value otherwise.
+
+### GetGithubRepositoryPathOk
+
+`func (o *DSProducerDetails) GetGithubRepositoryPathOk() (*string, bool)`
+
+GetGithubRepositoryPathOk returns a tuple with the GithubRepositoryPath field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGithubRepositoryPath
+
+`func (o *DSProducerDetails) SetGithubRepositoryPath(v string)`
+
+SetGithubRepositoryPath sets GithubRepositoryPath field to given value.
+
+### HasGithubRepositoryPath
+
+`func (o *DSProducerDetails) HasGithubRepositoryPath() bool`
+
+HasGithubRepositoryPath returns a boolean if a field has been set.
 
 ### GetGkeClusterCaCertificate
 

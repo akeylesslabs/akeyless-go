@@ -17,6 +17,7 @@ import (
 
 // SyslogLogForwardingConfig struct for SyslogLogForwardingConfig
 type SyslogLogForwardingConfig struct {
+	SyslogFormatter *string `json:"syslog_formatter,omitempty"`
 	SyslogHost *string `json:"syslog_host,omitempty"`
 	SyslogNetwork *string `json:"syslog_network,omitempty"`
 	SyslogTargetTag *string `json:"syslog_target_tag,omitempty"`
@@ -37,6 +38,38 @@ func NewSyslogLogForwardingConfig() *SyslogLogForwardingConfig {
 func NewSyslogLogForwardingConfigWithDefaults() *SyslogLogForwardingConfig {
 	this := SyslogLogForwardingConfig{}
 	return &this
+}
+
+// GetSyslogFormatter returns the SyslogFormatter field value if set, zero value otherwise.
+func (o *SyslogLogForwardingConfig) GetSyslogFormatter() string {
+	if o == nil || o.SyslogFormatter == nil {
+		var ret string
+		return ret
+	}
+	return *o.SyslogFormatter
+}
+
+// GetSyslogFormatterOk returns a tuple with the SyslogFormatter field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SyslogLogForwardingConfig) GetSyslogFormatterOk() (*string, bool) {
+	if o == nil || o.SyslogFormatter == nil {
+		return nil, false
+	}
+	return o.SyslogFormatter, true
+}
+
+// HasSyslogFormatter returns a boolean if a field has been set.
+func (o *SyslogLogForwardingConfig) HasSyslogFormatter() bool {
+	if o != nil && o.SyslogFormatter != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSyslogFormatter gets a reference to the given string and assigns it to the SyslogFormatter field.
+func (o *SyslogLogForwardingConfig) SetSyslogFormatter(v string) {
+	o.SyslogFormatter = &v
 }
 
 // GetSyslogHost returns the SyslogHost field value if set, zero value otherwise.
@@ -137,6 +170,9 @@ func (o *SyslogLogForwardingConfig) SetSyslogTargetTag(v string) {
 
 func (o SyslogLogForwardingConfig) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.SyslogFormatter != nil {
+		toSerialize["syslog_formatter"] = o.SyslogFormatter
+	}
 	if o.SyslogHost != nil {
 		toSerialize["syslog_host"] = o.SyslogHost
 	}

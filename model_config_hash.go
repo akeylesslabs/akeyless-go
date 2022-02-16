@@ -29,6 +29,7 @@ type ConfigHash struct {
 	MQueue *string `json:"m_queue,omitempty"`
 	Migrations *string `json:"migrations,omitempty"`
 	Producers *map[string]interface{} `json:"producers,omitempty"`
+	ProducersStatus *string `json:"producers_status,omitempty"`
 	Rotators *map[string]interface{} `json:"rotators,omitempty"`
 	Saml *string `json:"saml,omitempty"`
 	UniversalIdentity *string `json:"universal_identity,omitempty"`
@@ -435,6 +436,38 @@ func (o *ConfigHash) SetProducers(v map[string]interface{}) {
 	o.Producers = &v
 }
 
+// GetProducersStatus returns the ProducersStatus field value if set, zero value otherwise.
+func (o *ConfigHash) GetProducersStatus() string {
+	if o == nil || o.ProducersStatus == nil {
+		var ret string
+		return ret
+	}
+	return *o.ProducersStatus
+}
+
+// GetProducersStatusOk returns a tuple with the ProducersStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConfigHash) GetProducersStatusOk() (*string, bool) {
+	if o == nil || o.ProducersStatus == nil {
+		return nil, false
+	}
+	return o.ProducersStatus, true
+}
+
+// HasProducersStatus returns a boolean if a field has been set.
+func (o *ConfigHash) HasProducersStatus() bool {
+	if o != nil && o.ProducersStatus != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProducersStatus gets a reference to the given string and assigns it to the ProducersStatus field.
+func (o *ConfigHash) SetProducersStatus(v string) {
+	o.ProducersStatus = &v
+}
+
 // GetRotators returns the Rotators field value if set, zero value otherwise.
 func (o *ConfigHash) GetRotators() map[string]interface{} {
 	if o == nil || o.Rotators == nil {
@@ -568,6 +601,9 @@ func (o ConfigHash) MarshalJSON() ([]byte, error) {
 	}
 	if o.Producers != nil {
 		toSerialize["producers"] = o.Producers
+	}
+	if o.ProducersStatus != nil {
+		toSerialize["producers_status"] = o.ProducersStatus
 	}
 	if o.Rotators != nil {
 		toSerialize["rotators"] = o.Rotators

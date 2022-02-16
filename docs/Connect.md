@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**RcFileOverride** | Pointer to **string** | used to override .akeyless-connect.rc in tests | [optional] 
 **BastionCtrlPath** | Pointer to **string** | The Bastion API path | [optional] 
 **BastionCtrlPort** | Pointer to **string** | The Bastion API Port | [optional] [default to "9900"]
 **BastionCtrlProto** | Pointer to **string** | The Bastion API protocol | [optional] [default to "http"]
@@ -37,6 +38,31 @@ will change when the set of required properties is changed
 NewConnectWithDefaults instantiates a new Connect object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetRcFileOverride
+
+`func (o *Connect) GetRcFileOverride() string`
+
+GetRcFileOverride returns the RcFileOverride field if non-nil, zero value otherwise.
+
+### GetRcFileOverrideOk
+
+`func (o *Connect) GetRcFileOverrideOk() (*string, bool)`
+
+GetRcFileOverrideOk returns a tuple with the RcFileOverride field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRcFileOverride
+
+`func (o *Connect) SetRcFileOverride(v string)`
+
+SetRcFileOverride sets RcFileOverride field to given value.
+
+### HasRcFileOverride
+
+`func (o *Connect) HasRcFileOverride() bool`
+
+HasRcFileOverride returns a boolean if a field has been set.
 
 ### GetBastionCtrlPath
 

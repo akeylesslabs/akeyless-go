@@ -77,6 +77,8 @@ docs/CreateGKETarget.md
 docs/CreateGKETargetOutput.md
 docs/CreateGcpTarget.md
 docs/CreateGcpTargetOutput.md
+docs/CreateGithubTarget.md
+docs/CreateGithubTargetOutput.md
 docs/CreateKey.md
 docs/CreateKeyOutput.md
 docs/CreateLdapTarget.md
@@ -167,6 +169,8 @@ docs/GatewayCreateProducerEks.md
 docs/GatewayCreateProducerEksOutput.md
 docs/GatewayCreateProducerGcp.md
 docs/GatewayCreateProducerGcpOutput.md
+docs/GatewayCreateProducerGithub.md
+docs/GatewayCreateProducerGithubOutput.md
 docs/GatewayCreateProducerGke.md
 docs/GatewayCreateProducerGkeOutput.md
 docs/GatewayCreateProducerLdap.md
@@ -235,6 +239,8 @@ docs/GatewayUpdateProducerEks.md
 docs/GatewayUpdateProducerEksOutput.md
 docs/GatewayUpdateProducerGcp.md
 docs/GatewayUpdateProducerGcpOutput.md
+docs/GatewayUpdateProducerGithub.md
+docs/GatewayUpdateProducerGithubOutput.md
 docs/GatewayUpdateProducerGke.md
 docs/GatewayUpdateProducerGkeOutput.md
 docs/GatewayUpdateProducerLdap.md
@@ -436,6 +442,8 @@ docs/UpdateGKETarget.md
 docs/UpdateGKETargetOutput.md
 docs/UpdateGcpTarget.md
 docs/UpdateGcpTargetOutput.md
+docs/UpdateGithubTarget.md
+docs/UpdateGithubTargetOutput.md
 docs/UpdateItem.md
 docs/UpdateItemOutput.md
 docs/UpdateNativeK8STarget.md
@@ -548,6 +556,8 @@ model_create_eks_target.go
 model_create_eks_target_output.go
 model_create_gcp_target.go
 model_create_gcp_target_output.go
+model_create_github_target.go
+model_create_github_target_output.go
 model_create_gke_target.go
 model_create_gke_target_output.go
 model_create_key.go
@@ -639,6 +649,8 @@ model_gateway_create_producer_eks.go
 model_gateway_create_producer_eks_output.go
 model_gateway_create_producer_gcp.go
 model_gateway_create_producer_gcp_output.go
+model_gateway_create_producer_github.go
+model_gateway_create_producer_github_output.go
 model_gateway_create_producer_gke.go
 model_gateway_create_producer_gke_output.go
 model_gateway_create_producer_ldap.go
@@ -707,6 +719,8 @@ model_gateway_update_producer_eks.go
 model_gateway_update_producer_eks_output.go
 model_gateway_update_producer_gcp.go
 model_gateway_update_producer_gcp_output.go
+model_gateway_update_producer_github.go
+model_gateway_update_producer_github_output.go
 model_gateway_update_producer_gke.go
 model_gateway_update_producer_gke_output.go
 model_gateway_update_producer_ldap.go
@@ -907,6 +921,8 @@ model_update_eks_target.go
 model_update_eks_target_output.go
 model_update_gcp_target.go
 model_update_gcp_target_output.go
+model_update_github_target.go
+model_update_github_target_output.go
 model_update_gke_target.go
 model_update_gke_target_output.go
 model_update_item.go

@@ -87,6 +87,14 @@ type DSProducerDetails struct {
 	GcpTokenLifetime *string `json:"gcp_token_lifetime,omitempty"`
 	GcpTokenScope *string `json:"gcp_token_scope,omitempty"`
 	GcpTokenType *string `json:"gcp_token_type,omitempty"`
+	GithubAppId *int64 `json:"github_app_id,omitempty"`
+	GithubAppPrivateKey *string `json:"github_app_private_key,omitempty"`
+	GithubBaseUrl *string `json:"github_base_url,omitempty"`
+	GithubInstallationId *int64 `json:"github_installation_id,omitempty"`
+	GithubInstallationTokenPermissions *map[string]string `json:"github_installation_token_permissions,omitempty"`
+	GithubInstallationTokenRepositories *[]string `json:"github_installation_token_repositories,omitempty"`
+	GithubInstallationTokenRepositoriesIds *[]int64 `json:"github_installation_token_repositories_ids,omitempty"`
+	GithubRepositoryPath *string `json:"github_repository_path,omitempty"`
 	GkeClusterCaCertificate *string `json:"gke_cluster_ca_certificate,omitempty"`
 	GkeClusterEndpoint *string `json:"gke_cluster_endpoint,omitempty"`
 	GkeClusterName *string `json:"gke_cluster_name,omitempty"`
@@ -2371,6 +2379,262 @@ func (o *DSProducerDetails) HasGcpTokenType() bool {
 // SetGcpTokenType gets a reference to the given string and assigns it to the GcpTokenType field.
 func (o *DSProducerDetails) SetGcpTokenType(v string) {
 	o.GcpTokenType = &v
+}
+
+// GetGithubAppId returns the GithubAppId field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGithubAppId() int64 {
+	if o == nil || o.GithubAppId == nil {
+		var ret int64
+		return ret
+	}
+	return *o.GithubAppId
+}
+
+// GetGithubAppIdOk returns a tuple with the GithubAppId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGithubAppIdOk() (*int64, bool) {
+	if o == nil || o.GithubAppId == nil {
+		return nil, false
+	}
+	return o.GithubAppId, true
+}
+
+// HasGithubAppId returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGithubAppId() bool {
+	if o != nil && o.GithubAppId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGithubAppId gets a reference to the given int64 and assigns it to the GithubAppId field.
+func (o *DSProducerDetails) SetGithubAppId(v int64) {
+	o.GithubAppId = &v
+}
+
+// GetGithubAppPrivateKey returns the GithubAppPrivateKey field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGithubAppPrivateKey() string {
+	if o == nil || o.GithubAppPrivateKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.GithubAppPrivateKey
+}
+
+// GetGithubAppPrivateKeyOk returns a tuple with the GithubAppPrivateKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGithubAppPrivateKeyOk() (*string, bool) {
+	if o == nil || o.GithubAppPrivateKey == nil {
+		return nil, false
+	}
+	return o.GithubAppPrivateKey, true
+}
+
+// HasGithubAppPrivateKey returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGithubAppPrivateKey() bool {
+	if o != nil && o.GithubAppPrivateKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGithubAppPrivateKey gets a reference to the given string and assigns it to the GithubAppPrivateKey field.
+func (o *DSProducerDetails) SetGithubAppPrivateKey(v string) {
+	o.GithubAppPrivateKey = &v
+}
+
+// GetGithubBaseUrl returns the GithubBaseUrl field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGithubBaseUrl() string {
+	if o == nil || o.GithubBaseUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.GithubBaseUrl
+}
+
+// GetGithubBaseUrlOk returns a tuple with the GithubBaseUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGithubBaseUrlOk() (*string, bool) {
+	if o == nil || o.GithubBaseUrl == nil {
+		return nil, false
+	}
+	return o.GithubBaseUrl, true
+}
+
+// HasGithubBaseUrl returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGithubBaseUrl() bool {
+	if o != nil && o.GithubBaseUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGithubBaseUrl gets a reference to the given string and assigns it to the GithubBaseUrl field.
+func (o *DSProducerDetails) SetGithubBaseUrl(v string) {
+	o.GithubBaseUrl = &v
+}
+
+// GetGithubInstallationId returns the GithubInstallationId field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGithubInstallationId() int64 {
+	if o == nil || o.GithubInstallationId == nil {
+		var ret int64
+		return ret
+	}
+	return *o.GithubInstallationId
+}
+
+// GetGithubInstallationIdOk returns a tuple with the GithubInstallationId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGithubInstallationIdOk() (*int64, bool) {
+	if o == nil || o.GithubInstallationId == nil {
+		return nil, false
+	}
+	return o.GithubInstallationId, true
+}
+
+// HasGithubInstallationId returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGithubInstallationId() bool {
+	if o != nil && o.GithubInstallationId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGithubInstallationId gets a reference to the given int64 and assigns it to the GithubInstallationId field.
+func (o *DSProducerDetails) SetGithubInstallationId(v int64) {
+	o.GithubInstallationId = &v
+}
+
+// GetGithubInstallationTokenPermissions returns the GithubInstallationTokenPermissions field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGithubInstallationTokenPermissions() map[string]string {
+	if o == nil || o.GithubInstallationTokenPermissions == nil {
+		var ret map[string]string
+		return ret
+	}
+	return *o.GithubInstallationTokenPermissions
+}
+
+// GetGithubInstallationTokenPermissionsOk returns a tuple with the GithubInstallationTokenPermissions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGithubInstallationTokenPermissionsOk() (*map[string]string, bool) {
+	if o == nil || o.GithubInstallationTokenPermissions == nil {
+		return nil, false
+	}
+	return o.GithubInstallationTokenPermissions, true
+}
+
+// HasGithubInstallationTokenPermissions returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGithubInstallationTokenPermissions() bool {
+	if o != nil && o.GithubInstallationTokenPermissions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGithubInstallationTokenPermissions gets a reference to the given map[string]string and assigns it to the GithubInstallationTokenPermissions field.
+func (o *DSProducerDetails) SetGithubInstallationTokenPermissions(v map[string]string) {
+	o.GithubInstallationTokenPermissions = &v
+}
+
+// GetGithubInstallationTokenRepositories returns the GithubInstallationTokenRepositories field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGithubInstallationTokenRepositories() []string {
+	if o == nil || o.GithubInstallationTokenRepositories == nil {
+		var ret []string
+		return ret
+	}
+	return *o.GithubInstallationTokenRepositories
+}
+
+// GetGithubInstallationTokenRepositoriesOk returns a tuple with the GithubInstallationTokenRepositories field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGithubInstallationTokenRepositoriesOk() (*[]string, bool) {
+	if o == nil || o.GithubInstallationTokenRepositories == nil {
+		return nil, false
+	}
+	return o.GithubInstallationTokenRepositories, true
+}
+
+// HasGithubInstallationTokenRepositories returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGithubInstallationTokenRepositories() bool {
+	if o != nil && o.GithubInstallationTokenRepositories != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGithubInstallationTokenRepositories gets a reference to the given []string and assigns it to the GithubInstallationTokenRepositories field.
+func (o *DSProducerDetails) SetGithubInstallationTokenRepositories(v []string) {
+	o.GithubInstallationTokenRepositories = &v
+}
+
+// GetGithubInstallationTokenRepositoriesIds returns the GithubInstallationTokenRepositoriesIds field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGithubInstallationTokenRepositoriesIds() []int64 {
+	if o == nil || o.GithubInstallationTokenRepositoriesIds == nil {
+		var ret []int64
+		return ret
+	}
+	return *o.GithubInstallationTokenRepositoriesIds
+}
+
+// GetGithubInstallationTokenRepositoriesIdsOk returns a tuple with the GithubInstallationTokenRepositoriesIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGithubInstallationTokenRepositoriesIdsOk() (*[]int64, bool) {
+	if o == nil || o.GithubInstallationTokenRepositoriesIds == nil {
+		return nil, false
+	}
+	return o.GithubInstallationTokenRepositoriesIds, true
+}
+
+// HasGithubInstallationTokenRepositoriesIds returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGithubInstallationTokenRepositoriesIds() bool {
+	if o != nil && o.GithubInstallationTokenRepositoriesIds != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGithubInstallationTokenRepositoriesIds gets a reference to the given []int64 and assigns it to the GithubInstallationTokenRepositoriesIds field.
+func (o *DSProducerDetails) SetGithubInstallationTokenRepositoriesIds(v []int64) {
+	o.GithubInstallationTokenRepositoriesIds = &v
+}
+
+// GetGithubRepositoryPath returns the GithubRepositoryPath field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGithubRepositoryPath() string {
+	if o == nil || o.GithubRepositoryPath == nil {
+		var ret string
+		return ret
+	}
+	return *o.GithubRepositoryPath
+}
+
+// GetGithubRepositoryPathOk returns a tuple with the GithubRepositoryPath field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGithubRepositoryPathOk() (*string, bool) {
+	if o == nil || o.GithubRepositoryPath == nil {
+		return nil, false
+	}
+	return o.GithubRepositoryPath, true
+}
+
+// HasGithubRepositoryPath returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGithubRepositoryPath() bool {
+	if o != nil && o.GithubRepositoryPath != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGithubRepositoryPath gets a reference to the given string and assigns it to the GithubRepositoryPath field.
+func (o *DSProducerDetails) SetGithubRepositoryPath(v string) {
+	o.GithubRepositoryPath = &v
 }
 
 // GetGkeClusterCaCertificate returns the GkeClusterCaCertificate field value if set, zero value otherwise.
@@ -5234,6 +5498,30 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.GcpTokenType != nil {
 		toSerialize["gcp_token_type"] = o.GcpTokenType
+	}
+	if o.GithubAppId != nil {
+		toSerialize["github_app_id"] = o.GithubAppId
+	}
+	if o.GithubAppPrivateKey != nil {
+		toSerialize["github_app_private_key"] = o.GithubAppPrivateKey
+	}
+	if o.GithubBaseUrl != nil {
+		toSerialize["github_base_url"] = o.GithubBaseUrl
+	}
+	if o.GithubInstallationId != nil {
+		toSerialize["github_installation_id"] = o.GithubInstallationId
+	}
+	if o.GithubInstallationTokenPermissions != nil {
+		toSerialize["github_installation_token_permissions"] = o.GithubInstallationTokenPermissions
+	}
+	if o.GithubInstallationTokenRepositories != nil {
+		toSerialize["github_installation_token_repositories"] = o.GithubInstallationTokenRepositories
+	}
+	if o.GithubInstallationTokenRepositoriesIds != nil {
+		toSerialize["github_installation_token_repositories_ids"] = o.GithubInstallationTokenRepositoriesIds
+	}
+	if o.GithubRepositoryPath != nil {
+		toSerialize["github_repository_path"] = o.GithubRepositoryPath
 	}
 	if o.GkeClusterCaCertificate != nil {
 		toSerialize["gke_cluster_ca_certificate"] = o.GkeClusterCaCertificate

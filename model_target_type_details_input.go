@@ -50,6 +50,9 @@ type TargetTypeDetailsInput struct {
 	EksSecretAccessKey *string `json:"eks_secret_access_key,omitempty"`
 	GcpServiceAccountEmail *string `json:"gcp_service_account_email,omitempty"`
 	GcpServiceAccountKey *string `json:"gcp_service_account_key,omitempty"`
+	GithubAppId *int64 `json:"github_app_id,omitempty"`
+	GithubAppPrivateKey *string `json:"github_app_private_key,omitempty"`
+	GithubBaseUrl *string `json:"github_base_url,omitempty"`
 	GkeClusterCaCertificate *string `json:"gke_cluster_ca_certificate,omitempty"`
 	GkeClusterEndpoint *string `json:"gke_cluster_endpoint,omitempty"`
 	GkeClusterName *string `json:"gke_cluster_name,omitempty"`
@@ -1110,6 +1113,102 @@ func (o *TargetTypeDetailsInput) HasGcpServiceAccountKey() bool {
 // SetGcpServiceAccountKey gets a reference to the given string and assigns it to the GcpServiceAccountKey field.
 func (o *TargetTypeDetailsInput) SetGcpServiceAccountKey(v string) {
 	o.GcpServiceAccountKey = &v
+}
+
+// GetGithubAppId returns the GithubAppId field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetGithubAppId() int64 {
+	if o == nil || o.GithubAppId == nil {
+		var ret int64
+		return ret
+	}
+	return *o.GithubAppId
+}
+
+// GetGithubAppIdOk returns a tuple with the GithubAppId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetGithubAppIdOk() (*int64, bool) {
+	if o == nil || o.GithubAppId == nil {
+		return nil, false
+	}
+	return o.GithubAppId, true
+}
+
+// HasGithubAppId returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasGithubAppId() bool {
+	if o != nil && o.GithubAppId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGithubAppId gets a reference to the given int64 and assigns it to the GithubAppId field.
+func (o *TargetTypeDetailsInput) SetGithubAppId(v int64) {
+	o.GithubAppId = &v
+}
+
+// GetGithubAppPrivateKey returns the GithubAppPrivateKey field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetGithubAppPrivateKey() string {
+	if o == nil || o.GithubAppPrivateKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.GithubAppPrivateKey
+}
+
+// GetGithubAppPrivateKeyOk returns a tuple with the GithubAppPrivateKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetGithubAppPrivateKeyOk() (*string, bool) {
+	if o == nil || o.GithubAppPrivateKey == nil {
+		return nil, false
+	}
+	return o.GithubAppPrivateKey, true
+}
+
+// HasGithubAppPrivateKey returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasGithubAppPrivateKey() bool {
+	if o != nil && o.GithubAppPrivateKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGithubAppPrivateKey gets a reference to the given string and assigns it to the GithubAppPrivateKey field.
+func (o *TargetTypeDetailsInput) SetGithubAppPrivateKey(v string) {
+	o.GithubAppPrivateKey = &v
+}
+
+// GetGithubBaseUrl returns the GithubBaseUrl field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetGithubBaseUrl() string {
+	if o == nil || o.GithubBaseUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.GithubBaseUrl
+}
+
+// GetGithubBaseUrlOk returns a tuple with the GithubBaseUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetGithubBaseUrlOk() (*string, bool) {
+	if o == nil || o.GithubBaseUrl == nil {
+		return nil, false
+	}
+	return o.GithubBaseUrl, true
+}
+
+// HasGithubBaseUrl returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasGithubBaseUrl() bool {
+	if o != nil && o.GithubBaseUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGithubBaseUrl gets a reference to the given string and assigns it to the GithubBaseUrl field.
+func (o *TargetTypeDetailsInput) SetGithubBaseUrl(v string) {
+	o.GithubBaseUrl = &v
 }
 
 // GetGkeClusterCaCertificate returns the GkeClusterCaCertificate field value if set, zero value otherwise.
@@ -2678,6 +2777,15 @@ func (o TargetTypeDetailsInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.GcpServiceAccountKey != nil {
 		toSerialize["gcp_service_account_key"] = o.GcpServiceAccountKey
+	}
+	if o.GithubAppId != nil {
+		toSerialize["github_app_id"] = o.GithubAppId
+	}
+	if o.GithubAppPrivateKey != nil {
+		toSerialize["github_app_private_key"] = o.GithubAppPrivateKey
+	}
+	if o.GithubBaseUrl != nil {
+		toSerialize["github_base_url"] = o.GithubBaseUrl
 	}
 	if o.GkeClusterCaCertificate != nil {
 		toSerialize["gke_cluster_ca_certificate"] = o.GkeClusterCaCertificate
