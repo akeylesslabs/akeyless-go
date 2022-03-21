@@ -9,12 +9,12 @@ Name | Type | Description | Notes
 **ApiKey** | Pointer to **string** |  | [optional] 
 **AutoRotate** | Pointer to **string** | Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation | [optional] 
 **CustomPayload** | Pointer to **string** |  | [optional] 
+**KeepPrevVersion** | Pointer to **string** |  | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Secret name | 
 **NewMetadata** | Pointer to **string** | New item metadata | [optional] [default to "default_metadata"]
 **NewName** | Pointer to **string** | New item name | [optional] 
-**NewVersion** | Pointer to **bool** | Whether to create a new version of not | [optional] [default to false]
-**Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
+**NewVersion** | Pointer to **bool** | Deprecated | [optional] 
 **RmTag** | Pointer to **[]string** | List of the existent tags that will be removed from this item | [optional] 
 **RotatedPassword** | Pointer to **string** |  | [optional] 
 **RotatedUsername** | Pointer to **string** |  | [optional] 
@@ -26,7 +26,6 @@ Name | Type | Description | Notes
 **SshUsername** | Pointer to **string** | Deprecated: use RotatedUser | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
-**Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 
 ## Methods
 
@@ -172,6 +171,31 @@ SetCustomPayload sets CustomPayload field to given value.
 
 HasCustomPayload returns a boolean if a field has been set.
 
+### GetKeepPrevVersion
+
+`func (o *UpdateRotatedSecret) GetKeepPrevVersion() string`
+
+GetKeepPrevVersion returns the KeepPrevVersion field if non-nil, zero value otherwise.
+
+### GetKeepPrevVersionOk
+
+`func (o *UpdateRotatedSecret) GetKeepPrevVersionOk() (*string, bool)`
+
+GetKeepPrevVersionOk returns a tuple with the KeepPrevVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKeepPrevVersion
+
+`func (o *UpdateRotatedSecret) SetKeepPrevVersion(v string)`
+
+SetKeepPrevVersion sets KeepPrevVersion field to given value.
+
+### HasKeepPrevVersion
+
+`func (o *UpdateRotatedSecret) HasKeepPrevVersion() bool`
+
+HasKeepPrevVersion returns a boolean if a field has been set.
+
 ### GetKey
 
 `func (o *UpdateRotatedSecret) GetKey() string`
@@ -291,31 +315,6 @@ SetNewVersion sets NewVersion field to given value.
 `func (o *UpdateRotatedSecret) HasNewVersion() bool`
 
 HasNewVersion returns a boolean if a field has been set.
-
-### GetPassword
-
-`func (o *UpdateRotatedSecret) GetPassword() string`
-
-GetPassword returns the Password field if non-nil, zero value otherwise.
-
-### GetPasswordOk
-
-`func (o *UpdateRotatedSecret) GetPasswordOk() (*string, bool)`
-
-GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPassword
-
-`func (o *UpdateRotatedSecret) SetPassword(v string)`
-
-SetPassword sets Password field to given value.
-
-### HasPassword
-
-`func (o *UpdateRotatedSecret) HasPassword() bool`
-
-HasPassword returns a boolean if a field has been set.
 
 ### GetRmTag
 
@@ -591,31 +590,6 @@ SetUidToken sets UidToken field to given value.
 `func (o *UpdateRotatedSecret) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
-
-### GetUsername
-
-`func (o *UpdateRotatedSecret) GetUsername() string`
-
-GetUsername returns the Username field if non-nil, zero value otherwise.
-
-### GetUsernameOk
-
-`func (o *UpdateRotatedSecret) GetUsernameOk() (*string, bool)`
-
-GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUsername
-
-`func (o *UpdateRotatedSecret) SetUsername(v string)`
-
-SetUsername sets Username field to given value.
-
-### HasUsername
-
-`func (o *UpdateRotatedSecret) HasUsername() bool`
-
-HasUsername returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

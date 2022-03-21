@@ -19,12 +19,11 @@ import (
 type UpdateAWSTargetDetails struct {
 	AccessKey *string `json:"access-key,omitempty"`
 	AccessKeyId *string `json:"access-key-id,omitempty"`
+	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	// Target name
 	Name string `json:"name"`
-	// Whether to create a new version of not
+	// Deprecated
 	NewVersion *bool `json:"new-version,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	ProtectionKey *string `json:"protection_key,omitempty"`
 	Region *string `json:"region,omitempty"`
@@ -33,8 +32,6 @@ type UpdateAWSTargetDetails struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewUpdateAWSTargetDetails instantiates a new UpdateAWSTargetDetails object
@@ -44,8 +41,6 @@ type UpdateAWSTargetDetails struct {
 func NewUpdateAWSTargetDetails(name string, ) *UpdateAWSTargetDetails {
 	this := UpdateAWSTargetDetails{}
 	this.Name = name
-	var newVersion bool = false
-	this.NewVersion = &newVersion
 	return &this
 }
 
@@ -54,8 +49,6 @@ func NewUpdateAWSTargetDetails(name string, ) *UpdateAWSTargetDetails {
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateAWSTargetDetailsWithDefaults() *UpdateAWSTargetDetails {
 	this := UpdateAWSTargetDetails{}
-	var newVersion bool = false
-	this.NewVersion = &newVersion
 	return &this
 }
 
@@ -123,6 +116,38 @@ func (o *UpdateAWSTargetDetails) SetAccessKeyId(v string) {
 	o.AccessKeyId = &v
 }
 
+// GetKeepPrevVersion returns the KeepPrevVersion field value if set, zero value otherwise.
+func (o *UpdateAWSTargetDetails) GetKeepPrevVersion() string {
+	if o == nil || o.KeepPrevVersion == nil {
+		var ret string
+		return ret
+	}
+	return *o.KeepPrevVersion
+}
+
+// GetKeepPrevVersionOk returns a tuple with the KeepPrevVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAWSTargetDetails) GetKeepPrevVersionOk() (*string, bool) {
+	if o == nil || o.KeepPrevVersion == nil {
+		return nil, false
+	}
+	return o.KeepPrevVersion, true
+}
+
+// HasKeepPrevVersion returns a boolean if a field has been set.
+func (o *UpdateAWSTargetDetails) HasKeepPrevVersion() bool {
+	if o != nil && o.KeepPrevVersion != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetKeepPrevVersion gets a reference to the given string and assigns it to the KeepPrevVersion field.
+func (o *UpdateAWSTargetDetails) SetKeepPrevVersion(v string) {
+	o.KeepPrevVersion = &v
+}
+
 // GetName returns the Name field value
 func (o *UpdateAWSTargetDetails) GetName() string {
 	if o == nil  {
@@ -177,38 +202,6 @@ func (o *UpdateAWSTargetDetails) HasNewVersion() bool {
 // SetNewVersion gets a reference to the given bool and assigns it to the NewVersion field.
 func (o *UpdateAWSTargetDetails) SetNewVersion(v bool) {
 	o.NewVersion = &v
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *UpdateAWSTargetDetails) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UpdateAWSTargetDetails) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *UpdateAWSTargetDetails) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *UpdateAWSTargetDetails) SetPassword(v string) {
-	o.Password = &v
 }
 
 // GetProtectionKey returns the ProtectionKey field value if set, zero value otherwise.
@@ -371,38 +364,6 @@ func (o *UpdateAWSTargetDetails) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *UpdateAWSTargetDetails) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UpdateAWSTargetDetails) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *UpdateAWSTargetDetails) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *UpdateAWSTargetDetails) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o UpdateAWSTargetDetails) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccessKey != nil {
@@ -411,14 +372,14 @@ func (o UpdateAWSTargetDetails) MarshalJSON() ([]byte, error) {
 	if o.AccessKeyId != nil {
 		toSerialize["access-key-id"] = o.AccessKeyId
 	}
+	if o.KeepPrevVersion != nil {
+		toSerialize["keep-prev-version"] = o.KeepPrevVersion
+	}
 	if true {
 		toSerialize["name"] = o.Name
 	}
 	if o.NewVersion != nil {
 		toSerialize["new-version"] = o.NewVersion
-	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
 	}
 	if o.ProtectionKey != nil {
 		toSerialize["protection_key"] = o.ProtectionKey
@@ -434,9 +395,6 @@ func (o UpdateAWSTargetDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

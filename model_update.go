@@ -17,10 +17,8 @@ import (
 
 // Update struct for Update
 type Update struct {
-	// Authentication token (see `/auth` and `/configure`)
-	Token *string `json:"token,omitempty"`
-	// The universal identity token, Required only for universal_identity authentication
-	UidToken *string `json:"uid-token,omitempty"`
+	// Version
+	Version *string `json:"version,omitempty"`
 }
 
 // NewUpdate instantiates a new Update object
@@ -40,77 +38,42 @@ func NewUpdateWithDefaults() *Update {
 	return &this
 }
 
-// GetToken returns the Token field value if set, zero value otherwise.
-func (o *Update) GetToken() string {
-	if o == nil || o.Token == nil {
+// GetVersion returns the Version field value if set, zero value otherwise.
+func (o *Update) GetVersion() string {
+	if o == nil || o.Version == nil {
 		var ret string
 		return ret
 	}
-	return *o.Token
+	return *o.Version
 }
 
-// GetTokenOk returns a tuple with the Token field value if set, nil otherwise
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Update) GetTokenOk() (*string, bool) {
-	if o == nil || o.Token == nil {
+func (o *Update) GetVersionOk() (*string, bool) {
+	if o == nil || o.Version == nil {
 		return nil, false
 	}
-	return o.Token, true
+	return o.Version, true
 }
 
-// HasToken returns a boolean if a field has been set.
-func (o *Update) HasToken() bool {
-	if o != nil && o.Token != nil {
+// HasVersion returns a boolean if a field has been set.
+func (o *Update) HasVersion() bool {
+	if o != nil && o.Version != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetToken gets a reference to the given string and assigns it to the Token field.
-func (o *Update) SetToken(v string) {
-	o.Token = &v
-}
-
-// GetUidToken returns the UidToken field value if set, zero value otherwise.
-func (o *Update) GetUidToken() string {
-	if o == nil || o.UidToken == nil {
-		var ret string
-		return ret
-	}
-	return *o.UidToken
-}
-
-// GetUidTokenOk returns a tuple with the UidToken field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Update) GetUidTokenOk() (*string, bool) {
-	if o == nil || o.UidToken == nil {
-		return nil, false
-	}
-	return o.UidToken, true
-}
-
-// HasUidToken returns a boolean if a field has been set.
-func (o *Update) HasUidToken() bool {
-	if o != nil && o.UidToken != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUidToken gets a reference to the given string and assigns it to the UidToken field.
-func (o *Update) SetUidToken(v string) {
-	o.UidToken = &v
+// SetVersion gets a reference to the given string and assigns it to the Version field.
+func (o *Update) SetVersion(v string) {
+	o.Version = &v
 }
 
 func (o Update) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Token != nil {
-		toSerialize["token"] = o.Token
-	}
-	if o.UidToken != nil {
-		toSerialize["uid-token"] = o.UidToken
+	if o.Version != nil {
+		toSerialize["version"] = o.Version
 	}
 	return json.Marshal(toSerialize)
 }

@@ -21,8 +21,6 @@ type ListItems struct {
 	Filter *string `json:"filter,omitempty"`
 	// Next page reference
 	PaginationToken *string `json:"pagination-token,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	// Path to folder
 	Path *string `json:"path,omitempty"`
 	// Filter by item tag
@@ -33,8 +31,6 @@ type ListItems struct {
 	Type *[]string `json:"type,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewListItems instantiates a new ListItems object
@@ -116,38 +112,6 @@ func (o *ListItems) HasPaginationToken() bool {
 // SetPaginationToken gets a reference to the given string and assigns it to the PaginationToken field.
 func (o *ListItems) SetPaginationToken(v string) {
 	o.PaginationToken = &v
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *ListItems) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ListItems) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *ListItems) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *ListItems) SetPassword(v string) {
-	o.Password = &v
 }
 
 // GetPath returns the Path field value if set, zero value otherwise.
@@ -310,38 +274,6 @@ func (o *ListItems) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *ListItems) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ListItems) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *ListItems) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *ListItems) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o ListItems) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Filter != nil {
@@ -349,9 +281,6 @@ func (o ListItems) MarshalJSON() ([]byte, error) {
 	}
 	if o.PaginationToken != nil {
 		toSerialize["pagination-token"] = o.PaginationToken
-	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
 	}
 	if o.Path != nil {
 		toSerialize["path"] = o.Path
@@ -367,9 +296,6 @@ func (o ListItems) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

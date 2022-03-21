@@ -19,7 +19,6 @@ Name | Type | Description | Notes
 **Producers** | Pointer to [**ProducersConfigPart**](ProducersConfigPart.md) |  | [optional] 
 **Rotators** | Pointer to [**RotatorsConfigPart**](RotatorsConfigPart.md) |  | [optional] 
 **Saml** | Pointer to [**DefaultConfigPart**](DefaultConfigPart.md) |  | [optional] 
-**Uidentity** | Pointer to [**UIdentityConfigPart**](UIdentityConfigPart.md) |  | [optional] 
 **Version** | Pointer to **int32** |  | [optional] 
 
 ## Methods
@@ -415,31 +414,6 @@ SetSaml sets Saml field to given value.
 `func (o *AkeylessGatewayConfig) HasSaml() bool`
 
 HasSaml returns a boolean if a field has been set.
-
-### GetUidentity
-
-`func (o *AkeylessGatewayConfig) GetUidentity() UIdentityConfigPart`
-
-GetUidentity returns the Uidentity field if non-nil, zero value otherwise.
-
-### GetUidentityOk
-
-`func (o *AkeylessGatewayConfig) GetUidentityOk() (*UIdentityConfigPart, bool)`
-
-GetUidentityOk returns a tuple with the Uidentity field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUidentity
-
-`func (o *AkeylessGatewayConfig) SetUidentity(v UIdentityConfigPart)`
-
-SetUidentity sets Uidentity field to given value.
-
-### HasUidentity
-
-`func (o *AkeylessGatewayConfig) HasUidentity() bool`
-
-HasUidentity returns a boolean if a field has been set.
 
 ### GetVersion
 

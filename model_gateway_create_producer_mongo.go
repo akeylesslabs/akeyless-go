@@ -41,8 +41,6 @@ type GatewayCreateProducerMongo struct {
 	MongodbUsername *string `json:"mongodb-username,omitempty"`
 	// Producer name
 	Name string `json:"name"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	// Encrypt producer with following key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
 	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
@@ -59,8 +57,6 @@ type GatewayCreateProducerMongo struct {
 	UidToken *string `json:"uid-token,omitempty"`
 	// User TTL
 	UserTtl *string `json:"user-ttl,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewGatewayCreateProducerMongo instantiates a new GatewayCreateProducerMongo object
@@ -465,38 +461,6 @@ func (o *GatewayCreateProducerMongo) SetName(v string) {
 	o.Name = v
 }
 
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *GatewayCreateProducerMongo) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerMongo) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *GatewayCreateProducerMongo) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *GatewayCreateProducerMongo) SetPassword(v string) {
-	o.Password = &v
-}
-
 // GetProducerEncryptionKeyName returns the ProducerEncryptionKeyName field value if set, zero value otherwise.
 func (o *GatewayCreateProducerMongo) GetProducerEncryptionKeyName() string {
 	if o == nil || o.ProducerEncryptionKeyName == nil {
@@ -817,38 +781,6 @@ func (o *GatewayCreateProducerMongo) SetUserTtl(v string) {
 	o.UserTtl = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *GatewayCreateProducerMongo) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerMongo) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *GatewayCreateProducerMongo) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *GatewayCreateProducerMongo) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o GatewayCreateProducerMongo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.MongodbAtlasApiPrivateKey != nil {
@@ -887,9 +819,6 @@ func (o GatewayCreateProducerMongo) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
-	}
 	if o.ProducerEncryptionKeyName != nil {
 		toSerialize["producer-encryption-key-name"] = o.ProducerEncryptionKeyName
 	}
@@ -919,9 +848,6 @@ func (o GatewayCreateProducerMongo) MarshalJSON() ([]byte, error) {
 	}
 	if o.UserTtl != nil {
 		toSerialize["user-ttl"] = o.UserTtl
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

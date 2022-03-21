@@ -19,8 +19,6 @@ import (
 type GatewayAddAllowedManagementAccess struct {
 	AllowGwApi *bool `json:"allow-gw-api,omitempty"`
 	AllowGwLogin *bool `json:"allow-gw-login,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	// SubAdmins to add
 	SubAdminAccessId string `json:"sub-admin-access-id"`
 	// key/val of sub claims, e.g group=admins,developers
@@ -29,8 +27,6 @@ type GatewayAddAllowedManagementAccess struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewGatewayAddAllowedManagementAccess instantiates a new GatewayAddAllowedManagementAccess object
@@ -113,38 +109,6 @@ func (o *GatewayAddAllowedManagementAccess) HasAllowGwLogin() bool {
 // SetAllowGwLogin gets a reference to the given bool and assigns it to the AllowGwLogin field.
 func (o *GatewayAddAllowedManagementAccess) SetAllowGwLogin(v bool) {
 	o.AllowGwLogin = &v
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *GatewayAddAllowedManagementAccess) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayAddAllowedManagementAccess) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *GatewayAddAllowedManagementAccess) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *GatewayAddAllowedManagementAccess) SetPassword(v string) {
-	o.Password = &v
 }
 
 // GetSubAdminAccessId returns the SubAdminAccessId field value
@@ -267,38 +231,6 @@ func (o *GatewayAddAllowedManagementAccess) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *GatewayAddAllowedManagementAccess) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayAddAllowedManagementAccess) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *GatewayAddAllowedManagementAccess) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *GatewayAddAllowedManagementAccess) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o GatewayAddAllowedManagementAccess) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AllowGwApi != nil {
@@ -306,9 +238,6 @@ func (o GatewayAddAllowedManagementAccess) MarshalJSON() ([]byte, error) {
 	}
 	if o.AllowGwLogin != nil {
 		toSerialize["allow-gw-login"] = o.AllowGwLogin
-	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
 	}
 	if true {
 		toSerialize["sub-admin-access-id"] = o.SubAdminAccessId
@@ -321,9 +250,6 @@ func (o GatewayAddAllowedManagementAccess) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

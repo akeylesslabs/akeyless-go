@@ -25,14 +25,18 @@ type UpdateAccountSettings struct {
 	CompanyName *string `json:"company-name,omitempty"`
 	// Country
 	Country *string `json:"country,omitempty"`
+	// Should create version by default
+	DefaultVersioning *string `json:"default-versioning,omitempty"`
+	// VersionSettingsObjectType defines object types for account version settings
+	ItemType *string `json:"item-type,omitempty"`
 	// Default ttl
 	JwtTtlDefault *int64 `json:"jwt-ttl-default,omitempty"`
 	// Maximum ttl
 	JwtTtlMax *int64 `json:"jwt-ttl-max,omitempty"`
 	// Minimum ttl
 	JwtTtlMin *int64 `json:"jwt-ttl-min,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
+	// Max versions
+	MaxVersions *string `json:"max-versions,omitempty"`
 	// Phone number
 	Phone *string `json:"phone,omitempty"`
 	// Postal code
@@ -41,8 +45,6 @@ type UpdateAccountSettings struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewUpdateAccountSettings instantiates a new UpdateAccountSettings object
@@ -190,6 +192,70 @@ func (o *UpdateAccountSettings) SetCountry(v string) {
 	o.Country = &v
 }
 
+// GetDefaultVersioning returns the DefaultVersioning field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetDefaultVersioning() string {
+	if o == nil || o.DefaultVersioning == nil {
+		var ret string
+		return ret
+	}
+	return *o.DefaultVersioning
+}
+
+// GetDefaultVersioningOk returns a tuple with the DefaultVersioning field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetDefaultVersioningOk() (*string, bool) {
+	if o == nil || o.DefaultVersioning == nil {
+		return nil, false
+	}
+	return o.DefaultVersioning, true
+}
+
+// HasDefaultVersioning returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasDefaultVersioning() bool {
+	if o != nil && o.DefaultVersioning != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDefaultVersioning gets a reference to the given string and assigns it to the DefaultVersioning field.
+func (o *UpdateAccountSettings) SetDefaultVersioning(v string) {
+	o.DefaultVersioning = &v
+}
+
+// GetItemType returns the ItemType field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetItemType() string {
+	if o == nil || o.ItemType == nil {
+		var ret string
+		return ret
+	}
+	return *o.ItemType
+}
+
+// GetItemTypeOk returns a tuple with the ItemType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetItemTypeOk() (*string, bool) {
+	if o == nil || o.ItemType == nil {
+		return nil, false
+	}
+	return o.ItemType, true
+}
+
+// HasItemType returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasItemType() bool {
+	if o != nil && o.ItemType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetItemType gets a reference to the given string and assigns it to the ItemType field.
+func (o *UpdateAccountSettings) SetItemType(v string) {
+	o.ItemType = &v
+}
+
 // GetJwtTtlDefault returns the JwtTtlDefault field value if set, zero value otherwise.
 func (o *UpdateAccountSettings) GetJwtTtlDefault() int64 {
 	if o == nil || o.JwtTtlDefault == nil {
@@ -286,36 +352,36 @@ func (o *UpdateAccountSettings) SetJwtTtlMin(v int64) {
 	o.JwtTtlMin = &v
 }
 
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *UpdateAccountSettings) GetPassword() string {
-	if o == nil || o.Password == nil {
+// GetMaxVersions returns the MaxVersions field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetMaxVersions() string {
+	if o == nil || o.MaxVersions == nil {
 		var ret string
 		return ret
 	}
-	return *o.Password
+	return *o.MaxVersions
 }
 
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// GetMaxVersionsOk returns a tuple with the MaxVersions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateAccountSettings) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
+func (o *UpdateAccountSettings) GetMaxVersionsOk() (*string, bool) {
+	if o == nil || o.MaxVersions == nil {
 		return nil, false
 	}
-	return o.Password, true
+	return o.MaxVersions, true
 }
 
-// HasPassword returns a boolean if a field has been set.
-func (o *UpdateAccountSettings) HasPassword() bool {
-	if o != nil && o.Password != nil {
+// HasMaxVersions returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasMaxVersions() bool {
+	if o != nil && o.MaxVersions != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *UpdateAccountSettings) SetPassword(v string) {
-	o.Password = &v
+// SetMaxVersions gets a reference to the given string and assigns it to the MaxVersions field.
+func (o *UpdateAccountSettings) SetMaxVersions(v string) {
+	o.MaxVersions = &v
 }
 
 // GetPhone returns the Phone field value if set, zero value otherwise.
@@ -446,38 +512,6 @@ func (o *UpdateAccountSettings) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *UpdateAccountSettings) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UpdateAccountSettings) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *UpdateAccountSettings) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *UpdateAccountSettings) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o UpdateAccountSettings) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Address != nil {
@@ -492,6 +526,12 @@ func (o UpdateAccountSettings) MarshalJSON() ([]byte, error) {
 	if o.Country != nil {
 		toSerialize["country"] = o.Country
 	}
+	if o.DefaultVersioning != nil {
+		toSerialize["default-versioning"] = o.DefaultVersioning
+	}
+	if o.ItemType != nil {
+		toSerialize["item-type"] = o.ItemType
+	}
 	if o.JwtTtlDefault != nil {
 		toSerialize["jwt-ttl-default"] = o.JwtTtlDefault
 	}
@@ -501,8 +541,8 @@ func (o UpdateAccountSettings) MarshalJSON() ([]byte, error) {
 	if o.JwtTtlMin != nil {
 		toSerialize["jwt-ttl-min"] = o.JwtTtlMin
 	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
+	if o.MaxVersions != nil {
+		toSerialize["max-versions"] = o.MaxVersions
 	}
 	if o.Phone != nil {
 		toSerialize["phone"] = o.Phone
@@ -515,9 +555,6 @@ func (o UpdateAccountSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

@@ -29,8 +29,6 @@ type GatewayUpdateProducerSnowflake struct {
 	Name string `json:"name"`
 	// Producer name
 	NewName *string `json:"new-name,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	// User role
 	Role *string `json:"role,omitempty"`
 	// List of the tags attached to this secret
@@ -43,8 +41,6 @@ type GatewayUpdateProducerSnowflake struct {
 	UidToken *string `json:"uid-token,omitempty"`
 	// User TTL
 	UserTtl *string `json:"user-ttl,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 	// Warehouse name
 	Warehouse *string `json:"warehouse,omitempty"`
 }
@@ -255,38 +251,6 @@ func (o *GatewayUpdateProducerSnowflake) SetNewName(v string) {
 	o.NewName = &v
 }
 
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *GatewayUpdateProducerSnowflake) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayUpdateProducerSnowflake) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *GatewayUpdateProducerSnowflake) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *GatewayUpdateProducerSnowflake) SetPassword(v string) {
-	o.Password = &v
-}
-
 // GetRole returns the Role field value if set, zero value otherwise.
 func (o *GatewayUpdateProducerSnowflake) GetRole() string {
 	if o == nil || o.Role == nil {
@@ -479,38 +443,6 @@ func (o *GatewayUpdateProducerSnowflake) SetUserTtl(v string) {
 	o.UserTtl = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *GatewayUpdateProducerSnowflake) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayUpdateProducerSnowflake) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *GatewayUpdateProducerSnowflake) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *GatewayUpdateProducerSnowflake) SetUsername(v string) {
-	o.Username = &v
-}
-
 // GetWarehouse returns the Warehouse field value if set, zero value otherwise.
 func (o *GatewayUpdateProducerSnowflake) GetWarehouse() string {
 	if o == nil || o.Warehouse == nil {
@@ -563,9 +495,6 @@ func (o GatewayUpdateProducerSnowflake) MarshalJSON() ([]byte, error) {
 	if o.NewName != nil {
 		toSerialize["new-name"] = o.NewName
 	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
-	}
 	if o.Role != nil {
 		toSerialize["role"] = o.Role
 	}
@@ -583,9 +512,6 @@ func (o GatewayUpdateProducerSnowflake) MarshalJSON() ([]byte, error) {
 	}
 	if o.UserTtl != nil {
 		toSerialize["user-ttl"] = o.UserTtl
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	if o.Warehouse != nil {
 		toSerialize["warehouse"] = o.Warehouse

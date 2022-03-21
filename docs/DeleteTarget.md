@@ -6,11 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ForceDeletion** | Pointer to **bool** | Enforce deletion | [optional] [default to false]
 **Name** | **string** | Target name | 
-**Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **TargetVersion** | Pointer to **int32** | Target version | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
-**Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 
 ## Methods
 
@@ -75,31 +73,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
-### GetPassword
-
-`func (o *DeleteTarget) GetPassword() string`
-
-GetPassword returns the Password field if non-nil, zero value otherwise.
-
-### GetPasswordOk
-
-`func (o *DeleteTarget) GetPasswordOk() (*string, bool)`
-
-GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPassword
-
-`func (o *DeleteTarget) SetPassword(v string)`
-
-SetPassword sets Password field to given value.
-
-### HasPassword
-
-`func (o *DeleteTarget) HasPassword() bool`
-
-HasPassword returns a boolean if a field has been set.
 
 ### GetTargetVersion
 
@@ -175,31 +148,6 @@ SetUidToken sets UidToken field to given value.
 `func (o *DeleteTarget) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
-
-### GetUsername
-
-`func (o *DeleteTarget) GetUsername() string`
-
-GetUsername returns the Username field if non-nil, zero value otherwise.
-
-### GetUsernameOk
-
-`func (o *DeleteTarget) GetUsernameOk() (*string, bool)`
-
-GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUsername
-
-`func (o *DeleteTarget) SetUsername(v string)`
-
-SetUsername sets Username field to given value.
-
-### HasUsername
-
-`func (o *DeleteTarget) HasUsername() bool`
-
-HasUsername returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

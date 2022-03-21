@@ -19,16 +19,12 @@ import (
 type KmipClientDeleteRule struct {
 	ClientId *string `json:"client-id,omitempty"`
 	Name *string `json:"name,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	// Access path
 	Path string `json:"path"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewKmipClientDeleteRule instantiates a new KmipClientDeleteRule object
@@ -111,38 +107,6 @@ func (o *KmipClientDeleteRule) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *KmipClientDeleteRule) SetName(v string) {
 	o.Name = &v
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *KmipClientDeleteRule) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *KmipClientDeleteRule) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *KmipClientDeleteRule) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *KmipClientDeleteRule) SetPassword(v string) {
-	o.Password = &v
 }
 
 // GetPath returns the Path field value
@@ -233,38 +197,6 @@ func (o *KmipClientDeleteRule) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *KmipClientDeleteRule) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *KmipClientDeleteRule) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *KmipClientDeleteRule) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *KmipClientDeleteRule) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o KmipClientDeleteRule) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ClientId != nil {
@@ -272,9 +204,6 @@ func (o KmipClientDeleteRule) MarshalJSON() ([]byte, error) {
 	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
-	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
 	}
 	if true {
 		toSerialize["path"] = o.Path
@@ -284,9 +213,6 @@ func (o KmipClientDeleteRule) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

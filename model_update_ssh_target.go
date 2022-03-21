@@ -20,14 +20,13 @@ type UpdateSSHTarget struct {
 	// Comment about the target
 	Comment *string `json:"comment,omitempty"`
 	Host *string `json:"host,omitempty"`
+	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
 	// Target name
 	Name string `json:"name"`
 	// New target name
 	NewName *string `json:"new-name,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	Port *string `json:"port,omitempty"`
 	PrivateKey *string `json:"private-key,omitempty"`
 	PrivateKeyPassword *string `json:"private-key-password,omitempty"`
@@ -37,10 +36,8 @@ type UpdateSSHTarget struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// Create new version for the target
+	// Deprecated
 	UpdateVersion *bool `json:"update-version,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewUpdateSSHTarget instantiates a new UpdateSSHTarget object
@@ -50,8 +47,6 @@ type UpdateSSHTarget struct {
 func NewUpdateSSHTarget(name string, ) *UpdateSSHTarget {
 	this := UpdateSSHTarget{}
 	this.Name = name
-	var updateVersion bool = false
-	this.UpdateVersion = &updateVersion
 	return &this
 }
 
@@ -60,8 +55,6 @@ func NewUpdateSSHTarget(name string, ) *UpdateSSHTarget {
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateSSHTargetWithDefaults() *UpdateSSHTarget {
 	this := UpdateSSHTarget{}
-	var updateVersion bool = false
-	this.UpdateVersion = &updateVersion
 	return &this
 }
 
@@ -127,6 +120,38 @@ func (o *UpdateSSHTarget) HasHost() bool {
 // SetHost gets a reference to the given string and assigns it to the Host field.
 func (o *UpdateSSHTarget) SetHost(v string) {
 	o.Host = &v
+}
+
+// GetKeepPrevVersion returns the KeepPrevVersion field value if set, zero value otherwise.
+func (o *UpdateSSHTarget) GetKeepPrevVersion() string {
+	if o == nil || o.KeepPrevVersion == nil {
+		var ret string
+		return ret
+	}
+	return *o.KeepPrevVersion
+}
+
+// GetKeepPrevVersionOk returns a tuple with the KeepPrevVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateSSHTarget) GetKeepPrevVersionOk() (*string, bool) {
+	if o == nil || o.KeepPrevVersion == nil {
+		return nil, false
+	}
+	return o.KeepPrevVersion, true
+}
+
+// HasKeepPrevVersion returns a boolean if a field has been set.
+func (o *UpdateSSHTarget) HasKeepPrevVersion() bool {
+	if o != nil && o.KeepPrevVersion != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetKeepPrevVersion gets a reference to the given string and assigns it to the KeepPrevVersion field.
+func (o *UpdateSSHTarget) SetKeepPrevVersion(v string) {
+	o.KeepPrevVersion = &v
 }
 
 // GetKey returns the Key field value if set, zero value otherwise.
@@ -215,38 +240,6 @@ func (o *UpdateSSHTarget) HasNewName() bool {
 // SetNewName gets a reference to the given string and assigns it to the NewName field.
 func (o *UpdateSSHTarget) SetNewName(v string) {
 	o.NewName = &v
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *UpdateSSHTarget) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UpdateSSHTarget) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *UpdateSSHTarget) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *UpdateSSHTarget) SetPassword(v string) {
-	o.Password = &v
 }
 
 // GetPort returns the Port field value if set, zero value otherwise.
@@ -505,38 +498,6 @@ func (o *UpdateSSHTarget) SetUpdateVersion(v bool) {
 	o.UpdateVersion = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *UpdateSSHTarget) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UpdateSSHTarget) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *UpdateSSHTarget) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *UpdateSSHTarget) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o UpdateSSHTarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Comment != nil {
@@ -544,6 +505,9 @@ func (o UpdateSSHTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.Host != nil {
 		toSerialize["host"] = o.Host
+	}
+	if o.KeepPrevVersion != nil {
+		toSerialize["keep-prev-version"] = o.KeepPrevVersion
 	}
 	if o.Key != nil {
 		toSerialize["key"] = o.Key
@@ -553,9 +517,6 @@ func (o UpdateSSHTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.NewName != nil {
 		toSerialize["new-name"] = o.NewName
-	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
 	}
 	if o.Port != nil {
 		toSerialize["port"] = o.Port
@@ -580,9 +541,6 @@ func (o UpdateSSHTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.UpdateVersion != nil {
 		toSerialize["update-version"] = o.UpdateVersion
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

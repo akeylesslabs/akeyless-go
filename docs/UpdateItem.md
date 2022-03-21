@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **Name** | **string** | Current item name | 
 **NewMetadata** | Pointer to **string** | New item metadata | [optional] [default to "default_metadata"]
 **NewName** | Pointer to **string** | New item name | [optional] 
-**Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **RmTag** | Pointer to **[]string** | List of the existent tags that will be removed from this item | [optional] 
 **SecureAccessAddHost** | Pointer to **[]string** |  | [optional] 
 **SecureAccessAllowExternalUser** | Pointer to **string** |  | [optional] 
@@ -33,9 +32,9 @@ Name | Type | Description | Notes
 **SecureAccessUrl** | Pointer to **string** |  | [optional] 
 **SecureAccessUseInternalBastion** | Pointer to **bool** |  | [optional] 
 **SecureAccessWebBrowsing** | Pointer to **bool** |  | [optional] 
+**SecureAccessWebProxy** | Pointer to **bool** |  | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
-**Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 
 ## Methods
 
@@ -150,31 +149,6 @@ SetNewName sets NewName field to given value.
 `func (o *UpdateItem) HasNewName() bool`
 
 HasNewName returns a boolean if a field has been set.
-
-### GetPassword
-
-`func (o *UpdateItem) GetPassword() string`
-
-GetPassword returns the Password field if non-nil, zero value otherwise.
-
-### GetPasswordOk
-
-`func (o *UpdateItem) GetPasswordOk() (*string, bool)`
-
-GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPassword
-
-`func (o *UpdateItem) SetPassword(v string)`
-
-SetPassword sets Password field to given value.
-
-### HasPassword
-
-`func (o *UpdateItem) HasPassword() bool`
-
-HasPassword returns a boolean if a field has been set.
 
 ### GetRmTag
 
@@ -776,6 +750,31 @@ SetSecureAccessWebBrowsing sets SecureAccessWebBrowsing field to given value.
 
 HasSecureAccessWebBrowsing returns a boolean if a field has been set.
 
+### GetSecureAccessWebProxy
+
+`func (o *UpdateItem) GetSecureAccessWebProxy() bool`
+
+GetSecureAccessWebProxy returns the SecureAccessWebProxy field if non-nil, zero value otherwise.
+
+### GetSecureAccessWebProxyOk
+
+`func (o *UpdateItem) GetSecureAccessWebProxyOk() (*bool, bool)`
+
+GetSecureAccessWebProxyOk returns a tuple with the SecureAccessWebProxy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessWebProxy
+
+`func (o *UpdateItem) SetSecureAccessWebProxy(v bool)`
+
+SetSecureAccessWebProxy sets SecureAccessWebProxy field to given value.
+
+### HasSecureAccessWebProxy
+
+`func (o *UpdateItem) HasSecureAccessWebProxy() bool`
+
+HasSecureAccessWebProxy returns a boolean if a field has been set.
+
 ### GetToken
 
 `func (o *UpdateItem) GetToken() string`
@@ -825,31 +824,6 @@ SetUidToken sets UidToken field to given value.
 `func (o *UpdateItem) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
-
-### GetUsername
-
-`func (o *UpdateItem) GetUsername() string`
-
-GetUsername returns the Username field if non-nil, zero value otherwise.
-
-### GetUsernameOk
-
-`func (o *UpdateItem) GetUsernameOk() (*string, bool)`
-
-GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUsername
-
-`func (o *UpdateItem) SetUsername(v string)`
-
-SetUsername sets Username field to given value.
-
-### HasUsername
-
-`func (o *UpdateItem) HasUsername() bool`
-
-HasUsername returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

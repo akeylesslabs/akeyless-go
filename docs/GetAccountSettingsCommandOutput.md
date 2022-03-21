@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Address** | Pointer to [**CustomerFullAddress**](CustomerFullAddress.md) |  | [optional] 
 **CompanyName** | Pointer to **string** |  | [optional] 
 **Email** | Pointer to **string** |  | [optional] 
+**ObjectVersionSettings** | Pointer to [**AccountObjectVersionSettingsOutput**](AccountObjectVersionSettingsOutput.md) |  | [optional] 
 **Phone** | Pointer to **string** |  | [optional] 
 **SecretManagement** | Pointer to [**SmInfo**](SmInfo.md) |  | [optional] 
 **SecureRemoteAccess** | Pointer to [**SraInfo**](SraInfo.md) |  | [optional] 
@@ -131,6 +132,31 @@ SetEmail sets Email field to given value.
 `func (o *GetAccountSettingsCommandOutput) HasEmail() bool`
 
 HasEmail returns a boolean if a field has been set.
+
+### GetObjectVersionSettings
+
+`func (o *GetAccountSettingsCommandOutput) GetObjectVersionSettings() AccountObjectVersionSettingsOutput`
+
+GetObjectVersionSettings returns the ObjectVersionSettings field if non-nil, zero value otherwise.
+
+### GetObjectVersionSettingsOk
+
+`func (o *GetAccountSettingsCommandOutput) GetObjectVersionSettingsOk() (*AccountObjectVersionSettingsOutput, bool)`
+
+GetObjectVersionSettingsOk returns a tuple with the ObjectVersionSettings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectVersionSettings
+
+`func (o *GetAccountSettingsCommandOutput) SetObjectVersionSettings(v AccountObjectVersionSettingsOutput)`
+
+SetObjectVersionSettings sets ObjectVersionSettings field to given value.
+
+### HasObjectVersionSettings
+
+`func (o *GetAccountSettingsCommandOutput) HasObjectVersionSettings() bool`
+
+HasObjectVersionSettings returns a boolean if a field has been set.
 
 ### GetPhone
 

@@ -32,7 +32,6 @@ type AkeylessGatewayConfig struct {
 	Producers *ProducersConfigPart `json:"producers,omitempty"`
 	Rotators *RotatorsConfigPart `json:"rotators,omitempty"`
 	Saml *DefaultConfigPart `json:"saml,omitempty"`
-	Uidentity *UIdentityConfigPart `json:"uidentity,omitempty"`
 	Version *int32 `json:"version,omitempty"`
 }
 
@@ -533,38 +532,6 @@ func (o *AkeylessGatewayConfig) SetSaml(v DefaultConfigPart) {
 	o.Saml = &v
 }
 
-// GetUidentity returns the Uidentity field value if set, zero value otherwise.
-func (o *AkeylessGatewayConfig) GetUidentity() UIdentityConfigPart {
-	if o == nil || o.Uidentity == nil {
-		var ret UIdentityConfigPart
-		return ret
-	}
-	return *o.Uidentity
-}
-
-// GetUidentityOk returns a tuple with the Uidentity field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AkeylessGatewayConfig) GetUidentityOk() (*UIdentityConfigPart, bool) {
-	if o == nil || o.Uidentity == nil {
-		return nil, false
-	}
-	return o.Uidentity, true
-}
-
-// HasUidentity returns a boolean if a field has been set.
-func (o *AkeylessGatewayConfig) HasUidentity() bool {
-	if o != nil && o.Uidentity != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUidentity gets a reference to the given UIdentityConfigPart and assigns it to the Uidentity field.
-func (o *AkeylessGatewayConfig) SetUidentity(v UIdentityConfigPart) {
-	o.Uidentity = &v
-}
-
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *AkeylessGatewayConfig) GetVersion() int32 {
 	if o == nil || o.Version == nil {
@@ -643,9 +610,6 @@ func (o AkeylessGatewayConfig) MarshalJSON() ([]byte, error) {
 	}
 	if o.Saml != nil {
 		toSerialize["saml"] = o.Saml
-	}
-	if o.Uidentity != nil {
-		toSerialize["uidentity"] = o.Uidentity
 	}
 	if o.Version != nil {
 		toSerialize["version"] = o.Version

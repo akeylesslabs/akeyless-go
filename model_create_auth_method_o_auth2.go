@@ -35,16 +35,12 @@ type CreateAuthMethodOAuth2 struct {
 	JwtTtl *int64 `json:"jwt-ttl,omitempty"`
 	// Auth Method name
 	Name string `json:"name"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
 	// A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \"sub claim\" that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization.
 	UniqueIdentifier string `json:"unique-identifier"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewCreateAuthMethodOAuth2 instantiates a new CreateAuthMethodOAuth2 object
@@ -347,38 +343,6 @@ func (o *CreateAuthMethodOAuth2) SetName(v string) {
 	o.Name = v
 }
 
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *CreateAuthMethodOAuth2) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateAuthMethodOAuth2) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *CreateAuthMethodOAuth2) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *CreateAuthMethodOAuth2) SetPassword(v string) {
-	o.Password = &v
-}
-
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *CreateAuthMethodOAuth2) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -467,38 +431,6 @@ func (o *CreateAuthMethodOAuth2) SetUniqueIdentifier(v string) {
 	o.UniqueIdentifier = v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *CreateAuthMethodOAuth2) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateAuthMethodOAuth2) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *CreateAuthMethodOAuth2) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *CreateAuthMethodOAuth2) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o CreateAuthMethodOAuth2) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccessExpires != nil {
@@ -528,9 +460,6 @@ func (o CreateAuthMethodOAuth2) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
-	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
 	}
@@ -539,9 +468,6 @@ func (o CreateAuthMethodOAuth2) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["unique-identifier"] = o.UniqueIdentifier
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

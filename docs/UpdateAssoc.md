@@ -6,11 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AssocId** | **string** | The association id to be updated | 
 **CaseSensitive** | Pointer to **string** |  | [optional] 
-**Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **SubClaims** | Pointer to **map[string]string** | key/val of sub claims, e.g group&#x3D;admins,developers | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
-**Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 
 ## Methods
 
@@ -75,31 +73,6 @@ SetCaseSensitive sets CaseSensitive field to given value.
 `func (o *UpdateAssoc) HasCaseSensitive() bool`
 
 HasCaseSensitive returns a boolean if a field has been set.
-
-### GetPassword
-
-`func (o *UpdateAssoc) GetPassword() string`
-
-GetPassword returns the Password field if non-nil, zero value otherwise.
-
-### GetPasswordOk
-
-`func (o *UpdateAssoc) GetPasswordOk() (*string, bool)`
-
-GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPassword
-
-`func (o *UpdateAssoc) SetPassword(v string)`
-
-SetPassword sets Password field to given value.
-
-### HasPassword
-
-`func (o *UpdateAssoc) HasPassword() bool`
-
-HasPassword returns a boolean if a field has been set.
 
 ### GetSubClaims
 
@@ -175,31 +148,6 @@ SetUidToken sets UidToken field to given value.
 `func (o *UpdateAssoc) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
-
-### GetUsername
-
-`func (o *UpdateAssoc) GetUsername() string`
-
-GetUsername returns the Username field if non-nil, zero value otherwise.
-
-### GetUsernameOk
-
-`func (o *UpdateAssoc) GetUsernameOk() (*string, bool)`
-
-GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUsername
-
-`func (o *UpdateAssoc) SetUsername(v string)`
-
-SetUsername sets Username field to given value.
-
-### HasUsername
-
-`func (o *UpdateAssoc) HasUsername() bool`
-
-HasUsername returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

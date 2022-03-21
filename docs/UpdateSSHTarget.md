@@ -6,10 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Comment** | Pointer to **string** | Comment about the target | [optional] 
 **Host** | Pointer to **string** |  | [optional] 
+**KeepPrevVersion** | Pointer to **string** |  | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Target name | 
 **NewName** | Pointer to **string** | New target name | [optional] 
-**Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **Port** | Pointer to **string** |  | [optional] 
 **PrivateKey** | Pointer to **string** |  | [optional] 
 **PrivateKeyPassword** | Pointer to **string** |  | [optional] 
@@ -17,8 +17,7 @@ Name | Type | Description | Notes
 **SshUsername** | Pointer to **string** |  | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
-**UpdateVersion** | Pointer to **bool** | Create new version for the target | [optional] [default to false]
-**Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
+**UpdateVersion** | Pointer to **bool** | Deprecated | [optional] 
 
 ## Methods
 
@@ -89,6 +88,31 @@ SetHost sets Host field to given value.
 
 HasHost returns a boolean if a field has been set.
 
+### GetKeepPrevVersion
+
+`func (o *UpdateSSHTarget) GetKeepPrevVersion() string`
+
+GetKeepPrevVersion returns the KeepPrevVersion field if non-nil, zero value otherwise.
+
+### GetKeepPrevVersionOk
+
+`func (o *UpdateSSHTarget) GetKeepPrevVersionOk() (*string, bool)`
+
+GetKeepPrevVersionOk returns a tuple with the KeepPrevVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKeepPrevVersion
+
+`func (o *UpdateSSHTarget) SetKeepPrevVersion(v string)`
+
+SetKeepPrevVersion sets KeepPrevVersion field to given value.
+
+### HasKeepPrevVersion
+
+`func (o *UpdateSSHTarget) HasKeepPrevVersion() bool`
+
+HasKeepPrevVersion returns a boolean if a field has been set.
+
 ### GetKey
 
 `func (o *UpdateSSHTarget) GetKey() string`
@@ -158,31 +182,6 @@ SetNewName sets NewName field to given value.
 `func (o *UpdateSSHTarget) HasNewName() bool`
 
 HasNewName returns a boolean if a field has been set.
-
-### GetPassword
-
-`func (o *UpdateSSHTarget) GetPassword() string`
-
-GetPassword returns the Password field if non-nil, zero value otherwise.
-
-### GetPasswordOk
-
-`func (o *UpdateSSHTarget) GetPasswordOk() (*string, bool)`
-
-GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPassword
-
-`func (o *UpdateSSHTarget) SetPassword(v string)`
-
-SetPassword sets Password field to given value.
-
-### HasPassword
-
-`func (o *UpdateSSHTarget) HasPassword() bool`
-
-HasPassword returns a boolean if a field has been set.
 
 ### GetPort
 
@@ -383,31 +382,6 @@ SetUpdateVersion sets UpdateVersion field to given value.
 `func (o *UpdateSSHTarget) HasUpdateVersion() bool`
 
 HasUpdateVersion returns a boolean if a field has been set.
-
-### GetUsername
-
-`func (o *UpdateSSHTarget) GetUsername() string`
-
-GetUsername returns the Username field if non-nil, zero value otherwise.
-
-### GetUsernameOk
-
-`func (o *UpdateSSHTarget) GetUsernameOk() (*string, bool)`
-
-GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUsername
-
-`func (o *UpdateSSHTarget) SetUsername(v string)`
-
-SetUsername sets Username field to given value.
-
-### HasUsername
-
-`func (o *UpdateSSHTarget) HasUsername() bool`
-
-HasUsername returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

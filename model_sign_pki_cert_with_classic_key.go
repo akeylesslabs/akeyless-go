@@ -33,8 +33,6 @@ type SignPKICertWithClassicKey struct {
 	OrganizationalUnits *string `json:"organizational-units,omitempty"`
 	// A comma-separated list of organizations (O) that will be set in the issued certificate
 	Organizations *string `json:"organizations,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	// A comma-separated list of the postal code that will be set in the issued certificate
 	PostalCode *string `json:"postal-code,omitempty"`
 	// A comma-separated list of the province that will be set in the issued certificate
@@ -53,8 +51,6 @@ type SignPKICertWithClassicKey struct {
 	UidToken *string `json:"uid-token,omitempty"`
 	// The URI Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list)
 	UriSans *string `json:"uri-sans,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 	// classic key version
 	Version int32 `json:"version"`
 }
@@ -332,38 +328,6 @@ func (o *SignPKICertWithClassicKey) SetOrganizations(v string) {
 	o.Organizations = &v
 }
 
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *SignPKICertWithClassicKey) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SignPKICertWithClassicKey) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *SignPKICertWithClassicKey) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *SignPKICertWithClassicKey) SetPassword(v string) {
-	o.Password = &v
-}
-
 // GetPostalCode returns the PostalCode field value if set, zero value otherwise.
 func (o *SignPKICertWithClassicKey) GetPostalCode() string {
 	if o == nil || o.PostalCode == nil {
@@ -636,38 +600,6 @@ func (o *SignPKICertWithClassicKey) SetUriSans(v string) {
 	o.UriSans = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *SignPKICertWithClassicKey) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SignPKICertWithClassicKey) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *SignPKICertWithClassicKey) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *SignPKICertWithClassicKey) SetUsername(v string) {
-	o.Username = &v
-}
-
 // GetVersion returns the Version field value
 func (o *SignPKICertWithClassicKey) GetVersion() int32 {
 	if o == nil  {
@@ -718,9 +650,6 @@ func (o SignPKICertWithClassicKey) MarshalJSON() ([]byte, error) {
 	if o.Organizations != nil {
 		toSerialize["organizations"] = o.Organizations
 	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
-	}
 	if o.PostalCode != nil {
 		toSerialize["postal-code"] = o.PostalCode
 	}
@@ -747,9 +676,6 @@ func (o SignPKICertWithClassicKey) MarshalJSON() ([]byte, error) {
 	}
 	if o.UriSans != nil {
 		toSerialize["uri-sans"] = o.UriSans
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	if true {
 		toSerialize["version"] = o.Version

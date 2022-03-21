@@ -9,6 +9,7 @@ docs/APIKeyAccessRules.md
 docs/AWSIAMAccessRules.md
 docs/AWSPayload.md
 docs/AWSSecretsMigration.md
+docs/AccountObjectVersionSettingsOutput.md
 docs/AdminsConfigPart.md
 docs/AkeylessGatewayConfig.md
 docs/AllowedAccess.md
@@ -70,6 +71,8 @@ docs/CreateDBTarget.md
 docs/CreateDBTargetOutput.md
 docs/CreateDFCKey.md
 docs/CreateDFCKeyOutput.md
+docs/CreateDockerhubTarget.md
+docs/CreateDockerhubTargetOutput.md
 docs/CreateDynamicSecret.md
 docs/CreateEKSTarget.md
 docs/CreateEKSTargetOutput.md
@@ -165,6 +168,8 @@ docs/GatewayCreateProducerChef.md
 docs/GatewayCreateProducerChefOutput.md
 docs/GatewayCreateProducerCustom.md
 docs/GatewayCreateProducerCustomOutput.md
+docs/GatewayCreateProducerDockerhub.md
+docs/GatewayCreateProducerDockerhubOutput.md
 docs/GatewayCreateProducerEks.md
 docs/GatewayCreateProducerEksOutput.md
 docs/GatewayCreateProducerGcp.md
@@ -235,6 +240,8 @@ docs/GatewayUpdateProducerChef.md
 docs/GatewayUpdateProducerChefOutput.md
 docs/GatewayUpdateProducerCustom.md
 docs/GatewayUpdateProducerCustomOutput.md
+docs/GatewayUpdateProducerDockerhub.md
+docs/GatewayUpdateProducerDockerhubOutput.md
 docs/GatewayUpdateProducerEks.md
 docs/GatewayUpdateProducerEksOutput.md
 docs/GatewayUpdateProducerGcp.md
@@ -352,7 +359,9 @@ docs/OAuth2AccessRules.md
 docs/OAuth2CustomClaim.md
 docs/OIDCAccessRules.md
 docs/OIDCCustomClaim.md
+docs/ObjectVersionSettingsOutput.md
 docs/PKICertificateIssueDetails.md
+docs/PasswordPolicyInfo.md
 docs/PathRule.md
 docs/Producer.md
 docs/ProducersConfigPart.md
@@ -391,6 +400,7 @@ docs/SplunkLogForwardingConfig.md
 docs/SraInfo.md
 docs/StaticCredsAuth.md
 docs/StaticCredsAuthOutput.md
+docs/StaticSecretDetailsInfo.md
 docs/SyslogLogForwardingConfig.md
 docs/SystemAccessCredentialsReplyObj.md
 docs/SystemAccessCredsSettings.md
@@ -400,7 +410,6 @@ docs/TargetItemVersion.md
 docs/TargetTypeDetailsInput.md
 docs/TmpUserData.md
 docs/UIDTokenDetails.md
-docs/UIdentityConfigPart.md
 docs/UidCreateChildToken.md
 docs/UidCreateChildTokenOutput.md
 docs/UidGenerateToken.md
@@ -412,6 +421,7 @@ docs/UidRotateTokenOutput.md
 docs/Unconfigure.md
 docs/UniversalIdentityAccessRules.md
 docs/UniversalIdentityDetails.md
+docs/Update.md
 docs/UpdateAWSTarget.md
 docs/UpdateAWSTargetDetails.md
 docs/UpdateAccountSettings.md
@@ -436,6 +446,8 @@ docs/UpdateAzureTargetOutput.md
 docs/UpdateDBTarget.md
 docs/UpdateDBTargetDetails.md
 docs/UpdateDBTargetOutput.md
+docs/UpdateDockerhubTarget.md
+docs/UpdateDockerhubTargetOutput.md
 docs/UpdateEKSTarget.md
 docs/UpdateEKSTargetOutput.md
 docs/UpdateGKETarget.md
@@ -486,6 +498,7 @@ docs/VerifyPKICertWithClassicKey.md
 git_push.sh
 go.mod
 go.sum
+model_account_object_version_settings_output.go
 model_admins_config_part.go
 model_akeyless_gateway_config.go
 model_allowed_access.go
@@ -551,6 +564,8 @@ model_create_db_target.go
 model_create_db_target_output.go
 model_create_dfc_key.go
 model_create_dfc_key_output.go
+model_create_dockerhub_target.go
+model_create_dockerhub_target_output.go
 model_create_dynamic_secret.go
 model_create_eks_target.go
 model_create_eks_target_output.go
@@ -645,6 +660,8 @@ model_gateway_create_producer_chef.go
 model_gateway_create_producer_chef_output.go
 model_gateway_create_producer_custom.go
 model_gateway_create_producer_custom_output.go
+model_gateway_create_producer_dockerhub.go
+model_gateway_create_producer_dockerhub_output.go
 model_gateway_create_producer_eks.go
 model_gateway_create_producer_eks_output.go
 model_gateway_create_producer_gcp.go
@@ -715,6 +732,8 @@ model_gateway_update_producer_chef.go
 model_gateway_update_producer_chef_output.go
 model_gateway_update_producer_custom.go
 model_gateway_update_producer_custom_output.go
+model_gateway_update_producer_dockerhub.go
+model_gateway_update_producer_dockerhub_output.go
 model_gateway_update_producer_eks.go
 model_gateway_update_producer_eks_output.go
 model_gateway_update_producer_gcp.go
@@ -831,8 +850,10 @@ model_migrations_config_part.go
 model_move_objects.go
 model_o_auth2_access_rules.go
 model_o_auth2_custom_claim.go
+model_object_version_settings_output.go
 model_oidc_access_rules.go
 model_oidc_custom_claim.go
+model_password_policy_info.go
 model_path_rule.go
 model_pki_certificate_issue_details.go
 model_producer.go
@@ -872,6 +893,7 @@ model_sra_info.go
 model_ssh_certificate_issue_details.go
 model_static_creds_auth.go
 model_static_creds_auth_output.go
+model_static_secret_details_info.go
 model_syslog_log_forwarding_config.go
 model_system_access_credentials_reply_obj.go
 model_system_access_creds_settings.go
@@ -880,7 +902,6 @@ model_target_item_association.go
 model_target_item_version.go
 model_target_type_details_input.go
 model_tmp_user_data.go
-model_u_identity_config_part.go
 model_uid_create_child_token.go
 model_uid_create_child_token_output.go
 model_uid_generate_token.go
@@ -893,6 +914,7 @@ model_uid_token_details.go
 model_unconfigure.go
 model_universal_identity_access_rules.go
 model_universal_identity_details.go
+model_update.go
 model_update_account_settings.go
 model_update_account_settings_output.go
 model_update_artifactory_target.go
@@ -917,6 +939,8 @@ model_update_azure_target_output.go
 model_update_db_target.go
 model_update_db_target_details.go
 model_update_db_target_output.go
+model_update_dockerhub_target.go
+model_update_dockerhub_target_output.go
 model_update_eks_target.go
 model_update_eks_target_output.go
 model_update_gcp_target.go

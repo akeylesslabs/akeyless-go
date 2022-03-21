@@ -8,15 +8,16 @@ Name | Type | Description | Notes
 **City** | Pointer to **string** | City | [optional] 
 **CompanyName** | Pointer to **string** | Company name | [optional] 
 **Country** | Pointer to **string** | Country | [optional] 
+**DefaultVersioning** | Pointer to **string** | Should create version by default | [optional] 
+**ItemType** | Pointer to **string** | VersionSettingsObjectType defines object types for account version settings | [optional] 
 **JwtTtlDefault** | Pointer to **int64** | Default ttl | [optional] 
 **JwtTtlMax** | Pointer to **int64** | Maximum ttl | [optional] 
 **JwtTtlMin** | Pointer to **int64** | Minimum ttl | [optional] 
-**Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
+**MaxVersions** | Pointer to **string** | Max versions | [optional] 
 **Phone** | Pointer to **string** | Phone number | [optional] 
 **PostalCode** | Pointer to **string** | Postal code | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
-**Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 
 ## Methods
 
@@ -137,6 +138,56 @@ SetCountry sets Country field to given value.
 
 HasCountry returns a boolean if a field has been set.
 
+### GetDefaultVersioning
+
+`func (o *UpdateAccountSettings) GetDefaultVersioning() string`
+
+GetDefaultVersioning returns the DefaultVersioning field if non-nil, zero value otherwise.
+
+### GetDefaultVersioningOk
+
+`func (o *UpdateAccountSettings) GetDefaultVersioningOk() (*string, bool)`
+
+GetDefaultVersioningOk returns a tuple with the DefaultVersioning field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefaultVersioning
+
+`func (o *UpdateAccountSettings) SetDefaultVersioning(v string)`
+
+SetDefaultVersioning sets DefaultVersioning field to given value.
+
+### HasDefaultVersioning
+
+`func (o *UpdateAccountSettings) HasDefaultVersioning() bool`
+
+HasDefaultVersioning returns a boolean if a field has been set.
+
+### GetItemType
+
+`func (o *UpdateAccountSettings) GetItemType() string`
+
+GetItemType returns the ItemType field if non-nil, zero value otherwise.
+
+### GetItemTypeOk
+
+`func (o *UpdateAccountSettings) GetItemTypeOk() (*string, bool)`
+
+GetItemTypeOk returns a tuple with the ItemType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemType
+
+`func (o *UpdateAccountSettings) SetItemType(v string)`
+
+SetItemType sets ItemType field to given value.
+
+### HasItemType
+
+`func (o *UpdateAccountSettings) HasItemType() bool`
+
+HasItemType returns a boolean if a field has been set.
+
 ### GetJwtTtlDefault
 
 `func (o *UpdateAccountSettings) GetJwtTtlDefault() int64`
@@ -212,30 +263,30 @@ SetJwtTtlMin sets JwtTtlMin field to given value.
 
 HasJwtTtlMin returns a boolean if a field has been set.
 
-### GetPassword
+### GetMaxVersions
 
-`func (o *UpdateAccountSettings) GetPassword() string`
+`func (o *UpdateAccountSettings) GetMaxVersions() string`
 
-GetPassword returns the Password field if non-nil, zero value otherwise.
+GetMaxVersions returns the MaxVersions field if non-nil, zero value otherwise.
 
-### GetPasswordOk
+### GetMaxVersionsOk
 
-`func (o *UpdateAccountSettings) GetPasswordOk() (*string, bool)`
+`func (o *UpdateAccountSettings) GetMaxVersionsOk() (*string, bool)`
 
-GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
+GetMaxVersionsOk returns a tuple with the MaxVersions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPassword
+### SetMaxVersions
 
-`func (o *UpdateAccountSettings) SetPassword(v string)`
+`func (o *UpdateAccountSettings) SetMaxVersions(v string)`
 
-SetPassword sets Password field to given value.
+SetMaxVersions sets MaxVersions field to given value.
 
-### HasPassword
+### HasMaxVersions
 
-`func (o *UpdateAccountSettings) HasPassword() bool`
+`func (o *UpdateAccountSettings) HasMaxVersions() bool`
 
-HasPassword returns a boolean if a field has been set.
+HasMaxVersions returns a boolean if a field has been set.
 
 ### GetPhone
 
@@ -336,31 +387,6 @@ SetUidToken sets UidToken field to given value.
 `func (o *UpdateAccountSettings) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
-
-### GetUsername
-
-`func (o *UpdateAccountSettings) GetUsername() string`
-
-GetUsername returns the Username field if non-nil, zero value otherwise.
-
-### GetUsernameOk
-
-`func (o *UpdateAccountSettings) GetUsernameOk() (*string, bool)`
-
-GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUsername
-
-`func (o *UpdateAccountSettings) SetUsername(v string)`
-
-SetUsername sets Username field to given value.
-
-### HasUsername
-
-`func (o *UpdateAccountSettings) HasUsername() bool`
-
-HasUsername returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

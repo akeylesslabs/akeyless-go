@@ -27,22 +27,20 @@ type UpdateAuthMethodSAML struct {
 	ForceSubClaims *bool `json:"force-sub-claims,omitempty"`
 	// IDP metadata url
 	IdpMetadataUrl *string `json:"idp-metadata-url,omitempty"`
+	// IDP metadata xml data
+	IdpMetadataXmlData *string `json:"idp-metadata-xml-data,omitempty"`
 	// Jwt TTL
 	JwtTtl *int64 `json:"jwt-ttl,omitempty"`
 	// Auth Method name
 	Name string `json:"name"`
 	// Auth Method new name
 	NewName *string `json:"new-name,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
 	// A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \"sub claim\" that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization.
 	UniqueIdentifier string `json:"unique-identifier"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewUpdateAuthMethodSAML instantiates a new UpdateAuthMethodSAML object
@@ -232,6 +230,38 @@ func (o *UpdateAuthMethodSAML) SetIdpMetadataUrl(v string) {
 	o.IdpMetadataUrl = &v
 }
 
+// GetIdpMetadataXmlData returns the IdpMetadataXmlData field value if set, zero value otherwise.
+func (o *UpdateAuthMethodSAML) GetIdpMetadataXmlData() string {
+	if o == nil || o.IdpMetadataXmlData == nil {
+		var ret string
+		return ret
+	}
+	return *o.IdpMetadataXmlData
+}
+
+// GetIdpMetadataXmlDataOk returns a tuple with the IdpMetadataXmlData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAuthMethodSAML) GetIdpMetadataXmlDataOk() (*string, bool) {
+	if o == nil || o.IdpMetadataXmlData == nil {
+		return nil, false
+	}
+	return o.IdpMetadataXmlData, true
+}
+
+// HasIdpMetadataXmlData returns a boolean if a field has been set.
+func (o *UpdateAuthMethodSAML) HasIdpMetadataXmlData() bool {
+	if o != nil && o.IdpMetadataXmlData != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIdpMetadataXmlData gets a reference to the given string and assigns it to the IdpMetadataXmlData field.
+func (o *UpdateAuthMethodSAML) SetIdpMetadataXmlData(v string) {
+	o.IdpMetadataXmlData = &v
+}
+
 // GetJwtTtl returns the JwtTtl field value if set, zero value otherwise.
 func (o *UpdateAuthMethodSAML) GetJwtTtl() int64 {
 	if o == nil || o.JwtTtl == nil {
@@ -318,38 +348,6 @@ func (o *UpdateAuthMethodSAML) HasNewName() bool {
 // SetNewName gets a reference to the given string and assigns it to the NewName field.
 func (o *UpdateAuthMethodSAML) SetNewName(v string) {
 	o.NewName = &v
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *UpdateAuthMethodSAML) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UpdateAuthMethodSAML) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *UpdateAuthMethodSAML) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *UpdateAuthMethodSAML) SetPassword(v string) {
-	o.Password = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -440,38 +438,6 @@ func (o *UpdateAuthMethodSAML) SetUniqueIdentifier(v string) {
 	o.UniqueIdentifier = v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *UpdateAuthMethodSAML) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UpdateAuthMethodSAML) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *UpdateAuthMethodSAML) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *UpdateAuthMethodSAML) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o UpdateAuthMethodSAML) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccessExpires != nil {
@@ -489,6 +455,9 @@ func (o UpdateAuthMethodSAML) MarshalJSON() ([]byte, error) {
 	if o.IdpMetadataUrl != nil {
 		toSerialize["idp-metadata-url"] = o.IdpMetadataUrl
 	}
+	if o.IdpMetadataXmlData != nil {
+		toSerialize["idp-metadata-xml-data"] = o.IdpMetadataXmlData
+	}
 	if o.JwtTtl != nil {
 		toSerialize["jwt-ttl"] = o.JwtTtl
 	}
@@ -498,9 +467,6 @@ func (o UpdateAuthMethodSAML) MarshalJSON() ([]byte, error) {
 	if o.NewName != nil {
 		toSerialize["new-name"] = o.NewName
 	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
-	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
 	}
@@ -509,9 +475,6 @@ func (o UpdateAuthMethodSAML) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["unique-identifier"] = o.UniqueIdentifier
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

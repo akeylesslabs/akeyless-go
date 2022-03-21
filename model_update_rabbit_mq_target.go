@@ -19,14 +19,13 @@ import (
 type UpdateRabbitMQTarget struct {
 	// Comment about the target
 	Comment *string `json:"comment,omitempty"`
+	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
 	// Target name
 	Name string `json:"name"`
 	// New target name
 	NewName *string `json:"new-name,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	RabbitmqServerPassword *string `json:"rabbitmq-server-password,omitempty"`
 	RabbitmqServerUri *string `json:"rabbitmq-server-uri,omitempty"`
 	RabbitmqServerUser *string `json:"rabbitmq-server-user,omitempty"`
@@ -34,10 +33,8 @@ type UpdateRabbitMQTarget struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// Create new version for the target
+	// Deprecated
 	UpdateVersion *bool `json:"update-version,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewUpdateRabbitMQTarget instantiates a new UpdateRabbitMQTarget object
@@ -47,8 +44,6 @@ type UpdateRabbitMQTarget struct {
 func NewUpdateRabbitMQTarget(name string, ) *UpdateRabbitMQTarget {
 	this := UpdateRabbitMQTarget{}
 	this.Name = name
-	var updateVersion bool = false
-	this.UpdateVersion = &updateVersion
 	return &this
 }
 
@@ -57,8 +52,6 @@ func NewUpdateRabbitMQTarget(name string, ) *UpdateRabbitMQTarget {
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateRabbitMQTargetWithDefaults() *UpdateRabbitMQTarget {
 	this := UpdateRabbitMQTarget{}
-	var updateVersion bool = false
-	this.UpdateVersion = &updateVersion
 	return &this
 }
 
@@ -92,6 +85,38 @@ func (o *UpdateRabbitMQTarget) HasComment() bool {
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *UpdateRabbitMQTarget) SetComment(v string) {
 	o.Comment = &v
+}
+
+// GetKeepPrevVersion returns the KeepPrevVersion field value if set, zero value otherwise.
+func (o *UpdateRabbitMQTarget) GetKeepPrevVersion() string {
+	if o == nil || o.KeepPrevVersion == nil {
+		var ret string
+		return ret
+	}
+	return *o.KeepPrevVersion
+}
+
+// GetKeepPrevVersionOk returns a tuple with the KeepPrevVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRabbitMQTarget) GetKeepPrevVersionOk() (*string, bool) {
+	if o == nil || o.KeepPrevVersion == nil {
+		return nil, false
+	}
+	return o.KeepPrevVersion, true
+}
+
+// HasKeepPrevVersion returns a boolean if a field has been set.
+func (o *UpdateRabbitMQTarget) HasKeepPrevVersion() bool {
+	if o != nil && o.KeepPrevVersion != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetKeepPrevVersion gets a reference to the given string and assigns it to the KeepPrevVersion field.
+func (o *UpdateRabbitMQTarget) SetKeepPrevVersion(v string) {
+	o.KeepPrevVersion = &v
 }
 
 // GetKey returns the Key field value if set, zero value otherwise.
@@ -180,38 +205,6 @@ func (o *UpdateRabbitMQTarget) HasNewName() bool {
 // SetNewName gets a reference to the given string and assigns it to the NewName field.
 func (o *UpdateRabbitMQTarget) SetNewName(v string) {
 	o.NewName = &v
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *UpdateRabbitMQTarget) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UpdateRabbitMQTarget) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *UpdateRabbitMQTarget) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *UpdateRabbitMQTarget) SetPassword(v string) {
-	o.Password = &v
 }
 
 // GetRabbitmqServerPassword returns the RabbitmqServerPassword field value if set, zero value otherwise.
@@ -406,42 +399,13 @@ func (o *UpdateRabbitMQTarget) SetUpdateVersion(v bool) {
 	o.UpdateVersion = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *UpdateRabbitMQTarget) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UpdateRabbitMQTarget) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *UpdateRabbitMQTarget) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *UpdateRabbitMQTarget) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o UpdateRabbitMQTarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment
+	}
+	if o.KeepPrevVersion != nil {
+		toSerialize["keep-prev-version"] = o.KeepPrevVersion
 	}
 	if o.Key != nil {
 		toSerialize["key"] = o.Key
@@ -451,9 +415,6 @@ func (o UpdateRabbitMQTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.NewName != nil {
 		toSerialize["new-name"] = o.NewName
-	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
 	}
 	if o.RabbitmqServerPassword != nil {
 		toSerialize["rabbitmq-server-password"] = o.RabbitmqServerPassword
@@ -472,9 +433,6 @@ func (o UpdateRabbitMQTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.UpdateVersion != nil {
 		toSerialize["update-version"] = o.UpdateVersion
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

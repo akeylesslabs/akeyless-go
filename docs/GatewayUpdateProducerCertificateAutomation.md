@@ -11,7 +11,6 @@ Name | Type | Description | Notes
 **EnableAdminRotation** | Pointer to **bool** | Automatic admin credentials rotation | [optional] [default to false]
 **Name** | **string** | Producer name | 
 **NewName** | Pointer to **string** | Producer name | [optional] 
-**Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **RootFirstInChain** | Pointer to **bool** | Root first in chain | [optional] 
 **SignUsingAkeylessPki** | Pointer to **bool** | Use Akeyless PKI issuer or Venafi issuer | [optional] 
@@ -22,7 +21,6 @@ Name | Type | Description | Notes
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserTtl** | Pointer to **string** | User TTL in time.Duration format (2160h / 129600m / etc...). When using sign-using-akeyless-pki certificates created will have this validity period, otherwise the user-ttl is taken from the Validity Period field of the Zone&#39;s&#39; Issuing Template. When using cert-manager it is advised to have a TTL of above 60 days (1440h). For more information - https://cert-manager.io/docs/usage/certificate/ | [optional] 
-**Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **VenafiApiKey** | Pointer to **string** | Venafi API key | [optional] 
 **VenafiBaseurl** | Pointer to **string** | Venafi Baseurl | [optional] 
 **VenafiPassword** | Pointer to **string** | Venafi Password | [optional] 
@@ -218,31 +216,6 @@ SetNewName sets NewName field to given value.
 `func (o *GatewayUpdateProducerCertificateAutomation) HasNewName() bool`
 
 HasNewName returns a boolean if a field has been set.
-
-### GetPassword
-
-`func (o *GatewayUpdateProducerCertificateAutomation) GetPassword() string`
-
-GetPassword returns the Password field if non-nil, zero value otherwise.
-
-### GetPasswordOk
-
-`func (o *GatewayUpdateProducerCertificateAutomation) GetPasswordOk() (*string, bool)`
-
-GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPassword
-
-`func (o *GatewayUpdateProducerCertificateAutomation) SetPassword(v string)`
-
-SetPassword sets Password field to given value.
-
-### HasPassword
-
-`func (o *GatewayUpdateProducerCertificateAutomation) HasPassword() bool`
-
-HasPassword returns a boolean if a field has been set.
 
 ### GetProducerEncryptionKeyName
 
@@ -493,31 +466,6 @@ SetUserTtl sets UserTtl field to given value.
 `func (o *GatewayUpdateProducerCertificateAutomation) HasUserTtl() bool`
 
 HasUserTtl returns a boolean if a field has been set.
-
-### GetUsername
-
-`func (o *GatewayUpdateProducerCertificateAutomation) GetUsername() string`
-
-GetUsername returns the Username field if non-nil, zero value otherwise.
-
-### GetUsernameOk
-
-`func (o *GatewayUpdateProducerCertificateAutomation) GetUsernameOk() (*string, bool)`
-
-GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUsername
-
-`func (o *GatewayUpdateProducerCertificateAutomation) SetUsername(v string)`
-
-SetUsername sets Username field to given value.
-
-### HasUsername
-
-`func (o *GatewayUpdateProducerCertificateAutomation) HasUsername() bool`
-
-HasUsername returns a boolean if a field has been set.
 
 ### GetVenafiApiKey
 

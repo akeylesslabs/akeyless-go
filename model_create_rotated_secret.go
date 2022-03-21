@@ -31,8 +31,6 @@ type CreateRotatedSecret struct {
 	Metadata *string `json:"metadata,omitempty"`
 	// Secret name
 	Name string `json:"name"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	RotatedPassword *string `json:"rotated-password,omitempty"`
 	RotatedUsername *string `json:"rotated-username,omitempty"`
 	RotationHour *int32 `json:"rotation-hour,omitempty"`
@@ -58,8 +56,6 @@ type CreateRotatedSecret struct {
 	UserAttribute *string `json:"user-attribute,omitempty"`
 	// User DN
 	UserDn *string `json:"user-dn,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewCreateRotatedSecret instantiates a new CreateRotatedSecret object
@@ -353,38 +349,6 @@ func (o *CreateRotatedSecret) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *CreateRotatedSecret) SetName(v string) {
 	o.Name = v
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *CreateRotatedSecret) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateRotatedSecret) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *CreateRotatedSecret) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *CreateRotatedSecret) SetPassword(v string) {
-	o.Password = &v
 }
 
 // GetRotatedPassword returns the RotatedPassword field value if set, zero value otherwise.
@@ -851,38 +815,6 @@ func (o *CreateRotatedSecret) SetUserDn(v string) {
 	o.UserDn = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *CreateRotatedSecret) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateRotatedSecret) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *CreateRotatedSecret) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *CreateRotatedSecret) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o CreateRotatedSecret) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ApiId != nil {
@@ -911,9 +843,6 @@ func (o CreateRotatedSecret) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
-	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
 	}
 	if o.RotatedPassword != nil {
 		toSerialize["rotated-password"] = o.RotatedPassword
@@ -959,9 +888,6 @@ func (o CreateRotatedSecret) MarshalJSON() ([]byte, error) {
 	}
 	if o.UserDn != nil {
 		toSerialize["user-dn"] = o.UserDn
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

@@ -43,6 +43,7 @@ type SecureRemoteAccess struct {
 	SshUser *string `json:"ssh_user,omitempty"`
 	Url *string `json:"url,omitempty"`
 	UseInternalBastion *bool `json:"use_internal_bastion,omitempty"`
+	WebProxy *bool `json:"web_proxy,omitempty"`
 }
 
 // NewSecureRemoteAccess instantiates a new SecureRemoteAccess object
@@ -894,6 +895,38 @@ func (o *SecureRemoteAccess) SetUseInternalBastion(v bool) {
 	o.UseInternalBastion = &v
 }
 
+// GetWebProxy returns the WebProxy field value if set, zero value otherwise.
+func (o *SecureRemoteAccess) GetWebProxy() bool {
+	if o == nil || o.WebProxy == nil {
+		var ret bool
+		return ret
+	}
+	return *o.WebProxy
+}
+
+// GetWebProxyOk returns a tuple with the WebProxy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SecureRemoteAccess) GetWebProxyOk() (*bool, bool) {
+	if o == nil || o.WebProxy == nil {
+		return nil, false
+	}
+	return o.WebProxy, true
+}
+
+// HasWebProxy returns a boolean if a field has been set.
+func (o *SecureRemoteAccess) HasWebProxy() bool {
+	if o != nil && o.WebProxy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetWebProxy gets a reference to the given bool and assigns it to the WebProxy field.
+func (o *SecureRemoteAccess) SetWebProxy(v bool) {
+	o.WebProxy = &v
+}
+
 func (o SecureRemoteAccess) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccountId != nil {
@@ -973,6 +1006,9 @@ func (o SecureRemoteAccess) MarshalJSON() ([]byte, error) {
 	}
 	if o.UseInternalBastion != nil {
 		toSerialize["use_internal_bastion"] = o.UseInternalBastion
+	}
+	if o.WebProxy != nil {
+		toSerialize["web_proxy"] = o.WebProxy
 	}
 	return json.Marshal(toSerialize)
 }

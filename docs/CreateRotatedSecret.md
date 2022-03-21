@@ -13,7 +13,6 @@ Name | Type | Description | Notes
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Metadata** | Pointer to **string** | Metadata about the secret | [optional] 
 **Name** | **string** | Secret name | 
-**Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **RotatedPassword** | Pointer to **string** |  | [optional] 
 **RotatedUsername** | Pointer to **string** |  | [optional] 
 **RotationHour** | Pointer to **int32** |  | [optional] 
@@ -29,7 +28,6 @@ Name | Type | Description | Notes
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserAttribute** | Pointer to **string** | User Attribute | [optional] 
 **UserDn** | Pointer to **string** | User DN | [optional] 
-**Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 
 ## Methods
 
@@ -264,31 +262,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
-### GetPassword
-
-`func (o *CreateRotatedSecret) GetPassword() string`
-
-GetPassword returns the Password field if non-nil, zero value otherwise.
-
-### GetPasswordOk
-
-`func (o *CreateRotatedSecret) GetPasswordOk() (*string, bool)`
-
-GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPassword
-
-`func (o *CreateRotatedSecret) SetPassword(v string)`
-
-SetPassword sets Password field to given value.
-
-### HasPassword
-
-`func (o *CreateRotatedSecret) HasPassword() bool`
-
-HasPassword returns a boolean if a field has been set.
 
 ### GetRotatedPassword
 
@@ -654,31 +627,6 @@ SetUserDn sets UserDn field to given value.
 `func (o *CreateRotatedSecret) HasUserDn() bool`
 
 HasUserDn returns a boolean if a field has been set.
-
-### GetUsername
-
-`func (o *CreateRotatedSecret) GetUsername() string`
-
-GetUsername returns the Username field if non-nil, zero value otherwise.
-
-### GetUsernameOk
-
-`func (o *CreateRotatedSecret) GetUsernameOk() (*string, bool)`
-
-GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUsername
-
-`func (o *CreateRotatedSecret) SetUsername(v string)`
-
-SetUsername sets Username field to given value.
-
-### HasUsername
-
-`func (o *CreateRotatedSecret) HasUsername() bool`
-
-HasUsername returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

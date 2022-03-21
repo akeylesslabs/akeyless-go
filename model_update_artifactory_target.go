@@ -25,22 +25,19 @@ type UpdateArtifactoryTarget struct {
 	BaseUrl string `json:"base-url"`
 	// Comment about the target
 	Comment *string `json:"comment,omitempty"`
+	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
 	// Target name
 	Name string `json:"name"`
 	// New target name
 	NewName *string `json:"new-name,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// Create new version for the target
+	// Deprecated
 	UpdateVersion *bool `json:"update-version,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewUpdateArtifactoryTarget instantiates a new UpdateArtifactoryTarget object
@@ -53,8 +50,6 @@ func NewUpdateArtifactoryTarget(artifactoryAdminName string, artifactoryAdminPwd
 	this.ArtifactoryAdminPwd = artifactoryAdminPwd
 	this.BaseUrl = baseUrl
 	this.Name = name
-	var updateVersion bool = false
-	this.UpdateVersion = &updateVersion
 	return &this
 }
 
@@ -63,8 +58,6 @@ func NewUpdateArtifactoryTarget(artifactoryAdminName string, artifactoryAdminPwd
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateArtifactoryTargetWithDefaults() *UpdateArtifactoryTarget {
 	this := UpdateArtifactoryTarget{}
-	var updateVersion bool = false
-	this.UpdateVersion = &updateVersion
 	return &this
 }
 
@@ -172,6 +165,38 @@ func (o *UpdateArtifactoryTarget) SetComment(v string) {
 	o.Comment = &v
 }
 
+// GetKeepPrevVersion returns the KeepPrevVersion field value if set, zero value otherwise.
+func (o *UpdateArtifactoryTarget) GetKeepPrevVersion() string {
+	if o == nil || o.KeepPrevVersion == nil {
+		var ret string
+		return ret
+	}
+	return *o.KeepPrevVersion
+}
+
+// GetKeepPrevVersionOk returns a tuple with the KeepPrevVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateArtifactoryTarget) GetKeepPrevVersionOk() (*string, bool) {
+	if o == nil || o.KeepPrevVersion == nil {
+		return nil, false
+	}
+	return o.KeepPrevVersion, true
+}
+
+// HasKeepPrevVersion returns a boolean if a field has been set.
+func (o *UpdateArtifactoryTarget) HasKeepPrevVersion() bool {
+	if o != nil && o.KeepPrevVersion != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetKeepPrevVersion gets a reference to the given string and assigns it to the KeepPrevVersion field.
+func (o *UpdateArtifactoryTarget) SetKeepPrevVersion(v string) {
+	o.KeepPrevVersion = &v
+}
+
 // GetKey returns the Key field value if set, zero value otherwise.
 func (o *UpdateArtifactoryTarget) GetKey() string {
 	if o == nil || o.Key == nil {
@@ -258,38 +283,6 @@ func (o *UpdateArtifactoryTarget) HasNewName() bool {
 // SetNewName gets a reference to the given string and assigns it to the NewName field.
 func (o *UpdateArtifactoryTarget) SetNewName(v string) {
 	o.NewName = &v
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *UpdateArtifactoryTarget) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UpdateArtifactoryTarget) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *UpdateArtifactoryTarget) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *UpdateArtifactoryTarget) SetPassword(v string) {
-	o.Password = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -388,38 +381,6 @@ func (o *UpdateArtifactoryTarget) SetUpdateVersion(v bool) {
 	o.UpdateVersion = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *UpdateArtifactoryTarget) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UpdateArtifactoryTarget) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *UpdateArtifactoryTarget) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *UpdateArtifactoryTarget) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o UpdateArtifactoryTarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -434,6 +395,9 @@ func (o UpdateArtifactoryTarget) MarshalJSON() ([]byte, error) {
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment
 	}
+	if o.KeepPrevVersion != nil {
+		toSerialize["keep-prev-version"] = o.KeepPrevVersion
+	}
 	if o.Key != nil {
 		toSerialize["key"] = o.Key
 	}
@@ -443,9 +407,6 @@ func (o UpdateArtifactoryTarget) MarshalJSON() ([]byte, error) {
 	if o.NewName != nil {
 		toSerialize["new-name"] = o.NewName
 	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
-	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
 	}
@@ -454,9 +415,6 @@ func (o UpdateArtifactoryTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.UpdateVersion != nil {
 		toSerialize["update-version"] = o.UpdateVersion
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

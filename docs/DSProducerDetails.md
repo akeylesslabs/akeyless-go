@@ -26,6 +26,8 @@ Name | Type | Description | Notes
 **AzureAppObjectId** | Pointer to **string** |  | [optional] 
 **AzureClientId** | Pointer to **string** |  | [optional] 
 **AzureClientSecret** | Pointer to **string** |  | [optional] 
+**AzureFixedUserNameSubClaimKey** | Pointer to **string** |  | [optional] 
+**AzureFixedUserOnly** | Pointer to **bool** |  | [optional] 
 **AzureTenantId** | Pointer to **string** |  | [optional] 
 **AzureUserGroupsObjId** | Pointer to **string** |  | [optional] 
 **AzureUserPortalAccess** | Pointer to **bool** |  | [optional] 
@@ -120,6 +122,7 @@ Name | Type | Description | Notes
 **MssqlRevocationStatements** | Pointer to **string** |  | [optional] 
 **MysqlCreationStatements** | Pointer to **string** |  | [optional] 
 **OracleCreationStatements** | Pointer to **string** |  | [optional] 
+**Password** | Pointer to **string** |  | [optional] 
 **PasswordLength** | Pointer to **int64** |  | [optional] 
 **PasswordPolicy** | Pointer to **string** |  | [optional] 
 **Payload** | Pointer to **string** |  | [optional] 
@@ -136,6 +139,7 @@ Name | Type | Description | Notes
 **RedshiftCreationStatements** | Pointer to **string** |  | [optional] 
 **RevokeSyncUrl** | Pointer to **string** |  | [optional] 
 **RotateSyncUrl** | Pointer to **string** |  | [optional] 
+**Scopes** | Pointer to **[]string** |  | [optional] 
 **SecureRemoteAccessDetails** | Pointer to [**SecureRemoteAccess**](SecureRemoteAccess.md) |  | [optional] 
 **SfAccount** | Pointer to **string** |  | [optional] 
 **SfUserRole** | Pointer to **string** | generated  users info | [optional] 
@@ -146,6 +150,7 @@ Name | Type | Description | Notes
 **Tags** | Pointer to **[]string** |  | [optional] 
 **TimeoutSeconds** | Pointer to **int64** |  | [optional] 
 **UseGwCloudIdentity** | Pointer to **bool** |  | [optional] 
+**UserName** | Pointer to **string** |  | [optional] 
 **UserPrincipalName** | Pointer to **string** |  | [optional] 
 **UserTtl** | Pointer to **string** |  | [optional] 
 **UsernameLength** | Pointer to **int64** |  | [optional] 
@@ -163,6 +168,7 @@ Name | Type | Description | Notes
 **VenafiTppUsername** | Pointer to **string** |  | [optional] 
 **VenafiUseTpp** | Pointer to **bool** |  | [optional] 
 **VenafiZone** | Pointer to **string** |  | [optional] 
+**WarnBeforeUserExpirationMin** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -732,6 +738,56 @@ SetAzureClientSecret sets AzureClientSecret field to given value.
 `func (o *DSProducerDetails) HasAzureClientSecret() bool`
 
 HasAzureClientSecret returns a boolean if a field has been set.
+
+### GetAzureFixedUserNameSubClaimKey
+
+`func (o *DSProducerDetails) GetAzureFixedUserNameSubClaimKey() string`
+
+GetAzureFixedUserNameSubClaimKey returns the AzureFixedUserNameSubClaimKey field if non-nil, zero value otherwise.
+
+### GetAzureFixedUserNameSubClaimKeyOk
+
+`func (o *DSProducerDetails) GetAzureFixedUserNameSubClaimKeyOk() (*string, bool)`
+
+GetAzureFixedUserNameSubClaimKeyOk returns a tuple with the AzureFixedUserNameSubClaimKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureFixedUserNameSubClaimKey
+
+`func (o *DSProducerDetails) SetAzureFixedUserNameSubClaimKey(v string)`
+
+SetAzureFixedUserNameSubClaimKey sets AzureFixedUserNameSubClaimKey field to given value.
+
+### HasAzureFixedUserNameSubClaimKey
+
+`func (o *DSProducerDetails) HasAzureFixedUserNameSubClaimKey() bool`
+
+HasAzureFixedUserNameSubClaimKey returns a boolean if a field has been set.
+
+### GetAzureFixedUserOnly
+
+`func (o *DSProducerDetails) GetAzureFixedUserOnly() bool`
+
+GetAzureFixedUserOnly returns the AzureFixedUserOnly field if non-nil, zero value otherwise.
+
+### GetAzureFixedUserOnlyOk
+
+`func (o *DSProducerDetails) GetAzureFixedUserOnlyOk() (*bool, bool)`
+
+GetAzureFixedUserOnlyOk returns a tuple with the AzureFixedUserOnly field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureFixedUserOnly
+
+`func (o *DSProducerDetails) SetAzureFixedUserOnly(v bool)`
+
+SetAzureFixedUserOnly sets AzureFixedUserOnly field to given value.
+
+### HasAzureFixedUserOnly
+
+`func (o *DSProducerDetails) HasAzureFixedUserOnly() bool`
+
+HasAzureFixedUserOnly returns a boolean if a field has been set.
 
 ### GetAzureTenantId
 
@@ -3083,6 +3139,31 @@ SetOracleCreationStatements sets OracleCreationStatements field to given value.
 
 HasOracleCreationStatements returns a boolean if a field has been set.
 
+### GetPassword
+
+`func (o *DSProducerDetails) GetPassword() string`
+
+GetPassword returns the Password field if non-nil, zero value otherwise.
+
+### GetPasswordOk
+
+`func (o *DSProducerDetails) GetPasswordOk() (*string, bool)`
+
+GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPassword
+
+`func (o *DSProducerDetails) SetPassword(v string)`
+
+SetPassword sets Password field to given value.
+
+### HasPassword
+
+`func (o *DSProducerDetails) HasPassword() bool`
+
+HasPassword returns a boolean if a field has been set.
+
 ### GetPasswordLength
 
 `func (o *DSProducerDetails) GetPasswordLength() int64`
@@ -3483,6 +3564,31 @@ SetRotateSyncUrl sets RotateSyncUrl field to given value.
 
 HasRotateSyncUrl returns a boolean if a field has been set.
 
+### GetScopes
+
+`func (o *DSProducerDetails) GetScopes() []string`
+
+GetScopes returns the Scopes field if non-nil, zero value otherwise.
+
+### GetScopesOk
+
+`func (o *DSProducerDetails) GetScopesOk() (*[]string, bool)`
+
+GetScopesOk returns a tuple with the Scopes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScopes
+
+`func (o *DSProducerDetails) SetScopes(v []string)`
+
+SetScopes sets Scopes field to given value.
+
+### HasScopes
+
+`func (o *DSProducerDetails) HasScopes() bool`
+
+HasScopes returns a boolean if a field has been set.
+
 ### GetSecureRemoteAccessDetails
 
 `func (o *DSProducerDetails) GetSecureRemoteAccessDetails() SecureRemoteAccess`
@@ -3732,6 +3838,31 @@ SetUseGwCloudIdentity sets UseGwCloudIdentity field to given value.
 `func (o *DSProducerDetails) HasUseGwCloudIdentity() bool`
 
 HasUseGwCloudIdentity returns a boolean if a field has been set.
+
+### GetUserName
+
+`func (o *DSProducerDetails) GetUserName() string`
+
+GetUserName returns the UserName field if non-nil, zero value otherwise.
+
+### GetUserNameOk
+
+`func (o *DSProducerDetails) GetUserNameOk() (*string, bool)`
+
+GetUserNameOk returns a tuple with the UserName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserName
+
+`func (o *DSProducerDetails) SetUserName(v string)`
+
+SetUserName sets UserName field to given value.
+
+### HasUserName
+
+`func (o *DSProducerDetails) HasUserName() bool`
+
+HasUserName returns a boolean if a field has been set.
 
 ### GetUserPrincipalName
 
@@ -4157,6 +4288,31 @@ SetVenafiZone sets VenafiZone field to given value.
 `func (o *DSProducerDetails) HasVenafiZone() bool`
 
 HasVenafiZone returns a boolean if a field has been set.
+
+### GetWarnBeforeUserExpirationMin
+
+`func (o *DSProducerDetails) GetWarnBeforeUserExpirationMin() int64`
+
+GetWarnBeforeUserExpirationMin returns the WarnBeforeUserExpirationMin field if non-nil, zero value otherwise.
+
+### GetWarnBeforeUserExpirationMinOk
+
+`func (o *DSProducerDetails) GetWarnBeforeUserExpirationMinOk() (*int64, bool)`
+
+GetWarnBeforeUserExpirationMinOk returns a tuple with the WarnBeforeUserExpirationMin field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWarnBeforeUserExpirationMin
+
+`func (o *DSProducerDetails) SetWarnBeforeUserExpirationMin(v int64)`
+
+SetWarnBeforeUserExpirationMin sets WarnBeforeUserExpirationMin field to given value.
+
+### HasWarnBeforeUserExpirationMin
+
+`func (o *DSProducerDetails) HasWarnBeforeUserExpirationMin() bool`
+
+HasWarnBeforeUserExpirationMin returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

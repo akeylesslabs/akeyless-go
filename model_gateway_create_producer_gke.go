@@ -29,8 +29,6 @@ type GatewayCreateProducerGke struct {
 	GkeServiceAccountEmail *string `json:"gke-service-account-email,omitempty"`
 	// Producer name
 	Name string `json:"name"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
 	SecureAccessAllowPortForwading *bool `json:"secure-access-allow-port-forwading,omitempty"`
@@ -48,8 +46,6 @@ type GatewayCreateProducerGke struct {
 	UidToken *string `json:"uid-token,omitempty"`
 	// User TTL
 	UserTtl *string `json:"user-ttl,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewGatewayCreateProducerGke instantiates a new GatewayCreateProducerGke object
@@ -256,38 +252,6 @@ func (o *GatewayCreateProducerGke) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *GatewayCreateProducerGke) SetName(v string) {
 	o.Name = v
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *GatewayCreateProducerGke) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerGke) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *GatewayCreateProducerGke) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *GatewayCreateProducerGke) SetPassword(v string) {
-	o.Password = &v
 }
 
 // GetProducerEncryptionKeyName returns the ProducerEncryptionKeyName field value if set, zero value otherwise.
@@ -642,38 +606,6 @@ func (o *GatewayCreateProducerGke) SetUserTtl(v string) {
 	o.UserTtl = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *GatewayCreateProducerGke) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerGke) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *GatewayCreateProducerGke) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *GatewayCreateProducerGke) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o GatewayCreateProducerGke) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.GkeAccountKey != nil {
@@ -693,9 +625,6 @@ func (o GatewayCreateProducerGke) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
-	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
 	}
 	if o.ProducerEncryptionKeyName != nil {
 		toSerialize["producer-encryption-key-name"] = o.ProducerEncryptionKeyName
@@ -729,9 +658,6 @@ func (o GatewayCreateProducerGke) MarshalJSON() ([]byte, error) {
 	}
 	if o.UserTtl != nil {
 		toSerialize["user-ttl"] = o.UserTtl
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

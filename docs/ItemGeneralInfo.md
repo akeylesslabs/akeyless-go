@@ -7,8 +7,10 @@ Name | Type | Description | Notes
 **CertIssueDetails** | Pointer to [**CertificateIssueInfo**](CertificateIssueInfo.md) |  | [optional] 
 **ClassicKeyDetails** | Pointer to [**ClassicKeyDetailsInfo**](ClassicKeyDetailsInfo.md) |  | [optional] 
 **DynamicSecretProducerDetails** | Pointer to [**DynamicSecretProducerInfo**](DynamicSecretProducerInfo.md) |  | [optional] 
+**PasswordPolicy** | Pointer to [**PasswordPolicyInfo**](PasswordPolicyInfo.md) |  | [optional] 
 **RotatedSecretDetails** | Pointer to [**RotatedSecretDetailsInfo**](RotatedSecretDetailsInfo.md) |  | [optional] 
 **SecureRemoteAccessDetails** | Pointer to [**SecureRemoteAccess**](SecureRemoteAccess.md) |  | [optional] 
+**StaticSecretInfo** | Pointer to [**StaticSecretDetailsInfo**](StaticSecretDetailsInfo.md) |  | [optional] 
 
 ## Methods
 
@@ -104,6 +106,31 @@ SetDynamicSecretProducerDetails sets DynamicSecretProducerDetails field to given
 
 HasDynamicSecretProducerDetails returns a boolean if a field has been set.
 
+### GetPasswordPolicy
+
+`func (o *ItemGeneralInfo) GetPasswordPolicy() PasswordPolicyInfo`
+
+GetPasswordPolicy returns the PasswordPolicy field if non-nil, zero value otherwise.
+
+### GetPasswordPolicyOk
+
+`func (o *ItemGeneralInfo) GetPasswordPolicyOk() (*PasswordPolicyInfo, bool)`
+
+GetPasswordPolicyOk returns a tuple with the PasswordPolicy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasswordPolicy
+
+`func (o *ItemGeneralInfo) SetPasswordPolicy(v PasswordPolicyInfo)`
+
+SetPasswordPolicy sets PasswordPolicy field to given value.
+
+### HasPasswordPolicy
+
+`func (o *ItemGeneralInfo) HasPasswordPolicy() bool`
+
+HasPasswordPolicy returns a boolean if a field has been set.
+
 ### GetRotatedSecretDetails
 
 `func (o *ItemGeneralInfo) GetRotatedSecretDetails() RotatedSecretDetailsInfo`
@@ -153,6 +180,31 @@ SetSecureRemoteAccessDetails sets SecureRemoteAccessDetails field to given value
 `func (o *ItemGeneralInfo) HasSecureRemoteAccessDetails() bool`
 
 HasSecureRemoteAccessDetails returns a boolean if a field has been set.
+
+### GetStaticSecretInfo
+
+`func (o *ItemGeneralInfo) GetStaticSecretInfo() StaticSecretDetailsInfo`
+
+GetStaticSecretInfo returns the StaticSecretInfo field if non-nil, zero value otherwise.
+
+### GetStaticSecretInfoOk
+
+`func (o *ItemGeneralInfo) GetStaticSecretInfoOk() (*StaticSecretDetailsInfo, bool)`
+
+GetStaticSecretInfoOk returns a tuple with the StaticSecretInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStaticSecretInfo
+
+`func (o *ItemGeneralInfo) SetStaticSecretInfo(v StaticSecretDetailsInfo)`
+
+SetStaticSecretInfo sets StaticSecretInfo field to given value.
+
+### HasStaticSecretInfo
+
+`func (o *ItemGeneralInfo) HasStaticSecretInfo() bool`
+
+HasStaticSecretInfo returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

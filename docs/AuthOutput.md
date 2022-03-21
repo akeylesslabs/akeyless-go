@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Creds** | Pointer to [**SystemAccessCredentialsReplyObj**](SystemAccessCredentialsReplyObj.md) |  | [optional] 
 **Token** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -24,6 +25,31 @@ will change when the set of required properties is changed
 NewAuthOutputWithDefaults instantiates a new AuthOutput object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCreds
+
+`func (o *AuthOutput) GetCreds() SystemAccessCredentialsReplyObj`
+
+GetCreds returns the Creds field if non-nil, zero value otherwise.
+
+### GetCredsOk
+
+`func (o *AuthOutput) GetCredsOk() (*SystemAccessCredentialsReplyObj, bool)`
+
+GetCredsOk returns a tuple with the Creds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreds
+
+`func (o *AuthOutput) SetCreds(v SystemAccessCredentialsReplyObj)`
+
+SetCreds sets Creds field to given value.
+
+### HasCreds
+
+`func (o *AuthOutput) HasCreds() bool`
+
+HasCreds returns a boolean if a field has been set.
 
 ### GetToken
 

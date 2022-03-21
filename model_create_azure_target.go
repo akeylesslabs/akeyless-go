@@ -25,16 +25,12 @@ type CreateAzureTarget struct {
 	Key *string `json:"key,omitempty"`
 	// Target name
 	Name string `json:"name"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	TenantId *string `json:"tenant-id,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
 	UseGwCloudIdentity *bool `json:"use-gw-cloud-identity,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewCreateAzureTarget instantiates a new CreateAzureTarget object
@@ -207,38 +203,6 @@ func (o *CreateAzureTarget) SetName(v string) {
 	o.Name = v
 }
 
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *CreateAzureTarget) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateAzureTarget) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *CreateAzureTarget) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *CreateAzureTarget) SetPassword(v string) {
-	o.Password = &v
-}
-
 // GetTenantId returns the TenantId field value if set, zero value otherwise.
 func (o *CreateAzureTarget) GetTenantId() string {
 	if o == nil || o.TenantId == nil {
@@ -367,38 +331,6 @@ func (o *CreateAzureTarget) SetUseGwCloudIdentity(v bool) {
 	o.UseGwCloudIdentity = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *CreateAzureTarget) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateAzureTarget) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *CreateAzureTarget) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *CreateAzureTarget) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o CreateAzureTarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ClientId != nil {
@@ -416,9 +348,6 @@ func (o CreateAzureTarget) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
-	}
 	if o.TenantId != nil {
 		toSerialize["tenant-id"] = o.TenantId
 	}
@@ -430,9 +359,6 @@ func (o CreateAzureTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.UseGwCloudIdentity != nil {
 		toSerialize["use-gw-cloud-identity"] = o.UseGwCloudIdentity
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

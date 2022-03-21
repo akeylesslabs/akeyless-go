@@ -8,13 +8,15 @@ Name | Type | Description | Notes
 **AzureClientId** | Pointer to **string** | Azure Client ID | [optional] 
 **AzureClientSecret** | Pointer to **string** | Azure Client Secret | [optional] 
 **AzureTenantId** | Pointer to **string** | Azure Tenant ID | [optional] 
+**FixedUserClaimKeyname** | Pointer to **string** | FixedUserClaimKeyname | [optional] [default to "false"]
+**FixedUserOnly** | Pointer to **bool** | Fixed user | [optional] [default to false]
 **Name** | **string** | Producer name | 
 **NewName** | Pointer to **string** | Producer name | [optional] 
-**Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **SecureAccessEnable** | Pointer to **string** |  | [optional] 
 **SecureAccessWeb** | Pointer to **bool** |  | [optional] 
 **SecureAccessWebBrowsing** | Pointer to **bool** |  | [optional] 
+**SecureAccessWebProxy** | Pointer to **bool** |  | [optional] 
 **Tags** | Pointer to **[]string** | List of the tags attached to this secret | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -22,10 +24,9 @@ Name | Type | Description | Notes
 **UserGroupObjId** | Pointer to **string** | User Group Object Id | [optional] 
 **UserPortalAccess** | Pointer to **bool** | Azure User portal access | [optional] [default to false]
 **UserPrincipalName** | Pointer to **string** | User Principal Name | [optional] 
-**UserProgrammaticAccess** | Pointer to **bool** | Azure User programmatic access | [optional] [default to true]
+**UserProgrammaticAccess** | Pointer to **bool** | Azure User programmatic access | [optional] [default to false]
 **UserRoleTemplateId** | Pointer to **string** | User Role Template Id | [optional] 
 **UserTtl** | Pointer to **string** | User TTL | [optional] [default to "60m"]
-**Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 
 ## Methods
 
@@ -146,6 +147,56 @@ SetAzureTenantId sets AzureTenantId field to given value.
 
 HasAzureTenantId returns a boolean if a field has been set.
 
+### GetFixedUserClaimKeyname
+
+`func (o *GatewayUpdateProducerAzure) GetFixedUserClaimKeyname() string`
+
+GetFixedUserClaimKeyname returns the FixedUserClaimKeyname field if non-nil, zero value otherwise.
+
+### GetFixedUserClaimKeynameOk
+
+`func (o *GatewayUpdateProducerAzure) GetFixedUserClaimKeynameOk() (*string, bool)`
+
+GetFixedUserClaimKeynameOk returns a tuple with the FixedUserClaimKeyname field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFixedUserClaimKeyname
+
+`func (o *GatewayUpdateProducerAzure) SetFixedUserClaimKeyname(v string)`
+
+SetFixedUserClaimKeyname sets FixedUserClaimKeyname field to given value.
+
+### HasFixedUserClaimKeyname
+
+`func (o *GatewayUpdateProducerAzure) HasFixedUserClaimKeyname() bool`
+
+HasFixedUserClaimKeyname returns a boolean if a field has been set.
+
+### GetFixedUserOnly
+
+`func (o *GatewayUpdateProducerAzure) GetFixedUserOnly() bool`
+
+GetFixedUserOnly returns the FixedUserOnly field if non-nil, zero value otherwise.
+
+### GetFixedUserOnlyOk
+
+`func (o *GatewayUpdateProducerAzure) GetFixedUserOnlyOk() (*bool, bool)`
+
+GetFixedUserOnlyOk returns a tuple with the FixedUserOnly field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFixedUserOnly
+
+`func (o *GatewayUpdateProducerAzure) SetFixedUserOnly(v bool)`
+
+SetFixedUserOnly sets FixedUserOnly field to given value.
+
+### HasFixedUserOnly
+
+`func (o *GatewayUpdateProducerAzure) HasFixedUserOnly() bool`
+
+HasFixedUserOnly returns a boolean if a field has been set.
+
 ### GetName
 
 `func (o *GatewayUpdateProducerAzure) GetName() string`
@@ -190,31 +241,6 @@ SetNewName sets NewName field to given value.
 `func (o *GatewayUpdateProducerAzure) HasNewName() bool`
 
 HasNewName returns a boolean if a field has been set.
-
-### GetPassword
-
-`func (o *GatewayUpdateProducerAzure) GetPassword() string`
-
-GetPassword returns the Password field if non-nil, zero value otherwise.
-
-### GetPasswordOk
-
-`func (o *GatewayUpdateProducerAzure) GetPasswordOk() (*string, bool)`
-
-GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPassword
-
-`func (o *GatewayUpdateProducerAzure) SetPassword(v string)`
-
-SetPassword sets Password field to given value.
-
-### HasPassword
-
-`func (o *GatewayUpdateProducerAzure) HasPassword() bool`
-
-HasPassword returns a boolean if a field has been set.
 
 ### GetProducerEncryptionKeyName
 
@@ -315,6 +341,31 @@ SetSecureAccessWebBrowsing sets SecureAccessWebBrowsing field to given value.
 `func (o *GatewayUpdateProducerAzure) HasSecureAccessWebBrowsing() bool`
 
 HasSecureAccessWebBrowsing returns a boolean if a field has been set.
+
+### GetSecureAccessWebProxy
+
+`func (o *GatewayUpdateProducerAzure) GetSecureAccessWebProxy() bool`
+
+GetSecureAccessWebProxy returns the SecureAccessWebProxy field if non-nil, zero value otherwise.
+
+### GetSecureAccessWebProxyOk
+
+`func (o *GatewayUpdateProducerAzure) GetSecureAccessWebProxyOk() (*bool, bool)`
+
+GetSecureAccessWebProxyOk returns a tuple with the SecureAccessWebProxy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessWebProxy
+
+`func (o *GatewayUpdateProducerAzure) SetSecureAccessWebProxy(v bool)`
+
+SetSecureAccessWebProxy sets SecureAccessWebProxy field to given value.
+
+### HasSecureAccessWebProxy
+
+`func (o *GatewayUpdateProducerAzure) HasSecureAccessWebProxy() bool`
+
+HasSecureAccessWebProxy returns a boolean if a field has been set.
 
 ### GetTags
 
@@ -565,31 +616,6 @@ SetUserTtl sets UserTtl field to given value.
 `func (o *GatewayUpdateProducerAzure) HasUserTtl() bool`
 
 HasUserTtl returns a boolean if a field has been set.
-
-### GetUsername
-
-`func (o *GatewayUpdateProducerAzure) GetUsername() string`
-
-GetUsername returns the Username field if non-nil, zero value otherwise.
-
-### GetUsernameOk
-
-`func (o *GatewayUpdateProducerAzure) GetUsernameOk() (*string, bool)`
-
-GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUsername
-
-`func (o *GatewayUpdateProducerAzure) SetUsername(v string)`
-
-SetUsername sets Username field to given value.
-
-### HasUsername
-
-`func (o *GatewayUpdateProducerAzure) HasUsername() bool`
-
-HasUsername returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

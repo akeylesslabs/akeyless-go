@@ -4,12 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AnalyticsAccess** | Pointer to **string** | Allow this role to view analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods. | [optional] 
+**AuditAccess** | Pointer to **string** | Allow this role to view audit logs. Currently only &#39;none&#39;, &#39;own&#39; and &#39;all&#39; values are supported, allowing associated auth methods to view audit logs produced by the same auth methods. | [optional] 
 **Comment** | Pointer to **string** | Comment about the role | [optional] 
+**GwAnalyticsAccess** | Pointer to **string** | Allow this role to view gw analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods. | [optional] 
 **Name** | **string** | Role name | 
-**Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
+**SraReportsAccess** | Pointer to **string** | Allow this role to view SRA Clusters. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported. | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
-**Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 
 ## Methods
 
@@ -29,6 +31,56 @@ will change when the set of required properties is changed
 NewCreateRoleWithDefaults instantiates a new CreateRole object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAnalyticsAccess
+
+`func (o *CreateRole) GetAnalyticsAccess() string`
+
+GetAnalyticsAccess returns the AnalyticsAccess field if non-nil, zero value otherwise.
+
+### GetAnalyticsAccessOk
+
+`func (o *CreateRole) GetAnalyticsAccessOk() (*string, bool)`
+
+GetAnalyticsAccessOk returns a tuple with the AnalyticsAccess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAnalyticsAccess
+
+`func (o *CreateRole) SetAnalyticsAccess(v string)`
+
+SetAnalyticsAccess sets AnalyticsAccess field to given value.
+
+### HasAnalyticsAccess
+
+`func (o *CreateRole) HasAnalyticsAccess() bool`
+
+HasAnalyticsAccess returns a boolean if a field has been set.
+
+### GetAuditAccess
+
+`func (o *CreateRole) GetAuditAccess() string`
+
+GetAuditAccess returns the AuditAccess field if non-nil, zero value otherwise.
+
+### GetAuditAccessOk
+
+`func (o *CreateRole) GetAuditAccessOk() (*string, bool)`
+
+GetAuditAccessOk returns a tuple with the AuditAccess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuditAccess
+
+`func (o *CreateRole) SetAuditAccess(v string)`
+
+SetAuditAccess sets AuditAccess field to given value.
+
+### HasAuditAccess
+
+`func (o *CreateRole) HasAuditAccess() bool`
+
+HasAuditAccess returns a boolean if a field has been set.
 
 ### GetComment
 
@@ -55,6 +107,31 @@ SetComment sets Comment field to given value.
 
 HasComment returns a boolean if a field has been set.
 
+### GetGwAnalyticsAccess
+
+`func (o *CreateRole) GetGwAnalyticsAccess() string`
+
+GetGwAnalyticsAccess returns the GwAnalyticsAccess field if non-nil, zero value otherwise.
+
+### GetGwAnalyticsAccessOk
+
+`func (o *CreateRole) GetGwAnalyticsAccessOk() (*string, bool)`
+
+GetGwAnalyticsAccessOk returns a tuple with the GwAnalyticsAccess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGwAnalyticsAccess
+
+`func (o *CreateRole) SetGwAnalyticsAccess(v string)`
+
+SetGwAnalyticsAccess sets GwAnalyticsAccess field to given value.
+
+### HasGwAnalyticsAccess
+
+`func (o *CreateRole) HasGwAnalyticsAccess() bool`
+
+HasGwAnalyticsAccess returns a boolean if a field has been set.
+
 ### GetName
 
 `func (o *CreateRole) GetName() string`
@@ -75,30 +152,30 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### GetPassword
+### GetSraReportsAccess
 
-`func (o *CreateRole) GetPassword() string`
+`func (o *CreateRole) GetSraReportsAccess() string`
 
-GetPassword returns the Password field if non-nil, zero value otherwise.
+GetSraReportsAccess returns the SraReportsAccess field if non-nil, zero value otherwise.
 
-### GetPasswordOk
+### GetSraReportsAccessOk
 
-`func (o *CreateRole) GetPasswordOk() (*string, bool)`
+`func (o *CreateRole) GetSraReportsAccessOk() (*string, bool)`
 
-GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
+GetSraReportsAccessOk returns a tuple with the SraReportsAccess field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPassword
+### SetSraReportsAccess
 
-`func (o *CreateRole) SetPassword(v string)`
+`func (o *CreateRole) SetSraReportsAccess(v string)`
 
-SetPassword sets Password field to given value.
+SetSraReportsAccess sets SraReportsAccess field to given value.
 
-### HasPassword
+### HasSraReportsAccess
 
-`func (o *CreateRole) HasPassword() bool`
+`func (o *CreateRole) HasSraReportsAccess() bool`
 
-HasPassword returns a boolean if a field has been set.
+HasSraReportsAccess returns a boolean if a field has been set.
 
 ### GetToken
 
@@ -149,31 +226,6 @@ SetUidToken sets UidToken field to given value.
 `func (o *CreateRole) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
-
-### GetUsername
-
-`func (o *CreateRole) GetUsername() string`
-
-GetUsername returns the Username field if non-nil, zero value otherwise.
-
-### GetUsernameOk
-
-`func (o *CreateRole) GetUsernameOk() (*string, bool)`
-
-GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUsername
-
-`func (o *CreateRole) SetUsername(v string)`
-
-SetUsername sets Username field to given value.
-
-### HasUsername
-
-`func (o *CreateRole) HasUsername() bool`
-
-HasUsername returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

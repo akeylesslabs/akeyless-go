@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **ItemName** | Pointer to **string** |  | [optional] 
 **ItemSize** | Pointer to **int64** |  | [optional] 
 **ItemState** | Pointer to **string** | ItemState defines the different states an Item can be in | [optional] 
+**ItemSubType** | Pointer to **string** |  | [optional] 
 **ItemTags** | Pointer to **[]string** |  | [optional] 
 **ItemTargetsAssoc** | Pointer to [**[]ItemTargetAssociation**](ItemTargetAssociation.md) |  | [optional] 
 **ItemType** | Pointer to **string** |  | [optional] 
@@ -424,6 +425,31 @@ SetItemState sets ItemState field to given value.
 `func (o *Item) HasItemState() bool`
 
 HasItemState returns a boolean if a field has been set.
+
+### GetItemSubType
+
+`func (o *Item) GetItemSubType() string`
+
+GetItemSubType returns the ItemSubType field if non-nil, zero value otherwise.
+
+### GetItemSubTypeOk
+
+`func (o *Item) GetItemSubTypeOk() (*string, bool)`
+
+GetItemSubTypeOk returns a tuple with the ItemSubType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemSubType
+
+`func (o *Item) SetItemSubType(v string)`
+
+SetItemSubType sets ItemSubType field to given value.
+
+### HasItemSubType
+
+`func (o *Item) HasItemSubType() bool`
+
+HasItemSubType returns a boolean if a field has been set.
 
 ### GetItemTags
 

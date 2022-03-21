@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **AdminEmail** | Pointer to **string** | Email (relevant only for access-type&#x3D;password) | [optional] 
 **AdminPassword** | Pointer to **string** | Password (relevant only for access-type&#x3D;password) | [optional] 
 **CloudId** | Pointer to **string** | The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam,gcp) | [optional] 
+**Debug** | Pointer to **bool** |  | [optional] 
 **GcpAudience** | Pointer to **string** | GCP JWT audience | [optional] 
 **Jwt** | Pointer to **string** | The Json Web Token (relevant only for access-type&#x3D;jwt/oidc) | [optional] 
 **K8sAuthConfigName** | Pointer to **string** | The K8S Auth config name (relevant only for access-type&#x3D;k8s) | [optional] 
@@ -186,6 +187,31 @@ SetCloudId sets CloudId field to given value.
 `func (o *Auth) HasCloudId() bool`
 
 HasCloudId returns a boolean if a field has been set.
+
+### GetDebug
+
+`func (o *Auth) GetDebug() bool`
+
+GetDebug returns the Debug field if non-nil, zero value otherwise.
+
+### GetDebugOk
+
+`func (o *Auth) GetDebugOk() (*bool, bool)`
+
+GetDebugOk returns a tuple with the Debug field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDebug
+
+`func (o *Auth) SetDebug(v bool)`
+
+SetDebug sets Debug field to given value.
+
+### HasDebug
+
+`func (o *Auth) HasDebug() bool`
+
+HasDebug returns a boolean if a field has been set.
 
 ### GetGcpAudience
 

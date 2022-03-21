@@ -13,7 +13,6 @@ Name | Type | Description | Notes
 **MysqlScreationStatements** | Pointer to **string** | MySQL Creation statements | [optional] 
 **MysqlUsername** | Pointer to **string** | MySQL Username | [optional] 
 **Name** | **string** | Producer name | 
-**Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **SecureAccessBastionIssuer** | Pointer to **string** |  | [optional] 
 **SecureAccessEnable** | Pointer to **string** |  | [optional] 
@@ -26,7 +25,6 @@ Name | Type | Description | Notes
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserTtl** | Pointer to **string** | User TTL | [optional] [default to "60m"]
-**Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 
 ## Methods
 
@@ -266,31 +264,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
-### GetPassword
-
-`func (o *GatewayCreateProducerMySQL) GetPassword() string`
-
-GetPassword returns the Password field if non-nil, zero value otherwise.
-
-### GetPasswordOk
-
-`func (o *GatewayCreateProducerMySQL) GetPasswordOk() (*string, bool)`
-
-GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPassword
-
-`func (o *GatewayCreateProducerMySQL) SetPassword(v string)`
-
-SetPassword sets Password field to given value.
-
-### HasPassword
-
-`func (o *GatewayCreateProducerMySQL) HasPassword() bool`
-
-HasPassword returns a boolean if a field has been set.
 
 ### GetProducerEncryptionKeyName
 
@@ -591,31 +564,6 @@ SetUserTtl sets UserTtl field to given value.
 `func (o *GatewayCreateProducerMySQL) HasUserTtl() bool`
 
 HasUserTtl returns a boolean if a field has been set.
-
-### GetUsername
-
-`func (o *GatewayCreateProducerMySQL) GetUsername() string`
-
-GetUsername returns the Username field if non-nil, zero value otherwise.
-
-### GetUsernameOk
-
-`func (o *GatewayCreateProducerMySQL) GetUsernameOk() (*string, bool)`
-
-GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUsername
-
-`func (o *GatewayCreateProducerMySQL) SetUsername(v string)`
-
-SetUsername sets Username field to given value.
-
-### HasUsername
-
-`func (o *GatewayCreateProducerMySQL) HasUsername() bool`
-
-HasUsername returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

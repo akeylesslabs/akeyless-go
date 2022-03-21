@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Helper** | Pointer to **map[string]interface{}** |  | [optional] 
 **RcFileOverride** | Pointer to **string** | used to override .akeyless-connect.rc in tests | [optional] 
 **BastionCtrlPath** | Pointer to **string** | The Bastion API path | [optional] 
 **BastionCtrlPort** | Pointer to **string** | The Bastion API Port | [optional] [default to "9900"]
@@ -12,12 +13,10 @@ Name | Type | Description | Notes
 **CertIssuerName** | Pointer to **string** | The Akeyless certificate issuer name | [optional] 
 **IdentityFile** | Pointer to **string** | The file from which the identity (private key) for public key authentication is read | [optional] 
 **Name** | Pointer to **string** | The Secret name (for database and AWS producers - producer name) | [optional] 
-**Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **SshExtraArgs** | Pointer to **string** | The Use to add offical SSH arguments (except -i) | [optional] 
 **Target** | Pointer to **string** | The target | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
-**Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **ViaBastion** | Pointer to **string** | The jump box server | [optional] 
 
 ## Methods
@@ -38,6 +37,31 @@ will change when the set of required properties is changed
 NewConnectWithDefaults instantiates a new Connect object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetHelper
+
+`func (o *Connect) GetHelper() map[string]interface{}`
+
+GetHelper returns the Helper field if non-nil, zero value otherwise.
+
+### GetHelperOk
+
+`func (o *Connect) GetHelperOk() (*map[string]interface{}, bool)`
+
+GetHelperOk returns a tuple with the Helper field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHelper
+
+`func (o *Connect) SetHelper(v map[string]interface{})`
+
+SetHelper sets Helper field to given value.
+
+### HasHelper
+
+`func (o *Connect) HasHelper() bool`
+
+HasHelper returns a boolean if a field has been set.
 
 ### GetRcFileOverride
 
@@ -239,31 +263,6 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
-### GetPassword
-
-`func (o *Connect) GetPassword() string`
-
-GetPassword returns the Password field if non-nil, zero value otherwise.
-
-### GetPasswordOk
-
-`func (o *Connect) GetPasswordOk() (*string, bool)`
-
-GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPassword
-
-`func (o *Connect) SetPassword(v string)`
-
-SetPassword sets Password field to given value.
-
-### HasPassword
-
-`func (o *Connect) HasPassword() bool`
-
-HasPassword returns a boolean if a field has been set.
-
 ### GetSshExtraArgs
 
 `func (o *Connect) GetSshExtraArgs() string`
@@ -363,31 +362,6 @@ SetUidToken sets UidToken field to given value.
 `func (o *Connect) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
-
-### GetUsername
-
-`func (o *Connect) GetUsername() string`
-
-GetUsername returns the Username field if non-nil, zero value otherwise.
-
-### GetUsernameOk
-
-`func (o *Connect) GetUsernameOk() (*string, bool)`
-
-GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUsername
-
-`func (o *Connect) SetUsername(v string)`
-
-SetUsername sets Username field to given value.
-
-### HasUsername
-
-`func (o *Connect) HasUsername() bool`
-
-HasUsername returns a boolean if a field has been set.
 
 ### GetViaBastion
 

@@ -29,8 +29,6 @@ type UpdateSSHCertIssuer struct {
 	Name string `json:"name"`
 	// New item name
 	NewName *string `json:"new-name,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	// Signed certificates with principal, e.g example_role1,example_role2
 	Principals *string `json:"principals,omitempty"`
 	// List of the existent tags that will be removed from this item
@@ -49,8 +47,6 @@ type UpdateSSHCertIssuer struct {
 	Ttl int64 `json:"ttl"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewUpdateSSHCertIssuer instantiates a new UpdateSSHCertIssuer object
@@ -248,38 +244,6 @@ func (o *UpdateSSHCertIssuer) HasNewName() bool {
 // SetNewName gets a reference to the given string and assigns it to the NewName field.
 func (o *UpdateSSHCertIssuer) SetNewName(v string) {
 	o.NewName = &v
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *UpdateSSHCertIssuer) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UpdateSSHCertIssuer) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *UpdateSSHCertIssuer) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *UpdateSSHCertIssuer) SetPassword(v string) {
-	o.Password = &v
 }
 
 // GetPrincipals returns the Principals field value if set, zero value otherwise.
@@ -650,38 +614,6 @@ func (o *UpdateSSHCertIssuer) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *UpdateSSHCertIssuer) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UpdateSSHCertIssuer) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *UpdateSSHCertIssuer) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *UpdateSSHCertIssuer) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o UpdateSSHCertIssuer) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AddTag != nil {
@@ -701,9 +633,6 @@ func (o UpdateSSHCertIssuer) MarshalJSON() ([]byte, error) {
 	}
 	if o.NewName != nil {
 		toSerialize["new-name"] = o.NewName
-	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
 	}
 	if o.Principals != nil {
 		toSerialize["principals"] = o.Principals
@@ -740,9 +669,6 @@ func (o UpdateSSHCertIssuer) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

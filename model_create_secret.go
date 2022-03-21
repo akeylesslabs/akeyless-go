@@ -23,8 +23,6 @@ type CreateSecret struct {
 	MultilineValue *bool `json:"multiline_value,omitempty"`
 	// Secret name
 	Name string `json:"name"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
 	ProtectionKey *string `json:"protection_key,omitempty"`
 	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
@@ -34,14 +32,13 @@ type CreateSecret struct {
 	SecureAccessSshUser *string `json:"secure-access-ssh-user,omitempty"`
 	SecureAccessUrl *string `json:"secure-access-url,omitempty"`
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
+	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
 	// List of the tags attached to this secret
 	Tags *[]string `json:"tags,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 	// The secret value
 	Value string `json:"value"`
 }
@@ -151,38 +148,6 @@ func (o *CreateSecret) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *CreateSecret) SetName(v string) {
 	o.Name = v
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *CreateSecret) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateSecret) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *CreateSecret) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *CreateSecret) SetPassword(v string) {
-	o.Password = &v
 }
 
 // GetProtectionKey returns the ProtectionKey field value if set, zero value otherwise.
@@ -441,6 +406,38 @@ func (o *CreateSecret) SetSecureAccessWebBrowsing(v bool) {
 	o.SecureAccessWebBrowsing = &v
 }
 
+// GetSecureAccessWebProxy returns the SecureAccessWebProxy field value if set, zero value otherwise.
+func (o *CreateSecret) GetSecureAccessWebProxy() bool {
+	if o == nil || o.SecureAccessWebProxy == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessWebProxy
+}
+
+// GetSecureAccessWebProxyOk returns a tuple with the SecureAccessWebProxy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSecret) GetSecureAccessWebProxyOk() (*bool, bool) {
+	if o == nil || o.SecureAccessWebProxy == nil {
+		return nil, false
+	}
+	return o.SecureAccessWebProxy, true
+}
+
+// HasSecureAccessWebProxy returns a boolean if a field has been set.
+func (o *CreateSecret) HasSecureAccessWebProxy() bool {
+	if o != nil && o.SecureAccessWebProxy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessWebProxy gets a reference to the given bool and assigns it to the SecureAccessWebProxy field.
+func (o *CreateSecret) SetSecureAccessWebProxy(v bool) {
+	o.SecureAccessWebProxy = &v
+}
+
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *CreateSecret) GetTags() []string {
 	if o == nil || o.Tags == nil {
@@ -537,38 +534,6 @@ func (o *CreateSecret) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *CreateSecret) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateSecret) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *CreateSecret) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *CreateSecret) SetUsername(v string) {
-	o.Username = &v
-}
-
 // GetValue returns the Value field value
 func (o *CreateSecret) GetValue() string {
 	if o == nil  {
@@ -604,9 +569,6 @@ func (o CreateSecret) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
-	}
 	if o.ProtectionKey != nil {
 		toSerialize["protection_key"] = o.ProtectionKey
 	}
@@ -631,6 +593,9 @@ func (o CreateSecret) MarshalJSON() ([]byte, error) {
 	if o.SecureAccessWebBrowsing != nil {
 		toSerialize["secure-access-web-browsing"] = o.SecureAccessWebBrowsing
 	}
+	if o.SecureAccessWebProxy != nil {
+		toSerialize["secure-access-web-proxy"] = o.SecureAccessWebProxy
+	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags
 	}
@@ -639,9 +604,6 @@ func (o CreateSecret) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	if true {
 		toSerialize["value"] = o.Value

@@ -21,16 +21,12 @@ type VerifyPKCS1 struct {
 	KeyName string `json:"key-name"`
 	// The message to be verified
 	Message string `json:"message"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	// The message's signature
 	Signature string `json:"signature"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewVerifyPKCS1 instantiates a new VerifyPKCS1 object
@@ -99,38 +95,6 @@ func (o *VerifyPKCS1) GetMessageOk() (*string, bool) {
 // SetMessage sets field value
 func (o *VerifyPKCS1) SetMessage(v string) {
 	o.Message = v
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *VerifyPKCS1) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *VerifyPKCS1) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *VerifyPKCS1) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *VerifyPKCS1) SetPassword(v string) {
-	o.Password = &v
 }
 
 // GetSignature returns the Signature field value
@@ -221,38 +185,6 @@ func (o *VerifyPKCS1) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *VerifyPKCS1) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *VerifyPKCS1) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *VerifyPKCS1) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *VerifyPKCS1) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o VerifyPKCS1) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -260,9 +192,6 @@ func (o VerifyPKCS1) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["message"] = o.Message
-	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
 	}
 	if true {
 		toSerialize["signature"] = o.Signature
@@ -272,9 +201,6 @@ func (o VerifyPKCS1) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

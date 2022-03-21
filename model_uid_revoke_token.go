@@ -19,8 +19,6 @@ import (
 type UidRevokeToken struct {
 	// The universal identity auth method name
 	AuthMethodName *string `json:"auth-method-name,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	// the universal identity token/token-id to revoke
 	RevokeToken string `json:"revoke-token"`
 	// revokeSelf/revokeAll (delete only this token/this token and his children)
@@ -29,8 +27,6 @@ type UidRevokeToken struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewUidRevokeToken instantiates a new UidRevokeToken object
@@ -82,38 +78,6 @@ func (o *UidRevokeToken) HasAuthMethodName() bool {
 // SetAuthMethodName gets a reference to the given string and assigns it to the AuthMethodName field.
 func (o *UidRevokeToken) SetAuthMethodName(v string) {
 	o.AuthMethodName = &v
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *UidRevokeToken) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UidRevokeToken) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *UidRevokeToken) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *UidRevokeToken) SetPassword(v string) {
-	o.Password = &v
 }
 
 // GetRevokeToken returns the RevokeToken field value
@@ -228,45 +192,10 @@ func (o *UidRevokeToken) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *UidRevokeToken) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UidRevokeToken) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *UidRevokeToken) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *UidRevokeToken) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o UidRevokeToken) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AuthMethodName != nil {
 		toSerialize["auth-method-name"] = o.AuthMethodName
-	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
 	}
 	if true {
 		toSerialize["revoke-token"] = o.RevokeToken
@@ -279,9 +208,6 @@ func (o UidRevokeToken) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

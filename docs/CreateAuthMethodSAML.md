@@ -9,13 +9,12 @@ Name | Type | Description | Notes
 **BoundIps** | Pointer to **[]string** | A CIDR whitelist with the IPs that the access is restricted to | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
 **IdpMetadataUrl** | Pointer to **string** | IDP metadata url | [optional] 
+**IdpMetadataXmlData** | Pointer to **string** | IDP metadata xml data | [optional] 
 **JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] [default to 0]
 **Name** | **string** | Auth Method name | 
-**Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UniqueIdentifier** | **string** | A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. | 
-**Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 
 ## Methods
 
@@ -161,6 +160,31 @@ SetIdpMetadataUrl sets IdpMetadataUrl field to given value.
 
 HasIdpMetadataUrl returns a boolean if a field has been set.
 
+### GetIdpMetadataXmlData
+
+`func (o *CreateAuthMethodSAML) GetIdpMetadataXmlData() string`
+
+GetIdpMetadataXmlData returns the IdpMetadataXmlData field if non-nil, zero value otherwise.
+
+### GetIdpMetadataXmlDataOk
+
+`func (o *CreateAuthMethodSAML) GetIdpMetadataXmlDataOk() (*string, bool)`
+
+GetIdpMetadataXmlDataOk returns a tuple with the IdpMetadataXmlData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdpMetadataXmlData
+
+`func (o *CreateAuthMethodSAML) SetIdpMetadataXmlData(v string)`
+
+SetIdpMetadataXmlData sets IdpMetadataXmlData field to given value.
+
+### HasIdpMetadataXmlData
+
+`func (o *CreateAuthMethodSAML) HasIdpMetadataXmlData() bool`
+
+HasIdpMetadataXmlData returns a boolean if a field has been set.
+
 ### GetJwtTtl
 
 `func (o *CreateAuthMethodSAML) GetJwtTtl() int64`
@@ -205,31 +229,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
-### GetPassword
-
-`func (o *CreateAuthMethodSAML) GetPassword() string`
-
-GetPassword returns the Password field if non-nil, zero value otherwise.
-
-### GetPasswordOk
-
-`func (o *CreateAuthMethodSAML) GetPasswordOk() (*string, bool)`
-
-GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPassword
-
-`func (o *CreateAuthMethodSAML) SetPassword(v string)`
-
-SetPassword sets Password field to given value.
-
-### HasPassword
-
-`func (o *CreateAuthMethodSAML) HasPassword() bool`
-
-HasPassword returns a boolean if a field has been set.
 
 ### GetToken
 
@@ -300,31 +299,6 @@ and a boolean to check if the value has been set.
 
 SetUniqueIdentifier sets UniqueIdentifier field to given value.
 
-
-### GetUsername
-
-`func (o *CreateAuthMethodSAML) GetUsername() string`
-
-GetUsername returns the Username field if non-nil, zero value otherwise.
-
-### GetUsernameOk
-
-`func (o *CreateAuthMethodSAML) GetUsernameOk() (*string, bool)`
-
-GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUsername
-
-`func (o *CreateAuthMethodSAML) SetUsername(v string)`
-
-SetUsername sets Username field to given value.
-
-### HasUsername
-
-`func (o *CreateAuthMethodSAML) HasUsername() bool`
-
-HasUsername returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

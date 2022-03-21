@@ -11,13 +11,11 @@ Name | Type | Description | Notes
 **K8sIssuer** | Pointer to **string** | The Kubernetes JWT issuer name. If not set, kubernetes/serviceaccount will use as an issuer. | [optional] 
 **Name** | **string** | K8S Auth config name | 
 **NewName** | **string** | K8S Auth config new name | 
-**Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **SigningKey** | **string** | The private key (in base64 encoded of the PEM format) associated with the public key defined in the Kubernetes auth | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **TokenExp** | Pointer to **int64** | Time in seconds of expiration of the Akeyless Kube Auth Method token | [optional] 
 **TokenReviewerJwt** | Pointer to **string** | A Kubernetes service account JWT used to access the TokenReview API to validate other JWTs. If not set, the JWT submitted in the authentication process will be used to access the Kubernetes TokenReview API. | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
-**Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 
 ## Methods
 
@@ -193,31 +191,6 @@ and a boolean to check if the value has been set.
 SetNewName sets NewName field to given value.
 
 
-### GetPassword
-
-`func (o *GatewayUpdateK8SAuthConfig) GetPassword() string`
-
-GetPassword returns the Password field if non-nil, zero value otherwise.
-
-### GetPasswordOk
-
-`func (o *GatewayUpdateK8SAuthConfig) GetPasswordOk() (*string, bool)`
-
-GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPassword
-
-`func (o *GatewayUpdateK8SAuthConfig) SetPassword(v string)`
-
-SetPassword sets Password field to given value.
-
-### HasPassword
-
-`func (o *GatewayUpdateK8SAuthConfig) HasPassword() bool`
-
-HasPassword returns a boolean if a field has been set.
-
 ### GetSigningKey
 
 `func (o *GatewayUpdateK8SAuthConfig) GetSigningKey() string`
@@ -337,31 +310,6 @@ SetUidToken sets UidToken field to given value.
 `func (o *GatewayUpdateK8SAuthConfig) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
-
-### GetUsername
-
-`func (o *GatewayUpdateK8SAuthConfig) GetUsername() string`
-
-GetUsername returns the Username field if non-nil, zero value otherwise.
-
-### GetUsernameOk
-
-`func (o *GatewayUpdateK8SAuthConfig) GetUsernameOk() (*string, bool)`
-
-GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUsername
-
-`func (o *GatewayUpdateK8SAuthConfig) SetUsername(v string)`
-
-SetUsername sets Username field to given value.
-
-### HasUsername
-
-`func (o *GatewayUpdateK8SAuthConfig) HasUsername() bool`
-
-HasUsername returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

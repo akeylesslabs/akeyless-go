@@ -17,6 +17,7 @@ import (
 
 // Connect Connect is a command that performs secure remote access
 type Connect struct {
+	Helper *map[string]interface{} `json:"Helper,omitempty"`
 	// used to override .akeyless-connect.rc in tests
 	RcFileOverride *string `json:"RcFileOverride,omitempty"`
 	// The Bastion API path
@@ -33,8 +34,6 @@ type Connect struct {
 	IdentityFile *string `json:"identity-file,omitempty"`
 	// The Secret name (for database and AWS producers - producer name)
 	Name *string `json:"name,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	// The Use to add offical SSH arguments (except -i)
 	SshExtraArgs *string `json:"ssh-extra-args,omitempty"`
 	// The target
@@ -43,8 +42,6 @@ type Connect struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 	// The jump box server
 	ViaBastion *string `json:"via-bastion,omitempty"`
 }
@@ -72,6 +69,38 @@ func NewConnectWithDefaults() *Connect {
 	var bastionCtrlProto string = "http"
 	this.BastionCtrlProto = &bastionCtrlProto
 	return &this
+}
+
+// GetHelper returns the Helper field value if set, zero value otherwise.
+func (o *Connect) GetHelper() map[string]interface{} {
+	if o == nil || o.Helper == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.Helper
+}
+
+// GetHelperOk returns a tuple with the Helper field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Connect) GetHelperOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Helper == nil {
+		return nil, false
+	}
+	return o.Helper, true
+}
+
+// HasHelper returns a boolean if a field has been set.
+func (o *Connect) HasHelper() bool {
+	if o != nil && o.Helper != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHelper gets a reference to the given map[string]interface{} and assigns it to the Helper field.
+func (o *Connect) SetHelper(v map[string]interface{}) {
+	o.Helper = &v
 }
 
 // GetRcFileOverride returns the RcFileOverride field value if set, zero value otherwise.
@@ -330,38 +359,6 @@ func (o *Connect) SetName(v string) {
 	o.Name = &v
 }
 
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *Connect) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Connect) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *Connect) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *Connect) SetPassword(v string) {
-	o.Password = &v
-}
-
 // GetSshExtraArgs returns the SshExtraArgs field value if set, zero value otherwise.
 func (o *Connect) GetSshExtraArgs() string {
 	if o == nil || o.SshExtraArgs == nil {
@@ -490,38 +487,6 @@ func (o *Connect) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *Connect) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Connect) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *Connect) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *Connect) SetUsername(v string) {
-	o.Username = &v
-}
-
 // GetViaBastion returns the ViaBastion field value if set, zero value otherwise.
 func (o *Connect) GetViaBastion() string {
 	if o == nil || o.ViaBastion == nil {
@@ -556,6 +521,9 @@ func (o *Connect) SetViaBastion(v string) {
 
 func (o Connect) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Helper != nil {
+		toSerialize["Helper"] = o.Helper
+	}
 	if o.RcFileOverride != nil {
 		toSerialize["RcFileOverride"] = o.RcFileOverride
 	}
@@ -580,9 +548,6 @@ func (o Connect) MarshalJSON() ([]byte, error) {
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
-	}
 	if o.SshExtraArgs != nil {
 		toSerialize["ssh-extra-args"] = o.SshExtraArgs
 	}
@@ -594,9 +559,6 @@ func (o Connect) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	if o.ViaBastion != nil {
 		toSerialize["via-bastion"] = o.ViaBastion

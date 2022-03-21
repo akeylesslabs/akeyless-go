@@ -19,8 +19,6 @@ import (
 type GatewayCreateProducerRabbitMQ struct {
 	// Producer name
 	Name string `json:"name"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
 	// RabbitMQ Admin password
@@ -42,6 +40,7 @@ type GatewayCreateProducerRabbitMQ struct {
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
 	SecureAccessUrl *string `json:"secure-access-url,omitempty"`
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
+	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
 	// List of the tags attached to this secret
 	Tags *[]string `json:"tags,omitempty"`
 	// Target name
@@ -52,8 +51,6 @@ type GatewayCreateProducerRabbitMQ struct {
 	UidToken *string `json:"uid-token,omitempty"`
 	// User TTL
 	UserTtl *string `json:"user-ttl,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewGatewayCreateProducerRabbitMQ instantiates a new GatewayCreateProducerRabbitMQ object
@@ -100,38 +97,6 @@ func (o *GatewayCreateProducerRabbitMQ) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *GatewayCreateProducerRabbitMQ) SetName(v string) {
 	o.Name = v
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *GatewayCreateProducerRabbitMQ) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerRabbitMQ) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *GatewayCreateProducerRabbitMQ) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *GatewayCreateProducerRabbitMQ) SetPassword(v string) {
-	o.Password = &v
 }
 
 // GetProducerEncryptionKeyName returns the ProducerEncryptionKeyName field value if set, zero value otherwise.
@@ -518,6 +483,38 @@ func (o *GatewayCreateProducerRabbitMQ) SetSecureAccessWebBrowsing(v bool) {
 	o.SecureAccessWebBrowsing = &v
 }
 
+// GetSecureAccessWebProxy returns the SecureAccessWebProxy field value if set, zero value otherwise.
+func (o *GatewayCreateProducerRabbitMQ) GetSecureAccessWebProxy() bool {
+	if o == nil || o.SecureAccessWebProxy == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessWebProxy
+}
+
+// GetSecureAccessWebProxyOk returns a tuple with the SecureAccessWebProxy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerRabbitMQ) GetSecureAccessWebProxyOk() (*bool, bool) {
+	if o == nil || o.SecureAccessWebProxy == nil {
+		return nil, false
+	}
+	return o.SecureAccessWebProxy, true
+}
+
+// HasSecureAccessWebProxy returns a boolean if a field has been set.
+func (o *GatewayCreateProducerRabbitMQ) HasSecureAccessWebProxy() bool {
+	if o != nil && o.SecureAccessWebProxy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessWebProxy gets a reference to the given bool and assigns it to the SecureAccessWebProxy field.
+func (o *GatewayCreateProducerRabbitMQ) SetSecureAccessWebProxy(v bool) {
+	o.SecureAccessWebProxy = &v
+}
+
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *GatewayCreateProducerRabbitMQ) GetTags() []string {
 	if o == nil || o.Tags == nil {
@@ -678,45 +675,10 @@ func (o *GatewayCreateProducerRabbitMQ) SetUserTtl(v string) {
 	o.UserTtl = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *GatewayCreateProducerRabbitMQ) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerRabbitMQ) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *GatewayCreateProducerRabbitMQ) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *GatewayCreateProducerRabbitMQ) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o GatewayCreateProducerRabbitMQ) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["name"] = o.Name
-	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
 	}
 	if o.ProducerEncryptionKeyName != nil {
 		toSerialize["producer-encryption-key-name"] = o.ProducerEncryptionKeyName
@@ -754,6 +716,9 @@ func (o GatewayCreateProducerRabbitMQ) MarshalJSON() ([]byte, error) {
 	if o.SecureAccessWebBrowsing != nil {
 		toSerialize["secure-access-web-browsing"] = o.SecureAccessWebBrowsing
 	}
+	if o.SecureAccessWebProxy != nil {
+		toSerialize["secure-access-web-proxy"] = o.SecureAccessWebProxy
+	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags
 	}
@@ -768,9 +733,6 @@ func (o GatewayCreateProducerRabbitMQ) MarshalJSON() ([]byte, error) {
 	}
 	if o.UserTtl != nil {
 		toSerialize["user-ttl"] = o.UserTtl
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

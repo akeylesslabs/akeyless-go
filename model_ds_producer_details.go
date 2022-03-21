@@ -39,6 +39,8 @@ type DSProducerDetails struct {
 	AzureAppObjectId *string `json:"azure_app_object_id,omitempty"`
 	AzureClientId *string `json:"azure_client_id,omitempty"`
 	AzureClientSecret *string `json:"azure_client_secret,omitempty"`
+	AzureFixedUserNameSubClaimKey *string `json:"azure_fixed_user_name_sub_claim_key,omitempty"`
+	AzureFixedUserOnly *bool `json:"azure_fixed_user_only,omitempty"`
 	AzureTenantId *string `json:"azure_tenant_id,omitempty"`
 	AzureUserGroupsObjId *string `json:"azure_user_groups_obj_id,omitempty"`
 	AzureUserPortalAccess *bool `json:"azure_user_portal_access,omitempty"`
@@ -139,6 +141,7 @@ type DSProducerDetails struct {
 	MssqlRevocationStatements *string `json:"mssql_revocation_statements,omitempty"`
 	MysqlCreationStatements *string `json:"mysql_creation_statements,omitempty"`
 	OracleCreationStatements *string `json:"oracle_creation_statements,omitempty"`
+	Password *string `json:"password,omitempty"`
 	PasswordLength *int64 `json:"password_length,omitempty"`
 	PasswordPolicy *string `json:"password_policy,omitempty"`
 	Payload *string `json:"payload,omitempty"`
@@ -155,6 +158,7 @@ type DSProducerDetails struct {
 	RedshiftCreationStatements *string `json:"redshift_creation_statements,omitempty"`
 	RevokeSyncUrl *string `json:"revoke_sync_url,omitempty"`
 	RotateSyncUrl *string `json:"rotate_sync_url,omitempty"`
+	Scopes *[]string `json:"scopes,omitempty"`
 	SecureRemoteAccessDetails *SecureRemoteAccess `json:"secure_remote_access_details,omitempty"`
 	SfAccount *string `json:"sf_account,omitempty"`
 	// generated  users info
@@ -169,6 +173,7 @@ type DSProducerDetails struct {
 	Tags *[]string `json:"tags,omitempty"`
 	TimeoutSeconds *int64 `json:"timeout_seconds,omitempty"`
 	UseGwCloudIdentity *bool `json:"use_gw_cloud_identity,omitempty"`
+	UserName *string `json:"user_name,omitempty"`
 	UserPrincipalName *string `json:"user_principal_name,omitempty"`
 	UserTtl *string `json:"user_ttl,omitempty"`
 	UsernameLength *int64 `json:"username_length,omitempty"`
@@ -186,6 +191,7 @@ type DSProducerDetails struct {
 	VenafiTppUsername *string `json:"venafi_tpp_username,omitempty"`
 	VenafiUseTpp *bool `json:"venafi_use_tpp,omitempty"`
 	VenafiZone *string `json:"venafi_zone,omitempty"`
+	WarnBeforeUserExpirationMin *int64 `json:"warn_before_user_expiration_min,omitempty"`
 }
 
 // NewDSProducerDetails instantiates a new DSProducerDetails object
@@ -907,6 +913,70 @@ func (o *DSProducerDetails) HasAzureClientSecret() bool {
 // SetAzureClientSecret gets a reference to the given string and assigns it to the AzureClientSecret field.
 func (o *DSProducerDetails) SetAzureClientSecret(v string) {
 	o.AzureClientSecret = &v
+}
+
+// GetAzureFixedUserNameSubClaimKey returns the AzureFixedUserNameSubClaimKey field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetAzureFixedUserNameSubClaimKey() string {
+	if o == nil || o.AzureFixedUserNameSubClaimKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.AzureFixedUserNameSubClaimKey
+}
+
+// GetAzureFixedUserNameSubClaimKeyOk returns a tuple with the AzureFixedUserNameSubClaimKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetAzureFixedUserNameSubClaimKeyOk() (*string, bool) {
+	if o == nil || o.AzureFixedUserNameSubClaimKey == nil {
+		return nil, false
+	}
+	return o.AzureFixedUserNameSubClaimKey, true
+}
+
+// HasAzureFixedUserNameSubClaimKey returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasAzureFixedUserNameSubClaimKey() bool {
+	if o != nil && o.AzureFixedUserNameSubClaimKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureFixedUserNameSubClaimKey gets a reference to the given string and assigns it to the AzureFixedUserNameSubClaimKey field.
+func (o *DSProducerDetails) SetAzureFixedUserNameSubClaimKey(v string) {
+	o.AzureFixedUserNameSubClaimKey = &v
+}
+
+// GetAzureFixedUserOnly returns the AzureFixedUserOnly field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetAzureFixedUserOnly() bool {
+	if o == nil || o.AzureFixedUserOnly == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AzureFixedUserOnly
+}
+
+// GetAzureFixedUserOnlyOk returns a tuple with the AzureFixedUserOnly field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetAzureFixedUserOnlyOk() (*bool, bool) {
+	if o == nil || o.AzureFixedUserOnly == nil {
+		return nil, false
+	}
+	return o.AzureFixedUserOnly, true
+}
+
+// HasAzureFixedUserOnly returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasAzureFixedUserOnly() bool {
+	if o != nil && o.AzureFixedUserOnly != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureFixedUserOnly gets a reference to the given bool and assigns it to the AzureFixedUserOnly field.
+func (o *DSProducerDetails) SetAzureFixedUserOnly(v bool) {
+	o.AzureFixedUserOnly = &v
 }
 
 // GetAzureTenantId returns the AzureTenantId field value if set, zero value otherwise.
@@ -3917,6 +3987,38 @@ func (o *DSProducerDetails) SetOracleCreationStatements(v string) {
 	o.OracleCreationStatements = &v
 }
 
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetPassword() string {
+	if o == nil || o.Password == nil {
+		var ret string
+		return ret
+	}
+	return *o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetPasswordOk() (*string, bool) {
+	if o == nil || o.Password == nil {
+		return nil, false
+	}
+	return o.Password, true
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasPassword() bool {
+	if o != nil && o.Password != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *DSProducerDetails) SetPassword(v string) {
+	o.Password = &v
+}
+
 // GetPasswordLength returns the PasswordLength field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetPasswordLength() int64 {
 	if o == nil || o.PasswordLength == nil {
@@ -4429,6 +4531,38 @@ func (o *DSProducerDetails) SetRotateSyncUrl(v string) {
 	o.RotateSyncUrl = &v
 }
 
+// GetScopes returns the Scopes field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetScopes() []string {
+	if o == nil || o.Scopes == nil {
+		var ret []string
+		return ret
+	}
+	return *o.Scopes
+}
+
+// GetScopesOk returns a tuple with the Scopes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetScopesOk() (*[]string, bool) {
+	if o == nil || o.Scopes == nil {
+		return nil, false
+	}
+	return o.Scopes, true
+}
+
+// HasScopes returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasScopes() bool {
+	if o != nil && o.Scopes != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetScopes gets a reference to the given []string and assigns it to the Scopes field.
+func (o *DSProducerDetails) SetScopes(v []string) {
+	o.Scopes = &v
+}
+
 // GetSecureRemoteAccessDetails returns the SecureRemoteAccessDetails field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetSecureRemoteAccessDetails() SecureRemoteAccess {
 	if o == nil || o.SecureRemoteAccessDetails == nil {
@@ -4747,6 +4881,38 @@ func (o *DSProducerDetails) HasUseGwCloudIdentity() bool {
 // SetUseGwCloudIdentity gets a reference to the given bool and assigns it to the UseGwCloudIdentity field.
 func (o *DSProducerDetails) SetUseGwCloudIdentity(v bool) {
 	o.UseGwCloudIdentity = &v
+}
+
+// GetUserName returns the UserName field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetUserName() string {
+	if o == nil || o.UserName == nil {
+		var ret string
+		return ret
+	}
+	return *o.UserName
+}
+
+// GetUserNameOk returns a tuple with the UserName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetUserNameOk() (*string, bool) {
+	if o == nil || o.UserName == nil {
+		return nil, false
+	}
+	return o.UserName, true
+}
+
+// HasUserName returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasUserName() bool {
+	if o != nil && o.UserName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserName gets a reference to the given string and assigns it to the UserName field.
+func (o *DSProducerDetails) SetUserName(v string) {
+	o.UserName = &v
 }
 
 // GetUserPrincipalName returns the UserPrincipalName field value if set, zero value otherwise.
@@ -5293,6 +5459,38 @@ func (o *DSProducerDetails) SetVenafiZone(v string) {
 	o.VenafiZone = &v
 }
 
+// GetWarnBeforeUserExpirationMin returns the WarnBeforeUserExpirationMin field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetWarnBeforeUserExpirationMin() int64 {
+	if o == nil || o.WarnBeforeUserExpirationMin == nil {
+		var ret int64
+		return ret
+	}
+	return *o.WarnBeforeUserExpirationMin
+}
+
+// GetWarnBeforeUserExpirationMinOk returns a tuple with the WarnBeforeUserExpirationMin field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetWarnBeforeUserExpirationMinOk() (*int64, bool) {
+	if o == nil || o.WarnBeforeUserExpirationMin == nil {
+		return nil, false
+	}
+	return o.WarnBeforeUserExpirationMin, true
+}
+
+// HasWarnBeforeUserExpirationMin returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasWarnBeforeUserExpirationMin() bool {
+	if o != nil && o.WarnBeforeUserExpirationMin != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetWarnBeforeUserExpirationMin gets a reference to the given int64 and assigns it to the WarnBeforeUserExpirationMin field.
+func (o *DSProducerDetails) SetWarnBeforeUserExpirationMin(v int64) {
+	o.WarnBeforeUserExpirationMin = &v
+}
+
 func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Active != nil {
@@ -5360,6 +5558,12 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.AzureClientSecret != nil {
 		toSerialize["azure_client_secret"] = o.AzureClientSecret
+	}
+	if o.AzureFixedUserNameSubClaimKey != nil {
+		toSerialize["azure_fixed_user_name_sub_claim_key"] = o.AzureFixedUserNameSubClaimKey
+	}
+	if o.AzureFixedUserOnly != nil {
+		toSerialize["azure_fixed_user_only"] = o.AzureFixedUserOnly
 	}
 	if o.AzureTenantId != nil {
 		toSerialize["azure_tenant_id"] = o.AzureTenantId
@@ -5643,6 +5847,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	if o.OracleCreationStatements != nil {
 		toSerialize["oracle_creation_statements"] = o.OracleCreationStatements
 	}
+	if o.Password != nil {
+		toSerialize["password"] = o.Password
+	}
 	if o.PasswordLength != nil {
 		toSerialize["password_length"] = o.PasswordLength
 	}
@@ -5691,6 +5898,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	if o.RotateSyncUrl != nil {
 		toSerialize["rotate_sync_url"] = o.RotateSyncUrl
 	}
+	if o.Scopes != nil {
+		toSerialize["scopes"] = o.Scopes
+	}
 	if o.SecureRemoteAccessDetails != nil {
 		toSerialize["secure_remote_access_details"] = o.SecureRemoteAccessDetails
 	}
@@ -5720,6 +5930,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.UseGwCloudIdentity != nil {
 		toSerialize["use_gw_cloud_identity"] = o.UseGwCloudIdentity
+	}
+	if o.UserName != nil {
+		toSerialize["user_name"] = o.UserName
 	}
 	if o.UserPrincipalName != nil {
 		toSerialize["user_principal_name"] = o.UserPrincipalName
@@ -5771,6 +5984,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.VenafiZone != nil {
 		toSerialize["venafi_zone"] = o.VenafiZone
+	}
+	if o.WarnBeforeUserExpirationMin != nil {
+		toSerialize["warn_before_user_expiration_min"] = o.WarnBeforeUserExpirationMin
 	}
 	return json.Marshal(toSerialize)
 }

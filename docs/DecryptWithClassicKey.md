@@ -6,10 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ciphertext** | **string** | Ciphertext to be decrypted in base64 encoded format | 
 **DisplayId** | **string** | The name of the key to use in the encryption process | 
-**Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
-**Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **Version** | **int32** | classic key version | 
 
 ## Methods
@@ -71,31 +69,6 @@ and a boolean to check if the value has been set.
 SetDisplayId sets DisplayId field to given value.
 
 
-### GetPassword
-
-`func (o *DecryptWithClassicKey) GetPassword() string`
-
-GetPassword returns the Password field if non-nil, zero value otherwise.
-
-### GetPasswordOk
-
-`func (o *DecryptWithClassicKey) GetPasswordOk() (*string, bool)`
-
-GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPassword
-
-`func (o *DecryptWithClassicKey) SetPassword(v string)`
-
-SetPassword sets Password field to given value.
-
-### HasPassword
-
-`func (o *DecryptWithClassicKey) HasPassword() bool`
-
-HasPassword returns a boolean if a field has been set.
-
 ### GetToken
 
 `func (o *DecryptWithClassicKey) GetToken() string`
@@ -145,31 +118,6 @@ SetUidToken sets UidToken field to given value.
 `func (o *DecryptWithClassicKey) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
-
-### GetUsername
-
-`func (o *DecryptWithClassicKey) GetUsername() string`
-
-GetUsername returns the Username field if non-nil, zero value otherwise.
-
-### GetUsernameOk
-
-`func (o *DecryptWithClassicKey) GetUsernameOk() (*string, bool)`
-
-GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUsername
-
-`func (o *DecryptWithClassicKey) SetUsername(v string)`
-
-SetUsername sets Username field to given value.
-
-### HasUsername
-
-`func (o *DecryptWithClassicKey) HasUsername() bool`
-
-HasUsername returns a boolean if a field has been set.
 
 ### GetVersion
 

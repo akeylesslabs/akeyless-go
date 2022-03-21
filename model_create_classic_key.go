@@ -27,8 +27,6 @@ type CreateClassicKey struct {
 	Metadata *string `json:"metadata,omitempty"`
 	// ClassicKey name
 	Name string `json:"name"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
 	ProtectionKeyName *string `json:"protection-key-name,omitempty"`
 	// List of the tags attached to this classic key
@@ -39,8 +37,6 @@ type CreateClassicKey struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewCreateClassicKey instantiates a new CreateClassicKey object
@@ -206,38 +202,6 @@ func (o *CreateClassicKey) SetName(v string) {
 	o.Name = v
 }
 
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *CreateClassicKey) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateClassicKey) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *CreateClassicKey) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *CreateClassicKey) SetPassword(v string) {
-	o.Password = &v
-}
-
 // GetProtectionKeyName returns the ProtectionKeyName field value if set, zero value otherwise.
 func (o *CreateClassicKey) GetProtectionKeyName() string {
 	if o == nil || o.ProtectionKeyName == nil {
@@ -398,38 +362,6 @@ func (o *CreateClassicKey) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *CreateClassicKey) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateClassicKey) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *CreateClassicKey) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *CreateClassicKey) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o CreateClassicKey) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -447,9 +379,6 @@ func (o CreateClassicKey) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
-	}
 	if o.ProtectionKeyName != nil {
 		toSerialize["protection-key-name"] = o.ProtectionKeyName
 	}
@@ -464,9 +393,6 @@ func (o CreateClassicKey) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

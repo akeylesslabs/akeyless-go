@@ -29,23 +29,20 @@ type UpdateGKETarget struct {
 	GkeClusterName *string `json:"gke-cluster-name,omitempty"`
 	// GKE service account email
 	GkeServiceAccountEmail *string `json:"gke-service-account-email,omitempty"`
+	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
 	// Target name
 	Name string `json:"name"`
 	// New target name
 	NewName *string `json:"new-name,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// Create new version for the target
+	// Deprecated
 	UpdateVersion *bool `json:"update-version,omitempty"`
 	UseGwCloudIdentity *bool `json:"use-gw-cloud-identity,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewUpdateGKETarget instantiates a new UpdateGKETarget object
@@ -55,8 +52,6 @@ type UpdateGKETarget struct {
 func NewUpdateGKETarget(name string, ) *UpdateGKETarget {
 	this := UpdateGKETarget{}
 	this.Name = name
-	var updateVersion bool = false
-	this.UpdateVersion = &updateVersion
 	return &this
 }
 
@@ -65,8 +60,6 @@ func NewUpdateGKETarget(name string, ) *UpdateGKETarget {
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateGKETargetWithDefaults() *UpdateGKETarget {
 	this := UpdateGKETarget{}
-	var updateVersion bool = false
-	this.UpdateVersion = &updateVersion
 	return &this
 }
 
@@ -262,6 +255,38 @@ func (o *UpdateGKETarget) SetGkeServiceAccountEmail(v string) {
 	o.GkeServiceAccountEmail = &v
 }
 
+// GetKeepPrevVersion returns the KeepPrevVersion field value if set, zero value otherwise.
+func (o *UpdateGKETarget) GetKeepPrevVersion() string {
+	if o == nil || o.KeepPrevVersion == nil {
+		var ret string
+		return ret
+	}
+	return *o.KeepPrevVersion
+}
+
+// GetKeepPrevVersionOk returns a tuple with the KeepPrevVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateGKETarget) GetKeepPrevVersionOk() (*string, bool) {
+	if o == nil || o.KeepPrevVersion == nil {
+		return nil, false
+	}
+	return o.KeepPrevVersion, true
+}
+
+// HasKeepPrevVersion returns a boolean if a field has been set.
+func (o *UpdateGKETarget) HasKeepPrevVersion() bool {
+	if o != nil && o.KeepPrevVersion != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetKeepPrevVersion gets a reference to the given string and assigns it to the KeepPrevVersion field.
+func (o *UpdateGKETarget) SetKeepPrevVersion(v string) {
+	o.KeepPrevVersion = &v
+}
+
 // GetKey returns the Key field value if set, zero value otherwise.
 func (o *UpdateGKETarget) GetKey() string {
 	if o == nil || o.Key == nil {
@@ -348,38 +373,6 @@ func (o *UpdateGKETarget) HasNewName() bool {
 // SetNewName gets a reference to the given string and assigns it to the NewName field.
 func (o *UpdateGKETarget) SetNewName(v string) {
 	o.NewName = &v
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *UpdateGKETarget) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UpdateGKETarget) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *UpdateGKETarget) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *UpdateGKETarget) SetPassword(v string) {
-	o.Password = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -510,38 +503,6 @@ func (o *UpdateGKETarget) SetUseGwCloudIdentity(v bool) {
 	o.UseGwCloudIdentity = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *UpdateGKETarget) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UpdateGKETarget) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *UpdateGKETarget) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *UpdateGKETarget) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o UpdateGKETarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Comment != nil {
@@ -562,6 +523,9 @@ func (o UpdateGKETarget) MarshalJSON() ([]byte, error) {
 	if o.GkeServiceAccountEmail != nil {
 		toSerialize["gke-service-account-email"] = o.GkeServiceAccountEmail
 	}
+	if o.KeepPrevVersion != nil {
+		toSerialize["keep-prev-version"] = o.KeepPrevVersion
+	}
 	if o.Key != nil {
 		toSerialize["key"] = o.Key
 	}
@@ -570,9 +534,6 @@ func (o UpdateGKETarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.NewName != nil {
 		toSerialize["new-name"] = o.NewName
-	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
@@ -585,9 +546,6 @@ func (o UpdateGKETarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.UseGwCloudIdentity != nil {
 		toSerialize["use-gw-cloud-identity"] = o.UseGwCloudIdentity
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

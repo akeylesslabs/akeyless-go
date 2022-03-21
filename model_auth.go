@@ -29,6 +29,7 @@ type Auth struct {
 	AdminPassword *string `json:"admin-password,omitempty"`
 	// The cloud identity (relevant only for access-type=azure_ad,aws_iam,gcp)
 	CloudId *string `json:"cloud-id,omitempty"`
+	Debug *bool `json:"debug,omitempty"`
 	// GCP JWT audience
 	GcpAudience *string `json:"gcp-audience,omitempty"`
 	// The Json Web Token (relevant only for access-type=jwt/oidc)
@@ -256,6 +257,38 @@ func (o *Auth) HasCloudId() bool {
 // SetCloudId gets a reference to the given string and assigns it to the CloudId field.
 func (o *Auth) SetCloudId(v string) {
 	o.CloudId = &v
+}
+
+// GetDebug returns the Debug field value if set, zero value otherwise.
+func (o *Auth) GetDebug() bool {
+	if o == nil || o.Debug == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Debug
+}
+
+// GetDebugOk returns a tuple with the Debug field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Auth) GetDebugOk() (*bool, bool) {
+	if o == nil || o.Debug == nil {
+		return nil, false
+	}
+	return o.Debug, true
+}
+
+// HasDebug returns a boolean if a field has been set.
+func (o *Auth) HasDebug() bool {
+	if o != nil && o.Debug != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDebug gets a reference to the given bool and assigns it to the Debug field.
+func (o *Auth) SetDebug(v bool) {
+	o.Debug = &v
 }
 
 // GetGcpAudience returns the GcpAudience field value if set, zero value otherwise.
@@ -501,6 +534,9 @@ func (o Auth) MarshalJSON() ([]byte, error) {
 	}
 	if o.CloudId != nil {
 		toSerialize["cloud-id"] = o.CloudId
+	}
+	if o.Debug != nil {
+		toSerialize["debug"] = o.Debug
 	}
 	if o.GcpAudience != nil {
 		toSerialize["gcp-audience"] = o.GcpAudience

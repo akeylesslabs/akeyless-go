@@ -17,18 +17,22 @@ import (
 
 // CreateRole struct for CreateRole
 type CreateRole struct {
+	// Allow this role to view analytics. Currently only 'none', 'own', 'all' values are supported, allowing associated auth methods to view reports produced by the same auth methods.
+	AnalyticsAccess *string `json:"analytics-access,omitempty"`
+	// Allow this role to view audit logs. Currently only 'none', 'own' and 'all' values are supported, allowing associated auth methods to view audit logs produced by the same auth methods.
+	AuditAccess *string `json:"audit-access,omitempty"`
 	// Comment about the role
 	Comment *string `json:"comment,omitempty"`
+	// Allow this role to view gw analytics. Currently only 'none', 'own', 'all' values are supported, allowing associated auth methods to view reports produced by the same auth methods.
+	GwAnalyticsAccess *string `json:"gw-analytics-access,omitempty"`
 	// Role name
 	Name string `json:"name"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
+	// Allow this role to view SRA Clusters. Currently only 'none', 'own', 'all' values are supported.
+	SraReportsAccess *string `json:"sra-reports-access,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewCreateRole instantiates a new CreateRole object
@@ -47,6 +51,70 @@ func NewCreateRole(name string, ) *CreateRole {
 func NewCreateRoleWithDefaults() *CreateRole {
 	this := CreateRole{}
 	return &this
+}
+
+// GetAnalyticsAccess returns the AnalyticsAccess field value if set, zero value otherwise.
+func (o *CreateRole) GetAnalyticsAccess() string {
+	if o == nil || o.AnalyticsAccess == nil {
+		var ret string
+		return ret
+	}
+	return *o.AnalyticsAccess
+}
+
+// GetAnalyticsAccessOk returns a tuple with the AnalyticsAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRole) GetAnalyticsAccessOk() (*string, bool) {
+	if o == nil || o.AnalyticsAccess == nil {
+		return nil, false
+	}
+	return o.AnalyticsAccess, true
+}
+
+// HasAnalyticsAccess returns a boolean if a field has been set.
+func (o *CreateRole) HasAnalyticsAccess() bool {
+	if o != nil && o.AnalyticsAccess != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAnalyticsAccess gets a reference to the given string and assigns it to the AnalyticsAccess field.
+func (o *CreateRole) SetAnalyticsAccess(v string) {
+	o.AnalyticsAccess = &v
+}
+
+// GetAuditAccess returns the AuditAccess field value if set, zero value otherwise.
+func (o *CreateRole) GetAuditAccess() string {
+	if o == nil || o.AuditAccess == nil {
+		var ret string
+		return ret
+	}
+	return *o.AuditAccess
+}
+
+// GetAuditAccessOk returns a tuple with the AuditAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRole) GetAuditAccessOk() (*string, bool) {
+	if o == nil || o.AuditAccess == nil {
+		return nil, false
+	}
+	return o.AuditAccess, true
+}
+
+// HasAuditAccess returns a boolean if a field has been set.
+func (o *CreateRole) HasAuditAccess() bool {
+	if o != nil && o.AuditAccess != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAuditAccess gets a reference to the given string and assigns it to the AuditAccess field.
+func (o *CreateRole) SetAuditAccess(v string) {
+	o.AuditAccess = &v
 }
 
 // GetComment returns the Comment field value if set, zero value otherwise.
@@ -81,6 +149,38 @@ func (o *CreateRole) SetComment(v string) {
 	o.Comment = &v
 }
 
+// GetGwAnalyticsAccess returns the GwAnalyticsAccess field value if set, zero value otherwise.
+func (o *CreateRole) GetGwAnalyticsAccess() string {
+	if o == nil || o.GwAnalyticsAccess == nil {
+		var ret string
+		return ret
+	}
+	return *o.GwAnalyticsAccess
+}
+
+// GetGwAnalyticsAccessOk returns a tuple with the GwAnalyticsAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRole) GetGwAnalyticsAccessOk() (*string, bool) {
+	if o == nil || o.GwAnalyticsAccess == nil {
+		return nil, false
+	}
+	return o.GwAnalyticsAccess, true
+}
+
+// HasGwAnalyticsAccess returns a boolean if a field has been set.
+func (o *CreateRole) HasGwAnalyticsAccess() bool {
+	if o != nil && o.GwAnalyticsAccess != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGwAnalyticsAccess gets a reference to the given string and assigns it to the GwAnalyticsAccess field.
+func (o *CreateRole) SetGwAnalyticsAccess(v string) {
+	o.GwAnalyticsAccess = &v
+}
+
 // GetName returns the Name field value
 func (o *CreateRole) GetName() string {
 	if o == nil  {
@@ -105,36 +205,36 @@ func (o *CreateRole) SetName(v string) {
 	o.Name = v
 }
 
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *CreateRole) GetPassword() string {
-	if o == nil || o.Password == nil {
+// GetSraReportsAccess returns the SraReportsAccess field value if set, zero value otherwise.
+func (o *CreateRole) GetSraReportsAccess() string {
+	if o == nil || o.SraReportsAccess == nil {
 		var ret string
 		return ret
 	}
-	return *o.Password
+	return *o.SraReportsAccess
 }
 
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// GetSraReportsAccessOk returns a tuple with the SraReportsAccess field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateRole) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
+func (o *CreateRole) GetSraReportsAccessOk() (*string, bool) {
+	if o == nil || o.SraReportsAccess == nil {
 		return nil, false
 	}
-	return o.Password, true
+	return o.SraReportsAccess, true
 }
 
-// HasPassword returns a boolean if a field has been set.
-func (o *CreateRole) HasPassword() bool {
-	if o != nil && o.Password != nil {
+// HasSraReportsAccess returns a boolean if a field has been set.
+func (o *CreateRole) HasSraReportsAccess() bool {
+	if o != nil && o.SraReportsAccess != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *CreateRole) SetPassword(v string) {
-	o.Password = &v
+// SetSraReportsAccess gets a reference to the given string and assigns it to the SraReportsAccess field.
+func (o *CreateRole) SetSraReportsAccess(v string) {
+	o.SraReportsAccess = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -201,57 +301,31 @@ func (o *CreateRole) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *CreateRole) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateRole) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *CreateRole) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *CreateRole) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o CreateRole) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AnalyticsAccess != nil {
+		toSerialize["analytics-access"] = o.AnalyticsAccess
+	}
+	if o.AuditAccess != nil {
+		toSerialize["audit-access"] = o.AuditAccess
+	}
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment
+	}
+	if o.GwAnalyticsAccess != nil {
+		toSerialize["gw-analytics-access"] = o.GwAnalyticsAccess
 	}
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
+	if o.SraReportsAccess != nil {
+		toSerialize["sra-reports-access"] = o.SraReportsAccess
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

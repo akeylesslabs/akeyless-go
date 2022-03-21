@@ -11,15 +11,14 @@ Name | Type | Description | Notes
 **EksClusterName** | **string** | EKS cluster name | 
 **EksRegion** | Pointer to **string** | Region | [optional] [default to "us-east-2"]
 **EksSecretAccessKey** | **string** | Secret Access Key | 
+**KeepPrevVersion** | Pointer to **string** |  | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Target name | 
 **NewName** | Pointer to **string** | New target name | [optional] 
-**Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
-**UpdateVersion** | Pointer to **bool** | Create new version for the target | [optional] [default to false]
+**UpdateVersion** | Pointer to **bool** | Deprecated | [optional] 
 **UseGwCloudIdentity** | Pointer to **bool** |  | [optional] 
-**Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 
 ## Methods
 
@@ -190,6 +189,31 @@ and a boolean to check if the value has been set.
 SetEksSecretAccessKey sets EksSecretAccessKey field to given value.
 
 
+### GetKeepPrevVersion
+
+`func (o *UpdateEKSTarget) GetKeepPrevVersion() string`
+
+GetKeepPrevVersion returns the KeepPrevVersion field if non-nil, zero value otherwise.
+
+### GetKeepPrevVersionOk
+
+`func (o *UpdateEKSTarget) GetKeepPrevVersionOk() (*string, bool)`
+
+GetKeepPrevVersionOk returns a tuple with the KeepPrevVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKeepPrevVersion
+
+`func (o *UpdateEKSTarget) SetKeepPrevVersion(v string)`
+
+SetKeepPrevVersion sets KeepPrevVersion field to given value.
+
+### HasKeepPrevVersion
+
+`func (o *UpdateEKSTarget) HasKeepPrevVersion() bool`
+
+HasKeepPrevVersion returns a boolean if a field has been set.
+
 ### GetKey
 
 `func (o *UpdateEKSTarget) GetKey() string`
@@ -259,31 +283,6 @@ SetNewName sets NewName field to given value.
 `func (o *UpdateEKSTarget) HasNewName() bool`
 
 HasNewName returns a boolean if a field has been set.
-
-### GetPassword
-
-`func (o *UpdateEKSTarget) GetPassword() string`
-
-GetPassword returns the Password field if non-nil, zero value otherwise.
-
-### GetPasswordOk
-
-`func (o *UpdateEKSTarget) GetPasswordOk() (*string, bool)`
-
-GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPassword
-
-`func (o *UpdateEKSTarget) SetPassword(v string)`
-
-SetPassword sets Password field to given value.
-
-### HasPassword
-
-`func (o *UpdateEKSTarget) HasPassword() bool`
-
-HasPassword returns a boolean if a field has been set.
 
 ### GetToken
 
@@ -384,31 +383,6 @@ SetUseGwCloudIdentity sets UseGwCloudIdentity field to given value.
 `func (o *UpdateEKSTarget) HasUseGwCloudIdentity() bool`
 
 HasUseGwCloudIdentity returns a boolean if a field has been set.
-
-### GetUsername
-
-`func (o *UpdateEKSTarget) GetUsername() string`
-
-GetUsername returns the Username field if non-nil, zero value otherwise.
-
-### GetUsernameOk
-
-`func (o *UpdateEKSTarget) GetUsernameOk() (*string, bool)`
-
-GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUsername
-
-`func (o *UpdateEKSTarget) SetUsername(v string)`
-
-SetUsername sets Username field to given value.
-
-### HasUsername
-
-`func (o *UpdateEKSTarget) HasUsername() bool`
-
-HasUsername returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -77,6 +77,7 @@ Name | Type | Description | Notes
 **SslConnectionMode** | Pointer to **bool** | (Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB | [optional] 
 **Url** | Pointer to **string** |  | [optional] 
 **UseGwCloudIdentity** | Pointer to **bool** |  | [optional] 
+**UserName** | Pointer to **string** |  | [optional] 
 **Username** | Pointer to **string** |  | [optional] 
 **VenafiApiKey** | Pointer to **string** |  | [optional] 
 **VenafiBaseUrl** | Pointer to **string** |  | [optional] 
@@ -1928,6 +1929,31 @@ SetUseGwCloudIdentity sets UseGwCloudIdentity field to given value.
 `func (o *TargetTypeDetailsInput) HasUseGwCloudIdentity() bool`
 
 HasUseGwCloudIdentity returns a boolean if a field has been set.
+
+### GetUserName
+
+`func (o *TargetTypeDetailsInput) GetUserName() string`
+
+GetUserName returns the UserName field if non-nil, zero value otherwise.
+
+### GetUserNameOk
+
+`func (o *TargetTypeDetailsInput) GetUserNameOk() (*string, bool)`
+
+GetUserNameOk returns a tuple with the UserName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserName
+
+`func (o *TargetTypeDetailsInput) SetUserName(v string)`
+
+SetUserName sets UserName field to given value.
+
+### HasUserName
+
+`func (o *TargetTypeDetailsInput) HasUserName() bool`
+
+HasUserName returns a boolean if a field has been set.
 
 ### GetUsername
 

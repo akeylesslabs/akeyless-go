@@ -31,23 +31,20 @@ type UpdateEKSTarget struct {
 	EksRegion *string `json:"eks-region,omitempty"`
 	// Secret Access Key
 	EksSecretAccessKey string `json:"eks-secret-access-key"`
+	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
 	// Target name
 	Name string `json:"name"`
 	// New target name
 	NewName *string `json:"new-name,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// Create new version for the target
+	// Deprecated
 	UpdateVersion *bool `json:"update-version,omitempty"`
 	UseGwCloudIdentity *bool `json:"use-gw-cloud-identity,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewUpdateEKSTarget instantiates a new UpdateEKSTarget object
@@ -64,8 +61,6 @@ func NewUpdateEKSTarget(eksAccessKeyId string, eksClusterCaCert string, eksClust
 	this.EksRegion = &eksRegion
 	this.EksSecretAccessKey = eksSecretAccessKey
 	this.Name = name
-	var updateVersion bool = false
-	this.UpdateVersion = &updateVersion
 	return &this
 }
 
@@ -76,8 +71,6 @@ func NewUpdateEKSTargetWithDefaults() *UpdateEKSTarget {
 	this := UpdateEKSTarget{}
 	var eksRegion string = "us-east-2"
 	this.EksRegion = &eksRegion
-	var updateVersion bool = false
-	this.UpdateVersion = &updateVersion
 	return &this
 }
 
@@ -265,6 +258,38 @@ func (o *UpdateEKSTarget) SetEksSecretAccessKey(v string) {
 	o.EksSecretAccessKey = v
 }
 
+// GetKeepPrevVersion returns the KeepPrevVersion field value if set, zero value otherwise.
+func (o *UpdateEKSTarget) GetKeepPrevVersion() string {
+	if o == nil || o.KeepPrevVersion == nil {
+		var ret string
+		return ret
+	}
+	return *o.KeepPrevVersion
+}
+
+// GetKeepPrevVersionOk returns a tuple with the KeepPrevVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateEKSTarget) GetKeepPrevVersionOk() (*string, bool) {
+	if o == nil || o.KeepPrevVersion == nil {
+		return nil, false
+	}
+	return o.KeepPrevVersion, true
+}
+
+// HasKeepPrevVersion returns a boolean if a field has been set.
+func (o *UpdateEKSTarget) HasKeepPrevVersion() bool {
+	if o != nil && o.KeepPrevVersion != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetKeepPrevVersion gets a reference to the given string and assigns it to the KeepPrevVersion field.
+func (o *UpdateEKSTarget) SetKeepPrevVersion(v string) {
+	o.KeepPrevVersion = &v
+}
+
 // GetKey returns the Key field value if set, zero value otherwise.
 func (o *UpdateEKSTarget) GetKey() string {
 	if o == nil || o.Key == nil {
@@ -351,38 +376,6 @@ func (o *UpdateEKSTarget) HasNewName() bool {
 // SetNewName gets a reference to the given string and assigns it to the NewName field.
 func (o *UpdateEKSTarget) SetNewName(v string) {
 	o.NewName = &v
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *UpdateEKSTarget) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UpdateEKSTarget) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *UpdateEKSTarget) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *UpdateEKSTarget) SetPassword(v string) {
-	o.Password = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -513,38 +506,6 @@ func (o *UpdateEKSTarget) SetUseGwCloudIdentity(v bool) {
 	o.UseGwCloudIdentity = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *UpdateEKSTarget) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UpdateEKSTarget) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *UpdateEKSTarget) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *UpdateEKSTarget) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o UpdateEKSTarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Comment != nil {
@@ -568,6 +529,9 @@ func (o UpdateEKSTarget) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["eks-secret-access-key"] = o.EksSecretAccessKey
 	}
+	if o.KeepPrevVersion != nil {
+		toSerialize["keep-prev-version"] = o.KeepPrevVersion
+	}
 	if o.Key != nil {
 		toSerialize["key"] = o.Key
 	}
@@ -576,9 +540,6 @@ func (o UpdateEKSTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.NewName != nil {
 		toSerialize["new-name"] = o.NewName
-	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
@@ -591,9 +552,6 @@ func (o UpdateEKSTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.UseGwCloudIdentity != nil {
 		toSerialize["use-gw-cloud-identity"] = o.UseGwCloudIdentity
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

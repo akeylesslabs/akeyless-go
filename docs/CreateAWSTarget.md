@@ -9,13 +9,11 @@ Name | Type | Description | Notes
 **Comment** | Pointer to **string** | Comment about the target | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Target name | 
-**Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **Region** | Pointer to **string** |  | [optional] 
 **SessionToken** | Pointer to **string** |  | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UseGwCloudIdentity** | Pointer to **bool** |  | [optional] 
-**Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 
 ## Methods
 
@@ -156,31 +154,6 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### GetPassword
-
-`func (o *CreateAWSTarget) GetPassword() string`
-
-GetPassword returns the Password field if non-nil, zero value otherwise.
-
-### GetPasswordOk
-
-`func (o *CreateAWSTarget) GetPasswordOk() (*string, bool)`
-
-GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPassword
-
-`func (o *CreateAWSTarget) SetPassword(v string)`
-
-SetPassword sets Password field to given value.
-
-### HasPassword
-
-`func (o *CreateAWSTarget) HasPassword() bool`
-
-HasPassword returns a boolean if a field has been set.
-
 ### GetRegion
 
 `func (o *CreateAWSTarget) GetRegion() string`
@@ -305,31 +278,6 @@ SetUseGwCloudIdentity sets UseGwCloudIdentity field to given value.
 `func (o *CreateAWSTarget) HasUseGwCloudIdentity() bool`
 
 HasUseGwCloudIdentity returns a boolean if a field has been set.
-
-### GetUsername
-
-`func (o *CreateAWSTarget) GetUsername() string`
-
-GetUsername returns the Username field if non-nil, zero value otherwise.
-
-### GetUsernameOk
-
-`func (o *CreateAWSTarget) GetUsernameOk() (*string, bool)`
-
-GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUsername
-
-`func (o *CreateAWSTarget) SetUsername(v string)`
-
-SetUsername sets Username field to given value.
-
-### HasUsername
-
-`func (o *CreateAWSTarget) HasUsername() bool`
-
-HasUsername returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

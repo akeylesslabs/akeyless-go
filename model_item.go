@@ -34,6 +34,7 @@ type Item struct {
 	ItemSize *int64 `json:"item_size,omitempty"`
 	// ItemState defines the different states an Item can be in
 	ItemState *string `json:"item_state,omitempty"`
+	ItemSubType *string `json:"item_sub_type,omitempty"`
 	ItemTags *[]string `json:"item_tags,omitempty"`
 	ItemTargetsAssoc *[]ItemTargetAssociation `json:"item_targets_assoc,omitempty"`
 	ItemType *string `json:"item_type,omitempty"`
@@ -544,6 +545,38 @@ func (o *Item) SetItemState(v string) {
 	o.ItemState = &v
 }
 
+// GetItemSubType returns the ItemSubType field value if set, zero value otherwise.
+func (o *Item) GetItemSubType() string {
+	if o == nil || o.ItemSubType == nil {
+		var ret string
+		return ret
+	}
+	return *o.ItemSubType
+}
+
+// GetItemSubTypeOk returns a tuple with the ItemSubType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Item) GetItemSubTypeOk() (*string, bool) {
+	if o == nil || o.ItemSubType == nil {
+		return nil, false
+	}
+	return o.ItemSubType, true
+}
+
+// HasItemSubType returns a boolean if a field has been set.
+func (o *Item) HasItemSubType() bool {
+	if o != nil && o.ItemSubType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetItemSubType gets a reference to the given string and assigns it to the ItemSubType field.
+func (o *Item) SetItemSubType(v string) {
+	o.ItemSubType = &v
+}
+
 // GetItemTags returns the ItemTags field value if set, zero value otherwise.
 func (o *Item) GetItemTags() []string {
 	if o == nil || o.ItemTags == nil {
@@ -942,6 +975,9 @@ func (o Item) MarshalJSON() ([]byte, error) {
 	}
 	if o.ItemState != nil {
 		toSerialize["item_state"] = o.ItemState
+	}
+	if o.ItemSubType != nil {
+		toSerialize["item_sub_type"] = o.ItemSubType
 	}
 	if o.ItemTags != nil {
 		toSerialize["item_tags"] = o.ItemTags

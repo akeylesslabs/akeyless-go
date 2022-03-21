@@ -19,16 +19,12 @@ import (
 type EncryptWithClassicKey struct {
 	// The name of the key to use in the encryption process
 	DisplayId string `json:"display-id"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	// Data to be encrypted
 	Plaintext string `json:"plaintext"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 	// classic key version
 	Version int32 `json:"version"`
 }
@@ -75,38 +71,6 @@ func (o *EncryptWithClassicKey) GetDisplayIdOk() (*string, bool) {
 // SetDisplayId sets field value
 func (o *EncryptWithClassicKey) SetDisplayId(v string) {
 	o.DisplayId = v
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *EncryptWithClassicKey) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *EncryptWithClassicKey) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *EncryptWithClassicKey) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *EncryptWithClassicKey) SetPassword(v string) {
-	o.Password = &v
 }
 
 // GetPlaintext returns the Plaintext field value
@@ -197,38 +161,6 @@ func (o *EncryptWithClassicKey) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *EncryptWithClassicKey) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *EncryptWithClassicKey) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *EncryptWithClassicKey) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *EncryptWithClassicKey) SetUsername(v string) {
-	o.Username = &v
-}
-
 // GetVersion returns the Version field value
 func (o *EncryptWithClassicKey) GetVersion() int32 {
 	if o == nil  {
@@ -258,9 +190,6 @@ func (o EncryptWithClassicKey) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["display-id"] = o.DisplayId
 	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
-	}
 	if true {
 		toSerialize["plaintext"] = o.Plaintext
 	}
@@ -269,9 +198,6 @@ func (o EncryptWithClassicKey) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	if true {
 		toSerialize["version"] = o.Version

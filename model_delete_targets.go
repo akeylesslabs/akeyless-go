@@ -19,16 +19,12 @@ import (
 type DeleteTargets struct {
 	// Enforce deletion
 	ForceDeletion *bool `json:"force-deletion,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	// Path to delete the targets from
 	Path string `json:"path"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewDeleteTargets instantiates a new DeleteTargets object
@@ -83,38 +79,6 @@ func (o *DeleteTargets) HasForceDeletion() bool {
 // SetForceDeletion gets a reference to the given bool and assigns it to the ForceDeletion field.
 func (o *DeleteTargets) SetForceDeletion(v bool) {
 	o.ForceDeletion = &v
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *DeleteTargets) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DeleteTargets) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *DeleteTargets) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *DeleteTargets) SetPassword(v string) {
-	o.Password = &v
 }
 
 // GetPath returns the Path field value
@@ -205,45 +169,10 @@ func (o *DeleteTargets) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *DeleteTargets) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DeleteTargets) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *DeleteTargets) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *DeleteTargets) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o DeleteTargets) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ForceDeletion != nil {
 		toSerialize["force-deletion"] = o.ForceDeletion
-	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
 	}
 	if true {
 		toSerialize["path"] = o.Path
@@ -253,9 +182,6 @@ func (o DeleteTargets) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

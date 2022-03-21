@@ -6,11 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CertIssuerName** | **string** | The name of the SSH certificate issuer | 
 **CertUsername** | **string** | The username to sign in the SSH certificate | 
-**Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **PublicKeyData** | Pointer to **string** | SSH public key file contents. If this option is used, the certificate will be printed to stdout | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
-**Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 
 ## Methods
 
@@ -70,31 +68,6 @@ and a boolean to check if the value has been set.
 
 SetCertUsername sets CertUsername field to given value.
 
-
-### GetPassword
-
-`func (o *GetSSHCertificate) GetPassword() string`
-
-GetPassword returns the Password field if non-nil, zero value otherwise.
-
-### GetPasswordOk
-
-`func (o *GetSSHCertificate) GetPasswordOk() (*string, bool)`
-
-GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPassword
-
-`func (o *GetSSHCertificate) SetPassword(v string)`
-
-SetPassword sets Password field to given value.
-
-### HasPassword
-
-`func (o *GetSSHCertificate) HasPassword() bool`
-
-HasPassword returns a boolean if a field has been set.
 
 ### GetPublicKeyData
 
@@ -170,31 +143,6 @@ SetUidToken sets UidToken field to given value.
 `func (o *GetSSHCertificate) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
-
-### GetUsername
-
-`func (o *GetSSHCertificate) GetUsername() string`
-
-GetUsername returns the Username field if non-nil, zero value otherwise.
-
-### GetUsernameOk
-
-`func (o *GetSSHCertificate) GetUsernameOk() (*string, bool)`
-
-GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUsername
-
-`func (o *GetSSHCertificate) SetUsername(v string)`
-
-SetUsername sets Username field to given value.
-
-### HasUsername
-
-`func (o *GetSSHCertificate) HasUsername() bool`
-
-HasUsername returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

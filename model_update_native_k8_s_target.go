@@ -25,22 +25,19 @@ type UpdateNativeK8STarget struct {
 	K8sClusterEndpoint string `json:"k8s-cluster-endpoint"`
 	// K8S cluster Bearer token
 	K8sClusterToken string `json:"k8s-cluster-token"`
+	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
 	// Target name
 	Name string `json:"name"`
 	// New target name
 	NewName *string `json:"new-name,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// Create new version for the target
+	// Deprecated
 	UpdateVersion *bool `json:"update-version,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewUpdateNativeK8STarget instantiates a new UpdateNativeK8STarget object
@@ -53,8 +50,6 @@ func NewUpdateNativeK8STarget(k8sClusterCaCert string, k8sClusterEndpoint string
 	this.K8sClusterEndpoint = k8sClusterEndpoint
 	this.K8sClusterToken = k8sClusterToken
 	this.Name = name
-	var updateVersion bool = false
-	this.UpdateVersion = &updateVersion
 	return &this
 }
 
@@ -63,8 +58,6 @@ func NewUpdateNativeK8STarget(k8sClusterCaCert string, k8sClusterEndpoint string
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateNativeK8STargetWithDefaults() *UpdateNativeK8STarget {
 	this := UpdateNativeK8STarget{}
-	var updateVersion bool = false
-	this.UpdateVersion = &updateVersion
 	return &this
 }
 
@@ -172,6 +165,38 @@ func (o *UpdateNativeK8STarget) SetK8sClusterToken(v string) {
 	o.K8sClusterToken = v
 }
 
+// GetKeepPrevVersion returns the KeepPrevVersion field value if set, zero value otherwise.
+func (o *UpdateNativeK8STarget) GetKeepPrevVersion() string {
+	if o == nil || o.KeepPrevVersion == nil {
+		var ret string
+		return ret
+	}
+	return *o.KeepPrevVersion
+}
+
+// GetKeepPrevVersionOk returns a tuple with the KeepPrevVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateNativeK8STarget) GetKeepPrevVersionOk() (*string, bool) {
+	if o == nil || o.KeepPrevVersion == nil {
+		return nil, false
+	}
+	return o.KeepPrevVersion, true
+}
+
+// HasKeepPrevVersion returns a boolean if a field has been set.
+func (o *UpdateNativeK8STarget) HasKeepPrevVersion() bool {
+	if o != nil && o.KeepPrevVersion != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetKeepPrevVersion gets a reference to the given string and assigns it to the KeepPrevVersion field.
+func (o *UpdateNativeK8STarget) SetKeepPrevVersion(v string) {
+	o.KeepPrevVersion = &v
+}
+
 // GetKey returns the Key field value if set, zero value otherwise.
 func (o *UpdateNativeK8STarget) GetKey() string {
 	if o == nil || o.Key == nil {
@@ -258,38 +283,6 @@ func (o *UpdateNativeK8STarget) HasNewName() bool {
 // SetNewName gets a reference to the given string and assigns it to the NewName field.
 func (o *UpdateNativeK8STarget) SetNewName(v string) {
 	o.NewName = &v
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *UpdateNativeK8STarget) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UpdateNativeK8STarget) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *UpdateNativeK8STarget) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *UpdateNativeK8STarget) SetPassword(v string) {
-	o.Password = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -388,38 +381,6 @@ func (o *UpdateNativeK8STarget) SetUpdateVersion(v bool) {
 	o.UpdateVersion = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *UpdateNativeK8STarget) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UpdateNativeK8STarget) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *UpdateNativeK8STarget) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *UpdateNativeK8STarget) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o UpdateNativeK8STarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Comment != nil {
@@ -434,6 +395,9 @@ func (o UpdateNativeK8STarget) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["k8s-cluster-token"] = o.K8sClusterToken
 	}
+	if o.KeepPrevVersion != nil {
+		toSerialize["keep-prev-version"] = o.KeepPrevVersion
+	}
 	if o.Key != nil {
 		toSerialize["key"] = o.Key
 	}
@@ -443,9 +407,6 @@ func (o UpdateNativeK8STarget) MarshalJSON() ([]byte, error) {
 	if o.NewName != nil {
 		toSerialize["new-name"] = o.NewName
 	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
-	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
 	}
@@ -454,9 +415,6 @@ func (o UpdateNativeK8STarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.UpdateVersion != nil {
 		toSerialize["update-version"] = o.UpdateVersion
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

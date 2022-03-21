@@ -29,8 +29,6 @@ type GatewayCreateK8SAuthConfig struct {
 	K8sIssuer *string `json:"k8s-issuer,omitempty"`
 	// K8S Auth config name
 	Name string `json:"name"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	// The private key (in base64 encoded of the PEM format) associated with the public key defined in the Kubernetes auth
 	SigningKey string `json:"signing-key"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -41,8 +39,6 @@ type GatewayCreateK8SAuthConfig struct {
 	TokenReviewerJwt *string `json:"token-reviewer-jwt,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewGatewayCreateK8SAuthConfig instantiates a new GatewayCreateK8SAuthConfig object
@@ -234,38 +230,6 @@ func (o *GatewayCreateK8SAuthConfig) SetName(v string) {
 	o.Name = v
 }
 
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *GatewayCreateK8SAuthConfig) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateK8SAuthConfig) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *GatewayCreateK8SAuthConfig) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *GatewayCreateK8SAuthConfig) SetPassword(v string) {
-	o.Password = &v
-}
-
 // GetSigningKey returns the SigningKey field value
 func (o *GatewayCreateK8SAuthConfig) GetSigningKey() string {
 	if o == nil  {
@@ -418,38 +382,6 @@ func (o *GatewayCreateK8SAuthConfig) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *GatewayCreateK8SAuthConfig) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateK8SAuthConfig) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *GatewayCreateK8SAuthConfig) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *GatewayCreateK8SAuthConfig) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o GatewayCreateK8SAuthConfig) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -470,9 +402,6 @@ func (o GatewayCreateK8SAuthConfig) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
-	}
 	if true {
 		toSerialize["signing-key"] = o.SigningKey
 	}
@@ -487,9 +416,6 @@ func (o GatewayCreateK8SAuthConfig) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

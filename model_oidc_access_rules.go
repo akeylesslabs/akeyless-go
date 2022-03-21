@@ -25,6 +25,8 @@ type OIDCAccessRules struct {
 	ClientId *string `json:"client_id,omitempty"`
 	// Client Secret
 	ClientSecret *string `json:"client_secret,omitempty"`
+	// IsInternal indicates whether this is an internal Auth Method where the client has no control over it, or it was created by the client e.g - Sign In with Google will create an OIDC Auth Method with IsInternal=true
+	IsInternal *bool `json:"is_internal,omitempty"`
 	// Issuer URL
 	Issuer *string `json:"issuer,omitempty"`
 	// A unique identifier to distinguish different users
@@ -176,6 +178,38 @@ func (o *OIDCAccessRules) SetClientSecret(v string) {
 	o.ClientSecret = &v
 }
 
+// GetIsInternal returns the IsInternal field value if set, zero value otherwise.
+func (o *OIDCAccessRules) GetIsInternal() bool {
+	if o == nil || o.IsInternal == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IsInternal
+}
+
+// GetIsInternalOk returns a tuple with the IsInternal field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OIDCAccessRules) GetIsInternalOk() (*bool, bool) {
+	if o == nil || o.IsInternal == nil {
+		return nil, false
+	}
+	return o.IsInternal, true
+}
+
+// HasIsInternal returns a boolean if a field has been set.
+func (o *OIDCAccessRules) HasIsInternal() bool {
+	if o != nil && o.IsInternal != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIsInternal gets a reference to the given bool and assigns it to the IsInternal field.
+func (o *OIDCAccessRules) SetIsInternal(v bool) {
+	o.IsInternal = &v
+}
+
 // GetIssuer returns the Issuer field value if set, zero value otherwise.
 func (o *OIDCAccessRules) GetIssuer() string {
 	if o == nil || o.Issuer == nil {
@@ -253,6 +287,9 @@ func (o OIDCAccessRules) MarshalJSON() ([]byte, error) {
 	}
 	if o.ClientSecret != nil {
 		toSerialize["client_secret"] = o.ClientSecret
+	}
+	if o.IsInternal != nil {
+		toSerialize["is_internal"] = o.IsInternal
 	}
 	if o.Issuer != nil {
 		toSerialize["issuer"] = o.Issuer

@@ -21,6 +21,7 @@ type GetAccountSettingsCommandOutput struct {
 	Address *CustomerFullAddress `json:"address,omitempty"`
 	CompanyName *string `json:"company_name,omitempty"`
 	Email *string `json:"email,omitempty"`
+	ObjectVersionSettings *AccountObjectVersionSettingsOutput `json:"object_version_settings,omitempty"`
 	Phone *string `json:"phone,omitempty"`
 	SecretManagement *SmInfo `json:"secret_management,omitempty"`
 	SecureRemoteAccess *SraInfo `json:"secure_remote_access,omitempty"`
@@ -172,6 +173,38 @@ func (o *GetAccountSettingsCommandOutput) SetEmail(v string) {
 	o.Email = &v
 }
 
+// GetObjectVersionSettings returns the ObjectVersionSettings field value if set, zero value otherwise.
+func (o *GetAccountSettingsCommandOutput) GetObjectVersionSettings() AccountObjectVersionSettingsOutput {
+	if o == nil || o.ObjectVersionSettings == nil {
+		var ret AccountObjectVersionSettingsOutput
+		return ret
+	}
+	return *o.ObjectVersionSettings
+}
+
+// GetObjectVersionSettingsOk returns a tuple with the ObjectVersionSettings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetAccountSettingsCommandOutput) GetObjectVersionSettingsOk() (*AccountObjectVersionSettingsOutput, bool) {
+	if o == nil || o.ObjectVersionSettings == nil {
+		return nil, false
+	}
+	return o.ObjectVersionSettings, true
+}
+
+// HasObjectVersionSettings returns a boolean if a field has been set.
+func (o *GetAccountSettingsCommandOutput) HasObjectVersionSettings() bool {
+	if o != nil && o.ObjectVersionSettings != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetObjectVersionSettings gets a reference to the given AccountObjectVersionSettingsOutput and assigns it to the ObjectVersionSettings field.
+func (o *GetAccountSettingsCommandOutput) SetObjectVersionSettings(v AccountObjectVersionSettingsOutput) {
+	o.ObjectVersionSettings = &v
+}
+
 // GetPhone returns the Phone field value if set, zero value otherwise.
 func (o *GetAccountSettingsCommandOutput) GetPhone() string {
 	if o == nil || o.Phone == nil {
@@ -313,6 +346,9 @@ func (o GetAccountSettingsCommandOutput) MarshalJSON() ([]byte, error) {
 	}
 	if o.Email != nil {
 		toSerialize["email"] = o.Email
+	}
+	if o.ObjectVersionSettings != nil {
+		toSerialize["object_version_settings"] = o.ObjectVersionSettings
 	}
 	if o.Phone != nil {
 		toSerialize["phone"] = o.Phone

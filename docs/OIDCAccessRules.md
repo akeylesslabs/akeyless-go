@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **BoundClaims** | Pointer to [**[]OIDCCustomClaim**](OIDCCustomClaim.md) | The claims that login is restricted to. | [optional] 
 **ClientId** | Pointer to **string** | Client ID | [optional] 
 **ClientSecret** | Pointer to **string** | Client Secret | [optional] 
+**IsInternal** | Pointer to **bool** | IsInternal indicates whether this is an internal Auth Method where the client has no control over it, or it was created by the client e.g - Sign In with Google will create an OIDC Auth Method with IsInternal&#x3D;true | [optional] 
 **Issuer** | Pointer to **string** | Issuer URL | [optional] 
 **UniqueIdentifier** | Pointer to **string** | A unique identifier to distinguish different users | [optional] 
 
@@ -129,6 +130,31 @@ SetClientSecret sets ClientSecret field to given value.
 `func (o *OIDCAccessRules) HasClientSecret() bool`
 
 HasClientSecret returns a boolean if a field has been set.
+
+### GetIsInternal
+
+`func (o *OIDCAccessRules) GetIsInternal() bool`
+
+GetIsInternal returns the IsInternal field if non-nil, zero value otherwise.
+
+### GetIsInternalOk
+
+`func (o *OIDCAccessRules) GetIsInternalOk() (*bool, bool)`
+
+GetIsInternalOk returns a tuple with the IsInternal field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsInternal
+
+`func (o *OIDCAccessRules) SetIsInternal(v bool)`
+
+SetIsInternal sets IsInternal field to given value.
+
+### HasIsInternal
+
+`func (o *OIDCAccessRules) HasIsInternal() bool`
+
+HasIsInternal returns a boolean if a field has been set.
 
 ### GetIssuer
 

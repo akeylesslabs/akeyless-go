@@ -21,8 +21,6 @@ type GatewayCreateProducerPostgreSQL struct {
 	CreationStatements *string `json:"creation-statements,omitempty"`
 	// Producer name
 	Name string `json:"name"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	// PostgreSQL DB Name
 	PostgresqlDbName *string `json:"postgresql-db-name,omitempty"`
 	// PostgreSQL Host
@@ -54,8 +52,6 @@ type GatewayCreateProducerPostgreSQL struct {
 	UidToken *string `json:"uid-token,omitempty"`
 	// User TTL
 	UserTtl *string `json:"user-ttl,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewGatewayCreateProducerPostgreSQL instantiates a new GatewayCreateProducerPostgreSQL object
@@ -142,38 +138,6 @@ func (o *GatewayCreateProducerPostgreSQL) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *GatewayCreateProducerPostgreSQL) SetName(v string) {
 	o.Name = v
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *GatewayCreateProducerPostgreSQL) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerPostgreSQL) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *GatewayCreateProducerPostgreSQL) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *GatewayCreateProducerPostgreSQL) SetPassword(v string) {
-	o.Password = &v
 }
 
 // GetPostgresqlDbName returns the PostgresqlDbName field value if set, zero value otherwise.
@@ -752,38 +716,6 @@ func (o *GatewayCreateProducerPostgreSQL) SetUserTtl(v string) {
 	o.UserTtl = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *GatewayCreateProducerPostgreSQL) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerPostgreSQL) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *GatewayCreateProducerPostgreSQL) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *GatewayCreateProducerPostgreSQL) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o GatewayCreateProducerPostgreSQL) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.CreationStatements != nil {
@@ -791,9 +723,6 @@ func (o GatewayCreateProducerPostgreSQL) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
-	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
 	}
 	if o.PostgresqlDbName != nil {
 		toSerialize["postgresql-db-name"] = o.PostgresqlDbName
@@ -848,9 +777,6 @@ func (o GatewayCreateProducerPostgreSQL) MarshalJSON() ([]byte, error) {
 	}
 	if o.UserTtl != nil {
 		toSerialize["user-ttl"] = o.UserTtl
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

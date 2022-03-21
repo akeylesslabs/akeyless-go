@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **SshUser** | Pointer to **string** |  | [optional] 
 **Url** | Pointer to **string** |  | [optional] 
 **UseInternalBastion** | Pointer to **bool** |  | [optional] 
+**WebProxy** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -699,6 +700,31 @@ SetUseInternalBastion sets UseInternalBastion field to given value.
 `func (o *SecureRemoteAccess) HasUseInternalBastion() bool`
 
 HasUseInternalBastion returns a boolean if a field has been set.
+
+### GetWebProxy
+
+`func (o *SecureRemoteAccess) GetWebProxy() bool`
+
+GetWebProxy returns the WebProxy field if non-nil, zero value otherwise.
+
+### GetWebProxyOk
+
+`func (o *SecureRemoteAccess) GetWebProxyOk() (*bool, bool)`
+
+GetWebProxyOk returns a tuple with the WebProxy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWebProxy
+
+`func (o *SecureRemoteAccess) SetWebProxy(v bool)`
+
+SetWebProxy sets WebProxy field to given value.
+
+### HasWebProxy
+
+`func (o *SecureRemoteAccess) HasWebProxy() bool`
+
+HasWebProxy returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

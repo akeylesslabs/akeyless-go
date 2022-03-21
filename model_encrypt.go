@@ -23,25 +23,20 @@ type Encrypt struct {
 	EncryptionContext *map[string]string `json:"encryption-context,omitempty"`
 	// The name of the key to use in the encryption process
 	KeyName *string `json:"key-name,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	// Data to be encrypted
-	Plaintext string `json:"plaintext"`
+	Plaintext *string `json:"plaintext,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewEncrypt instantiates a new Encrypt object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEncrypt(plaintext string, ) *Encrypt {
+func NewEncrypt() *Encrypt {
 	this := Encrypt{}
-	this.Plaintext = plaintext
 	return &this
 }
 
@@ -149,60 +144,36 @@ func (o *Encrypt) SetKeyName(v string) {
 	o.KeyName = &v
 }
 
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *Encrypt) GetPassword() string {
-	if o == nil || o.Password == nil {
+// GetPlaintext returns the Plaintext field value if set, zero value otherwise.
+func (o *Encrypt) GetPlaintext() string {
+	if o == nil || o.Plaintext == nil {
 		var ret string
 		return ret
 	}
-	return *o.Password
+	return *o.Plaintext
 }
 
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// GetPlaintextOk returns a tuple with the Plaintext field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Encrypt) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
+func (o *Encrypt) GetPlaintextOk() (*string, bool) {
+	if o == nil || o.Plaintext == nil {
 		return nil, false
 	}
-	return o.Password, true
+	return o.Plaintext, true
 }
 
-// HasPassword returns a boolean if a field has been set.
-func (o *Encrypt) HasPassword() bool {
-	if o != nil && o.Password != nil {
+// HasPlaintext returns a boolean if a field has been set.
+func (o *Encrypt) HasPlaintext() bool {
+	if o != nil && o.Plaintext != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *Encrypt) SetPassword(v string) {
-	o.Password = &v
-}
-
-// GetPlaintext returns the Plaintext field value
-func (o *Encrypt) GetPlaintext() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Plaintext
-}
-
-// GetPlaintextOk returns a tuple with the Plaintext field value
-// and a boolean to check if the value has been set.
-func (o *Encrypt) GetPlaintextOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Plaintext, true
-}
-
-// SetPlaintext sets field value
+// SetPlaintext gets a reference to the given string and assigns it to the Plaintext field.
 func (o *Encrypt) SetPlaintext(v string) {
-	o.Plaintext = v
+	o.Plaintext = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -269,38 +240,6 @@ func (o *Encrypt) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *Encrypt) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Encrypt) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *Encrypt) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *Encrypt) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o Encrypt) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DisplayId != nil {
@@ -312,10 +251,7 @@ func (o Encrypt) MarshalJSON() ([]byte, error) {
 	if o.KeyName != nil {
 		toSerialize["key-name"] = o.KeyName
 	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
-	}
-	if true {
+	if o.Plaintext != nil {
 		toSerialize["plaintext"] = o.Plaintext
 	}
 	if o.Token != nil {
@@ -323,9 +259,6 @@ func (o Encrypt) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

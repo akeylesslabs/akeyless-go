@@ -97,6 +97,7 @@ type TargetTypeDetailsInput struct {
 	SslConnectionMode *bool `json:"ssl_connection_mode,omitempty"`
 	Url *string `json:"url,omitempty"`
 	UseGwCloudIdentity *bool `json:"use_gw_cloud_identity,omitempty"`
+	UserName *string `json:"user_name,omitempty"`
 	Username *string `json:"username,omitempty"`
 	VenafiApiKey *string `json:"venafi_api_key,omitempty"`
 	VenafiBaseUrl *string `json:"venafi_base_url,omitempty"`
@@ -2459,6 +2460,38 @@ func (o *TargetTypeDetailsInput) SetUseGwCloudIdentity(v bool) {
 	o.UseGwCloudIdentity = &v
 }
 
+// GetUserName returns the UserName field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetUserName() string {
+	if o == nil || o.UserName == nil {
+		var ret string
+		return ret
+	}
+	return *o.UserName
+}
+
+// GetUserNameOk returns a tuple with the UserName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetUserNameOk() (*string, bool) {
+	if o == nil || o.UserName == nil {
+		return nil, false
+	}
+	return o.UserName, true
+}
+
+// HasUserName returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasUserName() bool {
+	if o != nil && o.UserName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserName gets a reference to the given string and assigns it to the UserName field.
+func (o *TargetTypeDetailsInput) SetUserName(v string) {
+	o.UserName = &v
+}
+
 // GetUsername returns the Username field value if set, zero value otherwise.
 func (o *TargetTypeDetailsInput) GetUsername() string {
 	if o == nil || o.Username == nil {
@@ -2903,6 +2936,9 @@ func (o TargetTypeDetailsInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.UseGwCloudIdentity != nil {
 		toSerialize["use_gw_cloud_identity"] = o.UseGwCloudIdentity
+	}
+	if o.UserName != nil {
+		toSerialize["user_name"] = o.UserName
 	}
 	if o.Username != nil {
 		toSerialize["username"] = o.Username

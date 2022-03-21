@@ -27,14 +27,12 @@ type CreateAuthMethodLDAP struct {
 	JwtTtl *int64 `json:"jwt-ttl,omitempty"`
 	// Auth Method name
 	Name string `json:"name"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
+	// A public key generated for LDAP authentication method on Akeyless in base64 format [RSA2048]
+	PublicKeyData *string `json:"public-key-data,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewCreateAuthMethodLDAP instantiates a new CreateAuthMethodLDAP object
@@ -215,36 +213,36 @@ func (o *CreateAuthMethodLDAP) SetName(v string) {
 	o.Name = v
 }
 
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *CreateAuthMethodLDAP) GetPassword() string {
-	if o == nil || o.Password == nil {
+// GetPublicKeyData returns the PublicKeyData field value if set, zero value otherwise.
+func (o *CreateAuthMethodLDAP) GetPublicKeyData() string {
+	if o == nil || o.PublicKeyData == nil {
 		var ret string
 		return ret
 	}
-	return *o.Password
+	return *o.PublicKeyData
 }
 
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// GetPublicKeyDataOk returns a tuple with the PublicKeyData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateAuthMethodLDAP) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
+func (o *CreateAuthMethodLDAP) GetPublicKeyDataOk() (*string, bool) {
+	if o == nil || o.PublicKeyData == nil {
 		return nil, false
 	}
-	return o.Password, true
+	return o.PublicKeyData, true
 }
 
-// HasPassword returns a boolean if a field has been set.
-func (o *CreateAuthMethodLDAP) HasPassword() bool {
-	if o != nil && o.Password != nil {
+// HasPublicKeyData returns a boolean if a field has been set.
+func (o *CreateAuthMethodLDAP) HasPublicKeyData() bool {
+	if o != nil && o.PublicKeyData != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *CreateAuthMethodLDAP) SetPassword(v string) {
-	o.Password = &v
+// SetPublicKeyData gets a reference to the given string and assigns it to the PublicKeyData field.
+func (o *CreateAuthMethodLDAP) SetPublicKeyData(v string) {
+	o.PublicKeyData = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -311,38 +309,6 @@ func (o *CreateAuthMethodLDAP) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *CreateAuthMethodLDAP) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateAuthMethodLDAP) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *CreateAuthMethodLDAP) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *CreateAuthMethodLDAP) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o CreateAuthMethodLDAP) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccessExpires != nil {
@@ -360,17 +326,14 @@ func (o CreateAuthMethodLDAP) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
+	if o.PublicKeyData != nil {
+		toSerialize["public-key-data"] = o.PublicKeyData
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

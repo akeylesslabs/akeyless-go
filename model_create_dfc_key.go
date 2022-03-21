@@ -25,8 +25,6 @@ type CreateDFCKey struct {
 	Metadata *string `json:"metadata,omitempty"`
 	// DFCKey name
 	Name string `json:"name"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	// The number of fragments that the item will be split into (not includes customer fragment)
 	SplitLevel *int64 `json:"split-level,omitempty"`
 	// List of the tags attached to this DFC key
@@ -35,8 +33,6 @@ type CreateDFCKey struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewCreateDFCKey instantiates a new CreateDFCKey object
@@ -174,38 +170,6 @@ func (o *CreateDFCKey) SetName(v string) {
 	o.Name = v
 }
 
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *CreateDFCKey) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateDFCKey) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *CreateDFCKey) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *CreateDFCKey) SetPassword(v string) {
-	o.Password = &v
-}
-
 // GetSplitLevel returns the SplitLevel field value if set, zero value otherwise.
 func (o *CreateDFCKey) GetSplitLevel() int64 {
 	if o == nil || o.SplitLevel == nil {
@@ -334,38 +298,6 @@ func (o *CreateDFCKey) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *CreateDFCKey) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateDFCKey) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *CreateDFCKey) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *CreateDFCKey) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o CreateDFCKey) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -380,9 +312,6 @@ func (o CreateDFCKey) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
-	}
 	if o.SplitLevel != nil {
 		toSerialize["split-level"] = o.SplitLevel
 	}
@@ -394,9 +323,6 @@ func (o CreateDFCKey) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

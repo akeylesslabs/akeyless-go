@@ -21,16 +21,12 @@ type GetSSHCertificate struct {
 	CertIssuerName string `json:"cert-issuer-name"`
 	// The username to sign in the SSH certificate
 	CertUsername string `json:"cert-username"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	// SSH public key file contents. If this option is used, the certificate will be printed to stdout
 	PublicKeyData *string `json:"public-key-data,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewGetSSHCertificate instantiates a new GetSSHCertificate object
@@ -98,38 +94,6 @@ func (o *GetSSHCertificate) GetCertUsernameOk() (*string, bool) {
 // SetCertUsername sets field value
 func (o *GetSSHCertificate) SetCertUsername(v string) {
 	o.CertUsername = v
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *GetSSHCertificate) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GetSSHCertificate) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *GetSSHCertificate) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *GetSSHCertificate) SetPassword(v string) {
-	o.Password = &v
 }
 
 // GetPublicKeyData returns the PublicKeyData field value if set, zero value otherwise.
@@ -228,38 +192,6 @@ func (o *GetSSHCertificate) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *GetSSHCertificate) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GetSSHCertificate) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *GetSSHCertificate) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *GetSSHCertificate) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o GetSSHCertificate) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -267,9 +199,6 @@ func (o GetSSHCertificate) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["cert-username"] = o.CertUsername
-	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
 	}
 	if o.PublicKeyData != nil {
 		toSerialize["public-key-data"] = o.PublicKeyData
@@ -279,9 +208,6 @@ func (o GetSSHCertificate) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

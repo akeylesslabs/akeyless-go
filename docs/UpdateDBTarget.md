@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **DbServerName** | Pointer to **string** | (Optional) Server name for certificate verification | [optional] 
 **DbType** | **string** |  | 
 **Host** | Pointer to **string** |  | [optional] 
+**KeepPrevVersion** | Pointer to **string** |  | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **MongodbAtlas** | Pointer to **bool** |  | [optional] 
 **MongodbAtlasApiPrivateKey** | Pointer to **string** | MongoDB Atlas private key | [optional] 
@@ -20,15 +21,13 @@ Name | Type | Description | Notes
 **Name** | **string** | Target name | 
 **NewName** | Pointer to **string** | New target name | [optional] 
 **OracleServiceName** | Pointer to **string** |  | [optional] 
-**Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **Port** | Pointer to **string** |  | [optional] 
 **Pwd** | Pointer to **string** |  | [optional] 
 **SnowflakeAccount** | Pointer to **string** |  | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
-**UpdateVersion** | Pointer to **bool** | Create new version for the target | [optional] [default to false]
+**UpdateVersion** | Pointer to **bool** | Deprecated | [optional] 
 **UserName** | Pointer to **string** |  | [optional] 
-**Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 
 ## Methods
 
@@ -193,6 +192,31 @@ SetHost sets Host field to given value.
 `func (o *UpdateDBTarget) HasHost() bool`
 
 HasHost returns a boolean if a field has been set.
+
+### GetKeepPrevVersion
+
+`func (o *UpdateDBTarget) GetKeepPrevVersion() string`
+
+GetKeepPrevVersion returns the KeepPrevVersion field if non-nil, zero value otherwise.
+
+### GetKeepPrevVersionOk
+
+`func (o *UpdateDBTarget) GetKeepPrevVersionOk() (*string, bool)`
+
+GetKeepPrevVersionOk returns a tuple with the KeepPrevVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKeepPrevVersion
+
+`func (o *UpdateDBTarget) SetKeepPrevVersion(v string)`
+
+SetKeepPrevVersion sets KeepPrevVersion field to given value.
+
+### HasKeepPrevVersion
+
+`func (o *UpdateDBTarget) HasKeepPrevVersion() bool`
+
+HasKeepPrevVersion returns a boolean if a field has been set.
 
 ### GetKey
 
@@ -439,31 +463,6 @@ SetOracleServiceName sets OracleServiceName field to given value.
 
 HasOracleServiceName returns a boolean if a field has been set.
 
-### GetPassword
-
-`func (o *UpdateDBTarget) GetPassword() string`
-
-GetPassword returns the Password field if non-nil, zero value otherwise.
-
-### GetPasswordOk
-
-`func (o *UpdateDBTarget) GetPasswordOk() (*string, bool)`
-
-GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPassword
-
-`func (o *UpdateDBTarget) SetPassword(v string)`
-
-SetPassword sets Password field to given value.
-
-### HasPassword
-
-`func (o *UpdateDBTarget) HasPassword() bool`
-
-HasPassword returns a boolean if a field has been set.
-
 ### GetPort
 
 `func (o *UpdateDBTarget) GetPort() string`
@@ -638,31 +637,6 @@ SetUserName sets UserName field to given value.
 `func (o *UpdateDBTarget) HasUserName() bool`
 
 HasUserName returns a boolean if a field has been set.
-
-### GetUsername
-
-`func (o *UpdateDBTarget) GetUsername() string`
-
-GetUsername returns the Username field if non-nil, zero value otherwise.
-
-### GetUsernameOk
-
-`func (o *UpdateDBTarget) GetUsernameOk() (*string, bool)`
-
-GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUsername
-
-`func (o *UpdateDBTarget) SetUsername(v string)`
-
-SetUsername sets Username field to given value.
-
-### HasUsername
-
-`func (o *UpdateDBTarget) HasUsername() bool`
-
-HasUsername returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

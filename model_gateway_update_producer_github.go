@@ -31,8 +31,6 @@ type GatewayUpdateProducerGithub struct {
 	Name string `json:"name"`
 	// Producer name
 	NewName *string `json:"new-name,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	// Target name
 	TargetName *string `json:"target-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -43,8 +41,6 @@ type GatewayUpdateProducerGithub struct {
 	TokenRepositories *[]string `json:"token-repositories,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewGatewayUpdateProducerGithub instantiates a new GatewayUpdateProducerGithub object
@@ -281,38 +277,6 @@ func (o *GatewayUpdateProducerGithub) SetNewName(v string) {
 	o.NewName = &v
 }
 
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *GatewayUpdateProducerGithub) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayUpdateProducerGithub) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *GatewayUpdateProducerGithub) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *GatewayUpdateProducerGithub) SetPassword(v string) {
-	o.Password = &v
-}
-
 // GetTargetName returns the TargetName field value if set, zero value otherwise.
 func (o *GatewayUpdateProducerGithub) GetTargetName() string {
 	if o == nil || o.TargetName == nil {
@@ -473,38 +437,6 @@ func (o *GatewayUpdateProducerGithub) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *GatewayUpdateProducerGithub) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayUpdateProducerGithub) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *GatewayUpdateProducerGithub) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *GatewayUpdateProducerGithub) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o GatewayUpdateProducerGithub) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.GithubAppId != nil {
@@ -528,9 +460,6 @@ func (o GatewayUpdateProducerGithub) MarshalJSON() ([]byte, error) {
 	if o.NewName != nil {
 		toSerialize["new-name"] = o.NewName
 	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
-	}
 	if o.TargetName != nil {
 		toSerialize["target-name"] = o.TargetName
 	}
@@ -545,9 +474,6 @@ func (o GatewayUpdateProducerGithub) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

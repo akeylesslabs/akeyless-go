@@ -21,16 +21,12 @@ type VerifyJWTWithClassicKey struct {
 	DisplayId string `json:"display-id"`
 	// JWT
 	Jwt string `json:"jwt"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	// RequiredClaims
 	RequiredClaims string `json:"required-claims"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 	// classic key version
 	Version int32 `json:"version"`
 }
@@ -102,38 +98,6 @@ func (o *VerifyJWTWithClassicKey) GetJwtOk() (*string, bool) {
 // SetJwt sets field value
 func (o *VerifyJWTWithClassicKey) SetJwt(v string) {
 	o.Jwt = v
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *VerifyJWTWithClassicKey) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *VerifyJWTWithClassicKey) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *VerifyJWTWithClassicKey) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *VerifyJWTWithClassicKey) SetPassword(v string) {
-	o.Password = &v
 }
 
 // GetRequiredClaims returns the RequiredClaims field value
@@ -224,38 +188,6 @@ func (o *VerifyJWTWithClassicKey) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *VerifyJWTWithClassicKey) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *VerifyJWTWithClassicKey) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *VerifyJWTWithClassicKey) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *VerifyJWTWithClassicKey) SetUsername(v string) {
-	o.Username = &v
-}
-
 // GetVersion returns the Version field value
 func (o *VerifyJWTWithClassicKey) GetVersion() int32 {
 	if o == nil  {
@@ -288,9 +220,6 @@ func (o VerifyJWTWithClassicKey) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["jwt"] = o.Jwt
 	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
-	}
 	if true {
 		toSerialize["required-claims"] = o.RequiredClaims
 	}
@@ -299,9 +228,6 @@ func (o VerifyJWTWithClassicKey) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	if true {
 		toSerialize["version"] = o.Version

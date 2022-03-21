@@ -17,8 +17,6 @@ import (
 
 // ReverseRBAC reverseRBAC is a command that shows which auth methods have access to a particular object.
 type ReverseRBAC struct {
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	// Path to an object
 	Path string `json:"path"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -27,8 +25,6 @@ type ReverseRBAC struct {
 	Type string `json:"type"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewReverseRBAC instantiates a new ReverseRBAC object
@@ -48,38 +44,6 @@ func NewReverseRBAC(path string, type_ string, ) *ReverseRBAC {
 func NewReverseRBACWithDefaults() *ReverseRBAC {
 	this := ReverseRBAC{}
 	return &this
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *ReverseRBAC) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ReverseRBAC) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *ReverseRBAC) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *ReverseRBAC) SetPassword(v string) {
-	o.Password = &v
 }
 
 // GetPath returns the Path field value
@@ -194,43 +158,8 @@ func (o *ReverseRBAC) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *ReverseRBAC) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ReverseRBAC) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *ReverseRBAC) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *ReverseRBAC) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o ReverseRBAC) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
-	}
 	if true {
 		toSerialize["path"] = o.Path
 	}
@@ -242,9 +171,6 @@ func (o ReverseRBAC) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

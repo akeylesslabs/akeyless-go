@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **K8sNamespace** | Pointer to **string** | K8S namespace | [optional] 
 **K8sServiceAccount** | Pointer to **string** | K8S service account | [optional] 
 **Name** | **string** | Producer name | 
-**Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **SecureAccessAllowPortForwading** | Pointer to **bool** |  | [optional] 
 **SecureAccessBastionIssuer** | Pointer to **string** |  | [optional] 
@@ -19,12 +18,12 @@ Name | Type | Description | Notes
 **SecureAccessEnable** | Pointer to **string** |  | [optional] 
 **SecureAccessWeb** | Pointer to **bool** |  | [optional] 
 **SecureAccessWebBrowsing** | Pointer to **bool** |  | [optional] 
+**SecureAccessWebProxy** | Pointer to **bool** |  | [optional] 
 **Tags** | Pointer to **[]string** | List of the tags attached to this secret | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserTtl** | Pointer to **string** | User TTL | [optional] [default to "60m"]
-**Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 
 ## Methods
 
@@ -189,31 +188,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
-### GetPassword
-
-`func (o *GatewayCreateProducerNativeK8S) GetPassword() string`
-
-GetPassword returns the Password field if non-nil, zero value otherwise.
-
-### GetPasswordOk
-
-`func (o *GatewayCreateProducerNativeK8S) GetPasswordOk() (*string, bool)`
-
-GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPassword
-
-`func (o *GatewayCreateProducerNativeK8S) SetPassword(v string)`
-
-SetPassword sets Password field to given value.
-
-### HasPassword
-
-`func (o *GatewayCreateProducerNativeK8S) HasPassword() bool`
-
-HasPassword returns a boolean if a field has been set.
 
 ### GetProducerEncryptionKeyName
 
@@ -415,6 +389,31 @@ SetSecureAccessWebBrowsing sets SecureAccessWebBrowsing field to given value.
 
 HasSecureAccessWebBrowsing returns a boolean if a field has been set.
 
+### GetSecureAccessWebProxy
+
+`func (o *GatewayCreateProducerNativeK8S) GetSecureAccessWebProxy() bool`
+
+GetSecureAccessWebProxy returns the SecureAccessWebProxy field if non-nil, zero value otherwise.
+
+### GetSecureAccessWebProxyOk
+
+`func (o *GatewayCreateProducerNativeK8S) GetSecureAccessWebProxyOk() (*bool, bool)`
+
+GetSecureAccessWebProxyOk returns a tuple with the SecureAccessWebProxy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessWebProxy
+
+`func (o *GatewayCreateProducerNativeK8S) SetSecureAccessWebProxy(v bool)`
+
+SetSecureAccessWebProxy sets SecureAccessWebProxy field to given value.
+
+### HasSecureAccessWebProxy
+
+`func (o *GatewayCreateProducerNativeK8S) HasSecureAccessWebProxy() bool`
+
+HasSecureAccessWebProxy returns a boolean if a field has been set.
+
 ### GetTags
 
 `func (o *GatewayCreateProducerNativeK8S) GetTags() []string`
@@ -539,31 +538,6 @@ SetUserTtl sets UserTtl field to given value.
 `func (o *GatewayCreateProducerNativeK8S) HasUserTtl() bool`
 
 HasUserTtl returns a boolean if a field has been set.
-
-### GetUsername
-
-`func (o *GatewayCreateProducerNativeK8S) GetUsername() string`
-
-GetUsername returns the Username field if non-nil, zero value otherwise.
-
-### GetUsernameOk
-
-`func (o *GatewayCreateProducerNativeK8S) GetUsernameOk() (*string, bool)`
-
-GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUsername
-
-`func (o *GatewayCreateProducerNativeK8S) SetUsername(v string)`
-
-SetUsername sets Username field to given value.
-
-### HasUsername
-
-`func (o *GatewayCreateProducerNativeK8S) HasUsername() bool`
-
-HasUsername returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

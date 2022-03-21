@@ -26,6 +26,7 @@ type UpdateDBTarget struct {
 	DbServerName *string `json:"db-server-name,omitempty"`
 	DbType string `json:"db-type"`
 	Host *string `json:"host,omitempty"`
+	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
 	MongodbAtlas *bool `json:"mongodb-atlas,omitempty"`
@@ -44,8 +45,6 @@ type UpdateDBTarget struct {
 	// New target name
 	NewName *string `json:"new-name,omitempty"`
 	OracleServiceName *string `json:"oracle-service-name,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	Port *string `json:"port,omitempty"`
 	Pwd *string `json:"pwd,omitempty"`
 	SnowflakeAccount *string `json:"snowflake-account,omitempty"`
@@ -53,11 +52,9 @@ type UpdateDBTarget struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// Create new version for the target
+	// Deprecated
 	UpdateVersion *bool `json:"update-version,omitempty"`
 	UserName *string `json:"user-name,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewUpdateDBTarget instantiates a new UpdateDBTarget object
@@ -68,8 +65,6 @@ func NewUpdateDBTarget(dbType string, name string, ) *UpdateDBTarget {
 	this := UpdateDBTarget{}
 	this.DbType = dbType
 	this.Name = name
-	var updateVersion bool = false
-	this.UpdateVersion = &updateVersion
 	return &this
 }
 
@@ -78,8 +73,6 @@ func NewUpdateDBTarget(dbType string, name string, ) *UpdateDBTarget {
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateDBTargetWithDefaults() *UpdateDBTarget {
 	this := UpdateDBTarget{}
-	var updateVersion bool = false
-	this.UpdateVersion = &updateVersion
 	return &this
 }
 
@@ -265,6 +258,38 @@ func (o *UpdateDBTarget) HasHost() bool {
 // SetHost gets a reference to the given string and assigns it to the Host field.
 func (o *UpdateDBTarget) SetHost(v string) {
 	o.Host = &v
+}
+
+// GetKeepPrevVersion returns the KeepPrevVersion field value if set, zero value otherwise.
+func (o *UpdateDBTarget) GetKeepPrevVersion() string {
+	if o == nil || o.KeepPrevVersion == nil {
+		var ret string
+		return ret
+	}
+	return *o.KeepPrevVersion
+}
+
+// GetKeepPrevVersionOk returns a tuple with the KeepPrevVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateDBTarget) GetKeepPrevVersionOk() (*string, bool) {
+	if o == nil || o.KeepPrevVersion == nil {
+		return nil, false
+	}
+	return o.KeepPrevVersion, true
+}
+
+// HasKeepPrevVersion returns a boolean if a field has been set.
+func (o *UpdateDBTarget) HasKeepPrevVersion() bool {
+	if o != nil && o.KeepPrevVersion != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetKeepPrevVersion gets a reference to the given string and assigns it to the KeepPrevVersion field.
+func (o *UpdateDBTarget) SetKeepPrevVersion(v string) {
+	o.KeepPrevVersion = &v
 }
 
 // GetKey returns the Key field value if set, zero value otherwise.
@@ -579,38 +604,6 @@ func (o *UpdateDBTarget) SetOracleServiceName(v string) {
 	o.OracleServiceName = &v
 }
 
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *UpdateDBTarget) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UpdateDBTarget) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *UpdateDBTarget) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *UpdateDBTarget) SetPassword(v string) {
-	o.Password = &v
-}
-
 // GetPort returns the Port field value if set, zero value otherwise.
 func (o *UpdateDBTarget) GetPort() string {
 	if o == nil || o.Port == nil {
@@ -835,38 +828,6 @@ func (o *UpdateDBTarget) SetUserName(v string) {
 	o.UserName = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *UpdateDBTarget) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UpdateDBTarget) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *UpdateDBTarget) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *UpdateDBTarget) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o UpdateDBTarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Comment != nil {
@@ -886,6 +847,9 @@ func (o UpdateDBTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.Host != nil {
 		toSerialize["host"] = o.Host
+	}
+	if o.KeepPrevVersion != nil {
+		toSerialize["keep-prev-version"] = o.KeepPrevVersion
 	}
 	if o.Key != nil {
 		toSerialize["key"] = o.Key
@@ -917,9 +881,6 @@ func (o UpdateDBTarget) MarshalJSON() ([]byte, error) {
 	if o.OracleServiceName != nil {
 		toSerialize["oracle-service-name"] = o.OracleServiceName
 	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
-	}
 	if o.Port != nil {
 		toSerialize["port"] = o.Port
 	}
@@ -940,9 +901,6 @@ func (o UpdateDBTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.UserName != nil {
 		toSerialize["user-name"] = o.UserName
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

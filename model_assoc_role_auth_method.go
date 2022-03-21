@@ -20,8 +20,6 @@ type AssocRoleAuthMethod struct {
 	// The auth method to associate
 	AmName string `json:"am-name"`
 	CaseSensitive *string `json:"case-sensitive,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	// The role to associate
 	RoleName string `json:"role-name"`
 	// key/val of sub claims, e.g group=admins,developers
@@ -30,8 +28,6 @@ type AssocRoleAuthMethod struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewAssocRoleAuthMethod instantiates a new AssocRoleAuthMethod object
@@ -107,38 +103,6 @@ func (o *AssocRoleAuthMethod) HasCaseSensitive() bool {
 // SetCaseSensitive gets a reference to the given string and assigns it to the CaseSensitive field.
 func (o *AssocRoleAuthMethod) SetCaseSensitive(v string) {
 	o.CaseSensitive = &v
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *AssocRoleAuthMethod) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AssocRoleAuthMethod) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *AssocRoleAuthMethod) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *AssocRoleAuthMethod) SetPassword(v string) {
-	o.Password = &v
 }
 
 // GetRoleName returns the RoleName field value
@@ -261,38 +225,6 @@ func (o *AssocRoleAuthMethod) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *AssocRoleAuthMethod) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AssocRoleAuthMethod) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *AssocRoleAuthMethod) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *AssocRoleAuthMethod) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o AssocRoleAuthMethod) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -300,9 +232,6 @@ func (o AssocRoleAuthMethod) MarshalJSON() ([]byte, error) {
 	}
 	if o.CaseSensitive != nil {
 		toSerialize["case-sensitive"] = o.CaseSensitive
-	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
 	}
 	if true {
 		toSerialize["role-name"] = o.RoleName
@@ -315,9 +244,6 @@ func (o AssocRoleAuthMethod) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

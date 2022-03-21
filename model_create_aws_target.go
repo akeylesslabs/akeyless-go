@@ -25,8 +25,6 @@ type CreateAWSTarget struct {
 	Key *string `json:"key,omitempty"`
 	// Target name
 	Name string `json:"name"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	Region *string `json:"region,omitempty"`
 	SessionToken *string `json:"session-token,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -34,8 +32,6 @@ type CreateAWSTarget struct {
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
 	UseGwCloudIdentity *bool `json:"use-gw-cloud-identity,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewCreateAWSTarget instantiates a new CreateAWSTarget object
@@ -208,38 +204,6 @@ func (o *CreateAWSTarget) SetName(v string) {
 	o.Name = v
 }
 
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *CreateAWSTarget) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateAWSTarget) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *CreateAWSTarget) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *CreateAWSTarget) SetPassword(v string) {
-	o.Password = &v
-}
-
 // GetRegion returns the Region field value if set, zero value otherwise.
 func (o *CreateAWSTarget) GetRegion() string {
 	if o == nil || o.Region == nil {
@@ -400,38 +364,6 @@ func (o *CreateAWSTarget) SetUseGwCloudIdentity(v bool) {
 	o.UseGwCloudIdentity = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *CreateAWSTarget) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateAWSTarget) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *CreateAWSTarget) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *CreateAWSTarget) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o CreateAWSTarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccessKey != nil {
@@ -449,9 +381,6 @@ func (o CreateAWSTarget) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
-	}
 	if o.Region != nil {
 		toSerialize["region"] = o.Region
 	}
@@ -466,9 +395,6 @@ func (o CreateAWSTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.UseGwCloudIdentity != nil {
 		toSerialize["use-gw-cloud-identity"] = o.UseGwCloudIdentity
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

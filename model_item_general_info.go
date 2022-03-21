@@ -20,8 +20,10 @@ type ItemGeneralInfo struct {
 	CertIssueDetails *CertificateIssueInfo `json:"cert_issue_details,omitempty"`
 	ClassicKeyDetails *ClassicKeyDetailsInfo `json:"classic_key_details,omitempty"`
 	DynamicSecretProducerDetails *DynamicSecretProducerInfo `json:"dynamic_secret_producer_details,omitempty"`
+	PasswordPolicy *PasswordPolicyInfo `json:"password_policy,omitempty"`
 	RotatedSecretDetails *RotatedSecretDetailsInfo `json:"rotated_secret_details,omitempty"`
 	SecureRemoteAccessDetails *SecureRemoteAccess `json:"secure_remote_access_details,omitempty"`
+	StaticSecretInfo *StaticSecretDetailsInfo `json:"static_secret_info,omitempty"`
 }
 
 // NewItemGeneralInfo instantiates a new ItemGeneralInfo object
@@ -137,6 +139,38 @@ func (o *ItemGeneralInfo) SetDynamicSecretProducerDetails(v DynamicSecretProduce
 	o.DynamicSecretProducerDetails = &v
 }
 
+// GetPasswordPolicy returns the PasswordPolicy field value if set, zero value otherwise.
+func (o *ItemGeneralInfo) GetPasswordPolicy() PasswordPolicyInfo {
+	if o == nil || o.PasswordPolicy == nil {
+		var ret PasswordPolicyInfo
+		return ret
+	}
+	return *o.PasswordPolicy
+}
+
+// GetPasswordPolicyOk returns a tuple with the PasswordPolicy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ItemGeneralInfo) GetPasswordPolicyOk() (*PasswordPolicyInfo, bool) {
+	if o == nil || o.PasswordPolicy == nil {
+		return nil, false
+	}
+	return o.PasswordPolicy, true
+}
+
+// HasPasswordPolicy returns a boolean if a field has been set.
+func (o *ItemGeneralInfo) HasPasswordPolicy() bool {
+	if o != nil && o.PasswordPolicy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPasswordPolicy gets a reference to the given PasswordPolicyInfo and assigns it to the PasswordPolicy field.
+func (o *ItemGeneralInfo) SetPasswordPolicy(v PasswordPolicyInfo) {
+	o.PasswordPolicy = &v
+}
+
 // GetRotatedSecretDetails returns the RotatedSecretDetails field value if set, zero value otherwise.
 func (o *ItemGeneralInfo) GetRotatedSecretDetails() RotatedSecretDetailsInfo {
 	if o == nil || o.RotatedSecretDetails == nil {
@@ -201,6 +235,38 @@ func (o *ItemGeneralInfo) SetSecureRemoteAccessDetails(v SecureRemoteAccess) {
 	o.SecureRemoteAccessDetails = &v
 }
 
+// GetStaticSecretInfo returns the StaticSecretInfo field value if set, zero value otherwise.
+func (o *ItemGeneralInfo) GetStaticSecretInfo() StaticSecretDetailsInfo {
+	if o == nil || o.StaticSecretInfo == nil {
+		var ret StaticSecretDetailsInfo
+		return ret
+	}
+	return *o.StaticSecretInfo
+}
+
+// GetStaticSecretInfoOk returns a tuple with the StaticSecretInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ItemGeneralInfo) GetStaticSecretInfoOk() (*StaticSecretDetailsInfo, bool) {
+	if o == nil || o.StaticSecretInfo == nil {
+		return nil, false
+	}
+	return o.StaticSecretInfo, true
+}
+
+// HasStaticSecretInfo returns a boolean if a field has been set.
+func (o *ItemGeneralInfo) HasStaticSecretInfo() bool {
+	if o != nil && o.StaticSecretInfo != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetStaticSecretInfo gets a reference to the given StaticSecretDetailsInfo and assigns it to the StaticSecretInfo field.
+func (o *ItemGeneralInfo) SetStaticSecretInfo(v StaticSecretDetailsInfo) {
+	o.StaticSecretInfo = &v
+}
+
 func (o ItemGeneralInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.CertIssueDetails != nil {
@@ -212,11 +278,17 @@ func (o ItemGeneralInfo) MarshalJSON() ([]byte, error) {
 	if o.DynamicSecretProducerDetails != nil {
 		toSerialize["dynamic_secret_producer_details"] = o.DynamicSecretProducerDetails
 	}
+	if o.PasswordPolicy != nil {
+		toSerialize["password_policy"] = o.PasswordPolicy
+	}
 	if o.RotatedSecretDetails != nil {
 		toSerialize["rotated_secret_details"] = o.RotatedSecretDetails
 	}
 	if o.SecureRemoteAccessDetails != nil {
 		toSerialize["secure_remote_access_details"] = o.SecureRemoteAccessDetails
+	}
+	if o.StaticSecretInfo != nil {
+		toSerialize["static_secret_info"] = o.StaticSecretInfo
 	}
 	return json.Marshal(toSerialize)
 }

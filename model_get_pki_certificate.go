@@ -25,16 +25,12 @@ type GetPKICertificate struct {
 	CommonName *string `json:"common-name,omitempty"`
 	// PKI key file contents. If this option is used, the certificate will be printed to stdout
 	KeyDataBase64 *string `json:"key-data-base64,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
 	// The URI Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list)
 	UriSans *string `json:"uri-sans,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewGetPKICertificate instantiates a new GetPKICertificate object
@@ -175,38 +171,6 @@ func (o *GetPKICertificate) SetKeyDataBase64(v string) {
 	o.KeyDataBase64 = &v
 }
 
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *GetPKICertificate) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GetPKICertificate) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *GetPKICertificate) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *GetPKICertificate) SetPassword(v string) {
-	o.Password = &v
-}
-
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *GetPKICertificate) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -303,38 +267,6 @@ func (o *GetPKICertificate) SetUriSans(v string) {
 	o.UriSans = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *GetPKICertificate) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GetPKICertificate) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *GetPKICertificate) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *GetPKICertificate) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o GetPKICertificate) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AltNames != nil {
@@ -349,9 +281,6 @@ func (o GetPKICertificate) MarshalJSON() ([]byte, error) {
 	if o.KeyDataBase64 != nil {
 		toSerialize["key-data-base64"] = o.KeyDataBase64
 	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
-	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
 	}
@@ -360,9 +289,6 @@ func (o GetPKICertificate) MarshalJSON() ([]byte, error) {
 	}
 	if o.UriSans != nil {
 		toSerialize["uri-sans"] = o.UriSans
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

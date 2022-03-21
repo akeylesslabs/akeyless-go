@@ -12,7 +12,6 @@ Name | Type | Description | Notes
 **Locality** | Pointer to **string** | A comma-separated list of the locality that will be set in the issued certificate | [optional] 
 **OrganizationalUnits** | Pointer to **string** | A comma-separated list of organizational units (OU) that will be set in the issued certificate | [optional] 
 **Organizations** | Pointer to **string** | A comma-separated list of organizations (O) that will be set in the issued certificate | [optional] 
-**Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **PostalCode** | Pointer to **string** | A comma-separated list of the postal code that will be set in the issued certificate | [optional] 
 **Province** | Pointer to **string** | A comma-separated list of the province that will be set in the issued certificate | [optional] 
 **PublicKeyPemData** | Pointer to **string** | PublicKey using for signing in a PEM format. | [optional] 
@@ -22,7 +21,6 @@ Name | Type | Description | Notes
 **Ttl** | **int64** | he requested Time To Live for the certificate, in seconds | 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UriSans** | Pointer to **string** | The URI Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list) | [optional] 
-**Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **Version** | **int32** | classic key version | 
 
 ## Methods
@@ -239,31 +237,6 @@ SetOrganizations sets Organizations field to given value.
 
 HasOrganizations returns a boolean if a field has been set.
 
-### GetPassword
-
-`func (o *SignPKICertWithClassicKey) GetPassword() string`
-
-GetPassword returns the Password field if non-nil, zero value otherwise.
-
-### GetPasswordOk
-
-`func (o *SignPKICertWithClassicKey) GetPasswordOk() (*string, bool)`
-
-GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPassword
-
-`func (o *SignPKICertWithClassicKey) SetPassword(v string)`
-
-SetPassword sets Password field to given value.
-
-### HasPassword
-
-`func (o *SignPKICertWithClassicKey) HasPassword() bool`
-
-HasPassword returns a boolean if a field has been set.
-
 ### GetPostalCode
 
 `func (o *SignPKICertWithClassicKey) GetPostalCode() string`
@@ -478,31 +451,6 @@ SetUriSans sets UriSans field to given value.
 `func (o *SignPKICertWithClassicKey) HasUriSans() bool`
 
 HasUriSans returns a boolean if a field has been set.
-
-### GetUsername
-
-`func (o *SignPKICertWithClassicKey) GetUsername() string`
-
-GetUsername returns the Username field if non-nil, zero value otherwise.
-
-### GetUsernameOk
-
-`func (o *SignPKICertWithClassicKey) GetUsernameOk() (*string, bool)`
-
-GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUsername
-
-`func (o *SignPKICertWithClassicKey) SetUsername(v string)`
-
-SetUsername sets Username field to given value.
-
-### HasUsername
-
-`func (o *SignPKICertWithClassicKey) HasUsername() bool`
-
-HasUsername returns a boolean if a field has been set.
 
 ### GetVersion
 

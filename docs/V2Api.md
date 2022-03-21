@@ -26,6 +26,7 @@ Method | HTTP request | Description
 [**CreateClassicKey**](V2Api.md#CreateClassicKey) | **Post** /create-classic-key | 
 [**CreateDBTarget**](V2Api.md#CreateDBTarget) | **Post** /create-db-target | 
 [**CreateDFCKey**](V2Api.md#CreateDFCKey) | **Post** /create-dfc-key | 
+[**CreateDockerhubTarget**](V2Api.md#CreateDockerhubTarget) | **Post** /create-dockerhub-target | 
 [**CreateDynamicSecret**](V2Api.md#CreateDynamicSecret) | **Post** /create-dynamic-secret | 
 [**CreateEKSTarget**](V2Api.md#CreateEKSTarget) | **Post** /create-eks-target | 
 [**CreateGKETarget**](V2Api.md#CreateGKETarget) | **Post** /create-gke-target | 
@@ -68,6 +69,7 @@ Method | HTTP request | Description
 [**GatewayCreateProducerCassandra**](V2Api.md#GatewayCreateProducerCassandra) | **Post** /gateway-create-producer-cassandra | 
 [**GatewayCreateProducerCertificateAutomation**](V2Api.md#GatewayCreateProducerCertificateAutomation) | **Post** /gateway-create-producer-certificate-automation | 
 [**GatewayCreateProducerCustom**](V2Api.md#GatewayCreateProducerCustom) | **Post** /gateway-create-producer-custom | 
+[**GatewayCreateProducerDockerhub**](V2Api.md#GatewayCreateProducerDockerhub) | **Post** /gateway-create-producer-dockerhub | 
 [**GatewayCreateProducerEks**](V2Api.md#GatewayCreateProducerEks) | **Post** /gateway-create-producer-eks | 
 [**GatewayCreateProducerGcp**](V2Api.md#GatewayCreateProducerGcp) | **Post** /gateway-create-producer-gcp | 
 [**GatewayCreateProducerGithub**](V2Api.md#GatewayCreateProducerGithub) | **Post** /gateway-create-producer-github | 
@@ -105,6 +107,7 @@ Method | HTTP request | Description
 [**GatewayUpdateProducerCassandra**](V2Api.md#GatewayUpdateProducerCassandra) | **Post** /gateway-update-producer-cassandra | 
 [**GatewayUpdateProducerCertificateAutomation**](V2Api.md#GatewayUpdateProducerCertificateAutomation) | **Post** /gateway-update-producer-certificate-automation | 
 [**GatewayUpdateProducerCustom**](V2Api.md#GatewayUpdateProducerCustom) | **Post** /gateway-update-producer-custom | 
+[**GatewayUpdateProducerDockerhub**](V2Api.md#GatewayUpdateProducerDockerhub) | **Post** /gateway-update-producer-dockerhub | 
 [**GatewayUpdateProducerEks**](V2Api.md#GatewayUpdateProducerEks) | **Post** /gateway-update-producer-eks | 
 [**GatewayUpdateProducerGcp**](V2Api.md#GatewayUpdateProducerGcp) | **Post** /gateway-update-producer-gcp | 
 [**GatewayUpdateProducerGithub**](V2Api.md#GatewayUpdateProducerGithub) | **Post** /gateway-update-producer-github | 
@@ -186,6 +189,7 @@ Method | HTTP request | Description
 [**UpdateAzureTarget**](V2Api.md#UpdateAzureTarget) | **Post** /update-azure-target | 
 [**UpdateDBTarget**](V2Api.md#UpdateDBTarget) | **Post** /update-db-target | 
 [**UpdateDBTargetDetails**](V2Api.md#UpdateDBTargetDetails) | **Post** /update-db-target-details | 
+[**UpdateDockerhubTarget**](V2Api.md#UpdateDockerhubTarget) | **Post** /update-dockerhub-target | 
 [**UpdateEKSTarget**](V2Api.md#UpdateEKSTarget) | **Post** /update-eks-target | 
 [**UpdateGKETarget**](V2Api.md#UpdateGKETarget) | **Post** /update-gke-target | 
 [**UpdateGcpTarget**](V2Api.md#UpdateGcpTarget) | **Post** /update-gcp-target | 
@@ -1623,6 +1627,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## CreateDockerhubTarget
+
+> CreateDockerhubTargetOutput CreateDockerhubTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewcreateDockerhubTarget("Name_example") // CreateDockerhubTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.CreateDockerhubTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateDockerhubTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateDockerhubTarget`: CreateDockerhubTargetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateDockerhubTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateDockerhubTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateDockerhubTarget**](CreateDockerhubTarget.md) |  | 
+
+### Return type
+
+[**CreateDockerhubTargetOutput**](createDockerhubTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## CreateDynamicSecret
 
 > map[string]interface{} CreateDynamicSecret(ctx).Body(body).Execute()
@@ -2666,7 +2734,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.Newdecrypt("Ciphertext_example") // Decrypt | 
+    body := *openapiclient.Newdecrypt() // Decrypt | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -3690,7 +3758,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.Newencrypt("Plaintext_example") // Encrypt | 
+    body := *openapiclient.Newencrypt() // Encrypt | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -4296,6 +4364,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GatewayCreateProducerCustomOutput**](gatewayCreateProducerCustomOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayCreateProducerDockerhub
+
+> GatewayCreateProducerDockerhubOutput GatewayCreateProducerDockerhub(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayCreateProducerDockerhub("Name_example") // GatewayCreateProducerDockerhub | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayCreateProducerDockerhub(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerDockerhub``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayCreateProducerDockerhub`: GatewayCreateProducerDockerhubOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayCreateProducerDockerhub`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayCreateProducerDockerhubRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayCreateProducerDockerhub**](GatewayCreateProducerDockerhub.md) |  | 
+
+### Return type
+
+[**GatewayCreateProducerDockerhubOutput**](gatewayCreateProducerDockerhubOutput.md)
 
 ### Authorization
 
@@ -6662,6 +6794,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GatewayUpdateProducerCustomOutput**](gatewayUpdateProducerCustomOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateProducerDockerhub
+
+> GatewayUpdateProducerDockerhubOutput GatewayUpdateProducerDockerhub(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateProducerDockerhub("Name_example") // GatewayUpdateProducerDockerhub | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateProducerDockerhub(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerDockerhub``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateProducerDockerhub`: GatewayUpdateProducerDockerhubOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateProducerDockerhub`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateProducerDockerhubRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerDockerhub**](GatewayUpdateProducerDockerhub.md) |  | 
+
+### Return type
+
+[**GatewayUpdateProducerDockerhubOutput**](gatewayUpdateProducerDockerhubOutput.md)
 
 ### Authorization
 
@@ -11834,6 +12030,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**UpdateTargetOutput**](updateTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateDockerhubTarget
+
+> UpdateDockerhubTargetOutput UpdateDockerhubTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewupdateDockerhubTarget("Name_example") // UpdateDockerhubTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdateDockerhubTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateDockerhubTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateDockerhubTarget`: UpdateDockerhubTargetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateDockerhubTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateDockerhubTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateDockerhubTarget**](UpdateDockerhubTarget.md) |  | 
+
+### Return type
+
+[**UpdateDockerhubTargetOutput**](updateDockerhubTargetOutput.md)
 
 ### Authorization
 

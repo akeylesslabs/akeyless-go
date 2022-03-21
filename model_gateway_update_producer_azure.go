@@ -25,17 +25,20 @@ type GatewayUpdateProducerAzure struct {
 	AzureClientSecret *string `json:"azure-client-secret,omitempty"`
 	// Azure Tenant ID
 	AzureTenantId *string `json:"azure-tenant-id,omitempty"`
+	// FixedUserClaimKeyname
+	FixedUserClaimKeyname *string `json:"fixed-user-claim-keyname,omitempty"`
+	// Fixed user
+	FixedUserOnly *bool `json:"fixed-user-only,omitempty"`
 	// Producer name
 	Name string `json:"name"`
 	// Producer name
 	NewName *string `json:"new-name,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Password *string `json:"password,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
 	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
+	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
 	// List of the tags attached to this secret
 	Tags *[]string `json:"tags,omitempty"`
 	// Target name
@@ -56,8 +59,6 @@ type GatewayUpdateProducerAzure struct {
 	UserRoleTemplateId *string `json:"user-role-template-id,omitempty"`
 	// User TTL
 	UserTtl *string `json:"user-ttl,omitempty"`
-	// Required only when the authentication process requires a username and password
-	Username *string `json:"username,omitempty"`
 }
 
 // NewGatewayUpdateProducerAzure instantiates a new GatewayUpdateProducerAzure object
@@ -66,10 +67,14 @@ type GatewayUpdateProducerAzure struct {
 // will change when the set of required properties is changed
 func NewGatewayUpdateProducerAzure(name string, ) *GatewayUpdateProducerAzure {
 	this := GatewayUpdateProducerAzure{}
+	var fixedUserClaimKeyname string = "false"
+	this.FixedUserClaimKeyname = &fixedUserClaimKeyname
+	var fixedUserOnly bool = false
+	this.FixedUserOnly = &fixedUserOnly
 	this.Name = name
 	var userPortalAccess bool = false
 	this.UserPortalAccess = &userPortalAccess
-	var userProgrammaticAccess bool = true
+	var userProgrammaticAccess bool = false
 	this.UserProgrammaticAccess = &userProgrammaticAccess
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
@@ -81,9 +86,13 @@ func NewGatewayUpdateProducerAzure(name string, ) *GatewayUpdateProducerAzure {
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayUpdateProducerAzureWithDefaults() *GatewayUpdateProducerAzure {
 	this := GatewayUpdateProducerAzure{}
+	var fixedUserClaimKeyname string = "false"
+	this.FixedUserClaimKeyname = &fixedUserClaimKeyname
+	var fixedUserOnly bool = false
+	this.FixedUserOnly = &fixedUserOnly
 	var userPortalAccess bool = false
 	this.UserPortalAccess = &userPortalAccess
-	var userProgrammaticAccess bool = true
+	var userProgrammaticAccess bool = false
 	this.UserProgrammaticAccess = &userProgrammaticAccess
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
@@ -218,6 +227,70 @@ func (o *GatewayUpdateProducerAzure) SetAzureTenantId(v string) {
 	o.AzureTenantId = &v
 }
 
+// GetFixedUserClaimKeyname returns the FixedUserClaimKeyname field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerAzure) GetFixedUserClaimKeyname() string {
+	if o == nil || o.FixedUserClaimKeyname == nil {
+		var ret string
+		return ret
+	}
+	return *o.FixedUserClaimKeyname
+}
+
+// GetFixedUserClaimKeynameOk returns a tuple with the FixedUserClaimKeyname field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerAzure) GetFixedUserClaimKeynameOk() (*string, bool) {
+	if o == nil || o.FixedUserClaimKeyname == nil {
+		return nil, false
+	}
+	return o.FixedUserClaimKeyname, true
+}
+
+// HasFixedUserClaimKeyname returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerAzure) HasFixedUserClaimKeyname() bool {
+	if o != nil && o.FixedUserClaimKeyname != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFixedUserClaimKeyname gets a reference to the given string and assigns it to the FixedUserClaimKeyname field.
+func (o *GatewayUpdateProducerAzure) SetFixedUserClaimKeyname(v string) {
+	o.FixedUserClaimKeyname = &v
+}
+
+// GetFixedUserOnly returns the FixedUserOnly field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerAzure) GetFixedUserOnly() bool {
+	if o == nil || o.FixedUserOnly == nil {
+		var ret bool
+		return ret
+	}
+	return *o.FixedUserOnly
+}
+
+// GetFixedUserOnlyOk returns a tuple with the FixedUserOnly field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerAzure) GetFixedUserOnlyOk() (*bool, bool) {
+	if o == nil || o.FixedUserOnly == nil {
+		return nil, false
+	}
+	return o.FixedUserOnly, true
+}
+
+// HasFixedUserOnly returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerAzure) HasFixedUserOnly() bool {
+	if o != nil && o.FixedUserOnly != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFixedUserOnly gets a reference to the given bool and assigns it to the FixedUserOnly field.
+func (o *GatewayUpdateProducerAzure) SetFixedUserOnly(v bool) {
+	o.FixedUserOnly = &v
+}
+
 // GetName returns the Name field value
 func (o *GatewayUpdateProducerAzure) GetName() string {
 	if o == nil  {
@@ -272,38 +345,6 @@ func (o *GatewayUpdateProducerAzure) HasNewName() bool {
 // SetNewName gets a reference to the given string and assigns it to the NewName field.
 func (o *GatewayUpdateProducerAzure) SetNewName(v string) {
 	o.NewName = &v
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *GatewayUpdateProducerAzure) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayUpdateProducerAzure) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *GatewayUpdateProducerAzure) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *GatewayUpdateProducerAzure) SetPassword(v string) {
-	o.Password = &v
 }
 
 // GetProducerEncryptionKeyName returns the ProducerEncryptionKeyName field value if set, zero value otherwise.
@@ -432,6 +473,38 @@ func (o *GatewayUpdateProducerAzure) HasSecureAccessWebBrowsing() bool {
 // SetSecureAccessWebBrowsing gets a reference to the given bool and assigns it to the SecureAccessWebBrowsing field.
 func (o *GatewayUpdateProducerAzure) SetSecureAccessWebBrowsing(v bool) {
 	o.SecureAccessWebBrowsing = &v
+}
+
+// GetSecureAccessWebProxy returns the SecureAccessWebProxy field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerAzure) GetSecureAccessWebProxy() bool {
+	if o == nil || o.SecureAccessWebProxy == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessWebProxy
+}
+
+// GetSecureAccessWebProxyOk returns a tuple with the SecureAccessWebProxy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerAzure) GetSecureAccessWebProxyOk() (*bool, bool) {
+	if o == nil || o.SecureAccessWebProxy == nil {
+		return nil, false
+	}
+	return o.SecureAccessWebProxy, true
+}
+
+// HasSecureAccessWebProxy returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerAzure) HasSecureAccessWebProxy() bool {
+	if o != nil && o.SecureAccessWebProxy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessWebProxy gets a reference to the given bool and assigns it to the SecureAccessWebProxy field.
+func (o *GatewayUpdateProducerAzure) SetSecureAccessWebProxy(v bool) {
+	o.SecureAccessWebProxy = &v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
@@ -754,38 +827,6 @@ func (o *GatewayUpdateProducerAzure) SetUserTtl(v string) {
 	o.UserTtl = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *GatewayUpdateProducerAzure) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayUpdateProducerAzure) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *GatewayUpdateProducerAzure) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *GatewayUpdateProducerAzure) SetUsername(v string) {
-	o.Username = &v
-}
-
 func (o GatewayUpdateProducerAzure) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AppObjId != nil {
@@ -800,14 +841,17 @@ func (o GatewayUpdateProducerAzure) MarshalJSON() ([]byte, error) {
 	if o.AzureTenantId != nil {
 		toSerialize["azure-tenant-id"] = o.AzureTenantId
 	}
+	if o.FixedUserClaimKeyname != nil {
+		toSerialize["fixed-user-claim-keyname"] = o.FixedUserClaimKeyname
+	}
+	if o.FixedUserOnly != nil {
+		toSerialize["fixed-user-only"] = o.FixedUserOnly
+	}
 	if true {
 		toSerialize["name"] = o.Name
 	}
 	if o.NewName != nil {
 		toSerialize["new-name"] = o.NewName
-	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
 	}
 	if o.ProducerEncryptionKeyName != nil {
 		toSerialize["producer-encryption-key-name"] = o.ProducerEncryptionKeyName
@@ -820,6 +864,9 @@ func (o GatewayUpdateProducerAzure) MarshalJSON() ([]byte, error) {
 	}
 	if o.SecureAccessWebBrowsing != nil {
 		toSerialize["secure-access-web-browsing"] = o.SecureAccessWebBrowsing
+	}
+	if o.SecureAccessWebProxy != nil {
+		toSerialize["secure-access-web-proxy"] = o.SecureAccessWebProxy
 	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags
@@ -850,9 +897,6 @@ func (o GatewayUpdateProducerAzure) MarshalJSON() ([]byte, error) {
 	}
 	if o.UserTtl != nil {
 		toSerialize["user-ttl"] = o.UserTtl
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

@@ -5,17 +5,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Comment** | Pointer to **string** | Comment about the target | [optional] 
+**KeepPrevVersion** | Pointer to **string** |  | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Target name | 
 **NewName** | Pointer to **string** | New target name | [optional] 
-**Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **RabbitmqServerPassword** | Pointer to **string** |  | [optional] 
 **RabbitmqServerUri** | Pointer to **string** |  | [optional] 
 **RabbitmqServerUser** | Pointer to **string** |  | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
-**UpdateVersion** | Pointer to **bool** | Create new version for the target | [optional] [default to false]
-**Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
+**UpdateVersion** | Pointer to **bool** | Deprecated | [optional] 
 
 ## Methods
 
@@ -60,6 +59,31 @@ SetComment sets Comment field to given value.
 `func (o *UpdateRabbitMQTarget) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
+
+### GetKeepPrevVersion
+
+`func (o *UpdateRabbitMQTarget) GetKeepPrevVersion() string`
+
+GetKeepPrevVersion returns the KeepPrevVersion field if non-nil, zero value otherwise.
+
+### GetKeepPrevVersionOk
+
+`func (o *UpdateRabbitMQTarget) GetKeepPrevVersionOk() (*string, bool)`
+
+GetKeepPrevVersionOk returns a tuple with the KeepPrevVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKeepPrevVersion
+
+`func (o *UpdateRabbitMQTarget) SetKeepPrevVersion(v string)`
+
+SetKeepPrevVersion sets KeepPrevVersion field to given value.
+
+### HasKeepPrevVersion
+
+`func (o *UpdateRabbitMQTarget) HasKeepPrevVersion() bool`
+
+HasKeepPrevVersion returns a boolean if a field has been set.
 
 ### GetKey
 
@@ -130,31 +154,6 @@ SetNewName sets NewName field to given value.
 `func (o *UpdateRabbitMQTarget) HasNewName() bool`
 
 HasNewName returns a boolean if a field has been set.
-
-### GetPassword
-
-`func (o *UpdateRabbitMQTarget) GetPassword() string`
-
-GetPassword returns the Password field if non-nil, zero value otherwise.
-
-### GetPasswordOk
-
-`func (o *UpdateRabbitMQTarget) GetPasswordOk() (*string, bool)`
-
-GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPassword
-
-`func (o *UpdateRabbitMQTarget) SetPassword(v string)`
-
-SetPassword sets Password field to given value.
-
-### HasPassword
-
-`func (o *UpdateRabbitMQTarget) HasPassword() bool`
-
-HasPassword returns a boolean if a field has been set.
 
 ### GetRabbitmqServerPassword
 
@@ -305,31 +304,6 @@ SetUpdateVersion sets UpdateVersion field to given value.
 `func (o *UpdateRabbitMQTarget) HasUpdateVersion() bool`
 
 HasUpdateVersion returns a boolean if a field has been set.
-
-### GetUsername
-
-`func (o *UpdateRabbitMQTarget) GetUsername() string`
-
-GetUsername returns the Username field if non-nil, zero value otherwise.
-
-### GetUsernameOk
-
-`func (o *UpdateRabbitMQTarget) GetUsernameOk() (*string, bool)`
-
-GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUsername
-
-`func (o *UpdateRabbitMQTarget) SetUsername(v string)`
-
-SetUsername sets Username field to given value.
-
-### HasUsername
-
-`func (o *UpdateRabbitMQTarget) HasUsername() bool`
-
-HasUsername returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

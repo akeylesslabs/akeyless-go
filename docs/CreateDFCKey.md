@@ -8,12 +8,10 @@ Name | Type | Description | Notes
 **CustomerFrgId** | Pointer to **string** | The customer fragment ID that will be used to create the DFC key (if empty, the key will be created independently of a customer fragment) | [optional] 
 **Metadata** | Pointer to **string** | Metadata about the DFC key | [optional] 
 **Name** | **string** | DFCKey name | 
-**Password** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 **SplitLevel** | Pointer to **int64** | The number of fragments that the item will be split into (not includes customer fragment) | [optional] [default to 2]
 **Tag** | Pointer to **[]string** | List of the tags attached to this DFC key | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
-**Username** | Pointer to **string** | Required only when the authentication process requires a username and password | [optional] 
 
 ## Methods
 
@@ -124,31 +122,6 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### GetPassword
-
-`func (o *CreateDFCKey) GetPassword() string`
-
-GetPassword returns the Password field if non-nil, zero value otherwise.
-
-### GetPasswordOk
-
-`func (o *CreateDFCKey) GetPasswordOk() (*string, bool)`
-
-GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPassword
-
-`func (o *CreateDFCKey) SetPassword(v string)`
-
-SetPassword sets Password field to given value.
-
-### HasPassword
-
-`func (o *CreateDFCKey) HasPassword() bool`
-
-HasPassword returns a boolean if a field has been set.
-
 ### GetSplitLevel
 
 `func (o *CreateDFCKey) GetSplitLevel() int64`
@@ -248,31 +221,6 @@ SetUidToken sets UidToken field to given value.
 `func (o *CreateDFCKey) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
-
-### GetUsername
-
-`func (o *CreateDFCKey) GetUsername() string`
-
-GetUsername returns the Username field if non-nil, zero value otherwise.
-
-### GetUsernameOk
-
-`func (o *CreateDFCKey) GetUsernameOk() (*string, bool)`
-
-GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUsername
-
-`func (o *CreateDFCKey) SetUsername(v string)`
-
-SetUsername sets Username field to given value.
-
-### HasUsername
-
-`func (o *CreateDFCKey) HasUsername() bool`
-
-HasUsername returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
