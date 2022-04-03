@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AllowUserExtendSession** | Pointer to **int64** | AllowUserExtendSession | [optional] 
 **FixedUserOnly** | Pointer to **string** | Fixed user | [optional] [default to "false"]
 **Name** | **string** | Producer name | 
 **NewName** | Pointer to **string** | Producer name | [optional] 
@@ -23,6 +24,7 @@ Name | Type | Description | Notes
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserTtl** | Pointer to **string** | User TTL | [optional] [default to "60m"]
+**WarnUserBeforeExpiration** | Pointer to **int64** | WarnBeforeUserExpiration | [optional] 
 
 ## Methods
 
@@ -42,6 +44,31 @@ will change when the set of required properties is changed
 NewGatewayUpdateProducerRdpWithDefaults instantiates a new GatewayUpdateProducerRdp object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAllowUserExtendSession
+
+`func (o *GatewayUpdateProducerRdp) GetAllowUserExtendSession() int64`
+
+GetAllowUserExtendSession returns the AllowUserExtendSession field if non-nil, zero value otherwise.
+
+### GetAllowUserExtendSessionOk
+
+`func (o *GatewayUpdateProducerRdp) GetAllowUserExtendSessionOk() (*int64, bool)`
+
+GetAllowUserExtendSessionOk returns a tuple with the AllowUserExtendSession field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowUserExtendSession
+
+`func (o *GatewayUpdateProducerRdp) SetAllowUserExtendSession(v int64)`
+
+SetAllowUserExtendSession sets AllowUserExtendSession field to given value.
+
+### HasAllowUserExtendSession
+
+`func (o *GatewayUpdateProducerRdp) HasAllowUserExtendSession() bool`
+
+HasAllowUserExtendSession returns a boolean if a field has been set.
 
 ### GetFixedUserOnly
 
@@ -512,6 +539,31 @@ SetUserTtl sets UserTtl field to given value.
 `func (o *GatewayUpdateProducerRdp) HasUserTtl() bool`
 
 HasUserTtl returns a boolean if a field has been set.
+
+### GetWarnUserBeforeExpiration
+
+`func (o *GatewayUpdateProducerRdp) GetWarnUserBeforeExpiration() int64`
+
+GetWarnUserBeforeExpiration returns the WarnUserBeforeExpiration field if non-nil, zero value otherwise.
+
+### GetWarnUserBeforeExpirationOk
+
+`func (o *GatewayUpdateProducerRdp) GetWarnUserBeforeExpirationOk() (*int64, bool)`
+
+GetWarnUserBeforeExpirationOk returns a tuple with the WarnUserBeforeExpiration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWarnUserBeforeExpiration
+
+`func (o *GatewayUpdateProducerRdp) SetWarnUserBeforeExpiration(v int64)`
+
+SetWarnUserBeforeExpiration sets WarnUserBeforeExpiration field to given value.
+
+### HasWarnUserBeforeExpiration
+
+`func (o *GatewayUpdateProducerRdp) HasWarnUserBeforeExpiration() bool`
+
+HasWarnUserBeforeExpiration returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ApiId** | Pointer to **string** |  | [optional] 
 **ApiKey** | Pointer to **string** |  | [optional] 
-**ApplicationId** | **string** | ApplicationId (used in azure) | 
+**ApplicationId** | Pointer to **string** | ApplicationId (used in azure) | [optional] 
 **AuthenticationCredentials** | Pointer to **string** |  | [optional] 
 **AutoRotate** | Pointer to **string** | Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation | [optional] 
 **CustomPayload** | Pointer to **string** |  | [optional] 
@@ -33,7 +33,7 @@ Name | Type | Description | Notes
 
 ### NewCreateRotatedSecret
 
-`func NewCreateRotatedSecret(applicationId string, name string, rotatorType string, targetName string, ) *CreateRotatedSecret`
+`func NewCreateRotatedSecret(name string, rotatorType string, targetName string, ) *CreateRotatedSecret`
 
 NewCreateRotatedSecret instantiates a new CreateRotatedSecret object
 This constructor will assign default values to properties that have it defined,
@@ -117,6 +117,11 @@ and a boolean to check if the value has been set.
 
 SetApplicationId sets ApplicationId field to given value.
 
+### HasApplicationId
+
+`func (o *CreateRotatedSecret) HasApplicationId() bool`
+
+HasApplicationId returns a boolean if a field has been set.
 
 ### GetAuthenticationCredentials
 

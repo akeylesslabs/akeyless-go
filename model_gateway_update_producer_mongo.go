@@ -23,6 +23,8 @@ type GatewayUpdateProducerMongo struct {
 	MongodbAtlasApiPublicKey *string `json:"mongodb-atlas-api-public-key,omitempty"`
 	// MongoDB Atlas project ID
 	MongodbAtlasProjectId *string `json:"mongodb-atlas-project-id,omitempty"`
+	// MongoDB custom data
+	MongodbCustomData *string `json:"mongodb-custom-data,omitempty"`
 	// MongoDB server default authentication database
 	MongodbDefaultAuthDb *string `json:"mongodb-default-auth-db,omitempty"`
 	// MongoDB server host and port
@@ -181,6 +183,38 @@ func (o *GatewayUpdateProducerMongo) HasMongodbAtlasProjectId() bool {
 // SetMongodbAtlasProjectId gets a reference to the given string and assigns it to the MongodbAtlasProjectId field.
 func (o *GatewayUpdateProducerMongo) SetMongodbAtlasProjectId(v string) {
 	o.MongodbAtlasProjectId = &v
+}
+
+// GetMongodbCustomData returns the MongodbCustomData field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerMongo) GetMongodbCustomData() string {
+	if o == nil || o.MongodbCustomData == nil {
+		var ret string
+		return ret
+	}
+	return *o.MongodbCustomData
+}
+
+// GetMongodbCustomDataOk returns a tuple with the MongodbCustomData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerMongo) GetMongodbCustomDataOk() (*string, bool) {
+	if o == nil || o.MongodbCustomData == nil {
+		return nil, false
+	}
+	return o.MongodbCustomData, true
+}
+
+// HasMongodbCustomData returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerMongo) HasMongodbCustomData() bool {
+	if o != nil && o.MongodbCustomData != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMongodbCustomData gets a reference to the given string and assigns it to the MongodbCustomData field.
+func (o *GatewayUpdateProducerMongo) SetMongodbCustomData(v string) {
+	o.MongodbCustomData = &v
 }
 
 // GetMongodbDefaultAuthDb returns the MongodbDefaultAuthDb field value if set, zero value otherwise.
@@ -825,6 +859,9 @@ func (o GatewayUpdateProducerMongo) MarshalJSON() ([]byte, error) {
 	}
 	if o.MongodbAtlasProjectId != nil {
 		toSerialize["mongodb-atlas-project-id"] = o.MongodbAtlasProjectId
+	}
+	if o.MongodbCustomData != nil {
+		toSerialize["mongodb-custom-data"] = o.MongodbCustomData
 	}
 	if o.MongodbDefaultAuthDb != nil {
 		toSerialize["mongodb-default-auth-db"] = o.MongodbDefaultAuthDb

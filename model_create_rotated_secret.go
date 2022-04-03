@@ -20,7 +20,7 @@ type CreateRotatedSecret struct {
 	ApiId *string `json:"api-id,omitempty"`
 	ApiKey *string `json:"api-key,omitempty"`
 	// ApplicationId (used in azure)
-	ApplicationId string `json:"application-id"`
+	ApplicationId *string `json:"application-id,omitempty"`
 	AuthenticationCredentials *string `json:"authentication-credentials,omitempty"`
 	// Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation
 	AutoRotate *string `json:"auto-rotate,omitempty"`
@@ -62,9 +62,8 @@ type CreateRotatedSecret struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateRotatedSecret(applicationId string, name string, rotatorType string, targetName string, ) *CreateRotatedSecret {
+func NewCreateRotatedSecret(name string, rotatorType string, targetName string, ) *CreateRotatedSecret {
 	this := CreateRotatedSecret{}
-	this.ApplicationId = applicationId
 	this.Name = name
 	this.RotatorType = rotatorType
 	this.TargetName = targetName
@@ -143,28 +142,36 @@ func (o *CreateRotatedSecret) SetApiKey(v string) {
 	o.ApiKey = &v
 }
 
-// GetApplicationId returns the ApplicationId field value
+// GetApplicationId returns the ApplicationId field value if set, zero value otherwise.
 func (o *CreateRotatedSecret) GetApplicationId() string {
-	if o == nil  {
+	if o == nil || o.ApplicationId == nil {
 		var ret string
 		return ret
 	}
-
-	return o.ApplicationId
+	return *o.ApplicationId
 }
 
-// GetApplicationIdOk returns a tuple with the ApplicationId field value
+// GetApplicationIdOk returns a tuple with the ApplicationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateRotatedSecret) GetApplicationIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.ApplicationId == nil {
 		return nil, false
 	}
-	return &o.ApplicationId, true
+	return o.ApplicationId, true
 }
 
-// SetApplicationId sets field value
+// HasApplicationId returns a boolean if a field has been set.
+func (o *CreateRotatedSecret) HasApplicationId() bool {
+	if o != nil && o.ApplicationId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetApplicationId gets a reference to the given string and assigns it to the ApplicationId field.
 func (o *CreateRotatedSecret) SetApplicationId(v string) {
-	o.ApplicationId = v
+	o.ApplicationId = &v
 }
 
 // GetAuthenticationCredentials returns the AuthenticationCredentials field value if set, zero value otherwise.
@@ -823,7 +830,7 @@ func (o CreateRotatedSecret) MarshalJSON() ([]byte, error) {
 	if o.ApiKey != nil {
 		toSerialize["api-key"] = o.ApiKey
 	}
-	if true {
+	if o.ApplicationId != nil {
 		toSerialize["application-id"] = o.ApplicationId
 	}
 	if o.AuthenticationCredentials != nil {

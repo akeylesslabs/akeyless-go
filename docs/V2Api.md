@@ -2350,7 +2350,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateRotatedSecret("ApplicationId_example", "Name_example", "RotatorType_example", "TargetName_example") // CreateRotatedSecret | 
+    body := *openapiclient.NewcreateRotatedSecret("Name_example", "RotatorType_example", "TargetName_example") // CreateRotatedSecret | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

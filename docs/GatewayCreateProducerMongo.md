@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **MongodbAtlasApiPrivateKey** | Pointer to **string** | MongoDB Atlas private key | [optional] 
 **MongodbAtlasApiPublicKey** | Pointer to **string** | MongoDB Atlas public key | [optional] 
 **MongodbAtlasProjectId** | Pointer to **string** | MongoDB Atlas project ID | [optional] 
+**MongodbCustomData** | Pointer to **string** | MongoDB custom data | [optional] 
 **MongodbDefaultAuthDb** | Pointer to **string** | MongoDB server default authentication database | [optional] 
 **MongodbHostPort** | Pointer to **string** | MongoDB server host and port | [optional] 
 **MongodbName** | Pointer to **string** | MongoDB Name | [optional] 
@@ -120,6 +121,31 @@ SetMongodbAtlasProjectId sets MongodbAtlasProjectId field to given value.
 `func (o *GatewayCreateProducerMongo) HasMongodbAtlasProjectId() bool`
 
 HasMongodbAtlasProjectId returns a boolean if a field has been set.
+
+### GetMongodbCustomData
+
+`func (o *GatewayCreateProducerMongo) GetMongodbCustomData() string`
+
+GetMongodbCustomData returns the MongodbCustomData field if non-nil, zero value otherwise.
+
+### GetMongodbCustomDataOk
+
+`func (o *GatewayCreateProducerMongo) GetMongodbCustomDataOk() (*string, bool)`
+
+GetMongodbCustomDataOk returns a tuple with the MongodbCustomData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMongodbCustomData
+
+`func (o *GatewayCreateProducerMongo) SetMongodbCustomData(v string)`
+
+SetMongodbCustomData sets MongodbCustomData field to given value.
+
+### HasMongodbCustomData
+
+`func (o *GatewayCreateProducerMongo) HasMongodbCustomData() bool`
+
+HasMongodbCustomData returns a boolean if a field has been set.
 
 ### GetMongodbDefaultAuthDb
 

@@ -17,6 +17,8 @@ import (
 
 // GatewayCreateProducerRdp gatewayCreateProducerRdp is a command that creates rdp producer
 type GatewayCreateProducerRdp struct {
+	// AllowUserExtendSession
+	AllowUserExtendSession *int64 `json:"allow-user-extend-session,omitempty"`
 	// Fixed user
 	FixedUserOnly *string `json:"fixed-user-only,omitempty"`
 	// Producer name
@@ -48,6 +50,8 @@ type GatewayCreateProducerRdp struct {
 	UidToken *string `json:"uid-token,omitempty"`
 	// User TTL
 	UserTtl *string `json:"user-ttl,omitempty"`
+	// WarnBeforeUserExpiration
+	WarnUserBeforeExpiration *int64 `json:"warn-user-before-expiration,omitempty"`
 }
 
 // NewGatewayCreateProducerRdp instantiates a new GatewayCreateProducerRdp object
@@ -78,6 +82,38 @@ func NewGatewayCreateProducerRdpWithDefaults() *GatewayCreateProducerRdp {
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
+}
+
+// GetAllowUserExtendSession returns the AllowUserExtendSession field value if set, zero value otherwise.
+func (o *GatewayCreateProducerRdp) GetAllowUserExtendSession() int64 {
+	if o == nil || o.AllowUserExtendSession == nil {
+		var ret int64
+		return ret
+	}
+	return *o.AllowUserExtendSession
+}
+
+// GetAllowUserExtendSessionOk returns a tuple with the AllowUserExtendSession field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerRdp) GetAllowUserExtendSessionOk() (*int64, bool) {
+	if o == nil || o.AllowUserExtendSession == nil {
+		return nil, false
+	}
+	return o.AllowUserExtendSession, true
+}
+
+// HasAllowUserExtendSession returns a boolean if a field has been set.
+func (o *GatewayCreateProducerRdp) HasAllowUserExtendSession() bool {
+	if o != nil && o.AllowUserExtendSession != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowUserExtendSession gets a reference to the given int64 and assigns it to the AllowUserExtendSession field.
+func (o *GatewayCreateProducerRdp) SetAllowUserExtendSession(v int64) {
+	o.AllowUserExtendSession = &v
 }
 
 // GetFixedUserOnly returns the FixedUserOnly field value if set, zero value otherwise.
@@ -648,8 +684,43 @@ func (o *GatewayCreateProducerRdp) SetUserTtl(v string) {
 	o.UserTtl = &v
 }
 
+// GetWarnUserBeforeExpiration returns the WarnUserBeforeExpiration field value if set, zero value otherwise.
+func (o *GatewayCreateProducerRdp) GetWarnUserBeforeExpiration() int64 {
+	if o == nil || o.WarnUserBeforeExpiration == nil {
+		var ret int64
+		return ret
+	}
+	return *o.WarnUserBeforeExpiration
+}
+
+// GetWarnUserBeforeExpirationOk returns a tuple with the WarnUserBeforeExpiration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerRdp) GetWarnUserBeforeExpirationOk() (*int64, bool) {
+	if o == nil || o.WarnUserBeforeExpiration == nil {
+		return nil, false
+	}
+	return o.WarnUserBeforeExpiration, true
+}
+
+// HasWarnUserBeforeExpiration returns a boolean if a field has been set.
+func (o *GatewayCreateProducerRdp) HasWarnUserBeforeExpiration() bool {
+	if o != nil && o.WarnUserBeforeExpiration != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetWarnUserBeforeExpiration gets a reference to the given int64 and assigns it to the WarnUserBeforeExpiration field.
+func (o *GatewayCreateProducerRdp) SetWarnUserBeforeExpiration(v int64) {
+	o.WarnUserBeforeExpiration = &v
+}
+
 func (o GatewayCreateProducerRdp) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AllowUserExtendSession != nil {
+		toSerialize["allow-user-extend-session"] = o.AllowUserExtendSession
+	}
 	if o.FixedUserOnly != nil {
 		toSerialize["fixed-user-only"] = o.FixedUserOnly
 	}
@@ -703,6 +774,9 @@ func (o GatewayCreateProducerRdp) MarshalJSON() ([]byte, error) {
 	}
 	if o.UserTtl != nil {
 		toSerialize["user-ttl"] = o.UserTtl
+	}
+	if o.WarnUserBeforeExpiration != nil {
+		toSerialize["warn-user-before-expiration"] = o.WarnUserBeforeExpiration
 	}
 	return json.Marshal(toSerialize)
 }

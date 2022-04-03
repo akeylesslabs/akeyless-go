@@ -125,6 +125,7 @@ type DSProducerDetails struct {
 	MongodbAtlasApiPublicKey *string `json:"mongodb_atlas_api_public_key,omitempty"`
 	// mongodb atlas fields
 	MongodbAtlasProjectId *string `json:"mongodb_atlas_project_id,omitempty"`
+	MongodbCustomData *string `json:"mongodb_custom_data,omitempty"`
 	// common fields
 	MongodbDbName *string `json:"mongodb_db_name,omitempty"`
 	MongodbDefaultAuthDb *string `json:"mongodb_default_auth_db,omitempty"`
@@ -160,6 +161,7 @@ type DSProducerDetails struct {
 	RotateSyncUrl *string `json:"rotate_sync_url,omitempty"`
 	Scopes *[]string `json:"scopes,omitempty"`
 	SecureRemoteAccessDetails *SecureRemoteAccess `json:"secure_remote_access_details,omitempty"`
+	SessionExtensionWarnIntervalMin *int64 `json:"session_extension_warn_interval_min,omitempty"`
 	SfAccount *string `json:"sf_account,omitempty"`
 	// generated  users info
 	SfUserRole *string `json:"sf_user_role,omitempty"`
@@ -3571,6 +3573,38 @@ func (o *DSProducerDetails) SetMongodbAtlasProjectId(v string) {
 	o.MongodbAtlasProjectId = &v
 }
 
+// GetMongodbCustomData returns the MongodbCustomData field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetMongodbCustomData() string {
+	if o == nil || o.MongodbCustomData == nil {
+		var ret string
+		return ret
+	}
+	return *o.MongodbCustomData
+}
+
+// GetMongodbCustomDataOk returns a tuple with the MongodbCustomData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetMongodbCustomDataOk() (*string, bool) {
+	if o == nil || o.MongodbCustomData == nil {
+		return nil, false
+	}
+	return o.MongodbCustomData, true
+}
+
+// HasMongodbCustomData returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasMongodbCustomData() bool {
+	if o != nil && o.MongodbCustomData != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMongodbCustomData gets a reference to the given string and assigns it to the MongodbCustomData field.
+func (o *DSProducerDetails) SetMongodbCustomData(v string) {
+	o.MongodbCustomData = &v
+}
+
 // GetMongodbDbName returns the MongodbDbName field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetMongodbDbName() string {
 	if o == nil || o.MongodbDbName == nil {
@@ -4593,6 +4627,38 @@ func (o *DSProducerDetails) HasSecureRemoteAccessDetails() bool {
 // SetSecureRemoteAccessDetails gets a reference to the given SecureRemoteAccess and assigns it to the SecureRemoteAccessDetails field.
 func (o *DSProducerDetails) SetSecureRemoteAccessDetails(v SecureRemoteAccess) {
 	o.SecureRemoteAccessDetails = &v
+}
+
+// GetSessionExtensionWarnIntervalMin returns the SessionExtensionWarnIntervalMin field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetSessionExtensionWarnIntervalMin() int64 {
+	if o == nil || o.SessionExtensionWarnIntervalMin == nil {
+		var ret int64
+		return ret
+	}
+	return *o.SessionExtensionWarnIntervalMin
+}
+
+// GetSessionExtensionWarnIntervalMinOk returns a tuple with the SessionExtensionWarnIntervalMin field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetSessionExtensionWarnIntervalMinOk() (*int64, bool) {
+	if o == nil || o.SessionExtensionWarnIntervalMin == nil {
+		return nil, false
+	}
+	return o.SessionExtensionWarnIntervalMin, true
+}
+
+// HasSessionExtensionWarnIntervalMin returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasSessionExtensionWarnIntervalMin() bool {
+	if o != nil && o.SessionExtensionWarnIntervalMin != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSessionExtensionWarnIntervalMin gets a reference to the given int64 and assigns it to the SessionExtensionWarnIntervalMin field.
+func (o *DSProducerDetails) SetSessionExtensionWarnIntervalMin(v int64) {
+	o.SessionExtensionWarnIntervalMin = &v
 }
 
 // GetSfAccount returns the SfAccount field value if set, zero value otherwise.
@@ -5808,6 +5874,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	if o.MongodbAtlasProjectId != nil {
 		toSerialize["mongodb_atlas_project_id"] = o.MongodbAtlasProjectId
 	}
+	if o.MongodbCustomData != nil {
+		toSerialize["mongodb_custom_data"] = o.MongodbCustomData
+	}
 	if o.MongodbDbName != nil {
 		toSerialize["mongodb_db_name"] = o.MongodbDbName
 	}
@@ -5903,6 +5972,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.SecureRemoteAccessDetails != nil {
 		toSerialize["secure_remote_access_details"] = o.SecureRemoteAccessDetails
+	}
+	if o.SessionExtensionWarnIntervalMin != nil {
+		toSerialize["session_extension_warn_interval_min"] = o.SessionExtensionWarnIntervalMin
 	}
 	if o.SfAccount != nil {
 		toSerialize["sf_account"] = o.SfAccount

@@ -109,6 +109,7 @@ Name | Type | Description | Notes
 **MongodbAtlasApiPrivateKey** | Pointer to **string** |  | [optional] 
 **MongodbAtlasApiPublicKey** | Pointer to **string** |  | [optional] 
 **MongodbAtlasProjectId** | Pointer to **string** | mongodb atlas fields | [optional] 
+**MongodbCustomData** | Pointer to **string** |  | [optional] 
 **MongodbDbName** | Pointer to **string** | common fields | [optional] 
 **MongodbDefaultAuthDb** | Pointer to **string** |  | [optional] 
 **MongodbHostPort** | Pointer to **string** |  | [optional] 
@@ -141,6 +142,7 @@ Name | Type | Description | Notes
 **RotateSyncUrl** | Pointer to **string** |  | [optional] 
 **Scopes** | Pointer to **[]string** |  | [optional] 
 **SecureRemoteAccessDetails** | Pointer to [**SecureRemoteAccess**](SecureRemoteAccess.md) |  | [optional] 
+**SessionExtensionWarnIntervalMin** | Pointer to **int64** |  | [optional] 
 **SfAccount** | Pointer to **string** |  | [optional] 
 **SfUserRole** | Pointer to **string** | generated  users info | [optional] 
 **SfWarehouseName** | Pointer to **string** |  | [optional] 
@@ -2814,6 +2816,31 @@ SetMongodbAtlasProjectId sets MongodbAtlasProjectId field to given value.
 
 HasMongodbAtlasProjectId returns a boolean if a field has been set.
 
+### GetMongodbCustomData
+
+`func (o *DSProducerDetails) GetMongodbCustomData() string`
+
+GetMongodbCustomData returns the MongodbCustomData field if non-nil, zero value otherwise.
+
+### GetMongodbCustomDataOk
+
+`func (o *DSProducerDetails) GetMongodbCustomDataOk() (*string, bool)`
+
+GetMongodbCustomDataOk returns a tuple with the MongodbCustomData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMongodbCustomData
+
+`func (o *DSProducerDetails) SetMongodbCustomData(v string)`
+
+SetMongodbCustomData sets MongodbCustomData field to given value.
+
+### HasMongodbCustomData
+
+`func (o *DSProducerDetails) HasMongodbCustomData() bool`
+
+HasMongodbCustomData returns a boolean if a field has been set.
+
 ### GetMongodbDbName
 
 `func (o *DSProducerDetails) GetMongodbDbName() string`
@@ -3613,6 +3640,31 @@ SetSecureRemoteAccessDetails sets SecureRemoteAccessDetails field to given value
 `func (o *DSProducerDetails) HasSecureRemoteAccessDetails() bool`
 
 HasSecureRemoteAccessDetails returns a boolean if a field has been set.
+
+### GetSessionExtensionWarnIntervalMin
+
+`func (o *DSProducerDetails) GetSessionExtensionWarnIntervalMin() int64`
+
+GetSessionExtensionWarnIntervalMin returns the SessionExtensionWarnIntervalMin field if non-nil, zero value otherwise.
+
+### GetSessionExtensionWarnIntervalMinOk
+
+`func (o *DSProducerDetails) GetSessionExtensionWarnIntervalMinOk() (*int64, bool)`
+
+GetSessionExtensionWarnIntervalMinOk returns a tuple with the SessionExtensionWarnIntervalMin field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSessionExtensionWarnIntervalMin
+
+`func (o *DSProducerDetails) SetSessionExtensionWarnIntervalMin(v int64)`
+
+SetSessionExtensionWarnIntervalMin sets SessionExtensionWarnIntervalMin field to given value.
+
+### HasSessionExtensionWarnIntervalMin
+
+`func (o *DSProducerDetails) HasSessionExtensionWarnIntervalMin() bool`
+
+HasSessionExtensionWarnIntervalMin returns a boolean if a field has been set.
 
 ### GetSfAccount
 
