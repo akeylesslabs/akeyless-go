@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **Leadership** | Pointer to **string** |  | [optional] 
 **LogForwarding** | Pointer to **string** |  | [optional] 
 **MQueue** | Pointer to **string** |  | [optional] 
+**MigrationStatus** | Pointer to **string** |  | [optional] 
 **Migrations** | Pointer to **string** |  | [optional] 
 **Producers** | Pointer to **map[string]interface{}** |  | [optional] 
 **ProducersStatus** | Pointer to **string** |  | [optional] 
@@ -289,6 +290,31 @@ SetMQueue sets MQueue field to given value.
 `func (o *ConfigHash) HasMQueue() bool`
 
 HasMQueue returns a boolean if a field has been set.
+
+### GetMigrationStatus
+
+`func (o *ConfigHash) GetMigrationStatus() string`
+
+GetMigrationStatus returns the MigrationStatus field if non-nil, zero value otherwise.
+
+### GetMigrationStatusOk
+
+`func (o *ConfigHash) GetMigrationStatusOk() (*string, bool)`
+
+GetMigrationStatusOk returns a tuple with the MigrationStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMigrationStatus
+
+`func (o *ConfigHash) SetMigrationStatus(v string)`
+
+SetMigrationStatus sets MigrationStatus field to given value.
+
+### HasMigrationStatus
+
+`func (o *ConfigHash) HasMigrationStatus() bool`
+
+HasMigrationStatus returns a boolean if a field has been set.
 
 ### GetMigrations
 

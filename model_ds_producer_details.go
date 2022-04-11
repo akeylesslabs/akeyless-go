@@ -103,6 +103,8 @@ type DSProducerDetails struct {
 	GkeServiceAccountKey *string `json:"gke_service_account_key,omitempty"`
 	GkeServiceAccountName *string `json:"gke_service_account_name,omitempty"`
 	Groups *string `json:"groups,omitempty"`
+	HanadbCreationStatements *string `json:"hanadb_creation_statements,omitempty"`
+	HanadbRevocationStatements *string `json:"hanadb_revocation_statements,omitempty"`
 	HostName *string `json:"host_name,omitempty"`
 	HostPort *string `json:"host_port,omitempty"`
 	IsFixedUser *string `json:"is_fixed_user,omitempty"`
@@ -2899,6 +2901,70 @@ func (o *DSProducerDetails) HasGroups() bool {
 // SetGroups gets a reference to the given string and assigns it to the Groups field.
 func (o *DSProducerDetails) SetGroups(v string) {
 	o.Groups = &v
+}
+
+// GetHanadbCreationStatements returns the HanadbCreationStatements field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetHanadbCreationStatements() string {
+	if o == nil || o.HanadbCreationStatements == nil {
+		var ret string
+		return ret
+	}
+	return *o.HanadbCreationStatements
+}
+
+// GetHanadbCreationStatementsOk returns a tuple with the HanadbCreationStatements field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetHanadbCreationStatementsOk() (*string, bool) {
+	if o == nil || o.HanadbCreationStatements == nil {
+		return nil, false
+	}
+	return o.HanadbCreationStatements, true
+}
+
+// HasHanadbCreationStatements returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasHanadbCreationStatements() bool {
+	if o != nil && o.HanadbCreationStatements != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHanadbCreationStatements gets a reference to the given string and assigns it to the HanadbCreationStatements field.
+func (o *DSProducerDetails) SetHanadbCreationStatements(v string) {
+	o.HanadbCreationStatements = &v
+}
+
+// GetHanadbRevocationStatements returns the HanadbRevocationStatements field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetHanadbRevocationStatements() string {
+	if o == nil || o.HanadbRevocationStatements == nil {
+		var ret string
+		return ret
+	}
+	return *o.HanadbRevocationStatements
+}
+
+// GetHanadbRevocationStatementsOk returns a tuple with the HanadbRevocationStatements field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetHanadbRevocationStatementsOk() (*string, bool) {
+	if o == nil || o.HanadbRevocationStatements == nil {
+		return nil, false
+	}
+	return o.HanadbRevocationStatements, true
+}
+
+// HasHanadbRevocationStatements returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasHanadbRevocationStatements() bool {
+	if o != nil && o.HanadbRevocationStatements != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHanadbRevocationStatements gets a reference to the given string and assigns it to the HanadbRevocationStatements field.
+func (o *DSProducerDetails) SetHanadbRevocationStatements(v string) {
+	o.HanadbRevocationStatements = &v
 }
 
 // GetHostName returns the HostName field value if set, zero value otherwise.
@@ -5810,6 +5876,12 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.Groups != nil {
 		toSerialize["groups"] = o.Groups
+	}
+	if o.HanadbCreationStatements != nil {
+		toSerialize["hanadb_creation_statements"] = o.HanadbCreationStatements
+	}
+	if o.HanadbRevocationStatements != nil {
+		toSerialize["hanadb_revocation_statements"] = o.HanadbRevocationStatements
 	}
 	if o.HostName != nil {
 		toSerialize["host_name"] = o.HostName

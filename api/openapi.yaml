@@ -1909,6 +1909,33 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /gateway-create-producer-hanadb:
+    post:
+      operationId: gatewayCreateProducerHanaDb
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayCreateProducerHanaDb'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayCreateProducerHanaDbOutput'
+          description: gatewayCreateProducerHanaDbResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /gateway-create-producer-k8s-native:
     post:
       operationId: gatewayCreateProducerNativeK8S
@@ -6193,6 +6220,12 @@ components:
           schema:
             $ref: '#/components/schemas/gatewayCreateProducerGkeOutput'
       description: gatewayCreateProducerGkeResponse wraps response body.
+    gatewayCreateProducerHanaDbResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayCreateProducerHanaDbOutput'
+      description: gatewayCreateProducerHanaDbResponse wraps response body.
     gatewayCreateProducerLdapResponse:
       content:
         application/json:
@@ -6427,6 +6460,12 @@ components:
           schema:
             $ref: '#/components/schemas/gatewayUpdateProducerGkeOutput'
       description: gatewayUpdateProducerGkeResponse wraps response body.
+    gatewayUpdateProducerHanaDbResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayUpdateProducerHanaDbOutput'
+      description: gatewayUpdateProducerHanaDbResponse wraps response body.
     gatewayUpdateProducerLdapResponse:
       content:
         application/json:
@@ -7267,18 +7306,18 @@ components:
         cf:
           customer_fragements:
             key: customer_fragements
-        version: 4
+        version: 1
         producers:
           producers:
           - init: true
             name: name
             active: true
-            id: 7
+            id: 2
             type: type
           - init: true
             name: name
             active: true
-            id: 7
+            id: 2
             type: type
         general:
           tcp_port: tcp_port
@@ -7360,17 +7399,17 @@ components:
               protection_key: protection_key
             payload:
               client_key:
-              - 2
-              - 2
+              - 3
+              - 3
               server: server
               password: password
               client_cert:
-              - 5
-              - 5
+              - 9
+              - 9
               namespace: namespace
               ca:
-              - 5
-              - 5
+              - 7
+              - 7
               skip_system: true
               token: token
               username: username
@@ -7381,17 +7420,17 @@ components:
               protection_key: protection_key
             payload:
               client_key:
-              - 2
-              - 2
+              - 3
+              - 3
               server: server
               password: password
               client_cert:
-              - 5
-              - 5
+              - 9
+              - 9
               namespace: namespace
               ca:
-              - 5
-              - 5
+              - 7
+              - 7
               skip_system: true
               token: token
               username: username
@@ -7416,8 +7455,8 @@ components:
               key: key
         leadership:
           open_leadership:
-          - 1
-          - 1
+          - 2
+          - 2
         log_forwarding:
           aws_s3_config:
             aws_access_id: aws_access_id
@@ -7467,13 +7506,26 @@ components:
             elasticsearch_nodes: elasticsearch_nodes
         saml:
           saml_access_id: saml_access_id
-          default_protection_key_id: 2
+          default_protection_key_id: 1
           oidc_access_id: oidc_access_id
           default_secret_location: default_secret_location
         kmip_clients:
+          key_enc:
+          - 6
+          - 6
+          server:
+            hostname: hostname
+            root: root
+            certificate:
+            - 5
+            - 5
+            active: true
+            ca:
+            - 1
+            - 1
           server_enc:
-          - 6
-          - 6
+          - 5
+          - 5
           clients:
             key:
               name: name
@@ -7508,14 +7560,14 @@ components:
               hash: hash
         rotators:
           rotators:
-          - rotation_interval: 3
+          - rotation_interval: 7
             name: name
-            id: 9
+            id: 4
             last_error: last_error
             type: type
-          - rotation_interval: 3
+          - rotation_interval: 7
             name: name
-            id: 9
+            id: 4
             last_error: last_error
             type: type
       properties:
@@ -8642,6 +8694,7 @@ components:
         config_hash:
           k8s_auths: k8s_auths
           cache: cache
+          migration_status: migration_status
           producers_status: producers_status
           universal_identity: universal_identity
           customer_fragements: customer_fragements
@@ -8675,6 +8728,7 @@ components:
       example:
         k8s_auths: k8s_auths
         cache: cache
+        migration_status: migration_status
         producers_status: producers_status
         universal_identity: universal_identity
         customer_fragements: customer_fragements
@@ -8720,6 +8774,9 @@ components:
         m_queue:
           type: string
           x-go-name: MQueue
+        migration_status:
+          type: string
+          x-go-name: MigrationStatus
         migrations:
           type: string
           x-go-name: Migrations
@@ -9200,6 +9257,7 @@ components:
         create_sync_url: create_sync_url
         aws_session_token: aws_session_token
         gcp_token_lifetime: gcp_token_lifetime
+        hanadb_revocation_statements: hanadb_revocation_statements
         db_isolation_level: db_isolation_level
         user_name: user_name
         rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -9286,6 +9344,7 @@ components:
         gke_service_account_name: gke_service_account_name
         mysql_creation_statements: mysql_creation_statements
         gcp_service_account_email: gcp_service_account_email
+        hanadb_creation_statements: hanadb_creation_statements
         password_length: 7
         github_installation_id: 5
         dynamic_secret_name: dynamic_secret_name
@@ -9625,6 +9684,12 @@ components:
         groups:
           type: string
           x-go-name: Groups
+        hanadb_creation_statements:
+          type: string
+          x-go-name: HanaDbCreationStatements
+        hanadb_revocation_statements:
+          type: string
+          x-go-name: HanaDbRevocationStatements
         host_name:
           type: string
           x-go-name: HostName
@@ -9928,7 +9993,7 @@ components:
     DefaultConfigPart:
       example:
         saml_access_id: saml_access_id
-        default_protection_key_id: 2
+        default_protection_key_id: 1
         oidc_access_id: oidc_access_id
         default_secret_location: default_secret_location
       properties:
@@ -10375,12 +10440,12 @@ components:
         - init: true
           name: name
           active: true
-          id: 7
+          id: 2
           type: type
         - init: true
           name: name
           active: true
-          id: 7
+          id: 2
           type: type
       properties:
         producers:
@@ -11474,17 +11539,17 @@ components:
           protection_key: protection_key
         payload:
           client_key:
-          - 2
-          - 2
+          - 3
+          - 3
           server: server
           password: password
           client_cert:
-          - 5
-          - 5
+          - 9
+          - 9
           namespace: namespace
           ca:
-          - 5
-          - 5
+          - 7
+          - 7
           skip_system: true
           token: token
           username: username
@@ -11498,17 +11563,17 @@ components:
     K8SPayload:
       example:
         client_key:
-        - 2
-        - 2
+        - 3
+        - 3
         server: server
         password: password
         client_cert:
-        - 5
-        - 5
+        - 9
+        - 9
         namespace: namespace
         ca:
-        - 5
-        - 5
+        - 7
+        - 7
         skip_system: true
         token: token
         username: username
@@ -11670,9 +11735,22 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/gateway/config
     KMIPConfigPart:
       example:
+        key_enc:
+        - 6
+        - 6
+        server:
+          hostname: hostname
+          root: root
+          certificate:
+          - 5
+          - 5
+          active: true
+          ca:
+          - 1
+          - 1
         server_enc:
-        - 6
-        - 6
+        - 5
+        - 5
         clients:
           key:
             name: name
@@ -11695,7 +11773,19 @@ components:
             $ref: '#/components/schemas/KMIPClient'
           type: object
           x-go-name: Clients
+        key_enc:
+          description: Saves the private key of the cert issuer in encypted form
+          items:
+            format: uint8
+            type: integer
+          type: array
+          x-go-name: KeyEnc
+        server:
+          $ref: '#/components/schemas/KMIPServer'
         server_enc:
+          description: |-
+            Saved for backward compatibility
+            TODO: remove this after all clients upgrade
           items:
             format: uint8
             type: integer
@@ -11721,6 +11811,41 @@ components:
           x-go-name: Root
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/gateway/config
+    KMIPServer:
+      example:
+        hostname: hostname
+        root: root
+        certificate:
+        - 5
+        - 5
+        active: true
+        ca:
+        - 1
+        - 1
+      properties:
+        active:
+          type: boolean
+          x-go-name: Active
+        ca:
+          items:
+            format: uint8
+            type: integer
+          type: array
+          x-go-name: CA
+        certificate:
+          items:
+            format: uint8
+            type: integer
+          type: array
+          x-go-name: Certificate
+        hostname:
+          type: string
+          x-go-name: Hostname
+        root:
+          type: string
+          x-go-name: Root
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     KubernetesAccessRules:
       example:
         audience: audience
@@ -11904,8 +12029,8 @@ components:
     LeadershipConfigPart:
       example:
         open_leadership:
-        - 1
-        - 1
+        - 2
+        - 2
       properties:
         open_leadership:
           items:
@@ -13385,17 +13510,17 @@ components:
             protection_key: protection_key
           payload:
             client_key:
-            - 2
-            - 2
+            - 3
+            - 3
             server: server
             password: password
             client_cert:
-            - 5
-            - 5
+            - 9
+            - 9
             namespace: namespace
             ca:
-            - 5
-            - 5
+            - 7
+            - 7
             skip_system: true
             token: token
             username: username
@@ -13406,17 +13531,17 @@ components:
             protection_key: protection_key
           payload:
             client_key:
-            - 2
-            - 2
+            - 3
+            - 3
             server: server
             password: password
             client_cert:
-            - 5
-            - 5
+            - 9
+            - 9
             namespace: namespace
             ca:
-            - 5
-            - 5
+            - 7
+            - 7
             skip_system: true
             token: token
             username: username
@@ -13832,7 +13957,7 @@ components:
         init: true
         name: name
         active: true
-        id: 7
+        id: 2
         type: type
       properties:
         active:
@@ -13864,12 +13989,12 @@ components:
         - init: true
           name: name
           active: true
-          id: 7
+          id: 2
           type: type
         - init: true
           name: name
           active: true
-          id: 7
+          id: 2
           type: type
       properties:
         producers:
@@ -14175,9 +14300,9 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     Rotator:
       example:
-        rotation_interval: 3
+        rotation_interval: 7
         name: name
-        id: 9
+        id: 4
         last_error: last_error
         type: type
       properties:
@@ -14211,14 +14336,14 @@ components:
     RotatorsConfigPart:
       example:
         rotators:
-        - rotation_interval: 3
+        - rotation_interval: 7
           name: name
-          id: 9
+          id: 4
           last_error: last_error
           type: type
-        - rotation_interval: 3
+        - rotation_interval: 7
           name: name
-          id: 9
+          id: 4
           last_error: last_error
           type: type
       properties:
@@ -15548,7 +15673,7 @@ components:
           default: access_key
           description: |-
             Access Type
-            (access_key/password/saml/ldap/k8s/azure_ad/aws_iam/universal_identity/jwt/gcp/k8s)
+            (access_key/password/saml/ldap/k8s/azure_ad/oidc/aws_iam/universal_identity/jwt/gcp/k8s)
           type: string
           x-go-name: AccessType
         admin-email:
@@ -18923,6 +19048,7 @@ components:
           config_hash:
             k8s_auths: k8s_auths
             cache: cache
+            migration_status: migration_status
             producers_status: producers_status
             universal_identity: universal_identity
             customer_fragements: customer_fragements
@@ -19075,6 +19201,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -19161,6 +19288,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -19407,6 +19535,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -19493,6 +19622,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -19728,6 +19858,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -19814,6 +19945,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -20011,6 +20143,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -20097,6 +20230,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -20343,6 +20477,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -20429,6 +20564,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -20698,6 +20834,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -20784,6 +20921,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -20975,6 +21113,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -21061,6 +21200,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -21280,6 +21420,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -21366,6 +21507,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -21560,6 +21702,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -21646,6 +21789,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -21840,6 +21984,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -21926,6 +22071,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -22136,6 +22282,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -22222,6 +22369,317 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
+          password_length: 7
+          github_installation_id: 5
+          dynamic_secret_name: dynamic_secret_name
+          rabbitmq_server_uri: rabbitmq_server_uri
+          chef_server_access_mode: chef_server_access_mode
+          aws_user_programmatic_access: true
+          rabbitmq_user_conf_permission: rabbitmq_user_conf_permission
+          rabbitmq_user_write_permission: rabbitmq_user_write_permission
+          rabbitmq_user_tags: rabbitmq_user_tags
+          venafi_tpp_password: venafi_tpp_password
+          is_fixed_user: is_fixed_user
+          ldap_user_attr: ldap_user_attr
+          use_gw_cloud_identity: true
+          azure_user_programmatic_access: true
+          k8s_cluster_ca_certificate: k8s_cluster_ca_certificate
+          eks_secret_access_key: eks_secret_access_key
+          sf_account: sf_account
+          github_base_url: github_base_url
+          secure_remote_access_details:
+            schema: schema
+            web_proxy: true
+            bastion_ssh: bastion_ssh
+            isolated: true
+            ssh_private_key: true
+            allow_port_forwarding: true
+            is_web: true
+            endpoint: endpoint
+            native: true
+            enable: true
+            host:
+            - host
+            - host
+            dashboard_url: dashboard_url
+            bastion_issuer: bastion_issuer
+            ssh_user: ssh_user
+            is_cli: true
+            use_internal_bastion: true
+            rdp_user: rdp_user
+            url: url
+            account_id: account_id
+            db_name: db_name
+            allow_providing_external_username: true
+            domain: domain
+            bastion_api: bastion_api
+            category: category
+            region: region
+            ssh_password: true
+            bastion_issuer_id: 1
+          groups: groups
+          chef_organizations: chef_organizations
+          dynamic_secret_id: 6
+          chef_server_host_name: chef_server_host_name
+          mssql_revocation_statements: mssql_revocation_statements
+          chef_server_port: chef_server_port
+          mongodb_is_atlas: true
+          eks_cluster_ca_certificate: eks_cluster_ca_certificate
+          github_repository_path: github_repository_path
+          rotate_sync_url: rotate_sync_url
+          aws_access_key_id: aws_access_key_id
+          aws_region: aws_region
+          eks_cluster_name: eks_cluster_name
+          chef_server_url: chef_server_url
+          gke_cluster_name: gke_cluster_name
+          aws_user_groups: aws_user_groups
+          host_name: host_name
+          azure_tenant_id: azure_tenant_id
+      properties:
+        producer_details:
+          $ref: '#/components/schemas/DSProducerDetails'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayCreateProducerHanaDb:
+      description: gatewayCreateProducerHanaDb is a command that creates hanadb producer
+      properties:
+        hana-dbname:
+          description: HanaDb Name
+          type: string
+          x-go-name: DBName
+        hanadb-create-statements:
+          description: HanaDb Creation statements
+          type: string
+          x-go-name: CreationStatements
+        hanadb-host:
+          default: 127.0.0.1
+          description: HanaDb Host
+          type: string
+          x-go-name: DBHost
+        hanadb-password:
+          description: HanaDb Password
+          type: string
+          x-go-name: DBPassword
+        hanadb-port:
+          default: "443"
+          description: HanaDb Port
+          type: string
+          x-go-name: DBPort
+        hanadb-revocation-statements:
+          description: HanaDb Revocation statements
+          type: string
+          x-go-name: RevocationStatements
+        hanadb-username:
+          description: HanaDb Username
+          type: string
+          x-go-name: DBUsername
+        name:
+          description: Producer name
+          type: string
+          x-go-name: ProducerName
+        producer-encryption-key-name:
+          description: Dynamic producer encryption key
+          type: string
+          x-go-name: ProducerEncryptionKey
+        secure-access-bastion-issuer:
+          type: string
+          x-go-name: SecureAccessBastionIssuer
+        secure-access-db-schema:
+          type: string
+          x-go-name: SecureAccessSchema
+        secure-access-enable:
+          type: string
+          x-go-name: SecureAccessEnabled
+        secure-access-host:
+          items:
+            type: string
+          type: array
+          x-go-name: SecureAccessHost
+        secure-access-web:
+          type: boolean
+          x-go-name: AccessWebCategory
+        tags:
+          description: List of the tags attached to this secret
+          items:
+            type: string
+          type: array
+          x-go-name: Tags
+        target-name:
+          description: Target name
+          type: string
+          x-go-name: TargetName
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        user-ttl:
+          default: 60m
+          description: User TTL
+          type: string
+          x-go-name: UserTtl
+      required:
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayCreateProducerHanaDbOutput:
+      example:
+        producer_details:
+          gke_cluster_endpoint: gke_cluster_endpoint
+          dynamic_secret_type: dynamic_secret_type
+          k8s_namespace: k8s_namespace
+          venafi_sign_using_akeyless_pki: true
+          dynamic_secret_key: dynamic_secret_key
+          last_admin_rotation: 2
+          chef_server_key: chef_server_key
+          db_max_open_conns: db_max_open_conns
+          admin_rotation_interval_days: 0
+          ssl_connection_certificate: ssl_connection_certificate
+          oracle_creation_statements: oracle_creation_statements
+          github_app_id: 1
+          mssql_creation_statements: mssql_creation_statements
+          password: password
+          sf_user_role: sf_user_role
+          ldap_certificate: ldap_certificate
+          ldap_bind_dn: ldap_bind_dn
+          ldap_url: ldap_url
+          username_policy: username_policy
+          admin_pwd: admin_pwd
+          gcp_token_scope: gcp_token_scope
+          venafi_allowed_domains:
+          - venafi_allowed_domains
+          - venafi_allowed_domains
+          azure_fixed_user_only: true
+          warn_before_user_expiration_min: 4
+          azure_user_roles_template_id: azure_user_roles_template_id
+          fixed_user_only: fixed_user_only
+          rabbitmq_server_password: rabbitmq_server_password
+          aws_access_mode: aws_access_mode
+          aws_user_policies: aws_user_policies
+          aws_role_arns: aws_role_arns
+          username_length: 2
+          active: true
+          item_targets_assoc:
+          - assoc_id: assoc_id
+            target_name: target_name
+            target_id: 7
+          - assoc_id: assoc_id
+            target_name: target_name
+            target_id: 7
+          chef_server_username: chef_server_username
+          db_host_name: db_host_name
+          tags:
+          - tags
+          - tags
+          ldap_user_dn: ldap_user_dn
+          azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
+          mongodb_custom_data: mongodb_custom_data
+          db_name: db_name
+          k8s_service_account: k8s_service_account
+          chef_skip_ssl: true
+          db_port: db_port
+          k8s_cluster_endpoint: k8s_cluster_endpoint
+          artifactory_base_url: artifactory_base_url
+          azure_client_secret: azure_client_secret
+          azure_user_groups_obj_id: azure_user_groups_obj_id
+          gcp_token_type: gcp_token_type
+          create_sync_url: create_sync_url
+          aws_session_token: aws_session_token
+          gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
+          db_isolation_level: db_isolation_level
+          user_name: user_name
+          rabbitmq_user_vhost: rabbitmq_user_vhost
+          mongodb_username: mongodb_username
+          ssl_connection_mode: true
+          postgres_revocation_statements: postgres_revocation_statements
+          mongodb_roles: mongodb_roles
+          mongodb_db_name: mongodb_db_name
+          venafi_signer_key_name: venafi_signer_key_name
+          should_stop: should_stop
+          artifactory_token_audience: artifactory_token_audience
+          mongodb_atlas_api_public_key: mongodb_atlas_api_public_key
+          eks_access_key_id: eks_access_key_id
+          venafi_base_url: venafi_base_url
+          github_installation_token_permissions:
+            key: github_installation_token_permissions
+          user_ttl: user_ttl
+          timeout_seconds: 3
+          eks_assume_role: eks_assume_role
+          ldap_token_expiration: ldap_token_expiration
+          venafi_use_tpp: true
+          mongodb_password: mongodb_password
+          aws_secret_access_key: aws_secret_access_key
+          mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
+          postgres_creation_statements: postgres_creation_statements
+          db_max_idle_conns: db_max_idle_conns
+          password_policy: password_policy
+          artifactory_admin_username: artifactory_admin_username
+          admin_name: admin_name
+          scopes:
+          - scopes
+          - scopes
+          rabbitmq_server_user: rabbitmq_server_user
+          venafi_api_key: venafi_api_key
+          mongodb_host_port: mongodb_host_port
+          sf_warehouse_name: sf_warehouse_name
+          artifactory_token_scope: artifactory_token_scope
+          revoke_sync_url: revoke_sync_url
+          gke_cluster_ca_certificate: gke_cluster_ca_certificate
+          host_port: host_port
+          k8s_bearer_token: k8s_bearer_token
+          enable_admin_rotation: true
+          cassandra_creation_statements: cassandra_creation_statements
+          failure_message: failure_message
+          rabbitmq_user_read_permission: rabbitmq_user_read_permission
+          azure_client_id: azure_client_id
+          mongodb_default_auth_db: mongodb_default_auth_db
+          mongodb_uri_connection: mongodb_uri_connection
+          mongodb_atlas_project_id: mongodb_atlas_project_id
+          db_user_name: db_user_name
+          eks_region: eks_region
+          payload: payload
+          artifactory_admin_apikey: artifactory_admin_apikey
+          redshift_creation_statements: redshift_creation_statements
+          ldap_audience: ldap_audience
+          azure_app_object_id: azure_app_object_id
+          ldap_bind_password: ldap_bind_password
+          venafi_allow_subdomains: true
+          aws_user_console_access: true
+          user_principal_name: user_principal_name
+          externally_provided_user: externally_provided_user
+          db_server_certificates: db_server_certificates
+          gcp_key_algo: gcp_key_algo
+          db_server_name: db_server_name
+          venafi_zone: venafi_zone
+          github_installation_token_repositories:
+          - github_installation_token_repositories
+          - github_installation_token_repositories
+          gcp_service_account_key: gcp_service_account_key
+          session_extension_warn_interval_min: 9
+          venafi_store_private_key: true
+          venafi_tpp_username: venafi_tpp_username
+          azure_user_portal_access: true
+          venafi_root_first_in_chain: true
+          eks_cluster_endpoint: eks_cluster_endpoint
+          gke_service_account_key: gke_service_account_key
+          venafi_auto_generated_folder: venafi_auto_generated_folder
+          mongodb_uri_options: mongodb_uri_options
+          github_app_private_key: github_app_private_key
+          db_pwd: db_pwd
+          github_installation_token_repositories_ids:
+          - 5
+          - 5
+          gke_service_account_name: gke_service_account_name
+          mysql_creation_statements: mysql_creation_statements
+          gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -22430,6 +22888,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -22516,6 +22975,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -22738,6 +23198,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -22824,6 +23285,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -23064,6 +23526,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -23150,6 +23613,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -23381,6 +23845,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -23467,6 +23932,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -23686,6 +24152,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -23772,6 +24239,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -23982,6 +24450,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -24068,6 +24537,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -24295,6 +24765,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -24381,6 +24852,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -24601,6 +25073,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -24687,6 +25160,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -24915,6 +25389,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -25001,6 +25476,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -25211,6 +25687,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -25297,6 +25774,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -25493,6 +25971,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -25579,6 +26058,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -25733,6 +26213,7 @@ components:
           config_hash:
             k8s_auths: k8s_auths
             cache: cache
+            migration_status: migration_status
             producers_status: producers_status
             universal_identity: universal_identity
             customer_fragements: customer_fragements
@@ -26052,17 +26533,17 @@ components:
               protection_key: protection_key
             payload:
               client_key:
-              - 2
-              - 2
+              - 3
+              - 3
               server: server
               password: password
               client_cert:
-              - 5
-              - 5
+              - 9
+              - 9
               namespace: namespace
               ca:
-              - 5
-              - 5
+              - 7
+              - 7
               skip_system: true
               token: token
               username: username
@@ -26073,17 +26554,17 @@ components:
               protection_key: protection_key
             payload:
               client_key:
-              - 2
-              - 2
+              - 3
+              - 3
               server: server
               password: password
               client_cert:
-              - 5
-              - 5
+              - 9
+              - 9
               namespace: namespace
               ca:
-              - 5
-              - 5
+              - 7
+              - 7
               skip_system: true
               token: token
               username: username
@@ -26449,6 +26930,7 @@ components:
           config_hash:
             k8s_auths: k8s_auths
             cache: cache
+            migration_status: migration_status
             producers_status: producers_status
             universal_identity: universal_identity
             customer_fragements: customer_fragements
@@ -26605,6 +27087,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -26691,6 +27174,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -26941,6 +27425,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -27027,6 +27512,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -27266,6 +27752,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -27352,6 +27839,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -27553,6 +28041,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -27639,6 +28128,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -27889,6 +28379,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -27975,6 +28466,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -28252,6 +28744,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -28338,6 +28831,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -28533,6 +29027,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -28619,6 +29114,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -28842,6 +29338,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -28928,6 +29425,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -29126,6 +29624,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -29212,6 +29711,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -29410,6 +29910,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -29496,6 +29997,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -29710,6 +30212,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -29796,6 +30299,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -29862,6 +30366,103 @@ components:
           aws_user_groups: aws_user_groups
           host_name: host_name
           azure_tenant_id: azure_tenant_id
+      properties:
+        producer_details:
+          $ref: '#/components/schemas/DSProducerDetails'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayUpdateProducerHanaDb:
+      description: gatewayUpdateProducerHanaDb is a command that updates mssql producer
+      properties:
+        hana-dbname:
+          description: HanaDb Name
+          type: string
+          x-go-name: DBName
+        hanadb-create-statements:
+          description: HanaDb Creation statements
+          type: string
+          x-go-name: CreationStatements
+        hanadb-host:
+          default: 127.0.0.1
+          description: HanaDb Host
+          type: string
+          x-go-name: DBHost
+        hanadb-password:
+          description: HanaDb Password
+          type: string
+          x-go-name: DBPassword
+        hanadb-port:
+          default: "443"
+          description: HanaDb Port
+          type: string
+          x-go-name: DBPort
+        hanadb-revocation-statements:
+          description: HanaDb Revocation statements
+          type: string
+          x-go-name: RevocationStatements
+        hanadb-username:
+          description: HanaDb Username
+          type: string
+          x-go-name: DBUsername
+        name:
+          description: Producer name
+          type: string
+          x-go-name: ProducerName
+        new-name:
+          description: Producer name
+          type: string
+          x-go-name: ProducerNewName
+        producer-encryption-key-name:
+          description: Dynamic producer encryption key
+          type: string
+          x-go-name: ProducerEncryptionKey
+        secure-access-bastion-issuer:
+          type: string
+          x-go-name: SecureAccessBastionIssuer
+        secure-access-db-schema:
+          type: string
+          x-go-name: SecureAccessSchema
+        secure-access-enable:
+          type: string
+          x-go-name: SecureAccessEnabled
+        secure-access-host:
+          items:
+            type: string
+          type: array
+          x-go-name: SecureAccessHost
+        secure-access-web:
+          type: boolean
+          x-go-name: AccessWebCategory
+        tags:
+          description: List of the tags attached to this secret
+          items:
+            type: string
+          type: array
+          x-go-name: Tags
+        target-name:
+          description: Target name
+          type: string
+          x-go-name: TargetName
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        user-ttl:
+          default: 60m
+          description: User TTL
+          type: string
+          x-go-name: UserTtl
+      required:
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayUpdateProducerHanaDbOutput:
       properties:
         producer_details:
           $ref: '#/components/schemas/DSProducerDetails'
@@ -30008,6 +30609,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -30094,6 +30696,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -30320,6 +30923,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -30406,6 +31010,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -30650,6 +31255,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -30736,6 +31342,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -30971,6 +31578,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -31057,6 +31665,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -31280,6 +31889,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -31366,6 +31976,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -31580,6 +32191,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -31666,6 +32278,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -31897,6 +32510,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -31983,6 +32597,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -32207,6 +32822,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -32293,6 +32909,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -32525,6 +33142,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -32611,6 +33229,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -32825,6 +33444,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -32911,6 +33531,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -33111,6 +33732,7 @@ components:
           create_sync_url: create_sync_url
           aws_session_token: aws_session_token
           gcp_token_lifetime: gcp_token_lifetime
+          hanadb_revocation_statements: hanadb_revocation_statements
           db_isolation_level: db_isolation_level
           user_name: user_name
           rabbitmq_user_vhost: rabbitmq_user_vhost
@@ -33197,6 +33819,7 @@ components:
           gke_service_account_name: gke_service_account_name
           mysql_creation_statements: mysql_creation_statements
           gcp_service_account_email: gcp_service_account_email
+          hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
           dynamic_secret_name: dynamic_secret_name
@@ -34080,6 +34703,15 @@ components:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
           x-go-name: Profile
+        type:
+          description: |-
+            The Auth method types list of the requested method. In case it is empty, all
+            types of auth methods will be returned. options: [api_key, azure_ad, oauth2/jwt, saml2,
+            ldap, aws_iam, oidc, universal_identity, gcp, k8s]
+          items:
+            type: string
+          type: array
+          x-go-name: Types
         uid-token:
           description: |-
             The universal identity token, Required only for universal_identity
@@ -36190,6 +36822,14 @@ components:
         snowflake-account:
           type: string
           x-go-name: SnowflakeAccount
+        ssl:
+          description: SSL connection mode
+          type: boolean
+          x-go-name: SSLConnection
+        ssl-certificate:
+          description: SSL connection certificate
+          type: string
+          x-go-name: SSLConnectionCertificate
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string

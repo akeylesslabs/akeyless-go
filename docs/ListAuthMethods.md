@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **PaginationToken** | Pointer to **string** | Next page reference | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
+**Type** | Pointer to **[]string** | The Auth method types list of the requested method. In case it is empty, all types of auth methods will be returned. options: [api_key, azure_ad, oauth2/jwt, saml2, ldap, aws_iam, oidc, universal_identity, gcp, k8s] | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
 ## Methods
@@ -76,6 +77,31 @@ SetToken sets Token field to given value.
 `func (o *ListAuthMethods) HasToken() bool`
 
 HasToken returns a boolean if a field has been set.
+
+### GetType
+
+`func (o *ListAuthMethods) GetType() []string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *ListAuthMethods) GetTypeOk() (*[]string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *ListAuthMethods) SetType(v []string)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *ListAuthMethods) HasType() bool`
+
+HasType returns a boolean if a field has been set.
 
 ### GetUidToken
 

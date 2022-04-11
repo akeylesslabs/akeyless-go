@@ -27,6 +27,7 @@ type ConfigHash struct {
 	Leadership *string `json:"leadership,omitempty"`
 	LogForwarding *string `json:"log_forwarding,omitempty"`
 	MQueue *string `json:"m_queue,omitempty"`
+	MigrationStatus *string `json:"migration_status,omitempty"`
 	Migrations *string `json:"migrations,omitempty"`
 	Producers *map[string]interface{} `json:"producers,omitempty"`
 	ProducersStatus *string `json:"producers_status,omitempty"`
@@ -372,6 +373,38 @@ func (o *ConfigHash) SetMQueue(v string) {
 	o.MQueue = &v
 }
 
+// GetMigrationStatus returns the MigrationStatus field value if set, zero value otherwise.
+func (o *ConfigHash) GetMigrationStatus() string {
+	if o == nil || o.MigrationStatus == nil {
+		var ret string
+		return ret
+	}
+	return *o.MigrationStatus
+}
+
+// GetMigrationStatusOk returns a tuple with the MigrationStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConfigHash) GetMigrationStatusOk() (*string, bool) {
+	if o == nil || o.MigrationStatus == nil {
+		return nil, false
+	}
+	return o.MigrationStatus, true
+}
+
+// HasMigrationStatus returns a boolean if a field has been set.
+func (o *ConfigHash) HasMigrationStatus() bool {
+	if o != nil && o.MigrationStatus != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMigrationStatus gets a reference to the given string and assigns it to the MigrationStatus field.
+func (o *ConfigHash) SetMigrationStatus(v string) {
+	o.MigrationStatus = &v
+}
+
 // GetMigrations returns the Migrations field value if set, zero value otherwise.
 func (o *ConfigHash) GetMigrations() string {
 	if o == nil || o.Migrations == nil {
@@ -595,6 +628,9 @@ func (o ConfigHash) MarshalJSON() ([]byte, error) {
 	}
 	if o.MQueue != nil {
 		toSerialize["m_queue"] = o.MQueue
+	}
+	if o.MigrationStatus != nil {
+		toSerialize["migration_status"] = o.MigrationStatus
 	}
 	if o.Migrations != nil {
 		toSerialize["migrations"] = o.Migrations

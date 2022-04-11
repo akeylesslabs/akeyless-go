@@ -5,7 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Clients** | Pointer to [**map[string]KMIPClient**](KMIPClient.md) |  | [optional] 
-**ServerEnc** | Pointer to **[]int32** |  | [optional] 
+**KeyEnc** | Pointer to **[]int32** | Saves the private key of the cert issuer in encypted form | [optional] 
+**Server** | Pointer to [**KMIPServer**](KMIPServer.md) |  | [optional] 
+**ServerEnc** | Pointer to **[]int32** | Saved for backward compatibility TODO: remove this after all clients upgrade | [optional] 
 
 ## Methods
 
@@ -50,6 +52,56 @@ SetClients sets Clients field to given value.
 `func (o *KMIPConfigPart) HasClients() bool`
 
 HasClients returns a boolean if a field has been set.
+
+### GetKeyEnc
+
+`func (o *KMIPConfigPart) GetKeyEnc() []int32`
+
+GetKeyEnc returns the KeyEnc field if non-nil, zero value otherwise.
+
+### GetKeyEncOk
+
+`func (o *KMIPConfigPart) GetKeyEncOk() (*[]int32, bool)`
+
+GetKeyEncOk returns a tuple with the KeyEnc field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKeyEnc
+
+`func (o *KMIPConfigPart) SetKeyEnc(v []int32)`
+
+SetKeyEnc sets KeyEnc field to given value.
+
+### HasKeyEnc
+
+`func (o *KMIPConfigPart) HasKeyEnc() bool`
+
+HasKeyEnc returns a boolean if a field has been set.
+
+### GetServer
+
+`func (o *KMIPConfigPart) GetServer() KMIPServer`
+
+GetServer returns the Server field if non-nil, zero value otherwise.
+
+### GetServerOk
+
+`func (o *KMIPConfigPart) GetServerOk() (*KMIPServer, bool)`
+
+GetServerOk returns a tuple with the Server field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServer
+
+`func (o *KMIPConfigPart) SetServer(v KMIPServer)`
+
+SetServer sets Server field to given value.
+
+### HasServer
+
+`func (o *KMIPConfigPart) HasServer() bool`
+
+HasServer returns a boolean if a field has been set.
 
 ### GetServerEnc
 

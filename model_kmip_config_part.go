@@ -18,6 +18,10 @@ import (
 // KMIPConfigPart struct for KMIPConfigPart
 type KMIPConfigPart struct {
 	Clients *map[string]KMIPClient `json:"clients,omitempty"`
+	// Saves the private key of the cert issuer in encypted form
+	KeyEnc *[]int32 `json:"key_enc,omitempty"`
+	Server *KMIPServer `json:"server,omitempty"`
+	// Saved for backward compatibility TODO: remove this after all clients upgrade
 	ServerEnc *[]int32 `json:"server_enc,omitempty"`
 }
 
@@ -70,6 +74,70 @@ func (o *KMIPConfigPart) SetClients(v map[string]KMIPClient) {
 	o.Clients = &v
 }
 
+// GetKeyEnc returns the KeyEnc field value if set, zero value otherwise.
+func (o *KMIPConfigPart) GetKeyEnc() []int32 {
+	if o == nil || o.KeyEnc == nil {
+		var ret []int32
+		return ret
+	}
+	return *o.KeyEnc
+}
+
+// GetKeyEncOk returns a tuple with the KeyEnc field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KMIPConfigPart) GetKeyEncOk() (*[]int32, bool) {
+	if o == nil || o.KeyEnc == nil {
+		return nil, false
+	}
+	return o.KeyEnc, true
+}
+
+// HasKeyEnc returns a boolean if a field has been set.
+func (o *KMIPConfigPart) HasKeyEnc() bool {
+	if o != nil && o.KeyEnc != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetKeyEnc gets a reference to the given []int32 and assigns it to the KeyEnc field.
+func (o *KMIPConfigPart) SetKeyEnc(v []int32) {
+	o.KeyEnc = &v
+}
+
+// GetServer returns the Server field value if set, zero value otherwise.
+func (o *KMIPConfigPart) GetServer() KMIPServer {
+	if o == nil || o.Server == nil {
+		var ret KMIPServer
+		return ret
+	}
+	return *o.Server
+}
+
+// GetServerOk returns a tuple with the Server field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KMIPConfigPart) GetServerOk() (*KMIPServer, bool) {
+	if o == nil || o.Server == nil {
+		return nil, false
+	}
+	return o.Server, true
+}
+
+// HasServer returns a boolean if a field has been set.
+func (o *KMIPConfigPart) HasServer() bool {
+	if o != nil && o.Server != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetServer gets a reference to the given KMIPServer and assigns it to the Server field.
+func (o *KMIPConfigPart) SetServer(v KMIPServer) {
+	o.Server = &v
+}
+
 // GetServerEnc returns the ServerEnc field value if set, zero value otherwise.
 func (o *KMIPConfigPart) GetServerEnc() []int32 {
 	if o == nil || o.ServerEnc == nil {
@@ -106,6 +174,12 @@ func (o KMIPConfigPart) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Clients != nil {
 		toSerialize["clients"] = o.Clients
+	}
+	if o.KeyEnc != nil {
+		toSerialize["key_enc"] = o.KeyEnc
+	}
+	if o.Server != nil {
+		toSerialize["server"] = o.Server
 	}
 	if o.ServerEnc != nil {
 		toSerialize["server_enc"] = o.ServerEnc

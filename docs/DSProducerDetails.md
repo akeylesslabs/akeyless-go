@@ -88,6 +88,8 @@ Name | Type | Description | Notes
 **GkeServiceAccountKey** | Pointer to **string** |  | [optional] 
 **GkeServiceAccountName** | Pointer to **string** |  | [optional] 
 **Groups** | Pointer to **string** |  | [optional] 
+**HanadbCreationStatements** | Pointer to **string** |  | [optional] 
+**HanadbRevocationStatements** | Pointer to **string** |  | [optional] 
 **HostName** | Pointer to **string** |  | [optional] 
 **HostPort** | Pointer to **string** |  | [optional] 
 **IsFixedUser** | Pointer to **string** |  | [optional] 
@@ -2290,6 +2292,56 @@ SetGroups sets Groups field to given value.
 `func (o *DSProducerDetails) HasGroups() bool`
 
 HasGroups returns a boolean if a field has been set.
+
+### GetHanadbCreationStatements
+
+`func (o *DSProducerDetails) GetHanadbCreationStatements() string`
+
+GetHanadbCreationStatements returns the HanadbCreationStatements field if non-nil, zero value otherwise.
+
+### GetHanadbCreationStatementsOk
+
+`func (o *DSProducerDetails) GetHanadbCreationStatementsOk() (*string, bool)`
+
+GetHanadbCreationStatementsOk returns a tuple with the HanadbCreationStatements field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHanadbCreationStatements
+
+`func (o *DSProducerDetails) SetHanadbCreationStatements(v string)`
+
+SetHanadbCreationStatements sets HanadbCreationStatements field to given value.
+
+### HasHanadbCreationStatements
+
+`func (o *DSProducerDetails) HasHanadbCreationStatements() bool`
+
+HasHanadbCreationStatements returns a boolean if a field has been set.
+
+### GetHanadbRevocationStatements
+
+`func (o *DSProducerDetails) GetHanadbRevocationStatements() string`
+
+GetHanadbRevocationStatements returns the HanadbRevocationStatements field if non-nil, zero value otherwise.
+
+### GetHanadbRevocationStatementsOk
+
+`func (o *DSProducerDetails) GetHanadbRevocationStatementsOk() (*string, bool)`
+
+GetHanadbRevocationStatementsOk returns a tuple with the HanadbRevocationStatements field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHanadbRevocationStatements
+
+`func (o *DSProducerDetails) SetHanadbRevocationStatements(v string)`
+
+SetHanadbRevocationStatements sets HanadbRevocationStatements field to given value.
+
+### HasHanadbRevocationStatements
+
+`func (o *DSProducerDetails) HasHanadbRevocationStatements() bool`
+
+HasHanadbRevocationStatements returns a boolean if a field has been set.
 
 ### GetHostName
 

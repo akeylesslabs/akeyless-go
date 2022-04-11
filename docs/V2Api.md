@@ -74,6 +74,7 @@ Method | HTTP request | Description
 [**GatewayCreateProducerGcp**](V2Api.md#GatewayCreateProducerGcp) | **Post** /gateway-create-producer-gcp | 
 [**GatewayCreateProducerGithub**](V2Api.md#GatewayCreateProducerGithub) | **Post** /gateway-create-producer-github | 
 [**GatewayCreateProducerGke**](V2Api.md#GatewayCreateProducerGke) | **Post** /gateway-create-producer-gke | 
+[**GatewayCreateProducerHanaDb**](V2Api.md#GatewayCreateProducerHanaDb) | **Post** /gateway-create-producer-hanadb | 
 [**GatewayCreateProducerLdap**](V2Api.md#GatewayCreateProducerLdap) | **Post** /gateway-create-producer-ldap | 
 [**GatewayCreateProducerMSSQL**](V2Api.md#GatewayCreateProducerMSSQL) | **Post** /gateway-create-producer-mssql | 
 [**GatewayCreateProducerMongo**](V2Api.md#GatewayCreateProducerMongo) | **Post** /gateway-create-producer-mongo | 
@@ -4684,6 +4685,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GatewayCreateProducerGkeOutput**](gatewayCreateProducerGkeOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayCreateProducerHanaDb
+
+> GatewayCreateProducerHanaDbOutput GatewayCreateProducerHanaDb(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayCreateProducerHanaDb("Name_example") // GatewayCreateProducerHanaDb | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayCreateProducerHanaDb(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerHanaDb``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayCreateProducerHanaDb`: GatewayCreateProducerHanaDbOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayCreateProducerHanaDb`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayCreateProducerHanaDbRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayCreateProducerHanaDb**](GatewayCreateProducerHanaDb.md) |  | 
+
+### Return type
+
+[**GatewayCreateProducerHanaDbOutput**](gatewayCreateProducerHanaDbOutput.md)
 
 ### Authorization
 

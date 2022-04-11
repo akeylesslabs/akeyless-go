@@ -21,6 +21,8 @@ type ListAuthMethods struct {
 	PaginationToken *string `json:"pagination-token,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
+	// The Auth method types list of the requested method. In case it is empty, all types of auth methods will be returned. options: [api_key, azure_ad, oauth2/jwt, saml2, ldap, aws_iam, oidc, universal_identity, gcp, k8s]
+	Type *[]string `json:"type,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
 }
@@ -106,6 +108,38 @@ func (o *ListAuthMethods) SetToken(v string) {
 	o.Token = &v
 }
 
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *ListAuthMethods) GetType() []string {
+	if o == nil || o.Type == nil {
+		var ret []string
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListAuthMethods) GetTypeOk() (*[]string, bool) {
+	if o == nil || o.Type == nil {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *ListAuthMethods) HasType() bool {
+	if o != nil && o.Type != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given []string and assigns it to the Type field.
+func (o *ListAuthMethods) SetType(v []string) {
+	o.Type = &v
+}
+
 // GetUidToken returns the UidToken field value if set, zero value otherwise.
 func (o *ListAuthMethods) GetUidToken() string {
 	if o == nil || o.UidToken == nil {
@@ -145,6 +179,9 @@ func (o ListAuthMethods) MarshalJSON() ([]byte, error) {
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
+	}
+	if o.Type != nil {
+		toSerialize["type"] = o.Type
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
