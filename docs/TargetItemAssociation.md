@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AssocId** | Pointer to **string** |  | [optional] 
+**ClusterId** | Pointer to **int64** |  | [optional] 
 **ItemName** | Pointer to **string** |  | [optional] 
 **ItemType** | Pointer to **string** |  | [optional] 
 
@@ -51,6 +52,31 @@ SetAssocId sets AssocId field to given value.
 `func (o *TargetItemAssociation) HasAssocId() bool`
 
 HasAssocId returns a boolean if a field has been set.
+
+### GetClusterId
+
+`func (o *TargetItemAssociation) GetClusterId() int64`
+
+GetClusterId returns the ClusterId field if non-nil, zero value otherwise.
+
+### GetClusterIdOk
+
+`func (o *TargetItemAssociation) GetClusterIdOk() (*int64, bool)`
+
+GetClusterIdOk returns a tuple with the ClusterId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClusterId
+
+`func (o *TargetItemAssociation) SetClusterId(v int64)`
+
+SetClusterId sets ClusterId field to given value.
+
+### HasClusterId
+
+`func (o *TargetItemAssociation) HasClusterId() bool`
+
+HasClusterId returns a boolean if a field has been set.
 
 ### GetItemName
 

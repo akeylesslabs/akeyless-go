@@ -18,6 +18,7 @@ import (
 // TargetItemAssociation TargetItemAssociation includes details of an association between a target and an item.
 type TargetItemAssociation struct {
 	AssocId *string `json:"assoc_id,omitempty"`
+	ClusterId *int64 `json:"cluster_id,omitempty"`
 	ItemName *string `json:"item_name,omitempty"`
 	ItemType *string `json:"item_type,omitempty"`
 }
@@ -69,6 +70,38 @@ func (o *TargetItemAssociation) HasAssocId() bool {
 // SetAssocId gets a reference to the given string and assigns it to the AssocId field.
 func (o *TargetItemAssociation) SetAssocId(v string) {
 	o.AssocId = &v
+}
+
+// GetClusterId returns the ClusterId field value if set, zero value otherwise.
+func (o *TargetItemAssociation) GetClusterId() int64 {
+	if o == nil || o.ClusterId == nil {
+		var ret int64
+		return ret
+	}
+	return *o.ClusterId
+}
+
+// GetClusterIdOk returns a tuple with the ClusterId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetItemAssociation) GetClusterIdOk() (*int64, bool) {
+	if o == nil || o.ClusterId == nil {
+		return nil, false
+	}
+	return o.ClusterId, true
+}
+
+// HasClusterId returns a boolean if a field has been set.
+func (o *TargetItemAssociation) HasClusterId() bool {
+	if o != nil && o.ClusterId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetClusterId gets a reference to the given int64 and assigns it to the ClusterId field.
+func (o *TargetItemAssociation) SetClusterId(v int64) {
+	o.ClusterId = &v
 }
 
 // GetItemName returns the ItemName field value if set, zero value otherwise.
@@ -139,6 +172,9 @@ func (o TargetItemAssociation) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AssocId != nil {
 		toSerialize["assoc_id"] = o.AssocId
+	}
+	if o.ClusterId != nil {
+		toSerialize["cluster_id"] = o.ClusterId
 	}
 	if o.ItemName != nil {
 		toSerialize["item_name"] = o.ItemName

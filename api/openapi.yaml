@@ -10569,10 +10569,12 @@ components:
         target:
           last_version: 0
           target_items_assoc:
-          - assoc_id: assoc_id
+          - cluster_id: 1
+            assoc_id: assoc_id
             item_type: item_type
             item_name: item_name
-          - assoc_id: assoc_id
+          - cluster_id: 1
+            assoc_id: assoc_id
             item_type: item_type
             item_name: item_name
           client_permissions:
@@ -13205,10 +13207,12 @@ components:
         targets:
         - last_version: 0
           target_items_assoc:
-          - assoc_id: assoc_id
+          - cluster_id: 1
+            assoc_id: assoc_id
             item_type: item_type
             item_name: item_name
-          - assoc_id: assoc_id
+          - cluster_id: 1
+            assoc_id: assoc_id
             item_type: item_type
             item_name: item_name
           client_permissions:
@@ -13237,10 +13241,12 @@ components:
           target_id: 6
         - last_version: 0
           target_items_assoc:
-          - assoc_id: assoc_id
+          - cluster_id: 1
+            assoc_id: assoc_id
             item_type: item_type
             item_name: item_name
-          - assoc_id: assoc_id
+          - cluster_id: 1
+            assoc_id: assoc_id
             item_type: item_type
             item_name: item_name
           client_permissions:
@@ -14781,10 +14787,12 @@ components:
       example:
         last_version: 0
         target_items_assoc:
-        - assoc_id: assoc_id
+        - cluster_id: 1
+          assoc_id: assoc_id
           item_type: item_type
           item_name: item_name
-        - assoc_id: assoc_id
+        - cluster_id: 1
+          assoc_id: assoc_id
           item_type: item_type
           item_name: item_name
         client_permissions:
@@ -14859,6 +14867,7 @@ components:
         TargetItemAssociation includes details of an association between a target
         and an item.
       example:
+        cluster_id: 1
         assoc_id: assoc_id
         item_type: item_type
         item_name: item_name
@@ -14866,6 +14875,10 @@ components:
         assoc_id:
           type: string
           x-go-name: AssociationID
+        cluster_id:
+          format: int64
+          type: integer
+          x-go-name: GWClusterID
         item_name:
           type: string
           x-go-name: ItemName
