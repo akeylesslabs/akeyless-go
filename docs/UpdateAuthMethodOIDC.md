@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] [default to 0]
 **Name** | **string** | Auth Method name | 
 **NewName** | Pointer to **string** | Auth Method new name | [optional] 
+**RequiredScopes** | Pointer to **[]string** | RequiredScopes is a list of required scopes that the oidc method will request from the oidc provider and the user must approve | [optional] 
+**RequiredScopesPrefix** | Pointer to **string** | RequiredScopesPrefix is a a prefix to add to all required-scopes when requesting them from the oidc server (for example, azures&#39; Application ID URI) | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UniqueIdentifier** | **string** | A unique identifier (ID) value should be configured for OIDC, OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. | 
@@ -281,6 +283,56 @@ SetNewName sets NewName field to given value.
 `func (o *UpdateAuthMethodOIDC) HasNewName() bool`
 
 HasNewName returns a boolean if a field has been set.
+
+### GetRequiredScopes
+
+`func (o *UpdateAuthMethodOIDC) GetRequiredScopes() []string`
+
+GetRequiredScopes returns the RequiredScopes field if non-nil, zero value otherwise.
+
+### GetRequiredScopesOk
+
+`func (o *UpdateAuthMethodOIDC) GetRequiredScopesOk() (*[]string, bool)`
+
+GetRequiredScopesOk returns a tuple with the RequiredScopes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequiredScopes
+
+`func (o *UpdateAuthMethodOIDC) SetRequiredScopes(v []string)`
+
+SetRequiredScopes sets RequiredScopes field to given value.
+
+### HasRequiredScopes
+
+`func (o *UpdateAuthMethodOIDC) HasRequiredScopes() bool`
+
+HasRequiredScopes returns a boolean if a field has been set.
+
+### GetRequiredScopesPrefix
+
+`func (o *UpdateAuthMethodOIDC) GetRequiredScopesPrefix() string`
+
+GetRequiredScopesPrefix returns the RequiredScopesPrefix field if non-nil, zero value otherwise.
+
+### GetRequiredScopesPrefixOk
+
+`func (o *UpdateAuthMethodOIDC) GetRequiredScopesPrefixOk() (*string, bool)`
+
+GetRequiredScopesPrefixOk returns a tuple with the RequiredScopesPrefix field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequiredScopesPrefix
+
+`func (o *UpdateAuthMethodOIDC) SetRequiredScopesPrefix(v string)`
+
+SetRequiredScopesPrefix sets RequiredScopesPrefix field to given value.
+
+### HasRequiredScopesPrefix
+
+`func (o *UpdateAuthMethodOIDC) HasRequiredScopesPrefix() bool`
+
+HasRequiredScopesPrefix returns a boolean if a field has been set.
 
 ### GetToken
 

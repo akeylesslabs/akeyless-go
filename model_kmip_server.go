@@ -13,6 +13,7 @@ package akeyless
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // KMIPServer struct for KMIPServer
@@ -20,6 +21,8 @@ type KMIPServer struct {
 	Active *bool `json:"active,omitempty"`
 	Ca *[]int32 `json:"ca,omitempty"`
 	Certificate *[]int32 `json:"certificate,omitempty"`
+	CertificateIssueDate *time.Time `json:"certificate_issue_date,omitempty"`
+	CertificateTtlInSeconds *int64 `json:"certificate_ttl_in_seconds,omitempty"`
 	Hostname *string `json:"hostname,omitempty"`
 	Root *string `json:"root,omitempty"`
 }
@@ -137,6 +140,70 @@ func (o *KMIPServer) SetCertificate(v []int32) {
 	o.Certificate = &v
 }
 
+// GetCertificateIssueDate returns the CertificateIssueDate field value if set, zero value otherwise.
+func (o *KMIPServer) GetCertificateIssueDate() time.Time {
+	if o == nil || o.CertificateIssueDate == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.CertificateIssueDate
+}
+
+// GetCertificateIssueDateOk returns a tuple with the CertificateIssueDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KMIPServer) GetCertificateIssueDateOk() (*time.Time, bool) {
+	if o == nil || o.CertificateIssueDate == nil {
+		return nil, false
+	}
+	return o.CertificateIssueDate, true
+}
+
+// HasCertificateIssueDate returns a boolean if a field has been set.
+func (o *KMIPServer) HasCertificateIssueDate() bool {
+	if o != nil && o.CertificateIssueDate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificateIssueDate gets a reference to the given time.Time and assigns it to the CertificateIssueDate field.
+func (o *KMIPServer) SetCertificateIssueDate(v time.Time) {
+	o.CertificateIssueDate = &v
+}
+
+// GetCertificateTtlInSeconds returns the CertificateTtlInSeconds field value if set, zero value otherwise.
+func (o *KMIPServer) GetCertificateTtlInSeconds() int64 {
+	if o == nil || o.CertificateTtlInSeconds == nil {
+		var ret int64
+		return ret
+	}
+	return *o.CertificateTtlInSeconds
+}
+
+// GetCertificateTtlInSecondsOk returns a tuple with the CertificateTtlInSeconds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KMIPServer) GetCertificateTtlInSecondsOk() (*int64, bool) {
+	if o == nil || o.CertificateTtlInSeconds == nil {
+		return nil, false
+	}
+	return o.CertificateTtlInSeconds, true
+}
+
+// HasCertificateTtlInSeconds returns a boolean if a field has been set.
+func (o *KMIPServer) HasCertificateTtlInSeconds() bool {
+	if o != nil && o.CertificateTtlInSeconds != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificateTtlInSeconds gets a reference to the given int64 and assigns it to the CertificateTtlInSeconds field.
+func (o *KMIPServer) SetCertificateTtlInSeconds(v int64) {
+	o.CertificateTtlInSeconds = &v
+}
+
 // GetHostname returns the Hostname field value if set, zero value otherwise.
 func (o *KMIPServer) GetHostname() string {
 	if o == nil || o.Hostname == nil {
@@ -211,6 +278,12 @@ func (o KMIPServer) MarshalJSON() ([]byte, error) {
 	}
 	if o.Certificate != nil {
 		toSerialize["certificate"] = o.Certificate
+	}
+	if o.CertificateIssueDate != nil {
+		toSerialize["certificate_issue_date"] = o.CertificateIssueDate
+	}
+	if o.CertificateTtlInSeconds != nil {
+		toSerialize["certificate_ttl_in_seconds"] = o.CertificateTtlInSeconds
 	}
 	if o.Hostname != nil {
 		toSerialize["hostname"] = o.Hostname

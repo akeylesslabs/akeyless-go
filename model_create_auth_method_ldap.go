@@ -33,6 +33,8 @@ type CreateAuthMethodLDAP struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \"sub claim\" that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization.
+	UniqueIdentifier *string `json:"unique-identifier,omitempty"`
 }
 
 // NewCreateAuthMethodLDAP instantiates a new CreateAuthMethodLDAP object
@@ -309,6 +311,38 @@ func (o *CreateAuthMethodLDAP) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUniqueIdentifier returns the UniqueIdentifier field value if set, zero value otherwise.
+func (o *CreateAuthMethodLDAP) GetUniqueIdentifier() string {
+	if o == nil || o.UniqueIdentifier == nil {
+		var ret string
+		return ret
+	}
+	return *o.UniqueIdentifier
+}
+
+// GetUniqueIdentifierOk returns a tuple with the UniqueIdentifier field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodLDAP) GetUniqueIdentifierOk() (*string, bool) {
+	if o == nil || o.UniqueIdentifier == nil {
+		return nil, false
+	}
+	return o.UniqueIdentifier, true
+}
+
+// HasUniqueIdentifier returns a boolean if a field has been set.
+func (o *CreateAuthMethodLDAP) HasUniqueIdentifier() bool {
+	if o != nil && o.UniqueIdentifier != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUniqueIdentifier gets a reference to the given string and assigns it to the UniqueIdentifier field.
+func (o *CreateAuthMethodLDAP) SetUniqueIdentifier(v string) {
+	o.UniqueIdentifier = &v
+}
+
 func (o CreateAuthMethodLDAP) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccessExpires != nil {
@@ -334,6 +368,9 @@ func (o CreateAuthMethodLDAP) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.UniqueIdentifier != nil {
+		toSerialize["unique-identifier"] = o.UniqueIdentifier
 	}
 	return json.Marshal(toSerialize)
 }

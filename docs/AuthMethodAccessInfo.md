@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **ApiKeyAccessRules** | Pointer to [**APIKeyAccessRules**](APIKeyAccessRules.md) |  | [optional] 
 **AwsIamAccessRules** | Pointer to [**AWSIAMAccessRules**](AWSIAMAccessRules.md) |  | [optional] 
 **AzureAdAccessRules** | Pointer to [**AzureADAccessRules**](AzureADAccessRules.md) |  | [optional] 
+**CertAccessRules** | Pointer to [**CertAccessRules**](CertAccessRules.md) |  | [optional] 
 **CidrWhitelist** | Pointer to **string** |  | [optional] 
 **EmailPassAccessRules** | Pointer to [**EmailPassAccessRules**](EmailPassAccessRules.md) |  | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true the role associated with this auth method must include sub claims | [optional] 
@@ -166,6 +167,31 @@ SetAzureAdAccessRules sets AzureAdAccessRules field to given value.
 `func (o *AuthMethodAccessInfo) HasAzureAdAccessRules() bool`
 
 HasAzureAdAccessRules returns a boolean if a field has been set.
+
+### GetCertAccessRules
+
+`func (o *AuthMethodAccessInfo) GetCertAccessRules() CertAccessRules`
+
+GetCertAccessRules returns the CertAccessRules field if non-nil, zero value otherwise.
+
+### GetCertAccessRulesOk
+
+`func (o *AuthMethodAccessInfo) GetCertAccessRulesOk() (*CertAccessRules, bool)`
+
+GetCertAccessRulesOk returns a tuple with the CertAccessRules field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertAccessRules
+
+`func (o *AuthMethodAccessInfo) SetCertAccessRules(v CertAccessRules)`
+
+SetCertAccessRules sets CertAccessRules field to given value.
+
+### HasCertAccessRules
+
+`func (o *AuthMethodAccessInfo) HasCertAccessRules() bool`
+
+HasCertAccessRules returns a boolean if a field has been set.
 
 ### GetCidrWhitelist
 

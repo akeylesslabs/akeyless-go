@@ -21,12 +21,14 @@ type Auth struct {
 	AccessId *string `json:"access-id,omitempty"`
 	// Access key (relevant only for access-type=access_key)
 	AccessKey *string `json:"access-key,omitempty"`
-	// Access Type (access_key/password/saml/ldap/k8s/azure_ad/oidc/aws_iam/universal_identity/jwt/gcp/k8s)
+	// Access Type (access_key/password/saml/ldap/k8s/azure_ad/oidc/aws_iam/universal_identity/jwt/gcp/cert)
 	AccessType *string `json:"access-type,omitempty"`
 	// Email (relevant only for access-type=password)
 	AdminEmail *string `json:"admin-email,omitempty"`
 	// Password (relevant only for access-type=password)
 	AdminPassword *string `json:"admin-password,omitempty"`
+	// Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type=cert)
+	CertData *string `json:"cert-data,omitempty"`
 	// The cloud identity (relevant only for access-type=azure_ad,aws_iam,gcp)
 	CloudId *string `json:"cloud-id,omitempty"`
 	Debug *bool `json:"debug,omitempty"`
@@ -38,6 +40,8 @@ type Auth struct {
 	K8sAuthConfigName *string `json:"k8s-auth-config-name,omitempty"`
 	// The K8S service account token. (relevant only for access-type=k8s)
 	K8sServiceAccountToken *string `json:"k8s-service-account-token,omitempty"`
+	// Private key data encoded in base64. Used if file was not provided.(relevant only for access-type=cert)
+	KeyData *string `json:"key-data,omitempty"`
 	// LDAP password (relevant only for access-type=ldap)
 	LdapPassword *string `json:"ldap_password,omitempty"`
 	// LDAP username (relevant only for access-type=ldap)
@@ -225,6 +229,38 @@ func (o *Auth) HasAdminPassword() bool {
 // SetAdminPassword gets a reference to the given string and assigns it to the AdminPassword field.
 func (o *Auth) SetAdminPassword(v string) {
 	o.AdminPassword = &v
+}
+
+// GetCertData returns the CertData field value if set, zero value otherwise.
+func (o *Auth) GetCertData() string {
+	if o == nil || o.CertData == nil {
+		var ret string
+		return ret
+	}
+	return *o.CertData
+}
+
+// GetCertDataOk returns a tuple with the CertData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Auth) GetCertDataOk() (*string, bool) {
+	if o == nil || o.CertData == nil {
+		return nil, false
+	}
+	return o.CertData, true
+}
+
+// HasCertData returns a boolean if a field has been set.
+func (o *Auth) HasCertData() bool {
+	if o != nil && o.CertData != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCertData gets a reference to the given string and assigns it to the CertData field.
+func (o *Auth) SetCertData(v string) {
+	o.CertData = &v
 }
 
 // GetCloudId returns the CloudId field value if set, zero value otherwise.
@@ -419,6 +455,38 @@ func (o *Auth) SetK8sServiceAccountToken(v string) {
 	o.K8sServiceAccountToken = &v
 }
 
+// GetKeyData returns the KeyData field value if set, zero value otherwise.
+func (o *Auth) GetKeyData() string {
+	if o == nil || o.KeyData == nil {
+		var ret string
+		return ret
+	}
+	return *o.KeyData
+}
+
+// GetKeyDataOk returns a tuple with the KeyData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Auth) GetKeyDataOk() (*string, bool) {
+	if o == nil || o.KeyData == nil {
+		return nil, false
+	}
+	return o.KeyData, true
+}
+
+// HasKeyData returns a boolean if a field has been set.
+func (o *Auth) HasKeyData() bool {
+	if o != nil && o.KeyData != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetKeyData gets a reference to the given string and assigns it to the KeyData field.
+func (o *Auth) SetKeyData(v string) {
+	o.KeyData = &v
+}
+
 // GetLdapPassword returns the LdapPassword field value if set, zero value otherwise.
 func (o *Auth) GetLdapPassword() string {
 	if o == nil || o.LdapPassword == nil {
@@ -532,6 +600,9 @@ func (o Auth) MarshalJSON() ([]byte, error) {
 	if o.AdminPassword != nil {
 		toSerialize["admin-password"] = o.AdminPassword
 	}
+	if o.CertData != nil {
+		toSerialize["cert-data"] = o.CertData
+	}
 	if o.CloudId != nil {
 		toSerialize["cloud-id"] = o.CloudId
 	}
@@ -549,6 +620,9 @@ func (o Auth) MarshalJSON() ([]byte, error) {
 	}
 	if o.K8sServiceAccountToken != nil {
 		toSerialize["k8s-service-account-token"] = o.K8sServiceAccountToken
+	}
+	if o.KeyData != nil {
+		toSerialize["key-data"] = o.KeyData
 	}
 	if o.LdapPassword != nil {
 		toSerialize["ldap_password"] = o.LdapPassword

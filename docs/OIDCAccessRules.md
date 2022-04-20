@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **ClientSecret** | Pointer to **string** | Client Secret | [optional] 
 **IsInternal** | Pointer to **bool** | IsInternal indicates whether this is an internal Auth Method where the client has no control over it, or it was created by the client e.g - Sign In with Google will create an OIDC Auth Method with IsInternal&#x3D;true | [optional] 
 **Issuer** | Pointer to **string** | Issuer URL | [optional] 
+**RequiredScopes** | Pointer to **[]string** | A list of required scopes to request from the oidc provider, and to check on the token | [optional] 
+**RequiredScopesPrefix** | Pointer to **string** | A prefix to add to the required scopes (for example, azures&#39; Application ID URI) | [optional] 
 **UniqueIdentifier** | Pointer to **string** | A unique identifier to distinguish different users | [optional] 
 
 ## Methods
@@ -180,6 +182,56 @@ SetIssuer sets Issuer field to given value.
 `func (o *OIDCAccessRules) HasIssuer() bool`
 
 HasIssuer returns a boolean if a field has been set.
+
+### GetRequiredScopes
+
+`func (o *OIDCAccessRules) GetRequiredScopes() []string`
+
+GetRequiredScopes returns the RequiredScopes field if non-nil, zero value otherwise.
+
+### GetRequiredScopesOk
+
+`func (o *OIDCAccessRules) GetRequiredScopesOk() (*[]string, bool)`
+
+GetRequiredScopesOk returns a tuple with the RequiredScopes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequiredScopes
+
+`func (o *OIDCAccessRules) SetRequiredScopes(v []string)`
+
+SetRequiredScopes sets RequiredScopes field to given value.
+
+### HasRequiredScopes
+
+`func (o *OIDCAccessRules) HasRequiredScopes() bool`
+
+HasRequiredScopes returns a boolean if a field has been set.
+
+### GetRequiredScopesPrefix
+
+`func (o *OIDCAccessRules) GetRequiredScopesPrefix() string`
+
+GetRequiredScopesPrefix returns the RequiredScopesPrefix field if non-nil, zero value otherwise.
+
+### GetRequiredScopesPrefixOk
+
+`func (o *OIDCAccessRules) GetRequiredScopesPrefixOk() (*string, bool)`
+
+GetRequiredScopesPrefixOk returns a tuple with the RequiredScopesPrefix field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequiredScopesPrefix
+
+`func (o *OIDCAccessRules) SetRequiredScopesPrefix(v string)`
+
+SetRequiredScopesPrefix sets RequiredScopesPrefix field to given value.
+
+### HasRequiredScopesPrefix
+
+`func (o *OIDCAccessRules) HasRequiredScopesPrefix() bool`
+
+HasRequiredScopesPrefix returns a boolean if a field has been set.
 
 ### GetUniqueIdentifier
 

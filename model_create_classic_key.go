@@ -23,6 +23,8 @@ type CreateClassicKey struct {
 	CertFileData *string `json:"cert-file-data,omitempty"`
 	// Base64-encoded classic key value
 	KeyData *string `json:"key-data,omitempty"`
+	// A list of allowed operations for the key (required for azure targets)
+	KeyOperations *[]string `json:"key-operations,omitempty"`
 	// Metadata about the classic key
 	Metadata *string `json:"metadata,omitempty"`
 	// ClassicKey name
@@ -37,6 +39,8 @@ type CreateClassicKey struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// Name of the vault used (required for azure targets)
+	VaultName *string `json:"vault-name,omitempty"`
 }
 
 // NewCreateClassicKey instantiates a new CreateClassicKey object
@@ -144,6 +148,38 @@ func (o *CreateClassicKey) HasKeyData() bool {
 // SetKeyData gets a reference to the given string and assigns it to the KeyData field.
 func (o *CreateClassicKey) SetKeyData(v string) {
 	o.KeyData = &v
+}
+
+// GetKeyOperations returns the KeyOperations field value if set, zero value otherwise.
+func (o *CreateClassicKey) GetKeyOperations() []string {
+	if o == nil || o.KeyOperations == nil {
+		var ret []string
+		return ret
+	}
+	return *o.KeyOperations
+}
+
+// GetKeyOperationsOk returns a tuple with the KeyOperations field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateClassicKey) GetKeyOperationsOk() (*[]string, bool) {
+	if o == nil || o.KeyOperations == nil {
+		return nil, false
+	}
+	return o.KeyOperations, true
+}
+
+// HasKeyOperations returns a boolean if a field has been set.
+func (o *CreateClassicKey) HasKeyOperations() bool {
+	if o != nil && o.KeyOperations != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetKeyOperations gets a reference to the given []string and assigns it to the KeyOperations field.
+func (o *CreateClassicKey) SetKeyOperations(v []string) {
+	o.KeyOperations = &v
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
@@ -362,6 +398,38 @@ func (o *CreateClassicKey) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetVaultName returns the VaultName field value if set, zero value otherwise.
+func (o *CreateClassicKey) GetVaultName() string {
+	if o == nil || o.VaultName == nil {
+		var ret string
+		return ret
+	}
+	return *o.VaultName
+}
+
+// GetVaultNameOk returns a tuple with the VaultName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateClassicKey) GetVaultNameOk() (*string, bool) {
+	if o == nil || o.VaultName == nil {
+		return nil, false
+	}
+	return o.VaultName, true
+}
+
+// HasVaultName returns a boolean if a field has been set.
+func (o *CreateClassicKey) HasVaultName() bool {
+	if o != nil && o.VaultName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVaultName gets a reference to the given string and assigns it to the VaultName field.
+func (o *CreateClassicKey) SetVaultName(v string) {
+	o.VaultName = &v
+}
+
 func (o CreateClassicKey) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -372,6 +440,9 @@ func (o CreateClassicKey) MarshalJSON() ([]byte, error) {
 	}
 	if o.KeyData != nil {
 		toSerialize["key-data"] = o.KeyData
+	}
+	if o.KeyOperations != nil {
+		toSerialize["key-operations"] = o.KeyOperations
 	}
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata
@@ -393,6 +464,9 @@ func (o CreateClassicKey) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.VaultName != nil {
+		toSerialize["vault-name"] = o.VaultName
 	}
 	return json.Marshal(toSerialize)
 }

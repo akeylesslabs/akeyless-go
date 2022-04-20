@@ -19,6 +19,7 @@ import (
 // KMIPClient struct for KMIPClient
 type KMIPClient struct {
 	CertificateIssueDate *time.Time `json:"certificate_issue_date,omitempty"`
+	CertificateTtlInSeconds *int64 `json:"certificate_ttl_in_seconds,omitempty"`
 	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Rules *[]PathRule `json:"rules,omitempty"`
@@ -71,6 +72,38 @@ func (o *KMIPClient) HasCertificateIssueDate() bool {
 // SetCertificateIssueDate gets a reference to the given time.Time and assigns it to the CertificateIssueDate field.
 func (o *KMIPClient) SetCertificateIssueDate(v time.Time) {
 	o.CertificateIssueDate = &v
+}
+
+// GetCertificateTtlInSeconds returns the CertificateTtlInSeconds field value if set, zero value otherwise.
+func (o *KMIPClient) GetCertificateTtlInSeconds() int64 {
+	if o == nil || o.CertificateTtlInSeconds == nil {
+		var ret int64
+		return ret
+	}
+	return *o.CertificateTtlInSeconds
+}
+
+// GetCertificateTtlInSecondsOk returns a tuple with the CertificateTtlInSeconds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KMIPClient) GetCertificateTtlInSecondsOk() (*int64, bool) {
+	if o == nil || o.CertificateTtlInSeconds == nil {
+		return nil, false
+	}
+	return o.CertificateTtlInSeconds, true
+}
+
+// HasCertificateTtlInSeconds returns a boolean if a field has been set.
+func (o *KMIPClient) HasCertificateTtlInSeconds() bool {
+	if o != nil && o.CertificateTtlInSeconds != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificateTtlInSeconds gets a reference to the given int64 and assigns it to the CertificateTtlInSeconds field.
+func (o *KMIPClient) SetCertificateTtlInSeconds(v int64) {
+	o.CertificateTtlInSeconds = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -173,6 +206,9 @@ func (o KMIPClient) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.CertificateIssueDate != nil {
 		toSerialize["certificate_issue_date"] = o.CertificateIssueDate
+	}
+	if o.CertificateTtlInSeconds != nil {
+		toSerialize["certificate_ttl_in_seconds"] = o.CertificateTtlInSeconds
 	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id

@@ -261,6 +261,33 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /create-auth-method-cert:
+    post:
+      operationId: createAuthMethodCert
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createAuthMethodCert'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAuthMethodCertOutput'
+          description: createAuthMethodCertResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /create-auth-method-gcp:
     post:
       operationId: createAuthMethodGCP
@@ -3800,6 +3827,33 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /kmip-delete-environment:
+    delete:
+      operationId: kmipDeleteServer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/kmipDeleteServer'
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/kmipDeleteServerOutput'
+          description: kmipDeleteServerResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /kmip-get-client:
     post:
       operationId: kmipDescribeClient
@@ -3870,6 +3924,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/KMIPClientListResponse'
           description: kmipListClientsResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /kmip-move-environment:
+    post:
+      operationId: kmipMoveServer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/kmipMoveServer'
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/kmipMoveServerOutput'
+          description: kmipMoveServerResponse wraps response body.
         default:
           content:
             application/json:
@@ -4700,6 +4781,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/updateAuthMethodAzureADOutput'
           description: updateAuthMethodAzureADResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /update-auth-method-cert:
+    post:
+      operationId: updateAuthMethodCert
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateAuthMethodCert'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/updateAuthMethodCertOutput'
+          description: updateAuthMethodCertResponse wraps response body.
         default:
           content:
             application/json:
@@ -5833,6 +5941,12 @@ components:
           schema:
             $ref: '#/components/schemas/createAuthMethodAzureADOutput'
       description: createAuthMethodAzureADResponse wraps response body.
+    createAuthMethodCertResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/createAuthMethodCertOutput'
+      description: createAuthMethodCertResponse wraps response body.
     createAuthMethodGCPResponse:
       content:
         application/json:
@@ -6666,6 +6780,12 @@ components:
           schema:
             $ref: '#/components/schemas/kmipDeleteClientOutput'
       description: kmipDeleteClientResponse wraps response body.
+    kmipDeleteServerResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/kmipDeleteServerOutput'
+      description: kmipDeleteServerResponse wraps response body.
     kmipDescribeClientResponse:
       content:
         application/json:
@@ -6684,6 +6804,12 @@ components:
           schema:
             $ref: '#/components/schemas/KMIPClientListResponse'
       description: kmipListClientsResponse wraps response body.
+    kmipMoveServerResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/kmipMoveServerOutput'
+      description: kmipMoveServerResponse wraps response body.
     kmipRenewClientCertificateResponse:
       content:
         application/json:
@@ -6882,6 +7008,12 @@ components:
           schema:
             $ref: '#/components/schemas/updateAuthMethodAzureADOutput'
       description: updateAuthMethodAzureADResponse wraps response body.
+    updateAuthMethodCertResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/updateAuthMethodCertOutput'
+      description: updateAuthMethodCertResponse wraps response body.
     updateAuthMethodGCPResponse:
       content:
         application/json:
@@ -7294,7 +7426,6 @@ components:
             use_local_ca_jwt: true
         message_queue_info:
           queue_name: queue_name
-          use_new_queue: true
           queue_url: queue_url
           mq_type: mq_type
         cache:
@@ -7306,18 +7437,18 @@ components:
         cf:
           customer_fragements:
             key: customer_fragements
-        version: 1
+        version: 6
         producers:
           producers:
           - init: true
             name: name
             active: true
-            id: 2
+            id: 7
             type: type
           - init: true
             name: name
             active: true
-            id: 2
+            id: 7
             type: type
         general:
           tcp_port: tcp_port
@@ -7399,17 +7530,17 @@ components:
               protection_key: protection_key
             payload:
               client_key:
-              - 3
-              - 3
+              - 4
+              - 4
               server: server
               password: password
               client_cert:
-              - 9
-              - 9
+              - 2
+              - 2
               namespace: namespace
               ca:
-              - 7
-              - 7
+              - 3
+              - 3
               skip_system: true
               token: token
               username: username
@@ -7420,17 +7551,17 @@ components:
               protection_key: protection_key
             payload:
               client_key:
-              - 3
-              - 3
+              - 4
+              - 4
               server: server
               password: password
               client_cert:
-              - 9
-              - 9
+              - 2
+              - 2
               namespace: namespace
               ca:
-              - 7
-              - 7
+              - 3
+              - 3
               skip_system: true
               token: token
               username: username
@@ -7455,8 +7586,8 @@ components:
               key: key
         leadership:
           open_leadership:
-          - 2
-          - 2
+          - 9
+          - 9
         log_forwarding:
           aws_s3_config:
             aws_access_id: aws_access_id
@@ -7511,8 +7642,8 @@ components:
           default_secret_location: default_secret_location
         kmip_clients:
           key_enc:
-          - 6
-          - 6
+          - 1
+          - 1
           server:
             hostname: hostname
             root: root
@@ -7520,12 +7651,14 @@ components:
             - 5
             - 5
             active: true
+            certificate_issue_date: 2000-01-23T04:56:07.000+00:00
             ca:
-            - 1
-            - 1
+            - 5
+            - 5
+            certificate_ttl_in_seconds: 2
           server_enc:
-          - 5
-          - 5
+          - 7
+          - 7
           clients:
             key:
               name: name
@@ -7542,6 +7675,7 @@ components:
                 - capabilities
                 type: type
               id: id
+              certificate_ttl_in_seconds: 6
         config_protection_key_name: config_protection_key_name
         admins:
           allowed_access:
@@ -7560,14 +7694,14 @@ components:
               hash: hash
         rotators:
           rotators:
-          - rotation_interval: 7
+          - rotation_interval: 1
             name: name
-            id: 4
+            id: 1
             last_error: last_error
             type: type
-          - rotation_interval: 7
+          - rotation_interval: 1
             name: name
-            id: 4
+            id: 1
             last_error: last_error
             type: type
       properties:
@@ -7706,7 +7840,7 @@ components:
         - client_permissions
         - client_permissions
         access_info:
-          jwt_ttl: 6
+          jwt_ttl: 1
           gcp_access_rules:
             bound_service_accounts:
             - bound_service_accounts
@@ -7756,7 +7890,7 @@ components:
             issuer: issuer
           universal_identity_access_rules:
             deny_inheritance: true
-            ttl: 1
+            ttl: 5
             deny_rotate: true
           oauth2_access_rules:
             bound_claims:
@@ -7790,6 +7924,10 @@ components:
             allowed_redirect_URIs:
             - allowed_redirect_URIs
             - allowed_redirect_URIs
+            required_scopes_prefix: required_scopes_prefix
+            required_scopes:
+            - required_scopes
+            - required_scopes
             client_secret: client_secret
             client_id: client_id
             issuer: issuer
@@ -7813,6 +7951,32 @@ components:
             alg: alg
             key: key
           cidr_whitelist: cidr_whitelist
+          cert_access_rules:
+            bound_common_names:
+            - bound_common_names
+            - bound_common_names
+            unique_identifier: unique_identifier
+            bound_dns_sans:
+            - bound_dns_sans
+            - bound_dns_sans
+            bound_email_sans:
+            - bound_email_sans
+            - bound_email_sans
+            bound_extensions:
+            - bound_extensions
+            - bound_extensions
+            bound_organizational_units:
+            - bound_organizational_units
+            - bound_organizational_units
+            certificate:
+            - 6
+            - 6
+            bound_uri_sans:
+            - bound_uri_sans
+            - bound_uri_sans
+            revoked_cert_ids:
+            - revoked_cert_ids
+            - revoked_cert_ids
           force_sub_claims: true
           ldap_access_rules:
             unique_identifier: unique_identifier
@@ -7910,7 +8074,7 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     AuthMethodAccessInfo:
       example:
-        jwt_ttl: 6
+        jwt_ttl: 1
         gcp_access_rules:
           bound_service_accounts:
           - bound_service_accounts
@@ -7960,7 +8124,7 @@ components:
           issuer: issuer
         universal_identity_access_rules:
           deny_inheritance: true
-          ttl: 1
+          ttl: 5
           deny_rotate: true
         oauth2_access_rules:
           bound_claims:
@@ -7994,6 +8158,10 @@ components:
           allowed_redirect_URIs:
           - allowed_redirect_URIs
           - allowed_redirect_URIs
+          required_scopes_prefix: required_scopes_prefix
+          required_scopes:
+          - required_scopes
+          - required_scopes
           client_secret: client_secret
           client_id: client_id
           issuer: issuer
@@ -8017,6 +8185,32 @@ components:
           alg: alg
           key: key
         cidr_whitelist: cidr_whitelist
+        cert_access_rules:
+          bound_common_names:
+          - bound_common_names
+          - bound_common_names
+          unique_identifier: unique_identifier
+          bound_dns_sans:
+          - bound_dns_sans
+          - bound_dns_sans
+          bound_email_sans:
+          - bound_email_sans
+          - bound_email_sans
+          bound_extensions:
+          - bound_extensions
+          - bound_extensions
+          bound_organizational_units:
+          - bound_organizational_units
+          - bound_organizational_units
+          certificate:
+          - 6
+          - 6
+          bound_uri_sans:
+          - bound_uri_sans
+          - bound_uri_sans
+          revoked_cert_ids:
+          - revoked_cert_ids
+          - revoked_cert_ids
         force_sub_claims: true
         ldap_access_rules:
           unique_identifier: unique_identifier
@@ -8102,6 +8296,8 @@ components:
           $ref: '#/components/schemas/AWSIAMAccessRules'
         azure_ad_access_rules:
           $ref: '#/components/schemas/AzureADAccessRules'
+        cert_access_rules:
+          $ref: '#/components/schemas/CertAccessRules'
         cidr_whitelist:
           type: string
           x-go-name: CIDRWhitelist
@@ -8406,6 +8602,97 @@ components:
           x-go-name: ProActiveCacheMinimumFetchingTime
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    CertAccessRules:
+      example:
+        bound_common_names:
+        - bound_common_names
+        - bound_common_names
+        unique_identifier: unique_identifier
+        bound_dns_sans:
+        - bound_dns_sans
+        - bound_dns_sans
+        bound_email_sans:
+        - bound_email_sans
+        - bound_email_sans
+        bound_extensions:
+        - bound_extensions
+        - bound_extensions
+        bound_organizational_units:
+        - bound_organizational_units
+        - bound_organizational_units
+        certificate:
+        - 6
+        - 6
+        bound_uri_sans:
+        - bound_uri_sans
+        - bound_uri_sans
+        revoked_cert_ids:
+        - revoked_cert_ids
+        - revoked_cert_ids
+      properties:
+        bound_common_names:
+          description: A list of names. At least one must exist in the Common Name.
+            Supports globbing.
+          items:
+            type: string
+          type: array
+          x-go-name: BoundCommonNames
+        bound_dns_sans:
+          description: A list of DNS names. At least one must exist in the SANs. Supports
+            globbing.
+          items:
+            type: string
+          type: array
+          x-go-name: BoundDnsSans
+        bound_email_sans:
+          description: A list of Email Addresses. At least one must exist in the SANs.
+            Supports globbing.
+          items:
+            type: string
+          type: array
+          x-go-name: BoundEmailSans
+        bound_extensions:
+          description: A list of extensions formatted as "oid:value". Expects the
+            extension value to be some type of ASN1 encoded string. All values must
+            match. Supports globbing on "value".
+          items:
+            type: string
+          type: array
+          x-go-name: BoundExtensions
+        bound_organizational_units:
+          description: A list of Organizational Units names. At least one must exist
+            in the OU field.
+          items:
+            type: string
+          type: array
+          x-go-name: BoundOrganizationalUnits
+        bound_uri_sans:
+          description: A list of URIs. At least one must exist in the SANs. Supports
+            globbing.
+          items:
+            type: string
+          type: array
+          x-go-name: BoundUriSans
+        certificate:
+          description: Base64 encdoed PEM certificate
+          items:
+            format: uint8
+            type: integer
+          type: array
+          x-go-name: Certificate
+        revoked_cert_ids:
+          description: A list of revoked cert ids
+          items:
+            type: string
+          type: array
+          x-go-name: RevokedCertIds
+        unique_identifier:
+          description: A unique identifier to distinguish different users
+          type: string
+          x-go-name: UniqueIdentifier
+      title: CertAccessRules contains access rules specific to certificate authentication.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     CertIssuerType:
       title: CertIssuerType represents possible certificate issuers type.
       type: string
@@ -8885,6 +9172,10 @@ components:
       example:
         protection-key-name: protection-key-name
         metadata: metadata
+        vault-name: vault-name
+        key-operations:
+        - key-operations
+        - key-operations
         name: name
         target-name: target-name
         alg: alg
@@ -8909,6 +9200,13 @@ components:
           description: Base64-encoded classic key value
           type: string
           x-go-name: ClassicKeyValue
+        key-operations:
+          description: A list of allowed operations for the key (required for azure
+            targets)
+          items:
+            type: string
+          type: array
+          x-go-name: KeyOperations
         metadata:
           description: Metadata about the classic key
           type: string
@@ -8942,6 +9240,10 @@ components:
             authentication
           type: string
           x-go-name: UIDToken
+        vault-name:
+          description: Name of the vault used (required for azure targets)
+          type: string
+          x-go-name: VaultName
       required:
       - alg
       - name
@@ -10253,7 +10555,6 @@ components:
     GatewayMessageQueueInfo:
       example:
         queue_name: queue_name
-        use_new_queue: true
         queue_url: queue_url
         mq_type: mq_type
       properties:
@@ -10266,9 +10567,6 @@ components:
         queue_url:
           type: string
           x-go-name: QueueURL
-        use_new_queue:
-          type: boolean
-          x-go-name: UseNewQueue
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     GeneralConfigPart:
@@ -10440,12 +10738,12 @@ components:
         - init: true
           name: name
           active: true
-          id: 2
+          id: 7
           type: type
         - init: true
           name: name
           active: true
-          id: 2
+          id: 7
           type: type
       properties:
         producers:
@@ -11541,17 +11839,17 @@ components:
           protection_key: protection_key
         payload:
           client_key:
-          - 3
-          - 3
+          - 4
+          - 4
           server: server
           password: password
           client_cert:
-          - 9
-          - 9
+          - 2
+          - 2
           namespace: namespace
           ca:
-          - 7
-          - 7
+          - 3
+          - 3
           skip_system: true
           token: token
           username: username
@@ -11565,17 +11863,17 @@ components:
     K8SPayload:
       example:
         client_key:
-        - 3
-        - 3
+        - 4
+        - 4
         server: server
         password: password
         client_cert:
-        - 9
-        - 9
+        - 2
+        - 2
         namespace: namespace
         ca:
-        - 7
-        - 7
+        - 3
+        - 3
         skip_system: true
         token: token
         username: username
@@ -11634,11 +11932,16 @@ components:
           - capabilities
           type: type
         id: id
+        certificate_ttl_in_seconds: 6
       properties:
         certificate_issue_date:
           format: date-time
           type: string
           x-go-name: CertificateIssueDate
+        certificate_ttl_in_seconds:
+          format: int64
+          type: integer
+          x-go-name: CertificateTTLInSeconds
         id:
           type: string
           x-go-name: ID
@@ -11669,6 +11972,7 @@ components:
             - capabilities
             type: type
           id: id
+          certificate_ttl_in_seconds: 6
       properties:
         client:
           $ref: '#/components/schemas/KMIPClient'
@@ -11691,6 +11995,7 @@ components:
             - capabilities
             type: type
           id: id
+          certificate_ttl_in_seconds: 6
         - name: name
           certificate_issue_date: 2000-01-23T04:56:07.000+00:00
           rules:
@@ -11705,6 +12010,7 @@ components:
             - capabilities
             type: type
           id: id
+          certificate_ttl_in_seconds: 6
       properties:
         clients:
           items:
@@ -11730,6 +12036,7 @@ components:
             - capabilities
             type: type
           id: id
+          certificate_ttl_in_seconds: 6
       properties:
         client:
           $ref: '#/components/schemas/KMIPClient'
@@ -11738,8 +12045,8 @@ components:
     KMIPConfigPart:
       example:
         key_enc:
-        - 6
-        - 6
+        - 1
+        - 1
         server:
           hostname: hostname
           root: root
@@ -11747,12 +12054,14 @@ components:
           - 5
           - 5
           active: true
+          certificate_issue_date: 2000-01-23T04:56:07.000+00:00
           ca:
-          - 1
-          - 1
+          - 5
+          - 5
+          certificate_ttl_in_seconds: 2
         server_enc:
-        - 5
-        - 5
+        - 7
+        - 7
         clients:
           key:
             name: name
@@ -11769,6 +12078,7 @@ components:
               - capabilities
               type: type
             id: id
+            certificate_ttl_in_seconds: 6
       properties:
         clients:
           additionalProperties:
@@ -11821,9 +12131,11 @@ components:
         - 5
         - 5
         active: true
+        certificate_issue_date: 2000-01-23T04:56:07.000+00:00
         ca:
-        - 1
-        - 1
+        - 5
+        - 5
+        certificate_ttl_in_seconds: 2
       properties:
         active:
           type: boolean
@@ -11840,6 +12152,14 @@ components:
             type: integer
           type: array
           x-go-name: Certificate
+        certificate_issue_date:
+          format: date-time
+          type: string
+          x-go-name: CertificateIssueDate
+        certificate_ttl_in_seconds:
+          format: int64
+          type: integer
+          x-go-name: CertificateTTLInSeconds
         hostname:
           type: string
           x-go-name: Hostname
@@ -12031,8 +12351,8 @@ components:
     LeadershipConfigPart:
       example:
         open_leadership:
-        - 2
-        - 2
+        - 9
+        - 9
       properties:
         open_leadership:
           items:
@@ -12090,7 +12410,7 @@ components:
           - client_permissions
           - client_permissions
           access_info:
-            jwt_ttl: 6
+            jwt_ttl: 1
             gcp_access_rules:
               bound_service_accounts:
               - bound_service_accounts
@@ -12140,7 +12460,7 @@ components:
               issuer: issuer
             universal_identity_access_rules:
               deny_inheritance: true
-              ttl: 1
+              ttl: 5
               deny_rotate: true
             oauth2_access_rules:
               bound_claims:
@@ -12174,6 +12494,10 @@ components:
               allowed_redirect_URIs:
               - allowed_redirect_URIs
               - allowed_redirect_URIs
+              required_scopes_prefix: required_scopes_prefix
+              required_scopes:
+              - required_scopes
+              - required_scopes
               client_secret: client_secret
               client_id: client_id
               issuer: issuer
@@ -12197,6 +12521,32 @@ components:
               alg: alg
               key: key
             cidr_whitelist: cidr_whitelist
+            cert_access_rules:
+              bound_common_names:
+              - bound_common_names
+              - bound_common_names
+              unique_identifier: unique_identifier
+              bound_dns_sans:
+              - bound_dns_sans
+              - bound_dns_sans
+              bound_email_sans:
+              - bound_email_sans
+              - bound_email_sans
+              bound_extensions:
+              - bound_extensions
+              - bound_extensions
+              bound_organizational_units:
+              - bound_organizational_units
+              - bound_organizational_units
+              certificate:
+              - 6
+              - 6
+              bound_uri_sans:
+              - bound_uri_sans
+              - bound_uri_sans
+              revoked_cert_ids:
+              - revoked_cert_ids
+              - revoked_cert_ids
             force_sub_claims: true
             ldap_access_rules:
               unique_identifier: unique_identifier
@@ -12311,7 +12661,7 @@ components:
           - client_permissions
           - client_permissions
           access_info:
-            jwt_ttl: 6
+            jwt_ttl: 1
             gcp_access_rules:
               bound_service_accounts:
               - bound_service_accounts
@@ -12361,7 +12711,7 @@ components:
               issuer: issuer
             universal_identity_access_rules:
               deny_inheritance: true
-              ttl: 1
+              ttl: 5
               deny_rotate: true
             oauth2_access_rules:
               bound_claims:
@@ -12395,6 +12745,10 @@ components:
               allowed_redirect_URIs:
               - allowed_redirect_URIs
               - allowed_redirect_URIs
+              required_scopes_prefix: required_scopes_prefix
+              required_scopes:
+              - required_scopes
+              - required_scopes
               client_secret: client_secret
               client_id: client_id
               issuer: issuer
@@ -12418,6 +12772,32 @@ components:
               alg: alg
               key: key
             cidr_whitelist: cidr_whitelist
+            cert_access_rules:
+              bound_common_names:
+              - bound_common_names
+              - bound_common_names
+              unique_identifier: unique_identifier
+              bound_dns_sans:
+              - bound_dns_sans
+              - bound_dns_sans
+              bound_email_sans:
+              - bound_email_sans
+              - bound_email_sans
+              bound_extensions:
+              - bound_extensions
+              - bound_extensions
+              bound_organizational_units:
+              - bound_organizational_units
+              - bound_organizational_units
+              certificate:
+              - 6
+              - 6
+              bound_uri_sans:
+              - bound_uri_sans
+              - bound_uri_sans
+              revoked_cert_ids:
+              - revoked_cert_ids
+              - revoked_cert_ids
             force_sub_claims: true
             ldap_access_rules:
               unique_identifier: unique_identifier
@@ -13516,17 +13896,17 @@ components:
             protection_key: protection_key
           payload:
             client_key:
-            - 3
-            - 3
+            - 4
+            - 4
             server: server
             password: password
             client_cert:
-            - 9
-            - 9
+            - 2
+            - 2
             namespace: namespace
             ca:
-            - 7
-            - 7
+            - 3
+            - 3
             skip_system: true
             token: token
             username: username
@@ -13537,17 +13917,17 @@ components:
             protection_key: protection_key
           payload:
             client_key:
-            - 3
-            - 3
+            - 4
+            - 4
             server: server
             password: password
             client_cert:
-            - 9
-            - 9
+            - 2
+            - 2
             namespace: namespace
             ca:
-            - 7
-            - 7
+            - 3
+            - 3
             skip_system: true
             token: token
             username: username
@@ -13687,6 +14067,10 @@ components:
         allowed_redirect_URIs:
         - allowed_redirect_URIs
         - allowed_redirect_URIs
+        required_scopes_prefix: required_scopes_prefix
+        required_scopes:
+        - required_scopes
+        - required_scopes
         client_secret: client_secret
         client_id: client_id
         issuer: issuer
@@ -13722,6 +14106,18 @@ components:
           description: Issuer URL
           type: string
           x-go-name: Issuer
+        required_scopes:
+          description: A list of required scopes to request from the oidc provider,
+            and to check on the token
+          items:
+            type: string
+          type: array
+          x-go-name: RequiredScopes
+        required_scopes_prefix:
+          description: A prefix to add to the required scopes (for example, azures'
+            Application ID URI)
+          type: string
+          x-go-name: RequiredScopesPrefix
         unique_identifier:
           description: A unique identifier to distinguish different users
           type: string
@@ -13963,7 +14359,7 @@ components:
         init: true
         name: name
         active: true
-        id: 2
+        id: 7
         type: type
       properties:
         active:
@@ -13995,12 +14391,12 @@ components:
         - init: true
           name: name
           active: true
-          id: 2
+          id: 7
           type: type
         - init: true
           name: name
           active: true
-          id: 2
+          id: 7
           type: type
       properties:
         producers:
@@ -14306,9 +14702,9 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     Rotator:
       example:
-        rotation_interval: 7
+        rotation_interval: 1
         name: name
-        id: 4
+        id: 1
         last_error: last_error
         type: type
       properties:
@@ -14342,14 +14738,14 @@ components:
     RotatorsConfigPart:
       example:
         rotators:
-        - rotation_interval: 7
+        - rotation_interval: 1
           name: name
-          id: 4
+          id: 1
           last_error: last_error
           type: type
-        - rotation_interval: 7
+        - rotation_interval: 1
           name: name
-          id: 4
+          id: 1
           last_error: last_error
           type: type
       properties:
@@ -15381,7 +15777,7 @@ components:
     UniversalIdentityAccessRules:
       example:
         deny_inheritance: true
-        ttl: 1
+        ttl: 5
         deny_rotate: true
       properties:
         deny_inheritance:
@@ -15686,7 +16082,7 @@ components:
           default: access_key
           description: |-
             Access Type
-            (access_key/password/saml/ldap/k8s/azure_ad/oidc/aws_iam/universal_identity/jwt/gcp/k8s)
+            (access_key/password/saml/ldap/k8s/azure_ad/oidc/aws_iam/universal_identity/jwt/gcp/cert)
           type: string
           x-go-name: AccessType
         admin-email:
@@ -15697,6 +16093,11 @@ components:
           description: Password (relevant only for access-type=password)
           type: string
           x-go-name: AdminPass
+        cert-data:
+          description: Certificate data encoded in base64. Used if file was not provided.
+            (relevant only for access-type=cert)
+          type: string
+          x-go-name: CertData
         cloud-id:
           description: The cloud identity (relevant only for access-type=azure_ad,aws_iam,gcp)
           type: string
@@ -15720,6 +16121,11 @@ components:
           description: The K8S service account token. (relevant only for access-type=k8s)
           type: string
           x-go-name: K8SServiceAccountToken
+        key-data:
+          description: Private key data encoded in base64. Used if file was not provided.(relevant
+            only for access-type=cert)
+          type: string
+          x-go-name: KeyData
         ldap_password:
           description: LDAP password (relevant only for access-type=ldap)
           type: string
@@ -16222,6 +16628,127 @@ components:
           x-go-name: AccessID
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    createAuthMethodCert:
+      description: |-
+        createAuthMethodCert is a command that creates a new auth method that
+        will be able to authenticate using a client certificae
+      properties:
+        access-expires:
+          default: 0
+          description: |-
+            Access expiration date in Unix timestamp (select 0 for access without
+            expiry date)
+          format: int64
+          type: integer
+          x-go-name: AccessExpires
+        bound-common-names:
+          description: A list of names. At least one must exist in the Common Name.
+            Supports globbing.
+          items:
+            type: string
+          type: array
+          x-go-name: BoundCommonNames
+        bound-dns-sans:
+          description: A list of DNS names. At least one must exist in the SANs. Supports
+            globbing.
+          items:
+            type: string
+          type: array
+          x-go-name: BoundDnsSans
+        bound-email-sans:
+          description: A list of Email Addresses. At least one must exist in the SANs.
+            Supports globbing.
+          items:
+            type: string
+          type: array
+          x-go-name: BoundEmailSans
+        bound-extensions:
+          description: A list of extensions formatted as "oid:value". Expects the
+            extension value to be some type of ASN1 encoded string. All values much
+            match. Supports globbing on "value".
+          items:
+            type: string
+          type: array
+          x-go-name: BoundExtensions
+        bound-ips:
+          description: A CIDR whitelist with the IPs that the access is restricted
+            to
+          items:
+            type: string
+          type: array
+          x-go-name: CIDRWhitelist
+        bound-organizational-units:
+          description: A list of Organizational Units names. At least one must exist
+            in the OU field.
+          items:
+            type: string
+          type: array
+          x-go-name: BoundOrganizationalUnits
+        bound-uri-sans:
+          description: A list of URIs. At least one must exist in the SANs. Supports
+            globbing.
+          items:
+            type: string
+          type: array
+          x-go-name: BoundUriSans
+        certificate-data:
+          description: The certificate data in base64, if no file was provided
+          type: string
+          x-go-name: CertificateData
+        force-sub-claims:
+          description: 'if true: enforce role-association must include sub claims'
+          type: boolean
+          x-go-name: ForceSubClaims
+        jwt-ttl:
+          default: 0
+          description: Jwt TTL
+          format: int64
+          type: integer
+          x-go-name: JwtTtl
+        name:
+          description: Auth Method name
+          type: string
+          x-go-name: AuthMethodName
+        revoked-cert-ids:
+          description: A list of revoked cert ids
+          items:
+            type: string
+          type: array
+          x-go-name: RevokedCertIds
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        unique-identifier:
+          description: |-
+            A unique identifier (ID) value should be configured, such as common_name or organizational_unit
+            Whenever a user logs in with a token, these authentication types issue
+            a "sub claim" that contains details uniquely identifying that user.
+            This sub claim includes a key containing the ID value that you
+            configured, and is used to distinguish between different users from
+            within the same organization.
+          type: string
+          x-go-name: UniqueIdentifier
+      required:
+      - name
+      - unique-identifier
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    createAuthMethodCertOutput:
+      example:
+        access_id: access_id
+      properties:
+        access_id:
+          type: string
+          x-go-name: AccessID
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     createAuthMethodGCP:
       description: |-
         createAuthMethodGCP is a command that creates a new auth method that
@@ -16583,6 +17110,18 @@ components:
             authentication
           type: string
           x-go-name: UIDToken
+        unique-identifier:
+          description: |-
+            A unique identifier (ID) value should be configured for OAuth2,
+            LDAP and SAML authentication method types and is usually a value such
+            as the email, username, or upn for example.
+            Whenever a user logs in with a token, these authentication types issue
+            a "sub claim" that contains details uniquely identifying that user.
+            This sub claim includes a key containing the ID value that you
+            configured, and is used to distinguish between different users from
+            within the same organization.
+          type: string
+          x-go-name: UniqueIdentifier
       required:
       - name
       type: object
@@ -16740,6 +17279,19 @@ components:
           description: Auth Method name
           type: string
           x-go-name: AuthMethodName
+        required-scopes:
+          description: RequiredScopes is a list of required scopes that the oidc method
+            will request from the oidc provider and the user must approve
+          items:
+            type: string
+          type: array
+          x-go-name: RequiredScopes
+        required-scopes-prefix:
+          description: RequiredScopesPrefix is a a prefix to add to all required-scopes
+            when requesting them from the oidc server (for example, azures' Application
+            ID URI)
+          type: string
+          x-go-name: RequiredScopesPrefix
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -20718,12 +21270,22 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     gatewayCreateProducerCustom:
       properties:
+        admin_rotation_interval_days:
+          description: Define rotation interval in days
+          format: int64
+          type: integer
+          x-go-name: RotationIntervalDays
         create-sync-url:
           description: |-
             URL of an endpoint that implements /sync/create method, for example
             https://webhook.example.com/sync/create
           type: string
           x-go-name: CreateSyncURL
+        enable_admin_rotation:
+          default: false
+          description: Should admin credentials be rotated
+          type: boolean
+          x-go-name: EnableAdminRotation
         name:
           description: Producer name
           type: string
@@ -24370,6 +24932,20 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
+        secure-access-bastion-issuer:
+          type: string
+          x-go-name: SecureAccessBastionIssuer
+        secure-access-enable:
+          type: string
+          x-go-name: SecureAccessEnabled
+        secure-access-host:
+          items:
+            type: string
+          type: array
+          x-go-name: SecureAccessHost
+        secure-access-web:
+          type: boolean
+          x-go-name: AccessWebCategory
         tags:
           description: List of the tags attached to this secret
           items:
@@ -26546,17 +27122,17 @@ components:
               protection_key: protection_key
             payload:
               client_key:
-              - 3
-              - 3
+              - 4
+              - 4
               server: server
               password: password
               client_cert:
-              - 9
-              - 9
+              - 2
+              - 2
               namespace: namespace
               ca:
-              - 7
-              - 7
+              - 3
+              - 3
               skip_system: true
               token: token
               username: username
@@ -26567,17 +27143,17 @@ components:
               protection_key: protection_key
             payload:
               client_key:
-              - 3
-              - 3
+              - 4
+              - 4
               server: server
               password: password
               client_cert:
-              - 9
-              - 9
+              - 2
+              - 2
               namespace: namespace
               ca:
-              - 7
-              - 7
+              - 3
+              - 3
               skip_system: true
               token: token
               username: username
@@ -28624,12 +29200,22 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     gatewayUpdateProducerCustom:
       properties:
+        admin_rotation_interval_days:
+          description: Define rotation interval in days
+          format: int64
+          type: integer
+          x-go-name: RotationIntervalDays
         create-sync-url:
           description: |-
             URL of an endpoint that implements /sync/create method, for example
             https://webhook.example.com/sync/create
           type: string
           x-go-name: CreateSyncURL
+        enable_admin_rotation:
+          default: false
+          description: Should admin credentials be rotated
+          type: boolean
+          x-go-name: EnableAdminRotation
         name:
           description: Producer name
           type: string
@@ -32111,6 +32697,20 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
+        secure-access-bastion-issuer:
+          type: string
+          x-go-name: SecureAccessBastionIssuer
+        secure-access-enable:
+          type: string
+          x-go-name: SecureAccessEnabled
+        secure-access-host:
+          items:
+            type: string
+          type: array
+          x-go-name: SecureAccessHost
+        secure-access-web:
+          type: boolean
+          x-go-name: AccessWebCategory
         tags:
           description: List of the tags attached to this secret
           items:
@@ -34505,6 +35105,26 @@ components:
     kmipDeleteClientOutput:
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    kmipDeleteServer:
+      description: |-
+        kmipDeleteServer is a command that the kmip server
+        (allowed only if it has no clients nor associated items)
+      properties:
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    kmipDeleteServerOutput:
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     kmipDescribeClient:
       properties:
         client-id:
@@ -34546,9 +35166,11 @@ components:
         hostname: hostname
         root: root
         active: true
+        certificate_issue_date: 2000-01-23T04:56:07.000+00:00
         ca_cert:
         - 0
         - 0
+        certificate_ttl_in_seconds: 6
       properties:
         active:
           type: boolean
@@ -34559,6 +35181,14 @@ components:
             type: integer
           type: array
           x-go-name: CACert
+        certificate_issue_date:
+          format: date-time
+          type: string
+          x-go-name: CertificateIssueDate
+        certificate_ttl_in_seconds:
+          format: int64
+          type: integer
+          x-go-name: CertificateTTLInSeconds
         hostname:
           type: string
           x-go-name: Hostname
@@ -34580,6 +35210,39 @@ components:
           type: string
           x-go-name: UIDToken
       title: kmipListClients is a command that shows existing KMIP clients.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    kmipMoveServer:
+      description: |-
+        kmipMoveServer is a command that Moves the root location of the kmip server
+        and all associated items to a new root location
+      properties:
+        new-root:
+          type: string
+          x-go-name: NewRoot
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    kmipMoveServerOutput:
+      example:
+        old_root: old_root
+        new_root: new_root
+      properties:
+        new_root:
+          type: string
+          x-go-name: NewRoot
+        old_root:
+          type: string
+          x-go-name: OldRoot
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     kmipRenewClientCertificate:
@@ -34708,6 +35371,10 @@ components:
         listAuthMethods is a command that returns a list of all auth methods in the
         account.
       properties:
+        filter:
+          description: Filter by auth method name or part of it
+          type: string
+          x-go-name: Filter
         pagination-token:
           description: Next page reference
           type: string
@@ -34720,7 +35387,7 @@ components:
           description: |-
             The Auth method types list of the requested method. In case it is empty, all
             types of auth methods will be returned. options: [api_key, azure_ad, oauth2/jwt, saml2,
-            ldap, aws_iam, oidc, universal_identity, gcp, k8s]
+            ldap, aws_iam, oidc, universal_identity, gcp, k8s, cert]
           items:
             type: string
           type: array
@@ -34775,6 +35442,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     listRoles:
       properties:
+        filter:
+          description: Filter by item name or part of it
+          type: string
+          x-go-name: Filter
         pagination-token:
           description: Next page reference
           type: string
@@ -34794,6 +35465,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     listTargets:
       properties:
+        filter:
+          description: Filter by auth method name or part of it
+          type: string
+          x-go-name: Filter
         pagination-token:
           description: Next page reference
           type: string
@@ -36087,6 +36762,131 @@ components:
     updateAuthMethodAzureADOutput:
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    updateAuthMethodCert:
+      description: |-
+        updateAuthMethodCert is a command that updates a new auth method that
+        will be able to authenticate using a client certificae
+      properties:
+        access-expires:
+          default: 0
+          description: |-
+            Access expiration date in Unix timestamp (select 0 for access without
+            expiry date)
+          format: int64
+          type: integer
+          x-go-name: AccessExpires
+        bound-common-names:
+          description: A list of names. At least one must exist in the Common Name.
+            Supports globbing.
+          items:
+            type: string
+          type: array
+          x-go-name: BoundCommonNames
+        bound-dns-sans:
+          description: A list of DNS names. At least one must exist in the SANs. Supports
+            globbing.
+          items:
+            type: string
+          type: array
+          x-go-name: BoundDnsSans
+        bound-email-sans:
+          description: A list of Email Addresses. At least one must exist in the SANs.
+            Supports globbing.
+          items:
+            type: string
+          type: array
+          x-go-name: BoundEmailSans
+        bound-extensions:
+          description: A list of extensions formatted as "oid:value". Expects the
+            extension value to be some type of ASN1 encoded string. All values much
+            match. Supports globbing on "value".
+          items:
+            type: string
+          type: array
+          x-go-name: BoundExtensions
+        bound-ips:
+          description: A CIDR whitelist with the IPs that the access is restricted
+            to
+          items:
+            type: string
+          type: array
+          x-go-name: CIDRWhitelist
+        bound-organizational-units:
+          description: A list of Organizational Units names. At least one must exist
+            in the OU field.
+          items:
+            type: string
+          type: array
+          x-go-name: BoundOrganizationalUnits
+        bound-uri-sans:
+          description: A list of URIs. At least one must exist in the SANs. Supports
+            globbing.
+          items:
+            type: string
+          type: array
+          x-go-name: BoundUriSans
+        certificate-data:
+          description: The certificate data in base64, if no file was provided
+          type: string
+          x-go-name: CertificateData
+        force-sub-claims:
+          description: 'if true: enforce role-association must include sub claims'
+          type: boolean
+          x-go-name: ForceSubClaims
+        jwt-ttl:
+          default: 0
+          description: Jwt TTL
+          format: int64
+          type: integer
+          x-go-name: JwtTtl
+        name:
+          description: Auth Method name
+          type: string
+          x-go-name: AuthMethodName
+        new-name:
+          description: Auth Method new name
+          type: string
+          x-go-name: AuthMethodNewName
+        revoked-cert-ids:
+          description: A list of revoked cert ids
+          items:
+            type: string
+          type: array
+          x-go-name: RevokedCertIds
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        unique-identifier:
+          description: |-
+            A unique identifier (ID) value should be configured, such as common_name or organizational_unit
+            Whenever a user logs in with a token, these authentication types issue
+            a "sub claim" that contains details uniquely identifying that user.
+            This sub claim includes a key containing the ID value that you
+            configured, and is used to distinguish between different users from
+            within the same organization.
+          type: string
+          x-go-name: UniqueIdentifier
+      required:
+      - name
+      - unique-identifier
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    updateAuthMethodCertOutput:
+      example:
+        access_id: access_id
+      properties:
+        access_id:
+          type: string
+          x-go-name: AccessID
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     updateAuthMethodGCP:
       description: |-
         updateAuthMethodGCP is a command that updates a new auth method that
@@ -36352,6 +37152,18 @@ components:
             authentication
           type: string
           x-go-name: UIDToken
+        unique-identifier:
+          description: |-
+            A unique identifier (ID) value should be configured for OAuth2,
+            LDAP and SAML authentication method types and is usually a value such
+            as the email, username, or upn for example.
+            Whenever a user logs in with a token, these authentication types issue
+            a "sub claim" that contains details uniquely identifying that user.
+            This sub claim includes a key containing the ID value that you
+            configured, and is used to distinguish between different users from
+            within the same organization.
+          type: string
+          x-go-name: UniqueIdentifier
       required:
       - name
       type: object
@@ -36505,6 +37317,19 @@ components:
           description: Auth Method new name
           type: string
           x-go-name: AuthMethodNewName
+        required-scopes:
+          description: RequiredScopes is a list of required scopes that the oidc method
+            will request from the oidc provider and the user must approve
+          items:
+            type: string
+          type: array
+          x-go-name: RequiredScopes
+        required-scopes-prefix:
+          description: RequiredScopesPrefix is a a prefix to add to all required-scopes
+            when requesting them from the oidc server (for example, azures' Application
+            ID URI)
+          type: string
+          x-go-name: RequiredScopesPrefix
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -37486,6 +38311,9 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     updateOutput:
       properties:
+        changelog:
+          type: string
+          x-go-name: Changelog
         latest:
           type: string
           x-go-name: Latest

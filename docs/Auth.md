@@ -6,15 +6,17 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessId** | Pointer to **string** | Access ID | [optional] 
 **AccessKey** | Pointer to **string** | Access key (relevant only for access-type&#x3D;access_key) | [optional] 
-**AccessType** | Pointer to **string** | Access Type (access_key/password/saml/ldap/k8s/azure_ad/oidc/aws_iam/universal_identity/jwt/gcp/k8s) | [optional] [default to "access_key"]
+**AccessType** | Pointer to **string** | Access Type (access_key/password/saml/ldap/k8s/azure_ad/oidc/aws_iam/universal_identity/jwt/gcp/cert) | [optional] [default to "access_key"]
 **AdminEmail** | Pointer to **string** | Email (relevant only for access-type&#x3D;password) | [optional] 
 **AdminPassword** | Pointer to **string** | Password (relevant only for access-type&#x3D;password) | [optional] 
+**CertData** | Pointer to **string** | Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type&#x3D;cert) | [optional] 
 **CloudId** | Pointer to **string** | The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam,gcp) | [optional] 
 **Debug** | Pointer to **bool** |  | [optional] 
 **GcpAudience** | Pointer to **string** | GCP JWT audience | [optional] 
 **Jwt** | Pointer to **string** | The Json Web Token (relevant only for access-type&#x3D;jwt/oidc) | [optional] 
 **K8sAuthConfigName** | Pointer to **string** | The K8S Auth config name (relevant only for access-type&#x3D;k8s) | [optional] 
 **K8sServiceAccountToken** | Pointer to **string** | The K8S service account token. (relevant only for access-type&#x3D;k8s) | [optional] 
+**KeyData** | Pointer to **string** | Private key data encoded in base64. Used if file was not provided.(relevant only for access-type&#x3D;cert) | [optional] 
 **LdapPassword** | Pointer to **string** | LDAP password (relevant only for access-type&#x3D;ldap) | [optional] 
 **LdapUsername** | Pointer to **string** | LDAP username (relevant only for access-type&#x3D;ldap) | [optional] 
 **UidToken** | Pointer to **string** | The universal_identity token (relevant only for access-type&#x3D;universal_identity) | [optional] 
@@ -162,6 +164,31 @@ SetAdminPassword sets AdminPassword field to given value.
 `func (o *Auth) HasAdminPassword() bool`
 
 HasAdminPassword returns a boolean if a field has been set.
+
+### GetCertData
+
+`func (o *Auth) GetCertData() string`
+
+GetCertData returns the CertData field if non-nil, zero value otherwise.
+
+### GetCertDataOk
+
+`func (o *Auth) GetCertDataOk() (*string, bool)`
+
+GetCertDataOk returns a tuple with the CertData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertData
+
+`func (o *Auth) SetCertData(v string)`
+
+SetCertData sets CertData field to given value.
+
+### HasCertData
+
+`func (o *Auth) HasCertData() bool`
+
+HasCertData returns a boolean if a field has been set.
 
 ### GetCloudId
 
@@ -312,6 +339,31 @@ SetK8sServiceAccountToken sets K8sServiceAccountToken field to given value.
 `func (o *Auth) HasK8sServiceAccountToken() bool`
 
 HasK8sServiceAccountToken returns a boolean if a field has been set.
+
+### GetKeyData
+
+`func (o *Auth) GetKeyData() string`
+
+GetKeyData returns the KeyData field if non-nil, zero value otherwise.
+
+### GetKeyDataOk
+
+`func (o *Auth) GetKeyDataOk() (*string, bool)`
+
+GetKeyDataOk returns a tuple with the KeyData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKeyData
+
+`func (o *Auth) SetKeyData(v string)`
+
+SetKeyData sets KeyData field to given value.
+
+### HasKeyData
+
+`func (o *Auth) HasKeyData() bool`
+
+HasKeyData returns a boolean if a field has been set.
 
 ### GetLdapPassword
 

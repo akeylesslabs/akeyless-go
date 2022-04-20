@@ -37,6 +37,10 @@ type GatewayCreateProducerOracleDb struct {
 	OracleUsername *string `json:"oracle-username,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
+	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
+	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
+	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
 	// List of the tags attached to this secret
 	Tags *[]string `json:"tags,omitempty"`
 	// Target name
@@ -391,6 +395,134 @@ func (o *GatewayCreateProducerOracleDb) SetProducerEncryptionKeyName(v string) {
 	o.ProducerEncryptionKeyName = &v
 }
 
+// GetSecureAccessBastionIssuer returns the SecureAccessBastionIssuer field value if set, zero value otherwise.
+func (o *GatewayCreateProducerOracleDb) GetSecureAccessBastionIssuer() string {
+	if o == nil || o.SecureAccessBastionIssuer == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessBastionIssuer
+}
+
+// GetSecureAccessBastionIssuerOk returns a tuple with the SecureAccessBastionIssuer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerOracleDb) GetSecureAccessBastionIssuerOk() (*string, bool) {
+	if o == nil || o.SecureAccessBastionIssuer == nil {
+		return nil, false
+	}
+	return o.SecureAccessBastionIssuer, true
+}
+
+// HasSecureAccessBastionIssuer returns a boolean if a field has been set.
+func (o *GatewayCreateProducerOracleDb) HasSecureAccessBastionIssuer() bool {
+	if o != nil && o.SecureAccessBastionIssuer != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessBastionIssuer gets a reference to the given string and assigns it to the SecureAccessBastionIssuer field.
+func (o *GatewayCreateProducerOracleDb) SetSecureAccessBastionIssuer(v string) {
+	o.SecureAccessBastionIssuer = &v
+}
+
+// GetSecureAccessEnable returns the SecureAccessEnable field value if set, zero value otherwise.
+func (o *GatewayCreateProducerOracleDb) GetSecureAccessEnable() string {
+	if o == nil || o.SecureAccessEnable == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessEnable
+}
+
+// GetSecureAccessEnableOk returns a tuple with the SecureAccessEnable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerOracleDb) GetSecureAccessEnableOk() (*string, bool) {
+	if o == nil || o.SecureAccessEnable == nil {
+		return nil, false
+	}
+	return o.SecureAccessEnable, true
+}
+
+// HasSecureAccessEnable returns a boolean if a field has been set.
+func (o *GatewayCreateProducerOracleDb) HasSecureAccessEnable() bool {
+	if o != nil && o.SecureAccessEnable != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessEnable gets a reference to the given string and assigns it to the SecureAccessEnable field.
+func (o *GatewayCreateProducerOracleDb) SetSecureAccessEnable(v string) {
+	o.SecureAccessEnable = &v
+}
+
+// GetSecureAccessHost returns the SecureAccessHost field value if set, zero value otherwise.
+func (o *GatewayCreateProducerOracleDb) GetSecureAccessHost() []string {
+	if o == nil || o.SecureAccessHost == nil {
+		var ret []string
+		return ret
+	}
+	return *o.SecureAccessHost
+}
+
+// GetSecureAccessHostOk returns a tuple with the SecureAccessHost field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerOracleDb) GetSecureAccessHostOk() (*[]string, bool) {
+	if o == nil || o.SecureAccessHost == nil {
+		return nil, false
+	}
+	return o.SecureAccessHost, true
+}
+
+// HasSecureAccessHost returns a boolean if a field has been set.
+func (o *GatewayCreateProducerOracleDb) HasSecureAccessHost() bool {
+	if o != nil && o.SecureAccessHost != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessHost gets a reference to the given []string and assigns it to the SecureAccessHost field.
+func (o *GatewayCreateProducerOracleDb) SetSecureAccessHost(v []string) {
+	o.SecureAccessHost = &v
+}
+
+// GetSecureAccessWeb returns the SecureAccessWeb field value if set, zero value otherwise.
+func (o *GatewayCreateProducerOracleDb) GetSecureAccessWeb() bool {
+	if o == nil || o.SecureAccessWeb == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessWeb
+}
+
+// GetSecureAccessWebOk returns a tuple with the SecureAccessWeb field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerOracleDb) GetSecureAccessWebOk() (*bool, bool) {
+	if o == nil || o.SecureAccessWeb == nil {
+		return nil, false
+	}
+	return o.SecureAccessWeb, true
+}
+
+// HasSecureAccessWeb returns a boolean if a field has been set.
+func (o *GatewayCreateProducerOracleDb) HasSecureAccessWeb() bool {
+	if o != nil && o.SecureAccessWeb != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessWeb gets a reference to the given bool and assigns it to the SecureAccessWeb field.
+func (o *GatewayCreateProducerOracleDb) SetSecureAccessWeb(v bool) {
+	o.SecureAccessWeb = &v
+}
+
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *GatewayCreateProducerOracleDb) GetTags() []string {
 	if o == nil || o.Tags == nil {
@@ -582,6 +714,18 @@ func (o GatewayCreateProducerOracleDb) MarshalJSON() ([]byte, error) {
 	}
 	if o.ProducerEncryptionKeyName != nil {
 		toSerialize["producer-encryption-key-name"] = o.ProducerEncryptionKeyName
+	}
+	if o.SecureAccessBastionIssuer != nil {
+		toSerialize["secure-access-bastion-issuer"] = o.SecureAccessBastionIssuer
+	}
+	if o.SecureAccessEnable != nil {
+		toSerialize["secure-access-enable"] = o.SecureAccessEnable
+	}
+	if o.SecureAccessHost != nil {
+		toSerialize["secure-access-host"] = o.SecureAccessHost
+	}
+	if o.SecureAccessWeb != nil {
+		toSerialize["secure-access-web"] = o.SecureAccessWeb
 	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags

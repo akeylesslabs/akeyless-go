@@ -35,6 +35,10 @@ type CreateAuthMethodOIDC struct {
 	JwtTtl *int64 `json:"jwt-ttl,omitempty"`
 	// Auth Method name
 	Name string `json:"name"`
+	// RequiredScopes is a list of required scopes that the oidc method will request from the oidc provider and the user must approve
+	RequiredScopes *[]string `json:"required-scopes,omitempty"`
+	// RequiredScopesPrefix is a a prefix to add to all required-scopes when requesting them from the oidc server (for example, azures' Application ID URI)
+	RequiredScopesPrefix *string `json:"required-scopes-prefix,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -350,6 +354,70 @@ func (o *CreateAuthMethodOIDC) SetName(v string) {
 	o.Name = v
 }
 
+// GetRequiredScopes returns the RequiredScopes field value if set, zero value otherwise.
+func (o *CreateAuthMethodOIDC) GetRequiredScopes() []string {
+	if o == nil || o.RequiredScopes == nil {
+		var ret []string
+		return ret
+	}
+	return *o.RequiredScopes
+}
+
+// GetRequiredScopesOk returns a tuple with the RequiredScopes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodOIDC) GetRequiredScopesOk() (*[]string, bool) {
+	if o == nil || o.RequiredScopes == nil {
+		return nil, false
+	}
+	return o.RequiredScopes, true
+}
+
+// HasRequiredScopes returns a boolean if a field has been set.
+func (o *CreateAuthMethodOIDC) HasRequiredScopes() bool {
+	if o != nil && o.RequiredScopes != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRequiredScopes gets a reference to the given []string and assigns it to the RequiredScopes field.
+func (o *CreateAuthMethodOIDC) SetRequiredScopes(v []string) {
+	o.RequiredScopes = &v
+}
+
+// GetRequiredScopesPrefix returns the RequiredScopesPrefix field value if set, zero value otherwise.
+func (o *CreateAuthMethodOIDC) GetRequiredScopesPrefix() string {
+	if o == nil || o.RequiredScopesPrefix == nil {
+		var ret string
+		return ret
+	}
+	return *o.RequiredScopesPrefix
+}
+
+// GetRequiredScopesPrefixOk returns a tuple with the RequiredScopesPrefix field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodOIDC) GetRequiredScopesPrefixOk() (*string, bool) {
+	if o == nil || o.RequiredScopesPrefix == nil {
+		return nil, false
+	}
+	return o.RequiredScopesPrefix, true
+}
+
+// HasRequiredScopesPrefix returns a boolean if a field has been set.
+func (o *CreateAuthMethodOIDC) HasRequiredScopesPrefix() bool {
+	if o != nil && o.RequiredScopesPrefix != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRequiredScopesPrefix gets a reference to the given string and assigns it to the RequiredScopesPrefix field.
+func (o *CreateAuthMethodOIDC) SetRequiredScopesPrefix(v string) {
+	o.RequiredScopesPrefix = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *CreateAuthMethodOIDC) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -466,6 +534,12 @@ func (o CreateAuthMethodOIDC) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.RequiredScopes != nil {
+		toSerialize["required-scopes"] = o.RequiredScopes
+	}
+	if o.RequiredScopesPrefix != nil {
+		toSerialize["required-scopes-prefix"] = o.RequiredScopesPrefix
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

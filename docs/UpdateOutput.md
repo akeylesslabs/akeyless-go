@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Changelog** | Pointer to **string** |  | [optional] 
 **Latest** | Pointer to **string** |  | [optional] 
 **Updated** | Pointer to **bool** |  | [optional] 
 
@@ -25,6 +26,31 @@ will change when the set of required properties is changed
 NewUpdateOutputWithDefaults instantiates a new UpdateOutput object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetChangelog
+
+`func (o *UpdateOutput) GetChangelog() string`
+
+GetChangelog returns the Changelog field if non-nil, zero value otherwise.
+
+### GetChangelogOk
+
+`func (o *UpdateOutput) GetChangelogOk() (*string, bool)`
+
+GetChangelogOk returns a tuple with the Changelog field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChangelog
+
+`func (o *UpdateOutput) SetChangelog(v string)`
+
+SetChangelog sets Changelog field to given value.
+
+### HasChangelog
+
+`func (o *UpdateOutput) HasChangelog() bool`
+
+HasChangelog returns a boolean if a field has been set.
 
 ### GetLatest
 

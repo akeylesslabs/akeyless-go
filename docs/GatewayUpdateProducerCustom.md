@@ -4,7 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AdminRotationIntervalDays** | Pointer to **int64** | Define rotation interval in days | [optional] 
 **CreateSyncUrl** | **string** | URL of an endpoint that implements /sync/create method, for example https://webhook.example.com/sync/create | 
+**EnableAdminRotation** | Pointer to **bool** | Should admin credentials be rotated | [optional] [default to false]
 **Name** | **string** | Producer name | 
 **NewName** | Pointer to **string** | Producer name | [optional] 
 **Payload** | Pointer to **string** | Secret payload to be sent with each create/revoke webhook request | [optional] 
@@ -36,6 +38,31 @@ NewGatewayUpdateProducerCustomWithDefaults instantiates a new GatewayUpdateProdu
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetAdminRotationIntervalDays
+
+`func (o *GatewayUpdateProducerCustom) GetAdminRotationIntervalDays() int64`
+
+GetAdminRotationIntervalDays returns the AdminRotationIntervalDays field if non-nil, zero value otherwise.
+
+### GetAdminRotationIntervalDaysOk
+
+`func (o *GatewayUpdateProducerCustom) GetAdminRotationIntervalDaysOk() (*int64, bool)`
+
+GetAdminRotationIntervalDaysOk returns a tuple with the AdminRotationIntervalDays field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdminRotationIntervalDays
+
+`func (o *GatewayUpdateProducerCustom) SetAdminRotationIntervalDays(v int64)`
+
+SetAdminRotationIntervalDays sets AdminRotationIntervalDays field to given value.
+
+### HasAdminRotationIntervalDays
+
+`func (o *GatewayUpdateProducerCustom) HasAdminRotationIntervalDays() bool`
+
+HasAdminRotationIntervalDays returns a boolean if a field has been set.
+
 ### GetCreateSyncUrl
 
 `func (o *GatewayUpdateProducerCustom) GetCreateSyncUrl() string`
@@ -55,6 +82,31 @@ and a boolean to check if the value has been set.
 
 SetCreateSyncUrl sets CreateSyncUrl field to given value.
 
+
+### GetEnableAdminRotation
+
+`func (o *GatewayUpdateProducerCustom) GetEnableAdminRotation() bool`
+
+GetEnableAdminRotation returns the EnableAdminRotation field if non-nil, zero value otherwise.
+
+### GetEnableAdminRotationOk
+
+`func (o *GatewayUpdateProducerCustom) GetEnableAdminRotationOk() (*bool, bool)`
+
+GetEnableAdminRotationOk returns a tuple with the EnableAdminRotation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableAdminRotation
+
+`func (o *GatewayUpdateProducerCustom) SetEnableAdminRotation(v bool)`
+
+SetEnableAdminRotation sets EnableAdminRotation field to given value.
+
+### HasEnableAdminRotation
+
+`func (o *GatewayUpdateProducerCustom) HasEnableAdminRotation() bool`
+
+HasEnableAdminRotation returns a boolean if a field has been set.
 
 ### GetName
 

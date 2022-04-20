@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 **Active** | Pointer to **bool** |  | [optional] 
 **Ca** | Pointer to **[]int32** |  | [optional] 
 **Certificate** | Pointer to **[]int32** |  | [optional] 
+**CertificateIssueDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**CertificateTtlInSeconds** | Pointer to **int64** |  | [optional] 
 **Hostname** | Pointer to **string** |  | [optional] 
 **Root** | Pointer to **string** |  | [optional] 
 
@@ -103,6 +105,56 @@ SetCertificate sets Certificate field to given value.
 `func (o *KMIPServer) HasCertificate() bool`
 
 HasCertificate returns a boolean if a field has been set.
+
+### GetCertificateIssueDate
+
+`func (o *KMIPServer) GetCertificateIssueDate() time.Time`
+
+GetCertificateIssueDate returns the CertificateIssueDate field if non-nil, zero value otherwise.
+
+### GetCertificateIssueDateOk
+
+`func (o *KMIPServer) GetCertificateIssueDateOk() (*time.Time, bool)`
+
+GetCertificateIssueDateOk returns a tuple with the CertificateIssueDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificateIssueDate
+
+`func (o *KMIPServer) SetCertificateIssueDate(v time.Time)`
+
+SetCertificateIssueDate sets CertificateIssueDate field to given value.
+
+### HasCertificateIssueDate
+
+`func (o *KMIPServer) HasCertificateIssueDate() bool`
+
+HasCertificateIssueDate returns a boolean if a field has been set.
+
+### GetCertificateTtlInSeconds
+
+`func (o *KMIPServer) GetCertificateTtlInSeconds() int64`
+
+GetCertificateTtlInSeconds returns the CertificateTtlInSeconds field if non-nil, zero value otherwise.
+
+### GetCertificateTtlInSecondsOk
+
+`func (o *KMIPServer) GetCertificateTtlInSecondsOk() (*int64, bool)`
+
+GetCertificateTtlInSecondsOk returns a tuple with the CertificateTtlInSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificateTtlInSeconds
+
+`func (o *KMIPServer) SetCertificateTtlInSeconds(v int64)`
+
+SetCertificateTtlInSeconds sets CertificateTtlInSeconds field to given value.
+
+### HasCertificateTtlInSeconds
+
+`func (o *KMIPServer) HasCertificateTtlInSeconds() bool`
+
+HasCertificateTtlInSeconds returns a boolean if a field has been set.
 
 ### GetHostname
 

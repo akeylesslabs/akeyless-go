@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Active** | Pointer to **bool** |  | [optional] 
 **CaCert** | Pointer to **[]int32** |  | [optional] 
+**CertificateIssueDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**CertificateTtlInSeconds** | Pointer to **int64** |  | [optional] 
 **Hostname** | Pointer to **string** |  | [optional] 
 **Root** | Pointer to **string** |  | [optional] 
 
@@ -77,6 +79,56 @@ SetCaCert sets CaCert field to given value.
 `func (o *KmipDescribeServerOutput) HasCaCert() bool`
 
 HasCaCert returns a boolean if a field has been set.
+
+### GetCertificateIssueDate
+
+`func (o *KmipDescribeServerOutput) GetCertificateIssueDate() time.Time`
+
+GetCertificateIssueDate returns the CertificateIssueDate field if non-nil, zero value otherwise.
+
+### GetCertificateIssueDateOk
+
+`func (o *KmipDescribeServerOutput) GetCertificateIssueDateOk() (*time.Time, bool)`
+
+GetCertificateIssueDateOk returns a tuple with the CertificateIssueDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificateIssueDate
+
+`func (o *KmipDescribeServerOutput) SetCertificateIssueDate(v time.Time)`
+
+SetCertificateIssueDate sets CertificateIssueDate field to given value.
+
+### HasCertificateIssueDate
+
+`func (o *KmipDescribeServerOutput) HasCertificateIssueDate() bool`
+
+HasCertificateIssueDate returns a boolean if a field has been set.
+
+### GetCertificateTtlInSeconds
+
+`func (o *KmipDescribeServerOutput) GetCertificateTtlInSeconds() int64`
+
+GetCertificateTtlInSeconds returns the CertificateTtlInSeconds field if non-nil, zero value otherwise.
+
+### GetCertificateTtlInSecondsOk
+
+`func (o *KmipDescribeServerOutput) GetCertificateTtlInSecondsOk() (*int64, bool)`
+
+GetCertificateTtlInSecondsOk returns a tuple with the CertificateTtlInSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificateTtlInSeconds
+
+`func (o *KmipDescribeServerOutput) SetCertificateTtlInSeconds(v int64)`
+
+SetCertificateTtlInSeconds sets CertificateTtlInSeconds field to given value.
+
+### HasCertificateTtlInSeconds
+
+`func (o *KmipDescribeServerOutput) HasCertificateTtlInSeconds() bool`
+
+HasCertificateTtlInSeconds returns a boolean if a field has been set.
 
 ### GetHostname
 

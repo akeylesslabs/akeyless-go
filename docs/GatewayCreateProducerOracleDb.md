@@ -14,6 +14,10 @@ Name | Type | Description | Notes
 **OracleServiceName** | Pointer to **string** | Oracle DB Name | [optional] 
 **OracleUsername** | Pointer to **string** | Oracle Username | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
+**SecureAccessBastionIssuer** | Pointer to **string** |  | [optional] 
+**SecureAccessEnable** | Pointer to **string** |  | [optional] 
+**SecureAccessHost** | Pointer to **[]string** |  | [optional] 
+**SecureAccessWeb** | Pointer to **bool** |  | [optional] 
 **Tags** | Pointer to **[]string** | List of the tags attached to this secret | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -283,6 +287,106 @@ SetProducerEncryptionKeyName sets ProducerEncryptionKeyName field to given value
 `func (o *GatewayCreateProducerOracleDb) HasProducerEncryptionKeyName() bool`
 
 HasProducerEncryptionKeyName returns a boolean if a field has been set.
+
+### GetSecureAccessBastionIssuer
+
+`func (o *GatewayCreateProducerOracleDb) GetSecureAccessBastionIssuer() string`
+
+GetSecureAccessBastionIssuer returns the SecureAccessBastionIssuer field if non-nil, zero value otherwise.
+
+### GetSecureAccessBastionIssuerOk
+
+`func (o *GatewayCreateProducerOracleDb) GetSecureAccessBastionIssuerOk() (*string, bool)`
+
+GetSecureAccessBastionIssuerOk returns a tuple with the SecureAccessBastionIssuer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessBastionIssuer
+
+`func (o *GatewayCreateProducerOracleDb) SetSecureAccessBastionIssuer(v string)`
+
+SetSecureAccessBastionIssuer sets SecureAccessBastionIssuer field to given value.
+
+### HasSecureAccessBastionIssuer
+
+`func (o *GatewayCreateProducerOracleDb) HasSecureAccessBastionIssuer() bool`
+
+HasSecureAccessBastionIssuer returns a boolean if a field has been set.
+
+### GetSecureAccessEnable
+
+`func (o *GatewayCreateProducerOracleDb) GetSecureAccessEnable() string`
+
+GetSecureAccessEnable returns the SecureAccessEnable field if non-nil, zero value otherwise.
+
+### GetSecureAccessEnableOk
+
+`func (o *GatewayCreateProducerOracleDb) GetSecureAccessEnableOk() (*string, bool)`
+
+GetSecureAccessEnableOk returns a tuple with the SecureAccessEnable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessEnable
+
+`func (o *GatewayCreateProducerOracleDb) SetSecureAccessEnable(v string)`
+
+SetSecureAccessEnable sets SecureAccessEnable field to given value.
+
+### HasSecureAccessEnable
+
+`func (o *GatewayCreateProducerOracleDb) HasSecureAccessEnable() bool`
+
+HasSecureAccessEnable returns a boolean if a field has been set.
+
+### GetSecureAccessHost
+
+`func (o *GatewayCreateProducerOracleDb) GetSecureAccessHost() []string`
+
+GetSecureAccessHost returns the SecureAccessHost field if non-nil, zero value otherwise.
+
+### GetSecureAccessHostOk
+
+`func (o *GatewayCreateProducerOracleDb) GetSecureAccessHostOk() (*[]string, bool)`
+
+GetSecureAccessHostOk returns a tuple with the SecureAccessHost field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessHost
+
+`func (o *GatewayCreateProducerOracleDb) SetSecureAccessHost(v []string)`
+
+SetSecureAccessHost sets SecureAccessHost field to given value.
+
+### HasSecureAccessHost
+
+`func (o *GatewayCreateProducerOracleDb) HasSecureAccessHost() bool`
+
+HasSecureAccessHost returns a boolean if a field has been set.
+
+### GetSecureAccessWeb
+
+`func (o *GatewayCreateProducerOracleDb) GetSecureAccessWeb() bool`
+
+GetSecureAccessWeb returns the SecureAccessWeb field if non-nil, zero value otherwise.
+
+### GetSecureAccessWebOk
+
+`func (o *GatewayCreateProducerOracleDb) GetSecureAccessWebOk() (*bool, bool)`
+
+GetSecureAccessWebOk returns a tuple with the SecureAccessWeb field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessWeb
+
+`func (o *GatewayCreateProducerOracleDb) SetSecureAccessWeb(v bool)`
+
+SetSecureAccessWeb sets SecureAccessWeb field to given value.
+
+### HasSecureAccessWeb
+
+`func (o *GatewayCreateProducerOracleDb) HasSecureAccessWeb() bool`
+
+HasSecureAccessWeb returns a boolean if a field has been set.
 
 ### GetTags
 

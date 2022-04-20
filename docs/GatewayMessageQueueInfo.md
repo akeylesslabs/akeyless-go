@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **MqType** | Pointer to **string** |  | [optional] 
 **QueueName** | Pointer to **string** |  | [optional] 
 **QueueUrl** | Pointer to **string** |  | [optional] 
-**UseNewQueue** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -102,31 +101,6 @@ SetQueueUrl sets QueueUrl field to given value.
 `func (o *GatewayMessageQueueInfo) HasQueueUrl() bool`
 
 HasQueueUrl returns a boolean if a field has been set.
-
-### GetUseNewQueue
-
-`func (o *GatewayMessageQueueInfo) GetUseNewQueue() bool`
-
-GetUseNewQueue returns the UseNewQueue field if non-nil, zero value otherwise.
-
-### GetUseNewQueueOk
-
-`func (o *GatewayMessageQueueInfo) GetUseNewQueueOk() (*bool, bool)`
-
-GetUseNewQueueOk returns a tuple with the UseNewQueue field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUseNewQueue
-
-`func (o *GatewayMessageQueueInfo) SetUseNewQueue(v bool)`
-
-SetUseNewQueue sets UseNewQueue field to given value.
-
-### HasUseNewQueue
-
-`func (o *GatewayMessageQueueInfo) HasUseNewQueue() bool`
-
-HasUseNewQueue returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

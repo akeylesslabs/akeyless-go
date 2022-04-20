@@ -17,6 +17,8 @@ import (
 
 // ListTargets struct for ListTargets
 type ListTargets struct {
+	// Filter by auth method name or part of it
+	Filter *string `json:"filter,omitempty"`
 	// Next page reference
 	PaginationToken *string `json:"pagination-token,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -40,6 +42,38 @@ func NewListTargets() *ListTargets {
 func NewListTargetsWithDefaults() *ListTargets {
 	this := ListTargets{}
 	return &this
+}
+
+// GetFilter returns the Filter field value if set, zero value otherwise.
+func (o *ListTargets) GetFilter() string {
+	if o == nil || o.Filter == nil {
+		var ret string
+		return ret
+	}
+	return *o.Filter
+}
+
+// GetFilterOk returns a tuple with the Filter field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListTargets) GetFilterOk() (*string, bool) {
+	if o == nil || o.Filter == nil {
+		return nil, false
+	}
+	return o.Filter, true
+}
+
+// HasFilter returns a boolean if a field has been set.
+func (o *ListTargets) HasFilter() bool {
+	if o != nil && o.Filter != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFilter gets a reference to the given string and assigns it to the Filter field.
+func (o *ListTargets) SetFilter(v string) {
+	o.Filter = &v
 }
 
 // GetPaginationToken returns the PaginationToken field value if set, zero value otherwise.
@@ -140,6 +174,9 @@ func (o *ListTargets) SetUidToken(v string) {
 
 func (o ListTargets) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Filter != nil {
+		toSerialize["filter"] = o.Filter
+	}
 	if o.PaginationToken != nil {
 		toSerialize["pagination-token"] = o.PaginationToken
 	}

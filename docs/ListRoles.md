@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Filter** | Pointer to **string** | Filter by item name or part of it | [optional] 
 **PaginationToken** | Pointer to **string** | Next page reference | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -26,6 +27,31 @@ will change when the set of required properties is changed
 NewListRolesWithDefaults instantiates a new ListRoles object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetFilter
+
+`func (o *ListRoles) GetFilter() string`
+
+GetFilter returns the Filter field if non-nil, zero value otherwise.
+
+### GetFilterOk
+
+`func (o *ListRoles) GetFilterOk() (*string, bool)`
+
+GetFilterOk returns a tuple with the Filter field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFilter
+
+`func (o *ListRoles) SetFilter(v string)`
+
+SetFilter sets Filter field to given value.
+
+### HasFilter
+
+`func (o *ListRoles) HasFilter() bool`
+
+HasFilter returns a boolean if a field has been set.
 
 ### GetPaginationToken
 

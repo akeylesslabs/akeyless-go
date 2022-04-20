@@ -27,6 +27,7 @@ docs/AzureLogAnalyticsForwardingConfig.md
 docs/AzurePayload.md
 docs/CFConfigPart.md
 docs/CacheConfigPart.md
+docs/CertAccessRules.md
 docs/CertificateIssueInfo.md
 docs/ClassicKeyDetailsInfo.md
 docs/ClassicKeyStatusInfo.md
@@ -46,6 +47,8 @@ docs/CreateAuthMethodAWSIAM.md
 docs/CreateAuthMethodAWSIAMOutput.md
 docs/CreateAuthMethodAzureAD.md
 docs/CreateAuthMethodAzureADOutput.md
+docs/CreateAuthMethodCert.md
+docs/CreateAuthMethodCertOutput.md
 docs/CreateAuthMethodGCP.md
 docs/CreateAuthMethodGCPOutput.md
 docs/CreateAuthMethodHuawei.md
@@ -327,10 +330,13 @@ docs/KmipClientSetRule.md
 docs/KmipCreateClient.md
 docs/KmipCreateClientOutput.md
 docs/KmipDeleteClient.md
+docs/KmipDeleteServer.md
 docs/KmipDescribeClient.md
 docs/KmipDescribeServer.md
 docs/KmipDescribeServerOutput.md
 docs/KmipListClients.md
+docs/KmipMoveServer.md
+docs/KmipMoveServerOutput.md
 docs/KmipRenewClientCertificate.md
 docs/KmipRenewClientCertificateOutput.md
 docs/KmipRenewServerCertificate.md
@@ -437,6 +443,8 @@ docs/UpdateAssoc.md
 docs/UpdateAuthMethod.md
 docs/UpdateAuthMethodAWSIAM.md
 docs/UpdateAuthMethodAzureAD.md
+docs/UpdateAuthMethodCert.md
+docs/UpdateAuthMethodCertOutput.md
 docs/UpdateAuthMethodGCP.md
 docs/UpdateAuthMethodK8S.md
 docs/UpdateAuthMethodK8SOutput.md
@@ -524,6 +532,7 @@ model_azure_key_vault_migration.go
 model_azure_log_analytics_forwarding_config.go
 model_azure_payload.go
 model_cache_config_part.go
+model_cert_access_rules.go
 model_certificate_issue_info.go
 model_cf_config_part.go
 model_classic_key_details_info.go
@@ -542,6 +551,8 @@ model_create_auth_method_awsiam.go
 model_create_auth_method_awsiam_output.go
 model_create_auth_method_azure_ad.go
 model_create_auth_method_azure_ad_output.go
+model_create_auth_method_cert.go
+model_create_auth_method_cert_output.go
 model_create_auth_method_gcp.go
 model_create_auth_method_gcp_output.go
 model_create_auth_method_huawei.go
@@ -823,11 +834,14 @@ model_kmip_config_part.go
 model_kmip_create_client.go
 model_kmip_create_client_output.go
 model_kmip_delete_client.go
+model_kmip_delete_server.go
 model_kmip_describe_client.go
 model_kmip_describe_server.go
 model_kmip_describe_server_output.go
 model_kmip_environment_create_response.go
 model_kmip_list_clients.go
+model_kmip_move_server.go
+model_kmip_move_server_output.go
 model_kmip_renew_client_certificate.go
 model_kmip_renew_client_certificate_output.go
 model_kmip_renew_server_certificate.go
@@ -933,6 +947,8 @@ model_update_assoc.go
 model_update_auth_method.go
 model_update_auth_method_awsiam.go
 model_update_auth_method_azure_ad.go
+model_update_auth_method_cert.go
+model_update_auth_method_cert_output.go
 model_update_auth_method_gcp.go
 model_update_auth_method_k8_s.go
 model_update_auth_method_k8_s_output.go

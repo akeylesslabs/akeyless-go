@@ -17,8 +17,12 @@ import (
 
 // GatewayCreateProducerCustom struct for GatewayCreateProducerCustom
 type GatewayCreateProducerCustom struct {
+	// Define rotation interval in days
+	AdminRotationIntervalDays *int64 `json:"admin_rotation_interval_days,omitempty"`
 	// URL of an endpoint that implements /sync/create method, for example https://webhook.example.com/sync/create
 	CreateSyncUrl string `json:"create-sync-url"`
+	// Should admin credentials be rotated
+	EnableAdminRotation *bool `json:"enable_admin_rotation,omitempty"`
 	// Producer name
 	Name string `json:"name"`
 	// Secret payload to be sent with each create/revoke webhook request
@@ -48,6 +52,8 @@ type GatewayCreateProducerCustom struct {
 func NewGatewayCreateProducerCustom(createSyncUrl string, name string, revokeSyncUrl string, ) *GatewayCreateProducerCustom {
 	this := GatewayCreateProducerCustom{}
 	this.CreateSyncUrl = createSyncUrl
+	var enableAdminRotation bool = false
+	this.EnableAdminRotation = &enableAdminRotation
 	this.Name = name
 	this.RevokeSyncUrl = revokeSyncUrl
 	var timeoutSec int64 = 60
@@ -62,11 +68,45 @@ func NewGatewayCreateProducerCustom(createSyncUrl string, name string, revokeSyn
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayCreateProducerCustomWithDefaults() *GatewayCreateProducerCustom {
 	this := GatewayCreateProducerCustom{}
+	var enableAdminRotation bool = false
+	this.EnableAdminRotation = &enableAdminRotation
 	var timeoutSec int64 = 60
 	this.TimeoutSec = &timeoutSec
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
+}
+
+// GetAdminRotationIntervalDays returns the AdminRotationIntervalDays field value if set, zero value otherwise.
+func (o *GatewayCreateProducerCustom) GetAdminRotationIntervalDays() int64 {
+	if o == nil || o.AdminRotationIntervalDays == nil {
+		var ret int64
+		return ret
+	}
+	return *o.AdminRotationIntervalDays
+}
+
+// GetAdminRotationIntervalDaysOk returns a tuple with the AdminRotationIntervalDays field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerCustom) GetAdminRotationIntervalDaysOk() (*int64, bool) {
+	if o == nil || o.AdminRotationIntervalDays == nil {
+		return nil, false
+	}
+	return o.AdminRotationIntervalDays, true
+}
+
+// HasAdminRotationIntervalDays returns a boolean if a field has been set.
+func (o *GatewayCreateProducerCustom) HasAdminRotationIntervalDays() bool {
+	if o != nil && o.AdminRotationIntervalDays != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdminRotationIntervalDays gets a reference to the given int64 and assigns it to the AdminRotationIntervalDays field.
+func (o *GatewayCreateProducerCustom) SetAdminRotationIntervalDays(v int64) {
+	o.AdminRotationIntervalDays = &v
 }
 
 // GetCreateSyncUrl returns the CreateSyncUrl field value
@@ -91,6 +131,38 @@ func (o *GatewayCreateProducerCustom) GetCreateSyncUrlOk() (*string, bool) {
 // SetCreateSyncUrl sets field value
 func (o *GatewayCreateProducerCustom) SetCreateSyncUrl(v string) {
 	o.CreateSyncUrl = v
+}
+
+// GetEnableAdminRotation returns the EnableAdminRotation field value if set, zero value otherwise.
+func (o *GatewayCreateProducerCustom) GetEnableAdminRotation() bool {
+	if o == nil || o.EnableAdminRotation == nil {
+		var ret bool
+		return ret
+	}
+	return *o.EnableAdminRotation
+}
+
+// GetEnableAdminRotationOk returns a tuple with the EnableAdminRotation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerCustom) GetEnableAdminRotationOk() (*bool, bool) {
+	if o == nil || o.EnableAdminRotation == nil {
+		return nil, false
+	}
+	return o.EnableAdminRotation, true
+}
+
+// HasEnableAdminRotation returns a boolean if a field has been set.
+func (o *GatewayCreateProducerCustom) HasEnableAdminRotation() bool {
+	if o != nil && o.EnableAdminRotation != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableAdminRotation gets a reference to the given bool and assigns it to the EnableAdminRotation field.
+func (o *GatewayCreateProducerCustom) SetEnableAdminRotation(v bool) {
+	o.EnableAdminRotation = &v
 }
 
 // GetName returns the Name field value
@@ -399,8 +471,14 @@ func (o *GatewayCreateProducerCustom) SetUserTtl(v string) {
 
 func (o GatewayCreateProducerCustom) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AdminRotationIntervalDays != nil {
+		toSerialize["admin_rotation_interval_days"] = o.AdminRotationIntervalDays
+	}
 	if true {
 		toSerialize["create-sync-url"] = o.CreateSyncUrl
+	}
+	if o.EnableAdminRotation != nil {
+		toSerialize["enable_admin_rotation"] = o.EnableAdminRotation
 	}
 	if true {
 		toSerialize["name"] = o.Name

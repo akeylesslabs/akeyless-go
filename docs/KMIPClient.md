@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CertificateIssueDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**CertificateTtlInSeconds** | Pointer to **int64** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Rules** | Pointer to [**[]PathRule**](PathRule.md) |  | [optional] 
@@ -52,6 +53,31 @@ SetCertificateIssueDate sets CertificateIssueDate field to given value.
 `func (o *KMIPClient) HasCertificateIssueDate() bool`
 
 HasCertificateIssueDate returns a boolean if a field has been set.
+
+### GetCertificateTtlInSeconds
+
+`func (o *KMIPClient) GetCertificateTtlInSeconds() int64`
+
+GetCertificateTtlInSeconds returns the CertificateTtlInSeconds field if non-nil, zero value otherwise.
+
+### GetCertificateTtlInSecondsOk
+
+`func (o *KMIPClient) GetCertificateTtlInSecondsOk() (*int64, bool)`
+
+GetCertificateTtlInSecondsOk returns a tuple with the CertificateTtlInSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificateTtlInSeconds
+
+`func (o *KMIPClient) SetCertificateTtlInSeconds(v int64)`
+
+SetCertificateTtlInSeconds sets CertificateTtlInSeconds field to given value.
+
+### HasCertificateTtlInSeconds
+
+`func (o *KMIPClient) HasCertificateTtlInSeconds() bool`
+
+HasCertificateTtlInSeconds returns a boolean if a field has been set.
 
 ### GetId
 

@@ -29,6 +29,10 @@ type OIDCAccessRules struct {
 	IsInternal *bool `json:"is_internal,omitempty"`
 	// Issuer URL
 	Issuer *string `json:"issuer,omitempty"`
+	// A list of required scopes to request from the oidc provider, and to check on the token
+	RequiredScopes *[]string `json:"required_scopes,omitempty"`
+	// A prefix to add to the required scopes (for example, azures' Application ID URI)
+	RequiredScopesPrefix *string `json:"required_scopes_prefix,omitempty"`
 	// A unique identifier to distinguish different users
 	UniqueIdentifier *string `json:"unique_identifier,omitempty"`
 }
@@ -242,6 +246,70 @@ func (o *OIDCAccessRules) SetIssuer(v string) {
 	o.Issuer = &v
 }
 
+// GetRequiredScopes returns the RequiredScopes field value if set, zero value otherwise.
+func (o *OIDCAccessRules) GetRequiredScopes() []string {
+	if o == nil || o.RequiredScopes == nil {
+		var ret []string
+		return ret
+	}
+	return *o.RequiredScopes
+}
+
+// GetRequiredScopesOk returns a tuple with the RequiredScopes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OIDCAccessRules) GetRequiredScopesOk() (*[]string, bool) {
+	if o == nil || o.RequiredScopes == nil {
+		return nil, false
+	}
+	return o.RequiredScopes, true
+}
+
+// HasRequiredScopes returns a boolean if a field has been set.
+func (o *OIDCAccessRules) HasRequiredScopes() bool {
+	if o != nil && o.RequiredScopes != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRequiredScopes gets a reference to the given []string and assigns it to the RequiredScopes field.
+func (o *OIDCAccessRules) SetRequiredScopes(v []string) {
+	o.RequiredScopes = &v
+}
+
+// GetRequiredScopesPrefix returns the RequiredScopesPrefix field value if set, zero value otherwise.
+func (o *OIDCAccessRules) GetRequiredScopesPrefix() string {
+	if o == nil || o.RequiredScopesPrefix == nil {
+		var ret string
+		return ret
+	}
+	return *o.RequiredScopesPrefix
+}
+
+// GetRequiredScopesPrefixOk returns a tuple with the RequiredScopesPrefix field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OIDCAccessRules) GetRequiredScopesPrefixOk() (*string, bool) {
+	if o == nil || o.RequiredScopesPrefix == nil {
+		return nil, false
+	}
+	return o.RequiredScopesPrefix, true
+}
+
+// HasRequiredScopesPrefix returns a boolean if a field has been set.
+func (o *OIDCAccessRules) HasRequiredScopesPrefix() bool {
+	if o != nil && o.RequiredScopesPrefix != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRequiredScopesPrefix gets a reference to the given string and assigns it to the RequiredScopesPrefix field.
+func (o *OIDCAccessRules) SetRequiredScopesPrefix(v string) {
+	o.RequiredScopesPrefix = &v
+}
+
 // GetUniqueIdentifier returns the UniqueIdentifier field value if set, zero value otherwise.
 func (o *OIDCAccessRules) GetUniqueIdentifier() string {
 	if o == nil || o.UniqueIdentifier == nil {
@@ -293,6 +361,12 @@ func (o OIDCAccessRules) MarshalJSON() ([]byte, error) {
 	}
 	if o.Issuer != nil {
 		toSerialize["issuer"] = o.Issuer
+	}
+	if o.RequiredScopes != nil {
+		toSerialize["required_scopes"] = o.RequiredScopes
+	}
+	if o.RequiredScopesPrefix != nil {
+		toSerialize["required_scopes_prefix"] = o.RequiredScopesPrefix
 	}
 	if o.UniqueIdentifier != nil {
 		toSerialize["unique_identifier"] = o.UniqueIdentifier

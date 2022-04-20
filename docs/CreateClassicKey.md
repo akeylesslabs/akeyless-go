@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Alg** | **string** | Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384] | 
 **CertFileData** | Pointer to **string** | Certificate in a PEM format. | [optional] 
 **KeyData** | Pointer to **string** | Base64-encoded classic key value | [optional] 
+**KeyOperations** | Pointer to **[]string** | A list of allowed operations for the key (required for azure targets) | [optional] 
 **Metadata** | Pointer to **string** | Metadata about the classic key | [optional] 
 **Name** | **string** | ClassicKey name | 
 **ProtectionKeyName** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
@@ -14,6 +15,7 @@ Name | Type | Description | Notes
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**VaultName** | Pointer to **string** | Name of the vault used (required for azure targets) | [optional] 
 
 ## Methods
 
@@ -103,6 +105,31 @@ SetKeyData sets KeyData field to given value.
 `func (o *CreateClassicKey) HasKeyData() bool`
 
 HasKeyData returns a boolean if a field has been set.
+
+### GetKeyOperations
+
+`func (o *CreateClassicKey) GetKeyOperations() []string`
+
+GetKeyOperations returns the KeyOperations field if non-nil, zero value otherwise.
+
+### GetKeyOperationsOk
+
+`func (o *CreateClassicKey) GetKeyOperationsOk() (*[]string, bool)`
+
+GetKeyOperationsOk returns a tuple with the KeyOperations field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKeyOperations
+
+`func (o *CreateClassicKey) SetKeyOperations(v []string)`
+
+SetKeyOperations sets KeyOperations field to given value.
+
+### HasKeyOperations
+
+`func (o *CreateClassicKey) HasKeyOperations() bool`
+
+HasKeyOperations returns a boolean if a field has been set.
 
 ### GetMetadata
 
@@ -273,6 +300,31 @@ SetUidToken sets UidToken field to given value.
 `func (o *CreateClassicKey) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetVaultName
+
+`func (o *CreateClassicKey) GetVaultName() string`
+
+GetVaultName returns the VaultName field if non-nil, zero value otherwise.
+
+### GetVaultNameOk
+
+`func (o *CreateClassicKey) GetVaultNameOk() (*string, bool)`
+
+GetVaultNameOk returns a tuple with the VaultName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVaultName
+
+`func (o *CreateClassicKey) SetVaultName(v string)`
+
+SetVaultName sets VaultName field to given value.
+
+### HasVaultName
+
+`func (o *CreateClassicKey) HasVaultName() bool`
+
+HasVaultName returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -17,6 +17,7 @@ import (
 
 // UpdateOutput struct for UpdateOutput
 type UpdateOutput struct {
+	Changelog *string `json:"changelog,omitempty"`
 	Latest *string `json:"latest,omitempty"`
 	Updated *bool `json:"updated,omitempty"`
 }
@@ -36,6 +37,38 @@ func NewUpdateOutput() *UpdateOutput {
 func NewUpdateOutputWithDefaults() *UpdateOutput {
 	this := UpdateOutput{}
 	return &this
+}
+
+// GetChangelog returns the Changelog field value if set, zero value otherwise.
+func (o *UpdateOutput) GetChangelog() string {
+	if o == nil || o.Changelog == nil {
+		var ret string
+		return ret
+	}
+	return *o.Changelog
+}
+
+// GetChangelogOk returns a tuple with the Changelog field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateOutput) GetChangelogOk() (*string, bool) {
+	if o == nil || o.Changelog == nil {
+		return nil, false
+	}
+	return o.Changelog, true
+}
+
+// HasChangelog returns a boolean if a field has been set.
+func (o *UpdateOutput) HasChangelog() bool {
+	if o != nil && o.Changelog != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetChangelog gets a reference to the given string and assigns it to the Changelog field.
+func (o *UpdateOutput) SetChangelog(v string) {
+	o.Changelog = &v
 }
 
 // GetLatest returns the Latest field value if set, zero value otherwise.
@@ -104,6 +137,9 @@ func (o *UpdateOutput) SetUpdated(v bool) {
 
 func (o UpdateOutput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Changelog != nil {
+		toSerialize["changelog"] = o.Changelog
+	}
 	if o.Latest != nil {
 		toSerialize["latest"] = o.Latest
 	}

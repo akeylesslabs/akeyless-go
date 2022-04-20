@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **PublicKeyData** | Pointer to **string** | A public key generated for LDAP authentication method on Akeyless in base64 format [RSA2048] | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**UniqueIdentifier** | Pointer to **string** | A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. | [optional] 
 
 ## Methods
 
@@ -252,6 +253,31 @@ SetUidToken sets UidToken field to given value.
 `func (o *UpdateAuthMethodLDAP) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetUniqueIdentifier
+
+`func (o *UpdateAuthMethodLDAP) GetUniqueIdentifier() string`
+
+GetUniqueIdentifier returns the UniqueIdentifier field if non-nil, zero value otherwise.
+
+### GetUniqueIdentifierOk
+
+`func (o *UpdateAuthMethodLDAP) GetUniqueIdentifierOk() (*string, bool)`
+
+GetUniqueIdentifierOk returns a tuple with the UniqueIdentifier field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUniqueIdentifier
+
+`func (o *UpdateAuthMethodLDAP) SetUniqueIdentifier(v string)`
+
+SetUniqueIdentifier sets UniqueIdentifier field to given value.
+
+### HasUniqueIdentifier
+
+`func (o *UpdateAuthMethodLDAP) HasUniqueIdentifier() bool`
+
+HasUniqueIdentifier returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

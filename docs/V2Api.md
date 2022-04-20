@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**CreateAuthMethod**](V2Api.md#CreateAuthMethod) | **Post** /create-auth-method | 
 [**CreateAuthMethodAWSIAM**](V2Api.md#CreateAuthMethodAWSIAM) | **Post** /create-auth-method-aws-iam | 
 [**CreateAuthMethodAzureAD**](V2Api.md#CreateAuthMethodAzureAD) | **Post** /create-auth-method-azure-ad | 
+[**CreateAuthMethodCert**](V2Api.md#CreateAuthMethodCert) | **Post** /create-auth-method-cert | 
 [**CreateAuthMethodGCP**](V2Api.md#CreateAuthMethodGCP) | **Post** /create-auth-method-gcp | 
 [**CreateAuthMethodHuawei**](V2Api.md#CreateAuthMethodHuawei) | **Post** /create-auth-method-huawei | 
 [**CreateAuthMethodK8S**](V2Api.md#CreateAuthMethodK8S) | **Post** /create-auth-method-k8s | 
@@ -143,9 +144,11 @@ Method | HTTP request | Description
 [**KmipClientSetRule**](V2Api.md#KmipClientSetRule) | **Post** /kmip-client-set-rule | 
 [**KmipCreateClient**](V2Api.md#KmipCreateClient) | **Post** /kmip-create-client | 
 [**KmipDeleteClient**](V2Api.md#KmipDeleteClient) | **Post** /kmip-delete-client | 
+[**KmipDeleteServer**](V2Api.md#KmipDeleteServer) | **Delete** /kmip-delete-environment | 
 [**KmipDescribeClient**](V2Api.md#KmipDescribeClient) | **Post** /kmip-get-client | 
 [**KmipDescribeServer**](V2Api.md#KmipDescribeServer) | **Post** /kmip-get-environment | 
 [**KmipListClients**](V2Api.md#KmipListClients) | **Post** /kmip-list-clients | 
+[**KmipMoveServer**](V2Api.md#KmipMoveServer) | **Post** /kmip-move-environment | 
 [**KmipRenewClientCertificate**](V2Api.md#KmipRenewClientCertificate) | **Post** /kmip-renew-client | 
 [**KmipRenewServerCertificate**](V2Api.md#KmipRenewServerCertificate) | **Post** /kmip-renew-environment | 
 [**KmipServerSetup**](V2Api.md#KmipServerSetup) | **Post** /kmip-create-environment | 
@@ -180,6 +183,7 @@ Method | HTTP request | Description
 [**UpdateAuthMethod**](V2Api.md#UpdateAuthMethod) | **Post** /update-auth-method | 
 [**UpdateAuthMethodAWSIAM**](V2Api.md#UpdateAuthMethodAWSIAM) | **Post** /update-auth-method-aws-iam | 
 [**UpdateAuthMethodAzureAD**](V2Api.md#UpdateAuthMethodAzureAD) | **Post** /update-auth-method-azure-ad | 
+[**UpdateAuthMethodCert**](V2Api.md#UpdateAuthMethodCert) | **Post** /update-auth-method-cert | 
 [**UpdateAuthMethodGCP**](V2Api.md#UpdateAuthMethodGCP) | **Post** /update-auth-method-gcp | 
 [**UpdateAuthMethodK8S**](V2Api.md#UpdateAuthMethodK8S) | **Post** /update-auth-method-k8s | 
 [**UpdateAuthMethodLDAP**](V2Api.md#UpdateAuthMethodLDAP) | **Post** /update-auth-method-ldap | 
@@ -845,6 +849,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateAuthMethodAzureADOutput**](createAuthMethodAzureADOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateAuthMethodCert
+
+> CreateAuthMethodCertOutput CreateAuthMethodCert(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewcreateAuthMethodCert("Name_example", "UniqueIdentifier_example") // CreateAuthMethodCert | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.CreateAuthMethodCert(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateAuthMethodCert``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateAuthMethodCert`: CreateAuthMethodCertOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateAuthMethodCert`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateAuthMethodCertRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateAuthMethodCert**](CreateAuthMethodCert.md) |  | 
+
+### Return type
+
+[**CreateAuthMethodCertOutput**](createAuthMethodCertOutput.md)
 
 ### Authorization
 
@@ -9107,6 +9175,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## KmipDeleteServer
+
+> map[string]interface{} KmipDeleteServer(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewkmipDeleteServer() // KmipDeleteServer |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.KmipDeleteServer(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.KmipDeleteServer``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `KmipDeleteServer`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.KmipDeleteServer`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiKmipDeleteServerRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**KmipDeleteServer**](KmipDeleteServer.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## KmipDescribeClient
 
 > KMIPClientGetResponse KmipDescribeClient(ctx).Body(body).Execute()
@@ -9284,6 +9416,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**KMIPClientListResponse**](KMIPClientListResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## KmipMoveServer
+
+> KmipMoveServerOutput KmipMoveServer(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewkmipMoveServer() // KmipMoveServer |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.KmipMoveServer(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.KmipMoveServer``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `KmipMoveServer`: KmipMoveServerOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.KmipMoveServer`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiKmipMoveServerRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**KmipMoveServer**](KmipMoveServer.md) |  | 
+
+### Return type
+
+[**KmipMoveServerOutput**](kmipMoveServerOutput.md)
 
 ### Authorization
 
@@ -11455,6 +11651,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 **map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateAuthMethodCert
+
+> UpdateAuthMethodCertOutput UpdateAuthMethodCert(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewupdateAuthMethodCert("Name_example", "UniqueIdentifier_example") // UpdateAuthMethodCert | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdateAuthMethodCert(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateAuthMethodCert``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateAuthMethodCert`: UpdateAuthMethodCertOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateAuthMethodCert`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateAuthMethodCertRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateAuthMethodCert**](UpdateAuthMethodCert.md) |  | 
+
+### Return type
+
+[**UpdateAuthMethodCertOutput**](updateAuthMethodCertOutput.md)
 
 ### Authorization
 

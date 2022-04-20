@@ -23,6 +23,7 @@ type AuthMethodAccessInfo struct {
 	ApiKeyAccessRules *APIKeyAccessRules `json:"api_key_access_rules,omitempty"`
 	AwsIamAccessRules *AWSIAMAccessRules `json:"aws_iam_access_rules,omitempty"`
 	AzureAdAccessRules *AzureADAccessRules `json:"azure_ad_access_rules,omitempty"`
+	CertAccessRules *CertAccessRules `json:"cert_access_rules,omitempty"`
 	CidrWhitelist *string `json:"cidr_whitelist,omitempty"`
 	EmailPassAccessRules *EmailPassAccessRules `json:"email_pass_access_rules,omitempty"`
 	// if true the role associated with this auth method must include sub claims
@@ -214,6 +215,38 @@ func (o *AuthMethodAccessInfo) HasAzureAdAccessRules() bool {
 // SetAzureAdAccessRules gets a reference to the given AzureADAccessRules and assigns it to the AzureAdAccessRules field.
 func (o *AuthMethodAccessInfo) SetAzureAdAccessRules(v AzureADAccessRules) {
 	o.AzureAdAccessRules = &v
+}
+
+// GetCertAccessRules returns the CertAccessRules field value if set, zero value otherwise.
+func (o *AuthMethodAccessInfo) GetCertAccessRules() CertAccessRules {
+	if o == nil || o.CertAccessRules == nil {
+		var ret CertAccessRules
+		return ret
+	}
+	return *o.CertAccessRules
+}
+
+// GetCertAccessRulesOk returns a tuple with the CertAccessRules field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodAccessInfo) GetCertAccessRulesOk() (*CertAccessRules, bool) {
+	if o == nil || o.CertAccessRules == nil {
+		return nil, false
+	}
+	return o.CertAccessRules, true
+}
+
+// HasCertAccessRules returns a boolean if a field has been set.
+func (o *AuthMethodAccessInfo) HasCertAccessRules() bool {
+	if o != nil && o.CertAccessRules != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCertAccessRules gets a reference to the given CertAccessRules and assigns it to the CertAccessRules field.
+func (o *AuthMethodAccessInfo) SetCertAccessRules(v CertAccessRules) {
+	o.CertAccessRules = &v
 }
 
 // GetCidrWhitelist returns the CidrWhitelist field value if set, zero value otherwise.
@@ -648,6 +681,9 @@ func (o AuthMethodAccessInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.AzureAdAccessRules != nil {
 		toSerialize["azure_ad_access_rules"] = o.AzureAdAccessRules
+	}
+	if o.CertAccessRules != nil {
+		toSerialize["cert_access_rules"] = o.CertAccessRules
 	}
 	if o.CidrWhitelist != nil {
 		toSerialize["cidr_whitelist"] = o.CidrWhitelist

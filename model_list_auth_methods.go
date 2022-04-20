@@ -17,11 +17,13 @@ import (
 
 // ListAuthMethods listAuthMethods is a command that returns a list of all auth methods in the account.
 type ListAuthMethods struct {
+	// Filter by auth method name or part of it
+	Filter *string `json:"filter,omitempty"`
 	// Next page reference
 	PaginationToken *string `json:"pagination-token,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
-	// The Auth method types list of the requested method. In case it is empty, all types of auth methods will be returned. options: [api_key, azure_ad, oauth2/jwt, saml2, ldap, aws_iam, oidc, universal_identity, gcp, k8s]
+	// The Auth method types list of the requested method. In case it is empty, all types of auth methods will be returned. options: [api_key, azure_ad, oauth2/jwt, saml2, ldap, aws_iam, oidc, universal_identity, gcp, k8s, cert]
 	Type *[]string `json:"type,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
@@ -42,6 +44,38 @@ func NewListAuthMethods() *ListAuthMethods {
 func NewListAuthMethodsWithDefaults() *ListAuthMethods {
 	this := ListAuthMethods{}
 	return &this
+}
+
+// GetFilter returns the Filter field value if set, zero value otherwise.
+func (o *ListAuthMethods) GetFilter() string {
+	if o == nil || o.Filter == nil {
+		var ret string
+		return ret
+	}
+	return *o.Filter
+}
+
+// GetFilterOk returns a tuple with the Filter field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListAuthMethods) GetFilterOk() (*string, bool) {
+	if o == nil || o.Filter == nil {
+		return nil, false
+	}
+	return o.Filter, true
+}
+
+// HasFilter returns a boolean if a field has been set.
+func (o *ListAuthMethods) HasFilter() bool {
+	if o != nil && o.Filter != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFilter gets a reference to the given string and assigns it to the Filter field.
+func (o *ListAuthMethods) SetFilter(v string) {
+	o.Filter = &v
 }
 
 // GetPaginationToken returns the PaginationToken field value if set, zero value otherwise.
@@ -174,6 +208,9 @@ func (o *ListAuthMethods) SetUidToken(v string) {
 
 func (o ListAuthMethods) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Filter != nil {
+		toSerialize["filter"] = o.Filter
+	}
 	if o.PaginationToken != nil {
 		toSerialize["pagination-token"] = o.PaginationToken
 	}
