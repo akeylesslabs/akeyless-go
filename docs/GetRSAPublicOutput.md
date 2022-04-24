@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Raw** | Pointer to **string** |  | [optional] 
-**Ssh** | Pointer to **[]int32** |  | [optional] 
+**Ssh** | Pointer to **[]byte** |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasRaw returns a boolean if a field has been set.
 
 ### GetSsh
 
-`func (o *GetRSAPublicOutput) GetSsh() []int32`
+`func (o *GetRSAPublicOutput) GetSsh() []byte`
 
 GetSsh returns the Ssh field if non-nil, zero value otherwise.
 
 ### GetSshOk
 
-`func (o *GetRSAPublicOutput) GetSshOk() (*[]int32, bool)`
+`func (o *GetRSAPublicOutput) GetSshOk() (*[]byte, bool)`
 
 GetSshOk returns a tuple with the Ssh field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSsh
 
-`func (o *GetRSAPublicOutput) SetSsh(v []int32)`
+`func (o *GetRSAPublicOutput) SetSsh(v []byte)`
 
 SetSsh sets Ssh field to given value.
 
