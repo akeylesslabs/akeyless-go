@@ -14,12 +14,16 @@ Name | Type | Description | Notes
 **AzureClientId** | Pointer to **string** |  | [optional] 
 **AzureClientSecret** | Pointer to **string** |  | [optional] 
 **AzureTenantId** | Pointer to **string** |  | [optional] 
+**CaCertData** | Pointer to **[]int32** | CACertData is the rsa 4096 certificate data in PEM format | [optional] 
+**CaCertName** | Pointer to **string** | CACertName is the name of the certificate in SalesForce tenant | [optional] 
 **ChefServerHostName** | Pointer to **string** |  | [optional] 
 **ChefServerKey** | Pointer to **string** |  | [optional] 
 **ChefServerPort** | Pointer to **string** |  | [optional] 
 **ChefServerUrl** | Pointer to **string** |  | [optional] 
 **ChefServerUsername** | Pointer to **string** |  | [optional] 
 **ChefSkipSsl** | Pointer to **bool** |  | [optional] 
+**ClientId** | Pointer to **string** |  | [optional] 
+**ClientSecret** | Pointer to **string** |  | [optional] 
 **DbHostName** | Pointer to **string** |  | [optional] 
 **DbName** | Pointer to **string** |  | [optional] 
 **DbPort** | Pointer to **string** |  | [optional] 
@@ -72,9 +76,11 @@ Name | Type | Description | Notes
 **RabbitmqServerPassword** | Pointer to **string** |  | [optional] 
 **RabbitmqServerUri** | Pointer to **string** |  | [optional] 
 **RabbitmqServerUser** | Pointer to **string** |  | [optional] 
+**SecurityToken** | Pointer to **string** |  | [optional] 
 **SfAccount** | Pointer to **string** |  | [optional] 
 **SslConnectionCertificate** | Pointer to **string** | (Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field | [optional] 
 **SslConnectionMode** | Pointer to **bool** | (Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB | [optional] 
+**TenantUrl** | Pointer to **string** |  | [optional] 
 **Url** | Pointer to **string** |  | [optional] 
 **UseGwCloudIdentity** | Pointer to **bool** |  | [optional] 
 **UserName** | Pointer to **string** |  | [optional] 
@@ -355,6 +361,56 @@ SetAzureTenantId sets AzureTenantId field to given value.
 
 HasAzureTenantId returns a boolean if a field has been set.
 
+### GetCaCertData
+
+`func (o *TargetTypeDetailsInput) GetCaCertData() []int32`
+
+GetCaCertData returns the CaCertData field if non-nil, zero value otherwise.
+
+### GetCaCertDataOk
+
+`func (o *TargetTypeDetailsInput) GetCaCertDataOk() (*[]int32, bool)`
+
+GetCaCertDataOk returns a tuple with the CaCertData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCaCertData
+
+`func (o *TargetTypeDetailsInput) SetCaCertData(v []int32)`
+
+SetCaCertData sets CaCertData field to given value.
+
+### HasCaCertData
+
+`func (o *TargetTypeDetailsInput) HasCaCertData() bool`
+
+HasCaCertData returns a boolean if a field has been set.
+
+### GetCaCertName
+
+`func (o *TargetTypeDetailsInput) GetCaCertName() string`
+
+GetCaCertName returns the CaCertName field if non-nil, zero value otherwise.
+
+### GetCaCertNameOk
+
+`func (o *TargetTypeDetailsInput) GetCaCertNameOk() (*string, bool)`
+
+GetCaCertNameOk returns a tuple with the CaCertName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCaCertName
+
+`func (o *TargetTypeDetailsInput) SetCaCertName(v string)`
+
+SetCaCertName sets CaCertName field to given value.
+
+### HasCaCertName
+
+`func (o *TargetTypeDetailsInput) HasCaCertName() bool`
+
+HasCaCertName returns a boolean if a field has been set.
+
 ### GetChefServerHostName
 
 `func (o *TargetTypeDetailsInput) GetChefServerHostName() string`
@@ -504,6 +560,56 @@ SetChefSkipSsl sets ChefSkipSsl field to given value.
 `func (o *TargetTypeDetailsInput) HasChefSkipSsl() bool`
 
 HasChefSkipSsl returns a boolean if a field has been set.
+
+### GetClientId
+
+`func (o *TargetTypeDetailsInput) GetClientId() string`
+
+GetClientId returns the ClientId field if non-nil, zero value otherwise.
+
+### GetClientIdOk
+
+`func (o *TargetTypeDetailsInput) GetClientIdOk() (*string, bool)`
+
+GetClientIdOk returns a tuple with the ClientId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientId
+
+`func (o *TargetTypeDetailsInput) SetClientId(v string)`
+
+SetClientId sets ClientId field to given value.
+
+### HasClientId
+
+`func (o *TargetTypeDetailsInput) HasClientId() bool`
+
+HasClientId returns a boolean if a field has been set.
+
+### GetClientSecret
+
+`func (o *TargetTypeDetailsInput) GetClientSecret() string`
+
+GetClientSecret returns the ClientSecret field if non-nil, zero value otherwise.
+
+### GetClientSecretOk
+
+`func (o *TargetTypeDetailsInput) GetClientSecretOk() (*string, bool)`
+
+GetClientSecretOk returns a tuple with the ClientSecret field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientSecret
+
+`func (o *TargetTypeDetailsInput) SetClientSecret(v string)`
+
+SetClientSecret sets ClientSecret field to given value.
+
+### HasClientSecret
+
+`func (o *TargetTypeDetailsInput) HasClientSecret() bool`
+
+HasClientSecret returns a boolean if a field has been set.
 
 ### GetDbHostName
 
@@ -1805,6 +1911,31 @@ SetRabbitmqServerUser sets RabbitmqServerUser field to given value.
 
 HasRabbitmqServerUser returns a boolean if a field has been set.
 
+### GetSecurityToken
+
+`func (o *TargetTypeDetailsInput) GetSecurityToken() string`
+
+GetSecurityToken returns the SecurityToken field if non-nil, zero value otherwise.
+
+### GetSecurityTokenOk
+
+`func (o *TargetTypeDetailsInput) GetSecurityTokenOk() (*string, bool)`
+
+GetSecurityTokenOk returns a tuple with the SecurityToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecurityToken
+
+`func (o *TargetTypeDetailsInput) SetSecurityToken(v string)`
+
+SetSecurityToken sets SecurityToken field to given value.
+
+### HasSecurityToken
+
+`func (o *TargetTypeDetailsInput) HasSecurityToken() bool`
+
+HasSecurityToken returns a boolean if a field has been set.
+
 ### GetSfAccount
 
 `func (o *TargetTypeDetailsInput) GetSfAccount() string`
@@ -1879,6 +2010,31 @@ SetSslConnectionMode sets SslConnectionMode field to given value.
 `func (o *TargetTypeDetailsInput) HasSslConnectionMode() bool`
 
 HasSslConnectionMode returns a boolean if a field has been set.
+
+### GetTenantUrl
+
+`func (o *TargetTypeDetailsInput) GetTenantUrl() string`
+
+GetTenantUrl returns the TenantUrl field if non-nil, zero value otherwise.
+
+### GetTenantUrlOk
+
+`func (o *TargetTypeDetailsInput) GetTenantUrlOk() (*string, bool)`
+
+GetTenantUrlOk returns a tuple with the TenantUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTenantUrl
+
+`func (o *TargetTypeDetailsInput) SetTenantUrl(v string)`
+
+SetTenantUrl sets TenantUrl field to given value.
+
+### HasTenantUrl
+
+`func (o *TargetTypeDetailsInput) HasTenantUrl() bool`
+
+HasTenantUrl returns a boolean if a field has been set.
 
 ### GetUrl
 

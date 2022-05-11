@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **ApplicationId** | Pointer to **string** | ApplicationId (used in azure) | [optional] 
 **AuthenticationCredentials** | Pointer to **string** |  | [optional] 
 **AutoRotate** | Pointer to **string** | Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation | [optional] 
+**AwsRegion** | Pointer to **string** | Region (used in aws) | [optional] [default to "us-east-2"]
 **CustomPayload** | Pointer to **string** |  | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Metadata** | Pointer to **string** | Metadata about the secret | [optional] 
@@ -20,6 +21,19 @@ Name | Type | Description | Notes
 **RotatorCredsType** | Pointer to **string** |  | [optional] 
 **RotatorCustomCmd** | Pointer to **string** |  | [optional] 
 **RotatorType** | **string** | Rotator Type | 
+**SecureAccessAllowExternalUser** | Pointer to **bool** | Secure Access Allow Providing External User (used in ssh) | [optional] [default to false]
+**SecureAccessAwsAccountId** | Pointer to **string** | Secure Access Account Id (used in aws) | [optional] 
+**SecureAccessAwsNativeCli** | Pointer to **bool** | Secure Access Aws Native Cli (used in aws) | [optional] 
+**SecureAccessBastionIssuer** | Pointer to **string** | Secure Access Bastion Issuer | [optional] 
+**SecureAccessDbName** | Pointer to **string** | Secure Access DB Name (used in data bases) | [optional] 
+**SecureAccessDbSchema** | Pointer to **string** | Secure Access Schema (used in mssql, postgresql) | [optional] 
+**SecureAccessEnable** | Pointer to **string** | Secure Access Enabled | [optional] 
+**SecureAccessHost** | Pointer to **[]string** | Secure Access Host | [optional] 
+**SecureAccessRdpDomain** | Pointer to **string** | Secure Access Domain (used in ssh) | [optional] 
+**SecureAccessRdpUser** | Pointer to **string** | Secure Access Override User (used in ssh) | [optional] 
+**SecureAccessWeb** | Pointer to **bool** | Secure Access Web | [optional] [default to false]
+**SecureAccessWebBrowsing** | Pointer to **bool** | Secure Access Isolated (used in aws, azure) | [optional] [default to false]
+**SecureAccessWebProxy** | Pointer to **bool** | Secure Access Web Proxy (used in aws, azure) | [optional] [default to false]
 **SshPassword** | Pointer to **string** | Deprecated: use RotatedPassword | [optional] 
 **SshUsername** | Pointer to **string** | Deprecated: use RotatedUser | [optional] 
 **Tags** | Pointer to **[]string** | List of the tags attached to this secret | [optional] 
@@ -172,6 +186,31 @@ SetAutoRotate sets AutoRotate field to given value.
 `func (o *CreateRotatedSecret) HasAutoRotate() bool`
 
 HasAutoRotate returns a boolean if a field has been set.
+
+### GetAwsRegion
+
+`func (o *CreateRotatedSecret) GetAwsRegion() string`
+
+GetAwsRegion returns the AwsRegion field if non-nil, zero value otherwise.
+
+### GetAwsRegionOk
+
+`func (o *CreateRotatedSecret) GetAwsRegionOk() (*string, bool)`
+
+GetAwsRegionOk returns a tuple with the AwsRegion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsRegion
+
+`func (o *CreateRotatedSecret) SetAwsRegion(v string)`
+
+SetAwsRegion sets AwsRegion field to given value.
+
+### HasAwsRegion
+
+`func (o *CreateRotatedSecret) HasAwsRegion() bool`
+
+HasAwsRegion returns a boolean if a field has been set.
 
 ### GetCustomPayload
 
@@ -437,6 +476,331 @@ and a boolean to check if the value has been set.
 
 SetRotatorType sets RotatorType field to given value.
 
+
+### GetSecureAccessAllowExternalUser
+
+`func (o *CreateRotatedSecret) GetSecureAccessAllowExternalUser() bool`
+
+GetSecureAccessAllowExternalUser returns the SecureAccessAllowExternalUser field if non-nil, zero value otherwise.
+
+### GetSecureAccessAllowExternalUserOk
+
+`func (o *CreateRotatedSecret) GetSecureAccessAllowExternalUserOk() (*bool, bool)`
+
+GetSecureAccessAllowExternalUserOk returns a tuple with the SecureAccessAllowExternalUser field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessAllowExternalUser
+
+`func (o *CreateRotatedSecret) SetSecureAccessAllowExternalUser(v bool)`
+
+SetSecureAccessAllowExternalUser sets SecureAccessAllowExternalUser field to given value.
+
+### HasSecureAccessAllowExternalUser
+
+`func (o *CreateRotatedSecret) HasSecureAccessAllowExternalUser() bool`
+
+HasSecureAccessAllowExternalUser returns a boolean if a field has been set.
+
+### GetSecureAccessAwsAccountId
+
+`func (o *CreateRotatedSecret) GetSecureAccessAwsAccountId() string`
+
+GetSecureAccessAwsAccountId returns the SecureAccessAwsAccountId field if non-nil, zero value otherwise.
+
+### GetSecureAccessAwsAccountIdOk
+
+`func (o *CreateRotatedSecret) GetSecureAccessAwsAccountIdOk() (*string, bool)`
+
+GetSecureAccessAwsAccountIdOk returns a tuple with the SecureAccessAwsAccountId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessAwsAccountId
+
+`func (o *CreateRotatedSecret) SetSecureAccessAwsAccountId(v string)`
+
+SetSecureAccessAwsAccountId sets SecureAccessAwsAccountId field to given value.
+
+### HasSecureAccessAwsAccountId
+
+`func (o *CreateRotatedSecret) HasSecureAccessAwsAccountId() bool`
+
+HasSecureAccessAwsAccountId returns a boolean if a field has been set.
+
+### GetSecureAccessAwsNativeCli
+
+`func (o *CreateRotatedSecret) GetSecureAccessAwsNativeCli() bool`
+
+GetSecureAccessAwsNativeCli returns the SecureAccessAwsNativeCli field if non-nil, zero value otherwise.
+
+### GetSecureAccessAwsNativeCliOk
+
+`func (o *CreateRotatedSecret) GetSecureAccessAwsNativeCliOk() (*bool, bool)`
+
+GetSecureAccessAwsNativeCliOk returns a tuple with the SecureAccessAwsNativeCli field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessAwsNativeCli
+
+`func (o *CreateRotatedSecret) SetSecureAccessAwsNativeCli(v bool)`
+
+SetSecureAccessAwsNativeCli sets SecureAccessAwsNativeCli field to given value.
+
+### HasSecureAccessAwsNativeCli
+
+`func (o *CreateRotatedSecret) HasSecureAccessAwsNativeCli() bool`
+
+HasSecureAccessAwsNativeCli returns a boolean if a field has been set.
+
+### GetSecureAccessBastionIssuer
+
+`func (o *CreateRotatedSecret) GetSecureAccessBastionIssuer() string`
+
+GetSecureAccessBastionIssuer returns the SecureAccessBastionIssuer field if non-nil, zero value otherwise.
+
+### GetSecureAccessBastionIssuerOk
+
+`func (o *CreateRotatedSecret) GetSecureAccessBastionIssuerOk() (*string, bool)`
+
+GetSecureAccessBastionIssuerOk returns a tuple with the SecureAccessBastionIssuer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessBastionIssuer
+
+`func (o *CreateRotatedSecret) SetSecureAccessBastionIssuer(v string)`
+
+SetSecureAccessBastionIssuer sets SecureAccessBastionIssuer field to given value.
+
+### HasSecureAccessBastionIssuer
+
+`func (o *CreateRotatedSecret) HasSecureAccessBastionIssuer() bool`
+
+HasSecureAccessBastionIssuer returns a boolean if a field has been set.
+
+### GetSecureAccessDbName
+
+`func (o *CreateRotatedSecret) GetSecureAccessDbName() string`
+
+GetSecureAccessDbName returns the SecureAccessDbName field if non-nil, zero value otherwise.
+
+### GetSecureAccessDbNameOk
+
+`func (o *CreateRotatedSecret) GetSecureAccessDbNameOk() (*string, bool)`
+
+GetSecureAccessDbNameOk returns a tuple with the SecureAccessDbName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessDbName
+
+`func (o *CreateRotatedSecret) SetSecureAccessDbName(v string)`
+
+SetSecureAccessDbName sets SecureAccessDbName field to given value.
+
+### HasSecureAccessDbName
+
+`func (o *CreateRotatedSecret) HasSecureAccessDbName() bool`
+
+HasSecureAccessDbName returns a boolean if a field has been set.
+
+### GetSecureAccessDbSchema
+
+`func (o *CreateRotatedSecret) GetSecureAccessDbSchema() string`
+
+GetSecureAccessDbSchema returns the SecureAccessDbSchema field if non-nil, zero value otherwise.
+
+### GetSecureAccessDbSchemaOk
+
+`func (o *CreateRotatedSecret) GetSecureAccessDbSchemaOk() (*string, bool)`
+
+GetSecureAccessDbSchemaOk returns a tuple with the SecureAccessDbSchema field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessDbSchema
+
+`func (o *CreateRotatedSecret) SetSecureAccessDbSchema(v string)`
+
+SetSecureAccessDbSchema sets SecureAccessDbSchema field to given value.
+
+### HasSecureAccessDbSchema
+
+`func (o *CreateRotatedSecret) HasSecureAccessDbSchema() bool`
+
+HasSecureAccessDbSchema returns a boolean if a field has been set.
+
+### GetSecureAccessEnable
+
+`func (o *CreateRotatedSecret) GetSecureAccessEnable() string`
+
+GetSecureAccessEnable returns the SecureAccessEnable field if non-nil, zero value otherwise.
+
+### GetSecureAccessEnableOk
+
+`func (o *CreateRotatedSecret) GetSecureAccessEnableOk() (*string, bool)`
+
+GetSecureAccessEnableOk returns a tuple with the SecureAccessEnable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessEnable
+
+`func (o *CreateRotatedSecret) SetSecureAccessEnable(v string)`
+
+SetSecureAccessEnable sets SecureAccessEnable field to given value.
+
+### HasSecureAccessEnable
+
+`func (o *CreateRotatedSecret) HasSecureAccessEnable() bool`
+
+HasSecureAccessEnable returns a boolean if a field has been set.
+
+### GetSecureAccessHost
+
+`func (o *CreateRotatedSecret) GetSecureAccessHost() []string`
+
+GetSecureAccessHost returns the SecureAccessHost field if non-nil, zero value otherwise.
+
+### GetSecureAccessHostOk
+
+`func (o *CreateRotatedSecret) GetSecureAccessHostOk() (*[]string, bool)`
+
+GetSecureAccessHostOk returns a tuple with the SecureAccessHost field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessHost
+
+`func (o *CreateRotatedSecret) SetSecureAccessHost(v []string)`
+
+SetSecureAccessHost sets SecureAccessHost field to given value.
+
+### HasSecureAccessHost
+
+`func (o *CreateRotatedSecret) HasSecureAccessHost() bool`
+
+HasSecureAccessHost returns a boolean if a field has been set.
+
+### GetSecureAccessRdpDomain
+
+`func (o *CreateRotatedSecret) GetSecureAccessRdpDomain() string`
+
+GetSecureAccessRdpDomain returns the SecureAccessRdpDomain field if non-nil, zero value otherwise.
+
+### GetSecureAccessRdpDomainOk
+
+`func (o *CreateRotatedSecret) GetSecureAccessRdpDomainOk() (*string, bool)`
+
+GetSecureAccessRdpDomainOk returns a tuple with the SecureAccessRdpDomain field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessRdpDomain
+
+`func (o *CreateRotatedSecret) SetSecureAccessRdpDomain(v string)`
+
+SetSecureAccessRdpDomain sets SecureAccessRdpDomain field to given value.
+
+### HasSecureAccessRdpDomain
+
+`func (o *CreateRotatedSecret) HasSecureAccessRdpDomain() bool`
+
+HasSecureAccessRdpDomain returns a boolean if a field has been set.
+
+### GetSecureAccessRdpUser
+
+`func (o *CreateRotatedSecret) GetSecureAccessRdpUser() string`
+
+GetSecureAccessRdpUser returns the SecureAccessRdpUser field if non-nil, zero value otherwise.
+
+### GetSecureAccessRdpUserOk
+
+`func (o *CreateRotatedSecret) GetSecureAccessRdpUserOk() (*string, bool)`
+
+GetSecureAccessRdpUserOk returns a tuple with the SecureAccessRdpUser field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessRdpUser
+
+`func (o *CreateRotatedSecret) SetSecureAccessRdpUser(v string)`
+
+SetSecureAccessRdpUser sets SecureAccessRdpUser field to given value.
+
+### HasSecureAccessRdpUser
+
+`func (o *CreateRotatedSecret) HasSecureAccessRdpUser() bool`
+
+HasSecureAccessRdpUser returns a boolean if a field has been set.
+
+### GetSecureAccessWeb
+
+`func (o *CreateRotatedSecret) GetSecureAccessWeb() bool`
+
+GetSecureAccessWeb returns the SecureAccessWeb field if non-nil, zero value otherwise.
+
+### GetSecureAccessWebOk
+
+`func (o *CreateRotatedSecret) GetSecureAccessWebOk() (*bool, bool)`
+
+GetSecureAccessWebOk returns a tuple with the SecureAccessWeb field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessWeb
+
+`func (o *CreateRotatedSecret) SetSecureAccessWeb(v bool)`
+
+SetSecureAccessWeb sets SecureAccessWeb field to given value.
+
+### HasSecureAccessWeb
+
+`func (o *CreateRotatedSecret) HasSecureAccessWeb() bool`
+
+HasSecureAccessWeb returns a boolean if a field has been set.
+
+### GetSecureAccessWebBrowsing
+
+`func (o *CreateRotatedSecret) GetSecureAccessWebBrowsing() bool`
+
+GetSecureAccessWebBrowsing returns the SecureAccessWebBrowsing field if non-nil, zero value otherwise.
+
+### GetSecureAccessWebBrowsingOk
+
+`func (o *CreateRotatedSecret) GetSecureAccessWebBrowsingOk() (*bool, bool)`
+
+GetSecureAccessWebBrowsingOk returns a tuple with the SecureAccessWebBrowsing field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessWebBrowsing
+
+`func (o *CreateRotatedSecret) SetSecureAccessWebBrowsing(v bool)`
+
+SetSecureAccessWebBrowsing sets SecureAccessWebBrowsing field to given value.
+
+### HasSecureAccessWebBrowsing
+
+`func (o *CreateRotatedSecret) HasSecureAccessWebBrowsing() bool`
+
+HasSecureAccessWebBrowsing returns a boolean if a field has been set.
+
+### GetSecureAccessWebProxy
+
+`func (o *CreateRotatedSecret) GetSecureAccessWebProxy() bool`
+
+GetSecureAccessWebProxy returns the SecureAccessWebProxy field if non-nil, zero value otherwise.
+
+### GetSecureAccessWebProxyOk
+
+`func (o *CreateRotatedSecret) GetSecureAccessWebProxyOk() (*bool, bool)`
+
+GetSecureAccessWebProxyOk returns a tuple with the SecureAccessWebProxy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessWebProxy
+
+`func (o *CreateRotatedSecret) SetSecureAccessWebProxy(v bool)`
+
+SetSecureAccessWebProxy sets SecureAccessWebProxy field to given value.
+
+### HasSecureAccessWebProxy
+
+`func (o *CreateRotatedSecret) HasSecureAccessWebProxy() bool`
+
+HasSecureAccessWebProxy returns a boolean if a field has been set.
 
 ### GetSshPassword
 

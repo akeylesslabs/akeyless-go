@@ -8,11 +8,17 @@ Name | Type | Description | Notes
 **CertFileData** | Pointer to **string** | Certificate in a PEM format. | [optional] 
 **KeyData** | Pointer to **string** | Base64-encoded classic key value | [optional] 
 **KeyOperations** | Pointer to **[]string** | A list of allowed operations for the key (required for azure targets) | [optional] 
+**KeyringName** | Pointer to **string** | Keyring name of the GCP KMS (required for gcp targets) | [optional] 
+**KmsAlgorithm** | Pointer to **string** | Algorithm of the key in GCP KMS (required for gcp targets) | [optional] 
+**LocationId** | Pointer to **string** | Location id of the GCP KMS (required for gcp targets) | [optional] 
 **Metadata** | Pointer to **string** | Metadata about the classic key | [optional] 
 **Name** | **string** | ClassicKey name | 
+**ProjectId** | Pointer to **string** | Project id of the GCP KMS (required for gcp targets) | [optional] 
 **ProtectionKeyName** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
+**Purpose** | Pointer to **string** | Purpose of the key in GCP KMS (required for gcp targets) | [optional] 
 **Tags** | Pointer to **[]string** | List of the tags attached to this classic key | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
+**TenantSecretType** | Pointer to **string** | The tenant secret type [Data/SearchIndex/Analytics] (required for salesforce targets) | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **VaultName** | Pointer to **string** | Name of the vault used (required for azure targets) | [optional] 
@@ -131,6 +137,81 @@ SetKeyOperations sets KeyOperations field to given value.
 
 HasKeyOperations returns a boolean if a field has been set.
 
+### GetKeyringName
+
+`func (o *CreateClassicKey) GetKeyringName() string`
+
+GetKeyringName returns the KeyringName field if non-nil, zero value otherwise.
+
+### GetKeyringNameOk
+
+`func (o *CreateClassicKey) GetKeyringNameOk() (*string, bool)`
+
+GetKeyringNameOk returns a tuple with the KeyringName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKeyringName
+
+`func (o *CreateClassicKey) SetKeyringName(v string)`
+
+SetKeyringName sets KeyringName field to given value.
+
+### HasKeyringName
+
+`func (o *CreateClassicKey) HasKeyringName() bool`
+
+HasKeyringName returns a boolean if a field has been set.
+
+### GetKmsAlgorithm
+
+`func (o *CreateClassicKey) GetKmsAlgorithm() string`
+
+GetKmsAlgorithm returns the KmsAlgorithm field if non-nil, zero value otherwise.
+
+### GetKmsAlgorithmOk
+
+`func (o *CreateClassicKey) GetKmsAlgorithmOk() (*string, bool)`
+
+GetKmsAlgorithmOk returns a tuple with the KmsAlgorithm field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKmsAlgorithm
+
+`func (o *CreateClassicKey) SetKmsAlgorithm(v string)`
+
+SetKmsAlgorithm sets KmsAlgorithm field to given value.
+
+### HasKmsAlgorithm
+
+`func (o *CreateClassicKey) HasKmsAlgorithm() bool`
+
+HasKmsAlgorithm returns a boolean if a field has been set.
+
+### GetLocationId
+
+`func (o *CreateClassicKey) GetLocationId() string`
+
+GetLocationId returns the LocationId field if non-nil, zero value otherwise.
+
+### GetLocationIdOk
+
+`func (o *CreateClassicKey) GetLocationIdOk() (*string, bool)`
+
+GetLocationIdOk returns a tuple with the LocationId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLocationId
+
+`func (o *CreateClassicKey) SetLocationId(v string)`
+
+SetLocationId sets LocationId field to given value.
+
+### HasLocationId
+
+`func (o *CreateClassicKey) HasLocationId() bool`
+
+HasLocationId returns a boolean if a field has been set.
+
 ### GetMetadata
 
 `func (o *CreateClassicKey) GetMetadata() string`
@@ -176,6 +257,31 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
+### GetProjectId
+
+`func (o *CreateClassicKey) GetProjectId() string`
+
+GetProjectId returns the ProjectId field if non-nil, zero value otherwise.
+
+### GetProjectIdOk
+
+`func (o *CreateClassicKey) GetProjectIdOk() (*string, bool)`
+
+GetProjectIdOk returns a tuple with the ProjectId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProjectId
+
+`func (o *CreateClassicKey) SetProjectId(v string)`
+
+SetProjectId sets ProjectId field to given value.
+
+### HasProjectId
+
+`func (o *CreateClassicKey) HasProjectId() bool`
+
+HasProjectId returns a boolean if a field has been set.
+
 ### GetProtectionKeyName
 
 `func (o *CreateClassicKey) GetProtectionKeyName() string`
@@ -200,6 +306,31 @@ SetProtectionKeyName sets ProtectionKeyName field to given value.
 `func (o *CreateClassicKey) HasProtectionKeyName() bool`
 
 HasProtectionKeyName returns a boolean if a field has been set.
+
+### GetPurpose
+
+`func (o *CreateClassicKey) GetPurpose() string`
+
+GetPurpose returns the Purpose field if non-nil, zero value otherwise.
+
+### GetPurposeOk
+
+`func (o *CreateClassicKey) GetPurposeOk() (*string, bool)`
+
+GetPurposeOk returns a tuple with the Purpose field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPurpose
+
+`func (o *CreateClassicKey) SetPurpose(v string)`
+
+SetPurpose sets Purpose field to given value.
+
+### HasPurpose
+
+`func (o *CreateClassicKey) HasPurpose() bool`
+
+HasPurpose returns a boolean if a field has been set.
 
 ### GetTags
 
@@ -250,6 +381,31 @@ SetTargetName sets TargetName field to given value.
 `func (o *CreateClassicKey) HasTargetName() bool`
 
 HasTargetName returns a boolean if a field has been set.
+
+### GetTenantSecretType
+
+`func (o *CreateClassicKey) GetTenantSecretType() string`
+
+GetTenantSecretType returns the TenantSecretType field if non-nil, zero value otherwise.
+
+### GetTenantSecretTypeOk
+
+`func (o *CreateClassicKey) GetTenantSecretTypeOk() (*string, bool)`
+
+GetTenantSecretTypeOk returns a tuple with the TenantSecretType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTenantSecretType
+
+`func (o *CreateClassicKey) SetTenantSecretType(v string)`
+
+SetTenantSecretType sets TenantSecretType field to given value.
+
+### HasTenantSecretType
+
+`func (o *CreateClassicKey) HasTenantSecretType() bool`
+
+HasTenantSecretType returns a boolean if a field has been set.
 
 ### GetToken
 

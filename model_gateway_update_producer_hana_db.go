@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// GatewayUpdateProducerHanaDb gatewayUpdateProducerHanaDb is a command that updates mssql producer
+// GatewayUpdateProducerHanaDb gatewayUpdateProducerHanaDb is a command that updates hanadb producer
 type GatewayUpdateProducerHanaDb struct {
 	// HanaDb Name
 	HanaDbname *string `json:"hana-dbname,omitempty"`

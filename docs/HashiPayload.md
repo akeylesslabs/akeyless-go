@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ImportAsJson** | Pointer to **bool** |  | [optional] 
 **Namespaces** | Pointer to **[]string** |  | [optional] 
 **Token** | Pointer to **string** |  | [optional] 
 **Url** | Pointer to **string** |  | [optional] 
@@ -26,6 +27,31 @@ will change when the set of required properties is changed
 NewHashiPayloadWithDefaults instantiates a new HashiPayload object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetImportAsJson
+
+`func (o *HashiPayload) GetImportAsJson() bool`
+
+GetImportAsJson returns the ImportAsJson field if non-nil, zero value otherwise.
+
+### GetImportAsJsonOk
+
+`func (o *HashiPayload) GetImportAsJsonOk() (*bool, bool)`
+
+GetImportAsJsonOk returns a tuple with the ImportAsJson field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetImportAsJson
+
+`func (o *HashiPayload) SetImportAsJson(v bool)`
+
+SetImportAsJson sets ImportAsJson field to given value.
+
+### HasImportAsJson
+
+`func (o *HashiPayload) HasImportAsJson() bool`
+
+HasImportAsJson returns a boolean if a field has been set.
 
 ### GetNamespaces
 

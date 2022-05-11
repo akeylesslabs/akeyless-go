@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **ClientSecret** | Pointer to **string** | Client Secret | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
 **Issuer** | Pointer to **string** | Issuer URL | [optional] 
-**JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] [default to 0]
+**JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] 
 **Name** | **string** | Auth Method name | 
 **NewName** | Pointer to **string** | Auth Method new name | [optional] 
 **RequiredScopes** | Pointer to **[]string** | RequiredScopes is a list of required scopes that the oidc method will request from the oidc provider and the user must approve | [optional] 

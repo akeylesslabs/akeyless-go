@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Names** | **[]string** | Secret name | 
+**PrettyPrint** | Pointer to **bool** |  | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **Version** | Pointer to **int32** | Secret version | [optional] 
@@ -47,6 +48,31 @@ and a boolean to check if the value has been set.
 
 SetNames sets Names field to given value.
 
+
+### GetPrettyPrint
+
+`func (o *GetSecretValue) GetPrettyPrint() bool`
+
+GetPrettyPrint returns the PrettyPrint field if non-nil, zero value otherwise.
+
+### GetPrettyPrintOk
+
+`func (o *GetSecretValue) GetPrettyPrintOk() (*bool, bool)`
+
+GetPrettyPrintOk returns a tuple with the PrettyPrint field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrettyPrint
+
+`func (o *GetSecretValue) SetPrettyPrint(v bool)`
+
+SetPrettyPrint sets PrettyPrint field to given value.
+
+### HasPrettyPrint
+
+`func (o *GetSecretValue) HasPrettyPrint() bool`
+
+HasPrettyPrint returns a boolean if a field has been set.
 
 ### GetToken
 

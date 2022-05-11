@@ -17,6 +17,7 @@ import (
 
 // HashiPayload struct for HashiPayload
 type HashiPayload struct {
+	ImportAsJson *bool `json:"import_as_json,omitempty"`
 	Namespaces *[]string `json:"namespaces,omitempty"`
 	Token *string `json:"token,omitempty"`
 	Url *string `json:"url,omitempty"`
@@ -37,6 +38,38 @@ func NewHashiPayload() *HashiPayload {
 func NewHashiPayloadWithDefaults() *HashiPayload {
 	this := HashiPayload{}
 	return &this
+}
+
+// GetImportAsJson returns the ImportAsJson field value if set, zero value otherwise.
+func (o *HashiPayload) GetImportAsJson() bool {
+	if o == nil || o.ImportAsJson == nil {
+		var ret bool
+		return ret
+	}
+	return *o.ImportAsJson
+}
+
+// GetImportAsJsonOk returns a tuple with the ImportAsJson field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *HashiPayload) GetImportAsJsonOk() (*bool, bool) {
+	if o == nil || o.ImportAsJson == nil {
+		return nil, false
+	}
+	return o.ImportAsJson, true
+}
+
+// HasImportAsJson returns a boolean if a field has been set.
+func (o *HashiPayload) HasImportAsJson() bool {
+	if o != nil && o.ImportAsJson != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetImportAsJson gets a reference to the given bool and assigns it to the ImportAsJson field.
+func (o *HashiPayload) SetImportAsJson(v bool) {
+	o.ImportAsJson = &v
 }
 
 // GetNamespaces returns the Namespaces field value if set, zero value otherwise.
@@ -137,6 +170,9 @@ func (o *HashiPayload) SetUrl(v string) {
 
 func (o HashiPayload) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.ImportAsJson != nil {
+		toSerialize["import_as_json"] = o.ImportAsJson
+	}
 	if o.Namespaces != nil {
 		toSerialize["namespaces"] = o.Namespaces
 	}

@@ -55,8 +55,6 @@ func NewCreateAuthMethodK8S(name string, ) *CreateAuthMethodK8S {
 	this.AccessExpires = &accessExpires
 	var genKey string = "true"
 	this.GenKey = &genKey
-	var jwtTtl int64 = 0
-	this.JwtTtl = &jwtTtl
 	this.Name = name
 	return &this
 }
@@ -70,8 +68,6 @@ func NewCreateAuthMethodK8SWithDefaults() *CreateAuthMethodK8S {
 	this.AccessExpires = &accessExpires
 	var genKey string = "true"
 	this.GenKey = &genKey
-	var jwtTtl int64 = 0
-	this.JwtTtl = &jwtTtl
 	return &this
 }
 

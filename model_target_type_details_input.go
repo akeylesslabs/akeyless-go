@@ -27,12 +27,18 @@ type TargetTypeDetailsInput struct {
 	AzureClientId *string `json:"azure_client_id,omitempty"`
 	AzureClientSecret *string `json:"azure_client_secret,omitempty"`
 	AzureTenantId *string `json:"azure_tenant_id,omitempty"`
+	// CACertData is the rsa 4096 certificate data in PEM format
+	CaCertData *[]int32 `json:"ca_cert_data,omitempty"`
+	// CACertName is the name of the certificate in SalesForce tenant
+	CaCertName *string `json:"ca_cert_name,omitempty"`
 	ChefServerHostName *string `json:"chef_server_host_name,omitempty"`
 	ChefServerKey *string `json:"chef_server_key,omitempty"`
 	ChefServerPort *string `json:"chef_server_port,omitempty"`
 	ChefServerUrl *string `json:"chef_server_url,omitempty"`
 	ChefServerUsername *string `json:"chef_server_username,omitempty"`
 	ChefSkipSsl *bool `json:"chef_skip_ssl,omitempty"`
+	ClientId *string `json:"client_id,omitempty"`
+	ClientSecret *string `json:"client_secret,omitempty"`
 	DbHostName *string `json:"db_host_name,omitempty"`
 	DbName *string `json:"db_name,omitempty"`
 	DbPort *string `json:"db_port,omitempty"`
@@ -90,11 +96,13 @@ type TargetTypeDetailsInput struct {
 	RabbitmqServerPassword *string `json:"rabbitmq_server_password,omitempty"`
 	RabbitmqServerUri *string `json:"rabbitmq_server_uri,omitempty"`
 	RabbitmqServerUser *string `json:"rabbitmq_server_user,omitempty"`
+	SecurityToken *string `json:"security_token,omitempty"`
 	SfAccount *string `json:"sf_account,omitempty"`
 	// (Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field
 	SslConnectionCertificate *string `json:"ssl_connection_certificate,omitempty"`
 	// (Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB
 	SslConnectionMode *bool `json:"ssl_connection_mode,omitempty"`
+	TenantUrl *string `json:"tenant_url,omitempty"`
 	Url *string `json:"url,omitempty"`
 	UseGwCloudIdentity *bool `json:"use_gw_cloud_identity,omitempty"`
 	UserName *string `json:"user_name,omitempty"`
@@ -444,6 +452,70 @@ func (o *TargetTypeDetailsInput) SetAzureTenantId(v string) {
 	o.AzureTenantId = &v
 }
 
+// GetCaCertData returns the CaCertData field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetCaCertData() []int32 {
+	if o == nil || o.CaCertData == nil {
+		var ret []int32
+		return ret
+	}
+	return *o.CaCertData
+}
+
+// GetCaCertDataOk returns a tuple with the CaCertData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetCaCertDataOk() (*[]int32, bool) {
+	if o == nil || o.CaCertData == nil {
+		return nil, false
+	}
+	return o.CaCertData, true
+}
+
+// HasCaCertData returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasCaCertData() bool {
+	if o != nil && o.CaCertData != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCaCertData gets a reference to the given []int32 and assigns it to the CaCertData field.
+func (o *TargetTypeDetailsInput) SetCaCertData(v []int32) {
+	o.CaCertData = &v
+}
+
+// GetCaCertName returns the CaCertName field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetCaCertName() string {
+	if o == nil || o.CaCertName == nil {
+		var ret string
+		return ret
+	}
+	return *o.CaCertName
+}
+
+// GetCaCertNameOk returns a tuple with the CaCertName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetCaCertNameOk() (*string, bool) {
+	if o == nil || o.CaCertName == nil {
+		return nil, false
+	}
+	return o.CaCertName, true
+}
+
+// HasCaCertName returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasCaCertName() bool {
+	if o != nil && o.CaCertName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCaCertName gets a reference to the given string and assigns it to the CaCertName field.
+func (o *TargetTypeDetailsInput) SetCaCertName(v string) {
+	o.CaCertName = &v
+}
+
 // GetChefServerHostName returns the ChefServerHostName field value if set, zero value otherwise.
 func (o *TargetTypeDetailsInput) GetChefServerHostName() string {
 	if o == nil || o.ChefServerHostName == nil {
@@ -634,6 +706,70 @@ func (o *TargetTypeDetailsInput) HasChefSkipSsl() bool {
 // SetChefSkipSsl gets a reference to the given bool and assigns it to the ChefSkipSsl field.
 func (o *TargetTypeDetailsInput) SetChefSkipSsl(v bool) {
 	o.ChefSkipSsl = &v
+}
+
+// GetClientId returns the ClientId field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetClientId() string {
+	if o == nil || o.ClientId == nil {
+		var ret string
+		return ret
+	}
+	return *o.ClientId
+}
+
+// GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetClientIdOk() (*string, bool) {
+	if o == nil || o.ClientId == nil {
+		return nil, false
+	}
+	return o.ClientId, true
+}
+
+// HasClientId returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasClientId() bool {
+	if o != nil && o.ClientId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetClientId gets a reference to the given string and assigns it to the ClientId field.
+func (o *TargetTypeDetailsInput) SetClientId(v string) {
+	o.ClientId = &v
+}
+
+// GetClientSecret returns the ClientSecret field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetClientSecret() string {
+	if o == nil || o.ClientSecret == nil {
+		var ret string
+		return ret
+	}
+	return *o.ClientSecret
+}
+
+// GetClientSecretOk returns a tuple with the ClientSecret field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetClientSecretOk() (*string, bool) {
+	if o == nil || o.ClientSecret == nil {
+		return nil, false
+	}
+	return o.ClientSecret, true
+}
+
+// HasClientSecret returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasClientSecret() bool {
+	if o != nil && o.ClientSecret != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetClientSecret gets a reference to the given string and assigns it to the ClientSecret field.
+func (o *TargetTypeDetailsInput) SetClientSecret(v string) {
+	o.ClientSecret = &v
 }
 
 // GetDbHostName returns the DbHostName field value if set, zero value otherwise.
@@ -2300,6 +2436,38 @@ func (o *TargetTypeDetailsInput) SetRabbitmqServerUser(v string) {
 	o.RabbitmqServerUser = &v
 }
 
+// GetSecurityToken returns the SecurityToken field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetSecurityToken() string {
+	if o == nil || o.SecurityToken == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecurityToken
+}
+
+// GetSecurityTokenOk returns a tuple with the SecurityToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetSecurityTokenOk() (*string, bool) {
+	if o == nil || o.SecurityToken == nil {
+		return nil, false
+	}
+	return o.SecurityToken, true
+}
+
+// HasSecurityToken returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasSecurityToken() bool {
+	if o != nil && o.SecurityToken != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecurityToken gets a reference to the given string and assigns it to the SecurityToken field.
+func (o *TargetTypeDetailsInput) SetSecurityToken(v string) {
+	o.SecurityToken = &v
+}
+
 // GetSfAccount returns the SfAccount field value if set, zero value otherwise.
 func (o *TargetTypeDetailsInput) GetSfAccount() string {
 	if o == nil || o.SfAccount == nil {
@@ -2394,6 +2562,38 @@ func (o *TargetTypeDetailsInput) HasSslConnectionMode() bool {
 // SetSslConnectionMode gets a reference to the given bool and assigns it to the SslConnectionMode field.
 func (o *TargetTypeDetailsInput) SetSslConnectionMode(v bool) {
 	o.SslConnectionMode = &v
+}
+
+// GetTenantUrl returns the TenantUrl field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetTenantUrl() string {
+	if o == nil || o.TenantUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.TenantUrl
+}
+
+// GetTenantUrlOk returns a tuple with the TenantUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetTenantUrlOk() (*string, bool) {
+	if o == nil || o.TenantUrl == nil {
+		return nil, false
+	}
+	return o.TenantUrl, true
+}
+
+// HasTenantUrl returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasTenantUrl() bool {
+	if o != nil && o.TenantUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTenantUrl gets a reference to the given string and assigns it to the TenantUrl field.
+func (o *TargetTypeDetailsInput) SetTenantUrl(v string) {
+	o.TenantUrl = &v
 }
 
 // GetUrl returns the Url field value if set, zero value otherwise.
@@ -2748,6 +2948,12 @@ func (o TargetTypeDetailsInput) MarshalJSON() ([]byte, error) {
 	if o.AzureTenantId != nil {
 		toSerialize["azure_tenant_id"] = o.AzureTenantId
 	}
+	if o.CaCertData != nil {
+		toSerialize["ca_cert_data"] = o.CaCertData
+	}
+	if o.CaCertName != nil {
+		toSerialize["ca_cert_name"] = o.CaCertName
+	}
 	if o.ChefServerHostName != nil {
 		toSerialize["chef_server_host_name"] = o.ChefServerHostName
 	}
@@ -2765,6 +2971,12 @@ func (o TargetTypeDetailsInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.ChefSkipSsl != nil {
 		toSerialize["chef_skip_ssl"] = o.ChefSkipSsl
+	}
+	if o.ClientId != nil {
+		toSerialize["client_id"] = o.ClientId
+	}
+	if o.ClientSecret != nil {
+		toSerialize["client_secret"] = o.ClientSecret
 	}
 	if o.DbHostName != nil {
 		toSerialize["db_host_name"] = o.DbHostName
@@ -2922,6 +3134,9 @@ func (o TargetTypeDetailsInput) MarshalJSON() ([]byte, error) {
 	if o.RabbitmqServerUser != nil {
 		toSerialize["rabbitmq_server_user"] = o.RabbitmqServerUser
 	}
+	if o.SecurityToken != nil {
+		toSerialize["security_token"] = o.SecurityToken
+	}
 	if o.SfAccount != nil {
 		toSerialize["sf_account"] = o.SfAccount
 	}
@@ -2930,6 +3145,9 @@ func (o TargetTypeDetailsInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.SslConnectionMode != nil {
 		toSerialize["ssl_connection_mode"] = o.SslConnectionMode
+	}
+	if o.TenantUrl != nil {
+		toSerialize["tenant_url"] = o.TenantUrl
 	}
 	if o.Url != nil {
 		toSerialize["url"] = o.Url

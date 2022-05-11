@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **BoundUserId** | Pointer to **[]string** | A list of full user ids that the access is restricted to | [optional] 
 **BoundUserName** | Pointer to **[]string** | A list of full user-name that the access is restricted to | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
-**JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] [default to 0]
+**JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] 
 **Name** | **string** | Auth Method name | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 

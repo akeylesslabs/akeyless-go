@@ -72,8 +72,6 @@ func NewCreateAuthMethodAzureAD(boundTenantId string, name string, ) *CreateAuth
 	this.Issuer = &issuer
 	var jwksUri string = "https://login.microsoftonline.com/common/discovery/keys"
 	this.JwksUri = &jwksUri
-	var jwtTtl int64 = 0
-	this.JwtTtl = &jwtTtl
 	this.Name = name
 	return &this
 }
@@ -91,8 +89,6 @@ func NewCreateAuthMethodAzureADWithDefaults() *CreateAuthMethodAzureAD {
 	this.Issuer = &issuer
 	var jwksUri string = "https://login.microsoftonline.com/common/discovery/keys"
 	this.JwksUri = &jwksUri
-	var jwtTtl int64 = 0
-	this.JwtTtl = &jwtTtl
 	return &this
 }
 

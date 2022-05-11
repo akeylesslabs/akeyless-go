@@ -23,6 +23,8 @@ type UpdateRotatedSecret struct {
 	ApiKey *string `json:"api-key,omitempty"`
 	// Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation
 	AutoRotate *string `json:"auto-rotate,omitempty"`
+	// Region (used in aws)
+	AwsRegion *string `json:"aws-region,omitempty"`
 	CustomPayload *string `json:"custom-payload,omitempty"`
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
@@ -44,6 +46,32 @@ type UpdateRotatedSecret struct {
 	RotationInterval *string `json:"rotation-interval,omitempty"`
 	RotatorCredsType *string `json:"rotator-creds-type,omitempty"`
 	RotatorCustomCmd *string `json:"rotator-custom-cmd,omitempty"`
+	// Secure Access Allow Providing External User (used in ssh)
+	SecureAccessAllowExternalUser *bool `json:"secure-access-allow-external-user,omitempty"`
+	// Secure Access Account Id (used in aws)
+	SecureAccessAwsAccountId *string `json:"secure-access-aws-account-id,omitempty"`
+	// Secure Access Aws Native Cli (used in aws)
+	SecureAccessAwsNativeCli *bool `json:"secure-access-aws-native-cli,omitempty"`
+	// Secure Access Bastion Issuer
+	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
+	// Secure Access DB Name (used in data bases)
+	SecureAccessDbName *string `json:"secure-access-db-name,omitempty"`
+	// Secure Access Schema (used in mssql, postgresql)
+	SecureAccessDbSchema *string `json:"secure-access-db-schema,omitempty"`
+	// Secure Access Enabled
+	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Secure Access Host
+	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
+	// Secure Access Domain (used in ssh)
+	SecureAccessRdpDomain *string `json:"secure-access-rdp-domain,omitempty"`
+	// Secure Access Override User (used in ssh)
+	SecureAccessRdpUser *string `json:"secure-access-rdp-user,omitempty"`
+	// Secure Access Web
+	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
+	// Secure Access Isolated (used in aws, azure)
+	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
+	// Secure Access Web Proxy (used in aws, azure)
+	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
 	// Deprecated: use RotatedPassword
 	SshPassword *string `json:"ssh-password,omitempty"`
 	// Deprecated: use RotatedUser
@@ -60,9 +88,19 @@ type UpdateRotatedSecret struct {
 // will change when the set of required properties is changed
 func NewUpdateRotatedSecret(name string, ) *UpdateRotatedSecret {
 	this := UpdateRotatedSecret{}
+	var awsRegion string = "us-east-2"
+	this.AwsRegion = &awsRegion
 	this.Name = name
 	var newMetadata string = "default_metadata"
 	this.NewMetadata = &newMetadata
+	var secureAccessAllowExternalUser bool = false
+	this.SecureAccessAllowExternalUser = &secureAccessAllowExternalUser
+	var secureAccessWeb bool = false
+	this.SecureAccessWeb = &secureAccessWeb
+	var secureAccessWebBrowsing bool = false
+	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
+	var secureAccessWebProxy bool = false
+	this.SecureAccessWebProxy = &secureAccessWebProxy
 	return &this
 }
 
@@ -71,8 +109,18 @@ func NewUpdateRotatedSecret(name string, ) *UpdateRotatedSecret {
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateRotatedSecretWithDefaults() *UpdateRotatedSecret {
 	this := UpdateRotatedSecret{}
+	var awsRegion string = "us-east-2"
+	this.AwsRegion = &awsRegion
 	var newMetadata string = "default_metadata"
 	this.NewMetadata = &newMetadata
+	var secureAccessAllowExternalUser bool = false
+	this.SecureAccessAllowExternalUser = &secureAccessAllowExternalUser
+	var secureAccessWeb bool = false
+	this.SecureAccessWeb = &secureAccessWeb
+	var secureAccessWebBrowsing bool = false
+	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
+	var secureAccessWebProxy bool = false
+	this.SecureAccessWebProxy = &secureAccessWebProxy
 	return &this
 }
 
@@ -202,6 +250,38 @@ func (o *UpdateRotatedSecret) HasAutoRotate() bool {
 // SetAutoRotate gets a reference to the given string and assigns it to the AutoRotate field.
 func (o *UpdateRotatedSecret) SetAutoRotate(v string) {
 	o.AutoRotate = &v
+}
+
+// GetAwsRegion returns the AwsRegion field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetAwsRegion() string {
+	if o == nil || o.AwsRegion == nil {
+		var ret string
+		return ret
+	}
+	return *o.AwsRegion
+}
+
+// GetAwsRegionOk returns a tuple with the AwsRegion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetAwsRegionOk() (*string, bool) {
+	if o == nil || o.AwsRegion == nil {
+		return nil, false
+	}
+	return o.AwsRegion, true
+}
+
+// HasAwsRegion returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasAwsRegion() bool {
+	if o != nil && o.AwsRegion != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsRegion gets a reference to the given string and assigns it to the AwsRegion field.
+func (o *UpdateRotatedSecret) SetAwsRegion(v string) {
+	o.AwsRegion = &v
 }
 
 // GetCustomPayload returns the CustomPayload field value if set, zero value otherwise.
@@ -644,6 +724,422 @@ func (o *UpdateRotatedSecret) SetRotatorCustomCmd(v string) {
 	o.RotatorCustomCmd = &v
 }
 
+// GetSecureAccessAllowExternalUser returns the SecureAccessAllowExternalUser field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetSecureAccessAllowExternalUser() bool {
+	if o == nil || o.SecureAccessAllowExternalUser == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessAllowExternalUser
+}
+
+// GetSecureAccessAllowExternalUserOk returns a tuple with the SecureAccessAllowExternalUser field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetSecureAccessAllowExternalUserOk() (*bool, bool) {
+	if o == nil || o.SecureAccessAllowExternalUser == nil {
+		return nil, false
+	}
+	return o.SecureAccessAllowExternalUser, true
+}
+
+// HasSecureAccessAllowExternalUser returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasSecureAccessAllowExternalUser() bool {
+	if o != nil && o.SecureAccessAllowExternalUser != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessAllowExternalUser gets a reference to the given bool and assigns it to the SecureAccessAllowExternalUser field.
+func (o *UpdateRotatedSecret) SetSecureAccessAllowExternalUser(v bool) {
+	o.SecureAccessAllowExternalUser = &v
+}
+
+// GetSecureAccessAwsAccountId returns the SecureAccessAwsAccountId field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetSecureAccessAwsAccountId() string {
+	if o == nil || o.SecureAccessAwsAccountId == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessAwsAccountId
+}
+
+// GetSecureAccessAwsAccountIdOk returns a tuple with the SecureAccessAwsAccountId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetSecureAccessAwsAccountIdOk() (*string, bool) {
+	if o == nil || o.SecureAccessAwsAccountId == nil {
+		return nil, false
+	}
+	return o.SecureAccessAwsAccountId, true
+}
+
+// HasSecureAccessAwsAccountId returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasSecureAccessAwsAccountId() bool {
+	if o != nil && o.SecureAccessAwsAccountId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessAwsAccountId gets a reference to the given string and assigns it to the SecureAccessAwsAccountId field.
+func (o *UpdateRotatedSecret) SetSecureAccessAwsAccountId(v string) {
+	o.SecureAccessAwsAccountId = &v
+}
+
+// GetSecureAccessAwsNativeCli returns the SecureAccessAwsNativeCli field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetSecureAccessAwsNativeCli() bool {
+	if o == nil || o.SecureAccessAwsNativeCli == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessAwsNativeCli
+}
+
+// GetSecureAccessAwsNativeCliOk returns a tuple with the SecureAccessAwsNativeCli field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetSecureAccessAwsNativeCliOk() (*bool, bool) {
+	if o == nil || o.SecureAccessAwsNativeCli == nil {
+		return nil, false
+	}
+	return o.SecureAccessAwsNativeCli, true
+}
+
+// HasSecureAccessAwsNativeCli returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasSecureAccessAwsNativeCli() bool {
+	if o != nil && o.SecureAccessAwsNativeCli != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessAwsNativeCli gets a reference to the given bool and assigns it to the SecureAccessAwsNativeCli field.
+func (o *UpdateRotatedSecret) SetSecureAccessAwsNativeCli(v bool) {
+	o.SecureAccessAwsNativeCli = &v
+}
+
+// GetSecureAccessBastionIssuer returns the SecureAccessBastionIssuer field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetSecureAccessBastionIssuer() string {
+	if o == nil || o.SecureAccessBastionIssuer == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessBastionIssuer
+}
+
+// GetSecureAccessBastionIssuerOk returns a tuple with the SecureAccessBastionIssuer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetSecureAccessBastionIssuerOk() (*string, bool) {
+	if o == nil || o.SecureAccessBastionIssuer == nil {
+		return nil, false
+	}
+	return o.SecureAccessBastionIssuer, true
+}
+
+// HasSecureAccessBastionIssuer returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasSecureAccessBastionIssuer() bool {
+	if o != nil && o.SecureAccessBastionIssuer != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessBastionIssuer gets a reference to the given string and assigns it to the SecureAccessBastionIssuer field.
+func (o *UpdateRotatedSecret) SetSecureAccessBastionIssuer(v string) {
+	o.SecureAccessBastionIssuer = &v
+}
+
+// GetSecureAccessDbName returns the SecureAccessDbName field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetSecureAccessDbName() string {
+	if o == nil || o.SecureAccessDbName == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessDbName
+}
+
+// GetSecureAccessDbNameOk returns a tuple with the SecureAccessDbName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetSecureAccessDbNameOk() (*string, bool) {
+	if o == nil || o.SecureAccessDbName == nil {
+		return nil, false
+	}
+	return o.SecureAccessDbName, true
+}
+
+// HasSecureAccessDbName returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasSecureAccessDbName() bool {
+	if o != nil && o.SecureAccessDbName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessDbName gets a reference to the given string and assigns it to the SecureAccessDbName field.
+func (o *UpdateRotatedSecret) SetSecureAccessDbName(v string) {
+	o.SecureAccessDbName = &v
+}
+
+// GetSecureAccessDbSchema returns the SecureAccessDbSchema field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetSecureAccessDbSchema() string {
+	if o == nil || o.SecureAccessDbSchema == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessDbSchema
+}
+
+// GetSecureAccessDbSchemaOk returns a tuple with the SecureAccessDbSchema field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetSecureAccessDbSchemaOk() (*string, bool) {
+	if o == nil || o.SecureAccessDbSchema == nil {
+		return nil, false
+	}
+	return o.SecureAccessDbSchema, true
+}
+
+// HasSecureAccessDbSchema returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasSecureAccessDbSchema() bool {
+	if o != nil && o.SecureAccessDbSchema != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessDbSchema gets a reference to the given string and assigns it to the SecureAccessDbSchema field.
+func (o *UpdateRotatedSecret) SetSecureAccessDbSchema(v string) {
+	o.SecureAccessDbSchema = &v
+}
+
+// GetSecureAccessEnable returns the SecureAccessEnable field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetSecureAccessEnable() string {
+	if o == nil || o.SecureAccessEnable == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessEnable
+}
+
+// GetSecureAccessEnableOk returns a tuple with the SecureAccessEnable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetSecureAccessEnableOk() (*string, bool) {
+	if o == nil || o.SecureAccessEnable == nil {
+		return nil, false
+	}
+	return o.SecureAccessEnable, true
+}
+
+// HasSecureAccessEnable returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasSecureAccessEnable() bool {
+	if o != nil && o.SecureAccessEnable != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessEnable gets a reference to the given string and assigns it to the SecureAccessEnable field.
+func (o *UpdateRotatedSecret) SetSecureAccessEnable(v string) {
+	o.SecureAccessEnable = &v
+}
+
+// GetSecureAccessHost returns the SecureAccessHost field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetSecureAccessHost() []string {
+	if o == nil || o.SecureAccessHost == nil {
+		var ret []string
+		return ret
+	}
+	return *o.SecureAccessHost
+}
+
+// GetSecureAccessHostOk returns a tuple with the SecureAccessHost field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetSecureAccessHostOk() (*[]string, bool) {
+	if o == nil || o.SecureAccessHost == nil {
+		return nil, false
+	}
+	return o.SecureAccessHost, true
+}
+
+// HasSecureAccessHost returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasSecureAccessHost() bool {
+	if o != nil && o.SecureAccessHost != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessHost gets a reference to the given []string and assigns it to the SecureAccessHost field.
+func (o *UpdateRotatedSecret) SetSecureAccessHost(v []string) {
+	o.SecureAccessHost = &v
+}
+
+// GetSecureAccessRdpDomain returns the SecureAccessRdpDomain field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetSecureAccessRdpDomain() string {
+	if o == nil || o.SecureAccessRdpDomain == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessRdpDomain
+}
+
+// GetSecureAccessRdpDomainOk returns a tuple with the SecureAccessRdpDomain field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetSecureAccessRdpDomainOk() (*string, bool) {
+	if o == nil || o.SecureAccessRdpDomain == nil {
+		return nil, false
+	}
+	return o.SecureAccessRdpDomain, true
+}
+
+// HasSecureAccessRdpDomain returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasSecureAccessRdpDomain() bool {
+	if o != nil && o.SecureAccessRdpDomain != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessRdpDomain gets a reference to the given string and assigns it to the SecureAccessRdpDomain field.
+func (o *UpdateRotatedSecret) SetSecureAccessRdpDomain(v string) {
+	o.SecureAccessRdpDomain = &v
+}
+
+// GetSecureAccessRdpUser returns the SecureAccessRdpUser field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetSecureAccessRdpUser() string {
+	if o == nil || o.SecureAccessRdpUser == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessRdpUser
+}
+
+// GetSecureAccessRdpUserOk returns a tuple with the SecureAccessRdpUser field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetSecureAccessRdpUserOk() (*string, bool) {
+	if o == nil || o.SecureAccessRdpUser == nil {
+		return nil, false
+	}
+	return o.SecureAccessRdpUser, true
+}
+
+// HasSecureAccessRdpUser returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasSecureAccessRdpUser() bool {
+	if o != nil && o.SecureAccessRdpUser != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessRdpUser gets a reference to the given string and assigns it to the SecureAccessRdpUser field.
+func (o *UpdateRotatedSecret) SetSecureAccessRdpUser(v string) {
+	o.SecureAccessRdpUser = &v
+}
+
+// GetSecureAccessWeb returns the SecureAccessWeb field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetSecureAccessWeb() bool {
+	if o == nil || o.SecureAccessWeb == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessWeb
+}
+
+// GetSecureAccessWebOk returns a tuple with the SecureAccessWeb field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetSecureAccessWebOk() (*bool, bool) {
+	if o == nil || o.SecureAccessWeb == nil {
+		return nil, false
+	}
+	return o.SecureAccessWeb, true
+}
+
+// HasSecureAccessWeb returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasSecureAccessWeb() bool {
+	if o != nil && o.SecureAccessWeb != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessWeb gets a reference to the given bool and assigns it to the SecureAccessWeb field.
+func (o *UpdateRotatedSecret) SetSecureAccessWeb(v bool) {
+	o.SecureAccessWeb = &v
+}
+
+// GetSecureAccessWebBrowsing returns the SecureAccessWebBrowsing field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetSecureAccessWebBrowsing() bool {
+	if o == nil || o.SecureAccessWebBrowsing == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessWebBrowsing
+}
+
+// GetSecureAccessWebBrowsingOk returns a tuple with the SecureAccessWebBrowsing field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetSecureAccessWebBrowsingOk() (*bool, bool) {
+	if o == nil || o.SecureAccessWebBrowsing == nil {
+		return nil, false
+	}
+	return o.SecureAccessWebBrowsing, true
+}
+
+// HasSecureAccessWebBrowsing returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasSecureAccessWebBrowsing() bool {
+	if o != nil && o.SecureAccessWebBrowsing != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessWebBrowsing gets a reference to the given bool and assigns it to the SecureAccessWebBrowsing field.
+func (o *UpdateRotatedSecret) SetSecureAccessWebBrowsing(v bool) {
+	o.SecureAccessWebBrowsing = &v
+}
+
+// GetSecureAccessWebProxy returns the SecureAccessWebProxy field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetSecureAccessWebProxy() bool {
+	if o == nil || o.SecureAccessWebProxy == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessWebProxy
+}
+
+// GetSecureAccessWebProxyOk returns a tuple with the SecureAccessWebProxy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetSecureAccessWebProxyOk() (*bool, bool) {
+	if o == nil || o.SecureAccessWebProxy == nil {
+		return nil, false
+	}
+	return o.SecureAccessWebProxy, true
+}
+
+// HasSecureAccessWebProxy returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasSecureAccessWebProxy() bool {
+	if o != nil && o.SecureAccessWebProxy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessWebProxy gets a reference to the given bool and assigns it to the SecureAccessWebProxy field.
+func (o *UpdateRotatedSecret) SetSecureAccessWebProxy(v bool) {
+	o.SecureAccessWebProxy = &v
+}
+
 // GetSshPassword returns the SshPassword field value if set, zero value otherwise.
 func (o *UpdateRotatedSecret) GetSshPassword() string {
 	if o == nil || o.SshPassword == nil {
@@ -786,6 +1282,9 @@ func (o UpdateRotatedSecret) MarshalJSON() ([]byte, error) {
 	if o.AutoRotate != nil {
 		toSerialize["auto-rotate"] = o.AutoRotate
 	}
+	if o.AwsRegion != nil {
+		toSerialize["aws-region"] = o.AwsRegion
+	}
 	if o.CustomPayload != nil {
 		toSerialize["custom-payload"] = o.CustomPayload
 	}
@@ -827,6 +1326,45 @@ func (o UpdateRotatedSecret) MarshalJSON() ([]byte, error) {
 	}
 	if o.RotatorCustomCmd != nil {
 		toSerialize["rotator-custom-cmd"] = o.RotatorCustomCmd
+	}
+	if o.SecureAccessAllowExternalUser != nil {
+		toSerialize["secure-access-allow-external-user"] = o.SecureAccessAllowExternalUser
+	}
+	if o.SecureAccessAwsAccountId != nil {
+		toSerialize["secure-access-aws-account-id"] = o.SecureAccessAwsAccountId
+	}
+	if o.SecureAccessAwsNativeCli != nil {
+		toSerialize["secure-access-aws-native-cli"] = o.SecureAccessAwsNativeCli
+	}
+	if o.SecureAccessBastionIssuer != nil {
+		toSerialize["secure-access-bastion-issuer"] = o.SecureAccessBastionIssuer
+	}
+	if o.SecureAccessDbName != nil {
+		toSerialize["secure-access-db-name"] = o.SecureAccessDbName
+	}
+	if o.SecureAccessDbSchema != nil {
+		toSerialize["secure-access-db-schema"] = o.SecureAccessDbSchema
+	}
+	if o.SecureAccessEnable != nil {
+		toSerialize["secure-access-enable"] = o.SecureAccessEnable
+	}
+	if o.SecureAccessHost != nil {
+		toSerialize["secure-access-host"] = o.SecureAccessHost
+	}
+	if o.SecureAccessRdpDomain != nil {
+		toSerialize["secure-access-rdp-domain"] = o.SecureAccessRdpDomain
+	}
+	if o.SecureAccessRdpUser != nil {
+		toSerialize["secure-access-rdp-user"] = o.SecureAccessRdpUser
+	}
+	if o.SecureAccessWeb != nil {
+		toSerialize["secure-access-web"] = o.SecureAccessWeb
+	}
+	if o.SecureAccessWebBrowsing != nil {
+		toSerialize["secure-access-web-browsing"] = o.SecureAccessWebBrowsing
+	}
+	if o.SecureAccessWebProxy != nil {
+		toSerialize["secure-access-web-proxy"] = o.SecureAccessWebProxy
 	}
 	if o.SshPassword != nil {
 		toSerialize["ssh-password"] = o.SshPassword

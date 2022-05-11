@@ -45,8 +45,6 @@ func NewCreateAuthMethodLDAP(name string, ) *CreateAuthMethodLDAP {
 	this := CreateAuthMethodLDAP{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
-	var jwtTtl int64 = 0
-	this.JwtTtl = &jwtTtl
 	this.Name = name
 	return &this
 }
@@ -58,8 +56,6 @@ func NewCreateAuthMethodLDAPWithDefaults() *CreateAuthMethodLDAP {
 	this := CreateAuthMethodLDAP{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
-	var jwtTtl int64 = 0
-	this.JwtTtl = &jwtTtl
 	return &this
 }
 

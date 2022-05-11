@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **DeletionDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **DisplayId** | Pointer to **string** |  | [optional] 
 **IsEnabled** | Pointer to **bool** |  | [optional] 
+**ItemAccessibility** | Pointer to **int64** |  | [optional] 
 **ItemGeneralInfo** | Pointer to [**ItemGeneralInfo**](ItemGeneralInfo.md) |  | [optional] 
 **ItemId** | Pointer to **int64** |  | [optional] 
 **ItemMetadata** | Pointer to **string** |  | [optional] 
@@ -275,6 +276,31 @@ SetIsEnabled sets IsEnabled field to given value.
 `func (o *Item) HasIsEnabled() bool`
 
 HasIsEnabled returns a boolean if a field has been set.
+
+### GetItemAccessibility
+
+`func (o *Item) GetItemAccessibility() int64`
+
+GetItemAccessibility returns the ItemAccessibility field if non-nil, zero value otherwise.
+
+### GetItemAccessibilityOk
+
+`func (o *Item) GetItemAccessibilityOk() (*int64, bool)`
+
+GetItemAccessibilityOk returns a tuple with the ItemAccessibility field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemAccessibility
+
+`func (o *Item) SetItemAccessibility(v int64)`
+
+SetItemAccessibility sets ItemAccessibility field to given value.
+
+### HasItemAccessibility
+
+`func (o *Item) HasItemAccessibility() bool`
+
+HasItemAccessibility returns a boolean if a field has been set.
 
 ### GetItemGeneralInfo
 

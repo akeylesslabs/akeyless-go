@@ -41,6 +41,7 @@ Method | HTTP request | Description
 [**CreateRotatedSecret**](V2Api.md#CreateRotatedSecret) | **Post** /create-rotated-secret | 
 [**CreateSSHCertIssuer**](V2Api.md#CreateSSHCertIssuer) | **Post** /create-ssh-cert-issuer | 
 [**CreateSSHTarget**](V2Api.md#CreateSSHTarget) | **Post** /create-ssh-target | 
+[**CreateSalesforceTarget**](V2Api.md#CreateSalesforceTarget) | **Post** /create-salesforce-target | 
 [**CreateSecret**](V2Api.md#CreateSecret) | **Post** /create-secret | 
 [**CreateWebTarget**](V2Api.md#CreateWebTarget) | **Post** /create-web-target | 
 [**CreateldapTarget**](V2Api.md#CreateldapTarget) | **Post** /create-ldap-target | 
@@ -64,6 +65,7 @@ Method | HTTP request | Description
 [**EncryptPKCS1**](V2Api.md#EncryptPKCS1) | **Post** /encrypt-pkcs1 | 
 [**EncryptWithClassicKey**](V2Api.md#EncryptWithClassicKey) | **Post** /encrypt-with-classic-key | 
 [**GatewayCreateK8SAuthConfig**](V2Api.md#GatewayCreateK8SAuthConfig) | **Post** /gateway-create-k8s-auth-config | 
+[**GatewayCreateMigration**](V2Api.md#GatewayCreateMigration) | **Post** /gateway-create-migration | 
 [**GatewayCreateProducerArtifactory**](V2Api.md#GatewayCreateProducerArtifactory) | **Post** /gateway-create-producer-artifactory | 
 [**GatewayCreateProducerAws**](V2Api.md#GatewayCreateProducerAws) | **Post** /gateway-create-producer-aws | 
 [**GatewayCreateProducerAzure**](V2Api.md#GatewayCreateProducerAzure) | **Post** /gateway-create-producer-azure | 
@@ -89,9 +91,11 @@ Method | HTTP request | Description
 [**GatewayCreateProducerSnowflake**](V2Api.md#GatewayCreateProducerSnowflake) | **Post** /gateway-create-producer-snowflake | 
 [**GatewayDeleteAllowedManagementAccess**](V2Api.md#GatewayDeleteAllowedManagementAccess) | **Post** /gateway-delete-allowed-management-access | 
 [**GatewayDeleteK8SAuthConfig**](V2Api.md#GatewayDeleteK8SAuthConfig) | **Post** /gateway-delete-k8s-auth-config | 
+[**GatewayDeleteMigration**](V2Api.md#GatewayDeleteMigration) | **Post** /gateway-delete-migration | 
 [**GatewayDeleteProducer**](V2Api.md#GatewayDeleteProducer) | **Post** /gateway-delete-producer | 
 [**GatewayGetConfig**](V2Api.md#GatewayGetConfig) | **Post** /gateway-get-config | 
 [**GatewayGetK8SAuthConfig**](V2Api.md#GatewayGetK8SAuthConfig) | **Post** /gateway-get-k8s-auth-config | 
+[**GatewayGetMigration**](V2Api.md#GatewayGetMigration) | **Post** /gateway-get-migration | 
 [**GatewayGetProducer**](V2Api.md#GatewayGetProducer) | **Post** /gateway-get-producer | 
 [**GatewayGetTmpUsers**](V2Api.md#GatewayGetTmpUsers) | **Post** /gateway-get-producer-tmp-creds | 
 [**GatewayListAllowedManagementAccess**](V2Api.md#GatewayListAllowedManagementAccess) | **Post** /gateway-list-allowed-management-access | 
@@ -103,6 +107,7 @@ Method | HTTP request | Description
 [**GatewaySyncMigration**](V2Api.md#GatewaySyncMigration) | **Post** /gateway-sync-migration | 
 [**GatewayUpdateItem**](V2Api.md#GatewayUpdateItem) | **Post** /gateway-update-item | 
 [**GatewayUpdateK8SAuthConfig**](V2Api.md#GatewayUpdateK8SAuthConfig) | **Post** /gateway-update-k8s-auth-config | 
+[**GatewayUpdateMigration**](V2Api.md#GatewayUpdateMigration) | **Post** /gateway-update-migration | 
 [**GatewayUpdateProducerArtifactory**](V2Api.md#GatewayUpdateProducerArtifactory) | **Post** /gateway-update-producer-artifactory | 
 [**GatewayUpdateProducerAws**](V2Api.md#GatewayUpdateProducerAws) | **Post** /gateway-update-producer-aws | 
 [**GatewayUpdateProducerAzure**](V2Api.md#GatewayUpdateProducerAzure) | **Post** /gateway-update-producer-azure | 
@@ -114,6 +119,7 @@ Method | HTTP request | Description
 [**GatewayUpdateProducerGcp**](V2Api.md#GatewayUpdateProducerGcp) | **Post** /gateway-update-producer-gcp | 
 [**GatewayUpdateProducerGithub**](V2Api.md#GatewayUpdateProducerGithub) | **Post** /gateway-update-producer-github | 
 [**GatewayUpdateProducerGke**](V2Api.md#GatewayUpdateProducerGke) | **Post** /gateway-update-producer-gke | 
+[**GatewayUpdateProducerHanaDb**](V2Api.md#GatewayUpdateProducerHanaDb) | **Post** /gateway-update-producer-hana | 
 [**GatewayUpdateProducerLdap**](V2Api.md#GatewayUpdateProducerLdap) | **Post** /gateway-update-producer-ldap | 
 [**GatewayUpdateProducerMSSQL**](V2Api.md#GatewayUpdateProducerMSSQL) | **Post** /gateway-update-producer-mssql | 
 [**GatewayUpdateProducerMongo**](V2Api.md#GatewayUpdateProducerMongo) | **Post** /gateway-update-producer-mongo | 
@@ -211,6 +217,7 @@ Method | HTTP request | Description
 [**UpdateSSHCertIssuer**](V2Api.md#UpdateSSHCertIssuer) | **Post** /update-ssh-cert-issuer | 
 [**UpdateSSHTarget**](V2Api.md#UpdateSSHTarget) | **Post** /update-ssh-target | 
 [**UpdateSSHTargetDetails**](V2Api.md#UpdateSSHTargetDetails) | **Post** /update-ssh-target-details | 
+[**UpdateSalesforceTarget**](V2Api.md#UpdateSalesforceTarget) | **Post** /update-salesforce-target | 
 [**UpdateSecretVal**](V2Api.md#UpdateSecretVal) | **Post** /update-secret-val | 
 [**UpdateTarget**](V2Api.md#UpdateTarget) | **Post** /update-target | 
 [**UpdateTargetDetails**](V2Api.md#UpdateTargetDetails) | **Post** /update-target-details | 
@@ -2592,6 +2599,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## CreateSalesforceTarget
+
+> CreateSalesforceTargetOutput CreateSalesforceTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewcreateSalesforceTarget("ClientId_example", "ClientSecret_example", "Email_example", "Name_example", "Password_example", "SecurityToken_example", "TenantUrl_example") // CreateSalesforceTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.CreateSalesforceTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateSalesforceTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateSalesforceTarget`: CreateSalesforceTargetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateSalesforceTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateSalesforceTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateSalesforceTarget**](CreateSalesforceTarget.md) |  | 
+
+### Return type
+
+[**CreateSalesforceTargetOutput**](createSalesforceTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## CreateSecret
 
 > CreateSecretOutput CreateSecret(ctx).Body(body).Execute()
@@ -4049,6 +4120,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GatewayCreateK8SAuthConfigOutput**](gatewayCreateK8SAuthConfigOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayCreateMigration
+
+> GatewayMigrationCreateOutput GatewayCreateMigration(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayCreateMigration("Name_example") // GatewayCreateMigration | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayCreateMigration(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateMigration``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayCreateMigration`: GatewayMigrationCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayCreateMigration`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayCreateMigrationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayCreateMigration**](GatewayCreateMigration.md) |  | 
+
+### Return type
+
+[**GatewayMigrationCreateOutput**](gatewayMigrationCreateOutput.md)
 
 ### Authorization
 
@@ -5664,6 +5799,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GatewayDeleteMigration
+
+> GatewayMigrationDeleteOutput GatewayDeleteMigration(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayDeleteMigration("Id_example") // GatewayDeleteMigration | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayDeleteMigration(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayDeleteMigration``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayDeleteMigration`: GatewayMigrationDeleteOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayDeleteMigration`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayDeleteMigrationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayDeleteMigration**](GatewayDeleteMigration.md) |  | 
+
+### Return type
+
+[**GatewayMigrationDeleteOutput**](gatewayMigrationDeleteOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GatewayDeleteProducer
 
 > GatewayDeleteProducerOutput GatewayDeleteProducer(ctx).Body(body).Execute()
@@ -5841,6 +6040,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GatewayGetK8SAuthConfigOutput**](gatewayGetK8SAuthConfigOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayGetMigration
+
+> GatewayMigrationGetOutput GatewayGetMigration(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayGetMigration() // GatewayGetMigration | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayGetMigration(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayGetMigration``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayGetMigration`: GatewayMigrationGetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayGetMigration`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayGetMigrationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayGetMigration**](GatewayGetMigration.md) |  | 
+
+### Return type
+
+[**GatewayMigrationGetOutput**](gatewayMigrationGetOutput.md)
 
 ### Authorization
 
@@ -6558,6 +6821,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GatewayUpdateMigration
+
+> GatewayMigrationUpdateOutput GatewayUpdateMigration(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateMigration("Name_example") // GatewayUpdateMigration | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateMigration(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateMigration``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateMigration`: GatewayMigrationUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateMigration`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateMigrationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateMigration**](GatewayUpdateMigration.md) |  | 
+
+### Return type
+
+[**GatewayMigrationUpdateOutput**](gatewayMigrationUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GatewayUpdateProducerArtifactory
 
 > GatewayUpdateProducerArtifactoryOutput GatewayUpdateProducerArtifactory(ctx).Body(body).Execute()
@@ -7247,6 +7574,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GatewayUpdateProducerGkeOutput**](gatewayUpdateProducerGkeOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateProducerHanaDb
+
+> GatewayUpdateProducerHanaDbOutput GatewayUpdateProducerHanaDb(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateProducerHanaDb("Name_example") // GatewayUpdateProducerHanaDb | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateProducerHanaDb(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerHanaDb``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateProducerHanaDb`: GatewayUpdateProducerHanaDbOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateProducerHanaDb`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateProducerHanaDbRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerHanaDb**](GatewayUpdateProducerHanaDb.md) |  | 
+
+### Return type
+
+[**GatewayUpdateProducerHanaDbOutput**](gatewayUpdateProducerHanaDbOutput.md)
 
 ### Authorization
 
@@ -13438,6 +13829,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**UpdateTargetOutput**](updateTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateSalesforceTarget
+
+> UpdateSalesforceTargetOutput UpdateSalesforceTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewupdateSalesforceTarget("ClientId_example", "ClientSecret_example", "Email_example", "Name_example", "Password_example", "SecurityToken_example", "TenantUrl_example") // UpdateSalesforceTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdateSalesforceTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateSalesforceTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateSalesforceTarget`: UpdateSalesforceTargetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateSalesforceTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateSalesforceTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateSalesforceTarget**](UpdateSalesforceTarget.md) |  | 
+
+### Return type
+
+[**UpdateSalesforceTargetOutput**](updateSalesforceTargetOutput.md)
 
 ### Authorization
 

@@ -27,6 +27,7 @@ type Item struct {
 	DeletionDate *time.Time `json:"deletion_date,omitempty"`
 	DisplayId *string `json:"display_id,omitempty"`
 	IsEnabled *bool `json:"is_enabled,omitempty"`
+	ItemAccessibility *int64 `json:"item_accessibility,omitempty"`
 	ItemGeneralInfo *ItemGeneralInfo `json:"item_general_info,omitempty"`
 	ItemId *int64 `json:"item_id,omitempty"`
 	ItemMetadata *string `json:"item_metadata,omitempty"`
@@ -351,6 +352,38 @@ func (o *Item) HasIsEnabled() bool {
 // SetIsEnabled gets a reference to the given bool and assigns it to the IsEnabled field.
 func (o *Item) SetIsEnabled(v bool) {
 	o.IsEnabled = &v
+}
+
+// GetItemAccessibility returns the ItemAccessibility field value if set, zero value otherwise.
+func (o *Item) GetItemAccessibility() int64 {
+	if o == nil || o.ItemAccessibility == nil {
+		var ret int64
+		return ret
+	}
+	return *o.ItemAccessibility
+}
+
+// GetItemAccessibilityOk returns a tuple with the ItemAccessibility field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Item) GetItemAccessibilityOk() (*int64, bool) {
+	if o == nil || o.ItemAccessibility == nil {
+		return nil, false
+	}
+	return o.ItemAccessibility, true
+}
+
+// HasItemAccessibility returns a boolean if a field has been set.
+func (o *Item) HasItemAccessibility() bool {
+	if o != nil && o.ItemAccessibility != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetItemAccessibility gets a reference to the given int64 and assigns it to the ItemAccessibility field.
+func (o *Item) SetItemAccessibility(v int64) {
+	o.ItemAccessibility = &v
 }
 
 // GetItemGeneralInfo returns the ItemGeneralInfo field value if set, zero value otherwise.
@@ -957,6 +990,9 @@ func (o Item) MarshalJSON() ([]byte, error) {
 	}
 	if o.IsEnabled != nil {
 		toSerialize["is_enabled"] = o.IsEnabled
+	}
+	if o.ItemAccessibility != nil {
+		toSerialize["item_accessibility"] = o.ItemAccessibility
 	}
 	if o.ItemGeneralInfo != nil {
 		toSerialize["item_general_info"] = o.ItemGeneralInfo

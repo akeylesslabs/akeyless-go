@@ -58,8 +58,6 @@ func NewCreateAuthMethodAWSIAM(boundAwsAccountId []string, name string, ) *Creat
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
 	this.BoundAwsAccountId = boundAwsAccountId
-	var jwtTtl int64 = 0
-	this.JwtTtl = &jwtTtl
 	this.Name = name
 	var stsUrl string = "https://sts.amazonaws.com"
 	this.StsUrl = &stsUrl
@@ -73,8 +71,6 @@ func NewCreateAuthMethodAWSIAMWithDefaults() *CreateAuthMethodAWSIAM {
 	this := CreateAuthMethodAWSIAM{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
-	var jwtTtl int64 = 0
-	this.JwtTtl = &jwtTtl
 	var stsUrl string = "https://sts.amazonaws.com"
 	this.StsUrl = &stsUrl
 	return &this

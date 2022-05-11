@@ -54,8 +54,6 @@ func NewUpdateAuthMethodOAuth2(jwksUri string, name string, uniqueIdentifier str
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
 	this.JwksUri = jwksUri
-	var jwtTtl int64 = 0
-	this.JwtTtl = &jwtTtl
 	this.Name = name
 	this.UniqueIdentifier = uniqueIdentifier
 	return &this
@@ -68,8 +66,6 @@ func NewUpdateAuthMethodOAuth2WithDefaults() *UpdateAuthMethodOAuth2 {
 	this := UpdateAuthMethodOAuth2{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
-	var jwtTtl int64 = 0
-	this.JwtTtl = &jwtTtl
 	return &this
 }
 

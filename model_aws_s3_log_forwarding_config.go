@@ -20,6 +20,7 @@ type AwsS3LogForwardingConfig struct {
 	AwsAccessId *string `json:"aws_access_id,omitempty"`
 	AwsAccessKey *string `json:"aws_access_key,omitempty"`
 	AwsRegion *string `json:"aws_region,omitempty"`
+	AwsUseGatewayCloudIdentity *bool `json:"aws_use_gateway_cloud_identity,omitempty"`
 	BucketName *string `json:"bucket_name,omitempty"`
 	LogFolder *string `json:"log_folder,omitempty"`
 }
@@ -137,6 +138,38 @@ func (o *AwsS3LogForwardingConfig) SetAwsRegion(v string) {
 	o.AwsRegion = &v
 }
 
+// GetAwsUseGatewayCloudIdentity returns the AwsUseGatewayCloudIdentity field value if set, zero value otherwise.
+func (o *AwsS3LogForwardingConfig) GetAwsUseGatewayCloudIdentity() bool {
+	if o == nil || o.AwsUseGatewayCloudIdentity == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AwsUseGatewayCloudIdentity
+}
+
+// GetAwsUseGatewayCloudIdentityOk returns a tuple with the AwsUseGatewayCloudIdentity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AwsS3LogForwardingConfig) GetAwsUseGatewayCloudIdentityOk() (*bool, bool) {
+	if o == nil || o.AwsUseGatewayCloudIdentity == nil {
+		return nil, false
+	}
+	return o.AwsUseGatewayCloudIdentity, true
+}
+
+// HasAwsUseGatewayCloudIdentity returns a boolean if a field has been set.
+func (o *AwsS3LogForwardingConfig) HasAwsUseGatewayCloudIdentity() bool {
+	if o != nil && o.AwsUseGatewayCloudIdentity != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsUseGatewayCloudIdentity gets a reference to the given bool and assigns it to the AwsUseGatewayCloudIdentity field.
+func (o *AwsS3LogForwardingConfig) SetAwsUseGatewayCloudIdentity(v bool) {
+	o.AwsUseGatewayCloudIdentity = &v
+}
+
 // GetBucketName returns the BucketName field value if set, zero value otherwise.
 func (o *AwsS3LogForwardingConfig) GetBucketName() string {
 	if o == nil || o.BucketName == nil {
@@ -211,6 +244,9 @@ func (o AwsS3LogForwardingConfig) MarshalJSON() ([]byte, error) {
 	}
 	if o.AwsRegion != nil {
 		toSerialize["aws_region"] = o.AwsRegion
+	}
+	if o.AwsUseGatewayCloudIdentity != nil {
+		toSerialize["aws_use_gateway_cloud_identity"] = o.AwsUseGatewayCloudIdentity
 	}
 	if o.BucketName != nil {
 		toSerialize["bucket_name"] = o.BucketName

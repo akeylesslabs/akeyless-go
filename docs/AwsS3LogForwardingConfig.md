@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **AwsAccessId** | Pointer to **string** |  | [optional] 
 **AwsAccessKey** | Pointer to **string** |  | [optional] 
 **AwsRegion** | Pointer to **string** |  | [optional] 
+**AwsUseGatewayCloudIdentity** | Pointer to **bool** |  | [optional] 
 **BucketName** | Pointer to **string** |  | [optional] 
 **LogFolder** | Pointer to **string** |  | [optional] 
 
@@ -103,6 +104,31 @@ SetAwsRegion sets AwsRegion field to given value.
 `func (o *AwsS3LogForwardingConfig) HasAwsRegion() bool`
 
 HasAwsRegion returns a boolean if a field has been set.
+
+### GetAwsUseGatewayCloudIdentity
+
+`func (o *AwsS3LogForwardingConfig) GetAwsUseGatewayCloudIdentity() bool`
+
+GetAwsUseGatewayCloudIdentity returns the AwsUseGatewayCloudIdentity field if non-nil, zero value otherwise.
+
+### GetAwsUseGatewayCloudIdentityOk
+
+`func (o *AwsS3LogForwardingConfig) GetAwsUseGatewayCloudIdentityOk() (*bool, bool)`
+
+GetAwsUseGatewayCloudIdentityOk returns a tuple with the AwsUseGatewayCloudIdentity field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsUseGatewayCloudIdentity
+
+`func (o *AwsS3LogForwardingConfig) SetAwsUseGatewayCloudIdentity(v bool)`
+
+SetAwsUseGatewayCloudIdentity sets AwsUseGatewayCloudIdentity field to given value.
+
+### HasAwsUseGatewayCloudIdentity
+
+`func (o *AwsS3LogForwardingConfig) HasAwsUseGatewayCloudIdentity() bool`
+
+HasAwsUseGatewayCloudIdentity returns a boolean if a field has been set.
 
 ### GetBucketName
 

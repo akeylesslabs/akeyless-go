@@ -19,6 +19,7 @@ import (
 type GetSecretValue struct {
 	// Secret name
 	Names []string `json:"names"`
+	PrettyPrint *bool `json:"pretty-print,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -67,6 +68,38 @@ func (o *GetSecretValue) GetNamesOk() (*[]string, bool) {
 // SetNames sets field value
 func (o *GetSecretValue) SetNames(v []string) {
 	o.Names = v
+}
+
+// GetPrettyPrint returns the PrettyPrint field value if set, zero value otherwise.
+func (o *GetSecretValue) GetPrettyPrint() bool {
+	if o == nil || o.PrettyPrint == nil {
+		var ret bool
+		return ret
+	}
+	return *o.PrettyPrint
+}
+
+// GetPrettyPrintOk returns a tuple with the PrettyPrint field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetSecretValue) GetPrettyPrintOk() (*bool, bool) {
+	if o == nil || o.PrettyPrint == nil {
+		return nil, false
+	}
+	return o.PrettyPrint, true
+}
+
+// HasPrettyPrint returns a boolean if a field has been set.
+func (o *GetSecretValue) HasPrettyPrint() bool {
+	if o != nil && o.PrettyPrint != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPrettyPrint gets a reference to the given bool and assigns it to the PrettyPrint field.
+func (o *GetSecretValue) SetPrettyPrint(v bool) {
+	o.PrettyPrint = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -169,6 +202,9 @@ func (o GetSecretValue) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["names"] = o.Names
+	}
+	if o.PrettyPrint != nil {
+		toSerialize["pretty-print"] = o.PrettyPrint
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
