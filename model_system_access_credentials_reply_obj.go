@@ -23,6 +23,8 @@ type SystemAccessCredentialsReplyObj struct {
 	Expiry *int64 `json:"expiry,omitempty"`
 	// Temporary credentials for accessing the KFMs instances
 	KfmCreds *string `json:"kfm_creds,omitempty"`
+	// Credentials tmp token
+	Token *string `json:"token,omitempty"`
 	// Temporary credentials for accessing the UAM service
 	UamCreds *string `json:"uam_creds,omitempty"`
 }
@@ -140,6 +142,38 @@ func (o *SystemAccessCredentialsReplyObj) SetKfmCreds(v string) {
 	o.KfmCreds = &v
 }
 
+// GetToken returns the Token field value if set, zero value otherwise.
+func (o *SystemAccessCredentialsReplyObj) GetToken() string {
+	if o == nil || o.Token == nil {
+		var ret string
+		return ret
+	}
+	return *o.Token
+}
+
+// GetTokenOk returns a tuple with the Token field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SystemAccessCredentialsReplyObj) GetTokenOk() (*string, bool) {
+	if o == nil || o.Token == nil {
+		return nil, false
+	}
+	return o.Token, true
+}
+
+// HasToken returns a boolean if a field has been set.
+func (o *SystemAccessCredentialsReplyObj) HasToken() bool {
+	if o != nil && o.Token != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetToken gets a reference to the given string and assigns it to the Token field.
+func (o *SystemAccessCredentialsReplyObj) SetToken(v string) {
+	o.Token = &v
+}
+
 // GetUamCreds returns the UamCreds field value if set, zero value otherwise.
 func (o *SystemAccessCredentialsReplyObj) GetUamCreds() string {
 	if o == nil || o.UamCreds == nil {
@@ -182,6 +216,9 @@ func (o SystemAccessCredentialsReplyObj) MarshalJSON() ([]byte, error) {
 	}
 	if o.KfmCreds != nil {
 		toSerialize["kfm_creds"] = o.KfmCreds
+	}
+	if o.Token != nil {
+		toSerialize["token"] = o.Token
 	}
 	if o.UamCreds != nil {
 		toSerialize["uam_creds"] = o.UamCreds

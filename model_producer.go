@@ -18,6 +18,7 @@ import (
 // Producer struct for Producer
 type Producer struct {
 	Active *bool `json:"active,omitempty"`
+	FailureMessage *string `json:"failure_message,omitempty"`
 	Id *int64 `json:"id,omitempty"`
 	Init *bool `json:"init,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -71,6 +72,38 @@ func (o *Producer) HasActive() bool {
 // SetActive gets a reference to the given bool and assigns it to the Active field.
 func (o *Producer) SetActive(v bool) {
 	o.Active = &v
+}
+
+// GetFailureMessage returns the FailureMessage field value if set, zero value otherwise.
+func (o *Producer) GetFailureMessage() string {
+	if o == nil || o.FailureMessage == nil {
+		var ret string
+		return ret
+	}
+	return *o.FailureMessage
+}
+
+// GetFailureMessageOk returns a tuple with the FailureMessage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Producer) GetFailureMessageOk() (*string, bool) {
+	if o == nil || o.FailureMessage == nil {
+		return nil, false
+	}
+	return o.FailureMessage, true
+}
+
+// HasFailureMessage returns a boolean if a field has been set.
+func (o *Producer) HasFailureMessage() bool {
+	if o != nil && o.FailureMessage != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFailureMessage gets a reference to the given string and assigns it to the FailureMessage field.
+func (o *Producer) SetFailureMessage(v string) {
+	o.FailureMessage = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -205,6 +238,9 @@ func (o Producer) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Active != nil {
 		toSerialize["active"] = o.Active
+	}
+	if o.FailureMessage != nil {
+		toSerialize["failure_message"] = o.FailureMessage
 	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id

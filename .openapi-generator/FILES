@@ -108,6 +108,8 @@ docs/CreateSalesforceTargetOutput.md
 docs/CreateSecret.md
 docs/CreateSecretOutput.md
 docs/CreateTargetItemAssocOutput.md
+docs/CreateTokenizer.md
+docs/CreateTokenizerOutput.md
 docs/CreateWebTarget.md
 docs/CreateWebTargetOutput.md
 docs/CustomerFragment.md
@@ -143,9 +145,12 @@ docs/DeleteTargets.md
 docs/DescribeItem.md
 docs/DescribePermissions.md
 docs/DescribePermissionsOutput.md
+docs/Detokenize.md
+docs/DetokenizeOutput.md
 docs/DynamicSecretProducerInfo.md
 docs/ElasticsearchLogForwardingConfig.md
 docs/EmailPassAccessRules.md
+docs/EmailTokenizerInfo.md
 docs/Encrypt.md
 docs/EncryptFile.md
 docs/EncryptFileOutput.md
@@ -389,6 +394,7 @@ docs/ProducersConfigPart.md
 docs/RawCreds.md
 docs/RefreshKey.md
 docs/RefreshKeyOutput.md
+docs/RegexpTokenizerInfo.md
 docs/RequiredActivity.md
 docs/ReverseRBAC.md
 docs/ReverseRBACClient.md
@@ -400,7 +406,9 @@ docs/RollbackSecret.md
 docs/RollbackSecretOutput.md
 docs/RotateKey.md
 docs/RotateKeyOutput.md
+docs/RotateSecret.md
 docs/RotatedSecretDetailsInfo.md
+docs/RotatedSecretOutput.md
 docs/Rotator.md
 docs/RotatorsConfigPart.md
 docs/Rules.md
@@ -430,6 +438,9 @@ docs/TargetItemAssociation.md
 docs/TargetItemVersion.md
 docs/TargetTypeDetailsInput.md
 docs/TmpUserData.md
+docs/Tokenize.md
+docs/TokenizeOutput.md
+docs/TokenizerInfo.md
 docs/UIDTokenDetails.md
 docs/UidCreateChildToken.md
 docs/UidCreateChildTokenOutput.md
@@ -507,6 +518,8 @@ docs/UpdateSecretValOutput.md
 docs/UpdateTarget.md
 docs/UpdateTargetDetailsOutput.md
 docs/UpdateTargetOutput.md
+docs/UpdateTokenizer.md
+docs/UpdateTokenizerOutput.md
 docs/UpdateWebTarget.md
 docs/UpdateWebTargetDetails.md
 docs/UpdateWebTargetOutput.md
@@ -515,6 +528,7 @@ docs/UploadRSA.md
 docs/V2Api.md
 docs/ValidateToken.md
 docs/ValidateTokenOutput.md
+docs/VaultlessTokenizerInfo.md
 docs/VerifyJWTOutput.md
 docs/VerifyJWTWithClassicKey.md
 docs/VerifyPKCS1.md
@@ -626,6 +640,8 @@ model_create_ssh_cert_issuer_output.go
 model_create_ssh_target.go
 model_create_ssh_target_output.go
 model_create_target_item_assoc_output.go
+model_create_tokenizer.go
+model_create_tokenizer_output.go
 model_create_web_target.go
 model_create_web_target_output.go
 model_customer_fragment.go
@@ -660,10 +676,13 @@ model_delete_targets.go
 model_describe_item.go
 model_describe_permissions.go
 model_describe_permissions_output.go
+model_detokenize.go
+model_detokenize_output.go
 model_ds_producer_details.go
 model_dynamic_secret_producer_info.go
 model_elasticsearch_log_forwarding_config.go
 model_email_pass_access_rules.go
+model_email_tokenizer_info.go
 model_encrypt.go
 model_encrypt_file.go
 model_encrypt_file_output.go
@@ -907,6 +926,7 @@ model_producers_config_part.go
 model_raw_creds.go
 model_refresh_key.go
 model_refresh_key_output.go
+model_regexp_tokenizer_info.go
 model_required_activity.go
 model_reverse_rbac.go
 model_reverse_rbac_client.go
@@ -918,7 +938,9 @@ model_rollback_secret.go
 model_rollback_secret_output.go
 model_rotate_key.go
 model_rotate_key_output.go
+model_rotate_secret.go
 model_rotated_secret_details_info.go
+model_rotated_secret_output.go
 model_rotator.go
 model_rotators_config_part.go
 model_rules.go
@@ -948,6 +970,9 @@ model_target_item_association.go
 model_target_item_version.go
 model_target_type_details_input.go
 model_tmp_user_data.go
+model_tokenize.go
+model_tokenize_output.go
+model_tokenizer_info.go
 model_uid_create_child_token.go
 model_uid_create_child_token_output.go
 model_uid_generate_token.go
@@ -1025,6 +1050,8 @@ model_update_ssh_target_output.go
 model_update_target.go
 model_update_target_details_output.go
 model_update_target_output.go
+model_update_tokenizer.go
+model_update_tokenizer_output.go
 model_update_web_target.go
 model_update_web_target_details.go
 model_update_web_target_output.go
@@ -1032,6 +1059,7 @@ model_upload_pkcs12.go
 model_upload_rsa.go
 model_validate_token.go
 model_validate_token_output.go
+model_vaultless_tokenizer_info.go
 model_verify_jwt_output.go
 model_verify_jwt_with_classic_key.go
 model_verify_pkcs1.go

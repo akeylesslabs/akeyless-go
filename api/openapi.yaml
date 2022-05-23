@@ -1098,6 +1098,33 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /create-tokenizer:
+    post:
+      operationId: createTokenizer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createTokenizer'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createTokenizerOutput'
+          description: createTokenizerResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /create-web-target:
     post:
       operationId: createWebTarget
@@ -1546,6 +1573,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/DescribePermissionsOutput'
           description: DescribePermissionsResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /detokenize:
+    post:
+      operationId: detokenize
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/detokenize'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/detokenizeOutput'
+          description: detokenizeResponse wraps response body.
         default:
           content:
             application/json:
@@ -2653,6 +2707,33 @@ paths:
         "200":
           content: {}
           description: gatewayRevokeTmpUsersResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /gateway-rotate-secret:
+    post:
+      operationId: rotateSecret
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/rotateSecret'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rotatedSecretOutput'
+          description: rotateSecretResponse wraps response body.
         default:
           content:
             application/json:
@@ -4657,6 +4738,33 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /tokenize:
+    post:
+      operationId: tokenize
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/tokenize'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/tokenizeOutput'
+          description: tokenizeResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /uid-create-child-token:
     post:
       operationId: uidCreateChildToken
@@ -5865,6 +5973,33 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /update-tokenizer:
+    post:
+      operationId: updateTokenizer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateTokenizer'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/updateTokenizerOutput'
+          description: updateTokenizerResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /update-web-target:
     post:
       operationId: updateWebTarget
@@ -6304,6 +6439,12 @@ components:
           schema:
             $ref: '#/components/schemas/createSecretOutput'
       description: createSecretResponse wraps response body.
+    createTokenizerResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/createTokenizerOutput'
+      description: createTokenizerResponse wraps response body.
     createWebTargetResponse:
       content:
         application/json:
@@ -6412,6 +6553,12 @@ components:
           schema:
             $ref: '#/components/schemas/Item'
       description: describeItemResponse wraps response body.
+    detokenizeResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/detokenizeOutput'
+      description: detokenizeResponse wraps response body.
     encryptFileResponse:
       content:
         application/json:
@@ -7119,6 +7266,12 @@ components:
           schema:
             $ref: '#/components/schemas/RotateKeyOutput'
       description: rotateKeyResponse wraps response body.
+    rotateSecretResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/rotatedSecretOutput'
+      description: rotateSecretResponse wraps response body.
     setItemStateResponse:
       content:
         application/json:
@@ -7155,6 +7308,12 @@ components:
           schema:
             $ref: '#/components/schemas/staticCredsAuthOutput'
       description: staticCredsAuthResponse wraps response body.
+    tokenizeResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/tokenizeOutput'
+      description: tokenizeResponse wraps response body.
     uidCreateChildTokenResponse:
       content:
         application/json:
@@ -7401,6 +7560,12 @@ components:
           schema:
             $ref: '#/components/schemas/updateTargetOutput'
       description: updateTargetResponse wraps response body.
+    updateTokenizerResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/updateTokenizerOutput'
+      description: updateTokenizerResponse wraps response body.
     updateWebTargetResponse:
       content:
         application/json:
@@ -7668,11 +7833,13 @@ components:
           - init: true
             name: name
             active: true
+            failure_message: failure_message
             id: 7
             type: type
           - init: true
             name: name
             active: true
+            failure_message: failure_message
             id: 7
             type: type
         general:
@@ -7824,6 +7991,12 @@ components:
             bucket_name: bucket_name
             log_folder: log_folder
           logan_url: logan_url
+          syslog_config:
+            syslog_host: syslog_host
+            syslog_target_tag: syslog_target_tag
+            syslog_formatter: syslog_formatter
+            syslog_network: syslog_network
+          target_log_type: target_log_type
           azure_analytics_config:
             azure_workspace_key: azure_workspace_key
             azure_workspace_id: azure_workspace_id
@@ -7833,6 +8006,12 @@ components:
             splunk_index: splunk_index
             splunk_sourcetype: splunk_sourcetype
             splunk_url: splunk_url
+          datadog_config:
+            datadog_log_source: datadog_log_source
+            datadog_log_service: datadog_log_service
+            datadog_log_tags: datadog_log_tags
+            datadog_host: datadog_host
+            datadog_api_key: datadog_api_key
           logstash_config:
             logstash_protocol: logstash_protocol
             logstash_dns: logstash_dns
@@ -7840,20 +8019,7 @@ components:
           logz_io_config:
             target_logz_io_protocol: target_logz_io_protocol
             target_logz_io_token: target_logz_io_token
-          syslog_config:
-            syslog_host: syslog_host
-            syslog_target_tag: syslog_target_tag
-            syslog_formatter: syslog_formatter
-            syslog_network: syslog_network
-          target_log_type: target_log_type
-          datadog_config:
-            datadog_log_source: datadog_log_source
-            datadog_log_service: datadog_log_service
-            datadog_log_tags: datadog_log_tags
-            datadog_host: datadog_host
-            datadog_api_key: datadog_api_key
           pull_interval_sec: pull_interval_sec
-          std_out: true
           elasticsearch_config:
             elasticsearch_index: elasticsearch_index
             elasticsearch_server_type: elasticsearch_server_type
@@ -9798,10 +9964,10 @@ components:
         item_targets_assoc:
         - assoc_id: assoc_id
           target_name: target_name
-          target_id: 1
+          target_id: 9
         - assoc_id: assoc_id
           target_name: target_name
-          target_id: 1
+          target_id: 9
         chef_server_username: chef_server_username
         db_host_name: db_host_name
         tags:
@@ -10634,8 +10800,12 @@ components:
         producer_last_keep_alive: producer_last_keep_alive
         producer_type: producer_type
         producer_status: producer_status
+        failure_message: failure_message
         producer_metadata: producer_metadata
       properties:
+        failure_message:
+          type: string
+          x-go-name: FailureMessage
         gw_cluster_id:
           format: int64
           type: integer
@@ -10715,6 +10885,33 @@ components:
           type: string
           x-go-name: HashPass
       title: EmailPassAccessRules is a set of rules for email password access type.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    EmailTokenizerInfo:
+      description: EmailTokenizerInfo represents a tokenizer that specifically tokenizes
+        emails
+      example:
+        fixed_domain_suffix: fixed_domain_suffix
+        keep_prefix_length: 7
+        domain_suffix_length: 6
+      properties:
+        domain_suffix_length:
+          description: |-
+            What length of a random domain suffix to generate
+            used only if FixedDomainSuffix is empty
+          format: int64
+          type: integer
+          x-go-name: DomainSuffixLength
+        fixed_domain_suffix:
+          description: if FixedDomainSuffix isn't empty, it will be appended to the
+            output
+          type: string
+          x-go-name: FixedDomainSuffix
+        keep_prefix_length:
+          description: How many letters of the plaintext to keep in the output
+          format: int64
+          type: integer
+          x-go-name: KeepPrefixLength
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     ExternalKMSKeyId:
@@ -11001,11 +11198,13 @@ components:
         - init: true
           name: name
           active: true
+          failure_message: failure_message
           id: 7
           type: type
         - init: true
           name: name
           active: true
+          failure_message: failure_message
           id: 7
           type: type
       properties:
@@ -11157,14 +11356,14 @@ components:
             deletion_date: 2000-01-23T04:56:07.000+00:00
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 4
+            version: 9
             customer_fragment_id: customer_fragment_id
           - item_version_state: item_version_state
             with_customer_fragment: true
             deletion_date: 2000-01-23T04:56:07.000+00:00
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 4
+            version: 9
             customer_fragment_id: customer_fragment_id
           target_type: target_type
           comment: comment
@@ -11306,18 +11505,18 @@ components:
           deletion_date: 2000-01-23T04:56:07.000+00:00
           protection_key_name: protection_key_name
           creation_date: 2000-01-23T04:56:07.000+00:00
-          version: 4
+          version: 9
           customer_fragment_id: customer_fragment_id
         - item_version_state: item_version_state
           with_customer_fragment: true
           deletion_date: 2000-01-23T04:56:07.000+00:00
           protection_key_name: protection_key_name
           creation_date: 2000-01-23T04:56:07.000+00:00
-          version: 4
+          version: 9
           customer_fragment_id: customer_fragment_id
-        item_size: 7
+        item_size: 5
         is_enabled: true
-        rotation_interval: 9
+        rotation_interval: 8
         target_versions:
         - item_version_state: item_version_state
           with_customer_fragment: true
@@ -11340,7 +11539,7 @@ components:
         item_metadata: item_metadata
         protection_key_name: protection_key_name
         cert_issuer_signer_key_name: cert_issuer_signer_key_name
-        item_id: 6
+        item_id: 4
         item_tags:
         - item_tags
         - item_tags
@@ -11412,10 +11611,10 @@ components:
         item_targets_assoc:
         - assoc_id: assoc_id
           target_name: target_name
-          target_id: 1
+          target_id: 9
         - assoc_id: assoc_id
           target_name: target_name
-          target_id: 1
+          target_id: 9
         item_name: item_name
         customer_fragment_id: customer_fragment_id
         item_general_info:
@@ -11482,6 +11681,23 @@ components:
             delete_previous_version_in_days: 4
             last_rotation_error: last_rotation_error
             number_of_versions_to_save: 1
+          tokenizer_info:
+            vaultless_tokenizer_info:
+              key_name: key_name
+              tweak:
+              - 1
+              - 1
+              email_tokenizer_info:
+                fixed_domain_suffix: fixed_domain_suffix
+                keep_prefix_length: 7
+                domain_suffix_length: 6
+              template_type: template_type
+              tweak_type: tweak_type
+              regexp_tokenizer_info:
+                encryption_template: encryption_template
+                pattern: pattern
+                alphabet: alphabet
+                decryption_template: decryption_template
           secure_remote_access_details:
             schema: schema
             web_proxy: true
@@ -11512,11 +11728,13 @@ components:
             region: region
             ssh_password: true
             bastion_issuer_id: 1
+          display_metadata: display_metadata
           dynamic_secret_producer_details:
             gw_cluster_id: 3
             producer_last_keep_alive: producer_last_keep_alive
             producer_type: producer_type
             producer_status: producer_status
+            failure_message: failure_message
             producer_metadata: producer_metadata
           cert_issue_details:
             max_ttl: 0
@@ -11582,7 +11800,7 @@ components:
               allowed_user_key_lengths:
                 key: 5
             cert_issuer_type: cert_issuer_type
-        last_version: 5
+        last_version: 6
         next_rotation_date: 2000-01-23T04:56:07.000+00:00
         client_permissions:
         - client_permissions
@@ -11768,6 +11986,23 @@ components:
           delete_previous_version_in_days: 4
           last_rotation_error: last_rotation_error
           number_of_versions_to_save: 1
+        tokenizer_info:
+          vaultless_tokenizer_info:
+            key_name: key_name
+            tweak:
+            - 1
+            - 1
+            email_tokenizer_info:
+              fixed_domain_suffix: fixed_domain_suffix
+              keep_prefix_length: 7
+              domain_suffix_length: 6
+            template_type: template_type
+            tweak_type: tweak_type
+            regexp_tokenizer_info:
+              encryption_template: encryption_template
+              pattern: pattern
+              alphabet: alphabet
+              decryption_template: decryption_template
         secure_remote_access_details:
           schema: schema
           web_proxy: true
@@ -11798,11 +12033,13 @@ components:
           region: region
           ssh_password: true
           bastion_issuer_id: 1
+        display_metadata: display_metadata
         dynamic_secret_producer_details:
           gw_cluster_id: 3
           producer_last_keep_alive: producer_last_keep_alive
           producer_type: producer_type
           producer_status: producer_status
+          failure_message: failure_message
           producer_metadata: producer_metadata
         cert_issue_details:
           max_ttl: 0
@@ -11873,6 +12110,9 @@ components:
           $ref: '#/components/schemas/CertificateIssueInfo'
         classic_key_details:
           $ref: '#/components/schemas/ClassicKeyDetailsInfo'
+        display_metadata:
+          type: string
+          x-go-name: DisplayMetadata
         dynamic_secret_producer_details:
           $ref: '#/components/schemas/DynamicSecretProducerInfo'
         password_policy:
@@ -11883,6 +12123,8 @@ components:
           $ref: '#/components/schemas/SecureRemoteAccess'
         static_secret_info:
           $ref: '#/components/schemas/StaticSecretDetailsInfo'
+        tokenizer_info:
+          $ref: '#/components/schemas/TokenizerInfo'
       title: ItemGeneralInfo defines item general info.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
@@ -11901,7 +12143,7 @@ components:
       example:
         assoc_id: assoc_id
         target_name: target_name
-        target_id: 1
+        target_id: 9
       properties:
         assoc_id:
           type: string
@@ -11926,7 +12168,7 @@ components:
         deletion_date: 2000-01-23T04:56:07.000+00:00
         protection_key_name: protection_key_name
         creation_date: 2000-01-23T04:56:07.000+00:00
-        version: 4
+        version: 9
         customer_fragment_id: customer_fragment_id
       properties:
         creation_date:
@@ -13185,18 +13427,18 @@ components:
             deletion_date: 2000-01-23T04:56:07.000+00:00
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 4
+            version: 9
             customer_fragment_id: customer_fragment_id
           - item_version_state: item_version_state
             with_customer_fragment: true
             deletion_date: 2000-01-23T04:56:07.000+00:00
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 4
+            version: 9
             customer_fragment_id: customer_fragment_id
-          item_size: 7
+          item_size: 5
           is_enabled: true
-          rotation_interval: 9
+          rotation_interval: 8
           target_versions:
           - item_version_state: item_version_state
             with_customer_fragment: true
@@ -13219,7 +13461,7 @@ components:
           item_metadata: item_metadata
           protection_key_name: protection_key_name
           cert_issuer_signer_key_name: cert_issuer_signer_key_name
-          item_id: 6
+          item_id: 4
           item_tags:
           - item_tags
           - item_tags
@@ -13291,10 +13533,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           item_name: item_name
           customer_fragment_id: customer_fragment_id
           item_general_info:
@@ -13361,6 +13603,23 @@ components:
               delete_previous_version_in_days: 4
               last_rotation_error: last_rotation_error
               number_of_versions_to_save: 1
+            tokenizer_info:
+              vaultless_tokenizer_info:
+                key_name: key_name
+                tweak:
+                - 1
+                - 1
+                email_tokenizer_info:
+                  fixed_domain_suffix: fixed_domain_suffix
+                  keep_prefix_length: 7
+                  domain_suffix_length: 6
+                template_type: template_type
+                tweak_type: tweak_type
+                regexp_tokenizer_info:
+                  encryption_template: encryption_template
+                  pattern: pattern
+                  alphabet: alphabet
+                  decryption_template: decryption_template
             secure_remote_access_details:
               schema: schema
               web_proxy: true
@@ -13391,11 +13650,13 @@ components:
               region: region
               ssh_password: true
               bastion_issuer_id: 1
+            display_metadata: display_metadata
             dynamic_secret_producer_details:
               gw_cluster_id: 3
               producer_last_keep_alive: producer_last_keep_alive
               producer_type: producer_type
               producer_status: producer_status
+              failure_message: failure_message
               producer_metadata: producer_metadata
             cert_issue_details:
               max_ttl: 0
@@ -13461,7 +13722,7 @@ components:
                 allowed_user_key_lengths:
                   key: 5
               cert_issuer_type: cert_issuer_type
-          last_version: 5
+          last_version: 6
           next_rotation_date: 2000-01-23T04:56:07.000+00:00
           client_permissions:
           - client_permissions
@@ -13481,18 +13742,18 @@ components:
             deletion_date: 2000-01-23T04:56:07.000+00:00
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 4
+            version: 9
             customer_fragment_id: customer_fragment_id
           - item_version_state: item_version_state
             with_customer_fragment: true
             deletion_date: 2000-01-23T04:56:07.000+00:00
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 4
+            version: 9
             customer_fragment_id: customer_fragment_id
-          item_size: 7
+          item_size: 5
           is_enabled: true
-          rotation_interval: 9
+          rotation_interval: 8
           target_versions:
           - item_version_state: item_version_state
             with_customer_fragment: true
@@ -13515,7 +13776,7 @@ components:
           item_metadata: item_metadata
           protection_key_name: protection_key_name
           cert_issuer_signer_key_name: cert_issuer_signer_key_name
-          item_id: 6
+          item_id: 4
           item_tags:
           - item_tags
           - item_tags
@@ -13587,10 +13848,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           item_name: item_name
           customer_fragment_id: customer_fragment_id
           item_general_info:
@@ -13657,6 +13918,23 @@ components:
               delete_previous_version_in_days: 4
               last_rotation_error: last_rotation_error
               number_of_versions_to_save: 1
+            tokenizer_info:
+              vaultless_tokenizer_info:
+                key_name: key_name
+                tweak:
+                - 1
+                - 1
+                email_tokenizer_info:
+                  fixed_domain_suffix: fixed_domain_suffix
+                  keep_prefix_length: 7
+                  domain_suffix_length: 6
+                template_type: template_type
+                tweak_type: tweak_type
+                regexp_tokenizer_info:
+                  encryption_template: encryption_template
+                  pattern: pattern
+                  alphabet: alphabet
+                  decryption_template: decryption_template
             secure_remote_access_details:
               schema: schema
               web_proxy: true
@@ -13687,11 +13965,13 @@ components:
               region: region
               ssh_password: true
               bastion_issuer_id: 1
+            display_metadata: display_metadata
             dynamic_secret_producer_details:
               gw_cluster_id: 3
               producer_last_keep_alive: producer_last_keep_alive
               producer_type: producer_type
               producer_status: producer_status
+              failure_message: failure_message
               producer_metadata: producer_metadata
             cert_issue_details:
               max_ttl: 0
@@ -13757,7 +14037,7 @@ components:
                 allowed_user_key_lengths:
                   key: 5
               cert_issuer_type: cert_issuer_type
-          last_version: 5
+          last_version: 6
           next_rotation_date: 2000-01-23T04:56:07.000+00:00
           client_permissions:
           - client_permissions
@@ -13895,14 +14175,14 @@ components:
             deletion_date: 2000-01-23T04:56:07.000+00:00
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 4
+            version: 9
             customer_fragment_id: customer_fragment_id
           - item_version_state: item_version_state
             with_customer_fragment: true
             deletion_date: 2000-01-23T04:56:07.000+00:00
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 4
+            version: 9
             customer_fragment_id: customer_fragment_id
           target_type: target_type
           comment: comment
@@ -13929,14 +14209,14 @@ components:
             deletion_date: 2000-01-23T04:56:07.000+00:00
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 4
+            version: 9
             customer_fragment_id: customer_fragment_id
           - item_version_state: item_version_state
             with_customer_fragment: true
             deletion_date: 2000-01-23T04:56:07.000+00:00
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 4
+            version: 9
             customer_fragment_id: customer_fragment_id
           target_type: target_type
           comment: comment
@@ -13964,6 +14244,12 @@ components:
           bucket_name: bucket_name
           log_folder: log_folder
         logan_url: logan_url
+        syslog_config:
+          syslog_host: syslog_host
+          syslog_target_tag: syslog_target_tag
+          syslog_formatter: syslog_formatter
+          syslog_network: syslog_network
+        target_log_type: target_log_type
         azure_analytics_config:
           azure_workspace_key: azure_workspace_key
           azure_workspace_id: azure_workspace_id
@@ -13973,6 +14259,12 @@ components:
           splunk_index: splunk_index
           splunk_sourcetype: splunk_sourcetype
           splunk_url: splunk_url
+        datadog_config:
+          datadog_log_source: datadog_log_source
+          datadog_log_service: datadog_log_service
+          datadog_log_tags: datadog_log_tags
+          datadog_host: datadog_host
+          datadog_api_key: datadog_api_key
         logstash_config:
           logstash_protocol: logstash_protocol
           logstash_dns: logstash_dns
@@ -13980,20 +14272,7 @@ components:
         logz_io_config:
           target_logz_io_protocol: target_logz_io_protocol
           target_logz_io_token: target_logz_io_token
-        syslog_config:
-          syslog_host: syslog_host
-          syslog_target_tag: syslog_target_tag
-          syslog_formatter: syslog_formatter
-          syslog_network: syslog_network
-        target_log_type: target_log_type
-        datadog_config:
-          datadog_log_source: datadog_log_source
-          datadog_log_service: datadog_log_service
-          datadog_log_tags: datadog_log_tags
-          datadog_host: datadog_host
-          datadog_api_key: datadog_api_key
         pull_interval_sec: pull_interval_sec
-        std_out: true
         elasticsearch_config:
           elasticsearch_index: elasticsearch_index
           elasticsearch_server_type: elasticsearch_server_type
@@ -14027,9 +14306,6 @@ components:
           x-go-name: PullIntervalSec
         splunk_config:
           $ref: '#/components/schemas/SplunkLogForwardingConfig'
-        std_out:
-          type: boolean
-          x-go-name: PrintToStdOut
         syslog_config:
           $ref: '#/components/schemas/SyslogLogForwardingConfig'
         target_log_type:
@@ -14651,12 +14927,16 @@ components:
         init: true
         name: name
         active: true
+        failure_message: failure_message
         id: 7
         type: type
       properties:
         active:
           type: boolean
           x-go-name: Active
+        failure_message:
+          type: string
+          x-go-name: FailureMessage
         id:
           format: int64
           type: integer
@@ -14683,11 +14963,13 @@ components:
         - init: true
           name: name
           active: true
+          failure_message: failure_message
           id: 7
           type: type
         - init: true
           name: name
           active: true
+          failure_message: failure_message
           id: 7
           type: type
       properties:
@@ -14698,6 +14980,35 @@ components:
           x-go-name: Producers
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    RegexpTokenizerInfo:
+      description: RegexpTokenizerInfo represents a general Regexp tokenization template
+      example:
+        encryption_template: encryption_template
+        pattern: pattern
+        alphabet: alphabet
+        decryption_template: decryption_template
+      properties:
+        alphabet:
+          description: The Alphabet used for the tokenization
+          type: string
+          x-go-name: Alphabet
+        decryption_template:
+          description: Transformation to perform on the decrypted data
+          type: string
+          x-go-name: DecryptionTemplate
+        encryption_template:
+          description: |-
+            Transformation to perform on the encrypted data,
+            if the required output template doesn't match the input string
+            The output Should still be valid for the Pattern, otherwise the secret would be able to be decrypted.
+          type: string
+          x-go-name: EncryptionTemplate
+        pattern:
+          description: Regexp pattern to extract and deposit the text/encdata
+          type: string
+          x-go-name: Pattern
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     RequiredActivity:
       example:
         migrations_required_activity:
@@ -15427,6 +15738,7 @@ components:
         uam_creds: uam_creds
         kfm_creds: kfm_creds
         expiry: 0
+        token: token
       properties:
         auth_creds:
           description: Temporary credentials for accessing Auth
@@ -15441,6 +15753,10 @@ components:
           description: Temporary credentials for accessing the KFMs instances
           type: string
           x-go-name: KFMsAccessCredentials
+        token:
+          description: Credentials tmp token
+          type: string
+          x-go-name: Token
         uam_creds:
           description: Temporary credentials for accessing the UAM service
           type: string
@@ -15494,14 +15810,14 @@ components:
           deletion_date: 2000-01-23T04:56:07.000+00:00
           protection_key_name: protection_key_name
           creation_date: 2000-01-23T04:56:07.000+00:00
-          version: 4
+          version: 9
           customer_fragment_id: customer_fragment_id
         - item_version_state: item_version_state
           with_customer_fragment: true
           deletion_date: 2000-01-23T04:56:07.000+00:00
           protection_key_name: protection_key_name
           creation_date: 2000-01-23T04:56:07.000+00:00
-          version: 4
+          version: 9
           customer_fragment_id: customer_fragment_id
         target_type: target_type
         comment: comment
@@ -16047,6 +16363,35 @@ components:
           x-go-name: SubClaims
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/producer/dynamicsecret/base
+    TokenizerInfo:
+      example:
+        vaultless_tokenizer_info:
+          key_name: key_name
+          tweak:
+          - 1
+          - 1
+          email_tokenizer_info:
+            fixed_domain_suffix: fixed_domain_suffix
+            keep_prefix_length: 7
+            domain_suffix_length: 6
+          template_type: template_type
+          tweak_type: tweak_type
+          regexp_tokenizer_info:
+            encryption_template: encryption_template
+            pattern: pattern
+            alphabet: alphabet
+            decryption_template: decryption_template
+      properties:
+        vaultless_tokenizer_info:
+          $ref: '#/components/schemas/VaultlessTokenizerInfo'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    TokenizerTemplateType:
+      type: string
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    TweakType:
+      type: string
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     UIDTokenDetails:
       example:
         deny_inheritance: true
@@ -16321,6 +16666,46 @@ components:
       title: UpdatePKICertIssuer is a command that updates a new PKI certificate issuer.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    VaultlessTokenizerInfo:
+      example:
+        key_name: key_name
+        tweak:
+        - 1
+        - 1
+        email_tokenizer_info:
+          fixed_domain_suffix: fixed_domain_suffix
+          keep_prefix_length: 7
+          domain_suffix_length: 6
+        template_type: template_type
+        tweak_type: tweak_type
+        regexp_tokenizer_info:
+          encryption_template: encryption_template
+          pattern: pattern
+          alphabet: alphabet
+          decryption_template: decryption_template
+      properties:
+        email_tokenizer_info:
+          $ref: '#/components/schemas/EmailTokenizerInfo'
+        key_name:
+          type: string
+          x-go-name: EncryptionKeyName
+        regexp_tokenizer_info:
+          $ref: '#/components/schemas/RegexpTokenizerInfo'
+        template_type:
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+        tweak:
+          description: Tweak used in the case of internal tweak type
+          items:
+            format: uint8
+            type: integer
+          type: array
+          x-go-name: Tweak
+        tweak_type:
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     VersionSettingsObjectType:
       description: VersionSettingsObjectType defines object types for account version
         settings
@@ -16473,6 +16858,7 @@ components:
           uam_creds: uam_creds
           kfm_creds: kfm_creds
           expiry: 0
+          token: token
         token: token
       properties:
         creds:
@@ -19157,6 +19543,81 @@ components:
           x-go-name: Name
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    createTokenizer:
+      description: createTokenizer is a command that creates a tokenizer item
+      properties:
+        alphabet:
+          description: Alphabet to use in regexp vaultless tokenization
+          type: string
+          x-go-name: Alphabet
+        decryption-template:
+          description: The Decryption output template to use in regexp vaultless tokenization
+          type: string
+          x-go-name: DecodingTemplate
+        encryption-key-name:
+          description: AES key name to use in vaultless tokenization
+          type: string
+          x-go-name: EncryptionKeyName
+        encryption-template:
+          description: The Encryption output template to use in regexp vaultless tokenization
+          type: string
+          x-go-name: EncryptionTemplate
+        metadata:
+          description: A metadata about the tokenizer
+          type: string
+          x-go-name: Metadata
+        name:
+          description: Tokenizer name
+          type: string
+          x-go-name: TokenizerName
+        pattern:
+          description: Pattern to use in regexp vaultless tokenization
+          type: string
+          x-go-name: Pattern
+        tag:
+          description: List of the tags attached to this key
+          items:
+            type: string
+          type: array
+          x-go-name: Tags
+        template-type:
+          description: Which template type this tokenizer is used for [SSN,CreditCard,USPhoneNumber,Email,Regexp]
+          type: string
+          x-go-name: TemplateType
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        tokenizer-type:
+          description: Tokenizer type
+          type: string
+          x-go-name: TokenizerType
+        tweak-type:
+          description: The tweak type to use in vaultless tokenization [Supplied,
+            Generated, Internal, Masking]
+          type: string
+          x-go-name: TweakType
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      required:
+      - name
+      - template-type
+      - tokenizer-type
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    createTokenizerOutput:
+      example:
+        name: name
+      properties:
+        name:
+          type: string
+          x-go-name: Name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     createWebTarget:
       properties:
         comment:
@@ -19755,6 +20216,45 @@ components:
       - type
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    detokenize:
+      description: detokenize is a command that decrypts text with a tokenizer
+      properties:
+        ciphertext:
+          description: Data to be decrypted
+          type: string
+          x-go-name: Ciphertext
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        tokenizer-name:
+          description: The name of the tokenizer to use in the decryption process
+          type: string
+          x-go-name: TokenizerName
+        tweak:
+          description: Base64 encoded tweak for vaultless encryption
+          type: string
+          x-go-name: Tweak
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      required:
+      - ciphertext
+      - tokenizer-name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    detokenizeOutput:
+      example:
+        result: result
+      properties:
+        result:
+          type: string
+          x-go-name: Result
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     encrypt:
       properties:
         display-id:
@@ -20265,10 +20765,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -20599,10 +21099,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -20922,10 +21422,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -21207,10 +21707,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -21541,10 +22041,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -21908,10 +22408,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -22187,10 +22687,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -22494,10 +22994,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -22776,10 +23276,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -23058,10 +23558,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -23356,10 +23856,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -23666,10 +24166,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -23962,10 +24462,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -24272,10 +24772,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -24600,10 +25100,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -24919,10 +25419,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -25226,10 +25726,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -25538,10 +26038,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -25853,10 +26353,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -26161,10 +26661,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -26477,10 +26977,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -26775,10 +27275,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -27059,10 +27559,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -28427,10 +28927,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -28765,10 +29265,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -29092,10 +29592,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -29381,10 +29881,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -29719,10 +30219,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -30094,10 +30594,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -30377,10 +30877,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -30688,10 +31188,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -30974,10 +31474,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -31260,10 +31760,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -31562,10 +32062,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -31876,10 +32376,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -32176,10 +32676,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -32490,10 +32990,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -32822,10 +33322,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -33145,10 +33645,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -33456,10 +33956,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -33772,10 +34272,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -34091,10 +34591,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -34403,10 +34903,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -34723,10 +35223,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -35025,10 +35525,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -35313,10 +35813,10 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
-            target_id: 1
+            target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -36472,6 +36972,14 @@ components:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
           x-go-name: Profile
+        type:
+          description: |-
+            The target types list . In case it is empty, all
+            types of targets will be returned. options: [hanadb cassandra aws ssh gke eks mysql mongodb snowflake mssql redshift artifactory azure rabbitmq k8s venafi gcp oracle dockerhub ldap github chef web salesforce postgres]
+          items:
+            type: string
+          type: array
+          x-go-name: Types
         uid-token:
           description: |-
             The universal identity token, Required only for universal_identity
@@ -36677,6 +37185,37 @@ components:
           x-go-name: UIDToken
       required:
       - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    rotateSecret:
+      properties:
+        name:
+          description: Rotated Secret name
+          type: string
+          x-go-name: SecretName
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      required:
+      - name
+      title: rotateSecret is a command that trigger a rotate operation for a Rotated
+        Secret..
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    rotatedSecretOutput:
+      example:
+        name: name
+      properties:
+        name:
+          type: string
+          x-go-name: Name
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     setItemState:
@@ -36987,6 +37526,49 @@ components:
         token:
           type: string
           x-go-name: Token
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    tokenize:
+      description: tokenize is a command that encrypts text with a tokenizer
+      properties:
+        plaintext:
+          description: Data to be encrypted
+          type: string
+          x-go-name: Plaintext
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        tokenizer-name:
+          description: The name of the tokenizer to use in the encryption process
+          type: string
+          x-go-name: TokenizerName
+        tweak:
+          description: Base64 encoded tweak for vaultless encryption
+          type: string
+          x-go-name: Tweak
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      required:
+      - plaintext
+      - tokenizer-name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    tokenizeOutput:
+      example:
+        result: result
+        tweak: tweak
+      properties:
+        result:
+          type: string
+          x-go-name: Result
+        tweak:
+          type: string
+          x-go-name: Tweak
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     uidCreateChildToken:
@@ -40150,6 +40732,92 @@ components:
         updated:
           type: boolean
           x-go-name: Updated
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    updateTokenizer:
+      description: updateTokenizer is a command that updates a tokenizer item
+      properties:
+        add-tag:
+          description: List of the new tags that will be attached to this item
+          items:
+            type: string
+          type: array
+          x-go-name: AddTags
+        alphabet:
+          description: Alphabet to use in regexp vaultless tokenization
+          type: string
+          x-go-name: Alphabet
+        decryption-template:
+          description: The Decryption output template to use in regexp vaultless tokenization
+          type: string
+          x-go-name: DecodingTemplate
+        encryption-key-name:
+          description: AES key name to use in vaultless tokenization
+          type: string
+          x-go-name: EncryptionKeyName
+        encryption-template:
+          description: The Encryption output template to use in regexp vaultless tokenization
+          type: string
+          x-go-name: EncryptionTemplate
+        name:
+          description: Current item name
+          type: string
+          x-go-name: ItemName
+        new-metadata:
+          default: default_metadata
+          description: New item metadata
+          type: string
+          x-go-name: NewMetadata
+        new-name:
+          description: New item name
+          type: string
+          x-go-name: NewName
+        pattern:
+          description: Pattern to use in regexp vaultless tokenization
+          type: string
+          x-go-name: Pattern
+        rm-tag:
+          description: List of the existent tags that will be removed from this item
+          items:
+            type: string
+          type: array
+          x-go-name: RemoveTags
+        template-type:
+          description: Which template type this tokenizer is used for [SSN,CreditCard,USPhoneNumber,Email,Regexp]
+          type: string
+          x-go-name: TemplateType
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        tokenizer-type:
+          description: Tokenizer type
+          type: string
+          x-go-name: TokenizerType
+        tweak-type:
+          description: The tweak type to use in vaultless tokenization [Supplied,
+            Generated, Internal, Masking]
+          type: string
+          x-go-name: TweakType
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      required:
+      - name
+      - template-type
+      - tokenizer-type
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    updateTokenizerOutput:
+      example:
+        name: name
+      properties:
+        name:
+          type: string
+          x-go-name: Name
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     updateWebTarget:

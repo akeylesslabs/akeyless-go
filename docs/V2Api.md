@@ -43,6 +43,7 @@ Method | HTTP request | Description
 [**CreateSSHTarget**](V2Api.md#CreateSSHTarget) | **Post** /create-ssh-target | 
 [**CreateSalesforceTarget**](V2Api.md#CreateSalesforceTarget) | **Post** /create-salesforce-target | 
 [**CreateSecret**](V2Api.md#CreateSecret) | **Post** /create-secret | 
+[**CreateTokenizer**](V2Api.md#CreateTokenizer) | **Post** /create-tokenizer | 
 [**CreateWebTarget**](V2Api.md#CreateWebTarget) | **Post** /create-web-target | 
 [**CreateldapTarget**](V2Api.md#CreateldapTarget) | **Post** /create-ldap-target | 
 [**Decrypt**](V2Api.md#Decrypt) | **Post** /decrypt | 
@@ -61,6 +62,7 @@ Method | HTTP request | Description
 [**DeleteTargets**](V2Api.md#DeleteTargets) | **Post** /delete-targets | 
 [**DescribeItem**](V2Api.md#DescribeItem) | **Post** /describe-item | 
 [**DescribePermissions**](V2Api.md#DescribePermissions) | **Post** /describe-permissions | 
+[**Detokenize**](V2Api.md#Detokenize) | **Post** /detokenize | 
 [**Encrypt**](V2Api.md#Encrypt) | **Post** /encrypt | 
 [**EncryptPKCS1**](V2Api.md#EncryptPKCS1) | **Post** /encrypt-pkcs1 | 
 [**EncryptWithClassicKey**](V2Api.md#EncryptWithClassicKey) | **Post** /encrypt-with-classic-key | 
@@ -170,12 +172,14 @@ Method | HTTP request | Description
 [**RevokeCreds**](V2Api.md#RevokeCreds) | **Post** /revoke-creds | 
 [**RollbackSecret**](V2Api.md#RollbackSecret) | **Post** /rollback-secret | 
 [**RotateKey**](V2Api.md#RotateKey) | **Post** /rotate-key | 
+[**RotateSecret**](V2Api.md#RotateSecret) | **Post** /gateway-rotate-secret | 
 [**SetItemState**](V2Api.md#SetItemState) | **Post** /set-item-state | 
 [**SetRoleRule**](V2Api.md#SetRoleRule) | **Post** /set-role-rule | 
 [**SignJWTWithClassicKey**](V2Api.md#SignJWTWithClassicKey) | **Post** /sign-jwt-with-classic-key | 
 [**SignPKCS1**](V2Api.md#SignPKCS1) | **Post** /sign-pkcs1 | 
 [**SignPKICertWithClassicKey**](V2Api.md#SignPKICertWithClassicKey) | **Post** /sign-pki-cert-with-classic-key | 
 [**StaticCredsAuth**](V2Api.md#StaticCredsAuth) | **Post** /static-creds-auth | 
+[**Tokenize**](V2Api.md#Tokenize) | **Post** /tokenize | 
 [**UidCreateChildToken**](V2Api.md#UidCreateChildToken) | **Post** /uid-create-child-token | 
 [**UidGenerateToken**](V2Api.md#UidGenerateToken) | **Post** /uid-generate-token | 
 [**UidListChildren**](V2Api.md#UidListChildren) | **Post** /uid-list-children | 
@@ -221,6 +225,7 @@ Method | HTTP request | Description
 [**UpdateSecretVal**](V2Api.md#UpdateSecretVal) | **Post** /update-secret-val | 
 [**UpdateTarget**](V2Api.md#UpdateTarget) | **Post** /update-target | 
 [**UpdateTargetDetails**](V2Api.md#UpdateTargetDetails) | **Post** /update-target-details | 
+[**UpdateTokenizer**](V2Api.md#UpdateTokenizer) | **Post** /update-tokenizer | 
 [**UpdateWebTarget**](V2Api.md#UpdateWebTarget) | **Post** /update-web-target | 
 [**UpdateWebTargetDetails**](V2Api.md#UpdateWebTargetDetails) | **Post** /update-web-target-details | 
 [**UploadRSA**](V2Api.md#UploadRSA) | **Post** /upload-rsa | 
@@ -2727,6 +2732,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## CreateTokenizer
+
+> CreateTokenizerOutput CreateTokenizer(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewcreateTokenizer("Name_example", "TemplateType_example", "TokenizerType_example") // CreateTokenizer | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.CreateTokenizer(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateTokenizer``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateTokenizer`: CreateTokenizerOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateTokenizer`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateTokenizerRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateTokenizer**](CreateTokenizer.md) |  | 
+
+### Return type
+
+[**CreateTokenizerOutput**](createTokenizerOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## CreateWebTarget
 
 > CreateWebTargetOutput CreateWebTarget(ctx).Body(body).Execute()
@@ -3864,6 +3933,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DescribePermissionsOutput**](DescribePermissionsOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Detokenize
+
+> DetokenizeOutput Detokenize(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.Newdetokenize("Ciphertext_example", "TokenizerName_example") // Detokenize | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.Detokenize(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.Detokenize``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `Detokenize`: DetokenizeOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.Detokenize`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDetokenizeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**Detokenize**](Detokenize.md) |  | 
+
+### Return type
+
+[**DetokenizeOutput**](detokenizeOutput.md)
 
 ### Authorization
 
@@ -10841,6 +10974,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## RotateSecret
+
+> RotatedSecretOutput RotateSecret(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotateSecret("Name_example") // RotateSecret | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotateSecret(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotateSecret``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotateSecret`: RotatedSecretOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotateSecret`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotateSecretRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotateSecret**](RotateSecret.md) |  | 
+
+### Return type
+
+[**RotatedSecretOutput**](rotatedSecretOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## SetItemState
 
 > map[string]interface{} SetItemState(ctx).Body(body).Execute()
@@ -11210,6 +11407,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**StaticCredsAuthOutput**](staticCredsAuthOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Tokenize
+
+> TokenizeOutput Tokenize(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.Newtokenize("Plaintext_example", "TokenizerName_example") // Tokenize | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.Tokenize(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.Tokenize``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `Tokenize`: TokenizeOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.Tokenize`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTokenizeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**Tokenize**](Tokenize.md) |  | 
+
+### Return type
+
+[**TokenizeOutput**](tokenizeOutput.md)
 
 ### Authorization
 
@@ -14085,6 +14346,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**UpdateTargetOutput**](updateTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateTokenizer
+
+> UpdateTokenizerOutput UpdateTokenizer(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewupdateTokenizer("Name_example", "TemplateType_example", "TokenizerType_example") // UpdateTokenizer | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdateTokenizer(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateTokenizer``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateTokenizer`: UpdateTokenizerOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateTokenizer`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateTokenizerRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateTokenizer**](UpdateTokenizer.md) |  | 
+
+### Return type
+
+[**UpdateTokenizerOutput**](updateTokenizerOutput.md)
 
 ### Authorization
 

@@ -27,7 +27,6 @@ type LogForwardingConfigPart struct {
 	LogzIoConfig *LogzIoLogForwardingConfig `json:"logz_io_config,omitempty"`
 	PullIntervalSec *string `json:"pull_interval_sec,omitempty"`
 	SplunkConfig *SplunkLogForwardingConfig `json:"splunk_config,omitempty"`
-	StdOut *bool `json:"std_out,omitempty"`
 	SyslogConfig *SyslogLogForwardingConfig `json:"syslog_config,omitempty"`
 	TargetLogType *string `json:"target_log_type,omitempty"`
 }
@@ -369,38 +368,6 @@ func (o *LogForwardingConfigPart) SetSplunkConfig(v SplunkLogForwardingConfig) {
 	o.SplunkConfig = &v
 }
 
-// GetStdOut returns the StdOut field value if set, zero value otherwise.
-func (o *LogForwardingConfigPart) GetStdOut() bool {
-	if o == nil || o.StdOut == nil {
-		var ret bool
-		return ret
-	}
-	return *o.StdOut
-}
-
-// GetStdOutOk returns a tuple with the StdOut field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LogForwardingConfigPart) GetStdOutOk() (*bool, bool) {
-	if o == nil || o.StdOut == nil {
-		return nil, false
-	}
-	return o.StdOut, true
-}
-
-// HasStdOut returns a boolean if a field has been set.
-func (o *LogForwardingConfigPart) HasStdOut() bool {
-	if o != nil && o.StdOut != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetStdOut gets a reference to the given bool and assigns it to the StdOut field.
-func (o *LogForwardingConfigPart) SetStdOut(v bool) {
-	o.StdOut = &v
-}
-
 // GetSyslogConfig returns the SyslogConfig field value if set, zero value otherwise.
 func (o *LogForwardingConfigPart) GetSyslogConfig() SyslogLogForwardingConfig {
 	if o == nil || o.SyslogConfig == nil {
@@ -496,9 +463,6 @@ func (o LogForwardingConfigPart) MarshalJSON() ([]byte, error) {
 	}
 	if o.SplunkConfig != nil {
 		toSerialize["splunk_config"] = o.SplunkConfig
-	}
-	if o.StdOut != nil {
-		toSerialize["std_out"] = o.StdOut
 	}
 	if o.SyslogConfig != nil {
 		toSerialize["syslog_config"] = o.SyslogConfig

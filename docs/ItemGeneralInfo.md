@@ -6,11 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CertIssueDetails** | Pointer to [**CertificateIssueInfo**](CertificateIssueInfo.md) |  | [optional] 
 **ClassicKeyDetails** | Pointer to [**ClassicKeyDetailsInfo**](ClassicKeyDetailsInfo.md) |  | [optional] 
+**DisplayMetadata** | Pointer to **string** |  | [optional] 
 **DynamicSecretProducerDetails** | Pointer to [**DynamicSecretProducerInfo**](DynamicSecretProducerInfo.md) |  | [optional] 
 **PasswordPolicy** | Pointer to [**PasswordPolicyInfo**](PasswordPolicyInfo.md) |  | [optional] 
 **RotatedSecretDetails** | Pointer to [**RotatedSecretDetailsInfo**](RotatedSecretDetailsInfo.md) |  | [optional] 
 **SecureRemoteAccessDetails** | Pointer to [**SecureRemoteAccess**](SecureRemoteAccess.md) |  | [optional] 
 **StaticSecretInfo** | Pointer to [**StaticSecretDetailsInfo**](StaticSecretDetailsInfo.md) |  | [optional] 
+**TokenizerInfo** | Pointer to [**TokenizerInfo**](TokenizerInfo.md) |  | [optional] 
 
 ## Methods
 
@@ -80,6 +82,31 @@ SetClassicKeyDetails sets ClassicKeyDetails field to given value.
 `func (o *ItemGeneralInfo) HasClassicKeyDetails() bool`
 
 HasClassicKeyDetails returns a boolean if a field has been set.
+
+### GetDisplayMetadata
+
+`func (o *ItemGeneralInfo) GetDisplayMetadata() string`
+
+GetDisplayMetadata returns the DisplayMetadata field if non-nil, zero value otherwise.
+
+### GetDisplayMetadataOk
+
+`func (o *ItemGeneralInfo) GetDisplayMetadataOk() (*string, bool)`
+
+GetDisplayMetadataOk returns a tuple with the DisplayMetadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisplayMetadata
+
+`func (o *ItemGeneralInfo) SetDisplayMetadata(v string)`
+
+SetDisplayMetadata sets DisplayMetadata field to given value.
+
+### HasDisplayMetadata
+
+`func (o *ItemGeneralInfo) HasDisplayMetadata() bool`
+
+HasDisplayMetadata returns a boolean if a field has been set.
 
 ### GetDynamicSecretProducerDetails
 
@@ -205,6 +232,31 @@ SetStaticSecretInfo sets StaticSecretInfo field to given value.
 `func (o *ItemGeneralInfo) HasStaticSecretInfo() bool`
 
 HasStaticSecretInfo returns a boolean if a field has been set.
+
+### GetTokenizerInfo
+
+`func (o *ItemGeneralInfo) GetTokenizerInfo() TokenizerInfo`
+
+GetTokenizerInfo returns the TokenizerInfo field if non-nil, zero value otherwise.
+
+### GetTokenizerInfoOk
+
+`func (o *ItemGeneralInfo) GetTokenizerInfoOk() (*TokenizerInfo, bool)`
+
+GetTokenizerInfoOk returns a tuple with the TokenizerInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTokenizerInfo
+
+`func (o *ItemGeneralInfo) SetTokenizerInfo(v TokenizerInfo)`
+
+SetTokenizerInfo sets TokenizerInfo field to given value.
+
+### HasTokenizerInfo
+
+`func (o *ItemGeneralInfo) HasTokenizerInfo() bool`
+
+HasTokenizerInfo returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

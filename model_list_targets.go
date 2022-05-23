@@ -23,6 +23,8 @@ type ListTargets struct {
 	PaginationToken *string `json:"pagination-token,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
+	// The target types list . In case it is empty, all types of targets will be returned. options: [hanadb cassandra aws ssh gke eks mysql mongodb snowflake mssql redshift artifactory azure rabbitmq k8s venafi gcp oracle dockerhub ldap github chef web salesforce postgres]
+	Type *[]string `json:"type,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
 }
@@ -140,6 +142,38 @@ func (o *ListTargets) SetToken(v string) {
 	o.Token = &v
 }
 
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *ListTargets) GetType() []string {
+	if o == nil || o.Type == nil {
+		var ret []string
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListTargets) GetTypeOk() (*[]string, bool) {
+	if o == nil || o.Type == nil {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *ListTargets) HasType() bool {
+	if o != nil && o.Type != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given []string and assigns it to the Type field.
+func (o *ListTargets) SetType(v []string) {
+	o.Type = &v
+}
+
 // GetUidToken returns the UidToken field value if set, zero value otherwise.
 func (o *ListTargets) GetUidToken() string {
 	if o == nil || o.UidToken == nil {
@@ -182,6 +216,9 @@ func (o ListTargets) MarshalJSON() ([]byte, error) {
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
+	}
+	if o.Type != nil {
+		toSerialize["type"] = o.Type
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken

@@ -19,11 +19,13 @@ import (
 type ItemGeneralInfo struct {
 	CertIssueDetails *CertificateIssueInfo `json:"cert_issue_details,omitempty"`
 	ClassicKeyDetails *ClassicKeyDetailsInfo `json:"classic_key_details,omitempty"`
+	DisplayMetadata *string `json:"display_metadata,omitempty"`
 	DynamicSecretProducerDetails *DynamicSecretProducerInfo `json:"dynamic_secret_producer_details,omitempty"`
 	PasswordPolicy *PasswordPolicyInfo `json:"password_policy,omitempty"`
 	RotatedSecretDetails *RotatedSecretDetailsInfo `json:"rotated_secret_details,omitempty"`
 	SecureRemoteAccessDetails *SecureRemoteAccess `json:"secure_remote_access_details,omitempty"`
 	StaticSecretInfo *StaticSecretDetailsInfo `json:"static_secret_info,omitempty"`
+	TokenizerInfo *TokenizerInfo `json:"tokenizer_info,omitempty"`
 }
 
 // NewItemGeneralInfo instantiates a new ItemGeneralInfo object
@@ -105,6 +107,38 @@ func (o *ItemGeneralInfo) HasClassicKeyDetails() bool {
 // SetClassicKeyDetails gets a reference to the given ClassicKeyDetailsInfo and assigns it to the ClassicKeyDetails field.
 func (o *ItemGeneralInfo) SetClassicKeyDetails(v ClassicKeyDetailsInfo) {
 	o.ClassicKeyDetails = &v
+}
+
+// GetDisplayMetadata returns the DisplayMetadata field value if set, zero value otherwise.
+func (o *ItemGeneralInfo) GetDisplayMetadata() string {
+	if o == nil || o.DisplayMetadata == nil {
+		var ret string
+		return ret
+	}
+	return *o.DisplayMetadata
+}
+
+// GetDisplayMetadataOk returns a tuple with the DisplayMetadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ItemGeneralInfo) GetDisplayMetadataOk() (*string, bool) {
+	if o == nil || o.DisplayMetadata == nil {
+		return nil, false
+	}
+	return o.DisplayMetadata, true
+}
+
+// HasDisplayMetadata returns a boolean if a field has been set.
+func (o *ItemGeneralInfo) HasDisplayMetadata() bool {
+	if o != nil && o.DisplayMetadata != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDisplayMetadata gets a reference to the given string and assigns it to the DisplayMetadata field.
+func (o *ItemGeneralInfo) SetDisplayMetadata(v string) {
+	o.DisplayMetadata = &v
 }
 
 // GetDynamicSecretProducerDetails returns the DynamicSecretProducerDetails field value if set, zero value otherwise.
@@ -267,6 +301,38 @@ func (o *ItemGeneralInfo) SetStaticSecretInfo(v StaticSecretDetailsInfo) {
 	o.StaticSecretInfo = &v
 }
 
+// GetTokenizerInfo returns the TokenizerInfo field value if set, zero value otherwise.
+func (o *ItemGeneralInfo) GetTokenizerInfo() TokenizerInfo {
+	if o == nil || o.TokenizerInfo == nil {
+		var ret TokenizerInfo
+		return ret
+	}
+	return *o.TokenizerInfo
+}
+
+// GetTokenizerInfoOk returns a tuple with the TokenizerInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ItemGeneralInfo) GetTokenizerInfoOk() (*TokenizerInfo, bool) {
+	if o == nil || o.TokenizerInfo == nil {
+		return nil, false
+	}
+	return o.TokenizerInfo, true
+}
+
+// HasTokenizerInfo returns a boolean if a field has been set.
+func (o *ItemGeneralInfo) HasTokenizerInfo() bool {
+	if o != nil && o.TokenizerInfo != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTokenizerInfo gets a reference to the given TokenizerInfo and assigns it to the TokenizerInfo field.
+func (o *ItemGeneralInfo) SetTokenizerInfo(v TokenizerInfo) {
+	o.TokenizerInfo = &v
+}
+
 func (o ItemGeneralInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.CertIssueDetails != nil {
@@ -274,6 +340,9 @@ func (o ItemGeneralInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.ClassicKeyDetails != nil {
 		toSerialize["classic_key_details"] = o.ClassicKeyDetails
+	}
+	if o.DisplayMetadata != nil {
+		toSerialize["display_metadata"] = o.DisplayMetadata
 	}
 	if o.DynamicSecretProducerDetails != nil {
 		toSerialize["dynamic_secret_producer_details"] = o.DynamicSecretProducerDetails
@@ -289,6 +358,9 @@ func (o ItemGeneralInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.StaticSecretInfo != nil {
 		toSerialize["static_secret_info"] = o.StaticSecretInfo
+	}
+	if o.TokenizerInfo != nil {
+		toSerialize["tokenizer_info"] = o.TokenizerInfo
 	}
 	return json.Marshal(toSerialize)
 }

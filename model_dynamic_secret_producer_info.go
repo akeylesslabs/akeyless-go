@@ -17,6 +17,7 @@ import (
 
 // DynamicSecretProducerInfo DynamicSecretProducerInfo The dynamic secret producer info This parameter relevant and required only in case of create update dynamic secret.
 type DynamicSecretProducerInfo struct {
+	FailureMessage *string `json:"failure_message,omitempty"`
 	GwClusterId *int64 `json:"gw_cluster_id,omitempty"`
 	ProducerLastKeepAlive *string `json:"producer_last_keep_alive,omitempty"`
 	ProducerMetadata *string `json:"producer_metadata,omitempty"`
@@ -40,6 +41,38 @@ func NewDynamicSecretProducerInfo() *DynamicSecretProducerInfo {
 func NewDynamicSecretProducerInfoWithDefaults() *DynamicSecretProducerInfo {
 	this := DynamicSecretProducerInfo{}
 	return &this
+}
+
+// GetFailureMessage returns the FailureMessage field value if set, zero value otherwise.
+func (o *DynamicSecretProducerInfo) GetFailureMessage() string {
+	if o == nil || o.FailureMessage == nil {
+		var ret string
+		return ret
+	}
+	return *o.FailureMessage
+}
+
+// GetFailureMessageOk returns a tuple with the FailureMessage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretProducerInfo) GetFailureMessageOk() (*string, bool) {
+	if o == nil || o.FailureMessage == nil {
+		return nil, false
+	}
+	return o.FailureMessage, true
+}
+
+// HasFailureMessage returns a boolean if a field has been set.
+func (o *DynamicSecretProducerInfo) HasFailureMessage() bool {
+	if o != nil && o.FailureMessage != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFailureMessage gets a reference to the given string and assigns it to the FailureMessage field.
+func (o *DynamicSecretProducerInfo) SetFailureMessage(v string) {
+	o.FailureMessage = &v
 }
 
 // GetGwClusterId returns the GwClusterId field value if set, zero value otherwise.
@@ -204,6 +237,9 @@ func (o *DynamicSecretProducerInfo) SetProducerType(v string) {
 
 func (o DynamicSecretProducerInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.FailureMessage != nil {
+		toSerialize["failure_message"] = o.FailureMessage
+	}
 	if o.GwClusterId != nil {
 		toSerialize["gw_cluster_id"] = o.GwClusterId
 	}

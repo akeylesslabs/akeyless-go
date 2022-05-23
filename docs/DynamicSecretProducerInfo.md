@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**FailureMessage** | Pointer to **string** |  | [optional] 
 **GwClusterId** | Pointer to **int64** |  | [optional] 
 **ProducerLastKeepAlive** | Pointer to **string** |  | [optional] 
 **ProducerMetadata** | Pointer to **string** |  | [optional] 
@@ -28,6 +29,31 @@ will change when the set of required properties is changed
 NewDynamicSecretProducerInfoWithDefaults instantiates a new DynamicSecretProducerInfo object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetFailureMessage
+
+`func (o *DynamicSecretProducerInfo) GetFailureMessage() string`
+
+GetFailureMessage returns the FailureMessage field if non-nil, zero value otherwise.
+
+### GetFailureMessageOk
+
+`func (o *DynamicSecretProducerInfo) GetFailureMessageOk() (*string, bool)`
+
+GetFailureMessageOk returns a tuple with the FailureMessage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFailureMessage
+
+`func (o *DynamicSecretProducerInfo) SetFailureMessage(v string)`
+
+SetFailureMessage sets FailureMessage field to given value.
+
+### HasFailureMessage
+
+`func (o *DynamicSecretProducerInfo) HasFailureMessage() bool`
+
+HasFailureMessage returns a boolean if a field has been set.
 
 ### GetGwClusterId
 

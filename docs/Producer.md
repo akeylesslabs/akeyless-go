@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Active** | Pointer to **bool** |  | [optional] 
+**FailureMessage** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **int64** |  | [optional] 
 **Init** | Pointer to **bool** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
@@ -53,6 +54,31 @@ SetActive sets Active field to given value.
 `func (o *Producer) HasActive() bool`
 
 HasActive returns a boolean if a field has been set.
+
+### GetFailureMessage
+
+`func (o *Producer) GetFailureMessage() string`
+
+GetFailureMessage returns the FailureMessage field if non-nil, zero value otherwise.
+
+### GetFailureMessageOk
+
+`func (o *Producer) GetFailureMessageOk() (*string, bool)`
+
+GetFailureMessageOk returns a tuple with the FailureMessage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFailureMessage
+
+`func (o *Producer) SetFailureMessage(v string)`
+
+SetFailureMessage sets FailureMessage field to given value.
+
+### HasFailureMessage
+
+`func (o *Producer) HasFailureMessage() bool`
+
+HasFailureMessage returns a boolean if a field has been set.
 
 ### GetId
 

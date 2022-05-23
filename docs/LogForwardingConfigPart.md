@@ -14,7 +14,6 @@ Name | Type | Description | Notes
 **LogzIoConfig** | Pointer to [**LogzIoLogForwardingConfig**](LogzIoLogForwardingConfig.md) |  | [optional] 
 **PullIntervalSec** | Pointer to **string** |  | [optional] 
 **SplunkConfig** | Pointer to [**SplunkLogForwardingConfig**](SplunkLogForwardingConfig.md) |  | [optional] 
-**StdOut** | Pointer to **bool** |  | [optional] 
 **SyslogConfig** | Pointer to [**SyslogLogForwardingConfig**](SyslogLogForwardingConfig.md) |  | [optional] 
 **TargetLogType** | Pointer to **string** |  | [optional] 
 
@@ -286,31 +285,6 @@ SetSplunkConfig sets SplunkConfig field to given value.
 `func (o *LogForwardingConfigPart) HasSplunkConfig() bool`
 
 HasSplunkConfig returns a boolean if a field has been set.
-
-### GetStdOut
-
-`func (o *LogForwardingConfigPart) GetStdOut() bool`
-
-GetStdOut returns the StdOut field if non-nil, zero value otherwise.
-
-### GetStdOutOk
-
-`func (o *LogForwardingConfigPart) GetStdOutOk() (*bool, bool)`
-
-GetStdOutOk returns a tuple with the StdOut field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStdOut
-
-`func (o *LogForwardingConfigPart) SetStdOut(v bool)`
-
-SetStdOut sets StdOut field to given value.
-
-### HasStdOut
-
-`func (o *LogForwardingConfigPart) HasStdOut() bool`
-
-HasStdOut returns a boolean if a field has been set.
 
 ### GetSyslogConfig
 

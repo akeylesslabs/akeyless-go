@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Filter** | Pointer to **string** | Filter by auth method name or part of it | [optional] 
 **PaginationToken** | Pointer to **string** | Next page reference | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
+**Type** | Pointer to **[]string** | The target types list . In case it is empty, all types of targets will be returned. options: [hanadb cassandra aws ssh gke eks mysql mongodb snowflake mssql redshift artifactory azure rabbitmq k8s venafi gcp oracle dockerhub ldap github chef web salesforce postgres] | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
 ## Methods
@@ -102,6 +103,31 @@ SetToken sets Token field to given value.
 `func (o *ListTargets) HasToken() bool`
 
 HasToken returns a boolean if a field has been set.
+
+### GetType
+
+`func (o *ListTargets) GetType() []string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *ListTargets) GetTypeOk() (*[]string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *ListTargets) SetType(v []string)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *ListTargets) HasType() bool`
+
+HasType returns a boolean if a field has been set.
 
 ### GetUidToken
 
