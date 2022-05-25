@@ -18,7 +18,7 @@ import (
 // GetRSAPublicOutput struct for GetRSAPublicOutput
 type GetRSAPublicOutput struct {
 	Raw *string `json:"raw,omitempty"`
-	Ssh *[]int32 `json:"ssh,omitempty"`
+	Ssh *string `json:"ssh,omitempty"`
 }
 
 // NewGetRSAPublicOutput instantiates a new GetRSAPublicOutput object
@@ -71,9 +71,9 @@ func (o *GetRSAPublicOutput) SetRaw(v string) {
 }
 
 // GetSsh returns the Ssh field value if set, zero value otherwise.
-func (o *GetRSAPublicOutput) GetSsh() []int32 {
+func (o *GetRSAPublicOutput) GetSsh() string {
 	if o == nil || o.Ssh == nil {
-		var ret []int32
+		var ret string
 		return ret
 	}
 	return *o.Ssh
@@ -81,7 +81,7 @@ func (o *GetRSAPublicOutput) GetSsh() []int32 {
 
 // GetSshOk returns a tuple with the Ssh field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetRSAPublicOutput) GetSshOk() (*[]int32, bool) {
+func (o *GetRSAPublicOutput) GetSshOk() (*string, bool) {
 	if o == nil || o.Ssh == nil {
 		return nil, false
 	}
@@ -97,8 +97,8 @@ func (o *GetRSAPublicOutput) HasSsh() bool {
 	return false
 }
 
-// SetSsh gets a reference to the given []int32 and assigns it to the Ssh field.
-func (o *GetRSAPublicOutput) SetSsh(v []int32) {
+// SetSsh gets a reference to the given string and assigns it to the Ssh field.
+func (o *GetRSAPublicOutput) SetSsh(v string) {
 	o.Ssh = &v
 }
 

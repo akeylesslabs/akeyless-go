@@ -28,6 +28,9 @@ Name | Type | Description | Notes
 **AzureClientSecret** | Pointer to **string** |  | [optional] 
 **AzureFixedUserNameSubClaimKey** | Pointer to **string** |  | [optional] 
 **AzureFixedUserOnly** | Pointer to **bool** |  | [optional] 
+**AzureResourceGroupName** | Pointer to **string** |  | [optional] 
+**AzureResourceName** | Pointer to **string** |  | [optional] 
+**AzureSubscriptionId** | Pointer to **string** |  | [optional] 
 **AzureTenantId** | Pointer to **string** |  | [optional] 
 **AzureUserGroupsObjId** | Pointer to **string** |  | [optional] 
 **AzureUserPortalAccess** | Pointer to **bool** |  | [optional] 
@@ -792,6 +795,81 @@ SetAzureFixedUserOnly sets AzureFixedUserOnly field to given value.
 `func (o *DSProducerDetails) HasAzureFixedUserOnly() bool`
 
 HasAzureFixedUserOnly returns a boolean if a field has been set.
+
+### GetAzureResourceGroupName
+
+`func (o *DSProducerDetails) GetAzureResourceGroupName() string`
+
+GetAzureResourceGroupName returns the AzureResourceGroupName field if non-nil, zero value otherwise.
+
+### GetAzureResourceGroupNameOk
+
+`func (o *DSProducerDetails) GetAzureResourceGroupNameOk() (*string, bool)`
+
+GetAzureResourceGroupNameOk returns a tuple with the AzureResourceGroupName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureResourceGroupName
+
+`func (o *DSProducerDetails) SetAzureResourceGroupName(v string)`
+
+SetAzureResourceGroupName sets AzureResourceGroupName field to given value.
+
+### HasAzureResourceGroupName
+
+`func (o *DSProducerDetails) HasAzureResourceGroupName() bool`
+
+HasAzureResourceGroupName returns a boolean if a field has been set.
+
+### GetAzureResourceName
+
+`func (o *DSProducerDetails) GetAzureResourceName() string`
+
+GetAzureResourceName returns the AzureResourceName field if non-nil, zero value otherwise.
+
+### GetAzureResourceNameOk
+
+`func (o *DSProducerDetails) GetAzureResourceNameOk() (*string, bool)`
+
+GetAzureResourceNameOk returns a tuple with the AzureResourceName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureResourceName
+
+`func (o *DSProducerDetails) SetAzureResourceName(v string)`
+
+SetAzureResourceName sets AzureResourceName field to given value.
+
+### HasAzureResourceName
+
+`func (o *DSProducerDetails) HasAzureResourceName() bool`
+
+HasAzureResourceName returns a boolean if a field has been set.
+
+### GetAzureSubscriptionId
+
+`func (o *DSProducerDetails) GetAzureSubscriptionId() string`
+
+GetAzureSubscriptionId returns the AzureSubscriptionId field if non-nil, zero value otherwise.
+
+### GetAzureSubscriptionIdOk
+
+`func (o *DSProducerDetails) GetAzureSubscriptionIdOk() (*string, bool)`
+
+GetAzureSubscriptionIdOk returns a tuple with the AzureSubscriptionId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureSubscriptionId
+
+`func (o *DSProducerDetails) SetAzureSubscriptionId(v string)`
+
+SetAzureSubscriptionId sets AzureSubscriptionId field to given value.
+
+### HasAzureSubscriptionId
+
+`func (o *DSProducerDetails) HasAzureSubscriptionId() bool`
+
+HasAzureSubscriptionId returns a boolean if a field has been set.
 
 ### GetAzureTenantId
 

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Filter** | Pointer to **string** | Filter by item name or part of it | [optional] 
+**MinimalView** | Pointer to **bool** |  | [optional] 
 **PaginationToken** | Pointer to **string** | Next page reference | [optional] 
 **Path** | Pointer to **string** | Path to folder | [optional] 
 **Tag** | Pointer to **string** | Filter by item tag | [optional] 
@@ -55,6 +56,31 @@ SetFilter sets Filter field to given value.
 `func (o *ListItems) HasFilter() bool`
 
 HasFilter returns a boolean if a field has been set.
+
+### GetMinimalView
+
+`func (o *ListItems) GetMinimalView() bool`
+
+GetMinimalView returns the MinimalView field if non-nil, zero value otherwise.
+
+### GetMinimalViewOk
+
+`func (o *ListItems) GetMinimalViewOk() (*bool, bool)`
+
+GetMinimalViewOk returns a tuple with the MinimalView field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMinimalView
+
+`func (o *ListItems) SetMinimalView(v bool)`
+
+SetMinimalView sets MinimalView field to given value.
+
+### HasMinimalView
+
+`func (o *ListItems) HasMinimalView() bool`
+
+HasMinimalView returns a boolean if a field has been set.
 
 ### GetPaginationToken
 

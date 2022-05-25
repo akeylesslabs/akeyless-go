@@ -28,6 +28,12 @@ type UpdateAzureTarget struct {
 	Name string `json:"name"`
 	// New target name
 	NewName *string `json:"new-name,omitempty"`
+	// The Resource Group name in your Azure subscription
+	ResourceGroupName *string `json:"resource-group-name,omitempty"`
+	// The name of the relevant Resource
+	ResourceName *string `json:"resource-name,omitempty"`
+	// Azure Subscription Id
+	SubscriptionId *string `json:"subscription-id,omitempty"`
 	TenantId *string `json:"tenant-id,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
@@ -272,6 +278,102 @@ func (o *UpdateAzureTarget) SetNewName(v string) {
 	o.NewName = &v
 }
 
+// GetResourceGroupName returns the ResourceGroupName field value if set, zero value otherwise.
+func (o *UpdateAzureTarget) GetResourceGroupName() string {
+	if o == nil || o.ResourceGroupName == nil {
+		var ret string
+		return ret
+	}
+	return *o.ResourceGroupName
+}
+
+// GetResourceGroupNameOk returns a tuple with the ResourceGroupName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAzureTarget) GetResourceGroupNameOk() (*string, bool) {
+	if o == nil || o.ResourceGroupName == nil {
+		return nil, false
+	}
+	return o.ResourceGroupName, true
+}
+
+// HasResourceGroupName returns a boolean if a field has been set.
+func (o *UpdateAzureTarget) HasResourceGroupName() bool {
+	if o != nil && o.ResourceGroupName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetResourceGroupName gets a reference to the given string and assigns it to the ResourceGroupName field.
+func (o *UpdateAzureTarget) SetResourceGroupName(v string) {
+	o.ResourceGroupName = &v
+}
+
+// GetResourceName returns the ResourceName field value if set, zero value otherwise.
+func (o *UpdateAzureTarget) GetResourceName() string {
+	if o == nil || o.ResourceName == nil {
+		var ret string
+		return ret
+	}
+	return *o.ResourceName
+}
+
+// GetResourceNameOk returns a tuple with the ResourceName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAzureTarget) GetResourceNameOk() (*string, bool) {
+	if o == nil || o.ResourceName == nil {
+		return nil, false
+	}
+	return o.ResourceName, true
+}
+
+// HasResourceName returns a boolean if a field has been set.
+func (o *UpdateAzureTarget) HasResourceName() bool {
+	if o != nil && o.ResourceName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetResourceName gets a reference to the given string and assigns it to the ResourceName field.
+func (o *UpdateAzureTarget) SetResourceName(v string) {
+	o.ResourceName = &v
+}
+
+// GetSubscriptionId returns the SubscriptionId field value if set, zero value otherwise.
+func (o *UpdateAzureTarget) GetSubscriptionId() string {
+	if o == nil || o.SubscriptionId == nil {
+		var ret string
+		return ret
+	}
+	return *o.SubscriptionId
+}
+
+// GetSubscriptionIdOk returns a tuple with the SubscriptionId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAzureTarget) GetSubscriptionIdOk() (*string, bool) {
+	if o == nil || o.SubscriptionId == nil {
+		return nil, false
+	}
+	return o.SubscriptionId, true
+}
+
+// HasSubscriptionId returns a boolean if a field has been set.
+func (o *UpdateAzureTarget) HasSubscriptionId() bool {
+	if o != nil && o.SubscriptionId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSubscriptionId gets a reference to the given string and assigns it to the SubscriptionId field.
+func (o *UpdateAzureTarget) SetSubscriptionId(v string) {
+	o.SubscriptionId = &v
+}
+
 // GetTenantId returns the TenantId field value if set, zero value otherwise.
 func (o *UpdateAzureTarget) GetTenantId() string {
 	if o == nil || o.TenantId == nil {
@@ -454,6 +556,15 @@ func (o UpdateAzureTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.NewName != nil {
 		toSerialize["new-name"] = o.NewName
+	}
+	if o.ResourceGroupName != nil {
+		toSerialize["resource-group-name"] = o.ResourceGroupName
+	}
+	if o.ResourceName != nil {
+		toSerialize["resource-name"] = o.ResourceName
+	}
+	if o.SubscriptionId != nil {
+		toSerialize["subscription-id"] = o.SubscriptionId
 	}
 	if o.TenantId != nil {
 		toSerialize["tenant-id"] = o.TenantId

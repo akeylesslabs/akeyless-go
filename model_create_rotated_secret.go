@@ -72,6 +72,8 @@ type CreateRotatedSecret struct {
 	SshPassword *string `json:"ssh-password,omitempty"`
 	// Deprecated: use RotatedUser
 	SshUsername *string `json:"ssh-username,omitempty"`
+	// The name of the storage account key to rotate [key1/key2/kerb1/kerb2] (relevat to azure-storage-account)
+	StorageAccountKeyName *string `json:"storage-account-key-name,omitempty"`
 	// List of the tags attached to this secret
 	Tags *[]string `json:"tags,omitempty"`
 	// Target name
@@ -1134,6 +1136,38 @@ func (o *CreateRotatedSecret) SetSshUsername(v string) {
 	o.SshUsername = &v
 }
 
+// GetStorageAccountKeyName returns the StorageAccountKeyName field value if set, zero value otherwise.
+func (o *CreateRotatedSecret) GetStorageAccountKeyName() string {
+	if o == nil || o.StorageAccountKeyName == nil {
+		var ret string
+		return ret
+	}
+	return *o.StorageAccountKeyName
+}
+
+// GetStorageAccountKeyNameOk returns a tuple with the StorageAccountKeyName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRotatedSecret) GetStorageAccountKeyNameOk() (*string, bool) {
+	if o == nil || o.StorageAccountKeyName == nil {
+		return nil, false
+	}
+	return o.StorageAccountKeyName, true
+}
+
+// HasStorageAccountKeyName returns a boolean if a field has been set.
+func (o *CreateRotatedSecret) HasStorageAccountKeyName() bool {
+	if o != nil && o.StorageAccountKeyName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetStorageAccountKeyName gets a reference to the given string and assigns it to the StorageAccountKeyName field.
+func (o *CreateRotatedSecret) SetStorageAccountKeyName(v string) {
+	o.StorageAccountKeyName = &v
+}
+
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *CreateRotatedSecret) GetTags() []string {
 	if o == nil || o.Tags == nil {
@@ -1415,6 +1449,9 @@ func (o CreateRotatedSecret) MarshalJSON() ([]byte, error) {
 	}
 	if o.SshUsername != nil {
 		toSerialize["ssh-username"] = o.SshUsername
+	}
+	if o.StorageAccountKeyName != nil {
+		toSerialize["storage-account-key-name"] = o.StorageAccountKeyName
 	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags

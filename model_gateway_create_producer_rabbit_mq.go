@@ -39,6 +39,8 @@ type GatewayCreateProducerRabbitMQ struct {
 	RabbitmqUserWritePermission *string `json:"rabbitmq-user-write-permission,omitempty"`
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
 	SecureAccessUrl *string `json:"secure-access-url,omitempty"`
+	// Secure Access Web Category
+	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
 	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
 	// List of the tags attached to this secret
@@ -60,6 +62,8 @@ type GatewayCreateProducerRabbitMQ struct {
 func NewGatewayCreateProducerRabbitMQ(name string, ) *GatewayCreateProducerRabbitMQ {
 	this := GatewayCreateProducerRabbitMQ{}
 	this.Name = name
+	var secureAccessWeb bool = true
+	this.SecureAccessWeb = &secureAccessWeb
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
@@ -70,6 +74,8 @@ func NewGatewayCreateProducerRabbitMQ(name string, ) *GatewayCreateProducerRabbi
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayCreateProducerRabbitMQWithDefaults() *GatewayCreateProducerRabbitMQ {
 	this := GatewayCreateProducerRabbitMQ{}
+	var secureAccessWeb bool = true
+	this.SecureAccessWeb = &secureAccessWeb
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
@@ -451,6 +457,38 @@ func (o *GatewayCreateProducerRabbitMQ) SetSecureAccessUrl(v string) {
 	o.SecureAccessUrl = &v
 }
 
+// GetSecureAccessWeb returns the SecureAccessWeb field value if set, zero value otherwise.
+func (o *GatewayCreateProducerRabbitMQ) GetSecureAccessWeb() bool {
+	if o == nil || o.SecureAccessWeb == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessWeb
+}
+
+// GetSecureAccessWebOk returns a tuple with the SecureAccessWeb field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerRabbitMQ) GetSecureAccessWebOk() (*bool, bool) {
+	if o == nil || o.SecureAccessWeb == nil {
+		return nil, false
+	}
+	return o.SecureAccessWeb, true
+}
+
+// HasSecureAccessWeb returns a boolean if a field has been set.
+func (o *GatewayCreateProducerRabbitMQ) HasSecureAccessWeb() bool {
+	if o != nil && o.SecureAccessWeb != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessWeb gets a reference to the given bool and assigns it to the SecureAccessWeb field.
+func (o *GatewayCreateProducerRabbitMQ) SetSecureAccessWeb(v bool) {
+	o.SecureAccessWeb = &v
+}
+
 // GetSecureAccessWebBrowsing returns the SecureAccessWebBrowsing field value if set, zero value otherwise.
 func (o *GatewayCreateProducerRabbitMQ) GetSecureAccessWebBrowsing() bool {
 	if o == nil || o.SecureAccessWebBrowsing == nil {
@@ -712,6 +750,9 @@ func (o GatewayCreateProducerRabbitMQ) MarshalJSON() ([]byte, error) {
 	}
 	if o.SecureAccessUrl != nil {
 		toSerialize["secure-access-url"] = o.SecureAccessUrl
+	}
+	if o.SecureAccessWeb != nil {
+		toSerialize["secure-access-web"] = o.SecureAccessWeb
 	}
 	if o.SecureAccessWebBrowsing != nil {
 		toSerialize["secure-access-web-browsing"] = o.SecureAccessWebBrowsing

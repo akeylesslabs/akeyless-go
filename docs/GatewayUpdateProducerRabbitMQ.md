@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **RabbitmqUserWritePermission** | Pointer to **string** | User write permission | [optional] 
 **SecureAccessEnable** | Pointer to **string** |  | [optional] 
 **SecureAccessUrl** | Pointer to **string** |  | [optional] 
+**SecureAccessWeb** | Pointer to **bool** | Secure Access Web Category | [optional] [default to true]
 **SecureAccessWebBrowsing** | Pointer to **bool** |  | [optional] 
 **SecureAccessWebProxy** | Pointer to **bool** |  | [optional] 
 **Tags** | Pointer to **[]string** | List of the tags attached to this secret | [optional] 
@@ -363,6 +364,31 @@ SetSecureAccessUrl sets SecureAccessUrl field to given value.
 `func (o *GatewayUpdateProducerRabbitMQ) HasSecureAccessUrl() bool`
 
 HasSecureAccessUrl returns a boolean if a field has been set.
+
+### GetSecureAccessWeb
+
+`func (o *GatewayUpdateProducerRabbitMQ) GetSecureAccessWeb() bool`
+
+GetSecureAccessWeb returns the SecureAccessWeb field if non-nil, zero value otherwise.
+
+### GetSecureAccessWebOk
+
+`func (o *GatewayUpdateProducerRabbitMQ) GetSecureAccessWebOk() (*bool, bool)`
+
+GetSecureAccessWebOk returns a tuple with the SecureAccessWeb field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessWeb
+
+`func (o *GatewayUpdateProducerRabbitMQ) SetSecureAccessWeb(v bool)`
+
+SetSecureAccessWeb sets SecureAccessWeb field to given value.
+
+### HasSecureAccessWeb
+
+`func (o *GatewayUpdateProducerRabbitMQ) HasSecureAccessWeb() bool`
+
+HasSecureAccessWeb returns a boolean if a field has been set.
 
 ### GetSecureAccessWebBrowsing
 

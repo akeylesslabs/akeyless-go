@@ -19,6 +19,7 @@ import (
 type ListItems struct {
 	// Filter by item name or part of it
 	Filter *string `json:"filter,omitempty"`
+	MinimalView *bool `json:"minimal-view,omitempty"`
 	// Next page reference
 	PaginationToken *string `json:"pagination-token,omitempty"`
 	// Path to folder
@@ -80,6 +81,38 @@ func (o *ListItems) HasFilter() bool {
 // SetFilter gets a reference to the given string and assigns it to the Filter field.
 func (o *ListItems) SetFilter(v string) {
 	o.Filter = &v
+}
+
+// GetMinimalView returns the MinimalView field value if set, zero value otherwise.
+func (o *ListItems) GetMinimalView() bool {
+	if o == nil || o.MinimalView == nil {
+		var ret bool
+		return ret
+	}
+	return *o.MinimalView
+}
+
+// GetMinimalViewOk returns a tuple with the MinimalView field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListItems) GetMinimalViewOk() (*bool, bool) {
+	if o == nil || o.MinimalView == nil {
+		return nil, false
+	}
+	return o.MinimalView, true
+}
+
+// HasMinimalView returns a boolean if a field has been set.
+func (o *ListItems) HasMinimalView() bool {
+	if o != nil && o.MinimalView != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMinimalView gets a reference to the given bool and assigns it to the MinimalView field.
+func (o *ListItems) SetMinimalView(v bool) {
+	o.MinimalView = &v
 }
 
 // GetPaginationToken returns the PaginationToken field value if set, zero value otherwise.
@@ -278,6 +311,9 @@ func (o ListItems) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Filter != nil {
 		toSerialize["filter"] = o.Filter
+	}
+	if o.MinimalView != nil {
+		toSerialize["minimal-view"] = o.MinimalView
 	}
 	if o.PaginationToken != nil {
 		toSerialize["pagination-token"] = o.PaginationToken

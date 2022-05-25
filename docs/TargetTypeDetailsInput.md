@@ -13,6 +13,9 @@ Name | Type | Description | Notes
 **AwsSessionToken** | Pointer to **string** |  | [optional] 
 **AzureClientId** | Pointer to **string** |  | [optional] 
 **AzureClientSecret** | Pointer to **string** |  | [optional] 
+**AzureResourceGroupName** | Pointer to **string** |  | [optional] 
+**AzureResourceName** | Pointer to **string** |  | [optional] 
+**AzureSubscriptionId** | Pointer to **string** |  | [optional] 
 **AzureTenantId** | Pointer to **string** |  | [optional] 
 **CaCertData** | Pointer to **[]int32** | CACertData is the rsa 4096 certificate data in PEM format | [optional] 
 **CaCertName** | Pointer to **string** | CACertName is the name of the certificate in SalesForce tenant | [optional] 
@@ -335,6 +338,81 @@ SetAzureClientSecret sets AzureClientSecret field to given value.
 `func (o *TargetTypeDetailsInput) HasAzureClientSecret() bool`
 
 HasAzureClientSecret returns a boolean if a field has been set.
+
+### GetAzureResourceGroupName
+
+`func (o *TargetTypeDetailsInput) GetAzureResourceGroupName() string`
+
+GetAzureResourceGroupName returns the AzureResourceGroupName field if non-nil, zero value otherwise.
+
+### GetAzureResourceGroupNameOk
+
+`func (o *TargetTypeDetailsInput) GetAzureResourceGroupNameOk() (*string, bool)`
+
+GetAzureResourceGroupNameOk returns a tuple with the AzureResourceGroupName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureResourceGroupName
+
+`func (o *TargetTypeDetailsInput) SetAzureResourceGroupName(v string)`
+
+SetAzureResourceGroupName sets AzureResourceGroupName field to given value.
+
+### HasAzureResourceGroupName
+
+`func (o *TargetTypeDetailsInput) HasAzureResourceGroupName() bool`
+
+HasAzureResourceGroupName returns a boolean if a field has been set.
+
+### GetAzureResourceName
+
+`func (o *TargetTypeDetailsInput) GetAzureResourceName() string`
+
+GetAzureResourceName returns the AzureResourceName field if non-nil, zero value otherwise.
+
+### GetAzureResourceNameOk
+
+`func (o *TargetTypeDetailsInput) GetAzureResourceNameOk() (*string, bool)`
+
+GetAzureResourceNameOk returns a tuple with the AzureResourceName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureResourceName
+
+`func (o *TargetTypeDetailsInput) SetAzureResourceName(v string)`
+
+SetAzureResourceName sets AzureResourceName field to given value.
+
+### HasAzureResourceName
+
+`func (o *TargetTypeDetailsInput) HasAzureResourceName() bool`
+
+HasAzureResourceName returns a boolean if a field has been set.
+
+### GetAzureSubscriptionId
+
+`func (o *TargetTypeDetailsInput) GetAzureSubscriptionId() string`
+
+GetAzureSubscriptionId returns the AzureSubscriptionId field if non-nil, zero value otherwise.
+
+### GetAzureSubscriptionIdOk
+
+`func (o *TargetTypeDetailsInput) GetAzureSubscriptionIdOk() (*string, bool)`
+
+GetAzureSubscriptionIdOk returns a tuple with the AzureSubscriptionId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureSubscriptionId
+
+`func (o *TargetTypeDetailsInput) SetAzureSubscriptionId(v string)`
+
+SetAzureSubscriptionId sets AzureSubscriptionId field to given value.
+
+### HasAzureSubscriptionId
+
+`func (o *TargetTypeDetailsInput) HasAzureSubscriptionId() bool`
+
+HasAzureSubscriptionId returns a boolean if a field has been set.
 
 ### GetAzureTenantId
 

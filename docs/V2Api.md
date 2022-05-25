@@ -210,6 +210,8 @@ Method | HTTP request | Description
 [**UpdateGcpTarget**](V2Api.md#UpdateGcpTarget) | **Post** /update-gcp-target | 
 [**UpdateGithubTarget**](V2Api.md#UpdateGithubTarget) | **Post** /update-github-target | 
 [**UpdateItem**](V2Api.md#UpdateItem) | **Post** /update-item | 
+[**UpdateLdapTarget**](V2Api.md#UpdateLdapTarget) | **Post** /update-ldap-target | 
+[**UpdateLdapTargetDetails**](V2Api.md#UpdateLdapTargetDetails) | **Post** /update-ldap-target-details | 
 [**UpdateNativeK8STarget**](V2Api.md#UpdateNativeK8STarget) | **Post** /update-k8s-target | 
 [**UpdatePKICertIssuer**](V2Api.md#UpdatePKICertIssuer) | **Post** /update-pki-cert-issuer | 
 [**UpdateRDPTargetDetails**](V2Api.md#UpdateRDPTargetDetails) | **Post** /update-rdp-target-details | 
@@ -13391,6 +13393,134 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**UpdateItemOutput**](updateItemOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateLdapTarget
+
+> UpdateLdapTargetOutput UpdateLdapTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewupdateLdapTarget("Name_example") // UpdateLdapTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdateLdapTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateLdapTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateLdapTarget`: UpdateLdapTargetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateLdapTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateLdapTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateLdapTarget**](UpdateLdapTarget.md) |  | 
+
+### Return type
+
+[**UpdateLdapTargetOutput**](updateLdapTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateLdapTargetDetails
+
+> UpdateTargetOutput UpdateLdapTargetDetails(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewupdateLdapTargetDetails("Name_example") // UpdateLdapTargetDetails | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdateLdapTargetDetails(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateLdapTargetDetails``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateLdapTargetDetails`: UpdateTargetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateLdapTargetDetails`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateLdapTargetDetailsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateLdapTargetDetails**](UpdateLdapTargetDetails.md) |  | 
+
+### Return type
+
+[**UpdateTargetOutput**](updateTargetOutput.md)
 
 ### Authorization
 

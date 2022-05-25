@@ -11,6 +11,9 @@ Name | Type | Description | Notes
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Target name | 
 **NewName** | Pointer to **string** | New target name | [optional] 
+**ResourceGroupName** | Pointer to **string** | The Resource Group name in your Azure subscription | [optional] 
+**ResourceName** | Pointer to **string** | The name of the relevant Resource | [optional] 
+**SubscriptionId** | Pointer to **string** | Azure Subscription Id | [optional] 
 **TenantId** | Pointer to **string** |  | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -205,6 +208,81 @@ SetNewName sets NewName field to given value.
 `func (o *UpdateAzureTarget) HasNewName() bool`
 
 HasNewName returns a boolean if a field has been set.
+
+### GetResourceGroupName
+
+`func (o *UpdateAzureTarget) GetResourceGroupName() string`
+
+GetResourceGroupName returns the ResourceGroupName field if non-nil, zero value otherwise.
+
+### GetResourceGroupNameOk
+
+`func (o *UpdateAzureTarget) GetResourceGroupNameOk() (*string, bool)`
+
+GetResourceGroupNameOk returns a tuple with the ResourceGroupName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResourceGroupName
+
+`func (o *UpdateAzureTarget) SetResourceGroupName(v string)`
+
+SetResourceGroupName sets ResourceGroupName field to given value.
+
+### HasResourceGroupName
+
+`func (o *UpdateAzureTarget) HasResourceGroupName() bool`
+
+HasResourceGroupName returns a boolean if a field has been set.
+
+### GetResourceName
+
+`func (o *UpdateAzureTarget) GetResourceName() string`
+
+GetResourceName returns the ResourceName field if non-nil, zero value otherwise.
+
+### GetResourceNameOk
+
+`func (o *UpdateAzureTarget) GetResourceNameOk() (*string, bool)`
+
+GetResourceNameOk returns a tuple with the ResourceName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResourceName
+
+`func (o *UpdateAzureTarget) SetResourceName(v string)`
+
+SetResourceName sets ResourceName field to given value.
+
+### HasResourceName
+
+`func (o *UpdateAzureTarget) HasResourceName() bool`
+
+HasResourceName returns a boolean if a field has been set.
+
+### GetSubscriptionId
+
+`func (o *UpdateAzureTarget) GetSubscriptionId() string`
+
+GetSubscriptionId returns the SubscriptionId field if non-nil, zero value otherwise.
+
+### GetSubscriptionIdOk
+
+`func (o *UpdateAzureTarget) GetSubscriptionIdOk() (*string, bool)`
+
+GetSubscriptionIdOk returns a tuple with the SubscriptionId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSubscriptionId
+
+`func (o *UpdateAzureTarget) SetSubscriptionId(v string)`
+
+SetSubscriptionId sets SubscriptionId field to given value.
+
+### HasSubscriptionId
+
+`func (o *UpdateAzureTarget) HasSubscriptionId() bool`
+
+HasSubscriptionId returns a boolean if a field has been set.
 
 ### GetTenantId
 

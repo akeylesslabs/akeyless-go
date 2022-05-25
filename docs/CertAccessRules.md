@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **BoundExtensions** | Pointer to **[]string** | A list of extensions formatted as \&quot;oid:value\&quot;. Expects the extension value to be some type of ASN1 encoded string. All values must match. Supports globbing on \&quot;value\&quot;. | [optional] 
 **BoundOrganizationalUnits** | Pointer to **[]string** | A list of Organizational Units names. At least one must exist in the OU field. | [optional] 
 **BoundUriSans** | Pointer to **[]string** | A list of URIs. At least one must exist in the SANs. Supports globbing. | [optional] 
-**Certificate** | Pointer to **[]int32** | Base64 encdoed PEM certificate | [optional] 
+**Certificate** | Pointer to **string** | Base64 encdoed PEM certificate | [optional] 
 **RevokedCertIds** | Pointer to **[]string** | A list of revoked cert ids | [optional] 
 **UniqueIdentifier** | Pointer to **string** | A unique identifier to distinguish different users | [optional] 
 
@@ -185,20 +185,20 @@ HasBoundUriSans returns a boolean if a field has been set.
 
 ### GetCertificate
 
-`func (o *CertAccessRules) GetCertificate() []int32`
+`func (o *CertAccessRules) GetCertificate() string`
 
 GetCertificate returns the Certificate field if non-nil, zero value otherwise.
 
 ### GetCertificateOk
 
-`func (o *CertAccessRules) GetCertificateOk() (*[]int32, bool)`
+`func (o *CertAccessRules) GetCertificateOk() (*string, bool)`
 
 GetCertificateOk returns a tuple with the Certificate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCertificate
 
-`func (o *CertAccessRules) SetCertificate(v []int32)`
+`func (o *CertAccessRules) SetCertificate(v string)`
 
 SetCertificate sets Certificate field to given value.
 

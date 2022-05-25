@@ -36,6 +36,7 @@ Name | Type | Description | Notes
 **SecureAccessWebProxy** | Pointer to **bool** | Secure Access Web Proxy (used in aws, azure) | [optional] [default to false]
 **SshPassword** | Pointer to **string** | Deprecated: use RotatedPassword | [optional] 
 **SshUsername** | Pointer to **string** | Deprecated: use RotatedUser | [optional] 
+**StorageAccountKeyName** | Pointer to **string** | The name of the storage account key to rotate [key1/key2/kerb1/kerb2] (relevat to azure-storage-account) | [optional] 
 **Tags** | Pointer to **[]string** | List of the tags attached to this secret | [optional] 
 **TargetName** | **string** | Target name | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -851,6 +852,31 @@ SetSshUsername sets SshUsername field to given value.
 `func (o *CreateRotatedSecret) HasSshUsername() bool`
 
 HasSshUsername returns a boolean if a field has been set.
+
+### GetStorageAccountKeyName
+
+`func (o *CreateRotatedSecret) GetStorageAccountKeyName() string`
+
+GetStorageAccountKeyName returns the StorageAccountKeyName field if non-nil, zero value otherwise.
+
+### GetStorageAccountKeyNameOk
+
+`func (o *CreateRotatedSecret) GetStorageAccountKeyNameOk() (*string, bool)`
+
+GetStorageAccountKeyNameOk returns a tuple with the StorageAccountKeyName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStorageAccountKeyName
+
+`func (o *CreateRotatedSecret) SetStorageAccountKeyName(v string)`
+
+SetStorageAccountKeyName sets StorageAccountKeyName field to given value.
+
+### HasStorageAccountKeyName
+
+`func (o *CreateRotatedSecret) HasStorageAccountKeyName() bool`
+
+HasStorageAccountKeyName returns a boolean if a field has been set.
 
 ### GetTags
 

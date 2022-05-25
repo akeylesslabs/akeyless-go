@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **RedshiftUsername** | Pointer to **string** | Redshift Username | [optional] 
 **SecureAccessEnable** | Pointer to **string** |  | [optional] 
 **SecureAccessHost** | Pointer to **[]string** |  | [optional] 
+**Ssl** | Pointer to **bool** | SSL connection mode | [optional] 
 **Tags** | Pointer to **[]string** | List of the tags attached to this secret | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -309,6 +310,31 @@ SetSecureAccessHost sets SecureAccessHost field to given value.
 `func (o *GatewayUpdateProducerRedshift) HasSecureAccessHost() bool`
 
 HasSecureAccessHost returns a boolean if a field has been set.
+
+### GetSsl
+
+`func (o *GatewayUpdateProducerRedshift) GetSsl() bool`
+
+GetSsl returns the Ssl field if non-nil, zero value otherwise.
+
+### GetSslOk
+
+`func (o *GatewayUpdateProducerRedshift) GetSslOk() (*bool, bool)`
+
+GetSslOk returns a tuple with the Ssl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSsl
+
+`func (o *GatewayUpdateProducerRedshift) SetSsl(v bool)`
+
+SetSsl sets Ssl field to given value.
+
+### HasSsl
+
+`func (o *GatewayUpdateProducerRedshift) HasSsl() bool`
+
+HasSsl returns a boolean if a field has been set.
 
 ### GetTags
 

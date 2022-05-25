@@ -26,6 +26,9 @@ type TargetTypeDetailsInput struct {
 	AwsSessionToken *string `json:"aws_session_token,omitempty"`
 	AzureClientId *string `json:"azure_client_id,omitempty"`
 	AzureClientSecret *string `json:"azure_client_secret,omitempty"`
+	AzureResourceGroupName *string `json:"azure_resource_group_name,omitempty"`
+	AzureResourceName *string `json:"azure_resource_name,omitempty"`
+	AzureSubscriptionId *string `json:"azure_subscription_id,omitempty"`
 	AzureTenantId *string `json:"azure_tenant_id,omitempty"`
 	// CACertData is the rsa 4096 certificate data in PEM format
 	CaCertData *[]int32 `json:"ca_cert_data,omitempty"`
@@ -418,6 +421,102 @@ func (o *TargetTypeDetailsInput) HasAzureClientSecret() bool {
 // SetAzureClientSecret gets a reference to the given string and assigns it to the AzureClientSecret field.
 func (o *TargetTypeDetailsInput) SetAzureClientSecret(v string) {
 	o.AzureClientSecret = &v
+}
+
+// GetAzureResourceGroupName returns the AzureResourceGroupName field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetAzureResourceGroupName() string {
+	if o == nil || o.AzureResourceGroupName == nil {
+		var ret string
+		return ret
+	}
+	return *o.AzureResourceGroupName
+}
+
+// GetAzureResourceGroupNameOk returns a tuple with the AzureResourceGroupName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetAzureResourceGroupNameOk() (*string, bool) {
+	if o == nil || o.AzureResourceGroupName == nil {
+		return nil, false
+	}
+	return o.AzureResourceGroupName, true
+}
+
+// HasAzureResourceGroupName returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasAzureResourceGroupName() bool {
+	if o != nil && o.AzureResourceGroupName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureResourceGroupName gets a reference to the given string and assigns it to the AzureResourceGroupName field.
+func (o *TargetTypeDetailsInput) SetAzureResourceGroupName(v string) {
+	o.AzureResourceGroupName = &v
+}
+
+// GetAzureResourceName returns the AzureResourceName field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetAzureResourceName() string {
+	if o == nil || o.AzureResourceName == nil {
+		var ret string
+		return ret
+	}
+	return *o.AzureResourceName
+}
+
+// GetAzureResourceNameOk returns a tuple with the AzureResourceName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetAzureResourceNameOk() (*string, bool) {
+	if o == nil || o.AzureResourceName == nil {
+		return nil, false
+	}
+	return o.AzureResourceName, true
+}
+
+// HasAzureResourceName returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasAzureResourceName() bool {
+	if o != nil && o.AzureResourceName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureResourceName gets a reference to the given string and assigns it to the AzureResourceName field.
+func (o *TargetTypeDetailsInput) SetAzureResourceName(v string) {
+	o.AzureResourceName = &v
+}
+
+// GetAzureSubscriptionId returns the AzureSubscriptionId field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetAzureSubscriptionId() string {
+	if o == nil || o.AzureSubscriptionId == nil {
+		var ret string
+		return ret
+	}
+	return *o.AzureSubscriptionId
+}
+
+// GetAzureSubscriptionIdOk returns a tuple with the AzureSubscriptionId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetAzureSubscriptionIdOk() (*string, bool) {
+	if o == nil || o.AzureSubscriptionId == nil {
+		return nil, false
+	}
+	return o.AzureSubscriptionId, true
+}
+
+// HasAzureSubscriptionId returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasAzureSubscriptionId() bool {
+	if o != nil && o.AzureSubscriptionId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureSubscriptionId gets a reference to the given string and assigns it to the AzureSubscriptionId field.
+func (o *TargetTypeDetailsInput) SetAzureSubscriptionId(v string) {
+	o.AzureSubscriptionId = &v
 }
 
 // GetAzureTenantId returns the AzureTenantId field value if set, zero value otherwise.
@@ -2944,6 +3043,15 @@ func (o TargetTypeDetailsInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.AzureClientSecret != nil {
 		toSerialize["azure_client_secret"] = o.AzureClientSecret
+	}
+	if o.AzureResourceGroupName != nil {
+		toSerialize["azure_resource_group_name"] = o.AzureResourceGroupName
+	}
+	if o.AzureResourceName != nil {
+		toSerialize["azure_resource_name"] = o.AzureResourceName
+	}
+	if o.AzureSubscriptionId != nil {
+		toSerialize["azure_subscription_id"] = o.AzureSubscriptionId
 	}
 	if o.AzureTenantId != nil {
 		toSerialize["azure_tenant_id"] = o.AzureTenantId

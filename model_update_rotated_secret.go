@@ -76,6 +76,8 @@ type UpdateRotatedSecret struct {
 	SshPassword *string `json:"ssh-password,omitempty"`
 	// Deprecated: use RotatedUser
 	SshUsername *string `json:"ssh-username,omitempty"`
+	// The name of the storage account key to rotate [key1/key2/kerb1/kerb2]
+	StorageAccountKeyName *string `json:"storage-account-key-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -1204,6 +1206,38 @@ func (o *UpdateRotatedSecret) SetSshUsername(v string) {
 	o.SshUsername = &v
 }
 
+// GetStorageAccountKeyName returns the StorageAccountKeyName field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetStorageAccountKeyName() string {
+	if o == nil || o.StorageAccountKeyName == nil {
+		var ret string
+		return ret
+	}
+	return *o.StorageAccountKeyName
+}
+
+// GetStorageAccountKeyNameOk returns a tuple with the StorageAccountKeyName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetStorageAccountKeyNameOk() (*string, bool) {
+	if o == nil || o.StorageAccountKeyName == nil {
+		return nil, false
+	}
+	return o.StorageAccountKeyName, true
+}
+
+// HasStorageAccountKeyName returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasStorageAccountKeyName() bool {
+	if o != nil && o.StorageAccountKeyName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetStorageAccountKeyName gets a reference to the given string and assigns it to the StorageAccountKeyName field.
+func (o *UpdateRotatedSecret) SetStorageAccountKeyName(v string) {
+	o.StorageAccountKeyName = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *UpdateRotatedSecret) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -1371,6 +1405,9 @@ func (o UpdateRotatedSecret) MarshalJSON() ([]byte, error) {
 	}
 	if o.SshUsername != nil {
 		toSerialize["ssh-username"] = o.SshUsername
+	}
+	if o.StorageAccountKeyName != nil {
+		toSerialize["storage-account-key-name"] = o.StorageAccountKeyName
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

@@ -30,7 +30,7 @@ type CertAccessRules struct {
 	// A list of URIs. At least one must exist in the SANs. Supports globbing.
 	BoundUriSans *[]string `json:"bound_uri_sans,omitempty"`
 	// Base64 encdoed PEM certificate
-	Certificate *[]int32 `json:"certificate,omitempty"`
+	Certificate *string `json:"certificate,omitempty"`
 	// A list of revoked cert ids
 	RevokedCertIds *[]string `json:"revoked_cert_ids,omitempty"`
 	// A unique identifier to distinguish different users
@@ -247,9 +247,9 @@ func (o *CertAccessRules) SetBoundUriSans(v []string) {
 }
 
 // GetCertificate returns the Certificate field value if set, zero value otherwise.
-func (o *CertAccessRules) GetCertificate() []int32 {
+func (o *CertAccessRules) GetCertificate() string {
 	if o == nil || o.Certificate == nil {
-		var ret []int32
+		var ret string
 		return ret
 	}
 	return *o.Certificate
@@ -257,7 +257,7 @@ func (o *CertAccessRules) GetCertificate() []int32 {
 
 // GetCertificateOk returns a tuple with the Certificate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CertAccessRules) GetCertificateOk() (*[]int32, bool) {
+func (o *CertAccessRules) GetCertificateOk() (*string, bool) {
 	if o == nil || o.Certificate == nil {
 		return nil, false
 	}
@@ -273,8 +273,8 @@ func (o *CertAccessRules) HasCertificate() bool {
 	return false
 }
 
-// SetCertificate gets a reference to the given []int32 and assigns it to the Certificate field.
-func (o *CertAccessRules) SetCertificate(v []int32) {
+// SetCertificate gets a reference to the given string and assigns it to the Certificate field.
+func (o *CertAccessRules) SetCertificate(v string) {
 	o.Certificate = &v
 }
 

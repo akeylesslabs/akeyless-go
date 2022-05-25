@@ -492,6 +492,9 @@ docs/UpdateGithubTarget.md
 docs/UpdateGithubTargetOutput.md
 docs/UpdateItem.md
 docs/UpdateItemOutput.md
+docs/UpdateLdapTarget.md
+docs/UpdateLdapTargetDetails.md
+docs/UpdateLdapTargetOutput.md
 docs/UpdateNativeK8STarget.md
 docs/UpdateNativeK8STargetOutput.md
 docs/UpdateOutput.md
@@ -1024,6 +1027,9 @@ model_update_gke_target.go
 model_update_gke_target_output.go
 model_update_item.go
 model_update_item_output.go
+model_update_ldap_target.go
+model_update_ldap_target_details.go
+model_update_ldap_target_output.go
 model_update_native_k8_s_target.go
 model_update_native_k8_s_target_output.go
 model_update_output.go

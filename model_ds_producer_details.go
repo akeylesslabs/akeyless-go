@@ -41,6 +41,9 @@ type DSProducerDetails struct {
 	AzureClientSecret *string `json:"azure_client_secret,omitempty"`
 	AzureFixedUserNameSubClaimKey *string `json:"azure_fixed_user_name_sub_claim_key,omitempty"`
 	AzureFixedUserOnly *bool `json:"azure_fixed_user_only,omitempty"`
+	AzureResourceGroupName *string `json:"azure_resource_group_name,omitempty"`
+	AzureResourceName *string `json:"azure_resource_name,omitempty"`
+	AzureSubscriptionId *string `json:"azure_subscription_id,omitempty"`
 	AzureTenantId *string `json:"azure_tenant_id,omitempty"`
 	AzureUserGroupsObjId *string `json:"azure_user_groups_obj_id,omitempty"`
 	AzureUserPortalAccess *bool `json:"azure_user_portal_access,omitempty"`
@@ -981,6 +984,102 @@ func (o *DSProducerDetails) HasAzureFixedUserOnly() bool {
 // SetAzureFixedUserOnly gets a reference to the given bool and assigns it to the AzureFixedUserOnly field.
 func (o *DSProducerDetails) SetAzureFixedUserOnly(v bool) {
 	o.AzureFixedUserOnly = &v
+}
+
+// GetAzureResourceGroupName returns the AzureResourceGroupName field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetAzureResourceGroupName() string {
+	if o == nil || o.AzureResourceGroupName == nil {
+		var ret string
+		return ret
+	}
+	return *o.AzureResourceGroupName
+}
+
+// GetAzureResourceGroupNameOk returns a tuple with the AzureResourceGroupName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetAzureResourceGroupNameOk() (*string, bool) {
+	if o == nil || o.AzureResourceGroupName == nil {
+		return nil, false
+	}
+	return o.AzureResourceGroupName, true
+}
+
+// HasAzureResourceGroupName returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasAzureResourceGroupName() bool {
+	if o != nil && o.AzureResourceGroupName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureResourceGroupName gets a reference to the given string and assigns it to the AzureResourceGroupName field.
+func (o *DSProducerDetails) SetAzureResourceGroupName(v string) {
+	o.AzureResourceGroupName = &v
+}
+
+// GetAzureResourceName returns the AzureResourceName field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetAzureResourceName() string {
+	if o == nil || o.AzureResourceName == nil {
+		var ret string
+		return ret
+	}
+	return *o.AzureResourceName
+}
+
+// GetAzureResourceNameOk returns a tuple with the AzureResourceName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetAzureResourceNameOk() (*string, bool) {
+	if o == nil || o.AzureResourceName == nil {
+		return nil, false
+	}
+	return o.AzureResourceName, true
+}
+
+// HasAzureResourceName returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasAzureResourceName() bool {
+	if o != nil && o.AzureResourceName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureResourceName gets a reference to the given string and assigns it to the AzureResourceName field.
+func (o *DSProducerDetails) SetAzureResourceName(v string) {
+	o.AzureResourceName = &v
+}
+
+// GetAzureSubscriptionId returns the AzureSubscriptionId field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetAzureSubscriptionId() string {
+	if o == nil || o.AzureSubscriptionId == nil {
+		var ret string
+		return ret
+	}
+	return *o.AzureSubscriptionId
+}
+
+// GetAzureSubscriptionIdOk returns a tuple with the AzureSubscriptionId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetAzureSubscriptionIdOk() (*string, bool) {
+	if o == nil || o.AzureSubscriptionId == nil {
+		return nil, false
+	}
+	return o.AzureSubscriptionId, true
+}
+
+// HasAzureSubscriptionId returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasAzureSubscriptionId() bool {
+	if o != nil && o.AzureSubscriptionId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureSubscriptionId gets a reference to the given string and assigns it to the AzureSubscriptionId field.
+func (o *DSProducerDetails) SetAzureSubscriptionId(v string) {
+	o.AzureSubscriptionId = &v
 }
 
 // GetAzureTenantId returns the AzureTenantId field value if set, zero value otherwise.
@@ -5696,6 +5795,15 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.AzureFixedUserOnly != nil {
 		toSerialize["azure_fixed_user_only"] = o.AzureFixedUserOnly
+	}
+	if o.AzureResourceGroupName != nil {
+		toSerialize["azure_resource_group_name"] = o.AzureResourceGroupName
+	}
+	if o.AzureResourceName != nil {
+		toSerialize["azure_resource_name"] = o.AzureResourceName
+	}
+	if o.AzureSubscriptionId != nil {
+		toSerialize["azure_subscription_id"] = o.AzureSubscriptionId
 	}
 	if o.AzureTenantId != nil {
 		toSerialize["azure_tenant_id"] = o.AzureTenantId
