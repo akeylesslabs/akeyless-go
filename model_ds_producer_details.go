@@ -71,6 +71,7 @@ type DSProducerDetails struct {
 	// (Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client's handshake to support virtual hosting unless it is an IP address.
 	DbServerName *string `json:"db_server_name,omitempty"`
 	DbUserName *string `json:"db_user_name,omitempty"`
+	DeleteProtection *bool `json:"delete_protection,omitempty"`
 	DynamicSecretId *int64 `json:"dynamic_secret_id,omitempty"`
 	DynamicSecretKey *string `json:"dynamic_secret_key,omitempty"`
 	DynamicSecretName *string `json:"dynamic_secret_name,omitempty"`
@@ -126,6 +127,7 @@ type DSProducerDetails struct {
 	LdapUrl *string `json:"ldap_url,omitempty"`
 	LdapUserAttr *string `json:"ldap_user_attr,omitempty"`
 	LdapUserDn *string `json:"ldap_user_dn,omitempty"`
+	Metadata *string `json:"metadata,omitempty"`
 	MongodbAtlasApiPrivateKey *string `json:"mongodb_atlas_api_private_key,omitempty"`
 	MongodbAtlasApiPublicKey *string `json:"mongodb_atlas_api_public_key,omitempty"`
 	// mongodb atlas fields
@@ -1880,6 +1882,38 @@ func (o *DSProducerDetails) HasDbUserName() bool {
 // SetDbUserName gets a reference to the given string and assigns it to the DbUserName field.
 func (o *DSProducerDetails) SetDbUserName(v string) {
 	o.DbUserName = &v
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetDeleteProtection() bool {
+	if o == nil || o.DeleteProtection == nil {
+		var ret bool
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetDeleteProtectionOk() (*bool, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given bool and assigns it to the DeleteProtection field.
+func (o *DSProducerDetails) SetDeleteProtection(v bool) {
+	o.DeleteProtection = &v
 }
 
 // GetDynamicSecretId returns the DynamicSecretId field value if set, zero value otherwise.
@@ -3640,6 +3674,38 @@ func (o *DSProducerDetails) HasLdapUserDn() bool {
 // SetLdapUserDn gets a reference to the given string and assigns it to the LdapUserDn field.
 func (o *DSProducerDetails) SetLdapUserDn(v string) {
 	o.LdapUserDn = &v
+}
+
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetMetadata() string {
+	if o == nil || o.Metadata == nil {
+		var ret string
+		return ret
+	}
+	return *o.Metadata
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetMetadataOk() (*string, bool) {
+	if o == nil || o.Metadata == nil {
+		return nil, false
+	}
+	return o.Metadata, true
+}
+
+// HasMetadata returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasMetadata() bool {
+	if o != nil && o.Metadata != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given string and assigns it to the Metadata field.
+func (o *DSProducerDetails) SetMetadata(v string) {
+	o.Metadata = &v
 }
 
 // GetMongodbAtlasApiPrivateKey returns the MongodbAtlasApiPrivateKey field value if set, zero value otherwise.
@@ -5880,6 +5946,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	if o.DbUserName != nil {
 		toSerialize["db_user_name"] = o.DbUserName
 	}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
+	}
 	if o.DynamicSecretId != nil {
 		toSerialize["dynamic_secret_id"] = o.DynamicSecretId
 	}
@@ -6044,6 +6113,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.LdapUserDn != nil {
 		toSerialize["ldap_user_dn"] = o.LdapUserDn
+	}
+	if o.Metadata != nil {
+		toSerialize["metadata"] = o.Metadata
 	}
 	if o.MongodbAtlasApiPrivateKey != nil {
 		toSerialize["mongodb_atlas_api_private_key"] = o.MongodbAtlasApiPrivateKey

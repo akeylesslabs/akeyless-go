@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **BoundUriSans** | Pointer to **[]string** | A list of URIs. At least one must exist in the SANs. Supports globbing. | [optional] 
 **CertificateData** | Pointer to **string** | The certificate data in base64, if no file was provided | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
+**GwBoundIps** | Pointer to **[]string** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
 **JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] 
 **Name** | **string** | Auth Method name | 
 **RevokedCertIds** | Pointer to **[]string** | A list of revoked cert ids | [optional] 
@@ -289,6 +290,31 @@ SetForceSubClaims sets ForceSubClaims field to given value.
 `func (o *CreateAuthMethodCert) HasForceSubClaims() bool`
 
 HasForceSubClaims returns a boolean if a field has been set.
+
+### GetGwBoundIps
+
+`func (o *CreateAuthMethodCert) GetGwBoundIps() []string`
+
+GetGwBoundIps returns the GwBoundIps field if non-nil, zero value otherwise.
+
+### GetGwBoundIpsOk
+
+`func (o *CreateAuthMethodCert) GetGwBoundIpsOk() (*[]string, bool)`
+
+GetGwBoundIpsOk returns a tuple with the GwBoundIps field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGwBoundIps
+
+`func (o *CreateAuthMethodCert) SetGwBoundIps(v []string)`
+
+SetGwBoundIps sets GwBoundIps field to given value.
+
+### HasGwBoundIps
+
+`func (o *CreateAuthMethodCert) HasGwBoundIps() bool`
+
+HasGwBoundIps returns a boolean if a field has been set.
 
 ### GetJwtTtl
 

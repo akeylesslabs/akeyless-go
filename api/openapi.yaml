@@ -1733,7 +1733,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/gatewayMigrationCreateOutput'
+                $ref: '#/components/schemas/GatewayMigrationCreateOutput'
           description: gatewayMigrationCreateResponse wraps response body.
         default:
           content:
@@ -2436,7 +2436,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/gatewayMigrationDeleteOutput'
+                $ref: '#/components/schemas/GatewayMigrationDeleteOutput'
           description: gatewayMigrationDeleteResponse wraps response body.
         default:
           content:
@@ -2519,6 +2519,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/gatewayGetK8SAuthConfigOutput'
           description: gatewayGetK8SAuthConfigResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /gateway-get-ldap-auth-config:
+    post:
+      operationId: gatewayGetLdapAuthConfig
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayGetLdapAuthConfig'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayGetLdapAuthConfigOutput'
+          description: gatewayGetLdapAuthConfigResponse wraps response body.
         default:
           content:
             application/json:
@@ -2813,7 +2840,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/gatewayMigrationSyncOutput'
+                $ref: '#/components/schemas/GatewayMigrationSyncOutput'
           description: gatewayMigrationSyncResponse wraps response body.
         default:
           content:
@@ -2880,6 +2907,33 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /gateway-update-ldap-auth-config:
+    post:
+      operationId: GatewayUpdateLdapAuthConfig
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GatewayUpdateLdapAuthConfig'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GatewayUpdateLdapAuthConfigOutput'
+          description: GatewayUpdateLdapAuthConfigResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /gateway-update-migration:
     post:
       operationId: gatewayUpdateMigration
@@ -2894,7 +2948,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/gatewayMigrationUpdateOutput'
+                $ref: '#/components/schemas/GatewayMigrationUpdateOutput'
           description: gatewayMigrationUpdateResponse wraps response body.
         default:
           content:
@@ -6265,6 +6319,12 @@ components:
           schema:
             $ref: '#/components/schemas/DescribePermissionsOutput'
       description: DescribePermissionsResponse wraps response body.
+    GatewayUpdateLdapAuthConfigResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GatewayUpdateLdapAuthConfigOutput'
+      description: GatewayUpdateLdapAuthConfigResponse wraps response body.
     assocRoleAuthMethodResponse:
       content:
         application/json:
@@ -6832,6 +6892,12 @@ components:
           schema:
             $ref: '#/components/schemas/gatewayGetK8SAuthConfigOutput'
       description: gatewayGetK8SAuthConfigResponse wraps response body.
+    gatewayGetLdapAuthConfigResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayGetLdapAuthConfigOutput'
+      description: gatewayGetLdapAuthConfigResponse wraps response body.
     gatewayGetProducerResponse:
       content:
         application/json:
@@ -6862,13 +6928,13 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/gatewayMigrationCreateOutput'
+            $ref: '#/components/schemas/GatewayMigrationCreateOutput'
       description: gatewayMigrationCreateResponse wraps response body.
     gatewayMigrationDeleteResponse:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/gatewayMigrationDeleteOutput'
+            $ref: '#/components/schemas/GatewayMigrationDeleteOutput'
       description: gatewayMigrationDeleteResponse wraps response body.
     gatewayMigrationGetResponse:
       content:
@@ -6886,13 +6952,13 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/gatewayMigrationSyncOutput'
+            $ref: '#/components/schemas/GatewayMigrationSyncOutput'
       description: gatewayMigrationSyncResponse wraps response body.
     gatewayMigrationUpdateResponse:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/gatewayMigrationUpdateOutput'
+            $ref: '#/components/schemas/GatewayMigrationUpdateOutput'
       description: gatewayMigrationUpdateResponse wraps response body.
     gatewayRevokeTmpUsersResponse:
       content: {}
@@ -8038,6 +8104,21 @@ components:
               secret: secret
               region: region
               key: key
+          gcp_secrets_migrations:
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              protection_key: protection_key
+            payload:
+              gcp_credentials_json: gcp_credentials_json
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              protection_key: protection_key
+            payload:
+              gcp_credentials_json: gcp_credentials_json
         leadership:
           open_leadership:
           - 9
@@ -8429,6 +8510,7 @@ components:
             revoked_cert_ids:
             - revoked_cert_ids
             - revoked_cert_ids
+          gw_cidr_whitelist: gw_cidr_whitelist
           force_sub_claims: true
           ldap_access_rules:
             unique_identifier: unique_identifier
@@ -8661,6 +8743,7 @@ components:
           revoked_cert_ids:
           - revoked_cert_ids
           - revoked_cert_ids
+        gw_cidr_whitelist: gw_cidr_whitelist
         force_sub_claims: true
         ldap_access_rules:
           unique_identifier: unique_identifier
@@ -8760,6 +8843,9 @@ components:
           x-go-name: ForceSubClaims
         gcp_access_rules:
           $ref: '#/components/schemas/GCPAccessRules'
+        gw_cidr_whitelist:
+          type: string
+          x-go-name: GWCIDRWhitelist
         huawei_access_rules:
           $ref: '#/components/schemas/HuaweiAccessRules'
         jwt_ttl:
@@ -9423,6 +9509,8 @@ components:
           migrations_status:
             last_messages:
               key: last_messages
+            last_reports:
+              key: last_reports
             last_statuses:
               key: last_statuses
           producers_errors: '{}'
@@ -9620,27 +9708,17 @@ components:
       description: CreateClassicKey is a command that creates classic key
       example:
         protection-key-name: protection-key-name
+        delete_protection: delete_protection
         metadata: metadata
-        purpose: purpose
+        name: name
+        alg: alg
         cert-file-data: cert-file-data
-        keyring-name: keyring-name
         key-data: key-data
-        kms-algorithm: kms-algorithm
         uid-token: uid-token
         tags:
         - tags
         - tags
         token: token
-        tenant-secret-type: tenant-secret-type
-        vault-name: vault-name
-        key-operations:
-        - key-operations
-        - key-operations
-        name: name
-        location-id: location-id
-        target-name: target-name
-        project-id: project-id
-        alg: alg
       properties:
         alg:
           description: 'Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV,
@@ -9651,29 +9729,14 @@ components:
           description: Certificate in a PEM format.
           type: string
           x-go-name: CertFileData
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         key-data:
           description: Base64-encoded classic key value
           type: string
           x-go-name: ClassicKeyValue
-        key-operations:
-          description: A list of allowed operations for the key (required for azure
-            targets)
-          items:
-            type: string
-          type: array
-          x-go-name: KeyOperations
-        keyring-name:
-          description: Keyring name of the GCP KMS (required for gcp targets)
-          type: string
-          x-go-name: KeyringName
-        kms-algorithm:
-          description: Algorithm of the key in GCP KMS (required for gcp targets)
-          type: string
-          x-go-name: KMSAlgorithm
-        location-id:
-          description: Location id of the GCP KMS (required for gcp targets)
-          type: string
-          x-go-name: LocationId
         metadata:
           description: Metadata about the classic key
           type: string
@@ -9682,34 +9745,17 @@ components:
           description: ClassicKey name
           type: string
           x-go-name: ClassicKeyName
-        project-id:
-          description: Project id of the GCP KMS (required for gcp targets)
-          type: string
-          x-go-name: ProjectId
         protection-key-name:
           description: The name of a key that used to encrypt the secret value (if
             empty, the account default protectionKey key will be used)
           type: string
           x-go-name: ProtectionKey
-        purpose:
-          description: Purpose of the key in GCP KMS (required for gcp targets)
-          type: string
-          x-go-name: Purpose
         tags:
           description: List of the tags attached to this classic key
           items:
             type: string
           type: array
           x-go-name: Tags
-        target-name:
-          description: Target name
-          type: string
-          x-go-name: TargetName
-        tenant-secret-type:
-          description: The tenant secret type [Data/SearchIndex/Analytics] (required
-            for salesforce targets)
-          type: string
-          x-go-name: TenantSecretType
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -9720,10 +9766,6 @@ components:
             authentication
           type: string
           x-go-name: UIDToken
-        vault-name:
-          description: Name of the vault used (required for azure targets)
-          type: string
-          x-go-name: VaultName
       required:
       - alg
       - name
@@ -9753,29 +9795,30 @@ components:
         key-usage: DigitalSignature,KeyAgreement,KeyEncipherment
         country: country
         metadata: metadata
-        code-signing-flag: true
-        locality: locality
-        allowed-domains: allowed-domains
         organizational-units: organizational-units
-        allow-any-name: true
-        ttl: 0
         uid-token: uid-token
         allow-subdomains: true
         not-require-cn: true
-        token: token
         allowed-uri-sans: allowed-uri-sans
-        client-flag: true
-        postal-code: postal-code
         province: province
-        server-flag: true
         street-address: street-address
-        name: name
-        organizations: organizations
         signer-key-name: signer-key-name
-        not-enforce-hostnames: true
         tag:
         - tag
         - tag
+        code-signing-flag: true
+        locality: locality
+        allowed-domains: allowed-domains
+        allow-any-name: true
+        ttl: 0
+        token: token
+        client-flag: true
+        delete_protection: delete_protection
+        postal-code: postal-code
+        server-flag: true
+        name: name
+        organizations: organizations
+        not-enforce-hostnames: true
       properties:
         allow-any-name:
           description: If set, clients can request certificates for any CN
@@ -9814,6 +9857,10 @@ components:
             certificate
           type: string
           x-go-name: Country
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         key-usage:
           default: DigitalSignature,KeyAgreement,KeyEncipherment
           description: key-usage
@@ -9981,6 +10028,7 @@ components:
         gke_cluster_endpoint: gke_cluster_endpoint
         dynamic_secret_type: dynamic_secret_type
         k8s_namespace: k8s_namespace
+        metadata: metadata
         venafi_sign_using_akeyless_pki: true
         dynamic_secret_key: dynamic_secret_key
         last_admin_rotation: 2
@@ -10027,6 +10075,7 @@ components:
         ldap_user_dn: ldap_user_dn
         azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
         mongodb_custom_data: mongodb_custom_data
+        delete_protection: true
         db_name: db_name
         k8s_service_account: k8s_service_account
         chef_skip_ssl: true
@@ -10363,6 +10412,9 @@ components:
         db_user_name:
           type: string
           x-go-name: DbUserName
+        delete_protection:
+          type: boolean
+          x-go-name: ItemProtected
         dynamic_secret_id:
           format: int64
           type: integer
@@ -10541,6 +10593,9 @@ components:
         ldap_user_dn:
           type: string
           x-go-name: UserDn
+        metadata:
+          type: string
+          x-go-name: Metadata
         mongodb_atlas_api_private_key:
           type: string
           x-go-name: MongoDBAtlasAPIPrivateKey
@@ -11075,6 +11130,31 @@ components:
     GCPCredentialsType:
       type: string
       x-go-package: akeyless.io/akeyless-main-repo/go/src/producer/config
+    GCPPayload:
+      example:
+        gcp_credentials_json: gcp_credentials_json
+      properties:
+        gcp_credentials_json:
+          type: string
+          x-go-name: Key
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    GCPSecretsMigration:
+      example:
+        general:
+          prefix: prefix
+          name: name
+          id: id
+          protection_key: protection_key
+        payload:
+          gcp_credentials_json: gcp_credentials_json
+      properties:
+        general:
+          $ref: '#/components/schemas/MigrationGeneral'
+        payload:
+          $ref: '#/components/schemas/GCPPayload'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     GatewayMessageQueueInfo:
       example:
         queue_name: queue_name
@@ -11092,6 +11172,136 @@ components:
           x-go-name: QueueURL
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    GatewayMigrationCreateOutput:
+      example:
+        migration_name: migration_name
+      properties:
+        migration_name:
+          type: string
+          x-go-name: MigrationName
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    GatewayMigrationDeleteOutput:
+      example:
+        migration_id: migration_id
+      properties:
+        migration_id:
+          type: string
+          x-go-name: MigrationId
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    GatewayMigrationSyncOutput:
+      example:
+        migration_name: migration_name
+      properties:
+        migration_name:
+          type: string
+          x-go-name: MigrationName
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    GatewayMigrationUpdateOutput:
+      example:
+        migration_name: migration_name
+      properties:
+        migration_name:
+          type: string
+          x-go-name: MigrationName
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    GatewayUpdateLdapAuthConfig:
+      description: gatewayUpdateLdapAuth is a command that updates ldap auth config
+      example:
+        ldap-enable: ldap-enable
+        ldap_anonymous_search: true
+        access-id: access-id
+        user-attribute: user-attribute
+        bind-dn-password: bind-dn-password
+        uid-token: uid-token
+        token: token
+        bind-dn: bind-dn
+        group-filter: group-filter
+        group-dn: group-dn
+        ldap-ca-cert: ldap-ca-cert
+        user-dn: user-dn
+        group-attr: group-attr
+        signing-key-data: signing-key-data
+        ldap-url: ldap-url
+      properties:
+        access-id:
+          description: The access ID of the Ldap auth method
+          type: string
+          x-go-name: AuthMethodAccessId
+        bind-dn:
+          description: Bind DN
+          type: string
+          x-go-name: BindDn
+        bind-dn-password:
+          description: Bind DN Password
+          type: string
+          x-go-name: BindDnPassword
+        group-attr:
+          description: Group Attr
+          type: string
+          x-go-name: GroupAttr
+        group-dn:
+          description: Group Dn
+          type: string
+          x-go-name: GroupDn
+        group-filter:
+          description: Group Filter
+          type: string
+          x-go-name: GroupFilter
+        ldap-ca-cert:
+          description: The CA Cert (in PEM format) to use to call into the ldap API
+            server
+          type: string
+          x-go-name: LdapCACert
+        ldap-enable:
+          description: Enable Ldap
+          type: string
+          x-go-name: LdapEnable
+        ldap-url:
+          description: LDAP Server URL, e.g. ldap://planetexpress.com:389
+          type: string
+          x-go-name: LdapUrlAddress
+        ldap_anonymous_search:
+          description: Ldap Anonymous Search
+          type: boolean
+          x-go-name: LdapAnonymousSearch
+        signing-key-data:
+          description: The private key (in PEM format) associated with the public
+            key defined in the Ldap auth
+          type: string
+          x-go-name: AuthMethodSigningKey
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        user-attribute:
+          description: User Attribute
+          type: string
+          x-go-name: UserAttribute
+        user-dn:
+          description: User DN
+          type: string
+          x-go-name: UserDn
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    GatewayUpdateLdapAuthConfigOutput:
+      example:
+        updated: true
+      properties:
+        updated:
+          type: boolean
+          x-go-name: Updated
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     GeneralConfigPart:
       example:
         tcp_port: tcp_port
@@ -11870,6 +12080,7 @@ components:
             cert_issuer_type: cert_issuer_type
         last_version: 6
         next_rotation_date: 2000-01-23T04:56:07.000+00:00
+        delete_protection: true
         client_permissions:
         - client_permissions
         - client_permissions
@@ -11897,6 +12108,9 @@ components:
         customer_fragment_id:
           type: string
           x-go-name: CustomerFragmentId
+        delete_protection:
+          type: boolean
+          x-go-name: ItemProtected
         deletion_date:
           format: date-time
           type: string
@@ -12873,6 +13087,8 @@ components:
         migrations_status:
           last_messages:
             key: last_messages
+          last_reports:
+            key: last_reports
           last_statuses:
             key: last_statuses
         producers_errors: '{}'
@@ -13142,6 +13358,7 @@ components:
               revoked_cert_ids:
               - revoked_cert_ids
               - revoked_cert_ids
+            gw_cidr_whitelist: gw_cidr_whitelist
             force_sub_claims: true
             ldap_access_rules:
               unique_identifier: unique_identifier
@@ -13391,6 +13608,7 @@ components:
               revoked_cert_ids:
               - revoked_cert_ids
               - revoked_cert_ids
+            gw_cidr_whitelist: gw_cidr_whitelist
             force_sub_claims: true
             ldap_access_rules:
               unique_identifier: unique_identifier
@@ -13788,6 +14006,7 @@ components:
               cert_issuer_type: cert_issuer_type
           last_version: 6
           next_rotation_date: 2000-01-23T04:56:07.000+00:00
+          delete_protection: true
           client_permissions:
           - client_permissions
           - client_permissions
@@ -14103,6 +14322,7 @@ components:
               cert_issuer_type: cert_issuer_type
           last_version: 6
           next_rotation_date: 2000-01-23T04:56:07.000+00:00
+          delete_protection: true
           client_permissions:
           - client_permissions
           - client_permissions
@@ -14432,6 +14652,8 @@ components:
       example:
         last_messages:
           key: last_messages
+        last_reports:
+          key: last_reports
         last_statuses:
           key: last_statuses
       properties:
@@ -14440,6 +14662,11 @@ components:
             type: string
           type: object
           x-go-name: LastMessages
+        last_reports:
+          additionalProperties:
+            type: string
+          type: object
+          x-go-name: LastReports
         last_statuses:
           additionalProperties:
             type: string
@@ -14586,6 +14813,21 @@ components:
             secret: secret
             region: region
             key: key
+        gcp_secrets_migrations:
+        - general:
+            prefix: prefix
+            name: name
+            id: id
+            protection_key: protection_key
+          payload:
+            gcp_credentials_json: gcp_credentials_json
+        - general:
+            prefix: prefix
+            name: name
+            id: id
+            protection_key: protection_key
+          payload:
+            gcp_credentials_json: gcp_credentials_json
       properties:
         aws_secrets_migrations:
           items:
@@ -14597,6 +14839,11 @@ components:
             $ref: '#/components/schemas/AzureKeyVaultMigration'
           type: array
           x-go-name: AzureKVMigrations
+        gcp_secrets_migrations:
+          items:
+            $ref: '#/components/schemas/GCPSecretsMigration'
+          type: array
+          x-go-name: GCPSecretsMigrations
         hashi_migrations:
           items:
             $ref: '#/components/schemas/HashiMigration'
@@ -15305,8 +15552,17 @@ components:
       description: RotateKeyOutput defines output of RotateKey operation
       example:
         next_rotation_date: 2000-01-23T04:56:07.000+00:00
+        item_type: item_type
+        classic_key_gw_url: classic_key_gw_url
         new_item_version: 0
       properties:
+        classic_key_gw_url:
+          type: string
+          x-go-name: ClassicKeyGWUrl
+        item_type:
+          title: ItemType defines types supported by AKEYLESS.
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
         new_item_version:
           format: int32
           type: integer
@@ -16844,14 +17100,46 @@ components:
         assocTargetItem is a command that creates an association between target
         and item.
       properties:
+        key-operations:
+          description: A list of allowed operations for the key (required for azure
+            targets)
+          items:
+            type: string
+          type: array
+          x-go-name: KeyOperations
+        keyring-name:
+          description: Keyring name of the GCP KMS (required for gcp targets)
+          type: string
+          x-go-name: KeyringName
+        kms-algorithm:
+          description: Algorithm of the key in GCP KMS (required for gcp targets)
+          type: string
+          x-go-name: KMSAlgorithm
+        location-id:
+          description: Location id of the GCP KMS (required for gcp targets)
+          type: string
+          x-go-name: LocationId
         name:
           description: The item to associate
           type: string
           x-go-name: ItemName
+        project-id:
+          description: Project id of the GCP KMS (required for gcp targets)
+          type: string
+          x-go-name: ProjectId
+        purpose:
+          description: Purpose of the key in GCP KMS (required for gcp targets)
+          type: string
+          x-go-name: Purpose
         target-name:
           description: The target to associate
           type: string
           x-go-name: TargetName
+        tenant-secret-type:
+          description: The tenant secret type [Data/SearchIndex/Analytics] (required
+            for salesforce targets)
+          type: string
+          x-go-name: TenantSecretType
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -16862,6 +17150,10 @@ components:
             authentication
           type: string
           x-go-name: UIDToken
+        vault-name:
+          description: Name of the vault used (required for azure targets)
+          type: string
+          x-go-name: VaultName
       required:
       - name
       - target-name
@@ -17163,6 +17455,13 @@ components:
           description: 'if true: enforce role-association must include sub claims'
           type: boolean
           x-go-name: ForceSubClaims
+        gw-bound-ips:
+          description: A CIDR whitelist with the GW IPs that the access is restricted
+            to
+          items:
+            type: string
+          type: array
+          x-go-name: GWCIDRWhitelist
         jwt-ttl:
           description: Jwt TTL
           format: int64
@@ -17253,6 +17552,13 @@ components:
           description: 'if true: enforce role-association must include sub claims'
           type: boolean
           x-go-name: ForceSubClaims
+        gw-bound-ips:
+          description: A CIDR whitelist with the GW IPs that the access is restricted
+            to
+          items:
+            type: string
+          type: array
+          x-go-name: GWCIDRWhitelist
         jwt-ttl:
           description: Jwt TTL
           format: int64
@@ -17379,6 +17685,13 @@ components:
           description: 'if true: enforce role-association must include sub claims'
           type: boolean
           x-go-name: ForceSubClaims
+        gw-bound-ips:
+          description: A CIDR whitelist with the GW IPs that the access is restricted
+            to
+          items:
+            type: string
+          type: array
+          x-go-name: GWCIDRWhitelist
         issuer:
           default: https://sts.windows.net/---bound_tenant_id---
           description: Issuer URL
@@ -17496,6 +17809,13 @@ components:
           description: 'if true: enforce role-association must include sub claims'
           type: boolean
           x-go-name: ForceSubClaims
+        gw-bound-ips:
+          description: A CIDR whitelist with the GW IPs that the access is restricted
+            to
+          items:
+            type: string
+          type: array
+          x-go-name: GWCIDRWhitelist
         jwt-ttl:
           description: Jwt TTL
           format: int64
@@ -17615,6 +17935,13 @@ components:
           description: 'if true: enforce role-association must include sub claims'
           type: boolean
           x-go-name: ForceSubClaims
+        gw-bound-ips:
+          description: A CIDR whitelist with the GW IPs that the access is restricted
+            to
+          items:
+            type: string
+          type: array
+          x-go-name: GWCIDRWhitelist
         jwt-ttl:
           description: Jwt TTL
           format: int64
@@ -17723,6 +18050,13 @@ components:
           description: 'if true: enforce role-association must include sub claims'
           type: boolean
           x-go-name: ForceSubClaims
+        gw-bound-ips:
+          description: A CIDR whitelist with the GW IPs that the access is restricted
+            to
+          items:
+            type: string
+          type: array
+          x-go-name: GWCIDRWhitelist
         jwt-ttl:
           description: Jwt TTL
           format: int64
@@ -17812,6 +18146,13 @@ components:
             in the Akeyless Gateway)
           type: string
           x-go-name: GenerateKeyPair
+        gw-bound-ips:
+          description: A CIDR whitelist with the GW IPs that the access is restricted
+            to
+          items:
+            type: string
+          type: array
+          x-go-name: GWCIDRWhitelist
         jwt-ttl:
           description: Jwt TTL
           format: int64
@@ -17877,6 +18218,13 @@ components:
           description: 'if true: enforce role-association must include sub claims'
           type: boolean
           x-go-name: ForceSubClaims
+        gw-bound-ips:
+          description: A CIDR whitelist with the GW IPs that the access is restricted
+            to
+          items:
+            type: string
+          type: array
+          x-go-name: GWCIDRWhitelist
         jwt-ttl:
           description: Jwt TTL
           format: int64
@@ -17961,6 +18309,13 @@ components:
           description: 'if true: enforce role-association must include sub claims'
           type: boolean
           x-go-name: ForceSubClaims
+        gw-bound-ips:
+          description: A CIDR whitelist with the GW IPs that the access is restricted
+            to
+          items:
+            type: string
+          type: array
+          x-go-name: GWCIDRWhitelist
         issuer:
           description: Issuer URL
           type: string
@@ -18056,6 +18411,13 @@ components:
           description: 'if true: enforce role-association must include sub claims'
           type: boolean
           x-go-name: ForceSubClaims
+        gw-bound-ips:
+          description: A CIDR whitelist with the GW IPs that the access is restricted
+            to
+          items:
+            type: string
+          type: array
+          x-go-name: GWCIDRWhitelist
         issuer:
           description: Issuer URL
           type: string
@@ -18165,6 +18527,13 @@ components:
           description: 'if true: enforce role-association must include sub claims'
           type: boolean
           x-go-name: ForceSubClaims
+        gw-bound-ips:
+          description: A CIDR whitelist with the GW IPs that the access is restricted
+            to
+          items:
+            type: string
+          type: array
+          x-go-name: GWCIDRWhitelist
         idp-metadata-url:
           description: IDP metadata url
           type: string
@@ -18250,6 +18619,13 @@ components:
           description: 'if true: enforce role-association must include sub claims'
           type: boolean
           x-go-name: ForceSubClaims
+        gw-bound-ips:
+          description: A CIDR whitelist with the GW IPs that the access is restricted
+            to
+          items:
+            type: string
+          type: array
+          x-go-name: GWCIDRWhitelist
         jwt-ttl:
           description: Jwt TTL
           format: int64
@@ -18472,6 +18848,10 @@ components:
             key (if empty, the key will be created independently of a customer fragment)
           type: string
           x-go-name: CustomerFragmentID
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         metadata:
           description: Metadata about the DFC key
           type: string
@@ -18575,6 +18955,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     createDynamicSecret:
       properties:
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         key:
           description: |-
             The name of a key that used to encrypt the dynamic secret values (if
@@ -18874,6 +19258,10 @@ components:
             the key will be created independently of a customer fragment)
           type: string
           x-go-name: CustomerFragmentID
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         metadata:
           description: Metadata about the key
           type: string
@@ -19187,6 +19575,10 @@ components:
         custom-payload:
           type: string
           x-go-name: Payload
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         key:
           description: |-
             The name of a key that used to encrypt the secret value (if empty, the
@@ -19347,6 +19739,10 @@ components:
           description: Users allowed to fetch the certificate, e.g root,ubuntu
           type: string
           x-go-name: AllowedUsers
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         extensions:
           additionalProperties:
             type: string
@@ -19572,6 +19968,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     createSecret:
       properties:
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         metadata:
           description: Metadata about the secret
           type: string
@@ -19662,6 +20062,10 @@ components:
           description: The Decryption output template to use in regexp vaultless tokenization
           type: string
           x-go-name: DecodingTemplate
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         encryption-key-name:
           description: AES key name to use in vaultless tokenization
           type: string
@@ -20673,6 +21077,8 @@ components:
             migrations_status:
               last_messages:
                 key: last_messages
+              last_reports:
+                key: last_reports
               last_statuses:
                 key: last_statuses
             producers_errors: '{}'
@@ -20710,48 +21116,117 @@ components:
       description: gatewayCreateMigration is a command that create migration
       properties:
         aws-key:
+          description: AWS Secret Access Key
           type: string
           x-go-name: AwsSecret
         aws-key-id:
+          description: AWS Access Key ID
           type: string
           x-go-name: AwsKey
         aws-region:
+          description: AWS region
           type: string
           x-go-name: AwsRegion
         azure-client-id:
+          description: Azure KV Access client ID
           type: string
           x-go-name: AzureClient
         azure-kv-name:
+          description: Azure Key Vault Name
           type: string
           x-go-name: AzureName
         azure-secret:
+          description: Azure KV secret
           type: string
           x-go-name: AzureSecret
         azure-tenant-id:
+          description: Azure KV Access tenant ID
           type: string
           x-go-name: AzureTenant
+        gcp-key:
+          description: Base64-encoded service account private key text
+          type: string
+          x-go-name: ServiceAccountKey
         hashi-json:
+          description: Import secret key as json value or independent secrets
           type: string
           x-go-name: HashiImportAsJson
         hashi-ns:
+          description: Hashi namespaces
           items:
             type: string
           type: array
           x-go-name: HashiNamespaces
         hashi-token:
+          description: Hashi token
           type: string
           x-go-name: HashiToken
         hashi-url:
+          description: Hashi url
           type: string
           x-go-name: HashiUrl
+        k8s-ca-certificate:
+          description: |-
+            For Certificate Authentication method
+            K8s Cluster CA certificate
+          items:
+            format: uint8
+            type: integer
+          type: array
+          x-go-name: K8SCA
+        k8s-client-certificate:
+          description: K8s Client certificate
+          items:
+            format: uint8
+            type: integer
+          type: array
+          x-go-name: K8SClientCert
+        k8s-client-key:
+          description: K8s Client key
+          items:
+            format: uint8
+            type: integer
+          type: array
+          x-go-name: K8SClientKey
+        k8s-namespace:
+          description: K8s Namespace
+          type: string
+          x-go-name: K8SNamespace
+        k8s-password:
+          description: K8s client password
+          type: string
+          x-go-name: K8SPassword
+        k8s-skip-system:
+          description: K8s Skip Control Plane Secrets
+          type: boolean
+          x-go-name: K8SSkipSystem
+        k8s-token:
+          description: |-
+            For Token Authentication method
+            K8s Bearer Token
+          type: string
+          x-go-name: K8SToken
+        k8s-url:
+          description: K8s Endpoint URL
+          type: string
+          x-go-name: K8SServer
+        k8s-username:
+          description: |-
+            For Password Authentication method
+            K8s client username
+          type: string
+          x-go-name: K8SUsername
         name:
           description: Migration name
           type: string
           x-go-name: MigrationName
         protection-key:
+          description: The name of the key that protects the classic key value (if
+            empty, the account default key will be used)
           type: string
           x-go-name: ProtectionKey
         target-location:
+          description: Target location in Akeyless for imported secrets
           type: string
           x-go-name: TargetLocation
         token:
@@ -20759,6 +21234,7 @@ components:
           type: string
           x-go-name: Profile
         type:
+          description: 'Migration type, can be: hashi/aws/gcp/k8s/azure_kv'
           type: string
           x-go-name: MigrationType
         uid-token:
@@ -20840,6 +21316,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -20886,6 +21363,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -21177,6 +21655,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -21223,6 +21702,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -21503,6 +21983,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -21549,6 +22030,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -21791,6 +22273,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -21837,6 +22320,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -22128,6 +22612,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -22174,6 +22659,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -22498,6 +22984,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -22544,6 +23031,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -22780,6 +23268,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -22826,6 +23315,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -23090,6 +23580,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -23136,6 +23627,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -23375,6 +23867,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -23421,6 +23914,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -23660,6 +24154,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -23706,6 +24201,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -23961,6 +24457,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -24007,6 +24504,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -24274,6 +24772,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -24320,6 +24819,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -24573,6 +25073,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -24619,6 +25120,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -24886,6 +25388,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -24932,6 +25435,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -25217,6 +25721,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -25263,6 +25768,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -25539,6 +26045,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -25585,6 +26092,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -25849,6 +26357,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -25895,6 +26404,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -26164,6 +26674,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -26210,6 +26721,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -26482,6 +26994,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -26528,6 +27041,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -26798,6 +27312,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -26844,6 +27359,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -27117,6 +27633,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -27163,6 +27680,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -27422,6 +27940,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -27468,6 +27987,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -27709,6 +28229,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -27755,6 +28276,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -28005,6 +28527,8 @@ components:
             migrations_status:
               last_messages:
                 key: last_messages
+              last_reports:
+                key: last_reports
               last_statuses:
                 key: last_statuses
             producers_errors: '{}'
@@ -28210,6 +28734,82 @@ components:
           x-go-name: UseLocalCAJwt
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayGetLdapAuthConfig:
+      description: gatewayGetLdapAuth is a command that gets ldap auth config
+      properties:
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayGetLdapAuthConfigOutput:
+      example:
+        ldap_anonymous_search: true
+        ldap_cert: ldap_cert
+        ldap_bind_password: ldap_bind_password
+        ldap_group_dn: ldap_group_dn
+        ldap_group_filter: ldap_group_filter
+        ldap_user_dn: ldap_user_dn
+        ldap_group_attr: ldap_group_attr
+        ldap_access_id: ldap_access_id
+        ldap_enable: true
+        ldap_private_key: ldap_private_key
+        ldap_bind_dn: ldap_bind_dn
+        ldap_url: ldap_url
+        ldap_token_expiration: ldap_token_expiration
+        ldap_user_attr: ldap_user_attr
+      properties:
+        ldap_access_id:
+          type: string
+          x-go-name: LdapAccessId
+        ldap_anonymous_search:
+          type: boolean
+          x-go-name: LdapAnonymousSearch
+        ldap_bind_dn:
+          type: string
+          x-go-name: LdapBindDn
+        ldap_bind_password:
+          type: string
+          x-go-name: LdapBindPassword
+        ldap_cert:
+          type: string
+          x-go-name: LdapCertificate
+        ldap_enable:
+          type: boolean
+          x-go-name: LdapEnable
+        ldap_group_attr:
+          type: string
+          x-go-name: LdapGroupAttr
+        ldap_group_dn:
+          type: string
+          x-go-name: LdapGroupDn
+        ldap_group_filter:
+          type: string
+          x-go-name: LdapGroupFilter
+        ldap_private_key:
+          type: string
+          x-go-name: LdapPrivateKey
+        ldap_token_expiration:
+          type: string
+          x-go-name: LdapTokenExpiration
+        ldap_url:
+          type: string
+          x-go-name: LdapUrlAddress
+        ldap_user_attr:
+          type: string
+          x-go-name: LdapUserAttr
+        ldap_user_dn:
+          type: string
+          x-go-name: LdapUserDn
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     gatewayGetMigration:
       description: gatewayGetMigration is a command that get migration
       properties:
@@ -28314,24 +28914,6 @@ components:
             authentication
           type: string
           x-go-name: UIDToken
-      type: object
-      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
-    gatewayMigrationCreateOutput:
-      example:
-        migration_name: migration_name
-      properties:
-        migration_name:
-          type: string
-          x-go-name: MigrationName
-      type: object
-      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
-    gatewayMigrationDeleteOutput:
-      example:
-        migration_id: migration_id
-      properties:
-        migration_id:
-          type: string
-          x-go-name: MigrationId
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     gatewayMigrationGetOutput:
@@ -28445,6 +29027,21 @@ components:
               secret: secret
               region: region
               key: key
+          gcp_secrets_migrations:
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              protection_key: protection_key
+            payload:
+              gcp_credentials_json: gcp_credentials_json
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              protection_key: protection_key
+            payload:
+              gcp_credentials_json: gcp_credentials_json
       properties:
         body:
           $ref: '#/components/schemas/MigrationsConfigPart'
@@ -28561,27 +29158,24 @@ components:
               secret: secret
               region: region
               key: key
+          gcp_secrets_migrations:
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              protection_key: protection_key
+            payload:
+              gcp_credentials_json: gcp_credentials_json
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              protection_key: protection_key
+            payload:
+              gcp_credentials_json: gcp_credentials_json
       properties:
         body:
           $ref: '#/components/schemas/MigrationsConfigPart'
-      type: object
-      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
-    gatewayMigrationSyncOutput:
-      example:
-        migration_name: migration_name
-      properties:
-        migration_name:
-          type: string
-          x-go-name: MigrationName
-      type: object
-      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
-    gatewayMigrationUpdateOutput:
-      example:
-        migration_name: migration_name
-      properties:
-        migration_name:
-          type: string
-          x-go-name: MigrationName
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     gatewayRevokeTmpUsers:
@@ -28686,6 +29280,7 @@ components:
           type: string
           x-go-name: MigrationName
         start-sync:
+          description: true, for starting synchronization, false for stopping
           type: boolean
           x-go-name: Sync
         token:
@@ -28906,6 +29501,8 @@ components:
             migrations_status:
               last_messages:
                 key: last_messages
+              last_reports:
+                key: last_reports
               last_statuses:
                 key: last_statuses
             producers_errors: '{}'
@@ -28943,51 +29540,121 @@ components:
       description: gatewayUpdateMigration is a command that update migration
       properties:
         aws-key:
+          description: AWS Secret Access Key
           type: string
           x-go-name: AwsSecret
         aws-key-id:
+          description: AWS Access Key ID
           type: string
           x-go-name: AwsKey
         aws-region:
+          description: AWS region
           type: string
           x-go-name: AwsRegion
         azure-client-id:
+          description: Azure KV Access client ID
           type: string
           x-go-name: AzureClient
         azure-kv-name:
+          description: Azure Key Vault Name
           type: string
           x-go-name: AzureName
         azure-secret:
+          description: Azure KV secret
           type: string
           x-go-name: AzureSecret
         azure-tenant-id:
+          description: Azure KV Access tenant ID
           type: string
           x-go-name: AzureTenant
+        gcp-key:
+          description: Base64-encoded service account private key text
+          type: string
+          x-go-name: ServiceAccountKey
         hashi-json:
+          description: Import secret key as json value or independent secrets
           type: string
           x-go-name: HashiImportAsJson
         hashi-ns:
+          description: Hashi namespaces
           items:
             type: string
           type: array
           x-go-name: HashiNamespaces
         hashi-token:
+          description: Hashi token
           type: string
           x-go-name: HashiToken
         hashi-url:
+          description: Hashi url
           type: string
           x-go-name: HashiUrl
         id:
+          description: Migration ID
           type: string
           x-go-name: MigrationID
+        k8s-ca-certificate:
+          description: |-
+            For Certificate Authentication method
+            K8s Cluster CA certificate
+          items:
+            format: uint8
+            type: integer
+          type: array
+          x-go-name: K8SCA
+        k8s-client-certificate:
+          description: K8s Client certificate
+          items:
+            format: uint8
+            type: integer
+          type: array
+          x-go-name: K8SClientCert
+        k8s-client-key:
+          description: K8s Client key
+          items:
+            format: uint8
+            type: integer
+          type: array
+          x-go-name: K8SClientKey
+        k8s-namespace:
+          description: K8s Namespace
+          type: string
+          x-go-name: K8SNamespace
+        k8s-password:
+          description: K8s client password
+          type: string
+          x-go-name: K8SPassword
+        k8s-skip-system:
+          description: K8s Skip Control Plane Secrets
+          type: boolean
+          x-go-name: K8SSkipSystem
+        k8s-token:
+          description: |-
+            For Token Authentication method
+            K8s Bearer Token
+          type: string
+          x-go-name: K8SToken
+        k8s-url:
+          description: K8s Endpoint URL
+          type: string
+          x-go-name: K8SServer
+        k8s-username:
+          description: |-
+            For Password Authentication method
+            K8s client username
+          type: string
+          x-go-name: K8SUsername
         name:
           description: Migration name
           type: string
           x-go-name: MigrationName
         protection-key:
+          description: The name of the key that protects the classic key value (if
+            empty, the account default key will be used)
           type: string
           x-go-name: ProtectionKey
         target-location:
+          description: Target location in Akeyless for imported secrets
           type: string
           x-go-name: TargetLocation
         token:
@@ -28995,6 +29662,7 @@ components:
           type: string
           x-go-name: Profile
         type:
+          description: 'Migration type, can be: hashi/aws/gcp/k8s/azure_kv'
           type: string
           x-go-name: MigrationType
         uid-token:
@@ -29080,6 +29748,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -29126,6 +29795,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -29421,6 +30091,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -29467,6 +30138,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -29751,6 +30423,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -29797,6 +30470,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -30043,6 +30717,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -30089,6 +30764,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -30384,6 +31060,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -30430,6 +31107,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -30762,6 +31440,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -30808,6 +31487,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -31048,6 +31728,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -31094,6 +31775,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -31362,6 +32044,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -31408,6 +32091,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -31651,6 +32335,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -31697,6 +32382,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -31940,6 +32626,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -31986,6 +32673,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -32245,6 +32933,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -32291,6 +32980,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -32562,6 +33252,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -32608,6 +33299,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -32865,6 +33557,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -32911,6 +33604,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -33182,6 +33876,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -33228,6 +33923,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -33517,6 +34213,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -33563,6 +34260,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -33843,6 +34541,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -33889,6 +34588,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -34157,6 +34857,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -34203,6 +34904,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -34476,6 +35178,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -34522,6 +35225,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -34798,6 +35502,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -34844,6 +35549,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -35118,6 +35824,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -35164,6 +35871,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -35441,6 +36149,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -35487,6 +36196,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -35750,6 +36460,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -35796,6 +36507,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -36041,6 +36753,7 @@ components:
           gke_cluster_endpoint: gke_cluster_endpoint
           dynamic_secret_type: dynamic_secret_type
           k8s_namespace: k8s_namespace
+          metadata: metadata
           venafi_sign_using_akeyless_pki: true
           dynamic_secret_key: dynamic_secret_key
           last_admin_rotation: 2
@@ -36087,6 +36800,7 @@ components:
           ldap_user_dn: ldap_user_dn
           azure_fixed_user_name_sub_claim_key: azure_fixed_user_name_sub_claim_key
           mongodb_custom_data: mongodb_custom_data
+          delete_protection: true
           db_name: db_name
           k8s_service_account: k8s_service_account
           chef_skip_ssl: true
@@ -36521,9 +37235,13 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     getRSAPublicOutput:
       example:
+        pem: pem
         raw: raw
         ssh: ssh
       properties:
+        pem:
+          type: string
+          x-go-name: PEM
         raw:
           type: string
           x-go-name: Raw
@@ -37417,25 +38135,18 @@ components:
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     rotateKey:
-      description: |-
-        rotateKey is a command that rotates an existing key, creating a new version. [Deprecated: Use command update-rotation-settings]
-        of it.
+      description: of it.
       properties:
-        auto-rotate:
-          description: |-
-            Whether to automatically rotate every --rotation-interval days, or
-            disable existing automatic rotation
-          type: string
-          x-go-name: AutoRotate
         name:
           description: Key name
           type: string
           x-go-name: KeyName
-        rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (7-365)
+        new-key-data:
+          description: |-
+            The new base64 encoded value for the classic key.
+            relevant only for keys provided by user ('bring-your-own-key')
           type: string
-          x-go-name: RotationInterval
+          x-go-name: NewKeyData
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -37448,6 +38159,8 @@ components:
           x-go-name: UIDToken
       required:
       - name
+      title: rotateKey is a command that rotates an existing key, by creating a new
+        version of the key.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     rotateSecret:
@@ -38337,6 +39050,13 @@ components:
           description: 'if true: enforce role-association must include sub claims'
           type: boolean
           x-go-name: ForceSubClaims
+        gw-bound-ips:
+          description: A CIDR whitelist with the GW IPs that the access is restricted
+            to
+          items:
+            type: string
+          type: array
+          x-go-name: GWCIDRWhitelist
         jwt-ttl:
           description: Jwt TTL
           format: int64
@@ -38431,6 +39151,13 @@ components:
           description: 'if true: enforce role-association must include sub claims'
           type: boolean
           x-go-name: ForceSubClaims
+        gw-bound-ips:
+          description: A CIDR whitelist with the GW IPs that the access is restricted
+            to
+          items:
+            type: string
+          type: array
+          x-go-name: GWCIDRWhitelist
         jwt-ttl:
           description: Jwt TTL
           format: int64
@@ -38555,6 +39282,13 @@ components:
           description: 'if true: enforce role-association must include sub claims'
           type: boolean
           x-go-name: ForceSubClaims
+        gw-bound-ips:
+          description: A CIDR whitelist with the GW IPs that the access is restricted
+            to
+          items:
+            type: string
+          type: array
+          x-go-name: GWCIDRWhitelist
         issuer:
           default: https://sts.windows.net/---bound_tenant_id---
           description: Issuer URL
@@ -38670,6 +39404,13 @@ components:
           description: 'if true: enforce role-association must include sub claims'
           type: boolean
           x-go-name: ForceSubClaims
+        gw-bound-ips:
+          description: A CIDR whitelist with the GW IPs that the access is restricted
+            to
+          items:
+            type: string
+          type: array
+          x-go-name: GWCIDRWhitelist
         jwt-ttl:
           description: Jwt TTL
           format: int64
@@ -38793,6 +39534,13 @@ components:
           description: 'if true: enforce role-association must include sub claims'
           type: boolean
           x-go-name: ForceSubClaims
+        gw-bound-ips:
+          description: A CIDR whitelist with the GW IPs that the access is restricted
+            to
+          items:
+            type: string
+          type: array
+          x-go-name: GWCIDRWhitelist
         jwt-ttl:
           description: Jwt TTL
           format: int64
@@ -38891,6 +39639,13 @@ components:
             in the Akeyless Gateway)
           type: string
           x-go-name: GenerateKeyPair
+        gw-bound-ips:
+          description: A CIDR whitelist with the GW IPs that the access is restricted
+            to
+          items:
+            type: string
+          type: array
+          x-go-name: GWCIDRWhitelist
         jwt-ttl:
           description: Jwt TTL
           format: int64
@@ -38956,6 +39711,13 @@ components:
           description: 'if true: enforce role-association must include sub claims'
           type: boolean
           x-go-name: ForceSubClaims
+        gw-bound-ips:
+          description: A CIDR whitelist with the GW IPs that the access is restricted
+            to
+          items:
+            type: string
+          type: array
+          x-go-name: GWCIDRWhitelist
         jwt-ttl:
           description: Jwt TTL
           format: int64
@@ -39038,6 +39800,13 @@ components:
           description: 'if true: enforce role-association must include sub claims'
           type: boolean
           x-go-name: ForceSubClaims
+        gw-bound-ips:
+          description: A CIDR whitelist with the GW IPs that the access is restricted
+            to
+          items:
+            type: string
+          type: array
+          x-go-name: GWCIDRWhitelist
         issuer:
           description: Issuer URL
           type: string
@@ -39131,6 +39900,13 @@ components:
           description: 'if true: enforce role-association must include sub claims'
           type: boolean
           x-go-name: ForceSubClaims
+        gw-bound-ips:
+          description: A CIDR whitelist with the GW IPs that the access is restricted
+            to
+          items:
+            type: string
+          type: array
+          x-go-name: GWCIDRWhitelist
         issuer:
           description: Issuer URL
           type: string
@@ -39230,6 +40006,13 @@ components:
           description: 'if true: enforce role-association must include sub claims'
           type: boolean
           x-go-name: ForceSubClaims
+        gw-bound-ips:
+          description: A CIDR whitelist with the GW IPs that the access is restricted
+            to
+          items:
+            type: string
+          type: array
+          x-go-name: GWCIDRWhitelist
         idp-metadata-url:
           description: IDP metadata url
           type: string
@@ -39313,6 +40096,13 @@ components:
           description: 'if true: enforce role-association must include sub claims'
           type: boolean
           x-go-name: ForceSubClaims
+        gw-bound-ips:
+          description: A CIDR whitelist with the GW IPs that the access is restricted
+            to
+          items:
+            type: string
+          type: array
+          x-go-name: GWCIDRWhitelist
         jwt-ttl:
           description: Jwt TTL
           format: int64
@@ -39952,6 +40742,9 @@ components:
             type: string
           type: array
           x-go-name: AddTags
+        delete_protection:
+          type: string
+          x-go-name: ItemProtected
         name:
           description: Current item name
           type: string
@@ -41149,6 +41942,9 @@ components:
           description: The Decryption output template to use in regexp vaultless tokenization
           type: string
           x-go-name: DecodingTemplate
+        delete_protection:
+          type: string
+          x-go-name: ItemProtected
         encryption-key-name:
           description: AES key name to use in vaultless tokenization
           type: string
@@ -41319,6 +42115,10 @@ components:
             the key will be created independently of a customer fragment)
           type: string
           x-go-name: CustomerFragmentID
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         in:
           description: PKCS#12 input file (private key and certificate only)
           type: string
@@ -41383,6 +42183,10 @@ components:
             the key will be created independently of a customer fragment)
           type: string
           x-go-name: CustomerFragmentID
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         metadata:
           description: A metadata about the key
           type: string

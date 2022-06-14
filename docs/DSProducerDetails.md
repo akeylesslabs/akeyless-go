@@ -56,6 +56,7 @@ Name | Type | Description | Notes
 **DbServerCertificates** | Pointer to **string** | (Optional) DBServerCertificates defines the set of root certificate authorities that clients use when verifying server certificates. If DBServerCertificates is empty, TLS uses the host&#39;s root CA set. | [optional] 
 **DbServerName** | Pointer to **string** | (Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client&#39;s handshake to support virtual hosting unless it is an IP address. | [optional] 
 **DbUserName** | Pointer to **string** |  | [optional] 
+**DeleteProtection** | Pointer to **bool** |  | [optional] 
 **DynamicSecretId** | Pointer to **int64** |  | [optional] 
 **DynamicSecretKey** | Pointer to **string** |  | [optional] 
 **DynamicSecretName** | Pointer to **string** |  | [optional] 
@@ -111,6 +112,7 @@ Name | Type | Description | Notes
 **LdapUrl** | Pointer to **string** |  | [optional] 
 **LdapUserAttr** | Pointer to **string** |  | [optional] 
 **LdapUserDn** | Pointer to **string** |  | [optional] 
+**Metadata** | Pointer to **string** |  | [optional] 
 **MongodbAtlasApiPrivateKey** | Pointer to **string** |  | [optional] 
 **MongodbAtlasApiPublicKey** | Pointer to **string** |  | [optional] 
 **MongodbAtlasProjectId** | Pointer to **string** | mongodb atlas fields | [optional] 
@@ -1496,6 +1498,31 @@ SetDbUserName sets DbUserName field to given value.
 
 HasDbUserName returns a boolean if a field has been set.
 
+### GetDeleteProtection
+
+`func (o *DSProducerDetails) GetDeleteProtection() bool`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *DSProducerDetails) GetDeleteProtectionOk() (*bool, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *DSProducerDetails) SetDeleteProtection(v bool)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *DSProducerDetails) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
+
 ### GetDynamicSecretId
 
 `func (o *DSProducerDetails) GetDynamicSecretId() int64`
@@ -2870,6 +2897,31 @@ SetLdapUserDn sets LdapUserDn field to given value.
 `func (o *DSProducerDetails) HasLdapUserDn() bool`
 
 HasLdapUserDn returns a boolean if a field has been set.
+
+### GetMetadata
+
+`func (o *DSProducerDetails) GetMetadata() string`
+
+GetMetadata returns the Metadata field if non-nil, zero value otherwise.
+
+### GetMetadataOk
+
+`func (o *DSProducerDetails) GetMetadataOk() (*string, bool)`
+
+GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetadata
+
+`func (o *DSProducerDetails) SetMetadata(v string)`
+
+SetMetadata sets Metadata field to given value.
+
+### HasMetadata
+
+`func (o *DSProducerDetails) HasMetadata() bool`
+
+HasMetadata returns a boolean if a field has been set.
 
 ### GetMongodbAtlasApiPrivateKey
 

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CustomerFrgId** | Pointer to **string** | The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment) | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
 **In** | **string** | PKCS#12 input file (private key and certificate only) | 
 **Metadata** | Pointer to **string** | A metadata about the key | [optional] 
 **Name** | **string** | Name of key to be created | 
@@ -57,6 +58,31 @@ SetCustomerFrgId sets CustomerFrgId field to given value.
 `func (o *UploadPKCS12) HasCustomerFrgId() bool`
 
 HasCustomerFrgId returns a boolean if a field has been set.
+
+### GetDeleteProtection
+
+`func (o *UploadPKCS12) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *UploadPKCS12) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *UploadPKCS12) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *UploadPKCS12) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetIn
 

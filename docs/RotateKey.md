@@ -4,9 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AutoRotate** | Pointer to **string** | Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation | [optional] 
 **Name** | **string** | Key name | 
-**RotationInterval** | Pointer to **string** | The number of days to wait between every automatic key rotation (7-365) | [optional] 
+**NewKeyData** | Pointer to **string** | The new base64 encoded value for the classic key. relevant only for keys provided by user (&#39;bring-your-own-key&#39;) | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
@@ -29,31 +28,6 @@ NewRotateKeyWithDefaults instantiates a new RotateKey object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetAutoRotate
-
-`func (o *RotateKey) GetAutoRotate() string`
-
-GetAutoRotate returns the AutoRotate field if non-nil, zero value otherwise.
-
-### GetAutoRotateOk
-
-`func (o *RotateKey) GetAutoRotateOk() (*string, bool)`
-
-GetAutoRotateOk returns a tuple with the AutoRotate field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutoRotate
-
-`func (o *RotateKey) SetAutoRotate(v string)`
-
-SetAutoRotate sets AutoRotate field to given value.
-
-### HasAutoRotate
-
-`func (o *RotateKey) HasAutoRotate() bool`
-
-HasAutoRotate returns a boolean if a field has been set.
-
 ### GetName
 
 `func (o *RotateKey) GetName() string`
@@ -74,30 +48,30 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### GetRotationInterval
+### GetNewKeyData
 
-`func (o *RotateKey) GetRotationInterval() string`
+`func (o *RotateKey) GetNewKeyData() string`
 
-GetRotationInterval returns the RotationInterval field if non-nil, zero value otherwise.
+GetNewKeyData returns the NewKeyData field if non-nil, zero value otherwise.
 
-### GetRotationIntervalOk
+### GetNewKeyDataOk
 
-`func (o *RotateKey) GetRotationIntervalOk() (*string, bool)`
+`func (o *RotateKey) GetNewKeyDataOk() (*string, bool)`
 
-GetRotationIntervalOk returns a tuple with the RotationInterval field if it's non-nil, zero value otherwise
+GetNewKeyDataOk returns a tuple with the NewKeyData field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetRotationInterval
+### SetNewKeyData
 
-`func (o *RotateKey) SetRotationInterval(v string)`
+`func (o *RotateKey) SetNewKeyData(v string)`
 
-SetRotationInterval sets RotationInterval field to given value.
+SetNewKeyData sets NewKeyData field to given value.
 
-### HasRotationInterval
+### HasNewKeyData
 
-`func (o *RotateKey) HasRotationInterval() bool`
+`func (o *RotateKey) HasNewKeyData() bool`
 
-HasRotationInterval returns a boolean if a field has been set.
+HasNewKeyData returns a boolean if a field has been set.
 
 ### GetToken
 

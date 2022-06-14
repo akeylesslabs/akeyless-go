@@ -27,6 +27,8 @@ type UpdateAuthMethodOAuth2 struct {
 	BoundIps *[]string `json:"bound-ips,omitempty"`
 	// if true: enforce role-association must include sub claims
 	ForceSubClaims *bool `json:"force-sub-claims,omitempty"`
+	// A CIDR whitelist with the GW IPs that the access is restricted to
+	GwBoundIps *[]string `json:"gw-bound-ips,omitempty"`
 	// Issuer URL
 	Issuer *string `json:"issuer,omitempty"`
 	// The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server.
@@ -227,6 +229,38 @@ func (o *UpdateAuthMethodOAuth2) HasForceSubClaims() bool {
 // SetForceSubClaims gets a reference to the given bool and assigns it to the ForceSubClaims field.
 func (o *UpdateAuthMethodOAuth2) SetForceSubClaims(v bool) {
 	o.ForceSubClaims = &v
+}
+
+// GetGwBoundIps returns the GwBoundIps field value if set, zero value otherwise.
+func (o *UpdateAuthMethodOAuth2) GetGwBoundIps() []string {
+	if o == nil || o.GwBoundIps == nil {
+		var ret []string
+		return ret
+	}
+	return *o.GwBoundIps
+}
+
+// GetGwBoundIpsOk returns a tuple with the GwBoundIps field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAuthMethodOAuth2) GetGwBoundIpsOk() (*[]string, bool) {
+	if o == nil || o.GwBoundIps == nil {
+		return nil, false
+	}
+	return o.GwBoundIps, true
+}
+
+// HasGwBoundIps returns a boolean if a field has been set.
+func (o *UpdateAuthMethodOAuth2) HasGwBoundIps() bool {
+	if o != nil && o.GwBoundIps != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGwBoundIps gets a reference to the given []string and assigns it to the GwBoundIps field.
+func (o *UpdateAuthMethodOAuth2) SetGwBoundIps(v []string) {
+	o.GwBoundIps = &v
 }
 
 // GetIssuer returns the Issuer field value if set, zero value otherwise.
@@ -477,6 +511,9 @@ func (o UpdateAuthMethodOAuth2) MarshalJSON() ([]byte, error) {
 	}
 	if o.ForceSubClaims != nil {
 		toSerialize["force-sub-claims"] = o.ForceSubClaims
+	}
+	if o.GwBoundIps != nil {
+		toSerialize["gw-bound-ips"] = o.GwBoundIps
 	}
 	if o.Issuer != nil {
 		toSerialize["issuer"] = o.Issuer

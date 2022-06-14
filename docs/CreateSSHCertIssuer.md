@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AllowedUsers** | **string** | Users allowed to fetch the certificate, e.g root,ubuntu | 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
 **Extensions** | Pointer to **map[string]string** | Signed certificates with extensions, e.g permit-port-forwarding&#x3D;\\\&quot;\\\&quot; | [optional] 
 **Metadata** | Pointer to **string** | A metadata about the issuer | [optional] 
 **Name** | **string** | SSH certificate issuer name | 
@@ -59,6 +60,31 @@ and a boolean to check if the value has been set.
 
 SetAllowedUsers sets AllowedUsers field to given value.
 
+
+### GetDeleteProtection
+
+`func (o *CreateSSHCertIssuer) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *CreateSSHCertIssuer) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *CreateSSHCertIssuer) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *CreateSSHCertIssuer) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetExtensions
 

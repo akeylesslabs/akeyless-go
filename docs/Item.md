@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Certificates** | Pointer to **string** |  | [optional] 
 **ClientPermissions** | Pointer to **[]string** |  | [optional] 
 **CustomerFragmentId** | Pointer to **string** |  | [optional] 
+**DeleteProtection** | Pointer to **bool** |  | [optional] 
 **DeletionDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **DisplayId** | Pointer to **string** |  | [optional] 
 **IsEnabled** | Pointer to **bool** |  | [optional] 
@@ -201,6 +202,31 @@ SetCustomerFragmentId sets CustomerFragmentId field to given value.
 `func (o *Item) HasCustomerFragmentId() bool`
 
 HasCustomerFragmentId returns a boolean if a field has been set.
+
+### GetDeleteProtection
+
+`func (o *Item) GetDeleteProtection() bool`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *Item) GetDeleteProtectionOk() (*bool, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *Item) SetDeleteProtection(v bool)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *Item) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetDeletionDate
 

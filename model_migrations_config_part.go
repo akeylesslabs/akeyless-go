@@ -19,6 +19,7 @@ import (
 type MigrationsConfigPart struct {
 	AwsSecretsMigrations *[]AWSSecretsMigration `json:"aws_secrets_migrations,omitempty"`
 	AzureKvMigrations *[]AzureKeyVaultMigration `json:"azure_kv_migrations,omitempty"`
+	GcpSecretsMigrations *[]GCPSecretsMigration `json:"gcp_secrets_migrations,omitempty"`
 	HashiMigrations *[]HashiMigration `json:"hashi_migrations,omitempty"`
 	K8sMigrations *[]K8SMigration `json:"k8s_migrations,omitempty"`
 }
@@ -104,6 +105,38 @@ func (o *MigrationsConfigPart) SetAzureKvMigrations(v []AzureKeyVaultMigration) 
 	o.AzureKvMigrations = &v
 }
 
+// GetGcpSecretsMigrations returns the GcpSecretsMigrations field value if set, zero value otherwise.
+func (o *MigrationsConfigPart) GetGcpSecretsMigrations() []GCPSecretsMigration {
+	if o == nil || o.GcpSecretsMigrations == nil {
+		var ret []GCPSecretsMigration
+		return ret
+	}
+	return *o.GcpSecretsMigrations
+}
+
+// GetGcpSecretsMigrationsOk returns a tuple with the GcpSecretsMigrations field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MigrationsConfigPart) GetGcpSecretsMigrationsOk() (*[]GCPSecretsMigration, bool) {
+	if o == nil || o.GcpSecretsMigrations == nil {
+		return nil, false
+	}
+	return o.GcpSecretsMigrations, true
+}
+
+// HasGcpSecretsMigrations returns a boolean if a field has been set.
+func (o *MigrationsConfigPart) HasGcpSecretsMigrations() bool {
+	if o != nil && o.GcpSecretsMigrations != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpSecretsMigrations gets a reference to the given []GCPSecretsMigration and assigns it to the GcpSecretsMigrations field.
+func (o *MigrationsConfigPart) SetGcpSecretsMigrations(v []GCPSecretsMigration) {
+	o.GcpSecretsMigrations = &v
+}
+
 // GetHashiMigrations returns the HashiMigrations field value if set, zero value otherwise.
 func (o *MigrationsConfigPart) GetHashiMigrations() []HashiMigration {
 	if o == nil || o.HashiMigrations == nil {
@@ -175,6 +208,9 @@ func (o MigrationsConfigPart) MarshalJSON() ([]byte, error) {
 	}
 	if o.AzureKvMigrations != nil {
 		toSerialize["azure_kv_migrations"] = o.AzureKvMigrations
+	}
+	if o.GcpSecretsMigrations != nil {
+		toSerialize["gcp_secrets_migrations"] = o.GcpSecretsMigrations
 	}
 	if o.HashiMigrations != nil {
 		toSerialize["hashi_migrations"] = o.HashiMigrations

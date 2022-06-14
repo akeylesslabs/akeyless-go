@@ -31,6 +31,8 @@ type CreatePKICertIssuer struct {
 	CodeSigningFlag *bool `json:"code-signing-flag,omitempty"`
 	// A comma-separated list of the country that will be set in the issued certificate
 	Country *string `json:"country,omitempty"`
+	// Protection from accidental deletion of this item
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// key-usage
 	KeyUsage *string `json:"key-usage,omitempty"`
 	// A comma-separated list of the locality that will be set in the issued certificate
@@ -313,6 +315,38 @@ func (o *CreatePKICertIssuer) HasCountry() bool {
 // SetCountry gets a reference to the given string and assigns it to the Country field.
 func (o *CreatePKICertIssuer) SetCountry(v string) {
 	o.Country = &v
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *CreatePKICertIssuer) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreatePKICertIssuer) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *CreatePKICertIssuer) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *CreatePKICertIssuer) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetKeyUsage returns the KeyUsage field value if set, zero value otherwise.
@@ -857,6 +891,9 @@ func (o CreatePKICertIssuer) MarshalJSON() ([]byte, error) {
 	}
 	if o.Country != nil {
 		toSerialize["country"] = o.Country
+	}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
 	}
 	if o.KeyUsage != nil {
 		toSerialize["key-usage"] = o.KeyUsage

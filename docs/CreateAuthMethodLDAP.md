@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **AccessExpires** | Pointer to **int64** | Access expiration date in Unix timestamp (select 0 for access without expiry date) | [optional] [default to 0]
 **BoundIps** | Pointer to **[]string** | A CIDR whitelist with the IPs that the access is restricted to | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
+**GwBoundIps** | Pointer to **[]string** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
 **JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] 
 **Name** | **string** | Auth Method name | 
 **PublicKeyData** | Pointer to **string** | A public key generated for LDAP authentication method on Akeyless in base64 format [RSA2048] | [optional] 
@@ -107,6 +108,31 @@ SetForceSubClaims sets ForceSubClaims field to given value.
 `func (o *CreateAuthMethodLDAP) HasForceSubClaims() bool`
 
 HasForceSubClaims returns a boolean if a field has been set.
+
+### GetGwBoundIps
+
+`func (o *CreateAuthMethodLDAP) GetGwBoundIps() []string`
+
+GetGwBoundIps returns the GwBoundIps field if non-nil, zero value otherwise.
+
+### GetGwBoundIpsOk
+
+`func (o *CreateAuthMethodLDAP) GetGwBoundIpsOk() (*[]string, bool)`
+
+GetGwBoundIpsOk returns a tuple with the GwBoundIps field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGwBoundIps
+
+`func (o *CreateAuthMethodLDAP) SetGwBoundIps(v []string)`
+
+SetGwBoundIps sets GwBoundIps field to given value.
+
+### HasGwBoundIps
+
+`func (o *CreateAuthMethodLDAP) HasGwBoundIps() bool`
+
+HasGwBoundIps returns a boolean if a field has been set.
 
 ### GetJwtTtl
 

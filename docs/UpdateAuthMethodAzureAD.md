@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **BoundSubId** | Pointer to **[]string** | A list of subscription ids that the access is restricted to | [optional] 
 **BoundTenantId** | **string** | The Azure tenant id that the access is restricted to | 
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
+**GwBoundIps** | Pointer to **[]string** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
 **Issuer** | Pointer to **string** | Issuer URL | [optional] [default to "https://sts.windows.net/---bound_tenant_id---"]
 **JwksUri** | Pointer to **string** | The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. | [optional] [default to "https://login.microsoftonline.com/common/discovery/keys"]
 **JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] 
@@ -363,6 +364,31 @@ SetForceSubClaims sets ForceSubClaims field to given value.
 `func (o *UpdateAuthMethodAzureAD) HasForceSubClaims() bool`
 
 HasForceSubClaims returns a boolean if a field has been set.
+
+### GetGwBoundIps
+
+`func (o *UpdateAuthMethodAzureAD) GetGwBoundIps() []string`
+
+GetGwBoundIps returns the GwBoundIps field if non-nil, zero value otherwise.
+
+### GetGwBoundIpsOk
+
+`func (o *UpdateAuthMethodAzureAD) GetGwBoundIpsOk() (*[]string, bool)`
+
+GetGwBoundIpsOk returns a tuple with the GwBoundIps field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGwBoundIps
+
+`func (o *UpdateAuthMethodAzureAD) SetGwBoundIps(v []string)`
+
+SetGwBoundIps sets GwBoundIps field to given value.
+
+### HasGwBoundIps
+
+`func (o *UpdateAuthMethodAzureAD) HasGwBoundIps() bool`
+
+HasGwBoundIps returns a boolean if a field has been set.
 
 ### GetIssuer
 

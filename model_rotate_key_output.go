@@ -18,6 +18,8 @@ import (
 
 // RotateKeyOutput RotateKeyOutput defines output of RotateKey operation
 type RotateKeyOutput struct {
+	ClassicKeyGwUrl *string `json:"classic_key_gw_url,omitempty"`
+	ItemType *string `json:"item_type,omitempty"`
 	NewItemVersion *int32 `json:"new_item_version,omitempty"`
 	NextRotationDate *time.Time `json:"next_rotation_date,omitempty"`
 }
@@ -37,6 +39,70 @@ func NewRotateKeyOutput() *RotateKeyOutput {
 func NewRotateKeyOutputWithDefaults() *RotateKeyOutput {
 	this := RotateKeyOutput{}
 	return &this
+}
+
+// GetClassicKeyGwUrl returns the ClassicKeyGwUrl field value if set, zero value otherwise.
+func (o *RotateKeyOutput) GetClassicKeyGwUrl() string {
+	if o == nil || o.ClassicKeyGwUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.ClassicKeyGwUrl
+}
+
+// GetClassicKeyGwUrlOk returns a tuple with the ClassicKeyGwUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotateKeyOutput) GetClassicKeyGwUrlOk() (*string, bool) {
+	if o == nil || o.ClassicKeyGwUrl == nil {
+		return nil, false
+	}
+	return o.ClassicKeyGwUrl, true
+}
+
+// HasClassicKeyGwUrl returns a boolean if a field has been set.
+func (o *RotateKeyOutput) HasClassicKeyGwUrl() bool {
+	if o != nil && o.ClassicKeyGwUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetClassicKeyGwUrl gets a reference to the given string and assigns it to the ClassicKeyGwUrl field.
+func (o *RotateKeyOutput) SetClassicKeyGwUrl(v string) {
+	o.ClassicKeyGwUrl = &v
+}
+
+// GetItemType returns the ItemType field value if set, zero value otherwise.
+func (o *RotateKeyOutput) GetItemType() string {
+	if o == nil || o.ItemType == nil {
+		var ret string
+		return ret
+	}
+	return *o.ItemType
+}
+
+// GetItemTypeOk returns a tuple with the ItemType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotateKeyOutput) GetItemTypeOk() (*string, bool) {
+	if o == nil || o.ItemType == nil {
+		return nil, false
+	}
+	return o.ItemType, true
+}
+
+// HasItemType returns a boolean if a field has been set.
+func (o *RotateKeyOutput) HasItemType() bool {
+	if o != nil && o.ItemType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetItemType gets a reference to the given string and assigns it to the ItemType field.
+func (o *RotateKeyOutput) SetItemType(v string) {
+	o.ItemType = &v
 }
 
 // GetNewItemVersion returns the NewItemVersion field value if set, zero value otherwise.
@@ -105,6 +171,12 @@ func (o *RotateKeyOutput) SetNextRotationDate(v time.Time) {
 
 func (o RotateKeyOutput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.ClassicKeyGwUrl != nil {
+		toSerialize["classic_key_gw_url"] = o.ClassicKeyGwUrl
+	}
+	if o.ItemType != nil {
+		toSerialize["item_type"] = o.ItemType
+	}
 	if o.NewItemVersion != nil {
 		toSerialize["new_item_version"] = o.NewItemVersion
 	}

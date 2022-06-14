@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **ClientFlag** | Pointer to **bool** | If set, certificates will be flagged for client auth use | [optional] 
 **CodeSigningFlag** | Pointer to **bool** | If set, certificates will be flagged for code signing use | [optional] 
 **Country** | Pointer to **string** | A comma-separated list of the country that will be set in the issued certificate | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
 **KeyUsage** | Pointer to **string** | key-usage | [optional] [default to "DigitalSignature,KeyAgreement,KeyEncipherment"]
 **Locality** | Pointer to **string** | A comma-separated list of the locality that will be set in the issued certificate | [optional] 
 **Metadata** | Pointer to **string** | A metadata about the issuer | [optional] 
@@ -222,6 +223,31 @@ SetCountry sets Country field to given value.
 `func (o *CreatePKICertIssuer) HasCountry() bool`
 
 HasCountry returns a boolean if a field has been set.
+
+### GetDeleteProtection
+
+`func (o *CreatePKICertIssuer) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *CreatePKICertIssuer) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *CreatePKICertIssuer) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *CreatePKICertIssuer) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetKeyUsage
 

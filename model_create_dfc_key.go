@@ -21,6 +21,8 @@ type CreateDFCKey struct {
 	Alg string `json:"alg"`
 	// The customer fragment ID that will be used to create the DFC key (if empty, the key will be created independently of a customer fragment)
 	CustomerFrgId *string `json:"customer-frg-id,omitempty"`
+	// Protection from accidental deletion of this item
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Metadata about the DFC key
 	Metadata *string `json:"metadata,omitempty"`
 	// DFCKey name
@@ -112,6 +114,38 @@ func (o *CreateDFCKey) HasCustomerFrgId() bool {
 // SetCustomerFrgId gets a reference to the given string and assigns it to the CustomerFrgId field.
 func (o *CreateDFCKey) SetCustomerFrgId(v string) {
 	o.CustomerFrgId = &v
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *CreateDFCKey) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDFCKey) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *CreateDFCKey) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *CreateDFCKey) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
@@ -305,6 +339,9 @@ func (o CreateDFCKey) MarshalJSON() ([]byte, error) {
 	}
 	if o.CustomerFrgId != nil {
 		toSerialize["customer-frg-id"] = o.CustomerFrgId
+	}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
 	}
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata

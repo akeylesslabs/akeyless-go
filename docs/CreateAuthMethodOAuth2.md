@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **BoundClientIds** | Pointer to **[]string** | The clients ids that the access is restricted to | [optional] 
 **BoundIps** | Pointer to **[]string** | A CIDR whitelist with the IPs that the access is restricted to | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
+**GwBoundIps** | Pointer to **[]string** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
 **Issuer** | Pointer to **string** | Issuer URL | [optional] 
 **JwksUri** | **string** | The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. | 
 **JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] 
@@ -160,6 +161,31 @@ SetForceSubClaims sets ForceSubClaims field to given value.
 `func (o *CreateAuthMethodOAuth2) HasForceSubClaims() bool`
 
 HasForceSubClaims returns a boolean if a field has been set.
+
+### GetGwBoundIps
+
+`func (o *CreateAuthMethodOAuth2) GetGwBoundIps() []string`
+
+GetGwBoundIps returns the GwBoundIps field if non-nil, zero value otherwise.
+
+### GetGwBoundIpsOk
+
+`func (o *CreateAuthMethodOAuth2) GetGwBoundIpsOk() (*[]string, bool)`
+
+GetGwBoundIpsOk returns a tuple with the GwBoundIps field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGwBoundIps
+
+`func (o *CreateAuthMethodOAuth2) SetGwBoundIps(v []string)`
+
+SetGwBoundIps sets GwBoundIps field to given value.
+
+### HasGwBoundIps
+
+`func (o *CreateAuthMethodOAuth2) HasGwBoundIps() bool`
+
+HasGwBoundIps returns a boolean if a field has been set.
 
 ### GetIssuer
 

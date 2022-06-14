@@ -27,6 +27,8 @@ type CreateRotatedSecret struct {
 	// Region (used in aws)
 	AwsRegion *string `json:"aws-region,omitempty"`
 	CustomPayload *string `json:"custom-payload,omitempty"`
+	// Protection from accidental deletion of this item
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
 	// Metadata about the secret
@@ -350,6 +352,38 @@ func (o *CreateRotatedSecret) HasCustomPayload() bool {
 // SetCustomPayload gets a reference to the given string and assigns it to the CustomPayload field.
 func (o *CreateRotatedSecret) SetCustomPayload(v string) {
 	o.CustomPayload = &v
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *CreateRotatedSecret) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRotatedSecret) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *CreateRotatedSecret) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *CreateRotatedSecret) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetKey returns the Key field value if set, zero value otherwise.
@@ -1374,6 +1408,9 @@ func (o CreateRotatedSecret) MarshalJSON() ([]byte, error) {
 	}
 	if o.CustomPayload != nil {
 		toSerialize["custom-payload"] = o.CustomPayload
+	}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
 	}
 	if o.Key != nil {
 		toSerialize["key"] = o.Key

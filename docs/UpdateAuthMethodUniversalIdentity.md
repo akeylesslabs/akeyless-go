@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **DenyInheritance** | Pointer to **bool** | Deny from root to create children | [optional] 
 **DenyRotate** | Pointer to **bool** | Deny from the token to rotate | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
+**GwBoundIps** | Pointer to **[]string** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
 **JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] 
 **Name** | **string** | Auth Method name | 
 **NewName** | Pointer to **string** | Auth Method new name | [optional] 
@@ -159,6 +160,31 @@ SetForceSubClaims sets ForceSubClaims field to given value.
 `func (o *UpdateAuthMethodUniversalIdentity) HasForceSubClaims() bool`
 
 HasForceSubClaims returns a boolean if a field has been set.
+
+### GetGwBoundIps
+
+`func (o *UpdateAuthMethodUniversalIdentity) GetGwBoundIps() []string`
+
+GetGwBoundIps returns the GwBoundIps field if non-nil, zero value otherwise.
+
+### GetGwBoundIpsOk
+
+`func (o *UpdateAuthMethodUniversalIdentity) GetGwBoundIpsOk() (*[]string, bool)`
+
+GetGwBoundIpsOk returns a tuple with the GwBoundIps field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGwBoundIps
+
+`func (o *UpdateAuthMethodUniversalIdentity) SetGwBoundIps(v []string)`
+
+SetGwBoundIps sets GwBoundIps field to given value.
+
+### HasGwBoundIps
+
+`func (o *UpdateAuthMethodUniversalIdentity) HasGwBoundIps() bool`
+
+HasGwBoundIps returns a boolean if a field has been set.
 
 ### GetJwtTtl
 

@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **AutoRotate** | Pointer to **string** | Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation | [optional] 
 **AwsRegion** | Pointer to **string** | Region (used in aws) | [optional] [default to "us-east-2"]
 **CustomPayload** | Pointer to **string** |  | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Metadata** | Pointer to **string** | Metadata about the secret | [optional] 
 **Name** | **string** | Secret name | 
@@ -237,6 +238,31 @@ SetCustomPayload sets CustomPayload field to given value.
 `func (o *CreateRotatedSecret) HasCustomPayload() bool`
 
 HasCustomPayload returns a boolean if a field has been set.
+
+### GetDeleteProtection
+
+`func (o *CreateRotatedSecret) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *CreateRotatedSecret) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *CreateRotatedSecret) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *CreateRotatedSecret) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetKey
 

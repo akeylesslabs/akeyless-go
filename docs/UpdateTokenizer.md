@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **AddTag** | Pointer to **[]string** | List of the new tags that will be attached to this item | [optional] 
 **Alphabet** | Pointer to **string** | Alphabet to use in regexp vaultless tokenization | [optional] 
 **DecryptionTemplate** | Pointer to **string** | The Decryption output template to use in regexp vaultless tokenization | [optional] 
+**DeleteProtection** | Pointer to **string** |  | [optional] 
 **EncryptionKeyName** | Pointer to **string** | AES key name to use in vaultless tokenization | [optional] 
 **EncryptionTemplate** | Pointer to **string** | The Encryption output template to use in regexp vaultless tokenization | [optional] 
 **Name** | **string** | Current item name | 
@@ -113,6 +114,31 @@ SetDecryptionTemplate sets DecryptionTemplate field to given value.
 `func (o *UpdateTokenizer) HasDecryptionTemplate() bool`
 
 HasDecryptionTemplate returns a boolean if a field has been set.
+
+### GetDeleteProtection
+
+`func (o *UpdateTokenizer) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *UpdateTokenizer) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *UpdateTokenizer) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *UpdateTokenizer) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetEncryptionKeyName
 

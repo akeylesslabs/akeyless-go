@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **BoundUserId** | Pointer to **[]string** | A list of full user ids that the access is restricted to | [optional] 
 **BoundUserName** | Pointer to **[]string** | A list of full user-name that the access is restricted to | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
+**GwBoundIps** | Pointer to **[]string** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
 **JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] 
 **Name** | **string** | Auth Method name | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -287,6 +288,31 @@ SetForceSubClaims sets ForceSubClaims field to given value.
 `func (o *CreateAuthMethodHuawei) HasForceSubClaims() bool`
 
 HasForceSubClaims returns a boolean if a field has been set.
+
+### GetGwBoundIps
+
+`func (o *CreateAuthMethodHuawei) GetGwBoundIps() []string`
+
+GetGwBoundIps returns the GwBoundIps field if non-nil, zero value otherwise.
+
+### GetGwBoundIpsOk
+
+`func (o *CreateAuthMethodHuawei) GetGwBoundIpsOk() (*[]string, bool)`
+
+GetGwBoundIpsOk returns a tuple with the GwBoundIps field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGwBoundIps
+
+`func (o *CreateAuthMethodHuawei) SetGwBoundIps(v []string)`
+
+SetGwBoundIps sets GwBoundIps field to given value.
+
+### HasGwBoundIps
+
+`func (o *CreateAuthMethodHuawei) HasGwBoundIps() bool`
+
+HasGwBoundIps returns a boolean if a field has been set.
 
 ### GetJwtTtl
 

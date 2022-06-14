@@ -4,22 +4,32 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AwsKey** | Pointer to **string** |  | [optional] 
-**AwsKeyId** | Pointer to **string** |  | [optional] 
-**AwsRegion** | Pointer to **string** |  | [optional] 
-**AzureClientId** | Pointer to **string** |  | [optional] 
-**AzureKvName** | Pointer to **string** |  | [optional] 
-**AzureSecret** | Pointer to **string** |  | [optional] 
-**AzureTenantId** | Pointer to **string** |  | [optional] 
-**HashiJson** | Pointer to **string** |  | [optional] 
-**HashiNs** | Pointer to **[]string** |  | [optional] 
-**HashiToken** | Pointer to **string** |  | [optional] 
-**HashiUrl** | Pointer to **string** |  | [optional] 
+**AwsKey** | Pointer to **string** | AWS Secret Access Key | [optional] 
+**AwsKeyId** | Pointer to **string** | AWS Access Key ID | [optional] 
+**AwsRegion** | Pointer to **string** | AWS region | [optional] 
+**AzureClientId** | Pointer to **string** | Azure KV Access client ID | [optional] 
+**AzureKvName** | Pointer to **string** | Azure Key Vault Name | [optional] 
+**AzureSecret** | Pointer to **string** | Azure KV secret | [optional] 
+**AzureTenantId** | Pointer to **string** | Azure KV Access tenant ID | [optional] 
+**GcpKey** | Pointer to **string** | Base64-encoded service account private key text | [optional] 
+**HashiJson** | Pointer to **string** | Import secret key as json value or independent secrets | [optional] 
+**HashiNs** | Pointer to **[]string** | Hashi namespaces | [optional] 
+**HashiToken** | Pointer to **string** | Hashi token | [optional] 
+**HashiUrl** | Pointer to **string** | Hashi url | [optional] 
+**K8sCaCertificate** | Pointer to **[]int32** | For Certificate Authentication method K8s Cluster CA certificate | [optional] 
+**K8sClientCertificate** | Pointer to **[]int32** | K8s Client certificate | [optional] 
+**K8sClientKey** | Pointer to **[]int32** | K8s Client key | [optional] 
+**K8sNamespace** | Pointer to **string** | K8s Namespace | [optional] 
+**K8sPassword** | Pointer to **string** | K8s client password | [optional] 
+**K8sSkipSystem** | Pointer to **bool** | K8s Skip Control Plane Secrets | [optional] 
+**K8sToken** | Pointer to **string** | For Token Authentication method K8s Bearer Token | [optional] 
+**K8sUrl** | Pointer to **string** | K8s Endpoint URL | [optional] 
+**K8sUsername** | Pointer to **string** | For Password Authentication method K8s client username | [optional] 
 **Name** | **string** | Migration name | 
-**ProtectionKey** | Pointer to **string** |  | [optional] 
-**TargetLocation** | Pointer to **string** |  | [optional] 
+**ProtectionKey** | Pointer to **string** | The name of the key that protects the classic key value (if empty, the account default key will be used) | [optional] 
+**TargetLocation** | Pointer to **string** | Target location in Akeyless for imported secrets | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
-**Type** | Pointer to **string** |  | [optional] 
+**Type** | Pointer to **string** | Migration type, can be: hashi/aws/gcp/k8s/azure_kv | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
 ## Methods
@@ -216,6 +226,31 @@ SetAzureTenantId sets AzureTenantId field to given value.
 
 HasAzureTenantId returns a boolean if a field has been set.
 
+### GetGcpKey
+
+`func (o *GatewayCreateMigration) GetGcpKey() string`
+
+GetGcpKey returns the GcpKey field if non-nil, zero value otherwise.
+
+### GetGcpKeyOk
+
+`func (o *GatewayCreateMigration) GetGcpKeyOk() (*string, bool)`
+
+GetGcpKeyOk returns a tuple with the GcpKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpKey
+
+`func (o *GatewayCreateMigration) SetGcpKey(v string)`
+
+SetGcpKey sets GcpKey field to given value.
+
+### HasGcpKey
+
+`func (o *GatewayCreateMigration) HasGcpKey() bool`
+
+HasGcpKey returns a boolean if a field has been set.
+
 ### GetHashiJson
 
 `func (o *GatewayCreateMigration) GetHashiJson() string`
@@ -315,6 +350,231 @@ SetHashiUrl sets HashiUrl field to given value.
 `func (o *GatewayCreateMigration) HasHashiUrl() bool`
 
 HasHashiUrl returns a boolean if a field has been set.
+
+### GetK8sCaCertificate
+
+`func (o *GatewayCreateMigration) GetK8sCaCertificate() []int32`
+
+GetK8sCaCertificate returns the K8sCaCertificate field if non-nil, zero value otherwise.
+
+### GetK8sCaCertificateOk
+
+`func (o *GatewayCreateMigration) GetK8sCaCertificateOk() (*[]int32, bool)`
+
+GetK8sCaCertificateOk returns a tuple with the K8sCaCertificate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sCaCertificate
+
+`func (o *GatewayCreateMigration) SetK8sCaCertificate(v []int32)`
+
+SetK8sCaCertificate sets K8sCaCertificate field to given value.
+
+### HasK8sCaCertificate
+
+`func (o *GatewayCreateMigration) HasK8sCaCertificate() bool`
+
+HasK8sCaCertificate returns a boolean if a field has been set.
+
+### GetK8sClientCertificate
+
+`func (o *GatewayCreateMigration) GetK8sClientCertificate() []int32`
+
+GetK8sClientCertificate returns the K8sClientCertificate field if non-nil, zero value otherwise.
+
+### GetK8sClientCertificateOk
+
+`func (o *GatewayCreateMigration) GetK8sClientCertificateOk() (*[]int32, bool)`
+
+GetK8sClientCertificateOk returns a tuple with the K8sClientCertificate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sClientCertificate
+
+`func (o *GatewayCreateMigration) SetK8sClientCertificate(v []int32)`
+
+SetK8sClientCertificate sets K8sClientCertificate field to given value.
+
+### HasK8sClientCertificate
+
+`func (o *GatewayCreateMigration) HasK8sClientCertificate() bool`
+
+HasK8sClientCertificate returns a boolean if a field has been set.
+
+### GetK8sClientKey
+
+`func (o *GatewayCreateMigration) GetK8sClientKey() []int32`
+
+GetK8sClientKey returns the K8sClientKey field if non-nil, zero value otherwise.
+
+### GetK8sClientKeyOk
+
+`func (o *GatewayCreateMigration) GetK8sClientKeyOk() (*[]int32, bool)`
+
+GetK8sClientKeyOk returns a tuple with the K8sClientKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sClientKey
+
+`func (o *GatewayCreateMigration) SetK8sClientKey(v []int32)`
+
+SetK8sClientKey sets K8sClientKey field to given value.
+
+### HasK8sClientKey
+
+`func (o *GatewayCreateMigration) HasK8sClientKey() bool`
+
+HasK8sClientKey returns a boolean if a field has been set.
+
+### GetK8sNamespace
+
+`func (o *GatewayCreateMigration) GetK8sNamespace() string`
+
+GetK8sNamespace returns the K8sNamespace field if non-nil, zero value otherwise.
+
+### GetK8sNamespaceOk
+
+`func (o *GatewayCreateMigration) GetK8sNamespaceOk() (*string, bool)`
+
+GetK8sNamespaceOk returns a tuple with the K8sNamespace field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sNamespace
+
+`func (o *GatewayCreateMigration) SetK8sNamespace(v string)`
+
+SetK8sNamespace sets K8sNamespace field to given value.
+
+### HasK8sNamespace
+
+`func (o *GatewayCreateMigration) HasK8sNamespace() bool`
+
+HasK8sNamespace returns a boolean if a field has been set.
+
+### GetK8sPassword
+
+`func (o *GatewayCreateMigration) GetK8sPassword() string`
+
+GetK8sPassword returns the K8sPassword field if non-nil, zero value otherwise.
+
+### GetK8sPasswordOk
+
+`func (o *GatewayCreateMigration) GetK8sPasswordOk() (*string, bool)`
+
+GetK8sPasswordOk returns a tuple with the K8sPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sPassword
+
+`func (o *GatewayCreateMigration) SetK8sPassword(v string)`
+
+SetK8sPassword sets K8sPassword field to given value.
+
+### HasK8sPassword
+
+`func (o *GatewayCreateMigration) HasK8sPassword() bool`
+
+HasK8sPassword returns a boolean if a field has been set.
+
+### GetK8sSkipSystem
+
+`func (o *GatewayCreateMigration) GetK8sSkipSystem() bool`
+
+GetK8sSkipSystem returns the K8sSkipSystem field if non-nil, zero value otherwise.
+
+### GetK8sSkipSystemOk
+
+`func (o *GatewayCreateMigration) GetK8sSkipSystemOk() (*bool, bool)`
+
+GetK8sSkipSystemOk returns a tuple with the K8sSkipSystem field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sSkipSystem
+
+`func (o *GatewayCreateMigration) SetK8sSkipSystem(v bool)`
+
+SetK8sSkipSystem sets K8sSkipSystem field to given value.
+
+### HasK8sSkipSystem
+
+`func (o *GatewayCreateMigration) HasK8sSkipSystem() bool`
+
+HasK8sSkipSystem returns a boolean if a field has been set.
+
+### GetK8sToken
+
+`func (o *GatewayCreateMigration) GetK8sToken() string`
+
+GetK8sToken returns the K8sToken field if non-nil, zero value otherwise.
+
+### GetK8sTokenOk
+
+`func (o *GatewayCreateMigration) GetK8sTokenOk() (*string, bool)`
+
+GetK8sTokenOk returns a tuple with the K8sToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sToken
+
+`func (o *GatewayCreateMigration) SetK8sToken(v string)`
+
+SetK8sToken sets K8sToken field to given value.
+
+### HasK8sToken
+
+`func (o *GatewayCreateMigration) HasK8sToken() bool`
+
+HasK8sToken returns a boolean if a field has been set.
+
+### GetK8sUrl
+
+`func (o *GatewayCreateMigration) GetK8sUrl() string`
+
+GetK8sUrl returns the K8sUrl field if non-nil, zero value otherwise.
+
+### GetK8sUrlOk
+
+`func (o *GatewayCreateMigration) GetK8sUrlOk() (*string, bool)`
+
+GetK8sUrlOk returns a tuple with the K8sUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sUrl
+
+`func (o *GatewayCreateMigration) SetK8sUrl(v string)`
+
+SetK8sUrl sets K8sUrl field to given value.
+
+### HasK8sUrl
+
+`func (o *GatewayCreateMigration) HasK8sUrl() bool`
+
+HasK8sUrl returns a boolean if a field has been set.
+
+### GetK8sUsername
+
+`func (o *GatewayCreateMigration) GetK8sUsername() string`
+
+GetK8sUsername returns the K8sUsername field if non-nil, zero value otherwise.
+
+### GetK8sUsernameOk
+
+`func (o *GatewayCreateMigration) GetK8sUsernameOk() (*string, bool)`
+
+GetK8sUsernameOk returns a tuple with the K8sUsername field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sUsername
+
+`func (o *GatewayCreateMigration) SetK8sUsername(v string)`
+
+SetK8sUsername sets K8sUsername field to given value.
+
+### HasK8sUsername
+
+`func (o *GatewayCreateMigration) HasK8sUsername() bool`
+
+HasK8sUsername returns a boolean if a field has been set.
 
 ### GetName
 

@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **EmailPassAccessRules** | Pointer to [**EmailPassAccessRules**](EmailPassAccessRules.md) |  | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true the role associated with this auth method must include sub claims | [optional] 
 **GcpAccessRules** | Pointer to [**GCPAccessRules**](GCPAccessRules.md) |  | [optional] 
+**GwCidrWhitelist** | Pointer to **string** |  | [optional] 
 **HuaweiAccessRules** | Pointer to [**HuaweiAccessRules**](HuaweiAccessRules.md) |  | [optional] 
 **JwtTtl** | Pointer to **int64** |  | [optional] 
 **K8sAccessRules** | Pointer to [**KubernetesAccessRules**](KubernetesAccessRules.md) |  | [optional] 
@@ -292,6 +293,31 @@ SetGcpAccessRules sets GcpAccessRules field to given value.
 `func (o *AuthMethodAccessInfo) HasGcpAccessRules() bool`
 
 HasGcpAccessRules returns a boolean if a field has been set.
+
+### GetGwCidrWhitelist
+
+`func (o *AuthMethodAccessInfo) GetGwCidrWhitelist() string`
+
+GetGwCidrWhitelist returns the GwCidrWhitelist field if non-nil, zero value otherwise.
+
+### GetGwCidrWhitelistOk
+
+`func (o *AuthMethodAccessInfo) GetGwCidrWhitelistOk() (*string, bool)`
+
+GetGwCidrWhitelistOk returns a tuple with the GwCidrWhitelist field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGwCidrWhitelist
+
+`func (o *AuthMethodAccessInfo) SetGwCidrWhitelist(v string)`
+
+SetGwCidrWhitelist sets GwCidrWhitelist field to given value.
+
+### HasGwCidrWhitelist
+
+`func (o *AuthMethodAccessInfo) HasGwCidrWhitelist() bool`
+
+HasGwCidrWhitelist returns a boolean if a field has been set.
 
 ### GetHuaweiAccessRules
 

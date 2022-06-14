@@ -97,6 +97,7 @@ Method | HTTP request | Description
 [**GatewayDeleteProducer**](V2Api.md#GatewayDeleteProducer) | **Post** /gateway-delete-producer | 
 [**GatewayGetConfig**](V2Api.md#GatewayGetConfig) | **Post** /gateway-get-config | 
 [**GatewayGetK8SAuthConfig**](V2Api.md#GatewayGetK8SAuthConfig) | **Post** /gateway-get-k8s-auth-config | 
+[**GatewayGetLdapAuthConfig**](V2Api.md#GatewayGetLdapAuthConfig) | **Post** /gateway-get-ldap-auth-config | 
 [**GatewayGetMigration**](V2Api.md#GatewayGetMigration) | **Post** /gateway-get-migration | 
 [**GatewayGetProducer**](V2Api.md#GatewayGetProducer) | **Post** /gateway-get-producer | 
 [**GatewayGetTmpUsers**](V2Api.md#GatewayGetTmpUsers) | **Post** /gateway-get-producer-tmp-creds | 
@@ -109,6 +110,7 @@ Method | HTTP request | Description
 [**GatewaySyncMigration**](V2Api.md#GatewaySyncMigration) | **Post** /gateway-sync-migration | 
 [**GatewayUpdateItem**](V2Api.md#GatewayUpdateItem) | **Post** /gateway-update-item | 
 [**GatewayUpdateK8SAuthConfig**](V2Api.md#GatewayUpdateK8SAuthConfig) | **Post** /gateway-update-k8s-auth-config | 
+[**GatewayUpdateLdapAuthConfig**](V2Api.md#GatewayUpdateLdapAuthConfig) | **Post** /gateway-update-ldap-auth-config | 
 [**GatewayUpdateMigration**](V2Api.md#GatewayUpdateMigration) | **Post** /gateway-update-migration | 
 [**GatewayUpdateProducerArtifactory**](V2Api.md#GatewayUpdateProducerArtifactory) | **Post** /gateway-update-producer-artifactory | 
 [**GatewayUpdateProducerAws**](V2Api.md#GatewayUpdateProducerAws) | **Post** /gateway-update-producer-aws | 
@@ -4318,7 +4320,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayMigrationCreateOutput**](gatewayMigrationCreateOutput.md)
+[**GatewayMigrationCreateOutput**](GatewayMigrationCreateOutput.md)
 
 ### Authorization
 
@@ -5982,7 +5984,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayMigrationDeleteOutput**](gatewayMigrationDeleteOutput.md)
+[**GatewayMigrationDeleteOutput**](GatewayMigrationDeleteOutput.md)
 
 ### Authorization
 
@@ -6175,6 +6177,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GatewayGetK8SAuthConfigOutput**](gatewayGetK8SAuthConfigOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayGetLdapAuthConfig
+
+> GatewayGetLdapAuthConfigOutput GatewayGetLdapAuthConfig(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayGetLdapAuthConfig() // GatewayGetLdapAuthConfig | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayGetLdapAuthConfig(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayGetLdapAuthConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayGetLdapAuthConfig`: GatewayGetLdapAuthConfigOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayGetLdapAuthConfig`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayGetLdapAuthConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayGetLdapAuthConfig**](GatewayGetLdapAuthConfig.md) |  | 
+
+### Return type
+
+[**GatewayGetLdapAuthConfigOutput**](gatewayGetLdapAuthConfigOutput.md)
 
 ### Authorization
 
@@ -6812,7 +6878,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayMigrationSyncOutput**](gatewayMigrationSyncOutput.md)
+[**GatewayMigrationSyncOutput**](GatewayMigrationSyncOutput.md)
 
 ### Authorization
 
@@ -6956,6 +7022,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GatewayUpdateLdapAuthConfig
+
+> GatewayUpdateLdapAuthConfigOutput GatewayUpdateLdapAuthConfig(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewGatewayUpdateLdapAuthConfig() // GatewayUpdateLdapAuthConfig | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateLdapAuthConfig(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateLdapAuthConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateLdapAuthConfig`: GatewayUpdateLdapAuthConfigOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateLdapAuthConfig`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateLdapAuthConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateLdapAuthConfig**](GatewayUpdateLdapAuthConfig.md) |  | 
+
+### Return type
+
+[**GatewayUpdateLdapAuthConfigOutput**](GatewayUpdateLdapAuthConfigOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GatewayUpdateMigration
 
 > GatewayMigrationUpdateOutput GatewayUpdateMigration(ctx).Body(body).Execute()
@@ -7004,7 +7134,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayMigrationUpdateOutput**](gatewayMigrationUpdateOutput.md)
+[**GatewayMigrationUpdateOutput**](GatewayMigrationUpdateOutput.md)
 
 ### Authorization
 

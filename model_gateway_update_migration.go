@@ -17,24 +17,59 @@ import (
 
 // GatewayUpdateMigration gatewayUpdateMigration is a command that update migration
 type GatewayUpdateMigration struct {
+	// AWS Secret Access Key
 	AwsKey *string `json:"aws-key,omitempty"`
+	// AWS Access Key ID
 	AwsKeyId *string `json:"aws-key-id,omitempty"`
+	// AWS region
 	AwsRegion *string `json:"aws-region,omitempty"`
+	// Azure KV Access client ID
 	AzureClientId *string `json:"azure-client-id,omitempty"`
+	// Azure Key Vault Name
 	AzureKvName *string `json:"azure-kv-name,omitempty"`
+	// Azure KV secret
 	AzureSecret *string `json:"azure-secret,omitempty"`
+	// Azure KV Access tenant ID
 	AzureTenantId *string `json:"azure-tenant-id,omitempty"`
+	// Base64-encoded service account private key text
+	GcpKey *string `json:"gcp-key,omitempty"`
+	// Import secret key as json value or independent secrets
 	HashiJson *string `json:"hashi-json,omitempty"`
+	// Hashi namespaces
 	HashiNs *[]string `json:"hashi-ns,omitempty"`
+	// Hashi token
 	HashiToken *string `json:"hashi-token,omitempty"`
+	// Hashi url
 	HashiUrl *string `json:"hashi-url,omitempty"`
+	// Migration ID
 	Id *string `json:"id,omitempty"`
+	// For Certificate Authentication method K8s Cluster CA certificate
+	K8sCaCertificate *[]int32 `json:"k8s-ca-certificate,omitempty"`
+	// K8s Client certificate
+	K8sClientCertificate *[]int32 `json:"k8s-client-certificate,omitempty"`
+	// K8s Client key
+	K8sClientKey *[]int32 `json:"k8s-client-key,omitempty"`
+	// K8s Namespace
+	K8sNamespace *string `json:"k8s-namespace,omitempty"`
+	// K8s client password
+	K8sPassword *string `json:"k8s-password,omitempty"`
+	// K8s Skip Control Plane Secrets
+	K8sSkipSystem *bool `json:"k8s-skip-system,omitempty"`
+	// For Token Authentication method K8s Bearer Token
+	K8sToken *string `json:"k8s-token,omitempty"`
+	// K8s Endpoint URL
+	K8sUrl *string `json:"k8s-url,omitempty"`
+	// For Password Authentication method K8s client username
+	K8sUsername *string `json:"k8s-username,omitempty"`
 	// Migration name
 	Name string `json:"name"`
+	// The name of the key that protects the classic key value (if empty, the account default key will be used)
 	ProtectionKey *string `json:"protection-key,omitempty"`
+	// Target location in Akeyless for imported secrets
 	TargetLocation *string `json:"target-location,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
+	// Migration type, can be: hashi/aws/gcp/k8s/azure_kv
 	Type *string `json:"type,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
@@ -282,6 +317,38 @@ func (o *GatewayUpdateMigration) SetAzureTenantId(v string) {
 	o.AzureTenantId = &v
 }
 
+// GetGcpKey returns the GcpKey field value if set, zero value otherwise.
+func (o *GatewayUpdateMigration) GetGcpKey() string {
+	if o == nil || o.GcpKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.GcpKey
+}
+
+// GetGcpKeyOk returns a tuple with the GcpKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetGcpKeyOk() (*string, bool) {
+	if o == nil || o.GcpKey == nil {
+		return nil, false
+	}
+	return o.GcpKey, true
+}
+
+// HasGcpKey returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasGcpKey() bool {
+	if o != nil && o.GcpKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpKey gets a reference to the given string and assigns it to the GcpKey field.
+func (o *GatewayUpdateMigration) SetGcpKey(v string) {
+	o.GcpKey = &v
+}
+
 // GetHashiJson returns the HashiJson field value if set, zero value otherwise.
 func (o *GatewayUpdateMigration) GetHashiJson() string {
 	if o == nil || o.HashiJson == nil {
@@ -440,6 +507,294 @@ func (o *GatewayUpdateMigration) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *GatewayUpdateMigration) SetId(v string) {
 	o.Id = &v
+}
+
+// GetK8sCaCertificate returns the K8sCaCertificate field value if set, zero value otherwise.
+func (o *GatewayUpdateMigration) GetK8sCaCertificate() []int32 {
+	if o == nil || o.K8sCaCertificate == nil {
+		var ret []int32
+		return ret
+	}
+	return *o.K8sCaCertificate
+}
+
+// GetK8sCaCertificateOk returns a tuple with the K8sCaCertificate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetK8sCaCertificateOk() (*[]int32, bool) {
+	if o == nil || o.K8sCaCertificate == nil {
+		return nil, false
+	}
+	return o.K8sCaCertificate, true
+}
+
+// HasK8sCaCertificate returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasK8sCaCertificate() bool {
+	if o != nil && o.K8sCaCertificate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sCaCertificate gets a reference to the given []int32 and assigns it to the K8sCaCertificate field.
+func (o *GatewayUpdateMigration) SetK8sCaCertificate(v []int32) {
+	o.K8sCaCertificate = &v
+}
+
+// GetK8sClientCertificate returns the K8sClientCertificate field value if set, zero value otherwise.
+func (o *GatewayUpdateMigration) GetK8sClientCertificate() []int32 {
+	if o == nil || o.K8sClientCertificate == nil {
+		var ret []int32
+		return ret
+	}
+	return *o.K8sClientCertificate
+}
+
+// GetK8sClientCertificateOk returns a tuple with the K8sClientCertificate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetK8sClientCertificateOk() (*[]int32, bool) {
+	if o == nil || o.K8sClientCertificate == nil {
+		return nil, false
+	}
+	return o.K8sClientCertificate, true
+}
+
+// HasK8sClientCertificate returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasK8sClientCertificate() bool {
+	if o != nil && o.K8sClientCertificate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sClientCertificate gets a reference to the given []int32 and assigns it to the K8sClientCertificate field.
+func (o *GatewayUpdateMigration) SetK8sClientCertificate(v []int32) {
+	o.K8sClientCertificate = &v
+}
+
+// GetK8sClientKey returns the K8sClientKey field value if set, zero value otherwise.
+func (o *GatewayUpdateMigration) GetK8sClientKey() []int32 {
+	if o == nil || o.K8sClientKey == nil {
+		var ret []int32
+		return ret
+	}
+	return *o.K8sClientKey
+}
+
+// GetK8sClientKeyOk returns a tuple with the K8sClientKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetK8sClientKeyOk() (*[]int32, bool) {
+	if o == nil || o.K8sClientKey == nil {
+		return nil, false
+	}
+	return o.K8sClientKey, true
+}
+
+// HasK8sClientKey returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasK8sClientKey() bool {
+	if o != nil && o.K8sClientKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sClientKey gets a reference to the given []int32 and assigns it to the K8sClientKey field.
+func (o *GatewayUpdateMigration) SetK8sClientKey(v []int32) {
+	o.K8sClientKey = &v
+}
+
+// GetK8sNamespace returns the K8sNamespace field value if set, zero value otherwise.
+func (o *GatewayUpdateMigration) GetK8sNamespace() string {
+	if o == nil || o.K8sNamespace == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sNamespace
+}
+
+// GetK8sNamespaceOk returns a tuple with the K8sNamespace field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetK8sNamespaceOk() (*string, bool) {
+	if o == nil || o.K8sNamespace == nil {
+		return nil, false
+	}
+	return o.K8sNamespace, true
+}
+
+// HasK8sNamespace returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasK8sNamespace() bool {
+	if o != nil && o.K8sNamespace != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sNamespace gets a reference to the given string and assigns it to the K8sNamespace field.
+func (o *GatewayUpdateMigration) SetK8sNamespace(v string) {
+	o.K8sNamespace = &v
+}
+
+// GetK8sPassword returns the K8sPassword field value if set, zero value otherwise.
+func (o *GatewayUpdateMigration) GetK8sPassword() string {
+	if o == nil || o.K8sPassword == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sPassword
+}
+
+// GetK8sPasswordOk returns a tuple with the K8sPassword field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetK8sPasswordOk() (*string, bool) {
+	if o == nil || o.K8sPassword == nil {
+		return nil, false
+	}
+	return o.K8sPassword, true
+}
+
+// HasK8sPassword returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasK8sPassword() bool {
+	if o != nil && o.K8sPassword != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sPassword gets a reference to the given string and assigns it to the K8sPassword field.
+func (o *GatewayUpdateMigration) SetK8sPassword(v string) {
+	o.K8sPassword = &v
+}
+
+// GetK8sSkipSystem returns the K8sSkipSystem field value if set, zero value otherwise.
+func (o *GatewayUpdateMigration) GetK8sSkipSystem() bool {
+	if o == nil || o.K8sSkipSystem == nil {
+		var ret bool
+		return ret
+	}
+	return *o.K8sSkipSystem
+}
+
+// GetK8sSkipSystemOk returns a tuple with the K8sSkipSystem field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetK8sSkipSystemOk() (*bool, bool) {
+	if o == nil || o.K8sSkipSystem == nil {
+		return nil, false
+	}
+	return o.K8sSkipSystem, true
+}
+
+// HasK8sSkipSystem returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasK8sSkipSystem() bool {
+	if o != nil && o.K8sSkipSystem != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sSkipSystem gets a reference to the given bool and assigns it to the K8sSkipSystem field.
+func (o *GatewayUpdateMigration) SetK8sSkipSystem(v bool) {
+	o.K8sSkipSystem = &v
+}
+
+// GetK8sToken returns the K8sToken field value if set, zero value otherwise.
+func (o *GatewayUpdateMigration) GetK8sToken() string {
+	if o == nil || o.K8sToken == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sToken
+}
+
+// GetK8sTokenOk returns a tuple with the K8sToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetK8sTokenOk() (*string, bool) {
+	if o == nil || o.K8sToken == nil {
+		return nil, false
+	}
+	return o.K8sToken, true
+}
+
+// HasK8sToken returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasK8sToken() bool {
+	if o != nil && o.K8sToken != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sToken gets a reference to the given string and assigns it to the K8sToken field.
+func (o *GatewayUpdateMigration) SetK8sToken(v string) {
+	o.K8sToken = &v
+}
+
+// GetK8sUrl returns the K8sUrl field value if set, zero value otherwise.
+func (o *GatewayUpdateMigration) GetK8sUrl() string {
+	if o == nil || o.K8sUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sUrl
+}
+
+// GetK8sUrlOk returns a tuple with the K8sUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetK8sUrlOk() (*string, bool) {
+	if o == nil || o.K8sUrl == nil {
+		return nil, false
+	}
+	return o.K8sUrl, true
+}
+
+// HasK8sUrl returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasK8sUrl() bool {
+	if o != nil && o.K8sUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sUrl gets a reference to the given string and assigns it to the K8sUrl field.
+func (o *GatewayUpdateMigration) SetK8sUrl(v string) {
+	o.K8sUrl = &v
+}
+
+// GetK8sUsername returns the K8sUsername field value if set, zero value otherwise.
+func (o *GatewayUpdateMigration) GetK8sUsername() string {
+	if o == nil || o.K8sUsername == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sUsername
+}
+
+// GetK8sUsernameOk returns a tuple with the K8sUsername field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetK8sUsernameOk() (*string, bool) {
+	if o == nil || o.K8sUsername == nil {
+		return nil, false
+	}
+	return o.K8sUsername, true
+}
+
+// HasK8sUsername returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasK8sUsername() bool {
+	if o != nil && o.K8sUsername != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sUsername gets a reference to the given string and assigns it to the K8sUsername field.
+func (o *GatewayUpdateMigration) SetK8sUsername(v string) {
+	o.K8sUsername = &v
 }
 
 // GetName returns the Name field value
@@ -649,6 +1004,9 @@ func (o GatewayUpdateMigration) MarshalJSON() ([]byte, error) {
 	if o.AzureTenantId != nil {
 		toSerialize["azure-tenant-id"] = o.AzureTenantId
 	}
+	if o.GcpKey != nil {
+		toSerialize["gcp-key"] = o.GcpKey
+	}
 	if o.HashiJson != nil {
 		toSerialize["hashi-json"] = o.HashiJson
 	}
@@ -663,6 +1021,33 @@ func (o GatewayUpdateMigration) MarshalJSON() ([]byte, error) {
 	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
+	}
+	if o.K8sCaCertificate != nil {
+		toSerialize["k8s-ca-certificate"] = o.K8sCaCertificate
+	}
+	if o.K8sClientCertificate != nil {
+		toSerialize["k8s-client-certificate"] = o.K8sClientCertificate
+	}
+	if o.K8sClientKey != nil {
+		toSerialize["k8s-client-key"] = o.K8sClientKey
+	}
+	if o.K8sNamespace != nil {
+		toSerialize["k8s-namespace"] = o.K8sNamespace
+	}
+	if o.K8sPassword != nil {
+		toSerialize["k8s-password"] = o.K8sPassword
+	}
+	if o.K8sSkipSystem != nil {
+		toSerialize["k8s-skip-system"] = o.K8sSkipSystem
+	}
+	if o.K8sToken != nil {
+		toSerialize["k8s-token"] = o.K8sToken
+	}
+	if o.K8sUrl != nil {
+		toSerialize["k8s-url"] = o.K8sUrl
+	}
+	if o.K8sUsername != nil {
+		toSerialize["k8s-username"] = o.K8sUsername
 	}
 	if true {
 		toSerialize["name"] = o.Name

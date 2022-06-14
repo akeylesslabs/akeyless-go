@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AddTag** | Pointer to **[]string** | List of the new tags that will be attached to this item | [optional] 
+**DeleteProtection** | Pointer to **string** |  | [optional] 
 **Name** | **string** | Current item name | 
 **NewMetadata** | Pointer to **string** | New item metadata | [optional] [default to "default_metadata"]
 **NewName** | Pointer to **string** | New item name | [optional] 
@@ -79,6 +80,31 @@ SetAddTag sets AddTag field to given value.
 `func (o *UpdateItem) HasAddTag() bool`
 
 HasAddTag returns a boolean if a field has been set.
+
+### GetDeleteProtection
+
+`func (o *UpdateItem) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *UpdateItem) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *UpdateItem) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *UpdateItem) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetName
 

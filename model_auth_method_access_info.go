@@ -29,6 +29,7 @@ type AuthMethodAccessInfo struct {
 	// if true the role associated with this auth method must include sub claims
 	ForceSubClaims *bool `json:"force_sub_claims,omitempty"`
 	GcpAccessRules *GCPAccessRules `json:"gcp_access_rules,omitempty"`
+	GwCidrWhitelist *string `json:"gw_cidr_whitelist,omitempty"`
 	HuaweiAccessRules *HuaweiAccessRules `json:"huawei_access_rules,omitempty"`
 	JwtTtl *int64 `json:"jwt_ttl,omitempty"`
 	K8sAccessRules *KubernetesAccessRules `json:"k8s_access_rules,omitempty"`
@@ -377,6 +378,38 @@ func (o *AuthMethodAccessInfo) SetGcpAccessRules(v GCPAccessRules) {
 	o.GcpAccessRules = &v
 }
 
+// GetGwCidrWhitelist returns the GwCidrWhitelist field value if set, zero value otherwise.
+func (o *AuthMethodAccessInfo) GetGwCidrWhitelist() string {
+	if o == nil || o.GwCidrWhitelist == nil {
+		var ret string
+		return ret
+	}
+	return *o.GwCidrWhitelist
+}
+
+// GetGwCidrWhitelistOk returns a tuple with the GwCidrWhitelist field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodAccessInfo) GetGwCidrWhitelistOk() (*string, bool) {
+	if o == nil || o.GwCidrWhitelist == nil {
+		return nil, false
+	}
+	return o.GwCidrWhitelist, true
+}
+
+// HasGwCidrWhitelist returns a boolean if a field has been set.
+func (o *AuthMethodAccessInfo) HasGwCidrWhitelist() bool {
+	if o != nil && o.GwCidrWhitelist != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGwCidrWhitelist gets a reference to the given string and assigns it to the GwCidrWhitelist field.
+func (o *AuthMethodAccessInfo) SetGwCidrWhitelist(v string) {
+	o.GwCidrWhitelist = &v
+}
+
 // GetHuaweiAccessRules returns the HuaweiAccessRules field value if set, zero value otherwise.
 func (o *AuthMethodAccessInfo) GetHuaweiAccessRules() HuaweiAccessRules {
 	if o == nil || o.HuaweiAccessRules == nil {
@@ -696,6 +729,9 @@ func (o AuthMethodAccessInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.GcpAccessRules != nil {
 		toSerialize["gcp_access_rules"] = o.GcpAccessRules
+	}
+	if o.GwCidrWhitelist != nil {
+		toSerialize["gw_cidr_whitelist"] = o.GwCidrWhitelist
 	}
 	if o.HuaweiAccessRules != nil {
 		toSerialize["huawei_access_rules"] = o.HuaweiAccessRules

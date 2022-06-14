@@ -17,6 +17,7 @@ import (
 
 // GetRSAPublicOutput struct for GetRSAPublicOutput
 type GetRSAPublicOutput struct {
+	Pem *string `json:"pem,omitempty"`
 	Raw *string `json:"raw,omitempty"`
 	Ssh *string `json:"ssh,omitempty"`
 }
@@ -36,6 +37,38 @@ func NewGetRSAPublicOutput() *GetRSAPublicOutput {
 func NewGetRSAPublicOutputWithDefaults() *GetRSAPublicOutput {
 	this := GetRSAPublicOutput{}
 	return &this
+}
+
+// GetPem returns the Pem field value if set, zero value otherwise.
+func (o *GetRSAPublicOutput) GetPem() string {
+	if o == nil || o.Pem == nil {
+		var ret string
+		return ret
+	}
+	return *o.Pem
+}
+
+// GetPemOk returns a tuple with the Pem field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetRSAPublicOutput) GetPemOk() (*string, bool) {
+	if o == nil || o.Pem == nil {
+		return nil, false
+	}
+	return o.Pem, true
+}
+
+// HasPem returns a boolean if a field has been set.
+func (o *GetRSAPublicOutput) HasPem() bool {
+	if o != nil && o.Pem != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPem gets a reference to the given string and assigns it to the Pem field.
+func (o *GetRSAPublicOutput) SetPem(v string) {
+	o.Pem = &v
 }
 
 // GetRaw returns the Raw field value if set, zero value otherwise.
@@ -104,6 +137,9 @@ func (o *GetRSAPublicOutput) SetSsh(v string) {
 
 func (o GetRSAPublicOutput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Pem != nil {
+		toSerialize["pem"] = o.Pem
+	}
 	if o.Raw != nil {
 		toSerialize["raw"] = o.Raw
 	}

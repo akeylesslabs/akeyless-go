@@ -17,6 +17,8 @@ import (
 
 // CreateDynamicSecret struct for CreateDynamicSecret
 type CreateDynamicSecret struct {
+	// Protection from accidental deletion of this item
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// The name of a key that used to encrypt the dynamic secret values (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
 	// Metadata about the dynamic secret
@@ -51,6 +53,38 @@ func NewCreateDynamicSecretWithDefaults() *CreateDynamicSecret {
 	var metadata string = "None"
 	this.Metadata = &metadata
 	return &this
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *CreateDynamicSecret) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDynamicSecret) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *CreateDynamicSecret) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *CreateDynamicSecret) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetKey returns the Key field value if set, zero value otherwise.
@@ -239,6 +273,9 @@ func (o *CreateDynamicSecret) SetUidToken(v string) {
 
 func (o CreateDynamicSecret) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
+	}
 	if o.Key != nil {
 		toSerialize["key"] = o.Key
 	}

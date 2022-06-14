@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AwsSecretsMigrations** | Pointer to [**[]AWSSecretsMigration**](AWSSecretsMigration.md) |  | [optional] 
 **AzureKvMigrations** | Pointer to [**[]AzureKeyVaultMigration**](AzureKeyVaultMigration.md) |  | [optional] 
+**GcpSecretsMigrations** | Pointer to [**[]GCPSecretsMigration**](GCPSecretsMigration.md) |  | [optional] 
 **HashiMigrations** | Pointer to [**[]HashiMigration**](HashiMigration.md) |  | [optional] 
 **K8sMigrations** | Pointer to [**[]K8SMigration**](K8SMigration.md) |  | [optional] 
 
@@ -77,6 +78,31 @@ SetAzureKvMigrations sets AzureKvMigrations field to given value.
 `func (o *MigrationsConfigPart) HasAzureKvMigrations() bool`
 
 HasAzureKvMigrations returns a boolean if a field has been set.
+
+### GetGcpSecretsMigrations
+
+`func (o *MigrationsConfigPart) GetGcpSecretsMigrations() []GCPSecretsMigration`
+
+GetGcpSecretsMigrations returns the GcpSecretsMigrations field if non-nil, zero value otherwise.
+
+### GetGcpSecretsMigrationsOk
+
+`func (o *MigrationsConfigPart) GetGcpSecretsMigrationsOk() (*[]GCPSecretsMigration, bool)`
+
+GetGcpSecretsMigrationsOk returns a tuple with the GcpSecretsMigrations field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpSecretsMigrations
+
+`func (o *MigrationsConfigPart) SetGcpSecretsMigrations(v []GCPSecretsMigration)`
+
+SetGcpSecretsMigrations sets GcpSecretsMigrations field to given value.
+
+### HasGcpSecretsMigrations
+
+`func (o *MigrationsConfigPart) HasGcpSecretsMigrations() bool`
+
+HasGcpSecretsMigrations returns a boolean if a field has been set.
 
 ### GetHashiMigrations
 

@@ -19,6 +19,7 @@ import (
 type GatewaySyncMigration struct {
 	// Migration name
 	Name string `json:"name"`
+	// true, for starting synchronization, false for stopping
 	StartSync *bool `json:"start-sync,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`

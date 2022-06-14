@@ -19,6 +19,8 @@ import (
 type UploadPKCS12 struct {
 	// The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment)
 	CustomerFrgId *string `json:"customer-frg-id,omitempty"`
+	// Protection from accidental deletion of this item
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// PKCS#12 input file (private key and certificate only)
 	In string `json:"in"`
 	// A metadata about the key
@@ -91,6 +93,38 @@ func (o *UploadPKCS12) HasCustomerFrgId() bool {
 // SetCustomerFrgId gets a reference to the given string and assigns it to the CustomerFrgId field.
 func (o *UploadPKCS12) SetCustomerFrgId(v string) {
 	o.CustomerFrgId = &v
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *UploadPKCS12) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UploadPKCS12) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *UploadPKCS12) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *UploadPKCS12) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetIn returns the In field value
@@ -329,6 +363,9 @@ func (o UploadPKCS12) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.CustomerFrgId != nil {
 		toSerialize["customer-frg-id"] = o.CustomerFrgId
+	}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
 	}
 	if true {
 		toSerialize["in"] = o.In

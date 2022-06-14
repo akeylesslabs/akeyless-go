@@ -27,6 +27,8 @@ type CreateAuthMethodUniversalIdentity struct {
 	DenyRotate *bool `json:"deny-rotate,omitempty"`
 	// if true: enforce role-association must include sub claims
 	ForceSubClaims *bool `json:"force-sub-claims,omitempty"`
+	// A CIDR whitelist with the GW IPs that the access is restricted to
+	GwBoundIps *[]string `json:"gw-bound-ips,omitempty"`
 	// Jwt TTL
 	JwtTtl *int64 `json:"jwt-ttl,omitempty"`
 	// Auth Method name
@@ -225,6 +227,38 @@ func (o *CreateAuthMethodUniversalIdentity) SetForceSubClaims(v bool) {
 	o.ForceSubClaims = &v
 }
 
+// GetGwBoundIps returns the GwBoundIps field value if set, zero value otherwise.
+func (o *CreateAuthMethodUniversalIdentity) GetGwBoundIps() []string {
+	if o == nil || o.GwBoundIps == nil {
+		var ret []string
+		return ret
+	}
+	return *o.GwBoundIps
+}
+
+// GetGwBoundIpsOk returns a tuple with the GwBoundIps field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodUniversalIdentity) GetGwBoundIpsOk() (*[]string, bool) {
+	if o == nil || o.GwBoundIps == nil {
+		return nil, false
+	}
+	return o.GwBoundIps, true
+}
+
+// HasGwBoundIps returns a boolean if a field has been set.
+func (o *CreateAuthMethodUniversalIdentity) HasGwBoundIps() bool {
+	if o != nil && o.GwBoundIps != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGwBoundIps gets a reference to the given []string and assigns it to the GwBoundIps field.
+func (o *CreateAuthMethodUniversalIdentity) SetGwBoundIps(v []string) {
+	o.GwBoundIps = &v
+}
+
 // GetJwtTtl returns the JwtTtl field value if set, zero value otherwise.
 func (o *CreateAuthMethodUniversalIdentity) GetJwtTtl() int64 {
 	if o == nil || o.JwtTtl == nil {
@@ -393,6 +427,9 @@ func (o CreateAuthMethodUniversalIdentity) MarshalJSON() ([]byte, error) {
 	}
 	if o.ForceSubClaims != nil {
 		toSerialize["force-sub-claims"] = o.ForceSubClaims
+	}
+	if o.GwBoundIps != nil {
+		toSerialize["gw-bound-ips"] = o.GwBoundIps
 	}
 	if o.JwtTtl != nil {
 		toSerialize["jwt-ttl"] = o.JwtTtl

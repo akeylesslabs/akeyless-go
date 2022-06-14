@@ -19,6 +19,8 @@ import (
 type CreateSSHCertIssuer struct {
 	// Users allowed to fetch the certificate, e.g root,ubuntu
 	AllowedUsers string `json:"allowed-users"`
+	// Protection from accidental deletion of this item
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Signed certificates with extensions, e.g permit-port-forwarding=\\\"\\\"
 	Extensions *map[string]string `json:"extensions,omitempty"`
 	// A metadata about the issuer
@@ -88,6 +90,38 @@ func (o *CreateSSHCertIssuer) GetAllowedUsersOk() (*string, bool) {
 // SetAllowedUsers sets field value
 func (o *CreateSSHCertIssuer) SetAllowedUsers(v string) {
 	o.AllowedUsers = v
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *CreateSSHCertIssuer) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSSHCertIssuer) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *CreateSSHCertIssuer) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *CreateSSHCertIssuer) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetExtensions returns the Extensions field value if set, zero value otherwise.
@@ -550,6 +584,9 @@ func (o CreateSSHCertIssuer) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["allowed-users"] = o.AllowedUsers
+	}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
 	}
 	if o.Extensions != nil {
 		toSerialize["extensions"] = o.Extensions

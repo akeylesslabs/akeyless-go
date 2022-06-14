@@ -21,38 +21,22 @@ type CreateClassicKey struct {
 	Alg string `json:"alg"`
 	// Certificate in a PEM format.
 	CertFileData *string `json:"cert-file-data,omitempty"`
+	// Protection from accidental deletion of this item
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Base64-encoded classic key value
 	KeyData *string `json:"key-data,omitempty"`
-	// A list of allowed operations for the key (required for azure targets)
-	KeyOperations *[]string `json:"key-operations,omitempty"`
-	// Keyring name of the GCP KMS (required for gcp targets)
-	KeyringName *string `json:"keyring-name,omitempty"`
-	// Algorithm of the key in GCP KMS (required for gcp targets)
-	KmsAlgorithm *string `json:"kms-algorithm,omitempty"`
-	// Location id of the GCP KMS (required for gcp targets)
-	LocationId *string `json:"location-id,omitempty"`
 	// Metadata about the classic key
 	Metadata *string `json:"metadata,omitempty"`
 	// ClassicKey name
 	Name string `json:"name"`
-	// Project id of the GCP KMS (required for gcp targets)
-	ProjectId *string `json:"project-id,omitempty"`
 	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
 	ProtectionKeyName *string `json:"protection-key-name,omitempty"`
-	// Purpose of the key in GCP KMS (required for gcp targets)
-	Purpose *string `json:"purpose,omitempty"`
 	// List of the tags attached to this classic key
 	Tags *[]string `json:"tags,omitempty"`
-	// Target name
-	TargetName *string `json:"target-name,omitempty"`
-	// The tenant secret type [Data/SearchIndex/Analytics] (required for salesforce targets)
-	TenantSecretType *string `json:"tenant-secret-type,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// Name of the vault used (required for azure targets)
-	VaultName *string `json:"vault-name,omitempty"`
 }
 
 // NewCreateClassicKey instantiates a new CreateClassicKey object
@@ -130,6 +114,38 @@ func (o *CreateClassicKey) SetCertFileData(v string) {
 	o.CertFileData = &v
 }
 
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *CreateClassicKey) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateClassicKey) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *CreateClassicKey) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *CreateClassicKey) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
+}
+
 // GetKeyData returns the KeyData field value if set, zero value otherwise.
 func (o *CreateClassicKey) GetKeyData() string {
 	if o == nil || o.KeyData == nil {
@@ -160,134 +176,6 @@ func (o *CreateClassicKey) HasKeyData() bool {
 // SetKeyData gets a reference to the given string and assigns it to the KeyData field.
 func (o *CreateClassicKey) SetKeyData(v string) {
 	o.KeyData = &v
-}
-
-// GetKeyOperations returns the KeyOperations field value if set, zero value otherwise.
-func (o *CreateClassicKey) GetKeyOperations() []string {
-	if o == nil || o.KeyOperations == nil {
-		var ret []string
-		return ret
-	}
-	return *o.KeyOperations
-}
-
-// GetKeyOperationsOk returns a tuple with the KeyOperations field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateClassicKey) GetKeyOperationsOk() (*[]string, bool) {
-	if o == nil || o.KeyOperations == nil {
-		return nil, false
-	}
-	return o.KeyOperations, true
-}
-
-// HasKeyOperations returns a boolean if a field has been set.
-func (o *CreateClassicKey) HasKeyOperations() bool {
-	if o != nil && o.KeyOperations != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetKeyOperations gets a reference to the given []string and assigns it to the KeyOperations field.
-func (o *CreateClassicKey) SetKeyOperations(v []string) {
-	o.KeyOperations = &v
-}
-
-// GetKeyringName returns the KeyringName field value if set, zero value otherwise.
-func (o *CreateClassicKey) GetKeyringName() string {
-	if o == nil || o.KeyringName == nil {
-		var ret string
-		return ret
-	}
-	return *o.KeyringName
-}
-
-// GetKeyringNameOk returns a tuple with the KeyringName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateClassicKey) GetKeyringNameOk() (*string, bool) {
-	if o == nil || o.KeyringName == nil {
-		return nil, false
-	}
-	return o.KeyringName, true
-}
-
-// HasKeyringName returns a boolean if a field has been set.
-func (o *CreateClassicKey) HasKeyringName() bool {
-	if o != nil && o.KeyringName != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetKeyringName gets a reference to the given string and assigns it to the KeyringName field.
-func (o *CreateClassicKey) SetKeyringName(v string) {
-	o.KeyringName = &v
-}
-
-// GetKmsAlgorithm returns the KmsAlgorithm field value if set, zero value otherwise.
-func (o *CreateClassicKey) GetKmsAlgorithm() string {
-	if o == nil || o.KmsAlgorithm == nil {
-		var ret string
-		return ret
-	}
-	return *o.KmsAlgorithm
-}
-
-// GetKmsAlgorithmOk returns a tuple with the KmsAlgorithm field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateClassicKey) GetKmsAlgorithmOk() (*string, bool) {
-	if o == nil || o.KmsAlgorithm == nil {
-		return nil, false
-	}
-	return o.KmsAlgorithm, true
-}
-
-// HasKmsAlgorithm returns a boolean if a field has been set.
-func (o *CreateClassicKey) HasKmsAlgorithm() bool {
-	if o != nil && o.KmsAlgorithm != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetKmsAlgorithm gets a reference to the given string and assigns it to the KmsAlgorithm field.
-func (o *CreateClassicKey) SetKmsAlgorithm(v string) {
-	o.KmsAlgorithm = &v
-}
-
-// GetLocationId returns the LocationId field value if set, zero value otherwise.
-func (o *CreateClassicKey) GetLocationId() string {
-	if o == nil || o.LocationId == nil {
-		var ret string
-		return ret
-	}
-	return *o.LocationId
-}
-
-// GetLocationIdOk returns a tuple with the LocationId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateClassicKey) GetLocationIdOk() (*string, bool) {
-	if o == nil || o.LocationId == nil {
-		return nil, false
-	}
-	return o.LocationId, true
-}
-
-// HasLocationId returns a boolean if a field has been set.
-func (o *CreateClassicKey) HasLocationId() bool {
-	if o != nil && o.LocationId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLocationId gets a reference to the given string and assigns it to the LocationId field.
-func (o *CreateClassicKey) SetLocationId(v string) {
-	o.LocationId = &v
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
@@ -346,38 +234,6 @@ func (o *CreateClassicKey) SetName(v string) {
 	o.Name = v
 }
 
-// GetProjectId returns the ProjectId field value if set, zero value otherwise.
-func (o *CreateClassicKey) GetProjectId() string {
-	if o == nil || o.ProjectId == nil {
-		var ret string
-		return ret
-	}
-	return *o.ProjectId
-}
-
-// GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateClassicKey) GetProjectIdOk() (*string, bool) {
-	if o == nil || o.ProjectId == nil {
-		return nil, false
-	}
-	return o.ProjectId, true
-}
-
-// HasProjectId returns a boolean if a field has been set.
-func (o *CreateClassicKey) HasProjectId() bool {
-	if o != nil && o.ProjectId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetProjectId gets a reference to the given string and assigns it to the ProjectId field.
-func (o *CreateClassicKey) SetProjectId(v string) {
-	o.ProjectId = &v
-}
-
 // GetProtectionKeyName returns the ProtectionKeyName field value if set, zero value otherwise.
 func (o *CreateClassicKey) GetProtectionKeyName() string {
 	if o == nil || o.ProtectionKeyName == nil {
@@ -410,38 +266,6 @@ func (o *CreateClassicKey) SetProtectionKeyName(v string) {
 	o.ProtectionKeyName = &v
 }
 
-// GetPurpose returns the Purpose field value if set, zero value otherwise.
-func (o *CreateClassicKey) GetPurpose() string {
-	if o == nil || o.Purpose == nil {
-		var ret string
-		return ret
-	}
-	return *o.Purpose
-}
-
-// GetPurposeOk returns a tuple with the Purpose field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateClassicKey) GetPurposeOk() (*string, bool) {
-	if o == nil || o.Purpose == nil {
-		return nil, false
-	}
-	return o.Purpose, true
-}
-
-// HasPurpose returns a boolean if a field has been set.
-func (o *CreateClassicKey) HasPurpose() bool {
-	if o != nil && o.Purpose != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPurpose gets a reference to the given string and assigns it to the Purpose field.
-func (o *CreateClassicKey) SetPurpose(v string) {
-	o.Purpose = &v
-}
-
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *CreateClassicKey) GetTags() []string {
 	if o == nil || o.Tags == nil {
@@ -472,70 +296,6 @@ func (o *CreateClassicKey) HasTags() bool {
 // SetTags gets a reference to the given []string and assigns it to the Tags field.
 func (o *CreateClassicKey) SetTags(v []string) {
 	o.Tags = &v
-}
-
-// GetTargetName returns the TargetName field value if set, zero value otherwise.
-func (o *CreateClassicKey) GetTargetName() string {
-	if o == nil || o.TargetName == nil {
-		var ret string
-		return ret
-	}
-	return *o.TargetName
-}
-
-// GetTargetNameOk returns a tuple with the TargetName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateClassicKey) GetTargetNameOk() (*string, bool) {
-	if o == nil || o.TargetName == nil {
-		return nil, false
-	}
-	return o.TargetName, true
-}
-
-// HasTargetName returns a boolean if a field has been set.
-func (o *CreateClassicKey) HasTargetName() bool {
-	if o != nil && o.TargetName != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetTargetName gets a reference to the given string and assigns it to the TargetName field.
-func (o *CreateClassicKey) SetTargetName(v string) {
-	o.TargetName = &v
-}
-
-// GetTenantSecretType returns the TenantSecretType field value if set, zero value otherwise.
-func (o *CreateClassicKey) GetTenantSecretType() string {
-	if o == nil || o.TenantSecretType == nil {
-		var ret string
-		return ret
-	}
-	return *o.TenantSecretType
-}
-
-// GetTenantSecretTypeOk returns a tuple with the TenantSecretType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateClassicKey) GetTenantSecretTypeOk() (*string, bool) {
-	if o == nil || o.TenantSecretType == nil {
-		return nil, false
-	}
-	return o.TenantSecretType, true
-}
-
-// HasTenantSecretType returns a boolean if a field has been set.
-func (o *CreateClassicKey) HasTenantSecretType() bool {
-	if o != nil && o.TenantSecretType != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetTenantSecretType gets a reference to the given string and assigns it to the TenantSecretType field.
-func (o *CreateClassicKey) SetTenantSecretType(v string) {
-	o.TenantSecretType = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -602,38 +362,6 @@ func (o *CreateClassicKey) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
-// GetVaultName returns the VaultName field value if set, zero value otherwise.
-func (o *CreateClassicKey) GetVaultName() string {
-	if o == nil || o.VaultName == nil {
-		var ret string
-		return ret
-	}
-	return *o.VaultName
-}
-
-// GetVaultNameOk returns a tuple with the VaultName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateClassicKey) GetVaultNameOk() (*string, bool) {
-	if o == nil || o.VaultName == nil {
-		return nil, false
-	}
-	return o.VaultName, true
-}
-
-// HasVaultName returns a boolean if a field has been set.
-func (o *CreateClassicKey) HasVaultName() bool {
-	if o != nil && o.VaultName != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetVaultName gets a reference to the given string and assigns it to the VaultName field.
-func (o *CreateClassicKey) SetVaultName(v string) {
-	o.VaultName = &v
-}
-
 func (o CreateClassicKey) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -642,20 +370,11 @@ func (o CreateClassicKey) MarshalJSON() ([]byte, error) {
 	if o.CertFileData != nil {
 		toSerialize["cert-file-data"] = o.CertFileData
 	}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
+	}
 	if o.KeyData != nil {
 		toSerialize["key-data"] = o.KeyData
-	}
-	if o.KeyOperations != nil {
-		toSerialize["key-operations"] = o.KeyOperations
-	}
-	if o.KeyringName != nil {
-		toSerialize["keyring-name"] = o.KeyringName
-	}
-	if o.KmsAlgorithm != nil {
-		toSerialize["kms-algorithm"] = o.KmsAlgorithm
-	}
-	if o.LocationId != nil {
-		toSerialize["location-id"] = o.LocationId
 	}
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata
@@ -663,32 +382,17 @@ func (o CreateClassicKey) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.ProjectId != nil {
-		toSerialize["project-id"] = o.ProjectId
-	}
 	if o.ProtectionKeyName != nil {
 		toSerialize["protection-key-name"] = o.ProtectionKeyName
 	}
-	if o.Purpose != nil {
-		toSerialize["purpose"] = o.Purpose
-	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags
-	}
-	if o.TargetName != nil {
-		toSerialize["target-name"] = o.TargetName
-	}
-	if o.TenantSecretType != nil {
-		toSerialize["tenant-secret-type"] = o.TenantSecretType
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
-	}
-	if o.VaultName != nil {
-		toSerialize["vault-name"] = o.VaultName
 	}
 	return json.Marshal(toSerialize)
 }

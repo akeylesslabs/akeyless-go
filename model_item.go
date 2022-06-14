@@ -24,6 +24,7 @@ type Item struct {
 	Certificates *string `json:"certificates,omitempty"`
 	ClientPermissions *[]string `json:"client_permissions,omitempty"`
 	CustomerFragmentId *string `json:"customer_fragment_id,omitempty"`
+	DeleteProtection *bool `json:"delete_protection,omitempty"`
 	DeletionDate *time.Time `json:"deletion_date,omitempty"`
 	DisplayId *string `json:"display_id,omitempty"`
 	IsEnabled *bool `json:"is_enabled,omitempty"`
@@ -256,6 +257,38 @@ func (o *Item) HasCustomerFragmentId() bool {
 // SetCustomerFragmentId gets a reference to the given string and assigns it to the CustomerFragmentId field.
 func (o *Item) SetCustomerFragmentId(v string) {
 	o.CustomerFragmentId = &v
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *Item) GetDeleteProtection() bool {
+	if o == nil || o.DeleteProtection == nil {
+		var ret bool
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Item) GetDeleteProtectionOk() (*bool, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *Item) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given bool and assigns it to the DeleteProtection field.
+func (o *Item) SetDeleteProtection(v bool) {
+	o.DeleteProtection = &v
 }
 
 // GetDeletionDate returns the DeletionDate field value if set, zero value otherwise.
@@ -981,6 +1014,9 @@ func (o Item) MarshalJSON() ([]byte, error) {
 	}
 	if o.CustomerFragmentId != nil {
 		toSerialize["customer_fragment_id"] = o.CustomerFragmentId
+	}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
 	}
 	if o.DeletionDate != nil {
 		toSerialize["deletion_date"] = o.DeletionDate

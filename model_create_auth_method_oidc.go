@@ -29,6 +29,8 @@ type CreateAuthMethodOIDC struct {
 	ClientSecret *string `json:"client-secret,omitempty"`
 	// if true: enforce role-association must include sub claims
 	ForceSubClaims *bool `json:"force-sub-claims,omitempty"`
+	// A CIDR whitelist with the GW IPs that the access is restricted to
+	GwBoundIps *[]string `json:"gw-bound-ips,omitempty"`
 	// Issuer URL
 	Issuer *string `json:"issuer,omitempty"`
 	// Jwt TTL
@@ -260,6 +262,38 @@ func (o *CreateAuthMethodOIDC) HasForceSubClaims() bool {
 // SetForceSubClaims gets a reference to the given bool and assigns it to the ForceSubClaims field.
 func (o *CreateAuthMethodOIDC) SetForceSubClaims(v bool) {
 	o.ForceSubClaims = &v
+}
+
+// GetGwBoundIps returns the GwBoundIps field value if set, zero value otherwise.
+func (o *CreateAuthMethodOIDC) GetGwBoundIps() []string {
+	if o == nil || o.GwBoundIps == nil {
+		var ret []string
+		return ret
+	}
+	return *o.GwBoundIps
+}
+
+// GetGwBoundIpsOk returns a tuple with the GwBoundIps field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodOIDC) GetGwBoundIpsOk() (*[]string, bool) {
+	if o == nil || o.GwBoundIps == nil {
+		return nil, false
+	}
+	return o.GwBoundIps, true
+}
+
+// HasGwBoundIps returns a boolean if a field has been set.
+func (o *CreateAuthMethodOIDC) HasGwBoundIps() bool {
+	if o != nil && o.GwBoundIps != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGwBoundIps gets a reference to the given []string and assigns it to the GwBoundIps field.
+func (o *CreateAuthMethodOIDC) SetGwBoundIps(v []string) {
+	o.GwBoundIps = &v
 }
 
 // GetIssuer returns the Issuer field value if set, zero value otherwise.
@@ -521,6 +555,9 @@ func (o CreateAuthMethodOIDC) MarshalJSON() ([]byte, error) {
 	}
 	if o.ForceSubClaims != nil {
 		toSerialize["force-sub-claims"] = o.ForceSubClaims
+	}
+	if o.GwBoundIps != nil {
+		toSerialize["gw-bound-ips"] = o.GwBoundIps
 	}
 	if o.Issuer != nil {
 		toSerialize["issuer"] = o.Issuer

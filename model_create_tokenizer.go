@@ -21,6 +21,8 @@ type CreateTokenizer struct {
 	Alphabet *string `json:"alphabet,omitempty"`
 	// The Decryption output template to use in regexp vaultless tokenization
 	DecryptionTemplate *string `json:"decryption-template,omitempty"`
+	// Protection from accidental deletion of this item
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// AES key name to use in vaultless tokenization
 	EncryptionKeyName *string `json:"encryption-key-name,omitempty"`
 	// The Encryption output template to use in regexp vaultless tokenization
@@ -127,6 +129,38 @@ func (o *CreateTokenizer) HasDecryptionTemplate() bool {
 // SetDecryptionTemplate gets a reference to the given string and assigns it to the DecryptionTemplate field.
 func (o *CreateTokenizer) SetDecryptionTemplate(v string) {
 	o.DecryptionTemplate = &v
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *CreateTokenizer) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateTokenizer) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *CreateTokenizer) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *CreateTokenizer) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetEncryptionKeyName returns the EncryptionKeyName field value if set, zero value otherwise.
@@ -464,6 +498,9 @@ func (o CreateTokenizer) MarshalJSON() ([]byte, error) {
 	}
 	if o.DecryptionTemplate != nil {
 		toSerialize["decryption-template"] = o.DecryptionTemplate
+	}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
 	}
 	if o.EncryptionKeyName != nil {
 		toSerialize["encryption-key-name"] = o.EncryptionKeyName

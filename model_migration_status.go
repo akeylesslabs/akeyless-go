@@ -18,6 +18,7 @@ import (
 // MigrationStatus struct for MigrationStatus
 type MigrationStatus struct {
 	LastMessages *map[string]string `json:"last_messages,omitempty"`
+	LastReports *map[string]string `json:"last_reports,omitempty"`
 	LastStatuses *map[string]string `json:"last_statuses,omitempty"`
 }
 
@@ -70,6 +71,38 @@ func (o *MigrationStatus) SetLastMessages(v map[string]string) {
 	o.LastMessages = &v
 }
 
+// GetLastReports returns the LastReports field value if set, zero value otherwise.
+func (o *MigrationStatus) GetLastReports() map[string]string {
+	if o == nil || o.LastReports == nil {
+		var ret map[string]string
+		return ret
+	}
+	return *o.LastReports
+}
+
+// GetLastReportsOk returns a tuple with the LastReports field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MigrationStatus) GetLastReportsOk() (*map[string]string, bool) {
+	if o == nil || o.LastReports == nil {
+		return nil, false
+	}
+	return o.LastReports, true
+}
+
+// HasLastReports returns a boolean if a field has been set.
+func (o *MigrationStatus) HasLastReports() bool {
+	if o != nil && o.LastReports != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastReports gets a reference to the given map[string]string and assigns it to the LastReports field.
+func (o *MigrationStatus) SetLastReports(v map[string]string) {
+	o.LastReports = &v
+}
+
 // GetLastStatuses returns the LastStatuses field value if set, zero value otherwise.
 func (o *MigrationStatus) GetLastStatuses() map[string]string {
 	if o == nil || o.LastStatuses == nil {
@@ -106,6 +139,9 @@ func (o MigrationStatus) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.LastMessages != nil {
 		toSerialize["last_messages"] = o.LastMessages
+	}
+	if o.LastReports != nil {
+		toSerialize["last_reports"] = o.LastReports
 	}
 	if o.LastStatuses != nil {
 		toSerialize["last_statuses"] = o.LastStatuses

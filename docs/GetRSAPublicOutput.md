@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Pem** | Pointer to **string** |  | [optional] 
 **Raw** | Pointer to **string** |  | [optional] 
 **Ssh** | Pointer to **string** |  | [optional] 
 
@@ -25,6 +26,31 @@ will change when the set of required properties is changed
 NewGetRSAPublicOutputWithDefaults instantiates a new GetRSAPublicOutput object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetPem
+
+`func (o *GetRSAPublicOutput) GetPem() string`
+
+GetPem returns the Pem field if non-nil, zero value otherwise.
+
+### GetPemOk
+
+`func (o *GetRSAPublicOutput) GetPemOk() (*string, bool)`
+
+GetPemOk returns a tuple with the Pem field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPem
+
+`func (o *GetRSAPublicOutput) SetPem(v string)`
+
+SetPem sets Pem field to given value.
+
+### HasPem
+
+`func (o *GetRSAPublicOutput) HasPem() bool`
+
+HasPem returns a boolean if a field has been set.
 
 ### GetRaw
 

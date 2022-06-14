@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Alg** | **string** | Key type. options: [RSA1024, RSA2048, RSA3072, RSA4096] | 
 **CertFileData** | Pointer to **string** | Certificate in a PEM format. | [optional] 
 **CustomerFrgId** | Pointer to **string** | The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment) | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
 **Metadata** | Pointer to **string** | A metadata about the key | [optional] 
 **Name** | **string** | Name of key to be created | 
 **RsaFileData** | Pointer to **string** | RSA private key data, base64 encoded | [optional] 
@@ -103,6 +104,31 @@ SetCustomerFrgId sets CustomerFrgId field to given value.
 `func (o *UploadRSA) HasCustomerFrgId() bool`
 
 HasCustomerFrgId returns a boolean if a field has been set.
+
+### GetDeleteProtection
+
+`func (o *UploadRSA) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *UploadRSA) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *UploadRSA) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *UploadRSA) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetMetadata
 

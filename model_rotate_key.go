@@ -15,14 +15,12 @@ import (
 	"encoding/json"
 )
 
-// RotateKey rotateKey is a command that rotates an existing key, creating a new version. [Deprecated: Use command update-rotation-settings] of it.
+// RotateKey of it.
 type RotateKey struct {
-	// Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation
-	AutoRotate *string `json:"auto-rotate,omitempty"`
 	// Key name
 	Name string `json:"name"`
-	// The number of days to wait between every automatic key rotation (7-365)
-	RotationInterval *string `json:"rotation-interval,omitempty"`
+	// The new base64 encoded value for the classic key. relevant only for keys provided by user ('bring-your-own-key')
+	NewKeyData *string `json:"new-key-data,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -45,38 +43,6 @@ func NewRotateKey(name string, ) *RotateKey {
 func NewRotateKeyWithDefaults() *RotateKey {
 	this := RotateKey{}
 	return &this
-}
-
-// GetAutoRotate returns the AutoRotate field value if set, zero value otherwise.
-func (o *RotateKey) GetAutoRotate() string {
-	if o == nil || o.AutoRotate == nil {
-		var ret string
-		return ret
-	}
-	return *o.AutoRotate
-}
-
-// GetAutoRotateOk returns a tuple with the AutoRotate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RotateKey) GetAutoRotateOk() (*string, bool) {
-	if o == nil || o.AutoRotate == nil {
-		return nil, false
-	}
-	return o.AutoRotate, true
-}
-
-// HasAutoRotate returns a boolean if a field has been set.
-func (o *RotateKey) HasAutoRotate() bool {
-	if o != nil && o.AutoRotate != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAutoRotate gets a reference to the given string and assigns it to the AutoRotate field.
-func (o *RotateKey) SetAutoRotate(v string) {
-	o.AutoRotate = &v
 }
 
 // GetName returns the Name field value
@@ -103,36 +69,36 @@ func (o *RotateKey) SetName(v string) {
 	o.Name = v
 }
 
-// GetRotationInterval returns the RotationInterval field value if set, zero value otherwise.
-func (o *RotateKey) GetRotationInterval() string {
-	if o == nil || o.RotationInterval == nil {
+// GetNewKeyData returns the NewKeyData field value if set, zero value otherwise.
+func (o *RotateKey) GetNewKeyData() string {
+	if o == nil || o.NewKeyData == nil {
 		var ret string
 		return ret
 	}
-	return *o.RotationInterval
+	return *o.NewKeyData
 }
 
-// GetRotationIntervalOk returns a tuple with the RotationInterval field value if set, nil otherwise
+// GetNewKeyDataOk returns a tuple with the NewKeyData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RotateKey) GetRotationIntervalOk() (*string, bool) {
-	if o == nil || o.RotationInterval == nil {
+func (o *RotateKey) GetNewKeyDataOk() (*string, bool) {
+	if o == nil || o.NewKeyData == nil {
 		return nil, false
 	}
-	return o.RotationInterval, true
+	return o.NewKeyData, true
 }
 
-// HasRotationInterval returns a boolean if a field has been set.
-func (o *RotateKey) HasRotationInterval() bool {
-	if o != nil && o.RotationInterval != nil {
+// HasNewKeyData returns a boolean if a field has been set.
+func (o *RotateKey) HasNewKeyData() bool {
+	if o != nil && o.NewKeyData != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetRotationInterval gets a reference to the given string and assigns it to the RotationInterval field.
-func (o *RotateKey) SetRotationInterval(v string) {
-	o.RotationInterval = &v
+// SetNewKeyData gets a reference to the given string and assigns it to the NewKeyData field.
+func (o *RotateKey) SetNewKeyData(v string) {
+	o.NewKeyData = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -201,14 +167,11 @@ func (o *RotateKey) SetUidToken(v string) {
 
 func (o RotateKey) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.AutoRotate != nil {
-		toSerialize["auto-rotate"] = o.AutoRotate
-	}
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.RotationInterval != nil {
-		toSerialize["rotation-interval"] = o.RotationInterval
+	if o.NewKeyData != nil {
+		toSerialize["new-key-data"] = o.NewKeyData
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

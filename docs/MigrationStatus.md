@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **LastMessages** | Pointer to **map[string]string** |  | [optional] 
+**LastReports** | Pointer to **map[string]string** |  | [optional] 
 **LastStatuses** | Pointer to **map[string]string** |  | [optional] 
 
 ## Methods
@@ -50,6 +51,31 @@ SetLastMessages sets LastMessages field to given value.
 `func (o *MigrationStatus) HasLastMessages() bool`
 
 HasLastMessages returns a boolean if a field has been set.
+
+### GetLastReports
+
+`func (o *MigrationStatus) GetLastReports() map[string]string`
+
+GetLastReports returns the LastReports field if non-nil, zero value otherwise.
+
+### GetLastReportsOk
+
+`func (o *MigrationStatus) GetLastReportsOk() (*map[string]string, bool)`
+
+GetLastReportsOk returns a tuple with the LastReports field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastReports
+
+`func (o *MigrationStatus) SetLastReports(v map[string]string)`
+
+SetLastReports sets LastReports field to given value.
+
+### HasLastReports
+
+`func (o *MigrationStatus) HasLastReports() bool`
+
+HasLastReports returns a boolean if a field has been set.
 
 ### GetLastStatuses
 

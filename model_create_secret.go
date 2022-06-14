@@ -17,6 +17,8 @@ import (
 
 // CreateSecret struct for CreateSecret
 type CreateSecret struct {
+	// Protection from accidental deletion of this item
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Metadata about the secret
 	Metadata *string `json:"metadata,omitempty"`
 	// The provided value is a multiline value (separated by '\\n')
@@ -60,6 +62,38 @@ func NewCreateSecret(name string, value string, ) *CreateSecret {
 func NewCreateSecretWithDefaults() *CreateSecret {
 	this := CreateSecret{}
 	return &this
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *CreateSecret) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSecret) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *CreateSecret) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *CreateSecret) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
@@ -560,6 +594,9 @@ func (o *CreateSecret) SetValue(v string) {
 
 func (o CreateSecret) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
+	}
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata
 	}
