@@ -17,6 +17,8 @@ import (
 
 // GatewayUpdateProducerMongo gatewayUpdateProducerMongo is a command that updates either mongodb  producer or mongodb atlas producer
 type GatewayUpdateProducerMongo struct {
+	// Protection from accidental deletion of this item
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// MongoDB Atlas private key
 	MongodbAtlasApiPrivateKey *string `json:"mongodb-atlas-api-private-key,omitempty"`
 	// MongoDB Atlas public key
@@ -87,6 +89,38 @@ func NewGatewayUpdateProducerMongoWithDefaults() *GatewayUpdateProducerMongo {
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerMongo) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerMongo) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerMongo) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *GatewayUpdateProducerMongo) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetMongodbAtlasApiPrivateKey returns the MongodbAtlasApiPrivateKey field value if set, zero value otherwise.
@@ -851,6 +885,9 @@ func (o *GatewayUpdateProducerMongo) SetUserTtl(v string) {
 
 func (o GatewayUpdateProducerMongo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
+	}
 	if o.MongodbAtlasApiPrivateKey != nil {
 		toSerialize["mongodb-atlas-api-private-key"] = o.MongodbAtlasApiPrivateKey
 	}

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
 **K8sClusterCaCert** | Pointer to **string** | K8S cluster CA certificate | [optional] 
 **K8sClusterEndpoint** | Pointer to **string** | K8S cluster URL endpoint | [optional] 
 **K8sClusterToken** | Pointer to **string** | K8S cluster Bearer token | [optional] 
@@ -44,6 +45,31 @@ will change when the set of required properties is changed
 NewGatewayUpdateProducerNativeK8SWithDefaults instantiates a new GatewayUpdateProducerNativeK8S object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetDeleteProtection
+
+`func (o *GatewayUpdateProducerNativeK8S) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *GatewayUpdateProducerNativeK8S) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *GatewayUpdateProducerNativeK8S) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *GatewayUpdateProducerNativeK8S) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetK8sClusterCaCert
 

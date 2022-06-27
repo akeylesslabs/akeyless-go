@@ -17,6 +17,8 @@ import (
 
 // GatewayUpdateProducerDockerhub gatewayUpdateProducerDockerhub is a command that updates a DOCKERHUB producer
 type GatewayUpdateProducerDockerhub struct {
+	// Protection from accidental deletion of this item
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// DockerhubPassword is either the user's password access token to manage the repository
 	DockerhubPassword *string `json:"dockerhub-password,omitempty"`
 	// Access token scopes list (comma seperated) to give the dynamic secret valid options are in \"repo:admin\", \"repo:write\", \"repo:read\", \"repo:public_read\"
@@ -61,6 +63,38 @@ func NewGatewayUpdateProducerDockerhubWithDefaults() *GatewayUpdateProducerDocke
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerDockerhub) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerDockerhub) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerDockerhub) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *GatewayUpdateProducerDockerhub) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetDockerhubPassword returns the DockerhubPassword field value if set, zero value otherwise.
@@ -409,6 +443,9 @@ func (o *GatewayUpdateProducerDockerhub) SetUserTtl(v string) {
 
 func (o GatewayUpdateProducerDockerhub) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
+	}
 	if o.DockerhubPassword != nil {
 		toSerialize["dockerhub-password"] = o.DockerhubPassword
 	}

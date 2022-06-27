@@ -25,6 +25,8 @@ type GatewayCreateProducerAzure struct {
 	AzureClientSecret *string `json:"azure-client-secret,omitempty"`
 	// Azure Tenant ID
 	AzureTenantId *string `json:"azure-tenant-id,omitempty"`
+	// Protection from accidental deletion of this item
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// FixedUserClaimKeyname
 	FixedUserClaimKeyname *string `json:"fixed-user-claim-keyname,omitempty"`
 	// Fixed user
@@ -223,6 +225,38 @@ func (o *GatewayCreateProducerAzure) HasAzureTenantId() bool {
 // SetAzureTenantId gets a reference to the given string and assigns it to the AzureTenantId field.
 func (o *GatewayCreateProducerAzure) SetAzureTenantId(v string) {
 	o.AzureTenantId = &v
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *GatewayCreateProducerAzure) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerAzure) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *GatewayCreateProducerAzure) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *GatewayCreateProducerAzure) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetFixedUserClaimKeyname returns the FixedUserClaimKeyname field value if set, zero value otherwise.
@@ -806,6 +840,9 @@ func (o GatewayCreateProducerAzure) MarshalJSON() ([]byte, error) {
 	}
 	if o.AzureTenantId != nil {
 		toSerialize["azure-tenant-id"] = o.AzureTenantId
+	}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
 	}
 	if o.FixedUserClaimKeyname != nil {
 		toSerialize["fixed-user-claim-keyname"] = o.FixedUserClaimKeyname

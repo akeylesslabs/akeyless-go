@@ -44,6 +44,7 @@ type Item struct {
 	LastVersion *int32 `json:"last_version,omitempty"`
 	NextRotationDate *time.Time `json:"next_rotation_date,omitempty"`
 	ProtectionKeyName *string `json:"protection_key_name,omitempty"`
+	ProtectionKeyType *string `json:"protection_key_type,omitempty"`
 	PublicValue *string `json:"public_value,omitempty"`
 	RotationInterval *int64 `json:"rotation_interval,omitempty"`
 	TargetVersions *[]TargetItemVersion `json:"target_versions,omitempty"`
@@ -867,6 +868,38 @@ func (o *Item) SetProtectionKeyName(v string) {
 	o.ProtectionKeyName = &v
 }
 
+// GetProtectionKeyType returns the ProtectionKeyType field value if set, zero value otherwise.
+func (o *Item) GetProtectionKeyType() string {
+	if o == nil || o.ProtectionKeyType == nil {
+		var ret string
+		return ret
+	}
+	return *o.ProtectionKeyType
+}
+
+// GetProtectionKeyTypeOk returns a tuple with the ProtectionKeyType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Item) GetProtectionKeyTypeOk() (*string, bool) {
+	if o == nil || o.ProtectionKeyType == nil {
+		return nil, false
+	}
+	return o.ProtectionKeyType, true
+}
+
+// HasProtectionKeyType returns a boolean if a field has been set.
+func (o *Item) HasProtectionKeyType() bool {
+	if o != nil && o.ProtectionKeyType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProtectionKeyType gets a reference to the given string and assigns it to the ProtectionKeyType field.
+func (o *Item) SetProtectionKeyType(v string) {
+	o.ProtectionKeyType = &v
+}
+
 // GetPublicValue returns the PublicValue field value if set, zero value otherwise.
 func (o *Item) GetPublicValue() string {
 	if o == nil || o.PublicValue == nil {
@@ -1071,6 +1104,9 @@ func (o Item) MarshalJSON() ([]byte, error) {
 	}
 	if o.ProtectionKeyName != nil {
 		toSerialize["protection_key_name"] = o.ProtectionKeyName
+	}
+	if o.ProtectionKeyType != nil {
+		toSerialize["protection_key_type"] = o.ProtectionKeyType
 	}
 	if o.PublicValue != nil {
 		toSerialize["public_value"] = o.PublicValue

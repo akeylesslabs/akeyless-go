@@ -25,6 +25,8 @@ type GatewayCreateProducerChef struct {
 	ChefServerUrl *string `json:"chef-server-url,omitempty"`
 	// Server username
 	ChefServerUsername *string `json:"chef-server-username,omitempty"`
+	// Protection from accidental deletion of this item
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Producer name
 	Name string `json:"name"`
 	// Dynamic producer encryption key
@@ -195,6 +197,38 @@ func (o *GatewayCreateProducerChef) HasChefServerUsername() bool {
 // SetChefServerUsername gets a reference to the given string and assigns it to the ChefServerUsername field.
 func (o *GatewayCreateProducerChef) SetChefServerUsername(v string) {
 	o.ChefServerUsername = &v
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *GatewayCreateProducerChef) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerChef) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *GatewayCreateProducerChef) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *GatewayCreateProducerChef) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetName returns the Name field value
@@ -458,6 +492,9 @@ func (o GatewayCreateProducerChef) MarshalJSON() ([]byte, error) {
 	}
 	if o.ChefServerUsername != nil {
 		toSerialize["chef-server-username"] = o.ChefServerUsername
+	}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
 	}
 	if true {
 		toSerialize["name"] = o.Name

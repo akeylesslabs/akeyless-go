@@ -21,6 +21,8 @@ type GatewayCreateProducerLdap struct {
 	BindDn *string `json:"bind-dn,omitempty"`
 	// Bind DN Password
 	BindDnPassword *string `json:"bind-dn-password,omitempty"`
+	// Protection from accidental deletion of this item
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Fixed user
 	ExternalUsername *string `json:"external-username,omitempty"`
 	// CA Certificate File Content
@@ -137,6 +139,38 @@ func (o *GatewayCreateProducerLdap) HasBindDnPassword() bool {
 // SetBindDnPassword gets a reference to the given string and assigns it to the BindDnPassword field.
 func (o *GatewayCreateProducerLdap) SetBindDnPassword(v string) {
 	o.BindDnPassword = &v
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *GatewayCreateProducerLdap) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerLdap) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *GatewayCreateProducerLdap) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *GatewayCreateProducerLdap) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetExternalUsername returns the ExternalUsername field value if set, zero value otherwise.
@@ -554,6 +588,9 @@ func (o GatewayCreateProducerLdap) MarshalJSON() ([]byte, error) {
 	}
 	if o.BindDnPassword != nil {
 		toSerialize["bind-dn-password"] = o.BindDnPassword
+	}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
 	}
 	if o.ExternalUsername != nil {
 		toSerialize["external-username"] = o.ExternalUsername

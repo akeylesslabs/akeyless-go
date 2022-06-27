@@ -19,6 +19,7 @@ import (
 type MigrationGeneral struct {
 	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
+	NewName *string `json:"new_name,omitempty"`
 	Prefix *string `json:"prefix,omitempty"`
 	ProtectionKey *string `json:"protection_key,omitempty"`
 }
@@ -104,6 +105,38 @@ func (o *MigrationGeneral) SetName(v string) {
 	o.Name = &v
 }
 
+// GetNewName returns the NewName field value if set, zero value otherwise.
+func (o *MigrationGeneral) GetNewName() string {
+	if o == nil || o.NewName == nil {
+		var ret string
+		return ret
+	}
+	return *o.NewName
+}
+
+// GetNewNameOk returns a tuple with the NewName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MigrationGeneral) GetNewNameOk() (*string, bool) {
+	if o == nil || o.NewName == nil {
+		return nil, false
+	}
+	return o.NewName, true
+}
+
+// HasNewName returns a boolean if a field has been set.
+func (o *MigrationGeneral) HasNewName() bool {
+	if o != nil && o.NewName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNewName gets a reference to the given string and assigns it to the NewName field.
+func (o *MigrationGeneral) SetNewName(v string) {
+	o.NewName = &v
+}
+
 // GetPrefix returns the Prefix field value if set, zero value otherwise.
 func (o *MigrationGeneral) GetPrefix() string {
 	if o == nil || o.Prefix == nil {
@@ -175,6 +208,9 @@ func (o MigrationGeneral) MarshalJSON() ([]byte, error) {
 	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
+	}
+	if o.NewName != nil {
+		toSerialize["new_name"] = o.NewName
 	}
 	if o.Prefix != nil {
 		toSerialize["prefix"] = o.Prefix

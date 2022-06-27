@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **ApiKey** | Pointer to **string** |  | [optional] 
 **AutoRotate** | Pointer to **string** | Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation | [optional] 
 **CustomPayload** | Pointer to **string** |  | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
 **KeepPrevVersion** | Pointer to **string** |  | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Item name | 
@@ -168,6 +169,31 @@ SetCustomPayload sets CustomPayload field to given value.
 `func (o *GatewayUpdateItem) HasCustomPayload() bool`
 
 HasCustomPayload returns a boolean if a field has been set.
+
+### GetDeleteProtection
+
+`func (o *GatewayUpdateItem) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *GatewayUpdateItem) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *GatewayUpdateItem) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *GatewayUpdateItem) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetKeepPrevVersion
 

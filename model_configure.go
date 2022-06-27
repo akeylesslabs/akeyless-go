@@ -29,10 +29,14 @@ type Configure struct {
 	AdminPassword *string `json:"admin-password,omitempty"`
 	// Azure Active Directory ObjectId (relevant only for access-type=azure_ad)
 	AzureAdObjectId *string `json:"azure_ad_object_id,omitempty"`
+	// Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type=cert in Curl Context)
+	CertData *string `json:"cert-data,omitempty"`
 	// GCP JWT audience
 	GcpAudience *string `json:"gcp-audience,omitempty"`
 	// The K8S Auth config name (relevant only for access-type=k8s)
 	K8sAuthConfigName *string `json:"k8s-auth-config-name,omitempty"`
+	// Private key data encoded in base64. Used if file was not provided.(relevant only for access-type=cert in Curl Context)
+	KeyData *string `json:"key-data,omitempty"`
 }
 
 // NewConfigure instantiates a new Configure object
@@ -248,6 +252,38 @@ func (o *Configure) SetAzureAdObjectId(v string) {
 	o.AzureAdObjectId = &v
 }
 
+// GetCertData returns the CertData field value if set, zero value otherwise.
+func (o *Configure) GetCertData() string {
+	if o == nil || o.CertData == nil {
+		var ret string
+		return ret
+	}
+	return *o.CertData
+}
+
+// GetCertDataOk returns a tuple with the CertData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Configure) GetCertDataOk() (*string, bool) {
+	if o == nil || o.CertData == nil {
+		return nil, false
+	}
+	return o.CertData, true
+}
+
+// HasCertData returns a boolean if a field has been set.
+func (o *Configure) HasCertData() bool {
+	if o != nil && o.CertData != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCertData gets a reference to the given string and assigns it to the CertData field.
+func (o *Configure) SetCertData(v string) {
+	o.CertData = &v
+}
+
 // GetGcpAudience returns the GcpAudience field value if set, zero value otherwise.
 func (o *Configure) GetGcpAudience() string {
 	if o == nil || o.GcpAudience == nil {
@@ -312,6 +348,38 @@ func (o *Configure) SetK8sAuthConfigName(v string) {
 	o.K8sAuthConfigName = &v
 }
 
+// GetKeyData returns the KeyData field value if set, zero value otherwise.
+func (o *Configure) GetKeyData() string {
+	if o == nil || o.KeyData == nil {
+		var ret string
+		return ret
+	}
+	return *o.KeyData
+}
+
+// GetKeyDataOk returns a tuple with the KeyData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Configure) GetKeyDataOk() (*string, bool) {
+	if o == nil || o.KeyData == nil {
+		return nil, false
+	}
+	return o.KeyData, true
+}
+
+// HasKeyData returns a boolean if a field has been set.
+func (o *Configure) HasKeyData() bool {
+	if o != nil && o.KeyData != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetKeyData gets a reference to the given string and assigns it to the KeyData field.
+func (o *Configure) SetKeyData(v string) {
+	o.KeyData = &v
+}
+
 func (o Configure) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccessId != nil {
@@ -332,11 +400,17 @@ func (o Configure) MarshalJSON() ([]byte, error) {
 	if o.AzureAdObjectId != nil {
 		toSerialize["azure_ad_object_id"] = o.AzureAdObjectId
 	}
+	if o.CertData != nil {
+		toSerialize["cert-data"] = o.CertData
+	}
 	if o.GcpAudience != nil {
 		toSerialize["gcp-audience"] = o.GcpAudience
 	}
 	if o.K8sAuthConfigName != nil {
 		toSerialize["k8s-auth-config-name"] = o.K8sAuthConfigName
+	}
+	if o.KeyData != nil {
+		toSerialize["key-data"] = o.KeyData
 	}
 	return json.Marshal(toSerialize)
 }

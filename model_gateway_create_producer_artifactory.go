@@ -27,6 +27,8 @@ type GatewayCreateProducerArtifactory struct {
 	ArtifactoryTokenScope string `json:"artifactory-token-scope"`
 	// Base URL
 	BaseUrl *string `json:"base-url,omitempty"`
+	// Protection from accidental deletion of this item
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Producer name
 	Name string `json:"name"`
 	// Dynamic producer encryption key
@@ -209,6 +211,38 @@ func (o *GatewayCreateProducerArtifactory) HasBaseUrl() bool {
 // SetBaseUrl gets a reference to the given string and assigns it to the BaseUrl field.
 func (o *GatewayCreateProducerArtifactory) SetBaseUrl(v string) {
 	o.BaseUrl = &v
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *GatewayCreateProducerArtifactory) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerArtifactory) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *GatewayCreateProducerArtifactory) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *GatewayCreateProducerArtifactory) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetName returns the Name field value
@@ -443,6 +477,9 @@ func (o GatewayCreateProducerArtifactory) MarshalJSON() ([]byte, error) {
 	}
 	if o.BaseUrl != nil {
 		toSerialize["base-url"] = o.BaseUrl
+	}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
 	}
 	if true {
 		toSerialize["name"] = o.Name

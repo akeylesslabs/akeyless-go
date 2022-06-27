@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreationStatements** | Pointer to **string** | Redshift Creation statements | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
 **Name** | **string** | Producer name | 
 **ProducerEncryptionKey** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **RedshiftDbName** | Pointer to **string** | Redshift DB Name | [optional] 
@@ -64,6 +65,31 @@ SetCreationStatements sets CreationStatements field to given value.
 `func (o *GatewayCreateProducerRedshift) HasCreationStatements() bool`
 
 HasCreationStatements returns a boolean if a field has been set.
+
+### GetDeleteProtection
+
+`func (o *GatewayCreateProducerRedshift) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *GatewayCreateProducerRedshift) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *GatewayCreateProducerRedshift) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *GatewayCreateProducerRedshift) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetName
 

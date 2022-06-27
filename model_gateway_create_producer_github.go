@@ -17,6 +17,8 @@ import (
 
 // GatewayCreateProducerGithub gatewayCreateProducerGithub is a command that creates github producer
 type GatewayCreateProducerGithub struct {
+	// Protection from accidental deletion of this item
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Github app id
 	GithubAppId *int64 `json:"github-app-id,omitempty"`
 	// App private key
@@ -57,6 +59,38 @@ func NewGatewayCreateProducerGithub(name string, ) *GatewayCreateProducerGithub 
 func NewGatewayCreateProducerGithubWithDefaults() *GatewayCreateProducerGithub {
 	this := GatewayCreateProducerGithub{}
 	return &this
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *GatewayCreateProducerGithub) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerGithub) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *GatewayCreateProducerGithub) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *GatewayCreateProducerGithub) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetGithubAppId returns the GithubAppId field value if set, zero value otherwise.
@@ -405,6 +439,9 @@ func (o *GatewayCreateProducerGithub) SetUidToken(v string) {
 
 func (o GatewayCreateProducerGithub) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
+	}
 	if o.GithubAppId != nil {
 		toSerialize["github-app-id"] = o.GithubAppId
 	}

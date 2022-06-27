@@ -19,6 +19,8 @@ import (
 type UpdateItem struct {
 	// List of the new tags that will be attached to this item
 	AddTag *[]string `json:"add-tag,omitempty"`
+	// PEM Certificate in a Base64 format. Used for updating RSA keys' certificates.
+	CertFileData *string `json:"cert-file-data,omitempty"`
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Current item name
 	Name string `json:"name"`
@@ -110,6 +112,38 @@ func (o *UpdateItem) HasAddTag() bool {
 // SetAddTag gets a reference to the given []string and assigns it to the AddTag field.
 func (o *UpdateItem) SetAddTag(v []string) {
 	o.AddTag = &v
+}
+
+// GetCertFileData returns the CertFileData field value if set, zero value otherwise.
+func (o *UpdateItem) GetCertFileData() string {
+	if o == nil || o.CertFileData == nil {
+		var ret string
+		return ret
+	}
+	return *o.CertFileData
+}
+
+// GetCertFileDataOk returns a tuple with the CertFileData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateItem) GetCertFileDataOk() (*string, bool) {
+	if o == nil || o.CertFileData == nil {
+		return nil, false
+	}
+	return o.CertFileData, true
+}
+
+// HasCertFileData returns a boolean if a field has been set.
+func (o *UpdateItem) HasCertFileData() bool {
+	if o != nil && o.CertFileData != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCertFileData gets a reference to the given string and assigns it to the CertFileData field.
+func (o *UpdateItem) SetCertFileData(v string) {
+	o.CertFileData = &v
 }
 
 // GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
@@ -1100,6 +1134,9 @@ func (o UpdateItem) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AddTag != nil {
 		toSerialize["add-tag"] = o.AddTag
+	}
+	if o.CertFileData != nil {
+		toSerialize["cert-file-data"] = o.CertFileData
 	}
 	if o.DeleteProtection != nil {
 		toSerialize["delete_protection"] = o.DeleteProtection

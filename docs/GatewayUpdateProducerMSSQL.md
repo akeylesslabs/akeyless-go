@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
 **MssqlCreateStatements** | Pointer to **string** | MSSQL Creation statements | [optional] 
 **MssqlDbname** | Pointer to **string** | MSSQL Name | [optional] 
 **MssqlHost** | Pointer to **string** | MSSQL Host | [optional] [default to "127.0.0.1"]
@@ -43,6 +44,31 @@ will change when the set of required properties is changed
 NewGatewayUpdateProducerMSSQLWithDefaults instantiates a new GatewayUpdateProducerMSSQL object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetDeleteProtection
+
+`func (o *GatewayUpdateProducerMSSQL) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *GatewayUpdateProducerMSSQL) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *GatewayUpdateProducerMSSQL) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *GatewayUpdateProducerMSSQL) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetMssqlCreateStatements
 

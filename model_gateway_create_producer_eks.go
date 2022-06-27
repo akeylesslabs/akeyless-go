@@ -17,6 +17,8 @@ import (
 
 // GatewayCreateProducerEks gatewayCreateProducerEks is a command that creates eks producer
 type GatewayCreateProducerEks struct {
+	// Protection from accidental deletion of this item
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Access Key ID
 	EksAccessKeyId *string `json:"eks-access-key-id,omitempty"`
 	// IAM assume role
@@ -76,6 +78,38 @@ func NewGatewayCreateProducerEksWithDefaults() *GatewayCreateProducerEks {
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *GatewayCreateProducerEks) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerEks) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *GatewayCreateProducerEks) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *GatewayCreateProducerEks) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetEksAccessKeyId returns the EksAccessKeyId field value if set, zero value otherwise.
@@ -680,6 +714,9 @@ func (o *GatewayCreateProducerEks) SetUserTtl(v string) {
 
 func (o GatewayCreateProducerEks) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
+	}
 	if o.EksAccessKeyId != nil {
 		toSerialize["eks-access-key-id"] = o.EksAccessKeyId
 	}

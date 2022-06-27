@@ -17,6 +17,8 @@ import (
 
 // GatewayCreateProducerGcp gatewayCreateProducerGcp is a command that creates a GCP producer
 type GatewayCreateProducerGcp struct {
+	// Protection from accidental deletion of this item
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	GcpCredType *string `json:"gcp-cred-type,omitempty"`
 	// Base64-encoded service account private key text
 	GcpKey *string `json:"gcp-key,omitempty"`
@@ -62,6 +64,38 @@ func NewGatewayCreateProducerGcpWithDefaults() *GatewayCreateProducerGcp {
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *GatewayCreateProducerGcp) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerGcp) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *GatewayCreateProducerGcp) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *GatewayCreateProducerGcp) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetGcpCredType returns the GcpCredType field value if set, zero value otherwise.
@@ -442,6 +476,9 @@ func (o *GatewayCreateProducerGcp) SetUserTtl(v string) {
 
 func (o GatewayCreateProducerGcp) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
+	}
 	if o.GcpCredType != nil {
 		toSerialize["gcp-cred-type"] = o.GcpCredType
 	}

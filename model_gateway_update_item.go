@@ -24,6 +24,8 @@ type GatewayUpdateItem struct {
 	// Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation
 	AutoRotate *string `json:"auto-rotate,omitempty"`
 	CustomPayload *string `json:"custom-payload,omitempty"`
+	// Protection from accidental deletion of this item
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
@@ -238,6 +240,38 @@ func (o *GatewayUpdateItem) HasCustomPayload() bool {
 // SetCustomPayload gets a reference to the given string and assigns it to the CustomPayload field.
 func (o *GatewayUpdateItem) SetCustomPayload(v string) {
 	o.CustomPayload = &v
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *GatewayUpdateItem) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateItem) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *GatewayUpdateItem) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *GatewayUpdateItem) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetKeepPrevVersion returns the KeepPrevVersion field value if set, zero value otherwise.
@@ -720,6 +754,9 @@ func (o GatewayUpdateItem) MarshalJSON() ([]byte, error) {
 	}
 	if o.CustomPayload != nil {
 		toSerialize["custom-payload"] = o.CustomPayload
+	}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
 	}
 	if o.KeepPrevVersion != nil {
 		toSerialize["keep-prev-version"] = o.KeepPrevVersion

@@ -20,6 +20,7 @@ type TargetTypeDetailsInput struct {
 	ArtifactoryAdminApikey *string `json:"artifactory_admin_apikey,omitempty"`
 	ArtifactoryAdminUsername *string `json:"artifactory_admin_username,omitempty"`
 	ArtifactoryBaseUrl *string `json:"artifactory_base_url,omitempty"`
+	AuthFlow *string `json:"auth_flow,omitempty"`
 	AwsAccessKeyId *string `json:"aws_access_key_id,omitempty"`
 	AwsRegion *string `json:"aws_region,omitempty"`
 	AwsSecretAccessKey *string `json:"aws_secret_access_key,omitempty"`
@@ -229,6 +230,38 @@ func (o *TargetTypeDetailsInput) HasArtifactoryBaseUrl() bool {
 // SetArtifactoryBaseUrl gets a reference to the given string and assigns it to the ArtifactoryBaseUrl field.
 func (o *TargetTypeDetailsInput) SetArtifactoryBaseUrl(v string) {
 	o.ArtifactoryBaseUrl = &v
+}
+
+// GetAuthFlow returns the AuthFlow field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetAuthFlow() string {
+	if o == nil || o.AuthFlow == nil {
+		var ret string
+		return ret
+	}
+	return *o.AuthFlow
+}
+
+// GetAuthFlowOk returns a tuple with the AuthFlow field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetAuthFlowOk() (*string, bool) {
+	if o == nil || o.AuthFlow == nil {
+		return nil, false
+	}
+	return o.AuthFlow, true
+}
+
+// HasAuthFlow returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasAuthFlow() bool {
+	if o != nil && o.AuthFlow != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthFlow gets a reference to the given string and assigns it to the AuthFlow field.
+func (o *TargetTypeDetailsInput) SetAuthFlow(v string) {
+	o.AuthFlow = &v
 }
 
 // GetAwsAccessKeyId returns the AwsAccessKeyId field value if set, zero value otherwise.
@@ -3025,6 +3058,9 @@ func (o TargetTypeDetailsInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.ArtifactoryBaseUrl != nil {
 		toSerialize["artifactory_base_url"] = o.ArtifactoryBaseUrl
+	}
+	if o.AuthFlow != nil {
+		toSerialize["auth_flow"] = o.AuthFlow
 	}
 	if o.AwsAccessKeyId != nil {
 		toSerialize["aws_access_key_id"] = o.AwsAccessKeyId

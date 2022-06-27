@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **LastVersion** | Pointer to **int32** |  | [optional] 
 **NextRotationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **ProtectionKeyName** | Pointer to **string** |  | [optional] 
+**ProtectionKeyType** | Pointer to **string** |  | [optional] 
 **PublicValue** | Pointer to **string** |  | [optional] 
 **RotationInterval** | Pointer to **int64** |  | [optional] 
 **TargetVersions** | Pointer to [**[]TargetItemVersion**](TargetItemVersion.md) |  | [optional] 
@@ -677,6 +678,31 @@ SetProtectionKeyName sets ProtectionKeyName field to given value.
 `func (o *Item) HasProtectionKeyName() bool`
 
 HasProtectionKeyName returns a boolean if a field has been set.
+
+### GetProtectionKeyType
+
+`func (o *Item) GetProtectionKeyType() string`
+
+GetProtectionKeyType returns the ProtectionKeyType field if non-nil, zero value otherwise.
+
+### GetProtectionKeyTypeOk
+
+`func (o *Item) GetProtectionKeyTypeOk() (*string, bool)`
+
+GetProtectionKeyTypeOk returns a tuple with the ProtectionKeyType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProtectionKeyType
+
+`func (o *Item) SetProtectionKeyType(v string)`
+
+SetProtectionKeyType sets ProtectionKeyType field to given value.
+
+### HasProtectionKeyType
+
+`func (o *Item) HasProtectionKeyType() bool`
+
+HasProtectionKeyType returns a boolean if a field has been set.
 
 ### GetPublicValue
 

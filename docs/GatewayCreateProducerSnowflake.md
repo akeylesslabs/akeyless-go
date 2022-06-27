@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AccountPassword** | Pointer to **string** | Database Password | [optional] 
 **AccountUsername** | Pointer to **string** | Database Username | [optional] 
 **DbName** | Pointer to **string** | Database name | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
 **Name** | **string** | Producer name | 
 **Role** | Pointer to **string** | User role | [optional] 
 **Tags** | Pointer to **[]string** | List of the tags attached to this secret | [optional] 
@@ -135,6 +136,31 @@ SetDbName sets DbName field to given value.
 `func (o *GatewayCreateProducerSnowflake) HasDbName() bool`
 
 HasDbName returns a boolean if a field has been set.
+
+### GetDeleteProtection
+
+`func (o *GatewayCreateProducerSnowflake) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *GatewayCreateProducerSnowflake) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *GatewayCreateProducerSnowflake) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *GatewayCreateProducerSnowflake) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetName
 

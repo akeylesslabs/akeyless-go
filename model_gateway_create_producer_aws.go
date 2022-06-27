@@ -34,6 +34,8 @@ type GatewayCreateProducerAws struct {
 	AwsUserPolicies *string `json:"aws-user-policies,omitempty"`
 	// AWS User programmatic access
 	AwsUserProgrammaticAccess *bool `json:"aws-user-programmatic-access,omitempty"`
+	// Protection from accidental deletion of this item
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Automatic admin credentials rotation
 	EnableAdminRotation *bool `json:"enable-admin-rotation,omitempty"`
 	// Producer name
@@ -389,6 +391,38 @@ func (o *GatewayCreateProducerAws) HasAwsUserProgrammaticAccess() bool {
 // SetAwsUserProgrammaticAccess gets a reference to the given bool and assigns it to the AwsUserProgrammaticAccess field.
 func (o *GatewayCreateProducerAws) SetAwsUserProgrammaticAccess(v bool) {
 	o.AwsUserProgrammaticAccess = &v
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *GatewayCreateProducerAws) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerAws) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *GatewayCreateProducerAws) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *GatewayCreateProducerAws) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetEnableAdminRotation returns the EnableAdminRotation field value if set, zero value otherwise.
@@ -923,6 +957,9 @@ func (o GatewayCreateProducerAws) MarshalJSON() ([]byte, error) {
 	}
 	if o.AwsUserProgrammaticAccess != nil {
 		toSerialize["aws-user-programmatic-access"] = o.AwsUserProgrammaticAccess
+	}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
 	}
 	if o.EnableAdminRotation != nil {
 		toSerialize["enable-admin-rotation"] = o.EnableAdminRotation

@@ -19,6 +19,7 @@ import (
 type ItemGeneralInfo struct {
 	CertIssueDetails *CertificateIssueInfo `json:"cert_issue_details,omitempty"`
 	ClassicKeyDetails *ClassicKeyDetailsInfo `json:"classic_key_details,omitempty"`
+	ClusterGwUrl *string `json:"cluster_gw_url,omitempty"`
 	DisplayMetadata *string `json:"display_metadata,omitempty"`
 	DynamicSecretProducerDetails *DynamicSecretProducerInfo `json:"dynamic_secret_producer_details,omitempty"`
 	PasswordPolicy *PasswordPolicyInfo `json:"password_policy,omitempty"`
@@ -107,6 +108,38 @@ func (o *ItemGeneralInfo) HasClassicKeyDetails() bool {
 // SetClassicKeyDetails gets a reference to the given ClassicKeyDetailsInfo and assigns it to the ClassicKeyDetails field.
 func (o *ItemGeneralInfo) SetClassicKeyDetails(v ClassicKeyDetailsInfo) {
 	o.ClassicKeyDetails = &v
+}
+
+// GetClusterGwUrl returns the ClusterGwUrl field value if set, zero value otherwise.
+func (o *ItemGeneralInfo) GetClusterGwUrl() string {
+	if o == nil || o.ClusterGwUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.ClusterGwUrl
+}
+
+// GetClusterGwUrlOk returns a tuple with the ClusterGwUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ItemGeneralInfo) GetClusterGwUrlOk() (*string, bool) {
+	if o == nil || o.ClusterGwUrl == nil {
+		return nil, false
+	}
+	return o.ClusterGwUrl, true
+}
+
+// HasClusterGwUrl returns a boolean if a field has been set.
+func (o *ItemGeneralInfo) HasClusterGwUrl() bool {
+	if o != nil && o.ClusterGwUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetClusterGwUrl gets a reference to the given string and assigns it to the ClusterGwUrl field.
+func (o *ItemGeneralInfo) SetClusterGwUrl(v string) {
+	o.ClusterGwUrl = &v
 }
 
 // GetDisplayMetadata returns the DisplayMetadata field value if set, zero value otherwise.
@@ -340,6 +373,9 @@ func (o ItemGeneralInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.ClassicKeyDetails != nil {
 		toSerialize["classic_key_details"] = o.ClassicKeyDetails
+	}
+	if o.ClusterGwUrl != nil {
+		toSerialize["cluster_gw_url"] = o.ClusterGwUrl
 	}
 	if o.DisplayMetadata != nil {
 		toSerialize["display_metadata"] = o.DisplayMetadata

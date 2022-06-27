@@ -7,8 +7,10 @@ Name | Type | Description | Notes
 **AltNames** | Pointer to **string** | The Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list) | [optional] 
 **CertIssuerName** | **string** | The name of the PKI certificate issuer | 
 **CommonName** | Pointer to **string** | The common name to be included in the PKI certificate | [optional] 
+**ExtendedKeyUsage** | Pointer to **string** | A comma-separated list of extended key usage requests which will be used for certificate issuance. Supported values: &#39;clientauth&#39;, &#39;serverauth&#39;. | [optional] 
 **KeyDataBase64** | Pointer to **string** | PKI key file contents. If this option is used, the certificate will be printed to stdout | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
+**Ttl** | Pointer to **int64** | Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UriSans** | Pointer to **string** | The URI Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list) | [optional] 
 
@@ -101,6 +103,31 @@ SetCommonName sets CommonName field to given value.
 
 HasCommonName returns a boolean if a field has been set.
 
+### GetExtendedKeyUsage
+
+`func (o *GetKubeExecCreds) GetExtendedKeyUsage() string`
+
+GetExtendedKeyUsage returns the ExtendedKeyUsage field if non-nil, zero value otherwise.
+
+### GetExtendedKeyUsageOk
+
+`func (o *GetKubeExecCreds) GetExtendedKeyUsageOk() (*string, bool)`
+
+GetExtendedKeyUsageOk returns a tuple with the ExtendedKeyUsage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtendedKeyUsage
+
+`func (o *GetKubeExecCreds) SetExtendedKeyUsage(v string)`
+
+SetExtendedKeyUsage sets ExtendedKeyUsage field to given value.
+
+### HasExtendedKeyUsage
+
+`func (o *GetKubeExecCreds) HasExtendedKeyUsage() bool`
+
+HasExtendedKeyUsage returns a boolean if a field has been set.
+
 ### GetKeyDataBase64
 
 `func (o *GetKubeExecCreds) GetKeyDataBase64() string`
@@ -150,6 +177,31 @@ SetToken sets Token field to given value.
 `func (o *GetKubeExecCreds) HasToken() bool`
 
 HasToken returns a boolean if a field has been set.
+
+### GetTtl
+
+`func (o *GetKubeExecCreds) GetTtl() int64`
+
+GetTtl returns the Ttl field if non-nil, zero value otherwise.
+
+### GetTtlOk
+
+`func (o *GetKubeExecCreds) GetTtlOk() (*int64, bool)`
+
+GetTtlOk returns a tuple with the Ttl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTtl
+
+`func (o *GetKubeExecCreds) SetTtl(v int64)`
+
+SetTtl sets Ttl field to given value.
+
+### HasTtl
+
+`func (o *GetKubeExecCreds) HasTtl() bool`
+
+HasTtl returns a boolean if a field has been set.
 
 ### GetUidToken
 

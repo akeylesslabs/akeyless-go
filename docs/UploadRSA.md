@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
 **Metadata** | Pointer to **string** | A metadata about the key | [optional] 
 **Name** | **string** | Name of key to be created | 
+**Overwrite** | Pointer to **string** | When the overwrite flag is set, this command will only update an existing key. [true, false] | [optional] 
 **RsaFileData** | Pointer to **string** | RSA private key data, base64 encoded | [optional] 
 **SplitLevel** | Pointer to **int64** | The number of fragments that the item will be split into | [optional] [default to 2]
 **Tag** | Pointer to **[]string** | List of the tags attached to this key | [optional] 
@@ -174,6 +175,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetOverwrite
+
+`func (o *UploadRSA) GetOverwrite() string`
+
+GetOverwrite returns the Overwrite field if non-nil, zero value otherwise.
+
+### GetOverwriteOk
+
+`func (o *UploadRSA) GetOverwriteOk() (*string, bool)`
+
+GetOverwriteOk returns a tuple with the Overwrite field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOverwrite
+
+`func (o *UploadRSA) SetOverwrite(v string)`
+
+SetOverwrite sets Overwrite field to given value.
+
+### HasOverwrite
+
+`func (o *UploadRSA) HasOverwrite() bool`
+
+HasOverwrite returns a boolean if a field has been set.
 
 ### GetRsaFileData
 

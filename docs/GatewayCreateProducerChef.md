@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **ChefServerKey** | Pointer to **string** | Server key | [optional] 
 **ChefServerUrl** | Pointer to **string** | Server URL | [optional] 
 **ChefServerUsername** | Pointer to **string** | Server username | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
 **Name** | **string** | Producer name | 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **SkipSsl** | Pointer to **bool** | Skip SSL | [optional] [default to true]
@@ -135,6 +136,31 @@ SetChefServerUsername sets ChefServerUsername field to given value.
 `func (o *GatewayCreateProducerChef) HasChefServerUsername() bool`
 
 HasChefServerUsername returns a boolean if a field has been set.
+
+### GetDeleteProtection
+
+`func (o *GatewayCreateProducerChef) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *GatewayCreateProducerChef) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *GatewayCreateProducerChef) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *GatewayCreateProducerChef) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetName
 

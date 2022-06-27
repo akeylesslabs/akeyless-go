@@ -25,6 +25,8 @@ type GatewayUpdateProducerSnowflake struct {
 	AccountUsername *string `json:"account-username,omitempty"`
 	// Database name
 	DbName *string `json:"db-name,omitempty"`
+	// Protection from accidental deletion of this item
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Producer name
 	Name string `json:"name"`
 	// Producer name
@@ -193,6 +195,38 @@ func (o *GatewayUpdateProducerSnowflake) HasDbName() bool {
 // SetDbName gets a reference to the given string and assigns it to the DbName field.
 func (o *GatewayUpdateProducerSnowflake) SetDbName(v string) {
 	o.DbName = &v
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerSnowflake) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerSnowflake) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerSnowflake) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *GatewayUpdateProducerSnowflake) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetName returns the Name field value
@@ -488,6 +522,9 @@ func (o GatewayUpdateProducerSnowflake) MarshalJSON() ([]byte, error) {
 	}
 	if o.DbName != nil {
 		toSerialize["db-name"] = o.DbName
+	}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
 	}
 	if true {
 		toSerialize["name"] = o.Name

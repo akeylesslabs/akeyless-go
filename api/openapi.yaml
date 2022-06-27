@@ -2721,6 +2721,33 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /gateway-migration-status:
+    post:
+      operationId: gatewayStatusMigration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayStatusMigration'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MigrationStatusReplyObj'
+          description: gatewayMigrationStatusResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /gateway-revoke-producer-tmp-creds:
     post:
       operationId: gatewayRevokeTmpUsers
@@ -6948,6 +6975,12 @@ components:
           schema:
             $ref: '#/components/schemas/gatewayMigrationListOutput'
       description: gatewayMigrationListResponse wraps response body.
+    gatewayMigrationStatusResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/MigrationStatusReplyObj'
+      description: gatewayMigrationStatusResponse wraps response body.
     gatewayMigrationSyncResponse:
       content:
         application/json:
@@ -7852,6 +7885,7 @@ components:
           name: name
           id: id
           protection_key: protection_key
+          new_name: new_name
         payload:
           secret: secret
           region: region
@@ -8002,6 +8036,7 @@ components:
               name: name
               id: id
               protection_key: protection_key
+              new_name: new_name
             payload:
               import_as_json: true
               url: url
@@ -8014,6 +8049,7 @@ components:
               name: name
               id: id
               protection_key: protection_key
+              new_name: new_name
             payload:
               import_as_json: true
               url: url
@@ -8027,6 +8063,7 @@ components:
               name: name
               id: id
               protection_key: protection_key
+              new_name: new_name
             payload:
               name: name
               client: client
@@ -8037,6 +8074,7 @@ components:
               name: name
               id: id
               protection_key: protection_key
+              new_name: new_name
             payload:
               name: name
               client: client
@@ -8048,6 +8086,7 @@ components:
               name: name
               id: id
               protection_key: protection_key
+              new_name: new_name
             payload:
               client_key:
               - 4
@@ -8069,6 +8108,7 @@ components:
               name: name
               id: id
               protection_key: protection_key
+              new_name: new_name
             payload:
               client_key:
               - 4
@@ -8091,6 +8131,7 @@ components:
               name: name
               id: id
               protection_key: protection_key
+              new_name: new_name
             payload:
               secret: secret
               region: region
@@ -8100,6 +8141,7 @@ components:
               name: name
               id: id
               protection_key: protection_key
+              new_name: new_name
             payload:
               secret: secret
               region: region
@@ -8110,6 +8152,7 @@ components:
               name: name
               id: id
               protection_key: protection_key
+              new_name: new_name
             payload:
               gcp_credentials_json: gcp_credentials_json
           - general:
@@ -8117,6 +8160,7 @@ components:
               name: name
               id: id
               protection_key: protection_key
+              new_name: new_name
             payload:
               gcp_credentials_json: gcp_credentials_json
         leadership:
@@ -9059,6 +9103,7 @@ components:
           name: name
           id: id
           protection_key: protection_key
+          new_name: new_name
         payload:
           name: name
           client: client
@@ -11146,6 +11191,7 @@ components:
           name: name
           id: id
           protection_key: protection_key
+          new_name: new_name
         payload:
           gcp_credentials_json: gcp_credentials_json
       properties:
@@ -11417,8 +11463,10 @@ components:
       example:
         alt-names: alt-names
         cert-issuer-name: cert-issuer-name
+        extended-key-usage: extended-key-usage
         key-data-base64: key-data-base64
         uri-sans: uri-sans
+        ttl: 0
         uid-token: uid-token
         common-name: common-name
         token: token
@@ -11437,6 +11485,12 @@ components:
           description: The common name to be included in the PKI certificate
           type: string
           x-go-name: CommonName
+        extended-key-usage:
+          description: 'A comma-separated list of extended key usage requests which
+            will be used for certificate issuance. Supported values: ''clientauth'',
+            ''serverauth''.'
+          type: string
+          x-go-name: ExtKeyUsage
         key-data-base64:
           description: |-
             PKI key file contents. If this option is used, the certificate
@@ -11447,6 +11501,12 @@ components:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
           x-go-name: Profile
+        ttl:
+          description: Updated certificate lifetime in seconds (must be less than
+            the Certificate Issuer default TTL)
+          format: int64
+          type: integer
+          x-go-name: Ttl
         uid-token:
           description: |-
             The universal identity token, Required only for universal_identity
@@ -11591,6 +11651,7 @@ components:
           security_token: security_token
           aws_secret_access_key: aws_secret_access_key
           github_base_url: github_base_url
+          auth_flow: auth_flow
           mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
           chef_server_host_name: chef_server_host_name
           url: url
@@ -11666,6 +11727,7 @@ components:
           name: name
           id: id
           protection_key: protection_key
+          new_name: new_name
         payload:
           import_as_json: true
           url: url
@@ -11793,6 +11855,7 @@ components:
           version: 9
           customer_fragment_id: customer_fragment_id
         item_size: 5
+        protection_key_type: protection_key_type
         is_enabled: true
         rotation_interval: 8
         target_versions:
@@ -11976,6 +12039,7 @@ components:
                 pattern: pattern
                 alphabet: alphabet
                 decryption_template: decryption_template
+          cluster_gw_url: cluster_gw_url
           secure_remote_access_details:
             schema: schema
             web_proxy: true
@@ -12180,6 +12244,10 @@ components:
         protection_key_name:
           type: string
           x-go-name: ProtectionKeyName
+        protection_key_type:
+          title: ItemType defines types supported by AKEYLESS.
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
         public_value:
           type: string
           x-go-name: PublicValue
@@ -12285,6 +12353,7 @@ components:
               pattern: pattern
               alphabet: alphabet
               decryption_template: decryption_template
+        cluster_gw_url: cluster_gw_url
         secure_remote_access_details:
           schema: schema
           web_proxy: true
@@ -12392,6 +12461,9 @@ components:
           $ref: '#/components/schemas/CertificateIssueInfo'
         classic_key_details:
           $ref: '#/components/schemas/ClassicKeyDetailsInfo'
+        cluster_gw_url:
+          type: string
+          x-go-name: ClusterGWUrl
         display_metadata:
           type: string
           x-go-name: DisplayMetadata
@@ -12648,6 +12720,7 @@ components:
           name: name
           id: id
           protection_key: protection_key
+          new_name: new_name
         payload:
           client_key:
           - 4
@@ -13719,6 +13792,7 @@ components:
             version: 9
             customer_fragment_id: customer_fragment_id
           item_size: 5
+          protection_key_type: protection_key_type
           is_enabled: true
           rotation_interval: 8
           target_versions:
@@ -13902,6 +13976,7 @@ components:
                   pattern: pattern
                   alphabet: alphabet
                   decryption_template: decryption_template
+            cluster_gw_url: cluster_gw_url
             secure_remote_access_details:
               schema: schema
               web_proxy: true
@@ -14035,6 +14110,7 @@ components:
             version: 9
             customer_fragment_id: customer_fragment_id
           item_size: 5
+          protection_key_type: protection_key_type
           is_enabled: true
           rotation_interval: 8
           target_versions:
@@ -14218,6 +14294,7 @@ components:
                   pattern: pattern
                   alphabet: alphabet
                   decryption_template: decryption_template
+            cluster_gw_url: cluster_gw_url
             secure_remote_access_details:
               schema: schema
               web_proxy: true
@@ -14633,6 +14710,7 @@ components:
         name: name
         id: id
         protection_key: protection_key
+        new_name: new_name
       properties:
         id:
           type: string
@@ -14640,6 +14718,9 @@ components:
         name:
           type: string
           x-go-name: Name
+        new_name:
+          type: string
+          x-go-name: NewName
         prefix:
           type: string
           x-go-name: Prefix
@@ -14648,6 +14729,31 @@ components:
           x-go-name: ProtectionKey
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    MigrationItems:
+      example:
+        total: 2
+        failed: 1
+        migrated: 5
+        skipped: 5
+      properties:
+        failed:
+          format: int64
+          type: integer
+          x-go-name: Failed
+        migrated:
+          format: int64
+          type: integer
+          x-go-name: Migrated
+        skipped:
+          format: int64
+          type: integer
+          x-go-name: Skipped
+        total:
+          format: int64
+          type: integer
+          x-go-name: Total
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/importer/report
     MigrationStatus:
       example:
         last_messages:
@@ -14672,6 +14778,56 @@ components:
             type: string
           type: object
           x-go-name: LastStatuses
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    MigrationStatusReplyObj:
+      example:
+        start_time: start_time
+        max_name_length: 0
+        migration_type: migration_type
+        migration_id: migration_id
+        last_status_message: last_status_message
+        duration_time: duration_time
+        max_value_length: 6
+        migration_name: migration_name
+        migration_items:
+          total: 2
+          failed: 1
+          migrated: 5
+          skipped: 5
+        migration_state: migration_state
+      properties:
+        duration_time:
+          type: string
+          x-go-name: DurationTime
+        last_status_message:
+          type: string
+          x-go-name: LastMessage
+        max_name_length:
+          format: int64
+          type: integer
+          x-go-name: MaxNameLength
+        max_value_length:
+          format: int64
+          type: integer
+          x-go-name: MaxValueLength
+        migration_id:
+          type: string
+          x-go-name: MigrationID
+        migration_items:
+          $ref: '#/components/schemas/MigrationItems'
+        migration_name:
+          type: string
+          x-go-name: MigrationName
+        migration_state:
+          type: string
+          x-go-name: MigrationState
+        migration_type:
+          type: string
+          x-go-name: MigrationType
+        start_time:
+          type: string
+          x-go-name: StartTime
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     MigrationsConfigLastChange:
@@ -14711,6 +14867,7 @@ components:
             name: name
             id: id
             protection_key: protection_key
+            new_name: new_name
           payload:
             import_as_json: true
             url: url
@@ -14723,6 +14880,7 @@ components:
             name: name
             id: id
             protection_key: protection_key
+            new_name: new_name
           payload:
             import_as_json: true
             url: url
@@ -14736,6 +14894,7 @@ components:
             name: name
             id: id
             protection_key: protection_key
+            new_name: new_name
           payload:
             name: name
             client: client
@@ -14746,6 +14905,7 @@ components:
             name: name
             id: id
             protection_key: protection_key
+            new_name: new_name
           payload:
             name: name
             client: client
@@ -14757,6 +14917,7 @@ components:
             name: name
             id: id
             protection_key: protection_key
+            new_name: new_name
           payload:
             client_key:
             - 4
@@ -14778,6 +14939,7 @@ components:
             name: name
             id: id
             protection_key: protection_key
+            new_name: new_name
           payload:
             client_key:
             - 4
@@ -14800,6 +14962,7 @@ components:
             name: name
             id: id
             protection_key: protection_key
+            new_name: new_name
           payload:
             secret: secret
             region: region
@@ -14809,6 +14972,7 @@ components:
             name: name
             id: id
             protection_key: protection_key
+            new_name: new_name
           payload:
             secret: secret
             region: region
@@ -14819,6 +14983,7 @@ components:
             name: name
             id: id
             protection_key: protection_key
+            new_name: new_name
           payload:
             gcp_credentials_json: gcp_credentials_json
         - general:
@@ -14826,6 +14991,7 @@ components:
             name: name
             id: id
             protection_key: protection_key
+            new_name: new_name
           payload:
             gcp_credentials_json: gcp_credentials_json
       properties:
@@ -16352,6 +16518,7 @@ components:
         security_token: security_token
         aws_secret_access_key: aws_secret_access_key
         github_base_url: github_base_url
+        auth_flow: auth_flow
         mongodb_atlas_api_private_key: mongodb_atlas_api_private_key
         chef_server_host_name: chef_server_host_name
         url: url
@@ -16381,6 +16548,9 @@ components:
         artifactory_base_url:
           type: string
           x-go-name: ArtifactoryBaseURL
+        auth_flow:
+          type: string
+          x-go-name: AuthFlow
         aws_access_key_id:
           type: string
           x-go-name: AWSAccessKeyID
@@ -17295,6 +17465,11 @@ components:
           description: Azure Active Directory ObjectId (relevant only for access-type=azure_ad)
           type: string
           x-go-name: AzureAdObjectID
+        cert-data:
+          description: Certificate data encoded in base64. Used if file was not provided.
+            (relevant only for access-type=cert in Curl Context)
+          type: string
+          x-go-name: CertData
         gcp-audience:
           description: GCP JWT audience
           type: string
@@ -17303,6 +17478,11 @@ components:
           description: The K8S Auth config name (relevant only for access-type=k8s)
           type: string
           x-go-name: K8SAuthConfigName
+        key-data:
+          description: Private key data encoded in base64. Used if file was not provided.(relevant
+            only for access-type=cert in Curl Context)
+          type: string
+          x-go-name: KeyData
       title: configure is a command that creates a new Akeyless profile.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
@@ -21116,104 +21296,127 @@ components:
       description: gatewayCreateMigration is a command that create migration
       properties:
         aws-key:
-          description: AWS Secret Access Key
+          description: AWS Secret Access Key (relevant only for AWS migration)
           type: string
           x-go-name: AwsSecret
         aws-key-id:
-          description: AWS Access Key ID
+          description: AWS Access Key ID with sufficient permissions to get all secrets,
+            e.g. 'arn:aws:secretsmanager:[Region]:[AccountId]:secret:[/path/to/secrets/*]'
+            (relevant only for AWS migration)
           type: string
           x-go-name: AwsKey
         aws-region:
-          description: AWS region
+          description: AWS region of the required Secrets Manager (relevant only for
+            AWS migration)
           type: string
           x-go-name: AwsRegion
         azure-client-id:
-          description: Azure KV Access client ID
+          description: Azure Key Vault Access client ID, should be Azure AD App with
+            a service principal (relevant only for Azure Key Vault migration)
           type: string
           x-go-name: AzureClient
         azure-kv-name:
-          description: Azure Key Vault Name
+          description: Azure Key Vault Name (relevant only for Azure Key Vault migration)
           type: string
           x-go-name: AzureName
         azure-secret:
-          description: Azure KV secret
+          description: Azure Key Vault secret (relevant only for Azure Key Vault migration)
           type: string
           x-go-name: AzureSecret
         azure-tenant-id:
-          description: Azure KV Access tenant ID
+          description: Azure Key Vault Access tenant ID (relevant only for Azure Key
+            Vault migration)
           type: string
           x-go-name: AzureTenant
         gcp-key:
-          description: Base64-encoded service account private key text
+          description: Base64-encoded GCP Service Account private key text with sufficient
+            permissions to Secrets Manager, Minimum required permission is Secret
+            Manager Secret Accessor, e.g. 'roles/secretmanager.secretAccessor' (relevant
+            only for GCP migration)
           type: string
           x-go-name: ServiceAccountKey
         hashi-json:
-          description: Import secret key as json value or independent secrets
+          description: Import secret key as json value or independent secrets (relevant
+            only for HasiCorp Vault migration)
           type: string
           x-go-name: HashiImportAsJson
         hashi-ns:
-          description: Hashi namespaces
+          description: HashiCorp Vault Namespaces is a comma-separated list of namespaces
+            which need to be imported into Akeyless Vault. For every provided namespace,
+            all its child namespaces are imported as well, e.g. nmsp/subnmsp1/subnmsp2,nmsp/anothernmsp.
+            By default, import all namespaces (relevant only for HasiCorp Vault migration)
           items:
             type: string
           type: array
           x-go-name: HashiNamespaces
         hashi-token:
-          description: Hashi token
+          description: HashiCorp Vault access token with sufficient permissions to
+            preform list & read operations on secrets objects (relevant only for HasiCorp
+            Vault migration)
           type: string
           x-go-name: HashiToken
         hashi-url:
-          description: Hashi url
+          description: HashiCorp Vault API URL, e.g. https://vault-mgr01:8200 (relevant
+            only for HasiCorp Vault migration)
           type: string
           x-go-name: HashiUrl
         k8s-ca-certificate:
           description: |-
             For Certificate Authentication method
-            K8s Cluster CA certificate
+            K8s Cluster CA certificate (relevant only for K8s migration with Certificate Authentication method)
           items:
             format: uint8
             type: integer
           type: array
           x-go-name: K8SCA
         k8s-client-certificate:
-          description: K8s Client certificate
+          description: K8s Client certificate with sufficient permission to list and
+            get secrets in the namespace(s) you selected (relevant only for K8s migration
+            with Certificate Authentication method)
           items:
             format: uint8
             type: integer
           type: array
           x-go-name: K8SClientCert
         k8s-client-key:
-          description: K8s Client key
+          description: K8s Client key (relevant only for K8s migration with Certificate
+            Authentication method)
           items:
             format: uint8
             type: integer
           type: array
           x-go-name: K8SClientKey
         k8s-namespace:
-          description: K8s Namespace
+          description: K8s Namespace, Use this field to import secrets from a particular
+            namespace only. By default, the secrets are imported from all namespaces
+            (relevant only for K8s migration)
           type: string
           x-go-name: K8SNamespace
         k8s-password:
-          description: K8s client password
+          description: K8s Client password (relevant only for K8s migration with Password
+            Authentication method)
           type: string
           x-go-name: K8SPassword
         k8s-skip-system:
-          description: K8s Skip Control Plane Secrets
+          description: K8s Skip Control Plane Secrets, This option allows to avoid
+            importing secrets from system namespaces (relevant only for K8s migration)
           type: boolean
           x-go-name: K8SSkipSystem
         k8s-token:
           description: |-
             For Token Authentication method
-            K8s Bearer Token
+            K8s Bearer Token with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Token Authentication method)
           type: string
           x-go-name: K8SToken
         k8s-url:
-          description: K8s Endpoint URL
+          description: K8s API Server URL, e.g. https://k8s-api.mycompany.com:6443
+            (relevant only for K8s migration)
           type: string
           x-go-name: K8SServer
         k8s-username:
           description: |-
             For Password Authentication method
-            K8s client username
+            K8s Client username with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Password Authentication method)
           type: string
           x-go-name: K8SUsername
         name:
@@ -21234,7 +21437,7 @@ components:
           type: string
           x-go-name: Profile
         type:
-          description: 'Migration type, can be: hashi/aws/gcp/k8s/azure_kv'
+          description: Migration type (hashi/aws/gcp/k8s/azure_kv)
           type: string
           x-go-name: MigrationType
         uid-token:
@@ -21271,6 +21474,10 @@ components:
           description: Base URL
           type: string
           x-go-name: BaseUrl
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         name:
           description: Producer name
           type: string
@@ -21581,6 +21788,10 @@ components:
           description: AWS User programmatic access
           type: boolean
           x-go-name: UserProgrammaticAccess
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         enable-admin-rotation:
           default: false
           description: Automatic admin credentials rotation
@@ -21896,6 +22107,10 @@ components:
           description: Azure Tenant ID
           type: string
           x-go-name: TenantId
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         fixed-user-claim-keyname:
           default: "false"
           description: FixedUserClaimKeyname
@@ -22230,6 +22445,10 @@ components:
           description: Cassandra superuser username
           type: string
           x-go-name: UserName
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         name:
           description: Producer name
           type: string
@@ -22521,6 +22740,10 @@ components:
           description: Auto generated folder
           type: string
           x-go-name: AutoGeneratedFolder
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         enable-admin-rotation:
           default: false
           description: Automatic admin credentials rotation
@@ -22853,6 +23076,10 @@ components:
           description: Server username
           type: string
           x-go-name: ServerUsername
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         name:
           description: Producer name
           type: string
@@ -22914,6 +23141,10 @@ components:
             https://webhook.example.com/sync/create
           type: string
           x-go-name: CreateSyncURL
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         enable_admin_rotation:
           default: false
           description: Should admin credentials be rotated
@@ -23210,6 +23441,10 @@ components:
       description: gatewayCreateProducerDockerhub is a command that creates a DOCKERHUB
         producer
       properties:
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         dockerhub-password:
           description: DockerhubPassword is either the user's password access token
             to manage the repository
@@ -23493,6 +23728,10 @@ components:
     gatewayCreateProducerEks:
       description: gatewayCreateProducerEks is a command that creates eks producer
       properties:
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         eks-access-key-id:
           description: Access Key ID
           type: string
@@ -23805,6 +24044,10 @@ components:
     gatewayCreateProducerGcp:
       description: gatewayCreateProducerGcp is a command that creates a GCP producer
       properties:
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         gcp-cred-type:
           type: string
           x-go-package: akeyless.io/akeyless-main-repo/go/src/producer/config
@@ -24092,6 +24335,10 @@ components:
     gatewayCreateProducerGithub:
       description: gatewayCreateProducerGithub is a command that creates github producer
       properties:
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         github-app-id:
           description: Github app id
           format: int64
@@ -24379,6 +24626,10 @@ components:
     gatewayCreateProducerGke:
       description: gatewayCreateProducerGke is a command that creates gke producer
       properties:
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         gke-account-key:
           description: GKE Service Account key file path
           type: string
@@ -24682,6 +24933,10 @@ components:
     gatewayCreateProducerHanaDb:
       description: gatewayCreateProducerHanaDb is a command that creates hanadb producer
       properties:
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         hana-dbname:
           description: HanaDb Name
           type: string
@@ -25005,6 +25260,10 @@ components:
           description: Bind DN Password
           type: string
           x-go-name: BindDnPassword
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         external-username:
           default: "false"
           description: Fixed user
@@ -25298,6 +25557,10 @@ components:
     gatewayCreateProducerMSSQL:
       description: gatewayCreateProducerMSSQL is a command that creates mssql producer
       properties:
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         mssql-create-statements:
           description: MSSQL Creation statements
           type: string
@@ -25614,6 +25877,10 @@ components:
       description: gatewayCreateProducerMongo is a command that creates either mongodb  producer
         or mongodb atlas producer
       properties:
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         mongodb-atlas-api-private-key:
           description: MongoDB Atlas private key
           type: string
@@ -25954,6 +26221,10 @@ components:
           description: (Optional) Server name for certificate verification
           type: string
           x-go-name: DBServerName
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         mysql-dbname:
           description: MySQL DB Name
           type: string
@@ -26270,6 +26541,10 @@ components:
     gatewayCreateProducerNativeK8S:
       description: gatewayCreateProducerNativeK8S is a command that creates k8s producer
       properties:
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         k8s-cluster-ca-cert:
           description: K8S cluster CA certificate
           type: string
@@ -26591,6 +26866,10 @@ components:
           description: (Optional) Server name for certificate verification
           type: string
           x-go-name: DBServerName
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         name:
           description: Producer name
           type: string
@@ -26904,6 +27183,10 @@ components:
           description: PostgreSQL Creation statements
           type: string
           x-go-name: CreationStatements
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         name:
           description: Producer name
           type: string
@@ -27220,6 +27503,10 @@ components:
       description: gatewayCreateProducerRabbitMQ is a command that creates rabbitmq
         producer
       properties:
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         name:
           description: Producer name
           type: string
@@ -27542,6 +27829,10 @@ components:
           format: int64
           type: integer
           x-go-name: AllowUserExtendSession
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         fixed-user-only:
           default: "false"
           description: Fixed user
@@ -27863,6 +28154,10 @@ components:
           description: Redshift Creation statements
           type: string
           x-go-name: CreationStatements
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         name:
           description: Producer name
           type: string
@@ -28182,6 +28477,10 @@ components:
           description: Database name
           type: string
           x-go-name: DBName
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         name:
           description: Producer name
           type: string
@@ -28566,7 +28865,7 @@ components:
       description: gatewayDeleteMigration is a command that delete migration
       properties:
         id:
-          description: Migration name
+          description: Migration ID
           type: string
           x-go-name: MigrationID
         token:
@@ -28814,6 +29113,7 @@ components:
       description: gatewayGetMigration is a command that get migration
       properties:
         name:
+          description: Migration name to display
           type: string
           x-go-name: MigrationName
         token:
@@ -28925,6 +29225,7 @@ components:
               name: name
               id: id
               protection_key: protection_key
+              new_name: new_name
             payload:
               import_as_json: true
               url: url
@@ -28937,6 +29238,7 @@ components:
               name: name
               id: id
               protection_key: protection_key
+              new_name: new_name
             payload:
               import_as_json: true
               url: url
@@ -28950,6 +29252,7 @@ components:
               name: name
               id: id
               protection_key: protection_key
+              new_name: new_name
             payload:
               name: name
               client: client
@@ -28960,6 +29263,7 @@ components:
               name: name
               id: id
               protection_key: protection_key
+              new_name: new_name
             payload:
               name: name
               client: client
@@ -28971,6 +29275,7 @@ components:
               name: name
               id: id
               protection_key: protection_key
+              new_name: new_name
             payload:
               client_key:
               - 4
@@ -28992,6 +29297,7 @@ components:
               name: name
               id: id
               protection_key: protection_key
+              new_name: new_name
             payload:
               client_key:
               - 4
@@ -29014,6 +29320,7 @@ components:
               name: name
               id: id
               protection_key: protection_key
+              new_name: new_name
             payload:
               secret: secret
               region: region
@@ -29023,6 +29330,7 @@ components:
               name: name
               id: id
               protection_key: protection_key
+              new_name: new_name
             payload:
               secret: secret
               region: region
@@ -29033,6 +29341,7 @@ components:
               name: name
               id: id
               protection_key: protection_key
+              new_name: new_name
             payload:
               gcp_credentials_json: gcp_credentials_json
           - general:
@@ -29040,6 +29349,7 @@ components:
               name: name
               id: id
               protection_key: protection_key
+              new_name: new_name
             payload:
               gcp_credentials_json: gcp_credentials_json
       properties:
@@ -29056,6 +29366,7 @@ components:
               name: name
               id: id
               protection_key: protection_key
+              new_name: new_name
             payload:
               import_as_json: true
               url: url
@@ -29068,6 +29379,7 @@ components:
               name: name
               id: id
               protection_key: protection_key
+              new_name: new_name
             payload:
               import_as_json: true
               url: url
@@ -29081,6 +29393,7 @@ components:
               name: name
               id: id
               protection_key: protection_key
+              new_name: new_name
             payload:
               name: name
               client: client
@@ -29091,6 +29404,7 @@ components:
               name: name
               id: id
               protection_key: protection_key
+              new_name: new_name
             payload:
               name: name
               client: client
@@ -29102,6 +29416,7 @@ components:
               name: name
               id: id
               protection_key: protection_key
+              new_name: new_name
             payload:
               client_key:
               - 4
@@ -29123,6 +29438,7 @@ components:
               name: name
               id: id
               protection_key: protection_key
+              new_name: new_name
             payload:
               client_key:
               - 4
@@ -29145,6 +29461,7 @@ components:
               name: name
               id: id
               protection_key: protection_key
+              new_name: new_name
             payload:
               secret: secret
               region: region
@@ -29154,6 +29471,7 @@ components:
               name: name
               id: id
               protection_key: protection_key
+              new_name: new_name
             payload:
               secret: secret
               region: region
@@ -29164,6 +29482,7 @@ components:
               name: name
               id: id
               protection_key: protection_key
+              new_name: new_name
             payload:
               gcp_credentials_json: gcp_credentials_json
           - general:
@@ -29171,6 +29490,7 @@ components:
               name: name
               id: id
               protection_key: protection_key
+              new_name: new_name
             payload:
               gcp_credentials_json: gcp_credentials_json
       properties:
@@ -29240,6 +29560,29 @@ components:
         producer_name:
           type: string
           x-go-name: ProducerName
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayStatusMigration:
+      description: gatewayStatusMigration is a command that get migration status
+      properties:
+        id:
+          description: Migration ID
+          type: string
+          x-go-name: MigrationID
+        name:
+          description: Migration name to display
+          type: string
+          x-go-name: MigrationName
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     gatewayStopProducer:
@@ -29320,6 +29663,10 @@ components:
         custom-payload:
           type: string
           x-go-name: Payload
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         keep-prev-version:
           type: string
           x-go-name: KeepPrevVersion
@@ -29540,114 +29887,142 @@ components:
       description: gatewayUpdateMigration is a command that update migration
       properties:
         aws-key:
-          description: AWS Secret Access Key
+          description: AWS Secret Access Key (relevant only for AWS migration)
           type: string
           x-go-name: AwsSecret
         aws-key-id:
-          description: AWS Access Key ID
+          description: AWS Access Key ID with sufficient permissions to get all secrets,
+            e.g. 'arn:aws:secretsmanager:[Region]:[AccountId]:secret:[/path/to/secrets/*]'
+            (relevant only for AWS migration)
           type: string
           x-go-name: AwsKey
         aws-region:
-          description: AWS region
+          description: AWS region of the required Secrets Manager (relevant only for
+            AWS migration)
           type: string
           x-go-name: AwsRegion
         azure-client-id:
-          description: Azure KV Access client ID
+          description: Azure Key Vault Access client ID, should be Azure AD App with
+            a service principal (relevant only for Azure Key Vault migration)
           type: string
           x-go-name: AzureClient
         azure-kv-name:
-          description: Azure Key Vault Name
+          description: Azure Key Vault Name (relevant only for Azure Key Vault migration)
           type: string
           x-go-name: AzureName
         azure-secret:
-          description: Azure KV secret
+          description: Azure Key Vault secret (relevant only for Azure Key Vault migration)
           type: string
           x-go-name: AzureSecret
         azure-tenant-id:
-          description: Azure KV Access tenant ID
+          description: Azure Key Vault Access tenant ID (relevant only for Azure Key
+            Vault migration)
           type: string
           x-go-name: AzureTenant
         gcp-key:
-          description: Base64-encoded service account private key text
+          description: Base64-encoded GCP Service Account private key text with sufficient
+            permissions to Secrets Manager, Minimum required permission is Secret
+            Manager Secret Accessor, e.g. 'roles/secretmanager.secretAccessor' (relevant
+            only for GCP migration)
           type: string
           x-go-name: ServiceAccountKey
         hashi-json:
-          description: Import secret key as json value or independent secrets
+          description: Import secret key as json value or independent secrets (relevant
+            only for HasiCorp Vault migration)
           type: string
           x-go-name: HashiImportAsJson
         hashi-ns:
-          description: Hashi namespaces
+          description: HashiCorp Vault Namespaces is a comma-separated list of namespaces
+            which need to be imported into Akeyless Vault. For every provided namespace,
+            all its child namespaces are imported as well, e.g. nmsp/subnmsp1/subnmsp2,nmsp/anothernmsp.
+            By default, import all namespaces (relevant only for HasiCorp Vault migration)
           items:
             type: string
           type: array
           x-go-name: HashiNamespaces
         hashi-token:
-          description: Hashi token
+          description: HashiCorp Vault access token with sufficient permissions to
+            preform list & read operations on secrets objects (relevant only for HasiCorp
+            Vault migration)
           type: string
           x-go-name: HashiToken
         hashi-url:
-          description: Hashi url
+          description: HashiCorp Vault API URL, e.g. https://vault-mgr01:8200 (relevant
+            only for HasiCorp Vault migration)
           type: string
           x-go-name: HashiUrl
         id:
-          description: Migration ID
+          description: Migration ID (Can be retrieved with gateway-list-migration
+            command)
           type: string
           x-go-name: MigrationID
         k8s-ca-certificate:
           description: |-
             For Certificate Authentication method
-            K8s Cluster CA certificate
+            K8s Cluster CA certificate (relevant only for K8s migration with Certificate Authentication method)
           items:
             format: uint8
             type: integer
           type: array
           x-go-name: K8SCA
         k8s-client-certificate:
-          description: K8s Client certificate
+          description: K8s Client certificate with sufficient permission to list and
+            get secrets in the namespace(s) you selected (relevant only for K8s migration
+            with Certificate Authentication method)
           items:
             format: uint8
             type: integer
           type: array
           x-go-name: K8SClientCert
         k8s-client-key:
-          description: K8s Client key
+          description: K8s Client key (relevant only for K8s migration with Certificate
+            Authentication method)
           items:
             format: uint8
             type: integer
           type: array
           x-go-name: K8SClientKey
         k8s-namespace:
-          description: K8s Namespace
+          description: K8s Namespace, Use this field to import secrets from a particular
+            namespace only. By default, the secrets are imported from all namespaces
+            (relevant only for K8s migration)
           type: string
           x-go-name: K8SNamespace
         k8s-password:
-          description: K8s client password
+          description: K8s Client password (relevant only for K8s migration with Password
+            Authentication method)
           type: string
           x-go-name: K8SPassword
         k8s-skip-system:
-          description: K8s Skip Control Plane Secrets
+          description: K8s Skip Control Plane Secrets, This option allows to avoid
+            importing secrets from system namespaces (relevant only for K8s migration)
           type: boolean
           x-go-name: K8SSkipSystem
         k8s-token:
           description: |-
             For Token Authentication method
-            K8s Bearer Token
+            K8s Bearer Token with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Token Authentication method)
           type: string
           x-go-name: K8SToken
         k8s-url:
-          description: K8s Endpoint URL
+          description: K8s API Server URL, e.g. https://k8s-api.mycompany.com:6443
+            (relevant only for K8s migration)
           type: string
           x-go-name: K8SServer
         k8s-username:
           description: |-
             For Password Authentication method
-            K8s client username
+            K8s Client username with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Password Authentication method)
           type: string
           x-go-name: K8SUsername
         name:
           description: Migration name
           type: string
           x-go-name: MigrationName
+        new_name:
+          description: New migration name
+          type: string
+          x-go-name: NewMigrationName
         protection-key:
           description: The name of the key that protects the classic key value (if
             empty, the account default key will be used)
@@ -29661,18 +30036,12 @@ components:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
           x-go-name: Profile
-        type:
-          description: 'Migration type, can be: hashi/aws/gcp/k8s/azure_kv'
-          type: string
-          x-go-name: MigrationType
         uid-token:
           description: |-
             The universal identity token, Required only for universal_identity
             authentication
           type: string
           x-go-name: UIDToken
-      required:
-      - name
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     gatewayUpdateProducerArtifactory:
@@ -29699,6 +30068,10 @@ components:
           description: Base URL
           type: string
           x-go-name: BaseUrl
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         name:
           description: Producer name
           type: string
@@ -30013,6 +30386,10 @@ components:
           description: AWS User programmatic access
           type: boolean
           x-go-name: UserProgrammaticAccess
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         enable-admin-rotation:
           default: false
           description: Automatic admin credentials rotation
@@ -30332,6 +30709,10 @@ components:
           description: Azure Tenant ID
           type: string
           x-go-name: TenantId
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         fixed-user-claim-keyname:
           default: "false"
           description: FixedUserClaimKeyname
@@ -30670,6 +31051,10 @@ components:
           description: Cassandra superuser username
           type: string
           x-go-name: UserName
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         name:
           description: Producer name
           type: string
@@ -30965,6 +31350,10 @@ components:
           description: Auto generated folder
           type: string
           x-go-name: AutoGeneratedFolder
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         enable-admin-rotation:
           default: false
           description: Automatic admin credentials rotation
@@ -31301,6 +31690,10 @@ components:
           description: Server username
           type: string
           x-go-name: ServerUsername
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         name:
           description: Producer name
           type: string
@@ -31366,6 +31759,10 @@ components:
             https://webhook.example.com/sync/create
           type: string
           x-go-name: CreateSyncURL
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         enable_admin_rotation:
           default: false
           description: Should admin credentials be rotated
@@ -31666,6 +32063,10 @@ components:
       description: gatewayUpdateProducerDockerhub is a command that updates a DOCKERHUB
         producer
       properties:
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         dockerhub-password:
           description: DockerhubPassword is either the user's password access token
             to manage the repository
@@ -31953,6 +32354,10 @@ components:
     gatewayUpdateProducerEks:
       description: gatewayUpdateProducerEks is a command that updates eks producer
       properties:
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         eks-access-key-id:
           description: Access Key ID
           type: string
@@ -32269,6 +32674,10 @@ components:
     gatewayUpdateProducerGcp:
       description: gatewayUpdateProducerGcp is a command that updates a GCP producer
       properties:
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         gcp-cred-type:
           type: string
           x-go-package: akeyless.io/akeyless-main-repo/go/src/producer/config
@@ -32560,6 +32969,10 @@ components:
     gatewayUpdateProducerGithub:
       description: gatewayUpdateProducerGithub is a command that updates github producer
       properties:
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         github-app-id:
           description: Github app id
           format: int64
@@ -32851,6 +33264,10 @@ components:
     gatewayUpdateProducerGke:
       description: gatewayUpdateProducerGke is a command that updates gke producer
       properties:
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         gke-account-key:
           description: GKE Service Account key file path
           type: string
@@ -33158,6 +33575,10 @@ components:
     gatewayUpdateProducerHanaDb:
       description: gatewayUpdateProducerHanaDb is a command that updates hanadb producer
       properties:
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         hana-dbname:
           description: HanaDb Name
           type: string
@@ -33485,6 +33906,10 @@ components:
           description: Bind DN Password
           type: string
           x-go-name: BindDnPassword
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         external-username:
           default: "false"
           description: Fixed user
@@ -33782,6 +34207,10 @@ components:
     gatewayUpdateProducerMSSQL:
       description: gatewayUpdateProducerMSSQL is a command that updates mssql producer
       properties:
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         mssql-create-statements:
           description: MSSQL Creation statements
           type: string
@@ -34102,6 +34531,10 @@ components:
       description: gatewayUpdateProducerMongo is a command that updates either mongodb  producer
         or mongodb atlas producer
       properties:
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         mongodb-atlas-api-private-key:
           description: MongoDB Atlas private key
           type: string
@@ -34446,6 +34879,10 @@ components:
           description: (Optional) Server name for certificate verification
           type: string
           x-go-name: DBServerName
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         mysql-dbname:
           description: MySQL DB Name
           type: string
@@ -34766,6 +35203,10 @@ components:
     gatewayUpdateProducerNativeK8S:
       description: gatewayUpdateProducerNativeK8S is a command that updates k8s producer
       properties:
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         k8s-cluster-ca-cert:
           description: K8S cluster CA certificate
           type: string
@@ -35091,6 +35532,10 @@ components:
           description: (Optional) Server name for certificate verification
           type: string
           x-go-name: DBServerName
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         name:
           description: Producer name
           type: string
@@ -35408,6 +35853,10 @@ components:
           description: PostgreSQL Creation statements
           type: string
           x-go-name: CreationStatements
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         name:
           description: Producer name
           type: string
@@ -35728,6 +36177,10 @@ components:
       description: gatewayUpdateProducerRabbitMQ is a command that updates rabbitmq
         producer
       properties:
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         name:
           description: Producer name
           type: string
@@ -36054,6 +36507,10 @@ components:
           format: int64
           type: integer
           x-go-name: AllowUserExtendSession
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         fixed-user-only:
           default: "false"
           description: Fixed user
@@ -36379,6 +36836,10 @@ components:
           description: Redshift Creation statements
           type: string
           x-go-name: CreationStatements
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         name:
           description: Producer name
           type: string
@@ -36702,6 +37163,10 @@ components:
           description: Database name
           type: string
           x-go-name: DBName
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
         name:
           description: Producer name
           type: string
@@ -37148,6 +37613,12 @@ components:
           description: The common name to be included in the PKI certificate
           type: string
           x-go-name: CommonName
+        extended-key-usage:
+          description: 'A comma-separated list of extended key usage requests which
+            will be used for certificate issuance. Supported values: ''clientauth'',
+            ''serverauth''.'
+          type: string
+          x-go-name: ExtKeyUsage
         key-data-base64:
           description: |-
             PKI key file contents. If this option is used, the certificate
@@ -37158,6 +37629,12 @@ components:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
           x-go-name: Profile
+        ttl:
+          description: Updated certificate lifetime in seconds (must be less than
+            the Certificate Issuer default TTL)
+          format: int64
+          type: integer
+          x-go-name: Ttl
         uid-token:
           description: |-
             The universal identity token, Required only for universal_identity
@@ -37307,6 +37784,11 @@ components:
           description: The username to sign in the SSH certificate
           type: string
           x-go-name: Username
+        legacy-signing-alg-name:
+          description: Set this option to output legacy ('ssh-rsa-cert-v01@openssh.com')
+            signing algorithm name in the certificate.
+          type: boolean
+          x-go-name: LegacySigningAlgName
         public-key-data:
           description: |-
             SSH public key file contents. If this option is used, the certificate
@@ -37317,6 +37799,12 @@ components:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
           x-go-name: Profile
+        ttl:
+          description: Updated certificate lifetime in seconds (must be less than
+            the Certificate Issuer default TTL)
+          format: int64
+          type: integer
+          x-go-name: Ttl
         uid-token:
           description: |-
             The universal identity token, Required only for universal_identity
@@ -40742,6 +41230,11 @@ components:
             type: string
           type: array
           x-go-name: AddTags
+        cert-file-data:
+          description: PEM Certificate in a Base64 format. Used for updating RSA keys'
+            certificates.
+          type: string
+          x-go-name: CertFileData
         delete_protection:
           type: string
           x-go-name: ItemProtected
@@ -42195,6 +42688,11 @@ components:
           description: Name of key to be created
           type: string
           x-go-name: KeyName
+        overwrite:
+          description: When the overwrite flag is set, this command will only update
+            an existing key. [true, false]
+          type: string
+          x-go-name: Overwrite
         rsa-file-data:
           description: RSA private key data, base64 encoded
           type: string

@@ -17,60 +17,60 @@ import (
 
 // GatewayUpdateMigration gatewayUpdateMigration is a command that update migration
 type GatewayUpdateMigration struct {
-	// AWS Secret Access Key
+	// AWS Secret Access Key (relevant only for AWS migration)
 	AwsKey *string `json:"aws-key,omitempty"`
-	// AWS Access Key ID
+	// AWS Access Key ID with sufficient permissions to get all secrets, e.g. 'arn:aws:secretsmanager:[Region]:[AccountId]:secret:[/path/to/secrets/_*]' (relevant only for AWS migration)
 	AwsKeyId *string `json:"aws-key-id,omitempty"`
-	// AWS region
+	// AWS region of the required Secrets Manager (relevant only for AWS migration)
 	AwsRegion *string `json:"aws-region,omitempty"`
-	// Azure KV Access client ID
+	// Azure Key Vault Access client ID, should be Azure AD App with a service principal (relevant only for Azure Key Vault migration)
 	AzureClientId *string `json:"azure-client-id,omitempty"`
-	// Azure Key Vault Name
+	// Azure Key Vault Name (relevant only for Azure Key Vault migration)
 	AzureKvName *string `json:"azure-kv-name,omitempty"`
-	// Azure KV secret
+	// Azure Key Vault secret (relevant only for Azure Key Vault migration)
 	AzureSecret *string `json:"azure-secret,omitempty"`
-	// Azure KV Access tenant ID
+	// Azure Key Vault Access tenant ID (relevant only for Azure Key Vault migration)
 	AzureTenantId *string `json:"azure-tenant-id,omitempty"`
-	// Base64-encoded service account private key text
+	// Base64-encoded GCP Service Account private key text with sufficient permissions to Secrets Manager, Minimum required permission is Secret Manager Secret Accessor, e.g. 'roles/secretmanager.secretAccessor' (relevant only for GCP migration)
 	GcpKey *string `json:"gcp-key,omitempty"`
-	// Import secret key as json value or independent secrets
+	// Import secret key as json value or independent secrets (relevant only for HasiCorp Vault migration)
 	HashiJson *string `json:"hashi-json,omitempty"`
-	// Hashi namespaces
+	// HashiCorp Vault Namespaces is a comma-separated list of namespaces which need to be imported into Akeyless Vault. For every provided namespace, all its child namespaces are imported as well, e.g. nmsp/subnmsp1/subnmsp2,nmsp/anothernmsp. By default, import all namespaces (relevant only for HasiCorp Vault migration)
 	HashiNs *[]string `json:"hashi-ns,omitempty"`
-	// Hashi token
+	// HashiCorp Vault access token with sufficient permissions to preform list & read operations on secrets objects (relevant only for HasiCorp Vault migration)
 	HashiToken *string `json:"hashi-token,omitempty"`
-	// Hashi url
+	// HashiCorp Vault API URL, e.g. https://vault-mgr01:8200 (relevant only for HasiCorp Vault migration)
 	HashiUrl *string `json:"hashi-url,omitempty"`
-	// Migration ID
+	// Migration ID (Can be retrieved with gateway-list-migration command)
 	Id *string `json:"id,omitempty"`
-	// For Certificate Authentication method K8s Cluster CA certificate
+	// For Certificate Authentication method K8s Cluster CA certificate (relevant only for K8s migration with Certificate Authentication method)
 	K8sCaCertificate *[]int32 `json:"k8s-ca-certificate,omitempty"`
-	// K8s Client certificate
+	// K8s Client certificate with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Certificate Authentication method)
 	K8sClientCertificate *[]int32 `json:"k8s-client-certificate,omitempty"`
-	// K8s Client key
+	// K8s Client key (relevant only for K8s migration with Certificate Authentication method)
 	K8sClientKey *[]int32 `json:"k8s-client-key,omitempty"`
-	// K8s Namespace
+	// K8s Namespace, Use this field to import secrets from a particular namespace only. By default, the secrets are imported from all namespaces (relevant only for K8s migration)
 	K8sNamespace *string `json:"k8s-namespace,omitempty"`
-	// K8s client password
+	// K8s Client password (relevant only for K8s migration with Password Authentication method)
 	K8sPassword *string `json:"k8s-password,omitempty"`
-	// K8s Skip Control Plane Secrets
+	// K8s Skip Control Plane Secrets, This option allows to avoid importing secrets from system namespaces (relevant only for K8s migration)
 	K8sSkipSystem *bool `json:"k8s-skip-system,omitempty"`
-	// For Token Authentication method K8s Bearer Token
+	// For Token Authentication method K8s Bearer Token with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Token Authentication method)
 	K8sToken *string `json:"k8s-token,omitempty"`
-	// K8s Endpoint URL
+	// K8s API Server URL, e.g. https://k8s-api.mycompany.com:6443 (relevant only for K8s migration)
 	K8sUrl *string `json:"k8s-url,omitempty"`
-	// For Password Authentication method K8s client username
+	// For Password Authentication method K8s Client username with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Password Authentication method)
 	K8sUsername *string `json:"k8s-username,omitempty"`
 	// Migration name
-	Name string `json:"name"`
+	Name *string `json:"name,omitempty"`
+	// New migration name
+	NewName *string `json:"new_name,omitempty"`
 	// The name of the key that protects the classic key value (if empty, the account default key will be used)
 	ProtectionKey *string `json:"protection-key,omitempty"`
 	// Target location in Akeyless for imported secrets
 	TargetLocation *string `json:"target-location,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
-	// Migration type, can be: hashi/aws/gcp/k8s/azure_kv
-	Type *string `json:"type,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
 }
@@ -79,9 +79,8 @@ type GatewayUpdateMigration struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayUpdateMigration(name string, ) *GatewayUpdateMigration {
+func NewGatewayUpdateMigration() *GatewayUpdateMigration {
 	this := GatewayUpdateMigration{}
-	this.Name = name
 	return &this
 }
 
@@ -797,28 +796,68 @@ func (o *GatewayUpdateMigration) SetK8sUsername(v string) {
 	o.K8sUsername = &v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *GatewayUpdateMigration) GetName() string {
-	if o == nil  {
+	if o == nil || o.Name == nil {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayUpdateMigration) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.Name == nil {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasName() bool {
+	if o != nil && o.Name != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *GatewayUpdateMigration) SetName(v string) {
-	o.Name = v
+	o.Name = &v
+}
+
+// GetNewName returns the NewName field value if set, zero value otherwise.
+func (o *GatewayUpdateMigration) GetNewName() string {
+	if o == nil || o.NewName == nil {
+		var ret string
+		return ret
+	}
+	return *o.NewName
+}
+
+// GetNewNameOk returns a tuple with the NewName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetNewNameOk() (*string, bool) {
+	if o == nil || o.NewName == nil {
+		return nil, false
+	}
+	return o.NewName, true
+}
+
+// HasNewName returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasNewName() bool {
+	if o != nil && o.NewName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNewName gets a reference to the given string and assigns it to the NewName field.
+func (o *GatewayUpdateMigration) SetNewName(v string) {
+	o.NewName = &v
 }
 
 // GetProtectionKey returns the ProtectionKey field value if set, zero value otherwise.
@@ -915,38 +954,6 @@ func (o *GatewayUpdateMigration) HasToken() bool {
 // SetToken gets a reference to the given string and assigns it to the Token field.
 func (o *GatewayUpdateMigration) SetToken(v string) {
 	o.Token = &v
-}
-
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *GatewayUpdateMigration) GetType() string {
-	if o == nil || o.Type == nil {
-		var ret string
-		return ret
-	}
-	return *o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayUpdateMigration) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
-		return nil, false
-	}
-	return o.Type, true
-}
-
-// HasType returns a boolean if a field has been set.
-func (o *GatewayUpdateMigration) HasType() bool {
-	if o != nil && o.Type != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *GatewayUpdateMigration) SetType(v string) {
-	o.Type = &v
 }
 
 // GetUidToken returns the UidToken field value if set, zero value otherwise.
@@ -1049,8 +1056,11 @@ func (o GatewayUpdateMigration) MarshalJSON() ([]byte, error) {
 	if o.K8sUsername != nil {
 		toSerialize["k8s-username"] = o.K8sUsername
 	}
-	if true {
+	if o.Name != nil {
 		toSerialize["name"] = o.Name
+	}
+	if o.NewName != nil {
+		toSerialize["new_name"] = o.NewName
 	}
 	if o.ProtectionKey != nil {
 		toSerialize["protection-key"] = o.ProtectionKey
@@ -1060,9 +1070,6 @@ func (o GatewayUpdateMigration) MarshalJSON() ([]byte, error) {
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
-	}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken

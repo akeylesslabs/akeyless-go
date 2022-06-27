@@ -10,8 +10,10 @@ Name | Type | Description | Notes
 **AdminEmail** | Pointer to **string** | Email (relevant only for access-type&#x3D;password) | [optional] 
 **AdminPassword** | Pointer to **string** | Password (relevant only for access-type&#x3D;password) | [optional] 
 **AzureAdObjectId** | Pointer to **string** | Azure Active Directory ObjectId (relevant only for access-type&#x3D;azure_ad) | [optional] 
+**CertData** | Pointer to **string** | Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type&#x3D;cert in Curl Context) | [optional] 
 **GcpAudience** | Pointer to **string** | GCP JWT audience | [optional] 
 **K8sAuthConfigName** | Pointer to **string** | The K8S Auth config name (relevant only for access-type&#x3D;k8s) | [optional] 
+**KeyData** | Pointer to **string** | Private key data encoded in base64. Used if file was not provided.(relevant only for access-type&#x3D;cert in Curl Context) | [optional] 
 
 ## Methods
 
@@ -182,6 +184,31 @@ SetAzureAdObjectId sets AzureAdObjectId field to given value.
 
 HasAzureAdObjectId returns a boolean if a field has been set.
 
+### GetCertData
+
+`func (o *Configure) GetCertData() string`
+
+GetCertData returns the CertData field if non-nil, zero value otherwise.
+
+### GetCertDataOk
+
+`func (o *Configure) GetCertDataOk() (*string, bool)`
+
+GetCertDataOk returns a tuple with the CertData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertData
+
+`func (o *Configure) SetCertData(v string)`
+
+SetCertData sets CertData field to given value.
+
+### HasCertData
+
+`func (o *Configure) HasCertData() bool`
+
+HasCertData returns a boolean if a field has been set.
+
 ### GetGcpAudience
 
 `func (o *Configure) GetGcpAudience() string`
@@ -231,6 +258,31 @@ SetK8sAuthConfigName sets K8sAuthConfigName field to given value.
 `func (o *Configure) HasK8sAuthConfigName() bool`
 
 HasK8sAuthConfigName returns a boolean if a field has been set.
+
+### GetKeyData
+
+`func (o *Configure) GetKeyData() string`
+
+GetKeyData returns the KeyData field if non-nil, zero value otherwise.
+
+### GetKeyDataOk
+
+`func (o *Configure) GetKeyDataOk() (*string, bool)`
+
+GetKeyDataOk returns a tuple with the KeyData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKeyData
+
+`func (o *Configure) SetKeyData(v string)`
+
+SetKeyData sets KeyData field to given value.
+
+### HasKeyData
+
+`func (o *Configure) HasKeyData() bool`
+
+HasKeyData returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

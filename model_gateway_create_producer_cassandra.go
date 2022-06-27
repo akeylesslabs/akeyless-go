@@ -27,6 +27,8 @@ type GatewayCreateProducerCassandra struct {
 	CassandraPort *string `json:"cassandra-port,omitempty"`
 	// Cassandra superuser username
 	CassandraUsername *string `json:"cassandra-username,omitempty"`
+	// Protection from accidental deletion of this item
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Producer name
 	Name string `json:"name"`
 	// Dynamic producer encryption key
@@ -227,6 +229,38 @@ func (o *GatewayCreateProducerCassandra) HasCassandraUsername() bool {
 // SetCassandraUsername gets a reference to the given string and assigns it to the CassandraUsername field.
 func (o *GatewayCreateProducerCassandra) SetCassandraUsername(v string) {
 	o.CassandraUsername = &v
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *GatewayCreateProducerCassandra) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerCassandra) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *GatewayCreateProducerCassandra) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *GatewayCreateProducerCassandra) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetName returns the Name field value
@@ -461,6 +495,9 @@ func (o GatewayCreateProducerCassandra) MarshalJSON() ([]byte, error) {
 	}
 	if o.CassandraUsername != nil {
 		toSerialize["cassandra-username"] = o.CassandraUsername
+	}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
 	}
 	if true {
 		toSerialize["name"] = o.Name

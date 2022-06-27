@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CertIssueDetails** | Pointer to [**CertificateIssueInfo**](CertificateIssueInfo.md) |  | [optional] 
 **ClassicKeyDetails** | Pointer to [**ClassicKeyDetailsInfo**](ClassicKeyDetailsInfo.md) |  | [optional] 
+**ClusterGwUrl** | Pointer to **string** |  | [optional] 
 **DisplayMetadata** | Pointer to **string** |  | [optional] 
 **DynamicSecretProducerDetails** | Pointer to [**DynamicSecretProducerInfo**](DynamicSecretProducerInfo.md) |  | [optional] 
 **PasswordPolicy** | Pointer to [**PasswordPolicyInfo**](PasswordPolicyInfo.md) |  | [optional] 
@@ -82,6 +83,31 @@ SetClassicKeyDetails sets ClassicKeyDetails field to given value.
 `func (o *ItemGeneralInfo) HasClassicKeyDetails() bool`
 
 HasClassicKeyDetails returns a boolean if a field has been set.
+
+### GetClusterGwUrl
+
+`func (o *ItemGeneralInfo) GetClusterGwUrl() string`
+
+GetClusterGwUrl returns the ClusterGwUrl field if non-nil, zero value otherwise.
+
+### GetClusterGwUrlOk
+
+`func (o *ItemGeneralInfo) GetClusterGwUrlOk() (*string, bool)`
+
+GetClusterGwUrlOk returns a tuple with the ClusterGwUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClusterGwUrl
+
+`func (o *ItemGeneralInfo) SetClusterGwUrl(v string)`
+
+SetClusterGwUrl sets ClusterGwUrl field to given value.
+
+### HasClusterGwUrl
+
+`func (o *ItemGeneralInfo) HasClusterGwUrl() bool`
+
+HasClusterGwUrl returns a boolean if a field has been set.
 
 ### GetDisplayMetadata
 

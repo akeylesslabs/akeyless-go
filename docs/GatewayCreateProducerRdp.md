@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AllowUserExtendSession** | Pointer to **int64** | AllowUserExtendSession | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
 **FixedUserOnly** | Pointer to **string** | Fixed user | [optional] [default to "false"]
 **Name** | **string** | Producer name | 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
@@ -68,6 +69,31 @@ SetAllowUserExtendSession sets AllowUserExtendSession field to given value.
 `func (o *GatewayCreateProducerRdp) HasAllowUserExtendSession() bool`
 
 HasAllowUserExtendSession returns a boolean if a field has been set.
+
+### GetDeleteProtection
+
+`func (o *GatewayCreateProducerRdp) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *GatewayCreateProducerRdp) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *GatewayCreateProducerRdp) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *GatewayCreateProducerRdp) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetFixedUserOnly
 

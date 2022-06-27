@@ -23,10 +23,14 @@ type GetPKICertificate struct {
 	CertIssuerName string `json:"cert-issuer-name"`
 	// The common name to be included in the PKI certificate
 	CommonName *string `json:"common-name,omitempty"`
+	// A comma-separated list of extended key usage requests which will be used for certificate issuance. Supported values: 'clientauth', 'serverauth'.
+	ExtendedKeyUsage *string `json:"extended-key-usage,omitempty"`
 	// PKI key file contents. If this option is used, the certificate will be printed to stdout
 	KeyDataBase64 *string `json:"key-data-base64,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
+	// Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL)
+	Ttl *int64 `json:"ttl,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
 	// The URI Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list)
@@ -139,6 +143,38 @@ func (o *GetPKICertificate) SetCommonName(v string) {
 	o.CommonName = &v
 }
 
+// GetExtendedKeyUsage returns the ExtendedKeyUsage field value if set, zero value otherwise.
+func (o *GetPKICertificate) GetExtendedKeyUsage() string {
+	if o == nil || o.ExtendedKeyUsage == nil {
+		var ret string
+		return ret
+	}
+	return *o.ExtendedKeyUsage
+}
+
+// GetExtendedKeyUsageOk returns a tuple with the ExtendedKeyUsage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetPKICertificate) GetExtendedKeyUsageOk() (*string, bool) {
+	if o == nil || o.ExtendedKeyUsage == nil {
+		return nil, false
+	}
+	return o.ExtendedKeyUsage, true
+}
+
+// HasExtendedKeyUsage returns a boolean if a field has been set.
+func (o *GetPKICertificate) HasExtendedKeyUsage() bool {
+	if o != nil && o.ExtendedKeyUsage != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExtendedKeyUsage gets a reference to the given string and assigns it to the ExtendedKeyUsage field.
+func (o *GetPKICertificate) SetExtendedKeyUsage(v string) {
+	o.ExtendedKeyUsage = &v
+}
+
 // GetKeyDataBase64 returns the KeyDataBase64 field value if set, zero value otherwise.
 func (o *GetPKICertificate) GetKeyDataBase64() string {
 	if o == nil || o.KeyDataBase64 == nil {
@@ -201,6 +237,38 @@ func (o *GetPKICertificate) HasToken() bool {
 // SetToken gets a reference to the given string and assigns it to the Token field.
 func (o *GetPKICertificate) SetToken(v string) {
 	o.Token = &v
+}
+
+// GetTtl returns the Ttl field value if set, zero value otherwise.
+func (o *GetPKICertificate) GetTtl() int64 {
+	if o == nil || o.Ttl == nil {
+		var ret int64
+		return ret
+	}
+	return *o.Ttl
+}
+
+// GetTtlOk returns a tuple with the Ttl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetPKICertificate) GetTtlOk() (*int64, bool) {
+	if o == nil || o.Ttl == nil {
+		return nil, false
+	}
+	return o.Ttl, true
+}
+
+// HasTtl returns a boolean if a field has been set.
+func (o *GetPKICertificate) HasTtl() bool {
+	if o != nil && o.Ttl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTtl gets a reference to the given int64 and assigns it to the Ttl field.
+func (o *GetPKICertificate) SetTtl(v int64) {
+	o.Ttl = &v
 }
 
 // GetUidToken returns the UidToken field value if set, zero value otherwise.
@@ -278,11 +346,17 @@ func (o GetPKICertificate) MarshalJSON() ([]byte, error) {
 	if o.CommonName != nil {
 		toSerialize["common-name"] = o.CommonName
 	}
+	if o.ExtendedKeyUsage != nil {
+		toSerialize["extended-key-usage"] = o.ExtendedKeyUsage
+	}
 	if o.KeyDataBase64 != nil {
 		toSerialize["key-data-base64"] = o.KeyDataBase64
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
+	}
+	if o.Ttl != nil {
+		toSerialize["ttl"] = o.Ttl
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken

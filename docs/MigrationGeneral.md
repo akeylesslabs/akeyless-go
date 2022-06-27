@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
+**NewName** | Pointer to **string** |  | [optional] 
 **Prefix** | Pointer to **string** |  | [optional] 
 **ProtectionKey** | Pointer to **string** |  | [optional] 
 
@@ -77,6 +78,31 @@ SetName sets Name field to given value.
 `func (o *MigrationGeneral) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetNewName
+
+`func (o *MigrationGeneral) GetNewName() string`
+
+GetNewName returns the NewName field if non-nil, zero value otherwise.
+
+### GetNewNameOk
+
+`func (o *MigrationGeneral) GetNewNameOk() (*string, bool)`
+
+GetNewNameOk returns a tuple with the NewName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNewName
+
+`func (o *MigrationGeneral) SetNewName(v string)`
+
+SetNewName sets NewName field to given value.
+
+### HasNewName
+
+`func (o *MigrationGeneral) HasNewName() bool`
+
+HasNewName returns a boolean if a field has been set.
 
 ### GetPrefix
 

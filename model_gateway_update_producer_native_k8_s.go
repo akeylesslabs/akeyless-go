@@ -17,6 +17,8 @@ import (
 
 // GatewayUpdateProducerNativeK8S gatewayUpdateProducerNativeK8S is a command that updates k8s producer
 type GatewayUpdateProducerNativeK8S struct {
+	// Protection from accidental deletion of this item
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// K8S cluster CA certificate
 	K8sClusterCaCert *string `json:"k8s-cluster-ca-cert,omitempty"`
 	// K8S cluster URL endpoint
@@ -73,6 +75,38 @@ func NewGatewayUpdateProducerNativeK8SWithDefaults() *GatewayUpdateProducerNativ
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerNativeK8S) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerNativeK8S) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerNativeK8S) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *GatewayUpdateProducerNativeK8S) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetK8sClusterCaCert returns the K8sClusterCaCert field value if set, zero value otherwise.
@@ -741,6 +775,9 @@ func (o *GatewayUpdateProducerNativeK8S) SetUserTtl(v string) {
 
 func (o GatewayUpdateProducerNativeK8S) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
+	}
 	if o.K8sClusterCaCert != nil {
 		toSerialize["k8s-cluster-ca-cert"] = o.K8sClusterCaCert
 	}

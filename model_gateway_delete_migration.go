@@ -17,7 +17,7 @@ import (
 
 // GatewayDeleteMigration gatewayDeleteMigration is a command that delete migration
 type GatewayDeleteMigration struct {
-	// Migration name
+	// Migration ID
 	Id string `json:"id"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`

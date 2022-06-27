@@ -19,6 +19,8 @@ import (
 type GatewayCreateProducerRdp struct {
 	// AllowUserExtendSession
 	AllowUserExtendSession *int64 `json:"allow-user-extend-session,omitempty"`
+	// Protection from accidental deletion of this item
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Fixed user
 	FixedUserOnly *string `json:"fixed-user-only,omitempty"`
 	// Producer name
@@ -114,6 +116,38 @@ func (o *GatewayCreateProducerRdp) HasAllowUserExtendSession() bool {
 // SetAllowUserExtendSession gets a reference to the given int64 and assigns it to the AllowUserExtendSession field.
 func (o *GatewayCreateProducerRdp) SetAllowUserExtendSession(v int64) {
 	o.AllowUserExtendSession = &v
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *GatewayCreateProducerRdp) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerRdp) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *GatewayCreateProducerRdp) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *GatewayCreateProducerRdp) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetFixedUserOnly returns the FixedUserOnly field value if set, zero value otherwise.
@@ -720,6 +754,9 @@ func (o GatewayCreateProducerRdp) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AllowUserExtendSession != nil {
 		toSerialize["allow-user-extend-session"] = o.AllowUserExtendSession
+	}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
 	}
 	if o.FixedUserOnly != nil {
 		toSerialize["fixed-user-only"] = o.FixedUserOnly

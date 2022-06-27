@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
 **GkeAccountKey** | Pointer to **string** | GKE Service Account key file path | [optional] 
 **GkeClusterCert** | Pointer to **string** | GKE cluster CA certificate | [optional] 
 **GkeClusterEndpoint** | Pointer to **string** | GKE cluster URL endpoint | [optional] 
@@ -40,6 +41,31 @@ will change when the set of required properties is changed
 NewGatewayCreateProducerGkeWithDefaults instantiates a new GatewayCreateProducerGke object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetDeleteProtection
+
+`func (o *GatewayCreateProducerGke) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *GatewayCreateProducerGke) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *GatewayCreateProducerGke) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *GatewayCreateProducerGke) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetGkeAccountKey
 

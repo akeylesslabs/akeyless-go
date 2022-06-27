@@ -29,6 +29,8 @@ type UploadRSA struct {
 	Metadata *string `json:"metadata,omitempty"`
 	// Name of key to be created
 	Name string `json:"name"`
+	// When the overwrite flag is set, this command will only update an existing key. [true, false]
+	Overwrite *string `json:"overwrite,omitempty"`
 	// RSA private key data, base64 encoded
 	RsaFileData *string `json:"rsa-file-data,omitempty"`
 	// The number of fragments that the item will be split into
@@ -240,6 +242,38 @@ func (o *UploadRSA) SetName(v string) {
 	o.Name = v
 }
 
+// GetOverwrite returns the Overwrite field value if set, zero value otherwise.
+func (o *UploadRSA) GetOverwrite() string {
+	if o == nil || o.Overwrite == nil {
+		var ret string
+		return ret
+	}
+	return *o.Overwrite
+}
+
+// GetOverwriteOk returns a tuple with the Overwrite field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UploadRSA) GetOverwriteOk() (*string, bool) {
+	if o == nil || o.Overwrite == nil {
+		return nil, false
+	}
+	return o.Overwrite, true
+}
+
+// HasOverwrite returns a boolean if a field has been set.
+func (o *UploadRSA) HasOverwrite() bool {
+	if o != nil && o.Overwrite != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOverwrite gets a reference to the given string and assigns it to the Overwrite field.
+func (o *UploadRSA) SetOverwrite(v string) {
+	o.Overwrite = &v
+}
+
 // GetRsaFileData returns the RsaFileData field value if set, zero value otherwise.
 func (o *UploadRSA) GetRsaFileData() string {
 	if o == nil || o.RsaFileData == nil {
@@ -419,6 +453,9 @@ func (o UploadRSA) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.Overwrite != nil {
+		toSerialize["overwrite"] = o.Overwrite
 	}
 	if o.RsaFileData != nil {
 		toSerialize["rsa-file-data"] = o.RsaFileData

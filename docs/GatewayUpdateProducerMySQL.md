@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DbServerCertificates** | Pointer to **string** | (Optional) DB server certificates | [optional] 
 **DbServerName** | Pointer to **string** | (Optional) Server name for certificate verification | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
 **MysqlDbname** | Pointer to **string** | MySQL DB Name | [optional] 
 **MysqlHost** | Pointer to **string** | MySQL Host | [optional] [default to "127.0.0.1"]
 **MysqlPassword** | Pointer to **string** | MySQL Password | [optional] 
@@ -95,6 +96,31 @@ SetDbServerName sets DbServerName field to given value.
 `func (o *GatewayUpdateProducerMySQL) HasDbServerName() bool`
 
 HasDbServerName returns a boolean if a field has been set.
+
+### GetDeleteProtection
+
+`func (o *GatewayUpdateProducerMySQL) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *GatewayUpdateProducerMySQL) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *GatewayUpdateProducerMySQL) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *GatewayUpdateProducerMySQL) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetMysqlDbname
 

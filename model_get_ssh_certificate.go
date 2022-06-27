@@ -21,10 +21,14 @@ type GetSSHCertificate struct {
 	CertIssuerName string `json:"cert-issuer-name"`
 	// The username to sign in the SSH certificate
 	CertUsername string `json:"cert-username"`
+	// Set this option to output legacy ('ssh-rsa-cert-v01@openssh.com') signing algorithm name in the certificate.
+	LegacySigningAlgName *bool `json:"legacy-signing-alg-name,omitempty"`
 	// SSH public key file contents. If this option is used, the certificate will be printed to stdout
 	PublicKeyData *string `json:"public-key-data,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
+	// Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL)
+	Ttl *int64 `json:"ttl,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
 }
@@ -96,6 +100,38 @@ func (o *GetSSHCertificate) SetCertUsername(v string) {
 	o.CertUsername = v
 }
 
+// GetLegacySigningAlgName returns the LegacySigningAlgName field value if set, zero value otherwise.
+func (o *GetSSHCertificate) GetLegacySigningAlgName() bool {
+	if o == nil || o.LegacySigningAlgName == nil {
+		var ret bool
+		return ret
+	}
+	return *o.LegacySigningAlgName
+}
+
+// GetLegacySigningAlgNameOk returns a tuple with the LegacySigningAlgName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetSSHCertificate) GetLegacySigningAlgNameOk() (*bool, bool) {
+	if o == nil || o.LegacySigningAlgName == nil {
+		return nil, false
+	}
+	return o.LegacySigningAlgName, true
+}
+
+// HasLegacySigningAlgName returns a boolean if a field has been set.
+func (o *GetSSHCertificate) HasLegacySigningAlgName() bool {
+	if o != nil && o.LegacySigningAlgName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLegacySigningAlgName gets a reference to the given bool and assigns it to the LegacySigningAlgName field.
+func (o *GetSSHCertificate) SetLegacySigningAlgName(v bool) {
+	o.LegacySigningAlgName = &v
+}
+
 // GetPublicKeyData returns the PublicKeyData field value if set, zero value otherwise.
 func (o *GetSSHCertificate) GetPublicKeyData() string {
 	if o == nil || o.PublicKeyData == nil {
@@ -160,6 +196,38 @@ func (o *GetSSHCertificate) SetToken(v string) {
 	o.Token = &v
 }
 
+// GetTtl returns the Ttl field value if set, zero value otherwise.
+func (o *GetSSHCertificate) GetTtl() int64 {
+	if o == nil || o.Ttl == nil {
+		var ret int64
+		return ret
+	}
+	return *o.Ttl
+}
+
+// GetTtlOk returns a tuple with the Ttl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetSSHCertificate) GetTtlOk() (*int64, bool) {
+	if o == nil || o.Ttl == nil {
+		return nil, false
+	}
+	return o.Ttl, true
+}
+
+// HasTtl returns a boolean if a field has been set.
+func (o *GetSSHCertificate) HasTtl() bool {
+	if o != nil && o.Ttl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTtl gets a reference to the given int64 and assigns it to the Ttl field.
+func (o *GetSSHCertificate) SetTtl(v int64) {
+	o.Ttl = &v
+}
+
 // GetUidToken returns the UidToken field value if set, zero value otherwise.
 func (o *GetSSHCertificate) GetUidToken() string {
 	if o == nil || o.UidToken == nil {
@@ -200,11 +268,17 @@ func (o GetSSHCertificate) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["cert-username"] = o.CertUsername
 	}
+	if o.LegacySigningAlgName != nil {
+		toSerialize["legacy-signing-alg-name"] = o.LegacySigningAlgName
+	}
 	if o.PublicKeyData != nil {
 		toSerialize["public-key-data"] = o.PublicKeyData
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
+	}
+	if o.Ttl != nil {
+		toSerialize["ttl"] = o.Ttl
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **ArtifactoryAdminApikey** | Pointer to **string** |  | [optional] 
 **ArtifactoryAdminUsername** | Pointer to **string** |  | [optional] 
 **ArtifactoryBaseUrl** | Pointer to **string** |  | [optional] 
+**AuthFlow** | Pointer to **string** |  | [optional] 
 **AwsAccessKeyId** | Pointer to **string** |  | [optional] 
 **AwsRegion** | Pointer to **string** |  | [optional] 
 **AwsSecretAccessKey** | Pointer to **string** |  | [optional] 
@@ -188,6 +189,31 @@ SetArtifactoryBaseUrl sets ArtifactoryBaseUrl field to given value.
 `func (o *TargetTypeDetailsInput) HasArtifactoryBaseUrl() bool`
 
 HasArtifactoryBaseUrl returns a boolean if a field has been set.
+
+### GetAuthFlow
+
+`func (o *TargetTypeDetailsInput) GetAuthFlow() string`
+
+GetAuthFlow returns the AuthFlow field if non-nil, zero value otherwise.
+
+### GetAuthFlowOk
+
+`func (o *TargetTypeDetailsInput) GetAuthFlowOk() (*string, bool)`
+
+GetAuthFlowOk returns a tuple with the AuthFlow field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthFlow
+
+`func (o *TargetTypeDetailsInput) SetAuthFlow(v string)`
+
+SetAuthFlow sets AuthFlow field to given value.
+
+### HasAuthFlow
+
+`func (o *TargetTypeDetailsInput) HasAuthFlow() bool`
+
+HasAuthFlow returns a boolean if a field has been set.
 
 ### GetAwsAccessKeyId
 

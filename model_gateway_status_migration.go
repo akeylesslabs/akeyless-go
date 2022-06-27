@@ -15,8 +15,10 @@ import (
 	"encoding/json"
 )
 
-// GatewayGetMigration gatewayGetMigration is a command that get migration
-type GatewayGetMigration struct {
+// GatewayStatusMigration gatewayStatusMigration is a command that get migration status
+type GatewayStatusMigration struct {
+	// Migration ID
+	Id *string `json:"id,omitempty"`
 	// Migration name to display
 	Name *string `json:"name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -25,25 +27,57 @@ type GatewayGetMigration struct {
 	UidToken *string `json:"uid-token,omitempty"`
 }
 
-// NewGatewayGetMigration instantiates a new GatewayGetMigration object
+// NewGatewayStatusMigration instantiates a new GatewayStatusMigration object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayGetMigration() *GatewayGetMigration {
-	this := GatewayGetMigration{}
+func NewGatewayStatusMigration() *GatewayStatusMigration {
+	this := GatewayStatusMigration{}
 	return &this
 }
 
-// NewGatewayGetMigrationWithDefaults instantiates a new GatewayGetMigration object
+// NewGatewayStatusMigrationWithDefaults instantiates a new GatewayStatusMigration object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewGatewayGetMigrationWithDefaults() *GatewayGetMigration {
-	this := GatewayGetMigration{}
+func NewGatewayStatusMigrationWithDefaults() *GatewayStatusMigration {
+	this := GatewayStatusMigration{}
 	return &this
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *GatewayStatusMigration) GetId() string {
+	if o == nil || o.Id == nil {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayStatusMigration) GetIdOk() (*string, bool) {
+	if o == nil || o.Id == nil {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *GatewayStatusMigration) HasId() bool {
+	if o != nil && o.Id != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *GatewayStatusMigration) SetId(v string) {
+	o.Id = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *GatewayGetMigration) GetName() string {
+func (o *GatewayStatusMigration) GetName() string {
 	if o == nil || o.Name == nil {
 		var ret string
 		return ret
@@ -53,7 +87,7 @@ func (o *GatewayGetMigration) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayGetMigration) GetNameOk() (*string, bool) {
+func (o *GatewayStatusMigration) GetNameOk() (*string, bool) {
 	if o == nil || o.Name == nil {
 		return nil, false
 	}
@@ -61,7 +95,7 @@ func (o *GatewayGetMigration) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *GatewayGetMigration) HasName() bool {
+func (o *GatewayStatusMigration) HasName() bool {
 	if o != nil && o.Name != nil {
 		return true
 	}
@@ -70,12 +104,12 @@ func (o *GatewayGetMigration) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *GatewayGetMigration) SetName(v string) {
+func (o *GatewayStatusMigration) SetName(v string) {
 	o.Name = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
-func (o *GatewayGetMigration) GetToken() string {
+func (o *GatewayStatusMigration) GetToken() string {
 	if o == nil || o.Token == nil {
 		var ret string
 		return ret
@@ -85,7 +119,7 @@ func (o *GatewayGetMigration) GetToken() string {
 
 // GetTokenOk returns a tuple with the Token field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayGetMigration) GetTokenOk() (*string, bool) {
+func (o *GatewayStatusMigration) GetTokenOk() (*string, bool) {
 	if o == nil || o.Token == nil {
 		return nil, false
 	}
@@ -93,7 +127,7 @@ func (o *GatewayGetMigration) GetTokenOk() (*string, bool) {
 }
 
 // HasToken returns a boolean if a field has been set.
-func (o *GatewayGetMigration) HasToken() bool {
+func (o *GatewayStatusMigration) HasToken() bool {
 	if o != nil && o.Token != nil {
 		return true
 	}
@@ -102,12 +136,12 @@ func (o *GatewayGetMigration) HasToken() bool {
 }
 
 // SetToken gets a reference to the given string and assigns it to the Token field.
-func (o *GatewayGetMigration) SetToken(v string) {
+func (o *GatewayStatusMigration) SetToken(v string) {
 	o.Token = &v
 }
 
 // GetUidToken returns the UidToken field value if set, zero value otherwise.
-func (o *GatewayGetMigration) GetUidToken() string {
+func (o *GatewayStatusMigration) GetUidToken() string {
 	if o == nil || o.UidToken == nil {
 		var ret string
 		return ret
@@ -117,7 +151,7 @@ func (o *GatewayGetMigration) GetUidToken() string {
 
 // GetUidTokenOk returns a tuple with the UidToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayGetMigration) GetUidTokenOk() (*string, bool) {
+func (o *GatewayStatusMigration) GetUidTokenOk() (*string, bool) {
 	if o == nil || o.UidToken == nil {
 		return nil, false
 	}
@@ -125,7 +159,7 @@ func (o *GatewayGetMigration) GetUidTokenOk() (*string, bool) {
 }
 
 // HasUidToken returns a boolean if a field has been set.
-func (o *GatewayGetMigration) HasUidToken() bool {
+func (o *GatewayStatusMigration) HasUidToken() bool {
 	if o != nil && o.UidToken != nil {
 		return true
 	}
@@ -134,12 +168,15 @@ func (o *GatewayGetMigration) HasUidToken() bool {
 }
 
 // SetUidToken gets a reference to the given string and assigns it to the UidToken field.
-func (o *GatewayGetMigration) SetUidToken(v string) {
+func (o *GatewayStatusMigration) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
-func (o GatewayGetMigration) MarshalJSON() ([]byte, error) {
+func (o GatewayStatusMigration) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
+	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
@@ -152,38 +189,38 @@ func (o GatewayGetMigration) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableGatewayGetMigration struct {
-	value *GatewayGetMigration
+type NullableGatewayStatusMigration struct {
+	value *GatewayStatusMigration
 	isSet bool
 }
 
-func (v NullableGatewayGetMigration) Get() *GatewayGetMigration {
+func (v NullableGatewayStatusMigration) Get() *GatewayStatusMigration {
 	return v.value
 }
 
-func (v *NullableGatewayGetMigration) Set(val *GatewayGetMigration) {
+func (v *NullableGatewayStatusMigration) Set(val *GatewayStatusMigration) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableGatewayGetMigration) IsSet() bool {
+func (v NullableGatewayStatusMigration) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableGatewayGetMigration) Unset() {
+func (v *NullableGatewayStatusMigration) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableGatewayGetMigration(val *GatewayGetMigration) *NullableGatewayGetMigration {
-	return &NullableGatewayGetMigration{value: val, isSet: true}
+func NewNullableGatewayStatusMigration(val *GatewayStatusMigration) *NullableGatewayStatusMigration {
+	return &NullableGatewayStatusMigration{value: val, isSet: true}
 }
 
-func (v NullableGatewayGetMigration) MarshalJSON() ([]byte, error) {
+func (v NullableGatewayStatusMigration) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableGatewayGetMigration) UnmarshalJSON(src []byte) error {
+func (v *NullableGatewayStatusMigration) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

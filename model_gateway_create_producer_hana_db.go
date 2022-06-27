@@ -17,6 +17,8 @@ import (
 
 // GatewayCreateProducerHanaDb gatewayCreateProducerHanaDb is a command that creates hanadb producer
 type GatewayCreateProducerHanaDb struct {
+	// Protection from accidental deletion of this item
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// HanaDb Name
 	HanaDbname *string `json:"hana-dbname,omitempty"`
 	// HanaDb Creation statements
@@ -80,6 +82,38 @@ func NewGatewayCreateProducerHanaDbWithDefaults() *GatewayCreateProducerHanaDb {
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *GatewayCreateProducerHanaDb) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerHanaDb) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *GatewayCreateProducerHanaDb) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *GatewayCreateProducerHanaDb) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetHanaDbname returns the HanaDbname field value if set, zero value otherwise.
@@ -684,6 +718,9 @@ func (o *GatewayCreateProducerHanaDb) SetUserTtl(v string) {
 
 func (o GatewayCreateProducerHanaDb) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
+	}
 	if o.HanaDbname != nil {
 		toSerialize["hana-dbname"] = o.HanaDbname
 	}

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AdminRotationIntervalDays** | Pointer to **int64** | Define rotation interval in days | [optional] 
 **CreateSyncUrl** | **string** | URL of an endpoint that implements /sync/create method, for example https://webhook.example.com/sync/create | 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
 **EnableAdminRotation** | Pointer to **bool** | Should admin credentials be rotated | [optional] [default to false]
 **Name** | **string** | Producer name | 
 **Payload** | Pointer to **string** | Secret payload to be sent with each create/revoke webhook request | [optional] 
@@ -81,6 +82,31 @@ and a boolean to check if the value has been set.
 
 SetCreateSyncUrl sets CreateSyncUrl field to given value.
 
+
+### GetDeleteProtection
+
+`func (o *GatewayCreateProducerCustom) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *GatewayCreateProducerCustom) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *GatewayCreateProducerCustom) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *GatewayCreateProducerCustom) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetEnableAdminRotation
 

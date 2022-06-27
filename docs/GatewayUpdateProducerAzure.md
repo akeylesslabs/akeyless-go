@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AzureClientId** | Pointer to **string** | Azure Client ID | [optional] 
 **AzureClientSecret** | Pointer to **string** | Azure Client Secret | [optional] 
 **AzureTenantId** | Pointer to **string** | Azure Tenant ID | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
 **FixedUserClaimKeyname** | Pointer to **string** | FixedUserClaimKeyname | [optional] [default to "false"]
 **FixedUserOnly** | Pointer to **bool** | Fixed user | [optional] [default to false]
 **Name** | **string** | Producer name | 
@@ -146,6 +147,31 @@ SetAzureTenantId sets AzureTenantId field to given value.
 `func (o *GatewayUpdateProducerAzure) HasAzureTenantId() bool`
 
 HasAzureTenantId returns a boolean if a field has been set.
+
+### GetDeleteProtection
+
+`func (o *GatewayUpdateProducerAzure) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *GatewayUpdateProducerAzure) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *GatewayUpdateProducerAzure) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *GatewayUpdateProducerAzure) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetFixedUserClaimKeyname
 

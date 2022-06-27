@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DbServerCertificates** | Pointer to **string** | (Optional) DB server certificates | [optional] 
 **DbServerName** | Pointer to **string** | (Optional) Server name for certificate verification | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
 **Name** | **string** | Producer name | 
 **OracleHost** | Pointer to **string** | Oracle Host | [optional] [default to "127.0.0.1"]
 **OraclePassword** | Pointer to **string** | Oracle Password | [optional] 
@@ -92,6 +93,31 @@ SetDbServerName sets DbServerName field to given value.
 `func (o *GatewayCreateProducerOracleDb) HasDbServerName() bool`
 
 HasDbServerName returns a boolean if a field has been set.
+
+### GetDeleteProtection
+
+`func (o *GatewayCreateProducerOracleDb) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *GatewayCreateProducerOracleDb) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *GatewayCreateProducerOracleDb) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *GatewayCreateProducerOracleDb) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetName
 

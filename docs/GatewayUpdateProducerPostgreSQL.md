@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreationStatements** | Pointer to **string** | PostgreSQL Creation statements | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
 **Name** | **string** | Producer name | 
 **NewName** | Pointer to **string** | Producer name | [optional] 
 **PostgresqlDbName** | Pointer to **string** | PostgreSQL DB Name | [optional] 
@@ -69,6 +70,31 @@ SetCreationStatements sets CreationStatements field to given value.
 `func (o *GatewayUpdateProducerPostgreSQL) HasCreationStatements() bool`
 
 HasCreationStatements returns a boolean if a field has been set.
+
+### GetDeleteProtection
+
+`func (o *GatewayUpdateProducerPostgreSQL) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *GatewayUpdateProducerPostgreSQL) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *GatewayUpdateProducerPostgreSQL) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *GatewayUpdateProducerPostgreSQL) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetName
 

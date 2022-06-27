@@ -17,6 +17,8 @@ import (
 
 // GatewayCreateProducerMSSQL gatewayCreateProducerMSSQL is a command that creates mssql producer
 type GatewayCreateProducerMSSQL struct {
+	// Protection from accidental deletion of this item
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// MSSQL Creation statements
 	MssqlCreateStatements *string `json:"mssql-create-statements,omitempty"`
 	// MSSQL Name
@@ -80,6 +82,38 @@ func NewGatewayCreateProducerMSSQLWithDefaults() *GatewayCreateProducerMSSQL {
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *GatewayCreateProducerMSSQL) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerMSSQL) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *GatewayCreateProducerMSSQL) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *GatewayCreateProducerMSSQL) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetMssqlCreateStatements returns the MssqlCreateStatements field value if set, zero value otherwise.
@@ -684,6 +718,9 @@ func (o *GatewayCreateProducerMSSQL) SetUserTtl(v string) {
 
 func (o GatewayCreateProducerMSSQL) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
+	}
 	if o.MssqlCreateStatements != nil {
 		toSerialize["mssql-create-statements"] = o.MssqlCreateStatements
 	}

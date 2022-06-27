@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **ArtifactoryTokenAudience** | **string** | Token Audience | 
 **ArtifactoryTokenScope** | **string** | Token Scope | 
 **BaseUrl** | Pointer to **string** | Base URL | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
 **Name** | **string** | Producer name | 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **Tags** | Pointer to **[]string** | List of the tags attached to this secret | [optional] 
@@ -150,6 +151,31 @@ SetBaseUrl sets BaseUrl field to given value.
 `func (o *GatewayCreateProducerArtifactory) HasBaseUrl() bool`
 
 HasBaseUrl returns a boolean if a field has been set.
+
+### GetDeleteProtection
+
+`func (o *GatewayCreateProducerArtifactory) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *GatewayCreateProducerArtifactory) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *GatewayCreateProducerArtifactory) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *GatewayCreateProducerArtifactory) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetName
 

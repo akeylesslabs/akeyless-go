@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BindDn** | Pointer to **string** | Bind DN | [optional] 
 **BindDnPassword** | Pointer to **string** | Bind DN Password | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
 **ExternalUsername** | Pointer to **string** | Fixed user | [optional] [default to "false"]
 **LdapCaCert** | Pointer to **string** | CA Certificate File Content | [optional] 
 **LdapUrl** | Pointer to **string** | LDAP Server URL | [optional] 
@@ -89,6 +90,31 @@ SetBindDnPassword sets BindDnPassword field to given value.
 `func (o *GatewayUpdateProducerLdap) HasBindDnPassword() bool`
 
 HasBindDnPassword returns a boolean if a field has been set.
+
+### GetDeleteProtection
+
+`func (o *GatewayUpdateProducerLdap) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *GatewayUpdateProducerLdap) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *GatewayUpdateProducerLdap) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *GatewayUpdateProducerLdap) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetExternalUsername
 

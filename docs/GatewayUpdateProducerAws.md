@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **AwsUserGroups** | Pointer to **string** | AWS User groups | [optional] 
 **AwsUserPolicies** | Pointer to **string** | AWS User policies | [optional] 
 **AwsUserProgrammaticAccess** | Pointer to **bool** | AWS User programmatic access | [optional] [default to true]
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
 **EnableAdminRotation** | Pointer to **bool** | Automatic admin credentials rotation | [optional] [default to false]
 **Name** | **string** | Producer name | 
 **NewName** | Pointer to **string** | Producer name | [optional] 
@@ -274,6 +275,31 @@ SetAwsUserProgrammaticAccess sets AwsUserProgrammaticAccess field to given value
 `func (o *GatewayUpdateProducerAws) HasAwsUserProgrammaticAccess() bool`
 
 HasAwsUserProgrammaticAccess returns a boolean if a field has been set.
+
+### GetDeleteProtection
+
+`func (o *GatewayUpdateProducerAws) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *GatewayUpdateProducerAws) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *GatewayUpdateProducerAws) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *GatewayUpdateProducerAws) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetEnableAdminRotation
 

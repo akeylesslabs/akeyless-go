@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AddTag** | Pointer to **[]string** | List of the new tags that will be attached to this item | [optional] 
+**CertFileData** | Pointer to **string** | PEM Certificate in a Base64 format. Used for updating RSA keys&#39; certificates. | [optional] 
 **DeleteProtection** | Pointer to **string** |  | [optional] 
 **Name** | **string** | Current item name | 
 **NewMetadata** | Pointer to **string** | New item metadata | [optional] [default to "default_metadata"]
@@ -80,6 +81,31 @@ SetAddTag sets AddTag field to given value.
 `func (o *UpdateItem) HasAddTag() bool`
 
 HasAddTag returns a boolean if a field has been set.
+
+### GetCertFileData
+
+`func (o *UpdateItem) GetCertFileData() string`
+
+GetCertFileData returns the CertFileData field if non-nil, zero value otherwise.
+
+### GetCertFileDataOk
+
+`func (o *UpdateItem) GetCertFileDataOk() (*string, bool)`
+
+GetCertFileDataOk returns a tuple with the CertFileData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertFileData
+
+`func (o *UpdateItem) SetCertFileData(v string)`
+
+SetCertFileData sets CertFileData field to given value.
+
+### HasCertFileData
+
+`func (o *UpdateItem) HasCertFileData() bool`
+
+HasCertFileData returns a boolean if a field has been set.
 
 ### GetDeleteProtection
 

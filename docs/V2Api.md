@@ -106,6 +106,7 @@ Method | HTTP request | Description
 [**GatewayListProducers**](V2Api.md#GatewayListProducers) | **Post** /gateway-list-producers | 
 [**GatewayRevokeTmpUsers**](V2Api.md#GatewayRevokeTmpUsers) | **Post** /gateway-revoke-producer-tmp-creds | 
 [**GatewayStartProducer**](V2Api.md#GatewayStartProducer) | **Post** /gateway-start-producer | 
+[**GatewayStatusMigration**](V2Api.md#GatewayStatusMigration) | **Post** /gateway-migration-status | 
 [**GatewayStopProducer**](V2Api.md#GatewayStopProducer) | **Post** /gateway-stop-producer | 
 [**GatewaySyncMigration**](V2Api.md#GatewaySyncMigration) | **Post** /gateway-sync-migration | 
 [**GatewayUpdateItem**](V2Api.md#GatewayUpdateItem) | **Post** /gateway-update-item | 
@@ -6766,6 +6767,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GatewayStatusMigration
+
+> MigrationStatusReplyObj GatewayStatusMigration(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayStatusMigration() // GatewayStatusMigration | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayStatusMigration(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayStatusMigration``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayStatusMigration`: MigrationStatusReplyObj
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayStatusMigration`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayStatusMigrationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayStatusMigration**](GatewayStatusMigration.md) |  | 
+
+### Return type
+
+[**MigrationStatusReplyObj**](MigrationStatusReplyObj.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GatewayStopProducer
 
 > GatewayStopProducerOutput GatewayStopProducer(ctx).Body(body).Execute()
@@ -7105,7 +7170,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayUpdateMigration("Name_example") // GatewayUpdateMigration | 
+    body := *openapiclient.NewgatewayUpdateMigration() // GatewayUpdateMigration | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

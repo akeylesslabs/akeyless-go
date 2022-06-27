@@ -21,6 +21,8 @@ type GatewayCreateProducerMySQL struct {
 	DbServerCertificates *string `json:"db-server-certificates,omitempty"`
 	// (Optional) Server name for certificate verification
 	DbServerName *string `json:"db-server-name,omitempty"`
+	// Protection from accidental deletion of this item
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// MySQL DB Name
 	MysqlDbname *string `json:"mysql-dbname,omitempty"`
 	// MySQL Host
@@ -149,6 +151,38 @@ func (o *GatewayCreateProducerMySQL) HasDbServerName() bool {
 // SetDbServerName gets a reference to the given string and assigns it to the DbServerName field.
 func (o *GatewayCreateProducerMySQL) SetDbServerName(v string) {
 	o.DbServerName = &v
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *GatewayCreateProducerMySQL) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerMySQL) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *GatewayCreateProducerMySQL) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *GatewayCreateProducerMySQL) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetMysqlDbname returns the MysqlDbname field value if set, zero value otherwise.
@@ -758,6 +792,9 @@ func (o GatewayCreateProducerMySQL) MarshalJSON() ([]byte, error) {
 	}
 	if o.DbServerName != nil {
 		toSerialize["db-server-name"] = o.DbServerName
+	}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
 	}
 	if o.MysqlDbname != nil {
 		toSerialize["mysql-dbname"] = o.MysqlDbname
