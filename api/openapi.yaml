@@ -12035,10 +12035,10 @@ components:
               template_type: template_type
               tweak_type: tweak_type
               regexp_tokenizer_info:
-                encryption_template: encryption_template
+                encoding_template: encoding_template
+                decoding_template: decoding_template
                 pattern: pattern
                 alphabet: alphabet
-                decryption_template: decryption_template
           cluster_gw_url: cluster_gw_url
           secure_remote_access_details:
             schema: schema
@@ -12349,10 +12349,10 @@ components:
             template_type: template_type
             tweak_type: tweak_type
             regexp_tokenizer_info:
-              encryption_template: encryption_template
+              encoding_template: encoding_template
+              decoding_template: decoding_template
               pattern: pattern
               alphabet: alphabet
-              decryption_template: decryption_template
         cluster_gw_url: cluster_gw_url
         secure_remote_access_details:
           schema: schema
@@ -13972,10 +13972,10 @@ components:
                 template_type: template_type
                 tweak_type: tweak_type
                 regexp_tokenizer_info:
-                  encryption_template: encryption_template
+                  encoding_template: encoding_template
+                  decoding_template: decoding_template
                   pattern: pattern
                   alphabet: alphabet
-                  decryption_template: decryption_template
             cluster_gw_url: cluster_gw_url
             secure_remote_access_details:
               schema: schema
@@ -14290,10 +14290,10 @@ components:
                 template_type: template_type
                 tweak_type: tweak_type
                 regexp_tokenizer_info:
-                  encryption_template: encryption_template
+                  encoding_template: encoding_template
+                  decoding_template: decoding_template
                   pattern: pattern
                   alphabet: alphabet
-                  decryption_template: decryption_template
             cluster_gw_url: cluster_gw_url
             secure_remote_access_details:
               schema: schema
@@ -15464,26 +15464,26 @@ components:
     RegexpTokenizerInfo:
       description: RegexpTokenizerInfo represents a general Regexp tokenization template
       example:
-        encryption_template: encryption_template
+        encoding_template: encoding_template
+        decoding_template: decoding_template
         pattern: pattern
         alphabet: alphabet
-        decryption_template: decryption_template
       properties:
         alphabet:
           description: The Alphabet used for the tokenization
           type: string
           x-go-name: Alphabet
-        decryption_template:
+        decoding_template:
           description: Transformation to perform on the decrypted data
           type: string
-          x-go-name: DecryptionTemplate
-        encryption_template:
+          x-go-name: DecodingTemplate
+        encoding_template:
           description: |-
             Transformation to perform on the encrypted data,
             if the required output template doesn't match the input string
             The output Should still be valid for the Pattern, otherwise the secret would be able to be decrypted.
           type: string
-          x-go-name: EncryptionTemplate
+          x-go-name: EncodingTemplate
         pattern:
           description: Regexp pattern to extract and deposit the text/encdata
           type: string
@@ -16894,10 +16894,10 @@ components:
           template_type: template_type
           tweak_type: tweak_type
           regexp_tokenizer_info:
-            encryption_template: encryption_template
+            encoding_template: encoding_template
+            decoding_template: decoding_template
             pattern: pattern
             alphabet: alphabet
-            decryption_template: decryption_template
       properties:
         vaultless_tokenizer_info:
           $ref: '#/components/schemas/VaultlessTokenizerInfo'
@@ -17196,10 +17196,10 @@ components:
         template_type: template_type
         tweak_type: tweak_type
         regexp_tokenizer_info:
-          encryption_template: encryption_template
+          encoding_template: encoding_template
+          decoding_template: decoding_template
           pattern: pattern
           alphabet: alphabet
-          decryption_template: decryption_template
       properties:
         email_tokenizer_info:
           $ref: '#/components/schemas/EmailTokenizerInfo'
@@ -20238,22 +20238,22 @@ components:
           description: Alphabet to use in regexp vaultless tokenization
           type: string
           x-go-name: Alphabet
-        decryption-template:
-          description: The Decryption output template to use in regexp vaultless tokenization
+        decoding-template:
+          description: The Decoding output template to use in regexp vaultless tokenization
           type: string
           x-go-name: DecodingTemplate
         delete_protection:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        encoding-template:
+          description: The Encoding output template to use in regexp vaultless tokenization
+          type: string
+          x-go-name: EncodingTemplate
         encryption-key-name:
           description: AES key name to use in vaultless tokenization
           type: string
           x-go-name: EncryptionKeyName
-        encryption-template:
-          description: The Encryption output template to use in regexp vaultless tokenization
-          type: string
-          x-go-name: EncryptionTemplate
         metadata:
           description: A metadata about the tokenizer
           type: string
@@ -42431,21 +42431,21 @@ components:
           description: Alphabet to use in regexp vaultless tokenization
           type: string
           x-go-name: Alphabet
-        decryption-template:
-          description: The Decryption output template to use in regexp vaultless tokenization
+        decoding-template:
+          description: The Decoding output template to use in regexp vaultless tokenization
           type: string
           x-go-name: DecodingTemplate
         delete_protection:
           type: string
           x-go-name: ItemProtected
+        encoding-template:
+          description: The Encoding output template to use in regexp vaultless tokenization
+          type: string
+          x-go-name: EncodingTemplate
         encryption-key-name:
           description: AES key name to use in vaultless tokenization
           type: string
           x-go-name: EncryptionKeyName
-        encryption-template:
-          description: The Encryption output template to use in regexp vaultless tokenization
-          type: string
-          x-go-name: EncryptionTemplate
         name:
           description: Current item name
           type: string

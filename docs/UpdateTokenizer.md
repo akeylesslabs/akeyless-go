@@ -6,10 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AddTag** | Pointer to **[]string** | List of the new tags that will be attached to this item | [optional] 
 **Alphabet** | Pointer to **string** | Alphabet to use in regexp vaultless tokenization | [optional] 
-**DecryptionTemplate** | Pointer to **string** | The Decryption output template to use in regexp vaultless tokenization | [optional] 
+**DecodingTemplate** | Pointer to **string** | The Decoding output template to use in regexp vaultless tokenization | [optional] 
 **DeleteProtection** | Pointer to **string** |  | [optional] 
+**EncodingTemplate** | Pointer to **string** | The Encoding output template to use in regexp vaultless tokenization | [optional] 
 **EncryptionKeyName** | Pointer to **string** | AES key name to use in vaultless tokenization | [optional] 
-**EncryptionTemplate** | Pointer to **string** | The Encryption output template to use in regexp vaultless tokenization | [optional] 
 **Name** | **string** | Current item name | 
 **NewMetadata** | Pointer to **string** | New item metadata | [optional] [default to "default_metadata"]
 **NewName** | Pointer to **string** | New item name | [optional] 
@@ -90,30 +90,30 @@ SetAlphabet sets Alphabet field to given value.
 
 HasAlphabet returns a boolean if a field has been set.
 
-### GetDecryptionTemplate
+### GetDecodingTemplate
 
-`func (o *UpdateTokenizer) GetDecryptionTemplate() string`
+`func (o *UpdateTokenizer) GetDecodingTemplate() string`
 
-GetDecryptionTemplate returns the DecryptionTemplate field if non-nil, zero value otherwise.
+GetDecodingTemplate returns the DecodingTemplate field if non-nil, zero value otherwise.
 
-### GetDecryptionTemplateOk
+### GetDecodingTemplateOk
 
-`func (o *UpdateTokenizer) GetDecryptionTemplateOk() (*string, bool)`
+`func (o *UpdateTokenizer) GetDecodingTemplateOk() (*string, bool)`
 
-GetDecryptionTemplateOk returns a tuple with the DecryptionTemplate field if it's non-nil, zero value otherwise
+GetDecodingTemplateOk returns a tuple with the DecodingTemplate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDecryptionTemplate
+### SetDecodingTemplate
 
-`func (o *UpdateTokenizer) SetDecryptionTemplate(v string)`
+`func (o *UpdateTokenizer) SetDecodingTemplate(v string)`
 
-SetDecryptionTemplate sets DecryptionTemplate field to given value.
+SetDecodingTemplate sets DecodingTemplate field to given value.
 
-### HasDecryptionTemplate
+### HasDecodingTemplate
 
-`func (o *UpdateTokenizer) HasDecryptionTemplate() bool`
+`func (o *UpdateTokenizer) HasDecodingTemplate() bool`
 
-HasDecryptionTemplate returns a boolean if a field has been set.
+HasDecodingTemplate returns a boolean if a field has been set.
 
 ### GetDeleteProtection
 
@@ -140,6 +140,31 @@ SetDeleteProtection sets DeleteProtection field to given value.
 
 HasDeleteProtection returns a boolean if a field has been set.
 
+### GetEncodingTemplate
+
+`func (o *UpdateTokenizer) GetEncodingTemplate() string`
+
+GetEncodingTemplate returns the EncodingTemplate field if non-nil, zero value otherwise.
+
+### GetEncodingTemplateOk
+
+`func (o *UpdateTokenizer) GetEncodingTemplateOk() (*string, bool)`
+
+GetEncodingTemplateOk returns a tuple with the EncodingTemplate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEncodingTemplate
+
+`func (o *UpdateTokenizer) SetEncodingTemplate(v string)`
+
+SetEncodingTemplate sets EncodingTemplate field to given value.
+
+### HasEncodingTemplate
+
+`func (o *UpdateTokenizer) HasEncodingTemplate() bool`
+
+HasEncodingTemplate returns a boolean if a field has been set.
+
 ### GetEncryptionKeyName
 
 `func (o *UpdateTokenizer) GetEncryptionKeyName() string`
@@ -164,31 +189,6 @@ SetEncryptionKeyName sets EncryptionKeyName field to given value.
 `func (o *UpdateTokenizer) HasEncryptionKeyName() bool`
 
 HasEncryptionKeyName returns a boolean if a field has been set.
-
-### GetEncryptionTemplate
-
-`func (o *UpdateTokenizer) GetEncryptionTemplate() string`
-
-GetEncryptionTemplate returns the EncryptionTemplate field if non-nil, zero value otherwise.
-
-### GetEncryptionTemplateOk
-
-`func (o *UpdateTokenizer) GetEncryptionTemplateOk() (*string, bool)`
-
-GetEncryptionTemplateOk returns a tuple with the EncryptionTemplate field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEncryptionTemplate
-
-`func (o *UpdateTokenizer) SetEncryptionTemplate(v string)`
-
-SetEncryptionTemplate sets EncryptionTemplate field to given value.
-
-### HasEncryptionTemplate
-
-`func (o *UpdateTokenizer) HasEncryptionTemplate() bool`
-
-HasEncryptionTemplate returns a boolean if a field has been set.
 
 ### GetName
 

@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Alphabet** | Pointer to **string** | The Alphabet used for the tokenization | [optional] 
-**DecryptionTemplate** | Pointer to **string** | Transformation to perform on the decrypted data | [optional] 
-**EncryptionTemplate** | Pointer to **string** | Transformation to perform on the encrypted data, if the required output template doesn&#39;t match the input string The output Should still be valid for the Pattern, otherwise the secret would be able to be decrypted. | [optional] 
+**DecodingTemplate** | Pointer to **string** | Transformation to perform on the decrypted data | [optional] 
+**EncodingTemplate** | Pointer to **string** | Transformation to perform on the encrypted data, if the required output template doesn&#39;t match the input string The output Should still be valid for the Pattern, otherwise the secret would be able to be decrypted. | [optional] 
 **Pattern** | Pointer to **string** | Regexp pattern to extract and deposit the text/encdata | [optional] 
 
 ## Methods
@@ -53,55 +53,55 @@ SetAlphabet sets Alphabet field to given value.
 
 HasAlphabet returns a boolean if a field has been set.
 
-### GetDecryptionTemplate
+### GetDecodingTemplate
 
-`func (o *RegexpTokenizerInfo) GetDecryptionTemplate() string`
+`func (o *RegexpTokenizerInfo) GetDecodingTemplate() string`
 
-GetDecryptionTemplate returns the DecryptionTemplate field if non-nil, zero value otherwise.
+GetDecodingTemplate returns the DecodingTemplate field if non-nil, zero value otherwise.
 
-### GetDecryptionTemplateOk
+### GetDecodingTemplateOk
 
-`func (o *RegexpTokenizerInfo) GetDecryptionTemplateOk() (*string, bool)`
+`func (o *RegexpTokenizerInfo) GetDecodingTemplateOk() (*string, bool)`
 
-GetDecryptionTemplateOk returns a tuple with the DecryptionTemplate field if it's non-nil, zero value otherwise
+GetDecodingTemplateOk returns a tuple with the DecodingTemplate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDecryptionTemplate
+### SetDecodingTemplate
 
-`func (o *RegexpTokenizerInfo) SetDecryptionTemplate(v string)`
+`func (o *RegexpTokenizerInfo) SetDecodingTemplate(v string)`
 
-SetDecryptionTemplate sets DecryptionTemplate field to given value.
+SetDecodingTemplate sets DecodingTemplate field to given value.
 
-### HasDecryptionTemplate
+### HasDecodingTemplate
 
-`func (o *RegexpTokenizerInfo) HasDecryptionTemplate() bool`
+`func (o *RegexpTokenizerInfo) HasDecodingTemplate() bool`
 
-HasDecryptionTemplate returns a boolean if a field has been set.
+HasDecodingTemplate returns a boolean if a field has been set.
 
-### GetEncryptionTemplate
+### GetEncodingTemplate
 
-`func (o *RegexpTokenizerInfo) GetEncryptionTemplate() string`
+`func (o *RegexpTokenizerInfo) GetEncodingTemplate() string`
 
-GetEncryptionTemplate returns the EncryptionTemplate field if non-nil, zero value otherwise.
+GetEncodingTemplate returns the EncodingTemplate field if non-nil, zero value otherwise.
 
-### GetEncryptionTemplateOk
+### GetEncodingTemplateOk
 
-`func (o *RegexpTokenizerInfo) GetEncryptionTemplateOk() (*string, bool)`
+`func (o *RegexpTokenizerInfo) GetEncodingTemplateOk() (*string, bool)`
 
-GetEncryptionTemplateOk returns a tuple with the EncryptionTemplate field if it's non-nil, zero value otherwise
+GetEncodingTemplateOk returns a tuple with the EncodingTemplate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEncryptionTemplate
+### SetEncodingTemplate
 
-`func (o *RegexpTokenizerInfo) SetEncryptionTemplate(v string)`
+`func (o *RegexpTokenizerInfo) SetEncodingTemplate(v string)`
 
-SetEncryptionTemplate sets EncryptionTemplate field to given value.
+SetEncodingTemplate sets EncodingTemplate field to given value.
 
-### HasEncryptionTemplate
+### HasEncodingTemplate
 
-`func (o *RegexpTokenizerInfo) HasEncryptionTemplate() bool`
+`func (o *RegexpTokenizerInfo) HasEncodingTemplate() bool`
 
-HasEncryptionTemplate returns a boolean if a field has been set.
+HasEncodingTemplate returns a boolean if a field has been set.
 
 ### GetPattern
 

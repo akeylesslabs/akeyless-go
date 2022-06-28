@@ -20,9 +20,9 @@ type RegexpTokenizerInfo struct {
 	// The Alphabet used for the tokenization
 	Alphabet *string `json:"alphabet,omitempty"`
 	// Transformation to perform on the decrypted data
-	DecryptionTemplate *string `json:"decryption_template,omitempty"`
+	DecodingTemplate *string `json:"decoding_template,omitempty"`
 	// Transformation to perform on the encrypted data, if the required output template doesn't match the input string The output Should still be valid for the Pattern, otherwise the secret would be able to be decrypted.
-	EncryptionTemplate *string `json:"encryption_template,omitempty"`
+	EncodingTemplate *string `json:"encoding_template,omitempty"`
 	// Regexp pattern to extract and deposit the text/encdata
 	Pattern *string `json:"pattern,omitempty"`
 }
@@ -76,68 +76,68 @@ func (o *RegexpTokenizerInfo) SetAlphabet(v string) {
 	o.Alphabet = &v
 }
 
-// GetDecryptionTemplate returns the DecryptionTemplate field value if set, zero value otherwise.
-func (o *RegexpTokenizerInfo) GetDecryptionTemplate() string {
-	if o == nil || o.DecryptionTemplate == nil {
+// GetDecodingTemplate returns the DecodingTemplate field value if set, zero value otherwise.
+func (o *RegexpTokenizerInfo) GetDecodingTemplate() string {
+	if o == nil || o.DecodingTemplate == nil {
 		var ret string
 		return ret
 	}
-	return *o.DecryptionTemplate
+	return *o.DecodingTemplate
 }
 
-// GetDecryptionTemplateOk returns a tuple with the DecryptionTemplate field value if set, nil otherwise
+// GetDecodingTemplateOk returns a tuple with the DecodingTemplate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RegexpTokenizerInfo) GetDecryptionTemplateOk() (*string, bool) {
-	if o == nil || o.DecryptionTemplate == nil {
+func (o *RegexpTokenizerInfo) GetDecodingTemplateOk() (*string, bool) {
+	if o == nil || o.DecodingTemplate == nil {
 		return nil, false
 	}
-	return o.DecryptionTemplate, true
+	return o.DecodingTemplate, true
 }
 
-// HasDecryptionTemplate returns a boolean if a field has been set.
-func (o *RegexpTokenizerInfo) HasDecryptionTemplate() bool {
-	if o != nil && o.DecryptionTemplate != nil {
+// HasDecodingTemplate returns a boolean if a field has been set.
+func (o *RegexpTokenizerInfo) HasDecodingTemplate() bool {
+	if o != nil && o.DecodingTemplate != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetDecryptionTemplate gets a reference to the given string and assigns it to the DecryptionTemplate field.
-func (o *RegexpTokenizerInfo) SetDecryptionTemplate(v string) {
-	o.DecryptionTemplate = &v
+// SetDecodingTemplate gets a reference to the given string and assigns it to the DecodingTemplate field.
+func (o *RegexpTokenizerInfo) SetDecodingTemplate(v string) {
+	o.DecodingTemplate = &v
 }
 
-// GetEncryptionTemplate returns the EncryptionTemplate field value if set, zero value otherwise.
-func (o *RegexpTokenizerInfo) GetEncryptionTemplate() string {
-	if o == nil || o.EncryptionTemplate == nil {
+// GetEncodingTemplate returns the EncodingTemplate field value if set, zero value otherwise.
+func (o *RegexpTokenizerInfo) GetEncodingTemplate() string {
+	if o == nil || o.EncodingTemplate == nil {
 		var ret string
 		return ret
 	}
-	return *o.EncryptionTemplate
+	return *o.EncodingTemplate
 }
 
-// GetEncryptionTemplateOk returns a tuple with the EncryptionTemplate field value if set, nil otherwise
+// GetEncodingTemplateOk returns a tuple with the EncodingTemplate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RegexpTokenizerInfo) GetEncryptionTemplateOk() (*string, bool) {
-	if o == nil || o.EncryptionTemplate == nil {
+func (o *RegexpTokenizerInfo) GetEncodingTemplateOk() (*string, bool) {
+	if o == nil || o.EncodingTemplate == nil {
 		return nil, false
 	}
-	return o.EncryptionTemplate, true
+	return o.EncodingTemplate, true
 }
 
-// HasEncryptionTemplate returns a boolean if a field has been set.
-func (o *RegexpTokenizerInfo) HasEncryptionTemplate() bool {
-	if o != nil && o.EncryptionTemplate != nil {
+// HasEncodingTemplate returns a boolean if a field has been set.
+func (o *RegexpTokenizerInfo) HasEncodingTemplate() bool {
+	if o != nil && o.EncodingTemplate != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetEncryptionTemplate gets a reference to the given string and assigns it to the EncryptionTemplate field.
-func (o *RegexpTokenizerInfo) SetEncryptionTemplate(v string) {
-	o.EncryptionTemplate = &v
+// SetEncodingTemplate gets a reference to the given string and assigns it to the EncodingTemplate field.
+func (o *RegexpTokenizerInfo) SetEncodingTemplate(v string) {
+	o.EncodingTemplate = &v
 }
 
 // GetPattern returns the Pattern field value if set, zero value otherwise.
@@ -177,11 +177,11 @@ func (o RegexpTokenizerInfo) MarshalJSON() ([]byte, error) {
 	if o.Alphabet != nil {
 		toSerialize["alphabet"] = o.Alphabet
 	}
-	if o.DecryptionTemplate != nil {
-		toSerialize["decryption_template"] = o.DecryptionTemplate
+	if o.DecodingTemplate != nil {
+		toSerialize["decoding_template"] = o.DecodingTemplate
 	}
-	if o.EncryptionTemplate != nil {
-		toSerialize["encryption_template"] = o.EncryptionTemplate
+	if o.EncodingTemplate != nil {
+		toSerialize["encoding_template"] = o.EncodingTemplate
 	}
 	if o.Pattern != nil {
 		toSerialize["pattern"] = o.Pattern

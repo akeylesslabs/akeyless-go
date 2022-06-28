@@ -21,13 +21,13 @@ type UpdateTokenizer struct {
 	AddTag *[]string `json:"add-tag,omitempty"`
 	// Alphabet to use in regexp vaultless tokenization
 	Alphabet *string `json:"alphabet,omitempty"`
-	// The Decryption output template to use in regexp vaultless tokenization
-	DecryptionTemplate *string `json:"decryption-template,omitempty"`
+	// The Decoding output template to use in regexp vaultless tokenization
+	DecodingTemplate *string `json:"decoding-template,omitempty"`
 	DeleteProtection *string `json:"delete_protection,omitempty"`
+	// The Encoding output template to use in regexp vaultless tokenization
+	EncodingTemplate *string `json:"encoding-template,omitempty"`
 	// AES key name to use in vaultless tokenization
 	EncryptionKeyName *string `json:"encryption-key-name,omitempty"`
-	// The Encryption output template to use in regexp vaultless tokenization
-	EncryptionTemplate *string `json:"encryption-template,omitempty"`
 	// Current item name
 	Name string `json:"name"`
 	// New item metadata
@@ -138,36 +138,36 @@ func (o *UpdateTokenizer) SetAlphabet(v string) {
 	o.Alphabet = &v
 }
 
-// GetDecryptionTemplate returns the DecryptionTemplate field value if set, zero value otherwise.
-func (o *UpdateTokenizer) GetDecryptionTemplate() string {
-	if o == nil || o.DecryptionTemplate == nil {
+// GetDecodingTemplate returns the DecodingTemplate field value if set, zero value otherwise.
+func (o *UpdateTokenizer) GetDecodingTemplate() string {
+	if o == nil || o.DecodingTemplate == nil {
 		var ret string
 		return ret
 	}
-	return *o.DecryptionTemplate
+	return *o.DecodingTemplate
 }
 
-// GetDecryptionTemplateOk returns a tuple with the DecryptionTemplate field value if set, nil otherwise
+// GetDecodingTemplateOk returns a tuple with the DecodingTemplate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateTokenizer) GetDecryptionTemplateOk() (*string, bool) {
-	if o == nil || o.DecryptionTemplate == nil {
+func (o *UpdateTokenizer) GetDecodingTemplateOk() (*string, bool) {
+	if o == nil || o.DecodingTemplate == nil {
 		return nil, false
 	}
-	return o.DecryptionTemplate, true
+	return o.DecodingTemplate, true
 }
 
-// HasDecryptionTemplate returns a boolean if a field has been set.
-func (o *UpdateTokenizer) HasDecryptionTemplate() bool {
-	if o != nil && o.DecryptionTemplate != nil {
+// HasDecodingTemplate returns a boolean if a field has been set.
+func (o *UpdateTokenizer) HasDecodingTemplate() bool {
+	if o != nil && o.DecodingTemplate != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetDecryptionTemplate gets a reference to the given string and assigns it to the DecryptionTemplate field.
-func (o *UpdateTokenizer) SetDecryptionTemplate(v string) {
-	o.DecryptionTemplate = &v
+// SetDecodingTemplate gets a reference to the given string and assigns it to the DecodingTemplate field.
+func (o *UpdateTokenizer) SetDecodingTemplate(v string) {
+	o.DecodingTemplate = &v
 }
 
 // GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
@@ -202,6 +202,38 @@ func (o *UpdateTokenizer) SetDeleteProtection(v string) {
 	o.DeleteProtection = &v
 }
 
+// GetEncodingTemplate returns the EncodingTemplate field value if set, zero value otherwise.
+func (o *UpdateTokenizer) GetEncodingTemplate() string {
+	if o == nil || o.EncodingTemplate == nil {
+		var ret string
+		return ret
+	}
+	return *o.EncodingTemplate
+}
+
+// GetEncodingTemplateOk returns a tuple with the EncodingTemplate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateTokenizer) GetEncodingTemplateOk() (*string, bool) {
+	if o == nil || o.EncodingTemplate == nil {
+		return nil, false
+	}
+	return o.EncodingTemplate, true
+}
+
+// HasEncodingTemplate returns a boolean if a field has been set.
+func (o *UpdateTokenizer) HasEncodingTemplate() bool {
+	if o != nil && o.EncodingTemplate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEncodingTemplate gets a reference to the given string and assigns it to the EncodingTemplate field.
+func (o *UpdateTokenizer) SetEncodingTemplate(v string) {
+	o.EncodingTemplate = &v
+}
+
 // GetEncryptionKeyName returns the EncryptionKeyName field value if set, zero value otherwise.
 func (o *UpdateTokenizer) GetEncryptionKeyName() string {
 	if o == nil || o.EncryptionKeyName == nil {
@@ -232,38 +264,6 @@ func (o *UpdateTokenizer) HasEncryptionKeyName() bool {
 // SetEncryptionKeyName gets a reference to the given string and assigns it to the EncryptionKeyName field.
 func (o *UpdateTokenizer) SetEncryptionKeyName(v string) {
 	o.EncryptionKeyName = &v
-}
-
-// GetEncryptionTemplate returns the EncryptionTemplate field value if set, zero value otherwise.
-func (o *UpdateTokenizer) GetEncryptionTemplate() string {
-	if o == nil || o.EncryptionTemplate == nil {
-		var ret string
-		return ret
-	}
-	return *o.EncryptionTemplate
-}
-
-// GetEncryptionTemplateOk returns a tuple with the EncryptionTemplate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UpdateTokenizer) GetEncryptionTemplateOk() (*string, bool) {
-	if o == nil || o.EncryptionTemplate == nil {
-		return nil, false
-	}
-	return o.EncryptionTemplate, true
-}
-
-// HasEncryptionTemplate returns a boolean if a field has been set.
-func (o *UpdateTokenizer) HasEncryptionTemplate() bool {
-	if o != nil && o.EncryptionTemplate != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEncryptionTemplate gets a reference to the given string and assigns it to the EncryptionTemplate field.
-func (o *UpdateTokenizer) SetEncryptionTemplate(v string) {
-	o.EncryptionTemplate = &v
 }
 
 // GetName returns the Name field value
@@ -570,17 +570,17 @@ func (o UpdateTokenizer) MarshalJSON() ([]byte, error) {
 	if o.Alphabet != nil {
 		toSerialize["alphabet"] = o.Alphabet
 	}
-	if o.DecryptionTemplate != nil {
-		toSerialize["decryption-template"] = o.DecryptionTemplate
+	if o.DecodingTemplate != nil {
+		toSerialize["decoding-template"] = o.DecodingTemplate
 	}
 	if o.DeleteProtection != nil {
 		toSerialize["delete_protection"] = o.DeleteProtection
 	}
+	if o.EncodingTemplate != nil {
+		toSerialize["encoding-template"] = o.EncodingTemplate
+	}
 	if o.EncryptionKeyName != nil {
 		toSerialize["encryption-key-name"] = o.EncryptionKeyName
-	}
-	if o.EncryptionTemplate != nil {
-		toSerialize["encryption-template"] = o.EncryptionTemplate
 	}
 	if true {
 		toSerialize["name"] = o.Name
