@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Capabilities** | Pointer to **[]string** | The approved/denied capabilities in the path | [optional] 
 **Path** | Pointer to **string** | The path the rule refers to | [optional] 
+**Ttl** | Pointer to **int64** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -76,6 +77,31 @@ SetPath sets Path field to given value.
 `func (o *PathRule) HasPath() bool`
 
 HasPath returns a boolean if a field has been set.
+
+### GetTtl
+
+`func (o *PathRule) GetTtl() int64`
+
+GetTtl returns the Ttl field if non-nil, zero value otherwise.
+
+### GetTtlOk
+
+`func (o *PathRule) GetTtlOk() (*int64, bool)`
+
+GetTtlOk returns a tuple with the Ttl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTtl
+
+`func (o *PathRule) SetTtl(v int64)`
+
+SetTtl sets Ttl field to given value.
+
+### HasTtl
+
+`func (o *PathRule) HasTtl() bool`
+
+HasTtl returns a boolean if a field has been set.
 
 ### GetType
 

@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **IdentityFile** | Pointer to **string** | The file from which the identity (private key) for public key authentication is read | [optional] 
 **Name** | Pointer to **string** | The Secret name (for database and AWS producers - producer name) | [optional] 
 **SshExtraArgs** | Pointer to **string** | The Use to add offical SSH arguments (except -i) | [optional] 
+**SshLegacySigningAlg** | Pointer to **bool** | Set this option to output legacy (&#39;ssh-rsa-cert-v01@openssh.com&#39;) signing algorithm name in the ssh certificate. | [optional] 
 **Target** | Pointer to **string** | The target | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -287,6 +288,31 @@ SetSshExtraArgs sets SshExtraArgs field to given value.
 `func (o *Connect) HasSshExtraArgs() bool`
 
 HasSshExtraArgs returns a boolean if a field has been set.
+
+### GetSshLegacySigningAlg
+
+`func (o *Connect) GetSshLegacySigningAlg() bool`
+
+GetSshLegacySigningAlg returns the SshLegacySigningAlg field if non-nil, zero value otherwise.
+
+### GetSshLegacySigningAlgOk
+
+`func (o *Connect) GetSshLegacySigningAlgOk() (*bool, bool)`
+
+GetSshLegacySigningAlgOk returns a tuple with the SshLegacySigningAlg field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSshLegacySigningAlg
+
+`func (o *Connect) SetSshLegacySigningAlg(v bool)`
+
+SetSshLegacySigningAlg sets SshLegacySigningAlg field to given value.
+
+### HasSshLegacySigningAlg
+
+`func (o *Connect) HasSshLegacySigningAlg() bool`
+
+HasSshLegacySigningAlg returns a boolean if a field has been set.
 
 ### GetTarget
 

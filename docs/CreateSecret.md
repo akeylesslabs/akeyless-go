@@ -4,10 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CustomFields** | Pointer to **map[string]string** | For Password Management use, additional fields | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
+**ItemAccessibility** | Pointer to **string** | for personal password manager | [optional] 
 **Metadata** | Pointer to **string** | Metadata about the secret | [optional] 
 **MultilineValue** | Pointer to **bool** | The provided value is a multiline value (separated by &#39;\\n&#39;) | [optional] 
 **Name** | **string** | Secret name | 
+**PasswordLength** | Pointer to **int64** | For PasswordPolicy use | [optional] 
 **ProtectionKey** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **SecureAccessBastionIssuer** | Pointer to **string** |  | [optional] 
 **SecureAccessEnable** | Pointer to **string** |  | [optional] 
@@ -19,8 +22,15 @@ Name | Type | Description | Notes
 **SecureAccessWebProxy** | Pointer to **bool** |  | [optional] 
 **Tags** | Pointer to **[]string** | List of the tags attached to this secret | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
+**Type** | Pointer to **string** | For Password Management use, reflect the website context | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**UseLowerLetters** | Pointer to **string** | For PasswordPolicy use | [optional] 
+**UseNumbers** | Pointer to **string** | For PasswordPolicy use | [optional] 
+**UseSpecialCharacters** | Pointer to **string** | For PasswordPolicy use | [optional] 
+**UseCapitalLetters** | Pointer to **string** | For PasswordPolicy use | [optional] 
+**Username** | Pointer to **string** | For Password Management use | [optional] 
 **Value** | **string** | The secret value | 
+**Website** | Pointer to **string** | For Password Management use, reflect the website context | [optional] 
 
 ## Methods
 
@@ -40,6 +50,31 @@ will change when the set of required properties is changed
 NewCreateSecretWithDefaults instantiates a new CreateSecret object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCustomFields
+
+`func (o *CreateSecret) GetCustomFields() map[string]string`
+
+GetCustomFields returns the CustomFields field if non-nil, zero value otherwise.
+
+### GetCustomFieldsOk
+
+`func (o *CreateSecret) GetCustomFieldsOk() (*map[string]string, bool)`
+
+GetCustomFieldsOk returns a tuple with the CustomFields field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomFields
+
+`func (o *CreateSecret) SetCustomFields(v map[string]string)`
+
+SetCustomFields sets CustomFields field to given value.
+
+### HasCustomFields
+
+`func (o *CreateSecret) HasCustomFields() bool`
+
+HasCustomFields returns a boolean if a field has been set.
 
 ### GetDeleteProtection
 
@@ -65,6 +100,31 @@ SetDeleteProtection sets DeleteProtection field to given value.
 `func (o *CreateSecret) HasDeleteProtection() bool`
 
 HasDeleteProtection returns a boolean if a field has been set.
+
+### GetItemAccessibility
+
+`func (o *CreateSecret) GetItemAccessibility() string`
+
+GetItemAccessibility returns the ItemAccessibility field if non-nil, zero value otherwise.
+
+### GetItemAccessibilityOk
+
+`func (o *CreateSecret) GetItemAccessibilityOk() (*string, bool)`
+
+GetItemAccessibilityOk returns a tuple with the ItemAccessibility field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemAccessibility
+
+`func (o *CreateSecret) SetItemAccessibility(v string)`
+
+SetItemAccessibility sets ItemAccessibility field to given value.
+
+### HasItemAccessibility
+
+`func (o *CreateSecret) HasItemAccessibility() bool`
+
+HasItemAccessibility returns a boolean if a field has been set.
 
 ### GetMetadata
 
@@ -135,6 +195,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetPasswordLength
+
+`func (o *CreateSecret) GetPasswordLength() int64`
+
+GetPasswordLength returns the PasswordLength field if non-nil, zero value otherwise.
+
+### GetPasswordLengthOk
+
+`func (o *CreateSecret) GetPasswordLengthOk() (*int64, bool)`
+
+GetPasswordLengthOk returns a tuple with the PasswordLength field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasswordLength
+
+`func (o *CreateSecret) SetPasswordLength(v int64)`
+
+SetPasswordLength sets PasswordLength field to given value.
+
+### HasPasswordLength
+
+`func (o *CreateSecret) HasPasswordLength() bool`
+
+HasPasswordLength returns a boolean if a field has been set.
 
 ### GetProtectionKey
 
@@ -411,6 +496,31 @@ SetToken sets Token field to given value.
 
 HasToken returns a boolean if a field has been set.
 
+### GetType
+
+`func (o *CreateSecret) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *CreateSecret) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *CreateSecret) SetType(v string)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *CreateSecret) HasType() bool`
+
+HasType returns a boolean if a field has been set.
+
 ### GetUidToken
 
 `func (o *CreateSecret) GetUidToken() string`
@@ -436,6 +546,131 @@ SetUidToken sets UidToken field to given value.
 
 HasUidToken returns a boolean if a field has been set.
 
+### GetUseLowerLetters
+
+`func (o *CreateSecret) GetUseLowerLetters() string`
+
+GetUseLowerLetters returns the UseLowerLetters field if non-nil, zero value otherwise.
+
+### GetUseLowerLettersOk
+
+`func (o *CreateSecret) GetUseLowerLettersOk() (*string, bool)`
+
+GetUseLowerLettersOk returns a tuple with the UseLowerLetters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseLowerLetters
+
+`func (o *CreateSecret) SetUseLowerLetters(v string)`
+
+SetUseLowerLetters sets UseLowerLetters field to given value.
+
+### HasUseLowerLetters
+
+`func (o *CreateSecret) HasUseLowerLetters() bool`
+
+HasUseLowerLetters returns a boolean if a field has been set.
+
+### GetUseNumbers
+
+`func (o *CreateSecret) GetUseNumbers() string`
+
+GetUseNumbers returns the UseNumbers field if non-nil, zero value otherwise.
+
+### GetUseNumbersOk
+
+`func (o *CreateSecret) GetUseNumbersOk() (*string, bool)`
+
+GetUseNumbersOk returns a tuple with the UseNumbers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseNumbers
+
+`func (o *CreateSecret) SetUseNumbers(v string)`
+
+SetUseNumbers sets UseNumbers field to given value.
+
+### HasUseNumbers
+
+`func (o *CreateSecret) HasUseNumbers() bool`
+
+HasUseNumbers returns a boolean if a field has been set.
+
+### GetUseSpecialCharacters
+
+`func (o *CreateSecret) GetUseSpecialCharacters() string`
+
+GetUseSpecialCharacters returns the UseSpecialCharacters field if non-nil, zero value otherwise.
+
+### GetUseSpecialCharactersOk
+
+`func (o *CreateSecret) GetUseSpecialCharactersOk() (*string, bool)`
+
+GetUseSpecialCharactersOk returns a tuple with the UseSpecialCharacters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseSpecialCharacters
+
+`func (o *CreateSecret) SetUseSpecialCharacters(v string)`
+
+SetUseSpecialCharacters sets UseSpecialCharacters field to given value.
+
+### HasUseSpecialCharacters
+
+`func (o *CreateSecret) HasUseSpecialCharacters() bool`
+
+HasUseSpecialCharacters returns a boolean if a field has been set.
+
+### GetUseCapitalLetters
+
+`func (o *CreateSecret) GetUseCapitalLetters() string`
+
+GetUseCapitalLetters returns the UseCapitalLetters field if non-nil, zero value otherwise.
+
+### GetUseCapitalLettersOk
+
+`func (o *CreateSecret) GetUseCapitalLettersOk() (*string, bool)`
+
+GetUseCapitalLettersOk returns a tuple with the UseCapitalLetters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseCapitalLetters
+
+`func (o *CreateSecret) SetUseCapitalLetters(v string)`
+
+SetUseCapitalLetters sets UseCapitalLetters field to given value.
+
+### HasUseCapitalLetters
+
+`func (o *CreateSecret) HasUseCapitalLetters() bool`
+
+HasUseCapitalLetters returns a boolean if a field has been set.
+
+### GetUsername
+
+`func (o *CreateSecret) GetUsername() string`
+
+GetUsername returns the Username field if non-nil, zero value otherwise.
+
+### GetUsernameOk
+
+`func (o *CreateSecret) GetUsernameOk() (*string, bool)`
+
+GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsername
+
+`func (o *CreateSecret) SetUsername(v string)`
+
+SetUsername sets Username field to given value.
+
+### HasUsername
+
+`func (o *CreateSecret) HasUsername() bool`
+
+HasUsername returns a boolean if a field has been set.
+
 ### GetValue
 
 `func (o *CreateSecret) GetValue() string`
@@ -455,6 +690,31 @@ and a boolean to check if the value has been set.
 
 SetValue sets Value field to given value.
 
+
+### GetWebsite
+
+`func (o *CreateSecret) GetWebsite() string`
+
+GetWebsite returns the Website field if non-nil, zero value otherwise.
+
+### GetWebsiteOk
+
+`func (o *CreateSecret) GetWebsiteOk() (*string, bool)`
+
+GetWebsiteOk returns a tuple with the Website field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWebsite
+
+`func (o *CreateSecret) SetWebsite(v string)`
+
+SetWebsite sets Website field to given value.
+
+### HasWebsite
+
+`func (o *CreateSecret) HasWebsite() bool`
+
+HasWebsite returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -5,9 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Filter** | Pointer to **string** | Filter by item name or part of it | [optional] 
+**ItemAccessibility** | Pointer to **string** | for personal password manager | [optional] 
 **MinimalView** | Pointer to **bool** |  | [optional] 
 **PaginationToken** | Pointer to **string** | Next page reference | [optional] 
 **Path** | Pointer to **string** | Path to folder | [optional] 
+**SubTypes** | Pointer to **[]string** |  | [optional] 
 **Tag** | Pointer to **string** | Filter by item tag | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **Type** | Pointer to **[]string** | The item types list of the requested items. In case it is empty, all types of items will be returned. options: [key, static-secret, dynamic-secret] | [optional] 
@@ -56,6 +58,31 @@ SetFilter sets Filter field to given value.
 `func (o *ListItems) HasFilter() bool`
 
 HasFilter returns a boolean if a field has been set.
+
+### GetItemAccessibility
+
+`func (o *ListItems) GetItemAccessibility() string`
+
+GetItemAccessibility returns the ItemAccessibility field if non-nil, zero value otherwise.
+
+### GetItemAccessibilityOk
+
+`func (o *ListItems) GetItemAccessibilityOk() (*string, bool)`
+
+GetItemAccessibilityOk returns a tuple with the ItemAccessibility field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemAccessibility
+
+`func (o *ListItems) SetItemAccessibility(v string)`
+
+SetItemAccessibility sets ItemAccessibility field to given value.
+
+### HasItemAccessibility
+
+`func (o *ListItems) HasItemAccessibility() bool`
+
+HasItemAccessibility returns a boolean if a field has been set.
 
 ### GetMinimalView
 
@@ -131,6 +158,31 @@ SetPath sets Path field to given value.
 `func (o *ListItems) HasPath() bool`
 
 HasPath returns a boolean if a field has been set.
+
+### GetSubTypes
+
+`func (o *ListItems) GetSubTypes() []string`
+
+GetSubTypes returns the SubTypes field if non-nil, zero value otherwise.
+
+### GetSubTypesOk
+
+`func (o *ListItems) GetSubTypesOk() (*[]string, bool)`
+
+GetSubTypesOk returns a tuple with the SubTypes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSubTypes
+
+`func (o *ListItems) SetSubTypes(v []string)`
+
+SetSubTypes sets SubTypes field to given value.
+
+### HasSubTypes
+
+`func (o *ListItems) HasSubTypes() bool`
+
+HasSubTypes returns a boolean if a field has been set.
 
 ### GetTag
 

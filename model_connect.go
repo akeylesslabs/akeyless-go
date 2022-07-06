@@ -36,6 +36,8 @@ type Connect struct {
 	Name *string `json:"name,omitempty"`
 	// The Use to add offical SSH arguments (except -i)
 	SshExtraArgs *string `json:"ssh-extra-args,omitempty"`
+	// Set this option to output legacy ('ssh-rsa-cert-v01@openssh.com') signing algorithm name in the ssh certificate.
+	SshLegacySigningAlg *bool `json:"ssh-legacy-signing-alg,omitempty"`
 	// The target
 	Target *string `json:"target,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -391,6 +393,38 @@ func (o *Connect) SetSshExtraArgs(v string) {
 	o.SshExtraArgs = &v
 }
 
+// GetSshLegacySigningAlg returns the SshLegacySigningAlg field value if set, zero value otherwise.
+func (o *Connect) GetSshLegacySigningAlg() bool {
+	if o == nil || o.SshLegacySigningAlg == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SshLegacySigningAlg
+}
+
+// GetSshLegacySigningAlgOk returns a tuple with the SshLegacySigningAlg field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Connect) GetSshLegacySigningAlgOk() (*bool, bool) {
+	if o == nil || o.SshLegacySigningAlg == nil {
+		return nil, false
+	}
+	return o.SshLegacySigningAlg, true
+}
+
+// HasSshLegacySigningAlg returns a boolean if a field has been set.
+func (o *Connect) HasSshLegacySigningAlg() bool {
+	if o != nil && o.SshLegacySigningAlg != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSshLegacySigningAlg gets a reference to the given bool and assigns it to the SshLegacySigningAlg field.
+func (o *Connect) SetSshLegacySigningAlg(v bool) {
+	o.SshLegacySigningAlg = &v
+}
+
 // GetTarget returns the Target field value if set, zero value otherwise.
 func (o *Connect) GetTarget() string {
 	if o == nil || o.Target == nil {
@@ -550,6 +584,9 @@ func (o Connect) MarshalJSON() ([]byte, error) {
 	}
 	if o.SshExtraArgs != nil {
 		toSerialize["ssh-extra-args"] = o.SshExtraArgs
+	}
+	if o.SshLegacySigningAlg != nil {
+		toSerialize["ssh-legacy-signing-alg"] = o.SshLegacySigningAlg
 	}
 	if o.Target != nil {
 		toSerialize["target"] = o.Target

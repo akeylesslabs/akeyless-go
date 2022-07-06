@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ItemAccessibility** | Pointer to **string** | for personal password manager | [optional] 
 **Names** | **[]string** | Secret name | 
 **PrettyPrint** | Pointer to **bool** |  | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -28,6 +29,31 @@ will change when the set of required properties is changed
 NewGetSecretValueWithDefaults instantiates a new GetSecretValue object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetItemAccessibility
+
+`func (o *GetSecretValue) GetItemAccessibility() string`
+
+GetItemAccessibility returns the ItemAccessibility field if non-nil, zero value otherwise.
+
+### GetItemAccessibilityOk
+
+`func (o *GetSecretValue) GetItemAccessibilityOk() (*string, bool)`
+
+GetItemAccessibilityOk returns a tuple with the ItemAccessibility field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemAccessibility
+
+`func (o *GetSecretValue) SetItemAccessibility(v string)`
+
+SetItemAccessibility sets ItemAccessibility field to given value.
+
+### HasItemAccessibility
+
+`func (o *GetSecretValue) HasItemAccessibility() bool`
+
+HasItemAccessibility returns a boolean if a field has been set.
 
 ### GetNames
 

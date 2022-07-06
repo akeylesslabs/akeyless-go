@@ -22,6 +22,8 @@ type UpdateItem struct {
 	// PEM Certificate in a Base64 format. Used for updating RSA keys' certificates.
 	CertFileData *string `json:"cert-file-data,omitempty"`
 	DeleteProtection *string `json:"delete_protection,omitempty"`
+	// for personal password manager
+	ItemAccessibility *string `json:"item-accessibility,omitempty"`
 	// Current item name
 	Name string `json:"name"`
 	// New item metadata
@@ -176,6 +178,38 @@ func (o *UpdateItem) HasDeleteProtection() bool {
 // SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
 func (o *UpdateItem) SetDeleteProtection(v string) {
 	o.DeleteProtection = &v
+}
+
+// GetItemAccessibility returns the ItemAccessibility field value if set, zero value otherwise.
+func (o *UpdateItem) GetItemAccessibility() string {
+	if o == nil || o.ItemAccessibility == nil {
+		var ret string
+		return ret
+	}
+	return *o.ItemAccessibility
+}
+
+// GetItemAccessibilityOk returns a tuple with the ItemAccessibility field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateItem) GetItemAccessibilityOk() (*string, bool) {
+	if o == nil || o.ItemAccessibility == nil {
+		return nil, false
+	}
+	return o.ItemAccessibility, true
+}
+
+// HasItemAccessibility returns a boolean if a field has been set.
+func (o *UpdateItem) HasItemAccessibility() bool {
+	if o != nil && o.ItemAccessibility != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetItemAccessibility gets a reference to the given string and assigns it to the ItemAccessibility field.
+func (o *UpdateItem) SetItemAccessibility(v string) {
+	o.ItemAccessibility = &v
 }
 
 // GetName returns the Name field value
@@ -1140,6 +1174,9 @@ func (o UpdateItem) MarshalJSON() ([]byte, error) {
 	}
 	if o.DeleteProtection != nil {
 		toSerialize["delete_protection"] = o.DeleteProtection
+	}
+	if o.ItemAccessibility != nil {
+		toSerialize["item-accessibility"] = o.ItemAccessibility
 	}
 	if true {
 		toSerialize["name"] = o.Name

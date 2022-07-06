@@ -16506,7 +16506,7 @@ func (r ApiGetRotatedSecretValueRequest) Body(body GetRotatedSecretValue) ApiGet
 	return r
 }
 
-func (r ApiGetRotatedSecretValueRequest) Execute() (map[string]map[string]interface{}, *_nethttp.Response, error) {
+func (r ApiGetRotatedSecretValueRequest) Execute() (map[string]interface{}, *_nethttp.Response, error) {
 	return r.ApiService.GetRotatedSecretValueExecute(r)
 }
 
@@ -16524,16 +16524,16 @@ func (a *V2ApiService) GetRotatedSecretValue(ctx _context.Context) ApiGetRotated
 
 /*
  * Execute executes the request
- * @return map[string]map[string]interface{}
+ * @return map[string]interface{}
  */
-func (a *V2ApiService) GetRotatedSecretValueExecute(r ApiGetRotatedSecretValueRequest) (map[string]map[string]interface{}, *_nethttp.Response, error) {
+func (a *V2ApiService) GetRotatedSecretValueExecute(r ApiGetRotatedSecretValueRequest) (map[string]interface{}, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  map[string]map[string]interface{}
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.GetRotatedSecretValue")

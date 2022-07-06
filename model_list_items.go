@@ -19,11 +19,14 @@ import (
 type ListItems struct {
 	// Filter by item name or part of it
 	Filter *string `json:"filter,omitempty"`
+	// for personal password manager
+	ItemAccessibility *string `json:"item-accessibility,omitempty"`
 	MinimalView *bool `json:"minimal-view,omitempty"`
 	// Next page reference
 	PaginationToken *string `json:"pagination-token,omitempty"`
 	// Path to folder
 	Path *string `json:"path,omitempty"`
+	SubTypes *[]string `json:"sub_types,omitempty"`
 	// Filter by item tag
 	Tag *string `json:"tag,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -81,6 +84,38 @@ func (o *ListItems) HasFilter() bool {
 // SetFilter gets a reference to the given string and assigns it to the Filter field.
 func (o *ListItems) SetFilter(v string) {
 	o.Filter = &v
+}
+
+// GetItemAccessibility returns the ItemAccessibility field value if set, zero value otherwise.
+func (o *ListItems) GetItemAccessibility() string {
+	if o == nil || o.ItemAccessibility == nil {
+		var ret string
+		return ret
+	}
+	return *o.ItemAccessibility
+}
+
+// GetItemAccessibilityOk returns a tuple with the ItemAccessibility field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListItems) GetItemAccessibilityOk() (*string, bool) {
+	if o == nil || o.ItemAccessibility == nil {
+		return nil, false
+	}
+	return o.ItemAccessibility, true
+}
+
+// HasItemAccessibility returns a boolean if a field has been set.
+func (o *ListItems) HasItemAccessibility() bool {
+	if o != nil && o.ItemAccessibility != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetItemAccessibility gets a reference to the given string and assigns it to the ItemAccessibility field.
+func (o *ListItems) SetItemAccessibility(v string) {
+	o.ItemAccessibility = &v
 }
 
 // GetMinimalView returns the MinimalView field value if set, zero value otherwise.
@@ -177,6 +212,38 @@ func (o *ListItems) HasPath() bool {
 // SetPath gets a reference to the given string and assigns it to the Path field.
 func (o *ListItems) SetPath(v string) {
 	o.Path = &v
+}
+
+// GetSubTypes returns the SubTypes field value if set, zero value otherwise.
+func (o *ListItems) GetSubTypes() []string {
+	if o == nil || o.SubTypes == nil {
+		var ret []string
+		return ret
+	}
+	return *o.SubTypes
+}
+
+// GetSubTypesOk returns a tuple with the SubTypes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListItems) GetSubTypesOk() (*[]string, bool) {
+	if o == nil || o.SubTypes == nil {
+		return nil, false
+	}
+	return o.SubTypes, true
+}
+
+// HasSubTypes returns a boolean if a field has been set.
+func (o *ListItems) HasSubTypes() bool {
+	if o != nil && o.SubTypes != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSubTypes gets a reference to the given []string and assigns it to the SubTypes field.
+func (o *ListItems) SetSubTypes(v []string) {
+	o.SubTypes = &v
 }
 
 // GetTag returns the Tag field value if set, zero value otherwise.
@@ -312,6 +379,9 @@ func (o ListItems) MarshalJSON() ([]byte, error) {
 	if o.Filter != nil {
 		toSerialize["filter"] = o.Filter
 	}
+	if o.ItemAccessibility != nil {
+		toSerialize["item-accessibility"] = o.ItemAccessibility
+	}
 	if o.MinimalView != nil {
 		toSerialize["minimal-view"] = o.MinimalView
 	}
@@ -320,6 +390,9 @@ func (o ListItems) MarshalJSON() ([]byte, error) {
 	}
 	if o.Path != nil {
 		toSerialize["path"] = o.Path
+	}
+	if o.SubTypes != nil {
+		toSerialize["sub_types"] = o.SubTypes
 	}
 	if o.Tag != nil {
 		toSerialize["tag"] = o.Tag

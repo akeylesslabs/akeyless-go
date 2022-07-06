@@ -17,6 +17,8 @@ import (
 
 // GetSecretValue struct for GetSecretValue
 type GetSecretValue struct {
+	// for personal password manager
+	ItemAccessibility *string `json:"item-accessibility,omitempty"`
 	// Secret name
 	Names []string `json:"names"`
 	PrettyPrint *bool `json:"pretty-print,omitempty"`
@@ -44,6 +46,38 @@ func NewGetSecretValue(names []string, ) *GetSecretValue {
 func NewGetSecretValueWithDefaults() *GetSecretValue {
 	this := GetSecretValue{}
 	return &this
+}
+
+// GetItemAccessibility returns the ItemAccessibility field value if set, zero value otherwise.
+func (o *GetSecretValue) GetItemAccessibility() string {
+	if o == nil || o.ItemAccessibility == nil {
+		var ret string
+		return ret
+	}
+	return *o.ItemAccessibility
+}
+
+// GetItemAccessibilityOk returns a tuple with the ItemAccessibility field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetSecretValue) GetItemAccessibilityOk() (*string, bool) {
+	if o == nil || o.ItemAccessibility == nil {
+		return nil, false
+	}
+	return o.ItemAccessibility, true
+}
+
+// HasItemAccessibility returns a boolean if a field has been set.
+func (o *GetSecretValue) HasItemAccessibility() bool {
+	if o != nil && o.ItemAccessibility != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetItemAccessibility gets a reference to the given string and assigns it to the ItemAccessibility field.
+func (o *GetSecretValue) SetItemAccessibility(v string) {
+	o.ItemAccessibility = &v
 }
 
 // GetNames returns the Names field value
@@ -200,6 +234,9 @@ func (o *GetSecretValue) SetVersion(v int32) {
 
 func (o GetSecretValue) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.ItemAccessibility != nil {
+		toSerialize["item-accessibility"] = o.ItemAccessibility
+	}
 	if true {
 		toSerialize["names"] = o.Names
 	}

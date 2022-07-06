@@ -9258,7 +9258,7 @@ No authorization required
 
 ## GetRotatedSecretValue
 
-> map[string]map[string]interface{} GetRotatedSecretValue(ctx).Body(body).Execute()
+> map[string]interface{} GetRotatedSecretValue(ctx).Body(body).Execute()
 
 
 
@@ -9284,7 +9284,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GetRotatedSecretValue``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetRotatedSecretValue`: map[string]map[string]interface{}
+    // response from `GetRotatedSecretValue`: map[string]interface{}
     fmt.Fprintf(os.Stdout, "Response from `V2Api.GetRotatedSecretValue`: %v\n", resp)
 }
 ```
@@ -9304,7 +9304,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]map[string]interface{}**
+**map[string]interface{}**
 
 ### Authorization
 

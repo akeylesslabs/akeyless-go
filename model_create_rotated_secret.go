@@ -84,9 +84,9 @@ type CreateRotatedSecret struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// User Attribute
+	// LDAP User Attribute, Default value \"cn\"
 	UserAttribute *string `json:"user-attribute,omitempty"`
-	// User DN
+	// LDAP User Base DN
 	UserDn *string `json:"user-dn,omitempty"`
 }
 

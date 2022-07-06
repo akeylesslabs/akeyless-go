@@ -17,6 +17,10 @@ import (
 
 // UpdateSecretVal struct for UpdateSecretVal
 type UpdateSecretVal struct {
+	// For Password Management use, additional fields
+	CustomFields *map[string]string `json:"custom-fields,omitempty"`
+	// for personal password manager
+	ItemAccessibility *string `json:"item-accessibility,omitempty"`
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
@@ -30,8 +34,12 @@ type UpdateSecretVal struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// For Password Management use
+	Username *string `json:"username,omitempty"`
 	// The new secret value
 	Value string `json:"value"`
+	// For Password Management use, reflect the website context
+	Website *string `json:"website,omitempty"`
 }
 
 // NewUpdateSecretVal instantiates a new UpdateSecretVal object
@@ -51,6 +59,70 @@ func NewUpdateSecretVal(name string, value string, ) *UpdateSecretVal {
 func NewUpdateSecretValWithDefaults() *UpdateSecretVal {
 	this := UpdateSecretVal{}
 	return &this
+}
+
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+func (o *UpdateSecretVal) GetCustomFields() map[string]string {
+	if o == nil || o.CustomFields == nil {
+		var ret map[string]string
+		return ret
+	}
+	return *o.CustomFields
+}
+
+// GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateSecretVal) GetCustomFieldsOk() (*map[string]string, bool) {
+	if o == nil || o.CustomFields == nil {
+		return nil, false
+	}
+	return o.CustomFields, true
+}
+
+// HasCustomFields returns a boolean if a field has been set.
+func (o *UpdateSecretVal) HasCustomFields() bool {
+	if o != nil && o.CustomFields != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomFields gets a reference to the given map[string]string and assigns it to the CustomFields field.
+func (o *UpdateSecretVal) SetCustomFields(v map[string]string) {
+	o.CustomFields = &v
+}
+
+// GetItemAccessibility returns the ItemAccessibility field value if set, zero value otherwise.
+func (o *UpdateSecretVal) GetItemAccessibility() string {
+	if o == nil || o.ItemAccessibility == nil {
+		var ret string
+		return ret
+	}
+	return *o.ItemAccessibility
+}
+
+// GetItemAccessibilityOk returns a tuple with the ItemAccessibility field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateSecretVal) GetItemAccessibilityOk() (*string, bool) {
+	if o == nil || o.ItemAccessibility == nil {
+		return nil, false
+	}
+	return o.ItemAccessibility, true
+}
+
+// HasItemAccessibility returns a boolean if a field has been set.
+func (o *UpdateSecretVal) HasItemAccessibility() bool {
+	if o != nil && o.ItemAccessibility != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetItemAccessibility gets a reference to the given string and assigns it to the ItemAccessibility field.
+func (o *UpdateSecretVal) SetItemAccessibility(v string) {
+	o.ItemAccessibility = &v
 }
 
 // GetKeepPrevVersion returns the KeepPrevVersion field value if set, zero value otherwise.
@@ -269,6 +341,38 @@ func (o *UpdateSecretVal) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *UpdateSecretVal) GetUsername() string {
+	if o == nil || o.Username == nil {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateSecretVal) GetUsernameOk() (*string, bool) {
+	if o == nil || o.Username == nil {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *UpdateSecretVal) HasUsername() bool {
+	if o != nil && o.Username != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *UpdateSecretVal) SetUsername(v string) {
+	o.Username = &v
+}
+
 // GetValue returns the Value field value
 func (o *UpdateSecretVal) GetValue() string {
 	if o == nil  {
@@ -293,8 +397,46 @@ func (o *UpdateSecretVal) SetValue(v string) {
 	o.Value = v
 }
 
+// GetWebsite returns the Website field value if set, zero value otherwise.
+func (o *UpdateSecretVal) GetWebsite() string {
+	if o == nil || o.Website == nil {
+		var ret string
+		return ret
+	}
+	return *o.Website
+}
+
+// GetWebsiteOk returns a tuple with the Website field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateSecretVal) GetWebsiteOk() (*string, bool) {
+	if o == nil || o.Website == nil {
+		return nil, false
+	}
+	return o.Website, true
+}
+
+// HasWebsite returns a boolean if a field has been set.
+func (o *UpdateSecretVal) HasWebsite() bool {
+	if o != nil && o.Website != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetWebsite gets a reference to the given string and assigns it to the Website field.
+func (o *UpdateSecretVal) SetWebsite(v string) {
+	o.Website = &v
+}
+
 func (o UpdateSecretVal) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.CustomFields != nil {
+		toSerialize["custom-fields"] = o.CustomFields
+	}
+	if o.ItemAccessibility != nil {
+		toSerialize["item-accessibility"] = o.ItemAccessibility
+	}
 	if o.KeepPrevVersion != nil {
 		toSerialize["keep-prev-version"] = o.KeepPrevVersion
 	}
@@ -316,8 +458,14 @@ func (o UpdateSecretVal) MarshalJSON() ([]byte, error) {
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
 	}
+	if o.Username != nil {
+		toSerialize["username"] = o.Username
+	}
 	if true {
 		toSerialize["value"] = o.Value
+	}
+	if o.Website != nil {
+		toSerialize["website"] = o.Website
 	}
 	return json.Marshal(toSerialize)
 }

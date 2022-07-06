@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **AddTag** | Pointer to **[]string** | List of the new tags that will be attached to this item | [optional] 
 **CertFileData** | Pointer to **string** | PEM Certificate in a Base64 format. Used for updating RSA keys&#39; certificates. | [optional] 
 **DeleteProtection** | Pointer to **string** |  | [optional] 
+**ItemAccessibility** | Pointer to **string** | for personal password manager | [optional] 
 **Name** | **string** | Current item name | 
 **NewMetadata** | Pointer to **string** | New item metadata | [optional] [default to "default_metadata"]
 **NewName** | Pointer to **string** | New item name | [optional] 
@@ -131,6 +132,31 @@ SetDeleteProtection sets DeleteProtection field to given value.
 `func (o *UpdateItem) HasDeleteProtection() bool`
 
 HasDeleteProtection returns a boolean if a field has been set.
+
+### GetItemAccessibility
+
+`func (o *UpdateItem) GetItemAccessibility() string`
+
+GetItemAccessibility returns the ItemAccessibility field if non-nil, zero value otherwise.
+
+### GetItemAccessibilityOk
+
+`func (o *UpdateItem) GetItemAccessibilityOk() (*string, bool)`
+
+GetItemAccessibilityOk returns a tuple with the ItemAccessibility field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemAccessibility
+
+`func (o *UpdateItem) SetItemAccessibility(v string)`
+
+SetItemAccessibility sets ItemAccessibility field to given value.
+
+### HasItemAccessibility
+
+`func (o *UpdateItem) HasItemAccessibility() bool`
+
+HasItemAccessibility returns a boolean if a field has been set.
 
 ### GetName
 

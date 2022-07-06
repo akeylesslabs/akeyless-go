@@ -21,6 +21,7 @@ type PathRule struct {
 	Capabilities *[]string `json:"capabilities,omitempty"`
 	// The path the rule refers to
 	Path *string `json:"path,omitempty"`
+	Ttl *int64 `json:"ttl,omitempty"`
 	Type *string `json:"type,omitempty"`
 }
 
@@ -105,6 +106,38 @@ func (o *PathRule) SetPath(v string) {
 	o.Path = &v
 }
 
+// GetTtl returns the Ttl field value if set, zero value otherwise.
+func (o *PathRule) GetTtl() int64 {
+	if o == nil || o.Ttl == nil {
+		var ret int64
+		return ret
+	}
+	return *o.Ttl
+}
+
+// GetTtlOk returns a tuple with the Ttl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PathRule) GetTtlOk() (*int64, bool) {
+	if o == nil || o.Ttl == nil {
+		return nil, false
+	}
+	return o.Ttl, true
+}
+
+// HasTtl returns a boolean if a field has been set.
+func (o *PathRule) HasTtl() bool {
+	if o != nil && o.Ttl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTtl gets a reference to the given int64 and assigns it to the Ttl field.
+func (o *PathRule) SetTtl(v int64) {
+	o.Ttl = &v
+}
+
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *PathRule) GetType() string {
 	if o == nil || o.Type == nil {
@@ -144,6 +177,9 @@ func (o PathRule) MarshalJSON() ([]byte, error) {
 	}
 	if o.Path != nil {
 		toSerialize["path"] = o.Path
+	}
+	if o.Ttl != nil {
+		toSerialize["ttl"] = o.Ttl
 	}
 	if o.Type != nil {
 		toSerialize["type"] = o.Type

@@ -17,14 +17,20 @@ import (
 
 // CreateSecret struct for CreateSecret
 type CreateSecret struct {
+	// For Password Management use, additional fields
+	CustomFields *map[string]string `json:"custom-fields,omitempty"`
 	// Protection from accidental deletion of this item
 	DeleteProtection *string `json:"delete_protection,omitempty"`
+	// for personal password manager
+	ItemAccessibility *string `json:"item-accessibility,omitempty"`
 	// Metadata about the secret
 	Metadata *string `json:"metadata,omitempty"`
 	// The provided value is a multiline value (separated by '\\n')
 	MultilineValue *bool `json:"multiline_value,omitempty"`
 	// Secret name
 	Name string `json:"name"`
+	// For PasswordPolicy use
+	PasswordLength *int64 `json:"password-length,omitempty"`
 	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
 	ProtectionKey *string `json:"protection_key,omitempty"`
 	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
@@ -39,10 +45,24 @@ type CreateSecret struct {
 	Tags *[]string `json:"tags,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
+	// For Password Management use, reflect the website context
+	Type *string `json:"type,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// For PasswordPolicy use
+	UseLowerLetters *string `json:"use-lower-letters,omitempty"`
+	// For PasswordPolicy use
+	UseNumbers *string `json:"use-numbers,omitempty"`
+	// For PasswordPolicy use
+	UseSpecialCharacters *string `json:"use-special-characters,omitempty"`
+	// For PasswordPolicy use
+	UseCapitalLetters *string `json:"use_capital-letters,omitempty"`
+	// For Password Management use
+	Username *string `json:"username,omitempty"`
 	// The secret value
 	Value string `json:"value"`
+	// For Password Management use, reflect the website context
+	Website *string `json:"website,omitempty"`
 }
 
 // NewCreateSecret instantiates a new CreateSecret object
@@ -62,6 +82,38 @@ func NewCreateSecret(name string, value string, ) *CreateSecret {
 func NewCreateSecretWithDefaults() *CreateSecret {
 	this := CreateSecret{}
 	return &this
+}
+
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+func (o *CreateSecret) GetCustomFields() map[string]string {
+	if o == nil || o.CustomFields == nil {
+		var ret map[string]string
+		return ret
+	}
+	return *o.CustomFields
+}
+
+// GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSecret) GetCustomFieldsOk() (*map[string]string, bool) {
+	if o == nil || o.CustomFields == nil {
+		return nil, false
+	}
+	return o.CustomFields, true
+}
+
+// HasCustomFields returns a boolean if a field has been set.
+func (o *CreateSecret) HasCustomFields() bool {
+	if o != nil && o.CustomFields != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomFields gets a reference to the given map[string]string and assigns it to the CustomFields field.
+func (o *CreateSecret) SetCustomFields(v map[string]string) {
+	o.CustomFields = &v
 }
 
 // GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
@@ -94,6 +146,38 @@ func (o *CreateSecret) HasDeleteProtection() bool {
 // SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
 func (o *CreateSecret) SetDeleteProtection(v string) {
 	o.DeleteProtection = &v
+}
+
+// GetItemAccessibility returns the ItemAccessibility field value if set, zero value otherwise.
+func (o *CreateSecret) GetItemAccessibility() string {
+	if o == nil || o.ItemAccessibility == nil {
+		var ret string
+		return ret
+	}
+	return *o.ItemAccessibility
+}
+
+// GetItemAccessibilityOk returns a tuple with the ItemAccessibility field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSecret) GetItemAccessibilityOk() (*string, bool) {
+	if o == nil || o.ItemAccessibility == nil {
+		return nil, false
+	}
+	return o.ItemAccessibility, true
+}
+
+// HasItemAccessibility returns a boolean if a field has been set.
+func (o *CreateSecret) HasItemAccessibility() bool {
+	if o != nil && o.ItemAccessibility != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetItemAccessibility gets a reference to the given string and assigns it to the ItemAccessibility field.
+func (o *CreateSecret) SetItemAccessibility(v string) {
+	o.ItemAccessibility = &v
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
@@ -182,6 +266,38 @@ func (o *CreateSecret) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *CreateSecret) SetName(v string) {
 	o.Name = v
+}
+
+// GetPasswordLength returns the PasswordLength field value if set, zero value otherwise.
+func (o *CreateSecret) GetPasswordLength() int64 {
+	if o == nil || o.PasswordLength == nil {
+		var ret int64
+		return ret
+	}
+	return *o.PasswordLength
+}
+
+// GetPasswordLengthOk returns a tuple with the PasswordLength field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSecret) GetPasswordLengthOk() (*int64, bool) {
+	if o == nil || o.PasswordLength == nil {
+		return nil, false
+	}
+	return o.PasswordLength, true
+}
+
+// HasPasswordLength returns a boolean if a field has been set.
+func (o *CreateSecret) HasPasswordLength() bool {
+	if o != nil && o.PasswordLength != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPasswordLength gets a reference to the given int64 and assigns it to the PasswordLength field.
+func (o *CreateSecret) SetPasswordLength(v int64) {
+	o.PasswordLength = &v
 }
 
 // GetProtectionKey returns the ProtectionKey field value if set, zero value otherwise.
@@ -536,6 +652,38 @@ func (o *CreateSecret) SetToken(v string) {
 	o.Token = &v
 }
 
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *CreateSecret) GetType() string {
+	if o == nil || o.Type == nil {
+		var ret string
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSecret) GetTypeOk() (*string, bool) {
+	if o == nil || o.Type == nil {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *CreateSecret) HasType() bool {
+	if o != nil && o.Type != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *CreateSecret) SetType(v string) {
+	o.Type = &v
+}
+
 // GetUidToken returns the UidToken field value if set, zero value otherwise.
 func (o *CreateSecret) GetUidToken() string {
 	if o == nil || o.UidToken == nil {
@@ -568,6 +716,166 @@ func (o *CreateSecret) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUseLowerLetters returns the UseLowerLetters field value if set, zero value otherwise.
+func (o *CreateSecret) GetUseLowerLetters() string {
+	if o == nil || o.UseLowerLetters == nil {
+		var ret string
+		return ret
+	}
+	return *o.UseLowerLetters
+}
+
+// GetUseLowerLettersOk returns a tuple with the UseLowerLetters field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSecret) GetUseLowerLettersOk() (*string, bool) {
+	if o == nil || o.UseLowerLetters == nil {
+		return nil, false
+	}
+	return o.UseLowerLetters, true
+}
+
+// HasUseLowerLetters returns a boolean if a field has been set.
+func (o *CreateSecret) HasUseLowerLetters() bool {
+	if o != nil && o.UseLowerLetters != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUseLowerLetters gets a reference to the given string and assigns it to the UseLowerLetters field.
+func (o *CreateSecret) SetUseLowerLetters(v string) {
+	o.UseLowerLetters = &v
+}
+
+// GetUseNumbers returns the UseNumbers field value if set, zero value otherwise.
+func (o *CreateSecret) GetUseNumbers() string {
+	if o == nil || o.UseNumbers == nil {
+		var ret string
+		return ret
+	}
+	return *o.UseNumbers
+}
+
+// GetUseNumbersOk returns a tuple with the UseNumbers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSecret) GetUseNumbersOk() (*string, bool) {
+	if o == nil || o.UseNumbers == nil {
+		return nil, false
+	}
+	return o.UseNumbers, true
+}
+
+// HasUseNumbers returns a boolean if a field has been set.
+func (o *CreateSecret) HasUseNumbers() bool {
+	if o != nil && o.UseNumbers != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUseNumbers gets a reference to the given string and assigns it to the UseNumbers field.
+func (o *CreateSecret) SetUseNumbers(v string) {
+	o.UseNumbers = &v
+}
+
+// GetUseSpecialCharacters returns the UseSpecialCharacters field value if set, zero value otherwise.
+func (o *CreateSecret) GetUseSpecialCharacters() string {
+	if o == nil || o.UseSpecialCharacters == nil {
+		var ret string
+		return ret
+	}
+	return *o.UseSpecialCharacters
+}
+
+// GetUseSpecialCharactersOk returns a tuple with the UseSpecialCharacters field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSecret) GetUseSpecialCharactersOk() (*string, bool) {
+	if o == nil || o.UseSpecialCharacters == nil {
+		return nil, false
+	}
+	return o.UseSpecialCharacters, true
+}
+
+// HasUseSpecialCharacters returns a boolean if a field has been set.
+func (o *CreateSecret) HasUseSpecialCharacters() bool {
+	if o != nil && o.UseSpecialCharacters != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUseSpecialCharacters gets a reference to the given string and assigns it to the UseSpecialCharacters field.
+func (o *CreateSecret) SetUseSpecialCharacters(v string) {
+	o.UseSpecialCharacters = &v
+}
+
+// GetUseCapitalLetters returns the UseCapitalLetters field value if set, zero value otherwise.
+func (o *CreateSecret) GetUseCapitalLetters() string {
+	if o == nil || o.UseCapitalLetters == nil {
+		var ret string
+		return ret
+	}
+	return *o.UseCapitalLetters
+}
+
+// GetUseCapitalLettersOk returns a tuple with the UseCapitalLetters field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSecret) GetUseCapitalLettersOk() (*string, bool) {
+	if o == nil || o.UseCapitalLetters == nil {
+		return nil, false
+	}
+	return o.UseCapitalLetters, true
+}
+
+// HasUseCapitalLetters returns a boolean if a field has been set.
+func (o *CreateSecret) HasUseCapitalLetters() bool {
+	if o != nil && o.UseCapitalLetters != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUseCapitalLetters gets a reference to the given string and assigns it to the UseCapitalLetters field.
+func (o *CreateSecret) SetUseCapitalLetters(v string) {
+	o.UseCapitalLetters = &v
+}
+
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *CreateSecret) GetUsername() string {
+	if o == nil || o.Username == nil {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSecret) GetUsernameOk() (*string, bool) {
+	if o == nil || o.Username == nil {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *CreateSecret) HasUsername() bool {
+	if o != nil && o.Username != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *CreateSecret) SetUsername(v string) {
+	o.Username = &v
+}
+
 // GetValue returns the Value field value
 func (o *CreateSecret) GetValue() string {
 	if o == nil  {
@@ -592,10 +900,48 @@ func (o *CreateSecret) SetValue(v string) {
 	o.Value = v
 }
 
+// GetWebsite returns the Website field value if set, zero value otherwise.
+func (o *CreateSecret) GetWebsite() string {
+	if o == nil || o.Website == nil {
+		var ret string
+		return ret
+	}
+	return *o.Website
+}
+
+// GetWebsiteOk returns a tuple with the Website field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSecret) GetWebsiteOk() (*string, bool) {
+	if o == nil || o.Website == nil {
+		return nil, false
+	}
+	return o.Website, true
+}
+
+// HasWebsite returns a boolean if a field has been set.
+func (o *CreateSecret) HasWebsite() bool {
+	if o != nil && o.Website != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetWebsite gets a reference to the given string and assigns it to the Website field.
+func (o *CreateSecret) SetWebsite(v string) {
+	o.Website = &v
+}
+
 func (o CreateSecret) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.CustomFields != nil {
+		toSerialize["custom-fields"] = o.CustomFields
+	}
 	if o.DeleteProtection != nil {
 		toSerialize["delete_protection"] = o.DeleteProtection
+	}
+	if o.ItemAccessibility != nil {
+		toSerialize["item-accessibility"] = o.ItemAccessibility
 	}
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata
@@ -605,6 +951,9 @@ func (o CreateSecret) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.PasswordLength != nil {
+		toSerialize["password-length"] = o.PasswordLength
 	}
 	if o.ProtectionKey != nil {
 		toSerialize["protection_key"] = o.ProtectionKey
@@ -639,11 +988,32 @@ func (o CreateSecret) MarshalJSON() ([]byte, error) {
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
 	}
+	if o.Type != nil {
+		toSerialize["type"] = o.Type
+	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
 	}
+	if o.UseLowerLetters != nil {
+		toSerialize["use-lower-letters"] = o.UseLowerLetters
+	}
+	if o.UseNumbers != nil {
+		toSerialize["use-numbers"] = o.UseNumbers
+	}
+	if o.UseSpecialCharacters != nil {
+		toSerialize["use-special-characters"] = o.UseSpecialCharacters
+	}
+	if o.UseCapitalLetters != nil {
+		toSerialize["use_capital-letters"] = o.UseCapitalLetters
+	}
+	if o.Username != nil {
+		toSerialize["username"] = o.Username
+	}
 	if true {
 		toSerialize["value"] = o.Value
+	}
+	if o.Website != nil {
+		toSerialize["website"] = o.Website
 	}
 	return json.Marshal(toSerialize)
 }
