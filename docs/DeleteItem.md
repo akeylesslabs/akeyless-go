@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Accessibility** | Pointer to **string** | for personal password manager | [optional] 
 **DeleteImmediately** | Pointer to **bool** | When delete-in-days&#x3D;-1, must be set | [optional] [default to false]
 **DeleteInDays** | Pointer to **int64** | The number of days to wait before deleting the item (relevant for keys only) | [optional] [default to 7]
-**ItemAccessibility** | Pointer to **string** | for personal password manager | [optional] 
 **Name** | **string** | Item name | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -30,6 +30,31 @@ will change when the set of required properties is changed
 NewDeleteItemWithDefaults instantiates a new DeleteItem object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAccessibility
+
+`func (o *DeleteItem) GetAccessibility() string`
+
+GetAccessibility returns the Accessibility field if non-nil, zero value otherwise.
+
+### GetAccessibilityOk
+
+`func (o *DeleteItem) GetAccessibilityOk() (*string, bool)`
+
+GetAccessibilityOk returns a tuple with the Accessibility field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessibility
+
+`func (o *DeleteItem) SetAccessibility(v string)`
+
+SetAccessibility sets Accessibility field to given value.
+
+### HasAccessibility
+
+`func (o *DeleteItem) HasAccessibility() bool`
+
+HasAccessibility returns a boolean if a field has been set.
 
 ### GetDeleteImmediately
 
@@ -80,31 +105,6 @@ SetDeleteInDays sets DeleteInDays field to given value.
 `func (o *DeleteItem) HasDeleteInDays() bool`
 
 HasDeleteInDays returns a boolean if a field has been set.
-
-### GetItemAccessibility
-
-`func (o *DeleteItem) GetItemAccessibility() string`
-
-GetItemAccessibility returns the ItemAccessibility field if non-nil, zero value otherwise.
-
-### GetItemAccessibilityOk
-
-`func (o *DeleteItem) GetItemAccessibilityOk() (*string, bool)`
-
-GetItemAccessibilityOk returns a tuple with the ItemAccessibility field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetItemAccessibility
-
-`func (o *DeleteItem) SetItemAccessibility(v string)`
-
-SetItemAccessibility sets ItemAccessibility field to given value.
-
-### HasItemAccessibility
-
-`func (o *DeleteItem) HasItemAccessibility() bool`
-
-HasItemAccessibility returns a boolean if a field has been set.
 
 ### GetName
 

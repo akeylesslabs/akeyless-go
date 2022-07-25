@@ -17,12 +17,12 @@ import (
 
 // DeleteItem struct for DeleteItem
 type DeleteItem struct {
+	// for personal password manager
+	Accessibility *string `json:"accessibility,omitempty"`
 	// When delete-in-days=-1, must be set
 	DeleteImmediately *bool `json:"delete-immediately,omitempty"`
 	// The number of days to wait before deleting the item (relevant for keys only)
 	DeleteInDays *int64 `json:"delete-in-days,omitempty"`
-	// for personal password manager
-	ItemAccessibility *string `json:"item-accessibility,omitempty"`
 	// Item name
 	Name string `json:"name"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -61,6 +61,38 @@ func NewDeleteItemWithDefaults() *DeleteItem {
 	var version int32 = -1
 	this.Version = &version
 	return &this
+}
+
+// GetAccessibility returns the Accessibility field value if set, zero value otherwise.
+func (o *DeleteItem) GetAccessibility() string {
+	if o == nil || o.Accessibility == nil {
+		var ret string
+		return ret
+	}
+	return *o.Accessibility
+}
+
+// GetAccessibilityOk returns a tuple with the Accessibility field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeleteItem) GetAccessibilityOk() (*string, bool) {
+	if o == nil || o.Accessibility == nil {
+		return nil, false
+	}
+	return o.Accessibility, true
+}
+
+// HasAccessibility returns a boolean if a field has been set.
+func (o *DeleteItem) HasAccessibility() bool {
+	if o != nil && o.Accessibility != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessibility gets a reference to the given string and assigns it to the Accessibility field.
+func (o *DeleteItem) SetAccessibility(v string) {
+	o.Accessibility = &v
 }
 
 // GetDeleteImmediately returns the DeleteImmediately field value if set, zero value otherwise.
@@ -125,38 +157,6 @@ func (o *DeleteItem) HasDeleteInDays() bool {
 // SetDeleteInDays gets a reference to the given int64 and assigns it to the DeleteInDays field.
 func (o *DeleteItem) SetDeleteInDays(v int64) {
 	o.DeleteInDays = &v
-}
-
-// GetItemAccessibility returns the ItemAccessibility field value if set, zero value otherwise.
-func (o *DeleteItem) GetItemAccessibility() string {
-	if o == nil || o.ItemAccessibility == nil {
-		var ret string
-		return ret
-	}
-	return *o.ItemAccessibility
-}
-
-// GetItemAccessibilityOk returns a tuple with the ItemAccessibility field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DeleteItem) GetItemAccessibilityOk() (*string, bool) {
-	if o == nil || o.ItemAccessibility == nil {
-		return nil, false
-	}
-	return o.ItemAccessibility, true
-}
-
-// HasItemAccessibility returns a boolean if a field has been set.
-func (o *DeleteItem) HasItemAccessibility() bool {
-	if o != nil && o.ItemAccessibility != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetItemAccessibility gets a reference to the given string and assigns it to the ItemAccessibility field.
-func (o *DeleteItem) SetItemAccessibility(v string) {
-	o.ItemAccessibility = &v
 }
 
 // GetName returns the Name field value
@@ -281,14 +281,14 @@ func (o *DeleteItem) SetVersion(v int32) {
 
 func (o DeleteItem) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Accessibility != nil {
+		toSerialize["accessibility"] = o.Accessibility
+	}
 	if o.DeleteImmediately != nil {
 		toSerialize["delete-immediately"] = o.DeleteImmediately
 	}
 	if o.DeleteInDays != nil {
 		toSerialize["delete-in-days"] = o.DeleteInDays
-	}
-	if o.ItemAccessibility != nil {
-		toSerialize["item-accessibility"] = o.ItemAccessibility
 	}
 	if true {
 		toSerialize["name"] = o.Name

@@ -111,6 +111,7 @@ type DSProducerDetails struct {
 	HanadbRevocationStatements *string `json:"hanadb_revocation_statements,omitempty"`
 	HostName *string `json:"host_name,omitempty"`
 	HostPort *string `json:"host_port,omitempty"`
+	ImplementationType *string `json:"implementation_type,omitempty"`
 	IsFixedUser *string `json:"is_fixed_user,omitempty"`
 	ItemTargetsAssoc *[]ItemTargetAssociation `json:"item_targets_assoc,omitempty"`
 	K8sBearerToken *string `json:"k8s_bearer_token,omitempty"`
@@ -3164,6 +3165,38 @@ func (o *DSProducerDetails) SetHostPort(v string) {
 	o.HostPort = &v
 }
 
+// GetImplementationType returns the ImplementationType field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetImplementationType() string {
+	if o == nil || o.ImplementationType == nil {
+		var ret string
+		return ret
+	}
+	return *o.ImplementationType
+}
+
+// GetImplementationTypeOk returns a tuple with the ImplementationType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetImplementationTypeOk() (*string, bool) {
+	if o == nil || o.ImplementationType == nil {
+		return nil, false
+	}
+	return o.ImplementationType, true
+}
+
+// HasImplementationType returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasImplementationType() bool {
+	if o != nil && o.ImplementationType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetImplementationType gets a reference to the given string and assigns it to the ImplementationType field.
+func (o *DSProducerDetails) SetImplementationType(v string) {
+	o.ImplementationType = &v
+}
+
 // GetIsFixedUser returns the IsFixedUser field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetIsFixedUser() string {
 	if o == nil || o.IsFixedUser == nil {
@@ -6065,6 +6098,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.HostPort != nil {
 		toSerialize["host_port"] = o.HostPort
+	}
+	if o.ImplementationType != nil {
+		toSerialize["implementation_type"] = o.ImplementationType
 	}
 	if o.IsFixedUser != nil {
 		toSerialize["is_fixed_user"] = o.IsFixedUser

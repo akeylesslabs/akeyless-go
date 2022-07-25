@@ -52,6 +52,7 @@ Name | Type | Description | Notes
 **GkeServiceAccountKey** | Pointer to **string** |  | [optional] 
 **GkeServiceAccountName** | Pointer to **string** |  | [optional] 
 **Host** | Pointer to **string** |  | [optional] 
+**ImplementationType** | Pointer to **string** |  | [optional] 
 **K8sBearerToken** | Pointer to **string** |  | [optional] 
 **K8sClusterCaCertificate** | Pointer to **string** |  | [optional] 
 **K8sClusterEndpoint** | Pointer to **string** |  | [optional] 
@@ -1314,6 +1315,31 @@ SetHost sets Host field to given value.
 `func (o *TargetTypeDetailsInput) HasHost() bool`
 
 HasHost returns a boolean if a field has been set.
+
+### GetImplementationType
+
+`func (o *TargetTypeDetailsInput) GetImplementationType() string`
+
+GetImplementationType returns the ImplementationType field if non-nil, zero value otherwise.
+
+### GetImplementationTypeOk
+
+`func (o *TargetTypeDetailsInput) GetImplementationTypeOk() (*string, bool)`
+
+GetImplementationTypeOk returns a tuple with the ImplementationType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetImplementationType
+
+`func (o *TargetTypeDetailsInput) SetImplementationType(v string)`
+
+SetImplementationType sets ImplementationType field to given value.
+
+### HasImplementationType
+
+`func (o *TargetTypeDetailsInput) HasImplementationType() bool`
+
+HasImplementationType returns a boolean if a field has been set.
 
 ### GetK8sBearerToken
 

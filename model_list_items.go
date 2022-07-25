@@ -17,10 +17,10 @@ import (
 
 // ListItems struct for ListItems
 type ListItems struct {
+	// for personal password manager
+	Accessibility *string `json:"accessibility,omitempty"`
 	// Filter by item name or part of it
 	Filter *string `json:"filter,omitempty"`
-	// for personal password manager
-	ItemAccessibility *string `json:"item-accessibility,omitempty"`
 	MinimalView *bool `json:"minimal-view,omitempty"`
 	// Next page reference
 	PaginationToken *string `json:"pagination-token,omitempty"`
@@ -54,6 +54,38 @@ func NewListItemsWithDefaults() *ListItems {
 	return &this
 }
 
+// GetAccessibility returns the Accessibility field value if set, zero value otherwise.
+func (o *ListItems) GetAccessibility() string {
+	if o == nil || o.Accessibility == nil {
+		var ret string
+		return ret
+	}
+	return *o.Accessibility
+}
+
+// GetAccessibilityOk returns a tuple with the Accessibility field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListItems) GetAccessibilityOk() (*string, bool) {
+	if o == nil || o.Accessibility == nil {
+		return nil, false
+	}
+	return o.Accessibility, true
+}
+
+// HasAccessibility returns a boolean if a field has been set.
+func (o *ListItems) HasAccessibility() bool {
+	if o != nil && o.Accessibility != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessibility gets a reference to the given string and assigns it to the Accessibility field.
+func (o *ListItems) SetAccessibility(v string) {
+	o.Accessibility = &v
+}
+
 // GetFilter returns the Filter field value if set, zero value otherwise.
 func (o *ListItems) GetFilter() string {
 	if o == nil || o.Filter == nil {
@@ -84,38 +116,6 @@ func (o *ListItems) HasFilter() bool {
 // SetFilter gets a reference to the given string and assigns it to the Filter field.
 func (o *ListItems) SetFilter(v string) {
 	o.Filter = &v
-}
-
-// GetItemAccessibility returns the ItemAccessibility field value if set, zero value otherwise.
-func (o *ListItems) GetItemAccessibility() string {
-	if o == nil || o.ItemAccessibility == nil {
-		var ret string
-		return ret
-	}
-	return *o.ItemAccessibility
-}
-
-// GetItemAccessibilityOk returns a tuple with the ItemAccessibility field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ListItems) GetItemAccessibilityOk() (*string, bool) {
-	if o == nil || o.ItemAccessibility == nil {
-		return nil, false
-	}
-	return o.ItemAccessibility, true
-}
-
-// HasItemAccessibility returns a boolean if a field has been set.
-func (o *ListItems) HasItemAccessibility() bool {
-	if o != nil && o.ItemAccessibility != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetItemAccessibility gets a reference to the given string and assigns it to the ItemAccessibility field.
-func (o *ListItems) SetItemAccessibility(v string) {
-	o.ItemAccessibility = &v
 }
 
 // GetMinimalView returns the MinimalView field value if set, zero value otherwise.
@@ -376,11 +376,11 @@ func (o *ListItems) SetUidToken(v string) {
 
 func (o ListItems) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Accessibility != nil {
+		toSerialize["accessibility"] = o.Accessibility
+	}
 	if o.Filter != nil {
 		toSerialize["filter"] = o.Filter
-	}
-	if o.ItemAccessibility != nil {
-		toSerialize["item-accessibility"] = o.ItemAccessibility
 	}
 	if o.MinimalView != nil {
 		toSerialize["minimal-view"] = o.MinimalView

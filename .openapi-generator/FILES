@@ -9,6 +9,7 @@ docs/APIKeyAccessRules.md
 docs/AWSIAMAccessRules.md
 docs/AWSPayload.md
 docs/AWSSecretsMigration.md
+docs/AccountGeneralSettings.md
 docs/AccountObjectVersionSettingsOutput.md
 docs/AdminsConfigPart.md
 docs/AkeylessGatewayConfig.md
@@ -116,6 +117,7 @@ docs/CustomerFragment.md
 docs/CustomerFragmentsJson.md
 docs/CustomerFullAddress.md
 docs/DSProducerDetails.md
+docs/DataProtectionSection.md
 docs/DatadogForwardingConfig.md
 docs/Decrypt.md
 docs/DecryptFile.md
@@ -549,6 +551,7 @@ docs/VerifyPKICertWithClassicKey.md
 git_push.sh
 go.mod
 go.sum
+model_account_general_settings.go
 model_account_object_version_settings_output.go
 model_admins_config_part.go
 model_akeyless_gateway_config.go
@@ -659,6 +662,7 @@ model_create_web_target_output.go
 model_customer_fragment.go
 model_customer_fragments_json.go
 model_customer_full_address.go
+model_data_protection_section.go
 model_datadog_forwarding_config.go
 model_decrypt.go
 model_decrypt_file.go

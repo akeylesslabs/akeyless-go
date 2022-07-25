@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AzureAnalyticsConfig** | Pointer to [**AzureLogAnalyticsForwardingConfig**](AzureLogAnalyticsForwardingConfig.md) |  | [optional] 
 **DatadogConfig** | Pointer to [**DatadogForwardingConfig**](DatadogForwardingConfig.md) |  | [optional] 
 **ElasticsearchConfig** | Pointer to [**ElasticsearchLogForwardingConfig**](ElasticsearchLogForwardingConfig.md) |  | [optional] 
+**JsonOutput** | Pointer to **bool** |  | [optional] 
 **LoganEnable** | Pointer to **bool** |  | [optional] 
 **LoganUrl** | Pointer to **string** |  | [optional] 
 **LogstashConfig** | Pointer to [**LogstashLogForwardingConfig**](LogstashLogForwardingConfig.md) |  | [optional] 
@@ -135,6 +136,31 @@ SetElasticsearchConfig sets ElasticsearchConfig field to given value.
 `func (o *LogForwardingConfigPart) HasElasticsearchConfig() bool`
 
 HasElasticsearchConfig returns a boolean if a field has been set.
+
+### GetJsonOutput
+
+`func (o *LogForwardingConfigPart) GetJsonOutput() bool`
+
+GetJsonOutput returns the JsonOutput field if non-nil, zero value otherwise.
+
+### GetJsonOutputOk
+
+`func (o *LogForwardingConfigPart) GetJsonOutputOk() (*bool, bool)`
+
+GetJsonOutputOk returns a tuple with the JsonOutput field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJsonOutput
+
+`func (o *LogForwardingConfigPart) SetJsonOutput(v bool)`
+
+SetJsonOutput sets JsonOutput field to given value.
+
+### HasJsonOutput
+
+`func (o *LogForwardingConfigPart) HasJsonOutput() bool`
+
+HasJsonOutput returns a boolean if a field has been set.
 
 ### GetLoganEnable
 

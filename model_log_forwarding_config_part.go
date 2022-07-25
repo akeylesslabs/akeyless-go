@@ -21,6 +21,7 @@ type LogForwardingConfigPart struct {
 	AzureAnalyticsConfig *AzureLogAnalyticsForwardingConfig `json:"azure_analytics_config,omitempty"`
 	DatadogConfig *DatadogForwardingConfig `json:"datadog_config,omitempty"`
 	ElasticsearchConfig *ElasticsearchLogForwardingConfig `json:"elasticsearch_config,omitempty"`
+	JsonOutput *bool `json:"json_output,omitempty"`
 	LoganEnable *bool `json:"logan_enable,omitempty"`
 	LoganUrl *string `json:"logan_url,omitempty"`
 	LogstashConfig *LogstashLogForwardingConfig `json:"logstash_config,omitempty"`
@@ -174,6 +175,38 @@ func (o *LogForwardingConfigPart) HasElasticsearchConfig() bool {
 // SetElasticsearchConfig gets a reference to the given ElasticsearchLogForwardingConfig and assigns it to the ElasticsearchConfig field.
 func (o *LogForwardingConfigPart) SetElasticsearchConfig(v ElasticsearchLogForwardingConfig) {
 	o.ElasticsearchConfig = &v
+}
+
+// GetJsonOutput returns the JsonOutput field value if set, zero value otherwise.
+func (o *LogForwardingConfigPart) GetJsonOutput() bool {
+	if o == nil || o.JsonOutput == nil {
+		var ret bool
+		return ret
+	}
+	return *o.JsonOutput
+}
+
+// GetJsonOutputOk returns a tuple with the JsonOutput field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LogForwardingConfigPart) GetJsonOutputOk() (*bool, bool) {
+	if o == nil || o.JsonOutput == nil {
+		return nil, false
+	}
+	return o.JsonOutput, true
+}
+
+// HasJsonOutput returns a boolean if a field has been set.
+func (o *LogForwardingConfigPart) HasJsonOutput() bool {
+	if o != nil && o.JsonOutput != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJsonOutput gets a reference to the given bool and assigns it to the JsonOutput field.
+func (o *LogForwardingConfigPart) SetJsonOutput(v bool) {
+	o.JsonOutput = &v
 }
 
 // GetLoganEnable returns the LoganEnable field value if set, zero value otherwise.
@@ -445,6 +478,9 @@ func (o LogForwardingConfigPart) MarshalJSON() ([]byte, error) {
 	}
 	if o.ElasticsearchConfig != nil {
 		toSerialize["elasticsearch_config"] = o.ElasticsearchConfig
+	}
+	if o.JsonOutput != nil {
+		toSerialize["json_output"] = o.JsonOutput
 	}
 	if o.LoganEnable != nil {
 		toSerialize["logan_enable"] = o.LoganEnable

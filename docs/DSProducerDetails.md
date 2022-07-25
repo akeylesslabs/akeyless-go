@@ -96,6 +96,7 @@ Name | Type | Description | Notes
 **HanadbRevocationStatements** | Pointer to **string** |  | [optional] 
 **HostName** | Pointer to **string** |  | [optional] 
 **HostPort** | Pointer to **string** |  | [optional] 
+**ImplementationType** | Pointer to **string** |  | [optional] 
 **IsFixedUser** | Pointer to **string** |  | [optional] 
 **ItemTargetsAssoc** | Pointer to [**[]ItemTargetAssociation**](ItemTargetAssociation.md) |  | [optional] 
 **K8sBearerToken** | Pointer to **string** |  | [optional] 
@@ -2497,6 +2498,31 @@ SetHostPort sets HostPort field to given value.
 `func (o *DSProducerDetails) HasHostPort() bool`
 
 HasHostPort returns a boolean if a field has been set.
+
+### GetImplementationType
+
+`func (o *DSProducerDetails) GetImplementationType() string`
+
+GetImplementationType returns the ImplementationType field if non-nil, zero value otherwise.
+
+### GetImplementationTypeOk
+
+`func (o *DSProducerDetails) GetImplementationTypeOk() (*string, bool)`
+
+GetImplementationTypeOk returns a tuple with the ImplementationType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetImplementationType
+
+`func (o *DSProducerDetails) SetImplementationType(v string)`
+
+SetImplementationType sets ImplementationType field to given value.
+
+### HasImplementationType
+
+`func (o *DSProducerDetails) HasImplementationType() bool`
+
+HasImplementationType returns a boolean if a field has been set.
 
 ### GetIsFixedUser
 

@@ -69,6 +69,7 @@ type TargetTypeDetailsInput struct {
 	GkeServiceAccountKey *string `json:"gke_service_account_key,omitempty"`
 	GkeServiceAccountName *string `json:"gke_service_account_name,omitempty"`
 	Host *string `json:"host,omitempty"`
+	ImplementationType *string `json:"implementation_type,omitempty"`
 	K8sBearerToken *string `json:"k8s_bearer_token,omitempty"`
 	K8sClusterCaCertificate *string `json:"k8s_cluster_ca_certificate,omitempty"`
 	K8sClusterEndpoint *string `json:"k8s_cluster_endpoint,omitempty"`
@@ -1672,6 +1673,38 @@ func (o *TargetTypeDetailsInput) SetHost(v string) {
 	o.Host = &v
 }
 
+// GetImplementationType returns the ImplementationType field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetImplementationType() string {
+	if o == nil || o.ImplementationType == nil {
+		var ret string
+		return ret
+	}
+	return *o.ImplementationType
+}
+
+// GetImplementationTypeOk returns a tuple with the ImplementationType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetImplementationTypeOk() (*string, bool) {
+	if o == nil || o.ImplementationType == nil {
+		return nil, false
+	}
+	return o.ImplementationType, true
+}
+
+// HasImplementationType returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasImplementationType() bool {
+	if o != nil && o.ImplementationType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetImplementationType gets a reference to the given string and assigns it to the ImplementationType field.
+func (o *TargetTypeDetailsInput) SetImplementationType(v string) {
+	o.ImplementationType = &v
+}
+
 // GetK8sBearerToken returns the K8sBearerToken field value if set, zero value otherwise.
 func (o *TargetTypeDetailsInput) GetK8sBearerToken() string {
 	if o == nil || o.K8sBearerToken == nil {
@@ -3193,6 +3226,9 @@ func (o TargetTypeDetailsInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.Host != nil {
 		toSerialize["host"] = o.Host
+	}
+	if o.ImplementationType != nil {
+		toSerialize["implementation_type"] = o.ImplementationType
 	}
 	if o.K8sBearerToken != nil {
 		toSerialize["k8s_bearer_token"] = o.K8sBearerToken

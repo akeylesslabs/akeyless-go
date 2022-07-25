@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ItemAccessibility** | Pointer to **string** | for personal password manager | [optional] 
+**Accessibility** | Pointer to **string** | for personal password manager | [optional] 
 **Names** | **[]string** | Secret name | 
 **PrettyPrint** | Pointer to **bool** |  | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -30,30 +30,30 @@ NewGetSecretValueWithDefaults instantiates a new GetSecretValue object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetItemAccessibility
+### GetAccessibility
 
-`func (o *GetSecretValue) GetItemAccessibility() string`
+`func (o *GetSecretValue) GetAccessibility() string`
 
-GetItemAccessibility returns the ItemAccessibility field if non-nil, zero value otherwise.
+GetAccessibility returns the Accessibility field if non-nil, zero value otherwise.
 
-### GetItemAccessibilityOk
+### GetAccessibilityOk
 
-`func (o *GetSecretValue) GetItemAccessibilityOk() (*string, bool)`
+`func (o *GetSecretValue) GetAccessibilityOk() (*string, bool)`
 
-GetItemAccessibilityOk returns a tuple with the ItemAccessibility field if it's non-nil, zero value otherwise
+GetAccessibilityOk returns a tuple with the Accessibility field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetItemAccessibility
+### SetAccessibility
 
-`func (o *GetSecretValue) SetItemAccessibility(v string)`
+`func (o *GetSecretValue) SetAccessibility(v string)`
 
-SetItemAccessibility sets ItemAccessibility field to given value.
+SetAccessibility sets Accessibility field to given value.
 
-### HasItemAccessibility
+### HasAccessibility
 
-`func (o *GetSecretValue) HasItemAccessibility() bool`
+`func (o *GetSecretValue) HasAccessibility() bool`
 
-HasItemAccessibility returns a boolean if a field has been set.
+HasAccessibility returns a boolean if a field has been set.
 
 ### GetNames
 

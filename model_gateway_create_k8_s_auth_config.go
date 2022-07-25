@@ -51,6 +51,8 @@ func NewGatewayCreateK8SAuthConfig(accessId string, k8sHost string, name string,
 	this.K8sHost = k8sHost
 	this.Name = name
 	this.SigningKey = signingKey
+	var tokenExp int64 = 300
+	this.TokenExp = &tokenExp
 	return &this
 }
 
@@ -59,6 +61,8 @@ func NewGatewayCreateK8SAuthConfig(accessId string, k8sHost string, name string,
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayCreateK8SAuthConfigWithDefaults() *GatewayCreateK8SAuthConfig {
 	this := GatewayCreateK8SAuthConfig{}
+	var tokenExp int64 = 300
+	this.TokenExp = &tokenExp
 	return &this
 }
 

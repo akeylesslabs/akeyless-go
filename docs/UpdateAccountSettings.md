@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **CompanyName** | Pointer to **string** | Company name | [optional] 
 **Country** | Pointer to **string** | Country | [optional] 
 **DefaultVersioning** | Pointer to **string** | Should create version by default | [optional] 
+**DpEnableClassicKeyProtection** | Pointer to **string** | Enable classic key protection [\&quot;true\&quot;/\&quot;false\&quot;] | [optional] 
 **ItemType** | Pointer to **string** | VersionSettingsObjectType defines object types for account version settings | [optional] 
 **JwtTtlDefault** | Pointer to **int64** | Default ttl | [optional] 
 **JwtTtlMax** | Pointer to **int64** | Maximum ttl | [optional] 
@@ -162,6 +163,31 @@ SetDefaultVersioning sets DefaultVersioning field to given value.
 `func (o *UpdateAccountSettings) HasDefaultVersioning() bool`
 
 HasDefaultVersioning returns a boolean if a field has been set.
+
+### GetDpEnableClassicKeyProtection
+
+`func (o *UpdateAccountSettings) GetDpEnableClassicKeyProtection() string`
+
+GetDpEnableClassicKeyProtection returns the DpEnableClassicKeyProtection field if non-nil, zero value otherwise.
+
+### GetDpEnableClassicKeyProtectionOk
+
+`func (o *UpdateAccountSettings) GetDpEnableClassicKeyProtectionOk() (*string, bool)`
+
+GetDpEnableClassicKeyProtectionOk returns a tuple with the DpEnableClassicKeyProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDpEnableClassicKeyProtection
+
+`func (o *UpdateAccountSettings) SetDpEnableClassicKeyProtection(v string)`
+
+SetDpEnableClassicKeyProtection sets DpEnableClassicKeyProtection field to given value.
+
+### HasDpEnableClassicKeyProtection
+
+`func (o *UpdateAccountSettings) HasDpEnableClassicKeyProtection() bool`
+
+HasDpEnableClassicKeyProtection returns a boolean if a field has been set.
 
 ### GetItemType
 

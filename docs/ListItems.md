@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Accessibility** | Pointer to **string** | for personal password manager | [optional] 
 **Filter** | Pointer to **string** | Filter by item name or part of it | [optional] 
-**ItemAccessibility** | Pointer to **string** | for personal password manager | [optional] 
 **MinimalView** | Pointer to **bool** |  | [optional] 
 **PaginationToken** | Pointer to **string** | Next page reference | [optional] 
 **Path** | Pointer to **string** | Path to folder | [optional] 
@@ -34,6 +34,31 @@ NewListItemsWithDefaults instantiates a new ListItems object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetAccessibility
+
+`func (o *ListItems) GetAccessibility() string`
+
+GetAccessibility returns the Accessibility field if non-nil, zero value otherwise.
+
+### GetAccessibilityOk
+
+`func (o *ListItems) GetAccessibilityOk() (*string, bool)`
+
+GetAccessibilityOk returns a tuple with the Accessibility field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessibility
+
+`func (o *ListItems) SetAccessibility(v string)`
+
+SetAccessibility sets Accessibility field to given value.
+
+### HasAccessibility
+
+`func (o *ListItems) HasAccessibility() bool`
+
+HasAccessibility returns a boolean if a field has been set.
+
 ### GetFilter
 
 `func (o *ListItems) GetFilter() string`
@@ -58,31 +83,6 @@ SetFilter sets Filter field to given value.
 `func (o *ListItems) HasFilter() bool`
 
 HasFilter returns a boolean if a field has been set.
-
-### GetItemAccessibility
-
-`func (o *ListItems) GetItemAccessibility() string`
-
-GetItemAccessibility returns the ItemAccessibility field if non-nil, zero value otherwise.
-
-### GetItemAccessibilityOk
-
-`func (o *ListItems) GetItemAccessibilityOk() (*string, bool)`
-
-GetItemAccessibilityOk returns a tuple with the ItemAccessibility field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetItemAccessibility
-
-`func (o *ListItems) SetItemAccessibility(v string)`
-
-SetItemAccessibility sets ItemAccessibility field to given value.
-
-### HasItemAccessibility
-
-`func (o *ListItems) HasItemAccessibility() bool`
-
-HasItemAccessibility returns a boolean if a field has been set.
 
 ### GetMinimalView
 

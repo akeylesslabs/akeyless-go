@@ -54,6 +54,8 @@ func NewGatewayUpdateK8SAuthConfig(accessId string, k8sHost string, name string,
 	this.Name = name
 	this.NewName = newName
 	this.SigningKey = signingKey
+	var tokenExp int64 = 300
+	this.TokenExp = &tokenExp
 	return &this
 }
 
@@ -62,6 +64,8 @@ func NewGatewayUpdateK8SAuthConfig(accessId string, k8sHost string, name string,
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayUpdateK8SAuthConfigWithDefaults() *GatewayUpdateK8SAuthConfig {
 	this := GatewayUpdateK8SAuthConfig{}
+	var tokenExp int64 = 300
+	this.TokenExp = &tokenExp
 	return &this
 }
 

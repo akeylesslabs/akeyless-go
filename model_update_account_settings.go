@@ -27,6 +27,8 @@ type UpdateAccountSettings struct {
 	Country *string `json:"country,omitempty"`
 	// Should create version by default
 	DefaultVersioning *string `json:"default-versioning,omitempty"`
+	// Enable classic key protection [\"true\"/\"false\"]
+	DpEnableClassicKeyProtection *string `json:"dp-enable-classic-key-protection,omitempty"`
 	// VersionSettingsObjectType defines object types for account version settings
 	ItemType *string `json:"item-type,omitempty"`
 	// Default ttl
@@ -222,6 +224,38 @@ func (o *UpdateAccountSettings) HasDefaultVersioning() bool {
 // SetDefaultVersioning gets a reference to the given string and assigns it to the DefaultVersioning field.
 func (o *UpdateAccountSettings) SetDefaultVersioning(v string) {
 	o.DefaultVersioning = &v
+}
+
+// GetDpEnableClassicKeyProtection returns the DpEnableClassicKeyProtection field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetDpEnableClassicKeyProtection() string {
+	if o == nil || o.DpEnableClassicKeyProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DpEnableClassicKeyProtection
+}
+
+// GetDpEnableClassicKeyProtectionOk returns a tuple with the DpEnableClassicKeyProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetDpEnableClassicKeyProtectionOk() (*string, bool) {
+	if o == nil || o.DpEnableClassicKeyProtection == nil {
+		return nil, false
+	}
+	return o.DpEnableClassicKeyProtection, true
+}
+
+// HasDpEnableClassicKeyProtection returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasDpEnableClassicKeyProtection() bool {
+	if o != nil && o.DpEnableClassicKeyProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDpEnableClassicKeyProtection gets a reference to the given string and assigns it to the DpEnableClassicKeyProtection field.
+func (o *UpdateAccountSettings) SetDpEnableClassicKeyProtection(v string) {
+	o.DpEnableClassicKeyProtection = &v
 }
 
 // GetItemType returns the ItemType field value if set, zero value otherwise.
@@ -528,6 +562,9 @@ func (o UpdateAccountSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.DefaultVersioning != nil {
 		toSerialize["default-versioning"] = o.DefaultVersioning
+	}
+	if o.DpEnableClassicKeyProtection != nil {
+		toSerialize["dp-enable-classic-key-protection"] = o.DpEnableClassicKeyProtection
 	}
 	if o.ItemType != nil {
 		toSerialize["item-type"] = o.ItemType

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Address** | Pointer to [**CustomerFullAddress**](CustomerFullAddress.md) |  | [optional] 
 **CompanyName** | Pointer to **string** |  | [optional] 
 **Email** | Pointer to **string** |  | [optional] 
+**GeneralSettings** | Pointer to [**AccountGeneralSettings**](AccountGeneralSettings.md) |  | [optional] 
 **ObjectVersionSettings** | Pointer to [**AccountObjectVersionSettingsOutput**](AccountObjectVersionSettingsOutput.md) |  | [optional] 
 **Phone** | Pointer to **string** |  | [optional] 
 **SecretManagement** | Pointer to [**SmInfo**](SmInfo.md) |  | [optional] 
@@ -132,6 +133,31 @@ SetEmail sets Email field to given value.
 `func (o *GetAccountSettingsCommandOutput) HasEmail() bool`
 
 HasEmail returns a boolean if a field has been set.
+
+### GetGeneralSettings
+
+`func (o *GetAccountSettingsCommandOutput) GetGeneralSettings() AccountGeneralSettings`
+
+GetGeneralSettings returns the GeneralSettings field if non-nil, zero value otherwise.
+
+### GetGeneralSettingsOk
+
+`func (o *GetAccountSettingsCommandOutput) GetGeneralSettingsOk() (*AccountGeneralSettings, bool)`
+
+GetGeneralSettingsOk returns a tuple with the GeneralSettings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGeneralSettings
+
+`func (o *GetAccountSettingsCommandOutput) SetGeneralSettings(v AccountGeneralSettings)`
+
+SetGeneralSettings sets GeneralSettings field to given value.
+
+### HasGeneralSettings
+
+`func (o *GetAccountSettingsCommandOutput) HasGeneralSettings() bool`
+
+HasGeneralSettings returns a boolean if a field has been set.
 
 ### GetObjectVersionSettings
 

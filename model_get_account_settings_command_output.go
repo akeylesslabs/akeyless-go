@@ -21,6 +21,7 @@ type GetAccountSettingsCommandOutput struct {
 	Address *CustomerFullAddress `json:"address,omitempty"`
 	CompanyName *string `json:"company_name,omitempty"`
 	Email *string `json:"email,omitempty"`
+	GeneralSettings *AccountGeneralSettings `json:"general_settings,omitempty"`
 	ObjectVersionSettings *AccountObjectVersionSettingsOutput `json:"object_version_settings,omitempty"`
 	Phone *string `json:"phone,omitempty"`
 	SecretManagement *SmInfo `json:"secret_management,omitempty"`
@@ -171,6 +172,38 @@ func (o *GetAccountSettingsCommandOutput) HasEmail() bool {
 // SetEmail gets a reference to the given string and assigns it to the Email field.
 func (o *GetAccountSettingsCommandOutput) SetEmail(v string) {
 	o.Email = &v
+}
+
+// GetGeneralSettings returns the GeneralSettings field value if set, zero value otherwise.
+func (o *GetAccountSettingsCommandOutput) GetGeneralSettings() AccountGeneralSettings {
+	if o == nil || o.GeneralSettings == nil {
+		var ret AccountGeneralSettings
+		return ret
+	}
+	return *o.GeneralSettings
+}
+
+// GetGeneralSettingsOk returns a tuple with the GeneralSettings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetAccountSettingsCommandOutput) GetGeneralSettingsOk() (*AccountGeneralSettings, bool) {
+	if o == nil || o.GeneralSettings == nil {
+		return nil, false
+	}
+	return o.GeneralSettings, true
+}
+
+// HasGeneralSettings returns a boolean if a field has been set.
+func (o *GetAccountSettingsCommandOutput) HasGeneralSettings() bool {
+	if o != nil && o.GeneralSettings != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGeneralSettings gets a reference to the given AccountGeneralSettings and assigns it to the GeneralSettings field.
+func (o *GetAccountSettingsCommandOutput) SetGeneralSettings(v AccountGeneralSettings) {
+	o.GeneralSettings = &v
 }
 
 // GetObjectVersionSettings returns the ObjectVersionSettings field value if set, zero value otherwise.
@@ -346,6 +379,9 @@ func (o GetAccountSettingsCommandOutput) MarshalJSON() ([]byte, error) {
 	}
 	if o.Email != nil {
 		toSerialize["email"] = o.Email
+	}
+	if o.GeneralSettings != nil {
+		toSerialize["general_settings"] = o.GeneralSettings
 	}
 	if o.ObjectVersionSettings != nil {
 		toSerialize["object_version_settings"] = o.ObjectVersionSettings
