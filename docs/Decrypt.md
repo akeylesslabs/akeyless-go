@@ -7,7 +7,8 @@ Name | Type | Description | Notes
 **Ciphertext** | Pointer to **string** | Ciphertext to be decrypted in base64 encoded format | [optional] 
 **DisplayId** | Pointer to **string** | The display id of the key to use in the decryption process | [optional] 
 **EncryptionContext** | Pointer to **map[string]string** | The encryption context. If this was specified in the encrypt command, it must be specified here or the decryption operation will fail | [optional] 
-**KeyName** | Pointer to **string** | The name of the key to use in the decryption process | [optional] 
+**ItemId** | Pointer to **int64** | The item id of the key to use in the decryption process | [optional] 
+**KeyName** | **string** | The name of the key to use in the decryption process | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
@@ -15,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewDecrypt
 
-`func NewDecrypt() *Decrypt`
+`func NewDecrypt(keyName string, ) *Decrypt`
 
 NewDecrypt instantiates a new Decrypt object
 This constructor will assign default values to properties that have it defined,
@@ -105,6 +106,31 @@ SetEncryptionContext sets EncryptionContext field to given value.
 
 HasEncryptionContext returns a boolean if a field has been set.
 
+### GetItemId
+
+`func (o *Decrypt) GetItemId() int64`
+
+GetItemId returns the ItemId field if non-nil, zero value otherwise.
+
+### GetItemIdOk
+
+`func (o *Decrypt) GetItemIdOk() (*int64, bool)`
+
+GetItemIdOk returns a tuple with the ItemId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemId
+
+`func (o *Decrypt) SetItemId(v int64)`
+
+SetItemId sets ItemId field to given value.
+
+### HasItemId
+
+`func (o *Decrypt) HasItemId() bool`
+
+HasItemId returns a boolean if a field has been set.
+
 ### GetKeyName
 
 `func (o *Decrypt) GetKeyName() string`
@@ -124,11 +150,6 @@ and a boolean to check if the value has been set.
 
 SetKeyName sets KeyName field to given value.
 
-### HasKeyName
-
-`func (o *Decrypt) HasKeyName() bool`
-
-HasKeyName returns a boolean if a field has been set.
 
 ### GetToken
 

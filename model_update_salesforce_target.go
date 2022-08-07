@@ -17,14 +17,18 @@ import (
 
 // UpdateSalesforceTarget struct for UpdateSalesforceTarget
 type UpdateSalesforceTarget struct {
+	// Base64 encoded PEM of the connected app private key (relevant for JWT auth only)
+	AppPrivateKeyData *string `json:"app-private-key-data,omitempty"`
+	// type of the auth flow ('jwt' / 'user-password')
+	AuthFlow string `json:"auth-flow"`
 	// Base64 encoded PEM cert to use when uploading a new key to Salesforce
 	CaCertData *string `json:"ca-cert-data,omitempty"`
 	// name of the certificate in Salesforce tenant to use when uploading new key
 	CaCertName *string `json:"ca-cert-name,omitempty"`
 	// Client ID of the oauth2 app to use for connecting to Salesforce
 	ClientId string `json:"client-id"`
-	// Client secret of the oauth2 app to use for connecting to Salesforce
-	ClientSecret string `json:"client-secret"`
+	// Client secret of the oauth2 app to use for connecting to Salesforce (required for password flow)
+	ClientSecret *string `json:"client-secret,omitempty"`
 	// Comment about the target
 	Comment *string `json:"comment,omitempty"`
 	// The email of the user attached to the oauth2 app used for connecting to Salesforce
@@ -36,10 +40,10 @@ type UpdateSalesforceTarget struct {
 	Name string `json:"name"`
 	// New target name
 	NewName *string `json:"new-name,omitempty"`
-	// The password of the user attached to the oauth2 app used for connecting to Salesforce
-	Password string `json:"password"`
-	// The security token of the user attached to the oauth2 app used for connecting to Salesforce
-	SecurityToken string `json:"security-token"`
+	// The password of the user attached to the oauth2 app used for connecting to Salesforce (required for user-password flow)
+	Password *string `json:"password,omitempty"`
+	// The security token of the user attached to the oauth2 app used for connecting to Salesforce  (required for user-password flow)
+	SecurityToken *string `json:"security-token,omitempty"`
 	// Url of the Salesforce tenant
 	TenantUrl string `json:"tenant-url"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -54,14 +58,12 @@ type UpdateSalesforceTarget struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateSalesforceTarget(clientId string, clientSecret string, email string, name string, password string, securityToken string, tenantUrl string, ) *UpdateSalesforceTarget {
+func NewUpdateSalesforceTarget(authFlow string, clientId string, email string, name string, tenantUrl string, ) *UpdateSalesforceTarget {
 	this := UpdateSalesforceTarget{}
+	this.AuthFlow = authFlow
 	this.ClientId = clientId
-	this.ClientSecret = clientSecret
 	this.Email = email
 	this.Name = name
-	this.Password = password
-	this.SecurityToken = securityToken
 	this.TenantUrl = tenantUrl
 	return &this
 }
@@ -72,6 +74,62 @@ func NewUpdateSalesforceTarget(clientId string, clientSecret string, email strin
 func NewUpdateSalesforceTargetWithDefaults() *UpdateSalesforceTarget {
 	this := UpdateSalesforceTarget{}
 	return &this
+}
+
+// GetAppPrivateKeyData returns the AppPrivateKeyData field value if set, zero value otherwise.
+func (o *UpdateSalesforceTarget) GetAppPrivateKeyData() string {
+	if o == nil || o.AppPrivateKeyData == nil {
+		var ret string
+		return ret
+	}
+	return *o.AppPrivateKeyData
+}
+
+// GetAppPrivateKeyDataOk returns a tuple with the AppPrivateKeyData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateSalesforceTarget) GetAppPrivateKeyDataOk() (*string, bool) {
+	if o == nil || o.AppPrivateKeyData == nil {
+		return nil, false
+	}
+	return o.AppPrivateKeyData, true
+}
+
+// HasAppPrivateKeyData returns a boolean if a field has been set.
+func (o *UpdateSalesforceTarget) HasAppPrivateKeyData() bool {
+	if o != nil && o.AppPrivateKeyData != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAppPrivateKeyData gets a reference to the given string and assigns it to the AppPrivateKeyData field.
+func (o *UpdateSalesforceTarget) SetAppPrivateKeyData(v string) {
+	o.AppPrivateKeyData = &v
+}
+
+// GetAuthFlow returns the AuthFlow field value
+func (o *UpdateSalesforceTarget) GetAuthFlow() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.AuthFlow
+}
+
+// GetAuthFlowOk returns a tuple with the AuthFlow field value
+// and a boolean to check if the value has been set.
+func (o *UpdateSalesforceTarget) GetAuthFlowOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.AuthFlow, true
+}
+
+// SetAuthFlow sets field value
+func (o *UpdateSalesforceTarget) SetAuthFlow(v string) {
+	o.AuthFlow = v
 }
 
 // GetCaCertData returns the CaCertData field value if set, zero value otherwise.
@@ -162,28 +220,36 @@ func (o *UpdateSalesforceTarget) SetClientId(v string) {
 	o.ClientId = v
 }
 
-// GetClientSecret returns the ClientSecret field value
+// GetClientSecret returns the ClientSecret field value if set, zero value otherwise.
 func (o *UpdateSalesforceTarget) GetClientSecret() string {
-	if o == nil  {
+	if o == nil || o.ClientSecret == nil {
 		var ret string
 		return ret
 	}
-
-	return o.ClientSecret
+	return *o.ClientSecret
 }
 
-// GetClientSecretOk returns a tuple with the ClientSecret field value
+// GetClientSecretOk returns a tuple with the ClientSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateSalesforceTarget) GetClientSecretOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.ClientSecret == nil {
 		return nil, false
 	}
-	return &o.ClientSecret, true
+	return o.ClientSecret, true
 }
 
-// SetClientSecret sets field value
+// HasClientSecret returns a boolean if a field has been set.
+func (o *UpdateSalesforceTarget) HasClientSecret() bool {
+	if o != nil && o.ClientSecret != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetClientSecret gets a reference to the given string and assigns it to the ClientSecret field.
 func (o *UpdateSalesforceTarget) SetClientSecret(v string) {
-	o.ClientSecret = v
+	o.ClientSecret = &v
 }
 
 // GetComment returns the Comment field value if set, zero value otherwise.
@@ -362,52 +428,68 @@ func (o *UpdateSalesforceTarget) SetNewName(v string) {
 	o.NewName = &v
 }
 
-// GetPassword returns the Password field value
+// GetPassword returns the Password field value if set, zero value otherwise.
 func (o *UpdateSalesforceTarget) GetPassword() string {
-	if o == nil  {
+	if o == nil || o.Password == nil {
 		var ret string
 		return ret
 	}
-
-	return o.Password
+	return *o.Password
 }
 
-// GetPasswordOk returns a tuple with the Password field value
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateSalesforceTarget) GetPasswordOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.Password == nil {
 		return nil, false
 	}
-	return &o.Password, true
+	return o.Password, true
 }
 
-// SetPassword sets field value
+// HasPassword returns a boolean if a field has been set.
+func (o *UpdateSalesforceTarget) HasPassword() bool {
+	if o != nil && o.Password != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
 func (o *UpdateSalesforceTarget) SetPassword(v string) {
-	o.Password = v
+	o.Password = &v
 }
 
-// GetSecurityToken returns the SecurityToken field value
+// GetSecurityToken returns the SecurityToken field value if set, zero value otherwise.
 func (o *UpdateSalesforceTarget) GetSecurityToken() string {
-	if o == nil  {
+	if o == nil || o.SecurityToken == nil {
 		var ret string
 		return ret
 	}
-
-	return o.SecurityToken
+	return *o.SecurityToken
 }
 
-// GetSecurityTokenOk returns a tuple with the SecurityToken field value
+// GetSecurityTokenOk returns a tuple with the SecurityToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateSalesforceTarget) GetSecurityTokenOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.SecurityToken == nil {
 		return nil, false
 	}
-	return &o.SecurityToken, true
+	return o.SecurityToken, true
 }
 
-// SetSecurityToken sets field value
+// HasSecurityToken returns a boolean if a field has been set.
+func (o *UpdateSalesforceTarget) HasSecurityToken() bool {
+	if o != nil && o.SecurityToken != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecurityToken gets a reference to the given string and assigns it to the SecurityToken field.
 func (o *UpdateSalesforceTarget) SetSecurityToken(v string) {
-	o.SecurityToken = v
+	o.SecurityToken = &v
 }
 
 // GetTenantUrl returns the TenantUrl field value
@@ -532,6 +614,12 @@ func (o *UpdateSalesforceTarget) SetUpdateVersion(v bool) {
 
 func (o UpdateSalesforceTarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AppPrivateKeyData != nil {
+		toSerialize["app-private-key-data"] = o.AppPrivateKeyData
+	}
+	if true {
+		toSerialize["auth-flow"] = o.AuthFlow
+	}
 	if o.CaCertData != nil {
 		toSerialize["ca-cert-data"] = o.CaCertData
 	}
@@ -541,7 +629,7 @@ func (o UpdateSalesforceTarget) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["client-id"] = o.ClientId
 	}
-	if true {
+	if o.ClientSecret != nil {
 		toSerialize["client-secret"] = o.ClientSecret
 	}
 	if o.Comment != nil {
@@ -562,10 +650,10 @@ func (o UpdateSalesforceTarget) MarshalJSON() ([]byte, error) {
 	if o.NewName != nil {
 		toSerialize["new-name"] = o.NewName
 	}
-	if true {
+	if o.Password != nil {
 		toSerialize["password"] = o.Password
 	}
-	if true {
+	if o.SecurityToken != nil {
 		toSerialize["security-token"] = o.SecurityToken
 	}
 	if true {

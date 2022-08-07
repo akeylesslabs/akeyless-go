@@ -5,15 +5,18 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessId** | **string** | The access ID of the Kubernetes auth method | 
+**ClusterApiType** | Pointer to **string** | Cluster access type. options: [native_k8s, rancher] | [optional] [default to "native_k8s"]
 **ConfigEncryptionKeyName** | Pointer to **string** | Config encryption key | [optional] 
 **K8sCaCert** | Pointer to **string** | The CA Cert (in PEM format) to use to call into the kubernetes API server | [optional] 
 **K8sHost** | **string** | The URL of the kubernetes API server | 
 **K8sIssuer** | Pointer to **string** | The Kubernetes JWT issuer name. If not set, kubernetes/serviceaccount will use as an issuer. | [optional] 
 **Name** | **string** | K8S Auth config name | 
+**RancherApiKey** | Pointer to **string** | The api key used to access the TokenReview API to validate other JWTs (relevant for \&quot;rancher\&quot; only) | [optional] 
+**RancherClusterId** | Pointer to **string** | The cluster id as define in rancher (relevant for \&quot;rancher\&quot; only) | [optional] 
 **SigningKey** | **string** | The private key (in base64 encoded of the PEM format) associated with the public key defined in the Kubernetes auth | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **TokenExp** | Pointer to **int64** | Time in seconds of expiration of the Akeyless Kube Auth Method token | [optional] [default to 300]
-**TokenReviewerJwt** | Pointer to **string** | A Kubernetes service account JWT used to access the TokenReview API to validate other JWTs. If not set, the JWT submitted in the authentication process will be used to access the Kubernetes TokenReview API. | [optional] 
+**TokenReviewerJwt** | Pointer to **string** | A Kubernetes service account JWT used to access the TokenReview API to validate other JWTs (relevant for \&quot;native_k8s\&quot; only). If not set, the JWT submitted in the authentication process will be used to access the Kubernetes TokenReview API. | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
 ## Methods
@@ -54,6 +57,31 @@ and a boolean to check if the value has been set.
 
 SetAccessId sets AccessId field to given value.
 
+
+### GetClusterApiType
+
+`func (o *GatewayCreateK8SAuthConfig) GetClusterApiType() string`
+
+GetClusterApiType returns the ClusterApiType field if non-nil, zero value otherwise.
+
+### GetClusterApiTypeOk
+
+`func (o *GatewayCreateK8SAuthConfig) GetClusterApiTypeOk() (*string, bool)`
+
+GetClusterApiTypeOk returns a tuple with the ClusterApiType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClusterApiType
+
+`func (o *GatewayCreateK8SAuthConfig) SetClusterApiType(v string)`
+
+SetClusterApiType sets ClusterApiType field to given value.
+
+### HasClusterApiType
+
+`func (o *GatewayCreateK8SAuthConfig) HasClusterApiType() bool`
+
+HasClusterApiType returns a boolean if a field has been set.
 
 ### GetConfigEncryptionKeyName
 
@@ -169,6 +197,56 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetRancherApiKey
+
+`func (o *GatewayCreateK8SAuthConfig) GetRancherApiKey() string`
+
+GetRancherApiKey returns the RancherApiKey field if non-nil, zero value otherwise.
+
+### GetRancherApiKeyOk
+
+`func (o *GatewayCreateK8SAuthConfig) GetRancherApiKeyOk() (*string, bool)`
+
+GetRancherApiKeyOk returns a tuple with the RancherApiKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRancherApiKey
+
+`func (o *GatewayCreateK8SAuthConfig) SetRancherApiKey(v string)`
+
+SetRancherApiKey sets RancherApiKey field to given value.
+
+### HasRancherApiKey
+
+`func (o *GatewayCreateK8SAuthConfig) HasRancherApiKey() bool`
+
+HasRancherApiKey returns a boolean if a field has been set.
+
+### GetRancherClusterId
+
+`func (o *GatewayCreateK8SAuthConfig) GetRancherClusterId() string`
+
+GetRancherClusterId returns the RancherClusterId field if non-nil, zero value otherwise.
+
+### GetRancherClusterIdOk
+
+`func (o *GatewayCreateK8SAuthConfig) GetRancherClusterIdOk() (*string, bool)`
+
+GetRancherClusterIdOk returns a tuple with the RancherClusterId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRancherClusterId
+
+`func (o *GatewayCreateK8SAuthConfig) SetRancherClusterId(v string)`
+
+SetRancherClusterId sets RancherClusterId field to given value.
+
+### HasRancherClusterId
+
+`func (o *GatewayCreateK8SAuthConfig) HasRancherClusterId() bool`
+
+HasRancherClusterId returns a boolean if a field has been set.
 
 ### GetSigningKey
 

@@ -17,7 +17,9 @@ import (
 
 // CreateKeyOutput struct for CreateKeyOutput
 type CreateKeyOutput struct {
+	DisplayId *string `json:"display_id,omitempty"`
 	FragmentResults *[]int64 `json:"fragment_results,omitempty"`
+	ItemId *int64 `json:"item_id,omitempty"`
 }
 
 // NewCreateKeyOutput instantiates a new CreateKeyOutput object
@@ -35,6 +37,38 @@ func NewCreateKeyOutput() *CreateKeyOutput {
 func NewCreateKeyOutputWithDefaults() *CreateKeyOutput {
 	this := CreateKeyOutput{}
 	return &this
+}
+
+// GetDisplayId returns the DisplayId field value if set, zero value otherwise.
+func (o *CreateKeyOutput) GetDisplayId() string {
+	if o == nil || o.DisplayId == nil {
+		var ret string
+		return ret
+	}
+	return *o.DisplayId
+}
+
+// GetDisplayIdOk returns a tuple with the DisplayId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateKeyOutput) GetDisplayIdOk() (*string, bool) {
+	if o == nil || o.DisplayId == nil {
+		return nil, false
+	}
+	return o.DisplayId, true
+}
+
+// HasDisplayId returns a boolean if a field has been set.
+func (o *CreateKeyOutput) HasDisplayId() bool {
+	if o != nil && o.DisplayId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDisplayId gets a reference to the given string and assigns it to the DisplayId field.
+func (o *CreateKeyOutput) SetDisplayId(v string) {
+	o.DisplayId = &v
 }
 
 // GetFragmentResults returns the FragmentResults field value if set, zero value otherwise.
@@ -69,10 +103,48 @@ func (o *CreateKeyOutput) SetFragmentResults(v []int64) {
 	o.FragmentResults = &v
 }
 
+// GetItemId returns the ItemId field value if set, zero value otherwise.
+func (o *CreateKeyOutput) GetItemId() int64 {
+	if o == nil || o.ItemId == nil {
+		var ret int64
+		return ret
+	}
+	return *o.ItemId
+}
+
+// GetItemIdOk returns a tuple with the ItemId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateKeyOutput) GetItemIdOk() (*int64, bool) {
+	if o == nil || o.ItemId == nil {
+		return nil, false
+	}
+	return o.ItemId, true
+}
+
+// HasItemId returns a boolean if a field has been set.
+func (o *CreateKeyOutput) HasItemId() bool {
+	if o != nil && o.ItemId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetItemId gets a reference to the given int64 and assigns it to the ItemId field.
+func (o *CreateKeyOutput) SetItemId(v int64) {
+	o.ItemId = &v
+}
+
 func (o CreateKeyOutput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.DisplayId != nil {
+		toSerialize["display_id"] = o.DisplayId
+	}
 	if o.FragmentResults != nil {
 		toSerialize["fragment_results"] = o.FragmentResults
+	}
+	if o.ItemId != nil {
+		toSerialize["item_id"] = o.ItemId
 	}
 	return json.Marshal(toSerialize)
 }

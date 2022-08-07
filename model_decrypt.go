@@ -23,8 +23,10 @@ type Decrypt struct {
 	DisplayId *string `json:"display-id,omitempty"`
 	// The encryption context. If this was specified in the encrypt command, it must be specified here or the decryption operation will fail
 	EncryptionContext *map[string]string `json:"encryption-context,omitempty"`
+	// The item id of the key to use in the decryption process
+	ItemId *int64 `json:"item-id,omitempty"`
 	// The name of the key to use in the decryption process
-	KeyName *string `json:"key-name,omitempty"`
+	KeyName string `json:"key-name"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -35,8 +37,9 @@ type Decrypt struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDecrypt() *Decrypt {
+func NewDecrypt(keyName string, ) *Decrypt {
 	this := Decrypt{}
+	this.KeyName = keyName
 	return &this
 }
 
@@ -144,36 +147,60 @@ func (o *Decrypt) SetEncryptionContext(v map[string]string) {
 	o.EncryptionContext = &v
 }
 
-// GetKeyName returns the KeyName field value if set, zero value otherwise.
-func (o *Decrypt) GetKeyName() string {
-	if o == nil || o.KeyName == nil {
-		var ret string
+// GetItemId returns the ItemId field value if set, zero value otherwise.
+func (o *Decrypt) GetItemId() int64 {
+	if o == nil || o.ItemId == nil {
+		var ret int64
 		return ret
 	}
-	return *o.KeyName
+	return *o.ItemId
 }
 
-// GetKeyNameOk returns a tuple with the KeyName field value if set, nil otherwise
+// GetItemIdOk returns a tuple with the ItemId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Decrypt) GetKeyNameOk() (*string, bool) {
-	if o == nil || o.KeyName == nil {
+func (o *Decrypt) GetItemIdOk() (*int64, bool) {
+	if o == nil || o.ItemId == nil {
 		return nil, false
 	}
-	return o.KeyName, true
+	return o.ItemId, true
 }
 
-// HasKeyName returns a boolean if a field has been set.
-func (o *Decrypt) HasKeyName() bool {
-	if o != nil && o.KeyName != nil {
+// HasItemId returns a boolean if a field has been set.
+func (o *Decrypt) HasItemId() bool {
+	if o != nil && o.ItemId != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetKeyName gets a reference to the given string and assigns it to the KeyName field.
+// SetItemId gets a reference to the given int64 and assigns it to the ItemId field.
+func (o *Decrypt) SetItemId(v int64) {
+	o.ItemId = &v
+}
+
+// GetKeyName returns the KeyName field value
+func (o *Decrypt) GetKeyName() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.KeyName
+}
+
+// GetKeyNameOk returns a tuple with the KeyName field value
+// and a boolean to check if the value has been set.
+func (o *Decrypt) GetKeyNameOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.KeyName, true
+}
+
+// SetKeyName sets field value
 func (o *Decrypt) SetKeyName(v string) {
-	o.KeyName = &v
+	o.KeyName = v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -251,7 +278,10 @@ func (o Decrypt) MarshalJSON() ([]byte, error) {
 	if o.EncryptionContext != nil {
 		toSerialize["encryption-context"] = o.EncryptionContext
 	}
-	if o.KeyName != nil {
+	if o.ItemId != nil {
+		toSerialize["item-id"] = o.ItemId
+	}
+	if true {
 		toSerialize["key-name"] = o.KeyName
 	}
 	if o.Token != nil {

@@ -4,8 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DisplayId** | Pointer to **string** | The display id of the key to use in the encryption process | [optional] 
 **EncryptionContext** | Pointer to **map[string]string** | name-value pair that specifies the encryption context to be used for authenticated encryption. If used here, the same value must be supplied to the decrypt command or decryption will fail | [optional] 
 **In** | **string** | Path to the file to be encrypted. If not provided, the content will be taken from stdin | 
+**ItemId** | Pointer to **int64** | The item id of the key to use in the encryption process | [optional] 
 **KeyName** | **string** | The name of the key to use in the encryption process | 
 **Out** | Pointer to **string** | Path to the output file. If not provided, the output will be sent to stdout | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -29,6 +31,31 @@ will change when the set of required properties is changed
 NewEncryptFileWithDefaults instantiates a new EncryptFile object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetDisplayId
+
+`func (o *EncryptFile) GetDisplayId() string`
+
+GetDisplayId returns the DisplayId field if non-nil, zero value otherwise.
+
+### GetDisplayIdOk
+
+`func (o *EncryptFile) GetDisplayIdOk() (*string, bool)`
+
+GetDisplayIdOk returns a tuple with the DisplayId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisplayId
+
+`func (o *EncryptFile) SetDisplayId(v string)`
+
+SetDisplayId sets DisplayId field to given value.
+
+### HasDisplayId
+
+`func (o *EncryptFile) HasDisplayId() bool`
+
+HasDisplayId returns a boolean if a field has been set.
 
 ### GetEncryptionContext
 
@@ -74,6 +101,31 @@ and a boolean to check if the value has been set.
 
 SetIn sets In field to given value.
 
+
+### GetItemId
+
+`func (o *EncryptFile) GetItemId() int64`
+
+GetItemId returns the ItemId field if non-nil, zero value otherwise.
+
+### GetItemIdOk
+
+`func (o *EncryptFile) GetItemIdOk() (*int64, bool)`
+
+GetItemIdOk returns a tuple with the ItemId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemId
+
+`func (o *EncryptFile) SetItemId(v int64)`
+
+SetItemId sets ItemId field to given value.
+
+### HasItemId
+
+`func (o *EncryptFile) HasItemId() bool`
+
+HasItemId returns a boolean if a field has been set.
 
 ### GetKeyName
 

@@ -31,6 +31,8 @@ type CreateLdapTarget struct {
 	LdapUrl string `json:"ldap-url"`
 	// Target name
 	Name string `json:"name"`
+	// Set Ldap server type, Options:[OpenLDAP, ActiveDirectory]. Default is OpenLDAP
+	ServerType *string `json:"server-type,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// Token expiration
@@ -49,6 +51,8 @@ func NewCreateLdapTarget(bindDn string, bindDnPassword string, ldapUrl string, n
 	this.BindDnPassword = bindDnPassword
 	this.LdapUrl = ldapUrl
 	this.Name = name
+	var serverType string = "OpenLDAP"
+	this.ServerType = &serverType
 	return &this
 }
 
@@ -57,6 +61,8 @@ func NewCreateLdapTarget(bindDn string, bindDnPassword string, ldapUrl string, n
 // but it doesn't guarantee that properties required by API are set
 func NewCreateLdapTargetWithDefaults() *CreateLdapTarget {
 	this := CreateLdapTarget{}
+	var serverType string = "OpenLDAP"
+	this.ServerType = &serverType
 	return &this
 }
 
@@ -252,6 +258,38 @@ func (o *CreateLdapTarget) SetName(v string) {
 	o.Name = v
 }
 
+// GetServerType returns the ServerType field value if set, zero value otherwise.
+func (o *CreateLdapTarget) GetServerType() string {
+	if o == nil || o.ServerType == nil {
+		var ret string
+		return ret
+	}
+	return *o.ServerType
+}
+
+// GetServerTypeOk returns a tuple with the ServerType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateLdapTarget) GetServerTypeOk() (*string, bool) {
+	if o == nil || o.ServerType == nil {
+		return nil, false
+	}
+	return o.ServerType, true
+}
+
+// HasServerType returns a boolean if a field has been set.
+func (o *CreateLdapTarget) HasServerType() bool {
+	if o != nil && o.ServerType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetServerType gets a reference to the given string and assigns it to the ServerType field.
+func (o *CreateLdapTarget) SetServerType(v string) {
+	o.ServerType = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *CreateLdapTarget) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -370,6 +408,9 @@ func (o CreateLdapTarget) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.ServerType != nil {
+		toSerialize["server-type"] = o.ServerType
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

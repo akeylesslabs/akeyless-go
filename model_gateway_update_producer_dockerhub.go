@@ -21,7 +21,7 @@ type GatewayUpdateProducerDockerhub struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// DockerhubPassword is either the user's password access token to manage the repository
 	DockerhubPassword *string `json:"dockerhub-password,omitempty"`
-	// Access token scopes list (comma seperated) to give the dynamic secret valid options are in \"repo:admin\", \"repo:write\", \"repo:read\", \"repo:public_read\"
+	// Access token scopes list (comma-separated) to give the dynamic secret valid options are in \"repo:admin\", \"repo:write\", \"repo:read\", \"repo:public_read\"
 	DockerhubTokenScopes *string `json:"dockerhub-token-scopes,omitempty"`
 	// DockerhubUsername is the name of the user in dockerhub
 	DockerhubUsername *string `json:"dockerhub-username,omitempty"`

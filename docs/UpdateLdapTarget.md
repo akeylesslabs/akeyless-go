@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **LdapUrl** | Pointer to **string** |  | [optional] 
 **Name** | **string** | Target name | 
 **NewName** | Pointer to **string** | New target name | [optional] 
+**ServerType** | Pointer to **string** | Set Ldap server type, Options:[OpenLDAP, ActiveDirectory] | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **TokenExpiration** | Pointer to **string** |  | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -256,6 +257,31 @@ SetNewName sets NewName field to given value.
 `func (o *UpdateLdapTarget) HasNewName() bool`
 
 HasNewName returns a boolean if a field has been set.
+
+### GetServerType
+
+`func (o *UpdateLdapTarget) GetServerType() string`
+
+GetServerType returns the ServerType field if non-nil, zero value otherwise.
+
+### GetServerTypeOk
+
+`func (o *UpdateLdapTarget) GetServerTypeOk() (*string, bool)`
+
+GetServerTypeOk returns a tuple with the ServerType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServerType
+
+`func (o *UpdateLdapTarget) SetServerType(v string)`
+
+SetServerType sets ServerType field to given value.
+
+### HasServerType
+
+`func (o *UpdateLdapTarget) HasServerType() bool`
+
+HasServerType returns a boolean if a field has been set.
 
 ### GetToken
 

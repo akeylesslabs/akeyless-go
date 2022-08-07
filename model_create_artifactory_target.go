@@ -25,7 +25,7 @@ type CreateArtifactoryTarget struct {
 	BaseUrl string `json:"base-url"`
 	// Comment about the target
 	Comment *string `json:"comment,omitempty"`
-	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
+	// The name of a key used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
 	// Target name
 	Name string `json:"name"`

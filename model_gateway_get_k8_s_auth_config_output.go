@@ -23,6 +23,8 @@ type GatewayGetK8SAuthConfigOutput struct {
 	AuthMethodAccessId *string `json:"auth_method_access_id,omitempty"`
 	// AuthMethodSigningKey is the private key (in base64 of the PEM format) associated with the public key defined in the Kubernetes auth method, that used to sign the internal token for the Akeyless Kubernetes Auth Method
 	AuthMethodPrvKeyPem *string `json:"auth_method_prv_key_pem,omitempty"`
+	// ClusterApiType defines types of API access to cluster
+	ClusterApiType *string `json:"cluster_api_type,omitempty"`
 	// DisableISSValidation is optional parameter to disable ISS validation
 	DisableIssValidation *bool `json:"disable_iss_validation,omitempty"`
 	Id *string `json:"id,omitempty"`
@@ -34,10 +36,14 @@ type GatewayGetK8SAuthConfigOutput struct {
 	K8sIssuer *string `json:"k8s_issuer,omitempty"`
 	// K8SPublicKeysPEM is the list of public key in PEM format
 	K8sPubKeysPem *[]string `json:"k8s_pub_keys_pem,omitempty"`
-	// K8STokenReviewerJW\"K8S Auth config %v successfully created\\n\", clictx.Color().Bold(c.K8SAuthConfigName)T is the bearer to use during the TokenReview API call
+	// K8STokenReviewerJWT is the bearer for clusterApiTypeK8s, used during TokenReview API call
 	K8sTokenReviewerJwt *string `json:"k8s_token_reviewer_jwt,omitempty"`
 	Name *string `json:"name,omitempty"`
 	ProtectionKey *string `json:"protection_key,omitempty"`
+	// RancherApiKey the bear token for clusterApiTypeRancher
+	RancherApiKey *string `json:"rancher_api_key,omitempty"`
+	// RancherClusterId cluster id as define in rancher (in case of clusterApiTypeRancher)
+	RancherClusterId *string `json:"rancher_cluster_id,omitempty"`
 	// UseLocalCAJwt is an optional parameter to set defaulting to using the local CA cert and service account jwt when running in a Kubernetes pod
 	UseLocalCaJwt *bool `json:"use_local_ca_jwt,omitempty"`
 }
@@ -153,6 +159,38 @@ func (o *GatewayGetK8SAuthConfigOutput) HasAuthMethodPrvKeyPem() bool {
 // SetAuthMethodPrvKeyPem gets a reference to the given string and assigns it to the AuthMethodPrvKeyPem field.
 func (o *GatewayGetK8SAuthConfigOutput) SetAuthMethodPrvKeyPem(v string) {
 	o.AuthMethodPrvKeyPem = &v
+}
+
+// GetClusterApiType returns the ClusterApiType field value if set, zero value otherwise.
+func (o *GatewayGetK8SAuthConfigOutput) GetClusterApiType() string {
+	if o == nil || o.ClusterApiType == nil {
+		var ret string
+		return ret
+	}
+	return *o.ClusterApiType
+}
+
+// GetClusterApiTypeOk returns a tuple with the ClusterApiType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayGetK8SAuthConfigOutput) GetClusterApiTypeOk() (*string, bool) {
+	if o == nil || o.ClusterApiType == nil {
+		return nil, false
+	}
+	return o.ClusterApiType, true
+}
+
+// HasClusterApiType returns a boolean if a field has been set.
+func (o *GatewayGetK8SAuthConfigOutput) HasClusterApiType() bool {
+	if o != nil && o.ClusterApiType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetClusterApiType gets a reference to the given string and assigns it to the ClusterApiType field.
+func (o *GatewayGetK8SAuthConfigOutput) SetClusterApiType(v string) {
+	o.ClusterApiType = &v
 }
 
 // GetDisableIssValidation returns the DisableIssValidation field value if set, zero value otherwise.
@@ -443,6 +481,70 @@ func (o *GatewayGetK8SAuthConfigOutput) SetProtectionKey(v string) {
 	o.ProtectionKey = &v
 }
 
+// GetRancherApiKey returns the RancherApiKey field value if set, zero value otherwise.
+func (o *GatewayGetK8SAuthConfigOutput) GetRancherApiKey() string {
+	if o == nil || o.RancherApiKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.RancherApiKey
+}
+
+// GetRancherApiKeyOk returns a tuple with the RancherApiKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayGetK8SAuthConfigOutput) GetRancherApiKeyOk() (*string, bool) {
+	if o == nil || o.RancherApiKey == nil {
+		return nil, false
+	}
+	return o.RancherApiKey, true
+}
+
+// HasRancherApiKey returns a boolean if a field has been set.
+func (o *GatewayGetK8SAuthConfigOutput) HasRancherApiKey() bool {
+	if o != nil && o.RancherApiKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRancherApiKey gets a reference to the given string and assigns it to the RancherApiKey field.
+func (o *GatewayGetK8SAuthConfigOutput) SetRancherApiKey(v string) {
+	o.RancherApiKey = &v
+}
+
+// GetRancherClusterId returns the RancherClusterId field value if set, zero value otherwise.
+func (o *GatewayGetK8SAuthConfigOutput) GetRancherClusterId() string {
+	if o == nil || o.RancherClusterId == nil {
+		var ret string
+		return ret
+	}
+	return *o.RancherClusterId
+}
+
+// GetRancherClusterIdOk returns a tuple with the RancherClusterId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayGetK8SAuthConfigOutput) GetRancherClusterIdOk() (*string, bool) {
+	if o == nil || o.RancherClusterId == nil {
+		return nil, false
+	}
+	return o.RancherClusterId, true
+}
+
+// HasRancherClusterId returns a boolean if a field has been set.
+func (o *GatewayGetK8SAuthConfigOutput) HasRancherClusterId() bool {
+	if o != nil && o.RancherClusterId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRancherClusterId gets a reference to the given string and assigns it to the RancherClusterId field.
+func (o *GatewayGetK8SAuthConfigOutput) SetRancherClusterId(v string) {
+	o.RancherClusterId = &v
+}
+
 // GetUseLocalCaJwt returns the UseLocalCaJwt field value if set, zero value otherwise.
 func (o *GatewayGetK8SAuthConfigOutput) GetUseLocalCaJwt() bool {
 	if o == nil || o.UseLocalCaJwt == nil {
@@ -486,6 +588,9 @@ func (o GatewayGetK8SAuthConfigOutput) MarshalJSON() ([]byte, error) {
 	if o.AuthMethodPrvKeyPem != nil {
 		toSerialize["auth_method_prv_key_pem"] = o.AuthMethodPrvKeyPem
 	}
+	if o.ClusterApiType != nil {
+		toSerialize["cluster_api_type"] = o.ClusterApiType
+	}
 	if o.DisableIssValidation != nil {
 		toSerialize["disable_iss_validation"] = o.DisableIssValidation
 	}
@@ -512,6 +617,12 @@ func (o GatewayGetK8SAuthConfigOutput) MarshalJSON() ([]byte, error) {
 	}
 	if o.ProtectionKey != nil {
 		toSerialize["protection_key"] = o.ProtectionKey
+	}
+	if o.RancherApiKey != nil {
+		toSerialize["rancher_api_key"] = o.RancherApiKey
+	}
+	if o.RancherClusterId != nil {
+		toSerialize["rancher_cluster_id"] = o.RancherClusterId
 	}
 	if o.UseLocalCaJwt != nil {
 		toSerialize["use_local_ca_jwt"] = o.UseLocalCaJwt

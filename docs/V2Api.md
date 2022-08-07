@@ -62,6 +62,7 @@ Method | HTTP request | Description
 [**DeleteTargets**](V2Api.md#DeleteTargets) | **Post** /delete-targets | 
 [**DescribeItem**](V2Api.md#DescribeItem) | **Post** /describe-item | 
 [**DescribePermissions**](V2Api.md#DescribePermissions) | **Post** /describe-permissions | 
+[**DescribeSubClaims**](V2Api.md#DescribeSubClaims) | **Post** /describe-sub-claims | 
 [**Detokenize**](V2Api.md#Detokenize) | **Post** /detokenize | 
 [**Encrypt**](V2Api.md#Encrypt) | **Post** /encrypt | 
 [**EncryptPKCS1**](V2Api.md#EncryptPKCS1) | **Post** /encrypt-pkcs1 | 
@@ -84,7 +85,7 @@ Method | HTTP request | Description
 [**GatewayCreateProducerMSSQL**](V2Api.md#GatewayCreateProducerMSSQL) | **Post** /gateway-create-producer-mssql | 
 [**GatewayCreateProducerMongo**](V2Api.md#GatewayCreateProducerMongo) | **Post** /gateway-create-producer-mongo | 
 [**GatewayCreateProducerMySQL**](V2Api.md#GatewayCreateProducerMySQL) | **Post** /gateway-create-producer-mysql | 
-[**GatewayCreateProducerNativeK8S**](V2Api.md#GatewayCreateProducerNativeK8S) | **Post** /gateway-create-producer-k8s-native | 
+[**GatewayCreateProducerNativeK8S**](V2Api.md#GatewayCreateProducerNativeK8S) | **Post** /gateway-create-producer-k8s | 
 [**GatewayCreateProducerOracleDb**](V2Api.md#GatewayCreateProducerOracleDb) | **Post** /gateway-create-producer-oracle | 
 [**GatewayCreateProducerPostgreSQL**](V2Api.md#GatewayCreateProducerPostgreSQL) | **Post** /gateway-create-producer-postgresql | 
 [**GatewayCreateProducerRabbitMQ**](V2Api.md#GatewayCreateProducerRabbitMQ) | **Post** /gateway-create-producer-rabbitmq | 
@@ -230,7 +231,6 @@ Method | HTTP request | Description
 [**UpdateSecretVal**](V2Api.md#UpdateSecretVal) | **Post** /update-secret-val | 
 [**UpdateTarget**](V2Api.md#UpdateTarget) | **Post** /update-target | 
 [**UpdateTargetDetails**](V2Api.md#UpdateTargetDetails) | **Post** /update-target-details | 
-[**UpdateTokenizer**](V2Api.md#UpdateTokenizer) | **Post** /update-tokenizer | 
 [**UpdateWebTarget**](V2Api.md#UpdateWebTarget) | **Post** /update-web-target | 
 [**UpdateWebTargetDetails**](V2Api.md#UpdateWebTargetDetails) | **Post** /update-web-target-details | 
 [**UploadRSA**](V2Api.md#UploadRSA) | **Post** /upload-rsa | 
@@ -2628,7 +2628,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateSalesforceTarget("ClientId_example", "ClientSecret_example", "Email_example", "Name_example", "Password_example", "SecurityToken_example", "TenantUrl_example") // CreateSalesforceTarget | 
+    body := *openapiclient.NewcreateSalesforceTarget("AuthFlow_example", "ClientId_example", "Email_example", "Name_example", "TenantUrl_example") // CreateSalesforceTarget | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -2948,7 +2948,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.Newdecrypt() // Decrypt | 
+    body := *openapiclient.Newdecrypt("KeyName_example") // Decrypt | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -3953,6 +3953,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## DescribeSubClaims
+
+> DescribeSubClaimsOutput DescribeSubClaims(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdescribeSubClaims() // DescribeSubClaims | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DescribeSubClaims(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DescribeSubClaims``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DescribeSubClaims`: DescribeSubClaimsOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DescribeSubClaims`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDescribeSubClaimsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DescribeSubClaims**](DescribeSubClaims.md) |  | 
+
+### Return type
+
+[**DescribeSubClaimsOutput**](describeSubClaimsOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## Detokenize
 
 > DetokenizeOutput Detokenize(ctx).Body(body).Execute()
@@ -4036,7 +4100,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.Newencrypt() // Encrypt | 
+    body := *openapiclient.Newencrypt("KeyName_example") // Encrypt | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -11446,7 +11510,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewsignPKCS1("KeyName_example", "Message_example") // SignPKCS1 | 
+    body := *openapiclient.NewsignPKCS1("Message_example") // SignPKCS1 | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -14449,7 +14513,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateSalesforceTarget("ClientId_example", "ClientSecret_example", "Email_example", "Name_example", "Password_example", "SecurityToken_example", "TenantUrl_example") // UpdateSalesforceTarget | 
+    body := *openapiclient.NewupdateSalesforceTarget("AuthFlow_example", "ClientId_example", "Email_example", "Name_example", "TenantUrl_example") // UpdateSalesforceTarget | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -14671,70 +14735,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**UpdateTargetOutput**](updateTargetOutput.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## UpdateTokenizer
-
-> UpdateTokenizerOutput UpdateTokenizer(ctx).Body(body).Execute()
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    body := *openapiclient.NewupdateTokenizer("Name_example", "TemplateType_example", "TokenizerType_example") // UpdateTokenizer | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateTokenizer(context.Background()).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateTokenizer``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateTokenizer`: UpdateTokenizerOutput
-    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateTokenizer`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUpdateTokenizerRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateTokenizer**](UpdateTokenizer.md) |  | 
-
-### Return type
-
-[**UpdateTokenizerOutput**](updateTokenizerOutput.md)
 
 ### Authorization
 

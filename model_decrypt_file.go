@@ -17,6 +17,12 @@ import (
 
 // DecryptFile struct for DecryptFile
 type DecryptFile struct {
+	// The display id of the key to use in the decryption process
+	DisplayId *string `json:"display-id,omitempty"`
+	// The item id of the key to use in the decryption process
+	ItemId *int64 `json:"item-id,omitempty"`
+	// The name of the key to use in the decryption process
+	KeyName string `json:"key-name"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -27,8 +33,9 @@ type DecryptFile struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDecryptFile() *DecryptFile {
+func NewDecryptFile(keyName string, ) *DecryptFile {
 	this := DecryptFile{}
+	this.KeyName = keyName
 	return &this
 }
 
@@ -38,6 +45,94 @@ func NewDecryptFile() *DecryptFile {
 func NewDecryptFileWithDefaults() *DecryptFile {
 	this := DecryptFile{}
 	return &this
+}
+
+// GetDisplayId returns the DisplayId field value if set, zero value otherwise.
+func (o *DecryptFile) GetDisplayId() string {
+	if o == nil || o.DisplayId == nil {
+		var ret string
+		return ret
+	}
+	return *o.DisplayId
+}
+
+// GetDisplayIdOk returns a tuple with the DisplayId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DecryptFile) GetDisplayIdOk() (*string, bool) {
+	if o == nil || o.DisplayId == nil {
+		return nil, false
+	}
+	return o.DisplayId, true
+}
+
+// HasDisplayId returns a boolean if a field has been set.
+func (o *DecryptFile) HasDisplayId() bool {
+	if o != nil && o.DisplayId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDisplayId gets a reference to the given string and assigns it to the DisplayId field.
+func (o *DecryptFile) SetDisplayId(v string) {
+	o.DisplayId = &v
+}
+
+// GetItemId returns the ItemId field value if set, zero value otherwise.
+func (o *DecryptFile) GetItemId() int64 {
+	if o == nil || o.ItemId == nil {
+		var ret int64
+		return ret
+	}
+	return *o.ItemId
+}
+
+// GetItemIdOk returns a tuple with the ItemId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DecryptFile) GetItemIdOk() (*int64, bool) {
+	if o == nil || o.ItemId == nil {
+		return nil, false
+	}
+	return o.ItemId, true
+}
+
+// HasItemId returns a boolean if a field has been set.
+func (o *DecryptFile) HasItemId() bool {
+	if o != nil && o.ItemId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetItemId gets a reference to the given int64 and assigns it to the ItemId field.
+func (o *DecryptFile) SetItemId(v int64) {
+	o.ItemId = &v
+}
+
+// GetKeyName returns the KeyName field value
+func (o *DecryptFile) GetKeyName() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.KeyName
+}
+
+// GetKeyNameOk returns a tuple with the KeyName field value
+// and a boolean to check if the value has been set.
+func (o *DecryptFile) GetKeyNameOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.KeyName, true
+}
+
+// SetKeyName sets field value
+func (o *DecryptFile) SetKeyName(v string) {
+	o.KeyName = v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -106,6 +201,15 @@ func (o *DecryptFile) SetUidToken(v string) {
 
 func (o DecryptFile) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.DisplayId != nil {
+		toSerialize["display-id"] = o.DisplayId
+	}
+	if o.ItemId != nil {
+		toSerialize["item-id"] = o.ItemId
+	}
+	if true {
+		toSerialize["key-name"] = o.KeyName
+	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
 	}

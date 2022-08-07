@@ -17,6 +17,10 @@ import (
 
 // VerifyPKCS1 struct for VerifyPKCS1
 type VerifyPKCS1 struct {
+	// The display id of the key to use in the verification process
+	DisplayId *string `json:"display-id,omitempty"`
+	// The item id of the key to use in the verification process
+	ItemId *int64 `json:"item-id,omitempty"`
 	// The name of the RSA key to use in the verification process
 	KeyName string `json:"key-name"`
 	// The message to be verified
@@ -47,6 +51,70 @@ func NewVerifyPKCS1(keyName string, message string, signature string, ) *VerifyP
 func NewVerifyPKCS1WithDefaults() *VerifyPKCS1 {
 	this := VerifyPKCS1{}
 	return &this
+}
+
+// GetDisplayId returns the DisplayId field value if set, zero value otherwise.
+func (o *VerifyPKCS1) GetDisplayId() string {
+	if o == nil || o.DisplayId == nil {
+		var ret string
+		return ret
+	}
+	return *o.DisplayId
+}
+
+// GetDisplayIdOk returns a tuple with the DisplayId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VerifyPKCS1) GetDisplayIdOk() (*string, bool) {
+	if o == nil || o.DisplayId == nil {
+		return nil, false
+	}
+	return o.DisplayId, true
+}
+
+// HasDisplayId returns a boolean if a field has been set.
+func (o *VerifyPKCS1) HasDisplayId() bool {
+	if o != nil && o.DisplayId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDisplayId gets a reference to the given string and assigns it to the DisplayId field.
+func (o *VerifyPKCS1) SetDisplayId(v string) {
+	o.DisplayId = &v
+}
+
+// GetItemId returns the ItemId field value if set, zero value otherwise.
+func (o *VerifyPKCS1) GetItemId() int64 {
+	if o == nil || o.ItemId == nil {
+		var ret int64
+		return ret
+	}
+	return *o.ItemId
+}
+
+// GetItemIdOk returns a tuple with the ItemId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VerifyPKCS1) GetItemIdOk() (*int64, bool) {
+	if o == nil || o.ItemId == nil {
+		return nil, false
+	}
+	return o.ItemId, true
+}
+
+// HasItemId returns a boolean if a field has been set.
+func (o *VerifyPKCS1) HasItemId() bool {
+	if o != nil && o.ItemId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetItemId gets a reference to the given int64 and assigns it to the ItemId field.
+func (o *VerifyPKCS1) SetItemId(v int64) {
+	o.ItemId = &v
 }
 
 // GetKeyName returns the KeyName field value
@@ -187,6 +255,12 @@ func (o *VerifyPKCS1) SetUidToken(v string) {
 
 func (o VerifyPKCS1) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.DisplayId != nil {
+		toSerialize["display-id"] = o.DisplayId
+	}
+	if o.ItemId != nil {
+		toSerialize["item-id"] = o.ItemId
+	}
 	if true {
 		toSerialize["key-name"] = o.KeyName
 	}

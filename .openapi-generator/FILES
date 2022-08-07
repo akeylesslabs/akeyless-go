@@ -147,6 +147,8 @@ docs/DeleteTargets.md
 docs/DescribeItem.md
 docs/DescribePermissions.md
 docs/DescribePermissionsOutput.md
+docs/DescribeSubClaims.md
+docs/DescribeSubClaimsOutput.md
 docs/Detokenize.md
 docs/DetokenizeOutput.md
 docs/DynamicSecretProducerInfo.md
@@ -532,8 +534,6 @@ docs/UpdateSecretValOutput.md
 docs/UpdateTarget.md
 docs/UpdateTargetDetailsOutput.md
 docs/UpdateTargetOutput.md
-docs/UpdateTokenizer.md
-docs/UpdateTokenizerOutput.md
 docs/UpdateWebTarget.md
 docs/UpdateWebTargetDetails.md
 docs/UpdateWebTargetOutput.md
@@ -692,6 +692,8 @@ model_delete_targets.go
 model_describe_item.go
 model_describe_permissions.go
 model_describe_permissions_output.go
+model_describe_sub_claims.go
+model_describe_sub_claims_output.go
 model_detokenize.go
 model_detokenize_output.go
 model_ds_producer_details.go
@@ -1078,8 +1080,6 @@ model_update_ssh_target_output.go
 model_update_target.go
 model_update_target_details_output.go
 model_update_target_output.go
-model_update_tokenizer.go
-model_update_tokenizer_output.go
 model_update_web_target.go
 model_update_web_target_details.go
 model_update_web_target_output.go

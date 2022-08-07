@@ -6,7 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DisplayId** | Pointer to **string** | The display id of the key to use in the encryption process | [optional] 
 **EncryptionContext** | Pointer to **map[string]string** | name-value pair that specifies the encryption context to be used for authenticated encryption. If used here, the same value must be supplied to the decrypt command or decryption will fail | [optional] 
-**KeyName** | Pointer to **string** | The name of the key to use in the encryption process | [optional] 
+**ItemId** | Pointer to **int64** | The item id of the key to use in the encryption process | [optional] 
+**KeyName** | **string** | The name of the key to use in the encryption process | 
 **Plaintext** | Pointer to **string** | Data to be encrypted | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -15,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewEncrypt
 
-`func NewEncrypt() *Encrypt`
+`func NewEncrypt(keyName string, ) *Encrypt`
 
 NewEncrypt instantiates a new Encrypt object
 This constructor will assign default values to properties that have it defined,
@@ -80,6 +81,31 @@ SetEncryptionContext sets EncryptionContext field to given value.
 
 HasEncryptionContext returns a boolean if a field has been set.
 
+### GetItemId
+
+`func (o *Encrypt) GetItemId() int64`
+
+GetItemId returns the ItemId field if non-nil, zero value otherwise.
+
+### GetItemIdOk
+
+`func (o *Encrypt) GetItemIdOk() (*int64, bool)`
+
+GetItemIdOk returns a tuple with the ItemId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemId
+
+`func (o *Encrypt) SetItemId(v int64)`
+
+SetItemId sets ItemId field to given value.
+
+### HasItemId
+
+`func (o *Encrypt) HasItemId() bool`
+
+HasItemId returns a boolean if a field has been set.
+
 ### GetKeyName
 
 `func (o *Encrypt) GetKeyName() string`
@@ -99,11 +125,6 @@ and a boolean to check if the value has been set.
 
 SetKeyName sets KeyName field to given value.
 
-### HasKeyName
-
-`func (o *Encrypt) HasKeyName() bool`
-
-HasKeyName returns a boolean if a field has been set.
 
 ### GetPlaintext
 

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **ArtifactoryAdminPwd** | **string** | Artifactory Admin password | 
 **BaseUrl** | **string** | Base URL | 
 **Comment** | Pointer to **string** | Comment about the target | [optional] 
-**Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
+**Key** | Pointer to **string** | The name of a key used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Target name | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 

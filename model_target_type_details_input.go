@@ -17,6 +17,8 @@ import (
 
 // TargetTypeDetailsInput struct for TargetTypeDetailsInput
 type TargetTypeDetailsInput struct {
+	// params needed for jwt auth AppPrivateKey is the rsa private key in PEM format
+	AppPrivateKey *[]int32 `json:"app_private_key,omitempty"`
 	ArtifactoryAdminApikey *string `json:"artifactory_admin_apikey,omitempty"`
 	ArtifactoryAdminUsername *string `json:"artifactory_admin_username,omitempty"`
 	ArtifactoryBaseUrl *string `json:"artifactory_base_url,omitempty"`
@@ -42,6 +44,7 @@ type TargetTypeDetailsInput struct {
 	ChefServerUsername *string `json:"chef_server_username,omitempty"`
 	ChefSkipSsl *bool `json:"chef_skip_ssl,omitempty"`
 	ClientId *string `json:"client_id,omitempty"`
+	// params needed for password auth
 	ClientSecret *string `json:"client_secret,omitempty"`
 	DbHostName *string `json:"db_host_name,omitempty"`
 	DbName *string `json:"db_name,omitempty"`
@@ -135,6 +138,38 @@ func NewTargetTypeDetailsInput() *TargetTypeDetailsInput {
 func NewTargetTypeDetailsInputWithDefaults() *TargetTypeDetailsInput {
 	this := TargetTypeDetailsInput{}
 	return &this
+}
+
+// GetAppPrivateKey returns the AppPrivateKey field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetAppPrivateKey() []int32 {
+	if o == nil || o.AppPrivateKey == nil {
+		var ret []int32
+		return ret
+	}
+	return *o.AppPrivateKey
+}
+
+// GetAppPrivateKeyOk returns a tuple with the AppPrivateKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetAppPrivateKeyOk() (*[]int32, bool) {
+	if o == nil || o.AppPrivateKey == nil {
+		return nil, false
+	}
+	return o.AppPrivateKey, true
+}
+
+// HasAppPrivateKey returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasAppPrivateKey() bool {
+	if o != nil && o.AppPrivateKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAppPrivateKey gets a reference to the given []int32 and assigns it to the AppPrivateKey field.
+func (o *TargetTypeDetailsInput) SetAppPrivateKey(v []int32) {
+	o.AppPrivateKey = &v
 }
 
 // GetArtifactoryAdminApikey returns the ArtifactoryAdminApikey field value if set, zero value otherwise.
@@ -3083,6 +3118,9 @@ func (o *TargetTypeDetailsInput) SetVenafiZone(v string) {
 
 func (o TargetTypeDetailsInput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AppPrivateKey != nil {
+		toSerialize["app_private_key"] = o.AppPrivateKey
+	}
 	if o.ArtifactoryAdminApikey != nil {
 		toSerialize["artifactory_admin_apikey"] = o.ArtifactoryAdminApikey
 	}

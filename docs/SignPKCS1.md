@@ -4,7 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**KeyName** | **string** | The name of the RSA key to use in the signing process | 
+**DisplayId** | Pointer to **string** | The display id of the key to use in the signing process | [optional] 
+**ItemId** | Pointer to **int64** | The item id of the key to use in the signing process | [optional] 
+**KeyName** | Pointer to **string** | The name of the RSA key to use in the signing process | [optional] 
 **Message** | **string** | The message to be signed | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -13,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewSignPKCS1
 
-`func NewSignPKCS1(keyName string, message string, ) *SignPKCS1`
+`func NewSignPKCS1(message string, ) *SignPKCS1`
 
 NewSignPKCS1 instantiates a new SignPKCS1 object
 This constructor will assign default values to properties that have it defined,
@@ -27,6 +29,56 @@ will change when the set of required properties is changed
 NewSignPKCS1WithDefaults instantiates a new SignPKCS1 object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetDisplayId
+
+`func (o *SignPKCS1) GetDisplayId() string`
+
+GetDisplayId returns the DisplayId field if non-nil, zero value otherwise.
+
+### GetDisplayIdOk
+
+`func (o *SignPKCS1) GetDisplayIdOk() (*string, bool)`
+
+GetDisplayIdOk returns a tuple with the DisplayId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisplayId
+
+`func (o *SignPKCS1) SetDisplayId(v string)`
+
+SetDisplayId sets DisplayId field to given value.
+
+### HasDisplayId
+
+`func (o *SignPKCS1) HasDisplayId() bool`
+
+HasDisplayId returns a boolean if a field has been set.
+
+### GetItemId
+
+`func (o *SignPKCS1) GetItemId() int64`
+
+GetItemId returns the ItemId field if non-nil, zero value otherwise.
+
+### GetItemIdOk
+
+`func (o *SignPKCS1) GetItemIdOk() (*int64, bool)`
+
+GetItemIdOk returns a tuple with the ItemId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemId
+
+`func (o *SignPKCS1) SetItemId(v int64)`
+
+SetItemId sets ItemId field to given value.
+
+### HasItemId
+
+`func (o *SignPKCS1) HasItemId() bool`
+
+HasItemId returns a boolean if a field has been set.
 
 ### GetKeyName
 
@@ -47,6 +99,11 @@ and a boolean to check if the value has been set.
 
 SetKeyName sets KeyName field to given value.
 
+### HasKeyName
+
+`func (o *SignPKCS1) HasKeyName() bool`
+
+HasKeyName returns a boolean if a field has been set.
 
 ### GetMessage
 

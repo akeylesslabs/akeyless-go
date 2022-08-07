@@ -30,6 +30,8 @@ type UpdateLdapTarget struct {
 	Name string `json:"name"`
 	// New target name
 	NewName *string `json:"new-name,omitempty"`
+	// Set Ldap server type, Options:[OpenLDAP, ActiveDirectory]
+	ServerType *string `json:"server-type,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	TokenExpiration *string `json:"token-expiration,omitempty"`
@@ -337,6 +339,38 @@ func (o *UpdateLdapTarget) SetNewName(v string) {
 	o.NewName = &v
 }
 
+// GetServerType returns the ServerType field value if set, zero value otherwise.
+func (o *UpdateLdapTarget) GetServerType() string {
+	if o == nil || o.ServerType == nil {
+		var ret string
+		return ret
+	}
+	return *o.ServerType
+}
+
+// GetServerTypeOk returns a tuple with the ServerType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateLdapTarget) GetServerTypeOk() (*string, bool) {
+	if o == nil || o.ServerType == nil {
+		return nil, false
+	}
+	return o.ServerType, true
+}
+
+// HasServerType returns a boolean if a field has been set.
+func (o *UpdateLdapTarget) HasServerType() bool {
+	if o != nil && o.ServerType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetServerType gets a reference to the given string and assigns it to the ServerType field.
+func (o *UpdateLdapTarget) SetServerType(v string) {
+	o.ServerType = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *UpdateLdapTarget) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -493,6 +527,9 @@ func (o UpdateLdapTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.NewName != nil {
 		toSerialize["new-name"] = o.NewName
+	}
+	if o.ServerType != nil {
+		toSerialize["server-type"] = o.ServerType
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

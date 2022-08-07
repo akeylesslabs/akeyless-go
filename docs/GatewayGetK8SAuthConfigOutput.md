@@ -7,15 +7,18 @@ Name | Type | Description | Notes
 **AmTokenExpiration** | Pointer to **int64** | AuthMethodTokenExpiration is time in seconds of expiration of the Akeyless Kube Auth Method token | [optional] 
 **AuthMethodAccessId** | Pointer to **string** | AuthMethodAccessId of the Kubernetes auth method | [optional] 
 **AuthMethodPrvKeyPem** | Pointer to **string** | AuthMethodSigningKey is the private key (in base64 of the PEM format) associated with the public key defined in the Kubernetes auth method, that used to sign the internal token for the Akeyless Kubernetes Auth Method | [optional] 
+**ClusterApiType** | Pointer to **string** | ClusterApiType defines types of API access to cluster | [optional] 
 **DisableIssValidation** | Pointer to **bool** | DisableISSValidation is optional parameter to disable ISS validation | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 **K8sCaCert** | Pointer to **string** | K8SCACert is the CA Cert to use to call into the kubernetes API | [optional] 
 **K8sHost** | Pointer to **string** | K8SHost is the url string for the kubernetes API | [optional] 
 **K8sIssuer** | Pointer to **string** | K8SIssuer is the claim that specifies who issued the Kubernetes token | [optional] 
 **K8sPubKeysPem** | Pointer to **[]string** | K8SPublicKeysPEM is the list of public key in PEM format | [optional] 
-**K8sTokenReviewerJwt** | Pointer to **string** | K8STokenReviewerJW\&quot;K8S Auth config %v successfully created\\n\&quot;, clictx.Color().Bold(c.K8SAuthConfigName)T is the bearer to use during the TokenReview API call | [optional] 
+**K8sTokenReviewerJwt** | Pointer to **string** | K8STokenReviewerJWT is the bearer for clusterApiTypeK8s, used during TokenReview API call | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **ProtectionKey** | Pointer to **string** |  | [optional] 
+**RancherApiKey** | Pointer to **string** | RancherApiKey the bear token for clusterApiTypeRancher | [optional] 
+**RancherClusterId** | Pointer to **string** | RancherClusterId cluster id as define in rancher (in case of clusterApiTypeRancher) | [optional] 
 **UseLocalCaJwt** | Pointer to **bool** | UseLocalCAJwt is an optional parameter to set defaulting to using the local CA cert and service account jwt when running in a Kubernetes pod | [optional] 
 
 ## Methods
@@ -111,6 +114,31 @@ SetAuthMethodPrvKeyPem sets AuthMethodPrvKeyPem field to given value.
 `func (o *GatewayGetK8SAuthConfigOutput) HasAuthMethodPrvKeyPem() bool`
 
 HasAuthMethodPrvKeyPem returns a boolean if a field has been set.
+
+### GetClusterApiType
+
+`func (o *GatewayGetK8SAuthConfigOutput) GetClusterApiType() string`
+
+GetClusterApiType returns the ClusterApiType field if non-nil, zero value otherwise.
+
+### GetClusterApiTypeOk
+
+`func (o *GatewayGetK8SAuthConfigOutput) GetClusterApiTypeOk() (*string, bool)`
+
+GetClusterApiTypeOk returns a tuple with the ClusterApiType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClusterApiType
+
+`func (o *GatewayGetK8SAuthConfigOutput) SetClusterApiType(v string)`
+
+SetClusterApiType sets ClusterApiType field to given value.
+
+### HasClusterApiType
+
+`func (o *GatewayGetK8SAuthConfigOutput) HasClusterApiType() bool`
+
+HasClusterApiType returns a boolean if a field has been set.
 
 ### GetDisableIssValidation
 
@@ -336,6 +364,56 @@ SetProtectionKey sets ProtectionKey field to given value.
 `func (o *GatewayGetK8SAuthConfigOutput) HasProtectionKey() bool`
 
 HasProtectionKey returns a boolean if a field has been set.
+
+### GetRancherApiKey
+
+`func (o *GatewayGetK8SAuthConfigOutput) GetRancherApiKey() string`
+
+GetRancherApiKey returns the RancherApiKey field if non-nil, zero value otherwise.
+
+### GetRancherApiKeyOk
+
+`func (o *GatewayGetK8SAuthConfigOutput) GetRancherApiKeyOk() (*string, bool)`
+
+GetRancherApiKeyOk returns a tuple with the RancherApiKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRancherApiKey
+
+`func (o *GatewayGetK8SAuthConfigOutput) SetRancherApiKey(v string)`
+
+SetRancherApiKey sets RancherApiKey field to given value.
+
+### HasRancherApiKey
+
+`func (o *GatewayGetK8SAuthConfigOutput) HasRancherApiKey() bool`
+
+HasRancherApiKey returns a boolean if a field has been set.
+
+### GetRancherClusterId
+
+`func (o *GatewayGetK8SAuthConfigOutput) GetRancherClusterId() string`
+
+GetRancherClusterId returns the RancherClusterId field if non-nil, zero value otherwise.
+
+### GetRancherClusterIdOk
+
+`func (o *GatewayGetK8SAuthConfigOutput) GetRancherClusterIdOk() (*string, bool)`
+
+GetRancherClusterIdOk returns a tuple with the RancherClusterId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRancherClusterId
+
+`func (o *GatewayGetK8SAuthConfigOutput) SetRancherClusterId(v string)`
+
+SetRancherClusterId sets RancherClusterId field to given value.
+
+### HasRancherClusterId
+
+`func (o *GatewayGetK8SAuthConfigOutput) HasRancherClusterId() bool`
+
+HasRancherClusterId returns a boolean if a field has been set.
 
 ### GetUseLocalCaJwt
 

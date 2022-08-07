@@ -17,8 +17,12 @@ import (
 
 // SignPKCS1 signPKCS1 is a command that calculates the signature of hashed data using RSASSA-PKCS1-V1_5-SIGN from RSA PKCS#1 v1.5.
 type SignPKCS1 struct {
+	// The display id of the key to use in the signing process
+	DisplayId *string `json:"display-id,omitempty"`
+	// The item id of the key to use in the signing process
+	ItemId *int64 `json:"item-id,omitempty"`
 	// The name of the RSA key to use in the signing process
-	KeyName string `json:"key-name"`
+	KeyName *string `json:"key-name,omitempty"`
 	// The message to be signed
 	Message string `json:"message"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -31,9 +35,8 @@ type SignPKCS1 struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSignPKCS1(keyName string, message string, ) *SignPKCS1 {
+func NewSignPKCS1(message string, ) *SignPKCS1 {
 	this := SignPKCS1{}
-	this.KeyName = keyName
 	this.Message = message
 	return &this
 }
@@ -46,28 +49,100 @@ func NewSignPKCS1WithDefaults() *SignPKCS1 {
 	return &this
 }
 
-// GetKeyName returns the KeyName field value
-func (o *SignPKCS1) GetKeyName() string {
-	if o == nil  {
+// GetDisplayId returns the DisplayId field value if set, zero value otherwise.
+func (o *SignPKCS1) GetDisplayId() string {
+	if o == nil || o.DisplayId == nil {
 		var ret string
 		return ret
 	}
-
-	return o.KeyName
+	return *o.DisplayId
 }
 
-// GetKeyNameOk returns a tuple with the KeyName field value
+// GetDisplayIdOk returns a tuple with the DisplayId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SignPKCS1) GetKeyNameOk() (*string, bool) {
-	if o == nil  {
+func (o *SignPKCS1) GetDisplayIdOk() (*string, bool) {
+	if o == nil || o.DisplayId == nil {
 		return nil, false
 	}
-	return &o.KeyName, true
+	return o.DisplayId, true
 }
 
-// SetKeyName sets field value
+// HasDisplayId returns a boolean if a field has been set.
+func (o *SignPKCS1) HasDisplayId() bool {
+	if o != nil && o.DisplayId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDisplayId gets a reference to the given string and assigns it to the DisplayId field.
+func (o *SignPKCS1) SetDisplayId(v string) {
+	o.DisplayId = &v
+}
+
+// GetItemId returns the ItemId field value if set, zero value otherwise.
+func (o *SignPKCS1) GetItemId() int64 {
+	if o == nil || o.ItemId == nil {
+		var ret int64
+		return ret
+	}
+	return *o.ItemId
+}
+
+// GetItemIdOk returns a tuple with the ItemId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SignPKCS1) GetItemIdOk() (*int64, bool) {
+	if o == nil || o.ItemId == nil {
+		return nil, false
+	}
+	return o.ItemId, true
+}
+
+// HasItemId returns a boolean if a field has been set.
+func (o *SignPKCS1) HasItemId() bool {
+	if o != nil && o.ItemId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetItemId gets a reference to the given int64 and assigns it to the ItemId field.
+func (o *SignPKCS1) SetItemId(v int64) {
+	o.ItemId = &v
+}
+
+// GetKeyName returns the KeyName field value if set, zero value otherwise.
+func (o *SignPKCS1) GetKeyName() string {
+	if o == nil || o.KeyName == nil {
+		var ret string
+		return ret
+	}
+	return *o.KeyName
+}
+
+// GetKeyNameOk returns a tuple with the KeyName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SignPKCS1) GetKeyNameOk() (*string, bool) {
+	if o == nil || o.KeyName == nil {
+		return nil, false
+	}
+	return o.KeyName, true
+}
+
+// HasKeyName returns a boolean if a field has been set.
+func (o *SignPKCS1) HasKeyName() bool {
+	if o != nil && o.KeyName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetKeyName gets a reference to the given string and assigns it to the KeyName field.
 func (o *SignPKCS1) SetKeyName(v string) {
-	o.KeyName = v
+	o.KeyName = &v
 }
 
 // GetMessage returns the Message field value
@@ -160,7 +235,13 @@ func (o *SignPKCS1) SetUidToken(v string) {
 
 func (o SignPKCS1) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
+	if o.DisplayId != nil {
+		toSerialize["display-id"] = o.DisplayId
+	}
+	if o.ItemId != nil {
+		toSerialize["item-id"] = o.ItemId
+	}
+	if o.KeyName != nil {
 		toSerialize["key-name"] = o.KeyName
 	}
 	if true {

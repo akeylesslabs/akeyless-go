@@ -1584,6 +1584,41 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /describe-sub-claims:
+    post:
+      operationId: describeSubClaims
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/describeSubClaims'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/describeSubClaimsOutput'
+          description: describeSubClaimsResponse wraps response body.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /detokenize:
     post:
       operationId: detokenize
@@ -2071,7 +2106,7 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
-  /gateway-create-producer-k8s-native:
+  /gateway-create-producer-k8s:
     post:
       operationId: gatewayCreateProducerNativeK8S
       requestBody:
@@ -6105,33 +6140,6 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
-  /update-tokenizer:
-    post:
-      operationId: updateTokenizer
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/updateTokenizer'
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/updateTokenizerOutput'
-          description: updateTokenizerResponse wraps response body.
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/JSONError'
-          description: |-
-            errorResponse wraps any error to return it as a JSON object with one "error"
-            field.
-      tags:
-      - v2
-      x-codegen-request-body-name: body
   /update-web-target:
     post:
       operationId: updateWebTarget
@@ -6691,6 +6699,12 @@ components:
           schema:
             $ref: '#/components/schemas/Item'
       description: describeItemResponse wraps response body.
+    describeSubClaimsResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/describeSubClaimsOutput'
+      description: describeSubClaimsResponse wraps response body.
     detokenizeResponse:
       content:
         application/json:
@@ -7713,12 +7727,6 @@ components:
           schema:
             $ref: '#/components/schemas/updateTargetOutput'
       description: updateTargetResponse wraps response body.
-    updateTokenizerResponse:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/updateTokenizerOutput'
-      description: updateTokenizerResponse wraps response body.
     updateWebTargetResponse:
       content:
         application/json:
@@ -7951,32 +7959,38 @@ components:
           - k8s_ca_cert: k8s_ca_cert
             k8s_host: k8s_host
             k8s_token_reviewer_jwt: k8s_token_reviewer_jwt
+            cluster_api_type: cluster_api_type
             k8s_issuer: k8s_issuer
             protection_key: protection_key
             auth_method_access_id: auth_method_access_id
             k8s_pub_keys_pem:
             - k8s_pub_keys_pem
             - k8s_pub_keys_pem
+            rancher_api_key: rancher_api_key
             am_token_expiration: 0
             name: name
             auth_method_prv_key_pem: auth_method_prv_key_pem
             disable_iss_validation: true
             id: id
+            rancher_cluster_id: rancher_cluster_id
             use_local_ca_jwt: true
           - k8s_ca_cert: k8s_ca_cert
             k8s_host: k8s_host
             k8s_token_reviewer_jwt: k8s_token_reviewer_jwt
+            cluster_api_type: cluster_api_type
             k8s_issuer: k8s_issuer
             protection_key: protection_key
             auth_method_access_id: auth_method_access_id
             k8s_pub_keys_pem:
             - k8s_pub_keys_pem
             - k8s_pub_keys_pem
+            rancher_api_key: rancher_api_key
             am_token_expiration: 0
             name: name
             auth_method_prv_key_pem: auth_method_prv_key_pem
             disable_iss_validation: true
             id: id
+            rancher_cluster_id: rancher_cluster_id
             use_local_ca_jwt: true
         message_queue_info:
           queue_name: queue_name
@@ -9537,6 +9551,10 @@ components:
         supported by AKEYLESS.
       type: string
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    ClusterApiType:
+      description: ClusterApiType defines types of API access to cluster
+      type: string
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     ConfigChange:
       example:
         required_activity:
@@ -11628,9 +11646,9 @@ components:
           client_id: client_id
           azure_client_id: azure_client_id
           ca_cert_data:
-          - 0
-          - 0
-          github_app_id: 6
+          - 6
+          - 6
+          github_app_id: 1
           mongodb_default_auth_db: mongodb_default_auth_db
           mongodb_uri_connection: mongodb_uri_connection
           mongodb_atlas_project_id: mongodb_atlas_project_id
@@ -11698,6 +11716,9 @@ components:
           url: url
           chef_server_port: chef_server_port
           mongodb_is_atlas: true
+          app_private_key:
+          - 0
+          - 0
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           aws_access_key_id: aws_access_key_id
           aws_region: aws_region
@@ -12607,17 +12628,20 @@ components:
         k8s_ca_cert: k8s_ca_cert
         k8s_host: k8s_host
         k8s_token_reviewer_jwt: k8s_token_reviewer_jwt
+        cluster_api_type: cluster_api_type
         k8s_issuer: k8s_issuer
         protection_key: protection_key
         auth_method_access_id: auth_method_access_id
         k8s_pub_keys_pem:
         - k8s_pub_keys_pem
         - k8s_pub_keys_pem
+        rancher_api_key: rancher_api_key
         am_token_expiration: 0
         name: name
         auth_method_prv_key_pem: auth_method_prv_key_pem
         disable_iss_validation: true
         id: id
+        rancher_cluster_id: rancher_cluster_id
         use_local_ca_jwt: true
       properties:
         am_token_expiration:
@@ -12636,6 +12660,10 @@ components:
             Kubernetes auth method, that used to sign the internal token for the Akeyless Kubernetes Auth Method
           type: string
           x-go-name: AuthMethodSigningKey
+        cluster_api_type:
+          description: ClusterApiType defines types of API access to cluster
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
         disable_iss_validation:
           description: DisableISSValidation is optional parameter to disable ISS validation
           type: boolean
@@ -12664,9 +12692,8 @@ components:
           type: array
           x-go-name: K8SPublicKeysPEM
         k8s_token_reviewer_jwt:
-          description: K8STokenReviewerJW"K8S Auth config %v successfully created\n",
-            clictx.Color().Bold(c.K8SAuthConfigName)T is the bearer to use during
-            the TokenReview API call
+          description: K8STokenReviewerJWT is the bearer for clusterApiTypeK8s, used
+            during TokenReview API call
           type: string
           x-go-name: K8STokenReviewerJWT
         name:
@@ -12675,6 +12702,15 @@ components:
         protection_key:
           type: string
           x-go-name: ProtectionKey
+        rancher_api_key:
+          description: RancherApiKey the bear token for clusterApiTypeRancher
+          type: string
+          x-go-name: RancherApiKey
+        rancher_cluster_id:
+          description: RancherClusterId cluster id as define in rancher (in case of
+            clusterApiTypeRancher)
+          type: string
+          x-go-name: RancherClusterId
         use_local_ca_jwt:
           description: |-
             UseLocalCAJwt is an optional parameter to set defaulting to using
@@ -12719,32 +12755,38 @@ components:
         - k8s_ca_cert: k8s_ca_cert
           k8s_host: k8s_host
           k8s_token_reviewer_jwt: k8s_token_reviewer_jwt
+          cluster_api_type: cluster_api_type
           k8s_issuer: k8s_issuer
           protection_key: protection_key
           auth_method_access_id: auth_method_access_id
           k8s_pub_keys_pem:
           - k8s_pub_keys_pem
           - k8s_pub_keys_pem
+          rancher_api_key: rancher_api_key
           am_token_expiration: 0
           name: name
           auth_method_prv_key_pem: auth_method_prv_key_pem
           disable_iss_validation: true
           id: id
+          rancher_cluster_id: rancher_cluster_id
           use_local_ca_jwt: true
         - k8s_ca_cert: k8s_ca_cert
           k8s_host: k8s_host
           k8s_token_reviewer_jwt: k8s_token_reviewer_jwt
+          cluster_api_type: cluster_api_type
           k8s_issuer: k8s_issuer
           protection_key: protection_key
           auth_method_access_id: auth_method_access_id
           k8s_pub_keys_pem:
           - k8s_pub_keys_pem
           - k8s_pub_keys_pem
+          rancher_api_key: rancher_api_key
           am_token_expiration: 0
           name: name
           auth_method_prv_key_pem: auth_method_prv_key_pem
           disable_iss_validation: true
           id: id
+          rancher_cluster_id: rancher_cluster_id
           use_local_ca_jwt: true
       properties:
         k8s_auths:
@@ -16541,9 +16583,9 @@ components:
         client_id: client_id
         azure_client_id: azure_client_id
         ca_cert_data:
-        - 0
-        - 0
-        github_app_id: 6
+        - 6
+        - 6
+        github_app_id: 1
         mongodb_default_auth_db: mongodb_default_auth_db
         mongodb_uri_connection: mongodb_uri_connection
         mongodb_atlas_project_id: mongodb_atlas_project_id
@@ -16611,6 +16653,9 @@ components:
         url: url
         chef_server_port: chef_server_port
         mongodb_is_atlas: true
+        app_private_key:
+        - 0
+        - 0
         eks_cluster_ca_certificate: eks_cluster_ca_certificate
         aws_access_key_id: aws_access_key_id
         aws_region: aws_region
@@ -16626,6 +16671,15 @@ components:
         azure_tenant_id: azure_tenant_id
         username: username
       properties:
+        app_private_key:
+          description: |-
+            params needed for jwt auth
+            AppPrivateKey is the rsa private key in PEM format
+          items:
+            format: uint8
+            type: integer
+          type: array
+          x-go-name: AppPrivateKey
         artifactory_admin_apikey:
           type: string
           x-go-name: ArtifactoryAdminApiKey
@@ -16701,6 +16755,7 @@ components:
           type: string
           x-go-name: ClientId
         client_secret:
+          description: params needed for password auth
           type: string
           x-go-name: ClientSecret
         db_host_name:
@@ -17668,7 +17723,7 @@ components:
           x-go-name: Comment
         key:
           description: |-
-            The name of a key that used to encrypt the target secret value (if empty, the
+            The name of a key used to encrypt the target secret value (if empty, the
             account default protectionKey key will be used)
           type: string
           x-go-name: ProtectionKey
@@ -19571,15 +19626,24 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     createKeyOutput:
       example:
+        display_id: display_id
+        item_id: 0
         fragment_results:
         - null
         - null
       properties:
+        display_id:
+          type: string
+          x-go-name: DisplayId
         fragment_results:
           items:
             $ref: '#/components/schemas/Duration'
           type: array
           x-go-name: FragmentResults
+        item_id:
+          format: int64
+          type: integer
+          x-go-name: ItemId
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     createLdapTarget:
@@ -19614,6 +19678,12 @@ components:
           description: Target name
           type: string
           x-go-name: TargetName
+        server-type:
+          default: OpenLDAP
+          description: Set Ldap server type, Options:[OpenLDAP, ActiveDirectory].
+            Default is OpenLDAP
+          type: string
+          x-go-name: ServerType
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -20154,6 +20224,15 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     createSalesforceTarget:
       properties:
+        app-private-key-data:
+          description: Base64 encoded PEM of the connected app private key (relevant
+            for JWT auth only)
+          type: string
+          x-go-name: AppPrivateKeyData
+        auth-flow:
+          description: type of the auth flow ('jwt' / 'user-password')
+          type: string
+          x-go-name: AuthFlowType
         ca-cert-data:
           description: Base64 encoded PEM cert to use when uploading a new key to
             Salesforce
@@ -20170,6 +20249,7 @@ components:
           x-go-name: ClientId
         client-secret:
           description: Client secret of the oauth2 app to use for connecting to Salesforce
+            (required for password flow)
           type: string
           x-go-name: ClientSecret
         comment:
@@ -20193,12 +20273,12 @@ components:
           x-go-name: TargetName
         password:
           description: The password of the user attached to the oauth2 app used for
-            connecting to Salesforce
+            connecting to Salesforce (required for user-password flow)
           type: string
           x-go-name: Password
         security-token:
           description: The security token of the user attached to the oauth2 app used
-            for connecting to Salesforce
+            for connecting to Salesforce  (required for user-password flow)
           type: string
           x-go-name: SecurityToken
         tenant-url:
@@ -20216,12 +20296,10 @@ components:
           type: string
           x-go-name: UIDToken
       required:
+      - auth-flow
       - client-id
-      - client-secret
       - email
       - name
-      - password
-      - security-token
       - tenant-url
       title: createSalesforceTarget is a command that creates a new target.
       type: object
@@ -20492,6 +20570,11 @@ components:
             must be specified here or the decryption operation will fail
           type: object
           x-go-name: EncContext
+        item-id:
+          description: The item id of the key to use in the decryption process
+          format: int64
+          type: integer
+          x-go-name: ItemId
         key-name:
           description: The name of the key to use in the decryption process
           type: string
@@ -20506,10 +20589,25 @@ components:
             authentication
           type: string
           x-go-name: UIDToken
+      required:
+      - key-name
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     decryptFile:
       properties:
+        display-id:
+          description: The display id of the key to use in the decryption process
+          type: string
+          x-go-name: DisplayId
+        item-id:
+          description: The item id of the key to use in the decryption process
+          format: int64
+          type: integer
+          x-go-name: ItemId
+        key-name:
+          description: The name of the key to use in the decryption process
+          type: string
+          x-go-name: KeyName
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -20520,6 +20618,8 @@ components:
             authentication
           type: string
           x-go-name: UIDToken
+      required:
+      - key-name
       title: decryptFile is a command that decrypts a file using an AES key.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
@@ -20548,8 +20648,17 @@ components:
           description: Ciphertext to be decrypted in base64 encoded format
           type: string
           x-go-name: Ciphertext
+        display-id:
+          description: The display id of the key to use in the decryption process
+          type: string
+          x-go-name: DisplayId
+        item-id:
+          description: The item id of the key to use in the decryption process
+          format: int64
+          type: integer
+          x-go-name: ItemId
         key-name:
-          description: The name of the RSA key to use in the decryption process
+          description: The name of the key to use in the decryption process
           type: string
           x-go-name: KeyName
         token:
@@ -20977,6 +21086,15 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     describeItem:
       properties:
+        display-id:
+          description: The display id of the item
+          type: string
+          x-go-name: DisplayId
+        item-id:
+          description: Item id of the item
+          format: int64
+          type: integer
+          x-go-name: ItemId
         name:
           description: Item name
           type: string
@@ -21027,6 +21145,38 @@ components:
       required:
       - path
       - type
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    describeSubClaims:
+      description: describe-sub-claims Get the sub-claims associated with the provided
+        token or authentication profile
+      properties:
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    describeSubClaimsOutput:
+      example:
+        sub_claims:
+          key:
+          - sub_claims
+          - sub_claims
+      properties:
+        sub_claims:
+          additionalProperties:
+            items:
+              type: string
+            type: array
+          type: object
+          x-go-name: SubClaims
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     detokenize:
@@ -21083,6 +21233,11 @@ components:
             to the decrypt command or decryption will fail
           type: object
           x-go-name: EncContext
+        item-id:
+          description: The item id of the key to use in the encryption process
+          format: int64
+          type: integer
+          x-go-name: ItemId
         key-name:
           description: The name of the key to use in the encryption process
           type: string
@@ -21101,12 +21256,18 @@ components:
             authentication
           type: string
           x-go-name: UIDToken
+      required:
+      - key-name
       title: encrypt is a command that encrypts plaintext into ciphertext by using
         an AES key.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     encryptFile:
       properties:
+        display-id:
+          description: The display id of the key to use in the encryption process
+          type: string
+          x-go-name: DisplayId
         encryption-context:
           additionalProperties:
             type: string
@@ -21122,6 +21283,11 @@ components:
             taken from stdin
           type: string
           x-go-name: InputFile
+        item-id:
+          description: The item id of the key to use in the encryption process
+          format: int64
+          type: integer
+          x-go-name: ItemId
         key-name:
           description: The name of the key to use in the encryption process
           type: string
@@ -21166,8 +21332,17 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     encryptPKCS1:
       properties:
+        display-id:
+          description: The display id of the key to use in the encryption process
+          type: string
+          x-go-name: DisplayId
+        item-id:
+          description: The item id of the key to use in the encryption process
+          format: int64
+          type: integer
+          x-go-name: ItemId
         key-name:
-          description: The name of the RSA key to use in the encryption process
+          description: The name of the key to use in the encryption process
           type: string
           x-go-name: KeyName
         plaintext:
@@ -21288,6 +21463,11 @@ components:
           description: The access ID of the Kubernetes auth method
           type: string
           x-go-name: AuthMethodAccessId
+        cluster-api-type:
+          default: native_k8s
+          description: 'Cluster access type. options: [native_k8s, rancher]'
+          type: string
+          x-go-name: ClusterApiType
         config-encryption-key-name:
           description: Config encryption key
           type: string
@@ -21310,6 +21490,16 @@ components:
           description: K8S Auth config name
           type: string
           x-go-name: K8SAuthConfigName
+        rancher-api-key:
+          description: The api key used to access the TokenReview API to validate
+            other JWTs (relevant for "rancher" only)
+          type: string
+          x-go-name: RancherApiKey
+        rancher-cluster-id:
+          description: The cluster id as define in rancher (relevant for "rancher"
+            only)
+          type: string
+          x-go-name: RancherClusterId
         signing-key:
           description: The private key (in base64 encoded of the PEM format) associated
             with the public key defined in the Kubernetes auth
@@ -21328,7 +21518,7 @@ components:
           x-go-name: AuthMethodTokenExpiration
         token-reviewer-jwt:
           description: |-
-            A Kubernetes service account JWT used to access the TokenReview API to validate other JWTs.
+            A Kubernetes service account JWT used to access the TokenReview API to validate other JWTs (relevant for "native_k8s" only).
             If not set, the JWT submitted in the authentication process will be used to access the Kubernetes TokenReview API.
           type: string
           x-go-name: K8STokenReviewerJWT
@@ -23579,7 +23769,7 @@ components:
           x-go-name: DockerhubPassword
         dockerhub-token-scopes:
           description: |-
-            Access token scopes list (comma seperated) to give the dynamic secret
+            Access token scopes list (comma-separated) to give the dynamic secret
             valid options are in "repo:admin", "repo:write", "repo:read", "repo:public_read"
           type: string
           x-go-name: TokenScopes
@@ -29100,17 +29290,20 @@ components:
         k8s_ca_cert: k8s_ca_cert
         k8s_host: k8s_host
         k8s_token_reviewer_jwt: k8s_token_reviewer_jwt
+        cluster_api_type: cluster_api_type
         k8s_issuer: k8s_issuer
         protection_key: protection_key
         auth_method_access_id: auth_method_access_id
         k8s_pub_keys_pem:
         - k8s_pub_keys_pem
         - k8s_pub_keys_pem
+        rancher_api_key: rancher_api_key
         am_token_expiration: 0
         name: name
         auth_method_prv_key_pem: auth_method_prv_key_pem
         disable_iss_validation: true
         id: id
+        rancher_cluster_id: rancher_cluster_id
         use_local_ca_jwt: true
       properties:
         am_token_expiration:
@@ -29129,6 +29322,10 @@ components:
             Kubernetes auth method, that used to sign the internal token for the Akeyless Kubernetes Auth Method
           type: string
           x-go-name: AuthMethodSigningKey
+        cluster_api_type:
+          description: ClusterApiType defines types of API access to cluster
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
         disable_iss_validation:
           description: DisableISSValidation is optional parameter to disable ISS validation
           type: boolean
@@ -29157,9 +29354,8 @@ components:
           type: array
           x-go-name: K8SPublicKeysPEM
         k8s_token_reviewer_jwt:
-          description: K8STokenReviewerJW"K8S Auth config %v successfully created\n",
-            clictx.Color().Bold(c.K8SAuthConfigName)T is the bearer to use during
-            the TokenReview API call
+          description: K8STokenReviewerJWT is the bearer for clusterApiTypeK8s, used
+            during TokenReview API call
           type: string
           x-go-name: K8STokenReviewerJWT
         name:
@@ -29168,6 +29364,15 @@ components:
         protection_key:
           type: string
           x-go-name: ProtectionKey
+        rancher_api_key:
+          description: RancherApiKey the bear token for clusterApiTypeRancher
+          type: string
+          x-go-name: RancherApiKey
+        rancher_cluster_id:
+          description: RancherClusterId cluster id as define in rancher (in case of
+            clusterApiTypeRancher)
+          type: string
+          x-go-name: RancherClusterId
         use_local_ca_jwt:
           description: |-
             UseLocalCAJwt is an optional parameter to set defaulting to using
@@ -29898,6 +30103,11 @@ components:
           description: The access ID of the Kubernetes auth method
           type: string
           x-go-name: AuthMethodAccessId
+        cluster-api-type:
+          default: native_k8s
+          description: 'Cluster access type. options: [native_k8s, rancher]'
+          type: string
+          x-go-name: ClusterApiType
         config-encryption-key-name:
           description: Config encryption key
           type: string
@@ -29924,6 +30134,16 @@ components:
           description: K8S Auth config new name
           type: string
           x-go-name: K8SAuthConfigNewName
+        rancher-api-key:
+          description: The api key used to access the TokenReview API to validate
+            other JWTs (relevant for "rancher" only)
+          type: string
+          x-go-name: RancherApiKey
+        rancher-cluster-id:
+          description: The cluster id as define in rancher (relevant for "rancher"
+            only)
+          type: string
+          x-go-name: RancherClusterId
         signing-key:
           description: The private key (in base64 encoded of the PEM format) associated
             with the public key defined in the Kubernetes auth
@@ -29942,7 +30162,7 @@ components:
           x-go-name: AuthMethodTokenExpiration
         token-reviewer-jwt:
           description: |-
-            A Kubernetes service account JWT used to access the TokenReview API to validate other JWTs.
+            A Kubernetes service account JWT used to access the TokenReview API to validate other JWTs (relevant for "native_k8s" only).
             If not set, the JWT submitted in the authentication process will be used to access the Kubernetes TokenReview API.
           type: string
           x-go-name: K8STokenReviewerJWT
@@ -32225,7 +32445,7 @@ components:
           x-go-name: DockerhubPassword
         dockerhub-token-scopes:
           description: |-
-            Access token scopes list (comma seperated) to give the dynamic secret
+            Access token scopes list (comma-separated) to give the dynamic secret
             valid options are in "repo:admin", "repo:write", "repo:read", "repo:public_read"
           type: string
           x-go-name: TokenScopes
@@ -38995,6 +39215,15 @@ components:
         signPKCS1 is a command that calculates the signature of hashed data using
         RSASSA-PKCS1-V1_5-SIGN from RSA PKCS#1 v1.5.
       properties:
+        display-id:
+          description: The display id of the key to use in the signing process
+          type: string
+          x-go-name: DisplayId
+        item-id:
+          description: The item id of the key to use in the signing process
+          format: int64
+          type: integer
+          x-go-name: ItemId
         key-name:
           description: The name of the RSA key to use in the signing process
           type: string
@@ -39014,7 +39243,6 @@ components:
           type: string
           x-go-name: UIDToken
       required:
-      - key-name
       - message
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
@@ -41583,6 +41811,10 @@ components:
           description: New target name
           type: string
           x-go-name: NewTargetName
+        server-type:
+          description: Set Ldap server type, Options:[OpenLDAP, ActiveDirectory]
+          type: string
+          x-go-name: ServerType
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -42412,6 +42644,15 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     updateSalesforceTarget:
       properties:
+        app-private-key-data:
+          description: Base64 encoded PEM of the connected app private key (relevant
+            for JWT auth only)
+          type: string
+          x-go-name: AppPrivateKeyData
+        auth-flow:
+          description: type of the auth flow ('jwt' / 'user-password')
+          type: string
+          x-go-name: AuthFlowType
         ca-cert-data:
           description: Base64 encoded PEM cert to use when uploading a new key to
             Salesforce
@@ -42428,6 +42669,7 @@ components:
           x-go-name: ClientId
         client-secret:
           description: Client secret of the oauth2 app to use for connecting to Salesforce
+            (required for password flow)
           type: string
           x-go-name: ClientSecret
         comment:
@@ -42458,12 +42700,12 @@ components:
           x-go-name: NewTargetName
         password:
           description: The password of the user attached to the oauth2 app used for
-            connecting to Salesforce
+            connecting to Salesforce (required for user-password flow)
           type: string
           x-go-name: Password
         security-token:
           description: The security token of the user attached to the oauth2 app used
-            for connecting to Salesforce
+            for connecting to Salesforce  (required for user-password flow)
           type: string
           x-go-name: SecurityToken
         tenant-url:
@@ -42485,12 +42727,10 @@ components:
           type: boolean
           x-go-name: CreateNewVersion
       required:
+      - auth-flow
       - client-id
-      - client-secret
       - email
       - name
-      - password
-      - security-token
       - tenant-url
       title: updateSalesforceTarget is a command that updates a new target.
       type: object
@@ -42627,95 +42867,6 @@ components:
         updated:
           type: boolean
           x-go-name: Updated
-      type: object
-      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
-    updateTokenizer:
-      description: updateTokenizer is a command that updates a tokenizer item
-      properties:
-        add-tag:
-          description: List of the new tags that will be attached to this item
-          items:
-            type: string
-          type: array
-          x-go-name: AddTags
-        alphabet:
-          description: Alphabet to use in regexp vaultless tokenization
-          type: string
-          x-go-name: Alphabet
-        decoding-template:
-          description: The Decoding output template to use in regexp vaultless tokenization
-          type: string
-          x-go-name: DecodingTemplate
-        delete_protection:
-          type: string
-          x-go-name: ItemProtected
-        encoding-template:
-          description: The Encoding output template to use in regexp vaultless tokenization
-          type: string
-          x-go-name: EncodingTemplate
-        encryption-key-name:
-          description: AES key name to use in vaultless tokenization
-          type: string
-          x-go-name: EncryptionKeyName
-        name:
-          description: Current item name
-          type: string
-          x-go-name: ItemName
-        new-metadata:
-          default: default_metadata
-          description: New item metadata
-          type: string
-          x-go-name: NewMetadata
-        new-name:
-          description: New item name
-          type: string
-          x-go-name: NewName
-        pattern:
-          description: Pattern to use in regexp vaultless tokenization
-          type: string
-          x-go-name: Pattern
-        rm-tag:
-          description: List of the existent tags that will be removed from this item
-          items:
-            type: string
-          type: array
-          x-go-name: RemoveTags
-        template-type:
-          description: Which template type this tokenizer is used for [SSN,CreditCard,USPhoneNumber,Email,Regexp]
-          type: string
-          x-go-name: TemplateType
-        token:
-          description: Authentication token (see `/auth` and `/configure`)
-          type: string
-          x-go-name: Profile
-        tokenizer-type:
-          description: Tokenizer type
-          type: string
-          x-go-name: TokenizerType
-        tweak-type:
-          description: The tweak type to use in vaultless tokenization [Supplied,
-            Generated, Internal, Masking]
-          type: string
-          x-go-name: TweakType
-        uid-token:
-          description: |-
-            The universal identity token, Required only for universal_identity
-            authentication
-          type: string
-          x-go-name: UIDToken
-      required:
-      - name
-      - template-type
-      - tokenizer-type
-      type: object
-      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
-    updateTokenizerOutput:
-      example:
-        name: name
-      properties:
-        name:
-          type: string
-          x-go-name: Name
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     updateWebTarget:
@@ -43014,6 +43165,15 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     verifyPKCS1:
       properties:
+        display-id:
+          description: The display id of the key to use in the verification process
+          type: string
+          x-go-name: DisplayId
+        item-id:
+          description: The item id of the key to use in the verification process
+          format: int64
+          type: integer
+          x-go-name: ItemId
         key-name:
           description: The name of the RSA key to use in the verification process
           type: string

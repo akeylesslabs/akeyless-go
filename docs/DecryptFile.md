@@ -4,6 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DisplayId** | Pointer to **string** | The display id of the key to use in the decryption process | [optional] 
+**ItemId** | Pointer to **int64** | The item id of the key to use in the decryption process | [optional] 
+**KeyName** | **string** | The name of the key to use in the decryption process | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
@@ -11,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewDecryptFile
 
-`func NewDecryptFile() *DecryptFile`
+`func NewDecryptFile(keyName string, ) *DecryptFile`
 
 NewDecryptFile instantiates a new DecryptFile object
 This constructor will assign default values to properties that have it defined,
@@ -25,6 +28,76 @@ will change when the set of required properties is changed
 NewDecryptFileWithDefaults instantiates a new DecryptFile object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetDisplayId
+
+`func (o *DecryptFile) GetDisplayId() string`
+
+GetDisplayId returns the DisplayId field if non-nil, zero value otherwise.
+
+### GetDisplayIdOk
+
+`func (o *DecryptFile) GetDisplayIdOk() (*string, bool)`
+
+GetDisplayIdOk returns a tuple with the DisplayId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisplayId
+
+`func (o *DecryptFile) SetDisplayId(v string)`
+
+SetDisplayId sets DisplayId field to given value.
+
+### HasDisplayId
+
+`func (o *DecryptFile) HasDisplayId() bool`
+
+HasDisplayId returns a boolean if a field has been set.
+
+### GetItemId
+
+`func (o *DecryptFile) GetItemId() int64`
+
+GetItemId returns the ItemId field if non-nil, zero value otherwise.
+
+### GetItemIdOk
+
+`func (o *DecryptFile) GetItemIdOk() (*int64, bool)`
+
+GetItemIdOk returns a tuple with the ItemId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemId
+
+`func (o *DecryptFile) SetItemId(v int64)`
+
+SetItemId sets ItemId field to given value.
+
+### HasItemId
+
+`func (o *DecryptFile) HasItemId() bool`
+
+HasItemId returns a boolean if a field has been set.
+
+### GetKeyName
+
+`func (o *DecryptFile) GetKeyName() string`
+
+GetKeyName returns the KeyName field if non-nil, zero value otherwise.
+
+### GetKeyNameOk
+
+`func (o *DecryptFile) GetKeyNameOk() (*string, bool)`
+
+GetKeyNameOk returns a tuple with the KeyName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKeyName
+
+`func (o *DecryptFile) SetKeyName(v string)`
+
+SetKeyName sets KeyName field to given value.
+
 
 ### GetToken
 

@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DisplayId** | Pointer to **string** | The display id of the key to use in the verification process | [optional] 
+**ItemId** | Pointer to **int64** | The item id of the key to use in the verification process | [optional] 
 **KeyName** | **string** | The name of the RSA key to use in the verification process | 
 **Message** | **string** | The message to be verified | 
 **Signature** | **string** | The message&#39;s signature | 
@@ -28,6 +30,56 @@ will change when the set of required properties is changed
 NewVerifyPKCS1WithDefaults instantiates a new VerifyPKCS1 object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetDisplayId
+
+`func (o *VerifyPKCS1) GetDisplayId() string`
+
+GetDisplayId returns the DisplayId field if non-nil, zero value otherwise.
+
+### GetDisplayIdOk
+
+`func (o *VerifyPKCS1) GetDisplayIdOk() (*string, bool)`
+
+GetDisplayIdOk returns a tuple with the DisplayId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisplayId
+
+`func (o *VerifyPKCS1) SetDisplayId(v string)`
+
+SetDisplayId sets DisplayId field to given value.
+
+### HasDisplayId
+
+`func (o *VerifyPKCS1) HasDisplayId() bool`
+
+HasDisplayId returns a boolean if a field has been set.
+
+### GetItemId
+
+`func (o *VerifyPKCS1) GetItemId() int64`
+
+GetItemId returns the ItemId field if non-nil, zero value otherwise.
+
+### GetItemIdOk
+
+`func (o *VerifyPKCS1) GetItemIdOk() (*int64, bool)`
+
+GetItemIdOk returns a tuple with the ItemId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemId
+
+`func (o *VerifyPKCS1) SetItemId(v int64)`
+
+SetItemId sets ItemId field to given value.
+
+### HasItemId
+
+`func (o *VerifyPKCS1) HasItemId() bool`
+
+HasItemId returns a boolean if a field has been set.
 
 ### GetKeyName
 

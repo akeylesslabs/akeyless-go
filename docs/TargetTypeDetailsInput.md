@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AppPrivateKey** | Pointer to **[]int32** | params needed for jwt auth AppPrivateKey is the rsa private key in PEM format | [optional] 
 **ArtifactoryAdminApikey** | Pointer to **string** |  | [optional] 
 **ArtifactoryAdminUsername** | Pointer to **string** |  | [optional] 
 **ArtifactoryBaseUrl** | Pointer to **string** |  | [optional] 
@@ -27,7 +28,7 @@ Name | Type | Description | Notes
 **ChefServerUsername** | Pointer to **string** |  | [optional] 
 **ChefSkipSsl** | Pointer to **bool** |  | [optional] 
 **ClientId** | Pointer to **string** |  | [optional] 
-**ClientSecret** | Pointer to **string** |  | [optional] 
+**ClientSecret** | Pointer to **string** | params needed for password auth | [optional] 
 **DbHostName** | Pointer to **string** |  | [optional] 
 **DbName** | Pointer to **string** |  | [optional] 
 **DbPort** | Pointer to **string** |  | [optional] 
@@ -115,6 +116,31 @@ will change when the set of required properties is changed
 NewTargetTypeDetailsInputWithDefaults instantiates a new TargetTypeDetailsInput object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAppPrivateKey
+
+`func (o *TargetTypeDetailsInput) GetAppPrivateKey() []int32`
+
+GetAppPrivateKey returns the AppPrivateKey field if non-nil, zero value otherwise.
+
+### GetAppPrivateKeyOk
+
+`func (o *TargetTypeDetailsInput) GetAppPrivateKeyOk() (*[]int32, bool)`
+
+GetAppPrivateKeyOk returns a tuple with the AppPrivateKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAppPrivateKey
+
+`func (o *TargetTypeDetailsInput) SetAppPrivateKey(v []int32)`
+
+SetAppPrivateKey sets AppPrivateKey field to given value.
+
+### HasAppPrivateKey
+
+`func (o *TargetTypeDetailsInput) HasAppPrivateKey() bool`
+
+HasAppPrivateKey returns a boolean if a field has been set.
 
 ### GetArtifactoryAdminApikey
 

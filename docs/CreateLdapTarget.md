@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **LdapCaCert** | Pointer to **string** | CA Certificate File Content | [optional] 
 **LdapUrl** | **string** | LDAP Server URL | 
 **Name** | **string** | Target name | 
+**ServerType** | Pointer to **string** | Set Ldap server type, Options:[OpenLDAP, ActiveDirectory]. Default is OpenLDAP | [optional] [default to "OpenLDAP"]
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **TokenExpiration** | Pointer to **string** | Token expiration | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -188,6 +189,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetServerType
+
+`func (o *CreateLdapTarget) GetServerType() string`
+
+GetServerType returns the ServerType field if non-nil, zero value otherwise.
+
+### GetServerTypeOk
+
+`func (o *CreateLdapTarget) GetServerTypeOk() (*string, bool)`
+
+GetServerTypeOk returns a tuple with the ServerType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServerType
+
+`func (o *CreateLdapTarget) SetServerType(v string)`
+
+SetServerType sets ServerType field to given value.
+
+### HasServerType
+
+`func (o *CreateLdapTarget) HasServerType() bool`
+
+HasServerType returns a boolean if a field has been set.
 
 ### GetToken
 

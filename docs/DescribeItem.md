@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DisplayId** | Pointer to **string** | The display id of the item | [optional] 
+**ItemId** | Pointer to **int64** | Item id of the item | [optional] 
 **Name** | **string** | Item name | 
 **ShowVersions** | Pointer to **bool** | Include all item versions in reply | [optional] [default to false]
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -27,6 +29,56 @@ will change when the set of required properties is changed
 NewDescribeItemWithDefaults instantiates a new DescribeItem object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetDisplayId
+
+`func (o *DescribeItem) GetDisplayId() string`
+
+GetDisplayId returns the DisplayId field if non-nil, zero value otherwise.
+
+### GetDisplayIdOk
+
+`func (o *DescribeItem) GetDisplayIdOk() (*string, bool)`
+
+GetDisplayIdOk returns a tuple with the DisplayId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisplayId
+
+`func (o *DescribeItem) SetDisplayId(v string)`
+
+SetDisplayId sets DisplayId field to given value.
+
+### HasDisplayId
+
+`func (o *DescribeItem) HasDisplayId() bool`
+
+HasDisplayId returns a boolean if a field has been set.
+
+### GetItemId
+
+`func (o *DescribeItem) GetItemId() int64`
+
+GetItemId returns the ItemId field if non-nil, zero value otherwise.
+
+### GetItemIdOk
+
+`func (o *DescribeItem) GetItemIdOk() (*int64, bool)`
+
+GetItemIdOk returns a tuple with the ItemId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemId
+
+`func (o *DescribeItem) SetItemId(v int64)`
+
+SetItemId sets ItemId field to given value.
+
+### HasItemId
+
+`func (o *DescribeItem) HasItemId() bool`
+
+HasItemId returns a boolean if a field has been set.
 
 ### GetName
 

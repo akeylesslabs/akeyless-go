@@ -19,6 +19,8 @@ import (
 type GatewayCreateK8SAuthConfig struct {
 	// The access ID of the Kubernetes auth method
 	AccessId string `json:"access-id"`
+	// Cluster access type. options: [native_k8s, rancher]
+	ClusterApiType *string `json:"cluster-api-type,omitempty"`
 	// Config encryption key
 	ConfigEncryptionKeyName *string `json:"config-encryption-key-name,omitempty"`
 	// The CA Cert (in PEM format) to use to call into the kubernetes API server
@@ -29,13 +31,17 @@ type GatewayCreateK8SAuthConfig struct {
 	K8sIssuer *string `json:"k8s-issuer,omitempty"`
 	// K8S Auth config name
 	Name string `json:"name"`
+	// The api key used to access the TokenReview API to validate other JWTs (relevant for \"rancher\" only)
+	RancherApiKey *string `json:"rancher-api-key,omitempty"`
+	// The cluster id as define in rancher (relevant for \"rancher\" only)
+	RancherClusterId *string `json:"rancher-cluster-id,omitempty"`
 	// The private key (in base64 encoded of the PEM format) associated with the public key defined in the Kubernetes auth
 	SigningKey string `json:"signing-key"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// Time in seconds of expiration of the Akeyless Kube Auth Method token
 	TokenExp *int64 `json:"token-exp,omitempty"`
-	// A Kubernetes service account JWT used to access the TokenReview API to validate other JWTs. If not set, the JWT submitted in the authentication process will be used to access the Kubernetes TokenReview API.
+	// A Kubernetes service account JWT used to access the TokenReview API to validate other JWTs (relevant for \"native_k8s\" only). If not set, the JWT submitted in the authentication process will be used to access the Kubernetes TokenReview API.
 	TokenReviewerJwt *string `json:"token-reviewer-jwt,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
@@ -48,6 +54,8 @@ type GatewayCreateK8SAuthConfig struct {
 func NewGatewayCreateK8SAuthConfig(accessId string, k8sHost string, name string, signingKey string, ) *GatewayCreateK8SAuthConfig {
 	this := GatewayCreateK8SAuthConfig{}
 	this.AccessId = accessId
+	var clusterApiType string = "native_k8s"
+	this.ClusterApiType = &clusterApiType
 	this.K8sHost = k8sHost
 	this.Name = name
 	this.SigningKey = signingKey
@@ -61,6 +69,8 @@ func NewGatewayCreateK8SAuthConfig(accessId string, k8sHost string, name string,
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayCreateK8SAuthConfigWithDefaults() *GatewayCreateK8SAuthConfig {
 	this := GatewayCreateK8SAuthConfig{}
+	var clusterApiType string = "native_k8s"
+	this.ClusterApiType = &clusterApiType
 	var tokenExp int64 = 300
 	this.TokenExp = &tokenExp
 	return &this
@@ -88,6 +98,38 @@ func (o *GatewayCreateK8SAuthConfig) GetAccessIdOk() (*string, bool) {
 // SetAccessId sets field value
 func (o *GatewayCreateK8SAuthConfig) SetAccessId(v string) {
 	o.AccessId = v
+}
+
+// GetClusterApiType returns the ClusterApiType field value if set, zero value otherwise.
+func (o *GatewayCreateK8SAuthConfig) GetClusterApiType() string {
+	if o == nil || o.ClusterApiType == nil {
+		var ret string
+		return ret
+	}
+	return *o.ClusterApiType
+}
+
+// GetClusterApiTypeOk returns a tuple with the ClusterApiType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateK8SAuthConfig) GetClusterApiTypeOk() (*string, bool) {
+	if o == nil || o.ClusterApiType == nil {
+		return nil, false
+	}
+	return o.ClusterApiType, true
+}
+
+// HasClusterApiType returns a boolean if a field has been set.
+func (o *GatewayCreateK8SAuthConfig) HasClusterApiType() bool {
+	if o != nil && o.ClusterApiType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetClusterApiType gets a reference to the given string and assigns it to the ClusterApiType field.
+func (o *GatewayCreateK8SAuthConfig) SetClusterApiType(v string) {
+	o.ClusterApiType = &v
 }
 
 // GetConfigEncryptionKeyName returns the ConfigEncryptionKeyName field value if set, zero value otherwise.
@@ -232,6 +274,70 @@ func (o *GatewayCreateK8SAuthConfig) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *GatewayCreateK8SAuthConfig) SetName(v string) {
 	o.Name = v
+}
+
+// GetRancherApiKey returns the RancherApiKey field value if set, zero value otherwise.
+func (o *GatewayCreateK8SAuthConfig) GetRancherApiKey() string {
+	if o == nil || o.RancherApiKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.RancherApiKey
+}
+
+// GetRancherApiKeyOk returns a tuple with the RancherApiKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateK8SAuthConfig) GetRancherApiKeyOk() (*string, bool) {
+	if o == nil || o.RancherApiKey == nil {
+		return nil, false
+	}
+	return o.RancherApiKey, true
+}
+
+// HasRancherApiKey returns a boolean if a field has been set.
+func (o *GatewayCreateK8SAuthConfig) HasRancherApiKey() bool {
+	if o != nil && o.RancherApiKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRancherApiKey gets a reference to the given string and assigns it to the RancherApiKey field.
+func (o *GatewayCreateK8SAuthConfig) SetRancherApiKey(v string) {
+	o.RancherApiKey = &v
+}
+
+// GetRancherClusterId returns the RancherClusterId field value if set, zero value otherwise.
+func (o *GatewayCreateK8SAuthConfig) GetRancherClusterId() string {
+	if o == nil || o.RancherClusterId == nil {
+		var ret string
+		return ret
+	}
+	return *o.RancherClusterId
+}
+
+// GetRancherClusterIdOk returns a tuple with the RancherClusterId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateK8SAuthConfig) GetRancherClusterIdOk() (*string, bool) {
+	if o == nil || o.RancherClusterId == nil {
+		return nil, false
+	}
+	return o.RancherClusterId, true
+}
+
+// HasRancherClusterId returns a boolean if a field has been set.
+func (o *GatewayCreateK8SAuthConfig) HasRancherClusterId() bool {
+	if o != nil && o.RancherClusterId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRancherClusterId gets a reference to the given string and assigns it to the RancherClusterId field.
+func (o *GatewayCreateK8SAuthConfig) SetRancherClusterId(v string) {
+	o.RancherClusterId = &v
 }
 
 // GetSigningKey returns the SigningKey field value
@@ -391,6 +497,9 @@ func (o GatewayCreateK8SAuthConfig) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["access-id"] = o.AccessId
 	}
+	if o.ClusterApiType != nil {
+		toSerialize["cluster-api-type"] = o.ClusterApiType
+	}
 	if o.ConfigEncryptionKeyName != nil {
 		toSerialize["config-encryption-key-name"] = o.ConfigEncryptionKeyName
 	}
@@ -405,6 +514,12 @@ func (o GatewayCreateK8SAuthConfig) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.RancherApiKey != nil {
+		toSerialize["rancher-api-key"] = o.RancherApiKey
+	}
+	if o.RancherClusterId != nil {
+		toSerialize["rancher-cluster-id"] = o.RancherClusterId
 	}
 	if true {
 		toSerialize["signing-key"] = o.SigningKey
