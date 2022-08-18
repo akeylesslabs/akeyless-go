@@ -47,6 +47,7 @@ type Item struct {
 	ProtectionKeyType *string `json:"protection_key_type,omitempty"`
 	PublicValue *string `json:"public_value,omitempty"`
 	RotationInterval *int64 `json:"rotation_interval,omitempty"`
+	SharedBy *RuleAssigner `json:"shared_by,omitempty"`
 	TargetVersions *[]TargetItemVersion `json:"target_versions,omitempty"`
 	WithCustomerFragment *bool `json:"with_customer_fragment,omitempty"`
 }
@@ -964,6 +965,38 @@ func (o *Item) SetRotationInterval(v int64) {
 	o.RotationInterval = &v
 }
 
+// GetSharedBy returns the SharedBy field value if set, zero value otherwise.
+func (o *Item) GetSharedBy() RuleAssigner {
+	if o == nil || o.SharedBy == nil {
+		var ret RuleAssigner
+		return ret
+	}
+	return *o.SharedBy
+}
+
+// GetSharedByOk returns a tuple with the SharedBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Item) GetSharedByOk() (*RuleAssigner, bool) {
+	if o == nil || o.SharedBy == nil {
+		return nil, false
+	}
+	return o.SharedBy, true
+}
+
+// HasSharedBy returns a boolean if a field has been set.
+func (o *Item) HasSharedBy() bool {
+	if o != nil && o.SharedBy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSharedBy gets a reference to the given RuleAssigner and assigns it to the SharedBy field.
+func (o *Item) SetSharedBy(v RuleAssigner) {
+	o.SharedBy = &v
+}
+
 // GetTargetVersions returns the TargetVersions field value if set, zero value otherwise.
 func (o *Item) GetTargetVersions() []TargetItemVersion {
 	if o == nil || o.TargetVersions == nil {
@@ -1113,6 +1146,9 @@ func (o Item) MarshalJSON() ([]byte, error) {
 	}
 	if o.RotationInterval != nil {
 		toSerialize["rotation_interval"] = o.RotationInterval
+	}
+	if o.SharedBy != nil {
+		toSerialize["shared_by"] = o.SharedBy
 	}
 	if o.TargetVersions != nil {
 		toSerialize["target_versions"] = o.TargetVersions

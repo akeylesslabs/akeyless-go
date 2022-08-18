@@ -26,6 +26,8 @@ type KubernetesAccessRules struct {
 	BoundPodNames *[]string `json:"bound_pod_names,omitempty"`
 	// A list of service account names that the authentication is restricted to.
 	BoundServiceAccountNames *[]string `json:"bound_service_account_names,omitempty"`
+	// Generate public/private key (the private key is required for the K8S Auth Config in the Akeyless Gateway)
+	GenKeyPair *string `json:"gen_key_pair,omitempty"`
 	// The public key value of the Kubernetes auth method configuration in the Akeyless Gateway.
 	PubKey *string `json:"pub_key,omitempty"`
 }
@@ -207,6 +209,38 @@ func (o *KubernetesAccessRules) SetBoundServiceAccountNames(v []string) {
 	o.BoundServiceAccountNames = &v
 }
 
+// GetGenKeyPair returns the GenKeyPair field value if set, zero value otherwise.
+func (o *KubernetesAccessRules) GetGenKeyPair() string {
+	if o == nil || o.GenKeyPair == nil {
+		var ret string
+		return ret
+	}
+	return *o.GenKeyPair
+}
+
+// GetGenKeyPairOk returns a tuple with the GenKeyPair field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KubernetesAccessRules) GetGenKeyPairOk() (*string, bool) {
+	if o == nil || o.GenKeyPair == nil {
+		return nil, false
+	}
+	return o.GenKeyPair, true
+}
+
+// HasGenKeyPair returns a boolean if a field has been set.
+func (o *KubernetesAccessRules) HasGenKeyPair() bool {
+	if o != nil && o.GenKeyPair != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGenKeyPair gets a reference to the given string and assigns it to the GenKeyPair field.
+func (o *KubernetesAccessRules) SetGenKeyPair(v string) {
+	o.GenKeyPair = &v
+}
+
 // GetPubKey returns the PubKey field value if set, zero value otherwise.
 func (o *KubernetesAccessRules) GetPubKey() string {
 	if o == nil || o.PubKey == nil {
@@ -255,6 +289,9 @@ func (o KubernetesAccessRules) MarshalJSON() ([]byte, error) {
 	}
 	if o.BoundServiceAccountNames != nil {
 		toSerialize["bound_service_account_names"] = o.BoundServiceAccountNames
+	}
+	if o.GenKeyPair != nil {
+		toSerialize["gen_key_pair"] = o.GenKeyPair
 	}
 	if o.PubKey != nil {
 		toSerialize["pub_key"] = o.PubKey

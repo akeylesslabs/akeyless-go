@@ -17,10 +17,12 @@ import (
 
 // GatewayRevokeTmpUsers gatewayRevokeTmpUsers is a command that revoke producer tmp user
 type GatewayRevokeTmpUsers struct {
-	// Host
+	// Deprecated: has no effect
 	Host *string `json:"host,omitempty"`
 	// Producer Name
 	Name string `json:"name"`
+	// Revoke All Temp Creds
+	RevokeAll *bool `json:"revoke-all,omitempty"`
 	// Soft Delete
 	SoftDelete *bool `json:"soft-delete,omitempty"`
 	// Tmp Creds ID
@@ -47,6 +49,8 @@ func NewGatewayRevokeTmpUsers(name string, tmpCredsId string, ) *GatewayRevokeTm
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayRevokeTmpUsersWithDefaults() *GatewayRevokeTmpUsers {
 	this := GatewayRevokeTmpUsers{}
+	var tmpCredsId string = "demo_default_tmp_creds_id_for_sdk_bc"
+	this.TmpCredsId = tmpCredsId
 	return &this
 }
 
@@ -104,6 +108,38 @@ func (o *GatewayRevokeTmpUsers) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *GatewayRevokeTmpUsers) SetName(v string) {
 	o.Name = v
+}
+
+// GetRevokeAll returns the RevokeAll field value if set, zero value otherwise.
+func (o *GatewayRevokeTmpUsers) GetRevokeAll() bool {
+	if o == nil || o.RevokeAll == nil {
+		var ret bool
+		return ret
+	}
+	return *o.RevokeAll
+}
+
+// GetRevokeAllOk returns a tuple with the RevokeAll field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayRevokeTmpUsers) GetRevokeAllOk() (*bool, bool) {
+	if o == nil || o.RevokeAll == nil {
+		return nil, false
+	}
+	return o.RevokeAll, true
+}
+
+// HasRevokeAll returns a boolean if a field has been set.
+func (o *GatewayRevokeTmpUsers) HasRevokeAll() bool {
+	if o != nil && o.RevokeAll != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRevokeAll gets a reference to the given bool and assigns it to the RevokeAll field.
+func (o *GatewayRevokeTmpUsers) SetRevokeAll(v bool) {
+	o.RevokeAll = &v
 }
 
 // GetSoftDelete returns the SoftDelete field value if set, zero value otherwise.
@@ -233,6 +269,9 @@ func (o GatewayRevokeTmpUsers) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.RevokeAll != nil {
+		toSerialize["revoke-all"] = o.RevokeAll
 	}
 	if o.SoftDelete != nil {
 		toSerialize["soft-delete"] = o.SoftDelete

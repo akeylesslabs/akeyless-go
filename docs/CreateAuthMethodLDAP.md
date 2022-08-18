@@ -7,10 +7,11 @@ Name | Type | Description | Notes
 **AccessExpires** | Pointer to **int64** | Access expiration date in Unix timestamp (select 0 for access without expiry date) | [optional] [default to 0]
 **BoundIps** | Pointer to **[]string** | A CIDR whitelist with the IPs that the access is restricted to | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
+**GenKey** | Pointer to **string** | Automatically generate key-pair for LDAP configuration. If set to false, a public key needs to be provided | [optional] [default to "true"]
 **GwBoundIps** | Pointer to **[]string** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
 **JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] 
 **Name** | **string** | Auth Method name | 
-**PublicKeyData** | Pointer to **string** | A public key generated for LDAP authentication method on Akeyless in base64 format [RSA2048] | [optional] 
+**PublicKeyData** | Pointer to **string** | A public key generated for LDAP authentication method on Akeyless in base64 or PEM format [RSA2048] | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UniqueIdentifier** | Pointer to **string** | A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. | [optional] 
@@ -108,6 +109,31 @@ SetForceSubClaims sets ForceSubClaims field to given value.
 `func (o *CreateAuthMethodLDAP) HasForceSubClaims() bool`
 
 HasForceSubClaims returns a boolean if a field has been set.
+
+### GetGenKey
+
+`func (o *CreateAuthMethodLDAP) GetGenKey() string`
+
+GetGenKey returns the GenKey field if non-nil, zero value otherwise.
+
+### GetGenKeyOk
+
+`func (o *CreateAuthMethodLDAP) GetGenKeyOk() (*string, bool)`
+
+GetGenKeyOk returns a tuple with the GenKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGenKey
+
+`func (o *CreateAuthMethodLDAP) SetGenKey(v string)`
+
+SetGenKey sets GenKey field to given value.
+
+### HasGenKey
+
+`func (o *CreateAuthMethodLDAP) HasGenKey() bool`
+
+HasGenKey returns a boolean if a field has been set.
 
 ### GetGwBoundIps
 

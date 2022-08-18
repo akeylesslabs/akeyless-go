@@ -4,10 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Host** | Pointer to **string** | Host | [optional] 
+**Host** | Pointer to **string** | Deprecated: has no effect | [optional] 
 **Name** | **string** | Producer Name | 
+**RevokeAll** | Pointer to **bool** | Revoke All Temp Creds | [optional] 
 **SoftDelete** | Pointer to **bool** | Soft Delete | [optional] 
-**TmpCredsId** | **string** | Tmp Creds ID | 
+**TmpCredsId** | **string** | Tmp Creds ID | [default to "demo_default_tmp_creds_id_for_sdk_bc"]
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
@@ -74,6 +75,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetRevokeAll
+
+`func (o *GatewayRevokeTmpUsers) GetRevokeAll() bool`
+
+GetRevokeAll returns the RevokeAll field if non-nil, zero value otherwise.
+
+### GetRevokeAllOk
+
+`func (o *GatewayRevokeTmpUsers) GetRevokeAllOk() (*bool, bool)`
+
+GetRevokeAllOk returns a tuple with the RevokeAll field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRevokeAll
+
+`func (o *GatewayRevokeTmpUsers) SetRevokeAll(v bool)`
+
+SetRevokeAll sets RevokeAll field to given value.
+
+### HasRevokeAll
+
+`func (o *GatewayRevokeTmpUsers) HasRevokeAll() bool`
+
+HasRevokeAll returns a boolean if a field has been set.
 
 ### GetSoftDelete
 

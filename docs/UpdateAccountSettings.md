@@ -15,10 +15,15 @@ Name | Type | Description | Notes
 **JwtTtlMax** | Pointer to **int64** | Maximum ttl | [optional] 
 **JwtTtlMin** | Pointer to **int64** | Minimum ttl | [optional] 
 **MaxVersions** | Pointer to **string** | Max versions | [optional] 
+**PasswordLength** | Pointer to **int64** | For PasswordPolicy use | [optional] 
 **Phone** | Pointer to **string** | Phone number | [optional] 
 **PostalCode** | Pointer to **string** | Postal code | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**UseLowerLetters** | Pointer to **string** | For PasswordPolicy use | [optional] 
+**UseNumbers** | Pointer to **string** | For PasswordPolicy use | [optional] 
+**UseSpecialCharacters** | Pointer to **string** | For PasswordPolicy use | [optional] 
+**UseCapitalLetters** | Pointer to **string** | For PasswordPolicy use | [optional] 
 
 ## Methods
 
@@ -314,6 +319,31 @@ SetMaxVersions sets MaxVersions field to given value.
 
 HasMaxVersions returns a boolean if a field has been set.
 
+### GetPasswordLength
+
+`func (o *UpdateAccountSettings) GetPasswordLength() int64`
+
+GetPasswordLength returns the PasswordLength field if non-nil, zero value otherwise.
+
+### GetPasswordLengthOk
+
+`func (o *UpdateAccountSettings) GetPasswordLengthOk() (*int64, bool)`
+
+GetPasswordLengthOk returns a tuple with the PasswordLength field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasswordLength
+
+`func (o *UpdateAccountSettings) SetPasswordLength(v int64)`
+
+SetPasswordLength sets PasswordLength field to given value.
+
+### HasPasswordLength
+
+`func (o *UpdateAccountSettings) HasPasswordLength() bool`
+
+HasPasswordLength returns a boolean if a field has been set.
+
 ### GetPhone
 
 `func (o *UpdateAccountSettings) GetPhone() string`
@@ -413,6 +443,106 @@ SetUidToken sets UidToken field to given value.
 `func (o *UpdateAccountSettings) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetUseLowerLetters
+
+`func (o *UpdateAccountSettings) GetUseLowerLetters() string`
+
+GetUseLowerLetters returns the UseLowerLetters field if non-nil, zero value otherwise.
+
+### GetUseLowerLettersOk
+
+`func (o *UpdateAccountSettings) GetUseLowerLettersOk() (*string, bool)`
+
+GetUseLowerLettersOk returns a tuple with the UseLowerLetters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseLowerLetters
+
+`func (o *UpdateAccountSettings) SetUseLowerLetters(v string)`
+
+SetUseLowerLetters sets UseLowerLetters field to given value.
+
+### HasUseLowerLetters
+
+`func (o *UpdateAccountSettings) HasUseLowerLetters() bool`
+
+HasUseLowerLetters returns a boolean if a field has been set.
+
+### GetUseNumbers
+
+`func (o *UpdateAccountSettings) GetUseNumbers() string`
+
+GetUseNumbers returns the UseNumbers field if non-nil, zero value otherwise.
+
+### GetUseNumbersOk
+
+`func (o *UpdateAccountSettings) GetUseNumbersOk() (*string, bool)`
+
+GetUseNumbersOk returns a tuple with the UseNumbers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseNumbers
+
+`func (o *UpdateAccountSettings) SetUseNumbers(v string)`
+
+SetUseNumbers sets UseNumbers field to given value.
+
+### HasUseNumbers
+
+`func (o *UpdateAccountSettings) HasUseNumbers() bool`
+
+HasUseNumbers returns a boolean if a field has been set.
+
+### GetUseSpecialCharacters
+
+`func (o *UpdateAccountSettings) GetUseSpecialCharacters() string`
+
+GetUseSpecialCharacters returns the UseSpecialCharacters field if non-nil, zero value otherwise.
+
+### GetUseSpecialCharactersOk
+
+`func (o *UpdateAccountSettings) GetUseSpecialCharactersOk() (*string, bool)`
+
+GetUseSpecialCharactersOk returns a tuple with the UseSpecialCharacters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseSpecialCharacters
+
+`func (o *UpdateAccountSettings) SetUseSpecialCharacters(v string)`
+
+SetUseSpecialCharacters sets UseSpecialCharacters field to given value.
+
+### HasUseSpecialCharacters
+
+`func (o *UpdateAccountSettings) HasUseSpecialCharacters() bool`
+
+HasUseSpecialCharacters returns a boolean if a field has been set.
+
+### GetUseCapitalLetters
+
+`func (o *UpdateAccountSettings) GetUseCapitalLetters() string`
+
+GetUseCapitalLetters returns the UseCapitalLetters field if non-nil, zero value otherwise.
+
+### GetUseCapitalLettersOk
+
+`func (o *UpdateAccountSettings) GetUseCapitalLettersOk() (*string, bool)`
+
+GetUseCapitalLettersOk returns a tuple with the UseCapitalLetters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseCapitalLetters
+
+`func (o *UpdateAccountSettings) SetUseCapitalLetters(v string)`
+
+SetUseCapitalLetters sets UseCapitalLetters field to given value.
+
+### HasUseCapitalLetters
+
+`func (o *UpdateAccountSettings) HasUseCapitalLetters() bool`
+
+HasUseCapitalLetters returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

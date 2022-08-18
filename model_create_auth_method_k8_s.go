@@ -31,7 +31,7 @@ type CreateAuthMethodK8S struct {
 	BoundSaNames *[]string `json:"bound-sa-names,omitempty"`
 	// if true: enforce role-association must include sub claims
 	ForceSubClaims *bool `json:"force-sub-claims,omitempty"`
-	// If this flag is set to true, there is no need to manually provide a public key for the Kubernetes Auth Method, and instead, a key pair, will be generated as part of the command and the private part of the key will be returned (the private key is required for the K8S Auth Config in the Akeyless Gateway)
+	// Automatically generate key-pair for K8S configuration. If set to false, a public key needs to be provided
 	GenKey *string `json:"gen-key,omitempty"`
 	// A CIDR whitelist with the GW IPs that the access is restricted to
 	GwBoundIps *[]string `json:"gw-bound-ips,omitempty"`
@@ -39,7 +39,7 @@ type CreateAuthMethodK8S struct {
 	JwtTtl *int64 `json:"jwt-ttl,omitempty"`
 	// Auth Method name
 	Name string `json:"name"`
-	// Base64-encoded public key text for K8S authentication method is required [RSA2048]
+	// Base64-encoded or PEM formatted public key data for K8S authentication method is required [RSA2048]
 	PublicKey *string `json:"public-key,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`

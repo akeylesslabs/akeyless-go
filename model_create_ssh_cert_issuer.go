@@ -41,7 +41,7 @@ type CreateSSHCertIssuer struct {
 	Tag *[]string `json:"tag,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
-	// he requested Time To Live for the certificate, in seconds
+	// The requested Time To Live for the certificate, in seconds
 	Ttl int64 `json:"ttl"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`

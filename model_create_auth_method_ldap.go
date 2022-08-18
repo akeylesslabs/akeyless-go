@@ -23,13 +23,15 @@ type CreateAuthMethodLDAP struct {
 	BoundIps *[]string `json:"bound-ips,omitempty"`
 	// if true: enforce role-association must include sub claims
 	ForceSubClaims *bool `json:"force-sub-claims,omitempty"`
+	// Automatically generate key-pair for LDAP configuration. If set to false, a public key needs to be provided
+	GenKey *string `json:"gen-key,omitempty"`
 	// A CIDR whitelist with the GW IPs that the access is restricted to
 	GwBoundIps *[]string `json:"gw-bound-ips,omitempty"`
 	// Jwt TTL
 	JwtTtl *int64 `json:"jwt-ttl,omitempty"`
 	// Auth Method name
 	Name string `json:"name"`
-	// A public key generated for LDAP authentication method on Akeyless in base64 format [RSA2048]
+	// A public key generated for LDAP authentication method on Akeyless in base64 or PEM format [RSA2048]
 	PublicKeyData *string `json:"public-key-data,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
@@ -47,6 +49,8 @@ func NewCreateAuthMethodLDAP(name string, ) *CreateAuthMethodLDAP {
 	this := CreateAuthMethodLDAP{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var genKey string = "true"
+	this.GenKey = &genKey
 	this.Name = name
 	return &this
 }
@@ -58,6 +62,8 @@ func NewCreateAuthMethodLDAPWithDefaults() *CreateAuthMethodLDAP {
 	this := CreateAuthMethodLDAP{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var genKey string = "true"
+	this.GenKey = &genKey
 	return &this
 }
 
@@ -155,6 +161,38 @@ func (o *CreateAuthMethodLDAP) HasForceSubClaims() bool {
 // SetForceSubClaims gets a reference to the given bool and assigns it to the ForceSubClaims field.
 func (o *CreateAuthMethodLDAP) SetForceSubClaims(v bool) {
 	o.ForceSubClaims = &v
+}
+
+// GetGenKey returns the GenKey field value if set, zero value otherwise.
+func (o *CreateAuthMethodLDAP) GetGenKey() string {
+	if o == nil || o.GenKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.GenKey
+}
+
+// GetGenKeyOk returns a tuple with the GenKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodLDAP) GetGenKeyOk() (*string, bool) {
+	if o == nil || o.GenKey == nil {
+		return nil, false
+	}
+	return o.GenKey, true
+}
+
+// HasGenKey returns a boolean if a field has been set.
+func (o *CreateAuthMethodLDAP) HasGenKey() bool {
+	if o != nil && o.GenKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGenKey gets a reference to the given string and assigns it to the GenKey field.
+func (o *CreateAuthMethodLDAP) SetGenKey(v string) {
+	o.GenKey = &v
 }
 
 // GetGwBoundIps returns the GwBoundIps field value if set, zero value otherwise.
@@ -383,6 +421,9 @@ func (o CreateAuthMethodLDAP) MarshalJSON() ([]byte, error) {
 	}
 	if o.ForceSubClaims != nil {
 		toSerialize["force-sub-claims"] = o.ForceSubClaims
+	}
+	if o.GenKey != nil {
+		toSerialize["gen-key"] = o.GenKey
 	}
 	if o.GwBoundIps != nil {
 		toSerialize["gw-bound-ips"] = o.GwBoundIps

@@ -18,6 +18,7 @@ import (
 // CreateAuthMethodLDAPOutput struct for CreateAuthMethodLDAPOutput
 type CreateAuthMethodLDAPOutput struct {
 	AccessId *string `json:"access_id,omitempty"`
+	PrvKey *string `json:"prv_key,omitempty"`
 }
 
 // NewCreateAuthMethodLDAPOutput instantiates a new CreateAuthMethodLDAPOutput object
@@ -69,10 +70,45 @@ func (o *CreateAuthMethodLDAPOutput) SetAccessId(v string) {
 	o.AccessId = &v
 }
 
+// GetPrvKey returns the PrvKey field value if set, zero value otherwise.
+func (o *CreateAuthMethodLDAPOutput) GetPrvKey() string {
+	if o == nil || o.PrvKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.PrvKey
+}
+
+// GetPrvKeyOk returns a tuple with the PrvKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodLDAPOutput) GetPrvKeyOk() (*string, bool) {
+	if o == nil || o.PrvKey == nil {
+		return nil, false
+	}
+	return o.PrvKey, true
+}
+
+// HasPrvKey returns a boolean if a field has been set.
+func (o *CreateAuthMethodLDAPOutput) HasPrvKey() bool {
+	if o != nil && o.PrvKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPrvKey gets a reference to the given string and assigns it to the PrvKey field.
+func (o *CreateAuthMethodLDAPOutput) SetPrvKey(v string) {
+	o.PrvKey = &v
+}
+
 func (o CreateAuthMethodLDAPOutput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccessId != nil {
 		toSerialize["access_id"] = o.AccessId
+	}
+	if o.PrvKey != nil {
+		toSerialize["prv_key"] = o.PrvKey
 	}
 	return json.Marshal(toSerialize)
 }

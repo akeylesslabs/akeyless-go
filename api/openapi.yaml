@@ -1673,33 +1673,6 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
-  /encrypt-pkcs1:
-    post:
-      operationId: encryptPKCS1
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/encryptPKCS1'
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/encryptPKCS1Output'
-          description: encryptPKCS1Response wraps response body.
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/JSONError'
-          description: |-
-            errorResponse wraps any error to return it as a JSON object with one "error"
-            field.
-      tags:
-      - v2
-      x-codegen-request-body-name: body
   /encrypt-with-classic-key:
     post:
       operationId: encryptWithClassicKey
@@ -6717,12 +6690,6 @@ components:
           schema:
             $ref: '#/components/schemas/encryptFileOutput'
       description: encryptFileResponse wraps response body.
-    encryptPKCS1Response:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/encryptPKCS1Output'
-      description: encryptPKCS1Response wraps response body.
     encryptResponse:
       content:
         application/json:
@@ -7902,11 +7869,19 @@ components:
     AccountGeneralSettings:
       description: AccountGeneralSettings describes general settings for an account
       example:
+        password_policy:
+          use_numbers: true
+          use_capital_letters: true
+          use_special_characters: true
+          use_lower_letters: true
+          password_length: 2
         data_protection_section:
           enable_classic_key_protection: true
       properties:
         data_protection_section:
           $ref: '#/components/schemas/DataProtectionSection'
+        password_policy:
+          $ref: '#/components/schemas/PasswordPolicyInfo'
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     AccountObjectVersionSettingsOutput:
@@ -8584,6 +8559,7 @@ components:
           ldap_access_rules:
             unique_identifier: unique_identifier
             alg: alg
+            gen_key_pair: gen_key_pair
             key: key
           huawei_access_rules:
             domain_id:
@@ -8640,6 +8616,7 @@ components:
             - bound_pod_names
             - bound_pod_names
             alg: alg
+            gen_key_pair: gen_key_pair
             pub_key: pub_key
           rules_type: rules_type
           access_expires: 0
@@ -8817,6 +8794,7 @@ components:
         ldap_access_rules:
           unique_identifier: unique_identifier
           alg: alg
+          gen_key_pair: gen_key_pair
           key: key
         huawei_access_rules:
           domain_id:
@@ -8873,6 +8851,7 @@ components:
           - bound_pod_names
           - bound_pod_names
           alg: alg
+          gen_key_pair: gen_key_pair
           pub_key: pub_key
         rules_type: rules_type
         access_expires: 0
@@ -9934,9 +9913,8 @@ components:
           type: boolean
           x-go-name: CodeSigningFlag
         country:
-          description: |-
-            A comma-separated list of the country that will be set in the issued
-            certificate
+          description: A comma-separated list of countries that will be set in the
+            issued certificate
           type: string
           x-go-name: Country
         delete_protection:
@@ -9949,9 +9927,8 @@ components:
           type: string
           x-go-name: KeyUsage
         locality:
-          description: |-
-            A comma-separated list of the locality that will be set in the issued
-            certificate
+          description: A comma-separated list of localities that will be set in the
+            issued certificate
           type: string
           x-go-name: Locality
         metadata:
@@ -9985,15 +9962,13 @@ components:
           type: string
           x-go-name: Organizations
         postal-code:
-          description: |-
-            A comma-separated list of the postal code that will be set in the issued
-            certificate
+          description: A comma-separated list of postal codes that will be set in
+            the issued certificate
           type: string
           x-go-name: PostalCode
         province:
-          description: |-
-            A comma-separated list of the province that will be set in the issued
-            certificate
+          description: A comma-separated list of provinces that will be set in the
+            issued certificate
           type: string
           x-go-name: Province
         server-flag:
@@ -10005,9 +9980,8 @@ components:
           type: string
           x-go-name: SignerKeyName
         street-address:
-          description: |-
-            A comma-separated list of the street address that will be set in the
-            issued certificate
+          description: A comma-separated list of street addresses that will be set
+            in the issued certificate
           type: string
           x-go-name: StreetAddress
         tag:
@@ -11351,8 +11325,7 @@ components:
           type: string
           x-go-name: GroupFilter
         ldap-ca-cert:
-          description: The CA Cert (in PEM format) to use to call into the ldap API
-            server
+          description: LDAP CA Certificate (base64 encoded)
           type: string
           x-go-name: LdapCACert
         ldap-enable:
@@ -11368,7 +11341,7 @@ components:
           type: boolean
           x-go-name: LdapAnonymousSearch
         signing-key-data:
-          description: The private key (in PEM format) associated with the public
+          description: The private key (base64 encoded), associated with the public
             key defined in the Ldap auth
           type: string
           x-go-name: AuthMethodSigningKey
@@ -11478,6 +11451,12 @@ components:
           - item-type: item-type
             max-versions: max-versions
         general_settings:
+          password_policy:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           data_protection_section:
             enable_classic_key_protection: true
         secret_management:
@@ -11916,6 +11895,9 @@ components:
           creation_date: 2000-01-23T04:56:07.000+00:00
           version: 9
           customer_fragment_id: customer_fragment_id
+        shared_by:
+          unique_id: unique_id
+          access_id: access_id
         item_size: 5
         protection_key_type: protection_key_type
         is_enabled: true
@@ -12317,6 +12299,8 @@ components:
           format: int64
           type: integer
           x-go-name: RotationInterval
+        shared_by:
+          $ref: '#/components/schemas/RuleAssigner'
         target_versions:
           items:
             $ref: '#/components/schemas/TargetItemVersion'
@@ -13160,6 +13144,7 @@ components:
         - bound_pod_names
         - bound_pod_names
         alg: alg
+        gen_key_pair: gen_key_pair
         pub_key: pub_key
       properties:
         alg:
@@ -13191,6 +13176,11 @@ components:
             type: string
           type: array
           x-go-name: ServiceAccountNames
+        gen_key_pair:
+          description: Generate public/private key (the private key is required for
+            the K8S Auth Config in the Akeyless Gateway)
+          type: string
+          x-go-name: GenKeyPair
         pub_key:
           description: The public key value of the Kubernetes auth method configuration
             in the Akeyless Gateway.
@@ -13204,12 +13194,18 @@ components:
       example:
         unique_identifier: unique_identifier
         alg: alg
+        gen_key_pair: gen_key_pair
         key: key
       properties:
         alg:
           title: Algorithm is a type that represents a single crypto algorithm.
           type: string
           x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+        gen_key_pair:
+          description: Generate public/private key (the private key is required for
+            the LDAP Auth Config in the Akeyless Gateway)
+          type: string
+          x-go-name: GenKeyPair
         key:
           description: The public key value of LDAP.
           type: string
@@ -13535,6 +13531,7 @@ components:
             ldap_access_rules:
               unique_identifier: unique_identifier
               alg: alg
+              gen_key_pair: gen_key_pair
               key: key
             huawei_access_rules:
               domain_id:
@@ -13591,6 +13588,7 @@ components:
               - bound_pod_names
               - bound_pod_names
               alg: alg
+              gen_key_pair: gen_key_pair
               pub_key: pub_key
             rules_type: rules_type
             access_expires: 0
@@ -13789,6 +13787,7 @@ components:
             ldap_access_rules:
               unique_identifier: unique_identifier
               alg: alg
+              gen_key_pair: gen_key_pair
               key: key
             huawei_access_rules:
               domain_id:
@@ -13845,6 +13844,7 @@ components:
               - bound_pod_names
               - bound_pod_names
               alg: alg
+              gen_key_pair: gen_key_pair
               pub_key: pub_key
             rules_type: rules_type
             access_expires: 0
@@ -13894,6 +13894,9 @@ components:
             creation_date: 2000-01-23T04:56:07.000+00:00
             version: 9
             customer_fragment_id: customer_fragment_id
+          shared_by:
+            unique_id: unique_id
+            access_id: access_id
           item_size: 5
           protection_key_type: protection_key_type
           is_enabled: true
@@ -14212,6 +14215,9 @@ components:
             creation_date: 2000-01-23T04:56:07.000+00:00
             version: 9
             customer_fragment_id: customer_fragment_id
+          shared_by:
+            unique_id: unique_id
+            access_id: access_id
           item_size: 5
           protection_key_type: protection_key_type
           is_enabled: true
@@ -15975,6 +15981,19 @@ components:
           x-go-name: Rotators
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    RuleAssigner:
+      example:
+        unique_id: unique_id
+        access_id: access_id
+      properties:
+        access_id:
+          type: string
+          x-go-name: AccessId
+        unique_id:
+          type: string
+          x-go-name: UniqueId
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     Rules:
       example:
         path_rules:
@@ -18464,11 +18483,8 @@ components:
           x-go-name: ForceSubClaims
         gen-key:
           default: "true"
-          description: If this flag is set to true, there is no need to manually provide
-            a public key for the Kubernetes Auth Method, and instead, a key pair,
-            will be generated as part of the command and the private part of the key
-            will be returned (the private key is required for the K8S Auth Config
-            in the Akeyless Gateway)
+          description: Automatically generate key-pair for K8S configuration. If set
+            to false, a public key needs to be provided
           type: string
           x-go-name: GenerateKeyPair
         gw-bound-ips:
@@ -18488,8 +18504,8 @@ components:
           type: string
           x-go-name: AuthMethodName
         public-key:
-          description: Base64-encoded public key text for K8S authentication method
-            is required [RSA2048]
+          description: Base64-encoded or PEM formatted public key data for K8S authentication
+            method is required [RSA2048]
           type: string
           x-go-name: PublicKey
         token:
@@ -18543,6 +18559,12 @@ components:
           description: 'if true: enforce role-association must include sub claims'
           type: boolean
           x-go-name: ForceSubClaims
+        gen-key:
+          default: "true"
+          description: Automatically generate key-pair for LDAP configuration. If
+            set to false, a public key needs to be provided
+          type: string
+          x-go-name: GenerateKeyPair
         gw-bound-ips:
           description: A CIDR whitelist with the GW IPs that the access is restricted
             to
@@ -18561,7 +18583,7 @@ components:
           x-go-name: AuthMethodName
         public-key-data:
           description: |-
-            A public key generated for LDAP authentication method on Akeyless in base64 format
+            A public key generated for LDAP authentication method on Akeyless in base64 or PEM format
             [RSA2048]
           type: string
           x-go-name: PublicKeyData
@@ -18594,10 +18616,14 @@ components:
     createAuthMethodLDAPOutput:
       example:
         access_id: access_id
+        prv_key: prv_key
       properties:
         access_id:
           type: string
           x-go-name: AccessID
+        prv_key:
+          type: string
+          x-go-name: PrivateKey
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     createAuthMethodOAuth2:
@@ -20136,7 +20162,7 @@ components:
           type: string
           x-go-name: Profile
         ttl:
-          description: he requested Time To Live for the certificate, in seconds
+          description: The requested Time To Live for the certificate, in seconds
           format: int64
           type: integer
           x-go-name: TTL
@@ -21330,56 +21356,6 @@ components:
           x-go-name: Result
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
-    encryptPKCS1:
-      properties:
-        display-id:
-          description: The display id of the key to use in the encryption process
-          type: string
-          x-go-name: DisplayId
-        item-id:
-          description: The item id of the key to use in the encryption process
-          format: int64
-          type: integer
-          x-go-name: ItemId
-        key-name:
-          description: The name of the key to use in the encryption process
-          type: string
-          x-go-name: KeyName
-        plaintext:
-          description: Data to be encrypted
-          type: string
-          x-go-name: Plaintext
-        token:
-          description: Authentication token (see `/auth` and `/configure`)
-          type: string
-          x-go-name: Profile
-        uid-token:
-          description: |-
-            The universal identity token, Required only for universal_identity
-            authentication
-          type: string
-          x-go-name: UIDToken
-      required:
-      - key-name
-      - plaintext
-      title: encryptPKCS1 is a command that encrypts the given message with RSA and
-        the padding scheme PKCS#1 v1.5.
-      type: object
-      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
-    encryptPKCS1Output:
-      example:
-        result:
-        - 0
-        - 0
-      properties:
-        result:
-          items:
-            format: uint8
-            type: integer
-          type: array
-          x-go-name: Result
-      type: object
-      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     encryptWithClassicKey:
       properties:
         display-id:
@@ -21473,8 +21449,8 @@ components:
           type: string
           x-go-name: ConfigEncryptionKey
         k8s-ca-cert:
-          description: The CA Cert (in PEM format) to use to call into the kubernetes
-            API server
+          description: The CA Certificate (base64 encoded) to use to call into the
+            kubernetes API server
           type: string
           x-go-name: K8SCACert
         k8s-host:
@@ -21501,8 +21477,8 @@ components:
           type: string
           x-go-name: RancherClusterId
         signing-key:
-          description: The private key (in base64 encoded of the PEM format) associated
-            with the public key defined in the Kubernetes auth
+          description: The private key (base64 encoded) associated with the public
+            key defined in the Kubernetes auth
           type: string
           x-go-name: AuthMethodSigningKey
         token:
@@ -29851,18 +29827,23 @@ components:
       description: gatewayRevokeTmpUsers is a command that revoke producer tmp user
       properties:
         host:
-          description: Host
+          description: 'Deprecated: has no effect'
           type: string
           x-go-name: Host
         name:
           description: Producer Name
           type: string
           x-go-name: ProducerName
+        revoke-all:
+          description: Revoke All Temp Creds
+          type: boolean
+          x-go-name: RevokeAll
         soft-delete:
           description: Soft Delete
           type: boolean
           x-go-name: SoftDelete
         tmp-creds-id:
+          default: demo_default_tmp_creds_id_for_sdk_bc
           description: Tmp Creds ID
           type: string
           x-go-name: TmpCredsID
@@ -30113,8 +30094,8 @@ components:
           type: string
           x-go-name: ConfigEncryptionKey
         k8s-ca-cert:
-          description: The CA Cert (in PEM format) to use to call into the kubernetes
-            API server
+          description: The CA Certificate (base64 encoded) to use to call into the
+            kubernetes API server
           type: string
           x-go-name: K8SCACert
         k8s-host:
@@ -30145,8 +30126,8 @@ components:
           type: string
           x-go-name: RancherClusterId
         signing-key:
-          description: The private key (in base64 encoded of the PEM format) associated
-            with the public key defined in the Kubernetes auth
+          description: The private key (base64 encoded) associated with the public
+            key defined in the Kubernetes auth
           type: string
           x-go-name: AuthMethodSigningKey
         token:
@@ -39798,6 +39779,11 @@ components:
           description: Max versions
           type: string
           x-go-name: MaxVersions
+        password-length:
+          description: For PasswordPolicy use
+          format: int64
+          type: integer
+          x-go-name: PasswordLength
         phone:
           description: Phone number
           type: string
@@ -39816,6 +39802,22 @@ components:
             authentication
           type: string
           x-go-name: UIDToken
+        use-lower-letters:
+          description: For PasswordPolicy use
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: For PasswordPolicy use
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          description: For PasswordPolicy use
+          type: string
+          x-go-name: UseSpecialCharacters
+        use_capital-letters:
+          description: For PasswordPolicy use
+          type: string
+          x-go-name: UseCapitalLetters
       title: updateAccountSettings is a command that updates an existing account settings.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
@@ -40532,12 +40534,8 @@ components:
           type: boolean
           x-go-name: ForceSubClaims
         gen-key:
-          default: "true"
-          description: If this flag is set to true, there is no need to manually provide
-            a public key for the Kubernetes Auth Method, and instead, a key pair,
-            will be generated as part of the command and the private part of the key
-            will be returned (the private key is required for the K8S Auth Config
-            in the Akeyless Gateway)
+          description: Automatically generate key-pair for K8S configuration. If set
+            to false, a public key needs to be provided
           type: string
           x-go-name: GenerateKeyPair
         gw-bound-ips:
@@ -40561,8 +40559,8 @@ components:
           type: string
           x-go-name: AuthMethodNewName
         public-key:
-          description: Base64-encoded public key text for K8S authentication method
-            is required [RSA2048]
+          description: Base64-encoded or PEM formatted public key data for K8S authentication
+            method is required [RSA2048]
           type: string
           x-go-name: PublicKey
         token:
@@ -40612,6 +40610,11 @@ components:
           description: 'if true: enforce role-association must include sub claims'
           type: boolean
           x-go-name: ForceSubClaims
+        gen-key:
+          description: Automatically generate key-pair for LDAP configuration. If
+            set to false, a public key needs to be provided
+          type: string
+          x-go-name: GenerateKeyPair
         gw-bound-ips:
           description: A CIDR whitelist with the GW IPs that the access is restricted
             to
@@ -40634,7 +40637,7 @@ components:
           x-go-name: AuthMethodNewName
         public-key-data:
           description: |-
-            A public key generated for LDAP authentication method on Akeyless in base64 format
+            A public key generated for LDAP authentication method on Akeyless in base64 or PEM format
             [RSA2048]
           type: string
           x-go-name: PublicKeyData
@@ -40665,6 +40668,12 @@ components:
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     updateAuthMethodLDAPOutput:
+      example:
+        prv_key: prv_key
+      properties:
+        prv_key:
+          type: string
+          x-go-name: PrivateKey
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     updateAuthMethodOAuth2:

@@ -159,8 +159,6 @@ docs/Encrypt.md
 docs/EncryptFile.md
 docs/EncryptFileOutput.md
 docs/EncryptOutput.md
-docs/EncryptPKCS1.md
-docs/EncryptPKCS1Output.md
 docs/EncryptWithClassicKey.md
 docs/EncryptWithClassicKeyOutput.md
 docs/ExternalKMSKeyId.md
@@ -424,6 +422,7 @@ docs/RotatedSecretDetailsInfo.md
 docs/RotatedSecretOutput.md
 docs/Rotator.md
 docs/RotatorsConfigPart.md
+docs/RuleAssigner.md
 docs/Rules.md
 docs/SAMLAccessRules.md
 docs/SAMLAttribute.md
@@ -483,6 +482,7 @@ docs/UpdateAuthMethodGCP.md
 docs/UpdateAuthMethodK8S.md
 docs/UpdateAuthMethodK8SOutput.md
 docs/UpdateAuthMethodLDAP.md
+docs/UpdateAuthMethodLDAPOutput.md
 docs/UpdateAuthMethodOAuth2.md
 docs/UpdateAuthMethodOIDC.md
 docs/UpdateAuthMethodOutput.md
@@ -705,8 +705,6 @@ model_encrypt.go
 model_encrypt_file.go
 model_encrypt_file_output.go
 model_encrypt_output.go
-model_encrypt_pkcs1.go
-model_encrypt_pkcs1_output.go
 model_encrypt_with_classic_key.go
 model_encrypt_with_classic_key_output.go
 model_external_kms_key_id.go
@@ -970,6 +968,7 @@ model_rotated_secret_details_info.go
 model_rotated_secret_output.go
 model_rotator.go
 model_rotators_config_part.go
+model_rule_assigner.go
 model_rules.go
 model_saml_access_rules.go
 model_saml_attribute.go
@@ -1027,6 +1026,7 @@ model_update_auth_method_gcp.go
 model_update_auth_method_k8_s.go
 model_update_auth_method_k8_s_output.go
 model_update_auth_method_ldap.go
+model_update_auth_method_ldap_output.go
 model_update_auth_method_o_auth2.go
 model_update_auth_method_oidc.go
 model_update_auth_method_output.go

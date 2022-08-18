@@ -18,6 +18,8 @@ import (
 // LDAPAccessRules struct for LDAPAccessRules
 type LDAPAccessRules struct {
 	Alg *string `json:"alg,omitempty"`
+	// Generate public/private key (the private key is required for the LDAP Auth Config in the Akeyless Gateway)
+	GenKeyPair *string `json:"gen_key_pair,omitempty"`
 	// The public key value of LDAP.
 	Key *string `json:"key,omitempty"`
 	// A unique identifier to distinguish different users
@@ -71,6 +73,38 @@ func (o *LDAPAccessRules) HasAlg() bool {
 // SetAlg gets a reference to the given string and assigns it to the Alg field.
 func (o *LDAPAccessRules) SetAlg(v string) {
 	o.Alg = &v
+}
+
+// GetGenKeyPair returns the GenKeyPair field value if set, zero value otherwise.
+func (o *LDAPAccessRules) GetGenKeyPair() string {
+	if o == nil || o.GenKeyPair == nil {
+		var ret string
+		return ret
+	}
+	return *o.GenKeyPair
+}
+
+// GetGenKeyPairOk returns a tuple with the GenKeyPair field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LDAPAccessRules) GetGenKeyPairOk() (*string, bool) {
+	if o == nil || o.GenKeyPair == nil {
+		return nil, false
+	}
+	return o.GenKeyPair, true
+}
+
+// HasGenKeyPair returns a boolean if a field has been set.
+func (o *LDAPAccessRules) HasGenKeyPair() bool {
+	if o != nil && o.GenKeyPair != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGenKeyPair gets a reference to the given string and assigns it to the GenKeyPair field.
+func (o *LDAPAccessRules) SetGenKeyPair(v string) {
+	o.GenKeyPair = &v
 }
 
 // GetKey returns the Key field value if set, zero value otherwise.
@@ -141,6 +175,9 @@ func (o LDAPAccessRules) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Alg != nil {
 		toSerialize["alg"] = o.Alg
+	}
+	if o.GenKeyPair != nil {
+		toSerialize["gen_key_pair"] = o.GenKeyPair
 	}
 	if o.Key != nil {
 		toSerialize["key"] = o.Key

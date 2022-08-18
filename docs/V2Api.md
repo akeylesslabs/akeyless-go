@@ -65,7 +65,6 @@ Method | HTTP request | Description
 [**DescribeSubClaims**](V2Api.md#DescribeSubClaims) | **Post** /describe-sub-claims | 
 [**Detokenize**](V2Api.md#Detokenize) | **Post** /detokenize | 
 [**Encrypt**](V2Api.md#Encrypt) | **Post** /encrypt | 
-[**EncryptPKCS1**](V2Api.md#EncryptPKCS1) | **Post** /encrypt-pkcs1 | 
 [**EncryptWithClassicKey**](V2Api.md#EncryptWithClassicKey) | **Post** /encrypt-with-classic-key | 
 [**GatewayCreateK8SAuthConfig**](V2Api.md#GatewayCreateK8SAuthConfig) | **Post** /gateway-create-k8s-auth-config | 
 [**GatewayCreateMigration**](V2Api.md#GatewayCreateMigration) | **Post** /gateway-create-migration | 
@@ -4130,70 +4129,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**EncryptOutput**](encryptOutput.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## EncryptPKCS1
-
-> EncryptPKCS1Output EncryptPKCS1(ctx).Body(body).Execute()
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    body := *openapiclient.NewencryptPKCS1("KeyName_example", "Plaintext_example") // EncryptPKCS1 | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.EncryptPKCS1(context.Background()).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.EncryptPKCS1``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EncryptPKCS1`: EncryptPKCS1Output
-    fmt.Fprintf(os.Stdout, "Response from `V2Api.EncryptPKCS1`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiEncryptPKCS1Request struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**EncryptPKCS1**](EncryptPKCS1.md) |  | 
-
-### Return type
-
-[**EncryptPKCS1Output**](encryptPKCS1Output.md)
 
 ### Authorization
 
@@ -12773,7 +12708,7 @@ No authorization required
 
 ## UpdateAuthMethodLDAP
 
-> map[string]interface{} UpdateAuthMethodLDAP(ctx).Body(body).Execute()
+> UpdateAuthMethodLDAPOutput UpdateAuthMethodLDAP(ctx).Body(body).Execute()
 
 
 
@@ -12799,7 +12734,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateAuthMethodLDAP``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateAuthMethodLDAP`: map[string]interface{}
+    // response from `UpdateAuthMethodLDAP`: UpdateAuthMethodLDAPOutput
     fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateAuthMethodLDAP`: %v\n", resp)
 }
 ```
@@ -12819,7 +12754,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**UpdateAuthMethodLDAPOutput**](updateAuthMethodLDAPOutput.md)
 
 ### Authorization
 

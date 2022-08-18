@@ -18,6 +18,7 @@ import (
 // AccountGeneralSettings AccountGeneralSettings describes general settings for an account
 type AccountGeneralSettings struct {
 	DataProtectionSection *DataProtectionSection `json:"data_protection_section,omitempty"`
+	PasswordPolicy *PasswordPolicyInfo `json:"password_policy,omitempty"`
 }
 
 // NewAccountGeneralSettings instantiates a new AccountGeneralSettings object
@@ -69,10 +70,45 @@ func (o *AccountGeneralSettings) SetDataProtectionSection(v DataProtectionSectio
 	o.DataProtectionSection = &v
 }
 
+// GetPasswordPolicy returns the PasswordPolicy field value if set, zero value otherwise.
+func (o *AccountGeneralSettings) GetPasswordPolicy() PasswordPolicyInfo {
+	if o == nil || o.PasswordPolicy == nil {
+		var ret PasswordPolicyInfo
+		return ret
+	}
+	return *o.PasswordPolicy
+}
+
+// GetPasswordPolicyOk returns a tuple with the PasswordPolicy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountGeneralSettings) GetPasswordPolicyOk() (*PasswordPolicyInfo, bool) {
+	if o == nil || o.PasswordPolicy == nil {
+		return nil, false
+	}
+	return o.PasswordPolicy, true
+}
+
+// HasPasswordPolicy returns a boolean if a field has been set.
+func (o *AccountGeneralSettings) HasPasswordPolicy() bool {
+	if o != nil && o.PasswordPolicy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPasswordPolicy gets a reference to the given PasswordPolicyInfo and assigns it to the PasswordPolicy field.
+func (o *AccountGeneralSettings) SetPasswordPolicy(v PasswordPolicyInfo) {
+	o.PasswordPolicy = &v
+}
+
 func (o AccountGeneralSettings) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DataProtectionSection != nil {
 		toSerialize["data_protection_section"] = o.DataProtectionSection
+	}
+	if o.PasswordPolicy != nil {
+		toSerialize["password_policy"] = o.PasswordPolicy
 	}
 	return json.Marshal(toSerialize)
 }

@@ -32,6 +32,7 @@ Name | Type | Description | Notes
 **ProtectionKeyType** | Pointer to **string** |  | [optional] 
 **PublicValue** | Pointer to **string** |  | [optional] 
 **RotationInterval** | Pointer to **int64** |  | [optional] 
+**SharedBy** | Pointer to [**RuleAssigner**](RuleAssigner.md) |  | [optional] 
 **TargetVersions** | Pointer to [**[]TargetItemVersion**](TargetItemVersion.md) |  | [optional] 
 **WithCustomerFragment** | Pointer to **bool** |  | [optional] 
 
@@ -753,6 +754,31 @@ SetRotationInterval sets RotationInterval field to given value.
 `func (o *Item) HasRotationInterval() bool`
 
 HasRotationInterval returns a boolean if a field has been set.
+
+### GetSharedBy
+
+`func (o *Item) GetSharedBy() RuleAssigner`
+
+GetSharedBy returns the SharedBy field if non-nil, zero value otherwise.
+
+### GetSharedByOk
+
+`func (o *Item) GetSharedByOk() (*RuleAssigner, bool)`
+
+GetSharedByOk returns a tuple with the SharedBy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSharedBy
+
+`func (o *Item) SetSharedBy(v RuleAssigner)`
+
+SetSharedBy sets SharedBy field to given value.
+
+### HasSharedBy
+
+`func (o *Item) HasSharedBy() bool`
+
+HasSharedBy returns a boolean if a field has been set.
 
 ### GetTargetVersions
 

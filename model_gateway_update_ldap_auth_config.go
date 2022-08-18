@@ -29,7 +29,7 @@ type GatewayUpdateLdapAuthConfig struct {
 	GroupDn *string `json:"group-dn,omitempty"`
 	// Group Filter
 	GroupFilter *string `json:"group-filter,omitempty"`
-	// The CA Cert (in PEM format) to use to call into the ldap API server
+	// LDAP CA Certificate (base64 encoded)
 	LdapCaCert *string `json:"ldap-ca-cert,omitempty"`
 	// Enable Ldap
 	LdapEnable *string `json:"ldap-enable,omitempty"`
@@ -37,7 +37,7 @@ type GatewayUpdateLdapAuthConfig struct {
 	LdapUrl *string `json:"ldap-url,omitempty"`
 	// Ldap Anonymous Search
 	LdapAnonymousSearch *bool `json:"ldap_anonymous_search,omitempty"`
-	// The private key (in PEM format) associated with the public key defined in the Ldap auth
+	// The private key (base64 encoded), associated with the public key defined in the Ldap auth
 	SigningKeyData *string `json:"signing-key-data,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`

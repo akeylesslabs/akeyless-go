@@ -29,13 +29,13 @@ type CreatePKICertIssuer struct {
 	ClientFlag *bool `json:"client-flag,omitempty"`
 	// If set, certificates will be flagged for code signing use
 	CodeSigningFlag *bool `json:"code-signing-flag,omitempty"`
-	// A comma-separated list of the country that will be set in the issued certificate
+	// A comma-separated list of countries that will be set in the issued certificate
 	Country *string `json:"country,omitempty"`
 	// Protection from accidental deletion of this item
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// key-usage
 	KeyUsage *string `json:"key-usage,omitempty"`
-	// A comma-separated list of the locality that will be set in the issued certificate
+	// A comma-separated list of localities that will be set in the issued certificate
 	Locality *string `json:"locality,omitempty"`
 	// A metadata about the issuer
 	Metadata *string `json:"metadata,omitempty"`
@@ -49,15 +49,15 @@ type CreatePKICertIssuer struct {
 	OrganizationalUnits *string `json:"organizational-units,omitempty"`
 	// A comma-separated list of organizations (O) that will be set in the issued certificate
 	Organizations *string `json:"organizations,omitempty"`
-	// A comma-separated list of the postal code that will be set in the issued certificate
+	// A comma-separated list of postal codes that will be set in the issued certificate
 	PostalCode *string `json:"postal-code,omitempty"`
-	// A comma-separated list of the province that will be set in the issued certificate
+	// A comma-separated list of provinces that will be set in the issued certificate
 	Province *string `json:"province,omitempty"`
 	// If set, certificates will be flagged for server auth use
 	ServerFlag *bool `json:"server-flag,omitempty"`
 	// A key to sign the certificate with
 	SignerKeyName string `json:"signer-key-name"`
-	// A comma-separated list of the street address that will be set in the issued certificate
+	// A comma-separated list of street addresses that will be set in the issued certificate
 	StreetAddress *string `json:"street-address,omitempty"`
 	// List of the tags attached to this key
 	Tag *[]string `json:"tag,omitempty"`

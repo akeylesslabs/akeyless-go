@@ -23,7 +23,7 @@ type GatewayUpdateK8SAuthConfig struct {
 	ClusterApiType *string `json:"cluster-api-type,omitempty"`
 	// Config encryption key
 	ConfigEncryptionKeyName *string `json:"config-encryption-key-name,omitempty"`
-	// The CA Cert (in PEM format) to use to call into the kubernetes API server
+	// The CA Certificate (base64 encoded) to use to call into the kubernetes API server
 	K8sCaCert *string `json:"k8s-ca-cert,omitempty"`
 	// The URL of the kubernetes API server
 	K8sHost string `json:"k8s-host"`
@@ -37,7 +37,7 @@ type GatewayUpdateK8SAuthConfig struct {
 	RancherApiKey *string `json:"rancher-api-key,omitempty"`
 	// The cluster id as define in rancher (relevant for \"rancher\" only)
 	RancherClusterId *string `json:"rancher-cluster-id,omitempty"`
-	// The private key (in base64 encoded of the PEM format) associated with the public key defined in the Kubernetes auth
+	// The private key (base64 encoded) associated with the public key defined in the Kubernetes auth
 	SigningKey string `json:"signing-key"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`

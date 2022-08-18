@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Alg** | Pointer to **string** |  | [optional] 
+**GenKeyPair** | Pointer to **string** | Generate public/private key (the private key is required for the LDAP Auth Config in the Akeyless Gateway) | [optional] 
 **Key** | Pointer to **string** | The public key value of LDAP. | [optional] 
 **UniqueIdentifier** | Pointer to **string** | A unique identifier to distinguish different users | [optional] 
 
@@ -51,6 +52,31 @@ SetAlg sets Alg field to given value.
 `func (o *LDAPAccessRules) HasAlg() bool`
 
 HasAlg returns a boolean if a field has been set.
+
+### GetGenKeyPair
+
+`func (o *LDAPAccessRules) GetGenKeyPair() string`
+
+GetGenKeyPair returns the GenKeyPair field if non-nil, zero value otherwise.
+
+### GetGenKeyPairOk
+
+`func (o *LDAPAccessRules) GetGenKeyPairOk() (*string, bool)`
+
+GetGenKeyPairOk returns a tuple with the GenKeyPair field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGenKeyPair
+
+`func (o *LDAPAccessRules) SetGenKeyPair(v string)`
+
+SetGenKeyPair sets GenKeyPair field to given value.
+
+### HasGenKeyPair
+
+`func (o *LDAPAccessRules) HasGenKeyPair() bool`
+
+HasGenKeyPair returns a boolean if a field has been set.
 
 ### GetKey
 

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessId** | Pointer to **string** |  | [optional] 
+**PrvKey** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -49,6 +50,31 @@ SetAccessId sets AccessId field to given value.
 `func (o *CreateAuthMethodLDAPOutput) HasAccessId() bool`
 
 HasAccessId returns a boolean if a field has been set.
+
+### GetPrvKey
+
+`func (o *CreateAuthMethodLDAPOutput) GetPrvKey() string`
+
+GetPrvKey returns the PrvKey field if non-nil, zero value otherwise.
+
+### GetPrvKeyOk
+
+`func (o *CreateAuthMethodLDAPOutput) GetPrvKeyOk() (*string, bool)`
+
+GetPrvKeyOk returns a tuple with the PrvKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrvKey
+
+`func (o *CreateAuthMethodLDAPOutput) SetPrvKey(v string)`
+
+SetPrvKey sets PrvKey field to given value.
+
+### HasPrvKey
+
+`func (o *CreateAuthMethodLDAPOutput) HasPrvKey() bool`
+
+HasPrvKey returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **BoundNamespaces** | Pointer to **[]string** | A list of namespaces that the authentication is restricted to. | [optional] 
 **BoundPodNames** | Pointer to **[]string** | A list of pods names that the authentication is restricted to. | [optional] 
 **BoundServiceAccountNames** | Pointer to **[]string** | A list of service account names that the authentication is restricted to. | [optional] 
+**GenKeyPair** | Pointer to **string** | Generate public/private key (the private key is required for the K8S Auth Config in the Akeyless Gateway) | [optional] 
 **PubKey** | Pointer to **string** | The public key value of the Kubernetes auth method configuration in the Akeyless Gateway. | [optional] 
 
 ## Methods
@@ -154,6 +155,31 @@ SetBoundServiceAccountNames sets BoundServiceAccountNames field to given value.
 `func (o *KubernetesAccessRules) HasBoundServiceAccountNames() bool`
 
 HasBoundServiceAccountNames returns a boolean if a field has been set.
+
+### GetGenKeyPair
+
+`func (o *KubernetesAccessRules) GetGenKeyPair() string`
+
+GetGenKeyPair returns the GenKeyPair field if non-nil, zero value otherwise.
+
+### GetGenKeyPairOk
+
+`func (o *KubernetesAccessRules) GetGenKeyPairOk() (*string, bool)`
+
+GetGenKeyPairOk returns a tuple with the GenKeyPair field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGenKeyPair
+
+`func (o *KubernetesAccessRules) SetGenKeyPair(v string)`
+
+SetGenKeyPair sets GenKeyPair field to given value.
+
+### HasGenKeyPair
+
+`func (o *KubernetesAccessRules) HasGenKeyPair() bool`
+
+HasGenKeyPair returns a boolean if a field has been set.
 
 ### GetPubKey
 
