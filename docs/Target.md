@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **TargetId** | Pointer to **int64** |  | [optional] 
 **TargetItemsAssoc** | Pointer to [**[]TargetItemAssociation**](TargetItemAssociation.md) |  | [optional] 
 **TargetName** | Pointer to **string** |  | [optional] 
+**TargetObjectsAssoc** | Pointer to [**[]TargetObjectAssociation**](TargetObjectAssociation.md) |  | [optional] 
 **TargetType** | Pointer to **string** |  | [optional] 
 **TargetVersions** | Pointer to [**[]ItemVersion**](ItemVersion.md) |  | [optional] 
 **WithCustomerFragment** | Pointer to **bool** |  | [optional] 
@@ -234,6 +235,31 @@ SetTargetName sets TargetName field to given value.
 `func (o *Target) HasTargetName() bool`
 
 HasTargetName returns a boolean if a field has been set.
+
+### GetTargetObjectsAssoc
+
+`func (o *Target) GetTargetObjectsAssoc() []TargetObjectAssociation`
+
+GetTargetObjectsAssoc returns the TargetObjectsAssoc field if non-nil, zero value otherwise.
+
+### GetTargetObjectsAssocOk
+
+`func (o *Target) GetTargetObjectsAssocOk() (*[]TargetObjectAssociation, bool)`
+
+GetTargetObjectsAssocOk returns a tuple with the TargetObjectsAssoc field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetObjectsAssoc
+
+`func (o *Target) SetTargetObjectsAssoc(v []TargetObjectAssociation)`
+
+SetTargetObjectsAssoc sets TargetObjectsAssoc field to given value.
+
+### HasTargetObjectsAssoc
+
+`func (o *Target) HasTargetObjectsAssoc() bool`
+
+HasTargetObjectsAssoc returns a boolean if a field has been set.
 
 ### GetTargetType
 

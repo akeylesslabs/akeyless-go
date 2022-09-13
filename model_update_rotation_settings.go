@@ -19,6 +19,8 @@ import (
 type UpdateRotationSettings struct {
 	// Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation
 	AutoRotate bool `json:"auto-rotate"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// Key name
 	Name string `json:"name"`
 	// The number of days to wait between every automatic key rotation (7-365)
@@ -70,6 +72,38 @@ func (o *UpdateRotationSettings) GetAutoRotateOk() (*bool, bool) {
 // SetAutoRotate sets field value
 func (o *UpdateRotationSettings) SetAutoRotate(v bool) {
 	o.AutoRotate = v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *UpdateRotationSettings) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotationSettings) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *UpdateRotationSettings) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *UpdateRotationSettings) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetName returns the Name field value
@@ -196,6 +230,9 @@ func (o UpdateRotationSettings) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["auto-rotate"] = o.AutoRotate
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if true {
 		toSerialize["name"] = o.Name

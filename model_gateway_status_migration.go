@@ -19,6 +19,8 @@ import (
 type GatewayStatusMigration struct {
 	// Migration ID
 	Id *string `json:"id,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// Migration name to display
 	Name *string `json:"name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -74,6 +76,38 @@ func (o *GatewayStatusMigration) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *GatewayStatusMigration) SetId(v string) {
 	o.Id = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *GatewayStatusMigration) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayStatusMigration) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *GatewayStatusMigration) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *GatewayStatusMigration) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -176,6 +210,9 @@ func (o GatewayStatusMigration) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name

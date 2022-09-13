@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **AutoRotate** | Pointer to **string** | Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation | [optional] 
 **AwsRegion** | Pointer to **string** | Region (used in aws) | [optional] [default to "us-east-2"]
 **CustomPayload** | Pointer to **string** |  | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **KeepPrevVersion** | Pointer to **string** |  | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Secret name | 
@@ -210,6 +211,31 @@ SetCustomPayload sets CustomPayload field to given value.
 `func (o *UpdateRotatedSecret) HasCustomPayload() bool`
 
 HasCustomPayload returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *UpdateRotatedSecret) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *UpdateRotatedSecret) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *UpdateRotatedSecret) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *UpdateRotatedSecret) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetKeepPrevVersion
 

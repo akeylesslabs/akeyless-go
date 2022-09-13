@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **CodeSigningFlag** | Pointer to **bool** | If set, certificates will be flagged for code signing use | [optional] 
 **Country** | Pointer to **string** | A comma-separated list of countries that will be set in the issued certificate | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **KeyUsage** | Pointer to **string** | key-usage | [optional] [default to "DigitalSignature,KeyAgreement,KeyEncipherment"]
 **Locality** | Pointer to **string** | A comma-separated list of localities that will be set in the issued certificate | [optional] 
 **Metadata** | Pointer to **string** | A metadata about the issuer | [optional] 
@@ -248,6 +249,31 @@ SetDeleteProtection sets DeleteProtection field to given value.
 `func (o *CreatePKICertIssuer) HasDeleteProtection() bool`
 
 HasDeleteProtection returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *CreatePKICertIssuer) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *CreatePKICertIssuer) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *CreatePKICertIssuer) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *CreatePKICertIssuer) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetKeyUsage
 

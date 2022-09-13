@@ -35,6 +35,8 @@ type UpdateAuthMethodK8S struct {
 	GenKey *string `json:"gen-key,omitempty"`
 	// A CIDR whitelist with the GW IPs that the access is restricted to
 	GwBoundIps *[]string `json:"gw-bound-ips,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// Jwt TTL
 	JwtTtl *int64 `json:"jwt-ttl,omitempty"`
 	// Auth Method name
@@ -359,6 +361,38 @@ func (o *UpdateAuthMethodK8S) SetGwBoundIps(v []string) {
 	o.GwBoundIps = &v
 }
 
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *UpdateAuthMethodK8S) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAuthMethodK8S) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *UpdateAuthMethodK8S) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *UpdateAuthMethodK8S) SetJson(v bool) {
+	o.Json = &v
+}
+
 // GetJwtTtl returns the JwtTtl field value if set, zero value otherwise.
 func (o *UpdateAuthMethodK8S) GetJwtTtl() int64 {
 	if o == nil || o.JwtTtl == nil {
@@ -571,6 +605,9 @@ func (o UpdateAuthMethodK8S) MarshalJSON() ([]byte, error) {
 	}
 	if o.GwBoundIps != nil {
 		toSerialize["gw-bound-ips"] = o.GwBoundIps
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.JwtTtl != nil {
 		toSerialize["jwt-ttl"] = o.JwtTtl

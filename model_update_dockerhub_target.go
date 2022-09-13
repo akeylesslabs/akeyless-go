@@ -21,6 +21,8 @@ type UpdateDockerhubTarget struct {
 	Comment *string `json:"comment,omitempty"`
 	DockerhubPassword *string `json:"dockerhub-password,omitempty"`
 	DockerhubUsername *string `json:"dockerhub-username,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
@@ -148,6 +150,38 @@ func (o *UpdateDockerhubTarget) HasDockerhubUsername() bool {
 // SetDockerhubUsername gets a reference to the given string and assigns it to the DockerhubUsername field.
 func (o *UpdateDockerhubTarget) SetDockerhubUsername(v string) {
 	o.DockerhubUsername = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *UpdateDockerhubTarget) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateDockerhubTarget) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *UpdateDockerhubTarget) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *UpdateDockerhubTarget) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetKeepPrevVersion returns the KeepPrevVersion field value if set, zero value otherwise.
@@ -376,6 +410,9 @@ func (o UpdateDockerhubTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.DockerhubUsername != nil {
 		toSerialize["dockerhub-username"] = o.DockerhubUsername
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.KeepPrevVersion != nil {
 		toSerialize["keep-prev-version"] = o.KeepPrevVersion

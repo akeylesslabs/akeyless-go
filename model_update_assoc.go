@@ -20,6 +20,8 @@ type UpdateAssoc struct {
 	// The association id to be updated
 	AssocId string `json:"assoc-id"`
 	CaseSensitive *string `json:"case-sensitive,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// key/val of sub claims, e.g group=admins,developers
 	SubClaims *map[string]string `json:"sub-claims,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -100,6 +102,38 @@ func (o *UpdateAssoc) HasCaseSensitive() bool {
 // SetCaseSensitive gets a reference to the given string and assigns it to the CaseSensitive field.
 func (o *UpdateAssoc) SetCaseSensitive(v string) {
 	o.CaseSensitive = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *UpdateAssoc) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAssoc) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *UpdateAssoc) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *UpdateAssoc) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetSubClaims returns the SubClaims field value if set, zero value otherwise.
@@ -205,6 +239,9 @@ func (o UpdateAssoc) MarshalJSON() ([]byte, error) {
 	}
 	if o.CaseSensitive != nil {
 		toSerialize["case-sensitive"] = o.CaseSensitive
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.SubClaims != nil {
 		toSerialize["sub-claims"] = o.SubClaims

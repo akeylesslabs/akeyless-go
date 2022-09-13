@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AssocId** | **string** | The association id to be updated | 
 **CaseSensitive** | Pointer to **string** |  | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **SubClaims** | Pointer to **map[string]string** | key/val of sub claims, e.g group&#x3D;admins,developers | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -73,6 +74,31 @@ SetCaseSensitive sets CaseSensitive field to given value.
 `func (o *UpdateAssoc) HasCaseSensitive() bool`
 
 HasCaseSensitive returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *UpdateAssoc) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *UpdateAssoc) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *UpdateAssoc) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *UpdateAssoc) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetSubClaims
 

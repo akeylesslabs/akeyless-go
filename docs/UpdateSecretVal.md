@@ -5,13 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Accessibility** | Pointer to **string** | for personal password manager | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **KeepPrevVersion** | Pointer to **string** |  | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Multiline** | Pointer to **bool** | The provided value is a multiline value (separated by &#39;\\n&#39;) | [optional] 
 **Name** | **string** | Secret name | 
 **NewVersion** | Pointer to **bool** | Deprecated | [optional] 
 **PasswordManagerCustomField** | Pointer to **map[string]string** | For Password Management use, additional fields | [optional] 
-**PasswordManagerInjectUrl** | Pointer to **string** | For Password Management use, reflect the website context | [optional] 
+**PasswordManagerInjectUrl** | Pointer to **[]string** | For Password Management use, reflect the website context | [optional] 
 **PasswordManagerPassword** | Pointer to **string** | For Password Management use, additional fields | [optional] 
 **PasswordManagerUsername** | Pointer to **string** | For Password Management use | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -61,6 +62,31 @@ SetAccessibility sets Accessibility field to given value.
 `func (o *UpdateSecretVal) HasAccessibility() bool`
 
 HasAccessibility returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *UpdateSecretVal) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *UpdateSecretVal) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *UpdateSecretVal) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *UpdateSecretVal) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetKeepPrevVersion
 
@@ -209,20 +235,20 @@ HasPasswordManagerCustomField returns a boolean if a field has been set.
 
 ### GetPasswordManagerInjectUrl
 
-`func (o *UpdateSecretVal) GetPasswordManagerInjectUrl() string`
+`func (o *UpdateSecretVal) GetPasswordManagerInjectUrl() []string`
 
 GetPasswordManagerInjectUrl returns the PasswordManagerInjectUrl field if non-nil, zero value otherwise.
 
 ### GetPasswordManagerInjectUrlOk
 
-`func (o *UpdateSecretVal) GetPasswordManagerInjectUrlOk() (*string, bool)`
+`func (o *UpdateSecretVal) GetPasswordManagerInjectUrlOk() (*[]string, bool)`
 
 GetPasswordManagerInjectUrlOk returns a tuple with the PasswordManagerInjectUrl field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPasswordManagerInjectUrl
 
-`func (o *UpdateSecretVal) SetPasswordManagerInjectUrl(v string)`
+`func (o *UpdateSecretVal) SetPasswordManagerInjectUrl(v []string)`
 
 SetPasswordManagerInjectUrl sets PasswordManagerInjectUrl field to given value.
 

@@ -23,6 +23,8 @@ type DeleteItem struct {
 	DeleteImmediately *bool `json:"delete-immediately,omitempty"`
 	// The number of days to wait before deleting the item (relevant for keys only)
 	DeleteInDays *int64 `json:"delete-in-days,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// Item name
 	Name string `json:"name"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -159,6 +161,38 @@ func (o *DeleteItem) SetDeleteInDays(v int64) {
 	o.DeleteInDays = &v
 }
 
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *DeleteItem) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeleteItem) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *DeleteItem) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *DeleteItem) SetJson(v bool) {
+	o.Json = &v
+}
+
 // GetName returns the Name field value
 func (o *DeleteItem) GetName() string {
 	if o == nil  {
@@ -289,6 +323,9 @@ func (o DeleteItem) MarshalJSON() ([]byte, error) {
 	}
 	if o.DeleteInDays != nil {
 		toSerialize["delete-in-days"] = o.DeleteInDays
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if true {
 		toSerialize["name"] = o.Name

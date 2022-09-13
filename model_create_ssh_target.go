@@ -20,6 +20,8 @@ type CreateSSHTarget struct {
 	// Comment about the target
 	Comment *string `json:"comment,omitempty"`
 	Host *string `json:"host,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
 	// Target name
@@ -115,6 +117,38 @@ func (o *CreateSSHTarget) HasHost() bool {
 // SetHost gets a reference to the given string and assigns it to the Host field.
 func (o *CreateSSHTarget) SetHost(v string) {
 	o.Host = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *CreateSSHTarget) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSSHTarget) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *CreateSSHTarget) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *CreateSSHTarget) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetKey returns the Key field value if set, zero value otherwise.
@@ -404,6 +438,9 @@ func (o CreateSSHTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.Host != nil {
 		toSerialize["host"] = o.Host
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.Key != nil {
 		toSerialize["key"] = o.Key

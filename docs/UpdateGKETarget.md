@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **GkeClusterEndpoint** | Pointer to **string** | GKE cluster URL endpoint | [optional] 
 **GkeClusterName** | Pointer to **string** | GKE cluster name | [optional] 
 **GkeServiceAccountEmail** | Pointer to **string** | GKE service account email | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **KeepPrevVersion** | Pointer to **string** |  | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Target name | 
@@ -187,6 +188,31 @@ SetGkeServiceAccountEmail sets GkeServiceAccountEmail field to given value.
 `func (o *UpdateGKETarget) HasGkeServiceAccountEmail() bool`
 
 HasGkeServiceAccountEmail returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *UpdateGKETarget) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *UpdateGKETarget) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *UpdateGKETarget) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *UpdateGKETarget) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetKeepPrevVersion
 

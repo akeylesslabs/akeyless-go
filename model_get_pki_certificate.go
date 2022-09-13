@@ -25,6 +25,8 @@ type GetPKICertificate struct {
 	CommonName *string `json:"common-name,omitempty"`
 	// A comma-separated list of extended key usage requests which will be used for certificate issuance. Supported values: 'clientauth', 'serverauth'.
 	ExtendedKeyUsage *string `json:"extended-key-usage,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// PKI key file contents. If this option is used, the certificate will be printed to stdout
 	KeyDataBase64 *string `json:"key-data-base64,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -173,6 +175,38 @@ func (o *GetPKICertificate) HasExtendedKeyUsage() bool {
 // SetExtendedKeyUsage gets a reference to the given string and assigns it to the ExtendedKeyUsage field.
 func (o *GetPKICertificate) SetExtendedKeyUsage(v string) {
 	o.ExtendedKeyUsage = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *GetPKICertificate) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetPKICertificate) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *GetPKICertificate) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *GetPKICertificate) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetKeyDataBase64 returns the KeyDataBase64 field value if set, zero value otherwise.
@@ -348,6 +382,9 @@ func (o GetPKICertificate) MarshalJSON() ([]byte, error) {
 	}
 	if o.ExtendedKeyUsage != nil {
 		toSerialize["extended-key-usage"] = o.ExtendedKeyUsage
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.KeyDataBase64 != nil {
 		toSerialize["key-data-base64"] = o.KeyDataBase64

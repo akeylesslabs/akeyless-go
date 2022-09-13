@@ -23,6 +23,8 @@ type CreateSSHCertIssuer struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Signed certificates with extensions, e.g permit-port-forwarding=\\\"\\\"
 	Extensions *map[string]string `json:"extensions,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// A metadata about the issuer
 	Metadata *string `json:"metadata,omitempty"`
 	// SSH certificate issuer name
@@ -154,6 +156,38 @@ func (o *CreateSSHCertIssuer) HasExtensions() bool {
 // SetExtensions gets a reference to the given map[string]string and assigns it to the Extensions field.
 func (o *CreateSSHCertIssuer) SetExtensions(v map[string]string) {
 	o.Extensions = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *CreateSSHCertIssuer) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSSHCertIssuer) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *CreateSSHCertIssuer) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *CreateSSHCertIssuer) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
@@ -590,6 +624,9 @@ func (o CreateSSHCertIssuer) MarshalJSON() ([]byte, error) {
 	}
 	if o.Extensions != nil {
 		toSerialize["extensions"] = o.Extensions
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata

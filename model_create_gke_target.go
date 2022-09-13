@@ -29,6 +29,8 @@ type CreateGKETarget struct {
 	GkeClusterName *string `json:"gke-cluster-name,omitempty"`
 	// GKE service account email
 	GkeServiceAccountEmail *string `json:"gke-service-account-email,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
 	// Target name
@@ -250,6 +252,38 @@ func (o *CreateGKETarget) SetGkeServiceAccountEmail(v string) {
 	o.GkeServiceAccountEmail = &v
 }
 
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *CreateGKETarget) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateGKETarget) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *CreateGKETarget) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *CreateGKETarget) SetJson(v bool) {
+	o.Json = &v
+}
+
 // GetKey returns the Key field value if set, zero value otherwise.
 func (o *CreateGKETarget) GetKey() string {
 	if o == nil || o.Key == nil {
@@ -421,6 +455,9 @@ func (o CreateGKETarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.GkeServiceAccountEmail != nil {
 		toSerialize["gke-service-account-email"] = o.GkeServiceAccountEmail
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.Key != nil {
 		toSerialize["key"] = o.Key

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Alg** | **string** | Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384] | 
 **CertFileData** | Pointer to **string** | Certificate in a PEM format. | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **KeyData** | Pointer to **string** | Base64-encoded classic key value | [optional] 
 **Metadata** | Pointer to **string** | Metadata about the classic key | [optional] 
 **Name** | **string** | ClassicKey name | 
@@ -103,6 +104,31 @@ SetDeleteProtection sets DeleteProtection field to given value.
 `func (o *CreateClassicKey) HasDeleteProtection() bool`
 
 HasDeleteProtection returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *CreateClassicKey) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *CreateClassicKey) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *CreateClassicKey) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *CreateClassicKey) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetKeyData
 

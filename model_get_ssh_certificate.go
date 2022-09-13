@@ -21,6 +21,8 @@ type GetSSHCertificate struct {
 	CertIssuerName string `json:"cert-issuer-name"`
 	// The username to sign in the SSH certificate
 	CertUsername string `json:"cert-username"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// Set this option to output legacy ('ssh-rsa-cert-v01@openssh.com') signing algorithm name in the certificate.
 	LegacySigningAlgName *bool `json:"legacy-signing-alg-name,omitempty"`
 	// SSH public key file contents. If this option is used, the certificate will be printed to stdout
@@ -98,6 +100,38 @@ func (o *GetSSHCertificate) GetCertUsernameOk() (*string, bool) {
 // SetCertUsername sets field value
 func (o *GetSSHCertificate) SetCertUsername(v string) {
 	o.CertUsername = v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *GetSSHCertificate) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetSSHCertificate) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *GetSSHCertificate) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *GetSSHCertificate) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetLegacySigningAlgName returns the LegacySigningAlgName field value if set, zero value otherwise.
@@ -267,6 +301,9 @@ func (o GetSSHCertificate) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["cert-username"] = o.CertUsername
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.LegacySigningAlgName != nil {
 		toSerialize["legacy-signing-alg-name"] = o.LegacySigningAlgName

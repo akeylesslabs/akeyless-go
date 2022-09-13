@@ -33,6 +33,8 @@ type UpdateSalesforceTarget struct {
 	Comment *string `json:"comment,omitempty"`
 	// The email of the user attached to the oauth2 app used for connecting to Salesforce
 	Email string `json:"email"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
@@ -306,6 +308,38 @@ func (o *UpdateSalesforceTarget) GetEmailOk() (*string, bool) {
 // SetEmail sets field value
 func (o *UpdateSalesforceTarget) SetEmail(v string) {
 	o.Email = v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *UpdateSalesforceTarget) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateSalesforceTarget) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *UpdateSalesforceTarget) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *UpdateSalesforceTarget) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetKeepPrevVersion returns the KeepPrevVersion field value if set, zero value otherwise.
@@ -637,6 +671,9 @@ func (o UpdateSalesforceTarget) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["email"] = o.Email
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.KeepPrevVersion != nil {
 		toSerialize["keep-prev-version"] = o.KeepPrevVersion

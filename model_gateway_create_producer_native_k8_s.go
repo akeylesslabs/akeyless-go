@@ -19,6 +19,8 @@ import (
 type GatewayCreateProducerNativeK8S struct {
 	// Protection from accidental deletion of this item
 	DeleteProtection *string `json:"delete_protection,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// K8S cluster CA certificate
 	K8sClusterCaCert *string `json:"k8s-cluster-ca-cert,omitempty"`
 	// K8S cluster URL endpoint
@@ -105,6 +107,38 @@ func (o *GatewayCreateProducerNativeK8S) HasDeleteProtection() bool {
 // SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
 func (o *GatewayCreateProducerNativeK8S) SetDeleteProtection(v string) {
 	o.DeleteProtection = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *GatewayCreateProducerNativeK8S) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerNativeK8S) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *GatewayCreateProducerNativeK8S) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *GatewayCreateProducerNativeK8S) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetK8sClusterCaCert returns the K8sClusterCaCert field value if set, zero value otherwise.
@@ -743,6 +777,9 @@ func (o GatewayCreateProducerNativeK8S) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DeleteProtection != nil {
 		toSerialize["delete_protection"] = o.DeleteProtection
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.K8sClusterCaCert != nil {
 		toSerialize["k8s-cluster-ca-cert"] = o.K8sClusterCaCert

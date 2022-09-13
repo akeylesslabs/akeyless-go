@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **GwBoundIps** | Pointer to **[]string** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
 **IdpMetadataUrl** | Pointer to **string** | IDP metadata url | [optional] 
 **IdpMetadataXmlData** | Pointer to **string** | IDP metadata xml data | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] 
 **Name** | **string** | Auth Method name | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -210,6 +211,31 @@ SetIdpMetadataXmlData sets IdpMetadataXmlData field to given value.
 `func (o *CreateAuthMethodSAML) HasIdpMetadataXmlData() bool`
 
 HasIdpMetadataXmlData returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *CreateAuthMethodSAML) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *CreateAuthMethodSAML) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *CreateAuthMethodSAML) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *CreateAuthMethodSAML) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetJwtTtl
 

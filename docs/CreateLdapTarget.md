@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **BindDn** | **string** | Bind DN | 
 **BindDnPassword** | **string** | Bind DN Password | 
 **Comment** | Pointer to **string** | Comment about the target | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **LdapCaCert** | Pointer to **string** | CA Certificate File Content | [optional] 
 **LdapUrl** | **string** | LDAP Server URL | 
@@ -99,6 +100,31 @@ SetComment sets Comment field to given value.
 `func (o *CreateLdapTarget) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *CreateLdapTarget) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *CreateLdapTarget) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *CreateLdapTarget) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *CreateLdapTarget) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetKey
 

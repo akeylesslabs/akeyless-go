@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DbType** | Pointer to **string** |  | [optional] 
 **HostName** | Pointer to **string** |  | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **KeepPrevVersion** | Pointer to **string** |  | [optional] 
 **MongoDbName** | Pointer to **string** |  | [optional] 
 **MongoUri** | Pointer to **string** |  | [optional] 
@@ -86,6 +87,31 @@ SetHostName sets HostName field to given value.
 `func (o *UpdateDBTargetDetails) HasHostName() bool`
 
 HasHostName returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *UpdateDBTargetDetails) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *UpdateDBTargetDetails) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *UpdateDBTargetDetails) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *UpdateDBTargetDetails) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetKeepPrevVersion
 

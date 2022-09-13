@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Comment** | Pointer to **string** | Comment about the target | [optional] 
 **Host** | Pointer to **string** |  | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Target name | 
 **Port** | Pointer to **string** |  | [optional] 
@@ -84,6 +85,31 @@ SetHost sets Host field to given value.
 `func (o *CreateSSHTarget) HasHost() bool`
 
 HasHost returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *CreateSSHTarget) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *CreateSSHTarget) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *CreateSSHTarget) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *CreateSSHTarget) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetKey
 

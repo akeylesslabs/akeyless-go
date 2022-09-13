@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AdminPwd** | Pointer to **string** |  | [optional] 
 **HostName** | Pointer to **string** |  | [optional] 
 **HostPort** | Pointer to **string** |  | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **KeepPrevVersion** | Pointer to **string** |  | [optional] 
 **Name** | **string** | Target name | 
 **NewVersion** | Pointer to **bool** | Deprecated | [optional] 
@@ -133,6 +134,31 @@ SetHostPort sets HostPort field to given value.
 `func (o *UpdateRDPTargetDetails) HasHostPort() bool`
 
 HasHostPort returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *UpdateRDPTargetDetails) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *UpdateRDPTargetDetails) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *UpdateRDPTargetDetails) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *UpdateRDPTargetDetails) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetKeepPrevVersion
 

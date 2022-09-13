@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **AllowedUsers** | **string** | Users allowed to fetch the certificate, e.g root,ubuntu | 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
 **Extensions** | Pointer to **map[string]string** | Signed certificates with extensions, e.g permit-port-forwarding&#x3D;\\\&quot;\\\&quot; | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Metadata** | Pointer to **string** | A metadata about the issuer | [optional] 
 **Name** | **string** | SSH certificate issuer name | 
 **Principals** | Pointer to **string** | Signed certificates with principal, e.g example_role1,example_role2 | [optional] 
@@ -110,6 +111,31 @@ SetExtensions sets Extensions field to given value.
 `func (o *CreateSSHCertIssuer) HasExtensions() bool`
 
 HasExtensions returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *CreateSSHCertIssuer) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *CreateSSHCertIssuer) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *CreateSSHCertIssuer) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *CreateSSHCertIssuer) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetMetadata
 

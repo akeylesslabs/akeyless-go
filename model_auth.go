@@ -34,6 +34,8 @@ type Auth struct {
 	Debug *bool `json:"debug,omitempty"`
 	// GCP JWT audience
 	GcpAudience *string `json:"gcp-audience,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// The Json Web Token (relevant only for access-type=jwt/oidc)
 	Jwt *string `json:"jwt,omitempty"`
 	// The K8S Auth config name (relevant only for access-type=k8s)
@@ -359,6 +361,38 @@ func (o *Auth) SetGcpAudience(v string) {
 	o.GcpAudience = &v
 }
 
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *Auth) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Auth) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *Auth) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *Auth) SetJson(v bool) {
+	o.Json = &v
+}
+
 // GetJwt returns the Jwt field value if set, zero value otherwise.
 func (o *Auth) GetJwt() string {
 	if o == nil || o.Jwt == nil {
@@ -611,6 +645,9 @@ func (o Auth) MarshalJSON() ([]byte, error) {
 	}
 	if o.GcpAudience != nil {
 		toSerialize["gcp-audience"] = o.GcpAudience
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.Jwt != nil {
 		toSerialize["jwt"] = o.Jwt

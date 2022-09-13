@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **GroupAttr** | Pointer to **string** | Group Attr | [optional] 
 **GroupDn** | Pointer to **string** | Group Dn | [optional] 
 **GroupFilter** | Pointer to **string** | Group Filter | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **LdapCaCert** | Pointer to **string** | LDAP CA Certificate (base64 encoded) | [optional] 
 **LdapEnable** | Pointer to **string** | Enable Ldap | [optional] 
 **LdapUrl** | Pointer to **string** | LDAP Server URL, e.g. ldap://planetexpress.com:389 | [optional] 
@@ -188,6 +189,31 @@ SetGroupFilter sets GroupFilter field to given value.
 `func (o *GatewayUpdateLdapAuthConfig) HasGroupFilter() bool`
 
 HasGroupFilter returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *GatewayUpdateLdapAuthConfig) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *GatewayUpdateLdapAuthConfig) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *GatewayUpdateLdapAuthConfig) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *GatewayUpdateLdapAuthConfig) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetLdapCaCert
 

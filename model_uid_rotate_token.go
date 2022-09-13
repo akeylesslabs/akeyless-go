@@ -19,6 +19,8 @@ import (
 type UidRotateToken struct {
 	// Create a new child token with default parameters
 	Fork *bool `json:"fork,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// The new rotated token to send manual ack for (with uid-token=the-orig-token)
 	SendManualAckToken *string `json:"send-manual-ack-token,omitempty"`
 	// The Universal identity token
@@ -74,6 +76,38 @@ func (o *UidRotateToken) HasFork() bool {
 // SetFork gets a reference to the given bool and assigns it to the Fork field.
 func (o *UidRotateToken) SetFork(v bool) {
 	o.Fork = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *UidRotateToken) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UidRotateToken) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *UidRotateToken) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *UidRotateToken) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetSendManualAckToken returns the SendManualAckToken field value if set, zero value otherwise.
@@ -176,6 +210,9 @@ func (o UidRotateToken) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Fork != nil {
 		toSerialize["fork"] = o.Fork
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.SendManualAckToken != nil {
 		toSerialize["send-manual-ack-token"] = o.SendManualAckToken

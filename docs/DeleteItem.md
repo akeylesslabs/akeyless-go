@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Accessibility** | Pointer to **string** | for personal password manager | [optional] 
 **DeleteImmediately** | Pointer to **bool** | When delete-in-days&#x3D;-1, must be set | [optional] [default to false]
 **DeleteInDays** | Pointer to **int64** | The number of days to wait before deleting the item (relevant for keys only) | [optional] [default to 7]
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Item name | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -105,6 +106,31 @@ SetDeleteInDays sets DeleteInDays field to given value.
 `func (o *DeleteItem) HasDeleteInDays() bool`
 
 HasDeleteInDays returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *DeleteItem) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *DeleteItem) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *DeleteItem) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *DeleteItem) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetName
 

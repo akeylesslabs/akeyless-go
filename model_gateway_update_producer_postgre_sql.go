@@ -21,6 +21,8 @@ type GatewayUpdateProducerPostgreSQL struct {
 	CreationStatements *string `json:"creation-statements,omitempty"`
 	// Protection from accidental deletion of this item
 	DeleteProtection *string `json:"delete_protection,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// Producer name
 	Name string `json:"name"`
 	// Producer name
@@ -150,6 +152,38 @@ func (o *GatewayUpdateProducerPostgreSQL) HasDeleteProtection() bool {
 // SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
 func (o *GatewayUpdateProducerPostgreSQL) SetDeleteProtection(v string) {
 	o.DeleteProtection = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerPostgreSQL) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerPostgreSQL) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerPostgreSQL) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *GatewayUpdateProducerPostgreSQL) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetName returns the Name field value
@@ -791,6 +825,9 @@ func (o GatewayUpdateProducerPostgreSQL) MarshalJSON() ([]byte, error) {
 	}
 	if o.DeleteProtection != nil {
 		toSerialize["delete_protection"] = o.DeleteProtection
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if true {
 		toSerialize["name"] = o.Name

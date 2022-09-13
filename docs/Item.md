@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **CertificateIssueDetails** | Pointer to [**CertificateIssueInfo**](CertificateIssueInfo.md) |  | [optional] 
 **Certificates** | Pointer to **string** |  | [optional] 
 **ClientPermissions** | Pointer to **[]string** |  | [optional] 
+**CreationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **CustomerFragmentId** | Pointer to **string** |  | [optional] 
 **DeleteProtection** | Pointer to **bool** |  | [optional] 
 **DeletionDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
@@ -27,6 +28,7 @@ Name | Type | Description | Notes
 **ItemType** | Pointer to **string** |  | [optional] 
 **ItemVersions** | Pointer to [**[]ItemVersion**](ItemVersion.md) |  | [optional] 
 **LastVersion** | Pointer to **int32** |  | [optional] 
+**ModificationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **NextRotationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **ProtectionKeyName** | Pointer to **string** |  | [optional] 
 **ProtectionKeyType** | Pointer to **string** |  | [optional] 
@@ -34,6 +36,7 @@ Name | Type | Description | Notes
 **RotationInterval** | Pointer to **int64** |  | [optional] 
 **SharedBy** | Pointer to [**RuleAssigner**](RuleAssigner.md) |  | [optional] 
 **TargetVersions** | Pointer to [**[]TargetItemVersion**](TargetItemVersion.md) |  | [optional] 
+**UsageDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **WithCustomerFragment** | Pointer to **bool** |  | [optional] 
 
 ## Methods
@@ -179,6 +182,31 @@ SetClientPermissions sets ClientPermissions field to given value.
 `func (o *Item) HasClientPermissions() bool`
 
 HasClientPermissions returns a boolean if a field has been set.
+
+### GetCreationDate
+
+`func (o *Item) GetCreationDate() time.Time`
+
+GetCreationDate returns the CreationDate field if non-nil, zero value otherwise.
+
+### GetCreationDateOk
+
+`func (o *Item) GetCreationDateOk() (*time.Time, bool)`
+
+GetCreationDateOk returns a tuple with the CreationDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreationDate
+
+`func (o *Item) SetCreationDate(v time.Time)`
+
+SetCreationDate sets CreationDate field to given value.
+
+### HasCreationDate
+
+`func (o *Item) HasCreationDate() bool`
+
+HasCreationDate returns a boolean if a field has been set.
 
 ### GetCustomerFragmentId
 
@@ -630,6 +658,31 @@ SetLastVersion sets LastVersion field to given value.
 
 HasLastVersion returns a boolean if a field has been set.
 
+### GetModificationDate
+
+`func (o *Item) GetModificationDate() time.Time`
+
+GetModificationDate returns the ModificationDate field if non-nil, zero value otherwise.
+
+### GetModificationDateOk
+
+`func (o *Item) GetModificationDateOk() (*time.Time, bool)`
+
+GetModificationDateOk returns a tuple with the ModificationDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetModificationDate
+
+`func (o *Item) SetModificationDate(v time.Time)`
+
+SetModificationDate sets ModificationDate field to given value.
+
+### HasModificationDate
+
+`func (o *Item) HasModificationDate() bool`
+
+HasModificationDate returns a boolean if a field has been set.
+
 ### GetNextRotationDate
 
 `func (o *Item) GetNextRotationDate() time.Time`
@@ -804,6 +857,31 @@ SetTargetVersions sets TargetVersions field to given value.
 `func (o *Item) HasTargetVersions() bool`
 
 HasTargetVersions returns a boolean if a field has been set.
+
+### GetUsageDate
+
+`func (o *Item) GetUsageDate() time.Time`
+
+GetUsageDate returns the UsageDate field if non-nil, zero value otherwise.
+
+### GetUsageDateOk
+
+`func (o *Item) GetUsageDateOk() (*time.Time, bool)`
+
+GetUsageDateOk returns a tuple with the UsageDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsageDate
+
+`func (o *Item) SetUsageDate(v time.Time)`
+
+SetUsageDate sets UsageDate field to given value.
+
+### HasUsageDate
+
+`func (o *Item) HasUsageDate() bool`
+
+HasUsageDate returns a boolean if a field has been set.
 
 ### GetWithCustomerFragment
 

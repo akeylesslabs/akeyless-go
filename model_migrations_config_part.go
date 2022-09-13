@@ -22,6 +22,7 @@ type MigrationsConfigPart struct {
 	GcpSecretsMigrations *[]GCPSecretsMigration `json:"gcp_secrets_migrations,omitempty"`
 	HashiMigrations *[]HashiMigration `json:"hashi_migrations,omitempty"`
 	K8sMigrations *[]K8SMigration `json:"k8s_migrations,omitempty"`
+	OnePasswordMigrations *[]OnePasswordMigration `json:"one_password_migrations,omitempty"`
 }
 
 // NewMigrationsConfigPart instantiates a new MigrationsConfigPart object
@@ -201,6 +202,38 @@ func (o *MigrationsConfigPart) SetK8sMigrations(v []K8SMigration) {
 	o.K8sMigrations = &v
 }
 
+// GetOnePasswordMigrations returns the OnePasswordMigrations field value if set, zero value otherwise.
+func (o *MigrationsConfigPart) GetOnePasswordMigrations() []OnePasswordMigration {
+	if o == nil || o.OnePasswordMigrations == nil {
+		var ret []OnePasswordMigration
+		return ret
+	}
+	return *o.OnePasswordMigrations
+}
+
+// GetOnePasswordMigrationsOk returns a tuple with the OnePasswordMigrations field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MigrationsConfigPart) GetOnePasswordMigrationsOk() (*[]OnePasswordMigration, bool) {
+	if o == nil || o.OnePasswordMigrations == nil {
+		return nil, false
+	}
+	return o.OnePasswordMigrations, true
+}
+
+// HasOnePasswordMigrations returns a boolean if a field has been set.
+func (o *MigrationsConfigPart) HasOnePasswordMigrations() bool {
+	if o != nil && o.OnePasswordMigrations != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOnePasswordMigrations gets a reference to the given []OnePasswordMigration and assigns it to the OnePasswordMigrations field.
+func (o *MigrationsConfigPart) SetOnePasswordMigrations(v []OnePasswordMigration) {
+	o.OnePasswordMigrations = &v
+}
+
 func (o MigrationsConfigPart) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AwsSecretsMigrations != nil {
@@ -217,6 +250,9 @@ func (o MigrationsConfigPart) MarshalJSON() ([]byte, error) {
 	}
 	if o.K8sMigrations != nil {
 		toSerialize["k8s_migrations"] = o.K8sMigrations
+	}
+	if o.OnePasswordMigrations != nil {
+		toSerialize["one_password_migrations"] = o.OnePasswordMigrations
 	}
 	return json.Marshal(toSerialize)
 }

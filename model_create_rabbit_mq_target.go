@@ -19,6 +19,8 @@ import (
 type CreateRabbitMQTarget struct {
 	// Comment about the target
 	Comment *string `json:"comment,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
 	// Target name
@@ -80,6 +82,38 @@ func (o *CreateRabbitMQTarget) HasComment() bool {
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *CreateRabbitMQTarget) SetComment(v string) {
 	o.Comment = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *CreateRabbitMQTarget) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRabbitMQTarget) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *CreateRabbitMQTarget) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *CreateRabbitMQTarget) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetKey returns the Key field value if set, zero value otherwise.
@@ -302,6 +336,9 @@ func (o CreateRabbitMQTarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.Key != nil {
 		toSerialize["key"] = o.Key

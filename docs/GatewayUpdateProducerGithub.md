@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **GithubBaseUrl** | Pointer to **string** | Base URL | [optional] 
 **InstallationId** | Pointer to **int64** | Github app installation id | [optional] 
 **InstallationRepository** | Pointer to **string** | Repository that the app installation has access to | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Producer name | 
 **NewName** | Pointer to **string** | Producer name | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
@@ -186,6 +187,31 @@ SetInstallationRepository sets InstallationRepository field to given value.
 `func (o *GatewayUpdateProducerGithub) HasInstallationRepository() bool`
 
 HasInstallationRepository returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *GatewayUpdateProducerGithub) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *GatewayUpdateProducerGithub) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *GatewayUpdateProducerGithub) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *GatewayUpdateProducerGithub) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetName
 

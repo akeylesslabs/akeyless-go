@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ciphertext** | **string** | Data to be decrypted | 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **TokenizerName** | **string** | The name of the tokenizer to use in the decryption process | 
 **Tweak** | Pointer to **string** | Base64 encoded tweak for vaultless encryption | [optional] 
@@ -48,6 +49,31 @@ and a boolean to check if the value has been set.
 
 SetCiphertext sets Ciphertext field to given value.
 
+
+### GetJson
+
+`func (o *Detokenize) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *Detokenize) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *Detokenize) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *Detokenize) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetToken
 

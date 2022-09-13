@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **GkeClusterEndpoint** | Pointer to **string** | GKE cluster URL endpoint | [optional] 
 **GkeClusterName** | Pointer to **string** | GKE cluster name | [optional] 
 **GkeServiceAccountEmail** | Pointer to **string** | GKE service account email | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Producer name | 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **SecureAccessAllowPortForwading** | Pointer to **bool** |  | [optional] 
@@ -191,6 +192,31 @@ SetGkeServiceAccountEmail sets GkeServiceAccountEmail field to given value.
 `func (o *GatewayCreateProducerGke) HasGkeServiceAccountEmail() bool`
 
 HasGkeServiceAccountEmail returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *GatewayCreateProducerGke) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *GatewayCreateProducerGke) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *GatewayCreateProducerGke) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *GatewayCreateProducerGke) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetName
 

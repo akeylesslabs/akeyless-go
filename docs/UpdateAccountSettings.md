@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **DefaultVersioning** | Pointer to **string** | Should create version by default | [optional] 
 **DpEnableClassicKeyProtection** | Pointer to **string** | Enable classic key protection [\&quot;true\&quot;/\&quot;false\&quot;] | [optional] 
 **ItemType** | Pointer to **string** | VersionSettingsObjectType defines object types for account version settings | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **JwtTtlDefault** | Pointer to **int64** | Default ttl | [optional] 
 **JwtTtlMax** | Pointer to **int64** | Maximum ttl | [optional] 
 **JwtTtlMin** | Pointer to **int64** | Minimum ttl | [optional] 
@@ -218,6 +219,31 @@ SetItemType sets ItemType field to given value.
 `func (o *UpdateAccountSettings) HasItemType() bool`
 
 HasItemType returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *UpdateAccountSettings) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *UpdateAccountSettings) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *UpdateAccountSettings) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *UpdateAccountSettings) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetJwtTtlDefault
 

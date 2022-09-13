@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **AccessId** | **string** | The access ID of the Kubernetes auth method | 
 **ClusterApiType** | Pointer to **string** | Cluster access type. options: [native_k8s, rancher] | [optional] [default to "native_k8s"]
 **ConfigEncryptionKeyName** | Pointer to **string** | Config encryption key | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **K8sCaCert** | Pointer to **string** | The CA Certificate (base64 encoded) to use to call into the kubernetes API server | [optional] 
 **K8sHost** | **string** | The URL of the kubernetes API server | 
 **K8sIssuer** | Pointer to **string** | The Kubernetes JWT issuer name. If not set, kubernetes/serviceaccount will use as an issuer. | [optional] 
@@ -108,6 +109,31 @@ SetConfigEncryptionKeyName sets ConfigEncryptionKeyName field to given value.
 `func (o *GatewayUpdateK8SAuthConfig) HasConfigEncryptionKeyName() bool`
 
 HasConfigEncryptionKeyName returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *GatewayUpdateK8SAuthConfig) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *GatewayUpdateK8SAuthConfig) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *GatewayUpdateK8SAuthConfig) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *GatewayUpdateK8SAuthConfig) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetK8sCaCert
 

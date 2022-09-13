@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the dynamic secret values (if empty, the account default protectionKey key will be used) | [optional] 
 **Metadata** | Pointer to **string** | Metadata about the dynamic secret | [optional] [default to "None"]
 **Name** | **string** | Dynamic secret name | 
@@ -55,6 +56,31 @@ SetDeleteProtection sets DeleteProtection field to given value.
 `func (o *CreateDynamicSecret) HasDeleteProtection() bool`
 
 HasDeleteProtection returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *CreateDynamicSecret) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *CreateDynamicSecret) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *CreateDynamicSecret) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *CreateDynamicSecret) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetKey
 

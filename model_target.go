@@ -26,6 +26,7 @@ type Target struct {
 	TargetId *int64 `json:"target_id,omitempty"`
 	TargetItemsAssoc *[]TargetItemAssociation `json:"target_items_assoc,omitempty"`
 	TargetName *string `json:"target_name,omitempty"`
+	TargetObjectsAssoc *[]TargetObjectAssociation `json:"target_objects_assoc,omitempty"`
 	TargetType *string `json:"target_type,omitempty"`
 	TargetVersions *[]ItemVersion `json:"target_versions,omitempty"`
 	WithCustomerFragment *bool `json:"with_customer_fragment,omitempty"`
@@ -304,6 +305,38 @@ func (o *Target) SetTargetName(v string) {
 	o.TargetName = &v
 }
 
+// GetTargetObjectsAssoc returns the TargetObjectsAssoc field value if set, zero value otherwise.
+func (o *Target) GetTargetObjectsAssoc() []TargetObjectAssociation {
+	if o == nil || o.TargetObjectsAssoc == nil {
+		var ret []TargetObjectAssociation
+		return ret
+	}
+	return *o.TargetObjectsAssoc
+}
+
+// GetTargetObjectsAssocOk returns a tuple with the TargetObjectsAssoc field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Target) GetTargetObjectsAssocOk() (*[]TargetObjectAssociation, bool) {
+	if o == nil || o.TargetObjectsAssoc == nil {
+		return nil, false
+	}
+	return o.TargetObjectsAssoc, true
+}
+
+// HasTargetObjectsAssoc returns a boolean if a field has been set.
+func (o *Target) HasTargetObjectsAssoc() bool {
+	if o != nil && o.TargetObjectsAssoc != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetObjectsAssoc gets a reference to the given []TargetObjectAssociation and assigns it to the TargetObjectsAssoc field.
+func (o *Target) SetTargetObjectsAssoc(v []TargetObjectAssociation) {
+	o.TargetObjectsAssoc = &v
+}
+
 // GetTargetType returns the TargetType field value if set, zero value otherwise.
 func (o *Target) GetTargetType() string {
 	if o == nil || o.TargetType == nil {
@@ -425,6 +458,9 @@ func (o Target) MarshalJSON() ([]byte, error) {
 	}
 	if o.TargetName != nil {
 		toSerialize["target_name"] = o.TargetName
+	}
+	if o.TargetObjectsAssoc != nil {
+		toSerialize["target_objects_assoc"] = o.TargetObjectsAssoc
 	}
 	if o.TargetType != nil {
 		toSerialize["target_type"] = o.TargetType

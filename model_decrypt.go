@@ -25,8 +25,12 @@ type Decrypt struct {
 	EncryptionContext *map[string]string `json:"encryption-context,omitempty"`
 	// The item id of the key to use in the decryption process
 	ItemId *int64 `json:"item-id,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// The name of the key to use in the decryption process
 	KeyName string `json:"key-name"`
+	// If specified, the output will be formatted accordingly. options: [base64]
+	OutputFormat *string `json:"output-format,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -179,6 +183,38 @@ func (o *Decrypt) SetItemId(v int64) {
 	o.ItemId = &v
 }
 
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *Decrypt) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Decrypt) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *Decrypt) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *Decrypt) SetJson(v bool) {
+	o.Json = &v
+}
+
 // GetKeyName returns the KeyName field value
 func (o *Decrypt) GetKeyName() string {
 	if o == nil  {
@@ -201,6 +237,38 @@ func (o *Decrypt) GetKeyNameOk() (*string, bool) {
 // SetKeyName sets field value
 func (o *Decrypt) SetKeyName(v string) {
 	o.KeyName = v
+}
+
+// GetOutputFormat returns the OutputFormat field value if set, zero value otherwise.
+func (o *Decrypt) GetOutputFormat() string {
+	if o == nil || o.OutputFormat == nil {
+		var ret string
+		return ret
+	}
+	return *o.OutputFormat
+}
+
+// GetOutputFormatOk returns a tuple with the OutputFormat field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Decrypt) GetOutputFormatOk() (*string, bool) {
+	if o == nil || o.OutputFormat == nil {
+		return nil, false
+	}
+	return o.OutputFormat, true
+}
+
+// HasOutputFormat returns a boolean if a field has been set.
+func (o *Decrypt) HasOutputFormat() bool {
+	if o != nil && o.OutputFormat != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOutputFormat gets a reference to the given string and assigns it to the OutputFormat field.
+func (o *Decrypt) SetOutputFormat(v string) {
+	o.OutputFormat = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -281,8 +349,14 @@ func (o Decrypt) MarshalJSON() ([]byte, error) {
 	if o.ItemId != nil {
 		toSerialize["item-id"] = o.ItemId
 	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
+	}
 	if true {
 		toSerialize["key-name"] = o.KeyName
+	}
+	if o.OutputFormat != nil {
+		toSerialize["output-format"] = o.OutputFormat
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

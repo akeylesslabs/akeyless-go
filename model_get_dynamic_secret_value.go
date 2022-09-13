@@ -21,6 +21,8 @@ type GetDynamicSecretValue struct {
 	Args *[]string `json:"args,omitempty"`
 	// Host
 	Host *string `json:"host,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// Dynamic secret name
 	Name string `json:"name"`
 	// Target Name
@@ -117,6 +119,38 @@ func (o *GetDynamicSecretValue) HasHost() bool {
 // SetHost gets a reference to the given string and assigns it to the Host field.
 func (o *GetDynamicSecretValue) SetHost(v string) {
 	o.Host = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *GetDynamicSecretValue) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetDynamicSecretValue) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *GetDynamicSecretValue) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *GetDynamicSecretValue) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetName returns the Name field value
@@ -278,6 +312,9 @@ func (o GetDynamicSecretValue) MarshalJSON() ([]byte, error) {
 	}
 	if o.Host != nil {
 		toSerialize["host"] = o.Host
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if true {
 		toSerialize["name"] = o.Name

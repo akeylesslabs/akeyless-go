@@ -19,6 +19,8 @@ import (
 type EncryptWithClassicKey struct {
 	// The name of the key to use in the encryption process
 	DisplayId string `json:"display-id"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// Data to be encrypted
 	Plaintext string `json:"plaintext"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -71,6 +73,38 @@ func (o *EncryptWithClassicKey) GetDisplayIdOk() (*string, bool) {
 // SetDisplayId sets field value
 func (o *EncryptWithClassicKey) SetDisplayId(v string) {
 	o.DisplayId = v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *EncryptWithClassicKey) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EncryptWithClassicKey) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *EncryptWithClassicKey) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *EncryptWithClassicKey) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetPlaintext returns the Plaintext field value
@@ -189,6 +223,9 @@ func (o EncryptWithClassicKey) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["display-id"] = o.DisplayId
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if true {
 		toSerialize["plaintext"] = o.Plaintext

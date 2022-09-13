@@ -17,6 +17,8 @@ import (
 
 // GatewayGetProducer gatewayGetProducer is a command that returns producer
 type GatewayGetProducer struct {
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// Producer name
 	Name string `json:"name"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -41,6 +43,38 @@ func NewGatewayGetProducer(name string, ) *GatewayGetProducer {
 func NewGatewayGetProducerWithDefaults() *GatewayGetProducer {
 	this := GatewayGetProducer{}
 	return &this
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *GatewayGetProducer) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayGetProducer) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *GatewayGetProducer) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *GatewayGetProducer) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetName returns the Name field value
@@ -133,6 +167,9 @@ func (o *GatewayGetProducer) SetUidToken(v string) {
 
 func (o GatewayGetProducer) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
+	}
 	if true {
 		toSerialize["name"] = o.Name
 	}

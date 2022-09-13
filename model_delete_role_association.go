@@ -19,6 +19,8 @@ import (
 type DeleteRoleAssociation struct {
 	// The association id to be deleted
 	AssocId string `json:"assoc-id"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -65,6 +67,38 @@ func (o *DeleteRoleAssociation) GetAssocIdOk() (*string, bool) {
 // SetAssocId sets field value
 func (o *DeleteRoleAssociation) SetAssocId(v string) {
 	o.AssocId = v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *DeleteRoleAssociation) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeleteRoleAssociation) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *DeleteRoleAssociation) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *DeleteRoleAssociation) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -135,6 +169,9 @@ func (o DeleteRoleAssociation) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["assoc-id"] = o.AssocId
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

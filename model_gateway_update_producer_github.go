@@ -29,6 +29,8 @@ type GatewayUpdateProducerGithub struct {
 	InstallationId *int64 `json:"installation-id,omitempty"`
 	// Repository that the app installation has access to
 	InstallationRepository *string `json:"installation-repository,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// Producer name
 	Name string `json:"name"`
 	// Producer name
@@ -253,6 +255,38 @@ func (o *GatewayUpdateProducerGithub) HasInstallationRepository() bool {
 // SetInstallationRepository gets a reference to the given string and assigns it to the InstallationRepository field.
 func (o *GatewayUpdateProducerGithub) SetInstallationRepository(v string) {
 	o.InstallationRepository = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerGithub) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerGithub) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerGithub) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *GatewayUpdateProducerGithub) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetName returns the Name field value
@@ -490,6 +524,9 @@ func (o GatewayUpdateProducerGithub) MarshalJSON() ([]byte, error) {
 	}
 	if o.InstallationRepository != nil {
 		toSerialize["installation-repository"] = o.InstallationRepository
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if true {
 		toSerialize["name"] = o.Name

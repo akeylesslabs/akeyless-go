@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreationStatements** | Pointer to **string** | PostgreSQL Creation statements | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Producer name | 
 **PostgresqlDbName** | Pointer to **string** | PostgreSQL DB Name | [optional] 
 **PostgresqlHost** | Pointer to **string** | PostgreSQL Host | [optional] [default to "127.0.0.1"]
@@ -94,6 +95,31 @@ SetDeleteProtection sets DeleteProtection field to given value.
 `func (o *GatewayCreateProducerPostgreSQL) HasDeleteProtection() bool`
 
 HasDeleteProtection returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *GatewayCreateProducerPostgreSQL) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *GatewayCreateProducerPostgreSQL) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *GatewayCreateProducerPostgreSQL) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *GatewayCreateProducerPostgreSQL) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetName
 

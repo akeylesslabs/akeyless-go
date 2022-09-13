@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AssocId** | Pointer to **string** | The association id to be deleted | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Item name | 
 **TargetName** | Pointer to **string** | The target to associate | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -53,6 +54,31 @@ SetAssocId sets AssocId field to given value.
 `func (o *DeleteTargetAssociation) HasAssocId() bool`
 
 HasAssocId returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *DeleteTargetAssociation) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *DeleteTargetAssociation) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *DeleteTargetAssociation) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *DeleteTargetAssociation) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetName
 

@@ -20,6 +20,8 @@ type AssocRoleAuthMethod struct {
 	// The auth method to associate
 	AmName string `json:"am-name"`
 	CaseSensitive *string `json:"case-sensitive,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// The role to associate
 	RoleName string `json:"role-name"`
 	// key/val of sub claims, e.g group=admins,developers
@@ -103,6 +105,38 @@ func (o *AssocRoleAuthMethod) HasCaseSensitive() bool {
 // SetCaseSensitive gets a reference to the given string and assigns it to the CaseSensitive field.
 func (o *AssocRoleAuthMethod) SetCaseSensitive(v string) {
 	o.CaseSensitive = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *AssocRoleAuthMethod) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssocRoleAuthMethod) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *AssocRoleAuthMethod) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *AssocRoleAuthMethod) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetRoleName returns the RoleName field value
@@ -232,6 +266,9 @@ func (o AssocRoleAuthMethod) MarshalJSON() ([]byte, error) {
 	}
 	if o.CaseSensitive != nil {
 		toSerialize["case-sensitive"] = o.CaseSensitive
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if true {
 		toSerialize["role-name"] = o.RoleName

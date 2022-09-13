@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Description** | Pointer to **string** | The Customer Fragment Description | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 
 ## Methods
 
@@ -49,6 +50,31 @@ SetDescription sets Description field to given value.
 `func (o *GenCustomerFragment) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *GenCustomerFragment) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *GenCustomerFragment) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *GenCustomerFragment) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *GenCustomerFragment) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

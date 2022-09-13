@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Host** | Pointer to **string** | Deprecated: has no effect | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Producer Name | 
 **RevokeAll** | Pointer to **bool** | Revoke All Temp Creds | [optional] 
 **SoftDelete** | Pointer to **bool** | Soft Delete | [optional] 
@@ -55,6 +56,31 @@ SetHost sets Host field to given value.
 `func (o *GatewayRevokeTmpUsers) HasHost() bool`
 
 HasHost returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *GatewayRevokeTmpUsers) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *GatewayRevokeTmpUsers) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *GatewayRevokeTmpUsers) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *GatewayRevokeTmpUsers) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetName
 

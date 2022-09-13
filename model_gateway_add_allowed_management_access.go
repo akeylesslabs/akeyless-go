@@ -19,6 +19,8 @@ import (
 type GatewayAddAllowedManagementAccess struct {
 	AllowGwApi *bool `json:"allow-gw-api,omitempty"`
 	AllowGwLogin *bool `json:"allow-gw-login,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// SubAdmins to add
 	SubAdminAccessId string `json:"sub-admin-access-id"`
 	// key/val of sub claims, e.g group=admins,developers
@@ -109,6 +111,38 @@ func (o *GatewayAddAllowedManagementAccess) HasAllowGwLogin() bool {
 // SetAllowGwLogin gets a reference to the given bool and assigns it to the AllowGwLogin field.
 func (o *GatewayAddAllowedManagementAccess) SetAllowGwLogin(v bool) {
 	o.AllowGwLogin = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *GatewayAddAllowedManagementAccess) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayAddAllowedManagementAccess) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *GatewayAddAllowedManagementAccess) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *GatewayAddAllowedManagementAccess) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetSubAdminAccessId returns the SubAdminAccessId field value
@@ -238,6 +272,9 @@ func (o GatewayAddAllowedManagementAccess) MarshalJSON() ([]byte, error) {
 	}
 	if o.AllowGwLogin != nil {
 		toSerialize["allow-gw-login"] = o.AllowGwLogin
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if true {
 		toSerialize["sub-admin-access-id"] = o.SubAdminAccessId

@@ -6,11 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Accessibility** | Pointer to **string** | for personal password manager | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Metadata** | Pointer to **string** | Metadata about the secret | [optional] 
 **MultilineValue** | Pointer to **bool** | The provided value is a multiline value (separated by &#39;\\n&#39;) | [optional] 
 **Name** | **string** | Secret name | 
 **PasswordManagerCustomField** | Pointer to **map[string]string** | For Password Management use, additional fields | [optional] 
-**PasswordManagerInjectUrl** | Pointer to **string** | For Password Management use, reflect the website context | [optional] 
+**PasswordManagerInjectUrl** | Pointer to **[]string** | For Password Management use, reflect the website context | [optional] 
 **PasswordManagerPassword** | Pointer to **string** | For Password Management use, additional fields | [optional] 
 **PasswordManagerUsername** | Pointer to **string** | For Password Management use | [optional] 
 **ProtectionKey** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
@@ -96,6 +97,31 @@ SetDeleteProtection sets DeleteProtection field to given value.
 `func (o *CreateSecret) HasDeleteProtection() bool`
 
 HasDeleteProtection returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *CreateSecret) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *CreateSecret) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *CreateSecret) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *CreateSecret) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetMetadata
 
@@ -194,20 +220,20 @@ HasPasswordManagerCustomField returns a boolean if a field has been set.
 
 ### GetPasswordManagerInjectUrl
 
-`func (o *CreateSecret) GetPasswordManagerInjectUrl() string`
+`func (o *CreateSecret) GetPasswordManagerInjectUrl() []string`
 
 GetPasswordManagerInjectUrl returns the PasswordManagerInjectUrl field if non-nil, zero value otherwise.
 
 ### GetPasswordManagerInjectUrlOk
 
-`func (o *CreateSecret) GetPasswordManagerInjectUrlOk() (*string, bool)`
+`func (o *CreateSecret) GetPasswordManagerInjectUrlOk() (*[]string, bool)`
 
 GetPasswordManagerInjectUrlOk returns a tuple with the PasswordManagerInjectUrl field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPasswordManagerInjectUrl
 
-`func (o *CreateSecret) SetPasswordManagerInjectUrl(v string)`
+`func (o *CreateSecret) SetPasswordManagerInjectUrl(v []string)`
 
 SetPasswordManagerInjectUrl sets PasswordManagerInjectUrl field to given value.
 

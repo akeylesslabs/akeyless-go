@@ -17,6 +17,8 @@ import (
 
 // KmipMoveServer kmipMoveServer is a command that Moves the root location of the kmip server and all associated items to a new root location
 type KmipMoveServer struct {
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	NewRoot *string `json:"new-root,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
@@ -39,6 +41,38 @@ func NewKmipMoveServer() *KmipMoveServer {
 func NewKmipMoveServerWithDefaults() *KmipMoveServer {
 	this := KmipMoveServer{}
 	return &this
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *KmipMoveServer) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KmipMoveServer) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *KmipMoveServer) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *KmipMoveServer) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetNewRoot returns the NewRoot field value if set, zero value otherwise.
@@ -139,6 +173,9 @@ func (o *KmipMoveServer) SetUidToken(v string) {
 
 func (o KmipMoveServer) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
+	}
 	if o.NewRoot != nil {
 		toSerialize["new-root"] = o.NewRoot
 	}

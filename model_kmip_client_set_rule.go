@@ -20,6 +20,8 @@ type KmipClientSetRule struct {
 	// Access capabilities
 	Capability []string `json:"capability"`
 	ClientId *string `json:"client-id,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	Name *string `json:"name,omitempty"`
 	// Access path
 	Path string `json:"path"`
@@ -102,6 +104,38 @@ func (o *KmipClientSetRule) HasClientId() bool {
 // SetClientId gets a reference to the given string and assigns it to the ClientId field.
 func (o *KmipClientSetRule) SetClientId(v string) {
 	o.ClientId = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *KmipClientSetRule) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KmipClientSetRule) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *KmipClientSetRule) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *KmipClientSetRule) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -231,6 +265,9 @@ func (o KmipClientSetRule) MarshalJSON() ([]byte, error) {
 	}
 	if o.ClientId != nil {
 		toSerialize["client-id"] = o.ClientId
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name

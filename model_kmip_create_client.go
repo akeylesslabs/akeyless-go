@@ -18,6 +18,8 @@ import (
 // KmipCreateClient struct for KmipCreateClient
 type KmipCreateClient struct {
 	CertificateTtl *int64 `json:"certificate-ttl,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// Client name
 	Name string `json:"name"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -74,6 +76,38 @@ func (o *KmipCreateClient) HasCertificateTtl() bool {
 // SetCertificateTtl gets a reference to the given int64 and assigns it to the CertificateTtl field.
 func (o *KmipCreateClient) SetCertificateTtl(v int64) {
 	o.CertificateTtl = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *KmipCreateClient) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KmipCreateClient) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *KmipCreateClient) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *KmipCreateClient) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetName returns the Name field value
@@ -168,6 +202,9 @@ func (o KmipCreateClient) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.CertificateTtl != nil {
 		toSerialize["certificate-ttl"] = o.CertificateTtl
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if true {
 		toSerialize["name"] = o.Name

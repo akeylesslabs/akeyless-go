@@ -17,6 +17,8 @@ import (
 
 // AssocTargetItem assocTargetItem is a command that creates an association between target and item.
 type AssocTargetItem struct {
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// A list of allowed operations for the key (required for azure targets)
 	KeyOperations *[]string `json:"key-operations,omitempty"`
 	// Keyring name of the GCP KMS (required for gcp targets)
@@ -60,6 +62,38 @@ func NewAssocTargetItem(name string, targetName string, ) *AssocTargetItem {
 func NewAssocTargetItemWithDefaults() *AssocTargetItem {
 	this := AssocTargetItem{}
 	return &this
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *AssocTargetItem) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssocTargetItem) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *AssocTargetItem) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *AssocTargetItem) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetKeyOperations returns the KeyOperations field value if set, zero value otherwise.
@@ -432,6 +466,9 @@ func (o *AssocTargetItem) SetVaultName(v string) {
 
 func (o AssocTargetItem) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
+	}
 	if o.KeyOperations != nil {
 		toSerialize["key-operations"] = o.KeyOperations
 	}

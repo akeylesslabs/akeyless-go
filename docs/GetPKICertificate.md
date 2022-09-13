@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **CertIssuerName** | **string** | The name of the PKI certificate issuer | 
 **CommonName** | Pointer to **string** | The common name to be included in the PKI certificate | [optional] 
 **ExtendedKeyUsage** | Pointer to **string** | A comma-separated list of extended key usage requests which will be used for certificate issuance. Supported values: &#39;clientauth&#39;, &#39;serverauth&#39;. | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **KeyDataBase64** | Pointer to **string** | PKI key file contents. If this option is used, the certificate will be printed to stdout | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **Ttl** | Pointer to **int64** | Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL) | [optional] 
@@ -127,6 +128,31 @@ SetExtendedKeyUsage sets ExtendedKeyUsage field to given value.
 `func (o *GetPKICertificate) HasExtendedKeyUsage() bool`
 
 HasExtendedKeyUsage returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *GetPKICertificate) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *GetPKICertificate) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *GetPKICertificate) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *GetPKICertificate) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetKeyDataBase64
 

@@ -18,7 +18,9 @@ import (
 // StaticSecretDetailsInfo struct for StaticSecretDetailsInfo
 type StaticSecretDetailsInfo struct {
 	Username *string `json:"username,omitempty"`
+	// deprecated
 	Website *string `json:"website,omitempty"`
+	Websites *[]string `json:"websites,omitempty"`
 }
 
 // NewStaticSecretDetailsInfo instantiates a new StaticSecretDetailsInfo object
@@ -102,6 +104,38 @@ func (o *StaticSecretDetailsInfo) SetWebsite(v string) {
 	o.Website = &v
 }
 
+// GetWebsites returns the Websites field value if set, zero value otherwise.
+func (o *StaticSecretDetailsInfo) GetWebsites() []string {
+	if o == nil || o.Websites == nil {
+		var ret []string
+		return ret
+	}
+	return *o.Websites
+}
+
+// GetWebsitesOk returns a tuple with the Websites field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StaticSecretDetailsInfo) GetWebsitesOk() (*[]string, bool) {
+	if o == nil || o.Websites == nil {
+		return nil, false
+	}
+	return o.Websites, true
+}
+
+// HasWebsites returns a boolean if a field has been set.
+func (o *StaticSecretDetailsInfo) HasWebsites() bool {
+	if o != nil && o.Websites != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetWebsites gets a reference to the given []string and assigns it to the Websites field.
+func (o *StaticSecretDetailsInfo) SetWebsites(v []string) {
+	o.Websites = &v
+}
+
 func (o StaticSecretDetailsInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Username != nil {
@@ -109,6 +143,9 @@ func (o StaticSecretDetailsInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.Website != nil {
 		toSerialize["website"] = o.Website
+	}
+	if o.Websites != nil {
+		toSerialize["websites"] = o.Websites
 	}
 	return json.Marshal(toSerialize)
 }

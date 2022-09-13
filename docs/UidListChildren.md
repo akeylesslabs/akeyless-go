@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AuthMethodName** | Pointer to **string** | The universal identity auth method name, required only when uid-token is not provided | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
@@ -51,6 +52,31 @@ SetAuthMethodName sets AuthMethodName field to given value.
 `func (o *UidListChildren) HasAuthMethodName() bool`
 
 HasAuthMethodName returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *UidListChildren) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *UidListChildren) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *UidListChildren) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *UidListChildren) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetToken
 

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **CustomerFrgId** | Pointer to **string** | The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment) | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
 **In** | **string** | PKCS#12 input file (private key and certificate only) | 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Metadata** | Pointer to **string** | A metadata about the key | [optional] 
 **Name** | **string** | Name of key to be created | 
 **Passphrase** | **string** | Passphrase to unlock the pkcs#12 bundle | 
@@ -103,6 +104,31 @@ and a boolean to check if the value has been set.
 
 SetIn sets In field to given value.
 
+
+### GetJson
+
+`func (o *UploadPKCS12) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *UploadPKCS12) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *UploadPKCS12) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *UploadPKCS12) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetMetadata
 

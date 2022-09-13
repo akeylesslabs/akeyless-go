@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **GithubAppId** | Pointer to **int64** | Github app id | [optional] 
 **GithubAppPrivateKey** | Pointer to **string** | App private key | [optional] 
 **GithubBaseUrl** | Pointer to **string** | Base URL | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Target name | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -131,6 +132,31 @@ SetGithubBaseUrl sets GithubBaseUrl field to given value.
 `func (o *CreateGithubTarget) HasGithubBaseUrl() bool`
 
 HasGithubBaseUrl returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *CreateGithubTarget) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *CreateGithubTarget) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *CreateGithubTarget) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *CreateGithubTarget) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetKey
 

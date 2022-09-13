@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
 **GenKey** | Pointer to **string** | Automatically generate key-pair for LDAP configuration. If set to false, a public key needs to be provided | [optional] [default to "true"]
 **GwBoundIps** | Pointer to **[]string** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] 
 **Name** | **string** | Auth Method name | 
 **PublicKeyData** | Pointer to **string** | A public key generated for LDAP authentication method on Akeyless in base64 or PEM format [RSA2048] | [optional] 
@@ -159,6 +160,31 @@ SetGwBoundIps sets GwBoundIps field to given value.
 `func (o *CreateAuthMethodLDAP) HasGwBoundIps() bool`
 
 HasGwBoundIps returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *CreateAuthMethodLDAP) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *CreateAuthMethodLDAP) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *CreateAuthMethodLDAP) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *CreateAuthMethodLDAP) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetJwtTtl
 

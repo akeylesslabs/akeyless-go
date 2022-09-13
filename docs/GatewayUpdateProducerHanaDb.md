@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **HanadbPort** | Pointer to **string** | HanaDb Port | [optional] [default to "443"]
 **HanadbRevocationStatements** | Pointer to **string** | HanaDb Revocation statements | [optional] 
 **HanadbUsername** | Pointer to **string** | HanaDb Username | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Producer name | 
 **NewName** | Pointer to **string** | Producer name | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
@@ -244,6 +245,31 @@ SetHanadbUsername sets HanadbUsername field to given value.
 `func (o *GatewayUpdateProducerHanaDb) HasHanadbUsername() bool`
 
 HasHanadbUsername returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *GatewayUpdateProducerHanaDb) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *GatewayUpdateProducerHanaDb) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *GatewayUpdateProducerHanaDb) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *GatewayUpdateProducerHanaDb) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetName
 

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Path** | **string** | Path to an object | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **Type** | **string** | Type of object (item, am, role) | 
@@ -27,6 +28,31 @@ will change when the set of required properties is changed
 NewReverseRBACWithDefaults instantiates a new ReverseRBAC object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetJson
+
+`func (o *ReverseRBAC) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *ReverseRBAC) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *ReverseRBAC) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *ReverseRBAC) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetPath
 

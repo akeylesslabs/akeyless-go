@@ -17,12 +17,14 @@ import (
 
 // CreateDFCKey struct for CreateDFCKey
 type CreateDFCKey struct {
-	// DFCKey type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096]
+	// DFCKey type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, AES128CBC, AES256CBC, RSA1024, RSA2048, RSA3072, RSA4096]
 	Alg string `json:"alg"`
 	// The customer fragment ID that will be used to create the DFC key (if empty, the key will be created independently of a customer fragment)
 	CustomerFrgId *string `json:"customer-frg-id,omitempty"`
 	// Protection from accidental deletion of this item
 	DeleteProtection *string `json:"delete_protection,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// Metadata about the DFC key
 	Metadata *string `json:"metadata,omitempty"`
 	// DFCKey name
@@ -146,6 +148,38 @@ func (o *CreateDFCKey) HasDeleteProtection() bool {
 // SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
 func (o *CreateDFCKey) SetDeleteProtection(v string) {
 	o.DeleteProtection = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *CreateDFCKey) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDFCKey) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *CreateDFCKey) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *CreateDFCKey) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
@@ -342,6 +376,9 @@ func (o CreateDFCKey) MarshalJSON() ([]byte, error) {
 	}
 	if o.DeleteProtection != nil {
 		toSerialize["delete_protection"] = o.DeleteProtection
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata

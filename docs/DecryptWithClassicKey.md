@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ciphertext** | **string** | Ciphertext to be decrypted in base64 encoded format | 
 **DisplayId** | **string** | The name of the key to use in the encryption process | 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **Version** | **int32** | classic key version | 
@@ -68,6 +69,31 @@ and a boolean to check if the value has been set.
 
 SetDisplayId sets DisplayId field to given value.
 
+
+### GetJson
+
+`func (o *DecryptWithClassicKey) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *DecryptWithClassicKey) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *DecryptWithClassicKey) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *DecryptWithClassicKey) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetToken
 

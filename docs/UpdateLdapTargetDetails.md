@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BindDn** | Pointer to **string** |  | [optional] 
 **BindDnPassword** | Pointer to **string** |  | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **KeepPrevVersion** | Pointer to **string** |  | [optional] 
 **Key** | Pointer to **string** |  | [optional] 
 **LdapCaCert** | Pointer to **string** |  | [optional] 
@@ -85,6 +86,31 @@ SetBindDnPassword sets BindDnPassword field to given value.
 `func (o *UpdateLdapTargetDetails) HasBindDnPassword() bool`
 
 HasBindDnPassword returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *UpdateLdapTargetDetails) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *UpdateLdapTargetDetails) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *UpdateLdapTargetDetails) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *UpdateLdapTargetDetails) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetKeepPrevVersion
 

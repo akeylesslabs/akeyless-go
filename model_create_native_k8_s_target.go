@@ -19,6 +19,8 @@ import (
 type CreateNativeK8STarget struct {
 	// Comment about the target
 	Comment *string `json:"comment,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// K8S cluster CA certificate
 	K8sClusterCaCert string `json:"k8s-cluster-ca-cert"`
 	// K8S cluster URL endpoint
@@ -86,6 +88,38 @@ func (o *CreateNativeK8STarget) HasComment() bool {
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *CreateNativeK8STarget) SetComment(v string) {
 	o.Comment = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *CreateNativeK8STarget) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateNativeK8STarget) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *CreateNativeK8STarget) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *CreateNativeK8STarget) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetK8sClusterCaCert returns the K8sClusterCaCert field value
@@ -284,6 +318,9 @@ func (o CreateNativeK8STarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if true {
 		toSerialize["k8s-cluster-ca-cert"] = o.K8sClusterCaCert

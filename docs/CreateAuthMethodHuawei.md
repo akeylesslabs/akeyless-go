@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **BoundUserName** | Pointer to **[]string** | A list of full user-name that the access is restricted to | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
 **GwBoundIps** | Pointer to **[]string** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] 
 **Name** | **string** | Auth Method name | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -313,6 +314,31 @@ SetGwBoundIps sets GwBoundIps field to given value.
 `func (o *CreateAuthMethodHuawei) HasGwBoundIps() bool`
 
 HasGwBoundIps returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *CreateAuthMethodHuawei) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *CreateAuthMethodHuawei) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *CreateAuthMethodHuawei) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *CreateAuthMethodHuawei) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetJwtTtl
 

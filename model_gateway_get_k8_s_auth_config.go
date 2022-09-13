@@ -17,6 +17,8 @@ import (
 
 // GatewayGetK8SAuthConfig gatewayGetK8SAuth is a command that gets k8s auth config
 type GatewayGetK8SAuthConfig struct {
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// K8S Auth config name
 	Name string `json:"name"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -41,6 +43,38 @@ func NewGatewayGetK8SAuthConfig(name string, ) *GatewayGetK8SAuthConfig {
 func NewGatewayGetK8SAuthConfigWithDefaults() *GatewayGetK8SAuthConfig {
 	this := GatewayGetK8SAuthConfig{}
 	return &this
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *GatewayGetK8SAuthConfig) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayGetK8SAuthConfig) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *GatewayGetK8SAuthConfig) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *GatewayGetK8SAuthConfig) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetName returns the Name field value
@@ -133,6 +167,9 @@ func (o *GatewayGetK8SAuthConfig) SetUidToken(v string) {
 
 func (o GatewayGetK8SAuthConfig) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
+	}
 	if true {
 		toSerialize["name"] = o.Name
 	}

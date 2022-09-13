@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **GcpKeyAlgo** | Pointer to **string** | Service account key algorithm, e.g. KEY_ALG_RSA_1024 | [optional] 
 **GcpSaEmail** | Pointer to **string** | GCP service account email | [optional] 
 **GcpTokenScopes** | Pointer to **string** | Access token scopes list, e.g. scope1,scope2 | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Producer name | 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **Tags** | Pointer to **[]string** | List of the tags attached to this secret | [optional] 
@@ -186,6 +187,31 @@ SetGcpTokenScopes sets GcpTokenScopes field to given value.
 `func (o *GatewayCreateProducerGcp) HasGcpTokenScopes() bool`
 
 HasGcpTokenScopes returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *GatewayCreateProducerGcp) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *GatewayCreateProducerGcp) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *GatewayCreateProducerGcp) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *GatewayCreateProducerGcp) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetName
 

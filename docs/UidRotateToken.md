@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Fork** | Pointer to **bool** | Create a new child token with default parameters | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **SendManualAckToken** | Pointer to **string** | The new rotated token to send manual ack for (with uid-token&#x3D;the-orig-token) | [optional] 
 **UidToken** | Pointer to **string** | The Universal identity token | [optional] 
 **WithManualAck** | Pointer to **bool** | Disable automatic ack | [optional] 
@@ -52,6 +53,31 @@ SetFork sets Fork field to given value.
 `func (o *UidRotateToken) HasFork() bool`
 
 HasFork returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *UidRotateToken) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *UidRotateToken) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *UidRotateToken) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *UidRotateToken) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetSendManualAckToken
 

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Comment** | Pointer to **string** | Comment about the target | [optional] 
 **DockerhubPassword** | Pointer to **string** | DockerhubPassword is either the user&#39;s password to manage the repository | [optional] 
 **DockerhubUsername** | Pointer to **string** | DockerhubUsername is the name of the user in dockerhub | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Target name | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -105,6 +106,31 @@ SetDockerhubUsername sets DockerhubUsername field to given value.
 `func (o *CreateDockerhubTarget) HasDockerhubUsername() bool`
 
 HasDockerhubUsername returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *CreateDockerhubTarget) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *CreateDockerhubTarget) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *CreateDockerhubTarget) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *CreateDockerhubTarget) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetKey
 

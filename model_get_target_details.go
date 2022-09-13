@@ -17,6 +17,8 @@ import (
 
 // GetTargetDetails struct for GetTargetDetails
 type GetTargetDetails struct {
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// Target name
 	Name string `json:"name"`
 	// Include all target versions in reply
@@ -49,6 +51,38 @@ func NewGetTargetDetailsWithDefaults() *GetTargetDetails {
 	var showVersions bool = false
 	this.ShowVersions = &showVersions
 	return &this
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *GetTargetDetails) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetTargetDetails) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *GetTargetDetails) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *GetTargetDetails) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetName returns the Name field value
@@ -205,6 +239,9 @@ func (o *GetTargetDetails) SetUidToken(v string) {
 
 func (o GetTargetDetails) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
+	}
 	if true {
 		toSerialize["name"] = o.Name
 	}

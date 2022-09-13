@@ -33,6 +33,8 @@ type CreateAuthMethodOIDC struct {
 	GwBoundIps *[]string `json:"gw-bound-ips,omitempty"`
 	// Issuer URL
 	Issuer *string `json:"issuer,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// Jwt TTL
 	JwtTtl *int64 `json:"jwt-ttl,omitempty"`
 	// Auth Method name
@@ -328,6 +330,38 @@ func (o *CreateAuthMethodOIDC) SetIssuer(v string) {
 	o.Issuer = &v
 }
 
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *CreateAuthMethodOIDC) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodOIDC) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *CreateAuthMethodOIDC) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *CreateAuthMethodOIDC) SetJson(v bool) {
+	o.Json = &v
+}
+
 // GetJwtTtl returns the JwtTtl field value if set, zero value otherwise.
 func (o *CreateAuthMethodOIDC) GetJwtTtl() int64 {
 	if o == nil || o.JwtTtl == nil {
@@ -561,6 +595,9 @@ func (o CreateAuthMethodOIDC) MarshalJSON() ([]byte, error) {
 	}
 	if o.Issuer != nil {
 		toSerialize["issuer"] = o.Issuer
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.JwtTtl != nil {
 		toSerialize["jwt-ttl"] = o.JwtTtl

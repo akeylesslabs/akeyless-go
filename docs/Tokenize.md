@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Plaintext** | **string** | Data to be encrypted | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **TokenizerName** | **string** | The name of the tokenizer to use in the encryption process | 
@@ -28,6 +29,31 @@ will change when the set of required properties is changed
 NewTokenizeWithDefaults instantiates a new Tokenize object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetJson
+
+`func (o *Tokenize) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *Tokenize) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *Tokenize) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *Tokenize) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetPlaintext
 

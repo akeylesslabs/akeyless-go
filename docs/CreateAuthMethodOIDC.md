@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
 **GwBoundIps** | Pointer to **[]string** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
 **Issuer** | Pointer to **string** | Issuer URL | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] 
 **Name** | **string** | Auth Method name | 
 **RequiredScopes** | Pointer to **[]string** | RequiredScopes is a list of required scopes that the oidc method will request from the oidc provider and the user must approve | [optional] 
@@ -238,6 +239,31 @@ SetIssuer sets Issuer field to given value.
 `func (o *CreateAuthMethodOIDC) HasIssuer() bool`
 
 HasIssuer returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *CreateAuthMethodOIDC) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *CreateAuthMethodOIDC) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *CreateAuthMethodOIDC) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *CreateAuthMethodOIDC) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetJwtTtl
 

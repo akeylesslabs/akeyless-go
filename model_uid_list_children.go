@@ -19,6 +19,8 @@ import (
 type UidListChildren struct {
 	// The universal identity auth method name, required only when uid-token is not provided
 	AuthMethodName *string `json:"auth-method-name,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -72,6 +74,38 @@ func (o *UidListChildren) HasAuthMethodName() bool {
 // SetAuthMethodName gets a reference to the given string and assigns it to the AuthMethodName field.
 func (o *UidListChildren) SetAuthMethodName(v string) {
 	o.AuthMethodName = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *UidListChildren) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UidListChildren) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *UidListChildren) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *UidListChildren) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -142,6 +176,9 @@ func (o UidListChildren) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AuthMethodName != nil {
 		toSerialize["auth-method-name"] = o.AuthMethodName
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

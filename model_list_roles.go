@@ -19,6 +19,8 @@ import (
 type ListRoles struct {
 	// Filter by item name or part of it
 	Filter *string `json:"filter,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// Next page reference
 	PaginationToken *string `json:"pagination-token,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -74,6 +76,38 @@ func (o *ListRoles) HasFilter() bool {
 // SetFilter gets a reference to the given string and assigns it to the Filter field.
 func (o *ListRoles) SetFilter(v string) {
 	o.Filter = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *ListRoles) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListRoles) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *ListRoles) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *ListRoles) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetPaginationToken returns the PaginationToken field value if set, zero value otherwise.
@@ -176,6 +210,9 @@ func (o ListRoles) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Filter != nil {
 		toSerialize["filter"] = o.Filter
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.PaginationToken != nil {
 		toSerialize["pagination-token"] = o.PaginationToken

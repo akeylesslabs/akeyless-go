@@ -10,6 +10,9 @@ Name | Type | Description | Notes
 **AuthMethodName** | Pointer to **string** |  | [optional] 
 **AuthMethodRolesAssoc** | Pointer to [**[]AuthMethodRoleAssociation**](AuthMethodRoleAssociation.md) |  | [optional] 
 **ClientPermissions** | Pointer to **[]string** |  | [optional] 
+**CreationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**ModificationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**UsageDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 
 ## Methods
 
@@ -179,6 +182,81 @@ SetClientPermissions sets ClientPermissions field to given value.
 `func (o *AuthMethod) HasClientPermissions() bool`
 
 HasClientPermissions returns a boolean if a field has been set.
+
+### GetCreationDate
+
+`func (o *AuthMethod) GetCreationDate() time.Time`
+
+GetCreationDate returns the CreationDate field if non-nil, zero value otherwise.
+
+### GetCreationDateOk
+
+`func (o *AuthMethod) GetCreationDateOk() (*time.Time, bool)`
+
+GetCreationDateOk returns a tuple with the CreationDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreationDate
+
+`func (o *AuthMethod) SetCreationDate(v time.Time)`
+
+SetCreationDate sets CreationDate field to given value.
+
+### HasCreationDate
+
+`func (o *AuthMethod) HasCreationDate() bool`
+
+HasCreationDate returns a boolean if a field has been set.
+
+### GetModificationDate
+
+`func (o *AuthMethod) GetModificationDate() time.Time`
+
+GetModificationDate returns the ModificationDate field if non-nil, zero value otherwise.
+
+### GetModificationDateOk
+
+`func (o *AuthMethod) GetModificationDateOk() (*time.Time, bool)`
+
+GetModificationDateOk returns a tuple with the ModificationDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetModificationDate
+
+`func (o *AuthMethod) SetModificationDate(v time.Time)`
+
+SetModificationDate sets ModificationDate field to given value.
+
+### HasModificationDate
+
+`func (o *AuthMethod) HasModificationDate() bool`
+
+HasModificationDate returns a boolean if a field has been set.
+
+### GetUsageDate
+
+`func (o *AuthMethod) GetUsageDate() time.Time`
+
+GetUsageDate returns the UsageDate field if non-nil, zero value otherwise.
+
+### GetUsageDateOk
+
+`func (o *AuthMethod) GetUsageDateOk() (*time.Time, bool)`
+
+GetUsageDateOk returns a tuple with the UsageDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsageDate
+
+`func (o *AuthMethod) SetUsageDate(v time.Time)`
+
+SetUsageDate sets UsageDate field to given value.
+
+### HasUsageDate
+
+`func (o *AuthMethod) HasUsageDate() bool`
+
+HasUsageDate returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

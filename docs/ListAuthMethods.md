@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Filter** | Pointer to **string** | Filter by auth method name or part of it | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **PaginationToken** | Pointer to **string** | Next page reference | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **Type** | Pointer to **[]string** | The Auth method types list of the requested method. In case it is empty, all types of auth methods will be returned. options: [api_key, azure_ad, oauth2/jwt, saml2, ldap, aws_iam, oidc, universal_identity, gcp, k8s, cert] | [optional] 
@@ -53,6 +54,31 @@ SetFilter sets Filter field to given value.
 `func (o *ListAuthMethods) HasFilter() bool`
 
 HasFilter returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *ListAuthMethods) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *ListAuthMethods) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *ListAuthMethods) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *ListAuthMethods) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetPaginationToken
 

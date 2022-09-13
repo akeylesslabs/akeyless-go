@@ -17,6 +17,8 @@ import (
 
 // GetRotatedSecretValue struct for GetRotatedSecretValue
 type GetRotatedSecretValue struct {
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// Secret name
 	Names string `json:"names"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -43,6 +45,38 @@ func NewGetRotatedSecretValue(names string, ) *GetRotatedSecretValue {
 func NewGetRotatedSecretValueWithDefaults() *GetRotatedSecretValue {
 	this := GetRotatedSecretValue{}
 	return &this
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *GetRotatedSecretValue) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetRotatedSecretValue) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *GetRotatedSecretValue) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *GetRotatedSecretValue) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetNames returns the Names field value
@@ -167,6 +201,9 @@ func (o *GetRotatedSecretValue) SetVersion(v int32) {
 
 func (o GetRotatedSecretValue) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
+	}
 	if true {
 		toSerialize["names"] = o.Names
 	}

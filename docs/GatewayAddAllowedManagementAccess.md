@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AllowGwApi** | Pointer to **bool** |  | [optional] 
 **AllowGwLogin** | Pointer to **bool** |  | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **SubAdminAccessId** | **string** | SubAdmins to add | 
 **SubClaims** | Pointer to **map[string]string** | key/val of sub claims, e.g group&#x3D;admins,developers | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -79,6 +80,31 @@ SetAllowGwLogin sets AllowGwLogin field to given value.
 `func (o *GatewayAddAllowedManagementAccess) HasAllowGwLogin() bool`
 
 HasAllowGwLogin returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *GatewayAddAllowedManagementAccess) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *GatewayAddAllowedManagementAccess) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *GatewayAddAllowedManagementAccess) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *GatewayAddAllowedManagementAccess) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetSubAdminAccessId
 

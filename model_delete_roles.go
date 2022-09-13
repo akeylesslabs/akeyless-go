@@ -17,6 +17,8 @@ import (
 
 // DeleteRoles struct for DeleteRoles
 type DeleteRoles struct {
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// Path to delete the auth methods from
 	Path string `json:"path"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -41,6 +43,38 @@ func NewDeleteRoles(path string, ) *DeleteRoles {
 func NewDeleteRolesWithDefaults() *DeleteRoles {
 	this := DeleteRoles{}
 	return &this
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *DeleteRoles) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeleteRoles) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *DeleteRoles) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *DeleteRoles) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetPath returns the Path field value
@@ -133,6 +167,9 @@ func (o *DeleteRoles) SetUidToken(v string) {
 
 func (o DeleteRoles) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
+	}
 	if true {
 		toSerialize["path"] = o.Path
 	}

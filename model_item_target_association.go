@@ -20,6 +20,7 @@ type ItemTargetAssociation struct {
 	AssocId *string `json:"assoc_id,omitempty"`
 	TargetId *int64 `json:"target_id,omitempty"`
 	TargetName *string `json:"target_name,omitempty"`
+	TargetType *string `json:"target_type,omitempty"`
 }
 
 // NewItemTargetAssociation instantiates a new ItemTargetAssociation object
@@ -135,6 +136,38 @@ func (o *ItemTargetAssociation) SetTargetName(v string) {
 	o.TargetName = &v
 }
 
+// GetTargetType returns the TargetType field value if set, zero value otherwise.
+func (o *ItemTargetAssociation) GetTargetType() string {
+	if o == nil || o.TargetType == nil {
+		var ret string
+		return ret
+	}
+	return *o.TargetType
+}
+
+// GetTargetTypeOk returns a tuple with the TargetType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ItemTargetAssociation) GetTargetTypeOk() (*string, bool) {
+	if o == nil || o.TargetType == nil {
+		return nil, false
+	}
+	return o.TargetType, true
+}
+
+// HasTargetType returns a boolean if a field has been set.
+func (o *ItemTargetAssociation) HasTargetType() bool {
+	if o != nil && o.TargetType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetType gets a reference to the given string and assigns it to the TargetType field.
+func (o *ItemTargetAssociation) SetTargetType(v string) {
+	o.TargetType = &v
+}
+
 func (o ItemTargetAssociation) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AssocId != nil {
@@ -145,6 +178,9 @@ func (o ItemTargetAssociation) MarshalJSON() ([]byte, error) {
 	}
 	if o.TargetName != nil {
 		toSerialize["target_name"] = o.TargetName
+	}
+	if o.TargetType != nil {
+		toSerialize["target_type"] = o.TargetType
 	}
 	return json.Marshal(toSerialize)
 }

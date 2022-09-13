@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Capability** | **[]string** | Access capabilities | 
 **ClientId** | Pointer to **string** |  | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Path** | **string** | Access path | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -74,6 +75,31 @@ SetClientId sets ClientId field to given value.
 `func (o *KmipClientSetRule) HasClientId() bool`
 
 HasClientId returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *KmipClientSetRule) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *KmipClientSetRule) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *KmipClientSetRule) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *KmipClientSetRule) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetName
 

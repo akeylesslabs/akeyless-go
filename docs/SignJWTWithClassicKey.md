@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DisplayId** | **string** | The name of the key to use in the sign JWT process | 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **JwtClaims** | **string** | JWTClaims | 
 **SigningMethod** | **string** | SigningMethod | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -49,6 +50,31 @@ and a boolean to check if the value has been set.
 
 SetDisplayId sets DisplayId field to given value.
 
+
+### GetJson
+
+`func (o *SignJWTWithClassicKey) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *SignJWTWithClassicKey) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *SignJWTWithClassicKey) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *SignJWTWithClassicKey) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetJwtClaims
 

@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **CertificateData** | Pointer to **string** | The certificate data in base64, if no file was provided | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
 **GwBoundIps** | Pointer to **[]string** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] 
 **Name** | **string** | Auth Method name | 
 **RevokedCertIds** | Pointer to **[]string** | A list of revoked cert ids | [optional] 
@@ -315,6 +316,31 @@ SetGwBoundIps sets GwBoundIps field to given value.
 `func (o *CreateAuthMethodCert) HasGwBoundIps() bool`
 
 HasGwBoundIps returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *CreateAuthMethodCert) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *CreateAuthMethodCert) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *CreateAuthMethodCert) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *CreateAuthMethodCert) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetJwtTtl
 

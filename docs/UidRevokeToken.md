@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AuthMethodName** | Pointer to **string** | The universal identity auth method name | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **RevokeToken** | **string** | the universal identity token/token-id to revoke | 
 **RevokeType** | **string** | revokeSelf/revokeAll (delete only this token/this token and his children) | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -53,6 +54,31 @@ SetAuthMethodName sets AuthMethodName field to given value.
 `func (o *UidRevokeToken) HasAuthMethodName() bool`
 
 HasAuthMethodName returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *UidRevokeToken) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *UidRevokeToken) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *UidRevokeToken) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *UidRevokeToken) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetRevokeToken
 

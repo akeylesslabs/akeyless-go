@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Args** | Pointer to **[]string** | Optional arguments as key&#x3D;value pairs or JSON strings, e.g - \\\&quot;--args&#x3D;csr&#x3D;base64_encoded_csr --args&#x3D;common_name&#x3D;bar\\\&quot; or args&#x3D;&#39;{\\\&quot;csr\\\&quot;:\\\&quot;base64_encoded_csr\\\&quot;}. It is possible to combine both formats.&#39; | [optional] 
 **Host** | Pointer to **string** | Host | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Dynamic secret name | 
 **Target** | Pointer to **string** | Target Name | [optional] 
 **Timeout** | Pointer to **int64** | Timeout in seconds | [optional] [default to 15]
@@ -80,6 +81,31 @@ SetHost sets Host field to given value.
 `func (o *GetDynamicSecretValue) HasHost() bool`
 
 HasHost returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *GetDynamicSecretValue) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *GetDynamicSecretValue) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *GetDynamicSecretValue) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *GetDynamicSecretValue) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetName
 

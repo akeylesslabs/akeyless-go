@@ -25,6 +25,8 @@ type UpdateGithubTarget struct {
 	GithubAppPrivateKey *string `json:"github-app-private-key,omitempty"`
 	// Base URL
 	GithubBaseUrl *string `json:"github-base-url,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
@@ -184,6 +186,38 @@ func (o *UpdateGithubTarget) HasGithubBaseUrl() bool {
 // SetGithubBaseUrl gets a reference to the given string and assigns it to the GithubBaseUrl field.
 func (o *UpdateGithubTarget) SetGithubBaseUrl(v string) {
 	o.GithubBaseUrl = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *UpdateGithubTarget) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateGithubTarget) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *UpdateGithubTarget) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *UpdateGithubTarget) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetKeepPrevVersion returns the KeepPrevVersion field value if set, zero value otherwise.
@@ -415,6 +449,9 @@ func (o UpdateGithubTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.GithubBaseUrl != nil {
 		toSerialize["github-base-url"] = o.GithubBaseUrl
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.KeepPrevVersion != nil {
 		toSerialize["keep-prev-version"] = o.KeepPrevVersion

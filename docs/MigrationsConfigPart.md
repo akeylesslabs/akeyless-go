@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **GcpSecretsMigrations** | Pointer to [**[]GCPSecretsMigration**](GCPSecretsMigration.md) |  | [optional] 
 **HashiMigrations** | Pointer to [**[]HashiMigration**](HashiMigration.md) |  | [optional] 
 **K8sMigrations** | Pointer to [**[]K8SMigration**](K8SMigration.md) |  | [optional] 
+**OnePasswordMigrations** | Pointer to [**[]OnePasswordMigration**](OnePasswordMigration.md) |  | [optional] 
 
 ## Methods
 
@@ -153,6 +154,31 @@ SetK8sMigrations sets K8sMigrations field to given value.
 `func (o *MigrationsConfigPart) HasK8sMigrations() bool`
 
 HasK8sMigrations returns a boolean if a field has been set.
+
+### GetOnePasswordMigrations
+
+`func (o *MigrationsConfigPart) GetOnePasswordMigrations() []OnePasswordMigration`
+
+GetOnePasswordMigrations returns the OnePasswordMigrations field if non-nil, zero value otherwise.
+
+### GetOnePasswordMigrationsOk
+
+`func (o *MigrationsConfigPart) GetOnePasswordMigrationsOk() (*[]OnePasswordMigration, bool)`
+
+GetOnePasswordMigrationsOk returns a tuple with the OnePasswordMigrations field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOnePasswordMigrations
+
+`func (o *MigrationsConfigPart) SetOnePasswordMigrations(v []OnePasswordMigration)`
+
+SetOnePasswordMigrations sets OnePasswordMigrations field to given value.
+
+### HasOnePasswordMigrations
+
+`func (o *MigrationsConfigPart) HasOnePasswordMigrations() bool`
+
+HasOnePasswordMigrations returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

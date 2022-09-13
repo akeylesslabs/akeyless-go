@@ -25,6 +25,8 @@ type GatewayCreateProducerDockerhub struct {
 	DockerhubTokenScopes *string `json:"dockerhub-token-scopes,omitempty"`
 	// DockerhubUsername is the name of the user in dockerhub
 	DockerhubUsername *string `json:"dockerhub-username,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// Producer name
 	Name string `json:"name"`
 	// Dynamic producer encryption key
@@ -189,6 +191,38 @@ func (o *GatewayCreateProducerDockerhub) HasDockerhubUsername() bool {
 // SetDockerhubUsername gets a reference to the given string and assigns it to the DockerhubUsername field.
 func (o *GatewayCreateProducerDockerhub) SetDockerhubUsername(v string) {
 	o.DockerhubUsername = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *GatewayCreateProducerDockerhub) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerDockerhub) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *GatewayCreateProducerDockerhub) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *GatewayCreateProducerDockerhub) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetName returns the Name field value
@@ -420,6 +454,9 @@ func (o GatewayCreateProducerDockerhub) MarshalJSON() ([]byte, error) {
 	}
 	if o.DockerhubUsername != nil {
 		toSerialize["dockerhub-username"] = o.DockerhubUsername
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if true {
 		toSerialize["name"] = o.Name

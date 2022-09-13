@@ -33,6 +33,8 @@ type CreateSalesforceTarget struct {
 	Comment *string `json:"comment,omitempty"`
 	// The email of the user attached to the oauth2 app used for connecting to Salesforce
 	Email string `json:"email"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
 	// Target name
@@ -303,6 +305,38 @@ func (o *CreateSalesforceTarget) SetEmail(v string) {
 	o.Email = v
 }
 
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *CreateSalesforceTarget) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSalesforceTarget) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *CreateSalesforceTarget) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *CreateSalesforceTarget) SetJson(v bool) {
+	o.Json = &v
+}
+
 // GetKey returns the Key field value if set, zero value otherwise.
 func (o *CreateSalesforceTarget) GetKey() string {
 	if o == nil || o.Key == nil {
@@ -536,6 +570,9 @@ func (o CreateSalesforceTarget) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["email"] = o.Email
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.Key != nil {
 		toSerialize["key"] = o.Key

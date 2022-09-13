@@ -19,6 +19,8 @@ import (
 type Detokenize struct {
 	// Data to be decrypted
 	Ciphertext string `json:"ciphertext"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The name of the tokenizer to use in the decryption process
@@ -70,6 +72,38 @@ func (o *Detokenize) GetCiphertextOk() (*string, bool) {
 // SetCiphertext sets field value
 func (o *Detokenize) SetCiphertext(v string) {
 	o.Ciphertext = v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *Detokenize) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Detokenize) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *Detokenize) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *Detokenize) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -196,6 +230,9 @@ func (o Detokenize) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["ciphertext"] = o.Ciphertext
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

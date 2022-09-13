@@ -20,6 +20,8 @@ type KmipServerSetup struct {
 	CertificateTtl *int64 `json:"certificate-ttl,omitempty"`
 	// Hostname
 	Hostname string `json:"hostname"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	Root *string `json:"root,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
@@ -99,6 +101,38 @@ func (o *KmipServerSetup) GetHostnameOk() (*string, bool) {
 // SetHostname sets field value
 func (o *KmipServerSetup) SetHostname(v string) {
 	o.Hostname = v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *KmipServerSetup) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KmipServerSetup) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *KmipServerSetup) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *KmipServerSetup) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetRoot returns the Root field value if set, zero value otherwise.
@@ -204,6 +238,9 @@ func (o KmipServerSetup) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["hostname"] = o.Hostname
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.Root != nil {
 		toSerialize["root"] = o.Root

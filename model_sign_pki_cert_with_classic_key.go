@@ -25,6 +25,8 @@ type SignPKICertWithClassicKey struct {
 	DisplayId string `json:"display-id"`
 	// DNS Names to be included in the PKI certificate (in a comma-delimited list)
 	DnsNames *string `json:"dns-names,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// key-usage
 	KeyUsage *string `json:"key-usage,omitempty"`
 	// A comma-separated list of the locality that will be set in the issued certificate
@@ -198,6 +200,38 @@ func (o *SignPKICertWithClassicKey) HasDnsNames() bool {
 // SetDnsNames gets a reference to the given string and assigns it to the DnsNames field.
 func (o *SignPKICertWithClassicKey) SetDnsNames(v string) {
 	o.DnsNames = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *SignPKICertWithClassicKey) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SignPKICertWithClassicKey) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *SignPKICertWithClassicKey) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *SignPKICertWithClassicKey) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetKeyUsage returns the KeyUsage field value if set, zero value otherwise.
@@ -637,6 +671,9 @@ func (o SignPKICertWithClassicKey) MarshalJSON() ([]byte, error) {
 	}
 	if o.DnsNames != nil {
 		toSerialize["dns-names"] = o.DnsNames
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.KeyUsage != nil {
 		toSerialize["key-usage"] = o.KeyUsage

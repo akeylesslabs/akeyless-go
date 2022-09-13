@@ -21,6 +21,8 @@ type UpdateRDPTargetDetails struct {
 	AdminPwd *string `json:"admin_pwd,omitempty"`
 	HostName *string `json:"host_name,omitempty"`
 	HostPort *string `json:"host_port,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	// Target name
 	Name string `json:"name"`
@@ -178,6 +180,38 @@ func (o *UpdateRDPTargetDetails) HasHostPort() bool {
 // SetHostPort gets a reference to the given string and assigns it to the HostPort field.
 func (o *UpdateRDPTargetDetails) SetHostPort(v string) {
 	o.HostPort = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *UpdateRDPTargetDetails) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRDPTargetDetails) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *UpdateRDPTargetDetails) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *UpdateRDPTargetDetails) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetKeepPrevVersion returns the KeepPrevVersion field value if set, zero value otherwise.
@@ -377,6 +411,9 @@ func (o UpdateRDPTargetDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.HostPort != nil {
 		toSerialize["host_port"] = o.HostPort
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.KeepPrevVersion != nil {
 		toSerialize["keep-prev-version"] = o.KeepPrevVersion

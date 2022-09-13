@@ -22,6 +22,8 @@ type GetCloudIdentity struct {
 	Debug *bool `json:"debug,omitempty"`
 	// GCP JWT audience
 	GcpAudience *string `json:"gcp-audience,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// Escapes the token so it can be safely placed inside a URL query
 	UrlSafe *bool `json:"url_safe,omitempty"`
 }
@@ -139,6 +141,38 @@ func (o *GetCloudIdentity) SetGcpAudience(v string) {
 	o.GcpAudience = &v
 }
 
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *GetCloudIdentity) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetCloudIdentity) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *GetCloudIdentity) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *GetCloudIdentity) SetJson(v bool) {
+	o.Json = &v
+}
+
 // GetUrlSafe returns the UrlSafe field value if set, zero value otherwise.
 func (o *GetCloudIdentity) GetUrlSafe() bool {
 	if o == nil || o.UrlSafe == nil {
@@ -181,6 +215,9 @@ func (o GetCloudIdentity) MarshalJSON() ([]byte, error) {
 	}
 	if o.GcpAudience != nil {
 		toSerialize["gcp-audience"] = o.GcpAudience
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.UrlSafe != nil {
 		toSerialize["url_safe"] = o.UrlSafe

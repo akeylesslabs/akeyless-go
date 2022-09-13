@@ -25,6 +25,8 @@ type EncryptFile struct {
 	In string `json:"in"`
 	// The item id of the key to use in the encryption process
 	ItemId *int64 `json:"item-id,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// The name of the key to use in the encryption process
 	KeyName string `json:"key-name"`
 	// Path to the output file. If not provided, the output will be sent to stdout
@@ -174,6 +176,38 @@ func (o *EncryptFile) SetItemId(v int64) {
 	o.ItemId = &v
 }
 
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *EncryptFile) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EncryptFile) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *EncryptFile) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *EncryptFile) SetJson(v bool) {
+	o.Json = &v
+}
+
 // GetKeyName returns the KeyName field value
 func (o *EncryptFile) GetKeyName() string {
 	if o == nil  {
@@ -307,6 +341,9 @@ func (o EncryptFile) MarshalJSON() ([]byte, error) {
 	}
 	if o.ItemId != nil {
 		toSerialize["item-id"] = o.ItemId
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if true {
 		toSerialize["key-name"] = o.KeyName

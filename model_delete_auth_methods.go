@@ -17,6 +17,8 @@ import (
 
 // DeleteAuthMethods deleteAuthMethods is a command that deletes multiple auth methods from a given path.
 type DeleteAuthMethods struct {
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// Path to delete the auth methods from
 	Path string `json:"path"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -41,6 +43,38 @@ func NewDeleteAuthMethods(path string, ) *DeleteAuthMethods {
 func NewDeleteAuthMethodsWithDefaults() *DeleteAuthMethods {
 	this := DeleteAuthMethods{}
 	return &this
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *DeleteAuthMethods) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeleteAuthMethods) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *DeleteAuthMethods) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *DeleteAuthMethods) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetPath returns the Path field value
@@ -133,6 +167,9 @@ func (o *DeleteAuthMethods) SetUidToken(v string) {
 
 func (o DeleteAuthMethods) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
+	}
 	if true {
 		toSerialize["path"] = o.Path
 	}

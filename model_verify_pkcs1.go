@@ -21,6 +21,8 @@ type VerifyPKCS1 struct {
 	DisplayId *string `json:"display-id,omitempty"`
 	// The item id of the key to use in the verification process
 	ItemId *int64 `json:"item-id,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// The name of the RSA key to use in the verification process
 	KeyName string `json:"key-name"`
 	// The message to be verified
@@ -115,6 +117,38 @@ func (o *VerifyPKCS1) HasItemId() bool {
 // SetItemId gets a reference to the given int64 and assigns it to the ItemId field.
 func (o *VerifyPKCS1) SetItemId(v int64) {
 	o.ItemId = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *VerifyPKCS1) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VerifyPKCS1) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *VerifyPKCS1) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *VerifyPKCS1) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetKeyName returns the KeyName field value
@@ -260,6 +294,9 @@ func (o VerifyPKCS1) MarshalJSON() ([]byte, error) {
 	}
 	if o.ItemId != nil {
 		toSerialize["item-id"] = o.ItemId
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if true {
 		toSerialize["key-name"] = o.KeyName

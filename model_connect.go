@@ -32,6 +32,8 @@ type Connect struct {
 	CertIssuerName *string `json:"cert-issuer-name,omitempty"`
 	// The file from which the identity (private key) for public key authentication is read
 	IdentityFile *string `json:"identity-file,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// The Secret name (for database and AWS producers - producer name)
 	Name *string `json:"name,omitempty"`
 	// The Use to add offical SSH arguments (except -i)
@@ -329,6 +331,38 @@ func (o *Connect) SetIdentityFile(v string) {
 	o.IdentityFile = &v
 }
 
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *Connect) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Connect) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *Connect) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *Connect) SetJson(v bool) {
+	o.Json = &v
+}
+
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Connect) GetName() string {
 	if o == nil || o.Name == nil {
@@ -578,6 +612,9 @@ func (o Connect) MarshalJSON() ([]byte, error) {
 	}
 	if o.IdentityFile != nil {
 		toSerialize["identity-file"] = o.IdentityFile
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name

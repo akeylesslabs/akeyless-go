@@ -33,6 +33,8 @@ type GatewayUpdateProducerEks struct {
 	EksRegion *string `json:"eks-region,omitempty"`
 	// Secret Access Key
 	EksSecretAccessKey *string `json:"eks-secret-access-key,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// Producer name
 	Name string `json:"name"`
 	// Producer name
@@ -336,6 +338,38 @@ func (o *GatewayUpdateProducerEks) HasEksSecretAccessKey() bool {
 // SetEksSecretAccessKey gets a reference to the given string and assigns it to the EksSecretAccessKey field.
 func (o *GatewayUpdateProducerEks) SetEksSecretAccessKey(v string) {
 	o.EksSecretAccessKey = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerEks) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerEks) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerEks) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *GatewayUpdateProducerEks) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetName returns the Name field value
@@ -771,6 +805,9 @@ func (o GatewayUpdateProducerEks) MarshalJSON() ([]byte, error) {
 	}
 	if o.EksSecretAccessKey != nil {
 		toSerialize["eks-secret-access-key"] = o.EksSecretAccessKey
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if true {
 		toSerialize["name"] = o.Name

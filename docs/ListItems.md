@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Accessibility** | Pointer to **string** | for personal password manager | [optional] 
 **Filter** | Pointer to **string** | Filter by item name or part of it | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **MinimalView** | Pointer to **bool** |  | [optional] 
 **PaginationToken** | Pointer to **string** | Next page reference | [optional] 
 **Path** | Pointer to **string** | Path to folder | [optional] 
@@ -83,6 +84,31 @@ SetFilter sets Filter field to given value.
 `func (o *ListItems) HasFilter() bool`
 
 HasFilter returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *ListItems) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *ListItems) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *ListItems) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *ListItems) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetMinimalView
 

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DisplayId** | Pointer to **string** | The display id of the item | [optional] 
 **ItemId** | Pointer to **int64** | Item id of the item | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Item name | 
 **ShowVersions** | Pointer to **bool** | Include all item versions in reply | [optional] [default to false]
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -79,6 +80,31 @@ SetItemId sets ItemId field to given value.
 `func (o *DescribeItem) HasItemId() bool`
 
 HasItemId returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *DescribeItem) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *DescribeItem) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *DescribeItem) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *DescribeItem) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetName
 

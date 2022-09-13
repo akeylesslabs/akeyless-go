@@ -21,6 +21,8 @@ type ListItems struct {
 	Accessibility *string `json:"accessibility,omitempty"`
 	// Filter by item name or part of it
 	Filter *string `json:"filter,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	MinimalView *bool `json:"minimal-view,omitempty"`
 	// Next page reference
 	PaginationToken *string `json:"pagination-token,omitempty"`
@@ -116,6 +118,38 @@ func (o *ListItems) HasFilter() bool {
 // SetFilter gets a reference to the given string and assigns it to the Filter field.
 func (o *ListItems) SetFilter(v string) {
 	o.Filter = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *ListItems) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListItems) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *ListItems) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *ListItems) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetMinimalView returns the MinimalView field value if set, zero value otherwise.
@@ -381,6 +415,9 @@ func (o ListItems) MarshalJSON() ([]byte, error) {
 	}
 	if o.Filter != nil {
 		toSerialize["filter"] = o.Filter
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.MinimalView != nil {
 		toSerialize["minimal-view"] = o.MinimalView

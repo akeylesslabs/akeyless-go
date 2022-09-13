@@ -33,6 +33,8 @@ type Configure struct {
 	CertData *string `json:"cert-data,omitempty"`
 	// GCP JWT audience
 	GcpAudience *string `json:"gcp-audience,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// The K8S Auth config name (relevant only for access-type=k8s)
 	K8sAuthConfigName *string `json:"k8s-auth-config-name,omitempty"`
 	// Private key data encoded in base64. Used if file was not provided.(relevant only for access-type=cert in Curl Context)
@@ -316,6 +318,38 @@ func (o *Configure) SetGcpAudience(v string) {
 	o.GcpAudience = &v
 }
 
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *Configure) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Configure) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *Configure) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *Configure) SetJson(v bool) {
+	o.Json = &v
+}
+
 // GetK8sAuthConfigName returns the K8sAuthConfigName field value if set, zero value otherwise.
 func (o *Configure) GetK8sAuthConfigName() string {
 	if o == nil || o.K8sAuthConfigName == nil {
@@ -405,6 +439,9 @@ func (o Configure) MarshalJSON() ([]byte, error) {
 	}
 	if o.GcpAudience != nil {
 		toSerialize["gcp-audience"] = o.GcpAudience
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.K8sAuthConfigName != nil {
 		toSerialize["k8s-auth-config-name"] = o.K8sAuthConfigName

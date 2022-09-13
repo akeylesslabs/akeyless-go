@@ -66,6 +66,7 @@ Method | HTTP request | Description
 [**Detokenize**](V2Api.md#Detokenize) | **Post** /detokenize | 
 [**Encrypt**](V2Api.md#Encrypt) | **Post** /encrypt | 
 [**EncryptWithClassicKey**](V2Api.md#EncryptWithClassicKey) | **Post** /encrypt-with-classic-key | 
+[**GatewayAddAllowedManagementAccess**](V2Api.md#GatewayAddAllowedManagementAccess) | **Post** /gateway-add-allow-management-access | 
 [**GatewayCreateK8SAuthConfig**](V2Api.md#GatewayCreateK8SAuthConfig) | **Post** /gateway-create-k8s-auth-config | 
 [**GatewayCreateMigration**](V2Api.md#GatewayCreateMigration) | **Post** /gateway-create-migration | 
 [**GatewayCreateProducerArtifactory**](V2Api.md#GatewayCreateProducerArtifactory) | **Post** /gateway-create-producer-artifactory | 
@@ -165,8 +166,10 @@ Method | HTTP request | Description
 [**KmipServerSetup**](V2Api.md#KmipServerSetup) | **Post** /kmip-create-environment | 
 [**KmipSetServerState**](V2Api.md#KmipSetServerState) | **Post** /kmip-set-environment-state | 
 [**ListAuthMethods**](V2Api.md#ListAuthMethods) | **Post** /list-auth-methods | 
+[**ListGateways**](V2Api.md#ListGateways) | **Post** /list-gateways | 
 [**ListItems**](V2Api.md#ListItems) | **Post** /list-items | 
 [**ListRoles**](V2Api.md#ListRoles) | **Post** /list-roles | 
+[**ListSRABastions**](V2Api.md#ListSRABastions) | **Post** /list-sra-bastions | 
 [**ListTargets**](V2Api.md#ListTargets) | **Post** /list-targets | 
 [**MoveObjects**](V2Api.md#MoveObjects) | **Post** /move-objects | 
 [**RawCreds**](V2Api.md#RawCreds) | **Post** /raw-creds | 
@@ -4193,6 +4196,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**EncryptOutput**](encryptOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayAddAllowedManagementAccess
+
+> map[string]interface{} GatewayAddAllowedManagementAccess(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayAddAllowedManagementAccess("SubAdminAccessId_example") // GatewayAddAllowedManagementAccess | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayAddAllowedManagementAccess(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayAddAllowedManagementAccess``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayAddAllowedManagementAccess`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayAddAllowedManagementAccess`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayAddAllowedManagementAccessRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayAddAllowedManagementAccess**](GatewayAddAllowedManagementAccess.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
 
 ### Authorization
 
@@ -10535,6 +10602,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## ListGateways
+
+> GatewaysListResponse ListGateways(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewlistGateways() // ListGateways | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.ListGateways(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.ListGateways``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListGateways`: GatewaysListResponse
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.ListGateways`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListGatewaysRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**ListGateways**](ListGateways.md) |  | 
+
+### Return type
+
+[**GatewaysListResponse**](GatewaysListResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ListItems
 
 > ListItemsInPathOutput ListItems(ctx).Body(body).Execute()
@@ -10648,6 +10779,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListRolesOutput**](ListRolesOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListSRABastions
+
+> BastionsList ListSRABastions(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewlistSRABastions() // ListSRABastions | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.ListSRABastions(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.ListSRABastions``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListSRABastions`: BastionsList
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.ListSRABastions`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListSRABastionsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**ListSRABastions**](ListSRABastions.md) |  | 
+
+### Return type
+
+[**BastionsList**](BastionsList.md)
 
 ### Authorization
 
@@ -13732,7 +13927,7 @@ No authorization required
 
 ## UpdateNativeK8STarget
 
-> UpdateNativeK8STarget UpdateNativeK8STarget(ctx).Body(body).Execute()
+> UpdateNativeK8STargetOutput UpdateNativeK8STarget(ctx).Body(body).Execute()
 
 
 
@@ -13758,7 +13953,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateNativeK8STarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateNativeK8STarget`: UpdateNativeK8STarget
+    // response from `UpdateNativeK8STarget`: UpdateNativeK8STargetOutput
     fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateNativeK8STarget`: %v\n", resp)
 }
 ```
@@ -13778,7 +13973,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateNativeK8STarget**](updateNativeK8STarget.md)
+[**UpdateNativeK8STargetOutput**](updateNativeK8STargetOutput.md)
 
 ### Authorization
 
@@ -14640,7 +14835,7 @@ import (
 )
 
 func main() {
-    body := map[string]interface{}(Object) // map[string]interface{} | 
+    body := *openapiclient.NewupdateTargetDetails() // UpdateTargetDetails | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -14665,7 +14860,7 @@ Other parameters are passed through a pointer to a apiUpdateTargetDetailsRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **map[string]interface{}** |  | 
+ **body** | [**UpdateTargetDetails**](UpdateTargetDetails.md) |  | 
 
 ### Return type
 

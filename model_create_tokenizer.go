@@ -27,6 +27,8 @@ type CreateTokenizer struct {
 	EncodingTemplate *string `json:"encoding-template,omitempty"`
 	// AES key name to use in vaultless tokenization
 	EncryptionKeyName *string `json:"encryption-key-name,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// A metadata about the tokenizer
 	Metadata *string `json:"metadata,omitempty"`
 	// Tokenizer name
@@ -225,6 +227,38 @@ func (o *CreateTokenizer) HasEncryptionKeyName() bool {
 // SetEncryptionKeyName gets a reference to the given string and assigns it to the EncryptionKeyName field.
 func (o *CreateTokenizer) SetEncryptionKeyName(v string) {
 	o.EncryptionKeyName = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *CreateTokenizer) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateTokenizer) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *CreateTokenizer) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *CreateTokenizer) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
@@ -507,6 +541,9 @@ func (o CreateTokenizer) MarshalJSON() ([]byte, error) {
 	}
 	if o.EncryptionKeyName != nil {
 		toSerialize["encryption-key-name"] = o.EncryptionKeyName
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata

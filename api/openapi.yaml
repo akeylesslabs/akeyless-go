@@ -1700,6 +1700,33 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /gateway-add-allow-management-access:
+    post:
+      operationId: gatewayAddAllowedManagementAccess
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayAddAllowedManagementAccess'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayAddSubAdminsOutput'
+          description: gatewayAddSubAdminsResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /gateway-create-k8s-auth-config:
     post:
       operationId: gatewayCreateK8SAuthConfig
@@ -4399,6 +4426,33 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /list-gateways:
+    post:
+      operationId: listGateways
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/listGateways'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GatewaysListResponse'
+          description: listGatewaysResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /list-items:
     post:
       operationId: listItems
@@ -4442,6 +4496,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/ListRolesOutput'
           description: listRolesResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /list-sra-bastions:
+    post:
+      operationId: listSRABastions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/listSRABastions'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BastionsList'
+          description: listSRABastionsResponse wraps response body.
         default:
           content:
             application/json:
@@ -5675,8 +5756,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/updateNativeK8STarget'
-          description: updateNativeK8STarget
+                $ref: '#/components/schemas/updateNativeK8STargetOutput'
+          description: updateNativeK8STargetResponse wraps response body.
         default:
           content:
             application/json:
@@ -7334,6 +7415,12 @@ components:
           schema:
             $ref: '#/components/schemas/ListAuthMethodsOutput'
       description: listAuthMethodsResponse wraps response body.
+    listGatewaysResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GatewaysListResponse'
+      description: listGatewaysResponse wraps response body.
     listItemsResponse:
       content:
         application/json:
@@ -7346,6 +7433,12 @@ components:
           schema:
             $ref: '#/components/schemas/ListRolesOutput'
       description: listRolesResponse wraps response body.
+    listSRABastionsResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BastionsList'
+      description: listSRABastionsResponse wraps response body.
     listTargetsResponse:
       content:
         application/json:
@@ -8139,6 +8232,35 @@ components:
               secret: secret
               region: region
               key: key
+          one_password_migrations:
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              protection_key: protection_key
+              new_name: new_name
+            payload:
+              secret_key: secret_key
+              password: password
+              vaults:
+              - vaults
+              - vaults
+              email: email
+              url: url
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              protection_key: protection_key
+              new_name: new_name
+            payload:
+              secret_key: secret_key
+              password: password
+              vaults:
+              - vaults
+              - vaults
+              email: email
+              url: url
           gcp_secrets_migrations:
           - general:
               prefix: prefix
@@ -8418,6 +8540,8 @@ components:
         client_permissions:
         - client_permissions
         - client_permissions
+        modification_date: 2000-01-23T04:56:07.000+00:00
+        usage_date: 2000-01-23T04:56:07.000+00:00
         access_info:
           jwt_ttl: 6
           gcp_access_rules:
@@ -8625,6 +8749,7 @@ components:
             hash_pass: hash_pass
             alg: alg
             email: email
+        creation_date: 2000-01-23T04:56:07.000+00:00
         auth_method_name: auth_method_name
         auth_method_access_id: auth_method_access_id
       properties:
@@ -8649,6 +8774,18 @@ components:
             type: string
           type: array
           x-go-name: ClientPermissions
+        creation_date:
+          format: date-time
+          type: string
+          x-go-name: CreationDate
+        modification_date:
+          format: date-time
+          type: string
+          x-go-name: ModificationDate
+        usage_date:
+          format: date-time
+          type: string
+          x-go-name: UsageDate
       title: AuthMethod represents a single Auth method.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
@@ -9156,6 +9293,75 @@ components:
           x-go-name: Tenant
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    BastionListEntry:
+      example:
+        allowed_urls:
+        - allowed_urls
+        - allowed_urls
+        cluster_name: cluster_name
+        access_id: access_id
+        allowed_access_ids:
+        - allowed_access_ids
+        - allowed_access_ids
+        display_name: display_name
+        last_report: 2000-01-23T04:56:07.000+00:00
+      properties:
+        access_id:
+          type: string
+          x-go-name: AccessID
+        allowed_access_ids:
+          items:
+            type: string
+          type: array
+          x-go-name: AllowedAccessIDs
+        allowed_urls:
+          items:
+            type: string
+          type: array
+          x-go-name: AllowedUrls
+        cluster_name:
+          type: string
+          x-go-name: ClusterName
+        display_name:
+          type: string
+          x-go-name: DisplayName
+        last_report:
+          format: date-time
+          type: string
+          x-go-name: LastReport
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    BastionsList:
+      example:
+        clusters:
+        - allowed_urls:
+          - allowed_urls
+          - allowed_urls
+          cluster_name: cluster_name
+          access_id: access_id
+          allowed_access_ids:
+          - allowed_access_ids
+          - allowed_access_ids
+          display_name: display_name
+          last_report: 2000-01-23T04:56:07.000+00:00
+        - allowed_urls:
+          - allowed_urls
+          - allowed_urls
+          cluster_name: cluster_name
+          access_id: access_id
+          allowed_access_ids:
+          - allowed_access_ids
+          - allowed_access_ids
+          display_name: display_name
+          last_report: 2000-01-23T04:56:07.000+00:00
+      properties:
+        clusters:
+          items:
+            $ref: '#/components/schemas/BastionListEntry'
+          type: array
+          x-go-name: Clusters
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     CFConfigPart:
       example:
         customer_fragements:
@@ -9692,6 +9898,7 @@ components:
         bastion-ctrl-port: "9900"
         name: name
         bastion-ctrl-proto: http
+        json: true
         ssh-extra-args: ssh-extra-args
         RcFileOverride: RcFileOverride
       properties:
@@ -9728,6 +9935,10 @@ components:
             authentication is read
           type: string
           x-go-name: IdentityFile
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: The Secret name (for database and AWS producers - producer
             name)
@@ -9772,6 +9983,7 @@ components:
         delete_protection: delete_protection
         metadata: metadata
         name: name
+        json: true
         alg: alg
         cert-file-data: cert-file-data
         key-data: key-data
@@ -9794,6 +10006,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         key-data:
           description: Base64-encoded classic key value
           type: string
@@ -9863,6 +10079,7 @@ components:
         allowed-uri-sans: allowed-uri-sans
         province: province
         street-address: street-address
+        json: true
         signer-key-name: signer-key-name
         tag:
         - tag
@@ -9921,6 +10138,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         key-usage:
           default: DigitalSignature,KeyAgreement,KeyEncipherment
           description: key-usage
@@ -10120,9 +10341,11 @@ components:
         item_targets_assoc:
         - assoc_id: assoc_id
           target_name: target_name
+          target_type: target_type
           target_id: 9
         - assoc_id: assoc_id
           target_name: target_name
+          target_type: target_type
           target_id: 9
         chef_server_username: chef_server_username
         db_host_name: db_host_name
@@ -11228,6 +11451,9 @@ components:
           $ref: '#/components/schemas/GCPPayload'
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    GWClusterStatus:
+      type: string
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     GatewayMessageQueueInfo:
       example:
         queue_name: queue_name
@@ -11297,6 +11523,7 @@ components:
         ldap-ca-cert: ldap-ca-cert
         user-dn: user-dn
         group-attr: group-attr
+        json: true
         signing-key-data: signing-key-data
         ldap-url: ldap-url
       properties:
@@ -11324,6 +11551,10 @@ components:
           description: Group Filter
           type: string
           x-go-name: GroupFilter
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         ldap-ca-cert:
           description: LDAP CA Certificate (base64 encoded)
           type: string
@@ -11374,6 +11605,50 @@ components:
           x-go-name: Updated
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    GatewaysListResponse:
+      description: GatewaysListResponse Gateway cluster identity list
+      example:
+        clusters:
+        - cluster_url: cluster_url
+          cluster_name: cluster_name
+          current_gw: true
+          status_description: status_description
+          customer_fragment_ids:
+          - customer_fragment_ids
+          - customer_fragment_ids
+          allowed: true
+          allowed_access_ids:
+          - allowed_access_ids
+          - allowed_access_ids
+          default_protection_key_id: 0
+          id: 6
+          display_name: display_name
+          default_secret_location: default_secret_location
+          status: status
+        - cluster_url: cluster_url
+          cluster_name: cluster_name
+          current_gw: true
+          status_description: status_description
+          customer_fragment_ids:
+          - customer_fragment_ids
+          - customer_fragment_ids
+          allowed: true
+          allowed_access_ids:
+          - allowed_access_ids
+          - allowed_access_ids
+          default_protection_key_id: 0
+          id: 6
+          display_name: display_name
+          default_secret_location: default_secret_location
+          status: status
+      properties:
+        clusters:
+          items:
+            $ref: '#/components/schemas/GwClusterIdentity'
+          type: array
+          x-go-name: GwClusterList
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     GeneralConfigPart:
       example:
         tcp_port: tcp_port
@@ -11503,6 +11778,7 @@ components:
         extended-key-usage: extended-key-usage
         key-data-base64: key-data-base64
         uri-sans: uri-sans
+        json: true
         ttl: 0
         uid-token: uid-token
         common-name: common-name
@@ -11528,6 +11804,10 @@ components:
             ''serverauth''.'
           type: string
           x-go-name: ExtKeyUsage
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         key-data-base64:
           description: |-
             PKI key file contents. If this option is used, the certificate
@@ -11743,6 +12023,21 @@ components:
             creation_date: 2000-01-23T04:56:07.000+00:00
             version: 9
             customer_fragment_id: customer_fragment_id
+          target_objects_assoc:
+          - assoc_id: assoc_id
+            target_name: target_name
+            object_type: object_type
+            object_name: object_name
+            attributes:
+              key: attributes
+            object_id: object_id
+          - assoc_id: assoc_id
+            target_name: target_name
+            object_type: object_type
+            object_name: object_name
+            attributes:
+              key: attributes
+            object_id: object_id
           target_type: target_type
           attributes:
             key: '{}'
@@ -11755,6 +12050,69 @@ components:
         value:
           $ref: '#/components/schemas/TargetTypeDetailsInput'
       title: GetTargetDetailsOutput defines output of GetTargetDetails operation.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    GwClusterIdentity:
+      example:
+        cluster_url: cluster_url
+        cluster_name: cluster_name
+        current_gw: true
+        status_description: status_description
+        customer_fragment_ids:
+        - customer_fragment_ids
+        - customer_fragment_ids
+        allowed: true
+        allowed_access_ids:
+        - allowed_access_ids
+        - allowed_access_ids
+        default_protection_key_id: 0
+        id: 6
+        display_name: display_name
+        default_secret_location: default_secret_location
+        status: status
+      properties:
+        allowed:
+          type: boolean
+          x-go-name: Allowed
+        allowed_access_ids:
+          items:
+            type: string
+          type: array
+          x-go-name: AllowedAccessIDs
+        cluster_name:
+          type: string
+          x-go-name: ClusterName
+        cluster_url:
+          type: string
+          x-go-name: ClusterUrl
+        current_gw:
+          type: boolean
+          x-go-name: CurrentGW
+        customer_fragment_ids:
+          items:
+            type: string
+          type: array
+          x-go-name: CustomerFragmentIDs
+        default_protection_key_id:
+          format: int64
+          type: integer
+          x-go-name: DefProtectionKeyID
+        default_secret_location:
+          type: string
+          x-go-name: DefSecretLocation
+        display_name:
+          type: string
+          x-go-name: DisplayName
+        id:
+          format: int64
+          type: integer
+          x-go-name: Id
+        status:
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+        status_description:
+          type: string
+          x-go-name: StatusDescription
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     HashAlgorithm:
@@ -11895,6 +12253,7 @@ components:
           creation_date: 2000-01-23T04:56:07.000+00:00
           version: 9
           customer_fragment_id: customer_fragment_id
+        usage_date: 2000-01-23T04:56:07.000+00:00
         shared_by:
           unique_id: unique_id
           access_id: access_id
@@ -11922,6 +12281,7 @@ components:
           version: 9
           customer_fragment_id: customer_fragment_id
         item_metadata: item_metadata
+        modification_date: 2000-01-23T04:56:07.000+00:00
         protection_key_name: protection_key_name
         cert_issuer_signer_key_name: cert_issuer_signer_key_name
         item_id: 4
@@ -11996,11 +12356,14 @@ components:
         item_targets_assoc:
         - assoc_id: assoc_id
           target_name: target_name
+          target_type: target_type
           target_id: 9
         - assoc_id: assoc_id
           target_name: target_name
+          target_type: target_type
           target_id: 9
         item_name: item_name
+        creation_date: 2000-01-23T04:56:07.000+00:00
         customer_fragment_id: customer_fragment_id
         item_general_info:
           classic_key_details:
@@ -12054,6 +12417,9 @@ components:
             password_length: 2
           static_secret_info:
             website: website
+            websites:
+            - websites
+            - websites
             username: username
           rotated_secret_details:
             rotator_creds_type: rotator_creds_type
@@ -12213,6 +12579,10 @@ components:
             type: string
           type: array
           x-go-name: ClientPermissions
+        creation_date:
+          format: date-time
+          type: string
+          x-go-name: CreationDate
         customer_fragment_id:
           type: string
           x-go-name: CustomerFragmentId
@@ -12281,6 +12651,10 @@ components:
           format: int32
           type: integer
           x-go-name: LastVersion
+        modification_date:
+          format: date-time
+          type: string
+          x-go-name: ModificationDate
         next_rotation_date:
           format: date-time
           type: string
@@ -12306,6 +12680,10 @@ components:
             $ref: '#/components/schemas/TargetItemVersion'
           type: array
           x-go-name: TargetVersions
+        usage_date:
+          format: date-time
+          type: string
+          x-go-name: UsageDate
         with_customer_fragment:
           type: boolean
           x-go-name: WithCustomerFragment
@@ -12370,6 +12748,9 @@ components:
           password_length: 2
         static_secret_info:
           website: website
+          websites:
+          - websites
+          - websites
           username: username
         rotated_secret_details:
           rotator_creds_type: rotator_creds_type
@@ -12543,6 +12924,7 @@ components:
       example:
         assoc_id: assoc_id
         target_name: target_name
+        target_type: target_type
         target_id: 9
       properties:
         assoc_id:
@@ -12555,6 +12937,9 @@ components:
         target_name:
           type: string
           x-go-name: TargetName
+        target_type:
+          type: string
+          x-go-name: TargetType
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     ItemType:
@@ -13390,6 +13775,8 @@ components:
           client_permissions:
           - client_permissions
           - client_permissions
+          modification_date: 2000-01-23T04:56:07.000+00:00
+          usage_date: 2000-01-23T04:56:07.000+00:00
           access_info:
             jwt_ttl: 6
             gcp_access_rules:
@@ -13597,6 +13984,7 @@ components:
               hash_pass: hash_pass
               alg: alg
               email: email
+          creation_date: 2000-01-23T04:56:07.000+00:00
           auth_method_name: auth_method_name
           auth_method_access_id: auth_method_access_id
         - account_id: account_id
@@ -13646,6 +14034,8 @@ components:
           client_permissions:
           - client_permissions
           - client_permissions
+          modification_date: 2000-01-23T04:56:07.000+00:00
+          usage_date: 2000-01-23T04:56:07.000+00:00
           access_info:
             jwt_ttl: 6
             gcp_access_rules:
@@ -13853,6 +14243,7 @@ components:
               hash_pass: hash_pass
               alg: alg
               email: email
+          creation_date: 2000-01-23T04:56:07.000+00:00
           auth_method_name: auth_method_name
           auth_method_access_id: auth_method_access_id
       properties:
@@ -13894,6 +14285,7 @@ components:
             creation_date: 2000-01-23T04:56:07.000+00:00
             version: 9
             customer_fragment_id: customer_fragment_id
+          usage_date: 2000-01-23T04:56:07.000+00:00
           shared_by:
             unique_id: unique_id
             access_id: access_id
@@ -13921,6 +14313,7 @@ components:
             version: 9
             customer_fragment_id: customer_fragment_id
           item_metadata: item_metadata
+          modification_date: 2000-01-23T04:56:07.000+00:00
           protection_key_name: protection_key_name
           cert_issuer_signer_key_name: cert_issuer_signer_key_name
           item_id: 4
@@ -13995,11 +14388,14 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           item_name: item_name
+          creation_date: 2000-01-23T04:56:07.000+00:00
           customer_fragment_id: customer_fragment_id
           item_general_info:
             classic_key_details:
@@ -14053,6 +14449,9 @@ components:
               password_length: 2
             static_secret_info:
               website: website
+              websites:
+              - websites
+              - websites
               username: username
             rotated_secret_details:
               rotator_creds_type: rotator_creds_type
@@ -14215,6 +14614,7 @@ components:
             creation_date: 2000-01-23T04:56:07.000+00:00
             version: 9
             customer_fragment_id: customer_fragment_id
+          usage_date: 2000-01-23T04:56:07.000+00:00
           shared_by:
             unique_id: unique_id
             access_id: access_id
@@ -14242,6 +14642,7 @@ components:
             version: 9
             customer_fragment_id: customer_fragment_id
           item_metadata: item_metadata
+          modification_date: 2000-01-23T04:56:07.000+00:00
           protection_key_name: protection_key_name
           cert_issuer_signer_key_name: cert_issuer_signer_key_name
           item_id: 4
@@ -14316,11 +14717,14 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           item_name: item_name
+          creation_date: 2000-01-23T04:56:07.000+00:00
           customer_fragment_id: customer_fragment_id
           item_general_info:
             classic_key_details:
@@ -14374,6 +14778,9 @@ components:
               password_length: 2
             static_secret_info:
               website: website
+              websites:
+              - websites
+              - websites
               username: username
             rotated_secret_details:
               rotator_creds_type: rotator_creds_type
@@ -14658,6 +15065,21 @@ components:
             creation_date: 2000-01-23T04:56:07.000+00:00
             version: 9
             customer_fragment_id: customer_fragment_id
+          target_objects_assoc:
+          - assoc_id: assoc_id
+            target_name: target_name
+            object_type: object_type
+            object_name: object_name
+            attributes:
+              key: attributes
+            object_id: object_id
+          - assoc_id: assoc_id
+            target_name: target_name
+            object_type: object_type
+            object_name: object_name
+            attributes:
+              key: attributes
+            object_id: object_id
           target_type: target_type
           attributes:
             key: '{}'
@@ -14694,6 +15116,21 @@ components:
             creation_date: 2000-01-23T04:56:07.000+00:00
             version: 9
             customer_fragment_id: customer_fragment_id
+          target_objects_assoc:
+          - assoc_id: assoc_id
+            target_name: target_name
+            object_type: object_type
+            object_name: object_name
+            attributes:
+              key: attributes
+            object_id: object_id
+          - assoc_id: assoc_id
+            target_name: target_name
+            object_type: object_type
+            object_name: object_name
+            attributes:
+              key: attributes
+            object_id: object_id
           target_type: target_type
           attributes:
             key: '{}'
@@ -15094,6 +15531,35 @@ components:
             secret: secret
             region: region
             key: key
+        one_password_migrations:
+        - general:
+            prefix: prefix
+            name: name
+            id: id
+            protection_key: protection_key
+            new_name: new_name
+          payload:
+            secret_key: secret_key
+            password: password
+            vaults:
+            - vaults
+            - vaults
+            email: email
+            url: url
+        - general:
+            prefix: prefix
+            name: name
+            id: id
+            protection_key: protection_key
+            new_name: new_name
+          payload:
+            secret_key: secret_key
+            password: password
+            vaults:
+            - vaults
+            - vaults
+            email: email
+            url: url
         gcp_secrets_migrations:
         - general:
             prefix: prefix
@@ -15137,6 +15603,11 @@ components:
             $ref: '#/components/schemas/K8SMigration'
           type: array
           x-go-name: K8SMigrations
+        one_password_migrations:
+          items:
+            $ref: '#/components/schemas/OnePasswordMigration'
+          type: array
+          x-go-name: OnePasswordMigrations
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     OAuth2AccessRules:
@@ -15325,6 +15796,58 @@ components:
           x-go-name: MaxVersions
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    OnePasswordMigration:
+      example:
+        general:
+          prefix: prefix
+          name: name
+          id: id
+          protection_key: protection_key
+          new_name: new_name
+        payload:
+          secret_key: secret_key
+          password: password
+          vaults:
+          - vaults
+          - vaults
+          email: email
+          url: url
+      properties:
+        general:
+          $ref: '#/components/schemas/MigrationGeneral'
+        payload:
+          $ref: '#/components/schemas/OnePasswordPayload'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    OnePasswordPayload:
+      example:
+        secret_key: secret_key
+        password: password
+        vaults:
+        - vaults
+        - vaults
+        email: email
+        url: url
+      properties:
+        email:
+          type: string
+          x-go-name: Email
+        password:
+          type: string
+          x-go-name: Password
+        secret_key:
+          type: string
+          x-go-name: SecretKey
+        url:
+          type: string
+          x-go-name: AccountUrl
+        vaults:
+          items:
+            type: string
+          type: array
+          x-go-name: Vaults
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     PKICertificateIssueDetails:
       example:
         country:
@@ -16338,14 +16861,23 @@ components:
     StaticSecretDetailsInfo:
       example:
         website: website
+        websites:
+        - websites
+        - websites
         username: username
       properties:
         username:
           type: string
           x-go-name: Username
         website:
+          description: deprecated
           type: string
           x-go-name: Website
+        websites:
+          items:
+            type: string
+          type: array
+          x-go-name: Websites
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     SyslogLogForwardingConfig:
@@ -16456,6 +16988,21 @@ components:
           creation_date: 2000-01-23T04:56:07.000+00:00
           version: 9
           customer_fragment_id: customer_fragment_id
+        target_objects_assoc:
+        - assoc_id: assoc_id
+          target_name: target_name
+          object_type: object_type
+          object_name: object_name
+          attributes:
+            key: attributes
+          object_id: object_id
+        - assoc_id: assoc_id
+          target_name: target_name
+          object_type: object_type
+          object_name: object_name
+          attributes:
+            key: attributes
+          object_id: object_id
         target_type: target_type
         attributes:
           key: '{}'
@@ -16465,7 +17012,6 @@ components:
       properties:
         attributes:
           additionalProperties:
-            properties: {}
             type: object
           description: |-
             this is not "omitempty" since an empty value causes no update
@@ -16499,6 +17045,11 @@ components:
         target_name:
           type: string
           x-go-name: TargetName
+        target_objects_assoc:
+          items:
+            $ref: '#/components/schemas/TargetObjectAssociation'
+          type: array
+          x-go-name: TargetObjectsAssoc
         target_type:
           title: TargetType ..
           type: string
@@ -16584,6 +17135,41 @@ components:
           type: boolean
           x-go-name: WithCustomerFragment
       title: TargetItemVersion describes an item version in AKEYLESS.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    TargetObjectAssociation:
+      description: |-
+        TargetObjectAssociation includes details of an association between a target
+        and an object (target, migration_id).
+      example:
+        assoc_id: assoc_id
+        target_name: target_name
+        object_type: object_type
+        object_name: object_name
+        attributes:
+          key: attributes
+        object_id: object_id
+      properties:
+        assoc_id:
+          type: string
+          x-go-name: AssociationID
+        attributes:
+          additionalProperties:
+            type: string
+          type: object
+          x-go-name: Attributes
+        object_id:
+          type: string
+          x-go-name: ObjectID
+        object_name:
+          type: string
+          x-go-name: ObjectName
+        object_type:
+          type: string
+          x-go-name: ObjectType
+        target_name:
+          type: string
+          x-go-name: TargetName
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     TargetType:
@@ -17191,6 +17777,7 @@ components:
         rm-tag:
         - rm-tag
         - rm-tag
+        json: true
         signer-key-name: signer-key-name
         code-signing-flag: true
         locality: locality
@@ -17248,6 +17835,10 @@ components:
             certificate
           type: string
           x-go-name: Country
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         key-usage:
           default: DigitalSignature,KeyAgreement,KeyEncipherment
           description: key-usage
@@ -17404,6 +17995,10 @@ components:
         case-sensitive:
           type: string
           x-go-name: IsSubClaimsCaseSensitive
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         role-name:
           description: The role to associate
           type: string
@@ -17434,6 +18029,10 @@ components:
         assocTargetItem is a command that creates an association between target
         and item.
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         key-operations:
           description: A list of allowed operations for the key (required for azure
             targets)
@@ -17534,6 +18133,10 @@ components:
           description: GCP JWT audience
           type: string
           x-go-name: GCPAudience
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         jwt:
           description: The Json Web Token (relevant only for access-type=jwt/oidc)
           type: string
@@ -17638,6 +18241,10 @@ components:
           description: GCP JWT audience
           type: string
           x-go-name: GCPAudience
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         k8s-auth-config-name:
           description: The K8S Auth config name (relevant only for access-type=k8s)
           type: string
@@ -17678,6 +18285,10 @@ components:
           description: Comment about the target
           type: string
           x-go-name: Comment
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         key:
           description: |-
             The name of a key that used to encrypt the target secret value (if empty, the
@@ -17740,6 +18351,10 @@ components:
           description: Comment about the target
           type: string
           x-go-name: Comment
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         key:
           description: |-
             The name of a key used to encrypt the target secret value (if empty, the
@@ -17806,6 +18421,10 @@ components:
             type: string
           type: array
           x-go-name: GWCIDRWhitelist
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         jwt-ttl:
           description: Jwt TTL
           format: int64
@@ -17903,6 +18522,10 @@ components:
             type: string
           type: array
           x-go-name: GWCIDRWhitelist
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         jwt-ttl:
           description: Jwt TTL
           format: int64
@@ -18041,6 +18664,10 @@ components:
           description: Issuer URL
           type: string
           x-go-name: Issuer
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         jwks-uri:
           default: https://login.microsoftonline.com/common/discovery/keys
           description: |-
@@ -18160,6 +18787,10 @@ components:
             type: string
           type: array
           x-go-name: GWCIDRWhitelist
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         jwt-ttl:
           description: Jwt TTL
           format: int64
@@ -18286,6 +18917,10 @@ components:
             type: string
           type: array
           x-go-name: GWCIDRWhitelist
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         jwt-ttl:
           description: Jwt TTL
           format: int64
@@ -18401,6 +19036,10 @@ components:
             type: string
           type: array
           x-go-name: GWCIDRWhitelist
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         jwt-ttl:
           description: Jwt TTL
           format: int64
@@ -18494,6 +19133,10 @@ components:
             type: string
           type: array
           x-go-name: GWCIDRWhitelist
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         jwt-ttl:
           description: Jwt TTL
           format: int64
@@ -18572,6 +19215,10 @@ components:
             type: string
           type: array
           x-go-name: GWCIDRWhitelist
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         jwt-ttl:
           description: Jwt TTL
           format: int64
@@ -18671,6 +19318,10 @@ components:
           description: Issuer URL
           type: string
           x-go-name: Issuer
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         jwks-uri:
           description: |-
             The URL to the JSON Web Key Set (JWKS) that containing the public keys
@@ -18773,6 +19424,10 @@ components:
           description: Issuer URL
           type: string
           x-go-name: Issuer
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         jwt-ttl:
           description: Jwt TTL
           format: int64
@@ -18893,6 +19548,10 @@ components:
           description: IDP metadata xml data
           type: string
           x-go-name: IDPMetadataXMLData
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         jwt-ttl:
           description: Jwt TTL
           format: int64
@@ -18977,6 +19636,10 @@ components:
             type: string
           type: array
           x-go-name: GWCIDRWhitelist
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         jwt-ttl:
           description: Jwt TTL
           format: int64
@@ -19027,6 +19690,10 @@ components:
           description: Comment about the target
           type: string
           x-go-name: Comment
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         key:
           description: |-
             The name of a key that used to encrypt the target secret value (if empty, the
@@ -19104,6 +19771,10 @@ components:
         host:
           type: string
           x-go-name: DbHostName
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         key:
           description: |-
             The name of a key that used to encrypt the target secret value (if empty, the
@@ -19190,7 +19861,7 @@ components:
       properties:
         alg:
           description: |-
-            DFCKey type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024,
+            DFCKey type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, AES128CBC, AES256CBC, RSA1024,
             RSA2048, RSA3072, RSA4096]
           type: string
           x-go-name: Alg
@@ -19203,6 +19874,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         metadata:
           description: Metadata about the DFC key
           type: string
@@ -19269,6 +19944,10 @@ components:
           description: DockerhubUsername is the name of the user in dockerhub
           type: string
           x-go-name: DockerhubUsername
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         key:
           description: |-
             The name of a key that used to encrypt the target secret value (if empty, the
@@ -19310,6 +19989,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         key:
           description: |-
             The name of a key that used to encrypt the dynamic secret values (if
@@ -19380,6 +20063,10 @@ components:
           description: Secret Access Key
           type: string
           x-go-name: AccessKey
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         key:
           description: |-
             The name of a key that used to encrypt the target secret value (if empty, the
@@ -19449,6 +20136,10 @@ components:
           description: GKE service account email
           type: string
           x-go-name: ServiceAccountEmail
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         key:
           description: |-
             The name of a key that used to encrypt the target secret value (if empty, the
@@ -19501,6 +20192,10 @@ components:
           description: GCP service account email
           type: string
           x-go-name: ServiceAccountEmail
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         key:
           description: |-
             The name of a key that used to encrypt the target secret value (if empty, the
@@ -19558,6 +20253,10 @@ components:
           description: Base URL
           type: string
           x-go-name: BaseUrl
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         key:
           description: |-
             The name of a key that used to encrypt the target secret value (if empty, the
@@ -19599,7 +20298,7 @@ components:
       properties:
         alg:
           description: |-
-            Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024,
+            Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, AES128CBC, AES256CBC, RSA1024,
             RSA2048, RSA3072, RSA4096]
           type: string
           x-go-name: Alg
@@ -19613,6 +20312,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         metadata:
           description: Metadata about the key
           type: string
@@ -19686,6 +20389,10 @@ components:
           description: Comment about the target
           type: string
           x-go-name: Comment
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         key:
           description: |-
             The name of a key that used to encrypt the target secret value (if empty, the
@@ -19748,6 +20455,10 @@ components:
           description: Comment about the target
           type: string
           x-go-name: Comment
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         k8s-cluster-ca-cert:
           description: K8S cluster CA certificate
           type: string
@@ -19813,6 +20524,10 @@ components:
           description: Comment about the target
           type: string
           x-go-name: Comment
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         key:
           description: |-
             The name of a key that used to encrypt the target secret value (if empty, the
@@ -19884,6 +20599,10 @@ components:
             produced by the same auth methods.
           type: string
           x-go-name: GwAnalyticsAccess
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Role name
           type: string
@@ -19945,6 +20664,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         key:
           description: |-
             The name of a key that used to encrypt the secret value (if empty, the
@@ -20115,6 +20838,10 @@ components:
           description: Signed certificates with extensions, e.g permit-port-forwarding=\"\"
           type: object
           x-go-name: Extensions
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         metadata:
           description: A metadata about the issuer
           type: string
@@ -20198,6 +20925,10 @@ components:
         host:
           type: string
           x-go-name: HostName
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         key:
           description: |-
             The name of a key that used to encrypt the target secret value (if empty, the
@@ -20287,6 +21018,10 @@ components:
             to Salesforce
           type: string
           x-go-name: Email
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         key:
           description: |-
             The name of a key that used to encrypt the target secret value (if empty, the
@@ -20350,6 +21085,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         metadata:
           description: Metadata about the secret
           type: string
@@ -20370,8 +21109,10 @@ components:
           x-go-name: CustomFields
         password-manager-inject-url:
           description: For Password Management use, reflect the website context
-          type: string
-          x-go-name: Website
+          items:
+            type: string
+          type: array
+          x-go-name: Websites
         password-manager-password:
           description: For Password Management use, additional fields
           type: string
@@ -20474,6 +21215,10 @@ components:
           description: AES key name to use in vaultless tokenization
           type: string
           x-go-name: EncryptionKeyName
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         metadata:
           description: A metadata about the tokenizer
           type: string
@@ -20536,6 +21281,10 @@ components:
           description: Comment about the target
           type: string
           x-go-name: Comment
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         key:
           description: |-
             The name of a key that used to encrypt the target secret value (if empty, the
@@ -20601,10 +21350,19 @@ components:
           format: int64
           type: integer
           x-go-name: ItemId
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         key-name:
           description: The name of the key to use in the decryption process
           type: string
           x-go-name: KeyName
+        output-format:
+          description: 'If specified, the output will be formatted accordingly. options:
+            [base64]'
+          type: string
+          x-go-name: OutputFormat
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -20630,6 +21388,10 @@ components:
           format: int64
           type: integer
           x-go-name: ItemId
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         key-name:
           description: The name of the key to use in the decryption process
           type: string
@@ -20683,6 +21445,10 @@ components:
           format: int64
           type: integer
           x-go-name: ItemId
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         key-name:
           description: The name of the key to use in the decryption process
           type: string
@@ -20723,6 +21489,10 @@ components:
           description: The name of the key to use in the encryption process
           type: string
           x-go-name: DisplayId
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -20757,6 +21527,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     deleteAuthMethod:
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Auth Method name
           type: string
@@ -20790,6 +21564,10 @@ components:
         deleteAuthMethods is a command that deletes multiple auth methods from a
         given path.
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         path:
           description: Path to delete the auth methods from
           type: string
@@ -20836,6 +21614,10 @@ components:
           format: int64
           type: integer
           x-go-name: DeleteInDays
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Item name
           type: string
@@ -20865,6 +21647,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     deleteItems:
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         path:
           description: Path to delete the items from
           type: string
@@ -20895,6 +21681,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     deleteRole:
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Role name
           type: string
@@ -20923,6 +21713,10 @@ components:
           description: The association id to be deleted
           type: string
           x-go-name: AssocID
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -20945,6 +21739,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     deleteRoleRule:
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         path:
           description: The path the rule refers to
           type: string
@@ -20990,6 +21788,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     deleteRoles:
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         path:
           description: Path to delete the auth methods from
           type: string
@@ -21019,6 +21821,10 @@ components:
           description: Enforce deletion
           type: boolean
           x-go-name: ForceDeletion
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Target name
           type: string
@@ -21052,6 +21858,10 @@ components:
           description: The association id to be deleted
           type: string
           x-go-name: AssocID
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Item name
           type: string
@@ -21087,6 +21897,10 @@ components:
           description: Enforce deletion
           type: boolean
           x-go-name: ForceDeletion
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         path:
           description: Path to delete the targets from
           type: string
@@ -21121,6 +21935,10 @@ components:
           format: int64
           type: integer
           x-go-name: ItemId
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Item name
           type: string
@@ -21150,6 +21968,10 @@ components:
         describePermissions is a command that shows which permissions your have to a
         particular path.
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         path:
           description: Path to an object
           type: string
@@ -21177,6 +21999,10 @@ components:
       description: describe-sub-claims Get the sub-claims associated with the provided
         token or authentication profile
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -21212,6 +22038,10 @@ components:
           description: Data to be decrypted
           type: string
           x-go-name: Ciphertext
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -21259,11 +22089,20 @@ components:
             to the decrypt command or decryption will fail
           type: object
           x-go-name: EncContext
+        input-format:
+          description: 'If specified, the plaintext input is assumed to be formatted
+            accordingly. Current supported options: [base64]'
+          type: string
+          x-go-name: InputFormat
         item-id:
           description: The item id of the key to use in the encryption process
           format: int64
           type: integer
           x-go-name: ItemId
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         key-name:
           description: The name of the key to use in the encryption process
           type: string
@@ -21314,6 +22153,10 @@ components:
           format: int64
           type: integer
           x-go-name: ItemId
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         key-name:
           description: The name of the key to use in the encryption process
           type: string
@@ -21362,6 +22205,10 @@ components:
           description: The name of the key to use in the encryption process
           type: string
           x-go-name: DisplayId
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         plaintext:
           description: Data to be encrypted
           type: string
@@ -21405,6 +22252,10 @@ components:
         allow-gw-login:
           type: boolean
           x-go-name: AllowLogin
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         sub-admin-access-id:
           description: SubAdmins to add
           type: string
@@ -21448,6 +22299,10 @@ components:
           description: Config encryption key
           type: string
           x-go-name: ConfigEncryptionKey
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         k8s-ca-cert:
           description: The CA Certificate (base64 encoded) to use to call into the
             kubernetes API server
@@ -21647,6 +22502,10 @@ components:
             only for HasiCorp Vault migration)
           type: string
           x-go-name: HashiUrl
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         k8s-ca-certificate:
           description: |-
             For Certificate Authentication method
@@ -21710,6 +22569,28 @@ components:
           description: Migration name
           type: string
           x-go-name: MigrationName
+        op-email:
+          description: 1Password user email to connect to the API
+          type: string
+          x-go-name: OpEmail
+        op-password:
+          description: 1Password user password to connect to the API
+          type: string
+          x-go-name: OpPassword
+        op-secret-key:
+          description: 1Password user secret key to connect to the API
+          type: string
+          x-go-name: OpSecretKey
+        op-url:
+          description: 1Password api container url
+          type: string
+          x-go-name: OpUrl
+        op-vaults:
+          description: 1Password list of vault to get the items from
+          items:
+            type: string
+          type: array
+          x-go-name: Vaults
         protection-key:
           description: The name of the key that protects the classic key value (if
             empty, the account default key will be used)
@@ -21724,7 +22605,7 @@ components:
           type: string
           x-go-name: Profile
         type:
-          description: Migration type (hashi/aws/gcp/k8s/azure_kv)
+          description: Migration type (hashi/aws/gcp/k8s/azure_kv/1password)
           type: string
           x-go-name: MigrationType
         uid-token:
@@ -21765,6 +22646,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -21846,9 +22731,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -22085,6 +22972,10 @@ components:
           description: Automatic admin credentials rotation
           type: boolean
           x-go-name: AutomaticAdminCredsRotation
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -22190,9 +23081,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -22410,6 +23303,10 @@ components:
           description: Fixed user
           type: boolean
           x-go-name: FixedUserOnly
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -22523,9 +23420,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -22739,6 +23638,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -22818,9 +23721,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -23040,6 +23945,10 @@ components:
           description: Automatic admin credentials rotation
           type: boolean
           x-go-name: AutomaticAdminCredsRotation
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -23162,9 +24071,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -23372,6 +24283,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -23442,6 +24357,10 @@ components:
           description: Should admin credentials be rotated
           type: boolean
           x-go-name: EnableAdminRotation
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -23543,9 +24462,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -23753,6 +24674,10 @@ components:
           description: DockerhubUsername is the name of the user in dockerhub
           type: string
           x-go-name: DockerhubUsername
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -23832,9 +24757,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -24055,6 +24982,10 @@ components:
           description: Secret Access Key
           type: string
           x-go-name: AccessKey
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -24149,9 +25080,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -24362,6 +25295,10 @@ components:
           description: Access token scopes list, e.g. scope1,scope2
           type: string
           x-go-name: TokenScopes
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -24441,9 +25378,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -24657,6 +25596,10 @@ components:
           description: Repository that the app installation has access to
           type: string
           x-go-name: Repository
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -24733,9 +25676,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -24947,6 +25892,10 @@ components:
           description: GKE service account email
           type: string
           x-go-name: ServiceAccountEmail
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -25041,9 +25990,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -25265,6 +26216,10 @@ components:
           description: HanaDb Username
           type: string
           x-go-name: DBUsername
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -25361,9 +26316,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -25568,6 +26525,10 @@ components:
           description: Fixed user
           type: string
           x-go-name: FixedUserOnly
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         ldap-ca-cert:
           description: CA Certificate File Content
           type: string
@@ -25667,9 +26628,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -25861,6 +26824,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         mssql-create-statements:
           description: MSSQL Creation statements
           type: string
@@ -25987,9 +26954,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -26182,6 +27151,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         mongodb-atlas-api-private-key:
           description: MongoDB Atlas private key
           type: string
@@ -26325,9 +27298,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -26527,6 +27502,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         mysql-dbname:
           description: MySQL DB Name
           type: string
@@ -26654,9 +27633,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -26848,6 +27829,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         k8s-cluster-ca-cert:
           description: K8S cluster CA certificate
           type: string
@@ -26971,9 +27956,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -27174,6 +28161,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -27293,9 +28284,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -27492,6 +28485,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -27618,9 +28615,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -27813,6 +28812,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -27941,9 +28944,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -28145,6 +29150,10 @@ components:
           description: Fixed user
           type: string
           x-go-name: FixedUserOnly
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -28267,9 +29276,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -28466,6 +29477,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -28579,9 +29594,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -28790,6 +29807,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -28873,9 +29894,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -29064,6 +30087,10 @@ components:
       description: gatewayDeleteAllowedManagementAccess is a command that deletes
         sub-admins
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         sub-admin-id:
           description: SubAdminID to be removed
           type: string
@@ -29085,6 +30112,10 @@ components:
     gatewayDeleteK8SAuthConfig:
       description: gatewayDeleteK8SAuth is a command that deletes k8s auth config
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: K8S Auth config name
           type: string
@@ -29178,6 +30209,10 @@ components:
           description: Migration ID
           type: string
           x-go-name: MigrationID
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -29195,6 +30230,10 @@ components:
     gatewayDeleteProducer:
       description: gatewayDeleteProducer is a command that deletes producer
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -29228,6 +30267,10 @@ components:
     gatewayGetConfig:
       description: gatewayGetConfig is a command that returns gateway configuration
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -29243,6 +30286,10 @@ components:
     gatewayGetK8SAuthConfig:
       description: gatewayGetK8SAuth is a command that gets k8s auth config
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: K8S Auth config name
           type: string
@@ -29361,6 +30408,10 @@ components:
     gatewayGetLdapAuthConfig:
       description: gatewayGetLdapAuth is a command that gets ldap auth config
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -29437,6 +30488,10 @@ components:
     gatewayGetMigration:
       description: gatewayGetMigration is a command that get migration
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Migration name to display
           type: string
@@ -29456,6 +30511,10 @@ components:
     gatewayGetProducer:
       description: gatewayGetProducer is a command that returns producer
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -29477,6 +30536,10 @@ components:
     gatewayGetTmpUsers:
       description: gatewayGetTmpUsers is a command that returns gateway configuration
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer Name
           type: string
@@ -29499,6 +30562,10 @@ components:
       description: gatewayListAllowedManagementAccess is a command that returns list
         sub admins
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -29514,6 +30581,10 @@ components:
     gatewayListMigration:
       description: gatewayListMigration is a command that list migration
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -29529,6 +30600,10 @@ components:
     gatewayListProducers:
       description: gatewayListProducers is a command that returns producer
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -29660,6 +30735,35 @@ components:
               secret: secret
               region: region
               key: key
+          one_password_migrations:
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              protection_key: protection_key
+              new_name: new_name
+            payload:
+              secret_key: secret_key
+              password: password
+              vaults:
+              - vaults
+              - vaults
+              email: email
+              url: url
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              protection_key: protection_key
+              new_name: new_name
+            payload:
+              secret_key: secret_key
+              password: password
+              vaults:
+              - vaults
+              - vaults
+              email: email
+              url: url
           gcp_secrets_migrations:
           - general:
               prefix: prefix
@@ -29801,6 +30905,35 @@ components:
               secret: secret
               region: region
               key: key
+          one_password_migrations:
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              protection_key: protection_key
+              new_name: new_name
+            payload:
+              secret_key: secret_key
+              password: password
+              vaults:
+              - vaults
+              - vaults
+              email: email
+              url: url
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              protection_key: protection_key
+              new_name: new_name
+            payload:
+              secret_key: secret_key
+              password: password
+              vaults:
+              - vaults
+              - vaults
+              email: email
+              url: url
           gcp_secrets_migrations:
           - general:
               prefix: prefix
@@ -29830,6 +30963,10 @@ components:
           description: 'Deprecated: has no effect'
           type: string
           x-go-name: Host
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer Name
           type: string
@@ -29865,6 +31002,10 @@ components:
     gatewayStartProducer:
       description: gatewayStartProducer is a command that starts producer
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -29899,6 +31040,10 @@ components:
           description: Migration ID
           type: string
           x-go-name: MigrationID
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Migration name to display
           type: string
@@ -29918,6 +31063,10 @@ components:
     gatewayStopProducer:
       description: gatewayStopProducer is a command that stops producer
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -29948,6 +31097,10 @@ components:
     gatewaySyncMigration:
       description: gatewaySyncMigration is a command that sync migration
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Migration name
           type: string
@@ -29997,6 +31150,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         keep-prev-version:
           type: string
           x-go-name: KeepPrevVersion
@@ -30093,6 +31250,10 @@ components:
           description: Config encryption key
           type: string
           x-go-name: ConfigEncryptionKey
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         k8s-ca-cert:
           description: The CA Certificate (base64 encoded) to use to call into the
             kubernetes API server
@@ -30302,6 +31463,10 @@ components:
             command)
           type: string
           x-go-name: MigrationID
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         k8s-ca-certificate:
           description: |-
             For Certificate Authentication method
@@ -30369,6 +31534,28 @@ components:
           description: New migration name
           type: string
           x-go-name: NewMigrationName
+        op-email:
+          description: 1Password user email to connect to the API
+          type: string
+          x-go-name: OpEmail
+        op-password:
+          description: 1Password user password to connect to the API
+          type: string
+          x-go-name: OpPassword
+        op-secret-key:
+          description: 1Password user secret key to connect to the API
+          type: string
+          x-go-name: OpSecretKey
+        op-url:
+          description: 1Password api container url
+          type: string
+          x-go-name: OpUrl
+        op-vaults:
+          description: 1Password list of vault to get the items from
+          items:
+            type: string
+          type: array
+          x-go-name: Vaults
         protection-key:
           description: The name of the key that protects the classic key value (if
             empty, the account default key will be used)
@@ -30418,6 +31605,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -30503,9 +31694,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -30742,6 +31935,10 @@ components:
           description: Automatic admin credentials rotation
           type: boolean
           x-go-name: AutomaticAdminCredsRotation
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -30851,9 +32048,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -31071,6 +32270,10 @@ components:
           description: Fixed user
           type: boolean
           x-go-name: FixedUserOnly
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -31188,9 +32391,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -31404,6 +32609,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -31487,9 +32696,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -31709,6 +32920,10 @@ components:
           description: Automatic admin credentials rotation
           type: boolean
           x-go-name: AutomaticAdminCredsRotation
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -31835,9 +33050,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -32045,6 +33262,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -32119,6 +33340,10 @@ components:
           description: Should admin credentials be rotated
           type: boolean
           x-go-name: EnableAdminRotation
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -32224,9 +33449,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -32434,6 +33661,10 @@ components:
           description: DockerhubUsername is the name of the user in dockerhub
           type: string
           x-go-name: DockerhubUsername
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -32517,9 +33748,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -32740,6 +33973,10 @@ components:
           description: Secret Access Key
           type: string
           x-go-name: AccessKey
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -32838,9 +34075,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -33051,6 +34290,10 @@ components:
           description: Access token scopes list, e.g. scope1,scope2
           type: string
           x-go-name: TokenScopes
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -33134,9 +34377,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -33350,6 +34595,10 @@ components:
           description: Repository that the app installation has access to
           type: string
           x-go-name: Repository
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -33430,9 +34679,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -33644,6 +34895,10 @@ components:
           description: GKE service account email
           type: string
           x-go-name: ServiceAccountEmail
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -33742,9 +34997,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -33966,6 +35223,10 @@ components:
           description: HanaDb Username
           type: string
           x-go-name: DBUsername
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -34066,9 +35327,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -34273,6 +35536,10 @@ components:
           description: Fixed user
           type: string
           x-go-name: FixedUserOnly
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         ldap-ca-cert:
           description: CA Certificate File Content
           type: string
@@ -34376,9 +35643,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -34570,6 +35839,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         mssql-create-statements:
           description: MSSQL Creation statements
           type: string
@@ -34700,9 +35973,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -34895,6 +36170,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         mongodb-atlas-api-private-key:
           description: MongoDB Atlas private key
           type: string
@@ -35042,9 +36321,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -35244,6 +36525,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         mysql-dbname:
           description: MySQL DB Name
           type: string
@@ -35375,9 +36660,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -35569,6 +36856,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         k8s-cluster-ca-cert:
           description: K8S cluster CA certificate
           type: string
@@ -35696,9 +36987,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -35899,6 +37192,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -36022,9 +37319,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -36221,6 +37520,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -36351,9 +37654,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -36546,6 +37851,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -36678,9 +37987,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -36882,6 +38193,10 @@ components:
           description: Fixed user
           type: string
           x-go-name: FixedUserOnly
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -37008,9 +38323,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -37207,6 +38524,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -37324,9 +38645,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -37535,6 +38858,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer name
           type: string
@@ -37622,9 +38949,11 @@ components:
           item_targets_assoc:
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           - assoc_id: assoc_id
             target_name: target_name
+            target_type: target_type
             target_id: 9
           chef_server_username: chef_server_username
           db_host_name: db_host_name
@@ -37812,6 +39141,10 @@ components:
     gatewayUpdateTmpUsers:
       description: gatewayUpdateTmpUsers is a command that returns gateway configuration
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Producer Name
           type: string
@@ -37847,11 +39180,19 @@ components:
           description: The Customer Fragment Description
           type: string
           x-go-name: Description
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
       title: genCustomerFragment is a command that generates customer fragment.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     getAccountSettings:
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -37867,6 +39208,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     getAuthMethod:
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Auth Method name
           type: string
@@ -37902,6 +39247,10 @@ components:
           description: GCP JWT audience
           type: string
           x-go-name: GCPAudience
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         url_safe:
           description: Escapes the token so it can be safely placed inside a URL query
           type: boolean
@@ -37934,6 +39283,10 @@ components:
           description: Host
           type: string
           x-go-name: Host
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Dynamic secret name
           type: string
@@ -37988,6 +39341,10 @@ components:
             ''serverauth''.'
           type: string
           x-go-name: ExtKeyUsage
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         key-data-base64:
           description: |-
             PKI key file contents. If this option is used, the certificate
@@ -38061,6 +39418,10 @@ components:
         getRSAPublic is a command that obtains the public key from a specific RSA
         private key.
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Name of RSA key to extract the public key from
           type: string
@@ -38098,6 +39459,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     getRole:
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Role name
           type: string
@@ -38119,6 +39484,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     getRotatedSecretValue:
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         names:
           description: Secret name
           type: string
@@ -38153,6 +39522,10 @@ components:
           description: The username to sign in the SSH certificate
           type: string
           x-go-name: Username
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         legacy-signing-alg-name:
           description: Set this option to output legacy ('ssh-rsa-cert-v01@openssh.com')
             signing algorithm name in the certificate.
@@ -38205,6 +39578,10 @@ components:
           description: for personal password manager
           type: string
           x-go-name: ItemAccessibilityString
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         names:
           description: Secret name
           items:
@@ -38236,6 +39613,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     getTags:
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Item name
           type: string
@@ -38257,6 +39638,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     getTarget:
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Target name
           type: string
@@ -38283,6 +39668,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     getTargetDetails:
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Target name
           type: string
@@ -38317,6 +39706,10 @@ components:
         client-id:
           type: string
           x-go-name: ClientID
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           type: string
           x-go-name: ClientName
@@ -38350,6 +39743,10 @@ components:
         client-id:
           type: string
           x-go-name: ClientID
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           type: string
           x-go-name: ClientName
@@ -38379,6 +39776,10 @@ components:
           format: int64
           type: integer
           x-go-name: CertificateTTL
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Client name
           type: string
@@ -38420,6 +39821,10 @@ components:
         client-id:
           type: string
           x-go-name: ClientID
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           type: string
           x-go-name: ClientName
@@ -38444,6 +39849,10 @@ components:
         kmipDeleteServer is a command that the kmip server
         (allowed only if it has no clients nor associated items)
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -38464,6 +39873,10 @@ components:
         client-id:
           type: string
           x-go-name: ClientID
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           type: string
           x-go-name: ClientName
@@ -38482,6 +39895,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     kmipDescribeServer:
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -38533,6 +39950,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     kmipListClients:
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -38551,6 +39972,10 @@ components:
         kmipMoveServer is a command that Moves the root location of the kmip server
         and all associated items to a new root location
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         new-root:
           type: string
           x-go-name: NewRoot
@@ -38584,6 +40009,10 @@ components:
         client-id:
           type: string
           x-go-name: ClientID
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           type: string
           x-go-name: ClientName
@@ -38619,6 +40048,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     kmipRenewServerCertificate:
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -38651,6 +40084,10 @@ components:
           description: Hostname
           type: string
           x-go-name: Hostname
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         root:
           type: string
           x-go-name: Root
@@ -38674,6 +40111,10 @@ components:
         kmipSetServerState is a command that sets the environment state to
         active/inactive.
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         state:
           type: string
           x-go-name: State
@@ -38709,6 +40150,10 @@ components:
           description: Filter by auth method name or part of it
           type: string
           x-go-name: Filter
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         pagination-token:
           description: Next page reference
           type: string
@@ -38734,6 +40179,25 @@ components:
           x-go-name: UIDToken
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    listGateways:
+      properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      title: listGateways is a command that returns a list of gateways.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     listItems:
       properties:
         accessibility:
@@ -38744,6 +40208,10 @@ components:
           description: Filter by item name or part of it
           type: string
           x-go-name: Filter
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         minimal-view:
           type: boolean
           x-go-name: BasicData
@@ -38792,6 +40260,10 @@ components:
           description: Filter by item name or part of it
           type: string
           x-go-name: Filter
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         pagination-token:
           description: Next page reference
           type: string
@@ -38809,12 +40281,35 @@ components:
       title: listRoles is a command that returns a list of roles.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    listSRABastions:
+      properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      title: listSRABastions is a command that returns a list of bastions.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     listTargets:
       properties:
         filter:
           description: Filter by auth method name or part of it
           type: string
           x-go-name: Filter
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         pagination-token:
           description: Next page reference
           type: string
@@ -38842,6 +40337,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     moveObjects:
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         objects-type:
           default: item
           description: The objects type to move (item/auth_method/role)
@@ -38887,6 +40386,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     refreshKey:
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Key name
           type: string
@@ -38920,6 +40423,10 @@ components:
         reverseRBAC is a command that shows which auth methods have access to a
         particular object.
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         path:
           description: Path to an object
           type: string
@@ -38948,6 +40455,10 @@ components:
         revokeCreds will permanently revoke the credentials associated with the
         provided token or profile.
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -38965,6 +40476,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     rollbackSecret:
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Secret name
           type: string
@@ -39007,6 +40522,10 @@ components:
     rotateKey:
       description: of it.
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Key name
           type: string
@@ -39035,6 +40554,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     rotateSecret:
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Rotated Secret name
           type: string
@@ -39070,6 +40593,10 @@ components:
           description: Desired item state (Enabled, Disabled)
           type: string
           x-go-name: State
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Current item name
           type: string
@@ -39110,6 +40637,10 @@ components:
             type: string
           type: array
           x-go-name: Capabilities
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         path:
           description: The path the rule refers to
           type: string
@@ -39159,6 +40690,10 @@ components:
           description: The name of the key to use in the sign JWT process
           type: string
           x-go-name: DisplayId
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         jwt-claims:
           description: JWTClaims
           type: string
@@ -39205,6 +40740,10 @@ components:
           format: int64
           type: integer
           x-go-name: ItemId
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         key-name:
           description: The name of the RSA key to use in the signing process
           type: string
@@ -39271,6 +40810,10 @@ components:
             list)
           type: string
           x-go-name: DNSNames
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         key-usage:
           default: DigitalSignature,KeyAgreement,KeyEncipherment
           description: key-usage
@@ -39371,6 +40914,10 @@ components:
           description: Akeyless JWT token
           type: string
           x-go-name: Creds
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     staticCredsAuthOutput:
@@ -39385,6 +40932,10 @@ components:
     tokenize:
       description: tokenize is a command that encrypts text with a tokenizer
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         plaintext:
           description: Data to be encrypted
           type: string
@@ -39452,6 +41003,10 @@ components:
           description: New Token comment
           type: string
           x-go-name: Comment
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -39487,6 +41042,10 @@ components:
           description: The universal identity auth method name
           type: string
           x-go-name: AuthMethodName
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -39520,6 +41079,10 @@ components:
             uid-token is not provided
           type: string
           x-go-name: AuthMethodName
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -39538,6 +41101,10 @@ components:
           description: The universal identity auth method name
           type: string
           x-go-name: AuthMethodName
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         revoke-token:
           description: the universal identity token/token-id to revoke
           type: string
@@ -39576,6 +41143,10 @@ components:
           description: Create a new child token with default parameters
           type: boolean
           x-go-name: Fork
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         send-manual-ack-token:
           description: |-
             The new rotated token to send manual ack for (with
@@ -39603,6 +41174,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     unconfigure:
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         profile:
           default: default
           description: The profile name to be removed
@@ -39616,6 +41191,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     update:
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         version:
           description: Version
           type: string
@@ -39635,6 +41214,10 @@ components:
           description: Comment about the target
           type: string
           x-go-name: Comment
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         keep-prev-version:
           type: string
           x-go-name: KeepPrevVersion
@@ -39688,6 +41271,10 @@ components:
         access-key-id:
           type: string
           x-go-name: AWSAccessKeyID
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         keep-prev-version:
           type: string
           x-go-name: KeepPrevVersion
@@ -39760,6 +41347,10 @@ components:
             version settings
           type: string
           x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         jwt-ttl-default:
           description: Default ttl
           format: int64
@@ -39848,6 +41439,10 @@ components:
           description: Comment about the target
           type: string
           x-go-name: Comment
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         keep-prev-version:
           type: string
           x-go-name: KeepPrevVersion
@@ -39909,6 +41504,10 @@ components:
         case-sensitive:
           type: string
           x-go-name: IsSubClaimsCaseSensitive
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         sub-claims:
           additionalProperties:
             type: string
@@ -39960,6 +41559,10 @@ components:
             type: string
           type: array
           x-go-name: GWCIDRWhitelist
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         jwt-ttl:
           description: Jwt TTL
           format: int64
@@ -40061,6 +41664,10 @@ components:
             type: string
           type: array
           x-go-name: GWCIDRWhitelist
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         jwt-ttl:
           description: Jwt TTL
           format: int64
@@ -40197,6 +41804,10 @@ components:
           description: Issuer URL
           type: string
           x-go-name: Issuer
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         jwks-uri:
           default: https://login.microsoftonline.com/common/discovery/keys
           description: |-
@@ -40314,6 +41925,10 @@ components:
             type: string
           type: array
           x-go-name: GWCIDRWhitelist
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         jwt-ttl:
           description: Jwt TTL
           format: int64
@@ -40444,6 +42059,10 @@ components:
             type: string
           type: array
           x-go-name: GWCIDRWhitelist
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         jwt-ttl:
           description: Jwt TTL
           format: int64
@@ -40545,6 +42164,10 @@ components:
             type: string
           type: array
           x-go-name: GWCIDRWhitelist
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         jwt-ttl:
           description: Jwt TTL
           format: int64
@@ -40622,6 +42245,10 @@ components:
             type: string
           type: array
           x-go-name: GWCIDRWhitelist
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         jwt-ttl:
           description: Jwt TTL
           format: int64
@@ -40721,6 +42348,10 @@ components:
           description: Issuer URL
           type: string
           x-go-name: Issuer
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         jwks-uri:
           description: |-
             The URL to the JSON Web Key Set (JWKS) that containing the public keys
@@ -40821,6 +42452,10 @@ components:
           description: Issuer URL
           type: string
           x-go-name: Issuer
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         jwt-ttl:
           description: Jwt TTL
           format: int64
@@ -40931,6 +42566,10 @@ components:
           description: IDP metadata xml data
           type: string
           x-go-name: IDPMetadataXMLData
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         jwt-ttl:
           description: Jwt TTL
           format: int64
@@ -41013,6 +42652,10 @@ components:
             type: string
           type: array
           x-go-name: GWCIDRWhitelist
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         jwt-ttl:
           description: Jwt TTL
           format: int64
@@ -41061,6 +42704,10 @@ components:
           description: Comment about the target
           type: string
           x-go-name: Comment
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         keep-prev-version:
           type: string
           x-go-name: KeepPrevVersion
@@ -41149,6 +42796,10 @@ components:
         host:
           type: string
           x-go-name: DbHostName
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         keep-prev-version:
           type: string
           x-go-name: KeepPrevVersion
@@ -41240,6 +42891,10 @@ components:
         host_name:
           type: string
           x-go-name: DbHostName
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         keep-prev-version:
           type: string
           x-go-name: KeepPrevVersion
@@ -41309,6 +42964,10 @@ components:
         dockerhub-username:
           type: string
           x-go-name: DockerhubUsername
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         keep-prev-version:
           type: string
           x-go-name: KeepPrevVersion
@@ -41386,6 +43045,10 @@ components:
           description: Secret Access Key
           type: string
           x-go-name: AccessKey
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         keep-prev-version:
           type: string
           x-go-name: KeepPrevVersion
@@ -41466,6 +43129,10 @@ components:
           description: GKE service account email
           type: string
           x-go-name: ServiceAccountEmail
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         keep-prev-version:
           type: string
           x-go-name: KeepPrevVersion
@@ -41529,6 +43196,10 @@ components:
           description: GCP service account email
           type: string
           x-go-name: ServiceAccountEmail
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         keep-prev-version:
           type: string
           x-go-name: KeepPrevVersion
@@ -41598,6 +43269,10 @@ components:
           description: Base URL
           type: string
           x-go-name: BaseUrl
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         keep-prev-version:
           type: string
           x-go-name: KeepPrevVersion
@@ -41664,6 +43339,10 @@ components:
         delete_protection:
           type: string
           x-go-name: ItemProtected
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Current item name
           type: string
@@ -41797,6 +43476,10 @@ components:
           description: Comment about the target
           type: string
           x-go-name: Comment
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         keep-prev-version:
           type: string
           x-go-name: KeepPrevVersion
@@ -41854,6 +43537,10 @@ components:
         bind-dn-password:
           type: string
           x-go-name: BindDnPassword
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         keep-prev-version:
           type: string
           x-go-name: KeepPrevVersion
@@ -41909,23 +43596,15 @@ components:
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     updateNativeK8STarget:
-      example:
-        k8s-cluster-endpoint: k8s-cluster-endpoint
-        k8s-cluster-ca-cert: k8s-cluster-ca-cert
-        name: name
-        k8s-cluster-token: k8s-cluster-token
-        update-version: true
-        comment: comment
-        keep-prev-version: keep-prev-version
-        new-name: new-name
-        key: key
-        uid-token: uid-token
-        token: token
       properties:
         comment:
           description: Comment about the target
           type: string
           x-go-name: Comment
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         k8s-cluster-ca-cert:
           description: K8S cluster CA certificate
           type: string
@@ -41978,6 +43657,8 @@ components:
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     updateNativeK8STargetOutput:
+      example:
+        target_id: 0
       properties:
         target_id:
           format: int64
@@ -42021,6 +43702,10 @@ components:
         host_port:
           type: string
           x-go-name: HostPort
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         keep-prev-version:
           type: string
           x-go-name: KeepPrevVersion
@@ -42059,6 +43744,10 @@ components:
           description: Comment about the target
           type: string
           x-go-name: Comment
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         keep-prev-version:
           type: string
           x-go-name: KeepPrevVersion
@@ -42106,6 +43795,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     updateRabbitMQTargetDetails:
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         keep-prev-version:
           type: string
           x-go-name: KeepPrevVersion
@@ -42180,6 +43873,10 @@ components:
             produced by the same auth methods.
           type: string
           x-go-name: GwAnalyticsAccess
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Role name
           type: string
@@ -42253,6 +43950,10 @@ components:
         custom-payload:
           type: string
           x-go-name: Payload
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         keep-prev-version:
           type: string
           x-go-name: KeepPrevVersion
@@ -42408,6 +44109,10 @@ components:
             or disable existing automatic rotation
           type: boolean
           x-go-name: AutoRotate
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Key name
           type: string
@@ -42451,6 +44156,10 @@ components:
           description: Signed certificates with extensions, e.g permit-port-forwarding=\"\"
           type: object
           x-go-name: Extensions
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         metadata:
           description: A metadata about the issuer
           type: string
@@ -42538,6 +44247,10 @@ components:
         host:
           type: string
           x-go-name: HostName
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         keep-prev-version:
           type: string
           x-go-name: KeepPrevVersion
@@ -42594,6 +44307,10 @@ components:
         host:
           type: string
           x-go-name: HostName
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         keep-prev-version:
           type: string
           x-go-name: KeepPrevVersion
@@ -42690,6 +44407,10 @@ components:
             to Salesforce
           type: string
           x-go-name: Email
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         keep-prev-version:
           type: string
           x-go-name: KeepPrevVersion
@@ -42760,6 +44481,10 @@ components:
           description: for personal password manager
           type: string
           x-go-name: ItemAccessibilityString
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         keep-prev-version:
           type: string
           x-go-name: KeepPrevVersion
@@ -42789,8 +44514,10 @@ components:
           x-go-name: CustomFields
         password-manager-inject-url:
           description: For Password Management use, reflect the website context
-          type: string
-          x-go-name: Website
+          items:
+            type: string
+          type: array
+          x-go-name: Websites
         password-manager-password:
           description: For Password Management use, additional fields
           type: string
@@ -42830,6 +44557,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     updateTarget:
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         name:
           description: Target name
           type: string
@@ -42859,6 +44590,11 @@ components:
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     updateTargetDetails:
+      properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
       title: updateTargetDetails is a command that updates an existing target.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
@@ -42884,6 +44620,10 @@ components:
           description: Comment about the target
           type: string
           x-go-name: Comment
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         keep-prev-version:
           type: string
           x-go-name: KeepPrevVersion
@@ -42926,6 +44666,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     updateWebTargetDetails:
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         keep-prev-version:
           type: string
           x-go-name: KeepPrevVersion
@@ -42987,6 +44731,10 @@ components:
           description: PKCS#12 input file (private key and certificate only)
           type: string
           x-go-name: PKCS12File
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         metadata:
           description: A metadata about the key
           type: string
@@ -43051,6 +44799,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         metadata:
           description: A metadata about the key
           type: string
@@ -43102,6 +44854,10 @@ components:
     validateToken:
       description: validate-token is a command that validaties token
       properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         token:
           description: Token
           type: string
@@ -43140,6 +44896,10 @@ components:
           description: The name of the key to use in the verify JWT process
           type: string
           x-go-name: DisplayId
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         jwt:
           description: JWT
           type: string
@@ -43183,6 +44943,10 @@ components:
           format: int64
           type: integer
           x-go-name: ItemId
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         key-name:
           description: The name of the RSA key to use in the verification process
           type: string
@@ -43230,6 +44994,10 @@ components:
           description: The name of the key to use in the verify PKICert process
           type: string
           x-go-name: DisplayId
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
         pki-cert:
           description: PkiCert
           type: string

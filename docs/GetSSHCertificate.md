@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CertIssuerName** | **string** | The name of the SSH certificate issuer | 
 **CertUsername** | **string** | The username to sign in the SSH certificate | 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **LegacySigningAlgName** | Pointer to **bool** | Set this option to output legacy (&#39;ssh-rsa-cert-v01@openssh.com&#39;) signing algorithm name in the certificate. | [optional] 
 **PublicKeyData** | Pointer to **string** | SSH public key file contents. If this option is used, the certificate will be printed to stdout | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -70,6 +71,31 @@ and a boolean to check if the value has been set.
 
 SetCertUsername sets CertUsername field to given value.
 
+
+### GetJson
+
+`func (o *GetSSHCertificate) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *GetSSHCertificate) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *GetSSHCertificate) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *GetSSHCertificate) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetLegacySigningAlgName
 

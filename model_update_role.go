@@ -23,6 +23,8 @@ type UpdateRole struct {
 	AuditAccess *string `json:"audit-access,omitempty"`
 	// Allow this role to view gw analytics. Currently only 'none', 'own', 'all' values are supported, allowing associated auth methods to view reports produced by the same auth methods.
 	GwAnalyticsAccess *string `json:"gw-analytics-access,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// Role name
 	Name string `json:"name"`
 	// New comment about the role
@@ -153,6 +155,38 @@ func (o *UpdateRole) HasGwAnalyticsAccess() bool {
 // SetGwAnalyticsAccess gets a reference to the given string and assigns it to the GwAnalyticsAccess field.
 func (o *UpdateRole) SetGwAnalyticsAccess(v string) {
 	o.GwAnalyticsAccess = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *UpdateRole) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRole) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *UpdateRole) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *UpdateRole) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetName returns the Name field value
@@ -349,6 +383,9 @@ func (o UpdateRole) MarshalJSON() ([]byte, error) {
 	}
 	if o.GwAnalyticsAccess != nil {
 		toSerialize["gw-analytics-access"] = o.GwAnalyticsAccess
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if true {
 		toSerialize["name"] = o.Name

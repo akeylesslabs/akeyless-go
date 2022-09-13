@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DisplayId** | Pointer to **string** | The display id of the key to use in the signing process | [optional] 
 **ItemId** | Pointer to **int64** | The item id of the key to use in the signing process | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **KeyName** | Pointer to **string** | The name of the RSA key to use in the signing process | [optional] 
 **Message** | **string** | The message to be signed | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -79,6 +80,31 @@ SetItemId sets ItemId field to given value.
 `func (o *SignPKCS1) HasItemId() bool`
 
 HasItemId returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *SignPKCS1) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *SignPKCS1) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *SignPKCS1) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *SignPKCS1) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetKeyName
 

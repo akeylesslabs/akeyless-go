@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CertificateTtl** | Pointer to **int64** |  | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Client name | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -52,6 +53,31 @@ SetCertificateTtl sets CertificateTtl field to given value.
 `func (o *KmipCreateClient) HasCertificateTtl() bool`
 
 HasCertificateTtl returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *KmipCreateClient) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *KmipCreateClient) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *KmipCreateClient) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *KmipCreateClient) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetName
 

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **AzureAdObjectId** | Pointer to **string** | Azure Active Directory ObjectId (relevant only for access-type&#x3D;azure_ad) | [optional] 
 **Debug** | Pointer to **bool** |  | [optional] 
 **GcpAudience** | Pointer to **string** | GCP JWT audience | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **UrlSafe** | Pointer to **bool** | Escapes the token so it can be safely placed inside a URL query | [optional] 
 
 ## Methods
@@ -102,6 +103,31 @@ SetGcpAudience sets GcpAudience field to given value.
 `func (o *GetCloudIdentity) HasGcpAudience() bool`
 
 HasGcpAudience returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *GetCloudIdentity) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *GetCloudIdentity) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *GetCloudIdentity) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *GetCloudIdentity) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetUrlSafe
 

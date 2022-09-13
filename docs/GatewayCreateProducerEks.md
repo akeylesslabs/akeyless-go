@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **EksClusterName** | Pointer to **string** | EKS cluster name | [optional] 
 **EksRegion** | Pointer to **string** | Region | [optional] [default to "us-east-2"]
 **EksSecretAccessKey** | Pointer to **string** | Secret Access Key | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Producer name | 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **SecureAccessAllowPortForwading** | Pointer to **bool** |  | [optional] 
@@ -243,6 +244,31 @@ SetEksSecretAccessKey sets EksSecretAccessKey field to given value.
 `func (o *GatewayCreateProducerEks) HasEksSecretAccessKey() bool`
 
 HasEksSecretAccessKey returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *GatewayCreateProducerEks) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *GatewayCreateProducerEks) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *GatewayCreateProducerEks) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *GatewayCreateProducerEks) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetName
 

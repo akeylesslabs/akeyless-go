@@ -8,7 +8,9 @@ Name | Type | Description | Notes
 **DisplayId** | Pointer to **string** | The display id of the key to use in the decryption process | [optional] 
 **EncryptionContext** | Pointer to **map[string]string** | The encryption context. If this was specified in the encrypt command, it must be specified here or the decryption operation will fail | [optional] 
 **ItemId** | Pointer to **int64** | The item id of the key to use in the decryption process | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **KeyName** | **string** | The name of the key to use in the decryption process | 
+**OutputFormat** | Pointer to **string** | If specified, the output will be formatted accordingly. options: [base64] | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
@@ -131,6 +133,31 @@ SetItemId sets ItemId field to given value.
 
 HasItemId returns a boolean if a field has been set.
 
+### GetJson
+
+`func (o *Decrypt) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *Decrypt) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *Decrypt) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *Decrypt) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
+
 ### GetKeyName
 
 `func (o *Decrypt) GetKeyName() string`
@@ -150,6 +177,31 @@ and a boolean to check if the value has been set.
 
 SetKeyName sets KeyName field to given value.
 
+
+### GetOutputFormat
+
+`func (o *Decrypt) GetOutputFormat() string`
+
+GetOutputFormat returns the OutputFormat field if non-nil, zero value otherwise.
+
+### GetOutputFormatOk
+
+`func (o *Decrypt) GetOutputFormatOk() (*string, bool)`
+
+GetOutputFormatOk returns a tuple with the OutputFormat field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOutputFormat
+
+`func (o *Decrypt) SetOutputFormat(v string)`
+
+SetOutputFormat sets OutputFormat field to given value.
+
+### HasOutputFormat
+
+`func (o *Decrypt) HasOutputFormat() bool`
+
+HasOutputFormat returns a boolean if a field has been set.
 
 ### GetToken
 

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Path** | **string** | The path the rule refers to | 
 **RoleName** | **string** | The role name to be updated | 
 **RuleType** | Pointer to **string** | item-rule, role-rule, auth-method-rule, search-rule, reports-rule, gw-reports-rule or sra-reports-rule | [optional] [default to "item-rule"]
@@ -28,6 +29,31 @@ will change when the set of required properties is changed
 NewDeleteRoleRuleWithDefaults instantiates a new DeleteRoleRule object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetJson
+
+`func (o *DeleteRoleRule) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *DeleteRoleRule) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *DeleteRoleRule) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *DeleteRoleRule) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetPath
 

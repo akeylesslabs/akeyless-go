@@ -19,6 +19,8 @@ import (
 type UpdateSecretVal struct {
 	// for personal password manager
 	Accessibility *string `json:"accessibility,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
@@ -31,7 +33,7 @@ type UpdateSecretVal struct {
 	// For Password Management use, additional fields
 	PasswordManagerCustomField *map[string]string `json:"password-manager-custom-field,omitempty"`
 	// For Password Management use, reflect the website context
-	PasswordManagerInjectUrl *string `json:"password-manager-inject-url,omitempty"`
+	PasswordManagerInjectUrl *[]string `json:"password-manager-inject-url,omitempty"`
 	// For Password Management use, additional fields
 	PasswordManagerPassword *string `json:"password-manager-password,omitempty"`
 	// For Password Management use
@@ -93,6 +95,38 @@ func (o *UpdateSecretVal) HasAccessibility() bool {
 // SetAccessibility gets a reference to the given string and assigns it to the Accessibility field.
 func (o *UpdateSecretVal) SetAccessibility(v string) {
 	o.Accessibility = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *UpdateSecretVal) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateSecretVal) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *UpdateSecretVal) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *UpdateSecretVal) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetKeepPrevVersion returns the KeepPrevVersion field value if set, zero value otherwise.
@@ -280,9 +314,9 @@ func (o *UpdateSecretVal) SetPasswordManagerCustomField(v map[string]string) {
 }
 
 // GetPasswordManagerInjectUrl returns the PasswordManagerInjectUrl field value if set, zero value otherwise.
-func (o *UpdateSecretVal) GetPasswordManagerInjectUrl() string {
+func (o *UpdateSecretVal) GetPasswordManagerInjectUrl() []string {
 	if o == nil || o.PasswordManagerInjectUrl == nil {
-		var ret string
+		var ret []string
 		return ret
 	}
 	return *o.PasswordManagerInjectUrl
@@ -290,7 +324,7 @@ func (o *UpdateSecretVal) GetPasswordManagerInjectUrl() string {
 
 // GetPasswordManagerInjectUrlOk returns a tuple with the PasswordManagerInjectUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateSecretVal) GetPasswordManagerInjectUrlOk() (*string, bool) {
+func (o *UpdateSecretVal) GetPasswordManagerInjectUrlOk() (*[]string, bool) {
 	if o == nil || o.PasswordManagerInjectUrl == nil {
 		return nil, false
 	}
@@ -306,8 +340,8 @@ func (o *UpdateSecretVal) HasPasswordManagerInjectUrl() bool {
 	return false
 }
 
-// SetPasswordManagerInjectUrl gets a reference to the given string and assigns it to the PasswordManagerInjectUrl field.
-func (o *UpdateSecretVal) SetPasswordManagerInjectUrl(v string) {
+// SetPasswordManagerInjectUrl gets a reference to the given []string and assigns it to the PasswordManagerInjectUrl field.
+func (o *UpdateSecretVal) SetPasswordManagerInjectUrl(v []string) {
 	o.PasswordManagerInjectUrl = &v
 }
 
@@ -467,6 +501,9 @@ func (o UpdateSecretVal) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Accessibility != nil {
 		toSerialize["accessibility"] = o.Accessibility
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.KeepPrevVersion != nil {
 		toSerialize["keep-prev-version"] = o.KeepPrevVersion

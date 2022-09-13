@@ -19,6 +19,8 @@ import (
 type UidRevokeToken struct {
 	// The universal identity auth method name
 	AuthMethodName *string `json:"auth-method-name,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// the universal identity token/token-id to revoke
 	RevokeToken string `json:"revoke-token"`
 	// revokeSelf/revokeAll (delete only this token/this token and his children)
@@ -78,6 +80,38 @@ func (o *UidRevokeToken) HasAuthMethodName() bool {
 // SetAuthMethodName gets a reference to the given string and assigns it to the AuthMethodName field.
 func (o *UidRevokeToken) SetAuthMethodName(v string) {
 	o.AuthMethodName = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *UidRevokeToken) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UidRevokeToken) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *UidRevokeToken) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *UidRevokeToken) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetRevokeToken returns the RevokeToken field value
@@ -196,6 +230,9 @@ func (o UidRevokeToken) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AuthMethodName != nil {
 		toSerialize["auth-method-name"] = o.AuthMethodName
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if true {
 		toSerialize["revoke-token"] = o.RevokeToken

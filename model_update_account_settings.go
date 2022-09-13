@@ -31,6 +31,8 @@ type UpdateAccountSettings struct {
 	DpEnableClassicKeyProtection *string `json:"dp-enable-classic-key-protection,omitempty"`
 	// VersionSettingsObjectType defines object types for account version settings
 	ItemType *string `json:"item-type,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// Default ttl
 	JwtTtlDefault *int64 `json:"jwt-ttl-default,omitempty"`
 	// Maximum ttl
@@ -298,6 +300,38 @@ func (o *UpdateAccountSettings) HasItemType() bool {
 // SetItemType gets a reference to the given string and assigns it to the ItemType field.
 func (o *UpdateAccountSettings) SetItemType(v string) {
 	o.ItemType = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *UpdateAccountSettings) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetJwtTtlDefault returns the JwtTtlDefault field value if set, zero value otherwise.
@@ -738,6 +772,9 @@ func (o UpdateAccountSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.ItemType != nil {
 		toSerialize["item-type"] = o.ItemType
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.JwtTtlDefault != nil {
 		toSerialize["jwt-ttl-default"] = o.JwtTtlDefault

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Comment** | Pointer to **string** | Comment about the target | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **K8sClusterCaCert** | **string** | K8S cluster CA certificate | 
 **K8sClusterEndpoint** | **string** | K8S cluster URL endpoint | 
 **K8sClusterToken** | **string** | K8S cluster Bearer token | 
@@ -59,6 +60,31 @@ SetComment sets Comment field to given value.
 `func (o *UpdateNativeK8STarget) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *UpdateNativeK8STarget) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *UpdateNativeK8STarget) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *UpdateNativeK8STarget) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *UpdateNativeK8STarget) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetK8sClusterCaCert
 

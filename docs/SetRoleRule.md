@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Capability** | **[]string** | List of the approved/denied capabilities in the path options: [read, create, update, delete, list, deny] | 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Path** | **string** | The path the rule refers to | 
 **RoleName** | **string** | The role name to be updated | 
 **RuleType** | Pointer to **string** | item-rule, target-rule, role-rule, auth-method-rule, search-rule, reports-rule, gw-reports-rule or sra-reports-rule | [optional] [default to "item-rule"]
@@ -49,6 +50,31 @@ and a boolean to check if the value has been set.
 
 SetCapability sets Capability field to given value.
 
+
+### GetJson
+
+`func (o *SetRoleRule) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *SetRoleRule) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *SetRoleRule) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *SetRoleRule) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetPath
 

@@ -17,6 +17,8 @@ import (
 
 // GatewayDeleteK8SAuthConfig gatewayDeleteK8SAuth is a command that deletes k8s auth config
 type GatewayDeleteK8SAuthConfig struct {
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// K8S Auth config name
 	Name string `json:"name"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -41,6 +43,38 @@ func NewGatewayDeleteK8SAuthConfig(name string, ) *GatewayDeleteK8SAuthConfig {
 func NewGatewayDeleteK8SAuthConfigWithDefaults() *GatewayDeleteK8SAuthConfig {
 	this := GatewayDeleteK8SAuthConfig{}
 	return &this
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *GatewayDeleteK8SAuthConfig) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayDeleteK8SAuthConfig) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *GatewayDeleteK8SAuthConfig) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *GatewayDeleteK8SAuthConfig) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetName returns the Name field value
@@ -133,6 +167,9 @@ func (o *GatewayDeleteK8SAuthConfig) SetUidToken(v string) {
 
 func (o GatewayDeleteK8SAuthConfig) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
+	}
 	if true {
 		toSerialize["name"] = o.Name
 	}

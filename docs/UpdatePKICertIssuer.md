@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **ClientFlag** | Pointer to **bool** | If set, certificates will be flagged for client auth use | [optional] 
 **CodeSigningFlag** | Pointer to **bool** | If set, certificates will be flagged for code signing use | [optional] 
 **Country** | Pointer to **string** | A comma-separated list of the country that will be set in the issued certificate | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **KeyUsage** | Pointer to **string** | key-usage | [optional] [default to "DigitalSignature,KeyAgreement,KeyEncipherment"]
 **Locality** | Pointer to **string** | A comma-separated list of the locality that will be set in the issued certificate | [optional] 
 **Metadata** | Pointer to **string** | A metadata about the issuer | [optional] 
@@ -249,6 +250,31 @@ SetCountry sets Country field to given value.
 `func (o *UpdatePKICertIssuer) HasCountry() bool`
 
 HasCountry returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *UpdatePKICertIssuer) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *UpdatePKICertIssuer) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *UpdatePKICertIssuer) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *UpdatePKICertIssuer) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetKeyUsage
 

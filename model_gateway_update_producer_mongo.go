@@ -19,6 +19,8 @@ import (
 type GatewayUpdateProducerMongo struct {
 	// Protection from accidental deletion of this item
 	DeleteProtection *string `json:"delete_protection,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// MongoDB Atlas private key
 	MongodbAtlasApiPrivateKey *string `json:"mongodb-atlas-api-private-key,omitempty"`
 	// MongoDB Atlas public key
@@ -121,6 +123,38 @@ func (o *GatewayUpdateProducerMongo) HasDeleteProtection() bool {
 // SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
 func (o *GatewayUpdateProducerMongo) SetDeleteProtection(v string) {
 	o.DeleteProtection = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerMongo) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerMongo) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerMongo) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *GatewayUpdateProducerMongo) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetMongodbAtlasApiPrivateKey returns the MongodbAtlasApiPrivateKey field value if set, zero value otherwise.
@@ -887,6 +921,9 @@ func (o GatewayUpdateProducerMongo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DeleteProtection != nil {
 		toSerialize["delete_protection"] = o.DeleteProtection
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.MongodbAtlasApiPrivateKey != nil {
 		toSerialize["mongodb-atlas-api-private-key"] = o.MongodbAtlasApiPrivateKey

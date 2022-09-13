@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **CreateSyncUrl** | **string** | URL of an endpoint that implements /sync/create method, for example https://webhook.example.com/sync/create | 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
 **EnableAdminRotation** | Pointer to **bool** | Should admin credentials be rotated | [optional] [default to false]
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Producer name | 
 **NewName** | Pointer to **string** | Producer name | [optional] 
 **Payload** | Pointer to **string** | Secret payload to be sent with each create/revoke webhook request | [optional] 
@@ -133,6 +134,31 @@ SetEnableAdminRotation sets EnableAdminRotation field to given value.
 `func (o *GatewayUpdateProducerCustom) HasEnableAdminRotation() bool`
 
 HasEnableAdminRotation returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *GatewayUpdateProducerCustom) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *GatewayUpdateProducerCustom) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *GatewayUpdateProducerCustom) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *GatewayUpdateProducerCustom) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetName
 

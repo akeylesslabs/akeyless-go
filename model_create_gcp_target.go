@@ -23,6 +23,8 @@ type CreateGcpTarget struct {
 	GcpKey *string `json:"gcp-key,omitempty"`
 	// GCP service account email
 	GcpSaEmail *string `json:"gcp-sa-email,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
 	// Target name
@@ -146,6 +148,38 @@ func (o *CreateGcpTarget) HasGcpSaEmail() bool {
 // SetGcpSaEmail gets a reference to the given string and assigns it to the GcpSaEmail field.
 func (o *CreateGcpTarget) SetGcpSaEmail(v string) {
 	o.GcpSaEmail = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *CreateGcpTarget) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateGcpTarget) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *CreateGcpTarget) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *CreateGcpTarget) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetKey returns the Key field value if set, zero value otherwise.
@@ -310,6 +344,9 @@ func (o CreateGcpTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.GcpSaEmail != nil {
 		toSerialize["gcp-sa-email"] = o.GcpSaEmail
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.Key != nil {
 		toSerialize["key"] = o.Key

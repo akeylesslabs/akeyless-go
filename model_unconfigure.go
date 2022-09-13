@@ -17,6 +17,8 @@ import (
 
 // Unconfigure struct for Unconfigure
 type Unconfigure struct {
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// The profile name to be removed
 	Profile *string `json:"profile,omitempty"`
 }
@@ -40,6 +42,38 @@ func NewUnconfigureWithDefaults() *Unconfigure {
 	var profile string = "default"
 	this.Profile = &profile
 	return &this
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *Unconfigure) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Unconfigure) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *Unconfigure) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *Unconfigure) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetProfile returns the Profile field value if set, zero value otherwise.
@@ -76,6 +110,9 @@ func (o *Unconfigure) SetProfile(v string) {
 
 func (o Unconfigure) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
+	}
 	if o.Profile != nil {
 		toSerialize["profile"] = o.Profile
 	}

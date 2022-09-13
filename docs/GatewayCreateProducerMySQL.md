@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **DbServerCertificates** | Pointer to **string** | (Optional) DB server certificates | [optional] 
 **DbServerName** | Pointer to **string** | (Optional) Server name for certificate verification | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **MysqlDbname** | Pointer to **string** | MySQL DB Name | [optional] 
 **MysqlHost** | Pointer to **string** | MySQL Host | [optional] [default to "127.0.0.1"]
 **MysqlPassword** | Pointer to **string** | MySQL Password | [optional] 
@@ -120,6 +121,31 @@ SetDeleteProtection sets DeleteProtection field to given value.
 `func (o *GatewayCreateProducerMySQL) HasDeleteProtection() bool`
 
 HasDeleteProtection returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *GatewayCreateProducerMySQL) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *GatewayCreateProducerMySQL) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *GatewayCreateProducerMySQL) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *GatewayCreateProducerMySQL) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetMysqlDbname
 

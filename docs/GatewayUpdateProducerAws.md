@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **AwsUserProgrammaticAccess** | Pointer to **bool** | AWS User programmatic access | [optional] [default to true]
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
 **EnableAdminRotation** | Pointer to **bool** | Automatic admin credentials rotation | [optional] [default to false]
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Producer name | 
 **NewName** | Pointer to **string** | Producer name | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
@@ -325,6 +326,31 @@ SetEnableAdminRotation sets EnableAdminRotation field to given value.
 `func (o *GatewayUpdateProducerAws) HasEnableAdminRotation() bool`
 
 HasEnableAdminRotation returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *GatewayUpdateProducerAws) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *GatewayUpdateProducerAws) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *GatewayUpdateProducerAws) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *GatewayUpdateProducerAws) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetName
 

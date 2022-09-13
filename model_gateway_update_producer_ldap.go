@@ -25,6 +25,8 @@ type GatewayUpdateProducerLdap struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Fixed user
 	ExternalUsername *string `json:"external-username,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// CA Certificate File Content
 	LdapCaCert *string `json:"ldap-ca-cert,omitempty"`
 	// LDAP Server URL
@@ -205,6 +207,38 @@ func (o *GatewayUpdateProducerLdap) HasExternalUsername() bool {
 // SetExternalUsername gets a reference to the given string and assigns it to the ExternalUsername field.
 func (o *GatewayUpdateProducerLdap) SetExternalUsername(v string) {
 	o.ExternalUsername = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerLdap) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerLdap) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerLdap) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *GatewayUpdateProducerLdap) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetLdapCaCert returns the LdapCaCert field value if set, zero value otherwise.
@@ -628,6 +662,9 @@ func (o GatewayUpdateProducerLdap) MarshalJSON() ([]byte, error) {
 	}
 	if o.ExternalUsername != nil {
 		toSerialize["external-username"] = o.ExternalUsername
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.LdapCaCert != nil {
 		toSerialize["ldap-ca-cert"] = o.LdapCaCert

@@ -23,6 +23,8 @@ type CreateClassicKey struct {
 	CertFileData *string `json:"cert-file-data,omitempty"`
 	// Protection from accidental deletion of this item
 	DeleteProtection *string `json:"delete_protection,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// Base64-encoded classic key value
 	KeyData *string `json:"key-data,omitempty"`
 	// Metadata about the classic key
@@ -144,6 +146,38 @@ func (o *CreateClassicKey) HasDeleteProtection() bool {
 // SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
 func (o *CreateClassicKey) SetDeleteProtection(v string) {
 	o.DeleteProtection = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *CreateClassicKey) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateClassicKey) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *CreateClassicKey) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *CreateClassicKey) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetKeyData returns the KeyData field value if set, zero value otherwise.
@@ -372,6 +406,9 @@ func (o CreateClassicKey) MarshalJSON() ([]byte, error) {
 	}
 	if o.DeleteProtection != nil {
 		toSerialize["delete_protection"] = o.DeleteProtection
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.KeyData != nil {
 		toSerialize["key-data"] = o.KeyData

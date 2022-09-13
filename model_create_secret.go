@@ -21,6 +21,8 @@ type CreateSecret struct {
 	Accessibility *string `json:"accessibility,omitempty"`
 	// Protection from accidental deletion of this item
 	DeleteProtection *string `json:"delete_protection,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// Metadata about the secret
 	Metadata *string `json:"metadata,omitempty"`
 	// The provided value is a multiline value (separated by '\\n')
@@ -30,7 +32,7 @@ type CreateSecret struct {
 	// For Password Management use, additional fields
 	PasswordManagerCustomField *map[string]string `json:"password-manager-custom-field,omitempty"`
 	// For Password Management use, reflect the website context
-	PasswordManagerInjectUrl *string `json:"password-manager-inject-url,omitempty"`
+	PasswordManagerInjectUrl *[]string `json:"password-manager-inject-url,omitempty"`
 	// For Password Management use, additional fields
 	PasswordManagerPassword *string `json:"password-manager-password,omitempty"`
 	// For Password Management use
@@ -138,6 +140,38 @@ func (o *CreateSecret) HasDeleteProtection() bool {
 // SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
 func (o *CreateSecret) SetDeleteProtection(v string) {
 	o.DeleteProtection = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *CreateSecret) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSecret) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *CreateSecret) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *CreateSecret) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
@@ -261,9 +295,9 @@ func (o *CreateSecret) SetPasswordManagerCustomField(v map[string]string) {
 }
 
 // GetPasswordManagerInjectUrl returns the PasswordManagerInjectUrl field value if set, zero value otherwise.
-func (o *CreateSecret) GetPasswordManagerInjectUrl() string {
+func (o *CreateSecret) GetPasswordManagerInjectUrl() []string {
 	if o == nil || o.PasswordManagerInjectUrl == nil {
-		var ret string
+		var ret []string
 		return ret
 	}
 	return *o.PasswordManagerInjectUrl
@@ -271,7 +305,7 @@ func (o *CreateSecret) GetPasswordManagerInjectUrl() string {
 
 // GetPasswordManagerInjectUrlOk returns a tuple with the PasswordManagerInjectUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateSecret) GetPasswordManagerInjectUrlOk() (*string, bool) {
+func (o *CreateSecret) GetPasswordManagerInjectUrlOk() (*[]string, bool) {
 	if o == nil || o.PasswordManagerInjectUrl == nil {
 		return nil, false
 	}
@@ -287,8 +321,8 @@ func (o *CreateSecret) HasPasswordManagerInjectUrl() bool {
 	return false
 }
 
-// SetPasswordManagerInjectUrl gets a reference to the given string and assigns it to the PasswordManagerInjectUrl field.
-func (o *CreateSecret) SetPasswordManagerInjectUrl(v string) {
+// SetPasswordManagerInjectUrl gets a reference to the given []string and assigns it to the PasswordManagerInjectUrl field.
+func (o *CreateSecret) SetPasswordManagerInjectUrl(v []string) {
 	o.PasswordManagerInjectUrl = &v
 }
 
@@ -803,6 +837,9 @@ func (o CreateSecret) MarshalJSON() ([]byte, error) {
 	}
 	if o.DeleteProtection != nil {
 		toSerialize["delete_protection"] = o.DeleteProtection
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CertificateTtl** | Pointer to **int64** |  | [optional] 
 **Hostname** | **string** | Hostname | 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Root** | Pointer to **string** |  | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -73,6 +74,31 @@ and a boolean to check if the value has been set.
 
 SetHostname sets Hostname field to given value.
 
+
+### GetJson
+
+`func (o *KmipServerSetup) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *KmipServerSetup) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *KmipServerSetup) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *KmipServerSetup) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetRoot
 

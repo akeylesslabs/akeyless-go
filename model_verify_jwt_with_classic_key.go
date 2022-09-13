@@ -19,6 +19,8 @@ import (
 type VerifyJWTWithClassicKey struct {
 	// The name of the key to use in the verify JWT process
 	DisplayId string `json:"display-id"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// JWT
 	Jwt string `json:"jwt"`
 	// RequiredClaims
@@ -74,6 +76,38 @@ func (o *VerifyJWTWithClassicKey) GetDisplayIdOk() (*string, bool) {
 // SetDisplayId sets field value
 func (o *VerifyJWTWithClassicKey) SetDisplayId(v string) {
 	o.DisplayId = v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *VerifyJWTWithClassicKey) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VerifyJWTWithClassicKey) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *VerifyJWTWithClassicKey) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *VerifyJWTWithClassicKey) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetJwt returns the Jwt field value
@@ -216,6 +250,9 @@ func (o VerifyJWTWithClassicKey) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["display-id"] = o.DisplayId
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if true {
 		toSerialize["jwt"] = o.Jwt

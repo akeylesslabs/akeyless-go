@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **BastionCtrlSubdomain** | Pointer to **string** | The Bastion API prefix | [optional] 
 **CertIssuerName** | Pointer to **string** | The Akeyless certificate issuer name | [optional] 
 **IdentityFile** | Pointer to **string** | The file from which the identity (private key) for public key authentication is read | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Name** | Pointer to **string** | The Secret name (for database and AWS producers - producer name) | [optional] 
 **SshExtraArgs** | Pointer to **string** | The Use to add offical SSH arguments (except -i) | [optional] 
 **SshLegacySigningAlg** | Pointer to **bool** | Set this option to output legacy (&#39;ssh-rsa-cert-v01@openssh.com&#39;) signing algorithm name in the ssh certificate. | [optional] 
@@ -238,6 +239,31 @@ SetIdentityFile sets IdentityFile field to given value.
 `func (o *Connect) HasIdentityFile() bool`
 
 HasIdentityFile returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *Connect) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *Connect) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *Connect) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *Connect) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetName
 

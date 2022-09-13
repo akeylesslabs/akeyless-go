@@ -28,6 +28,8 @@ type GatewayCreateProducerGcp struct {
 	GcpSaEmail *string `json:"gcp-sa-email,omitempty"`
 	// Access token scopes list, e.g. scope1,scope2
 	GcpTokenScopes *string `json:"gcp-token-scopes,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// Producer name
 	Name string `json:"name"`
 	// Dynamic producer encryption key
@@ -256,6 +258,38 @@ func (o *GatewayCreateProducerGcp) HasGcpTokenScopes() bool {
 // SetGcpTokenScopes gets a reference to the given string and assigns it to the GcpTokenScopes field.
 func (o *GatewayCreateProducerGcp) SetGcpTokenScopes(v string) {
 	o.GcpTokenScopes = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *GatewayCreateProducerGcp) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerGcp) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *GatewayCreateProducerGcp) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *GatewayCreateProducerGcp) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetName returns the Name field value
@@ -493,6 +527,9 @@ func (o GatewayCreateProducerGcp) MarshalJSON() ([]byte, error) {
 	}
 	if o.GcpTokenScopes != nil {
 		toSerialize["gcp-token-scopes"] = o.GcpTokenScopes
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if true {
 		toSerialize["name"] = o.Name

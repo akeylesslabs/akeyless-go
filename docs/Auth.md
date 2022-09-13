@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **CloudId** | Pointer to **string** | The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam,gcp) | [optional] 
 **Debug** | Pointer to **bool** |  | [optional] 
 **GcpAudience** | Pointer to **string** | GCP JWT audience | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Jwt** | Pointer to **string** | The Json Web Token (relevant only for access-type&#x3D;jwt/oidc) | [optional] 
 **K8sAuthConfigName** | Pointer to **string** | The K8S Auth config name (relevant only for access-type&#x3D;k8s) | [optional] 
 **K8sServiceAccountToken** | Pointer to **string** | The K8S service account token. (relevant only for access-type&#x3D;k8s) | [optional] 
@@ -264,6 +265,31 @@ SetGcpAudience sets GcpAudience field to given value.
 `func (o *Auth) HasGcpAudience() bool`
 
 HasGcpAudience returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *Auth) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *Auth) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *Auth) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *Auth) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetJwt
 

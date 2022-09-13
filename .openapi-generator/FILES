@@ -26,6 +26,8 @@ docs/AzureADAccessRules.md
 docs/AzureKeyVaultMigration.md
 docs/AzureLogAnalyticsForwardingConfig.md
 docs/AzurePayload.md
+docs/BastionListEntry.md
+docs/BastionsList.md
 docs/CFConfigPart.md
 docs/CacheConfigPart.md
 docs/CertAccessRules.md
@@ -304,6 +306,7 @@ docs/GatewayUpdateProducerRedshiftOutput.md
 docs/GatewayUpdateProducerSnowflake.md
 docs/GatewayUpdateProducerSnowflakeOutput.md
 docs/GatewayUpdateTmpUsers.md
+docs/GatewaysListResponse.md
 docs/GenCustomerFragment.md
 docs/GeneralConfigPart.md
 docs/GetAccountSettings.md
@@ -329,6 +332,7 @@ docs/GetTags.md
 docs/GetTarget.md
 docs/GetTargetDetails.md
 docs/GetTargetDetailsOutput.md
+docs/GwClusterIdentity.md
 docs/HashiMigration.md
 docs/HashiPayload.md
 docs/HuaweiAccessRules.md
@@ -376,10 +380,12 @@ docs/LdapConfigPart.md
 docs/LeadershipConfigPart.md
 docs/ListAuthMethods.md
 docs/ListAuthMethodsOutput.md
+docs/ListGateways.md
 docs/ListItems.md
 docs/ListItemsInPathOutput.md
 docs/ListRoles.md
 docs/ListRolesOutput.md
+docs/ListSRABastions.md
 docs/ListTargets.md
 docs/ListTargetsOutput.md
 docs/LogForwardingConfigPart.md
@@ -397,6 +403,8 @@ docs/OAuth2CustomClaim.md
 docs/OIDCAccessRules.md
 docs/OIDCCustomClaim.md
 docs/ObjectVersionSettingsOutput.md
+docs/OnePasswordMigration.md
+docs/OnePasswordPayload.md
 docs/PKICertificateIssueDetails.md
 docs/PasswordPolicyInfo.md
 docs/PathRule.md
@@ -448,6 +456,7 @@ docs/SystemAccessCredsSettings.md
 docs/Target.md
 docs/TargetItemAssociation.md
 docs/TargetItemVersion.md
+docs/TargetObjectAssociation.md
 docs/TargetTypeDetailsInput.md
 docs/TmpUserData.md
 docs/Tokenize.md
@@ -532,6 +541,7 @@ docs/UpdateSalesforceTargetOutput.md
 docs/UpdateSecretVal.md
 docs/UpdateSecretValOutput.md
 docs/UpdateTarget.md
+docs/UpdateTargetDetails.md
 docs/UpdateTargetDetailsOutput.md
 docs/UpdateTargetOutput.md
 docs/UpdateWebTarget.md
@@ -572,6 +582,8 @@ model_azure_ad_access_rules.go
 model_azure_key_vault_migration.go
 model_azure_log_analytics_forwarding_config.go
 model_azure_payload.go
+model_bastion_list_entry.go
+model_bastions_list.go
 model_cache_config_part.go
 model_cert_access_rules.go
 model_certificate_issue_info.go
@@ -847,6 +859,7 @@ model_gateway_update_producer_redshift_output.go
 model_gateway_update_producer_snowflake.go
 model_gateway_update_producer_snowflake_output.go
 model_gateway_update_tmp_users.go
+model_gateways_list_response.go
 model_gcp_access_rules.go
 model_gcp_payload.go
 model_gcp_secrets_migration.go
@@ -875,6 +888,7 @@ model_get_tags.go
 model_get_target.go
 model_get_target_details.go
 model_get_target_details_output.go
+model_gw_cluster_identity.go
 model_hashi_migration.go
 model_hashi_payload.go
 model_huawei_access_rules.go
@@ -922,10 +936,12 @@ model_ldap_config_part.go
 model_leadership_config_part.go
 model_list_auth_methods.go
 model_list_auth_methods_output.go
+model_list_gateways.go
 model_list_items.go
 model_list_items_in_path_output.go
 model_list_roles.go
 model_list_roles_output.go
+model_list_sra_bastions.go
 model_list_targets.go
 model_list_targets_output.go
 model_log_forwarding_config_part.go
@@ -943,6 +959,8 @@ model_o_auth2_custom_claim.go
 model_object_version_settings_output.go
 model_oidc_access_rules.go
 model_oidc_custom_claim.go
+model_one_password_migration.go
+model_one_password_payload.go
 model_password_policy_info.go
 model_path_rule.go
 model_pki_certificate_issue_details.go
@@ -994,6 +1012,7 @@ model_system_access_creds_settings.go
 model_target.go
 model_target_item_association.go
 model_target_item_version.go
+model_target_object_association.go
 model_target_type_details_input.go
 model_tmp_user_data.go
 model_tokenize.go
@@ -1078,6 +1097,7 @@ model_update_ssh_target.go
 model_update_ssh_target_details.go
 model_update_ssh_target_output.go
 model_update_target.go
+model_update_target_details.go
 model_update_target_details_output.go
 model_update_target_output.go
 model_update_web_target.go

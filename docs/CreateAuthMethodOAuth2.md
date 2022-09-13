@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
 **GwBoundIps** | Pointer to **[]string** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
 **Issuer** | Pointer to **string** | Issuer URL | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **JwksUri** | **string** | The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. | 
 **JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] 
 **Name** | **string** | Auth Method name | 
@@ -211,6 +212,31 @@ SetIssuer sets Issuer field to given value.
 `func (o *CreateAuthMethodOAuth2) HasIssuer() bool`
 
 HasIssuer returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *CreateAuthMethodOAuth2) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *CreateAuthMethodOAuth2) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *CreateAuthMethodOAuth2) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *CreateAuthMethodOAuth2) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetJwksUri
 

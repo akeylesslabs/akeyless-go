@@ -23,6 +23,8 @@ type UploadPKCS12 struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// PKCS#12 input file (private key and certificate only)
 	In string `json:"in"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// A metadata about the key
 	Metadata *string `json:"metadata,omitempty"`
 	// Name of key to be created
@@ -149,6 +151,38 @@ func (o *UploadPKCS12) GetInOk() (*string, bool) {
 // SetIn sets field value
 func (o *UploadPKCS12) SetIn(v string) {
 	o.In = v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *UploadPKCS12) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UploadPKCS12) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *UploadPKCS12) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *UploadPKCS12) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
@@ -369,6 +403,9 @@ func (o UploadPKCS12) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["in"] = o.In
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata

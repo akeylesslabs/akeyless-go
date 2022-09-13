@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Migration ID | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Name** | Pointer to **string** | Migration name to display | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -52,6 +53,31 @@ SetId sets Id field to given value.
 `func (o *GatewayStatusMigration) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *GatewayStatusMigration) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *GatewayStatusMigration) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *GatewayStatusMigration) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *GatewayStatusMigration) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetName
 

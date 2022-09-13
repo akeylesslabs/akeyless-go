@@ -7300,6 +7300,123 @@ func (a *V2ApiService) EncryptWithClassicKeyExecute(r ApiEncryptWithClassicKeyRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiGatewayAddAllowedManagementAccessRequest struct {
+	ctx _context.Context
+	ApiService *V2ApiService
+	body *GatewayAddAllowedManagementAccess
+}
+
+func (r ApiGatewayAddAllowedManagementAccessRequest) Body(body GatewayAddAllowedManagementAccess) ApiGatewayAddAllowedManagementAccessRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiGatewayAddAllowedManagementAccessRequest) Execute() (map[string]interface{}, *_nethttp.Response, error) {
+	return r.ApiService.GatewayAddAllowedManagementAccessExecute(r)
+}
+
+/*
+ * GatewayAddAllowedManagementAccess Method for GatewayAddAllowedManagementAccess
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @return ApiGatewayAddAllowedManagementAccessRequest
+ */
+func (a *V2ApiService) GatewayAddAllowedManagementAccess(ctx _context.Context) ApiGatewayAddAllowedManagementAccessRequest {
+	return ApiGatewayAddAllowedManagementAccessRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return map[string]interface{}
+ */
+func (a *V2ApiService) GatewayAddAllowedManagementAccessExecute(r ApiGatewayAddAllowedManagementAccessRequest) (map[string]interface{}, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.GatewayAddAllowedManagementAccess")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/gateway-add-allow-management-access"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiGatewayCreateK8SAuthConfigRequest struct {
 	ctx _context.Context
 	ApiService *V2ApiService
@@ -18806,6 +18923,123 @@ func (a *V2ApiService) ListAuthMethodsExecute(r ApiListAuthMethodsRequest) (List
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiListGatewaysRequest struct {
+	ctx _context.Context
+	ApiService *V2ApiService
+	body *ListGateways
+}
+
+func (r ApiListGatewaysRequest) Body(body ListGateways) ApiListGatewaysRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiListGatewaysRequest) Execute() (GatewaysListResponse, *_nethttp.Response, error) {
+	return r.ApiService.ListGatewaysExecute(r)
+}
+
+/*
+ * ListGateways Method for ListGateways
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @return ApiListGatewaysRequest
+ */
+func (a *V2ApiService) ListGateways(ctx _context.Context) ApiListGatewaysRequest {
+	return ApiListGatewaysRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return GatewaysListResponse
+ */
+func (a *V2ApiService) ListGatewaysExecute(r ApiListGatewaysRequest) (GatewaysListResponse, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  GatewaysListResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.ListGateways")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/list-gateways"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiListItemsRequest struct {
 	ctx _context.Context
 	ApiService *V2ApiService
@@ -18970,6 +19204,123 @@ func (a *V2ApiService) ListRolesExecute(r ApiListRolesRequest) (ListRolesOutput,
 	}
 
 	localVarPath := localBasePath + "/list-roles"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiListSRABastionsRequest struct {
+	ctx _context.Context
+	ApiService *V2ApiService
+	body *ListSRABastions
+}
+
+func (r ApiListSRABastionsRequest) Body(body ListSRABastions) ApiListSRABastionsRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiListSRABastionsRequest) Execute() (BastionsList, *_nethttp.Response, error) {
+	return r.ApiService.ListSRABastionsExecute(r)
+}
+
+/*
+ * ListSRABastions Method for ListSRABastions
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @return ApiListSRABastionsRequest
+ */
+func (a *V2ApiService) ListSRABastions(ctx _context.Context) ApiListSRABastionsRequest {
+	return ApiListSRABastionsRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return BastionsList
+ */
+func (a *V2ApiService) ListSRABastionsExecute(r ApiListSRABastionsRequest) (BastionsList, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  BastionsList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.ListSRABastions")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/list-sra-bastions"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -24654,7 +25005,7 @@ func (r ApiUpdateNativeK8STargetRequest) Body(body UpdateNativeK8STarget) ApiUpd
 	return r
 }
 
-func (r ApiUpdateNativeK8STargetRequest) Execute() (UpdateNativeK8STarget, *_nethttp.Response, error) {
+func (r ApiUpdateNativeK8STargetRequest) Execute() (UpdateNativeK8STargetOutput, *_nethttp.Response, error) {
 	return r.ApiService.UpdateNativeK8STargetExecute(r)
 }
 
@@ -24672,16 +25023,16 @@ func (a *V2ApiService) UpdateNativeK8STarget(ctx _context.Context) ApiUpdateNati
 
 /*
  * Execute executes the request
- * @return UpdateNativeK8STarget
+ * @return UpdateNativeK8STargetOutput
  */
-func (a *V2ApiService) UpdateNativeK8STargetExecute(r ApiUpdateNativeK8STargetRequest) (UpdateNativeK8STarget, *_nethttp.Response, error) {
+func (a *V2ApiService) UpdateNativeK8STargetExecute(r ApiUpdateNativeK8STargetRequest) (UpdateNativeK8STargetOutput, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  UpdateNativeK8STarget
+		localVarReturnValue  UpdateNativeK8STargetOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.UpdateNativeK8STarget")
@@ -26274,10 +26625,10 @@ func (a *V2ApiService) UpdateTargetExecute(r ApiUpdateTargetRequest) (UpdateTarg
 type ApiUpdateTargetDetailsRequest struct {
 	ctx _context.Context
 	ApiService *V2ApiService
-	body *map[string]interface{}
+	body *UpdateTargetDetails
 }
 
-func (r ApiUpdateTargetDetailsRequest) Body(body map[string]interface{}) ApiUpdateTargetDetailsRequest {
+func (r ApiUpdateTargetDetailsRequest) Body(body UpdateTargetDetails) ApiUpdateTargetDetailsRequest {
 	r.body = &body
 	return r
 }

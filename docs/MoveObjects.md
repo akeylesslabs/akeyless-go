@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **ObjectsType** | Pointer to **string** | The objects type to move (item/auth_method/role) | [optional] [default to "item"]
 **Source** | **string** | Source path to move the objects from | 
 **Target** | **string** | Target path to move the objects to | 
@@ -28,6 +29,31 @@ will change when the set of required properties is changed
 NewMoveObjectsWithDefaults instantiates a new MoveObjects object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetJson
+
+`func (o *MoveObjects) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *MoveObjects) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *MoveObjects) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *MoveObjects) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetObjectsType
 

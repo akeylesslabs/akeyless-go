@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **HashiToken** | Pointer to **string** | HashiCorp Vault access token with sufficient permissions to preform list &amp; read operations on secrets objects (relevant only for HasiCorp Vault migration) | [optional] 
 **HashiUrl** | Pointer to **string** | HashiCorp Vault API URL, e.g. https://vault-mgr01:8200 (relevant only for HasiCorp Vault migration) | [optional] 
 **Id** | Pointer to **string** | Migration ID (Can be retrieved with gateway-list-migration command) | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **K8sCaCertificate** | Pointer to **[]int32** | For Certificate Authentication method K8s Cluster CA certificate (relevant only for K8s migration with Certificate Authentication method) | [optional] 
 **K8sClientCertificate** | Pointer to **[]int32** | K8s Client certificate with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Certificate Authentication method) | [optional] 
 **K8sClientKey** | Pointer to **[]int32** | K8s Client key (relevant only for K8s migration with Certificate Authentication method) | [optional] 
@@ -28,6 +29,11 @@ Name | Type | Description | Notes
 **K8sUsername** | Pointer to **string** | For Password Authentication method K8s Client username with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Password Authentication method) | [optional] 
 **Name** | Pointer to **string** | Migration name | [optional] 
 **NewName** | Pointer to **string** | New migration name | [optional] 
+**OpEmail** | Pointer to **string** | 1Password user email to connect to the API | [optional] 
+**OpPassword** | Pointer to **string** | 1Password user password to connect to the API | [optional] 
+**OpSecretKey** | Pointer to **string** | 1Password user secret key to connect to the API | [optional] 
+**OpUrl** | Pointer to **string** | 1Password api container url | [optional] 
+**OpVaults** | Pointer to **[]string** | 1Password list of vault to get the items from | [optional] 
 **ProtectionKey** | Pointer to **string** | The name of the key that protects the classic key value (if empty, the account default key will be used) | [optional] 
 **TargetLocation** | Pointer to **string** | Target location in Akeyless for imported secrets | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -377,6 +383,31 @@ SetId sets Id field to given value.
 
 HasId returns a boolean if a field has been set.
 
+### GetJson
+
+`func (o *GatewayUpdateMigration) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *GatewayUpdateMigration) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *GatewayUpdateMigration) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *GatewayUpdateMigration) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
+
 ### GetK8sCaCertificate
 
 `func (o *GatewayUpdateMigration) GetK8sCaCertificate() []int32`
@@ -651,6 +682,131 @@ SetNewName sets NewName field to given value.
 `func (o *GatewayUpdateMigration) HasNewName() bool`
 
 HasNewName returns a boolean if a field has been set.
+
+### GetOpEmail
+
+`func (o *GatewayUpdateMigration) GetOpEmail() string`
+
+GetOpEmail returns the OpEmail field if non-nil, zero value otherwise.
+
+### GetOpEmailOk
+
+`func (o *GatewayUpdateMigration) GetOpEmailOk() (*string, bool)`
+
+GetOpEmailOk returns a tuple with the OpEmail field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOpEmail
+
+`func (o *GatewayUpdateMigration) SetOpEmail(v string)`
+
+SetOpEmail sets OpEmail field to given value.
+
+### HasOpEmail
+
+`func (o *GatewayUpdateMigration) HasOpEmail() bool`
+
+HasOpEmail returns a boolean if a field has been set.
+
+### GetOpPassword
+
+`func (o *GatewayUpdateMigration) GetOpPassword() string`
+
+GetOpPassword returns the OpPassword field if non-nil, zero value otherwise.
+
+### GetOpPasswordOk
+
+`func (o *GatewayUpdateMigration) GetOpPasswordOk() (*string, bool)`
+
+GetOpPasswordOk returns a tuple with the OpPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOpPassword
+
+`func (o *GatewayUpdateMigration) SetOpPassword(v string)`
+
+SetOpPassword sets OpPassword field to given value.
+
+### HasOpPassword
+
+`func (o *GatewayUpdateMigration) HasOpPassword() bool`
+
+HasOpPassword returns a boolean if a field has been set.
+
+### GetOpSecretKey
+
+`func (o *GatewayUpdateMigration) GetOpSecretKey() string`
+
+GetOpSecretKey returns the OpSecretKey field if non-nil, zero value otherwise.
+
+### GetOpSecretKeyOk
+
+`func (o *GatewayUpdateMigration) GetOpSecretKeyOk() (*string, bool)`
+
+GetOpSecretKeyOk returns a tuple with the OpSecretKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOpSecretKey
+
+`func (o *GatewayUpdateMigration) SetOpSecretKey(v string)`
+
+SetOpSecretKey sets OpSecretKey field to given value.
+
+### HasOpSecretKey
+
+`func (o *GatewayUpdateMigration) HasOpSecretKey() bool`
+
+HasOpSecretKey returns a boolean if a field has been set.
+
+### GetOpUrl
+
+`func (o *GatewayUpdateMigration) GetOpUrl() string`
+
+GetOpUrl returns the OpUrl field if non-nil, zero value otherwise.
+
+### GetOpUrlOk
+
+`func (o *GatewayUpdateMigration) GetOpUrlOk() (*string, bool)`
+
+GetOpUrlOk returns a tuple with the OpUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOpUrl
+
+`func (o *GatewayUpdateMigration) SetOpUrl(v string)`
+
+SetOpUrl sets OpUrl field to given value.
+
+### HasOpUrl
+
+`func (o *GatewayUpdateMigration) HasOpUrl() bool`
+
+HasOpUrl returns a boolean if a field has been set.
+
+### GetOpVaults
+
+`func (o *GatewayUpdateMigration) GetOpVaults() []string`
+
+GetOpVaults returns the OpVaults field if non-nil, zero value otherwise.
+
+### GetOpVaultsOk
+
+`func (o *GatewayUpdateMigration) GetOpVaultsOk() (*[]string, bool)`
+
+GetOpVaultsOk returns a tuple with the OpVaults field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOpVaults
+
+`func (o *GatewayUpdateMigration) SetOpVaults(v []string)`
+
+SetOpVaults sets OpVaults field to given value.
+
+### HasOpVaults
+
+`func (o *GatewayUpdateMigration) HasOpVaults() bool`
+
+HasOpVaults returns a boolean if a field has been set.
 
 ### GetProtectionKey
 

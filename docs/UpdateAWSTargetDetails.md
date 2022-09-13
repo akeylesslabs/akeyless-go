@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessKey** | Pointer to **string** |  | [optional] 
 **AccessKeyId** | Pointer to **string** |  | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **KeepPrevVersion** | Pointer to **string** |  | [optional] 
 **Name** | **string** | Target name | 
 **NewVersion** | Pointer to **bool** | Deprecated | [optional] 
@@ -83,6 +84,31 @@ SetAccessKeyId sets AccessKeyId field to given value.
 `func (o *UpdateAWSTargetDetails) HasAccessKeyId() bool`
 
 HasAccessKeyId returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *UpdateAWSTargetDetails) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *UpdateAWSTargetDetails) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *UpdateAWSTargetDetails) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *UpdateAWSTargetDetails) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetKeepPrevVersion
 

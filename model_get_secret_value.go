@@ -19,6 +19,8 @@ import (
 type GetSecretValue struct {
 	// for personal password manager
 	Accessibility *string `json:"accessibility,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// Secret name
 	Names []string `json:"names"`
 	PrettyPrint *bool `json:"pretty-print,omitempty"`
@@ -78,6 +80,38 @@ func (o *GetSecretValue) HasAccessibility() bool {
 // SetAccessibility gets a reference to the given string and assigns it to the Accessibility field.
 func (o *GetSecretValue) SetAccessibility(v string) {
 	o.Accessibility = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *GetSecretValue) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetSecretValue) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *GetSecretValue) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *GetSecretValue) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetNames returns the Names field value
@@ -236,6 +270,9 @@ func (o GetSecretValue) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Accessibility != nil {
 		toSerialize["accessibility"] = o.Accessibility
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if true {
 		toSerialize["names"] = o.Names

@@ -13,6 +13,7 @@ package akeyless
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // AuthMethod struct for AuthMethod
@@ -23,6 +24,9 @@ type AuthMethod struct {
 	AuthMethodName *string `json:"auth_method_name,omitempty"`
 	AuthMethodRolesAssoc *[]AuthMethodRoleAssociation `json:"auth_method_roles_assoc,omitempty"`
 	ClientPermissions *[]string `json:"client_permissions,omitempty"`
+	CreationDate *time.Time `json:"creation_date,omitempty"`
+	ModificationDate *time.Time `json:"modification_date,omitempty"`
+	UsageDate *time.Time `json:"usage_date,omitempty"`
 }
 
 // NewAuthMethod instantiates a new AuthMethod object
@@ -234,6 +238,102 @@ func (o *AuthMethod) SetClientPermissions(v []string) {
 	o.ClientPermissions = &v
 }
 
+// GetCreationDate returns the CreationDate field value if set, zero value otherwise.
+func (o *AuthMethod) GetCreationDate() time.Time {
+	if o == nil || o.CreationDate == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.CreationDate
+}
+
+// GetCreationDateOk returns a tuple with the CreationDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethod) GetCreationDateOk() (*time.Time, bool) {
+	if o == nil || o.CreationDate == nil {
+		return nil, false
+	}
+	return o.CreationDate, true
+}
+
+// HasCreationDate returns a boolean if a field has been set.
+func (o *AuthMethod) HasCreationDate() bool {
+	if o != nil && o.CreationDate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreationDate gets a reference to the given time.Time and assigns it to the CreationDate field.
+func (o *AuthMethod) SetCreationDate(v time.Time) {
+	o.CreationDate = &v
+}
+
+// GetModificationDate returns the ModificationDate field value if set, zero value otherwise.
+func (o *AuthMethod) GetModificationDate() time.Time {
+	if o == nil || o.ModificationDate == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.ModificationDate
+}
+
+// GetModificationDateOk returns a tuple with the ModificationDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethod) GetModificationDateOk() (*time.Time, bool) {
+	if o == nil || o.ModificationDate == nil {
+		return nil, false
+	}
+	return o.ModificationDate, true
+}
+
+// HasModificationDate returns a boolean if a field has been set.
+func (o *AuthMethod) HasModificationDate() bool {
+	if o != nil && o.ModificationDate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetModificationDate gets a reference to the given time.Time and assigns it to the ModificationDate field.
+func (o *AuthMethod) SetModificationDate(v time.Time) {
+	o.ModificationDate = &v
+}
+
+// GetUsageDate returns the UsageDate field value if set, zero value otherwise.
+func (o *AuthMethod) GetUsageDate() time.Time {
+	if o == nil || o.UsageDate == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.UsageDate
+}
+
+// GetUsageDateOk returns a tuple with the UsageDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethod) GetUsageDateOk() (*time.Time, bool) {
+	if o == nil || o.UsageDate == nil {
+		return nil, false
+	}
+	return o.UsageDate, true
+}
+
+// HasUsageDate returns a boolean if a field has been set.
+func (o *AuthMethod) HasUsageDate() bool {
+	if o != nil && o.UsageDate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsageDate gets a reference to the given time.Time and assigns it to the UsageDate field.
+func (o *AuthMethod) SetUsageDate(v time.Time) {
+	o.UsageDate = &v
+}
+
 func (o AuthMethod) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccessInfo != nil {
@@ -253,6 +353,15 @@ func (o AuthMethod) MarshalJSON() ([]byte, error) {
 	}
 	if o.ClientPermissions != nil {
 		toSerialize["client_permissions"] = o.ClientPermissions
+	}
+	if o.CreationDate != nil {
+		toSerialize["creation_date"] = o.CreationDate
+	}
+	if o.ModificationDate != nil {
+		toSerialize["modification_date"] = o.ModificationDate
+	}
+	if o.UsageDate != nil {
+		toSerialize["usage_date"] = o.UsageDate
 	}
 	return json.Marshal(toSerialize)
 }

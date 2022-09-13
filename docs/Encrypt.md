@@ -6,7 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DisplayId** | Pointer to **string** | The display id of the key to use in the encryption process | [optional] 
 **EncryptionContext** | Pointer to **map[string]string** | name-value pair that specifies the encryption context to be used for authenticated encryption. If used here, the same value must be supplied to the decrypt command or decryption will fail | [optional] 
+**InputFormat** | Pointer to **string** | If specified, the plaintext input is assumed to be formatted accordingly. Current supported options: [base64] | [optional] 
 **ItemId** | Pointer to **int64** | The item id of the key to use in the encryption process | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **KeyName** | **string** | The name of the key to use in the encryption process | 
 **Plaintext** | Pointer to **string** | Data to be encrypted | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -81,6 +83,31 @@ SetEncryptionContext sets EncryptionContext field to given value.
 
 HasEncryptionContext returns a boolean if a field has been set.
 
+### GetInputFormat
+
+`func (o *Encrypt) GetInputFormat() string`
+
+GetInputFormat returns the InputFormat field if non-nil, zero value otherwise.
+
+### GetInputFormatOk
+
+`func (o *Encrypt) GetInputFormatOk() (*string, bool)`
+
+GetInputFormatOk returns a tuple with the InputFormat field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInputFormat
+
+`func (o *Encrypt) SetInputFormat(v string)`
+
+SetInputFormat sets InputFormat field to given value.
+
+### HasInputFormat
+
+`func (o *Encrypt) HasInputFormat() bool`
+
+HasInputFormat returns a boolean if a field has been set.
+
 ### GetItemId
 
 `func (o *Encrypt) GetItemId() int64`
@@ -105,6 +132,31 @@ SetItemId sets ItemId field to given value.
 `func (o *Encrypt) HasItemId() bool`
 
 HasItemId returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *Encrypt) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *Encrypt) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *Encrypt) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *Encrypt) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetKeyName
 

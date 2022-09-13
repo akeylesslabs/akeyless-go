@@ -29,6 +29,8 @@ type GatewayUpdateLdapAuthConfig struct {
 	GroupDn *string `json:"group-dn,omitempty"`
 	// Group Filter
 	GroupFilter *string `json:"group-filter,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// LDAP CA Certificate (base64 encoded)
 	LdapCaCert *string `json:"ldap-ca-cert,omitempty"`
 	// Enable Ldap
@@ -256,6 +258,38 @@ func (o *GatewayUpdateLdapAuthConfig) HasGroupFilter() bool {
 // SetGroupFilter gets a reference to the given string and assigns it to the GroupFilter field.
 func (o *GatewayUpdateLdapAuthConfig) SetGroupFilter(v string) {
 	o.GroupFilter = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *GatewayUpdateLdapAuthConfig) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateLdapAuthConfig) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *GatewayUpdateLdapAuthConfig) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *GatewayUpdateLdapAuthConfig) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetLdapCaCert returns the LdapCaCert field value if set, zero value otherwise.
@@ -565,6 +599,9 @@ func (o GatewayUpdateLdapAuthConfig) MarshalJSON() ([]byte, error) {
 	}
 	if o.GroupFilter != nil {
 		toSerialize["group-filter"] = o.GroupFilter
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.LdapCaCert != nil {
 		toSerialize["ldap-ca-cert"] = o.LdapCaCert

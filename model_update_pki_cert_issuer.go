@@ -33,6 +33,8 @@ type UpdatePKICertIssuer struct {
 	CodeSigningFlag *bool `json:"code-signing-flag,omitempty"`
 	// A comma-separated list of the country that will be set in the issued certificate
 	Country *string `json:"country,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// key-usage
 	KeyUsage *string `json:"key-usage,omitempty"`
 	// A comma-separated list of the locality that will be set in the issued certificate
@@ -349,6 +351,38 @@ func (o *UpdatePKICertIssuer) HasCountry() bool {
 // SetCountry gets a reference to the given string and assigns it to the Country field.
 func (o *UpdatePKICertIssuer) SetCountry(v string) {
 	o.Country = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *UpdatePKICertIssuer) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdatePKICertIssuer) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *UpdatePKICertIssuer) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *UpdatePKICertIssuer) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetKeyUsage returns the KeyUsage field value if set, zero value otherwise.
@@ -928,6 +962,9 @@ func (o UpdatePKICertIssuer) MarshalJSON() ([]byte, error) {
 	}
 	if o.Country != nil {
 		toSerialize["country"] = o.Country
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.KeyUsage != nil {
 		toSerialize["key-usage"] = o.KeyUsage

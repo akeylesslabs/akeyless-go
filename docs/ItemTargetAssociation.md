@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **AssocId** | Pointer to **string** |  | [optional] 
 **TargetId** | Pointer to **int64** |  | [optional] 
 **TargetName** | Pointer to **string** |  | [optional] 
+**TargetType** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -101,6 +102,31 @@ SetTargetName sets TargetName field to given value.
 `func (o *ItemTargetAssociation) HasTargetName() bool`
 
 HasTargetName returns a boolean if a field has been set.
+
+### GetTargetType
+
+`func (o *ItemTargetAssociation) GetTargetType() string`
+
+GetTargetType returns the TargetType field if non-nil, zero value otherwise.
+
+### GetTargetTypeOk
+
+`func (o *ItemTargetAssociation) GetTargetTypeOk() (*string, bool)`
+
+GetTargetTypeOk returns a tuple with the TargetType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetType
+
+`func (o *ItemTargetAssociation) SetTargetType(v string)`
+
+SetTargetType sets TargetType field to given value.
+
+### HasTargetType
+
+`func (o *ItemTargetAssociation) HasTargetType() bool`
+
+HasTargetType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -17,6 +17,8 @@ import (
 
 // Tokenize tokenize is a command that encrypts text with a tokenizer
 type Tokenize struct {
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// Data to be encrypted
 	Plaintext string `json:"plaintext"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -46,6 +48,38 @@ func NewTokenize(plaintext string, tokenizerName string, ) *Tokenize {
 func NewTokenizeWithDefaults() *Tokenize {
 	this := Tokenize{}
 	return &this
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *Tokenize) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Tokenize) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *Tokenize) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *Tokenize) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetPlaintext returns the Plaintext field value
@@ -194,6 +228,9 @@ func (o *Tokenize) SetUidToken(v string) {
 
 func (o Tokenize) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
+	}
 	if true {
 		toSerialize["plaintext"] = o.Plaintext
 	}

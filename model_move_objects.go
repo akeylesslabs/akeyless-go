@@ -17,6 +17,8 @@ import (
 
 // MoveObjects struct for MoveObjects
 type MoveObjects struct {
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// The objects type to move (item/auth_method/role)
 	ObjectsType *string `json:"objects-type,omitempty"`
 	// Source path to move the objects from
@@ -50,6 +52,38 @@ func NewMoveObjectsWithDefaults() *MoveObjects {
 	var objectsType string = "item"
 	this.ObjectsType = &objectsType
 	return &this
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *MoveObjects) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MoveObjects) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *MoveObjects) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *MoveObjects) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetObjectsType returns the ObjectsType field value if set, zero value otherwise.
@@ -198,6 +232,9 @@ func (o *MoveObjects) SetUidToken(v string) {
 
 func (o MoveObjects) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
+	}
 	if o.ObjectsType != nil {
 		toSerialize["objects-type"] = o.ObjectsType
 	}

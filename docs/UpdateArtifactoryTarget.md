@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **ArtifactoryAdminPwd** | **string** | Artifactory Admin password | 
 **BaseUrl** | **string** | Base URL | 
 **Comment** | Pointer to **string** | Comment about the target | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **KeepPrevVersion** | Pointer to **string** |  | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Target name | 
@@ -119,6 +120,31 @@ SetComment sets Comment field to given value.
 `func (o *UpdateArtifactoryTarget) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *UpdateArtifactoryTarget) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *UpdateArtifactoryTarget) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *UpdateArtifactoryTarget) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *UpdateArtifactoryTarget) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetKeepPrevVersion
 

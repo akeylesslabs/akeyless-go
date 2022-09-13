@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AutoRotate** | **bool** | Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation | 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Key name | 
 **RotationInterval** | Pointer to **int64** | The number of days to wait between every automatic key rotation (7-365) | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -48,6 +49,31 @@ and a boolean to check if the value has been set.
 
 SetAutoRotate sets AutoRotate field to given value.
 
+
+### GetJson
+
+`func (o *UpdateRotationSettings) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *UpdateRotationSettings) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *UpdateRotationSettings) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *UpdateRotationSettings) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
 
 ### GetName
 

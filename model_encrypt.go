@@ -21,8 +21,12 @@ type Encrypt struct {
 	DisplayId *string `json:"display-id,omitempty"`
 	// name-value pair that specifies the encryption context to be used for authenticated encryption. If used here, the same value must be supplied to the decrypt command or decryption will fail
 	EncryptionContext *map[string]string `json:"encryption-context,omitempty"`
+	// If specified, the plaintext input is assumed to be formatted accordingly. Current supported options: [base64]
+	InputFormat *string `json:"input-format,omitempty"`
 	// The item id of the key to use in the encryption process
 	ItemId *int64 `json:"item-id,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// The name of the key to use in the encryption process
 	KeyName string `json:"key-name"`
 	// Data to be encrypted
@@ -115,6 +119,38 @@ func (o *Encrypt) SetEncryptionContext(v map[string]string) {
 	o.EncryptionContext = &v
 }
 
+// GetInputFormat returns the InputFormat field value if set, zero value otherwise.
+func (o *Encrypt) GetInputFormat() string {
+	if o == nil || o.InputFormat == nil {
+		var ret string
+		return ret
+	}
+	return *o.InputFormat
+}
+
+// GetInputFormatOk returns a tuple with the InputFormat field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Encrypt) GetInputFormatOk() (*string, bool) {
+	if o == nil || o.InputFormat == nil {
+		return nil, false
+	}
+	return o.InputFormat, true
+}
+
+// HasInputFormat returns a boolean if a field has been set.
+func (o *Encrypt) HasInputFormat() bool {
+	if o != nil && o.InputFormat != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInputFormat gets a reference to the given string and assigns it to the InputFormat field.
+func (o *Encrypt) SetInputFormat(v string) {
+	o.InputFormat = &v
+}
+
 // GetItemId returns the ItemId field value if set, zero value otherwise.
 func (o *Encrypt) GetItemId() int64 {
 	if o == nil || o.ItemId == nil {
@@ -145,6 +181,38 @@ func (o *Encrypt) HasItemId() bool {
 // SetItemId gets a reference to the given int64 and assigns it to the ItemId field.
 func (o *Encrypt) SetItemId(v int64) {
 	o.ItemId = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *Encrypt) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Encrypt) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *Encrypt) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *Encrypt) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetKeyName returns the KeyName field value
@@ -275,8 +343,14 @@ func (o Encrypt) MarshalJSON() ([]byte, error) {
 	if o.EncryptionContext != nil {
 		toSerialize["encryption-context"] = o.EncryptionContext
 	}
+	if o.InputFormat != nil {
+		toSerialize["input-format"] = o.InputFormat
+	}
 	if o.ItemId != nil {
 		toSerialize["item-id"] = o.ItemId
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if true {
 		toSerialize["key-name"] = o.KeyName

@@ -17,6 +17,8 @@ import (
 
 // ReverseRBAC reverseRBAC is a command that shows which auth methods have access to a particular object.
 type ReverseRBAC struct {
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// Path to an object
 	Path string `json:"path"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -44,6 +46,38 @@ func NewReverseRBAC(path string, type_ string, ) *ReverseRBAC {
 func NewReverseRBACWithDefaults() *ReverseRBAC {
 	this := ReverseRBAC{}
 	return &this
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *ReverseRBAC) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ReverseRBAC) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *ReverseRBAC) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *ReverseRBAC) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetPath returns the Path field value
@@ -160,6 +194,9 @@ func (o *ReverseRBAC) SetUidToken(v string) {
 
 func (o ReverseRBAC) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
+	}
 	if true {
 		toSerialize["path"] = o.Path
 	}

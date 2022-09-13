@@ -43,6 +43,8 @@ type GatewayUpdateMigration struct {
 	HashiUrl *string `json:"hashi-url,omitempty"`
 	// Migration ID (Can be retrieved with gateway-list-migration command)
 	Id *string `json:"id,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// For Certificate Authentication method K8s Cluster CA certificate (relevant only for K8s migration with Certificate Authentication method)
 	K8sCaCertificate *[]int32 `json:"k8s-ca-certificate,omitempty"`
 	// K8s Client certificate with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Certificate Authentication method)
@@ -65,6 +67,16 @@ type GatewayUpdateMigration struct {
 	Name *string `json:"name,omitempty"`
 	// New migration name
 	NewName *string `json:"new_name,omitempty"`
+	// 1Password user email to connect to the API
+	OpEmail *string `json:"op-email,omitempty"`
+	// 1Password user password to connect to the API
+	OpPassword *string `json:"op-password,omitempty"`
+	// 1Password user secret key to connect to the API
+	OpSecretKey *string `json:"op-secret-key,omitempty"`
+	// 1Password api container url
+	OpUrl *string `json:"op-url,omitempty"`
+	// 1Password list of vault to get the items from
+	OpVaults *[]string `json:"op-vaults,omitempty"`
 	// The name of the key that protects the classic key value (if empty, the account default key will be used)
 	ProtectionKey *string `json:"protection-key,omitempty"`
 	// Target location in Akeyless for imported secrets
@@ -508,6 +520,38 @@ func (o *GatewayUpdateMigration) SetId(v string) {
 	o.Id = &v
 }
 
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *GatewayUpdateMigration) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *GatewayUpdateMigration) SetJson(v bool) {
+	o.Json = &v
+}
+
 // GetK8sCaCertificate returns the K8sCaCertificate field value if set, zero value otherwise.
 func (o *GatewayUpdateMigration) GetK8sCaCertificate() []int32 {
 	if o == nil || o.K8sCaCertificate == nil {
@@ -860,6 +904,166 @@ func (o *GatewayUpdateMigration) SetNewName(v string) {
 	o.NewName = &v
 }
 
+// GetOpEmail returns the OpEmail field value if set, zero value otherwise.
+func (o *GatewayUpdateMigration) GetOpEmail() string {
+	if o == nil || o.OpEmail == nil {
+		var ret string
+		return ret
+	}
+	return *o.OpEmail
+}
+
+// GetOpEmailOk returns a tuple with the OpEmail field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetOpEmailOk() (*string, bool) {
+	if o == nil || o.OpEmail == nil {
+		return nil, false
+	}
+	return o.OpEmail, true
+}
+
+// HasOpEmail returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasOpEmail() bool {
+	if o != nil && o.OpEmail != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOpEmail gets a reference to the given string and assigns it to the OpEmail field.
+func (o *GatewayUpdateMigration) SetOpEmail(v string) {
+	o.OpEmail = &v
+}
+
+// GetOpPassword returns the OpPassword field value if set, zero value otherwise.
+func (o *GatewayUpdateMigration) GetOpPassword() string {
+	if o == nil || o.OpPassword == nil {
+		var ret string
+		return ret
+	}
+	return *o.OpPassword
+}
+
+// GetOpPasswordOk returns a tuple with the OpPassword field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetOpPasswordOk() (*string, bool) {
+	if o == nil || o.OpPassword == nil {
+		return nil, false
+	}
+	return o.OpPassword, true
+}
+
+// HasOpPassword returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasOpPassword() bool {
+	if o != nil && o.OpPassword != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOpPassword gets a reference to the given string and assigns it to the OpPassword field.
+func (o *GatewayUpdateMigration) SetOpPassword(v string) {
+	o.OpPassword = &v
+}
+
+// GetOpSecretKey returns the OpSecretKey field value if set, zero value otherwise.
+func (o *GatewayUpdateMigration) GetOpSecretKey() string {
+	if o == nil || o.OpSecretKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.OpSecretKey
+}
+
+// GetOpSecretKeyOk returns a tuple with the OpSecretKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetOpSecretKeyOk() (*string, bool) {
+	if o == nil || o.OpSecretKey == nil {
+		return nil, false
+	}
+	return o.OpSecretKey, true
+}
+
+// HasOpSecretKey returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasOpSecretKey() bool {
+	if o != nil && o.OpSecretKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOpSecretKey gets a reference to the given string and assigns it to the OpSecretKey field.
+func (o *GatewayUpdateMigration) SetOpSecretKey(v string) {
+	o.OpSecretKey = &v
+}
+
+// GetOpUrl returns the OpUrl field value if set, zero value otherwise.
+func (o *GatewayUpdateMigration) GetOpUrl() string {
+	if o == nil || o.OpUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.OpUrl
+}
+
+// GetOpUrlOk returns a tuple with the OpUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetOpUrlOk() (*string, bool) {
+	if o == nil || o.OpUrl == nil {
+		return nil, false
+	}
+	return o.OpUrl, true
+}
+
+// HasOpUrl returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasOpUrl() bool {
+	if o != nil && o.OpUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOpUrl gets a reference to the given string and assigns it to the OpUrl field.
+func (o *GatewayUpdateMigration) SetOpUrl(v string) {
+	o.OpUrl = &v
+}
+
+// GetOpVaults returns the OpVaults field value if set, zero value otherwise.
+func (o *GatewayUpdateMigration) GetOpVaults() []string {
+	if o == nil || o.OpVaults == nil {
+		var ret []string
+		return ret
+	}
+	return *o.OpVaults
+}
+
+// GetOpVaultsOk returns a tuple with the OpVaults field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetOpVaultsOk() (*[]string, bool) {
+	if o == nil || o.OpVaults == nil {
+		return nil, false
+	}
+	return o.OpVaults, true
+}
+
+// HasOpVaults returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasOpVaults() bool {
+	if o != nil && o.OpVaults != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOpVaults gets a reference to the given []string and assigns it to the OpVaults field.
+func (o *GatewayUpdateMigration) SetOpVaults(v []string) {
+	o.OpVaults = &v
+}
+
 // GetProtectionKey returns the ProtectionKey field value if set, zero value otherwise.
 func (o *GatewayUpdateMigration) GetProtectionKey() string {
 	if o == nil || o.ProtectionKey == nil {
@@ -1029,6 +1233,9 @@ func (o GatewayUpdateMigration) MarshalJSON() ([]byte, error) {
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
+	}
 	if o.K8sCaCertificate != nil {
 		toSerialize["k8s-ca-certificate"] = o.K8sCaCertificate
 	}
@@ -1061,6 +1268,21 @@ func (o GatewayUpdateMigration) MarshalJSON() ([]byte, error) {
 	}
 	if o.NewName != nil {
 		toSerialize["new_name"] = o.NewName
+	}
+	if o.OpEmail != nil {
+		toSerialize["op-email"] = o.OpEmail
+	}
+	if o.OpPassword != nil {
+		toSerialize["op-password"] = o.OpPassword
+	}
+	if o.OpSecretKey != nil {
+		toSerialize["op-secret-key"] = o.OpSecretKey
+	}
+	if o.OpUrl != nil {
+		toSerialize["op-url"] = o.OpUrl
+	}
+	if o.OpVaults != nil {
+		toSerialize["op-vaults"] = o.OpVaults
 	}
 	if o.ProtectionKey != nil {
 		toSerialize["protection-key"] = o.ProtectionKey

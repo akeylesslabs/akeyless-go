@@ -19,6 +19,8 @@ import (
 type UpdateLdapTargetDetails struct {
 	BindDn *string `json:"bind-dn,omitempty"`
 	BindDnPassword *string `json:"bind-dn-password,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	Key *string `json:"key,omitempty"`
 	LdapCaCert *string `json:"ldap-ca-cert,omitempty"`
@@ -116,6 +118,38 @@ func (o *UpdateLdapTargetDetails) HasBindDnPassword() bool {
 // SetBindDnPassword gets a reference to the given string and assigns it to the BindDnPassword field.
 func (o *UpdateLdapTargetDetails) SetBindDnPassword(v string) {
 	o.BindDnPassword = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *UpdateLdapTargetDetails) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateLdapTargetDetails) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *UpdateLdapTargetDetails) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *UpdateLdapTargetDetails) SetJson(v bool) {
+	o.Json = &v
 }
 
 // GetKeepPrevVersion returns the KeepPrevVersion field value if set, zero value otherwise.
@@ -437,6 +471,9 @@ func (o UpdateLdapTargetDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.BindDnPassword != nil {
 		toSerialize["bind-dn-password"] = o.BindDnPassword
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if o.KeepPrevVersion != nil {
 		toSerialize["keep-prev-version"] = o.KeepPrevVersion

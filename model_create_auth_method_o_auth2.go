@@ -31,6 +31,8 @@ type CreateAuthMethodOAuth2 struct {
 	GwBoundIps *[]string `json:"gw-bound-ips,omitempty"`
 	// Issuer URL
 	Issuer *string `json:"issuer,omitempty"`
+	// Set output format to JSON
+	Json *bool `json:"json,omitempty"`
 	// The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server.
 	JwksUri string `json:"jwks-uri"`
 	// Jwt TTL
@@ -293,6 +295,38 @@ func (o *CreateAuthMethodOAuth2) SetIssuer(v string) {
 	o.Issuer = &v
 }
 
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *CreateAuthMethodOAuth2) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodOAuth2) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *CreateAuthMethodOAuth2) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *CreateAuthMethodOAuth2) SetJson(v bool) {
+	o.Json = &v
+}
+
 // GetJwksUri returns the JwksUri field value
 func (o *CreateAuthMethodOAuth2) GetJwksUri() string {
 	if o == nil  {
@@ -483,6 +517,9 @@ func (o CreateAuthMethodOAuth2) MarshalJSON() ([]byte, error) {
 	}
 	if o.Issuer != nil {
 		toSerialize["issuer"] = o.Issuer
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if true {
 		toSerialize["jwks-uri"] = o.JwksUri
