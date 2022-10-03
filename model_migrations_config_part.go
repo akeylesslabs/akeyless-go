@@ -17,6 +17,7 @@ import (
 
 // MigrationsConfigPart struct for MigrationsConfigPart
 type MigrationsConfigPart struct {
+	ActiveDirectoryMigrations *[]ActiveDirectoryMigration `json:"active_directory_migrations,omitempty"`
 	AwsSecretsMigrations *[]AWSSecretsMigration `json:"aws_secrets_migrations,omitempty"`
 	AzureKvMigrations *[]AzureKeyVaultMigration `json:"azure_kv_migrations,omitempty"`
 	GcpSecretsMigrations *[]GCPSecretsMigration `json:"gcp_secrets_migrations,omitempty"`
@@ -40,6 +41,38 @@ func NewMigrationsConfigPart() *MigrationsConfigPart {
 func NewMigrationsConfigPartWithDefaults() *MigrationsConfigPart {
 	this := MigrationsConfigPart{}
 	return &this
+}
+
+// GetActiveDirectoryMigrations returns the ActiveDirectoryMigrations field value if set, zero value otherwise.
+func (o *MigrationsConfigPart) GetActiveDirectoryMigrations() []ActiveDirectoryMigration {
+	if o == nil || o.ActiveDirectoryMigrations == nil {
+		var ret []ActiveDirectoryMigration
+		return ret
+	}
+	return *o.ActiveDirectoryMigrations
+}
+
+// GetActiveDirectoryMigrationsOk returns a tuple with the ActiveDirectoryMigrations field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MigrationsConfigPart) GetActiveDirectoryMigrationsOk() (*[]ActiveDirectoryMigration, bool) {
+	if o == nil || o.ActiveDirectoryMigrations == nil {
+		return nil, false
+	}
+	return o.ActiveDirectoryMigrations, true
+}
+
+// HasActiveDirectoryMigrations returns a boolean if a field has been set.
+func (o *MigrationsConfigPart) HasActiveDirectoryMigrations() bool {
+	if o != nil && o.ActiveDirectoryMigrations != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetActiveDirectoryMigrations gets a reference to the given []ActiveDirectoryMigration and assigns it to the ActiveDirectoryMigrations field.
+func (o *MigrationsConfigPart) SetActiveDirectoryMigrations(v []ActiveDirectoryMigration) {
+	o.ActiveDirectoryMigrations = &v
 }
 
 // GetAwsSecretsMigrations returns the AwsSecretsMigrations field value if set, zero value otherwise.
@@ -236,6 +269,9 @@ func (o *MigrationsConfigPart) SetOnePasswordMigrations(v []OnePasswordMigration
 
 func (o MigrationsConfigPart) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.ActiveDirectoryMigrations != nil {
+		toSerialize["active_directory_migrations"] = o.ActiveDirectoryMigrations
+	}
 	if o.AwsSecretsMigrations != nil {
 		toSerialize["aws_secrets_migrations"] = o.AwsSecretsMigrations
 	}

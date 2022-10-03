@@ -2756,6 +2756,33 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /gateway-migrate-personal-items:
+    post:
+      operationId: gatewayMigratePersonalItems
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayMigratePersonalItems'
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayMigratePersonalItemsOutput'
+          description: gatewayMigratePersonalItemsResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /gateway-migration-status:
     post:
       operationId: gatewayStatusMigration
@@ -7010,6 +7037,12 @@ components:
           schema:
             $ref: '#/components/schemas/GetSubAdminsListReplyObj'
       description: gatewayListSubAdminsResponse wraps response body.
+    gatewayMigratePersonalItemsResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayMigratePersonalItemsOutput'
+      description: gatewayMigratePersonalItemsResponse wraps response body.
     gatewayMigrationCreateResponse:
       content:
         application/json:
@@ -7996,6 +8029,115 @@ components:
           x-go-name: ObjectSettings
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    ActiveDirectoryMigration:
+      example:
+        general:
+          prefix: prefix
+          name: name
+          id: id
+          protection_key: protection_key
+          new_name: new_name
+        payload:
+          auto_rotate: true
+          ssh_port: ssh_port
+          discover_local_users: true
+          auto_rotate_interval_in_days: 4
+          active_directory_target_id: 2
+          local_users_rotated_secrets_path_template: local_users_rotated_secrets_path_template
+          auto_rotate_rotation_hour: 7
+          domain_name: domain_name
+          enable_rdp_sra: true
+          domain_server_targets_path_template: domain_server_targets_path_template
+          user_base_dn: user_base_dn
+          computer_base_dn: computer_base_dn
+          domain_users_rotated_secrets_path_template: domain_users_rotated_secrets_path_template
+          local_users_ignore_list:
+            key: true
+          user_groups:
+          - user_groups
+          - user_groups
+      properties:
+        general:
+          $ref: '#/components/schemas/MigrationGeneral'
+        payload:
+          $ref: '#/components/schemas/ActiveDirectoryPayload'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    ActiveDirectoryPayload:
+      example:
+        auto_rotate: true
+        ssh_port: ssh_port
+        discover_local_users: true
+        auto_rotate_interval_in_days: 4
+        active_directory_target_id: 2
+        local_users_rotated_secrets_path_template: local_users_rotated_secrets_path_template
+        auto_rotate_rotation_hour: 7
+        domain_name: domain_name
+        enable_rdp_sra: true
+        domain_server_targets_path_template: domain_server_targets_path_template
+        user_base_dn: user_base_dn
+        computer_base_dn: computer_base_dn
+        domain_users_rotated_secrets_path_template: domain_users_rotated_secrets_path_template
+        local_users_ignore_list:
+          key: true
+        user_groups:
+        - user_groups
+        - user_groups
+      properties:
+        active_directory_target_id:
+          format: int64
+          type: integer
+          x-go-name: ActiveDirectoryTargetID
+        auto_rotate:
+          type: boolean
+          x-go-name: AutoRotate
+        auto_rotate_interval_in_days:
+          format: int32
+          type: integer
+          x-go-name: AutoRotateIntervalInDays
+        auto_rotate_rotation_hour:
+          format: int32
+          type: integer
+          x-go-name: AutoRotateRotationHour
+        computer_base_dn:
+          type: string
+          x-go-name: ComputerBaseDN
+        discover_local_users:
+          type: boolean
+          x-go-name: DiscoverLocalUsers
+        domain_name:
+          type: string
+          x-go-name: DomainName
+        domain_server_targets_path_template:
+          type: string
+          x-go-name: DomainServerTargetsPathTemplate
+        domain_users_rotated_secrets_path_template:
+          type: string
+          x-go-name: DomainUsersRotatedSecretsPathTemplate
+        enable_rdp_sra:
+          type: boolean
+          x-go-name: EnableRdpSRA
+        local_users_ignore_list:
+          additionalProperties:
+            type: boolean
+          type: object
+          x-go-name: LocalUsersIgnoreList
+        local_users_rotated_secrets_path_template:
+          type: string
+          x-go-name: LocalUsersRotatedSecretsPathTemplate
+        ssh_port:
+          type: string
+          x-go-name: SshPort
+        user_base_dn:
+          type: string
+          x-go-name: UserBaseDN
+        user_groups:
+          items:
+            type: string
+          type: array
+          x-go-name: UserGroups
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     AdminsConfigPart:
       example:
         allowed_access:
@@ -8073,20 +8215,20 @@ components:
         cf:
           customer_fragements:
             key: customer_fragements
-        version: 7
+        version: 5
         producers:
           producers:
           - init: true
             name: name
             active: true
             failure_message: failure_message
-            id: 1
+            id: 6
             type: type
           - init: true
             name: name
             active: true
             failure_message: failure_message
-            id: 1
+            id: 6
             type: type
         general:
           tcp_port: tcp_port
@@ -8175,17 +8317,17 @@ components:
               new_name: new_name
             payload:
               client_key:
-              - 7
-              - 7
+              - 1
+              - 1
               server: server
               password: password
               client_cert:
-              - 4
-              - 4
+              - 1
+              - 1
               namespace: namespace
               ca:
-              - 2
-              - 2
+              - 1
+              - 1
               skip_system: true
               token: token
               username: username
@@ -8197,17 +8339,17 @@ components:
               new_name: new_name
             payload:
               client_key:
-              - 7
-              - 7
+              - 1
+              - 1
               server: server
               password: password
               client_cert:
-              - 4
-              - 4
+              - 1
+              - 1
               namespace: namespace
               ca:
-              - 2
-              - 2
+              - 1
+              - 1
               skip_system: true
               token: token
               username: username
@@ -8261,6 +8403,57 @@ components:
               - vaults
               email: email
               url: url
+          active_directory_migrations:
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              protection_key: protection_key
+              new_name: new_name
+            payload:
+              auto_rotate: true
+              ssh_port: ssh_port
+              discover_local_users: true
+              auto_rotate_interval_in_days: 4
+              active_directory_target_id: 2
+              local_users_rotated_secrets_path_template: local_users_rotated_secrets_path_template
+              auto_rotate_rotation_hour: 7
+              domain_name: domain_name
+              enable_rdp_sra: true
+              domain_server_targets_path_template: domain_server_targets_path_template
+              user_base_dn: user_base_dn
+              computer_base_dn: computer_base_dn
+              domain_users_rotated_secrets_path_template: domain_users_rotated_secrets_path_template
+              local_users_ignore_list:
+                key: true
+              user_groups:
+              - user_groups
+              - user_groups
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              protection_key: protection_key
+              new_name: new_name
+            payload:
+              auto_rotate: true
+              ssh_port: ssh_port
+              discover_local_users: true
+              auto_rotate_interval_in_days: 4
+              active_directory_target_id: 2
+              local_users_rotated_secrets_path_template: local_users_rotated_secrets_path_template
+              auto_rotate_rotation_hour: 7
+              domain_name: domain_name
+              enable_rdp_sra: true
+              domain_server_targets_path_template: domain_server_targets_path_template
+              user_base_dn: user_base_dn
+              computer_base_dn: computer_base_dn
+              domain_users_rotated_secrets_path_template: domain_users_rotated_secrets_path_template
+              local_users_ignore_list:
+                key: true
+              user_groups:
+              - user_groups
+              - user_groups
           gcp_secrets_migrations:
           - general:
               prefix: prefix
@@ -8332,7 +8525,7 @@ components:
             elasticsearch_nodes: elasticsearch_nodes
         saml:
           saml_access_id: saml_access_id
-          default_protection_key_id: 6
+          default_protection_key_id: 4
           oidc_access_id: oidc_access_id
           default_secret_location: default_secret_location
         kmip_clients:
@@ -8393,12 +8586,12 @@ components:
           rotators:
           - rotation_interval: 1
             name: name
-            id: 1
+            id: 7
             last_error: last_error
             type: type
           - rotation_interval: 1
             name: name
-            id: 1
+            id: 7
             last_error: last_error
             type: type
       properties:
@@ -8491,6 +8684,9 @@ components:
           x-go-name: SubClaims
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    AssocRelationship:
+      type: string
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     AuthMethod:
       example:
         account_id: account_id
@@ -8540,8 +8736,8 @@ components:
         client_permissions:
         - client_permissions
         - client_permissions
+        access_date: 2000-01-23T04:56:07.000+00:00
         modification_date: 2000-01-23T04:56:07.000+00:00
-        usage_date: 2000-01-23T04:56:07.000+00:00
         access_info:
           jwt_ttl: 6
           gcp_access_rules:
@@ -8753,6 +8949,10 @@ components:
         auth_method_name: auth_method_name
         auth_method_access_id: auth_method_access_id
       properties:
+        access_date:
+          format: date-time
+          type: string
+          x-go-name: AccessDate
         access_info:
           $ref: '#/components/schemas/AuthMethodAccessInfo'
         account_id:
@@ -8782,10 +8982,6 @@ components:
           format: date-time
           type: string
           x-go-name: ModificationDate
-        usage_date:
-          format: date-time
-          type: string
-          x-go-name: UsageDate
       title: AuthMethod represents a single Auth method.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
@@ -11137,7 +11333,7 @@ components:
     DefaultConfigPart:
       example:
         saml_access_id: saml_access_id
-        default_protection_key_id: 6
+        default_protection_key_id: 4
         oidc_access_id: oidc_access_id
         default_secret_location: default_secret_location
       properties:
@@ -11849,13 +12045,13 @@ components:
           name: name
           active: true
           failure_message: failure_message
-          id: 1
+          id: 6
           type: type
         - init: true
           name: name
           active: true
           failure_message: failure_message
-          id: 1
+          id: 6
           type: type
       properties:
         producers:
@@ -11993,21 +12189,32 @@ components:
           azure_tenant_id: azure_tenant_id
           username: username
         target:
-          last_version: 0
+          credentials_less: true
           target_items_assoc:
           - cluster_id: 1
             assoc_id: assoc_id
             item_type: item_type
+            attributes:
+              key: attributes
             item_name: item_name
+            relationship: relationship
           - cluster_id: 1
             assoc_id: assoc_id
             item_type: item_type
+            attributes:
+              key: attributes
             item_name: item_name
+            relationship: relationship
+          target_name: target_name
+          access_date: 2000-01-23T04:56:07.000+00:00
+          target_type: target_type
+          target_id: 6
+          creation_date: 2000-01-23T04:56:07.000+00:00
+          last_version: 0
           client_permissions:
           - client_permissions
           - client_permissions
           with_customer_fragment: true
-          target_name: target_name
           target_versions:
           - item_version_state: item_version_state
             with_customer_fragment: true
@@ -12023,27 +12230,11 @@ components:
             creation_date: 2000-01-23T04:56:07.000+00:00
             version: 9
             customer_fragment_id: customer_fragment_id
-          target_objects_assoc:
-          - assoc_id: assoc_id
-            target_name: target_name
-            object_type: object_type
-            object_name: object_name
-            attributes:
-              key: attributes
-            object_id: object_id
-          - assoc_id: assoc_id
-            target_name: target_name
-            object_type: object_type
-            object_name: object_name
-            attributes:
-              key: attributes
-            object_id: object_id
-          target_type: target_type
+          modification_date: 2000-01-23T04:56:07.000+00:00
           attributes:
             key: '{}'
           comment: comment
           protection_key_name: protection_key_name
-          target_id: 6
       properties:
         target:
           $ref: '#/components/schemas/Target'
@@ -12237,6 +12428,7 @@ components:
         auto_rotate: true
         item_state: item_state
         display_id: display_id
+        access_date: 2000-01-23T04:56:07.000+00:00
         item_type: item_type
         item_versions:
         - item_version_state: item_version_state
@@ -12253,7 +12445,6 @@ components:
           creation_date: 2000-01-23T04:56:07.000+00:00
           version: 9
           customer_fragment_id: customer_fragment_id
-        usage_date: 2000-01-23T04:56:07.000+00:00
         shared_by:
           unique_id: unique_id
           access_id: access_id
@@ -12563,6 +12754,10 @@ components:
         deletion_date: 2000-01-23T04:56:07.000+00:00
         public_value: public_value
       properties:
+        access_date:
+          format: date-time
+          type: string
+          x-go-name: AccessDate
         auto_rotate:
           type: boolean
           x-go-name: AutoRotate
@@ -12680,10 +12875,6 @@ components:
             $ref: '#/components/schemas/TargetItemVersion'
           type: array
           x-go-name: TargetVersions
-        usage_date:
-          format: date-time
-          type: string
-          x-go-name: UsageDate
         with_customer_fragment:
           type: boolean
           x-go-name: WithCustomerFragment
@@ -13175,17 +13366,17 @@ components:
           new_name: new_name
         payload:
           client_key:
-          - 7
-          - 7
+          - 1
+          - 1
           server: server
           password: password
           client_cert:
-          - 4
-          - 4
+          - 1
+          - 1
           namespace: namespace
           ca:
-          - 2
-          - 2
+          - 1
+          - 1
           skip_system: true
           token: token
           username: username
@@ -13199,17 +13390,17 @@ components:
     K8SPayload:
       example:
         client_key:
-        - 7
-        - 7
+        - 1
+        - 1
         server: server
         password: password
         client_cert:
-        - 4
-        - 4
+        - 1
+        - 1
         namespace: namespace
         ca:
-        - 2
-        - 2
+        - 1
+        - 1
         skip_system: true
         token: token
         username: username
@@ -13775,8 +13966,8 @@ components:
           client_permissions:
           - client_permissions
           - client_permissions
+          access_date: 2000-01-23T04:56:07.000+00:00
           modification_date: 2000-01-23T04:56:07.000+00:00
-          usage_date: 2000-01-23T04:56:07.000+00:00
           access_info:
             jwt_ttl: 6
             gcp_access_rules:
@@ -14034,8 +14225,8 @@ components:
           client_permissions:
           - client_permissions
           - client_permissions
+          access_date: 2000-01-23T04:56:07.000+00:00
           modification_date: 2000-01-23T04:56:07.000+00:00
-          usage_date: 2000-01-23T04:56:07.000+00:00
           access_info:
             jwt_ttl: 6
             gcp_access_rules:
@@ -14269,6 +14460,7 @@ components:
           auto_rotate: true
           item_state: item_state
           display_id: display_id
+          access_date: 2000-01-23T04:56:07.000+00:00
           item_type: item_type
           item_versions:
           - item_version_state: item_version_state
@@ -14285,7 +14477,6 @@ components:
             creation_date: 2000-01-23T04:56:07.000+00:00
             version: 9
             customer_fragment_id: customer_fragment_id
-          usage_date: 2000-01-23T04:56:07.000+00:00
           shared_by:
             unique_id: unique_id
             access_id: access_id
@@ -14598,6 +14789,7 @@ components:
           auto_rotate: true
           item_state: item_state
           display_id: display_id
+          access_date: 2000-01-23T04:56:07.000+00:00
           item_type: item_type
           item_versions:
           - item_version_state: item_version_state
@@ -14614,7 +14806,6 @@ components:
             creation_date: 2000-01-23T04:56:07.000+00:00
             version: 9
             customer_fragment_id: customer_fragment_id
-          usage_date: 2000-01-23T04:56:07.000+00:00
           shared_by:
             unique_id: unique_id
             access_id: access_id
@@ -15035,21 +15226,32 @@ components:
       example:
         next_page: next_page
         targets:
-        - last_version: 0
+        - credentials_less: true
           target_items_assoc:
           - cluster_id: 1
             assoc_id: assoc_id
             item_type: item_type
+            attributes:
+              key: attributes
             item_name: item_name
+            relationship: relationship
           - cluster_id: 1
             assoc_id: assoc_id
             item_type: item_type
+            attributes:
+              key: attributes
             item_name: item_name
+            relationship: relationship
+          target_name: target_name
+          access_date: 2000-01-23T04:56:07.000+00:00
+          target_type: target_type
+          target_id: 6
+          creation_date: 2000-01-23T04:56:07.000+00:00
+          last_version: 0
           client_permissions:
           - client_permissions
           - client_permissions
           with_customer_fragment: true
-          target_name: target_name
           target_versions:
           - item_version_state: item_version_state
             with_customer_fragment: true
@@ -15065,42 +15267,37 @@ components:
             creation_date: 2000-01-23T04:56:07.000+00:00
             version: 9
             customer_fragment_id: customer_fragment_id
-          target_objects_assoc:
-          - assoc_id: assoc_id
-            target_name: target_name
-            object_type: object_type
-            object_name: object_name
-            attributes:
-              key: attributes
-            object_id: object_id
-          - assoc_id: assoc_id
-            target_name: target_name
-            object_type: object_type
-            object_name: object_name
-            attributes:
-              key: attributes
-            object_id: object_id
-          target_type: target_type
+          modification_date: 2000-01-23T04:56:07.000+00:00
           attributes:
             key: '{}'
           comment: comment
           protection_key_name: protection_key_name
-          target_id: 6
-        - last_version: 0
+        - credentials_less: true
           target_items_assoc:
           - cluster_id: 1
             assoc_id: assoc_id
             item_type: item_type
+            attributes:
+              key: attributes
             item_name: item_name
+            relationship: relationship
           - cluster_id: 1
             assoc_id: assoc_id
             item_type: item_type
+            attributes:
+              key: attributes
             item_name: item_name
+            relationship: relationship
+          target_name: target_name
+          access_date: 2000-01-23T04:56:07.000+00:00
+          target_type: target_type
+          target_id: 6
+          creation_date: 2000-01-23T04:56:07.000+00:00
+          last_version: 0
           client_permissions:
           - client_permissions
           - client_permissions
           with_customer_fragment: true
-          target_name: target_name
           target_versions:
           - item_version_state: item_version_state
             with_customer_fragment: true
@@ -15116,27 +15313,11 @@ components:
             creation_date: 2000-01-23T04:56:07.000+00:00
             version: 9
             customer_fragment_id: customer_fragment_id
-          target_objects_assoc:
-          - assoc_id: assoc_id
-            target_name: target_name
-            object_type: object_type
-            object_name: object_name
-            attributes:
-              key: attributes
-            object_id: object_id
-          - assoc_id: assoc_id
-            target_name: target_name
-            object_type: object_type
-            object_name: object_name
-            attributes:
-              key: attributes
-            object_id: object_id
-          target_type: target_type
+          modification_date: 2000-01-23T04:56:07.000+00:00
           attributes:
             key: '{}'
           comment: comment
           protection_key_name: protection_key_name
-          target_id: 6
       properties:
         next_page:
           type: string
@@ -15285,10 +15466,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     MigrationItems:
       example:
-        total: 2
-        failed: 1
-        migrated: 5
-        skipped: 5
+        total: 5
+        failed: 0
+        migrated: 6
+        skipped: 1
       properties:
         failed:
           format: int64
@@ -15345,10 +15526,10 @@ components:
         max_value_length: 6
         migration_name: migration_name
         migration_items:
-          total: 2
-          failed: 1
-          migrated: 5
-          skipped: 5
+          total: 5
+          failed: 0
+          migrated: 6
+          skipped: 1
         migration_state: migration_state
       properties:
         duration_time:
@@ -15474,17 +15655,17 @@ components:
             new_name: new_name
           payload:
             client_key:
-            - 7
-            - 7
+            - 1
+            - 1
             server: server
             password: password
             client_cert:
-            - 4
-            - 4
+            - 1
+            - 1
             namespace: namespace
             ca:
-            - 2
-            - 2
+            - 1
+            - 1
             skip_system: true
             token: token
             username: username
@@ -15496,17 +15677,17 @@ components:
             new_name: new_name
           payload:
             client_key:
-            - 7
-            - 7
+            - 1
+            - 1
             server: server
             password: password
             client_cert:
-            - 4
-            - 4
+            - 1
+            - 1
             namespace: namespace
             ca:
-            - 2
-            - 2
+            - 1
+            - 1
             skip_system: true
             token: token
             username: username
@@ -15560,6 +15741,57 @@ components:
             - vaults
             email: email
             url: url
+        active_directory_migrations:
+        - general:
+            prefix: prefix
+            name: name
+            id: id
+            protection_key: protection_key
+            new_name: new_name
+          payload:
+            auto_rotate: true
+            ssh_port: ssh_port
+            discover_local_users: true
+            auto_rotate_interval_in_days: 4
+            active_directory_target_id: 2
+            local_users_rotated_secrets_path_template: local_users_rotated_secrets_path_template
+            auto_rotate_rotation_hour: 7
+            domain_name: domain_name
+            enable_rdp_sra: true
+            domain_server_targets_path_template: domain_server_targets_path_template
+            user_base_dn: user_base_dn
+            computer_base_dn: computer_base_dn
+            domain_users_rotated_secrets_path_template: domain_users_rotated_secrets_path_template
+            local_users_ignore_list:
+              key: true
+            user_groups:
+            - user_groups
+            - user_groups
+        - general:
+            prefix: prefix
+            name: name
+            id: id
+            protection_key: protection_key
+            new_name: new_name
+          payload:
+            auto_rotate: true
+            ssh_port: ssh_port
+            discover_local_users: true
+            auto_rotate_interval_in_days: 4
+            active_directory_target_id: 2
+            local_users_rotated_secrets_path_template: local_users_rotated_secrets_path_template
+            auto_rotate_rotation_hour: 7
+            domain_name: domain_name
+            enable_rdp_sra: true
+            domain_server_targets_path_template: domain_server_targets_path_template
+            user_base_dn: user_base_dn
+            computer_base_dn: computer_base_dn
+            domain_users_rotated_secrets_path_template: domain_users_rotated_secrets_path_template
+            local_users_ignore_list:
+              key: true
+            user_groups:
+            - user_groups
+            - user_groups
         gcp_secrets_migrations:
         - general:
             prefix: prefix
@@ -15578,6 +15810,11 @@ components:
           payload:
             gcp_credentials_json: gcp_credentials_json
       properties:
+        active_directory_migrations:
+          items:
+            $ref: '#/components/schemas/ActiveDirectoryMigration'
+          type: array
+          x-go-name: ActiveDirectoryMigrations
         aws_secrets_migrations:
           items:
             $ref: '#/components/schemas/AWSSecretsMigration'
@@ -16054,7 +16291,7 @@ components:
         name: name
         active: true
         failure_message: failure_message
-        id: 1
+        id: 6
         type: type
       properties:
         active:
@@ -16090,13 +16327,13 @@ components:
           name: name
           active: true
           failure_message: failure_message
-          id: 1
+          id: 6
           type: type
         - init: true
           name: name
           active: true
           failure_message: failure_message
-          id: 1
+          id: 6
           type: type
       properties:
         producers:
@@ -16452,7 +16689,7 @@ components:
       example:
         rotation_interval: 1
         name: name
-        id: 1
+        id: 7
         last_error: last_error
         type: type
       properties:
@@ -16488,12 +16725,12 @@ components:
         rotators:
         - rotation_interval: 1
           name: name
-          id: 1
+          id: 7
           last_error: last_error
           type: type
         - rotation_interval: 1
           name: name
-          id: 1
+          id: 7
           last_error: last_error
           type: type
       properties:
@@ -16958,21 +17195,32 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     Target:
       example:
-        last_version: 0
+        credentials_less: true
         target_items_assoc:
         - cluster_id: 1
           assoc_id: assoc_id
           item_type: item_type
+          attributes:
+            key: attributes
           item_name: item_name
+          relationship: relationship
         - cluster_id: 1
           assoc_id: assoc_id
           item_type: item_type
+          attributes:
+            key: attributes
           item_name: item_name
+          relationship: relationship
+        target_name: target_name
+        access_date: 2000-01-23T04:56:07.000+00:00
+        target_type: target_type
+        target_id: 6
+        creation_date: 2000-01-23T04:56:07.000+00:00
+        last_version: 0
         client_permissions:
         - client_permissions
         - client_permissions
         with_customer_fragment: true
-        target_name: target_name
         target_versions:
         - item_version_state: item_version_state
           with_customer_fragment: true
@@ -16988,28 +17236,16 @@ components:
           creation_date: 2000-01-23T04:56:07.000+00:00
           version: 9
           customer_fragment_id: customer_fragment_id
-        target_objects_assoc:
-        - assoc_id: assoc_id
-          target_name: target_name
-          object_type: object_type
-          object_name: object_name
-          attributes:
-            key: attributes
-          object_id: object_id
-        - assoc_id: assoc_id
-          target_name: target_name
-          object_type: object_type
-          object_name: object_name
-          attributes:
-            key: attributes
-          object_id: object_id
-        target_type: target_type
+        modification_date: 2000-01-23T04:56:07.000+00:00
         attributes:
           key: '{}'
         comment: comment
         protection_key_name: protection_key_name
-        target_id: 6
       properties:
+        access_date:
+          format: date-time
+          type: string
+          x-go-name: AccessDate
         attributes:
           additionalProperties:
             type: object
@@ -17026,10 +17262,21 @@ components:
         comment:
           type: string
           x-go-name: Comment
+        creation_date:
+          format: date-time
+          type: string
+          x-go-name: CreationDate
+        credentials_less:
+          type: boolean
+          x-go-name: CredentialsLess
         last_version:
           format: int32
           type: integer
           x-go-name: LastVersion
+        modification_date:
+          format: date-time
+          type: string
+          x-go-name: ModificationDate
         protection_key_name:
           type: string
           x-go-name: ProtectionKeyName
@@ -17045,11 +17292,6 @@ components:
         target_name:
           type: string
           x-go-name: TargetName
-        target_objects_assoc:
-          items:
-            $ref: '#/components/schemas/TargetObjectAssociation'
-          type: array
-          x-go-name: TargetObjectsAssoc
         target_type:
           title: TargetType ..
           type: string
@@ -17073,11 +17315,19 @@ components:
         cluster_id: 1
         assoc_id: assoc_id
         item_type: item_type
+        attributes:
+          key: attributes
         item_name: item_name
+        relationship: relationship
       properties:
         assoc_id:
           type: string
           x-go-name: AssociationID
+        attributes:
+          additionalProperties:
+            type: string
+          type: object
+          x-go-name: Attributes
         cluster_id:
           format: int64
           type: integer
@@ -17087,6 +17337,9 @@ components:
           x-go-name: ItemName
         item_type:
           title: ItemType defines types supported by AKEYLESS.
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+        relationship:
           type: string
           x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
       type: object
@@ -17135,41 +17388,6 @@ components:
           type: boolean
           x-go-name: WithCustomerFragment
       title: TargetItemVersion describes an item version in AKEYLESS.
-      type: object
-      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
-    TargetObjectAssociation:
-      description: |-
-        TargetObjectAssociation includes details of an association between a target
-        and an object (target, migration_id).
-      example:
-        assoc_id: assoc_id
-        target_name: target_name
-        object_type: object_type
-        object_name: object_name
-        attributes:
-          key: attributes
-        object_id: object_id
-      properties:
-        assoc_id:
-          type: string
-          x-go-name: AssociationID
-        attributes:
-          additionalProperties:
-            type: string
-          type: object
-          x-go-name: Attributes
-        object_id:
-          type: string
-          x-go-name: ObjectID
-        object_name:
-          type: string
-          x-go-name: ObjectName
-        object_type:
-          type: string
-          x-go-name: ObjectType
-        target_name:
-          type: string
-          x-go-name: TargetName
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     TargetType:
@@ -22299,6 +22517,10 @@ components:
           description: Config encryption key
           type: string
           x-go-name: ConfigEncryptionKey
+        disable-issuer-validation:
+          description: Disable issuer validation
+          type: string
+          x-go-name: DisableISSValidation
         json:
           description: Set output format to JSON
           type: boolean
@@ -22437,6 +22659,127 @@ components:
     gatewayCreateMigration:
       description: gatewayCreateMigration is a command that create migration
       properties:
+        "1password-email":
+          description: 1Password user email to connect to the API
+          type: string
+          x-go-name: OpEmail
+        "1password-password":
+          description: 1Password user password to connect to the API
+          type: string
+          x-go-name: OpPassword
+        "1password-secret-key":
+          description: 1Password user secret key to connect to the API
+          type: string
+          x-go-name: OpSecretKey
+        "1password-url":
+          description: 1Password api container url
+          type: string
+          x-go-name: OpUrl
+        "1password-vaults":
+          description: 1Password list of vault to get the items from
+          items:
+            type: string
+          type: array
+          x-go-name: Vaults
+        AdAutoRotateBoolean:
+          type: boolean
+        AdDiscoverLocalUsersBoolean:
+          type: boolean
+        AdLocalUsersIgnoreList:
+          additionalProperties:
+            type: boolean
+          type: object
+        AdSRAEnableRDPBoolean:
+          type: boolean
+        ad_auto_rotate:
+          description: 'Enable/Disable automatic/recurrent rotation for migrated secrets.
+            Default is false: only manual rotation is allowed for migrated secrets.
+            If set to true, this command should be combined with --ad-rotation-interval
+            and --ad-rotation-hour parameters (Relevant only for Active Directory
+            migration)'
+          type: string
+          x-go-name: AdAutoRotate
+        ad_computer_base_dn:
+          description: 'Distinguished Name of Computer objects (servers) to search
+            in Active Directory e.g.: CN=Computers,DC=example,DC=com (Relevant only
+            for Active Directory migration)'
+          type: string
+          x-go-name: AdComputerBaseDN
+        ad_discover_local_users:
+          description: 'Enable/Disable discovery of local users from each domain server
+            and migrate them as SSH Rotated Secrets. Default is false: only domain
+            users will be migrated. Discovery of local users might require further
+            installation of SSH on the servers, based on the supplied computer base
+            DN. This will be implemented automatically as part of the migration process
+            (Relevant only for Active Directory migration)'
+          type: string
+          x-go-name: AdDiscoverLocalUsers
+        ad_domain_name:
+          description: Active Directory Domain Name (Relevant only for Active Directory
+            migration)
+          type: string
+          x-go-name: AdDomainName
+        ad_domain_users_path_template:
+          description: 'Path location template for migrating domain users as Rotated
+            Secrets e.g.: .../DomainUsers/{{USERNAME}} (Relevant only for Active Directory
+            migration)'
+          type: string
+          x-go-name: AdDomainUsersPathTemplate
+        ad_local_users_ignore:
+          description: Comma-separated list of Local Users which should not be migrated
+            (Relevant only for Active Directory migration)
+          type: string
+          x-go-name: AdLocalUsersIgnore
+        ad_local_users_path_template:
+          description: 'Path location template for migrating domain users as Rotated
+            Secrets e.g.: .../LocalUsers/{{COMPUTER_NAME}}/{{USERNAME}} (Relevant
+            only for Active Directory migration)'
+          type: string
+          x-go-name: AdLocalUsersPathTemplate
+        ad_rotation_hour:
+          description: The hour of the scheduled rotation in UTC (Relevant only for
+            Active Directory migration)
+          format: int32
+          type: integer
+          x-go-name: AdRotationHour
+        ad_rotation_interval:
+          description: The number of days to wait between every automatic rotation
+            [1-365] (Relevant only for Active Directory migration)
+          format: int32
+          type: integer
+          x-go-name: AdRotationInterval
+        ad_sra_enable_rdp:
+          description: 'Enable/Disable RDP Secure Remote Access for the migrated local
+            users rotated secrets. Default is false: rotated secrets will not be created
+            with SRA (Relevant only for Active Directory migration)'
+          type: string
+          x-go-name: AdSRAEnableRDP
+        ad_target_name:
+          description: Active Directory LDAP Target Name. Server type should be Active
+            Directory (Relevant only for Active Directory migration)
+          type: string
+          x-go-name: AdTargetName
+        ad_targets_path_template:
+          description: 'Path location template for migrating domain servers as SSH
+            Targets e.g.: .../Servers/{{COMPUTER_NAME}} (Relevant only for Active
+            Directory migration)'
+          type: string
+          x-go-name: AdTargetsPathTemplate
+        ad_user_base_dn:
+          description: 'Distinguished Name of User objects to search in Active Directory,
+            e.g.: CN=Users,DC=example,DC=com (Relevant only for Active Directory migration)'
+          type: string
+          x-go-name: AdUserBaseDN
+        ad_user_groups:
+          description: Comma-separated list of domain groups from which privileged
+            domain users will be migrated (Relevant only for Active Directory migration)
+          type: string
+          x-go-name: AdUserGroups
+        as_ssh_port:
+          description: Set the SSH Port for further connection to the domain servers.
+            Default is port 22 (Relevant only for Active Directory migration)
+          type: string
+          x-go-name: AdSshPort
         aws-key:
           description: AWS Secret Access Key (relevant only for AWS migration)
           type: string
@@ -22569,28 +22912,6 @@ components:
           description: Migration name
           type: string
           x-go-name: MigrationName
-        op-email:
-          description: 1Password user email to connect to the API
-          type: string
-          x-go-name: OpEmail
-        op-password:
-          description: 1Password user password to connect to the API
-          type: string
-          x-go-name: OpPassword
-        op-secret-key:
-          description: 1Password user secret key to connect to the API
-          type: string
-          x-go-name: OpSecretKey
-        op-url:
-          description: 1Password api container url
-          type: string
-          x-go-name: OpUrl
-        op-vaults:
-          description: 1Password list of vault to get the items from
-          items:
-            type: string
-          type: array
-          x-go-name: Vaults
         protection-key:
           description: The name of the key that protects the classic key value (if
             empty, the account default key will be used)
@@ -22605,7 +22926,7 @@ components:
           type: string
           x-go-name: Profile
         type:
-          description: Migration type (hashi/aws/gcp/k8s/azure_kv/1password)
+          description: Migration type (hashi/aws/gcp/k8s/azure_kv/1password/active_directory)
           type: string
           x-go-name: MigrationType
         uid-token:
@@ -22616,6 +22937,7 @@ components:
           x-go-name: UIDToken
       required:
       - name
+      - target-location
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     gatewayCreateProducerArtifactory:
@@ -30616,6 +30938,73 @@ components:
           x-go-name: UIDToken
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayMigratePersonalItems:
+      description: gatewayMigratePersonalItems is a command that migrate personal
+        items from external vault
+      properties:
+        "1password-email":
+          description: 1Password user email to connect to the API
+          type: string
+          x-go-name: OpEmail
+        "1password-password":
+          description: 1Password user password to connect to the API
+          type: string
+          x-go-name: OpPassword
+        "1password-secret-key":
+          description: 1Password user secret key to connect to the API
+          type: string
+          x-go-name: OpSecretKey
+        "1password-url":
+          description: 1Password api container url
+          type: string
+          x-go-name: OpUrl
+        "1password-vaults":
+          description: 1Password list of vault to get the items from
+          items:
+            type: string
+          type: array
+          x-go-name: Vaults
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        protection-key:
+          description: The name of a key that used to encrypt the secret value
+          type: string
+          x-go-name: ProtectionKey
+        target-location:
+          description: Target location in Akeyless for migrated secrets
+          type: string
+          x-go-name: TargetLocation
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        type:
+          default: 1password
+          description: Migration type for now only 1password.
+          type: string
+          x-go-name: MigrationType
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayMigratePersonalItemsOutput:
+      example:
+        migration_items:
+          total: 5
+          failed: 0
+          migrated: 6
+          skipped: 1
+      properties:
+        migration_items:
+          $ref: '#/components/schemas/MigrationItems'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     gatewayMigrationGetOutput:
       example:
         body:
@@ -30678,17 +31067,17 @@ components:
               new_name: new_name
             payload:
               client_key:
-              - 7
-              - 7
+              - 1
+              - 1
               server: server
               password: password
               client_cert:
-              - 4
-              - 4
+              - 1
+              - 1
               namespace: namespace
               ca:
-              - 2
-              - 2
+              - 1
+              - 1
               skip_system: true
               token: token
               username: username
@@ -30700,17 +31089,17 @@ components:
               new_name: new_name
             payload:
               client_key:
-              - 7
-              - 7
+              - 1
+              - 1
               server: server
               password: password
               client_cert:
-              - 4
-              - 4
+              - 1
+              - 1
               namespace: namespace
               ca:
-              - 2
-              - 2
+              - 1
+              - 1
               skip_system: true
               token: token
               username: username
@@ -30764,6 +31153,57 @@ components:
               - vaults
               email: email
               url: url
+          active_directory_migrations:
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              protection_key: protection_key
+              new_name: new_name
+            payload:
+              auto_rotate: true
+              ssh_port: ssh_port
+              discover_local_users: true
+              auto_rotate_interval_in_days: 4
+              active_directory_target_id: 2
+              local_users_rotated_secrets_path_template: local_users_rotated_secrets_path_template
+              auto_rotate_rotation_hour: 7
+              domain_name: domain_name
+              enable_rdp_sra: true
+              domain_server_targets_path_template: domain_server_targets_path_template
+              user_base_dn: user_base_dn
+              computer_base_dn: computer_base_dn
+              domain_users_rotated_secrets_path_template: domain_users_rotated_secrets_path_template
+              local_users_ignore_list:
+                key: true
+              user_groups:
+              - user_groups
+              - user_groups
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              protection_key: protection_key
+              new_name: new_name
+            payload:
+              auto_rotate: true
+              ssh_port: ssh_port
+              discover_local_users: true
+              auto_rotate_interval_in_days: 4
+              active_directory_target_id: 2
+              local_users_rotated_secrets_path_template: local_users_rotated_secrets_path_template
+              auto_rotate_rotation_hour: 7
+              domain_name: domain_name
+              enable_rdp_sra: true
+              domain_server_targets_path_template: domain_server_targets_path_template
+              user_base_dn: user_base_dn
+              computer_base_dn: computer_base_dn
+              domain_users_rotated_secrets_path_template: domain_users_rotated_secrets_path_template
+              local_users_ignore_list:
+                key: true
+              user_groups:
+              - user_groups
+              - user_groups
           gcp_secrets_migrations:
           - general:
               prefix: prefix
@@ -30848,17 +31288,17 @@ components:
               new_name: new_name
             payload:
               client_key:
-              - 7
-              - 7
+              - 1
+              - 1
               server: server
               password: password
               client_cert:
-              - 4
-              - 4
+              - 1
+              - 1
               namespace: namespace
               ca:
-              - 2
-              - 2
+              - 1
+              - 1
               skip_system: true
               token: token
               username: username
@@ -30870,17 +31310,17 @@ components:
               new_name: new_name
             payload:
               client_key:
-              - 7
-              - 7
+              - 1
+              - 1
               server: server
               password: password
               client_cert:
-              - 4
-              - 4
+              - 1
+              - 1
               namespace: namespace
               ca:
-              - 2
-              - 2
+              - 1
+              - 1
               skip_system: true
               token: token
               username: username
@@ -30934,6 +31374,57 @@ components:
               - vaults
               email: email
               url: url
+          active_directory_migrations:
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              protection_key: protection_key
+              new_name: new_name
+            payload:
+              auto_rotate: true
+              ssh_port: ssh_port
+              discover_local_users: true
+              auto_rotate_interval_in_days: 4
+              active_directory_target_id: 2
+              local_users_rotated_secrets_path_template: local_users_rotated_secrets_path_template
+              auto_rotate_rotation_hour: 7
+              domain_name: domain_name
+              enable_rdp_sra: true
+              domain_server_targets_path_template: domain_server_targets_path_template
+              user_base_dn: user_base_dn
+              computer_base_dn: computer_base_dn
+              domain_users_rotated_secrets_path_template: domain_users_rotated_secrets_path_template
+              local_users_ignore_list:
+                key: true
+              user_groups:
+              - user_groups
+              - user_groups
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              protection_key: protection_key
+              new_name: new_name
+            payload:
+              auto_rotate: true
+              ssh_port: ssh_port
+              discover_local_users: true
+              auto_rotate_interval_in_days: 4
+              active_directory_target_id: 2
+              local_users_rotated_secrets_path_template: local_users_rotated_secrets_path_template
+              auto_rotate_rotation_hour: 7
+              domain_name: domain_name
+              enable_rdp_sra: true
+              domain_server_targets_path_template: domain_server_targets_path_template
+              user_base_dn: user_base_dn
+              computer_base_dn: computer_base_dn
+              domain_users_rotated_secrets_path_template: domain_users_rotated_secrets_path_template
+              local_users_ignore_list:
+                key: true
+              user_groups:
+              - user_groups
+              - user_groups
           gcp_secrets_migrations:
           - general:
               prefix: prefix
@@ -31250,6 +31741,10 @@ components:
           description: Config encryption key
           type: string
           x-go-name: ConfigEncryptionKey
+        disable-issuer-validation:
+          description: Disable issuer validation
+          type: string
+          x-go-name: DisableISSValidation
         json:
           description: Set output format to JSON
           type: boolean
@@ -31393,6 +31888,127 @@ components:
     gatewayUpdateMigration:
       description: gatewayUpdateMigration is a command that update migration
       properties:
+        "1password-email":
+          description: 1Password user email to connect to the API
+          type: string
+          x-go-name: OpEmail
+        "1password-password":
+          description: 1Password user password to connect to the API
+          type: string
+          x-go-name: OpPassword
+        "1password-secret-key":
+          description: 1Password user secret key to connect to the API
+          type: string
+          x-go-name: OpSecretKey
+        "1password-url":
+          description: 1Password api container url
+          type: string
+          x-go-name: OpUrl
+        "1password-vaults":
+          description: 1Password list of vault to get the items from
+          items:
+            type: string
+          type: array
+          x-go-name: Vaults
+        AdAutoRotateBoolean:
+          type: boolean
+        AdDiscoverLocalUsersBoolean:
+          type: boolean
+        AdLocalUsersIgnoreList:
+          additionalProperties:
+            type: boolean
+          type: object
+        AdSRAEnableRDPBoolean:
+          type: boolean
+        ad_auto_rotate:
+          description: 'Enable/Disable automatic/recurrent rotation for migrated secrets.
+            Default is false: only manual rotation is allowed for migrated secrets.
+            If set to true, this command should be combined with --ad-rotation-interval
+            and --ad-rotation-hour parameters (Relevant only for Active Directory
+            migration)'
+          type: string
+          x-go-name: AdAutoRotate
+        ad_computer_base_dn:
+          description: 'Distinguished Name of Computer objects (servers) to search
+            in Active Directory e.g.: CN=Computers,DC=example,DC=com (Relevant only
+            for Active Directory migration)'
+          type: string
+          x-go-name: AdComputerBaseDN
+        ad_discover_local_users:
+          description: 'Enable/Disable discovery of local users from each domain server
+            and migrate them as SSH Rotated Secrets. Default is false: only domain
+            users will be migrated. Discovery of local users might require further
+            installation of SSH on the servers, based on the supplied computer base
+            DN. This will be implemented automatically as part of the migration process
+            (Relevant only for Active Directory migration)'
+          type: string
+          x-go-name: AdDiscoverLocalUsers
+        ad_domain_name:
+          description: Active Directory Domain Name (Relevant only for Active Directory
+            migration)
+          type: string
+          x-go-name: AdDomainName
+        ad_domain_users_path_template:
+          description: 'Path location template for migrating domain users as Rotated
+            Secrets e.g.: .../DomainUsers/{{USERNAME}} (Relevant only for Active Directory
+            migration)'
+          type: string
+          x-go-name: AdDomainUsersPathTemplate
+        ad_local_users_ignore:
+          description: Comma-separated list of Local Users which should not be migrated
+            (Relevant only for Active Directory migration)
+          type: string
+          x-go-name: AdLocalUsersIgnore
+        ad_local_users_path_template:
+          description: 'Path location template for migrating domain users as Rotated
+            Secrets e.g.: .../LocalUsers/{{COMPUTER_NAME}}/{{USERNAME}} (Relevant
+            only for Active Directory migration)'
+          type: string
+          x-go-name: AdLocalUsersPathTemplate
+        ad_rotation_hour:
+          description: The hour of the scheduled rotation in UTC (Relevant only for
+            Active Directory migration)
+          format: int32
+          type: integer
+          x-go-name: AdRotationHour
+        ad_rotation_interval:
+          description: The number of days to wait between every automatic rotation
+            [1-365] (Relevant only for Active Directory migration)
+          format: int32
+          type: integer
+          x-go-name: AdRotationInterval
+        ad_sra_enable_rdp:
+          description: 'Enable/Disable RDP Secure Remote Access for the migrated local
+            users rotated secrets. Default is false: rotated secrets will not be created
+            with SRA (Relevant only for Active Directory migration)'
+          type: string
+          x-go-name: AdSRAEnableRDP
+        ad_target_name:
+          description: Active Directory LDAP Target Name. Server type should be Active
+            Directory (Relevant only for Active Directory migration)
+          type: string
+          x-go-name: AdTargetName
+        ad_targets_path_template:
+          description: 'Path location template for migrating domain servers as SSH
+            Targets e.g.: .../Servers/{{COMPUTER_NAME}} (Relevant only for Active
+            Directory migration)'
+          type: string
+          x-go-name: AdTargetsPathTemplate
+        ad_user_base_dn:
+          description: 'Distinguished Name of User objects to search in Active Directory,
+            e.g.: CN=Users,DC=example,DC=com (Relevant only for Active Directory migration)'
+          type: string
+          x-go-name: AdUserBaseDN
+        ad_user_groups:
+          description: Comma-separated list of domain groups from which privileged
+            domain users will be migrated (Relevant only for Active Directory migration)
+          type: string
+          x-go-name: AdUserGroups
+        as_ssh_port:
+          description: Set the SSH Port for further connection to the domain servers.
+            Default is port 22 (Relevant only for Active Directory migration)
+          type: string
+          x-go-name: AdSshPort
         aws-key:
           description: AWS Secret Access Key (relevant only for AWS migration)
           type: string
@@ -31534,28 +32150,6 @@ components:
           description: New migration name
           type: string
           x-go-name: NewMigrationName
-        op-email:
-          description: 1Password user email to connect to the API
-          type: string
-          x-go-name: OpEmail
-        op-password:
-          description: 1Password user password to connect to the API
-          type: string
-          x-go-name: OpPassword
-        op-secret-key:
-          description: 1Password user secret key to connect to the API
-          type: string
-          x-go-name: OpSecretKey
-        op-url:
-          description: 1Password api container url
-          type: string
-          x-go-name: OpUrl
-        op-vaults:
-          description: 1Password list of vault to get the items from
-          items:
-            type: string
-          type: array
-          x-go-name: Vaults
         protection-key:
           description: The name of the key that protects the classic key value (if
             empty, the account default key will be used)
@@ -31575,6 +32169,8 @@ components:
             authentication
           type: string
           x-go-name: UIDToken
+      required:
+      - target-location
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     gatewayUpdateProducerArtifactory:

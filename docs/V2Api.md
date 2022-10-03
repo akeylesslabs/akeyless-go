@@ -105,6 +105,7 @@ Method | HTTP request | Description
 [**GatewayListAllowedManagementAccess**](V2Api.md#GatewayListAllowedManagementAccess) | **Post** /gateway-list-allowed-management-access | 
 [**GatewayListMigration**](V2Api.md#GatewayListMigration) | **Post** /gateway-list-migration | 
 [**GatewayListProducers**](V2Api.md#GatewayListProducers) | **Post** /gateway-list-producers | 
+[**GatewayMigratePersonalItems**](V2Api.md#GatewayMigratePersonalItems) | **Post** /gateway-migrate-personal-items | 
 [**GatewayRevokeTmpUsers**](V2Api.md#GatewayRevokeTmpUsers) | **Post** /gateway-revoke-producer-tmp-creds | 
 [**GatewayStartProducer**](V2Api.md#GatewayStartProducer) | **Post** /gateway-start-producer | 
 [**GatewayStatusMigration**](V2Api.md#GatewayStatusMigration) | **Post** /gateway-migration-status | 
@@ -4358,7 +4359,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateMigration("Name_example") // GatewayCreateMigration | 
+    body := *openapiclient.NewgatewayCreateMigration("Name_example", "TargetLocation_example") // GatewayCreateMigration | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -6707,6 +6708,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GatewayMigratePersonalItems
+
+> GatewayMigratePersonalItemsOutput GatewayMigratePersonalItems(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayMigratePersonalItems() // GatewayMigratePersonalItems |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayMigratePersonalItems(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayMigratePersonalItems``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayMigratePersonalItems`: GatewayMigratePersonalItemsOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayMigratePersonalItems`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayMigratePersonalItemsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayMigratePersonalItems**](GatewayMigratePersonalItems.md) |  | 
+
+### Return type
+
+[**GatewayMigratePersonalItemsOutput**](gatewayMigratePersonalItemsOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GatewayRevokeTmpUsers
 
 > GatewayRevokeTmpUsers(ctx).Body(body).Execute()
@@ -7236,7 +7301,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayUpdateMigration() // GatewayUpdateMigration | 
+    body := *openapiclient.NewgatewayUpdateMigration("TargetLocation_example") // GatewayUpdateMigration | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

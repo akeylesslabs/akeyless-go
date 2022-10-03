@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AccessDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **AutoRotate** | Pointer to **bool** |  | [optional] 
 **CertIssuerSignerKeyName** | Pointer to **string** |  | [optional] 
 **CertificateIssueDetails** | Pointer to [**CertificateIssueInfo**](CertificateIssueInfo.md) |  | [optional] 
@@ -36,7 +37,6 @@ Name | Type | Description | Notes
 **RotationInterval** | Pointer to **int64** |  | [optional] 
 **SharedBy** | Pointer to [**RuleAssigner**](RuleAssigner.md) |  | [optional] 
 **TargetVersions** | Pointer to [**[]TargetItemVersion**](TargetItemVersion.md) |  | [optional] 
-**UsageDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **WithCustomerFragment** | Pointer to **bool** |  | [optional] 
 
 ## Methods
@@ -57,6 +57,31 @@ will change when the set of required properties is changed
 NewItemWithDefaults instantiates a new Item object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAccessDate
+
+`func (o *Item) GetAccessDate() time.Time`
+
+GetAccessDate returns the AccessDate field if non-nil, zero value otherwise.
+
+### GetAccessDateOk
+
+`func (o *Item) GetAccessDateOk() (*time.Time, bool)`
+
+GetAccessDateOk returns a tuple with the AccessDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessDate
+
+`func (o *Item) SetAccessDate(v time.Time)`
+
+SetAccessDate sets AccessDate field to given value.
+
+### HasAccessDate
+
+`func (o *Item) HasAccessDate() bool`
+
+HasAccessDate returns a boolean if a field has been set.
 
 ### GetAutoRotate
 
@@ -857,31 +882,6 @@ SetTargetVersions sets TargetVersions field to given value.
 `func (o *Item) HasTargetVersions() bool`
 
 HasTargetVersions returns a boolean if a field has been set.
-
-### GetUsageDate
-
-`func (o *Item) GetUsageDate() time.Time`
-
-GetUsageDate returns the UsageDate field if non-nil, zero value otherwise.
-
-### GetUsageDateOk
-
-`func (o *Item) GetUsageDateOk() (*time.Time, bool)`
-
-GetUsageDateOk returns a tuple with the UsageDate field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUsageDate
-
-`func (o *Item) SetUsageDate(v time.Time)`
-
-SetUsageDate sets UsageDate field to given value.
-
-### HasUsageDate
-
-`func (o *Item) HasUsageDate() bool`
-
-HasUsageDate returns a boolean if a field has been set.
 
 ### GetWithCustomerFragment
 

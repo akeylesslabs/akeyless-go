@@ -18,6 +18,7 @@ import (
 
 // Item struct for Item
 type Item struct {
+	AccessDate *time.Time `json:"access_date,omitempty"`
 	AutoRotate *bool `json:"auto_rotate,omitempty"`
 	CertIssuerSignerKeyName *string `json:"cert_issuer_signer_key_name,omitempty"`
 	CertificateIssueDetails *CertificateIssueInfo `json:"certificate_issue_details,omitempty"`
@@ -51,7 +52,6 @@ type Item struct {
 	RotationInterval *int64 `json:"rotation_interval,omitempty"`
 	SharedBy *RuleAssigner `json:"shared_by,omitempty"`
 	TargetVersions *[]TargetItemVersion `json:"target_versions,omitempty"`
-	UsageDate *time.Time `json:"usage_date,omitempty"`
 	WithCustomerFragment *bool `json:"with_customer_fragment,omitempty"`
 }
 
@@ -70,6 +70,38 @@ func NewItem() *Item {
 func NewItemWithDefaults() *Item {
 	this := Item{}
 	return &this
+}
+
+// GetAccessDate returns the AccessDate field value if set, zero value otherwise.
+func (o *Item) GetAccessDate() time.Time {
+	if o == nil || o.AccessDate == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.AccessDate
+}
+
+// GetAccessDateOk returns a tuple with the AccessDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Item) GetAccessDateOk() (*time.Time, bool) {
+	if o == nil || o.AccessDate == nil {
+		return nil, false
+	}
+	return o.AccessDate, true
+}
+
+// HasAccessDate returns a boolean if a field has been set.
+func (o *Item) HasAccessDate() bool {
+	if o != nil && o.AccessDate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessDate gets a reference to the given time.Time and assigns it to the AccessDate field.
+func (o *Item) SetAccessDate(v time.Time) {
+	o.AccessDate = &v
 }
 
 // GetAutoRotate returns the AutoRotate field value if set, zero value otherwise.
@@ -1096,38 +1128,6 @@ func (o *Item) SetTargetVersions(v []TargetItemVersion) {
 	o.TargetVersions = &v
 }
 
-// GetUsageDate returns the UsageDate field value if set, zero value otherwise.
-func (o *Item) GetUsageDate() time.Time {
-	if o == nil || o.UsageDate == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.UsageDate
-}
-
-// GetUsageDateOk returns a tuple with the UsageDate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Item) GetUsageDateOk() (*time.Time, bool) {
-	if o == nil || o.UsageDate == nil {
-		return nil, false
-	}
-	return o.UsageDate, true
-}
-
-// HasUsageDate returns a boolean if a field has been set.
-func (o *Item) HasUsageDate() bool {
-	if o != nil && o.UsageDate != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsageDate gets a reference to the given time.Time and assigns it to the UsageDate field.
-func (o *Item) SetUsageDate(v time.Time) {
-	o.UsageDate = &v
-}
-
 // GetWithCustomerFragment returns the WithCustomerFragment field value if set, zero value otherwise.
 func (o *Item) GetWithCustomerFragment() bool {
 	if o == nil || o.WithCustomerFragment == nil {
@@ -1162,6 +1162,9 @@ func (o *Item) SetWithCustomerFragment(v bool) {
 
 func (o Item) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AccessDate != nil {
+		toSerialize["access_date"] = o.AccessDate
+	}
 	if o.AutoRotate != nil {
 		toSerialize["auto_rotate"] = o.AutoRotate
 	}
@@ -1257,9 +1260,6 @@ func (o Item) MarshalJSON() ([]byte, error) {
 	}
 	if o.TargetVersions != nil {
 		toSerialize["target_versions"] = o.TargetVersions
-	}
-	if o.UsageDate != nil {
-		toSerialize["usage_date"] = o.UsageDate
 	}
 	if o.WithCustomerFragment != nil {
 		toSerialize["with_customer_fragment"] = o.WithCustomerFragment

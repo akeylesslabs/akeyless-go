@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ActiveDirectoryMigrations** | Pointer to [**[]ActiveDirectoryMigration**](ActiveDirectoryMigration.md) |  | [optional] 
 **AwsSecretsMigrations** | Pointer to [**[]AWSSecretsMigration**](AWSSecretsMigration.md) |  | [optional] 
 **AzureKvMigrations** | Pointer to [**[]AzureKeyVaultMigration**](AzureKeyVaultMigration.md) |  | [optional] 
 **GcpSecretsMigrations** | Pointer to [**[]GCPSecretsMigration**](GCPSecretsMigration.md) |  | [optional] 
@@ -29,6 +30,31 @@ will change when the set of required properties is changed
 NewMigrationsConfigPartWithDefaults instantiates a new MigrationsConfigPart object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetActiveDirectoryMigrations
+
+`func (o *MigrationsConfigPart) GetActiveDirectoryMigrations() []ActiveDirectoryMigration`
+
+GetActiveDirectoryMigrations returns the ActiveDirectoryMigrations field if non-nil, zero value otherwise.
+
+### GetActiveDirectoryMigrationsOk
+
+`func (o *MigrationsConfigPart) GetActiveDirectoryMigrationsOk() (*[]ActiveDirectoryMigration, bool)`
+
+GetActiveDirectoryMigrationsOk returns a tuple with the ActiveDirectoryMigrations field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetActiveDirectoryMigrations
+
+`func (o *MigrationsConfigPart) SetActiveDirectoryMigrations(v []ActiveDirectoryMigration)`
+
+SetActiveDirectoryMigrations sets ActiveDirectoryMigrations field to given value.
+
+### HasActiveDirectoryMigrations
+
+`func (o *MigrationsConfigPart) HasActiveDirectoryMigrations() bool`
+
+HasActiveDirectoryMigrations returns a boolean if a field has been set.
 
 ### GetAwsSecretsMigrations
 

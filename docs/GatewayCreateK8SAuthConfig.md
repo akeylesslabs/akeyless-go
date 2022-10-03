@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **AccessId** | **string** | The access ID of the Kubernetes auth method | 
 **ClusterApiType** | Pointer to **string** | Cluster access type. options: [native_k8s, rancher] | [optional] [default to "native_k8s"]
 **ConfigEncryptionKeyName** | Pointer to **string** | Config encryption key | [optional] 
+**DisableIssuerValidation** | Pointer to **string** | Disable issuer validation | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **K8sCaCert** | Pointer to **string** | The CA Certificate (base64 encoded) to use to call into the kubernetes API server | [optional] 
 **K8sHost** | **string** | The URL of the kubernetes API server | 
@@ -108,6 +109,31 @@ SetConfigEncryptionKeyName sets ConfigEncryptionKeyName field to given value.
 `func (o *GatewayCreateK8SAuthConfig) HasConfigEncryptionKeyName() bool`
 
 HasConfigEncryptionKeyName returns a boolean if a field has been set.
+
+### GetDisableIssuerValidation
+
+`func (o *GatewayCreateK8SAuthConfig) GetDisableIssuerValidation() string`
+
+GetDisableIssuerValidation returns the DisableIssuerValidation field if non-nil, zero value otherwise.
+
+### GetDisableIssuerValidationOk
+
+`func (o *GatewayCreateK8SAuthConfig) GetDisableIssuerValidationOk() (*string, bool)`
+
+GetDisableIssuerValidationOk returns a tuple with the DisableIssuerValidation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisableIssuerValidation
+
+`func (o *GatewayCreateK8SAuthConfig) SetDisableIssuerValidation(v string)`
+
+SetDisableIssuerValidation sets DisableIssuerValidation field to given value.
+
+### HasDisableIssuerValidation
+
+`func (o *GatewayCreateK8SAuthConfig) HasDisableIssuerValidation() bool`
+
+HasDisableIssuerValidation returns a boolean if a field has been set.
 
 ### GetJson
 

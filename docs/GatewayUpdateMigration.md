@@ -4,6 +4,30 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Var1passwordEmail** | Pointer to **string** | 1Password user email to connect to the API | [optional] 
+**Var1passwordPassword** | Pointer to **string** | 1Password user password to connect to the API | [optional] 
+**Var1passwordSecretKey** | Pointer to **string** | 1Password user secret key to connect to the API | [optional] 
+**Var1passwordUrl** | Pointer to **string** | 1Password api container url | [optional] 
+**Var1passwordVaults** | Pointer to **[]string** | 1Password list of vault to get the items from | [optional] 
+**AdAutoRotateBoolean** | Pointer to **bool** |  | [optional] 
+**AdDiscoverLocalUsersBoolean** | Pointer to **bool** |  | [optional] 
+**AdLocalUsersIgnoreList** | Pointer to **map[string]bool** |  | [optional] 
+**AdSRAEnableRDPBoolean** | Pointer to **bool** |  | [optional] 
+**AdAutoRotate** | Pointer to **string** | Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with --ad-rotation-interval and --ad-rotation-hour parameters (Relevant only for Active Directory migration) | [optional] 
+**AdComputerBaseDn** | Pointer to **string** | Distinguished Name of Computer objects (servers) to search in Active Directory e.g.: CN&#x3D;Computers,DC&#x3D;example,DC&#x3D;com (Relevant only for Active Directory migration) | [optional] 
+**AdDiscoverLocalUsers** | Pointer to **string** | Enable/Disable discovery of local users from each domain server and migrate them as SSH Rotated Secrets. Default is false: only domain users will be migrated. Discovery of local users might require further installation of SSH on the servers, based on the supplied computer base DN. This will be implemented automatically as part of the migration process (Relevant only for Active Directory migration) | [optional] 
+**AdDomainName** | Pointer to **string** | Active Directory Domain Name (Relevant only for Active Directory migration) | [optional] 
+**AdDomainUsersPathTemplate** | Pointer to **string** | Path location template for migrating domain users as Rotated Secrets e.g.: .../DomainUsers/{{USERNAME}} (Relevant only for Active Directory migration) | [optional] 
+**AdLocalUsersIgnore** | Pointer to **string** | Comma-separated list of Local Users which should not be migrated (Relevant only for Active Directory migration) | [optional] 
+**AdLocalUsersPathTemplate** | Pointer to **string** | Path location template for migrating domain users as Rotated Secrets e.g.: .../LocalUsers/{{COMPUTER_NAME}}/{{USERNAME}} (Relevant only for Active Directory migration) | [optional] 
+**AdRotationHour** | Pointer to **int32** | The hour of the scheduled rotation in UTC (Relevant only for Active Directory migration) | [optional] 
+**AdRotationInterval** | Pointer to **int32** | The number of days to wait between every automatic rotation [1-365] (Relevant only for Active Directory migration) | [optional] 
+**AdSraEnableRdp** | Pointer to **string** | Enable/Disable RDP Secure Remote Access for the migrated local users rotated secrets. Default is false: rotated secrets will not be created with SRA (Relevant only for Active Directory migration) | [optional] 
+**AdTargetName** | Pointer to **string** | Active Directory LDAP Target Name. Server type should be Active Directory (Relevant only for Active Directory migration) | [optional] 
+**AdTargetsPathTemplate** | Pointer to **string** | Path location template for migrating domain servers as SSH Targets e.g.: .../Servers/{{COMPUTER_NAME}} (Relevant only for Active Directory migration) | [optional] 
+**AdUserBaseDn** | Pointer to **string** | Distinguished Name of User objects to search in Active Directory, e.g.: CN&#x3D;Users,DC&#x3D;example,DC&#x3D;com (Relevant only for Active Directory migration) | [optional] 
+**AdUserGroups** | Pointer to **string** | Comma-separated list of domain groups from which privileged domain users will be migrated (Relevant only for Active Directory migration) | [optional] 
+**AsSshPort** | Pointer to **string** | Set the SSH Port for further connection to the domain servers. Default is port 22 (Relevant only for Active Directory migration) | [optional] 
 **AwsKey** | Pointer to **string** | AWS Secret Access Key (relevant only for AWS migration) | [optional] 
 **AwsKeyId** | Pointer to **string** | AWS Access Key ID with sufficient permissions to get all secrets, e.g. &#39;arn:aws:secretsmanager:[Region]:[AccountId]:secret:[/path/to/secrets/_*]&#39; (relevant only for AWS migration) | [optional] 
 **AwsRegion** | Pointer to **string** | AWS region of the required Secrets Manager (relevant only for AWS migration) | [optional] 
@@ -29,13 +53,8 @@ Name | Type | Description | Notes
 **K8sUsername** | Pointer to **string** | For Password Authentication method K8s Client username with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Password Authentication method) | [optional] 
 **Name** | Pointer to **string** | Migration name | [optional] 
 **NewName** | Pointer to **string** | New migration name | [optional] 
-**OpEmail** | Pointer to **string** | 1Password user email to connect to the API | [optional] 
-**OpPassword** | Pointer to **string** | 1Password user password to connect to the API | [optional] 
-**OpSecretKey** | Pointer to **string** | 1Password user secret key to connect to the API | [optional] 
-**OpUrl** | Pointer to **string** | 1Password api container url | [optional] 
-**OpVaults** | Pointer to **[]string** | 1Password list of vault to get the items from | [optional] 
 **ProtectionKey** | Pointer to **string** | The name of the key that protects the classic key value (if empty, the account default key will be used) | [optional] 
-**TargetLocation** | Pointer to **string** | Target location in Akeyless for imported secrets | [optional] 
+**TargetLocation** | **string** | Target location in Akeyless for imported secrets | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
@@ -43,7 +62,7 @@ Name | Type | Description | Notes
 
 ### NewGatewayUpdateMigration
 
-`func NewGatewayUpdateMigration() *GatewayUpdateMigration`
+`func NewGatewayUpdateMigration(targetLocation string, ) *GatewayUpdateMigration`
 
 NewGatewayUpdateMigration instantiates a new GatewayUpdateMigration object
 This constructor will assign default values to properties that have it defined,
@@ -57,6 +76,606 @@ will change when the set of required properties is changed
 NewGatewayUpdateMigrationWithDefaults instantiates a new GatewayUpdateMigration object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetVar1passwordEmail
+
+`func (o *GatewayUpdateMigration) GetVar1passwordEmail() string`
+
+GetVar1passwordEmail returns the Var1passwordEmail field if non-nil, zero value otherwise.
+
+### GetVar1passwordEmailOk
+
+`func (o *GatewayUpdateMigration) GetVar1passwordEmailOk() (*string, bool)`
+
+GetVar1passwordEmailOk returns a tuple with the Var1passwordEmail field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVar1passwordEmail
+
+`func (o *GatewayUpdateMigration) SetVar1passwordEmail(v string)`
+
+SetVar1passwordEmail sets Var1passwordEmail field to given value.
+
+### HasVar1passwordEmail
+
+`func (o *GatewayUpdateMigration) HasVar1passwordEmail() bool`
+
+HasVar1passwordEmail returns a boolean if a field has been set.
+
+### GetVar1passwordPassword
+
+`func (o *GatewayUpdateMigration) GetVar1passwordPassword() string`
+
+GetVar1passwordPassword returns the Var1passwordPassword field if non-nil, zero value otherwise.
+
+### GetVar1passwordPasswordOk
+
+`func (o *GatewayUpdateMigration) GetVar1passwordPasswordOk() (*string, bool)`
+
+GetVar1passwordPasswordOk returns a tuple with the Var1passwordPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVar1passwordPassword
+
+`func (o *GatewayUpdateMigration) SetVar1passwordPassword(v string)`
+
+SetVar1passwordPassword sets Var1passwordPassword field to given value.
+
+### HasVar1passwordPassword
+
+`func (o *GatewayUpdateMigration) HasVar1passwordPassword() bool`
+
+HasVar1passwordPassword returns a boolean if a field has been set.
+
+### GetVar1passwordSecretKey
+
+`func (o *GatewayUpdateMigration) GetVar1passwordSecretKey() string`
+
+GetVar1passwordSecretKey returns the Var1passwordSecretKey field if non-nil, zero value otherwise.
+
+### GetVar1passwordSecretKeyOk
+
+`func (o *GatewayUpdateMigration) GetVar1passwordSecretKeyOk() (*string, bool)`
+
+GetVar1passwordSecretKeyOk returns a tuple with the Var1passwordSecretKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVar1passwordSecretKey
+
+`func (o *GatewayUpdateMigration) SetVar1passwordSecretKey(v string)`
+
+SetVar1passwordSecretKey sets Var1passwordSecretKey field to given value.
+
+### HasVar1passwordSecretKey
+
+`func (o *GatewayUpdateMigration) HasVar1passwordSecretKey() bool`
+
+HasVar1passwordSecretKey returns a boolean if a field has been set.
+
+### GetVar1passwordUrl
+
+`func (o *GatewayUpdateMigration) GetVar1passwordUrl() string`
+
+GetVar1passwordUrl returns the Var1passwordUrl field if non-nil, zero value otherwise.
+
+### GetVar1passwordUrlOk
+
+`func (o *GatewayUpdateMigration) GetVar1passwordUrlOk() (*string, bool)`
+
+GetVar1passwordUrlOk returns a tuple with the Var1passwordUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVar1passwordUrl
+
+`func (o *GatewayUpdateMigration) SetVar1passwordUrl(v string)`
+
+SetVar1passwordUrl sets Var1passwordUrl field to given value.
+
+### HasVar1passwordUrl
+
+`func (o *GatewayUpdateMigration) HasVar1passwordUrl() bool`
+
+HasVar1passwordUrl returns a boolean if a field has been set.
+
+### GetVar1passwordVaults
+
+`func (o *GatewayUpdateMigration) GetVar1passwordVaults() []string`
+
+GetVar1passwordVaults returns the Var1passwordVaults field if non-nil, zero value otherwise.
+
+### GetVar1passwordVaultsOk
+
+`func (o *GatewayUpdateMigration) GetVar1passwordVaultsOk() (*[]string, bool)`
+
+GetVar1passwordVaultsOk returns a tuple with the Var1passwordVaults field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVar1passwordVaults
+
+`func (o *GatewayUpdateMigration) SetVar1passwordVaults(v []string)`
+
+SetVar1passwordVaults sets Var1passwordVaults field to given value.
+
+### HasVar1passwordVaults
+
+`func (o *GatewayUpdateMigration) HasVar1passwordVaults() bool`
+
+HasVar1passwordVaults returns a boolean if a field has been set.
+
+### GetAdAutoRotateBoolean
+
+`func (o *GatewayUpdateMigration) GetAdAutoRotateBoolean() bool`
+
+GetAdAutoRotateBoolean returns the AdAutoRotateBoolean field if non-nil, zero value otherwise.
+
+### GetAdAutoRotateBooleanOk
+
+`func (o *GatewayUpdateMigration) GetAdAutoRotateBooleanOk() (*bool, bool)`
+
+GetAdAutoRotateBooleanOk returns a tuple with the AdAutoRotateBoolean field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdAutoRotateBoolean
+
+`func (o *GatewayUpdateMigration) SetAdAutoRotateBoolean(v bool)`
+
+SetAdAutoRotateBoolean sets AdAutoRotateBoolean field to given value.
+
+### HasAdAutoRotateBoolean
+
+`func (o *GatewayUpdateMigration) HasAdAutoRotateBoolean() bool`
+
+HasAdAutoRotateBoolean returns a boolean if a field has been set.
+
+### GetAdDiscoverLocalUsersBoolean
+
+`func (o *GatewayUpdateMigration) GetAdDiscoverLocalUsersBoolean() bool`
+
+GetAdDiscoverLocalUsersBoolean returns the AdDiscoverLocalUsersBoolean field if non-nil, zero value otherwise.
+
+### GetAdDiscoverLocalUsersBooleanOk
+
+`func (o *GatewayUpdateMigration) GetAdDiscoverLocalUsersBooleanOk() (*bool, bool)`
+
+GetAdDiscoverLocalUsersBooleanOk returns a tuple with the AdDiscoverLocalUsersBoolean field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdDiscoverLocalUsersBoolean
+
+`func (o *GatewayUpdateMigration) SetAdDiscoverLocalUsersBoolean(v bool)`
+
+SetAdDiscoverLocalUsersBoolean sets AdDiscoverLocalUsersBoolean field to given value.
+
+### HasAdDiscoverLocalUsersBoolean
+
+`func (o *GatewayUpdateMigration) HasAdDiscoverLocalUsersBoolean() bool`
+
+HasAdDiscoverLocalUsersBoolean returns a boolean if a field has been set.
+
+### GetAdLocalUsersIgnoreList
+
+`func (o *GatewayUpdateMigration) GetAdLocalUsersIgnoreList() map[string]bool`
+
+GetAdLocalUsersIgnoreList returns the AdLocalUsersIgnoreList field if non-nil, zero value otherwise.
+
+### GetAdLocalUsersIgnoreListOk
+
+`func (o *GatewayUpdateMigration) GetAdLocalUsersIgnoreListOk() (*map[string]bool, bool)`
+
+GetAdLocalUsersIgnoreListOk returns a tuple with the AdLocalUsersIgnoreList field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdLocalUsersIgnoreList
+
+`func (o *GatewayUpdateMigration) SetAdLocalUsersIgnoreList(v map[string]bool)`
+
+SetAdLocalUsersIgnoreList sets AdLocalUsersIgnoreList field to given value.
+
+### HasAdLocalUsersIgnoreList
+
+`func (o *GatewayUpdateMigration) HasAdLocalUsersIgnoreList() bool`
+
+HasAdLocalUsersIgnoreList returns a boolean if a field has been set.
+
+### GetAdSRAEnableRDPBoolean
+
+`func (o *GatewayUpdateMigration) GetAdSRAEnableRDPBoolean() bool`
+
+GetAdSRAEnableRDPBoolean returns the AdSRAEnableRDPBoolean field if non-nil, zero value otherwise.
+
+### GetAdSRAEnableRDPBooleanOk
+
+`func (o *GatewayUpdateMigration) GetAdSRAEnableRDPBooleanOk() (*bool, bool)`
+
+GetAdSRAEnableRDPBooleanOk returns a tuple with the AdSRAEnableRDPBoolean field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdSRAEnableRDPBoolean
+
+`func (o *GatewayUpdateMigration) SetAdSRAEnableRDPBoolean(v bool)`
+
+SetAdSRAEnableRDPBoolean sets AdSRAEnableRDPBoolean field to given value.
+
+### HasAdSRAEnableRDPBoolean
+
+`func (o *GatewayUpdateMigration) HasAdSRAEnableRDPBoolean() bool`
+
+HasAdSRAEnableRDPBoolean returns a boolean if a field has been set.
+
+### GetAdAutoRotate
+
+`func (o *GatewayUpdateMigration) GetAdAutoRotate() string`
+
+GetAdAutoRotate returns the AdAutoRotate field if non-nil, zero value otherwise.
+
+### GetAdAutoRotateOk
+
+`func (o *GatewayUpdateMigration) GetAdAutoRotateOk() (*string, bool)`
+
+GetAdAutoRotateOk returns a tuple with the AdAutoRotate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdAutoRotate
+
+`func (o *GatewayUpdateMigration) SetAdAutoRotate(v string)`
+
+SetAdAutoRotate sets AdAutoRotate field to given value.
+
+### HasAdAutoRotate
+
+`func (o *GatewayUpdateMigration) HasAdAutoRotate() bool`
+
+HasAdAutoRotate returns a boolean if a field has been set.
+
+### GetAdComputerBaseDn
+
+`func (o *GatewayUpdateMigration) GetAdComputerBaseDn() string`
+
+GetAdComputerBaseDn returns the AdComputerBaseDn field if non-nil, zero value otherwise.
+
+### GetAdComputerBaseDnOk
+
+`func (o *GatewayUpdateMigration) GetAdComputerBaseDnOk() (*string, bool)`
+
+GetAdComputerBaseDnOk returns a tuple with the AdComputerBaseDn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdComputerBaseDn
+
+`func (o *GatewayUpdateMigration) SetAdComputerBaseDn(v string)`
+
+SetAdComputerBaseDn sets AdComputerBaseDn field to given value.
+
+### HasAdComputerBaseDn
+
+`func (o *GatewayUpdateMigration) HasAdComputerBaseDn() bool`
+
+HasAdComputerBaseDn returns a boolean if a field has been set.
+
+### GetAdDiscoverLocalUsers
+
+`func (o *GatewayUpdateMigration) GetAdDiscoverLocalUsers() string`
+
+GetAdDiscoverLocalUsers returns the AdDiscoverLocalUsers field if non-nil, zero value otherwise.
+
+### GetAdDiscoverLocalUsersOk
+
+`func (o *GatewayUpdateMigration) GetAdDiscoverLocalUsersOk() (*string, bool)`
+
+GetAdDiscoverLocalUsersOk returns a tuple with the AdDiscoverLocalUsers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdDiscoverLocalUsers
+
+`func (o *GatewayUpdateMigration) SetAdDiscoverLocalUsers(v string)`
+
+SetAdDiscoverLocalUsers sets AdDiscoverLocalUsers field to given value.
+
+### HasAdDiscoverLocalUsers
+
+`func (o *GatewayUpdateMigration) HasAdDiscoverLocalUsers() bool`
+
+HasAdDiscoverLocalUsers returns a boolean if a field has been set.
+
+### GetAdDomainName
+
+`func (o *GatewayUpdateMigration) GetAdDomainName() string`
+
+GetAdDomainName returns the AdDomainName field if non-nil, zero value otherwise.
+
+### GetAdDomainNameOk
+
+`func (o *GatewayUpdateMigration) GetAdDomainNameOk() (*string, bool)`
+
+GetAdDomainNameOk returns a tuple with the AdDomainName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdDomainName
+
+`func (o *GatewayUpdateMigration) SetAdDomainName(v string)`
+
+SetAdDomainName sets AdDomainName field to given value.
+
+### HasAdDomainName
+
+`func (o *GatewayUpdateMigration) HasAdDomainName() bool`
+
+HasAdDomainName returns a boolean if a field has been set.
+
+### GetAdDomainUsersPathTemplate
+
+`func (o *GatewayUpdateMigration) GetAdDomainUsersPathTemplate() string`
+
+GetAdDomainUsersPathTemplate returns the AdDomainUsersPathTemplate field if non-nil, zero value otherwise.
+
+### GetAdDomainUsersPathTemplateOk
+
+`func (o *GatewayUpdateMigration) GetAdDomainUsersPathTemplateOk() (*string, bool)`
+
+GetAdDomainUsersPathTemplateOk returns a tuple with the AdDomainUsersPathTemplate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdDomainUsersPathTemplate
+
+`func (o *GatewayUpdateMigration) SetAdDomainUsersPathTemplate(v string)`
+
+SetAdDomainUsersPathTemplate sets AdDomainUsersPathTemplate field to given value.
+
+### HasAdDomainUsersPathTemplate
+
+`func (o *GatewayUpdateMigration) HasAdDomainUsersPathTemplate() bool`
+
+HasAdDomainUsersPathTemplate returns a boolean if a field has been set.
+
+### GetAdLocalUsersIgnore
+
+`func (o *GatewayUpdateMigration) GetAdLocalUsersIgnore() string`
+
+GetAdLocalUsersIgnore returns the AdLocalUsersIgnore field if non-nil, zero value otherwise.
+
+### GetAdLocalUsersIgnoreOk
+
+`func (o *GatewayUpdateMigration) GetAdLocalUsersIgnoreOk() (*string, bool)`
+
+GetAdLocalUsersIgnoreOk returns a tuple with the AdLocalUsersIgnore field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdLocalUsersIgnore
+
+`func (o *GatewayUpdateMigration) SetAdLocalUsersIgnore(v string)`
+
+SetAdLocalUsersIgnore sets AdLocalUsersIgnore field to given value.
+
+### HasAdLocalUsersIgnore
+
+`func (o *GatewayUpdateMigration) HasAdLocalUsersIgnore() bool`
+
+HasAdLocalUsersIgnore returns a boolean if a field has been set.
+
+### GetAdLocalUsersPathTemplate
+
+`func (o *GatewayUpdateMigration) GetAdLocalUsersPathTemplate() string`
+
+GetAdLocalUsersPathTemplate returns the AdLocalUsersPathTemplate field if non-nil, zero value otherwise.
+
+### GetAdLocalUsersPathTemplateOk
+
+`func (o *GatewayUpdateMigration) GetAdLocalUsersPathTemplateOk() (*string, bool)`
+
+GetAdLocalUsersPathTemplateOk returns a tuple with the AdLocalUsersPathTemplate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdLocalUsersPathTemplate
+
+`func (o *GatewayUpdateMigration) SetAdLocalUsersPathTemplate(v string)`
+
+SetAdLocalUsersPathTemplate sets AdLocalUsersPathTemplate field to given value.
+
+### HasAdLocalUsersPathTemplate
+
+`func (o *GatewayUpdateMigration) HasAdLocalUsersPathTemplate() bool`
+
+HasAdLocalUsersPathTemplate returns a boolean if a field has been set.
+
+### GetAdRotationHour
+
+`func (o *GatewayUpdateMigration) GetAdRotationHour() int32`
+
+GetAdRotationHour returns the AdRotationHour field if non-nil, zero value otherwise.
+
+### GetAdRotationHourOk
+
+`func (o *GatewayUpdateMigration) GetAdRotationHourOk() (*int32, bool)`
+
+GetAdRotationHourOk returns a tuple with the AdRotationHour field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdRotationHour
+
+`func (o *GatewayUpdateMigration) SetAdRotationHour(v int32)`
+
+SetAdRotationHour sets AdRotationHour field to given value.
+
+### HasAdRotationHour
+
+`func (o *GatewayUpdateMigration) HasAdRotationHour() bool`
+
+HasAdRotationHour returns a boolean if a field has been set.
+
+### GetAdRotationInterval
+
+`func (o *GatewayUpdateMigration) GetAdRotationInterval() int32`
+
+GetAdRotationInterval returns the AdRotationInterval field if non-nil, zero value otherwise.
+
+### GetAdRotationIntervalOk
+
+`func (o *GatewayUpdateMigration) GetAdRotationIntervalOk() (*int32, bool)`
+
+GetAdRotationIntervalOk returns a tuple with the AdRotationInterval field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdRotationInterval
+
+`func (o *GatewayUpdateMigration) SetAdRotationInterval(v int32)`
+
+SetAdRotationInterval sets AdRotationInterval field to given value.
+
+### HasAdRotationInterval
+
+`func (o *GatewayUpdateMigration) HasAdRotationInterval() bool`
+
+HasAdRotationInterval returns a boolean if a field has been set.
+
+### GetAdSraEnableRdp
+
+`func (o *GatewayUpdateMigration) GetAdSraEnableRdp() string`
+
+GetAdSraEnableRdp returns the AdSraEnableRdp field if non-nil, zero value otherwise.
+
+### GetAdSraEnableRdpOk
+
+`func (o *GatewayUpdateMigration) GetAdSraEnableRdpOk() (*string, bool)`
+
+GetAdSraEnableRdpOk returns a tuple with the AdSraEnableRdp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdSraEnableRdp
+
+`func (o *GatewayUpdateMigration) SetAdSraEnableRdp(v string)`
+
+SetAdSraEnableRdp sets AdSraEnableRdp field to given value.
+
+### HasAdSraEnableRdp
+
+`func (o *GatewayUpdateMigration) HasAdSraEnableRdp() bool`
+
+HasAdSraEnableRdp returns a boolean if a field has been set.
+
+### GetAdTargetName
+
+`func (o *GatewayUpdateMigration) GetAdTargetName() string`
+
+GetAdTargetName returns the AdTargetName field if non-nil, zero value otherwise.
+
+### GetAdTargetNameOk
+
+`func (o *GatewayUpdateMigration) GetAdTargetNameOk() (*string, bool)`
+
+GetAdTargetNameOk returns a tuple with the AdTargetName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdTargetName
+
+`func (o *GatewayUpdateMigration) SetAdTargetName(v string)`
+
+SetAdTargetName sets AdTargetName field to given value.
+
+### HasAdTargetName
+
+`func (o *GatewayUpdateMigration) HasAdTargetName() bool`
+
+HasAdTargetName returns a boolean if a field has been set.
+
+### GetAdTargetsPathTemplate
+
+`func (o *GatewayUpdateMigration) GetAdTargetsPathTemplate() string`
+
+GetAdTargetsPathTemplate returns the AdTargetsPathTemplate field if non-nil, zero value otherwise.
+
+### GetAdTargetsPathTemplateOk
+
+`func (o *GatewayUpdateMigration) GetAdTargetsPathTemplateOk() (*string, bool)`
+
+GetAdTargetsPathTemplateOk returns a tuple with the AdTargetsPathTemplate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdTargetsPathTemplate
+
+`func (o *GatewayUpdateMigration) SetAdTargetsPathTemplate(v string)`
+
+SetAdTargetsPathTemplate sets AdTargetsPathTemplate field to given value.
+
+### HasAdTargetsPathTemplate
+
+`func (o *GatewayUpdateMigration) HasAdTargetsPathTemplate() bool`
+
+HasAdTargetsPathTemplate returns a boolean if a field has been set.
+
+### GetAdUserBaseDn
+
+`func (o *GatewayUpdateMigration) GetAdUserBaseDn() string`
+
+GetAdUserBaseDn returns the AdUserBaseDn field if non-nil, zero value otherwise.
+
+### GetAdUserBaseDnOk
+
+`func (o *GatewayUpdateMigration) GetAdUserBaseDnOk() (*string, bool)`
+
+GetAdUserBaseDnOk returns a tuple with the AdUserBaseDn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdUserBaseDn
+
+`func (o *GatewayUpdateMigration) SetAdUserBaseDn(v string)`
+
+SetAdUserBaseDn sets AdUserBaseDn field to given value.
+
+### HasAdUserBaseDn
+
+`func (o *GatewayUpdateMigration) HasAdUserBaseDn() bool`
+
+HasAdUserBaseDn returns a boolean if a field has been set.
+
+### GetAdUserGroups
+
+`func (o *GatewayUpdateMigration) GetAdUserGroups() string`
+
+GetAdUserGroups returns the AdUserGroups field if non-nil, zero value otherwise.
+
+### GetAdUserGroupsOk
+
+`func (o *GatewayUpdateMigration) GetAdUserGroupsOk() (*string, bool)`
+
+GetAdUserGroupsOk returns a tuple with the AdUserGroups field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdUserGroups
+
+`func (o *GatewayUpdateMigration) SetAdUserGroups(v string)`
+
+SetAdUserGroups sets AdUserGroups field to given value.
+
+### HasAdUserGroups
+
+`func (o *GatewayUpdateMigration) HasAdUserGroups() bool`
+
+HasAdUserGroups returns a boolean if a field has been set.
+
+### GetAsSshPort
+
+`func (o *GatewayUpdateMigration) GetAsSshPort() string`
+
+GetAsSshPort returns the AsSshPort field if non-nil, zero value otherwise.
+
+### GetAsSshPortOk
+
+`func (o *GatewayUpdateMigration) GetAsSshPortOk() (*string, bool)`
+
+GetAsSshPortOk returns a tuple with the AsSshPort field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAsSshPort
+
+`func (o *GatewayUpdateMigration) SetAsSshPort(v string)`
+
+SetAsSshPort sets AsSshPort field to given value.
+
+### HasAsSshPort
+
+`func (o *GatewayUpdateMigration) HasAsSshPort() bool`
+
+HasAsSshPort returns a boolean if a field has been set.
 
 ### GetAwsKey
 
@@ -683,131 +1302,6 @@ SetNewName sets NewName field to given value.
 
 HasNewName returns a boolean if a field has been set.
 
-### GetOpEmail
-
-`func (o *GatewayUpdateMigration) GetOpEmail() string`
-
-GetOpEmail returns the OpEmail field if non-nil, zero value otherwise.
-
-### GetOpEmailOk
-
-`func (o *GatewayUpdateMigration) GetOpEmailOk() (*string, bool)`
-
-GetOpEmailOk returns a tuple with the OpEmail field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOpEmail
-
-`func (o *GatewayUpdateMigration) SetOpEmail(v string)`
-
-SetOpEmail sets OpEmail field to given value.
-
-### HasOpEmail
-
-`func (o *GatewayUpdateMigration) HasOpEmail() bool`
-
-HasOpEmail returns a boolean if a field has been set.
-
-### GetOpPassword
-
-`func (o *GatewayUpdateMigration) GetOpPassword() string`
-
-GetOpPassword returns the OpPassword field if non-nil, zero value otherwise.
-
-### GetOpPasswordOk
-
-`func (o *GatewayUpdateMigration) GetOpPasswordOk() (*string, bool)`
-
-GetOpPasswordOk returns a tuple with the OpPassword field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOpPassword
-
-`func (o *GatewayUpdateMigration) SetOpPassword(v string)`
-
-SetOpPassword sets OpPassword field to given value.
-
-### HasOpPassword
-
-`func (o *GatewayUpdateMigration) HasOpPassword() bool`
-
-HasOpPassword returns a boolean if a field has been set.
-
-### GetOpSecretKey
-
-`func (o *GatewayUpdateMigration) GetOpSecretKey() string`
-
-GetOpSecretKey returns the OpSecretKey field if non-nil, zero value otherwise.
-
-### GetOpSecretKeyOk
-
-`func (o *GatewayUpdateMigration) GetOpSecretKeyOk() (*string, bool)`
-
-GetOpSecretKeyOk returns a tuple with the OpSecretKey field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOpSecretKey
-
-`func (o *GatewayUpdateMigration) SetOpSecretKey(v string)`
-
-SetOpSecretKey sets OpSecretKey field to given value.
-
-### HasOpSecretKey
-
-`func (o *GatewayUpdateMigration) HasOpSecretKey() bool`
-
-HasOpSecretKey returns a boolean if a field has been set.
-
-### GetOpUrl
-
-`func (o *GatewayUpdateMigration) GetOpUrl() string`
-
-GetOpUrl returns the OpUrl field if non-nil, zero value otherwise.
-
-### GetOpUrlOk
-
-`func (o *GatewayUpdateMigration) GetOpUrlOk() (*string, bool)`
-
-GetOpUrlOk returns a tuple with the OpUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOpUrl
-
-`func (o *GatewayUpdateMigration) SetOpUrl(v string)`
-
-SetOpUrl sets OpUrl field to given value.
-
-### HasOpUrl
-
-`func (o *GatewayUpdateMigration) HasOpUrl() bool`
-
-HasOpUrl returns a boolean if a field has been set.
-
-### GetOpVaults
-
-`func (o *GatewayUpdateMigration) GetOpVaults() []string`
-
-GetOpVaults returns the OpVaults field if non-nil, zero value otherwise.
-
-### GetOpVaultsOk
-
-`func (o *GatewayUpdateMigration) GetOpVaultsOk() (*[]string, bool)`
-
-GetOpVaultsOk returns a tuple with the OpVaults field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOpVaults
-
-`func (o *GatewayUpdateMigration) SetOpVaults(v []string)`
-
-SetOpVaults sets OpVaults field to given value.
-
-### HasOpVaults
-
-`func (o *GatewayUpdateMigration) HasOpVaults() bool`
-
-HasOpVaults returns a boolean if a field has been set.
-
 ### GetProtectionKey
 
 `func (o *GatewayUpdateMigration) GetProtectionKey() string`
@@ -852,11 +1346,6 @@ and a boolean to check if the value has been set.
 
 SetTargetLocation sets TargetLocation field to given value.
 
-### HasTargetLocation
-
-`func (o *GatewayUpdateMigration) HasTargetLocation() bool`
-
-HasTargetLocation returns a boolean if a field has been set.
 
 ### GetToken
 

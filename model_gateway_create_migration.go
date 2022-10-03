@@ -17,6 +17,50 @@ import (
 
 // GatewayCreateMigration gatewayCreateMigration is a command that create migration
 type GatewayCreateMigration struct {
+	// 1Password user email to connect to the API
+	Var1passwordEmail *string `json:"1password-email,omitempty"`
+	// 1Password user password to connect to the API
+	Var1passwordPassword *string `json:"1password-password,omitempty"`
+	// 1Password user secret key to connect to the API
+	Var1passwordSecretKey *string `json:"1password-secret-key,omitempty"`
+	// 1Password api container url
+	Var1passwordUrl *string `json:"1password-url,omitempty"`
+	// 1Password list of vault to get the items from
+	Var1passwordVaults *[]string `json:"1password-vaults,omitempty"`
+	AdAutoRotateBoolean *bool `json:"AdAutoRotateBoolean,omitempty"`
+	AdDiscoverLocalUsersBoolean *bool `json:"AdDiscoverLocalUsersBoolean,omitempty"`
+	AdLocalUsersIgnoreList *map[string]bool `json:"AdLocalUsersIgnoreList,omitempty"`
+	AdSRAEnableRDPBoolean *bool `json:"AdSRAEnableRDPBoolean,omitempty"`
+	// Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with --ad-rotation-interval and --ad-rotation-hour parameters (Relevant only for Active Directory migration)
+	AdAutoRotate *string `json:"ad_auto_rotate,omitempty"`
+	// Distinguished Name of Computer objects (servers) to search in Active Directory e.g.: CN=Computers,DC=example,DC=com (Relevant only for Active Directory migration)
+	AdComputerBaseDn *string `json:"ad_computer_base_dn,omitempty"`
+	// Enable/Disable discovery of local users from each domain server and migrate them as SSH Rotated Secrets. Default is false: only domain users will be migrated. Discovery of local users might require further installation of SSH on the servers, based on the supplied computer base DN. This will be implemented automatically as part of the migration process (Relevant only for Active Directory migration)
+	AdDiscoverLocalUsers *string `json:"ad_discover_local_users,omitempty"`
+	// Active Directory Domain Name (Relevant only for Active Directory migration)
+	AdDomainName *string `json:"ad_domain_name,omitempty"`
+	// Path location template for migrating domain users as Rotated Secrets e.g.: .../DomainUsers/{{USERNAME}} (Relevant only for Active Directory migration)
+	AdDomainUsersPathTemplate *string `json:"ad_domain_users_path_template,omitempty"`
+	// Comma-separated list of Local Users which should not be migrated (Relevant only for Active Directory migration)
+	AdLocalUsersIgnore *string `json:"ad_local_users_ignore,omitempty"`
+	// Path location template for migrating domain users as Rotated Secrets e.g.: .../LocalUsers/{{COMPUTER_NAME}}/{{USERNAME}} (Relevant only for Active Directory migration)
+	AdLocalUsersPathTemplate *string `json:"ad_local_users_path_template,omitempty"`
+	// The hour of the scheduled rotation in UTC (Relevant only for Active Directory migration)
+	AdRotationHour *int32 `json:"ad_rotation_hour,omitempty"`
+	// The number of days to wait between every automatic rotation [1-365] (Relevant only for Active Directory migration)
+	AdRotationInterval *int32 `json:"ad_rotation_interval,omitempty"`
+	// Enable/Disable RDP Secure Remote Access for the migrated local users rotated secrets. Default is false: rotated secrets will not be created with SRA (Relevant only for Active Directory migration)
+	AdSraEnableRdp *string `json:"ad_sra_enable_rdp,omitempty"`
+	// Active Directory LDAP Target Name. Server type should be Active Directory (Relevant only for Active Directory migration)
+	AdTargetName *string `json:"ad_target_name,omitempty"`
+	// Path location template for migrating domain servers as SSH Targets e.g.: .../Servers/{{COMPUTER_NAME}} (Relevant only for Active Directory migration)
+	AdTargetsPathTemplate *string `json:"ad_targets_path_template,omitempty"`
+	// Distinguished Name of User objects to search in Active Directory, e.g.: CN=Users,DC=example,DC=com (Relevant only for Active Directory migration)
+	AdUserBaseDn *string `json:"ad_user_base_dn,omitempty"`
+	// Comma-separated list of domain groups from which privileged domain users will be migrated (Relevant only for Active Directory migration)
+	AdUserGroups *string `json:"ad_user_groups,omitempty"`
+	// Set the SSH Port for further connection to the domain servers. Default is port 22 (Relevant only for Active Directory migration)
+	AsSshPort *string `json:"as_ssh_port,omitempty"`
 	// AWS Secret Access Key (relevant only for AWS migration)
 	AwsKey *string `json:"aws-key,omitempty"`
 	// AWS Access Key ID with sufficient permissions to get all secrets, e.g. 'arn:aws:secretsmanager:[Region]:[AccountId]:secret:[/path/to/secrets/_*]' (relevant only for AWS migration)
@@ -63,23 +107,13 @@ type GatewayCreateMigration struct {
 	K8sUsername *string `json:"k8s-username,omitempty"`
 	// Migration name
 	Name string `json:"name"`
-	// 1Password user email to connect to the API
-	OpEmail *string `json:"op-email,omitempty"`
-	// 1Password user password to connect to the API
-	OpPassword *string `json:"op-password,omitempty"`
-	// 1Password user secret key to connect to the API
-	OpSecretKey *string `json:"op-secret-key,omitempty"`
-	// 1Password api container url
-	OpUrl *string `json:"op-url,omitempty"`
-	// 1Password list of vault to get the items from
-	OpVaults *[]string `json:"op-vaults,omitempty"`
 	// The name of the key that protects the classic key value (if empty, the account default key will be used)
 	ProtectionKey *string `json:"protection-key,omitempty"`
 	// Target location in Akeyless for imported secrets
-	TargetLocation *string `json:"target-location,omitempty"`
+	TargetLocation string `json:"target-location"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
-	// Migration type (hashi/aws/gcp/k8s/azure_kv/1password)
+	// Migration type (hashi/aws/gcp/k8s/azure_kv/1password/active_directory)
 	Type *string `json:"type,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
@@ -89,9 +123,10 @@ type GatewayCreateMigration struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayCreateMigration(name string, ) *GatewayCreateMigration {
+func NewGatewayCreateMigration(name string, targetLocation string, ) *GatewayCreateMigration {
 	this := GatewayCreateMigration{}
 	this.Name = name
+	this.TargetLocation = targetLocation
 	return &this
 }
 
@@ -101,6 +136,774 @@ func NewGatewayCreateMigration(name string, ) *GatewayCreateMigration {
 func NewGatewayCreateMigrationWithDefaults() *GatewayCreateMigration {
 	this := GatewayCreateMigration{}
 	return &this
+}
+
+// GetVar1passwordEmail returns the Var1passwordEmail field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetVar1passwordEmail() string {
+	if o == nil || o.Var1passwordEmail == nil {
+		var ret string
+		return ret
+	}
+	return *o.Var1passwordEmail
+}
+
+// GetVar1passwordEmailOk returns a tuple with the Var1passwordEmail field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetVar1passwordEmailOk() (*string, bool) {
+	if o == nil || o.Var1passwordEmail == nil {
+		return nil, false
+	}
+	return o.Var1passwordEmail, true
+}
+
+// HasVar1passwordEmail returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasVar1passwordEmail() bool {
+	if o != nil && o.Var1passwordEmail != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVar1passwordEmail gets a reference to the given string and assigns it to the Var1passwordEmail field.
+func (o *GatewayCreateMigration) SetVar1passwordEmail(v string) {
+	o.Var1passwordEmail = &v
+}
+
+// GetVar1passwordPassword returns the Var1passwordPassword field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetVar1passwordPassword() string {
+	if o == nil || o.Var1passwordPassword == nil {
+		var ret string
+		return ret
+	}
+	return *o.Var1passwordPassword
+}
+
+// GetVar1passwordPasswordOk returns a tuple with the Var1passwordPassword field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetVar1passwordPasswordOk() (*string, bool) {
+	if o == nil || o.Var1passwordPassword == nil {
+		return nil, false
+	}
+	return o.Var1passwordPassword, true
+}
+
+// HasVar1passwordPassword returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasVar1passwordPassword() bool {
+	if o != nil && o.Var1passwordPassword != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVar1passwordPassword gets a reference to the given string and assigns it to the Var1passwordPassword field.
+func (o *GatewayCreateMigration) SetVar1passwordPassword(v string) {
+	o.Var1passwordPassword = &v
+}
+
+// GetVar1passwordSecretKey returns the Var1passwordSecretKey field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetVar1passwordSecretKey() string {
+	if o == nil || o.Var1passwordSecretKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.Var1passwordSecretKey
+}
+
+// GetVar1passwordSecretKeyOk returns a tuple with the Var1passwordSecretKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetVar1passwordSecretKeyOk() (*string, bool) {
+	if o == nil || o.Var1passwordSecretKey == nil {
+		return nil, false
+	}
+	return o.Var1passwordSecretKey, true
+}
+
+// HasVar1passwordSecretKey returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasVar1passwordSecretKey() bool {
+	if o != nil && o.Var1passwordSecretKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVar1passwordSecretKey gets a reference to the given string and assigns it to the Var1passwordSecretKey field.
+func (o *GatewayCreateMigration) SetVar1passwordSecretKey(v string) {
+	o.Var1passwordSecretKey = &v
+}
+
+// GetVar1passwordUrl returns the Var1passwordUrl field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetVar1passwordUrl() string {
+	if o == nil || o.Var1passwordUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.Var1passwordUrl
+}
+
+// GetVar1passwordUrlOk returns a tuple with the Var1passwordUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetVar1passwordUrlOk() (*string, bool) {
+	if o == nil || o.Var1passwordUrl == nil {
+		return nil, false
+	}
+	return o.Var1passwordUrl, true
+}
+
+// HasVar1passwordUrl returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasVar1passwordUrl() bool {
+	if o != nil && o.Var1passwordUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVar1passwordUrl gets a reference to the given string and assigns it to the Var1passwordUrl field.
+func (o *GatewayCreateMigration) SetVar1passwordUrl(v string) {
+	o.Var1passwordUrl = &v
+}
+
+// GetVar1passwordVaults returns the Var1passwordVaults field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetVar1passwordVaults() []string {
+	if o == nil || o.Var1passwordVaults == nil {
+		var ret []string
+		return ret
+	}
+	return *o.Var1passwordVaults
+}
+
+// GetVar1passwordVaultsOk returns a tuple with the Var1passwordVaults field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetVar1passwordVaultsOk() (*[]string, bool) {
+	if o == nil || o.Var1passwordVaults == nil {
+		return nil, false
+	}
+	return o.Var1passwordVaults, true
+}
+
+// HasVar1passwordVaults returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasVar1passwordVaults() bool {
+	if o != nil && o.Var1passwordVaults != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVar1passwordVaults gets a reference to the given []string and assigns it to the Var1passwordVaults field.
+func (o *GatewayCreateMigration) SetVar1passwordVaults(v []string) {
+	o.Var1passwordVaults = &v
+}
+
+// GetAdAutoRotateBoolean returns the AdAutoRotateBoolean field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetAdAutoRotateBoolean() bool {
+	if o == nil || o.AdAutoRotateBoolean == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AdAutoRotateBoolean
+}
+
+// GetAdAutoRotateBooleanOk returns a tuple with the AdAutoRotateBoolean field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetAdAutoRotateBooleanOk() (*bool, bool) {
+	if o == nil || o.AdAutoRotateBoolean == nil {
+		return nil, false
+	}
+	return o.AdAutoRotateBoolean, true
+}
+
+// HasAdAutoRotateBoolean returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasAdAutoRotateBoolean() bool {
+	if o != nil && o.AdAutoRotateBoolean != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdAutoRotateBoolean gets a reference to the given bool and assigns it to the AdAutoRotateBoolean field.
+func (o *GatewayCreateMigration) SetAdAutoRotateBoolean(v bool) {
+	o.AdAutoRotateBoolean = &v
+}
+
+// GetAdDiscoverLocalUsersBoolean returns the AdDiscoverLocalUsersBoolean field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetAdDiscoverLocalUsersBoolean() bool {
+	if o == nil || o.AdDiscoverLocalUsersBoolean == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AdDiscoverLocalUsersBoolean
+}
+
+// GetAdDiscoverLocalUsersBooleanOk returns a tuple with the AdDiscoverLocalUsersBoolean field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetAdDiscoverLocalUsersBooleanOk() (*bool, bool) {
+	if o == nil || o.AdDiscoverLocalUsersBoolean == nil {
+		return nil, false
+	}
+	return o.AdDiscoverLocalUsersBoolean, true
+}
+
+// HasAdDiscoverLocalUsersBoolean returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasAdDiscoverLocalUsersBoolean() bool {
+	if o != nil && o.AdDiscoverLocalUsersBoolean != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdDiscoverLocalUsersBoolean gets a reference to the given bool and assigns it to the AdDiscoverLocalUsersBoolean field.
+func (o *GatewayCreateMigration) SetAdDiscoverLocalUsersBoolean(v bool) {
+	o.AdDiscoverLocalUsersBoolean = &v
+}
+
+// GetAdLocalUsersIgnoreList returns the AdLocalUsersIgnoreList field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetAdLocalUsersIgnoreList() map[string]bool {
+	if o == nil || o.AdLocalUsersIgnoreList == nil {
+		var ret map[string]bool
+		return ret
+	}
+	return *o.AdLocalUsersIgnoreList
+}
+
+// GetAdLocalUsersIgnoreListOk returns a tuple with the AdLocalUsersIgnoreList field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetAdLocalUsersIgnoreListOk() (*map[string]bool, bool) {
+	if o == nil || o.AdLocalUsersIgnoreList == nil {
+		return nil, false
+	}
+	return o.AdLocalUsersIgnoreList, true
+}
+
+// HasAdLocalUsersIgnoreList returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasAdLocalUsersIgnoreList() bool {
+	if o != nil && o.AdLocalUsersIgnoreList != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdLocalUsersIgnoreList gets a reference to the given map[string]bool and assigns it to the AdLocalUsersIgnoreList field.
+func (o *GatewayCreateMigration) SetAdLocalUsersIgnoreList(v map[string]bool) {
+	o.AdLocalUsersIgnoreList = &v
+}
+
+// GetAdSRAEnableRDPBoolean returns the AdSRAEnableRDPBoolean field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetAdSRAEnableRDPBoolean() bool {
+	if o == nil || o.AdSRAEnableRDPBoolean == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AdSRAEnableRDPBoolean
+}
+
+// GetAdSRAEnableRDPBooleanOk returns a tuple with the AdSRAEnableRDPBoolean field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetAdSRAEnableRDPBooleanOk() (*bool, bool) {
+	if o == nil || o.AdSRAEnableRDPBoolean == nil {
+		return nil, false
+	}
+	return o.AdSRAEnableRDPBoolean, true
+}
+
+// HasAdSRAEnableRDPBoolean returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasAdSRAEnableRDPBoolean() bool {
+	if o != nil && o.AdSRAEnableRDPBoolean != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdSRAEnableRDPBoolean gets a reference to the given bool and assigns it to the AdSRAEnableRDPBoolean field.
+func (o *GatewayCreateMigration) SetAdSRAEnableRDPBoolean(v bool) {
+	o.AdSRAEnableRDPBoolean = &v
+}
+
+// GetAdAutoRotate returns the AdAutoRotate field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetAdAutoRotate() string {
+	if o == nil || o.AdAutoRotate == nil {
+		var ret string
+		return ret
+	}
+	return *o.AdAutoRotate
+}
+
+// GetAdAutoRotateOk returns a tuple with the AdAutoRotate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetAdAutoRotateOk() (*string, bool) {
+	if o == nil || o.AdAutoRotate == nil {
+		return nil, false
+	}
+	return o.AdAutoRotate, true
+}
+
+// HasAdAutoRotate returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasAdAutoRotate() bool {
+	if o != nil && o.AdAutoRotate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdAutoRotate gets a reference to the given string and assigns it to the AdAutoRotate field.
+func (o *GatewayCreateMigration) SetAdAutoRotate(v string) {
+	o.AdAutoRotate = &v
+}
+
+// GetAdComputerBaseDn returns the AdComputerBaseDn field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetAdComputerBaseDn() string {
+	if o == nil || o.AdComputerBaseDn == nil {
+		var ret string
+		return ret
+	}
+	return *o.AdComputerBaseDn
+}
+
+// GetAdComputerBaseDnOk returns a tuple with the AdComputerBaseDn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetAdComputerBaseDnOk() (*string, bool) {
+	if o == nil || o.AdComputerBaseDn == nil {
+		return nil, false
+	}
+	return o.AdComputerBaseDn, true
+}
+
+// HasAdComputerBaseDn returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasAdComputerBaseDn() bool {
+	if o != nil && o.AdComputerBaseDn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdComputerBaseDn gets a reference to the given string and assigns it to the AdComputerBaseDn field.
+func (o *GatewayCreateMigration) SetAdComputerBaseDn(v string) {
+	o.AdComputerBaseDn = &v
+}
+
+// GetAdDiscoverLocalUsers returns the AdDiscoverLocalUsers field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetAdDiscoverLocalUsers() string {
+	if o == nil || o.AdDiscoverLocalUsers == nil {
+		var ret string
+		return ret
+	}
+	return *o.AdDiscoverLocalUsers
+}
+
+// GetAdDiscoverLocalUsersOk returns a tuple with the AdDiscoverLocalUsers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetAdDiscoverLocalUsersOk() (*string, bool) {
+	if o == nil || o.AdDiscoverLocalUsers == nil {
+		return nil, false
+	}
+	return o.AdDiscoverLocalUsers, true
+}
+
+// HasAdDiscoverLocalUsers returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasAdDiscoverLocalUsers() bool {
+	if o != nil && o.AdDiscoverLocalUsers != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdDiscoverLocalUsers gets a reference to the given string and assigns it to the AdDiscoverLocalUsers field.
+func (o *GatewayCreateMigration) SetAdDiscoverLocalUsers(v string) {
+	o.AdDiscoverLocalUsers = &v
+}
+
+// GetAdDomainName returns the AdDomainName field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetAdDomainName() string {
+	if o == nil || o.AdDomainName == nil {
+		var ret string
+		return ret
+	}
+	return *o.AdDomainName
+}
+
+// GetAdDomainNameOk returns a tuple with the AdDomainName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetAdDomainNameOk() (*string, bool) {
+	if o == nil || o.AdDomainName == nil {
+		return nil, false
+	}
+	return o.AdDomainName, true
+}
+
+// HasAdDomainName returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasAdDomainName() bool {
+	if o != nil && o.AdDomainName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdDomainName gets a reference to the given string and assigns it to the AdDomainName field.
+func (o *GatewayCreateMigration) SetAdDomainName(v string) {
+	o.AdDomainName = &v
+}
+
+// GetAdDomainUsersPathTemplate returns the AdDomainUsersPathTemplate field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetAdDomainUsersPathTemplate() string {
+	if o == nil || o.AdDomainUsersPathTemplate == nil {
+		var ret string
+		return ret
+	}
+	return *o.AdDomainUsersPathTemplate
+}
+
+// GetAdDomainUsersPathTemplateOk returns a tuple with the AdDomainUsersPathTemplate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetAdDomainUsersPathTemplateOk() (*string, bool) {
+	if o == nil || o.AdDomainUsersPathTemplate == nil {
+		return nil, false
+	}
+	return o.AdDomainUsersPathTemplate, true
+}
+
+// HasAdDomainUsersPathTemplate returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasAdDomainUsersPathTemplate() bool {
+	if o != nil && o.AdDomainUsersPathTemplate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdDomainUsersPathTemplate gets a reference to the given string and assigns it to the AdDomainUsersPathTemplate field.
+func (o *GatewayCreateMigration) SetAdDomainUsersPathTemplate(v string) {
+	o.AdDomainUsersPathTemplate = &v
+}
+
+// GetAdLocalUsersIgnore returns the AdLocalUsersIgnore field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetAdLocalUsersIgnore() string {
+	if o == nil || o.AdLocalUsersIgnore == nil {
+		var ret string
+		return ret
+	}
+	return *o.AdLocalUsersIgnore
+}
+
+// GetAdLocalUsersIgnoreOk returns a tuple with the AdLocalUsersIgnore field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetAdLocalUsersIgnoreOk() (*string, bool) {
+	if o == nil || o.AdLocalUsersIgnore == nil {
+		return nil, false
+	}
+	return o.AdLocalUsersIgnore, true
+}
+
+// HasAdLocalUsersIgnore returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasAdLocalUsersIgnore() bool {
+	if o != nil && o.AdLocalUsersIgnore != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdLocalUsersIgnore gets a reference to the given string and assigns it to the AdLocalUsersIgnore field.
+func (o *GatewayCreateMigration) SetAdLocalUsersIgnore(v string) {
+	o.AdLocalUsersIgnore = &v
+}
+
+// GetAdLocalUsersPathTemplate returns the AdLocalUsersPathTemplate field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetAdLocalUsersPathTemplate() string {
+	if o == nil || o.AdLocalUsersPathTemplate == nil {
+		var ret string
+		return ret
+	}
+	return *o.AdLocalUsersPathTemplate
+}
+
+// GetAdLocalUsersPathTemplateOk returns a tuple with the AdLocalUsersPathTemplate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetAdLocalUsersPathTemplateOk() (*string, bool) {
+	if o == nil || o.AdLocalUsersPathTemplate == nil {
+		return nil, false
+	}
+	return o.AdLocalUsersPathTemplate, true
+}
+
+// HasAdLocalUsersPathTemplate returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasAdLocalUsersPathTemplate() bool {
+	if o != nil && o.AdLocalUsersPathTemplate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdLocalUsersPathTemplate gets a reference to the given string and assigns it to the AdLocalUsersPathTemplate field.
+func (o *GatewayCreateMigration) SetAdLocalUsersPathTemplate(v string) {
+	o.AdLocalUsersPathTemplate = &v
+}
+
+// GetAdRotationHour returns the AdRotationHour field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetAdRotationHour() int32 {
+	if o == nil || o.AdRotationHour == nil {
+		var ret int32
+		return ret
+	}
+	return *o.AdRotationHour
+}
+
+// GetAdRotationHourOk returns a tuple with the AdRotationHour field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetAdRotationHourOk() (*int32, bool) {
+	if o == nil || o.AdRotationHour == nil {
+		return nil, false
+	}
+	return o.AdRotationHour, true
+}
+
+// HasAdRotationHour returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasAdRotationHour() bool {
+	if o != nil && o.AdRotationHour != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdRotationHour gets a reference to the given int32 and assigns it to the AdRotationHour field.
+func (o *GatewayCreateMigration) SetAdRotationHour(v int32) {
+	o.AdRotationHour = &v
+}
+
+// GetAdRotationInterval returns the AdRotationInterval field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetAdRotationInterval() int32 {
+	if o == nil || o.AdRotationInterval == nil {
+		var ret int32
+		return ret
+	}
+	return *o.AdRotationInterval
+}
+
+// GetAdRotationIntervalOk returns a tuple with the AdRotationInterval field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetAdRotationIntervalOk() (*int32, bool) {
+	if o == nil || o.AdRotationInterval == nil {
+		return nil, false
+	}
+	return o.AdRotationInterval, true
+}
+
+// HasAdRotationInterval returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasAdRotationInterval() bool {
+	if o != nil && o.AdRotationInterval != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdRotationInterval gets a reference to the given int32 and assigns it to the AdRotationInterval field.
+func (o *GatewayCreateMigration) SetAdRotationInterval(v int32) {
+	o.AdRotationInterval = &v
+}
+
+// GetAdSraEnableRdp returns the AdSraEnableRdp field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetAdSraEnableRdp() string {
+	if o == nil || o.AdSraEnableRdp == nil {
+		var ret string
+		return ret
+	}
+	return *o.AdSraEnableRdp
+}
+
+// GetAdSraEnableRdpOk returns a tuple with the AdSraEnableRdp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetAdSraEnableRdpOk() (*string, bool) {
+	if o == nil || o.AdSraEnableRdp == nil {
+		return nil, false
+	}
+	return o.AdSraEnableRdp, true
+}
+
+// HasAdSraEnableRdp returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasAdSraEnableRdp() bool {
+	if o != nil && o.AdSraEnableRdp != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdSraEnableRdp gets a reference to the given string and assigns it to the AdSraEnableRdp field.
+func (o *GatewayCreateMigration) SetAdSraEnableRdp(v string) {
+	o.AdSraEnableRdp = &v
+}
+
+// GetAdTargetName returns the AdTargetName field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetAdTargetName() string {
+	if o == nil || o.AdTargetName == nil {
+		var ret string
+		return ret
+	}
+	return *o.AdTargetName
+}
+
+// GetAdTargetNameOk returns a tuple with the AdTargetName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetAdTargetNameOk() (*string, bool) {
+	if o == nil || o.AdTargetName == nil {
+		return nil, false
+	}
+	return o.AdTargetName, true
+}
+
+// HasAdTargetName returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasAdTargetName() bool {
+	if o != nil && o.AdTargetName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdTargetName gets a reference to the given string and assigns it to the AdTargetName field.
+func (o *GatewayCreateMigration) SetAdTargetName(v string) {
+	o.AdTargetName = &v
+}
+
+// GetAdTargetsPathTemplate returns the AdTargetsPathTemplate field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetAdTargetsPathTemplate() string {
+	if o == nil || o.AdTargetsPathTemplate == nil {
+		var ret string
+		return ret
+	}
+	return *o.AdTargetsPathTemplate
+}
+
+// GetAdTargetsPathTemplateOk returns a tuple with the AdTargetsPathTemplate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetAdTargetsPathTemplateOk() (*string, bool) {
+	if o == nil || o.AdTargetsPathTemplate == nil {
+		return nil, false
+	}
+	return o.AdTargetsPathTemplate, true
+}
+
+// HasAdTargetsPathTemplate returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasAdTargetsPathTemplate() bool {
+	if o != nil && o.AdTargetsPathTemplate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdTargetsPathTemplate gets a reference to the given string and assigns it to the AdTargetsPathTemplate field.
+func (o *GatewayCreateMigration) SetAdTargetsPathTemplate(v string) {
+	o.AdTargetsPathTemplate = &v
+}
+
+// GetAdUserBaseDn returns the AdUserBaseDn field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetAdUserBaseDn() string {
+	if o == nil || o.AdUserBaseDn == nil {
+		var ret string
+		return ret
+	}
+	return *o.AdUserBaseDn
+}
+
+// GetAdUserBaseDnOk returns a tuple with the AdUserBaseDn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetAdUserBaseDnOk() (*string, bool) {
+	if o == nil || o.AdUserBaseDn == nil {
+		return nil, false
+	}
+	return o.AdUserBaseDn, true
+}
+
+// HasAdUserBaseDn returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasAdUserBaseDn() bool {
+	if o != nil && o.AdUserBaseDn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdUserBaseDn gets a reference to the given string and assigns it to the AdUserBaseDn field.
+func (o *GatewayCreateMigration) SetAdUserBaseDn(v string) {
+	o.AdUserBaseDn = &v
+}
+
+// GetAdUserGroups returns the AdUserGroups field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetAdUserGroups() string {
+	if o == nil || o.AdUserGroups == nil {
+		var ret string
+		return ret
+	}
+	return *o.AdUserGroups
+}
+
+// GetAdUserGroupsOk returns a tuple with the AdUserGroups field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetAdUserGroupsOk() (*string, bool) {
+	if o == nil || o.AdUserGroups == nil {
+		return nil, false
+	}
+	return o.AdUserGroups, true
+}
+
+// HasAdUserGroups returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasAdUserGroups() bool {
+	if o != nil && o.AdUserGroups != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdUserGroups gets a reference to the given string and assigns it to the AdUserGroups field.
+func (o *GatewayCreateMigration) SetAdUserGroups(v string) {
+	o.AdUserGroups = &v
+}
+
+// GetAsSshPort returns the AsSshPort field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetAsSshPort() string {
+	if o == nil || o.AsSshPort == nil {
+		var ret string
+		return ret
+	}
+	return *o.AsSshPort
+}
+
+// GetAsSshPortOk returns a tuple with the AsSshPort field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetAsSshPortOk() (*string, bool) {
+	if o == nil || o.AsSshPort == nil {
+		return nil, false
+	}
+	return o.AsSshPort, true
+}
+
+// HasAsSshPort returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasAsSshPort() bool {
+	if o != nil && o.AsSshPort != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAsSshPort gets a reference to the given string and assigns it to the AsSshPort field.
+func (o *GatewayCreateMigration) SetAsSshPort(v string) {
+	o.AsSshPort = &v
 }
 
 // GetAwsKey returns the AwsKey field value if set, zero value otherwise.
@@ -831,166 +1634,6 @@ func (o *GatewayCreateMigration) SetName(v string) {
 	o.Name = v
 }
 
-// GetOpEmail returns the OpEmail field value if set, zero value otherwise.
-func (o *GatewayCreateMigration) GetOpEmail() string {
-	if o == nil || o.OpEmail == nil {
-		var ret string
-		return ret
-	}
-	return *o.OpEmail
-}
-
-// GetOpEmailOk returns a tuple with the OpEmail field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateMigration) GetOpEmailOk() (*string, bool) {
-	if o == nil || o.OpEmail == nil {
-		return nil, false
-	}
-	return o.OpEmail, true
-}
-
-// HasOpEmail returns a boolean if a field has been set.
-func (o *GatewayCreateMigration) HasOpEmail() bool {
-	if o != nil && o.OpEmail != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetOpEmail gets a reference to the given string and assigns it to the OpEmail field.
-func (o *GatewayCreateMigration) SetOpEmail(v string) {
-	o.OpEmail = &v
-}
-
-// GetOpPassword returns the OpPassword field value if set, zero value otherwise.
-func (o *GatewayCreateMigration) GetOpPassword() string {
-	if o == nil || o.OpPassword == nil {
-		var ret string
-		return ret
-	}
-	return *o.OpPassword
-}
-
-// GetOpPasswordOk returns a tuple with the OpPassword field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateMigration) GetOpPasswordOk() (*string, bool) {
-	if o == nil || o.OpPassword == nil {
-		return nil, false
-	}
-	return o.OpPassword, true
-}
-
-// HasOpPassword returns a boolean if a field has been set.
-func (o *GatewayCreateMigration) HasOpPassword() bool {
-	if o != nil && o.OpPassword != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetOpPassword gets a reference to the given string and assigns it to the OpPassword field.
-func (o *GatewayCreateMigration) SetOpPassword(v string) {
-	o.OpPassword = &v
-}
-
-// GetOpSecretKey returns the OpSecretKey field value if set, zero value otherwise.
-func (o *GatewayCreateMigration) GetOpSecretKey() string {
-	if o == nil || o.OpSecretKey == nil {
-		var ret string
-		return ret
-	}
-	return *o.OpSecretKey
-}
-
-// GetOpSecretKeyOk returns a tuple with the OpSecretKey field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateMigration) GetOpSecretKeyOk() (*string, bool) {
-	if o == nil || o.OpSecretKey == nil {
-		return nil, false
-	}
-	return o.OpSecretKey, true
-}
-
-// HasOpSecretKey returns a boolean if a field has been set.
-func (o *GatewayCreateMigration) HasOpSecretKey() bool {
-	if o != nil && o.OpSecretKey != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetOpSecretKey gets a reference to the given string and assigns it to the OpSecretKey field.
-func (o *GatewayCreateMigration) SetOpSecretKey(v string) {
-	o.OpSecretKey = &v
-}
-
-// GetOpUrl returns the OpUrl field value if set, zero value otherwise.
-func (o *GatewayCreateMigration) GetOpUrl() string {
-	if o == nil || o.OpUrl == nil {
-		var ret string
-		return ret
-	}
-	return *o.OpUrl
-}
-
-// GetOpUrlOk returns a tuple with the OpUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateMigration) GetOpUrlOk() (*string, bool) {
-	if o == nil || o.OpUrl == nil {
-		return nil, false
-	}
-	return o.OpUrl, true
-}
-
-// HasOpUrl returns a boolean if a field has been set.
-func (o *GatewayCreateMigration) HasOpUrl() bool {
-	if o != nil && o.OpUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetOpUrl gets a reference to the given string and assigns it to the OpUrl field.
-func (o *GatewayCreateMigration) SetOpUrl(v string) {
-	o.OpUrl = &v
-}
-
-// GetOpVaults returns the OpVaults field value if set, zero value otherwise.
-func (o *GatewayCreateMigration) GetOpVaults() []string {
-	if o == nil || o.OpVaults == nil {
-		var ret []string
-		return ret
-	}
-	return *o.OpVaults
-}
-
-// GetOpVaultsOk returns a tuple with the OpVaults field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateMigration) GetOpVaultsOk() (*[]string, bool) {
-	if o == nil || o.OpVaults == nil {
-		return nil, false
-	}
-	return o.OpVaults, true
-}
-
-// HasOpVaults returns a boolean if a field has been set.
-func (o *GatewayCreateMigration) HasOpVaults() bool {
-	if o != nil && o.OpVaults != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetOpVaults gets a reference to the given []string and assigns it to the OpVaults field.
-func (o *GatewayCreateMigration) SetOpVaults(v []string) {
-	o.OpVaults = &v
-}
-
 // GetProtectionKey returns the ProtectionKey field value if set, zero value otherwise.
 func (o *GatewayCreateMigration) GetProtectionKey() string {
 	if o == nil || o.ProtectionKey == nil {
@@ -1023,36 +1666,28 @@ func (o *GatewayCreateMigration) SetProtectionKey(v string) {
 	o.ProtectionKey = &v
 }
 
-// GetTargetLocation returns the TargetLocation field value if set, zero value otherwise.
+// GetTargetLocation returns the TargetLocation field value
 func (o *GatewayCreateMigration) GetTargetLocation() string {
-	if o == nil || o.TargetLocation == nil {
+	if o == nil  {
 		var ret string
 		return ret
 	}
-	return *o.TargetLocation
+
+	return o.TargetLocation
 }
 
-// GetTargetLocationOk returns a tuple with the TargetLocation field value if set, nil otherwise
+// GetTargetLocationOk returns a tuple with the TargetLocation field value
 // and a boolean to check if the value has been set.
 func (o *GatewayCreateMigration) GetTargetLocationOk() (*string, bool) {
-	if o == nil || o.TargetLocation == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.TargetLocation, true
+	return &o.TargetLocation, true
 }
 
-// HasTargetLocation returns a boolean if a field has been set.
-func (o *GatewayCreateMigration) HasTargetLocation() bool {
-	if o != nil && o.TargetLocation != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetTargetLocation gets a reference to the given string and assigns it to the TargetLocation field.
+// SetTargetLocation sets field value
 func (o *GatewayCreateMigration) SetTargetLocation(v string) {
-	o.TargetLocation = &v
+	o.TargetLocation = v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -1153,6 +1788,78 @@ func (o *GatewayCreateMigration) SetUidToken(v string) {
 
 func (o GatewayCreateMigration) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Var1passwordEmail != nil {
+		toSerialize["1password-email"] = o.Var1passwordEmail
+	}
+	if o.Var1passwordPassword != nil {
+		toSerialize["1password-password"] = o.Var1passwordPassword
+	}
+	if o.Var1passwordSecretKey != nil {
+		toSerialize["1password-secret-key"] = o.Var1passwordSecretKey
+	}
+	if o.Var1passwordUrl != nil {
+		toSerialize["1password-url"] = o.Var1passwordUrl
+	}
+	if o.Var1passwordVaults != nil {
+		toSerialize["1password-vaults"] = o.Var1passwordVaults
+	}
+	if o.AdAutoRotateBoolean != nil {
+		toSerialize["AdAutoRotateBoolean"] = o.AdAutoRotateBoolean
+	}
+	if o.AdDiscoverLocalUsersBoolean != nil {
+		toSerialize["AdDiscoverLocalUsersBoolean"] = o.AdDiscoverLocalUsersBoolean
+	}
+	if o.AdLocalUsersIgnoreList != nil {
+		toSerialize["AdLocalUsersIgnoreList"] = o.AdLocalUsersIgnoreList
+	}
+	if o.AdSRAEnableRDPBoolean != nil {
+		toSerialize["AdSRAEnableRDPBoolean"] = o.AdSRAEnableRDPBoolean
+	}
+	if o.AdAutoRotate != nil {
+		toSerialize["ad_auto_rotate"] = o.AdAutoRotate
+	}
+	if o.AdComputerBaseDn != nil {
+		toSerialize["ad_computer_base_dn"] = o.AdComputerBaseDn
+	}
+	if o.AdDiscoverLocalUsers != nil {
+		toSerialize["ad_discover_local_users"] = o.AdDiscoverLocalUsers
+	}
+	if o.AdDomainName != nil {
+		toSerialize["ad_domain_name"] = o.AdDomainName
+	}
+	if o.AdDomainUsersPathTemplate != nil {
+		toSerialize["ad_domain_users_path_template"] = o.AdDomainUsersPathTemplate
+	}
+	if o.AdLocalUsersIgnore != nil {
+		toSerialize["ad_local_users_ignore"] = o.AdLocalUsersIgnore
+	}
+	if o.AdLocalUsersPathTemplate != nil {
+		toSerialize["ad_local_users_path_template"] = o.AdLocalUsersPathTemplate
+	}
+	if o.AdRotationHour != nil {
+		toSerialize["ad_rotation_hour"] = o.AdRotationHour
+	}
+	if o.AdRotationInterval != nil {
+		toSerialize["ad_rotation_interval"] = o.AdRotationInterval
+	}
+	if o.AdSraEnableRdp != nil {
+		toSerialize["ad_sra_enable_rdp"] = o.AdSraEnableRdp
+	}
+	if o.AdTargetName != nil {
+		toSerialize["ad_target_name"] = o.AdTargetName
+	}
+	if o.AdTargetsPathTemplate != nil {
+		toSerialize["ad_targets_path_template"] = o.AdTargetsPathTemplate
+	}
+	if o.AdUserBaseDn != nil {
+		toSerialize["ad_user_base_dn"] = o.AdUserBaseDn
+	}
+	if o.AdUserGroups != nil {
+		toSerialize["ad_user_groups"] = o.AdUserGroups
+	}
+	if o.AsSshPort != nil {
+		toSerialize["as_ssh_port"] = o.AsSshPort
+	}
 	if o.AwsKey != nil {
 		toSerialize["aws-key"] = o.AwsKey
 	}
@@ -1222,25 +1929,10 @@ func (o GatewayCreateMigration) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.OpEmail != nil {
-		toSerialize["op-email"] = o.OpEmail
-	}
-	if o.OpPassword != nil {
-		toSerialize["op-password"] = o.OpPassword
-	}
-	if o.OpSecretKey != nil {
-		toSerialize["op-secret-key"] = o.OpSecretKey
-	}
-	if o.OpUrl != nil {
-		toSerialize["op-url"] = o.OpUrl
-	}
-	if o.OpVaults != nil {
-		toSerialize["op-vaults"] = o.OpVaults
-	}
 	if o.ProtectionKey != nil {
 		toSerialize["protection-key"] = o.ProtectionKey
 	}
-	if o.TargetLocation != nil {
+	if true {
 		toSerialize["target-location"] = o.TargetLocation
 	}
 	if o.Token != nil {

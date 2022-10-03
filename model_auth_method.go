@@ -18,6 +18,7 @@ import (
 
 // AuthMethod struct for AuthMethod
 type AuthMethod struct {
+	AccessDate *time.Time `json:"access_date,omitempty"`
 	AccessInfo *AuthMethodAccessInfo `json:"access_info,omitempty"`
 	AccountId *string `json:"account_id,omitempty"`
 	AuthMethodAccessId *string `json:"auth_method_access_id,omitempty"`
@@ -26,7 +27,6 @@ type AuthMethod struct {
 	ClientPermissions *[]string `json:"client_permissions,omitempty"`
 	CreationDate *time.Time `json:"creation_date,omitempty"`
 	ModificationDate *time.Time `json:"modification_date,omitempty"`
-	UsageDate *time.Time `json:"usage_date,omitempty"`
 }
 
 // NewAuthMethod instantiates a new AuthMethod object
@@ -44,6 +44,38 @@ func NewAuthMethod() *AuthMethod {
 func NewAuthMethodWithDefaults() *AuthMethod {
 	this := AuthMethod{}
 	return &this
+}
+
+// GetAccessDate returns the AccessDate field value if set, zero value otherwise.
+func (o *AuthMethod) GetAccessDate() time.Time {
+	if o == nil || o.AccessDate == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.AccessDate
+}
+
+// GetAccessDateOk returns a tuple with the AccessDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethod) GetAccessDateOk() (*time.Time, bool) {
+	if o == nil || o.AccessDate == nil {
+		return nil, false
+	}
+	return o.AccessDate, true
+}
+
+// HasAccessDate returns a boolean if a field has been set.
+func (o *AuthMethod) HasAccessDate() bool {
+	if o != nil && o.AccessDate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessDate gets a reference to the given time.Time and assigns it to the AccessDate field.
+func (o *AuthMethod) SetAccessDate(v time.Time) {
+	o.AccessDate = &v
 }
 
 // GetAccessInfo returns the AccessInfo field value if set, zero value otherwise.
@@ -302,40 +334,11 @@ func (o *AuthMethod) SetModificationDate(v time.Time) {
 	o.ModificationDate = &v
 }
 
-// GetUsageDate returns the UsageDate field value if set, zero value otherwise.
-func (o *AuthMethod) GetUsageDate() time.Time {
-	if o == nil || o.UsageDate == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.UsageDate
-}
-
-// GetUsageDateOk returns a tuple with the UsageDate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AuthMethod) GetUsageDateOk() (*time.Time, bool) {
-	if o == nil || o.UsageDate == nil {
-		return nil, false
-	}
-	return o.UsageDate, true
-}
-
-// HasUsageDate returns a boolean if a field has been set.
-func (o *AuthMethod) HasUsageDate() bool {
-	if o != nil && o.UsageDate != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsageDate gets a reference to the given time.Time and assigns it to the UsageDate field.
-func (o *AuthMethod) SetUsageDate(v time.Time) {
-	o.UsageDate = &v
-}
-
 func (o AuthMethod) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AccessDate != nil {
+		toSerialize["access_date"] = o.AccessDate
+	}
 	if o.AccessInfo != nil {
 		toSerialize["access_info"] = o.AccessInfo
 	}
@@ -359,9 +362,6 @@ func (o AuthMethod) MarshalJSON() ([]byte, error) {
 	}
 	if o.ModificationDate != nil {
 		toSerialize["modification_date"] = o.ModificationDate
-	}
-	if o.UsageDate != nil {
-		toSerialize["usage_date"] = o.UsageDate
 	}
 	return json.Marshal(toSerialize)
 }

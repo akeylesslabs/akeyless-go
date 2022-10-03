@@ -13,20 +13,24 @@ package akeyless
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // Target struct for Target
 type Target struct {
+	AccessDate *time.Time `json:"access_date,omitempty"`
 	// this is not \"omitempty\" since an empty value causes no update while an empty map will clear the attributes
 	Attributes *map[string]map[string]interface{} `json:"attributes,omitempty"`
 	ClientPermissions *[]string `json:"client_permissions,omitempty"`
 	Comment *string `json:"comment,omitempty"`
+	CreationDate *time.Time `json:"creation_date,omitempty"`
+	CredentialsLess *bool `json:"credentials_less,omitempty"`
 	LastVersion *int32 `json:"last_version,omitempty"`
+	ModificationDate *time.Time `json:"modification_date,omitempty"`
 	ProtectionKeyName *string `json:"protection_key_name,omitempty"`
 	TargetId *int64 `json:"target_id,omitempty"`
 	TargetItemsAssoc *[]TargetItemAssociation `json:"target_items_assoc,omitempty"`
 	TargetName *string `json:"target_name,omitempty"`
-	TargetObjectsAssoc *[]TargetObjectAssociation `json:"target_objects_assoc,omitempty"`
 	TargetType *string `json:"target_type,omitempty"`
 	TargetVersions *[]ItemVersion `json:"target_versions,omitempty"`
 	WithCustomerFragment *bool `json:"with_customer_fragment,omitempty"`
@@ -47,6 +51,38 @@ func NewTarget() *Target {
 func NewTargetWithDefaults() *Target {
 	this := Target{}
 	return &this
+}
+
+// GetAccessDate returns the AccessDate field value if set, zero value otherwise.
+func (o *Target) GetAccessDate() time.Time {
+	if o == nil || o.AccessDate == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.AccessDate
+}
+
+// GetAccessDateOk returns a tuple with the AccessDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Target) GetAccessDateOk() (*time.Time, bool) {
+	if o == nil || o.AccessDate == nil {
+		return nil, false
+	}
+	return o.AccessDate, true
+}
+
+// HasAccessDate returns a boolean if a field has been set.
+func (o *Target) HasAccessDate() bool {
+	if o != nil && o.AccessDate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessDate gets a reference to the given time.Time and assigns it to the AccessDate field.
+func (o *Target) SetAccessDate(v time.Time) {
+	o.AccessDate = &v
 }
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
@@ -145,6 +181,70 @@ func (o *Target) SetComment(v string) {
 	o.Comment = &v
 }
 
+// GetCreationDate returns the CreationDate field value if set, zero value otherwise.
+func (o *Target) GetCreationDate() time.Time {
+	if o == nil || o.CreationDate == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.CreationDate
+}
+
+// GetCreationDateOk returns a tuple with the CreationDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Target) GetCreationDateOk() (*time.Time, bool) {
+	if o == nil || o.CreationDate == nil {
+		return nil, false
+	}
+	return o.CreationDate, true
+}
+
+// HasCreationDate returns a boolean if a field has been set.
+func (o *Target) HasCreationDate() bool {
+	if o != nil && o.CreationDate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreationDate gets a reference to the given time.Time and assigns it to the CreationDate field.
+func (o *Target) SetCreationDate(v time.Time) {
+	o.CreationDate = &v
+}
+
+// GetCredentialsLess returns the CredentialsLess field value if set, zero value otherwise.
+func (o *Target) GetCredentialsLess() bool {
+	if o == nil || o.CredentialsLess == nil {
+		var ret bool
+		return ret
+	}
+	return *o.CredentialsLess
+}
+
+// GetCredentialsLessOk returns a tuple with the CredentialsLess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Target) GetCredentialsLessOk() (*bool, bool) {
+	if o == nil || o.CredentialsLess == nil {
+		return nil, false
+	}
+	return o.CredentialsLess, true
+}
+
+// HasCredentialsLess returns a boolean if a field has been set.
+func (o *Target) HasCredentialsLess() bool {
+	if o != nil && o.CredentialsLess != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCredentialsLess gets a reference to the given bool and assigns it to the CredentialsLess field.
+func (o *Target) SetCredentialsLess(v bool) {
+	o.CredentialsLess = &v
+}
+
 // GetLastVersion returns the LastVersion field value if set, zero value otherwise.
 func (o *Target) GetLastVersion() int32 {
 	if o == nil || o.LastVersion == nil {
@@ -175,6 +275,38 @@ func (o *Target) HasLastVersion() bool {
 // SetLastVersion gets a reference to the given int32 and assigns it to the LastVersion field.
 func (o *Target) SetLastVersion(v int32) {
 	o.LastVersion = &v
+}
+
+// GetModificationDate returns the ModificationDate field value if set, zero value otherwise.
+func (o *Target) GetModificationDate() time.Time {
+	if o == nil || o.ModificationDate == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.ModificationDate
+}
+
+// GetModificationDateOk returns a tuple with the ModificationDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Target) GetModificationDateOk() (*time.Time, bool) {
+	if o == nil || o.ModificationDate == nil {
+		return nil, false
+	}
+	return o.ModificationDate, true
+}
+
+// HasModificationDate returns a boolean if a field has been set.
+func (o *Target) HasModificationDate() bool {
+	if o != nil && o.ModificationDate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetModificationDate gets a reference to the given time.Time and assigns it to the ModificationDate field.
+func (o *Target) SetModificationDate(v time.Time) {
+	o.ModificationDate = &v
 }
 
 // GetProtectionKeyName returns the ProtectionKeyName field value if set, zero value otherwise.
@@ -305,38 +437,6 @@ func (o *Target) SetTargetName(v string) {
 	o.TargetName = &v
 }
 
-// GetTargetObjectsAssoc returns the TargetObjectsAssoc field value if set, zero value otherwise.
-func (o *Target) GetTargetObjectsAssoc() []TargetObjectAssociation {
-	if o == nil || o.TargetObjectsAssoc == nil {
-		var ret []TargetObjectAssociation
-		return ret
-	}
-	return *o.TargetObjectsAssoc
-}
-
-// GetTargetObjectsAssocOk returns a tuple with the TargetObjectsAssoc field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Target) GetTargetObjectsAssocOk() (*[]TargetObjectAssociation, bool) {
-	if o == nil || o.TargetObjectsAssoc == nil {
-		return nil, false
-	}
-	return o.TargetObjectsAssoc, true
-}
-
-// HasTargetObjectsAssoc returns a boolean if a field has been set.
-func (o *Target) HasTargetObjectsAssoc() bool {
-	if o != nil && o.TargetObjectsAssoc != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetTargetObjectsAssoc gets a reference to the given []TargetObjectAssociation and assigns it to the TargetObjectsAssoc field.
-func (o *Target) SetTargetObjectsAssoc(v []TargetObjectAssociation) {
-	o.TargetObjectsAssoc = &v
-}
-
 // GetTargetType returns the TargetType field value if set, zero value otherwise.
 func (o *Target) GetTargetType() string {
 	if o == nil || o.TargetType == nil {
@@ -435,6 +535,9 @@ func (o *Target) SetWithCustomerFragment(v bool) {
 
 func (o Target) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AccessDate != nil {
+		toSerialize["access_date"] = o.AccessDate
+	}
 	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes
 	}
@@ -444,8 +547,17 @@ func (o Target) MarshalJSON() ([]byte, error) {
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment
 	}
+	if o.CreationDate != nil {
+		toSerialize["creation_date"] = o.CreationDate
+	}
+	if o.CredentialsLess != nil {
+		toSerialize["credentials_less"] = o.CredentialsLess
+	}
 	if o.LastVersion != nil {
 		toSerialize["last_version"] = o.LastVersion
+	}
+	if o.ModificationDate != nil {
+		toSerialize["modification_date"] = o.ModificationDate
 	}
 	if o.ProtectionKeyName != nil {
 		toSerialize["protection_key_name"] = o.ProtectionKeyName
@@ -458,9 +570,6 @@ func (o Target) MarshalJSON() ([]byte, error) {
 	}
 	if o.TargetName != nil {
 		toSerialize["target_name"] = o.TargetName
-	}
-	if o.TargetObjectsAssoc != nil {
-		toSerialize["target_objects_assoc"] = o.TargetObjectsAssoc
 	}
 	if o.TargetType != nil {
 		toSerialize["target_type"] = o.TargetType

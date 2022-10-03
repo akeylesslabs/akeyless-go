@@ -4,15 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AccessDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **Attributes** | Pointer to **map[string]map[string]interface{}** | this is not \&quot;omitempty\&quot; since an empty value causes no update while an empty map will clear the attributes | [optional] 
 **ClientPermissions** | Pointer to **[]string** |  | [optional] 
 **Comment** | Pointer to **string** |  | [optional] 
+**CreationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**CredentialsLess** | Pointer to **bool** |  | [optional] 
 **LastVersion** | Pointer to **int32** |  | [optional] 
+**ModificationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **ProtectionKeyName** | Pointer to **string** |  | [optional] 
 **TargetId** | Pointer to **int64** |  | [optional] 
 **TargetItemsAssoc** | Pointer to [**[]TargetItemAssociation**](TargetItemAssociation.md) |  | [optional] 
 **TargetName** | Pointer to **string** |  | [optional] 
-**TargetObjectsAssoc** | Pointer to [**[]TargetObjectAssociation**](TargetObjectAssociation.md) |  | [optional] 
 **TargetType** | Pointer to **string** |  | [optional] 
 **TargetVersions** | Pointer to [**[]ItemVersion**](ItemVersion.md) |  | [optional] 
 **WithCustomerFragment** | Pointer to **bool** |  | [optional] 
@@ -35,6 +38,31 @@ will change when the set of required properties is changed
 NewTargetWithDefaults instantiates a new Target object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAccessDate
+
+`func (o *Target) GetAccessDate() time.Time`
+
+GetAccessDate returns the AccessDate field if non-nil, zero value otherwise.
+
+### GetAccessDateOk
+
+`func (o *Target) GetAccessDateOk() (*time.Time, bool)`
+
+GetAccessDateOk returns a tuple with the AccessDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessDate
+
+`func (o *Target) SetAccessDate(v time.Time)`
+
+SetAccessDate sets AccessDate field to given value.
+
+### HasAccessDate
+
+`func (o *Target) HasAccessDate() bool`
+
+HasAccessDate returns a boolean if a field has been set.
 
 ### GetAttributes
 
@@ -111,6 +139,56 @@ SetComment sets Comment field to given value.
 
 HasComment returns a boolean if a field has been set.
 
+### GetCreationDate
+
+`func (o *Target) GetCreationDate() time.Time`
+
+GetCreationDate returns the CreationDate field if non-nil, zero value otherwise.
+
+### GetCreationDateOk
+
+`func (o *Target) GetCreationDateOk() (*time.Time, bool)`
+
+GetCreationDateOk returns a tuple with the CreationDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreationDate
+
+`func (o *Target) SetCreationDate(v time.Time)`
+
+SetCreationDate sets CreationDate field to given value.
+
+### HasCreationDate
+
+`func (o *Target) HasCreationDate() bool`
+
+HasCreationDate returns a boolean if a field has been set.
+
+### GetCredentialsLess
+
+`func (o *Target) GetCredentialsLess() bool`
+
+GetCredentialsLess returns the CredentialsLess field if non-nil, zero value otherwise.
+
+### GetCredentialsLessOk
+
+`func (o *Target) GetCredentialsLessOk() (*bool, bool)`
+
+GetCredentialsLessOk returns a tuple with the CredentialsLess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCredentialsLess
+
+`func (o *Target) SetCredentialsLess(v bool)`
+
+SetCredentialsLess sets CredentialsLess field to given value.
+
+### HasCredentialsLess
+
+`func (o *Target) HasCredentialsLess() bool`
+
+HasCredentialsLess returns a boolean if a field has been set.
+
 ### GetLastVersion
 
 `func (o *Target) GetLastVersion() int32`
@@ -135,6 +213,31 @@ SetLastVersion sets LastVersion field to given value.
 `func (o *Target) HasLastVersion() bool`
 
 HasLastVersion returns a boolean if a field has been set.
+
+### GetModificationDate
+
+`func (o *Target) GetModificationDate() time.Time`
+
+GetModificationDate returns the ModificationDate field if non-nil, zero value otherwise.
+
+### GetModificationDateOk
+
+`func (o *Target) GetModificationDateOk() (*time.Time, bool)`
+
+GetModificationDateOk returns a tuple with the ModificationDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetModificationDate
+
+`func (o *Target) SetModificationDate(v time.Time)`
+
+SetModificationDate sets ModificationDate field to given value.
+
+### HasModificationDate
+
+`func (o *Target) HasModificationDate() bool`
+
+HasModificationDate returns a boolean if a field has been set.
 
 ### GetProtectionKeyName
 
@@ -235,31 +338,6 @@ SetTargetName sets TargetName field to given value.
 `func (o *Target) HasTargetName() bool`
 
 HasTargetName returns a boolean if a field has been set.
-
-### GetTargetObjectsAssoc
-
-`func (o *Target) GetTargetObjectsAssoc() []TargetObjectAssociation`
-
-GetTargetObjectsAssoc returns the TargetObjectsAssoc field if non-nil, zero value otherwise.
-
-### GetTargetObjectsAssocOk
-
-`func (o *Target) GetTargetObjectsAssocOk() (*[]TargetObjectAssociation, bool)`
-
-GetTargetObjectsAssocOk returns a tuple with the TargetObjectsAssoc field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTargetObjectsAssoc
-
-`func (o *Target) SetTargetObjectsAssoc(v []TargetObjectAssociation)`
-
-SetTargetObjectsAssoc sets TargetObjectsAssoc field to given value.
-
-### HasTargetObjectsAssoc
-
-`func (o *Target) HasTargetObjectsAssoc() bool`
-
-HasTargetObjectsAssoc returns a boolean if a field has been set.
 
 ### GetTargetType
 

@@ -18,9 +18,11 @@ import (
 // TargetItemAssociation TargetItemAssociation includes details of an association between a target and an item.
 type TargetItemAssociation struct {
 	AssocId *string `json:"assoc_id,omitempty"`
+	Attributes *map[string]string `json:"attributes,omitempty"`
 	ClusterId *int64 `json:"cluster_id,omitempty"`
 	ItemName *string `json:"item_name,omitempty"`
 	ItemType *string `json:"item_type,omitempty"`
+	Relationship *string `json:"relationship,omitempty"`
 }
 
 // NewTargetItemAssociation instantiates a new TargetItemAssociation object
@@ -70,6 +72,38 @@ func (o *TargetItemAssociation) HasAssocId() bool {
 // SetAssocId gets a reference to the given string and assigns it to the AssocId field.
 func (o *TargetItemAssociation) SetAssocId(v string) {
 	o.AssocId = &v
+}
+
+// GetAttributes returns the Attributes field value if set, zero value otherwise.
+func (o *TargetItemAssociation) GetAttributes() map[string]string {
+	if o == nil || o.Attributes == nil {
+		var ret map[string]string
+		return ret
+	}
+	return *o.Attributes
+}
+
+// GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetItemAssociation) GetAttributesOk() (*map[string]string, bool) {
+	if o == nil || o.Attributes == nil {
+		return nil, false
+	}
+	return o.Attributes, true
+}
+
+// HasAttributes returns a boolean if a field has been set.
+func (o *TargetItemAssociation) HasAttributes() bool {
+	if o != nil && o.Attributes != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAttributes gets a reference to the given map[string]string and assigns it to the Attributes field.
+func (o *TargetItemAssociation) SetAttributes(v map[string]string) {
+	o.Attributes = &v
 }
 
 // GetClusterId returns the ClusterId field value if set, zero value otherwise.
@@ -168,10 +202,45 @@ func (o *TargetItemAssociation) SetItemType(v string) {
 	o.ItemType = &v
 }
 
+// GetRelationship returns the Relationship field value if set, zero value otherwise.
+func (o *TargetItemAssociation) GetRelationship() string {
+	if o == nil || o.Relationship == nil {
+		var ret string
+		return ret
+	}
+	return *o.Relationship
+}
+
+// GetRelationshipOk returns a tuple with the Relationship field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetItemAssociation) GetRelationshipOk() (*string, bool) {
+	if o == nil || o.Relationship == nil {
+		return nil, false
+	}
+	return o.Relationship, true
+}
+
+// HasRelationship returns a boolean if a field has been set.
+func (o *TargetItemAssociation) HasRelationship() bool {
+	if o != nil && o.Relationship != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRelationship gets a reference to the given string and assigns it to the Relationship field.
+func (o *TargetItemAssociation) SetRelationship(v string) {
+	o.Relationship = &v
+}
+
 func (o TargetItemAssociation) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AssocId != nil {
 		toSerialize["assoc_id"] = o.AssocId
+	}
+	if o.Attributes != nil {
+		toSerialize["attributes"] = o.Attributes
 	}
 	if o.ClusterId != nil {
 		toSerialize["cluster_id"] = o.ClusterId
@@ -181,6 +250,9 @@ func (o TargetItemAssociation) MarshalJSON() ([]byte, error) {
 	}
 	if o.ItemType != nil {
 		toSerialize["item_type"] = o.ItemType
+	}
+	if o.Relationship != nil {
+		toSerialize["relationship"] = o.Relationship
 	}
 	return json.Marshal(toSerialize)
 }

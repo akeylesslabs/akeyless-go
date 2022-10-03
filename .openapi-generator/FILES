@@ -11,6 +11,8 @@ docs/AWSPayload.md
 docs/AWSSecretsMigration.md
 docs/AccountGeneralSettings.md
 docs/AccountObjectVersionSettingsOutput.md
+docs/ActiveDirectoryMigration.md
+docs/ActiveDirectoryPayload.md
 docs/AdminsConfigPart.md
 docs/AkeylessGatewayConfig.md
 docs/AllowedAccess.md
@@ -237,6 +239,8 @@ docs/GatewayListAllowedManagementAccess.md
 docs/GatewayListMigration.md
 docs/GatewayListProducers.md
 docs/GatewayMessageQueueInfo.md
+docs/GatewayMigratePersonalItems.md
+docs/GatewayMigratePersonalItemsOutput.md
 docs/GatewayMigrationCreateOutput.md
 docs/GatewayMigrationDeleteOutput.md
 docs/GatewayMigrationGetOutput.md
@@ -456,7 +460,6 @@ docs/SystemAccessCredsSettings.md
 docs/Target.md
 docs/TargetItemAssociation.md
 docs/TargetItemVersion.md
-docs/TargetObjectAssociation.md
 docs/TargetTypeDetailsInput.md
 docs/TmpUserData.md
 docs/Tokenize.md
@@ -563,6 +566,8 @@ go.mod
 go.sum
 model_account_general_settings.go
 model_account_object_version_settings_output.go
+model_active_directory_migration.go
+model_active_directory_payload.go
 model_admins_config_part.go
 model_akeyless_gateway_config.go
 model_allowed_access.go
@@ -790,6 +795,8 @@ model_gateway_list_allowed_management_access.go
 model_gateway_list_migration.go
 model_gateway_list_producers.go
 model_gateway_message_queue_info.go
+model_gateway_migrate_personal_items.go
+model_gateway_migrate_personal_items_output.go
 model_gateway_migration_create_output.go
 model_gateway_migration_delete_output.go
 model_gateway_migration_get_output.go
@@ -1012,7 +1019,6 @@ model_system_access_creds_settings.go
 model_target.go
 model_target_item_association.go
 model_target_item_version.go
-model_target_object_association.go
 model_target_type_details_input.go
 model_tmp_user_data.go
 model_tokenize.go
