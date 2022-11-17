@@ -61,6 +61,7 @@ type TargetTypeDetailsInput struct {
 	EksClusterName *string `json:"eks_cluster_name,omitempty"`
 	EksRegion *string `json:"eks_region,omitempty"`
 	EksSecretAccessKey *string `json:"eks_secret_access_key,omitempty"`
+	// deprecated
 	GcpServiceAccountEmail *string `json:"gcp_service_account_email,omitempty"`
 	GcpServiceAccountKey *string `json:"gcp_service_account_key,omitempty"`
 	GithubAppId *int64 `json:"github_app_id,omitempty"`

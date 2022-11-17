@@ -73,8 +73,11 @@ Name | Type | Description | Notes
 **FailureMessage** | Pointer to **string** |  | [optional] 
 **FixedUserOnly** | Pointer to **string** |  | [optional] 
 **GcpKeyAlgo** | Pointer to **string** |  | [optional] 
-**GcpServiceAccountEmail** | Pointer to **string** |  | [optional] 
+**GcpRoleBindings** | Pointer to [**map[string][]string**](array.md) |  | [optional] 
+**GcpServiceAccountEmail** | Pointer to **string** | GCPServiceAccountEmail overrides the deprecated field from the target | [optional] 
 **GcpServiceAccountKey** | Pointer to **string** |  | [optional] 
+**GcpServiceAccountType** | Pointer to **string** |  | [optional] 
+**GcpTmpServiceAccountName** | Pointer to **string** |  | [optional] 
 **GcpTokenLifetime** | Pointer to **string** |  | [optional] 
 **GcpTokenScope** | Pointer to **string** |  | [optional] 
 **GcpTokenType** | Pointer to **string** |  | [optional] 
@@ -1924,6 +1927,31 @@ SetGcpKeyAlgo sets GcpKeyAlgo field to given value.
 
 HasGcpKeyAlgo returns a boolean if a field has been set.
 
+### GetGcpRoleBindings
+
+`func (o *DSProducerDetails) GetGcpRoleBindings() map[string][]string`
+
+GetGcpRoleBindings returns the GcpRoleBindings field if non-nil, zero value otherwise.
+
+### GetGcpRoleBindingsOk
+
+`func (o *DSProducerDetails) GetGcpRoleBindingsOk() (*map[string][]string, bool)`
+
+GetGcpRoleBindingsOk returns a tuple with the GcpRoleBindings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpRoleBindings
+
+`func (o *DSProducerDetails) SetGcpRoleBindings(v map[string][]string)`
+
+SetGcpRoleBindings sets GcpRoleBindings field to given value.
+
+### HasGcpRoleBindings
+
+`func (o *DSProducerDetails) HasGcpRoleBindings() bool`
+
+HasGcpRoleBindings returns a boolean if a field has been set.
+
 ### GetGcpServiceAccountEmail
 
 `func (o *DSProducerDetails) GetGcpServiceAccountEmail() string`
@@ -1973,6 +2001,56 @@ SetGcpServiceAccountKey sets GcpServiceAccountKey field to given value.
 `func (o *DSProducerDetails) HasGcpServiceAccountKey() bool`
 
 HasGcpServiceAccountKey returns a boolean if a field has been set.
+
+### GetGcpServiceAccountType
+
+`func (o *DSProducerDetails) GetGcpServiceAccountType() string`
+
+GetGcpServiceAccountType returns the GcpServiceAccountType field if non-nil, zero value otherwise.
+
+### GetGcpServiceAccountTypeOk
+
+`func (o *DSProducerDetails) GetGcpServiceAccountTypeOk() (*string, bool)`
+
+GetGcpServiceAccountTypeOk returns a tuple with the GcpServiceAccountType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpServiceAccountType
+
+`func (o *DSProducerDetails) SetGcpServiceAccountType(v string)`
+
+SetGcpServiceAccountType sets GcpServiceAccountType field to given value.
+
+### HasGcpServiceAccountType
+
+`func (o *DSProducerDetails) HasGcpServiceAccountType() bool`
+
+HasGcpServiceAccountType returns a boolean if a field has been set.
+
+### GetGcpTmpServiceAccountName
+
+`func (o *DSProducerDetails) GetGcpTmpServiceAccountName() string`
+
+GetGcpTmpServiceAccountName returns the GcpTmpServiceAccountName field if non-nil, zero value otherwise.
+
+### GetGcpTmpServiceAccountNameOk
+
+`func (o *DSProducerDetails) GetGcpTmpServiceAccountNameOk() (*string, bool)`
+
+GetGcpTmpServiceAccountNameOk returns a tuple with the GcpTmpServiceAccountName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpTmpServiceAccountName
+
+`func (o *DSProducerDetails) SetGcpTmpServiceAccountName(v string)`
+
+SetGcpTmpServiceAccountName sets GcpTmpServiceAccountName field to given value.
+
+### HasGcpTmpServiceAccountName
+
+`func (o *DSProducerDetails) HasGcpTmpServiceAccountName() bool`
+
+HasGcpTmpServiceAccountName returns a boolean if a field has been set.
 
 ### GetGcpTokenLifetime
 

@@ -14931,7 +14931,7 @@ func (a *V2ApiService) GatewayUpdateProducerNativeK8SExecute(r ApiGatewayUpdateP
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/gateway-update-producer-k8s-native"
+	localVarPath := localBasePath + "/gateway-update-producer-k8s"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}

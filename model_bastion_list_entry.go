@@ -21,6 +21,7 @@ type BastionListEntry struct {
 	AccessId *string `json:"access_id,omitempty"`
 	AllowedAccessIds *[]string `json:"allowed_access_ids,omitempty"`
 	AllowedUrls *[]string `json:"allowed_urls,omitempty"`
+	AllowedUrlsPerInstance *map[string][]string `json:"allowed_urls_per_instance,omitempty"`
 	ClusterName *string `json:"cluster_name,omitempty"`
 	DisplayName *string `json:"display_name,omitempty"`
 	LastReport *time.Time `json:"last_report,omitempty"`
@@ -139,6 +140,38 @@ func (o *BastionListEntry) SetAllowedUrls(v []string) {
 	o.AllowedUrls = &v
 }
 
+// GetAllowedUrlsPerInstance returns the AllowedUrlsPerInstance field value if set, zero value otherwise.
+func (o *BastionListEntry) GetAllowedUrlsPerInstance() map[string][]string {
+	if o == nil || o.AllowedUrlsPerInstance == nil {
+		var ret map[string][]string
+		return ret
+	}
+	return *o.AllowedUrlsPerInstance
+}
+
+// GetAllowedUrlsPerInstanceOk returns a tuple with the AllowedUrlsPerInstance field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BastionListEntry) GetAllowedUrlsPerInstanceOk() (*map[string][]string, bool) {
+	if o == nil || o.AllowedUrlsPerInstance == nil {
+		return nil, false
+	}
+	return o.AllowedUrlsPerInstance, true
+}
+
+// HasAllowedUrlsPerInstance returns a boolean if a field has been set.
+func (o *BastionListEntry) HasAllowedUrlsPerInstance() bool {
+	if o != nil && o.AllowedUrlsPerInstance != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowedUrlsPerInstance gets a reference to the given map[string][]string and assigns it to the AllowedUrlsPerInstance field.
+func (o *BastionListEntry) SetAllowedUrlsPerInstance(v map[string][]string) {
+	o.AllowedUrlsPerInstance = &v
+}
+
 // GetClusterName returns the ClusterName field value if set, zero value otherwise.
 func (o *BastionListEntry) GetClusterName() string {
 	if o == nil || o.ClusterName == nil {
@@ -245,6 +278,9 @@ func (o BastionListEntry) MarshalJSON() ([]byte, error) {
 	}
 	if o.AllowedUrls != nil {
 		toSerialize["allowed_urls"] = o.AllowedUrls
+	}
+	if o.AllowedUrlsPerInstance != nil {
+		toSerialize["allowed_urls_per_instance"] = o.AllowedUrlsPerInstance
 	}
 	if o.ClusterName != nil {
 		toSerialize["cluster_name"] = o.ClusterName

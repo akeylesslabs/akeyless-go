@@ -17,6 +17,7 @@ import (
 
 // KmipCreateClient struct for KmipCreateClient
 type KmipCreateClient struct {
+	ActivateKeysOnCreation *string `json:"activate-keys-on-creation,omitempty"`
 	CertificateTtl *int64 `json:"certificate-ttl,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -44,6 +45,38 @@ func NewKmipCreateClient(name string, ) *KmipCreateClient {
 func NewKmipCreateClientWithDefaults() *KmipCreateClient {
 	this := KmipCreateClient{}
 	return &this
+}
+
+// GetActivateKeysOnCreation returns the ActivateKeysOnCreation field value if set, zero value otherwise.
+func (o *KmipCreateClient) GetActivateKeysOnCreation() string {
+	if o == nil || o.ActivateKeysOnCreation == nil {
+		var ret string
+		return ret
+	}
+	return *o.ActivateKeysOnCreation
+}
+
+// GetActivateKeysOnCreationOk returns a tuple with the ActivateKeysOnCreation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KmipCreateClient) GetActivateKeysOnCreationOk() (*string, bool) {
+	if o == nil || o.ActivateKeysOnCreation == nil {
+		return nil, false
+	}
+	return o.ActivateKeysOnCreation, true
+}
+
+// HasActivateKeysOnCreation returns a boolean if a field has been set.
+func (o *KmipCreateClient) HasActivateKeysOnCreation() bool {
+	if o != nil && o.ActivateKeysOnCreation != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetActivateKeysOnCreation gets a reference to the given string and assigns it to the ActivateKeysOnCreation field.
+func (o *KmipCreateClient) SetActivateKeysOnCreation(v string) {
+	o.ActivateKeysOnCreation = &v
 }
 
 // GetCertificateTtl returns the CertificateTtl field value if set, zero value otherwise.
@@ -200,6 +233,9 @@ func (o *KmipCreateClient) SetUidToken(v string) {
 
 func (o KmipCreateClient) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.ActivateKeysOnCreation != nil {
+		toSerialize["activate-keys-on-creation"] = o.ActivateKeysOnCreation
+	}
 	if o.CertificateTtl != nil {
 		toSerialize["certificate-ttl"] = o.CertificateTtl
 	}

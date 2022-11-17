@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **AccessId** | Pointer to **string** |  | [optional] 
 **AllowedAccessIds** | Pointer to **[]string** |  | [optional] 
 **AllowedUrls** | Pointer to **[]string** |  | [optional] 
+**AllowedUrlsPerInstance** | Pointer to [**map[string][]string**](array.md) |  | [optional] 
 **ClusterName** | Pointer to **string** |  | [optional] 
 **DisplayName** | Pointer to **string** |  | [optional] 
 **LastReport** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
@@ -104,6 +105,31 @@ SetAllowedUrls sets AllowedUrls field to given value.
 `func (o *BastionListEntry) HasAllowedUrls() bool`
 
 HasAllowedUrls returns a boolean if a field has been set.
+
+### GetAllowedUrlsPerInstance
+
+`func (o *BastionListEntry) GetAllowedUrlsPerInstance() map[string][]string`
+
+GetAllowedUrlsPerInstance returns the AllowedUrlsPerInstance field if non-nil, zero value otherwise.
+
+### GetAllowedUrlsPerInstanceOk
+
+`func (o *BastionListEntry) GetAllowedUrlsPerInstanceOk() (*map[string][]string, bool)`
+
+GetAllowedUrlsPerInstanceOk returns a tuple with the AllowedUrlsPerInstance field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowedUrlsPerInstance
+
+`func (o *BastionListEntry) SetAllowedUrlsPerInstance(v map[string][]string)`
+
+SetAllowedUrlsPerInstance sets AllowedUrlsPerInstance field to given value.
+
+### HasAllowedUrlsPerInstance
+
+`func (o *BastionListEntry) HasAllowedUrlsPerInstance() bool`
+
+HasAllowedUrlsPerInstance returns a boolean if a field has been set.
 
 ### GetClusterName
 

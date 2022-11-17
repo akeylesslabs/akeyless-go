@@ -18,6 +18,7 @@ import (
 // ItemTargetAssociation ItemTargetAssociation includes details of an association between an item and a target.
 type ItemTargetAssociation struct {
 	AssocId *string `json:"assoc_id,omitempty"`
+	Attributes *map[string]string `json:"attributes,omitempty"`
 	TargetId *int64 `json:"target_id,omitempty"`
 	TargetName *string `json:"target_name,omitempty"`
 	TargetType *string `json:"target_type,omitempty"`
@@ -70,6 +71,38 @@ func (o *ItemTargetAssociation) HasAssocId() bool {
 // SetAssocId gets a reference to the given string and assigns it to the AssocId field.
 func (o *ItemTargetAssociation) SetAssocId(v string) {
 	o.AssocId = &v
+}
+
+// GetAttributes returns the Attributes field value if set, zero value otherwise.
+func (o *ItemTargetAssociation) GetAttributes() map[string]string {
+	if o == nil || o.Attributes == nil {
+		var ret map[string]string
+		return ret
+	}
+	return *o.Attributes
+}
+
+// GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ItemTargetAssociation) GetAttributesOk() (*map[string]string, bool) {
+	if o == nil || o.Attributes == nil {
+		return nil, false
+	}
+	return o.Attributes, true
+}
+
+// HasAttributes returns a boolean if a field has been set.
+func (o *ItemTargetAssociation) HasAttributes() bool {
+	if o != nil && o.Attributes != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAttributes gets a reference to the given map[string]string and assigns it to the Attributes field.
+func (o *ItemTargetAssociation) SetAttributes(v map[string]string) {
+	o.Attributes = &v
 }
 
 // GetTargetId returns the TargetId field value if set, zero value otherwise.
@@ -172,6 +205,9 @@ func (o ItemTargetAssociation) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AssocId != nil {
 		toSerialize["assoc_id"] = o.AssocId
+	}
+	if o.Attributes != nil {
+		toSerialize["attributes"] = o.Attributes
 	}
 	if o.TargetId != nil {
 		toSerialize["target_id"] = o.TargetId

@@ -47,7 +47,7 @@ func NewCreateDFCKey(alg string, name string, ) *CreateDFCKey {
 	this := CreateDFCKey{}
 	this.Alg = alg
 	this.Name = name
-	var splitLevel int64 = 2
+	var splitLevel int64 = 3
 	this.SplitLevel = &splitLevel
 	return &this
 }
@@ -57,7 +57,7 @@ func NewCreateDFCKey(alg string, name string, ) *CreateDFCKey {
 // but it doesn't guarantee that properties required by API are set
 func NewCreateDFCKeyWithDefaults() *CreateDFCKey {
 	this := CreateDFCKey{}
-	var splitLevel int64 = 2
+	var splitLevel int64 = 3
 	this.SplitLevel = &splitLevel
 	return &this
 }

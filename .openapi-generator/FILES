@@ -401,6 +401,8 @@ docs/MigrationStatus.md
 docs/MigrationStatusReplyObj.md
 docs/MigrationsConfigLastChange.md
 docs/MigrationsConfigPart.md
+docs/MockMigration.md
+docs/MockPayload.md
 docs/MoveObjects.md
 docs/OAuth2AccessRules.md
 docs/OAuth2CustomClaim.md
@@ -960,6 +962,8 @@ model_migration_status.go
 model_migration_status_reply_obj.go
 model_migrations_config_last_change.go
 model_migrations_config_part.go
+model_mock_migration.go
+model_mock_payload.go
 model_move_objects.go
 model_o_auth2_access_rules.go
 model_o_auth2_custom_claim.go

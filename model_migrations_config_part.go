@@ -23,6 +23,7 @@ type MigrationsConfigPart struct {
 	GcpSecretsMigrations *[]GCPSecretsMigration `json:"gcp_secrets_migrations,omitempty"`
 	HashiMigrations *[]HashiMigration `json:"hashi_migrations,omitempty"`
 	K8sMigrations *[]K8SMigration `json:"k8s_migrations,omitempty"`
+	MockMigrations *[]MockMigration `json:"mock_migrations,omitempty"`
 	OnePasswordMigrations *[]OnePasswordMigration `json:"one_password_migrations,omitempty"`
 }
 
@@ -235,6 +236,38 @@ func (o *MigrationsConfigPart) SetK8sMigrations(v []K8SMigration) {
 	o.K8sMigrations = &v
 }
 
+// GetMockMigrations returns the MockMigrations field value if set, zero value otherwise.
+func (o *MigrationsConfigPart) GetMockMigrations() []MockMigration {
+	if o == nil || o.MockMigrations == nil {
+		var ret []MockMigration
+		return ret
+	}
+	return *o.MockMigrations
+}
+
+// GetMockMigrationsOk returns a tuple with the MockMigrations field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MigrationsConfigPart) GetMockMigrationsOk() (*[]MockMigration, bool) {
+	if o == nil || o.MockMigrations == nil {
+		return nil, false
+	}
+	return o.MockMigrations, true
+}
+
+// HasMockMigrations returns a boolean if a field has been set.
+func (o *MigrationsConfigPart) HasMockMigrations() bool {
+	if o != nil && o.MockMigrations != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMockMigrations gets a reference to the given []MockMigration and assigns it to the MockMigrations field.
+func (o *MigrationsConfigPart) SetMockMigrations(v []MockMigration) {
+	o.MockMigrations = &v
+}
+
 // GetOnePasswordMigrations returns the OnePasswordMigrations field value if set, zero value otherwise.
 func (o *MigrationsConfigPart) GetOnePasswordMigrations() []OnePasswordMigration {
 	if o == nil || o.OnePasswordMigrations == nil {
@@ -286,6 +319,9 @@ func (o MigrationsConfigPart) MarshalJSON() ([]byte, error) {
 	}
 	if o.K8sMigrations != nil {
 		toSerialize["k8s_migrations"] = o.K8sMigrations
+	}
+	if o.MockMigrations != nil {
+		toSerialize["mock_migrations"] = o.MockMigrations
 	}
 	if o.OnePasswordMigrations != nil {
 		toSerialize["one_password_migrations"] = o.OnePasswordMigrations

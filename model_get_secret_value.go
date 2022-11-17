@@ -17,12 +17,16 @@ import (
 
 // GetSecretValue struct for GetSecretValue
 type GetSecretValue struct {
+	IgnoreCacheBoolean *bool `json:"IgnoreCacheBoolean,omitempty"`
 	// for personal password manager
 	Accessibility *string `json:"accessibility,omitempty"`
+	// Ignore Cache Retrieve the Secret value without checking the Gateway's cache. This flag is only relevant when using the RestAPI
+	IgnoreCache *string `json:"ignore-cache,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Secret name
 	Names []string `json:"names"`
+	// Print the secret value with json-pretty-print (not relevent to SDK)
 	PrettyPrint *bool `json:"pretty-print,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
@@ -48,6 +52,38 @@ func NewGetSecretValue(names []string, ) *GetSecretValue {
 func NewGetSecretValueWithDefaults() *GetSecretValue {
 	this := GetSecretValue{}
 	return &this
+}
+
+// GetIgnoreCacheBoolean returns the IgnoreCacheBoolean field value if set, zero value otherwise.
+func (o *GetSecretValue) GetIgnoreCacheBoolean() bool {
+	if o == nil || o.IgnoreCacheBoolean == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IgnoreCacheBoolean
+}
+
+// GetIgnoreCacheBooleanOk returns a tuple with the IgnoreCacheBoolean field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetSecretValue) GetIgnoreCacheBooleanOk() (*bool, bool) {
+	if o == nil || o.IgnoreCacheBoolean == nil {
+		return nil, false
+	}
+	return o.IgnoreCacheBoolean, true
+}
+
+// HasIgnoreCacheBoolean returns a boolean if a field has been set.
+func (o *GetSecretValue) HasIgnoreCacheBoolean() bool {
+	if o != nil && o.IgnoreCacheBoolean != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIgnoreCacheBoolean gets a reference to the given bool and assigns it to the IgnoreCacheBoolean field.
+func (o *GetSecretValue) SetIgnoreCacheBoolean(v bool) {
+	o.IgnoreCacheBoolean = &v
 }
 
 // GetAccessibility returns the Accessibility field value if set, zero value otherwise.
@@ -80,6 +116,38 @@ func (o *GetSecretValue) HasAccessibility() bool {
 // SetAccessibility gets a reference to the given string and assigns it to the Accessibility field.
 func (o *GetSecretValue) SetAccessibility(v string) {
 	o.Accessibility = &v
+}
+
+// GetIgnoreCache returns the IgnoreCache field value if set, zero value otherwise.
+func (o *GetSecretValue) GetIgnoreCache() string {
+	if o == nil || o.IgnoreCache == nil {
+		var ret string
+		return ret
+	}
+	return *o.IgnoreCache
+}
+
+// GetIgnoreCacheOk returns a tuple with the IgnoreCache field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetSecretValue) GetIgnoreCacheOk() (*string, bool) {
+	if o == nil || o.IgnoreCache == nil {
+		return nil, false
+	}
+	return o.IgnoreCache, true
+}
+
+// HasIgnoreCache returns a boolean if a field has been set.
+func (o *GetSecretValue) HasIgnoreCache() bool {
+	if o != nil && o.IgnoreCache != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIgnoreCache gets a reference to the given string and assigns it to the IgnoreCache field.
+func (o *GetSecretValue) SetIgnoreCache(v string) {
+	o.IgnoreCache = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -268,8 +336,14 @@ func (o *GetSecretValue) SetVersion(v int32) {
 
 func (o GetSecretValue) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.IgnoreCacheBoolean != nil {
+		toSerialize["IgnoreCacheBoolean"] = o.IgnoreCacheBoolean
+	}
 	if o.Accessibility != nil {
 		toSerialize["accessibility"] = o.Accessibility
+	}
+	if o.IgnoreCache != nil {
+		toSerialize["ignore-cache"] = o.IgnoreCache
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json

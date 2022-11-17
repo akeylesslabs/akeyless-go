@@ -13,12 +13,16 @@ package akeyless
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // Role struct for Role
 type Role struct {
+	AccessDate *time.Time `json:"access_date,omitempty"`
 	ClientPermissions *[]string `json:"client_permissions,omitempty"`
 	Comment *string `json:"comment,omitempty"`
+	CreationDate *time.Time `json:"creation_date,omitempty"`
+	ModificationDate *time.Time `json:"modification_date,omitempty"`
 	RoleAuthMethodsAssoc *[]RoleAuthMethodAssociation `json:"role_auth_methods_assoc,omitempty"`
 	RoleName *string `json:"role_name,omitempty"`
 	Rules *Rules `json:"rules,omitempty"`
@@ -39,6 +43,38 @@ func NewRole() *Role {
 func NewRoleWithDefaults() *Role {
 	this := Role{}
 	return &this
+}
+
+// GetAccessDate returns the AccessDate field value if set, zero value otherwise.
+func (o *Role) GetAccessDate() time.Time {
+	if o == nil || o.AccessDate == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.AccessDate
+}
+
+// GetAccessDateOk returns a tuple with the AccessDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Role) GetAccessDateOk() (*time.Time, bool) {
+	if o == nil || o.AccessDate == nil {
+		return nil, false
+	}
+	return o.AccessDate, true
+}
+
+// HasAccessDate returns a boolean if a field has been set.
+func (o *Role) HasAccessDate() bool {
+	if o != nil && o.AccessDate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessDate gets a reference to the given time.Time and assigns it to the AccessDate field.
+func (o *Role) SetAccessDate(v time.Time) {
+	o.AccessDate = &v
 }
 
 // GetClientPermissions returns the ClientPermissions field value if set, zero value otherwise.
@@ -103,6 +139,70 @@ func (o *Role) HasComment() bool {
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *Role) SetComment(v string) {
 	o.Comment = &v
+}
+
+// GetCreationDate returns the CreationDate field value if set, zero value otherwise.
+func (o *Role) GetCreationDate() time.Time {
+	if o == nil || o.CreationDate == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.CreationDate
+}
+
+// GetCreationDateOk returns a tuple with the CreationDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Role) GetCreationDateOk() (*time.Time, bool) {
+	if o == nil || o.CreationDate == nil {
+		return nil, false
+	}
+	return o.CreationDate, true
+}
+
+// HasCreationDate returns a boolean if a field has been set.
+func (o *Role) HasCreationDate() bool {
+	if o != nil && o.CreationDate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreationDate gets a reference to the given time.Time and assigns it to the CreationDate field.
+func (o *Role) SetCreationDate(v time.Time) {
+	o.CreationDate = &v
+}
+
+// GetModificationDate returns the ModificationDate field value if set, zero value otherwise.
+func (o *Role) GetModificationDate() time.Time {
+	if o == nil || o.ModificationDate == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.ModificationDate
+}
+
+// GetModificationDateOk returns a tuple with the ModificationDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Role) GetModificationDateOk() (*time.Time, bool) {
+	if o == nil || o.ModificationDate == nil {
+		return nil, false
+	}
+	return o.ModificationDate, true
+}
+
+// HasModificationDate returns a boolean if a field has been set.
+func (o *Role) HasModificationDate() bool {
+	if o != nil && o.ModificationDate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetModificationDate gets a reference to the given time.Time and assigns it to the ModificationDate field.
+func (o *Role) SetModificationDate(v time.Time) {
+	o.ModificationDate = &v
 }
 
 // GetRoleAuthMethodsAssoc returns the RoleAuthMethodsAssoc field value if set, zero value otherwise.
@@ -203,11 +303,20 @@ func (o *Role) SetRules(v Rules) {
 
 func (o Role) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AccessDate != nil {
+		toSerialize["access_date"] = o.AccessDate
+	}
 	if o.ClientPermissions != nil {
 		toSerialize["client_permissions"] = o.ClientPermissions
 	}
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment
+	}
+	if o.CreationDate != nil {
+		toSerialize["creation_date"] = o.CreationDate
+	}
+	if o.ModificationDate != nil {
+		toSerialize["modification_date"] = o.ModificationDate
 	}
 	if o.RoleAuthMethodsAssoc != nil {
 		toSerialize["role_auth_methods_assoc"] = o.RoleAuthMethodsAssoc

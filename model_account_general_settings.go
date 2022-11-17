@@ -18,6 +18,7 @@ import (
 // AccountGeneralSettings AccountGeneralSettings describes general settings for an account
 type AccountGeneralSettings struct {
 	DataProtectionSection *DataProtectionSection `json:"data_protection_section,omitempty"`
+	EnableRequestForAccess *bool `json:"enable_request_for_access,omitempty"`
 	PasswordPolicy *PasswordPolicyInfo `json:"password_policy,omitempty"`
 }
 
@@ -70,6 +71,38 @@ func (o *AccountGeneralSettings) SetDataProtectionSection(v DataProtectionSectio
 	o.DataProtectionSection = &v
 }
 
+// GetEnableRequestForAccess returns the EnableRequestForAccess field value if set, zero value otherwise.
+func (o *AccountGeneralSettings) GetEnableRequestForAccess() bool {
+	if o == nil || o.EnableRequestForAccess == nil {
+		var ret bool
+		return ret
+	}
+	return *o.EnableRequestForAccess
+}
+
+// GetEnableRequestForAccessOk returns a tuple with the EnableRequestForAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountGeneralSettings) GetEnableRequestForAccessOk() (*bool, bool) {
+	if o == nil || o.EnableRequestForAccess == nil {
+		return nil, false
+	}
+	return o.EnableRequestForAccess, true
+}
+
+// HasEnableRequestForAccess returns a boolean if a field has been set.
+func (o *AccountGeneralSettings) HasEnableRequestForAccess() bool {
+	if o != nil && o.EnableRequestForAccess != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableRequestForAccess gets a reference to the given bool and assigns it to the EnableRequestForAccess field.
+func (o *AccountGeneralSettings) SetEnableRequestForAccess(v bool) {
+	o.EnableRequestForAccess = &v
+}
+
 // GetPasswordPolicy returns the PasswordPolicy field value if set, zero value otherwise.
 func (o *AccountGeneralSettings) GetPasswordPolicy() PasswordPolicyInfo {
 	if o == nil || o.PasswordPolicy == nil {
@@ -106,6 +139,9 @@ func (o AccountGeneralSettings) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DataProtectionSection != nil {
 		toSerialize["data_protection_section"] = o.DataProtectionSection
+	}
+	if o.EnableRequestForAccess != nil {
+		toSerialize["enable_request_for_access"] = o.EnableRequestForAccess
 	}
 	if o.PasswordPolicy != nil {
 		toSerialize["password_policy"] = o.PasswordPolicy

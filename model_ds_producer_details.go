@@ -88,8 +88,12 @@ type DSProducerDetails struct {
 	FailureMessage *string `json:"failure_message,omitempty"`
 	FixedUserOnly *string `json:"fixed_user_only,omitempty"`
 	GcpKeyAlgo *string `json:"gcp_key_algo,omitempty"`
+	GcpRoleBindings *map[string][]string `json:"gcp_role_bindings,omitempty"`
+	// GCPServiceAccountEmail overrides the deprecated field from the target
 	GcpServiceAccountEmail *string `json:"gcp_service_account_email,omitempty"`
 	GcpServiceAccountKey *string `json:"gcp_service_account_key,omitempty"`
+	GcpServiceAccountType *string `json:"gcp_service_account_type,omitempty"`
+	GcpTmpServiceAccountName *string `json:"gcp_tmp_service_account_name,omitempty"`
 	GcpTokenLifetime *string `json:"gcp_token_lifetime,omitempty"`
 	GcpTokenScope *string `json:"gcp_token_scope,omitempty"`
 	GcpTokenType *string `json:"gcp_token_type,omitempty"`
@@ -2429,6 +2433,38 @@ func (o *DSProducerDetails) SetGcpKeyAlgo(v string) {
 	o.GcpKeyAlgo = &v
 }
 
+// GetGcpRoleBindings returns the GcpRoleBindings field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGcpRoleBindings() map[string][]string {
+	if o == nil || o.GcpRoleBindings == nil {
+		var ret map[string][]string
+		return ret
+	}
+	return *o.GcpRoleBindings
+}
+
+// GetGcpRoleBindingsOk returns a tuple with the GcpRoleBindings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGcpRoleBindingsOk() (*map[string][]string, bool) {
+	if o == nil || o.GcpRoleBindings == nil {
+		return nil, false
+	}
+	return o.GcpRoleBindings, true
+}
+
+// HasGcpRoleBindings returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGcpRoleBindings() bool {
+	if o != nil && o.GcpRoleBindings != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpRoleBindings gets a reference to the given map[string][]string and assigns it to the GcpRoleBindings field.
+func (o *DSProducerDetails) SetGcpRoleBindings(v map[string][]string) {
+	o.GcpRoleBindings = &v
+}
+
 // GetGcpServiceAccountEmail returns the GcpServiceAccountEmail field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetGcpServiceAccountEmail() string {
 	if o == nil || o.GcpServiceAccountEmail == nil {
@@ -2491,6 +2527,70 @@ func (o *DSProducerDetails) HasGcpServiceAccountKey() bool {
 // SetGcpServiceAccountKey gets a reference to the given string and assigns it to the GcpServiceAccountKey field.
 func (o *DSProducerDetails) SetGcpServiceAccountKey(v string) {
 	o.GcpServiceAccountKey = &v
+}
+
+// GetGcpServiceAccountType returns the GcpServiceAccountType field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGcpServiceAccountType() string {
+	if o == nil || o.GcpServiceAccountType == nil {
+		var ret string
+		return ret
+	}
+	return *o.GcpServiceAccountType
+}
+
+// GetGcpServiceAccountTypeOk returns a tuple with the GcpServiceAccountType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGcpServiceAccountTypeOk() (*string, bool) {
+	if o == nil || o.GcpServiceAccountType == nil {
+		return nil, false
+	}
+	return o.GcpServiceAccountType, true
+}
+
+// HasGcpServiceAccountType returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGcpServiceAccountType() bool {
+	if o != nil && o.GcpServiceAccountType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpServiceAccountType gets a reference to the given string and assigns it to the GcpServiceAccountType field.
+func (o *DSProducerDetails) SetGcpServiceAccountType(v string) {
+	o.GcpServiceAccountType = &v
+}
+
+// GetGcpTmpServiceAccountName returns the GcpTmpServiceAccountName field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGcpTmpServiceAccountName() string {
+	if o == nil || o.GcpTmpServiceAccountName == nil {
+		var ret string
+		return ret
+	}
+	return *o.GcpTmpServiceAccountName
+}
+
+// GetGcpTmpServiceAccountNameOk returns a tuple with the GcpTmpServiceAccountName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGcpTmpServiceAccountNameOk() (*string, bool) {
+	if o == nil || o.GcpTmpServiceAccountName == nil {
+		return nil, false
+	}
+	return o.GcpTmpServiceAccountName, true
+}
+
+// HasGcpTmpServiceAccountName returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGcpTmpServiceAccountName() bool {
+	if o != nil && o.GcpTmpServiceAccountName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpTmpServiceAccountName gets a reference to the given string and assigns it to the GcpTmpServiceAccountName field.
+func (o *DSProducerDetails) SetGcpTmpServiceAccountName(v string) {
+	o.GcpTmpServiceAccountName = &v
 }
 
 // GetGcpTokenLifetime returns the GcpTokenLifetime field value if set, zero value otherwise.
@@ -6030,11 +6130,20 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	if o.GcpKeyAlgo != nil {
 		toSerialize["gcp_key_algo"] = o.GcpKeyAlgo
 	}
+	if o.GcpRoleBindings != nil {
+		toSerialize["gcp_role_bindings"] = o.GcpRoleBindings
+	}
 	if o.GcpServiceAccountEmail != nil {
 		toSerialize["gcp_service_account_email"] = o.GcpServiceAccountEmail
 	}
 	if o.GcpServiceAccountKey != nil {
 		toSerialize["gcp_service_account_key"] = o.GcpServiceAccountKey
+	}
+	if o.GcpServiceAccountType != nil {
+		toSerialize["gcp_service_account_type"] = o.GcpServiceAccountType
+	}
+	if o.GcpTmpServiceAccountName != nil {
+		toSerialize["gcp_tmp_service_account_name"] = o.GcpTmpServiceAccountName
 	}
 	if o.GcpTokenLifetime != nil {
 		toSerialize["gcp_token_lifetime"] = o.GcpTokenLifetime

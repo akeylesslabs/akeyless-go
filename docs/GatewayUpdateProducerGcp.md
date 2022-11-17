@@ -8,12 +8,14 @@ Name | Type | Description | Notes
 **GcpCredType** | Pointer to **string** |  | [optional] 
 **GcpKey** | Pointer to **string** | Base64-encoded service account private key text | [optional] 
 **GcpKeyAlgo** | Pointer to **string** | Service account key algorithm, e.g. KEY_ALG_RSA_1024 | [optional] 
-**GcpSaEmail** | Pointer to **string** | GCP service account email | [optional] 
+**GcpSaEmail** | Pointer to **string** | The email of the fixed service acocunt to generate keys or tokens for. (revelant for service-account-type&#x3D;fixed) | [optional] 
 **GcpTokenScopes** | Pointer to **string** | Access token scopes list, e.g. scope1,scope2 | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Producer name | 
 **NewName** | Pointer to **string** | Producer name | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
+**RoleBinding** | Pointer to **string** | Role binding definitions in json format | [optional] 
+**ServiceAccountType** | **string** | The type of the gcp dynamic secret. Options[fixed, dynamic] | [default to "fixed"]
 **Tags** | Pointer to **[]string** | List of the tags attached to this secret | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -24,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewGatewayUpdateProducerGcp
 
-`func NewGatewayUpdateProducerGcp(name string, ) *GatewayUpdateProducerGcp`
+`func NewGatewayUpdateProducerGcp(name string, serviceAccountType string, ) *GatewayUpdateProducerGcp`
 
 NewGatewayUpdateProducerGcp instantiates a new GatewayUpdateProducerGcp object
 This constructor will assign default values to properties that have it defined,
@@ -283,6 +285,51 @@ SetProducerEncryptionKeyName sets ProducerEncryptionKeyName field to given value
 `func (o *GatewayUpdateProducerGcp) HasProducerEncryptionKeyName() bool`
 
 HasProducerEncryptionKeyName returns a boolean if a field has been set.
+
+### GetRoleBinding
+
+`func (o *GatewayUpdateProducerGcp) GetRoleBinding() string`
+
+GetRoleBinding returns the RoleBinding field if non-nil, zero value otherwise.
+
+### GetRoleBindingOk
+
+`func (o *GatewayUpdateProducerGcp) GetRoleBindingOk() (*string, bool)`
+
+GetRoleBindingOk returns a tuple with the RoleBinding field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoleBinding
+
+`func (o *GatewayUpdateProducerGcp) SetRoleBinding(v string)`
+
+SetRoleBinding sets RoleBinding field to given value.
+
+### HasRoleBinding
+
+`func (o *GatewayUpdateProducerGcp) HasRoleBinding() bool`
+
+HasRoleBinding returns a boolean if a field has been set.
+
+### GetServiceAccountType
+
+`func (o *GatewayUpdateProducerGcp) GetServiceAccountType() string`
+
+GetServiceAccountType returns the ServiceAccountType field if non-nil, zero value otherwise.
+
+### GetServiceAccountTypeOk
+
+`func (o *GatewayUpdateProducerGcp) GetServiceAccountTypeOk() (*string, bool)`
+
+GetServiceAccountTypeOk returns a tuple with the ServiceAccountType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServiceAccountType
+
+`func (o *GatewayUpdateProducerGcp) SetServiceAccountType(v string)`
+
+SetServiceAccountType sets ServiceAccountType field to given value.
+
 
 ### GetTags
 

@@ -17,10 +17,16 @@ import (
 
 // PathRule struct for PathRule
 type PathRule struct {
+	Assigners *[]RuleAssigner `json:"assigners,omitempty"`
 	// The approved/denied capabilities in the path
 	Capabilities *[]string `json:"capabilities,omitempty"`
+	// flag that indicate that this rule is allowed to be access RemainingAccess of times.
+	IsLimitAccess *bool `json:"is_limit_access,omitempty"`
+	NumberOfAccessUsed *int64 `json:"number_of_access_used,omitempty"`
+	NumberOfAllowedAccess *int64 `json:"number_of_allowed_access,omitempty"`
 	// The path the rule refers to
 	Path *string `json:"path,omitempty"`
+	StartTime *int64 `json:"start_time,omitempty"`
 	Ttl *int64 `json:"ttl,omitempty"`
 	Type *string `json:"type,omitempty"`
 }
@@ -40,6 +46,38 @@ func NewPathRule() *PathRule {
 func NewPathRuleWithDefaults() *PathRule {
 	this := PathRule{}
 	return &this
+}
+
+// GetAssigners returns the Assigners field value if set, zero value otherwise.
+func (o *PathRule) GetAssigners() []RuleAssigner {
+	if o == nil || o.Assigners == nil {
+		var ret []RuleAssigner
+		return ret
+	}
+	return *o.Assigners
+}
+
+// GetAssignersOk returns a tuple with the Assigners field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PathRule) GetAssignersOk() (*[]RuleAssigner, bool) {
+	if o == nil || o.Assigners == nil {
+		return nil, false
+	}
+	return o.Assigners, true
+}
+
+// HasAssigners returns a boolean if a field has been set.
+func (o *PathRule) HasAssigners() bool {
+	if o != nil && o.Assigners != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAssigners gets a reference to the given []RuleAssigner and assigns it to the Assigners field.
+func (o *PathRule) SetAssigners(v []RuleAssigner) {
+	o.Assigners = &v
 }
 
 // GetCapabilities returns the Capabilities field value if set, zero value otherwise.
@@ -74,6 +112,102 @@ func (o *PathRule) SetCapabilities(v []string) {
 	o.Capabilities = &v
 }
 
+// GetIsLimitAccess returns the IsLimitAccess field value if set, zero value otherwise.
+func (o *PathRule) GetIsLimitAccess() bool {
+	if o == nil || o.IsLimitAccess == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IsLimitAccess
+}
+
+// GetIsLimitAccessOk returns a tuple with the IsLimitAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PathRule) GetIsLimitAccessOk() (*bool, bool) {
+	if o == nil || o.IsLimitAccess == nil {
+		return nil, false
+	}
+	return o.IsLimitAccess, true
+}
+
+// HasIsLimitAccess returns a boolean if a field has been set.
+func (o *PathRule) HasIsLimitAccess() bool {
+	if o != nil && o.IsLimitAccess != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIsLimitAccess gets a reference to the given bool and assigns it to the IsLimitAccess field.
+func (o *PathRule) SetIsLimitAccess(v bool) {
+	o.IsLimitAccess = &v
+}
+
+// GetNumberOfAccessUsed returns the NumberOfAccessUsed field value if set, zero value otherwise.
+func (o *PathRule) GetNumberOfAccessUsed() int64 {
+	if o == nil || o.NumberOfAccessUsed == nil {
+		var ret int64
+		return ret
+	}
+	return *o.NumberOfAccessUsed
+}
+
+// GetNumberOfAccessUsedOk returns a tuple with the NumberOfAccessUsed field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PathRule) GetNumberOfAccessUsedOk() (*int64, bool) {
+	if o == nil || o.NumberOfAccessUsed == nil {
+		return nil, false
+	}
+	return o.NumberOfAccessUsed, true
+}
+
+// HasNumberOfAccessUsed returns a boolean if a field has been set.
+func (o *PathRule) HasNumberOfAccessUsed() bool {
+	if o != nil && o.NumberOfAccessUsed != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNumberOfAccessUsed gets a reference to the given int64 and assigns it to the NumberOfAccessUsed field.
+func (o *PathRule) SetNumberOfAccessUsed(v int64) {
+	o.NumberOfAccessUsed = &v
+}
+
+// GetNumberOfAllowedAccess returns the NumberOfAllowedAccess field value if set, zero value otherwise.
+func (o *PathRule) GetNumberOfAllowedAccess() int64 {
+	if o == nil || o.NumberOfAllowedAccess == nil {
+		var ret int64
+		return ret
+	}
+	return *o.NumberOfAllowedAccess
+}
+
+// GetNumberOfAllowedAccessOk returns a tuple with the NumberOfAllowedAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PathRule) GetNumberOfAllowedAccessOk() (*int64, bool) {
+	if o == nil || o.NumberOfAllowedAccess == nil {
+		return nil, false
+	}
+	return o.NumberOfAllowedAccess, true
+}
+
+// HasNumberOfAllowedAccess returns a boolean if a field has been set.
+func (o *PathRule) HasNumberOfAllowedAccess() bool {
+	if o != nil && o.NumberOfAllowedAccess != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNumberOfAllowedAccess gets a reference to the given int64 and assigns it to the NumberOfAllowedAccess field.
+func (o *PathRule) SetNumberOfAllowedAccess(v int64) {
+	o.NumberOfAllowedAccess = &v
+}
+
 // GetPath returns the Path field value if set, zero value otherwise.
 func (o *PathRule) GetPath() string {
 	if o == nil || o.Path == nil {
@@ -104,6 +238,38 @@ func (o *PathRule) HasPath() bool {
 // SetPath gets a reference to the given string and assigns it to the Path field.
 func (o *PathRule) SetPath(v string) {
 	o.Path = &v
+}
+
+// GetStartTime returns the StartTime field value if set, zero value otherwise.
+func (o *PathRule) GetStartTime() int64 {
+	if o == nil || o.StartTime == nil {
+		var ret int64
+		return ret
+	}
+	return *o.StartTime
+}
+
+// GetStartTimeOk returns a tuple with the StartTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PathRule) GetStartTimeOk() (*int64, bool) {
+	if o == nil || o.StartTime == nil {
+		return nil, false
+	}
+	return o.StartTime, true
+}
+
+// HasStartTime returns a boolean if a field has been set.
+func (o *PathRule) HasStartTime() bool {
+	if o != nil && o.StartTime != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetStartTime gets a reference to the given int64 and assigns it to the StartTime field.
+func (o *PathRule) SetStartTime(v int64) {
+	o.StartTime = &v
 }
 
 // GetTtl returns the Ttl field value if set, zero value otherwise.
@@ -172,11 +338,26 @@ func (o *PathRule) SetType(v string) {
 
 func (o PathRule) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Assigners != nil {
+		toSerialize["assigners"] = o.Assigners
+	}
 	if o.Capabilities != nil {
 		toSerialize["capabilities"] = o.Capabilities
 	}
+	if o.IsLimitAccess != nil {
+		toSerialize["is_limit_access"] = o.IsLimitAccess
+	}
+	if o.NumberOfAccessUsed != nil {
+		toSerialize["number_of_access_used"] = o.NumberOfAccessUsed
+	}
+	if o.NumberOfAllowedAccess != nil {
+		toSerialize["number_of_allowed_access"] = o.NumberOfAllowedAccess
+	}
 	if o.Path != nil {
 		toSerialize["path"] = o.Path
+	}
+	if o.StartTime != nil {
+		toSerialize["start_time"] = o.StartTime
 	}
 	if o.Ttl != nil {
 		toSerialize["ttl"] = o.Ttl

@@ -18,6 +18,7 @@ import (
 
 // KMIPClient struct for KMIPClient
 type KMIPClient struct {
+	ActivateKeysOnCreation *bool `json:"activate_keys_on_creation,omitempty"`
 	CertificateIssueDate *time.Time `json:"certificate_issue_date,omitempty"`
 	CertificateTtlInSeconds *int64 `json:"certificate_ttl_in_seconds,omitempty"`
 	Id *string `json:"id,omitempty"`
@@ -40,6 +41,38 @@ func NewKMIPClient() *KMIPClient {
 func NewKMIPClientWithDefaults() *KMIPClient {
 	this := KMIPClient{}
 	return &this
+}
+
+// GetActivateKeysOnCreation returns the ActivateKeysOnCreation field value if set, zero value otherwise.
+func (o *KMIPClient) GetActivateKeysOnCreation() bool {
+	if o == nil || o.ActivateKeysOnCreation == nil {
+		var ret bool
+		return ret
+	}
+	return *o.ActivateKeysOnCreation
+}
+
+// GetActivateKeysOnCreationOk returns a tuple with the ActivateKeysOnCreation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KMIPClient) GetActivateKeysOnCreationOk() (*bool, bool) {
+	if o == nil || o.ActivateKeysOnCreation == nil {
+		return nil, false
+	}
+	return o.ActivateKeysOnCreation, true
+}
+
+// HasActivateKeysOnCreation returns a boolean if a field has been set.
+func (o *KMIPClient) HasActivateKeysOnCreation() bool {
+	if o != nil && o.ActivateKeysOnCreation != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetActivateKeysOnCreation gets a reference to the given bool and assigns it to the ActivateKeysOnCreation field.
+func (o *KMIPClient) SetActivateKeysOnCreation(v bool) {
+	o.ActivateKeysOnCreation = &v
 }
 
 // GetCertificateIssueDate returns the CertificateIssueDate field value if set, zero value otherwise.
@@ -204,6 +237,9 @@ func (o *KMIPClient) SetRules(v []PathRule) {
 
 func (o KMIPClient) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.ActivateKeysOnCreation != nil {
+		toSerialize["activate_keys_on_creation"] = o.ActivateKeysOnCreation
+	}
 	if o.CertificateIssueDate != nil {
 		toSerialize["certificate_issue_date"] = o.CertificateIssueDate
 	}

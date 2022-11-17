@@ -42,7 +42,7 @@ Name | Type | Description | Notes
 **EksClusterName** | Pointer to **string** |  | [optional] 
 **EksRegion** | Pointer to **string** |  | [optional] 
 **EksSecretAccessKey** | Pointer to **string** |  | [optional] 
-**GcpServiceAccountEmail** | Pointer to **string** |  | [optional] 
+**GcpServiceAccountEmail** | Pointer to **string** | deprecated | [optional] 
 **GcpServiceAccountKey** | Pointer to **string** |  | [optional] 
 **GithubAppId** | Pointer to **int64** |  | [optional] 
 **GithubAppPrivateKey** | Pointer to **string** |  | [optional] 

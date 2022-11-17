@@ -4,8 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AccessDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **ClientPermissions** | Pointer to **[]string** |  | [optional] 
 **Comment** | Pointer to **string** |  | [optional] 
+**CreationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**ModificationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **RoleAuthMethodsAssoc** | Pointer to [**[]RoleAuthMethodAssociation**](RoleAuthMethodAssociation.md) |  | [optional] 
 **RoleName** | Pointer to **string** |  | [optional] 
 **Rules** | Pointer to [**Rules**](Rules.md) |  | [optional] 
@@ -28,6 +31,31 @@ will change when the set of required properties is changed
 NewRoleWithDefaults instantiates a new Role object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAccessDate
+
+`func (o *Role) GetAccessDate() time.Time`
+
+GetAccessDate returns the AccessDate field if non-nil, zero value otherwise.
+
+### GetAccessDateOk
+
+`func (o *Role) GetAccessDateOk() (*time.Time, bool)`
+
+GetAccessDateOk returns a tuple with the AccessDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessDate
+
+`func (o *Role) SetAccessDate(v time.Time)`
+
+SetAccessDate sets AccessDate field to given value.
+
+### HasAccessDate
+
+`func (o *Role) HasAccessDate() bool`
+
+HasAccessDate returns a boolean if a field has been set.
 
 ### GetClientPermissions
 
@@ -78,6 +106,56 @@ SetComment sets Comment field to given value.
 `func (o *Role) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
+
+### GetCreationDate
+
+`func (o *Role) GetCreationDate() time.Time`
+
+GetCreationDate returns the CreationDate field if non-nil, zero value otherwise.
+
+### GetCreationDateOk
+
+`func (o *Role) GetCreationDateOk() (*time.Time, bool)`
+
+GetCreationDateOk returns a tuple with the CreationDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreationDate
+
+`func (o *Role) SetCreationDate(v time.Time)`
+
+SetCreationDate sets CreationDate field to given value.
+
+### HasCreationDate
+
+`func (o *Role) HasCreationDate() bool`
+
+HasCreationDate returns a boolean if a field has been set.
+
+### GetModificationDate
+
+`func (o *Role) GetModificationDate() time.Time`
+
+GetModificationDate returns the ModificationDate field if non-nil, zero value otherwise.
+
+### GetModificationDateOk
+
+`func (o *Role) GetModificationDateOk() (*time.Time, bool)`
+
+GetModificationDateOk returns a tuple with the ModificationDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetModificationDate
+
+`func (o *Role) SetModificationDate(v time.Time)`
+
+SetModificationDate sets ModificationDate field to given value.
+
+### HasModificationDate
+
+`func (o *Role) HasModificationDate() bool`
+
+HasModificationDate returns a boolean if a field has been set.
 
 ### GetRoleAuthMethodsAssoc
 

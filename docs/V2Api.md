@@ -131,7 +131,7 @@ Method | HTTP request | Description
 [**GatewayUpdateProducerMSSQL**](V2Api.md#GatewayUpdateProducerMSSQL) | **Post** /gateway-update-producer-mssql | 
 [**GatewayUpdateProducerMongo**](V2Api.md#GatewayUpdateProducerMongo) | **Post** /gateway-update-producer-mongo | 
 [**GatewayUpdateProducerMySQL**](V2Api.md#GatewayUpdateProducerMySQL) | **Post** /gateway-update-producer-mysql | 
-[**GatewayUpdateProducerNativeK8S**](V2Api.md#GatewayUpdateProducerNativeK8S) | **Post** /gateway-update-producer-k8s-native | 
+[**GatewayUpdateProducerNativeK8S**](V2Api.md#GatewayUpdateProducerNativeK8S) | **Post** /gateway-update-producer-k8s | 
 [**GatewayUpdateProducerOracleDb**](V2Api.md#GatewayUpdateProducerOracleDb) | **Post** /gateway-update-producer-oracle | 
 [**GatewayUpdateProducerPostgreSQL**](V2Api.md#GatewayUpdateProducerPostgreSQL) | **Post** /gateway-update-producer-postgresql | 
 [**GatewayUpdateProducerRabbitMQ**](V2Api.md#GatewayUpdateProducerRabbitMQ) | **Post** /gateway-update-producer-rabbitmq | 
@@ -420,7 +420,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AuthOutput**](authOutput.md)
+[**AuthOutput**](AuthOutput.md)
 
 ### Authorization
 
@@ -2724,7 +2724,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateSecretOutput**](createSecretOutput.md)
+[**CreateSecretOutput**](CreateSecretOutput.md)
 
 ### Authorization
 
@@ -4935,7 +4935,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerGcp("Name_example") // GatewayCreateProducerGcp | 
+    body := *openapiclient.NewgatewayCreateProducerGcp("Name_example", "ServiceAccountType_example") // GatewayCreateProducerGcp | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -7877,7 +7877,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayUpdateProducerGcp("Name_example") // GatewayUpdateProducerGcp | 
+    body := *openapiclient.NewgatewayUpdateProducerGcp("Name_example", "ServiceAccountType_example") // GatewayUpdateProducerGcp | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -9534,7 +9534,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgetSecretValue([]string{"Names_example"}) // GetSecretValue | 
+    body := *openapiclient.NewGetSecretValue([]string{"Names_example"}) // GetSecretValue | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -13689,7 +13689,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateGcpTarget("GcpSaEmail_example", "Name_example") // UpdateGcpTarget | 
+    body := *openapiclient.NewupdateGcpTarget("Name_example") // UpdateGcpTarget | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -14801,7 +14801,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateSecretValOutput**](updateSecretValOutput.md)
+[**UpdateSecretValOutput**](UpdateSecretValOutput.md)
 
 ### Authorization
 

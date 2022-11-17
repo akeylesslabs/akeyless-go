@@ -18,12 +18,14 @@ import (
 
 // TargetItemVersion struct for TargetItemVersion
 type TargetItemVersion struct {
+	AccessDate *time.Time `json:"access_date,omitempty"`
 	CreationDate *time.Time `json:"creation_date,omitempty"`
 	CustomerFragmentId *string `json:"customer_fragment_id,omitempty"`
 	DeletionDate *time.Time `json:"deletion_date,omitempty"`
 	// ItemState defines the different states an Item can be in
 	ItemVersionState *string `json:"item_version_state,omitempty"`
 	LatestVersion *bool `json:"latest_version,omitempty"`
+	ModificationDate *time.Time `json:"modification_date,omitempty"`
 	ProtectionKeyName *string `json:"protection_key_name,omitempty"`
 	TargetName *string `json:"target_name,omitempty"`
 	Version *int32 `json:"version,omitempty"`
@@ -45,6 +47,38 @@ func NewTargetItemVersion() *TargetItemVersion {
 func NewTargetItemVersionWithDefaults() *TargetItemVersion {
 	this := TargetItemVersion{}
 	return &this
+}
+
+// GetAccessDate returns the AccessDate field value if set, zero value otherwise.
+func (o *TargetItemVersion) GetAccessDate() time.Time {
+	if o == nil || o.AccessDate == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.AccessDate
+}
+
+// GetAccessDateOk returns a tuple with the AccessDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetItemVersion) GetAccessDateOk() (*time.Time, bool) {
+	if o == nil || o.AccessDate == nil {
+		return nil, false
+	}
+	return o.AccessDate, true
+}
+
+// HasAccessDate returns a boolean if a field has been set.
+func (o *TargetItemVersion) HasAccessDate() bool {
+	if o != nil && o.AccessDate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessDate gets a reference to the given time.Time and assigns it to the AccessDate field.
+func (o *TargetItemVersion) SetAccessDate(v time.Time) {
+	o.AccessDate = &v
 }
 
 // GetCreationDate returns the CreationDate field value if set, zero value otherwise.
@@ -207,6 +241,38 @@ func (o *TargetItemVersion) SetLatestVersion(v bool) {
 	o.LatestVersion = &v
 }
 
+// GetModificationDate returns the ModificationDate field value if set, zero value otherwise.
+func (o *TargetItemVersion) GetModificationDate() time.Time {
+	if o == nil || o.ModificationDate == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.ModificationDate
+}
+
+// GetModificationDateOk returns a tuple with the ModificationDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetItemVersion) GetModificationDateOk() (*time.Time, bool) {
+	if o == nil || o.ModificationDate == nil {
+		return nil, false
+	}
+	return o.ModificationDate, true
+}
+
+// HasModificationDate returns a boolean if a field has been set.
+func (o *TargetItemVersion) HasModificationDate() bool {
+	if o != nil && o.ModificationDate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetModificationDate gets a reference to the given time.Time and assigns it to the ModificationDate field.
+func (o *TargetItemVersion) SetModificationDate(v time.Time) {
+	o.ModificationDate = &v
+}
+
 // GetProtectionKeyName returns the ProtectionKeyName field value if set, zero value otherwise.
 func (o *TargetItemVersion) GetProtectionKeyName() string {
 	if o == nil || o.ProtectionKeyName == nil {
@@ -337,6 +403,9 @@ func (o *TargetItemVersion) SetWithCustomerFragment(v bool) {
 
 func (o TargetItemVersion) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AccessDate != nil {
+		toSerialize["access_date"] = o.AccessDate
+	}
 	if o.CreationDate != nil {
 		toSerialize["creation_date"] = o.CreationDate
 	}
@@ -351,6 +420,9 @@ func (o TargetItemVersion) MarshalJSON() ([]byte, error) {
 	}
 	if o.LatestVersion != nil {
 		toSerialize["latest_version"] = o.LatestVersion
+	}
+	if o.ModificationDate != nil {
+		toSerialize["modification_date"] = o.ModificationDate
 	}
 	if o.ProtectionKeyName != nil {
 		toSerialize["protection_key_name"] = o.ProtectionKeyName

@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Comment** | Pointer to **string** | Comment about the target | [optional] 
 **GcpKey** | Pointer to **string** | Base64-encoded service account private key text | [optional] 
-**GcpSaEmail** | Pointer to **string** | GCP service account email | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Target name | 
@@ -82,31 +81,6 @@ SetGcpKey sets GcpKey field to given value.
 `func (o *CreateGcpTarget) HasGcpKey() bool`
 
 HasGcpKey returns a boolean if a field has been set.
-
-### GetGcpSaEmail
-
-`func (o *CreateGcpTarget) GetGcpSaEmail() string`
-
-GetGcpSaEmail returns the GcpSaEmail field if non-nil, zero value otherwise.
-
-### GetGcpSaEmailOk
-
-`func (o *CreateGcpTarget) GetGcpSaEmailOk() (*string, bool)`
-
-GetGcpSaEmailOk returns a tuple with the GcpSaEmail field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGcpSaEmail
-
-`func (o *CreateGcpTarget) SetGcpSaEmail(v string)`
-
-SetGcpSaEmail sets GcpSaEmail field to given value.
-
-### HasGcpSaEmail
-
-`func (o *CreateGcpTarget) HasGcpSaEmail() bool`
-
-HasGcpSaEmail returns a boolean if a field has been set.
 
 ### GetJson
 

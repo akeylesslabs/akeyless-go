@@ -22,6 +22,7 @@ type MigrationGeneral struct {
 	NewName *string `json:"new_name,omitempty"`
 	Prefix *string `json:"prefix,omitempty"`
 	ProtectionKey *string `json:"protection_key,omitempty"`
+	Status *string `json:"status,omitempty"`
 }
 
 // NewMigrationGeneral instantiates a new MigrationGeneral object
@@ -201,6 +202,38 @@ func (o *MigrationGeneral) SetProtectionKey(v string) {
 	o.ProtectionKey = &v
 }
 
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *MigrationGeneral) GetStatus() string {
+	if o == nil || o.Status == nil {
+		var ret string
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MigrationGeneral) GetStatusOk() (*string, bool) {
+	if o == nil || o.Status == nil {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *MigrationGeneral) HasStatus() bool {
+	if o != nil && o.Status != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
+func (o *MigrationGeneral) SetStatus(v string) {
+	o.Status = &v
+}
+
 func (o MigrationGeneral) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id != nil {
@@ -217,6 +250,9 @@ func (o MigrationGeneral) MarshalJSON() ([]byte, error) {
 	}
 	if o.ProtectionKey != nil {
 		toSerialize["protection_key"] = o.ProtectionKey
+	}
+	if o.Status != nil {
+		toSerialize["status"] = o.Status
 	}
 	return json.Marshal(toSerialize)
 }

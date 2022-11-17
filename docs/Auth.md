@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **CertData** | Pointer to **string** | Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type&#x3D;cert) | [optional] 
 **CloudId** | Pointer to **string** | The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam,gcp) | [optional] 
 **Debug** | Pointer to **bool** |  | [optional] 
+**GatewayUrl** | Pointer to **string** | Gateway URL for the K8S authenticated (relevant only for access-type&#x3D;k8s) | [optional] 
 **GcpAudience** | Pointer to **string** | GCP JWT audience | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Jwt** | Pointer to **string** | The Json Web Token (relevant only for access-type&#x3D;jwt/oidc) | [optional] 
@@ -240,6 +241,31 @@ SetDebug sets Debug field to given value.
 `func (o *Auth) HasDebug() bool`
 
 HasDebug returns a boolean if a field has been set.
+
+### GetGatewayUrl
+
+`func (o *Auth) GetGatewayUrl() string`
+
+GetGatewayUrl returns the GatewayUrl field if non-nil, zero value otherwise.
+
+### GetGatewayUrlOk
+
+`func (o *Auth) GetGatewayUrlOk() (*string, bool)`
+
+GetGatewayUrlOk returns a tuple with the GatewayUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGatewayUrl
+
+`func (o *Auth) SetGatewayUrl(v string)`
+
+SetGatewayUrl sets GatewayUrl field to given value.
+
+### HasGatewayUrl
+
+`func (o *Auth) HasGatewayUrl() bool`
+
+HasGatewayUrl returns a boolean if a field has been set.
 
 ### GetGcpAudience
 

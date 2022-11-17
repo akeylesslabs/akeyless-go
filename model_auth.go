@@ -32,6 +32,8 @@ type Auth struct {
 	// The cloud identity (relevant only for access-type=azure_ad,aws_iam,gcp)
 	CloudId *string `json:"cloud-id,omitempty"`
 	Debug *bool `json:"debug,omitempty"`
+	// Gateway URL for the K8S authenticated (relevant only for access-type=k8s)
+	GatewayUrl *string `json:"gateway-url,omitempty"`
 	// GCP JWT audience
 	GcpAudience *string `json:"gcp-audience,omitempty"`
 	// Set output format to JSON
@@ -327,6 +329,38 @@ func (o *Auth) HasDebug() bool {
 // SetDebug gets a reference to the given bool and assigns it to the Debug field.
 func (o *Auth) SetDebug(v bool) {
 	o.Debug = &v
+}
+
+// GetGatewayUrl returns the GatewayUrl field value if set, zero value otherwise.
+func (o *Auth) GetGatewayUrl() string {
+	if o == nil || o.GatewayUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.GatewayUrl
+}
+
+// GetGatewayUrlOk returns a tuple with the GatewayUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Auth) GetGatewayUrlOk() (*string, bool) {
+	if o == nil || o.GatewayUrl == nil {
+		return nil, false
+	}
+	return o.GatewayUrl, true
+}
+
+// HasGatewayUrl returns a boolean if a field has been set.
+func (o *Auth) HasGatewayUrl() bool {
+	if o != nil && o.GatewayUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGatewayUrl gets a reference to the given string and assigns it to the GatewayUrl field.
+func (o *Auth) SetGatewayUrl(v string) {
+	o.GatewayUrl = &v
 }
 
 // GetGcpAudience returns the GcpAudience field value if set, zero value otherwise.
@@ -642,6 +676,9 @@ func (o Auth) MarshalJSON() ([]byte, error) {
 	}
 	if o.Debug != nil {
 		toSerialize["debug"] = o.Debug
+	}
+	if o.GatewayUrl != nil {
+		toSerialize["gateway-url"] = o.GatewayUrl
 	}
 	if o.GcpAudience != nil {
 		toSerialize["gcp-audience"] = o.GcpAudience

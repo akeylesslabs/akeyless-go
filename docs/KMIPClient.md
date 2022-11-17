@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ActivateKeysOnCreation** | Pointer to **bool** |  | [optional] 
 **CertificateIssueDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **CertificateTtlInSeconds** | Pointer to **int64** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
@@ -28,6 +29,31 @@ will change when the set of required properties is changed
 NewKMIPClientWithDefaults instantiates a new KMIPClient object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetActivateKeysOnCreation
+
+`func (o *KMIPClient) GetActivateKeysOnCreation() bool`
+
+GetActivateKeysOnCreation returns the ActivateKeysOnCreation field if non-nil, zero value otherwise.
+
+### GetActivateKeysOnCreationOk
+
+`func (o *KMIPClient) GetActivateKeysOnCreationOk() (*bool, bool)`
+
+GetActivateKeysOnCreationOk returns a tuple with the ActivateKeysOnCreation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetActivateKeysOnCreation
+
+`func (o *KMIPClient) SetActivateKeysOnCreation(v bool)`
+
+SetActivateKeysOnCreation sets ActivateKeysOnCreation field to given value.
+
+### HasActivateKeysOnCreation
+
+`func (o *KMIPClient) HasActivateKeysOnCreation() bool`
+
+HasActivateKeysOnCreation returns a boolean if a field has been set.
 
 ### GetCertificateIssueDate
 

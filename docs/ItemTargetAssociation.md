@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AssocId** | Pointer to **string** |  | [optional] 
+**Attributes** | Pointer to **map[string]string** |  | [optional] 
 **TargetId** | Pointer to **int64** |  | [optional] 
 **TargetName** | Pointer to **string** |  | [optional] 
 **TargetType** | Pointer to **string** |  | [optional] 
@@ -52,6 +53,31 @@ SetAssocId sets AssocId field to given value.
 `func (o *ItemTargetAssociation) HasAssocId() bool`
 
 HasAssocId returns a boolean if a field has been set.
+
+### GetAttributes
+
+`func (o *ItemTargetAssociation) GetAttributes() map[string]string`
+
+GetAttributes returns the Attributes field if non-nil, zero value otherwise.
+
+### GetAttributesOk
+
+`func (o *ItemTargetAssociation) GetAttributesOk() (*map[string]string, bool)`
+
+GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAttributes
+
+`func (o *ItemTargetAssociation) SetAttributes(v map[string]string)`
+
+SetAttributes sets Attributes field to given value.
+
+### HasAttributes
+
+`func (o *ItemTargetAssociation) HasAttributes() bool`
+
+HasAttributes returns a boolean if a field has been set.
 
 ### GetTargetId
 

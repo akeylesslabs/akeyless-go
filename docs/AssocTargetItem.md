@@ -9,9 +9,11 @@ Name | Type | Description | Notes
 **KeyringName** | Pointer to **string** | Keyring name of the GCP KMS (required for gcp targets) | [optional] 
 **KmsAlgorithm** | Pointer to **string** | Algorithm of the key in GCP KMS (required for gcp targets) | [optional] 
 **LocationId** | Pointer to **string** | Location id of the GCP KMS (required for gcp targets) | [optional] 
+**MultiRegion** | Pointer to **string** | Set to &#39;true&#39; to create a multi region managed key (relevant for aws targets) | [optional] [default to "false"]
 **Name** | **string** | The item to associate | 
 **ProjectId** | Pointer to **string** | Project id of the GCP KMS (required for gcp targets) | [optional] 
 **Purpose** | Pointer to **string** | Purpose of the key in GCP KMS (required for gcp targets) | [optional] 
+**Regions** | Pointer to **[]string** | The list of regions to create a copy of the key in (relevant for aws targets) | [optional] 
 **TargetName** | **string** | The target to associate | 
 **TenantSecretType** | Pointer to **string** | The tenant secret type [Data/SearchIndex/Analytics] (required for salesforce targets) | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -162,6 +164,31 @@ SetLocationId sets LocationId field to given value.
 
 HasLocationId returns a boolean if a field has been set.
 
+### GetMultiRegion
+
+`func (o *AssocTargetItem) GetMultiRegion() string`
+
+GetMultiRegion returns the MultiRegion field if non-nil, zero value otherwise.
+
+### GetMultiRegionOk
+
+`func (o *AssocTargetItem) GetMultiRegionOk() (*string, bool)`
+
+GetMultiRegionOk returns a tuple with the MultiRegion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMultiRegion
+
+`func (o *AssocTargetItem) SetMultiRegion(v string)`
+
+SetMultiRegion sets MultiRegion field to given value.
+
+### HasMultiRegion
+
+`func (o *AssocTargetItem) HasMultiRegion() bool`
+
+HasMultiRegion returns a boolean if a field has been set.
+
 ### GetName
 
 `func (o *AssocTargetItem) GetName() string`
@@ -231,6 +258,31 @@ SetPurpose sets Purpose field to given value.
 `func (o *AssocTargetItem) HasPurpose() bool`
 
 HasPurpose returns a boolean if a field has been set.
+
+### GetRegions
+
+`func (o *AssocTargetItem) GetRegions() []string`
+
+GetRegions returns the Regions field if non-nil, zero value otherwise.
+
+### GetRegionsOk
+
+`func (o *AssocTargetItem) GetRegionsOk() (*[]string, bool)`
+
+GetRegionsOk returns a tuple with the Regions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRegions
+
+`func (o *AssocTargetItem) SetRegions(v []string)`
+
+SetRegions sets Regions field to given value.
+
+### HasRegions
+
+`func (o *AssocTargetItem) HasRegions() bool`
+
+HasRegions returns a boolean if a field has been set.
 
 ### GetTargetName
 

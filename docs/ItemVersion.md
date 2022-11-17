@@ -4,10 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AccessDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **CreationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **CustomerFragmentId** | Pointer to **string** |  | [optional] 
 **DeletionDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **ItemVersionState** | Pointer to **string** | ItemState defines the different states an Item can be in | [optional] 
+**ModificationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **ProtectionKeyName** | Pointer to **string** |  | [optional] 
 **Version** | Pointer to **int32** |  | [optional] 
 **WithCustomerFragment** | Pointer to **bool** |  | [optional] 
@@ -30,6 +32,31 @@ will change when the set of required properties is changed
 NewItemVersionWithDefaults instantiates a new ItemVersion object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAccessDate
+
+`func (o *ItemVersion) GetAccessDate() time.Time`
+
+GetAccessDate returns the AccessDate field if non-nil, zero value otherwise.
+
+### GetAccessDateOk
+
+`func (o *ItemVersion) GetAccessDateOk() (*time.Time, bool)`
+
+GetAccessDateOk returns a tuple with the AccessDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessDate
+
+`func (o *ItemVersion) SetAccessDate(v time.Time)`
+
+SetAccessDate sets AccessDate field to given value.
+
+### HasAccessDate
+
+`func (o *ItemVersion) HasAccessDate() bool`
+
+HasAccessDate returns a boolean if a field has been set.
 
 ### GetCreationDate
 
@@ -130,6 +157,31 @@ SetItemVersionState sets ItemVersionState field to given value.
 `func (o *ItemVersion) HasItemVersionState() bool`
 
 HasItemVersionState returns a boolean if a field has been set.
+
+### GetModificationDate
+
+`func (o *ItemVersion) GetModificationDate() time.Time`
+
+GetModificationDate returns the ModificationDate field if non-nil, zero value otherwise.
+
+### GetModificationDateOk
+
+`func (o *ItemVersion) GetModificationDateOk() (*time.Time, bool)`
+
+GetModificationDateOk returns a tuple with the ModificationDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetModificationDate
+
+`func (o *ItemVersion) SetModificationDate(v time.Time)`
+
+SetModificationDate sets ModificationDate field to given value.
+
+### HasModificationDate
+
+`func (o *ItemVersion) HasModificationDate() bool`
+
+HasModificationDate returns a boolean if a field has been set.
 
 ### GetProtectionKeyName
 

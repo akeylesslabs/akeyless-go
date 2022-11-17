@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DataProtectionSection** | Pointer to [**DataProtectionSection**](DataProtectionSection.md) |  | [optional] 
+**EnableRequestForAccess** | Pointer to **bool** |  | [optional] 
 **PasswordPolicy** | Pointer to [**PasswordPolicyInfo**](PasswordPolicyInfo.md) |  | [optional] 
 
 ## Methods
@@ -50,6 +51,31 @@ SetDataProtectionSection sets DataProtectionSection field to given value.
 `func (o *AccountGeneralSettings) HasDataProtectionSection() bool`
 
 HasDataProtectionSection returns a boolean if a field has been set.
+
+### GetEnableRequestForAccess
+
+`func (o *AccountGeneralSettings) GetEnableRequestForAccess() bool`
+
+GetEnableRequestForAccess returns the EnableRequestForAccess field if non-nil, zero value otherwise.
+
+### GetEnableRequestForAccessOk
+
+`func (o *AccountGeneralSettings) GetEnableRequestForAccessOk() (*bool, bool)`
+
+GetEnableRequestForAccessOk returns a tuple with the EnableRequestForAccess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableRequestForAccess
+
+`func (o *AccountGeneralSettings) SetEnableRequestForAccess(v bool)`
+
+SetEnableRequestForAccess sets EnableRequestForAccess field to given value.
+
+### HasEnableRequestForAccess
+
+`func (o *AccountGeneralSettings) HasEnableRequestForAccess() bool`
+
+HasEnableRequestForAccess returns a boolean if a field has been set.
 
 ### GetPasswordPolicy
 

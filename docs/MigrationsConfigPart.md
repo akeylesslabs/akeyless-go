@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **GcpSecretsMigrations** | Pointer to [**[]GCPSecretsMigration**](GCPSecretsMigration.md) |  | [optional] 
 **HashiMigrations** | Pointer to [**[]HashiMigration**](HashiMigration.md) |  | [optional] 
 **K8sMigrations** | Pointer to [**[]K8SMigration**](K8SMigration.md) |  | [optional] 
+**MockMigrations** | Pointer to [**[]MockMigration**](MockMigration.md) |  | [optional] 
 **OnePasswordMigrations** | Pointer to [**[]OnePasswordMigration**](OnePasswordMigration.md) |  | [optional] 
 
 ## Methods
@@ -180,6 +181,31 @@ SetK8sMigrations sets K8sMigrations field to given value.
 `func (o *MigrationsConfigPart) HasK8sMigrations() bool`
 
 HasK8sMigrations returns a boolean if a field has been set.
+
+### GetMockMigrations
+
+`func (o *MigrationsConfigPart) GetMockMigrations() []MockMigration`
+
+GetMockMigrations returns the MockMigrations field if non-nil, zero value otherwise.
+
+### GetMockMigrationsOk
+
+`func (o *MigrationsConfigPart) GetMockMigrationsOk() (*[]MockMigration, bool)`
+
+GetMockMigrationsOk returns a tuple with the MockMigrations field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMockMigrations
+
+`func (o *MigrationsConfigPart) SetMockMigrations(v []MockMigration)`
+
+SetMockMigrations sets MockMigrations field to given value.
+
+### HasMockMigrations
+
+`func (o *MigrationsConfigPart) HasMockMigrations() bool`
+
+HasMockMigrations returns a boolean if a field has been set.
 
 ### GetOnePasswordMigrations
 

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **NewName** | Pointer to **string** |  | [optional] 
 **Prefix** | Pointer to **string** |  | [optional] 
 **ProtectionKey** | Pointer to **string** |  | [optional] 
+**Status** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -153,6 +154,31 @@ SetProtectionKey sets ProtectionKey field to given value.
 `func (o *MigrationGeneral) HasProtectionKey() bool`
 
 HasProtectionKey returns a boolean if a field has been set.
+
+### GetStatus
+
+`func (o *MigrationGeneral) GetStatus() string`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *MigrationGeneral) GetStatusOk() (*string, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *MigrationGeneral) SetStatus(v string)`
+
+SetStatus sets Status field to given value.
+
+### HasStatus
+
+`func (o *MigrationGeneral) HasStatus() bool`
+
+HasStatus returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

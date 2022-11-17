@@ -27,12 +27,16 @@ type AssocTargetItem struct {
 	KmsAlgorithm *string `json:"kms-algorithm,omitempty"`
 	// Location id of the GCP KMS (required for gcp targets)
 	LocationId *string `json:"location-id,omitempty"`
+	// Set to 'true' to create a multi region managed key (relevant for aws targets)
+	MultiRegion *string `json:"multi-region,omitempty"`
 	// The item to associate
 	Name string `json:"name"`
 	// Project id of the GCP KMS (required for gcp targets)
 	ProjectId *string `json:"project-id,omitempty"`
 	// Purpose of the key in GCP KMS (required for gcp targets)
 	Purpose *string `json:"purpose,omitempty"`
+	// The list of regions to create a copy of the key in (relevant for aws targets)
+	Regions *[]string `json:"regions,omitempty"`
 	// The target to associate
 	TargetName string `json:"target-name"`
 	// The tenant secret type [Data/SearchIndex/Analytics] (required for salesforce targets)
@@ -51,6 +55,8 @@ type AssocTargetItem struct {
 // will change when the set of required properties is changed
 func NewAssocTargetItem(name string, targetName string, ) *AssocTargetItem {
 	this := AssocTargetItem{}
+	var multiRegion string = "false"
+	this.MultiRegion = &multiRegion
 	this.Name = name
 	this.TargetName = targetName
 	return &this
@@ -61,6 +67,8 @@ func NewAssocTargetItem(name string, targetName string, ) *AssocTargetItem {
 // but it doesn't guarantee that properties required by API are set
 func NewAssocTargetItemWithDefaults() *AssocTargetItem {
 	this := AssocTargetItem{}
+	var multiRegion string = "false"
+	this.MultiRegion = &multiRegion
 	return &this
 }
 
@@ -224,6 +232,38 @@ func (o *AssocTargetItem) SetLocationId(v string) {
 	o.LocationId = &v
 }
 
+// GetMultiRegion returns the MultiRegion field value if set, zero value otherwise.
+func (o *AssocTargetItem) GetMultiRegion() string {
+	if o == nil || o.MultiRegion == nil {
+		var ret string
+		return ret
+	}
+	return *o.MultiRegion
+}
+
+// GetMultiRegionOk returns a tuple with the MultiRegion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssocTargetItem) GetMultiRegionOk() (*string, bool) {
+	if o == nil || o.MultiRegion == nil {
+		return nil, false
+	}
+	return o.MultiRegion, true
+}
+
+// HasMultiRegion returns a boolean if a field has been set.
+func (o *AssocTargetItem) HasMultiRegion() bool {
+	if o != nil && o.MultiRegion != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMultiRegion gets a reference to the given string and assigns it to the MultiRegion field.
+func (o *AssocTargetItem) SetMultiRegion(v string) {
+	o.MultiRegion = &v
+}
+
 // GetName returns the Name field value
 func (o *AssocTargetItem) GetName() string {
 	if o == nil  {
@@ -310,6 +350,38 @@ func (o *AssocTargetItem) HasPurpose() bool {
 // SetPurpose gets a reference to the given string and assigns it to the Purpose field.
 func (o *AssocTargetItem) SetPurpose(v string) {
 	o.Purpose = &v
+}
+
+// GetRegions returns the Regions field value if set, zero value otherwise.
+func (o *AssocTargetItem) GetRegions() []string {
+	if o == nil || o.Regions == nil {
+		var ret []string
+		return ret
+	}
+	return *o.Regions
+}
+
+// GetRegionsOk returns a tuple with the Regions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssocTargetItem) GetRegionsOk() (*[]string, bool) {
+	if o == nil || o.Regions == nil {
+		return nil, false
+	}
+	return o.Regions, true
+}
+
+// HasRegions returns a boolean if a field has been set.
+func (o *AssocTargetItem) HasRegions() bool {
+	if o != nil && o.Regions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRegions gets a reference to the given []string and assigns it to the Regions field.
+func (o *AssocTargetItem) SetRegions(v []string) {
+	o.Regions = &v
 }
 
 // GetTargetName returns the TargetName field value
@@ -481,6 +553,9 @@ func (o AssocTargetItem) MarshalJSON() ([]byte, error) {
 	if o.LocationId != nil {
 		toSerialize["location-id"] = o.LocationId
 	}
+	if o.MultiRegion != nil {
+		toSerialize["multi-region"] = o.MultiRegion
+	}
 	if true {
 		toSerialize["name"] = o.Name
 	}
@@ -489,6 +564,9 @@ func (o AssocTargetItem) MarshalJSON() ([]byte, error) {
 	}
 	if o.Purpose != nil {
 		toSerialize["purpose"] = o.Purpose
+	}
+	if o.Regions != nil {
+		toSerialize["regions"] = o.Regions
 	}
 	if true {
 		toSerialize["target-name"] = o.TargetName

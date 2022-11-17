@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ActivateKeysOnCreation** | Pointer to **string** |  | [optional] 
 **CertificateTtl** | Pointer to **int64** |  | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Client name | 
@@ -28,6 +29,31 @@ will change when the set of required properties is changed
 NewKmipCreateClientWithDefaults instantiates a new KmipCreateClient object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetActivateKeysOnCreation
+
+`func (o *KmipCreateClient) GetActivateKeysOnCreation() string`
+
+GetActivateKeysOnCreation returns the ActivateKeysOnCreation field if non-nil, zero value otherwise.
+
+### GetActivateKeysOnCreationOk
+
+`func (o *KmipCreateClient) GetActivateKeysOnCreationOk() (*string, bool)`
+
+GetActivateKeysOnCreationOk returns a tuple with the ActivateKeysOnCreation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetActivateKeysOnCreation
+
+`func (o *KmipCreateClient) SetActivateKeysOnCreation(v string)`
+
+SetActivateKeysOnCreation sets ActivateKeysOnCreation field to given value.
+
+### HasActivateKeysOnCreation
+
+`func (o *KmipCreateClient) HasActivateKeysOnCreation() bool`
+
+HasActivateKeysOnCreation returns a boolean if a field has been set.
 
 ### GetCertificateTtl
 

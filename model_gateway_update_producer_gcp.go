@@ -24,7 +24,7 @@ type GatewayUpdateProducerGcp struct {
 	GcpKey *string `json:"gcp-key,omitempty"`
 	// Service account key algorithm, e.g. KEY_ALG_RSA_1024
 	GcpKeyAlgo *string `json:"gcp-key-algo,omitempty"`
-	// GCP service account email
+	// The email of the fixed service acocunt to generate keys or tokens for. (revelant for service-account-type=fixed)
 	GcpSaEmail *string `json:"gcp-sa-email,omitempty"`
 	// Access token scopes list, e.g. scope1,scope2
 	GcpTokenScopes *string `json:"gcp-token-scopes,omitempty"`
@@ -36,6 +36,10 @@ type GatewayUpdateProducerGcp struct {
 	NewName *string `json:"new-name,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
+	// Role binding definitions in json format
+	RoleBinding *string `json:"role-binding,omitempty"`
+	// The type of the gcp dynamic secret. Options[fixed, dynamic]
+	ServiceAccountType string `json:"service-account-type"`
 	// List of the tags attached to this secret
 	Tags *[]string `json:"tags,omitempty"`
 	// Target name
@@ -52,9 +56,10 @@ type GatewayUpdateProducerGcp struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayUpdateProducerGcp(name string, ) *GatewayUpdateProducerGcp {
+func NewGatewayUpdateProducerGcp(name string, serviceAccountType string, ) *GatewayUpdateProducerGcp {
 	this := GatewayUpdateProducerGcp{}
 	this.Name = name
+	this.ServiceAccountType = serviceAccountType
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
@@ -65,6 +70,8 @@ func NewGatewayUpdateProducerGcp(name string, ) *GatewayUpdateProducerGcp {
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayUpdateProducerGcpWithDefaults() *GatewayUpdateProducerGcp {
 	this := GatewayUpdateProducerGcp{}
+	var serviceAccountType string = "fixed"
+	this.ServiceAccountType = serviceAccountType
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
@@ -382,6 +389,62 @@ func (o *GatewayUpdateProducerGcp) SetProducerEncryptionKeyName(v string) {
 	o.ProducerEncryptionKeyName = &v
 }
 
+// GetRoleBinding returns the RoleBinding field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerGcp) GetRoleBinding() string {
+	if o == nil || o.RoleBinding == nil {
+		var ret string
+		return ret
+	}
+	return *o.RoleBinding
+}
+
+// GetRoleBindingOk returns a tuple with the RoleBinding field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerGcp) GetRoleBindingOk() (*string, bool) {
+	if o == nil || o.RoleBinding == nil {
+		return nil, false
+	}
+	return o.RoleBinding, true
+}
+
+// HasRoleBinding returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerGcp) HasRoleBinding() bool {
+	if o != nil && o.RoleBinding != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRoleBinding gets a reference to the given string and assigns it to the RoleBinding field.
+func (o *GatewayUpdateProducerGcp) SetRoleBinding(v string) {
+	o.RoleBinding = &v
+}
+
+// GetServiceAccountType returns the ServiceAccountType field value
+func (o *GatewayUpdateProducerGcp) GetServiceAccountType() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.ServiceAccountType
+}
+
+// GetServiceAccountTypeOk returns a tuple with the ServiceAccountType field value
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerGcp) GetServiceAccountTypeOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.ServiceAccountType, true
+}
+
+// SetServiceAccountType sets field value
+func (o *GatewayUpdateProducerGcp) SetServiceAccountType(v string) {
+	o.ServiceAccountType = v
+}
+
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *GatewayUpdateProducerGcp) GetTags() []string {
 	if o == nil || o.Tags == nil {
@@ -573,6 +636,12 @@ func (o GatewayUpdateProducerGcp) MarshalJSON() ([]byte, error) {
 	}
 	if o.ProducerEncryptionKeyName != nil {
 		toSerialize["producer-encryption-key-name"] = o.ProducerEncryptionKeyName
+	}
+	if o.RoleBinding != nil {
+		toSerialize["role-binding"] = o.RoleBinding
+	}
+	if true {
+		toSerialize["service-account-type"] = o.ServiceAccountType
 	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags
