@@ -52,6 +52,8 @@ type UpdateSecretVal struct {
 // will change when the set of required properties is changed
 func NewUpdateSecretVal(name string, value string, ) *UpdateSecretVal {
 	this := UpdateSecretVal{}
+	var accessibility string = "regular"
+	this.Accessibility = &accessibility
 	this.Name = name
 	this.Value = value
 	return &this
@@ -62,6 +64,8 @@ func NewUpdateSecretVal(name string, value string, ) *UpdateSecretVal {
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateSecretValWithDefaults() *UpdateSecretVal {
 	this := UpdateSecretVal{}
+	var accessibility string = "regular"
+	this.Accessibility = &accessibility
 	return &this
 }
 

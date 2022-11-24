@@ -70,6 +70,8 @@ type UpdateItem struct {
 // will change when the set of required properties is changed
 func NewUpdateItem(name string, ) *UpdateItem {
 	this := UpdateItem{}
+	var accessibility string = "regular"
+	this.Accessibility = &accessibility
 	this.Name = name
 	var newMetadata string = "default_metadata"
 	this.NewMetadata = &newMetadata
@@ -81,6 +83,8 @@ func NewUpdateItem(name string, ) *UpdateItem {
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateItemWithDefaults() *UpdateItem {
 	this := UpdateItem{}
+	var accessibility string = "regular"
+	this.Accessibility = &accessibility
 	var newMetadata string = "default_metadata"
 	this.NewMetadata = &newMetadata
 	return &this

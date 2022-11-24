@@ -21,6 +21,8 @@ type CreateAuthMethodOIDC struct {
 	AccessExpires *int64 `json:"access-expires,omitempty"`
 	// Allowed redirect URIs after the authentication
 	AllowedRedirectUri *[]string `json:"allowed-redirect-uri,omitempty"`
+	// Audience claim to be used as part of the authentication flow. In case set, it must match the one configured on the Identity Provider's Application
+	Audience *string `json:"audience,omitempty"`
 	// A CIDR whitelist with the IPs that the access is restricted to
 	BoundIps *[]string `json:"bound-ips,omitempty"`
 	// Client ID
@@ -136,6 +138,38 @@ func (o *CreateAuthMethodOIDC) HasAllowedRedirectUri() bool {
 // SetAllowedRedirectUri gets a reference to the given []string and assigns it to the AllowedRedirectUri field.
 func (o *CreateAuthMethodOIDC) SetAllowedRedirectUri(v []string) {
 	o.AllowedRedirectUri = &v
+}
+
+// GetAudience returns the Audience field value if set, zero value otherwise.
+func (o *CreateAuthMethodOIDC) GetAudience() string {
+	if o == nil || o.Audience == nil {
+		var ret string
+		return ret
+	}
+	return *o.Audience
+}
+
+// GetAudienceOk returns a tuple with the Audience field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodOIDC) GetAudienceOk() (*string, bool) {
+	if o == nil || o.Audience == nil {
+		return nil, false
+	}
+	return o.Audience, true
+}
+
+// HasAudience returns a boolean if a field has been set.
+func (o *CreateAuthMethodOIDC) HasAudience() bool {
+	if o != nil && o.Audience != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAudience gets a reference to the given string and assigns it to the Audience field.
+func (o *CreateAuthMethodOIDC) SetAudience(v string) {
+	o.Audience = &v
 }
 
 // GetBoundIps returns the BoundIps field value if set, zero value otherwise.
@@ -577,6 +611,9 @@ func (o CreateAuthMethodOIDC) MarshalJSON() ([]byte, error) {
 	}
 	if o.AllowedRedirectUri != nil {
 		toSerialize["allowed-redirect-uri"] = o.AllowedRedirectUri
+	}
+	if o.Audience != nil {
+		toSerialize["audience"] = o.Audience
 	}
 	if o.BoundIps != nil {
 		toSerialize["bound-ips"] = o.BoundIps

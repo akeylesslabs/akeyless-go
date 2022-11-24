@@ -23,6 +23,7 @@ type MigrationGeneral struct {
 	Prefix *string `json:"prefix,omitempty"`
 	ProtectionKey *string `json:"protection_key,omitempty"`
 	Status *string `json:"status,omitempty"`
+	Type *string `json:"type,omitempty"`
 }
 
 // NewMigrationGeneral instantiates a new MigrationGeneral object
@@ -234,6 +235,38 @@ func (o *MigrationGeneral) SetStatus(v string) {
 	o.Status = &v
 }
 
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *MigrationGeneral) GetType() string {
+	if o == nil || o.Type == nil {
+		var ret string
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MigrationGeneral) GetTypeOk() (*string, bool) {
+	if o == nil || o.Type == nil {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *MigrationGeneral) HasType() bool {
+	if o != nil && o.Type != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *MigrationGeneral) SetType(v string) {
+	o.Type = &v
+}
+
 func (o MigrationGeneral) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id != nil {
@@ -253,6 +286,9 @@ func (o MigrationGeneral) MarshalJSON() ([]byte, error) {
 	}
 	if o.Status != nil {
 		toSerialize["status"] = o.Status
+	}
+	if o.Type != nil {
+		toSerialize["type"] = o.Type
 	}
 	return json.Marshal(toSerialize)
 }

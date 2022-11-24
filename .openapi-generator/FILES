@@ -165,6 +165,8 @@ docs/EncryptFileOutput.md
 docs/EncryptOutput.md
 docs/EncryptWithClassicKey.md
 docs/EncryptWithClassicKeyOutput.md
+docs/ExportClassicKey.md
+docs/ExportClassicKeyOutput.md
 docs/ExternalKMSKeyId.md
 docs/GCPAccessRules.md
 docs/GCPPayload.md
@@ -316,8 +318,6 @@ docs/GeneralConfigPart.md
 docs/GetAccountSettings.md
 docs/GetAccountSettingsCommandOutput.md
 docs/GetAuthMethod.md
-docs/GetCloudIdentity.md
-docs/GetCloudIdentityOutput.md
 docs/GetDynamicSecretValue.md
 docs/GetKubeExecCreds.md
 docs/GetKubeExecCredsOutput.md
@@ -444,6 +444,7 @@ docs/SSHCertificateIssueDetails.md
 docs/SecureRemoteAccess.md
 docs/SetItemState.md
 docs/SetRoleRule.md
+docs/ShareItem.md
 docs/SignJWTOutput.md
 docs/SignJWTWithClassicKey.md
 docs/SignPKCS1.md
@@ -726,6 +727,8 @@ model_encrypt_file_output.go
 model_encrypt_output.go
 model_encrypt_with_classic_key.go
 model_encrypt_with_classic_key_output.go
+model_export_classic_key.go
+model_export_classic_key_output.go
 model_external_kms_key_id.go
 model_gateway_add_allowed_management_access.go
 model_gateway_create_k8_s_auth_config.go
@@ -877,8 +880,6 @@ model_general_config_part.go
 model_get_account_settings.go
 model_get_account_settings_command_output.go
 model_get_auth_method.go
-model_get_cloud_identity.go
-model_get_cloud_identity_output.go
 model_get_dynamic_secret_value.go
 model_get_kube_exec_creds.go
 model_get_kube_exec_creds_output.go
@@ -1004,6 +1005,7 @@ model_saml_attribute.go
 model_secure_remote_access.go
 model_set_item_state.go
 model_set_role_rule.go
+model_share_item.go
 model_sign_jwt_output.go
 model_sign_jwt_with_classic_key.go
 model_sign_pkcs1.go

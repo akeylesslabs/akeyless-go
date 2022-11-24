@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AllowedOps** | Pointer to **[]string** |  | [optional] 
 **AssocId** | Pointer to **string** |  | [optional] 
 **AuthMethodSubClaims** | Pointer to [**map[string][]string**](array.md) |  | [optional] 
 **RoleName** | Pointer to **string** |  | [optional] 
@@ -27,6 +28,31 @@ will change when the set of required properties is changed
 NewAuthMethodRoleAssociationWithDefaults instantiates a new AuthMethodRoleAssociation object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAllowedOps
+
+`func (o *AuthMethodRoleAssociation) GetAllowedOps() []string`
+
+GetAllowedOps returns the AllowedOps field if non-nil, zero value otherwise.
+
+### GetAllowedOpsOk
+
+`func (o *AuthMethodRoleAssociation) GetAllowedOpsOk() (*[]string, bool)`
+
+GetAllowedOpsOk returns a tuple with the AllowedOps field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowedOps
+
+`func (o *AuthMethodRoleAssociation) SetAllowedOps(v []string)`
+
+SetAllowedOps sets AllowedOps field to given value.
+
+### HasAllowedOps
+
+`func (o *AuthMethodRoleAssociation) HasAllowedOps() bool`
+
+HasAllowedOps returns a boolean if a field has been set.
 
 ### GetAssocId
 

@@ -9,10 +9,6 @@ Name | Type | Description | Notes
 **Var1passwordSecretKey** | Pointer to **string** | 1Password user secret key to connect to the API | [optional] 
 **Var1passwordUrl** | Pointer to **string** | 1Password api container url | [optional] 
 **Var1passwordVaults** | Pointer to **[]string** | 1Password list of vault to get the items from | [optional] 
-**AdAutoRotateBoolean** | Pointer to **bool** |  | [optional] 
-**AdDiscoverLocalUsersBoolean** | Pointer to **bool** |  | [optional] 
-**AdLocalUsersIgnoreList** | Pointer to **map[string]bool** |  | [optional] 
-**AdSRAEnableRDPBoolean** | Pointer to **bool** |  | [optional] 
 **AdAutoRotate** | Pointer to **string** | Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with --ad-rotation-interval and --ad-rotation-hour parameters (Relevant only for Active Directory migration) | [optional] 
 **AdComputerBaseDn** | Pointer to **string** | Distinguished Name of Computer objects (servers) to search in Active Directory e.g.: CN&#x3D;Computers,DC&#x3D;example,DC&#x3D;com (Relevant only for Active Directory migration) | [optional] 
 **AdDiscoverLocalUsers** | Pointer to **string** | Enable/Disable discovery of local users from each domain server and migrate them as SSH Rotated Secrets. Default is false: only domain users will be migrated. Discovery of local users might require further installation of SSH on the servers, based on the supplied computer base DN. This will be implemented automatically as part of the migration process (Relevant only for Active Directory migration) | [optional] 
@@ -201,106 +197,6 @@ SetVar1passwordVaults sets Var1passwordVaults field to given value.
 `func (o *GatewayUpdateMigration) HasVar1passwordVaults() bool`
 
 HasVar1passwordVaults returns a boolean if a field has been set.
-
-### GetAdAutoRotateBoolean
-
-`func (o *GatewayUpdateMigration) GetAdAutoRotateBoolean() bool`
-
-GetAdAutoRotateBoolean returns the AdAutoRotateBoolean field if non-nil, zero value otherwise.
-
-### GetAdAutoRotateBooleanOk
-
-`func (o *GatewayUpdateMigration) GetAdAutoRotateBooleanOk() (*bool, bool)`
-
-GetAdAutoRotateBooleanOk returns a tuple with the AdAutoRotateBoolean field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAdAutoRotateBoolean
-
-`func (o *GatewayUpdateMigration) SetAdAutoRotateBoolean(v bool)`
-
-SetAdAutoRotateBoolean sets AdAutoRotateBoolean field to given value.
-
-### HasAdAutoRotateBoolean
-
-`func (o *GatewayUpdateMigration) HasAdAutoRotateBoolean() bool`
-
-HasAdAutoRotateBoolean returns a boolean if a field has been set.
-
-### GetAdDiscoverLocalUsersBoolean
-
-`func (o *GatewayUpdateMigration) GetAdDiscoverLocalUsersBoolean() bool`
-
-GetAdDiscoverLocalUsersBoolean returns the AdDiscoverLocalUsersBoolean field if non-nil, zero value otherwise.
-
-### GetAdDiscoverLocalUsersBooleanOk
-
-`func (o *GatewayUpdateMigration) GetAdDiscoverLocalUsersBooleanOk() (*bool, bool)`
-
-GetAdDiscoverLocalUsersBooleanOk returns a tuple with the AdDiscoverLocalUsersBoolean field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAdDiscoverLocalUsersBoolean
-
-`func (o *GatewayUpdateMigration) SetAdDiscoverLocalUsersBoolean(v bool)`
-
-SetAdDiscoverLocalUsersBoolean sets AdDiscoverLocalUsersBoolean field to given value.
-
-### HasAdDiscoverLocalUsersBoolean
-
-`func (o *GatewayUpdateMigration) HasAdDiscoverLocalUsersBoolean() bool`
-
-HasAdDiscoverLocalUsersBoolean returns a boolean if a field has been set.
-
-### GetAdLocalUsersIgnoreList
-
-`func (o *GatewayUpdateMigration) GetAdLocalUsersIgnoreList() map[string]bool`
-
-GetAdLocalUsersIgnoreList returns the AdLocalUsersIgnoreList field if non-nil, zero value otherwise.
-
-### GetAdLocalUsersIgnoreListOk
-
-`func (o *GatewayUpdateMigration) GetAdLocalUsersIgnoreListOk() (*map[string]bool, bool)`
-
-GetAdLocalUsersIgnoreListOk returns a tuple with the AdLocalUsersIgnoreList field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAdLocalUsersIgnoreList
-
-`func (o *GatewayUpdateMigration) SetAdLocalUsersIgnoreList(v map[string]bool)`
-
-SetAdLocalUsersIgnoreList sets AdLocalUsersIgnoreList field to given value.
-
-### HasAdLocalUsersIgnoreList
-
-`func (o *GatewayUpdateMigration) HasAdLocalUsersIgnoreList() bool`
-
-HasAdLocalUsersIgnoreList returns a boolean if a field has been set.
-
-### GetAdSRAEnableRDPBoolean
-
-`func (o *GatewayUpdateMigration) GetAdSRAEnableRDPBoolean() bool`
-
-GetAdSRAEnableRDPBoolean returns the AdSRAEnableRDPBoolean field if non-nil, zero value otherwise.
-
-### GetAdSRAEnableRDPBooleanOk
-
-`func (o *GatewayUpdateMigration) GetAdSRAEnableRDPBooleanOk() (*bool, bool)`
-
-GetAdSRAEnableRDPBooleanOk returns a tuple with the AdSRAEnableRDPBoolean field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAdSRAEnableRDPBoolean
-
-`func (o *GatewayUpdateMigration) SetAdSRAEnableRDPBoolean(v bool)`
-
-SetAdSRAEnableRDPBoolean sets AdSRAEnableRDPBoolean field to given value.
-
-### HasAdSRAEnableRDPBoolean
-
-`func (o *GatewayUpdateMigration) HasAdSRAEnableRDPBoolean() bool`
-
-HasAdSRAEnableRDPBoolean returns a boolean if a field has been set.
 
 ### GetAdAutoRotate
 

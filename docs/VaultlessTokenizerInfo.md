@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **KeyName** | Pointer to **string** |  | [optional] 
 **RegexpTokenizerInfo** | Pointer to [**RegexpTokenizerInfo**](RegexpTokenizerInfo.md) |  | [optional] 
 **TemplateType** | Pointer to **string** |  | [optional] 
-**Tweak** | Pointer to **[]int32** | Tweak used in the case of internal tweak type | [optional] 
+**Tweak** | Pointer to **string** | Tweak used in the case of internal tweak type | [optional] 
 **TweakType** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -132,20 +132,20 @@ HasTemplateType returns a boolean if a field has been set.
 
 ### GetTweak
 
-`func (o *VaultlessTokenizerInfo) GetTweak() []int32`
+`func (o *VaultlessTokenizerInfo) GetTweak() string`
 
 GetTweak returns the Tweak field if non-nil, zero value otherwise.
 
 ### GetTweakOk
 
-`func (o *VaultlessTokenizerInfo) GetTweakOk() (*[]int32, bool)`
+`func (o *VaultlessTokenizerInfo) GetTweakOk() (*string, bool)`
 
 GetTweakOk returns a tuple with the Tweak field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTweak
 
-`func (o *VaultlessTokenizerInfo) SetTweak(v []int32)`
+`func (o *VaultlessTokenizerInfo) SetTweak(v string)`
 
 SetTweak sets Tweak field to given value.
 

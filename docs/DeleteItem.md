@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Accessibility** | Pointer to **string** | for personal password manager | [optional] 
+**Accessibility** | Pointer to **string** | for personal password manager | [optional] [default to "regular"]
 **DeleteImmediately** | Pointer to **bool** | When delete-in-days&#x3D;-1, must be set | [optional] [default to false]
 **DeleteInDays** | Pointer to **int64** | The number of days to wait before deleting the item (relevant for keys only) | [optional] [default to 7]
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] 

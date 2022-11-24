@@ -17,6 +17,7 @@ import (
 
 // AuthMethodRoleAssociation AuthMethodRoleAssociation includes details of an association between an auth method and a role.
 type AuthMethodRoleAssociation struct {
+	AllowedOps *[]string `json:"allowed_ops,omitempty"`
 	AssocId *string `json:"assoc_id,omitempty"`
 	AuthMethodSubClaims *map[string][]string `json:"auth_method_sub_claims,omitempty"`
 	RoleName *string `json:"role_name,omitempty"`
@@ -38,6 +39,38 @@ func NewAuthMethodRoleAssociation() *AuthMethodRoleAssociation {
 func NewAuthMethodRoleAssociationWithDefaults() *AuthMethodRoleAssociation {
 	this := AuthMethodRoleAssociation{}
 	return &this
+}
+
+// GetAllowedOps returns the AllowedOps field value if set, zero value otherwise.
+func (o *AuthMethodRoleAssociation) GetAllowedOps() []string {
+	if o == nil || o.AllowedOps == nil {
+		var ret []string
+		return ret
+	}
+	return *o.AllowedOps
+}
+
+// GetAllowedOpsOk returns a tuple with the AllowedOps field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodRoleAssociation) GetAllowedOpsOk() (*[]string, bool) {
+	if o == nil || o.AllowedOps == nil {
+		return nil, false
+	}
+	return o.AllowedOps, true
+}
+
+// HasAllowedOps returns a boolean if a field has been set.
+func (o *AuthMethodRoleAssociation) HasAllowedOps() bool {
+	if o != nil && o.AllowedOps != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowedOps gets a reference to the given []string and assigns it to the AllowedOps field.
+func (o *AuthMethodRoleAssociation) SetAllowedOps(v []string) {
+	o.AllowedOps = &v
 }
 
 // GetAssocId returns the AssocId field value if set, zero value otherwise.
@@ -170,6 +203,9 @@ func (o *AuthMethodRoleAssociation) SetRules(v Rules) {
 
 func (o AuthMethodRoleAssociation) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AllowedOps != nil {
+		toSerialize["allowed_ops"] = o.AllowedOps
+	}
 	if o.AssocId != nil {
 		toSerialize["assoc_id"] = o.AssocId
 	}

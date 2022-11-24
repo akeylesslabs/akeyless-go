@@ -17,7 +17,8 @@ import (
 
 // SmInfo struct for SmInfo
 type SmInfo struct {
-	Package *string `json:"package,omitempty"`
+	Sla *string `json:"sla,omitempty"`
+	// Tier represents a level of extensibility the account will have, defined by various limits for different resources of Akeyless e.g - A StarterTier may have a limit of 3 Client resources and 50 Secret resources
 	Tier *string `json:"tier,omitempty"`
 }
 
@@ -38,36 +39,36 @@ func NewSmInfoWithDefaults() *SmInfo {
 	return &this
 }
 
-// GetPackage returns the Package field value if set, zero value otherwise.
-func (o *SmInfo) GetPackage() string {
-	if o == nil || o.Package == nil {
+// GetSla returns the Sla field value if set, zero value otherwise.
+func (o *SmInfo) GetSla() string {
+	if o == nil || o.Sla == nil {
 		var ret string
 		return ret
 	}
-	return *o.Package
+	return *o.Sla
 }
 
-// GetPackageOk returns a tuple with the Package field value if set, nil otherwise
+// GetSlaOk returns a tuple with the Sla field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SmInfo) GetPackageOk() (*string, bool) {
-	if o == nil || o.Package == nil {
+func (o *SmInfo) GetSlaOk() (*string, bool) {
+	if o == nil || o.Sla == nil {
 		return nil, false
 	}
-	return o.Package, true
+	return o.Sla, true
 }
 
-// HasPackage returns a boolean if a field has been set.
-func (o *SmInfo) HasPackage() bool {
-	if o != nil && o.Package != nil {
+// HasSla returns a boolean if a field has been set.
+func (o *SmInfo) HasSla() bool {
+	if o != nil && o.Sla != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetPackage gets a reference to the given string and assigns it to the Package field.
-func (o *SmInfo) SetPackage(v string) {
-	o.Package = &v
+// SetSla gets a reference to the given string and assigns it to the Sla field.
+func (o *SmInfo) SetSla(v string) {
+	o.Sla = &v
 }
 
 // GetTier returns the Tier field value if set, zero value otherwise.
@@ -104,8 +105,8 @@ func (o *SmInfo) SetTier(v string) {
 
 func (o SmInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Package != nil {
-		toSerialize["package"] = o.Package
+	if o.Sla != nil {
+		toSerialize["sla"] = o.Sla
 	}
 	if o.Tier != nil {
 		toSerialize["tier"] = o.Tier

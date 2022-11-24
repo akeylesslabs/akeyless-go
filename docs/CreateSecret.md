@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Accessibility** | Pointer to **string** | for personal password manager | [optional] 
+**Accessibility** | Pointer to **string** | for personal password manager | [optional] [default to "regular"]
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Metadata** | Pointer to **string** | Metadata about the secret | [optional] 

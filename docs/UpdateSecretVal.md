@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Accessibility** | Pointer to **string** | for personal password manager | [optional] 
+**Accessibility** | Pointer to **string** | for personal password manager | [optional] [default to "regular"]
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **KeepPrevVersion** | Pointer to **string** |  | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 

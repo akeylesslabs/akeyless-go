@@ -27,10 +27,6 @@ type GatewayCreateMigration struct {
 	Var1passwordUrl *string `json:"1password-url,omitempty"`
 	// 1Password list of vault to get the items from
 	Var1passwordVaults *[]string `json:"1password-vaults,omitempty"`
-	AdAutoRotateBoolean *bool `json:"AdAutoRotateBoolean,omitempty"`
-	AdDiscoverLocalUsersBoolean *bool `json:"AdDiscoverLocalUsersBoolean,omitempty"`
-	AdLocalUsersIgnoreList *map[string]bool `json:"AdLocalUsersIgnoreList,omitempty"`
-	AdSRAEnableRDPBoolean *bool `json:"AdSRAEnableRDPBoolean,omitempty"`
 	// Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with --ad-rotation-interval and --ad-rotation-hour parameters (Relevant only for Active Directory migration)
 	AdAutoRotate *string `json:"ad_auto_rotate,omitempty"`
 	// Distinguished Name of Computer objects (servers) to search in Active Directory e.g.: CN=Computers,DC=example,DC=com (Relevant only for Active Directory migration)
@@ -296,134 +292,6 @@ func (o *GatewayCreateMigration) HasVar1passwordVaults() bool {
 // SetVar1passwordVaults gets a reference to the given []string and assigns it to the Var1passwordVaults field.
 func (o *GatewayCreateMigration) SetVar1passwordVaults(v []string) {
 	o.Var1passwordVaults = &v
-}
-
-// GetAdAutoRotateBoolean returns the AdAutoRotateBoolean field value if set, zero value otherwise.
-func (o *GatewayCreateMigration) GetAdAutoRotateBoolean() bool {
-	if o == nil || o.AdAutoRotateBoolean == nil {
-		var ret bool
-		return ret
-	}
-	return *o.AdAutoRotateBoolean
-}
-
-// GetAdAutoRotateBooleanOk returns a tuple with the AdAutoRotateBoolean field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateMigration) GetAdAutoRotateBooleanOk() (*bool, bool) {
-	if o == nil || o.AdAutoRotateBoolean == nil {
-		return nil, false
-	}
-	return o.AdAutoRotateBoolean, true
-}
-
-// HasAdAutoRotateBoolean returns a boolean if a field has been set.
-func (o *GatewayCreateMigration) HasAdAutoRotateBoolean() bool {
-	if o != nil && o.AdAutoRotateBoolean != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAdAutoRotateBoolean gets a reference to the given bool and assigns it to the AdAutoRotateBoolean field.
-func (o *GatewayCreateMigration) SetAdAutoRotateBoolean(v bool) {
-	o.AdAutoRotateBoolean = &v
-}
-
-// GetAdDiscoverLocalUsersBoolean returns the AdDiscoverLocalUsersBoolean field value if set, zero value otherwise.
-func (o *GatewayCreateMigration) GetAdDiscoverLocalUsersBoolean() bool {
-	if o == nil || o.AdDiscoverLocalUsersBoolean == nil {
-		var ret bool
-		return ret
-	}
-	return *o.AdDiscoverLocalUsersBoolean
-}
-
-// GetAdDiscoverLocalUsersBooleanOk returns a tuple with the AdDiscoverLocalUsersBoolean field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateMigration) GetAdDiscoverLocalUsersBooleanOk() (*bool, bool) {
-	if o == nil || o.AdDiscoverLocalUsersBoolean == nil {
-		return nil, false
-	}
-	return o.AdDiscoverLocalUsersBoolean, true
-}
-
-// HasAdDiscoverLocalUsersBoolean returns a boolean if a field has been set.
-func (o *GatewayCreateMigration) HasAdDiscoverLocalUsersBoolean() bool {
-	if o != nil && o.AdDiscoverLocalUsersBoolean != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAdDiscoverLocalUsersBoolean gets a reference to the given bool and assigns it to the AdDiscoverLocalUsersBoolean field.
-func (o *GatewayCreateMigration) SetAdDiscoverLocalUsersBoolean(v bool) {
-	o.AdDiscoverLocalUsersBoolean = &v
-}
-
-// GetAdLocalUsersIgnoreList returns the AdLocalUsersIgnoreList field value if set, zero value otherwise.
-func (o *GatewayCreateMigration) GetAdLocalUsersIgnoreList() map[string]bool {
-	if o == nil || o.AdLocalUsersIgnoreList == nil {
-		var ret map[string]bool
-		return ret
-	}
-	return *o.AdLocalUsersIgnoreList
-}
-
-// GetAdLocalUsersIgnoreListOk returns a tuple with the AdLocalUsersIgnoreList field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateMigration) GetAdLocalUsersIgnoreListOk() (*map[string]bool, bool) {
-	if o == nil || o.AdLocalUsersIgnoreList == nil {
-		return nil, false
-	}
-	return o.AdLocalUsersIgnoreList, true
-}
-
-// HasAdLocalUsersIgnoreList returns a boolean if a field has been set.
-func (o *GatewayCreateMigration) HasAdLocalUsersIgnoreList() bool {
-	if o != nil && o.AdLocalUsersIgnoreList != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAdLocalUsersIgnoreList gets a reference to the given map[string]bool and assigns it to the AdLocalUsersIgnoreList field.
-func (o *GatewayCreateMigration) SetAdLocalUsersIgnoreList(v map[string]bool) {
-	o.AdLocalUsersIgnoreList = &v
-}
-
-// GetAdSRAEnableRDPBoolean returns the AdSRAEnableRDPBoolean field value if set, zero value otherwise.
-func (o *GatewayCreateMigration) GetAdSRAEnableRDPBoolean() bool {
-	if o == nil || o.AdSRAEnableRDPBoolean == nil {
-		var ret bool
-		return ret
-	}
-	return *o.AdSRAEnableRDPBoolean
-}
-
-// GetAdSRAEnableRDPBooleanOk returns a tuple with the AdSRAEnableRDPBoolean field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateMigration) GetAdSRAEnableRDPBooleanOk() (*bool, bool) {
-	if o == nil || o.AdSRAEnableRDPBoolean == nil {
-		return nil, false
-	}
-	return o.AdSRAEnableRDPBoolean, true
-}
-
-// HasAdSRAEnableRDPBoolean returns a boolean if a field has been set.
-func (o *GatewayCreateMigration) HasAdSRAEnableRDPBoolean() bool {
-	if o != nil && o.AdSRAEnableRDPBoolean != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAdSRAEnableRDPBoolean gets a reference to the given bool and assigns it to the AdSRAEnableRDPBoolean field.
-func (o *GatewayCreateMigration) SetAdSRAEnableRDPBoolean(v bool) {
-	o.AdSRAEnableRDPBoolean = &v
 }
 
 // GetAdAutoRotate returns the AdAutoRotate field value if set, zero value otherwise.
@@ -1802,18 +1670,6 @@ func (o GatewayCreateMigration) MarshalJSON() ([]byte, error) {
 	}
 	if o.Var1passwordVaults != nil {
 		toSerialize["1password-vaults"] = o.Var1passwordVaults
-	}
-	if o.AdAutoRotateBoolean != nil {
-		toSerialize["AdAutoRotateBoolean"] = o.AdAutoRotateBoolean
-	}
-	if o.AdDiscoverLocalUsersBoolean != nil {
-		toSerialize["AdDiscoverLocalUsersBoolean"] = o.AdDiscoverLocalUsersBoolean
-	}
-	if o.AdLocalUsersIgnoreList != nil {
-		toSerialize["AdLocalUsersIgnoreList"] = o.AdLocalUsersIgnoreList
-	}
-	if o.AdSRAEnableRDPBoolean != nil {
-		toSerialize["AdSRAEnableRDPBoolean"] = o.AdSRAEnableRDPBoolean
 	}
 	if o.AdAutoRotate != nil {
 		toSerialize["ad_auto_rotate"] = o.AdAutoRotate

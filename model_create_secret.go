@@ -65,6 +65,8 @@ type CreateSecret struct {
 // will change when the set of required properties is changed
 func NewCreateSecret(name string, value string, ) *CreateSecret {
 	this := CreateSecret{}
+	var accessibility string = "regular"
+	this.Accessibility = &accessibility
 	this.Name = name
 	this.Value = value
 	return &this
@@ -75,6 +77,8 @@ func NewCreateSecret(name string, value string, ) *CreateSecret {
 // but it doesn't guarantee that properties required by API are set
 func NewCreateSecretWithDefaults() *CreateSecret {
 	this := CreateSecret{}
+	var accessibility string = "regular"
+	this.Accessibility = &accessibility
 	return &this
 }
 

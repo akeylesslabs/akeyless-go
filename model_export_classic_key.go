@@ -15,38 +15,40 @@ import (
 	"encoding/json"
 )
 
-// RotateSecret struct for RotateSecret
-type RotateSecret struct {
+// ExportClassicKey ExportClassicKey is a command that returns the classic key material
+type ExportClassicKey struct {
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Secret name (Rotated Secret or Custom Dynamic Secret)
+	// ClassicKey name
 	Name string `json:"name"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// Classic key version
+	Version *int32 `json:"version,omitempty"`
 }
 
-// NewRotateSecret instantiates a new RotateSecret object
+// NewExportClassicKey instantiates a new ExportClassicKey object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRotateSecret(name string, ) *RotateSecret {
-	this := RotateSecret{}
+func NewExportClassicKey(name string, ) *ExportClassicKey {
+	this := ExportClassicKey{}
 	this.Name = name
 	return &this
 }
 
-// NewRotateSecretWithDefaults instantiates a new RotateSecret object
+// NewExportClassicKeyWithDefaults instantiates a new ExportClassicKey object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewRotateSecretWithDefaults() *RotateSecret {
-	this := RotateSecret{}
+func NewExportClassicKeyWithDefaults() *ExportClassicKey {
+	this := ExportClassicKey{}
 	return &this
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
-func (o *RotateSecret) GetJson() bool {
+func (o *ExportClassicKey) GetJson() bool {
 	if o == nil || o.Json == nil {
 		var ret bool
 		return ret
@@ -56,7 +58,7 @@ func (o *RotateSecret) GetJson() bool {
 
 // GetJsonOk returns a tuple with the Json field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RotateSecret) GetJsonOk() (*bool, bool) {
+func (o *ExportClassicKey) GetJsonOk() (*bool, bool) {
 	if o == nil || o.Json == nil {
 		return nil, false
 	}
@@ -64,7 +66,7 @@ func (o *RotateSecret) GetJsonOk() (*bool, bool) {
 }
 
 // HasJson returns a boolean if a field has been set.
-func (o *RotateSecret) HasJson() bool {
+func (o *ExportClassicKey) HasJson() bool {
 	if o != nil && o.Json != nil {
 		return true
 	}
@@ -73,12 +75,12 @@ func (o *RotateSecret) HasJson() bool {
 }
 
 // SetJson gets a reference to the given bool and assigns it to the Json field.
-func (o *RotateSecret) SetJson(v bool) {
+func (o *ExportClassicKey) SetJson(v bool) {
 	o.Json = &v
 }
 
 // GetName returns the Name field value
-func (o *RotateSecret) GetName() string {
+func (o *ExportClassicKey) GetName() string {
 	if o == nil  {
 		var ret string
 		return ret
@@ -89,7 +91,7 @@ func (o *RotateSecret) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *RotateSecret) GetNameOk() (*string, bool) {
+func (o *ExportClassicKey) GetNameOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -97,12 +99,12 @@ func (o *RotateSecret) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *RotateSecret) SetName(v string) {
+func (o *ExportClassicKey) SetName(v string) {
 	o.Name = v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
-func (o *RotateSecret) GetToken() string {
+func (o *ExportClassicKey) GetToken() string {
 	if o == nil || o.Token == nil {
 		var ret string
 		return ret
@@ -112,7 +114,7 @@ func (o *RotateSecret) GetToken() string {
 
 // GetTokenOk returns a tuple with the Token field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RotateSecret) GetTokenOk() (*string, bool) {
+func (o *ExportClassicKey) GetTokenOk() (*string, bool) {
 	if o == nil || o.Token == nil {
 		return nil, false
 	}
@@ -120,7 +122,7 @@ func (o *RotateSecret) GetTokenOk() (*string, bool) {
 }
 
 // HasToken returns a boolean if a field has been set.
-func (o *RotateSecret) HasToken() bool {
+func (o *ExportClassicKey) HasToken() bool {
 	if o != nil && o.Token != nil {
 		return true
 	}
@@ -129,12 +131,12 @@ func (o *RotateSecret) HasToken() bool {
 }
 
 // SetToken gets a reference to the given string and assigns it to the Token field.
-func (o *RotateSecret) SetToken(v string) {
+func (o *ExportClassicKey) SetToken(v string) {
 	o.Token = &v
 }
 
 // GetUidToken returns the UidToken field value if set, zero value otherwise.
-func (o *RotateSecret) GetUidToken() string {
+func (o *ExportClassicKey) GetUidToken() string {
 	if o == nil || o.UidToken == nil {
 		var ret string
 		return ret
@@ -144,7 +146,7 @@ func (o *RotateSecret) GetUidToken() string {
 
 // GetUidTokenOk returns a tuple with the UidToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RotateSecret) GetUidTokenOk() (*string, bool) {
+func (o *ExportClassicKey) GetUidTokenOk() (*string, bool) {
 	if o == nil || o.UidToken == nil {
 		return nil, false
 	}
@@ -152,7 +154,7 @@ func (o *RotateSecret) GetUidTokenOk() (*string, bool) {
 }
 
 // HasUidToken returns a boolean if a field has been set.
-func (o *RotateSecret) HasUidToken() bool {
+func (o *ExportClassicKey) HasUidToken() bool {
 	if o != nil && o.UidToken != nil {
 		return true
 	}
@@ -161,11 +163,43 @@ func (o *RotateSecret) HasUidToken() bool {
 }
 
 // SetUidToken gets a reference to the given string and assigns it to the UidToken field.
-func (o *RotateSecret) SetUidToken(v string) {
+func (o *ExportClassicKey) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
-func (o RotateSecret) MarshalJSON() ([]byte, error) {
+// GetVersion returns the Version field value if set, zero value otherwise.
+func (o *ExportClassicKey) GetVersion() int32 {
+	if o == nil || o.Version == nil {
+		var ret int32
+		return ret
+	}
+	return *o.Version
+}
+
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ExportClassicKey) GetVersionOk() (*int32, bool) {
+	if o == nil || o.Version == nil {
+		return nil, false
+	}
+	return o.Version, true
+}
+
+// HasVersion returns a boolean if a field has been set.
+func (o *ExportClassicKey) HasVersion() bool {
+	if o != nil && o.Version != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given int32 and assigns it to the Version field.
+func (o *ExportClassicKey) SetVersion(v int32) {
+	o.Version = &v
+}
+
+func (o ExportClassicKey) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json
@@ -179,41 +213,44 @@ func (o RotateSecret) MarshalJSON() ([]byte, error) {
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
 	}
+	if o.Version != nil {
+		toSerialize["version"] = o.Version
+	}
 	return json.Marshal(toSerialize)
 }
 
-type NullableRotateSecret struct {
-	value *RotateSecret
+type NullableExportClassicKey struct {
+	value *ExportClassicKey
 	isSet bool
 }
 
-func (v NullableRotateSecret) Get() *RotateSecret {
+func (v NullableExportClassicKey) Get() *ExportClassicKey {
 	return v.value
 }
 
-func (v *NullableRotateSecret) Set(val *RotateSecret) {
+func (v *NullableExportClassicKey) Set(val *ExportClassicKey) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableRotateSecret) IsSet() bool {
+func (v NullableExportClassicKey) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableRotateSecret) Unset() {
+func (v *NullableExportClassicKey) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableRotateSecret(val *RotateSecret) *NullableRotateSecret {
-	return &NullableRotateSecret{value: val, isSet: true}
+func NewNullableExportClassicKey(val *ExportClassicKey) *NullableExportClassicKey {
+	return &NullableExportClassicKey{value: val, isSet: true}
 }
 
-func (v NullableRotateSecret) MarshalJSON() ([]byte, error) {
+func (v NullableExportClassicKey) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableRotateSecret) UnmarshalJSON(src []byte) error {
+func (v *NullableExportClassicKey) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

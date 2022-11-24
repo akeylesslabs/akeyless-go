@@ -45,6 +45,8 @@ type ListItems struct {
 // will change when the set of required properties is changed
 func NewListItems() *ListItems {
 	this := ListItems{}
+	var accessibility string = "regular"
+	this.Accessibility = &accessibility
 	return &this
 }
 
@@ -53,6 +55,8 @@ func NewListItems() *ListItems {
 // but it doesn't guarantee that properties required by API are set
 func NewListItemsWithDefaults() *ListItems {
 	this := ListItems{}
+	var accessibility string = "regular"
+	this.Accessibility = &accessibility
 	return &this
 }
 

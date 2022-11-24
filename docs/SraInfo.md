@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Package** | Pointer to **string** |  | [optional] 
-**Tier** | Pointer to **string** |  | [optional] 
+**Sla** | Pointer to **string** |  | [optional] 
+**Tier** | Pointer to **string** | Tier represents a level of extensibility the account will have, defined by various limits for different resources of Akeyless e.g - A StarterTier may have a limit of 3 Client resources and 50 Secret resources | [optional] 
 **UserType** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -27,30 +27,30 @@ NewSraInfoWithDefaults instantiates a new SraInfo object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetPackage
+### GetSla
 
-`func (o *SraInfo) GetPackage() string`
+`func (o *SraInfo) GetSla() string`
 
-GetPackage returns the Package field if non-nil, zero value otherwise.
+GetSla returns the Sla field if non-nil, zero value otherwise.
 
-### GetPackageOk
+### GetSlaOk
 
-`func (o *SraInfo) GetPackageOk() (*string, bool)`
+`func (o *SraInfo) GetSlaOk() (*string, bool)`
 
-GetPackageOk returns a tuple with the Package field if it's non-nil, zero value otherwise
+GetSlaOk returns a tuple with the Sla field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPackage
+### SetSla
 
-`func (o *SraInfo) SetPackage(v string)`
+`func (o *SraInfo) SetSla(v string)`
 
-SetPackage sets Package field to given value.
+SetSla sets Sla field to given value.
 
-### HasPackage
+### HasSla
 
-`func (o *SraInfo) HasPackage() bool`
+`func (o *SraInfo) HasSla() bool`
 
-HasPackage returns a boolean if a field has been set.
+HasSla returns a boolean if a field has been set.
 
 ### GetTier
 

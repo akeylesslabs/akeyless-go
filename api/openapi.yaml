@@ -1700,6 +1700,33 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /export-classic-key:
+    get:
+      operationId: ExportClassicKey
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExportClassicKey'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExportClassicKeyOutput'
+          description: ExportClassicKeyResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /gateway-add-allow-management-access:
     post:
       operationId: gatewayAddAllowedManagementAccess
@@ -4824,6 +4851,30 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /share-item:
+    post:
+      operationId: shareItem
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/shareItem'
+        required: true
+      responses:
+        "200":
+          content: {}
+          description: ""
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /sign-jwt-with-classic-key:
     post:
       operationId: signJWTWithClassicKey
@@ -6432,6 +6483,12 @@ components:
           schema:
             $ref: '#/components/schemas/DescribePermissionsOutput'
       description: DescribePermissionsResponse wraps response body.
+    ExportClassicKeyResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ExportClassicKeyOutput'
+      description: ExportClassicKeyResponse wraps response body.
     GatewayUpdateLdapAuthConfigResponse:
       content:
         application/json:
@@ -7286,12 +7343,6 @@ components:
           schema:
             $ref: '#/components/schemas/AuthMethod'
       description: getAuthMethodResponse wraps response body.
-    getCloudIdentityResponse:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/getCloudIdentityOutput'
-      description: getCloudIdentityResponse wraps response body.
     getDynamicSecretValueResponse:
       content:
         application/json:
@@ -7538,6 +7589,12 @@ components:
           schema:
             $ref: '#/components/schemas/setRoleRuleOutput'
       description: setRoleRuleResponse wraps response body.
+    shareItemResponse:
+      content:
+        application/json:
+          schema:
+            type: object
+      description: shareItemResponse wraps response body.
     signJWTWithClassicKeyResponse:
       content:
         application/json:
@@ -7979,6 +8036,7 @@ components:
           prefix: prefix
           name: name
           id: id
+          type: type
           protection_key: protection_key
           new_name: new_name
           status: status
@@ -8040,6 +8098,7 @@ components:
           prefix: prefix
           name: name
           id: id
+          type: type
           protection_key: protection_key
           new_name: new_name
           status: status
@@ -8269,6 +8328,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -8283,6 +8343,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -8298,6 +8359,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -8310,6 +8372,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -8323,6 +8386,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -8346,6 +8410,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -8370,6 +8435,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -8381,6 +8447,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -8393,6 +8460,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -8404,6 +8472,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -8416,6 +8485,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -8431,6 +8501,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -8447,6 +8518,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -8473,6 +8545,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -8500,6 +8573,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -8509,6 +8583,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -8755,6 +8830,9 @@ components:
         auth_method_roles_assoc:
         - role_name: role_name
           assoc_id: assoc_id
+          allowed_ops:
+          - allowed_ops
+          - allowed_ops
           rules:
             path_rules:
             - path: path
@@ -8794,6 +8872,9 @@ components:
             - auth_method_sub_claims
         - role_name: role_name
           assoc_id: assoc_id
+          allowed_ops:
+          - allowed_ops
+          - allowed_ops
           rules:
             path_rules:
             - path: path
@@ -8916,6 +8997,7 @@ components:
               - values
               - values
               name: name
+            audience: audience
             is_internal: true
             unique_identifier: unique_identifier
             allowed_redirect_URIs:
@@ -9164,6 +9246,7 @@ components:
             - values
             - values
             name: name
+          audience: audience
           is_internal: true
           unique_identifier: unique_identifier
           allowed_redirect_URIs:
@@ -9356,6 +9439,9 @@ components:
       example:
         role_name: role_name
         assoc_id: assoc_id
+        allowed_ops:
+        - allowed_ops
+        - allowed_ops
         rules:
           path_rules:
           - path: path
@@ -9394,6 +9480,11 @@ components:
           - auth_method_sub_claims
           - auth_method_sub_claims
       properties:
+        allowed_ops:
+          items:
+            type: string
+          type: array
+          x-go-name: AllowedOperations
         assoc_id:
           type: string
           x-go-name: AssociationID
@@ -9574,6 +9665,7 @@ components:
           prefix: prefix
           name: name
           id: id
+          type: type
           protection_key: protection_key
           new_name: new_name
           status: status
@@ -10707,13 +10799,13 @@ components:
           target_type: target_type
           attributes:
             key: attributes
-          target_id: 9
+          target_id: 5
         - assoc_id: assoc_id
           target_name: target_name
           target_type: target_type
           attributes:
             key: attributes
-          target_id: 9
+          target_id: 5
         chef_server_username: chef_server_username
         db_host_name: db_host_name
         tags:
@@ -11710,6 +11802,55 @@ components:
           x-go-name: KeepPrefixLength
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    ExportClassicKey:
+      description: ExportClassicKey is a command that returns the classic key material
+      example:
+        name: name
+        json: true
+        version: 0
+        uid-token: uid-token
+        token: token
+      properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        name:
+          description: ClassicKey name
+          type: string
+          x-go-name: ClassicKeyName
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        version:
+          description: Classic key version
+          format: int32
+          type: integer
+          x-go-name: Version
+      required:
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    ExportClassicKeyOutput:
+      example:
+        certificatePem: certificatePem
+        key: key
+      properties:
+        certificatePem:
+          type: string
+          x-go-name: CertificatePem
+        key:
+          type: string
+          x-go-name: Key
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     ExternalKMSKeyId:
       example:
         key_id: key_id
@@ -11823,6 +11964,7 @@ components:
           prefix: prefix
           name: name
           id: id
+          type: type
           protection_key: protection_key
           new_name: new_name
           status: status
@@ -12094,9 +12236,9 @@ components:
     GetAccountSettingsCommandOutput:
       example:
         secure_remote_access:
-          package: package
           user_type: user_type
           tier: tier
+          sla: sla
         account_id: account_id
         address:
           country: country
@@ -12123,8 +12265,8 @@ components:
             enable_classic_key_protection: true
           enable_request_for_access: true
         secret_management:
-          package: package
           tier: tier
+          sla: sla
         system_access_creds_settings:
           jwt_ttl_maximum: 6
           jwt_ttl_minimum: 1
@@ -12261,8 +12403,7 @@ components:
         names:
         - names
         - names
-        IgnoreCacheBoolean: true
-        accessibility: accessibility
+        accessibility: regular
         ignore-cache: ignore-cache
         json: true
         pretty-print: true
@@ -12270,9 +12411,8 @@ components:
         uid-token: uid-token
         token: token
       properties:
-        IgnoreCacheBoolean:
-          type: boolean
         accessibility:
+          default: regular
           description: for personal password manager
           type: string
           x-go-name: ItemAccessibilityString
@@ -12573,6 +12713,7 @@ components:
           prefix: prefix
           name: name
           id: id
+          type: type
           protection_key: protection_key
           new_name: new_name
           status: status
@@ -12710,10 +12851,10 @@ components:
         shared_by:
           unique_id: unique_id
           access_id: access_id
-        item_size: 5
+        item_size: 4
         protection_key_type: protection_key_type
         is_enabled: true
-        rotation_interval: 8
+        rotation_interval: 6
         target_versions:
         - item_version_state: item_version_state
           with_customer_fragment: true
@@ -12724,7 +12865,7 @@ components:
           modification_date: 2000-01-23T04:56:07.000+00:00
           protection_key_name: protection_key_name
           creation_date: 2000-01-23T04:56:07.000+00:00
-          version: 9
+          version: 8
           customer_fragment_id: customer_fragment_id
         - item_version_state: item_version_state
           with_customer_fragment: true
@@ -12735,13 +12876,13 @@ components:
           modification_date: 2000-01-23T04:56:07.000+00:00
           protection_key_name: protection_key_name
           creation_date: 2000-01-23T04:56:07.000+00:00
-          version: 9
+          version: 8
           customer_fragment_id: customer_fragment_id
         item_metadata: item_metadata
         modification_date: 2000-01-23T04:56:07.000+00:00
         protection_key_name: protection_key_name
         cert_issuer_signer_key_name: cert_issuer_signer_key_name
-        item_id: 4
+        item_id: 1
         item_tags:
         - item_tags
         - item_tags
@@ -12816,13 +12957,13 @@ components:
           target_type: target_type
           attributes:
             key: attributes
-          target_id: 9
+          target_id: 5
         - assoc_id: assoc_id
           target_name: target_name
           target_type: target_type
           attributes:
             key: attributes
-          target_id: 9
+          target_id: 5
         item_name: item_name
         creation_date: 2000-01-23T04:56:07.000+00:00
         customer_fragment_id: customer_fragment_id
@@ -12896,9 +13037,7 @@ components:
           tokenizer_info:
             vaultless_tokenizer_info:
               key_name: key_name
-              tweak:
-              - 1
-              - 1
+              tweak: tweak
               email_tokenizer_info:
                 fixed_domain_suffix: fixed_domain_suffix
                 keep_prefix_length: 7
@@ -13013,7 +13152,7 @@ components:
               allowed_user_key_lengths:
                 key: 5
             cert_issuer_type: cert_issuer_type
-        last_version: 6
+        last_version: 9
         next_rotation_date: 2000-01-23T04:56:07.000+00:00
         delete_protection: true
         client_permissions:
@@ -13227,9 +13366,7 @@ components:
         tokenizer_info:
           vaultless_tokenizer_info:
             key_name: key_name
-            tweak:
-            - 1
-            - 1
+            tweak: tweak
             email_tokenizer_info:
               fixed_domain_suffix: fixed_domain_suffix
               keep_prefix_length: 7
@@ -13388,7 +13525,7 @@ components:
         target_type: target_type
         attributes:
           key: attributes
-        target_id: 9
+        target_id: 5
       properties:
         assoc_id:
           type: string
@@ -13649,6 +13786,7 @@ components:
           prefix: prefix
           name: name
           id: id
+          type: type
           protection_key: protection_key
           new_name: new_name
           status: status
@@ -14328,6 +14466,9 @@ components:
           auth_method_roles_assoc:
           - role_name: role_name
             assoc_id: assoc_id
+            allowed_ops:
+            - allowed_ops
+            - allowed_ops
             rules:
               path_rules:
               - path: path
@@ -14367,6 +14508,9 @@ components:
               - auth_method_sub_claims
           - role_name: role_name
             assoc_id: assoc_id
+            allowed_ops:
+            - allowed_ops
+            - allowed_ops
             rules:
               path_rules:
               - path: path
@@ -14489,6 +14633,7 @@ components:
                 - values
                 - values
                 name: name
+              audience: audience
               is_internal: true
               unique_identifier: unique_identifier
               allowed_redirect_URIs:
@@ -14623,6 +14768,9 @@ components:
           auth_method_roles_assoc:
           - role_name: role_name
             assoc_id: assoc_id
+            allowed_ops:
+            - allowed_ops
+            - allowed_ops
             rules:
               path_rules:
               - path: path
@@ -14662,6 +14810,9 @@ components:
               - auth_method_sub_claims
           - role_name: role_name
             assoc_id: assoc_id
+            allowed_ops:
+            - allowed_ops
+            - allowed_ops
             rules:
               path_rules:
               - path: path
@@ -14784,6 +14935,7 @@ components:
                 - values
                 - values
                 name: name
+              audience: audience
               is_internal: true
               unique_identifier: unique_identifier
               allowed_redirect_URIs:
@@ -14961,10 +15113,10 @@ components:
           shared_by:
             unique_id: unique_id
             access_id: access_id
-          item_size: 5
+          item_size: 4
           protection_key_type: protection_key_type
           is_enabled: true
-          rotation_interval: 8
+          rotation_interval: 6
           target_versions:
           - item_version_state: item_version_state
             with_customer_fragment: true
@@ -14975,7 +15127,7 @@ components:
             modification_date: 2000-01-23T04:56:07.000+00:00
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 9
+            version: 8
             customer_fragment_id: customer_fragment_id
           - item_version_state: item_version_state
             with_customer_fragment: true
@@ -14986,13 +15138,13 @@ components:
             modification_date: 2000-01-23T04:56:07.000+00:00
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 9
+            version: 8
             customer_fragment_id: customer_fragment_id
           item_metadata: item_metadata
           modification_date: 2000-01-23T04:56:07.000+00:00
           protection_key_name: protection_key_name
           cert_issuer_signer_key_name: cert_issuer_signer_key_name
-          item_id: 4
+          item_id: 1
           item_tags:
           - item_tags
           - item_tags
@@ -15067,13 +15219,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           item_name: item_name
           creation_date: 2000-01-23T04:56:07.000+00:00
           customer_fragment_id: customer_fragment_id
@@ -15147,9 +15299,7 @@ components:
             tokenizer_info:
               vaultless_tokenizer_info:
                 key_name: key_name
-                tweak:
-                - 1
-                - 1
+                tweak: tweak
                 email_tokenizer_info:
                   fixed_domain_suffix: fixed_domain_suffix
                   keep_prefix_length: 7
@@ -15264,7 +15414,7 @@ components:
                 allowed_user_key_lengths:
                   key: 5
               cert_issuer_type: cert_issuer_type
-          last_version: 6
+          last_version: 9
           next_rotation_date: 2000-01-23T04:56:07.000+00:00
           delete_protection: true
           client_permissions:
@@ -15302,10 +15452,10 @@ components:
           shared_by:
             unique_id: unique_id
             access_id: access_id
-          item_size: 5
+          item_size: 4
           protection_key_type: protection_key_type
           is_enabled: true
-          rotation_interval: 8
+          rotation_interval: 6
           target_versions:
           - item_version_state: item_version_state
             with_customer_fragment: true
@@ -15316,7 +15466,7 @@ components:
             modification_date: 2000-01-23T04:56:07.000+00:00
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 9
+            version: 8
             customer_fragment_id: customer_fragment_id
           - item_version_state: item_version_state
             with_customer_fragment: true
@@ -15327,13 +15477,13 @@ components:
             modification_date: 2000-01-23T04:56:07.000+00:00
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 9
+            version: 8
             customer_fragment_id: customer_fragment_id
           item_metadata: item_metadata
           modification_date: 2000-01-23T04:56:07.000+00:00
           protection_key_name: protection_key_name
           cert_issuer_signer_key_name: cert_issuer_signer_key_name
-          item_id: 4
+          item_id: 1
           item_tags:
           - item_tags
           - item_tags
@@ -15408,13 +15558,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           item_name: item_name
           creation_date: 2000-01-23T04:56:07.000+00:00
           customer_fragment_id: customer_fragment_id
@@ -15488,9 +15638,7 @@ components:
             tokenizer_info:
               vaultless_tokenizer_info:
                 key_name: key_name
-                tweak:
-                - 1
-                - 1
+                tweak: tweak
                 email_tokenizer_info:
                   fixed_domain_suffix: fixed_domain_suffix
                   keep_prefix_length: 7
@@ -15605,7 +15753,7 @@ components:
                 allowed_user_key_lengths:
                   key: 5
               cert_issuer_type: cert_issuer_type
-          last_version: 6
+          last_version: 9
           next_rotation_date: 2000-01-23T04:56:07.000+00:00
           delete_protection: true
           client_permissions:
@@ -15995,6 +16143,7 @@ components:
         prefix: prefix
         name: name
         id: id
+        type: type
         protection_key: protection_key
         new_name: new_name
         status: status
@@ -16017,6 +16166,9 @@ components:
         status:
           type: string
           x-go-name: Status
+        type:
+          type: string
+          x-go-name: Type
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     MigrationItems:
@@ -16156,6 +16308,7 @@ components:
             prefix: prefix
             name: name
             id: id
+            type: type
             protection_key: protection_key
             new_name: new_name
             status: status
@@ -16170,6 +16323,7 @@ components:
             prefix: prefix
             name: name
             id: id
+            type: type
             protection_key: protection_key
             new_name: new_name
             status: status
@@ -16185,6 +16339,7 @@ components:
             prefix: prefix
             name: name
             id: id
+            type: type
             protection_key: protection_key
             new_name: new_name
             status: status
@@ -16197,6 +16352,7 @@ components:
             prefix: prefix
             name: name
             id: id
+            type: type
             protection_key: protection_key
             new_name: new_name
             status: status
@@ -16210,6 +16366,7 @@ components:
             prefix: prefix
             name: name
             id: id
+            type: type
             protection_key: protection_key
             new_name: new_name
             status: status
@@ -16233,6 +16390,7 @@ components:
             prefix: prefix
             name: name
             id: id
+            type: type
             protection_key: protection_key
             new_name: new_name
             status: status
@@ -16257,6 +16415,7 @@ components:
             prefix: prefix
             name: name
             id: id
+            type: type
             protection_key: protection_key
             new_name: new_name
             status: status
@@ -16268,6 +16427,7 @@ components:
             prefix: prefix
             name: name
             id: id
+            type: type
             protection_key: protection_key
             new_name: new_name
             status: status
@@ -16280,6 +16440,7 @@ components:
             prefix: prefix
             name: name
             id: id
+            type: type
             protection_key: protection_key
             new_name: new_name
             status: status
@@ -16291,6 +16452,7 @@ components:
             prefix: prefix
             name: name
             id: id
+            type: type
             protection_key: protection_key
             new_name: new_name
             status: status
@@ -16303,6 +16465,7 @@ components:
             prefix: prefix
             name: name
             id: id
+            type: type
             protection_key: protection_key
             new_name: new_name
             status: status
@@ -16318,6 +16481,7 @@ components:
             prefix: prefix
             name: name
             id: id
+            type: type
             protection_key: protection_key
             new_name: new_name
             status: status
@@ -16334,6 +16498,7 @@ components:
             prefix: prefix
             name: name
             id: id
+            type: type
             protection_key: protection_key
             new_name: new_name
             status: status
@@ -16360,6 +16525,7 @@ components:
             prefix: prefix
             name: name
             id: id
+            type: type
             protection_key: protection_key
             new_name: new_name
             status: status
@@ -16387,6 +16553,7 @@ components:
             prefix: prefix
             name: name
             id: id
+            type: type
             protection_key: protection_key
             new_name: new_name
             status: status
@@ -16396,6 +16563,7 @@ components:
             prefix: prefix
             name: name
             id: id
+            type: type
             protection_key: protection_key
             new_name: new_name
             status: status
@@ -16450,6 +16618,7 @@ components:
           prefix: prefix
           name: name
           id: id
+          type: type
           protection_key: protection_key
           new_name: new_name
           status: status
@@ -16566,6 +16735,7 @@ components:
           - values
           - values
           name: name
+        audience: audience
         is_internal: true
         unique_identifier: unique_identifier
         allowed_redirect_URIs:
@@ -16585,6 +16755,12 @@ components:
             type: string
           type: array
           x-go-name: AllowedRedirectURIs
+        audience:
+          description: Audience claim to be used as part of the authentication flow.
+            In case set, it must match the one configured on the Identity Provider's
+            Application
+          type: string
+          x-go-name: Audience
         bound_claims:
           description: The claims that login is restricted to.
           items:
@@ -16669,6 +16845,7 @@ components:
           prefix: prefix
           name: name
           id: id
+          type: type
           protection_key: protection_key
           new_name: new_name
           status: status
@@ -17048,13 +17225,13 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     ReverseRBACClient:
       example:
-        allowed_ops:
-        - allowed_ops
-        - allowed_ops
         auth_method_name: auth_method_name
         assocs:
         - role_name: role_name
           assoc_id: assoc_id
+          allowed_ops:
+          - allowed_ops
+          - allowed_ops
           rules:
             path_rules:
             - path: path
@@ -17094,6 +17271,9 @@ components:
             - auth_method_sub_claims
         - role_name: role_name
           assoc_id: assoc_id
+          allowed_ops:
+          - allowed_ops
+          - allowed_ops
           rules:
             path_rules:
             - path: path
@@ -17132,11 +17312,6 @@ components:
             - auth_method_sub_claims
             - auth_method_sub_claims
       properties:
-        allowed_ops:
-          items:
-            type: string
-          type: array
-          x-go-name: AllowedOperations
         assocs:
           items:
             $ref: '#/components/schemas/AuthMethodRoleAssociation'
@@ -17152,13 +17327,13 @@ components:
       example:
         clients:
           key:
-            allowed_ops:
-            - allowed_ops
-            - allowed_ops
             auth_method_name: auth_method_name
             assocs:
             - role_name: role_name
               assoc_id: assoc_id
+              allowed_ops:
+              - allowed_ops
+              - allowed_ops
               rules:
                 path_rules:
                 - path: path
@@ -17198,6 +17373,9 @@ components:
                 - auth_method_sub_claims
             - role_name: role_name
               assoc_id: assoc_id
+              allowed_ops:
+              - allowed_ops
+              - allowed_ops
               rules:
                 path_rules:
                 - path: path
@@ -17633,6 +17811,9 @@ components:
       title: SAMLAttribute defines an attribute of SAML authentication.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    SLA:
+      type: string
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     SSHCertificateIssueDetails:
       example:
         static_key_id: static_key_id
@@ -17827,15 +18008,19 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     SmInfo:
       example:
-        package: package
         tier: tier
+        sla: sla
       properties:
-        package:
+        sla:
           type: string
-          x-go-name: Package
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
         tier:
+          description: |-
+            Tier represents a level of extensibility the account will have, defined by various limits for different
+            resources of Akeyless
+            e.g - A StarterTier may have a limit of 3 Client resources and 50 Secret resources
           type: string
-          x-go-name: Tier
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     SplunkLogForwardingConfig:
@@ -17865,16 +18050,20 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     SraInfo:
       example:
-        package: package
         user_type: user_type
         tier: tier
+        sla: sla
       properties:
-        package:
+        sla:
           type: string
-          x-go-name: Package
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
         tier:
+          description: |-
+            Tier represents a level of extensibility the account will have, defined by various limits for different
+            resources of Akeyless
+            e.g - A StarterTier may have a limit of 3 Client resources and 50 Secret resources
           type: string
-          x-go-name: Tier
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
         user_type:
           type: string
           x-go-name: UserType
@@ -18144,7 +18333,7 @@ components:
         modification_date: 2000-01-23T04:56:07.000+00:00
         protection_key_name: protection_key_name
         creation_date: 2000-01-23T04:56:07.000+00:00
-        version: 9
+        version: 8
         customer_fragment_id: customer_fragment_id
       properties:
         access_date:
@@ -18606,6 +18795,13 @@ components:
       title: TargetTypeDetailsInput ...
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    Tier:
+      description: |-
+        Tier represents a level of extensibility the account will have, defined by various limits for different
+        resources of Akeyless
+        e.g - A StarterTier may have a limit of 3 Client resources and 50 Secret resources
+      type: string
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     TmpUserData:
       example:
         custom_ttl: 0
@@ -18652,9 +18848,7 @@ components:
       example:
         vaultless_tokenizer_info:
           key_name: key_name
-          tweak:
-          - 1
-          - 1
+          tweak: tweak
           email_tokenizer_info:
             fixed_domain_suffix: fixed_domain_suffix
             keep_prefix_length: 7
@@ -18968,9 +19162,7 @@ components:
     VaultlessTokenizerInfo:
       example:
         key_name: key_name
-        tweak:
-        - 1
-        - 1
+        tweak: tweak
         email_tokenizer_info:
           fixed_domain_suffix: fixed_domain_suffix
           keep_prefix_length: 7
@@ -18995,10 +19187,7 @@ components:
           x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
         tweak:
           description: Tweak used in the case of internal tweak type
-          items:
-            format: uint8
-            type: integer
-          type: array
+          type: string
           x-go-name: Tweak
         tweak_type:
           type: string
@@ -20421,6 +20610,12 @@ components:
             type: string
           type: array
           x-go-name: AllowedRedirectURIs
+        audience:
+          description: Audience claim to be used as part of the authentication flow.
+            In case set, it must match the one configured on the Identity Provider's
+            Application
+          type: string
+          x-go-name: Audience
         bound-ips:
           description: A CIDR whitelist with the IPs that the access is restricted
             to
@@ -22101,6 +22296,7 @@ components:
     createSecret:
       properties:
         accessibility:
+          default: regular
           description: for personal password manager
           type: string
           x-go-name: ItemAccessibilityString
@@ -22612,6 +22808,7 @@ components:
     deleteItem:
       properties:
         accessibility:
+          default: regular
           description: for personal password manager
           type: string
           x-go-name: ItemAccessibilityString
@@ -23477,16 +23674,6 @@ components:
             type: string
           type: array
           x-go-name: Vaults
-        AdAutoRotateBoolean:
-          type: boolean
-        AdDiscoverLocalUsersBoolean:
-          type: boolean
-        AdLocalUsersIgnoreList:
-          additionalProperties:
-            type: boolean
-          type: object
-        AdSRAEnableRDPBoolean:
-          type: boolean
         ad_auto_rotate:
           description: 'Enable/Disable automatic/recurrent rotation for migrated secrets.
             Default is false: only manual rotation is allowed for migrated secrets.
@@ -23857,13 +24044,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -24217,13 +24404,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -24566,13 +24753,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -24877,13 +25064,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -25237,13 +25424,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -25638,13 +25825,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -25943,13 +26130,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -26276,13 +26463,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -26595,13 +26782,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -26903,13 +27090,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -27227,13 +27414,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -27563,13 +27750,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -27885,13 +28072,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -28221,13 +28408,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -28575,13 +28762,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -28920,13 +29107,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -29253,13 +29440,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -29591,13 +29778,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -29932,13 +30119,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -30271,13 +30458,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -30613,13 +30800,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -30941,13 +31128,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -31251,13 +31438,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -32050,6 +32237,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -32064,6 +32252,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -32079,6 +32268,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -32091,6 +32281,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -32104,6 +32295,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -32127,6 +32319,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -32151,6 +32344,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -32162,6 +32356,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -32174,6 +32369,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -32185,6 +32381,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -32197,6 +32394,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -32212,6 +32410,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -32228,6 +32427,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -32254,6 +32454,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -32281,6 +32482,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -32290,6 +32492,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -32308,6 +32511,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -32322,6 +32526,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -32337,6 +32542,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -32349,6 +32555,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -32362,6 +32569,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -32385,6 +32593,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -32409,6 +32618,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -32420,6 +32630,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -32432,6 +32643,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -32443,6 +32655,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -32455,6 +32668,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -32470,6 +32684,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -32486,6 +32701,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -32512,6 +32728,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -32539,6 +32756,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -32548,6 +32766,7 @@ components:
               prefix: prefix
               name: name
               id: id
+              type: type
               protection_key: protection_key
               new_name: new_name
               status: status
@@ -33021,16 +33240,6 @@ components:
             type: string
           type: array
           x-go-name: Vaults
-        AdAutoRotateBoolean:
-          type: boolean
-        AdDiscoverLocalUsersBoolean:
-          type: boolean
-        AdLocalUsersIgnoreList:
-          additionalProperties:
-            type: boolean
-          type: object
-        AdSRAEnableRDPBoolean:
-          type: boolean
         ad_auto_rotate:
           description: 'Enable/Disable automatic/recurrent rotation for migrated secrets.
             Default is false: only manual rotation is allowed for migrated secrets.
@@ -33409,13 +33618,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -33773,13 +33982,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -34126,13 +34335,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -34441,13 +34650,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -34805,13 +35014,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -35214,13 +35423,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -35523,13 +35732,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -35860,13 +36069,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -36183,13 +36392,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -36495,13 +36704,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -36823,13 +37032,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -37163,13 +37372,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -37489,13 +37698,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -37829,13 +38038,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -38187,13 +38396,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -38536,13 +38745,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -38873,13 +39082,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -39215,13 +39424,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -39560,13 +39769,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -39903,13 +40112,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -40249,13 +40458,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -40581,13 +40790,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -40895,13 +41104,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 9
+            target_id: 5
           chef_server_username: chef_server_username
           db_host_name: db_host_name
           tags:
@@ -41177,42 +41386,6 @@ components:
       required:
       - name
       title: getAuthMethod is a command that returns information about the auth method.
-      type: object
-      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
-    getCloudIdentity:
-      description: |-
-        getCloudIdentity is a command that gets Cloud Identity Token (relevant only
-        for access-type=azure_ad, aws_iam, gcp).
-      properties:
-        azure_ad_object_id:
-          description: Azure Active Directory ObjectId (relevant only for access-type=azure_ad)
-          type: string
-          x-go-name: AzureADObjectID
-        debug:
-          type: boolean
-          x-go-name: Debug
-        gcp-audience:
-          description: GCP JWT audience
-          type: string
-          x-go-name: GCPAudience
-        json:
-          description: Set output format to JSON
-          type: boolean
-          x-go-name: Json
-        url_safe:
-          description: Escapes the token so it can be safely placed inside a URL query
-          type: boolean
-          x-go-name: URLEncoding
-      type: object
-      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
-    getCloudIdentityOutput:
-      properties:
-        provider:
-          type: string
-          x-go-name: Provider
-        token:
-          type: string
-          x-go-name: Token
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     getDynamicSecretValue:
@@ -42113,6 +42286,7 @@ components:
     listItems:
       properties:
         accessibility:
+          default: regular
           description: for personal password manager
           type: string
           x-go-name: ItemAccessibilityString
@@ -42471,7 +42645,7 @@ components:
           type: boolean
           x-go-name: Json
         name:
-          description: Rotated Secret name
+          description: Secret name (Rotated Secret or Custom Dynamic Secret)
           type: string
           x-go-name: SecretName
         token:
@@ -42585,6 +42759,58 @@ components:
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     setRoleRuleOutput:
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    shareItem:
+      properties:
+        accessibility:
+          default: regular
+          description: for personal password manager
+          type: string
+          x-go-name: ItemAccessibilityString
+        action:
+          description: Action to be performed on the item [start/stop/describe]
+          type: string
+          x-go-name: Action
+        emails:
+          description: For Password Management use, reflect the website context
+          items:
+            type: string
+          type: array
+          x-go-name: Emails
+        item-name:
+          description: Item name
+          type: string
+          x-go-name: ItemName
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        ttl:
+          description: TTL of the Availability of the shared secret in seconds
+          format: int32
+          type: integer
+          x-go-name: TTL
+        uid-token:
+          description: |-
+            The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        view-once:
+          default: false
+          description: ViewOnlyOnce Shared secrets can only be viewed once [true/false]
+          type: boolean
+          x-go-name: ViewOnlyOnce
+      required:
+      - action
+      - item-name
+      title: shareItem is a command to start/stop/describe sharing a given item with
+        user that don't use akeyless.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     signJWTOutput:
@@ -44334,6 +44560,12 @@ components:
             type: string
           type: array
           x-go-name: AllowedRedirectURIs
+        audience:
+          description: Audience claim to be used as part of the authentication flow.
+            In case set, it must match the one configured on the Identity Provider's
+            Application
+          type: string
+          x-go-name: Audience
         bound-ips:
           description: A CIDR whitelist with the IPs that the access is restricted
             to
@@ -45229,6 +45461,7 @@ components:
     updateItem:
       properties:
         accessibility:
+          default: regular
           description: for personal password manager
           type: string
           x-go-name: ItemAccessibilityString
@@ -46385,6 +46618,7 @@ components:
     updateSecretVal:
       properties:
         accessibility:
+          default: regular
           description: for personal password manager
           type: string
           x-go-name: ItemAccessibilityString

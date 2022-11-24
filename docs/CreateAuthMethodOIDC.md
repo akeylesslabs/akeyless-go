@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessExpires** | Pointer to **int64** | Access expiration date in Unix timestamp (select 0 for access without expiry date) | [optional] [default to 0]
 **AllowedRedirectUri** | Pointer to **[]string** | Allowed redirect URIs after the authentication | [optional] 
+**Audience** | Pointer to **string** | Audience claim to be used as part of the authentication flow. In case set, it must match the one configured on the Identity Provider&#39;s Application | [optional] 
 **BoundIps** | Pointer to **[]string** | A CIDR whitelist with the IPs that the access is restricted to | [optional] 
 **ClientId** | Pointer to **string** | Client ID | [optional] 
 **ClientSecret** | Pointer to **string** | Client Secret | [optional] 
@@ -89,6 +90,31 @@ SetAllowedRedirectUri sets AllowedRedirectUri field to given value.
 `func (o *CreateAuthMethodOIDC) HasAllowedRedirectUri() bool`
 
 HasAllowedRedirectUri returns a boolean if a field has been set.
+
+### GetAudience
+
+`func (o *CreateAuthMethodOIDC) GetAudience() string`
+
+GetAudience returns the Audience field if non-nil, zero value otherwise.
+
+### GetAudienceOk
+
+`func (o *CreateAuthMethodOIDC) GetAudienceOk() (*string, bool)`
+
+GetAudienceOk returns a tuple with the Audience field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAudience
+
+`func (o *CreateAuthMethodOIDC) SetAudience(v string)`
+
+SetAudience sets Audience field to given value.
+
+### HasAudience
+
+`func (o *CreateAuthMethodOIDC) HasAudience() bool`
+
+HasAudience returns a boolean if a field has been set.
 
 ### GetBoundIps
 

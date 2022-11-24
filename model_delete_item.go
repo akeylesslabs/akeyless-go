@@ -41,6 +41,8 @@ type DeleteItem struct {
 // will change when the set of required properties is changed
 func NewDeleteItem(name string, ) *DeleteItem {
 	this := DeleteItem{}
+	var accessibility string = "regular"
+	this.Accessibility = &accessibility
 	var deleteImmediately bool = false
 	this.DeleteImmediately = &deleteImmediately
 	var deleteInDays int64 = 7
@@ -56,6 +58,8 @@ func NewDeleteItem(name string, ) *DeleteItem {
 // but it doesn't guarantee that properties required by API are set
 func NewDeleteItemWithDefaults() *DeleteItem {
 	this := DeleteItem{}
+	var accessibility string = "regular"
+	this.Accessibility = &accessibility
 	var deleteImmediately bool = false
 	this.DeleteImmediately = &deleteImmediately
 	var deleteInDays int64 = 7

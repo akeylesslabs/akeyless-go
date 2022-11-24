@@ -66,6 +66,7 @@ Method | HTTP request | Description
 [**Detokenize**](V2Api.md#Detokenize) | **Post** /detokenize | 
 [**Encrypt**](V2Api.md#Encrypt) | **Post** /encrypt | 
 [**EncryptWithClassicKey**](V2Api.md#EncryptWithClassicKey) | **Post** /encrypt-with-classic-key | 
+[**ExportClassicKey**](V2Api.md#ExportClassicKey) | **Get** /export-classic-key | 
 [**GatewayAddAllowedManagementAccess**](V2Api.md#GatewayAddAllowedManagementAccess) | **Post** /gateway-add-allow-management-access | 
 [**GatewayCreateK8SAuthConfig**](V2Api.md#GatewayCreateK8SAuthConfig) | **Post** /gateway-create-k8s-auth-config | 
 [**GatewayCreateMigration**](V2Api.md#GatewayCreateMigration) | **Post** /gateway-create-migration | 
@@ -182,6 +183,7 @@ Method | HTTP request | Description
 [**RotateSecret**](V2Api.md#RotateSecret) | **Post** /gateway-rotate-secret | 
 [**SetItemState**](V2Api.md#SetItemState) | **Post** /set-item-state | 
 [**SetRoleRule**](V2Api.md#SetRoleRule) | **Post** /set-role-rule | 
+[**ShareItem**](V2Api.md#ShareItem) | **Post** /share-item | 
 [**SignJWTWithClassicKey**](V2Api.md#SignJWTWithClassicKey) | **Post** /sign-jwt-with-classic-key | 
 [**SignPKCS1**](V2Api.md#SignPKCS1) | **Post** /sign-pkcs1 | 
 [**SignPKICertWithClassicKey**](V2Api.md#SignPKICertWithClassicKey) | **Post** /sign-pki-cert-with-classic-key | 
@@ -4197,6 +4199,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**EncryptOutput**](encryptOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ExportClassicKey
+
+> ExportClassicKeyOutput ExportClassicKey(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewExportClassicKey("Name_example") // ExportClassicKey | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.ExportClassicKey(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.ExportClassicKey``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ExportClassicKey`: ExportClassicKeyOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.ExportClassicKey`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiExportClassicKeyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**ExportClassicKey**](ExportClassicKey.md) |  | 
+
+### Return type
+
+[**ExportClassicKeyOutput**](ExportClassicKeyOutput.md)
 
 ### Authorization
 
@@ -11607,6 +11673,68 @@ Name | Type | Description  | Notes
 ### Return type
 
 **map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ShareItem
+
+> ShareItem(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewshareItem("Action_example", "ItemName_example") // ShareItem | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.ShareItem(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.ShareItem``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiShareItemRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**ShareItem**](ShareItem.md) |  | 
+
+### Return type
+
+ (empty response body)
 
 ### Authorization
 

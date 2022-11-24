@@ -4,8 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IgnoreCacheBoolean** | Pointer to **bool** |  | [optional] 
-**Accessibility** | Pointer to **string** | for personal password manager | [optional] 
+**Accessibility** | Pointer to **string** | for personal password manager | [optional] [default to "regular"]
 **IgnoreCache** | Pointer to **string** | Ignore Cache Retrieve the Secret value without checking the Gateway&#39;s cache. This flag is only relevant when using the RestAPI | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Names** | **[]string** | Secret name | 
@@ -32,31 +31,6 @@ will change when the set of required properties is changed
 NewGetSecretValueWithDefaults instantiates a new GetSecretValue object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetIgnoreCacheBoolean
-
-`func (o *GetSecretValue) GetIgnoreCacheBoolean() bool`
-
-GetIgnoreCacheBoolean returns the IgnoreCacheBoolean field if non-nil, zero value otherwise.
-
-### GetIgnoreCacheBooleanOk
-
-`func (o *GetSecretValue) GetIgnoreCacheBooleanOk() (*bool, bool)`
-
-GetIgnoreCacheBooleanOk returns a tuple with the IgnoreCacheBoolean field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIgnoreCacheBoolean
-
-`func (o *GetSecretValue) SetIgnoreCacheBoolean(v bool)`
-
-SetIgnoreCacheBoolean sets IgnoreCacheBoolean field to given value.
-
-### HasIgnoreCacheBoolean
-
-`func (o *GetSecretValue) HasIgnoreCacheBoolean() bool`
-
-HasIgnoreCacheBoolean returns a boolean if a field has been set.
 
 ### GetAccessibility
 

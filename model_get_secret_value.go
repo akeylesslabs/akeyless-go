@@ -17,7 +17,6 @@ import (
 
 // GetSecretValue struct for GetSecretValue
 type GetSecretValue struct {
-	IgnoreCacheBoolean *bool `json:"IgnoreCacheBoolean,omitempty"`
 	// for personal password manager
 	Accessibility *string `json:"accessibility,omitempty"`
 	// Ignore Cache Retrieve the Secret value without checking the Gateway's cache. This flag is only relevant when using the RestAPI
@@ -42,6 +41,8 @@ type GetSecretValue struct {
 // will change when the set of required properties is changed
 func NewGetSecretValue(names []string, ) *GetSecretValue {
 	this := GetSecretValue{}
+	var accessibility string = "regular"
+	this.Accessibility = &accessibility
 	this.Names = names
 	return &this
 }
@@ -51,39 +52,9 @@ func NewGetSecretValue(names []string, ) *GetSecretValue {
 // but it doesn't guarantee that properties required by API are set
 func NewGetSecretValueWithDefaults() *GetSecretValue {
 	this := GetSecretValue{}
+	var accessibility string = "regular"
+	this.Accessibility = &accessibility
 	return &this
-}
-
-// GetIgnoreCacheBoolean returns the IgnoreCacheBoolean field value if set, zero value otherwise.
-func (o *GetSecretValue) GetIgnoreCacheBoolean() bool {
-	if o == nil || o.IgnoreCacheBoolean == nil {
-		var ret bool
-		return ret
-	}
-	return *o.IgnoreCacheBoolean
-}
-
-// GetIgnoreCacheBooleanOk returns a tuple with the IgnoreCacheBoolean field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GetSecretValue) GetIgnoreCacheBooleanOk() (*bool, bool) {
-	if o == nil || o.IgnoreCacheBoolean == nil {
-		return nil, false
-	}
-	return o.IgnoreCacheBoolean, true
-}
-
-// HasIgnoreCacheBoolean returns a boolean if a field has been set.
-func (o *GetSecretValue) HasIgnoreCacheBoolean() bool {
-	if o != nil && o.IgnoreCacheBoolean != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetIgnoreCacheBoolean gets a reference to the given bool and assigns it to the IgnoreCacheBoolean field.
-func (o *GetSecretValue) SetIgnoreCacheBoolean(v bool) {
-	o.IgnoreCacheBoolean = &v
 }
 
 // GetAccessibility returns the Accessibility field value if set, zero value otherwise.
@@ -336,9 +307,6 @@ func (o *GetSecretValue) SetVersion(v int32) {
 
 func (o GetSecretValue) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.IgnoreCacheBoolean != nil {
-		toSerialize["IgnoreCacheBoolean"] = o.IgnoreCacheBoolean
-	}
 	if o.Accessibility != nil {
 		toSerialize["accessibility"] = o.Accessibility
 	}

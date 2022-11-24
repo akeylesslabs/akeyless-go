@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Accessibility** | Pointer to **string** | for personal password manager | [optional] 
+**Accessibility** | Pointer to **string** | for personal password manager | [optional] [default to "regular"]
 **Filter** | Pointer to **string** | Filter by item name or part of it | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **MinimalView** | Pointer to **bool** |  | [optional] 

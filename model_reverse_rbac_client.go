@@ -17,7 +17,6 @@ import (
 
 // ReverseRBACClient struct for ReverseRBACClient
 type ReverseRBACClient struct {
-	AllowedOps *[]string `json:"allowed_ops,omitempty"`
 	Assocs *[]AuthMethodRoleAssociation `json:"assocs,omitempty"`
 	AuthMethodName *string `json:"auth_method_name,omitempty"`
 }
@@ -37,38 +36,6 @@ func NewReverseRBACClient() *ReverseRBACClient {
 func NewReverseRBACClientWithDefaults() *ReverseRBACClient {
 	this := ReverseRBACClient{}
 	return &this
-}
-
-// GetAllowedOps returns the AllowedOps field value if set, zero value otherwise.
-func (o *ReverseRBACClient) GetAllowedOps() []string {
-	if o == nil || o.AllowedOps == nil {
-		var ret []string
-		return ret
-	}
-	return *o.AllowedOps
-}
-
-// GetAllowedOpsOk returns a tuple with the AllowedOps field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ReverseRBACClient) GetAllowedOpsOk() (*[]string, bool) {
-	if o == nil || o.AllowedOps == nil {
-		return nil, false
-	}
-	return o.AllowedOps, true
-}
-
-// HasAllowedOps returns a boolean if a field has been set.
-func (o *ReverseRBACClient) HasAllowedOps() bool {
-	if o != nil && o.AllowedOps != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAllowedOps gets a reference to the given []string and assigns it to the AllowedOps field.
-func (o *ReverseRBACClient) SetAllowedOps(v []string) {
-	o.AllowedOps = &v
 }
 
 // GetAssocs returns the Assocs field value if set, zero value otherwise.
@@ -137,9 +104,6 @@ func (o *ReverseRBACClient) SetAuthMethodName(v string) {
 
 func (o ReverseRBACClient) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.AllowedOps != nil {
-		toSerialize["allowed_ops"] = o.AllowedOps
-	}
 	if o.Assocs != nil {
 		toSerialize["assocs"] = o.Assocs
 	}

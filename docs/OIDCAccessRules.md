@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AllowedRedirectURIs** | Pointer to **[]string** | Allowed redirect URIs after the authentication | [optional] 
+**Audience** | Pointer to **string** | Audience claim to be used as part of the authentication flow. In case set, it must match the one configured on the Identity Provider&#39;s Application | [optional] 
 **BoundClaims** | Pointer to [**[]OIDCCustomClaim**](OIDCCustomClaim.md) | The claims that login is restricted to. | [optional] 
 **ClientId** | Pointer to **string** | Client ID | [optional] 
 **ClientSecret** | Pointer to **string** | Client Secret | [optional] 
@@ -57,6 +58,31 @@ SetAllowedRedirectURIs sets AllowedRedirectURIs field to given value.
 `func (o *OIDCAccessRules) HasAllowedRedirectURIs() bool`
 
 HasAllowedRedirectURIs returns a boolean if a field has been set.
+
+### GetAudience
+
+`func (o *OIDCAccessRules) GetAudience() string`
+
+GetAudience returns the Audience field if non-nil, zero value otherwise.
+
+### GetAudienceOk
+
+`func (o *OIDCAccessRules) GetAudienceOk() (*string, bool)`
+
+GetAudienceOk returns a tuple with the Audience field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAudience
+
+`func (o *OIDCAccessRules) SetAudience(v string)`
+
+SetAudience sets Audience field to given value.
+
+### HasAudience
+
+`func (o *OIDCAccessRules) HasAudience() bool`
+
+HasAudience returns a boolean if a field has been set.
 
 ### GetBoundClaims
 

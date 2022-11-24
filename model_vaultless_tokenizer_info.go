@@ -22,7 +22,7 @@ type VaultlessTokenizerInfo struct {
 	RegexpTokenizerInfo *RegexpTokenizerInfo `json:"regexp_tokenizer_info,omitempty"`
 	TemplateType *string `json:"template_type,omitempty"`
 	// Tweak used in the case of internal tweak type
-	Tweak *[]int32 `json:"tweak,omitempty"`
+	Tweak *string `json:"tweak,omitempty"`
 	TweakType *string `json:"tweak_type,omitempty"`
 }
 
@@ -172,9 +172,9 @@ func (o *VaultlessTokenizerInfo) SetTemplateType(v string) {
 }
 
 // GetTweak returns the Tweak field value if set, zero value otherwise.
-func (o *VaultlessTokenizerInfo) GetTweak() []int32 {
+func (o *VaultlessTokenizerInfo) GetTweak() string {
 	if o == nil || o.Tweak == nil {
-		var ret []int32
+		var ret string
 		return ret
 	}
 	return *o.Tweak
@@ -182,7 +182,7 @@ func (o *VaultlessTokenizerInfo) GetTweak() []int32 {
 
 // GetTweakOk returns a tuple with the Tweak field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VaultlessTokenizerInfo) GetTweakOk() (*[]int32, bool) {
+func (o *VaultlessTokenizerInfo) GetTweakOk() (*string, bool) {
 	if o == nil || o.Tweak == nil {
 		return nil, false
 	}
@@ -198,8 +198,8 @@ func (o *VaultlessTokenizerInfo) HasTweak() bool {
 	return false
 }
 
-// SetTweak gets a reference to the given []int32 and assigns it to the Tweak field.
-func (o *VaultlessTokenizerInfo) SetTweak(v []int32) {
+// SetTweak gets a reference to the given string and assigns it to the Tweak field.
+func (o *VaultlessTokenizerInfo) SetTweak(v string) {
 	o.Tweak = &v
 }
 
