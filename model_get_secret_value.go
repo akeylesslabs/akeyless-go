@@ -19,7 +19,7 @@ import (
 type GetSecretValue struct {
 	// for personal password manager
 	Accessibility *string `json:"accessibility,omitempty"`
-	// Ignore Cache Retrieve the Secret value without checking the Gateway's cache. This flag is only relevant when using the RestAPI
+	// Ignore Cache Retrieve the Secret value without checking the Gateway's cache [true/false]. This flag is only relevant when using the RestAPI
 	IgnoreCache *string `json:"ignore-cache,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`

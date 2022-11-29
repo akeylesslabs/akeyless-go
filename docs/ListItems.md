@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **SubTypes** | Pointer to **[]string** |  | [optional] 
 **Tag** | Pointer to **string** | Filter by item tag | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
-**Type** | Pointer to **[]string** | The item types list of the requested items. In case it is empty, all types of items will be returned. options: [key, static-secret, dynamic-secret] | [optional] 
+**Type** | Pointer to **[]string** | The item types list of the requested items. In case it is empty, all types of items will be returned. options: [key, static-secret, dynamic-secret, classic-key] | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
 ## Methods

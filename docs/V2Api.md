@@ -2470,7 +2470,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateRotatedSecretOutput**](createRotatedSecretOutput.md)
+[**CreateRotatedSecretOutput**](CreateRotatedSecretOutput.md)
 
 ### Authorization
 
@@ -11544,7 +11544,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**RotatedSecretOutput**](rotatedSecretOutput.md)
+[**RotatedSecretOutput**](RotatedSecretOutput.md)
 
 ### Authorization
 

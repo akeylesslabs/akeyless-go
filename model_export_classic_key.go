@@ -17,6 +17,8 @@ import (
 
 // ExportClassicKey ExportClassicKey is a command that returns the classic key material
 type ExportClassicKey struct {
+	// Ignore Cache Retrieve the Secret value without checking the Gateway's cache. This flag is only relevant when using the RestAPI
+	IgnoreCache *string `json:"ignore-cache,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// ClassicKey name
@@ -35,6 +37,8 @@ type ExportClassicKey struct {
 // will change when the set of required properties is changed
 func NewExportClassicKey(name string, ) *ExportClassicKey {
 	this := ExportClassicKey{}
+	var ignoreCache string = "false"
+	this.IgnoreCache = &ignoreCache
 	this.Name = name
 	return &this
 }
@@ -44,7 +48,41 @@ func NewExportClassicKey(name string, ) *ExportClassicKey {
 // but it doesn't guarantee that properties required by API are set
 func NewExportClassicKeyWithDefaults() *ExportClassicKey {
 	this := ExportClassicKey{}
+	var ignoreCache string = "false"
+	this.IgnoreCache = &ignoreCache
 	return &this
+}
+
+// GetIgnoreCache returns the IgnoreCache field value if set, zero value otherwise.
+func (o *ExportClassicKey) GetIgnoreCache() string {
+	if o == nil || o.IgnoreCache == nil {
+		var ret string
+		return ret
+	}
+	return *o.IgnoreCache
+}
+
+// GetIgnoreCacheOk returns a tuple with the IgnoreCache field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ExportClassicKey) GetIgnoreCacheOk() (*string, bool) {
+	if o == nil || o.IgnoreCache == nil {
+		return nil, false
+	}
+	return o.IgnoreCache, true
+}
+
+// HasIgnoreCache returns a boolean if a field has been set.
+func (o *ExportClassicKey) HasIgnoreCache() bool {
+	if o != nil && o.IgnoreCache != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIgnoreCache gets a reference to the given string and assigns it to the IgnoreCache field.
+func (o *ExportClassicKey) SetIgnoreCache(v string) {
+	o.IgnoreCache = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -201,6 +239,9 @@ func (o *ExportClassicKey) SetVersion(v int32) {
 
 func (o ExportClassicKey) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.IgnoreCache != nil {
+		toSerialize["ignore-cache"] = o.IgnoreCache
+	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json
 	}

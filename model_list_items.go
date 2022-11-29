@@ -33,7 +33,7 @@ type ListItems struct {
 	Tag *string `json:"tag,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
-	// The item types list of the requested items. In case it is empty, all types of items will be returned. options: [key, static-secret, dynamic-secret]
+	// The item types list of the requested items. In case it is empty, all types of items will be returned. options: [key, static-secret, dynamic-secret, classic-key]
 	Type *[]string `json:"type,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`

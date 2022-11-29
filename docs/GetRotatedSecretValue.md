@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**IgnoreCache** | Pointer to **string** | Ignore Cache Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Names** | **string** | Secret name | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -28,6 +29,31 @@ will change when the set of required properties is changed
 NewGetRotatedSecretValueWithDefaults instantiates a new GetRotatedSecretValue object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetIgnoreCache
+
+`func (o *GetRotatedSecretValue) GetIgnoreCache() string`
+
+GetIgnoreCache returns the IgnoreCache field if non-nil, zero value otherwise.
+
+### GetIgnoreCacheOk
+
+`func (o *GetRotatedSecretValue) GetIgnoreCacheOk() (*string, bool)`
+
+GetIgnoreCacheOk returns a tuple with the IgnoreCache field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIgnoreCache
+
+`func (o *GetRotatedSecretValue) SetIgnoreCache(v string)`
+
+SetIgnoreCache sets IgnoreCache field to given value.
+
+### HasIgnoreCache
+
+`func (o *GetRotatedSecretValue) HasIgnoreCache() bool`
+
+HasIgnoreCache returns a boolean if a field has been set.
 
 ### GetJson
 
