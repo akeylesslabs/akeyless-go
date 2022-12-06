@@ -29,6 +29,8 @@ type SetRoleRule struct {
 	RuleType *string `json:"rule-type,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
+	// RoleRule ttl
+	Ttl *int32 `json:"ttl,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
 }
@@ -225,6 +227,38 @@ func (o *SetRoleRule) SetToken(v string) {
 	o.Token = &v
 }
 
+// GetTtl returns the Ttl field value if set, zero value otherwise.
+func (o *SetRoleRule) GetTtl() int32 {
+	if o == nil || o.Ttl == nil {
+		var ret int32
+		return ret
+	}
+	return *o.Ttl
+}
+
+// GetTtlOk returns a tuple with the Ttl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SetRoleRule) GetTtlOk() (*int32, bool) {
+	if o == nil || o.Ttl == nil {
+		return nil, false
+	}
+	return o.Ttl, true
+}
+
+// HasTtl returns a boolean if a field has been set.
+func (o *SetRoleRule) HasTtl() bool {
+	if o != nil && o.Ttl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTtl gets a reference to the given int32 and assigns it to the Ttl field.
+func (o *SetRoleRule) SetTtl(v int32) {
+	o.Ttl = &v
+}
+
 // GetUidToken returns the UidToken field value if set, zero value otherwise.
 func (o *SetRoleRule) GetUidToken() string {
 	if o == nil || o.UidToken == nil {
@@ -276,6 +310,9 @@ func (o SetRoleRule) MarshalJSON() ([]byte, error) {
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
+	}
+	if o.Ttl != nil {
+		toSerialize["ttl"] = o.Ttl
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken

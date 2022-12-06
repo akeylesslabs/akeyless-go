@@ -7333,7 +7333,7 @@ func (a *V2ApiService) ExportClassicKey(ctx _context.Context) ApiExportClassicKe
  */
 func (a *V2ApiService) ExportClassicKeyExecute(r ApiExportClassicKeyRequest) (ExportClassicKeyOutput, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string

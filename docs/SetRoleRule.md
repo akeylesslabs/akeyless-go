@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **RoleName** | **string** | The role name to be updated | 
 **RuleType** | Pointer to **string** | item-rule, target-rule, role-rule, auth-method-rule, search-rule, reports-rule, gw-reports-rule or sra-reports-rule | [optional] [default to "item-rule"]
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
+**Ttl** | Pointer to **int32** | RoleRule ttl | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
 ## Methods
@@ -165,6 +166,31 @@ SetToken sets Token field to given value.
 `func (o *SetRoleRule) HasToken() bool`
 
 HasToken returns a boolean if a field has been set.
+
+### GetTtl
+
+`func (o *SetRoleRule) GetTtl() int32`
+
+GetTtl returns the Ttl field if non-nil, zero value otherwise.
+
+### GetTtlOk
+
+`func (o *SetRoleRule) GetTtlOk() (*int32, bool)`
+
+GetTtlOk returns a tuple with the Ttl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTtl
+
+`func (o *SetRoleRule) SetTtl(v int32)`
+
+SetTtl sets Ttl field to given value.
+
+### HasTtl
+
+`func (o *SetRoleRule) HasTtl() bool`
+
+HasTtl returns a boolean if a field has been set.
 
 ### GetUidToken
 

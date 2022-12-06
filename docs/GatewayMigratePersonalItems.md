@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **Var1passwordVaults** | Pointer to **[]string** | 1Password list of vault to get the items from | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **ProtectionKey** | Pointer to **string** | The name of a key that used to encrypt the secret value | [optional] 
-**TargetLocation** | Pointer to **string** | Target location in Akeyless for migrated secrets | [optional] 
+**TargetLocation** | Pointer to **string** | Target location in your Akeyless personal folder for migrated secrets | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **Type** | Pointer to **string** | Migration type for now only 1password. | [optional] [default to "1password"]
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 

@@ -31,7 +31,7 @@ type GatewayMigratePersonalItems struct {
 	Json *bool `json:"json,omitempty"`
 	// The name of a key that used to encrypt the secret value
 	ProtectionKey *string `json:"protection-key,omitempty"`
-	// Target location in Akeyless for migrated secrets
+	// Target location in your Akeyless personal folder for migrated secrets
 	TargetLocation *string `json:"target-location,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`

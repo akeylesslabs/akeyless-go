@@ -1701,7 +1701,7 @@ paths:
       - v2
       x-codegen-request-body-name: body
   /export-classic-key:
-    get:
+    post:
       operationId: ExportClassicKey
       requestBody:
         content:
@@ -32107,7 +32107,8 @@ components:
           type: string
           x-go-name: ProtectionKey
         target-location:
-          description: Target location in Akeyless for migrated secrets
+          description: Target location in your Akeyless personal folder for migrated
+            secrets
           type: string
           x-go-name: TargetLocation
         token:
@@ -42580,6 +42581,11 @@ components:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
           x-go-name: Profile
+        ttl:
+          description: RoleRule ttl
+          format: int32
+          type: integer
+          x-go-name: RuleTTL
         uid-token:
           description: The universal identity token, Required only for universal_identity
             authentication
