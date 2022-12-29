@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **IdentityFile** | Pointer to **string** | The file from which the identity (private key) for public key authentication is read | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Name** | Pointer to **string** | The Secret name (for database and AWS producers - producer name) | [optional] 
+**SshCommand** | Pointer to **string** | Path to SSH executable. e.g. /usr/bin/ssh | [optional] 
 **SshExtraArgs** | Pointer to **string** | The Use to add offical SSH arguments (except -i) | [optional] 
 **SshLegacySigningAlg** | Pointer to **bool** | Set this option to output legacy (&#39;ssh-rsa-cert-v01@openssh.com&#39;) signing algorithm name in the ssh certificate. | [optional] 
 **Target** | Pointer to **string** | The target | [optional] 
@@ -289,6 +290,31 @@ SetName sets Name field to given value.
 `func (o *Connect) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetSshCommand
+
+`func (o *Connect) GetSshCommand() string`
+
+GetSshCommand returns the SshCommand field if non-nil, zero value otherwise.
+
+### GetSshCommandOk
+
+`func (o *Connect) GetSshCommandOk() (*string, bool)`
+
+GetSshCommandOk returns a tuple with the SshCommand field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSshCommand
+
+`func (o *Connect) SetSshCommand(v string)`
+
+SetSshCommand sets SshCommand field to given value.
+
+### HasSshCommand
+
+`func (o *Connect) HasSshCommand() bool`
+
+HasSshCommand returns a boolean if a field has been set.
 
 ### GetSshExtraArgs
 

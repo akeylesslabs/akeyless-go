@@ -19,6 +19,7 @@ import (
 // Item struct for Item
 type Item struct {
 	AccessDate *time.Time `json:"access_date,omitempty"`
+	AccessRequestStatus *string `json:"access_request_status,omitempty"`
 	AutoRotate *bool `json:"auto_rotate,omitempty"`
 	CertIssuerSignerKeyName *string `json:"cert_issuer_signer_key_name,omitempty"`
 	CertificateIssueDetails *CertificateIssueInfo `json:"certificate_issue_details,omitempty"`
@@ -29,6 +30,7 @@ type Item struct {
 	DeleteProtection *bool `json:"delete_protection,omitempty"`
 	DeletionDate *time.Time `json:"deletion_date,omitempty"`
 	DisplayId *string `json:"display_id,omitempty"`
+	IsAccessRequestEnabled *bool `json:"is_access_request_enabled,omitempty"`
 	IsEnabled *bool `json:"is_enabled,omitempty"`
 	ItemAccessibility *int64 `json:"item_accessibility,omitempty"`
 	ItemGeneralInfo *ItemGeneralInfo `json:"item_general_info,omitempty"`
@@ -102,6 +104,38 @@ func (o *Item) HasAccessDate() bool {
 // SetAccessDate gets a reference to the given time.Time and assigns it to the AccessDate field.
 func (o *Item) SetAccessDate(v time.Time) {
 	o.AccessDate = &v
+}
+
+// GetAccessRequestStatus returns the AccessRequestStatus field value if set, zero value otherwise.
+func (o *Item) GetAccessRequestStatus() string {
+	if o == nil || o.AccessRequestStatus == nil {
+		var ret string
+		return ret
+	}
+	return *o.AccessRequestStatus
+}
+
+// GetAccessRequestStatusOk returns a tuple with the AccessRequestStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Item) GetAccessRequestStatusOk() (*string, bool) {
+	if o == nil || o.AccessRequestStatus == nil {
+		return nil, false
+	}
+	return o.AccessRequestStatus, true
+}
+
+// HasAccessRequestStatus returns a boolean if a field has been set.
+func (o *Item) HasAccessRequestStatus() bool {
+	if o != nil && o.AccessRequestStatus != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessRequestStatus gets a reference to the given string and assigns it to the AccessRequestStatus field.
+func (o *Item) SetAccessRequestStatus(v string) {
+	o.AccessRequestStatus = &v
 }
 
 // GetAutoRotate returns the AutoRotate field value if set, zero value otherwise.
@@ -422,6 +456,38 @@ func (o *Item) HasDisplayId() bool {
 // SetDisplayId gets a reference to the given string and assigns it to the DisplayId field.
 func (o *Item) SetDisplayId(v string) {
 	o.DisplayId = &v
+}
+
+// GetIsAccessRequestEnabled returns the IsAccessRequestEnabled field value if set, zero value otherwise.
+func (o *Item) GetIsAccessRequestEnabled() bool {
+	if o == nil || o.IsAccessRequestEnabled == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IsAccessRequestEnabled
+}
+
+// GetIsAccessRequestEnabledOk returns a tuple with the IsAccessRequestEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Item) GetIsAccessRequestEnabledOk() (*bool, bool) {
+	if o == nil || o.IsAccessRequestEnabled == nil {
+		return nil, false
+	}
+	return o.IsAccessRequestEnabled, true
+}
+
+// HasIsAccessRequestEnabled returns a boolean if a field has been set.
+func (o *Item) HasIsAccessRequestEnabled() bool {
+	if o != nil && o.IsAccessRequestEnabled != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIsAccessRequestEnabled gets a reference to the given bool and assigns it to the IsAccessRequestEnabled field.
+func (o *Item) SetIsAccessRequestEnabled(v bool) {
+	o.IsAccessRequestEnabled = &v
 }
 
 // GetIsEnabled returns the IsEnabled field value if set, zero value otherwise.
@@ -1165,6 +1231,9 @@ func (o Item) MarshalJSON() ([]byte, error) {
 	if o.AccessDate != nil {
 		toSerialize["access_date"] = o.AccessDate
 	}
+	if o.AccessRequestStatus != nil {
+		toSerialize["access_request_status"] = o.AccessRequestStatus
+	}
 	if o.AutoRotate != nil {
 		toSerialize["auto_rotate"] = o.AutoRotate
 	}
@@ -1194,6 +1263,9 @@ func (o Item) MarshalJSON() ([]byte, error) {
 	}
 	if o.DisplayId != nil {
 		toSerialize["display_id"] = o.DisplayId
+	}
+	if o.IsAccessRequestEnabled != nil {
+		toSerialize["is_access_request_enabled"] = o.IsAccessRequestEnabled
 	}
 	if o.IsEnabled != nil {
 		toSerialize["is_enabled"] = o.IsEnabled

@@ -19,12 +19,14 @@ import (
 // Target struct for Target
 type Target struct {
 	AccessDate *time.Time `json:"access_date,omitempty"`
+	AccessRequestStatus *string `json:"access_request_status,omitempty"`
 	// this is not \"omitempty\" since an empty value causes no update while an empty map will clear the attributes
 	Attributes *map[string]map[string]interface{} `json:"attributes,omitempty"`
 	ClientPermissions *[]string `json:"client_permissions,omitempty"`
 	Comment *string `json:"comment,omitempty"`
 	CreationDate *time.Time `json:"creation_date,omitempty"`
 	CredentialsLess *bool `json:"credentials_less,omitempty"`
+	IsAccessRequestEnabled *bool `json:"is_access_request_enabled,omitempty"`
 	LastVersion *int32 `json:"last_version,omitempty"`
 	ModificationDate *time.Time `json:"modification_date,omitempty"`
 	ProtectionKeyName *string `json:"protection_key_name,omitempty"`
@@ -83,6 +85,38 @@ func (o *Target) HasAccessDate() bool {
 // SetAccessDate gets a reference to the given time.Time and assigns it to the AccessDate field.
 func (o *Target) SetAccessDate(v time.Time) {
 	o.AccessDate = &v
+}
+
+// GetAccessRequestStatus returns the AccessRequestStatus field value if set, zero value otherwise.
+func (o *Target) GetAccessRequestStatus() string {
+	if o == nil || o.AccessRequestStatus == nil {
+		var ret string
+		return ret
+	}
+	return *o.AccessRequestStatus
+}
+
+// GetAccessRequestStatusOk returns a tuple with the AccessRequestStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Target) GetAccessRequestStatusOk() (*string, bool) {
+	if o == nil || o.AccessRequestStatus == nil {
+		return nil, false
+	}
+	return o.AccessRequestStatus, true
+}
+
+// HasAccessRequestStatus returns a boolean if a field has been set.
+func (o *Target) HasAccessRequestStatus() bool {
+	if o != nil && o.AccessRequestStatus != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessRequestStatus gets a reference to the given string and assigns it to the AccessRequestStatus field.
+func (o *Target) SetAccessRequestStatus(v string) {
+	o.AccessRequestStatus = &v
 }
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
@@ -243,6 +277,38 @@ func (o *Target) HasCredentialsLess() bool {
 // SetCredentialsLess gets a reference to the given bool and assigns it to the CredentialsLess field.
 func (o *Target) SetCredentialsLess(v bool) {
 	o.CredentialsLess = &v
+}
+
+// GetIsAccessRequestEnabled returns the IsAccessRequestEnabled field value if set, zero value otherwise.
+func (o *Target) GetIsAccessRequestEnabled() bool {
+	if o == nil || o.IsAccessRequestEnabled == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IsAccessRequestEnabled
+}
+
+// GetIsAccessRequestEnabledOk returns a tuple with the IsAccessRequestEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Target) GetIsAccessRequestEnabledOk() (*bool, bool) {
+	if o == nil || o.IsAccessRequestEnabled == nil {
+		return nil, false
+	}
+	return o.IsAccessRequestEnabled, true
+}
+
+// HasIsAccessRequestEnabled returns a boolean if a field has been set.
+func (o *Target) HasIsAccessRequestEnabled() bool {
+	if o != nil && o.IsAccessRequestEnabled != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIsAccessRequestEnabled gets a reference to the given bool and assigns it to the IsAccessRequestEnabled field.
+func (o *Target) SetIsAccessRequestEnabled(v bool) {
+	o.IsAccessRequestEnabled = &v
 }
 
 // GetLastVersion returns the LastVersion field value if set, zero value otherwise.
@@ -538,6 +604,9 @@ func (o Target) MarshalJSON() ([]byte, error) {
 	if o.AccessDate != nil {
 		toSerialize["access_date"] = o.AccessDate
 	}
+	if o.AccessRequestStatus != nil {
+		toSerialize["access_request_status"] = o.AccessRequestStatus
+	}
 	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes
 	}
@@ -552,6 +621,9 @@ func (o Target) MarshalJSON() ([]byte, error) {
 	}
 	if o.CredentialsLess != nil {
 		toSerialize["credentials_less"] = o.CredentialsLess
+	}
+	if o.IsAccessRequestEnabled != nil {
+		toSerialize["is_access_request_enabled"] = o.IsAccessRequestEnabled
 	}
 	if o.LastVersion != nil {
 		toSerialize["last_version"] = o.LastVersion

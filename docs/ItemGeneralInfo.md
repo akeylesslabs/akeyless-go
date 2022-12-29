@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CertIssueDetails** | Pointer to [**CertificateIssueInfo**](CertificateIssueInfo.md) |  | [optional] 
+**CertificateChainInfo** | Pointer to [**CertificateChainInfo**](CertificateChainInfo.md) |  | [optional] 
 **ClassicKeyDetails** | Pointer to [**ClassicKeyDetailsInfo**](ClassicKeyDetailsInfo.md) |  | [optional] 
 **ClusterGwUrl** | Pointer to **string** |  | [optional] 
 **DisplayMetadata** | Pointer to **string** |  | [optional] 
@@ -58,6 +59,31 @@ SetCertIssueDetails sets CertIssueDetails field to given value.
 `func (o *ItemGeneralInfo) HasCertIssueDetails() bool`
 
 HasCertIssueDetails returns a boolean if a field has been set.
+
+### GetCertificateChainInfo
+
+`func (o *ItemGeneralInfo) GetCertificateChainInfo() CertificateChainInfo`
+
+GetCertificateChainInfo returns the CertificateChainInfo field if non-nil, zero value otherwise.
+
+### GetCertificateChainInfoOk
+
+`func (o *ItemGeneralInfo) GetCertificateChainInfoOk() (*CertificateChainInfo, bool)`
+
+GetCertificateChainInfoOk returns a tuple with the CertificateChainInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificateChainInfo
+
+`func (o *ItemGeneralInfo) SetCertificateChainInfo(v CertificateChainInfo)`
+
+SetCertificateChainInfo sets CertificateChainInfo field to given value.
+
+### HasCertificateChainInfo
+
+`func (o *ItemGeneralInfo) HasCertificateChainInfo() bool`
+
+HasCertificateChainInfo returns a boolean if a field has been set.
 
 ### GetClassicKeyDetails
 

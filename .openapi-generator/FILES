@@ -18,6 +18,7 @@ docs/AkeylessGatewayConfig.md
 docs/AllowedAccess.md
 docs/AssocRoleAuthMethod.md
 docs/AssocTargetItem.md
+docs/AttributeTypeAndValue.md
 docs/Auth.md
 docs/AuthMethod.md
 docs/AuthMethodAccessInfo.md
@@ -33,6 +34,9 @@ docs/BastionsList.md
 docs/CFConfigPart.md
 docs/CacheConfigPart.md
 docs/CertAccessRules.md
+docs/CertificateChainInfo.md
+docs/CertificateExpirationEvent.md
+docs/CertificateInfo.md
 docs/CertificateIssueInfo.md
 docs/ClassicKeyDetailsInfo.md
 docs/ClassicKeyStatusInfo.md
@@ -84,6 +88,8 @@ docs/CreateDockerhubTargetOutput.md
 docs/CreateDynamicSecret.md
 docs/CreateEKSTarget.md
 docs/CreateEKSTargetOutput.md
+docs/CreateEventForwarder.md
+docs/CreateEventForwarderOutput.md
 docs/CreateGKETarget.md
 docs/CreateGKETargetOutput.md
 docs/CreateGcpTarget.md
@@ -136,6 +142,7 @@ docs/DeleteAuthMethod.md
 docs/DeleteAuthMethodOutput.md
 docs/DeleteAuthMethods.md
 docs/DeleteAuthMethodsOutput.md
+docs/DeleteEventForwarder.md
 docs/DeleteItem.md
 docs/DeleteItemOutput.md
 docs/DeleteItems.md
@@ -157,6 +164,7 @@ docs/Detokenize.md
 docs/DetokenizeOutput.md
 docs/DynamicSecretProducerInfo.md
 docs/ElasticsearchLogForwardingConfig.md
+docs/EmailEntry.md
 docs/EmailPassAccessRules.md
 docs/EmailTokenizerInfo.md
 docs/Encrypt.md
@@ -167,11 +175,11 @@ docs/EncryptWithClassicKey.md
 docs/EncryptWithClassicKeyOutput.md
 docs/ExportClassicKey.md
 docs/ExportClassicKeyOutput.md
+docs/Extension.md
 docs/ExternalKMSKeyId.md
 docs/GCPAccessRules.md
 docs/GCPPayload.md
 docs/GCPSecretsMigration.md
-docs/GatewayAddAllowedManagementAccess.md
 docs/GatewayCreateK8SAuthConfig.md
 docs/GatewayCreateK8SAuthConfigOutput.md
 docs/GatewayCreateMigration.md
@@ -319,6 +327,8 @@ docs/GetAccountSettings.md
 docs/GetAccountSettingsCommandOutput.md
 docs/GetAuthMethod.md
 docs/GetDynamicSecretValue.md
+docs/GetEventForwarder.md
+docs/GetEventForwarderOutput.md
 docs/GetKubeExecCreds.md
 docs/GetKubeExecCredsOutput.md
 docs/GetPKICertificate.md
@@ -390,6 +400,7 @@ docs/ListItemsInPathOutput.md
 docs/ListRoles.md
 docs/ListRolesOutput.md
 docs/ListSRABastions.md
+docs/ListSharedItems.md
 docs/ListTargets.md
 docs/ListTargetsOutput.md
 docs/LogForwardingConfigPart.md
@@ -404,6 +415,8 @@ docs/MigrationsConfigPart.md
 docs/MockMigration.md
 docs/MockPayload.md
 docs/MoveObjects.md
+docs/Name.md
+docs/NotiForwarder.md
 docs/OAuth2AccessRules.md
 docs/OAuth2CustomClaim.md
 docs/OIDCAccessRules.md
@@ -420,6 +433,8 @@ docs/RawCreds.md
 docs/RefreshKey.md
 docs/RefreshKeyOutput.md
 docs/RegexpTokenizerInfo.md
+docs/RequestAccess.md
+docs/RequestAccessOutput.md
 docs/RequiredActivity.md
 docs/ReverseRBAC.md
 docs/ReverseRBACClient.md
@@ -512,6 +527,7 @@ docs/UpdateDockerhubTarget.md
 docs/UpdateDockerhubTargetOutput.md
 docs/UpdateEKSTarget.md
 docs/UpdateEKSTargetOutput.md
+docs/UpdateEventForwarder.md
 docs/UpdateGKETarget.md
 docs/UpdateGKETargetOutput.md
 docs/UpdateGcpTarget.md
@@ -577,6 +593,7 @@ model_allowed_access.go
 model_api_key_access_rules.go
 model_assoc_role_auth_method.go
 model_assoc_target_item.go
+model_attribute_type_and_value.go
 model_auth.go
 model_auth_method.go
 model_auth_method_access_info.go
@@ -594,6 +611,9 @@ model_bastion_list_entry.go
 model_bastions_list.go
 model_cache_config_part.go
 model_cert_access_rules.go
+model_certificate_chain_info.go
+model_certificate_expiration_event.go
+model_certificate_info.go
 model_certificate_issue_info.go
 model_cf_config_part.go
 model_classic_key_details_info.go
@@ -646,6 +666,8 @@ model_create_dockerhub_target_output.go
 model_create_dynamic_secret.go
 model_create_eks_target.go
 model_create_eks_target_output.go
+model_create_event_forwarder.go
+model_create_event_forwarder_output.go
 model_create_gcp_target.go
 model_create_gcp_target_output.go
 model_create_github_target.go
@@ -697,6 +719,7 @@ model_delete_auth_method.go
 model_delete_auth_method_output.go
 model_delete_auth_methods.go
 model_delete_auth_methods_output.go
+model_delete_event_forwarder.go
 model_delete_item.go
 model_delete_item_output.go
 model_delete_items.go
@@ -719,6 +742,7 @@ model_detokenize_output.go
 model_ds_producer_details.go
 model_dynamic_secret_producer_info.go
 model_elasticsearch_log_forwarding_config.go
+model_email_entry.go
 model_email_pass_access_rules.go
 model_email_tokenizer_info.go
 model_encrypt.go
@@ -729,8 +753,8 @@ model_encrypt_with_classic_key.go
 model_encrypt_with_classic_key_output.go
 model_export_classic_key.go
 model_export_classic_key_output.go
+model_extension.go
 model_external_kms_key_id.go
-model_gateway_add_allowed_management_access.go
 model_gateway_create_k8_s_auth_config.go
 model_gateway_create_k8_s_auth_config_output.go
 model_gateway_create_migration.go
@@ -881,6 +905,8 @@ model_get_account_settings.go
 model_get_account_settings_command_output.go
 model_get_auth_method.go
 model_get_dynamic_secret_value.go
+model_get_event_forwarder.go
+model_get_event_forwarder_output.go
 model_get_kube_exec_creds.go
 model_get_kube_exec_creds_output.go
 model_get_pki_certificate.go
@@ -951,6 +977,7 @@ model_list_items.go
 model_list_items_in_path_output.go
 model_list_roles.go
 model_list_roles_output.go
+model_list_shared_items.go
 model_list_sra_bastions.go
 model_list_targets.go
 model_list_targets_output.go
@@ -966,6 +993,8 @@ model_migrations_config_part.go
 model_mock_migration.go
 model_mock_payload.go
 model_move_objects.go
+model_name.go
+model_noti_forwarder.go
 model_o_auth2_access_rules.go
 model_o_auth2_custom_claim.go
 model_object_version_settings_output.go
@@ -982,6 +1011,8 @@ model_raw_creds.go
 model_refresh_key.go
 model_refresh_key_output.go
 model_regexp_tokenizer_info.go
+model_request_access.go
+model_request_access_output.go
 model_required_activity.go
 model_reverse_rbac.go
 model_reverse_rbac_client.go
@@ -1074,6 +1105,7 @@ model_update_dockerhub_target.go
 model_update_dockerhub_target_output.go
 model_update_eks_target.go
 model_update_eks_target_output.go
+model_update_event_forwarder.go
 model_update_gcp_target.go
 model_update_gcp_target_output.go
 model_update_github_target.go

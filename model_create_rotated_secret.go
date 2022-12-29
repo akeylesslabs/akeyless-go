@@ -29,6 +29,8 @@ type CreateRotatedSecret struct {
 	CustomPayload *string `json:"custom-payload,omitempty"`
 	// Protection from accidental deletion of this item
 	DeleteProtection *string `json:"delete_protection,omitempty"`
+	// Base64-encoded service account private key text
+	GcpKey *string `json:"gcp-key,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
@@ -386,6 +388,38 @@ func (o *CreateRotatedSecret) HasDeleteProtection() bool {
 // SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
 func (o *CreateRotatedSecret) SetDeleteProtection(v string) {
 	o.DeleteProtection = &v
+}
+
+// GetGcpKey returns the GcpKey field value if set, zero value otherwise.
+func (o *CreateRotatedSecret) GetGcpKey() string {
+	if o == nil || o.GcpKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.GcpKey
+}
+
+// GetGcpKeyOk returns a tuple with the GcpKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRotatedSecret) GetGcpKeyOk() (*string, bool) {
+	if o == nil || o.GcpKey == nil {
+		return nil, false
+	}
+	return o.GcpKey, true
+}
+
+// HasGcpKey returns a boolean if a field has been set.
+func (o *CreateRotatedSecret) HasGcpKey() bool {
+	if o != nil && o.GcpKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpKey gets a reference to the given string and assigns it to the GcpKey field.
+func (o *CreateRotatedSecret) SetGcpKey(v string) {
+	o.GcpKey = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -1445,6 +1479,9 @@ func (o CreateRotatedSecret) MarshalJSON() ([]byte, error) {
 	}
 	if o.DeleteProtection != nil {
 		toSerialize["delete_protection"] = o.DeleteProtection
+	}
+	if o.GcpKey != nil {
+		toSerialize["gcp-key"] = o.GcpKey
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json

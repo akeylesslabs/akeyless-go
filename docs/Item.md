@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**AccessRequestStatus** | Pointer to **string** |  | [optional] 
 **AutoRotate** | Pointer to **bool** |  | [optional] 
 **CertIssuerSignerKeyName** | Pointer to **string** |  | [optional] 
 **CertificateIssueDetails** | Pointer to [**CertificateIssueInfo**](CertificateIssueInfo.md) |  | [optional] 
@@ -15,6 +16,7 @@ Name | Type | Description | Notes
 **DeleteProtection** | Pointer to **bool** |  | [optional] 
 **DeletionDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **DisplayId** | Pointer to **string** |  | [optional] 
+**IsAccessRequestEnabled** | Pointer to **bool** |  | [optional] 
 **IsEnabled** | Pointer to **bool** |  | [optional] 
 **ItemAccessibility** | Pointer to **int64** |  | [optional] 
 **ItemGeneralInfo** | Pointer to [**ItemGeneralInfo**](ItemGeneralInfo.md) |  | [optional] 
@@ -82,6 +84,31 @@ SetAccessDate sets AccessDate field to given value.
 `func (o *Item) HasAccessDate() bool`
 
 HasAccessDate returns a boolean if a field has been set.
+
+### GetAccessRequestStatus
+
+`func (o *Item) GetAccessRequestStatus() string`
+
+GetAccessRequestStatus returns the AccessRequestStatus field if non-nil, zero value otherwise.
+
+### GetAccessRequestStatusOk
+
+`func (o *Item) GetAccessRequestStatusOk() (*string, bool)`
+
+GetAccessRequestStatusOk returns a tuple with the AccessRequestStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessRequestStatus
+
+`func (o *Item) SetAccessRequestStatus(v string)`
+
+SetAccessRequestStatus sets AccessRequestStatus field to given value.
+
+### HasAccessRequestStatus
+
+`func (o *Item) HasAccessRequestStatus() bool`
+
+HasAccessRequestStatus returns a boolean if a field has been set.
 
 ### GetAutoRotate
 
@@ -332,6 +359,31 @@ SetDisplayId sets DisplayId field to given value.
 `func (o *Item) HasDisplayId() bool`
 
 HasDisplayId returns a boolean if a field has been set.
+
+### GetIsAccessRequestEnabled
+
+`func (o *Item) GetIsAccessRequestEnabled() bool`
+
+GetIsAccessRequestEnabled returns the IsAccessRequestEnabled field if non-nil, zero value otherwise.
+
+### GetIsAccessRequestEnabledOk
+
+`func (o *Item) GetIsAccessRequestEnabledOk() (*bool, bool)`
+
+GetIsAccessRequestEnabledOk returns a tuple with the IsAccessRequestEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsAccessRequestEnabled
+
+`func (o *Item) SetIsAccessRequestEnabled(v bool)`
+
+SetIsAccessRequestEnabled sets IsAccessRequestEnabled field to given value.
+
+### HasIsAccessRequestEnabled
+
+`func (o *Item) HasIsAccessRequestEnabled() bool`
+
+HasIsAccessRequestEnabled returns a boolean if a field has been set.
 
 ### GetIsEnabled
 

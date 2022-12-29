@@ -18,6 +18,7 @@ import (
 // ItemGeneralInfo struct for ItemGeneralInfo
 type ItemGeneralInfo struct {
 	CertIssueDetails *CertificateIssueInfo `json:"cert_issue_details,omitempty"`
+	CertificateChainInfo *CertificateChainInfo `json:"certificate_chain_info,omitempty"`
 	ClassicKeyDetails *ClassicKeyDetailsInfo `json:"classic_key_details,omitempty"`
 	ClusterGwUrl *string `json:"cluster_gw_url,omitempty"`
 	DisplayMetadata *string `json:"display_metadata,omitempty"`
@@ -76,6 +77,38 @@ func (o *ItemGeneralInfo) HasCertIssueDetails() bool {
 // SetCertIssueDetails gets a reference to the given CertificateIssueInfo and assigns it to the CertIssueDetails field.
 func (o *ItemGeneralInfo) SetCertIssueDetails(v CertificateIssueInfo) {
 	o.CertIssueDetails = &v
+}
+
+// GetCertificateChainInfo returns the CertificateChainInfo field value if set, zero value otherwise.
+func (o *ItemGeneralInfo) GetCertificateChainInfo() CertificateChainInfo {
+	if o == nil || o.CertificateChainInfo == nil {
+		var ret CertificateChainInfo
+		return ret
+	}
+	return *o.CertificateChainInfo
+}
+
+// GetCertificateChainInfoOk returns a tuple with the CertificateChainInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ItemGeneralInfo) GetCertificateChainInfoOk() (*CertificateChainInfo, bool) {
+	if o == nil || o.CertificateChainInfo == nil {
+		return nil, false
+	}
+	return o.CertificateChainInfo, true
+}
+
+// HasCertificateChainInfo returns a boolean if a field has been set.
+func (o *ItemGeneralInfo) HasCertificateChainInfo() bool {
+	if o != nil && o.CertificateChainInfo != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificateChainInfo gets a reference to the given CertificateChainInfo and assigns it to the CertificateChainInfo field.
+func (o *ItemGeneralInfo) SetCertificateChainInfo(v CertificateChainInfo) {
+	o.CertificateChainInfo = &v
 }
 
 // GetClassicKeyDetails returns the ClassicKeyDetails field value if set, zero value otherwise.
@@ -370,6 +403,9 @@ func (o ItemGeneralInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.CertIssueDetails != nil {
 		toSerialize["cert_issue_details"] = o.CertIssueDetails
+	}
+	if o.CertificateChainInfo != nil {
+		toSerialize["certificate_chain_info"] = o.CertificateChainInfo
 	}
 	if o.ClassicKeyDetails != nil {
 		toSerialize["classic_key_details"] = o.ClassicKeyDetails

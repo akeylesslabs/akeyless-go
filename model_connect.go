@@ -36,6 +36,8 @@ type Connect struct {
 	Json *bool `json:"json,omitempty"`
 	// The Secret name (for database and AWS producers - producer name)
 	Name *string `json:"name,omitempty"`
+	// Path to SSH executable. e.g. /usr/bin/ssh
+	SshCommand *string `json:"ssh-command,omitempty"`
 	// The Use to add offical SSH arguments (except -i)
 	SshExtraArgs *string `json:"ssh-extra-args,omitempty"`
 	// Set this option to output legacy ('ssh-rsa-cert-v01@openssh.com') signing algorithm name in the ssh certificate.
@@ -395,6 +397,38 @@ func (o *Connect) SetName(v string) {
 	o.Name = &v
 }
 
+// GetSshCommand returns the SshCommand field value if set, zero value otherwise.
+func (o *Connect) GetSshCommand() string {
+	if o == nil || o.SshCommand == nil {
+		var ret string
+		return ret
+	}
+	return *o.SshCommand
+}
+
+// GetSshCommandOk returns a tuple with the SshCommand field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Connect) GetSshCommandOk() (*string, bool) {
+	if o == nil || o.SshCommand == nil {
+		return nil, false
+	}
+	return o.SshCommand, true
+}
+
+// HasSshCommand returns a boolean if a field has been set.
+func (o *Connect) HasSshCommand() bool {
+	if o != nil && o.SshCommand != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSshCommand gets a reference to the given string and assigns it to the SshCommand field.
+func (o *Connect) SetSshCommand(v string) {
+	o.SshCommand = &v
+}
+
 // GetSshExtraArgs returns the SshExtraArgs field value if set, zero value otherwise.
 func (o *Connect) GetSshExtraArgs() string {
 	if o == nil || o.SshExtraArgs == nil {
@@ -618,6 +652,9 @@ func (o Connect) MarshalJSON() ([]byte, error) {
 	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
+	}
+	if o.SshCommand != nil {
+		toSerialize["ssh-command"] = o.SshCommand
 	}
 	if o.SshExtraArgs != nil {
 		toSerialize["ssh-extra-args"] = o.SshExtraArgs

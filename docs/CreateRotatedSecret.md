@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **AwsRegion** | Pointer to **string** | Region (used in aws) | [optional] [default to "us-east-2"]
 **CustomPayload** | Pointer to **string** |  | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
+**GcpKey** | Pointer to **string** | Base64-encoded service account private key text | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Metadata** | Pointer to **string** | Metadata about the secret | [optional] 
@@ -264,6 +265,31 @@ SetDeleteProtection sets DeleteProtection field to given value.
 `func (o *CreateRotatedSecret) HasDeleteProtection() bool`
 
 HasDeleteProtection returns a boolean if a field has been set.
+
+### GetGcpKey
+
+`func (o *CreateRotatedSecret) GetGcpKey() string`
+
+GetGcpKey returns the GcpKey field if non-nil, zero value otherwise.
+
+### GetGcpKeyOk
+
+`func (o *CreateRotatedSecret) GetGcpKeyOk() (*string, bool)`
+
+GetGcpKeyOk returns a tuple with the GcpKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpKey
+
+`func (o *CreateRotatedSecret) SetGcpKey(v string)`
+
+SetGcpKey sets GcpKey field to given value.
+
+### HasGcpKey
+
+`func (o *CreateRotatedSecret) HasGcpKey() bool`
+
+HasGcpKey returns a boolean if a field has been set.
 
 ### GetJson
 

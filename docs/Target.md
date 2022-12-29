@@ -5,11 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**AccessRequestStatus** | Pointer to **string** |  | [optional] 
 **Attributes** | Pointer to **map[string]map[string]interface{}** | this is not \&quot;omitempty\&quot; since an empty value causes no update while an empty map will clear the attributes | [optional] 
 **ClientPermissions** | Pointer to **[]string** |  | [optional] 
 **Comment** | Pointer to **string** |  | [optional] 
 **CreationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **CredentialsLess** | Pointer to **bool** |  | [optional] 
+**IsAccessRequestEnabled** | Pointer to **bool** |  | [optional] 
 **LastVersion** | Pointer to **int32** |  | [optional] 
 **ModificationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **ProtectionKeyName** | Pointer to **string** |  | [optional] 
@@ -63,6 +65,31 @@ SetAccessDate sets AccessDate field to given value.
 `func (o *Target) HasAccessDate() bool`
 
 HasAccessDate returns a boolean if a field has been set.
+
+### GetAccessRequestStatus
+
+`func (o *Target) GetAccessRequestStatus() string`
+
+GetAccessRequestStatus returns the AccessRequestStatus field if non-nil, zero value otherwise.
+
+### GetAccessRequestStatusOk
+
+`func (o *Target) GetAccessRequestStatusOk() (*string, bool)`
+
+GetAccessRequestStatusOk returns a tuple with the AccessRequestStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessRequestStatus
+
+`func (o *Target) SetAccessRequestStatus(v string)`
+
+SetAccessRequestStatus sets AccessRequestStatus field to given value.
+
+### HasAccessRequestStatus
+
+`func (o *Target) HasAccessRequestStatus() bool`
+
+HasAccessRequestStatus returns a boolean if a field has been set.
 
 ### GetAttributes
 
@@ -188,6 +215,31 @@ SetCredentialsLess sets CredentialsLess field to given value.
 `func (o *Target) HasCredentialsLess() bool`
 
 HasCredentialsLess returns a boolean if a field has been set.
+
+### GetIsAccessRequestEnabled
+
+`func (o *Target) GetIsAccessRequestEnabled() bool`
+
+GetIsAccessRequestEnabled returns the IsAccessRequestEnabled field if non-nil, zero value otherwise.
+
+### GetIsAccessRequestEnabledOk
+
+`func (o *Target) GetIsAccessRequestEnabledOk() (*bool, bool)`
+
+GetIsAccessRequestEnabledOk returns a tuple with the IsAccessRequestEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsAccessRequestEnabled
+
+`func (o *Target) SetIsAccessRequestEnabled(v bool)`
+
+SetIsAccessRequestEnabled sets IsAccessRequestEnabled field to given value.
+
+### HasIsAccessRequestEnabled
+
+`func (o *Target) HasIsAccessRequestEnabled() bool`
+
+HasIsAccessRequestEnabled returns a boolean if a field has been set.
 
 ### GetLastVersion
 

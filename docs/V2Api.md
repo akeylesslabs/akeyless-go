@@ -30,6 +30,7 @@ Method | HTTP request | Description
 [**CreateDockerhubTarget**](V2Api.md#CreateDockerhubTarget) | **Post** /create-dockerhub-target | 
 [**CreateDynamicSecret**](V2Api.md#CreateDynamicSecret) | **Post** /create-dynamic-secret | 
 [**CreateEKSTarget**](V2Api.md#CreateEKSTarget) | **Post** /create-eks-target | 
+[**CreateEventForwarder**](V2Api.md#CreateEventForwarder) | **Post** /create-event-forwarder | 
 [**CreateGKETarget**](V2Api.md#CreateGKETarget) | **Post** /create-gke-target | 
 [**CreateGcpTarget**](V2Api.md#CreateGcpTarget) | **Post** /create-gcp-target | 
 [**CreateGithubTarget**](V2Api.md#CreateGithubTarget) | **Post** /create-github-target | 
@@ -51,6 +52,7 @@ Method | HTTP request | Description
 [**DecryptWithClassicKey**](V2Api.md#DecryptWithClassicKey) | **Post** /decrypt-with-classic-key | 
 [**DeleteAuthMethod**](V2Api.md#DeleteAuthMethod) | **Post** /delete-auth-method | 
 [**DeleteAuthMethods**](V2Api.md#DeleteAuthMethods) | **Post** /delete-auth-methods | 
+[**DeleteEventForwarder**](V2Api.md#DeleteEventForwarder) | **Post** /delete-event-forwarder | 
 [**DeleteItem**](V2Api.md#DeleteItem) | **Post** /delete-item | 
 [**DeleteItems**](V2Api.md#DeleteItems) | **Post** /delete-items | 
 [**DeleteRole**](V2Api.md#DeleteRole) | **Post** /delete-role | 
@@ -67,7 +69,6 @@ Method | HTTP request | Description
 [**Encrypt**](V2Api.md#Encrypt) | **Post** /encrypt | 
 [**EncryptWithClassicKey**](V2Api.md#EncryptWithClassicKey) | **Post** /encrypt-with-classic-key | 
 [**ExportClassicKey**](V2Api.md#ExportClassicKey) | **Post** /export-classic-key | 
-[**GatewayAddAllowedManagementAccess**](V2Api.md#GatewayAddAllowedManagementAccess) | **Post** /gateway-add-allow-management-access | 
 [**GatewayCreateK8SAuthConfig**](V2Api.md#GatewayCreateK8SAuthConfig) | **Post** /gateway-create-k8s-auth-config | 
 [**GatewayCreateMigration**](V2Api.md#GatewayCreateMigration) | **Post** /gateway-create-migration | 
 [**GatewayCreateProducerArtifactory**](V2Api.md#GatewayCreateProducerArtifactory) | **Post** /gateway-create-producer-artifactory | 
@@ -144,6 +145,7 @@ Method | HTTP request | Description
 [**GetAccountSettings**](V2Api.md#GetAccountSettings) | **Post** /get-account-settings | 
 [**GetAuthMethod**](V2Api.md#GetAuthMethod) | **Post** /get-auth-method | 
 [**GetDynamicSecretValue**](V2Api.md#GetDynamicSecretValue) | **Post** /get-dynamic-secret-value | 
+[**GetEventForwarder**](V2Api.md#GetEventForwarder) | **Post** /get-event-forwarder | 
 [**GetKubeExecCreds**](V2Api.md#GetKubeExecCreds) | **Post** /get-kube-exec-creds | 
 [**GetPKICertificate**](V2Api.md#GetPKICertificate) | **Post** /get-pki-certificate | 
 [**GetRSAPublic**](V2Api.md#GetRSAPublic) | **Post** /get-rsa-public | 
@@ -172,10 +174,12 @@ Method | HTTP request | Description
 [**ListItems**](V2Api.md#ListItems) | **Post** /list-items | 
 [**ListRoles**](V2Api.md#ListRoles) | **Post** /list-roles | 
 [**ListSRABastions**](V2Api.md#ListSRABastions) | **Post** /list-sra-bastions | 
+[**ListSharedItems**](V2Api.md#ListSharedItems) | **Post** /list-shared-items | 
 [**ListTargets**](V2Api.md#ListTargets) | **Post** /list-targets | 
 [**MoveObjects**](V2Api.md#MoveObjects) | **Post** /move-objects | 
 [**RawCreds**](V2Api.md#RawCreds) | **Post** /raw-creds | 
 [**RefreshKey**](V2Api.md#RefreshKey) | **Post** /refresh-key | 
+[**RequestAccess**](V2Api.md#RequestAccess) | **Post** /request-access | 
 [**ReverseRBAC**](V2Api.md#ReverseRBAC) | **Post** /reverse-rbac | 
 [**RevokeCreds**](V2Api.md#RevokeCreds) | **Post** /revoke-creds | 
 [**RollbackSecret**](V2Api.md#RollbackSecret) | **Post** /rollback-secret | 
@@ -215,6 +219,7 @@ Method | HTTP request | Description
 [**UpdateDBTargetDetails**](V2Api.md#UpdateDBTargetDetails) | **Post** /update-db-target-details | 
 [**UpdateDockerhubTarget**](V2Api.md#UpdateDockerhubTarget) | **Post** /update-dockerhub-target | 
 [**UpdateEKSTarget**](V2Api.md#UpdateEKSTarget) | **Post** /update-eks-target | 
+[**UpdateEventForwarder**](V2Api.md#UpdateEventForwarder) | **Post** /update-event-forwarder | 
 [**UpdateGKETarget**](V2Api.md#UpdateGKETarget) | **Post** /update-gke-target | 
 [**UpdateGcpTarget**](V2Api.md#UpdateGcpTarget) | **Post** /update-gcp-target | 
 [**UpdateGithubTarget**](V2Api.md#UpdateGithubTarget) | **Post** /update-github-target | 
@@ -1910,6 +1915,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## CreateEventForwarder
+
+> CreateEventForwarderOutput CreateEventForwarder(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewcreateEventForwarder([]string{"EventSourceLocations_example"}, "ForwarderType_example", "Name_example", "RunnerType_example") // CreateEventForwarder | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.CreateEventForwarder(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateEventForwarder``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateEventForwarder`: CreateEventForwarderOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateEventForwarder`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateEventForwarderRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateEventForwarder**](CreateEventForwarder.md) |  | 
+
+### Return type
+
+[**CreateEventForwarderOutput**](createEventForwarderOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## CreateGKETarget
 
 > CreateGKETargetOutput CreateGKETarget(ctx).Body(body).Execute()
@@ -3254,6 +3323,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## DeleteEventForwarder
+
+> map[string]interface{} DeleteEventForwarder(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdeleteEventForwarder("Name_example") // DeleteEventForwarder | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DeleteEventForwarder(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DeleteEventForwarder``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeleteEventForwarder`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DeleteEventForwarder`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteEventForwarderRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DeleteEventForwarder**](DeleteEventForwarder.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## DeleteItem
 
 > DeleteItemOutput DeleteItem(ctx).Body(body).Execute()
@@ -4263,70 +4396,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ExportClassicKeyOutput**](ExportClassicKeyOutput.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GatewayAddAllowedManagementAccess
-
-> map[string]interface{} GatewayAddAllowedManagementAccess(ctx).Body(body).Execute()
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    body := *openapiclient.NewgatewayAddAllowedManagementAccess("SubAdminAccessId_example") // GatewayAddAllowedManagementAccess | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayAddAllowedManagementAccess(context.Background()).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayAddAllowedManagementAccess``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GatewayAddAllowedManagementAccess`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayAddAllowedManagementAccess`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGatewayAddAllowedManagementAccessRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayAddAllowedManagementAccess**](GatewayAddAllowedManagementAccess.md) |  | 
-
-### Return type
-
-**map[string]interface{}**
 
 ### Authorization
 
@@ -9197,6 +9266,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GetEventForwarder
+
+> GetEventForwarderOutput GetEventForwarder(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgetEventForwarder("Name_example") // GetEventForwarder | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GetEventForwarder(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GetEventForwarder``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetEventForwarder`: GetEventForwarderOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GetEventForwarder`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetEventForwarderRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GetEventForwarder**](GetEventForwarder.md) |  | 
+
+### Return type
+
+[**GetEventForwarderOutput**](getEventForwarderOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetKubeExecCreds
 
 > GetKubeExecCredsOutput GetKubeExecCreds(ctx).Body(body).Execute()
@@ -10989,6 +11122,68 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## ListSharedItems
+
+> ListSharedItems(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewlistSharedItems() // ListSharedItems | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.ListSharedItems(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.ListSharedItems``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListSharedItemsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**ListSharedItems**](ListSharedItems.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ListTargets
 
 > ListTargetsOutput ListTargets(ctx).Body(body).Execute()
@@ -11230,6 +11425,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**RefreshKeyOutput**](refreshKeyOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RequestAccess
+
+> RequestAccessOutput RequestAccess(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrequestAccess([]string{"Capability_example"}, "Name_example") // RequestAccess | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RequestAccess(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RequestAccess``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RequestAccess`: RequestAccessOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RequestAccess`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRequestAccessRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RequestAccess**](RequestAccess.md) |  | 
+
+### Return type
+
+[**RequestAccessOutput**](requestAccessOutput.md)
 
 ### Authorization
 
@@ -13719,6 +13978,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**UpdateEKSTargetOutput**](updateEKSTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateEventForwarder
+
+> map[string]interface{} UpdateEventForwarder(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewupdateEventForwarder("Name_example") // UpdateEventForwarder | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdateEventForwarder(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateEventForwarder``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateEventForwarder`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateEventForwarder`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateEventForwarderRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateEventForwarder**](UpdateEventForwarder.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
 
 ### Authorization
 
