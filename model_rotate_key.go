@@ -21,6 +21,8 @@ type RotateKey struct {
 	Json *bool `json:"json,omitempty"`
 	// Key name
 	Name string `json:"name"`
+	// The new pem encoded certificate for the classic key. relevant only for keys provided by user ('bring-your-own-key')
+	NewCertPemData *string `json:"new-cert-pem-data,omitempty"`
 	// The new base64 encoded value for the classic key. relevant only for keys provided by user ('bring-your-own-key')
 	NewKeyData *string `json:"new-key-data,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -101,6 +103,38 @@ func (o *RotateKey) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *RotateKey) SetName(v string) {
 	o.Name = v
+}
+
+// GetNewCertPemData returns the NewCertPemData field value if set, zero value otherwise.
+func (o *RotateKey) GetNewCertPemData() string {
+	if o == nil || o.NewCertPemData == nil {
+		var ret string
+		return ret
+	}
+	return *o.NewCertPemData
+}
+
+// GetNewCertPemDataOk returns a tuple with the NewCertPemData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotateKey) GetNewCertPemDataOk() (*string, bool) {
+	if o == nil || o.NewCertPemData == nil {
+		return nil, false
+	}
+	return o.NewCertPemData, true
+}
+
+// HasNewCertPemData returns a boolean if a field has been set.
+func (o *RotateKey) HasNewCertPemData() bool {
+	if o != nil && o.NewCertPemData != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNewCertPemData gets a reference to the given string and assigns it to the NewCertPemData field.
+func (o *RotateKey) SetNewCertPemData(v string) {
+	o.NewCertPemData = &v
 }
 
 // GetNewKeyData returns the NewKeyData field value if set, zero value otherwise.
@@ -206,6 +240,9 @@ func (o RotateKey) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.NewCertPemData != nil {
+		toSerialize["new-cert-pem-data"] = o.NewCertPemData
 	}
 	if o.NewKeyData != nil {
 		toSerialize["new-key-data"] = o.NewKeyData

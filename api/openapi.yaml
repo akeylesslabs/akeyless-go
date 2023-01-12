@@ -558,6 +558,33 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /create-certificate:
+    post:
+      operationId: createCertificate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createCertificate'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createCertificateOutput'
+          description: createCertificateResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /create-classic-key:
     post:
       operationId: CreateClassicKey
@@ -3750,6 +3777,33 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /gateway-update-tls-cert:
+    post:
+      operationId: GatewayUpdateTlsCert
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GatewayUpdateTlsCert'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GatewayUpdateTlsCertOutput'
+          description: GatewayUpdateTlsCertResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /get-account-logo:
     post:
       operationId: getAccountLogo
@@ -3815,6 +3869,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/AuthMethod'
           description: getAuthMethodResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /get-certificate-value:
+    post:
+      operationId: getCertificateValue
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/getCertificateValue'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCertificateValueOutput'
+          description: getCertificateValueResponse wraps response body.
         default:
           content:
             application/json:
@@ -5709,6 +5790,33 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /update-certificate-value:
+    post:
+      operationId: updateCertificateValue
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateCertificateValue'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/updateCertificateOutput'
+          description: updateCertificateValueResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /update-db-target:
     post:
       operationId: updateDBTarget
@@ -6627,6 +6735,12 @@ components:
           schema:
             $ref: '#/components/schemas/GatewayUpdateLdapAuthConfigOutput'
       description: GatewayUpdateLdapAuthConfigResponse wraps response body.
+    GatewayUpdateTlsCertResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GatewayUpdateTlsCertOutput'
+      description: GatewayUpdateTlsCertResponse wraps response body.
     assocRoleAuthMethodResponse:
       content:
         application/json:
@@ -6747,6 +6861,12 @@ components:
           schema:
             $ref: '#/components/schemas/createAzureTargetOutput'
       description: createAzureTargetResponse wraps response body.
+    createCertificateResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/createCertificateOutput'
+      description: createCertificateResponse wraps response body.
     createDBTargetResponse:
       content:
         application/json:
@@ -7481,6 +7601,12 @@ components:
           schema:
             $ref: '#/components/schemas/AuthMethod'
       description: getAuthMethodResponse wraps response body.
+    getCertificateValueResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GetCertificateValueOutput'
+      description: getCertificateValueResponse wraps response body.
     getDynamicSecretValueResponse:
       content:
         application/json:
@@ -7913,6 +8039,12 @@ components:
           schema:
             $ref: '#/components/schemas/updateAzureTargetOutput'
       description: updateAzureTargetResponse wraps response body.
+    updateCertificateValueResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/updateCertificateOutput'
+      description: updateCertificateValueResponse wraps response body.
     updateDBTargetResponse:
       content:
         application/json:
@@ -12796,6 +12928,47 @@ components:
           x-go-name: Updated
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    GatewayUpdateTlsCert:
+      description: gatewayUpdateTlsCert is a command that updates Gateway TLS certificate
+      example:
+        json: true
+        cert-data: cert-data
+        key-data: key-data
+        uid-token: uid-token
+        token: token
+      properties:
+        cert-data:
+          description: TLS Certificate (base64 encoded)
+          type: string
+          x-go-name: CertData
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        key-data:
+          description: TLS Private Key (base64 encoded)
+          type: string
+          x-go-name: KeyData
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    GatewayUpdateTlsCertOutput:
+      example:
+        updated: true
+      properties:
+        updated:
+          type: boolean
+          x-go-name: Updated
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     GatewaysListResponse:
       description: GatewaysListResponse Gateway cluster identity list
       example:
@@ -12961,6 +13134,19 @@ components:
           $ref: '#/components/schemas/SystemAccessCredsSettings'
       title: GetAccountSettingsCommandOutput defines cli output of get-account-settings
         command.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    GetCertificateValueOutput:
+      example:
+        certificate_pem: certificate_pem
+        private_key_pem: private_key_pem
+      properties:
+        certificate_pem:
+          type: string
+          x-go-name: CertificatePem
+        private_key_pem:
+          type: string
+          x-go-name: PrivateKeyPem
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     GetPKICertificate:
@@ -22684,6 +22870,74 @@ components:
           format: int64
           type: integer
           x-go-name: TargetID
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    createCertificate:
+      properties:
+        certificate-data:
+          description: Content of the certificate PEM in a Base64 format.
+          type: string
+          x-go-name: CertificateData
+        delete_protection:
+          description: Protection from accidental deletion of this item
+          type: string
+          x-go-name: ItemProtected
+        expiration-event-in:
+          description: How many days before the expiration of the certificate would
+            you like to be notified.
+          items:
+            type: string
+          type: array
+          x-go-name: ExpirationEventsInDays
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        key:
+          description: |-
+            The name of a key to use to encrypt the certificate's key (if empty, the
+            account default protectionKey key will be used)
+          type: string
+          x-go-name: ProtectionKey
+        key-data:
+          description: Content of the certificate's private key PEM in a Base64 format.
+          type: string
+          x-go-name: PrivateKeyData
+        metadata:
+          description: Metadata about the certificate
+          type: string
+          x-go-name: Metadata
+        name:
+          description: Certificate name
+          type: string
+          x-go-name: CertificateName
+        tags:
+          description: List of the tags attached to this certificate
+          items:
+            type: string
+          type: array
+          x-go-name: Tags
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      required:
+      - name
+      title: createCertificate is a command that creates a certificate.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    createCertificateOutput:
+      example:
+        name: name
+      properties:
+        name:
+          type: string
+          x-go-name: Name
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     createDBTarget:
@@ -43065,6 +43319,35 @@ components:
       title: getAuthMethod is a command that returns information about the auth method.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    getCertificateValue:
+      properties:
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        name:
+          description: Certificate name
+          type: string
+          x-go-name: CertificateName
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+        version:
+          description: Certificate version
+          format: int32
+          type: integer
+          x-go-name: Version
+      required:
+      - name
+      title: getCertificateValue is a command that gets a certificate value.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     getDynamicSecretValue:
       properties:
         args:
@@ -44106,6 +44389,9 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     listSRABastions:
       properties:
+        allowed-urls-only:
+          type: boolean
+          x-go-name: BastionsAllowedURLsOnly
         json:
           description: Set output format to JSON
           type: boolean
@@ -44414,6 +44700,12 @@ components:
           description: Key name
           type: string
           x-go-name: KeyName
+        new-cert-pem-data:
+          description: |-
+            The new pem encoded certificate for the classic key.
+            relevant only for keys provided by user ('bring-your-own-key')
+          type: string
+          x-go-name: NewCertPemData
         new-key-data:
           description: |-
             The new base64 encoded value for the classic key.
@@ -46678,6 +46970,60 @@ components:
           format: int64
           type: integer
           x-go-name: TargetID
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    updateCertificateOutput:
+      example:
+        name: name
+      properties:
+        name:
+          type: string
+          x-go-name: Name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    updateCertificateValue:
+      properties:
+        certificate-data:
+          description: Content of the certificate PEM in a Base64 format.
+          type: string
+          x-go-name: CertificateData
+        expiration-event-in:
+          description: How many days before the expiration of the certificate would
+            you like to be notified.
+          items:
+            type: string
+          type: array
+          x-go-name: ExpirationEventsInDays
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        key:
+          description: |-
+            The name of a key to use to encrypt the certificate's key (if empty, the
+            account default protectionKey key will be used)
+          type: string
+          x-go-name: ProtectionKey
+        key-data:
+          description: Content of the certificate's private key PEM in a Base64 format.
+          type: string
+          x-go-name: PrivateKeyData
+        name:
+          description: Certificate name
+          type: string
+          x-go-name: CertificateName
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      required:
+      - name
+      title: updateCertificateValue is a command that updates a certificate.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     updateDBTarget:

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AllowedUrlsOnly** | Pointer to **bool** |  | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -26,6 +27,31 @@ will change when the set of required properties is changed
 NewListSRABastionsWithDefaults instantiates a new ListSRABastions object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAllowedUrlsOnly
+
+`func (o *ListSRABastions) GetAllowedUrlsOnly() bool`
+
+GetAllowedUrlsOnly returns the AllowedUrlsOnly field if non-nil, zero value otherwise.
+
+### GetAllowedUrlsOnlyOk
+
+`func (o *ListSRABastions) GetAllowedUrlsOnlyOk() (*bool, bool)`
+
+GetAllowedUrlsOnlyOk returns a tuple with the AllowedUrlsOnly field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowedUrlsOnly
+
+`func (o *ListSRABastions) SetAllowedUrlsOnly(v bool)`
+
+SetAllowedUrlsOnly sets AllowedUrlsOnly field to given value.
+
+### HasAllowedUrlsOnly
+
+`func (o *ListSRABastions) HasAllowedUrlsOnly() bool`
+
+HasAllowedUrlsOnly returns a boolean if a field has been set.
 
 ### GetJson
 

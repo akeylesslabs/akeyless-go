@@ -17,6 +17,7 @@ import (
 
 // ListSRABastions struct for ListSRABastions
 type ListSRABastions struct {
+	AllowedUrlsOnly *bool `json:"allowed-urls-only,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -40,6 +41,38 @@ func NewListSRABastions() *ListSRABastions {
 func NewListSRABastionsWithDefaults() *ListSRABastions {
 	this := ListSRABastions{}
 	return &this
+}
+
+// GetAllowedUrlsOnly returns the AllowedUrlsOnly field value if set, zero value otherwise.
+func (o *ListSRABastions) GetAllowedUrlsOnly() bool {
+	if o == nil || o.AllowedUrlsOnly == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AllowedUrlsOnly
+}
+
+// GetAllowedUrlsOnlyOk returns a tuple with the AllowedUrlsOnly field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListSRABastions) GetAllowedUrlsOnlyOk() (*bool, bool) {
+	if o == nil || o.AllowedUrlsOnly == nil {
+		return nil, false
+	}
+	return o.AllowedUrlsOnly, true
+}
+
+// HasAllowedUrlsOnly returns a boolean if a field has been set.
+func (o *ListSRABastions) HasAllowedUrlsOnly() bool {
+	if o != nil && o.AllowedUrlsOnly != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowedUrlsOnly gets a reference to the given bool and assigns it to the AllowedUrlsOnly field.
+func (o *ListSRABastions) SetAllowedUrlsOnly(v bool) {
+	o.AllowedUrlsOnly = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -140,6 +173,9 @@ func (o *ListSRABastions) SetUidToken(v string) {
 
 func (o ListSRABastions) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AllowedUrlsOnly != nil {
+		toSerialize["allowed-urls-only"] = o.AllowedUrlsOnly
+	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json
 	}

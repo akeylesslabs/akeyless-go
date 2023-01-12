@@ -77,6 +77,8 @@ docs/CreateAuthMethodUniversalIdentity.md
 docs/CreateAuthMethodUniversalIdentityOutput.md
 docs/CreateAzureTarget.md
 docs/CreateAzureTargetOutput.md
+docs/CreateCertificate.md
+docs/CreateCertificateOutput.md
 docs/CreateClassicKey.md
 docs/CreateClassicKeyOutput.md
 docs/CreateDBTarget.md
@@ -319,6 +321,8 @@ docs/GatewayUpdateProducerRedshift.md
 docs/GatewayUpdateProducerRedshiftOutput.md
 docs/GatewayUpdateProducerSnowflake.md
 docs/GatewayUpdateProducerSnowflakeOutput.md
+docs/GatewayUpdateTlsCert.md
+docs/GatewayUpdateTlsCertOutput.md
 docs/GatewayUpdateTmpUsers.md
 docs/GatewaysListResponse.md
 docs/GenCustomerFragment.md
@@ -326,6 +330,8 @@ docs/GeneralConfigPart.md
 docs/GetAccountSettings.md
 docs/GetAccountSettingsCommandOutput.md
 docs/GetAuthMethod.md
+docs/GetCertificateValue.md
+docs/GetCertificateValueOutput.md
 docs/GetDynamicSecretValue.md
 docs/GetEventForwarder.md
 docs/GetEventForwarderOutput.md
@@ -520,6 +526,8 @@ docs/UpdateAuthMethodSAML.md
 docs/UpdateAuthMethodUniversalIdentity.md
 docs/UpdateAzureTarget.md
 docs/UpdateAzureTargetOutput.md
+docs/UpdateCertificateOutput.md
+docs/UpdateCertificateValue.md
 docs/UpdateDBTarget.md
 docs/UpdateDBTargetDetails.md
 docs/UpdateDBTargetOutput.md
@@ -655,6 +663,8 @@ model_create_aws_target.go
 model_create_aws_target_output.go
 model_create_azure_target.go
 model_create_azure_target_output.go
+model_create_certificate.go
+model_create_certificate_output.go
 model_create_classic_key.go
 model_create_classic_key_output.go
 model_create_db_target.go
@@ -894,6 +904,8 @@ model_gateway_update_producer_redshift.go
 model_gateway_update_producer_redshift_output.go
 model_gateway_update_producer_snowflake.go
 model_gateway_update_producer_snowflake_output.go
+model_gateway_update_tls_cert.go
+model_gateway_update_tls_cert_output.go
 model_gateway_update_tmp_users.go
 model_gateways_list_response.go
 model_gcp_access_rules.go
@@ -904,6 +916,8 @@ model_general_config_part.go
 model_get_account_settings.go
 model_get_account_settings_command_output.go
 model_get_auth_method.go
+model_get_certificate_value.go
+model_get_certificate_value_output.go
 model_get_dynamic_secret_value.go
 model_get_event_forwarder.go
 model_get_event_forwarder_output.go
@@ -1098,6 +1112,8 @@ model_update_aws_target.go
 model_update_aws_target_details.go
 model_update_azure_target.go
 model_update_azure_target_output.go
+model_update_certificate_output.go
+model_update_certificate_value.go
 model_update_db_target.go
 model_update_db_target_details.go
 model_update_db_target_output.go

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Key name | 
+**NewCertPemData** | Pointer to **string** | The new pem encoded certificate for the classic key. relevant only for keys provided by user (&#39;bring-your-own-key&#39;) | [optional] 
 **NewKeyData** | Pointer to **string** | The new base64 encoded value for the classic key. relevant only for keys provided by user (&#39;bring-your-own-key&#39;) | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -73,6 +74,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetNewCertPemData
+
+`func (o *RotateKey) GetNewCertPemData() string`
+
+GetNewCertPemData returns the NewCertPemData field if non-nil, zero value otherwise.
+
+### GetNewCertPemDataOk
+
+`func (o *RotateKey) GetNewCertPemDataOk() (*string, bool)`
+
+GetNewCertPemDataOk returns a tuple with the NewCertPemData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNewCertPemData
+
+`func (o *RotateKey) SetNewCertPemData(v string)`
+
+SetNewCertPemData sets NewCertPemData field to given value.
+
+### HasNewCertPemData
+
+`func (o *RotateKey) HasNewCertPemData() bool`
+
+HasNewCertPemData returns a boolean if a field has been set.
 
 ### GetNewKeyData
 

@@ -24,6 +24,7 @@ Method | HTTP request | Description
 [**CreateAuthMethodSAML**](V2Api.md#CreateAuthMethodSAML) | **Post** /create-auth-method-saml | 
 [**CreateAuthMethodUniversalIdentity**](V2Api.md#CreateAuthMethodUniversalIdentity) | **Post** /create-auth-method-universal-identity | 
 [**CreateAzureTarget**](V2Api.md#CreateAzureTarget) | **Post** /create-azure-target | 
+[**CreateCertificate**](V2Api.md#CreateCertificate) | **Post** /create-certificate | 
 [**CreateClassicKey**](V2Api.md#CreateClassicKey) | **Post** /create-classic-key | 
 [**CreateDBTarget**](V2Api.md#CreateDBTarget) | **Post** /create-db-target | 
 [**CreateDFCKey**](V2Api.md#CreateDFCKey) | **Post** /create-dfc-key | 
@@ -140,10 +141,12 @@ Method | HTTP request | Description
 [**GatewayUpdateProducerRdp**](V2Api.md#GatewayUpdateProducerRdp) | **Post** /gateway-update-producer-rdp | 
 [**GatewayUpdateProducerRedshift**](V2Api.md#GatewayUpdateProducerRedshift) | **Post** /gateway-update-producer-redshift | 
 [**GatewayUpdateProducerSnowflake**](V2Api.md#GatewayUpdateProducerSnowflake) | **Post** /gateway-update-producer-snowflake | 
+[**GatewayUpdateTlsCert**](V2Api.md#GatewayUpdateTlsCert) | **Post** /gateway-update-tls-cert | 
 [**GatewayUpdateTmpUsers**](V2Api.md#GatewayUpdateTmpUsers) | **Post** /gateway-update-producer-tmp-creds | 
 [**GetAccountLogo**](V2Api.md#GetAccountLogo) | **Post** /get-account-logo | 
 [**GetAccountSettings**](V2Api.md#GetAccountSettings) | **Post** /get-account-settings | 
 [**GetAuthMethod**](V2Api.md#GetAuthMethod) | **Post** /get-auth-method | 
+[**GetCertificateValue**](V2Api.md#GetCertificateValue) | **Post** /get-certificate-value | 
 [**GetDynamicSecretValue**](V2Api.md#GetDynamicSecretValue) | **Post** /get-dynamic-secret-value | 
 [**GetEventForwarder**](V2Api.md#GetEventForwarder) | **Post** /get-event-forwarder | 
 [**GetKubeExecCreds**](V2Api.md#GetKubeExecCreds) | **Post** /get-kube-exec-creds | 
@@ -215,6 +218,7 @@ Method | HTTP request | Description
 [**UpdateAuthMethodSAML**](V2Api.md#UpdateAuthMethodSAML) | **Post** /update-auth-method-saml | 
 [**UpdateAuthMethodUniversalIdentity**](V2Api.md#UpdateAuthMethodUniversalIdentity) | **Post** /update-auth-method-universal-identity | 
 [**UpdateAzureTarget**](V2Api.md#UpdateAzureTarget) | **Post** /update-azure-target | 
+[**UpdateCertificateValue**](V2Api.md#UpdateCertificateValue) | **Post** /update-certificate-value | 
 [**UpdateDBTarget**](V2Api.md#UpdateDBTarget) | **Post** /update-db-target | 
 [**UpdateDBTargetDetails**](V2Api.md#UpdateDBTargetDetails) | **Post** /update-db-target-details | 
 [**UpdateDockerhubTarget**](V2Api.md#UpdateDockerhubTarget) | **Post** /update-dockerhub-target | 
@@ -1516,6 +1520,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateAzureTargetOutput**](createAzureTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateCertificate
+
+> CreateCertificateOutput CreateCertificate(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewcreateCertificate("Name_example") // CreateCertificate | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.CreateCertificate(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateCertificate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateCertificate`: CreateCertificateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateCertificate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateCertificateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateCertificate**](CreateCertificate.md) |  | 
+
+### Return type
+
+[**CreateCertificateOutput**](createCertificateOutput.md)
 
 ### Authorization
 
@@ -8953,6 +9021,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GatewayUpdateTlsCert
+
+> GatewayUpdateTlsCertOutput GatewayUpdateTlsCert(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewGatewayUpdateTlsCert() // GatewayUpdateTlsCert | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateTlsCert(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateTlsCert``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateTlsCert`: GatewayUpdateTlsCertOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateTlsCert`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateTlsCertRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateTlsCert**](GatewayUpdateTlsCert.md) |  | 
+
+### Return type
+
+[**GatewayUpdateTlsCertOutput**](GatewayUpdateTlsCertOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GatewayUpdateTmpUsers
 
 > GatewayUpdateTmpUsers(ctx).Body(body).Execute()
@@ -9187,6 +9319,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AuthMethod**](AuthMethod.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetCertificateValue
+
+> GetCertificateValueOutput GetCertificateValue(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgetCertificateValue("Name_example") // GetCertificateValue | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GetCertificateValue(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GetCertificateValue``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetCertificateValue`: GetCertificateValueOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GetCertificateValue`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetCertificateValueRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GetCertificateValue**](GetCertificateValue.md) |  | 
+
+### Return type
+
+[**GetCertificateValueOutput**](GetCertificateValueOutput.md)
 
 ### Authorization
 
@@ -13722,6 +13918,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**UpdateAzureTargetOutput**](updateAzureTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateCertificateValue
+
+> UpdateCertificateOutput UpdateCertificateValue(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewupdateCertificateValue("Name_example") // UpdateCertificateValue | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdateCertificateValue(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateCertificateValue``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateCertificateValue`: UpdateCertificateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateCertificateValue`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateCertificateValueRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateCertificateValue**](UpdateCertificateValue.md) |  | 
+
+### Return type
+
+[**UpdateCertificateOutput**](updateCertificateOutput.md)
 
 ### Authorization
 
