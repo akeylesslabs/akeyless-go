@@ -24,11 +24,13 @@ type UpdateItem struct {
 	// PEM Certificate in a Base64 format. Used for updating RSA keys' certificates.
 	CertFileData *string `json:"cert-file-data,omitempty"`
 	DeleteProtection *string `json:"delete_protection,omitempty"`
+	// Description of the object
+	Description *string `json:"description,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Current item name
 	Name string `json:"name"`
-	// New item metadata
+	// Deprecated - use description
 	NewMetadata *string `json:"new-metadata,omitempty"`
 	// New item name
 	NewName *string `json:"new-name,omitempty"`
@@ -72,6 +74,8 @@ func NewUpdateItem(name string, ) *UpdateItem {
 	this := UpdateItem{}
 	var accessibility string = "regular"
 	this.Accessibility = &accessibility
+	var description string = "default_metadata"
+	this.Description = &description
 	this.Name = name
 	var newMetadata string = "default_metadata"
 	this.NewMetadata = &newMetadata
@@ -85,6 +89,8 @@ func NewUpdateItemWithDefaults() *UpdateItem {
 	this := UpdateItem{}
 	var accessibility string = "regular"
 	this.Accessibility = &accessibility
+	var description string = "default_metadata"
+	this.Description = &description
 	var newMetadata string = "default_metadata"
 	this.NewMetadata = &newMetadata
 	return &this
@@ -216,6 +222,38 @@ func (o *UpdateItem) HasDeleteProtection() bool {
 // SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
 func (o *UpdateItem) SetDeleteProtection(v string) {
 	o.DeleteProtection = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *UpdateItem) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateItem) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *UpdateItem) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *UpdateItem) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -1215,6 +1253,9 @@ func (o UpdateItem) MarshalJSON() ([]byte, error) {
 	}
 	if o.DeleteProtection != nil {
 		toSerialize["delete_protection"] = o.DeleteProtection
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json

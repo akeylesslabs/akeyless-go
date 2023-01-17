@@ -12,10 +12,11 @@ Name | Type | Description | Notes
 **CodeSigningFlag** | Pointer to **bool** | If set, certificates will be flagged for code signing use | [optional] 
 **Country** | Pointer to **string** | A comma-separated list of countries that will be set in the issued certificate | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
+**Description** | Pointer to **string** | Description of the object | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **KeyUsage** | Pointer to **string** | key-usage | [optional] [default to "DigitalSignature,KeyAgreement,KeyEncipherment"]
 **Locality** | Pointer to **string** | A comma-separated list of localities that will be set in the issued certificate | [optional] 
-**Metadata** | Pointer to **string** | A metadata about the issuer | [optional] 
+**Metadata** | Pointer to **string** | Deprecated - use description | [optional] 
 **Name** | **string** | PKI certificate issuer name | 
 **NotEnforceHostnames** | Pointer to **bool** | If set, any names are allowed for CN and SANs in the certificate and not only a valid host name | [optional] 
 **NotRequireCn** | Pointer to **bool** | If set, clients can request certificates without a CN | [optional] 
@@ -249,6 +250,31 @@ SetDeleteProtection sets DeleteProtection field to given value.
 `func (o *CreatePKICertIssuer) HasDeleteProtection() bool`
 
 HasDeleteProtection returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *CreatePKICertIssuer) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *CreatePKICertIssuer) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *CreatePKICertIssuer) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *CreatePKICertIssuer) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetJson
 

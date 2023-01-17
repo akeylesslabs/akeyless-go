@@ -29,13 +29,15 @@ type CreateRotatedSecret struct {
 	CustomPayload *string `json:"custom-payload,omitempty"`
 	// Protection from accidental deletion of this item
 	DeleteProtection *string `json:"delete_protection,omitempty"`
+	// Description of the object
+	Description *string `json:"description,omitempty"`
 	// Base64-encoded service account private key text
 	GcpKey *string `json:"gcp-key,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
-	// Metadata about the secret
+	// Deprecated - use description
 	Metadata *string `json:"metadata,omitempty"`
 	// Secret name
 	Name string `json:"name"`
@@ -388,6 +390,38 @@ func (o *CreateRotatedSecret) HasDeleteProtection() bool {
 // SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
 func (o *CreateRotatedSecret) SetDeleteProtection(v string) {
 	o.DeleteProtection = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *CreateRotatedSecret) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRotatedSecret) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *CreateRotatedSecret) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *CreateRotatedSecret) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetGcpKey returns the GcpKey field value if set, zero value otherwise.
@@ -1479,6 +1513,9 @@ func (o CreateRotatedSecret) MarshalJSON() ([]byte, error) {
 	}
 	if o.DeleteProtection != nil {
 		toSerialize["delete_protection"] = o.DeleteProtection
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.GcpKey != nil {
 		toSerialize["gcp-key"] = o.GcpKey

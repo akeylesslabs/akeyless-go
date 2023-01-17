@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Producer name | 
 **NewName** | Pointer to **string** | Producer name | [optional] 
+**PrivateKey** | Pointer to **string** | RSA Private key (base64 encoded) | [optional] 
+**PrivateKeyPassphrase** | Pointer to **string** | The Private key passphrase | [optional] 
 **Role** | Pointer to **string** | User role | [optional] 
 **Tags** | Pointer to **[]string** | List of the tags attached to this secret | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
@@ -233,6 +235,56 @@ SetNewName sets NewName field to given value.
 `func (o *GatewayUpdateProducerSnowflake) HasNewName() bool`
 
 HasNewName returns a boolean if a field has been set.
+
+### GetPrivateKey
+
+`func (o *GatewayUpdateProducerSnowflake) GetPrivateKey() string`
+
+GetPrivateKey returns the PrivateKey field if non-nil, zero value otherwise.
+
+### GetPrivateKeyOk
+
+`func (o *GatewayUpdateProducerSnowflake) GetPrivateKeyOk() (*string, bool)`
+
+GetPrivateKeyOk returns a tuple with the PrivateKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrivateKey
+
+`func (o *GatewayUpdateProducerSnowflake) SetPrivateKey(v string)`
+
+SetPrivateKey sets PrivateKey field to given value.
+
+### HasPrivateKey
+
+`func (o *GatewayUpdateProducerSnowflake) HasPrivateKey() bool`
+
+HasPrivateKey returns a boolean if a field has been set.
+
+### GetPrivateKeyPassphrase
+
+`func (o *GatewayUpdateProducerSnowflake) GetPrivateKeyPassphrase() string`
+
+GetPrivateKeyPassphrase returns the PrivateKeyPassphrase field if non-nil, zero value otherwise.
+
+### GetPrivateKeyPassphraseOk
+
+`func (o *GatewayUpdateProducerSnowflake) GetPrivateKeyPassphraseOk() (*string, bool)`
+
+GetPrivateKeyPassphraseOk returns a tuple with the PrivateKeyPassphrase field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrivateKeyPassphrase
+
+`func (o *GatewayUpdateProducerSnowflake) SetPrivateKeyPassphrase(v string)`
+
+SetPrivateKeyPassphrase sets PrivateKeyPassphrase field to given value.
+
+### HasPrivateKeyPassphrase
+
+`func (o *GatewayUpdateProducerSnowflake) HasPrivateKeyPassphrase() bool`
+
+HasPrivateKeyPassphrase returns a boolean if a field has been set.
 
 ### GetRole
 

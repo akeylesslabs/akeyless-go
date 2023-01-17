@@ -52,6 +52,8 @@ Name | Type | Description | Notes
 **DbMaxOpenConns** | Pointer to **string** |  | [optional] 
 **DbName** | Pointer to **string** |  | [optional] 
 **DbPort** | Pointer to **string** |  | [optional] 
+**DbPrivateKey** | Pointer to **string** | (Optional) Private Key in PEM format | [optional] 
+**DbPrivateKeyPassphrase** | Pointer to **string** |  | [optional] 
 **DbPwd** | Pointer to **string** |  | [optional] 
 **DbServerCertificates** | Pointer to **string** | (Optional) DBServerCertificates defines the set of root certificate authorities that clients use when verifying server certificates. If DBServerCertificates is empty, TLS uses the host&#39;s root CA set. | [optional] 
 **DbServerName** | Pointer to **string** | (Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client&#39;s handshake to support virtual hosting unless it is an IP address. | [optional] 
@@ -102,9 +104,11 @@ Name | Type | Description | Notes
 **ImplementationType** | Pointer to **string** |  | [optional] 
 **IsFixedUser** | Pointer to **string** |  | [optional] 
 **ItemTargetsAssoc** | Pointer to [**[]ItemTargetAssociation**](ItemTargetAssociation.md) |  | [optional] 
+**K8sAllowedNamespaces** | Pointer to **string** | comma-separated list of allowed namespaces. Can hold just * which signifies that any namespace is allowed | [optional] 
 **K8sBearerToken** | Pointer to **string** |  | [optional] 
 **K8sClusterCaCertificate** | Pointer to **string** |  | [optional] 
 **K8sClusterEndpoint** | Pointer to **string** |  | [optional] 
+**K8sDynamicMode** | Pointer to **bool** | when native k8s is in dynamic mode, user can define allowed namespaces, K8sServiceAccount doesn&#39;t exist from the start and will only be created at time of getting dynamic secret value By default dynamic mode is false and producer behaves like it did before | [optional] 
 **K8sNamespace** | Pointer to **string** |  | [optional] 
 **K8sServiceAccount** | Pointer to **string** |  | [optional] 
 **LastAdminRotation** | Pointer to **int64** |  | [optional] 
@@ -1402,6 +1406,56 @@ SetDbPort sets DbPort field to given value.
 
 HasDbPort returns a boolean if a field has been set.
 
+### GetDbPrivateKey
+
+`func (o *DSProducerDetails) GetDbPrivateKey() string`
+
+GetDbPrivateKey returns the DbPrivateKey field if non-nil, zero value otherwise.
+
+### GetDbPrivateKeyOk
+
+`func (o *DSProducerDetails) GetDbPrivateKeyOk() (*string, bool)`
+
+GetDbPrivateKeyOk returns a tuple with the DbPrivateKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDbPrivateKey
+
+`func (o *DSProducerDetails) SetDbPrivateKey(v string)`
+
+SetDbPrivateKey sets DbPrivateKey field to given value.
+
+### HasDbPrivateKey
+
+`func (o *DSProducerDetails) HasDbPrivateKey() bool`
+
+HasDbPrivateKey returns a boolean if a field has been set.
+
+### GetDbPrivateKeyPassphrase
+
+`func (o *DSProducerDetails) GetDbPrivateKeyPassphrase() string`
+
+GetDbPrivateKeyPassphrase returns the DbPrivateKeyPassphrase field if non-nil, zero value otherwise.
+
+### GetDbPrivateKeyPassphraseOk
+
+`func (o *DSProducerDetails) GetDbPrivateKeyPassphraseOk() (*string, bool)`
+
+GetDbPrivateKeyPassphraseOk returns a tuple with the DbPrivateKeyPassphrase field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDbPrivateKeyPassphrase
+
+`func (o *DSProducerDetails) SetDbPrivateKeyPassphrase(v string)`
+
+SetDbPrivateKeyPassphrase sets DbPrivateKeyPassphrase field to given value.
+
+### HasDbPrivateKeyPassphrase
+
+`func (o *DSProducerDetails) HasDbPrivateKeyPassphrase() bool`
+
+HasDbPrivateKeyPassphrase returns a boolean if a field has been set.
+
 ### GetDbPwd
 
 `func (o *DSProducerDetails) GetDbPwd() string`
@@ -2652,6 +2706,31 @@ SetItemTargetsAssoc sets ItemTargetsAssoc field to given value.
 
 HasItemTargetsAssoc returns a boolean if a field has been set.
 
+### GetK8sAllowedNamespaces
+
+`func (o *DSProducerDetails) GetK8sAllowedNamespaces() string`
+
+GetK8sAllowedNamespaces returns the K8sAllowedNamespaces field if non-nil, zero value otherwise.
+
+### GetK8sAllowedNamespacesOk
+
+`func (o *DSProducerDetails) GetK8sAllowedNamespacesOk() (*string, bool)`
+
+GetK8sAllowedNamespacesOk returns a tuple with the K8sAllowedNamespaces field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sAllowedNamespaces
+
+`func (o *DSProducerDetails) SetK8sAllowedNamespaces(v string)`
+
+SetK8sAllowedNamespaces sets K8sAllowedNamespaces field to given value.
+
+### HasK8sAllowedNamespaces
+
+`func (o *DSProducerDetails) HasK8sAllowedNamespaces() bool`
+
+HasK8sAllowedNamespaces returns a boolean if a field has been set.
+
 ### GetK8sBearerToken
 
 `func (o *DSProducerDetails) GetK8sBearerToken() string`
@@ -2726,6 +2805,31 @@ SetK8sClusterEndpoint sets K8sClusterEndpoint field to given value.
 `func (o *DSProducerDetails) HasK8sClusterEndpoint() bool`
 
 HasK8sClusterEndpoint returns a boolean if a field has been set.
+
+### GetK8sDynamicMode
+
+`func (o *DSProducerDetails) GetK8sDynamicMode() bool`
+
+GetK8sDynamicMode returns the K8sDynamicMode field if non-nil, zero value otherwise.
+
+### GetK8sDynamicModeOk
+
+`func (o *DSProducerDetails) GetK8sDynamicModeOk() (*bool, bool)`
+
+GetK8sDynamicModeOk returns a tuple with the K8sDynamicMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sDynamicMode
+
+`func (o *DSProducerDetails) SetK8sDynamicMode(v bool)`
+
+SetK8sDynamicMode sets K8sDynamicMode field to given value.
+
+### HasK8sDynamicMode
+
+`func (o *DSProducerDetails) HasK8sDynamicMode() bool`
+
+HasK8sDynamicMode returns a boolean if a field has been set.
 
 ### GetK8sNamespace
 

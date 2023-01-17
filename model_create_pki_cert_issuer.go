@@ -33,13 +33,15 @@ type CreatePKICertIssuer struct {
 	Country *string `json:"country,omitempty"`
 	// Protection from accidental deletion of this item
 	DeleteProtection *string `json:"delete_protection,omitempty"`
+	// Description of the object
+	Description *string `json:"description,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// key-usage
 	KeyUsage *string `json:"key-usage,omitempty"`
 	// A comma-separated list of localities that will be set in the issued certificate
 	Locality *string `json:"locality,omitempty"`
-	// A metadata about the issuer
+	// Deprecated - use description
 	Metadata *string `json:"metadata,omitempty"`
 	// PKI certificate issuer name
 	Name string `json:"name"`
@@ -349,6 +351,38 @@ func (o *CreatePKICertIssuer) HasDeleteProtection() bool {
 // SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
 func (o *CreatePKICertIssuer) SetDeleteProtection(v string) {
 	o.DeleteProtection = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *CreatePKICertIssuer) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreatePKICertIssuer) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *CreatePKICertIssuer) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *CreatePKICertIssuer) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -928,6 +962,9 @@ func (o CreatePKICertIssuer) MarshalJSON() ([]byte, error) {
 	}
 	if o.DeleteProtection != nil {
 		toSerialize["delete_protection"] = o.DeleteProtection
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json

@@ -33,13 +33,15 @@ type UpdatePKICertIssuer struct {
 	CodeSigningFlag *bool `json:"code-signing-flag,omitempty"`
 	// A comma-separated list of the country that will be set in the issued certificate
 	Country *string `json:"country,omitempty"`
+	// Description of the object
+	Description *string `json:"description,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// key-usage
 	KeyUsage *string `json:"key-usage,omitempty"`
 	// A comma-separated list of the locality that will be set in the issued certificate
 	Locality *string `json:"locality,omitempty"`
-	// A metadata about the issuer
+	// Deprecated - use description
 	Metadata *string `json:"metadata,omitempty"`
 	// PKI certificate issuer name
 	Name string `json:"name"`
@@ -351,6 +353,38 @@ func (o *UpdatePKICertIssuer) HasCountry() bool {
 // SetCountry gets a reference to the given string and assigns it to the Country field.
 func (o *UpdatePKICertIssuer) SetCountry(v string) {
 	o.Country = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *UpdatePKICertIssuer) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdatePKICertIssuer) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *UpdatePKICertIssuer) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *UpdatePKICertIssuer) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -962,6 +996,9 @@ func (o UpdatePKICertIssuer) MarshalJSON() ([]byte, error) {
 	}
 	if o.Country != nil {
 		toSerialize["country"] = o.Country
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json

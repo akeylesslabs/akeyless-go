@@ -21,11 +21,13 @@ type UpdateSSHCertIssuer struct {
 	AddTag *[]string `json:"add-tag,omitempty"`
 	// Users allowed to fetch the certificate, e.g root,ubuntu
 	AllowedUsers string `json:"allowed-users"`
+	// Description of the object
+	Description *string `json:"description,omitempty"`
 	// Signed certificates with extensions, e.g permit-port-forwarding=\\\"\\\"
 	Extensions *map[string]string `json:"extensions,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// A metadata about the issuer
+	// Deprecated - use description
 	Metadata *string `json:"metadata,omitempty"`
 	// SSH certificate issuer name
 	Name string `json:"name"`
@@ -126,6 +128,38 @@ func (o *UpdateSSHCertIssuer) GetAllowedUsersOk() (*string, bool) {
 // SetAllowedUsers sets field value
 func (o *UpdateSSHCertIssuer) SetAllowedUsers(v string) {
 	o.AllowedUsers = v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *UpdateSSHCertIssuer) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateSSHCertIssuer) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *UpdateSSHCertIssuer) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *UpdateSSHCertIssuer) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetExtensions returns the Extensions field value if set, zero value otherwise.
@@ -655,6 +689,9 @@ func (o UpdateSSHCertIssuer) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["allowed-users"] = o.AllowedUsers
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.Extensions != nil {
 		toSerialize["extensions"] = o.Extensions

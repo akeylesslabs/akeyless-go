@@ -50,6 +50,10 @@ type UpdateDBTarget struct {
 	Port *string `json:"port,omitempty"`
 	Pwd *string `json:"pwd,omitempty"`
 	SnowflakeAccount *string `json:"snowflake-account,omitempty"`
+	// RSA Private key (base64 encoded)
+	SnowflakeApiPrivateKey *string `json:"snowflake-api-private-key,omitempty"`
+	// The Private key passphrase
+	SnowflakeApiPrivateKeyPassword *string `json:"snowflake-api-private-key-password,omitempty"`
 	// SSL connection mode
 	Ssl *bool `json:"ssl,omitempty"`
 	// SSL connection certificate
@@ -738,6 +742,70 @@ func (o *UpdateDBTarget) SetSnowflakeAccount(v string) {
 	o.SnowflakeAccount = &v
 }
 
+// GetSnowflakeApiPrivateKey returns the SnowflakeApiPrivateKey field value if set, zero value otherwise.
+func (o *UpdateDBTarget) GetSnowflakeApiPrivateKey() string {
+	if o == nil || o.SnowflakeApiPrivateKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.SnowflakeApiPrivateKey
+}
+
+// GetSnowflakeApiPrivateKeyOk returns a tuple with the SnowflakeApiPrivateKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateDBTarget) GetSnowflakeApiPrivateKeyOk() (*string, bool) {
+	if o == nil || o.SnowflakeApiPrivateKey == nil {
+		return nil, false
+	}
+	return o.SnowflakeApiPrivateKey, true
+}
+
+// HasSnowflakeApiPrivateKey returns a boolean if a field has been set.
+func (o *UpdateDBTarget) HasSnowflakeApiPrivateKey() bool {
+	if o != nil && o.SnowflakeApiPrivateKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSnowflakeApiPrivateKey gets a reference to the given string and assigns it to the SnowflakeApiPrivateKey field.
+func (o *UpdateDBTarget) SetSnowflakeApiPrivateKey(v string) {
+	o.SnowflakeApiPrivateKey = &v
+}
+
+// GetSnowflakeApiPrivateKeyPassword returns the SnowflakeApiPrivateKeyPassword field value if set, zero value otherwise.
+func (o *UpdateDBTarget) GetSnowflakeApiPrivateKeyPassword() string {
+	if o == nil || o.SnowflakeApiPrivateKeyPassword == nil {
+		var ret string
+		return ret
+	}
+	return *o.SnowflakeApiPrivateKeyPassword
+}
+
+// GetSnowflakeApiPrivateKeyPasswordOk returns a tuple with the SnowflakeApiPrivateKeyPassword field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateDBTarget) GetSnowflakeApiPrivateKeyPasswordOk() (*string, bool) {
+	if o == nil || o.SnowflakeApiPrivateKeyPassword == nil {
+		return nil, false
+	}
+	return o.SnowflakeApiPrivateKeyPassword, true
+}
+
+// HasSnowflakeApiPrivateKeyPassword returns a boolean if a field has been set.
+func (o *UpdateDBTarget) HasSnowflakeApiPrivateKeyPassword() bool {
+	if o != nil && o.SnowflakeApiPrivateKeyPassword != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSnowflakeApiPrivateKeyPassword gets a reference to the given string and assigns it to the SnowflakeApiPrivateKeyPassword field.
+func (o *UpdateDBTarget) SetSnowflakeApiPrivateKeyPassword(v string) {
+	o.SnowflakeApiPrivateKeyPassword = &v
+}
+
 // GetSsl returns the Ssl field value if set, zero value otherwise.
 func (o *UpdateDBTarget) GetSsl() bool {
 	if o == nil || o.Ssl == nil {
@@ -994,6 +1062,12 @@ func (o UpdateDBTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.SnowflakeAccount != nil {
 		toSerialize["snowflake-account"] = o.SnowflakeAccount
+	}
+	if o.SnowflakeApiPrivateKey != nil {
+		toSerialize["snowflake-api-private-key"] = o.SnowflakeApiPrivateKey
+	}
+	if o.SnowflakeApiPrivateKeyPassword != nil {
+		toSerialize["snowflake-api-private-key-password"] = o.SnowflakeApiPrivateKeyPassword
 	}
 	if o.Ssl != nil {
 		toSerialize["ssl"] = o.Ssl

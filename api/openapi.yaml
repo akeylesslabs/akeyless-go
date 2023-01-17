@@ -1233,6 +1233,33 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /decrypt-gpg:
+    post:
+      operationId: decryptGPG
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/decryptGPG'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/decryptGPGOutput'
+          description: decryptGPGResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /decrypt-pkcs1:
     post:
       operationId: decryptPKCS1
@@ -1743,6 +1770,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/encryptOutput'
           description: encryptResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /encrypt-gpg:
+    post:
+      operationId: encryptGPG
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/encryptGPG'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/encryptGPGOutput'
+          description: encryptGPGResponse wraps response body.
         default:
           content:
             application/json:
@@ -5061,6 +5115,33 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /sign-gpg:
+    post:
+      operationId: signGPG
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/signGPG'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/signGPGOutput'
+          description: signGPGResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /sign-jwt-with-classic-key:
     post:
       operationId: signJWTWithClassicKey
@@ -6628,6 +6709,33 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /verify-gpg:
+    post:
+      operationId: verifyGPG
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/verifyGPG'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/verifyGPGOutput'
+          description: verifyGPGResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /verify-jwt-with-classic-key:
     post:
       operationId: verifyJWTWithClassicKey
@@ -7005,6 +7113,12 @@ components:
           schema:
             $ref: '#/components/schemas/decryptFileOutput'
       description: decryptFileResponse wraps response body.
+    decryptGPGResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/decryptGPGOutput'
+      description: decryptGPGResponse wraps response body.
     decryptPKCS1Response:
       content:
         application/json:
@@ -7119,6 +7233,12 @@ components:
           schema:
             $ref: '#/components/schemas/encryptFileOutput'
       description: encryptFileResponse wraps response body.
+    encryptGPGResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/encryptGPGOutput'
+      description: encryptGPGResponse wraps response body.
     encryptResponse:
       content:
         application/json:
@@ -7877,6 +7997,12 @@ components:
           schema:
             type: object
       description: shareItemResponse wraps response body.
+    signGPGResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/signGPGOutput'
+      description: signGPGResponse wraps response body.
     signJWTWithClassicKeyResponse:
       content:
         application/json:
@@ -8195,6 +8321,12 @@ components:
           schema:
             $ref: '#/components/schemas/validateTokenOutput'
       description: validateTokenResponse wraps response body.
+    verifyGPGResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/verifyGPGOutput'
+      description: verifyGPGResponse wraps response body.
     verifyJWTWithClassicKeyResponse:
       content:
         application/json:
@@ -11165,11 +11297,9 @@ components:
       description: CreateClassicKey is a command that creates classic key
       example:
         protection-key-name: protection-key-name
-        delete_protection: delete_protection
         metadata: metadata
-        name: name
-        json: true
-        alg: alg
+        description: description
+        gpg-alg: gpg-alg
         cert-file-data: cert-file-data
         key-data: key-data
         uid-token: uid-token
@@ -11177,10 +11307,14 @@ components:
         - tags
         - tags
         token: token
+        delete_protection: delete_protection
+        name: name
+        json: true
+        alg: alg
       properties:
         alg:
           description: 'Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV,
-            AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384]'
+            AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384, GPG]'
           type: string
           x-go-name: Alg
         cert-file-data:
@@ -11191,6 +11325,15 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        description:
+          description: Description of the object
+          type: string
+          x-go-name: Description
+        gpg-alg:
+          description: 'gpg alg: Relevant only if GPG key type selected; options:
+            [RSA1024, RSA2048, RSA3072, RSA4096, Ed25519]'
+          type: string
+          x-go-name: GPGAlg
         json:
           description: Set output format to JSON
           type: boolean
@@ -11200,7 +11343,7 @@ components:
           type: string
           x-go-name: ClassicKeyValue
         metadata:
-          description: Metadata about the classic key
+          description: Deprecated - use description
           type: string
           x-go-name: Metadata
         name:
@@ -11256,6 +11399,7 @@ components:
         key-usage: DigitalSignature,KeyAgreement,KeyEncipherment
         country: country
         metadata: metadata
+        description: description
         organizational-units: organizational-units
         uid-token: uid-token
         allow-subdomains: true
@@ -11322,6 +11466,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        description:
+          description: Description of the object
+          type: string
+          x-go-name: Description
         json:
           description: Set output format to JSON
           type: boolean
@@ -11337,7 +11485,7 @@ components:
           type: string
           x-go-name: Locality
         metadata:
-          description: A metadata about the issuer
+          description: Deprecated - use description
           type: string
           x-go-name: Metadata
         name:
@@ -11537,6 +11685,7 @@ components:
         azure_fixed_user_only: true
         warn_before_user_expiration_min: 4
         azure_user_roles_template_id: azure_user_roles_template_id
+        db_private_key: db_private_key
         fixed_user_only: fixed_user_only
         rabbitmq_server_password: rabbitmq_server_password
         aws_access_mode: aws_access_mode
@@ -11616,6 +11765,7 @@ components:
         mongodb_host_port: mongodb_host_port
         sf_warehouse_name: sf_warehouse_name
         artifactory_token_scope: artifactory_token_scope
+        k8s_dynamic_mode: true
         revoke_sync_url: revoke_sync_url
         gke_cluster_ca_certificate: gke_cluster_ca_certificate
         host_port: host_port
@@ -11624,6 +11774,7 @@ components:
         enable_admin_rotation: true
         cassandra_creation_statements: cassandra_creation_statements
         failure_message: failure_message
+        db_private_key_passphrase: db_private_key_passphrase
         rabbitmq_user_read_permission: rabbitmq_user_read_permission
         azure_client_id: azure_client_id
         mongodb_default_auth_db: mongodb_default_auth_db
@@ -11672,6 +11823,7 @@ components:
         hanadb_creation_statements: hanadb_creation_statements
         password_length: 7
         github_installation_id: 5
+        k8s_allowed_namespaces: k8s_allowed_namespaces
         dynamic_secret_name: dynamic_secret_name
         rabbitmq_server_uri: rabbitmq_server_uri
         chef_server_access_mode: chef_server_access_mode
@@ -11882,6 +12034,13 @@ components:
         db_port:
           type: string
           x-go-name: DbPort
+        db_private_key:
+          description: (Optional) Private Key in PEM format
+          type: string
+          x-go-name: DbPrivateKey
+        db_private_key_passphrase:
+          type: string
+          x-go-name: DbPrivateKeyPassphrase
         db_pwd:
           type: string
           x-go-name: DbPwd
@@ -12059,6 +12218,11 @@ components:
             $ref: '#/components/schemas/ItemTargetAssociation'
           type: array
           x-go-name: ItemTargetsAssoc
+        k8s_allowed_namespaces:
+          description: comma-separated list of allowed namespaces. Can hold just *
+            which signifies that any namespace is allowed
+          type: string
+          x-go-name: AllowedNamespaces
         k8s_bearer_token:
           type: string
           x-go-name: K8sBearerToken
@@ -12068,6 +12232,13 @@ components:
         k8s_cluster_endpoint:
           type: string
           x-go-name: K8sClusterEndpoint
+        k8s_dynamic_mode:
+          description: |-
+            when native k8s is in dynamic mode, user can define allowed namespaces,
+            K8sServiceAccount doesn't exist from the start and will only be created at time of getting dynamic secret value
+            By default dynamic mode is false and producer behaves like it did before
+          type: boolean
+          x-go-name: DynamicMode
         k8s_namespace:
           type: string
           x-go-name: K8sNamespace
@@ -13336,6 +13507,7 @@ components:
           azure_resource_name: azure_resource_name
           chef_server_key: chef_server_key
           implementation_type: implementation_type
+          db_private_key_passphrase: db_private_key_passphrase
           ssl_connection_certificate: ssl_connection_certificate
           client_id: client_id
           azure_client_id: azure_client_id
@@ -13357,6 +13529,7 @@ components:
           ldap_audience: ldap_audience
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
+          db_private_key: db_private_key
           rabbitmq_server_password: rabbitmq_server_password
           ldap_bind_password: ldap_bind_password
           private_key: private_key
@@ -20311,6 +20484,7 @@ components:
         azure_resource_name: azure_resource_name
         chef_server_key: chef_server_key
         implementation_type: implementation_type
+        db_private_key_passphrase: db_private_key_passphrase
         ssl_connection_certificate: ssl_connection_certificate
         client_id: client_id
         azure_client_id: azure_client_id
@@ -20332,6 +20506,7 @@ components:
         ldap_audience: ldap_audience
         ldap_bind_dn: ldap_bind_dn
         ldap_url: ldap_url
+        db_private_key: db_private_key
         rabbitmq_server_password: rabbitmq_server_password
         ldap_bind_password: ldap_bind_password
         private_key: private_key
@@ -20499,6 +20674,13 @@ components:
         db_port:
           type: string
           x-go-name: DbPort
+        db_private_key:
+          description: (Optional) Private Key in PEM format
+          type: string
+          x-go-name: DbPrivateKey
+        db_private_key_passphrase:
+          type: string
+          x-go-name: DbPrivateKeyPassphrase
         db_pwd:
           type: string
           x-go-name: DbPwd
@@ -20650,10 +20832,10 @@ components:
           x-go-name: HostPort
         private_key:
           type: string
-          x-go-name: PrivateKey
+          x-go-name: SshPrivateKey
         private_key_password:
           type: string
-          x-go-name: PrivateKeyPassword
+          x-go-name: SshPrivateKeyPassword
         rabbitmq_server_password:
           type: string
           x-go-name: RabbitmqServerPassword
@@ -20896,6 +21078,7 @@ components:
         key-usage: DigitalSignature,KeyAgreement,KeyEncipherment
         country: country
         metadata: metadata
+        description: description
         organizational-units: organizational-units
         new-name: new-name
         uid-token: uid-token
@@ -20968,6 +21151,10 @@ components:
             certificate
           type: string
           x-go-name: Country
+        description:
+          description: Description of the object
+          type: string
+          x-go-name: Description
         json:
           description: Set output format to JSON
           type: boolean
@@ -20984,7 +21171,7 @@ components:
           type: string
           x-go-name: Locality
         metadata:
-          description: A metadata about the issuer
+          description: Deprecated - use description
           type: string
           x-go-name: Metadata
         name:
@@ -21164,6 +21351,11 @@ components:
         assocTargetItem is a command that creates an association between target
         and item.
       properties:
+        disable-previous-key-version:
+          description: Automatically disable previous key version (required for azure
+            targets)
+          type: boolean
+          x-go-name: AutoDisablePreviousKeyVersion
         json:
           description: Set output format to JSON
           type: boolean
@@ -22882,6 +23074,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        description:
+          description: Description of the object
+          type: string
+          x-go-name: Description
         expiration-event-in:
           description: How many days before the expiration of the certificate would
             you like to be notified.
@@ -22904,7 +23100,7 @@ components:
           type: string
           x-go-name: PrivateKeyData
         metadata:
-          description: Metadata about the certificate
+          description: Deprecated - use description
           type: string
           x-go-name: Metadata
         name:
@@ -23013,6 +23209,14 @@ components:
         snowflake-account:
           type: string
           x-go-name: SnowflakeAccount
+        snowflake-api-private-key:
+          description: RSA Private key (base64 encoded)
+          type: string
+          x-go-name: SnowflakeAPIPrivateKey
+        snowflake-api-private-key-password:
+          description: The Private key passphrase
+          type: string
+          x-go-name: SnowflakeAPIPrivateKeyPass
         ssl:
           description: SSL connection mode
           type: boolean
@@ -23066,12 +23270,16 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        description:
+          description: Description of the object
+          type: string
+          x-go-name: Description
         json:
           description: Set output format to JSON
           type: boolean
           x-go-name: Json
         metadata:
-          description: Metadata about the DFC key
+          description: Deprecated - use description
           type: string
           x-go-name: Metadata
         name:
@@ -23179,6 +23387,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        description:
+          description: Description of the object
+          type: string
+          x-go-name: Description
         json:
           description: Set output format to JSON
           type: boolean
@@ -23190,8 +23402,7 @@ components:
           type: string
           x-go-name: ProtectionKey
         metadata:
-          default: None
-          description: Metadata about the dynamic secret
+          description: Deprecated - use description
           type: string
           x-go-name: Metadata
         name:
@@ -23583,12 +23794,16 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        description:
+          description: Description of the object
+          type: string
+          x-go-name: Description
         json:
           description: Set output format to JSON
           type: boolean
           x-go-name: Json
         metadata:
-          description: Metadata about the key
+          description: Deprecated - use description
           type: string
           x-go-name: Metadata
         name:
@@ -23930,6 +24145,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        description:
+          description: Description of the object
+          type: string
+          x-go-name: Description
         gcp-key:
           description: Base64-encoded service account private key text
           type: string
@@ -23945,7 +24164,7 @@ components:
           type: string
           x-go-name: ProtectionKey
         metadata:
-          description: Metadata about the secret
+          description: Deprecated - use description
           type: string
           x-go-name: Metadata
         name:
@@ -24092,6 +24311,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        description:
+          description: Description of the object
+          type: string
+          x-go-name: Description
         extensions:
           additionalProperties:
             type: string
@@ -24103,7 +24326,7 @@ components:
           type: boolean
           x-go-name: Json
         metadata:
-          description: A metadata about the issuer
+          description: Deprecated - use description
           type: string
           x-go-name: Metadata
         name:
@@ -24343,12 +24566,16 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        description:
+          description: Description of the object
+          type: string
+          x-go-name: Description
         json:
           description: Set output format to JSON
           type: boolean
           x-go-name: Json
         metadata:
-          description: Metadata about the secret
+          description: Deprecated - use description
           type: string
           x-go-name: Metadata
         multiline_value:
@@ -24455,6 +24682,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        description:
+          description: Description of the object
+          type: string
+          x-go-name: Description
         encoding-template:
           description: The Encoding output template to use in regexp vaultless tokenization
           type: string
@@ -24468,7 +24699,7 @@ components:
           type: boolean
           x-go-name: Json
         metadata:
-          description: A metadata about the tokenizer
+          description: Deprecated - use description
           type: string
           x-go-name: Metadata
         name:
@@ -24663,6 +24894,62 @@ components:
         plain_text:
           type: string
           x-go-name: PlainText
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    decryptGPG:
+      properties:
+        ciphertext:
+          description: Ciphertext to be decrypted in base64 encoded format
+          type: string
+          x-go-name: Ciphertext
+        display-id:
+          description: The display id of the key to use in the decryption process
+          type: string
+          x-go-name: DisplayId
+        item-id:
+          description: The item id of the key to use in the decryption process
+          format: int64
+          type: integer
+          x-go-name: ItemId
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        key-name:
+          description: The name of the key to use in the decryption process
+          type: string
+          x-go-name: KeyName
+        output-format:
+          description: 'If specified, the output will be formatted accordingly. options:
+            [base64]'
+          type: string
+          x-go-name: OutputFormat
+        passphrase:
+          description: Passphrase that was used to generate the key
+          type: string
+          x-go-name: Passphrase
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      required:
+      - ciphertext
+      - key-name
+      title: decryptGPG is a command that decrypts GPG cipher text based on RSA key.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    decryptGPGOutput:
+      example:
+        result: result
+      properties:
+        result:
+          type: string
+          x-go-name: Result
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     decryptOutput:
@@ -25443,6 +25730,59 @@ components:
           x-go-name: Result
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    encryptGPG:
+      properties:
+        display-id:
+          description: The display id of the key to use in the encryption process
+          type: string
+          x-go-name: DisplayId
+        input-format:
+          description: 'If specified, the plaintext input is assumed to be formatted
+            accordingly. Current supported options: [base64]'
+          type: string
+          x-go-name: InputFormat
+        item-id:
+          description: The item id of the key to use in the encryption process
+          format: int64
+          type: integer
+          x-go-name: ItemId
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        key-name:
+          description: The name of the key to use in the encryption process
+          type: string
+          x-go-name: KeyName
+        plaintext:
+          description: Data to be encrypted
+          type: string
+          x-go-name: Plaintext
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      required:
+      - key-name
+      - plaintext
+      title: encryptGPG is a command that encrypts plaintext using GPG based on RSA
+        key.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    encryptGPGOutput:
+      example:
+        result: result
+      properties:
+        result:
+          type: string
+          x-go-name: Result
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     encryptOutput:
       example:
         result: result
@@ -26029,6 +26369,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -26108,6 +26449,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -26116,6 +26458,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -26164,6 +26507,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -26388,6 +26732,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -26467,6 +26812,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -26475,6 +26821,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -26523,6 +26870,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -26736,6 +27084,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -26815,6 +27164,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -26823,6 +27173,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -26871,6 +27222,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -27046,6 +27398,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -27125,6 +27478,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -27133,6 +27487,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -27181,6 +27536,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -27405,6 +27761,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -27484,6 +27841,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -27492,6 +27850,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -27540,6 +27899,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -27804,6 +28164,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -27883,6 +28244,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -27891,6 +28253,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -27939,6 +28302,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -28108,6 +28472,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -28187,6 +28552,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -28195,6 +28561,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -28243,6 +28610,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -28440,6 +28808,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -28519,6 +28888,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -28527,6 +28897,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -28575,6 +28946,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -28758,6 +29130,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -28837,6 +29210,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -28845,6 +29219,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -28893,6 +29268,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -29065,6 +29441,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -29144,6 +29521,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -29152,6 +29530,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -29200,6 +29579,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -29388,6 +29768,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -29467,6 +29848,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -29475,6 +29857,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -29523,6 +29906,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -29723,6 +30107,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -29802,6 +30187,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -29810,6 +30196,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -29858,6 +30245,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -30044,6 +30432,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -30123,6 +30512,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -30131,6 +30521,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -30179,6 +30570,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -30379,6 +30771,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -30458,6 +30851,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -30466,6 +30860,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -30514,6 +30909,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -30732,6 +31128,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -30811,6 +31208,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -30819,6 +31217,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -30867,6 +31266,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -31076,6 +31476,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -31155,6 +31556,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -31163,6 +31565,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -31211,6 +31614,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -31408,6 +31812,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -31487,6 +31892,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -31495,6 +31901,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -31543,6 +31950,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -31745,6 +32153,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -31824,6 +32233,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -31832,6 +32242,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -31880,6 +32291,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -32085,6 +32497,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -32164,6 +32577,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -32172,6 +32586,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -32220,6 +32635,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -32423,6 +32839,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -32502,6 +32919,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -32510,6 +32928,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -32558,6 +32977,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -32764,6 +33184,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -32843,6 +33264,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -32851,6 +33273,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -32899,6 +33322,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -33091,6 +33515,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -33170,6 +33595,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -33178,6 +33604,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -33226,6 +33653,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -33296,7 +33724,7 @@ components:
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     gatewayCreateProducerSnowflake:
-      description: gatewayCreateProducerSnowflakeCmd is a command that creates a Snowflake
+      description: GatewayCreateProducerSnowflakeCmd is a command that creates a Snowflake
         producer
       properties:
         account:
@@ -33327,6 +33755,14 @@ components:
           description: Producer name
           type: string
           x-go-name: ProducerName
+        private-key:
+          description: RSA Private key (base64 encoded)
+          type: string
+          x-go-name: PrivateKey
+        private-key-passphrase:
+          description: The Private key passphrase
+          type: string
+          x-go-name: PrivateKeyPassphrase
         role:
           description: User role
           type: string
@@ -33400,6 +33836,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -33479,6 +33916,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -33487,6 +33925,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -33535,6 +33974,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -34928,6 +35368,11 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        description:
+          default: default_metadata
+          description: Description of the object
+          type: string
+          x-go-name: Description
         gcp-key:
           description: Base64-encoded service account private key text
           type: string
@@ -34950,7 +35395,7 @@ components:
           x-go-name: ItemName
         new-metadata:
           default: default_metadata
-          description: New item metadata
+          description: Deprecated - use description
           type: string
           x-go-name: NewMetadata
         new-name:
@@ -35562,6 +36007,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -35641,6 +36087,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -35649,6 +36096,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -35697,6 +36145,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -35925,6 +36374,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -36004,6 +36454,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -36012,6 +36463,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -36060,6 +36512,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -36277,6 +36730,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -36356,6 +36810,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -36364,6 +36819,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -36412,6 +36868,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -36591,6 +37048,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -36670,6 +37128,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -36678,6 +37137,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -36726,6 +37186,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -36954,6 +37415,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -37033,6 +37495,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -37041,6 +37504,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -37089,6 +37553,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -37361,6 +37826,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -37440,6 +37906,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -37448,6 +37915,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -37496,6 +37964,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -37669,6 +38138,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -37748,6 +38218,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -37756,6 +38227,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -37804,6 +38276,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -38005,6 +38478,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -38084,6 +38558,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -38092,6 +38567,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -38140,6 +38616,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -38327,6 +38804,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -38406,6 +38884,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -38414,6 +38893,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -38462,6 +38942,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -38638,6 +39119,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -38717,6 +39199,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -38725,6 +39208,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -38773,6 +39257,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -38965,6 +39450,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -39044,6 +39530,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -39052,6 +39539,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -39100,6 +39588,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -39304,6 +39793,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -39383,6 +39873,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -39391,6 +39882,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -39439,6 +39931,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -39629,6 +40122,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -39708,6 +40202,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -39716,6 +40211,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -39764,6 +40260,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -39968,6 +40465,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -40047,6 +40545,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -40055,6 +40554,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -40103,6 +40603,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -40325,6 +40826,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -40404,6 +40906,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -40412,6 +40915,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -40460,6 +40964,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -40673,6 +41178,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -40752,6 +41258,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -40760,6 +41267,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -40808,6 +41316,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -41009,6 +41518,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -41088,6 +41598,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -41096,6 +41607,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -41144,6 +41656,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -41350,6 +41863,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -41429,6 +41943,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -41437,6 +41952,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -41485,6 +42001,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -41694,6 +42211,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -41773,6 +42291,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -41781,6 +42300,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -41829,6 +42349,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -42036,6 +42557,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -42115,6 +42637,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -42123,6 +42646,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -42171,6 +42695,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -42381,6 +42906,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -42460,6 +42986,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -42468,6 +42995,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -42516,6 +43044,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -42712,6 +43241,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -42791,6 +43321,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -42799,6 +43330,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -42847,6 +43379,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -42917,7 +43450,7 @@ components:
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     gatewayUpdateProducerSnowflake:
-      description: gatewayUpdateProducerSnowflakeCmd is a command that updates a Snowflake
+      description: GatewayUpdateProducerSnowflakeCmd is a command that updates a Snowflake
         producer
       properties:
         account:
@@ -42952,6 +43485,14 @@ components:
           description: Producer name
           type: string
           x-go-name: ProducerNewName
+        private-key:
+          description: RSA Private key (base64 encoded)
+          type: string
+          x-go-name: PrivateKey
+        private-key-passphrase:
+          description: The Private key passphrase
+          type: string
+          x-go-name: PrivateKeyPassphrase
         role:
           description: User role
           type: string
@@ -43025,6 +43566,7 @@ components:
           azure_fixed_user_only: true
           warn_before_user_expiration_min: 4
           azure_user_roles_template_id: azure_user_roles_template_id
+          db_private_key: db_private_key
           fixed_user_only: fixed_user_only
           rabbitmq_server_password: rabbitmq_server_password
           aws_access_mode: aws_access_mode
@@ -43104,6 +43646,7 @@ components:
           mongodb_host_port: mongodb_host_port
           sf_warehouse_name: sf_warehouse_name
           artifactory_token_scope: artifactory_token_scope
+          k8s_dynamic_mode: true
           revoke_sync_url: revoke_sync_url
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           host_port: host_port
@@ -43112,6 +43655,7 @@ components:
           enable_admin_rotation: true
           cassandra_creation_statements: cassandra_creation_statements
           failure_message: failure_message
+          db_private_key_passphrase: db_private_key_passphrase
           rabbitmq_user_read_permission: rabbitmq_user_read_permission
           azure_client_id: azure_client_id
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -43160,6 +43704,7 @@ components:
           hanadb_creation_statements: hanadb_creation_statements
           password_length: 7
           github_installation_id: 5
+          k8s_allowed_namespaces: k8s_allowed_namespaces
           dynamic_secret_name: dynamic_secret_name
           rabbitmq_server_uri: rabbitmq_server_uri
           chef_server_access_mode: chef_server_access_mode
@@ -43267,13 +43812,17 @@ components:
     genCustomerFragment:
       properties:
         description:
-          description: The Customer Fragment Description
+          description: Description of the object
           type: string
           x-go-name: Description
         json:
           description: Set output format to JSON
           type: boolean
           x-go-name: Json
+        metadata:
+          description: Deprecated - use description
+          type: string
+          x-go-name: Metadata
       title: genCustomerFragment is a command that generates customer fragment.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
@@ -44892,6 +45441,58 @@ components:
       - item-name
       title: shareItem is a command to start/stop/describe sharing a given item with
         user that don't use akeyless.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    signGPG:
+      properties:
+        display-id:
+          description: The display id of the key to use in the encryption process
+          type: string
+          x-go-name: DisplayId
+        item-id:
+          description: The item id of the key to use in the encryption process
+          format: int64
+          type: integer
+          x-go-name: ItemId
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        key-name:
+          description: The name of the key to use in the encryption process
+          type: string
+          x-go-name: KeyName
+        message:
+          description: The message to be signed in base64 format
+          type: string
+          x-go-name: Message
+        passphrase:
+          description: Passphrase that was used to generate the key
+          type: string
+          x-go-name: Passphrase
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      required:
+      - key-name
+      - message
+      title: signGPG is a command that calculates the GPG signature of a message using
+        RSA key.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    signGPGOutput:
+      example:
+        result: result
+      properties:
+        result:
+          type: string
+          x-go-name: Result
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     signJWTOutput:
@@ -47106,6 +47707,14 @@ components:
         snowflake-account:
           type: string
           x-go-name: SnowflakeAccount
+        snowflake-api-private-key:
+          description: RSA Private key (base64 encoded)
+          type: string
+          x-go-name: SnowflakeAPIPrivateKey
+        snowflake-api-private-key-password:
+          description: The Private key passphrase
+          type: string
+          x-go-name: SnowflakeAPIPrivateKeyPass
         ssl:
           description: SSL connection mode
           type: boolean
@@ -47647,6 +48256,11 @@ components:
         delete_protection:
           type: string
           x-go-name: ItemProtected
+        description:
+          default: default_metadata
+          description: Description of the object
+          type: string
+          x-go-name: Description
         json:
           description: Set output format to JSON
           type: boolean
@@ -47657,7 +48271,7 @@ components:
           x-go-name: ItemName
         new-metadata:
           default: default_metadata
-          description: New item metadata
+          description: Deprecated - use description
           type: string
           x-go-name: NewMetadata
         new-name:
@@ -48250,6 +48864,11 @@ components:
         custom-payload:
           type: string
           x-go-name: Payload
+        description:
+          default: default_metadata
+          description: Description of the object
+          type: string
+          x-go-name: Description
         gcp-key:
           description: Base64-encoded service account private key text
           type: string
@@ -48273,7 +48892,7 @@ components:
           x-go-name: SecretName
         new-metadata:
           default: default_metadata
-          description: New item metadata
+          description: Deprecated - use description
           type: string
           x-go-name: NewMetadata
         new-name:
@@ -48452,6 +49071,10 @@ components:
           description: Users allowed to fetch the certificate, e.g root,ubuntu
           type: string
           x-go-name: AllowedUsers
+        description:
+          description: Description of the object
+          type: string
+          x-go-name: Description
         extensions:
           additionalProperties:
             type: string
@@ -48463,7 +49086,7 @@ components:
           type: boolean
           x-go-name: Json
         metadata:
-          description: A metadata about the issuer
+          description: Deprecated - use description
           type: string
           x-go-name: Metadata
         name:
@@ -49013,6 +49636,10 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        description:
+          description: Description of the object
+          type: string
+          x-go-name: Description
         in:
           description: PKCS#12 input file (private key and certificate only)
           type: string
@@ -49022,7 +49649,7 @@ components:
           type: boolean
           x-go-name: Json
         metadata:
-          description: A metadata about the key
+          description: Deprecated - use description
           type: string
           x-go-name: Metadata
         name:
@@ -49084,12 +49711,16 @@ components:
           description: Protection from accidental deletion of this item
           type: string
           x-go-name: ItemProtected
+        description:
+          description: Description of the object
+          type: string
+          x-go-name: Description
         json:
           description: Set output format to JSON
           type: boolean
           x-go-name: Json
         metadata:
-          description: A metadata about the key
+          description: Deprecated - use description
           type: string
           x-go-name: Metadata
         name:
@@ -49163,6 +49794,51 @@ components:
         reason:
           type: string
           x-go-name: Reason
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    verifyGPG:
+      properties:
+        display-id:
+          description: The display id of the key to use in the encryption process
+          type: string
+          x-go-name: DisplayId
+        item-id:
+          description: The item id of the key to use in the encryption process
+          format: int64
+          type: integer
+          x-go-name: ItemId
+        json:
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        key-name:
+          description: The name of the key to use in the encryption process
+          type: string
+          x-go-name: KeyName
+        passphrase:
+          description: Passphrase that was used to generate the key
+          type: string
+          x-go-name: Passphrase
+        signature:
+          description: The signature to be verified in base64 format
+          type: string
+          x-go-name: Signature
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      required:
+      - key-name
+      - signature
+      title: verifyGPG is a command that verifies a GPG signature based on RSA key.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    verifyGPGOutput:
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     verifyJWTOutput:

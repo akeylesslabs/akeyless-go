@@ -10,12 +10,13 @@ Name | Type | Description | Notes
 **AutoRotate** | Pointer to **string** | Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation | [optional] 
 **AwsRegion** | Pointer to **string** | Region (used in aws) | [optional] [default to "us-east-2"]
 **CustomPayload** | Pointer to **string** |  | [optional] 
+**Description** | Pointer to **string** | Description of the object | [optional] [default to "default_metadata"]
 **GcpKey** | Pointer to **string** | Base64-encoded service account private key text | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **KeepPrevVersion** | Pointer to **string** |  | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Secret name | 
-**NewMetadata** | Pointer to **string** | New item metadata | [optional] [default to "default_metadata"]
+**NewMetadata** | Pointer to **string** | Deprecated - use description | [optional] [default to "default_metadata"]
 **NewName** | Pointer to **string** | New item name | [optional] 
 **NewVersion** | Pointer to **bool** | Deprecated | [optional] 
 **RmTag** | Pointer to **[]string** | List of the existent tags that will be removed from this item | [optional] 
@@ -212,6 +213,31 @@ SetCustomPayload sets CustomPayload field to given value.
 `func (o *UpdateRotatedSecret) HasCustomPayload() bool`
 
 HasCustomPayload returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *UpdateRotatedSecret) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *UpdateRotatedSecret) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *UpdateRotatedSecret) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *UpdateRotatedSecret) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetGcpKey
 

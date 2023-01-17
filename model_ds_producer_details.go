@@ -65,6 +65,9 @@ type DSProducerDetails struct {
 	DbMaxOpenConns *string `json:"db_max_open_conns,omitempty"`
 	DbName *string `json:"db_name,omitempty"`
 	DbPort *string `json:"db_port,omitempty"`
+	// (Optional) Private Key in PEM format
+	DbPrivateKey *string `json:"db_private_key,omitempty"`
+	DbPrivateKeyPassphrase *string `json:"db_private_key_passphrase,omitempty"`
 	DbPwd *string `json:"db_pwd,omitempty"`
 	// (Optional) DBServerCertificates defines the set of root certificate authorities that clients use when verifying server certificates. If DBServerCertificates is empty, TLS uses the host's root CA set.
 	DbServerCertificates *string `json:"db_server_certificates,omitempty"`
@@ -118,9 +121,13 @@ type DSProducerDetails struct {
 	ImplementationType *string `json:"implementation_type,omitempty"`
 	IsFixedUser *string `json:"is_fixed_user,omitempty"`
 	ItemTargetsAssoc *[]ItemTargetAssociation `json:"item_targets_assoc,omitempty"`
+	// comma-separated list of allowed namespaces. Can hold just * which signifies that any namespace is allowed
+	K8sAllowedNamespaces *string `json:"k8s_allowed_namespaces,omitempty"`
 	K8sBearerToken *string `json:"k8s_bearer_token,omitempty"`
 	K8sClusterCaCertificate *string `json:"k8s_cluster_ca_certificate,omitempty"`
 	K8sClusterEndpoint *string `json:"k8s_cluster_endpoint,omitempty"`
+	// when native k8s is in dynamic mode, user can define allowed namespaces, K8sServiceAccount doesn't exist from the start and will only be created at time of getting dynamic secret value By default dynamic mode is false and producer behaves like it did before
+	K8sDynamicMode *bool `json:"k8s_dynamic_mode,omitempty"`
 	K8sNamespace *string `json:"k8s_namespace,omitempty"`
 	K8sServiceAccount *string `json:"k8s_service_account,omitempty"`
 	LastAdminRotation *int64 `json:"last_admin_rotation,omitempty"`
@@ -1761,6 +1768,70 @@ func (o *DSProducerDetails) SetDbPort(v string) {
 	o.DbPort = &v
 }
 
+// GetDbPrivateKey returns the DbPrivateKey field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetDbPrivateKey() string {
+	if o == nil || o.DbPrivateKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.DbPrivateKey
+}
+
+// GetDbPrivateKeyOk returns a tuple with the DbPrivateKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetDbPrivateKeyOk() (*string, bool) {
+	if o == nil || o.DbPrivateKey == nil {
+		return nil, false
+	}
+	return o.DbPrivateKey, true
+}
+
+// HasDbPrivateKey returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasDbPrivateKey() bool {
+	if o != nil && o.DbPrivateKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDbPrivateKey gets a reference to the given string and assigns it to the DbPrivateKey field.
+func (o *DSProducerDetails) SetDbPrivateKey(v string) {
+	o.DbPrivateKey = &v
+}
+
+// GetDbPrivateKeyPassphrase returns the DbPrivateKeyPassphrase field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetDbPrivateKeyPassphrase() string {
+	if o == nil || o.DbPrivateKeyPassphrase == nil {
+		var ret string
+		return ret
+	}
+	return *o.DbPrivateKeyPassphrase
+}
+
+// GetDbPrivateKeyPassphraseOk returns a tuple with the DbPrivateKeyPassphrase field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetDbPrivateKeyPassphraseOk() (*string, bool) {
+	if o == nil || o.DbPrivateKeyPassphrase == nil {
+		return nil, false
+	}
+	return o.DbPrivateKeyPassphrase, true
+}
+
+// HasDbPrivateKeyPassphrase returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasDbPrivateKeyPassphrase() bool {
+	if o != nil && o.DbPrivateKeyPassphrase != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDbPrivateKeyPassphrase gets a reference to the given string and assigns it to the DbPrivateKeyPassphrase field.
+func (o *DSProducerDetails) SetDbPrivateKeyPassphrase(v string) {
+	o.DbPrivateKeyPassphrase = &v
+}
+
 // GetDbPwd returns the DbPwd field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetDbPwd() string {
 	if o == nil || o.DbPwd == nil {
@@ -3361,6 +3432,38 @@ func (o *DSProducerDetails) SetItemTargetsAssoc(v []ItemTargetAssociation) {
 	o.ItemTargetsAssoc = &v
 }
 
+// GetK8sAllowedNamespaces returns the K8sAllowedNamespaces field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetK8sAllowedNamespaces() string {
+	if o == nil || o.K8sAllowedNamespaces == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sAllowedNamespaces
+}
+
+// GetK8sAllowedNamespacesOk returns a tuple with the K8sAllowedNamespaces field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetK8sAllowedNamespacesOk() (*string, bool) {
+	if o == nil || o.K8sAllowedNamespaces == nil {
+		return nil, false
+	}
+	return o.K8sAllowedNamespaces, true
+}
+
+// HasK8sAllowedNamespaces returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasK8sAllowedNamespaces() bool {
+	if o != nil && o.K8sAllowedNamespaces != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sAllowedNamespaces gets a reference to the given string and assigns it to the K8sAllowedNamespaces field.
+func (o *DSProducerDetails) SetK8sAllowedNamespaces(v string) {
+	o.K8sAllowedNamespaces = &v
+}
+
 // GetK8sBearerToken returns the K8sBearerToken field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetK8sBearerToken() string {
 	if o == nil || o.K8sBearerToken == nil {
@@ -3455,6 +3558,38 @@ func (o *DSProducerDetails) HasK8sClusterEndpoint() bool {
 // SetK8sClusterEndpoint gets a reference to the given string and assigns it to the K8sClusterEndpoint field.
 func (o *DSProducerDetails) SetK8sClusterEndpoint(v string) {
 	o.K8sClusterEndpoint = &v
+}
+
+// GetK8sDynamicMode returns the K8sDynamicMode field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetK8sDynamicMode() bool {
+	if o == nil || o.K8sDynamicMode == nil {
+		var ret bool
+		return ret
+	}
+	return *o.K8sDynamicMode
+}
+
+// GetK8sDynamicModeOk returns a tuple with the K8sDynamicMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetK8sDynamicModeOk() (*bool, bool) {
+	if o == nil || o.K8sDynamicMode == nil {
+		return nil, false
+	}
+	return o.K8sDynamicMode, true
+}
+
+// HasK8sDynamicMode returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasK8sDynamicMode() bool {
+	if o != nil && o.K8sDynamicMode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sDynamicMode gets a reference to the given bool and assigns it to the K8sDynamicMode field.
+func (o *DSProducerDetails) SetK8sDynamicMode(v bool) {
+	o.K8sDynamicMode = &v
 }
 
 // GetK8sNamespace returns the K8sNamespace field value if set, zero value otherwise.
@@ -6067,6 +6202,12 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	if o.DbPort != nil {
 		toSerialize["db_port"] = o.DbPort
 	}
+	if o.DbPrivateKey != nil {
+		toSerialize["db_private_key"] = o.DbPrivateKey
+	}
+	if o.DbPrivateKeyPassphrase != nil {
+		toSerialize["db_private_key_passphrase"] = o.DbPrivateKeyPassphrase
+	}
 	if o.DbPwd != nil {
 		toSerialize["db_pwd"] = o.DbPwd
 	}
@@ -6217,6 +6358,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	if o.ItemTargetsAssoc != nil {
 		toSerialize["item_targets_assoc"] = o.ItemTargetsAssoc
 	}
+	if o.K8sAllowedNamespaces != nil {
+		toSerialize["k8s_allowed_namespaces"] = o.K8sAllowedNamespaces
+	}
 	if o.K8sBearerToken != nil {
 		toSerialize["k8s_bearer_token"] = o.K8sBearerToken
 	}
@@ -6225,6 +6369,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.K8sClusterEndpoint != nil {
 		toSerialize["k8s_cluster_endpoint"] = o.K8sClusterEndpoint
+	}
+	if o.K8sDynamicMode != nil {
+		toSerialize["k8s_dynamic_mode"] = o.K8sDynamicMode
 	}
 	if o.K8sNamespace != nil {
 		toSerialize["k8s_namespace"] = o.K8sNamespace

@@ -25,6 +25,8 @@ Name | Type | Description | Notes
 **Port** | Pointer to **string** |  | [optional] 
 **Pwd** | Pointer to **string** |  | [optional] 
 **SnowflakeAccount** | Pointer to **string** |  | [optional] 
+**SnowflakeApiPrivateKey** | Pointer to **string** | RSA Private key (base64 encoded) | [optional] 
+**SnowflakeApiPrivateKeyPassword** | Pointer to **string** | The Private key passphrase | [optional] 
 **Ssl** | Pointer to **bool** | SSL connection mode | [optional] 
 **SslCertificate** | Pointer to **string** | SSL connection certificate | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -565,6 +567,56 @@ SetSnowflakeAccount sets SnowflakeAccount field to given value.
 `func (o *UpdateDBTarget) HasSnowflakeAccount() bool`
 
 HasSnowflakeAccount returns a boolean if a field has been set.
+
+### GetSnowflakeApiPrivateKey
+
+`func (o *UpdateDBTarget) GetSnowflakeApiPrivateKey() string`
+
+GetSnowflakeApiPrivateKey returns the SnowflakeApiPrivateKey field if non-nil, zero value otherwise.
+
+### GetSnowflakeApiPrivateKeyOk
+
+`func (o *UpdateDBTarget) GetSnowflakeApiPrivateKeyOk() (*string, bool)`
+
+GetSnowflakeApiPrivateKeyOk returns a tuple with the SnowflakeApiPrivateKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSnowflakeApiPrivateKey
+
+`func (o *UpdateDBTarget) SetSnowflakeApiPrivateKey(v string)`
+
+SetSnowflakeApiPrivateKey sets SnowflakeApiPrivateKey field to given value.
+
+### HasSnowflakeApiPrivateKey
+
+`func (o *UpdateDBTarget) HasSnowflakeApiPrivateKey() bool`
+
+HasSnowflakeApiPrivateKey returns a boolean if a field has been set.
+
+### GetSnowflakeApiPrivateKeyPassword
+
+`func (o *UpdateDBTarget) GetSnowflakeApiPrivateKeyPassword() string`
+
+GetSnowflakeApiPrivateKeyPassword returns the SnowflakeApiPrivateKeyPassword field if non-nil, zero value otherwise.
+
+### GetSnowflakeApiPrivateKeyPasswordOk
+
+`func (o *UpdateDBTarget) GetSnowflakeApiPrivateKeyPasswordOk() (*string, bool)`
+
+GetSnowflakeApiPrivateKeyPasswordOk returns a tuple with the SnowflakeApiPrivateKeyPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSnowflakeApiPrivateKeyPassword
+
+`func (o *UpdateDBTarget) SetSnowflakeApiPrivateKeyPassword(v string)`
+
+SetSnowflakeApiPrivateKeyPassword sets SnowflakeApiPrivateKeyPassword field to given value.
+
+### HasSnowflakeApiPrivateKeyPassword
+
+`func (o *UpdateDBTarget) HasSnowflakeApiPrivateKeyPassword() bool`
+
+HasSnowflakeApiPrivateKeyPassword returns a boolean if a field has been set.
 
 ### GetSsl
 

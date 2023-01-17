@@ -26,6 +26,8 @@ type GatewayUpdateItem struct {
 	CustomPayload *string `json:"custom-payload,omitempty"`
 	// Protection from accidental deletion of this item
 	DeleteProtection *string `json:"delete_protection,omitempty"`
+	// Description of the object
+	Description *string `json:"description,omitempty"`
 	// Base64-encoded service account private key text
 	GcpKey *string `json:"gcp-key,omitempty"`
 	// Set output format to JSON
@@ -35,7 +37,7 @@ type GatewayUpdateItem struct {
 	Key *string `json:"key,omitempty"`
 	// Item name
 	Name string `json:"name"`
-	// New item metadata
+	// Deprecated - use description
 	NewMetadata *string `json:"new-metadata,omitempty"`
 	// New item name
 	NewName *string `json:"new-name,omitempty"`
@@ -65,6 +67,8 @@ type GatewayUpdateItem struct {
 // will change when the set of required properties is changed
 func NewGatewayUpdateItem(name string, type_ string, ) *GatewayUpdateItem {
 	this := GatewayUpdateItem{}
+	var description string = "default_metadata"
+	this.Description = &description
 	this.Name = name
 	var newMetadata string = "default_metadata"
 	this.NewMetadata = &newMetadata
@@ -79,6 +83,8 @@ func NewGatewayUpdateItem(name string, type_ string, ) *GatewayUpdateItem {
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayUpdateItemWithDefaults() *GatewayUpdateItem {
 	this := GatewayUpdateItem{}
+	var description string = "default_metadata"
+	this.Description = &description
 	var newMetadata string = "default_metadata"
 	this.NewMetadata = &newMetadata
 	var rotationHour int32 = 0
@@ -276,6 +282,38 @@ func (o *GatewayUpdateItem) HasDeleteProtection() bool {
 // SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
 func (o *GatewayUpdateItem) SetDeleteProtection(v string) {
 	o.DeleteProtection = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *GatewayUpdateItem) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateItem) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *GatewayUpdateItem) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *GatewayUpdateItem) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetGcpKey returns the GcpKey field value if set, zero value otherwise.
@@ -825,6 +863,9 @@ func (o GatewayUpdateItem) MarshalJSON() ([]byte, error) {
 	}
 	if o.DeleteProtection != nil {
 		toSerialize["delete_protection"] = o.DeleteProtection
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.GcpKey != nil {
 		toSerialize["gcp-key"] = o.GcpKey

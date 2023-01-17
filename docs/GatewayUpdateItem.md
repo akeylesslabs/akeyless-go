@@ -10,12 +10,13 @@ Name | Type | Description | Notes
 **AutoRotate** | Pointer to **string** | Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation | [optional] 
 **CustomPayload** | Pointer to **string** |  | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
+**Description** | Pointer to **string** | Description of the object | [optional] [default to "default_metadata"]
 **GcpKey** | Pointer to **string** | Base64-encoded service account private key text | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **KeepPrevVersion** | Pointer to **string** |  | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Item name | 
-**NewMetadata** | Pointer to **string** | New item metadata | [optional] [default to "default_metadata"]
+**NewMetadata** | Pointer to **string** | Deprecated - use description | [optional] [default to "default_metadata"]
 **NewName** | Pointer to **string** | New item name | [optional] 
 **NewVersion** | Pointer to **bool** | Deprecated | [optional] 
 **RmTag** | Pointer to **[]string** | List of the existent tags that will be removed from this item | [optional] 
@@ -196,6 +197,31 @@ SetDeleteProtection sets DeleteProtection field to given value.
 `func (o *GatewayUpdateItem) HasDeleteProtection() bool`
 
 HasDeleteProtection returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *GatewayUpdateItem) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *GatewayUpdateItem) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *GatewayUpdateItem) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *GatewayUpdateItem) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetGcpKey
 

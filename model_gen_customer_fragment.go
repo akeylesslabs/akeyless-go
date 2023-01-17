@@ -17,10 +17,12 @@ import (
 
 // GenCustomerFragment struct for GenCustomerFragment
 type GenCustomerFragment struct {
-	// The Customer Fragment Description
+	// Description of the object
 	Description *string `json:"description,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
+	// Deprecated - use description
+	Metadata *string `json:"metadata,omitempty"`
 }
 
 // NewGenCustomerFragment instantiates a new GenCustomerFragment object
@@ -104,6 +106,38 @@ func (o *GenCustomerFragment) SetJson(v bool) {
 	o.Json = &v
 }
 
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
+func (o *GenCustomerFragment) GetMetadata() string {
+	if o == nil || o.Metadata == nil {
+		var ret string
+		return ret
+	}
+	return *o.Metadata
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GenCustomerFragment) GetMetadataOk() (*string, bool) {
+	if o == nil || o.Metadata == nil {
+		return nil, false
+	}
+	return o.Metadata, true
+}
+
+// HasMetadata returns a boolean if a field has been set.
+func (o *GenCustomerFragment) HasMetadata() bool {
+	if o != nil && o.Metadata != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given string and assigns it to the Metadata field.
+func (o *GenCustomerFragment) SetMetadata(v string) {
+	o.Metadata = &v
+}
+
 func (o GenCustomerFragment) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Description != nil {
@@ -111,6 +145,9 @@ func (o GenCustomerFragment) MarshalJSON() ([]byte, error) {
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json
+	}
+	if o.Metadata != nil {
+		toSerialize["metadata"] = o.Metadata
 	}
 	return json.Marshal(toSerialize)
 }

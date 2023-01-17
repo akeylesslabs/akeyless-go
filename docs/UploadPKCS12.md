@@ -6,9 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CustomerFrgId** | Pointer to **string** | The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment) | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
+**Description** | Pointer to **string** | Description of the object | [optional] 
 **In** | **string** | PKCS#12 input file (private key and certificate only) | 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] 
-**Metadata** | Pointer to **string** | A metadata about the key | [optional] 
+**Metadata** | Pointer to **string** | Deprecated - use description | [optional] 
 **Name** | **string** | Name of key to be created | 
 **Passphrase** | **string** | Passphrase to unlock the pkcs#12 bundle | 
 **SplitLevel** | Pointer to **int64** | The number of fragments that the item will be split into | [optional] [default to 2]
@@ -84,6 +85,31 @@ SetDeleteProtection sets DeleteProtection field to given value.
 `func (o *UploadPKCS12) HasDeleteProtection() bool`
 
 HasDeleteProtection returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *UploadPKCS12) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *UploadPKCS12) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *UploadPKCS12) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *UploadPKCS12) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetIn
 

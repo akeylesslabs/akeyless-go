@@ -6,9 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AddTag** | Pointer to **[]string** | List of the new tags that will be attached to this item | [optional] 
 **AllowedUsers** | **string** | Users allowed to fetch the certificate, e.g root,ubuntu | 
+**Description** | Pointer to **string** | Description of the object | [optional] 
 **Extensions** | Pointer to **map[string]string** | Signed certificates with extensions, e.g permit-port-forwarding&#x3D;\\\&quot;\\\&quot; | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] 
-**Metadata** | Pointer to **string** | A metadata about the issuer | [optional] 
+**Metadata** | Pointer to **string** | Deprecated - use description | [optional] 
 **Name** | **string** | SSH certificate issuer name | 
 **NewName** | Pointer to **string** | New item name | [optional] 
 **Principals** | Pointer to **string** | Signed certificates with principal, e.g example_role1,example_role2 | [optional] 
@@ -87,6 +88,31 @@ and a boolean to check if the value has been set.
 
 SetAllowedUsers sets AllowedUsers field to given value.
 
+
+### GetDescription
+
+`func (o *UpdateSSHCertIssuer) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *UpdateSSHCertIssuer) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *UpdateSSHCertIssuer) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *UpdateSSHCertIssuer) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetExtensions
 

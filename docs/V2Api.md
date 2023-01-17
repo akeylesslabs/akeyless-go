@@ -49,6 +49,7 @@ Method | HTTP request | Description
 [**CreateWebTarget**](V2Api.md#CreateWebTarget) | **Post** /create-web-target | 
 [**CreateldapTarget**](V2Api.md#CreateldapTarget) | **Post** /create-ldap-target | 
 [**Decrypt**](V2Api.md#Decrypt) | **Post** /decrypt | 
+[**DecryptGPG**](V2Api.md#DecryptGPG) | **Post** /decrypt-gpg | 
 [**DecryptPKCS1**](V2Api.md#DecryptPKCS1) | **Post** /decrypt-pkcs1 | 
 [**DecryptWithClassicKey**](V2Api.md#DecryptWithClassicKey) | **Post** /decrypt-with-classic-key | 
 [**DeleteAuthMethod**](V2Api.md#DeleteAuthMethod) | **Post** /delete-auth-method | 
@@ -68,6 +69,7 @@ Method | HTTP request | Description
 [**DescribeSubClaims**](V2Api.md#DescribeSubClaims) | **Post** /describe-sub-claims | 
 [**Detokenize**](V2Api.md#Detokenize) | **Post** /detokenize | 
 [**Encrypt**](V2Api.md#Encrypt) | **Post** /encrypt | 
+[**EncryptGPG**](V2Api.md#EncryptGPG) | **Post** /encrypt-gpg | 
 [**EncryptWithClassicKey**](V2Api.md#EncryptWithClassicKey) | **Post** /encrypt-with-classic-key | 
 [**ExportClassicKey**](V2Api.md#ExportClassicKey) | **Post** /export-classic-key | 
 [**GatewayCreateK8SAuthConfig**](V2Api.md#GatewayCreateK8SAuthConfig) | **Post** /gateway-create-k8s-auth-config | 
@@ -191,6 +193,7 @@ Method | HTTP request | Description
 [**SetItemState**](V2Api.md#SetItemState) | **Post** /set-item-state | 
 [**SetRoleRule**](V2Api.md#SetRoleRule) | **Post** /set-role-rule | 
 [**ShareItem**](V2Api.md#ShareItem) | **Post** /share-item | 
+[**SignGPG**](V2Api.md#SignGPG) | **Post** /sign-gpg | 
 [**SignJWTWithClassicKey**](V2Api.md#SignJWTWithClassicKey) | **Post** /sign-jwt-with-classic-key | 
 [**SignPKCS1**](V2Api.md#SignPKCS1) | **Post** /sign-pkcs1 | 
 [**SignPKICertWithClassicKey**](V2Api.md#SignPKICertWithClassicKey) | **Post** /sign-pki-cert-with-classic-key | 
@@ -249,6 +252,7 @@ Method | HTTP request | Description
 [**UpdateWebTargetDetails**](V2Api.md#UpdateWebTargetDetails) | **Post** /update-web-target-details | 
 [**UploadRSA**](V2Api.md#UploadRSA) | **Post** /upload-rsa | 
 [**ValidateToken**](V2Api.md#ValidateToken) | **Post** /validate-token | 
+[**VerifyGPG**](V2Api.md#VerifyGPG) | **Post** /verify-gpg | 
 [**VerifyJWTWithClassicKey**](V2Api.md#VerifyJWTWithClassicKey) | **Post** /verify-jwt-with-classic-key | 
 [**VerifyPKCS1**](V2Api.md#VerifyPKCS1) | **Post** /verify-pkcs1 | 
 [**VerifyPKICertWithClassicKey**](V2Api.md#VerifyPKICertWithClassicKey) | **Post** /verify-pki-cert-with-classic-key | 
@@ -3135,6 +3139,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## DecryptGPG
+
+> DecryptGPGOutput DecryptGPG(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdecryptGPG("Ciphertext_example", "KeyName_example") // DecryptGPG | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DecryptGPG(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DecryptGPG``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DecryptGPG`: DecryptGPGOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DecryptGPG`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDecryptGPGRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DecryptGPG**](DecryptGPG.md) |  | 
+
+### Return type
+
+[**DecryptGPGOutput**](decryptGPGOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## DecryptPKCS1
 
 > DecryptPKCS1Output DecryptPKCS1(ctx).Body(body).Execute()
@@ -4336,6 +4404,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**EncryptOutput**](encryptOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EncryptGPG
+
+> EncryptGPGOutput EncryptGPG(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewencryptGPG("KeyName_example", "Plaintext_example") // EncryptGPG | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.EncryptGPG(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.EncryptGPG``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EncryptGPG`: EncryptGPGOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.EncryptGPG`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEncryptGPGRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**EncryptGPG**](EncryptGPG.md) |  | 
+
+### Return type
+
+[**EncryptGPGOutput**](encryptGPGOutput.md)
 
 ### Authorization
 
@@ -12205,6 +12337,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## SignGPG
+
+> SignGPGOutput SignGPG(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewsignGPG("KeyName_example", "Message_example") // SignGPG | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.SignGPG(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.SignGPG``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SignGPG`: SignGPGOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.SignGPG`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSignGPGRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**SignGPG**](SignGPG.md) |  | 
+
+### Return type
+
+[**SignGPGOutput**](signGPGOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## SignJWTWithClassicKey
 
 > SignJWTOutput SignJWTWithClassicKey(ctx).Body(body).Execute()
@@ -15897,6 +16093,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ValidateTokenOutput**](validateTokenOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## VerifyGPG
+
+> map[string]interface{} VerifyGPG(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewverifyGPG("KeyName_example", "Signature_example") // VerifyGPG | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.VerifyGPG(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.VerifyGPG``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `VerifyGPG`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.VerifyGPG`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiVerifyGPGRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**VerifyGPG**](VerifyGPG.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
 
 ### Authorization
 

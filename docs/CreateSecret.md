@@ -6,8 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Accessibility** | Pointer to **string** | for personal password manager | [optional] [default to "regular"]
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
+**Description** | Pointer to **string** | Description of the object | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] 
-**Metadata** | Pointer to **string** | Metadata about the secret | [optional] 
+**Metadata** | Pointer to **string** | Deprecated - use description | [optional] 
 **MultilineValue** | Pointer to **bool** | The provided value is a multiline value (separated by &#39;\\n&#39;) | [optional] 
 **Name** | **string** | Secret name | 
 **PasswordManagerCustomField** | Pointer to **map[string]string** | For Password Management use, additional fields | [optional] 
@@ -97,6 +98,31 @@ SetDeleteProtection sets DeleteProtection field to given value.
 `func (o *CreateSecret) HasDeleteProtection() bool`
 
 HasDeleteProtection returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *CreateSecret) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *CreateSecret) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *CreateSecret) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *CreateSecret) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetJson
 

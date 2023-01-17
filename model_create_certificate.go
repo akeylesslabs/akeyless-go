@@ -21,6 +21,8 @@ type CreateCertificate struct {
 	CertificateData *string `json:"certificate-data,omitempty"`
 	// Protection from accidental deletion of this item
 	DeleteProtection *string `json:"delete_protection,omitempty"`
+	// Description of the object
+	Description *string `json:"description,omitempty"`
 	// How many days before the expiration of the certificate would you like to be notified.
 	ExpirationEventIn *[]string `json:"expiration-event-in,omitempty"`
 	// Set output format to JSON
@@ -29,7 +31,7 @@ type CreateCertificate struct {
 	Key *string `json:"key,omitempty"`
 	// Content of the certificate's private key PEM in a Base64 format.
 	KeyData *string `json:"key-data,omitempty"`
-	// Metadata about the certificate
+	// Deprecated - use description
 	Metadata *string `json:"metadata,omitempty"`
 	// Certificate name
 	Name string `json:"name"`
@@ -121,6 +123,38 @@ func (o *CreateCertificate) HasDeleteProtection() bool {
 // SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
 func (o *CreateCertificate) SetDeleteProtection(v string) {
 	o.DeleteProtection = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *CreateCertificate) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateCertificate) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *CreateCertificate) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *CreateCertificate) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetExpirationEventIn returns the ExpirationEventIn field value if set, zero value otherwise.
@@ -410,6 +444,9 @@ func (o CreateCertificate) MarshalJSON() ([]byte, error) {
 	}
 	if o.DeleteProtection != nil {
 		toSerialize["delete_protection"] = o.DeleteProtection
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.ExpirationEventIn != nil {
 		toSerialize["expiration-event-in"] = o.ExpirationEventIn

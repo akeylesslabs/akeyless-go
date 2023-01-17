@@ -7,10 +7,11 @@ Name | Type | Description | Notes
 **Alphabet** | Pointer to **string** | Alphabet to use in regexp vaultless tokenization | [optional] 
 **DecodingTemplate** | Pointer to **string** | The Decoding output template to use in regexp vaultless tokenization | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
+**Description** | Pointer to **string** | Description of the object | [optional] 
 **EncodingTemplate** | Pointer to **string** | The Encoding output template to use in regexp vaultless tokenization | [optional] 
 **EncryptionKeyName** | Pointer to **string** | AES key name to use in vaultless tokenization | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] 
-**Metadata** | Pointer to **string** | A metadata about the tokenizer | [optional] 
+**Metadata** | Pointer to **string** | Deprecated - use description | [optional] 
 **Name** | **string** | Tokenizer name | 
 **Pattern** | Pointer to **string** | Pattern to use in regexp vaultless tokenization | [optional] 
 **Tag** | Pointer to **[]string** | List of the tags attached to this key | [optional] 
@@ -113,6 +114,31 @@ SetDeleteProtection sets DeleteProtection field to given value.
 `func (o *CreateTokenizer) HasDeleteProtection() bool`
 
 HasDeleteProtection returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *CreateTokenizer) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *CreateTokenizer) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *CreateTokenizer) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *CreateTokenizer) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetEncodingTemplate
 

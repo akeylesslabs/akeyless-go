@@ -8,9 +8,10 @@ Name | Type | Description | Notes
 **AddTag** | Pointer to **[]string** | List of the new tags that will be attached to this item | [optional] 
 **CertFileData** | Pointer to **string** | PEM Certificate in a Base64 format. Used for updating RSA keys&#39; certificates. | [optional] 
 **DeleteProtection** | Pointer to **string** |  | [optional] 
+**Description** | Pointer to **string** | Description of the object | [optional] [default to "default_metadata"]
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Current item name | 
-**NewMetadata** | Pointer to **string** | New item metadata | [optional] [default to "default_metadata"]
+**NewMetadata** | Pointer to **string** | Deprecated - use description | [optional] [default to "default_metadata"]
 **NewName** | Pointer to **string** | New item name | [optional] 
 **RmTag** | Pointer to **[]string** | List of the existent tags that will be removed from this item | [optional] 
 **SecureAccessAddHost** | Pointer to **[]string** |  | [optional] 
@@ -158,6 +159,31 @@ SetDeleteProtection sets DeleteProtection field to given value.
 `func (o *UpdateItem) HasDeleteProtection() bool`
 
 HasDeleteProtection returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *UpdateItem) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *UpdateItem) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *UpdateItem) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *UpdateItem) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetJson
 

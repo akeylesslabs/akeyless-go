@@ -32,6 +32,8 @@ Name | Type | Description | Notes
 **DbHostName** | Pointer to **string** |  | [optional] 
 **DbName** | Pointer to **string** |  | [optional] 
 **DbPort** | Pointer to **string** |  | [optional] 
+**DbPrivateKey** | Pointer to **string** | (Optional) Private Key in PEM format | [optional] 
+**DbPrivateKeyPassphrase** | Pointer to **string** |  | [optional] 
 **DbPwd** | Pointer to **string** |  | [optional] 
 **DbServerCertificates** | Pointer to **string** | (Optional) DBServerCertificates defines the set of root certificate authorities that clients use when verifying server certificates. If DBServerCertificates is empty, TLS uses the host&#39;s root CA set. | [optional] 
 **DbServerName** | Pointer to **string** | (Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client&#39;s handshake to support virtual hosting unless it is an IP address. | [optional] 
@@ -816,6 +818,56 @@ SetDbPort sets DbPort field to given value.
 `func (o *TargetTypeDetailsInput) HasDbPort() bool`
 
 HasDbPort returns a boolean if a field has been set.
+
+### GetDbPrivateKey
+
+`func (o *TargetTypeDetailsInput) GetDbPrivateKey() string`
+
+GetDbPrivateKey returns the DbPrivateKey field if non-nil, zero value otherwise.
+
+### GetDbPrivateKeyOk
+
+`func (o *TargetTypeDetailsInput) GetDbPrivateKeyOk() (*string, bool)`
+
+GetDbPrivateKeyOk returns a tuple with the DbPrivateKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDbPrivateKey
+
+`func (o *TargetTypeDetailsInput) SetDbPrivateKey(v string)`
+
+SetDbPrivateKey sets DbPrivateKey field to given value.
+
+### HasDbPrivateKey
+
+`func (o *TargetTypeDetailsInput) HasDbPrivateKey() bool`
+
+HasDbPrivateKey returns a boolean if a field has been set.
+
+### GetDbPrivateKeyPassphrase
+
+`func (o *TargetTypeDetailsInput) GetDbPrivateKeyPassphrase() string`
+
+GetDbPrivateKeyPassphrase returns the DbPrivateKeyPassphrase field if non-nil, zero value otherwise.
+
+### GetDbPrivateKeyPassphraseOk
+
+`func (o *TargetTypeDetailsInput) GetDbPrivateKeyPassphraseOk() (*string, bool)`
+
+GetDbPrivateKeyPassphraseOk returns a tuple with the DbPrivateKeyPassphrase field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDbPrivateKeyPassphrase
+
+`func (o *TargetTypeDetailsInput) SetDbPrivateKeyPassphrase(v string)`
+
+SetDbPrivateKeyPassphrase sets DbPrivateKeyPassphrase field to given value.
+
+### HasDbPrivateKeyPassphrase
+
+`func (o *TargetTypeDetailsInput) HasDbPrivateKeyPassphrase() bool`
+
+HasDbPrivateKeyPassphrase returns a boolean if a field has been set.
 
 ### GetDbPwd
 

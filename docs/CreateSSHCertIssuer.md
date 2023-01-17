@@ -6,9 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AllowedUsers** | **string** | Users allowed to fetch the certificate, e.g root,ubuntu | 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
+**Description** | Pointer to **string** | Description of the object | [optional] 
 **Extensions** | Pointer to **map[string]string** | Signed certificates with extensions, e.g permit-port-forwarding&#x3D;\\\&quot;\\\&quot; | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] 
-**Metadata** | Pointer to **string** | A metadata about the issuer | [optional] 
+**Metadata** | Pointer to **string** | Deprecated - use description | [optional] 
 **Name** | **string** | SSH certificate issuer name | 
 **Principals** | Pointer to **string** | Signed certificates with principal, e.g example_role1,example_role2 | [optional] 
 **SecureAccessBastionApi** | Pointer to **string** |  | [optional] 
@@ -86,6 +87,31 @@ SetDeleteProtection sets DeleteProtection field to given value.
 `func (o *CreateSSHCertIssuer) HasDeleteProtection() bool`
 
 HasDeleteProtection returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *CreateSSHCertIssuer) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *CreateSSHCertIssuer) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *CreateSSHCertIssuer) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *CreateSSHCertIssuer) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetExtensions
 

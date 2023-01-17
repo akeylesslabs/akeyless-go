@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// GatewayCreateProducerSnowflake gatewayCreateProducerSnowflakeCmd is a command that creates a Snowflake producer
+// GatewayCreateProducerSnowflake GatewayCreateProducerSnowflakeCmd is a command that creates a Snowflake producer
 type GatewayCreateProducerSnowflake struct {
 	// Account name
 	Account *string `json:"account,omitempty"`
@@ -31,6 +31,10 @@ type GatewayCreateProducerSnowflake struct {
 	Json *bool `json:"json,omitempty"`
 	// Producer name
 	Name string `json:"name"`
+	// RSA Private key (base64 encoded)
+	PrivateKey *string `json:"private-key,omitempty"`
+	// The Private key passphrase
+	PrivateKeyPassphrase *string `json:"private-key-passphrase,omitempty"`
 	// User role
 	Role *string `json:"role,omitempty"`
 	// List of the tags attached to this secret
@@ -285,6 +289,70 @@ func (o *GatewayCreateProducerSnowflake) SetName(v string) {
 	o.Name = v
 }
 
+// GetPrivateKey returns the PrivateKey field value if set, zero value otherwise.
+func (o *GatewayCreateProducerSnowflake) GetPrivateKey() string {
+	if o == nil || o.PrivateKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.PrivateKey
+}
+
+// GetPrivateKeyOk returns a tuple with the PrivateKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerSnowflake) GetPrivateKeyOk() (*string, bool) {
+	if o == nil || o.PrivateKey == nil {
+		return nil, false
+	}
+	return o.PrivateKey, true
+}
+
+// HasPrivateKey returns a boolean if a field has been set.
+func (o *GatewayCreateProducerSnowflake) HasPrivateKey() bool {
+	if o != nil && o.PrivateKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivateKey gets a reference to the given string and assigns it to the PrivateKey field.
+func (o *GatewayCreateProducerSnowflake) SetPrivateKey(v string) {
+	o.PrivateKey = &v
+}
+
+// GetPrivateKeyPassphrase returns the PrivateKeyPassphrase field value if set, zero value otherwise.
+func (o *GatewayCreateProducerSnowflake) GetPrivateKeyPassphrase() string {
+	if o == nil || o.PrivateKeyPassphrase == nil {
+		var ret string
+		return ret
+	}
+	return *o.PrivateKeyPassphrase
+}
+
+// GetPrivateKeyPassphraseOk returns a tuple with the PrivateKeyPassphrase field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerSnowflake) GetPrivateKeyPassphraseOk() (*string, bool) {
+	if o == nil || o.PrivateKeyPassphrase == nil {
+		return nil, false
+	}
+	return o.PrivateKeyPassphrase, true
+}
+
+// HasPrivateKeyPassphrase returns a boolean if a field has been set.
+func (o *GatewayCreateProducerSnowflake) HasPrivateKeyPassphrase() bool {
+	if o != nil && o.PrivateKeyPassphrase != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivateKeyPassphrase gets a reference to the given string and assigns it to the PrivateKeyPassphrase field.
+func (o *GatewayCreateProducerSnowflake) SetPrivateKeyPassphrase(v string) {
+	o.PrivateKeyPassphrase = &v
+}
+
 // GetRole returns the Role field value if set, zero value otherwise.
 func (o *GatewayCreateProducerSnowflake) GetRole() string {
 	if o == nil || o.Role == nil {
@@ -531,6 +599,12 @@ func (o GatewayCreateProducerSnowflake) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.PrivateKey != nil {
+		toSerialize["private-key"] = o.PrivateKey
+	}
+	if o.PrivateKeyPassphrase != nil {
+		toSerialize["private-key-passphrase"] = o.PrivateKeyPassphrase
 	}
 	if o.Role != nil {
 		toSerialize["role"] = o.Role

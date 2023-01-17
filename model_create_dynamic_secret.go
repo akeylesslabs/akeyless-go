@@ -19,11 +19,13 @@ import (
 type CreateDynamicSecret struct {
 	// Protection from accidental deletion of this item
 	DeleteProtection *string `json:"delete_protection,omitempty"`
+	// Description of the object
+	Description *string `json:"description,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// The name of a key that used to encrypt the dynamic secret values (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
-	// Metadata about the dynamic secret
+	// Deprecated - use description
 	Metadata *string `json:"metadata,omitempty"`
 	// Dynamic secret name
 	Name string `json:"name"`
@@ -41,8 +43,6 @@ type CreateDynamicSecret struct {
 // will change when the set of required properties is changed
 func NewCreateDynamicSecret(name string, ) *CreateDynamicSecret {
 	this := CreateDynamicSecret{}
-	var metadata string = "None"
-	this.Metadata = &metadata
 	this.Name = name
 	return &this
 }
@@ -52,8 +52,6 @@ func NewCreateDynamicSecret(name string, ) *CreateDynamicSecret {
 // but it doesn't guarantee that properties required by API are set
 func NewCreateDynamicSecretWithDefaults() *CreateDynamicSecret {
 	this := CreateDynamicSecret{}
-	var metadata string = "None"
-	this.Metadata = &metadata
 	return &this
 }
 
@@ -87,6 +85,38 @@ func (o *CreateDynamicSecret) HasDeleteProtection() bool {
 // SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
 func (o *CreateDynamicSecret) SetDeleteProtection(v string) {
 	o.DeleteProtection = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *CreateDynamicSecret) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDynamicSecret) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *CreateDynamicSecret) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *CreateDynamicSecret) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -309,6 +339,9 @@ func (o CreateDynamicSecret) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DeleteProtection != nil {
 		toSerialize["delete_protection"] = o.DeleteProtection
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json

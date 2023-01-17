@@ -17,6 +17,8 @@ import (
 
 // AssocTargetItem assocTargetItem is a command that creates an association between target and item.
 type AssocTargetItem struct {
+	// Automatically disable previous key version (required for azure targets)
+	DisablePreviousKeyVersion *bool `json:"disable-previous-key-version,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// A list of allowed operations for the key (required for azure targets)
@@ -70,6 +72,38 @@ func NewAssocTargetItemWithDefaults() *AssocTargetItem {
 	var multiRegion string = "false"
 	this.MultiRegion = &multiRegion
 	return &this
+}
+
+// GetDisablePreviousKeyVersion returns the DisablePreviousKeyVersion field value if set, zero value otherwise.
+func (o *AssocTargetItem) GetDisablePreviousKeyVersion() bool {
+	if o == nil || o.DisablePreviousKeyVersion == nil {
+		var ret bool
+		return ret
+	}
+	return *o.DisablePreviousKeyVersion
+}
+
+// GetDisablePreviousKeyVersionOk returns a tuple with the DisablePreviousKeyVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssocTargetItem) GetDisablePreviousKeyVersionOk() (*bool, bool) {
+	if o == nil || o.DisablePreviousKeyVersion == nil {
+		return nil, false
+	}
+	return o.DisablePreviousKeyVersion, true
+}
+
+// HasDisablePreviousKeyVersion returns a boolean if a field has been set.
+func (o *AssocTargetItem) HasDisablePreviousKeyVersion() bool {
+	if o != nil && o.DisablePreviousKeyVersion != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDisablePreviousKeyVersion gets a reference to the given bool and assigns it to the DisablePreviousKeyVersion field.
+func (o *AssocTargetItem) SetDisablePreviousKeyVersion(v bool) {
+	o.DisablePreviousKeyVersion = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -538,6 +572,9 @@ func (o *AssocTargetItem) SetVaultName(v string) {
 
 func (o AssocTargetItem) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.DisablePreviousKeyVersion != nil {
+		toSerialize["disable-previous-key-version"] = o.DisablePreviousKeyVersion
+	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json
 	}

@@ -23,13 +23,15 @@ type CreateTokenizer struct {
 	DecodingTemplate *string `json:"decoding-template,omitempty"`
 	// Protection from accidental deletion of this item
 	DeleteProtection *string `json:"delete_protection,omitempty"`
+	// Description of the object
+	Description *string `json:"description,omitempty"`
 	// The Encoding output template to use in regexp vaultless tokenization
 	EncodingTemplate *string `json:"encoding-template,omitempty"`
 	// AES key name to use in vaultless tokenization
 	EncryptionKeyName *string `json:"encryption-key-name,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// A metadata about the tokenizer
+	// Deprecated - use description
 	Metadata *string `json:"metadata,omitempty"`
 	// Tokenizer name
 	Name string `json:"name"`
@@ -163,6 +165,38 @@ func (o *CreateTokenizer) HasDeleteProtection() bool {
 // SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
 func (o *CreateTokenizer) SetDeleteProtection(v string) {
 	o.DeleteProtection = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *CreateTokenizer) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateTokenizer) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *CreateTokenizer) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *CreateTokenizer) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetEncodingTemplate returns the EncodingTemplate field value if set, zero value otherwise.
@@ -535,6 +569,9 @@ func (o CreateTokenizer) MarshalJSON() ([]byte, error) {
 	}
 	if o.DeleteProtection != nil {
 		toSerialize["delete_protection"] = o.DeleteProtection
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.EncodingTemplate != nil {
 		toSerialize["encoding-template"] = o.EncodingTemplate

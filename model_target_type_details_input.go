@@ -49,6 +49,9 @@ type TargetTypeDetailsInput struct {
 	DbHostName *string `json:"db_host_name,omitempty"`
 	DbName *string `json:"db_name,omitempty"`
 	DbPort *string `json:"db_port,omitempty"`
+	// (Optional) Private Key in PEM format
+	DbPrivateKey *string `json:"db_private_key,omitempty"`
+	DbPrivateKeyPassphrase *string `json:"db_private_key_passphrase,omitempty"`
 	DbPwd *string `json:"db_pwd,omitempty"`
 	// (Optional) DBServerCertificates defines the set of root certificate authorities that clients use when verifying server certificates. If DBServerCertificates is empty, TLS uses the host's root CA set.
 	DbServerCertificates *string `json:"db_server_certificates,omitempty"`
@@ -1035,6 +1038,70 @@ func (o *TargetTypeDetailsInput) HasDbPort() bool {
 // SetDbPort gets a reference to the given string and assigns it to the DbPort field.
 func (o *TargetTypeDetailsInput) SetDbPort(v string) {
 	o.DbPort = &v
+}
+
+// GetDbPrivateKey returns the DbPrivateKey field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetDbPrivateKey() string {
+	if o == nil || o.DbPrivateKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.DbPrivateKey
+}
+
+// GetDbPrivateKeyOk returns a tuple with the DbPrivateKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetDbPrivateKeyOk() (*string, bool) {
+	if o == nil || o.DbPrivateKey == nil {
+		return nil, false
+	}
+	return o.DbPrivateKey, true
+}
+
+// HasDbPrivateKey returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasDbPrivateKey() bool {
+	if o != nil && o.DbPrivateKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDbPrivateKey gets a reference to the given string and assigns it to the DbPrivateKey field.
+func (o *TargetTypeDetailsInput) SetDbPrivateKey(v string) {
+	o.DbPrivateKey = &v
+}
+
+// GetDbPrivateKeyPassphrase returns the DbPrivateKeyPassphrase field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetDbPrivateKeyPassphrase() string {
+	if o == nil || o.DbPrivateKeyPassphrase == nil {
+		var ret string
+		return ret
+	}
+	return *o.DbPrivateKeyPassphrase
+}
+
+// GetDbPrivateKeyPassphraseOk returns a tuple with the DbPrivateKeyPassphrase field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetDbPrivateKeyPassphraseOk() (*string, bool) {
+	if o == nil || o.DbPrivateKeyPassphrase == nil {
+		return nil, false
+	}
+	return o.DbPrivateKeyPassphrase, true
+}
+
+// HasDbPrivateKeyPassphrase returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasDbPrivateKeyPassphrase() bool {
+	if o != nil && o.DbPrivateKeyPassphrase != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDbPrivateKeyPassphrase gets a reference to the given string and assigns it to the DbPrivateKeyPassphrase field.
+func (o *TargetTypeDetailsInput) SetDbPrivateKeyPassphrase(v string) {
+	o.DbPrivateKeyPassphrase = &v
 }
 
 // GetDbPwd returns the DbPwd field value if set, zero value otherwise.
@@ -3202,6 +3269,12 @@ func (o TargetTypeDetailsInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.DbPort != nil {
 		toSerialize["db_port"] = o.DbPort
+	}
+	if o.DbPrivateKey != nil {
+		toSerialize["db_private_key"] = o.DbPrivateKey
+	}
+	if o.DbPrivateKeyPassphrase != nil {
+		toSerialize["db_private_key_passphrase"] = o.DbPrivateKeyPassphrase
 	}
 	if o.DbPwd != nil {
 		toSerialize["db_pwd"] = o.DbPwd

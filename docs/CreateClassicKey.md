@@ -4,12 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Alg** | **string** | Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384] | 
+**Alg** | **string** | Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384, GPG] | 
 **CertFileData** | Pointer to **string** | Certificate in a PEM format. | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
+**Description** | Pointer to **string** | Description of the object | [optional] 
+**GpgAlg** | Pointer to **string** | gpg alg: Relevant only if GPG key type selected; options: [RSA1024, RSA2048, RSA3072, RSA4096, Ed25519] | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **KeyData** | Pointer to **string** | Base64-encoded classic key value | [optional] 
-**Metadata** | Pointer to **string** | Metadata about the classic key | [optional] 
+**Metadata** | Pointer to **string** | Deprecated - use description | [optional] 
 **Name** | **string** | ClassicKey name | 
 **ProtectionKeyName** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Tags** | Pointer to **[]string** | List of the tags attached to this classic key | [optional] 
@@ -104,6 +106,56 @@ SetDeleteProtection sets DeleteProtection field to given value.
 `func (o *CreateClassicKey) HasDeleteProtection() bool`
 
 HasDeleteProtection returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *CreateClassicKey) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *CreateClassicKey) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *CreateClassicKey) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *CreateClassicKey) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
+
+### GetGpgAlg
+
+`func (o *CreateClassicKey) GetGpgAlg() string`
+
+GetGpgAlg returns the GpgAlg field if non-nil, zero value otherwise.
+
+### GetGpgAlgOk
+
+`func (o *CreateClassicKey) GetGpgAlgOk() (*string, bool)`
+
+GetGpgAlgOk returns a tuple with the GpgAlg field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGpgAlg
+
+`func (o *CreateClassicKey) SetGpgAlg(v string)`
+
+SetGpgAlg sets GpgAlg field to given value.
+
+### HasGpgAlg
+
+`func (o *CreateClassicKey) HasGpgAlg() bool`
+
+HasGpgAlg returns a boolean if a field has been set.
 
 ### GetJson
 

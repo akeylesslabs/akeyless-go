@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DisablePreviousKeyVersion** | Pointer to **bool** | Automatically disable previous key version (required for azure targets) | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **KeyOperations** | Pointer to **[]string** | A list of allowed operations for the key (required for azure targets) | [optional] 
 **KeyringName** | Pointer to **string** | Keyring name of the GCP KMS (required for gcp targets) | [optional] 
@@ -38,6 +39,31 @@ will change when the set of required properties is changed
 NewAssocTargetItemWithDefaults instantiates a new AssocTargetItem object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetDisablePreviousKeyVersion
+
+`func (o *AssocTargetItem) GetDisablePreviousKeyVersion() bool`
+
+GetDisablePreviousKeyVersion returns the DisablePreviousKeyVersion field if non-nil, zero value otherwise.
+
+### GetDisablePreviousKeyVersionOk
+
+`func (o *AssocTargetItem) GetDisablePreviousKeyVersionOk() (*bool, bool)`
+
+GetDisablePreviousKeyVersionOk returns a tuple with the DisablePreviousKeyVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisablePreviousKeyVersion
+
+`func (o *AssocTargetItem) SetDisablePreviousKeyVersion(v bool)`
+
+SetDisablePreviousKeyVersion sets DisablePreviousKeyVersion field to given value.
+
+### HasDisablePreviousKeyVersion
+
+`func (o *AssocTargetItem) HasDisablePreviousKeyVersion() bool`
+
+HasDisablePreviousKeyVersion returns a boolean if a field has been set.
 
 ### GetJson
 

@@ -134,6 +134,8 @@ docs/DatadogForwardingConfig.md
 docs/Decrypt.md
 docs/DecryptFile.md
 docs/DecryptFileOutput.md
+docs/DecryptGPG.md
+docs/DecryptGPGOutput.md
 docs/DecryptOutput.md
 docs/DecryptPKCS1.md
 docs/DecryptPKCS1Output.md
@@ -172,6 +174,8 @@ docs/EmailTokenizerInfo.md
 docs/Encrypt.md
 docs/EncryptFile.md
 docs/EncryptFileOutput.md
+docs/EncryptGPG.md
+docs/EncryptGPGOutput.md
 docs/EncryptOutput.md
 docs/EncryptWithClassicKey.md
 docs/EncryptWithClassicKeyOutput.md
@@ -466,6 +470,8 @@ docs/SecureRemoteAccess.md
 docs/SetItemState.md
 docs/SetRoleRule.md
 docs/ShareItem.md
+docs/SignGPG.md
+docs/SignGPGOutput.md
 docs/SignJWTOutput.md
 docs/SignJWTWithClassicKey.md
 docs/SignPKCS1.md
@@ -583,6 +589,7 @@ docs/V2Api.md
 docs/ValidateToken.md
 docs/ValidateTokenOutput.md
 docs/VaultlessTokenizerInfo.md
+docs/VerifyGPG.md
 docs/VerifyJWTOutput.md
 docs/VerifyJWTWithClassicKey.md
 docs/VerifyPKCS1.md
@@ -719,6 +726,8 @@ model_datadog_forwarding_config.go
 model_decrypt.go
 model_decrypt_file.go
 model_decrypt_file_output.go
+model_decrypt_gpg.go
+model_decrypt_gpg_output.go
 model_decrypt_output.go
 model_decrypt_pkcs1.go
 model_decrypt_pkcs1_output.go
@@ -758,6 +767,8 @@ model_email_tokenizer_info.go
 model_encrypt.go
 model_encrypt_file.go
 model_encrypt_file_output.go
+model_encrypt_gpg.go
+model_encrypt_gpg_output.go
 model_encrypt_output.go
 model_encrypt_with_classic_key.go
 model_encrypt_with_classic_key_output.go
@@ -1051,6 +1062,8 @@ model_secure_remote_access.go
 model_set_item_state.go
 model_set_role_rule.go
 model_share_item.go
+model_sign_gpg.go
+model_sign_gpg_output.go
 model_sign_jwt_output.go
 model_sign_jwt_with_classic_key.go
 model_sign_pkcs1.go
@@ -1168,6 +1181,7 @@ model_upload_rsa.go
 model_validate_token.go
 model_validate_token_output.go
 model_vaultless_tokenizer_info.go
+model_verify_gpg.go
 model_verify_jwt_output.go
 model_verify_jwt_with_classic_key.go
 model_verify_pkcs1.go

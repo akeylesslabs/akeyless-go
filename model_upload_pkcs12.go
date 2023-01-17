@@ -21,11 +21,13 @@ type UploadPKCS12 struct {
 	CustomerFrgId *string `json:"customer-frg-id,omitempty"`
 	// Protection from accidental deletion of this item
 	DeleteProtection *string `json:"delete_protection,omitempty"`
+	// Description of the object
+	Description *string `json:"description,omitempty"`
 	// PKCS#12 input file (private key and certificate only)
 	In string `json:"in"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// A metadata about the key
+	// Deprecated - use description
 	Metadata *string `json:"metadata,omitempty"`
 	// Name of key to be created
 	Name string `json:"name"`
@@ -127,6 +129,38 @@ func (o *UploadPKCS12) HasDeleteProtection() bool {
 // SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
 func (o *UploadPKCS12) SetDeleteProtection(v string) {
 	o.DeleteProtection = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *UploadPKCS12) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UploadPKCS12) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *UploadPKCS12) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *UploadPKCS12) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetIn returns the In field value
@@ -400,6 +434,9 @@ func (o UploadPKCS12) MarshalJSON() ([]byte, error) {
 	}
 	if o.DeleteProtection != nil {
 		toSerialize["delete_protection"] = o.DeleteProtection
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if true {
 		toSerialize["in"] = o.In

@@ -26,6 +26,8 @@ type UpdateRotatedSecret struct {
 	// Region (used in aws)
 	AwsRegion *string `json:"aws-region,omitempty"`
 	CustomPayload *string `json:"custom-payload,omitempty"`
+	// Description of the object
+	Description *string `json:"description,omitempty"`
 	// Base64-encoded service account private key text
 	GcpKey *string `json:"gcp-key,omitempty"`
 	// Set output format to JSON
@@ -35,7 +37,7 @@ type UpdateRotatedSecret struct {
 	Key *string `json:"key,omitempty"`
 	// Secret name
 	Name string `json:"name"`
-	// New item metadata
+	// Deprecated - use description
 	NewMetadata *string `json:"new-metadata,omitempty"`
 	// New item name
 	NewName *string `json:"new-name,omitempty"`
@@ -96,6 +98,8 @@ func NewUpdateRotatedSecret(name string, ) *UpdateRotatedSecret {
 	this := UpdateRotatedSecret{}
 	var awsRegion string = "us-east-2"
 	this.AwsRegion = &awsRegion
+	var description string = "default_metadata"
+	this.Description = &description
 	this.Name = name
 	var newMetadata string = "default_metadata"
 	this.NewMetadata = &newMetadata
@@ -117,6 +121,8 @@ func NewUpdateRotatedSecretWithDefaults() *UpdateRotatedSecret {
 	this := UpdateRotatedSecret{}
 	var awsRegion string = "us-east-2"
 	this.AwsRegion = &awsRegion
+	var description string = "default_metadata"
+	this.Description = &description
 	var newMetadata string = "default_metadata"
 	this.NewMetadata = &newMetadata
 	var secureAccessAllowExternalUser bool = false
@@ -320,6 +326,38 @@ func (o *UpdateRotatedSecret) HasCustomPayload() bool {
 // SetCustomPayload gets a reference to the given string and assigns it to the CustomPayload field.
 func (o *UpdateRotatedSecret) SetCustomPayload(v string) {
 	o.CustomPayload = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *UpdateRotatedSecret) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetGcpKey returns the GcpKey field value if set, zero value otherwise.
@@ -1389,6 +1427,9 @@ func (o UpdateRotatedSecret) MarshalJSON() ([]byte, error) {
 	}
 	if o.CustomPayload != nil {
 		toSerialize["custom-payload"] = o.CustomPayload
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.GcpKey != nil {
 		toSerialize["gcp-key"] = o.GcpKey
