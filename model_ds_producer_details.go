@@ -17,15 +17,18 @@ import (
 
 // DSProducerDetails struct for DSProducerDetails
 type DSProducerDetails struct {
+	AccessTokenManagerId *string `json:"access_token_manager_id,omitempty"`
 	Active *bool `json:"active,omitempty"`
 	AdminName *string `json:"admin_name,omitempty"`
 	AdminPwd *string `json:"admin_pwd,omitempty"`
 	AdminRotationIntervalDays *int64 `json:"admin_rotation_interval_days,omitempty"`
+	AdministrativePort *string `json:"administrative_port,omitempty"`
 	ArtifactoryAdminApikey *string `json:"artifactory_admin_apikey,omitempty"`
 	ArtifactoryAdminUsername *string `json:"artifactory_admin_username,omitempty"`
 	ArtifactoryBaseUrl *string `json:"artifactory_base_url,omitempty"`
 	ArtifactoryTokenAudience *string `json:"artifactory_token_audience,omitempty"`
 	ArtifactoryTokenScope *string `json:"artifactory_token_scope,omitempty"`
+	AuthorizationPort *string `json:"authorization_port,omitempty"`
 	AwsAccessKeyId *string `json:"aws_access_key_id,omitempty"`
 	AwsAccessMode *string `json:"aws_access_mode,omitempty"`
 	AwsRegion *string `json:"aws_region,omitempty"`
@@ -58,6 +61,7 @@ type DSProducerDetails struct {
 	ChefServerUrl *string `json:"chef_server_url,omitempty"`
 	ChefServerUsername *string `json:"chef_server_username,omitempty"`
 	ChefSkipSsl *bool `json:"chef_skip_ssl,omitempty"`
+	ClientAuthenticationType *string `json:"client_authentication_type,omitempty"`
 	CreateSyncUrl *string `json:"create_sync_url,omitempty"`
 	DbHostName *string `json:"db_host_name,omitempty"`
 	DbIsolationLevel *string `json:"db_isolation_level,omitempty"`
@@ -87,6 +91,8 @@ type DSProducerDetails struct {
 	EksRegion *string `json:"eks_region,omitempty"`
 	EksSecretAccessKey *string `json:"eks_secret_access_key,omitempty"`
 	EnableAdminRotation *bool `json:"enable_admin_rotation,omitempty"`
+	// relevant for PRIVATE_KEY_JWT client authentication type
+	EnforceReplayPrevention *bool `json:"enforce_replay_prevention,omitempty"`
 	ExternallyProvidedUser *string `json:"externally_provided_user,omitempty"`
 	FailureMessage *string `json:"failure_message,omitempty"`
 	FixedUserOnly *string `json:"fixed_user_only,omitempty"`
@@ -113,6 +119,7 @@ type DSProducerDetails struct {
 	GkeClusterName *string `json:"gke_cluster_name,omitempty"`
 	GkeServiceAccountKey *string `json:"gke_service_account_key,omitempty"`
 	GkeServiceAccountName *string `json:"gke_service_account_name,omitempty"`
+	GrantTypes *[]string `json:"grant_types,omitempty"`
 	Groups *string `json:"groups,omitempty"`
 	HanadbCreationStatements *string `json:"hanadb_creation_statements,omitempty"`
 	HanadbRevocationStatements *string `json:"hanadb_revocation_statements,omitempty"`
@@ -120,7 +127,11 @@ type DSProducerDetails struct {
 	HostPort *string `json:"host_port,omitempty"`
 	ImplementationType *string `json:"implementation_type,omitempty"`
 	IsFixedUser *string `json:"is_fixed_user,omitempty"`
+	// relevant for CLIENT_TLS_CERTIFICATE client authentication type
+	Issuer *string `json:"issuer,omitempty"`
 	ItemTargetsAssoc *[]ItemTargetAssociation `json:"item_targets_assoc,omitempty"`
+	Jwks *string `json:"jwks,omitempty"`
+	JwksUrl *string `json:"jwks_url,omitempty"`
 	// comma-separated list of allowed namespaces. Can hold just * which signifies that any namespace is allowed
 	K8sAllowedNamespaces *string `json:"k8s_allowed_namespaces,omitempty"`
 	K8sBearerToken *string `json:"k8s_bearer_token,omitempty"`
@@ -129,7 +140,14 @@ type DSProducerDetails struct {
 	// when native k8s is in dynamic mode, user can define allowed namespaces, K8sServiceAccount doesn't exist from the start and will only be created at time of getting dynamic secret value By default dynamic mode is false and producer behaves like it did before
 	K8sDynamicMode *bool `json:"k8s_dynamic_mode,omitempty"`
 	K8sNamespace *string `json:"k8s_namespace,omitempty"`
+	// Name of the pre-existing Role or ClusterRole to bind a generated service account to.
+	K8sRoleName *string `json:"k8s_role_name,omitempty"`
+	K8sRoleType *string `json:"k8s_role_type,omitempty"`
 	K8sServiceAccount *string `json:"k8s_service_account,omitempty"`
+	// Yaml/Json definition of temporary role binding that will be created and deleted when TTL is due. Must have as subject name of Service Account specified in K8sServiceAccount field
+	K8sTempRoleBindingDefinition *[]int32 `json:"k8s_temp_role_binding_definition,omitempty"`
+	// Yaml/Json definition of temporary role that will be created and deleted when TTL is due
+	K8sTempRoleDefinition *[]int32 `json:"k8s_temp_role_definition,omitempty"`
 	LastAdminRotation *int64 `json:"last_admin_rotation,omitempty"`
 	LdapAudience *string `json:"ldap_audience,omitempty"`
 	LdapBindDn *string `json:"ldap_bind_dn,omitempty"`
@@ -165,8 +183,10 @@ type DSProducerDetails struct {
 	PasswordLength *int64 `json:"password_length,omitempty"`
 	PasswordPolicy *string `json:"password_policy,omitempty"`
 	Payload *string `json:"payload,omitempty"`
+	PingUrl *string `json:"ping_url,omitempty"`
 	PostgresCreationStatements *string `json:"postgres_creation_statements,omitempty"`
 	PostgresRevocationStatements *string `json:"postgres_revocation_statements,omitempty"`
+	PrivilegedUser *string `json:"privileged_user,omitempty"`
 	RabbitmqServerPassword *string `json:"rabbitmq_server_password,omitempty"`
 	RabbitmqServerUri *string `json:"rabbitmq_server_uri,omitempty"`
 	RabbitmqServerUser *string `json:"rabbitmq_server_user,omitempty"`
@@ -175,7 +195,9 @@ type DSProducerDetails struct {
 	RabbitmqUserTags *string `json:"rabbitmq_user_tags,omitempty"`
 	RabbitmqUserVhost *string `json:"rabbitmq_user_vhost,omitempty"`
 	RabbitmqUserWritePermission *string `json:"rabbitmq_user_write_permission,omitempty"`
+	RedirectUris *[]string `json:"redirect_uris,omitempty"`
 	RedshiftCreationStatements *string `json:"redshift_creation_statements,omitempty"`
+	RestrictedScopes *[]string `json:"restricted_scopes,omitempty"`
 	RevokeSyncUrl *string `json:"revoke_sync_url,omitempty"`
 	RotateSyncUrl *string `json:"rotate_sync_url,omitempty"`
 	Scopes *[]string `json:"scopes,omitempty"`
@@ -187,14 +209,17 @@ type DSProducerDetails struct {
 	SfWarehouseName *string `json:"sf_warehouse_name,omitempty"`
 	// TODO delete this after migration
 	ShouldStop *string `json:"should_stop,omitempty"`
+	SigningAlgorithm *string `json:"signing_algorithm,omitempty"`
 	// (Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field
 	SslConnectionCertificate *string `json:"ssl_connection_certificate,omitempty"`
 	// (Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB
 	SslConnectionMode *bool `json:"ssl_connection_mode,omitempty"`
+	SubjectDn *string `json:"subject_dn,omitempty"`
 	Tags *[]string `json:"tags,omitempty"`
 	TimeoutSeconds *int64 `json:"timeout_seconds,omitempty"`
 	UseGwCloudIdentity *bool `json:"use_gw_cloud_identity,omitempty"`
 	UserName *string `json:"user_name,omitempty"`
+	UserPassword *string `json:"user_password,omitempty"`
 	UserPrincipalName *string `json:"user_principal_name,omitempty"`
 	UserTtl *string `json:"user_ttl,omitempty"`
 	UsernameLength *int64 `json:"username_length,omitempty"`
@@ -230,6 +255,38 @@ func NewDSProducerDetails() *DSProducerDetails {
 func NewDSProducerDetailsWithDefaults() *DSProducerDetails {
 	this := DSProducerDetails{}
 	return &this
+}
+
+// GetAccessTokenManagerId returns the AccessTokenManagerId field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetAccessTokenManagerId() string {
+	if o == nil || o.AccessTokenManagerId == nil {
+		var ret string
+		return ret
+	}
+	return *o.AccessTokenManagerId
+}
+
+// GetAccessTokenManagerIdOk returns a tuple with the AccessTokenManagerId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetAccessTokenManagerIdOk() (*string, bool) {
+	if o == nil || o.AccessTokenManagerId == nil {
+		return nil, false
+	}
+	return o.AccessTokenManagerId, true
+}
+
+// HasAccessTokenManagerId returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasAccessTokenManagerId() bool {
+	if o != nil && o.AccessTokenManagerId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessTokenManagerId gets a reference to the given string and assigns it to the AccessTokenManagerId field.
+func (o *DSProducerDetails) SetAccessTokenManagerId(v string) {
+	o.AccessTokenManagerId = &v
 }
 
 // GetActive returns the Active field value if set, zero value otherwise.
@@ -358,6 +415,38 @@ func (o *DSProducerDetails) HasAdminRotationIntervalDays() bool {
 // SetAdminRotationIntervalDays gets a reference to the given int64 and assigns it to the AdminRotationIntervalDays field.
 func (o *DSProducerDetails) SetAdminRotationIntervalDays(v int64) {
 	o.AdminRotationIntervalDays = &v
+}
+
+// GetAdministrativePort returns the AdministrativePort field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetAdministrativePort() string {
+	if o == nil || o.AdministrativePort == nil {
+		var ret string
+		return ret
+	}
+	return *o.AdministrativePort
+}
+
+// GetAdministrativePortOk returns a tuple with the AdministrativePort field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetAdministrativePortOk() (*string, bool) {
+	if o == nil || o.AdministrativePort == nil {
+		return nil, false
+	}
+	return o.AdministrativePort, true
+}
+
+// HasAdministrativePort returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasAdministrativePort() bool {
+	if o != nil && o.AdministrativePort != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdministrativePort gets a reference to the given string and assigns it to the AdministrativePort field.
+func (o *DSProducerDetails) SetAdministrativePort(v string) {
+	o.AdministrativePort = &v
 }
 
 // GetArtifactoryAdminApikey returns the ArtifactoryAdminApikey field value if set, zero value otherwise.
@@ -518,6 +607,38 @@ func (o *DSProducerDetails) HasArtifactoryTokenScope() bool {
 // SetArtifactoryTokenScope gets a reference to the given string and assigns it to the ArtifactoryTokenScope field.
 func (o *DSProducerDetails) SetArtifactoryTokenScope(v string) {
 	o.ArtifactoryTokenScope = &v
+}
+
+// GetAuthorizationPort returns the AuthorizationPort field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetAuthorizationPort() string {
+	if o == nil || o.AuthorizationPort == nil {
+		var ret string
+		return ret
+	}
+	return *o.AuthorizationPort
+}
+
+// GetAuthorizationPortOk returns a tuple with the AuthorizationPort field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetAuthorizationPortOk() (*string, bool) {
+	if o == nil || o.AuthorizationPort == nil {
+		return nil, false
+	}
+	return o.AuthorizationPort, true
+}
+
+// HasAuthorizationPort returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasAuthorizationPort() bool {
+	if o != nil && o.AuthorizationPort != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthorizationPort gets a reference to the given string and assigns it to the AuthorizationPort field.
+func (o *DSProducerDetails) SetAuthorizationPort(v string) {
+	o.AuthorizationPort = &v
 }
 
 // GetAwsAccessKeyId returns the AwsAccessKeyId field value if set, zero value otherwise.
@@ -1544,6 +1665,38 @@ func (o *DSProducerDetails) SetChefSkipSsl(v bool) {
 	o.ChefSkipSsl = &v
 }
 
+// GetClientAuthenticationType returns the ClientAuthenticationType field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetClientAuthenticationType() string {
+	if o == nil || o.ClientAuthenticationType == nil {
+		var ret string
+		return ret
+	}
+	return *o.ClientAuthenticationType
+}
+
+// GetClientAuthenticationTypeOk returns a tuple with the ClientAuthenticationType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetClientAuthenticationTypeOk() (*string, bool) {
+	if o == nil || o.ClientAuthenticationType == nil {
+		return nil, false
+	}
+	return o.ClientAuthenticationType, true
+}
+
+// HasClientAuthenticationType returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasClientAuthenticationType() bool {
+	if o != nil && o.ClientAuthenticationType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetClientAuthenticationType gets a reference to the given string and assigns it to the ClientAuthenticationType field.
+func (o *DSProducerDetails) SetClientAuthenticationType(v string) {
+	o.ClientAuthenticationType = &v
+}
+
 // GetCreateSyncUrl returns the CreateSyncUrl field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetCreateSyncUrl() string {
 	if o == nil || o.CreateSyncUrl == nil {
@@ -2376,6 +2529,38 @@ func (o *DSProducerDetails) SetEnableAdminRotation(v bool) {
 	o.EnableAdminRotation = &v
 }
 
+// GetEnforceReplayPrevention returns the EnforceReplayPrevention field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetEnforceReplayPrevention() bool {
+	if o == nil || o.EnforceReplayPrevention == nil {
+		var ret bool
+		return ret
+	}
+	return *o.EnforceReplayPrevention
+}
+
+// GetEnforceReplayPreventionOk returns a tuple with the EnforceReplayPrevention field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetEnforceReplayPreventionOk() (*bool, bool) {
+	if o == nil || o.EnforceReplayPrevention == nil {
+		return nil, false
+	}
+	return o.EnforceReplayPrevention, true
+}
+
+// HasEnforceReplayPrevention returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasEnforceReplayPrevention() bool {
+	if o != nil && o.EnforceReplayPrevention != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEnforceReplayPrevention gets a reference to the given bool and assigns it to the EnforceReplayPrevention field.
+func (o *DSProducerDetails) SetEnforceReplayPrevention(v bool) {
+	o.EnforceReplayPrevention = &v
+}
+
 // GetExternallyProvidedUser returns the ExternallyProvidedUser field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetExternallyProvidedUser() string {
 	if o == nil || o.ExternallyProvidedUser == nil {
@@ -3176,6 +3361,38 @@ func (o *DSProducerDetails) SetGkeServiceAccountName(v string) {
 	o.GkeServiceAccountName = &v
 }
 
+// GetGrantTypes returns the GrantTypes field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGrantTypes() []string {
+	if o == nil || o.GrantTypes == nil {
+		var ret []string
+		return ret
+	}
+	return *o.GrantTypes
+}
+
+// GetGrantTypesOk returns a tuple with the GrantTypes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGrantTypesOk() (*[]string, bool) {
+	if o == nil || o.GrantTypes == nil {
+		return nil, false
+	}
+	return o.GrantTypes, true
+}
+
+// HasGrantTypes returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGrantTypes() bool {
+	if o != nil && o.GrantTypes != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGrantTypes gets a reference to the given []string and assigns it to the GrantTypes field.
+func (o *DSProducerDetails) SetGrantTypes(v []string) {
+	o.GrantTypes = &v
+}
+
 // GetGroups returns the Groups field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetGroups() string {
 	if o == nil || o.Groups == nil {
@@ -3400,6 +3617,38 @@ func (o *DSProducerDetails) SetIsFixedUser(v string) {
 	o.IsFixedUser = &v
 }
 
+// GetIssuer returns the Issuer field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetIssuer() string {
+	if o == nil || o.Issuer == nil {
+		var ret string
+		return ret
+	}
+	return *o.Issuer
+}
+
+// GetIssuerOk returns a tuple with the Issuer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetIssuerOk() (*string, bool) {
+	if o == nil || o.Issuer == nil {
+		return nil, false
+	}
+	return o.Issuer, true
+}
+
+// HasIssuer returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasIssuer() bool {
+	if o != nil && o.Issuer != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIssuer gets a reference to the given string and assigns it to the Issuer field.
+func (o *DSProducerDetails) SetIssuer(v string) {
+	o.Issuer = &v
+}
+
 // GetItemTargetsAssoc returns the ItemTargetsAssoc field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetItemTargetsAssoc() []ItemTargetAssociation {
 	if o == nil || o.ItemTargetsAssoc == nil {
@@ -3430,6 +3679,70 @@ func (o *DSProducerDetails) HasItemTargetsAssoc() bool {
 // SetItemTargetsAssoc gets a reference to the given []ItemTargetAssociation and assigns it to the ItemTargetsAssoc field.
 func (o *DSProducerDetails) SetItemTargetsAssoc(v []ItemTargetAssociation) {
 	o.ItemTargetsAssoc = &v
+}
+
+// GetJwks returns the Jwks field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetJwks() string {
+	if o == nil || o.Jwks == nil {
+		var ret string
+		return ret
+	}
+	return *o.Jwks
+}
+
+// GetJwksOk returns a tuple with the Jwks field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetJwksOk() (*string, bool) {
+	if o == nil || o.Jwks == nil {
+		return nil, false
+	}
+	return o.Jwks, true
+}
+
+// HasJwks returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasJwks() bool {
+	if o != nil && o.Jwks != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJwks gets a reference to the given string and assigns it to the Jwks field.
+func (o *DSProducerDetails) SetJwks(v string) {
+	o.Jwks = &v
+}
+
+// GetJwksUrl returns the JwksUrl field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetJwksUrl() string {
+	if o == nil || o.JwksUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.JwksUrl
+}
+
+// GetJwksUrlOk returns a tuple with the JwksUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetJwksUrlOk() (*string, bool) {
+	if o == nil || o.JwksUrl == nil {
+		return nil, false
+	}
+	return o.JwksUrl, true
+}
+
+// HasJwksUrl returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasJwksUrl() bool {
+	if o != nil && o.JwksUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJwksUrl gets a reference to the given string and assigns it to the JwksUrl field.
+func (o *DSProducerDetails) SetJwksUrl(v string) {
+	o.JwksUrl = &v
 }
 
 // GetK8sAllowedNamespaces returns the K8sAllowedNamespaces field value if set, zero value otherwise.
@@ -3624,6 +3937,70 @@ func (o *DSProducerDetails) SetK8sNamespace(v string) {
 	o.K8sNamespace = &v
 }
 
+// GetK8sRoleName returns the K8sRoleName field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetK8sRoleName() string {
+	if o == nil || o.K8sRoleName == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sRoleName
+}
+
+// GetK8sRoleNameOk returns a tuple with the K8sRoleName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetK8sRoleNameOk() (*string, bool) {
+	if o == nil || o.K8sRoleName == nil {
+		return nil, false
+	}
+	return o.K8sRoleName, true
+}
+
+// HasK8sRoleName returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasK8sRoleName() bool {
+	if o != nil && o.K8sRoleName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sRoleName gets a reference to the given string and assigns it to the K8sRoleName field.
+func (o *DSProducerDetails) SetK8sRoleName(v string) {
+	o.K8sRoleName = &v
+}
+
+// GetK8sRoleType returns the K8sRoleType field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetK8sRoleType() string {
+	if o == nil || o.K8sRoleType == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sRoleType
+}
+
+// GetK8sRoleTypeOk returns a tuple with the K8sRoleType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetK8sRoleTypeOk() (*string, bool) {
+	if o == nil || o.K8sRoleType == nil {
+		return nil, false
+	}
+	return o.K8sRoleType, true
+}
+
+// HasK8sRoleType returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasK8sRoleType() bool {
+	if o != nil && o.K8sRoleType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sRoleType gets a reference to the given string and assigns it to the K8sRoleType field.
+func (o *DSProducerDetails) SetK8sRoleType(v string) {
+	o.K8sRoleType = &v
+}
+
 // GetK8sServiceAccount returns the K8sServiceAccount field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetK8sServiceAccount() string {
 	if o == nil || o.K8sServiceAccount == nil {
@@ -3654,6 +4031,70 @@ func (o *DSProducerDetails) HasK8sServiceAccount() bool {
 // SetK8sServiceAccount gets a reference to the given string and assigns it to the K8sServiceAccount field.
 func (o *DSProducerDetails) SetK8sServiceAccount(v string) {
 	o.K8sServiceAccount = &v
+}
+
+// GetK8sTempRoleBindingDefinition returns the K8sTempRoleBindingDefinition field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetK8sTempRoleBindingDefinition() []int32 {
+	if o == nil || o.K8sTempRoleBindingDefinition == nil {
+		var ret []int32
+		return ret
+	}
+	return *o.K8sTempRoleBindingDefinition
+}
+
+// GetK8sTempRoleBindingDefinitionOk returns a tuple with the K8sTempRoleBindingDefinition field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetK8sTempRoleBindingDefinitionOk() (*[]int32, bool) {
+	if o == nil || o.K8sTempRoleBindingDefinition == nil {
+		return nil, false
+	}
+	return o.K8sTempRoleBindingDefinition, true
+}
+
+// HasK8sTempRoleBindingDefinition returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasK8sTempRoleBindingDefinition() bool {
+	if o != nil && o.K8sTempRoleBindingDefinition != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sTempRoleBindingDefinition gets a reference to the given []int32 and assigns it to the K8sTempRoleBindingDefinition field.
+func (o *DSProducerDetails) SetK8sTempRoleBindingDefinition(v []int32) {
+	o.K8sTempRoleBindingDefinition = &v
+}
+
+// GetK8sTempRoleDefinition returns the K8sTempRoleDefinition field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetK8sTempRoleDefinition() []int32 {
+	if o == nil || o.K8sTempRoleDefinition == nil {
+		var ret []int32
+		return ret
+	}
+	return *o.K8sTempRoleDefinition
+}
+
+// GetK8sTempRoleDefinitionOk returns a tuple with the K8sTempRoleDefinition field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetK8sTempRoleDefinitionOk() (*[]int32, bool) {
+	if o == nil || o.K8sTempRoleDefinition == nil {
+		return nil, false
+	}
+	return o.K8sTempRoleDefinition, true
+}
+
+// HasK8sTempRoleDefinition returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasK8sTempRoleDefinition() bool {
+	if o != nil && o.K8sTempRoleDefinition != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sTempRoleDefinition gets a reference to the given []int32 and assigns it to the K8sTempRoleDefinition field.
+func (o *DSProducerDetails) SetK8sTempRoleDefinition(v []int32) {
+	o.K8sTempRoleDefinition = &v
 }
 
 // GetLastAdminRotation returns the LastAdminRotation field value if set, zero value otherwise.
@@ -4648,6 +5089,38 @@ func (o *DSProducerDetails) SetPayload(v string) {
 	o.Payload = &v
 }
 
+// GetPingUrl returns the PingUrl field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetPingUrl() string {
+	if o == nil || o.PingUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.PingUrl
+}
+
+// GetPingUrlOk returns a tuple with the PingUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetPingUrlOk() (*string, bool) {
+	if o == nil || o.PingUrl == nil {
+		return nil, false
+	}
+	return o.PingUrl, true
+}
+
+// HasPingUrl returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasPingUrl() bool {
+	if o != nil && o.PingUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPingUrl gets a reference to the given string and assigns it to the PingUrl field.
+func (o *DSProducerDetails) SetPingUrl(v string) {
+	o.PingUrl = &v
+}
+
 // GetPostgresCreationStatements returns the PostgresCreationStatements field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetPostgresCreationStatements() string {
 	if o == nil || o.PostgresCreationStatements == nil {
@@ -4710,6 +5183,38 @@ func (o *DSProducerDetails) HasPostgresRevocationStatements() bool {
 // SetPostgresRevocationStatements gets a reference to the given string and assigns it to the PostgresRevocationStatements field.
 func (o *DSProducerDetails) SetPostgresRevocationStatements(v string) {
 	o.PostgresRevocationStatements = &v
+}
+
+// GetPrivilegedUser returns the PrivilegedUser field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetPrivilegedUser() string {
+	if o == nil || o.PrivilegedUser == nil {
+		var ret string
+		return ret
+	}
+	return *o.PrivilegedUser
+}
+
+// GetPrivilegedUserOk returns a tuple with the PrivilegedUser field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetPrivilegedUserOk() (*string, bool) {
+	if o == nil || o.PrivilegedUser == nil {
+		return nil, false
+	}
+	return o.PrivilegedUser, true
+}
+
+// HasPrivilegedUser returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasPrivilegedUser() bool {
+	if o != nil && o.PrivilegedUser != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivilegedUser gets a reference to the given string and assigns it to the PrivilegedUser field.
+func (o *DSProducerDetails) SetPrivilegedUser(v string) {
+	o.PrivilegedUser = &v
 }
 
 // GetRabbitmqServerPassword returns the RabbitmqServerPassword field value if set, zero value otherwise.
@@ -4968,6 +5473,38 @@ func (o *DSProducerDetails) SetRabbitmqUserWritePermission(v string) {
 	o.RabbitmqUserWritePermission = &v
 }
 
+// GetRedirectUris returns the RedirectUris field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetRedirectUris() []string {
+	if o == nil || o.RedirectUris == nil {
+		var ret []string
+		return ret
+	}
+	return *o.RedirectUris
+}
+
+// GetRedirectUrisOk returns a tuple with the RedirectUris field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetRedirectUrisOk() (*[]string, bool) {
+	if o == nil || o.RedirectUris == nil {
+		return nil, false
+	}
+	return o.RedirectUris, true
+}
+
+// HasRedirectUris returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasRedirectUris() bool {
+	if o != nil && o.RedirectUris != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRedirectUris gets a reference to the given []string and assigns it to the RedirectUris field.
+func (o *DSProducerDetails) SetRedirectUris(v []string) {
+	o.RedirectUris = &v
+}
+
 // GetRedshiftCreationStatements returns the RedshiftCreationStatements field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetRedshiftCreationStatements() string {
 	if o == nil || o.RedshiftCreationStatements == nil {
@@ -4998,6 +5535,38 @@ func (o *DSProducerDetails) HasRedshiftCreationStatements() bool {
 // SetRedshiftCreationStatements gets a reference to the given string and assigns it to the RedshiftCreationStatements field.
 func (o *DSProducerDetails) SetRedshiftCreationStatements(v string) {
 	o.RedshiftCreationStatements = &v
+}
+
+// GetRestrictedScopes returns the RestrictedScopes field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetRestrictedScopes() []string {
+	if o == nil || o.RestrictedScopes == nil {
+		var ret []string
+		return ret
+	}
+	return *o.RestrictedScopes
+}
+
+// GetRestrictedScopesOk returns a tuple with the RestrictedScopes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetRestrictedScopesOk() (*[]string, bool) {
+	if o == nil || o.RestrictedScopes == nil {
+		return nil, false
+	}
+	return o.RestrictedScopes, true
+}
+
+// HasRestrictedScopes returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasRestrictedScopes() bool {
+	if o != nil && o.RestrictedScopes != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRestrictedScopes gets a reference to the given []string and assigns it to the RestrictedScopes field.
+func (o *DSProducerDetails) SetRestrictedScopes(v []string) {
+	o.RestrictedScopes = &v
 }
 
 // GetRevokeSyncUrl returns the RevokeSyncUrl field value if set, zero value otherwise.
@@ -5288,6 +5857,38 @@ func (o *DSProducerDetails) SetShouldStop(v string) {
 	o.ShouldStop = &v
 }
 
+// GetSigningAlgorithm returns the SigningAlgorithm field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetSigningAlgorithm() string {
+	if o == nil || o.SigningAlgorithm == nil {
+		var ret string
+		return ret
+	}
+	return *o.SigningAlgorithm
+}
+
+// GetSigningAlgorithmOk returns a tuple with the SigningAlgorithm field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetSigningAlgorithmOk() (*string, bool) {
+	if o == nil || o.SigningAlgorithm == nil {
+		return nil, false
+	}
+	return o.SigningAlgorithm, true
+}
+
+// HasSigningAlgorithm returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasSigningAlgorithm() bool {
+	if o != nil && o.SigningAlgorithm != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSigningAlgorithm gets a reference to the given string and assigns it to the SigningAlgorithm field.
+func (o *DSProducerDetails) SetSigningAlgorithm(v string) {
+	o.SigningAlgorithm = &v
+}
+
 // GetSslConnectionCertificate returns the SslConnectionCertificate field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetSslConnectionCertificate() string {
 	if o == nil || o.SslConnectionCertificate == nil {
@@ -5350,6 +5951,38 @@ func (o *DSProducerDetails) HasSslConnectionMode() bool {
 // SetSslConnectionMode gets a reference to the given bool and assigns it to the SslConnectionMode field.
 func (o *DSProducerDetails) SetSslConnectionMode(v bool) {
 	o.SslConnectionMode = &v
+}
+
+// GetSubjectDn returns the SubjectDn field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetSubjectDn() string {
+	if o == nil || o.SubjectDn == nil {
+		var ret string
+		return ret
+	}
+	return *o.SubjectDn
+}
+
+// GetSubjectDnOk returns a tuple with the SubjectDn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetSubjectDnOk() (*string, bool) {
+	if o == nil || o.SubjectDn == nil {
+		return nil, false
+	}
+	return o.SubjectDn, true
+}
+
+// HasSubjectDn returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasSubjectDn() bool {
+	if o != nil && o.SubjectDn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSubjectDn gets a reference to the given string and assigns it to the SubjectDn field.
+func (o *DSProducerDetails) SetSubjectDn(v string) {
+	o.SubjectDn = &v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
@@ -5478,6 +6111,38 @@ func (o *DSProducerDetails) HasUserName() bool {
 // SetUserName gets a reference to the given string and assigns it to the UserName field.
 func (o *DSProducerDetails) SetUserName(v string) {
 	o.UserName = &v
+}
+
+// GetUserPassword returns the UserPassword field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetUserPassword() string {
+	if o == nil || o.UserPassword == nil {
+		var ret string
+		return ret
+	}
+	return *o.UserPassword
+}
+
+// GetUserPasswordOk returns a tuple with the UserPassword field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetUserPasswordOk() (*string, bool) {
+	if o == nil || o.UserPassword == nil {
+		return nil, false
+	}
+	return o.UserPassword, true
+}
+
+// HasUserPassword returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasUserPassword() bool {
+	if o != nil && o.UserPassword != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserPassword gets a reference to the given string and assigns it to the UserPassword field.
+func (o *DSProducerDetails) SetUserPassword(v string) {
+	o.UserPassword = &v
 }
 
 // GetUserPrincipalName returns the UserPrincipalName field value if set, zero value otherwise.
@@ -6058,6 +6723,9 @@ func (o *DSProducerDetails) SetWarnBeforeUserExpirationMin(v int64) {
 
 func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AccessTokenManagerId != nil {
+		toSerialize["access_token_manager_id"] = o.AccessTokenManagerId
+	}
 	if o.Active != nil {
 		toSerialize["active"] = o.Active
 	}
@@ -6069,6 +6737,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.AdminRotationIntervalDays != nil {
 		toSerialize["admin_rotation_interval_days"] = o.AdminRotationIntervalDays
+	}
+	if o.AdministrativePort != nil {
+		toSerialize["administrative_port"] = o.AdministrativePort
 	}
 	if o.ArtifactoryAdminApikey != nil {
 		toSerialize["artifactory_admin_apikey"] = o.ArtifactoryAdminApikey
@@ -6084,6 +6755,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.ArtifactoryTokenScope != nil {
 		toSerialize["artifactory_token_scope"] = o.ArtifactoryTokenScope
+	}
+	if o.AuthorizationPort != nil {
+		toSerialize["authorization_port"] = o.AuthorizationPort
 	}
 	if o.AwsAccessKeyId != nil {
 		toSerialize["aws_access_key_id"] = o.AwsAccessKeyId
@@ -6181,6 +6855,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	if o.ChefSkipSsl != nil {
 		toSerialize["chef_skip_ssl"] = o.ChefSkipSsl
 	}
+	if o.ClientAuthenticationType != nil {
+		toSerialize["client_authentication_type"] = o.ClientAuthenticationType
+	}
 	if o.CreateSyncUrl != nil {
 		toSerialize["create_sync_url"] = o.CreateSyncUrl
 	}
@@ -6259,6 +6936,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	if o.EnableAdminRotation != nil {
 		toSerialize["enable_admin_rotation"] = o.EnableAdminRotation
 	}
+	if o.EnforceReplayPrevention != nil {
+		toSerialize["enforce_replay_prevention"] = o.EnforceReplayPrevention
+	}
 	if o.ExternallyProvidedUser != nil {
 		toSerialize["externally_provided_user"] = o.ExternallyProvidedUser
 	}
@@ -6334,6 +7014,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	if o.GkeServiceAccountName != nil {
 		toSerialize["gke_service_account_name"] = o.GkeServiceAccountName
 	}
+	if o.GrantTypes != nil {
+		toSerialize["grant_types"] = o.GrantTypes
+	}
 	if o.Groups != nil {
 		toSerialize["groups"] = o.Groups
 	}
@@ -6355,8 +7038,17 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	if o.IsFixedUser != nil {
 		toSerialize["is_fixed_user"] = o.IsFixedUser
 	}
+	if o.Issuer != nil {
+		toSerialize["issuer"] = o.Issuer
+	}
 	if o.ItemTargetsAssoc != nil {
 		toSerialize["item_targets_assoc"] = o.ItemTargetsAssoc
+	}
+	if o.Jwks != nil {
+		toSerialize["jwks"] = o.Jwks
+	}
+	if o.JwksUrl != nil {
+		toSerialize["jwks_url"] = o.JwksUrl
 	}
 	if o.K8sAllowedNamespaces != nil {
 		toSerialize["k8s_allowed_namespaces"] = o.K8sAllowedNamespaces
@@ -6376,8 +7068,20 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	if o.K8sNamespace != nil {
 		toSerialize["k8s_namespace"] = o.K8sNamespace
 	}
+	if o.K8sRoleName != nil {
+		toSerialize["k8s_role_name"] = o.K8sRoleName
+	}
+	if o.K8sRoleType != nil {
+		toSerialize["k8s_role_type"] = o.K8sRoleType
+	}
 	if o.K8sServiceAccount != nil {
 		toSerialize["k8s_service_account"] = o.K8sServiceAccount
+	}
+	if o.K8sTempRoleBindingDefinition != nil {
+		toSerialize["k8s_temp_role_binding_definition"] = o.K8sTempRoleBindingDefinition
+	}
+	if o.K8sTempRoleDefinition != nil {
+		toSerialize["k8s_temp_role_definition"] = o.K8sTempRoleDefinition
 	}
 	if o.LastAdminRotation != nil {
 		toSerialize["last_admin_rotation"] = o.LastAdminRotation
@@ -6472,11 +7176,17 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	if o.Payload != nil {
 		toSerialize["payload"] = o.Payload
 	}
+	if o.PingUrl != nil {
+		toSerialize["ping_url"] = o.PingUrl
+	}
 	if o.PostgresCreationStatements != nil {
 		toSerialize["postgres_creation_statements"] = o.PostgresCreationStatements
 	}
 	if o.PostgresRevocationStatements != nil {
 		toSerialize["postgres_revocation_statements"] = o.PostgresRevocationStatements
+	}
+	if o.PrivilegedUser != nil {
+		toSerialize["privileged_user"] = o.PrivilegedUser
 	}
 	if o.RabbitmqServerPassword != nil {
 		toSerialize["rabbitmq_server_password"] = o.RabbitmqServerPassword
@@ -6502,8 +7212,14 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	if o.RabbitmqUserWritePermission != nil {
 		toSerialize["rabbitmq_user_write_permission"] = o.RabbitmqUserWritePermission
 	}
+	if o.RedirectUris != nil {
+		toSerialize["redirect_uris"] = o.RedirectUris
+	}
 	if o.RedshiftCreationStatements != nil {
 		toSerialize["redshift_creation_statements"] = o.RedshiftCreationStatements
+	}
+	if o.RestrictedScopes != nil {
+		toSerialize["restricted_scopes"] = o.RestrictedScopes
 	}
 	if o.RevokeSyncUrl != nil {
 		toSerialize["revoke_sync_url"] = o.RevokeSyncUrl
@@ -6532,11 +7248,17 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	if o.ShouldStop != nil {
 		toSerialize["should_stop"] = o.ShouldStop
 	}
+	if o.SigningAlgorithm != nil {
+		toSerialize["signing_algorithm"] = o.SigningAlgorithm
+	}
 	if o.SslConnectionCertificate != nil {
 		toSerialize["ssl_connection_certificate"] = o.SslConnectionCertificate
 	}
 	if o.SslConnectionMode != nil {
 		toSerialize["ssl_connection_mode"] = o.SslConnectionMode
+	}
+	if o.SubjectDn != nil {
+		toSerialize["subject_dn"] = o.SubjectDn
 	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags
@@ -6549,6 +7271,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.UserName != nil {
 		toSerialize["user_name"] = o.UserName
+	}
+	if o.UserPassword != nil {
+		toSerialize["user_password"] = o.UserPassword
 	}
 	if o.UserPrincipalName != nil {
 		toSerialize["user_principal_name"] = o.UserPrincipalName

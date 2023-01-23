@@ -17,12 +17,14 @@ import (
 
 // GetPKICertificate struct for GetPKICertificate
 type GetPKICertificate struct {
-	// The Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list)
+	// The Subject Alternative Names to be included in the PKI certificate (in a comma-separated list) (if CSR is supplied this flag is ignored and any DNS.* names are taken from it)
 	AltNames *string `json:"alt-names,omitempty"`
 	// The name of the PKI certificate issuer
 	CertIssuerName string `json:"cert-issuer-name"`
-	// The common name to be included in the PKI certificate
+	// The common name to be included in the PKI certificate (if CSR is supplied this flag is ignored and the CSR subject CN is taken)
 	CommonName *string `json:"common-name,omitempty"`
+	// Certificate Signing Request contents encoded in base64 to generate the certificate with
+	CsrDataBase64 *string `json:"csr-data-base64,omitempty"`
 	// A comma-separated list of extended key usage requests which will be used for certificate issuance. Supported values: 'clientauth', 'serverauth'.
 	ExtendedKeyUsage *string `json:"extended-key-usage,omitempty"`
 	// Set output format to JSON
@@ -35,7 +37,7 @@ type GetPKICertificate struct {
 	Ttl *int64 `json:"ttl,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// The URI Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list)
+	// The URI Subject Alternative Names to be included in the PKI certificate (in a comma-separated list) (if CSR is supplied this flag is ignored and any URI.* names are taken from it)
 	UriSans *string `json:"uri-sans,omitempty"`
 }
 
@@ -143,6 +145,38 @@ func (o *GetPKICertificate) HasCommonName() bool {
 // SetCommonName gets a reference to the given string and assigns it to the CommonName field.
 func (o *GetPKICertificate) SetCommonName(v string) {
 	o.CommonName = &v
+}
+
+// GetCsrDataBase64 returns the CsrDataBase64 field value if set, zero value otherwise.
+func (o *GetPKICertificate) GetCsrDataBase64() string {
+	if o == nil || o.CsrDataBase64 == nil {
+		var ret string
+		return ret
+	}
+	return *o.CsrDataBase64
+}
+
+// GetCsrDataBase64Ok returns a tuple with the CsrDataBase64 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetPKICertificate) GetCsrDataBase64Ok() (*string, bool) {
+	if o == nil || o.CsrDataBase64 == nil {
+		return nil, false
+	}
+	return o.CsrDataBase64, true
+}
+
+// HasCsrDataBase64 returns a boolean if a field has been set.
+func (o *GetPKICertificate) HasCsrDataBase64() bool {
+	if o != nil && o.CsrDataBase64 != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCsrDataBase64 gets a reference to the given string and assigns it to the CsrDataBase64 field.
+func (o *GetPKICertificate) SetCsrDataBase64(v string) {
+	o.CsrDataBase64 = &v
 }
 
 // GetExtendedKeyUsage returns the ExtendedKeyUsage field value if set, zero value otherwise.
@@ -379,6 +413,9 @@ func (o GetPKICertificate) MarshalJSON() ([]byte, error) {
 	}
 	if o.CommonName != nil {
 		toSerialize["common-name"] = o.CommonName
+	}
+	if o.CsrDataBase64 != nil {
+		toSerialize["csr-data-base64"] = o.CsrDataBase64
 	}
 	if o.ExtendedKeyUsage != nil {
 		toSerialize["extended-key-usage"] = o.ExtendedKeyUsage

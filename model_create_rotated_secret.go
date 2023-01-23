@@ -41,6 +41,8 @@ type CreateRotatedSecret struct {
 	Metadata *string `json:"metadata,omitempty"`
 	// Secret name
 	Name string `json:"name"`
+	// Rotate the value of the secret after SRA session ends
+	RotateAfterDisconnect *string `json:"rotate-after-disconnect,omitempty"`
 	RotatedPassword *string `json:"rotated-password,omitempty"`
 	RotatedUsername *string `json:"rotated-username,omitempty"`
 	RotationHour *int32 `json:"rotation-hour,omitempty"`
@@ -105,6 +107,8 @@ func NewCreateRotatedSecret(name string, rotatorType string, targetName string, 
 	var awsRegion string = "us-east-2"
 	this.AwsRegion = &awsRegion
 	this.Name = name
+	var rotateAfterDisconnect string = "false"
+	this.RotateAfterDisconnect = &rotateAfterDisconnect
 	this.RotatorType = rotatorType
 	var secureAccessAllowExternalUser bool = false
 	this.SecureAccessAllowExternalUser = &secureAccessAllowExternalUser
@@ -125,6 +129,8 @@ func NewCreateRotatedSecretWithDefaults() *CreateRotatedSecret {
 	this := CreateRotatedSecret{}
 	var awsRegion string = "us-east-2"
 	this.AwsRegion = &awsRegion
+	var rotateAfterDisconnect string = "false"
+	this.RotateAfterDisconnect = &rotateAfterDisconnect
 	var secureAccessAllowExternalUser bool = false
 	this.SecureAccessAllowExternalUser = &secureAccessAllowExternalUser
 	var secureAccessWeb bool = false
@@ -574,6 +580,38 @@ func (o *CreateRotatedSecret) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *CreateRotatedSecret) SetName(v string) {
 	o.Name = v
+}
+
+// GetRotateAfterDisconnect returns the RotateAfterDisconnect field value if set, zero value otherwise.
+func (o *CreateRotatedSecret) GetRotateAfterDisconnect() string {
+	if o == nil || o.RotateAfterDisconnect == nil {
+		var ret string
+		return ret
+	}
+	return *o.RotateAfterDisconnect
+}
+
+// GetRotateAfterDisconnectOk returns a tuple with the RotateAfterDisconnect field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRotatedSecret) GetRotateAfterDisconnectOk() (*string, bool) {
+	if o == nil || o.RotateAfterDisconnect == nil {
+		return nil, false
+	}
+	return o.RotateAfterDisconnect, true
+}
+
+// HasRotateAfterDisconnect returns a boolean if a field has been set.
+func (o *CreateRotatedSecret) HasRotateAfterDisconnect() bool {
+	if o != nil && o.RotateAfterDisconnect != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRotateAfterDisconnect gets a reference to the given string and assigns it to the RotateAfterDisconnect field.
+func (o *CreateRotatedSecret) SetRotateAfterDisconnect(v string) {
+	o.RotateAfterDisconnect = &v
 }
 
 // GetRotatedPassword returns the RotatedPassword field value if set, zero value otherwise.
@@ -1531,6 +1569,9 @@ func (o CreateRotatedSecret) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.RotateAfterDisconnect != nil {
+		toSerialize["rotate-after-disconnect"] = o.RotateAfterDisconnect
 	}
 	if o.RotatedPassword != nil {
 		toSerialize["rotated-password"] = o.RotatedPassword

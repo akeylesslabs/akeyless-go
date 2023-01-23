@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Metadata** | Pointer to **string** | Deprecated - use description | [optional] 
 **Name** | **string** | Secret name | 
+**RotateAfterDisconnect** | Pointer to **string** | Rotate the value of the secret after SRA session ends | [optional] [default to "false"]
 **RotatedPassword** | Pointer to **string** |  | [optional] 
 **RotatedUsername** | Pointer to **string** |  | [optional] 
 **RotationHour** | Pointer to **int32** |  | [optional] 
@@ -411,6 +412,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetRotateAfterDisconnect
+
+`func (o *CreateRotatedSecret) GetRotateAfterDisconnect() string`
+
+GetRotateAfterDisconnect returns the RotateAfterDisconnect field if non-nil, zero value otherwise.
+
+### GetRotateAfterDisconnectOk
+
+`func (o *CreateRotatedSecret) GetRotateAfterDisconnectOk() (*string, bool)`
+
+GetRotateAfterDisconnectOk returns a tuple with the RotateAfterDisconnect field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotateAfterDisconnect
+
+`func (o *CreateRotatedSecret) SetRotateAfterDisconnect(v string)`
+
+SetRotateAfterDisconnect sets RotateAfterDisconnect field to given value.
+
+### HasRotateAfterDisconnect
+
+`func (o *CreateRotatedSecret) HasRotateAfterDisconnect() bool`
+
+HasRotateAfterDisconnect returns a boolean if a field has been set.
 
 ### GetRotatedPassword
 

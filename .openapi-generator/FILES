@@ -106,6 +106,8 @@ docs/CreateNativeK8STarget.md
 docs/CreateNativeK8STargetOutput.md
 docs/CreatePKICertIssuer.md
 docs/CreatePKICertIssuerOutput.md
+docs/CreatePingTarget.md
+docs/CreatePingTargetOutput.md
 docs/CreateRabbitMQTarget.md
 docs/CreateRabbitMQTargetOutput.md
 docs/CreateRole.md
@@ -227,6 +229,8 @@ docs/GatewayCreateProducerNativeK8S.md
 docs/GatewayCreateProducerNativeK8SOutput.md
 docs/GatewayCreateProducerOracleDb.md
 docs/GatewayCreateProducerOracleDbOutput.md
+docs/GatewayCreateProducerPing.md
+docs/GatewayCreateProducerPingOutput.md
 docs/GatewayCreateProducerPostgreSQL.md
 docs/GatewayCreateProducerPostgreSQLOutput.md
 docs/GatewayCreateProducerRabbitMQ.md
@@ -315,6 +319,8 @@ docs/GatewayUpdateProducerNativeK8S.md
 docs/GatewayUpdateProducerNativeK8SOutput.md
 docs/GatewayUpdateProducerOracleDb.md
 docs/GatewayUpdateProducerOracleDbOutput.md
+docs/GatewayUpdateProducerPing.md
+docs/GatewayUpdateProducerPingOutput.md
 docs/GatewayUpdateProducerPostgreSQL.md
 docs/GatewayUpdateProducerPostgreSQLOutput.md
 docs/GatewayUpdateProducerRabbitMQ.md
@@ -558,6 +564,7 @@ docs/UpdateNativeK8STargetOutput.md
 docs/UpdateOutput.md
 docs/UpdatePKICertIssuer.md
 docs/UpdatePKICertIssuerOutput.md
+docs/UpdatePingTarget.md
 docs/UpdateRDPTargetDetails.md
 docs/UpdateRabbitMQTarget.md
 docs/UpdateRabbitMQTargetDetails.md
@@ -697,6 +704,8 @@ model_create_ldap_target.go
 model_create_ldap_target_output.go
 model_create_native_k8_s_target.go
 model_create_native_k8_s_target_output.go
+model_create_ping_target.go
+model_create_ping_target_output.go
 model_create_pki_cert_issuer.go
 model_create_pki_cert_issuer_output.go
 model_create_rabbit_mq_target.go
@@ -817,6 +826,8 @@ model_gateway_create_producer_native_k8_s.go
 model_gateway_create_producer_native_k8_s_output.go
 model_gateway_create_producer_oracle_db.go
 model_gateway_create_producer_oracle_db_output.go
+model_gateway_create_producer_ping.go
+model_gateway_create_producer_ping_output.go
 model_gateway_create_producer_postgre_sql.go
 model_gateway_create_producer_postgre_sql_output.go
 model_gateway_create_producer_rabbit_mq.go
@@ -905,6 +916,8 @@ model_gateway_update_producer_native_k8_s.go
 model_gateway_update_producer_native_k8_s_output.go
 model_gateway_update_producer_oracle_db.go
 model_gateway_update_producer_oracle_db_output.go
+model_gateway_update_producer_ping.go
+model_gateway_update_producer_ping_output.go
 model_gateway_update_producer_postgre_sql.go
 model_gateway_update_producer_postgre_sql_output.go
 model_gateway_update_producer_rabbit_mq.go
@@ -1149,6 +1162,7 @@ model_update_ldap_target_output.go
 model_update_native_k8_s_target.go
 model_update_native_k8_s_target_output.go
 model_update_output.go
+model_update_ping_target.go
 model_update_pki_cert_issuer.go
 model_update_pki_cert_issuer_output.go
 model_update_rabbit_mq_target.go

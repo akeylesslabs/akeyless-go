@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **Native** | Pointer to **bool** |  | [optional] 
 **RdpUser** | Pointer to **string** |  | [optional] 
 **Region** | Pointer to **string** |  | [optional] 
+**RotateAfterDisconnect** | Pointer to **bool** |  | [optional] 
 **Schema** | Pointer to **string** |  | [optional] 
 **SshPassword** | Pointer to **bool** |  | [optional] 
 **SshPrivateKey** | Pointer to **bool** |  | [optional] 
@@ -550,6 +551,31 @@ SetRegion sets Region field to given value.
 `func (o *SecureRemoteAccess) HasRegion() bool`
 
 HasRegion returns a boolean if a field has been set.
+
+### GetRotateAfterDisconnect
+
+`func (o *SecureRemoteAccess) GetRotateAfterDisconnect() bool`
+
+GetRotateAfterDisconnect returns the RotateAfterDisconnect field if non-nil, zero value otherwise.
+
+### GetRotateAfterDisconnectOk
+
+`func (o *SecureRemoteAccess) GetRotateAfterDisconnectOk() (*bool, bool)`
+
+GetRotateAfterDisconnectOk returns a tuple with the RotateAfterDisconnect field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotateAfterDisconnect
+
+`func (o *SecureRemoteAccess) SetRotateAfterDisconnect(v bool)`
+
+SetRotateAfterDisconnect sets RotateAfterDisconnect field to given value.
+
+### HasRotateAfterDisconnect
+
+`func (o *SecureRemoteAccess) HasRotateAfterDisconnect() bool`
+
+HasRotateAfterDisconnect returns a boolean if a field has been set.
 
 ### GetSchema
 

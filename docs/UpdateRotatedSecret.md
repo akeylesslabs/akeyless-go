@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **NewName** | Pointer to **string** | New item name | [optional] 
 **NewVersion** | Pointer to **bool** | Deprecated | [optional] 
 **RmTag** | Pointer to **[]string** | List of the existent tags that will be removed from this item | [optional] 
+**RotateAfterDisconnect** | Pointer to **string** | Rotate the value of the secret after SRA session ends | [optional] [default to "false"]
 **RotatedPassword** | Pointer to **string** |  | [optional] 
 **RotatedUsername** | Pointer to **string** |  | [optional] 
 **RotationHour** | Pointer to **int32** |  | [optional] 
@@ -458,6 +459,31 @@ SetRmTag sets RmTag field to given value.
 `func (o *UpdateRotatedSecret) HasRmTag() bool`
 
 HasRmTag returns a boolean if a field has been set.
+
+### GetRotateAfterDisconnect
+
+`func (o *UpdateRotatedSecret) GetRotateAfterDisconnect() string`
+
+GetRotateAfterDisconnect returns the RotateAfterDisconnect field if non-nil, zero value otherwise.
+
+### GetRotateAfterDisconnectOk
+
+`func (o *UpdateRotatedSecret) GetRotateAfterDisconnectOk() (*string, bool)`
+
+GetRotateAfterDisconnectOk returns a tuple with the RotateAfterDisconnect field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotateAfterDisconnect
+
+`func (o *UpdateRotatedSecret) SetRotateAfterDisconnect(v string)`
+
+SetRotateAfterDisconnect sets RotateAfterDisconnect field to given value.
+
+### HasRotateAfterDisconnect
+
+`func (o *UpdateRotatedSecret) HasRotateAfterDisconnect() bool`
+
+HasRotateAfterDisconnect returns a boolean if a field has been set.
 
 ### GetRotatedPassword
 

@@ -37,6 +37,7 @@ type SecureRemoteAccess struct {
 	Native *bool `json:"native,omitempty"`
 	RdpUser *string `json:"rdp_user,omitempty"`
 	Region *string `json:"region,omitempty"`
+	RotateAfterDisconnect *bool `json:"rotate_after_disconnect,omitempty"`
 	Schema *string `json:"schema,omitempty"`
 	SshPassword *bool `json:"ssh_password,omitempty"`
 	SshPrivateKey *bool `json:"ssh_private_key,omitempty"`
@@ -703,6 +704,38 @@ func (o *SecureRemoteAccess) SetRegion(v string) {
 	o.Region = &v
 }
 
+// GetRotateAfterDisconnect returns the RotateAfterDisconnect field value if set, zero value otherwise.
+func (o *SecureRemoteAccess) GetRotateAfterDisconnect() bool {
+	if o == nil || o.RotateAfterDisconnect == nil {
+		var ret bool
+		return ret
+	}
+	return *o.RotateAfterDisconnect
+}
+
+// GetRotateAfterDisconnectOk returns a tuple with the RotateAfterDisconnect field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SecureRemoteAccess) GetRotateAfterDisconnectOk() (*bool, bool) {
+	if o == nil || o.RotateAfterDisconnect == nil {
+		return nil, false
+	}
+	return o.RotateAfterDisconnect, true
+}
+
+// HasRotateAfterDisconnect returns a boolean if a field has been set.
+func (o *SecureRemoteAccess) HasRotateAfterDisconnect() bool {
+	if o != nil && o.RotateAfterDisconnect != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRotateAfterDisconnect gets a reference to the given bool and assigns it to the RotateAfterDisconnect field.
+func (o *SecureRemoteAccess) SetRotateAfterDisconnect(v bool) {
+	o.RotateAfterDisconnect = &v
+}
+
 // GetSchema returns the Schema field value if set, zero value otherwise.
 func (o *SecureRemoteAccess) GetSchema() string {
 	if o == nil || o.Schema == nil {
@@ -988,6 +1021,9 @@ func (o SecureRemoteAccess) MarshalJSON() ([]byte, error) {
 	}
 	if o.Region != nil {
 		toSerialize["region"] = o.Region
+	}
+	if o.RotateAfterDisconnect != nil {
+		toSerialize["rotate_after_disconnect"] = o.RotateAfterDisconnect
 	}
 	if o.Schema != nil {
 		toSerialize["schema"] = o.Schema

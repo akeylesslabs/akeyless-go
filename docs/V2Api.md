@@ -38,6 +38,7 @@ Method | HTTP request | Description
 [**CreateKey**](V2Api.md#CreateKey) | **Post** /create-key | 
 [**CreateNativeK8STarget**](V2Api.md#CreateNativeK8STarget) | **Post** /create-k8s-target | 
 [**CreatePKICertIssuer**](V2Api.md#CreatePKICertIssuer) | **Post** /create-pki-cert-issuer | 
+[**CreatePingTarget**](V2Api.md#CreatePingTarget) | **Post** /create-ping-target | 
 [**CreateRabbitMQTarget**](V2Api.md#CreateRabbitMQTarget) | **Post** /create-rabbitmq-target | 
 [**CreateRole**](V2Api.md#CreateRole) | **Post** /create-role | 
 [**CreateRotatedSecret**](V2Api.md#CreateRotatedSecret) | **Post** /create-rotated-secret | 
@@ -92,6 +93,7 @@ Method | HTTP request | Description
 [**GatewayCreateProducerMySQL**](V2Api.md#GatewayCreateProducerMySQL) | **Post** /gateway-create-producer-mysql | 
 [**GatewayCreateProducerNativeK8S**](V2Api.md#GatewayCreateProducerNativeK8S) | **Post** /gateway-create-producer-k8s | 
 [**GatewayCreateProducerOracleDb**](V2Api.md#GatewayCreateProducerOracleDb) | **Post** /gateway-create-producer-oracle | 
+[**GatewayCreateProducerPing**](V2Api.md#GatewayCreateProducerPing) | **Post** /gateway-create-producer-ping | 
 [**GatewayCreateProducerPostgreSQL**](V2Api.md#GatewayCreateProducerPostgreSQL) | **Post** /gateway-create-producer-postgresql | 
 [**GatewayCreateProducerRabbitMQ**](V2Api.md#GatewayCreateProducerRabbitMQ) | **Post** /gateway-create-producer-rabbitmq | 
 [**GatewayCreateProducerRdp**](V2Api.md#GatewayCreateProducerRdp) | **Post** /gateway-create-producer-rdp | 
@@ -138,6 +140,7 @@ Method | HTTP request | Description
 [**GatewayUpdateProducerMySQL**](V2Api.md#GatewayUpdateProducerMySQL) | **Post** /gateway-update-producer-mysql | 
 [**GatewayUpdateProducerNativeK8S**](V2Api.md#GatewayUpdateProducerNativeK8S) | **Post** /gateway-update-producer-k8s | 
 [**GatewayUpdateProducerOracleDb**](V2Api.md#GatewayUpdateProducerOracleDb) | **Post** /gateway-update-producer-oracle | 
+[**GatewayUpdateProducerPing**](V2Api.md#GatewayUpdateProducerPing) | **Post** /gateway-update-producer-ping | 
 [**GatewayUpdateProducerPostgreSQL**](V2Api.md#GatewayUpdateProducerPostgreSQL) | **Post** /gateway-update-producer-postgresql | 
 [**GatewayUpdateProducerRabbitMQ**](V2Api.md#GatewayUpdateProducerRabbitMQ) | **Post** /gateway-update-producer-rabbitmq | 
 [**GatewayUpdateProducerRdp**](V2Api.md#GatewayUpdateProducerRdp) | **Post** /gateway-update-producer-rdp | 
@@ -235,6 +238,7 @@ Method | HTTP request | Description
 [**UpdateLdapTargetDetails**](V2Api.md#UpdateLdapTargetDetails) | **Post** /update-ldap-target-details | 
 [**UpdateNativeK8STarget**](V2Api.md#UpdateNativeK8STarget) | **Post** /update-k8s-target | 
 [**UpdatePKICertIssuer**](V2Api.md#UpdatePKICertIssuer) | **Post** /update-pki-cert-issuer | 
+[**UpdatePingTarget**](V2Api.md#UpdatePingTarget) | **Post** /update-ping-target | 
 [**UpdateRDPTargetDetails**](V2Api.md#UpdateRDPTargetDetails) | **Post** /update-rdp-target-details | 
 [**UpdateRabbitMQTarget**](V2Api.md#UpdateRabbitMQTarget) | **Post** /update-rabbitmq-target | 
 [**UpdateRabbitMQTargetDetails**](V2Api.md#UpdateRabbitMQTargetDetails) | **Post** /update-rabbitmq-target-details | 
@@ -2420,6 +2424,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreatePKICertIssuerOutput**](createPKICertIssuerOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreatePingTarget
+
+> CreatePingTargetOutput CreatePingTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewcreatePingTarget("Name_example") // CreatePingTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.CreatePingTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreatePingTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreatePingTarget`: CreatePingTargetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreatePingTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreatePingTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreatePingTarget**](CreatePingTarget.md) |  | 
+
+### Return type
+
+[**CreatePingTargetOutput**](createPingTargetOutput.md)
 
 ### Authorization
 
@@ -5891,6 +5959,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GatewayCreateProducerPing
+
+> GatewayCreateProducerPingOutput GatewayCreateProducerPing(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayCreateProducerPing("Name_example") // GatewayCreateProducerPing | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayCreateProducerPing(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerPing``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayCreateProducerPing`: GatewayCreateProducerPingOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayCreateProducerPing`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayCreateProducerPingRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayCreateProducerPing**](GatewayCreateProducerPing.md) |  | 
+
+### Return type
+
+[**GatewayCreateProducerPingOutput**](gatewayCreateProducerPingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GatewayCreateProducerPostgreSQL
 
 > GatewayCreateProducerPostgreSQLOutput GatewayCreateProducerPostgreSQL(ctx).Body(body).Execute()
@@ -8818,6 +8950,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GatewayUpdateProducerOracleDbOutput**](gatewayUpdateProducerOracleDbOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateProducerPing
+
+> GatewayUpdateProducerPingOutput GatewayUpdateProducerPing(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateProducerPing("Name_example") // GatewayUpdateProducerPing | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateProducerPing(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerPing``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateProducerPing`: GatewayUpdateProducerPingOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateProducerPing`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateProducerPingRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerPing**](GatewayUpdateProducerPing.md) |  | 
+
+### Return type
+
+[**GatewayUpdateProducerPingOutput**](gatewayUpdateProducerPingOutput.md)
 
 ### Authorization
 
@@ -15010,6 +15206,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**UpdatePKICertIssuerOutput**](updatePKICertIssuerOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdatePingTarget
+
+> map[string]interface{} UpdatePingTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewupdatePingTarget("Name_example") // UpdatePingTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdatePingTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdatePingTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdatePingTarget`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdatePingTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdatePingTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdatePingTarget**](UpdatePingTarget.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
 
 ### Authorization
 

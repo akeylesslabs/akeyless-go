@@ -4,16 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AltNames** | Pointer to **string** | The Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list) | [optional] 
+**AltNames** | Pointer to **string** | The Subject Alternative Names to be included in the PKI certificate (in a comma-separated list) (if CSR is supplied this flag is ignored and any DNS.* names are taken from it) | [optional] 
 **CertIssuerName** | **string** | The name of the PKI certificate issuer | 
-**CommonName** | Pointer to **string** | The common name to be included in the PKI certificate | [optional] 
+**CommonName** | Pointer to **string** | The common name to be included in the PKI certificate (if CSR is supplied this flag is ignored and the CSR subject CN is taken) | [optional] 
+**CsrDataBase64** | Pointer to **string** | Certificate Signing Request contents encoded in base64 to generate the certificate with | [optional] 
 **ExtendedKeyUsage** | Pointer to **string** | A comma-separated list of extended key usage requests which will be used for certificate issuance. Supported values: &#39;clientauth&#39;, &#39;serverauth&#39;. | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **KeyDataBase64** | Pointer to **string** | PKI key file contents. If this option is used, the certificate will be printed to stdout | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **Ttl** | Pointer to **int64** | Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
-**UriSans** | Pointer to **string** | The URI Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list) | [optional] 
+**UriSans** | Pointer to **string** | The URI Subject Alternative Names to be included in the PKI certificate (in a comma-separated list) (if CSR is supplied this flag is ignored and any URI.* names are taken from it) | [optional] 
 
 ## Methods
 
@@ -103,6 +104,31 @@ SetCommonName sets CommonName field to given value.
 `func (o *GetKubeExecCreds) HasCommonName() bool`
 
 HasCommonName returns a boolean if a field has been set.
+
+### GetCsrDataBase64
+
+`func (o *GetKubeExecCreds) GetCsrDataBase64() string`
+
+GetCsrDataBase64 returns the CsrDataBase64 field if non-nil, zero value otherwise.
+
+### GetCsrDataBase64Ok
+
+`func (o *GetKubeExecCreds) GetCsrDataBase64Ok() (*string, bool)`
+
+GetCsrDataBase64Ok returns a tuple with the CsrDataBase64 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCsrDataBase64
+
+`func (o *GetKubeExecCreds) SetCsrDataBase64(v string)`
+
+SetCsrDataBase64 sets CsrDataBase64 field to given value.
+
+### HasCsrDataBase64
+
+`func (o *GetKubeExecCreds) HasCsrDataBase64() bool`
+
+HasCsrDataBase64 returns a boolean if a field has been set.
 
 ### GetExtendedKeyUsage
 

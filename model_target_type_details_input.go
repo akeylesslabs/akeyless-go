@@ -17,12 +17,14 @@ import (
 
 // TargetTypeDetailsInput struct for TargetTypeDetailsInput
 type TargetTypeDetailsInput struct {
+	AdministrativePort *string `json:"administrative_port,omitempty"`
 	// params needed for jwt auth AppPrivateKey is the rsa private key in PEM format
 	AppPrivateKey *[]int32 `json:"app_private_key,omitempty"`
 	ArtifactoryAdminApikey *string `json:"artifactory_admin_apikey,omitempty"`
 	ArtifactoryAdminUsername *string `json:"artifactory_admin_username,omitempty"`
 	ArtifactoryBaseUrl *string `json:"artifactory_base_url,omitempty"`
 	AuthFlow *string `json:"auth_flow,omitempty"`
+	AuthorizationPort *string `json:"authorization_port,omitempty"`
 	AwsAccessKeyId *string `json:"aws_access_key_id,omitempty"`
 	AwsRegion *string `json:"aws_region,omitempty"`
 	AwsSecretAccessKey *string `json:"aws_secret_access_key,omitempty"`
@@ -102,9 +104,11 @@ type TargetTypeDetailsInput struct {
 	MongodbUsername *string `json:"mongodb_username,omitempty"`
 	Password *string `json:"password,omitempty"`
 	Payload *string `json:"payload,omitempty"`
+	PingUrl *string `json:"ping_url,omitempty"`
 	Port *string `json:"port,omitempty"`
 	PrivateKey *string `json:"private_key,omitempty"`
 	PrivateKeyPassword *string `json:"private_key_password,omitempty"`
+	PrivilegedUser *string `json:"privileged_user,omitempty"`
 	RabbitmqServerPassword *string `json:"rabbitmq_server_password,omitempty"`
 	RabbitmqServerUri *string `json:"rabbitmq_server_uri,omitempty"`
 	RabbitmqServerUser *string `json:"rabbitmq_server_user,omitempty"`
@@ -118,6 +122,7 @@ type TargetTypeDetailsInput struct {
 	Url *string `json:"url,omitempty"`
 	UseGwCloudIdentity *bool `json:"use_gw_cloud_identity,omitempty"`
 	UserName *string `json:"user_name,omitempty"`
+	UserPassword *string `json:"user_password,omitempty"`
 	Username *string `json:"username,omitempty"`
 	VenafiApiKey *string `json:"venafi_api_key,omitempty"`
 	VenafiBaseUrl *string `json:"venafi_base_url,omitempty"`
@@ -142,6 +147,38 @@ func NewTargetTypeDetailsInput() *TargetTypeDetailsInput {
 func NewTargetTypeDetailsInputWithDefaults() *TargetTypeDetailsInput {
 	this := TargetTypeDetailsInput{}
 	return &this
+}
+
+// GetAdministrativePort returns the AdministrativePort field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetAdministrativePort() string {
+	if o == nil || o.AdministrativePort == nil {
+		var ret string
+		return ret
+	}
+	return *o.AdministrativePort
+}
+
+// GetAdministrativePortOk returns a tuple with the AdministrativePort field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetAdministrativePortOk() (*string, bool) {
+	if o == nil || o.AdministrativePort == nil {
+		return nil, false
+	}
+	return o.AdministrativePort, true
+}
+
+// HasAdministrativePort returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasAdministrativePort() bool {
+	if o != nil && o.AdministrativePort != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdministrativePort gets a reference to the given string and assigns it to the AdministrativePort field.
+func (o *TargetTypeDetailsInput) SetAdministrativePort(v string) {
+	o.AdministrativePort = &v
 }
 
 // GetAppPrivateKey returns the AppPrivateKey field value if set, zero value otherwise.
@@ -302,6 +339,38 @@ func (o *TargetTypeDetailsInput) HasAuthFlow() bool {
 // SetAuthFlow gets a reference to the given string and assigns it to the AuthFlow field.
 func (o *TargetTypeDetailsInput) SetAuthFlow(v string) {
 	o.AuthFlow = &v
+}
+
+// GetAuthorizationPort returns the AuthorizationPort field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetAuthorizationPort() string {
+	if o == nil || o.AuthorizationPort == nil {
+		var ret string
+		return ret
+	}
+	return *o.AuthorizationPort
+}
+
+// GetAuthorizationPortOk returns a tuple with the AuthorizationPort field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetAuthorizationPortOk() (*string, bool) {
+	if o == nil || o.AuthorizationPort == nil {
+		return nil, false
+	}
+	return o.AuthorizationPort, true
+}
+
+// HasAuthorizationPort returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasAuthorizationPort() bool {
+	if o != nil && o.AuthorizationPort != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthorizationPort gets a reference to the given string and assigns it to the AuthorizationPort field.
+func (o *TargetTypeDetailsInput) SetAuthorizationPort(v string) {
+	o.AuthorizationPort = &v
 }
 
 // GetAwsAccessKeyId returns the AwsAccessKeyId field value if set, zero value otherwise.
@@ -2512,6 +2581,38 @@ func (o *TargetTypeDetailsInput) SetPayload(v string) {
 	o.Payload = &v
 }
 
+// GetPingUrl returns the PingUrl field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetPingUrl() string {
+	if o == nil || o.PingUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.PingUrl
+}
+
+// GetPingUrlOk returns a tuple with the PingUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetPingUrlOk() (*string, bool) {
+	if o == nil || o.PingUrl == nil {
+		return nil, false
+	}
+	return o.PingUrl, true
+}
+
+// HasPingUrl returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasPingUrl() bool {
+	if o != nil && o.PingUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPingUrl gets a reference to the given string and assigns it to the PingUrl field.
+func (o *TargetTypeDetailsInput) SetPingUrl(v string) {
+	o.PingUrl = &v
+}
+
 // GetPort returns the Port field value if set, zero value otherwise.
 func (o *TargetTypeDetailsInput) GetPort() string {
 	if o == nil || o.Port == nil {
@@ -2606,6 +2707,38 @@ func (o *TargetTypeDetailsInput) HasPrivateKeyPassword() bool {
 // SetPrivateKeyPassword gets a reference to the given string and assigns it to the PrivateKeyPassword field.
 func (o *TargetTypeDetailsInput) SetPrivateKeyPassword(v string) {
 	o.PrivateKeyPassword = &v
+}
+
+// GetPrivilegedUser returns the PrivilegedUser field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetPrivilegedUser() string {
+	if o == nil || o.PrivilegedUser == nil {
+		var ret string
+		return ret
+	}
+	return *o.PrivilegedUser
+}
+
+// GetPrivilegedUserOk returns a tuple with the PrivilegedUser field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetPrivilegedUserOk() (*string, bool) {
+	if o == nil || o.PrivilegedUser == nil {
+		return nil, false
+	}
+	return o.PrivilegedUser, true
+}
+
+// HasPrivilegedUser returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasPrivilegedUser() bool {
+	if o != nil && o.PrivilegedUser != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivilegedUser gets a reference to the given string and assigns it to the PrivilegedUser field.
+func (o *TargetTypeDetailsInput) SetPrivilegedUser(v string) {
+	o.PrivilegedUser = &v
 }
 
 // GetRabbitmqServerPassword returns the RabbitmqServerPassword field value if set, zero value otherwise.
@@ -2960,6 +3093,38 @@ func (o *TargetTypeDetailsInput) SetUserName(v string) {
 	o.UserName = &v
 }
 
+// GetUserPassword returns the UserPassword field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetUserPassword() string {
+	if o == nil || o.UserPassword == nil {
+		var ret string
+		return ret
+	}
+	return *o.UserPassword
+}
+
+// GetUserPasswordOk returns a tuple with the UserPassword field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetUserPasswordOk() (*string, bool) {
+	if o == nil || o.UserPassword == nil {
+		return nil, false
+	}
+	return o.UserPassword, true
+}
+
+// HasUserPassword returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasUserPassword() bool {
+	if o != nil && o.UserPassword != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserPassword gets a reference to the given string and assigns it to the UserPassword field.
+func (o *TargetTypeDetailsInput) SetUserPassword(v string) {
+	o.UserPassword = &v
+}
+
 // GetUsername returns the Username field value if set, zero value otherwise.
 func (o *TargetTypeDetailsInput) GetUsername() string {
 	if o == nil || o.Username == nil {
@@ -3186,6 +3351,9 @@ func (o *TargetTypeDetailsInput) SetVenafiZone(v string) {
 
 func (o TargetTypeDetailsInput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AdministrativePort != nil {
+		toSerialize["administrative_port"] = o.AdministrativePort
+	}
 	if o.AppPrivateKey != nil {
 		toSerialize["app_private_key"] = o.AppPrivateKey
 	}
@@ -3200,6 +3368,9 @@ func (o TargetTypeDetailsInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.AuthFlow != nil {
 		toSerialize["auth_flow"] = o.AuthFlow
+	}
+	if o.AuthorizationPort != nil {
+		toSerialize["authorization_port"] = o.AuthorizationPort
 	}
 	if o.AwsAccessKeyId != nil {
 		toSerialize["aws_access_key_id"] = o.AwsAccessKeyId
@@ -3408,6 +3579,9 @@ func (o TargetTypeDetailsInput) MarshalJSON() ([]byte, error) {
 	if o.Payload != nil {
 		toSerialize["payload"] = o.Payload
 	}
+	if o.PingUrl != nil {
+		toSerialize["ping_url"] = o.PingUrl
+	}
 	if o.Port != nil {
 		toSerialize["port"] = o.Port
 	}
@@ -3416,6 +3590,9 @@ func (o TargetTypeDetailsInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.PrivateKeyPassword != nil {
 		toSerialize["private_key_password"] = o.PrivateKeyPassword
+	}
+	if o.PrivilegedUser != nil {
+		toSerialize["privileged_user"] = o.PrivilegedUser
 	}
 	if o.RabbitmqServerPassword != nil {
 		toSerialize["rabbitmq_server_password"] = o.RabbitmqServerPassword
@@ -3449,6 +3626,9 @@ func (o TargetTypeDetailsInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.UserName != nil {
 		toSerialize["user_name"] = o.UserName
+	}
+	if o.UserPassword != nil {
+		toSerialize["user_password"] = o.UserPassword
 	}
 	if o.Username != nil {
 		toSerialize["username"] = o.Username

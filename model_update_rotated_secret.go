@@ -45,6 +45,8 @@ type UpdateRotatedSecret struct {
 	NewVersion *bool `json:"new-version,omitempty"`
 	// List of the existent tags that will be removed from this item
 	RmTag *[]string `json:"rm-tag,omitempty"`
+	// Rotate the value of the secret after SRA session ends
+	RotateAfterDisconnect *string `json:"rotate-after-disconnect,omitempty"`
 	RotatedPassword *string `json:"rotated-password,omitempty"`
 	RotatedUsername *string `json:"rotated-username,omitempty"`
 	RotationHour *int32 `json:"rotation-hour,omitempty"`
@@ -103,6 +105,8 @@ func NewUpdateRotatedSecret(name string, ) *UpdateRotatedSecret {
 	this.Name = name
 	var newMetadata string = "default_metadata"
 	this.NewMetadata = &newMetadata
+	var rotateAfterDisconnect string = "false"
+	this.RotateAfterDisconnect = &rotateAfterDisconnect
 	var secureAccessAllowExternalUser bool = false
 	this.SecureAccessAllowExternalUser = &secureAccessAllowExternalUser
 	var secureAccessWeb bool = false
@@ -125,6 +129,8 @@ func NewUpdateRotatedSecretWithDefaults() *UpdateRotatedSecret {
 	this.Description = &description
 	var newMetadata string = "default_metadata"
 	this.NewMetadata = &newMetadata
+	var rotateAfterDisconnect string = "false"
+	this.RotateAfterDisconnect = &rotateAfterDisconnect
 	var secureAccessAllowExternalUser bool = false
 	this.SecureAccessAllowExternalUser = &secureAccessAllowExternalUser
 	var secureAccessWeb bool = false
@@ -638,6 +644,38 @@ func (o *UpdateRotatedSecret) HasRmTag() bool {
 // SetRmTag gets a reference to the given []string and assigns it to the RmTag field.
 func (o *UpdateRotatedSecret) SetRmTag(v []string) {
 	o.RmTag = &v
+}
+
+// GetRotateAfterDisconnect returns the RotateAfterDisconnect field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetRotateAfterDisconnect() string {
+	if o == nil || o.RotateAfterDisconnect == nil {
+		var ret string
+		return ret
+	}
+	return *o.RotateAfterDisconnect
+}
+
+// GetRotateAfterDisconnectOk returns a tuple with the RotateAfterDisconnect field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetRotateAfterDisconnectOk() (*string, bool) {
+	if o == nil || o.RotateAfterDisconnect == nil {
+		return nil, false
+	}
+	return o.RotateAfterDisconnect, true
+}
+
+// HasRotateAfterDisconnect returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasRotateAfterDisconnect() bool {
+	if o != nil && o.RotateAfterDisconnect != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRotateAfterDisconnect gets a reference to the given string and assigns it to the RotateAfterDisconnect field.
+func (o *UpdateRotatedSecret) SetRotateAfterDisconnect(v string) {
+	o.RotateAfterDisconnect = &v
 }
 
 // GetRotatedPassword returns the RotatedPassword field value if set, zero value otherwise.
@@ -1457,6 +1495,9 @@ func (o UpdateRotatedSecret) MarshalJSON() ([]byte, error) {
 	}
 	if o.RmTag != nil {
 		toSerialize["rm-tag"] = o.RmTag
+	}
+	if o.RotateAfterDisconnect != nil {
+		toSerialize["rotate-after-disconnect"] = o.RotateAfterDisconnect
 	}
 	if o.RotatedPassword != nil {
 		toSerialize["rotated-password"] = o.RotatedPassword

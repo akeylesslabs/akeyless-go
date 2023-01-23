@@ -4,11 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AdministrativePort** | Pointer to **string** |  | [optional] 
 **AppPrivateKey** | Pointer to **[]int32** | params needed for jwt auth AppPrivateKey is the rsa private key in PEM format | [optional] 
 **ArtifactoryAdminApikey** | Pointer to **string** |  | [optional] 
 **ArtifactoryAdminUsername** | Pointer to **string** |  | [optional] 
 **ArtifactoryBaseUrl** | Pointer to **string** |  | [optional] 
 **AuthFlow** | Pointer to **string** |  | [optional] 
+**AuthorizationPort** | Pointer to **string** |  | [optional] 
 **AwsAccessKeyId** | Pointer to **string** |  | [optional] 
 **AwsRegion** | Pointer to **string** |  | [optional] 
 **AwsSecretAccessKey** | Pointer to **string** |  | [optional] 
@@ -78,9 +80,11 @@ Name | Type | Description | Notes
 **MongodbUsername** | Pointer to **string** |  | [optional] 
 **Password** | Pointer to **string** |  | [optional] 
 **Payload** | Pointer to **string** |  | [optional] 
+**PingUrl** | Pointer to **string** |  | [optional] 
 **Port** | Pointer to **string** |  | [optional] 
 **PrivateKey** | Pointer to **string** |  | [optional] 
 **PrivateKeyPassword** | Pointer to **string** |  | [optional] 
+**PrivilegedUser** | Pointer to **string** |  | [optional] 
 **RabbitmqServerPassword** | Pointer to **string** |  | [optional] 
 **RabbitmqServerUri** | Pointer to **string** |  | [optional] 
 **RabbitmqServerUser** | Pointer to **string** |  | [optional] 
@@ -92,6 +96,7 @@ Name | Type | Description | Notes
 **Url** | Pointer to **string** |  | [optional] 
 **UseGwCloudIdentity** | Pointer to **bool** |  | [optional] 
 **UserName** | Pointer to **string** |  | [optional] 
+**UserPassword** | Pointer to **string** |  | [optional] 
 **Username** | Pointer to **string** |  | [optional] 
 **VenafiApiKey** | Pointer to **string** |  | [optional] 
 **VenafiBaseUrl** | Pointer to **string** |  | [optional] 
@@ -118,6 +123,31 @@ will change when the set of required properties is changed
 NewTargetTypeDetailsInputWithDefaults instantiates a new TargetTypeDetailsInput object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAdministrativePort
+
+`func (o *TargetTypeDetailsInput) GetAdministrativePort() string`
+
+GetAdministrativePort returns the AdministrativePort field if non-nil, zero value otherwise.
+
+### GetAdministrativePortOk
+
+`func (o *TargetTypeDetailsInput) GetAdministrativePortOk() (*string, bool)`
+
+GetAdministrativePortOk returns a tuple with the AdministrativePort field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdministrativePort
+
+`func (o *TargetTypeDetailsInput) SetAdministrativePort(v string)`
+
+SetAdministrativePort sets AdministrativePort field to given value.
+
+### HasAdministrativePort
+
+`func (o *TargetTypeDetailsInput) HasAdministrativePort() bool`
+
+HasAdministrativePort returns a boolean if a field has been set.
 
 ### GetAppPrivateKey
 
@@ -243,6 +273,31 @@ SetAuthFlow sets AuthFlow field to given value.
 `func (o *TargetTypeDetailsInput) HasAuthFlow() bool`
 
 HasAuthFlow returns a boolean if a field has been set.
+
+### GetAuthorizationPort
+
+`func (o *TargetTypeDetailsInput) GetAuthorizationPort() string`
+
+GetAuthorizationPort returns the AuthorizationPort field if non-nil, zero value otherwise.
+
+### GetAuthorizationPortOk
+
+`func (o *TargetTypeDetailsInput) GetAuthorizationPortOk() (*string, bool)`
+
+GetAuthorizationPortOk returns a tuple with the AuthorizationPort field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthorizationPort
+
+`func (o *TargetTypeDetailsInput) SetAuthorizationPort(v string)`
+
+SetAuthorizationPort sets AuthorizationPort field to given value.
+
+### HasAuthorizationPort
+
+`func (o *TargetTypeDetailsInput) HasAuthorizationPort() bool`
+
+HasAuthorizationPort returns a boolean if a field has been set.
 
 ### GetAwsAccessKeyId
 
@@ -1969,6 +2024,31 @@ SetPayload sets Payload field to given value.
 
 HasPayload returns a boolean if a field has been set.
 
+### GetPingUrl
+
+`func (o *TargetTypeDetailsInput) GetPingUrl() string`
+
+GetPingUrl returns the PingUrl field if non-nil, zero value otherwise.
+
+### GetPingUrlOk
+
+`func (o *TargetTypeDetailsInput) GetPingUrlOk() (*string, bool)`
+
+GetPingUrlOk returns a tuple with the PingUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPingUrl
+
+`func (o *TargetTypeDetailsInput) SetPingUrl(v string)`
+
+SetPingUrl sets PingUrl field to given value.
+
+### HasPingUrl
+
+`func (o *TargetTypeDetailsInput) HasPingUrl() bool`
+
+HasPingUrl returns a boolean if a field has been set.
+
 ### GetPort
 
 `func (o *TargetTypeDetailsInput) GetPort() string`
@@ -2043,6 +2123,31 @@ SetPrivateKeyPassword sets PrivateKeyPassword field to given value.
 `func (o *TargetTypeDetailsInput) HasPrivateKeyPassword() bool`
 
 HasPrivateKeyPassword returns a boolean if a field has been set.
+
+### GetPrivilegedUser
+
+`func (o *TargetTypeDetailsInput) GetPrivilegedUser() string`
+
+GetPrivilegedUser returns the PrivilegedUser field if non-nil, zero value otherwise.
+
+### GetPrivilegedUserOk
+
+`func (o *TargetTypeDetailsInput) GetPrivilegedUserOk() (*string, bool)`
+
+GetPrivilegedUserOk returns a tuple with the PrivilegedUser field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrivilegedUser
+
+`func (o *TargetTypeDetailsInput) SetPrivilegedUser(v string)`
+
+SetPrivilegedUser sets PrivilegedUser field to given value.
+
+### HasPrivilegedUser
+
+`func (o *TargetTypeDetailsInput) HasPrivilegedUser() bool`
+
+HasPrivilegedUser returns a boolean if a field has been set.
 
 ### GetRabbitmqServerPassword
 
@@ -2318,6 +2423,31 @@ SetUserName sets UserName field to given value.
 `func (o *TargetTypeDetailsInput) HasUserName() bool`
 
 HasUserName returns a boolean if a field has been set.
+
+### GetUserPassword
+
+`func (o *TargetTypeDetailsInput) GetUserPassword() string`
+
+GetUserPassword returns the UserPassword field if non-nil, zero value otherwise.
+
+### GetUserPasswordOk
+
+`func (o *TargetTypeDetailsInput) GetUserPasswordOk() (*string, bool)`
+
+GetUserPasswordOk returns a tuple with the UserPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserPassword
+
+`func (o *TargetTypeDetailsInput) SetUserPassword(v string)`
+
+SetUserPassword sets UserPassword field to given value.
+
+### HasUserPassword
+
+`func (o *TargetTypeDetailsInput) HasUserPassword() bool`
+
+HasUserPassword returns a boolean if a field has been set.
 
 ### GetUsername
 
