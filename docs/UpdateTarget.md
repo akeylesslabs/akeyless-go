@@ -4,9 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Description** | Pointer to **string** | Description of the object | [optional] [default to "default_comment"]
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Target name | 
-**NewComment** | Pointer to **string** | New comment about the target | [optional] [default to "default_comment"]
+**NewComment** | Pointer to **string** | Deprecated - use description | [optional] [default to "default_comment"]
 **NewName** | Pointer to **string** | New Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -29,6 +30,31 @@ will change when the set of required properties is changed
 NewUpdateTargetWithDefaults instantiates a new UpdateTarget object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetDescription
+
+`func (o *UpdateTarget) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *UpdateTarget) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *UpdateTarget) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *UpdateTarget) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetJson
 
