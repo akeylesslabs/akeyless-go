@@ -17,8 +17,10 @@ import (
 
 // CreateDockerhubTarget struct for CreateDockerhubTarget
 type CreateDockerhubTarget struct {
-	// Comment about the target
+	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`
+	// Description of the object
+	Description *string `json:"description,omitempty"`
 	// DockerhubPassword is either the user's password to manage the repository
 	DockerhubPassword *string `json:"dockerhub-password,omitempty"`
 	// DockerhubUsername is the name of the user in dockerhub
@@ -83,6 +85,38 @@ func (o *CreateDockerhubTarget) HasComment() bool {
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *CreateDockerhubTarget) SetComment(v string) {
 	o.Comment = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *CreateDockerhubTarget) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDockerhubTarget) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *CreateDockerhubTarget) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *CreateDockerhubTarget) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetDockerhubPassword returns the DockerhubPassword field value if set, zero value otherwise.
@@ -305,6 +339,9 @@ func (o CreateDockerhubTarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.DockerhubPassword != nil {
 		toSerialize["dockerhub-password"] = o.DockerhubPassword

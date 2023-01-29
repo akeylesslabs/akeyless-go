@@ -17,8 +17,10 @@ import (
 
 // UpdateNativeK8STarget struct for UpdateNativeK8STarget
 type UpdateNativeK8STarget struct {
-	// Comment about the target
+	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`
+	// Description of the object
+	Description *string `json:"description,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// K8S cluster CA certificate
@@ -93,6 +95,38 @@ func (o *UpdateNativeK8STarget) HasComment() bool {
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *UpdateNativeK8STarget) SetComment(v string) {
 	o.Comment = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *UpdateNativeK8STarget) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateNativeK8STarget) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *UpdateNativeK8STarget) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *UpdateNativeK8STarget) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -419,6 +453,9 @@ func (o UpdateNativeK8STarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json

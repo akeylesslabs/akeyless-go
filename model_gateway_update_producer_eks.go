@@ -67,7 +67,7 @@ func NewGatewayUpdateProducerEks(name string, ) *GatewayUpdateProducerEks {
 	var eksRegion string = "us-east-2"
 	this.EksRegion = &eksRegion
 	this.Name = name
-	var userTtl string = "60m"
+	var userTtl string = "15m"
 	this.UserTtl = &userTtl
 	return &this
 }
@@ -79,7 +79,7 @@ func NewGatewayUpdateProducerEksWithDefaults() *GatewayUpdateProducerEks {
 	this := GatewayUpdateProducerEks{}
 	var eksRegion string = "us-east-2"
 	this.EksRegion = &eksRegion
-	var userTtl string = "60m"
+	var userTtl string = "15m"
 	this.UserTtl = &userTtl
 	return &this
 }

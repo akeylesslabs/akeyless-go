@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Comment** | Pointer to **string** | Comment about the target | [optional] 
+**Comment** | Pointer to **string** | Deprecated - use description | [optional] 
+**Description** | Pointer to **string** | Description of the object | [optional] 
 **GkeAccountKey** | Pointer to **string** | GKE Service Account key file path | [optional] 
 **GkeClusterCert** | Pointer to **string** | GKE cluster CA certificate | [optional] 
 **GkeClusterEndpoint** | Pointer to **string** | GKE cluster URL endpoint | [optional] 
@@ -63,6 +64,31 @@ SetComment sets Comment field to given value.
 `func (o *UpdateGKETarget) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *UpdateGKETarget) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *UpdateGKETarget) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *UpdateGKETarget) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *UpdateGKETarget) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetGkeAccountKey
 

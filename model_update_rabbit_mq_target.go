@@ -17,8 +17,10 @@ import (
 
 // UpdateRabbitMQTarget struct for UpdateRabbitMQTarget
 type UpdateRabbitMQTarget struct {
-	// Comment about the target
+	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`
+	// Description of the object
+	Description *string `json:"description,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
@@ -87,6 +89,38 @@ func (o *UpdateRabbitMQTarget) HasComment() bool {
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *UpdateRabbitMQTarget) SetComment(v string) {
 	o.Comment = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *UpdateRabbitMQTarget) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRabbitMQTarget) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *UpdateRabbitMQTarget) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *UpdateRabbitMQTarget) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -437,6 +471,9 @@ func (o UpdateRabbitMQTarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json
