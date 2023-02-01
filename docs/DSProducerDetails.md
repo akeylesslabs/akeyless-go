@@ -118,12 +118,11 @@ Name | Type | Description | Notes
 **K8sClusterCaCertificate** | Pointer to **string** |  | [optional] 
 **K8sClusterEndpoint** | Pointer to **string** |  | [optional] 
 **K8sDynamicMode** | Pointer to **bool** | when native k8s is in dynamic mode, user can define allowed namespaces, K8sServiceAccount doesn&#39;t exist from the start and will only be created at time of getting dynamic secret value By default dynamic mode is false and producer behaves like it did before | [optional] 
+**K8sMultipleDocYamlTempDefinition** | Pointer to **[]int32** | Yaml definition for creation of temporary objects. Field that can hold multiple docs from which following will be extracted: ServiceAccount, Role/ClusterRole and RoleBinding/ClusterRoleBinding. If ServiceAccount not specified - it will be generated automatically | [optional] 
 **K8sNamespace** | Pointer to **string** |  | [optional] 
 **K8sRoleName** | Pointer to **string** | Name of the pre-existing Role or ClusterRole to bind a generated service account to. | [optional] 
 **K8sRoleType** | Pointer to **string** |  | [optional] 
 **K8sServiceAccount** | Pointer to **string** |  | [optional] 
-**K8sTempRoleBindingDefinition** | Pointer to **[]int32** | Yaml/Json definition of temporary role binding that will be created and deleted when TTL is due. Must have as subject name of Service Account specified in K8sServiceAccount field | [optional] 
-**K8sTempRoleDefinition** | Pointer to **[]int32** | Yaml/Json definition of temporary role that will be created and deleted when TTL is due | [optional] 
 **LastAdminRotation** | Pointer to **int64** |  | [optional] 
 **LdapAudience** | Pointer to **string** |  | [optional] 
 **LdapBindDn** | Pointer to **string** |  | [optional] 
@@ -3076,6 +3075,31 @@ SetK8sDynamicMode sets K8sDynamicMode field to given value.
 
 HasK8sDynamicMode returns a boolean if a field has been set.
 
+### GetK8sMultipleDocYamlTempDefinition
+
+`func (o *DSProducerDetails) GetK8sMultipleDocYamlTempDefinition() []int32`
+
+GetK8sMultipleDocYamlTempDefinition returns the K8sMultipleDocYamlTempDefinition field if non-nil, zero value otherwise.
+
+### GetK8sMultipleDocYamlTempDefinitionOk
+
+`func (o *DSProducerDetails) GetK8sMultipleDocYamlTempDefinitionOk() (*[]int32, bool)`
+
+GetK8sMultipleDocYamlTempDefinitionOk returns a tuple with the K8sMultipleDocYamlTempDefinition field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sMultipleDocYamlTempDefinition
+
+`func (o *DSProducerDetails) SetK8sMultipleDocYamlTempDefinition(v []int32)`
+
+SetK8sMultipleDocYamlTempDefinition sets K8sMultipleDocYamlTempDefinition field to given value.
+
+### HasK8sMultipleDocYamlTempDefinition
+
+`func (o *DSProducerDetails) HasK8sMultipleDocYamlTempDefinition() bool`
+
+HasK8sMultipleDocYamlTempDefinition returns a boolean if a field has been set.
+
 ### GetK8sNamespace
 
 `func (o *DSProducerDetails) GetK8sNamespace() string`
@@ -3175,56 +3199,6 @@ SetK8sServiceAccount sets K8sServiceAccount field to given value.
 `func (o *DSProducerDetails) HasK8sServiceAccount() bool`
 
 HasK8sServiceAccount returns a boolean if a field has been set.
-
-### GetK8sTempRoleBindingDefinition
-
-`func (o *DSProducerDetails) GetK8sTempRoleBindingDefinition() []int32`
-
-GetK8sTempRoleBindingDefinition returns the K8sTempRoleBindingDefinition field if non-nil, zero value otherwise.
-
-### GetK8sTempRoleBindingDefinitionOk
-
-`func (o *DSProducerDetails) GetK8sTempRoleBindingDefinitionOk() (*[]int32, bool)`
-
-GetK8sTempRoleBindingDefinitionOk returns a tuple with the K8sTempRoleBindingDefinition field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetK8sTempRoleBindingDefinition
-
-`func (o *DSProducerDetails) SetK8sTempRoleBindingDefinition(v []int32)`
-
-SetK8sTempRoleBindingDefinition sets K8sTempRoleBindingDefinition field to given value.
-
-### HasK8sTempRoleBindingDefinition
-
-`func (o *DSProducerDetails) HasK8sTempRoleBindingDefinition() bool`
-
-HasK8sTempRoleBindingDefinition returns a boolean if a field has been set.
-
-### GetK8sTempRoleDefinition
-
-`func (o *DSProducerDetails) GetK8sTempRoleDefinition() []int32`
-
-GetK8sTempRoleDefinition returns the K8sTempRoleDefinition field if non-nil, zero value otherwise.
-
-### GetK8sTempRoleDefinitionOk
-
-`func (o *DSProducerDetails) GetK8sTempRoleDefinitionOk() (*[]int32, bool)`
-
-GetK8sTempRoleDefinitionOk returns a tuple with the K8sTempRoleDefinition field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetK8sTempRoleDefinition
-
-`func (o *DSProducerDetails) SetK8sTempRoleDefinition(v []int32)`
-
-SetK8sTempRoleDefinition sets K8sTempRoleDefinition field to given value.
-
-### HasK8sTempRoleDefinition
-
-`func (o *DSProducerDetails) HasK8sTempRoleDefinition() bool`
-
-HasK8sTempRoleDefinition returns a boolean if a field has been set.
 
 ### GetLastAdminRotation
 

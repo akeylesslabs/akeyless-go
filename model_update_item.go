@@ -36,6 +36,8 @@ type UpdateItem struct {
 	NewName *string `json:"new-name,omitempty"`
 	// List of the existent tags that will be removed from this item
 	RmTag *[]string `json:"rm-tag,omitempty"`
+	// Rotate the value of the secret after SRA session ends
+	RotateAfterDisconnect *string `json:"rotate-after-disconnect,omitempty"`
 	SecureAccessAddHost *[]string `json:"secure-access-add-host,omitempty"`
 	SecureAccessAllowExternalUser *string `json:"secure-access-allow-external-user,omitempty"`
 	SecureAccessAllowPortForwading *bool `json:"secure-access-allow-port-forwading,omitempty"`
@@ -79,6 +81,8 @@ func NewUpdateItem(name string, ) *UpdateItem {
 	this.Name = name
 	var newMetadata string = "default_metadata"
 	this.NewMetadata = &newMetadata
+	var rotateAfterDisconnect string = "false"
+	this.RotateAfterDisconnect = &rotateAfterDisconnect
 	return &this
 }
 
@@ -93,6 +97,8 @@ func NewUpdateItemWithDefaults() *UpdateItem {
 	this.Description = &description
 	var newMetadata string = "default_metadata"
 	this.NewMetadata = &newMetadata
+	var rotateAfterDisconnect string = "false"
+	this.RotateAfterDisconnect = &rotateAfterDisconnect
 	return &this
 }
 
@@ -406,6 +412,38 @@ func (o *UpdateItem) HasRmTag() bool {
 // SetRmTag gets a reference to the given []string and assigns it to the RmTag field.
 func (o *UpdateItem) SetRmTag(v []string) {
 	o.RmTag = &v
+}
+
+// GetRotateAfterDisconnect returns the RotateAfterDisconnect field value if set, zero value otherwise.
+func (o *UpdateItem) GetRotateAfterDisconnect() string {
+	if o == nil || o.RotateAfterDisconnect == nil {
+		var ret string
+		return ret
+	}
+	return *o.RotateAfterDisconnect
+}
+
+// GetRotateAfterDisconnectOk returns a tuple with the RotateAfterDisconnect field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateItem) GetRotateAfterDisconnectOk() (*string, bool) {
+	if o == nil || o.RotateAfterDisconnect == nil {
+		return nil, false
+	}
+	return o.RotateAfterDisconnect, true
+}
+
+// HasRotateAfterDisconnect returns a boolean if a field has been set.
+func (o *UpdateItem) HasRotateAfterDisconnect() bool {
+	if o != nil && o.RotateAfterDisconnect != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRotateAfterDisconnect gets a reference to the given string and assigns it to the RotateAfterDisconnect field.
+func (o *UpdateItem) SetRotateAfterDisconnect(v string) {
+	o.RotateAfterDisconnect = &v
 }
 
 // GetSecureAccessAddHost returns the SecureAccessAddHost field value if set, zero value otherwise.
@@ -1271,6 +1309,9 @@ func (o UpdateItem) MarshalJSON() ([]byte, error) {
 	}
 	if o.RmTag != nil {
 		toSerialize["rm-tag"] = o.RmTag
+	}
+	if o.RotateAfterDisconnect != nil {
+		toSerialize["rotate-after-disconnect"] = o.RotateAfterDisconnect
 	}
 	if o.SecureAccessAddHost != nil {
 		toSerialize["secure-access-add-host"] = o.SecureAccessAddHost

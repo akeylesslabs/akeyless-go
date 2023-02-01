@@ -19,6 +19,8 @@ import (
 type UpdateEventForwarder struct {
 	// Workstation Admin Name
 	AdminName *string `json:"admin-name,omitempty"`
+	// Description of the object
+	Description *string `json:"description,omitempty"`
 	// A comma seperated list of email addresses to send event to (relevant only for \\\"email\\\" Event Forwarder)
 	EmailTo *string `json:"email-to,omitempty"`
 	// Enable
@@ -33,7 +35,7 @@ type UpdateEventForwarder struct {
 	Json *bool `json:"json,omitempty"`
 	// EventForwarder name
 	Name string `json:"name"`
-	// New comment about the Event Forwarder
+	// Deprecated - use description
 	NewComment *string `json:"new-comment,omitempty"`
 	// New EventForwarder name
 	NewName *string `json:"new-name,omitempty"`
@@ -49,6 +51,8 @@ type UpdateEventForwarder struct {
 // will change when the set of required properties is changed
 func NewUpdateEventForwarder(name string, ) *UpdateEventForwarder {
 	this := UpdateEventForwarder{}
+	var description string = "default_comment"
+	this.Description = &description
 	this.Name = name
 	var newComment string = "default_comment"
 	this.NewComment = &newComment
@@ -60,6 +64,8 @@ func NewUpdateEventForwarder(name string, ) *UpdateEventForwarder {
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateEventForwarderWithDefaults() *UpdateEventForwarder {
 	this := UpdateEventForwarder{}
+	var description string = "default_comment"
+	this.Description = &description
 	var newComment string = "default_comment"
 	this.NewComment = &newComment
 	return &this
@@ -95,6 +101,38 @@ func (o *UpdateEventForwarder) HasAdminName() bool {
 // SetAdminName gets a reference to the given string and assigns it to the AdminName field.
 func (o *UpdateEventForwarder) SetAdminName(v string) {
 	o.AdminName = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *UpdateEventForwarder) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateEventForwarder) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *UpdateEventForwarder) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *UpdateEventForwarder) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetEmailTo returns the EmailTo field value if set, zero value otherwise.
@@ -445,6 +483,9 @@ func (o UpdateEventForwarder) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AdminName != nil {
 		toSerialize["admin-name"] = o.AdminName
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.EmailTo != nil {
 		toSerialize["email-to"] = o.EmailTo

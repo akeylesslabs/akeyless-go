@@ -366,6 +366,7 @@ docs/GwClusterIdentity.md
 docs/HashiMigration.md
 docs/HashiPayload.md
 docs/HuaweiAccessRules.md
+docs/ImporterInfo.md
 docs/Item.md
 docs/ItemGeneralInfo.md
 docs/ItemTargetAssociation.md
@@ -966,6 +967,7 @@ model_gw_cluster_identity.go
 model_hashi_migration.go
 model_hashi_payload.go
 model_huawei_access_rules.go
+model_importer_info.go
 model_item.go
 model_item_general_info.go
 model_item_target_association.go

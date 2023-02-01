@@ -17,11 +17,13 @@ import (
 
 // UpdateTarget struct for UpdateTarget
 type UpdateTarget struct {
+	// Description of the object
+	Description *string `json:"description,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Target name
 	Name string `json:"name"`
-	// New comment about the target
+	// Deprecated - use description
 	NewComment *string `json:"new-comment,omitempty"`
 	// New Target name
 	NewName *string `json:"new-name,omitempty"`
@@ -37,6 +39,8 @@ type UpdateTarget struct {
 // will change when the set of required properties is changed
 func NewUpdateTarget(name string, ) *UpdateTarget {
 	this := UpdateTarget{}
+	var description string = "default_comment"
+	this.Description = &description
 	this.Name = name
 	var newComment string = "default_comment"
 	this.NewComment = &newComment
@@ -48,9 +52,43 @@ func NewUpdateTarget(name string, ) *UpdateTarget {
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateTargetWithDefaults() *UpdateTarget {
 	this := UpdateTarget{}
+	var description string = "default_comment"
+	this.Description = &description
 	var newComment string = "default_comment"
 	this.NewComment = &newComment
 	return &this
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *UpdateTarget) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateTarget) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *UpdateTarget) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *UpdateTarget) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -239,6 +277,9 @@ func (o *UpdateTarget) SetUidToken(v string) {
 
 func (o UpdateTarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
+	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json
 	}
