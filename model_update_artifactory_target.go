@@ -23,8 +23,10 @@ type UpdateArtifactoryTarget struct {
 	ArtifactoryAdminPwd string `json:"artifactory-admin-pwd"`
 	// Base URL
 	BaseUrl string `json:"base-url"`
-	// Comment about the target
+	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`
+	// Description of the object
+	Description *string `json:"description,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
@@ -165,6 +167,38 @@ func (o *UpdateArtifactoryTarget) HasComment() bool {
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *UpdateArtifactoryTarget) SetComment(v string) {
 	o.Comment = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *UpdateArtifactoryTarget) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateArtifactoryTarget) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *UpdateArtifactoryTarget) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *UpdateArtifactoryTarget) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -428,6 +462,9 @@ func (o UpdateArtifactoryTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json

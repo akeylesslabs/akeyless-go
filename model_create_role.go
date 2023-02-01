@@ -21,8 +21,10 @@ type CreateRole struct {
 	AnalyticsAccess *string `json:"analytics-access,omitempty"`
 	// Allow this role to view audit logs. Currently only 'none', 'own' and 'all' values are supported, allowing associated auth methods to view audit logs produced by the same auth methods.
 	AuditAccess *string `json:"audit-access,omitempty"`
-	// Comment about the role
+	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`
+	// Description of the object
+	Description *string `json:"description,omitempty"`
 	// Allow this role to view gw analytics. Currently only 'none', 'own', 'all' values are supported, allowing associated auth methods to view reports produced by the same auth methods.
 	GwAnalyticsAccess *string `json:"gw-analytics-access,omitempty"`
 	// Set output format to JSON
@@ -149,6 +151,38 @@ func (o *CreateRole) HasComment() bool {
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *CreateRole) SetComment(v string) {
 	o.Comment = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *CreateRole) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRole) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *CreateRole) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *CreateRole) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetGwAnalyticsAccess returns the GwAnalyticsAccess field value if set, zero value otherwise.
@@ -345,6 +379,9 @@ func (o CreateRole) MarshalJSON() ([]byte, error) {
 	}
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.GwAnalyticsAccess != nil {
 		toSerialize["gw-analytics-access"] = o.GwAnalyticsAccess
