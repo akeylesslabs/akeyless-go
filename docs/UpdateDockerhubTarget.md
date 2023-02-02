@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Comment** | Pointer to **string** | Comment about the target | [optional] 
+**Comment** | Pointer to **string** | Deprecated - use description | [optional] 
+**Description** | Pointer to **string** | Description of the object | [optional] 
 **DockerhubPassword** | Pointer to **string** |  | [optional] 
 **DockerhubUsername** | Pointer to **string** |  | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] 
@@ -59,6 +60,31 @@ SetComment sets Comment field to given value.
 `func (o *UpdateDockerhubTarget) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *UpdateDockerhubTarget) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *UpdateDockerhubTarget) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *UpdateDockerhubTarget) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *UpdateDockerhubTarget) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetDockerhubPassword
 

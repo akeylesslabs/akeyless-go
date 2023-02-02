@@ -25,8 +25,10 @@ type UidCreateChildToken struct {
 	ChildDenyRotate *bool `json:"child-deny-rotate,omitempty"`
 	// New child token ttl
 	ChildTtl *int32 `json:"child-ttl,omitempty"`
-	// New Token comment
+	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`
+	// Description of the object
+	Description *string `json:"description,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -214,6 +216,38 @@ func (o *UidCreateChildToken) SetComment(v string) {
 	o.Comment = &v
 }
 
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *UidCreateChildToken) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UidCreateChildToken) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *UidCreateChildToken) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *UidCreateChildToken) SetDescription(v string) {
+	o.Description = &v
+}
+
 // GetJson returns the Json field value if set, zero value otherwise.
 func (o *UidCreateChildToken) GetJson() bool {
 	if o == nil || o.Json == nil {
@@ -358,6 +392,9 @@ func (o UidCreateChildToken) MarshalJSON() ([]byte, error) {
 	}
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json

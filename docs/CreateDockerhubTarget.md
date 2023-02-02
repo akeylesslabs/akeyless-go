@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Comment** | Pointer to **string** | Comment about the target | [optional] 
+**Comment** | Pointer to **string** | Deprecated - use description | [optional] 
+**Description** | Pointer to **string** | Description of the object | [optional] 
 **DockerhubPassword** | Pointer to **string** | DockerhubPassword is either the user&#39;s password to manage the repository | [optional] 
 **DockerhubUsername** | Pointer to **string** | DockerhubUsername is the name of the user in dockerhub | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] 
@@ -56,6 +57,31 @@ SetComment sets Comment field to given value.
 `func (o *CreateDockerhubTarget) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *CreateDockerhubTarget) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *CreateDockerhubTarget) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *CreateDockerhubTarget) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *CreateDockerhubTarget) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetDockerhubPassword
 
