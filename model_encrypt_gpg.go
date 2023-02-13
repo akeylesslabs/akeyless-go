@@ -41,6 +41,8 @@ type EncryptGPG struct {
 // will change when the set of required properties is changed
 func NewEncryptGPG(keyName string, plaintext string, ) *EncryptGPG {
 	this := EncryptGPG{}
+	var json bool = false
+	this.Json = &json
 	this.KeyName = keyName
 	this.Plaintext = plaintext
 	return &this
@@ -51,6 +53,8 @@ func NewEncryptGPG(keyName string, plaintext string, ) *EncryptGPG {
 // but it doesn't guarantee that properties required by API are set
 func NewEncryptGPGWithDefaults() *EncryptGPG {
 	this := EncryptGPG{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

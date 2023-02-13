@@ -19,6 +19,7 @@ import (
 type UpdateRabbitMQTargetDetails struct {
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
+	// Whether to keep previous version [true/false]. If not set, use default according to account settings
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	// Target name
 	Name string `json:"name"`
@@ -41,6 +42,8 @@ type UpdateRabbitMQTargetDetails struct {
 // will change when the set of required properties is changed
 func NewUpdateRabbitMQTargetDetails(name string, ) *UpdateRabbitMQTargetDetails {
 	this := UpdateRabbitMQTargetDetails{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -50,6 +53,8 @@ func NewUpdateRabbitMQTargetDetails(name string, ) *UpdateRabbitMQTargetDetails 
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateRabbitMQTargetDetailsWithDefaults() *UpdateRabbitMQTargetDetails {
 	this := UpdateRabbitMQTargetDetails{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

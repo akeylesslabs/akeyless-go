@@ -33,6 +33,8 @@ type GatewayGetK8SAuthConfig struct {
 // will change when the set of required properties is changed
 func NewGatewayGetK8SAuthConfig(name string, ) *GatewayGetK8SAuthConfig {
 	this := GatewayGetK8SAuthConfig{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -42,6 +44,8 @@ func NewGatewayGetK8SAuthConfig(name string, ) *GatewayGetK8SAuthConfig {
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayGetK8SAuthConfigWithDefaults() *GatewayGetK8SAuthConfig {
 	this := GatewayGetK8SAuthConfig{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

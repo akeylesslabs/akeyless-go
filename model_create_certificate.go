@@ -19,7 +19,7 @@ import (
 type CreateCertificate struct {
 	// Content of the certificate PEM in a Base64 format.
 	CertificateData *string `json:"certificate-data,omitempty"`
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
@@ -49,6 +49,8 @@ type CreateCertificate struct {
 // will change when the set of required properties is changed
 func NewCreateCertificate(name string, ) *CreateCertificate {
 	this := CreateCertificate{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -58,6 +60,8 @@ func NewCreateCertificate(name string, ) *CreateCertificate {
 // but it doesn't guarantee that properties required by API are set
 func NewCreateCertificateWithDefaults() *CreateCertificate {
 	this := CreateCertificate{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

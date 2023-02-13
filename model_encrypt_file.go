@@ -44,6 +44,8 @@ type EncryptFile struct {
 func NewEncryptFile(in string, keyName string, ) *EncryptFile {
 	this := EncryptFile{}
 	this.In = in
+	var json bool = false
+	this.Json = &json
 	this.KeyName = keyName
 	return &this
 }
@@ -53,6 +55,8 @@ func NewEncryptFile(in string, keyName string, ) *EncryptFile {
 // but it doesn't guarantee that properties required by API are set
 func NewEncryptFileWithDefaults() *EncryptFile {
 	this := EncryptFile{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

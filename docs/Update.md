@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
-**Version** | Pointer to **string** | Version | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**Version** | Pointer to **string** | Version | [optional] [default to "latest"]
 
 ## Methods
 

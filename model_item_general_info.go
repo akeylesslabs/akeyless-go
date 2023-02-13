@@ -23,6 +23,7 @@ type ItemGeneralInfo struct {
 	ClusterGwUrl *string `json:"cluster_gw_url,omitempty"`
 	DisplayMetadata *string `json:"display_metadata,omitempty"`
 	DynamicSecretProducerDetails *DynamicSecretProducerInfo `json:"dynamic_secret_producer_details,omitempty"`
+	ImporterInfo *ImporterInfo `json:"importer_info,omitempty"`
 	PasswordPolicy *PasswordPolicyInfo `json:"password_policy,omitempty"`
 	RotatedSecretDetails *RotatedSecretDetailsInfo `json:"rotated_secret_details,omitempty"`
 	SecureRemoteAccessDetails *SecureRemoteAccess `json:"secure_remote_access_details,omitempty"`
@@ -239,6 +240,38 @@ func (o *ItemGeneralInfo) SetDynamicSecretProducerDetails(v DynamicSecretProduce
 	o.DynamicSecretProducerDetails = &v
 }
 
+// GetImporterInfo returns the ImporterInfo field value if set, zero value otherwise.
+func (o *ItemGeneralInfo) GetImporterInfo() ImporterInfo {
+	if o == nil || o.ImporterInfo == nil {
+		var ret ImporterInfo
+		return ret
+	}
+	return *o.ImporterInfo
+}
+
+// GetImporterInfoOk returns a tuple with the ImporterInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ItemGeneralInfo) GetImporterInfoOk() (*ImporterInfo, bool) {
+	if o == nil || o.ImporterInfo == nil {
+		return nil, false
+	}
+	return o.ImporterInfo, true
+}
+
+// HasImporterInfo returns a boolean if a field has been set.
+func (o *ItemGeneralInfo) HasImporterInfo() bool {
+	if o != nil && o.ImporterInfo != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetImporterInfo gets a reference to the given ImporterInfo and assigns it to the ImporterInfo field.
+func (o *ItemGeneralInfo) SetImporterInfo(v ImporterInfo) {
+	o.ImporterInfo = &v
+}
+
 // GetPasswordPolicy returns the PasswordPolicy field value if set, zero value otherwise.
 func (o *ItemGeneralInfo) GetPasswordPolicy() PasswordPolicyInfo {
 	if o == nil || o.PasswordPolicy == nil {
@@ -418,6 +451,9 @@ func (o ItemGeneralInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.DynamicSecretProducerDetails != nil {
 		toSerialize["dynamic_secret_producer_details"] = o.DynamicSecretProducerDetails
+	}
+	if o.ImporterInfo != nil {
+		toSerialize["importer_info"] = o.ImporterInfo
 	}
 	if o.PasswordPolicy != nil {
 		toSerialize["password_policy"] = o.PasswordPolicy

@@ -33,6 +33,8 @@ type GatewayDeleteAllowedManagementAccess struct {
 // will change when the set of required properties is changed
 func NewGatewayDeleteAllowedManagementAccess(subAdminId string, ) *GatewayDeleteAllowedManagementAccess {
 	this := GatewayDeleteAllowedManagementAccess{}
+	var json bool = false
+	this.Json = &json
 	this.SubAdminId = subAdminId
 	return &this
 }
@@ -42,6 +44,8 @@ func NewGatewayDeleteAllowedManagementAccess(subAdminId string, ) *GatewayDelete
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayDeleteAllowedManagementAccessWithDefaults() *GatewayDeleteAllowedManagementAccess {
 	this := GatewayDeleteAllowedManagementAccess{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

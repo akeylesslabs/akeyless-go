@@ -17,7 +17,7 @@ import (
 
 // GatewayCreateProducerNativeK8S gatewayCreateProducerNativeK8S is a command that creates k8s producer
 type GatewayCreateProducerNativeK8S struct {
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -35,13 +35,21 @@ type GatewayCreateProducerNativeK8S struct {
 	Name string `json:"name"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
+	// Enable Port forwarding while using CLI access
 	SecureAccessAllowPortForwading *bool `json:"secure-access-allow-port-forwading,omitempty"`
+	// Path to the SSH Certificate Issuer for your Akeyless Bastion
 	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
+	// The K8s cluster endpoint URL
 	SecureAccessClusterEndpoint *string `json:"secure-access-cluster-endpoint,omitempty"`
+	// The K8s dashboard url
 	SecureAccessDashboardUrl *string `json:"secure-access-dashboard-url,omitempty"`
+	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Enable Web Secure Remote Access
 	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
+	// Secure browser via Akeyless Web Access Bastion
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
+	// Web-Proxy via Akeyless Web Access Bastion
 	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
 	// List of the tags attached to this secret
 	Tags *[]string `json:"tags,omitempty"`
@@ -61,7 +69,17 @@ type GatewayCreateProducerNativeK8S struct {
 // will change when the set of required properties is changed
 func NewGatewayCreateProducerNativeK8S(name string, ) *GatewayCreateProducerNativeK8S {
 	this := GatewayCreateProducerNativeK8S{}
+	var json bool = false
+	this.Json = &json
+	var k8sNamespace string = "default"
+	this.K8sNamespace = &k8sNamespace
 	this.Name = name
+	var secureAccessWeb bool = false
+	this.SecureAccessWeb = &secureAccessWeb
+	var secureAccessWebBrowsing bool = false
+	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
+	var secureAccessWebProxy bool = false
+	this.SecureAccessWebProxy = &secureAccessWebProxy
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
@@ -72,6 +90,16 @@ func NewGatewayCreateProducerNativeK8S(name string, ) *GatewayCreateProducerNati
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayCreateProducerNativeK8SWithDefaults() *GatewayCreateProducerNativeK8S {
 	this := GatewayCreateProducerNativeK8S{}
+	var json bool = false
+	this.Json = &json
+	var k8sNamespace string = "default"
+	this.K8sNamespace = &k8sNamespace
+	var secureAccessWeb bool = false
+	this.SecureAccessWeb = &secureAccessWeb
+	var secureAccessWebBrowsing bool = false
+	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
+	var secureAccessWebProxy bool = false
+	this.SecureAccessWebProxy = &secureAccessWebProxy
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this

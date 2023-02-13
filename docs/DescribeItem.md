@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DisplayId** | Pointer to **string** | The display id of the item | [optional] 
 **ItemId** | Pointer to **int64** | Item id of the item | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Item name | 
 **ShowVersions** | Pointer to **bool** | Include all item versions in reply | [optional] [default to false]
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

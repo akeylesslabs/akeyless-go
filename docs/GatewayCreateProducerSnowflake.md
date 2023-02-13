@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **AccountPassword** | Pointer to **string** | Database Password | [optional] 
 **AccountUsername** | Pointer to **string** | Database Username | [optional] 
 **DbName** | Pointer to **string** | Database name | [optional] 
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Producer name | 
 **PrivateKey** | Pointer to **string** | RSA Private key (base64 encoded) | [optional] 
 **PrivateKeyPassphrase** | Pointer to **string** | The Private key passphrase | [optional] 

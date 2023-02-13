@@ -35,6 +35,8 @@ type GatewaySyncMigration struct {
 // will change when the set of required properties is changed
 func NewGatewaySyncMigration(name string, ) *GatewaySyncMigration {
 	this := GatewaySyncMigration{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -44,6 +46,8 @@ func NewGatewaySyncMigration(name string, ) *GatewaySyncMigration {
 // but it doesn't guarantee that properties required by API are set
 func NewGatewaySyncMigrationWithDefaults() *GatewaySyncMigration {
 	this := GatewaySyncMigration{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

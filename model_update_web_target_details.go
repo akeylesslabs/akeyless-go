@@ -19,6 +19,7 @@ import (
 type UpdateWebTargetDetails struct {
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
+	// Whether to keep previous version [true/false]. If not set, use default according to account settings
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	// Target name
 	Name string `json:"name"`
@@ -39,6 +40,8 @@ type UpdateWebTargetDetails struct {
 // will change when the set of required properties is changed
 func NewUpdateWebTargetDetails(name string, ) *UpdateWebTargetDetails {
 	this := UpdateWebTargetDetails{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -48,6 +51,8 @@ func NewUpdateWebTargetDetails(name string, ) *UpdateWebTargetDetails {
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateWebTargetDetailsWithDefaults() *UpdateWebTargetDetails {
 	this := UpdateWebTargetDetails{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

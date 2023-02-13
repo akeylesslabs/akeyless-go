@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **AdminPassword** | Pointer to **string** | Password (relevant only for access-type&#x3D;password) | [optional] 
 **AzureAdObjectId** | Pointer to **string** | Azure Active Directory ObjectId (relevant only for access-type&#x3D;azure_ad) | [optional] 
 **CertData** | Pointer to **string** | Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type&#x3D;cert in Curl Context) | [optional] 
-**GcpAudience** | Pointer to **string** | GCP JWT audience | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**GcpAudience** | Pointer to **string** | GCP JWT audience | [optional] [default to "akeyless.io"]
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **K8sAuthConfigName** | Pointer to **string** | The K8S Auth config name (relevant only for access-type&#x3D;k8s) | [optional] 
 **KeyData** | Pointer to **string** | Private key data encoded in base64. Used if file was not provided.(relevant only for access-type&#x3D;cert in Curl Context) | [optional] 
 

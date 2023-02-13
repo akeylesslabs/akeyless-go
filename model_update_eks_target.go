@@ -17,8 +17,10 @@ import (
 
 // UpdateEKSTarget struct for UpdateEKSTarget
 type UpdateEKSTarget struct {
-	// Comment about the target
+	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`
+	// Description of the object
+	Description *string `json:"description,omitempty"`
 	// Access Key ID
 	EksAccessKeyId string `json:"eks-access-key-id"`
 	// EKS cluster CA certificate
@@ -33,6 +35,7 @@ type UpdateEKSTarget struct {
 	EksSecretAccessKey string `json:"eks-secret-access-key"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
+	// Whether to keep previous version [true/false]. If not set, use default according to account settings
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
@@ -62,6 +65,8 @@ func NewUpdateEKSTarget(eksAccessKeyId string, eksClusterCaCert string, eksClust
 	var eksRegion string = "us-east-2"
 	this.EksRegion = &eksRegion
 	this.EksSecretAccessKey = eksSecretAccessKey
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -73,6 +78,8 @@ func NewUpdateEKSTargetWithDefaults() *UpdateEKSTarget {
 	this := UpdateEKSTarget{}
 	var eksRegion string = "us-east-2"
 	this.EksRegion = &eksRegion
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -106,6 +113,38 @@ func (o *UpdateEKSTarget) HasComment() bool {
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *UpdateEKSTarget) SetComment(v string) {
 	o.Comment = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *UpdateEKSTarget) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateEKSTarget) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *UpdateEKSTarget) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *UpdateEKSTarget) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetEksAccessKeyId returns the EksAccessKeyId field value
@@ -544,6 +583,9 @@ func (o UpdateEKSTarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if true {
 		toSerialize["eks-access-key-id"] = o.EksAccessKeyId

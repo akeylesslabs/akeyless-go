@@ -62,6 +62,10 @@ func NewAuth() *Auth {
 	this := Auth{}
 	var accessType string = "access_key"
 	this.AccessType = &accessType
+	var gcpAudience string = "akeyless.io"
+	this.GcpAudience = &gcpAudience
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -72,6 +76,10 @@ func NewAuthWithDefaults() *Auth {
 	this := Auth{}
 	var accessType string = "access_key"
 	this.AccessType = &accessType
+	var gcpAudience string = "akeyless.io"
+	this.GcpAudience = &gcpAudience
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

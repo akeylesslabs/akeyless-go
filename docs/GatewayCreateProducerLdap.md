@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BindDn** | Pointer to **string** | Bind DN | [optional] 
 **BindDnPassword** | Pointer to **string** | Bind DN Password | [optional] 
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
-**ExternalUsername** | Pointer to **string** | Fixed user | [optional] [default to "false"]
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**ExternalUsername** | Pointer to **string** | Externally provided username [true/false] | [optional] [default to "false"]
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **LdapCaCert** | Pointer to **string** | CA Certificate File Content | [optional] 
 **LdapUrl** | Pointer to **string** | LDAP Server URL | [optional] 
 **Name** | **string** | Producer name | 

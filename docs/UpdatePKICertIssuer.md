@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **CodeSigningFlag** | Pointer to **bool** | If set, certificates will be flagged for code signing use | [optional] 
 **Country** | Pointer to **string** | A comma-separated list of the country that will be set in the issued certificate | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeyUsage** | Pointer to **string** | key-usage | [optional] [default to "DigitalSignature,KeyAgreement,KeyEncipherment"]
 **Locality** | Pointer to **string** | A comma-separated list of the locality that will be set in the issued certificate | [optional] 
 **Metadata** | Pointer to **string** | Deprecated - use description | [optional] 

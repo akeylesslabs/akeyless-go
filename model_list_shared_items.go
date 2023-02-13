@@ -35,6 +35,8 @@ func NewListSharedItems() *ListSharedItems {
 	this := ListSharedItems{}
 	var accessibility string = "regular"
 	this.Accessibility = &accessibility
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -45,6 +47,8 @@ func NewListSharedItemsWithDefaults() *ListSharedItems {
 	this := ListSharedItems{}
 	var accessibility string = "regular"
 	this.Accessibility = &accessibility
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

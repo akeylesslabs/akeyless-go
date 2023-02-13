@@ -25,7 +25,7 @@ type GatewayUpdateProducerSnowflake struct {
 	AccountUsername *string `json:"account-username,omitempty"`
 	// Database name
 	DbName *string `json:"db-name,omitempty"`
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -59,6 +59,8 @@ type GatewayUpdateProducerSnowflake struct {
 // will change when the set of required properties is changed
 func NewGatewayUpdateProducerSnowflake(name string, ) *GatewayUpdateProducerSnowflake {
 	this := GatewayUpdateProducerSnowflake{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	var userTtl string = "24h"
 	this.UserTtl = &userTtl
@@ -70,6 +72,8 @@ func NewGatewayUpdateProducerSnowflake(name string, ) *GatewayUpdateProducerSnow
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayUpdateProducerSnowflakeWithDefaults() *GatewayUpdateProducerSnowflake {
 	this := GatewayUpdateProducerSnowflake{}
+	var json bool = false
+	this.Json = &json
 	var userTtl string = "24h"
 	this.UserTtl = &userTtl
 	return &this

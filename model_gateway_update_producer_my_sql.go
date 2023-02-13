@@ -21,7 +21,7 @@ type GatewayUpdateProducerMySQL struct {
 	DbServerCertificates *string `json:"db-server-certificates,omitempty"`
 	// (Optional) Server name for certificate verification
 	DbServerName *string `json:"db-server-name,omitempty"`
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -43,11 +43,15 @@ type GatewayUpdateProducerMySQL struct {
 	NewName *string `json:"new-name,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
+	// Path to the SSH Certificate Issuer for your Akeyless Bastion
 	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
+	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Target DB servers for connections
 	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
+	// Enable Web Secure Remote Access
 	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
-	// SSL connection mode
+	// Enable/Disable SSL [true/false]
 	Ssl *bool `json:"ssl,omitempty"`
 	// SSL connection certificate
 	SslCertificate *string `json:"ssl-certificate,omitempty"`
@@ -69,11 +73,17 @@ type GatewayUpdateProducerMySQL struct {
 // will change when the set of required properties is changed
 func NewGatewayUpdateProducerMySQL(name string, ) *GatewayUpdateProducerMySQL {
 	this := GatewayUpdateProducerMySQL{}
+	var json bool = false
+	this.Json = &json
 	var mysqlHost string = "127.0.0.1"
 	this.MysqlHost = &mysqlHost
 	var mysqlPort string = "3306"
 	this.MysqlPort = &mysqlPort
 	this.Name = name
+	var secureAccessWeb bool = false
+	this.SecureAccessWeb = &secureAccessWeb
+	var ssl bool = false
+	this.Ssl = &ssl
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
@@ -84,10 +94,16 @@ func NewGatewayUpdateProducerMySQL(name string, ) *GatewayUpdateProducerMySQL {
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayUpdateProducerMySQLWithDefaults() *GatewayUpdateProducerMySQL {
 	this := GatewayUpdateProducerMySQL{}
+	var json bool = false
+	this.Json = &json
 	var mysqlHost string = "127.0.0.1"
 	this.MysqlHost = &mysqlHost
 	var mysqlPort string = "3306"
 	this.MysqlPort = &mysqlPort
+	var secureAccessWeb bool = false
+	this.SecureAccessWeb = &secureAccessWeb
+	var ssl bool = false
+	this.Ssl = &ssl
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this

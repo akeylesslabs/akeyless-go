@@ -4,12 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Comment** | Pointer to **string** | Comment about the target | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Comment** | Pointer to **string** | Deprecated - use description | [optional] 
+**Description** | Pointer to **string** | Description of the object | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **K8sClusterCaCert** | **string** | K8S cluster CA certificate | 
 **K8sClusterEndpoint** | **string** | K8S cluster URL endpoint | 
 **K8sClusterToken** | **string** | K8S cluster Bearer token | 
-**KeepPrevVersion** | Pointer to **string** |  | [optional] 
+**KeepPrevVersion** | Pointer to **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Target name | 
 **NewName** | Pointer to **string** | New target name | [optional] 
@@ -60,6 +61,31 @@ SetComment sets Comment field to given value.
 `func (o *UpdateNativeK8STarget) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *UpdateNativeK8STarget) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *UpdateNativeK8STarget) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *UpdateNativeK8STarget) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *UpdateNativeK8STarget) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetJson
 

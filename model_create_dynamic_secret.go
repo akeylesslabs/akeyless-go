@@ -17,7 +17,7 @@ import (
 
 // CreateDynamicSecret struct for CreateDynamicSecret
 type CreateDynamicSecret struct {
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
@@ -43,6 +43,8 @@ type CreateDynamicSecret struct {
 // will change when the set of required properties is changed
 func NewCreateDynamicSecret(name string, ) *CreateDynamicSecret {
 	this := CreateDynamicSecret{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -52,6 +54,8 @@ func NewCreateDynamicSecret(name string, ) *CreateDynamicSecret {
 // but it doesn't guarantee that properties required by API are set
 func NewCreateDynamicSecretWithDefaults() *CreateDynamicSecret {
 	this := CreateDynamicSecret{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

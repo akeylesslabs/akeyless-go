@@ -19,7 +19,7 @@ import (
 type GetSecretValue struct {
 	// for personal password manager
 	Accessibility *string `json:"accessibility,omitempty"`
-	// Ignore Cache Retrieve the Secret value without checking the Gateway's cache [true/false]. This flag is only relevant when using the RestAPI
+	// Retrieve the Secret value without checking the Gateway's cache [true/false]. This flag is only relevant when using the RestAPI
 	IgnoreCache *string `json:"ignore-cache,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -43,6 +43,10 @@ func NewGetSecretValue(names []string, ) *GetSecretValue {
 	this := GetSecretValue{}
 	var accessibility string = "regular"
 	this.Accessibility = &accessibility
+	var ignoreCache string = "false"
+	this.IgnoreCache = &ignoreCache
+	var json bool = false
+	this.Json = &json
 	this.Names = names
 	return &this
 }
@@ -54,6 +58,10 @@ func NewGetSecretValueWithDefaults() *GetSecretValue {
 	this := GetSecretValue{}
 	var accessibility string = "regular"
 	this.Accessibility = &accessibility
+	var ignoreCache string = "false"
+	this.IgnoreCache = &ignoreCache
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

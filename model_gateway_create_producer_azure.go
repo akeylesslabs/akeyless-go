@@ -25,7 +25,7 @@ type GatewayCreateProducerAzure struct {
 	AzureClientSecret *string `json:"azure-client-secret,omitempty"`
 	// Azure Tenant ID
 	AzureTenantId *string `json:"azure-tenant-id,omitempty"`
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// FixedUserClaimKeyname
 	FixedUserClaimKeyname *string `json:"fixed-user-claim-keyname,omitempty"`
@@ -37,9 +37,13 @@ type GatewayCreateProducerAzure struct {
 	Name string `json:"name"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
+	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Enable Web Secure Remote Access
 	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
+	// Secure browser via Akeyless Web Access Bastion
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
+	// Web-Proxy via Akeyless Web Access Bastion
 	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
 	// List of the tags attached to this secret
 	Tags *[]string `json:"tags,omitempty"`
@@ -73,7 +77,15 @@ func NewGatewayCreateProducerAzure(name string, ) *GatewayCreateProducerAzure {
 	this.FixedUserClaimKeyname = &fixedUserClaimKeyname
 	var fixedUserOnly bool = false
 	this.FixedUserOnly = &fixedUserOnly
+	var json bool = false
+	this.Json = &json
 	this.Name = name
+	var secureAccessWeb bool = true
+	this.SecureAccessWeb = &secureAccessWeb
+	var secureAccessWebBrowsing bool = false
+	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
+	var secureAccessWebProxy bool = false
+	this.SecureAccessWebProxy = &secureAccessWebProxy
 	var userPortalAccess bool = false
 	this.UserPortalAccess = &userPortalAccess
 	var userProgrammaticAccess bool = false
@@ -92,6 +104,14 @@ func NewGatewayCreateProducerAzureWithDefaults() *GatewayCreateProducerAzure {
 	this.FixedUserClaimKeyname = &fixedUserClaimKeyname
 	var fixedUserOnly bool = false
 	this.FixedUserOnly = &fixedUserOnly
+	var json bool = false
+	this.Json = &json
+	var secureAccessWeb bool = true
+	this.SecureAccessWeb = &secureAccessWeb
+	var secureAccessWebBrowsing bool = false
+	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
+	var secureAccessWebProxy bool = false
+	this.SecureAccessWebProxy = &secureAccessWebProxy
 	var userPortalAccess bool = false
 	this.UserPortalAccess = &userPortalAccess
 	var userProgrammaticAccess bool = false
