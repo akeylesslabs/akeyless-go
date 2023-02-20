@@ -21,7 +21,7 @@ type GatewayUpdateProducerCustom struct {
 	AdminRotationIntervalDays *int64 `json:"admin_rotation_interval_days,omitempty"`
 	// URL of an endpoint that implements /sync/create method, for example https://webhook.example.com/sync/create
 	CreateSyncUrl string `json:"create-sync-url"`
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Should admin credentials be rotated
 	EnableAdminRotation *bool `json:"enable_admin_rotation,omitempty"`
@@ -60,6 +60,8 @@ func NewGatewayUpdateProducerCustom(createSyncUrl string, name string, revokeSyn
 	this.CreateSyncUrl = createSyncUrl
 	var enableAdminRotation bool = false
 	this.EnableAdminRotation = &enableAdminRotation
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	this.RevokeSyncUrl = revokeSyncUrl
 	var timeoutSec int64 = 60
@@ -76,6 +78,8 @@ func NewGatewayUpdateProducerCustomWithDefaults() *GatewayUpdateProducerCustom {
 	this := GatewayUpdateProducerCustom{}
 	var enableAdminRotation bool = false
 	this.EnableAdminRotation = &enableAdminRotation
+	var json bool = false
+	this.Json = &json
 	var timeoutSec int64 = 60
 	this.TimeoutSec = &timeoutSec
 	var userTtl string = "60m"

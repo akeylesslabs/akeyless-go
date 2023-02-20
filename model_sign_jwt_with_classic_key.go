@@ -40,6 +40,8 @@ type SignJWTWithClassicKey struct {
 func NewSignJWTWithClassicKey(displayId string, jwtClaims string, signingMethod string, version int32, ) *SignJWTWithClassicKey {
 	this := SignJWTWithClassicKey{}
 	this.DisplayId = displayId
+	var json bool = false
+	this.Json = &json
 	this.JwtClaims = jwtClaims
 	this.SigningMethod = signingMethod
 	this.Version = version
@@ -51,6 +53,8 @@ func NewSignJWTWithClassicKey(displayId string, jwtClaims string, signingMethod 
 // but it doesn't guarantee that properties required by API are set
 func NewSignJWTWithClassicKeyWithDefaults() *SignJWTWithClassicKey {
 	this := SignJWTWithClassicKey{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

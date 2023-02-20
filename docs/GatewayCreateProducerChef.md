@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **ChefServerKey** | Pointer to **string** | Server key | [optional] 
 **ChefServerUrl** | Pointer to **string** | Server URL | [optional] 
 **ChefServerUsername** | Pointer to **string** | Server username | [optional] 
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Producer name | 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **SkipSsl** | Pointer to **bool** | Skip SSL | [optional] [default to true]

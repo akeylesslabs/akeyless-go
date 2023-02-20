@@ -37,6 +37,8 @@ type DecryptFile struct {
 // will change when the set of required properties is changed
 func NewDecryptFile(keyName string, ) *DecryptFile {
 	this := DecryptFile{}
+	var json bool = false
+	this.Json = &json
 	this.KeyName = keyName
 	return &this
 }
@@ -46,6 +48,8 @@ func NewDecryptFile(keyName string, ) *DecryptFile {
 // but it doesn't guarantee that properties required by API are set
 func NewDecryptFileWithDefaults() *DecryptFile {
 	this := DecryptFile{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

@@ -17,7 +17,7 @@ import (
 
 // GatewayUpdateProducerNativeK8S gatewayUpdateProducerNativeK8S is a command that updates k8s producer
 type GatewayUpdateProducerNativeK8S struct {
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -27,9 +27,9 @@ type GatewayUpdateProducerNativeK8S struct {
 	K8sClusterEndpoint *string `json:"k8s-cluster-endpoint,omitempty"`
 	// K8S cluster Bearer token
 	K8sClusterToken *string `json:"k8s-cluster-token,omitempty"`
-	// K8S namespace
+	// K8S Namespace where the ServiceAccount exists.
 	K8sNamespace *string `json:"k8s-namespace,omitempty"`
-	// K8S service account
+	// K8S ServiceAccount to extract token from.
 	K8sServiceAccount *string `json:"k8s-service-account,omitempty"`
 	// Producer name
 	Name string `json:"name"`
@@ -37,13 +37,21 @@ type GatewayUpdateProducerNativeK8S struct {
 	NewName *string `json:"new-name,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
+	// Enable Port forwarding while using CLI access
 	SecureAccessAllowPortForwading *bool `json:"secure-access-allow-port-forwading,omitempty"`
+	// Path to the SSH Certificate Issuer for your Akeyless Bastion
 	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
+	// The K8s cluster endpoint URL
 	SecureAccessClusterEndpoint *string `json:"secure-access-cluster-endpoint,omitempty"`
+	// The K8s dashboard url
 	SecureAccessDashboardUrl *string `json:"secure-access-dashboard-url,omitempty"`
+	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Enable Web Secure Remote Access
 	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
+	// Secure browser via Akeyless Web Access Bastion
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
+	// Web-Proxy via Akeyless Web Access Bastion
 	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
 	// List of the tags attached to this secret
 	Tags *[]string `json:"tags,omitempty"`
@@ -63,7 +71,15 @@ type GatewayUpdateProducerNativeK8S struct {
 // will change when the set of required properties is changed
 func NewGatewayUpdateProducerNativeK8S(name string, ) *GatewayUpdateProducerNativeK8S {
 	this := GatewayUpdateProducerNativeK8S{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
+	var secureAccessWeb bool = false
+	this.SecureAccessWeb = &secureAccessWeb
+	var secureAccessWebBrowsing bool = false
+	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
+	var secureAccessWebProxy bool = false
+	this.SecureAccessWebProxy = &secureAccessWebProxy
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
@@ -74,6 +90,14 @@ func NewGatewayUpdateProducerNativeK8S(name string, ) *GatewayUpdateProducerNati
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayUpdateProducerNativeK8SWithDefaults() *GatewayUpdateProducerNativeK8S {
 	this := GatewayUpdateProducerNativeK8S{}
+	var json bool = false
+	this.Json = &json
+	var secureAccessWeb bool = false
+	this.SecureAccessWeb = &secureAccessWeb
+	var secureAccessWebBrowsing bool = false
+	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
+	var secureAccessWebProxy bool = false
+	this.SecureAccessWebProxy = &secureAccessWebProxy
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this

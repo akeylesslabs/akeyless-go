@@ -17,7 +17,7 @@ import (
 
 // GatewayUpdateProducerDockerhub gatewayUpdateProducerDockerhub is a command that updates a DOCKERHUB producer
 type GatewayUpdateProducerDockerhub struct {
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// DockerhubPassword is either the user's password access token to manage the repository
 	DockerhubPassword *string `json:"dockerhub-password,omitempty"`
@@ -51,6 +51,8 @@ type GatewayUpdateProducerDockerhub struct {
 // will change when the set of required properties is changed
 func NewGatewayUpdateProducerDockerhub(name string, ) *GatewayUpdateProducerDockerhub {
 	this := GatewayUpdateProducerDockerhub{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
@@ -62,6 +64,8 @@ func NewGatewayUpdateProducerDockerhub(name string, ) *GatewayUpdateProducerDock
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayUpdateProducerDockerhubWithDefaults() *GatewayUpdateProducerDockerhub {
 	this := GatewayUpdateProducerDockerhub{}
+	var json bool = false
+	this.Json = &json
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this

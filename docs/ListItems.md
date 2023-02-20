@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Accessibility** | Pointer to **string** | for personal password manager | [optional] [default to "regular"]
 **Filter** | Pointer to **string** | Filter by item name or part of it | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **MinimalView** | Pointer to **bool** |  | [optional] 
 **PaginationToken** | Pointer to **string** | Next page reference | [optional] 
 **Path** | Pointer to **string** | Path to folder | [optional] 

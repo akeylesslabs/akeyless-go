@@ -21,7 +21,7 @@ type CreateKey struct {
 	Alg string `json:"alg"`
 	// The customer fragment ID that will be used to create the key (if empty, the key will be created independently of a customer fragment)
 	CustomerFrgId *string `json:"customer-frg-id,omitempty"`
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
@@ -48,6 +48,8 @@ type CreateKey struct {
 func NewCreateKey(alg string, name string, ) *CreateKey {
 	this := CreateKey{}
 	this.Alg = alg
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	var splitLevel int64 = 2
 	this.SplitLevel = &splitLevel
@@ -59,6 +61,8 @@ func NewCreateKey(alg string, name string, ) *CreateKey {
 // but it doesn't guarantee that properties required by API are set
 func NewCreateKeyWithDefaults() *CreateKey {
 	this := CreateKey{}
+	var json bool = false
+	this.Json = &json
 	var splitLevel int64 = 2
 	this.SplitLevel = &splitLevel
 	return &this

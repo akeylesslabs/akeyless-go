@@ -39,6 +39,8 @@ type DescribeItem struct {
 // will change when the set of required properties is changed
 func NewDescribeItem(name string, ) *DescribeItem {
 	this := DescribeItem{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	var showVersions bool = false
 	this.ShowVersions = &showVersions
@@ -50,6 +52,8 @@ func NewDescribeItem(name string, ) *DescribeItem {
 // but it doesn't guarantee that properties required by API are set
 func NewDescribeItemWithDefaults() *DescribeItem {
 	this := DescribeItem{}
+	var json bool = false
+	this.Json = &json
 	var showVersions bool = false
 	this.ShowVersions = &showVersions
 	return &this

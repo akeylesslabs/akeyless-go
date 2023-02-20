@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **CassandraPassword** | Pointer to **string** | Cassandra superuser password | [optional] 
 **CassandraPort** | Pointer to **string** | Cassandra port | [optional] [default to "9042"]
 **CassandraUsername** | Pointer to **string** | Cassandra superuser username | [optional] 
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Producer name | 
 **NewName** | Pointer to **string** | Producer name | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 

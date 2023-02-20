@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Capability** | **[]string** | List of the approved/denied capabilities in the path options: [read, create, update, delete, list, deny] | 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Path** | **string** | The path the rule refers to | 
 **RoleName** | **string** | The role name to be updated | 
 **RuleType** | Pointer to **string** | item-rule, target-rule, role-rule, auth-method-rule, search-rule, reports-rule, gw-reports-rule or sra-reports-rule | [optional] [default to "item-rule"]
