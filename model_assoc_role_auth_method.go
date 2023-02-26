@@ -19,6 +19,7 @@ import (
 type AssocRoleAuthMethod struct {
 	// The auth method to associate
 	AmName string `json:"am-name"`
+	// Treat sub claims as case-sensitive [true/false]
 	CaseSensitive *string `json:"case-sensitive,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -39,6 +40,10 @@ type AssocRoleAuthMethod struct {
 func NewAssocRoleAuthMethod(amName string, roleName string, ) *AssocRoleAuthMethod {
 	this := AssocRoleAuthMethod{}
 	this.AmName = amName
+	var caseSensitive string = "true"
+	this.CaseSensitive = &caseSensitive
+	var json bool = false
+	this.Json = &json
 	this.RoleName = roleName
 	return &this
 }
@@ -48,6 +53,10 @@ func NewAssocRoleAuthMethod(amName string, roleName string, ) *AssocRoleAuthMeth
 // but it doesn't guarantee that properties required by API are set
 func NewAssocRoleAuthMethodWithDefaults() *AssocRoleAuthMethod {
 	this := AssocRoleAuthMethod{}
+	var caseSensitive string = "true"
+	this.CaseSensitive = &caseSensitive
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **DeleteProtection** | Pointer to **bool** |  | [optional] 
 **DeletionDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **DisplayId** | Pointer to **string** |  | [optional] 
+**GatewayDetails** | Pointer to [**[]GatewayBasicInfo**](GatewayBasicInfo.md) |  | [optional] 
 **IsAccessRequestEnabled** | Pointer to **bool** |  | [optional] 
 **IsEnabled** | Pointer to **bool** |  | [optional] 
 **ItemAccessibility** | Pointer to **int64** |  | [optional] 
@@ -359,6 +360,31 @@ SetDisplayId sets DisplayId field to given value.
 `func (o *Item) HasDisplayId() bool`
 
 HasDisplayId returns a boolean if a field has been set.
+
+### GetGatewayDetails
+
+`func (o *Item) GetGatewayDetails() []GatewayBasicInfo`
+
+GetGatewayDetails returns the GatewayDetails field if non-nil, zero value otherwise.
+
+### GetGatewayDetailsOk
+
+`func (o *Item) GetGatewayDetailsOk() (*[]GatewayBasicInfo, bool)`
+
+GetGatewayDetailsOk returns a tuple with the GatewayDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGatewayDetails
+
+`func (o *Item) SetGatewayDetails(v []GatewayBasicInfo)`
+
+SetGatewayDetails sets GatewayDetails field to given value.
+
+### HasGatewayDetails
+
+`func (o *Item) HasGatewayDetails() bool`
+
+HasGatewayDetails returns a boolean if a field has been set.
 
 ### GetIsAccessRequestEnabled
 

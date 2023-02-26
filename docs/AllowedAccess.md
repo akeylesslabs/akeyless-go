@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AccessRulesType** | Pointer to **string** |  | [optional] 
 **AllowedApi** | Pointer to **bool** |  | [optional] 
 **AllowedsLogin** | Pointer to **bool** |  | [optional] 
+**Editable** | Pointer to **bool** |  | [optional] 
 **ErrMsg** | Pointer to **string** |  | [optional] 
 **Hash** | Pointer to **string** |  | [optional] 
 **IsValid** | Pointer to **bool** |  | [optional] 
@@ -132,6 +133,31 @@ SetAllowedsLogin sets AllowedsLogin field to given value.
 `func (o *AllowedAccess) HasAllowedsLogin() bool`
 
 HasAllowedsLogin returns a boolean if a field has been set.
+
+### GetEditable
+
+`func (o *AllowedAccess) GetEditable() bool`
+
+GetEditable returns the Editable field if non-nil, zero value otherwise.
+
+### GetEditableOk
+
+`func (o *AllowedAccess) GetEditableOk() (*bool, bool)`
+
+GetEditableOk returns a tuple with the Editable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEditable
+
+`func (o *AllowedAccess) SetEditable(v bool)`
+
+SetEditable sets Editable field to given value.
+
+### HasEditable
+
+`func (o *AllowedAccess) HasEditable() bool`
+
+HasEditable returns a boolean if a field has been set.
 
 ### GetErrMsg
 

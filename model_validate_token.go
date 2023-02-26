@@ -29,6 +29,8 @@ type ValidateToken struct {
 // will change when the set of required properties is changed
 func NewValidateToken() *ValidateToken {
 	this := ValidateToken{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -37,6 +39,8 @@ func NewValidateToken() *ValidateToken {
 // but it doesn't guarantee that properties required by API are set
 func NewValidateTokenWithDefaults() *ValidateToken {
 	this := ValidateToken{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

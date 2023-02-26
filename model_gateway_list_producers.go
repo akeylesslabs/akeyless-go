@@ -31,6 +31,8 @@ type GatewayListProducers struct {
 // will change when the set of required properties is changed
 func NewGatewayListProducers() *GatewayListProducers {
 	this := GatewayListProducers{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -39,6 +41,8 @@ func NewGatewayListProducers() *GatewayListProducers {
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayListProducersWithDefaults() *GatewayListProducers {
 	this := GatewayListProducers{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

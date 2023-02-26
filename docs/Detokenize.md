@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ciphertext** | **string** | Data to be decrypted | 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **TokenizerName** | **string** | The name of the tokenizer to use in the decryption process | 
 **Tweak** | Pointer to **string** | Base64 encoded tweak for vaultless encryption | [optional] 

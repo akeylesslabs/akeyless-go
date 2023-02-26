@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AdminName** | Pointer to **string** |  | [optional] 
-**AdminPwd** | Pointer to **string** |  | [optional] 
-**HostName** | Pointer to **string** |  | [optional] 
-**HostPort** | Pointer to **string** |  | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
-**KeepPrevVersion** | Pointer to **string** |  | [optional] 
+**AdminName** | Pointer to **string** | The admin name | [optional] 
+**AdminPwd** | Pointer to **string** | The admin password | [optional] 
+**HostName** | Pointer to **string** | The rdp host name | [optional] 
+**HostPort** | Pointer to **string** | The rdp port | [optional] [default to "22"]
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**KeepPrevVersion** | Pointer to **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
 **Name** | **string** | Target name | 
 **NewVersion** | Pointer to **bool** | Deprecated | [optional] 
 **ProtectionKey** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 

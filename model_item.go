@@ -30,6 +30,7 @@ type Item struct {
 	DeleteProtection *bool `json:"delete_protection,omitempty"`
 	DeletionDate *time.Time `json:"deletion_date,omitempty"`
 	DisplayId *string `json:"display_id,omitempty"`
+	GatewayDetails *[]GatewayBasicInfo `json:"gateway_details,omitempty"`
 	IsAccessRequestEnabled *bool `json:"is_access_request_enabled,omitempty"`
 	IsEnabled *bool `json:"is_enabled,omitempty"`
 	ItemAccessibility *int64 `json:"item_accessibility,omitempty"`
@@ -456,6 +457,38 @@ func (o *Item) HasDisplayId() bool {
 // SetDisplayId gets a reference to the given string and assigns it to the DisplayId field.
 func (o *Item) SetDisplayId(v string) {
 	o.DisplayId = &v
+}
+
+// GetGatewayDetails returns the GatewayDetails field value if set, zero value otherwise.
+func (o *Item) GetGatewayDetails() []GatewayBasicInfo {
+	if o == nil || o.GatewayDetails == nil {
+		var ret []GatewayBasicInfo
+		return ret
+	}
+	return *o.GatewayDetails
+}
+
+// GetGatewayDetailsOk returns a tuple with the GatewayDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Item) GetGatewayDetailsOk() (*[]GatewayBasicInfo, bool) {
+	if o == nil || o.GatewayDetails == nil {
+		return nil, false
+	}
+	return o.GatewayDetails, true
+}
+
+// HasGatewayDetails returns a boolean if a field has been set.
+func (o *Item) HasGatewayDetails() bool {
+	if o != nil && o.GatewayDetails != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGatewayDetails gets a reference to the given []GatewayBasicInfo and assigns it to the GatewayDetails field.
+func (o *Item) SetGatewayDetails(v []GatewayBasicInfo) {
+	o.GatewayDetails = &v
 }
 
 // GetIsAccessRequestEnabled returns the IsAccessRequestEnabled field value if set, zero value otherwise.
@@ -1263,6 +1296,9 @@ func (o Item) MarshalJSON() ([]byte, error) {
 	}
 	if o.DisplayId != nil {
 		toSerialize["display_id"] = o.DisplayId
+	}
+	if o.GatewayDetails != nil {
+		toSerialize["gateway_details"] = o.GatewayDetails
 	}
 	if o.IsAccessRequestEnabled != nil {
 		toSerialize["is_access_request_enabled"] = o.IsAccessRequestEnabled

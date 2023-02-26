@@ -17,7 +17,7 @@ import (
 
 // GatewayUpdateProducerRabbitMQ gatewayUpdateProducerRabbitMQ is a command that updates rabbitmq producer
 type GatewayUpdateProducerRabbitMQ struct {
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -43,11 +43,15 @@ type GatewayUpdateProducerRabbitMQ struct {
 	RabbitmqUserVhost *string `json:"rabbitmq-user-vhost,omitempty"`
 	// User write permission
 	RabbitmqUserWritePermission *string `json:"rabbitmq-user-write-permission,omitempty"`
+	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Destination URL to inject secrets
 	SecureAccessUrl *string `json:"secure-access-url,omitempty"`
-	// Secure Access Web Category
+	// Enable Web Secure Remote Access
 	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
+	// Secure browser via Akeyless Web Access Bastion
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
+	// Web-Proxy via Akeyless Web Access Bastion
 	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
 	// List of the tags attached to this secret
 	Tags *[]string `json:"tags,omitempty"`
@@ -67,9 +71,15 @@ type GatewayUpdateProducerRabbitMQ struct {
 // will change when the set of required properties is changed
 func NewGatewayUpdateProducerRabbitMQ(name string, ) *GatewayUpdateProducerRabbitMQ {
 	this := GatewayUpdateProducerRabbitMQ{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	var secureAccessWeb bool = true
 	this.SecureAccessWeb = &secureAccessWeb
+	var secureAccessWebBrowsing bool = false
+	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
+	var secureAccessWebProxy bool = false
+	this.SecureAccessWebProxy = &secureAccessWebProxy
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
@@ -80,8 +90,14 @@ func NewGatewayUpdateProducerRabbitMQ(name string, ) *GatewayUpdateProducerRabbi
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayUpdateProducerRabbitMQWithDefaults() *GatewayUpdateProducerRabbitMQ {
 	this := GatewayUpdateProducerRabbitMQ{}
+	var json bool = false
+	this.Json = &json
 	var secureAccessWeb bool = true
 	this.SecureAccessWeb = &secureAccessWeb
+	var secureAccessWebBrowsing bool = false
+	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
+	var secureAccessWebProxy bool = false
+	this.SecureAccessWebProxy = &secureAccessWebProxy
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this

@@ -37,6 +37,8 @@ type DeleteTargetAssociation struct {
 // will change when the set of required properties is changed
 func NewDeleteTargetAssociation(name string, ) *DeleteTargetAssociation {
 	this := DeleteTargetAssociation{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -46,6 +48,8 @@ func NewDeleteTargetAssociation(name string, ) *DeleteTargetAssociation {
 // but it doesn't guarantee that properties required by API are set
 func NewDeleteTargetAssociationWithDefaults() *DeleteTargetAssociation {
 	this := DeleteTargetAssociation{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

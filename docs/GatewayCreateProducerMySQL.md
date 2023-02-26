@@ -6,21 +6,22 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DbServerCertificates** | Pointer to **string** | (Optional) DB server certificates | [optional] 
 **DbServerName** | Pointer to **string** | (Optional) Server name for certificate verification | [optional] 
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **MysqlDbname** | Pointer to **string** | MySQL DB Name | [optional] 
 **MysqlHost** | Pointer to **string** | MySQL Host | [optional] [default to "127.0.0.1"]
 **MysqlPassword** | Pointer to **string** | MySQL Password | [optional] 
 **MysqlPort** | Pointer to **string** | MySQL Port | [optional] [default to "3306"]
+**MysqlRevocationStatements** | Pointer to **string** | MySQL Revocation statements | [optional] 
 **MysqlScreationStatements** | Pointer to **string** | MySQL Creation statements | [optional] 
 **MysqlUsername** | Pointer to **string** | MySQL Username | [optional] 
 **Name** | **string** | Producer name | 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
-**SecureAccessBastionIssuer** | Pointer to **string** |  | [optional] 
-**SecureAccessEnable** | Pointer to **string** |  | [optional] 
-**SecureAccessHost** | Pointer to **[]string** |  | [optional] 
-**SecureAccessWeb** | Pointer to **bool** |  | [optional] 
-**Ssl** | Pointer to **bool** | SSL connection mode | [optional] 
+**SecureAccessBastionIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] 
+**SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
+**SecureAccessHost** | Pointer to **[]string** | Target DB servers for connections | [optional] 
+**SecureAccessWeb** | Pointer to **bool** | Enable Web Secure Remote Access | [optional] [default to false]
+**Ssl** | Pointer to **bool** | Enable/Disable SSL [true/false] | [optional] [default to false]
 **SslCertificate** | Pointer to **string** | SSL connection certificate | [optional] 
 **Tags** | Pointer to **[]string** | List of the tags attached to this secret | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
@@ -246,6 +247,31 @@ SetMysqlPort sets MysqlPort field to given value.
 `func (o *GatewayCreateProducerMySQL) HasMysqlPort() bool`
 
 HasMysqlPort returns a boolean if a field has been set.
+
+### GetMysqlRevocationStatements
+
+`func (o *GatewayCreateProducerMySQL) GetMysqlRevocationStatements() string`
+
+GetMysqlRevocationStatements returns the MysqlRevocationStatements field if non-nil, zero value otherwise.
+
+### GetMysqlRevocationStatementsOk
+
+`func (o *GatewayCreateProducerMySQL) GetMysqlRevocationStatementsOk() (*string, bool)`
+
+GetMysqlRevocationStatementsOk returns a tuple with the MysqlRevocationStatements field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMysqlRevocationStatements
+
+`func (o *GatewayCreateProducerMySQL) SetMysqlRevocationStatements(v string)`
+
+SetMysqlRevocationStatements sets MysqlRevocationStatements field to given value.
+
+### HasMysqlRevocationStatements
+
+`func (o *GatewayCreateProducerMySQL) HasMysqlRevocationStatements() bool`
+
+HasMysqlRevocationStatements returns a boolean if a field has been set.
 
 ### GetMysqlScreationStatements
 

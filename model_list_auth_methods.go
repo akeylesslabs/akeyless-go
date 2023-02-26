@@ -37,6 +37,8 @@ type ListAuthMethods struct {
 // will change when the set of required properties is changed
 func NewListAuthMethods() *ListAuthMethods {
 	this := ListAuthMethods{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -45,6 +47,8 @@ func NewListAuthMethods() *ListAuthMethods {
 // but it doesn't guarantee that properties required by API are set
 func NewListAuthMethodsWithDefaults() *ListAuthMethods {
 	this := ListAuthMethods{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

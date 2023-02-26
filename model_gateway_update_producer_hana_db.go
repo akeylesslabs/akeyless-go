@@ -17,7 +17,7 @@ import (
 
 // GatewayUpdateProducerHanaDb gatewayUpdateProducerHanaDb is a command that updates hanadb producer
 type GatewayUpdateProducerHanaDb struct {
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// HanaDb Name
 	HanaDbname *string `json:"hana-dbname,omitempty"`
@@ -41,10 +41,15 @@ type GatewayUpdateProducerHanaDb struct {
 	NewName *string `json:"new-name,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
+	// Path to the SSH Certificate Issuer for your Akeyless Bastion
 	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
+	// The DB schema
 	SecureAccessDbSchema *string `json:"secure-access-db-schema,omitempty"`
+	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Target DB servers for connections
 	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
+	// Enable Web Secure Remote Access
 	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
 	// List of the tags attached to this secret
 	Tags *[]string `json:"tags,omitempty"`
@@ -68,7 +73,11 @@ func NewGatewayUpdateProducerHanaDb(name string, ) *GatewayUpdateProducerHanaDb 
 	this.HanadbHost = &hanadbHost
 	var hanadbPort string = "443"
 	this.HanadbPort = &hanadbPort
+	var json bool = false
+	this.Json = &json
 	this.Name = name
+	var secureAccessWeb bool = false
+	this.SecureAccessWeb = &secureAccessWeb
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
@@ -83,6 +92,10 @@ func NewGatewayUpdateProducerHanaDbWithDefaults() *GatewayUpdateProducerHanaDb {
 	this.HanadbHost = &hanadbHost
 	var hanadbPort string = "443"
 	this.HanadbPort = &hanadbPort
+	var json bool = false
+	this.Json = &json
+	var secureAccessWeb bool = false
+	this.SecureAccessWeb = &secureAccessWeb
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this

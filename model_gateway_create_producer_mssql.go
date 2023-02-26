@@ -17,7 +17,7 @@ import (
 
 // GatewayCreateProducerMSSQL gatewayCreateProducerMSSQL is a command that creates mssql producer
 type GatewayCreateProducerMSSQL struct {
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -39,10 +39,15 @@ type GatewayCreateProducerMSSQL struct {
 	Name string `json:"name"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
+	// Path to the SSH Certificate Issuer for your Akeyless Bastion
 	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
+	// The DB schema
 	SecureAccessDbSchema *string `json:"secure-access-db-schema,omitempty"`
+	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Target DB servers for connections
 	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
+	// Enable Web Secure Remote Access
 	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
 	// List of the tags attached to this secret
 	Tags *[]string `json:"tags,omitempty"`
@@ -62,11 +67,15 @@ type GatewayCreateProducerMSSQL struct {
 // will change when the set of required properties is changed
 func NewGatewayCreateProducerMSSQL(name string, ) *GatewayCreateProducerMSSQL {
 	this := GatewayCreateProducerMSSQL{}
+	var json bool = false
+	this.Json = &json
 	var mssqlHost string = "127.0.0.1"
 	this.MssqlHost = &mssqlHost
 	var mssqlPort string = "1433"
 	this.MssqlPort = &mssqlPort
 	this.Name = name
+	var secureAccessWeb bool = false
+	this.SecureAccessWeb = &secureAccessWeb
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
@@ -77,10 +86,14 @@ func NewGatewayCreateProducerMSSQL(name string, ) *GatewayCreateProducerMSSQL {
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayCreateProducerMSSQLWithDefaults() *GatewayCreateProducerMSSQL {
 	this := GatewayCreateProducerMSSQL{}
+	var json bool = false
+	this.Json = &json
 	var mssqlHost string = "127.0.0.1"
 	this.MssqlHost = &mssqlHost
 	var mssqlPort string = "1433"
 	this.MssqlPort = &mssqlPort
+	var secureAccessWeb bool = false
+	this.SecureAccessWeb = &secureAccessWeb
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this

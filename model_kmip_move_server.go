@@ -19,7 +19,8 @@ import (
 type KmipMoveServer struct {
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	NewRoot *string `json:"new-root,omitempty"`
+	// New root for the kmip server
+	NewRoot string `json:"new-root"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -30,8 +31,11 @@ type KmipMoveServer struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKmipMoveServer() *KmipMoveServer {
+func NewKmipMoveServer(newRoot string, ) *KmipMoveServer {
 	this := KmipMoveServer{}
+	var json bool = false
+	this.Json = &json
+	this.NewRoot = newRoot
 	return &this
 }
 
@@ -40,6 +44,8 @@ func NewKmipMoveServer() *KmipMoveServer {
 // but it doesn't guarantee that properties required by API are set
 func NewKmipMoveServerWithDefaults() *KmipMoveServer {
 	this := KmipMoveServer{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -75,36 +81,28 @@ func (o *KmipMoveServer) SetJson(v bool) {
 	o.Json = &v
 }
 
-// GetNewRoot returns the NewRoot field value if set, zero value otherwise.
+// GetNewRoot returns the NewRoot field value
 func (o *KmipMoveServer) GetNewRoot() string {
-	if o == nil || o.NewRoot == nil {
+	if o == nil  {
 		var ret string
 		return ret
 	}
-	return *o.NewRoot
+
+	return o.NewRoot
 }
 
-// GetNewRootOk returns a tuple with the NewRoot field value if set, nil otherwise
+// GetNewRootOk returns a tuple with the NewRoot field value
 // and a boolean to check if the value has been set.
 func (o *KmipMoveServer) GetNewRootOk() (*string, bool) {
-	if o == nil || o.NewRoot == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.NewRoot, true
+	return &o.NewRoot, true
 }
 
-// HasNewRoot returns a boolean if a field has been set.
-func (o *KmipMoveServer) HasNewRoot() bool {
-	if o != nil && o.NewRoot != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNewRoot gets a reference to the given string and assigns it to the NewRoot field.
+// SetNewRoot sets field value
 func (o *KmipMoveServer) SetNewRoot(v string) {
-	o.NewRoot = &v
+	o.NewRoot = v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -176,7 +174,7 @@ func (o KmipMoveServer) MarshalJSON() ([]byte, error) {
 	if o.Json != nil {
 		toSerialize["json"] = o.Json
 	}
-	if o.NewRoot != nil {
+	if true {
 		toSerialize["new-root"] = o.NewRoot
 	}
 	if o.Token != nil {

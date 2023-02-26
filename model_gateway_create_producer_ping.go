@@ -17,7 +17,7 @@ import (
 
 // GatewayCreateProducerPing gatewayCreateProducerPing is a command that creates ping producer
 type GatewayCreateProducerPing struct {
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -33,7 +33,7 @@ type GatewayCreateProducerPing struct {
 	PingCertSubjectDn *string `json:"ping-cert-subject-dn,omitempty"`
 	// OAuth Client Authentication Type [CLIENT_SECRET, PRIVATE_KEY_JWT, CLIENT_TLS_CERTIFICATE]
 	PingClientAuthenticationType *string `json:"ping-client-authentication-type,omitempty"`
-	// Determines whether PingFederate requires a unique signed JWT from the client for each action (relevant for PRIVATE_KEY_JWT authentication method)
+	// Determines whether PingFederate requires a unique signed JWT from the client for each action (relevant for PRIVATE_KEY_JWT authentication method) [true/false]
 	PingEnforceReplayPrevention *string `json:"ping-enforce-replay-prevention,omitempty"`
 	// List of OAuth client grant types [IMPLICIT, AUTHORIZATION_CODE, CLIENT_CREDENTIALS, TOKEN_EXCHANGE, REFRESH_TOKEN, ASSERTION_GRANTS, PASSWORD, RESOURCE_OWNER_CREDENTIALS]. If no explicit value is given, AUTHORIZATION_CODE will be selected as default.
 	PingGrantTypes *[]string `json:"ping-grant-types,omitempty"`
@@ -75,6 +75,8 @@ type GatewayCreateProducerPing struct {
 // will change when the set of required properties is changed
 func NewGatewayCreateProducerPing(name string, ) *GatewayCreateProducerPing {
 	this := GatewayCreateProducerPing{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	var pingAdministrativePort string = "9999"
 	this.PingAdministrativePort = &pingAdministrativePort
@@ -82,6 +84,8 @@ func NewGatewayCreateProducerPing(name string, ) *GatewayCreateProducerPing {
 	this.PingAuthorizationPort = &pingAuthorizationPort
 	var pingClientAuthenticationType string = "CLIENT_SECRET"
 	this.PingClientAuthenticationType = &pingClientAuthenticationType
+	var pingEnforceReplayPrevention string = "false"
+	this.PingEnforceReplayPrevention = &pingEnforceReplayPrevention
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
@@ -92,12 +96,16 @@ func NewGatewayCreateProducerPing(name string, ) *GatewayCreateProducerPing {
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayCreateProducerPingWithDefaults() *GatewayCreateProducerPing {
 	this := GatewayCreateProducerPing{}
+	var json bool = false
+	this.Json = &json
 	var pingAdministrativePort string = "9999"
 	this.PingAdministrativePort = &pingAdministrativePort
 	var pingAuthorizationPort string = "9031"
 	this.PingAuthorizationPort = &pingAuthorizationPort
 	var pingClientAuthenticationType string = "CLIENT_SECRET"
 	this.PingClientAuthenticationType = &pingClientAuthenticationType
+	var pingEnforceReplayPrevention string = "false"
+	this.PingEnforceReplayPrevention = &pingEnforceReplayPrevention
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this

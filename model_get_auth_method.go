@@ -33,6 +33,8 @@ type GetAuthMethod struct {
 // will change when the set of required properties is changed
 func NewGetAuthMethod(name string, ) *GetAuthMethod {
 	this := GetAuthMethod{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -42,6 +44,8 @@ func NewGetAuthMethod(name string, ) *GetAuthMethod {
 // but it doesn't guarantee that properties required by API are set
 func NewGetAuthMethodWithDefaults() *GetAuthMethod {
 	this := GetAuthMethod{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

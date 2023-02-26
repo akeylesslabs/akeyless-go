@@ -17,6 +17,7 @@ import (
 
 // GatewayMessageQueueInfo struct for GatewayMessageQueueInfo
 type GatewayMessageQueueInfo struct {
+	BroadcastQueueName *string `json:"broadcast_queue_name,omitempty"`
 	MqType *string `json:"mq_type,omitempty"`
 	QueueName *string `json:"queue_name,omitempty"`
 	QueueUrl *string `json:"queue_url,omitempty"`
@@ -37,6 +38,38 @@ func NewGatewayMessageQueueInfo() *GatewayMessageQueueInfo {
 func NewGatewayMessageQueueInfoWithDefaults() *GatewayMessageQueueInfo {
 	this := GatewayMessageQueueInfo{}
 	return &this
+}
+
+// GetBroadcastQueueName returns the BroadcastQueueName field value if set, zero value otherwise.
+func (o *GatewayMessageQueueInfo) GetBroadcastQueueName() string {
+	if o == nil || o.BroadcastQueueName == nil {
+		var ret string
+		return ret
+	}
+	return *o.BroadcastQueueName
+}
+
+// GetBroadcastQueueNameOk returns a tuple with the BroadcastQueueName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayMessageQueueInfo) GetBroadcastQueueNameOk() (*string, bool) {
+	if o == nil || o.BroadcastQueueName == nil {
+		return nil, false
+	}
+	return o.BroadcastQueueName, true
+}
+
+// HasBroadcastQueueName returns a boolean if a field has been set.
+func (o *GatewayMessageQueueInfo) HasBroadcastQueueName() bool {
+	if o != nil && o.BroadcastQueueName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBroadcastQueueName gets a reference to the given string and assigns it to the BroadcastQueueName field.
+func (o *GatewayMessageQueueInfo) SetBroadcastQueueName(v string) {
+	o.BroadcastQueueName = &v
 }
 
 // GetMqType returns the MqType field value if set, zero value otherwise.
@@ -137,6 +170,9 @@ func (o *GatewayMessageQueueInfo) SetQueueUrl(v string) {
 
 func (o GatewayMessageQueueInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.BroadcastQueueName != nil {
+		toSerialize["broadcast_queue_name"] = o.BroadcastQueueName
+	}
 	if o.MqType != nil {
 		toSerialize["mq_type"] = o.MqType
 	}

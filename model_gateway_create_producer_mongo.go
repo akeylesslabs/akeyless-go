@@ -17,7 +17,7 @@ import (
 
 // GatewayCreateProducerMongo gatewayCreateProducerMongo is a command that creates either mongodb  producer or mongodb atlas producer
 type GatewayCreateProducerMongo struct {
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -49,9 +49,13 @@ type GatewayCreateProducerMongo struct {
 	Name string `json:"name"`
 	// Encrypt producer with following key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
+	// Path to the SSH Certificate Issuer for your Akeyless Bastion
 	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
+	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Target DB servers for connections
 	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
+	// Enable Web Secure Remote Access
 	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
 	// List of the tags attached to this secret
 	Tags *[]string `json:"tags,omitempty"`
@@ -71,9 +75,13 @@ type GatewayCreateProducerMongo struct {
 // will change when the set of required properties is changed
 func NewGatewayCreateProducerMongo(name string, ) *GatewayCreateProducerMongo {
 	this := GatewayCreateProducerMongo{}
+	var json bool = false
+	this.Json = &json
 	var mongodbRoles string = "[]"
 	this.MongodbRoles = &mongodbRoles
 	this.Name = name
+	var secureAccessWeb bool = false
+	this.SecureAccessWeb = &secureAccessWeb
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
@@ -84,8 +92,12 @@ func NewGatewayCreateProducerMongo(name string, ) *GatewayCreateProducerMongo {
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayCreateProducerMongoWithDefaults() *GatewayCreateProducerMongo {
 	this := GatewayCreateProducerMongo{}
+	var json bool = false
+	this.Json = &json
 	var mongodbRoles string = "[]"
 	this.MongodbRoles = &mongodbRoles
+	var secureAccessWeb bool = false
+	this.SecureAccessWeb = &secureAccessWeb
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this

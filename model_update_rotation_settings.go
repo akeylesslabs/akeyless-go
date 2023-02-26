@@ -38,6 +38,8 @@ type UpdateRotationSettings struct {
 func NewUpdateRotationSettings(autoRotate bool, name string, ) *UpdateRotationSettings {
 	this := UpdateRotationSettings{}
 	this.AutoRotate = autoRotate
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -47,6 +49,8 @@ func NewUpdateRotationSettings(autoRotate bool, name string, ) *UpdateRotationSe
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateRotationSettingsWithDefaults() *UpdateRotationSettings {
 	this := UpdateRotationSettings{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Producer Name | 
 **NewTtlMin** | **int64** | New TTL in Minutes | 
 **TmpCredsId** | **string** | Tmp Creds ID | 
