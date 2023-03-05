@@ -19,7 +19,7 @@ import (
 type CreateSSHCertIssuer struct {
 	// Users allowed to fetch the certificate, e.g root,ubuntu
 	AllowedUsers string `json:"allowed-users"`
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
@@ -33,11 +33,17 @@ type CreateSSHCertIssuer struct {
 	Name string `json:"name"`
 	// Signed certificates with principal, e.g example_role1,example_role2
 	Principals *string `json:"principals,omitempty"`
+	// Bastion's SSH control API endpoint. E.g. https://my.bastion:9900
 	SecureAccessBastionApi *string `json:"secure-access-bastion-api,omitempty"`
+	// Bastion's SSH server. E.g. my.bastion:22
 	SecureAccessBastionSsh *string `json:"secure-access-bastion-ssh,omitempty"`
+	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Target servers for connections
 	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
+	// SSH username to connect to target server, must be in 'Allowed Users' list
 	SecureAccessSshCredsUser *string `json:"secure-access-ssh-creds-user,omitempty"`
+	// Use internal SSH Bastion
 	SecureAccessUseInternalBastion *bool `json:"secure-access-use-internal-bastion,omitempty"`
 	// A key to sign the certificate with
 	SignerKeyName string `json:"signer-key-name"`
@@ -58,6 +64,8 @@ type CreateSSHCertIssuer struct {
 func NewCreateSSHCertIssuer(allowedUsers string, name string, signerKeyName string, ttl int64, ) *CreateSSHCertIssuer {
 	this := CreateSSHCertIssuer{}
 	this.AllowedUsers = allowedUsers
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	this.SignerKeyName = signerKeyName
 	this.Ttl = ttl
@@ -69,6 +77,8 @@ func NewCreateSSHCertIssuer(allowedUsers string, name string, signerKeyName stri
 // but it doesn't guarantee that properties required by API are set
 func NewCreateSSHCertIssuerWithDefaults() *CreateSSHCertIssuer {
 	this := CreateSSHCertIssuer{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

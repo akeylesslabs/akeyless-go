@@ -19,6 +19,8 @@ import (
 type GetKubeExecCreds struct {
 	// The Subject Alternative Names to be included in the PKI certificate (in a comma-separated list) (if CSR is supplied this flag is ignored and any DNS.* names are taken from it)
 	AltNames *string `json:"alt-names,omitempty"`
+	// Client authentication API version
+	ApiVersion *string `json:"api-version,omitempty"`
 	// The name of the PKI certificate issuer
 	CertIssuerName string `json:"cert-issuer-name"`
 	// The common name to be included in the PKI certificate (if CSR is supplied this flag is ignored and the CSR subject CN is taken)
@@ -47,7 +49,11 @@ type GetKubeExecCreds struct {
 // will change when the set of required properties is changed
 func NewGetKubeExecCreds(certIssuerName string, ) *GetKubeExecCreds {
 	this := GetKubeExecCreds{}
+	var apiVersion string = "v1"
+	this.ApiVersion = &apiVersion
 	this.CertIssuerName = certIssuerName
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -56,6 +62,10 @@ func NewGetKubeExecCreds(certIssuerName string, ) *GetKubeExecCreds {
 // but it doesn't guarantee that properties required by API are set
 func NewGetKubeExecCredsWithDefaults() *GetKubeExecCreds {
 	this := GetKubeExecCreds{}
+	var apiVersion string = "v1"
+	this.ApiVersion = &apiVersion
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -89,6 +99,38 @@ func (o *GetKubeExecCreds) HasAltNames() bool {
 // SetAltNames gets a reference to the given string and assigns it to the AltNames field.
 func (o *GetKubeExecCreds) SetAltNames(v string) {
 	o.AltNames = &v
+}
+
+// GetApiVersion returns the ApiVersion field value if set, zero value otherwise.
+func (o *GetKubeExecCreds) GetApiVersion() string {
+	if o == nil || o.ApiVersion == nil {
+		var ret string
+		return ret
+	}
+	return *o.ApiVersion
+}
+
+// GetApiVersionOk returns a tuple with the ApiVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetKubeExecCreds) GetApiVersionOk() (*string, bool) {
+	if o == nil || o.ApiVersion == nil {
+		return nil, false
+	}
+	return o.ApiVersion, true
+}
+
+// HasApiVersion returns a boolean if a field has been set.
+func (o *GetKubeExecCreds) HasApiVersion() bool {
+	if o != nil && o.ApiVersion != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetApiVersion gets a reference to the given string and assigns it to the ApiVersion field.
+func (o *GetKubeExecCreds) SetApiVersion(v string) {
+	o.ApiVersion = &v
 }
 
 // GetCertIssuerName returns the CertIssuerName field value
@@ -407,6 +449,9 @@ func (o GetKubeExecCreds) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AltNames != nil {
 		toSerialize["alt-names"] = o.AltNames
+	}
+	if o.ApiVersion != nil {
+		toSerialize["api-version"] = o.ApiVersion
 	}
 	if true {
 		toSerialize["cert-issuer-name"] = o.CertIssuerName

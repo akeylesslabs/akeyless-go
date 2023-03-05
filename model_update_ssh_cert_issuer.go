@@ -37,11 +37,17 @@ type UpdateSSHCertIssuer struct {
 	Principals *string `json:"principals,omitempty"`
 	// List of the existent tags that will be removed from this item
 	RmTag *[]string `json:"rm-tag,omitempty"`
+	// Bastion's SSH control API endpoint. E.g. https://my.bastion:9900
 	SecureAccessBastionApi *string `json:"secure-access-bastion-api,omitempty"`
+	// Bastion's SSH server. E.g. my.bastion:22
 	SecureAccessBastionSsh *string `json:"secure-access-bastion-ssh,omitempty"`
+	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Target servers for connections
 	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
+	// SSH username to connect to target server, must be in 'Allowed Users' list
 	SecureAccessSshCredsUser *string `json:"secure-access-ssh-creds-user,omitempty"`
+	// Use internal SSH Bastion
 	SecureAccessUseInternalBastion *bool `json:"secure-access-use-internal-bastion,omitempty"`
 	// A key to sign the certificate with
 	SignerKeyName string `json:"signer-key-name"`
@@ -60,6 +66,8 @@ type UpdateSSHCertIssuer struct {
 func NewUpdateSSHCertIssuer(allowedUsers string, name string, signerKeyName string, ttl int64, ) *UpdateSSHCertIssuer {
 	this := UpdateSSHCertIssuer{}
 	this.AllowedUsers = allowedUsers
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	this.SignerKeyName = signerKeyName
 	this.Ttl = ttl
@@ -71,6 +79,8 @@ func NewUpdateSSHCertIssuer(allowedUsers string, name string, signerKeyName stri
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateSSHCertIssuerWithDefaults() *UpdateSSHCertIssuer {
 	this := UpdateSSHCertIssuer{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

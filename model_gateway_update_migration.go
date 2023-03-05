@@ -73,7 +73,7 @@ type GatewayUpdateMigration struct {
 	AzureTenantId *string `json:"azure-tenant-id,omitempty"`
 	// Base64-encoded GCP Service Account private key text with sufficient permissions to Secrets Manager, Minimum required permission is Secret Manager Secret Accessor, e.g. 'roles/secretmanager.secretAccessor' (relevant only for GCP migration)
 	GcpKey *string `json:"gcp-key,omitempty"`
-	// Import secret key as json value or independent secrets (relevant only for HasiCorp Vault migration)
+	// Import secret key as json value or independent secrets (relevant only for HasiCorp Vault migration) [true/false]
 	HashiJson *string `json:"hashi-json,omitempty"`
 	// HashiCorp Vault Namespaces is a comma-separated list of namespaces which need to be imported into Akeyless Vault. For every provided namespace, all its child namespaces are imported as well, e.g. nmsp/subnmsp1/subnmsp2,nmsp/anothernmsp. By default, import all namespaces (relevant only for HasiCorp Vault migration)
 	HashiNs *[]string `json:"hashi-ns,omitempty"`
@@ -123,6 +123,14 @@ type GatewayUpdateMigration struct {
 // will change when the set of required properties is changed
 func NewGatewayUpdateMigration(targetLocation string, ) *GatewayUpdateMigration {
 	this := GatewayUpdateMigration{}
+	var asSshPort string = "22"
+	this.AsSshPort = &asSshPort
+	var awsRegion string = "us-east-2"
+	this.AwsRegion = &awsRegion
+	var hashiJson string = "true"
+	this.HashiJson = &hashiJson
+	var json bool = false
+	this.Json = &json
 	this.TargetLocation = targetLocation
 	return &this
 }
@@ -132,6 +140,14 @@ func NewGatewayUpdateMigration(targetLocation string, ) *GatewayUpdateMigration 
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayUpdateMigrationWithDefaults() *GatewayUpdateMigration {
 	this := GatewayUpdateMigration{}
+	var asSshPort string = "22"
+	this.AsSshPort = &asSshPort
+	var awsRegion string = "us-east-2"
+	this.AwsRegion = &awsRegion
+	var hashiJson string = "true"
+	this.HashiJson = &hashiJson
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

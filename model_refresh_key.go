@@ -33,6 +33,8 @@ type RefreshKey struct {
 // will change when the set of required properties is changed
 func NewRefreshKey(name string, ) *RefreshKey {
 	this := RefreshKey{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -42,6 +44,8 @@ func NewRefreshKey(name string, ) *RefreshKey {
 // but it doesn't guarantee that properties required by API are set
 func NewRefreshKeyWithDefaults() *RefreshKey {
 	this := RefreshKey{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

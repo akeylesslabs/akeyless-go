@@ -23,7 +23,7 @@ type GatewayCreateK8SAuthConfig struct {
 	ClusterApiType *string `json:"cluster-api-type,omitempty"`
 	// Config encryption key
 	ConfigEncryptionKeyName *string `json:"config-encryption-key-name,omitempty"`
-	// Disable issuer validation
+	// Disable issuer validation [true/false]
 	DisableIssuerValidation *string `json:"disable-issuer-validation,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -31,7 +31,7 @@ type GatewayCreateK8SAuthConfig struct {
 	K8sCaCert *string `json:"k8s-ca-cert,omitempty"`
 	// The URL of the kubernetes API server
 	K8sHost string `json:"k8s-host"`
-	// The Kubernetes JWT issuer name. If not set, kubernetes/serviceaccount will use as an issuer.
+	// The Kubernetes JWT issuer name. K8SIssuer is the claim that specifies who issued the Kubernetes token
 	K8sIssuer *string `json:"k8s-issuer,omitempty"`
 	// K8S Auth config name
 	Name string `json:"name"`
@@ -60,7 +60,11 @@ func NewGatewayCreateK8SAuthConfig(accessId string, k8sHost string, name string,
 	this.AccessId = accessId
 	var clusterApiType string = "native_k8s"
 	this.ClusterApiType = &clusterApiType
+	var json bool = false
+	this.Json = &json
 	this.K8sHost = k8sHost
+	var k8sIssuer string = "kubernetes/serviceaccount"
+	this.K8sIssuer = &k8sIssuer
 	this.Name = name
 	this.SigningKey = signingKey
 	var tokenExp int64 = 300
@@ -75,6 +79,10 @@ func NewGatewayCreateK8SAuthConfigWithDefaults() *GatewayCreateK8SAuthConfig {
 	this := GatewayCreateK8SAuthConfig{}
 	var clusterApiType string = "native_k8s"
 	this.ClusterApiType = &clusterApiType
+	var json bool = false
+	this.Json = &json
+	var k8sIssuer string = "kubernetes/serviceaccount"
+	this.K8sIssuer = &k8sIssuer
 	var tokenExp int64 = 300
 	this.TokenExp = &tokenExp
 	return &this

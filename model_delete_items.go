@@ -33,6 +33,8 @@ type DeleteItems struct {
 // will change when the set of required properties is changed
 func NewDeleteItems(path string, ) *DeleteItems {
 	this := DeleteItems{}
+	var json bool = false
+	this.Json = &json
 	this.Path = path
 	return &this
 }
@@ -42,6 +44,8 @@ func NewDeleteItems(path string, ) *DeleteItems {
 // but it doesn't guarantee that properties required by API are set
 func NewDeleteItemsWithDefaults() *DeleteItems {
 	this := DeleteItems{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

@@ -43,6 +43,8 @@ type Encrypt struct {
 // will change when the set of required properties is changed
 func NewEncrypt(keyName string, ) *Encrypt {
 	this := Encrypt{}
+	var json bool = false
+	this.Json = &json
 	this.KeyName = keyName
 	return &this
 }
@@ -52,6 +54,8 @@ func NewEncrypt(keyName string, ) *Encrypt {
 // but it doesn't guarantee that properties required by API are set
 func NewEncryptWithDefaults() *Encrypt {
 	this := Encrypt{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

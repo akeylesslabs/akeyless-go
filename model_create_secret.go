@@ -19,7 +19,7 @@ import (
 type CreateSecret struct {
 	// for personal password manager
 	Accessibility *string `json:"accessibility,omitempty"`
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
@@ -41,19 +41,27 @@ type CreateSecret struct {
 	PasswordManagerUsername *string `json:"password-manager-username,omitempty"`
 	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
 	ProtectionKey *string `json:"protection_key,omitempty"`
+	// Path to the SSH Certificate Issuer for your Akeyless Bastion
 	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
+	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Target servers for connections
 	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
+	// Static-Secret values contains SSH Credentials, either Private Key or Password [password/private-key]
 	SecureAccessSshCreds *string `json:"secure-access-ssh-creds,omitempty"`
+	// Override the SSH username as indicated in SSH Certificate Issuer
 	SecureAccessSshUser *string `json:"secure-access-ssh-user,omitempty"`
+	// Destination URL to inject secrets
 	SecureAccessUrl *string `json:"secure-access-url,omitempty"`
+	// Secure browser via Akeyless Web Access Bastion
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
+	// Web-Proxy via Akeyless Web Access Bastion
 	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
-	// List of the tags attached to this secret
+	// Add tags attached to this object
 	Tags *[]string `json:"tags,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
-	// For Password Management use, reflect the website context
+	// The secret sub type [generic/password]
 	Type *string `json:"type,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
@@ -69,7 +77,15 @@ func NewCreateSecret(name string, value string, ) *CreateSecret {
 	this := CreateSecret{}
 	var accessibility string = "regular"
 	this.Accessibility = &accessibility
+	var json bool = false
+	this.Json = &json
 	this.Name = name
+	var secureAccessWebBrowsing bool = false
+	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
+	var secureAccessWebProxy bool = false
+	this.SecureAccessWebProxy = &secureAccessWebProxy
+	var type_ string = "generic"
+	this.Type = &type_
 	this.Value = value
 	return &this
 }
@@ -81,6 +97,14 @@ func NewCreateSecretWithDefaults() *CreateSecret {
 	this := CreateSecret{}
 	var accessibility string = "regular"
 	this.Accessibility = &accessibility
+	var json bool = false
+	this.Json = &json
+	var secureAccessWebBrowsing bool = false
+	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
+	var secureAccessWebProxy bool = false
+	this.SecureAccessWebProxy = &secureAccessWebProxy
+	var type_ string = "generic"
+	this.Type = &type_
 	return &this
 }
 

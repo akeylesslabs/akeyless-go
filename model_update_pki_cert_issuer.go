@@ -81,6 +81,8 @@ type UpdatePKICertIssuer struct {
 // will change when the set of required properties is changed
 func NewUpdatePKICertIssuer(name string, signerKeyName string, ttl int64, ) *UpdatePKICertIssuer {
 	this := UpdatePKICertIssuer{}
+	var json bool = false
+	this.Json = &json
 	var keyUsage string = "DigitalSignature,KeyAgreement,KeyEncipherment"
 	this.KeyUsage = &keyUsage
 	this.Name = name
@@ -94,6 +96,8 @@ func NewUpdatePKICertIssuer(name string, signerKeyName string, ttl int64, ) *Upd
 // but it doesn't guarantee that properties required by API are set
 func NewUpdatePKICertIssuerWithDefaults() *UpdatePKICertIssuer {
 	this := UpdatePKICertIssuer{}
+	var json bool = false
+	this.Json = &json
 	var keyUsage string = "DigitalSignature,KeyAgreement,KeyEncipherment"
 	this.KeyUsage = &keyUsage
 	return &this

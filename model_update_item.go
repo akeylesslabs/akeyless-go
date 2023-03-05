@@ -23,6 +23,7 @@ type UpdateItem struct {
 	AddTag *[]string `json:"add-tag,omitempty"`
 	// PEM Certificate in a Base64 format. Used for updating RSA keys' certificates.
 	CertFileData *string `json:"cert-file-data,omitempty"`
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
@@ -36,29 +37,55 @@ type UpdateItem struct {
 	NewName *string `json:"new-name,omitempty"`
 	// List of the existent tags that will be removed from this item
 	RmTag *[]string `json:"rm-tag,omitempty"`
+	// Rotate the value of the secret after SRA session ends [true/false] (relevant only for Rotated-secret)
+	RotateAfterDisconnect *string `json:"rotate-after-disconnect,omitempty"`
+	// List of the new hosts that will be attached to SRA servers host
 	SecureAccessAddHost *[]string `json:"secure-access-add-host,omitempty"`
+	// Allow providing external user for a domain users [true/false]
 	SecureAccessAllowExternalUser *string `json:"secure-access-allow-external-user,omitempty"`
+	// Enable Port forwarding while using CLI access (relevant only for EKS/GKE/K8s Dynamic-Secret)
 	SecureAccessAllowPortForwading *bool `json:"secure-access-allow-port-forwading,omitempty"`
+	// The AWS account id (relevant only for aws)
 	SecureAccessAwsAccountId *string `json:"secure-access-aws-account-id,omitempty"`
+	// The AWS native cli (relevant only for aws)
 	SecureAccessAwsNativeCli *bool `json:"secure-access-aws-native-cli,omitempty"`
+	// The AWS region (relevant only for aws)
 	SecureAccessAwsRegion *string `json:"secure-access-aws-region,omitempty"`
+	// Bastion's SSH control API endpoint. E.g. https://my.bastion:9900 (relevant only for ssh cert issuer)
 	SecureAccessBastionApi *string `json:"secure-access-bastion-api,omitempty"`
+	// Path to the SSH Certificate Issuer for your Akeyless Bastion
 	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
+	// Bastion's SSH server. E.g. my.bastion:22 (relevant only for ssh cert issuer)
 	SecureAccessBastionSsh *string `json:"secure-access-bastion-ssh,omitempty"`
+	// The K8s cluster endpoint URL (relevant only for EKS/GKE/K8s Dynamic-Secret)
 	SecureAccessClusterEndpoint *string `json:"secure-access-cluster-endpoint,omitempty"`
+	// The K8s dashboard url (relevant only for k8s)
 	SecureAccessDashboardUrl *string `json:"secure-access-dashboard-url,omitempty"`
+	// The DB name (relevant only for DB Dynamic-Secret)
 	SecureAccessDbName *string `json:"secure-access-db-name,omitempty"`
+	// The DB schema (relevant only for DB Dynamic-Secret)
 	SecureAccessDbSchema *string `json:"secure-access-db-schema,omitempty"`
+	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Target servers for connections
 	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
+	// Required when the Dynamic Secret is used for a domain user (relevant only for RDP Dynamic-Secret)
 	SecureAccessRdpDomain *string `json:"secure-access-rdp-domain,omitempty"`
+	// Override the RDP Domain username
 	SecureAccessRdpUser *string `json:"secure-access-rdp-user,omitempty"`
+	// List of the existent hosts that will be removed from SRA servers host
 	SecureAccessRmHost *[]string `json:"secure-access-rm-host,omitempty"`
+	// Secret values contains SSH Credentials, either Private Key or Password [password/private-key] (relevant only for Static-Secret or Rotated-secret)
 	SecureAccessSshCreds *string `json:"secure-access-ssh-creds,omitempty"`
+	// SSH username to connect to target server, must be in 'Allowed Users' list (relevant only for ssh cert issuer)
 	SecureAccessSshCredsUser *string `json:"secure-access-ssh-creds-user,omitempty"`
+	// Destination URL to inject secrets
 	SecureAccessUrl *string `json:"secure-access-url,omitempty"`
+	// Use internal SSH Bastion
 	SecureAccessUseInternalBastion *bool `json:"secure-access-use-internal-bastion,omitempty"`
+	// Secure browser via Akeyless Web Access Bastion
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
+	// Web-Proxy via Akeyless Web Access Bastion
 	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
@@ -76,9 +103,17 @@ func NewUpdateItem(name string, ) *UpdateItem {
 	this.Accessibility = &accessibility
 	var description string = "default_metadata"
 	this.Description = &description
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	var newMetadata string = "default_metadata"
 	this.NewMetadata = &newMetadata
+	var rotateAfterDisconnect string = "false"
+	this.RotateAfterDisconnect = &rotateAfterDisconnect
+	var secureAccessWebBrowsing bool = false
+	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
+	var secureAccessWebProxy bool = false
+	this.SecureAccessWebProxy = &secureAccessWebProxy
 	return &this
 }
 
@@ -91,8 +126,16 @@ func NewUpdateItemWithDefaults() *UpdateItem {
 	this.Accessibility = &accessibility
 	var description string = "default_metadata"
 	this.Description = &description
+	var json bool = false
+	this.Json = &json
 	var newMetadata string = "default_metadata"
 	this.NewMetadata = &newMetadata
+	var rotateAfterDisconnect string = "false"
+	this.RotateAfterDisconnect = &rotateAfterDisconnect
+	var secureAccessWebBrowsing bool = false
+	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
+	var secureAccessWebProxy bool = false
+	this.SecureAccessWebProxy = &secureAccessWebProxy
 	return &this
 }
 
@@ -406,6 +449,38 @@ func (o *UpdateItem) HasRmTag() bool {
 // SetRmTag gets a reference to the given []string and assigns it to the RmTag field.
 func (o *UpdateItem) SetRmTag(v []string) {
 	o.RmTag = &v
+}
+
+// GetRotateAfterDisconnect returns the RotateAfterDisconnect field value if set, zero value otherwise.
+func (o *UpdateItem) GetRotateAfterDisconnect() string {
+	if o == nil || o.RotateAfterDisconnect == nil {
+		var ret string
+		return ret
+	}
+	return *o.RotateAfterDisconnect
+}
+
+// GetRotateAfterDisconnectOk returns a tuple with the RotateAfterDisconnect field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateItem) GetRotateAfterDisconnectOk() (*string, bool) {
+	if o == nil || o.RotateAfterDisconnect == nil {
+		return nil, false
+	}
+	return o.RotateAfterDisconnect, true
+}
+
+// HasRotateAfterDisconnect returns a boolean if a field has been set.
+func (o *UpdateItem) HasRotateAfterDisconnect() bool {
+	if o != nil && o.RotateAfterDisconnect != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRotateAfterDisconnect gets a reference to the given string and assigns it to the RotateAfterDisconnect field.
+func (o *UpdateItem) SetRotateAfterDisconnect(v string) {
+	o.RotateAfterDisconnect = &v
 }
 
 // GetSecureAccessAddHost returns the SecureAccessAddHost field value if set, zero value otherwise.
@@ -1271,6 +1346,9 @@ func (o UpdateItem) MarshalJSON() ([]byte, error) {
 	}
 	if o.RmTag != nil {
 		toSerialize["rm-tag"] = o.RmTag
+	}
+	if o.RotateAfterDisconnect != nil {
+		toSerialize["rotate-after-disconnect"] = o.RotateAfterDisconnect
 	}
 	if o.SecureAccessAddHost != nil {
 		toSerialize["secure-access-add-host"] = o.SecureAccessAddHost

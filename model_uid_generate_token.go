@@ -34,6 +34,8 @@ type UidGenerateToken struct {
 func NewUidGenerateToken(authMethodName string, ) *UidGenerateToken {
 	this := UidGenerateToken{}
 	this.AuthMethodName = authMethodName
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -42,6 +44,8 @@ func NewUidGenerateToken(authMethodName string, ) *UidGenerateToken {
 // but it doesn't guarantee that properties required by API are set
 func NewUidGenerateTokenWithDefaults() *UidGenerateToken {
 	this := UidGenerateToken{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

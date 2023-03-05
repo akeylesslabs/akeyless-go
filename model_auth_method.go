@@ -26,6 +26,7 @@ type AuthMethod struct {
 	AuthMethodRolesAssoc *[]AuthMethodRoleAssociation `json:"auth_method_roles_assoc,omitempty"`
 	ClientPermissions *[]string `json:"client_permissions,omitempty"`
 	CreationDate *time.Time `json:"creation_date,omitempty"`
+	IsApproved *bool `json:"is_approved,omitempty"`
 	ModificationDate *time.Time `json:"modification_date,omitempty"`
 }
 
@@ -302,6 +303,38 @@ func (o *AuthMethod) SetCreationDate(v time.Time) {
 	o.CreationDate = &v
 }
 
+// GetIsApproved returns the IsApproved field value if set, zero value otherwise.
+func (o *AuthMethod) GetIsApproved() bool {
+	if o == nil || o.IsApproved == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IsApproved
+}
+
+// GetIsApprovedOk returns a tuple with the IsApproved field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethod) GetIsApprovedOk() (*bool, bool) {
+	if o == nil || o.IsApproved == nil {
+		return nil, false
+	}
+	return o.IsApproved, true
+}
+
+// HasIsApproved returns a boolean if a field has been set.
+func (o *AuthMethod) HasIsApproved() bool {
+	if o != nil && o.IsApproved != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIsApproved gets a reference to the given bool and assigns it to the IsApproved field.
+func (o *AuthMethod) SetIsApproved(v bool) {
+	o.IsApproved = &v
+}
+
 // GetModificationDate returns the ModificationDate field value if set, zero value otherwise.
 func (o *AuthMethod) GetModificationDate() time.Time {
 	if o == nil || o.ModificationDate == nil {
@@ -359,6 +392,9 @@ func (o AuthMethod) MarshalJSON() ([]byte, error) {
 	}
 	if o.CreationDate != nil {
 		toSerialize["creation_date"] = o.CreationDate
+	}
+	if o.IsApproved != nil {
+		toSerialize["is_approved"] = o.IsApproved
 	}
 	if o.ModificationDate != nil {
 		toSerialize["modification_date"] = o.ModificationDate

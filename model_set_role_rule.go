@@ -42,6 +42,8 @@ type SetRoleRule struct {
 func NewSetRoleRule(capability []string, path string, roleName string, ) *SetRoleRule {
 	this := SetRoleRule{}
 	this.Capability = capability
+	var json bool = false
+	this.Json = &json
 	this.Path = path
 	this.RoleName = roleName
 	var ruleType string = "item-rule"
@@ -54,6 +56,8 @@ func NewSetRoleRule(capability []string, path string, roleName string, ) *SetRol
 // but it doesn't guarantee that properties required by API are set
 func NewSetRoleRuleWithDefaults() *SetRoleRule {
 	this := SetRoleRule{}
+	var json bool = false
+	this.Json = &json
 	var ruleType string = "item-rule"
 	this.RuleType = &ruleType
 	return &this

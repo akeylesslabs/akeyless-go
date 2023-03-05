@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **AuthMethodRolesAssoc** | Pointer to [**[]AuthMethodRoleAssociation**](AuthMethodRoleAssociation.md) |  | [optional] 
 **ClientPermissions** | Pointer to **[]string** |  | [optional] 
 **CreationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**IsApproved** | Pointer to **bool** |  | [optional] 
 **ModificationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 
 ## Methods
@@ -232,6 +233,31 @@ SetCreationDate sets CreationDate field to given value.
 `func (o *AuthMethod) HasCreationDate() bool`
 
 HasCreationDate returns a boolean if a field has been set.
+
+### GetIsApproved
+
+`func (o *AuthMethod) GetIsApproved() bool`
+
+GetIsApproved returns the IsApproved field if non-nil, zero value otherwise.
+
+### GetIsApprovedOk
+
+`func (o *AuthMethod) GetIsApprovedOk() (*bool, bool)`
+
+GetIsApprovedOk returns a tuple with the IsApproved field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsApproved
+
+`func (o *AuthMethod) SetIsApproved(v bool)`
+
+SetIsApproved sets IsApproved field to given value.
+
+### HasIsApproved
+
+`func (o *AuthMethod) HasIsApproved() bool`
+
+HasIsApproved returns a boolean if a field has been set.
 
 ### GetModificationDate
 

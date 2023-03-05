@@ -5,8 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DisplayId** | Pointer to **string** | The display id of the item | [optional] 
+**GatewayDetails** | Pointer to **bool** | Indicate if the item should return with clusters details (url, etc) | [optional] [default to false]
 **ItemId** | Pointer to **int64** | Item id of the item | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Item name | 
 **ShowVersions** | Pointer to **bool** | Include all item versions in reply | [optional] [default to false]
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -55,6 +56,31 @@ SetDisplayId sets DisplayId field to given value.
 `func (o *DescribeItem) HasDisplayId() bool`
 
 HasDisplayId returns a boolean if a field has been set.
+
+### GetGatewayDetails
+
+`func (o *DescribeItem) GetGatewayDetails() bool`
+
+GetGatewayDetails returns the GatewayDetails field if non-nil, zero value otherwise.
+
+### GetGatewayDetailsOk
+
+`func (o *DescribeItem) GetGatewayDetailsOk() (*bool, bool)`
+
+GetGatewayDetailsOk returns a tuple with the GatewayDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGatewayDetails
+
+`func (o *DescribeItem) SetGatewayDetails(v bool)`
+
+SetGatewayDetails sets GatewayDetails field to given value.
+
+### HasGatewayDetails
+
+`func (o *DescribeItem) HasGatewayDetails() bool`
+
+HasGatewayDetails returns a boolean if a field has been set.
 
 ### GetItemId
 

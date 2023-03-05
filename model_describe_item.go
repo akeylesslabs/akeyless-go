@@ -19,6 +19,8 @@ import (
 type DescribeItem struct {
 	// The display id of the item
 	DisplayId *string `json:"display-id,omitempty"`
+	// Indicate if the item should return with clusters details (url, etc)
+	GatewayDetails *bool `json:"gateway-details,omitempty"`
 	// Item id of the item
 	ItemId *int64 `json:"item-id,omitempty"`
 	// Set output format to JSON
@@ -39,6 +41,10 @@ type DescribeItem struct {
 // will change when the set of required properties is changed
 func NewDescribeItem(name string, ) *DescribeItem {
 	this := DescribeItem{}
+	var gatewayDetails bool = false
+	this.GatewayDetails = &gatewayDetails
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	var showVersions bool = false
 	this.ShowVersions = &showVersions
@@ -50,6 +56,10 @@ func NewDescribeItem(name string, ) *DescribeItem {
 // but it doesn't guarantee that properties required by API are set
 func NewDescribeItemWithDefaults() *DescribeItem {
 	this := DescribeItem{}
+	var gatewayDetails bool = false
+	this.GatewayDetails = &gatewayDetails
+	var json bool = false
+	this.Json = &json
 	var showVersions bool = false
 	this.ShowVersions = &showVersions
 	return &this
@@ -85,6 +95,38 @@ func (o *DescribeItem) HasDisplayId() bool {
 // SetDisplayId gets a reference to the given string and assigns it to the DisplayId field.
 func (o *DescribeItem) SetDisplayId(v string) {
 	o.DisplayId = &v
+}
+
+// GetGatewayDetails returns the GatewayDetails field value if set, zero value otherwise.
+func (o *DescribeItem) GetGatewayDetails() bool {
+	if o == nil || o.GatewayDetails == nil {
+		var ret bool
+		return ret
+	}
+	return *o.GatewayDetails
+}
+
+// GetGatewayDetailsOk returns a tuple with the GatewayDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DescribeItem) GetGatewayDetailsOk() (*bool, bool) {
+	if o == nil || o.GatewayDetails == nil {
+		return nil, false
+	}
+	return o.GatewayDetails, true
+}
+
+// HasGatewayDetails returns a boolean if a field has been set.
+func (o *DescribeItem) HasGatewayDetails() bool {
+	if o != nil && o.GatewayDetails != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGatewayDetails gets a reference to the given bool and assigns it to the GatewayDetails field.
+func (o *DescribeItem) SetGatewayDetails(v bool) {
+	o.GatewayDetails = &v
 }
 
 // GetItemId returns the ItemId field value if set, zero value otherwise.
@@ -275,6 +317,9 @@ func (o DescribeItem) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DisplayId != nil {
 		toSerialize["display-id"] = o.DisplayId
+	}
+	if o.GatewayDetails != nil {
+		toSerialize["gateway-details"] = o.GatewayDetails
 	}
 	if o.ItemId != nil {
 		toSerialize["item-id"] = o.ItemId

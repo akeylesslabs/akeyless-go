@@ -41,6 +41,8 @@ type UpdateCertificateValue struct {
 // will change when the set of required properties is changed
 func NewUpdateCertificateValue(name string, ) *UpdateCertificateValue {
 	this := UpdateCertificateValue{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -50,6 +52,8 @@ func NewUpdateCertificateValue(name string, ) *UpdateCertificateValue {
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateCertificateValueWithDefaults() *UpdateCertificateValue {
 	this := UpdateCertificateValue{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

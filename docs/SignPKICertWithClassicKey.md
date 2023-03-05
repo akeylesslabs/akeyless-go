@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Country** | Pointer to **string** | A comma-separated list of the country that will be set in the issued certificate | [optional] 
 **DisplayId** | **string** | The name of the key to use in the sign PKI Cert process | 
 **DnsNames** | Pointer to **string** | DNS Names to be included in the PKI certificate (in a comma-delimited list) | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeyUsage** | Pointer to **string** | key-usage | [optional] [default to "DigitalSignature,KeyAgreement,KeyEncipherment"]
 **Locality** | Pointer to **string** | A comma-separated list of the locality that will be set in the issued certificate | [optional] 
 **OrganizationalUnits** | Pointer to **string** | A comma-separated list of organizational units (OU) that will be set in the issued certificate | [optional] 
