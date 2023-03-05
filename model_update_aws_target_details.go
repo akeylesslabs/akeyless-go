@@ -17,10 +17,13 @@ import (
 
 // UpdateAWSTargetDetails struct for UpdateAWSTargetDetails
 type UpdateAWSTargetDetails struct {
+	// The aws secret access key
 	AccessKey *string `json:"access-key,omitempty"`
+	// The aws access key id
 	AccessKeyId *string `json:"access-key-id,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
+	// Whether to keep previous version [true/false]. If not set, use default according to account settings
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	// Target name
 	Name string `json:"name"`
@@ -28,7 +31,9 @@ type UpdateAWSTargetDetails struct {
 	NewVersion *bool `json:"new-version,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	ProtectionKey *string `json:"protection_key,omitempty"`
+	// The aws region
 	Region *string `json:"region,omitempty"`
+	// Required only for temporary security credentials retrieved via STS, otherwise it can be an empty string
 	SessionToken *string `json:"session-token,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
@@ -42,7 +47,11 @@ type UpdateAWSTargetDetails struct {
 // will change when the set of required properties is changed
 func NewUpdateAWSTargetDetails(name string, ) *UpdateAWSTargetDetails {
 	this := UpdateAWSTargetDetails{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
+	var region string = "us-east-2"
+	this.Region = &region
 	return &this
 }
 
@@ -51,6 +60,10 @@ func NewUpdateAWSTargetDetails(name string, ) *UpdateAWSTargetDetails {
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateAWSTargetDetailsWithDefaults() *UpdateAWSTargetDetails {
 	this := UpdateAWSTargetDetails{}
+	var json bool = false
+	this.Json = &json
+	var region string = "us-east-2"
+	this.Region = &region
 	return &this
 }
 

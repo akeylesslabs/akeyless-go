@@ -30,6 +30,7 @@ type Item struct {
 	DeleteProtection *bool `json:"delete_protection,omitempty"`
 	DeletionDate *time.Time `json:"deletion_date,omitempty"`
 	DisplayId *string `json:"display_id,omitempty"`
+	GatewayDetails *[]GatewayBasicInfo `json:"gateway_details,omitempty"`
 	IsAccessRequestEnabled *bool `json:"is_access_request_enabled,omitempty"`
 	IsEnabled *bool `json:"is_enabled,omitempty"`
 	ItemAccessibility *int64 `json:"item_accessibility,omitempty"`
@@ -46,6 +47,7 @@ type Item struct {
 	ItemType *string `json:"item_type,omitempty"`
 	ItemVersions *[]ItemVersion `json:"item_versions,omitempty"`
 	LastVersion *int32 `json:"last_version,omitempty"`
+	LinkedDetails *LinkedDetails `json:"linked_details,omitempty"`
 	ModificationDate *time.Time `json:"modification_date,omitempty"`
 	NextRotationDate *time.Time `json:"next_rotation_date,omitempty"`
 	ProtectionKeyName *string `json:"protection_key_name,omitempty"`
@@ -456,6 +458,38 @@ func (o *Item) HasDisplayId() bool {
 // SetDisplayId gets a reference to the given string and assigns it to the DisplayId field.
 func (o *Item) SetDisplayId(v string) {
 	o.DisplayId = &v
+}
+
+// GetGatewayDetails returns the GatewayDetails field value if set, zero value otherwise.
+func (o *Item) GetGatewayDetails() []GatewayBasicInfo {
+	if o == nil || o.GatewayDetails == nil {
+		var ret []GatewayBasicInfo
+		return ret
+	}
+	return *o.GatewayDetails
+}
+
+// GetGatewayDetailsOk returns a tuple with the GatewayDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Item) GetGatewayDetailsOk() (*[]GatewayBasicInfo, bool) {
+	if o == nil || o.GatewayDetails == nil {
+		return nil, false
+	}
+	return o.GatewayDetails, true
+}
+
+// HasGatewayDetails returns a boolean if a field has been set.
+func (o *Item) HasGatewayDetails() bool {
+	if o != nil && o.GatewayDetails != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGatewayDetails gets a reference to the given []GatewayBasicInfo and assigns it to the GatewayDetails field.
+func (o *Item) SetGatewayDetails(v []GatewayBasicInfo) {
+	o.GatewayDetails = &v
 }
 
 // GetIsAccessRequestEnabled returns the IsAccessRequestEnabled field value if set, zero value otherwise.
@@ -938,6 +972,38 @@ func (o *Item) SetLastVersion(v int32) {
 	o.LastVersion = &v
 }
 
+// GetLinkedDetails returns the LinkedDetails field value if set, zero value otherwise.
+func (o *Item) GetLinkedDetails() LinkedDetails {
+	if o == nil || o.LinkedDetails == nil {
+		var ret LinkedDetails
+		return ret
+	}
+	return *o.LinkedDetails
+}
+
+// GetLinkedDetailsOk returns a tuple with the LinkedDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Item) GetLinkedDetailsOk() (*LinkedDetails, bool) {
+	if o == nil || o.LinkedDetails == nil {
+		return nil, false
+	}
+	return o.LinkedDetails, true
+}
+
+// HasLinkedDetails returns a boolean if a field has been set.
+func (o *Item) HasLinkedDetails() bool {
+	if o != nil && o.LinkedDetails != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLinkedDetails gets a reference to the given LinkedDetails and assigns it to the LinkedDetails field.
+func (o *Item) SetLinkedDetails(v LinkedDetails) {
+	o.LinkedDetails = &v
+}
+
 // GetModificationDate returns the ModificationDate field value if set, zero value otherwise.
 func (o *Item) GetModificationDate() time.Time {
 	if o == nil || o.ModificationDate == nil {
@@ -1264,6 +1330,9 @@ func (o Item) MarshalJSON() ([]byte, error) {
 	if o.DisplayId != nil {
 		toSerialize["display_id"] = o.DisplayId
 	}
+	if o.GatewayDetails != nil {
+		toSerialize["gateway_details"] = o.GatewayDetails
+	}
 	if o.IsAccessRequestEnabled != nil {
 		toSerialize["is_access_request_enabled"] = o.IsAccessRequestEnabled
 	}
@@ -1308,6 +1377,9 @@ func (o Item) MarshalJSON() ([]byte, error) {
 	}
 	if o.LastVersion != nil {
 		toSerialize["last_version"] = o.LastVersion
+	}
+	if o.LinkedDetails != nil {
+		toSerialize["linked_details"] = o.LinkedDetails
 	}
 	if o.ModificationDate != nil {
 		toSerialize["modification_date"] = o.ModificationDate

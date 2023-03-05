@@ -20,6 +20,8 @@ type EmailPassAccessRules struct {
 	Alg *string `json:"alg,omitempty"`
 	// The Email value
 	Email *string `json:"email,omitempty"`
+	// EncEmailWithSharedKey is the email of this auth method, encrypted with the shared auth/uam key (for use in uam)
+	EncEmailWithSharedKey *string `json:"enc_email_with_shared_key,omitempty"`
 	// The password value
 	HashPass *string `json:"hash_pass,omitempty"`
 }
@@ -105,6 +107,38 @@ func (o *EmailPassAccessRules) SetEmail(v string) {
 	o.Email = &v
 }
 
+// GetEncEmailWithSharedKey returns the EncEmailWithSharedKey field value if set, zero value otherwise.
+func (o *EmailPassAccessRules) GetEncEmailWithSharedKey() string {
+	if o == nil || o.EncEmailWithSharedKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.EncEmailWithSharedKey
+}
+
+// GetEncEmailWithSharedKeyOk returns a tuple with the EncEmailWithSharedKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EmailPassAccessRules) GetEncEmailWithSharedKeyOk() (*string, bool) {
+	if o == nil || o.EncEmailWithSharedKey == nil {
+		return nil, false
+	}
+	return o.EncEmailWithSharedKey, true
+}
+
+// HasEncEmailWithSharedKey returns a boolean if a field has been set.
+func (o *EmailPassAccessRules) HasEncEmailWithSharedKey() bool {
+	if o != nil && o.EncEmailWithSharedKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEncEmailWithSharedKey gets a reference to the given string and assigns it to the EncEmailWithSharedKey field.
+func (o *EmailPassAccessRules) SetEncEmailWithSharedKey(v string) {
+	o.EncEmailWithSharedKey = &v
+}
+
 // GetHashPass returns the HashPass field value if set, zero value otherwise.
 func (o *EmailPassAccessRules) GetHashPass() string {
 	if o == nil || o.HashPass == nil {
@@ -144,6 +178,9 @@ func (o EmailPassAccessRules) MarshalJSON() ([]byte, error) {
 	}
 	if o.Email != nil {
 		toSerialize["email"] = o.Email
+	}
+	if o.EncEmailWithSharedKey != nil {
+		toSerialize["enc_email_with_shared_key"] = o.EncEmailWithSharedKey
 	}
 	if o.HashPass != nil {
 		toSerialize["hash_pass"] = o.HashPass

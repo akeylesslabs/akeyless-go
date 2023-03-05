@@ -37,6 +37,8 @@ type MoveObjects struct {
 // will change when the set of required properties is changed
 func NewMoveObjects(source string, target string, ) *MoveObjects {
 	this := MoveObjects{}
+	var json bool = false
+	this.Json = &json
 	var objectsType string = "item"
 	this.ObjectsType = &objectsType
 	this.Source = source
@@ -49,6 +51,8 @@ func NewMoveObjects(source string, target string, ) *MoveObjects {
 // but it doesn't guarantee that properties required by API are set
 func NewMoveObjectsWithDefaults() *MoveObjects {
 	this := MoveObjects{}
+	var json bool = false
+	this.Json = &json
 	var objectsType string = "item"
 	this.ObjectsType = &objectsType
 	return &this

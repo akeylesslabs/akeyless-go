@@ -48,6 +48,7 @@ Name | Type | Description | Notes
 **EksSecretAccessKey** | Pointer to **string** |  | [optional] 
 **GcpServiceAccountEmail** | Pointer to **string** | deprecated | [optional] 
 **GcpServiceAccountKey** | Pointer to **string** |  | [optional] 
+**GcpServiceAccountKeyBase64** | Pointer to **string** |  | [optional] 
 **GithubAppId** | Pointer to **int64** |  | [optional] 
 **GithubAppPrivateKey** | Pointer to **string** |  | [optional] 
 **GithubBaseUrl** | Pointer to **string** |  | [optional] 
@@ -57,6 +58,8 @@ Name | Type | Description | Notes
 **GkeServiceAccountKey** | Pointer to **string** |  | [optional] 
 **GkeServiceAccountName** | Pointer to **string** |  | [optional] 
 **Host** | Pointer to **string** |  | [optional] 
+**Hostname** | Pointer to **string** |  | [optional] 
+**Hosts** | Pointer to **map[string]string** |  | [optional] 
 **ImplementationType** | Pointer to **string** |  | [optional] 
 **K8sBearerToken** | Pointer to **string** |  | [optional] 
 **K8sClusterCaCertificate** | Pointer to **string** |  | [optional] 
@@ -1224,6 +1227,31 @@ SetGcpServiceAccountKey sets GcpServiceAccountKey field to given value.
 
 HasGcpServiceAccountKey returns a boolean if a field has been set.
 
+### GetGcpServiceAccountKeyBase64
+
+`func (o *TargetTypeDetailsInput) GetGcpServiceAccountKeyBase64() string`
+
+GetGcpServiceAccountKeyBase64 returns the GcpServiceAccountKeyBase64 field if non-nil, zero value otherwise.
+
+### GetGcpServiceAccountKeyBase64Ok
+
+`func (o *TargetTypeDetailsInput) GetGcpServiceAccountKeyBase64Ok() (*string, bool)`
+
+GetGcpServiceAccountKeyBase64Ok returns a tuple with the GcpServiceAccountKeyBase64 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpServiceAccountKeyBase64
+
+`func (o *TargetTypeDetailsInput) SetGcpServiceAccountKeyBase64(v string)`
+
+SetGcpServiceAccountKeyBase64 sets GcpServiceAccountKeyBase64 field to given value.
+
+### HasGcpServiceAccountKeyBase64
+
+`func (o *TargetTypeDetailsInput) HasGcpServiceAccountKeyBase64() bool`
+
+HasGcpServiceAccountKeyBase64 returns a boolean if a field has been set.
+
 ### GetGithubAppId
 
 `func (o *TargetTypeDetailsInput) GetGithubAppId() int64`
@@ -1448,6 +1476,56 @@ SetHost sets Host field to given value.
 `func (o *TargetTypeDetailsInput) HasHost() bool`
 
 HasHost returns a boolean if a field has been set.
+
+### GetHostname
+
+`func (o *TargetTypeDetailsInput) GetHostname() string`
+
+GetHostname returns the Hostname field if non-nil, zero value otherwise.
+
+### GetHostnameOk
+
+`func (o *TargetTypeDetailsInput) GetHostnameOk() (*string, bool)`
+
+GetHostnameOk returns a tuple with the Hostname field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHostname
+
+`func (o *TargetTypeDetailsInput) SetHostname(v string)`
+
+SetHostname sets Hostname field to given value.
+
+### HasHostname
+
+`func (o *TargetTypeDetailsInput) HasHostname() bool`
+
+HasHostname returns a boolean if a field has been set.
+
+### GetHosts
+
+`func (o *TargetTypeDetailsInput) GetHosts() map[string]string`
+
+GetHosts returns the Hosts field if non-nil, zero value otherwise.
+
+### GetHostsOk
+
+`func (o *TargetTypeDetailsInput) GetHostsOk() (*map[string]string, bool)`
+
+GetHostsOk returns a tuple with the Hosts field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHosts
+
+`func (o *TargetTypeDetailsInput) SetHosts(v map[string]string)`
+
+SetHosts sets Hosts field to given value.
+
+### HasHosts
+
+`func (o *TargetTypeDetailsInput) HasHosts() bool`
+
+HasHosts returns a boolean if a field has been set.
 
 ### GetImplementationType
 

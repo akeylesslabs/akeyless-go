@@ -101,6 +101,7 @@ type DSProducerDetails struct {
 	// GCPServiceAccountEmail overrides the deprecated field from the target
 	GcpServiceAccountEmail *string `json:"gcp_service_account_email,omitempty"`
 	GcpServiceAccountKey *string `json:"gcp_service_account_key,omitempty"`
+	GcpServiceAccountKeyBase64 *string `json:"gcp_service_account_key_base64,omitempty"`
 	GcpServiceAccountType *string `json:"gcp_service_account_type,omitempty"`
 	GcpTmpServiceAccountName *string `json:"gcp_tmp_service_account_name,omitempty"`
 	GcpTokenLifetime *string `json:"gcp_token_lifetime,omitempty"`
@@ -139,15 +140,13 @@ type DSProducerDetails struct {
 	K8sClusterEndpoint *string `json:"k8s_cluster_endpoint,omitempty"`
 	// when native k8s is in dynamic mode, user can define allowed namespaces, K8sServiceAccount doesn't exist from the start and will only be created at time of getting dynamic secret value By default dynamic mode is false and producer behaves like it did before
 	K8sDynamicMode *bool `json:"k8s_dynamic_mode,omitempty"`
+	// Yaml definition for creation of temporary objects. Field that can hold multiple docs from which following will be extracted: ServiceAccount, Role/ClusterRole and RoleBinding/ClusterRoleBinding. If ServiceAccount not specified - it will be generated automatically
+	K8sMultipleDocYamlTempDefinition *[]int32 `json:"k8s_multiple_doc_yaml_temp_definition,omitempty"`
 	K8sNamespace *string `json:"k8s_namespace,omitempty"`
 	// Name of the pre-existing Role or ClusterRole to bind a generated service account to.
 	K8sRoleName *string `json:"k8s_role_name,omitempty"`
 	K8sRoleType *string `json:"k8s_role_type,omitempty"`
 	K8sServiceAccount *string `json:"k8s_service_account,omitempty"`
-	// Yaml/Json definition of temporary role binding that will be created and deleted when TTL is due. Must have as subject name of Service Account specified in K8sServiceAccount field
-	K8sTempRoleBindingDefinition *[]int32 `json:"k8s_temp_role_binding_definition,omitempty"`
-	// Yaml/Json definition of temporary role that will be created and deleted when TTL is due
-	K8sTempRoleDefinition *[]int32 `json:"k8s_temp_role_definition,omitempty"`
 	LastAdminRotation *int64 `json:"last_admin_rotation,omitempty"`
 	LdapAudience *string `json:"ldap_audience,omitempty"`
 	LdapBindDn *string `json:"ldap_bind_dn,omitempty"`
@@ -178,6 +177,7 @@ type DSProducerDetails struct {
 	MssqlCreationStatements *string `json:"mssql_creation_statements,omitempty"`
 	MssqlRevocationStatements *string `json:"mssql_revocation_statements,omitempty"`
 	MysqlCreationStatements *string `json:"mysql_creation_statements,omitempty"`
+	MysqlRevocationStatements *string `json:"mysql_revocation_statements,omitempty"`
 	OracleCreationStatements *string `json:"oracle_creation_statements,omitempty"`
 	Password *string `json:"password,omitempty"`
 	PasswordLength *int64 `json:"password_length,omitempty"`
@@ -2785,6 +2785,38 @@ func (o *DSProducerDetails) SetGcpServiceAccountKey(v string) {
 	o.GcpServiceAccountKey = &v
 }
 
+// GetGcpServiceAccountKeyBase64 returns the GcpServiceAccountKeyBase64 field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGcpServiceAccountKeyBase64() string {
+	if o == nil || o.GcpServiceAccountKeyBase64 == nil {
+		var ret string
+		return ret
+	}
+	return *o.GcpServiceAccountKeyBase64
+}
+
+// GetGcpServiceAccountKeyBase64Ok returns a tuple with the GcpServiceAccountKeyBase64 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGcpServiceAccountKeyBase64Ok() (*string, bool) {
+	if o == nil || o.GcpServiceAccountKeyBase64 == nil {
+		return nil, false
+	}
+	return o.GcpServiceAccountKeyBase64, true
+}
+
+// HasGcpServiceAccountKeyBase64 returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGcpServiceAccountKeyBase64() bool {
+	if o != nil && o.GcpServiceAccountKeyBase64 != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpServiceAccountKeyBase64 gets a reference to the given string and assigns it to the GcpServiceAccountKeyBase64 field.
+func (o *DSProducerDetails) SetGcpServiceAccountKeyBase64(v string) {
+	o.GcpServiceAccountKeyBase64 = &v
+}
+
 // GetGcpServiceAccountType returns the GcpServiceAccountType field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetGcpServiceAccountType() string {
 	if o == nil || o.GcpServiceAccountType == nil {
@@ -3905,6 +3937,38 @@ func (o *DSProducerDetails) SetK8sDynamicMode(v bool) {
 	o.K8sDynamicMode = &v
 }
 
+// GetK8sMultipleDocYamlTempDefinition returns the K8sMultipleDocYamlTempDefinition field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetK8sMultipleDocYamlTempDefinition() []int32 {
+	if o == nil || o.K8sMultipleDocYamlTempDefinition == nil {
+		var ret []int32
+		return ret
+	}
+	return *o.K8sMultipleDocYamlTempDefinition
+}
+
+// GetK8sMultipleDocYamlTempDefinitionOk returns a tuple with the K8sMultipleDocYamlTempDefinition field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetK8sMultipleDocYamlTempDefinitionOk() (*[]int32, bool) {
+	if o == nil || o.K8sMultipleDocYamlTempDefinition == nil {
+		return nil, false
+	}
+	return o.K8sMultipleDocYamlTempDefinition, true
+}
+
+// HasK8sMultipleDocYamlTempDefinition returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasK8sMultipleDocYamlTempDefinition() bool {
+	if o != nil && o.K8sMultipleDocYamlTempDefinition != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sMultipleDocYamlTempDefinition gets a reference to the given []int32 and assigns it to the K8sMultipleDocYamlTempDefinition field.
+func (o *DSProducerDetails) SetK8sMultipleDocYamlTempDefinition(v []int32) {
+	o.K8sMultipleDocYamlTempDefinition = &v
+}
+
 // GetK8sNamespace returns the K8sNamespace field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetK8sNamespace() string {
 	if o == nil || o.K8sNamespace == nil {
@@ -4031,70 +4095,6 @@ func (o *DSProducerDetails) HasK8sServiceAccount() bool {
 // SetK8sServiceAccount gets a reference to the given string and assigns it to the K8sServiceAccount field.
 func (o *DSProducerDetails) SetK8sServiceAccount(v string) {
 	o.K8sServiceAccount = &v
-}
-
-// GetK8sTempRoleBindingDefinition returns the K8sTempRoleBindingDefinition field value if set, zero value otherwise.
-func (o *DSProducerDetails) GetK8sTempRoleBindingDefinition() []int32 {
-	if o == nil || o.K8sTempRoleBindingDefinition == nil {
-		var ret []int32
-		return ret
-	}
-	return *o.K8sTempRoleBindingDefinition
-}
-
-// GetK8sTempRoleBindingDefinitionOk returns a tuple with the K8sTempRoleBindingDefinition field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DSProducerDetails) GetK8sTempRoleBindingDefinitionOk() (*[]int32, bool) {
-	if o == nil || o.K8sTempRoleBindingDefinition == nil {
-		return nil, false
-	}
-	return o.K8sTempRoleBindingDefinition, true
-}
-
-// HasK8sTempRoleBindingDefinition returns a boolean if a field has been set.
-func (o *DSProducerDetails) HasK8sTempRoleBindingDefinition() bool {
-	if o != nil && o.K8sTempRoleBindingDefinition != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetK8sTempRoleBindingDefinition gets a reference to the given []int32 and assigns it to the K8sTempRoleBindingDefinition field.
-func (o *DSProducerDetails) SetK8sTempRoleBindingDefinition(v []int32) {
-	o.K8sTempRoleBindingDefinition = &v
-}
-
-// GetK8sTempRoleDefinition returns the K8sTempRoleDefinition field value if set, zero value otherwise.
-func (o *DSProducerDetails) GetK8sTempRoleDefinition() []int32 {
-	if o == nil || o.K8sTempRoleDefinition == nil {
-		var ret []int32
-		return ret
-	}
-	return *o.K8sTempRoleDefinition
-}
-
-// GetK8sTempRoleDefinitionOk returns a tuple with the K8sTempRoleDefinition field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DSProducerDetails) GetK8sTempRoleDefinitionOk() (*[]int32, bool) {
-	if o == nil || o.K8sTempRoleDefinition == nil {
-		return nil, false
-	}
-	return o.K8sTempRoleDefinition, true
-}
-
-// HasK8sTempRoleDefinition returns a boolean if a field has been set.
-func (o *DSProducerDetails) HasK8sTempRoleDefinition() bool {
-	if o != nil && o.K8sTempRoleDefinition != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetK8sTempRoleDefinition gets a reference to the given []int32 and assigns it to the K8sTempRoleDefinition field.
-func (o *DSProducerDetails) SetK8sTempRoleDefinition(v []int32) {
-	o.K8sTempRoleDefinition = &v
 }
 
 // GetLastAdminRotation returns the LastAdminRotation field value if set, zero value otherwise.
@@ -4927,6 +4927,38 @@ func (o *DSProducerDetails) HasMysqlCreationStatements() bool {
 // SetMysqlCreationStatements gets a reference to the given string and assigns it to the MysqlCreationStatements field.
 func (o *DSProducerDetails) SetMysqlCreationStatements(v string) {
 	o.MysqlCreationStatements = &v
+}
+
+// GetMysqlRevocationStatements returns the MysqlRevocationStatements field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetMysqlRevocationStatements() string {
+	if o == nil || o.MysqlRevocationStatements == nil {
+		var ret string
+		return ret
+	}
+	return *o.MysqlRevocationStatements
+}
+
+// GetMysqlRevocationStatementsOk returns a tuple with the MysqlRevocationStatements field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetMysqlRevocationStatementsOk() (*string, bool) {
+	if o == nil || o.MysqlRevocationStatements == nil {
+		return nil, false
+	}
+	return o.MysqlRevocationStatements, true
+}
+
+// HasMysqlRevocationStatements returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasMysqlRevocationStatements() bool {
+	if o != nil && o.MysqlRevocationStatements != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMysqlRevocationStatements gets a reference to the given string and assigns it to the MysqlRevocationStatements field.
+func (o *DSProducerDetails) SetMysqlRevocationStatements(v string) {
+	o.MysqlRevocationStatements = &v
 }
 
 // GetOracleCreationStatements returns the OracleCreationStatements field value if set, zero value otherwise.
@@ -6960,6 +6992,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	if o.GcpServiceAccountKey != nil {
 		toSerialize["gcp_service_account_key"] = o.GcpServiceAccountKey
 	}
+	if o.GcpServiceAccountKeyBase64 != nil {
+		toSerialize["gcp_service_account_key_base64"] = o.GcpServiceAccountKeyBase64
+	}
 	if o.GcpServiceAccountType != nil {
 		toSerialize["gcp_service_account_type"] = o.GcpServiceAccountType
 	}
@@ -7065,6 +7100,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	if o.K8sDynamicMode != nil {
 		toSerialize["k8s_dynamic_mode"] = o.K8sDynamicMode
 	}
+	if o.K8sMultipleDocYamlTempDefinition != nil {
+		toSerialize["k8s_multiple_doc_yaml_temp_definition"] = o.K8sMultipleDocYamlTempDefinition
+	}
 	if o.K8sNamespace != nil {
 		toSerialize["k8s_namespace"] = o.K8sNamespace
 	}
@@ -7076,12 +7114,6 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.K8sServiceAccount != nil {
 		toSerialize["k8s_service_account"] = o.K8sServiceAccount
-	}
-	if o.K8sTempRoleBindingDefinition != nil {
-		toSerialize["k8s_temp_role_binding_definition"] = o.K8sTempRoleBindingDefinition
-	}
-	if o.K8sTempRoleDefinition != nil {
-		toSerialize["k8s_temp_role_definition"] = o.K8sTempRoleDefinition
 	}
 	if o.LastAdminRotation != nil {
 		toSerialize["last_admin_rotation"] = o.LastAdminRotation
@@ -7160,6 +7192,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.MysqlCreationStatements != nil {
 		toSerialize["mysql_creation_statements"] = o.MysqlCreationStatements
+	}
+	if o.MysqlRevocationStatements != nil {
+		toSerialize["mysql_revocation_statements"] = o.MysqlRevocationStatements
 	}
 	if o.OracleCreationStatements != nil {
 		toSerialize["oracle_creation_statements"] = o.OracleCreationStatements

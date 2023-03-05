@@ -69,6 +69,7 @@ type TargetTypeDetailsInput struct {
 	// deprecated
 	GcpServiceAccountEmail *string `json:"gcp_service_account_email,omitempty"`
 	GcpServiceAccountKey *string `json:"gcp_service_account_key,omitempty"`
+	GcpServiceAccountKeyBase64 *string `json:"gcp_service_account_key_base64,omitempty"`
 	GithubAppId *int64 `json:"github_app_id,omitempty"`
 	GithubAppPrivateKey *string `json:"github_app_private_key,omitempty"`
 	GithubBaseUrl *string `json:"github_base_url,omitempty"`
@@ -78,6 +79,8 @@ type TargetTypeDetailsInput struct {
 	GkeServiceAccountKey *string `json:"gke_service_account_key,omitempty"`
 	GkeServiceAccountName *string `json:"gke_service_account_name,omitempty"`
 	Host *string `json:"host,omitempty"`
+	Hostname *string `json:"hostname,omitempty"`
+	Hosts *map[string]string `json:"hosts,omitempty"`
 	ImplementationType *string `json:"implementation_type,omitempty"`
 	K8sBearerToken *string `json:"k8s_bearer_token,omitempty"`
 	K8sClusterCaCertificate *string `json:"k8s_cluster_ca_certificate,omitempty"`
@@ -1557,6 +1560,38 @@ func (o *TargetTypeDetailsInput) SetGcpServiceAccountKey(v string) {
 	o.GcpServiceAccountKey = &v
 }
 
+// GetGcpServiceAccountKeyBase64 returns the GcpServiceAccountKeyBase64 field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetGcpServiceAccountKeyBase64() string {
+	if o == nil || o.GcpServiceAccountKeyBase64 == nil {
+		var ret string
+		return ret
+	}
+	return *o.GcpServiceAccountKeyBase64
+}
+
+// GetGcpServiceAccountKeyBase64Ok returns a tuple with the GcpServiceAccountKeyBase64 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetGcpServiceAccountKeyBase64Ok() (*string, bool) {
+	if o == nil || o.GcpServiceAccountKeyBase64 == nil {
+		return nil, false
+	}
+	return o.GcpServiceAccountKeyBase64, true
+}
+
+// HasGcpServiceAccountKeyBase64 returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasGcpServiceAccountKeyBase64() bool {
+	if o != nil && o.GcpServiceAccountKeyBase64 != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpServiceAccountKeyBase64 gets a reference to the given string and assigns it to the GcpServiceAccountKeyBase64 field.
+func (o *TargetTypeDetailsInput) SetGcpServiceAccountKeyBase64(v string) {
+	o.GcpServiceAccountKeyBase64 = &v
+}
+
 // GetGithubAppId returns the GithubAppId field value if set, zero value otherwise.
 func (o *TargetTypeDetailsInput) GetGithubAppId() int64 {
 	if o == nil || o.GithubAppId == nil {
@@ -1843,6 +1878,70 @@ func (o *TargetTypeDetailsInput) HasHost() bool {
 // SetHost gets a reference to the given string and assigns it to the Host field.
 func (o *TargetTypeDetailsInput) SetHost(v string) {
 	o.Host = &v
+}
+
+// GetHostname returns the Hostname field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetHostname() string {
+	if o == nil || o.Hostname == nil {
+		var ret string
+		return ret
+	}
+	return *o.Hostname
+}
+
+// GetHostnameOk returns a tuple with the Hostname field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetHostnameOk() (*string, bool) {
+	if o == nil || o.Hostname == nil {
+		return nil, false
+	}
+	return o.Hostname, true
+}
+
+// HasHostname returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasHostname() bool {
+	if o != nil && o.Hostname != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHostname gets a reference to the given string and assigns it to the Hostname field.
+func (o *TargetTypeDetailsInput) SetHostname(v string) {
+	o.Hostname = &v
+}
+
+// GetHosts returns the Hosts field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetHosts() map[string]string {
+	if o == nil || o.Hosts == nil {
+		var ret map[string]string
+		return ret
+	}
+	return *o.Hosts
+}
+
+// GetHostsOk returns a tuple with the Hosts field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetHostsOk() (*map[string]string, bool) {
+	if o == nil || o.Hosts == nil {
+		return nil, false
+	}
+	return o.Hosts, true
+}
+
+// HasHosts returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasHosts() bool {
+	if o != nil && o.Hosts != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHosts gets a reference to the given map[string]string and assigns it to the Hosts field.
+func (o *TargetTypeDetailsInput) SetHosts(v map[string]string) {
+	o.Hosts = &v
 }
 
 // GetImplementationType returns the ImplementationType field value if set, zero value otherwise.
@@ -3483,6 +3582,9 @@ func (o TargetTypeDetailsInput) MarshalJSON() ([]byte, error) {
 	if o.GcpServiceAccountKey != nil {
 		toSerialize["gcp_service_account_key"] = o.GcpServiceAccountKey
 	}
+	if o.GcpServiceAccountKeyBase64 != nil {
+		toSerialize["gcp_service_account_key_base64"] = o.GcpServiceAccountKeyBase64
+	}
 	if o.GithubAppId != nil {
 		toSerialize["github_app_id"] = o.GithubAppId
 	}
@@ -3509,6 +3611,12 @@ func (o TargetTypeDetailsInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.Host != nil {
 		toSerialize["host"] = o.Host
+	}
+	if o.Hostname != nil {
+		toSerialize["hostname"] = o.Hostname
+	}
+	if o.Hosts != nil {
+		toSerialize["hosts"] = o.Hosts
 	}
 	if o.ImplementationType != nil {
 		toSerialize["implementation_type"] = o.ImplementationType

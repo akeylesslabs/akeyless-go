@@ -19,7 +19,7 @@ import (
 type UploadPKCS12 struct {
 	// The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment)
 	CustomerFrgId *string `json:"customer-frg-id,omitempty"`
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
@@ -50,6 +50,8 @@ type UploadPKCS12 struct {
 func NewUploadPKCS12(in string, name string, passphrase string, ) *UploadPKCS12 {
 	this := UploadPKCS12{}
 	this.In = in
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	this.Passphrase = passphrase
 	var splitLevel int64 = 2
@@ -62,6 +64,8 @@ func NewUploadPKCS12(in string, name string, passphrase string, ) *UploadPKCS12 
 // but it doesn't guarantee that properties required by API are set
 func NewUploadPKCS12WithDefaults() *UploadPKCS12 {
 	this := UploadPKCS12{}
+	var json bool = false
+	this.Json = &json
 	var splitLevel int64 = 2
 	this.SplitLevel = &splitLevel
 	return &this

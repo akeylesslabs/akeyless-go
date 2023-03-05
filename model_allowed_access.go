@@ -21,6 +21,7 @@ type AllowedAccess struct {
 	AccessRulesType *string `json:"access_rules_type,omitempty"`
 	AllowedApi *bool `json:"allowed_api,omitempty"`
 	AllowedsLogin *bool `json:"alloweds_login,omitempty"`
+	Editable *bool `json:"editable,omitempty"`
 	ErrMsg *string `json:"err_msg,omitempty"`
 	Hash *string `json:"hash,omitempty"`
 	IsValid *bool `json:"is_valid,omitempty"`
@@ -171,6 +172,38 @@ func (o *AllowedAccess) HasAllowedsLogin() bool {
 // SetAllowedsLogin gets a reference to the given bool and assigns it to the AllowedsLogin field.
 func (o *AllowedAccess) SetAllowedsLogin(v bool) {
 	o.AllowedsLogin = &v
+}
+
+// GetEditable returns the Editable field value if set, zero value otherwise.
+func (o *AllowedAccess) GetEditable() bool {
+	if o == nil || o.Editable == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Editable
+}
+
+// GetEditableOk returns a tuple with the Editable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AllowedAccess) GetEditableOk() (*bool, bool) {
+	if o == nil || o.Editable == nil {
+		return nil, false
+	}
+	return o.Editable, true
+}
+
+// HasEditable returns a boolean if a field has been set.
+func (o *AllowedAccess) HasEditable() bool {
+	if o != nil && o.Editable != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEditable gets a reference to the given bool and assigns it to the Editable field.
+func (o *AllowedAccess) SetEditable(v bool) {
+	o.Editable = &v
 }
 
 // GetErrMsg returns the ErrMsg field value if set, zero value otherwise.
@@ -346,6 +379,9 @@ func (o AllowedAccess) MarshalJSON() ([]byte, error) {
 	}
 	if o.AllowedsLogin != nil {
 		toSerialize["alloweds_login"] = o.AllowedsLogin
+	}
+	if o.Editable != nil {
+		toSerialize["editable"] = o.Editable
 	}
 	if o.ErrMsg != nil {
 		toSerialize["err_msg"] = o.ErrMsg

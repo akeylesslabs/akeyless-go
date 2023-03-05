@@ -29,8 +29,10 @@ type CreateSalesforceTarget struct {
 	ClientId string `json:"client-id"`
 	// Client secret of the oauth2 app to use for connecting to Salesforce (required for password flow)
 	ClientSecret *string `json:"client-secret,omitempty"`
-	// Comment about the target
+	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`
+	// Description of the object
+	Description *string `json:"description,omitempty"`
 	// The email of the user attached to the oauth2 app used for connecting to Salesforce
 	Email string `json:"email"`
 	// Set output format to JSON
@@ -60,6 +62,8 @@ func NewCreateSalesforceTarget(authFlow string, clientId string, email string, n
 	this.AuthFlow = authFlow
 	this.ClientId = clientId
 	this.Email = email
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	this.TenantUrl = tenantUrl
 	return &this
@@ -70,6 +74,8 @@ func NewCreateSalesforceTarget(authFlow string, clientId string, email string, n
 // but it doesn't guarantee that properties required by API are set
 func NewCreateSalesforceTargetWithDefaults() *CreateSalesforceTarget {
 	this := CreateSalesforceTarget{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -279,6 +285,38 @@ func (o *CreateSalesforceTarget) HasComment() bool {
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *CreateSalesforceTarget) SetComment(v string) {
 	o.Comment = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *CreateSalesforceTarget) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSalesforceTarget) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *CreateSalesforceTarget) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *CreateSalesforceTarget) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetEmail returns the Email field value
@@ -567,6 +605,9 @@ func (o CreateSalesforceTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if true {
 		toSerialize["email"] = o.Email

@@ -43,6 +43,10 @@ func NewGetSSHCertificate(certIssuerName string, certUsername string, ) *GetSSHC
 	this := GetSSHCertificate{}
 	this.CertIssuerName = certIssuerName
 	this.CertUsername = certUsername
+	var json bool = false
+	this.Json = &json
+	var legacySigningAlgName bool = false
+	this.LegacySigningAlgName = &legacySigningAlgName
 	return &this
 }
 
@@ -51,6 +55,10 @@ func NewGetSSHCertificate(certIssuerName string, certUsername string, ) *GetSSHC
 // but it doesn't guarantee that properties required by API are set
 func NewGetSSHCertificateWithDefaults() *GetSSHCertificate {
 	this := GetSSHCertificate{}
+	var json bool = false
+	this.Json = &json
+	var legacySigningAlgName bool = false
+	this.LegacySigningAlgName = &legacySigningAlgName
 	return &this
 }
 

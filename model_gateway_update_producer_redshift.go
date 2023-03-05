@@ -19,7 +19,7 @@ import (
 type GatewayUpdateProducerRedshift struct {
 	// Redshift Creation statements
 	CreationStatements *string `json:"creation-statements,omitempty"`
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -39,11 +39,13 @@ type GatewayUpdateProducerRedshift struct {
 	RedshiftPort *string `json:"redshift-port,omitempty"`
 	// Redshift Username
 	RedshiftUsername *string `json:"redshift-username,omitempty"`
+	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Target DB servers for connections
 	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
-	// SSL connection mode
+	// Enable/Disable SSL [true/false]
 	Ssl *bool `json:"ssl,omitempty"`
-	// List of the tags attached to this secret
+	// Add tags attached to this object
 	Tags *[]string `json:"tags,omitempty"`
 	// Target name
 	TargetName *string `json:"target-name,omitempty"`
@@ -61,11 +63,15 @@ type GatewayUpdateProducerRedshift struct {
 // will change when the set of required properties is changed
 func NewGatewayUpdateProducerRedshift(name string, ) *GatewayUpdateProducerRedshift {
 	this := GatewayUpdateProducerRedshift{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	var redshiftHost string = "127.0.0.1"
 	this.RedshiftHost = &redshiftHost
 	var redshiftPort string = "5439"
 	this.RedshiftPort = &redshiftPort
+	var ssl bool = false
+	this.Ssl = &ssl
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
@@ -76,10 +82,14 @@ func NewGatewayUpdateProducerRedshift(name string, ) *GatewayUpdateProducerRedsh
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayUpdateProducerRedshiftWithDefaults() *GatewayUpdateProducerRedshift {
 	this := GatewayUpdateProducerRedshift{}
+	var json bool = false
+	this.Json = &json
 	var redshiftHost string = "127.0.0.1"
 	this.RedshiftHost = &redshiftHost
 	var redshiftPort string = "5439"
 	this.RedshiftPort = &redshiftPort
+	var ssl bool = false
+	this.Ssl = &ssl
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
