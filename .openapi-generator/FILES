@@ -13,6 +13,7 @@ docs/AccountGeneralSettings.md
 docs/AccountObjectVersionSettingsOutput.md
 docs/ActiveDirectoryMigration.md
 docs/ActiveDirectoryPayload.md
+docs/AddGatewayAllowedAccessId.md
 docs/AdminsConfigPart.md
 docs/AkeylessGatewayConfig.md
 docs/AllowedAccess.md
@@ -90,6 +91,8 @@ docs/CreateDockerhubTargetOutput.md
 docs/CreateDynamicSecret.md
 docs/CreateEKSTarget.md
 docs/CreateEKSTargetOutput.md
+docs/CreateESM.md
+docs/CreateESMOutput.md
 docs/CreateEventForwarder.md
 docs/CreateEventForwarderOutput.md
 docs/CreateGKETarget.md
@@ -102,6 +105,8 @@ docs/CreateKey.md
 docs/CreateKeyOutput.md
 docs/CreateLdapTarget.md
 docs/CreateLdapTargetOutput.md
+docs/CreateLinkedTarget.md
+docs/CreateLinkedTargetOutput.md
 docs/CreateNativeK8STarget.md
 docs/CreateNativeK8STargetOutput.md
 docs/CreatePKICertIssuer.md
@@ -127,6 +132,8 @@ docs/CreateTokenizer.md
 docs/CreateTokenizerOutput.md
 docs/CreateWebTarget.md
 docs/CreateWebTargetOutput.md
+docs/CreateWindowsTarget.md
+docs/CreateWindowsTargetOutput.md
 docs/CustomerFragment.md
 docs/CustomerFragmentsJson.md
 docs/CustomerFullAddress.md
@@ -149,6 +156,7 @@ docs/DeleteAuthMethodOutput.md
 docs/DeleteAuthMethods.md
 docs/DeleteAuthMethodsOutput.md
 docs/DeleteEventForwarder.md
+docs/DeleteGatewayAllowedAccessId.md
 docs/DeleteItem.md
 docs/DeleteItemOutput.md
 docs/DeleteItems.md
@@ -161,6 +169,7 @@ docs/DeleteRoles.md
 docs/DeleteTarget.md
 docs/DeleteTargetAssociation.md
 docs/DeleteTargets.md
+docs/DescribeAssoc.md
 docs/DescribeItem.md
 docs/DescribePermissions.md
 docs/DescribePermissionsOutput.md
@@ -181,6 +190,15 @@ docs/EncryptGPGOutput.md
 docs/EncryptOutput.md
 docs/EncryptWithClassicKey.md
 docs/EncryptWithClassicKeyOutput.md
+docs/EsmCreate.md
+docs/EsmCreateSecretOutput.md
+docs/EsmDelete.md
+docs/EsmGet.md
+docs/EsmGetSecretOutput.md
+docs/EsmList.md
+docs/EsmListSecretsOutput.md
+docs/EsmUpdate.md
+docs/EsmUpdateSecretOutput.md
 docs/ExportClassicKey.md
 docs/ExportClassicKeyOutput.md
 docs/Extension.md
@@ -188,6 +206,7 @@ docs/ExternalKMSKeyId.md
 docs/GCPAccessRules.md
 docs/GCPPayload.md
 docs/GCPSecretsMigration.md
+docs/GatewayBasicInfo.md
 docs/GatewayCreateK8SAuthConfig.md
 docs/GatewayCreateK8SAuthConfigOutput.md
 docs/GatewayCreateMigration.md
@@ -237,6 +256,8 @@ docs/GatewayCreateProducerRabbitMQ.md
 docs/GatewayCreateProducerRabbitMQOutput.md
 docs/GatewayCreateProducerRdp.md
 docs/GatewayCreateProducerRdpOutput.md
+docs/GatewayCreateProducerRedis.md
+docs/GatewayCreateProducerRedisOutput.md
 docs/GatewayCreateProducerRedshift.md
 docs/GatewayCreateProducerRedshiftOutput.md
 docs/GatewayCreateProducerSnowflake.md
@@ -247,6 +268,8 @@ docs/GatewayDeleteK8SAuthConfigOutput.md
 docs/GatewayDeleteMigration.md
 docs/GatewayDeleteProducer.md
 docs/GatewayDeleteProducerOutput.md
+docs/GatewayDownloadCustomerFragments.md
+docs/GatewayDownloadCustomerFragmentsOutput.md
 docs/GatewayGetConfig.md
 docs/GatewayGetK8SAuthConfig.md
 docs/GatewayGetK8SAuthConfigOutput.md
@@ -327,6 +350,8 @@ docs/GatewayUpdateProducerRabbitMQ.md
 docs/GatewayUpdateProducerRabbitMQOutput.md
 docs/GatewayUpdateProducerRdp.md
 docs/GatewayUpdateProducerRdpOutput.md
+docs/GatewayUpdateProducerRedis.md
+docs/GatewayUpdateProducerRedisOutput.md
 docs/GatewayUpdateProducerRedshift.md
 docs/GatewayUpdateProducerRedshiftOutput.md
 docs/GatewayUpdateProducerSnowflake.md
@@ -366,6 +391,9 @@ docs/GwClusterIdentity.md
 docs/HashiMigration.md
 docs/HashiPayload.md
 docs/HuaweiAccessRules.md
+docs/ImportPasswords.md
+docs/ImportPasswordsOutput.md
+docs/ImporterInfo.md
 docs/Item.md
 docs/ItemGeneralInfo.md
 docs/ItemTargetAssociation.md
@@ -408,6 +436,7 @@ docs/LastConfigChange.md
 docs/LastStatusInfo.md
 docs/LdapConfigPart.md
 docs/LeadershipConfigPart.md
+docs/LinkedDetails.md
 docs/ListAuthMethods.md
 docs/ListAuthMethodsOutput.md
 docs/ListGateways.md
@@ -457,6 +486,7 @@ docs/ReverseRBACClient.md
 docs/ReverseRBACOutput.md
 docs/RevokeCreds.md
 docs/Role.md
+docs/RoleAssociationDetails.md
 docs/RoleAuthMethodAssociation.md
 docs/RollbackSecret.md
 docs/RollbackSecretOutput.md
@@ -472,10 +502,12 @@ docs/Rules.md
 docs/SAMLAccessRules.md
 docs/SAMLAttribute.md
 docs/SSHCertificateIssueDetails.md
+docs/SecretInfo.md
 docs/SecureRemoteAccess.md
 docs/SetItemState.md
 docs/SetRoleRule.md
 docs/ShareItem.md
+docs/SharingPolicyInfo.md
 docs/SignGPG.md
 docs/SignGPGOutput.md
 docs/SignJWTOutput.md
@@ -559,6 +591,7 @@ docs/UpdateItemOutput.md
 docs/UpdateLdapTarget.md
 docs/UpdateLdapTargetDetails.md
 docs/UpdateLdapTargetOutput.md
+docs/UpdateLinkedTarget.md
 docs/UpdateNativeK8STarget.md
 docs/UpdateNativeK8STargetOutput.md
 docs/UpdateOutput.md
@@ -590,6 +623,7 @@ docs/UpdateTargetOutput.md
 docs/UpdateWebTarget.md
 docs/UpdateWebTargetDetails.md
 docs/UpdateWebTargetOutput.md
+docs/UpdateWindowsTarget.md
 docs/UploadPKCS12.md
 docs/UploadRSA.md
 docs/V2Api.md
@@ -609,6 +643,7 @@ model_account_general_settings.go
 model_account_object_version_settings_output.go
 model_active_directory_migration.go
 model_active_directory_payload.go
+model_add_gateway_allowed_access_id.go
 model_admins_config_part.go
 model_akeyless_gateway_config.go
 model_allowed_access.go
@@ -690,6 +725,8 @@ model_create_dockerhub_target_output.go
 model_create_dynamic_secret.go
 model_create_eks_target.go
 model_create_eks_target_output.go
+model_create_esm.go
+model_create_esm_output.go
 model_create_event_forwarder.go
 model_create_event_forwarder_output.go
 model_create_gcp_target.go
@@ -702,6 +739,8 @@ model_create_key.go
 model_create_key_output.go
 model_create_ldap_target.go
 model_create_ldap_target_output.go
+model_create_linked_target.go
+model_create_linked_target_output.go
 model_create_native_k8_s_target.go
 model_create_native_k8_s_target_output.go
 model_create_ping_target.go
@@ -727,6 +766,8 @@ model_create_tokenizer.go
 model_create_tokenizer_output.go
 model_create_web_target.go
 model_create_web_target_output.go
+model_create_windows_target.go
+model_create_windows_target_output.go
 model_customer_fragment.go
 model_customer_fragments_json.go
 model_customer_full_address.go
@@ -748,6 +789,7 @@ model_delete_auth_method_output.go
 model_delete_auth_methods.go
 model_delete_auth_methods_output.go
 model_delete_event_forwarder.go
+model_delete_gateway_allowed_access_id.go
 model_delete_item.go
 model_delete_item_output.go
 model_delete_items.go
@@ -760,6 +802,7 @@ model_delete_roles.go
 model_delete_target.go
 model_delete_target_association.go
 model_delete_targets.go
+model_describe_assoc.go
 model_describe_item.go
 model_describe_permissions.go
 model_describe_permissions_output.go
@@ -781,10 +824,20 @@ model_encrypt_gpg_output.go
 model_encrypt_output.go
 model_encrypt_with_classic_key.go
 model_encrypt_with_classic_key_output.go
+model_esm_create.go
+model_esm_create_secret_output.go
+model_esm_delete.go
+model_esm_get.go
+model_esm_get_secret_output.go
+model_esm_list.go
+model_esm_list_secrets_output.go
+model_esm_update.go
+model_esm_update_secret_output.go
 model_export_classic_key.go
 model_export_classic_key_output.go
 model_extension.go
 model_external_kms_key_id.go
+model_gateway_basic_info.go
 model_gateway_create_k8_s_auth_config.go
 model_gateway_create_k8_s_auth_config_output.go
 model_gateway_create_migration.go
@@ -834,6 +887,8 @@ model_gateway_create_producer_rabbit_mq.go
 model_gateway_create_producer_rabbit_mq_output.go
 model_gateway_create_producer_rdp.go
 model_gateway_create_producer_rdp_output.go
+model_gateway_create_producer_redis.go
+model_gateway_create_producer_redis_output.go
 model_gateway_create_producer_redshift.go
 model_gateway_create_producer_redshift_output.go
 model_gateway_create_producer_snowflake.go
@@ -844,6 +899,8 @@ model_gateway_delete_k8_s_auth_config_output.go
 model_gateway_delete_migration.go
 model_gateway_delete_producer.go
 model_gateway_delete_producer_output.go
+model_gateway_download_customer_fragments.go
+model_gateway_download_customer_fragments_output.go
 model_gateway_get_config.go
 model_gateway_get_k8_s_auth_config.go
 model_gateway_get_k8_s_auth_config_output.go
@@ -924,6 +981,8 @@ model_gateway_update_producer_rabbit_mq.go
 model_gateway_update_producer_rabbit_mq_output.go
 model_gateway_update_producer_rdp.go
 model_gateway_update_producer_rdp_output.go
+model_gateway_update_producer_redis.go
+model_gateway_update_producer_redis_output.go
 model_gateway_update_producer_redshift.go
 model_gateway_update_producer_redshift_output.go
 model_gateway_update_producer_snowflake.go
@@ -966,6 +1025,9 @@ model_gw_cluster_identity.go
 model_hashi_migration.go
 model_hashi_payload.go
 model_huawei_access_rules.go
+model_import_passwords.go
+model_import_passwords_output.go
+model_importer_info.go
 model_item.go
 model_item_general_info.go
 model_item_target_association.go
@@ -1008,6 +1070,7 @@ model_last_status_info.go
 model_ldap_access_rules.go
 model_ldap_config_part.go
 model_leadership_config_part.go
+model_linked_details.go
 model_list_auth_methods.go
 model_list_auth_methods_output.go
 model_list_gateways.go
@@ -1057,6 +1120,7 @@ model_reverse_rbac_client.go
 model_reverse_rbac_output.go
 model_revoke_creds.go
 model_role.go
+model_role_association_details.go
 model_role_auth_method_association.go
 model_rollback_secret.go
 model_rollback_secret_output.go
@@ -1071,10 +1135,12 @@ model_rule_assigner.go
 model_rules.go
 model_saml_access_rules.go
 model_saml_attribute.go
+model_secret_info.go
 model_secure_remote_access.go
 model_set_item_state.go
 model_set_role_rule.go
 model_share_item.go
+model_sharing_policy_info.go
 model_sign_gpg.go
 model_sign_gpg_output.go
 model_sign_jwt_output.go
@@ -1159,6 +1225,7 @@ model_update_item_output.go
 model_update_ldap_target.go
 model_update_ldap_target_details.go
 model_update_ldap_target_output.go
+model_update_linked_target.go
 model_update_native_k8_s_target.go
 model_update_native_k8_s_target_output.go
 model_update_output.go
@@ -1190,6 +1257,7 @@ model_update_target_output.go
 model_update_web_target.go
 model_update_web_target_details.go
 model_update_web_target_output.go
+model_update_windows_target.go
 model_upload_pkcs12.go
 model_upload_rsa.go
 model_validate_token.go

@@ -33,6 +33,8 @@ type UidListChildren struct {
 // will change when the set of required properties is changed
 func NewUidListChildren() *UidListChildren {
 	this := UidListChildren{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -41,6 +43,8 @@ func NewUidListChildren() *UidListChildren {
 // but it doesn't guarantee that properties required by API are set
 func NewUidListChildrenWithDefaults() *UidListChildren {
 	this := UidListChildren{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

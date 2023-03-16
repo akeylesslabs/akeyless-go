@@ -38,6 +38,8 @@ type EncryptWithClassicKey struct {
 func NewEncryptWithClassicKey(displayId string, plaintext string, version int32, ) *EncryptWithClassicKey {
 	this := EncryptWithClassicKey{}
 	this.DisplayId = displayId
+	var json bool = false
+	this.Json = &json
 	this.Plaintext = plaintext
 	this.Version = version
 	return &this
@@ -48,6 +50,8 @@ func NewEncryptWithClassicKey(displayId string, plaintext string, version int32,
 // but it doesn't guarantee that properties required by API are set
 func NewEncryptWithClassicKeyWithDefaults() *EncryptWithClassicKey {
 	this := EncryptWithClassicKey{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

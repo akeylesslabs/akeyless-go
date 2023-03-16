@@ -31,7 +31,7 @@ type CreatePKICertIssuer struct {
 	CodeSigningFlag *bool `json:"code-signing-flag,omitempty"`
 	// A comma-separated list of countries that will be set in the issued certificate
 	Country *string `json:"country,omitempty"`
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
@@ -79,6 +79,8 @@ type CreatePKICertIssuer struct {
 // will change when the set of required properties is changed
 func NewCreatePKICertIssuer(name string, signerKeyName string, ttl int64, ) *CreatePKICertIssuer {
 	this := CreatePKICertIssuer{}
+	var json bool = false
+	this.Json = &json
 	var keyUsage string = "DigitalSignature,KeyAgreement,KeyEncipherment"
 	this.KeyUsage = &keyUsage
 	this.Name = name
@@ -92,6 +94,8 @@ func NewCreatePKICertIssuer(name string, signerKeyName string, ttl int64, ) *Cre
 // but it doesn't guarantee that properties required by API are set
 func NewCreatePKICertIssuerWithDefaults() *CreatePKICertIssuer {
 	this := CreatePKICertIssuer{}
+	var json bool = false
+	this.Json = &json
 	var keyUsage string = "DigitalSignature,KeyAgreement,KeyEncipherment"
 	this.KeyUsage = &keyUsage
 	return &this

@@ -31,6 +31,8 @@ type GatewayListMigration struct {
 // will change when the set of required properties is changed
 func NewGatewayListMigration() *GatewayListMigration {
 	this := GatewayListMigration{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -39,6 +41,8 @@ func NewGatewayListMigration() *GatewayListMigration {
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayListMigrationWithDefaults() *GatewayListMigration {
 	this := GatewayListMigration{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AllowedCors** | Pointer to **[]string** | a list of allowed cors domains if used for browser authentication | [optional] 
 **BoundCommonNames** | Pointer to **[]string** | A list of names. At least one must exist in the Common Name. Supports globbing. | [optional] 
 **BoundDnsSans** | Pointer to **[]string** | A list of DNS names. At least one must exist in the SANs. Supports globbing. | [optional] 
 **BoundEmailSans** | Pointer to **[]string** | A list of Email Addresses. At least one must exist in the SANs. Supports globbing. | [optional] 
@@ -32,6 +33,31 @@ will change when the set of required properties is changed
 NewCertAccessRulesWithDefaults instantiates a new CertAccessRules object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAllowedCors
+
+`func (o *CertAccessRules) GetAllowedCors() []string`
+
+GetAllowedCors returns the AllowedCors field if non-nil, zero value otherwise.
+
+### GetAllowedCorsOk
+
+`func (o *CertAccessRules) GetAllowedCorsOk() (*[]string, bool)`
+
+GetAllowedCorsOk returns a tuple with the AllowedCors field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowedCors
+
+`func (o *CertAccessRules) SetAllowedCors(v []string)`
+
+SetAllowedCors sets AllowedCors field to given value.
+
+### HasAllowedCors
+
+`func (o *CertAccessRules) HasAllowedCors() bool`
+
+HasAllowedCors returns a boolean if a field has been set.
 
 ### GetBoundCommonNames
 

@@ -35,6 +35,8 @@ type RollbackSecret struct {
 // will change when the set of required properties is changed
 func NewRollbackSecret(name string, oldVersion int32, ) *RollbackSecret {
 	this := RollbackSecret{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	this.OldVersion = oldVersion
 	return &this
@@ -45,6 +47,8 @@ func NewRollbackSecret(name string, oldVersion int32, ) *RollbackSecret {
 // but it doesn't guarantee that properties required by API are set
 func NewRollbackSecretWithDefaults() *RollbackSecret {
 	this := RollbackSecret{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

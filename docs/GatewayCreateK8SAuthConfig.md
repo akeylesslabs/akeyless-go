@@ -7,11 +7,11 @@ Name | Type | Description | Notes
 **AccessId** | **string** | The access ID of the Kubernetes auth method | 
 **ClusterApiType** | Pointer to **string** | Cluster access type. options: [native_k8s, rancher] | [optional] [default to "native_k8s"]
 **ConfigEncryptionKeyName** | Pointer to **string** | Config encryption key | [optional] 
-**DisableIssuerValidation** | Pointer to **string** | Disable issuer validation | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**DisableIssuerValidation** | Pointer to **string** | Disable issuer validation [true/false] | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **K8sCaCert** | Pointer to **string** | The CA Certificate (base64 encoded) to use to call into the kubernetes API server | [optional] 
 **K8sHost** | **string** | The URL of the kubernetes API server | 
-**K8sIssuer** | Pointer to **string** | The Kubernetes JWT issuer name. If not set, kubernetes/serviceaccount will use as an issuer. | [optional] 
+**K8sIssuer** | Pointer to **string** | The Kubernetes JWT issuer name. K8SIssuer is the claim that specifies who issued the Kubernetes token | [optional] [default to "kubernetes/serviceaccount"]
 **Name** | **string** | K8S Auth config name | 
 **RancherApiKey** | Pointer to **string** | The api key used to access the TokenReview API to validate other JWTs (relevant for \&quot;rancher\&quot; only) | [optional] 
 **RancherClusterId** | Pointer to **string** | The cluster id as define in rancher (relevant for \&quot;rancher\&quot; only) | [optional] 

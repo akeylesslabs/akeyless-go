@@ -17,7 +17,7 @@ import (
 
 // ExportClassicKey ExportClassicKey is a command that returns the classic key material
 type ExportClassicKey struct {
-	// Ignore Cache Retrieve the Secret value without checking the Gateway's cache. This flag is only relevant when using the RestAPI
+	// Retrieve the Secret value without checking the Gateway's cache [true/false]. This flag is only relevant when using the RestAPI
 	IgnoreCache *string `json:"ignore-cache,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -39,6 +39,8 @@ func NewExportClassicKey(name string, ) *ExportClassicKey {
 	this := ExportClassicKey{}
 	var ignoreCache string = "false"
 	this.IgnoreCache = &ignoreCache
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -50,6 +52,8 @@ func NewExportClassicKeyWithDefaults() *ExportClassicKey {
 	this := ExportClassicKey{}
 	var ignoreCache string = "false"
 	this.IgnoreCache = &ignoreCache
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

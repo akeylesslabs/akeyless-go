@@ -29,6 +29,10 @@ type Update struct {
 // will change when the set of required properties is changed
 func NewUpdate() *Update {
 	this := Update{}
+	var json bool = false
+	this.Json = &json
+	var version string = "latest"
+	this.Version = &version
 	return &this
 }
 
@@ -37,6 +41,10 @@ func NewUpdate() *Update {
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateWithDefaults() *Update {
 	this := Update{}
+	var json bool = false
+	this.Json = &json
+	var version string = "latest"
+	this.Version = &version
 	return &this
 }
 
