@@ -17,15 +17,17 @@ import (
 
 // UpdateCertificateValue struct for UpdateCertificateValue
 type UpdateCertificateValue struct {
-	// Content of the certificate PEM in a Base64 format.
+	// Content of the certificate in a Base64 format.
 	CertificateData *string `json:"certificate-data,omitempty"`
 	// How many days before the expiration of the certificate would you like to be notified.
 	ExpirationEventIn *[]string `json:"expiration-event-in,omitempty"`
+	// CertificateFormat of the certificate and private key, possible values: cer,crt,pem,pfx,p12. Required when passing inline certificate content with --certificate-data or --key-data, otherwise format is derived from the file extension.
+	Format *string `json:"format,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// The name of a key to use to encrypt the certificate's key (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
-	// Content of the certificate's private key PEM in a Base64 format.
+	// Content of the certificate's private key in a Base64 format.
 	KeyData *string `json:"key-data,omitempty"`
 	// Certificate name
 	Name string `json:"name"`
@@ -41,6 +43,8 @@ type UpdateCertificateValue struct {
 // will change when the set of required properties is changed
 func NewUpdateCertificateValue(name string, ) *UpdateCertificateValue {
 	this := UpdateCertificateValue{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -50,6 +54,8 @@ func NewUpdateCertificateValue(name string, ) *UpdateCertificateValue {
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateCertificateValueWithDefaults() *UpdateCertificateValue {
 	this := UpdateCertificateValue{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -115,6 +121,38 @@ func (o *UpdateCertificateValue) HasExpirationEventIn() bool {
 // SetExpirationEventIn gets a reference to the given []string and assigns it to the ExpirationEventIn field.
 func (o *UpdateCertificateValue) SetExpirationEventIn(v []string) {
 	o.ExpirationEventIn = &v
+}
+
+// GetFormat returns the Format field value if set, zero value otherwise.
+func (o *UpdateCertificateValue) GetFormat() string {
+	if o == nil || o.Format == nil {
+		var ret string
+		return ret
+	}
+	return *o.Format
+}
+
+// GetFormatOk returns a tuple with the Format field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateCertificateValue) GetFormatOk() (*string, bool) {
+	if o == nil || o.Format == nil {
+		return nil, false
+	}
+	return o.Format, true
+}
+
+// HasFormat returns a boolean if a field has been set.
+func (o *UpdateCertificateValue) HasFormat() bool {
+	if o != nil && o.Format != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFormat gets a reference to the given string and assigns it to the Format field.
+func (o *UpdateCertificateValue) SetFormat(v string) {
+	o.Format = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -308,6 +346,9 @@ func (o UpdateCertificateValue) MarshalJSON() ([]byte, error) {
 	}
 	if o.ExpirationEventIn != nil {
 		toSerialize["expiration-event-in"] = o.ExpirationEventIn
+	}
+	if o.Format != nil {
+		toSerialize["format"] = o.Format
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json

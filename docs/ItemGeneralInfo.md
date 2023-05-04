@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **ClusterGwUrl** | Pointer to **string** |  | [optional] 
 **DisplayMetadata** | Pointer to **string** |  | [optional] 
 **DynamicSecretProducerDetails** | Pointer to [**DynamicSecretProducerInfo**](DynamicSecretProducerInfo.md) |  | [optional] 
+**ImporterInfo** | Pointer to [**ImporterInfo**](ImporterInfo.md) |  | [optional] 
 **PasswordPolicy** | Pointer to [**PasswordPolicyInfo**](PasswordPolicyInfo.md) |  | [optional] 
 **RotatedSecretDetails** | Pointer to [**RotatedSecretDetailsInfo**](RotatedSecretDetailsInfo.md) |  | [optional] 
 **SecureRemoteAccessDetails** | Pointer to [**SecureRemoteAccess**](SecureRemoteAccess.md) |  | [optional] 
@@ -184,6 +185,31 @@ SetDynamicSecretProducerDetails sets DynamicSecretProducerDetails field to given
 `func (o *ItemGeneralInfo) HasDynamicSecretProducerDetails() bool`
 
 HasDynamicSecretProducerDetails returns a boolean if a field has been set.
+
+### GetImporterInfo
+
+`func (o *ItemGeneralInfo) GetImporterInfo() ImporterInfo`
+
+GetImporterInfo returns the ImporterInfo field if non-nil, zero value otherwise.
+
+### GetImporterInfoOk
+
+`func (o *ItemGeneralInfo) GetImporterInfoOk() (*ImporterInfo, bool)`
+
+GetImporterInfoOk returns a tuple with the ImporterInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetImporterInfo
+
+`func (o *ItemGeneralInfo) SetImporterInfo(v ImporterInfo)`
+
+SetImporterInfo sets ImporterInfo field to given value.
+
+### HasImporterInfo
+
+`func (o *ItemGeneralInfo) HasImporterInfo() bool`
+
+HasImporterInfo returns a boolean if a field has been set.
 
 ### GetPasswordPolicy
 

@@ -17,20 +17,27 @@ import (
 
 // UpdateSSHTargetDetails struct for UpdateSSHTargetDetails
 type UpdateSSHTargetDetails struct {
+	// The ssh host name
 	Host *string `json:"host,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
+	// Whether to keep previous version [true/false]. If not set, use default according to account settings
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	// Target name
 	Name string `json:"name"`
 	// Deprecated
 	NewVersion *bool `json:"new-version,omitempty"`
+	// ssh port
 	Port *string `json:"port,omitempty"`
+	// ssh private key
 	PrivateKey *string `json:"private-key,omitempty"`
+	// The ssh private key password
 	PrivateKeyPassword *string `json:"private-key-password,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	ProtectionKey *string `json:"protection_key,omitempty"`
+	// ssh pawssword to rotate
 	SshPassword *string `json:"ssh-password,omitempty"`
+	// ssh username
 	SshUsername *string `json:"ssh-username,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
@@ -44,7 +51,11 @@ type UpdateSSHTargetDetails struct {
 // will change when the set of required properties is changed
 func NewUpdateSSHTargetDetails(name string, ) *UpdateSSHTargetDetails {
 	this := UpdateSSHTargetDetails{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
+	var port string = "22"
+	this.Port = &port
 	return &this
 }
 
@@ -53,6 +64,10 @@ func NewUpdateSSHTargetDetails(name string, ) *UpdateSSHTargetDetails {
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateSSHTargetDetailsWithDefaults() *UpdateSSHTargetDetails {
 	this := UpdateSSHTargetDetails{}
+	var json bool = false
+	this.Json = &json
+	var port string = "22"
+	this.Port = &port
 	return &this
 }
 

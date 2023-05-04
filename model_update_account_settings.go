@@ -25,9 +25,11 @@ type UpdateAccountSettings struct {
 	CompanyName *string `json:"company-name,omitempty"`
 	// Country
 	Country *string `json:"country,omitempty"`
-	// Should create version by default
+	// Set the default ttl in minutes for sharing item number between 60 and 43200
+	DefaultShareLinkTtlMinutes *string `json:"default-share-link-ttl-minutes,omitempty"`
+	// If set to true, new item version will be created on each update [true/false]
 	DefaultVersioning *string `json:"default-versioning,omitempty"`
-	// Enable classic key protection [\"true\"/\"false\"]
+	// Set to update protection with classic keys state [true/false]
 	DpEnableClassicKeyProtection *string `json:"dp-enable-classic-key-protection,omitempty"`
 	// VersionSettingsObjectType defines object types for account version settings
 	ItemType *string `json:"item-type,omitempty"`
@@ -41,7 +43,7 @@ type UpdateAccountSettings struct {
 	JwtTtlMin *int64 `json:"jwt-ttl-min,omitempty"`
 	// Max versions
 	MaxVersions *string `json:"max-versions,omitempty"`
-	// For PasswordPolicy use
+	// Password length between 5 - to 50 characters
 	PasswordLength *int64 `json:"password-length,omitempty"`
 	// Phone number
 	Phone *string `json:"phone,omitempty"`
@@ -51,13 +53,13 @@ type UpdateAccountSettings struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// For PasswordPolicy use
+	// Password must contain lower case letters [true/false]
 	UseLowerLetters *string `json:"use-lower-letters,omitempty"`
-	// For PasswordPolicy use
+	// Password must contain numbers [true/false]
 	UseNumbers *string `json:"use-numbers,omitempty"`
-	// For PasswordPolicy use
+	// Password must contain special characters [true/false]
 	UseSpecialCharacters *string `json:"use-special-characters,omitempty"`
-	// For PasswordPolicy use
+	// Password must contain capital letters [true/false]
 	UseCapitalLetters *string `json:"use_capital-letters,omitempty"`
 }
 
@@ -67,6 +69,8 @@ type UpdateAccountSettings struct {
 // will change when the set of required properties is changed
 func NewUpdateAccountSettings() *UpdateAccountSettings {
 	this := UpdateAccountSettings{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -75,6 +79,8 @@ func NewUpdateAccountSettings() *UpdateAccountSettings {
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateAccountSettingsWithDefaults() *UpdateAccountSettings {
 	this := UpdateAccountSettings{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -204,6 +210,38 @@ func (o *UpdateAccountSettings) HasCountry() bool {
 // SetCountry gets a reference to the given string and assigns it to the Country field.
 func (o *UpdateAccountSettings) SetCountry(v string) {
 	o.Country = &v
+}
+
+// GetDefaultShareLinkTtlMinutes returns the DefaultShareLinkTtlMinutes field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetDefaultShareLinkTtlMinutes() string {
+	if o == nil || o.DefaultShareLinkTtlMinutes == nil {
+		var ret string
+		return ret
+	}
+	return *o.DefaultShareLinkTtlMinutes
+}
+
+// GetDefaultShareLinkTtlMinutesOk returns a tuple with the DefaultShareLinkTtlMinutes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetDefaultShareLinkTtlMinutesOk() (*string, bool) {
+	if o == nil || o.DefaultShareLinkTtlMinutes == nil {
+		return nil, false
+	}
+	return o.DefaultShareLinkTtlMinutes, true
+}
+
+// HasDefaultShareLinkTtlMinutes returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasDefaultShareLinkTtlMinutes() bool {
+	if o != nil && o.DefaultShareLinkTtlMinutes != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDefaultShareLinkTtlMinutes gets a reference to the given string and assigns it to the DefaultShareLinkTtlMinutes field.
+func (o *UpdateAccountSettings) SetDefaultShareLinkTtlMinutes(v string) {
+	o.DefaultShareLinkTtlMinutes = &v
 }
 
 // GetDefaultVersioning returns the DefaultVersioning field value if set, zero value otherwise.
@@ -763,6 +801,9 @@ func (o UpdateAccountSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.Country != nil {
 		toSerialize["country"] = o.Country
+	}
+	if o.DefaultShareLinkTtlMinutes != nil {
+		toSerialize["default-share-link-ttl-minutes"] = o.DefaultShareLinkTtlMinutes
 	}
 	if o.DefaultVersioning != nil {
 		toSerialize["default-versioning"] = o.DefaultVersioning

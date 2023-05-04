@@ -47,6 +47,8 @@ type GatewayMigratePersonalItems struct {
 // will change when the set of required properties is changed
 func NewGatewayMigratePersonalItems() *GatewayMigratePersonalItems {
 	this := GatewayMigratePersonalItems{}
+	var json bool = false
+	this.Json = &json
 	var type_ string = "1password"
 	this.Type = &type_
 	return &this
@@ -57,6 +59,8 @@ func NewGatewayMigratePersonalItems() *GatewayMigratePersonalItems {
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayMigratePersonalItemsWithDefaults() *GatewayMigratePersonalItems {
 	this := GatewayMigratePersonalItems{}
+	var json bool = false
+	this.Json = &json
 	var type_ string = "1password"
 	this.Type = &type_
 	return &this

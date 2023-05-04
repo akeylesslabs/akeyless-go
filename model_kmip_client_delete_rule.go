@@ -35,6 +35,8 @@ type KmipClientDeleteRule struct {
 // will change when the set of required properties is changed
 func NewKmipClientDeleteRule(path string, ) *KmipClientDeleteRule {
 	this := KmipClientDeleteRule{}
+	var json bool = false
+	this.Json = &json
 	this.Path = path
 	return &this
 }
@@ -44,6 +46,8 @@ func NewKmipClientDeleteRule(path string, ) *KmipClientDeleteRule {
 // but it doesn't guarantee that properties required by API are set
 func NewKmipClientDeleteRuleWithDefaults() *KmipClientDeleteRule {
 	this := KmipClientDeleteRule{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

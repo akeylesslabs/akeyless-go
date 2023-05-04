@@ -17,8 +17,10 @@ import (
 
 // UpdateGithubTarget struct for UpdateGithubTarget
 type UpdateGithubTarget struct {
-	// Comment about the target
+	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`
+	// Description of the object
+	Description *string `json:"description,omitempty"`
 	// Github app id
 	GithubAppId *int64 `json:"github-app-id,omitempty"`
 	// App private key
@@ -27,6 +29,7 @@ type UpdateGithubTarget struct {
 	GithubBaseUrl *string `json:"github-base-url,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
+	// Whether to keep previous version [true/false]. If not set, use default according to account settings
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
@@ -48,6 +51,10 @@ type UpdateGithubTarget struct {
 // will change when the set of required properties is changed
 func NewUpdateGithubTarget(name string, ) *UpdateGithubTarget {
 	this := UpdateGithubTarget{}
+	var githubBaseUrl string = "https://api.github.com/"
+	this.GithubBaseUrl = &githubBaseUrl
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -57,6 +64,10 @@ func NewUpdateGithubTarget(name string, ) *UpdateGithubTarget {
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateGithubTargetWithDefaults() *UpdateGithubTarget {
 	this := UpdateGithubTarget{}
+	var githubBaseUrl string = "https://api.github.com/"
+	this.GithubBaseUrl = &githubBaseUrl
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -90,6 +101,38 @@ func (o *UpdateGithubTarget) HasComment() bool {
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *UpdateGithubTarget) SetComment(v string) {
 	o.Comment = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *UpdateGithubTarget) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateGithubTarget) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *UpdateGithubTarget) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *UpdateGithubTarget) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetGithubAppId returns the GithubAppId field value if set, zero value otherwise.
@@ -440,6 +483,9 @@ func (o UpdateGithubTarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.GithubAppId != nil {
 		toSerialize["github-app-id"] = o.GithubAppId

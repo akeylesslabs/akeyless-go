@@ -17,7 +17,7 @@ import (
 
 // GatewayCreateProducerRabbitMQ gatewayCreateProducerRabbitMQ is a command that creates rabbitmq producer
 type GatewayCreateProducerRabbitMQ struct {
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -41,13 +41,17 @@ type GatewayCreateProducerRabbitMQ struct {
 	RabbitmqUserVhost *string `json:"rabbitmq-user-vhost,omitempty"`
 	// User write permission
 	RabbitmqUserWritePermission *string `json:"rabbitmq-user-write-permission,omitempty"`
+	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Destination URL to inject secrets
 	SecureAccessUrl *string `json:"secure-access-url,omitempty"`
-	// Secure Access Web Category
+	// Enable Web Secure Remote Access
 	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
+	// Secure browser via Akeyless Web Access Bastion
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
+	// Web-Proxy via Akeyless Web Access Bastion
 	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
-	// List of the tags attached to this secret
+	// Add tags attached to this object
 	Tags *[]string `json:"tags,omitempty"`
 	// Target name
 	TargetName *string `json:"target-name,omitempty"`
@@ -65,9 +69,15 @@ type GatewayCreateProducerRabbitMQ struct {
 // will change when the set of required properties is changed
 func NewGatewayCreateProducerRabbitMQ(name string, ) *GatewayCreateProducerRabbitMQ {
 	this := GatewayCreateProducerRabbitMQ{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	var secureAccessWeb bool = true
 	this.SecureAccessWeb = &secureAccessWeb
+	var secureAccessWebBrowsing bool = false
+	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
+	var secureAccessWebProxy bool = false
+	this.SecureAccessWebProxy = &secureAccessWebProxy
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
@@ -78,8 +88,14 @@ func NewGatewayCreateProducerRabbitMQ(name string, ) *GatewayCreateProducerRabbi
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayCreateProducerRabbitMQWithDefaults() *GatewayCreateProducerRabbitMQ {
 	this := GatewayCreateProducerRabbitMQ{}
+	var json bool = false
+	this.Json = &json
 	var secureAccessWeb bool = true
 	this.SecureAccessWeb = &secureAccessWeb
+	var secureAccessWebBrowsing bool = false
+	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
+	var secureAccessWebProxy bool = false
+	this.SecureAccessWebProxy = &secureAccessWebProxy
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this

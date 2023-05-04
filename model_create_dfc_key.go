@@ -21,7 +21,7 @@ type CreateDFCKey struct {
 	Alg string `json:"alg"`
 	// The customer fragment ID that will be used to create the DFC key (if empty, the key will be created independently of a customer fragment)
 	CustomerFrgId *string `json:"customer-frg-id,omitempty"`
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
@@ -48,6 +48,8 @@ type CreateDFCKey struct {
 func NewCreateDFCKey(alg string, name string, ) *CreateDFCKey {
 	this := CreateDFCKey{}
 	this.Alg = alg
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	var splitLevel int64 = 3
 	this.SplitLevel = &splitLevel
@@ -59,6 +61,8 @@ func NewCreateDFCKey(alg string, name string, ) *CreateDFCKey {
 // but it doesn't guarantee that properties required by API are set
 func NewCreateDFCKeyWithDefaults() *CreateDFCKey {
 	this := CreateDFCKey{}
+	var json bool = false
+	this.Json = &json
 	var splitLevel int64 = 3
 	this.SplitLevel = &splitLevel
 	return &this
