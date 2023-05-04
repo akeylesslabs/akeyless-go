@@ -21,6 +21,7 @@ type UpdateSecretVal struct {
 	Accessibility *string `json:"accessibility,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
+	// Whether to keep previous version [true/false]. If not set, use default according to account settings
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
@@ -54,6 +55,8 @@ func NewUpdateSecretVal(name string, value string, ) *UpdateSecretVal {
 	this := UpdateSecretVal{}
 	var accessibility string = "regular"
 	this.Accessibility = &accessibility
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	this.Value = value
 	return &this
@@ -66,6 +69,8 @@ func NewUpdateSecretValWithDefaults() *UpdateSecretVal {
 	this := UpdateSecretVal{}
 	var accessibility string = "regular"
 	this.Accessibility = &accessibility
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

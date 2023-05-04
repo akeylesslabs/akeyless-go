@@ -27,11 +27,19 @@ type GatewayCreateMigration struct {
 	Var1passwordUrl *string `json:"1password-url,omitempty"`
 	// 1Password list of vault to get the items from
 	Var1passwordVaults *[]string `json:"1password-vaults,omitempty"`
+	// Set the SSH Port for further connection to the domain servers. Default is port 22 (Relevant only for Active Directory migration)
+	AdSshPort *string `json:"ad-ssh-port,omitempty"`
+	// Set the target type of the domain servers [ssh/windows](Relevant only for Active Directory migration)
+	AdTargetsType *string `json:"ad-targets-type,omitempty"`
+	// Use WinRM over HTTP, by default runs over HTTPS
+	AdWinrmOverHttp *string `json:"ad-winrm-over-http,omitempty"`
+	// Set the WinRM Port for further connection to the domain servers. Default is 5986 (Relevant only for Active Directory migration)
+	AdWinrmPort *string `json:"ad-winrm-port,omitempty"`
 	// Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with --ad-rotation-interval and --ad-rotation-hour parameters (Relevant only for Active Directory migration)
 	AdAutoRotate *string `json:"ad_auto_rotate,omitempty"`
 	// Distinguished Name of Computer objects (servers) to search in Active Directory e.g.: CN=Computers,DC=example,DC=com (Relevant only for Active Directory migration)
 	AdComputerBaseDn *string `json:"ad_computer_base_dn,omitempty"`
-	// Enable/Disable discovery of local users from each domain server and migrate them as SSH Rotated Secrets. Default is false: only domain users will be migrated. Discovery of local users might require further installation of SSH on the servers, based on the supplied computer base DN. This will be implemented automatically as part of the migration process (Relevant only for Active Directory migration)
+	// Enable/Disable discovery of local users from each domain server and migrate them as SSH/Windows Rotated Secrets. Default is false: only domain users will be migrated. Discovery of local users might require further installation of SSH on the servers, based on the supplied computer base DN. This will be implemented automatically as part of the migration process (Relevant only for Active Directory migration)
 	AdDiscoverLocalUsers *string `json:"ad_discover_local_users,omitempty"`
 	// Active Directory Domain Name (Relevant only for Active Directory migration)
 	AdDomainName *string `json:"ad_domain_name,omitempty"`
@@ -49,14 +57,12 @@ type GatewayCreateMigration struct {
 	AdSraEnableRdp *string `json:"ad_sra_enable_rdp,omitempty"`
 	// Active Directory LDAP Target Name. Server type should be Active Directory (Relevant only for Active Directory migration)
 	AdTargetName *string `json:"ad_target_name,omitempty"`
-	// Path location template for migrating domain servers as SSH Targets e.g.: .../Servers/{{COMPUTER_NAME}} (Relevant only for Active Directory migration)
+	// Path location template for migrating domain servers as SSH/Windows Targets e.g.: .../Servers/{{COMPUTER_NAME}} (Relevant only for Active Directory migration)
 	AdTargetsPathTemplate *string `json:"ad_targets_path_template,omitempty"`
 	// Distinguished Name of User objects to search in Active Directory, e.g.: CN=Users,DC=example,DC=com (Relevant only for Active Directory migration)
 	AdUserBaseDn *string `json:"ad_user_base_dn,omitempty"`
 	// Comma-separated list of domain groups from which privileged domain users will be migrated (Relevant only for Active Directory migration)
 	AdUserGroups *string `json:"ad_user_groups,omitempty"`
-	// Set the SSH Port for further connection to the domain servers. Default is port 22 (Relevant only for Active Directory migration)
-	AsSshPort *string `json:"as_ssh_port,omitempty"`
 	// AWS Secret Access Key (relevant only for AWS migration)
 	AwsKey *string `json:"aws-key,omitempty"`
 	// AWS Access Key ID with sufficient permissions to get all secrets, e.g. 'arn:aws:secretsmanager:[Region]:[AccountId]:secret:[/path/to/secrets/_*]' (relevant only for AWS migration)
@@ -73,7 +79,7 @@ type GatewayCreateMigration struct {
 	AzureTenantId *string `json:"azure-tenant-id,omitempty"`
 	// Base64-encoded GCP Service Account private key text with sufficient permissions to Secrets Manager, Minimum required permission is Secret Manager Secret Accessor, e.g. 'roles/secretmanager.secretAccessor' (relevant only for GCP migration)
 	GcpKey *string `json:"gcp-key,omitempty"`
-	// Import secret key as json value or independent secrets (relevant only for HasiCorp Vault migration)
+	// Import secret key as json value or independent secrets (relevant only for HasiCorp Vault migration) [true/false]
 	HashiJson *string `json:"hashi-json,omitempty"`
 	// HashiCorp Vault Namespaces is a comma-separated list of namespaces which need to be imported into Akeyless Vault. For every provided namespace, all its child namespaces are imported as well, e.g. nmsp/subnmsp1/subnmsp2,nmsp/anothernmsp. By default, import all namespaces (relevant only for HasiCorp Vault migration)
 	HashiNs *[]string `json:"hashi-ns,omitempty"`
@@ -121,6 +127,20 @@ type GatewayCreateMigration struct {
 // will change when the set of required properties is changed
 func NewGatewayCreateMigration(name string, targetLocation string, ) *GatewayCreateMigration {
 	this := GatewayCreateMigration{}
+	var adSshPort string = "22"
+	this.AdSshPort = &adSshPort
+	var adTargetsType string = "windows"
+	this.AdTargetsType = &adTargetsType
+	var adWinrmOverHttp string = "false"
+	this.AdWinrmOverHttp = &adWinrmOverHttp
+	var adWinrmPort string = "5986"
+	this.AdWinrmPort = &adWinrmPort
+	var awsRegion string = "us-east-2"
+	this.AwsRegion = &awsRegion
+	var hashiJson string = "true"
+	this.HashiJson = &hashiJson
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	this.TargetLocation = targetLocation
 	return &this
@@ -131,6 +151,20 @@ func NewGatewayCreateMigration(name string, targetLocation string, ) *GatewayCre
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayCreateMigrationWithDefaults() *GatewayCreateMigration {
 	this := GatewayCreateMigration{}
+	var adSshPort string = "22"
+	this.AdSshPort = &adSshPort
+	var adTargetsType string = "windows"
+	this.AdTargetsType = &adTargetsType
+	var adWinrmOverHttp string = "false"
+	this.AdWinrmOverHttp = &adWinrmOverHttp
+	var adWinrmPort string = "5986"
+	this.AdWinrmPort = &adWinrmPort
+	var awsRegion string = "us-east-2"
+	this.AwsRegion = &awsRegion
+	var hashiJson string = "true"
+	this.HashiJson = &hashiJson
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -292,6 +326,134 @@ func (o *GatewayCreateMigration) HasVar1passwordVaults() bool {
 // SetVar1passwordVaults gets a reference to the given []string and assigns it to the Var1passwordVaults field.
 func (o *GatewayCreateMigration) SetVar1passwordVaults(v []string) {
 	o.Var1passwordVaults = &v
+}
+
+// GetAdSshPort returns the AdSshPort field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetAdSshPort() string {
+	if o == nil || o.AdSshPort == nil {
+		var ret string
+		return ret
+	}
+	return *o.AdSshPort
+}
+
+// GetAdSshPortOk returns a tuple with the AdSshPort field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetAdSshPortOk() (*string, bool) {
+	if o == nil || o.AdSshPort == nil {
+		return nil, false
+	}
+	return o.AdSshPort, true
+}
+
+// HasAdSshPort returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasAdSshPort() bool {
+	if o != nil && o.AdSshPort != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdSshPort gets a reference to the given string and assigns it to the AdSshPort field.
+func (o *GatewayCreateMigration) SetAdSshPort(v string) {
+	o.AdSshPort = &v
+}
+
+// GetAdTargetsType returns the AdTargetsType field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetAdTargetsType() string {
+	if o == nil || o.AdTargetsType == nil {
+		var ret string
+		return ret
+	}
+	return *o.AdTargetsType
+}
+
+// GetAdTargetsTypeOk returns a tuple with the AdTargetsType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetAdTargetsTypeOk() (*string, bool) {
+	if o == nil || o.AdTargetsType == nil {
+		return nil, false
+	}
+	return o.AdTargetsType, true
+}
+
+// HasAdTargetsType returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasAdTargetsType() bool {
+	if o != nil && o.AdTargetsType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdTargetsType gets a reference to the given string and assigns it to the AdTargetsType field.
+func (o *GatewayCreateMigration) SetAdTargetsType(v string) {
+	o.AdTargetsType = &v
+}
+
+// GetAdWinrmOverHttp returns the AdWinrmOverHttp field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetAdWinrmOverHttp() string {
+	if o == nil || o.AdWinrmOverHttp == nil {
+		var ret string
+		return ret
+	}
+	return *o.AdWinrmOverHttp
+}
+
+// GetAdWinrmOverHttpOk returns a tuple with the AdWinrmOverHttp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetAdWinrmOverHttpOk() (*string, bool) {
+	if o == nil || o.AdWinrmOverHttp == nil {
+		return nil, false
+	}
+	return o.AdWinrmOverHttp, true
+}
+
+// HasAdWinrmOverHttp returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasAdWinrmOverHttp() bool {
+	if o != nil && o.AdWinrmOverHttp != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdWinrmOverHttp gets a reference to the given string and assigns it to the AdWinrmOverHttp field.
+func (o *GatewayCreateMigration) SetAdWinrmOverHttp(v string) {
+	o.AdWinrmOverHttp = &v
+}
+
+// GetAdWinrmPort returns the AdWinrmPort field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetAdWinrmPort() string {
+	if o == nil || o.AdWinrmPort == nil {
+		var ret string
+		return ret
+	}
+	return *o.AdWinrmPort
+}
+
+// GetAdWinrmPortOk returns a tuple with the AdWinrmPort field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetAdWinrmPortOk() (*string, bool) {
+	if o == nil || o.AdWinrmPort == nil {
+		return nil, false
+	}
+	return o.AdWinrmPort, true
+}
+
+// HasAdWinrmPort returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasAdWinrmPort() bool {
+	if o != nil && o.AdWinrmPort != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdWinrmPort gets a reference to the given string and assigns it to the AdWinrmPort field.
+func (o *GatewayCreateMigration) SetAdWinrmPort(v string) {
+	o.AdWinrmPort = &v
 }
 
 // GetAdAutoRotate returns the AdAutoRotate field value if set, zero value otherwise.
@@ -740,38 +902,6 @@ func (o *GatewayCreateMigration) HasAdUserGroups() bool {
 // SetAdUserGroups gets a reference to the given string and assigns it to the AdUserGroups field.
 func (o *GatewayCreateMigration) SetAdUserGroups(v string) {
 	o.AdUserGroups = &v
-}
-
-// GetAsSshPort returns the AsSshPort field value if set, zero value otherwise.
-func (o *GatewayCreateMigration) GetAsSshPort() string {
-	if o == nil || o.AsSshPort == nil {
-		var ret string
-		return ret
-	}
-	return *o.AsSshPort
-}
-
-// GetAsSshPortOk returns a tuple with the AsSshPort field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateMigration) GetAsSshPortOk() (*string, bool) {
-	if o == nil || o.AsSshPort == nil {
-		return nil, false
-	}
-	return o.AsSshPort, true
-}
-
-// HasAsSshPort returns a boolean if a field has been set.
-func (o *GatewayCreateMigration) HasAsSshPort() bool {
-	if o != nil && o.AsSshPort != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAsSshPort gets a reference to the given string and assigns it to the AsSshPort field.
-func (o *GatewayCreateMigration) SetAsSshPort(v string) {
-	o.AsSshPort = &v
 }
 
 // GetAwsKey returns the AwsKey field value if set, zero value otherwise.
@@ -1671,6 +1801,18 @@ func (o GatewayCreateMigration) MarshalJSON() ([]byte, error) {
 	if o.Var1passwordVaults != nil {
 		toSerialize["1password-vaults"] = o.Var1passwordVaults
 	}
+	if o.AdSshPort != nil {
+		toSerialize["ad-ssh-port"] = o.AdSshPort
+	}
+	if o.AdTargetsType != nil {
+		toSerialize["ad-targets-type"] = o.AdTargetsType
+	}
+	if o.AdWinrmOverHttp != nil {
+		toSerialize["ad-winrm-over-http"] = o.AdWinrmOverHttp
+	}
+	if o.AdWinrmPort != nil {
+		toSerialize["ad-winrm-port"] = o.AdWinrmPort
+	}
 	if o.AdAutoRotate != nil {
 		toSerialize["ad_auto_rotate"] = o.AdAutoRotate
 	}
@@ -1712,9 +1854,6 @@ func (o GatewayCreateMigration) MarshalJSON() ([]byte, error) {
 	}
 	if o.AdUserGroups != nil {
 		toSerialize["ad_user_groups"] = o.AdUserGroups
-	}
-	if o.AsSshPort != nil {
-		toSerialize["as_ssh_port"] = o.AsSshPort
 	}
 	if o.AwsKey != nil {
 		toSerialize["aws-key"] = o.AwsKey

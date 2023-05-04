@@ -21,6 +21,7 @@ type UpdateLdapTargetDetails struct {
 	BindDnPassword *string `json:"bind-dn-password,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
+	// Whether to keep previous version [true/false]. If not set, use default according to account settings
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	Key *string `json:"key,omitempty"`
 	LdapCaCert *string `json:"ldap-ca-cert,omitempty"`
@@ -44,6 +45,8 @@ type UpdateLdapTargetDetails struct {
 // will change when the set of required properties is changed
 func NewUpdateLdapTargetDetails(name string, ) *UpdateLdapTargetDetails {
 	this := UpdateLdapTargetDetails{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -53,6 +56,8 @@ func NewUpdateLdapTargetDetails(name string, ) *UpdateLdapTargetDetails {
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateLdapTargetDetailsWithDefaults() *UpdateLdapTargetDetails {
 	this := UpdateLdapTargetDetails{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

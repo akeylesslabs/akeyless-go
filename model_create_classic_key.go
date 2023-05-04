@@ -21,7 +21,7 @@ type CreateClassicKey struct {
 	Alg string `json:"alg"`
 	// Certificate in a PEM format.
 	CertFileData *string `json:"cert-file-data,omitempty"`
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
@@ -37,7 +37,7 @@ type CreateClassicKey struct {
 	Name string `json:"name"`
 	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
 	ProtectionKeyName *string `json:"protection-key-name,omitempty"`
-	// List of the tags attached to this classic key
+	// Add tags attached to this object
 	Tags *[]string `json:"tags,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
@@ -52,6 +52,8 @@ type CreateClassicKey struct {
 func NewCreateClassicKey(alg string, name string, ) *CreateClassicKey {
 	this := CreateClassicKey{}
 	this.Alg = alg
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -61,6 +63,8 @@ func NewCreateClassicKey(alg string, name string, ) *CreateClassicKey {
 // but it doesn't guarantee that properties required by API are set
 func NewCreateClassicKeyWithDefaults() *CreateClassicKey {
 	this := CreateClassicKey{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

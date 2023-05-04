@@ -33,6 +33,8 @@ type GatewayDeleteK8SAuthConfig struct {
 // will change when the set of required properties is changed
 func NewGatewayDeleteK8SAuthConfig(name string, ) *GatewayDeleteK8SAuthConfig {
 	this := GatewayDeleteK8SAuthConfig{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -42,6 +44,8 @@ func NewGatewayDeleteK8SAuthConfig(name string, ) *GatewayDeleteK8SAuthConfig {
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayDeleteK8SAuthConfigWithDefaults() *GatewayDeleteK8SAuthConfig {
 	this := GatewayDeleteK8SAuthConfig{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

@@ -9,9 +9,13 @@ Name | Type | Description | Notes
 **Var1passwordSecretKey** | Pointer to **string** | 1Password user secret key to connect to the API | [optional] 
 **Var1passwordUrl** | Pointer to **string** | 1Password api container url | [optional] 
 **Var1passwordVaults** | Pointer to **[]string** | 1Password list of vault to get the items from | [optional] 
+**AdSshPort** | Pointer to **string** | Set the SSH Port for further connection to the domain servers. Default is port 22 (Relevant only for Active Directory migration) | [optional] [default to "22"]
+**AdTargetsType** | Pointer to **string** | Set the target type of the domain servers [ssh/windows](Relevant only for Active Directory migration) | [optional] [default to "windows"]
+**AdWinrmOverHttp** | Pointer to **string** | Use WinRM over HTTP, by default runs over HTTPS | [optional] [default to "false"]
+**AdWinrmPort** | Pointer to **string** | Set the WinRM Port for further connection to the domain servers. Default is 5986 (Relevant only for Active Directory migration) | [optional] [default to "5986"]
 **AdAutoRotate** | Pointer to **string** | Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with --ad-rotation-interval and --ad-rotation-hour parameters (Relevant only for Active Directory migration) | [optional] 
 **AdComputerBaseDn** | Pointer to **string** | Distinguished Name of Computer objects (servers) to search in Active Directory e.g.: CN&#x3D;Computers,DC&#x3D;example,DC&#x3D;com (Relevant only for Active Directory migration) | [optional] 
-**AdDiscoverLocalUsers** | Pointer to **string** | Enable/Disable discovery of local users from each domain server and migrate them as SSH Rotated Secrets. Default is false: only domain users will be migrated. Discovery of local users might require further installation of SSH on the servers, based on the supplied computer base DN. This will be implemented automatically as part of the migration process (Relevant only for Active Directory migration) | [optional] 
+**AdDiscoverLocalUsers** | Pointer to **string** | Enable/Disable discovery of local users from each domain server and migrate them as SSH/Windows Rotated Secrets. Default is false: only domain users will be migrated. Discovery of local users might require further installation of SSH on the servers, based on the supplied computer base DN. This will be implemented automatically as part of the migration process (Relevant only for Active Directory migration) | [optional] 
 **AdDomainName** | Pointer to **string** | Active Directory Domain Name (Relevant only for Active Directory migration) | [optional] 
 **AdDomainUsersPathTemplate** | Pointer to **string** | Path location template for migrating domain users as Rotated Secrets e.g.: .../DomainUsers/{{USERNAME}} (Relevant only for Active Directory migration) | [optional] 
 **AdLocalUsersIgnore** | Pointer to **string** | Comma-separated list of Local Users which should not be migrated (Relevant only for Active Directory migration) | [optional] 
@@ -20,23 +24,22 @@ Name | Type | Description | Notes
 **AdRotationInterval** | Pointer to **int32** | The number of days to wait between every automatic rotation [1-365] (Relevant only for Active Directory migration) | [optional] 
 **AdSraEnableRdp** | Pointer to **string** | Enable/Disable RDP Secure Remote Access for the migrated local users rotated secrets. Default is false: rotated secrets will not be created with SRA (Relevant only for Active Directory migration) | [optional] 
 **AdTargetName** | Pointer to **string** | Active Directory LDAP Target Name. Server type should be Active Directory (Relevant only for Active Directory migration) | [optional] 
-**AdTargetsPathTemplate** | Pointer to **string** | Path location template for migrating domain servers as SSH Targets e.g.: .../Servers/{{COMPUTER_NAME}} (Relevant only for Active Directory migration) | [optional] 
+**AdTargetsPathTemplate** | Pointer to **string** | Path location template for migrating domain servers as SSH/Windows Targets e.g.: .../Servers/{{COMPUTER_NAME}} (Relevant only for Active Directory migration) | [optional] 
 **AdUserBaseDn** | Pointer to **string** | Distinguished Name of User objects to search in Active Directory, e.g.: CN&#x3D;Users,DC&#x3D;example,DC&#x3D;com (Relevant only for Active Directory migration) | [optional] 
 **AdUserGroups** | Pointer to **string** | Comma-separated list of domain groups from which privileged domain users will be migrated (Relevant only for Active Directory migration) | [optional] 
-**AsSshPort** | Pointer to **string** | Set the SSH Port for further connection to the domain servers. Default is port 22 (Relevant only for Active Directory migration) | [optional] 
 **AwsKey** | Pointer to **string** | AWS Secret Access Key (relevant only for AWS migration) | [optional] 
 **AwsKeyId** | Pointer to **string** | AWS Access Key ID with sufficient permissions to get all secrets, e.g. &#39;arn:aws:secretsmanager:[Region]:[AccountId]:secret:[/path/to/secrets/_*]&#39; (relevant only for AWS migration) | [optional] 
-**AwsRegion** | Pointer to **string** | AWS region of the required Secrets Manager (relevant only for AWS migration) | [optional] 
+**AwsRegion** | Pointer to **string** | AWS region of the required Secrets Manager (relevant only for AWS migration) | [optional] [default to "us-east-2"]
 **AzureClientId** | Pointer to **string** | Azure Key Vault Access client ID, should be Azure AD App with a service principal (relevant only for Azure Key Vault migration) | [optional] 
 **AzureKvName** | Pointer to **string** | Azure Key Vault Name (relevant only for Azure Key Vault migration) | [optional] 
 **AzureSecret** | Pointer to **string** | Azure Key Vault secret (relevant only for Azure Key Vault migration) | [optional] 
 **AzureTenantId** | Pointer to **string** | Azure Key Vault Access tenant ID (relevant only for Azure Key Vault migration) | [optional] 
 **GcpKey** | Pointer to **string** | Base64-encoded GCP Service Account private key text with sufficient permissions to Secrets Manager, Minimum required permission is Secret Manager Secret Accessor, e.g. &#39;roles/secretmanager.secretAccessor&#39; (relevant only for GCP migration) | [optional] 
-**HashiJson** | Pointer to **string** | Import secret key as json value or independent secrets (relevant only for HasiCorp Vault migration) | [optional] 
+**HashiJson** | Pointer to **string** | Import secret key as json value or independent secrets (relevant only for HasiCorp Vault migration) [true/false] | [optional] [default to "true"]
 **HashiNs** | Pointer to **[]string** | HashiCorp Vault Namespaces is a comma-separated list of namespaces which need to be imported into Akeyless Vault. For every provided namespace, all its child namespaces are imported as well, e.g. nmsp/subnmsp1/subnmsp2,nmsp/anothernmsp. By default, import all namespaces (relevant only for HasiCorp Vault migration) | [optional] 
 **HashiToken** | Pointer to **string** | HashiCorp Vault access token with sufficient permissions to preform list &amp; read operations on secrets objects (relevant only for HasiCorp Vault migration) | [optional] 
 **HashiUrl** | Pointer to **string** | HashiCorp Vault API URL, e.g. https://vault-mgr01:8200 (relevant only for HasiCorp Vault migration) | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **K8sCaCertificate** | Pointer to **[]int32** | For Certificate Authentication method K8s Cluster CA certificate (relevant only for K8s migration with Certificate Authentication method) | [optional] 
 **K8sClientCertificate** | Pointer to **[]int32** | K8s Client certificate with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Certificate Authentication method) | [optional] 
 **K8sClientKey** | Pointer to **[]int32** | K8s Client key (relevant only for K8s migration with Certificate Authentication method) | [optional] 
@@ -196,6 +199,106 @@ SetVar1passwordVaults sets Var1passwordVaults field to given value.
 `func (o *GatewayCreateMigration) HasVar1passwordVaults() bool`
 
 HasVar1passwordVaults returns a boolean if a field has been set.
+
+### GetAdSshPort
+
+`func (o *GatewayCreateMigration) GetAdSshPort() string`
+
+GetAdSshPort returns the AdSshPort field if non-nil, zero value otherwise.
+
+### GetAdSshPortOk
+
+`func (o *GatewayCreateMigration) GetAdSshPortOk() (*string, bool)`
+
+GetAdSshPortOk returns a tuple with the AdSshPort field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdSshPort
+
+`func (o *GatewayCreateMigration) SetAdSshPort(v string)`
+
+SetAdSshPort sets AdSshPort field to given value.
+
+### HasAdSshPort
+
+`func (o *GatewayCreateMigration) HasAdSshPort() bool`
+
+HasAdSshPort returns a boolean if a field has been set.
+
+### GetAdTargetsType
+
+`func (o *GatewayCreateMigration) GetAdTargetsType() string`
+
+GetAdTargetsType returns the AdTargetsType field if non-nil, zero value otherwise.
+
+### GetAdTargetsTypeOk
+
+`func (o *GatewayCreateMigration) GetAdTargetsTypeOk() (*string, bool)`
+
+GetAdTargetsTypeOk returns a tuple with the AdTargetsType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdTargetsType
+
+`func (o *GatewayCreateMigration) SetAdTargetsType(v string)`
+
+SetAdTargetsType sets AdTargetsType field to given value.
+
+### HasAdTargetsType
+
+`func (o *GatewayCreateMigration) HasAdTargetsType() bool`
+
+HasAdTargetsType returns a boolean if a field has been set.
+
+### GetAdWinrmOverHttp
+
+`func (o *GatewayCreateMigration) GetAdWinrmOverHttp() string`
+
+GetAdWinrmOverHttp returns the AdWinrmOverHttp field if non-nil, zero value otherwise.
+
+### GetAdWinrmOverHttpOk
+
+`func (o *GatewayCreateMigration) GetAdWinrmOverHttpOk() (*string, bool)`
+
+GetAdWinrmOverHttpOk returns a tuple with the AdWinrmOverHttp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdWinrmOverHttp
+
+`func (o *GatewayCreateMigration) SetAdWinrmOverHttp(v string)`
+
+SetAdWinrmOverHttp sets AdWinrmOverHttp field to given value.
+
+### HasAdWinrmOverHttp
+
+`func (o *GatewayCreateMigration) HasAdWinrmOverHttp() bool`
+
+HasAdWinrmOverHttp returns a boolean if a field has been set.
+
+### GetAdWinrmPort
+
+`func (o *GatewayCreateMigration) GetAdWinrmPort() string`
+
+GetAdWinrmPort returns the AdWinrmPort field if non-nil, zero value otherwise.
+
+### GetAdWinrmPortOk
+
+`func (o *GatewayCreateMigration) GetAdWinrmPortOk() (*string, bool)`
+
+GetAdWinrmPortOk returns a tuple with the AdWinrmPort field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdWinrmPort
+
+`func (o *GatewayCreateMigration) SetAdWinrmPort(v string)`
+
+SetAdWinrmPort sets AdWinrmPort field to given value.
+
+### HasAdWinrmPort
+
+`func (o *GatewayCreateMigration) HasAdWinrmPort() bool`
+
+HasAdWinrmPort returns a boolean if a field has been set.
 
 ### GetAdAutoRotate
 
@@ -546,31 +649,6 @@ SetAdUserGroups sets AdUserGroups field to given value.
 `func (o *GatewayCreateMigration) HasAdUserGroups() bool`
 
 HasAdUserGroups returns a boolean if a field has been set.
-
-### GetAsSshPort
-
-`func (o *GatewayCreateMigration) GetAsSshPort() string`
-
-GetAsSshPort returns the AsSshPort field if non-nil, zero value otherwise.
-
-### GetAsSshPortOk
-
-`func (o *GatewayCreateMigration) GetAsSshPortOk() (*string, bool)`
-
-GetAsSshPortOk returns a tuple with the AsSshPort field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAsSshPort
-
-`func (o *GatewayCreateMigration) SetAsSshPort(v string)`
-
-SetAsSshPort sets AsSshPort field to given value.
-
-### HasAsSshPort
-
-`func (o *GatewayCreateMigration) HasAsSshPort() bool`
-
-HasAsSshPort returns a boolean if a field has been set.
 
 ### GetAwsKey
 
