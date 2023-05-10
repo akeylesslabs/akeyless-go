@@ -35,6 +35,8 @@ type DescribePermissions struct {
 // will change when the set of required properties is changed
 func NewDescribePermissions(path string, type_ string, ) *DescribePermissions {
 	this := DescribePermissions{}
+	var json bool = false
+	this.Json = &json
 	this.Path = path
 	this.Type = type_
 	return &this
@@ -45,6 +47,8 @@ func NewDescribePermissions(path string, type_ string, ) *DescribePermissions {
 // but it doesn't guarantee that properties required by API are set
 func NewDescribePermissionsWithDefaults() *DescribePermissions {
 	this := DescribePermissions{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

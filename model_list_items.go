@@ -47,6 +47,8 @@ func NewListItems() *ListItems {
 	this := ListItems{}
 	var accessibility string = "regular"
 	this.Accessibility = &accessibility
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -57,6 +59,8 @@ func NewListItemsWithDefaults() *ListItems {
 	this := ListItems{}
 	var accessibility string = "regular"
 	this.Accessibility = &accessibility
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

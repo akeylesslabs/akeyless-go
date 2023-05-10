@@ -21,9 +21,9 @@ type GatewayCreateProducerLdap struct {
 	BindDn *string `json:"bind-dn,omitempty"`
 	// Bind DN Password
 	BindDnPassword *string `json:"bind-dn-password,omitempty"`
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
-	// Fixed user
+	// Externally provided username [true/false]
 	ExternalUsername *string `json:"external-username,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -35,7 +35,7 @@ type GatewayCreateProducerLdap struct {
 	Name string `json:"name"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
-	// List of the tags attached to this secret
+	// Add tags attached to this object
 	Tags *[]string `json:"tags,omitempty"`
 	// Target name
 	TargetName *string `json:"target-name,omitempty"`
@@ -61,6 +61,8 @@ func NewGatewayCreateProducerLdap(name string, ) *GatewayCreateProducerLdap {
 	this := GatewayCreateProducerLdap{}
 	var externalUsername string = "false"
 	this.ExternalUsername = &externalUsername
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
@@ -74,6 +76,8 @@ func NewGatewayCreateProducerLdapWithDefaults() *GatewayCreateProducerLdap {
 	this := GatewayCreateProducerLdap{}
 	var externalUsername string = "false"
 	this.ExternalUsername = &externalUsername
+	var json bool = false
+	this.Json = &json
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this

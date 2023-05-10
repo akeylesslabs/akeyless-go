@@ -19,6 +19,8 @@ import (
 type LastStatusInfo struct {
 	MigrationsStatus *MigrationStatus `json:"migrations_status,omitempty"`
 	ProducersErrors *map[string]interface{} `json:"producers_errors,omitempty"`
+	// flag to indicate migrationStatus copied to new table
+	WasMigrationsCopiedToNewTable *bool `json:"was_migrations_copied_to_new_table,omitempty"`
 }
 
 // NewLastStatusInfo instantiates a new LastStatusInfo object
@@ -102,6 +104,38 @@ func (o *LastStatusInfo) SetProducersErrors(v map[string]interface{}) {
 	o.ProducersErrors = &v
 }
 
+// GetWasMigrationsCopiedToNewTable returns the WasMigrationsCopiedToNewTable field value if set, zero value otherwise.
+func (o *LastStatusInfo) GetWasMigrationsCopiedToNewTable() bool {
+	if o == nil || o.WasMigrationsCopiedToNewTable == nil {
+		var ret bool
+		return ret
+	}
+	return *o.WasMigrationsCopiedToNewTable
+}
+
+// GetWasMigrationsCopiedToNewTableOk returns a tuple with the WasMigrationsCopiedToNewTable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LastStatusInfo) GetWasMigrationsCopiedToNewTableOk() (*bool, bool) {
+	if o == nil || o.WasMigrationsCopiedToNewTable == nil {
+		return nil, false
+	}
+	return o.WasMigrationsCopiedToNewTable, true
+}
+
+// HasWasMigrationsCopiedToNewTable returns a boolean if a field has been set.
+func (o *LastStatusInfo) HasWasMigrationsCopiedToNewTable() bool {
+	if o != nil && o.WasMigrationsCopiedToNewTable != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetWasMigrationsCopiedToNewTable gets a reference to the given bool and assigns it to the WasMigrationsCopiedToNewTable field.
+func (o *LastStatusInfo) SetWasMigrationsCopiedToNewTable(v bool) {
+	o.WasMigrationsCopiedToNewTable = &v
+}
+
 func (o LastStatusInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.MigrationsStatus != nil {
@@ -109,6 +143,9 @@ func (o LastStatusInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.ProducersErrors != nil {
 		toSerialize["producers_errors"] = o.ProducersErrors
+	}
+	if o.WasMigrationsCopiedToNewTable != nil {
+		toSerialize["was_migrations_copied_to_new_table"] = o.WasMigrationsCopiedToNewTable
 	}
 	return json.Marshal(toSerialize)
 }

@@ -40,6 +40,8 @@ type VerifyJWTWithClassicKey struct {
 func NewVerifyJWTWithClassicKey(displayId string, jwt string, requiredClaims string, version int32, ) *VerifyJWTWithClassicKey {
 	this := VerifyJWTWithClassicKey{}
 	this.DisplayId = displayId
+	var json bool = false
+	this.Json = &json
 	this.Jwt = jwt
 	this.RequiredClaims = requiredClaims
 	this.Version = version
@@ -51,6 +53,8 @@ func NewVerifyJWTWithClassicKey(displayId string, jwt string, requiredClaims str
 // but it doesn't guarantee that properties required by API are set
 func NewVerifyJWTWithClassicKeyWithDefaults() *VerifyJWTWithClassicKey {
 	this := VerifyJWTWithClassicKey{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

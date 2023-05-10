@@ -44,7 +44,7 @@ type GatewayGetK8SAuthConfigOutput struct {
 	RancherApiKey *string `json:"rancher_api_key,omitempty"`
 	// RancherClusterId cluster id as define in rancher (in case of clusterApiTypeRancher)
 	RancherClusterId *string `json:"rancher_cluster_id,omitempty"`
-	// UseLocalCAJwt is an optional parameter to set defaulting to using the local CA cert and service account jwt when running in a Kubernetes pod
+	// UseLocalCAJwt is an optional parameter to set defaulting to using the local service account when running in a Kubernetes pod
 	UseLocalCaJwt *bool `json:"use_local_ca_jwt,omitempty"`
 }
 

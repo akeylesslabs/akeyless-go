@@ -9,10 +9,14 @@ Name | Type | Description | Notes
 **AllowedDomainsList** | Pointer to **[]string** |  | [optional] 
 **AllowedUriSans** | Pointer to **[]string** |  | [optional] 
 **BasicConstraintsValidForNonCa** | Pointer to **bool** |  | [optional] 
+**CertificateAuthorityMode** | Pointer to **string** |  | [optional] 
 **ClientFlag** | Pointer to **bool** |  | [optional] 
 **CodeSigningFlag** | Pointer to **bool** |  | [optional] 
 **Country** | Pointer to **[]string** |  | [optional] 
+**DestinationPath** | Pointer to **string** | DestinationPath is the destination to save generated certificates | [optional] 
 **EnforceHostnames** | Pointer to **bool** |  | [optional] 
+**ExpirationEvents** | Pointer to [**[]CertificateExpirationEvent**](CertificateExpirationEvent.md) | ExpirationNotification holds a list of expiration notices that should be sent in case a certificate is about to expire, this value is being propagated to the Certificate resources that are created | [optional] 
+**GwClusterUrl** | Pointer to **string** | GWClusterURL is required when CAMode is \&quot;public\&quot; and it defines the cluster URL the PKI should be issued from. The GW cluster must have permissions to read associated target&#39;s details | [optional] 
 **IsCa** | Pointer to **bool** |  | [optional] 
 **KeyBits** | Pointer to **int64** |  | [optional] 
 **KeyType** | Pointer to **string** |  | [optional] 
@@ -22,6 +26,7 @@ Name | Type | Description | Notes
 **OrganizationList** | Pointer to **[]string** |  | [optional] 
 **OrganizationUnitList** | Pointer to **[]string** |  | [optional] 
 **PostalCode** | Pointer to **[]string** |  | [optional] 
+**ProtectGeneratedCertificates** | Pointer to **bool** | ProtectGeneratedCertificates dictates whether the created certificates should be protected from deletion | [optional] 
 **Province** | Pointer to **[]string** |  | [optional] 
 **RequireCn** | Pointer to **bool** |  | [optional] 
 **ServerFlag** | Pointer to **bool** |  | [optional] 
@@ -171,6 +176,31 @@ SetBasicConstraintsValidForNonCa sets BasicConstraintsValidForNonCa field to giv
 
 HasBasicConstraintsValidForNonCa returns a boolean if a field has been set.
 
+### GetCertificateAuthorityMode
+
+`func (o *PKICertificateIssueDetails) GetCertificateAuthorityMode() string`
+
+GetCertificateAuthorityMode returns the CertificateAuthorityMode field if non-nil, zero value otherwise.
+
+### GetCertificateAuthorityModeOk
+
+`func (o *PKICertificateIssueDetails) GetCertificateAuthorityModeOk() (*string, bool)`
+
+GetCertificateAuthorityModeOk returns a tuple with the CertificateAuthorityMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificateAuthorityMode
+
+`func (o *PKICertificateIssueDetails) SetCertificateAuthorityMode(v string)`
+
+SetCertificateAuthorityMode sets CertificateAuthorityMode field to given value.
+
+### HasCertificateAuthorityMode
+
+`func (o *PKICertificateIssueDetails) HasCertificateAuthorityMode() bool`
+
+HasCertificateAuthorityMode returns a boolean if a field has been set.
+
 ### GetClientFlag
 
 `func (o *PKICertificateIssueDetails) GetClientFlag() bool`
@@ -246,6 +276,31 @@ SetCountry sets Country field to given value.
 
 HasCountry returns a boolean if a field has been set.
 
+### GetDestinationPath
+
+`func (o *PKICertificateIssueDetails) GetDestinationPath() string`
+
+GetDestinationPath returns the DestinationPath field if non-nil, zero value otherwise.
+
+### GetDestinationPathOk
+
+`func (o *PKICertificateIssueDetails) GetDestinationPathOk() (*string, bool)`
+
+GetDestinationPathOk returns a tuple with the DestinationPath field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDestinationPath
+
+`func (o *PKICertificateIssueDetails) SetDestinationPath(v string)`
+
+SetDestinationPath sets DestinationPath field to given value.
+
+### HasDestinationPath
+
+`func (o *PKICertificateIssueDetails) HasDestinationPath() bool`
+
+HasDestinationPath returns a boolean if a field has been set.
+
 ### GetEnforceHostnames
 
 `func (o *PKICertificateIssueDetails) GetEnforceHostnames() bool`
@@ -270,6 +325,56 @@ SetEnforceHostnames sets EnforceHostnames field to given value.
 `func (o *PKICertificateIssueDetails) HasEnforceHostnames() bool`
 
 HasEnforceHostnames returns a boolean if a field has been set.
+
+### GetExpirationEvents
+
+`func (o *PKICertificateIssueDetails) GetExpirationEvents() []CertificateExpirationEvent`
+
+GetExpirationEvents returns the ExpirationEvents field if non-nil, zero value otherwise.
+
+### GetExpirationEventsOk
+
+`func (o *PKICertificateIssueDetails) GetExpirationEventsOk() (*[]CertificateExpirationEvent, bool)`
+
+GetExpirationEventsOk returns a tuple with the ExpirationEvents field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpirationEvents
+
+`func (o *PKICertificateIssueDetails) SetExpirationEvents(v []CertificateExpirationEvent)`
+
+SetExpirationEvents sets ExpirationEvents field to given value.
+
+### HasExpirationEvents
+
+`func (o *PKICertificateIssueDetails) HasExpirationEvents() bool`
+
+HasExpirationEvents returns a boolean if a field has been set.
+
+### GetGwClusterUrl
+
+`func (o *PKICertificateIssueDetails) GetGwClusterUrl() string`
+
+GetGwClusterUrl returns the GwClusterUrl field if non-nil, zero value otherwise.
+
+### GetGwClusterUrlOk
+
+`func (o *PKICertificateIssueDetails) GetGwClusterUrlOk() (*string, bool)`
+
+GetGwClusterUrlOk returns a tuple with the GwClusterUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGwClusterUrl
+
+`func (o *PKICertificateIssueDetails) SetGwClusterUrl(v string)`
+
+SetGwClusterUrl sets GwClusterUrl field to given value.
+
+### HasGwClusterUrl
+
+`func (o *PKICertificateIssueDetails) HasGwClusterUrl() bool`
+
+HasGwClusterUrl returns a boolean if a field has been set.
 
 ### GetIsCa
 
@@ -495,6 +600,31 @@ SetPostalCode sets PostalCode field to given value.
 `func (o *PKICertificateIssueDetails) HasPostalCode() bool`
 
 HasPostalCode returns a boolean if a field has been set.
+
+### GetProtectGeneratedCertificates
+
+`func (o *PKICertificateIssueDetails) GetProtectGeneratedCertificates() bool`
+
+GetProtectGeneratedCertificates returns the ProtectGeneratedCertificates field if non-nil, zero value otherwise.
+
+### GetProtectGeneratedCertificatesOk
+
+`func (o *PKICertificateIssueDetails) GetProtectGeneratedCertificatesOk() (*bool, bool)`
+
+GetProtectGeneratedCertificatesOk returns a tuple with the ProtectGeneratedCertificates field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProtectGeneratedCertificates
+
+`func (o *PKICertificateIssueDetails) SetProtectGeneratedCertificates(v bool)`
+
+SetProtectGeneratedCertificates sets ProtectGeneratedCertificates field to given value.
+
+### HasProtectGeneratedCertificates
+
+`func (o *PKICertificateIssueDetails) HasProtectGeneratedCertificates() bool`
+
+HasProtectGeneratedCertificates returns a boolean if a field has been set.
 
 ### GetProvince
 
