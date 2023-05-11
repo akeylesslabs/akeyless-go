@@ -35,6 +35,12 @@ type UpdatePKICertIssuer struct {
 	Country *string `json:"country,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
+	// A path in which to save generated certificates
+	DestinationPath *string `json:"destination-path,omitempty"`
+	// How many days before the expiration of the certificate would you like to be notified.
+	ExpirationEventIn *[]string `json:"expiration-event-in,omitempty"`
+	// The GW cluster URL to issue the certificate from, required in Public CA mode
+	GwClusterUrl *string `json:"gw-cluster-url,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// key-usage
@@ -57,13 +63,15 @@ type UpdatePKICertIssuer struct {
 	Organizations *string `json:"organizations,omitempty"`
 	// A comma-separated list of the postal code that will be set in the issued certificate
 	PostalCode *string `json:"postal-code,omitempty"`
+	// Whether to protect generated certificates from deletion
+	ProtectCertificates *bool `json:"protect-certificates,omitempty"`
 	// A comma-separated list of the province that will be set in the issued certificate
 	Province *string `json:"province,omitempty"`
 	// List of the existent tags that will be removed from this item
 	RmTag *[]string `json:"rm-tag,omitempty"`
 	// If set, certificates will be flagged for server auth use
 	ServerFlag *bool `json:"server-flag,omitempty"`
-	// A key to sign the certificate with
+	// A key to sign the certificate with, required in Private CA mode
 	SignerKeyName string `json:"signer-key-name"`
 	// A comma-separated list of the street address that will be set in the issued certificate
 	StreetAddress *string `json:"street-address,omitempty"`
@@ -81,6 +89,8 @@ type UpdatePKICertIssuer struct {
 // will change when the set of required properties is changed
 func NewUpdatePKICertIssuer(name string, signerKeyName string, ttl int64, ) *UpdatePKICertIssuer {
 	this := UpdatePKICertIssuer{}
+	var json bool = false
+	this.Json = &json
 	var keyUsage string = "DigitalSignature,KeyAgreement,KeyEncipherment"
 	this.KeyUsage = &keyUsage
 	this.Name = name
@@ -94,8 +104,12 @@ func NewUpdatePKICertIssuer(name string, signerKeyName string, ttl int64, ) *Upd
 // but it doesn't guarantee that properties required by API are set
 func NewUpdatePKICertIssuerWithDefaults() *UpdatePKICertIssuer {
 	this := UpdatePKICertIssuer{}
+	var json bool = false
+	this.Json = &json
 	var keyUsage string = "DigitalSignature,KeyAgreement,KeyEncipherment"
 	this.KeyUsage = &keyUsage
+	var signerKeyName string = "dummy_signer_key"
+	this.SignerKeyName = signerKeyName
 	return &this
 }
 
@@ -385,6 +399,102 @@ func (o *UpdatePKICertIssuer) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *UpdatePKICertIssuer) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetDestinationPath returns the DestinationPath field value if set, zero value otherwise.
+func (o *UpdatePKICertIssuer) GetDestinationPath() string {
+	if o == nil || o.DestinationPath == nil {
+		var ret string
+		return ret
+	}
+	return *o.DestinationPath
+}
+
+// GetDestinationPathOk returns a tuple with the DestinationPath field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdatePKICertIssuer) GetDestinationPathOk() (*string, bool) {
+	if o == nil || o.DestinationPath == nil {
+		return nil, false
+	}
+	return o.DestinationPath, true
+}
+
+// HasDestinationPath returns a boolean if a field has been set.
+func (o *UpdatePKICertIssuer) HasDestinationPath() bool {
+	if o != nil && o.DestinationPath != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDestinationPath gets a reference to the given string and assigns it to the DestinationPath field.
+func (o *UpdatePKICertIssuer) SetDestinationPath(v string) {
+	o.DestinationPath = &v
+}
+
+// GetExpirationEventIn returns the ExpirationEventIn field value if set, zero value otherwise.
+func (o *UpdatePKICertIssuer) GetExpirationEventIn() []string {
+	if o == nil || o.ExpirationEventIn == nil {
+		var ret []string
+		return ret
+	}
+	return *o.ExpirationEventIn
+}
+
+// GetExpirationEventInOk returns a tuple with the ExpirationEventIn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdatePKICertIssuer) GetExpirationEventInOk() (*[]string, bool) {
+	if o == nil || o.ExpirationEventIn == nil {
+		return nil, false
+	}
+	return o.ExpirationEventIn, true
+}
+
+// HasExpirationEventIn returns a boolean if a field has been set.
+func (o *UpdatePKICertIssuer) HasExpirationEventIn() bool {
+	if o != nil && o.ExpirationEventIn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExpirationEventIn gets a reference to the given []string and assigns it to the ExpirationEventIn field.
+func (o *UpdatePKICertIssuer) SetExpirationEventIn(v []string) {
+	o.ExpirationEventIn = &v
+}
+
+// GetGwClusterUrl returns the GwClusterUrl field value if set, zero value otherwise.
+func (o *UpdatePKICertIssuer) GetGwClusterUrl() string {
+	if o == nil || o.GwClusterUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.GwClusterUrl
+}
+
+// GetGwClusterUrlOk returns a tuple with the GwClusterUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdatePKICertIssuer) GetGwClusterUrlOk() (*string, bool) {
+	if o == nil || o.GwClusterUrl == nil {
+		return nil, false
+	}
+	return o.GwClusterUrl, true
+}
+
+// HasGwClusterUrl returns a boolean if a field has been set.
+func (o *UpdatePKICertIssuer) HasGwClusterUrl() bool {
+	if o != nil && o.GwClusterUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGwClusterUrl gets a reference to the given string and assigns it to the GwClusterUrl field.
+func (o *UpdatePKICertIssuer) SetGwClusterUrl(v string) {
+	o.GwClusterUrl = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -731,6 +841,38 @@ func (o *UpdatePKICertIssuer) SetPostalCode(v string) {
 	o.PostalCode = &v
 }
 
+// GetProtectCertificates returns the ProtectCertificates field value if set, zero value otherwise.
+func (o *UpdatePKICertIssuer) GetProtectCertificates() bool {
+	if o == nil || o.ProtectCertificates == nil {
+		var ret bool
+		return ret
+	}
+	return *o.ProtectCertificates
+}
+
+// GetProtectCertificatesOk returns a tuple with the ProtectCertificates field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdatePKICertIssuer) GetProtectCertificatesOk() (*bool, bool) {
+	if o == nil || o.ProtectCertificates == nil {
+		return nil, false
+	}
+	return o.ProtectCertificates, true
+}
+
+// HasProtectCertificates returns a boolean if a field has been set.
+func (o *UpdatePKICertIssuer) HasProtectCertificates() bool {
+	if o != nil && o.ProtectCertificates != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProtectCertificates gets a reference to the given bool and assigns it to the ProtectCertificates field.
+func (o *UpdatePKICertIssuer) SetProtectCertificates(v bool) {
+	o.ProtectCertificates = &v
+}
+
 // GetProvince returns the Province field value if set, zero value otherwise.
 func (o *UpdatePKICertIssuer) GetProvince() string {
 	if o == nil || o.Province == nil {
@@ -1000,6 +1142,15 @@ func (o UpdatePKICertIssuer) MarshalJSON() ([]byte, error) {
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
 	}
+	if o.DestinationPath != nil {
+		toSerialize["destination-path"] = o.DestinationPath
+	}
+	if o.ExpirationEventIn != nil {
+		toSerialize["expiration-event-in"] = o.ExpirationEventIn
+	}
+	if o.GwClusterUrl != nil {
+		toSerialize["gw-cluster-url"] = o.GwClusterUrl
+	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json
 	}
@@ -1032,6 +1183,9 @@ func (o UpdatePKICertIssuer) MarshalJSON() ([]byte, error) {
 	}
 	if o.PostalCode != nil {
 		toSerialize["postal-code"] = o.PostalCode
+	}
+	if o.ProtectCertificates != nil {
+		toSerialize["protect-certificates"] = o.ProtectCertificates
 	}
 	if o.Province != nil {
 		toSerialize["province"] = o.Province

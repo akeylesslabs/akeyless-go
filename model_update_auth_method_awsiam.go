@@ -64,6 +64,10 @@ func NewUpdateAuthMethodAWSIAM(boundAwsAccountId []string, name string, ) *Updat
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
 	this.BoundAwsAccountId = boundAwsAccountId
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	this.Name = name
 	var stsUrl string = "https://sts.amazonaws.com"
 	this.StsUrl = &stsUrl
@@ -77,6 +81,10 @@ func NewUpdateAuthMethodAWSIAMWithDefaults() *UpdateAuthMethodAWSIAM {
 	this := UpdateAuthMethodAWSIAM{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	var stsUrl string = "https://sts.amazonaws.com"
 	this.StsUrl = &stsUrl
 	return &this

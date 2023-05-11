@@ -23,6 +23,7 @@ type SystemAccessCredentialsReplyObj struct {
 	Expiry *int64 `json:"expiry,omitempty"`
 	// Temporary credentials for accessing the KFMs instances
 	KfmCreds *string `json:"kfm_creds,omitempty"`
+	RequiredMfa *string `json:"required_mfa,omitempty"`
 	// Credentials tmp token
 	Token *string `json:"token,omitempty"`
 	// Temporary credentials for accessing the UAM service
@@ -142,6 +143,38 @@ func (o *SystemAccessCredentialsReplyObj) SetKfmCreds(v string) {
 	o.KfmCreds = &v
 }
 
+// GetRequiredMfa returns the RequiredMfa field value if set, zero value otherwise.
+func (o *SystemAccessCredentialsReplyObj) GetRequiredMfa() string {
+	if o == nil || o.RequiredMfa == nil {
+		var ret string
+		return ret
+	}
+	return *o.RequiredMfa
+}
+
+// GetRequiredMfaOk returns a tuple with the RequiredMfa field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SystemAccessCredentialsReplyObj) GetRequiredMfaOk() (*string, bool) {
+	if o == nil || o.RequiredMfa == nil {
+		return nil, false
+	}
+	return o.RequiredMfa, true
+}
+
+// HasRequiredMfa returns a boolean if a field has been set.
+func (o *SystemAccessCredentialsReplyObj) HasRequiredMfa() bool {
+	if o != nil && o.RequiredMfa != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRequiredMfa gets a reference to the given string and assigns it to the RequiredMfa field.
+func (o *SystemAccessCredentialsReplyObj) SetRequiredMfa(v string) {
+	o.RequiredMfa = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *SystemAccessCredentialsReplyObj) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -216,6 +249,9 @@ func (o SystemAccessCredentialsReplyObj) MarshalJSON() ([]byte, error) {
 	}
 	if o.KfmCreds != nil {
 		toSerialize["kfm_creds"] = o.KfmCreds
+	}
+	if o.RequiredMfa != nil {
+		toSerialize["required_mfa"] = o.RequiredMfa
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

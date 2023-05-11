@@ -17,7 +17,7 @@ import (
 
 // GetRotatedSecretValue struct for GetRotatedSecretValue
 type GetRotatedSecretValue struct {
-	// Ignore Cache Retrieve the Secret value without checking the Gateway's cache [true/false]. This flag is only relevant when using the RestAPI
+	// Retrieve the Secret value without checking the Gateway's cache [true/false]. This flag is only relevant when using the RestAPI
 	IgnoreCache *string `json:"ignore-cache,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -37,6 +37,10 @@ type GetRotatedSecretValue struct {
 // will change when the set of required properties is changed
 func NewGetRotatedSecretValue(names string, ) *GetRotatedSecretValue {
 	this := GetRotatedSecretValue{}
+	var ignoreCache string = "false"
+	this.IgnoreCache = &ignoreCache
+	var json bool = false
+	this.Json = &json
 	this.Names = names
 	return &this
 }
@@ -46,6 +50,10 @@ func NewGetRotatedSecretValue(names string, ) *GetRotatedSecretValue {
 // but it doesn't guarantee that properties required by API are set
 func NewGetRotatedSecretValueWithDefaults() *GetRotatedSecretValue {
 	this := GetRotatedSecretValue{}
+	var ignoreCache string = "false"
+	this.IgnoreCache = &ignoreCache
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

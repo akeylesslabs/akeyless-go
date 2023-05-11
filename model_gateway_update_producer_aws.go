@@ -32,9 +32,9 @@ type GatewayUpdateProducerAws struct {
 	AwsUserGroups *string `json:"aws-user-groups,omitempty"`
 	// AWS User policies
 	AwsUserPolicies *string `json:"aws-user-policies,omitempty"`
-	// AWS User programmatic access
+	// Enable AWS User programmatic access
 	AwsUserProgrammaticAccess *bool `json:"aws-user-programmatic-access,omitempty"`
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Automatic admin credentials rotation
 	EnableAdminRotation *bool `json:"enable-admin-rotation,omitempty"`
@@ -48,14 +48,21 @@ type GatewayUpdateProducerAws struct {
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
 	// Region
 	Region *string `json:"region,omitempty"`
+	// The AWS account id
 	SecureAccessAwsAccountId *string `json:"secure-access-aws-account-id,omitempty"`
+	// The AWS native cli
 	SecureAccessAwsNativeCli *bool `json:"secure-access-aws-native-cli,omitempty"`
+	// Path to the SSH Certificate Issuer for your Akeyless Bastion
 	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
+	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Enable Web Secure Remote Access
 	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
+	// Secure browser via Akeyless Web Access Bastion
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
+	// Web-Proxy via Akeyless Web Access Bastion
 	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
-	// List of the tags attached to this secret
+	// Add tags attached to this object
 	Tags *[]string `json:"tags,omitempty"`
 	// Target name
 	TargetName *string `json:"target-name,omitempty"`
@@ -81,9 +88,17 @@ func NewGatewayUpdateProducerAws(name string, ) *GatewayUpdateProducerAws {
 	this.AwsUserProgrammaticAccess = &awsUserProgrammaticAccess
 	var enableAdminRotation bool = false
 	this.EnableAdminRotation = &enableAdminRotation
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	var region string = "us-east-2"
 	this.Region = &region
+	var secureAccessWeb bool = true
+	this.SecureAccessWeb = &secureAccessWeb
+	var secureAccessWebBrowsing bool = false
+	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
+	var secureAccessWebProxy bool = false
+	this.SecureAccessWebProxy = &secureAccessWebProxy
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
@@ -102,8 +117,16 @@ func NewGatewayUpdateProducerAwsWithDefaults() *GatewayUpdateProducerAws {
 	this.AwsUserProgrammaticAccess = &awsUserProgrammaticAccess
 	var enableAdminRotation bool = false
 	this.EnableAdminRotation = &enableAdminRotation
+	var json bool = false
+	this.Json = &json
 	var region string = "us-east-2"
 	this.Region = &region
+	var secureAccessWeb bool = true
+	this.SecureAccessWeb = &secureAccessWeb
+	var secureAccessWebBrowsing bool = false
+	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
+	var secureAccessWebProxy bool = false
+	this.SecureAccessWebProxy = &secureAccessWebProxy
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this

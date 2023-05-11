@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **LastVersion** | Pointer to **int32** |  | [optional] 
 **ModificationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **ProtectionKeyName** | Pointer to **string** |  | [optional] 
+**TargetDetails** | Pointer to **string** |  | [optional] 
 **TargetId** | Pointer to **int64** |  | [optional] 
 **TargetItemsAssoc** | Pointer to [**[]TargetItemAssociation**](TargetItemAssociation.md) |  | [optional] 
 **TargetName** | Pointer to **string** |  | [optional] 
@@ -315,6 +316,31 @@ SetProtectionKeyName sets ProtectionKeyName field to given value.
 `func (o *Target) HasProtectionKeyName() bool`
 
 HasProtectionKeyName returns a boolean if a field has been set.
+
+### GetTargetDetails
+
+`func (o *Target) GetTargetDetails() string`
+
+GetTargetDetails returns the TargetDetails field if non-nil, zero value otherwise.
+
+### GetTargetDetailsOk
+
+`func (o *Target) GetTargetDetailsOk() (*string, bool)`
+
+GetTargetDetailsOk returns a tuple with the TargetDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetDetails
+
+`func (o *Target) SetTargetDetails(v string)`
+
+SetTargetDetails sets TargetDetails field to given value.
+
+### HasTargetDetails
+
+`func (o *Target) HasTargetDetails() bool`
+
+HasTargetDetails returns a boolean if a field has been set.
 
 ### GetTargetId
 

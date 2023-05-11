@@ -13,19 +13,24 @@ package akeyless
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // AllowedAccess struct for AllowedAccess
 type AllowedAccess struct {
-	AccId *string `json:"acc_id,omitempty"`
-	AccessRulesType *string `json:"access_rules_type,omitempty"`
-	AllowedApi *bool `json:"allowed_api,omitempty"`
-	AllowedsLogin *bool `json:"alloweds_login,omitempty"`
-	ErrMsg *string `json:"err_msg,omitempty"`
-	Hash *string `json:"hash,omitempty"`
+	AccessId *string `json:"access_id,omitempty"`
+	AccessType *string `json:"access_type,omitempty"`
+	ClusterId *int64 `json:"cluster_id,omitempty"`
+	CreatedAt *time.Time `json:"created_at,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Editable *bool `json:"editable,omitempty"`
+	Error *string `json:"error,omitempty"`
+	Id *int64 `json:"id,omitempty"`
 	IsValid *bool `json:"is_valid,omitempty"`
 	Name *string `json:"name,omitempty"`
+	Permissions *[]string `json:"permissions,omitempty"`
 	SubClaims *map[string][]string `json:"sub_claims,omitempty"`
+	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 }
 
 // NewAllowedAccess instantiates a new AllowedAccess object
@@ -45,196 +50,260 @@ func NewAllowedAccessWithDefaults() *AllowedAccess {
 	return &this
 }
 
-// GetAccId returns the AccId field value if set, zero value otherwise.
-func (o *AllowedAccess) GetAccId() string {
-	if o == nil || o.AccId == nil {
+// GetAccessId returns the AccessId field value if set, zero value otherwise.
+func (o *AllowedAccess) GetAccessId() string {
+	if o == nil || o.AccessId == nil {
 		var ret string
 		return ret
 	}
-	return *o.AccId
+	return *o.AccessId
 }
 
-// GetAccIdOk returns a tuple with the AccId field value if set, nil otherwise
+// GetAccessIdOk returns a tuple with the AccessId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AllowedAccess) GetAccIdOk() (*string, bool) {
-	if o == nil || o.AccId == nil {
+func (o *AllowedAccess) GetAccessIdOk() (*string, bool) {
+	if o == nil || o.AccessId == nil {
 		return nil, false
 	}
-	return o.AccId, true
+	return o.AccessId, true
 }
 
-// HasAccId returns a boolean if a field has been set.
-func (o *AllowedAccess) HasAccId() bool {
-	if o != nil && o.AccId != nil {
+// HasAccessId returns a boolean if a field has been set.
+func (o *AllowedAccess) HasAccessId() bool {
+	if o != nil && o.AccessId != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAccId gets a reference to the given string and assigns it to the AccId field.
-func (o *AllowedAccess) SetAccId(v string) {
-	o.AccId = &v
+// SetAccessId gets a reference to the given string and assigns it to the AccessId field.
+func (o *AllowedAccess) SetAccessId(v string) {
+	o.AccessId = &v
 }
 
-// GetAccessRulesType returns the AccessRulesType field value if set, zero value otherwise.
-func (o *AllowedAccess) GetAccessRulesType() string {
-	if o == nil || o.AccessRulesType == nil {
+// GetAccessType returns the AccessType field value if set, zero value otherwise.
+func (o *AllowedAccess) GetAccessType() string {
+	if o == nil || o.AccessType == nil {
 		var ret string
 		return ret
 	}
-	return *o.AccessRulesType
+	return *o.AccessType
 }
 
-// GetAccessRulesTypeOk returns a tuple with the AccessRulesType field value if set, nil otherwise
+// GetAccessTypeOk returns a tuple with the AccessType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AllowedAccess) GetAccessRulesTypeOk() (*string, bool) {
-	if o == nil || o.AccessRulesType == nil {
+func (o *AllowedAccess) GetAccessTypeOk() (*string, bool) {
+	if o == nil || o.AccessType == nil {
 		return nil, false
 	}
-	return o.AccessRulesType, true
+	return o.AccessType, true
 }
 
-// HasAccessRulesType returns a boolean if a field has been set.
-func (o *AllowedAccess) HasAccessRulesType() bool {
-	if o != nil && o.AccessRulesType != nil {
+// HasAccessType returns a boolean if a field has been set.
+func (o *AllowedAccess) HasAccessType() bool {
+	if o != nil && o.AccessType != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAccessRulesType gets a reference to the given string and assigns it to the AccessRulesType field.
-func (o *AllowedAccess) SetAccessRulesType(v string) {
-	o.AccessRulesType = &v
+// SetAccessType gets a reference to the given string and assigns it to the AccessType field.
+func (o *AllowedAccess) SetAccessType(v string) {
+	o.AccessType = &v
 }
 
-// GetAllowedApi returns the AllowedApi field value if set, zero value otherwise.
-func (o *AllowedAccess) GetAllowedApi() bool {
-	if o == nil || o.AllowedApi == nil {
+// GetClusterId returns the ClusterId field value if set, zero value otherwise.
+func (o *AllowedAccess) GetClusterId() int64 {
+	if o == nil || o.ClusterId == nil {
+		var ret int64
+		return ret
+	}
+	return *o.ClusterId
+}
+
+// GetClusterIdOk returns a tuple with the ClusterId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AllowedAccess) GetClusterIdOk() (*int64, bool) {
+	if o == nil || o.ClusterId == nil {
+		return nil, false
+	}
+	return o.ClusterId, true
+}
+
+// HasClusterId returns a boolean if a field has been set.
+func (o *AllowedAccess) HasClusterId() bool {
+	if o != nil && o.ClusterId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetClusterId gets a reference to the given int64 and assigns it to the ClusterId field.
+func (o *AllowedAccess) SetClusterId(v int64) {
+	o.ClusterId = &v
+}
+
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+func (o *AllowedAccess) GetCreatedAt() time.Time {
+	if o == nil || o.CreatedAt == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.CreatedAt
+}
+
+// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AllowedAccess) GetCreatedAtOk() (*time.Time, bool) {
+	if o == nil || o.CreatedAt == nil {
+		return nil, false
+	}
+	return o.CreatedAt, true
+}
+
+// HasCreatedAt returns a boolean if a field has been set.
+func (o *AllowedAccess) HasCreatedAt() bool {
+	if o != nil && o.CreatedAt != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
+func (o *AllowedAccess) SetCreatedAt(v time.Time) {
+	o.CreatedAt = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *AllowedAccess) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AllowedAccess) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *AllowedAccess) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *AllowedAccess) SetDescription(v string) {
+	o.Description = &v
+}
+
+// GetEditable returns the Editable field value if set, zero value otherwise.
+func (o *AllowedAccess) GetEditable() bool {
+	if o == nil || o.Editable == nil {
 		var ret bool
 		return ret
 	}
-	return *o.AllowedApi
+	return *o.Editable
 }
 
-// GetAllowedApiOk returns a tuple with the AllowedApi field value if set, nil otherwise
+// GetEditableOk returns a tuple with the Editable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AllowedAccess) GetAllowedApiOk() (*bool, bool) {
-	if o == nil || o.AllowedApi == nil {
+func (o *AllowedAccess) GetEditableOk() (*bool, bool) {
+	if o == nil || o.Editable == nil {
 		return nil, false
 	}
-	return o.AllowedApi, true
+	return o.Editable, true
 }
 
-// HasAllowedApi returns a boolean if a field has been set.
-func (o *AllowedAccess) HasAllowedApi() bool {
-	if o != nil && o.AllowedApi != nil {
+// HasEditable returns a boolean if a field has been set.
+func (o *AllowedAccess) HasEditable() bool {
+	if o != nil && o.Editable != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAllowedApi gets a reference to the given bool and assigns it to the AllowedApi field.
-func (o *AllowedAccess) SetAllowedApi(v bool) {
-	o.AllowedApi = &v
+// SetEditable gets a reference to the given bool and assigns it to the Editable field.
+func (o *AllowedAccess) SetEditable(v bool) {
+	o.Editable = &v
 }
 
-// GetAllowedsLogin returns the AllowedsLogin field value if set, zero value otherwise.
-func (o *AllowedAccess) GetAllowedsLogin() bool {
-	if o == nil || o.AllowedsLogin == nil {
-		var ret bool
-		return ret
-	}
-	return *o.AllowedsLogin
-}
-
-// GetAllowedsLoginOk returns a tuple with the AllowedsLogin field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AllowedAccess) GetAllowedsLoginOk() (*bool, bool) {
-	if o == nil || o.AllowedsLogin == nil {
-		return nil, false
-	}
-	return o.AllowedsLogin, true
-}
-
-// HasAllowedsLogin returns a boolean if a field has been set.
-func (o *AllowedAccess) HasAllowedsLogin() bool {
-	if o != nil && o.AllowedsLogin != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAllowedsLogin gets a reference to the given bool and assigns it to the AllowedsLogin field.
-func (o *AllowedAccess) SetAllowedsLogin(v bool) {
-	o.AllowedsLogin = &v
-}
-
-// GetErrMsg returns the ErrMsg field value if set, zero value otherwise.
-func (o *AllowedAccess) GetErrMsg() string {
-	if o == nil || o.ErrMsg == nil {
+// GetError returns the Error field value if set, zero value otherwise.
+func (o *AllowedAccess) GetError() string {
+	if o == nil || o.Error == nil {
 		var ret string
 		return ret
 	}
-	return *o.ErrMsg
+	return *o.Error
 }
 
-// GetErrMsgOk returns a tuple with the ErrMsg field value if set, nil otherwise
+// GetErrorOk returns a tuple with the Error field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AllowedAccess) GetErrMsgOk() (*string, bool) {
-	if o == nil || o.ErrMsg == nil {
+func (o *AllowedAccess) GetErrorOk() (*string, bool) {
+	if o == nil || o.Error == nil {
 		return nil, false
 	}
-	return o.ErrMsg, true
+	return o.Error, true
 }
 
-// HasErrMsg returns a boolean if a field has been set.
-func (o *AllowedAccess) HasErrMsg() bool {
-	if o != nil && o.ErrMsg != nil {
+// HasError returns a boolean if a field has been set.
+func (o *AllowedAccess) HasError() bool {
+	if o != nil && o.Error != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetErrMsg gets a reference to the given string and assigns it to the ErrMsg field.
-func (o *AllowedAccess) SetErrMsg(v string) {
-	o.ErrMsg = &v
+// SetError gets a reference to the given string and assigns it to the Error field.
+func (o *AllowedAccess) SetError(v string) {
+	o.Error = &v
 }
 
-// GetHash returns the Hash field value if set, zero value otherwise.
-func (o *AllowedAccess) GetHash() string {
-	if o == nil || o.Hash == nil {
-		var ret string
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *AllowedAccess) GetId() int64 {
+	if o == nil || o.Id == nil {
+		var ret int64
 		return ret
 	}
-	return *o.Hash
+	return *o.Id
 }
 
-// GetHashOk returns a tuple with the Hash field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AllowedAccess) GetHashOk() (*string, bool) {
-	if o == nil || o.Hash == nil {
+func (o *AllowedAccess) GetIdOk() (*int64, bool) {
+	if o == nil || o.Id == nil {
 		return nil, false
 	}
-	return o.Hash, true
+	return o.Id, true
 }
 
-// HasHash returns a boolean if a field has been set.
-func (o *AllowedAccess) HasHash() bool {
-	if o != nil && o.Hash != nil {
+// HasId returns a boolean if a field has been set.
+func (o *AllowedAccess) HasId() bool {
+	if o != nil && o.Id != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetHash gets a reference to the given string and assigns it to the Hash field.
-func (o *AllowedAccess) SetHash(v string) {
-	o.Hash = &v
+// SetId gets a reference to the given int64 and assigns it to the Id field.
+func (o *AllowedAccess) SetId(v int64) {
+	o.Id = &v
 }
 
 // GetIsValid returns the IsValid field value if set, zero value otherwise.
@@ -301,6 +370,38 @@ func (o *AllowedAccess) SetName(v string) {
 	o.Name = &v
 }
 
+// GetPermissions returns the Permissions field value if set, zero value otherwise.
+func (o *AllowedAccess) GetPermissions() []string {
+	if o == nil || o.Permissions == nil {
+		var ret []string
+		return ret
+	}
+	return *o.Permissions
+}
+
+// GetPermissionsOk returns a tuple with the Permissions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AllowedAccess) GetPermissionsOk() (*[]string, bool) {
+	if o == nil || o.Permissions == nil {
+		return nil, false
+	}
+	return o.Permissions, true
+}
+
+// HasPermissions returns a boolean if a field has been set.
+func (o *AllowedAccess) HasPermissions() bool {
+	if o != nil && o.Permissions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPermissions gets a reference to the given []string and assigns it to the Permissions field.
+func (o *AllowedAccess) SetPermissions(v []string) {
+	o.Permissions = &v
+}
+
 // GetSubClaims returns the SubClaims field value if set, zero value otherwise.
 func (o *AllowedAccess) GetSubClaims() map[string][]string {
 	if o == nil || o.SubClaims == nil {
@@ -333,25 +434,63 @@ func (o *AllowedAccess) SetSubClaims(v map[string][]string) {
 	o.SubClaims = &v
 }
 
+// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
+func (o *AllowedAccess) GetUpdatedAt() time.Time {
+	if o == nil || o.UpdatedAt == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.UpdatedAt
+}
+
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AllowedAccess) GetUpdatedAtOk() (*time.Time, bool) {
+	if o == nil || o.UpdatedAt == nil {
+		return nil, false
+	}
+	return o.UpdatedAt, true
+}
+
+// HasUpdatedAt returns a boolean if a field has been set.
+func (o *AllowedAccess) HasUpdatedAt() bool {
+	if o != nil && o.UpdatedAt != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
+func (o *AllowedAccess) SetUpdatedAt(v time.Time) {
+	o.UpdatedAt = &v
+}
+
 func (o AllowedAccess) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.AccId != nil {
-		toSerialize["acc_id"] = o.AccId
+	if o.AccessId != nil {
+		toSerialize["access_id"] = o.AccessId
 	}
-	if o.AccessRulesType != nil {
-		toSerialize["access_rules_type"] = o.AccessRulesType
+	if o.AccessType != nil {
+		toSerialize["access_type"] = o.AccessType
 	}
-	if o.AllowedApi != nil {
-		toSerialize["allowed_api"] = o.AllowedApi
+	if o.ClusterId != nil {
+		toSerialize["cluster_id"] = o.ClusterId
 	}
-	if o.AllowedsLogin != nil {
-		toSerialize["alloweds_login"] = o.AllowedsLogin
+	if o.CreatedAt != nil {
+		toSerialize["created_at"] = o.CreatedAt
 	}
-	if o.ErrMsg != nil {
-		toSerialize["err_msg"] = o.ErrMsg
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
-	if o.Hash != nil {
-		toSerialize["hash"] = o.Hash
+	if o.Editable != nil {
+		toSerialize["editable"] = o.Editable
+	}
+	if o.Error != nil {
+		toSerialize["error"] = o.Error
+	}
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
 	}
 	if o.IsValid != nil {
 		toSerialize["is_valid"] = o.IsValid
@@ -359,8 +498,14 @@ func (o AllowedAccess) MarshalJSON() ([]byte, error) {
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
+	if o.Permissions != nil {
+		toSerialize["permissions"] = o.Permissions
+	}
 	if o.SubClaims != nil {
 		toSerialize["sub_claims"] = o.SubClaims
+	}
+	if o.UpdatedAt != nil {
+		toSerialize["updated_at"] = o.UpdatedAt
 	}
 	return json.Marshal(toSerialize)
 }

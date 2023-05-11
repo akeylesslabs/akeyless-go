@@ -17,6 +17,7 @@ import (
 
 // GatewayMessageQueueInfo struct for GatewayMessageQueueInfo
 type GatewayMessageQueueInfo struct {
+	BroadcastQueueNameA *string `json:"broadcast_queue_name_a,omitempty"`
 	MqType *string `json:"mq_type,omitempty"`
 	QueueName *string `json:"queue_name,omitempty"`
 	QueueUrl *string `json:"queue_url,omitempty"`
@@ -37,6 +38,38 @@ func NewGatewayMessageQueueInfo() *GatewayMessageQueueInfo {
 func NewGatewayMessageQueueInfoWithDefaults() *GatewayMessageQueueInfo {
 	this := GatewayMessageQueueInfo{}
 	return &this
+}
+
+// GetBroadcastQueueNameA returns the BroadcastQueueNameA field value if set, zero value otherwise.
+func (o *GatewayMessageQueueInfo) GetBroadcastQueueNameA() string {
+	if o == nil || o.BroadcastQueueNameA == nil {
+		var ret string
+		return ret
+	}
+	return *o.BroadcastQueueNameA
+}
+
+// GetBroadcastQueueNameAOk returns a tuple with the BroadcastQueueNameA field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayMessageQueueInfo) GetBroadcastQueueNameAOk() (*string, bool) {
+	if o == nil || o.BroadcastQueueNameA == nil {
+		return nil, false
+	}
+	return o.BroadcastQueueNameA, true
+}
+
+// HasBroadcastQueueNameA returns a boolean if a field has been set.
+func (o *GatewayMessageQueueInfo) HasBroadcastQueueNameA() bool {
+	if o != nil && o.BroadcastQueueNameA != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBroadcastQueueNameA gets a reference to the given string and assigns it to the BroadcastQueueNameA field.
+func (o *GatewayMessageQueueInfo) SetBroadcastQueueNameA(v string) {
+	o.BroadcastQueueNameA = &v
 }
 
 // GetMqType returns the MqType field value if set, zero value otherwise.
@@ -137,6 +170,9 @@ func (o *GatewayMessageQueueInfo) SetQueueUrl(v string) {
 
 func (o GatewayMessageQueueInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.BroadcastQueueNameA != nil {
+		toSerialize["broadcast_queue_name_a"] = o.BroadcastQueueNameA
+	}
 	if o.MqType != nil {
 		toSerialize["mq_type"] = o.MqType
 	}

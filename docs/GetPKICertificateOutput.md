@@ -4,9 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CertDisplayId** | Pointer to **string** |  | [optional] 
 **Data** | Pointer to **string** |  | [optional] 
 **ParentCert** | Pointer to **string** |  | [optional] 
 **Path** | Pointer to **string** |  | [optional] 
+**ReadingToken** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -26,6 +28,31 @@ will change when the set of required properties is changed
 NewGetPKICertificateOutputWithDefaults instantiates a new GetPKICertificateOutput object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCertDisplayId
+
+`func (o *GetPKICertificateOutput) GetCertDisplayId() string`
+
+GetCertDisplayId returns the CertDisplayId field if non-nil, zero value otherwise.
+
+### GetCertDisplayIdOk
+
+`func (o *GetPKICertificateOutput) GetCertDisplayIdOk() (*string, bool)`
+
+GetCertDisplayIdOk returns a tuple with the CertDisplayId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertDisplayId
+
+`func (o *GetPKICertificateOutput) SetCertDisplayId(v string)`
+
+SetCertDisplayId sets CertDisplayId field to given value.
+
+### HasCertDisplayId
+
+`func (o *GetPKICertificateOutput) HasCertDisplayId() bool`
+
+HasCertDisplayId returns a boolean if a field has been set.
 
 ### GetData
 
@@ -101,6 +128,31 @@ SetPath sets Path field to given value.
 `func (o *GetPKICertificateOutput) HasPath() bool`
 
 HasPath returns a boolean if a field has been set.
+
+### GetReadingToken
+
+`func (o *GetPKICertificateOutput) GetReadingToken() string`
+
+GetReadingToken returns the ReadingToken field if non-nil, zero value otherwise.
+
+### GetReadingTokenOk
+
+`func (o *GetPKICertificateOutput) GetReadingTokenOk() (*string, bool)`
+
+GetReadingTokenOk returns a tuple with the ReadingToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReadingToken
+
+`func (o *GetPKICertificateOutput) SetReadingToken(v string)`
+
+SetReadingToken sets ReadingToken field to given value.
+
+### HasReadingToken
+
+`func (o *GetPKICertificateOutput) HasReadingToken() bool`
+
+HasReadingToken returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

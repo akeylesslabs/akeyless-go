@@ -17,6 +17,8 @@ import (
 
 // CertAccessRules struct for CertAccessRules
 type CertAccessRules struct {
+	// a list of allowed cors domains if used for browser authentication
+	AllowedCors *[]string `json:"allowed_cors,omitempty"`
 	// A list of names. At least one must exist in the Common Name. Supports globbing.
 	BoundCommonNames *[]string `json:"bound_common_names,omitempty"`
 	// A list of DNS names. At least one must exist in the SANs. Supports globbing.
@@ -52,6 +54,38 @@ func NewCertAccessRules() *CertAccessRules {
 func NewCertAccessRulesWithDefaults() *CertAccessRules {
 	this := CertAccessRules{}
 	return &this
+}
+
+// GetAllowedCors returns the AllowedCors field value if set, zero value otherwise.
+func (o *CertAccessRules) GetAllowedCors() []string {
+	if o == nil || o.AllowedCors == nil {
+		var ret []string
+		return ret
+	}
+	return *o.AllowedCors
+}
+
+// GetAllowedCorsOk returns a tuple with the AllowedCors field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CertAccessRules) GetAllowedCorsOk() (*[]string, bool) {
+	if o == nil || o.AllowedCors == nil {
+		return nil, false
+	}
+	return o.AllowedCors, true
+}
+
+// HasAllowedCors returns a boolean if a field has been set.
+func (o *CertAccessRules) HasAllowedCors() bool {
+	if o != nil && o.AllowedCors != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowedCors gets a reference to the given []string and assigns it to the AllowedCors field.
+func (o *CertAccessRules) SetAllowedCors(v []string) {
+	o.AllowedCors = &v
 }
 
 // GetBoundCommonNames returns the BoundCommonNames field value if set, zero value otherwise.
@@ -344,6 +378,9 @@ func (o *CertAccessRules) SetUniqueIdentifier(v string) {
 
 func (o CertAccessRules) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AllowedCors != nil {
+		toSerialize["allowed_cors"] = o.AllowedCors
+	}
 	if o.BoundCommonNames != nil {
 		toSerialize["bound_common_names"] = o.BoundCommonNames
 	}

@@ -62,6 +62,10 @@ func NewConnect() *Connect {
 	this.BastionCtrlPort = &bastionCtrlPort
 	var bastionCtrlProto string = "http"
 	this.BastionCtrlProto = &bastionCtrlProto
+	var json bool = false
+	this.Json = &json
+	var sshLegacySigningAlg bool = false
+	this.SshLegacySigningAlg = &sshLegacySigningAlg
 	return &this
 }
 
@@ -74,6 +78,10 @@ func NewConnectWithDefaults() *Connect {
 	this.BastionCtrlPort = &bastionCtrlPort
 	var bastionCtrlProto string = "http"
 	this.BastionCtrlProto = &bastionCtrlProto
+	var json bool = false
+	this.Json = &json
+	var sshLegacySigningAlg bool = false
+	this.SshLegacySigningAlg = &sshLegacySigningAlg
 	return &this
 }
 

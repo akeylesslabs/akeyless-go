@@ -17,7 +17,7 @@ import (
 
 // GatewayUpdateProducerGcp gatewayUpdateProducerGcp is a command that updates a GCP producer
 type GatewayUpdateProducerGcp struct {
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	GcpCredType *string `json:"gcp-cred-type,omitempty"`
 	// Base64-encoded service account private key text
@@ -40,7 +40,7 @@ type GatewayUpdateProducerGcp struct {
 	RoleBinding *string `json:"role-binding,omitempty"`
 	// The type of the gcp dynamic secret. Options[fixed, dynamic]
 	ServiceAccountType string `json:"service-account-type"`
-	// List of the tags attached to this secret
+	// Add tags attached to this object
 	Tags *[]string `json:"tags,omitempty"`
 	// Target name
 	TargetName *string `json:"target-name,omitempty"`
@@ -58,6 +58,8 @@ type GatewayUpdateProducerGcp struct {
 // will change when the set of required properties is changed
 func NewGatewayUpdateProducerGcp(name string, serviceAccountType string, ) *GatewayUpdateProducerGcp {
 	this := GatewayUpdateProducerGcp{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	this.ServiceAccountType = serviceAccountType
 	var userTtl string = "60m"
@@ -70,6 +72,8 @@ func NewGatewayUpdateProducerGcp(name string, serviceAccountType string, ) *Gate
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayUpdateProducerGcpWithDefaults() *GatewayUpdateProducerGcp {
 	this := GatewayUpdateProducerGcp{}
+	var json bool = false
+	this.Json = &json
 	var serviceAccountType string = "fixed"
 	this.ServiceAccountType = serviceAccountType
 	var userTtl string = "60m"
