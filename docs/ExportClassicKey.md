@@ -4,8 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IgnoreCache** | Pointer to **string** | Ignore Cache Retrieve the Secret value without checking the Gateway&#39;s cache. This flag is only relevant when using the RestAPI | [optional] [default to "false"]
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**ExportPublicKey** | Pointer to **bool** | Use this option to output only public key | [optional] [default to false]
+**IgnoreCache** | Pointer to **string** | Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI | [optional] [default to "false"]
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | ClassicKey name | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -29,6 +30,31 @@ will change when the set of required properties is changed
 NewExportClassicKeyWithDefaults instantiates a new ExportClassicKey object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetExportPublicKey
+
+`func (o *ExportClassicKey) GetExportPublicKey() bool`
+
+GetExportPublicKey returns the ExportPublicKey field if non-nil, zero value otherwise.
+
+### GetExportPublicKeyOk
+
+`func (o *ExportClassicKey) GetExportPublicKeyOk() (*bool, bool)`
+
+GetExportPublicKeyOk returns a tuple with the ExportPublicKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExportPublicKey
+
+`func (o *ExportClassicKey) SetExportPublicKey(v bool)`
+
+SetExportPublicKey sets ExportPublicKey field to given value.
+
+### HasExportPublicKey
+
+`func (o *ExportClassicKey) HasExportPublicKey() bool`
+
+HasExportPublicKey returns a boolean if a field has been set.
 
 ### GetIgnoreCache
 

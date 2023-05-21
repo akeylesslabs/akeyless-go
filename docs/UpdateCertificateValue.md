@@ -4,11 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CertificateData** | Pointer to **string** | Content of the certificate PEM in a Base64 format. | [optional] 
+**CertificateData** | Pointer to **string** | Content of the certificate in a Base64 format. | [optional] 
 **ExpirationEventIn** | Pointer to **[]string** | How many days before the expiration of the certificate would you like to be notified. | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Format** | Pointer to **string** | CertificateFormat of the certificate and private key, possible values: cer,crt,pem,pfx,p12. Required when passing inline certificate content with --certificate-data or --key-data, otherwise format is derived from the file extension. | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | Pointer to **string** | The name of a key to use to encrypt the certificate&#39;s key (if empty, the account default protectionKey key will be used) | [optional] 
-**KeyData** | Pointer to **string** | Content of the certificate&#39;s private key PEM in a Base64 format. | [optional] 
+**KeyData** | Pointer to **string** | Content of the certificate&#39;s private key in a Base64 format. | [optional] 
 **Name** | **string** | Certificate name | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -81,6 +82,31 @@ SetExpirationEventIn sets ExpirationEventIn field to given value.
 `func (o *UpdateCertificateValue) HasExpirationEventIn() bool`
 
 HasExpirationEventIn returns a boolean if a field has been set.
+
+### GetFormat
+
+`func (o *UpdateCertificateValue) GetFormat() string`
+
+GetFormat returns the Format field if non-nil, zero value otherwise.
+
+### GetFormatOk
+
+`func (o *UpdateCertificateValue) GetFormatOk() (*string, bool)`
+
+GetFormatOk returns a tuple with the Format field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFormat
+
+`func (o *UpdateCertificateValue) SetFormat(v string)`
+
+SetFormat sets Format field to given value.
+
+### HasFormat
+
+`func (o *UpdateCertificateValue) HasFormat() bool`
+
+HasFormat returns a boolean if a field has been set.
 
 ### GetJson
 

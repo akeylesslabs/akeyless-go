@@ -17,7 +17,8 @@ import (
 
 // AdminsConfigPart struct for AdminsConfigPart
 type AdminsConfigPart struct {
-	AllowedAccess *map[string]AllowedAccess `json:"allowed_access,omitempty"`
+	AdminsMigrationStatus *int64 `json:"admins_migration_status,omitempty"`
+	AllowedAccess *map[string]AllowedAccessOld `json:"allowed_access,omitempty"`
 }
 
 // NewAdminsConfigPart instantiates a new AdminsConfigPart object
@@ -37,10 +38,42 @@ func NewAdminsConfigPartWithDefaults() *AdminsConfigPart {
 	return &this
 }
 
+// GetAdminsMigrationStatus returns the AdminsMigrationStatus field value if set, zero value otherwise.
+func (o *AdminsConfigPart) GetAdminsMigrationStatus() int64 {
+	if o == nil || o.AdminsMigrationStatus == nil {
+		var ret int64
+		return ret
+	}
+	return *o.AdminsMigrationStatus
+}
+
+// GetAdminsMigrationStatusOk returns a tuple with the AdminsMigrationStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdminsConfigPart) GetAdminsMigrationStatusOk() (*int64, bool) {
+	if o == nil || o.AdminsMigrationStatus == nil {
+		return nil, false
+	}
+	return o.AdminsMigrationStatus, true
+}
+
+// HasAdminsMigrationStatus returns a boolean if a field has been set.
+func (o *AdminsConfigPart) HasAdminsMigrationStatus() bool {
+	if o != nil && o.AdminsMigrationStatus != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdminsMigrationStatus gets a reference to the given int64 and assigns it to the AdminsMigrationStatus field.
+func (o *AdminsConfigPart) SetAdminsMigrationStatus(v int64) {
+	o.AdminsMigrationStatus = &v
+}
+
 // GetAllowedAccess returns the AllowedAccess field value if set, zero value otherwise.
-func (o *AdminsConfigPart) GetAllowedAccess() map[string]AllowedAccess {
+func (o *AdminsConfigPart) GetAllowedAccess() map[string]AllowedAccessOld {
 	if o == nil || o.AllowedAccess == nil {
-		var ret map[string]AllowedAccess
+		var ret map[string]AllowedAccessOld
 		return ret
 	}
 	return *o.AllowedAccess
@@ -48,7 +81,7 @@ func (o *AdminsConfigPart) GetAllowedAccess() map[string]AllowedAccess {
 
 // GetAllowedAccessOk returns a tuple with the AllowedAccess field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AdminsConfigPart) GetAllowedAccessOk() (*map[string]AllowedAccess, bool) {
+func (o *AdminsConfigPart) GetAllowedAccessOk() (*map[string]AllowedAccessOld, bool) {
 	if o == nil || o.AllowedAccess == nil {
 		return nil, false
 	}
@@ -64,13 +97,16 @@ func (o *AdminsConfigPart) HasAllowedAccess() bool {
 	return false
 }
 
-// SetAllowedAccess gets a reference to the given map[string]AllowedAccess and assigns it to the AllowedAccess field.
-func (o *AdminsConfigPart) SetAllowedAccess(v map[string]AllowedAccess) {
+// SetAllowedAccess gets a reference to the given map[string]AllowedAccessOld and assigns it to the AllowedAccess field.
+func (o *AdminsConfigPart) SetAllowedAccess(v map[string]AllowedAccessOld) {
 	o.AllowedAccess = &v
 }
 
 func (o AdminsConfigPart) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AdminsMigrationStatus != nil {
+		toSerialize["admins_migration_status"] = o.AdminsMigrationStatus
+	}
 	if o.AllowedAccess != nil {
 		toSerialize["allowed_access"] = o.AllowedAccess
 	}

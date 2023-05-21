@@ -21,7 +21,7 @@ type Encrypt struct {
 	DisplayId *string `json:"display-id,omitempty"`
 	// name-value pair that specifies the encryption context to be used for authenticated encryption. If used here, the same value must be supplied to the decrypt command or decryption will fail
 	EncryptionContext *map[string]string `json:"encryption-context,omitempty"`
-	// If specified, the plaintext input is assumed to be formatted accordingly. Current supported options: [base64]
+	// Select default assumed format for any plaintext input. Currently supported options: [base64]
 	InputFormat *string `json:"input-format,omitempty"`
 	// The item id of the key to use in the encryption process
 	ItemId *int64 `json:"item-id,omitempty"`
@@ -35,6 +35,8 @@ type Encrypt struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// key version (relevant only for classic key)
+	Version *int32 `json:"version,omitempty"`
 }
 
 // NewEncrypt instantiates a new Encrypt object
@@ -43,6 +45,8 @@ type Encrypt struct {
 // will change when the set of required properties is changed
 func NewEncrypt(keyName string, ) *Encrypt {
 	this := Encrypt{}
+	var json bool = false
+	this.Json = &json
 	this.KeyName = keyName
 	return &this
 }
@@ -52,6 +56,8 @@ func NewEncrypt(keyName string, ) *Encrypt {
 // but it doesn't guarantee that properties required by API are set
 func NewEncryptWithDefaults() *Encrypt {
 	this := Encrypt{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -335,6 +341,38 @@ func (o *Encrypt) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetVersion returns the Version field value if set, zero value otherwise.
+func (o *Encrypt) GetVersion() int32 {
+	if o == nil || o.Version == nil {
+		var ret int32
+		return ret
+	}
+	return *o.Version
+}
+
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Encrypt) GetVersionOk() (*int32, bool) {
+	if o == nil || o.Version == nil {
+		return nil, false
+	}
+	return o.Version, true
+}
+
+// HasVersion returns a boolean if a field has been set.
+func (o *Encrypt) HasVersion() bool {
+	if o != nil && o.Version != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given int32 and assigns it to the Version field.
+func (o *Encrypt) SetVersion(v int32) {
+	o.Version = &v
+}
+
 func (o Encrypt) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DisplayId != nil {
@@ -363,6 +401,9 @@ func (o Encrypt) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.Version != nil {
+		toSerialize["version"] = o.Version
 	}
 	return json.Marshal(toSerialize)
 }

@@ -17,12 +17,17 @@ import (
 
 // UpdateRDPTargetDetails struct for UpdateRDPTargetDetails
 type UpdateRDPTargetDetails struct {
+	// The admin name
 	AdminName *string `json:"admin_name,omitempty"`
+	// The admin password
 	AdminPwd *string `json:"admin_pwd,omitempty"`
+	// The rdp host name
 	HostName *string `json:"host_name,omitempty"`
+	// The rdp port
 	HostPort *string `json:"host_port,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
+	// Whether to keep previous version [true/false]. If not set, use default according to account settings
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	// Target name
 	Name string `json:"name"`
@@ -42,6 +47,10 @@ type UpdateRDPTargetDetails struct {
 // will change when the set of required properties is changed
 func NewUpdateRDPTargetDetails(name string, ) *UpdateRDPTargetDetails {
 	this := UpdateRDPTargetDetails{}
+	var hostPort string = "22"
+	this.HostPort = &hostPort
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -51,6 +60,10 @@ func NewUpdateRDPTargetDetails(name string, ) *UpdateRDPTargetDetails {
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateRDPTargetDetailsWithDefaults() *UpdateRDPTargetDetails {
 	this := UpdateRDPTargetDetails{}
+	var hostPort string = "22"
+	this.HostPort = &hostPort
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

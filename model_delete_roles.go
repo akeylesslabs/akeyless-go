@@ -33,6 +33,8 @@ type DeleteRoles struct {
 // will change when the set of required properties is changed
 func NewDeleteRoles(path string, ) *DeleteRoles {
 	this := DeleteRoles{}
+	var json bool = false
+	this.Json = &json
 	this.Path = path
 	return &this
 }
@@ -42,6 +44,8 @@ func NewDeleteRoles(path string, ) *DeleteRoles {
 // but it doesn't guarantee that properties required by API are set
 func NewDeleteRolesWithDefaults() *DeleteRoles {
 	this := DeleteRoles{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

@@ -64,6 +64,8 @@ type SignPKICertWithClassicKey struct {
 func NewSignPKICertWithClassicKey(displayId string, signingMethod string, ttl int64, version int32, ) *SignPKICertWithClassicKey {
 	this := SignPKICertWithClassicKey{}
 	this.DisplayId = displayId
+	var json bool = false
+	this.Json = &json
 	var keyUsage string = "DigitalSignature,KeyAgreement,KeyEncipherment"
 	this.KeyUsage = &keyUsage
 	this.SigningMethod = signingMethod
@@ -77,6 +79,8 @@ func NewSignPKICertWithClassicKey(displayId string, signingMethod string, ttl in
 // but it doesn't guarantee that properties required by API are set
 func NewSignPKICertWithClassicKeyWithDefaults() *SignPKICertWithClassicKey {
 	this := SignPKICertWithClassicKey{}
+	var json bool = false
+	this.Json = &json
 	var keyUsage string = "DigitalSignature,KeyAgreement,KeyEncipherment"
 	this.KeyUsage = &keyUsage
 	return &this

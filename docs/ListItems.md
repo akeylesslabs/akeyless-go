@@ -6,10 +6,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Accessibility** | Pointer to **string** | for personal password manager | [optional] [default to "regular"]
 **Filter** | Pointer to **string** | Filter by item name or part of it | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **MinimalView** | Pointer to **bool** |  | [optional] 
 **PaginationToken** | Pointer to **string** | Next page reference | [optional] 
 **Path** | Pointer to **string** | Path to folder | [optional] 
+**SraOnly** | Pointer to **bool** | Filter by items with SRA functionality enabled | [optional] [default to false]
 **SubTypes** | Pointer to **[]string** |  | [optional] 
 **Tag** | Pointer to **string** | Filter by item tag | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -184,6 +185,31 @@ SetPath sets Path field to given value.
 `func (o *ListItems) HasPath() bool`
 
 HasPath returns a boolean if a field has been set.
+
+### GetSraOnly
+
+`func (o *ListItems) GetSraOnly() bool`
+
+GetSraOnly returns the SraOnly field if non-nil, zero value otherwise.
+
+### GetSraOnlyOk
+
+`func (o *ListItems) GetSraOnlyOk() (*bool, bool)`
+
+GetSraOnlyOk returns a tuple with the SraOnly field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSraOnly
+
+`func (o *ListItems) SetSraOnly(v bool)`
+
+SetSraOnly sets SraOnly field to given value.
+
+### HasSraOnly
+
+`func (o *ListItems) HasSraOnly() bool`
+
+HasSraOnly returns a boolean if a field has been set.
 
 ### GetSubTypes
 

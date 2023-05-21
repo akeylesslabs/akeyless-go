@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Accessibility** | Pointer to **string** | for personal password manager | [optional] [default to "regular"]
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Metadata** | Pointer to **string** | Deprecated - use description | [optional] 
 **MultilineValue** | Pointer to **bool** | The provided value is a multiline value (separated by &#39;\\n&#39;) | [optional] 
 **Name** | **string** | Secret name | 
@@ -16,17 +16,18 @@ Name | Type | Description | Notes
 **PasswordManagerPassword** | Pointer to **string** | For Password Management use, additional fields | [optional] 
 **PasswordManagerUsername** | Pointer to **string** | For Password Management use | [optional] 
 **ProtectionKey** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
-**SecureAccessBastionIssuer** | Pointer to **string** |  | [optional] 
-**SecureAccessEnable** | Pointer to **string** |  | [optional] 
-**SecureAccessHost** | Pointer to **[]string** |  | [optional] 
-**SecureAccessSshCreds** | Pointer to **string** |  | [optional] 
-**SecureAccessSshUser** | Pointer to **string** |  | [optional] 
-**SecureAccessUrl** | Pointer to **string** |  | [optional] 
-**SecureAccessWebBrowsing** | Pointer to **bool** |  | [optional] 
-**SecureAccessWebProxy** | Pointer to **bool** |  | [optional] 
-**Tags** | Pointer to **[]string** | List of the tags attached to this secret | [optional] 
+**SecureAccessBastionIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] 
+**SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
+**SecureAccessHost** | Pointer to **[]string** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
+**SecureAccessRdpUser** | Pointer to **string** | Remote Desktop Username | [optional] 
+**SecureAccessSshCreds** | Pointer to **string** | Static-Secret values contains SSH Credentials, either Private Key or Password [password/private-key] | [optional] 
+**SecureAccessSshUser** | Pointer to **string** | Override the SSH username as indicated in SSH Certificate Issuer | [optional] 
+**SecureAccessUrl** | Pointer to **string** | Destination URL to inject secrets | [optional] 
+**SecureAccessWebBrowsing** | Pointer to **bool** | Secure browser via Akeyless Web Access Bastion | [optional] [default to false]
+**SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless Web Access Bastion | [optional] [default to false]
+**Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
-**Type** | Pointer to **string** | For Password Management use, reflect the website context | [optional] 
+**Type** | Pointer to **string** | The secret sub type [generic/password] | [optional] [default to "generic"]
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **Value** | **string** | The secret value | 
 
@@ -418,6 +419,31 @@ SetSecureAccessHost sets SecureAccessHost field to given value.
 `func (o *CreateSecret) HasSecureAccessHost() bool`
 
 HasSecureAccessHost returns a boolean if a field has been set.
+
+### GetSecureAccessRdpUser
+
+`func (o *CreateSecret) GetSecureAccessRdpUser() string`
+
+GetSecureAccessRdpUser returns the SecureAccessRdpUser field if non-nil, zero value otherwise.
+
+### GetSecureAccessRdpUserOk
+
+`func (o *CreateSecret) GetSecureAccessRdpUserOk() (*string, bool)`
+
+GetSecureAccessRdpUserOk returns a tuple with the SecureAccessRdpUser field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessRdpUser
+
+`func (o *CreateSecret) SetSecureAccessRdpUser(v string)`
+
+SetSecureAccessRdpUser sets SecureAccessRdpUser field to given value.
+
+### HasSecureAccessRdpUser
+
+`func (o *CreateSecret) HasSecureAccessRdpUser() bool`
+
+HasSecureAccessRdpUser returns a boolean if a field has been set.
 
 ### GetSecureAccessSshCreds
 
