@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Fork** | Pointer to **bool** | Create a new child token with default parameters | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **SendManualAckToken** | Pointer to **string** | The new rotated token to send manual ack for (with uid-token&#x3D;the-orig-token) | [optional] 
 **UidToken** | Pointer to **string** | The Universal identity token | [optional] 
 **WithManualAck** | Pointer to **bool** | Disable automatic ack | [optional] 

@@ -23,7 +23,7 @@ type GatewayCreateK8SAuthConfig struct {
 	ClusterApiType *string `json:"cluster-api-type,omitempty"`
 	// Config encryption key
 	ConfigEncryptionKeyName *string `json:"config-encryption-key-name,omitempty"`
-	// Disable issuer validation
+	// Disable issuer validation [true/false]
 	DisableIssuerValidation *string `json:"disable-issuer-validation,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -31,7 +31,7 @@ type GatewayCreateK8SAuthConfig struct {
 	K8sCaCert *string `json:"k8s-ca-cert,omitempty"`
 	// The URL of the kubernetes API server
 	K8sHost string `json:"k8s-host"`
-	// The Kubernetes JWT issuer name. If not set, kubernetes/serviceaccount will use as an issuer.
+	// The Kubernetes JWT issuer name. K8SIssuer is the claim that specifies who issued the Kubernetes token
 	K8sIssuer *string `json:"k8s-issuer,omitempty"`
 	// K8S Auth config name
 	Name string `json:"name"`
@@ -49,6 +49,8 @@ type GatewayCreateK8SAuthConfig struct {
 	TokenReviewerJwt *string `json:"token-reviewer-jwt,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// Use the GW's service account
+	UseGwServiceAccount *bool `json:"use-gw-service-account,omitempty"`
 }
 
 // NewGatewayCreateK8SAuthConfig instantiates a new GatewayCreateK8SAuthConfig object
@@ -60,7 +62,11 @@ func NewGatewayCreateK8SAuthConfig(accessId string, k8sHost string, name string,
 	this.AccessId = accessId
 	var clusterApiType string = "native_k8s"
 	this.ClusterApiType = &clusterApiType
+	var json bool = false
+	this.Json = &json
 	this.K8sHost = k8sHost
+	var k8sIssuer string = "kubernetes/serviceaccount"
+	this.K8sIssuer = &k8sIssuer
 	this.Name = name
 	this.SigningKey = signingKey
 	var tokenExp int64 = 300
@@ -75,6 +81,10 @@ func NewGatewayCreateK8SAuthConfigWithDefaults() *GatewayCreateK8SAuthConfig {
 	this := GatewayCreateK8SAuthConfig{}
 	var clusterApiType string = "native_k8s"
 	this.ClusterApiType = &clusterApiType
+	var json bool = false
+	this.Json = &json
+	var k8sIssuer string = "kubernetes/serviceaccount"
+	this.K8sIssuer = &k8sIssuer
 	var tokenExp int64 = 300
 	this.TokenExp = &tokenExp
 	return &this
@@ -560,6 +570,38 @@ func (o *GatewayCreateK8SAuthConfig) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUseGwServiceAccount returns the UseGwServiceAccount field value if set, zero value otherwise.
+func (o *GatewayCreateK8SAuthConfig) GetUseGwServiceAccount() bool {
+	if o == nil || o.UseGwServiceAccount == nil {
+		var ret bool
+		return ret
+	}
+	return *o.UseGwServiceAccount
+}
+
+// GetUseGwServiceAccountOk returns a tuple with the UseGwServiceAccount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateK8SAuthConfig) GetUseGwServiceAccountOk() (*bool, bool) {
+	if o == nil || o.UseGwServiceAccount == nil {
+		return nil, false
+	}
+	return o.UseGwServiceAccount, true
+}
+
+// HasUseGwServiceAccount returns a boolean if a field has been set.
+func (o *GatewayCreateK8SAuthConfig) HasUseGwServiceAccount() bool {
+	if o != nil && o.UseGwServiceAccount != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUseGwServiceAccount gets a reference to the given bool and assigns it to the UseGwServiceAccount field.
+func (o *GatewayCreateK8SAuthConfig) SetUseGwServiceAccount(v bool) {
+	o.UseGwServiceAccount = &v
+}
+
 func (o GatewayCreateK8SAuthConfig) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -609,6 +651,9 @@ func (o GatewayCreateK8SAuthConfig) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.UseGwServiceAccount != nil {
+		toSerialize["use-gw-service-account"] = o.UseGwServiceAccount
 	}
 	return json.Marshal(toSerialize)
 }

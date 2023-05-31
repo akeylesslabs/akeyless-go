@@ -41,6 +41,8 @@ type VerifyGPG struct {
 // will change when the set of required properties is changed
 func NewVerifyGPG(keyName string, signature string, ) *VerifyGPG {
 	this := VerifyGPG{}
+	var json bool = false
+	this.Json = &json
 	this.KeyName = keyName
 	this.Signature = signature
 	return &this
@@ -51,6 +53,8 @@ func NewVerifyGPG(keyName string, signature string, ) *VerifyGPG {
 // but it doesn't guarantee that properties required by API are set
 func NewVerifyGPGWithDefaults() *VerifyGPG {
 	this := VerifyGPG{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

@@ -28,6 +28,8 @@ type ListItems struct {
 	PaginationToken *string `json:"pagination-token,omitempty"`
 	// Path to folder
 	Path *string `json:"path,omitempty"`
+	// Filter by items with SRA functionality enabled
+	SraOnly *bool `json:"sra-only,omitempty"`
 	SubTypes *[]string `json:"sub_types,omitempty"`
 	// Filter by item tag
 	Tag *string `json:"tag,omitempty"`
@@ -47,6 +49,10 @@ func NewListItems() *ListItems {
 	this := ListItems{}
 	var accessibility string = "regular"
 	this.Accessibility = &accessibility
+	var json bool = false
+	this.Json = &json
+	var sraOnly bool = false
+	this.SraOnly = &sraOnly
 	return &this
 }
 
@@ -57,6 +63,10 @@ func NewListItemsWithDefaults() *ListItems {
 	this := ListItems{}
 	var accessibility string = "regular"
 	this.Accessibility = &accessibility
+	var json bool = false
+	this.Json = &json
+	var sraOnly bool = false
+	this.SraOnly = &sraOnly
 	return &this
 }
 
@@ -252,6 +262,38 @@ func (o *ListItems) SetPath(v string) {
 	o.Path = &v
 }
 
+// GetSraOnly returns the SraOnly field value if set, zero value otherwise.
+func (o *ListItems) GetSraOnly() bool {
+	if o == nil || o.SraOnly == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SraOnly
+}
+
+// GetSraOnlyOk returns a tuple with the SraOnly field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListItems) GetSraOnlyOk() (*bool, bool) {
+	if o == nil || o.SraOnly == nil {
+		return nil, false
+	}
+	return o.SraOnly, true
+}
+
+// HasSraOnly returns a boolean if a field has been set.
+func (o *ListItems) HasSraOnly() bool {
+	if o != nil && o.SraOnly != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSraOnly gets a reference to the given bool and assigns it to the SraOnly field.
+func (o *ListItems) SetSraOnly(v bool) {
+	o.SraOnly = &v
+}
+
 // GetSubTypes returns the SubTypes field value if set, zero value otherwise.
 func (o *ListItems) GetSubTypes() []string {
 	if o == nil || o.SubTypes == nil {
@@ -431,6 +473,9 @@ func (o ListItems) MarshalJSON() ([]byte, error) {
 	}
 	if o.Path != nil {
 		toSerialize["path"] = o.Path
+	}
+	if o.SraOnly != nil {
+		toSerialize["sra-only"] = o.SraOnly
 	}
 	if o.SubTypes != nil {
 		toSerialize["sub_types"] = o.SubTypes
