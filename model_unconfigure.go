@@ -29,6 +29,8 @@ type Unconfigure struct {
 // will change when the set of required properties is changed
 func NewUnconfigure() *Unconfigure {
 	this := Unconfigure{}
+	var json bool = false
+	this.Json = &json
 	var profile string = "default"
 	this.Profile = &profile
 	return &this
@@ -39,6 +41,8 @@ func NewUnconfigure() *Unconfigure {
 // but it doesn't guarantee that properties required by API are set
 func NewUnconfigureWithDefaults() *Unconfigure {
 	this := Unconfigure{}
+	var json bool = false
+	this.Json = &json
 	var profile string = "default"
 	this.Profile = &profile
 	return &this

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **DataProtectionSection** | Pointer to [**DataProtectionSection**](DataProtectionSection.md) |  | [optional] 
 **EnableRequestForAccess** | Pointer to **bool** |  | [optional] 
 **PasswordPolicy** | Pointer to [**PasswordPolicyInfo**](PasswordPolicyInfo.md) |  | [optional] 
+**SharingPolicy** | Pointer to [**SharingPolicyInfo**](SharingPolicyInfo.md) |  | [optional] 
 
 ## Methods
 
@@ -101,6 +102,31 @@ SetPasswordPolicy sets PasswordPolicy field to given value.
 `func (o *AccountGeneralSettings) HasPasswordPolicy() bool`
 
 HasPasswordPolicy returns a boolean if a field has been set.
+
+### GetSharingPolicy
+
+`func (o *AccountGeneralSettings) GetSharingPolicy() SharingPolicyInfo`
+
+GetSharingPolicy returns the SharingPolicy field if non-nil, zero value otherwise.
+
+### GetSharingPolicyOk
+
+`func (o *AccountGeneralSettings) GetSharingPolicyOk() (*SharingPolicyInfo, bool)`
+
+GetSharingPolicyOk returns a tuple with the SharingPolicy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSharingPolicy
+
+`func (o *AccountGeneralSettings) SetSharingPolicy(v SharingPolicyInfo)`
+
+SetSharingPolicy sets SharingPolicy field to given value.
+
+### HasSharingPolicy
+
+`func (o *AccountGeneralSettings) HasSharingPolicy() bool`
+
+HasSharingPolicy returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

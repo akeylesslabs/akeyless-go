@@ -33,6 +33,8 @@ type RotateSecret struct {
 // will change when the set of required properties is changed
 func NewRotateSecret(name string, ) *RotateSecret {
 	this := RotateSecret{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -42,6 +44,8 @@ func NewRotateSecret(name string, ) *RotateSecret {
 // but it doesn't guarantee that properties required by API are set
 func NewRotateSecretWithDefaults() *RotateSecret {
 	this := RotateSecret{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

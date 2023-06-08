@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**BroadcastQueueNameA** | Pointer to **string** |  | [optional] 
 **MqType** | Pointer to **string** |  | [optional] 
 **QueueName** | Pointer to **string** |  | [optional] 
 **QueueUrl** | Pointer to **string** |  | [optional] 
@@ -26,6 +27,31 @@ will change when the set of required properties is changed
 NewGatewayMessageQueueInfoWithDefaults instantiates a new GatewayMessageQueueInfo object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetBroadcastQueueNameA
+
+`func (o *GatewayMessageQueueInfo) GetBroadcastQueueNameA() string`
+
+GetBroadcastQueueNameA returns the BroadcastQueueNameA field if non-nil, zero value otherwise.
+
+### GetBroadcastQueueNameAOk
+
+`func (o *GatewayMessageQueueInfo) GetBroadcastQueueNameAOk() (*string, bool)`
+
+GetBroadcastQueueNameAOk returns a tuple with the BroadcastQueueNameA field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBroadcastQueueNameA
+
+`func (o *GatewayMessageQueueInfo) SetBroadcastQueueNameA(v string)`
+
+SetBroadcastQueueNameA sets BroadcastQueueNameA field to given value.
+
+### HasBroadcastQueueNameA
+
+`func (o *GatewayMessageQueueInfo) HasBroadcastQueueNameA() bool`
+
+HasBroadcastQueueNameA returns a boolean if a field has been set.
 
 ### GetMqType
 

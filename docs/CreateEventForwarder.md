@@ -6,7 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AdminName** | Pointer to **string** | Workstation Admin Name | [optional] 
 **AdminPwd** | Pointer to **string** | Workstation Admin password | [optional] 
-**Comment** | Pointer to **string** | Comment about the EventForwarder | [optional] 
+**Comment** | Pointer to **string** | Deprecated - use description | [optional] 
+**Description** | Pointer to **string** | Description of the object | [optional] 
 **EmailTo** | Pointer to **string** | A comma seperated list of email addresses to send event to (relevant only for \\\&quot;email\\\&quot; Event Forwarder) | [optional] 
 **EventSourceLocations** | **[]string** | Event sources | 
 **EventSourceType** | Pointer to **string** | Event Source type [item, target] | [optional] [default to "item"]
@@ -14,7 +15,7 @@ Name | Type | Description | Notes
 **Every** | Pointer to **string** | Rate of periodic runner repetition in hours | [optional] 
 **ForwarderType** | **string** |  | 
 **Host** | Pointer to **string** | Workstation Host | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | Pointer to **string** | The name of a key that used to encrypt the EventForwarder secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | EventForwarder name | 
 **RunnerType** | **string** |  | 
@@ -114,6 +115,31 @@ SetComment sets Comment field to given value.
 `func (o *CreateEventForwarder) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *CreateEventForwarder) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *CreateEventForwarder) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *CreateEventForwarder) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *CreateEventForwarder) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetEmailTo
 
