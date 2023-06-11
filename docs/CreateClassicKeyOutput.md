@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **ClassicKeyId** | Pointer to **string** |  | [optional] 
 **ClassicKeyName** | Pointer to **string** |  | [optional] 
 **ClassicKeyType** | Pointer to **string** |  | [optional] 
+**PublicKey** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -101,6 +102,31 @@ SetClassicKeyType sets ClassicKeyType field to given value.
 `func (o *CreateClassicKeyOutput) HasClassicKeyType() bool`
 
 HasClassicKeyType returns a boolean if a field has been set.
+
+### GetPublicKey
+
+`func (o *CreateClassicKeyOutput) GetPublicKey() string`
+
+GetPublicKey returns the PublicKey field if non-nil, zero value otherwise.
+
+### GetPublicKeyOk
+
+`func (o *CreateClassicKeyOutput) GetPublicKeyOk() (*string, bool)`
+
+GetPublicKeyOk returns a tuple with the PublicKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPublicKey
+
+`func (o *CreateClassicKeyOutput) SetPublicKey(v string)`
+
+SetPublicKey sets PublicKey field to given value.
+
+### HasPublicKey
+
+`func (o *CreateClassicKeyOutput) HasPublicKey() bool`
+
+HasPublicKey returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

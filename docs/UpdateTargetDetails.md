@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 
 ## Methods
 

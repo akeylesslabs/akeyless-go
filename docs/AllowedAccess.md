@@ -4,15 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccId** | Pointer to **string** |  | [optional] 
-**AccessRulesType** | Pointer to **string** |  | [optional] 
-**AllowedApi** | Pointer to **bool** |  | [optional] 
-**AllowedsLogin** | Pointer to **bool** |  | [optional] 
-**ErrMsg** | Pointer to **string** |  | [optional] 
-**Hash** | Pointer to **string** |  | [optional] 
+**AccessId** | Pointer to **string** |  | [optional] 
+**AccessType** | Pointer to **string** |  | [optional] 
+**ClusterId** | Pointer to **int64** |  | [optional] 
+**CreatedAt** | Pointer to **time.Time** |  | [optional] 
+**Description** | Pointer to **string** |  | [optional] 
+**Editable** | Pointer to **bool** |  | [optional] 
+**Error** | Pointer to **string** |  | [optional] 
+**Id** | Pointer to **int64** |  | [optional] 
 **IsValid** | Pointer to **bool** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**SubClaims** | Pointer to [**map[string][]string**](array.md) |  | [optional] 
+**Permissions** | Pointer to **[]string** |  | [optional] 
+**SubClaims** | Pointer to **map[string][]string** |  | [optional] 
+**UpdatedAt** | Pointer to **time.Time** |  | [optional] 
 
 ## Methods
 
@@ -33,155 +37,205 @@ NewAllowedAccessWithDefaults instantiates a new AllowedAccess object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetAccId
+### GetAccessId
 
-`func (o *AllowedAccess) GetAccId() string`
+`func (o *AllowedAccess) GetAccessId() string`
 
-GetAccId returns the AccId field if non-nil, zero value otherwise.
+GetAccessId returns the AccessId field if non-nil, zero value otherwise.
 
-### GetAccIdOk
+### GetAccessIdOk
 
-`func (o *AllowedAccess) GetAccIdOk() (*string, bool)`
+`func (o *AllowedAccess) GetAccessIdOk() (*string, bool)`
 
-GetAccIdOk returns a tuple with the AccId field if it's non-nil, zero value otherwise
+GetAccessIdOk returns a tuple with the AccessId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAccId
+### SetAccessId
 
-`func (o *AllowedAccess) SetAccId(v string)`
+`func (o *AllowedAccess) SetAccessId(v string)`
 
-SetAccId sets AccId field to given value.
+SetAccessId sets AccessId field to given value.
 
-### HasAccId
+### HasAccessId
 
-`func (o *AllowedAccess) HasAccId() bool`
+`func (o *AllowedAccess) HasAccessId() bool`
 
-HasAccId returns a boolean if a field has been set.
+HasAccessId returns a boolean if a field has been set.
 
-### GetAccessRulesType
+### GetAccessType
 
-`func (o *AllowedAccess) GetAccessRulesType() string`
+`func (o *AllowedAccess) GetAccessType() string`
 
-GetAccessRulesType returns the AccessRulesType field if non-nil, zero value otherwise.
+GetAccessType returns the AccessType field if non-nil, zero value otherwise.
 
-### GetAccessRulesTypeOk
+### GetAccessTypeOk
 
-`func (o *AllowedAccess) GetAccessRulesTypeOk() (*string, bool)`
+`func (o *AllowedAccess) GetAccessTypeOk() (*string, bool)`
 
-GetAccessRulesTypeOk returns a tuple with the AccessRulesType field if it's non-nil, zero value otherwise
+GetAccessTypeOk returns a tuple with the AccessType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAccessRulesType
+### SetAccessType
 
-`func (o *AllowedAccess) SetAccessRulesType(v string)`
+`func (o *AllowedAccess) SetAccessType(v string)`
 
-SetAccessRulesType sets AccessRulesType field to given value.
+SetAccessType sets AccessType field to given value.
 
-### HasAccessRulesType
+### HasAccessType
 
-`func (o *AllowedAccess) HasAccessRulesType() bool`
+`func (o *AllowedAccess) HasAccessType() bool`
 
-HasAccessRulesType returns a boolean if a field has been set.
+HasAccessType returns a boolean if a field has been set.
 
-### GetAllowedApi
+### GetClusterId
 
-`func (o *AllowedAccess) GetAllowedApi() bool`
+`func (o *AllowedAccess) GetClusterId() int64`
 
-GetAllowedApi returns the AllowedApi field if non-nil, zero value otherwise.
+GetClusterId returns the ClusterId field if non-nil, zero value otherwise.
 
-### GetAllowedApiOk
+### GetClusterIdOk
 
-`func (o *AllowedAccess) GetAllowedApiOk() (*bool, bool)`
+`func (o *AllowedAccess) GetClusterIdOk() (*int64, bool)`
 
-GetAllowedApiOk returns a tuple with the AllowedApi field if it's non-nil, zero value otherwise
+GetClusterIdOk returns a tuple with the ClusterId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAllowedApi
+### SetClusterId
 
-`func (o *AllowedAccess) SetAllowedApi(v bool)`
+`func (o *AllowedAccess) SetClusterId(v int64)`
 
-SetAllowedApi sets AllowedApi field to given value.
+SetClusterId sets ClusterId field to given value.
 
-### HasAllowedApi
+### HasClusterId
 
-`func (o *AllowedAccess) HasAllowedApi() bool`
+`func (o *AllowedAccess) HasClusterId() bool`
 
-HasAllowedApi returns a boolean if a field has been set.
+HasClusterId returns a boolean if a field has been set.
 
-### GetAllowedsLogin
+### GetCreatedAt
 
-`func (o *AllowedAccess) GetAllowedsLogin() bool`
+`func (o *AllowedAccess) GetCreatedAt() time.Time`
 
-GetAllowedsLogin returns the AllowedsLogin field if non-nil, zero value otherwise.
+GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
-### GetAllowedsLoginOk
+### GetCreatedAtOk
 
-`func (o *AllowedAccess) GetAllowedsLoginOk() (*bool, bool)`
+`func (o *AllowedAccess) GetCreatedAtOk() (*time.Time, bool)`
 
-GetAllowedsLoginOk returns a tuple with the AllowedsLogin field if it's non-nil, zero value otherwise
+GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAllowedsLogin
+### SetCreatedAt
 
-`func (o *AllowedAccess) SetAllowedsLogin(v bool)`
+`func (o *AllowedAccess) SetCreatedAt(v time.Time)`
 
-SetAllowedsLogin sets AllowedsLogin field to given value.
+SetCreatedAt sets CreatedAt field to given value.
 
-### HasAllowedsLogin
+### HasCreatedAt
 
-`func (o *AllowedAccess) HasAllowedsLogin() bool`
+`func (o *AllowedAccess) HasCreatedAt() bool`
 
-HasAllowedsLogin returns a boolean if a field has been set.
+HasCreatedAt returns a boolean if a field has been set.
 
-### GetErrMsg
+### GetDescription
 
-`func (o *AllowedAccess) GetErrMsg() string`
+`func (o *AllowedAccess) GetDescription() string`
 
-GetErrMsg returns the ErrMsg field if non-nil, zero value otherwise.
+GetDescription returns the Description field if non-nil, zero value otherwise.
 
-### GetErrMsgOk
+### GetDescriptionOk
 
-`func (o *AllowedAccess) GetErrMsgOk() (*string, bool)`
+`func (o *AllowedAccess) GetDescriptionOk() (*string, bool)`
 
-GetErrMsgOk returns a tuple with the ErrMsg field if it's non-nil, zero value otherwise
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetErrMsg
+### SetDescription
 
-`func (o *AllowedAccess) SetErrMsg(v string)`
+`func (o *AllowedAccess) SetDescription(v string)`
 
-SetErrMsg sets ErrMsg field to given value.
+SetDescription sets Description field to given value.
 
-### HasErrMsg
+### HasDescription
 
-`func (o *AllowedAccess) HasErrMsg() bool`
+`func (o *AllowedAccess) HasDescription() bool`
 
-HasErrMsg returns a boolean if a field has been set.
+HasDescription returns a boolean if a field has been set.
 
-### GetHash
+### GetEditable
 
-`func (o *AllowedAccess) GetHash() string`
+`func (o *AllowedAccess) GetEditable() bool`
 
-GetHash returns the Hash field if non-nil, zero value otherwise.
+GetEditable returns the Editable field if non-nil, zero value otherwise.
 
-### GetHashOk
+### GetEditableOk
 
-`func (o *AllowedAccess) GetHashOk() (*string, bool)`
+`func (o *AllowedAccess) GetEditableOk() (*bool, bool)`
 
-GetHashOk returns a tuple with the Hash field if it's non-nil, zero value otherwise
+GetEditableOk returns a tuple with the Editable field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetHash
+### SetEditable
 
-`func (o *AllowedAccess) SetHash(v string)`
+`func (o *AllowedAccess) SetEditable(v bool)`
 
-SetHash sets Hash field to given value.
+SetEditable sets Editable field to given value.
 
-### HasHash
+### HasEditable
 
-`func (o *AllowedAccess) HasHash() bool`
+`func (o *AllowedAccess) HasEditable() bool`
 
-HasHash returns a boolean if a field has been set.
+HasEditable returns a boolean if a field has been set.
+
+### GetError
+
+`func (o *AllowedAccess) GetError() string`
+
+GetError returns the Error field if non-nil, zero value otherwise.
+
+### GetErrorOk
+
+`func (o *AllowedAccess) GetErrorOk() (*string, bool)`
+
+GetErrorOk returns a tuple with the Error field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetError
+
+`func (o *AllowedAccess) SetError(v string)`
+
+SetError sets Error field to given value.
+
+### HasError
+
+`func (o *AllowedAccess) HasError() bool`
+
+HasError returns a boolean if a field has been set.
+
+### GetId
+
+`func (o *AllowedAccess) GetId() int64`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *AllowedAccess) GetIdOk() (*int64, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *AllowedAccess) SetId(v int64)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *AllowedAccess) HasId() bool`
+
+HasId returns a boolean if a field has been set.
 
 ### GetIsValid
 
@@ -233,6 +287,31 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### GetPermissions
+
+`func (o *AllowedAccess) GetPermissions() []string`
+
+GetPermissions returns the Permissions field if non-nil, zero value otherwise.
+
+### GetPermissionsOk
+
+`func (o *AllowedAccess) GetPermissionsOk() (*[]string, bool)`
+
+GetPermissionsOk returns a tuple with the Permissions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPermissions
+
+`func (o *AllowedAccess) SetPermissions(v []string)`
+
+SetPermissions sets Permissions field to given value.
+
+### HasPermissions
+
+`func (o *AllowedAccess) HasPermissions() bool`
+
+HasPermissions returns a boolean if a field has been set.
+
 ### GetSubClaims
 
 `func (o *AllowedAccess) GetSubClaims() map[string][]string`
@@ -257,6 +336,31 @@ SetSubClaims sets SubClaims field to given value.
 `func (o *AllowedAccess) HasSubClaims() bool`
 
 HasSubClaims returns a boolean if a field has been set.
+
+### GetUpdatedAt
+
+`func (o *AllowedAccess) GetUpdatedAt() time.Time`
+
+GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
+
+### GetUpdatedAtOk
+
+`func (o *AllowedAccess) GetUpdatedAtOk() (*time.Time, bool)`
+
+GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdatedAt
+
+`func (o *AllowedAccess) SetUpdatedAt(v time.Time)`
+
+SetUpdatedAt sets UpdatedAt field to given value.
+
+### HasUpdatedAt
+
+`func (o *AllowedAccess) HasUpdatedAt() bool`
+
+HasUpdatedAt returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
