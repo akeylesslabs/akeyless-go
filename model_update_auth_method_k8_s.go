@@ -31,7 +31,7 @@ type UpdateAuthMethodK8S struct {
 	BoundSaNames *[]string `json:"bound-sa-names,omitempty"`
 	// if true: enforce role-association must include sub claims
 	ForceSubClaims *bool `json:"force-sub-claims,omitempty"`
-	// Automatically generate key-pair for K8S configuration. If set to false, a public key needs to be provided
+	// Automatically generate key-pair for K8S configuration. If set to false, a public key needs to be provided [true/false]
 	GenKey *string `json:"gen-key,omitempty"`
 	// A CIDR whitelist with the GW IPs that the access is restricted to
 	GwBoundIps *[]string `json:"gw-bound-ips,omitempty"`
@@ -59,6 +59,10 @@ func NewUpdateAuthMethodK8S(name string, ) *UpdateAuthMethodK8S {
 	this := UpdateAuthMethodK8S{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	this.Name = name
 	return &this
 }
@@ -70,6 +74,10 @@ func NewUpdateAuthMethodK8SWithDefaults() *UpdateAuthMethodK8S {
 	this := UpdateAuthMethodK8S{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	return &this
 }
 

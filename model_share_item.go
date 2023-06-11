@@ -47,6 +47,8 @@ func NewShareItem(action string, itemName string, ) *ShareItem {
 	this.Accessibility = &accessibility
 	this.Action = action
 	this.ItemName = itemName
+	var json bool = false
+	this.Json = &json
 	var viewOnce bool = false
 	this.ViewOnce = &viewOnce
 	return &this
@@ -59,6 +61,8 @@ func NewShareItemWithDefaults() *ShareItem {
 	this := ShareItem{}
 	var accessibility string = "regular"
 	this.Accessibility = &accessibility
+	var json bool = false
+	this.Json = &json
 	var viewOnce bool = false
 	this.ViewOnce = &viewOnce
 	return &this

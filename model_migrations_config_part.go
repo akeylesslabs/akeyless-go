@@ -25,6 +25,7 @@ type MigrationsConfigPart struct {
 	K8sMigrations *[]K8SMigration `json:"k8s_migrations,omitempty"`
 	MockMigrations *[]MockMigration `json:"mock_migrations,omitempty"`
 	OnePasswordMigrations *[]OnePasswordMigration `json:"one_password_migrations,omitempty"`
+	ServerInventoryMigrations *[]ServerInventoryMigration `json:"server_inventory_migrations,omitempty"`
 }
 
 // NewMigrationsConfigPart instantiates a new MigrationsConfigPart object
@@ -300,6 +301,38 @@ func (o *MigrationsConfigPart) SetOnePasswordMigrations(v []OnePasswordMigration
 	o.OnePasswordMigrations = &v
 }
 
+// GetServerInventoryMigrations returns the ServerInventoryMigrations field value if set, zero value otherwise.
+func (o *MigrationsConfigPart) GetServerInventoryMigrations() []ServerInventoryMigration {
+	if o == nil || o.ServerInventoryMigrations == nil {
+		var ret []ServerInventoryMigration
+		return ret
+	}
+	return *o.ServerInventoryMigrations
+}
+
+// GetServerInventoryMigrationsOk returns a tuple with the ServerInventoryMigrations field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MigrationsConfigPart) GetServerInventoryMigrationsOk() (*[]ServerInventoryMigration, bool) {
+	if o == nil || o.ServerInventoryMigrations == nil {
+		return nil, false
+	}
+	return o.ServerInventoryMigrations, true
+}
+
+// HasServerInventoryMigrations returns a boolean if a field has been set.
+func (o *MigrationsConfigPart) HasServerInventoryMigrations() bool {
+	if o != nil && o.ServerInventoryMigrations != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetServerInventoryMigrations gets a reference to the given []ServerInventoryMigration and assigns it to the ServerInventoryMigrations field.
+func (o *MigrationsConfigPart) SetServerInventoryMigrations(v []ServerInventoryMigration) {
+	o.ServerInventoryMigrations = &v
+}
+
 func (o MigrationsConfigPart) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ActiveDirectoryMigrations != nil {
@@ -325,6 +358,9 @@ func (o MigrationsConfigPart) MarshalJSON() ([]byte, error) {
 	}
 	if o.OnePasswordMigrations != nil {
 		toSerialize["one_password_migrations"] = o.OnePasswordMigrations
+	}
+	if o.ServerInventoryMigrations != nil {
+		toSerialize["server_inventory_migrations"] = o.ServerInventoryMigrations
 	}
 	return json.Marshal(toSerialize)
 }

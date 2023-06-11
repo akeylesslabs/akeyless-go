@@ -23,7 +23,7 @@ type CreateAuthMethodLDAP struct {
 	BoundIps *[]string `json:"bound-ips,omitempty"`
 	// if true: enforce role-association must include sub claims
 	ForceSubClaims *bool `json:"force-sub-claims,omitempty"`
-	// Automatically generate key-pair for LDAP configuration. If set to false, a public key needs to be provided
+	// Automatically generate key-pair for LDAP configuration. If set to false, a public key needs to be provided [true/false]
 	GenKey *string `json:"gen-key,omitempty"`
 	// A CIDR whitelist with the GW IPs that the access is restricted to
 	GwBoundIps *[]string `json:"gw-bound-ips,omitempty"`
@@ -53,7 +53,13 @@ func NewCreateAuthMethodLDAP(name string, ) *CreateAuthMethodLDAP {
 	this.AccessExpires = &accessExpires
 	var genKey string = "true"
 	this.GenKey = &genKey
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	this.Name = name
+	var uniqueIdentifier string = "users"
+	this.UniqueIdentifier = &uniqueIdentifier
 	return &this
 }
 
@@ -66,6 +72,12 @@ func NewCreateAuthMethodLDAPWithDefaults() *CreateAuthMethodLDAP {
 	this.AccessExpires = &accessExpires
 	var genKey string = "true"
 	this.GenKey = &genKey
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
+	var uniqueIdentifier string = "users"
+	this.UniqueIdentifier = &uniqueIdentifier
 	return &this
 }
 

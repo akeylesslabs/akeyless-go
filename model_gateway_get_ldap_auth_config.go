@@ -31,6 +31,8 @@ type GatewayGetLdapAuthConfig struct {
 // will change when the set of required properties is changed
 func NewGatewayGetLdapAuthConfig() *GatewayGetLdapAuthConfig {
 	this := GatewayGetLdapAuthConfig{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -39,6 +41,8 @@ func NewGatewayGetLdapAuthConfig() *GatewayGetLdapAuthConfig {
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayGetLdapAuthConfigWithDefaults() *GatewayGetLdapAuthConfig {
 	this := GatewayGetLdapAuthConfig{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

@@ -35,6 +35,8 @@ type UidRotateToken struct {
 // will change when the set of required properties is changed
 func NewUidRotateToken() *UidRotateToken {
 	this := UidRotateToken{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -43,6 +45,8 @@ func NewUidRotateToken() *UidRotateToken {
 // but it doesn't guarantee that properties required by API are set
 func NewUidRotateTokenWithDefaults() *UidRotateToken {
 	this := UidRotateToken{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
