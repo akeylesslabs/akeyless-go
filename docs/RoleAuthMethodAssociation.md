@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **AssocId** | Pointer to **string** |  | [optional] 
 **AuthMethodAccessId** | Pointer to **string** |  | [optional] 
 **AuthMethodName** | Pointer to **string** |  | [optional] 
-**AuthMethodSubClaims** | Pointer to [**map[string][]string**](array.md) |  | [optional] 
+**AuthMethodSubClaims** | Pointer to **map[string][]string** |  | [optional] 
 **SubClaimsCaseSensitive** | Pointer to **bool** |  | [optional] 
 
 ## Methods

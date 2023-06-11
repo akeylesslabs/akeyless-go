@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ActivateKeysOnCreation** | Pointer to **bool** |  | [optional] 
-**CertificateIssueDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**CertificateIssueDate** | Pointer to **time.Time** |  | [optional] 
 **CertificateTtlInSeconds** | Pointer to **int64** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 

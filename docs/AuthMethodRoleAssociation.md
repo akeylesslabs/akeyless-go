@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AllowedOps** | Pointer to **[]string** |  | [optional] 
 **AssocId** | Pointer to **string** |  | [optional] 
-**AuthMethodSubClaims** | Pointer to [**map[string][]string**](array.md) |  | [optional] 
+**AuthMethodSubClaims** | Pointer to **map[string][]string** |  | [optional] 
 **RoleName** | Pointer to **string** |  | [optional] 
 **Rules** | Pointer to [**Rules**](Rules.md) |  | [optional] 
 

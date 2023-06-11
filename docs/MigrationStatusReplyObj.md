@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DurationTime** | Pointer to **string** |  | [optional] 
+**Error** | Pointer to **string** |  | [optional] 
 **LastStatusMessage** | Pointer to **string** |  | [optional] 
 **MaxNameLength** | Pointer to **int64** |  | [optional] 
 **MaxValueLength** | Pointer to **int64** |  | [optional] 
@@ -13,7 +14,10 @@ Name | Type | Description | Notes
 **MigrationName** | Pointer to **string** |  | [optional] 
 **MigrationState** | Pointer to **string** |  | [optional] 
 **MigrationType** | Pointer to **string** |  | [optional] 
+**MigrationTypeName** | Pointer to **string** |  | [optional] 
+**RotatedSecrets** | Pointer to [**MigrationItems**](MigrationItems.md) |  | [optional] 
 **StartTime** | Pointer to **string** |  | [optional] 
+**Targets** | Pointer to [**MigrationItems**](MigrationItems.md) |  | [optional] 
 
 ## Methods
 
@@ -58,6 +62,31 @@ SetDurationTime sets DurationTime field to given value.
 `func (o *MigrationStatusReplyObj) HasDurationTime() bool`
 
 HasDurationTime returns a boolean if a field has been set.
+
+### GetError
+
+`func (o *MigrationStatusReplyObj) GetError() string`
+
+GetError returns the Error field if non-nil, zero value otherwise.
+
+### GetErrorOk
+
+`func (o *MigrationStatusReplyObj) GetErrorOk() (*string, bool)`
+
+GetErrorOk returns a tuple with the Error field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetError
+
+`func (o *MigrationStatusReplyObj) SetError(v string)`
+
+SetError sets Error field to given value.
+
+### HasError
+
+`func (o *MigrationStatusReplyObj) HasError() bool`
+
+HasError returns a boolean if a field has been set.
 
 ### GetLastStatusMessage
 
@@ -259,6 +288,56 @@ SetMigrationType sets MigrationType field to given value.
 
 HasMigrationType returns a boolean if a field has been set.
 
+### GetMigrationTypeName
+
+`func (o *MigrationStatusReplyObj) GetMigrationTypeName() string`
+
+GetMigrationTypeName returns the MigrationTypeName field if non-nil, zero value otherwise.
+
+### GetMigrationTypeNameOk
+
+`func (o *MigrationStatusReplyObj) GetMigrationTypeNameOk() (*string, bool)`
+
+GetMigrationTypeNameOk returns a tuple with the MigrationTypeName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMigrationTypeName
+
+`func (o *MigrationStatusReplyObj) SetMigrationTypeName(v string)`
+
+SetMigrationTypeName sets MigrationTypeName field to given value.
+
+### HasMigrationTypeName
+
+`func (o *MigrationStatusReplyObj) HasMigrationTypeName() bool`
+
+HasMigrationTypeName returns a boolean if a field has been set.
+
+### GetRotatedSecrets
+
+`func (o *MigrationStatusReplyObj) GetRotatedSecrets() MigrationItems`
+
+GetRotatedSecrets returns the RotatedSecrets field if non-nil, zero value otherwise.
+
+### GetRotatedSecretsOk
+
+`func (o *MigrationStatusReplyObj) GetRotatedSecretsOk() (*MigrationItems, bool)`
+
+GetRotatedSecretsOk returns a tuple with the RotatedSecrets field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotatedSecrets
+
+`func (o *MigrationStatusReplyObj) SetRotatedSecrets(v MigrationItems)`
+
+SetRotatedSecrets sets RotatedSecrets field to given value.
+
+### HasRotatedSecrets
+
+`func (o *MigrationStatusReplyObj) HasRotatedSecrets() bool`
+
+HasRotatedSecrets returns a boolean if a field has been set.
+
 ### GetStartTime
 
 `func (o *MigrationStatusReplyObj) GetStartTime() string`
@@ -283,6 +362,31 @@ SetStartTime sets StartTime field to given value.
 `func (o *MigrationStatusReplyObj) HasStartTime() bool`
 
 HasStartTime returns a boolean if a field has been set.
+
+### GetTargets
+
+`func (o *MigrationStatusReplyObj) GetTargets() MigrationItems`
+
+GetTargets returns the Targets field if non-nil, zero value otherwise.
+
+### GetTargetsOk
+
+`func (o *MigrationStatusReplyObj) GetTargetsOk() (*MigrationItems, bool)`
+
+GetTargetsOk returns a tuple with the Targets field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargets
+
+`func (o *MigrationStatusReplyObj) SetTargets(v MigrationItems)`
+
+SetTargets sets Targets field to given value.
+
+### HasTargets
+
+`func (o *MigrationStatusReplyObj) HasTargets() bool`
+
+HasTargets returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

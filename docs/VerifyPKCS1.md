@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DisplayId** | Pointer to **string** | The display id of the key to use in the verification process | [optional] 
 **ItemId** | Pointer to **int64** | The item id of the key to use in the verification process | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeyName** | **string** | The name of the RSA key to use in the verification process | 
 **Message** | **string** | The message to be verified | 
 **Signature** | **string** | The message&#39;s signature | 

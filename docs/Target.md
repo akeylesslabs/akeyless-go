@@ -4,17 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**AccessDate** | Pointer to **time.Time** |  | [optional] 
 **AccessRequestStatus** | Pointer to **string** |  | [optional] 
 **Attributes** | Pointer to **map[string]map[string]interface{}** | this is not \&quot;omitempty\&quot; since an empty value causes no update while an empty map will clear the attributes | [optional] 
 **ClientPermissions** | Pointer to **[]string** |  | [optional] 
 **Comment** | Pointer to **string** |  | [optional] 
-**CreationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**CreationDate** | Pointer to **time.Time** |  | [optional] 
 **CredentialsLess** | Pointer to **bool** |  | [optional] 
 **IsAccessRequestEnabled** | Pointer to **bool** |  | [optional] 
 **LastVersion** | Pointer to **int32** |  | [optional] 
-**ModificationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**ModificationDate** | Pointer to **time.Time** |  | [optional] 
 **ProtectionKeyName** | Pointer to **string** |  | [optional] 
+**TargetDetails** | Pointer to **string** |  | [optional] 
 **TargetId** | Pointer to **int64** |  | [optional] 
 **TargetItemsAssoc** | Pointer to [**[]TargetItemAssociation**](TargetItemAssociation.md) |  | [optional] 
 **TargetName** | Pointer to **string** |  | [optional] 
@@ -315,6 +316,31 @@ SetProtectionKeyName sets ProtectionKeyName field to given value.
 `func (o *Target) HasProtectionKeyName() bool`
 
 HasProtectionKeyName returns a boolean if a field has been set.
+
+### GetTargetDetails
+
+`func (o *Target) GetTargetDetails() string`
+
+GetTargetDetails returns the TargetDetails field if non-nil, zero value otherwise.
+
+### GetTargetDetailsOk
+
+`func (o *Target) GetTargetDetailsOk() (*string, bool)`
+
+GetTargetDetailsOk returns a tuple with the TargetDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetDetails
+
+`func (o *Target) SetTargetDetails(v string)`
+
+SetTargetDetails sets TargetDetails field to given value.
+
+### HasTargetDetails
+
+`func (o *Target) HasTargetDetails() bool`
+
+HasTargetDetails returns a boolean if a field has been set.
 
 ### GetTargetId
 
