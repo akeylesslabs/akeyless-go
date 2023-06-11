@@ -31,11 +31,14 @@ Method | HTTP request | Description
 [**CreateDockerhubTarget**](V2Api.md#CreateDockerhubTarget) | **Post** /create-dockerhub-target | 
 [**CreateDynamicSecret**](V2Api.md#CreateDynamicSecret) | **Post** /create-dynamic-secret | 
 [**CreateEKSTarget**](V2Api.md#CreateEKSTarget) | **Post** /create-eks-target | 
+[**CreateESM**](V2Api.md#CreateESM) | **Post** /create-esm | 
 [**CreateEventForwarder**](V2Api.md#CreateEventForwarder) | **Post** /create-event-forwarder | 
 [**CreateGKETarget**](V2Api.md#CreateGKETarget) | **Post** /create-gke-target | 
 [**CreateGcpTarget**](V2Api.md#CreateGcpTarget) | **Post** /create-gcp-target | 
 [**CreateGithubTarget**](V2Api.md#CreateGithubTarget) | **Post** /create-github-target | 
+[**CreateGlobalSignTarget**](V2Api.md#CreateGlobalSignTarget) | **Post** /create-globalsign-target | 
 [**CreateKey**](V2Api.md#CreateKey) | **Post** /create-key | 
+[**CreateLinkedTarget**](V2Api.md#CreateLinkedTarget) | **Post** /create-linked-target | 
 [**CreateNativeK8STarget**](V2Api.md#CreateNativeK8STarget) | **Post** /create-k8s-target | 
 [**CreatePKICertIssuer**](V2Api.md#CreatePKICertIssuer) | **Post** /create-pki-cert-issuer | 
 [**CreatePingTarget**](V2Api.md#CreatePingTarget) | **Post** /create-ping-target | 
@@ -48,6 +51,8 @@ Method | HTTP request | Description
 [**CreateSecret**](V2Api.md#CreateSecret) | **Post** /create-secret | 
 [**CreateTokenizer**](V2Api.md#CreateTokenizer) | **Post** /create-tokenizer | 
 [**CreateWebTarget**](V2Api.md#CreateWebTarget) | **Post** /create-web-target | 
+[**CreateWindowsTarget**](V2Api.md#CreateWindowsTarget) | **Post** /create-windows-target | 
+[**CreateZeroSSLTarget**](V2Api.md#CreateZeroSSLTarget) | **Post** /create-zerossl-target | 
 [**CreateldapTarget**](V2Api.md#CreateldapTarget) | **Post** /create-ldap-target | 
 [**Decrypt**](V2Api.md#Decrypt) | **Post** /decrypt | 
 [**DecryptGPG**](V2Api.md#DecryptGPG) | **Post** /decrypt-gpg | 
@@ -56,6 +61,8 @@ Method | HTTP request | Description
 [**DeleteAuthMethod**](V2Api.md#DeleteAuthMethod) | **Post** /delete-auth-method | 
 [**DeleteAuthMethods**](V2Api.md#DeleteAuthMethods) | **Post** /delete-auth-methods | 
 [**DeleteEventForwarder**](V2Api.md#DeleteEventForwarder) | **Post** /delete-event-forwarder | 
+[**DeleteGatewayAllowedAccessId**](V2Api.md#DeleteGatewayAllowedAccessId) | **Post** /gateway-delete-allowed-management-access | 
+[**DeleteGwCluster**](V2Api.md#DeleteGwCluster) | **Post** /delete-gateway-cluster | 
 [**DeleteItem**](V2Api.md#DeleteItem) | **Post** /delete-item | 
 [**DeleteItems**](V2Api.md#DeleteItems) | **Post** /delete-items | 
 [**DeleteRole**](V2Api.md#DeleteRole) | **Post** /delete-role | 
@@ -65,6 +72,8 @@ Method | HTTP request | Description
 [**DeleteTarget**](V2Api.md#DeleteTarget) | **Post** /delete-target | 
 [**DeleteTargetAssociation**](V2Api.md#DeleteTargetAssociation) | **Post** /delete-assoc-target-item | 
 [**DeleteTargets**](V2Api.md#DeleteTargets) | **Post** /delete-targets | 
+[**DeriveKey**](V2Api.md#DeriveKey) | **Post** /derive-key | 
+[**DescribeAssoc**](V2Api.md#DescribeAssoc) | **Post** /describe-role-am-assoc | 
 [**DescribeItem**](V2Api.md#DescribeItem) | **Post** /describe-item | 
 [**DescribePermissions**](V2Api.md#DescribePermissions) | **Post** /describe-permissions | 
 [**DescribeSubClaims**](V2Api.md#DescribeSubClaims) | **Post** /describe-sub-claims | 
@@ -72,6 +81,12 @@ Method | HTTP request | Description
 [**Encrypt**](V2Api.md#Encrypt) | **Post** /encrypt | 
 [**EncryptGPG**](V2Api.md#EncryptGPG) | **Post** /encrypt-gpg | 
 [**EncryptWithClassicKey**](V2Api.md#EncryptWithClassicKey) | **Post** /encrypt-with-classic-key | 
+[**EsmCreate**](V2Api.md#EsmCreate) | **Post** /esm-create | 
+[**EsmDelete**](V2Api.md#EsmDelete) | **Post** /esm-delete | 
+[**EsmGet**](V2Api.md#EsmGet) | **Post** /esm-get | 
+[**EsmList**](V2Api.md#EsmList) | **Post** /esm-list | 
+[**EsmUpdate**](V2Api.md#EsmUpdate) | **Post** /esm-update | 
+[**EventAction**](V2Api.md#EventAction) | **Post** /event-action | 
 [**ExportClassicKey**](V2Api.md#ExportClassicKey) | **Post** /export-classic-key | 
 [**GatewayCreateK8SAuthConfig**](V2Api.md#GatewayCreateK8SAuthConfig) | **Post** /gateway-create-k8s-auth-config | 
 [**GatewayCreateMigration**](V2Api.md#GatewayCreateMigration) | **Post** /gateway-create-migration | 
@@ -97,21 +112,22 @@ Method | HTTP request | Description
 [**GatewayCreateProducerPostgreSQL**](V2Api.md#GatewayCreateProducerPostgreSQL) | **Post** /gateway-create-producer-postgresql | 
 [**GatewayCreateProducerRabbitMQ**](V2Api.md#GatewayCreateProducerRabbitMQ) | **Post** /gateway-create-producer-rabbitmq | 
 [**GatewayCreateProducerRdp**](V2Api.md#GatewayCreateProducerRdp) | **Post** /gateway-create-producer-rdp | 
+[**GatewayCreateProducerRedis**](V2Api.md#GatewayCreateProducerRedis) | **Post** /gateway-create-producer-Redis | 
 [**GatewayCreateProducerRedshift**](V2Api.md#GatewayCreateProducerRedshift) | **Post** /gateway-create-producer-redshift | 
 [**GatewayCreateProducerSnowflake**](V2Api.md#GatewayCreateProducerSnowflake) | **Post** /gateway-create-producer-snowflake | 
-[**GatewayDeleteAllowedManagementAccess**](V2Api.md#GatewayDeleteAllowedManagementAccess) | **Post** /gateway-delete-allowed-management-access | 
 [**GatewayDeleteK8SAuthConfig**](V2Api.md#GatewayDeleteK8SAuthConfig) | **Post** /gateway-delete-k8s-auth-config | 
 [**GatewayDeleteMigration**](V2Api.md#GatewayDeleteMigration) | **Post** /gateway-delete-migration | 
 [**GatewayDeleteProducer**](V2Api.md#GatewayDeleteProducer) | **Post** /gateway-delete-producer | 
+[**GatewayDownloadCustomerFragments**](V2Api.md#GatewayDownloadCustomerFragments) | **Post** /gateway-download-customer-fragments | 
 [**GatewayGetConfig**](V2Api.md#GatewayGetConfig) | **Post** /gateway-get-config | 
 [**GatewayGetK8SAuthConfig**](V2Api.md#GatewayGetK8SAuthConfig) | **Post** /gateway-get-k8s-auth-config | 
 [**GatewayGetLdapAuthConfig**](V2Api.md#GatewayGetLdapAuthConfig) | **Post** /gateway-get-ldap-auth-config | 
 [**GatewayGetMigration**](V2Api.md#GatewayGetMigration) | **Post** /gateway-get-migration | 
 [**GatewayGetProducer**](V2Api.md#GatewayGetProducer) | **Post** /gateway-get-producer | 
 [**GatewayGetTmpUsers**](V2Api.md#GatewayGetTmpUsers) | **Post** /gateway-get-producer-tmp-creds | 
-[**GatewayListAllowedManagementAccess**](V2Api.md#GatewayListAllowedManagementAccess) | **Post** /gateway-list-allowed-management-access | 
 [**GatewayListMigration**](V2Api.md#GatewayListMigration) | **Post** /gateway-list-migration | 
 [**GatewayListProducers**](V2Api.md#GatewayListProducers) | **Post** /gateway-list-producers | 
+[**GatewayListRotatedSecrets**](V2Api.md#GatewayListRotatedSecrets) | **Post** /gateway-list-rotated-secrets | 
 [**GatewayMigratePersonalItems**](V2Api.md#GatewayMigratePersonalItems) | **Post** /gateway-migrate-personal-items | 
 [**GatewayRevokeTmpUsers**](V2Api.md#GatewayRevokeTmpUsers) | **Post** /gateway-revoke-producer-tmp-creds | 
 [**GatewayStartProducer**](V2Api.md#GatewayStartProducer) | **Post** /gateway-start-producer | 
@@ -144,6 +160,7 @@ Method | HTTP request | Description
 [**GatewayUpdateProducerPostgreSQL**](V2Api.md#GatewayUpdateProducerPostgreSQL) | **Post** /gateway-update-producer-postgresql | 
 [**GatewayUpdateProducerRabbitMQ**](V2Api.md#GatewayUpdateProducerRabbitMQ) | **Post** /gateway-update-producer-rabbitmq | 
 [**GatewayUpdateProducerRdp**](V2Api.md#GatewayUpdateProducerRdp) | **Post** /gateway-update-producer-rdp | 
+[**GatewayUpdateProducerRedis**](V2Api.md#GatewayUpdateProducerRedis) | **Post** /gateway-update-producer-redis | 
 [**GatewayUpdateProducerRedshift**](V2Api.md#GatewayUpdateProducerRedshift) | **Post** /gateway-update-producer-redshift | 
 [**GatewayUpdateProducerSnowflake**](V2Api.md#GatewayUpdateProducerSnowflake) | **Post** /gateway-update-producer-snowflake | 
 [**GatewayUpdateTlsCert**](V2Api.md#GatewayUpdateTlsCert) | **Post** /gateway-update-tls-cert | 
@@ -164,6 +181,8 @@ Method | HTTP request | Description
 [**GetTags**](V2Api.md#GetTags) | **Post** /get-tags | 
 [**GetTarget**](V2Api.md#GetTarget) | **Post** /get-target | 
 [**GetTargetDetails**](V2Api.md#GetTargetDetails) | **Post** /get-target-details | 
+[**Hmac**](V2Api.md#Hmac) | **Post** /hmac | 
+[**ImportPasswords**](V2Api.md#ImportPasswords) | **Post** /import-passwords | 
 [**KmipClientDeleteRule**](V2Api.md#KmipClientDeleteRule) | **Post** /kmip-client-delete-rule | 
 [**KmipClientSetRule**](V2Api.md#KmipClientSetRule) | **Post** /kmip-client-set-rule | 
 [**KmipCreateClient**](V2Api.md#KmipCreateClient) | **Post** /kmip-create-client | 
@@ -196,6 +215,7 @@ Method | HTTP request | Description
 [**SetItemState**](V2Api.md#SetItemState) | **Post** /set-item-state | 
 [**SetRoleRule**](V2Api.md#SetRoleRule) | **Post** /set-role-rule | 
 [**ShareItem**](V2Api.md#ShareItem) | **Post** /share-item | 
+[**SignDataWithClassicKey**](V2Api.md#SignDataWithClassicKey) | **Post** /sign-data-with-classic-key | 
 [**SignGPG**](V2Api.md#SignGPG) | **Post** /sign-gpg | 
 [**SignJWTWithClassicKey**](V2Api.md#SignJWTWithClassicKey) | **Post** /sign-jwt-with-classic-key | 
 [**SignPKCS1**](V2Api.md#SignPKCS1) | **Post** /sign-pkcs1 | 
@@ -233,9 +253,11 @@ Method | HTTP request | Description
 [**UpdateGKETarget**](V2Api.md#UpdateGKETarget) | **Post** /update-gke-target | 
 [**UpdateGcpTarget**](V2Api.md#UpdateGcpTarget) | **Post** /update-gcp-target | 
 [**UpdateGithubTarget**](V2Api.md#UpdateGithubTarget) | **Post** /update-github-target | 
+[**UpdateGlobalSignTarget**](V2Api.md#UpdateGlobalSignTarget) | **Post** /update-globalsign-target | 
 [**UpdateItem**](V2Api.md#UpdateItem) | **Post** /update-item | 
 [**UpdateLdapTarget**](V2Api.md#UpdateLdapTarget) | **Post** /update-ldap-target | 
 [**UpdateLdapTargetDetails**](V2Api.md#UpdateLdapTargetDetails) | **Post** /update-ldap-target-details | 
+[**UpdateLinkedTarget**](V2Api.md#UpdateLinkedTarget) | **Post** /update-linked-target | 
 [**UpdateNativeK8STarget**](V2Api.md#UpdateNativeK8STarget) | **Post** /update-k8s-target | 
 [**UpdatePKICertIssuer**](V2Api.md#UpdatePKICertIssuer) | **Post** /update-pki-cert-issuer | 
 [**UpdatePingTarget**](V2Api.md#UpdatePingTarget) | **Post** /update-ping-target | 
@@ -254,8 +276,11 @@ Method | HTTP request | Description
 [**UpdateTargetDetails**](V2Api.md#UpdateTargetDetails) | **Post** /update-target-details | 
 [**UpdateWebTarget**](V2Api.md#UpdateWebTarget) | **Post** /update-web-target | 
 [**UpdateWebTargetDetails**](V2Api.md#UpdateWebTargetDetails) | **Post** /update-web-target-details | 
+[**UpdateWindowsTarget**](V2Api.md#UpdateWindowsTarget) | **Post** /update-windows-target | 
+[**UpdateZeroSSLTarget**](V2Api.md#UpdateZeroSSLTarget) | **Post** /update-zerossl-target | 
 [**UploadRSA**](V2Api.md#UploadRSA) | **Post** /upload-rsa | 
 [**ValidateToken**](V2Api.md#ValidateToken) | **Post** /validate-token | 
+[**VerifyDataWithClassicKey**](V2Api.md#VerifyDataWithClassicKey) | **Post** /verify-data-with-classic-key | 
 [**VerifyGPG**](V2Api.md#VerifyGPG) | **Post** /verify-gpg | 
 [**VerifyJWTWithClassicKey**](V2Api.md#VerifyJWTWithClassicKey) | **Post** /verify-jwt-with-classic-key | 
 [**VerifyPKCS1**](V2Api.md#VerifyPKCS1) | **Post** /verify-pkcs1 | 
@@ -282,11 +307,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewassocRoleAuthMethod("AmName_example", "RoleName_example") // AssocRoleAuthMethod | 
+    body := *openapiclient.NewAssocRoleAuthMethod("AmName_example", "RoleName_example") // AssocRoleAuthMethod | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.AssocRoleAuthMethod(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.AssocRoleAuthMethod(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.AssocRoleAuthMethod``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -346,11 +371,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewassocTargetItem("Name_example", "TargetName_example") // AssocTargetItem | 
+    body := *openapiclient.NewAssocTargetItem("Name_example", "TargetName_example") // AssocTargetItem | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.AssocTargetItem(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.AssocTargetItem(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.AssocTargetItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -410,11 +435,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.Newauth() // Auth | 
+    body := *openapiclient.NewAuth() // Auth | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.Auth(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.Auth(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.Auth``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -474,11 +499,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.Newconfigure() // Configure | 
+    body := *openapiclient.NewConfigure() // Configure | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.Configure(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.Configure(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.Configure``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -503,7 +528,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ConfigureOutput**](configureOutput.md)
+[**ConfigureOutput**](ConfigureOutput.md)
 
 ### Authorization
 
@@ -541,8 +566,8 @@ func main() {
     body := *openapiclient.NewConnect() // Connect | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.Connect(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.Connect(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.Connect``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -602,11 +627,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateAWSTarget("Name_example") // CreateAWSTarget | 
+    body := *openapiclient.NewCreateAWSTarget("AccessKey_example", "AccessKeyId_example", "Name_example") // CreateAWSTarget | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateAWSTarget(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateAWSTarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateAWSTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -631,7 +656,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateAWSTargetOutput**](createAWSTargetOutput.md)
+[**CreateAWSTargetOutput**](CreateAWSTargetOutput.md)
 
 ### Authorization
 
@@ -666,11 +691,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateArtifactoryTarget("ArtifactoryAdminName_example", "ArtifactoryAdminPwd_example", "BaseUrl_example", "Name_example") // CreateArtifactoryTarget | 
+    body := *openapiclient.NewCreateArtifactoryTarget("ArtifactoryAdminName_example", "ArtifactoryAdminPwd_example", "BaseUrl_example", "Name_example") // CreateArtifactoryTarget | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateArtifactoryTarget(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateArtifactoryTarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateArtifactoryTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -695,7 +720,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateArtifactoryTargetOutput**](createArtifactoryTargetOutput.md)
+[**CreateArtifactoryTargetOutput**](CreateArtifactoryTargetOutput.md)
 
 ### Authorization
 
@@ -730,11 +755,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateAuthMethod("Name_example") // CreateAuthMethod | 
+    body := *openapiclient.NewCreateAuthMethod("Name_example") // CreateAuthMethod | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateAuthMethod(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateAuthMethod(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateAuthMethod``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -759,7 +784,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateAuthMethodOutput**](createAuthMethodOutput.md)
+[**CreateAuthMethodOutput**](CreateAuthMethodOutput.md)
 
 ### Authorization
 
@@ -794,11 +819,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateAuthMethodAWSIAM([]string{"BoundAwsAccountId_example"}, "Name_example") // CreateAuthMethodAWSIAM | 
+    body := *openapiclient.NewCreateAuthMethodAWSIAM([]string{"BoundAwsAccountId_example"}, "Name_example") // CreateAuthMethodAWSIAM | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateAuthMethodAWSIAM(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateAuthMethodAWSIAM(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateAuthMethodAWSIAM``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -823,7 +848,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateAuthMethodAWSIAMOutput**](createAuthMethodAWSIAMOutput.md)
+[**CreateAuthMethodAWSIAMOutput**](CreateAuthMethodAWSIAMOutput.md)
 
 ### Authorization
 
@@ -858,11 +883,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateAuthMethodAzureAD("BoundTenantId_example", "Name_example") // CreateAuthMethodAzureAD | 
+    body := *openapiclient.NewCreateAuthMethodAzureAD("BoundTenantId_example", "Name_example") // CreateAuthMethodAzureAD | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateAuthMethodAzureAD(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateAuthMethodAzureAD(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateAuthMethodAzureAD``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -887,7 +912,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateAuthMethodAzureADOutput**](createAuthMethodAzureADOutput.md)
+[**CreateAuthMethodAzureADOutput**](CreateAuthMethodAzureADOutput.md)
 
 ### Authorization
 
@@ -922,11 +947,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateAuthMethodCert("Name_example", "UniqueIdentifier_example") // CreateAuthMethodCert | 
+    body := *openapiclient.NewCreateAuthMethodCert("Name_example", "UniqueIdentifier_example") // CreateAuthMethodCert | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateAuthMethodCert(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateAuthMethodCert(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateAuthMethodCert``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -951,7 +976,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateAuthMethodCertOutput**](createAuthMethodCertOutput.md)
+[**CreateAuthMethodCertOutput**](CreateAuthMethodCertOutput.md)
 
 ### Authorization
 
@@ -986,11 +1011,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateAuthMethodGCP("Audience_example", "Name_example", "Type_example") // CreateAuthMethodGCP | 
+    body := *openapiclient.NewCreateAuthMethodGCP("Audience_example", "Name_example", "Type_example") // CreateAuthMethodGCP | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateAuthMethodGCP(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateAuthMethodGCP(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateAuthMethodGCP``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1015,7 +1040,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateAuthMethodGCPOutput**](createAuthMethodGCPOutput.md)
+[**CreateAuthMethodGCPOutput**](CreateAuthMethodGCPOutput.md)
 
 ### Authorization
 
@@ -1050,11 +1075,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateAuthMethodHuawei("Name_example") // CreateAuthMethodHuawei | 
+    body := *openapiclient.NewCreateAuthMethodHuawei("Name_example") // CreateAuthMethodHuawei | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateAuthMethodHuawei(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateAuthMethodHuawei(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateAuthMethodHuawei``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1079,7 +1104,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateAuthMethodHuaweiOutput**](createAuthMethodHuaweiOutput.md)
+[**CreateAuthMethodHuaweiOutput**](CreateAuthMethodHuaweiOutput.md)
 
 ### Authorization
 
@@ -1114,11 +1139,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateAuthMethodK8S("Name_example") // CreateAuthMethodK8S | 
+    body := *openapiclient.NewCreateAuthMethodK8S("Name_example") // CreateAuthMethodK8S | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateAuthMethodK8S(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateAuthMethodK8S(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateAuthMethodK8S``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1143,7 +1168,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateAuthMethodK8SOutput**](createAuthMethodK8SOutput.md)
+[**CreateAuthMethodK8SOutput**](CreateAuthMethodK8SOutput.md)
 
 ### Authorization
 
@@ -1178,11 +1203,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateAuthMethodLDAP("Name_example") // CreateAuthMethodLDAP | 
+    body := *openapiclient.NewCreateAuthMethodLDAP("Name_example") // CreateAuthMethodLDAP | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateAuthMethodLDAP(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateAuthMethodLDAP(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateAuthMethodLDAP``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1207,7 +1232,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateAuthMethodLDAPOutput**](createAuthMethodLDAPOutput.md)
+[**CreateAuthMethodLDAPOutput**](CreateAuthMethodLDAPOutput.md)
 
 ### Authorization
 
@@ -1242,11 +1267,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateAuthMethodOAuth2("JwksUri_example", "Name_example", "UniqueIdentifier_example") // CreateAuthMethodOAuth2 | 
+    body := *openapiclient.NewCreateAuthMethodOAuth2("JwksUri_example", "Name_example", "UniqueIdentifier_example") // CreateAuthMethodOAuth2 | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateAuthMethodOAuth2(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateAuthMethodOAuth2(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateAuthMethodOAuth2``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1271,7 +1296,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateAuthMethodOAuth2Output**](createAuthMethodOAuth2Output.md)
+[**CreateAuthMethodOAuth2Output**](CreateAuthMethodOAuth2Output.md)
 
 ### Authorization
 
@@ -1306,11 +1331,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateAuthMethodOIDC("Name_example", "UniqueIdentifier_example") // CreateAuthMethodOIDC | 
+    body := *openapiclient.NewCreateAuthMethodOIDC("Name_example", "UniqueIdentifier_example") // CreateAuthMethodOIDC | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateAuthMethodOIDC(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateAuthMethodOIDC(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateAuthMethodOIDC``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1335,7 +1360,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateAuthMethodOIDCOutput**](createAuthMethodOIDCOutput.md)
+[**CreateAuthMethodOIDCOutput**](CreateAuthMethodOIDCOutput.md)
 
 ### Authorization
 
@@ -1370,11 +1395,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateAuthMethodSAML("Name_example", "UniqueIdentifier_example") // CreateAuthMethodSAML | 
+    body := *openapiclient.NewCreateAuthMethodSAML("Name_example", "UniqueIdentifier_example") // CreateAuthMethodSAML | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateAuthMethodSAML(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateAuthMethodSAML(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateAuthMethodSAML``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1399,7 +1424,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateAuthMethodSAMLOutput**](createAuthMethodSAMLOutput.md)
+[**CreateAuthMethodSAMLOutput**](CreateAuthMethodSAMLOutput.md)
 
 ### Authorization
 
@@ -1434,11 +1459,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateAuthMethodUniversalIdentity("Name_example") // CreateAuthMethodUniversalIdentity | 
+    body := *openapiclient.NewCreateAuthMethodUniversalIdentity("Name_example") // CreateAuthMethodUniversalIdentity | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateAuthMethodUniversalIdentity(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateAuthMethodUniversalIdentity(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateAuthMethodUniversalIdentity``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1463,7 +1488,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateAuthMethodUniversalIdentityOutput**](createAuthMethodUniversalIdentityOutput.md)
+[**CreateAuthMethodUniversalIdentityOutput**](CreateAuthMethodUniversalIdentityOutput.md)
 
 ### Authorization
 
@@ -1498,11 +1523,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateAzureTarget("Name_example") // CreateAzureTarget | 
+    body := *openapiclient.NewCreateAzureTarget("Name_example") // CreateAzureTarget | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateAzureTarget(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateAzureTarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateAzureTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1527,7 +1552,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateAzureTargetOutput**](createAzureTargetOutput.md)
+[**CreateAzureTargetOutput**](CreateAzureTargetOutput.md)
 
 ### Authorization
 
@@ -1562,11 +1587,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateCertificate("Name_example") // CreateCertificate | 
+    body := *openapiclient.NewCreateCertificate("Name_example") // CreateCertificate | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateCertificate(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateCertificate(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateCertificate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1591,7 +1616,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateCertificateOutput**](createCertificateOutput.md)
+[**CreateCertificateOutput**](CreateCertificateOutput.md)
 
 ### Authorization
 
@@ -1629,8 +1654,8 @@ func main() {
     body := *openapiclient.NewCreateClassicKey("Alg_example", "Name_example") // CreateClassicKey | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateClassicKey(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateClassicKey(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateClassicKey``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1690,11 +1715,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateDBTarget("DbType_example", "Name_example") // CreateDBTarget | 
+    body := *openapiclient.NewCreateDBTarget("DbType_example", "Name_example") // CreateDBTarget | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateDBTarget(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateDBTarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateDBTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1719,7 +1744,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateDBTargetOutput**](createDBTargetOutput.md)
+[**CreateDBTargetOutput**](CreateDBTargetOutput.md)
 
 ### Authorization
 
@@ -1754,11 +1779,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateDFCKey("Alg_example", "Name_example") // CreateDFCKey | 
+    body := *openapiclient.NewCreateDFCKey("Alg_example", "Name_example") // CreateDFCKey | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateDFCKey(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateDFCKey(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateDFCKey``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1783,7 +1808,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateDFCKeyOutput**](createDFCKeyOutput.md)
+[**CreateDFCKeyOutput**](CreateDFCKeyOutput.md)
 
 ### Authorization
 
@@ -1818,11 +1843,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateDockerhubTarget("Name_example") // CreateDockerhubTarget | 
+    body := *openapiclient.NewCreateDockerhubTarget("Name_example") // CreateDockerhubTarget | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateDockerhubTarget(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateDockerhubTarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateDockerhubTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1847,7 +1872,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateDockerhubTargetOutput**](createDockerhubTargetOutput.md)
+[**CreateDockerhubTargetOutput**](CreateDockerhubTargetOutput.md)
 
 ### Authorization
 
@@ -1882,11 +1907,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateDynamicSecret("Name_example") // CreateDynamicSecret | 
+    body := *openapiclient.NewCreateDynamicSecret("Name_example") // CreateDynamicSecret | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateDynamicSecret(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateDynamicSecret(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateDynamicSecret``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1946,11 +1971,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateEKSTarget("EksAccessKeyId_example", "EksClusterCaCert_example", "EksClusterEndpoint_example", "EksClusterName_example", "EksSecretAccessKey_example", "Name_example") // CreateEKSTarget | 
+    body := *openapiclient.NewCreateEKSTarget("EksAccessKeyId_example", "EksClusterCaCert_example", "EksClusterEndpoint_example", "EksClusterName_example", "EksSecretAccessKey_example", "Name_example") // CreateEKSTarget | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateEKSTarget(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateEKSTarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateEKSTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1975,7 +2000,71 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateEKSTargetOutput**](createEKSTargetOutput.md)
+[**CreateEKSTargetOutput**](CreateEKSTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateESM
+
+> CreateESMOutput CreateESM(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewCreateESM("Name_example", "TargetToAssociate_example") // CreateESM | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateESM(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateESM``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateESM`: CreateESMOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateESM`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateESMRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateESM**](CreateESM.md) |  | 
+
+### Return type
+
+[**CreateESMOutput**](CreateESMOutput.md)
 
 ### Authorization
 
@@ -2010,11 +2099,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateEventForwarder([]string{"EventSourceLocations_example"}, "ForwarderType_example", "Name_example", "RunnerType_example") // CreateEventForwarder | 
+    body := *openapiclient.NewCreateEventForwarder([]string{"EventSourceLocations_example"}, "ForwarderType_example", "Name_example", "RunnerType_example") // CreateEventForwarder | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateEventForwarder(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateEventForwarder(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateEventForwarder``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2039,7 +2128,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateEventForwarderOutput**](createEventForwarderOutput.md)
+[**CreateEventForwarderOutput**](CreateEventForwarderOutput.md)
 
 ### Authorization
 
@@ -2074,11 +2163,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateGKETarget("Name_example") // CreateGKETarget | 
+    body := *openapiclient.NewCreateGKETarget("Name_example") // CreateGKETarget | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateGKETarget(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateGKETarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateGKETarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2103,7 +2192,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateGKETargetOutput**](createGKETargetOutput.md)
+[**CreateGKETargetOutput**](CreateGKETargetOutput.md)
 
 ### Authorization
 
@@ -2138,11 +2227,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateGcpTarget("Name_example") // CreateGcpTarget | 
+    body := *openapiclient.NewCreateGcpTarget("Name_example") // CreateGcpTarget | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateGcpTarget(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateGcpTarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateGcpTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2167,7 +2256,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateGcpTargetOutput**](createGcpTargetOutput.md)
+[**CreateGcpTargetOutput**](CreateGcpTargetOutput.md)
 
 ### Authorization
 
@@ -2202,11 +2291,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateGithubTarget("Name_example") // CreateGithubTarget | 
+    body := *openapiclient.NewCreateGithubTarget("Name_example") // CreateGithubTarget | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateGithubTarget(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateGithubTarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateGithubTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2231,7 +2320,71 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateGithubTargetOutput**](createGithubTargetOutput.md)
+[**CreateGithubTargetOutput**](CreateGithubTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateGlobalSignTarget
+
+> CreateGlobalSignTargetOutput CreateGlobalSignTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewCreateGlobalSignTarget("ContactEmail_example", "ContactFirstName_example", "ContactLastName_example", "ContactPhone_example", "Name_example", "Password_example", "ProfileId_example", "Username_example") // CreateGlobalSignTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateGlobalSignTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateGlobalSignTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateGlobalSignTarget`: CreateGlobalSignTargetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateGlobalSignTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateGlobalSignTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateGlobalSignTarget**](CreateGlobalSignTarget.md) |  | 
+
+### Return type
+
+[**CreateGlobalSignTargetOutput**](CreateGlobalSignTargetOutput.md)
 
 ### Authorization
 
@@ -2266,11 +2419,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateKey("Alg_example", "Name_example") // CreateKey | 
+    body := *openapiclient.NewCreateKey("Alg_example", "Name_example") // CreateKey | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateKey(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateKey(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateKey``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2295,7 +2448,71 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateKeyOutput**](createKeyOutput.md)
+[**CreateKeyOutput**](CreateKeyOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateLinkedTarget
+
+> CreateLinkedTargetOutput CreateLinkedTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewCreateLinkedTarget("Name_example") // CreateLinkedTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateLinkedTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateLinkedTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateLinkedTarget`: CreateLinkedTargetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateLinkedTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateLinkedTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateLinkedTarget**](CreateLinkedTarget.md) |  | 
+
+### Return type
+
+[**CreateLinkedTargetOutput**](CreateLinkedTargetOutput.md)
 
 ### Authorization
 
@@ -2330,11 +2547,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateNativeK8STarget("K8sClusterCaCert_example", "K8sClusterEndpoint_example", "K8sClusterToken_example", "Name_example") // CreateNativeK8STarget | 
+    body := *openapiclient.NewCreateNativeK8STarget("K8sClusterCaCert_example", "K8sClusterEndpoint_example", "K8sClusterToken_example", "Name_example") // CreateNativeK8STarget | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateNativeK8STarget(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateNativeK8STarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateNativeK8STarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2359,7 +2576,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateNativeK8STargetOutput**](createNativeK8STargetOutput.md)
+[**CreateNativeK8STargetOutput**](CreateNativeK8STargetOutput.md)
 
 ### Authorization
 
@@ -2397,8 +2614,8 @@ func main() {
     body := *openapiclient.NewCreatePKICertIssuer("Name_example", "SignerKeyName_example", int64(123)) // CreatePKICertIssuer | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreatePKICertIssuer(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreatePKICertIssuer(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreatePKICertIssuer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2423,7 +2640,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreatePKICertIssuerOutput**](createPKICertIssuerOutput.md)
+[**CreatePKICertIssuerOutput**](CreatePKICertIssuerOutput.md)
 
 ### Authorization
 
@@ -2458,11 +2675,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreatePingTarget("Name_example") // CreatePingTarget | 
+    body := *openapiclient.NewCreatePingTarget("Name_example") // CreatePingTarget | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreatePingTarget(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreatePingTarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreatePingTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2487,7 +2704,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreatePingTargetOutput**](createPingTargetOutput.md)
+[**CreatePingTargetOutput**](CreatePingTargetOutput.md)
 
 ### Authorization
 
@@ -2522,11 +2739,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateRabbitMQTarget("Name_example") // CreateRabbitMQTarget | 
+    body := *openapiclient.NewCreateRabbitMQTarget("Name_example") // CreateRabbitMQTarget | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateRabbitMQTarget(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateRabbitMQTarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateRabbitMQTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2551,7 +2768,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateRabbitMQTargetOutput**](createRabbitMQTargetOutput.md)
+[**CreateRabbitMQTargetOutput**](CreateRabbitMQTargetOutput.md)
 
 ### Authorization
 
@@ -2586,11 +2803,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateRole("Name_example") // CreateRole | 
+    body := *openapiclient.NewCreateRole("Name_example") // CreateRole | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateRole(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateRole(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateRole``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2650,11 +2867,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateRotatedSecret("Name_example", "RotatorType_example", "TargetName_example") // CreateRotatedSecret | 
+    body := *openapiclient.NewCreateRotatedSecret("Name_example", "RotatorType_example", "TargetName_example") // CreateRotatedSecret | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateRotatedSecret(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateRotatedSecret(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateRotatedSecret``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2714,11 +2931,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateSSHCertIssuer("AllowedUsers_example", "Name_example", "SignerKeyName_example", int64(123)) // CreateSSHCertIssuer | 
+    body := *openapiclient.NewCreateSSHCertIssuer("AllowedUsers_example", "Name_example", "SignerKeyName_example", int64(123)) // CreateSSHCertIssuer | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateSSHCertIssuer(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateSSHCertIssuer(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateSSHCertIssuer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2743,7 +2960,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateSSHCertIssuerOutput**](createSSHCertIssuerOutput.md)
+[**CreateSSHCertIssuerOutput**](CreateSSHCertIssuerOutput.md)
 
 ### Authorization
 
@@ -2778,11 +2995,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateSSHTarget("Name_example") // CreateSSHTarget | 
+    body := *openapiclient.NewCreateSSHTarget("Name_example") // CreateSSHTarget | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateSSHTarget(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateSSHTarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateSSHTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2807,7 +3024,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateSSHTargetOutput**](createSSHTargetOutput.md)
+[**CreateSSHTargetOutput**](CreateSSHTargetOutput.md)
 
 ### Authorization
 
@@ -2842,11 +3059,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateSalesforceTarget("AuthFlow_example", "ClientId_example", "Email_example", "Name_example", "TenantUrl_example") // CreateSalesforceTarget | 
+    body := *openapiclient.NewCreateSalesforceTarget("AuthFlow_example", "ClientId_example", "Email_example", "Name_example", "TenantUrl_example") // CreateSalesforceTarget | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateSalesforceTarget(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateSalesforceTarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateSalesforceTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2871,7 +3088,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateSalesforceTargetOutput**](createSalesforceTargetOutput.md)
+[**CreateSalesforceTargetOutput**](CreateSalesforceTargetOutput.md)
 
 ### Authorization
 
@@ -2906,11 +3123,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateSecret("Name_example", "Value_example") // CreateSecret | 
+    body := *openapiclient.NewCreateSecret("Name_example", "Value_example") // CreateSecret | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateSecret(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateSecret(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateSecret``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2970,11 +3187,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateTokenizer("Name_example", "TemplateType_example", "TokenizerType_example") // CreateTokenizer | 
+    body := *openapiclient.NewCreateTokenizer("Name_example", "TemplateType_example", "TokenizerType_example") // CreateTokenizer | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateTokenizer(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateTokenizer(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateTokenizer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2999,7 +3216,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateTokenizerOutput**](createTokenizerOutput.md)
+[**CreateTokenizerOutput**](CreateTokenizerOutput.md)
 
 ### Authorization
 
@@ -3034,11 +3251,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateWebTarget("Name_example") // CreateWebTarget | 
+    body := *openapiclient.NewCreateWebTarget("Name_example") // CreateWebTarget | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateWebTarget(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateWebTarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateWebTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3063,7 +3280,135 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateWebTargetOutput**](createWebTargetOutput.md)
+[**CreateWebTargetOutput**](CreateWebTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateWindowsTarget
+
+> CreateWindowsTargetOutput CreateWindowsTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewCreateWindowsTarget("Hostname_example", "Name_example", "Password_example", "Username_example") // CreateWindowsTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateWindowsTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateWindowsTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateWindowsTarget`: CreateWindowsTargetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateWindowsTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateWindowsTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateWindowsTarget**](CreateWindowsTarget.md) |  | 
+
+### Return type
+
+[**CreateWindowsTargetOutput**](CreateWindowsTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateZeroSSLTarget
+
+> CreateZeroSSLTargetOutput CreateZeroSSLTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewCreateZeroSSLTarget("ApiKey_example", "ImapFqdn_example", "ImapPassword_example", "ImapUsername_example", "Name_example") // CreateZeroSSLTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateZeroSSLTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateZeroSSLTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateZeroSSLTarget`: CreateZeroSSLTargetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateZeroSSLTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateZeroSSLTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateZeroSSLTarget**](CreateZeroSSLTarget.md) |  | 
+
+### Return type
+
+[**CreateZeroSSLTargetOutput**](CreateZeroSSLTargetOutput.md)
 
 ### Authorization
 
@@ -3098,11 +3443,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewcreateLdapTarget("BindDn_example", "BindDnPassword_example", "LdapUrl_example", "Name_example") // CreateLdapTarget | 
+    body := *openapiclient.NewCreateLdapTarget("BindDn_example", "BindDnPassword_example", "LdapUrl_example", "Name_example") // CreateLdapTarget | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.CreateldapTarget(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.CreateldapTarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateldapTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3127,7 +3472,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateLdapTargetOutput**](createLdapTargetOutput.md)
+[**CreateLdapTargetOutput**](CreateLdapTargetOutput.md)
 
 ### Authorization
 
@@ -3162,11 +3507,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.Newdecrypt("KeyName_example") // Decrypt | 
+    body := *openapiclient.NewDecrypt("KeyName_example") // Decrypt | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.Decrypt(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.Decrypt(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.Decrypt``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3191,7 +3536,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DecryptOutput**](decryptOutput.md)
+[**DecryptOutput**](DecryptOutput.md)
 
 ### Authorization
 
@@ -3226,11 +3571,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewdecryptGPG("Ciphertext_example", "KeyName_example") // DecryptGPG | 
+    body := *openapiclient.NewDecryptGPG("Ciphertext_example", "KeyName_example") // DecryptGPG | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.DecryptGPG(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.DecryptGPG(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DecryptGPG``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3255,7 +3600,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DecryptGPGOutput**](decryptGPGOutput.md)
+[**DecryptGPGOutput**](DecryptGPGOutput.md)
 
 ### Authorization
 
@@ -3290,11 +3635,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewdecryptPKCS1("Ciphertext_example", "KeyName_example") // DecryptPKCS1 | 
+    body := *openapiclient.NewDecryptPKCS1("Ciphertext_example", "KeyName_example") // DecryptPKCS1 | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.DecryptPKCS1(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.DecryptPKCS1(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DecryptPKCS1``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3319,7 +3664,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DecryptPKCS1Output**](decryptPKCS1Output.md)
+[**DecryptPKCS1Output**](DecryptPKCS1Output.md)
 
 ### Authorization
 
@@ -3354,11 +3699,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewdecryptWithClassicKey("Ciphertext_example", "DisplayId_example", int32(123)) // DecryptWithClassicKey | 
+    body := *openapiclient.NewDecryptWithClassicKey("Ciphertext_example", "DisplayId_example", int32(123)) // DecryptWithClassicKey | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.DecryptWithClassicKey(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.DecryptWithClassicKey(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DecryptWithClassicKey``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3383,7 +3728,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DecryptWithClassicKeyOutput**](decryptWithClassicKeyOutput.md)
+[**DecryptWithClassicKeyOutput**](DecryptWithClassicKeyOutput.md)
 
 ### Authorization
 
@@ -3418,11 +3763,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewdeleteAuthMethod("Name_example") // DeleteAuthMethod | 
+    body := *openapiclient.NewDeleteAuthMethod("Name_example") // DeleteAuthMethod | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.DeleteAuthMethod(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.DeleteAuthMethod(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DeleteAuthMethod``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3447,7 +3792,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAuthMethodOutput**](deleteAuthMethodOutput.md)
+[**DeleteAuthMethodOutput**](DeleteAuthMethodOutput.md)
 
 ### Authorization
 
@@ -3482,11 +3827,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewdeleteAuthMethods("Path_example") // DeleteAuthMethods | 
+    body := *openapiclient.NewDeleteAuthMethods("Path_example") // DeleteAuthMethods | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.DeleteAuthMethods(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.DeleteAuthMethods(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DeleteAuthMethods``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3511,7 +3856,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAuthMethodsOutput**](deleteAuthMethodsOutput.md)
+[**DeleteAuthMethodsOutput**](DeleteAuthMethodsOutput.md)
 
 ### Authorization
 
@@ -3546,11 +3891,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewdeleteEventForwarder("Name_example") // DeleteEventForwarder | 
+    body := *openapiclient.NewDeleteEventForwarder("Name_example") // DeleteEventForwarder | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.DeleteEventForwarder(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.DeleteEventForwarder(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DeleteEventForwarder``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3591,6 +3936,134 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## DeleteGatewayAllowedAccessId
+
+> map[string]interface{} DeleteGatewayAllowedAccessId(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewDeleteGatewayAllowedAccessId("AccessId_example", "ClusterName_example") // DeleteGatewayAllowedAccessId | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.DeleteGatewayAllowedAccessId(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DeleteGatewayAllowedAccessId``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeleteGatewayAllowedAccessId`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DeleteGatewayAllowedAccessId`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteGatewayAllowedAccessIdRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DeleteGatewayAllowedAccessId**](DeleteGatewayAllowedAccessId.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteGwCluster
+
+> map[string]interface{} DeleteGwCluster(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewDeleteGwCluster("ClusterName_example") // DeleteGwCluster | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.DeleteGwCluster(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DeleteGwCluster``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeleteGwCluster`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DeleteGwCluster`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteGwClusterRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DeleteGwCluster**](DeleteGwCluster.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## DeleteItem
 
 > DeleteItemOutput DeleteItem(ctx).Body(body).Execute()
@@ -3610,11 +4083,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewdeleteItem("Name_example") // DeleteItem | 
+    body := *openapiclient.NewDeleteItem("Name_example") // DeleteItem | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.DeleteItem(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.DeleteItem(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DeleteItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3674,11 +4147,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewdeleteItems("Path_example") // DeleteItems | 
+    body := *openapiclient.NewDeleteItems("Path_example") // DeleteItems | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.DeleteItems(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.DeleteItems(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DeleteItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3703,7 +4176,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteItemsOutput**](deleteItemsOutput.md)
+[**DeleteItemsOutput**](DeleteItemsOutput.md)
 
 ### Authorization
 
@@ -3738,11 +4211,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewdeleteRole("Name_example") // DeleteRole | 
+    body := *openapiclient.NewDeleteRole("Name_example") // DeleteRole | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.DeleteRole(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.DeleteRole(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DeleteRole``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3802,11 +4275,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewdeleteRoleAssociation("AssocId_example") // DeleteRoleAssociation | 
+    body := *openapiclient.NewDeleteRoleAssociation("AssocId_example") // DeleteRoleAssociation | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.DeleteRoleAssociation(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.DeleteRoleAssociation(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DeleteRoleAssociation``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3866,11 +4339,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewdeleteRoleRule("Path_example", "RoleName_example") // DeleteRoleRule | 
+    body := *openapiclient.NewDeleteRoleRule("Path_example", "RoleName_example") // DeleteRoleRule | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.DeleteRoleRule(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.DeleteRoleRule(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DeleteRoleRule``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3895,7 +4368,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteRoleRuleOutput**](deleteRoleRuleOutput.md)
+[**DeleteRoleRuleOutput**](DeleteRoleRuleOutput.md)
 
 ### Authorization
 
@@ -3930,11 +4403,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewdeleteRoles("Path_example") // DeleteRoles | 
+    body := *openapiclient.NewDeleteRoles("Path_example") // DeleteRoles | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.DeleteRoles(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.DeleteRoles(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DeleteRoles``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3994,11 +4467,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewdeleteTarget("Name_example") // DeleteTarget | 
+    body := *openapiclient.NewDeleteTarget("Name_example") // DeleteTarget | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.DeleteTarget(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.DeleteTarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DeleteTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4058,11 +4531,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewdeleteTargetAssociation("Name_example") // DeleteTargetAssociation | 
+    body := *openapiclient.NewDeleteTargetAssociation("Name_example") // DeleteTargetAssociation | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.DeleteTargetAssociation(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.DeleteTargetAssociation(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DeleteTargetAssociation``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4122,11 +4595,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewdeleteTargets("Path_example") // DeleteTargets | 
+    body := *openapiclient.NewDeleteTargets("Path_example") // DeleteTargets | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.DeleteTargets(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.DeleteTargets(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DeleteTargets``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4167,6 +4640,134 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## DeriveKey
+
+> DeriveKeyOutput DeriveKey(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewDeriveKey("Alg_example", int64(123), int64(123), "Name_example") // DeriveKey | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.DeriveKey(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DeriveKey``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeriveKey`: DeriveKeyOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DeriveKey`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeriveKeyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DeriveKey**](DeriveKey.md) |  | 
+
+### Return type
+
+[**DeriveKeyOutput**](DeriveKeyOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DescribeAssoc
+
+> RoleAssociationDetails DescribeAssoc(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewDescribeAssoc("AssocId_example") // DescribeAssoc | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.DescribeAssoc(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DescribeAssoc``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DescribeAssoc`: RoleAssociationDetails
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DescribeAssoc`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDescribeAssocRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DescribeAssoc**](DescribeAssoc.md) |  | 
+
+### Return type
+
+[**RoleAssociationDetails**](RoleAssociationDetails.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## DescribeItem
 
 > Item DescribeItem(ctx).Body(body).Execute()
@@ -4186,11 +4787,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewdescribeItem("Name_example") // DescribeItem | 
+    body := *openapiclient.NewDescribeItem("Name_example") // DescribeItem | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.DescribeItem(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.DescribeItem(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DescribeItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4250,11 +4851,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewdescribePermissions("Path_example", "Type_example") // DescribePermissions | 
+    body := *openapiclient.NewDescribePermissions("Path_example", "Type_example") // DescribePermissions | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.DescribePermissions(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.DescribePermissions(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DescribePermissions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4314,11 +4915,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewdescribeSubClaims() // DescribeSubClaims | 
+    body := *openapiclient.NewDescribeSubClaims() // DescribeSubClaims | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.DescribeSubClaims(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.DescribeSubClaims(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DescribeSubClaims``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4343,7 +4944,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DescribeSubClaimsOutput**](describeSubClaimsOutput.md)
+[**DescribeSubClaimsOutput**](DescribeSubClaimsOutput.md)
 
 ### Authorization
 
@@ -4378,11 +4979,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.Newdetokenize("Ciphertext_example", "TokenizerName_example") // Detokenize | 
+    body := *openapiclient.NewDetokenize("Ciphertext_example", "TokenizerName_example") // Detokenize | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.Detokenize(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.Detokenize(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.Detokenize``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4407,7 +5008,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DetokenizeOutput**](detokenizeOutput.md)
+[**DetokenizeOutput**](DetokenizeOutput.md)
 
 ### Authorization
 
@@ -4442,11 +5043,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.Newencrypt("KeyName_example") // Encrypt | 
+    body := *openapiclient.NewEncrypt("KeyName_example") // Encrypt | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.Encrypt(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.Encrypt(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.Encrypt``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4471,7 +5072,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EncryptOutput**](encryptOutput.md)
+[**EncryptOutput**](EncryptOutput.md)
 
 ### Authorization
 
@@ -4506,11 +5107,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewencryptGPG("KeyName_example", "Plaintext_example") // EncryptGPG | 
+    body := *openapiclient.NewEncryptGPG("KeyName_example", "Plaintext_example") // EncryptGPG | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.EncryptGPG(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.EncryptGPG(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.EncryptGPG``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4535,7 +5136,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EncryptGPGOutput**](encryptGPGOutput.md)
+[**EncryptGPGOutput**](EncryptGPGOutput.md)
 
 ### Authorization
 
@@ -4570,11 +5171,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewencryptWithClassicKey("DisplayId_example", "Plaintext_example", int32(123)) // EncryptWithClassicKey | 
+    body := *openapiclient.NewEncryptWithClassicKey("DisplayId_example", "Plaintext_example", int32(123)) // EncryptWithClassicKey | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.EncryptWithClassicKey(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.EncryptWithClassicKey(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.EncryptWithClassicKey``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4599,7 +5200,386 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EncryptOutput**](encryptOutput.md)
+[**EncryptOutput**](EncryptOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EsmCreate
+
+> EsmCreateSecretOutput EsmCreate(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewEsmUpdate("EsmName_example", "SecretId_example", "Value_example") // EsmUpdate | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.EsmCreate(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.EsmCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EsmCreate`: EsmCreateSecretOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.EsmCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEsmCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**EsmUpdate**](EsmUpdate.md) |  | 
+
+### Return type
+
+[**EsmCreateSecretOutput**](EsmCreateSecretOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EsmDelete
+
+> map[string]interface{} EsmDelete(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewEsmDelete("EsmName_example", "SecretId_example") // EsmDelete | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.EsmDelete(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.EsmDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EsmDelete`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.EsmDelete`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEsmDeleteRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**EsmDelete**](EsmDelete.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EsmGet
+
+> EsmGetSecretOutput EsmGet(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewEsmGet("EsmName_example", "SecretId_example") // EsmGet | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.EsmGet(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.EsmGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EsmGet`: EsmGetSecretOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.EsmGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEsmGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**EsmGet**](EsmGet.md) |  | 
+
+### Return type
+
+[**EsmGetSecretOutput**](EsmGetSecretOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EsmList
+
+> EsmListSecretsOutput EsmList(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewEsmList("EsmName_example") // EsmList | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.EsmList(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.EsmList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EsmList`: EsmListSecretsOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.EsmList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEsmListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**EsmList**](EsmList.md) |  | 
+
+### Return type
+
+[**EsmListSecretsOutput**](EsmListSecretsOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EsmUpdate
+
+> EsmUpdateSecretOutput EsmUpdate(ctx).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.EsmUpdate(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.EsmUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EsmUpdate`: EsmUpdateSecretOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.EsmUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEsmUpdateRequest struct via the builder pattern
+
+
+### Return type
+
+[**EsmUpdateSecretOutput**](EsmUpdateSecretOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EventAction
+
+> map[string]interface{} EventAction(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewEventAction("Action_example", int64(123)) // EventAction | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.EventAction(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.EventAction``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventAction`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.EventAction`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEventActionRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**EventAction**](EventAction.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
 
 ### Authorization
 
@@ -4637,8 +5617,8 @@ func main() {
     body := *openapiclient.NewExportClassicKey("Name_example") // ExportClassicKey | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.ExportClassicKey(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.ExportClassicKey(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.ExportClassicKey``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4698,11 +5678,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateK8SAuthConfig("AccessId_example", "K8sHost_example", "Name_example", "SigningKey_example") // GatewayCreateK8SAuthConfig | 
+    body := *openapiclient.NewGatewayCreateK8SAuthConfig("AccessId_example", "K8sHost_example", "Name_example", "SigningKey_example") // GatewayCreateK8SAuthConfig | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayCreateK8SAuthConfig(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayCreateK8SAuthConfig(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateK8SAuthConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4727,7 +5707,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayCreateK8SAuthConfigOutput**](gatewayCreateK8SAuthConfigOutput.md)
+[**GatewayCreateK8SAuthConfigOutput**](GatewayCreateK8SAuthConfigOutput.md)
 
 ### Authorization
 
@@ -4762,11 +5742,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateMigration("Name_example", "TargetLocation_example") // GatewayCreateMigration | 
+    body := *openapiclient.NewGatewayCreateMigration("Name_example", "SiTargetName_example", "SiUsersPathTemplate_example", "TargetLocation_example") // GatewayCreateMigration | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayCreateMigration(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayCreateMigration(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateMigration``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4826,11 +5806,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerArtifactory("ArtifactoryTokenAudience_example", "ArtifactoryTokenScope_example", "Name_example") // GatewayCreateProducerArtifactory | 
+    body := *openapiclient.NewGatewayCreateProducerArtifactory("ArtifactoryTokenAudience_example", "ArtifactoryTokenScope_example", "Name_example") // GatewayCreateProducerArtifactory | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayCreateProducerArtifactory(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayCreateProducerArtifactory(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerArtifactory``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4855,7 +5835,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayCreateProducerArtifactoryOutput**](gatewayCreateProducerArtifactoryOutput.md)
+[**GatewayCreateProducerArtifactoryOutput**](GatewayCreateProducerArtifactoryOutput.md)
 
 ### Authorization
 
@@ -4890,11 +5870,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerAws("Name_example") // GatewayCreateProducerAws | 
+    body := *openapiclient.NewGatewayCreateProducerAws("Name_example") // GatewayCreateProducerAws | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayCreateProducerAws(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayCreateProducerAws(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerAws``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4919,7 +5899,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayCreateProducerAwsOutput**](gatewayCreateProducerAwsOutput.md)
+[**GatewayCreateProducerAwsOutput**](GatewayCreateProducerAwsOutput.md)
 
 ### Authorization
 
@@ -4954,11 +5934,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerAzure("Name_example") // GatewayCreateProducerAzure | 
+    body := *openapiclient.NewGatewayCreateProducerAzure("Name_example") // GatewayCreateProducerAzure | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayCreateProducerAzure(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayCreateProducerAzure(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerAzure``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4983,7 +5963,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayCreateProducerAzureOutput**](gatewayCreateProducerAzureOutput.md)
+[**GatewayCreateProducerAzureOutput**](GatewayCreateProducerAzureOutput.md)
 
 ### Authorization
 
@@ -5018,11 +5998,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerCassandra("Name_example") // GatewayCreateProducerCassandra | 
+    body := *openapiclient.NewGatewayCreateProducerCassandra("Name_example") // GatewayCreateProducerCassandra | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayCreateProducerCassandra(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayCreateProducerCassandra(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerCassandra``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5047,7 +6027,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayCreateProducerCassandraOutput**](gatewayCreateProducerCassandraOutput.md)
+[**GatewayCreateProducerCassandraOutput**](GatewayCreateProducerCassandraOutput.md)
 
 ### Authorization
 
@@ -5082,11 +6062,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerCertificateAutomation("Name_example") // GatewayCreateProducerCertificateAutomation | 
+    body := *openapiclient.NewGatewayCreateProducerCertificateAutomation("Name_example") // GatewayCreateProducerCertificateAutomation | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayCreateProducerCertificateAutomation(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayCreateProducerCertificateAutomation(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerCertificateAutomation``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5111,7 +6091,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayCreateProducerCertificateAutomationOutput**](gatewayCreateProducerCertificateAutomationOutput.md)
+[**GatewayCreateProducerCertificateAutomationOutput**](GatewayCreateProducerCertificateAutomationOutput.md)
 
 ### Authorization
 
@@ -5146,11 +6126,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerCustom("CreateSyncUrl_example", "Name_example", "RevokeSyncUrl_example") // GatewayCreateProducerCustom |  (optional)
+    body := *openapiclient.NewGatewayCreateProducerCustom("CreateSyncUrl_example", "Name_example", "RevokeSyncUrl_example") // GatewayCreateProducerCustom |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayCreateProducerCustom(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayCreateProducerCustom(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerCustom``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5175,7 +6155,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayCreateProducerCustomOutput**](gatewayCreateProducerCustomOutput.md)
+[**GatewayCreateProducerCustomOutput**](GatewayCreateProducerCustomOutput.md)
 
 ### Authorization
 
@@ -5210,11 +6190,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerDockerhub("Name_example") // GatewayCreateProducerDockerhub | 
+    body := *openapiclient.NewGatewayCreateProducerDockerhub("Name_example") // GatewayCreateProducerDockerhub | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayCreateProducerDockerhub(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayCreateProducerDockerhub(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerDockerhub``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5239,7 +6219,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayCreateProducerDockerhubOutput**](gatewayCreateProducerDockerhubOutput.md)
+[**GatewayCreateProducerDockerhubOutput**](GatewayCreateProducerDockerhubOutput.md)
 
 ### Authorization
 
@@ -5274,11 +6254,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerEks("Name_example") // GatewayCreateProducerEks | 
+    body := *openapiclient.NewGatewayCreateProducerEks("Name_example") // GatewayCreateProducerEks | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayCreateProducerEks(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayCreateProducerEks(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerEks``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5303,7 +6283,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayCreateProducerEksOutput**](gatewayCreateProducerEksOutput.md)
+[**GatewayCreateProducerEksOutput**](GatewayCreateProducerEksOutput.md)
 
 ### Authorization
 
@@ -5338,11 +6318,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerGcp("Name_example", "ServiceAccountType_example") // GatewayCreateProducerGcp | 
+    body := *openapiclient.NewGatewayCreateProducerGcp("Name_example", "ServiceAccountType_example") // GatewayCreateProducerGcp | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayCreateProducerGcp(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayCreateProducerGcp(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerGcp``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5367,7 +6347,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayCreateProducerGcpOutput**](gatewayCreateProducerGcpOutput.md)
+[**GatewayCreateProducerGcpOutput**](GatewayCreateProducerGcpOutput.md)
 
 ### Authorization
 
@@ -5402,11 +6382,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerGithub("Name_example") // GatewayCreateProducerGithub | 
+    body := *openapiclient.NewGatewayCreateProducerGithub("Name_example") // GatewayCreateProducerGithub | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayCreateProducerGithub(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayCreateProducerGithub(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerGithub``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5431,7 +6411,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayCreateProducerGithubOutput**](gatewayCreateProducerGithubOutput.md)
+[**GatewayCreateProducerGithubOutput**](GatewayCreateProducerGithubOutput.md)
 
 ### Authorization
 
@@ -5466,11 +6446,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerGke("Name_example") // GatewayCreateProducerGke | 
+    body := *openapiclient.NewGatewayCreateProducerGke("Name_example") // GatewayCreateProducerGke | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayCreateProducerGke(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayCreateProducerGke(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerGke``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5495,7 +6475,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayCreateProducerGkeOutput**](gatewayCreateProducerGkeOutput.md)
+[**GatewayCreateProducerGkeOutput**](GatewayCreateProducerGkeOutput.md)
 
 ### Authorization
 
@@ -5530,11 +6510,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerHanaDb("Name_example") // GatewayCreateProducerHanaDb | 
+    body := *openapiclient.NewGatewayCreateProducerHanaDb("Name_example") // GatewayCreateProducerHanaDb | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayCreateProducerHanaDb(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayCreateProducerHanaDb(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerHanaDb``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5559,7 +6539,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayCreateProducerHanaDbOutput**](gatewayCreateProducerHanaDbOutput.md)
+[**GatewayCreateProducerHanaDbOutput**](GatewayCreateProducerHanaDbOutput.md)
 
 ### Authorization
 
@@ -5594,11 +6574,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerLdap("Name_example") // GatewayCreateProducerLdap | 
+    body := *openapiclient.NewGatewayCreateProducerLdap("Name_example") // GatewayCreateProducerLdap | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayCreateProducerLdap(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayCreateProducerLdap(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerLdap``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5623,7 +6603,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayCreateProducerLdapOutput**](gatewayCreateProducerLdapOutput.md)
+[**GatewayCreateProducerLdapOutput**](GatewayCreateProducerLdapOutput.md)
 
 ### Authorization
 
@@ -5658,11 +6638,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerMSSQL("Name_example") // GatewayCreateProducerMSSQL | 
+    body := *openapiclient.NewGatewayCreateProducerMSSQL("Name_example") // GatewayCreateProducerMSSQL | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayCreateProducerMSSQL(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayCreateProducerMSSQL(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerMSSQL``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5687,7 +6667,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayCreateProducerMSSQLOutput**](gatewayCreateProducerMSSQLOutput.md)
+[**GatewayCreateProducerMSSQLOutput**](GatewayCreateProducerMSSQLOutput.md)
 
 ### Authorization
 
@@ -5722,11 +6702,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerMongo("Name_example") // GatewayCreateProducerMongo | 
+    body := *openapiclient.NewGatewayCreateProducerMongo("Name_example") // GatewayCreateProducerMongo | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayCreateProducerMongo(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayCreateProducerMongo(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerMongo``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5751,7 +6731,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayCreateProducerMongoOutput**](gatewayCreateProducerMongoOutput.md)
+[**GatewayCreateProducerMongoOutput**](GatewayCreateProducerMongoOutput.md)
 
 ### Authorization
 
@@ -5786,11 +6766,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerMySQL("Name_example") // GatewayCreateProducerMySQL | 
+    body := *openapiclient.NewGatewayCreateProducerMySQL("Name_example") // GatewayCreateProducerMySQL | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayCreateProducerMySQL(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayCreateProducerMySQL(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerMySQL``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5815,7 +6795,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayCreateProducerMySQLOutput**](gatewayCreateProducerMySQLOutput.md)
+[**GatewayCreateProducerMySQLOutput**](GatewayCreateProducerMySQLOutput.md)
 
 ### Authorization
 
@@ -5850,11 +6830,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerNativeK8S("Name_example") // GatewayCreateProducerNativeK8S | 
+    body := *openapiclient.NewGatewayCreateProducerNativeK8S("Name_example") // GatewayCreateProducerNativeK8S | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayCreateProducerNativeK8S(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayCreateProducerNativeK8S(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerNativeK8S``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5879,7 +6859,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayCreateProducerNativeK8SOutput**](gatewayCreateProducerNativeK8SOutput.md)
+[**GatewayCreateProducerNativeK8SOutput**](GatewayCreateProducerNativeK8SOutput.md)
 
 ### Authorization
 
@@ -5914,11 +6894,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerOracleDb("Name_example") // GatewayCreateProducerOracleDb | 
+    body := *openapiclient.NewGatewayCreateProducerOracleDb("Name_example") // GatewayCreateProducerOracleDb | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayCreateProducerOracleDb(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayCreateProducerOracleDb(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerOracleDb``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5943,7 +6923,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayCreateProducerOracleDbOutput**](gatewayCreateProducerOracleDbOutput.md)
+[**GatewayCreateProducerOracleDbOutput**](GatewayCreateProducerOracleDbOutput.md)
 
 ### Authorization
 
@@ -5978,11 +6958,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerPing("Name_example") // GatewayCreateProducerPing | 
+    body := *openapiclient.NewGatewayCreateProducerPing("Name_example") // GatewayCreateProducerPing | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayCreateProducerPing(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayCreateProducerPing(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerPing``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6007,7 +6987,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayCreateProducerPingOutput**](gatewayCreateProducerPingOutput.md)
+[**GatewayCreateProducerPingOutput**](GatewayCreateProducerPingOutput.md)
 
 ### Authorization
 
@@ -6042,11 +7022,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerPostgreSQL("Name_example") // GatewayCreateProducerPostgreSQL | 
+    body := *openapiclient.NewGatewayCreateProducerPostgreSQL("Name_example") // GatewayCreateProducerPostgreSQL | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayCreateProducerPostgreSQL(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayCreateProducerPostgreSQL(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerPostgreSQL``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6071,7 +7051,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayCreateProducerPostgreSQLOutput**](gatewayCreateProducerPostgreSQLOutput.md)
+[**GatewayCreateProducerPostgreSQLOutput**](GatewayCreateProducerPostgreSQLOutput.md)
 
 ### Authorization
 
@@ -6106,11 +7086,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerRabbitMQ("Name_example") // GatewayCreateProducerRabbitMQ | 
+    body := *openapiclient.NewGatewayCreateProducerRabbitMQ("Name_example") // GatewayCreateProducerRabbitMQ | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayCreateProducerRabbitMQ(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayCreateProducerRabbitMQ(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerRabbitMQ``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6135,7 +7115,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayCreateProducerRabbitMQOutput**](gatewayCreateProducerRabbitMQOutput.md)
+[**GatewayCreateProducerRabbitMQOutput**](GatewayCreateProducerRabbitMQOutput.md)
 
 ### Authorization
 
@@ -6170,11 +7150,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerRdp("Name_example") // GatewayCreateProducerRdp | 
+    body := *openapiclient.NewGatewayCreateProducerRdp("Name_example") // GatewayCreateProducerRdp | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayCreateProducerRdp(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayCreateProducerRdp(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerRdp``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6199,7 +7179,71 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayCreateProducerRdpOutput**](gatewayCreateProducerRdpOutput.md)
+[**GatewayCreateProducerRdpOutput**](GatewayCreateProducerRdpOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayCreateProducerRedis
+
+> GatewayCreateProducerRedisOutput GatewayCreateProducerRedis(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewGatewayCreateProducerRedis("Name_example") // GatewayCreateProducerRedis | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayCreateProducerRedis(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerRedis``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayCreateProducerRedis`: GatewayCreateProducerRedisOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayCreateProducerRedis`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayCreateProducerRedisRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayCreateProducerRedis**](GatewayCreateProducerRedis.md) |  | 
+
+### Return type
+
+[**GatewayCreateProducerRedisOutput**](GatewayCreateProducerRedisOutput.md)
 
 ### Authorization
 
@@ -6234,11 +7278,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerRedshift("Name_example") // GatewayCreateProducerRedshift | 
+    body := *openapiclient.NewGatewayCreateProducerRedshift("Name_example") // GatewayCreateProducerRedshift | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayCreateProducerRedshift(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayCreateProducerRedshift(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerRedshift``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6263,7 +7307,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayCreateProducerRedshiftOutput**](gatewayCreateProducerRedshiftOutput.md)
+[**GatewayCreateProducerRedshiftOutput**](GatewayCreateProducerRedshiftOutput.md)
 
 ### Authorization
 
@@ -6298,11 +7342,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerSnowflake("Name_example") // GatewayCreateProducerSnowflake | 
+    body := *openapiclient.NewGatewayCreateProducerSnowflake("Name_example") // GatewayCreateProducerSnowflake | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayCreateProducerSnowflake(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayCreateProducerSnowflake(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerSnowflake``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6327,71 +7371,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayCreateProducerSnowflakeOutput**](gatewayCreateProducerSnowflakeOutput.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GatewayDeleteAllowedManagementAccess
-
-> map[string]interface{} GatewayDeleteAllowedManagementAccess(ctx).Body(body).Execute()
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    body := *openapiclient.NewgatewayDeleteAllowedManagementAccess("SubAdminId_example") // GatewayDeleteAllowedManagementAccess | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayDeleteAllowedManagementAccess(context.Background()).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayDeleteAllowedManagementAccess``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GatewayDeleteAllowedManagementAccess`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayDeleteAllowedManagementAccess`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGatewayDeleteAllowedManagementAccessRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayDeleteAllowedManagementAccess**](GatewayDeleteAllowedManagementAccess.md) |  | 
-
-### Return type
-
-**map[string]interface{}**
+[**GatewayCreateProducerSnowflakeOutput**](GatewayCreateProducerSnowflakeOutput.md)
 
 ### Authorization
 
@@ -6426,11 +7406,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayDeleteK8SAuthConfig("Name_example") // GatewayDeleteK8SAuthConfig | 
+    body := *openapiclient.NewGatewayDeleteK8SAuthConfig("Name_example") // GatewayDeleteK8SAuthConfig | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayDeleteK8SAuthConfig(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayDeleteK8SAuthConfig(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayDeleteK8SAuthConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6455,7 +7435,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayDeleteK8SAuthConfigOutput**](gatewayDeleteK8SAuthConfigOutput.md)
+[**GatewayDeleteK8SAuthConfigOutput**](GatewayDeleteK8SAuthConfigOutput.md)
 
 ### Authorization
 
@@ -6490,11 +7470,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayDeleteMigration("Id_example") // GatewayDeleteMigration | 
+    body := *openapiclient.NewGatewayDeleteMigration("Id_example") // GatewayDeleteMigration | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayDeleteMigration(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayDeleteMigration(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayDeleteMigration``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6554,11 +7534,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayDeleteProducer("Name_example") // GatewayDeleteProducer | 
+    body := *openapiclient.NewGatewayDeleteProducer("Name_example") // GatewayDeleteProducer | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayDeleteProducer(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayDeleteProducer(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayDeleteProducer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6583,7 +7563,71 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayDeleteProducerOutput**](gatewayDeleteProducerOutput.md)
+[**GatewayDeleteProducerOutput**](GatewayDeleteProducerOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayDownloadCustomerFragments
+
+> GatewayDownloadCustomerFragmentsOutput GatewayDownloadCustomerFragments(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewGatewayDownloadCustomerFragments() // GatewayDownloadCustomerFragments | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayDownloadCustomerFragments(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayDownloadCustomerFragments``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayDownloadCustomerFragments`: GatewayDownloadCustomerFragmentsOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayDownloadCustomerFragments`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayDownloadCustomerFragmentsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayDownloadCustomerFragments**](GatewayDownloadCustomerFragments.md) |  | 
+
+### Return type
+
+[**GatewayDownloadCustomerFragmentsOutput**](GatewayDownloadCustomerFragmentsOutput.md)
 
 ### Authorization
 
@@ -6618,11 +7662,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayGetConfig() // GatewayGetConfig | 
+    body := *openapiclient.NewGatewayGetConfig() // GatewayGetConfig | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayGetConfig(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayGetConfig(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayGetConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6682,11 +7726,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayGetK8SAuthConfig("Name_example") // GatewayGetK8SAuthConfig | 
+    body := *openapiclient.NewGatewayGetK8SAuthConfig("Name_example") // GatewayGetK8SAuthConfig | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayGetK8SAuthConfig(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayGetK8SAuthConfig(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayGetK8SAuthConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6711,7 +7755,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayGetK8SAuthConfigOutput**](gatewayGetK8SAuthConfigOutput.md)
+[**GatewayGetK8SAuthConfigOutput**](GatewayGetK8SAuthConfigOutput.md)
 
 ### Authorization
 
@@ -6746,11 +7790,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayGetLdapAuthConfig() // GatewayGetLdapAuthConfig | 
+    body := *openapiclient.NewGatewayGetLdapAuthConfig() // GatewayGetLdapAuthConfig | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayGetLdapAuthConfig(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayGetLdapAuthConfig(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayGetLdapAuthConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6775,7 +7819,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayGetLdapAuthConfigOutput**](gatewayGetLdapAuthConfigOutput.md)
+[**GatewayGetLdapAuthConfigOutput**](GatewayGetLdapAuthConfigOutput.md)
 
 ### Authorization
 
@@ -6810,11 +7854,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayGetMigration() // GatewayGetMigration | 
+    body := *openapiclient.NewGatewayGetMigration() // GatewayGetMigration | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayGetMigration(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayGetMigration(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayGetMigration``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6839,7 +7883,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayMigrationGetOutput**](gatewayMigrationGetOutput.md)
+[**GatewayMigrationGetOutput**](GatewayMigrationGetOutput.md)
 
 ### Authorization
 
@@ -6874,11 +7918,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayGetProducer("Name_example") // GatewayGetProducer | 
+    body := *openapiclient.NewGatewayGetProducer("Name_example") // GatewayGetProducer | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayGetProducer(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayGetProducer(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayGetProducer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6938,11 +7982,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayGetTmpUsers("Name_example") // GatewayGetTmpUsers | 
+    body := *openapiclient.NewGatewayGetTmpUsers("Name_example") // GatewayGetTmpUsers | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayGetTmpUsers(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayGetTmpUsers(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayGetTmpUsers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6983,70 +8027,6 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## GatewayListAllowedManagementAccess
-
-> GetSubAdminsListReplyObj GatewayListAllowedManagementAccess(ctx).Body(body).Execute()
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    body := *openapiclient.NewgatewayListAllowedManagementAccess() // GatewayListAllowedManagementAccess | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayListAllowedManagementAccess(context.Background()).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayListAllowedManagementAccess``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GatewayListAllowedManagementAccess`: GetSubAdminsListReplyObj
-    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayListAllowedManagementAccess`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGatewayListAllowedManagementAccessRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayListAllowedManagementAccess**](GatewayListAllowedManagementAccess.md) |  | 
-
-### Return type
-
-[**GetSubAdminsListReplyObj**](GetSubAdminsListReplyObj.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## GatewayListMigration
 
 > GatewayMigrationListOutput GatewayListMigration(ctx).Body(body).Execute()
@@ -7066,11 +8046,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayListMigration() // GatewayListMigration | 
+    body := *openapiclient.NewGatewayListMigration() // GatewayListMigration | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayListMigration(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayListMigration(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayListMigration``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -7095,7 +8075,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayMigrationListOutput**](gatewayMigrationListOutput.md)
+[**GatewayMigrationListOutput**](GatewayMigrationListOutput.md)
 
 ### Authorization
 
@@ -7130,11 +8110,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayListProducers() // GatewayListProducers | 
+    body := *openapiclient.NewGatewayListProducers() // GatewayListProducers | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayListProducers(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayListProducers(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayListProducers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -7175,6 +8155,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GatewayListRotatedSecrets
+
+> ListItemsOutput GatewayListRotatedSecrets(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewGatewayListRotatedSecrets() // GatewayListRotatedSecrets | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayListRotatedSecrets(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayListRotatedSecrets``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayListRotatedSecrets`: ListItemsOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayListRotatedSecrets`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayListRotatedSecretsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayListRotatedSecrets**](GatewayListRotatedSecrets.md) |  | 
+
+### Return type
+
+[**ListItemsOutput**](ListItemsOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GatewayMigratePersonalItems
 
 > GatewayMigratePersonalItemsOutput GatewayMigratePersonalItems(ctx).Body(body).Execute()
@@ -7194,11 +8238,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayMigratePersonalItems() // GatewayMigratePersonalItems |  (optional)
+    body := *openapiclient.NewGatewayMigratePersonalItems() // GatewayMigratePersonalItems |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayMigratePersonalItems(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayMigratePersonalItems(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayMigratePersonalItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -7223,7 +8267,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayMigratePersonalItemsOutput**](gatewayMigratePersonalItemsOutput.md)
+[**GatewayMigratePersonalItemsOutput**](GatewayMigratePersonalItemsOutput.md)
 
 ### Authorization
 
@@ -7258,11 +8302,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayRevokeTmpUsers("Name_example", "TmpCredsId_example") // GatewayRevokeTmpUsers | 
+    body := *openapiclient.NewGatewayRevokeTmpUsers("Name_example", "TmpCredsId_example") // GatewayRevokeTmpUsers | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayRevokeTmpUsers(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayRevokeTmpUsers(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayRevokeTmpUsers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -7320,11 +8364,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayStartProducer("Name_example") // GatewayStartProducer | 
+    body := *openapiclient.NewGatewayStartProducer("Name_example") // GatewayStartProducer | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayStartProducer(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayStartProducer(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayStartProducer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -7349,7 +8393,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayStartProducerOutput**](gatewayStartProducerOutput.md)
+[**GatewayStartProducerOutput**](GatewayStartProducerOutput.md)
 
 ### Authorization
 
@@ -7384,11 +8428,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayStatusMigration() // GatewayStatusMigration | 
+    body := *openapiclient.NewGatewayStatusMigration() // GatewayStatusMigration | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayStatusMigration(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayStatusMigration(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayStatusMigration``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -7448,11 +8492,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayStopProducer("Name_example") // GatewayStopProducer | 
+    body := *openapiclient.NewGatewayStopProducer("Name_example") // GatewayStopProducer | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayStopProducer(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayStopProducer(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayStopProducer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -7477,7 +8521,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayStopProducerOutput**](gatewayStopProducerOutput.md)
+[**GatewayStopProducerOutput**](GatewayStopProducerOutput.md)
 
 ### Authorization
 
@@ -7512,11 +8556,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewaySyncMigration("Name_example") // GatewaySyncMigration | 
+    body := *openapiclient.NewGatewaySyncMigration("Name_example") // GatewaySyncMigration | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewaySyncMigration(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewaySyncMigration(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewaySyncMigration``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -7576,11 +8620,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayUpdateItem("Name_example", "Type_example") // GatewayUpdateItem | 
+    body := *openapiclient.NewGatewayUpdateItem("Name_example", "Type_example") // GatewayUpdateItem | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayUpdateItem(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayUpdateItem(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -7605,7 +8649,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayUpdateItemOutput**](gatewayUpdateItemOutput.md)
+[**GatewayUpdateItemOutput**](GatewayUpdateItemOutput.md)
 
 ### Authorization
 
@@ -7640,11 +8684,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayUpdateK8SAuthConfig("AccessId_example", "K8sHost_example", "Name_example", "NewName_example", "SigningKey_example") // GatewayUpdateK8SAuthConfig | 
+    body := *openapiclient.NewGatewayUpdateK8SAuthConfig("AccessId_example", "K8sHost_example", "Name_example", "NewName_example", "SigningKey_example") // GatewayUpdateK8SAuthConfig | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayUpdateK8SAuthConfig(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayUpdateK8SAuthConfig(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateK8SAuthConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -7669,7 +8713,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayUpdateK8SAuthConfigOutput**](gatewayUpdateK8SAuthConfigOutput.md)
+[**GatewayUpdateK8SAuthConfigOutput**](GatewayUpdateK8SAuthConfigOutput.md)
 
 ### Authorization
 
@@ -7707,8 +8751,8 @@ func main() {
     body := *openapiclient.NewGatewayUpdateLdapAuthConfig() // GatewayUpdateLdapAuthConfig | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayUpdateLdapAuthConfig(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayUpdateLdapAuthConfig(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateLdapAuthConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -7768,11 +8812,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayUpdateMigration("TargetLocation_example") // GatewayUpdateMigration | 
+    body := *openapiclient.NewGatewayUpdateMigration("SiTargetName_example", "SiUsersPathTemplate_example", "TargetLocation_example") // GatewayUpdateMigration | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayUpdateMigration(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayUpdateMigration(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateMigration``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -7832,11 +8876,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayUpdateProducerArtifactory("ArtifactoryTokenAudience_example", "ArtifactoryTokenScope_example", "Name_example") // GatewayUpdateProducerArtifactory | 
+    body := *openapiclient.NewGatewayUpdateProducerArtifactory("ArtifactoryTokenAudience_example", "ArtifactoryTokenScope_example", "Name_example") // GatewayUpdateProducerArtifactory | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayUpdateProducerArtifactory(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayUpdateProducerArtifactory(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerArtifactory``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -7861,7 +8905,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayUpdateProducerArtifactoryOutput**](gatewayUpdateProducerArtifactoryOutput.md)
+[**GatewayUpdateProducerArtifactoryOutput**](GatewayUpdateProducerArtifactoryOutput.md)
 
 ### Authorization
 
@@ -7896,11 +8940,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayUpdateProducerAws("Name_example") // GatewayUpdateProducerAws | 
+    body := *openapiclient.NewGatewayUpdateProducerAws("Name_example") // GatewayUpdateProducerAws | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayUpdateProducerAws(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayUpdateProducerAws(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerAws``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -7925,7 +8969,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayUpdateProducerAwsOutput**](gatewayUpdateProducerAwsOutput.md)
+[**GatewayUpdateProducerAwsOutput**](GatewayUpdateProducerAwsOutput.md)
 
 ### Authorization
 
@@ -7960,11 +9004,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayUpdateProducerAzure("Name_example") // GatewayUpdateProducerAzure | 
+    body := *openapiclient.NewGatewayUpdateProducerAzure("Name_example") // GatewayUpdateProducerAzure | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayUpdateProducerAzure(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayUpdateProducerAzure(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerAzure``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -7989,7 +9033,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayUpdateProducerAzureOutput**](gatewayUpdateProducerAzureOutput.md)
+[**GatewayUpdateProducerAzureOutput**](GatewayUpdateProducerAzureOutput.md)
 
 ### Authorization
 
@@ -8024,11 +9068,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayUpdateProducerCassandra("Name_example") // GatewayUpdateProducerCassandra | 
+    body := *openapiclient.NewGatewayUpdateProducerCassandra("Name_example") // GatewayUpdateProducerCassandra | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayUpdateProducerCassandra(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayUpdateProducerCassandra(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerCassandra``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -8053,7 +9097,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayUpdateProducerCassandraOutput**](gatewayUpdateProducerCassandraOutput.md)
+[**GatewayUpdateProducerCassandraOutput**](GatewayUpdateProducerCassandraOutput.md)
 
 ### Authorization
 
@@ -8088,11 +9132,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayUpdateProducerCertificateAutomation("Name_example") // GatewayUpdateProducerCertificateAutomation | 
+    body := *openapiclient.NewGatewayUpdateProducerCertificateAutomation("Name_example") // GatewayUpdateProducerCertificateAutomation | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayUpdateProducerCertificateAutomation(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayUpdateProducerCertificateAutomation(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerCertificateAutomation``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -8117,7 +9161,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayUpdateProducerCertificateAutomationOutput**](gatewayUpdateProducerCertificateAutomationOutput.md)
+[**GatewayUpdateProducerCertificateAutomationOutput**](GatewayUpdateProducerCertificateAutomationOutput.md)
 
 ### Authorization
 
@@ -8152,11 +9196,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayUpdateProducerCustom("CreateSyncUrl_example", "Name_example", "RevokeSyncUrl_example") // GatewayUpdateProducerCustom |  (optional)
+    body := *openapiclient.NewGatewayUpdateProducerCustom("CreateSyncUrl_example", "Name_example", "RevokeSyncUrl_example") // GatewayUpdateProducerCustom |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayUpdateProducerCustom(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayUpdateProducerCustom(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerCustom``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -8181,7 +9225,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayUpdateProducerCustomOutput**](gatewayUpdateProducerCustomOutput.md)
+[**GatewayUpdateProducerCustomOutput**](GatewayUpdateProducerCustomOutput.md)
 
 ### Authorization
 
@@ -8216,11 +9260,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayUpdateProducerDockerhub("Name_example") // GatewayUpdateProducerDockerhub | 
+    body := *openapiclient.NewGatewayUpdateProducerDockerhub("Name_example") // GatewayUpdateProducerDockerhub | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayUpdateProducerDockerhub(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayUpdateProducerDockerhub(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerDockerhub``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -8245,7 +9289,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayUpdateProducerDockerhubOutput**](gatewayUpdateProducerDockerhubOutput.md)
+[**GatewayUpdateProducerDockerhubOutput**](GatewayUpdateProducerDockerhubOutput.md)
 
 ### Authorization
 
@@ -8280,11 +9324,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayUpdateProducerEks("Name_example") // GatewayUpdateProducerEks | 
+    body := *openapiclient.NewGatewayUpdateProducerEks("Name_example") // GatewayUpdateProducerEks | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayUpdateProducerEks(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayUpdateProducerEks(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerEks``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -8309,7 +9353,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayUpdateProducerEksOutput**](gatewayUpdateProducerEksOutput.md)
+[**GatewayUpdateProducerEksOutput**](GatewayUpdateProducerEksOutput.md)
 
 ### Authorization
 
@@ -8344,11 +9388,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayUpdateProducerGcp("Name_example", "ServiceAccountType_example") // GatewayUpdateProducerGcp | 
+    body := *openapiclient.NewGatewayUpdateProducerGcp("Name_example", "ServiceAccountType_example") // GatewayUpdateProducerGcp | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayUpdateProducerGcp(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayUpdateProducerGcp(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerGcp``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -8373,7 +9417,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayUpdateProducerGcpOutput**](gatewayUpdateProducerGcpOutput.md)
+[**GatewayUpdateProducerGcpOutput**](GatewayUpdateProducerGcpOutput.md)
 
 ### Authorization
 
@@ -8408,11 +9452,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayUpdateProducerGithub("Name_example") // GatewayUpdateProducerGithub | 
+    body := *openapiclient.NewGatewayUpdateProducerGithub("Name_example") // GatewayUpdateProducerGithub | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayUpdateProducerGithub(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayUpdateProducerGithub(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerGithub``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -8437,7 +9481,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayUpdateProducerGithubOutput**](gatewayUpdateProducerGithubOutput.md)
+[**GatewayUpdateProducerGithubOutput**](GatewayUpdateProducerGithubOutput.md)
 
 ### Authorization
 
@@ -8472,11 +9516,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayUpdateProducerGke("Name_example") // GatewayUpdateProducerGke | 
+    body := *openapiclient.NewGatewayUpdateProducerGke("Name_example") // GatewayUpdateProducerGke | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayUpdateProducerGke(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayUpdateProducerGke(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerGke``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -8501,7 +9545,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayUpdateProducerGkeOutput**](gatewayUpdateProducerGkeOutput.md)
+[**GatewayUpdateProducerGkeOutput**](GatewayUpdateProducerGkeOutput.md)
 
 ### Authorization
 
@@ -8536,11 +9580,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayUpdateProducerHanaDb("Name_example") // GatewayUpdateProducerHanaDb | 
+    body := *openapiclient.NewGatewayUpdateProducerHanaDb("Name_example") // GatewayUpdateProducerHanaDb | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayUpdateProducerHanaDb(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayUpdateProducerHanaDb(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerHanaDb``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -8565,7 +9609,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayUpdateProducerHanaDbOutput**](gatewayUpdateProducerHanaDbOutput.md)
+[**GatewayUpdateProducerHanaDbOutput**](GatewayUpdateProducerHanaDbOutput.md)
 
 ### Authorization
 
@@ -8600,11 +9644,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayUpdateProducerLdap("Name_example") // GatewayUpdateProducerLdap | 
+    body := *openapiclient.NewGatewayUpdateProducerLdap("Name_example") // GatewayUpdateProducerLdap | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayUpdateProducerLdap(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayUpdateProducerLdap(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerLdap``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -8629,7 +9673,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayUpdateProducerLdapOutput**](gatewayUpdateProducerLdapOutput.md)
+[**GatewayUpdateProducerLdapOutput**](GatewayUpdateProducerLdapOutput.md)
 
 ### Authorization
 
@@ -8664,11 +9708,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayUpdateProducerMSSQL("Name_example") // GatewayUpdateProducerMSSQL | 
+    body := *openapiclient.NewGatewayUpdateProducerMSSQL("Name_example") // GatewayUpdateProducerMSSQL | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayUpdateProducerMSSQL(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayUpdateProducerMSSQL(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerMSSQL``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -8693,7 +9737,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayUpdateProducerMSSQLOutput**](gatewayUpdateProducerMSSQLOutput.md)
+[**GatewayUpdateProducerMSSQLOutput**](GatewayUpdateProducerMSSQLOutput.md)
 
 ### Authorization
 
@@ -8728,11 +9772,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayUpdateProducerMongo("Name_example") // GatewayUpdateProducerMongo | 
+    body := *openapiclient.NewGatewayUpdateProducerMongo("Name_example") // GatewayUpdateProducerMongo | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayUpdateProducerMongo(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayUpdateProducerMongo(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerMongo``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -8757,7 +9801,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayUpdateProducerMongoOutput**](gatewayUpdateProducerMongoOutput.md)
+[**GatewayUpdateProducerMongoOutput**](GatewayUpdateProducerMongoOutput.md)
 
 ### Authorization
 
@@ -8792,11 +9836,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayUpdateProducerMySQL("Name_example") // GatewayUpdateProducerMySQL | 
+    body := *openapiclient.NewGatewayUpdateProducerMySQL("Name_example") // GatewayUpdateProducerMySQL | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayUpdateProducerMySQL(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayUpdateProducerMySQL(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerMySQL``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -8821,7 +9865,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayUpdateProducerMySQLOutput**](gatewayUpdateProducerMySQLOutput.md)
+[**GatewayUpdateProducerMySQLOutput**](GatewayUpdateProducerMySQLOutput.md)
 
 ### Authorization
 
@@ -8856,11 +9900,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayUpdateProducerNativeK8S("Name_example") // GatewayUpdateProducerNativeK8S | 
+    body := *openapiclient.NewGatewayUpdateProducerNativeK8S("Name_example") // GatewayUpdateProducerNativeK8S | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayUpdateProducerNativeK8S(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayUpdateProducerNativeK8S(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerNativeK8S``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -8885,7 +9929,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayUpdateProducerNativeK8SOutput**](gatewayUpdateProducerNativeK8SOutput.md)
+[**GatewayUpdateProducerNativeK8SOutput**](GatewayUpdateProducerNativeK8SOutput.md)
 
 ### Authorization
 
@@ -8920,11 +9964,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayUpdateProducerOracleDb("Name_example") // GatewayUpdateProducerOracleDb | 
+    body := *openapiclient.NewGatewayUpdateProducerOracleDb("Name_example") // GatewayUpdateProducerOracleDb | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayUpdateProducerOracleDb(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayUpdateProducerOracleDb(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerOracleDb``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -8949,7 +9993,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayUpdateProducerOracleDbOutput**](gatewayUpdateProducerOracleDbOutput.md)
+[**GatewayUpdateProducerOracleDbOutput**](GatewayUpdateProducerOracleDbOutput.md)
 
 ### Authorization
 
@@ -8984,11 +10028,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayUpdateProducerPing("Name_example") // GatewayUpdateProducerPing | 
+    body := *openapiclient.NewGatewayUpdateProducerPing("Name_example") // GatewayUpdateProducerPing | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayUpdateProducerPing(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayUpdateProducerPing(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerPing``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -9013,7 +10057,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayUpdateProducerPingOutput**](gatewayUpdateProducerPingOutput.md)
+[**GatewayUpdateProducerPingOutput**](GatewayUpdateProducerPingOutput.md)
 
 ### Authorization
 
@@ -9048,11 +10092,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayUpdateProducerPostgreSQL("Name_example") // GatewayUpdateProducerPostgreSQL | 
+    body := *openapiclient.NewGatewayUpdateProducerPostgreSQL("Name_example") // GatewayUpdateProducerPostgreSQL | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayUpdateProducerPostgreSQL(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayUpdateProducerPostgreSQL(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerPostgreSQL``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -9077,7 +10121,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayUpdateProducerPostgreSQLOutput**](gatewayUpdateProducerPostgreSQLOutput.md)
+[**GatewayUpdateProducerPostgreSQLOutput**](GatewayUpdateProducerPostgreSQLOutput.md)
 
 ### Authorization
 
@@ -9112,11 +10156,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayUpdateProducerRabbitMQ("Name_example") // GatewayUpdateProducerRabbitMQ | 
+    body := *openapiclient.NewGatewayUpdateProducerRabbitMQ("Name_example") // GatewayUpdateProducerRabbitMQ | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayUpdateProducerRabbitMQ(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayUpdateProducerRabbitMQ(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerRabbitMQ``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -9141,7 +10185,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayUpdateProducerRabbitMQOutput**](gatewayUpdateProducerRabbitMQOutput.md)
+[**GatewayUpdateProducerRabbitMQOutput**](GatewayUpdateProducerRabbitMQOutput.md)
 
 ### Authorization
 
@@ -9176,11 +10220,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayUpdateProducerRdp("Name_example") // GatewayUpdateProducerRdp | 
+    body := *openapiclient.NewGatewayUpdateProducerRdp("Name_example") // GatewayUpdateProducerRdp | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayUpdateProducerRdp(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayUpdateProducerRdp(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerRdp``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -9205,7 +10249,71 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayUpdateProducerRdpOutput**](gatewayUpdateProducerRdpOutput.md)
+[**GatewayUpdateProducerRdpOutput**](GatewayUpdateProducerRdpOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateProducerRedis
+
+> GatewayUpdateProducerRedisOutput GatewayUpdateProducerRedis(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewGatewayUpdateProducerRedis("Name_example") // GatewayUpdateProducerRedis | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayUpdateProducerRedis(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerRedis``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateProducerRedis`: GatewayUpdateProducerRedisOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateProducerRedis`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateProducerRedisRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerRedis**](GatewayUpdateProducerRedis.md) |  | 
+
+### Return type
+
+[**GatewayUpdateProducerRedisOutput**](GatewayUpdateProducerRedisOutput.md)
 
 ### Authorization
 
@@ -9240,11 +10348,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayUpdateProducerRedshift("Name_example") // GatewayUpdateProducerRedshift | 
+    body := *openapiclient.NewGatewayUpdateProducerRedshift("Name_example") // GatewayUpdateProducerRedshift | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayUpdateProducerRedshift(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayUpdateProducerRedshift(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerRedshift``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -9269,7 +10377,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayUpdateProducerRedshiftOutput**](gatewayUpdateProducerRedshiftOutput.md)
+[**GatewayUpdateProducerRedshiftOutput**](GatewayUpdateProducerRedshiftOutput.md)
 
 ### Authorization
 
@@ -9304,11 +10412,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayUpdateProducerSnowflake("Name_example") // GatewayUpdateProducerSnowflake | 
+    body := *openapiclient.NewGatewayUpdateProducerSnowflake("Name_example") // GatewayUpdateProducerSnowflake | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayUpdateProducerSnowflake(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayUpdateProducerSnowflake(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerSnowflake``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -9333,7 +10441,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayUpdateProducerSnowflakeOutput**](gatewayUpdateProducerSnowflakeOutput.md)
+[**GatewayUpdateProducerSnowflakeOutput**](GatewayUpdateProducerSnowflakeOutput.md)
 
 ### Authorization
 
@@ -9371,8 +10479,8 @@ func main() {
     body := *openapiclient.NewGatewayUpdateTlsCert() // GatewayUpdateTlsCert | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayUpdateTlsCert(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayUpdateTlsCert(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateTlsCert``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -9432,11 +10540,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayUpdateTmpUsers("Name_example", int64(123), "TmpCredsId_example") // GatewayUpdateTmpUsers | 
+    body := *openapiclient.NewGatewayUpdateTmpUsers("Name_example", int64(123), "TmpCredsId_example") // GatewayUpdateTmpUsers | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayUpdateTmpUsers(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GatewayUpdateTmpUsers(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateTmpUsers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -9496,8 +10604,8 @@ import (
 func main() {
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GetAccountLogo(context.Background()).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GetAccountLogo(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GetAccountLogo``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -9553,11 +10661,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgetAccountSettings() // GetAccountSettings | 
+    body := *openapiclient.NewGetAccountSettings() // GetAccountSettings | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GetAccountSettings(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GetAccountSettings(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GetAccountSettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -9617,11 +10725,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgetAuthMethod("Name_example") // GetAuthMethod | 
+    body := *openapiclient.NewGetAuthMethod("Name_example") // GetAuthMethod | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GetAuthMethod(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GetAuthMethod(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GetAuthMethod``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -9681,11 +10789,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgetCertificateValue("Name_example") // GetCertificateValue | 
+    body := *openapiclient.NewGetCertificateValue("Name_example") // GetCertificateValue | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GetCertificateValue(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GetCertificateValue(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GetCertificateValue``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -9745,11 +10853,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgetDynamicSecretValue("Name_example") // GetDynamicSecretValue | 
+    body := *openapiclient.NewGetDynamicSecretValue("Name_example") // GetDynamicSecretValue | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GetDynamicSecretValue(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GetDynamicSecretValue(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GetDynamicSecretValue``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -9809,11 +10917,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgetEventForwarder("Name_example") // GetEventForwarder | 
+    body := *openapiclient.NewGetEventForwarder("Name_example") // GetEventForwarder | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GetEventForwarder(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GetEventForwarder(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GetEventForwarder``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -9838,7 +10946,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetEventForwarderOutput**](getEventForwarderOutput.md)
+[**GetEventForwarderOutput**](GetEventForwarderOutput.md)
 
 ### Authorization
 
@@ -9873,11 +10981,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgetKubeExecCreds("CertIssuerName_example") // GetKubeExecCreds | 
+    body := *openapiclient.NewGetKubeExecCreds("CertIssuerName_example") // GetKubeExecCreds | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GetKubeExecCreds(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GetKubeExecCreds(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GetKubeExecCreds``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -9902,7 +11010,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetKubeExecCredsOutput**](getKubeExecCredsOutput.md)
+[**GetKubeExecCredsOutput**](GetKubeExecCredsOutput.md)
 
 ### Authorization
 
@@ -9940,8 +11048,8 @@ func main() {
     body := *openapiclient.NewGetPKICertificate("CertIssuerName_example") // GetPKICertificate | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GetPKICertificate(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GetPKICertificate(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GetPKICertificate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -9966,7 +11074,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetPKICertificateOutput**](getPKICertificateOutput.md)
+[**GetPKICertificateOutput**](GetPKICertificateOutput.md)
 
 ### Authorization
 
@@ -10001,11 +11109,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgetRSAPublic("Name_example") // GetRSAPublic | 
+    body := *openapiclient.NewGetRSAPublic("Name_example") // GetRSAPublic | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GetRSAPublic(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GetRSAPublic(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GetRSAPublic``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -10030,7 +11138,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetRSAPublicOutput**](getRSAPublicOutput.md)
+[**GetRSAPublicOutput**](GetRSAPublicOutput.md)
 
 ### Authorization
 
@@ -10065,11 +11173,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgetRole("Name_example") // GetRole | 
+    body := *openapiclient.NewGetRole("Name_example") // GetRole | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GetRole(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GetRole(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GetRole``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -10129,11 +11237,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgetRotatedSecretValue("Names_example") // GetRotatedSecretValue | 
+    body := *openapiclient.NewGetRotatedSecretValue("Names_example") // GetRotatedSecretValue | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GetRotatedSecretValue(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GetRotatedSecretValue(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GetRotatedSecretValue``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -10193,11 +11301,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgetSSHCertificate("CertIssuerName_example", "CertUsername_example") // GetSSHCertificate | 
+    body := *openapiclient.NewGetSSHCertificate("CertIssuerName_example", "CertUsername_example") // GetSSHCertificate | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GetSSHCertificate(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GetSSHCertificate(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GetSSHCertificate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -10222,7 +11330,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetSSHCertificateOutput**](getSSHCertificateOutput.md)
+[**GetSSHCertificateOutput**](GetSSHCertificateOutput.md)
 
 ### Authorization
 
@@ -10260,8 +11368,8 @@ func main() {
     body := *openapiclient.NewGetSecretValue([]string{"Names_example"}) // GetSecretValue | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GetSecretValue(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GetSecretValue(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GetSecretValue``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -10321,11 +11429,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgetTags("Name_example") // GetTags | 
+    body := *openapiclient.NewGetTags("Name_example") // GetTags | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GetTags(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GetTags(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GetTags``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -10385,11 +11493,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgetTarget("Name_example") // GetTarget | 
+    body := *openapiclient.NewGetTarget("Name_example") // GetTarget | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GetTarget(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GetTarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GetTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -10449,11 +11557,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgetTargetDetails("Name_example") // GetTargetDetails | 
+    body := *openapiclient.NewGetTargetDetails("Name_example") // GetTargetDetails | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GetTargetDetails(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.GetTargetDetails(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GetTargetDetails``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -10494,6 +11602,134 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## Hmac
+
+> HmacOutput Hmac(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewHmac("KeyName_example") // Hmac | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.Hmac(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.Hmac``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `Hmac`: HmacOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.Hmac`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiHmacRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**Hmac**](Hmac.md) |  | 
+
+### Return type
+
+[**HmacOutput**](HmacOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ImportPasswords
+
+> ImportPasswordsOutput ImportPasswords(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewImportPasswords("ImportPath_example") // ImportPasswords | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.ImportPasswords(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.ImportPasswords``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ImportPasswords`: ImportPasswordsOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.ImportPasswords`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiImportPasswordsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**ImportPasswords**](ImportPasswords.md) |  | 
+
+### Return type
+
+[**ImportPasswordsOutput**](ImportPasswordsOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## KmipClientDeleteRule
 
 > KMIPClientUpdateResponse KmipClientDeleteRule(ctx).Body(body).Execute()
@@ -10513,11 +11749,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewkmipClientDeleteRule("Path_example") // KmipClientDeleteRule |  (optional)
+    body := *openapiclient.NewKmipClientDeleteRule("Path_example") // KmipClientDeleteRule |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.KmipClientDeleteRule(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.KmipClientDeleteRule(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.KmipClientDeleteRule``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -10577,11 +11813,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewkmipClientSetRule([]string{"Capability_example"}, "Path_example") // KmipClientSetRule |  (optional)
+    body := *openapiclient.NewKmipClientSetRule([]string{"Capability_example"}, "Path_example") // KmipClientSetRule |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.KmipClientSetRule(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.KmipClientSetRule(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.KmipClientSetRule``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -10641,11 +11877,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewkmipCreateClient("Name_example") // KmipCreateClient |  (optional)
+    body := *openapiclient.NewKmipCreateClient("Name_example") // KmipCreateClient |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.KmipCreateClient(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.KmipCreateClient(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.KmipCreateClient``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -10670,7 +11906,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**KmipCreateClientOutput**](kmipCreateClientOutput.md)
+[**KmipCreateClientOutput**](KmipCreateClientOutput.md)
 
 ### Authorization
 
@@ -10705,11 +11941,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewkmipDeleteClient() // KmipDeleteClient |  (optional)
+    body := *openapiclient.NewKmipDeleteClient() // KmipDeleteClient |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.KmipDeleteClient(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.KmipDeleteClient(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.KmipDeleteClient``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -10769,11 +12005,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewkmipDeleteServer() // KmipDeleteServer |  (optional)
+    body := *openapiclient.NewKmipDeleteServer() // KmipDeleteServer |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.KmipDeleteServer(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.KmipDeleteServer(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.KmipDeleteServer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -10833,11 +12069,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewkmipDescribeClient() // KmipDescribeClient |  (optional)
+    body := *openapiclient.NewKmipDescribeClient() // KmipDescribeClient |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.KmipDescribeClient(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.KmipDescribeClient(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.KmipDescribeClient``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -10897,11 +12133,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewkmipDescribeServer() // KmipDescribeServer |  (optional)
+    body := *openapiclient.NewKmipDescribeServer() // KmipDescribeServer |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.KmipDescribeServer(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.KmipDescribeServer(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.KmipDescribeServer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -10926,7 +12162,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**KmipDescribeServerOutput**](kmipDescribeServerOutput.md)
+[**KmipDescribeServerOutput**](KmipDescribeServerOutput.md)
 
 ### Authorization
 
@@ -10961,11 +12197,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewkmipListClients() // KmipListClients |  (optional)
+    body := *openapiclient.NewKmipListClients() // KmipListClients |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.KmipListClients(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.KmipListClients(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.KmipListClients``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -11025,11 +12261,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewkmipMoveServer() // KmipMoveServer |  (optional)
+    body := *openapiclient.NewKmipMoveServer("NewRoot_example") // KmipMoveServer |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.KmipMoveServer(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.KmipMoveServer(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.KmipMoveServer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -11054,7 +12290,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**KmipMoveServerOutput**](kmipMoveServerOutput.md)
+[**KmipMoveServerOutput**](KmipMoveServerOutput.md)
 
 ### Authorization
 
@@ -11089,11 +12325,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewkmipRenewClientCertificate() // KmipRenewClientCertificate |  (optional)
+    body := *openapiclient.NewKmipRenewClientCertificate() // KmipRenewClientCertificate |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.KmipRenewClientCertificate(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.KmipRenewClientCertificate(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.KmipRenewClientCertificate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -11118,7 +12354,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**KmipRenewClientCertificateOutput**](kmipRenewClientCertificateOutput.md)
+[**KmipRenewClientCertificateOutput**](KmipRenewClientCertificateOutput.md)
 
 ### Authorization
 
@@ -11153,11 +12389,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewkmipRenewServerCertificate() // KmipRenewServerCertificate |  (optional)
+    body := *openapiclient.NewKmipRenewServerCertificate() // KmipRenewServerCertificate |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.KmipRenewServerCertificate(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.KmipRenewServerCertificate(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.KmipRenewServerCertificate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -11182,7 +12418,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**KmipRenewServerCertificateOutput**](kmipRenewServerCertificateOutput.md)
+[**KmipRenewServerCertificateOutput**](KmipRenewServerCertificateOutput.md)
 
 ### Authorization
 
@@ -11217,11 +12453,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewkmipServerSetup("Hostname_example") // KmipServerSetup |  (optional)
+    body := *openapiclient.NewKmipServerSetup("Hostname_example", "Root_example") // KmipServerSetup |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.KmipServerSetup(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.KmipServerSetup(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.KmipServerSetup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -11281,11 +12517,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewkmipSetServerState("State_example") // KmipSetServerState |  (optional)
+    body := *openapiclient.NewKmipSetServerState("State_example") // KmipSetServerState |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.KmipSetServerState(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.KmipSetServerState(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.KmipSetServerState``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -11310,7 +12546,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**KmipSetServerStateOutput**](kmipSetServerStateOutput.md)
+[**KmipSetServerStateOutput**](KmipSetServerStateOutput.md)
 
 ### Authorization
 
@@ -11345,11 +12581,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewlistAuthMethods() // ListAuthMethods | 
+    body := *openapiclient.NewListAuthMethods() // ListAuthMethods | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.ListAuthMethods(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.ListAuthMethods(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.ListAuthMethods``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -11409,11 +12645,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewlistGateways() // ListGateways | 
+    body := *openapiclient.NewListGateways() // ListGateways | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.ListGateways(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.ListGateways(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.ListGateways``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -11473,11 +12709,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewlistItems() // ListItems | 
+    body := *openapiclient.NewListItems() // ListItems | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.ListItems(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.ListItems(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.ListItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -11537,11 +12773,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewlistRoles() // ListRoles | 
+    body := *openapiclient.NewListRoles() // ListRoles | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.ListRoles(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.ListRoles(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.ListRoles``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -11601,11 +12837,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewlistSRABastions() // ListSRABastions | 
+    body := *openapiclient.NewListSRABastions() // ListSRABastions | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.ListSRABastions(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.ListSRABastions(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.ListSRABastions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -11665,11 +12901,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewlistSharedItems() // ListSharedItems | 
+    body := *openapiclient.NewListSharedItems() // ListSharedItems | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.ListSharedItems(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.ListSharedItems(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.ListSharedItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -11727,11 +12963,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewlistTargets() // ListTargets | 
+    body := *openapiclient.NewListTargets() // ListTargets | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.ListTargets(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.ListTargets(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.ListTargets``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -11791,11 +13027,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewmoveObjects("Source_example", "Target_example") // MoveObjects | 
+    body := *openapiclient.NewMoveObjects("Source_example", "Target_example") // MoveObjects | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.MoveObjects(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.MoveObjects(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.MoveObjects``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -11855,11 +13091,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewrawCreds() // RawCreds |  (optional)
+    body := *openapiclient.NewRawCreds() // RawCreds |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.RawCreds(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.RawCreds(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RawCreds``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -11919,11 +13155,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewrefreshKey("Name_example") // RefreshKey | 
+    body := *openapiclient.NewRefreshKey("Name_example") // RefreshKey | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.RefreshKey(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.RefreshKey(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RefreshKey``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -11948,7 +13184,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**RefreshKeyOutput**](refreshKeyOutput.md)
+[**RefreshKeyOutput**](RefreshKeyOutput.md)
 
 ### Authorization
 
@@ -11983,11 +13219,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewrequestAccess([]string{"Capability_example"}, "Name_example") // RequestAccess | 
+    body := *openapiclient.NewRequestAccess([]string{"Capability_example"}, "Name_example") // RequestAccess | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.RequestAccess(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.RequestAccess(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RequestAccess``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -12012,7 +13248,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**RequestAccessOutput**](requestAccessOutput.md)
+[**RequestAccessOutput**](RequestAccessOutput.md)
 
 ### Authorization
 
@@ -12047,11 +13283,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewreverseRBAC("Path_example", "Type_example") // ReverseRBAC | 
+    body := *openapiclient.NewReverseRBAC("Path_example", "Type_example") // ReverseRBAC | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.ReverseRBAC(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.ReverseRBAC(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.ReverseRBAC``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -12113,8 +13349,8 @@ import (
 func main() {
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.RevokeCreds(context.Background()).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.RevokeCreds(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RevokeCreds``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -12170,11 +13406,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewrollbackSecret("Name_example", int32(123)) // RollbackSecret | 
+    body := *openapiclient.NewRollbackSecret("Name_example", int32(123)) // RollbackSecret | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.RollbackSecret(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.RollbackSecret(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RollbackSecret``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -12199,7 +13435,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**RollbackSecretOutput**](rollbackSecretOutput.md)
+[**RollbackSecretOutput**](RollbackSecretOutput.md)
 
 ### Authorization
 
@@ -12234,11 +13470,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateRotationSettings(false, "Name_example") // UpdateRotationSettings | 
+    body := *openapiclient.NewUpdateRotationSettings(false, "Name_example") // UpdateRotationSettings | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.RotateKey(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.RotateKey(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotateKey``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -12298,11 +13534,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewrotateSecret("Name_example") // RotateSecret | 
+    body := *openapiclient.NewRotateSecret("Name_example") // RotateSecret | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.RotateSecret(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.RotateSecret(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotateSecret``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -12362,11 +13598,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewsetItemState("DesiredState_example", "Name_example") // SetItemState | 
+    body := *openapiclient.NewSetItemState("DesiredState_example", "Name_example") // SetItemState | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.SetItemState(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.SetItemState(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.SetItemState``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -12426,11 +13662,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewsetRoleRule([]string{"Capability_example"}, "Path_example", "RoleName_example") // SetRoleRule | 
+    body := *openapiclient.NewSetRoleRule([]string{"Capability_example"}, "Path_example", "RoleName_example") // SetRoleRule | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.SetRoleRule(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.SetRoleRule(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.SetRoleRule``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -12490,11 +13726,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewshareItem("Action_example", "ItemName_example") // ShareItem | 
+    body := *openapiclient.NewShareItem("Action_example", "ItemName_example") // ShareItem | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.ShareItem(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.ShareItem(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.ShareItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -12533,6 +13769,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## SignDataWithClassicKey
+
+> SignOutput SignDataWithClassicKey(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewSignDataWithClassicKey("Data_example", "DisplayId_example", "Name_example", int32(123)) // SignDataWithClassicKey | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.SignDataWithClassicKey(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.SignDataWithClassicKey``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SignDataWithClassicKey`: SignOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.SignDataWithClassicKey`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSignDataWithClassicKeyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**SignDataWithClassicKey**](SignDataWithClassicKey.md) |  | 
+
+### Return type
+
+[**SignOutput**](SignOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## SignGPG
 
 > SignGPGOutput SignGPG(ctx).Body(body).Execute()
@@ -12552,11 +13852,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewsignGPG("KeyName_example", "Message_example") // SignGPG | 
+    body := *openapiclient.NewSignGPG("KeyName_example", "Message_example") // SignGPG | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.SignGPG(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.SignGPG(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.SignGPG``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -12581,7 +13881,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SignGPGOutput**](signGPGOutput.md)
+[**SignGPGOutput**](SignGPGOutput.md)
 
 ### Authorization
 
@@ -12616,11 +13916,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewsignJWTWithClassicKey("DisplayId_example", "JwtClaims_example", "SigningMethod_example", int32(123)) // SignJWTWithClassicKey | 
+    body := *openapiclient.NewSignJWTWithClassicKey("DisplayId_example", "JwtClaims_example", "SigningMethod_example", int32(123)) // SignJWTWithClassicKey | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.SignJWTWithClassicKey(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.SignJWTWithClassicKey(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.SignJWTWithClassicKey``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -12645,7 +13945,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SignJWTOutput**](signJWTOutput.md)
+[**SignJWTOutput**](SignJWTOutput.md)
 
 ### Authorization
 
@@ -12680,11 +13980,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewsignPKCS1("Message_example") // SignPKCS1 | 
+    body := *openapiclient.NewSignPKCS1("Message_example") // SignPKCS1 | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.SignPKCS1(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.SignPKCS1(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.SignPKCS1``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -12709,7 +14009,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SignPKCS1Output**](signPKCS1Output.md)
+[**SignPKCS1Output**](SignPKCS1Output.md)
 
 ### Authorization
 
@@ -12744,11 +14044,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewsignPKICertWithClassicKey("DisplayId_example", "SigningMethod_example", int64(123), int32(123)) // SignPKICertWithClassicKey | 
+    body := *openapiclient.NewSignPKICertWithClassicKey("DisplayId_example", "SigningMethod_example", int64(123), int32(123)) // SignPKICertWithClassicKey | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.SignPKICertWithClassicKey(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.SignPKICertWithClassicKey(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.SignPKICertWithClassicKey``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -12773,7 +14073,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SignPKICertOutput**](signPKICertOutput.md)
+[**SignPKICertOutput**](SignPKICertOutput.md)
 
 ### Authorization
 
@@ -12808,11 +14108,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewstaticCredsAuth() // StaticCredsAuth | 
+    body := *openapiclient.NewStaticCredsAuth() // StaticCredsAuth | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.StaticCredsAuth(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.StaticCredsAuth(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.StaticCredsAuth``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -12837,7 +14137,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**StaticCredsAuthOutput**](staticCredsAuthOutput.md)
+[**StaticCredsAuthOutput**](StaticCredsAuthOutput.md)
 
 ### Authorization
 
@@ -12872,11 +14172,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.Newtokenize("Plaintext_example", "TokenizerName_example") // Tokenize | 
+    body := *openapiclient.NewTokenize("Plaintext_example", "TokenizerName_example") // Tokenize | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.Tokenize(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.Tokenize(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.Tokenize``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -12901,7 +14201,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TokenizeOutput**](tokenizeOutput.md)
+[**TokenizeOutput**](TokenizeOutput.md)
 
 ### Authorization
 
@@ -12936,11 +14236,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewuidCreateChildToken() // UidCreateChildToken | 
+    body := *openapiclient.NewUidCreateChildToken() // UidCreateChildToken | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UidCreateChildToken(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UidCreateChildToken(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UidCreateChildToken``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -12965,7 +14265,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UidCreateChildTokenOutput**](uidCreateChildTokenOutput.md)
+[**UidCreateChildTokenOutput**](UidCreateChildTokenOutput.md)
 
 ### Authorization
 
@@ -13000,11 +14300,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewuidGenerateToken("AuthMethodName_example") // UidGenerateToken | 
+    body := *openapiclient.NewUidGenerateToken("AuthMethodName_example") // UidGenerateToken | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UidGenerateToken(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UidGenerateToken(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UidGenerateToken``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -13029,7 +14329,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UidGenerateTokenOutput**](uidGenerateTokenOutput.md)
+[**UidGenerateTokenOutput**](UidGenerateTokenOutput.md)
 
 ### Authorization
 
@@ -13064,11 +14364,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewuidListChildren() // UidListChildren | 
+    body := *openapiclient.NewUidListChildren() // UidListChildren | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UidListChildren(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UidListChildren(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UidListChildren``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -13128,11 +14428,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewuidRevokeToken("RevokeToken_example", "RevokeType_example") // UidRevokeToken | 
+    body := *openapiclient.NewUidRevokeToken("RevokeToken_example", "RevokeType_example") // UidRevokeToken | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UidRevokeToken(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UidRevokeToken(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UidRevokeToken``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -13192,11 +14492,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewuidRotateToken() // UidRotateToken | 
+    body := *openapiclient.NewUidRotateToken() // UidRotateToken | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UidRotateToken(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UidRotateToken(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UidRotateToken``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -13221,7 +14521,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UidRotateTokenOutput**](uidRotateTokenOutput.md)
+[**UidRotateTokenOutput**](UidRotateTokenOutput.md)
 
 ### Authorization
 
@@ -13256,11 +14556,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateAWSTarget("Name_example") // UpdateAWSTarget | 
+    body := *openapiclient.NewUpdateAWSTarget("AccessKey_example", "AccessKeyId_example", "Name_example") // UpdateAWSTarget | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateAWSTarget(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateAWSTarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateAWSTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -13320,11 +14620,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateAWSTargetDetails("Name_example") // UpdateAWSTargetDetails | 
+    body := *openapiclient.NewUpdateAWSTargetDetails("Name_example") // UpdateAWSTargetDetails | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateAWSTargetDetails(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateAWSTargetDetails(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateAWSTargetDetails``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -13349,7 +14649,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateTargetOutput**](updateTargetOutput.md)
+[**UpdateTargetOutput**](UpdateTargetOutput.md)
 
 ### Authorization
 
@@ -13384,11 +14684,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateAccountSettings() // UpdateAccountSettings | 
+    body := *openapiclient.NewUpdateAccountSettings() // UpdateAccountSettings | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateAccountSettings(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateAccountSettings(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateAccountSettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -13413,7 +14713,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateAccountSettingsOutput**](updateAccountSettingsOutput.md)
+[**UpdateAccountSettingsOutput**](UpdateAccountSettingsOutput.md)
 
 ### Authorization
 
@@ -13448,11 +14748,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateArtifactoryTarget("ArtifactoryAdminName_example", "ArtifactoryAdminPwd_example", "BaseUrl_example", "Name_example") // UpdateArtifactoryTarget | 
+    body := *openapiclient.NewUpdateArtifactoryTarget("ArtifactoryAdminName_example", "ArtifactoryAdminPwd_example", "BaseUrl_example", "Name_example") // UpdateArtifactoryTarget | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateArtifactoryTarget(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateArtifactoryTarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateArtifactoryTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -13477,7 +14777,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateArtifactoryTargetOutput**](updateArtifactoryTargetOutput.md)
+[**UpdateArtifactoryTargetOutput**](UpdateArtifactoryTargetOutput.md)
 
 ### Authorization
 
@@ -13512,11 +14812,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateAssoc("AssocId_example") // UpdateAssoc | 
+    body := *openapiclient.NewUpdateAssoc("AssocId_example") // UpdateAssoc | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateAssoc(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateAssoc(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateAssoc``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -13576,11 +14876,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateAuthMethod("Name_example") // UpdateAuthMethod | 
+    body := *openapiclient.NewUpdateAuthMethod("Name_example") // UpdateAuthMethod | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateAuthMethod(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateAuthMethod(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateAuthMethod``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -13605,7 +14905,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateAuthMethodOutput**](updateAuthMethodOutput.md)
+[**UpdateAuthMethodOutput**](UpdateAuthMethodOutput.md)
 
 ### Authorization
 
@@ -13640,11 +14940,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateAuthMethodAWSIAM([]string{"BoundAwsAccountId_example"}, "Name_example") // UpdateAuthMethodAWSIAM | 
+    body := *openapiclient.NewUpdateAuthMethodAWSIAM([]string{"BoundAwsAccountId_example"}, "Name_example") // UpdateAuthMethodAWSIAM | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateAuthMethodAWSIAM(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateAuthMethodAWSIAM(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateAuthMethodAWSIAM``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -13704,11 +15004,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateAuthMethodAzureAD("BoundTenantId_example", "Name_example") // UpdateAuthMethodAzureAD | 
+    body := *openapiclient.NewUpdateAuthMethodAzureAD("BoundTenantId_example", "Name_example") // UpdateAuthMethodAzureAD | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateAuthMethodAzureAD(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateAuthMethodAzureAD(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateAuthMethodAzureAD``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -13768,11 +15068,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateAuthMethodCert("Name_example", "UniqueIdentifier_example") // UpdateAuthMethodCert | 
+    body := *openapiclient.NewUpdateAuthMethodCert("Name_example", "UniqueIdentifier_example") // UpdateAuthMethodCert | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateAuthMethodCert(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateAuthMethodCert(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateAuthMethodCert``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -13797,7 +15097,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateAuthMethodCertOutput**](updateAuthMethodCertOutput.md)
+[**UpdateAuthMethodCertOutput**](UpdateAuthMethodCertOutput.md)
 
 ### Authorization
 
@@ -13832,11 +15132,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateAuthMethodGCP("Audience_example", "Name_example", "Type_example") // UpdateAuthMethodGCP | 
+    body := *openapiclient.NewUpdateAuthMethodGCP("Audience_example", "Name_example", "Type_example") // UpdateAuthMethodGCP | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateAuthMethodGCP(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateAuthMethodGCP(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateAuthMethodGCP``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -13896,11 +15196,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateAuthMethodK8S("Name_example") // UpdateAuthMethodK8S | 
+    body := *openapiclient.NewUpdateAuthMethodK8S("Name_example") // UpdateAuthMethodK8S | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateAuthMethodK8S(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateAuthMethodK8S(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateAuthMethodK8S``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -13925,7 +15225,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateAuthMethodK8SOutput**](updateAuthMethodK8SOutput.md)
+[**UpdateAuthMethodK8SOutput**](UpdateAuthMethodK8SOutput.md)
 
 ### Authorization
 
@@ -13960,11 +15260,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateAuthMethodLDAP("Name_example") // UpdateAuthMethodLDAP | 
+    body := *openapiclient.NewUpdateAuthMethodLDAP("Name_example") // UpdateAuthMethodLDAP | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateAuthMethodLDAP(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateAuthMethodLDAP(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateAuthMethodLDAP``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -13989,7 +15289,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateAuthMethodLDAPOutput**](updateAuthMethodLDAPOutput.md)
+[**UpdateAuthMethodLDAPOutput**](UpdateAuthMethodLDAPOutput.md)
 
 ### Authorization
 
@@ -14024,11 +15324,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateAuthMethodOAuth2("JwksUri_example", "Name_example", "UniqueIdentifier_example") // UpdateAuthMethodOAuth2 | 
+    body := *openapiclient.NewUpdateAuthMethodOAuth2("JwksUri_example", "Name_example", "UniqueIdentifier_example") // UpdateAuthMethodOAuth2 | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateAuthMethodOAuth2(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateAuthMethodOAuth2(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateAuthMethodOAuth2``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -14088,11 +15388,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateAuthMethodOIDC("Name_example", "UniqueIdentifier_example") // UpdateAuthMethodOIDC | 
+    body := *openapiclient.NewUpdateAuthMethodOIDC("Name_example", "UniqueIdentifier_example") // UpdateAuthMethodOIDC | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateAuthMethodOIDC(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateAuthMethodOIDC(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateAuthMethodOIDC``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -14152,11 +15452,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateAuthMethodSAML("Name_example", "UniqueIdentifier_example") // UpdateAuthMethodSAML | 
+    body := *openapiclient.NewUpdateAuthMethodSAML("Name_example", "UniqueIdentifier_example") // UpdateAuthMethodSAML | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateAuthMethodSAML(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateAuthMethodSAML(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateAuthMethodSAML``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -14216,11 +15516,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateAuthMethodUniversalIdentity("Name_example") // UpdateAuthMethodUniversalIdentity | 
+    body := *openapiclient.NewUpdateAuthMethodUniversalIdentity("Name_example") // UpdateAuthMethodUniversalIdentity | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateAuthMethodUniversalIdentity(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateAuthMethodUniversalIdentity(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateAuthMethodUniversalIdentity``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -14280,11 +15580,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateAzureTarget("Name_example") // UpdateAzureTarget | 
+    body := *openapiclient.NewUpdateAzureTarget("Name_example") // UpdateAzureTarget | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateAzureTarget(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateAzureTarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateAzureTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -14309,7 +15609,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateAzureTargetOutput**](updateAzureTargetOutput.md)
+[**UpdateAzureTargetOutput**](UpdateAzureTargetOutput.md)
 
 ### Authorization
 
@@ -14344,11 +15644,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateCertificateValue("Name_example") // UpdateCertificateValue | 
+    body := *openapiclient.NewUpdateCertificateValue("Name_example") // UpdateCertificateValue | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateCertificateValue(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateCertificateValue(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateCertificateValue``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -14373,7 +15673,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateCertificateOutput**](updateCertificateOutput.md)
+[**UpdateCertificateOutput**](UpdateCertificateOutput.md)
 
 ### Authorization
 
@@ -14408,11 +15708,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateDBTarget("DbType_example", "Name_example") // UpdateDBTarget | 
+    body := *openapiclient.NewUpdateDBTarget("DbType_example", "Name_example") // UpdateDBTarget | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateDBTarget(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateDBTarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateDBTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -14437,7 +15737,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateDBTargetOutput**](updateDBTargetOutput.md)
+[**UpdateDBTargetOutput**](UpdateDBTargetOutput.md)
 
 ### Authorization
 
@@ -14472,11 +15772,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateDBTargetDetails("Name_example") // UpdateDBTargetDetails | 
+    body := *openapiclient.NewUpdateDBTargetDetails("Name_example") // UpdateDBTargetDetails | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateDBTargetDetails(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateDBTargetDetails(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateDBTargetDetails``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -14501,7 +15801,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateTargetOutput**](updateTargetOutput.md)
+[**UpdateTargetOutput**](UpdateTargetOutput.md)
 
 ### Authorization
 
@@ -14536,11 +15836,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateDockerhubTarget("Name_example") // UpdateDockerhubTarget | 
+    body := *openapiclient.NewUpdateDockerhubTarget("Name_example") // UpdateDockerhubTarget | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateDockerhubTarget(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateDockerhubTarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateDockerhubTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -14565,7 +15865,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateDockerhubTargetOutput**](updateDockerhubTargetOutput.md)
+[**UpdateDockerhubTargetOutput**](UpdateDockerhubTargetOutput.md)
 
 ### Authorization
 
@@ -14600,11 +15900,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateEKSTarget("EksAccessKeyId_example", "EksClusterCaCert_example", "EksClusterEndpoint_example", "EksClusterName_example", "EksSecretAccessKey_example", "Name_example") // UpdateEKSTarget | 
+    body := *openapiclient.NewUpdateEKSTarget("EksAccessKeyId_example", "EksClusterCaCert_example", "EksClusterEndpoint_example", "EksClusterName_example", "EksSecretAccessKey_example", "Name_example") // UpdateEKSTarget | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateEKSTarget(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateEKSTarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateEKSTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -14629,7 +15929,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateEKSTargetOutput**](updateEKSTargetOutput.md)
+[**UpdateEKSTargetOutput**](UpdateEKSTargetOutput.md)
 
 ### Authorization
 
@@ -14664,11 +15964,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateEventForwarder("Name_example") // UpdateEventForwarder | 
+    body := *openapiclient.NewUpdateEventForwarder("Name_example") // UpdateEventForwarder | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateEventForwarder(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateEventForwarder(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateEventForwarder``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -14728,11 +16028,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateGKETarget("Name_example") // UpdateGKETarget | 
+    body := *openapiclient.NewUpdateGKETarget("Name_example") // UpdateGKETarget | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateGKETarget(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateGKETarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateGKETarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -14757,7 +16057,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateGKETargetOutput**](updateGKETargetOutput.md)
+[**UpdateGKETargetOutput**](UpdateGKETargetOutput.md)
 
 ### Authorization
 
@@ -14792,11 +16092,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateGcpTarget("Name_example") // UpdateGcpTarget | 
+    body := *openapiclient.NewUpdateGcpTarget("Name_example") // UpdateGcpTarget | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateGcpTarget(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateGcpTarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateGcpTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -14821,7 +16121,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateGcpTargetOutput**](updateGcpTargetOutput.md)
+[**UpdateGcpTargetOutput**](UpdateGcpTargetOutput.md)
 
 ### Authorization
 
@@ -14856,11 +16156,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateGithubTarget("Name_example") // UpdateGithubTarget | 
+    body := *openapiclient.NewUpdateGithubTarget("Name_example") // UpdateGithubTarget | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateGithubTarget(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateGithubTarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateGithubTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -14885,7 +16185,71 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateGithubTargetOutput**](updateGithubTargetOutput.md)
+[**UpdateGithubTargetOutput**](UpdateGithubTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateGlobalSignTarget
+
+> UpdateGlobalSignTargetOutput UpdateGlobalSignTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewUpdateGlobalSignTarget("ContactEmail_example", "ContactFirstName_example", "ContactLastName_example", "ContactPhone_example", "Name_example", "Password_example", "ProfileId_example", "Username_example") // UpdateGlobalSignTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateGlobalSignTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateGlobalSignTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateGlobalSignTarget`: UpdateGlobalSignTargetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateGlobalSignTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateGlobalSignTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateGlobalSignTarget**](UpdateGlobalSignTarget.md) |  | 
+
+### Return type
+
+[**UpdateGlobalSignTargetOutput**](UpdateGlobalSignTargetOutput.md)
 
 ### Authorization
 
@@ -14920,11 +16284,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateItem("Name_example") // UpdateItem | 
+    body := *openapiclient.NewUpdateItem("Name_example") // UpdateItem | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateItem(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateItem(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -14949,7 +16313,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateItemOutput**](updateItemOutput.md)
+[**UpdateItemOutput**](UpdateItemOutput.md)
 
 ### Authorization
 
@@ -14984,11 +16348,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateLdapTarget("Name_example") // UpdateLdapTarget | 
+    body := *openapiclient.NewUpdateLdapTarget("Name_example") // UpdateLdapTarget | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateLdapTarget(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateLdapTarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateLdapTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -15013,7 +16377,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateLdapTargetOutput**](updateLdapTargetOutput.md)
+[**UpdateLdapTargetOutput**](UpdateLdapTargetOutput.md)
 
 ### Authorization
 
@@ -15048,11 +16412,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateLdapTargetDetails("Name_example") // UpdateLdapTargetDetails | 
+    body := *openapiclient.NewUpdateLdapTargetDetails("Name_example") // UpdateLdapTargetDetails | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateLdapTargetDetails(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateLdapTargetDetails(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateLdapTargetDetails``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -15077,7 +16441,71 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateTargetOutput**](updateTargetOutput.md)
+[**UpdateTargetOutput**](UpdateTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateLinkedTarget
+
+> map[string]interface{} UpdateLinkedTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewUpdateLinkedTarget("Name_example") // UpdateLinkedTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateLinkedTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateLinkedTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateLinkedTarget`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateLinkedTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateLinkedTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateLinkedTarget**](UpdateLinkedTarget.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
 
 ### Authorization
 
@@ -15112,11 +16540,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateNativeK8STarget("K8sClusterCaCert_example", "K8sClusterEndpoint_example", "K8sClusterToken_example", "Name_example") // UpdateNativeK8STarget | 
+    body := *openapiclient.NewUpdateNativeK8STarget("K8sClusterCaCert_example", "K8sClusterEndpoint_example", "K8sClusterToken_example", "Name_example") // UpdateNativeK8STarget | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateNativeK8STarget(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateNativeK8STarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateNativeK8STarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -15141,7 +16569,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateNativeK8STargetOutput**](updateNativeK8STargetOutput.md)
+[**UpdateNativeK8STargetOutput**](UpdateNativeK8STargetOutput.md)
 
 ### Authorization
 
@@ -15179,8 +16607,8 @@ func main() {
     body := *openapiclient.NewUpdatePKICertIssuer("Name_example", "SignerKeyName_example", int64(123)) // UpdatePKICertIssuer | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdatePKICertIssuer(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdatePKICertIssuer(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdatePKICertIssuer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -15205,7 +16633,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdatePKICertIssuerOutput**](updatePKICertIssuerOutput.md)
+[**UpdatePKICertIssuerOutput**](UpdatePKICertIssuerOutput.md)
 
 ### Authorization
 
@@ -15240,11 +16668,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdatePingTarget("Name_example") // UpdatePingTarget | 
+    body := *openapiclient.NewUpdatePingTarget("Name_example") // UpdatePingTarget | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdatePingTarget(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdatePingTarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdatePingTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -15304,11 +16732,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateRDPTargetDetails("Name_example") // UpdateRDPTargetDetails | 
+    body := *openapiclient.NewUpdateRDPTargetDetails("Name_example") // UpdateRDPTargetDetails | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateRDPTargetDetails(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateRDPTargetDetails(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateRDPTargetDetails``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -15333,7 +16761,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateTargetOutput**](updateTargetOutput.md)
+[**UpdateTargetOutput**](UpdateTargetOutput.md)
 
 ### Authorization
 
@@ -15368,11 +16796,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateRabbitMQTarget("Name_example") // UpdateRabbitMQTarget | 
+    body := *openapiclient.NewUpdateRabbitMQTarget("Name_example") // UpdateRabbitMQTarget | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateRabbitMQTarget(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateRabbitMQTarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateRabbitMQTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -15397,7 +16825,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateRabbitMQTargetOutput**](updateRabbitMQTargetOutput.md)
+[**UpdateRabbitMQTargetOutput**](UpdateRabbitMQTargetOutput.md)
 
 ### Authorization
 
@@ -15432,11 +16860,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateRabbitMQTargetDetails("Name_example") // UpdateRabbitMQTargetDetails | 
+    body := *openapiclient.NewUpdateRabbitMQTargetDetails("Name_example") // UpdateRabbitMQTargetDetails | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateRabbitMQTargetDetails(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateRabbitMQTargetDetails(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateRabbitMQTargetDetails``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -15461,7 +16889,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateTargetOutput**](updateTargetOutput.md)
+[**UpdateTargetOutput**](UpdateTargetOutput.md)
 
 ### Authorization
 
@@ -15496,11 +16924,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateRole("Name_example") // UpdateRole | 
+    body := *openapiclient.NewUpdateRole("Name_example") // UpdateRole | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateRole(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateRole(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateRole``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -15525,7 +16953,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateRoleOutput**](updateRoleOutput.md)
+[**UpdateRoleOutput**](UpdateRoleOutput.md)
 
 ### Authorization
 
@@ -15560,11 +16988,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateRotatedSecret("Name_example") // UpdateRotatedSecret | 
+    body := *openapiclient.NewUpdateRotatedSecret("Name_example") // UpdateRotatedSecret | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateRotatedSecret(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateRotatedSecret(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateRotatedSecret``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -15589,7 +17017,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateRotatedSecretOutput**](updateRotatedSecretOutput.md)
+[**UpdateRotatedSecretOutput**](UpdateRotatedSecretOutput.md)
 
 ### Authorization
 
@@ -15626,8 +17054,8 @@ import (
 func main() {
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateRotationSettings(context.Background()).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateRotationSettings(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateRotationSettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -15683,11 +17111,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateSSHCertIssuer("AllowedUsers_example", "Name_example", "SignerKeyName_example", int64(123)) // UpdateSSHCertIssuer | 
+    body := *openapiclient.NewUpdateSSHCertIssuer("AllowedUsers_example", "Name_example", "SignerKeyName_example", int64(123)) // UpdateSSHCertIssuer | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateSSHCertIssuer(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateSSHCertIssuer(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateSSHCertIssuer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -15712,7 +17140,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateSSHCertIssuerOutput**](updateSSHCertIssuerOutput.md)
+[**UpdateSSHCertIssuerOutput**](UpdateSSHCertIssuerOutput.md)
 
 ### Authorization
 
@@ -15747,11 +17175,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateSSHTarget("Name_example") // UpdateSSHTarget | 
+    body := *openapiclient.NewUpdateSSHTarget("Name_example") // UpdateSSHTarget | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateSSHTarget(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateSSHTarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateSSHTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -15776,7 +17204,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateSSHTargetOutput**](updateSSHTargetOutput.md)
+[**UpdateSSHTargetOutput**](UpdateSSHTargetOutput.md)
 
 ### Authorization
 
@@ -15811,11 +17239,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateSSHTargetDetails("Name_example") // UpdateSSHTargetDetails | 
+    body := *openapiclient.NewUpdateSSHTargetDetails("Name_example") // UpdateSSHTargetDetails | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateSSHTargetDetails(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateSSHTargetDetails(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateSSHTargetDetails``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -15840,7 +17268,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateTargetOutput**](updateTargetOutput.md)
+[**UpdateTargetOutput**](UpdateTargetOutput.md)
 
 ### Authorization
 
@@ -15875,11 +17303,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateSalesforceTarget("AuthFlow_example", "ClientId_example", "Email_example", "Name_example", "TenantUrl_example") // UpdateSalesforceTarget | 
+    body := *openapiclient.NewUpdateSalesforceTarget("AuthFlow_example", "ClientId_example", "Email_example", "Name_example", "TenantUrl_example") // UpdateSalesforceTarget | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateSalesforceTarget(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateSalesforceTarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateSalesforceTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -15904,7 +17332,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateSalesforceTargetOutput**](updateSalesforceTargetOutput.md)
+[**UpdateSalesforceTargetOutput**](UpdateSalesforceTargetOutput.md)
 
 ### Authorization
 
@@ -15939,11 +17367,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateSecretVal("Name_example", "Value_example") // UpdateSecretVal | 
+    body := *openapiclient.NewUpdateSecretVal("Name_example", "Value_example") // UpdateSecretVal | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateSecretVal(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateSecretVal(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateSecretVal``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -16003,11 +17431,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateTarget("Name_example") // UpdateTarget | 
+    body := *openapiclient.NewUpdateTarget("Name_example") // UpdateTarget | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateTarget(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateTarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -16032,7 +17460,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateTargetOutput**](updateTargetOutput.md)
+[**UpdateTargetOutput**](UpdateTargetOutput.md)
 
 ### Authorization
 
@@ -16067,11 +17495,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateTargetDetails() // UpdateTargetDetails | 
+    body := *openapiclient.NewUpdateTargetDetails() // UpdateTargetDetails | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateTargetDetails(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateTargetDetails(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateTargetDetails``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -16096,7 +17524,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateTargetOutput**](updateTargetOutput.md)
+[**UpdateTargetOutput**](UpdateTargetOutput.md)
 
 ### Authorization
 
@@ -16131,11 +17559,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateWebTarget("Name_example") // UpdateWebTarget | 
+    body := *openapiclient.NewUpdateWebTarget("Name_example") // UpdateWebTarget | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateWebTarget(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateWebTarget(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateWebTarget``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -16160,7 +17588,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateWebTargetOutput**](updateWebTargetOutput.md)
+[**UpdateWebTargetOutput**](UpdateWebTargetOutput.md)
 
 ### Authorization
 
@@ -16195,11 +17623,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewupdateWebTargetDetails("Name_example") // UpdateWebTargetDetails | 
+    body := *openapiclient.NewUpdateWebTargetDetails("Name_example") // UpdateWebTargetDetails | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UpdateWebTargetDetails(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateWebTargetDetails(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateWebTargetDetails``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -16224,7 +17652,135 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateTargetOutput**](updateTargetOutput.md)
+[**UpdateTargetOutput**](UpdateTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateWindowsTarget
+
+> map[string]interface{} UpdateWindowsTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewUpdateWindowsTarget("Hostname_example", "Name_example", "Password_example", "Username_example") // UpdateWindowsTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateWindowsTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateWindowsTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateWindowsTarget`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateWindowsTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateWindowsTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateWindowsTarget**](UpdateWindowsTarget.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateZeroSSLTarget
+
+> UpdateZeroSSLTargetOutput UpdateZeroSSLTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewUpdateZeroSSLTarget("ApiKey_example", "ImapFqdn_example", "ImapPassword_example", "ImapUsername_example", "Name_example") // UpdateZeroSSLTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UpdateZeroSSLTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateZeroSSLTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateZeroSSLTarget`: UpdateZeroSSLTargetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateZeroSSLTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateZeroSSLTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateZeroSSLTarget**](UpdateZeroSSLTarget.md) |  | 
+
+### Return type
+
+[**UpdateZeroSSLTargetOutput**](UpdateZeroSSLTargetOutput.md)
 
 ### Authorization
 
@@ -16259,11 +17815,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewuploadRSA("Alg_example", "Name_example") // UploadRSA | 
+    body := *openapiclient.NewUploadRSA("Alg_example", "Name_example") // UploadRSA | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.UploadRSA(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.UploadRSA(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UploadRSA``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -16323,11 +17879,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewvalidateToken() // ValidateToken | 
+    body := *openapiclient.NewValidateToken() // ValidateToken | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.ValidateToken(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.ValidateToken(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.ValidateToken``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -16352,7 +17908,71 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ValidateTokenOutput**](validateTokenOutput.md)
+[**ValidateTokenOutput**](ValidateTokenOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## VerifyDataWithClassicKey
+
+> VerifyPKICertOutput VerifyDataWithClassicKey(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewVerifyDataWithClassicKey("Data_example", "Name_example", "Signature_example", int32(123)) // VerifyDataWithClassicKey | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.VerifyDataWithClassicKey(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.VerifyDataWithClassicKey``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `VerifyDataWithClassicKey`: VerifyPKICertOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.VerifyDataWithClassicKey`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiVerifyDataWithClassicKeyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**VerifyDataWithClassicKey**](VerifyDataWithClassicKey.md) |  | 
+
+### Return type
+
+[**VerifyPKICertOutput**](VerifyPKICertOutput.md)
 
 ### Authorization
 
@@ -16387,11 +18007,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewverifyGPG("KeyName_example", "Signature_example") // VerifyGPG | 
+    body := *openapiclient.NewVerifyGPG("KeyName_example", "Signature_example") // VerifyGPG | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.VerifyGPG(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.VerifyGPG(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.VerifyGPG``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -16451,11 +18071,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewverifyJWTWithClassicKey("DisplayId_example", "Jwt_example", "RequiredClaims_example", int32(123)) // VerifyJWTWithClassicKey | 
+    body := *openapiclient.NewVerifyJWTWithClassicKey("DisplayId_example", "Jwt_example", "RequiredClaims_example", int32(123)) // VerifyJWTWithClassicKey | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.VerifyJWTWithClassicKey(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.VerifyJWTWithClassicKey(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.VerifyJWTWithClassicKey``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -16480,7 +18100,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**VerifyJWTOutput**](verifyJWTOutput.md)
+[**VerifyJWTOutput**](VerifyJWTOutput.md)
 
 ### Authorization
 
@@ -16515,11 +18135,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewverifyPKCS1("KeyName_example", "Message_example", "Signature_example") // VerifyPKCS1 | 
+    body := *openapiclient.NewVerifyPKCS1("KeyName_example", "Message_example", "Signature_example") // VerifyPKCS1 | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.VerifyPKCS1(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.VerifyPKCS1(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.VerifyPKCS1``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -16579,11 +18199,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewverifyPKICertWithClassicKey("DisplayId_example", "PkiCert_example", int32(123)) // VerifyPKICertWithClassicKey | 
+    body := *openapiclient.NewVerifyPKICertWithClassicKey("DisplayId_example", "PkiCert_example", int32(123)) // VerifyPKICertWithClassicKey | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.VerifyPKICertWithClassicKey(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2Api.VerifyPKICertWithClassicKey(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.VerifyPKICertWithClassicKey``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -16608,7 +18228,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**VerifyPKICertOutput**](verifyPKICertOutput.md)
+[**VerifyPKICertOutput**](VerifyPKICertOutput.md)
 
 ### Authorization
 

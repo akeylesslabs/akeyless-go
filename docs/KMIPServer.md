@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Active** | Pointer to **bool** |  | [optional] 
 **Ca** | Pointer to **[]int32** |  | [optional] 
 **Certificate** | Pointer to **[]int32** |  | [optional] 
-**CertificateIssueDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**CertificateIssueDate** | Pointer to **time.Time** |  | [optional] 
 **CertificateTtlInSeconds** | Pointer to **int64** |  | [optional] 
 **Hostname** | Pointer to **string** |  | [optional] 
 **Root** | Pointer to **string** |  | [optional] 

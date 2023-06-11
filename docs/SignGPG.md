@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DisplayId** | Pointer to **string** | The display id of the key to use in the encryption process | [optional] 
 **ItemId** | Pointer to **int64** | The item id of the key to use in the encryption process | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeyName** | **string** | The name of the key to use in the encryption process | 
 **Message** | **string** | The message to be signed in base64 format | 
 **Passphrase** | Pointer to **string** | Passphrase that was used to generate the key | [optional] 
