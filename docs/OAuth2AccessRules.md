@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **BoundClaims** | Pointer to [**[]OAuth2CustomClaim**](OAuth2CustomClaim.md) | The claims that login is restricted to. | [optional] 
 **BoundClientsId** | Pointer to **[]string** | The clients ids that login is restricted to. | [optional] 
 **Issuer** | Pointer to **string** | Issuer URL | [optional] 
+**JwksJsonData** | Pointer to **string** | The JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. base64 encoded string | [optional] 
 **JwksUri** | Pointer to **string** | The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. | [optional] 
 **UniqueIdentifier** | Pointer to **string** | A unique identifier to distinguish different users | [optional] 
 
@@ -129,6 +130,31 @@ SetIssuer sets Issuer field to given value.
 `func (o *OAuth2AccessRules) HasIssuer() bool`
 
 HasIssuer returns a boolean if a field has been set.
+
+### GetJwksJsonData
+
+`func (o *OAuth2AccessRules) GetJwksJsonData() string`
+
+GetJwksJsonData returns the JwksJsonData field if non-nil, zero value otherwise.
+
+### GetJwksJsonDataOk
+
+`func (o *OAuth2AccessRules) GetJwksJsonDataOk() (*string, bool)`
+
+GetJwksJsonDataOk returns a tuple with the JwksJsonData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJwksJsonData
+
+`func (o *OAuth2AccessRules) SetJwksJsonData(v string)`
+
+SetJwksJsonData sets JwksJsonData field to given value.
+
+### HasJwksJsonData
+
+`func (o *OAuth2AccessRules) HasJwksJsonData() bool`
+
+HasJwksJsonData returns a boolean if a field has been set.
 
 ### GetJwksUri
 

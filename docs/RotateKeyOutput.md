@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **ClassicKeyGwUrl** | Pointer to **string** |  | [optional] 
 **ItemType** | Pointer to **string** |  | [optional] 
 **NewItemVersion** | Pointer to **int32** |  | [optional] 
-**NextRotationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**NextRotationDate** | Pointer to **time.Time** |  | [optional] 
 
 ## Methods
 

@@ -6,13 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessId** | Pointer to **string** | Access ID | [optional] 
 **AccessKey** | Pointer to **string** | Access Key | [optional] 
-**AccessType** | Pointer to **string** | Access Type (access_key/password/azure_ad/saml/oidc/aws_iam/gcp/k8s) | [optional] [default to "access_key"]
+**AccessType** | Pointer to **string** | Access Type (access_key/password/azure_ad/saml/oidc/aws_iam/gcp/k8s/cert) | [optional] [default to "access_key"]
+**AccountId** | Pointer to **string** | Account id (relevant only for access-type&#x3D;password where the email address is associated with more than one account) | [optional] 
 **AdminEmail** | Pointer to **string** | Email (relevant only for access-type&#x3D;password) | [optional] 
 **AdminPassword** | Pointer to **string** | Password (relevant only for access-type&#x3D;password) | [optional] 
 **AzureAdObjectId** | Pointer to **string** | Azure Active Directory ObjectId (relevant only for access-type&#x3D;azure_ad) | [optional] 
 **CertData** | Pointer to **string** | Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type&#x3D;cert in Curl Context) | [optional] 
-**GcpAudience** | Pointer to **string** | GCP JWT audience | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**GcpAudience** | Pointer to **string** | GCP JWT audience | [optional] [default to "akeyless.io"]
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **K8sAuthConfigName** | Pointer to **string** | The K8S Auth config name (relevant only for access-type&#x3D;k8s) | [optional] 
 **KeyData** | Pointer to **string** | Private key data encoded in base64. Used if file was not provided.(relevant only for access-type&#x3D;cert in Curl Context) | [optional] 
 
@@ -109,6 +110,31 @@ SetAccessType sets AccessType field to given value.
 `func (o *Configure) HasAccessType() bool`
 
 HasAccessType returns a boolean if a field has been set.
+
+### GetAccountId
+
+`func (o *Configure) GetAccountId() string`
+
+GetAccountId returns the AccountId field if non-nil, zero value otherwise.
+
+### GetAccountIdOk
+
+`func (o *Configure) GetAccountIdOk() (*string, bool)`
+
+GetAccountIdOk returns a tuple with the AccountId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccountId
+
+`func (o *Configure) SetAccountId(v string)`
+
+SetAccountId sets AccountId field to given value.
+
+### HasAccountId
+
+`func (o *Configure) HasAccountId() bool`
+
+HasAccountId returns a boolean if a field has been set.
 
 ### GetAdminEmail
 
