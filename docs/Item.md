@@ -4,18 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**AccessDate** | Pointer to **time.Time** |  | [optional] 
 **AccessRequestStatus** | Pointer to **string** |  | [optional] 
 **AutoRotate** | Pointer to **bool** |  | [optional] 
+**BastionDetails** | Pointer to [**BastionsList**](BastionsList.md) |  | [optional] 
 **CertIssuerSignerKeyName** | Pointer to **string** |  | [optional] 
 **CertificateIssueDetails** | Pointer to [**CertificateIssueInfo**](CertificateIssueInfo.md) |  | [optional] 
 **Certificates** | Pointer to **string** |  | [optional] 
 **ClientPermissions** | Pointer to **[]string** |  | [optional] 
-**CreationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**CreationDate** | Pointer to **time.Time** |  | [optional] 
 **CustomerFragmentId** | Pointer to **string** |  | [optional] 
 **DeleteProtection** | Pointer to **bool** |  | [optional] 
-**DeletionDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**DeletionDate** | Pointer to **time.Time** |  | [optional] 
 **DisplayId** | Pointer to **string** |  | [optional] 
+**GatewayDetails** | Pointer to [**[]GatewayBasicInfo**](GatewayBasicInfo.md) |  | [optional] 
 **IsAccessRequestEnabled** | Pointer to **bool** |  | [optional] 
 **IsEnabled** | Pointer to **bool** |  | [optional] 
 **ItemAccessibility** | Pointer to **int64** |  | [optional] 
@@ -31,8 +33,9 @@ Name | Type | Description | Notes
 **ItemType** | Pointer to **string** |  | [optional] 
 **ItemVersions** | Pointer to [**[]ItemVersion**](ItemVersion.md) |  | [optional] 
 **LastVersion** | Pointer to **int32** |  | [optional] 
-**ModificationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
-**NextRotationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**LinkedDetails** | Pointer to [**LinkedDetails**](LinkedDetails.md) |  | [optional] 
+**ModificationDate** | Pointer to **time.Time** |  | [optional] 
+**NextRotationDate** | Pointer to **time.Time** |  | [optional] 
 **ProtectionKeyName** | Pointer to **string** |  | [optional] 
 **ProtectionKeyType** | Pointer to **string** |  | [optional] 
 **PublicValue** | Pointer to **string** |  | [optional] 
@@ -134,6 +137,31 @@ SetAutoRotate sets AutoRotate field to given value.
 `func (o *Item) HasAutoRotate() bool`
 
 HasAutoRotate returns a boolean if a field has been set.
+
+### GetBastionDetails
+
+`func (o *Item) GetBastionDetails() BastionsList`
+
+GetBastionDetails returns the BastionDetails field if non-nil, zero value otherwise.
+
+### GetBastionDetailsOk
+
+`func (o *Item) GetBastionDetailsOk() (*BastionsList, bool)`
+
+GetBastionDetailsOk returns a tuple with the BastionDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBastionDetails
+
+`func (o *Item) SetBastionDetails(v BastionsList)`
+
+SetBastionDetails sets BastionDetails field to given value.
+
+### HasBastionDetails
+
+`func (o *Item) HasBastionDetails() bool`
+
+HasBastionDetails returns a boolean if a field has been set.
 
 ### GetCertIssuerSignerKeyName
 
@@ -359,6 +387,31 @@ SetDisplayId sets DisplayId field to given value.
 `func (o *Item) HasDisplayId() bool`
 
 HasDisplayId returns a boolean if a field has been set.
+
+### GetGatewayDetails
+
+`func (o *Item) GetGatewayDetails() []GatewayBasicInfo`
+
+GetGatewayDetails returns the GatewayDetails field if non-nil, zero value otherwise.
+
+### GetGatewayDetailsOk
+
+`func (o *Item) GetGatewayDetailsOk() (*[]GatewayBasicInfo, bool)`
+
+GetGatewayDetailsOk returns a tuple with the GatewayDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGatewayDetails
+
+`func (o *Item) SetGatewayDetails(v []GatewayBasicInfo)`
+
+SetGatewayDetails sets GatewayDetails field to given value.
+
+### HasGatewayDetails
+
+`func (o *Item) HasGatewayDetails() bool`
+
+HasGatewayDetails returns a boolean if a field has been set.
 
 ### GetIsAccessRequestEnabled
 
@@ -734,6 +787,31 @@ SetLastVersion sets LastVersion field to given value.
 `func (o *Item) HasLastVersion() bool`
 
 HasLastVersion returns a boolean if a field has been set.
+
+### GetLinkedDetails
+
+`func (o *Item) GetLinkedDetails() LinkedDetails`
+
+GetLinkedDetails returns the LinkedDetails field if non-nil, zero value otherwise.
+
+### GetLinkedDetailsOk
+
+`func (o *Item) GetLinkedDetailsOk() (*LinkedDetails, bool)`
+
+GetLinkedDetailsOk returns a tuple with the LinkedDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLinkedDetails
+
+`func (o *Item) SetLinkedDetails(v LinkedDetails)`
+
+SetLinkedDetails sets LinkedDetails field to given value.
+
+### HasLinkedDetails
+
+`func (o *Item) HasLinkedDetails() bool`
+
+HasLinkedDetails returns a boolean if a field has been set.
 
 ### GetModificationDate
 

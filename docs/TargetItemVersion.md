@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
-**CreationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**AccessDate** | Pointer to **time.Time** |  | [optional] 
+**CreationDate** | Pointer to **time.Time** |  | [optional] 
 **CustomerFragmentId** | Pointer to **string** |  | [optional] 
-**DeletionDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**DeletionDate** | Pointer to **time.Time** |  | [optional] 
 **ItemVersionState** | Pointer to **string** | ItemState defines the different states an Item can be in | [optional] 
 **LatestVersion** | Pointer to **bool** |  | [optional] 
-**ModificationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**ModificationDate** | Pointer to **time.Time** |  | [optional] 
 **ProtectionKeyName** | Pointer to **string** |  | [optional] 
 **TargetName** | Pointer to **string** |  | [optional] 
 **Version** | Pointer to **int32** |  | [optional] 
