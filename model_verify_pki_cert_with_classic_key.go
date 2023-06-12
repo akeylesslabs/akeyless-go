@@ -38,6 +38,8 @@ type VerifyPKICertWithClassicKey struct {
 func NewVerifyPKICertWithClassicKey(displayId string, pkiCert string, version int32, ) *VerifyPKICertWithClassicKey {
 	this := VerifyPKICertWithClassicKey{}
 	this.DisplayId = displayId
+	var json bool = false
+	this.Json = &json
 	this.PkiCert = pkiCert
 	this.Version = version
 	return &this
@@ -48,6 +50,8 @@ func NewVerifyPKICertWithClassicKey(displayId string, pkiCert string, version in
 // but it doesn't guarantee that properties required by API are set
 func NewVerifyPKICertWithClassicKeyWithDefaults() *VerifyPKICertWithClassicKey {
 	this := VerifyPKICertWithClassicKey{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

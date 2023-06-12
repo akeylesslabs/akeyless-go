@@ -44,6 +44,8 @@ type DecryptGPG struct {
 func NewDecryptGPG(ciphertext string, keyName string, ) *DecryptGPG {
 	this := DecryptGPG{}
 	this.Ciphertext = ciphertext
+	var json bool = false
+	this.Json = &json
 	this.KeyName = keyName
 	return &this
 }
@@ -53,6 +55,8 @@ func NewDecryptGPG(ciphertext string, keyName string, ) *DecryptGPG {
 // but it doesn't guarantee that properties required by API are set
 func NewDecryptGPGWithDefaults() *DecryptGPG {
 	this := DecryptGPG{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

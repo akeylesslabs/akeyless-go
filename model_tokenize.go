@@ -37,6 +37,8 @@ type Tokenize struct {
 // will change when the set of required properties is changed
 func NewTokenize(plaintext string, tokenizerName string, ) *Tokenize {
 	this := Tokenize{}
+	var json bool = false
+	this.Json = &json
 	this.Plaintext = plaintext
 	this.TokenizerName = tokenizerName
 	return &this
@@ -47,6 +49,8 @@ func NewTokenize(plaintext string, tokenizerName string, ) *Tokenize {
 // but it doesn't guarantee that properties required by API are set
 func NewTokenizeWithDefaults() *Tokenize {
 	this := Tokenize{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

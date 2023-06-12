@@ -21,6 +21,7 @@ type UpdateDBTargetDetails struct {
 	HostName *string `json:"host_name,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
+	// Whether to keep previous version [true/false]. If not set, use default according to account settings
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	MongoDbName *string `json:"mongo_db_name,omitempty"`
 	MongoUri *string `json:"mongo_uri,omitempty"`
@@ -45,6 +46,8 @@ type UpdateDBTargetDetails struct {
 // will change when the set of required properties is changed
 func NewUpdateDBTargetDetails(name string, ) *UpdateDBTargetDetails {
 	this := UpdateDBTargetDetails{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -54,6 +57,8 @@ func NewUpdateDBTargetDetails(name string, ) *UpdateDBTargetDetails {
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateDBTargetDetailsWithDefaults() *UpdateDBTargetDetails {
 	this := UpdateDBTargetDetails{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

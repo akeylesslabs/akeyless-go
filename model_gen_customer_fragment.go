@@ -31,6 +31,8 @@ type GenCustomerFragment struct {
 // will change when the set of required properties is changed
 func NewGenCustomerFragment() *GenCustomerFragment {
 	this := GenCustomerFragment{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -39,6 +41,8 @@ func NewGenCustomerFragment() *GenCustomerFragment {
 // but it doesn't guarantee that properties required by API are set
 func NewGenCustomerFragmentWithDefaults() *GenCustomerFragment {
 	this := GenCustomerFragment{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

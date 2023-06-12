@@ -33,6 +33,8 @@ type DeleteEventForwarder struct {
 // will change when the set of required properties is changed
 func NewDeleteEventForwarder(name string, ) *DeleteEventForwarder {
 	this := DeleteEventForwarder{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -42,6 +44,8 @@ func NewDeleteEventForwarder(name string, ) *DeleteEventForwarder {
 // but it doesn't guarantee that properties required by API are set
 func NewDeleteEventForwarderWithDefaults() *DeleteEventForwarder {
 	this := DeleteEventForwarder{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

@@ -17,7 +17,7 @@ import (
 
 // GatewayCreateProducerGithub gatewayCreateProducerGithub is a command that creates github producer
 type GatewayCreateProducerGithub struct {
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Github app id
 	GithubAppId *int64 `json:"github-app-id,omitempty"`
@@ -51,6 +51,10 @@ type GatewayCreateProducerGithub struct {
 // will change when the set of required properties is changed
 func NewGatewayCreateProducerGithub(name string, ) *GatewayCreateProducerGithub {
 	this := GatewayCreateProducerGithub{}
+	var githubBaseUrl string = "https://api.github.com/"
+	this.GithubBaseUrl = &githubBaseUrl
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -60,6 +64,10 @@ func NewGatewayCreateProducerGithub(name string, ) *GatewayCreateProducerGithub 
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayCreateProducerGithubWithDefaults() *GatewayCreateProducerGithub {
 	this := GatewayCreateProducerGithub{}
+	var githubBaseUrl string = "https://api.github.com/"
+	this.GithubBaseUrl = &githubBaseUrl
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

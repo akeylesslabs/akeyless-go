@@ -17,8 +17,10 @@ import (
 
 // CreateNativeK8STarget struct for CreateNativeK8STarget
 type CreateNativeK8STarget struct {
-	// Comment about the target
+	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`
+	// Description of the object
+	Description *string `json:"description,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// K8S cluster CA certificate
@@ -35,6 +37,8 @@ type CreateNativeK8STarget struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// Use the GW's service account
+	UseGwServiceAccount *bool `json:"use-gw-service-account,omitempty"`
 }
 
 // NewCreateNativeK8STarget instantiates a new CreateNativeK8STarget object
@@ -43,6 +47,8 @@ type CreateNativeK8STarget struct {
 // will change when the set of required properties is changed
 func NewCreateNativeK8STarget(k8sClusterCaCert string, k8sClusterEndpoint string, k8sClusterToken string, name string, ) *CreateNativeK8STarget {
 	this := CreateNativeK8STarget{}
+	var json bool = false
+	this.Json = &json
 	this.K8sClusterCaCert = k8sClusterCaCert
 	this.K8sClusterEndpoint = k8sClusterEndpoint
 	this.K8sClusterToken = k8sClusterToken
@@ -55,6 +61,14 @@ func NewCreateNativeK8STarget(k8sClusterCaCert string, k8sClusterEndpoint string
 // but it doesn't guarantee that properties required by API are set
 func NewCreateNativeK8STargetWithDefaults() *CreateNativeK8STarget {
 	this := CreateNativeK8STarget{}
+	var json bool = false
+	this.Json = &json
+	var k8sClusterCaCert string = "dummy_val"
+	this.K8sClusterCaCert = k8sClusterCaCert
+	var k8sClusterEndpoint string = "dummy_val"
+	this.K8sClusterEndpoint = k8sClusterEndpoint
+	var k8sClusterToken string = "dummy_val"
+	this.K8sClusterToken = k8sClusterToken
 	return &this
 }
 
@@ -88,6 +102,38 @@ func (o *CreateNativeK8STarget) HasComment() bool {
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *CreateNativeK8STarget) SetComment(v string) {
 	o.Comment = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *CreateNativeK8STarget) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateNativeK8STarget) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *CreateNativeK8STarget) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *CreateNativeK8STarget) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -314,10 +360,45 @@ func (o *CreateNativeK8STarget) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUseGwServiceAccount returns the UseGwServiceAccount field value if set, zero value otherwise.
+func (o *CreateNativeK8STarget) GetUseGwServiceAccount() bool {
+	if o == nil || o.UseGwServiceAccount == nil {
+		var ret bool
+		return ret
+	}
+	return *o.UseGwServiceAccount
+}
+
+// GetUseGwServiceAccountOk returns a tuple with the UseGwServiceAccount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateNativeK8STarget) GetUseGwServiceAccountOk() (*bool, bool) {
+	if o == nil || o.UseGwServiceAccount == nil {
+		return nil, false
+	}
+	return o.UseGwServiceAccount, true
+}
+
+// HasUseGwServiceAccount returns a boolean if a field has been set.
+func (o *CreateNativeK8STarget) HasUseGwServiceAccount() bool {
+	if o != nil && o.UseGwServiceAccount != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUseGwServiceAccount gets a reference to the given bool and assigns it to the UseGwServiceAccount field.
+func (o *CreateNativeK8STarget) SetUseGwServiceAccount(v bool) {
+	o.UseGwServiceAccount = &v
+}
+
 func (o CreateNativeK8STarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json
@@ -342,6 +423,9 @@ func (o CreateNativeK8STarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.UseGwServiceAccount != nil {
+		toSerialize["use-gw-service-account"] = o.UseGwServiceAccount
 	}
 	return json.Marshal(toSerialize)
 }

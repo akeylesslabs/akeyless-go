@@ -5,7 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CertificateChain** | Pointer to [**[]CertificateInfo**](CertificateInfo.md) |  | [optional] 
+**CertificateFormat** | Pointer to **string** |  | [optional] 
+**CertificateIssuerName** | Pointer to **string** |  | [optional] 
 **CertificatePem** | Pointer to **string** |  | [optional] 
+**CertificateStatus** | Pointer to **string** |  | [optional] 
 **ExpirationEvents** | Pointer to [**[]CertificateExpirationEvent**](CertificateExpirationEvent.md) |  | [optional] 
 
 ## Methods
@@ -52,6 +55,56 @@ SetCertificateChain sets CertificateChain field to given value.
 
 HasCertificateChain returns a boolean if a field has been set.
 
+### GetCertificateFormat
+
+`func (o *CertificateChainInfo) GetCertificateFormat() string`
+
+GetCertificateFormat returns the CertificateFormat field if non-nil, zero value otherwise.
+
+### GetCertificateFormatOk
+
+`func (o *CertificateChainInfo) GetCertificateFormatOk() (*string, bool)`
+
+GetCertificateFormatOk returns a tuple with the CertificateFormat field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificateFormat
+
+`func (o *CertificateChainInfo) SetCertificateFormat(v string)`
+
+SetCertificateFormat sets CertificateFormat field to given value.
+
+### HasCertificateFormat
+
+`func (o *CertificateChainInfo) HasCertificateFormat() bool`
+
+HasCertificateFormat returns a boolean if a field has been set.
+
+### GetCertificateIssuerName
+
+`func (o *CertificateChainInfo) GetCertificateIssuerName() string`
+
+GetCertificateIssuerName returns the CertificateIssuerName field if non-nil, zero value otherwise.
+
+### GetCertificateIssuerNameOk
+
+`func (o *CertificateChainInfo) GetCertificateIssuerNameOk() (*string, bool)`
+
+GetCertificateIssuerNameOk returns a tuple with the CertificateIssuerName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificateIssuerName
+
+`func (o *CertificateChainInfo) SetCertificateIssuerName(v string)`
+
+SetCertificateIssuerName sets CertificateIssuerName field to given value.
+
+### HasCertificateIssuerName
+
+`func (o *CertificateChainInfo) HasCertificateIssuerName() bool`
+
+HasCertificateIssuerName returns a boolean if a field has been set.
+
 ### GetCertificatePem
 
 `func (o *CertificateChainInfo) GetCertificatePem() string`
@@ -76,6 +129,31 @@ SetCertificatePem sets CertificatePem field to given value.
 `func (o *CertificateChainInfo) HasCertificatePem() bool`
 
 HasCertificatePem returns a boolean if a field has been set.
+
+### GetCertificateStatus
+
+`func (o *CertificateChainInfo) GetCertificateStatus() string`
+
+GetCertificateStatus returns the CertificateStatus field if non-nil, zero value otherwise.
+
+### GetCertificateStatusOk
+
+`func (o *CertificateChainInfo) GetCertificateStatusOk() (*string, bool)`
+
+GetCertificateStatusOk returns a tuple with the CertificateStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificateStatus
+
+`func (o *CertificateChainInfo) SetCertificateStatus(v string)`
+
+SetCertificateStatus sets CertificateStatus field to given value.
+
+### HasCertificateStatus
+
+`func (o *CertificateChainInfo) HasCertificateStatus() bool`
+
+HasCertificateStatus returns a boolean if a field has been set.
 
 ### GetExpirationEvents
 

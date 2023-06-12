@@ -47,6 +47,10 @@ func NewUpdateAuthMethod(name string, ) *UpdateAuthMethod {
 	this := UpdateAuthMethod{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	this.Name = name
 	return &this
 }
@@ -58,6 +62,10 @@ func NewUpdateAuthMethodWithDefaults() *UpdateAuthMethod {
 	this := UpdateAuthMethod{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	return &this
 }
 

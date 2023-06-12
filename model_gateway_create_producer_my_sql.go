@@ -21,7 +21,7 @@ type GatewayCreateProducerMySQL struct {
 	DbServerCertificates *string `json:"db-server-certificates,omitempty"`
 	// (Optional) Server name for certificate verification
 	DbServerName *string `json:"db-server-name,omitempty"`
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -33,6 +33,8 @@ type GatewayCreateProducerMySQL struct {
 	MysqlPassword *string `json:"mysql-password,omitempty"`
 	// MySQL Port
 	MysqlPort *string `json:"mysql-port,omitempty"`
+	// MySQL Revocation statements
+	MysqlRevocationStatements *string `json:"mysql-revocation-statements,omitempty"`
 	// MySQL Creation statements
 	MysqlScreationStatements *string `json:"mysql-screation-statements,omitempty"`
 	// MySQL Username
@@ -41,15 +43,19 @@ type GatewayCreateProducerMySQL struct {
 	Name string `json:"name"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
+	// Path to the SSH Certificate Issuer for your Akeyless Bastion
 	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
+	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Target DB servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts)
 	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
+	// Enable Web Secure Remote Access
 	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
-	// SSL connection mode
+	// Enable/Disable SSL [true/false]
 	Ssl *bool `json:"ssl,omitempty"`
 	// SSL connection certificate
 	SslCertificate *string `json:"ssl-certificate,omitempty"`
-	// List of the tags attached to this secret
+	// Add tags attached to this object
 	Tags *[]string `json:"tags,omitempty"`
 	// Target name
 	TargetName *string `json:"target-name,omitempty"`
@@ -67,11 +73,17 @@ type GatewayCreateProducerMySQL struct {
 // will change when the set of required properties is changed
 func NewGatewayCreateProducerMySQL(name string, ) *GatewayCreateProducerMySQL {
 	this := GatewayCreateProducerMySQL{}
+	var json bool = false
+	this.Json = &json
 	var mysqlHost string = "127.0.0.1"
 	this.MysqlHost = &mysqlHost
 	var mysqlPort string = "3306"
 	this.MysqlPort = &mysqlPort
 	this.Name = name
+	var secureAccessWeb bool = false
+	this.SecureAccessWeb = &secureAccessWeb
+	var ssl bool = false
+	this.Ssl = &ssl
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
@@ -82,10 +94,16 @@ func NewGatewayCreateProducerMySQL(name string, ) *GatewayCreateProducerMySQL {
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayCreateProducerMySQLWithDefaults() *GatewayCreateProducerMySQL {
 	this := GatewayCreateProducerMySQL{}
+	var json bool = false
+	this.Json = &json
 	var mysqlHost string = "127.0.0.1"
 	this.MysqlHost = &mysqlHost
 	var mysqlPort string = "3306"
 	this.MysqlPort = &mysqlPort
+	var secureAccessWeb bool = false
+	this.SecureAccessWeb = &secureAccessWeb
+	var ssl bool = false
+	this.Ssl = &ssl
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
@@ -345,6 +363,38 @@ func (o *GatewayCreateProducerMySQL) HasMysqlPort() bool {
 // SetMysqlPort gets a reference to the given string and assigns it to the MysqlPort field.
 func (o *GatewayCreateProducerMySQL) SetMysqlPort(v string) {
 	o.MysqlPort = &v
+}
+
+// GetMysqlRevocationStatements returns the MysqlRevocationStatements field value if set, zero value otherwise.
+func (o *GatewayCreateProducerMySQL) GetMysqlRevocationStatements() string {
+	if o == nil || o.MysqlRevocationStatements == nil {
+		var ret string
+		return ret
+	}
+	return *o.MysqlRevocationStatements
+}
+
+// GetMysqlRevocationStatementsOk returns a tuple with the MysqlRevocationStatements field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerMySQL) GetMysqlRevocationStatementsOk() (*string, bool) {
+	if o == nil || o.MysqlRevocationStatements == nil {
+		return nil, false
+	}
+	return o.MysqlRevocationStatements, true
+}
+
+// HasMysqlRevocationStatements returns a boolean if a field has been set.
+func (o *GatewayCreateProducerMySQL) HasMysqlRevocationStatements() bool {
+	if o != nil && o.MysqlRevocationStatements != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMysqlRevocationStatements gets a reference to the given string and assigns it to the MysqlRevocationStatements field.
+func (o *GatewayCreateProducerMySQL) SetMysqlRevocationStatements(v string) {
+	o.MysqlRevocationStatements = &v
 }
 
 // GetMysqlScreationStatements returns the MysqlScreationStatements field value if set, zero value otherwise.
@@ -844,6 +894,9 @@ func (o GatewayCreateProducerMySQL) MarshalJSON() ([]byte, error) {
 	}
 	if o.MysqlPort != nil {
 		toSerialize["mysql-port"] = o.MysqlPort
+	}
+	if o.MysqlRevocationStatements != nil {
+		toSerialize["mysql-revocation-statements"] = o.MysqlRevocationStatements
 	}
 	if o.MysqlScreationStatements != nil {
 		toSerialize["mysql-screation-statements"] = o.MysqlScreationStatements
