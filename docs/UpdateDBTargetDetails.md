@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DbType** | Pointer to **string** |  | [optional] 
 **HostName** | Pointer to **string** |  | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
-**KeepPrevVersion** | Pointer to **string** |  | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**KeepPrevVersion** | Pointer to **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
 **MongoDbName** | Pointer to **string** |  | [optional] 
 **MongoUri** | Pointer to **string** |  | [optional] 
 **Name** | **string** | Target name | 

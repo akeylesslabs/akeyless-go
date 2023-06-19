@@ -11,9 +11,11 @@ Name | Type | Description | Notes
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
 **GwBoundIps** | Pointer to **[]string** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
 **Issuer** | Pointer to **string** | Issuer URL | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
-**JwksUri** | **string** | The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. | 
-**JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**JwksJsonData** | Pointer to **string** | The JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. base64 encoded string | [optional] 
+**JwksJsonFile** | Pointer to **string** | JSON Web Key Set (JWKS) JSON file path that will be used to verify any JSON Web Token (JWT) issued by the authorization server. | [optional] 
+**JwksUri** | **string** | The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. | [default to "default_jwks_url"]
+**JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] [default to 0]
 **Name** | **string** | Auth Method name | 
 **NewName** | Pointer to **string** | Auth Method new name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -238,6 +240,56 @@ SetJson sets Json field to given value.
 `func (o *UpdateAuthMethodOAuth2) HasJson() bool`
 
 HasJson returns a boolean if a field has been set.
+
+### GetJwksJsonData
+
+`func (o *UpdateAuthMethodOAuth2) GetJwksJsonData() string`
+
+GetJwksJsonData returns the JwksJsonData field if non-nil, zero value otherwise.
+
+### GetJwksJsonDataOk
+
+`func (o *UpdateAuthMethodOAuth2) GetJwksJsonDataOk() (*string, bool)`
+
+GetJwksJsonDataOk returns a tuple with the JwksJsonData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJwksJsonData
+
+`func (o *UpdateAuthMethodOAuth2) SetJwksJsonData(v string)`
+
+SetJwksJsonData sets JwksJsonData field to given value.
+
+### HasJwksJsonData
+
+`func (o *UpdateAuthMethodOAuth2) HasJwksJsonData() bool`
+
+HasJwksJsonData returns a boolean if a field has been set.
+
+### GetJwksJsonFile
+
+`func (o *UpdateAuthMethodOAuth2) GetJwksJsonFile() string`
+
+GetJwksJsonFile returns the JwksJsonFile field if non-nil, zero value otherwise.
+
+### GetJwksJsonFileOk
+
+`func (o *UpdateAuthMethodOAuth2) GetJwksJsonFileOk() (*string, bool)`
+
+GetJwksJsonFileOk returns a tuple with the JwksJsonFile field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJwksJsonFile
+
+`func (o *UpdateAuthMethodOAuth2) SetJwksJsonFile(v string)`
+
+SetJwksJsonFile sets JwksJsonFile field to given value.
+
+### HasJwksJsonFile
+
+`func (o *UpdateAuthMethodOAuth2) HasJwksJsonFile() bool`
+
+HasJwksJsonFile returns a boolean if a field has been set.
 
 ### GetJwksUri
 

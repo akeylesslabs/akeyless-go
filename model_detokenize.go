@@ -38,6 +38,8 @@ type Detokenize struct {
 func NewDetokenize(ciphertext string, tokenizerName string, ) *Detokenize {
 	this := Detokenize{}
 	this.Ciphertext = ciphertext
+	var json bool = false
+	this.Json = &json
 	this.TokenizerName = tokenizerName
 	return &this
 }
@@ -47,6 +49,8 @@ func NewDetokenize(ciphertext string, tokenizerName string, ) *Detokenize {
 // but it doesn't guarantee that properties required by API are set
 func NewDetokenizeWithDefaults() *Detokenize {
 	this := Detokenize{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

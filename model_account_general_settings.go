@@ -20,6 +20,8 @@ type AccountGeneralSettings struct {
 	DataProtectionSection *DataProtectionSection `json:"data_protection_section,omitempty"`
 	EnableRequestForAccess *bool `json:"enable_request_for_access,omitempty"`
 	PasswordPolicy *PasswordPolicyInfo `json:"password_policy,omitempty"`
+	ProtectItemsByDefault *bool `json:"protect_items_by_default,omitempty"`
+	SharingPolicy *SharingPolicyInfo `json:"sharing_policy,omitempty"`
 }
 
 // NewAccountGeneralSettings instantiates a new AccountGeneralSettings object
@@ -135,6 +137,70 @@ func (o *AccountGeneralSettings) SetPasswordPolicy(v PasswordPolicyInfo) {
 	o.PasswordPolicy = &v
 }
 
+// GetProtectItemsByDefault returns the ProtectItemsByDefault field value if set, zero value otherwise.
+func (o *AccountGeneralSettings) GetProtectItemsByDefault() bool {
+	if o == nil || o.ProtectItemsByDefault == nil {
+		var ret bool
+		return ret
+	}
+	return *o.ProtectItemsByDefault
+}
+
+// GetProtectItemsByDefaultOk returns a tuple with the ProtectItemsByDefault field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountGeneralSettings) GetProtectItemsByDefaultOk() (*bool, bool) {
+	if o == nil || o.ProtectItemsByDefault == nil {
+		return nil, false
+	}
+	return o.ProtectItemsByDefault, true
+}
+
+// HasProtectItemsByDefault returns a boolean if a field has been set.
+func (o *AccountGeneralSettings) HasProtectItemsByDefault() bool {
+	if o != nil && o.ProtectItemsByDefault != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProtectItemsByDefault gets a reference to the given bool and assigns it to the ProtectItemsByDefault field.
+func (o *AccountGeneralSettings) SetProtectItemsByDefault(v bool) {
+	o.ProtectItemsByDefault = &v
+}
+
+// GetSharingPolicy returns the SharingPolicy field value if set, zero value otherwise.
+func (o *AccountGeneralSettings) GetSharingPolicy() SharingPolicyInfo {
+	if o == nil || o.SharingPolicy == nil {
+		var ret SharingPolicyInfo
+		return ret
+	}
+	return *o.SharingPolicy
+}
+
+// GetSharingPolicyOk returns a tuple with the SharingPolicy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountGeneralSettings) GetSharingPolicyOk() (*SharingPolicyInfo, bool) {
+	if o == nil || o.SharingPolicy == nil {
+		return nil, false
+	}
+	return o.SharingPolicy, true
+}
+
+// HasSharingPolicy returns a boolean if a field has been set.
+func (o *AccountGeneralSettings) HasSharingPolicy() bool {
+	if o != nil && o.SharingPolicy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSharingPolicy gets a reference to the given SharingPolicyInfo and assigns it to the SharingPolicy field.
+func (o *AccountGeneralSettings) SetSharingPolicy(v SharingPolicyInfo) {
+	o.SharingPolicy = &v
+}
+
 func (o AccountGeneralSettings) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DataProtectionSection != nil {
@@ -145,6 +211,12 @@ func (o AccountGeneralSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.PasswordPolicy != nil {
 		toSerialize["password_policy"] = o.PasswordPolicy
+	}
+	if o.ProtectItemsByDefault != nil {
+		toSerialize["protect_items_by_default"] = o.ProtectItemsByDefault
+	}
+	if o.SharingPolicy != nil {
+		toSerialize["sharing_policy"] = o.SharingPolicy
 	}
 	return json.Marshal(toSerialize)
 }
