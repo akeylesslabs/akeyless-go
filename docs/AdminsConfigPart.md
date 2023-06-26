@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AllowedAccess** | Pointer to [**map[string]AllowedAccess**](AllowedAccess.md) |  | [optional] 
+**AdminsMigrationStatus** | Pointer to **int64** |  | [optional] 
+**AllowedAccess** | Pointer to [**map[string]AllowedAccessOld**](AllowedAccessOld.md) |  | [optional] 
 
 ## Methods
 
@@ -25,22 +26,47 @@ NewAdminsConfigPartWithDefaults instantiates a new AdminsConfigPart object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetAdminsMigrationStatus
+
+`func (o *AdminsConfigPart) GetAdminsMigrationStatus() int64`
+
+GetAdminsMigrationStatus returns the AdminsMigrationStatus field if non-nil, zero value otherwise.
+
+### GetAdminsMigrationStatusOk
+
+`func (o *AdminsConfigPart) GetAdminsMigrationStatusOk() (*int64, bool)`
+
+GetAdminsMigrationStatusOk returns a tuple with the AdminsMigrationStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdminsMigrationStatus
+
+`func (o *AdminsConfigPart) SetAdminsMigrationStatus(v int64)`
+
+SetAdminsMigrationStatus sets AdminsMigrationStatus field to given value.
+
+### HasAdminsMigrationStatus
+
+`func (o *AdminsConfigPart) HasAdminsMigrationStatus() bool`
+
+HasAdminsMigrationStatus returns a boolean if a field has been set.
+
 ### GetAllowedAccess
 
-`func (o *AdminsConfigPart) GetAllowedAccess() map[string]AllowedAccess`
+`func (o *AdminsConfigPart) GetAllowedAccess() map[string]AllowedAccessOld`
 
 GetAllowedAccess returns the AllowedAccess field if non-nil, zero value otherwise.
 
 ### GetAllowedAccessOk
 
-`func (o *AdminsConfigPart) GetAllowedAccessOk() (*map[string]AllowedAccess, bool)`
+`func (o *AdminsConfigPart) GetAllowedAccessOk() (*map[string]AllowedAccessOld, bool)`
 
 GetAllowedAccessOk returns a tuple with the AllowedAccess field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAllowedAccess
 
-`func (o *AdminsConfigPart) SetAllowedAccess(v map[string]AllowedAccess)`
+`func (o *AdminsConfigPart) SetAllowedAccess(v map[string]AllowedAccessOld)`
 
 SetAllowedAccess sets AllowedAccess field to given value.
 

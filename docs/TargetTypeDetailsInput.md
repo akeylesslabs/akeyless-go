@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AdministrativePort** | Pointer to **string** |  | [optional] 
+**ApiKey** | Pointer to **string** |  | [optional] 
 **AppPrivateKey** | Pointer to **[]int32** | params needed for jwt auth AppPrivateKey is the rsa private key in PEM format | [optional] 
 **ArtifactoryAdminApikey** | Pointer to **string** |  | [optional] 
 **ArtifactoryAdminUsername** | Pointer to **string** |  | [optional] 
@@ -23,6 +24,7 @@ Name | Type | Description | Notes
 **AzureTenantId** | Pointer to **string** |  | [optional] 
 **CaCertData** | Pointer to **[]int32** | CACertData is the rsa 4096 certificate data in PEM format | [optional] 
 **CaCertName** | Pointer to **string** | CACertName is the name of the certificate in SalesForce tenant | [optional] 
+**Certificate** | Pointer to **string** |  | [optional] 
 **ChefServerHostName** | Pointer to **string** |  | [optional] 
 **ChefServerKey** | Pointer to **string** |  | [optional] 
 **ChefServerPort** | Pointer to **string** |  | [optional] 
@@ -40,14 +42,18 @@ Name | Type | Description | Notes
 **DbServerCertificates** | Pointer to **string** | (Optional) DBServerCertificates defines the set of root certificate authorities that clients use when verifying server certificates. If DBServerCertificates is empty, TLS uses the host&#39;s root CA set. | [optional] 
 **DbServerName** | Pointer to **string** | (Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client&#39;s handshake to support virtual hosting unless it is an IP address. | [optional] 
 **DbUserName** | Pointer to **string** |  | [optional] 
+**DomainName** | Pointer to **string** |  | [optional] 
 **EksAccessKeyId** | Pointer to **string** |  | [optional] 
 **EksClusterCaCertificate** | Pointer to **string** |  | [optional] 
 **EksClusterEndpoint** | Pointer to **string** |  | [optional] 
 **EksClusterName** | Pointer to **string** |  | [optional] 
 **EksRegion** | Pointer to **string** |  | [optional] 
 **EksSecretAccessKey** | Pointer to **string** |  | [optional] 
+**Email** | Pointer to **string** |  | [optional] 
+**FirstName** | Pointer to **string** | Contact Info - GlobalSign requires this to be sent with every certificate creation request | [optional] 
 **GcpServiceAccountEmail** | Pointer to **string** | deprecated | [optional] 
 **GcpServiceAccountKey** | Pointer to **string** |  | [optional] 
+**GcpServiceAccountKeyBase64** | Pointer to **string** |  | [optional] 
 **GithubAppId** | Pointer to **int64** |  | [optional] 
 **GithubAppPrivateKey** | Pointer to **string** |  | [optional] 
 **GithubBaseUrl** | Pointer to **string** |  | [optional] 
@@ -57,10 +63,17 @@ Name | Type | Description | Notes
 **GkeServiceAccountKey** | Pointer to **string** |  | [optional] 
 **GkeServiceAccountName** | Pointer to **string** |  | [optional] 
 **Host** | Pointer to **string** |  | [optional] 
+**Hostname** | Pointer to **string** |  | [optional] 
+**Hosts** | Pointer to **map[string]string** | key hostname, value description | [optional] 
+**ImapFqdn** | Pointer to **string** |  | [optional] 
+**ImapPassword** | Pointer to **string** |  | [optional] 
+**ImapPort** | Pointer to **string** |  | [optional] 
+**ImapUser** | Pointer to **string** |  | [optional] 
 **ImplementationType** | Pointer to **string** |  | [optional] 
 **K8sBearerToken** | Pointer to **string** |  | [optional] 
 **K8sClusterCaCertificate** | Pointer to **string** |  | [optional] 
 **K8sClusterEndpoint** | Pointer to **string** |  | [optional] 
+**LastName** | Pointer to **string** |  | [optional] 
 **LdapAudience** | Pointer to **string** |  | [optional] 
 **LdapBindDn** | Pointer to **string** |  | [optional] 
 **LdapBindPassword** | Pointer to **string** |  | [optional] 
@@ -80,11 +93,13 @@ Name | Type | Description | Notes
 **MongodbUsername** | Pointer to **string** |  | [optional] 
 **Password** | Pointer to **string** |  | [optional] 
 **Payload** | Pointer to **string** |  | [optional] 
+**Phone** | Pointer to **string** |  | [optional] 
 **PingUrl** | Pointer to **string** |  | [optional] 
 **Port** | Pointer to **string** |  | [optional] 
 **PrivateKey** | Pointer to **string** |  | [optional] 
 **PrivateKeyPassword** | Pointer to **string** |  | [optional] 
 **PrivilegedUser** | Pointer to **string** |  | [optional] 
+**ProfileId** | Pointer to **string** |  | [optional] 
 **RabbitmqServerPassword** | Pointer to **string** |  | [optional] 
 **RabbitmqServerUri** | Pointer to **string** |  | [optional] 
 **RabbitmqServerUser** | Pointer to **string** |  | [optional] 
@@ -93,15 +108,22 @@ Name | Type | Description | Notes
 **SslConnectionCertificate** | Pointer to **string** | (Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field | [optional] 
 **SslConnectionMode** | Pointer to **bool** | (Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB | [optional] 
 **TenantUrl** | Pointer to **string** |  | [optional] 
+**Timeout** | Pointer to **int64** | A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years. | [optional] 
 **Url** | Pointer to **string** |  | [optional] 
 **UseGwCloudIdentity** | Pointer to **bool** |  | [optional] 
+**UseGwServiceAccount** | Pointer to **bool** |  | [optional] 
+**UseTls** | Pointer to **bool** |  | [optional] 
 **UserName** | Pointer to **string** |  | [optional] 
 **UserPassword** | Pointer to **string** |  | [optional] 
 **Username** | Pointer to **string** |  | [optional] 
+**ValidationEmail** | Pointer to **string** |  | [optional] 
 **VenafiApiKey** | Pointer to **string** |  | [optional] 
 **VenafiBaseUrl** | Pointer to **string** |  | [optional] 
-**VenafiTppPassword** | Pointer to **string** |  | [optional] 
-**VenafiTppUsername** | Pointer to **string** |  | [optional] 
+**VenafiTppAccessToken** | Pointer to **string** |  | [optional] 
+**VenafiTppClientId** | Pointer to **string** |  | [optional] 
+**VenafiTppPassword** | Pointer to **string** | Deprecated: VenafiAccessToken and VenafiRefreshToken should be used instead | [optional] 
+**VenafiTppRefreshToken** | Pointer to **string** |  | [optional] 
+**VenafiTppUsername** | Pointer to **string** | Deprecated: VenafiAccessToken and VenafiRefreshToken should be used instead | [optional] 
 **VenafiUseTpp** | Pointer to **bool** |  | [optional] 
 **VenafiZone** | Pointer to **string** |  | [optional] 
 
@@ -148,6 +170,31 @@ SetAdministrativePort sets AdministrativePort field to given value.
 `func (o *TargetTypeDetailsInput) HasAdministrativePort() bool`
 
 HasAdministrativePort returns a boolean if a field has been set.
+
+### GetApiKey
+
+`func (o *TargetTypeDetailsInput) GetApiKey() string`
+
+GetApiKey returns the ApiKey field if non-nil, zero value otherwise.
+
+### GetApiKeyOk
+
+`func (o *TargetTypeDetailsInput) GetApiKeyOk() (*string, bool)`
+
+GetApiKeyOk returns a tuple with the ApiKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApiKey
+
+`func (o *TargetTypeDetailsInput) SetApiKey(v string)`
+
+SetApiKey sets ApiKey field to given value.
+
+### HasApiKey
+
+`func (o *TargetTypeDetailsInput) HasApiKey() bool`
+
+HasApiKey returns a boolean if a field has been set.
 
 ### GetAppPrivateKey
 
@@ -599,6 +646,31 @@ SetCaCertName sets CaCertName field to given value.
 
 HasCaCertName returns a boolean if a field has been set.
 
+### GetCertificate
+
+`func (o *TargetTypeDetailsInput) GetCertificate() string`
+
+GetCertificate returns the Certificate field if non-nil, zero value otherwise.
+
+### GetCertificateOk
+
+`func (o *TargetTypeDetailsInput) GetCertificateOk() (*string, bool)`
+
+GetCertificateOk returns a tuple with the Certificate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificate
+
+`func (o *TargetTypeDetailsInput) SetCertificate(v string)`
+
+SetCertificate sets Certificate field to given value.
+
+### HasCertificate
+
+`func (o *TargetTypeDetailsInput) HasCertificate() bool`
+
+HasCertificate returns a boolean if a field has been set.
+
 ### GetChefServerHostName
 
 `func (o *TargetTypeDetailsInput) GetChefServerHostName() string`
@@ -1024,6 +1096,31 @@ SetDbUserName sets DbUserName field to given value.
 
 HasDbUserName returns a boolean if a field has been set.
 
+### GetDomainName
+
+`func (o *TargetTypeDetailsInput) GetDomainName() string`
+
+GetDomainName returns the DomainName field if non-nil, zero value otherwise.
+
+### GetDomainNameOk
+
+`func (o *TargetTypeDetailsInput) GetDomainNameOk() (*string, bool)`
+
+GetDomainNameOk returns a tuple with the DomainName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDomainName
+
+`func (o *TargetTypeDetailsInput) SetDomainName(v string)`
+
+SetDomainName sets DomainName field to given value.
+
+### HasDomainName
+
+`func (o *TargetTypeDetailsInput) HasDomainName() bool`
+
+HasDomainName returns a boolean if a field has been set.
+
 ### GetEksAccessKeyId
 
 `func (o *TargetTypeDetailsInput) GetEksAccessKeyId() string`
@@ -1174,6 +1271,56 @@ SetEksSecretAccessKey sets EksSecretAccessKey field to given value.
 
 HasEksSecretAccessKey returns a boolean if a field has been set.
 
+### GetEmail
+
+`func (o *TargetTypeDetailsInput) GetEmail() string`
+
+GetEmail returns the Email field if non-nil, zero value otherwise.
+
+### GetEmailOk
+
+`func (o *TargetTypeDetailsInput) GetEmailOk() (*string, bool)`
+
+GetEmailOk returns a tuple with the Email field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEmail
+
+`func (o *TargetTypeDetailsInput) SetEmail(v string)`
+
+SetEmail sets Email field to given value.
+
+### HasEmail
+
+`func (o *TargetTypeDetailsInput) HasEmail() bool`
+
+HasEmail returns a boolean if a field has been set.
+
+### GetFirstName
+
+`func (o *TargetTypeDetailsInput) GetFirstName() string`
+
+GetFirstName returns the FirstName field if non-nil, zero value otherwise.
+
+### GetFirstNameOk
+
+`func (o *TargetTypeDetailsInput) GetFirstNameOk() (*string, bool)`
+
+GetFirstNameOk returns a tuple with the FirstName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFirstName
+
+`func (o *TargetTypeDetailsInput) SetFirstName(v string)`
+
+SetFirstName sets FirstName field to given value.
+
+### HasFirstName
+
+`func (o *TargetTypeDetailsInput) HasFirstName() bool`
+
+HasFirstName returns a boolean if a field has been set.
+
 ### GetGcpServiceAccountEmail
 
 `func (o *TargetTypeDetailsInput) GetGcpServiceAccountEmail() string`
@@ -1223,6 +1370,31 @@ SetGcpServiceAccountKey sets GcpServiceAccountKey field to given value.
 `func (o *TargetTypeDetailsInput) HasGcpServiceAccountKey() bool`
 
 HasGcpServiceAccountKey returns a boolean if a field has been set.
+
+### GetGcpServiceAccountKeyBase64
+
+`func (o *TargetTypeDetailsInput) GetGcpServiceAccountKeyBase64() string`
+
+GetGcpServiceAccountKeyBase64 returns the GcpServiceAccountKeyBase64 field if non-nil, zero value otherwise.
+
+### GetGcpServiceAccountKeyBase64Ok
+
+`func (o *TargetTypeDetailsInput) GetGcpServiceAccountKeyBase64Ok() (*string, bool)`
+
+GetGcpServiceAccountKeyBase64Ok returns a tuple with the GcpServiceAccountKeyBase64 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpServiceAccountKeyBase64
+
+`func (o *TargetTypeDetailsInput) SetGcpServiceAccountKeyBase64(v string)`
+
+SetGcpServiceAccountKeyBase64 sets GcpServiceAccountKeyBase64 field to given value.
+
+### HasGcpServiceAccountKeyBase64
+
+`func (o *TargetTypeDetailsInput) HasGcpServiceAccountKeyBase64() bool`
+
+HasGcpServiceAccountKeyBase64 returns a boolean if a field has been set.
 
 ### GetGithubAppId
 
@@ -1449,6 +1621,156 @@ SetHost sets Host field to given value.
 
 HasHost returns a boolean if a field has been set.
 
+### GetHostname
+
+`func (o *TargetTypeDetailsInput) GetHostname() string`
+
+GetHostname returns the Hostname field if non-nil, zero value otherwise.
+
+### GetHostnameOk
+
+`func (o *TargetTypeDetailsInput) GetHostnameOk() (*string, bool)`
+
+GetHostnameOk returns a tuple with the Hostname field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHostname
+
+`func (o *TargetTypeDetailsInput) SetHostname(v string)`
+
+SetHostname sets Hostname field to given value.
+
+### HasHostname
+
+`func (o *TargetTypeDetailsInput) HasHostname() bool`
+
+HasHostname returns a boolean if a field has been set.
+
+### GetHosts
+
+`func (o *TargetTypeDetailsInput) GetHosts() map[string]string`
+
+GetHosts returns the Hosts field if non-nil, zero value otherwise.
+
+### GetHostsOk
+
+`func (o *TargetTypeDetailsInput) GetHostsOk() (*map[string]string, bool)`
+
+GetHostsOk returns a tuple with the Hosts field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHosts
+
+`func (o *TargetTypeDetailsInput) SetHosts(v map[string]string)`
+
+SetHosts sets Hosts field to given value.
+
+### HasHosts
+
+`func (o *TargetTypeDetailsInput) HasHosts() bool`
+
+HasHosts returns a boolean if a field has been set.
+
+### GetImapFqdn
+
+`func (o *TargetTypeDetailsInput) GetImapFqdn() string`
+
+GetImapFqdn returns the ImapFqdn field if non-nil, zero value otherwise.
+
+### GetImapFqdnOk
+
+`func (o *TargetTypeDetailsInput) GetImapFqdnOk() (*string, bool)`
+
+GetImapFqdnOk returns a tuple with the ImapFqdn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetImapFqdn
+
+`func (o *TargetTypeDetailsInput) SetImapFqdn(v string)`
+
+SetImapFqdn sets ImapFqdn field to given value.
+
+### HasImapFqdn
+
+`func (o *TargetTypeDetailsInput) HasImapFqdn() bool`
+
+HasImapFqdn returns a boolean if a field has been set.
+
+### GetImapPassword
+
+`func (o *TargetTypeDetailsInput) GetImapPassword() string`
+
+GetImapPassword returns the ImapPassword field if non-nil, zero value otherwise.
+
+### GetImapPasswordOk
+
+`func (o *TargetTypeDetailsInput) GetImapPasswordOk() (*string, bool)`
+
+GetImapPasswordOk returns a tuple with the ImapPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetImapPassword
+
+`func (o *TargetTypeDetailsInput) SetImapPassword(v string)`
+
+SetImapPassword sets ImapPassword field to given value.
+
+### HasImapPassword
+
+`func (o *TargetTypeDetailsInput) HasImapPassword() bool`
+
+HasImapPassword returns a boolean if a field has been set.
+
+### GetImapPort
+
+`func (o *TargetTypeDetailsInput) GetImapPort() string`
+
+GetImapPort returns the ImapPort field if non-nil, zero value otherwise.
+
+### GetImapPortOk
+
+`func (o *TargetTypeDetailsInput) GetImapPortOk() (*string, bool)`
+
+GetImapPortOk returns a tuple with the ImapPort field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetImapPort
+
+`func (o *TargetTypeDetailsInput) SetImapPort(v string)`
+
+SetImapPort sets ImapPort field to given value.
+
+### HasImapPort
+
+`func (o *TargetTypeDetailsInput) HasImapPort() bool`
+
+HasImapPort returns a boolean if a field has been set.
+
+### GetImapUser
+
+`func (o *TargetTypeDetailsInput) GetImapUser() string`
+
+GetImapUser returns the ImapUser field if non-nil, zero value otherwise.
+
+### GetImapUserOk
+
+`func (o *TargetTypeDetailsInput) GetImapUserOk() (*string, bool)`
+
+GetImapUserOk returns a tuple with the ImapUser field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetImapUser
+
+`func (o *TargetTypeDetailsInput) SetImapUser(v string)`
+
+SetImapUser sets ImapUser field to given value.
+
+### HasImapUser
+
+`func (o *TargetTypeDetailsInput) HasImapUser() bool`
+
+HasImapUser returns a boolean if a field has been set.
+
 ### GetImplementationType
 
 `func (o *TargetTypeDetailsInput) GetImplementationType() string`
@@ -1548,6 +1870,31 @@ SetK8sClusterEndpoint sets K8sClusterEndpoint field to given value.
 `func (o *TargetTypeDetailsInput) HasK8sClusterEndpoint() bool`
 
 HasK8sClusterEndpoint returns a boolean if a field has been set.
+
+### GetLastName
+
+`func (o *TargetTypeDetailsInput) GetLastName() string`
+
+GetLastName returns the LastName field if non-nil, zero value otherwise.
+
+### GetLastNameOk
+
+`func (o *TargetTypeDetailsInput) GetLastNameOk() (*string, bool)`
+
+GetLastNameOk returns a tuple with the LastName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastName
+
+`func (o *TargetTypeDetailsInput) SetLastName(v string)`
+
+SetLastName sets LastName field to given value.
+
+### HasLastName
+
+`func (o *TargetTypeDetailsInput) HasLastName() bool`
+
+HasLastName returns a boolean if a field has been set.
 
 ### GetLdapAudience
 
@@ -2024,6 +2371,31 @@ SetPayload sets Payload field to given value.
 
 HasPayload returns a boolean if a field has been set.
 
+### GetPhone
+
+`func (o *TargetTypeDetailsInput) GetPhone() string`
+
+GetPhone returns the Phone field if non-nil, zero value otherwise.
+
+### GetPhoneOk
+
+`func (o *TargetTypeDetailsInput) GetPhoneOk() (*string, bool)`
+
+GetPhoneOk returns a tuple with the Phone field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPhone
+
+`func (o *TargetTypeDetailsInput) SetPhone(v string)`
+
+SetPhone sets Phone field to given value.
+
+### HasPhone
+
+`func (o *TargetTypeDetailsInput) HasPhone() bool`
+
+HasPhone returns a boolean if a field has been set.
+
 ### GetPingUrl
 
 `func (o *TargetTypeDetailsInput) GetPingUrl() string`
@@ -2148,6 +2520,31 @@ SetPrivilegedUser sets PrivilegedUser field to given value.
 `func (o *TargetTypeDetailsInput) HasPrivilegedUser() bool`
 
 HasPrivilegedUser returns a boolean if a field has been set.
+
+### GetProfileId
+
+`func (o *TargetTypeDetailsInput) GetProfileId() string`
+
+GetProfileId returns the ProfileId field if non-nil, zero value otherwise.
+
+### GetProfileIdOk
+
+`func (o *TargetTypeDetailsInput) GetProfileIdOk() (*string, bool)`
+
+GetProfileIdOk returns a tuple with the ProfileId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProfileId
+
+`func (o *TargetTypeDetailsInput) SetProfileId(v string)`
+
+SetProfileId sets ProfileId field to given value.
+
+### HasProfileId
+
+`func (o *TargetTypeDetailsInput) HasProfileId() bool`
+
+HasProfileId returns a boolean if a field has been set.
 
 ### GetRabbitmqServerPassword
 
@@ -2349,6 +2746,31 @@ SetTenantUrl sets TenantUrl field to given value.
 
 HasTenantUrl returns a boolean if a field has been set.
 
+### GetTimeout
+
+`func (o *TargetTypeDetailsInput) GetTimeout() int64`
+
+GetTimeout returns the Timeout field if non-nil, zero value otherwise.
+
+### GetTimeoutOk
+
+`func (o *TargetTypeDetailsInput) GetTimeoutOk() (*int64, bool)`
+
+GetTimeoutOk returns a tuple with the Timeout field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTimeout
+
+`func (o *TargetTypeDetailsInput) SetTimeout(v int64)`
+
+SetTimeout sets Timeout field to given value.
+
+### HasTimeout
+
+`func (o *TargetTypeDetailsInput) HasTimeout() bool`
+
+HasTimeout returns a boolean if a field has been set.
+
 ### GetUrl
 
 `func (o *TargetTypeDetailsInput) GetUrl() string`
@@ -2398,6 +2820,56 @@ SetUseGwCloudIdentity sets UseGwCloudIdentity field to given value.
 `func (o *TargetTypeDetailsInput) HasUseGwCloudIdentity() bool`
 
 HasUseGwCloudIdentity returns a boolean if a field has been set.
+
+### GetUseGwServiceAccount
+
+`func (o *TargetTypeDetailsInput) GetUseGwServiceAccount() bool`
+
+GetUseGwServiceAccount returns the UseGwServiceAccount field if non-nil, zero value otherwise.
+
+### GetUseGwServiceAccountOk
+
+`func (o *TargetTypeDetailsInput) GetUseGwServiceAccountOk() (*bool, bool)`
+
+GetUseGwServiceAccountOk returns a tuple with the UseGwServiceAccount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseGwServiceAccount
+
+`func (o *TargetTypeDetailsInput) SetUseGwServiceAccount(v bool)`
+
+SetUseGwServiceAccount sets UseGwServiceAccount field to given value.
+
+### HasUseGwServiceAccount
+
+`func (o *TargetTypeDetailsInput) HasUseGwServiceAccount() bool`
+
+HasUseGwServiceAccount returns a boolean if a field has been set.
+
+### GetUseTls
+
+`func (o *TargetTypeDetailsInput) GetUseTls() bool`
+
+GetUseTls returns the UseTls field if non-nil, zero value otherwise.
+
+### GetUseTlsOk
+
+`func (o *TargetTypeDetailsInput) GetUseTlsOk() (*bool, bool)`
+
+GetUseTlsOk returns a tuple with the UseTls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseTls
+
+`func (o *TargetTypeDetailsInput) SetUseTls(v bool)`
+
+SetUseTls sets UseTls field to given value.
+
+### HasUseTls
+
+`func (o *TargetTypeDetailsInput) HasUseTls() bool`
+
+HasUseTls returns a boolean if a field has been set.
 
 ### GetUserName
 
@@ -2474,6 +2946,31 @@ SetUsername sets Username field to given value.
 
 HasUsername returns a boolean if a field has been set.
 
+### GetValidationEmail
+
+`func (o *TargetTypeDetailsInput) GetValidationEmail() string`
+
+GetValidationEmail returns the ValidationEmail field if non-nil, zero value otherwise.
+
+### GetValidationEmailOk
+
+`func (o *TargetTypeDetailsInput) GetValidationEmailOk() (*string, bool)`
+
+GetValidationEmailOk returns a tuple with the ValidationEmail field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetValidationEmail
+
+`func (o *TargetTypeDetailsInput) SetValidationEmail(v string)`
+
+SetValidationEmail sets ValidationEmail field to given value.
+
+### HasValidationEmail
+
+`func (o *TargetTypeDetailsInput) HasValidationEmail() bool`
+
+HasValidationEmail returns a boolean if a field has been set.
+
 ### GetVenafiApiKey
 
 `func (o *TargetTypeDetailsInput) GetVenafiApiKey() string`
@@ -2524,6 +3021,56 @@ SetVenafiBaseUrl sets VenafiBaseUrl field to given value.
 
 HasVenafiBaseUrl returns a boolean if a field has been set.
 
+### GetVenafiTppAccessToken
+
+`func (o *TargetTypeDetailsInput) GetVenafiTppAccessToken() string`
+
+GetVenafiTppAccessToken returns the VenafiTppAccessToken field if non-nil, zero value otherwise.
+
+### GetVenafiTppAccessTokenOk
+
+`func (o *TargetTypeDetailsInput) GetVenafiTppAccessTokenOk() (*string, bool)`
+
+GetVenafiTppAccessTokenOk returns a tuple with the VenafiTppAccessToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVenafiTppAccessToken
+
+`func (o *TargetTypeDetailsInput) SetVenafiTppAccessToken(v string)`
+
+SetVenafiTppAccessToken sets VenafiTppAccessToken field to given value.
+
+### HasVenafiTppAccessToken
+
+`func (o *TargetTypeDetailsInput) HasVenafiTppAccessToken() bool`
+
+HasVenafiTppAccessToken returns a boolean if a field has been set.
+
+### GetVenafiTppClientId
+
+`func (o *TargetTypeDetailsInput) GetVenafiTppClientId() string`
+
+GetVenafiTppClientId returns the VenafiTppClientId field if non-nil, zero value otherwise.
+
+### GetVenafiTppClientIdOk
+
+`func (o *TargetTypeDetailsInput) GetVenafiTppClientIdOk() (*string, bool)`
+
+GetVenafiTppClientIdOk returns a tuple with the VenafiTppClientId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVenafiTppClientId
+
+`func (o *TargetTypeDetailsInput) SetVenafiTppClientId(v string)`
+
+SetVenafiTppClientId sets VenafiTppClientId field to given value.
+
+### HasVenafiTppClientId
+
+`func (o *TargetTypeDetailsInput) HasVenafiTppClientId() bool`
+
+HasVenafiTppClientId returns a boolean if a field has been set.
+
 ### GetVenafiTppPassword
 
 `func (o *TargetTypeDetailsInput) GetVenafiTppPassword() string`
@@ -2548,6 +3095,31 @@ SetVenafiTppPassword sets VenafiTppPassword field to given value.
 `func (o *TargetTypeDetailsInput) HasVenafiTppPassword() bool`
 
 HasVenafiTppPassword returns a boolean if a field has been set.
+
+### GetVenafiTppRefreshToken
+
+`func (o *TargetTypeDetailsInput) GetVenafiTppRefreshToken() string`
+
+GetVenafiTppRefreshToken returns the VenafiTppRefreshToken field if non-nil, zero value otherwise.
+
+### GetVenafiTppRefreshTokenOk
+
+`func (o *TargetTypeDetailsInput) GetVenafiTppRefreshTokenOk() (*string, bool)`
+
+GetVenafiTppRefreshTokenOk returns a tuple with the VenafiTppRefreshToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVenafiTppRefreshToken
+
+`func (o *TargetTypeDetailsInput) SetVenafiTppRefreshToken(v string)`
+
+SetVenafiTppRefreshToken sets VenafiTppRefreshToken field to given value.
+
+### HasVenafiTppRefreshToken
+
+`func (o *TargetTypeDetailsInput) HasVenafiTppRefreshToken() bool`
+
+HasVenafiTppRefreshToken returns a boolean if a field has been set.
 
 ### GetVenafiTppUsername
 

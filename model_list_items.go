@@ -24,10 +24,14 @@ type ListItems struct {
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	MinimalView *bool `json:"minimal-view,omitempty"`
+	// Retrieve items with pagination
+	Pagination *string `json:"pagination,omitempty"`
 	// Next page reference
 	PaginationToken *string `json:"pagination-token,omitempty"`
 	// Path to folder
 	Path *string `json:"path,omitempty"`
+	// Filter by items with SRA functionality enabled
+	SraOnly *bool `json:"sra-only,omitempty"`
 	SubTypes *[]string `json:"sub_types,omitempty"`
 	// Filter by item tag
 	Tag *string `json:"tag,omitempty"`
@@ -47,6 +51,12 @@ func NewListItems() *ListItems {
 	this := ListItems{}
 	var accessibility string = "regular"
 	this.Accessibility = &accessibility
+	var json bool = false
+	this.Json = &json
+	var pagination string = "enabled"
+	this.Pagination = &pagination
+	var sraOnly bool = false
+	this.SraOnly = &sraOnly
 	return &this
 }
 
@@ -57,6 +67,12 @@ func NewListItemsWithDefaults() *ListItems {
 	this := ListItems{}
 	var accessibility string = "regular"
 	this.Accessibility = &accessibility
+	var json bool = false
+	this.Json = &json
+	var pagination string = "enabled"
+	this.Pagination = &pagination
+	var sraOnly bool = false
+	this.SraOnly = &sraOnly
 	return &this
 }
 
@@ -188,6 +204,38 @@ func (o *ListItems) SetMinimalView(v bool) {
 	o.MinimalView = &v
 }
 
+// GetPagination returns the Pagination field value if set, zero value otherwise.
+func (o *ListItems) GetPagination() string {
+	if o == nil || o.Pagination == nil {
+		var ret string
+		return ret
+	}
+	return *o.Pagination
+}
+
+// GetPaginationOk returns a tuple with the Pagination field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListItems) GetPaginationOk() (*string, bool) {
+	if o == nil || o.Pagination == nil {
+		return nil, false
+	}
+	return o.Pagination, true
+}
+
+// HasPagination returns a boolean if a field has been set.
+func (o *ListItems) HasPagination() bool {
+	if o != nil && o.Pagination != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPagination gets a reference to the given string and assigns it to the Pagination field.
+func (o *ListItems) SetPagination(v string) {
+	o.Pagination = &v
+}
+
 // GetPaginationToken returns the PaginationToken field value if set, zero value otherwise.
 func (o *ListItems) GetPaginationToken() string {
 	if o == nil || o.PaginationToken == nil {
@@ -250,6 +298,38 @@ func (o *ListItems) HasPath() bool {
 // SetPath gets a reference to the given string and assigns it to the Path field.
 func (o *ListItems) SetPath(v string) {
 	o.Path = &v
+}
+
+// GetSraOnly returns the SraOnly field value if set, zero value otherwise.
+func (o *ListItems) GetSraOnly() bool {
+	if o == nil || o.SraOnly == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SraOnly
+}
+
+// GetSraOnlyOk returns a tuple with the SraOnly field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListItems) GetSraOnlyOk() (*bool, bool) {
+	if o == nil || o.SraOnly == nil {
+		return nil, false
+	}
+	return o.SraOnly, true
+}
+
+// HasSraOnly returns a boolean if a field has been set.
+func (o *ListItems) HasSraOnly() bool {
+	if o != nil && o.SraOnly != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSraOnly gets a reference to the given bool and assigns it to the SraOnly field.
+func (o *ListItems) SetSraOnly(v bool) {
+	o.SraOnly = &v
 }
 
 // GetSubTypes returns the SubTypes field value if set, zero value otherwise.
@@ -426,11 +506,17 @@ func (o ListItems) MarshalJSON() ([]byte, error) {
 	if o.MinimalView != nil {
 		toSerialize["minimal-view"] = o.MinimalView
 	}
+	if o.Pagination != nil {
+		toSerialize["pagination"] = o.Pagination
+	}
 	if o.PaginationToken != nil {
 		toSerialize["pagination-token"] = o.PaginationToken
 	}
 	if o.Path != nil {
 		toSerialize["path"] = o.Path
+	}
+	if o.SraOnly != nil {
+		toSerialize["sra-only"] = o.SraOnly
 	}
 	if o.SubTypes != nil {
 		toSerialize["sub_types"] = o.SubTypes

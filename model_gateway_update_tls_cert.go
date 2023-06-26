@@ -35,6 +35,8 @@ type GatewayUpdateTlsCert struct {
 // will change when the set of required properties is changed
 func NewGatewayUpdateTlsCert() *GatewayUpdateTlsCert {
 	this := GatewayUpdateTlsCert{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -43,6 +45,8 @@ func NewGatewayUpdateTlsCert() *GatewayUpdateTlsCert {
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayUpdateTlsCertWithDefaults() *GatewayUpdateTlsCert {
 	this := GatewayUpdateTlsCert{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

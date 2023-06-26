@@ -28,6 +28,7 @@ type LogForwardingConfigPart struct {
 	LogzIoConfig *LogzIoLogForwardingConfig `json:"logz_io_config,omitempty"`
 	PullIntervalSec *string `json:"pull_interval_sec,omitempty"`
 	SplunkConfig *SplunkLogForwardingConfig `json:"splunk_config,omitempty"`
+	SumoLogicConfig *SumologicLogForwardingConfig `json:"sumo_logic_config,omitempty"`
 	SyslogConfig *SyslogLogForwardingConfig `json:"syslog_config,omitempty"`
 	TargetLogType *string `json:"target_log_type,omitempty"`
 }
@@ -401,6 +402,38 @@ func (o *LogForwardingConfigPart) SetSplunkConfig(v SplunkLogForwardingConfig) {
 	o.SplunkConfig = &v
 }
 
+// GetSumoLogicConfig returns the SumoLogicConfig field value if set, zero value otherwise.
+func (o *LogForwardingConfigPart) GetSumoLogicConfig() SumologicLogForwardingConfig {
+	if o == nil || o.SumoLogicConfig == nil {
+		var ret SumologicLogForwardingConfig
+		return ret
+	}
+	return *o.SumoLogicConfig
+}
+
+// GetSumoLogicConfigOk returns a tuple with the SumoLogicConfig field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LogForwardingConfigPart) GetSumoLogicConfigOk() (*SumologicLogForwardingConfig, bool) {
+	if o == nil || o.SumoLogicConfig == nil {
+		return nil, false
+	}
+	return o.SumoLogicConfig, true
+}
+
+// HasSumoLogicConfig returns a boolean if a field has been set.
+func (o *LogForwardingConfigPart) HasSumoLogicConfig() bool {
+	if o != nil && o.SumoLogicConfig != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSumoLogicConfig gets a reference to the given SumologicLogForwardingConfig and assigns it to the SumoLogicConfig field.
+func (o *LogForwardingConfigPart) SetSumoLogicConfig(v SumologicLogForwardingConfig) {
+	o.SumoLogicConfig = &v
+}
+
 // GetSyslogConfig returns the SyslogConfig field value if set, zero value otherwise.
 func (o *LogForwardingConfigPart) GetSyslogConfig() SyslogLogForwardingConfig {
 	if o == nil || o.SyslogConfig == nil {
@@ -499,6 +532,9 @@ func (o LogForwardingConfigPart) MarshalJSON() ([]byte, error) {
 	}
 	if o.SplunkConfig != nil {
 		toSerialize["splunk_config"] = o.SplunkConfig
+	}
+	if o.SumoLogicConfig != nil {
+		toSerialize["sumo_logic_config"] = o.SumoLogicConfig
 	}
 	if o.SyslogConfig != nil {
 		toSerialize["syslog_config"] = o.SyslogConfig

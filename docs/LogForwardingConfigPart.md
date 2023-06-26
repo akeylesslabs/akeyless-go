@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **LogzIoConfig** | Pointer to [**LogzIoLogForwardingConfig**](LogzIoLogForwardingConfig.md) |  | [optional] 
 **PullIntervalSec** | Pointer to **string** |  | [optional] 
 **SplunkConfig** | Pointer to [**SplunkLogForwardingConfig**](SplunkLogForwardingConfig.md) |  | [optional] 
+**SumoLogicConfig** | Pointer to [**SumologicLogForwardingConfig**](SumologicLogForwardingConfig.md) |  | [optional] 
 **SyslogConfig** | Pointer to [**SyslogLogForwardingConfig**](SyslogLogForwardingConfig.md) |  | [optional] 
 **TargetLogType** | Pointer to **string** |  | [optional] 
 
@@ -311,6 +312,31 @@ SetSplunkConfig sets SplunkConfig field to given value.
 `func (o *LogForwardingConfigPart) HasSplunkConfig() bool`
 
 HasSplunkConfig returns a boolean if a field has been set.
+
+### GetSumoLogicConfig
+
+`func (o *LogForwardingConfigPart) GetSumoLogicConfig() SumologicLogForwardingConfig`
+
+GetSumoLogicConfig returns the SumoLogicConfig field if non-nil, zero value otherwise.
+
+### GetSumoLogicConfigOk
+
+`func (o *LogForwardingConfigPart) GetSumoLogicConfigOk() (*SumologicLogForwardingConfig, bool)`
+
+GetSumoLogicConfigOk returns a tuple with the SumoLogicConfig field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSumoLogicConfig
+
+`func (o *LogForwardingConfigPart) SetSumoLogicConfig(v SumologicLogForwardingConfig)`
+
+SetSumoLogicConfig sets SumoLogicConfig field to given value.
+
+### HasSumoLogicConfig
+
+`func (o *LogForwardingConfigPart) HasSumoLogicConfig() bool`
+
+HasSumoLogicConfig returns a boolean if a field has been set.
 
 ### GetSyslogConfig
 
