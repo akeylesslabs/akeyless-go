@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessExpires** | Pointer to **int64** | Access expiration date in Unix timestamp (select 0 for access without expiry date) | [optional] [default to 0]
+**AllowedCors** | Pointer to **string** | Comma separated list of allowed CORS domains to be validated as part of the authentication flow. | [optional] 
 **BoundCommonNames** | Pointer to **[]string** | A list of names. At least one must exist in the Common Name. Supports globbing. | [optional] 
 **BoundDnsSans** | Pointer to **[]string** | A list of DNS names. At least one must exist in the SANs. Supports globbing. | [optional] 
 **BoundEmailSans** | Pointer to **[]string** | A list of Email Addresses. At least one must exist in the SANs. Supports globbing. | [optional] 
@@ -15,8 +16,8 @@ Name | Type | Description | Notes
 **CertificateData** | Pointer to **string** | The certificate data in base64, if no file was provided | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
 **GwBoundIps** | Pointer to **[]string** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
-**JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] [default to 0]
 **Name** | **string** | Auth Method name | 
 **NewName** | Pointer to **string** | Auth Method new name | [optional] 
 **RevokedCertIds** | Pointer to **[]string** | A list of revoked cert ids | [optional] 
@@ -67,6 +68,31 @@ SetAccessExpires sets AccessExpires field to given value.
 `func (o *UpdateAuthMethodCert) HasAccessExpires() bool`
 
 HasAccessExpires returns a boolean if a field has been set.
+
+### GetAllowedCors
+
+`func (o *UpdateAuthMethodCert) GetAllowedCors() string`
+
+GetAllowedCors returns the AllowedCors field if non-nil, zero value otherwise.
+
+### GetAllowedCorsOk
+
+`func (o *UpdateAuthMethodCert) GetAllowedCorsOk() (*string, bool)`
+
+GetAllowedCorsOk returns a tuple with the AllowedCors field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowedCors
+
+`func (o *UpdateAuthMethodCert) SetAllowedCors(v string)`
+
+SetAllowedCors sets AllowedCors field to given value.
+
+### HasAllowedCors
+
+`func (o *UpdateAuthMethodCert) HasAllowedCors() bool`
+
+HasAllowedCors returns a boolean if a field has been set.
 
 ### GetBoundCommonNames
 

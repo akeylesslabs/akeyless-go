@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Var1passwordSecretKey** | Pointer to **string** | 1Password user secret key to connect to the API | [optional] 
 **Var1passwordUrl** | Pointer to **string** | 1Password api container url | [optional] 
 **Var1passwordVaults** | Pointer to **[]string** | 1Password list of vault to get the items from | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **ProtectionKey** | Pointer to **string** | The name of a key that used to encrypt the secret value | [optional] 
 **TargetLocation** | Pointer to **string** | Target location in your Akeyless personal folder for migrated secrets | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

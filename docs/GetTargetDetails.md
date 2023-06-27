@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Target name | 
 **ShowVersions** | Pointer to **bool** | Include all target versions in reply | [optional] [default to false]
 **TargetVersion** | Pointer to **int32** | Target version | [optional] 

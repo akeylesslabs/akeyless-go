@@ -39,6 +39,8 @@ func NewDecryptWithClassicKey(ciphertext string, displayId string, version int32
 	this := DecryptWithClassicKey{}
 	this.Ciphertext = ciphertext
 	this.DisplayId = displayId
+	var json bool = false
+	this.Json = &json
 	this.Version = version
 	return &this
 }
@@ -48,6 +50,8 @@ func NewDecryptWithClassicKey(ciphertext string, displayId string, version int32
 // but it doesn't guarantee that properties required by API are set
 func NewDecryptWithClassicKeyWithDefaults() *DecryptWithClassicKey {
 	this := DecryptWithClassicKey{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
