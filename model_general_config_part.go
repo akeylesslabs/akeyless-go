@@ -21,6 +21,7 @@ type GeneralConfigPart struct {
 	AkeylessUrl *string `json:"akeyless_url,omitempty"`
 	ApiTokenTtl *string `json:"api_token_ttl,omitempty"`
 	DisplayName *string `json:"display_name,omitempty"`
+	EnableSniProxy *bool `json:"enable_sni_proxy,omitempty"`
 	EnableTls *bool `json:"enable_tls,omitempty"`
 	EnableTlsConfigure *bool `json:"enable_tls_configure,omitempty"`
 	EnableTlsCurl *bool `json:"enable_tls_curl,omitempty"`
@@ -142,6 +143,38 @@ func (o *GeneralConfigPart) HasDisplayName() bool {
 // SetDisplayName gets a reference to the given string and assigns it to the DisplayName field.
 func (o *GeneralConfigPart) SetDisplayName(v string) {
 	o.DisplayName = &v
+}
+
+// GetEnableSniProxy returns the EnableSniProxy field value if set, zero value otherwise.
+func (o *GeneralConfigPart) GetEnableSniProxy() bool {
+	if o == nil || o.EnableSniProxy == nil {
+		var ret bool
+		return ret
+	}
+	return *o.EnableSniProxy
+}
+
+// GetEnableSniProxyOk returns a tuple with the EnableSniProxy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GeneralConfigPart) GetEnableSniProxyOk() (*bool, bool) {
+	if o == nil || o.EnableSniProxy == nil {
+		return nil, false
+	}
+	return o.EnableSniProxy, true
+}
+
+// HasEnableSniProxy returns a boolean if a field has been set.
+func (o *GeneralConfigPart) HasEnableSniProxy() bool {
+	if o != nil && o.EnableSniProxy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableSniProxy gets a reference to the given bool and assigns it to the EnableSniProxy field.
+func (o *GeneralConfigPart) SetEnableSniProxy(v bool) {
+	o.EnableSniProxy = &v
 }
 
 // GetEnableTls returns the EnableTls field value if set, zero value otherwise.
@@ -410,6 +443,9 @@ func (o GeneralConfigPart) MarshalJSON() ([]byte, error) {
 	}
 	if o.DisplayName != nil {
 		toSerialize["display_name"] = o.DisplayName
+	}
+	if o.EnableSniProxy != nil {
+		toSerialize["enable_sni_proxy"] = o.EnableSniProxy
 	}
 	if o.EnableTls != nil {
 		toSerialize["enable_tls"] = o.EnableTls

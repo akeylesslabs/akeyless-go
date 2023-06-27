@@ -11,11 +11,15 @@ Name | Type | Description | Notes
 **AllowedUriSans** | Pointer to **string** | A list of the allowed URIs that clients can request to be included in the certificate as part of the URI Subject Alternative Names (in a comma-delimited list) | [optional] 
 **ClientFlag** | Pointer to **bool** | If set, certificates will be flagged for client auth use | [optional] 
 **CodeSigningFlag** | Pointer to **bool** | If set, certificates will be flagged for code signing use | [optional] 
-**Country** | Pointer to **string** | A comma-separated list of the country that will be set in the issued certificate | [optional] 
+**Country** | Pointer to **string** | A comma-separated list of countries that will be set in the issued certificate | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**DestinationPath** | Pointer to **string** | A path in which to save generated certificates | [optional] 
+**ExpirationEventIn** | Pointer to **[]string** | How many days before the expiration of the certificate would you like to be notified. | [optional] 
+**GwClusterUrl** | Pointer to **string** | The GW cluster URL to issue the certificate from, required in Public CA mode | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeyUsage** | Pointer to **string** | key-usage | [optional] [default to "DigitalSignature,KeyAgreement,KeyEncipherment"]
-**Locality** | Pointer to **string** | A comma-separated list of the locality that will be set in the issued certificate | [optional] 
+**Locality** | Pointer to **string** | A comma-separated list of localities that will be set in the issued certificate | [optional] 
 **Metadata** | Pointer to **string** | Deprecated - use description | [optional] 
 **Name** | **string** | PKI certificate issuer name | 
 **NewName** | Pointer to **string** | New item name | [optional] 
@@ -23,14 +27,15 @@ Name | Type | Description | Notes
 **NotRequireCn** | Pointer to **bool** | If set, clients can request certificates without a CN | [optional] 
 **OrganizationalUnits** | Pointer to **string** | A comma-separated list of organizational units (OU) that will be set in the issued certificate | [optional] 
 **Organizations** | Pointer to **string** | A comma-separated list of organizations (O) that will be set in the issued certificate | [optional] 
-**PostalCode** | Pointer to **string** | A comma-separated list of the postal code that will be set in the issued certificate | [optional] 
-**Province** | Pointer to **string** | A comma-separated list of the province that will be set in the issued certificate | [optional] 
+**PostalCode** | Pointer to **string** | A comma-separated list of postal codes that will be set in the issued certificate | [optional] 
+**ProtectCertificates** | Pointer to **bool** | Whether to protect generated certificates from deletion | [optional] 
+**Province** | Pointer to **string** | A comma-separated list of provinces that will be set in the issued certificate | [optional] 
 **RmTag** | Pointer to **[]string** | List of the existent tags that will be removed from this item | [optional] 
 **ServerFlag** | Pointer to **bool** | If set, certificates will be flagged for server auth use | [optional] 
-**SignerKeyName** | **string** | A key to sign the certificate with | 
-**StreetAddress** | Pointer to **string** | A comma-separated list of the street address that will be set in the issued certificate | [optional] 
+**SignerKeyName** | **string** | A key to sign the certificate with, required in Private CA mode | [default to "dummy_signer_key"]
+**StreetAddress** | Pointer to **string** | A comma-separated list of street addresses that will be set in the issued certificate | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
-**Ttl** | **int64** | he requested Time To Live for the certificate, in seconds | 
+**Ttl** | **int64** | The maximum requested Time To Live for issued certificates, in seconds. In case of Public CA, this is based on the CA target&#39;s supported maximum TTLs | 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
 ## Methods
@@ -252,6 +257,31 @@ SetCountry sets Country field to given value.
 
 HasCountry returns a boolean if a field has been set.
 
+### GetDeleteProtection
+
+`func (o *UpdatePKICertIssuer) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *UpdatePKICertIssuer) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *UpdatePKICertIssuer) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *UpdatePKICertIssuer) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
+
 ### GetDescription
 
 `func (o *UpdatePKICertIssuer) GetDescription() string`
@@ -276,6 +306,81 @@ SetDescription sets Description field to given value.
 `func (o *UpdatePKICertIssuer) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetDestinationPath
+
+`func (o *UpdatePKICertIssuer) GetDestinationPath() string`
+
+GetDestinationPath returns the DestinationPath field if non-nil, zero value otherwise.
+
+### GetDestinationPathOk
+
+`func (o *UpdatePKICertIssuer) GetDestinationPathOk() (*string, bool)`
+
+GetDestinationPathOk returns a tuple with the DestinationPath field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDestinationPath
+
+`func (o *UpdatePKICertIssuer) SetDestinationPath(v string)`
+
+SetDestinationPath sets DestinationPath field to given value.
+
+### HasDestinationPath
+
+`func (o *UpdatePKICertIssuer) HasDestinationPath() bool`
+
+HasDestinationPath returns a boolean if a field has been set.
+
+### GetExpirationEventIn
+
+`func (o *UpdatePKICertIssuer) GetExpirationEventIn() []string`
+
+GetExpirationEventIn returns the ExpirationEventIn field if non-nil, zero value otherwise.
+
+### GetExpirationEventInOk
+
+`func (o *UpdatePKICertIssuer) GetExpirationEventInOk() (*[]string, bool)`
+
+GetExpirationEventInOk returns a tuple with the ExpirationEventIn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpirationEventIn
+
+`func (o *UpdatePKICertIssuer) SetExpirationEventIn(v []string)`
+
+SetExpirationEventIn sets ExpirationEventIn field to given value.
+
+### HasExpirationEventIn
+
+`func (o *UpdatePKICertIssuer) HasExpirationEventIn() bool`
+
+HasExpirationEventIn returns a boolean if a field has been set.
+
+### GetGwClusterUrl
+
+`func (o *UpdatePKICertIssuer) GetGwClusterUrl() string`
+
+GetGwClusterUrl returns the GwClusterUrl field if non-nil, zero value otherwise.
+
+### GetGwClusterUrlOk
+
+`func (o *UpdatePKICertIssuer) GetGwClusterUrlOk() (*string, bool)`
+
+GetGwClusterUrlOk returns a tuple with the GwClusterUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGwClusterUrl
+
+`func (o *UpdatePKICertIssuer) SetGwClusterUrl(v string)`
+
+SetGwClusterUrl sets GwClusterUrl field to given value.
+
+### HasGwClusterUrl
+
+`func (o *UpdatePKICertIssuer) HasGwClusterUrl() bool`
+
+HasGwClusterUrl returns a boolean if a field has been set.
 
 ### GetJson
 
@@ -546,6 +651,31 @@ SetPostalCode sets PostalCode field to given value.
 `func (o *UpdatePKICertIssuer) HasPostalCode() bool`
 
 HasPostalCode returns a boolean if a field has been set.
+
+### GetProtectCertificates
+
+`func (o *UpdatePKICertIssuer) GetProtectCertificates() bool`
+
+GetProtectCertificates returns the ProtectCertificates field if non-nil, zero value otherwise.
+
+### GetProtectCertificatesOk
+
+`func (o *UpdatePKICertIssuer) GetProtectCertificatesOk() (*bool, bool)`
+
+GetProtectCertificatesOk returns a tuple with the ProtectCertificates field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProtectCertificates
+
+`func (o *UpdatePKICertIssuer) SetProtectCertificates(v bool)`
+
+SetProtectCertificates sets ProtectCertificates field to given value.
+
+### HasProtectCertificates
+
+`func (o *UpdatePKICertIssuer) HasProtectCertificates() bool`
+
+HasProtectCertificates returns a boolean if a field has been set.
 
 ### GetProvince
 

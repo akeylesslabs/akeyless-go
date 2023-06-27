@@ -32,6 +32,8 @@ type KmipSetServerState struct {
 // will change when the set of required properties is changed
 func NewKmipSetServerState(state string, ) *KmipSetServerState {
 	this := KmipSetServerState{}
+	var json bool = false
+	this.Json = &json
 	this.State = state
 	return &this
 }
@@ -41,6 +43,8 @@ func NewKmipSetServerState(state string, ) *KmipSetServerState {
 // but it doesn't guarantee that properties required by API are set
 func NewKmipSetServerStateWithDefaults() *KmipSetServerState {
 	this := KmipSetServerState{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

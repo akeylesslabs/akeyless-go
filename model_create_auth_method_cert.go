@@ -19,6 +19,8 @@ import (
 type CreateAuthMethodCert struct {
 	// Access expiration date in Unix timestamp (select 0 for access without expiry date)
 	AccessExpires *int64 `json:"access-expires,omitempty"`
+	// Comma separated list of allowed CORS domains to be validated as part of the authentication flow.
+	AllowedCors *string `json:"allowed-cors,omitempty"`
 	// A list of names. At least one must exist in the Common Name. Supports globbing.
 	BoundCommonNames *[]string `json:"bound-common-names,omitempty"`
 	// A list of DNS names. At least one must exist in the SANs. Supports globbing.
@@ -63,6 +65,10 @@ func NewCreateAuthMethodCert(name string, uniqueIdentifier string, ) *CreateAuth
 	this := CreateAuthMethodCert{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	this.Name = name
 	this.UniqueIdentifier = uniqueIdentifier
 	return &this
@@ -75,6 +81,10 @@ func NewCreateAuthMethodCertWithDefaults() *CreateAuthMethodCert {
 	this := CreateAuthMethodCert{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	return &this
 }
 
@@ -108,6 +118,38 @@ func (o *CreateAuthMethodCert) HasAccessExpires() bool {
 // SetAccessExpires gets a reference to the given int64 and assigns it to the AccessExpires field.
 func (o *CreateAuthMethodCert) SetAccessExpires(v int64) {
 	o.AccessExpires = &v
+}
+
+// GetAllowedCors returns the AllowedCors field value if set, zero value otherwise.
+func (o *CreateAuthMethodCert) GetAllowedCors() string {
+	if o == nil || o.AllowedCors == nil {
+		var ret string
+		return ret
+	}
+	return *o.AllowedCors
+}
+
+// GetAllowedCorsOk returns a tuple with the AllowedCors field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodCert) GetAllowedCorsOk() (*string, bool) {
+	if o == nil || o.AllowedCors == nil {
+		return nil, false
+	}
+	return o.AllowedCors, true
+}
+
+// HasAllowedCors returns a boolean if a field has been set.
+func (o *CreateAuthMethodCert) HasAllowedCors() bool {
+	if o != nil && o.AllowedCors != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowedCors gets a reference to the given string and assigns it to the AllowedCors field.
+func (o *CreateAuthMethodCert) SetAllowedCors(v string) {
+	o.AllowedCors = &v
 }
 
 // GetBoundCommonNames returns the BoundCommonNames field value if set, zero value otherwise.
@@ -642,6 +684,9 @@ func (o CreateAuthMethodCert) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccessExpires != nil {
 		toSerialize["access-expires"] = o.AccessExpires
+	}
+	if o.AllowedCors != nil {
+		toSerialize["allowed-cors"] = o.AllowedCors
 	}
 	if o.BoundCommonNames != nil {
 		toSerialize["bound-common-names"] = o.BoundCommonNames

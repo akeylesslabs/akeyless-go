@@ -34,6 +34,8 @@ type DeleteRoleAssociation struct {
 func NewDeleteRoleAssociation(assocId string, ) *DeleteRoleAssociation {
 	this := DeleteRoleAssociation{}
 	this.AssocId = assocId
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -42,6 +44,8 @@ func NewDeleteRoleAssociation(assocId string, ) *DeleteRoleAssociation {
 // but it doesn't guarantee that properties required by API are set
 func NewDeleteRoleAssociationWithDefaults() *DeleteRoleAssociation {
 	this := DeleteRoleAssociation{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

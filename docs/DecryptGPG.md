@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Ciphertext** | **string** | Ciphertext to be decrypted in base64 encoded format | 
 **DisplayId** | Pointer to **string** | The display id of the key to use in the decryption process | [optional] 
 **ItemId** | Pointer to **int64** | The item id of the key to use in the decryption process | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeyName** | **string** | The name of the key to use in the decryption process | 
 **OutputFormat** | Pointer to **string** | If specified, the output will be formatted accordingly. options: [base64] | [optional] 
 **Passphrase** | Pointer to **string** | Passphrase that was used to generate the key | [optional] 

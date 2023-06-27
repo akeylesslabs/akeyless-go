@@ -4,8 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IgnoreCache** | Pointer to **string** | Ignore Cache Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Host** | Pointer to **string** | Get rotated secret value of specific Host (relevant only for Linked Target) | [optional] 
+**IgnoreCache** | Pointer to **string** | Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI | [optional] [default to "false"]
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Names** | **string** | Secret name | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -29,6 +30,31 @@ will change when the set of required properties is changed
 NewGetRotatedSecretValueWithDefaults instantiates a new GetRotatedSecretValue object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetHost
+
+`func (o *GetRotatedSecretValue) GetHost() string`
+
+GetHost returns the Host field if non-nil, zero value otherwise.
+
+### GetHostOk
+
+`func (o *GetRotatedSecretValue) GetHostOk() (*string, bool)`
+
+GetHostOk returns a tuple with the Host field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHost
+
+`func (o *GetRotatedSecretValue) SetHost(v string)`
+
+SetHost sets Host field to given value.
+
+### HasHost
+
+`func (o *GetRotatedSecretValue) HasHost() bool`
+
+HasHost returns a boolean if a field has been set.
 
 ### GetIgnoreCache
 

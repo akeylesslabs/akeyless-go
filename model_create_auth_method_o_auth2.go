@@ -33,6 +33,10 @@ type CreateAuthMethodOAuth2 struct {
 	Issuer *string `json:"issuer,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
+	// The JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. base64 encoded string
+	JwksJsonData *string `json:"jwks-json-data,omitempty"`
+	// JSON Web Key Set (JWKS) JSON file path that will be used to verify any JSON Web Token (JWT) issued by the authorization server.
+	JwksJsonFile *string `json:"jwks-json-file,omitempty"`
 	// The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server.
 	JwksUri string `json:"jwks-uri"`
 	// Jwt TTL
@@ -55,7 +59,11 @@ func NewCreateAuthMethodOAuth2(jwksUri string, name string, uniqueIdentifier str
 	this := CreateAuthMethodOAuth2{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var json bool = false
+	this.Json = &json
 	this.JwksUri = jwksUri
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	this.Name = name
 	this.UniqueIdentifier = uniqueIdentifier
 	return &this
@@ -68,6 +76,12 @@ func NewCreateAuthMethodOAuth2WithDefaults() *CreateAuthMethodOAuth2 {
 	this := CreateAuthMethodOAuth2{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var json bool = false
+	this.Json = &json
+	var jwksUri string = "default_jwks_url"
+	this.JwksUri = jwksUri
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	return &this
 }
 
@@ -327,6 +341,70 @@ func (o *CreateAuthMethodOAuth2) SetJson(v bool) {
 	o.Json = &v
 }
 
+// GetJwksJsonData returns the JwksJsonData field value if set, zero value otherwise.
+func (o *CreateAuthMethodOAuth2) GetJwksJsonData() string {
+	if o == nil || o.JwksJsonData == nil {
+		var ret string
+		return ret
+	}
+	return *o.JwksJsonData
+}
+
+// GetJwksJsonDataOk returns a tuple with the JwksJsonData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodOAuth2) GetJwksJsonDataOk() (*string, bool) {
+	if o == nil || o.JwksJsonData == nil {
+		return nil, false
+	}
+	return o.JwksJsonData, true
+}
+
+// HasJwksJsonData returns a boolean if a field has been set.
+func (o *CreateAuthMethodOAuth2) HasJwksJsonData() bool {
+	if o != nil && o.JwksJsonData != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJwksJsonData gets a reference to the given string and assigns it to the JwksJsonData field.
+func (o *CreateAuthMethodOAuth2) SetJwksJsonData(v string) {
+	o.JwksJsonData = &v
+}
+
+// GetJwksJsonFile returns the JwksJsonFile field value if set, zero value otherwise.
+func (o *CreateAuthMethodOAuth2) GetJwksJsonFile() string {
+	if o == nil || o.JwksJsonFile == nil {
+		var ret string
+		return ret
+	}
+	return *o.JwksJsonFile
+}
+
+// GetJwksJsonFileOk returns a tuple with the JwksJsonFile field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodOAuth2) GetJwksJsonFileOk() (*string, bool) {
+	if o == nil || o.JwksJsonFile == nil {
+		return nil, false
+	}
+	return o.JwksJsonFile, true
+}
+
+// HasJwksJsonFile returns a boolean if a field has been set.
+func (o *CreateAuthMethodOAuth2) HasJwksJsonFile() bool {
+	if o != nil && o.JwksJsonFile != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJwksJsonFile gets a reference to the given string and assigns it to the JwksJsonFile field.
+func (o *CreateAuthMethodOAuth2) SetJwksJsonFile(v string) {
+	o.JwksJsonFile = &v
+}
+
 // GetJwksUri returns the JwksUri field value
 func (o *CreateAuthMethodOAuth2) GetJwksUri() string {
 	if o == nil  {
@@ -520,6 +598,12 @@ func (o CreateAuthMethodOAuth2) MarshalJSON() ([]byte, error) {
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json
+	}
+	if o.JwksJsonData != nil {
+		toSerialize["jwks-json-data"] = o.JwksJsonData
+	}
+	if o.JwksJsonFile != nil {
+		toSerialize["jwks-json-file"] = o.JwksJsonFile
 	}
 	if true {
 		toSerialize["jwks-uri"] = o.JwksUri

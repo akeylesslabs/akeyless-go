@@ -19,12 +19,15 @@ import (
 type UpdateRotatedSecret struct {
 	// List of the new tags that will be attached to this item
 	AddTag *[]string `json:"add-tag,omitempty"`
+	// API ID to rotate
 	ApiId *string `json:"api-id,omitempty"`
+	// API key to rotate
 	ApiKey *string `json:"api-key,omitempty"`
-	// Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation
+	// Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation [true/false]
 	AutoRotate *string `json:"auto-rotate,omitempty"`
 	// Region (used in aws)
 	AwsRegion *string `json:"aws-region,omitempty"`
+	// Secret payload to be sent with rotation request (relevant only for rotator-type=custom)
 	CustomPayload *string `json:"custom-payload,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
@@ -32,6 +35,7 @@ type UpdateRotatedSecret struct {
 	GcpKey *string `json:"gcp-key,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
+	// Whether to keep previous version [true/false]. If not set, use default according to account settings
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
@@ -45,40 +49,47 @@ type UpdateRotatedSecret struct {
 	NewVersion *bool `json:"new-version,omitempty"`
 	// List of the existent tags that will be removed from this item
 	RmTag *[]string `json:"rm-tag,omitempty"`
-	// Rotate the value of the secret after SRA session ends
+	// Rotate the value of the secret after SRA session ends [true/false]
 	RotateAfterDisconnect *string `json:"rotate-after-disconnect,omitempty"`
+	// rotated-username password
 	RotatedPassword *string `json:"rotated-password,omitempty"`
+	// username to be rotated, if selected use-self-creds at rotator-creds-type, this username will try to rotate it's own password, if use-target-creds is selected, target credentials will be use to rotate the rotated-password
 	RotatedUsername *string `json:"rotated-username,omitempty"`
+	// The Hour of the rotation in UTC
 	RotationHour *int32 `json:"rotation-hour,omitempty"`
 	// The number of days to wait between every automatic key rotation (7-365)
 	RotationInterval *string `json:"rotation-interval,omitempty"`
+	// The credentials to connect with use-self-creds/use-target-creds
 	RotatorCredsType *string `json:"rotator-creds-type,omitempty"`
+	// \"Custom rotation command (relevant only for ssh target)
 	RotatorCustomCmd *string `json:"rotator-custom-cmd,omitempty"`
-	// Secure Access Allow Providing External User (used in ssh)
+	// Rotate same password for each host from the Linked Target (relevant only for Linked Target)
+	SamePassword *string `json:"same-password,omitempty"`
+	// Allow providing external user for a domain users (relevant only for rdp)
 	SecureAccessAllowExternalUser *bool `json:"secure-access-allow-external-user,omitempty"`
-	// Secure Access Account Id (used in aws)
+	// The AWS account id (relevant only for aws)
 	SecureAccessAwsAccountId *string `json:"secure-access-aws-account-id,omitempty"`
-	// Secure Access Aws Native Cli (used in aws)
+	// The AWS native cli
 	SecureAccessAwsNativeCli *bool `json:"secure-access-aws-native-cli,omitempty"`
-	// Secure Access Bastion Issuer
+	// Path to the SSH Certificate Issuer for your Akeyless Bastion
 	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
-	// Secure Access DB Name (used in data bases)
+	// The DB name (relevant only for DB Dynamic-Secret)
 	SecureAccessDbName *string `json:"secure-access-db-name,omitempty"`
-	// Secure Access Schema (used in mssql, postgresql)
+	// The db schema (relevant only for mssql or postgresql)
 	SecureAccessDbSchema *string `json:"secure-access-db-schema,omitempty"`
-	// Secure Access Enabled
+	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
-	// Secure Access Host
+	// Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
 	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
-	// Secure Access Domain (used in ssh)
+	// Required when the Dynamic Secret is used for a domain user (relevant only for RDP Dynamic-Secret)
 	SecureAccessRdpDomain *string `json:"secure-access-rdp-domain,omitempty"`
-	// Secure Access Override User (used in ssh)
+	// Override the RDP Domain username (relevant only for rdp)
 	SecureAccessRdpUser *string `json:"secure-access-rdp-user,omitempty"`
-	// Secure Access Web
+	// Enable Web Secure Remote Access
 	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
-	// Secure Access Isolated (used in aws, azure)
+	// Secure browser via Akeyless Web Access Bastion (relevant only for aws or azure)
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
-	// Secure Access Web Proxy (used in aws, azure)
+	// Web-Proxy via Akeyless Web Access Bastion (relevant only for aws or azure)
 	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
 	// Deprecated: use RotatedPassword
 	SshPassword *string `json:"ssh-password,omitempty"`
@@ -102,11 +113,15 @@ func NewUpdateRotatedSecret(name string, ) *UpdateRotatedSecret {
 	this.AwsRegion = &awsRegion
 	var description string = "default_metadata"
 	this.Description = &description
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	var newMetadata string = "default_metadata"
 	this.NewMetadata = &newMetadata
 	var rotateAfterDisconnect string = "false"
 	this.RotateAfterDisconnect = &rotateAfterDisconnect
+	var rotatorCredsType string = "use-self-creds"
+	this.RotatorCredsType = &rotatorCredsType
 	var secureAccessAllowExternalUser bool = false
 	this.SecureAccessAllowExternalUser = &secureAccessAllowExternalUser
 	var secureAccessWeb bool = false
@@ -127,10 +142,14 @@ func NewUpdateRotatedSecretWithDefaults() *UpdateRotatedSecret {
 	this.AwsRegion = &awsRegion
 	var description string = "default_metadata"
 	this.Description = &description
+	var json bool = false
+	this.Json = &json
 	var newMetadata string = "default_metadata"
 	this.NewMetadata = &newMetadata
 	var rotateAfterDisconnect string = "false"
 	this.RotateAfterDisconnect = &rotateAfterDisconnect
+	var rotatorCredsType string = "use-self-creds"
+	this.RotatorCredsType = &rotatorCredsType
 	var secureAccessAllowExternalUser bool = false
 	this.SecureAccessAllowExternalUser = &secureAccessAllowExternalUser
 	var secureAccessWeb bool = false
@@ -870,6 +889,38 @@ func (o *UpdateRotatedSecret) SetRotatorCustomCmd(v string) {
 	o.RotatorCustomCmd = &v
 }
 
+// GetSamePassword returns the SamePassword field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetSamePassword() string {
+	if o == nil || o.SamePassword == nil {
+		var ret string
+		return ret
+	}
+	return *o.SamePassword
+}
+
+// GetSamePasswordOk returns a tuple with the SamePassword field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetSamePasswordOk() (*string, bool) {
+	if o == nil || o.SamePassword == nil {
+		return nil, false
+	}
+	return o.SamePassword, true
+}
+
+// HasSamePassword returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasSamePassword() bool {
+	if o != nil && o.SamePassword != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSamePassword gets a reference to the given string and assigns it to the SamePassword field.
+func (o *UpdateRotatedSecret) SetSamePassword(v string) {
+	o.SamePassword = &v
+}
+
 // GetSecureAccessAllowExternalUser returns the SecureAccessAllowExternalUser field value if set, zero value otherwise.
 func (o *UpdateRotatedSecret) GetSecureAccessAllowExternalUser() bool {
 	if o == nil || o.SecureAccessAllowExternalUser == nil {
@@ -1516,6 +1567,9 @@ func (o UpdateRotatedSecret) MarshalJSON() ([]byte, error) {
 	}
 	if o.RotatorCustomCmd != nil {
 		toSerialize["rotator-custom-cmd"] = o.RotatorCustomCmd
+	}
+	if o.SamePassword != nil {
+		toSerialize["same-password"] = o.SamePassword
 	}
 	if o.SecureAccessAllowExternalUser != nil {
 		toSerialize["secure-access-allow-external-user"] = o.SecureAccessAllowExternalUser
