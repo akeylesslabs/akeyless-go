@@ -47,6 +47,8 @@ func NewDeleteItem(name string, ) *DeleteItem {
 	this.DeleteImmediately = &deleteImmediately
 	var deleteInDays int64 = 7
 	this.DeleteInDays = &deleteInDays
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	var version int32 = -1
 	this.Version = &version
@@ -64,6 +66,8 @@ func NewDeleteItemWithDefaults() *DeleteItem {
 	this.DeleteImmediately = &deleteImmediately
 	var deleteInDays int64 = 7
 	this.DeleteInDays = &deleteInDays
+	var json bool = false
+	this.Json = &json
 	var version int32 = -1
 	this.Version = &version
 	return &this

@@ -40,6 +40,8 @@ type DecryptPKCS1 struct {
 func NewDecryptPKCS1(ciphertext string, keyName string, ) *DecryptPKCS1 {
 	this := DecryptPKCS1{}
 	this.Ciphertext = ciphertext
+	var json bool = false
+	this.Json = &json
 	this.KeyName = keyName
 	return &this
 }
@@ -49,6 +51,8 @@ func NewDecryptPKCS1(ciphertext string, keyName string, ) *DecryptPKCS1 {
 // but it doesn't guarantee that properties required by API are set
 func NewDecryptPKCS1WithDefaults() *DecryptPKCS1 {
 	this := DecryptPKCS1{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

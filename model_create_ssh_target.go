@@ -17,8 +17,11 @@ import (
 
 // CreateSSHTarget struct for CreateSSHTarget
 type CreateSSHTarget struct {
-	// Comment about the target
+	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`
+	// Description of the object
+	Description *string `json:"description,omitempty"`
+	// SSH host name
 	Host *string `json:"host,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -26,10 +29,15 @@ type CreateSSHTarget struct {
 	Key *string `json:"key,omitempty"`
 	// Target name
 	Name string `json:"name"`
+	// SSH port
 	Port *string `json:"port,omitempty"`
+	// SSH private key
 	PrivateKey *string `json:"private-key,omitempty"`
+	// SSH private key password
 	PrivateKeyPassword *string `json:"private-key-password,omitempty"`
+	// SSH password to rotate
 	SshPassword *string `json:"ssh-password,omitempty"`
+	// SSH username
 	SshUsername *string `json:"ssh-username,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
@@ -43,7 +51,11 @@ type CreateSSHTarget struct {
 // will change when the set of required properties is changed
 func NewCreateSSHTarget(name string, ) *CreateSSHTarget {
 	this := CreateSSHTarget{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
+	var port string = "22"
+	this.Port = &port
 	return &this
 }
 
@@ -52,6 +64,10 @@ func NewCreateSSHTarget(name string, ) *CreateSSHTarget {
 // but it doesn't guarantee that properties required by API are set
 func NewCreateSSHTargetWithDefaults() *CreateSSHTarget {
 	this := CreateSSHTarget{}
+	var json bool = false
+	this.Json = &json
+	var port string = "22"
+	this.Port = &port
 	return &this
 }
 
@@ -85,6 +101,38 @@ func (o *CreateSSHTarget) HasComment() bool {
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *CreateSSHTarget) SetComment(v string) {
 	o.Comment = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *CreateSSHTarget) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSSHTarget) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *CreateSSHTarget) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *CreateSSHTarget) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetHost returns the Host field value if set, zero value otherwise.
@@ -435,6 +483,9 @@ func (o CreateSSHTarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.Host != nil {
 		toSerialize["host"] = o.Host

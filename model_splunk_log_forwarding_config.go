@@ -17,9 +17,11 @@ import (
 
 // SplunkLogForwardingConfig struct for SplunkLogForwardingConfig
 type SplunkLogForwardingConfig struct {
+	SplunkEnableTls *bool `json:"splunk_enable_tls,omitempty"`
 	SplunkIndex *string `json:"splunk_index,omitempty"`
 	SplunkSource *string `json:"splunk_source,omitempty"`
 	SplunkSourcetype *string `json:"splunk_sourcetype,omitempty"`
+	SplunkTlsCertificate *string `json:"splunk_tls_certificate,omitempty"`
 	SplunkToken *string `json:"splunk_token,omitempty"`
 	SplunkUrl *string `json:"splunk_url,omitempty"`
 }
@@ -39,6 +41,38 @@ func NewSplunkLogForwardingConfig() *SplunkLogForwardingConfig {
 func NewSplunkLogForwardingConfigWithDefaults() *SplunkLogForwardingConfig {
 	this := SplunkLogForwardingConfig{}
 	return &this
+}
+
+// GetSplunkEnableTls returns the SplunkEnableTls field value if set, zero value otherwise.
+func (o *SplunkLogForwardingConfig) GetSplunkEnableTls() bool {
+	if o == nil || o.SplunkEnableTls == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SplunkEnableTls
+}
+
+// GetSplunkEnableTlsOk returns a tuple with the SplunkEnableTls field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SplunkLogForwardingConfig) GetSplunkEnableTlsOk() (*bool, bool) {
+	if o == nil || o.SplunkEnableTls == nil {
+		return nil, false
+	}
+	return o.SplunkEnableTls, true
+}
+
+// HasSplunkEnableTls returns a boolean if a field has been set.
+func (o *SplunkLogForwardingConfig) HasSplunkEnableTls() bool {
+	if o != nil && o.SplunkEnableTls != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSplunkEnableTls gets a reference to the given bool and assigns it to the SplunkEnableTls field.
+func (o *SplunkLogForwardingConfig) SetSplunkEnableTls(v bool) {
+	o.SplunkEnableTls = &v
 }
 
 // GetSplunkIndex returns the SplunkIndex field value if set, zero value otherwise.
@@ -137,6 +171,38 @@ func (o *SplunkLogForwardingConfig) SetSplunkSourcetype(v string) {
 	o.SplunkSourcetype = &v
 }
 
+// GetSplunkTlsCertificate returns the SplunkTlsCertificate field value if set, zero value otherwise.
+func (o *SplunkLogForwardingConfig) GetSplunkTlsCertificate() string {
+	if o == nil || o.SplunkTlsCertificate == nil {
+		var ret string
+		return ret
+	}
+	return *o.SplunkTlsCertificate
+}
+
+// GetSplunkTlsCertificateOk returns a tuple with the SplunkTlsCertificate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SplunkLogForwardingConfig) GetSplunkTlsCertificateOk() (*string, bool) {
+	if o == nil || o.SplunkTlsCertificate == nil {
+		return nil, false
+	}
+	return o.SplunkTlsCertificate, true
+}
+
+// HasSplunkTlsCertificate returns a boolean if a field has been set.
+func (o *SplunkLogForwardingConfig) HasSplunkTlsCertificate() bool {
+	if o != nil && o.SplunkTlsCertificate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSplunkTlsCertificate gets a reference to the given string and assigns it to the SplunkTlsCertificate field.
+func (o *SplunkLogForwardingConfig) SetSplunkTlsCertificate(v string) {
+	o.SplunkTlsCertificate = &v
+}
+
 // GetSplunkToken returns the SplunkToken field value if set, zero value otherwise.
 func (o *SplunkLogForwardingConfig) GetSplunkToken() string {
 	if o == nil || o.SplunkToken == nil {
@@ -203,6 +269,9 @@ func (o *SplunkLogForwardingConfig) SetSplunkUrl(v string) {
 
 func (o SplunkLogForwardingConfig) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.SplunkEnableTls != nil {
+		toSerialize["splunk_enable_tls"] = o.SplunkEnableTls
+	}
 	if o.SplunkIndex != nil {
 		toSerialize["splunk_index"] = o.SplunkIndex
 	}
@@ -211,6 +280,9 @@ func (o SplunkLogForwardingConfig) MarshalJSON() ([]byte, error) {
 	}
 	if o.SplunkSourcetype != nil {
 		toSerialize["splunk_sourcetype"] = o.SplunkSourcetype
+	}
+	if o.SplunkTlsCertificate != nil {
+		toSerialize["splunk_tls_certificate"] = o.SplunkTlsCertificate
 	}
 	if o.SplunkToken != nil {
 		toSerialize["splunk_token"] = o.SplunkToken

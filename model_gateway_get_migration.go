@@ -33,6 +33,8 @@ type GatewayGetMigration struct {
 // will change when the set of required properties is changed
 func NewGatewayGetMigration() *GatewayGetMigration {
 	this := GatewayGetMigration{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -41,6 +43,8 @@ func NewGatewayGetMigration() *GatewayGetMigration {
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayGetMigrationWithDefaults() *GatewayGetMigration {
 	this := GatewayGetMigration{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

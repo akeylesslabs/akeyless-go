@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **MigrationsStatus** | Pointer to [**MigrationStatus**](MigrationStatus.md) |  | [optional] 
 **ProducersErrors** | Pointer to **map[string]interface{}** |  | [optional] 
+**WasMigrationsCopiedToNewTable** | Pointer to **bool** | flag to indicate migrationStatus copied to new table | [optional] 
 
 ## Methods
 
@@ -75,6 +76,31 @@ SetProducersErrors sets ProducersErrors field to given value.
 `func (o *LastStatusInfo) HasProducersErrors() bool`
 
 HasProducersErrors returns a boolean if a field has been set.
+
+### GetWasMigrationsCopiedToNewTable
+
+`func (o *LastStatusInfo) GetWasMigrationsCopiedToNewTable() bool`
+
+GetWasMigrationsCopiedToNewTable returns the WasMigrationsCopiedToNewTable field if non-nil, zero value otherwise.
+
+### GetWasMigrationsCopiedToNewTableOk
+
+`func (o *LastStatusInfo) GetWasMigrationsCopiedToNewTableOk() (*bool, bool)`
+
+GetWasMigrationsCopiedToNewTableOk returns a tuple with the WasMigrationsCopiedToNewTable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWasMigrationsCopiedToNewTable
+
+`func (o *LastStatusInfo) SetWasMigrationsCopiedToNewTable(v bool)`
+
+SetWasMigrationsCopiedToNewTable sets WasMigrationsCopiedToNewTable field to given value.
+
+### HasWasMigrationsCopiedToNewTable
+
+`func (o *LastStatusInfo) HasWasMigrationsCopiedToNewTable() bool`
+
+HasWasMigrationsCopiedToNewTable returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

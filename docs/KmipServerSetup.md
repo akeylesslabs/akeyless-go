@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CertificateTtl** | Pointer to **int64** |  | [optional] 
+**CertificateTtl** | Pointer to **int64** | Server certificate TTL in days | [optional] [default to 90]
 **Hostname** | **string** | Hostname | 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
-**Root** | Pointer to **string** |  | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**Root** | **string** | Root path of KMIP Resources | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewKmipServerSetup
 
-`func NewKmipServerSetup(hostname string, ) *KmipServerSetup`
+`func NewKmipServerSetup(hostname string, root string, ) *KmipServerSetup`
 
 NewKmipServerSetup instantiates a new KmipServerSetup object
 This constructor will assign default values to properties that have it defined,
@@ -119,11 +119,6 @@ and a boolean to check if the value has been set.
 
 SetRoot sets Root field to given value.
 
-### HasRoot
-
-`func (o *KmipServerSetup) HasRoot() bool`
-
-HasRoot returns a boolean if a field has been set.
 
 ### GetToken
 

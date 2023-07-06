@@ -20,6 +20,7 @@ type CreateClassicKeyOutput struct {
 	ClassicKeyId *string `json:"classic_key_id,omitempty"`
 	ClassicKeyName *string `json:"classic_key_name,omitempty"`
 	ClassicKeyType *string `json:"classic_key_type,omitempty"`
+	PublicKey *string `json:"public_key,omitempty"`
 }
 
 // NewCreateClassicKeyOutput instantiates a new CreateClassicKeyOutput object
@@ -135,6 +136,38 @@ func (o *CreateClassicKeyOutput) SetClassicKeyType(v string) {
 	o.ClassicKeyType = &v
 }
 
+// GetPublicKey returns the PublicKey field value if set, zero value otherwise.
+func (o *CreateClassicKeyOutput) GetPublicKey() string {
+	if o == nil || o.PublicKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.PublicKey
+}
+
+// GetPublicKeyOk returns a tuple with the PublicKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateClassicKeyOutput) GetPublicKeyOk() (*string, bool) {
+	if o == nil || o.PublicKey == nil {
+		return nil, false
+	}
+	return o.PublicKey, true
+}
+
+// HasPublicKey returns a boolean if a field has been set.
+func (o *CreateClassicKeyOutput) HasPublicKey() bool {
+	if o != nil && o.PublicKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPublicKey gets a reference to the given string and assigns it to the PublicKey field.
+func (o *CreateClassicKeyOutput) SetPublicKey(v string) {
+	o.PublicKey = &v
+}
+
 func (o CreateClassicKeyOutput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ClassicKeyId != nil {
@@ -145,6 +178,9 @@ func (o CreateClassicKeyOutput) MarshalJSON() ([]byte, error) {
 	}
 	if o.ClassicKeyType != nil {
 		toSerialize["classic_key_type"] = o.ClassicKeyType
+	}
+	if o.PublicKey != nil {
+		toSerialize["public_key"] = o.PublicKey
 	}
 	return json.Marshal(toSerialize)
 }
