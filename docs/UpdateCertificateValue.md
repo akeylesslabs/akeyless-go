@@ -4,12 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CertificateData** | Pointer to **string** | Content of the certificate PEM in a Base64 format. | [optional] 
+**AddTag** | Pointer to **[]string** | List of the new tags that will be attached to this item | [optional] 
+**CertificateData** | Pointer to **string** | Content of the certificate in a Base64 format. | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**Description** | Pointer to **string** | Description of the object | [optional] 
 **ExpirationEventIn** | Pointer to **[]string** | How many days before the expiration of the certificate would you like to be notified. | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Format** | Pointer to **string** | CertificateFormat of the certificate and private key, possible values: cer,crt,pem,pfx,p12. Required when passing inline certificate content with --certificate-data or --key-data, otherwise format is derived from the file extension. | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | Pointer to **string** | The name of a key to use to encrypt the certificate&#39;s key (if empty, the account default protectionKey key will be used) | [optional] 
-**KeyData** | Pointer to **string** | Content of the certificate&#39;s private key PEM in a Base64 format. | [optional] 
+**KeyData** | Pointer to **string** | Content of the certificate&#39;s private key in a Base64 format. | [optional] 
+**Metadata** | Pointer to **string** | Deprecated - use description | [optional] 
 **Name** | **string** | Certificate name | 
+**RmTag** | Pointer to **[]string** | List of the existent tags that will be removed from this item | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
@@ -31,6 +37,31 @@ will change when the set of required properties is changed
 NewUpdateCertificateValueWithDefaults instantiates a new UpdateCertificateValue object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAddTag
+
+`func (o *UpdateCertificateValue) GetAddTag() []string`
+
+GetAddTag returns the AddTag field if non-nil, zero value otherwise.
+
+### GetAddTagOk
+
+`func (o *UpdateCertificateValue) GetAddTagOk() (*[]string, bool)`
+
+GetAddTagOk returns a tuple with the AddTag field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAddTag
+
+`func (o *UpdateCertificateValue) SetAddTag(v []string)`
+
+SetAddTag sets AddTag field to given value.
+
+### HasAddTag
+
+`func (o *UpdateCertificateValue) HasAddTag() bool`
+
+HasAddTag returns a boolean if a field has been set.
 
 ### GetCertificateData
 
@@ -57,6 +88,56 @@ SetCertificateData sets CertificateData field to given value.
 
 HasCertificateData returns a boolean if a field has been set.
 
+### GetDeleteProtection
+
+`func (o *UpdateCertificateValue) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *UpdateCertificateValue) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *UpdateCertificateValue) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *UpdateCertificateValue) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *UpdateCertificateValue) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *UpdateCertificateValue) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *UpdateCertificateValue) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *UpdateCertificateValue) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
+
 ### GetExpirationEventIn
 
 `func (o *UpdateCertificateValue) GetExpirationEventIn() []string`
@@ -81,6 +162,31 @@ SetExpirationEventIn sets ExpirationEventIn field to given value.
 `func (o *UpdateCertificateValue) HasExpirationEventIn() bool`
 
 HasExpirationEventIn returns a boolean if a field has been set.
+
+### GetFormat
+
+`func (o *UpdateCertificateValue) GetFormat() string`
+
+GetFormat returns the Format field if non-nil, zero value otherwise.
+
+### GetFormatOk
+
+`func (o *UpdateCertificateValue) GetFormatOk() (*string, bool)`
+
+GetFormatOk returns a tuple with the Format field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFormat
+
+`func (o *UpdateCertificateValue) SetFormat(v string)`
+
+SetFormat sets Format field to given value.
+
+### HasFormat
+
+`func (o *UpdateCertificateValue) HasFormat() bool`
+
+HasFormat returns a boolean if a field has been set.
 
 ### GetJson
 
@@ -157,6 +263,31 @@ SetKeyData sets KeyData field to given value.
 
 HasKeyData returns a boolean if a field has been set.
 
+### GetMetadata
+
+`func (o *UpdateCertificateValue) GetMetadata() string`
+
+GetMetadata returns the Metadata field if non-nil, zero value otherwise.
+
+### GetMetadataOk
+
+`func (o *UpdateCertificateValue) GetMetadataOk() (*string, bool)`
+
+GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetadata
+
+`func (o *UpdateCertificateValue) SetMetadata(v string)`
+
+SetMetadata sets Metadata field to given value.
+
+### HasMetadata
+
+`func (o *UpdateCertificateValue) HasMetadata() bool`
+
+HasMetadata returns a boolean if a field has been set.
+
 ### GetName
 
 `func (o *UpdateCertificateValue) GetName() string`
@@ -176,6 +307,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetRmTag
+
+`func (o *UpdateCertificateValue) GetRmTag() []string`
+
+GetRmTag returns the RmTag field if non-nil, zero value otherwise.
+
+### GetRmTagOk
+
+`func (o *UpdateCertificateValue) GetRmTagOk() (*[]string, bool)`
+
+GetRmTagOk returns a tuple with the RmTag field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRmTag
+
+`func (o *UpdateCertificateValue) SetRmTag(v []string)`
+
+SetRmTag sets RmTag field to given value.
+
+### HasRmTag
+
+`func (o *UpdateCertificateValue) HasRmTag() bool`
+
+HasRmTag returns a boolean if a field has been set.
 
 ### GetToken
 

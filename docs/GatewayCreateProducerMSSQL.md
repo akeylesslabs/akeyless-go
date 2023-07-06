@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **MssqlCreateStatements** | Pointer to **string** | MSSQL Creation statements | [optional] 
 **MssqlDbname** | Pointer to **string** | MSSQL Name | [optional] 
 **MssqlHost** | Pointer to **string** | MSSQL Host | [optional] [default to "127.0.0.1"]
@@ -15,12 +15,12 @@ Name | Type | Description | Notes
 **MssqlUsername** | Pointer to **string** | MSSQL Username | [optional] 
 **Name** | **string** | Producer name | 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
-**SecureAccessBastionIssuer** | Pointer to **string** |  | [optional] 
-**SecureAccessDbSchema** | Pointer to **string** |  | [optional] 
-**SecureAccessEnable** | Pointer to **string** |  | [optional] 
-**SecureAccessHost** | Pointer to **[]string** |  | [optional] 
-**SecureAccessWeb** | Pointer to **bool** |  | [optional] 
-**Tags** | Pointer to **[]string** | List of the tags attached to this secret | [optional] 
+**SecureAccessBastionIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] 
+**SecureAccessDbSchema** | Pointer to **string** | The DB schema | [optional] 
+**SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
+**SecureAccessHost** | Pointer to **[]string** | Target DB servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts) | [optional] 
+**SecureAccessWeb** | Pointer to **bool** | Enable Web Secure Remote Access | [optional] [default to false]
+**Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 

@@ -23,7 +23,7 @@ type UploadRSA struct {
 	CertFileData *string `json:"cert-file-data,omitempty"`
 	// The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment)
 	CustomerFrgId *string `json:"customer-frg-id,omitempty"`
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
@@ -33,7 +33,7 @@ type UploadRSA struct {
 	Metadata *string `json:"metadata,omitempty"`
 	// Name of key to be created
 	Name string `json:"name"`
-	// When the overwrite flag is set, this command will only update an existing key. [true, false]
+	// When the overwrite flag is set, this command will only update an existing key [true/false]
 	Overwrite *string `json:"overwrite,omitempty"`
 	// RSA private key data, base64 encoded
 	RsaFileData *string `json:"rsa-file-data,omitempty"`
@@ -54,7 +54,11 @@ type UploadRSA struct {
 func NewUploadRSA(alg string, name string, ) *UploadRSA {
 	this := UploadRSA{}
 	this.Alg = alg
+	var json bool = false
+	this.Json = &json
 	this.Name = name
+	var overwrite string = "false"
+	this.Overwrite = &overwrite
 	var splitLevel int64 = 2
 	this.SplitLevel = &splitLevel
 	return &this
@@ -65,6 +69,10 @@ func NewUploadRSA(alg string, name string, ) *UploadRSA {
 // but it doesn't guarantee that properties required by API are set
 func NewUploadRSAWithDefaults() *UploadRSA {
 	this := UploadRSA{}
+	var json bool = false
+	this.Json = &json
+	var overwrite string = "false"
+	this.Overwrite = &overwrite
 	var splitLevel int64 = 2
 	this.SplitLevel = &splitLevel
 	return &this

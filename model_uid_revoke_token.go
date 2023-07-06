@@ -37,6 +37,8 @@ type UidRevokeToken struct {
 // will change when the set of required properties is changed
 func NewUidRevokeToken(revokeToken string, revokeType string, ) *UidRevokeToken {
 	this := UidRevokeToken{}
+	var json bool = false
+	this.Json = &json
 	this.RevokeToken = revokeToken
 	this.RevokeType = revokeType
 	return &this
@@ -47,6 +49,8 @@ func NewUidRevokeToken(revokeToken string, revokeType string, ) *UidRevokeToken 
 // but it doesn't guarantee that properties required by API are set
 func NewUidRevokeTokenWithDefaults() *UidRevokeToken {
 	this := UidRevokeToken{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

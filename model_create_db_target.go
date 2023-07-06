@@ -17,7 +17,7 @@ import (
 
 // CreateDBTarget struct for CreateDBTarget
 type CreateDBTarget struct {
-	// Comment about the target
+	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`
 	DbName *string `json:"db-name,omitempty"`
 	// (Optional) DB server certificates
@@ -25,6 +25,8 @@ type CreateDBTarget struct {
 	// (Optional) Server name for certificate verification
 	DbServerName *string `json:"db-server-name,omitempty"`
 	DbType string `json:"db-type"`
+	// Description of the object
+	Description *string `json:"description,omitempty"`
 	Host *string `json:"host,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -51,7 +53,7 @@ type CreateDBTarget struct {
 	SnowflakeApiPrivateKey *string `json:"snowflake-api-private-key,omitempty"`
 	// The Private key passphrase
 	SnowflakeApiPrivateKeyPassword *string `json:"snowflake-api-private-key-password,omitempty"`
-	// SSL connection mode
+	// Enable/Disable SSL [true/false]
 	Ssl *bool `json:"ssl,omitempty"`
 	// SSL connection certificate
 	SslCertificate *string `json:"ssl-certificate,omitempty"`
@@ -69,7 +71,11 @@ type CreateDBTarget struct {
 func NewCreateDBTarget(dbType string, name string, ) *CreateDBTarget {
 	this := CreateDBTarget{}
 	this.DbType = dbType
+	var json bool = false
+	this.Json = &json
 	this.Name = name
+	var ssl bool = false
+	this.Ssl = &ssl
 	return &this
 }
 
@@ -78,6 +84,10 @@ func NewCreateDBTarget(dbType string, name string, ) *CreateDBTarget {
 // but it doesn't guarantee that properties required by API are set
 func NewCreateDBTargetWithDefaults() *CreateDBTarget {
 	this := CreateDBTarget{}
+	var json bool = false
+	this.Json = &json
+	var ssl bool = false
+	this.Ssl = &ssl
 	return &this
 }
 
@@ -231,6 +241,38 @@ func (o *CreateDBTarget) GetDbTypeOk() (*string, bool) {
 // SetDbType sets field value
 func (o *CreateDBTarget) SetDbType(v string) {
 	o.DbType = v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *CreateDBTarget) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDBTarget) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *CreateDBTarget) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *CreateDBTarget) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetHost returns the Host field value if set, zero value otherwise.
@@ -913,6 +955,9 @@ func (o CreateDBTarget) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["db-type"] = o.DbType
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.Host != nil {
 		toSerialize["host"] = o.Host

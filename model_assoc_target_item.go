@@ -29,7 +29,7 @@ type AssocTargetItem struct {
 	KmsAlgorithm *string `json:"kms-algorithm,omitempty"`
 	// Location id of the GCP KMS (required for gcp targets)
 	LocationId *string `json:"location-id,omitempty"`
-	// Set to 'true' to create a multi region managed key (relevant for aws targets)
+	// Set to 'true' to create a multi-region managed key. (Relevant only for Classic Key AWS targets)
 	MultiRegion *string `json:"multi-region,omitempty"`
 	// The item to associate
 	Name string `json:"name"`
@@ -57,6 +57,10 @@ type AssocTargetItem struct {
 // will change when the set of required properties is changed
 func NewAssocTargetItem(name string, targetName string, ) *AssocTargetItem {
 	this := AssocTargetItem{}
+	var disablePreviousKeyVersion bool = false
+	this.DisablePreviousKeyVersion = &disablePreviousKeyVersion
+	var json bool = false
+	this.Json = &json
 	var multiRegion string = "false"
 	this.MultiRegion = &multiRegion
 	this.Name = name
@@ -69,6 +73,10 @@ func NewAssocTargetItem(name string, targetName string, ) *AssocTargetItem {
 // but it doesn't guarantee that properties required by API are set
 func NewAssocTargetItemWithDefaults() *AssocTargetItem {
 	this := AssocTargetItem{}
+	var disablePreviousKeyVersion bool = false
+	this.DisablePreviousKeyVersion = &disablePreviousKeyVersion
+	var json bool = false
+	this.Json = &json
 	var multiRegion string = "false"
 	this.MultiRegion = &multiRegion
 	return &this

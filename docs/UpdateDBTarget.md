@@ -4,14 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Comment** | Pointer to **string** | Comment about the target | [optional] 
+**Comment** | Pointer to **string** | Deprecated - use description | [optional] 
 **DbName** | Pointer to **string** |  | [optional] 
 **DbServerCertificates** | Pointer to **string** | (Optional) DB server certificates | [optional] 
 **DbServerName** | Pointer to **string** | (Optional) Server name for certificate verification | [optional] 
 **DbType** | **string** |  | 
+**Description** | Pointer to **string** | Description of the object | [optional] 
 **Host** | Pointer to **string** |  | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
-**KeepPrevVersion** | Pointer to **string** |  | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**KeepPrevVersion** | Pointer to **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **MongodbAtlas** | Pointer to **bool** |  | [optional] 
 **MongodbAtlasApiPrivateKey** | Pointer to **string** | MongoDB Atlas private key | [optional] 
@@ -27,7 +28,7 @@ Name | Type | Description | Notes
 **SnowflakeAccount** | Pointer to **string** |  | [optional] 
 **SnowflakeApiPrivateKey** | Pointer to **string** | RSA Private key (base64 encoded) | [optional] 
 **SnowflakeApiPrivateKeyPassword** | Pointer to **string** | The Private key passphrase | [optional] 
-**Ssl** | Pointer to **bool** | SSL connection mode | [optional] 
+**Ssl** | Pointer to **bool** | Enable/Disable SSL [true/false] | [optional] [default to false]
 **SslCertificate** | Pointer to **string** | SSL connection certificate | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -172,6 +173,31 @@ and a boolean to check if the value has been set.
 
 SetDbType sets DbType field to given value.
 
+
+### GetDescription
+
+`func (o *UpdateDBTarget) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *UpdateDBTarget) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *UpdateDBTarget) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *UpdateDBTarget) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetHost
 
