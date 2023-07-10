@@ -33,6 +33,8 @@ type GetEventForwarder struct {
 // will change when the set of required properties is changed
 func NewGetEventForwarder(name string, ) *GetEventForwarder {
 	this := GetEventForwarder{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -42,6 +44,8 @@ func NewGetEventForwarder(name string, ) *GetEventForwarder {
 // but it doesn't guarantee that properties required by API are set
 func NewGetEventForwarderWithDefaults() *GetEventForwarder {
 	this := GetEventForwarder{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

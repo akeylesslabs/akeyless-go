@@ -17,7 +17,7 @@ import (
 
 // GatewayUpdateProducerGithub gatewayUpdateProducerGithub is a command that updates github producer
 type GatewayUpdateProducerGithub struct {
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Github app id
 	GithubAppId *int64 `json:"github-app-id,omitempty"`
@@ -53,6 +53,10 @@ type GatewayUpdateProducerGithub struct {
 // will change when the set of required properties is changed
 func NewGatewayUpdateProducerGithub(name string, ) *GatewayUpdateProducerGithub {
 	this := GatewayUpdateProducerGithub{}
+	var githubBaseUrl string = "https://api.github.com/"
+	this.GithubBaseUrl = &githubBaseUrl
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -62,6 +66,10 @@ func NewGatewayUpdateProducerGithub(name string, ) *GatewayUpdateProducerGithub 
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayUpdateProducerGithubWithDefaults() *GatewayUpdateProducerGithub {
 	this := GatewayUpdateProducerGithub{}
+	var githubBaseUrl string = "https://api.github.com/"
+	this.GithubBaseUrl = &githubBaseUrl
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

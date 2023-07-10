@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ActivateKeysOnCreation** | Pointer to **string** |  | [optional] 
-**CertificateTtl** | Pointer to **int64** |  | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**ActivateKeysOnCreation** | Pointer to **string** | If set to &#39;true&#39;, newly created keys on the client will be set to an &#39;active&#39; state | [optional] [default to "false"]
+**CertificateTtl** | Pointer to **int64** | Client certificate TTL in days | [optional] [default to 90]
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Client name | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 

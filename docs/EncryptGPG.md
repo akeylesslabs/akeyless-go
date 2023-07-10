@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **DisplayId** | Pointer to **string** | The display id of the key to use in the encryption process | [optional] 
 **InputFormat** | Pointer to **string** | If specified, the plaintext input is assumed to be formatted accordingly. Current supported options: [base64] | [optional] 
 **ItemId** | Pointer to **int64** | The item id of the key to use in the encryption process | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeyName** | **string** | The name of the key to use in the encryption process | 
 **Plaintext** | **string** | Data to be encrypted | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

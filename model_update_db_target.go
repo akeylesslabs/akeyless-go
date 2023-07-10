@@ -17,7 +17,7 @@ import (
 
 // UpdateDBTarget struct for UpdateDBTarget
 type UpdateDBTarget struct {
-	// Comment about the target
+	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`
 	DbName *string `json:"db-name,omitempty"`
 	// (Optional) DB server certificates
@@ -25,9 +25,12 @@ type UpdateDBTarget struct {
 	// (Optional) Server name for certificate verification
 	DbServerName *string `json:"db-server-name,omitempty"`
 	DbType string `json:"db-type"`
+	// Description of the object
+	Description *string `json:"description,omitempty"`
 	Host *string `json:"host,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
+	// Whether to keep previous version [true/false]. If not set, use default according to account settings
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
@@ -54,7 +57,7 @@ type UpdateDBTarget struct {
 	SnowflakeApiPrivateKey *string `json:"snowflake-api-private-key,omitempty"`
 	// The Private key passphrase
 	SnowflakeApiPrivateKeyPassword *string `json:"snowflake-api-private-key-password,omitempty"`
-	// SSL connection mode
+	// Enable/Disable SSL [true/false]
 	Ssl *bool `json:"ssl,omitempty"`
 	// SSL connection certificate
 	SslCertificate *string `json:"ssl-certificate,omitempty"`
@@ -74,7 +77,11 @@ type UpdateDBTarget struct {
 func NewUpdateDBTarget(dbType string, name string, ) *UpdateDBTarget {
 	this := UpdateDBTarget{}
 	this.DbType = dbType
+	var json bool = false
+	this.Json = &json
 	this.Name = name
+	var ssl bool = false
+	this.Ssl = &ssl
 	return &this
 }
 
@@ -83,6 +90,10 @@ func NewUpdateDBTarget(dbType string, name string, ) *UpdateDBTarget {
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateDBTargetWithDefaults() *UpdateDBTarget {
 	this := UpdateDBTarget{}
+	var json bool = false
+	this.Json = &json
+	var ssl bool = false
+	this.Ssl = &ssl
 	return &this
 }
 
@@ -236,6 +247,38 @@ func (o *UpdateDBTarget) GetDbTypeOk() (*string, bool) {
 // SetDbType sets field value
 func (o *UpdateDBTarget) SetDbType(v string) {
 	o.DbType = v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *UpdateDBTarget) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateDBTarget) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *UpdateDBTarget) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *UpdateDBTarget) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetHost returns the Host field value if set, zero value otherwise.
@@ -1014,6 +1057,9 @@ func (o UpdateDBTarget) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["db-type"] = o.DbType
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.Host != nil {
 		toSerialize["host"] = o.Host

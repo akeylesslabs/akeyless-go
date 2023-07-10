@@ -8,23 +8,26 @@ Name | Type | Description | Notes
 **City** | Pointer to **string** | City | [optional] 
 **CompanyName** | Pointer to **string** | Company name | [optional] 
 **Country** | Pointer to **string** | Country | [optional] 
-**DefaultVersioning** | Pointer to **string** | Should create version by default | [optional] 
-**DpEnableClassicKeyProtection** | Pointer to **string** | Enable classic key protection [\&quot;true\&quot;/\&quot;false\&quot;] | [optional] 
+**DefaultKeyName** | Pointer to **string** | Set the account default key based on the DFC key item name. Use \&quot;set-original-akeyless-default-key\&quot; to revert to using the original default key of the account. Empty string will change nothing. | [optional] 
+**DefaultShareLinkTtlMinutes** | Pointer to **string** | Set the default ttl in minutes for sharing item number between 60 and 43200 | [optional] 
+**DefaultVersioning** | Pointer to **string** | If set to true, new item version will be created on each update [true/false] | [optional] 
+**DpEnableClassicKeyProtection** | Pointer to **string** | Set to update protection with classic keys state [true/false] | [optional] 
 **ItemType** | Pointer to **string** | VersionSettingsObjectType defines object types for account version settings | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**ItemsDeletionProtection** | Pointer to **string** | Set or unset the default behaviour of items deletion protection [true/false] | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **JwtTtlDefault** | Pointer to **int64** | Default ttl | [optional] 
 **JwtTtlMax** | Pointer to **int64** | Maximum ttl | [optional] 
 **JwtTtlMin** | Pointer to **int64** | Minimum ttl | [optional] 
 **MaxVersions** | Pointer to **string** | Max versions | [optional] 
-**PasswordLength** | Pointer to **int64** | For PasswordPolicy use | [optional] 
+**PasswordLength** | Pointer to **int64** | Password length between 5 - to 50 characters | [optional] 
 **Phone** | Pointer to **string** | Phone number | [optional] 
 **PostalCode** | Pointer to **string** | Postal code | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
-**UseLowerLetters** | Pointer to **string** | For PasswordPolicy use | [optional] 
-**UseNumbers** | Pointer to **string** | For PasswordPolicy use | [optional] 
-**UseSpecialCharacters** | Pointer to **string** | For PasswordPolicy use | [optional] 
-**UseCapitalLetters** | Pointer to **string** | For PasswordPolicy use | [optional] 
+**UseLowerLetters** | Pointer to **string** | Password must contain lower case letters [true/false] | [optional] 
+**UseNumbers** | Pointer to **string** | Password must contain numbers [true/false] | [optional] 
+**UseSpecialCharacters** | Pointer to **string** | Password must contain special characters [true/false] | [optional] 
+**UseCapitalLetters** | Pointer to **string** | Password must contain capital letters [true/false] | [optional] 
 
 ## Methods
 
@@ -145,6 +148,56 @@ SetCountry sets Country field to given value.
 
 HasCountry returns a boolean if a field has been set.
 
+### GetDefaultKeyName
+
+`func (o *UpdateAccountSettings) GetDefaultKeyName() string`
+
+GetDefaultKeyName returns the DefaultKeyName field if non-nil, zero value otherwise.
+
+### GetDefaultKeyNameOk
+
+`func (o *UpdateAccountSettings) GetDefaultKeyNameOk() (*string, bool)`
+
+GetDefaultKeyNameOk returns a tuple with the DefaultKeyName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefaultKeyName
+
+`func (o *UpdateAccountSettings) SetDefaultKeyName(v string)`
+
+SetDefaultKeyName sets DefaultKeyName field to given value.
+
+### HasDefaultKeyName
+
+`func (o *UpdateAccountSettings) HasDefaultKeyName() bool`
+
+HasDefaultKeyName returns a boolean if a field has been set.
+
+### GetDefaultShareLinkTtlMinutes
+
+`func (o *UpdateAccountSettings) GetDefaultShareLinkTtlMinutes() string`
+
+GetDefaultShareLinkTtlMinutes returns the DefaultShareLinkTtlMinutes field if non-nil, zero value otherwise.
+
+### GetDefaultShareLinkTtlMinutesOk
+
+`func (o *UpdateAccountSettings) GetDefaultShareLinkTtlMinutesOk() (*string, bool)`
+
+GetDefaultShareLinkTtlMinutesOk returns a tuple with the DefaultShareLinkTtlMinutes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefaultShareLinkTtlMinutes
+
+`func (o *UpdateAccountSettings) SetDefaultShareLinkTtlMinutes(v string)`
+
+SetDefaultShareLinkTtlMinutes sets DefaultShareLinkTtlMinutes field to given value.
+
+### HasDefaultShareLinkTtlMinutes
+
+`func (o *UpdateAccountSettings) HasDefaultShareLinkTtlMinutes() bool`
+
+HasDefaultShareLinkTtlMinutes returns a boolean if a field has been set.
+
 ### GetDefaultVersioning
 
 `func (o *UpdateAccountSettings) GetDefaultVersioning() string`
@@ -219,6 +272,31 @@ SetItemType sets ItemType field to given value.
 `func (o *UpdateAccountSettings) HasItemType() bool`
 
 HasItemType returns a boolean if a field has been set.
+
+### GetItemsDeletionProtection
+
+`func (o *UpdateAccountSettings) GetItemsDeletionProtection() string`
+
+GetItemsDeletionProtection returns the ItemsDeletionProtection field if non-nil, zero value otherwise.
+
+### GetItemsDeletionProtectionOk
+
+`func (o *UpdateAccountSettings) GetItemsDeletionProtectionOk() (*string, bool)`
+
+GetItemsDeletionProtectionOk returns a tuple with the ItemsDeletionProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemsDeletionProtection
+
+`func (o *UpdateAccountSettings) SetItemsDeletionProtection(v string)`
+
+SetItemsDeletionProtection sets ItemsDeletionProtection field to given value.
+
+### HasItemsDeletionProtection
+
+`func (o *UpdateAccountSettings) HasItemsDeletionProtection() bool`
+
+HasItemsDeletionProtection returns a boolean if a field has been set.
 
 ### GetJson
 

@@ -19,10 +19,14 @@ import (
 type CreateSecret struct {
 	// for personal password manager
 	Accessibility *string `json:"accessibility,omitempty"`
-	// Protection from accidental deletion of this item
+	// For Password Management use, additional fields
+	CustomField *map[string]string `json:"custom-field,omitempty"`
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
+	// For Password Management use, reflect the website context
+	InjectUrl *[]string `json:"inject-url,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Deprecated - use description
@@ -32,31 +36,37 @@ type CreateSecret struct {
 	// Secret name
 	Name string `json:"name"`
 	// For Password Management use, additional fields
-	PasswordManagerCustomField *map[string]string `json:"password-manager-custom-field,omitempty"`
-	// For Password Management use, reflect the website context
-	PasswordManagerInjectUrl *[]string `json:"password-manager-inject-url,omitempty"`
-	// For Password Management use, additional fields
-	PasswordManagerPassword *string `json:"password-manager-password,omitempty"`
-	// For Password Management use
-	PasswordManagerUsername *string `json:"password-manager-username,omitempty"`
+	Password *string `json:"password,omitempty"`
 	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
 	ProtectionKey *string `json:"protection_key,omitempty"`
+	// Path to the SSH Certificate Issuer for your Akeyless Bastion
 	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
+	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
 	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
+	// Remote Desktop Username
+	SecureAccessRdpUser *string `json:"secure-access-rdp-user,omitempty"`
+	// Static-Secret values contains SSH Credentials, either Private Key or Password [password/private-key]
 	SecureAccessSshCreds *string `json:"secure-access-ssh-creds,omitempty"`
+	// Override the SSH username as indicated in SSH Certificate Issuer
 	SecureAccessSshUser *string `json:"secure-access-ssh-user,omitempty"`
+	// Destination URL to inject secrets
 	SecureAccessUrl *string `json:"secure-access-url,omitempty"`
+	// Secure browser via Akeyless Web Access Bastion
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
+	// Web-Proxy via Akeyless Web Access Bastion
 	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
-	// List of the tags attached to this secret
+	// Add tags attached to this object
 	Tags *[]string `json:"tags,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
-	// For Password Management use, reflect the website context
+	// The secret sub type [generic/password]
 	Type *string `json:"type,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// For Password Management use
+	Username *string `json:"username,omitempty"`
 	// The secret value
 	Value string `json:"value"`
 }
@@ -69,7 +79,15 @@ func NewCreateSecret(name string, value string, ) *CreateSecret {
 	this := CreateSecret{}
 	var accessibility string = "regular"
 	this.Accessibility = &accessibility
+	var json bool = false
+	this.Json = &json
 	this.Name = name
+	var secureAccessWebBrowsing bool = false
+	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
+	var secureAccessWebProxy bool = false
+	this.SecureAccessWebProxy = &secureAccessWebProxy
+	var type_ string = "generic"
+	this.Type = &type_
 	this.Value = value
 	return &this
 }
@@ -81,6 +99,14 @@ func NewCreateSecretWithDefaults() *CreateSecret {
 	this := CreateSecret{}
 	var accessibility string = "regular"
 	this.Accessibility = &accessibility
+	var json bool = false
+	this.Json = &json
+	var secureAccessWebBrowsing bool = false
+	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
+	var secureAccessWebProxy bool = false
+	this.SecureAccessWebProxy = &secureAccessWebProxy
+	var type_ string = "generic"
+	this.Type = &type_
 	return &this
 }
 
@@ -114,6 +140,38 @@ func (o *CreateSecret) HasAccessibility() bool {
 // SetAccessibility gets a reference to the given string and assigns it to the Accessibility field.
 func (o *CreateSecret) SetAccessibility(v string) {
 	o.Accessibility = &v
+}
+
+// GetCustomField returns the CustomField field value if set, zero value otherwise.
+func (o *CreateSecret) GetCustomField() map[string]string {
+	if o == nil || o.CustomField == nil {
+		var ret map[string]string
+		return ret
+	}
+	return *o.CustomField
+}
+
+// GetCustomFieldOk returns a tuple with the CustomField field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSecret) GetCustomFieldOk() (*map[string]string, bool) {
+	if o == nil || o.CustomField == nil {
+		return nil, false
+	}
+	return o.CustomField, true
+}
+
+// HasCustomField returns a boolean if a field has been set.
+func (o *CreateSecret) HasCustomField() bool {
+	if o != nil && o.CustomField != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomField gets a reference to the given map[string]string and assigns it to the CustomField field.
+func (o *CreateSecret) SetCustomField(v map[string]string) {
+	o.CustomField = &v
 }
 
 // GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
@@ -178,6 +236,38 @@ func (o *CreateSecret) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *CreateSecret) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetInjectUrl returns the InjectUrl field value if set, zero value otherwise.
+func (o *CreateSecret) GetInjectUrl() []string {
+	if o == nil || o.InjectUrl == nil {
+		var ret []string
+		return ret
+	}
+	return *o.InjectUrl
+}
+
+// GetInjectUrlOk returns a tuple with the InjectUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSecret) GetInjectUrlOk() (*[]string, bool) {
+	if o == nil || o.InjectUrl == nil {
+		return nil, false
+	}
+	return o.InjectUrl, true
+}
+
+// HasInjectUrl returns a boolean if a field has been set.
+func (o *CreateSecret) HasInjectUrl() bool {
+	if o != nil && o.InjectUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInjectUrl gets a reference to the given []string and assigns it to the InjectUrl field.
+func (o *CreateSecret) SetInjectUrl(v []string) {
+	o.InjectUrl = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -300,132 +390,36 @@ func (o *CreateSecret) SetName(v string) {
 	o.Name = v
 }
 
-// GetPasswordManagerCustomField returns the PasswordManagerCustomField field value if set, zero value otherwise.
-func (o *CreateSecret) GetPasswordManagerCustomField() map[string]string {
-	if o == nil || o.PasswordManagerCustomField == nil {
-		var ret map[string]string
-		return ret
-	}
-	return *o.PasswordManagerCustomField
-}
-
-// GetPasswordManagerCustomFieldOk returns a tuple with the PasswordManagerCustomField field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateSecret) GetPasswordManagerCustomFieldOk() (*map[string]string, bool) {
-	if o == nil || o.PasswordManagerCustomField == nil {
-		return nil, false
-	}
-	return o.PasswordManagerCustomField, true
-}
-
-// HasPasswordManagerCustomField returns a boolean if a field has been set.
-func (o *CreateSecret) HasPasswordManagerCustomField() bool {
-	if o != nil && o.PasswordManagerCustomField != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPasswordManagerCustomField gets a reference to the given map[string]string and assigns it to the PasswordManagerCustomField field.
-func (o *CreateSecret) SetPasswordManagerCustomField(v map[string]string) {
-	o.PasswordManagerCustomField = &v
-}
-
-// GetPasswordManagerInjectUrl returns the PasswordManagerInjectUrl field value if set, zero value otherwise.
-func (o *CreateSecret) GetPasswordManagerInjectUrl() []string {
-	if o == nil || o.PasswordManagerInjectUrl == nil {
-		var ret []string
-		return ret
-	}
-	return *o.PasswordManagerInjectUrl
-}
-
-// GetPasswordManagerInjectUrlOk returns a tuple with the PasswordManagerInjectUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateSecret) GetPasswordManagerInjectUrlOk() (*[]string, bool) {
-	if o == nil || o.PasswordManagerInjectUrl == nil {
-		return nil, false
-	}
-	return o.PasswordManagerInjectUrl, true
-}
-
-// HasPasswordManagerInjectUrl returns a boolean if a field has been set.
-func (o *CreateSecret) HasPasswordManagerInjectUrl() bool {
-	if o != nil && o.PasswordManagerInjectUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPasswordManagerInjectUrl gets a reference to the given []string and assigns it to the PasswordManagerInjectUrl field.
-func (o *CreateSecret) SetPasswordManagerInjectUrl(v []string) {
-	o.PasswordManagerInjectUrl = &v
-}
-
-// GetPasswordManagerPassword returns the PasswordManagerPassword field value if set, zero value otherwise.
-func (o *CreateSecret) GetPasswordManagerPassword() string {
-	if o == nil || o.PasswordManagerPassword == nil {
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *CreateSecret) GetPassword() string {
+	if o == nil || o.Password == nil {
 		var ret string
 		return ret
 	}
-	return *o.PasswordManagerPassword
+	return *o.Password
 }
 
-// GetPasswordManagerPasswordOk returns a tuple with the PasswordManagerPassword field value if set, nil otherwise
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateSecret) GetPasswordManagerPasswordOk() (*string, bool) {
-	if o == nil || o.PasswordManagerPassword == nil {
+func (o *CreateSecret) GetPasswordOk() (*string, bool) {
+	if o == nil || o.Password == nil {
 		return nil, false
 	}
-	return o.PasswordManagerPassword, true
+	return o.Password, true
 }
 
-// HasPasswordManagerPassword returns a boolean if a field has been set.
-func (o *CreateSecret) HasPasswordManagerPassword() bool {
-	if o != nil && o.PasswordManagerPassword != nil {
+// HasPassword returns a boolean if a field has been set.
+func (o *CreateSecret) HasPassword() bool {
+	if o != nil && o.Password != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetPasswordManagerPassword gets a reference to the given string and assigns it to the PasswordManagerPassword field.
-func (o *CreateSecret) SetPasswordManagerPassword(v string) {
-	o.PasswordManagerPassword = &v
-}
-
-// GetPasswordManagerUsername returns the PasswordManagerUsername field value if set, zero value otherwise.
-func (o *CreateSecret) GetPasswordManagerUsername() string {
-	if o == nil || o.PasswordManagerUsername == nil {
-		var ret string
-		return ret
-	}
-	return *o.PasswordManagerUsername
-}
-
-// GetPasswordManagerUsernameOk returns a tuple with the PasswordManagerUsername field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateSecret) GetPasswordManagerUsernameOk() (*string, bool) {
-	if o == nil || o.PasswordManagerUsername == nil {
-		return nil, false
-	}
-	return o.PasswordManagerUsername, true
-}
-
-// HasPasswordManagerUsername returns a boolean if a field has been set.
-func (o *CreateSecret) HasPasswordManagerUsername() bool {
-	if o != nil && o.PasswordManagerUsername != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPasswordManagerUsername gets a reference to the given string and assigns it to the PasswordManagerUsername field.
-func (o *CreateSecret) SetPasswordManagerUsername(v string) {
-	o.PasswordManagerUsername = &v
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *CreateSecret) SetPassword(v string) {
+	o.Password = &v
 }
 
 // GetProtectionKey returns the ProtectionKey field value if set, zero value otherwise.
@@ -554,6 +548,38 @@ func (o *CreateSecret) HasSecureAccessHost() bool {
 // SetSecureAccessHost gets a reference to the given []string and assigns it to the SecureAccessHost field.
 func (o *CreateSecret) SetSecureAccessHost(v []string) {
 	o.SecureAccessHost = &v
+}
+
+// GetSecureAccessRdpUser returns the SecureAccessRdpUser field value if set, zero value otherwise.
+func (o *CreateSecret) GetSecureAccessRdpUser() string {
+	if o == nil || o.SecureAccessRdpUser == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessRdpUser
+}
+
+// GetSecureAccessRdpUserOk returns a tuple with the SecureAccessRdpUser field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSecret) GetSecureAccessRdpUserOk() (*string, bool) {
+	if o == nil || o.SecureAccessRdpUser == nil {
+		return nil, false
+	}
+	return o.SecureAccessRdpUser, true
+}
+
+// HasSecureAccessRdpUser returns a boolean if a field has been set.
+func (o *CreateSecret) HasSecureAccessRdpUser() bool {
+	if o != nil && o.SecureAccessRdpUser != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessRdpUser gets a reference to the given string and assigns it to the SecureAccessRdpUser field.
+func (o *CreateSecret) SetSecureAccessRdpUser(v string) {
+	o.SecureAccessRdpUser = &v
 }
 
 // GetSecureAccessSshCreds returns the SecureAccessSshCreds field value if set, zero value otherwise.
@@ -844,6 +870,38 @@ func (o *CreateSecret) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *CreateSecret) GetUsername() string {
+	if o == nil || o.Username == nil {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSecret) GetUsernameOk() (*string, bool) {
+	if o == nil || o.Username == nil {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *CreateSecret) HasUsername() bool {
+	if o != nil && o.Username != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *CreateSecret) SetUsername(v string) {
+	o.Username = &v
+}
+
 // GetValue returns the Value field value
 func (o *CreateSecret) GetValue() string {
 	if o == nil  {
@@ -873,11 +931,17 @@ func (o CreateSecret) MarshalJSON() ([]byte, error) {
 	if o.Accessibility != nil {
 		toSerialize["accessibility"] = o.Accessibility
 	}
+	if o.CustomField != nil {
+		toSerialize["custom-field"] = o.CustomField
+	}
 	if o.DeleteProtection != nil {
 		toSerialize["delete_protection"] = o.DeleteProtection
 	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
+	}
+	if o.InjectUrl != nil {
+		toSerialize["inject-url"] = o.InjectUrl
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json
@@ -891,17 +955,8 @@ func (o CreateSecret) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.PasswordManagerCustomField != nil {
-		toSerialize["password-manager-custom-field"] = o.PasswordManagerCustomField
-	}
-	if o.PasswordManagerInjectUrl != nil {
-		toSerialize["password-manager-inject-url"] = o.PasswordManagerInjectUrl
-	}
-	if o.PasswordManagerPassword != nil {
-		toSerialize["password-manager-password"] = o.PasswordManagerPassword
-	}
-	if o.PasswordManagerUsername != nil {
-		toSerialize["password-manager-username"] = o.PasswordManagerUsername
+	if o.Password != nil {
+		toSerialize["password"] = o.Password
 	}
 	if o.ProtectionKey != nil {
 		toSerialize["protection_key"] = o.ProtectionKey
@@ -914,6 +969,9 @@ func (o CreateSecret) MarshalJSON() ([]byte, error) {
 	}
 	if o.SecureAccessHost != nil {
 		toSerialize["secure-access-host"] = o.SecureAccessHost
+	}
+	if o.SecureAccessRdpUser != nil {
+		toSerialize["secure-access-rdp-user"] = o.SecureAccessRdpUser
 	}
 	if o.SecureAccessSshCreds != nil {
 		toSerialize["secure-access-ssh-creds"] = o.SecureAccessSshCreds
@@ -941,6 +999,9 @@ func (o CreateSecret) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.Username != nil {
+		toSerialize["username"] = o.Username
 	}
 	if true {
 		toSerialize["value"] = o.Value

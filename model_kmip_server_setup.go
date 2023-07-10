@@ -17,12 +17,14 @@ import (
 
 // KmipServerSetup struct for KmipServerSetup
 type KmipServerSetup struct {
+	// Server certificate TTL in days
 	CertificateTtl *int64 `json:"certificate-ttl,omitempty"`
 	// Hostname
 	Hostname string `json:"hostname"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	Root *string `json:"root,omitempty"`
+	// Root path of KMIP Resources
+	Root string `json:"root"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -33,9 +35,14 @@ type KmipServerSetup struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKmipServerSetup(hostname string, ) *KmipServerSetup {
+func NewKmipServerSetup(hostname string, root string, ) *KmipServerSetup {
 	this := KmipServerSetup{}
+	var certificateTtl int64 = 90
+	this.CertificateTtl = &certificateTtl
 	this.Hostname = hostname
+	var json bool = false
+	this.Json = &json
+	this.Root = root
 	return &this
 }
 
@@ -44,6 +51,10 @@ func NewKmipServerSetup(hostname string, ) *KmipServerSetup {
 // but it doesn't guarantee that properties required by API are set
 func NewKmipServerSetupWithDefaults() *KmipServerSetup {
 	this := KmipServerSetup{}
+	var certificateTtl int64 = 90
+	this.CertificateTtl = &certificateTtl
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -135,36 +146,28 @@ func (o *KmipServerSetup) SetJson(v bool) {
 	o.Json = &v
 }
 
-// GetRoot returns the Root field value if set, zero value otherwise.
+// GetRoot returns the Root field value
 func (o *KmipServerSetup) GetRoot() string {
-	if o == nil || o.Root == nil {
+	if o == nil  {
 		var ret string
 		return ret
 	}
-	return *o.Root
+
+	return o.Root
 }
 
-// GetRootOk returns a tuple with the Root field value if set, nil otherwise
+// GetRootOk returns a tuple with the Root field value
 // and a boolean to check if the value has been set.
 func (o *KmipServerSetup) GetRootOk() (*string, bool) {
-	if o == nil || o.Root == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Root, true
+	return &o.Root, true
 }
 
-// HasRoot returns a boolean if a field has been set.
-func (o *KmipServerSetup) HasRoot() bool {
-	if o != nil && o.Root != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetRoot gets a reference to the given string and assigns it to the Root field.
+// SetRoot sets field value
 func (o *KmipServerSetup) SetRoot(v string) {
-	o.Root = &v
+	o.Root = v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -242,7 +245,7 @@ func (o KmipServerSetup) MarshalJSON() ([]byte, error) {
 	if o.Json != nil {
 		toSerialize["json"] = o.Json
 	}
-	if o.Root != nil {
+	if true {
 		toSerialize["root"] = o.Root
 	}
 	if o.Token != nil {
