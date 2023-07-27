@@ -11,9 +11,10 @@ Name | Type | Description | Notes
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
 **GwBoundIps** | Pointer to **[]string** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
 **Issuer** | Pointer to **string** | Issuer URL | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
-**JwksUri** | **string** | The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. | 
-**JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**JwksJsonData** | Pointer to **string** | The JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. base64 encoded string | [optional] 
+**JwksUri** | **string** | The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. | [default to "default_jwks_url"]
+**JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] [default to 0]
 **Name** | **string** | Auth Method name | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -237,6 +238,31 @@ SetJson sets Json field to given value.
 `func (o *CreateAuthMethodOAuth2) HasJson() bool`
 
 HasJson returns a boolean if a field has been set.
+
+### GetJwksJsonData
+
+`func (o *CreateAuthMethodOAuth2) GetJwksJsonData() string`
+
+GetJwksJsonData returns the JwksJsonData field if non-nil, zero value otherwise.
+
+### GetJwksJsonDataOk
+
+`func (o *CreateAuthMethodOAuth2) GetJwksJsonDataOk() (*string, bool)`
+
+GetJwksJsonDataOk returns a tuple with the JwksJsonData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJwksJsonData
+
+`func (o *CreateAuthMethodOAuth2) SetJwksJsonData(v string)`
+
+SetJwksJsonData sets JwksJsonData field to given value.
+
+### HasJwksJsonData
+
+`func (o *CreateAuthMethodOAuth2) HasJwksJsonData() bool`
+
+HasJwksJsonData returns a boolean if a field has been set.
 
 ### GetJwksUri
 

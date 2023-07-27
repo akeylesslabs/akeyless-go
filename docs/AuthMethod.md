@@ -7,11 +7,13 @@ Name | Type | Description | Notes
 **AccessDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **AccessInfo** | Pointer to [**AuthMethodAccessInfo**](AuthMethodAccessInfo.md) |  | [optional] 
 **AccountId** | Pointer to **string** |  | [optional] 
+**AssociatedGwIds** | Pointer to **[]int64** |  | [optional] 
 **AuthMethodAccessId** | Pointer to **string** |  | [optional] 
 **AuthMethodName** | Pointer to **string** |  | [optional] 
 **AuthMethodRolesAssoc** | Pointer to [**[]AuthMethodRoleAssociation**](AuthMethodRoleAssociation.md) |  | [optional] 
 **ClientPermissions** | Pointer to **[]string** |  | [optional] 
 **CreationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**IsApproved** | Pointer to **bool** |  | [optional] 
 **ModificationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 
 ## Methods
@@ -107,6 +109,31 @@ SetAccountId sets AccountId field to given value.
 `func (o *AuthMethod) HasAccountId() bool`
 
 HasAccountId returns a boolean if a field has been set.
+
+### GetAssociatedGwIds
+
+`func (o *AuthMethod) GetAssociatedGwIds() []int64`
+
+GetAssociatedGwIds returns the AssociatedGwIds field if non-nil, zero value otherwise.
+
+### GetAssociatedGwIdsOk
+
+`func (o *AuthMethod) GetAssociatedGwIdsOk() (*[]int64, bool)`
+
+GetAssociatedGwIdsOk returns a tuple with the AssociatedGwIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAssociatedGwIds
+
+`func (o *AuthMethod) SetAssociatedGwIds(v []int64)`
+
+SetAssociatedGwIds sets AssociatedGwIds field to given value.
+
+### HasAssociatedGwIds
+
+`func (o *AuthMethod) HasAssociatedGwIds() bool`
+
+HasAssociatedGwIds returns a boolean if a field has been set.
 
 ### GetAuthMethodAccessId
 
@@ -232,6 +259,31 @@ SetCreationDate sets CreationDate field to given value.
 `func (o *AuthMethod) HasCreationDate() bool`
 
 HasCreationDate returns a boolean if a field has been set.
+
+### GetIsApproved
+
+`func (o *AuthMethod) GetIsApproved() bool`
+
+GetIsApproved returns the IsApproved field if non-nil, zero value otherwise.
+
+### GetIsApprovedOk
+
+`func (o *AuthMethod) GetIsApprovedOk() (*bool, bool)`
+
+GetIsApprovedOk returns a tuple with the IsApproved field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsApproved
+
+`func (o *AuthMethod) SetIsApproved(v bool)`
+
+SetIsApproved sets IsApproved field to given value.
+
+### HasIsApproved
+
+`func (o *AuthMethod) HasIsApproved() bool`
+
+HasIsApproved returns a boolean if a field has been set.
 
 ### GetModificationDate
 

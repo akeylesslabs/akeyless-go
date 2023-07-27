@@ -17,25 +17,27 @@ import (
 
 // CreateCertificate struct for CreateCertificate
 type CreateCertificate struct {
-	// Content of the certificate PEM in a Base64 format.
+	// Content of the certificate in a Base64 format.
 	CertificateData *string `json:"certificate-data,omitempty"`
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
 	// How many days before the expiration of the certificate would you like to be notified.
 	ExpirationEventIn *[]string `json:"expiration-event-in,omitempty"`
+	// CertificateFormat of the certificate and private key, possible values: cer,crt,pem,pfx,p12. Required when passing inline certificate content with --certificate-data or --key-data, otherwise format is derived from the file extension.
+	Format *string `json:"format,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// The name of a key to use to encrypt the certificate's key (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
-	// Content of the certificate's private key PEM in a Base64 format.
+	// Content of the certificate's private key in a Base64 format.
 	KeyData *string `json:"key-data,omitempty"`
 	// Deprecated - use description
 	Metadata *string `json:"metadata,omitempty"`
 	// Certificate name
 	Name string `json:"name"`
-	// List of the tags attached to this certificate
+	// Add tags attached to this object
 	Tags *[]string `json:"tags,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
@@ -49,6 +51,8 @@ type CreateCertificate struct {
 // will change when the set of required properties is changed
 func NewCreateCertificate(name string, ) *CreateCertificate {
 	this := CreateCertificate{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -58,6 +62,8 @@ func NewCreateCertificate(name string, ) *CreateCertificate {
 // but it doesn't guarantee that properties required by API are set
 func NewCreateCertificateWithDefaults() *CreateCertificate {
 	this := CreateCertificate{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -187,6 +193,38 @@ func (o *CreateCertificate) HasExpirationEventIn() bool {
 // SetExpirationEventIn gets a reference to the given []string and assigns it to the ExpirationEventIn field.
 func (o *CreateCertificate) SetExpirationEventIn(v []string) {
 	o.ExpirationEventIn = &v
+}
+
+// GetFormat returns the Format field value if set, zero value otherwise.
+func (o *CreateCertificate) GetFormat() string {
+	if o == nil || o.Format == nil {
+		var ret string
+		return ret
+	}
+	return *o.Format
+}
+
+// GetFormatOk returns a tuple with the Format field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateCertificate) GetFormatOk() (*string, bool) {
+	if o == nil || o.Format == nil {
+		return nil, false
+	}
+	return o.Format, true
+}
+
+// HasFormat returns a boolean if a field has been set.
+func (o *CreateCertificate) HasFormat() bool {
+	if o != nil && o.Format != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFormat gets a reference to the given string and assigns it to the Format field.
+func (o *CreateCertificate) SetFormat(v string) {
+	o.Format = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -450,6 +488,9 @@ func (o CreateCertificate) MarshalJSON() ([]byte, error) {
 	}
 	if o.ExpirationEventIn != nil {
 		toSerialize["expiration-event-in"] = o.ExpirationEventIn
+	}
+	if o.Format != nil {
+		toSerialize["format"] = o.Format
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json

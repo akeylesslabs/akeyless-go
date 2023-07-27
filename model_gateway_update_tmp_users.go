@@ -37,6 +37,8 @@ type GatewayUpdateTmpUsers struct {
 // will change when the set of required properties is changed
 func NewGatewayUpdateTmpUsers(name string, newTtlMin int64, tmpCredsId string, ) *GatewayUpdateTmpUsers {
 	this := GatewayUpdateTmpUsers{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	this.NewTtlMin = newTtlMin
 	this.TmpCredsId = tmpCredsId
@@ -48,6 +50,8 @@ func NewGatewayUpdateTmpUsers(name string, newTtlMin int64, tmpCredsId string, )
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayUpdateTmpUsersWithDefaults() *GatewayUpdateTmpUsers {
 	this := GatewayUpdateTmpUsers{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

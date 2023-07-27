@@ -63,6 +63,10 @@ func NewUpdateAuthMethodOIDC(name string, uniqueIdentifier string, ) *UpdateAuth
 	this := UpdateAuthMethodOIDC{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	this.Name = name
 	this.UniqueIdentifier = uniqueIdentifier
 	return &this
@@ -75,6 +79,10 @@ func NewUpdateAuthMethodOIDCWithDefaults() *UpdateAuthMethodOIDC {
 	this := UpdateAuthMethodOIDC{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	return &this
 }
 

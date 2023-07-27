@@ -20,10 +20,12 @@ type ElasticsearchLogForwardingConfig struct {
 	ElasticsearchApiKey *string `json:"elasticsearch_api_key,omitempty"`
 	ElasticsearchAuthType *string `json:"elasticsearch_auth_type,omitempty"`
 	ElasticsearchCloudId *string `json:"elasticsearch_cloud_id,omitempty"`
+	ElasticsearchEnableTls *bool `json:"elasticsearch_enable_tls,omitempty"`
 	ElasticsearchIndex *string `json:"elasticsearch_index,omitempty"`
 	ElasticsearchNodes *string `json:"elasticsearch_nodes,omitempty"`
 	ElasticsearchPassword *string `json:"elasticsearch_password,omitempty"`
 	ElasticsearchServerType *string `json:"elasticsearch_server_type,omitempty"`
+	ElasticsearchTlsCertificate *string `json:"elasticsearch_tls_certificate,omitempty"`
 	ElasticsearchUserName *string `json:"elasticsearch_user_name,omitempty"`
 }
 
@@ -138,6 +140,38 @@ func (o *ElasticsearchLogForwardingConfig) HasElasticsearchCloudId() bool {
 // SetElasticsearchCloudId gets a reference to the given string and assigns it to the ElasticsearchCloudId field.
 func (o *ElasticsearchLogForwardingConfig) SetElasticsearchCloudId(v string) {
 	o.ElasticsearchCloudId = &v
+}
+
+// GetElasticsearchEnableTls returns the ElasticsearchEnableTls field value if set, zero value otherwise.
+func (o *ElasticsearchLogForwardingConfig) GetElasticsearchEnableTls() bool {
+	if o == nil || o.ElasticsearchEnableTls == nil {
+		var ret bool
+		return ret
+	}
+	return *o.ElasticsearchEnableTls
+}
+
+// GetElasticsearchEnableTlsOk returns a tuple with the ElasticsearchEnableTls field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ElasticsearchLogForwardingConfig) GetElasticsearchEnableTlsOk() (*bool, bool) {
+	if o == nil || o.ElasticsearchEnableTls == nil {
+		return nil, false
+	}
+	return o.ElasticsearchEnableTls, true
+}
+
+// HasElasticsearchEnableTls returns a boolean if a field has been set.
+func (o *ElasticsearchLogForwardingConfig) HasElasticsearchEnableTls() bool {
+	if o != nil && o.ElasticsearchEnableTls != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetElasticsearchEnableTls gets a reference to the given bool and assigns it to the ElasticsearchEnableTls field.
+func (o *ElasticsearchLogForwardingConfig) SetElasticsearchEnableTls(v bool) {
+	o.ElasticsearchEnableTls = &v
 }
 
 // GetElasticsearchIndex returns the ElasticsearchIndex field value if set, zero value otherwise.
@@ -268,6 +302,38 @@ func (o *ElasticsearchLogForwardingConfig) SetElasticsearchServerType(v string) 
 	o.ElasticsearchServerType = &v
 }
 
+// GetElasticsearchTlsCertificate returns the ElasticsearchTlsCertificate field value if set, zero value otherwise.
+func (o *ElasticsearchLogForwardingConfig) GetElasticsearchTlsCertificate() string {
+	if o == nil || o.ElasticsearchTlsCertificate == nil {
+		var ret string
+		return ret
+	}
+	return *o.ElasticsearchTlsCertificate
+}
+
+// GetElasticsearchTlsCertificateOk returns a tuple with the ElasticsearchTlsCertificate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ElasticsearchLogForwardingConfig) GetElasticsearchTlsCertificateOk() (*string, bool) {
+	if o == nil || o.ElasticsearchTlsCertificate == nil {
+		return nil, false
+	}
+	return o.ElasticsearchTlsCertificate, true
+}
+
+// HasElasticsearchTlsCertificate returns a boolean if a field has been set.
+func (o *ElasticsearchLogForwardingConfig) HasElasticsearchTlsCertificate() bool {
+	if o != nil && o.ElasticsearchTlsCertificate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetElasticsearchTlsCertificate gets a reference to the given string and assigns it to the ElasticsearchTlsCertificate field.
+func (o *ElasticsearchLogForwardingConfig) SetElasticsearchTlsCertificate(v string) {
+	o.ElasticsearchTlsCertificate = &v
+}
+
 // GetElasticsearchUserName returns the ElasticsearchUserName field value if set, zero value otherwise.
 func (o *ElasticsearchLogForwardingConfig) GetElasticsearchUserName() string {
 	if o == nil || o.ElasticsearchUserName == nil {
@@ -311,6 +377,9 @@ func (o ElasticsearchLogForwardingConfig) MarshalJSON() ([]byte, error) {
 	if o.ElasticsearchCloudId != nil {
 		toSerialize["elasticsearch_cloud_id"] = o.ElasticsearchCloudId
 	}
+	if o.ElasticsearchEnableTls != nil {
+		toSerialize["elasticsearch_enable_tls"] = o.ElasticsearchEnableTls
+	}
 	if o.ElasticsearchIndex != nil {
 		toSerialize["elasticsearch_index"] = o.ElasticsearchIndex
 	}
@@ -322,6 +391,9 @@ func (o ElasticsearchLogForwardingConfig) MarshalJSON() ([]byte, error) {
 	}
 	if o.ElasticsearchServerType != nil {
 		toSerialize["elasticsearch_server_type"] = o.ElasticsearchServerType
+	}
+	if o.ElasticsearchTlsCertificate != nil {
+		toSerialize["elasticsearch_tls_certificate"] = o.ElasticsearchTlsCertificate
 	}
 	if o.ElasticsearchUserName != nil {
 		toSerialize["elasticsearch_user_name"] = o.ElasticsearchUserName
