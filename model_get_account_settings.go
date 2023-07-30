@@ -31,6 +31,8 @@ type GetAccountSettings struct {
 // will change when the set of required properties is changed
 func NewGetAccountSettings() *GetAccountSettings {
 	this := GetAccountSettings{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -39,6 +41,8 @@ func NewGetAccountSettings() *GetAccountSettings {
 // but it doesn't guarantee that properties required by API are set
 func NewGetAccountSettingsWithDefaults() *GetAccountSettings {
 	this := GetAccountSettings{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

@@ -33,6 +33,8 @@ type StaticCredsAuth struct {
 // will change when the set of required properties is changed
 func NewStaticCredsAuth() *StaticCredsAuth {
 	this := StaticCredsAuth{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -41,6 +43,8 @@ func NewStaticCredsAuth() *StaticCredsAuth {
 // but it doesn't guarantee that properties required by API are set
 func NewStaticCredsAuthWithDefaults() *StaticCredsAuth {
 	this := StaticCredsAuth{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

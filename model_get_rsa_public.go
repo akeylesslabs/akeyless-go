@@ -33,6 +33,8 @@ type GetRSAPublic struct {
 // will change when the set of required properties is changed
 func NewGetRSAPublic(name string, ) *GetRSAPublic {
 	this := GetRSAPublic{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -42,6 +44,8 @@ func NewGetRSAPublic(name string, ) *GetRSAPublic {
 // but it doesn't guarantee that properties required by API are set
 func NewGetRSAPublicWithDefaults() *GetRSAPublic {
 	this := GetRSAPublic{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **AllowedOps** | Pointer to **[]string** |  | [optional] 
 **AssocId** | Pointer to **string** |  | [optional] 
 **AuthMethodSubClaims** | Pointer to [**map[string][]string**](array.md) |  | [optional] 
+**IsSubClaimsCaseSensitive** | Pointer to **bool** |  | [optional] 
 **RoleName** | Pointer to **string** |  | [optional] 
 **Rules** | Pointer to [**Rules**](Rules.md) |  | [optional] 
 
@@ -103,6 +104,31 @@ SetAuthMethodSubClaims sets AuthMethodSubClaims field to given value.
 `func (o *AuthMethodRoleAssociation) HasAuthMethodSubClaims() bool`
 
 HasAuthMethodSubClaims returns a boolean if a field has been set.
+
+### GetIsSubClaimsCaseSensitive
+
+`func (o *AuthMethodRoleAssociation) GetIsSubClaimsCaseSensitive() bool`
+
+GetIsSubClaimsCaseSensitive returns the IsSubClaimsCaseSensitive field if non-nil, zero value otherwise.
+
+### GetIsSubClaimsCaseSensitiveOk
+
+`func (o *AuthMethodRoleAssociation) GetIsSubClaimsCaseSensitiveOk() (*bool, bool)`
+
+GetIsSubClaimsCaseSensitiveOk returns a tuple with the IsSubClaimsCaseSensitive field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsSubClaimsCaseSensitive
+
+`func (o *AuthMethodRoleAssociation) SetIsSubClaimsCaseSensitive(v bool)`
+
+SetIsSubClaimsCaseSensitive sets IsSubClaimsCaseSensitive field to given value.
+
+### HasIsSubClaimsCaseSensitive
+
+`func (o *AuthMethodRoleAssociation) HasIsSubClaimsCaseSensitive() bool`
+
+HasIsSubClaimsCaseSensitive returns a boolean if a field has been set.
 
 ### GetRoleName
 

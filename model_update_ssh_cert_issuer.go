@@ -21,6 +21,8 @@ type UpdateSSHCertIssuer struct {
 	AddTag *[]string `json:"add-tag,omitempty"`
 	// Users allowed to fetch the certificate, e.g root,ubuntu
 	AllowedUsers string `json:"allowed-users"`
+	// Protection from accidental deletion of this item [true/false]
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
 	// Signed certificates with extensions, e.g permit-port-forwarding=\\\"\\\"
@@ -37,17 +39,23 @@ type UpdateSSHCertIssuer struct {
 	Principals *string `json:"principals,omitempty"`
 	// List of the existent tags that will be removed from this item
 	RmTag *[]string `json:"rm-tag,omitempty"`
+	// Bastion's SSH control API endpoint. E.g. https://my.bastion:9900
 	SecureAccessBastionApi *string `json:"secure-access-bastion-api,omitempty"`
+	// Bastion's SSH server. E.g. my.bastion:22
 	SecureAccessBastionSsh *string `json:"secure-access-bastion-ssh,omitempty"`
+	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
 	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
+	// SSH username to connect to target server, must be in 'Allowed Users' list
 	SecureAccessSshCredsUser *string `json:"secure-access-ssh-creds-user,omitempty"`
+	// Use internal SSH Bastion
 	SecureAccessUseInternalBastion *bool `json:"secure-access-use-internal-bastion,omitempty"`
 	// A key to sign the certificate with
 	SignerKeyName string `json:"signer-key-name"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
-	// he requested Time To Live for the certificate, in seconds
+	// The requested Time To Live for the certificate, in seconds
 	Ttl int64 `json:"ttl"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
@@ -60,6 +68,8 @@ type UpdateSSHCertIssuer struct {
 func NewUpdateSSHCertIssuer(allowedUsers string, name string, signerKeyName string, ttl int64, ) *UpdateSSHCertIssuer {
 	this := UpdateSSHCertIssuer{}
 	this.AllowedUsers = allowedUsers
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	this.SignerKeyName = signerKeyName
 	this.Ttl = ttl
@@ -71,6 +81,8 @@ func NewUpdateSSHCertIssuer(allowedUsers string, name string, signerKeyName stri
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateSSHCertIssuerWithDefaults() *UpdateSSHCertIssuer {
 	this := UpdateSSHCertIssuer{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -128,6 +140,38 @@ func (o *UpdateSSHCertIssuer) GetAllowedUsersOk() (*string, bool) {
 // SetAllowedUsers sets field value
 func (o *UpdateSSHCertIssuer) SetAllowedUsers(v string) {
 	o.AllowedUsers = v
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *UpdateSSHCertIssuer) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateSSHCertIssuer) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *UpdateSSHCertIssuer) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *UpdateSSHCertIssuer) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -689,6 +733,9 @@ func (o UpdateSSHCertIssuer) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["allowed-users"] = o.AllowedUsers
+	}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
 	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
