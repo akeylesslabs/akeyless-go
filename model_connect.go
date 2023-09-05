@@ -48,6 +48,8 @@ type Connect struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// Enable ssh-agent
+	UseSshAgent *bool `json:"use-ssh-agent,omitempty"`
 	// The jump box server
 	ViaBastion *string `json:"via-bastion,omitempty"`
 }
@@ -62,6 +64,10 @@ func NewConnect() *Connect {
 	this.BastionCtrlPort = &bastionCtrlPort
 	var bastionCtrlProto string = "http"
 	this.BastionCtrlProto = &bastionCtrlProto
+	var json bool = false
+	this.Json = &json
+	var sshLegacySigningAlg bool = false
+	this.SshLegacySigningAlg = &sshLegacySigningAlg
 	return &this
 }
 
@@ -74,6 +80,10 @@ func NewConnectWithDefaults() *Connect {
 	this.BastionCtrlPort = &bastionCtrlPort
 	var bastionCtrlProto string = "http"
 	this.BastionCtrlProto = &bastionCtrlProto
+	var json bool = false
+	this.Json = &json
+	var sshLegacySigningAlg bool = false
+	this.SshLegacySigningAlg = &sshLegacySigningAlg
 	return &this
 }
 
@@ -589,6 +599,38 @@ func (o *Connect) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUseSshAgent returns the UseSshAgent field value if set, zero value otherwise.
+func (o *Connect) GetUseSshAgent() bool {
+	if o == nil || o.UseSshAgent == nil {
+		var ret bool
+		return ret
+	}
+	return *o.UseSshAgent
+}
+
+// GetUseSshAgentOk returns a tuple with the UseSshAgent field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Connect) GetUseSshAgentOk() (*bool, bool) {
+	if o == nil || o.UseSshAgent == nil {
+		return nil, false
+	}
+	return o.UseSshAgent, true
+}
+
+// HasUseSshAgent returns a boolean if a field has been set.
+func (o *Connect) HasUseSshAgent() bool {
+	if o != nil && o.UseSshAgent != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUseSshAgent gets a reference to the given bool and assigns it to the UseSshAgent field.
+func (o *Connect) SetUseSshAgent(v bool) {
+	o.UseSshAgent = &v
+}
+
 // GetViaBastion returns the ViaBastion field value if set, zero value otherwise.
 func (o *Connect) GetViaBastion() string {
 	if o == nil || o.ViaBastion == nil {
@@ -670,6 +712,9 @@ func (o Connect) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.UseSshAgent != nil {
+		toSerialize["use-ssh-agent"] = o.UseSshAgent
 	}
 	if o.ViaBastion != nil {
 		toSerialize["via-bastion"] = o.ViaBastion

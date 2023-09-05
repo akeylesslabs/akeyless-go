@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Filter** | Pointer to **string** | Filter by auth method name or part of it | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **PaginationToken** | Pointer to **string** | Next page reference | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **Type** | Pointer to **[]string** | The Auth method types list of the requested method. In case it is empty, all types of auth methods will be returned. options: [api_key, azure_ad, oauth2/jwt, saml2, ldap, aws_iam, oidc, universal_identity, gcp, k8s, cert] | [optional] 

@@ -53,6 +53,10 @@ func NewUpdateAuthMethodUniversalIdentity(name string, ) *UpdateAuthMethodUniver
 	this := UpdateAuthMethodUniversalIdentity{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	this.Name = name
 	var ttl int32 = 60
 	this.Ttl = &ttl
@@ -66,6 +70,10 @@ func NewUpdateAuthMethodUniversalIdentityWithDefaults() *UpdateAuthMethodUnivers
 	this := UpdateAuthMethodUniversalIdentity{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	var ttl int32 = 60
 	this.Ttl = &ttl
 	return &this

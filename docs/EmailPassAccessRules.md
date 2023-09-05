@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Alg** | Pointer to **string** |  | [optional] 
 **Email** | Pointer to **string** | The Email value | [optional] 
+**EncEmailWithSharedKey** | Pointer to **string** | EncEmailWithSharedKey is the email of this auth method, encrypted with the shared auth/uam key (for use in uam) | [optional] 
 **HashPass** | Pointer to **string** | The password value | [optional] 
 
 ## Methods
@@ -76,6 +77,31 @@ SetEmail sets Email field to given value.
 `func (o *EmailPassAccessRules) HasEmail() bool`
 
 HasEmail returns a boolean if a field has been set.
+
+### GetEncEmailWithSharedKey
+
+`func (o *EmailPassAccessRules) GetEncEmailWithSharedKey() string`
+
+GetEncEmailWithSharedKey returns the EncEmailWithSharedKey field if non-nil, zero value otherwise.
+
+### GetEncEmailWithSharedKeyOk
+
+`func (o *EmailPassAccessRules) GetEncEmailWithSharedKeyOk() (*string, bool)`
+
+GetEncEmailWithSharedKeyOk returns a tuple with the EncEmailWithSharedKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEncEmailWithSharedKey
+
+`func (o *EmailPassAccessRules) SetEncEmailWithSharedKey(v string)`
+
+SetEncEmailWithSharedKey sets EncEmailWithSharedKey field to given value.
+
+### HasEncEmailWithSharedKey
+
+`func (o *EmailPassAccessRules) HasEncEmailWithSharedKey() bool`
+
+HasEncEmailWithSharedKey returns a boolean if a field has been set.
 
 ### GetHashPass
 

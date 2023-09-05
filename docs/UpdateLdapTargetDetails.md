@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BindDn** | Pointer to **string** |  | [optional] 
 **BindDnPassword** | Pointer to **string** |  | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
-**KeepPrevVersion** | Pointer to **string** |  | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**KeepPrevVersion** | Pointer to **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
 **Key** | Pointer to **string** |  | [optional] 
 **LdapCaCert** | Pointer to **string** |  | [optional] 
 **LdapUrl** | Pointer to **string** |  | [optional] 

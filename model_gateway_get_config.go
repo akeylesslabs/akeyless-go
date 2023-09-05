@@ -31,6 +31,8 @@ type GatewayGetConfig struct {
 // will change when the set of required properties is changed
 func NewGatewayGetConfig() *GatewayGetConfig {
 	this := GatewayGetConfig{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -39,6 +41,8 @@ func NewGatewayGetConfig() *GatewayGetConfig {
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayGetConfigWithDefaults() *GatewayGetConfig {
 	this := GatewayGetConfig{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

@@ -5,30 +5,31 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Accessibility** | Pointer to **string** | for personal password manager | [optional] [default to "regular"]
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
+**CustomField** | Pointer to **map[string]string** | For Password Management use, additional fields | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**InjectUrl** | Pointer to **[]string** | For Password Management use, reflect the website context | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Metadata** | Pointer to **string** | Deprecated - use description | [optional] 
 **MultilineValue** | Pointer to **bool** | The provided value is a multiline value (separated by &#39;\\n&#39;) | [optional] 
 **Name** | **string** | Secret name | 
-**PasswordManagerCustomField** | Pointer to **map[string]string** | For Password Management use, additional fields | [optional] 
-**PasswordManagerInjectUrl** | Pointer to **[]string** | For Password Management use, reflect the website context | [optional] 
-**PasswordManagerPassword** | Pointer to **string** | For Password Management use, additional fields | [optional] 
-**PasswordManagerUsername** | Pointer to **string** | For Password Management use | [optional] 
+**Password** | Pointer to **string** | For Password Management use, additional fields | [optional] 
 **ProtectionKey** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
-**SecureAccessBastionIssuer** | Pointer to **string** |  | [optional] 
-**SecureAccessEnable** | Pointer to **string** |  | [optional] 
-**SecureAccessHost** | Pointer to **[]string** |  | [optional] 
-**SecureAccessSshCreds** | Pointer to **string** |  | [optional] 
-**SecureAccessSshUser** | Pointer to **string** |  | [optional] 
-**SecureAccessUrl** | Pointer to **string** |  | [optional] 
-**SecureAccessWebBrowsing** | Pointer to **bool** |  | [optional] 
-**SecureAccessWebProxy** | Pointer to **bool** |  | [optional] 
-**Tags** | Pointer to **[]string** | List of the tags attached to this secret | [optional] 
+**SecureAccessBastionIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] 
+**SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
+**SecureAccessHost** | Pointer to **[]string** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
+**SecureAccessRdpUser** | Pointer to **string** | Remote Desktop Username | [optional] 
+**SecureAccessSshCreds** | Pointer to **string** | Static-Secret values contains SSH Credentials, either Private Key or Password [password/private-key] | [optional] 
+**SecureAccessSshUser** | Pointer to **string** | Override the SSH username as indicated in SSH Certificate Issuer | [optional] 
+**SecureAccessUrl** | Pointer to **string** | Destination URL to inject secrets | [optional] 
+**SecureAccessWebBrowsing** | Pointer to **bool** | Secure browser via Akeyless Web Access Bastion | [optional] [default to false]
+**SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless Web Access Bastion | [optional] [default to false]
+**Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
-**Type** | Pointer to **string** | For Password Management use, reflect the website context | [optional] 
+**Type** | Pointer to **string** | The secret sub type [generic/password] | [optional] [default to "generic"]
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
-**Value** | **string** | The secret value | 
+**Username** | Pointer to **string** | For Password Management use | [optional] 
+**Value** | **string** | The secret value (only relevant for type &#39;generic&#39;) | 
 
 ## Methods
 
@@ -73,6 +74,31 @@ SetAccessibility sets Accessibility field to given value.
 `func (o *CreateSecret) HasAccessibility() bool`
 
 HasAccessibility returns a boolean if a field has been set.
+
+### GetCustomField
+
+`func (o *CreateSecret) GetCustomField() map[string]string`
+
+GetCustomField returns the CustomField field if non-nil, zero value otherwise.
+
+### GetCustomFieldOk
+
+`func (o *CreateSecret) GetCustomFieldOk() (*map[string]string, bool)`
+
+GetCustomFieldOk returns a tuple with the CustomField field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomField
+
+`func (o *CreateSecret) SetCustomField(v map[string]string)`
+
+SetCustomField sets CustomField field to given value.
+
+### HasCustomField
+
+`func (o *CreateSecret) HasCustomField() bool`
+
+HasCustomField returns a boolean if a field has been set.
 
 ### GetDeleteProtection
 
@@ -123,6 +149,31 @@ SetDescription sets Description field to given value.
 `func (o *CreateSecret) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetInjectUrl
+
+`func (o *CreateSecret) GetInjectUrl() []string`
+
+GetInjectUrl returns the InjectUrl field if non-nil, zero value otherwise.
+
+### GetInjectUrlOk
+
+`func (o *CreateSecret) GetInjectUrlOk() (*[]string, bool)`
+
+GetInjectUrlOk returns a tuple with the InjectUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInjectUrl
+
+`func (o *CreateSecret) SetInjectUrl(v []string)`
+
+SetInjectUrl sets InjectUrl field to given value.
+
+### HasInjectUrl
+
+`func (o *CreateSecret) HasInjectUrl() bool`
+
+HasInjectUrl returns a boolean if a field has been set.
 
 ### GetJson
 
@@ -219,105 +270,30 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### GetPasswordManagerCustomField
+### GetPassword
 
-`func (o *CreateSecret) GetPasswordManagerCustomField() map[string]string`
+`func (o *CreateSecret) GetPassword() string`
 
-GetPasswordManagerCustomField returns the PasswordManagerCustomField field if non-nil, zero value otherwise.
+GetPassword returns the Password field if non-nil, zero value otherwise.
 
-### GetPasswordManagerCustomFieldOk
+### GetPasswordOk
 
-`func (o *CreateSecret) GetPasswordManagerCustomFieldOk() (*map[string]string, bool)`
+`func (o *CreateSecret) GetPasswordOk() (*string, bool)`
 
-GetPasswordManagerCustomFieldOk returns a tuple with the PasswordManagerCustomField field if it's non-nil, zero value otherwise
+GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPasswordManagerCustomField
+### SetPassword
 
-`func (o *CreateSecret) SetPasswordManagerCustomField(v map[string]string)`
+`func (o *CreateSecret) SetPassword(v string)`
 
-SetPasswordManagerCustomField sets PasswordManagerCustomField field to given value.
+SetPassword sets Password field to given value.
 
-### HasPasswordManagerCustomField
+### HasPassword
 
-`func (o *CreateSecret) HasPasswordManagerCustomField() bool`
+`func (o *CreateSecret) HasPassword() bool`
 
-HasPasswordManagerCustomField returns a boolean if a field has been set.
-
-### GetPasswordManagerInjectUrl
-
-`func (o *CreateSecret) GetPasswordManagerInjectUrl() []string`
-
-GetPasswordManagerInjectUrl returns the PasswordManagerInjectUrl field if non-nil, zero value otherwise.
-
-### GetPasswordManagerInjectUrlOk
-
-`func (o *CreateSecret) GetPasswordManagerInjectUrlOk() (*[]string, bool)`
-
-GetPasswordManagerInjectUrlOk returns a tuple with the PasswordManagerInjectUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPasswordManagerInjectUrl
-
-`func (o *CreateSecret) SetPasswordManagerInjectUrl(v []string)`
-
-SetPasswordManagerInjectUrl sets PasswordManagerInjectUrl field to given value.
-
-### HasPasswordManagerInjectUrl
-
-`func (o *CreateSecret) HasPasswordManagerInjectUrl() bool`
-
-HasPasswordManagerInjectUrl returns a boolean if a field has been set.
-
-### GetPasswordManagerPassword
-
-`func (o *CreateSecret) GetPasswordManagerPassword() string`
-
-GetPasswordManagerPassword returns the PasswordManagerPassword field if non-nil, zero value otherwise.
-
-### GetPasswordManagerPasswordOk
-
-`func (o *CreateSecret) GetPasswordManagerPasswordOk() (*string, bool)`
-
-GetPasswordManagerPasswordOk returns a tuple with the PasswordManagerPassword field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPasswordManagerPassword
-
-`func (o *CreateSecret) SetPasswordManagerPassword(v string)`
-
-SetPasswordManagerPassword sets PasswordManagerPassword field to given value.
-
-### HasPasswordManagerPassword
-
-`func (o *CreateSecret) HasPasswordManagerPassword() bool`
-
-HasPasswordManagerPassword returns a boolean if a field has been set.
-
-### GetPasswordManagerUsername
-
-`func (o *CreateSecret) GetPasswordManagerUsername() string`
-
-GetPasswordManagerUsername returns the PasswordManagerUsername field if non-nil, zero value otherwise.
-
-### GetPasswordManagerUsernameOk
-
-`func (o *CreateSecret) GetPasswordManagerUsernameOk() (*string, bool)`
-
-GetPasswordManagerUsernameOk returns a tuple with the PasswordManagerUsername field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPasswordManagerUsername
-
-`func (o *CreateSecret) SetPasswordManagerUsername(v string)`
-
-SetPasswordManagerUsername sets PasswordManagerUsername field to given value.
-
-### HasPasswordManagerUsername
-
-`func (o *CreateSecret) HasPasswordManagerUsername() bool`
-
-HasPasswordManagerUsername returns a boolean if a field has been set.
+HasPassword returns a boolean if a field has been set.
 
 ### GetProtectionKey
 
@@ -418,6 +394,31 @@ SetSecureAccessHost sets SecureAccessHost field to given value.
 `func (o *CreateSecret) HasSecureAccessHost() bool`
 
 HasSecureAccessHost returns a boolean if a field has been set.
+
+### GetSecureAccessRdpUser
+
+`func (o *CreateSecret) GetSecureAccessRdpUser() string`
+
+GetSecureAccessRdpUser returns the SecureAccessRdpUser field if non-nil, zero value otherwise.
+
+### GetSecureAccessRdpUserOk
+
+`func (o *CreateSecret) GetSecureAccessRdpUserOk() (*string, bool)`
+
+GetSecureAccessRdpUserOk returns a tuple with the SecureAccessRdpUser field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessRdpUser
+
+`func (o *CreateSecret) SetSecureAccessRdpUser(v string)`
+
+SetSecureAccessRdpUser sets SecureAccessRdpUser field to given value.
+
+### HasSecureAccessRdpUser
+
+`func (o *CreateSecret) HasSecureAccessRdpUser() bool`
+
+HasSecureAccessRdpUser returns a boolean if a field has been set.
 
 ### GetSecureAccessSshCreds
 
@@ -643,6 +644,31 @@ SetUidToken sets UidToken field to given value.
 `func (o *CreateSecret) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetUsername
+
+`func (o *CreateSecret) GetUsername() string`
+
+GetUsername returns the Username field if non-nil, zero value otherwise.
+
+### GetUsernameOk
+
+`func (o *CreateSecret) GetUsernameOk() (*string, bool)`
+
+GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsername
+
+`func (o *CreateSecret) SetUsername(v string)`
+
+SetUsername sets Username field to given value.
+
+### HasUsername
+
+`func (o *CreateSecret) HasUsername() bool`
+
+HasUsername returns a boolean if a field has been set.
 
 ### GetValue
 

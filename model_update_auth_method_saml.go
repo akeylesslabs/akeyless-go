@@ -55,6 +55,10 @@ func NewUpdateAuthMethodSAML(name string, uniqueIdentifier string, ) *UpdateAuth
 	this := UpdateAuthMethodSAML{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	this.Name = name
 	this.UniqueIdentifier = uniqueIdentifier
 	return &this
@@ -67,6 +71,10 @@ func NewUpdateAuthMethodSAMLWithDefaults() *UpdateAuthMethodSAML {
 	this := UpdateAuthMethodSAML{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	return &this
 }
 

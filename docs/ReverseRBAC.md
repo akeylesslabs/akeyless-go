@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Path** | **string** | Path to an object | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **Type** | **string** | Type of object (item, am, role) | 
