@@ -33,6 +33,8 @@ type GetTags struct {
 // will change when the set of required properties is changed
 func NewGetTags(name string, ) *GetTags {
 	this := GetTags{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -42,6 +44,8 @@ func NewGetTags(name string, ) *GetTags {
 // but it doesn't guarantee that properties required by API are set
 func NewGetTagsWithDefaults() *GetTags {
 	this := GetTags{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

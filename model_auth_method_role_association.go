@@ -20,6 +20,7 @@ type AuthMethodRoleAssociation struct {
 	AllowedOps *[]string `json:"allowed_ops,omitempty"`
 	AssocId *string `json:"assoc_id,omitempty"`
 	AuthMethodSubClaims *map[string][]string `json:"auth_method_sub_claims,omitempty"`
+	IsSubClaimsCaseSensitive *bool `json:"is_sub_claims_case_sensitive,omitempty"`
 	RoleName *string `json:"role_name,omitempty"`
 	Rules *Rules `json:"rules,omitempty"`
 }
@@ -137,6 +138,38 @@ func (o *AuthMethodRoleAssociation) SetAuthMethodSubClaims(v map[string][]string
 	o.AuthMethodSubClaims = &v
 }
 
+// GetIsSubClaimsCaseSensitive returns the IsSubClaimsCaseSensitive field value if set, zero value otherwise.
+func (o *AuthMethodRoleAssociation) GetIsSubClaimsCaseSensitive() bool {
+	if o == nil || o.IsSubClaimsCaseSensitive == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IsSubClaimsCaseSensitive
+}
+
+// GetIsSubClaimsCaseSensitiveOk returns a tuple with the IsSubClaimsCaseSensitive field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodRoleAssociation) GetIsSubClaimsCaseSensitiveOk() (*bool, bool) {
+	if o == nil || o.IsSubClaimsCaseSensitive == nil {
+		return nil, false
+	}
+	return o.IsSubClaimsCaseSensitive, true
+}
+
+// HasIsSubClaimsCaseSensitive returns a boolean if a field has been set.
+func (o *AuthMethodRoleAssociation) HasIsSubClaimsCaseSensitive() bool {
+	if o != nil && o.IsSubClaimsCaseSensitive != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIsSubClaimsCaseSensitive gets a reference to the given bool and assigns it to the IsSubClaimsCaseSensitive field.
+func (o *AuthMethodRoleAssociation) SetIsSubClaimsCaseSensitive(v bool) {
+	o.IsSubClaimsCaseSensitive = &v
+}
+
 // GetRoleName returns the RoleName field value if set, zero value otherwise.
 func (o *AuthMethodRoleAssociation) GetRoleName() string {
 	if o == nil || o.RoleName == nil {
@@ -211,6 +244,9 @@ func (o AuthMethodRoleAssociation) MarshalJSON() ([]byte, error) {
 	}
 	if o.AuthMethodSubClaims != nil {
 		toSerialize["auth_method_sub_claims"] = o.AuthMethodSubClaims
+	}
+	if o.IsSubClaimsCaseSensitive != nil {
+		toSerialize["is_sub_claims_case_sensitive"] = o.IsSubClaimsCaseSensitive
 	}
 	if o.RoleName != nil {
 		toSerialize["role_name"] = o.RoleName

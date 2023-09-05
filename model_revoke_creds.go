@@ -31,6 +31,8 @@ type RevokeCreds struct {
 // will change when the set of required properties is changed
 func NewRevokeCreds() *RevokeCreds {
 	this := RevokeCreds{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -39,6 +41,8 @@ func NewRevokeCreds() *RevokeCreds {
 // but it doesn't guarantee that properties required by API are set
 func NewRevokeCredsWithDefaults() *RevokeCreds {
 	this := RevokeCreds{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

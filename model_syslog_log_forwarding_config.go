@@ -17,10 +17,12 @@ import (
 
 // SyslogLogForwardingConfig struct for SyslogLogForwardingConfig
 type SyslogLogForwardingConfig struct {
+	SyslogEnableTls *bool `json:"syslog_enable_tls,omitempty"`
 	SyslogFormatter *string `json:"syslog_formatter,omitempty"`
 	SyslogHost *string `json:"syslog_host,omitempty"`
 	SyslogNetwork *string `json:"syslog_network,omitempty"`
 	SyslogTargetTag *string `json:"syslog_target_tag,omitempty"`
+	SyslogTlsCertificate *string `json:"syslog_tls_certificate,omitempty"`
 }
 
 // NewSyslogLogForwardingConfig instantiates a new SyslogLogForwardingConfig object
@@ -38,6 +40,38 @@ func NewSyslogLogForwardingConfig() *SyslogLogForwardingConfig {
 func NewSyslogLogForwardingConfigWithDefaults() *SyslogLogForwardingConfig {
 	this := SyslogLogForwardingConfig{}
 	return &this
+}
+
+// GetSyslogEnableTls returns the SyslogEnableTls field value if set, zero value otherwise.
+func (o *SyslogLogForwardingConfig) GetSyslogEnableTls() bool {
+	if o == nil || o.SyslogEnableTls == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SyslogEnableTls
+}
+
+// GetSyslogEnableTlsOk returns a tuple with the SyslogEnableTls field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SyslogLogForwardingConfig) GetSyslogEnableTlsOk() (*bool, bool) {
+	if o == nil || o.SyslogEnableTls == nil {
+		return nil, false
+	}
+	return o.SyslogEnableTls, true
+}
+
+// HasSyslogEnableTls returns a boolean if a field has been set.
+func (o *SyslogLogForwardingConfig) HasSyslogEnableTls() bool {
+	if o != nil && o.SyslogEnableTls != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSyslogEnableTls gets a reference to the given bool and assigns it to the SyslogEnableTls field.
+func (o *SyslogLogForwardingConfig) SetSyslogEnableTls(v bool) {
+	o.SyslogEnableTls = &v
 }
 
 // GetSyslogFormatter returns the SyslogFormatter field value if set, zero value otherwise.
@@ -168,8 +202,43 @@ func (o *SyslogLogForwardingConfig) SetSyslogTargetTag(v string) {
 	o.SyslogTargetTag = &v
 }
 
+// GetSyslogTlsCertificate returns the SyslogTlsCertificate field value if set, zero value otherwise.
+func (o *SyslogLogForwardingConfig) GetSyslogTlsCertificate() string {
+	if o == nil || o.SyslogTlsCertificate == nil {
+		var ret string
+		return ret
+	}
+	return *o.SyslogTlsCertificate
+}
+
+// GetSyslogTlsCertificateOk returns a tuple with the SyslogTlsCertificate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SyslogLogForwardingConfig) GetSyslogTlsCertificateOk() (*string, bool) {
+	if o == nil || o.SyslogTlsCertificate == nil {
+		return nil, false
+	}
+	return o.SyslogTlsCertificate, true
+}
+
+// HasSyslogTlsCertificate returns a boolean if a field has been set.
+func (o *SyslogLogForwardingConfig) HasSyslogTlsCertificate() bool {
+	if o != nil && o.SyslogTlsCertificate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSyslogTlsCertificate gets a reference to the given string and assigns it to the SyslogTlsCertificate field.
+func (o *SyslogLogForwardingConfig) SetSyslogTlsCertificate(v string) {
+	o.SyslogTlsCertificate = &v
+}
+
 func (o SyslogLogForwardingConfig) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.SyslogEnableTls != nil {
+		toSerialize["syslog_enable_tls"] = o.SyslogEnableTls
+	}
 	if o.SyslogFormatter != nil {
 		toSerialize["syslog_formatter"] = o.SyslogFormatter
 	}
@@ -181,6 +250,9 @@ func (o SyslogLogForwardingConfig) MarshalJSON() ([]byte, error) {
 	}
 	if o.SyslogTargetTag != nil {
 		toSerialize["syslog_target_tag"] = o.SyslogTargetTag
+	}
+	if o.SyslogTlsCertificate != nil {
+		toSerialize["syslog_tls_certificate"] = o.SyslogTlsCertificate
 	}
 	return json.Marshal(toSerialize)
 }

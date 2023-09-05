@@ -25,16 +25,26 @@ type CreatePKICertIssuer struct {
 	AllowedDomains *string `json:"allowed-domains,omitempty"`
 	// A list of the allowed URIs that clients can request to be included in the certificate as part of the URI Subject Alternative Names (in a comma-delimited list)
 	AllowedUriSans *string `json:"allowed-uri-sans,omitempty"`
+	// The name of an existing CA target to attach this PKI Certificate Issuer to, required in Public CA mode
+	CaTarget *string `json:"ca-target,omitempty"`
 	// If set, certificates will be flagged for client auth use
 	ClientFlag *bool `json:"client-flag,omitempty"`
 	// If set, certificates will be flagged for code signing use
 	CodeSigningFlag *bool `json:"code-signing-flag,omitempty"`
 	// A comma-separated list of countries that will be set in the issued certificate
 	Country *string `json:"country,omitempty"`
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
+	// A path in which to save generated certificates
+	DestinationPath *string `json:"destination-path,omitempty"`
+	// How many days before the expiration of the certificate would you like to be notified.
+	ExpirationEventIn *[]string `json:"expiration-event-in,omitempty"`
+	// The GW cluster URL to issue the certificate from, required in Public CA mode
+	GwClusterUrl *string `json:"gw-cluster-url,omitempty"`
+	// If set, the basic constraints extension will be added to certificate
+	IsCa *bool `json:"is-ca,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// key-usage
@@ -55,11 +65,13 @@ type CreatePKICertIssuer struct {
 	Organizations *string `json:"organizations,omitempty"`
 	// A comma-separated list of postal codes that will be set in the issued certificate
 	PostalCode *string `json:"postal-code,omitempty"`
+	// Whether to protect generated certificates from deletion
+	ProtectCertificates *bool `json:"protect-certificates,omitempty"`
 	// A comma-separated list of provinces that will be set in the issued certificate
 	Province *string `json:"province,omitempty"`
 	// If set, certificates will be flagged for server auth use
 	ServerFlag *bool `json:"server-flag,omitempty"`
-	// A key to sign the certificate with
+	// A key to sign the certificate with, required in Private CA mode
 	SignerKeyName string `json:"signer-key-name"`
 	// A comma-separated list of street addresses that will be set in the issued certificate
 	StreetAddress *string `json:"street-address,omitempty"`
@@ -67,7 +79,7 @@ type CreatePKICertIssuer struct {
 	Tag *[]string `json:"tag,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
-	// he requested Time To Live for the certificate, in seconds
+	// The maximum requested Time To Live for issued certificates, in seconds. In case of Public CA, this is based on the CA target's supported maximum TTLs
 	Ttl int64 `json:"ttl"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
@@ -79,6 +91,8 @@ type CreatePKICertIssuer struct {
 // will change when the set of required properties is changed
 func NewCreatePKICertIssuer(name string, signerKeyName string, ttl int64, ) *CreatePKICertIssuer {
 	this := CreatePKICertIssuer{}
+	var json bool = false
+	this.Json = &json
 	var keyUsage string = "DigitalSignature,KeyAgreement,KeyEncipherment"
 	this.KeyUsage = &keyUsage
 	this.Name = name
@@ -92,8 +106,12 @@ func NewCreatePKICertIssuer(name string, signerKeyName string, ttl int64, ) *Cre
 // but it doesn't guarantee that properties required by API are set
 func NewCreatePKICertIssuerWithDefaults() *CreatePKICertIssuer {
 	this := CreatePKICertIssuer{}
+	var json bool = false
+	this.Json = &json
 	var keyUsage string = "DigitalSignature,KeyAgreement,KeyEncipherment"
 	this.KeyUsage = &keyUsage
+	var signerKeyName string = "dummy_signer_key"
+	this.SignerKeyName = signerKeyName
 	return &this
 }
 
@@ -223,6 +241,38 @@ func (o *CreatePKICertIssuer) HasAllowedUriSans() bool {
 // SetAllowedUriSans gets a reference to the given string and assigns it to the AllowedUriSans field.
 func (o *CreatePKICertIssuer) SetAllowedUriSans(v string) {
 	o.AllowedUriSans = &v
+}
+
+// GetCaTarget returns the CaTarget field value if set, zero value otherwise.
+func (o *CreatePKICertIssuer) GetCaTarget() string {
+	if o == nil || o.CaTarget == nil {
+		var ret string
+		return ret
+	}
+	return *o.CaTarget
+}
+
+// GetCaTargetOk returns a tuple with the CaTarget field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreatePKICertIssuer) GetCaTargetOk() (*string, bool) {
+	if o == nil || o.CaTarget == nil {
+		return nil, false
+	}
+	return o.CaTarget, true
+}
+
+// HasCaTarget returns a boolean if a field has been set.
+func (o *CreatePKICertIssuer) HasCaTarget() bool {
+	if o != nil && o.CaTarget != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCaTarget gets a reference to the given string and assigns it to the CaTarget field.
+func (o *CreatePKICertIssuer) SetCaTarget(v string) {
+	o.CaTarget = &v
 }
 
 // GetClientFlag returns the ClientFlag field value if set, zero value otherwise.
@@ -383,6 +433,134 @@ func (o *CreatePKICertIssuer) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *CreatePKICertIssuer) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetDestinationPath returns the DestinationPath field value if set, zero value otherwise.
+func (o *CreatePKICertIssuer) GetDestinationPath() string {
+	if o == nil || o.DestinationPath == nil {
+		var ret string
+		return ret
+	}
+	return *o.DestinationPath
+}
+
+// GetDestinationPathOk returns a tuple with the DestinationPath field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreatePKICertIssuer) GetDestinationPathOk() (*string, bool) {
+	if o == nil || o.DestinationPath == nil {
+		return nil, false
+	}
+	return o.DestinationPath, true
+}
+
+// HasDestinationPath returns a boolean if a field has been set.
+func (o *CreatePKICertIssuer) HasDestinationPath() bool {
+	if o != nil && o.DestinationPath != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDestinationPath gets a reference to the given string and assigns it to the DestinationPath field.
+func (o *CreatePKICertIssuer) SetDestinationPath(v string) {
+	o.DestinationPath = &v
+}
+
+// GetExpirationEventIn returns the ExpirationEventIn field value if set, zero value otherwise.
+func (o *CreatePKICertIssuer) GetExpirationEventIn() []string {
+	if o == nil || o.ExpirationEventIn == nil {
+		var ret []string
+		return ret
+	}
+	return *o.ExpirationEventIn
+}
+
+// GetExpirationEventInOk returns a tuple with the ExpirationEventIn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreatePKICertIssuer) GetExpirationEventInOk() (*[]string, bool) {
+	if o == nil || o.ExpirationEventIn == nil {
+		return nil, false
+	}
+	return o.ExpirationEventIn, true
+}
+
+// HasExpirationEventIn returns a boolean if a field has been set.
+func (o *CreatePKICertIssuer) HasExpirationEventIn() bool {
+	if o != nil && o.ExpirationEventIn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExpirationEventIn gets a reference to the given []string and assigns it to the ExpirationEventIn field.
+func (o *CreatePKICertIssuer) SetExpirationEventIn(v []string) {
+	o.ExpirationEventIn = &v
+}
+
+// GetGwClusterUrl returns the GwClusterUrl field value if set, zero value otherwise.
+func (o *CreatePKICertIssuer) GetGwClusterUrl() string {
+	if o == nil || o.GwClusterUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.GwClusterUrl
+}
+
+// GetGwClusterUrlOk returns a tuple with the GwClusterUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreatePKICertIssuer) GetGwClusterUrlOk() (*string, bool) {
+	if o == nil || o.GwClusterUrl == nil {
+		return nil, false
+	}
+	return o.GwClusterUrl, true
+}
+
+// HasGwClusterUrl returns a boolean if a field has been set.
+func (o *CreatePKICertIssuer) HasGwClusterUrl() bool {
+	if o != nil && o.GwClusterUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGwClusterUrl gets a reference to the given string and assigns it to the GwClusterUrl field.
+func (o *CreatePKICertIssuer) SetGwClusterUrl(v string) {
+	o.GwClusterUrl = &v
+}
+
+// GetIsCa returns the IsCa field value if set, zero value otherwise.
+func (o *CreatePKICertIssuer) GetIsCa() bool {
+	if o == nil || o.IsCa == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IsCa
+}
+
+// GetIsCaOk returns a tuple with the IsCa field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreatePKICertIssuer) GetIsCaOk() (*bool, bool) {
+	if o == nil || o.IsCa == nil {
+		return nil, false
+	}
+	return o.IsCa, true
+}
+
+// HasIsCa returns a boolean if a field has been set.
+func (o *CreatePKICertIssuer) HasIsCa() bool {
+	if o != nil && o.IsCa != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIsCa gets a reference to the given bool and assigns it to the IsCa field.
+func (o *CreatePKICertIssuer) SetIsCa(v bool) {
+	o.IsCa = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -697,6 +875,38 @@ func (o *CreatePKICertIssuer) SetPostalCode(v string) {
 	o.PostalCode = &v
 }
 
+// GetProtectCertificates returns the ProtectCertificates field value if set, zero value otherwise.
+func (o *CreatePKICertIssuer) GetProtectCertificates() bool {
+	if o == nil || o.ProtectCertificates == nil {
+		var ret bool
+		return ret
+	}
+	return *o.ProtectCertificates
+}
+
+// GetProtectCertificatesOk returns a tuple with the ProtectCertificates field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreatePKICertIssuer) GetProtectCertificatesOk() (*bool, bool) {
+	if o == nil || o.ProtectCertificates == nil {
+		return nil, false
+	}
+	return o.ProtectCertificates, true
+}
+
+// HasProtectCertificates returns a boolean if a field has been set.
+func (o *CreatePKICertIssuer) HasProtectCertificates() bool {
+	if o != nil && o.ProtectCertificates != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProtectCertificates gets a reference to the given bool and assigns it to the ProtectCertificates field.
+func (o *CreatePKICertIssuer) SetProtectCertificates(v bool) {
+	o.ProtectCertificates = &v
+}
+
 // GetProvince returns the Province field value if set, zero value otherwise.
 func (o *CreatePKICertIssuer) GetProvince() string {
 	if o == nil || o.Province == nil {
@@ -951,6 +1161,9 @@ func (o CreatePKICertIssuer) MarshalJSON() ([]byte, error) {
 	if o.AllowedUriSans != nil {
 		toSerialize["allowed-uri-sans"] = o.AllowedUriSans
 	}
+	if o.CaTarget != nil {
+		toSerialize["ca-target"] = o.CaTarget
+	}
 	if o.ClientFlag != nil {
 		toSerialize["client-flag"] = o.ClientFlag
 	}
@@ -965,6 +1178,18 @@ func (o CreatePKICertIssuer) MarshalJSON() ([]byte, error) {
 	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
+	}
+	if o.DestinationPath != nil {
+		toSerialize["destination-path"] = o.DestinationPath
+	}
+	if o.ExpirationEventIn != nil {
+		toSerialize["expiration-event-in"] = o.ExpirationEventIn
+	}
+	if o.GwClusterUrl != nil {
+		toSerialize["gw-cluster-url"] = o.GwClusterUrl
+	}
+	if o.IsCa != nil {
+		toSerialize["is-ca"] = o.IsCa
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json
@@ -995,6 +1220,9 @@ func (o CreatePKICertIssuer) MarshalJSON() ([]byte, error) {
 	}
 	if o.PostalCode != nil {
 		toSerialize["postal-code"] = o.PostalCode
+	}
+	if o.ProtectCertificates != nil {
+		toSerialize["protect-certificates"] = o.ProtectCertificates
 	}
 	if o.Province != nil {
 		toSerialize["province"] = o.Province

@@ -41,6 +41,8 @@ type VerifyPKCS1 struct {
 // will change when the set of required properties is changed
 func NewVerifyPKCS1(keyName string, message string, signature string, ) *VerifyPKCS1 {
 	this := VerifyPKCS1{}
+	var json bool = false
+	this.Json = &json
 	this.KeyName = keyName
 	this.Message = message
 	this.Signature = signature
@@ -52,6 +54,8 @@ func NewVerifyPKCS1(keyName string, message string, signature string, ) *VerifyP
 // but it doesn't guarantee that properties required by API are set
 func NewVerifyPKCS1WithDefaults() *VerifyPKCS1 {
 	this := VerifyPKCS1{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

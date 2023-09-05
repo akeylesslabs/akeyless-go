@@ -38,6 +38,8 @@ type KmipClientSetRule struct {
 func NewKmipClientSetRule(capability []string, path string, ) *KmipClientSetRule {
 	this := KmipClientSetRule{}
 	this.Capability = capability
+	var json bool = false
+	this.Json = &json
 	this.Path = path
 	return &this
 }
@@ -47,6 +49,8 @@ func NewKmipClientSetRule(capability []string, path string, ) *KmipClientSetRule
 // but it doesn't guarantee that properties required by API are set
 func NewKmipClientSetRuleWithDefaults() *KmipClientSetRule {
 	this := KmipClientSetRule{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

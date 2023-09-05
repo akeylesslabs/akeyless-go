@@ -37,6 +37,8 @@ type ListTargets struct {
 // will change when the set of required properties is changed
 func NewListTargets() *ListTargets {
 	this := ListTargets{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -45,6 +47,8 @@ func NewListTargets() *ListTargets {
 // but it doesn't guarantee that properties required by API are set
 func NewListTargetsWithDefaults() *ListTargets {
 	this := ListTargets{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

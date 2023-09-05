@@ -62,6 +62,10 @@ func NewCreateAuthMethodGCP(audience string, name string, type_ string, ) *Creat
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
 	this.Audience = audience
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	this.Name = name
 	this.Type = type_
 	return &this
@@ -76,6 +80,10 @@ func NewCreateAuthMethodGCPWithDefaults() *CreateAuthMethodGCP {
 	this.AccessExpires = &accessExpires
 	var audience string = "akeyless.io"
 	this.Audience = audience
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	return &this
 }
 
