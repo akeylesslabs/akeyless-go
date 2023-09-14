@@ -5,7 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **LogstashDns** | Pointer to **string** |  | [optional] 
+**LogstashEnableTls** | Pointer to **bool** |  | [optional] 
 **LogstashProtocol** | Pointer to **string** |  | [optional] 
+**LogstashTlsCertificate** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -51,6 +53,31 @@ SetLogstashDns sets LogstashDns field to given value.
 
 HasLogstashDns returns a boolean if a field has been set.
 
+### GetLogstashEnableTls
+
+`func (o *LogstashLogForwardingConfig) GetLogstashEnableTls() bool`
+
+GetLogstashEnableTls returns the LogstashEnableTls field if non-nil, zero value otherwise.
+
+### GetLogstashEnableTlsOk
+
+`func (o *LogstashLogForwardingConfig) GetLogstashEnableTlsOk() (*bool, bool)`
+
+GetLogstashEnableTlsOk returns a tuple with the LogstashEnableTls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLogstashEnableTls
+
+`func (o *LogstashLogForwardingConfig) SetLogstashEnableTls(v bool)`
+
+SetLogstashEnableTls sets LogstashEnableTls field to given value.
+
+### HasLogstashEnableTls
+
+`func (o *LogstashLogForwardingConfig) HasLogstashEnableTls() bool`
+
+HasLogstashEnableTls returns a boolean if a field has been set.
+
 ### GetLogstashProtocol
 
 `func (o *LogstashLogForwardingConfig) GetLogstashProtocol() string`
@@ -75,6 +102,31 @@ SetLogstashProtocol sets LogstashProtocol field to given value.
 `func (o *LogstashLogForwardingConfig) HasLogstashProtocol() bool`
 
 HasLogstashProtocol returns a boolean if a field has been set.
+
+### GetLogstashTlsCertificate
+
+`func (o *LogstashLogForwardingConfig) GetLogstashTlsCertificate() string`
+
+GetLogstashTlsCertificate returns the LogstashTlsCertificate field if non-nil, zero value otherwise.
+
+### GetLogstashTlsCertificateOk
+
+`func (o *LogstashLogForwardingConfig) GetLogstashTlsCertificateOk() (*string, bool)`
+
+GetLogstashTlsCertificateOk returns a tuple with the LogstashTlsCertificate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLogstashTlsCertificate
+
+`func (o *LogstashLogForwardingConfig) SetLogstashTlsCertificate(v string)`
+
+SetLogstashTlsCertificate sets LogstashTlsCertificate field to given value.
+
+### HasLogstashTlsCertificate
+
+`func (o *LogstashLogForwardingConfig) HasLogstashTlsCertificate() bool`
+
+HasLogstashTlsCertificate returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

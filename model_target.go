@@ -30,9 +30,11 @@ type Target struct {
 	LastVersion *int32 `json:"last_version,omitempty"`
 	ModificationDate *time.Time `json:"modification_date,omitempty"`
 	ProtectionKeyName *string `json:"protection_key_name,omitempty"`
+	TargetDetails *string `json:"target_details,omitempty"`
 	TargetId *int64 `json:"target_id,omitempty"`
 	TargetItemsAssoc *[]TargetItemAssociation `json:"target_items_assoc,omitempty"`
 	TargetName *string `json:"target_name,omitempty"`
+	TargetSubType *string `json:"target_sub_type,omitempty"`
 	TargetType *string `json:"target_type,omitempty"`
 	TargetVersions *[]ItemVersion `json:"target_versions,omitempty"`
 	WithCustomerFragment *bool `json:"with_customer_fragment,omitempty"`
@@ -407,6 +409,38 @@ func (o *Target) SetProtectionKeyName(v string) {
 	o.ProtectionKeyName = &v
 }
 
+// GetTargetDetails returns the TargetDetails field value if set, zero value otherwise.
+func (o *Target) GetTargetDetails() string {
+	if o == nil || o.TargetDetails == nil {
+		var ret string
+		return ret
+	}
+	return *o.TargetDetails
+}
+
+// GetTargetDetailsOk returns a tuple with the TargetDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Target) GetTargetDetailsOk() (*string, bool) {
+	if o == nil || o.TargetDetails == nil {
+		return nil, false
+	}
+	return o.TargetDetails, true
+}
+
+// HasTargetDetails returns a boolean if a field has been set.
+func (o *Target) HasTargetDetails() bool {
+	if o != nil && o.TargetDetails != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetDetails gets a reference to the given string and assigns it to the TargetDetails field.
+func (o *Target) SetTargetDetails(v string) {
+	o.TargetDetails = &v
+}
+
 // GetTargetId returns the TargetId field value if set, zero value otherwise.
 func (o *Target) GetTargetId() int64 {
 	if o == nil || o.TargetId == nil {
@@ -501,6 +535,38 @@ func (o *Target) HasTargetName() bool {
 // SetTargetName gets a reference to the given string and assigns it to the TargetName field.
 func (o *Target) SetTargetName(v string) {
 	o.TargetName = &v
+}
+
+// GetTargetSubType returns the TargetSubType field value if set, zero value otherwise.
+func (o *Target) GetTargetSubType() string {
+	if o == nil || o.TargetSubType == nil {
+		var ret string
+		return ret
+	}
+	return *o.TargetSubType
+}
+
+// GetTargetSubTypeOk returns a tuple with the TargetSubType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Target) GetTargetSubTypeOk() (*string, bool) {
+	if o == nil || o.TargetSubType == nil {
+		return nil, false
+	}
+	return o.TargetSubType, true
+}
+
+// HasTargetSubType returns a boolean if a field has been set.
+func (o *Target) HasTargetSubType() bool {
+	if o != nil && o.TargetSubType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetSubType gets a reference to the given string and assigns it to the TargetSubType field.
+func (o *Target) SetTargetSubType(v string) {
+	o.TargetSubType = &v
 }
 
 // GetTargetType returns the TargetType field value if set, zero value otherwise.
@@ -634,6 +700,9 @@ func (o Target) MarshalJSON() ([]byte, error) {
 	if o.ProtectionKeyName != nil {
 		toSerialize["protection_key_name"] = o.ProtectionKeyName
 	}
+	if o.TargetDetails != nil {
+		toSerialize["target_details"] = o.TargetDetails
+	}
 	if o.TargetId != nil {
 		toSerialize["target_id"] = o.TargetId
 	}
@@ -642,6 +711,9 @@ func (o Target) MarshalJSON() ([]byte, error) {
 	}
 	if o.TargetName != nil {
 		toSerialize["target_name"] = o.TargetName
+	}
+	if o.TargetSubType != nil {
+		toSerialize["target_sub_type"] = o.TargetSubType
 	}
 	if o.TargetType != nil {
 		toSerialize["target_type"] = o.TargetType

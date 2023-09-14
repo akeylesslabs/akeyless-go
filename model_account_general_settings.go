@@ -17,9 +17,17 @@ import (
 
 // AccountGeneralSettings AccountGeneralSettings describes general settings for an account
 type AccountGeneralSettings struct {
+	// AccountDefaultKeyItemID is the item ID of the DFC key item configured as the default protection key
+	AccountDefaultKeyItemId *int64 `json:"account_default_key_item_id,omitempty"`
+	// AccountDefaultKeyName is the name of the DFC key item configured as the default key This is here simply for the response to include the item name in addition to the display ID so the client can properly show this to the user. It will not be saved to the DB, only the AccountDefaultKeyItemID will.
+	AccountDefaultKeyName *string `json:"account_default_key_name,omitempty"`
 	DataProtectionSection *DataProtectionSection `json:"data_protection_section,omitempty"`
 	EnableRequestForAccess *bool `json:"enable_request_for_access,omitempty"`
+	// InvalidCharacters is the invalid characters for items/targets/roles/auths/notifier_forwarder naming convention
+	InvalidCharacters *string `json:"invalid_characters,omitempty"`
 	PasswordPolicy *PasswordPolicyInfo `json:"password_policy,omitempty"`
+	ProtectItemsByDefault *bool `json:"protect_items_by_default,omitempty"`
+	SharingPolicy *SharingPolicyInfo `json:"sharing_policy,omitempty"`
 }
 
 // NewAccountGeneralSettings instantiates a new AccountGeneralSettings object
@@ -37,6 +45,70 @@ func NewAccountGeneralSettings() *AccountGeneralSettings {
 func NewAccountGeneralSettingsWithDefaults() *AccountGeneralSettings {
 	this := AccountGeneralSettings{}
 	return &this
+}
+
+// GetAccountDefaultKeyItemId returns the AccountDefaultKeyItemId field value if set, zero value otherwise.
+func (o *AccountGeneralSettings) GetAccountDefaultKeyItemId() int64 {
+	if o == nil || o.AccountDefaultKeyItemId == nil {
+		var ret int64
+		return ret
+	}
+	return *o.AccountDefaultKeyItemId
+}
+
+// GetAccountDefaultKeyItemIdOk returns a tuple with the AccountDefaultKeyItemId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountGeneralSettings) GetAccountDefaultKeyItemIdOk() (*int64, bool) {
+	if o == nil || o.AccountDefaultKeyItemId == nil {
+		return nil, false
+	}
+	return o.AccountDefaultKeyItemId, true
+}
+
+// HasAccountDefaultKeyItemId returns a boolean if a field has been set.
+func (o *AccountGeneralSettings) HasAccountDefaultKeyItemId() bool {
+	if o != nil && o.AccountDefaultKeyItemId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAccountDefaultKeyItemId gets a reference to the given int64 and assigns it to the AccountDefaultKeyItemId field.
+func (o *AccountGeneralSettings) SetAccountDefaultKeyItemId(v int64) {
+	o.AccountDefaultKeyItemId = &v
+}
+
+// GetAccountDefaultKeyName returns the AccountDefaultKeyName field value if set, zero value otherwise.
+func (o *AccountGeneralSettings) GetAccountDefaultKeyName() string {
+	if o == nil || o.AccountDefaultKeyName == nil {
+		var ret string
+		return ret
+	}
+	return *o.AccountDefaultKeyName
+}
+
+// GetAccountDefaultKeyNameOk returns a tuple with the AccountDefaultKeyName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountGeneralSettings) GetAccountDefaultKeyNameOk() (*string, bool) {
+	if o == nil || o.AccountDefaultKeyName == nil {
+		return nil, false
+	}
+	return o.AccountDefaultKeyName, true
+}
+
+// HasAccountDefaultKeyName returns a boolean if a field has been set.
+func (o *AccountGeneralSettings) HasAccountDefaultKeyName() bool {
+	if o != nil && o.AccountDefaultKeyName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAccountDefaultKeyName gets a reference to the given string and assigns it to the AccountDefaultKeyName field.
+func (o *AccountGeneralSettings) SetAccountDefaultKeyName(v string) {
+	o.AccountDefaultKeyName = &v
 }
 
 // GetDataProtectionSection returns the DataProtectionSection field value if set, zero value otherwise.
@@ -103,6 +175,38 @@ func (o *AccountGeneralSettings) SetEnableRequestForAccess(v bool) {
 	o.EnableRequestForAccess = &v
 }
 
+// GetInvalidCharacters returns the InvalidCharacters field value if set, zero value otherwise.
+func (o *AccountGeneralSettings) GetInvalidCharacters() string {
+	if o == nil || o.InvalidCharacters == nil {
+		var ret string
+		return ret
+	}
+	return *o.InvalidCharacters
+}
+
+// GetInvalidCharactersOk returns a tuple with the InvalidCharacters field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountGeneralSettings) GetInvalidCharactersOk() (*string, bool) {
+	if o == nil || o.InvalidCharacters == nil {
+		return nil, false
+	}
+	return o.InvalidCharacters, true
+}
+
+// HasInvalidCharacters returns a boolean if a field has been set.
+func (o *AccountGeneralSettings) HasInvalidCharacters() bool {
+	if o != nil && o.InvalidCharacters != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInvalidCharacters gets a reference to the given string and assigns it to the InvalidCharacters field.
+func (o *AccountGeneralSettings) SetInvalidCharacters(v string) {
+	o.InvalidCharacters = &v
+}
+
 // GetPasswordPolicy returns the PasswordPolicy field value if set, zero value otherwise.
 func (o *AccountGeneralSettings) GetPasswordPolicy() PasswordPolicyInfo {
 	if o == nil || o.PasswordPolicy == nil {
@@ -135,16 +239,95 @@ func (o *AccountGeneralSettings) SetPasswordPolicy(v PasswordPolicyInfo) {
 	o.PasswordPolicy = &v
 }
 
+// GetProtectItemsByDefault returns the ProtectItemsByDefault field value if set, zero value otherwise.
+func (o *AccountGeneralSettings) GetProtectItemsByDefault() bool {
+	if o == nil || o.ProtectItemsByDefault == nil {
+		var ret bool
+		return ret
+	}
+	return *o.ProtectItemsByDefault
+}
+
+// GetProtectItemsByDefaultOk returns a tuple with the ProtectItemsByDefault field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountGeneralSettings) GetProtectItemsByDefaultOk() (*bool, bool) {
+	if o == nil || o.ProtectItemsByDefault == nil {
+		return nil, false
+	}
+	return o.ProtectItemsByDefault, true
+}
+
+// HasProtectItemsByDefault returns a boolean if a field has been set.
+func (o *AccountGeneralSettings) HasProtectItemsByDefault() bool {
+	if o != nil && o.ProtectItemsByDefault != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProtectItemsByDefault gets a reference to the given bool and assigns it to the ProtectItemsByDefault field.
+func (o *AccountGeneralSettings) SetProtectItemsByDefault(v bool) {
+	o.ProtectItemsByDefault = &v
+}
+
+// GetSharingPolicy returns the SharingPolicy field value if set, zero value otherwise.
+func (o *AccountGeneralSettings) GetSharingPolicy() SharingPolicyInfo {
+	if o == nil || o.SharingPolicy == nil {
+		var ret SharingPolicyInfo
+		return ret
+	}
+	return *o.SharingPolicy
+}
+
+// GetSharingPolicyOk returns a tuple with the SharingPolicy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountGeneralSettings) GetSharingPolicyOk() (*SharingPolicyInfo, bool) {
+	if o == nil || o.SharingPolicy == nil {
+		return nil, false
+	}
+	return o.SharingPolicy, true
+}
+
+// HasSharingPolicy returns a boolean if a field has been set.
+func (o *AccountGeneralSettings) HasSharingPolicy() bool {
+	if o != nil && o.SharingPolicy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSharingPolicy gets a reference to the given SharingPolicyInfo and assigns it to the SharingPolicy field.
+func (o *AccountGeneralSettings) SetSharingPolicy(v SharingPolicyInfo) {
+	o.SharingPolicy = &v
+}
+
 func (o AccountGeneralSettings) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AccountDefaultKeyItemId != nil {
+		toSerialize["account_default_key_item_id"] = o.AccountDefaultKeyItemId
+	}
+	if o.AccountDefaultKeyName != nil {
+		toSerialize["account_default_key_name"] = o.AccountDefaultKeyName
+	}
 	if o.DataProtectionSection != nil {
 		toSerialize["data_protection_section"] = o.DataProtectionSection
 	}
 	if o.EnableRequestForAccess != nil {
 		toSerialize["enable_request_for_access"] = o.EnableRequestForAccess
 	}
+	if o.InvalidCharacters != nil {
+		toSerialize["invalid_characters"] = o.InvalidCharacters
+	}
 	if o.PasswordPolicy != nil {
 		toSerialize["password_policy"] = o.PasswordPolicy
+	}
+	if o.ProtectItemsByDefault != nil {
+		toSerialize["protect_items_by_default"] = o.ProtectItemsByDefault
+	}
+	if o.SharingPolicy != nil {
+		toSerialize["sharing_policy"] = o.SharingPolicy
 	}
 	return json.Marshal(toSerialize)
 }

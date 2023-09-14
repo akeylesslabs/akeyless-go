@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **K8sMigrations** | Pointer to [**[]K8SMigration**](K8SMigration.md) |  | [optional] 
 **MockMigrations** | Pointer to [**[]MockMigration**](MockMigration.md) |  | [optional] 
 **OnePasswordMigrations** | Pointer to [**[]OnePasswordMigration**](OnePasswordMigration.md) |  | [optional] 
+**ServerInventoryMigrations** | Pointer to [**[]ServerInventoryMigration**](ServerInventoryMigration.md) |  | [optional] 
 
 ## Methods
 
@@ -231,6 +232,31 @@ SetOnePasswordMigrations sets OnePasswordMigrations field to given value.
 `func (o *MigrationsConfigPart) HasOnePasswordMigrations() bool`
 
 HasOnePasswordMigrations returns a boolean if a field has been set.
+
+### GetServerInventoryMigrations
+
+`func (o *MigrationsConfigPart) GetServerInventoryMigrations() []ServerInventoryMigration`
+
+GetServerInventoryMigrations returns the ServerInventoryMigrations field if non-nil, zero value otherwise.
+
+### GetServerInventoryMigrationsOk
+
+`func (o *MigrationsConfigPart) GetServerInventoryMigrationsOk() (*[]ServerInventoryMigration, bool)`
+
+GetServerInventoryMigrationsOk returns a tuple with the ServerInventoryMigrations field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServerInventoryMigrations
+
+`func (o *MigrationsConfigPart) SetServerInventoryMigrations(v []ServerInventoryMigration)`
+
+SetServerInventoryMigrations sets ServerInventoryMigrations field to given value.
+
+### HasServerInventoryMigrations
+
+`func (o *MigrationsConfigPart) HasServerInventoryMigrations() bool`
+
+HasServerInventoryMigrations returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

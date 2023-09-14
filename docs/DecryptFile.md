@@ -4,10 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CyphertextHeader** | Pointer to **string** |  | [optional] 
 **DisplayId** | Pointer to **string** | The display id of the key to use in the decryption process | [optional] 
+**In** | **string** | Path to the file to be decrypted. If not provided, the content will be taken from stdin | 
 **ItemId** | Pointer to **int64** | The item id of the key to use in the decryption process | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeyName** | **string** | The name of the key to use in the decryption process | 
+**Out** | Pointer to **string** | Path to the output file. If not provided, the output will be sent to stdout | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
@@ -15,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewDecryptFile
 
-`func NewDecryptFile(keyName string, ) *DecryptFile`
+`func NewDecryptFile(in string, keyName string, ) *DecryptFile`
 
 NewDecryptFile instantiates a new DecryptFile object
 This constructor will assign default values to properties that have it defined,
@@ -29,6 +32,31 @@ will change when the set of required properties is changed
 NewDecryptFileWithDefaults instantiates a new DecryptFile object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCyphertextHeader
+
+`func (o *DecryptFile) GetCyphertextHeader() string`
+
+GetCyphertextHeader returns the CyphertextHeader field if non-nil, zero value otherwise.
+
+### GetCyphertextHeaderOk
+
+`func (o *DecryptFile) GetCyphertextHeaderOk() (*string, bool)`
+
+GetCyphertextHeaderOk returns a tuple with the CyphertextHeader field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCyphertextHeader
+
+`func (o *DecryptFile) SetCyphertextHeader(v string)`
+
+SetCyphertextHeader sets CyphertextHeader field to given value.
+
+### HasCyphertextHeader
+
+`func (o *DecryptFile) HasCyphertextHeader() bool`
+
+HasCyphertextHeader returns a boolean if a field has been set.
 
 ### GetDisplayId
 
@@ -54,6 +82,26 @@ SetDisplayId sets DisplayId field to given value.
 `func (o *DecryptFile) HasDisplayId() bool`
 
 HasDisplayId returns a boolean if a field has been set.
+
+### GetIn
+
+`func (o *DecryptFile) GetIn() string`
+
+GetIn returns the In field if non-nil, zero value otherwise.
+
+### GetInOk
+
+`func (o *DecryptFile) GetInOk() (*string, bool)`
+
+GetInOk returns a tuple with the In field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIn
+
+`func (o *DecryptFile) SetIn(v string)`
+
+SetIn sets In field to given value.
+
 
 ### GetItemId
 
@@ -124,6 +172,31 @@ and a boolean to check if the value has been set.
 
 SetKeyName sets KeyName field to given value.
 
+
+### GetOut
+
+`func (o *DecryptFile) GetOut() string`
+
+GetOut returns the Out field if non-nil, zero value otherwise.
+
+### GetOutOk
+
+`func (o *DecryptFile) GetOutOk() (*string, bool)`
+
+GetOutOk returns a tuple with the Out field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOut
+
+`func (o *DecryptFile) SetOut(v string)`
+
+SetOut sets Out field to given value.
+
+### HasOut
+
+`func (o *DecryptFile) HasOut() bool`
+
+HasOut returns a boolean if a field has been set.
 
 ### GetToken
 

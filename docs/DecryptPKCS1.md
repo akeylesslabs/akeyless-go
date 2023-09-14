@@ -7,10 +7,12 @@ Name | Type | Description | Notes
 **Ciphertext** | **string** | Ciphertext to be decrypted in base64 encoded format | 
 **DisplayId** | Pointer to **string** | The display id of the key to use in the decryption process | [optional] 
 **ItemId** | Pointer to **int64** | The item id of the key to use in the decryption process | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeyName** | **string** | The name of the key to use in the decryption process | 
+**OutputFormat** | Pointer to **string** | If specified, the output will be formatted accordingly. options: [base64] | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**Version** | Pointer to **int32** | key version (relevant only for classic key) | [optional] 
 
 ## Methods
 
@@ -146,6 +148,31 @@ and a boolean to check if the value has been set.
 SetKeyName sets KeyName field to given value.
 
 
+### GetOutputFormat
+
+`func (o *DecryptPKCS1) GetOutputFormat() string`
+
+GetOutputFormat returns the OutputFormat field if non-nil, zero value otherwise.
+
+### GetOutputFormatOk
+
+`func (o *DecryptPKCS1) GetOutputFormatOk() (*string, bool)`
+
+GetOutputFormatOk returns a tuple with the OutputFormat field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOutputFormat
+
+`func (o *DecryptPKCS1) SetOutputFormat(v string)`
+
+SetOutputFormat sets OutputFormat field to given value.
+
+### HasOutputFormat
+
+`func (o *DecryptPKCS1) HasOutputFormat() bool`
+
+HasOutputFormat returns a boolean if a field has been set.
+
 ### GetToken
 
 `func (o *DecryptPKCS1) GetToken() string`
@@ -195,6 +222,31 @@ SetUidToken sets UidToken field to given value.
 `func (o *DecryptPKCS1) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetVersion
+
+`func (o *DecryptPKCS1) GetVersion() int32`
+
+GetVersion returns the Version field if non-nil, zero value otherwise.
+
+### GetVersionOk
+
+`func (o *DecryptPKCS1) GetVersionOk() (*int32, bool)`
+
+GetVersionOk returns a tuple with the Version field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVersion
+
+`func (o *DecryptPKCS1) SetVersion(v int32)`
+
+SetVersion sets Version field to given value.
+
+### HasVersion
+
+`func (o *DecryptPKCS1) HasVersion() bool`
+
+HasVersion returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

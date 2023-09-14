@@ -19,9 +19,9 @@ import (
 type GatewayUpdateProducerRdp struct {
 	// AllowUserExtendSession
 	AllowUserExtendSession *int64 `json:"allow-user-extend-session,omitempty"`
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
-	// Fixed user
+	// Allow access using externally (IdP) provided username [true/false]
 	FixedUserOnly *string `json:"fixed-user-only,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -41,12 +41,19 @@ type GatewayUpdateProducerRdp struct {
 	RdpHostPort *string `json:"rdp-host-port,omitempty"`
 	// Groups
 	RdpUserGroups *string `json:"rdp-user-groups,omitempty"`
+	// Allow providing external user for a domain users
 	SecureAccessAllowExternalUser *bool `json:"secure-access-allow-external-user,omitempty"`
+	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
 	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
+	// RD Gateway server
+	SecureAccessRdGatewayServer *string `json:"secure-access-rd-gateway-server,omitempty"`
+	// Required when the Dynamic Secret is used for a domain user
 	SecureAccessRdpDomain *string `json:"secure-access-rdp-domain,omitempty"`
+	// Override the RDP Domain username
 	SecureAccessRdpUser *string `json:"secure-access-rdp-user,omitempty"`
-	// List of the tags attached to this secret
+	// Add tags attached to this object
 	Tags *[]string `json:"tags,omitempty"`
 	// Target name
 	TargetName *string `json:"target-name,omitempty"`
@@ -68,9 +75,13 @@ func NewGatewayUpdateProducerRdp(name string, ) *GatewayUpdateProducerRdp {
 	this := GatewayUpdateProducerRdp{}
 	var fixedUserOnly string = "false"
 	this.FixedUserOnly = &fixedUserOnly
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	var rdpHostPort string = "22"
 	this.RdpHostPort = &rdpHostPort
+	var secureAccessAllowExternalUser bool = false
+	this.SecureAccessAllowExternalUser = &secureAccessAllowExternalUser
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
@@ -83,8 +94,12 @@ func NewGatewayUpdateProducerRdpWithDefaults() *GatewayUpdateProducerRdp {
 	this := GatewayUpdateProducerRdp{}
 	var fixedUserOnly string = "false"
 	this.FixedUserOnly = &fixedUserOnly
+	var json bool = false
+	this.Json = &json
 	var rdpHostPort string = "22"
 	this.RdpHostPort = &rdpHostPort
+	var secureAccessAllowExternalUser bool = false
+	this.SecureAccessAllowExternalUser = &secureAccessAllowExternalUser
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
@@ -562,6 +577,38 @@ func (o *GatewayUpdateProducerRdp) SetSecureAccessHost(v []string) {
 	o.SecureAccessHost = &v
 }
 
+// GetSecureAccessRdGatewayServer returns the SecureAccessRdGatewayServer field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerRdp) GetSecureAccessRdGatewayServer() string {
+	if o == nil || o.SecureAccessRdGatewayServer == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessRdGatewayServer
+}
+
+// GetSecureAccessRdGatewayServerOk returns a tuple with the SecureAccessRdGatewayServer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerRdp) GetSecureAccessRdGatewayServerOk() (*string, bool) {
+	if o == nil || o.SecureAccessRdGatewayServer == nil {
+		return nil, false
+	}
+	return o.SecureAccessRdGatewayServer, true
+}
+
+// HasSecureAccessRdGatewayServer returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerRdp) HasSecureAccessRdGatewayServer() bool {
+	if o != nil && o.SecureAccessRdGatewayServer != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessRdGatewayServer gets a reference to the given string and assigns it to the SecureAccessRdGatewayServer field.
+func (o *GatewayUpdateProducerRdp) SetSecureAccessRdGatewayServer(v string) {
+	o.SecureAccessRdGatewayServer = &v
+}
+
 // GetSecureAccessRdpDomain returns the SecureAccessRdpDomain field value if set, zero value otherwise.
 func (o *GatewayUpdateProducerRdp) GetSecureAccessRdpDomain() string {
 	if o == nil || o.SecureAccessRdpDomain == nil {
@@ -864,6 +911,9 @@ func (o GatewayUpdateProducerRdp) MarshalJSON() ([]byte, error) {
 	}
 	if o.SecureAccessHost != nil {
 		toSerialize["secure-access-host"] = o.SecureAccessHost
+	}
+	if o.SecureAccessRdGatewayServer != nil {
+		toSerialize["secure-access-rd-gateway-server"] = o.SecureAccessRdGatewayServer
 	}
 	if o.SecureAccessRdpDomain != nil {
 		toSerialize["secure-access-rdp-domain"] = o.SecureAccessRdpDomain

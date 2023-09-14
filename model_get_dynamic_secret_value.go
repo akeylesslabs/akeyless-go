@@ -41,6 +41,8 @@ type GetDynamicSecretValue struct {
 // will change when the set of required properties is changed
 func NewGetDynamicSecretValue(name string, ) *GetDynamicSecretValue {
 	this := GetDynamicSecretValue{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	var timeout int64 = 15
 	this.Timeout = &timeout
@@ -52,6 +54,8 @@ func NewGetDynamicSecretValue(name string, ) *GetDynamicSecretValue {
 // but it doesn't guarantee that properties required by API are set
 func NewGetDynamicSecretValueWithDefaults() *GetDynamicSecretValue {
 	this := GetDynamicSecretValue{}
+	var json bool = false
+	this.Json = &json
 	var timeout int64 = 15
 	this.Timeout = &timeout
 	return &this

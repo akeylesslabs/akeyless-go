@@ -17,16 +17,25 @@ import (
 
 // UpdateNativeK8STarget struct for UpdateNativeK8STarget
 type UpdateNativeK8STarget struct {
-	// Comment about the target
+	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`
+	// Description of the object
+	Description *string `json:"description,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
+	// K8S auth type [token/certificate]
+	K8sAuthType *string `json:"k8s-auth-type,omitempty"`
+	// Content of the k8 client certificate (PEM format) in a Base64 format
+	K8sClientCertificate *string `json:"k8s-client-certificate,omitempty"`
+	// Content of the k8 client private key (PEM format) in a Base64 format
+	K8sClientKey *string `json:"k8s-client-key,omitempty"`
 	// K8S cluster CA certificate
 	K8sClusterCaCert string `json:"k8s-cluster-ca-cert"`
 	// K8S cluster URL endpoint
 	K8sClusterEndpoint string `json:"k8s-cluster-endpoint"`
 	// K8S cluster Bearer token
 	K8sClusterToken string `json:"k8s-cluster-token"`
+	// Whether to keep previous version [true/false]. If not set, use default according to account settings
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
@@ -40,6 +49,8 @@ type UpdateNativeK8STarget struct {
 	UidToken *string `json:"uid-token,omitempty"`
 	// Deprecated
 	UpdateVersion *bool `json:"update-version,omitempty"`
+	// Use the GW's service account
+	UseGwServiceAccount *bool `json:"use-gw-service-account,omitempty"`
 }
 
 // NewUpdateNativeK8STarget instantiates a new UpdateNativeK8STarget object
@@ -48,6 +59,10 @@ type UpdateNativeK8STarget struct {
 // will change when the set of required properties is changed
 func NewUpdateNativeK8STarget(k8sClusterCaCert string, k8sClusterEndpoint string, k8sClusterToken string, name string, ) *UpdateNativeK8STarget {
 	this := UpdateNativeK8STarget{}
+	var json bool = false
+	this.Json = &json
+	var k8sAuthType string = "token"
+	this.K8sAuthType = &k8sAuthType
 	this.K8sClusterCaCert = k8sClusterCaCert
 	this.K8sClusterEndpoint = k8sClusterEndpoint
 	this.K8sClusterToken = k8sClusterToken
@@ -60,6 +75,16 @@ func NewUpdateNativeK8STarget(k8sClusterCaCert string, k8sClusterEndpoint string
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateNativeK8STargetWithDefaults() *UpdateNativeK8STarget {
 	this := UpdateNativeK8STarget{}
+	var json bool = false
+	this.Json = &json
+	var k8sAuthType string = "token"
+	this.K8sAuthType = &k8sAuthType
+	var k8sClusterCaCert string = "dummy_val"
+	this.K8sClusterCaCert = k8sClusterCaCert
+	var k8sClusterEndpoint string = "dummy_val"
+	this.K8sClusterEndpoint = k8sClusterEndpoint
+	var k8sClusterToken string = "dummy_val"
+	this.K8sClusterToken = k8sClusterToken
 	return &this
 }
 
@@ -95,6 +120,38 @@ func (o *UpdateNativeK8STarget) SetComment(v string) {
 	o.Comment = &v
 }
 
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *UpdateNativeK8STarget) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateNativeK8STarget) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *UpdateNativeK8STarget) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *UpdateNativeK8STarget) SetDescription(v string) {
+	o.Description = &v
+}
+
 // GetJson returns the Json field value if set, zero value otherwise.
 func (o *UpdateNativeK8STarget) GetJson() bool {
 	if o == nil || o.Json == nil {
@@ -125,6 +182,102 @@ func (o *UpdateNativeK8STarget) HasJson() bool {
 // SetJson gets a reference to the given bool and assigns it to the Json field.
 func (o *UpdateNativeK8STarget) SetJson(v bool) {
 	o.Json = &v
+}
+
+// GetK8sAuthType returns the K8sAuthType field value if set, zero value otherwise.
+func (o *UpdateNativeK8STarget) GetK8sAuthType() string {
+	if o == nil || o.K8sAuthType == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sAuthType
+}
+
+// GetK8sAuthTypeOk returns a tuple with the K8sAuthType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateNativeK8STarget) GetK8sAuthTypeOk() (*string, bool) {
+	if o == nil || o.K8sAuthType == nil {
+		return nil, false
+	}
+	return o.K8sAuthType, true
+}
+
+// HasK8sAuthType returns a boolean if a field has been set.
+func (o *UpdateNativeK8STarget) HasK8sAuthType() bool {
+	if o != nil && o.K8sAuthType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sAuthType gets a reference to the given string and assigns it to the K8sAuthType field.
+func (o *UpdateNativeK8STarget) SetK8sAuthType(v string) {
+	o.K8sAuthType = &v
+}
+
+// GetK8sClientCertificate returns the K8sClientCertificate field value if set, zero value otherwise.
+func (o *UpdateNativeK8STarget) GetK8sClientCertificate() string {
+	if o == nil || o.K8sClientCertificate == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sClientCertificate
+}
+
+// GetK8sClientCertificateOk returns a tuple with the K8sClientCertificate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateNativeK8STarget) GetK8sClientCertificateOk() (*string, bool) {
+	if o == nil || o.K8sClientCertificate == nil {
+		return nil, false
+	}
+	return o.K8sClientCertificate, true
+}
+
+// HasK8sClientCertificate returns a boolean if a field has been set.
+func (o *UpdateNativeK8STarget) HasK8sClientCertificate() bool {
+	if o != nil && o.K8sClientCertificate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sClientCertificate gets a reference to the given string and assigns it to the K8sClientCertificate field.
+func (o *UpdateNativeK8STarget) SetK8sClientCertificate(v string) {
+	o.K8sClientCertificate = &v
+}
+
+// GetK8sClientKey returns the K8sClientKey field value if set, zero value otherwise.
+func (o *UpdateNativeK8STarget) GetK8sClientKey() string {
+	if o == nil || o.K8sClientKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sClientKey
+}
+
+// GetK8sClientKeyOk returns a tuple with the K8sClientKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateNativeK8STarget) GetK8sClientKeyOk() (*string, bool) {
+	if o == nil || o.K8sClientKey == nil {
+		return nil, false
+	}
+	return o.K8sClientKey, true
+}
+
+// HasK8sClientKey returns a boolean if a field has been set.
+func (o *UpdateNativeK8STarget) HasK8sClientKey() bool {
+	if o != nil && o.K8sClientKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sClientKey gets a reference to the given string and assigns it to the K8sClientKey field.
+func (o *UpdateNativeK8STarget) SetK8sClientKey(v string) {
+	o.K8sClientKey = &v
 }
 
 // GetK8sClusterCaCert returns the K8sClusterCaCert field value
@@ -415,13 +568,57 @@ func (o *UpdateNativeK8STarget) SetUpdateVersion(v bool) {
 	o.UpdateVersion = &v
 }
 
+// GetUseGwServiceAccount returns the UseGwServiceAccount field value if set, zero value otherwise.
+func (o *UpdateNativeK8STarget) GetUseGwServiceAccount() bool {
+	if o == nil || o.UseGwServiceAccount == nil {
+		var ret bool
+		return ret
+	}
+	return *o.UseGwServiceAccount
+}
+
+// GetUseGwServiceAccountOk returns a tuple with the UseGwServiceAccount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateNativeK8STarget) GetUseGwServiceAccountOk() (*bool, bool) {
+	if o == nil || o.UseGwServiceAccount == nil {
+		return nil, false
+	}
+	return o.UseGwServiceAccount, true
+}
+
+// HasUseGwServiceAccount returns a boolean if a field has been set.
+func (o *UpdateNativeK8STarget) HasUseGwServiceAccount() bool {
+	if o != nil && o.UseGwServiceAccount != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUseGwServiceAccount gets a reference to the given bool and assigns it to the UseGwServiceAccount field.
+func (o *UpdateNativeK8STarget) SetUseGwServiceAccount(v bool) {
+	o.UseGwServiceAccount = &v
+}
+
 func (o UpdateNativeK8STarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment
 	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
+	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json
+	}
+	if o.K8sAuthType != nil {
+		toSerialize["k8s-auth-type"] = o.K8sAuthType
+	}
+	if o.K8sClientCertificate != nil {
+		toSerialize["k8s-client-certificate"] = o.K8sClientCertificate
+	}
+	if o.K8sClientKey != nil {
+		toSerialize["k8s-client-key"] = o.K8sClientKey
 	}
 	if true {
 		toSerialize["k8s-cluster-ca-cert"] = o.K8sClusterCaCert
@@ -452,6 +649,9 @@ func (o UpdateNativeK8STarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.UpdateVersion != nil {
 		toSerialize["update-version"] = o.UpdateVersion
+	}
+	if o.UseGwServiceAccount != nil {
+		toSerialize["use-gw-service-account"] = o.UseGwServiceAccount
 	}
 	return json.Marshal(toSerialize)
 }

@@ -41,6 +41,8 @@ type SignGPG struct {
 // will change when the set of required properties is changed
 func NewSignGPG(keyName string, message string, ) *SignGPG {
 	this := SignGPG{}
+	var json bool = false
+	this.Json = &json
 	this.KeyName = keyName
 	this.Message = message
 	return &this
@@ -51,6 +53,8 @@ func NewSignGPG(keyName string, message string, ) *SignGPG {
 // but it doesn't guarantee that properties required by API are set
 func NewSignGPGWithDefaults() *SignGPG {
 	this := SignGPG{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

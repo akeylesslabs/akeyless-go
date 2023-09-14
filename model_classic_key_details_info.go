@@ -26,6 +26,7 @@ type ClassicKeyDetailsInfo struct {
 	KeyState *string `json:"key_state,omitempty"`
 	KeyType *string `json:"key_type,omitempty"`
 	LastError *string `json:"last_error,omitempty"`
+	PublicKey *string `json:"public_key,omitempty"`
 	TargetAliasHelper *string `json:"target_alias_helper,omitempty"`
 	TargetTypes *[]string `json:"target_types,omitempty"`
 	Targets *[]ClassicKeyTargetInfo `json:"targets,omitempty"`
@@ -304,6 +305,38 @@ func (o *ClassicKeyDetailsInfo) SetLastError(v string) {
 	o.LastError = &v
 }
 
+// GetPublicKey returns the PublicKey field value if set, zero value otherwise.
+func (o *ClassicKeyDetailsInfo) GetPublicKey() string {
+	if o == nil || o.PublicKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.PublicKey
+}
+
+// GetPublicKeyOk returns a tuple with the PublicKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClassicKeyDetailsInfo) GetPublicKeyOk() (*string, bool) {
+	if o == nil || o.PublicKey == nil {
+		return nil, false
+	}
+	return o.PublicKey, true
+}
+
+// HasPublicKey returns a boolean if a field has been set.
+func (o *ClassicKeyDetailsInfo) HasPublicKey() bool {
+	if o != nil && o.PublicKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPublicKey gets a reference to the given string and assigns it to the PublicKey field.
+func (o *ClassicKeyDetailsInfo) SetPublicKey(v string) {
+	o.PublicKey = &v
+}
+
 // GetTargetAliasHelper returns the TargetAliasHelper field value if set, zero value otherwise.
 func (o *ClassicKeyDetailsInfo) GetTargetAliasHelper() string {
 	if o == nil || o.TargetAliasHelper == nil {
@@ -425,6 +458,9 @@ func (o ClassicKeyDetailsInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.LastError != nil {
 		toSerialize["last_error"] = o.LastError
+	}
+	if o.PublicKey != nil {
+		toSerialize["public_key"] = o.PublicKey
 	}
 	if o.TargetAliasHelper != nil {
 		toSerialize["target_alias_helper"] = o.TargetAliasHelper

@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **FailureMessage** | Pointer to **string** |  | [optional] 
 **GwClusterId** | Pointer to **int64** |  | [optional] 
+**K8sAllowedNamespaces** | Pointer to **string** | Relevant only for generic k8s producer | [optional] 
+**K8sDynamicMode** | Pointer to **bool** | Relevant only for generic k8s producer | [optional] 
 **ProducerLastKeepAlive** | Pointer to **string** |  | [optional] 
 **ProducerMetadata** | Pointer to **string** |  | [optional] 
 **ProducerStatus** | Pointer to **string** | RotationStatus defines types of rotation Status | [optional] 
@@ -79,6 +81,56 @@ SetGwClusterId sets GwClusterId field to given value.
 `func (o *DynamicSecretProducerInfo) HasGwClusterId() bool`
 
 HasGwClusterId returns a boolean if a field has been set.
+
+### GetK8sAllowedNamespaces
+
+`func (o *DynamicSecretProducerInfo) GetK8sAllowedNamespaces() string`
+
+GetK8sAllowedNamespaces returns the K8sAllowedNamespaces field if non-nil, zero value otherwise.
+
+### GetK8sAllowedNamespacesOk
+
+`func (o *DynamicSecretProducerInfo) GetK8sAllowedNamespacesOk() (*string, bool)`
+
+GetK8sAllowedNamespacesOk returns a tuple with the K8sAllowedNamespaces field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sAllowedNamespaces
+
+`func (o *DynamicSecretProducerInfo) SetK8sAllowedNamespaces(v string)`
+
+SetK8sAllowedNamespaces sets K8sAllowedNamespaces field to given value.
+
+### HasK8sAllowedNamespaces
+
+`func (o *DynamicSecretProducerInfo) HasK8sAllowedNamespaces() bool`
+
+HasK8sAllowedNamespaces returns a boolean if a field has been set.
+
+### GetK8sDynamicMode
+
+`func (o *DynamicSecretProducerInfo) GetK8sDynamicMode() bool`
+
+GetK8sDynamicMode returns the K8sDynamicMode field if non-nil, zero value otherwise.
+
+### GetK8sDynamicModeOk
+
+`func (o *DynamicSecretProducerInfo) GetK8sDynamicModeOk() (*bool, bool)`
+
+GetK8sDynamicModeOk returns a tuple with the K8sDynamicMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sDynamicMode
+
+`func (o *DynamicSecretProducerInfo) SetK8sDynamicMode(v bool)`
+
+SetK8sDynamicMode sets K8sDynamicMode field to given value.
+
+### HasK8sDynamicMode
+
+`func (o *DynamicSecretProducerInfo) HasK8sDynamicMode() bool`
+
+HasK8sDynamicMode returns a boolean if a field has been set.
 
 ### GetProducerLastKeepAlive
 

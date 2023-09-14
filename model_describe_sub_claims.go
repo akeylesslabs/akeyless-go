@@ -31,6 +31,8 @@ type DescribeSubClaims struct {
 // will change when the set of required properties is changed
 func NewDescribeSubClaims() *DescribeSubClaims {
 	this := DescribeSubClaims{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -39,6 +41,8 @@ func NewDescribeSubClaims() *DescribeSubClaims {
 // but it doesn't guarantee that properties required by API are set
 func NewDescribeSubClaimsWithDefaults() *DescribeSubClaims {
 	this := DescribeSubClaims{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
