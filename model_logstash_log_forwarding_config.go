@@ -18,7 +18,9 @@ import (
 // LogstashLogForwardingConfig struct for LogstashLogForwardingConfig
 type LogstashLogForwardingConfig struct {
 	LogstashDns *string `json:"logstash_dns,omitempty"`
+	LogstashEnableTls *bool `json:"logstash_enable_tls,omitempty"`
 	LogstashProtocol *string `json:"logstash_protocol,omitempty"`
+	LogstashTlsCertificate *string `json:"logstash_tls_certificate,omitempty"`
 }
 
 // NewLogstashLogForwardingConfig instantiates a new LogstashLogForwardingConfig object
@@ -70,6 +72,38 @@ func (o *LogstashLogForwardingConfig) SetLogstashDns(v string) {
 	o.LogstashDns = &v
 }
 
+// GetLogstashEnableTls returns the LogstashEnableTls field value if set, zero value otherwise.
+func (o *LogstashLogForwardingConfig) GetLogstashEnableTls() bool {
+	if o == nil || o.LogstashEnableTls == nil {
+		var ret bool
+		return ret
+	}
+	return *o.LogstashEnableTls
+}
+
+// GetLogstashEnableTlsOk returns a tuple with the LogstashEnableTls field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LogstashLogForwardingConfig) GetLogstashEnableTlsOk() (*bool, bool) {
+	if o == nil || o.LogstashEnableTls == nil {
+		return nil, false
+	}
+	return o.LogstashEnableTls, true
+}
+
+// HasLogstashEnableTls returns a boolean if a field has been set.
+func (o *LogstashLogForwardingConfig) HasLogstashEnableTls() bool {
+	if o != nil && o.LogstashEnableTls != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLogstashEnableTls gets a reference to the given bool and assigns it to the LogstashEnableTls field.
+func (o *LogstashLogForwardingConfig) SetLogstashEnableTls(v bool) {
+	o.LogstashEnableTls = &v
+}
+
 // GetLogstashProtocol returns the LogstashProtocol field value if set, zero value otherwise.
 func (o *LogstashLogForwardingConfig) GetLogstashProtocol() string {
 	if o == nil || o.LogstashProtocol == nil {
@@ -102,13 +136,51 @@ func (o *LogstashLogForwardingConfig) SetLogstashProtocol(v string) {
 	o.LogstashProtocol = &v
 }
 
+// GetLogstashTlsCertificate returns the LogstashTlsCertificate field value if set, zero value otherwise.
+func (o *LogstashLogForwardingConfig) GetLogstashTlsCertificate() string {
+	if o == nil || o.LogstashTlsCertificate == nil {
+		var ret string
+		return ret
+	}
+	return *o.LogstashTlsCertificate
+}
+
+// GetLogstashTlsCertificateOk returns a tuple with the LogstashTlsCertificate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LogstashLogForwardingConfig) GetLogstashTlsCertificateOk() (*string, bool) {
+	if o == nil || o.LogstashTlsCertificate == nil {
+		return nil, false
+	}
+	return o.LogstashTlsCertificate, true
+}
+
+// HasLogstashTlsCertificate returns a boolean if a field has been set.
+func (o *LogstashLogForwardingConfig) HasLogstashTlsCertificate() bool {
+	if o != nil && o.LogstashTlsCertificate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLogstashTlsCertificate gets a reference to the given string and assigns it to the LogstashTlsCertificate field.
+func (o *LogstashLogForwardingConfig) SetLogstashTlsCertificate(v string) {
+	o.LogstashTlsCertificate = &v
+}
+
 func (o LogstashLogForwardingConfig) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.LogstashDns != nil {
 		toSerialize["logstash_dns"] = o.LogstashDns
 	}
+	if o.LogstashEnableTls != nil {
+		toSerialize["logstash_enable_tls"] = o.LogstashEnableTls
+	}
 	if o.LogstashProtocol != nil {
 		toSerialize["logstash_protocol"] = o.LogstashProtocol
+	}
+	if o.LogstashTlsCertificate != nil {
+		toSerialize["logstash_tls_certificate"] = o.LogstashTlsCertificate
 	}
 	return json.Marshal(toSerialize)
 }

@@ -10,7 +10,10 @@ Name | Type | Description | Notes
 **ClusterApiType** | Pointer to **string** | ClusterApiType defines types of API access to cluster | [optional] 
 **DisableIssValidation** | Pointer to **bool** | DisableISSValidation is optional parameter to disable ISS validation | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
+**K8sAuthType** | Pointer to **string** |  | [optional] 
 **K8sCaCert** | Pointer to **string** | K8SCACert is the CA Cert to use to call into the kubernetes API | [optional] 
+**K8sClientCertData** | Pointer to **string** | K8sClientCertData is the client certificate for k8s client certificate authentication | [optional] 
+**K8sClientKeyData** | Pointer to **string** | K8sClientKeyData is the client key for k8s client certificate authentication | [optional] 
 **K8sHost** | Pointer to **string** | K8SHost is the url string for the kubernetes API | [optional] 
 **K8sIssuer** | Pointer to **string** | K8SIssuer is the claim that specifies who issued the Kubernetes token | [optional] 
 **K8sPubKeysPem** | Pointer to **[]string** | K8SPublicKeysPEM is the list of public key in PEM format | [optional] 
@@ -19,7 +22,7 @@ Name | Type | Description | Notes
 **ProtectionKey** | Pointer to **string** |  | [optional] 
 **RancherApiKey** | Pointer to **string** | RancherApiKey the bear token for clusterApiTypeRancher | [optional] 
 **RancherClusterId** | Pointer to **string** | RancherClusterId cluster id as define in rancher (in case of clusterApiTypeRancher) | [optional] 
-**UseLocalCaJwt** | Pointer to **bool** | UseLocalCAJwt is an optional parameter to set defaulting to using the local CA cert and service account jwt when running in a Kubernetes pod | [optional] 
+**UseLocalCaJwt** | Pointer to **bool** | UseLocalCAJwt is an optional parameter to set defaulting to using the local service account when running in a Kubernetes pod | [optional] 
 
 ## Methods
 
@@ -190,6 +193,31 @@ SetId sets Id field to given value.
 
 HasId returns a boolean if a field has been set.
 
+### GetK8sAuthType
+
+`func (o *K8SAuth) GetK8sAuthType() string`
+
+GetK8sAuthType returns the K8sAuthType field if non-nil, zero value otherwise.
+
+### GetK8sAuthTypeOk
+
+`func (o *K8SAuth) GetK8sAuthTypeOk() (*string, bool)`
+
+GetK8sAuthTypeOk returns a tuple with the K8sAuthType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sAuthType
+
+`func (o *K8SAuth) SetK8sAuthType(v string)`
+
+SetK8sAuthType sets K8sAuthType field to given value.
+
+### HasK8sAuthType
+
+`func (o *K8SAuth) HasK8sAuthType() bool`
+
+HasK8sAuthType returns a boolean if a field has been set.
+
 ### GetK8sCaCert
 
 `func (o *K8SAuth) GetK8sCaCert() string`
@@ -214,6 +242,56 @@ SetK8sCaCert sets K8sCaCert field to given value.
 `func (o *K8SAuth) HasK8sCaCert() bool`
 
 HasK8sCaCert returns a boolean if a field has been set.
+
+### GetK8sClientCertData
+
+`func (o *K8SAuth) GetK8sClientCertData() string`
+
+GetK8sClientCertData returns the K8sClientCertData field if non-nil, zero value otherwise.
+
+### GetK8sClientCertDataOk
+
+`func (o *K8SAuth) GetK8sClientCertDataOk() (*string, bool)`
+
+GetK8sClientCertDataOk returns a tuple with the K8sClientCertData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sClientCertData
+
+`func (o *K8SAuth) SetK8sClientCertData(v string)`
+
+SetK8sClientCertData sets K8sClientCertData field to given value.
+
+### HasK8sClientCertData
+
+`func (o *K8SAuth) HasK8sClientCertData() bool`
+
+HasK8sClientCertData returns a boolean if a field has been set.
+
+### GetK8sClientKeyData
+
+`func (o *K8SAuth) GetK8sClientKeyData() string`
+
+GetK8sClientKeyData returns the K8sClientKeyData field if non-nil, zero value otherwise.
+
+### GetK8sClientKeyDataOk
+
+`func (o *K8SAuth) GetK8sClientKeyDataOk() (*string, bool)`
+
+GetK8sClientKeyDataOk returns a tuple with the K8sClientKeyData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sClientKeyData
+
+`func (o *K8SAuth) SetK8sClientKeyData(v string)`
+
+SetK8sClientKeyData sets K8sClientKeyData field to given value.
+
+### HasK8sClientKeyData
+
+`func (o *K8SAuth) HasK8sClientKeyData() bool`
+
+HasK8sClientKeyData returns a boolean if a field has been set.
 
 ### GetK8sHost
 

@@ -17,7 +17,7 @@ import (
 
 // GatewayCreateProducerGcp gatewayCreateProducerGcp is a command that creates a GCP producer
 type GatewayCreateProducerGcp struct {
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	GcpCredType *string `json:"gcp-cred-type,omitempty"`
 	// Base64-encoded service account private key text
@@ -30,7 +30,7 @@ type GatewayCreateProducerGcp struct {
 	GcpTokenScopes *string `json:"gcp-token-scopes,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Producer name
+	// Dynamic secret name
 	Name string `json:"name"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
@@ -38,7 +38,7 @@ type GatewayCreateProducerGcp struct {
 	RoleBinding *string `json:"role-binding,omitempty"`
 	// The type of the gcp dynamic secret. Options[fixed, dynamic]
 	ServiceAccountType string `json:"service-account-type"`
-	// List of the tags attached to this secret
+	// Add tags attached to this object
 	Tags *[]string `json:"tags,omitempty"`
 	// Target name
 	TargetName *string `json:"target-name,omitempty"`
@@ -56,6 +56,8 @@ type GatewayCreateProducerGcp struct {
 // will change when the set of required properties is changed
 func NewGatewayCreateProducerGcp(name string, serviceAccountType string, ) *GatewayCreateProducerGcp {
 	this := GatewayCreateProducerGcp{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	this.ServiceAccountType = serviceAccountType
 	var userTtl string = "60m"
@@ -68,6 +70,8 @@ func NewGatewayCreateProducerGcp(name string, serviceAccountType string, ) *Gate
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayCreateProducerGcpWithDefaults() *GatewayCreateProducerGcp {
 	this := GatewayCreateProducerGcp{}
+	var json bool = false
+	this.Json = &json
 	var serviceAccountType string = "fixed"
 	this.ServiceAccountType = serviceAccountType
 	var userTtl string = "60m"

@@ -19,6 +19,7 @@ import (
 type CustomerFragment struct {
 	Description *string `json:"description,omitempty"`
 	Id *string `json:"id,omitempty"`
+	Name *string `json:"name,omitempty"`
 	Value *string `json:"value,omitempty"`
 }
 
@@ -103,6 +104,38 @@ func (o *CustomerFragment) SetId(v string) {
 	o.Id = &v
 }
 
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *CustomerFragment) GetName() string {
+	if o == nil || o.Name == nil {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerFragment) GetNameOk() (*string, bool) {
+	if o == nil || o.Name == nil {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *CustomerFragment) HasName() bool {
+	if o != nil && o.Name != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *CustomerFragment) SetName(v string) {
+	o.Name = &v
+}
+
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *CustomerFragment) GetValue() string {
 	if o == nil || o.Value == nil {
@@ -142,6 +175,9 @@ func (o CustomerFragment) MarshalJSON() ([]byte, error) {
 	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
+	}
+	if o.Name != nil {
+		toSerialize["name"] = o.Name
 	}
 	if o.Value != nil {
 		toSerialize["value"] = o.Value

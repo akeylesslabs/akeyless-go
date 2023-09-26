@@ -19,7 +19,7 @@ import (
 type GatewayStartProducer struct {
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Producer name
+	// Dynamic secret name
 	Name string `json:"name"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
@@ -33,6 +33,8 @@ type GatewayStartProducer struct {
 // will change when the set of required properties is changed
 func NewGatewayStartProducer(name string, ) *GatewayStartProducer {
 	this := GatewayStartProducer{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -42,6 +44,8 @@ func NewGatewayStartProducer(name string, ) *GatewayStartProducer {
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayStartProducerWithDefaults() *GatewayStartProducer {
 	this := GatewayStartProducer{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

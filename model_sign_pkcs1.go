@@ -39,6 +39,8 @@ type SignPKCS1 struct {
 // will change when the set of required properties is changed
 func NewSignPKCS1(message string, ) *SignPKCS1 {
 	this := SignPKCS1{}
+	var json bool = false
+	this.Json = &json
 	this.Message = message
 	return &this
 }
@@ -48,6 +50,8 @@ func NewSignPKCS1(message string, ) *SignPKCS1 {
 // but it doesn't guarantee that properties required by API are set
 func NewSignPKCS1WithDefaults() *SignPKCS1 {
 	this := SignPKCS1{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

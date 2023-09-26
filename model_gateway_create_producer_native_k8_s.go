@@ -17,33 +17,51 @@ import (
 
 // GatewayCreateProducerNativeK8S gatewayCreateProducerNativeK8S is a command that creates k8s producer
 type GatewayCreateProducerNativeK8S struct {
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
+	// Comma-separated list of allowed K8S namespaces for the generated ServiceAccount (relevant only for k8s-service-account-type=dynamic)
+	K8sAllowedNamespaces *string `json:"k8s-allowed-namespaces,omitempty"`
 	// K8S cluster CA certificate
 	K8sClusterCaCert *string `json:"k8s-cluster-ca-cert,omitempty"`
 	// K8S cluster URL endpoint
 	K8sClusterEndpoint *string `json:"k8s-cluster-endpoint,omitempty"`
 	// K8S cluster Bearer token
 	K8sClusterToken *string `json:"k8s-cluster-token,omitempty"`
-	// K8S namespace
+	// K8S Namespace where the ServiceAccount exists.
 	K8sNamespace *string `json:"k8s-namespace,omitempty"`
-	// K8S service account
+	// The pre-existing Role or ClusterRole name to bind the generated ServiceAccount to (relevant only for k8s-service-account-type=dynamic)
+	K8sPredefinedRoleName *string `json:"k8s-predefined-role-name,omitempty"`
+	// Specifies the type of the pre-existing K8S role [Role, ClusterRole] (relevant only for k8s-service-account-type=dynamic)
+	K8sPredefinedRoleType *string `json:"k8s-predefined-role-type,omitempty"`
+	// Path to yaml file that contains definitions of K8S role and role binding (relevant only for k8s-service-account-type=dynamic)
+	K8sRolebindingYamlDef *string `json:"k8s-rolebinding-yaml-def,omitempty"`
+	// K8S ServiceAccount to extract token from.
 	K8sServiceAccount *string `json:"k8s-service-account,omitempty"`
-	// Producer name
+	// K8S ServiceAccount type [fixed, dynamic].
+	K8sServiceAccountType *string `json:"k8s-service-account-type,omitempty"`
+	// Dynamic secret name
 	Name string `json:"name"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
+	// Enable Port forwarding while using CLI access
 	SecureAccessAllowPortForwading *bool `json:"secure-access-allow-port-forwading,omitempty"`
+	// Path to the SSH Certificate Issuer for your Akeyless Bastion
 	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
+	// The K8s cluster endpoint URL
 	SecureAccessClusterEndpoint *string `json:"secure-access-cluster-endpoint,omitempty"`
+	// The K8s dashboard url
 	SecureAccessDashboardUrl *string `json:"secure-access-dashboard-url,omitempty"`
+	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Enable Web Secure Remote Access
 	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
+	// Secure browser via Akeyless Web Access Bastion
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
+	// Web-Proxy via Akeyless Web Access Bastion
 	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
-	// List of the tags attached to this secret
+	// Add tags attached to this object
 	Tags *[]string `json:"tags,omitempty"`
 	// Target name
 	TargetName *string `json:"target-name,omitempty"`
@@ -51,6 +69,8 @@ type GatewayCreateProducerNativeK8S struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// Use the GW's service account
+	UseGwServiceAccount *bool `json:"use-gw-service-account,omitempty"`
 	// User TTL
 	UserTtl *string `json:"user-ttl,omitempty"`
 }
@@ -61,7 +81,15 @@ type GatewayCreateProducerNativeK8S struct {
 // will change when the set of required properties is changed
 func NewGatewayCreateProducerNativeK8S(name string, ) *GatewayCreateProducerNativeK8S {
 	this := GatewayCreateProducerNativeK8S{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
+	var secureAccessWeb bool = false
+	this.SecureAccessWeb = &secureAccessWeb
+	var secureAccessWebBrowsing bool = false
+	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
+	var secureAccessWebProxy bool = false
+	this.SecureAccessWebProxy = &secureAccessWebProxy
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
@@ -72,6 +100,14 @@ func NewGatewayCreateProducerNativeK8S(name string, ) *GatewayCreateProducerNati
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayCreateProducerNativeK8SWithDefaults() *GatewayCreateProducerNativeK8S {
 	this := GatewayCreateProducerNativeK8S{}
+	var json bool = false
+	this.Json = &json
+	var secureAccessWeb bool = false
+	this.SecureAccessWeb = &secureAccessWeb
+	var secureAccessWebBrowsing bool = false
+	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
+	var secureAccessWebProxy bool = false
+	this.SecureAccessWebProxy = &secureAccessWebProxy
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
@@ -139,6 +175,38 @@ func (o *GatewayCreateProducerNativeK8S) HasJson() bool {
 // SetJson gets a reference to the given bool and assigns it to the Json field.
 func (o *GatewayCreateProducerNativeK8S) SetJson(v bool) {
 	o.Json = &v
+}
+
+// GetK8sAllowedNamespaces returns the K8sAllowedNamespaces field value if set, zero value otherwise.
+func (o *GatewayCreateProducerNativeK8S) GetK8sAllowedNamespaces() string {
+	if o == nil || o.K8sAllowedNamespaces == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sAllowedNamespaces
+}
+
+// GetK8sAllowedNamespacesOk returns a tuple with the K8sAllowedNamespaces field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerNativeK8S) GetK8sAllowedNamespacesOk() (*string, bool) {
+	if o == nil || o.K8sAllowedNamespaces == nil {
+		return nil, false
+	}
+	return o.K8sAllowedNamespaces, true
+}
+
+// HasK8sAllowedNamespaces returns a boolean if a field has been set.
+func (o *GatewayCreateProducerNativeK8S) HasK8sAllowedNamespaces() bool {
+	if o != nil && o.K8sAllowedNamespaces != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sAllowedNamespaces gets a reference to the given string and assigns it to the K8sAllowedNamespaces field.
+func (o *GatewayCreateProducerNativeK8S) SetK8sAllowedNamespaces(v string) {
+	o.K8sAllowedNamespaces = &v
 }
 
 // GetK8sClusterCaCert returns the K8sClusterCaCert field value if set, zero value otherwise.
@@ -269,6 +337,102 @@ func (o *GatewayCreateProducerNativeK8S) SetK8sNamespace(v string) {
 	o.K8sNamespace = &v
 }
 
+// GetK8sPredefinedRoleName returns the K8sPredefinedRoleName field value if set, zero value otherwise.
+func (o *GatewayCreateProducerNativeK8S) GetK8sPredefinedRoleName() string {
+	if o == nil || o.K8sPredefinedRoleName == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sPredefinedRoleName
+}
+
+// GetK8sPredefinedRoleNameOk returns a tuple with the K8sPredefinedRoleName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerNativeK8S) GetK8sPredefinedRoleNameOk() (*string, bool) {
+	if o == nil || o.K8sPredefinedRoleName == nil {
+		return nil, false
+	}
+	return o.K8sPredefinedRoleName, true
+}
+
+// HasK8sPredefinedRoleName returns a boolean if a field has been set.
+func (o *GatewayCreateProducerNativeK8S) HasK8sPredefinedRoleName() bool {
+	if o != nil && o.K8sPredefinedRoleName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sPredefinedRoleName gets a reference to the given string and assigns it to the K8sPredefinedRoleName field.
+func (o *GatewayCreateProducerNativeK8S) SetK8sPredefinedRoleName(v string) {
+	o.K8sPredefinedRoleName = &v
+}
+
+// GetK8sPredefinedRoleType returns the K8sPredefinedRoleType field value if set, zero value otherwise.
+func (o *GatewayCreateProducerNativeK8S) GetK8sPredefinedRoleType() string {
+	if o == nil || o.K8sPredefinedRoleType == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sPredefinedRoleType
+}
+
+// GetK8sPredefinedRoleTypeOk returns a tuple with the K8sPredefinedRoleType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerNativeK8S) GetK8sPredefinedRoleTypeOk() (*string, bool) {
+	if o == nil || o.K8sPredefinedRoleType == nil {
+		return nil, false
+	}
+	return o.K8sPredefinedRoleType, true
+}
+
+// HasK8sPredefinedRoleType returns a boolean if a field has been set.
+func (o *GatewayCreateProducerNativeK8S) HasK8sPredefinedRoleType() bool {
+	if o != nil && o.K8sPredefinedRoleType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sPredefinedRoleType gets a reference to the given string and assigns it to the K8sPredefinedRoleType field.
+func (o *GatewayCreateProducerNativeK8S) SetK8sPredefinedRoleType(v string) {
+	o.K8sPredefinedRoleType = &v
+}
+
+// GetK8sRolebindingYamlDef returns the K8sRolebindingYamlDef field value if set, zero value otherwise.
+func (o *GatewayCreateProducerNativeK8S) GetK8sRolebindingYamlDef() string {
+	if o == nil || o.K8sRolebindingYamlDef == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sRolebindingYamlDef
+}
+
+// GetK8sRolebindingYamlDefOk returns a tuple with the K8sRolebindingYamlDef field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerNativeK8S) GetK8sRolebindingYamlDefOk() (*string, bool) {
+	if o == nil || o.K8sRolebindingYamlDef == nil {
+		return nil, false
+	}
+	return o.K8sRolebindingYamlDef, true
+}
+
+// HasK8sRolebindingYamlDef returns a boolean if a field has been set.
+func (o *GatewayCreateProducerNativeK8S) HasK8sRolebindingYamlDef() bool {
+	if o != nil && o.K8sRolebindingYamlDef != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sRolebindingYamlDef gets a reference to the given string and assigns it to the K8sRolebindingYamlDef field.
+func (o *GatewayCreateProducerNativeK8S) SetK8sRolebindingYamlDef(v string) {
+	o.K8sRolebindingYamlDef = &v
+}
+
 // GetK8sServiceAccount returns the K8sServiceAccount field value if set, zero value otherwise.
 func (o *GatewayCreateProducerNativeK8S) GetK8sServiceAccount() string {
 	if o == nil || o.K8sServiceAccount == nil {
@@ -299,6 +463,38 @@ func (o *GatewayCreateProducerNativeK8S) HasK8sServiceAccount() bool {
 // SetK8sServiceAccount gets a reference to the given string and assigns it to the K8sServiceAccount field.
 func (o *GatewayCreateProducerNativeK8S) SetK8sServiceAccount(v string) {
 	o.K8sServiceAccount = &v
+}
+
+// GetK8sServiceAccountType returns the K8sServiceAccountType field value if set, zero value otherwise.
+func (o *GatewayCreateProducerNativeK8S) GetK8sServiceAccountType() string {
+	if o == nil || o.K8sServiceAccountType == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sServiceAccountType
+}
+
+// GetK8sServiceAccountTypeOk returns a tuple with the K8sServiceAccountType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerNativeK8S) GetK8sServiceAccountTypeOk() (*string, bool) {
+	if o == nil || o.K8sServiceAccountType == nil {
+		return nil, false
+	}
+	return o.K8sServiceAccountType, true
+}
+
+// HasK8sServiceAccountType returns a boolean if a field has been set.
+func (o *GatewayCreateProducerNativeK8S) HasK8sServiceAccountType() bool {
+	if o != nil && o.K8sServiceAccountType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sServiceAccountType gets a reference to the given string and assigns it to the K8sServiceAccountType field.
+func (o *GatewayCreateProducerNativeK8S) SetK8sServiceAccountType(v string) {
+	o.K8sServiceAccountType = &v
 }
 
 // GetName returns the Name field value
@@ -741,6 +937,38 @@ func (o *GatewayCreateProducerNativeK8S) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUseGwServiceAccount returns the UseGwServiceAccount field value if set, zero value otherwise.
+func (o *GatewayCreateProducerNativeK8S) GetUseGwServiceAccount() bool {
+	if o == nil || o.UseGwServiceAccount == nil {
+		var ret bool
+		return ret
+	}
+	return *o.UseGwServiceAccount
+}
+
+// GetUseGwServiceAccountOk returns a tuple with the UseGwServiceAccount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerNativeK8S) GetUseGwServiceAccountOk() (*bool, bool) {
+	if o == nil || o.UseGwServiceAccount == nil {
+		return nil, false
+	}
+	return o.UseGwServiceAccount, true
+}
+
+// HasUseGwServiceAccount returns a boolean if a field has been set.
+func (o *GatewayCreateProducerNativeK8S) HasUseGwServiceAccount() bool {
+	if o != nil && o.UseGwServiceAccount != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUseGwServiceAccount gets a reference to the given bool and assigns it to the UseGwServiceAccount field.
+func (o *GatewayCreateProducerNativeK8S) SetUseGwServiceAccount(v bool) {
+	o.UseGwServiceAccount = &v
+}
+
 // GetUserTtl returns the UserTtl field value if set, zero value otherwise.
 func (o *GatewayCreateProducerNativeK8S) GetUserTtl() string {
 	if o == nil || o.UserTtl == nil {
@@ -781,6 +1009,9 @@ func (o GatewayCreateProducerNativeK8S) MarshalJSON() ([]byte, error) {
 	if o.Json != nil {
 		toSerialize["json"] = o.Json
 	}
+	if o.K8sAllowedNamespaces != nil {
+		toSerialize["k8s-allowed-namespaces"] = o.K8sAllowedNamespaces
+	}
 	if o.K8sClusterCaCert != nil {
 		toSerialize["k8s-cluster-ca-cert"] = o.K8sClusterCaCert
 	}
@@ -793,8 +1024,20 @@ func (o GatewayCreateProducerNativeK8S) MarshalJSON() ([]byte, error) {
 	if o.K8sNamespace != nil {
 		toSerialize["k8s-namespace"] = o.K8sNamespace
 	}
+	if o.K8sPredefinedRoleName != nil {
+		toSerialize["k8s-predefined-role-name"] = o.K8sPredefinedRoleName
+	}
+	if o.K8sPredefinedRoleType != nil {
+		toSerialize["k8s-predefined-role-type"] = o.K8sPredefinedRoleType
+	}
+	if o.K8sRolebindingYamlDef != nil {
+		toSerialize["k8s-rolebinding-yaml-def"] = o.K8sRolebindingYamlDef
+	}
 	if o.K8sServiceAccount != nil {
 		toSerialize["k8s-service-account"] = o.K8sServiceAccount
+	}
+	if o.K8sServiceAccountType != nil {
+		toSerialize["k8s-service-account-type"] = o.K8sServiceAccountType
 	}
 	if true {
 		toSerialize["name"] = o.Name
@@ -837,6 +1080,9 @@ func (o GatewayCreateProducerNativeK8S) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.UseGwServiceAccount != nil {
+		toSerialize["use-gw-service-account"] = o.UseGwServiceAccount
 	}
 	if o.UserTtl != nil {
 		toSerialize["user-ttl"] = o.UserTtl

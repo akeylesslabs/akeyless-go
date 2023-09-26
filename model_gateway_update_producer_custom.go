@@ -21,15 +21,15 @@ type GatewayUpdateProducerCustom struct {
 	AdminRotationIntervalDays *int64 `json:"admin_rotation_interval_days,omitempty"`
 	// URL of an endpoint that implements /sync/create method, for example https://webhook.example.com/sync/create
 	CreateSyncUrl string `json:"create-sync-url"`
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Should admin credentials be rotated
 	EnableAdminRotation *bool `json:"enable_admin_rotation,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Producer name
+	// Dynamic secret name
 	Name string `json:"name"`
-	// Producer name
+	// Dynamic secret name
 	NewName *string `json:"new-name,omitempty"`
 	// Secret payload to be sent with each create/revoke webhook request
 	Payload *string `json:"payload,omitempty"`
@@ -39,7 +39,7 @@ type GatewayUpdateProducerCustom struct {
 	RevokeSyncUrl string `json:"revoke-sync-url"`
 	// URL of an endpoint that implements /sync/rotate method, for example https://webhook.example.com/sync/rotate
 	RotateSyncUrl *string `json:"rotate-sync-url,omitempty"`
-	// List of the tags attached to this secret
+	// Add tags attached to this object
 	Tags *[]string `json:"tags,omitempty"`
 	// Maximum allowed time in seconds for the webhook to return the results
 	TimeoutSec *int64 `json:"timeout-sec,omitempty"`
@@ -60,6 +60,8 @@ func NewGatewayUpdateProducerCustom(createSyncUrl string, name string, revokeSyn
 	this.CreateSyncUrl = createSyncUrl
 	var enableAdminRotation bool = false
 	this.EnableAdminRotation = &enableAdminRotation
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	this.RevokeSyncUrl = revokeSyncUrl
 	var timeoutSec int64 = 60
@@ -76,6 +78,8 @@ func NewGatewayUpdateProducerCustomWithDefaults() *GatewayUpdateProducerCustom {
 	this := GatewayUpdateProducerCustom{}
 	var enableAdminRotation bool = false
 	this.EnableAdminRotation = &enableAdminRotation
+	var json bool = false
+	this.Json = &json
 	var timeoutSec int64 = 60
 	this.TimeoutSec = &timeoutSec
 	var userTtl string = "60m"

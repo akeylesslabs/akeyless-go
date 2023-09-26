@@ -28,8 +28,13 @@ type K8SAuth struct {
 	// DisableISSValidation is optional parameter to disable ISS validation
 	DisableIssValidation *bool `json:"disable_iss_validation,omitempty"`
 	Id *string `json:"id,omitempty"`
+	K8sAuthType *string `json:"k8s_auth_type,omitempty"`
 	// K8SCACert is the CA Cert to use to call into the kubernetes API
 	K8sCaCert *string `json:"k8s_ca_cert,omitempty"`
+	// K8sClientCertData is the client certificate for k8s client certificate authentication
+	K8sClientCertData *string `json:"k8s_client_cert_data,omitempty"`
+	// K8sClientKeyData is the client key for k8s client certificate authentication
+	K8sClientKeyData *string `json:"k8s_client_key_data,omitempty"`
 	// K8SHost is the url string for the kubernetes API
 	K8sHost *string `json:"k8s_host,omitempty"`
 	// K8SIssuer is the claim that specifies who issued the Kubernetes token
@@ -44,7 +49,7 @@ type K8SAuth struct {
 	RancherApiKey *string `json:"rancher_api_key,omitempty"`
 	// RancherClusterId cluster id as define in rancher (in case of clusterApiTypeRancher)
 	RancherClusterId *string `json:"rancher_cluster_id,omitempty"`
-	// UseLocalCAJwt is an optional parameter to set defaulting to using the local CA cert and service account jwt when running in a Kubernetes pod
+	// UseLocalCAJwt is an optional parameter to set defaulting to using the local service account when running in a Kubernetes pod
 	UseLocalCaJwt *bool `json:"use_local_ca_jwt,omitempty"`
 }
 
@@ -257,6 +262,38 @@ func (o *K8SAuth) SetId(v string) {
 	o.Id = &v
 }
 
+// GetK8sAuthType returns the K8sAuthType field value if set, zero value otherwise.
+func (o *K8SAuth) GetK8sAuthType() string {
+	if o == nil || o.K8sAuthType == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sAuthType
+}
+
+// GetK8sAuthTypeOk returns a tuple with the K8sAuthType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *K8SAuth) GetK8sAuthTypeOk() (*string, bool) {
+	if o == nil || o.K8sAuthType == nil {
+		return nil, false
+	}
+	return o.K8sAuthType, true
+}
+
+// HasK8sAuthType returns a boolean if a field has been set.
+func (o *K8SAuth) HasK8sAuthType() bool {
+	if o != nil && o.K8sAuthType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sAuthType gets a reference to the given string and assigns it to the K8sAuthType field.
+func (o *K8SAuth) SetK8sAuthType(v string) {
+	o.K8sAuthType = &v
+}
+
 // GetK8sCaCert returns the K8sCaCert field value if set, zero value otherwise.
 func (o *K8SAuth) GetK8sCaCert() string {
 	if o == nil || o.K8sCaCert == nil {
@@ -287,6 +324,70 @@ func (o *K8SAuth) HasK8sCaCert() bool {
 // SetK8sCaCert gets a reference to the given string and assigns it to the K8sCaCert field.
 func (o *K8SAuth) SetK8sCaCert(v string) {
 	o.K8sCaCert = &v
+}
+
+// GetK8sClientCertData returns the K8sClientCertData field value if set, zero value otherwise.
+func (o *K8SAuth) GetK8sClientCertData() string {
+	if o == nil || o.K8sClientCertData == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sClientCertData
+}
+
+// GetK8sClientCertDataOk returns a tuple with the K8sClientCertData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *K8SAuth) GetK8sClientCertDataOk() (*string, bool) {
+	if o == nil || o.K8sClientCertData == nil {
+		return nil, false
+	}
+	return o.K8sClientCertData, true
+}
+
+// HasK8sClientCertData returns a boolean if a field has been set.
+func (o *K8SAuth) HasK8sClientCertData() bool {
+	if o != nil && o.K8sClientCertData != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sClientCertData gets a reference to the given string and assigns it to the K8sClientCertData field.
+func (o *K8SAuth) SetK8sClientCertData(v string) {
+	o.K8sClientCertData = &v
+}
+
+// GetK8sClientKeyData returns the K8sClientKeyData field value if set, zero value otherwise.
+func (o *K8SAuth) GetK8sClientKeyData() string {
+	if o == nil || o.K8sClientKeyData == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sClientKeyData
+}
+
+// GetK8sClientKeyDataOk returns a tuple with the K8sClientKeyData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *K8SAuth) GetK8sClientKeyDataOk() (*string, bool) {
+	if o == nil || o.K8sClientKeyData == nil {
+		return nil, false
+	}
+	return o.K8sClientKeyData, true
+}
+
+// HasK8sClientKeyData returns a boolean if a field has been set.
+func (o *K8SAuth) HasK8sClientKeyData() bool {
+	if o != nil && o.K8sClientKeyData != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sClientKeyData gets a reference to the given string and assigns it to the K8sClientKeyData field.
+func (o *K8SAuth) SetK8sClientKeyData(v string) {
+	o.K8sClientKeyData = &v
 }
 
 // GetK8sHost returns the K8sHost field value if set, zero value otherwise.
@@ -597,8 +698,17 @@ func (o K8SAuth) MarshalJSON() ([]byte, error) {
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}
+	if o.K8sAuthType != nil {
+		toSerialize["k8s_auth_type"] = o.K8sAuthType
+	}
 	if o.K8sCaCert != nil {
 		toSerialize["k8s_ca_cert"] = o.K8sCaCert
+	}
+	if o.K8sClientCertData != nil {
+		toSerialize["k8s_client_cert_data"] = o.K8sClientCertData
+	}
+	if o.K8sClientKeyData != nil {
+		toSerialize["k8s_client_key_data"] = o.K8sClientKeyData
 	}
 	if o.K8sHost != nil {
 		toSerialize["k8s_host"] = o.K8sHost

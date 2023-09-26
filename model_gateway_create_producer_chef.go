@@ -25,17 +25,17 @@ type GatewayCreateProducerChef struct {
 	ChefServerUrl *string `json:"chef-server-url,omitempty"`
 	// Server username
 	ChefServerUsername *string `json:"chef-server-username,omitempty"`
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Producer name
+	// Dynamic secret name
 	Name string `json:"name"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
 	// Skip SSL
 	SkipSsl *bool `json:"skip-ssl,omitempty"`
-	// List of the tags attached to this secret
+	// Add tags attached to this object
 	Tags *[]string `json:"tags,omitempty"`
 	// Target name
 	TargetName *string `json:"target-name,omitempty"`
@@ -53,6 +53,8 @@ type GatewayCreateProducerChef struct {
 // will change when the set of required properties is changed
 func NewGatewayCreateProducerChef(name string, ) *GatewayCreateProducerChef {
 	this := GatewayCreateProducerChef{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	var skipSsl bool = true
 	this.SkipSsl = &skipSsl
@@ -66,6 +68,8 @@ func NewGatewayCreateProducerChef(name string, ) *GatewayCreateProducerChef {
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayCreateProducerChefWithDefaults() *GatewayCreateProducerChef {
 	this := GatewayCreateProducerChef{}
+	var json bool = false
+	this.Json = &json
 	var skipSsl bool = true
 	this.SkipSsl = &skipSsl
 	var userTtl string = "60m"

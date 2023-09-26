@@ -6,13 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DisplayId** | Pointer to **string** | The display id of the key to use in the encryption process | [optional] 
 **EncryptionContext** | Pointer to **map[string]string** | name-value pair that specifies the encryption context to be used for authenticated encryption. If used here, the same value must be supplied to the decrypt command or decryption will fail | [optional] 
-**InputFormat** | Pointer to **string** | If specified, the plaintext input is assumed to be formatted accordingly. Current supported options: [base64] | [optional] 
+**InputFormat** | Pointer to **string** | Select default assumed format for any plaintext input. Currently supported options: [base64] | [optional] 
 **ItemId** | Pointer to **int64** | The item id of the key to use in the encryption process | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeyName** | **string** | The name of the key to use in the encryption process | 
 **Plaintext** | Pointer to **string** | Data to be encrypted | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**Version** | Pointer to **int32** | key version (relevant only for classic key) | [optional] 
 
 ## Methods
 
@@ -252,6 +253,31 @@ SetUidToken sets UidToken field to given value.
 `func (o *Encrypt) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetVersion
+
+`func (o *Encrypt) GetVersion() int32`
+
+GetVersion returns the Version field if non-nil, zero value otherwise.
+
+### GetVersionOk
+
+`func (o *Encrypt) GetVersionOk() (*int32, bool)`
+
+GetVersionOk returns a tuple with the Version field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVersion
+
+`func (o *Encrypt) SetVersion(v int32)`
+
+SetVersion sets Version field to given value.
+
+### HasVersion
+
+`func (o *Encrypt) HasVersion() bool`
+
+HasVersion returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

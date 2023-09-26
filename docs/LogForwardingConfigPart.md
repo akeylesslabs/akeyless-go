@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AzureAnalyticsConfig** | Pointer to [**AzureLogAnalyticsForwardingConfig**](AzureLogAnalyticsForwardingConfig.md) |  | [optional] 
 **DatadogConfig** | Pointer to [**DatadogForwardingConfig**](DatadogForwardingConfig.md) |  | [optional] 
 **ElasticsearchConfig** | Pointer to [**ElasticsearchLogForwardingConfig**](ElasticsearchLogForwardingConfig.md) |  | [optional] 
+**GoogleChronicleConfig** | Pointer to [**GoogleChronicleForwardingConfig**](GoogleChronicleForwardingConfig.md) |  | [optional] 
 **JsonOutput** | Pointer to **bool** |  | [optional] 
 **LoganEnable** | Pointer to **bool** |  | [optional] 
 **LoganUrl** | Pointer to **string** |  | [optional] 
@@ -15,6 +16,7 @@ Name | Type | Description | Notes
 **LogzIoConfig** | Pointer to [**LogzIoLogForwardingConfig**](LogzIoLogForwardingConfig.md) |  | [optional] 
 **PullIntervalSec** | Pointer to **string** |  | [optional] 
 **SplunkConfig** | Pointer to [**SplunkLogForwardingConfig**](SplunkLogForwardingConfig.md) |  | [optional] 
+**SumoLogicConfig** | Pointer to [**SumologicLogForwardingConfig**](SumologicLogForwardingConfig.md) |  | [optional] 
 **SyslogConfig** | Pointer to [**SyslogLogForwardingConfig**](SyslogLogForwardingConfig.md) |  | [optional] 
 **TargetLogType** | Pointer to **string** |  | [optional] 
 
@@ -136,6 +138,31 @@ SetElasticsearchConfig sets ElasticsearchConfig field to given value.
 `func (o *LogForwardingConfigPart) HasElasticsearchConfig() bool`
 
 HasElasticsearchConfig returns a boolean if a field has been set.
+
+### GetGoogleChronicleConfig
+
+`func (o *LogForwardingConfigPart) GetGoogleChronicleConfig() GoogleChronicleForwardingConfig`
+
+GetGoogleChronicleConfig returns the GoogleChronicleConfig field if non-nil, zero value otherwise.
+
+### GetGoogleChronicleConfigOk
+
+`func (o *LogForwardingConfigPart) GetGoogleChronicleConfigOk() (*GoogleChronicleForwardingConfig, bool)`
+
+GetGoogleChronicleConfigOk returns a tuple with the GoogleChronicleConfig field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGoogleChronicleConfig
+
+`func (o *LogForwardingConfigPart) SetGoogleChronicleConfig(v GoogleChronicleForwardingConfig)`
+
+SetGoogleChronicleConfig sets GoogleChronicleConfig field to given value.
+
+### HasGoogleChronicleConfig
+
+`func (o *LogForwardingConfigPart) HasGoogleChronicleConfig() bool`
+
+HasGoogleChronicleConfig returns a boolean if a field has been set.
 
 ### GetJsonOutput
 
@@ -311,6 +338,31 @@ SetSplunkConfig sets SplunkConfig field to given value.
 `func (o *LogForwardingConfigPart) HasSplunkConfig() bool`
 
 HasSplunkConfig returns a boolean if a field has been set.
+
+### GetSumoLogicConfig
+
+`func (o *LogForwardingConfigPart) GetSumoLogicConfig() SumologicLogForwardingConfig`
+
+GetSumoLogicConfig returns the SumoLogicConfig field if non-nil, zero value otherwise.
+
+### GetSumoLogicConfigOk
+
+`func (o *LogForwardingConfigPart) GetSumoLogicConfigOk() (*SumologicLogForwardingConfig, bool)`
+
+GetSumoLogicConfigOk returns a tuple with the SumoLogicConfig field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSumoLogicConfig
+
+`func (o *LogForwardingConfigPart) SetSumoLogicConfig(v SumologicLogForwardingConfig)`
+
+SetSumoLogicConfig sets SumoLogicConfig field to given value.
+
+### HasSumoLogicConfig
+
+`func (o *LogForwardingConfigPart) HasSumoLogicConfig() bool`
+
+HasSumoLogicConfig returns a boolean if a field has been set.
 
 ### GetSyslogConfig
 

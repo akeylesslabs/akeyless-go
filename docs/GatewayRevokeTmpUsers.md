@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Host** | Pointer to **string** | Deprecated: has no effect | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
-**Name** | **string** | Producer Name | 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**Name** | **string** | Dynamic secret name | 
 **RevokeAll** | Pointer to **bool** | Revoke All Temp Creds | [optional] 
 **SoftDelete** | Pointer to **bool** | Soft Delete | [optional] 
 **TmpCredsId** | **string** | Tmp Creds ID | [default to "demo_default_tmp_creds_id_for_sdk_bc"]

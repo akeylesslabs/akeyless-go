@@ -17,18 +17,30 @@ import (
 
 // UpdateCertificateValue struct for UpdateCertificateValue
 type UpdateCertificateValue struct {
-	// Content of the certificate PEM in a Base64 format.
+	// List of the new tags that will be attached to this item
+	AddTag *[]string `json:"add-tag,omitempty"`
+	// Content of the certificate in a Base64 format.
 	CertificateData *string `json:"certificate-data,omitempty"`
+	// Protection from accidental deletion of this item [true/false]
+	DeleteProtection *string `json:"delete_protection,omitempty"`
+	// Description of the object
+	Description *string `json:"description,omitempty"`
 	// How many days before the expiration of the certificate would you like to be notified.
 	ExpirationEventIn *[]string `json:"expiration-event-in,omitempty"`
+	// CertificateFormat of the certificate and private key, possible values: cer,crt,pem,pfx,p12. Required when passing inline certificate content with --certificate-data or --key-data, otherwise format is derived from the file extension.
+	Format *string `json:"format,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// The name of a key to use to encrypt the certificate's key (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
-	// Content of the certificate's private key PEM in a Base64 format.
+	// Content of the certificate's private key in a Base64 format.
 	KeyData *string `json:"key-data,omitempty"`
+	// Deprecated - use description
+	Metadata *string `json:"metadata,omitempty"`
 	// Certificate name
 	Name string `json:"name"`
+	// List of the existent tags that will be removed from this item
+	RmTag *[]string `json:"rm-tag,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -41,6 +53,8 @@ type UpdateCertificateValue struct {
 // will change when the set of required properties is changed
 func NewUpdateCertificateValue(name string, ) *UpdateCertificateValue {
 	this := UpdateCertificateValue{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -50,7 +64,41 @@ func NewUpdateCertificateValue(name string, ) *UpdateCertificateValue {
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateCertificateValueWithDefaults() *UpdateCertificateValue {
 	this := UpdateCertificateValue{}
+	var json bool = false
+	this.Json = &json
 	return &this
+}
+
+// GetAddTag returns the AddTag field value if set, zero value otherwise.
+func (o *UpdateCertificateValue) GetAddTag() []string {
+	if o == nil || o.AddTag == nil {
+		var ret []string
+		return ret
+	}
+	return *o.AddTag
+}
+
+// GetAddTagOk returns a tuple with the AddTag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateCertificateValue) GetAddTagOk() (*[]string, bool) {
+	if o == nil || o.AddTag == nil {
+		return nil, false
+	}
+	return o.AddTag, true
+}
+
+// HasAddTag returns a boolean if a field has been set.
+func (o *UpdateCertificateValue) HasAddTag() bool {
+	if o != nil && o.AddTag != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAddTag gets a reference to the given []string and assigns it to the AddTag field.
+func (o *UpdateCertificateValue) SetAddTag(v []string) {
+	o.AddTag = &v
 }
 
 // GetCertificateData returns the CertificateData field value if set, zero value otherwise.
@@ -85,6 +133,70 @@ func (o *UpdateCertificateValue) SetCertificateData(v string) {
 	o.CertificateData = &v
 }
 
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *UpdateCertificateValue) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateCertificateValue) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *UpdateCertificateValue) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *UpdateCertificateValue) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *UpdateCertificateValue) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateCertificateValue) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *UpdateCertificateValue) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *UpdateCertificateValue) SetDescription(v string) {
+	o.Description = &v
+}
+
 // GetExpirationEventIn returns the ExpirationEventIn field value if set, zero value otherwise.
 func (o *UpdateCertificateValue) GetExpirationEventIn() []string {
 	if o == nil || o.ExpirationEventIn == nil {
@@ -115,6 +227,38 @@ func (o *UpdateCertificateValue) HasExpirationEventIn() bool {
 // SetExpirationEventIn gets a reference to the given []string and assigns it to the ExpirationEventIn field.
 func (o *UpdateCertificateValue) SetExpirationEventIn(v []string) {
 	o.ExpirationEventIn = &v
+}
+
+// GetFormat returns the Format field value if set, zero value otherwise.
+func (o *UpdateCertificateValue) GetFormat() string {
+	if o == nil || o.Format == nil {
+		var ret string
+		return ret
+	}
+	return *o.Format
+}
+
+// GetFormatOk returns a tuple with the Format field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateCertificateValue) GetFormatOk() (*string, bool) {
+	if o == nil || o.Format == nil {
+		return nil, false
+	}
+	return o.Format, true
+}
+
+// HasFormat returns a boolean if a field has been set.
+func (o *UpdateCertificateValue) HasFormat() bool {
+	if o != nil && o.Format != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFormat gets a reference to the given string and assigns it to the Format field.
+func (o *UpdateCertificateValue) SetFormat(v string) {
+	o.Format = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -213,6 +357,38 @@ func (o *UpdateCertificateValue) SetKeyData(v string) {
 	o.KeyData = &v
 }
 
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
+func (o *UpdateCertificateValue) GetMetadata() string {
+	if o == nil || o.Metadata == nil {
+		var ret string
+		return ret
+	}
+	return *o.Metadata
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateCertificateValue) GetMetadataOk() (*string, bool) {
+	if o == nil || o.Metadata == nil {
+		return nil, false
+	}
+	return o.Metadata, true
+}
+
+// HasMetadata returns a boolean if a field has been set.
+func (o *UpdateCertificateValue) HasMetadata() bool {
+	if o != nil && o.Metadata != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given string and assigns it to the Metadata field.
+func (o *UpdateCertificateValue) SetMetadata(v string) {
+	o.Metadata = &v
+}
+
 // GetName returns the Name field value
 func (o *UpdateCertificateValue) GetName() string {
 	if o == nil  {
@@ -235,6 +411,38 @@ func (o *UpdateCertificateValue) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *UpdateCertificateValue) SetName(v string) {
 	o.Name = v
+}
+
+// GetRmTag returns the RmTag field value if set, zero value otherwise.
+func (o *UpdateCertificateValue) GetRmTag() []string {
+	if o == nil || o.RmTag == nil {
+		var ret []string
+		return ret
+	}
+	return *o.RmTag
+}
+
+// GetRmTagOk returns a tuple with the RmTag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateCertificateValue) GetRmTagOk() (*[]string, bool) {
+	if o == nil || o.RmTag == nil {
+		return nil, false
+	}
+	return o.RmTag, true
+}
+
+// HasRmTag returns a boolean if a field has been set.
+func (o *UpdateCertificateValue) HasRmTag() bool {
+	if o != nil && o.RmTag != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRmTag gets a reference to the given []string and assigns it to the RmTag field.
+func (o *UpdateCertificateValue) SetRmTag(v []string) {
+	o.RmTag = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -303,11 +511,23 @@ func (o *UpdateCertificateValue) SetUidToken(v string) {
 
 func (o UpdateCertificateValue) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AddTag != nil {
+		toSerialize["add-tag"] = o.AddTag
+	}
 	if o.CertificateData != nil {
 		toSerialize["certificate-data"] = o.CertificateData
 	}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
+	}
 	if o.ExpirationEventIn != nil {
 		toSerialize["expiration-event-in"] = o.ExpirationEventIn
+	}
+	if o.Format != nil {
+		toSerialize["format"] = o.Format
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json
@@ -318,8 +538,14 @@ func (o UpdateCertificateValue) MarshalJSON() ([]byte, error) {
 	if o.KeyData != nil {
 		toSerialize["key-data"] = o.KeyData
 	}
+	if o.Metadata != nil {
+		toSerialize["metadata"] = o.Metadata
+	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.RmTag != nil {
+		toSerialize["rm-tag"] = o.RmTag
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

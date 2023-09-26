@@ -28,6 +28,7 @@ type RotatedSecretDetailsInfo struct {
 	// RotationStatus defines types of rotation Status
 	RotatorStatus *string `json:"rotator_status,omitempty"`
 	RotatorType *string `json:"rotator_type,omitempty"`
+	SamePassword *bool `json:"same_password,omitempty"`
 }
 
 // NewRotatedSecretDetailsInfo instantiates a new RotatedSecretDetailsInfo object
@@ -367,6 +368,38 @@ func (o *RotatedSecretDetailsInfo) SetRotatorType(v string) {
 	o.RotatorType = &v
 }
 
+// GetSamePassword returns the SamePassword field value if set, zero value otherwise.
+func (o *RotatedSecretDetailsInfo) GetSamePassword() bool {
+	if o == nil || o.SamePassword == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SamePassword
+}
+
+// GetSamePasswordOk returns a tuple with the SamePassword field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretDetailsInfo) GetSamePasswordOk() (*bool, bool) {
+	if o == nil || o.SamePassword == nil {
+		return nil, false
+	}
+	return o.SamePassword, true
+}
+
+// HasSamePassword returns a boolean if a field has been set.
+func (o *RotatedSecretDetailsInfo) HasSamePassword() bool {
+	if o != nil && o.SamePassword != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSamePassword gets a reference to the given bool and assigns it to the SamePassword field.
+func (o *RotatedSecretDetailsInfo) SetSamePassword(v bool) {
+	o.SamePassword = &v
+}
+
 func (o RotatedSecretDetailsInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DeletePreviousVersionInDays != nil {
@@ -398,6 +431,9 @@ func (o RotatedSecretDetailsInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.RotatorType != nil {
 		toSerialize["rotator_type"] = o.RotatorType
+	}
+	if o.SamePassword != nil {
+		toSerialize["same_password"] = o.SamePassword
 	}
 	return json.Marshal(toSerialize)
 }

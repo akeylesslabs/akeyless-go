@@ -4,15 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **GithubAppId** | Pointer to **int64** | Github app id | [optional] 
 **GithubAppPrivateKey** | Pointer to **string** | App private key | [optional] 
-**GithubBaseUrl** | Pointer to **string** | Base URL | [optional] 
+**GithubBaseUrl** | Pointer to **string** | Base URL | [optional] [default to "https://api.github.com/"]
 **InstallationId** | Pointer to **int64** | Github app installation id | [optional] 
 **InstallationRepository** | Pointer to **string** | Repository that the app installation has access to | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
-**Name** | **string** | Producer name | 
-**NewName** | Pointer to **string** | Producer name | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**Name** | **string** | Dynamic secret name | 
+**NewName** | Pointer to **string** | Dynamic secret name | [optional] 
+**Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **TokenPermissions** | Pointer to **[]string** | Optional - installation token&#39;s allowed permissions | [optional] 
@@ -257,6 +258,31 @@ SetNewName sets NewName field to given value.
 `func (o *GatewayUpdateProducerGithub) HasNewName() bool`
 
 HasNewName returns a boolean if a field has been set.
+
+### GetTags
+
+`func (o *GatewayUpdateProducerGithub) GetTags() []string`
+
+GetTags returns the Tags field if non-nil, zero value otherwise.
+
+### GetTagsOk
+
+`func (o *GatewayUpdateProducerGithub) GetTagsOk() (*[]string, bool)`
+
+GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTags
+
+`func (o *GatewayUpdateProducerGithub) SetTags(v []string)`
+
+SetTags sets Tags field to given value.
+
+### HasTags
+
+`func (o *GatewayUpdateProducerGithub) HasTags() bool`
+
+HasTags returns a boolean if a field has been set.
 
 ### GetTargetName
 

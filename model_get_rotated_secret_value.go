@@ -17,7 +17,9 @@ import (
 
 // GetRotatedSecretValue struct for GetRotatedSecretValue
 type GetRotatedSecretValue struct {
-	// Ignore Cache Retrieve the Secret value without checking the Gateway's cache [true/false]. This flag is only relevant when using the RestAPI
+	// Get rotated secret value of specific Host (relevant only for Linked Target)
+	Host *string `json:"host,omitempty"`
+	// Retrieve the Secret value without checking the Gateway's cache [true/false]. This flag is only relevant when using the RestAPI
 	IgnoreCache *string `json:"ignore-cache,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -37,6 +39,10 @@ type GetRotatedSecretValue struct {
 // will change when the set of required properties is changed
 func NewGetRotatedSecretValue(names string, ) *GetRotatedSecretValue {
 	this := GetRotatedSecretValue{}
+	var ignoreCache string = "false"
+	this.IgnoreCache = &ignoreCache
+	var json bool = false
+	this.Json = &json
 	this.Names = names
 	return &this
 }
@@ -46,7 +52,43 @@ func NewGetRotatedSecretValue(names string, ) *GetRotatedSecretValue {
 // but it doesn't guarantee that properties required by API are set
 func NewGetRotatedSecretValueWithDefaults() *GetRotatedSecretValue {
 	this := GetRotatedSecretValue{}
+	var ignoreCache string = "false"
+	this.IgnoreCache = &ignoreCache
+	var json bool = false
+	this.Json = &json
 	return &this
+}
+
+// GetHost returns the Host field value if set, zero value otherwise.
+func (o *GetRotatedSecretValue) GetHost() string {
+	if o == nil || o.Host == nil {
+		var ret string
+		return ret
+	}
+	return *o.Host
+}
+
+// GetHostOk returns a tuple with the Host field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetRotatedSecretValue) GetHostOk() (*string, bool) {
+	if o == nil || o.Host == nil {
+		return nil, false
+	}
+	return o.Host, true
+}
+
+// HasHost returns a boolean if a field has been set.
+func (o *GetRotatedSecretValue) HasHost() bool {
+	if o != nil && o.Host != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHost gets a reference to the given string and assigns it to the Host field.
+func (o *GetRotatedSecretValue) SetHost(v string) {
+	o.Host = &v
 }
 
 // GetIgnoreCache returns the IgnoreCache field value if set, zero value otherwise.
@@ -235,6 +277,9 @@ func (o *GetRotatedSecretValue) SetVersion(v int32) {
 
 func (o GetRotatedSecretValue) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Host != nil {
+		toSerialize["host"] = o.Host
+	}
 	if o.IgnoreCache != nil {
 		toSerialize["ignore-cache"] = o.IgnoreCache
 	}
