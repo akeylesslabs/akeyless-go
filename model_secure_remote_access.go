@@ -35,6 +35,7 @@ type SecureRemoteAccess struct {
 	IsWeb *bool `json:"is_web,omitempty"`
 	Isolated *bool `json:"isolated,omitempty"`
 	Native *bool `json:"native,omitempty"`
+	RdGatewayServer *string `json:"rd_gateway_server,omitempty"`
 	RdpUser *string `json:"rdp_user,omitempty"`
 	Region *string `json:"region,omitempty"`
 	RotateAfterDisconnect *bool `json:"rotate_after_disconnect,omitempty"`
@@ -640,6 +641,38 @@ func (o *SecureRemoteAccess) SetNative(v bool) {
 	o.Native = &v
 }
 
+// GetRdGatewayServer returns the RdGatewayServer field value if set, zero value otherwise.
+func (o *SecureRemoteAccess) GetRdGatewayServer() string {
+	if o == nil || o.RdGatewayServer == nil {
+		var ret string
+		return ret
+	}
+	return *o.RdGatewayServer
+}
+
+// GetRdGatewayServerOk returns a tuple with the RdGatewayServer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SecureRemoteAccess) GetRdGatewayServerOk() (*string, bool) {
+	if o == nil || o.RdGatewayServer == nil {
+		return nil, false
+	}
+	return o.RdGatewayServer, true
+}
+
+// HasRdGatewayServer returns a boolean if a field has been set.
+func (o *SecureRemoteAccess) HasRdGatewayServer() bool {
+	if o != nil && o.RdGatewayServer != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRdGatewayServer gets a reference to the given string and assigns it to the RdGatewayServer field.
+func (o *SecureRemoteAccess) SetRdGatewayServer(v string) {
+	o.RdGatewayServer = &v
+}
+
 // GetRdpUser returns the RdpUser field value if set, zero value otherwise.
 func (o *SecureRemoteAccess) GetRdpUser() string {
 	if o == nil || o.RdpUser == nil {
@@ -1015,6 +1048,9 @@ func (o SecureRemoteAccess) MarshalJSON() ([]byte, error) {
 	}
 	if o.Native != nil {
 		toSerialize["native"] = o.Native
+	}
+	if o.RdGatewayServer != nil {
+		toSerialize["rd_gateway_server"] = o.RdGatewayServer
 	}
 	if o.RdpUser != nil {
 		toSerialize["rdp_user"] = o.RdpUser

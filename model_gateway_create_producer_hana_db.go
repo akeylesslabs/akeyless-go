@@ -17,7 +17,7 @@ import (
 
 // GatewayCreateProducerHanaDb gatewayCreateProducerHanaDb is a command that creates hanadb producer
 type GatewayCreateProducerHanaDb struct {
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// HanaDb Name
 	HanaDbname *string `json:"hana-dbname,omitempty"`
@@ -35,16 +35,21 @@ type GatewayCreateProducerHanaDb struct {
 	HanadbUsername *string `json:"hanadb-username,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Producer name
+	// Dynamic secret name
 	Name string `json:"name"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
+	// Path to the SSH Certificate Issuer for your Akeyless Bastion
 	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
+	// The DB schema
 	SecureAccessDbSchema *string `json:"secure-access-db-schema,omitempty"`
+	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Target DB servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts)
 	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
+	// Enable Web Secure Remote Access
 	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
-	// List of the tags attached to this secret
+	// Add tags attached to this object
 	Tags *[]string `json:"tags,omitempty"`
 	// Target name
 	TargetName *string `json:"target-name,omitempty"`
@@ -66,7 +71,11 @@ func NewGatewayCreateProducerHanaDb(name string, ) *GatewayCreateProducerHanaDb 
 	this.HanadbHost = &hanadbHost
 	var hanadbPort string = "443"
 	this.HanadbPort = &hanadbPort
+	var json bool = false
+	this.Json = &json
 	this.Name = name
+	var secureAccessWeb bool = false
+	this.SecureAccessWeb = &secureAccessWeb
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
@@ -81,6 +90,10 @@ func NewGatewayCreateProducerHanaDbWithDefaults() *GatewayCreateProducerHanaDb {
 	this.HanadbHost = &hanadbHost
 	var hanadbPort string = "443"
 	this.HanadbPort = &hanadbPort
+	var json bool = false
+	this.Json = &json
+	var secureAccessWeb bool = false
+	this.SecureAccessWeb = &secureAccessWeb
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this

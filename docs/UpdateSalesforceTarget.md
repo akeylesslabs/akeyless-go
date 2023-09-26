@@ -10,10 +10,11 @@ Name | Type | Description | Notes
 **CaCertName** | Pointer to **string** | name of the certificate in Salesforce tenant to use when uploading new key | [optional] 
 **ClientId** | **string** | Client ID of the oauth2 app to use for connecting to Salesforce | 
 **ClientSecret** | Pointer to **string** | Client secret of the oauth2 app to use for connecting to Salesforce (required for password flow) | [optional] 
-**Comment** | Pointer to **string** | Comment about the target | [optional] 
+**Comment** | Pointer to **string** | Deprecated - use description | [optional] 
+**Description** | Pointer to **string** | Description of the object | [optional] 
 **Email** | **string** | The email of the user attached to the oauth2 app used for connecting to Salesforce | 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
-**KeepPrevVersion** | Pointer to **string** |  | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**KeepPrevVersion** | Pointer to **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Target name | 
 **NewName** | Pointer to **string** | New target name | [optional] 
@@ -207,6 +208,31 @@ SetComment sets Comment field to given value.
 `func (o *UpdateSalesforceTarget) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *UpdateSalesforceTarget) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *UpdateSalesforceTarget) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *UpdateSalesforceTarget) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *UpdateSalesforceTarget) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetEmail
 

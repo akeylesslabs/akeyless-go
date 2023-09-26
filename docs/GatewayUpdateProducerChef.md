@@ -8,13 +8,13 @@ Name | Type | Description | Notes
 **ChefServerKey** | Pointer to **string** | Server key | [optional] 
 **ChefServerUrl** | Pointer to **string** | Server URL | [optional] 
 **ChefServerUsername** | Pointer to **string** | Server username | [optional] 
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
-**Name** | **string** | Producer name | 
-**NewName** | Pointer to **string** | Producer name | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**Name** | **string** | Dynamic secret name | 
+**NewName** | Pointer to **string** | Dynamic secret name | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **SkipSsl** | Pointer to **bool** | Skip SSL | [optional] [default to true]
-**Tags** | Pointer to **[]string** | List of the tags attached to this secret | [optional] 
+**Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 

@@ -17,7 +17,7 @@ import (
 
 // GatewayUpdateProducerGke gatewayUpdateProducerGke is a command that updates gke producer
 type GatewayUpdateProducerGke struct {
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// GKE Service Account key file path
 	GkeAccountKey *string `json:"gke-account-key,omitempty"`
@@ -31,18 +31,23 @@ type GatewayUpdateProducerGke struct {
 	GkeServiceAccountEmail *string `json:"gke-service-account-email,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Producer name
+	// Dynamic secret name
 	Name string `json:"name"`
-	// Producer name
+	// Dynamic secret name
 	NewName *string `json:"new-name,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
+	// Enable Port forwarding while using CLI access
 	SecureAccessAllowPortForwading *bool `json:"secure-access-allow-port-forwading,omitempty"`
+	// Path to the SSH Certificate Issuer for your Akeyless Bastion
 	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
+	// The K8s cluster endpoint URL
 	SecureAccessClusterEndpoint *string `json:"secure-access-cluster-endpoint,omitempty"`
+	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Enable Web Secure Remote Access
 	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
-	// List of the tags attached to this secret
+	// Add tags attached to this object
 	Tags *[]string `json:"tags,omitempty"`
 	// Target name
 	TargetName *string `json:"target-name,omitempty"`
@@ -60,7 +65,11 @@ type GatewayUpdateProducerGke struct {
 // will change when the set of required properties is changed
 func NewGatewayUpdateProducerGke(name string, ) *GatewayUpdateProducerGke {
 	this := GatewayUpdateProducerGke{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
+	var secureAccessWeb bool = false
+	this.SecureAccessWeb = &secureAccessWeb
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
@@ -71,6 +80,10 @@ func NewGatewayUpdateProducerGke(name string, ) *GatewayUpdateProducerGke {
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayUpdateProducerGkeWithDefaults() *GatewayUpdateProducerGke {
 	this := GatewayUpdateProducerGke{}
+	var json bool = false
+	this.Json = &json
+	var secureAccessWeb bool = false
+	this.SecureAccessWeb = &secureAccessWeb
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this

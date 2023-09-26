@@ -31,6 +31,8 @@ type ListGateways struct {
 // will change when the set of required properties is changed
 func NewListGateways() *ListGateways {
 	this := ListGateways{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -39,6 +41,8 @@ func NewListGateways() *ListGateways {
 // but it doesn't guarantee that properties required by API are set
 func NewListGatewaysWithDefaults() *ListGateways {
 	this := ListGateways{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

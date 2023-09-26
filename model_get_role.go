@@ -33,6 +33,8 @@ type GetRole struct {
 // will change when the set of required properties is changed
 func NewGetRole(name string, ) *GetRole {
 	this := GetRole{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -42,6 +44,8 @@ func NewGetRole(name string, ) *GetRole {
 // but it doesn't guarantee that properties required by API are set
 func NewGetRoleWithDefaults() *GetRole {
 	this := GetRole{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

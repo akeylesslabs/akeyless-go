@@ -23,15 +23,21 @@ type GatewayCreateK8SAuthConfig struct {
 	ClusterApiType *string `json:"cluster-api-type,omitempty"`
 	// Config encryption key
 	ConfigEncryptionKeyName *string `json:"config-encryption-key-name,omitempty"`
-	// Disable issuer validation
+	// Disable issuer validation [true/false]
 	DisableIssuerValidation *string `json:"disable-issuer-validation,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
+	// K8S auth type [token/certificate]. (relevant for \"native_k8s\" only)
+	K8sAuthType *string `json:"k8s-auth-type,omitempty"`
 	// The CA Certificate (base64 encoded) to use to call into the kubernetes API server
 	K8sCaCert *string `json:"k8s-ca-cert,omitempty"`
+	// Content of the k8 client certificate (PEM format) in a Base64 format (relevant for \"native_k8s\" only)
+	K8sClientCertificate *string `json:"k8s-client-certificate,omitempty"`
+	// Content of the k8 client private key (PEM format) in a Base64 format (relevant for \"native_k8s\" only)
+	K8sClientKey *string `json:"k8s-client-key,omitempty"`
 	// The URL of the kubernetes API server
 	K8sHost string `json:"k8s-host"`
-	// The Kubernetes JWT issuer name. If not set, kubernetes/serviceaccount will use as an issuer.
+	// The Kubernetes JWT issuer name. K8SIssuer is the claim that specifies who issued the Kubernetes token
 	K8sIssuer *string `json:"k8s-issuer,omitempty"`
 	// K8S Auth config name
 	Name string `json:"name"`
@@ -49,6 +55,8 @@ type GatewayCreateK8SAuthConfig struct {
 	TokenReviewerJwt *string `json:"token-reviewer-jwt,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// Use the GW's service account
+	UseGwServiceAccount *bool `json:"use-gw-service-account,omitempty"`
 }
 
 // NewGatewayCreateK8SAuthConfig instantiates a new GatewayCreateK8SAuthConfig object
@@ -60,7 +68,13 @@ func NewGatewayCreateK8SAuthConfig(accessId string, k8sHost string, name string,
 	this.AccessId = accessId
 	var clusterApiType string = "native_k8s"
 	this.ClusterApiType = &clusterApiType
+	var json bool = false
+	this.Json = &json
+	var k8sAuthType string = "token"
+	this.K8sAuthType = &k8sAuthType
 	this.K8sHost = k8sHost
+	var k8sIssuer string = "kubernetes/serviceaccount"
+	this.K8sIssuer = &k8sIssuer
 	this.Name = name
 	this.SigningKey = signingKey
 	var tokenExp int64 = 300
@@ -75,6 +89,12 @@ func NewGatewayCreateK8SAuthConfigWithDefaults() *GatewayCreateK8SAuthConfig {
 	this := GatewayCreateK8SAuthConfig{}
 	var clusterApiType string = "native_k8s"
 	this.ClusterApiType = &clusterApiType
+	var json bool = false
+	this.Json = &json
+	var k8sAuthType string = "token"
+	this.K8sAuthType = &k8sAuthType
+	var k8sIssuer string = "kubernetes/serviceaccount"
+	this.K8sIssuer = &k8sIssuer
 	var tokenExp int64 = 300
 	this.TokenExp = &tokenExp
 	return &this
@@ -232,6 +252,38 @@ func (o *GatewayCreateK8SAuthConfig) SetJson(v bool) {
 	o.Json = &v
 }
 
+// GetK8sAuthType returns the K8sAuthType field value if set, zero value otherwise.
+func (o *GatewayCreateK8SAuthConfig) GetK8sAuthType() string {
+	if o == nil || o.K8sAuthType == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sAuthType
+}
+
+// GetK8sAuthTypeOk returns a tuple with the K8sAuthType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateK8SAuthConfig) GetK8sAuthTypeOk() (*string, bool) {
+	if o == nil || o.K8sAuthType == nil {
+		return nil, false
+	}
+	return o.K8sAuthType, true
+}
+
+// HasK8sAuthType returns a boolean if a field has been set.
+func (o *GatewayCreateK8SAuthConfig) HasK8sAuthType() bool {
+	if o != nil && o.K8sAuthType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sAuthType gets a reference to the given string and assigns it to the K8sAuthType field.
+func (o *GatewayCreateK8SAuthConfig) SetK8sAuthType(v string) {
+	o.K8sAuthType = &v
+}
+
 // GetK8sCaCert returns the K8sCaCert field value if set, zero value otherwise.
 func (o *GatewayCreateK8SAuthConfig) GetK8sCaCert() string {
 	if o == nil || o.K8sCaCert == nil {
@@ -262,6 +314,70 @@ func (o *GatewayCreateK8SAuthConfig) HasK8sCaCert() bool {
 // SetK8sCaCert gets a reference to the given string and assigns it to the K8sCaCert field.
 func (o *GatewayCreateK8SAuthConfig) SetK8sCaCert(v string) {
 	o.K8sCaCert = &v
+}
+
+// GetK8sClientCertificate returns the K8sClientCertificate field value if set, zero value otherwise.
+func (o *GatewayCreateK8SAuthConfig) GetK8sClientCertificate() string {
+	if o == nil || o.K8sClientCertificate == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sClientCertificate
+}
+
+// GetK8sClientCertificateOk returns a tuple with the K8sClientCertificate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateK8SAuthConfig) GetK8sClientCertificateOk() (*string, bool) {
+	if o == nil || o.K8sClientCertificate == nil {
+		return nil, false
+	}
+	return o.K8sClientCertificate, true
+}
+
+// HasK8sClientCertificate returns a boolean if a field has been set.
+func (o *GatewayCreateK8SAuthConfig) HasK8sClientCertificate() bool {
+	if o != nil && o.K8sClientCertificate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sClientCertificate gets a reference to the given string and assigns it to the K8sClientCertificate field.
+func (o *GatewayCreateK8SAuthConfig) SetK8sClientCertificate(v string) {
+	o.K8sClientCertificate = &v
+}
+
+// GetK8sClientKey returns the K8sClientKey field value if set, zero value otherwise.
+func (o *GatewayCreateK8SAuthConfig) GetK8sClientKey() string {
+	if o == nil || o.K8sClientKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sClientKey
+}
+
+// GetK8sClientKeyOk returns a tuple with the K8sClientKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateK8SAuthConfig) GetK8sClientKeyOk() (*string, bool) {
+	if o == nil || o.K8sClientKey == nil {
+		return nil, false
+	}
+	return o.K8sClientKey, true
+}
+
+// HasK8sClientKey returns a boolean if a field has been set.
+func (o *GatewayCreateK8SAuthConfig) HasK8sClientKey() bool {
+	if o != nil && o.K8sClientKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sClientKey gets a reference to the given string and assigns it to the K8sClientKey field.
+func (o *GatewayCreateK8SAuthConfig) SetK8sClientKey(v string) {
+	o.K8sClientKey = &v
 }
 
 // GetK8sHost returns the K8sHost field value
@@ -560,6 +676,38 @@ func (o *GatewayCreateK8SAuthConfig) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUseGwServiceAccount returns the UseGwServiceAccount field value if set, zero value otherwise.
+func (o *GatewayCreateK8SAuthConfig) GetUseGwServiceAccount() bool {
+	if o == nil || o.UseGwServiceAccount == nil {
+		var ret bool
+		return ret
+	}
+	return *o.UseGwServiceAccount
+}
+
+// GetUseGwServiceAccountOk returns a tuple with the UseGwServiceAccount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateK8SAuthConfig) GetUseGwServiceAccountOk() (*bool, bool) {
+	if o == nil || o.UseGwServiceAccount == nil {
+		return nil, false
+	}
+	return o.UseGwServiceAccount, true
+}
+
+// HasUseGwServiceAccount returns a boolean if a field has been set.
+func (o *GatewayCreateK8SAuthConfig) HasUseGwServiceAccount() bool {
+	if o != nil && o.UseGwServiceAccount != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUseGwServiceAccount gets a reference to the given bool and assigns it to the UseGwServiceAccount field.
+func (o *GatewayCreateK8SAuthConfig) SetUseGwServiceAccount(v bool) {
+	o.UseGwServiceAccount = &v
+}
+
 func (o GatewayCreateK8SAuthConfig) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -577,8 +725,17 @@ func (o GatewayCreateK8SAuthConfig) MarshalJSON() ([]byte, error) {
 	if o.Json != nil {
 		toSerialize["json"] = o.Json
 	}
+	if o.K8sAuthType != nil {
+		toSerialize["k8s-auth-type"] = o.K8sAuthType
+	}
 	if o.K8sCaCert != nil {
 		toSerialize["k8s-ca-cert"] = o.K8sCaCert
+	}
+	if o.K8sClientCertificate != nil {
+		toSerialize["k8s-client-certificate"] = o.K8sClientCertificate
+	}
+	if o.K8sClientKey != nil {
+		toSerialize["k8s-client-key"] = o.K8sClientKey
 	}
 	if true {
 		toSerialize["k8s-host"] = o.K8sHost
@@ -609,6 +766,9 @@ func (o GatewayCreateK8SAuthConfig) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.UseGwServiceAccount != nil {
+		toSerialize["use-gw-service-account"] = o.UseGwServiceAccount
 	}
 	return json.Marshal(toSerialize)
 }

@@ -21,6 +21,7 @@ type LogForwardingConfigPart struct {
 	AzureAnalyticsConfig *AzureLogAnalyticsForwardingConfig `json:"azure_analytics_config,omitempty"`
 	DatadogConfig *DatadogForwardingConfig `json:"datadog_config,omitempty"`
 	ElasticsearchConfig *ElasticsearchLogForwardingConfig `json:"elasticsearch_config,omitempty"`
+	GoogleChronicleConfig *GoogleChronicleForwardingConfig `json:"google_chronicle_config,omitempty"`
 	JsonOutput *bool `json:"json_output,omitempty"`
 	LoganEnable *bool `json:"logan_enable,omitempty"`
 	LoganUrl *string `json:"logan_url,omitempty"`
@@ -28,6 +29,7 @@ type LogForwardingConfigPart struct {
 	LogzIoConfig *LogzIoLogForwardingConfig `json:"logz_io_config,omitempty"`
 	PullIntervalSec *string `json:"pull_interval_sec,omitempty"`
 	SplunkConfig *SplunkLogForwardingConfig `json:"splunk_config,omitempty"`
+	SumoLogicConfig *SumologicLogForwardingConfig `json:"sumo_logic_config,omitempty"`
 	SyslogConfig *SyslogLogForwardingConfig `json:"syslog_config,omitempty"`
 	TargetLogType *string `json:"target_log_type,omitempty"`
 }
@@ -175,6 +177,38 @@ func (o *LogForwardingConfigPart) HasElasticsearchConfig() bool {
 // SetElasticsearchConfig gets a reference to the given ElasticsearchLogForwardingConfig and assigns it to the ElasticsearchConfig field.
 func (o *LogForwardingConfigPart) SetElasticsearchConfig(v ElasticsearchLogForwardingConfig) {
 	o.ElasticsearchConfig = &v
+}
+
+// GetGoogleChronicleConfig returns the GoogleChronicleConfig field value if set, zero value otherwise.
+func (o *LogForwardingConfigPart) GetGoogleChronicleConfig() GoogleChronicleForwardingConfig {
+	if o == nil || o.GoogleChronicleConfig == nil {
+		var ret GoogleChronicleForwardingConfig
+		return ret
+	}
+	return *o.GoogleChronicleConfig
+}
+
+// GetGoogleChronicleConfigOk returns a tuple with the GoogleChronicleConfig field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LogForwardingConfigPart) GetGoogleChronicleConfigOk() (*GoogleChronicleForwardingConfig, bool) {
+	if o == nil || o.GoogleChronicleConfig == nil {
+		return nil, false
+	}
+	return o.GoogleChronicleConfig, true
+}
+
+// HasGoogleChronicleConfig returns a boolean if a field has been set.
+func (o *LogForwardingConfigPart) HasGoogleChronicleConfig() bool {
+	if o != nil && o.GoogleChronicleConfig != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGoogleChronicleConfig gets a reference to the given GoogleChronicleForwardingConfig and assigns it to the GoogleChronicleConfig field.
+func (o *LogForwardingConfigPart) SetGoogleChronicleConfig(v GoogleChronicleForwardingConfig) {
+	o.GoogleChronicleConfig = &v
 }
 
 // GetJsonOutput returns the JsonOutput field value if set, zero value otherwise.
@@ -401,6 +435,38 @@ func (o *LogForwardingConfigPart) SetSplunkConfig(v SplunkLogForwardingConfig) {
 	o.SplunkConfig = &v
 }
 
+// GetSumoLogicConfig returns the SumoLogicConfig field value if set, zero value otherwise.
+func (o *LogForwardingConfigPart) GetSumoLogicConfig() SumologicLogForwardingConfig {
+	if o == nil || o.SumoLogicConfig == nil {
+		var ret SumologicLogForwardingConfig
+		return ret
+	}
+	return *o.SumoLogicConfig
+}
+
+// GetSumoLogicConfigOk returns a tuple with the SumoLogicConfig field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LogForwardingConfigPart) GetSumoLogicConfigOk() (*SumologicLogForwardingConfig, bool) {
+	if o == nil || o.SumoLogicConfig == nil {
+		return nil, false
+	}
+	return o.SumoLogicConfig, true
+}
+
+// HasSumoLogicConfig returns a boolean if a field has been set.
+func (o *LogForwardingConfigPart) HasSumoLogicConfig() bool {
+	if o != nil && o.SumoLogicConfig != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSumoLogicConfig gets a reference to the given SumologicLogForwardingConfig and assigns it to the SumoLogicConfig field.
+func (o *LogForwardingConfigPart) SetSumoLogicConfig(v SumologicLogForwardingConfig) {
+	o.SumoLogicConfig = &v
+}
+
 // GetSyslogConfig returns the SyslogConfig field value if set, zero value otherwise.
 func (o *LogForwardingConfigPart) GetSyslogConfig() SyslogLogForwardingConfig {
 	if o == nil || o.SyslogConfig == nil {
@@ -479,6 +545,9 @@ func (o LogForwardingConfigPart) MarshalJSON() ([]byte, error) {
 	if o.ElasticsearchConfig != nil {
 		toSerialize["elasticsearch_config"] = o.ElasticsearchConfig
 	}
+	if o.GoogleChronicleConfig != nil {
+		toSerialize["google_chronicle_config"] = o.GoogleChronicleConfig
+	}
 	if o.JsonOutput != nil {
 		toSerialize["json_output"] = o.JsonOutput
 	}
@@ -499,6 +568,9 @@ func (o LogForwardingConfigPart) MarshalJSON() ([]byte, error) {
 	}
 	if o.SplunkConfig != nil {
 		toSerialize["splunk_config"] = o.SplunkConfig
+	}
+	if o.SumoLogicConfig != nil {
+		toSerialize["sumo_logic_config"] = o.SumoLogicConfig
 	}
 	if o.SyslogConfig != nil {
 		toSerialize["syslog_config"] = o.SyslogConfig

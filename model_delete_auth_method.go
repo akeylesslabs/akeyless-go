@@ -33,6 +33,8 @@ type DeleteAuthMethod struct {
 // will change when the set of required properties is changed
 func NewDeleteAuthMethod(name string, ) *DeleteAuthMethod {
 	this := DeleteAuthMethod{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -42,6 +44,8 @@ func NewDeleteAuthMethod(name string, ) *DeleteAuthMethod {
 // but it doesn't guarantee that properties required by API are set
 func NewDeleteAuthMethodWithDefaults() *DeleteAuthMethod {
 	this := DeleteAuthMethod{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

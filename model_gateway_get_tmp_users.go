@@ -19,7 +19,7 @@ import (
 type GatewayGetTmpUsers struct {
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Producer Name
+	// Dynamic secret name
 	Name string `json:"name"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
@@ -33,6 +33,8 @@ type GatewayGetTmpUsers struct {
 // will change when the set of required properties is changed
 func NewGatewayGetTmpUsers(name string, ) *GatewayGetTmpUsers {
 	this := GatewayGetTmpUsers{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -42,6 +44,8 @@ func NewGatewayGetTmpUsers(name string, ) *GatewayGetTmpUsers {
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayGetTmpUsersWithDefaults() *GatewayGetTmpUsers {
 	this := GatewayGetTmpUsers{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
-**Name** | **string** | Producer name | 
-**NewName** | Pointer to **string** | Producer name | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**Name** | **string** | Dynamic secret name | 
+**NewName** | Pointer to **string** | Dynamic secret name | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **RabbitmqAdminPwd** | Pointer to **string** | RabbitMQ Admin password | [optional] 
 **RabbitmqAdminUser** | Pointer to **string** | RabbitMQ Admin User | [optional] 
@@ -17,12 +17,12 @@ Name | Type | Description | Notes
 **RabbitmqUserTags** | Pointer to **string** | User Tags | [optional] 
 **RabbitmqUserVhost** | Pointer to **string** | User Virtual Host | [optional] 
 **RabbitmqUserWritePermission** | Pointer to **string** | User write permission | [optional] 
-**SecureAccessEnable** | Pointer to **string** |  | [optional] 
-**SecureAccessUrl** | Pointer to **string** |  | [optional] 
-**SecureAccessWeb** | Pointer to **bool** | Secure Access Web Category | [optional] [default to true]
-**SecureAccessWebBrowsing** | Pointer to **bool** |  | [optional] 
-**SecureAccessWebProxy** | Pointer to **bool** |  | [optional] 
-**Tags** | Pointer to **[]string** | List of the tags attached to this secret | [optional] 
+**SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
+**SecureAccessUrl** | Pointer to **string** | Destination URL to inject secrets | [optional] 
+**SecureAccessWeb** | Pointer to **bool** | Enable Web Secure Remote Access | [optional] [default to true]
+**SecureAccessWebBrowsing** | Pointer to **bool** | Secure browser via Akeyless Web Access Bastion | [optional] [default to false]
+**SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless Web Access Bastion | [optional] [default to false]
+**Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 

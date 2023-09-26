@@ -17,119 +17,31 @@ import (
 
 // TargetTypeDetailsInput struct for TargetTypeDetailsInput
 type TargetTypeDetailsInput struct {
-	AdministrativePort *string `json:"administrative_port,omitempty"`
-	// params needed for jwt auth AppPrivateKey is the rsa private key in PEM format
-	AppPrivateKey *[]int32 `json:"app_private_key,omitempty"`
-	ArtifactoryAdminApikey *string `json:"artifactory_admin_apikey,omitempty"`
-	ArtifactoryAdminUsername *string `json:"artifactory_admin_username,omitempty"`
-	ArtifactoryBaseUrl *string `json:"artifactory_base_url,omitempty"`
-	AuthFlow *string `json:"auth_flow,omitempty"`
-	AuthorizationPort *string `json:"authorization_port,omitempty"`
-	AwsAccessKeyId *string `json:"aws_access_key_id,omitempty"`
-	AwsRegion *string `json:"aws_region,omitempty"`
-	AwsSecretAccessKey *string `json:"aws_secret_access_key,omitempty"`
-	AwsSessionToken *string `json:"aws_session_token,omitempty"`
-	AzureClientId *string `json:"azure_client_id,omitempty"`
-	AzureClientSecret *string `json:"azure_client_secret,omitempty"`
-	AzureResourceGroupName *string `json:"azure_resource_group_name,omitempty"`
-	AzureResourceName *string `json:"azure_resource_name,omitempty"`
-	AzureSubscriptionId *string `json:"azure_subscription_id,omitempty"`
-	AzureTenantId *string `json:"azure_tenant_id,omitempty"`
-	// CACertData is the rsa 4096 certificate data in PEM format
-	CaCertData *[]int32 `json:"ca_cert_data,omitempty"`
-	// CACertName is the name of the certificate in SalesForce tenant
-	CaCertName *string `json:"ca_cert_name,omitempty"`
-	ChefServerHostName *string `json:"chef_server_host_name,omitempty"`
-	ChefServerKey *string `json:"chef_server_key,omitempty"`
-	ChefServerPort *string `json:"chef_server_port,omitempty"`
-	ChefServerUrl *string `json:"chef_server_url,omitempty"`
-	ChefServerUsername *string `json:"chef_server_username,omitempty"`
-	ChefSkipSsl *bool `json:"chef_skip_ssl,omitempty"`
-	ClientId *string `json:"client_id,omitempty"`
-	// params needed for password auth
-	ClientSecret *string `json:"client_secret,omitempty"`
-	DbHostName *string `json:"db_host_name,omitempty"`
-	DbName *string `json:"db_name,omitempty"`
-	DbPort *string `json:"db_port,omitempty"`
-	// (Optional) Private Key in PEM format
-	DbPrivateKey *string `json:"db_private_key,omitempty"`
-	DbPrivateKeyPassphrase *string `json:"db_private_key_passphrase,omitempty"`
-	DbPwd *string `json:"db_pwd,omitempty"`
-	// (Optional) DBServerCertificates defines the set of root certificate authorities that clients use when verifying server certificates. If DBServerCertificates is empty, TLS uses the host's root CA set.
-	DbServerCertificates *string `json:"db_server_certificates,omitempty"`
-	// (Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client's handshake to support virtual hosting unless it is an IP address.
-	DbServerName *string `json:"db_server_name,omitempty"`
-	DbUserName *string `json:"db_user_name,omitempty"`
-	EksAccessKeyId *string `json:"eks_access_key_id,omitempty"`
-	EksClusterCaCertificate *string `json:"eks_cluster_ca_certificate,omitempty"`
-	EksClusterEndpoint *string `json:"eks_cluster_endpoint,omitempty"`
-	EksClusterName *string `json:"eks_cluster_name,omitempty"`
-	EksRegion *string `json:"eks_region,omitempty"`
-	EksSecretAccessKey *string `json:"eks_secret_access_key,omitempty"`
-	// deprecated
-	GcpServiceAccountEmail *string `json:"gcp_service_account_email,omitempty"`
-	GcpServiceAccountKey *string `json:"gcp_service_account_key,omitempty"`
-	GithubAppId *int64 `json:"github_app_id,omitempty"`
-	GithubAppPrivateKey *string `json:"github_app_private_key,omitempty"`
-	GithubBaseUrl *string `json:"github_base_url,omitempty"`
-	GkeClusterCaCertificate *string `json:"gke_cluster_ca_certificate,omitempty"`
-	GkeClusterEndpoint *string `json:"gke_cluster_endpoint,omitempty"`
-	GkeClusterName *string `json:"gke_cluster_name,omitempty"`
-	GkeServiceAccountKey *string `json:"gke_service_account_key,omitempty"`
-	GkeServiceAccountName *string `json:"gke_service_account_name,omitempty"`
-	Host *string `json:"host,omitempty"`
-	ImplementationType *string `json:"implementation_type,omitempty"`
-	K8sBearerToken *string `json:"k8s_bearer_token,omitempty"`
-	K8sClusterCaCertificate *string `json:"k8s_cluster_ca_certificate,omitempty"`
-	K8sClusterEndpoint *string `json:"k8s_cluster_endpoint,omitempty"`
-	LdapAudience *string `json:"ldap_audience,omitempty"`
-	LdapBindDn *string `json:"ldap_bind_dn,omitempty"`
-	LdapBindPassword *string `json:"ldap_bind_password,omitempty"`
-	LdapCertificate *string `json:"ldap_certificate,omitempty"`
-	LdapTokenExpiration *string `json:"ldap_token_expiration,omitempty"`
-	LdapUrl *string `json:"ldap_url,omitempty"`
-	MongodbAtlasApiPrivateKey *string `json:"mongodb_atlas_api_private_key,omitempty"`
-	MongodbAtlasApiPublicKey *string `json:"mongodb_atlas_api_public_key,omitempty"`
-	// mongodb atlas fields
-	MongodbAtlasProjectId *string `json:"mongodb_atlas_project_id,omitempty"`
-	// common fields
-	MongodbDbName *string `json:"mongodb_db_name,omitempty"`
-	MongodbDefaultAuthDb *string `json:"mongodb_default_auth_db,omitempty"`
-	MongodbHostPort *string `json:"mongodb_host_port,omitempty"`
-	MongodbIsAtlas *bool `json:"mongodb_is_atlas,omitempty"`
-	MongodbPassword *string `json:"mongodb_password,omitempty"`
-	// mongodb fields
-	MongodbUriConnection *string `json:"mongodb_uri_connection,omitempty"`
-	MongodbUriOptions *string `json:"mongodb_uri_options,omitempty"`
-	MongodbUsername *string `json:"mongodb_username,omitempty"`
-	Password *string `json:"password,omitempty"`
-	Payload *string `json:"payload,omitempty"`
-	PingUrl *string `json:"ping_url,omitempty"`
-	Port *string `json:"port,omitempty"`
-	PrivateKey *string `json:"private_key,omitempty"`
-	PrivateKeyPassword *string `json:"private_key_password,omitempty"`
-	PrivilegedUser *string `json:"privileged_user,omitempty"`
-	RabbitmqServerPassword *string `json:"rabbitmq_server_password,omitempty"`
-	RabbitmqServerUri *string `json:"rabbitmq_server_uri,omitempty"`
-	RabbitmqServerUser *string `json:"rabbitmq_server_user,omitempty"`
-	SecurityToken *string `json:"security_token,omitempty"`
-	SfAccount *string `json:"sf_account,omitempty"`
-	// (Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field
-	SslConnectionCertificate *string `json:"ssl_connection_certificate,omitempty"`
-	// (Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB
-	SslConnectionMode *bool `json:"ssl_connection_mode,omitempty"`
-	TenantUrl *string `json:"tenant_url,omitempty"`
-	Url *string `json:"url,omitempty"`
-	UseGwCloudIdentity *bool `json:"use_gw_cloud_identity,omitempty"`
-	UserName *string `json:"user_name,omitempty"`
-	UserPassword *string `json:"user_password,omitempty"`
-	Username *string `json:"username,omitempty"`
-	VenafiApiKey *string `json:"venafi_api_key,omitempty"`
-	VenafiBaseUrl *string `json:"venafi_base_url,omitempty"`
-	VenafiTppPassword *string `json:"venafi_tpp_password,omitempty"`
-	VenafiTppUsername *string `json:"venafi_tpp_username,omitempty"`
-	VenafiUseTpp *bool `json:"venafi_use_tpp,omitempty"`
-	VenafiZone *string `json:"venafi_zone,omitempty"`
+	ArtifactoryTargetDetails *ArtifactoryTargetDetails `json:"artifactory_target_details,omitempty"`
+	AwsTargetDetails *AWSTargetDetails `json:"aws_target_details,omitempty"`
+	AzureTargetDetails *AzureTargetDetails `json:"azure_target_details,omitempty"`
+	ChefTargetDetails *ChefTargetDetails `json:"chef_target_details,omitempty"`
+	CustomTargetDetails *CustomTargetDetails `json:"custom_target_details,omitempty"`
+	DbTargetDetails *DbTargetDetails `json:"db_target_details,omitempty"`
+	DockerhubTargetDetails *DockerhubTargetDetails `json:"dockerhub_target_details,omitempty"`
+	EksTargetDetails *EKSTargetDetails `json:"eks_target_details,omitempty"`
+	GcpTargetDetails *GcpTargetDetails `json:"gcp_target_details,omitempty"`
+	GithubTargetDetails *GithubTargetDetails `json:"github_target_details,omitempty"`
+	GkeTargetDetails *GKETargetDetails `json:"gke_target_details,omitempty"`
+	GlobalsignAtlasTargetDetails *GlobalSignAtlasTargetDetails `json:"globalsign_atlas_target_details,omitempty"`
+	GlobalsignTargetDetails *GlobalSignGCCTargetDetails `json:"globalsign_target_details,omitempty"`
+	LdapTargetDetails *LdapTargetDetails `json:"ldap_target_details,omitempty"`
+	LinkedTargetDetails *LinkedTargetDetails `json:"linked_target_details,omitempty"`
+	MongoDbTargetDetails *MongoDBTargetDetails `json:"mongo_db_target_details,omitempty"`
+	NativeK8sTargetDetails *NativeK8sTargetDetails `json:"native_k8s_target_details,omitempty"`
+	PingTargetDetails *PingTargetDetails `json:"ping_target_details,omitempty"`
+	RabbitMqTargetDetails *RabbitMQTargetDetails `json:"rabbit_mq_target_details,omitempty"`
+	SalesforceTargetDetails *SalesforceTargetDetails `json:"salesforce_target_details,omitempty"`
+	SshTargetDetails *SSHTargetDetails `json:"ssh_target_details,omitempty"`
+	VenafiTargetDetails *VenafiTargetDetails `json:"venafi_target_details,omitempty"`
+	WebTargetDetails *WebTargetDetails `json:"web_target_details,omitempty"`
+	WindowsTargetDetails *WindowsTargetDetails `json:"windows_target_details,omitempty"`
+	ZerosslTargetDetails *ZeroSSLTargetDetails `json:"zerossl_target_details,omitempty"`
 }
 
 // NewTargetTypeDetailsInput instantiates a new TargetTypeDetailsInput object
@@ -149,3507 +61,882 @@ func NewTargetTypeDetailsInputWithDefaults() *TargetTypeDetailsInput {
 	return &this
 }
 
-// GetAdministrativePort returns the AdministrativePort field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetAdministrativePort() string {
-	if o == nil || o.AdministrativePort == nil {
-		var ret string
+// GetArtifactoryTargetDetails returns the ArtifactoryTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetArtifactoryTargetDetails() ArtifactoryTargetDetails {
+	if o == nil || o.ArtifactoryTargetDetails == nil {
+		var ret ArtifactoryTargetDetails
 		return ret
 	}
-	return *o.AdministrativePort
+	return *o.ArtifactoryTargetDetails
 }
 
-// GetAdministrativePortOk returns a tuple with the AdministrativePort field value if set, nil otherwise
+// GetArtifactoryTargetDetailsOk returns a tuple with the ArtifactoryTargetDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetAdministrativePortOk() (*string, bool) {
-	if o == nil || o.AdministrativePort == nil {
+func (o *TargetTypeDetailsInput) GetArtifactoryTargetDetailsOk() (*ArtifactoryTargetDetails, bool) {
+	if o == nil || o.ArtifactoryTargetDetails == nil {
 		return nil, false
 	}
-	return o.AdministrativePort, true
+	return o.ArtifactoryTargetDetails, true
 }
 
-// HasAdministrativePort returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasAdministrativePort() bool {
-	if o != nil && o.AdministrativePort != nil {
+// HasArtifactoryTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasArtifactoryTargetDetails() bool {
+	if o != nil && o.ArtifactoryTargetDetails != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAdministrativePort gets a reference to the given string and assigns it to the AdministrativePort field.
-func (o *TargetTypeDetailsInput) SetAdministrativePort(v string) {
-	o.AdministrativePort = &v
+// SetArtifactoryTargetDetails gets a reference to the given ArtifactoryTargetDetails and assigns it to the ArtifactoryTargetDetails field.
+func (o *TargetTypeDetailsInput) SetArtifactoryTargetDetails(v ArtifactoryTargetDetails) {
+	o.ArtifactoryTargetDetails = &v
 }
 
-// GetAppPrivateKey returns the AppPrivateKey field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetAppPrivateKey() []int32 {
-	if o == nil || o.AppPrivateKey == nil {
-		var ret []int32
+// GetAwsTargetDetails returns the AwsTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetAwsTargetDetails() AWSTargetDetails {
+	if o == nil || o.AwsTargetDetails == nil {
+		var ret AWSTargetDetails
 		return ret
 	}
-	return *o.AppPrivateKey
+	return *o.AwsTargetDetails
 }
 
-// GetAppPrivateKeyOk returns a tuple with the AppPrivateKey field value if set, nil otherwise
+// GetAwsTargetDetailsOk returns a tuple with the AwsTargetDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetAppPrivateKeyOk() (*[]int32, bool) {
-	if o == nil || o.AppPrivateKey == nil {
+func (o *TargetTypeDetailsInput) GetAwsTargetDetailsOk() (*AWSTargetDetails, bool) {
+	if o == nil || o.AwsTargetDetails == nil {
 		return nil, false
 	}
-	return o.AppPrivateKey, true
+	return o.AwsTargetDetails, true
 }
 
-// HasAppPrivateKey returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasAppPrivateKey() bool {
-	if o != nil && o.AppPrivateKey != nil {
+// HasAwsTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasAwsTargetDetails() bool {
+	if o != nil && o.AwsTargetDetails != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAppPrivateKey gets a reference to the given []int32 and assigns it to the AppPrivateKey field.
-func (o *TargetTypeDetailsInput) SetAppPrivateKey(v []int32) {
-	o.AppPrivateKey = &v
+// SetAwsTargetDetails gets a reference to the given AWSTargetDetails and assigns it to the AwsTargetDetails field.
+func (o *TargetTypeDetailsInput) SetAwsTargetDetails(v AWSTargetDetails) {
+	o.AwsTargetDetails = &v
 }
 
-// GetArtifactoryAdminApikey returns the ArtifactoryAdminApikey field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetArtifactoryAdminApikey() string {
-	if o == nil || o.ArtifactoryAdminApikey == nil {
-		var ret string
+// GetAzureTargetDetails returns the AzureTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetAzureTargetDetails() AzureTargetDetails {
+	if o == nil || o.AzureTargetDetails == nil {
+		var ret AzureTargetDetails
 		return ret
 	}
-	return *o.ArtifactoryAdminApikey
+	return *o.AzureTargetDetails
 }
 
-// GetArtifactoryAdminApikeyOk returns a tuple with the ArtifactoryAdminApikey field value if set, nil otherwise
+// GetAzureTargetDetailsOk returns a tuple with the AzureTargetDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetArtifactoryAdminApikeyOk() (*string, bool) {
-	if o == nil || o.ArtifactoryAdminApikey == nil {
+func (o *TargetTypeDetailsInput) GetAzureTargetDetailsOk() (*AzureTargetDetails, bool) {
+	if o == nil || o.AzureTargetDetails == nil {
 		return nil, false
 	}
-	return o.ArtifactoryAdminApikey, true
+	return o.AzureTargetDetails, true
 }
 
-// HasArtifactoryAdminApikey returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasArtifactoryAdminApikey() bool {
-	if o != nil && o.ArtifactoryAdminApikey != nil {
+// HasAzureTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasAzureTargetDetails() bool {
+	if o != nil && o.AzureTargetDetails != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetArtifactoryAdminApikey gets a reference to the given string and assigns it to the ArtifactoryAdminApikey field.
-func (o *TargetTypeDetailsInput) SetArtifactoryAdminApikey(v string) {
-	o.ArtifactoryAdminApikey = &v
+// SetAzureTargetDetails gets a reference to the given AzureTargetDetails and assigns it to the AzureTargetDetails field.
+func (o *TargetTypeDetailsInput) SetAzureTargetDetails(v AzureTargetDetails) {
+	o.AzureTargetDetails = &v
 }
 
-// GetArtifactoryAdminUsername returns the ArtifactoryAdminUsername field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetArtifactoryAdminUsername() string {
-	if o == nil || o.ArtifactoryAdminUsername == nil {
-		var ret string
+// GetChefTargetDetails returns the ChefTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetChefTargetDetails() ChefTargetDetails {
+	if o == nil || o.ChefTargetDetails == nil {
+		var ret ChefTargetDetails
 		return ret
 	}
-	return *o.ArtifactoryAdminUsername
+	return *o.ChefTargetDetails
 }
 
-// GetArtifactoryAdminUsernameOk returns a tuple with the ArtifactoryAdminUsername field value if set, nil otherwise
+// GetChefTargetDetailsOk returns a tuple with the ChefTargetDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetArtifactoryAdminUsernameOk() (*string, bool) {
-	if o == nil || o.ArtifactoryAdminUsername == nil {
+func (o *TargetTypeDetailsInput) GetChefTargetDetailsOk() (*ChefTargetDetails, bool) {
+	if o == nil || o.ChefTargetDetails == nil {
 		return nil, false
 	}
-	return o.ArtifactoryAdminUsername, true
+	return o.ChefTargetDetails, true
 }
 
-// HasArtifactoryAdminUsername returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasArtifactoryAdminUsername() bool {
-	if o != nil && o.ArtifactoryAdminUsername != nil {
+// HasChefTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasChefTargetDetails() bool {
+	if o != nil && o.ChefTargetDetails != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetArtifactoryAdminUsername gets a reference to the given string and assigns it to the ArtifactoryAdminUsername field.
-func (o *TargetTypeDetailsInput) SetArtifactoryAdminUsername(v string) {
-	o.ArtifactoryAdminUsername = &v
+// SetChefTargetDetails gets a reference to the given ChefTargetDetails and assigns it to the ChefTargetDetails field.
+func (o *TargetTypeDetailsInput) SetChefTargetDetails(v ChefTargetDetails) {
+	o.ChefTargetDetails = &v
 }
 
-// GetArtifactoryBaseUrl returns the ArtifactoryBaseUrl field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetArtifactoryBaseUrl() string {
-	if o == nil || o.ArtifactoryBaseUrl == nil {
-		var ret string
+// GetCustomTargetDetails returns the CustomTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetCustomTargetDetails() CustomTargetDetails {
+	if o == nil || o.CustomTargetDetails == nil {
+		var ret CustomTargetDetails
 		return ret
 	}
-	return *o.ArtifactoryBaseUrl
+	return *o.CustomTargetDetails
 }
 
-// GetArtifactoryBaseUrlOk returns a tuple with the ArtifactoryBaseUrl field value if set, nil otherwise
+// GetCustomTargetDetailsOk returns a tuple with the CustomTargetDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetArtifactoryBaseUrlOk() (*string, bool) {
-	if o == nil || o.ArtifactoryBaseUrl == nil {
+func (o *TargetTypeDetailsInput) GetCustomTargetDetailsOk() (*CustomTargetDetails, bool) {
+	if o == nil || o.CustomTargetDetails == nil {
 		return nil, false
 	}
-	return o.ArtifactoryBaseUrl, true
+	return o.CustomTargetDetails, true
 }
 
-// HasArtifactoryBaseUrl returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasArtifactoryBaseUrl() bool {
-	if o != nil && o.ArtifactoryBaseUrl != nil {
+// HasCustomTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasCustomTargetDetails() bool {
+	if o != nil && o.CustomTargetDetails != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetArtifactoryBaseUrl gets a reference to the given string and assigns it to the ArtifactoryBaseUrl field.
-func (o *TargetTypeDetailsInput) SetArtifactoryBaseUrl(v string) {
-	o.ArtifactoryBaseUrl = &v
+// SetCustomTargetDetails gets a reference to the given CustomTargetDetails and assigns it to the CustomTargetDetails field.
+func (o *TargetTypeDetailsInput) SetCustomTargetDetails(v CustomTargetDetails) {
+	o.CustomTargetDetails = &v
 }
 
-// GetAuthFlow returns the AuthFlow field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetAuthFlow() string {
-	if o == nil || o.AuthFlow == nil {
-		var ret string
+// GetDbTargetDetails returns the DbTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetDbTargetDetails() DbTargetDetails {
+	if o == nil || o.DbTargetDetails == nil {
+		var ret DbTargetDetails
 		return ret
 	}
-	return *o.AuthFlow
+	return *o.DbTargetDetails
 }
 
-// GetAuthFlowOk returns a tuple with the AuthFlow field value if set, nil otherwise
+// GetDbTargetDetailsOk returns a tuple with the DbTargetDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetAuthFlowOk() (*string, bool) {
-	if o == nil || o.AuthFlow == nil {
+func (o *TargetTypeDetailsInput) GetDbTargetDetailsOk() (*DbTargetDetails, bool) {
+	if o == nil || o.DbTargetDetails == nil {
 		return nil, false
 	}
-	return o.AuthFlow, true
+	return o.DbTargetDetails, true
 }
 
-// HasAuthFlow returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasAuthFlow() bool {
-	if o != nil && o.AuthFlow != nil {
+// HasDbTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasDbTargetDetails() bool {
+	if o != nil && o.DbTargetDetails != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAuthFlow gets a reference to the given string and assigns it to the AuthFlow field.
-func (o *TargetTypeDetailsInput) SetAuthFlow(v string) {
-	o.AuthFlow = &v
+// SetDbTargetDetails gets a reference to the given DbTargetDetails and assigns it to the DbTargetDetails field.
+func (o *TargetTypeDetailsInput) SetDbTargetDetails(v DbTargetDetails) {
+	o.DbTargetDetails = &v
 }
 
-// GetAuthorizationPort returns the AuthorizationPort field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetAuthorizationPort() string {
-	if o == nil || o.AuthorizationPort == nil {
-		var ret string
+// GetDockerhubTargetDetails returns the DockerhubTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetDockerhubTargetDetails() DockerhubTargetDetails {
+	if o == nil || o.DockerhubTargetDetails == nil {
+		var ret DockerhubTargetDetails
 		return ret
 	}
-	return *o.AuthorizationPort
+	return *o.DockerhubTargetDetails
 }
 
-// GetAuthorizationPortOk returns a tuple with the AuthorizationPort field value if set, nil otherwise
+// GetDockerhubTargetDetailsOk returns a tuple with the DockerhubTargetDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetAuthorizationPortOk() (*string, bool) {
-	if o == nil || o.AuthorizationPort == nil {
+func (o *TargetTypeDetailsInput) GetDockerhubTargetDetailsOk() (*DockerhubTargetDetails, bool) {
+	if o == nil || o.DockerhubTargetDetails == nil {
 		return nil, false
 	}
-	return o.AuthorizationPort, true
+	return o.DockerhubTargetDetails, true
 }
 
-// HasAuthorizationPort returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasAuthorizationPort() bool {
-	if o != nil && o.AuthorizationPort != nil {
+// HasDockerhubTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasDockerhubTargetDetails() bool {
+	if o != nil && o.DockerhubTargetDetails != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAuthorizationPort gets a reference to the given string and assigns it to the AuthorizationPort field.
-func (o *TargetTypeDetailsInput) SetAuthorizationPort(v string) {
-	o.AuthorizationPort = &v
+// SetDockerhubTargetDetails gets a reference to the given DockerhubTargetDetails and assigns it to the DockerhubTargetDetails field.
+func (o *TargetTypeDetailsInput) SetDockerhubTargetDetails(v DockerhubTargetDetails) {
+	o.DockerhubTargetDetails = &v
 }
 
-// GetAwsAccessKeyId returns the AwsAccessKeyId field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetAwsAccessKeyId() string {
-	if o == nil || o.AwsAccessKeyId == nil {
-		var ret string
+// GetEksTargetDetails returns the EksTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetEksTargetDetails() EKSTargetDetails {
+	if o == nil || o.EksTargetDetails == nil {
+		var ret EKSTargetDetails
 		return ret
 	}
-	return *o.AwsAccessKeyId
+	return *o.EksTargetDetails
 }
 
-// GetAwsAccessKeyIdOk returns a tuple with the AwsAccessKeyId field value if set, nil otherwise
+// GetEksTargetDetailsOk returns a tuple with the EksTargetDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetAwsAccessKeyIdOk() (*string, bool) {
-	if o == nil || o.AwsAccessKeyId == nil {
+func (o *TargetTypeDetailsInput) GetEksTargetDetailsOk() (*EKSTargetDetails, bool) {
+	if o == nil || o.EksTargetDetails == nil {
 		return nil, false
 	}
-	return o.AwsAccessKeyId, true
+	return o.EksTargetDetails, true
 }
 
-// HasAwsAccessKeyId returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasAwsAccessKeyId() bool {
-	if o != nil && o.AwsAccessKeyId != nil {
+// HasEksTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasEksTargetDetails() bool {
+	if o != nil && o.EksTargetDetails != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAwsAccessKeyId gets a reference to the given string and assigns it to the AwsAccessKeyId field.
-func (o *TargetTypeDetailsInput) SetAwsAccessKeyId(v string) {
-	o.AwsAccessKeyId = &v
+// SetEksTargetDetails gets a reference to the given EKSTargetDetails and assigns it to the EksTargetDetails field.
+func (o *TargetTypeDetailsInput) SetEksTargetDetails(v EKSTargetDetails) {
+	o.EksTargetDetails = &v
 }
 
-// GetAwsRegion returns the AwsRegion field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetAwsRegion() string {
-	if o == nil || o.AwsRegion == nil {
-		var ret string
+// GetGcpTargetDetails returns the GcpTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetGcpTargetDetails() GcpTargetDetails {
+	if o == nil || o.GcpTargetDetails == nil {
+		var ret GcpTargetDetails
 		return ret
 	}
-	return *o.AwsRegion
+	return *o.GcpTargetDetails
 }
 
-// GetAwsRegionOk returns a tuple with the AwsRegion field value if set, nil otherwise
+// GetGcpTargetDetailsOk returns a tuple with the GcpTargetDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetAwsRegionOk() (*string, bool) {
-	if o == nil || o.AwsRegion == nil {
+func (o *TargetTypeDetailsInput) GetGcpTargetDetailsOk() (*GcpTargetDetails, bool) {
+	if o == nil || o.GcpTargetDetails == nil {
 		return nil, false
 	}
-	return o.AwsRegion, true
+	return o.GcpTargetDetails, true
 }
 
-// HasAwsRegion returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasAwsRegion() bool {
-	if o != nil && o.AwsRegion != nil {
+// HasGcpTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasGcpTargetDetails() bool {
+	if o != nil && o.GcpTargetDetails != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAwsRegion gets a reference to the given string and assigns it to the AwsRegion field.
-func (o *TargetTypeDetailsInput) SetAwsRegion(v string) {
-	o.AwsRegion = &v
+// SetGcpTargetDetails gets a reference to the given GcpTargetDetails and assigns it to the GcpTargetDetails field.
+func (o *TargetTypeDetailsInput) SetGcpTargetDetails(v GcpTargetDetails) {
+	o.GcpTargetDetails = &v
 }
 
-// GetAwsSecretAccessKey returns the AwsSecretAccessKey field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetAwsSecretAccessKey() string {
-	if o == nil || o.AwsSecretAccessKey == nil {
-		var ret string
+// GetGithubTargetDetails returns the GithubTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetGithubTargetDetails() GithubTargetDetails {
+	if o == nil || o.GithubTargetDetails == nil {
+		var ret GithubTargetDetails
 		return ret
 	}
-	return *o.AwsSecretAccessKey
+	return *o.GithubTargetDetails
 }
 
-// GetAwsSecretAccessKeyOk returns a tuple with the AwsSecretAccessKey field value if set, nil otherwise
+// GetGithubTargetDetailsOk returns a tuple with the GithubTargetDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetAwsSecretAccessKeyOk() (*string, bool) {
-	if o == nil || o.AwsSecretAccessKey == nil {
+func (o *TargetTypeDetailsInput) GetGithubTargetDetailsOk() (*GithubTargetDetails, bool) {
+	if o == nil || o.GithubTargetDetails == nil {
 		return nil, false
 	}
-	return o.AwsSecretAccessKey, true
+	return o.GithubTargetDetails, true
 }
 
-// HasAwsSecretAccessKey returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasAwsSecretAccessKey() bool {
-	if o != nil && o.AwsSecretAccessKey != nil {
+// HasGithubTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasGithubTargetDetails() bool {
+	if o != nil && o.GithubTargetDetails != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAwsSecretAccessKey gets a reference to the given string and assigns it to the AwsSecretAccessKey field.
-func (o *TargetTypeDetailsInput) SetAwsSecretAccessKey(v string) {
-	o.AwsSecretAccessKey = &v
+// SetGithubTargetDetails gets a reference to the given GithubTargetDetails and assigns it to the GithubTargetDetails field.
+func (o *TargetTypeDetailsInput) SetGithubTargetDetails(v GithubTargetDetails) {
+	o.GithubTargetDetails = &v
 }
 
-// GetAwsSessionToken returns the AwsSessionToken field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetAwsSessionToken() string {
-	if o == nil || o.AwsSessionToken == nil {
-		var ret string
+// GetGkeTargetDetails returns the GkeTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetGkeTargetDetails() GKETargetDetails {
+	if o == nil || o.GkeTargetDetails == nil {
+		var ret GKETargetDetails
 		return ret
 	}
-	return *o.AwsSessionToken
+	return *o.GkeTargetDetails
 }
 
-// GetAwsSessionTokenOk returns a tuple with the AwsSessionToken field value if set, nil otherwise
+// GetGkeTargetDetailsOk returns a tuple with the GkeTargetDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetAwsSessionTokenOk() (*string, bool) {
-	if o == nil || o.AwsSessionToken == nil {
+func (o *TargetTypeDetailsInput) GetGkeTargetDetailsOk() (*GKETargetDetails, bool) {
+	if o == nil || o.GkeTargetDetails == nil {
 		return nil, false
 	}
-	return o.AwsSessionToken, true
+	return o.GkeTargetDetails, true
 }
 
-// HasAwsSessionToken returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasAwsSessionToken() bool {
-	if o != nil && o.AwsSessionToken != nil {
+// HasGkeTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasGkeTargetDetails() bool {
+	if o != nil && o.GkeTargetDetails != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAwsSessionToken gets a reference to the given string and assigns it to the AwsSessionToken field.
-func (o *TargetTypeDetailsInput) SetAwsSessionToken(v string) {
-	o.AwsSessionToken = &v
+// SetGkeTargetDetails gets a reference to the given GKETargetDetails and assigns it to the GkeTargetDetails field.
+func (o *TargetTypeDetailsInput) SetGkeTargetDetails(v GKETargetDetails) {
+	o.GkeTargetDetails = &v
 }
 
-// GetAzureClientId returns the AzureClientId field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetAzureClientId() string {
-	if o == nil || o.AzureClientId == nil {
-		var ret string
+// GetGlobalsignAtlasTargetDetails returns the GlobalsignAtlasTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetGlobalsignAtlasTargetDetails() GlobalSignAtlasTargetDetails {
+	if o == nil || o.GlobalsignAtlasTargetDetails == nil {
+		var ret GlobalSignAtlasTargetDetails
 		return ret
 	}
-	return *o.AzureClientId
+	return *o.GlobalsignAtlasTargetDetails
 }
 
-// GetAzureClientIdOk returns a tuple with the AzureClientId field value if set, nil otherwise
+// GetGlobalsignAtlasTargetDetailsOk returns a tuple with the GlobalsignAtlasTargetDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetAzureClientIdOk() (*string, bool) {
-	if o == nil || o.AzureClientId == nil {
+func (o *TargetTypeDetailsInput) GetGlobalsignAtlasTargetDetailsOk() (*GlobalSignAtlasTargetDetails, bool) {
+	if o == nil || o.GlobalsignAtlasTargetDetails == nil {
 		return nil, false
 	}
-	return o.AzureClientId, true
+	return o.GlobalsignAtlasTargetDetails, true
 }
 
-// HasAzureClientId returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasAzureClientId() bool {
-	if o != nil && o.AzureClientId != nil {
+// HasGlobalsignAtlasTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasGlobalsignAtlasTargetDetails() bool {
+	if o != nil && o.GlobalsignAtlasTargetDetails != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAzureClientId gets a reference to the given string and assigns it to the AzureClientId field.
-func (o *TargetTypeDetailsInput) SetAzureClientId(v string) {
-	o.AzureClientId = &v
+// SetGlobalsignAtlasTargetDetails gets a reference to the given GlobalSignAtlasTargetDetails and assigns it to the GlobalsignAtlasTargetDetails field.
+func (o *TargetTypeDetailsInput) SetGlobalsignAtlasTargetDetails(v GlobalSignAtlasTargetDetails) {
+	o.GlobalsignAtlasTargetDetails = &v
 }
 
-// GetAzureClientSecret returns the AzureClientSecret field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetAzureClientSecret() string {
-	if o == nil || o.AzureClientSecret == nil {
-		var ret string
+// GetGlobalsignTargetDetails returns the GlobalsignTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetGlobalsignTargetDetails() GlobalSignGCCTargetDetails {
+	if o == nil || o.GlobalsignTargetDetails == nil {
+		var ret GlobalSignGCCTargetDetails
 		return ret
 	}
-	return *o.AzureClientSecret
+	return *o.GlobalsignTargetDetails
 }
 
-// GetAzureClientSecretOk returns a tuple with the AzureClientSecret field value if set, nil otherwise
+// GetGlobalsignTargetDetailsOk returns a tuple with the GlobalsignTargetDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetAzureClientSecretOk() (*string, bool) {
-	if o == nil || o.AzureClientSecret == nil {
+func (o *TargetTypeDetailsInput) GetGlobalsignTargetDetailsOk() (*GlobalSignGCCTargetDetails, bool) {
+	if o == nil || o.GlobalsignTargetDetails == nil {
 		return nil, false
 	}
-	return o.AzureClientSecret, true
+	return o.GlobalsignTargetDetails, true
 }
 
-// HasAzureClientSecret returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasAzureClientSecret() bool {
-	if o != nil && o.AzureClientSecret != nil {
+// HasGlobalsignTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasGlobalsignTargetDetails() bool {
+	if o != nil && o.GlobalsignTargetDetails != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAzureClientSecret gets a reference to the given string and assigns it to the AzureClientSecret field.
-func (o *TargetTypeDetailsInput) SetAzureClientSecret(v string) {
-	o.AzureClientSecret = &v
+// SetGlobalsignTargetDetails gets a reference to the given GlobalSignGCCTargetDetails and assigns it to the GlobalsignTargetDetails field.
+func (o *TargetTypeDetailsInput) SetGlobalsignTargetDetails(v GlobalSignGCCTargetDetails) {
+	o.GlobalsignTargetDetails = &v
 }
 
-// GetAzureResourceGroupName returns the AzureResourceGroupName field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetAzureResourceGroupName() string {
-	if o == nil || o.AzureResourceGroupName == nil {
-		var ret string
+// GetLdapTargetDetails returns the LdapTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetLdapTargetDetails() LdapTargetDetails {
+	if o == nil || o.LdapTargetDetails == nil {
+		var ret LdapTargetDetails
 		return ret
 	}
-	return *o.AzureResourceGroupName
+	return *o.LdapTargetDetails
 }
 
-// GetAzureResourceGroupNameOk returns a tuple with the AzureResourceGroupName field value if set, nil otherwise
+// GetLdapTargetDetailsOk returns a tuple with the LdapTargetDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetAzureResourceGroupNameOk() (*string, bool) {
-	if o == nil || o.AzureResourceGroupName == nil {
+func (o *TargetTypeDetailsInput) GetLdapTargetDetailsOk() (*LdapTargetDetails, bool) {
+	if o == nil || o.LdapTargetDetails == nil {
 		return nil, false
 	}
-	return o.AzureResourceGroupName, true
+	return o.LdapTargetDetails, true
 }
 
-// HasAzureResourceGroupName returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasAzureResourceGroupName() bool {
-	if o != nil && o.AzureResourceGroupName != nil {
+// HasLdapTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasLdapTargetDetails() bool {
+	if o != nil && o.LdapTargetDetails != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAzureResourceGroupName gets a reference to the given string and assigns it to the AzureResourceGroupName field.
-func (o *TargetTypeDetailsInput) SetAzureResourceGroupName(v string) {
-	o.AzureResourceGroupName = &v
+// SetLdapTargetDetails gets a reference to the given LdapTargetDetails and assigns it to the LdapTargetDetails field.
+func (o *TargetTypeDetailsInput) SetLdapTargetDetails(v LdapTargetDetails) {
+	o.LdapTargetDetails = &v
 }
 
-// GetAzureResourceName returns the AzureResourceName field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetAzureResourceName() string {
-	if o == nil || o.AzureResourceName == nil {
-		var ret string
+// GetLinkedTargetDetails returns the LinkedTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetLinkedTargetDetails() LinkedTargetDetails {
+	if o == nil || o.LinkedTargetDetails == nil {
+		var ret LinkedTargetDetails
 		return ret
 	}
-	return *o.AzureResourceName
+	return *o.LinkedTargetDetails
 }
 
-// GetAzureResourceNameOk returns a tuple with the AzureResourceName field value if set, nil otherwise
+// GetLinkedTargetDetailsOk returns a tuple with the LinkedTargetDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetAzureResourceNameOk() (*string, bool) {
-	if o == nil || o.AzureResourceName == nil {
+func (o *TargetTypeDetailsInput) GetLinkedTargetDetailsOk() (*LinkedTargetDetails, bool) {
+	if o == nil || o.LinkedTargetDetails == nil {
 		return nil, false
 	}
-	return o.AzureResourceName, true
+	return o.LinkedTargetDetails, true
 }
 
-// HasAzureResourceName returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasAzureResourceName() bool {
-	if o != nil && o.AzureResourceName != nil {
+// HasLinkedTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasLinkedTargetDetails() bool {
+	if o != nil && o.LinkedTargetDetails != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAzureResourceName gets a reference to the given string and assigns it to the AzureResourceName field.
-func (o *TargetTypeDetailsInput) SetAzureResourceName(v string) {
-	o.AzureResourceName = &v
+// SetLinkedTargetDetails gets a reference to the given LinkedTargetDetails and assigns it to the LinkedTargetDetails field.
+func (o *TargetTypeDetailsInput) SetLinkedTargetDetails(v LinkedTargetDetails) {
+	o.LinkedTargetDetails = &v
 }
 
-// GetAzureSubscriptionId returns the AzureSubscriptionId field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetAzureSubscriptionId() string {
-	if o == nil || o.AzureSubscriptionId == nil {
-		var ret string
+// GetMongoDbTargetDetails returns the MongoDbTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetMongoDbTargetDetails() MongoDBTargetDetails {
+	if o == nil || o.MongoDbTargetDetails == nil {
+		var ret MongoDBTargetDetails
 		return ret
 	}
-	return *o.AzureSubscriptionId
+	return *o.MongoDbTargetDetails
 }
 
-// GetAzureSubscriptionIdOk returns a tuple with the AzureSubscriptionId field value if set, nil otherwise
+// GetMongoDbTargetDetailsOk returns a tuple with the MongoDbTargetDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetAzureSubscriptionIdOk() (*string, bool) {
-	if o == nil || o.AzureSubscriptionId == nil {
+func (o *TargetTypeDetailsInput) GetMongoDbTargetDetailsOk() (*MongoDBTargetDetails, bool) {
+	if o == nil || o.MongoDbTargetDetails == nil {
 		return nil, false
 	}
-	return o.AzureSubscriptionId, true
+	return o.MongoDbTargetDetails, true
 }
 
-// HasAzureSubscriptionId returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasAzureSubscriptionId() bool {
-	if o != nil && o.AzureSubscriptionId != nil {
+// HasMongoDbTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasMongoDbTargetDetails() bool {
+	if o != nil && o.MongoDbTargetDetails != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAzureSubscriptionId gets a reference to the given string and assigns it to the AzureSubscriptionId field.
-func (o *TargetTypeDetailsInput) SetAzureSubscriptionId(v string) {
-	o.AzureSubscriptionId = &v
+// SetMongoDbTargetDetails gets a reference to the given MongoDBTargetDetails and assigns it to the MongoDbTargetDetails field.
+func (o *TargetTypeDetailsInput) SetMongoDbTargetDetails(v MongoDBTargetDetails) {
+	o.MongoDbTargetDetails = &v
 }
 
-// GetAzureTenantId returns the AzureTenantId field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetAzureTenantId() string {
-	if o == nil || o.AzureTenantId == nil {
-		var ret string
+// GetNativeK8sTargetDetails returns the NativeK8sTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetNativeK8sTargetDetails() NativeK8sTargetDetails {
+	if o == nil || o.NativeK8sTargetDetails == nil {
+		var ret NativeK8sTargetDetails
 		return ret
 	}
-	return *o.AzureTenantId
+	return *o.NativeK8sTargetDetails
 }
 
-// GetAzureTenantIdOk returns a tuple with the AzureTenantId field value if set, nil otherwise
+// GetNativeK8sTargetDetailsOk returns a tuple with the NativeK8sTargetDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetAzureTenantIdOk() (*string, bool) {
-	if o == nil || o.AzureTenantId == nil {
+func (o *TargetTypeDetailsInput) GetNativeK8sTargetDetailsOk() (*NativeK8sTargetDetails, bool) {
+	if o == nil || o.NativeK8sTargetDetails == nil {
 		return nil, false
 	}
-	return o.AzureTenantId, true
+	return o.NativeK8sTargetDetails, true
 }
 
-// HasAzureTenantId returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasAzureTenantId() bool {
-	if o != nil && o.AzureTenantId != nil {
+// HasNativeK8sTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasNativeK8sTargetDetails() bool {
+	if o != nil && o.NativeK8sTargetDetails != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAzureTenantId gets a reference to the given string and assigns it to the AzureTenantId field.
-func (o *TargetTypeDetailsInput) SetAzureTenantId(v string) {
-	o.AzureTenantId = &v
+// SetNativeK8sTargetDetails gets a reference to the given NativeK8sTargetDetails and assigns it to the NativeK8sTargetDetails field.
+func (o *TargetTypeDetailsInput) SetNativeK8sTargetDetails(v NativeK8sTargetDetails) {
+	o.NativeK8sTargetDetails = &v
 }
 
-// GetCaCertData returns the CaCertData field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetCaCertData() []int32 {
-	if o == nil || o.CaCertData == nil {
-		var ret []int32
+// GetPingTargetDetails returns the PingTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetPingTargetDetails() PingTargetDetails {
+	if o == nil || o.PingTargetDetails == nil {
+		var ret PingTargetDetails
 		return ret
 	}
-	return *o.CaCertData
+	return *o.PingTargetDetails
 }
 
-// GetCaCertDataOk returns a tuple with the CaCertData field value if set, nil otherwise
+// GetPingTargetDetailsOk returns a tuple with the PingTargetDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetCaCertDataOk() (*[]int32, bool) {
-	if o == nil || o.CaCertData == nil {
+func (o *TargetTypeDetailsInput) GetPingTargetDetailsOk() (*PingTargetDetails, bool) {
+	if o == nil || o.PingTargetDetails == nil {
 		return nil, false
 	}
-	return o.CaCertData, true
+	return o.PingTargetDetails, true
 }
 
-// HasCaCertData returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasCaCertData() bool {
-	if o != nil && o.CaCertData != nil {
+// HasPingTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasPingTargetDetails() bool {
+	if o != nil && o.PingTargetDetails != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetCaCertData gets a reference to the given []int32 and assigns it to the CaCertData field.
-func (o *TargetTypeDetailsInput) SetCaCertData(v []int32) {
-	o.CaCertData = &v
+// SetPingTargetDetails gets a reference to the given PingTargetDetails and assigns it to the PingTargetDetails field.
+func (o *TargetTypeDetailsInput) SetPingTargetDetails(v PingTargetDetails) {
+	o.PingTargetDetails = &v
 }
 
-// GetCaCertName returns the CaCertName field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetCaCertName() string {
-	if o == nil || o.CaCertName == nil {
-		var ret string
+// GetRabbitMqTargetDetails returns the RabbitMqTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetRabbitMqTargetDetails() RabbitMQTargetDetails {
+	if o == nil || o.RabbitMqTargetDetails == nil {
+		var ret RabbitMQTargetDetails
 		return ret
 	}
-	return *o.CaCertName
+	return *o.RabbitMqTargetDetails
 }
 
-// GetCaCertNameOk returns a tuple with the CaCertName field value if set, nil otherwise
+// GetRabbitMqTargetDetailsOk returns a tuple with the RabbitMqTargetDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetCaCertNameOk() (*string, bool) {
-	if o == nil || o.CaCertName == nil {
+func (o *TargetTypeDetailsInput) GetRabbitMqTargetDetailsOk() (*RabbitMQTargetDetails, bool) {
+	if o == nil || o.RabbitMqTargetDetails == nil {
 		return nil, false
 	}
-	return o.CaCertName, true
+	return o.RabbitMqTargetDetails, true
 }
 
-// HasCaCertName returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasCaCertName() bool {
-	if o != nil && o.CaCertName != nil {
+// HasRabbitMqTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasRabbitMqTargetDetails() bool {
+	if o != nil && o.RabbitMqTargetDetails != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetCaCertName gets a reference to the given string and assigns it to the CaCertName field.
-func (o *TargetTypeDetailsInput) SetCaCertName(v string) {
-	o.CaCertName = &v
+// SetRabbitMqTargetDetails gets a reference to the given RabbitMQTargetDetails and assigns it to the RabbitMqTargetDetails field.
+func (o *TargetTypeDetailsInput) SetRabbitMqTargetDetails(v RabbitMQTargetDetails) {
+	o.RabbitMqTargetDetails = &v
 }
 
-// GetChefServerHostName returns the ChefServerHostName field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetChefServerHostName() string {
-	if o == nil || o.ChefServerHostName == nil {
-		var ret string
+// GetSalesforceTargetDetails returns the SalesforceTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetSalesforceTargetDetails() SalesforceTargetDetails {
+	if o == nil || o.SalesforceTargetDetails == nil {
+		var ret SalesforceTargetDetails
 		return ret
 	}
-	return *o.ChefServerHostName
+	return *o.SalesforceTargetDetails
 }
 
-// GetChefServerHostNameOk returns a tuple with the ChefServerHostName field value if set, nil otherwise
+// GetSalesforceTargetDetailsOk returns a tuple with the SalesforceTargetDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetChefServerHostNameOk() (*string, bool) {
-	if o == nil || o.ChefServerHostName == nil {
+func (o *TargetTypeDetailsInput) GetSalesforceTargetDetailsOk() (*SalesforceTargetDetails, bool) {
+	if o == nil || o.SalesforceTargetDetails == nil {
 		return nil, false
 	}
-	return o.ChefServerHostName, true
+	return o.SalesforceTargetDetails, true
 }
 
-// HasChefServerHostName returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasChefServerHostName() bool {
-	if o != nil && o.ChefServerHostName != nil {
+// HasSalesforceTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasSalesforceTargetDetails() bool {
+	if o != nil && o.SalesforceTargetDetails != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetChefServerHostName gets a reference to the given string and assigns it to the ChefServerHostName field.
-func (o *TargetTypeDetailsInput) SetChefServerHostName(v string) {
-	o.ChefServerHostName = &v
+// SetSalesforceTargetDetails gets a reference to the given SalesforceTargetDetails and assigns it to the SalesforceTargetDetails field.
+func (o *TargetTypeDetailsInput) SetSalesforceTargetDetails(v SalesforceTargetDetails) {
+	o.SalesforceTargetDetails = &v
 }
 
-// GetChefServerKey returns the ChefServerKey field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetChefServerKey() string {
-	if o == nil || o.ChefServerKey == nil {
-		var ret string
+// GetSshTargetDetails returns the SshTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetSshTargetDetails() SSHTargetDetails {
+	if o == nil || o.SshTargetDetails == nil {
+		var ret SSHTargetDetails
 		return ret
 	}
-	return *o.ChefServerKey
+	return *o.SshTargetDetails
 }
 
-// GetChefServerKeyOk returns a tuple with the ChefServerKey field value if set, nil otherwise
+// GetSshTargetDetailsOk returns a tuple with the SshTargetDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetChefServerKeyOk() (*string, bool) {
-	if o == nil || o.ChefServerKey == nil {
+func (o *TargetTypeDetailsInput) GetSshTargetDetailsOk() (*SSHTargetDetails, bool) {
+	if o == nil || o.SshTargetDetails == nil {
 		return nil, false
 	}
-	return o.ChefServerKey, true
+	return o.SshTargetDetails, true
 }
 
-// HasChefServerKey returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasChefServerKey() bool {
-	if o != nil && o.ChefServerKey != nil {
+// HasSshTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasSshTargetDetails() bool {
+	if o != nil && o.SshTargetDetails != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetChefServerKey gets a reference to the given string and assigns it to the ChefServerKey field.
-func (o *TargetTypeDetailsInput) SetChefServerKey(v string) {
-	o.ChefServerKey = &v
+// SetSshTargetDetails gets a reference to the given SSHTargetDetails and assigns it to the SshTargetDetails field.
+func (o *TargetTypeDetailsInput) SetSshTargetDetails(v SSHTargetDetails) {
+	o.SshTargetDetails = &v
 }
 
-// GetChefServerPort returns the ChefServerPort field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetChefServerPort() string {
-	if o == nil || o.ChefServerPort == nil {
-		var ret string
+// GetVenafiTargetDetails returns the VenafiTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetVenafiTargetDetails() VenafiTargetDetails {
+	if o == nil || o.VenafiTargetDetails == nil {
+		var ret VenafiTargetDetails
 		return ret
 	}
-	return *o.ChefServerPort
+	return *o.VenafiTargetDetails
 }
 
-// GetChefServerPortOk returns a tuple with the ChefServerPort field value if set, nil otherwise
+// GetVenafiTargetDetailsOk returns a tuple with the VenafiTargetDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetChefServerPortOk() (*string, bool) {
-	if o == nil || o.ChefServerPort == nil {
+func (o *TargetTypeDetailsInput) GetVenafiTargetDetailsOk() (*VenafiTargetDetails, bool) {
+	if o == nil || o.VenafiTargetDetails == nil {
 		return nil, false
 	}
-	return o.ChefServerPort, true
+	return o.VenafiTargetDetails, true
 }
 
-// HasChefServerPort returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasChefServerPort() bool {
-	if o != nil && o.ChefServerPort != nil {
+// HasVenafiTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasVenafiTargetDetails() bool {
+	if o != nil && o.VenafiTargetDetails != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetChefServerPort gets a reference to the given string and assigns it to the ChefServerPort field.
-func (o *TargetTypeDetailsInput) SetChefServerPort(v string) {
-	o.ChefServerPort = &v
+// SetVenafiTargetDetails gets a reference to the given VenafiTargetDetails and assigns it to the VenafiTargetDetails field.
+func (o *TargetTypeDetailsInput) SetVenafiTargetDetails(v VenafiTargetDetails) {
+	o.VenafiTargetDetails = &v
 }
 
-// GetChefServerUrl returns the ChefServerUrl field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetChefServerUrl() string {
-	if o == nil || o.ChefServerUrl == nil {
-		var ret string
+// GetWebTargetDetails returns the WebTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetWebTargetDetails() WebTargetDetails {
+	if o == nil || o.WebTargetDetails == nil {
+		var ret WebTargetDetails
 		return ret
 	}
-	return *o.ChefServerUrl
+	return *o.WebTargetDetails
 }
 
-// GetChefServerUrlOk returns a tuple with the ChefServerUrl field value if set, nil otherwise
+// GetWebTargetDetailsOk returns a tuple with the WebTargetDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetChefServerUrlOk() (*string, bool) {
-	if o == nil || o.ChefServerUrl == nil {
+func (o *TargetTypeDetailsInput) GetWebTargetDetailsOk() (*WebTargetDetails, bool) {
+	if o == nil || o.WebTargetDetails == nil {
 		return nil, false
 	}
-	return o.ChefServerUrl, true
+	return o.WebTargetDetails, true
 }
 
-// HasChefServerUrl returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasChefServerUrl() bool {
-	if o != nil && o.ChefServerUrl != nil {
+// HasWebTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasWebTargetDetails() bool {
+	if o != nil && o.WebTargetDetails != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetChefServerUrl gets a reference to the given string and assigns it to the ChefServerUrl field.
-func (o *TargetTypeDetailsInput) SetChefServerUrl(v string) {
-	o.ChefServerUrl = &v
+// SetWebTargetDetails gets a reference to the given WebTargetDetails and assigns it to the WebTargetDetails field.
+func (o *TargetTypeDetailsInput) SetWebTargetDetails(v WebTargetDetails) {
+	o.WebTargetDetails = &v
 }
 
-// GetChefServerUsername returns the ChefServerUsername field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetChefServerUsername() string {
-	if o == nil || o.ChefServerUsername == nil {
-		var ret string
+// GetWindowsTargetDetails returns the WindowsTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetWindowsTargetDetails() WindowsTargetDetails {
+	if o == nil || o.WindowsTargetDetails == nil {
+		var ret WindowsTargetDetails
 		return ret
 	}
-	return *o.ChefServerUsername
+	return *o.WindowsTargetDetails
 }
 
-// GetChefServerUsernameOk returns a tuple with the ChefServerUsername field value if set, nil otherwise
+// GetWindowsTargetDetailsOk returns a tuple with the WindowsTargetDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetChefServerUsernameOk() (*string, bool) {
-	if o == nil || o.ChefServerUsername == nil {
+func (o *TargetTypeDetailsInput) GetWindowsTargetDetailsOk() (*WindowsTargetDetails, bool) {
+	if o == nil || o.WindowsTargetDetails == nil {
 		return nil, false
 	}
-	return o.ChefServerUsername, true
+	return o.WindowsTargetDetails, true
 }
 
-// HasChefServerUsername returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasChefServerUsername() bool {
-	if o != nil && o.ChefServerUsername != nil {
+// HasWindowsTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasWindowsTargetDetails() bool {
+	if o != nil && o.WindowsTargetDetails != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetChefServerUsername gets a reference to the given string and assigns it to the ChefServerUsername field.
-func (o *TargetTypeDetailsInput) SetChefServerUsername(v string) {
-	o.ChefServerUsername = &v
+// SetWindowsTargetDetails gets a reference to the given WindowsTargetDetails and assigns it to the WindowsTargetDetails field.
+func (o *TargetTypeDetailsInput) SetWindowsTargetDetails(v WindowsTargetDetails) {
+	o.WindowsTargetDetails = &v
 }
 
-// GetChefSkipSsl returns the ChefSkipSsl field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetChefSkipSsl() bool {
-	if o == nil || o.ChefSkipSsl == nil {
-		var ret bool
+// GetZerosslTargetDetails returns the ZerosslTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetZerosslTargetDetails() ZeroSSLTargetDetails {
+	if o == nil || o.ZerosslTargetDetails == nil {
+		var ret ZeroSSLTargetDetails
 		return ret
 	}
-	return *o.ChefSkipSsl
+	return *o.ZerosslTargetDetails
 }
 
-// GetChefSkipSslOk returns a tuple with the ChefSkipSsl field value if set, nil otherwise
+// GetZerosslTargetDetailsOk returns a tuple with the ZerosslTargetDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetChefSkipSslOk() (*bool, bool) {
-	if o == nil || o.ChefSkipSsl == nil {
+func (o *TargetTypeDetailsInput) GetZerosslTargetDetailsOk() (*ZeroSSLTargetDetails, bool) {
+	if o == nil || o.ZerosslTargetDetails == nil {
 		return nil, false
 	}
-	return o.ChefSkipSsl, true
+	return o.ZerosslTargetDetails, true
 }
 
-// HasChefSkipSsl returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasChefSkipSsl() bool {
-	if o != nil && o.ChefSkipSsl != nil {
+// HasZerosslTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasZerosslTargetDetails() bool {
+	if o != nil && o.ZerosslTargetDetails != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetChefSkipSsl gets a reference to the given bool and assigns it to the ChefSkipSsl field.
-func (o *TargetTypeDetailsInput) SetChefSkipSsl(v bool) {
-	o.ChefSkipSsl = &v
-}
-
-// GetClientId returns the ClientId field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetClientId() string {
-	if o == nil || o.ClientId == nil {
-		var ret string
-		return ret
-	}
-	return *o.ClientId
-}
-
-// GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetClientIdOk() (*string, bool) {
-	if o == nil || o.ClientId == nil {
-		return nil, false
-	}
-	return o.ClientId, true
-}
-
-// HasClientId returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasClientId() bool {
-	if o != nil && o.ClientId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetClientId gets a reference to the given string and assigns it to the ClientId field.
-func (o *TargetTypeDetailsInput) SetClientId(v string) {
-	o.ClientId = &v
-}
-
-// GetClientSecret returns the ClientSecret field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetClientSecret() string {
-	if o == nil || o.ClientSecret == nil {
-		var ret string
-		return ret
-	}
-	return *o.ClientSecret
-}
-
-// GetClientSecretOk returns a tuple with the ClientSecret field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetClientSecretOk() (*string, bool) {
-	if o == nil || o.ClientSecret == nil {
-		return nil, false
-	}
-	return o.ClientSecret, true
-}
-
-// HasClientSecret returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasClientSecret() bool {
-	if o != nil && o.ClientSecret != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetClientSecret gets a reference to the given string and assigns it to the ClientSecret field.
-func (o *TargetTypeDetailsInput) SetClientSecret(v string) {
-	o.ClientSecret = &v
-}
-
-// GetDbHostName returns the DbHostName field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetDbHostName() string {
-	if o == nil || o.DbHostName == nil {
-		var ret string
-		return ret
-	}
-	return *o.DbHostName
-}
-
-// GetDbHostNameOk returns a tuple with the DbHostName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetDbHostNameOk() (*string, bool) {
-	if o == nil || o.DbHostName == nil {
-		return nil, false
-	}
-	return o.DbHostName, true
-}
-
-// HasDbHostName returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasDbHostName() bool {
-	if o != nil && o.DbHostName != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDbHostName gets a reference to the given string and assigns it to the DbHostName field.
-func (o *TargetTypeDetailsInput) SetDbHostName(v string) {
-	o.DbHostName = &v
-}
-
-// GetDbName returns the DbName field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetDbName() string {
-	if o == nil || o.DbName == nil {
-		var ret string
-		return ret
-	}
-	return *o.DbName
-}
-
-// GetDbNameOk returns a tuple with the DbName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetDbNameOk() (*string, bool) {
-	if o == nil || o.DbName == nil {
-		return nil, false
-	}
-	return o.DbName, true
-}
-
-// HasDbName returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasDbName() bool {
-	if o != nil && o.DbName != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDbName gets a reference to the given string and assigns it to the DbName field.
-func (o *TargetTypeDetailsInput) SetDbName(v string) {
-	o.DbName = &v
-}
-
-// GetDbPort returns the DbPort field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetDbPort() string {
-	if o == nil || o.DbPort == nil {
-		var ret string
-		return ret
-	}
-	return *o.DbPort
-}
-
-// GetDbPortOk returns a tuple with the DbPort field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetDbPortOk() (*string, bool) {
-	if o == nil || o.DbPort == nil {
-		return nil, false
-	}
-	return o.DbPort, true
-}
-
-// HasDbPort returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasDbPort() bool {
-	if o != nil && o.DbPort != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDbPort gets a reference to the given string and assigns it to the DbPort field.
-func (o *TargetTypeDetailsInput) SetDbPort(v string) {
-	o.DbPort = &v
-}
-
-// GetDbPrivateKey returns the DbPrivateKey field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetDbPrivateKey() string {
-	if o == nil || o.DbPrivateKey == nil {
-		var ret string
-		return ret
-	}
-	return *o.DbPrivateKey
-}
-
-// GetDbPrivateKeyOk returns a tuple with the DbPrivateKey field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetDbPrivateKeyOk() (*string, bool) {
-	if o == nil || o.DbPrivateKey == nil {
-		return nil, false
-	}
-	return o.DbPrivateKey, true
-}
-
-// HasDbPrivateKey returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasDbPrivateKey() bool {
-	if o != nil && o.DbPrivateKey != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDbPrivateKey gets a reference to the given string and assigns it to the DbPrivateKey field.
-func (o *TargetTypeDetailsInput) SetDbPrivateKey(v string) {
-	o.DbPrivateKey = &v
-}
-
-// GetDbPrivateKeyPassphrase returns the DbPrivateKeyPassphrase field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetDbPrivateKeyPassphrase() string {
-	if o == nil || o.DbPrivateKeyPassphrase == nil {
-		var ret string
-		return ret
-	}
-	return *o.DbPrivateKeyPassphrase
-}
-
-// GetDbPrivateKeyPassphraseOk returns a tuple with the DbPrivateKeyPassphrase field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetDbPrivateKeyPassphraseOk() (*string, bool) {
-	if o == nil || o.DbPrivateKeyPassphrase == nil {
-		return nil, false
-	}
-	return o.DbPrivateKeyPassphrase, true
-}
-
-// HasDbPrivateKeyPassphrase returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasDbPrivateKeyPassphrase() bool {
-	if o != nil && o.DbPrivateKeyPassphrase != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDbPrivateKeyPassphrase gets a reference to the given string and assigns it to the DbPrivateKeyPassphrase field.
-func (o *TargetTypeDetailsInput) SetDbPrivateKeyPassphrase(v string) {
-	o.DbPrivateKeyPassphrase = &v
-}
-
-// GetDbPwd returns the DbPwd field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetDbPwd() string {
-	if o == nil || o.DbPwd == nil {
-		var ret string
-		return ret
-	}
-	return *o.DbPwd
-}
-
-// GetDbPwdOk returns a tuple with the DbPwd field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetDbPwdOk() (*string, bool) {
-	if o == nil || o.DbPwd == nil {
-		return nil, false
-	}
-	return o.DbPwd, true
-}
-
-// HasDbPwd returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasDbPwd() bool {
-	if o != nil && o.DbPwd != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDbPwd gets a reference to the given string and assigns it to the DbPwd field.
-func (o *TargetTypeDetailsInput) SetDbPwd(v string) {
-	o.DbPwd = &v
-}
-
-// GetDbServerCertificates returns the DbServerCertificates field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetDbServerCertificates() string {
-	if o == nil || o.DbServerCertificates == nil {
-		var ret string
-		return ret
-	}
-	return *o.DbServerCertificates
-}
-
-// GetDbServerCertificatesOk returns a tuple with the DbServerCertificates field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetDbServerCertificatesOk() (*string, bool) {
-	if o == nil || o.DbServerCertificates == nil {
-		return nil, false
-	}
-	return o.DbServerCertificates, true
-}
-
-// HasDbServerCertificates returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasDbServerCertificates() bool {
-	if o != nil && o.DbServerCertificates != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDbServerCertificates gets a reference to the given string and assigns it to the DbServerCertificates field.
-func (o *TargetTypeDetailsInput) SetDbServerCertificates(v string) {
-	o.DbServerCertificates = &v
-}
-
-// GetDbServerName returns the DbServerName field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetDbServerName() string {
-	if o == nil || o.DbServerName == nil {
-		var ret string
-		return ret
-	}
-	return *o.DbServerName
-}
-
-// GetDbServerNameOk returns a tuple with the DbServerName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetDbServerNameOk() (*string, bool) {
-	if o == nil || o.DbServerName == nil {
-		return nil, false
-	}
-	return o.DbServerName, true
-}
-
-// HasDbServerName returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasDbServerName() bool {
-	if o != nil && o.DbServerName != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDbServerName gets a reference to the given string and assigns it to the DbServerName field.
-func (o *TargetTypeDetailsInput) SetDbServerName(v string) {
-	o.DbServerName = &v
-}
-
-// GetDbUserName returns the DbUserName field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetDbUserName() string {
-	if o == nil || o.DbUserName == nil {
-		var ret string
-		return ret
-	}
-	return *o.DbUserName
-}
-
-// GetDbUserNameOk returns a tuple with the DbUserName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetDbUserNameOk() (*string, bool) {
-	if o == nil || o.DbUserName == nil {
-		return nil, false
-	}
-	return o.DbUserName, true
-}
-
-// HasDbUserName returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasDbUserName() bool {
-	if o != nil && o.DbUserName != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDbUserName gets a reference to the given string and assigns it to the DbUserName field.
-func (o *TargetTypeDetailsInput) SetDbUserName(v string) {
-	o.DbUserName = &v
-}
-
-// GetEksAccessKeyId returns the EksAccessKeyId field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetEksAccessKeyId() string {
-	if o == nil || o.EksAccessKeyId == nil {
-		var ret string
-		return ret
-	}
-	return *o.EksAccessKeyId
-}
-
-// GetEksAccessKeyIdOk returns a tuple with the EksAccessKeyId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetEksAccessKeyIdOk() (*string, bool) {
-	if o == nil || o.EksAccessKeyId == nil {
-		return nil, false
-	}
-	return o.EksAccessKeyId, true
-}
-
-// HasEksAccessKeyId returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasEksAccessKeyId() bool {
-	if o != nil && o.EksAccessKeyId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEksAccessKeyId gets a reference to the given string and assigns it to the EksAccessKeyId field.
-func (o *TargetTypeDetailsInput) SetEksAccessKeyId(v string) {
-	o.EksAccessKeyId = &v
-}
-
-// GetEksClusterCaCertificate returns the EksClusterCaCertificate field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetEksClusterCaCertificate() string {
-	if o == nil || o.EksClusterCaCertificate == nil {
-		var ret string
-		return ret
-	}
-	return *o.EksClusterCaCertificate
-}
-
-// GetEksClusterCaCertificateOk returns a tuple with the EksClusterCaCertificate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetEksClusterCaCertificateOk() (*string, bool) {
-	if o == nil || o.EksClusterCaCertificate == nil {
-		return nil, false
-	}
-	return o.EksClusterCaCertificate, true
-}
-
-// HasEksClusterCaCertificate returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasEksClusterCaCertificate() bool {
-	if o != nil && o.EksClusterCaCertificate != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEksClusterCaCertificate gets a reference to the given string and assigns it to the EksClusterCaCertificate field.
-func (o *TargetTypeDetailsInput) SetEksClusterCaCertificate(v string) {
-	o.EksClusterCaCertificate = &v
-}
-
-// GetEksClusterEndpoint returns the EksClusterEndpoint field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetEksClusterEndpoint() string {
-	if o == nil || o.EksClusterEndpoint == nil {
-		var ret string
-		return ret
-	}
-	return *o.EksClusterEndpoint
-}
-
-// GetEksClusterEndpointOk returns a tuple with the EksClusterEndpoint field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetEksClusterEndpointOk() (*string, bool) {
-	if o == nil || o.EksClusterEndpoint == nil {
-		return nil, false
-	}
-	return o.EksClusterEndpoint, true
-}
-
-// HasEksClusterEndpoint returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasEksClusterEndpoint() bool {
-	if o != nil && o.EksClusterEndpoint != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEksClusterEndpoint gets a reference to the given string and assigns it to the EksClusterEndpoint field.
-func (o *TargetTypeDetailsInput) SetEksClusterEndpoint(v string) {
-	o.EksClusterEndpoint = &v
-}
-
-// GetEksClusterName returns the EksClusterName field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetEksClusterName() string {
-	if o == nil || o.EksClusterName == nil {
-		var ret string
-		return ret
-	}
-	return *o.EksClusterName
-}
-
-// GetEksClusterNameOk returns a tuple with the EksClusterName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetEksClusterNameOk() (*string, bool) {
-	if o == nil || o.EksClusterName == nil {
-		return nil, false
-	}
-	return o.EksClusterName, true
-}
-
-// HasEksClusterName returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasEksClusterName() bool {
-	if o != nil && o.EksClusterName != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEksClusterName gets a reference to the given string and assigns it to the EksClusterName field.
-func (o *TargetTypeDetailsInput) SetEksClusterName(v string) {
-	o.EksClusterName = &v
-}
-
-// GetEksRegion returns the EksRegion field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetEksRegion() string {
-	if o == nil || o.EksRegion == nil {
-		var ret string
-		return ret
-	}
-	return *o.EksRegion
-}
-
-// GetEksRegionOk returns a tuple with the EksRegion field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetEksRegionOk() (*string, bool) {
-	if o == nil || o.EksRegion == nil {
-		return nil, false
-	}
-	return o.EksRegion, true
-}
-
-// HasEksRegion returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasEksRegion() bool {
-	if o != nil && o.EksRegion != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEksRegion gets a reference to the given string and assigns it to the EksRegion field.
-func (o *TargetTypeDetailsInput) SetEksRegion(v string) {
-	o.EksRegion = &v
-}
-
-// GetEksSecretAccessKey returns the EksSecretAccessKey field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetEksSecretAccessKey() string {
-	if o == nil || o.EksSecretAccessKey == nil {
-		var ret string
-		return ret
-	}
-	return *o.EksSecretAccessKey
-}
-
-// GetEksSecretAccessKeyOk returns a tuple with the EksSecretAccessKey field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetEksSecretAccessKeyOk() (*string, bool) {
-	if o == nil || o.EksSecretAccessKey == nil {
-		return nil, false
-	}
-	return o.EksSecretAccessKey, true
-}
-
-// HasEksSecretAccessKey returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasEksSecretAccessKey() bool {
-	if o != nil && o.EksSecretAccessKey != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEksSecretAccessKey gets a reference to the given string and assigns it to the EksSecretAccessKey field.
-func (o *TargetTypeDetailsInput) SetEksSecretAccessKey(v string) {
-	o.EksSecretAccessKey = &v
-}
-
-// GetGcpServiceAccountEmail returns the GcpServiceAccountEmail field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetGcpServiceAccountEmail() string {
-	if o == nil || o.GcpServiceAccountEmail == nil {
-		var ret string
-		return ret
-	}
-	return *o.GcpServiceAccountEmail
-}
-
-// GetGcpServiceAccountEmailOk returns a tuple with the GcpServiceAccountEmail field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetGcpServiceAccountEmailOk() (*string, bool) {
-	if o == nil || o.GcpServiceAccountEmail == nil {
-		return nil, false
-	}
-	return o.GcpServiceAccountEmail, true
-}
-
-// HasGcpServiceAccountEmail returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasGcpServiceAccountEmail() bool {
-	if o != nil && o.GcpServiceAccountEmail != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGcpServiceAccountEmail gets a reference to the given string and assigns it to the GcpServiceAccountEmail field.
-func (o *TargetTypeDetailsInput) SetGcpServiceAccountEmail(v string) {
-	o.GcpServiceAccountEmail = &v
-}
-
-// GetGcpServiceAccountKey returns the GcpServiceAccountKey field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetGcpServiceAccountKey() string {
-	if o == nil || o.GcpServiceAccountKey == nil {
-		var ret string
-		return ret
-	}
-	return *o.GcpServiceAccountKey
-}
-
-// GetGcpServiceAccountKeyOk returns a tuple with the GcpServiceAccountKey field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetGcpServiceAccountKeyOk() (*string, bool) {
-	if o == nil || o.GcpServiceAccountKey == nil {
-		return nil, false
-	}
-	return o.GcpServiceAccountKey, true
-}
-
-// HasGcpServiceAccountKey returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasGcpServiceAccountKey() bool {
-	if o != nil && o.GcpServiceAccountKey != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGcpServiceAccountKey gets a reference to the given string and assigns it to the GcpServiceAccountKey field.
-func (o *TargetTypeDetailsInput) SetGcpServiceAccountKey(v string) {
-	o.GcpServiceAccountKey = &v
-}
-
-// GetGithubAppId returns the GithubAppId field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetGithubAppId() int64 {
-	if o == nil || o.GithubAppId == nil {
-		var ret int64
-		return ret
-	}
-	return *o.GithubAppId
-}
-
-// GetGithubAppIdOk returns a tuple with the GithubAppId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetGithubAppIdOk() (*int64, bool) {
-	if o == nil || o.GithubAppId == nil {
-		return nil, false
-	}
-	return o.GithubAppId, true
-}
-
-// HasGithubAppId returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasGithubAppId() bool {
-	if o != nil && o.GithubAppId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGithubAppId gets a reference to the given int64 and assigns it to the GithubAppId field.
-func (o *TargetTypeDetailsInput) SetGithubAppId(v int64) {
-	o.GithubAppId = &v
-}
-
-// GetGithubAppPrivateKey returns the GithubAppPrivateKey field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetGithubAppPrivateKey() string {
-	if o == nil || o.GithubAppPrivateKey == nil {
-		var ret string
-		return ret
-	}
-	return *o.GithubAppPrivateKey
-}
-
-// GetGithubAppPrivateKeyOk returns a tuple with the GithubAppPrivateKey field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetGithubAppPrivateKeyOk() (*string, bool) {
-	if o == nil || o.GithubAppPrivateKey == nil {
-		return nil, false
-	}
-	return o.GithubAppPrivateKey, true
-}
-
-// HasGithubAppPrivateKey returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasGithubAppPrivateKey() bool {
-	if o != nil && o.GithubAppPrivateKey != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGithubAppPrivateKey gets a reference to the given string and assigns it to the GithubAppPrivateKey field.
-func (o *TargetTypeDetailsInput) SetGithubAppPrivateKey(v string) {
-	o.GithubAppPrivateKey = &v
-}
-
-// GetGithubBaseUrl returns the GithubBaseUrl field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetGithubBaseUrl() string {
-	if o == nil || o.GithubBaseUrl == nil {
-		var ret string
-		return ret
-	}
-	return *o.GithubBaseUrl
-}
-
-// GetGithubBaseUrlOk returns a tuple with the GithubBaseUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetGithubBaseUrlOk() (*string, bool) {
-	if o == nil || o.GithubBaseUrl == nil {
-		return nil, false
-	}
-	return o.GithubBaseUrl, true
-}
-
-// HasGithubBaseUrl returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasGithubBaseUrl() bool {
-	if o != nil && o.GithubBaseUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGithubBaseUrl gets a reference to the given string and assigns it to the GithubBaseUrl field.
-func (o *TargetTypeDetailsInput) SetGithubBaseUrl(v string) {
-	o.GithubBaseUrl = &v
-}
-
-// GetGkeClusterCaCertificate returns the GkeClusterCaCertificate field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetGkeClusterCaCertificate() string {
-	if o == nil || o.GkeClusterCaCertificate == nil {
-		var ret string
-		return ret
-	}
-	return *o.GkeClusterCaCertificate
-}
-
-// GetGkeClusterCaCertificateOk returns a tuple with the GkeClusterCaCertificate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetGkeClusterCaCertificateOk() (*string, bool) {
-	if o == nil || o.GkeClusterCaCertificate == nil {
-		return nil, false
-	}
-	return o.GkeClusterCaCertificate, true
-}
-
-// HasGkeClusterCaCertificate returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasGkeClusterCaCertificate() bool {
-	if o != nil && o.GkeClusterCaCertificate != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGkeClusterCaCertificate gets a reference to the given string and assigns it to the GkeClusterCaCertificate field.
-func (o *TargetTypeDetailsInput) SetGkeClusterCaCertificate(v string) {
-	o.GkeClusterCaCertificate = &v
-}
-
-// GetGkeClusterEndpoint returns the GkeClusterEndpoint field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetGkeClusterEndpoint() string {
-	if o == nil || o.GkeClusterEndpoint == nil {
-		var ret string
-		return ret
-	}
-	return *o.GkeClusterEndpoint
-}
-
-// GetGkeClusterEndpointOk returns a tuple with the GkeClusterEndpoint field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetGkeClusterEndpointOk() (*string, bool) {
-	if o == nil || o.GkeClusterEndpoint == nil {
-		return nil, false
-	}
-	return o.GkeClusterEndpoint, true
-}
-
-// HasGkeClusterEndpoint returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasGkeClusterEndpoint() bool {
-	if o != nil && o.GkeClusterEndpoint != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGkeClusterEndpoint gets a reference to the given string and assigns it to the GkeClusterEndpoint field.
-func (o *TargetTypeDetailsInput) SetGkeClusterEndpoint(v string) {
-	o.GkeClusterEndpoint = &v
-}
-
-// GetGkeClusterName returns the GkeClusterName field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetGkeClusterName() string {
-	if o == nil || o.GkeClusterName == nil {
-		var ret string
-		return ret
-	}
-	return *o.GkeClusterName
-}
-
-// GetGkeClusterNameOk returns a tuple with the GkeClusterName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetGkeClusterNameOk() (*string, bool) {
-	if o == nil || o.GkeClusterName == nil {
-		return nil, false
-	}
-	return o.GkeClusterName, true
-}
-
-// HasGkeClusterName returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasGkeClusterName() bool {
-	if o != nil && o.GkeClusterName != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGkeClusterName gets a reference to the given string and assigns it to the GkeClusterName field.
-func (o *TargetTypeDetailsInput) SetGkeClusterName(v string) {
-	o.GkeClusterName = &v
-}
-
-// GetGkeServiceAccountKey returns the GkeServiceAccountKey field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetGkeServiceAccountKey() string {
-	if o == nil || o.GkeServiceAccountKey == nil {
-		var ret string
-		return ret
-	}
-	return *o.GkeServiceAccountKey
-}
-
-// GetGkeServiceAccountKeyOk returns a tuple with the GkeServiceAccountKey field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetGkeServiceAccountKeyOk() (*string, bool) {
-	if o == nil || o.GkeServiceAccountKey == nil {
-		return nil, false
-	}
-	return o.GkeServiceAccountKey, true
-}
-
-// HasGkeServiceAccountKey returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasGkeServiceAccountKey() bool {
-	if o != nil && o.GkeServiceAccountKey != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGkeServiceAccountKey gets a reference to the given string and assigns it to the GkeServiceAccountKey field.
-func (o *TargetTypeDetailsInput) SetGkeServiceAccountKey(v string) {
-	o.GkeServiceAccountKey = &v
-}
-
-// GetGkeServiceAccountName returns the GkeServiceAccountName field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetGkeServiceAccountName() string {
-	if o == nil || o.GkeServiceAccountName == nil {
-		var ret string
-		return ret
-	}
-	return *o.GkeServiceAccountName
-}
-
-// GetGkeServiceAccountNameOk returns a tuple with the GkeServiceAccountName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetGkeServiceAccountNameOk() (*string, bool) {
-	if o == nil || o.GkeServiceAccountName == nil {
-		return nil, false
-	}
-	return o.GkeServiceAccountName, true
-}
-
-// HasGkeServiceAccountName returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasGkeServiceAccountName() bool {
-	if o != nil && o.GkeServiceAccountName != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGkeServiceAccountName gets a reference to the given string and assigns it to the GkeServiceAccountName field.
-func (o *TargetTypeDetailsInput) SetGkeServiceAccountName(v string) {
-	o.GkeServiceAccountName = &v
-}
-
-// GetHost returns the Host field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetHost() string {
-	if o == nil || o.Host == nil {
-		var ret string
-		return ret
-	}
-	return *o.Host
-}
-
-// GetHostOk returns a tuple with the Host field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetHostOk() (*string, bool) {
-	if o == nil || o.Host == nil {
-		return nil, false
-	}
-	return o.Host, true
-}
-
-// HasHost returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasHost() bool {
-	if o != nil && o.Host != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetHost gets a reference to the given string and assigns it to the Host field.
-func (o *TargetTypeDetailsInput) SetHost(v string) {
-	o.Host = &v
-}
-
-// GetImplementationType returns the ImplementationType field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetImplementationType() string {
-	if o == nil || o.ImplementationType == nil {
-		var ret string
-		return ret
-	}
-	return *o.ImplementationType
-}
-
-// GetImplementationTypeOk returns a tuple with the ImplementationType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetImplementationTypeOk() (*string, bool) {
-	if o == nil || o.ImplementationType == nil {
-		return nil, false
-	}
-	return o.ImplementationType, true
-}
-
-// HasImplementationType returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasImplementationType() bool {
-	if o != nil && o.ImplementationType != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetImplementationType gets a reference to the given string and assigns it to the ImplementationType field.
-func (o *TargetTypeDetailsInput) SetImplementationType(v string) {
-	o.ImplementationType = &v
-}
-
-// GetK8sBearerToken returns the K8sBearerToken field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetK8sBearerToken() string {
-	if o == nil || o.K8sBearerToken == nil {
-		var ret string
-		return ret
-	}
-	return *o.K8sBearerToken
-}
-
-// GetK8sBearerTokenOk returns a tuple with the K8sBearerToken field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetK8sBearerTokenOk() (*string, bool) {
-	if o == nil || o.K8sBearerToken == nil {
-		return nil, false
-	}
-	return o.K8sBearerToken, true
-}
-
-// HasK8sBearerToken returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasK8sBearerToken() bool {
-	if o != nil && o.K8sBearerToken != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetK8sBearerToken gets a reference to the given string and assigns it to the K8sBearerToken field.
-func (o *TargetTypeDetailsInput) SetK8sBearerToken(v string) {
-	o.K8sBearerToken = &v
-}
-
-// GetK8sClusterCaCertificate returns the K8sClusterCaCertificate field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetK8sClusterCaCertificate() string {
-	if o == nil || o.K8sClusterCaCertificate == nil {
-		var ret string
-		return ret
-	}
-	return *o.K8sClusterCaCertificate
-}
-
-// GetK8sClusterCaCertificateOk returns a tuple with the K8sClusterCaCertificate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetK8sClusterCaCertificateOk() (*string, bool) {
-	if o == nil || o.K8sClusterCaCertificate == nil {
-		return nil, false
-	}
-	return o.K8sClusterCaCertificate, true
-}
-
-// HasK8sClusterCaCertificate returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasK8sClusterCaCertificate() bool {
-	if o != nil && o.K8sClusterCaCertificate != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetK8sClusterCaCertificate gets a reference to the given string and assigns it to the K8sClusterCaCertificate field.
-func (o *TargetTypeDetailsInput) SetK8sClusterCaCertificate(v string) {
-	o.K8sClusterCaCertificate = &v
-}
-
-// GetK8sClusterEndpoint returns the K8sClusterEndpoint field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetK8sClusterEndpoint() string {
-	if o == nil || o.K8sClusterEndpoint == nil {
-		var ret string
-		return ret
-	}
-	return *o.K8sClusterEndpoint
-}
-
-// GetK8sClusterEndpointOk returns a tuple with the K8sClusterEndpoint field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetK8sClusterEndpointOk() (*string, bool) {
-	if o == nil || o.K8sClusterEndpoint == nil {
-		return nil, false
-	}
-	return o.K8sClusterEndpoint, true
-}
-
-// HasK8sClusterEndpoint returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasK8sClusterEndpoint() bool {
-	if o != nil && o.K8sClusterEndpoint != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetK8sClusterEndpoint gets a reference to the given string and assigns it to the K8sClusterEndpoint field.
-func (o *TargetTypeDetailsInput) SetK8sClusterEndpoint(v string) {
-	o.K8sClusterEndpoint = &v
-}
-
-// GetLdapAudience returns the LdapAudience field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetLdapAudience() string {
-	if o == nil || o.LdapAudience == nil {
-		var ret string
-		return ret
-	}
-	return *o.LdapAudience
-}
-
-// GetLdapAudienceOk returns a tuple with the LdapAudience field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetLdapAudienceOk() (*string, bool) {
-	if o == nil || o.LdapAudience == nil {
-		return nil, false
-	}
-	return o.LdapAudience, true
-}
-
-// HasLdapAudience returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasLdapAudience() bool {
-	if o != nil && o.LdapAudience != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLdapAudience gets a reference to the given string and assigns it to the LdapAudience field.
-func (o *TargetTypeDetailsInput) SetLdapAudience(v string) {
-	o.LdapAudience = &v
-}
-
-// GetLdapBindDn returns the LdapBindDn field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetLdapBindDn() string {
-	if o == nil || o.LdapBindDn == nil {
-		var ret string
-		return ret
-	}
-	return *o.LdapBindDn
-}
-
-// GetLdapBindDnOk returns a tuple with the LdapBindDn field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetLdapBindDnOk() (*string, bool) {
-	if o == nil || o.LdapBindDn == nil {
-		return nil, false
-	}
-	return o.LdapBindDn, true
-}
-
-// HasLdapBindDn returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasLdapBindDn() bool {
-	if o != nil && o.LdapBindDn != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLdapBindDn gets a reference to the given string and assigns it to the LdapBindDn field.
-func (o *TargetTypeDetailsInput) SetLdapBindDn(v string) {
-	o.LdapBindDn = &v
-}
-
-// GetLdapBindPassword returns the LdapBindPassword field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetLdapBindPassword() string {
-	if o == nil || o.LdapBindPassword == nil {
-		var ret string
-		return ret
-	}
-	return *o.LdapBindPassword
-}
-
-// GetLdapBindPasswordOk returns a tuple with the LdapBindPassword field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetLdapBindPasswordOk() (*string, bool) {
-	if o == nil || o.LdapBindPassword == nil {
-		return nil, false
-	}
-	return o.LdapBindPassword, true
-}
-
-// HasLdapBindPassword returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasLdapBindPassword() bool {
-	if o != nil && o.LdapBindPassword != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLdapBindPassword gets a reference to the given string and assigns it to the LdapBindPassword field.
-func (o *TargetTypeDetailsInput) SetLdapBindPassword(v string) {
-	o.LdapBindPassword = &v
-}
-
-// GetLdapCertificate returns the LdapCertificate field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetLdapCertificate() string {
-	if o == nil || o.LdapCertificate == nil {
-		var ret string
-		return ret
-	}
-	return *o.LdapCertificate
-}
-
-// GetLdapCertificateOk returns a tuple with the LdapCertificate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetLdapCertificateOk() (*string, bool) {
-	if o == nil || o.LdapCertificate == nil {
-		return nil, false
-	}
-	return o.LdapCertificate, true
-}
-
-// HasLdapCertificate returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasLdapCertificate() bool {
-	if o != nil && o.LdapCertificate != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLdapCertificate gets a reference to the given string and assigns it to the LdapCertificate field.
-func (o *TargetTypeDetailsInput) SetLdapCertificate(v string) {
-	o.LdapCertificate = &v
-}
-
-// GetLdapTokenExpiration returns the LdapTokenExpiration field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetLdapTokenExpiration() string {
-	if o == nil || o.LdapTokenExpiration == nil {
-		var ret string
-		return ret
-	}
-	return *o.LdapTokenExpiration
-}
-
-// GetLdapTokenExpirationOk returns a tuple with the LdapTokenExpiration field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetLdapTokenExpirationOk() (*string, bool) {
-	if o == nil || o.LdapTokenExpiration == nil {
-		return nil, false
-	}
-	return o.LdapTokenExpiration, true
-}
-
-// HasLdapTokenExpiration returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasLdapTokenExpiration() bool {
-	if o != nil && o.LdapTokenExpiration != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLdapTokenExpiration gets a reference to the given string and assigns it to the LdapTokenExpiration field.
-func (o *TargetTypeDetailsInput) SetLdapTokenExpiration(v string) {
-	o.LdapTokenExpiration = &v
-}
-
-// GetLdapUrl returns the LdapUrl field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetLdapUrl() string {
-	if o == nil || o.LdapUrl == nil {
-		var ret string
-		return ret
-	}
-	return *o.LdapUrl
-}
-
-// GetLdapUrlOk returns a tuple with the LdapUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetLdapUrlOk() (*string, bool) {
-	if o == nil || o.LdapUrl == nil {
-		return nil, false
-	}
-	return o.LdapUrl, true
-}
-
-// HasLdapUrl returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasLdapUrl() bool {
-	if o != nil && o.LdapUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLdapUrl gets a reference to the given string and assigns it to the LdapUrl field.
-func (o *TargetTypeDetailsInput) SetLdapUrl(v string) {
-	o.LdapUrl = &v
-}
-
-// GetMongodbAtlasApiPrivateKey returns the MongodbAtlasApiPrivateKey field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetMongodbAtlasApiPrivateKey() string {
-	if o == nil || o.MongodbAtlasApiPrivateKey == nil {
-		var ret string
-		return ret
-	}
-	return *o.MongodbAtlasApiPrivateKey
-}
-
-// GetMongodbAtlasApiPrivateKeyOk returns a tuple with the MongodbAtlasApiPrivateKey field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetMongodbAtlasApiPrivateKeyOk() (*string, bool) {
-	if o == nil || o.MongodbAtlasApiPrivateKey == nil {
-		return nil, false
-	}
-	return o.MongodbAtlasApiPrivateKey, true
-}
-
-// HasMongodbAtlasApiPrivateKey returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasMongodbAtlasApiPrivateKey() bool {
-	if o != nil && o.MongodbAtlasApiPrivateKey != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMongodbAtlasApiPrivateKey gets a reference to the given string and assigns it to the MongodbAtlasApiPrivateKey field.
-func (o *TargetTypeDetailsInput) SetMongodbAtlasApiPrivateKey(v string) {
-	o.MongodbAtlasApiPrivateKey = &v
-}
-
-// GetMongodbAtlasApiPublicKey returns the MongodbAtlasApiPublicKey field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetMongodbAtlasApiPublicKey() string {
-	if o == nil || o.MongodbAtlasApiPublicKey == nil {
-		var ret string
-		return ret
-	}
-	return *o.MongodbAtlasApiPublicKey
-}
-
-// GetMongodbAtlasApiPublicKeyOk returns a tuple with the MongodbAtlasApiPublicKey field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetMongodbAtlasApiPublicKeyOk() (*string, bool) {
-	if o == nil || o.MongodbAtlasApiPublicKey == nil {
-		return nil, false
-	}
-	return o.MongodbAtlasApiPublicKey, true
-}
-
-// HasMongodbAtlasApiPublicKey returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasMongodbAtlasApiPublicKey() bool {
-	if o != nil && o.MongodbAtlasApiPublicKey != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMongodbAtlasApiPublicKey gets a reference to the given string and assigns it to the MongodbAtlasApiPublicKey field.
-func (o *TargetTypeDetailsInput) SetMongodbAtlasApiPublicKey(v string) {
-	o.MongodbAtlasApiPublicKey = &v
-}
-
-// GetMongodbAtlasProjectId returns the MongodbAtlasProjectId field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetMongodbAtlasProjectId() string {
-	if o == nil || o.MongodbAtlasProjectId == nil {
-		var ret string
-		return ret
-	}
-	return *o.MongodbAtlasProjectId
-}
-
-// GetMongodbAtlasProjectIdOk returns a tuple with the MongodbAtlasProjectId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetMongodbAtlasProjectIdOk() (*string, bool) {
-	if o == nil || o.MongodbAtlasProjectId == nil {
-		return nil, false
-	}
-	return o.MongodbAtlasProjectId, true
-}
-
-// HasMongodbAtlasProjectId returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasMongodbAtlasProjectId() bool {
-	if o != nil && o.MongodbAtlasProjectId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMongodbAtlasProjectId gets a reference to the given string and assigns it to the MongodbAtlasProjectId field.
-func (o *TargetTypeDetailsInput) SetMongodbAtlasProjectId(v string) {
-	o.MongodbAtlasProjectId = &v
-}
-
-// GetMongodbDbName returns the MongodbDbName field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetMongodbDbName() string {
-	if o == nil || o.MongodbDbName == nil {
-		var ret string
-		return ret
-	}
-	return *o.MongodbDbName
-}
-
-// GetMongodbDbNameOk returns a tuple with the MongodbDbName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetMongodbDbNameOk() (*string, bool) {
-	if o == nil || o.MongodbDbName == nil {
-		return nil, false
-	}
-	return o.MongodbDbName, true
-}
-
-// HasMongodbDbName returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasMongodbDbName() bool {
-	if o != nil && o.MongodbDbName != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMongodbDbName gets a reference to the given string and assigns it to the MongodbDbName field.
-func (o *TargetTypeDetailsInput) SetMongodbDbName(v string) {
-	o.MongodbDbName = &v
-}
-
-// GetMongodbDefaultAuthDb returns the MongodbDefaultAuthDb field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetMongodbDefaultAuthDb() string {
-	if o == nil || o.MongodbDefaultAuthDb == nil {
-		var ret string
-		return ret
-	}
-	return *o.MongodbDefaultAuthDb
-}
-
-// GetMongodbDefaultAuthDbOk returns a tuple with the MongodbDefaultAuthDb field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetMongodbDefaultAuthDbOk() (*string, bool) {
-	if o == nil || o.MongodbDefaultAuthDb == nil {
-		return nil, false
-	}
-	return o.MongodbDefaultAuthDb, true
-}
-
-// HasMongodbDefaultAuthDb returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasMongodbDefaultAuthDb() bool {
-	if o != nil && o.MongodbDefaultAuthDb != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMongodbDefaultAuthDb gets a reference to the given string and assigns it to the MongodbDefaultAuthDb field.
-func (o *TargetTypeDetailsInput) SetMongodbDefaultAuthDb(v string) {
-	o.MongodbDefaultAuthDb = &v
-}
-
-// GetMongodbHostPort returns the MongodbHostPort field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetMongodbHostPort() string {
-	if o == nil || o.MongodbHostPort == nil {
-		var ret string
-		return ret
-	}
-	return *o.MongodbHostPort
-}
-
-// GetMongodbHostPortOk returns a tuple with the MongodbHostPort field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetMongodbHostPortOk() (*string, bool) {
-	if o == nil || o.MongodbHostPort == nil {
-		return nil, false
-	}
-	return o.MongodbHostPort, true
-}
-
-// HasMongodbHostPort returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasMongodbHostPort() bool {
-	if o != nil && o.MongodbHostPort != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMongodbHostPort gets a reference to the given string and assigns it to the MongodbHostPort field.
-func (o *TargetTypeDetailsInput) SetMongodbHostPort(v string) {
-	o.MongodbHostPort = &v
-}
-
-// GetMongodbIsAtlas returns the MongodbIsAtlas field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetMongodbIsAtlas() bool {
-	if o == nil || o.MongodbIsAtlas == nil {
-		var ret bool
-		return ret
-	}
-	return *o.MongodbIsAtlas
-}
-
-// GetMongodbIsAtlasOk returns a tuple with the MongodbIsAtlas field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetMongodbIsAtlasOk() (*bool, bool) {
-	if o == nil || o.MongodbIsAtlas == nil {
-		return nil, false
-	}
-	return o.MongodbIsAtlas, true
-}
-
-// HasMongodbIsAtlas returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasMongodbIsAtlas() bool {
-	if o != nil && o.MongodbIsAtlas != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMongodbIsAtlas gets a reference to the given bool and assigns it to the MongodbIsAtlas field.
-func (o *TargetTypeDetailsInput) SetMongodbIsAtlas(v bool) {
-	o.MongodbIsAtlas = &v
-}
-
-// GetMongodbPassword returns the MongodbPassword field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetMongodbPassword() string {
-	if o == nil || o.MongodbPassword == nil {
-		var ret string
-		return ret
-	}
-	return *o.MongodbPassword
-}
-
-// GetMongodbPasswordOk returns a tuple with the MongodbPassword field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetMongodbPasswordOk() (*string, bool) {
-	if o == nil || o.MongodbPassword == nil {
-		return nil, false
-	}
-	return o.MongodbPassword, true
-}
-
-// HasMongodbPassword returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasMongodbPassword() bool {
-	if o != nil && o.MongodbPassword != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMongodbPassword gets a reference to the given string and assigns it to the MongodbPassword field.
-func (o *TargetTypeDetailsInput) SetMongodbPassword(v string) {
-	o.MongodbPassword = &v
-}
-
-// GetMongodbUriConnection returns the MongodbUriConnection field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetMongodbUriConnection() string {
-	if o == nil || o.MongodbUriConnection == nil {
-		var ret string
-		return ret
-	}
-	return *o.MongodbUriConnection
-}
-
-// GetMongodbUriConnectionOk returns a tuple with the MongodbUriConnection field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetMongodbUriConnectionOk() (*string, bool) {
-	if o == nil || o.MongodbUriConnection == nil {
-		return nil, false
-	}
-	return o.MongodbUriConnection, true
-}
-
-// HasMongodbUriConnection returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasMongodbUriConnection() bool {
-	if o != nil && o.MongodbUriConnection != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMongodbUriConnection gets a reference to the given string and assigns it to the MongodbUriConnection field.
-func (o *TargetTypeDetailsInput) SetMongodbUriConnection(v string) {
-	o.MongodbUriConnection = &v
-}
-
-// GetMongodbUriOptions returns the MongodbUriOptions field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetMongodbUriOptions() string {
-	if o == nil || o.MongodbUriOptions == nil {
-		var ret string
-		return ret
-	}
-	return *o.MongodbUriOptions
-}
-
-// GetMongodbUriOptionsOk returns a tuple with the MongodbUriOptions field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetMongodbUriOptionsOk() (*string, bool) {
-	if o == nil || o.MongodbUriOptions == nil {
-		return nil, false
-	}
-	return o.MongodbUriOptions, true
-}
-
-// HasMongodbUriOptions returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasMongodbUriOptions() bool {
-	if o != nil && o.MongodbUriOptions != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMongodbUriOptions gets a reference to the given string and assigns it to the MongodbUriOptions field.
-func (o *TargetTypeDetailsInput) SetMongodbUriOptions(v string) {
-	o.MongodbUriOptions = &v
-}
-
-// GetMongodbUsername returns the MongodbUsername field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetMongodbUsername() string {
-	if o == nil || o.MongodbUsername == nil {
-		var ret string
-		return ret
-	}
-	return *o.MongodbUsername
-}
-
-// GetMongodbUsernameOk returns a tuple with the MongodbUsername field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetMongodbUsernameOk() (*string, bool) {
-	if o == nil || o.MongodbUsername == nil {
-		return nil, false
-	}
-	return o.MongodbUsername, true
-}
-
-// HasMongodbUsername returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasMongodbUsername() bool {
-	if o != nil && o.MongodbUsername != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMongodbUsername gets a reference to the given string and assigns it to the MongodbUsername field.
-func (o *TargetTypeDetailsInput) SetMongodbUsername(v string) {
-	o.MongodbUsername = &v
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *TargetTypeDetailsInput) SetPassword(v string) {
-	o.Password = &v
-}
-
-// GetPayload returns the Payload field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetPayload() string {
-	if o == nil || o.Payload == nil {
-		var ret string
-		return ret
-	}
-	return *o.Payload
-}
-
-// GetPayloadOk returns a tuple with the Payload field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetPayloadOk() (*string, bool) {
-	if o == nil || o.Payload == nil {
-		return nil, false
-	}
-	return o.Payload, true
-}
-
-// HasPayload returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasPayload() bool {
-	if o != nil && o.Payload != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPayload gets a reference to the given string and assigns it to the Payload field.
-func (o *TargetTypeDetailsInput) SetPayload(v string) {
-	o.Payload = &v
-}
-
-// GetPingUrl returns the PingUrl field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetPingUrl() string {
-	if o == nil || o.PingUrl == nil {
-		var ret string
-		return ret
-	}
-	return *o.PingUrl
-}
-
-// GetPingUrlOk returns a tuple with the PingUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetPingUrlOk() (*string, bool) {
-	if o == nil || o.PingUrl == nil {
-		return nil, false
-	}
-	return o.PingUrl, true
-}
-
-// HasPingUrl returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasPingUrl() bool {
-	if o != nil && o.PingUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPingUrl gets a reference to the given string and assigns it to the PingUrl field.
-func (o *TargetTypeDetailsInput) SetPingUrl(v string) {
-	o.PingUrl = &v
-}
-
-// GetPort returns the Port field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetPort() string {
-	if o == nil || o.Port == nil {
-		var ret string
-		return ret
-	}
-	return *o.Port
-}
-
-// GetPortOk returns a tuple with the Port field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetPortOk() (*string, bool) {
-	if o == nil || o.Port == nil {
-		return nil, false
-	}
-	return o.Port, true
-}
-
-// HasPort returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasPort() bool {
-	if o != nil && o.Port != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPort gets a reference to the given string and assigns it to the Port field.
-func (o *TargetTypeDetailsInput) SetPort(v string) {
-	o.Port = &v
-}
-
-// GetPrivateKey returns the PrivateKey field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetPrivateKey() string {
-	if o == nil || o.PrivateKey == nil {
-		var ret string
-		return ret
-	}
-	return *o.PrivateKey
-}
-
-// GetPrivateKeyOk returns a tuple with the PrivateKey field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetPrivateKeyOk() (*string, bool) {
-	if o == nil || o.PrivateKey == nil {
-		return nil, false
-	}
-	return o.PrivateKey, true
-}
-
-// HasPrivateKey returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasPrivateKey() bool {
-	if o != nil && o.PrivateKey != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPrivateKey gets a reference to the given string and assigns it to the PrivateKey field.
-func (o *TargetTypeDetailsInput) SetPrivateKey(v string) {
-	o.PrivateKey = &v
-}
-
-// GetPrivateKeyPassword returns the PrivateKeyPassword field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetPrivateKeyPassword() string {
-	if o == nil || o.PrivateKeyPassword == nil {
-		var ret string
-		return ret
-	}
-	return *o.PrivateKeyPassword
-}
-
-// GetPrivateKeyPasswordOk returns a tuple with the PrivateKeyPassword field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetPrivateKeyPasswordOk() (*string, bool) {
-	if o == nil || o.PrivateKeyPassword == nil {
-		return nil, false
-	}
-	return o.PrivateKeyPassword, true
-}
-
-// HasPrivateKeyPassword returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasPrivateKeyPassword() bool {
-	if o != nil && o.PrivateKeyPassword != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPrivateKeyPassword gets a reference to the given string and assigns it to the PrivateKeyPassword field.
-func (o *TargetTypeDetailsInput) SetPrivateKeyPassword(v string) {
-	o.PrivateKeyPassword = &v
-}
-
-// GetPrivilegedUser returns the PrivilegedUser field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetPrivilegedUser() string {
-	if o == nil || o.PrivilegedUser == nil {
-		var ret string
-		return ret
-	}
-	return *o.PrivilegedUser
-}
-
-// GetPrivilegedUserOk returns a tuple with the PrivilegedUser field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetPrivilegedUserOk() (*string, bool) {
-	if o == nil || o.PrivilegedUser == nil {
-		return nil, false
-	}
-	return o.PrivilegedUser, true
-}
-
-// HasPrivilegedUser returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasPrivilegedUser() bool {
-	if o != nil && o.PrivilegedUser != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPrivilegedUser gets a reference to the given string and assigns it to the PrivilegedUser field.
-func (o *TargetTypeDetailsInput) SetPrivilegedUser(v string) {
-	o.PrivilegedUser = &v
-}
-
-// GetRabbitmqServerPassword returns the RabbitmqServerPassword field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetRabbitmqServerPassword() string {
-	if o == nil || o.RabbitmqServerPassword == nil {
-		var ret string
-		return ret
-	}
-	return *o.RabbitmqServerPassword
-}
-
-// GetRabbitmqServerPasswordOk returns a tuple with the RabbitmqServerPassword field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetRabbitmqServerPasswordOk() (*string, bool) {
-	if o == nil || o.RabbitmqServerPassword == nil {
-		return nil, false
-	}
-	return o.RabbitmqServerPassword, true
-}
-
-// HasRabbitmqServerPassword returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasRabbitmqServerPassword() bool {
-	if o != nil && o.RabbitmqServerPassword != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetRabbitmqServerPassword gets a reference to the given string and assigns it to the RabbitmqServerPassword field.
-func (o *TargetTypeDetailsInput) SetRabbitmqServerPassword(v string) {
-	o.RabbitmqServerPassword = &v
-}
-
-// GetRabbitmqServerUri returns the RabbitmqServerUri field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetRabbitmqServerUri() string {
-	if o == nil || o.RabbitmqServerUri == nil {
-		var ret string
-		return ret
-	}
-	return *o.RabbitmqServerUri
-}
-
-// GetRabbitmqServerUriOk returns a tuple with the RabbitmqServerUri field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetRabbitmqServerUriOk() (*string, bool) {
-	if o == nil || o.RabbitmqServerUri == nil {
-		return nil, false
-	}
-	return o.RabbitmqServerUri, true
-}
-
-// HasRabbitmqServerUri returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasRabbitmqServerUri() bool {
-	if o != nil && o.RabbitmqServerUri != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetRabbitmqServerUri gets a reference to the given string and assigns it to the RabbitmqServerUri field.
-func (o *TargetTypeDetailsInput) SetRabbitmqServerUri(v string) {
-	o.RabbitmqServerUri = &v
-}
-
-// GetRabbitmqServerUser returns the RabbitmqServerUser field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetRabbitmqServerUser() string {
-	if o == nil || o.RabbitmqServerUser == nil {
-		var ret string
-		return ret
-	}
-	return *o.RabbitmqServerUser
-}
-
-// GetRabbitmqServerUserOk returns a tuple with the RabbitmqServerUser field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetRabbitmqServerUserOk() (*string, bool) {
-	if o == nil || o.RabbitmqServerUser == nil {
-		return nil, false
-	}
-	return o.RabbitmqServerUser, true
-}
-
-// HasRabbitmqServerUser returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasRabbitmqServerUser() bool {
-	if o != nil && o.RabbitmqServerUser != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetRabbitmqServerUser gets a reference to the given string and assigns it to the RabbitmqServerUser field.
-func (o *TargetTypeDetailsInput) SetRabbitmqServerUser(v string) {
-	o.RabbitmqServerUser = &v
-}
-
-// GetSecurityToken returns the SecurityToken field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetSecurityToken() string {
-	if o == nil || o.SecurityToken == nil {
-		var ret string
-		return ret
-	}
-	return *o.SecurityToken
-}
-
-// GetSecurityTokenOk returns a tuple with the SecurityToken field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetSecurityTokenOk() (*string, bool) {
-	if o == nil || o.SecurityToken == nil {
-		return nil, false
-	}
-	return o.SecurityToken, true
-}
-
-// HasSecurityToken returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasSecurityToken() bool {
-	if o != nil && o.SecurityToken != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSecurityToken gets a reference to the given string and assigns it to the SecurityToken field.
-func (o *TargetTypeDetailsInput) SetSecurityToken(v string) {
-	o.SecurityToken = &v
-}
-
-// GetSfAccount returns the SfAccount field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetSfAccount() string {
-	if o == nil || o.SfAccount == nil {
-		var ret string
-		return ret
-	}
-	return *o.SfAccount
-}
-
-// GetSfAccountOk returns a tuple with the SfAccount field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetSfAccountOk() (*string, bool) {
-	if o == nil || o.SfAccount == nil {
-		return nil, false
-	}
-	return o.SfAccount, true
-}
-
-// HasSfAccount returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasSfAccount() bool {
-	if o != nil && o.SfAccount != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSfAccount gets a reference to the given string and assigns it to the SfAccount field.
-func (o *TargetTypeDetailsInput) SetSfAccount(v string) {
-	o.SfAccount = &v
-}
-
-// GetSslConnectionCertificate returns the SslConnectionCertificate field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetSslConnectionCertificate() string {
-	if o == nil || o.SslConnectionCertificate == nil {
-		var ret string
-		return ret
-	}
-	return *o.SslConnectionCertificate
-}
-
-// GetSslConnectionCertificateOk returns a tuple with the SslConnectionCertificate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetSslConnectionCertificateOk() (*string, bool) {
-	if o == nil || o.SslConnectionCertificate == nil {
-		return nil, false
-	}
-	return o.SslConnectionCertificate, true
-}
-
-// HasSslConnectionCertificate returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasSslConnectionCertificate() bool {
-	if o != nil && o.SslConnectionCertificate != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSslConnectionCertificate gets a reference to the given string and assigns it to the SslConnectionCertificate field.
-func (o *TargetTypeDetailsInput) SetSslConnectionCertificate(v string) {
-	o.SslConnectionCertificate = &v
-}
-
-// GetSslConnectionMode returns the SslConnectionMode field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetSslConnectionMode() bool {
-	if o == nil || o.SslConnectionMode == nil {
-		var ret bool
-		return ret
-	}
-	return *o.SslConnectionMode
-}
-
-// GetSslConnectionModeOk returns a tuple with the SslConnectionMode field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetSslConnectionModeOk() (*bool, bool) {
-	if o == nil || o.SslConnectionMode == nil {
-		return nil, false
-	}
-	return o.SslConnectionMode, true
-}
-
-// HasSslConnectionMode returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasSslConnectionMode() bool {
-	if o != nil && o.SslConnectionMode != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSslConnectionMode gets a reference to the given bool and assigns it to the SslConnectionMode field.
-func (o *TargetTypeDetailsInput) SetSslConnectionMode(v bool) {
-	o.SslConnectionMode = &v
-}
-
-// GetTenantUrl returns the TenantUrl field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetTenantUrl() string {
-	if o == nil || o.TenantUrl == nil {
-		var ret string
-		return ret
-	}
-	return *o.TenantUrl
-}
-
-// GetTenantUrlOk returns a tuple with the TenantUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetTenantUrlOk() (*string, bool) {
-	if o == nil || o.TenantUrl == nil {
-		return nil, false
-	}
-	return o.TenantUrl, true
-}
-
-// HasTenantUrl returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasTenantUrl() bool {
-	if o != nil && o.TenantUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetTenantUrl gets a reference to the given string and assigns it to the TenantUrl field.
-func (o *TargetTypeDetailsInput) SetTenantUrl(v string) {
-	o.TenantUrl = &v
-}
-
-// GetUrl returns the Url field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetUrl() string {
-	if o == nil || o.Url == nil {
-		var ret string
-		return ret
-	}
-	return *o.Url
-}
-
-// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetUrlOk() (*string, bool) {
-	if o == nil || o.Url == nil {
-		return nil, false
-	}
-	return o.Url, true
-}
-
-// HasUrl returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasUrl() bool {
-	if o != nil && o.Url != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUrl gets a reference to the given string and assigns it to the Url field.
-func (o *TargetTypeDetailsInput) SetUrl(v string) {
-	o.Url = &v
-}
-
-// GetUseGwCloudIdentity returns the UseGwCloudIdentity field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetUseGwCloudIdentity() bool {
-	if o == nil || o.UseGwCloudIdentity == nil {
-		var ret bool
-		return ret
-	}
-	return *o.UseGwCloudIdentity
-}
-
-// GetUseGwCloudIdentityOk returns a tuple with the UseGwCloudIdentity field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetUseGwCloudIdentityOk() (*bool, bool) {
-	if o == nil || o.UseGwCloudIdentity == nil {
-		return nil, false
-	}
-	return o.UseGwCloudIdentity, true
-}
-
-// HasUseGwCloudIdentity returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasUseGwCloudIdentity() bool {
-	if o != nil && o.UseGwCloudIdentity != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUseGwCloudIdentity gets a reference to the given bool and assigns it to the UseGwCloudIdentity field.
-func (o *TargetTypeDetailsInput) SetUseGwCloudIdentity(v bool) {
-	o.UseGwCloudIdentity = &v
-}
-
-// GetUserName returns the UserName field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetUserName() string {
-	if o == nil || o.UserName == nil {
-		var ret string
-		return ret
-	}
-	return *o.UserName
-}
-
-// GetUserNameOk returns a tuple with the UserName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetUserNameOk() (*string, bool) {
-	if o == nil || o.UserName == nil {
-		return nil, false
-	}
-	return o.UserName, true
-}
-
-// HasUserName returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasUserName() bool {
-	if o != nil && o.UserName != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUserName gets a reference to the given string and assigns it to the UserName field.
-func (o *TargetTypeDetailsInput) SetUserName(v string) {
-	o.UserName = &v
-}
-
-// GetUserPassword returns the UserPassword field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetUserPassword() string {
-	if o == nil || o.UserPassword == nil {
-		var ret string
-		return ret
-	}
-	return *o.UserPassword
-}
-
-// GetUserPasswordOk returns a tuple with the UserPassword field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetUserPasswordOk() (*string, bool) {
-	if o == nil || o.UserPassword == nil {
-		return nil, false
-	}
-	return o.UserPassword, true
-}
-
-// HasUserPassword returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasUserPassword() bool {
-	if o != nil && o.UserPassword != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUserPassword gets a reference to the given string and assigns it to the UserPassword field.
-func (o *TargetTypeDetailsInput) SetUserPassword(v string) {
-	o.UserPassword = &v
-}
-
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetUsername() string {
-	if o == nil || o.Username == nil {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasUsername() bool {
-	if o != nil && o.Username != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *TargetTypeDetailsInput) SetUsername(v string) {
-	o.Username = &v
-}
-
-// GetVenafiApiKey returns the VenafiApiKey field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetVenafiApiKey() string {
-	if o == nil || o.VenafiApiKey == nil {
-		var ret string
-		return ret
-	}
-	return *o.VenafiApiKey
-}
-
-// GetVenafiApiKeyOk returns a tuple with the VenafiApiKey field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetVenafiApiKeyOk() (*string, bool) {
-	if o == nil || o.VenafiApiKey == nil {
-		return nil, false
-	}
-	return o.VenafiApiKey, true
-}
-
-// HasVenafiApiKey returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasVenafiApiKey() bool {
-	if o != nil && o.VenafiApiKey != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetVenafiApiKey gets a reference to the given string and assigns it to the VenafiApiKey field.
-func (o *TargetTypeDetailsInput) SetVenafiApiKey(v string) {
-	o.VenafiApiKey = &v
-}
-
-// GetVenafiBaseUrl returns the VenafiBaseUrl field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetVenafiBaseUrl() string {
-	if o == nil || o.VenafiBaseUrl == nil {
-		var ret string
-		return ret
-	}
-	return *o.VenafiBaseUrl
-}
-
-// GetVenafiBaseUrlOk returns a tuple with the VenafiBaseUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetVenafiBaseUrlOk() (*string, bool) {
-	if o == nil || o.VenafiBaseUrl == nil {
-		return nil, false
-	}
-	return o.VenafiBaseUrl, true
-}
-
-// HasVenafiBaseUrl returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasVenafiBaseUrl() bool {
-	if o != nil && o.VenafiBaseUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetVenafiBaseUrl gets a reference to the given string and assigns it to the VenafiBaseUrl field.
-func (o *TargetTypeDetailsInput) SetVenafiBaseUrl(v string) {
-	o.VenafiBaseUrl = &v
-}
-
-// GetVenafiTppPassword returns the VenafiTppPassword field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetVenafiTppPassword() string {
-	if o == nil || o.VenafiTppPassword == nil {
-		var ret string
-		return ret
-	}
-	return *o.VenafiTppPassword
-}
-
-// GetVenafiTppPasswordOk returns a tuple with the VenafiTppPassword field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetVenafiTppPasswordOk() (*string, bool) {
-	if o == nil || o.VenafiTppPassword == nil {
-		return nil, false
-	}
-	return o.VenafiTppPassword, true
-}
-
-// HasVenafiTppPassword returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasVenafiTppPassword() bool {
-	if o != nil && o.VenafiTppPassword != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetVenafiTppPassword gets a reference to the given string and assigns it to the VenafiTppPassword field.
-func (o *TargetTypeDetailsInput) SetVenafiTppPassword(v string) {
-	o.VenafiTppPassword = &v
-}
-
-// GetVenafiTppUsername returns the VenafiTppUsername field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetVenafiTppUsername() string {
-	if o == nil || o.VenafiTppUsername == nil {
-		var ret string
-		return ret
-	}
-	return *o.VenafiTppUsername
-}
-
-// GetVenafiTppUsernameOk returns a tuple with the VenafiTppUsername field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetVenafiTppUsernameOk() (*string, bool) {
-	if o == nil || o.VenafiTppUsername == nil {
-		return nil, false
-	}
-	return o.VenafiTppUsername, true
-}
-
-// HasVenafiTppUsername returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasVenafiTppUsername() bool {
-	if o != nil && o.VenafiTppUsername != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetVenafiTppUsername gets a reference to the given string and assigns it to the VenafiTppUsername field.
-func (o *TargetTypeDetailsInput) SetVenafiTppUsername(v string) {
-	o.VenafiTppUsername = &v
-}
-
-// GetVenafiUseTpp returns the VenafiUseTpp field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetVenafiUseTpp() bool {
-	if o == nil || o.VenafiUseTpp == nil {
-		var ret bool
-		return ret
-	}
-	return *o.VenafiUseTpp
-}
-
-// GetVenafiUseTppOk returns a tuple with the VenafiUseTpp field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetVenafiUseTppOk() (*bool, bool) {
-	if o == nil || o.VenafiUseTpp == nil {
-		return nil, false
-	}
-	return o.VenafiUseTpp, true
-}
-
-// HasVenafiUseTpp returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasVenafiUseTpp() bool {
-	if o != nil && o.VenafiUseTpp != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetVenafiUseTpp gets a reference to the given bool and assigns it to the VenafiUseTpp field.
-func (o *TargetTypeDetailsInput) SetVenafiUseTpp(v bool) {
-	o.VenafiUseTpp = &v
-}
-
-// GetVenafiZone returns the VenafiZone field value if set, zero value otherwise.
-func (o *TargetTypeDetailsInput) GetVenafiZone() string {
-	if o == nil || o.VenafiZone == nil {
-		var ret string
-		return ret
-	}
-	return *o.VenafiZone
-}
-
-// GetVenafiZoneOk returns a tuple with the VenafiZone field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetTypeDetailsInput) GetVenafiZoneOk() (*string, bool) {
-	if o == nil || o.VenafiZone == nil {
-		return nil, false
-	}
-	return o.VenafiZone, true
-}
-
-// HasVenafiZone returns a boolean if a field has been set.
-func (o *TargetTypeDetailsInput) HasVenafiZone() bool {
-	if o != nil && o.VenafiZone != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetVenafiZone gets a reference to the given string and assigns it to the VenafiZone field.
-func (o *TargetTypeDetailsInput) SetVenafiZone(v string) {
-	o.VenafiZone = &v
+// SetZerosslTargetDetails gets a reference to the given ZeroSSLTargetDetails and assigns it to the ZerosslTargetDetails field.
+func (o *TargetTypeDetailsInput) SetZerosslTargetDetails(v ZeroSSLTargetDetails) {
+	o.ZerosslTargetDetails = &v
 }
 
 func (o TargetTypeDetailsInput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.AdministrativePort != nil {
-		toSerialize["administrative_port"] = o.AdministrativePort
+	if o.ArtifactoryTargetDetails != nil {
+		toSerialize["artifactory_target_details"] = o.ArtifactoryTargetDetails
 	}
-	if o.AppPrivateKey != nil {
-		toSerialize["app_private_key"] = o.AppPrivateKey
+	if o.AwsTargetDetails != nil {
+		toSerialize["aws_target_details"] = o.AwsTargetDetails
 	}
-	if o.ArtifactoryAdminApikey != nil {
-		toSerialize["artifactory_admin_apikey"] = o.ArtifactoryAdminApikey
+	if o.AzureTargetDetails != nil {
+		toSerialize["azure_target_details"] = o.AzureTargetDetails
 	}
-	if o.ArtifactoryAdminUsername != nil {
-		toSerialize["artifactory_admin_username"] = o.ArtifactoryAdminUsername
+	if o.ChefTargetDetails != nil {
+		toSerialize["chef_target_details"] = o.ChefTargetDetails
 	}
-	if o.ArtifactoryBaseUrl != nil {
-		toSerialize["artifactory_base_url"] = o.ArtifactoryBaseUrl
+	if o.CustomTargetDetails != nil {
+		toSerialize["custom_target_details"] = o.CustomTargetDetails
 	}
-	if o.AuthFlow != nil {
-		toSerialize["auth_flow"] = o.AuthFlow
+	if o.DbTargetDetails != nil {
+		toSerialize["db_target_details"] = o.DbTargetDetails
 	}
-	if o.AuthorizationPort != nil {
-		toSerialize["authorization_port"] = o.AuthorizationPort
+	if o.DockerhubTargetDetails != nil {
+		toSerialize["dockerhub_target_details"] = o.DockerhubTargetDetails
 	}
-	if o.AwsAccessKeyId != nil {
-		toSerialize["aws_access_key_id"] = o.AwsAccessKeyId
+	if o.EksTargetDetails != nil {
+		toSerialize["eks_target_details"] = o.EksTargetDetails
 	}
-	if o.AwsRegion != nil {
-		toSerialize["aws_region"] = o.AwsRegion
+	if o.GcpTargetDetails != nil {
+		toSerialize["gcp_target_details"] = o.GcpTargetDetails
 	}
-	if o.AwsSecretAccessKey != nil {
-		toSerialize["aws_secret_access_key"] = o.AwsSecretAccessKey
+	if o.GithubTargetDetails != nil {
+		toSerialize["github_target_details"] = o.GithubTargetDetails
 	}
-	if o.AwsSessionToken != nil {
-		toSerialize["aws_session_token"] = o.AwsSessionToken
+	if o.GkeTargetDetails != nil {
+		toSerialize["gke_target_details"] = o.GkeTargetDetails
 	}
-	if o.AzureClientId != nil {
-		toSerialize["azure_client_id"] = o.AzureClientId
+	if o.GlobalsignAtlasTargetDetails != nil {
+		toSerialize["globalsign_atlas_target_details"] = o.GlobalsignAtlasTargetDetails
 	}
-	if o.AzureClientSecret != nil {
-		toSerialize["azure_client_secret"] = o.AzureClientSecret
+	if o.GlobalsignTargetDetails != nil {
+		toSerialize["globalsign_target_details"] = o.GlobalsignTargetDetails
 	}
-	if o.AzureResourceGroupName != nil {
-		toSerialize["azure_resource_group_name"] = o.AzureResourceGroupName
+	if o.LdapTargetDetails != nil {
+		toSerialize["ldap_target_details"] = o.LdapTargetDetails
 	}
-	if o.AzureResourceName != nil {
-		toSerialize["azure_resource_name"] = o.AzureResourceName
+	if o.LinkedTargetDetails != nil {
+		toSerialize["linked_target_details"] = o.LinkedTargetDetails
 	}
-	if o.AzureSubscriptionId != nil {
-		toSerialize["azure_subscription_id"] = o.AzureSubscriptionId
+	if o.MongoDbTargetDetails != nil {
+		toSerialize["mongo_db_target_details"] = o.MongoDbTargetDetails
 	}
-	if o.AzureTenantId != nil {
-		toSerialize["azure_tenant_id"] = o.AzureTenantId
+	if o.NativeK8sTargetDetails != nil {
+		toSerialize["native_k8s_target_details"] = o.NativeK8sTargetDetails
 	}
-	if o.CaCertData != nil {
-		toSerialize["ca_cert_data"] = o.CaCertData
+	if o.PingTargetDetails != nil {
+		toSerialize["ping_target_details"] = o.PingTargetDetails
 	}
-	if o.CaCertName != nil {
-		toSerialize["ca_cert_name"] = o.CaCertName
+	if o.RabbitMqTargetDetails != nil {
+		toSerialize["rabbit_mq_target_details"] = o.RabbitMqTargetDetails
 	}
-	if o.ChefServerHostName != nil {
-		toSerialize["chef_server_host_name"] = o.ChefServerHostName
+	if o.SalesforceTargetDetails != nil {
+		toSerialize["salesforce_target_details"] = o.SalesforceTargetDetails
 	}
-	if o.ChefServerKey != nil {
-		toSerialize["chef_server_key"] = o.ChefServerKey
+	if o.SshTargetDetails != nil {
+		toSerialize["ssh_target_details"] = o.SshTargetDetails
 	}
-	if o.ChefServerPort != nil {
-		toSerialize["chef_server_port"] = o.ChefServerPort
+	if o.VenafiTargetDetails != nil {
+		toSerialize["venafi_target_details"] = o.VenafiTargetDetails
 	}
-	if o.ChefServerUrl != nil {
-		toSerialize["chef_server_url"] = o.ChefServerUrl
+	if o.WebTargetDetails != nil {
+		toSerialize["web_target_details"] = o.WebTargetDetails
 	}
-	if o.ChefServerUsername != nil {
-		toSerialize["chef_server_username"] = o.ChefServerUsername
+	if o.WindowsTargetDetails != nil {
+		toSerialize["windows_target_details"] = o.WindowsTargetDetails
 	}
-	if o.ChefSkipSsl != nil {
-		toSerialize["chef_skip_ssl"] = o.ChefSkipSsl
-	}
-	if o.ClientId != nil {
-		toSerialize["client_id"] = o.ClientId
-	}
-	if o.ClientSecret != nil {
-		toSerialize["client_secret"] = o.ClientSecret
-	}
-	if o.DbHostName != nil {
-		toSerialize["db_host_name"] = o.DbHostName
-	}
-	if o.DbName != nil {
-		toSerialize["db_name"] = o.DbName
-	}
-	if o.DbPort != nil {
-		toSerialize["db_port"] = o.DbPort
-	}
-	if o.DbPrivateKey != nil {
-		toSerialize["db_private_key"] = o.DbPrivateKey
-	}
-	if o.DbPrivateKeyPassphrase != nil {
-		toSerialize["db_private_key_passphrase"] = o.DbPrivateKeyPassphrase
-	}
-	if o.DbPwd != nil {
-		toSerialize["db_pwd"] = o.DbPwd
-	}
-	if o.DbServerCertificates != nil {
-		toSerialize["db_server_certificates"] = o.DbServerCertificates
-	}
-	if o.DbServerName != nil {
-		toSerialize["db_server_name"] = o.DbServerName
-	}
-	if o.DbUserName != nil {
-		toSerialize["db_user_name"] = o.DbUserName
-	}
-	if o.EksAccessKeyId != nil {
-		toSerialize["eks_access_key_id"] = o.EksAccessKeyId
-	}
-	if o.EksClusterCaCertificate != nil {
-		toSerialize["eks_cluster_ca_certificate"] = o.EksClusterCaCertificate
-	}
-	if o.EksClusterEndpoint != nil {
-		toSerialize["eks_cluster_endpoint"] = o.EksClusterEndpoint
-	}
-	if o.EksClusterName != nil {
-		toSerialize["eks_cluster_name"] = o.EksClusterName
-	}
-	if o.EksRegion != nil {
-		toSerialize["eks_region"] = o.EksRegion
-	}
-	if o.EksSecretAccessKey != nil {
-		toSerialize["eks_secret_access_key"] = o.EksSecretAccessKey
-	}
-	if o.GcpServiceAccountEmail != nil {
-		toSerialize["gcp_service_account_email"] = o.GcpServiceAccountEmail
-	}
-	if o.GcpServiceAccountKey != nil {
-		toSerialize["gcp_service_account_key"] = o.GcpServiceAccountKey
-	}
-	if o.GithubAppId != nil {
-		toSerialize["github_app_id"] = o.GithubAppId
-	}
-	if o.GithubAppPrivateKey != nil {
-		toSerialize["github_app_private_key"] = o.GithubAppPrivateKey
-	}
-	if o.GithubBaseUrl != nil {
-		toSerialize["github_base_url"] = o.GithubBaseUrl
-	}
-	if o.GkeClusterCaCertificate != nil {
-		toSerialize["gke_cluster_ca_certificate"] = o.GkeClusterCaCertificate
-	}
-	if o.GkeClusterEndpoint != nil {
-		toSerialize["gke_cluster_endpoint"] = o.GkeClusterEndpoint
-	}
-	if o.GkeClusterName != nil {
-		toSerialize["gke_cluster_name"] = o.GkeClusterName
-	}
-	if o.GkeServiceAccountKey != nil {
-		toSerialize["gke_service_account_key"] = o.GkeServiceAccountKey
-	}
-	if o.GkeServiceAccountName != nil {
-		toSerialize["gke_service_account_name"] = o.GkeServiceAccountName
-	}
-	if o.Host != nil {
-		toSerialize["host"] = o.Host
-	}
-	if o.ImplementationType != nil {
-		toSerialize["implementation_type"] = o.ImplementationType
-	}
-	if o.K8sBearerToken != nil {
-		toSerialize["k8s_bearer_token"] = o.K8sBearerToken
-	}
-	if o.K8sClusterCaCertificate != nil {
-		toSerialize["k8s_cluster_ca_certificate"] = o.K8sClusterCaCertificate
-	}
-	if o.K8sClusterEndpoint != nil {
-		toSerialize["k8s_cluster_endpoint"] = o.K8sClusterEndpoint
-	}
-	if o.LdapAudience != nil {
-		toSerialize["ldap_audience"] = o.LdapAudience
-	}
-	if o.LdapBindDn != nil {
-		toSerialize["ldap_bind_dn"] = o.LdapBindDn
-	}
-	if o.LdapBindPassword != nil {
-		toSerialize["ldap_bind_password"] = o.LdapBindPassword
-	}
-	if o.LdapCertificate != nil {
-		toSerialize["ldap_certificate"] = o.LdapCertificate
-	}
-	if o.LdapTokenExpiration != nil {
-		toSerialize["ldap_token_expiration"] = o.LdapTokenExpiration
-	}
-	if o.LdapUrl != nil {
-		toSerialize["ldap_url"] = o.LdapUrl
-	}
-	if o.MongodbAtlasApiPrivateKey != nil {
-		toSerialize["mongodb_atlas_api_private_key"] = o.MongodbAtlasApiPrivateKey
-	}
-	if o.MongodbAtlasApiPublicKey != nil {
-		toSerialize["mongodb_atlas_api_public_key"] = o.MongodbAtlasApiPublicKey
-	}
-	if o.MongodbAtlasProjectId != nil {
-		toSerialize["mongodb_atlas_project_id"] = o.MongodbAtlasProjectId
-	}
-	if o.MongodbDbName != nil {
-		toSerialize["mongodb_db_name"] = o.MongodbDbName
-	}
-	if o.MongodbDefaultAuthDb != nil {
-		toSerialize["mongodb_default_auth_db"] = o.MongodbDefaultAuthDb
-	}
-	if o.MongodbHostPort != nil {
-		toSerialize["mongodb_host_port"] = o.MongodbHostPort
-	}
-	if o.MongodbIsAtlas != nil {
-		toSerialize["mongodb_is_atlas"] = o.MongodbIsAtlas
-	}
-	if o.MongodbPassword != nil {
-		toSerialize["mongodb_password"] = o.MongodbPassword
-	}
-	if o.MongodbUriConnection != nil {
-		toSerialize["mongodb_uri_connection"] = o.MongodbUriConnection
-	}
-	if o.MongodbUriOptions != nil {
-		toSerialize["mongodb_uri_options"] = o.MongodbUriOptions
-	}
-	if o.MongodbUsername != nil {
-		toSerialize["mongodb_username"] = o.MongodbUsername
-	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
-	}
-	if o.Payload != nil {
-		toSerialize["payload"] = o.Payload
-	}
-	if o.PingUrl != nil {
-		toSerialize["ping_url"] = o.PingUrl
-	}
-	if o.Port != nil {
-		toSerialize["port"] = o.Port
-	}
-	if o.PrivateKey != nil {
-		toSerialize["private_key"] = o.PrivateKey
-	}
-	if o.PrivateKeyPassword != nil {
-		toSerialize["private_key_password"] = o.PrivateKeyPassword
-	}
-	if o.PrivilegedUser != nil {
-		toSerialize["privileged_user"] = o.PrivilegedUser
-	}
-	if o.RabbitmqServerPassword != nil {
-		toSerialize["rabbitmq_server_password"] = o.RabbitmqServerPassword
-	}
-	if o.RabbitmqServerUri != nil {
-		toSerialize["rabbitmq_server_uri"] = o.RabbitmqServerUri
-	}
-	if o.RabbitmqServerUser != nil {
-		toSerialize["rabbitmq_server_user"] = o.RabbitmqServerUser
-	}
-	if o.SecurityToken != nil {
-		toSerialize["security_token"] = o.SecurityToken
-	}
-	if o.SfAccount != nil {
-		toSerialize["sf_account"] = o.SfAccount
-	}
-	if o.SslConnectionCertificate != nil {
-		toSerialize["ssl_connection_certificate"] = o.SslConnectionCertificate
-	}
-	if o.SslConnectionMode != nil {
-		toSerialize["ssl_connection_mode"] = o.SslConnectionMode
-	}
-	if o.TenantUrl != nil {
-		toSerialize["tenant_url"] = o.TenantUrl
-	}
-	if o.Url != nil {
-		toSerialize["url"] = o.Url
-	}
-	if o.UseGwCloudIdentity != nil {
-		toSerialize["use_gw_cloud_identity"] = o.UseGwCloudIdentity
-	}
-	if o.UserName != nil {
-		toSerialize["user_name"] = o.UserName
-	}
-	if o.UserPassword != nil {
-		toSerialize["user_password"] = o.UserPassword
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
-	}
-	if o.VenafiApiKey != nil {
-		toSerialize["venafi_api_key"] = o.VenafiApiKey
-	}
-	if o.VenafiBaseUrl != nil {
-		toSerialize["venafi_base_url"] = o.VenafiBaseUrl
-	}
-	if o.VenafiTppPassword != nil {
-		toSerialize["venafi_tpp_password"] = o.VenafiTppPassword
-	}
-	if o.VenafiTppUsername != nil {
-		toSerialize["venafi_tpp_username"] = o.VenafiTppUsername
-	}
-	if o.VenafiUseTpp != nil {
-		toSerialize["venafi_use_tpp"] = o.VenafiUseTpp
-	}
-	if o.VenafiZone != nil {
-		toSerialize["venafi_zone"] = o.VenafiZone
+	if o.ZerosslTargetDetails != nil {
+		toSerialize["zerossl_target_details"] = o.ZerosslTargetDetails
 	}
 	return json.Marshal(toSerialize)
 }

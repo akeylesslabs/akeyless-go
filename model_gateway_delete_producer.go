@@ -19,7 +19,7 @@ import (
 type GatewayDeleteProducer struct {
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Producer name
+	// Dynamic secret name
 	Name string `json:"name"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
@@ -33,6 +33,8 @@ type GatewayDeleteProducer struct {
 // will change when the set of required properties is changed
 func NewGatewayDeleteProducer(name string, ) *GatewayDeleteProducer {
 	this := GatewayDeleteProducer{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -42,6 +44,8 @@ func NewGatewayDeleteProducer(name string, ) *GatewayDeleteProducer {
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayDeleteProducerWithDefaults() *GatewayDeleteProducer {
 	this := GatewayDeleteProducer{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

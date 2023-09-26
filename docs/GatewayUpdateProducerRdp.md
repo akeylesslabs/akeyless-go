@@ -5,23 +5,24 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AllowUserExtendSession** | Pointer to **int64** | AllowUserExtendSession | [optional] 
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
-**FixedUserOnly** | Pointer to **string** | Fixed user | [optional] [default to "false"]
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
-**Name** | **string** | Producer name | 
-**NewName** | Pointer to **string** | Producer name | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**FixedUserOnly** | Pointer to **string** | Allow access using externally (IdP) provided username [true/false] | [optional] [default to "false"]
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**Name** | **string** | Dynamic secret name | 
+**NewName** | Pointer to **string** | Dynamic secret name | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **RdpAdminName** | Pointer to **string** | RDP Admin Name | [optional] 
 **RdpAdminPwd** | Pointer to **string** | RDP Admin password | [optional] 
 **RdpHostName** | Pointer to **string** | Hostname | [optional] 
 **RdpHostPort** | Pointer to **string** | Port | [optional] [default to "22"]
 **RdpUserGroups** | Pointer to **string** | Groups | [optional] 
-**SecureAccessAllowExternalUser** | Pointer to **bool** |  | [optional] 
-**SecureAccessEnable** | Pointer to **string** |  | [optional] 
-**SecureAccessHost** | Pointer to **[]string** |  | [optional] 
-**SecureAccessRdpDomain** | Pointer to **string** |  | [optional] 
-**SecureAccessRdpUser** | Pointer to **string** |  | [optional] 
-**Tags** | Pointer to **[]string** | List of the tags attached to this secret | [optional] 
+**SecureAccessAllowExternalUser** | Pointer to **bool** | Allow providing external user for a domain users | [optional] [default to false]
+**SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
+**SecureAccessHost** | Pointer to **[]string** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
+**SecureAccessRdGatewayServer** | Pointer to **string** | RD Gateway server | [optional] 
+**SecureAccessRdpDomain** | Pointer to **string** | Required when the Dynamic Secret is used for a domain user | [optional] 
+**SecureAccessRdpUser** | Pointer to **string** | Override the RDP Domain username | [optional] 
+**Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -416,6 +417,31 @@ SetSecureAccessHost sets SecureAccessHost field to given value.
 `func (o *GatewayUpdateProducerRdp) HasSecureAccessHost() bool`
 
 HasSecureAccessHost returns a boolean if a field has been set.
+
+### GetSecureAccessRdGatewayServer
+
+`func (o *GatewayUpdateProducerRdp) GetSecureAccessRdGatewayServer() string`
+
+GetSecureAccessRdGatewayServer returns the SecureAccessRdGatewayServer field if non-nil, zero value otherwise.
+
+### GetSecureAccessRdGatewayServerOk
+
+`func (o *GatewayUpdateProducerRdp) GetSecureAccessRdGatewayServerOk() (*string, bool)`
+
+GetSecureAccessRdGatewayServerOk returns a tuple with the SecureAccessRdGatewayServer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessRdGatewayServer
+
+`func (o *GatewayUpdateProducerRdp) SetSecureAccessRdGatewayServer(v string)`
+
+SetSecureAccessRdGatewayServer sets SecureAccessRdGatewayServer field to given value.
+
+### HasSecureAccessRdGatewayServer
+
+`func (o *GatewayUpdateProducerRdp) HasSecureAccessRdGatewayServer() bool`
+
+HasSecureAccessRdGatewayServer returns a boolean if a field has been set.
 
 ### GetSecureAccessRdpDomain
 

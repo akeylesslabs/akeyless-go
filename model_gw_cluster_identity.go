@@ -22,7 +22,9 @@ type GwClusterIdentity struct {
 	ClusterName *string `json:"cluster_name,omitempty"`
 	ClusterUrl *string `json:"cluster_url,omitempty"`
 	CurrentGw *bool `json:"current_gw,omitempty"`
+	// Deprecated - use CustomerFragments instead
 	CustomerFragmentIds *[]string `json:"customer_fragment_ids,omitempty"`
+	CustomerFragments *[]CfInfo `json:"customer_fragments,omitempty"`
 	DefaultProtectionKeyId *int64 `json:"default_protection_key_id,omitempty"`
 	DefaultSecretLocation *string `json:"default_secret_location,omitempty"`
 	DisplayName *string `json:"display_name,omitempty"`
@@ -240,6 +242,38 @@ func (o *GwClusterIdentity) SetCustomerFragmentIds(v []string) {
 	o.CustomerFragmentIds = &v
 }
 
+// GetCustomerFragments returns the CustomerFragments field value if set, zero value otherwise.
+func (o *GwClusterIdentity) GetCustomerFragments() []CfInfo {
+	if o == nil || o.CustomerFragments == nil {
+		var ret []CfInfo
+		return ret
+	}
+	return *o.CustomerFragments
+}
+
+// GetCustomerFragmentsOk returns a tuple with the CustomerFragments field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GwClusterIdentity) GetCustomerFragmentsOk() (*[]CfInfo, bool) {
+	if o == nil || o.CustomerFragments == nil {
+		return nil, false
+	}
+	return o.CustomerFragments, true
+}
+
+// HasCustomerFragments returns a boolean if a field has been set.
+func (o *GwClusterIdentity) HasCustomerFragments() bool {
+	if o != nil && o.CustomerFragments != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomerFragments gets a reference to the given []CfInfo and assigns it to the CustomerFragments field.
+func (o *GwClusterIdentity) SetCustomerFragments(v []CfInfo) {
+	o.CustomerFragments = &v
+}
+
 // GetDefaultProtectionKeyId returns the DefaultProtectionKeyId field value if set, zero value otherwise.
 func (o *GwClusterIdentity) GetDefaultProtectionKeyId() int64 {
 	if o == nil || o.DefaultProtectionKeyId == nil {
@@ -451,6 +485,9 @@ func (o GwClusterIdentity) MarshalJSON() ([]byte, error) {
 	}
 	if o.CustomerFragmentIds != nil {
 		toSerialize["customer_fragment_ids"] = o.CustomerFragmentIds
+	}
+	if o.CustomerFragments != nil {
+		toSerialize["customer_fragments"] = o.CustomerFragments
 	}
 	if o.DefaultProtectionKeyId != nil {
 		toSerialize["default_protection_key_id"] = o.DefaultProtectionKeyId

@@ -21,23 +21,25 @@ type GatewayUpdateProducerLdap struct {
 	BindDn *string `json:"bind-dn,omitempty"`
 	// Bind DN Password
 	BindDnPassword *string `json:"bind-dn-password,omitempty"`
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
-	// Fixed user
+	// Externally provided username [true/false]
 	ExternalUsername *string `json:"external-username,omitempty"`
+	// Group DN which the temporary user should be added
+	GroupDn *string `json:"group-dn,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// CA Certificate File Content
 	LdapCaCert *string `json:"ldap-ca-cert,omitempty"`
 	// LDAP Server URL
 	LdapUrl *string `json:"ldap-url,omitempty"`
-	// Producer name
+	// Dynamic secret name
 	Name string `json:"name"`
-	// Producer name
+	// Dynamic secret name
 	NewName *string `json:"new-name,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
-	// List of the tags attached to this secret
+	// Add tags attached to this object
 	Tags *[]string `json:"tags,omitempty"`
 	// Target name
 	TargetName *string `json:"target-name,omitempty"`
@@ -63,6 +65,8 @@ func NewGatewayUpdateProducerLdap(name string, ) *GatewayUpdateProducerLdap {
 	this := GatewayUpdateProducerLdap{}
 	var externalUsername string = "false"
 	this.ExternalUsername = &externalUsername
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
@@ -76,6 +80,8 @@ func NewGatewayUpdateProducerLdapWithDefaults() *GatewayUpdateProducerLdap {
 	this := GatewayUpdateProducerLdap{}
 	var externalUsername string = "false"
 	this.ExternalUsername = &externalUsername
+	var json bool = false
+	this.Json = &json
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
@@ -207,6 +213,38 @@ func (o *GatewayUpdateProducerLdap) HasExternalUsername() bool {
 // SetExternalUsername gets a reference to the given string and assigns it to the ExternalUsername field.
 func (o *GatewayUpdateProducerLdap) SetExternalUsername(v string) {
 	o.ExternalUsername = &v
+}
+
+// GetGroupDn returns the GroupDn field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerLdap) GetGroupDn() string {
+	if o == nil || o.GroupDn == nil {
+		var ret string
+		return ret
+	}
+	return *o.GroupDn
+}
+
+// GetGroupDnOk returns a tuple with the GroupDn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerLdap) GetGroupDnOk() (*string, bool) {
+	if o == nil || o.GroupDn == nil {
+		return nil, false
+	}
+	return o.GroupDn, true
+}
+
+// HasGroupDn returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerLdap) HasGroupDn() bool {
+	if o != nil && o.GroupDn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGroupDn gets a reference to the given string and assigns it to the GroupDn field.
+func (o *GatewayUpdateProducerLdap) SetGroupDn(v string) {
+	o.GroupDn = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -662,6 +700,9 @@ func (o GatewayUpdateProducerLdap) MarshalJSON() ([]byte, error) {
 	}
 	if o.ExternalUsername != nil {
 		toSerialize["external-username"] = o.ExternalUsername
+	}
+	if o.GroupDn != nil {
+		toSerialize["group-dn"] = o.GroupDn
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json

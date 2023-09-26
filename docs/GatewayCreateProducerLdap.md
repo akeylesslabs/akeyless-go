@@ -6,14 +6,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BindDn** | Pointer to **string** | Bind DN | [optional] 
 **BindDnPassword** | Pointer to **string** | Bind DN Password | [optional] 
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
-**ExternalUsername** | Pointer to **string** | Fixed user | [optional] [default to "false"]
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**ExternalUsername** | Pointer to **string** | Externally provided username [true/false] | [optional] [default to "false"]
+**GroupDn** | Pointer to **string** | Group DN which the temporary user should be added | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **LdapCaCert** | Pointer to **string** | CA Certificate File Content | [optional] 
 **LdapUrl** | Pointer to **string** | LDAP Server URL | [optional] 
-**Name** | **string** | Producer name | 
+**Name** | **string** | Dynamic secret name | 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
-**Tags** | Pointer to **[]string** | List of the tags attached to this secret | [optional] 
+**Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **TokenExpiration** | Pointer to **string** | Token expiration | [optional] 
@@ -140,6 +141,31 @@ SetExternalUsername sets ExternalUsername field to given value.
 `func (o *GatewayCreateProducerLdap) HasExternalUsername() bool`
 
 HasExternalUsername returns a boolean if a field has been set.
+
+### GetGroupDn
+
+`func (o *GatewayCreateProducerLdap) GetGroupDn() string`
+
+GetGroupDn returns the GroupDn field if non-nil, zero value otherwise.
+
+### GetGroupDnOk
+
+`func (o *GatewayCreateProducerLdap) GetGroupDnOk() (*string, bool)`
+
+GetGroupDnOk returns a tuple with the GroupDn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroupDn
+
+`func (o *GatewayCreateProducerLdap) SetGroupDn(v string)`
+
+SetGroupDn sets GroupDn field to given value.
+
+### HasGroupDn
+
+`func (o *GatewayCreateProducerLdap) HasGroupDn() bool`
+
+HasGroupDn returns a boolean if a field has been set.
 
 ### GetJson
 

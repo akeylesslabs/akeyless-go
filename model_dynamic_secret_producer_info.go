@@ -19,6 +19,10 @@ import (
 type DynamicSecretProducerInfo struct {
 	FailureMessage *string `json:"failure_message,omitempty"`
 	GwClusterId *int64 `json:"gw_cluster_id,omitempty"`
+	// Relevant only for generic k8s producer
+	K8sAllowedNamespaces *string `json:"k8s_allowed_namespaces,omitempty"`
+	// Relevant only for generic k8s producer
+	K8sDynamicMode *bool `json:"k8s_dynamic_mode,omitempty"`
 	ProducerLastKeepAlive *string `json:"producer_last_keep_alive,omitempty"`
 	ProducerMetadata *string `json:"producer_metadata,omitempty"`
 	// RotationStatus defines types of rotation Status
@@ -105,6 +109,70 @@ func (o *DynamicSecretProducerInfo) HasGwClusterId() bool {
 // SetGwClusterId gets a reference to the given int64 and assigns it to the GwClusterId field.
 func (o *DynamicSecretProducerInfo) SetGwClusterId(v int64) {
 	o.GwClusterId = &v
+}
+
+// GetK8sAllowedNamespaces returns the K8sAllowedNamespaces field value if set, zero value otherwise.
+func (o *DynamicSecretProducerInfo) GetK8sAllowedNamespaces() string {
+	if o == nil || o.K8sAllowedNamespaces == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sAllowedNamespaces
+}
+
+// GetK8sAllowedNamespacesOk returns a tuple with the K8sAllowedNamespaces field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretProducerInfo) GetK8sAllowedNamespacesOk() (*string, bool) {
+	if o == nil || o.K8sAllowedNamespaces == nil {
+		return nil, false
+	}
+	return o.K8sAllowedNamespaces, true
+}
+
+// HasK8sAllowedNamespaces returns a boolean if a field has been set.
+func (o *DynamicSecretProducerInfo) HasK8sAllowedNamespaces() bool {
+	if o != nil && o.K8sAllowedNamespaces != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sAllowedNamespaces gets a reference to the given string and assigns it to the K8sAllowedNamespaces field.
+func (o *DynamicSecretProducerInfo) SetK8sAllowedNamespaces(v string) {
+	o.K8sAllowedNamespaces = &v
+}
+
+// GetK8sDynamicMode returns the K8sDynamicMode field value if set, zero value otherwise.
+func (o *DynamicSecretProducerInfo) GetK8sDynamicMode() bool {
+	if o == nil || o.K8sDynamicMode == nil {
+		var ret bool
+		return ret
+	}
+	return *o.K8sDynamicMode
+}
+
+// GetK8sDynamicModeOk returns a tuple with the K8sDynamicMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretProducerInfo) GetK8sDynamicModeOk() (*bool, bool) {
+	if o == nil || o.K8sDynamicMode == nil {
+		return nil, false
+	}
+	return o.K8sDynamicMode, true
+}
+
+// HasK8sDynamicMode returns a boolean if a field has been set.
+func (o *DynamicSecretProducerInfo) HasK8sDynamicMode() bool {
+	if o != nil && o.K8sDynamicMode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sDynamicMode gets a reference to the given bool and assigns it to the K8sDynamicMode field.
+func (o *DynamicSecretProducerInfo) SetK8sDynamicMode(v bool) {
+	o.K8sDynamicMode = &v
 }
 
 // GetProducerLastKeepAlive returns the ProducerLastKeepAlive field value if set, zero value otherwise.
@@ -242,6 +310,12 @@ func (o DynamicSecretProducerInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.GwClusterId != nil {
 		toSerialize["gw_cluster_id"] = o.GwClusterId
+	}
+	if o.K8sAllowedNamespaces != nil {
+		toSerialize["k8s_allowed_namespaces"] = o.K8sAllowedNamespaces
+	}
+	if o.K8sDynamicMode != nil {
+		toSerialize["k8s_dynamic_mode"] = o.K8sDynamicMode
 	}
 	if o.ProducerLastKeepAlive != nil {
 		toSerialize["producer_last_keep_alive"] = o.ProducerLastKeepAlive

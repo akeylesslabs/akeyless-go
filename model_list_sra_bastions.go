@@ -17,6 +17,7 @@ import (
 
 // ListSRABastions struct for ListSRABastions
 type ListSRABastions struct {
+	// Filter the response to show only bastions allowed URLs
 	AllowedUrlsOnly *bool `json:"allowed-urls-only,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -32,6 +33,10 @@ type ListSRABastions struct {
 // will change when the set of required properties is changed
 func NewListSRABastions() *ListSRABastions {
 	this := ListSRABastions{}
+	var allowedUrlsOnly bool = false
+	this.AllowedUrlsOnly = &allowedUrlsOnly
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -40,6 +45,10 @@ func NewListSRABastions() *ListSRABastions {
 // but it doesn't guarantee that properties required by API are set
 func NewListSRABastionsWithDefaults() *ListSRABastions {
 	this := ListSRABastions{}
+	var allowedUrlsOnly bool = false
+	this.AllowedUrlsOnly = &allowedUrlsOnly
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

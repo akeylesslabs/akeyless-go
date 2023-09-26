@@ -4,27 +4,33 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**K8sAllowedNamespaces** | Pointer to **string** | Comma-separated list of allowed K8S namespaces for the generated ServiceAccount (relevant only for k8s-service-account-type&#x3D;dynamic) | [optional] 
 **K8sClusterCaCert** | Pointer to **string** | K8S cluster CA certificate | [optional] 
 **K8sClusterEndpoint** | Pointer to **string** | K8S cluster URL endpoint | [optional] 
 **K8sClusterToken** | Pointer to **string** | K8S cluster Bearer token | [optional] 
-**K8sNamespace** | Pointer to **string** | K8S namespace | [optional] 
-**K8sServiceAccount** | Pointer to **string** | K8S service account | [optional] 
-**Name** | **string** | Producer name | 
+**K8sNamespace** | Pointer to **string** | K8S Namespace where the ServiceAccount exists. | [optional] 
+**K8sPredefinedRoleName** | Pointer to **string** | The pre-existing Role or ClusterRole name to bind the generated ServiceAccount to (relevant only for k8s-service-account-type&#x3D;dynamic) | [optional] 
+**K8sPredefinedRoleType** | Pointer to **string** | Specifies the type of the pre-existing K8S role [Role, ClusterRole] (relevant only for k8s-service-account-type&#x3D;dynamic) | [optional] 
+**K8sRolebindingYamlDef** | Pointer to **string** | Path to yaml file that contains definitions of K8S role and role binding (relevant only for k8s-service-account-type&#x3D;dynamic) | [optional] 
+**K8sServiceAccount** | Pointer to **string** | K8S ServiceAccount to extract token from. | [optional] 
+**K8sServiceAccountType** | Pointer to **string** | K8S ServiceAccount type [fixed, dynamic]. | [optional] 
+**Name** | **string** | Dynamic secret name | 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
-**SecureAccessAllowPortForwading** | Pointer to **bool** |  | [optional] 
-**SecureAccessBastionIssuer** | Pointer to **string** |  | [optional] 
-**SecureAccessClusterEndpoint** | Pointer to **string** |  | [optional] 
-**SecureAccessDashboardUrl** | Pointer to **string** |  | [optional] 
-**SecureAccessEnable** | Pointer to **string** |  | [optional] 
-**SecureAccessWeb** | Pointer to **bool** |  | [optional] 
-**SecureAccessWebBrowsing** | Pointer to **bool** |  | [optional] 
-**SecureAccessWebProxy** | Pointer to **bool** |  | [optional] 
-**Tags** | Pointer to **[]string** | List of the tags attached to this secret | [optional] 
+**SecureAccessAllowPortForwading** | Pointer to **bool** | Enable Port forwarding while using CLI access | [optional] 
+**SecureAccessBastionIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] 
+**SecureAccessClusterEndpoint** | Pointer to **string** | The K8s cluster endpoint URL | [optional] 
+**SecureAccessDashboardUrl** | Pointer to **string** | The K8s dashboard url | [optional] 
+**SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
+**SecureAccessWeb** | Pointer to **bool** | Enable Web Secure Remote Access | [optional] [default to false]
+**SecureAccessWebBrowsing** | Pointer to **bool** | Secure browser via Akeyless Web Access Bastion | [optional] [default to false]
+**SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless Web Access Bastion | [optional] [default to false]
+**Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**UseGwServiceAccount** | Pointer to **bool** | Use the GW&#39;s service account | [optional] 
 **UserTtl** | Pointer to **string** | User TTL | [optional] [default to "60m"]
 
 ## Methods
@@ -95,6 +101,31 @@ SetJson sets Json field to given value.
 `func (o *GatewayCreateProducerNativeK8S) HasJson() bool`
 
 HasJson returns a boolean if a field has been set.
+
+### GetK8sAllowedNamespaces
+
+`func (o *GatewayCreateProducerNativeK8S) GetK8sAllowedNamespaces() string`
+
+GetK8sAllowedNamespaces returns the K8sAllowedNamespaces field if non-nil, zero value otherwise.
+
+### GetK8sAllowedNamespacesOk
+
+`func (o *GatewayCreateProducerNativeK8S) GetK8sAllowedNamespacesOk() (*string, bool)`
+
+GetK8sAllowedNamespacesOk returns a tuple with the K8sAllowedNamespaces field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sAllowedNamespaces
+
+`func (o *GatewayCreateProducerNativeK8S) SetK8sAllowedNamespaces(v string)`
+
+SetK8sAllowedNamespaces sets K8sAllowedNamespaces field to given value.
+
+### HasK8sAllowedNamespaces
+
+`func (o *GatewayCreateProducerNativeK8S) HasK8sAllowedNamespaces() bool`
+
+HasK8sAllowedNamespaces returns a boolean if a field has been set.
 
 ### GetK8sClusterCaCert
 
@@ -196,6 +227,81 @@ SetK8sNamespace sets K8sNamespace field to given value.
 
 HasK8sNamespace returns a boolean if a field has been set.
 
+### GetK8sPredefinedRoleName
+
+`func (o *GatewayCreateProducerNativeK8S) GetK8sPredefinedRoleName() string`
+
+GetK8sPredefinedRoleName returns the K8sPredefinedRoleName field if non-nil, zero value otherwise.
+
+### GetK8sPredefinedRoleNameOk
+
+`func (o *GatewayCreateProducerNativeK8S) GetK8sPredefinedRoleNameOk() (*string, bool)`
+
+GetK8sPredefinedRoleNameOk returns a tuple with the K8sPredefinedRoleName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sPredefinedRoleName
+
+`func (o *GatewayCreateProducerNativeK8S) SetK8sPredefinedRoleName(v string)`
+
+SetK8sPredefinedRoleName sets K8sPredefinedRoleName field to given value.
+
+### HasK8sPredefinedRoleName
+
+`func (o *GatewayCreateProducerNativeK8S) HasK8sPredefinedRoleName() bool`
+
+HasK8sPredefinedRoleName returns a boolean if a field has been set.
+
+### GetK8sPredefinedRoleType
+
+`func (o *GatewayCreateProducerNativeK8S) GetK8sPredefinedRoleType() string`
+
+GetK8sPredefinedRoleType returns the K8sPredefinedRoleType field if non-nil, zero value otherwise.
+
+### GetK8sPredefinedRoleTypeOk
+
+`func (o *GatewayCreateProducerNativeK8S) GetK8sPredefinedRoleTypeOk() (*string, bool)`
+
+GetK8sPredefinedRoleTypeOk returns a tuple with the K8sPredefinedRoleType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sPredefinedRoleType
+
+`func (o *GatewayCreateProducerNativeK8S) SetK8sPredefinedRoleType(v string)`
+
+SetK8sPredefinedRoleType sets K8sPredefinedRoleType field to given value.
+
+### HasK8sPredefinedRoleType
+
+`func (o *GatewayCreateProducerNativeK8S) HasK8sPredefinedRoleType() bool`
+
+HasK8sPredefinedRoleType returns a boolean if a field has been set.
+
+### GetK8sRolebindingYamlDef
+
+`func (o *GatewayCreateProducerNativeK8S) GetK8sRolebindingYamlDef() string`
+
+GetK8sRolebindingYamlDef returns the K8sRolebindingYamlDef field if non-nil, zero value otherwise.
+
+### GetK8sRolebindingYamlDefOk
+
+`func (o *GatewayCreateProducerNativeK8S) GetK8sRolebindingYamlDefOk() (*string, bool)`
+
+GetK8sRolebindingYamlDefOk returns a tuple with the K8sRolebindingYamlDef field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sRolebindingYamlDef
+
+`func (o *GatewayCreateProducerNativeK8S) SetK8sRolebindingYamlDef(v string)`
+
+SetK8sRolebindingYamlDef sets K8sRolebindingYamlDef field to given value.
+
+### HasK8sRolebindingYamlDef
+
+`func (o *GatewayCreateProducerNativeK8S) HasK8sRolebindingYamlDef() bool`
+
+HasK8sRolebindingYamlDef returns a boolean if a field has been set.
+
 ### GetK8sServiceAccount
 
 `func (o *GatewayCreateProducerNativeK8S) GetK8sServiceAccount() string`
@@ -220,6 +326,31 @@ SetK8sServiceAccount sets K8sServiceAccount field to given value.
 `func (o *GatewayCreateProducerNativeK8S) HasK8sServiceAccount() bool`
 
 HasK8sServiceAccount returns a boolean if a field has been set.
+
+### GetK8sServiceAccountType
+
+`func (o *GatewayCreateProducerNativeK8S) GetK8sServiceAccountType() string`
+
+GetK8sServiceAccountType returns the K8sServiceAccountType field if non-nil, zero value otherwise.
+
+### GetK8sServiceAccountTypeOk
+
+`func (o *GatewayCreateProducerNativeK8S) GetK8sServiceAccountTypeOk() (*string, bool)`
+
+GetK8sServiceAccountTypeOk returns a tuple with the K8sServiceAccountType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sServiceAccountType
+
+`func (o *GatewayCreateProducerNativeK8S) SetK8sServiceAccountType(v string)`
+
+SetK8sServiceAccountType sets K8sServiceAccountType field to given value.
+
+### HasK8sServiceAccountType
+
+`func (o *GatewayCreateProducerNativeK8S) HasK8sServiceAccountType() bool`
+
+HasK8sServiceAccountType returns a boolean if a field has been set.
 
 ### GetName
 
@@ -565,6 +696,31 @@ SetUidToken sets UidToken field to given value.
 `func (o *GatewayCreateProducerNativeK8S) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetUseGwServiceAccount
+
+`func (o *GatewayCreateProducerNativeK8S) GetUseGwServiceAccount() bool`
+
+GetUseGwServiceAccount returns the UseGwServiceAccount field if non-nil, zero value otherwise.
+
+### GetUseGwServiceAccountOk
+
+`func (o *GatewayCreateProducerNativeK8S) GetUseGwServiceAccountOk() (*bool, bool)`
+
+GetUseGwServiceAccountOk returns a tuple with the UseGwServiceAccount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseGwServiceAccount
+
+`func (o *GatewayCreateProducerNativeK8S) SetUseGwServiceAccount(v bool)`
+
+SetUseGwServiceAccount sets UseGwServiceAccount field to given value.
+
+### HasUseGwServiceAccount
+
+`func (o *GatewayCreateProducerNativeK8S) HasUseGwServiceAccount() bool`
+
+HasUseGwServiceAccount returns a boolean if a field has been set.
 
 ### GetUserTtl
 
