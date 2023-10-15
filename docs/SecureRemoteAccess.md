@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **IsWeb** | Pointer to **bool** |  | [optional] 
 **Isolated** | Pointer to **bool** |  | [optional] 
 **Native** | Pointer to **bool** |  | [optional] 
+**RdGatewayServer** | Pointer to **string** |  | [optional] 
 **RdpUser** | Pointer to **string** |  | [optional] 
 **Region** | Pointer to **string** |  | [optional] 
 **RotateAfterDisconnect** | Pointer to **bool** |  | [optional] 
@@ -501,6 +502,31 @@ SetNative sets Native field to given value.
 `func (o *SecureRemoteAccess) HasNative() bool`
 
 HasNative returns a boolean if a field has been set.
+
+### GetRdGatewayServer
+
+`func (o *SecureRemoteAccess) GetRdGatewayServer() string`
+
+GetRdGatewayServer returns the RdGatewayServer field if non-nil, zero value otherwise.
+
+### GetRdGatewayServerOk
+
+`func (o *SecureRemoteAccess) GetRdGatewayServerOk() (*string, bool)`
+
+GetRdGatewayServerOk returns a tuple with the RdGatewayServer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRdGatewayServer
+
+`func (o *SecureRemoteAccess) SetRdGatewayServer(v string)`
+
+SetRdGatewayServer sets RdGatewayServer field to given value.
+
+### HasRdGatewayServer
+
+`func (o *SecureRemoteAccess) HasRdGatewayServer() bool`
+
+HasRdGatewayServer returns a boolean if a field has been set.
 
 ### GetRdpUser
 

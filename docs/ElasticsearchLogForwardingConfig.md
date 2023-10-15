@@ -7,10 +7,12 @@ Name | Type | Description | Notes
 **ElasticsearchApiKey** | Pointer to **string** |  | [optional] 
 **ElasticsearchAuthType** | Pointer to **string** |  | [optional] 
 **ElasticsearchCloudId** | Pointer to **string** |  | [optional] 
+**ElasticsearchEnableTls** | Pointer to **bool** |  | [optional] 
 **ElasticsearchIndex** | Pointer to **string** |  | [optional] 
 **ElasticsearchNodes** | Pointer to **string** |  | [optional] 
 **ElasticsearchPassword** | Pointer to **string** |  | [optional] 
 **ElasticsearchServerType** | Pointer to **string** |  | [optional] 
+**ElasticsearchTlsCertificate** | Pointer to **string** |  | [optional] 
 **ElasticsearchUserName** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -106,6 +108,31 @@ SetElasticsearchCloudId sets ElasticsearchCloudId field to given value.
 `func (o *ElasticsearchLogForwardingConfig) HasElasticsearchCloudId() bool`
 
 HasElasticsearchCloudId returns a boolean if a field has been set.
+
+### GetElasticsearchEnableTls
+
+`func (o *ElasticsearchLogForwardingConfig) GetElasticsearchEnableTls() bool`
+
+GetElasticsearchEnableTls returns the ElasticsearchEnableTls field if non-nil, zero value otherwise.
+
+### GetElasticsearchEnableTlsOk
+
+`func (o *ElasticsearchLogForwardingConfig) GetElasticsearchEnableTlsOk() (*bool, bool)`
+
+GetElasticsearchEnableTlsOk returns a tuple with the ElasticsearchEnableTls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetElasticsearchEnableTls
+
+`func (o *ElasticsearchLogForwardingConfig) SetElasticsearchEnableTls(v bool)`
+
+SetElasticsearchEnableTls sets ElasticsearchEnableTls field to given value.
+
+### HasElasticsearchEnableTls
+
+`func (o *ElasticsearchLogForwardingConfig) HasElasticsearchEnableTls() bool`
+
+HasElasticsearchEnableTls returns a boolean if a field has been set.
 
 ### GetElasticsearchIndex
 
@@ -206,6 +233,31 @@ SetElasticsearchServerType sets ElasticsearchServerType field to given value.
 `func (o *ElasticsearchLogForwardingConfig) HasElasticsearchServerType() bool`
 
 HasElasticsearchServerType returns a boolean if a field has been set.
+
+### GetElasticsearchTlsCertificate
+
+`func (o *ElasticsearchLogForwardingConfig) GetElasticsearchTlsCertificate() string`
+
+GetElasticsearchTlsCertificate returns the ElasticsearchTlsCertificate field if non-nil, zero value otherwise.
+
+### GetElasticsearchTlsCertificateOk
+
+`func (o *ElasticsearchLogForwardingConfig) GetElasticsearchTlsCertificateOk() (*string, bool)`
+
+GetElasticsearchTlsCertificateOk returns a tuple with the ElasticsearchTlsCertificate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetElasticsearchTlsCertificate
+
+`func (o *ElasticsearchLogForwardingConfig) SetElasticsearchTlsCertificate(v string)`
+
+SetElasticsearchTlsCertificate sets ElasticsearchTlsCertificate field to given value.
+
+### HasElasticsearchTlsCertificate
+
+`func (o *ElasticsearchLogForwardingConfig) HasElasticsearchTlsCertificate() bool`
+
+HasElasticsearchTlsCertificate returns a boolean if a field has been set.
 
 ### GetElasticsearchUserName
 

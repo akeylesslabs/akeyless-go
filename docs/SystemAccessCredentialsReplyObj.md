@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **AuthCreds** | Pointer to **string** | Temporary credentials for accessing Auth | [optional] 
 **Expiry** | Pointer to **int64** | Credentials expiration date | [optional] 
 **KfmCreds** | Pointer to **string** | Temporary credentials for accessing the KFMs instances | [optional] 
+**RequiredMfa** | Pointer to **string** |  | [optional] 
 **Token** | Pointer to **string** | Credentials tmp token | [optional] 
 **UamCreds** | Pointer to **string** | Temporary credentials for accessing the UAM service | [optional] 
 
@@ -103,6 +104,31 @@ SetKfmCreds sets KfmCreds field to given value.
 `func (o *SystemAccessCredentialsReplyObj) HasKfmCreds() bool`
 
 HasKfmCreds returns a boolean if a field has been set.
+
+### GetRequiredMfa
+
+`func (o *SystemAccessCredentialsReplyObj) GetRequiredMfa() string`
+
+GetRequiredMfa returns the RequiredMfa field if non-nil, zero value otherwise.
+
+### GetRequiredMfaOk
+
+`func (o *SystemAccessCredentialsReplyObj) GetRequiredMfaOk() (*string, bool)`
+
+GetRequiredMfaOk returns a tuple with the RequiredMfa field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequiredMfa
+
+`func (o *SystemAccessCredentialsReplyObj) SetRequiredMfa(v string)`
+
+SetRequiredMfa sets RequiredMfa field to given value.
+
+### HasRequiredMfa
+
+`func (o *SystemAccessCredentialsReplyObj) HasRequiredMfa() bool`
+
+HasRequiredMfa returns a boolean if a field has been set.
 
 ### GetToken
 

@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **KeyState** | Pointer to **string** | ItemState defines the different states an Item can be in | [optional] 
 **KeyType** | Pointer to **string** |  | [optional] 
 **LastError** | Pointer to **string** |  | [optional] 
+**PublicKey** | Pointer to **string** |  | [optional] 
 **TargetAliasHelper** | Pointer to **string** |  | [optional] 
 **TargetTypes** | Pointer to **[]string** |  | [optional] 
 **Targets** | Pointer to [**[]ClassicKeyTargetInfo**](ClassicKeyTargetInfo.md) |  | [optional] 
@@ -234,6 +235,31 @@ SetLastError sets LastError field to given value.
 `func (o *ClassicKeyDetailsInfo) HasLastError() bool`
 
 HasLastError returns a boolean if a field has been set.
+
+### GetPublicKey
+
+`func (o *ClassicKeyDetailsInfo) GetPublicKey() string`
+
+GetPublicKey returns the PublicKey field if non-nil, zero value otherwise.
+
+### GetPublicKeyOk
+
+`func (o *ClassicKeyDetailsInfo) GetPublicKeyOk() (*string, bool)`
+
+GetPublicKeyOk returns a tuple with the PublicKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPublicKey
+
+`func (o *ClassicKeyDetailsInfo) SetPublicKey(v string)`
+
+SetPublicKey sets PublicKey field to given value.
+
+### HasPublicKey
+
+`func (o *ClassicKeyDetailsInfo) HasPublicKey() bool`
+
+HasPublicKey returns a boolean if a field has been set.
 
 ### GetTargetAliasHelper
 

@@ -19,8 +19,10 @@ import (
 // Item struct for Item
 type Item struct {
 	AccessDate *time.Time `json:"access_date,omitempty"`
+	AccessDateDisplay *string `json:"access_date_display,omitempty"`
 	AccessRequestStatus *string `json:"access_request_status,omitempty"`
 	AutoRotate *bool `json:"auto_rotate,omitempty"`
+	BastionDetails *BastionsList `json:"bastion_details,omitempty"`
 	CertIssuerSignerKeyName *string `json:"cert_issuer_signer_key_name,omitempty"`
 	CertificateIssueDetails *CertificateIssueInfo `json:"certificate_issue_details,omitempty"`
 	Certificates *string `json:"certificates,omitempty"`
@@ -30,6 +32,7 @@ type Item struct {
 	DeleteProtection *bool `json:"delete_protection,omitempty"`
 	DeletionDate *time.Time `json:"deletion_date,omitempty"`
 	DisplayId *string `json:"display_id,omitempty"`
+	GatewayDetails *[]GatewayBasicInfo `json:"gateway_details,omitempty"`
 	IsAccessRequestEnabled *bool `json:"is_access_request_enabled,omitempty"`
 	IsEnabled *bool `json:"is_enabled,omitempty"`
 	ItemAccessibility *int64 `json:"item_accessibility,omitempty"`
@@ -46,6 +49,7 @@ type Item struct {
 	ItemType *string `json:"item_type,omitempty"`
 	ItemVersions *[]ItemVersion `json:"item_versions,omitempty"`
 	LastVersion *int32 `json:"last_version,omitempty"`
+	LinkedDetails *LinkedDetails `json:"linked_details,omitempty"`
 	ModificationDate *time.Time `json:"modification_date,omitempty"`
 	NextRotationDate *time.Time `json:"next_rotation_date,omitempty"`
 	ProtectionKeyName *string `json:"protection_key_name,omitempty"`
@@ -104,6 +108,38 @@ func (o *Item) HasAccessDate() bool {
 // SetAccessDate gets a reference to the given time.Time and assigns it to the AccessDate field.
 func (o *Item) SetAccessDate(v time.Time) {
 	o.AccessDate = &v
+}
+
+// GetAccessDateDisplay returns the AccessDateDisplay field value if set, zero value otherwise.
+func (o *Item) GetAccessDateDisplay() string {
+	if o == nil || o.AccessDateDisplay == nil {
+		var ret string
+		return ret
+	}
+	return *o.AccessDateDisplay
+}
+
+// GetAccessDateDisplayOk returns a tuple with the AccessDateDisplay field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Item) GetAccessDateDisplayOk() (*string, bool) {
+	if o == nil || o.AccessDateDisplay == nil {
+		return nil, false
+	}
+	return o.AccessDateDisplay, true
+}
+
+// HasAccessDateDisplay returns a boolean if a field has been set.
+func (o *Item) HasAccessDateDisplay() bool {
+	if o != nil && o.AccessDateDisplay != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessDateDisplay gets a reference to the given string and assigns it to the AccessDateDisplay field.
+func (o *Item) SetAccessDateDisplay(v string) {
+	o.AccessDateDisplay = &v
 }
 
 // GetAccessRequestStatus returns the AccessRequestStatus field value if set, zero value otherwise.
@@ -168,6 +204,38 @@ func (o *Item) HasAutoRotate() bool {
 // SetAutoRotate gets a reference to the given bool and assigns it to the AutoRotate field.
 func (o *Item) SetAutoRotate(v bool) {
 	o.AutoRotate = &v
+}
+
+// GetBastionDetails returns the BastionDetails field value if set, zero value otherwise.
+func (o *Item) GetBastionDetails() BastionsList {
+	if o == nil || o.BastionDetails == nil {
+		var ret BastionsList
+		return ret
+	}
+	return *o.BastionDetails
+}
+
+// GetBastionDetailsOk returns a tuple with the BastionDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Item) GetBastionDetailsOk() (*BastionsList, bool) {
+	if o == nil || o.BastionDetails == nil {
+		return nil, false
+	}
+	return o.BastionDetails, true
+}
+
+// HasBastionDetails returns a boolean if a field has been set.
+func (o *Item) HasBastionDetails() bool {
+	if o != nil && o.BastionDetails != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBastionDetails gets a reference to the given BastionsList and assigns it to the BastionDetails field.
+func (o *Item) SetBastionDetails(v BastionsList) {
+	o.BastionDetails = &v
 }
 
 // GetCertIssuerSignerKeyName returns the CertIssuerSignerKeyName field value if set, zero value otherwise.
@@ -456,6 +524,38 @@ func (o *Item) HasDisplayId() bool {
 // SetDisplayId gets a reference to the given string and assigns it to the DisplayId field.
 func (o *Item) SetDisplayId(v string) {
 	o.DisplayId = &v
+}
+
+// GetGatewayDetails returns the GatewayDetails field value if set, zero value otherwise.
+func (o *Item) GetGatewayDetails() []GatewayBasicInfo {
+	if o == nil || o.GatewayDetails == nil {
+		var ret []GatewayBasicInfo
+		return ret
+	}
+	return *o.GatewayDetails
+}
+
+// GetGatewayDetailsOk returns a tuple with the GatewayDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Item) GetGatewayDetailsOk() (*[]GatewayBasicInfo, bool) {
+	if o == nil || o.GatewayDetails == nil {
+		return nil, false
+	}
+	return o.GatewayDetails, true
+}
+
+// HasGatewayDetails returns a boolean if a field has been set.
+func (o *Item) HasGatewayDetails() bool {
+	if o != nil && o.GatewayDetails != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGatewayDetails gets a reference to the given []GatewayBasicInfo and assigns it to the GatewayDetails field.
+func (o *Item) SetGatewayDetails(v []GatewayBasicInfo) {
+	o.GatewayDetails = &v
 }
 
 // GetIsAccessRequestEnabled returns the IsAccessRequestEnabled field value if set, zero value otherwise.
@@ -938,6 +1038,38 @@ func (o *Item) SetLastVersion(v int32) {
 	o.LastVersion = &v
 }
 
+// GetLinkedDetails returns the LinkedDetails field value if set, zero value otherwise.
+func (o *Item) GetLinkedDetails() LinkedDetails {
+	if o == nil || o.LinkedDetails == nil {
+		var ret LinkedDetails
+		return ret
+	}
+	return *o.LinkedDetails
+}
+
+// GetLinkedDetailsOk returns a tuple with the LinkedDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Item) GetLinkedDetailsOk() (*LinkedDetails, bool) {
+	if o == nil || o.LinkedDetails == nil {
+		return nil, false
+	}
+	return o.LinkedDetails, true
+}
+
+// HasLinkedDetails returns a boolean if a field has been set.
+func (o *Item) HasLinkedDetails() bool {
+	if o != nil && o.LinkedDetails != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLinkedDetails gets a reference to the given LinkedDetails and assigns it to the LinkedDetails field.
+func (o *Item) SetLinkedDetails(v LinkedDetails) {
+	o.LinkedDetails = &v
+}
+
 // GetModificationDate returns the ModificationDate field value if set, zero value otherwise.
 func (o *Item) GetModificationDate() time.Time {
 	if o == nil || o.ModificationDate == nil {
@@ -1231,11 +1363,17 @@ func (o Item) MarshalJSON() ([]byte, error) {
 	if o.AccessDate != nil {
 		toSerialize["access_date"] = o.AccessDate
 	}
+	if o.AccessDateDisplay != nil {
+		toSerialize["access_date_display"] = o.AccessDateDisplay
+	}
 	if o.AccessRequestStatus != nil {
 		toSerialize["access_request_status"] = o.AccessRequestStatus
 	}
 	if o.AutoRotate != nil {
 		toSerialize["auto_rotate"] = o.AutoRotate
+	}
+	if o.BastionDetails != nil {
+		toSerialize["bastion_details"] = o.BastionDetails
 	}
 	if o.CertIssuerSignerKeyName != nil {
 		toSerialize["cert_issuer_signer_key_name"] = o.CertIssuerSignerKeyName
@@ -1263,6 +1401,9 @@ func (o Item) MarshalJSON() ([]byte, error) {
 	}
 	if o.DisplayId != nil {
 		toSerialize["display_id"] = o.DisplayId
+	}
+	if o.GatewayDetails != nil {
+		toSerialize["gateway_details"] = o.GatewayDetails
 	}
 	if o.IsAccessRequestEnabled != nil {
 		toSerialize["is_access_request_enabled"] = o.IsAccessRequestEnabled
@@ -1308,6 +1449,9 @@ func (o Item) MarshalJSON() ([]byte, error) {
 	}
 	if o.LastVersion != nil {
 		toSerialize["last_version"] = o.LastVersion
+	}
+	if o.LinkedDetails != nil {
+		toSerialize["linked_details"] = o.LinkedDetails
 	}
 	if o.ModificationDate != nil {
 		toSerialize["modification_date"] = o.ModificationDate

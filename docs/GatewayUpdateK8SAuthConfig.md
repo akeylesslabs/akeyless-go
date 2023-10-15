@@ -7,11 +7,14 @@ Name | Type | Description | Notes
 **AccessId** | **string** | The access ID of the Kubernetes auth method | 
 **ClusterApiType** | Pointer to **string** | Cluster access type. options: [native_k8s, rancher] | [optional] [default to "native_k8s"]
 **ConfigEncryptionKeyName** | Pointer to **string** | Config encryption key | [optional] 
-**DisableIssuerValidation** | Pointer to **string** | Disable issuer validation | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**DisableIssuerValidation** | Pointer to **string** | Disable issuer validation [true/false] | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**K8sAuthType** | Pointer to **string** | K8S auth type [token/certificate]. (relevant for \&quot;native_k8s\&quot; only) | [optional] [default to "token"]
 **K8sCaCert** | Pointer to **string** | The CA Certificate (base64 encoded) to use to call into the kubernetes API server | [optional] 
+**K8sClientCertificate** | Pointer to **string** | Content of the k8 client certificate (PEM format) in a Base64 format (relevant for \&quot;native_k8s\&quot; only) | [optional] 
+**K8sClientKey** | Pointer to **string** | Content of the k8 client private key (PEM format) in a Base64 format (relevant for \&quot;native_k8s\&quot; only) | [optional] 
 **K8sHost** | **string** | The URL of the kubernetes API server | 
-**K8sIssuer** | Pointer to **string** | The Kubernetes JWT issuer name. If not set, kubernetes/serviceaccount will use as an issuer. | [optional] 
+**K8sIssuer** | Pointer to **string** | The Kubernetes JWT issuer name. K8SIssuer is the claim that specifies who issued the Kubernetes token | [optional] [default to "kubernetes/serviceaccount"]
 **Name** | **string** | K8S Auth config name | 
 **NewName** | **string** | K8S Auth config new name | 
 **RancherApiKey** | Pointer to **string** | The api key used to access the TokenReview API to validate other JWTs (relevant for \&quot;rancher\&quot; only) | [optional] 
@@ -21,6 +24,7 @@ Name | Type | Description | Notes
 **TokenExp** | Pointer to **int64** | Time in seconds of expiration of the Akeyless Kube Auth Method token | [optional] [default to 300]
 **TokenReviewerJwt** | Pointer to **string** | A Kubernetes service account JWT used to access the TokenReview API to validate other JWTs (relevant for \&quot;native_k8s\&quot; only). If not set, the JWT submitted in the authentication process will be used to access the Kubernetes TokenReview API. | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**UseGwServiceAccount** | Pointer to **bool** | Use the GW&#39;s service account | [optional] 
 
 ## Methods
 
@@ -161,6 +165,31 @@ SetJson sets Json field to given value.
 
 HasJson returns a boolean if a field has been set.
 
+### GetK8sAuthType
+
+`func (o *GatewayUpdateK8SAuthConfig) GetK8sAuthType() string`
+
+GetK8sAuthType returns the K8sAuthType field if non-nil, zero value otherwise.
+
+### GetK8sAuthTypeOk
+
+`func (o *GatewayUpdateK8SAuthConfig) GetK8sAuthTypeOk() (*string, bool)`
+
+GetK8sAuthTypeOk returns a tuple with the K8sAuthType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sAuthType
+
+`func (o *GatewayUpdateK8SAuthConfig) SetK8sAuthType(v string)`
+
+SetK8sAuthType sets K8sAuthType field to given value.
+
+### HasK8sAuthType
+
+`func (o *GatewayUpdateK8SAuthConfig) HasK8sAuthType() bool`
+
+HasK8sAuthType returns a boolean if a field has been set.
+
 ### GetK8sCaCert
 
 `func (o *GatewayUpdateK8SAuthConfig) GetK8sCaCert() string`
@@ -185,6 +214,56 @@ SetK8sCaCert sets K8sCaCert field to given value.
 `func (o *GatewayUpdateK8SAuthConfig) HasK8sCaCert() bool`
 
 HasK8sCaCert returns a boolean if a field has been set.
+
+### GetK8sClientCertificate
+
+`func (o *GatewayUpdateK8SAuthConfig) GetK8sClientCertificate() string`
+
+GetK8sClientCertificate returns the K8sClientCertificate field if non-nil, zero value otherwise.
+
+### GetK8sClientCertificateOk
+
+`func (o *GatewayUpdateK8SAuthConfig) GetK8sClientCertificateOk() (*string, bool)`
+
+GetK8sClientCertificateOk returns a tuple with the K8sClientCertificate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sClientCertificate
+
+`func (o *GatewayUpdateK8SAuthConfig) SetK8sClientCertificate(v string)`
+
+SetK8sClientCertificate sets K8sClientCertificate field to given value.
+
+### HasK8sClientCertificate
+
+`func (o *GatewayUpdateK8SAuthConfig) HasK8sClientCertificate() bool`
+
+HasK8sClientCertificate returns a boolean if a field has been set.
+
+### GetK8sClientKey
+
+`func (o *GatewayUpdateK8SAuthConfig) GetK8sClientKey() string`
+
+GetK8sClientKey returns the K8sClientKey field if non-nil, zero value otherwise.
+
+### GetK8sClientKeyOk
+
+`func (o *GatewayUpdateK8SAuthConfig) GetK8sClientKeyOk() (*string, bool)`
+
+GetK8sClientKeyOk returns a tuple with the K8sClientKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sClientKey
+
+`func (o *GatewayUpdateK8SAuthConfig) SetK8sClientKey(v string)`
+
+SetK8sClientKey sets K8sClientKey field to given value.
+
+### HasK8sClientKey
+
+`func (o *GatewayUpdateK8SAuthConfig) HasK8sClientKey() bool`
+
+HasK8sClientKey returns a boolean if a field has been set.
 
 ### GetK8sHost
 
@@ -440,6 +519,31 @@ SetUidToken sets UidToken field to given value.
 `func (o *GatewayUpdateK8SAuthConfig) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetUseGwServiceAccount
+
+`func (o *GatewayUpdateK8SAuthConfig) GetUseGwServiceAccount() bool`
+
+GetUseGwServiceAccount returns the UseGwServiceAccount field if non-nil, zero value otherwise.
+
+### GetUseGwServiceAccountOk
+
+`func (o *GatewayUpdateK8SAuthConfig) GetUseGwServiceAccountOk() (*bool, bool)`
+
+GetUseGwServiceAccountOk returns a tuple with the UseGwServiceAccount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseGwServiceAccount
+
+`func (o *GatewayUpdateK8SAuthConfig) SetUseGwServiceAccount(v bool)`
+
+SetUseGwServiceAccount sets UseGwServiceAccount field to given value.
+
+### HasUseGwServiceAccount
+
+`func (o *GatewayUpdateK8SAuthConfig) HasUseGwServiceAccount() bool`
+
+HasUseGwServiceAccount returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

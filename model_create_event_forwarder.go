@@ -21,15 +21,17 @@ type CreateEventForwarder struct {
 	AdminName *string `json:"admin-name,omitempty"`
 	// Workstation Admin password
 	AdminPwd *string `json:"admin-pwd,omitempty"`
-	// Comment about the EventForwarder
+	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`
-	// A comma seperated list of email addresses to send event to (relevant only for \\\"email\\\" Event Forwarder)
+	// Description of the object
+	Description *string `json:"description,omitempty"`
+	// A comma seperated list of email addresses to send event to (relevant only for \"email\" Event Forwarder)
 	EmailTo *string `json:"email-to,omitempty"`
 	// Event sources
 	EventSourceLocations []string `json:"event-source-locations"`
-	// Event Source type [item, target]
+	// Event Source type [item, target, auth_method]
 	EventSourceType *string `json:"event-source-type,omitempty"`
-	// Event types
+	// List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, auth-method-pending-expiration, auth-method-expired, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure, uid-rotation-failure]
 	EventTypes *[]string `json:"event-types,omitempty"`
 	// Rate of periodic runner repetition in hours
 	Every *string `json:"every,omitempty"`
@@ -59,6 +61,8 @@ func NewCreateEventForwarder(eventSourceLocations []string, forwarderType string
 	var eventSourceType string = "item"
 	this.EventSourceType = &eventSourceType
 	this.ForwarderType = forwarderType
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	this.RunnerType = runnerType
 	return &this
@@ -71,6 +75,8 @@ func NewCreateEventForwarderWithDefaults() *CreateEventForwarder {
 	this := CreateEventForwarder{}
 	var eventSourceType string = "item"
 	this.EventSourceType = &eventSourceType
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -168,6 +174,38 @@ func (o *CreateEventForwarder) HasComment() bool {
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *CreateEventForwarder) SetComment(v string) {
 	o.Comment = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *CreateEventForwarder) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateEventForwarder) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *CreateEventForwarder) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *CreateEventForwarder) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetEmailTo returns the EmailTo field value if set, zero value otherwise.
@@ -564,6 +602,9 @@ func (o CreateEventForwarder) MarshalJSON() ([]byte, error) {
 	}
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.EmailTo != nil {
 		toSerialize["email-to"] = o.EmailTo

@@ -61,6 +61,10 @@ func NewCreateAuthMethodHuawei(name string, ) *CreateAuthMethodHuawei {
 	this.AccessExpires = &accessExpires
 	var authUrl string = "https://iam.myhwclouds.com:443/v3"
 	this.AuthUrl = &authUrl
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	this.Name = name
 	return &this
 }
@@ -74,6 +78,10 @@ func NewCreateAuthMethodHuaweiWithDefaults() *CreateAuthMethodHuawei {
 	this.AccessExpires = &accessExpires
 	var authUrl string = "https://iam.myhwclouds.com:443/v3"
 	this.AuthUrl = &authUrl
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	return &this
 }
 

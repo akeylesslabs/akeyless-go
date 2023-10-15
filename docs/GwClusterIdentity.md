@@ -9,7 +9,8 @@ Name | Type | Description | Notes
 **ClusterName** | Pointer to **string** |  | [optional] 
 **ClusterUrl** | Pointer to **string** |  | [optional] 
 **CurrentGw** | Pointer to **bool** |  | [optional] 
-**CustomerFragmentIds** | Pointer to **[]string** |  | [optional] 
+**CustomerFragmentIds** | Pointer to **[]string** | Deprecated - use CustomerFragments instead | [optional] 
+**CustomerFragments** | Pointer to [**[]CfInfo**](CfInfo.md) |  | [optional] 
 **DefaultProtectionKeyId** | Pointer to **int64** |  | [optional] 
 **DefaultSecretLocation** | Pointer to **string** |  | [optional] 
 **DisplayName** | Pointer to **string** |  | [optional] 
@@ -185,6 +186,31 @@ SetCustomerFragmentIds sets CustomerFragmentIds field to given value.
 `func (o *GwClusterIdentity) HasCustomerFragmentIds() bool`
 
 HasCustomerFragmentIds returns a boolean if a field has been set.
+
+### GetCustomerFragments
+
+`func (o *GwClusterIdentity) GetCustomerFragments() []CfInfo`
+
+GetCustomerFragments returns the CustomerFragments field if non-nil, zero value otherwise.
+
+### GetCustomerFragmentsOk
+
+`func (o *GwClusterIdentity) GetCustomerFragmentsOk() (*[]CfInfo, bool)`
+
+GetCustomerFragmentsOk returns a tuple with the CustomerFragments field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomerFragments
+
+`func (o *GwClusterIdentity) SetCustomerFragments(v []CfInfo)`
+
+SetCustomerFragments sets CustomerFragments field to given value.
+
+### HasCustomerFragments
+
+`func (o *GwClusterIdentity) HasCustomerFragments() bool`
+
+HasCustomerFragments returns a boolean if a field has been set.
 
 ### GetDefaultProtectionKeyId
 

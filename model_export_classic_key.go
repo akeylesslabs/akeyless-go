@@ -17,7 +17,9 @@ import (
 
 // ExportClassicKey ExportClassicKey is a command that returns the classic key material
 type ExportClassicKey struct {
-	// Ignore Cache Retrieve the Secret value without checking the Gateway's cache. This flag is only relevant when using the RestAPI
+	// Use this option to output only public key
+	ExportPublicKey *bool `json:"export-public-key,omitempty"`
+	// Retrieve the Secret value without checking the Gateway's cache [true/false]. This flag is only relevant when using the RestAPI
 	IgnoreCache *string `json:"ignore-cache,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -37,8 +39,12 @@ type ExportClassicKey struct {
 // will change when the set of required properties is changed
 func NewExportClassicKey(name string, ) *ExportClassicKey {
 	this := ExportClassicKey{}
+	var exportPublicKey bool = false
+	this.ExportPublicKey = &exportPublicKey
 	var ignoreCache string = "false"
 	this.IgnoreCache = &ignoreCache
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -48,9 +54,45 @@ func NewExportClassicKey(name string, ) *ExportClassicKey {
 // but it doesn't guarantee that properties required by API are set
 func NewExportClassicKeyWithDefaults() *ExportClassicKey {
 	this := ExportClassicKey{}
+	var exportPublicKey bool = false
+	this.ExportPublicKey = &exportPublicKey
 	var ignoreCache string = "false"
 	this.IgnoreCache = &ignoreCache
+	var json bool = false
+	this.Json = &json
 	return &this
+}
+
+// GetExportPublicKey returns the ExportPublicKey field value if set, zero value otherwise.
+func (o *ExportClassicKey) GetExportPublicKey() bool {
+	if o == nil || o.ExportPublicKey == nil {
+		var ret bool
+		return ret
+	}
+	return *o.ExportPublicKey
+}
+
+// GetExportPublicKeyOk returns a tuple with the ExportPublicKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ExportClassicKey) GetExportPublicKeyOk() (*bool, bool) {
+	if o == nil || o.ExportPublicKey == nil {
+		return nil, false
+	}
+	return o.ExportPublicKey, true
+}
+
+// HasExportPublicKey returns a boolean if a field has been set.
+func (o *ExportClassicKey) HasExportPublicKey() bool {
+	if o != nil && o.ExportPublicKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExportPublicKey gets a reference to the given bool and assigns it to the ExportPublicKey field.
+func (o *ExportClassicKey) SetExportPublicKey(v bool) {
+	o.ExportPublicKey = &v
 }
 
 // GetIgnoreCache returns the IgnoreCache field value if set, zero value otherwise.
@@ -239,6 +281,9 @@ func (o *ExportClassicKey) SetVersion(v int32) {
 
 func (o ExportClassicKey) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.ExportPublicKey != nil {
+		toSerialize["export-public-key"] = o.ExportPublicKey
+	}
 	if o.IgnoreCache != nil {
 		toSerialize["ignore-cache"] = o.IgnoreCache
 	}

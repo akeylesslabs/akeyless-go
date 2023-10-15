@@ -33,6 +33,8 @@ type GatewayDeleteProducer struct {
 // will change when the set of required properties is changed
 func NewGatewayDeleteProducer(name string, ) *GatewayDeleteProducer {
 	this := GatewayDeleteProducer{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -42,6 +44,8 @@ func NewGatewayDeleteProducer(name string, ) *GatewayDeleteProducer {
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayDeleteProducerWithDefaults() *GatewayDeleteProducer {
 	this := GatewayDeleteProducer{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

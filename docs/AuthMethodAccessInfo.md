@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **OidcAccessRules** | Pointer to [**OIDCAccessRules**](OIDCAccessRules.md) |  | [optional] 
 **RulesType** | Pointer to **string** |  | [optional] 
 **SamlAccessRules** | Pointer to [**SAMLAccessRules**](SAMLAccessRules.md) |  | [optional] 
+**SubClaimsDelimiters** | Pointer to **[]string** |  | [optional] 
 **UniversalIdentityAccessRules** | Pointer to [**UniversalIdentityAccessRules**](UniversalIdentityAccessRules.md) |  | [optional] 
 
 ## Methods
@@ -518,6 +519,31 @@ SetSamlAccessRules sets SamlAccessRules field to given value.
 `func (o *AuthMethodAccessInfo) HasSamlAccessRules() bool`
 
 HasSamlAccessRules returns a boolean if a field has been set.
+
+### GetSubClaimsDelimiters
+
+`func (o *AuthMethodAccessInfo) GetSubClaimsDelimiters() []string`
+
+GetSubClaimsDelimiters returns the SubClaimsDelimiters field if non-nil, zero value otherwise.
+
+### GetSubClaimsDelimitersOk
+
+`func (o *AuthMethodAccessInfo) GetSubClaimsDelimitersOk() (*[]string, bool)`
+
+GetSubClaimsDelimitersOk returns a tuple with the SubClaimsDelimiters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSubClaimsDelimiters
+
+`func (o *AuthMethodAccessInfo) SetSubClaimsDelimiters(v []string)`
+
+SetSubClaimsDelimiters sets SubClaimsDelimiters field to given value.
+
+### HasSubClaimsDelimiters
+
+`func (o *AuthMethodAccessInfo) HasSubClaimsDelimiters() bool`
+
+HasSubClaimsDelimiters returns a boolean if a field has been set.
 
 ### GetUniversalIdentityAccessRules
 

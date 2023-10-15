@@ -4,9 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**SplunkEnableTls** | Pointer to **bool** |  | [optional] 
 **SplunkIndex** | Pointer to **string** |  | [optional] 
 **SplunkSource** | Pointer to **string** |  | [optional] 
 **SplunkSourcetype** | Pointer to **string** |  | [optional] 
+**SplunkTlsCertificate** | Pointer to **string** |  | [optional] 
 **SplunkToken** | Pointer to **string** |  | [optional] 
 **SplunkUrl** | Pointer to **string** |  | [optional] 
 
@@ -28,6 +30,31 @@ will change when the set of required properties is changed
 NewSplunkLogForwardingConfigWithDefaults instantiates a new SplunkLogForwardingConfig object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetSplunkEnableTls
+
+`func (o *SplunkLogForwardingConfig) GetSplunkEnableTls() bool`
+
+GetSplunkEnableTls returns the SplunkEnableTls field if non-nil, zero value otherwise.
+
+### GetSplunkEnableTlsOk
+
+`func (o *SplunkLogForwardingConfig) GetSplunkEnableTlsOk() (*bool, bool)`
+
+GetSplunkEnableTlsOk returns a tuple with the SplunkEnableTls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSplunkEnableTls
+
+`func (o *SplunkLogForwardingConfig) SetSplunkEnableTls(v bool)`
+
+SetSplunkEnableTls sets SplunkEnableTls field to given value.
+
+### HasSplunkEnableTls
+
+`func (o *SplunkLogForwardingConfig) HasSplunkEnableTls() bool`
+
+HasSplunkEnableTls returns a boolean if a field has been set.
 
 ### GetSplunkIndex
 
@@ -103,6 +130,31 @@ SetSplunkSourcetype sets SplunkSourcetype field to given value.
 `func (o *SplunkLogForwardingConfig) HasSplunkSourcetype() bool`
 
 HasSplunkSourcetype returns a boolean if a field has been set.
+
+### GetSplunkTlsCertificate
+
+`func (o *SplunkLogForwardingConfig) GetSplunkTlsCertificate() string`
+
+GetSplunkTlsCertificate returns the SplunkTlsCertificate field if non-nil, zero value otherwise.
+
+### GetSplunkTlsCertificateOk
+
+`func (o *SplunkLogForwardingConfig) GetSplunkTlsCertificateOk() (*string, bool)`
+
+GetSplunkTlsCertificateOk returns a tuple with the SplunkTlsCertificate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSplunkTlsCertificate
+
+`func (o *SplunkLogForwardingConfig) SetSplunkTlsCertificate(v string)`
+
+SetSplunkTlsCertificate sets SplunkTlsCertificate field to given value.
+
+### HasSplunkTlsCertificate
+
+`func (o *SplunkLogForwardingConfig) HasSplunkTlsCertificate() bool`
+
+HasSplunkTlsCertificate returns a boolean if a field has been set.
 
 ### GetSplunkToken
 
