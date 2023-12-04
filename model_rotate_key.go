@@ -37,6 +37,8 @@ type RotateKey struct {
 // will change when the set of required properties is changed
 func NewRotateKey(name string, ) *RotateKey {
 	this := RotateKey{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -46,6 +48,8 @@ func NewRotateKey(name string, ) *RotateKey {
 // but it doesn't guarantee that properties required by API are set
 func NewRotateKeyWithDefaults() *RotateKey {
 	this := RotateKey{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

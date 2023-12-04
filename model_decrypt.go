@@ -35,6 +35,8 @@ type Decrypt struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// key version (relevant only for classic key)
+	Version *int32 `json:"version,omitempty"`
 }
 
 // NewDecrypt instantiates a new Decrypt object
@@ -43,6 +45,8 @@ type Decrypt struct {
 // will change when the set of required properties is changed
 func NewDecrypt(keyName string, ) *Decrypt {
 	this := Decrypt{}
+	var json bool = false
+	this.Json = &json
 	this.KeyName = keyName
 	return &this
 }
@@ -52,6 +56,8 @@ func NewDecrypt(keyName string, ) *Decrypt {
 // but it doesn't guarantee that properties required by API are set
 func NewDecryptWithDefaults() *Decrypt {
 	this := Decrypt{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -335,6 +341,38 @@ func (o *Decrypt) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetVersion returns the Version field value if set, zero value otherwise.
+func (o *Decrypt) GetVersion() int32 {
+	if o == nil || o.Version == nil {
+		var ret int32
+		return ret
+	}
+	return *o.Version
+}
+
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Decrypt) GetVersionOk() (*int32, bool) {
+	if o == nil || o.Version == nil {
+		return nil, false
+	}
+	return o.Version, true
+}
+
+// HasVersion returns a boolean if a field has been set.
+func (o *Decrypt) HasVersion() bool {
+	if o != nil && o.Version != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given int32 and assigns it to the Version field.
+func (o *Decrypt) SetVersion(v int32) {
+	o.Version = &v
+}
+
 func (o Decrypt) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Ciphertext != nil {
@@ -363,6 +401,9 @@ func (o Decrypt) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.Version != nil {
+		toSerialize["version"] = o.Version
 	}
 	return json.Marshal(toSerialize)
 }

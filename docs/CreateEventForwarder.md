@@ -6,20 +6,26 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AdminName** | Pointer to **string** | Workstation Admin Name | [optional] 
 **AdminPwd** | Pointer to **string** | Workstation Admin password | [optional] 
-**Comment** | Pointer to **string** | Comment about the EventForwarder | [optional] 
-**EmailTo** | Pointer to **string** | A comma seperated list of email addresses to send event to (relevant only for \\\&quot;email\\\&quot; Event Forwarder) | [optional] 
+**AppPrivateKeyBase64** | Pointer to **string** | The RSA Private Key PEM formatted in base64 to use when connecting to ServiceNow with jwt authentication | [optional] 
+**AuthType** | Pointer to **string** | The authentication type to use when connecting to ServiceNow (user-pass / jwt) | [optional] [default to "user-pass"]
+**ClientId** | Pointer to **string** | The client ID to use when connecting to ServiceNow with jwt authentication | [optional] 
+**ClientSecret** | Pointer to **string** | The client secret to use when connecting to ServiceNow with jwt authentication | [optional] 
+**Comment** | Pointer to **string** | Deprecated - use description | [optional] 
+**Description** | Pointer to **string** | Description of the object | [optional] 
+**EmailTo** | Pointer to **string** | A comma seperated list of email addresses to send event to (relevant only for \&quot;email\&quot; Event Forwarder) | [optional] 
 **EventSourceLocations** | **[]string** | Event sources | 
-**EventSourceType** | Pointer to **string** | Event Source type [item, target] | [optional] [default to "item"]
-**EventTypes** | Pointer to **[]string** | Event types | [optional] 
+**EventSourceType** | Pointer to **string** | Event Source type [item, target, auth_method] | [optional] [default to "item"]
+**EventTypes** | Pointer to **[]string** | List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, auth-method-pending-expiration, auth-method-expired, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure, uid-rotation-failure] | [optional] 
 **Every** | Pointer to **string** | Rate of periodic runner repetition in hours | [optional] 
 **ForwarderType** | **string** |  | 
 **Host** | Pointer to **string** | Workstation Host | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | Pointer to **string** | The name of a key that used to encrypt the EventForwarder secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | EventForwarder name | 
 **RunnerType** | **string** |  | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**UserEmail** | Pointer to **string** | The user email to use when connecting to ServiceNow with jwt authentication | [optional] 
 
 ## Methods
 
@@ -90,6 +96,106 @@ SetAdminPwd sets AdminPwd field to given value.
 
 HasAdminPwd returns a boolean if a field has been set.
 
+### GetAppPrivateKeyBase64
+
+`func (o *CreateEventForwarder) GetAppPrivateKeyBase64() string`
+
+GetAppPrivateKeyBase64 returns the AppPrivateKeyBase64 field if non-nil, zero value otherwise.
+
+### GetAppPrivateKeyBase64Ok
+
+`func (o *CreateEventForwarder) GetAppPrivateKeyBase64Ok() (*string, bool)`
+
+GetAppPrivateKeyBase64Ok returns a tuple with the AppPrivateKeyBase64 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAppPrivateKeyBase64
+
+`func (o *CreateEventForwarder) SetAppPrivateKeyBase64(v string)`
+
+SetAppPrivateKeyBase64 sets AppPrivateKeyBase64 field to given value.
+
+### HasAppPrivateKeyBase64
+
+`func (o *CreateEventForwarder) HasAppPrivateKeyBase64() bool`
+
+HasAppPrivateKeyBase64 returns a boolean if a field has been set.
+
+### GetAuthType
+
+`func (o *CreateEventForwarder) GetAuthType() string`
+
+GetAuthType returns the AuthType field if non-nil, zero value otherwise.
+
+### GetAuthTypeOk
+
+`func (o *CreateEventForwarder) GetAuthTypeOk() (*string, bool)`
+
+GetAuthTypeOk returns a tuple with the AuthType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthType
+
+`func (o *CreateEventForwarder) SetAuthType(v string)`
+
+SetAuthType sets AuthType field to given value.
+
+### HasAuthType
+
+`func (o *CreateEventForwarder) HasAuthType() bool`
+
+HasAuthType returns a boolean if a field has been set.
+
+### GetClientId
+
+`func (o *CreateEventForwarder) GetClientId() string`
+
+GetClientId returns the ClientId field if non-nil, zero value otherwise.
+
+### GetClientIdOk
+
+`func (o *CreateEventForwarder) GetClientIdOk() (*string, bool)`
+
+GetClientIdOk returns a tuple with the ClientId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientId
+
+`func (o *CreateEventForwarder) SetClientId(v string)`
+
+SetClientId sets ClientId field to given value.
+
+### HasClientId
+
+`func (o *CreateEventForwarder) HasClientId() bool`
+
+HasClientId returns a boolean if a field has been set.
+
+### GetClientSecret
+
+`func (o *CreateEventForwarder) GetClientSecret() string`
+
+GetClientSecret returns the ClientSecret field if non-nil, zero value otherwise.
+
+### GetClientSecretOk
+
+`func (o *CreateEventForwarder) GetClientSecretOk() (*string, bool)`
+
+GetClientSecretOk returns a tuple with the ClientSecret field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientSecret
+
+`func (o *CreateEventForwarder) SetClientSecret(v string)`
+
+SetClientSecret sets ClientSecret field to given value.
+
+### HasClientSecret
+
+`func (o *CreateEventForwarder) HasClientSecret() bool`
+
+HasClientSecret returns a boolean if a field has been set.
+
 ### GetComment
 
 `func (o *CreateEventForwarder) GetComment() string`
@@ -114,6 +220,31 @@ SetComment sets Comment field to given value.
 `func (o *CreateEventForwarder) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *CreateEventForwarder) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *CreateEventForwarder) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *CreateEventForwarder) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *CreateEventForwarder) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetEmailTo
 
@@ -419,6 +550,31 @@ SetUidToken sets UidToken field to given value.
 `func (o *CreateEventForwarder) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetUserEmail
+
+`func (o *CreateEventForwarder) GetUserEmail() string`
+
+GetUserEmail returns the UserEmail field if non-nil, zero value otherwise.
+
+### GetUserEmailOk
+
+`func (o *CreateEventForwarder) GetUserEmailOk() (*string, bool)`
+
+GetUserEmailOk returns a tuple with the UserEmail field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserEmail
+
+`func (o *CreateEventForwarder) SetUserEmail(v string)`
+
+SetUserEmail sets UserEmail field to given value.
+
+### HasUserEmail
+
+`func (o *CreateEventForwarder) HasUserEmail() bool`
+
+HasUserEmail returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

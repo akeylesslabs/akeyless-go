@@ -19,12 +19,16 @@ import (
 type OAuth2AccessRules struct {
 	// The audience in the JWT.
 	Audience *string `json:"audience,omitempty"`
+	// The gateway cluster name that is authorized to access JWKeySetURL
+	AuthorizedGwClusterName *string `json:"authorized_gw_cluster_name,omitempty"`
 	// The claims that login is restricted to.
 	BoundClaims *[]OAuth2CustomClaim `json:"bound_claims,omitempty"`
 	// The clients ids that login is restricted to.
 	BoundClientsId *[]string `json:"bound_clients_id,omitempty"`
 	// Issuer URL
 	Issuer *string `json:"issuer,omitempty"`
+	// The JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. base64 encoded string
+	JwksJsonData *string `json:"jwks_json_data,omitempty"`
 	// The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server.
 	JwksUri *string `json:"jwks_uri,omitempty"`
 	// A unique identifier to distinguish different users
@@ -78,6 +82,38 @@ func (o *OAuth2AccessRules) HasAudience() bool {
 // SetAudience gets a reference to the given string and assigns it to the Audience field.
 func (o *OAuth2AccessRules) SetAudience(v string) {
 	o.Audience = &v
+}
+
+// GetAuthorizedGwClusterName returns the AuthorizedGwClusterName field value if set, zero value otherwise.
+func (o *OAuth2AccessRules) GetAuthorizedGwClusterName() string {
+	if o == nil || o.AuthorizedGwClusterName == nil {
+		var ret string
+		return ret
+	}
+	return *o.AuthorizedGwClusterName
+}
+
+// GetAuthorizedGwClusterNameOk returns a tuple with the AuthorizedGwClusterName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuth2AccessRules) GetAuthorizedGwClusterNameOk() (*string, bool) {
+	if o == nil || o.AuthorizedGwClusterName == nil {
+		return nil, false
+	}
+	return o.AuthorizedGwClusterName, true
+}
+
+// HasAuthorizedGwClusterName returns a boolean if a field has been set.
+func (o *OAuth2AccessRules) HasAuthorizedGwClusterName() bool {
+	if o != nil && o.AuthorizedGwClusterName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthorizedGwClusterName gets a reference to the given string and assigns it to the AuthorizedGwClusterName field.
+func (o *OAuth2AccessRules) SetAuthorizedGwClusterName(v string) {
+	o.AuthorizedGwClusterName = &v
 }
 
 // GetBoundClaims returns the BoundClaims field value if set, zero value otherwise.
@@ -176,6 +212,38 @@ func (o *OAuth2AccessRules) SetIssuer(v string) {
 	o.Issuer = &v
 }
 
+// GetJwksJsonData returns the JwksJsonData field value if set, zero value otherwise.
+func (o *OAuth2AccessRules) GetJwksJsonData() string {
+	if o == nil || o.JwksJsonData == nil {
+		var ret string
+		return ret
+	}
+	return *o.JwksJsonData
+}
+
+// GetJwksJsonDataOk returns a tuple with the JwksJsonData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuth2AccessRules) GetJwksJsonDataOk() (*string, bool) {
+	if o == nil || o.JwksJsonData == nil {
+		return nil, false
+	}
+	return o.JwksJsonData, true
+}
+
+// HasJwksJsonData returns a boolean if a field has been set.
+func (o *OAuth2AccessRules) HasJwksJsonData() bool {
+	if o != nil && o.JwksJsonData != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJwksJsonData gets a reference to the given string and assigns it to the JwksJsonData field.
+func (o *OAuth2AccessRules) SetJwksJsonData(v string) {
+	o.JwksJsonData = &v
+}
+
 // GetJwksUri returns the JwksUri field value if set, zero value otherwise.
 func (o *OAuth2AccessRules) GetJwksUri() string {
 	if o == nil || o.JwksUri == nil {
@@ -245,6 +313,9 @@ func (o OAuth2AccessRules) MarshalJSON() ([]byte, error) {
 	if o.Audience != nil {
 		toSerialize["audience"] = o.Audience
 	}
+	if o.AuthorizedGwClusterName != nil {
+		toSerialize["authorized_gw_cluster_name"] = o.AuthorizedGwClusterName
+	}
 	if o.BoundClaims != nil {
 		toSerialize["bound_claims"] = o.BoundClaims
 	}
@@ -253,6 +324,9 @@ func (o OAuth2AccessRules) MarshalJSON() ([]byte, error) {
 	}
 	if o.Issuer != nil {
 		toSerialize["issuer"] = o.Issuer
+	}
+	if o.JwksJsonData != nil {
+		toSerialize["jwks_json_data"] = o.JwksJsonData
 	}
 	if o.JwksUri != nil {
 		toSerialize["jwks_uri"] = o.JwksUri

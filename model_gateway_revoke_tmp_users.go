@@ -41,6 +41,8 @@ type GatewayRevokeTmpUsers struct {
 // will change when the set of required properties is changed
 func NewGatewayRevokeTmpUsers(name string, tmpCredsId string, ) *GatewayRevokeTmpUsers {
 	this := GatewayRevokeTmpUsers{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	this.TmpCredsId = tmpCredsId
 	return &this
@@ -51,6 +53,8 @@ func NewGatewayRevokeTmpUsers(name string, tmpCredsId string, ) *GatewayRevokeTm
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayRevokeTmpUsersWithDefaults() *GatewayRevokeTmpUsers {
 	this := GatewayRevokeTmpUsers{}
+	var json bool = false
+	this.Json = &json
 	var tmpCredsId string = "demo_default_tmp_creds_id_for_sdk_bc"
 	this.TmpCredsId = tmpCredsId
 	return &this

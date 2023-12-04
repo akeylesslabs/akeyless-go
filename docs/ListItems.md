@@ -5,11 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Accessibility** | Pointer to **string** | for personal password manager | [optional] [default to "regular"]
+**AdvancedFilter** | Pointer to **string** | Filter by item name/username/website or part of it | [optional] 
+**AutoPagination** | Pointer to **string** | Retrieve all items using pagination, when disabled retrieving only first 1000 items | [optional] [default to "enabled"]
 **Filter** | Pointer to **string** | Filter by item name or part of it | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **MinimalView** | Pointer to **bool** |  | [optional] 
 **PaginationToken** | Pointer to **string** | Next page reference | [optional] 
 **Path** | Pointer to **string** | Path to folder | [optional] 
+**SraOnly** | Pointer to **bool** | Filter by items with SRA functionality enabled | [optional] [default to false]
 **SubTypes** | Pointer to **[]string** |  | [optional] 
 **Tag** | Pointer to **string** | Filter by item tag | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -59,6 +62,56 @@ SetAccessibility sets Accessibility field to given value.
 `func (o *ListItems) HasAccessibility() bool`
 
 HasAccessibility returns a boolean if a field has been set.
+
+### GetAdvancedFilter
+
+`func (o *ListItems) GetAdvancedFilter() string`
+
+GetAdvancedFilter returns the AdvancedFilter field if non-nil, zero value otherwise.
+
+### GetAdvancedFilterOk
+
+`func (o *ListItems) GetAdvancedFilterOk() (*string, bool)`
+
+GetAdvancedFilterOk returns a tuple with the AdvancedFilter field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdvancedFilter
+
+`func (o *ListItems) SetAdvancedFilter(v string)`
+
+SetAdvancedFilter sets AdvancedFilter field to given value.
+
+### HasAdvancedFilter
+
+`func (o *ListItems) HasAdvancedFilter() bool`
+
+HasAdvancedFilter returns a boolean if a field has been set.
+
+### GetAutoPagination
+
+`func (o *ListItems) GetAutoPagination() string`
+
+GetAutoPagination returns the AutoPagination field if non-nil, zero value otherwise.
+
+### GetAutoPaginationOk
+
+`func (o *ListItems) GetAutoPaginationOk() (*string, bool)`
+
+GetAutoPaginationOk returns a tuple with the AutoPagination field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutoPagination
+
+`func (o *ListItems) SetAutoPagination(v string)`
+
+SetAutoPagination sets AutoPagination field to given value.
+
+### HasAutoPagination
+
+`func (o *ListItems) HasAutoPagination() bool`
+
+HasAutoPagination returns a boolean if a field has been set.
 
 ### GetFilter
 
@@ -184,6 +237,31 @@ SetPath sets Path field to given value.
 `func (o *ListItems) HasPath() bool`
 
 HasPath returns a boolean if a field has been set.
+
+### GetSraOnly
+
+`func (o *ListItems) GetSraOnly() bool`
+
+GetSraOnly returns the SraOnly field if non-nil, zero value otherwise.
+
+### GetSraOnlyOk
+
+`func (o *ListItems) GetSraOnlyOk() (*bool, bool)`
+
+GetSraOnlyOk returns a tuple with the SraOnly field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSraOnly
+
+`func (o *ListItems) SetSraOnly(v bool)`
+
+SetSraOnly sets SraOnly field to given value.
+
+### HasSraOnly
+
+`func (o *ListItems) HasSraOnly() bool`
+
+HasSraOnly returns a boolean if a field has been set.
 
 ### GetSubTypes
 

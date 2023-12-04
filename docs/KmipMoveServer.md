@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
-**NewRoot** | Pointer to **string** |  | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**NewRoot** | **string** | New root for the kmip server | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewKmipMoveServer
 
-`func NewKmipMoveServer() *KmipMoveServer`
+`func NewKmipMoveServer(newRoot string, ) *KmipMoveServer`
 
 NewKmipMoveServer instantiates a new KmipMoveServer object
 This constructor will assign default values to properties that have it defined,
@@ -72,11 +72,6 @@ and a boolean to check if the value has been set.
 
 SetNewRoot sets NewRoot field to given value.
 
-### HasNewRoot
-
-`func (o *KmipMoveServer) HasNewRoot() bool`
-
-HasNewRoot returns a boolean if a field has been set.
 
 ### GetToken
 

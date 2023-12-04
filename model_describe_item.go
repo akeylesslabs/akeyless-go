@@ -17,14 +17,22 @@ import (
 
 // DescribeItem struct for DescribeItem
 type DescribeItem struct {
+	// for personal password manager
+	Accessibility *string `json:"accessibility,omitempty"`
+	// Indicate if the item should return with ztb cluster details (url, etc)
+	BastionDetails *bool `json:"bastion-details,omitempty"`
 	// The display id of the item
 	DisplayId *string `json:"display-id,omitempty"`
+	// Indicate if the item should return with clusters details (url, etc)
+	GatewayDetails *bool `json:"gateway-details,omitempty"`
 	// Item id of the item
 	ItemId *int64 `json:"item-id,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Item name
 	Name string `json:"name"`
+	// Include all associated services details
+	ServicesDetails *bool `json:"services-details,omitempty"`
 	// Include all item versions in reply
 	ShowVersions *bool `json:"show-versions,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -39,7 +47,17 @@ type DescribeItem struct {
 // will change when the set of required properties is changed
 func NewDescribeItem(name string, ) *DescribeItem {
 	this := DescribeItem{}
+	var accessibility string = "regular"
+	this.Accessibility = &accessibility
+	var bastionDetails bool = false
+	this.BastionDetails = &bastionDetails
+	var gatewayDetails bool = false
+	this.GatewayDetails = &gatewayDetails
+	var json bool = false
+	this.Json = &json
 	this.Name = name
+	var servicesDetails bool = false
+	this.ServicesDetails = &servicesDetails
 	var showVersions bool = false
 	this.ShowVersions = &showVersions
 	return &this
@@ -50,9 +68,83 @@ func NewDescribeItem(name string, ) *DescribeItem {
 // but it doesn't guarantee that properties required by API are set
 func NewDescribeItemWithDefaults() *DescribeItem {
 	this := DescribeItem{}
+	var accessibility string = "regular"
+	this.Accessibility = &accessibility
+	var bastionDetails bool = false
+	this.BastionDetails = &bastionDetails
+	var gatewayDetails bool = false
+	this.GatewayDetails = &gatewayDetails
+	var json bool = false
+	this.Json = &json
+	var servicesDetails bool = false
+	this.ServicesDetails = &servicesDetails
 	var showVersions bool = false
 	this.ShowVersions = &showVersions
 	return &this
+}
+
+// GetAccessibility returns the Accessibility field value if set, zero value otherwise.
+func (o *DescribeItem) GetAccessibility() string {
+	if o == nil || o.Accessibility == nil {
+		var ret string
+		return ret
+	}
+	return *o.Accessibility
+}
+
+// GetAccessibilityOk returns a tuple with the Accessibility field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DescribeItem) GetAccessibilityOk() (*string, bool) {
+	if o == nil || o.Accessibility == nil {
+		return nil, false
+	}
+	return o.Accessibility, true
+}
+
+// HasAccessibility returns a boolean if a field has been set.
+func (o *DescribeItem) HasAccessibility() bool {
+	if o != nil && o.Accessibility != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessibility gets a reference to the given string and assigns it to the Accessibility field.
+func (o *DescribeItem) SetAccessibility(v string) {
+	o.Accessibility = &v
+}
+
+// GetBastionDetails returns the BastionDetails field value if set, zero value otherwise.
+func (o *DescribeItem) GetBastionDetails() bool {
+	if o == nil || o.BastionDetails == nil {
+		var ret bool
+		return ret
+	}
+	return *o.BastionDetails
+}
+
+// GetBastionDetailsOk returns a tuple with the BastionDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DescribeItem) GetBastionDetailsOk() (*bool, bool) {
+	if o == nil || o.BastionDetails == nil {
+		return nil, false
+	}
+	return o.BastionDetails, true
+}
+
+// HasBastionDetails returns a boolean if a field has been set.
+func (o *DescribeItem) HasBastionDetails() bool {
+	if o != nil && o.BastionDetails != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBastionDetails gets a reference to the given bool and assigns it to the BastionDetails field.
+func (o *DescribeItem) SetBastionDetails(v bool) {
+	o.BastionDetails = &v
 }
 
 // GetDisplayId returns the DisplayId field value if set, zero value otherwise.
@@ -85,6 +177,38 @@ func (o *DescribeItem) HasDisplayId() bool {
 // SetDisplayId gets a reference to the given string and assigns it to the DisplayId field.
 func (o *DescribeItem) SetDisplayId(v string) {
 	o.DisplayId = &v
+}
+
+// GetGatewayDetails returns the GatewayDetails field value if set, zero value otherwise.
+func (o *DescribeItem) GetGatewayDetails() bool {
+	if o == nil || o.GatewayDetails == nil {
+		var ret bool
+		return ret
+	}
+	return *o.GatewayDetails
+}
+
+// GetGatewayDetailsOk returns a tuple with the GatewayDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DescribeItem) GetGatewayDetailsOk() (*bool, bool) {
+	if o == nil || o.GatewayDetails == nil {
+		return nil, false
+	}
+	return o.GatewayDetails, true
+}
+
+// HasGatewayDetails returns a boolean if a field has been set.
+func (o *DescribeItem) HasGatewayDetails() bool {
+	if o != nil && o.GatewayDetails != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGatewayDetails gets a reference to the given bool and assigns it to the GatewayDetails field.
+func (o *DescribeItem) SetGatewayDetails(v bool) {
+	o.GatewayDetails = &v
 }
 
 // GetItemId returns the ItemId field value if set, zero value otherwise.
@@ -173,6 +297,38 @@ func (o *DescribeItem) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *DescribeItem) SetName(v string) {
 	o.Name = v
+}
+
+// GetServicesDetails returns the ServicesDetails field value if set, zero value otherwise.
+func (o *DescribeItem) GetServicesDetails() bool {
+	if o == nil || o.ServicesDetails == nil {
+		var ret bool
+		return ret
+	}
+	return *o.ServicesDetails
+}
+
+// GetServicesDetailsOk returns a tuple with the ServicesDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DescribeItem) GetServicesDetailsOk() (*bool, bool) {
+	if o == nil || o.ServicesDetails == nil {
+		return nil, false
+	}
+	return o.ServicesDetails, true
+}
+
+// HasServicesDetails returns a boolean if a field has been set.
+func (o *DescribeItem) HasServicesDetails() bool {
+	if o != nil && o.ServicesDetails != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetServicesDetails gets a reference to the given bool and assigns it to the ServicesDetails field.
+func (o *DescribeItem) SetServicesDetails(v bool) {
+	o.ServicesDetails = &v
 }
 
 // GetShowVersions returns the ShowVersions field value if set, zero value otherwise.
@@ -273,8 +429,17 @@ func (o *DescribeItem) SetUidToken(v string) {
 
 func (o DescribeItem) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Accessibility != nil {
+		toSerialize["accessibility"] = o.Accessibility
+	}
+	if o.BastionDetails != nil {
+		toSerialize["bastion-details"] = o.BastionDetails
+	}
 	if o.DisplayId != nil {
 		toSerialize["display-id"] = o.DisplayId
+	}
+	if o.GatewayDetails != nil {
+		toSerialize["gateway-details"] = o.GatewayDetails
 	}
 	if o.ItemId != nil {
 		toSerialize["item-id"] = o.ItemId
@@ -284,6 +449,9 @@ func (o DescribeItem) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.ServicesDetails != nil {
+		toSerialize["services-details"] = o.ServicesDetails
 	}
 	if o.ShowVersions != nil {
 		toSerialize["show-versions"] = o.ShowVersions

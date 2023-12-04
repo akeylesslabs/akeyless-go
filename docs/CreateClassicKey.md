@@ -6,15 +6,23 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Alg** | **string** | Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384, GPG] | 
 **CertFileData** | Pointer to **string** | Certificate in a PEM format. | [optional] 
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
+**CertificateCommonName** | Pointer to **string** | Common name for the generated certificate. Relevant only for generate-self-signed-certificate. | [optional] 
+**CertificateCountry** | Pointer to **string** | Country name for the generated certificate. Relevant only for generate-self-signed-certificate. | [optional] 
+**CertificateDigestAlgo** | Pointer to **string** | Digest algorithm to be used for the certificate key signing. Currently, we support only \&quot;sha256\&quot; so we hide this option for CLI. | [optional] 
+**CertificateLocality** | Pointer to **string** | Locality for the generated certificate. Relevant only for generate-self-signed-certificate. | [optional] 
+**CertificateOrganization** | Pointer to **string** | Organization name for the generated certificate. Relevant only for generate-self-signed-certificate. | [optional] 
+**CertificateProvince** | Pointer to **string** | Province name for the generated certificate. Relevant only for generate-self-signed-certificate. | [optional] 
+**CertificateTtl** | Pointer to **int64** | TTL in days for the generated certificate. Required only for generate-self-signed-certificate. | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
+**GenerateSelfSignedCertificate** | Pointer to **bool** | Whether to generate a self signed certificate with the key. If set, --certificate-ttl must be provided. | [optional] 
 **GpgAlg** | Pointer to **string** | gpg alg: Relevant only if GPG key type selected; options: [RSA1024, RSA2048, RSA3072, RSA4096, Ed25519] | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeyData** | Pointer to **string** | Base64-encoded classic key value | [optional] 
 **Metadata** | Pointer to **string** | Deprecated - use description | [optional] 
 **Name** | **string** | ClassicKey name | 
 **ProtectionKeyName** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
-**Tags** | Pointer to **[]string** | List of the tags attached to this classic key | [optional] 
+**Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
@@ -82,6 +90,181 @@ SetCertFileData sets CertFileData field to given value.
 
 HasCertFileData returns a boolean if a field has been set.
 
+### GetCertificateCommonName
+
+`func (o *CreateClassicKey) GetCertificateCommonName() string`
+
+GetCertificateCommonName returns the CertificateCommonName field if non-nil, zero value otherwise.
+
+### GetCertificateCommonNameOk
+
+`func (o *CreateClassicKey) GetCertificateCommonNameOk() (*string, bool)`
+
+GetCertificateCommonNameOk returns a tuple with the CertificateCommonName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificateCommonName
+
+`func (o *CreateClassicKey) SetCertificateCommonName(v string)`
+
+SetCertificateCommonName sets CertificateCommonName field to given value.
+
+### HasCertificateCommonName
+
+`func (o *CreateClassicKey) HasCertificateCommonName() bool`
+
+HasCertificateCommonName returns a boolean if a field has been set.
+
+### GetCertificateCountry
+
+`func (o *CreateClassicKey) GetCertificateCountry() string`
+
+GetCertificateCountry returns the CertificateCountry field if non-nil, zero value otherwise.
+
+### GetCertificateCountryOk
+
+`func (o *CreateClassicKey) GetCertificateCountryOk() (*string, bool)`
+
+GetCertificateCountryOk returns a tuple with the CertificateCountry field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificateCountry
+
+`func (o *CreateClassicKey) SetCertificateCountry(v string)`
+
+SetCertificateCountry sets CertificateCountry field to given value.
+
+### HasCertificateCountry
+
+`func (o *CreateClassicKey) HasCertificateCountry() bool`
+
+HasCertificateCountry returns a boolean if a field has been set.
+
+### GetCertificateDigestAlgo
+
+`func (o *CreateClassicKey) GetCertificateDigestAlgo() string`
+
+GetCertificateDigestAlgo returns the CertificateDigestAlgo field if non-nil, zero value otherwise.
+
+### GetCertificateDigestAlgoOk
+
+`func (o *CreateClassicKey) GetCertificateDigestAlgoOk() (*string, bool)`
+
+GetCertificateDigestAlgoOk returns a tuple with the CertificateDigestAlgo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificateDigestAlgo
+
+`func (o *CreateClassicKey) SetCertificateDigestAlgo(v string)`
+
+SetCertificateDigestAlgo sets CertificateDigestAlgo field to given value.
+
+### HasCertificateDigestAlgo
+
+`func (o *CreateClassicKey) HasCertificateDigestAlgo() bool`
+
+HasCertificateDigestAlgo returns a boolean if a field has been set.
+
+### GetCertificateLocality
+
+`func (o *CreateClassicKey) GetCertificateLocality() string`
+
+GetCertificateLocality returns the CertificateLocality field if non-nil, zero value otherwise.
+
+### GetCertificateLocalityOk
+
+`func (o *CreateClassicKey) GetCertificateLocalityOk() (*string, bool)`
+
+GetCertificateLocalityOk returns a tuple with the CertificateLocality field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificateLocality
+
+`func (o *CreateClassicKey) SetCertificateLocality(v string)`
+
+SetCertificateLocality sets CertificateLocality field to given value.
+
+### HasCertificateLocality
+
+`func (o *CreateClassicKey) HasCertificateLocality() bool`
+
+HasCertificateLocality returns a boolean if a field has been set.
+
+### GetCertificateOrganization
+
+`func (o *CreateClassicKey) GetCertificateOrganization() string`
+
+GetCertificateOrganization returns the CertificateOrganization field if non-nil, zero value otherwise.
+
+### GetCertificateOrganizationOk
+
+`func (o *CreateClassicKey) GetCertificateOrganizationOk() (*string, bool)`
+
+GetCertificateOrganizationOk returns a tuple with the CertificateOrganization field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificateOrganization
+
+`func (o *CreateClassicKey) SetCertificateOrganization(v string)`
+
+SetCertificateOrganization sets CertificateOrganization field to given value.
+
+### HasCertificateOrganization
+
+`func (o *CreateClassicKey) HasCertificateOrganization() bool`
+
+HasCertificateOrganization returns a boolean if a field has been set.
+
+### GetCertificateProvince
+
+`func (o *CreateClassicKey) GetCertificateProvince() string`
+
+GetCertificateProvince returns the CertificateProvince field if non-nil, zero value otherwise.
+
+### GetCertificateProvinceOk
+
+`func (o *CreateClassicKey) GetCertificateProvinceOk() (*string, bool)`
+
+GetCertificateProvinceOk returns a tuple with the CertificateProvince field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificateProvince
+
+`func (o *CreateClassicKey) SetCertificateProvince(v string)`
+
+SetCertificateProvince sets CertificateProvince field to given value.
+
+### HasCertificateProvince
+
+`func (o *CreateClassicKey) HasCertificateProvince() bool`
+
+HasCertificateProvince returns a boolean if a field has been set.
+
+### GetCertificateTtl
+
+`func (o *CreateClassicKey) GetCertificateTtl() int64`
+
+GetCertificateTtl returns the CertificateTtl field if non-nil, zero value otherwise.
+
+### GetCertificateTtlOk
+
+`func (o *CreateClassicKey) GetCertificateTtlOk() (*int64, bool)`
+
+GetCertificateTtlOk returns a tuple with the CertificateTtl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificateTtl
+
+`func (o *CreateClassicKey) SetCertificateTtl(v int64)`
+
+SetCertificateTtl sets CertificateTtl field to given value.
+
+### HasCertificateTtl
+
+`func (o *CreateClassicKey) HasCertificateTtl() bool`
+
+HasCertificateTtl returns a boolean if a field has been set.
+
 ### GetDeleteProtection
 
 `func (o *CreateClassicKey) GetDeleteProtection() string`
@@ -131,6 +314,31 @@ SetDescription sets Description field to given value.
 `func (o *CreateClassicKey) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetGenerateSelfSignedCertificate
+
+`func (o *CreateClassicKey) GetGenerateSelfSignedCertificate() bool`
+
+GetGenerateSelfSignedCertificate returns the GenerateSelfSignedCertificate field if non-nil, zero value otherwise.
+
+### GetGenerateSelfSignedCertificateOk
+
+`func (o *CreateClassicKey) GetGenerateSelfSignedCertificateOk() (*bool, bool)`
+
+GetGenerateSelfSignedCertificateOk returns a tuple with the GenerateSelfSignedCertificate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGenerateSelfSignedCertificate
+
+`func (o *CreateClassicKey) SetGenerateSelfSignedCertificate(v bool)`
+
+SetGenerateSelfSignedCertificate sets GenerateSelfSignedCertificate field to given value.
+
+### HasGenerateSelfSignedCertificate
+
+`func (o *CreateClassicKey) HasGenerateSelfSignedCertificate() bool`
+
+HasGenerateSelfSignedCertificate returns a boolean if a field has been set.
 
 ### GetGpgAlg
 

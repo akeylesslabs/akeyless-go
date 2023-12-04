@@ -17,17 +17,31 @@ import (
 
 // UpdateDBTarget struct for UpdateDBTarget
 type UpdateDBTarget struct {
-	// Comment about the target
+	DBDefinedConnectionType *string `json:"DBDefinedConnectionType,omitempty"`
+	// (Optional) Client id (relevant for \"cloud-service-provider\" only)
+	AzureClientId *string `json:"azure-client-id,omitempty"`
+	// (Optional) Client secret (relevant for \"cloud-service-provider\" only)
+	AzureClientSecret *string `json:"azure-client-secret,omitempty"`
+	// (Optional) Tenant id (relevant for \"cloud-service-provider\" only)
+	AzureTenantId *string `json:"azure-tenant-id,omitempty"`
+	// (Optional) Cloud service provider (currently only supports Azure)
+	CloudServiceProvider *string `json:"cloud-service-provider,omitempty"`
+	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`
+	// (Optional) Type of connection to mssql database [credentials/cloud-identity]
+	ConnectionType string `json:"connection-type"`
 	DbName *string `json:"db-name,omitempty"`
 	// (Optional) DB server certificates
 	DbServerCertificates *string `json:"db-server-certificates,omitempty"`
 	// (Optional) Server name for certificate verification
 	DbServerName *string `json:"db-server-name,omitempty"`
 	DbType string `json:"db-type"`
+	// Description of the object
+	Description *string `json:"description,omitempty"`
 	Host *string `json:"host,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
+	// Whether to keep previous version [true/false]. If not set, use default according to account settings
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
@@ -54,7 +68,7 @@ type UpdateDBTarget struct {
 	SnowflakeApiPrivateKey *string `json:"snowflake-api-private-key,omitempty"`
 	// The Private key passphrase
 	SnowflakeApiPrivateKeyPassword *string `json:"snowflake-api-private-key-password,omitempty"`
-	// SSL connection mode
+	// Enable/Disable SSL [true/false]
 	Ssl *bool `json:"ssl,omitempty"`
 	// SSL connection certificate
 	SslCertificate *string `json:"ssl-certificate,omitempty"`
@@ -71,10 +85,15 @@ type UpdateDBTarget struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateDBTarget(dbType string, name string, ) *UpdateDBTarget {
+func NewUpdateDBTarget(connectionType string, dbType string, name string, ) *UpdateDBTarget {
 	this := UpdateDBTarget{}
+	this.ConnectionType = connectionType
 	this.DbType = dbType
+	var json bool = false
+	this.Json = &json
 	this.Name = name
+	var ssl bool = false
+	this.Ssl = &ssl
 	return &this
 }
 
@@ -83,7 +102,173 @@ func NewUpdateDBTarget(dbType string, name string, ) *UpdateDBTarget {
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateDBTargetWithDefaults() *UpdateDBTarget {
 	this := UpdateDBTarget{}
+	var connectionType string = "credentials"
+	this.ConnectionType = connectionType
+	var json bool = false
+	this.Json = &json
+	var ssl bool = false
+	this.Ssl = &ssl
 	return &this
+}
+
+// GetDBDefinedConnectionType returns the DBDefinedConnectionType field value if set, zero value otherwise.
+func (o *UpdateDBTarget) GetDBDefinedConnectionType() string {
+	if o == nil || o.DBDefinedConnectionType == nil {
+		var ret string
+		return ret
+	}
+	return *o.DBDefinedConnectionType
+}
+
+// GetDBDefinedConnectionTypeOk returns a tuple with the DBDefinedConnectionType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateDBTarget) GetDBDefinedConnectionTypeOk() (*string, bool) {
+	if o == nil || o.DBDefinedConnectionType == nil {
+		return nil, false
+	}
+	return o.DBDefinedConnectionType, true
+}
+
+// HasDBDefinedConnectionType returns a boolean if a field has been set.
+func (o *UpdateDBTarget) HasDBDefinedConnectionType() bool {
+	if o != nil && o.DBDefinedConnectionType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDBDefinedConnectionType gets a reference to the given string and assigns it to the DBDefinedConnectionType field.
+func (o *UpdateDBTarget) SetDBDefinedConnectionType(v string) {
+	o.DBDefinedConnectionType = &v
+}
+
+// GetAzureClientId returns the AzureClientId field value if set, zero value otherwise.
+func (o *UpdateDBTarget) GetAzureClientId() string {
+	if o == nil || o.AzureClientId == nil {
+		var ret string
+		return ret
+	}
+	return *o.AzureClientId
+}
+
+// GetAzureClientIdOk returns a tuple with the AzureClientId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateDBTarget) GetAzureClientIdOk() (*string, bool) {
+	if o == nil || o.AzureClientId == nil {
+		return nil, false
+	}
+	return o.AzureClientId, true
+}
+
+// HasAzureClientId returns a boolean if a field has been set.
+func (o *UpdateDBTarget) HasAzureClientId() bool {
+	if o != nil && o.AzureClientId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureClientId gets a reference to the given string and assigns it to the AzureClientId field.
+func (o *UpdateDBTarget) SetAzureClientId(v string) {
+	o.AzureClientId = &v
+}
+
+// GetAzureClientSecret returns the AzureClientSecret field value if set, zero value otherwise.
+func (o *UpdateDBTarget) GetAzureClientSecret() string {
+	if o == nil || o.AzureClientSecret == nil {
+		var ret string
+		return ret
+	}
+	return *o.AzureClientSecret
+}
+
+// GetAzureClientSecretOk returns a tuple with the AzureClientSecret field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateDBTarget) GetAzureClientSecretOk() (*string, bool) {
+	if o == nil || o.AzureClientSecret == nil {
+		return nil, false
+	}
+	return o.AzureClientSecret, true
+}
+
+// HasAzureClientSecret returns a boolean if a field has been set.
+func (o *UpdateDBTarget) HasAzureClientSecret() bool {
+	if o != nil && o.AzureClientSecret != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureClientSecret gets a reference to the given string and assigns it to the AzureClientSecret field.
+func (o *UpdateDBTarget) SetAzureClientSecret(v string) {
+	o.AzureClientSecret = &v
+}
+
+// GetAzureTenantId returns the AzureTenantId field value if set, zero value otherwise.
+func (o *UpdateDBTarget) GetAzureTenantId() string {
+	if o == nil || o.AzureTenantId == nil {
+		var ret string
+		return ret
+	}
+	return *o.AzureTenantId
+}
+
+// GetAzureTenantIdOk returns a tuple with the AzureTenantId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateDBTarget) GetAzureTenantIdOk() (*string, bool) {
+	if o == nil || o.AzureTenantId == nil {
+		return nil, false
+	}
+	return o.AzureTenantId, true
+}
+
+// HasAzureTenantId returns a boolean if a field has been set.
+func (o *UpdateDBTarget) HasAzureTenantId() bool {
+	if o != nil && o.AzureTenantId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureTenantId gets a reference to the given string and assigns it to the AzureTenantId field.
+func (o *UpdateDBTarget) SetAzureTenantId(v string) {
+	o.AzureTenantId = &v
+}
+
+// GetCloudServiceProvider returns the CloudServiceProvider field value if set, zero value otherwise.
+func (o *UpdateDBTarget) GetCloudServiceProvider() string {
+	if o == nil || o.CloudServiceProvider == nil {
+		var ret string
+		return ret
+	}
+	return *o.CloudServiceProvider
+}
+
+// GetCloudServiceProviderOk returns a tuple with the CloudServiceProvider field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateDBTarget) GetCloudServiceProviderOk() (*string, bool) {
+	if o == nil || o.CloudServiceProvider == nil {
+		return nil, false
+	}
+	return o.CloudServiceProvider, true
+}
+
+// HasCloudServiceProvider returns a boolean if a field has been set.
+func (o *UpdateDBTarget) HasCloudServiceProvider() bool {
+	if o != nil && o.CloudServiceProvider != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCloudServiceProvider gets a reference to the given string and assigns it to the CloudServiceProvider field.
+func (o *UpdateDBTarget) SetCloudServiceProvider(v string) {
+	o.CloudServiceProvider = &v
 }
 
 // GetComment returns the Comment field value if set, zero value otherwise.
@@ -116,6 +301,30 @@ func (o *UpdateDBTarget) HasComment() bool {
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *UpdateDBTarget) SetComment(v string) {
 	o.Comment = &v
+}
+
+// GetConnectionType returns the ConnectionType field value
+func (o *UpdateDBTarget) GetConnectionType() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.ConnectionType
+}
+
+// GetConnectionTypeOk returns a tuple with the ConnectionType field value
+// and a boolean to check if the value has been set.
+func (o *UpdateDBTarget) GetConnectionTypeOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.ConnectionType, true
+}
+
+// SetConnectionType sets field value
+func (o *UpdateDBTarget) SetConnectionType(v string) {
+	o.ConnectionType = v
 }
 
 // GetDbName returns the DbName field value if set, zero value otherwise.
@@ -236,6 +445,38 @@ func (o *UpdateDBTarget) GetDbTypeOk() (*string, bool) {
 // SetDbType sets field value
 func (o *UpdateDBTarget) SetDbType(v string) {
 	o.DbType = v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *UpdateDBTarget) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateDBTarget) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *UpdateDBTarget) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *UpdateDBTarget) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetHost returns the Host field value if set, zero value otherwise.
@@ -1000,8 +1241,26 @@ func (o *UpdateDBTarget) SetUserName(v string) {
 
 func (o UpdateDBTarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.DBDefinedConnectionType != nil {
+		toSerialize["DBDefinedConnectionType"] = o.DBDefinedConnectionType
+	}
+	if o.AzureClientId != nil {
+		toSerialize["azure-client-id"] = o.AzureClientId
+	}
+	if o.AzureClientSecret != nil {
+		toSerialize["azure-client-secret"] = o.AzureClientSecret
+	}
+	if o.AzureTenantId != nil {
+		toSerialize["azure-tenant-id"] = o.AzureTenantId
+	}
+	if o.CloudServiceProvider != nil {
+		toSerialize["cloud-service-provider"] = o.CloudServiceProvider
+	}
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment
+	}
+	if true {
+		toSerialize["connection-type"] = o.ConnectionType
 	}
 	if o.DbName != nil {
 		toSerialize["db-name"] = o.DbName
@@ -1014,6 +1273,9 @@ func (o UpdateDBTarget) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["db-type"] = o.DbType
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.Host != nil {
 		toSerialize["host"] = o.Host

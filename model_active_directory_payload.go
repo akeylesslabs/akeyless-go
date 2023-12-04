@@ -23,6 +23,7 @@ type ActiveDirectoryPayload struct {
 	AutoRotateRotationHour *int32 `json:"auto_rotate_rotation_hour,omitempty"`
 	ComputerBaseDn *string `json:"computer_base_dn,omitempty"`
 	DiscoverLocalUsers *bool `json:"discover_local_users,omitempty"`
+	DiscoverServices *bool `json:"discover_services,omitempty"`
 	DomainName *string `json:"domain_name,omitempty"`
 	DomainServerTargetsPathTemplate *string `json:"domain_server_targets_path_template,omitempty"`
 	DomainUsersRotatedSecretsPathTemplate *string `json:"domain_users_rotated_secrets_path_template,omitempty"`
@@ -30,8 +31,11 @@ type ActiveDirectoryPayload struct {
 	LocalUsersIgnoreList *map[string]bool `json:"local_users_ignore_list,omitempty"`
 	LocalUsersRotatedSecretsPathTemplate *string `json:"local_users_rotated_secrets_path_template,omitempty"`
 	SshPort *string `json:"ssh_port,omitempty"`
+	TargetsType *string `json:"targets_type,omitempty"`
 	UserBaseDn *string `json:"user_base_dn,omitempty"`
 	UserGroups *[]string `json:"user_groups,omitempty"`
+	WinrmOverHttp *bool `json:"winrm_over_http,omitempty"`
+	WinrmPort *string `json:"winrm_port,omitempty"`
 }
 
 // NewActiveDirectoryPayload instantiates a new ActiveDirectoryPayload object
@@ -241,6 +245,38 @@ func (o *ActiveDirectoryPayload) HasDiscoverLocalUsers() bool {
 // SetDiscoverLocalUsers gets a reference to the given bool and assigns it to the DiscoverLocalUsers field.
 func (o *ActiveDirectoryPayload) SetDiscoverLocalUsers(v bool) {
 	o.DiscoverLocalUsers = &v
+}
+
+// GetDiscoverServices returns the DiscoverServices field value if set, zero value otherwise.
+func (o *ActiveDirectoryPayload) GetDiscoverServices() bool {
+	if o == nil || o.DiscoverServices == nil {
+		var ret bool
+		return ret
+	}
+	return *o.DiscoverServices
+}
+
+// GetDiscoverServicesOk returns a tuple with the DiscoverServices field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ActiveDirectoryPayload) GetDiscoverServicesOk() (*bool, bool) {
+	if o == nil || o.DiscoverServices == nil {
+		return nil, false
+	}
+	return o.DiscoverServices, true
+}
+
+// HasDiscoverServices returns a boolean if a field has been set.
+func (o *ActiveDirectoryPayload) HasDiscoverServices() bool {
+	if o != nil && o.DiscoverServices != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDiscoverServices gets a reference to the given bool and assigns it to the DiscoverServices field.
+func (o *ActiveDirectoryPayload) SetDiscoverServices(v bool) {
+	o.DiscoverServices = &v
 }
 
 // GetDomainName returns the DomainName field value if set, zero value otherwise.
@@ -467,6 +503,38 @@ func (o *ActiveDirectoryPayload) SetSshPort(v string) {
 	o.SshPort = &v
 }
 
+// GetTargetsType returns the TargetsType field value if set, zero value otherwise.
+func (o *ActiveDirectoryPayload) GetTargetsType() string {
+	if o == nil || o.TargetsType == nil {
+		var ret string
+		return ret
+	}
+	return *o.TargetsType
+}
+
+// GetTargetsTypeOk returns a tuple with the TargetsType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ActiveDirectoryPayload) GetTargetsTypeOk() (*string, bool) {
+	if o == nil || o.TargetsType == nil {
+		return nil, false
+	}
+	return o.TargetsType, true
+}
+
+// HasTargetsType returns a boolean if a field has been set.
+func (o *ActiveDirectoryPayload) HasTargetsType() bool {
+	if o != nil && o.TargetsType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetsType gets a reference to the given string and assigns it to the TargetsType field.
+func (o *ActiveDirectoryPayload) SetTargetsType(v string) {
+	o.TargetsType = &v
+}
+
 // GetUserBaseDn returns the UserBaseDn field value if set, zero value otherwise.
 func (o *ActiveDirectoryPayload) GetUserBaseDn() string {
 	if o == nil || o.UserBaseDn == nil {
@@ -531,6 +599,70 @@ func (o *ActiveDirectoryPayload) SetUserGroups(v []string) {
 	o.UserGroups = &v
 }
 
+// GetWinrmOverHttp returns the WinrmOverHttp field value if set, zero value otherwise.
+func (o *ActiveDirectoryPayload) GetWinrmOverHttp() bool {
+	if o == nil || o.WinrmOverHttp == nil {
+		var ret bool
+		return ret
+	}
+	return *o.WinrmOverHttp
+}
+
+// GetWinrmOverHttpOk returns a tuple with the WinrmOverHttp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ActiveDirectoryPayload) GetWinrmOverHttpOk() (*bool, bool) {
+	if o == nil || o.WinrmOverHttp == nil {
+		return nil, false
+	}
+	return o.WinrmOverHttp, true
+}
+
+// HasWinrmOverHttp returns a boolean if a field has been set.
+func (o *ActiveDirectoryPayload) HasWinrmOverHttp() bool {
+	if o != nil && o.WinrmOverHttp != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetWinrmOverHttp gets a reference to the given bool and assigns it to the WinrmOverHttp field.
+func (o *ActiveDirectoryPayload) SetWinrmOverHttp(v bool) {
+	o.WinrmOverHttp = &v
+}
+
+// GetWinrmPort returns the WinrmPort field value if set, zero value otherwise.
+func (o *ActiveDirectoryPayload) GetWinrmPort() string {
+	if o == nil || o.WinrmPort == nil {
+		var ret string
+		return ret
+	}
+	return *o.WinrmPort
+}
+
+// GetWinrmPortOk returns a tuple with the WinrmPort field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ActiveDirectoryPayload) GetWinrmPortOk() (*string, bool) {
+	if o == nil || o.WinrmPort == nil {
+		return nil, false
+	}
+	return o.WinrmPort, true
+}
+
+// HasWinrmPort returns a boolean if a field has been set.
+func (o *ActiveDirectoryPayload) HasWinrmPort() bool {
+	if o != nil && o.WinrmPort != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetWinrmPort gets a reference to the given string and assigns it to the WinrmPort field.
+func (o *ActiveDirectoryPayload) SetWinrmPort(v string) {
+	o.WinrmPort = &v
+}
+
 func (o ActiveDirectoryPayload) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ActiveDirectoryTargetId != nil {
@@ -550,6 +682,9 @@ func (o ActiveDirectoryPayload) MarshalJSON() ([]byte, error) {
 	}
 	if o.DiscoverLocalUsers != nil {
 		toSerialize["discover_local_users"] = o.DiscoverLocalUsers
+	}
+	if o.DiscoverServices != nil {
+		toSerialize["discover_services"] = o.DiscoverServices
 	}
 	if o.DomainName != nil {
 		toSerialize["domain_name"] = o.DomainName
@@ -572,11 +707,20 @@ func (o ActiveDirectoryPayload) MarshalJSON() ([]byte, error) {
 	if o.SshPort != nil {
 		toSerialize["ssh_port"] = o.SshPort
 	}
+	if o.TargetsType != nil {
+		toSerialize["targets_type"] = o.TargetsType
+	}
 	if o.UserBaseDn != nil {
 		toSerialize["user_base_dn"] = o.UserBaseDn
 	}
 	if o.UserGroups != nil {
 		toSerialize["user_groups"] = o.UserGroups
+	}
+	if o.WinrmOverHttp != nil {
+		toSerialize["winrm_over_http"] = o.WinrmOverHttp
+	}
+	if o.WinrmPort != nil {
+		toSerialize["winrm_port"] = o.WinrmPort
 	}
 	return json.Marshal(toSerialize)
 }

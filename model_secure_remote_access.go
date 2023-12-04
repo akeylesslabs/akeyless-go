@@ -31,10 +31,12 @@ type SecureRemoteAccess struct {
 	Enable *bool `json:"enable,omitempty"`
 	Endpoint *string `json:"endpoint,omitempty"`
 	Host *[]string `json:"host,omitempty"`
+	HostProviderType *string `json:"host_provider_type,omitempty"`
 	IsCli *bool `json:"is_cli,omitempty"`
 	IsWeb *bool `json:"is_web,omitempty"`
 	Isolated *bool `json:"isolated,omitempty"`
 	Native *bool `json:"native,omitempty"`
+	RdGatewayServer *string `json:"rd_gateway_server,omitempty"`
 	RdpUser *string `json:"rdp_user,omitempty"`
 	Region *string `json:"region,omitempty"`
 	RotateAfterDisconnect *bool `json:"rotate_after_disconnect,omitempty"`
@@ -42,6 +44,7 @@ type SecureRemoteAccess struct {
 	SshPassword *bool `json:"ssh_password,omitempty"`
 	SshPrivateKey *bool `json:"ssh_private_key,omitempty"`
 	SshUser *string `json:"ssh_user,omitempty"`
+	TargetHosts *[]TargetNameWithHosts `json:"target_hosts,omitempty"`
 	Url *string `json:"url,omitempty"`
 	UseInternalBastion *bool `json:"use_internal_bastion,omitempty"`
 	WebProxy *bool `json:"web_proxy,omitempty"`
@@ -512,6 +515,38 @@ func (o *SecureRemoteAccess) SetHost(v []string) {
 	o.Host = &v
 }
 
+// GetHostProviderType returns the HostProviderType field value if set, zero value otherwise.
+func (o *SecureRemoteAccess) GetHostProviderType() string {
+	if o == nil || o.HostProviderType == nil {
+		var ret string
+		return ret
+	}
+	return *o.HostProviderType
+}
+
+// GetHostProviderTypeOk returns a tuple with the HostProviderType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SecureRemoteAccess) GetHostProviderTypeOk() (*string, bool) {
+	if o == nil || o.HostProviderType == nil {
+		return nil, false
+	}
+	return o.HostProviderType, true
+}
+
+// HasHostProviderType returns a boolean if a field has been set.
+func (o *SecureRemoteAccess) HasHostProviderType() bool {
+	if o != nil && o.HostProviderType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHostProviderType gets a reference to the given string and assigns it to the HostProviderType field.
+func (o *SecureRemoteAccess) SetHostProviderType(v string) {
+	o.HostProviderType = &v
+}
+
 // GetIsCli returns the IsCli field value if set, zero value otherwise.
 func (o *SecureRemoteAccess) GetIsCli() bool {
 	if o == nil || o.IsCli == nil {
@@ -638,6 +673,38 @@ func (o *SecureRemoteAccess) HasNative() bool {
 // SetNative gets a reference to the given bool and assigns it to the Native field.
 func (o *SecureRemoteAccess) SetNative(v bool) {
 	o.Native = &v
+}
+
+// GetRdGatewayServer returns the RdGatewayServer field value if set, zero value otherwise.
+func (o *SecureRemoteAccess) GetRdGatewayServer() string {
+	if o == nil || o.RdGatewayServer == nil {
+		var ret string
+		return ret
+	}
+	return *o.RdGatewayServer
+}
+
+// GetRdGatewayServerOk returns a tuple with the RdGatewayServer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SecureRemoteAccess) GetRdGatewayServerOk() (*string, bool) {
+	if o == nil || o.RdGatewayServer == nil {
+		return nil, false
+	}
+	return o.RdGatewayServer, true
+}
+
+// HasRdGatewayServer returns a boolean if a field has been set.
+func (o *SecureRemoteAccess) HasRdGatewayServer() bool {
+	if o != nil && o.RdGatewayServer != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRdGatewayServer gets a reference to the given string and assigns it to the RdGatewayServer field.
+func (o *SecureRemoteAccess) SetRdGatewayServer(v string) {
+	o.RdGatewayServer = &v
 }
 
 // GetRdpUser returns the RdpUser field value if set, zero value otherwise.
@@ -864,6 +931,38 @@ func (o *SecureRemoteAccess) SetSshUser(v string) {
 	o.SshUser = &v
 }
 
+// GetTargetHosts returns the TargetHosts field value if set, zero value otherwise.
+func (o *SecureRemoteAccess) GetTargetHosts() []TargetNameWithHosts {
+	if o == nil || o.TargetHosts == nil {
+		var ret []TargetNameWithHosts
+		return ret
+	}
+	return *o.TargetHosts
+}
+
+// GetTargetHostsOk returns a tuple with the TargetHosts field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SecureRemoteAccess) GetTargetHostsOk() (*[]TargetNameWithHosts, bool) {
+	if o == nil || o.TargetHosts == nil {
+		return nil, false
+	}
+	return o.TargetHosts, true
+}
+
+// HasTargetHosts returns a boolean if a field has been set.
+func (o *SecureRemoteAccess) HasTargetHosts() bool {
+	if o != nil && o.TargetHosts != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetHosts gets a reference to the given []TargetNameWithHosts and assigns it to the TargetHosts field.
+func (o *SecureRemoteAccess) SetTargetHosts(v []TargetNameWithHosts) {
+	o.TargetHosts = &v
+}
+
 // GetUrl returns the Url field value if set, zero value otherwise.
 func (o *SecureRemoteAccess) GetUrl() string {
 	if o == nil || o.Url == nil {
@@ -1004,6 +1103,9 @@ func (o SecureRemoteAccess) MarshalJSON() ([]byte, error) {
 	if o.Host != nil {
 		toSerialize["host"] = o.Host
 	}
+	if o.HostProviderType != nil {
+		toSerialize["host_provider_type"] = o.HostProviderType
+	}
 	if o.IsCli != nil {
 		toSerialize["is_cli"] = o.IsCli
 	}
@@ -1015,6 +1117,9 @@ func (o SecureRemoteAccess) MarshalJSON() ([]byte, error) {
 	}
 	if o.Native != nil {
 		toSerialize["native"] = o.Native
+	}
+	if o.RdGatewayServer != nil {
+		toSerialize["rd_gateway_server"] = o.RdGatewayServer
 	}
 	if o.RdpUser != nil {
 		toSerialize["rdp_user"] = o.RdpUser
@@ -1036,6 +1141,9 @@ func (o SecureRemoteAccess) MarshalJSON() ([]byte, error) {
 	}
 	if o.SshUser != nil {
 		toSerialize["ssh_user"] = o.SshUser
+	}
+	if o.TargetHosts != nil {
+		toSerialize["target_hosts"] = o.TargetHosts
 	}
 	if o.Url != nil {
 		toSerialize["url"] = o.Url

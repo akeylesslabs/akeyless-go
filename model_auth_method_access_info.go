@@ -38,6 +38,7 @@ type AuthMethodAccessInfo struct {
 	OidcAccessRules *OIDCAccessRules `json:"oidc_access_rules,omitempty"`
 	RulesType *string `json:"rules_type,omitempty"`
 	SamlAccessRules *SAMLAccessRules `json:"saml_access_rules,omitempty"`
+	SubClaimsDelimiters *[]string `json:"sub_claims_delimiters,omitempty"`
 	UniversalIdentityAccessRules *UniversalIdentityAccessRules `json:"universal_identity_access_rules,omitempty"`
 }
 
@@ -666,6 +667,38 @@ func (o *AuthMethodAccessInfo) SetSamlAccessRules(v SAMLAccessRules) {
 	o.SamlAccessRules = &v
 }
 
+// GetSubClaimsDelimiters returns the SubClaimsDelimiters field value if set, zero value otherwise.
+func (o *AuthMethodAccessInfo) GetSubClaimsDelimiters() []string {
+	if o == nil || o.SubClaimsDelimiters == nil {
+		var ret []string
+		return ret
+	}
+	return *o.SubClaimsDelimiters
+}
+
+// GetSubClaimsDelimitersOk returns a tuple with the SubClaimsDelimiters field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodAccessInfo) GetSubClaimsDelimitersOk() (*[]string, bool) {
+	if o == nil || o.SubClaimsDelimiters == nil {
+		return nil, false
+	}
+	return o.SubClaimsDelimiters, true
+}
+
+// HasSubClaimsDelimiters returns a boolean if a field has been set.
+func (o *AuthMethodAccessInfo) HasSubClaimsDelimiters() bool {
+	if o != nil && o.SubClaimsDelimiters != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSubClaimsDelimiters gets a reference to the given []string and assigns it to the SubClaimsDelimiters field.
+func (o *AuthMethodAccessInfo) SetSubClaimsDelimiters(v []string) {
+	o.SubClaimsDelimiters = &v
+}
+
 // GetUniversalIdentityAccessRules returns the UniversalIdentityAccessRules field value if set, zero value otherwise.
 func (o *AuthMethodAccessInfo) GetUniversalIdentityAccessRules() UniversalIdentityAccessRules {
 	if o == nil || o.UniversalIdentityAccessRules == nil {
@@ -756,6 +789,9 @@ func (o AuthMethodAccessInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.SamlAccessRules != nil {
 		toSerialize["saml_access_rules"] = o.SamlAccessRules
+	}
+	if o.SubClaimsDelimiters != nil {
+		toSerialize["sub_claims_delimiters"] = o.SubClaimsDelimiters
 	}
 	if o.UniversalIdentityAccessRules != nil {
 		toSerialize["universal_identity_access_rules"] = o.UniversalIdentityAccessRules

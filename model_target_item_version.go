@@ -19,6 +19,7 @@ import (
 // TargetItemVersion struct for TargetItemVersion
 type TargetItemVersion struct {
 	AccessDate *time.Time `json:"access_date,omitempty"`
+	AccessDateDisplay *string `json:"access_date_display,omitempty"`
 	CreationDate *time.Time `json:"creation_date,omitempty"`
 	CustomerFragmentId *string `json:"customer_fragment_id,omitempty"`
 	DeletionDate *time.Time `json:"deletion_date,omitempty"`
@@ -79,6 +80,38 @@ func (o *TargetItemVersion) HasAccessDate() bool {
 // SetAccessDate gets a reference to the given time.Time and assigns it to the AccessDate field.
 func (o *TargetItemVersion) SetAccessDate(v time.Time) {
 	o.AccessDate = &v
+}
+
+// GetAccessDateDisplay returns the AccessDateDisplay field value if set, zero value otherwise.
+func (o *TargetItemVersion) GetAccessDateDisplay() string {
+	if o == nil || o.AccessDateDisplay == nil {
+		var ret string
+		return ret
+	}
+	return *o.AccessDateDisplay
+}
+
+// GetAccessDateDisplayOk returns a tuple with the AccessDateDisplay field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetItemVersion) GetAccessDateDisplayOk() (*string, bool) {
+	if o == nil || o.AccessDateDisplay == nil {
+		return nil, false
+	}
+	return o.AccessDateDisplay, true
+}
+
+// HasAccessDateDisplay returns a boolean if a field has been set.
+func (o *TargetItemVersion) HasAccessDateDisplay() bool {
+	if o != nil && o.AccessDateDisplay != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessDateDisplay gets a reference to the given string and assigns it to the AccessDateDisplay field.
+func (o *TargetItemVersion) SetAccessDateDisplay(v string) {
+	o.AccessDateDisplay = &v
 }
 
 // GetCreationDate returns the CreationDate field value if set, zero value otherwise.
@@ -405,6 +438,9 @@ func (o TargetItemVersion) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccessDate != nil {
 		toSerialize["access_date"] = o.AccessDate
+	}
+	if o.AccessDateDisplay != nil {
+		toSerialize["access_date_display"] = o.AccessDateDisplay
 	}
 	if o.CreationDate != nil {
 		toSerialize["creation_date"] = o.CreationDate
