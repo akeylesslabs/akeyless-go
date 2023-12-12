@@ -33,6 +33,8 @@ type GatewayStopProducer struct {
 // will change when the set of required properties is changed
 func NewGatewayStopProducer(name string, ) *GatewayStopProducer {
 	this := GatewayStopProducer{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -42,6 +44,8 @@ func NewGatewayStopProducer(name string, ) *GatewayStopProducer {
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayStopProducerWithDefaults() *GatewayStopProducer {
 	this := GatewayStopProducer{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

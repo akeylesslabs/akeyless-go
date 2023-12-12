@@ -9,12 +9,15 @@ Name | Type | Description | Notes
 **BoundClientIds** | Pointer to **[]string** | The clients ids that the access is restricted to | [optional] 
 **BoundIps** | Pointer to **[]string** | A CIDR whitelist with the IPs that the access is restricted to | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
+**GatewayUrl** | Pointer to **string** | Akeyless Gateway URL (Configuration Management port). Relevant only when the jwks-uri is accessible only from the gateway. | [optional] 
 **GwBoundIps** | Pointer to **[]string** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
 **Issuer** | Pointer to **string** | Issuer URL | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
-**JwksUri** | **string** | The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. | 
-**JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**JwksJsonData** | Pointer to **string** | The JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. base64 encoded string | [optional] 
+**JwksUri** | **string** | The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. | [default to "default_jwks_url"]
+**JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] [default to 0]
 **Name** | **string** | Auth Method name | 
+**SubclaimsDelimiters** | Pointer to **[]string** | A list of additional sub claims delimiters (relevant only for SAML, OIDC, OAuth2/JWT) | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UniqueIdentifier** | **string** | A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. | 
@@ -163,6 +166,31 @@ SetForceSubClaims sets ForceSubClaims field to given value.
 
 HasForceSubClaims returns a boolean if a field has been set.
 
+### GetGatewayUrl
+
+`func (o *CreateAuthMethodOAuth2) GetGatewayUrl() string`
+
+GetGatewayUrl returns the GatewayUrl field if non-nil, zero value otherwise.
+
+### GetGatewayUrlOk
+
+`func (o *CreateAuthMethodOAuth2) GetGatewayUrlOk() (*string, bool)`
+
+GetGatewayUrlOk returns a tuple with the GatewayUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGatewayUrl
+
+`func (o *CreateAuthMethodOAuth2) SetGatewayUrl(v string)`
+
+SetGatewayUrl sets GatewayUrl field to given value.
+
+### HasGatewayUrl
+
+`func (o *CreateAuthMethodOAuth2) HasGatewayUrl() bool`
+
+HasGatewayUrl returns a boolean if a field has been set.
+
 ### GetGwBoundIps
 
 `func (o *CreateAuthMethodOAuth2) GetGwBoundIps() []string`
@@ -238,6 +266,31 @@ SetJson sets Json field to given value.
 
 HasJson returns a boolean if a field has been set.
 
+### GetJwksJsonData
+
+`func (o *CreateAuthMethodOAuth2) GetJwksJsonData() string`
+
+GetJwksJsonData returns the JwksJsonData field if non-nil, zero value otherwise.
+
+### GetJwksJsonDataOk
+
+`func (o *CreateAuthMethodOAuth2) GetJwksJsonDataOk() (*string, bool)`
+
+GetJwksJsonDataOk returns a tuple with the JwksJsonData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJwksJsonData
+
+`func (o *CreateAuthMethodOAuth2) SetJwksJsonData(v string)`
+
+SetJwksJsonData sets JwksJsonData field to given value.
+
+### HasJwksJsonData
+
+`func (o *CreateAuthMethodOAuth2) HasJwksJsonData() bool`
+
+HasJwksJsonData returns a boolean if a field has been set.
+
 ### GetJwksUri
 
 `func (o *CreateAuthMethodOAuth2) GetJwksUri() string`
@@ -302,6 +355,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetSubclaimsDelimiters
+
+`func (o *CreateAuthMethodOAuth2) GetSubclaimsDelimiters() []string`
+
+GetSubclaimsDelimiters returns the SubclaimsDelimiters field if non-nil, zero value otherwise.
+
+### GetSubclaimsDelimitersOk
+
+`func (o *CreateAuthMethodOAuth2) GetSubclaimsDelimitersOk() (*[]string, bool)`
+
+GetSubclaimsDelimitersOk returns a tuple with the SubclaimsDelimiters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSubclaimsDelimiters
+
+`func (o *CreateAuthMethodOAuth2) SetSubclaimsDelimiters(v []string)`
+
+SetSubclaimsDelimiters sets SubclaimsDelimiters field to given value.
+
+### HasSubclaimsDelimiters
+
+`func (o *CreateAuthMethodOAuth2) HasSubclaimsDelimiters() bool`
+
+HasSubclaimsDelimiters returns a boolean if a field has been set.
 
 ### GetToken
 

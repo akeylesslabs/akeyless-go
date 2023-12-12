@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// ItemTargetAssociation ItemTargetAssociation includes details of an association between an item and a target.
+// ItemTargetAssociation and a target.
 type ItemTargetAssociation struct {
 	AssocId *string `json:"assoc_id,omitempty"`
 	Attributes *map[string]string `json:"attributes,omitempty"`

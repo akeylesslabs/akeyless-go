@@ -18,6 +18,7 @@ import (
 // DSProducerDetails struct for DSProducerDetails
 type DSProducerDetails struct {
 	AccessTokenManagerId *string `json:"access_token_manager_id,omitempty"`
+	AclRules *[]string `json:"acl_rules,omitempty"`
 	Active *bool `json:"active,omitempty"`
 	AdminName *string `json:"admin_name,omitempty"`
 	AdminPwd *string `json:"admin_pwd,omitempty"`
@@ -62,7 +63,11 @@ type DSProducerDetails struct {
 	ChefServerUsername *string `json:"chef_server_username,omitempty"`
 	ChefSkipSsl *bool `json:"chef_skip_ssl,omitempty"`
 	ClientAuthenticationType *string `json:"client_authentication_type,omitempty"`
+	CloudServiceProvider *string `json:"cloud_service_provider,omitempty"`
+	ConnectionType *string `json:"connection_type,omitempty"`
 	CreateSyncUrl *string `json:"create_sync_url,omitempty"`
+	DbClientId *string `json:"db_client_id,omitempty"`
+	DbClientSecret *string `json:"db_client_secret,omitempty"`
 	DbHostName *string `json:"db_host_name,omitempty"`
 	DbIsolationLevel *string `json:"db_isolation_level,omitempty"`
 	DbMaxIdleConns *string `json:"db_max_idle_conns,omitempty"`
@@ -77,6 +82,7 @@ type DSProducerDetails struct {
 	DbServerCertificates *string `json:"db_server_certificates,omitempty"`
 	// (Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client's handshake to support virtual hosting unless it is an IP address.
 	DbServerName *string `json:"db_server_name,omitempty"`
+	DbTenantId *string `json:"db_tenant_id,omitempty"`
 	DbUserName *string `json:"db_user_name,omitempty"`
 	DeleteProtection *bool `json:"delete_protection,omitempty"`
 	DynamicSecretId *int64 `json:"dynamic_secret_id,omitempty"`
@@ -101,6 +107,8 @@ type DSProducerDetails struct {
 	// GCPServiceAccountEmail overrides the deprecated field from the target
 	GcpServiceAccountEmail *string `json:"gcp_service_account_email,omitempty"`
 	GcpServiceAccountKey *string `json:"gcp_service_account_key,omitempty"`
+	GcpServiceAccountKeyBase64 *string `json:"gcp_service_account_key_base64,omitempty"`
+	GcpServiceAccountKeyId *string `json:"gcp_service_account_key_id,omitempty"`
 	GcpServiceAccountType *string `json:"gcp_service_account_type,omitempty"`
 	GcpTmpServiceAccountName *string `json:"gcp_tmp_service_account_name,omitempty"`
 	GcpTokenLifetime *string `json:"gcp_token_lifetime,omitempty"`
@@ -134,25 +142,28 @@ type DSProducerDetails struct {
 	JwksUrl *string `json:"jwks_url,omitempty"`
 	// comma-separated list of allowed namespaces. Can hold just * which signifies that any namespace is allowed
 	K8sAllowedNamespaces *string `json:"k8s_allowed_namespaces,omitempty"`
+	K8sAuthType *string `json:"k8s_auth_type,omitempty"`
 	K8sBearerToken *string `json:"k8s_bearer_token,omitempty"`
+	// For K8s Client certificates authentication
+	K8sClientCertData *string `json:"k8s_client_cert_data,omitempty"`
+	K8sClientKeyData *string `json:"k8s_client_key_data,omitempty"`
 	K8sClusterCaCertificate *string `json:"k8s_cluster_ca_certificate,omitempty"`
 	K8sClusterEndpoint *string `json:"k8s_cluster_endpoint,omitempty"`
 	// when native k8s is in dynamic mode, user can define allowed namespaces, K8sServiceAccount doesn't exist from the start and will only be created at time of getting dynamic secret value By default dynamic mode is false and producer behaves like it did before
 	K8sDynamicMode *bool `json:"k8s_dynamic_mode,omitempty"`
+	// Yaml definition for creation of temporary objects. Field that can hold multiple docs from which following will be extracted: ServiceAccount, Role/ClusterRole and RoleBinding/ClusterRoleBinding. If ServiceAccount not specified - it will be generated automatically
+	K8sMultipleDocYamlTempDefinition *[]int32 `json:"k8s_multiple_doc_yaml_temp_definition,omitempty"`
 	K8sNamespace *string `json:"k8s_namespace,omitempty"`
 	// Name of the pre-existing Role or ClusterRole to bind a generated service account to.
 	K8sRoleName *string `json:"k8s_role_name,omitempty"`
 	K8sRoleType *string `json:"k8s_role_type,omitempty"`
 	K8sServiceAccount *string `json:"k8s_service_account,omitempty"`
-	// Yaml/Json definition of temporary role binding that will be created and deleted when TTL is due. Must have as subject name of Service Account specified in K8sServiceAccount field
-	K8sTempRoleBindingDefinition *[]int32 `json:"k8s_temp_role_binding_definition,omitempty"`
-	// Yaml/Json definition of temporary role that will be created and deleted when TTL is due
-	K8sTempRoleDefinition *[]int32 `json:"k8s_temp_role_definition,omitempty"`
 	LastAdminRotation *int64 `json:"last_admin_rotation,omitempty"`
 	LdapAudience *string `json:"ldap_audience,omitempty"`
 	LdapBindDn *string `json:"ldap_bind_dn,omitempty"`
 	LdapBindPassword *string `json:"ldap_bind_password,omitempty"`
 	LdapCertificate *string `json:"ldap_certificate,omitempty"`
+	LdapGroupDn *string `json:"ldap_group_dn,omitempty"`
 	LdapTokenExpiration *string `json:"ldap_token_expiration,omitempty"`
 	LdapUrl *string `json:"ldap_url,omitempty"`
 	LdapUserAttr *string `json:"ldap_user_attr,omitempty"`
@@ -178,6 +189,7 @@ type DSProducerDetails struct {
 	MssqlCreationStatements *string `json:"mssql_creation_statements,omitempty"`
 	MssqlRevocationStatements *string `json:"mssql_revocation_statements,omitempty"`
 	MysqlCreationStatements *string `json:"mysql_creation_statements,omitempty"`
+	MysqlRevocationStatements *string `json:"mysql_revocation_statements,omitempty"`
 	OracleCreationStatements *string `json:"oracle_creation_statements,omitempty"`
 	Password *string `json:"password,omitempty"`
 	PasswordLength *int64 `json:"password_length,omitempty"`
@@ -218,6 +230,7 @@ type DSProducerDetails struct {
 	Tags *[]string `json:"tags,omitempty"`
 	TimeoutSeconds *int64 `json:"timeout_seconds,omitempty"`
 	UseGwCloudIdentity *bool `json:"use_gw_cloud_identity,omitempty"`
+	UseGwServiceAccount *bool `json:"use_gw_service_account,omitempty"`
 	UserName *string `json:"user_name,omitempty"`
 	UserPassword *string `json:"user_password,omitempty"`
 	UserPrincipalName *string `json:"user_principal_name,omitempty"`
@@ -233,7 +246,12 @@ type DSProducerDetails struct {
 	VenafiSignUsingAkeylessPki *bool `json:"venafi_sign_using_akeyless_pki,omitempty"`
 	VenafiSignerKeyName *string `json:"venafi_signer_key_name,omitempty"`
 	VenafiStorePrivateKey *bool `json:"venafi_store_private_key,omitempty"`
+	VenafiTppAccessToken *string `json:"venafi_tpp_access_token,omitempty"`
+	VenafiTppClientId *string `json:"venafi_tpp_client_id,omitempty"`
+	// Deprecated: VenafiAccessToken and VenafiRefreshToken should be used instead
 	VenafiTppPassword *string `json:"venafi_tpp_password,omitempty"`
+	VenafiTppRefreshToken *string `json:"venafi_tpp_refresh_token,omitempty"`
+	// Deprecated: VenafiAccessToken and VenafiRefreshToken should be used instead
 	VenafiTppUsername *string `json:"venafi_tpp_username,omitempty"`
 	VenafiUseTpp *bool `json:"venafi_use_tpp,omitempty"`
 	VenafiZone *string `json:"venafi_zone,omitempty"`
@@ -287,6 +305,38 @@ func (o *DSProducerDetails) HasAccessTokenManagerId() bool {
 // SetAccessTokenManagerId gets a reference to the given string and assigns it to the AccessTokenManagerId field.
 func (o *DSProducerDetails) SetAccessTokenManagerId(v string) {
 	o.AccessTokenManagerId = &v
+}
+
+// GetAclRules returns the AclRules field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetAclRules() []string {
+	if o == nil || o.AclRules == nil {
+		var ret []string
+		return ret
+	}
+	return *o.AclRules
+}
+
+// GetAclRulesOk returns a tuple with the AclRules field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetAclRulesOk() (*[]string, bool) {
+	if o == nil || o.AclRules == nil {
+		return nil, false
+	}
+	return o.AclRules, true
+}
+
+// HasAclRules returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasAclRules() bool {
+	if o != nil && o.AclRules != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAclRules gets a reference to the given []string and assigns it to the AclRules field.
+func (o *DSProducerDetails) SetAclRules(v []string) {
+	o.AclRules = &v
 }
 
 // GetActive returns the Active field value if set, zero value otherwise.
@@ -1697,6 +1747,70 @@ func (o *DSProducerDetails) SetClientAuthenticationType(v string) {
 	o.ClientAuthenticationType = &v
 }
 
+// GetCloudServiceProvider returns the CloudServiceProvider field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetCloudServiceProvider() string {
+	if o == nil || o.CloudServiceProvider == nil {
+		var ret string
+		return ret
+	}
+	return *o.CloudServiceProvider
+}
+
+// GetCloudServiceProviderOk returns a tuple with the CloudServiceProvider field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetCloudServiceProviderOk() (*string, bool) {
+	if o == nil || o.CloudServiceProvider == nil {
+		return nil, false
+	}
+	return o.CloudServiceProvider, true
+}
+
+// HasCloudServiceProvider returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasCloudServiceProvider() bool {
+	if o != nil && o.CloudServiceProvider != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCloudServiceProvider gets a reference to the given string and assigns it to the CloudServiceProvider field.
+func (o *DSProducerDetails) SetCloudServiceProvider(v string) {
+	o.CloudServiceProvider = &v
+}
+
+// GetConnectionType returns the ConnectionType field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetConnectionType() string {
+	if o == nil || o.ConnectionType == nil {
+		var ret string
+		return ret
+	}
+	return *o.ConnectionType
+}
+
+// GetConnectionTypeOk returns a tuple with the ConnectionType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetConnectionTypeOk() (*string, bool) {
+	if o == nil || o.ConnectionType == nil {
+		return nil, false
+	}
+	return o.ConnectionType, true
+}
+
+// HasConnectionType returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasConnectionType() bool {
+	if o != nil && o.ConnectionType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetConnectionType gets a reference to the given string and assigns it to the ConnectionType field.
+func (o *DSProducerDetails) SetConnectionType(v string) {
+	o.ConnectionType = &v
+}
+
 // GetCreateSyncUrl returns the CreateSyncUrl field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetCreateSyncUrl() string {
 	if o == nil || o.CreateSyncUrl == nil {
@@ -1727,6 +1841,70 @@ func (o *DSProducerDetails) HasCreateSyncUrl() bool {
 // SetCreateSyncUrl gets a reference to the given string and assigns it to the CreateSyncUrl field.
 func (o *DSProducerDetails) SetCreateSyncUrl(v string) {
 	o.CreateSyncUrl = &v
+}
+
+// GetDbClientId returns the DbClientId field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetDbClientId() string {
+	if o == nil || o.DbClientId == nil {
+		var ret string
+		return ret
+	}
+	return *o.DbClientId
+}
+
+// GetDbClientIdOk returns a tuple with the DbClientId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetDbClientIdOk() (*string, bool) {
+	if o == nil || o.DbClientId == nil {
+		return nil, false
+	}
+	return o.DbClientId, true
+}
+
+// HasDbClientId returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasDbClientId() bool {
+	if o != nil && o.DbClientId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDbClientId gets a reference to the given string and assigns it to the DbClientId field.
+func (o *DSProducerDetails) SetDbClientId(v string) {
+	o.DbClientId = &v
+}
+
+// GetDbClientSecret returns the DbClientSecret field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetDbClientSecret() string {
+	if o == nil || o.DbClientSecret == nil {
+		var ret string
+		return ret
+	}
+	return *o.DbClientSecret
+}
+
+// GetDbClientSecretOk returns a tuple with the DbClientSecret field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetDbClientSecretOk() (*string, bool) {
+	if o == nil || o.DbClientSecret == nil {
+		return nil, false
+	}
+	return o.DbClientSecret, true
+}
+
+// HasDbClientSecret returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasDbClientSecret() bool {
+	if o != nil && o.DbClientSecret != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDbClientSecret gets a reference to the given string and assigns it to the DbClientSecret field.
+func (o *DSProducerDetails) SetDbClientSecret(v string) {
+	o.DbClientSecret = &v
 }
 
 // GetDbHostName returns the DbHostName field value if set, zero value otherwise.
@@ -2079,6 +2257,38 @@ func (o *DSProducerDetails) HasDbServerName() bool {
 // SetDbServerName gets a reference to the given string and assigns it to the DbServerName field.
 func (o *DSProducerDetails) SetDbServerName(v string) {
 	o.DbServerName = &v
+}
+
+// GetDbTenantId returns the DbTenantId field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetDbTenantId() string {
+	if o == nil || o.DbTenantId == nil {
+		var ret string
+		return ret
+	}
+	return *o.DbTenantId
+}
+
+// GetDbTenantIdOk returns a tuple with the DbTenantId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetDbTenantIdOk() (*string, bool) {
+	if o == nil || o.DbTenantId == nil {
+		return nil, false
+	}
+	return o.DbTenantId, true
+}
+
+// HasDbTenantId returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasDbTenantId() bool {
+	if o != nil && o.DbTenantId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDbTenantId gets a reference to the given string and assigns it to the DbTenantId field.
+func (o *DSProducerDetails) SetDbTenantId(v string) {
+	o.DbTenantId = &v
 }
 
 // GetDbUserName returns the DbUserName field value if set, zero value otherwise.
@@ -2783,6 +2993,70 @@ func (o *DSProducerDetails) HasGcpServiceAccountKey() bool {
 // SetGcpServiceAccountKey gets a reference to the given string and assigns it to the GcpServiceAccountKey field.
 func (o *DSProducerDetails) SetGcpServiceAccountKey(v string) {
 	o.GcpServiceAccountKey = &v
+}
+
+// GetGcpServiceAccountKeyBase64 returns the GcpServiceAccountKeyBase64 field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGcpServiceAccountKeyBase64() string {
+	if o == nil || o.GcpServiceAccountKeyBase64 == nil {
+		var ret string
+		return ret
+	}
+	return *o.GcpServiceAccountKeyBase64
+}
+
+// GetGcpServiceAccountKeyBase64Ok returns a tuple with the GcpServiceAccountKeyBase64 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGcpServiceAccountKeyBase64Ok() (*string, bool) {
+	if o == nil || o.GcpServiceAccountKeyBase64 == nil {
+		return nil, false
+	}
+	return o.GcpServiceAccountKeyBase64, true
+}
+
+// HasGcpServiceAccountKeyBase64 returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGcpServiceAccountKeyBase64() bool {
+	if o != nil && o.GcpServiceAccountKeyBase64 != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpServiceAccountKeyBase64 gets a reference to the given string and assigns it to the GcpServiceAccountKeyBase64 field.
+func (o *DSProducerDetails) SetGcpServiceAccountKeyBase64(v string) {
+	o.GcpServiceAccountKeyBase64 = &v
+}
+
+// GetGcpServiceAccountKeyId returns the GcpServiceAccountKeyId field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGcpServiceAccountKeyId() string {
+	if o == nil || o.GcpServiceAccountKeyId == nil {
+		var ret string
+		return ret
+	}
+	return *o.GcpServiceAccountKeyId
+}
+
+// GetGcpServiceAccountKeyIdOk returns a tuple with the GcpServiceAccountKeyId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGcpServiceAccountKeyIdOk() (*string, bool) {
+	if o == nil || o.GcpServiceAccountKeyId == nil {
+		return nil, false
+	}
+	return o.GcpServiceAccountKeyId, true
+}
+
+// HasGcpServiceAccountKeyId returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGcpServiceAccountKeyId() bool {
+	if o != nil && o.GcpServiceAccountKeyId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpServiceAccountKeyId gets a reference to the given string and assigns it to the GcpServiceAccountKeyId field.
+func (o *DSProducerDetails) SetGcpServiceAccountKeyId(v string) {
+	o.GcpServiceAccountKeyId = &v
 }
 
 // GetGcpServiceAccountType returns the GcpServiceAccountType field value if set, zero value otherwise.
@@ -3777,6 +4051,38 @@ func (o *DSProducerDetails) SetK8sAllowedNamespaces(v string) {
 	o.K8sAllowedNamespaces = &v
 }
 
+// GetK8sAuthType returns the K8sAuthType field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetK8sAuthType() string {
+	if o == nil || o.K8sAuthType == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sAuthType
+}
+
+// GetK8sAuthTypeOk returns a tuple with the K8sAuthType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetK8sAuthTypeOk() (*string, bool) {
+	if o == nil || o.K8sAuthType == nil {
+		return nil, false
+	}
+	return o.K8sAuthType, true
+}
+
+// HasK8sAuthType returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasK8sAuthType() bool {
+	if o != nil && o.K8sAuthType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sAuthType gets a reference to the given string and assigns it to the K8sAuthType field.
+func (o *DSProducerDetails) SetK8sAuthType(v string) {
+	o.K8sAuthType = &v
+}
+
 // GetK8sBearerToken returns the K8sBearerToken field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetK8sBearerToken() string {
 	if o == nil || o.K8sBearerToken == nil {
@@ -3807,6 +4113,70 @@ func (o *DSProducerDetails) HasK8sBearerToken() bool {
 // SetK8sBearerToken gets a reference to the given string and assigns it to the K8sBearerToken field.
 func (o *DSProducerDetails) SetK8sBearerToken(v string) {
 	o.K8sBearerToken = &v
+}
+
+// GetK8sClientCertData returns the K8sClientCertData field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetK8sClientCertData() string {
+	if o == nil || o.K8sClientCertData == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sClientCertData
+}
+
+// GetK8sClientCertDataOk returns a tuple with the K8sClientCertData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetK8sClientCertDataOk() (*string, bool) {
+	if o == nil || o.K8sClientCertData == nil {
+		return nil, false
+	}
+	return o.K8sClientCertData, true
+}
+
+// HasK8sClientCertData returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasK8sClientCertData() bool {
+	if o != nil && o.K8sClientCertData != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sClientCertData gets a reference to the given string and assigns it to the K8sClientCertData field.
+func (o *DSProducerDetails) SetK8sClientCertData(v string) {
+	o.K8sClientCertData = &v
+}
+
+// GetK8sClientKeyData returns the K8sClientKeyData field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetK8sClientKeyData() string {
+	if o == nil || o.K8sClientKeyData == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sClientKeyData
+}
+
+// GetK8sClientKeyDataOk returns a tuple with the K8sClientKeyData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetK8sClientKeyDataOk() (*string, bool) {
+	if o == nil || o.K8sClientKeyData == nil {
+		return nil, false
+	}
+	return o.K8sClientKeyData, true
+}
+
+// HasK8sClientKeyData returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasK8sClientKeyData() bool {
+	if o != nil && o.K8sClientKeyData != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sClientKeyData gets a reference to the given string and assigns it to the K8sClientKeyData field.
+func (o *DSProducerDetails) SetK8sClientKeyData(v string) {
+	o.K8sClientKeyData = &v
 }
 
 // GetK8sClusterCaCertificate returns the K8sClusterCaCertificate field value if set, zero value otherwise.
@@ -3903,6 +4273,38 @@ func (o *DSProducerDetails) HasK8sDynamicMode() bool {
 // SetK8sDynamicMode gets a reference to the given bool and assigns it to the K8sDynamicMode field.
 func (o *DSProducerDetails) SetK8sDynamicMode(v bool) {
 	o.K8sDynamicMode = &v
+}
+
+// GetK8sMultipleDocYamlTempDefinition returns the K8sMultipleDocYamlTempDefinition field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetK8sMultipleDocYamlTempDefinition() []int32 {
+	if o == nil || o.K8sMultipleDocYamlTempDefinition == nil {
+		var ret []int32
+		return ret
+	}
+	return *o.K8sMultipleDocYamlTempDefinition
+}
+
+// GetK8sMultipleDocYamlTempDefinitionOk returns a tuple with the K8sMultipleDocYamlTempDefinition field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetK8sMultipleDocYamlTempDefinitionOk() (*[]int32, bool) {
+	if o == nil || o.K8sMultipleDocYamlTempDefinition == nil {
+		return nil, false
+	}
+	return o.K8sMultipleDocYamlTempDefinition, true
+}
+
+// HasK8sMultipleDocYamlTempDefinition returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasK8sMultipleDocYamlTempDefinition() bool {
+	if o != nil && o.K8sMultipleDocYamlTempDefinition != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sMultipleDocYamlTempDefinition gets a reference to the given []int32 and assigns it to the K8sMultipleDocYamlTempDefinition field.
+func (o *DSProducerDetails) SetK8sMultipleDocYamlTempDefinition(v []int32) {
+	o.K8sMultipleDocYamlTempDefinition = &v
 }
 
 // GetK8sNamespace returns the K8sNamespace field value if set, zero value otherwise.
@@ -4031,70 +4433,6 @@ func (o *DSProducerDetails) HasK8sServiceAccount() bool {
 // SetK8sServiceAccount gets a reference to the given string and assigns it to the K8sServiceAccount field.
 func (o *DSProducerDetails) SetK8sServiceAccount(v string) {
 	o.K8sServiceAccount = &v
-}
-
-// GetK8sTempRoleBindingDefinition returns the K8sTempRoleBindingDefinition field value if set, zero value otherwise.
-func (o *DSProducerDetails) GetK8sTempRoleBindingDefinition() []int32 {
-	if o == nil || o.K8sTempRoleBindingDefinition == nil {
-		var ret []int32
-		return ret
-	}
-	return *o.K8sTempRoleBindingDefinition
-}
-
-// GetK8sTempRoleBindingDefinitionOk returns a tuple with the K8sTempRoleBindingDefinition field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DSProducerDetails) GetK8sTempRoleBindingDefinitionOk() (*[]int32, bool) {
-	if o == nil || o.K8sTempRoleBindingDefinition == nil {
-		return nil, false
-	}
-	return o.K8sTempRoleBindingDefinition, true
-}
-
-// HasK8sTempRoleBindingDefinition returns a boolean if a field has been set.
-func (o *DSProducerDetails) HasK8sTempRoleBindingDefinition() bool {
-	if o != nil && o.K8sTempRoleBindingDefinition != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetK8sTempRoleBindingDefinition gets a reference to the given []int32 and assigns it to the K8sTempRoleBindingDefinition field.
-func (o *DSProducerDetails) SetK8sTempRoleBindingDefinition(v []int32) {
-	o.K8sTempRoleBindingDefinition = &v
-}
-
-// GetK8sTempRoleDefinition returns the K8sTempRoleDefinition field value if set, zero value otherwise.
-func (o *DSProducerDetails) GetK8sTempRoleDefinition() []int32 {
-	if o == nil || o.K8sTempRoleDefinition == nil {
-		var ret []int32
-		return ret
-	}
-	return *o.K8sTempRoleDefinition
-}
-
-// GetK8sTempRoleDefinitionOk returns a tuple with the K8sTempRoleDefinition field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DSProducerDetails) GetK8sTempRoleDefinitionOk() (*[]int32, bool) {
-	if o == nil || o.K8sTempRoleDefinition == nil {
-		return nil, false
-	}
-	return o.K8sTempRoleDefinition, true
-}
-
-// HasK8sTempRoleDefinition returns a boolean if a field has been set.
-func (o *DSProducerDetails) HasK8sTempRoleDefinition() bool {
-	if o != nil && o.K8sTempRoleDefinition != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetK8sTempRoleDefinition gets a reference to the given []int32 and assigns it to the K8sTempRoleDefinition field.
-func (o *DSProducerDetails) SetK8sTempRoleDefinition(v []int32) {
-	o.K8sTempRoleDefinition = &v
 }
 
 // GetLastAdminRotation returns the LastAdminRotation field value if set, zero value otherwise.
@@ -4255,6 +4593,38 @@ func (o *DSProducerDetails) HasLdapCertificate() bool {
 // SetLdapCertificate gets a reference to the given string and assigns it to the LdapCertificate field.
 func (o *DSProducerDetails) SetLdapCertificate(v string) {
 	o.LdapCertificate = &v
+}
+
+// GetLdapGroupDn returns the LdapGroupDn field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetLdapGroupDn() string {
+	if o == nil || o.LdapGroupDn == nil {
+		var ret string
+		return ret
+	}
+	return *o.LdapGroupDn
+}
+
+// GetLdapGroupDnOk returns a tuple with the LdapGroupDn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetLdapGroupDnOk() (*string, bool) {
+	if o == nil || o.LdapGroupDn == nil {
+		return nil, false
+	}
+	return o.LdapGroupDn, true
+}
+
+// HasLdapGroupDn returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasLdapGroupDn() bool {
+	if o != nil && o.LdapGroupDn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLdapGroupDn gets a reference to the given string and assigns it to the LdapGroupDn field.
+func (o *DSProducerDetails) SetLdapGroupDn(v string) {
+	o.LdapGroupDn = &v
 }
 
 // GetLdapTokenExpiration returns the LdapTokenExpiration field value if set, zero value otherwise.
@@ -4927,6 +5297,38 @@ func (o *DSProducerDetails) HasMysqlCreationStatements() bool {
 // SetMysqlCreationStatements gets a reference to the given string and assigns it to the MysqlCreationStatements field.
 func (o *DSProducerDetails) SetMysqlCreationStatements(v string) {
 	o.MysqlCreationStatements = &v
+}
+
+// GetMysqlRevocationStatements returns the MysqlRevocationStatements field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetMysqlRevocationStatements() string {
+	if o == nil || o.MysqlRevocationStatements == nil {
+		var ret string
+		return ret
+	}
+	return *o.MysqlRevocationStatements
+}
+
+// GetMysqlRevocationStatementsOk returns a tuple with the MysqlRevocationStatements field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetMysqlRevocationStatementsOk() (*string, bool) {
+	if o == nil || o.MysqlRevocationStatements == nil {
+		return nil, false
+	}
+	return o.MysqlRevocationStatements, true
+}
+
+// HasMysqlRevocationStatements returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasMysqlRevocationStatements() bool {
+	if o != nil && o.MysqlRevocationStatements != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMysqlRevocationStatements gets a reference to the given string and assigns it to the MysqlRevocationStatements field.
+func (o *DSProducerDetails) SetMysqlRevocationStatements(v string) {
+	o.MysqlRevocationStatements = &v
 }
 
 // GetOracleCreationStatements returns the OracleCreationStatements field value if set, zero value otherwise.
@@ -6081,6 +6483,38 @@ func (o *DSProducerDetails) SetUseGwCloudIdentity(v bool) {
 	o.UseGwCloudIdentity = &v
 }
 
+// GetUseGwServiceAccount returns the UseGwServiceAccount field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetUseGwServiceAccount() bool {
+	if o == nil || o.UseGwServiceAccount == nil {
+		var ret bool
+		return ret
+	}
+	return *o.UseGwServiceAccount
+}
+
+// GetUseGwServiceAccountOk returns a tuple with the UseGwServiceAccount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetUseGwServiceAccountOk() (*bool, bool) {
+	if o == nil || o.UseGwServiceAccount == nil {
+		return nil, false
+	}
+	return o.UseGwServiceAccount, true
+}
+
+// HasUseGwServiceAccount returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasUseGwServiceAccount() bool {
+	if o != nil && o.UseGwServiceAccount != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUseGwServiceAccount gets a reference to the given bool and assigns it to the UseGwServiceAccount field.
+func (o *DSProducerDetails) SetUseGwServiceAccount(v bool) {
+	o.UseGwServiceAccount = &v
+}
+
 // GetUserName returns the UserName field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetUserName() string {
 	if o == nil || o.UserName == nil {
@@ -6561,6 +6995,70 @@ func (o *DSProducerDetails) SetVenafiStorePrivateKey(v bool) {
 	o.VenafiStorePrivateKey = &v
 }
 
+// GetVenafiTppAccessToken returns the VenafiTppAccessToken field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetVenafiTppAccessToken() string {
+	if o == nil || o.VenafiTppAccessToken == nil {
+		var ret string
+		return ret
+	}
+	return *o.VenafiTppAccessToken
+}
+
+// GetVenafiTppAccessTokenOk returns a tuple with the VenafiTppAccessToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetVenafiTppAccessTokenOk() (*string, bool) {
+	if o == nil || o.VenafiTppAccessToken == nil {
+		return nil, false
+	}
+	return o.VenafiTppAccessToken, true
+}
+
+// HasVenafiTppAccessToken returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasVenafiTppAccessToken() bool {
+	if o != nil && o.VenafiTppAccessToken != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVenafiTppAccessToken gets a reference to the given string and assigns it to the VenafiTppAccessToken field.
+func (o *DSProducerDetails) SetVenafiTppAccessToken(v string) {
+	o.VenafiTppAccessToken = &v
+}
+
+// GetVenafiTppClientId returns the VenafiTppClientId field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetVenafiTppClientId() string {
+	if o == nil || o.VenafiTppClientId == nil {
+		var ret string
+		return ret
+	}
+	return *o.VenafiTppClientId
+}
+
+// GetVenafiTppClientIdOk returns a tuple with the VenafiTppClientId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetVenafiTppClientIdOk() (*string, bool) {
+	if o == nil || o.VenafiTppClientId == nil {
+		return nil, false
+	}
+	return o.VenafiTppClientId, true
+}
+
+// HasVenafiTppClientId returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasVenafiTppClientId() bool {
+	if o != nil && o.VenafiTppClientId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVenafiTppClientId gets a reference to the given string and assigns it to the VenafiTppClientId field.
+func (o *DSProducerDetails) SetVenafiTppClientId(v string) {
+	o.VenafiTppClientId = &v
+}
+
 // GetVenafiTppPassword returns the VenafiTppPassword field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetVenafiTppPassword() string {
 	if o == nil || o.VenafiTppPassword == nil {
@@ -6591,6 +7089,38 @@ func (o *DSProducerDetails) HasVenafiTppPassword() bool {
 // SetVenafiTppPassword gets a reference to the given string and assigns it to the VenafiTppPassword field.
 func (o *DSProducerDetails) SetVenafiTppPassword(v string) {
 	o.VenafiTppPassword = &v
+}
+
+// GetVenafiTppRefreshToken returns the VenafiTppRefreshToken field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetVenafiTppRefreshToken() string {
+	if o == nil || o.VenafiTppRefreshToken == nil {
+		var ret string
+		return ret
+	}
+	return *o.VenafiTppRefreshToken
+}
+
+// GetVenafiTppRefreshTokenOk returns a tuple with the VenafiTppRefreshToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetVenafiTppRefreshTokenOk() (*string, bool) {
+	if o == nil || o.VenafiTppRefreshToken == nil {
+		return nil, false
+	}
+	return o.VenafiTppRefreshToken, true
+}
+
+// HasVenafiTppRefreshToken returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasVenafiTppRefreshToken() bool {
+	if o != nil && o.VenafiTppRefreshToken != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVenafiTppRefreshToken gets a reference to the given string and assigns it to the VenafiTppRefreshToken field.
+func (o *DSProducerDetails) SetVenafiTppRefreshToken(v string) {
+	o.VenafiTppRefreshToken = &v
 }
 
 // GetVenafiTppUsername returns the VenafiTppUsername field value if set, zero value otherwise.
@@ -6726,6 +7256,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	if o.AccessTokenManagerId != nil {
 		toSerialize["access_token_manager_id"] = o.AccessTokenManagerId
 	}
+	if o.AclRules != nil {
+		toSerialize["acl_rules"] = o.AclRules
+	}
 	if o.Active != nil {
 		toSerialize["active"] = o.Active
 	}
@@ -6858,8 +7391,20 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	if o.ClientAuthenticationType != nil {
 		toSerialize["client_authentication_type"] = o.ClientAuthenticationType
 	}
+	if o.CloudServiceProvider != nil {
+		toSerialize["cloud_service_provider"] = o.CloudServiceProvider
+	}
+	if o.ConnectionType != nil {
+		toSerialize["connection_type"] = o.ConnectionType
+	}
 	if o.CreateSyncUrl != nil {
 		toSerialize["create_sync_url"] = o.CreateSyncUrl
+	}
+	if o.DbClientId != nil {
+		toSerialize["db_client_id"] = o.DbClientId
+	}
+	if o.DbClientSecret != nil {
+		toSerialize["db_client_secret"] = o.DbClientSecret
 	}
 	if o.DbHostName != nil {
 		toSerialize["db_host_name"] = o.DbHostName
@@ -6893,6 +7438,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.DbServerName != nil {
 		toSerialize["db_server_name"] = o.DbServerName
+	}
+	if o.DbTenantId != nil {
+		toSerialize["db_tenant_id"] = o.DbTenantId
 	}
 	if o.DbUserName != nil {
 		toSerialize["db_user_name"] = o.DbUserName
@@ -6959,6 +7507,12 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.GcpServiceAccountKey != nil {
 		toSerialize["gcp_service_account_key"] = o.GcpServiceAccountKey
+	}
+	if o.GcpServiceAccountKeyBase64 != nil {
+		toSerialize["gcp_service_account_key_base64"] = o.GcpServiceAccountKeyBase64
+	}
+	if o.GcpServiceAccountKeyId != nil {
+		toSerialize["gcp_service_account_key_id"] = o.GcpServiceAccountKeyId
 	}
 	if o.GcpServiceAccountType != nil {
 		toSerialize["gcp_service_account_type"] = o.GcpServiceAccountType
@@ -7053,8 +7607,17 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	if o.K8sAllowedNamespaces != nil {
 		toSerialize["k8s_allowed_namespaces"] = o.K8sAllowedNamespaces
 	}
+	if o.K8sAuthType != nil {
+		toSerialize["k8s_auth_type"] = o.K8sAuthType
+	}
 	if o.K8sBearerToken != nil {
 		toSerialize["k8s_bearer_token"] = o.K8sBearerToken
+	}
+	if o.K8sClientCertData != nil {
+		toSerialize["k8s_client_cert_data"] = o.K8sClientCertData
+	}
+	if o.K8sClientKeyData != nil {
+		toSerialize["k8s_client_key_data"] = o.K8sClientKeyData
 	}
 	if o.K8sClusterCaCertificate != nil {
 		toSerialize["k8s_cluster_ca_certificate"] = o.K8sClusterCaCertificate
@@ -7064,6 +7627,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.K8sDynamicMode != nil {
 		toSerialize["k8s_dynamic_mode"] = o.K8sDynamicMode
+	}
+	if o.K8sMultipleDocYamlTempDefinition != nil {
+		toSerialize["k8s_multiple_doc_yaml_temp_definition"] = o.K8sMultipleDocYamlTempDefinition
 	}
 	if o.K8sNamespace != nil {
 		toSerialize["k8s_namespace"] = o.K8sNamespace
@@ -7076,12 +7642,6 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.K8sServiceAccount != nil {
 		toSerialize["k8s_service_account"] = o.K8sServiceAccount
-	}
-	if o.K8sTempRoleBindingDefinition != nil {
-		toSerialize["k8s_temp_role_binding_definition"] = o.K8sTempRoleBindingDefinition
-	}
-	if o.K8sTempRoleDefinition != nil {
-		toSerialize["k8s_temp_role_definition"] = o.K8sTempRoleDefinition
 	}
 	if o.LastAdminRotation != nil {
 		toSerialize["last_admin_rotation"] = o.LastAdminRotation
@@ -7097,6 +7657,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.LdapCertificate != nil {
 		toSerialize["ldap_certificate"] = o.LdapCertificate
+	}
+	if o.LdapGroupDn != nil {
+		toSerialize["ldap_group_dn"] = o.LdapGroupDn
 	}
 	if o.LdapTokenExpiration != nil {
 		toSerialize["ldap_token_expiration"] = o.LdapTokenExpiration
@@ -7160,6 +7723,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.MysqlCreationStatements != nil {
 		toSerialize["mysql_creation_statements"] = o.MysqlCreationStatements
+	}
+	if o.MysqlRevocationStatements != nil {
+		toSerialize["mysql_revocation_statements"] = o.MysqlRevocationStatements
 	}
 	if o.OracleCreationStatements != nil {
 		toSerialize["oracle_creation_statements"] = o.OracleCreationStatements
@@ -7269,6 +7835,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	if o.UseGwCloudIdentity != nil {
 		toSerialize["use_gw_cloud_identity"] = o.UseGwCloudIdentity
 	}
+	if o.UseGwServiceAccount != nil {
+		toSerialize["use_gw_service_account"] = o.UseGwServiceAccount
+	}
 	if o.UserName != nil {
 		toSerialize["user_name"] = o.UserName
 	}
@@ -7314,8 +7883,17 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	if o.VenafiStorePrivateKey != nil {
 		toSerialize["venafi_store_private_key"] = o.VenafiStorePrivateKey
 	}
+	if o.VenafiTppAccessToken != nil {
+		toSerialize["venafi_tpp_access_token"] = o.VenafiTppAccessToken
+	}
+	if o.VenafiTppClientId != nil {
+		toSerialize["venafi_tpp_client_id"] = o.VenafiTppClientId
+	}
 	if o.VenafiTppPassword != nil {
 		toSerialize["venafi_tpp_password"] = o.VenafiTppPassword
+	}
+	if o.VenafiTppRefreshToken != nil {
+		toSerialize["venafi_tpp_refresh_token"] = o.VenafiTppRefreshToken
 	}
 	if o.VenafiTppUsername != nil {
 		toSerialize["venafi_tpp_username"] = o.VenafiTppUsername

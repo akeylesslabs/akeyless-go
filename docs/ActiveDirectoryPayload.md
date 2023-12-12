@@ -9,16 +9,22 @@ Name | Type | Description | Notes
 **AutoRotateIntervalInDays** | Pointer to **int32** |  | [optional] 
 **AutoRotateRotationHour** | Pointer to **int32** |  | [optional] 
 **ComputerBaseDn** | Pointer to **string** |  | [optional] 
-**DiscoverLocalUsers** | Pointer to **bool** |  | [optional] 
+**DiscoverLocalUsers** | Pointer to **bool** | Deprecated | [optional] 
+**DiscoverServices** | Pointer to **bool** |  | [optional] 
+**DiscoveryTypes** | Pointer to **[]string** |  | [optional] 
 **DomainName** | Pointer to **string** |  | [optional] 
 **DomainServerTargetsPathTemplate** | Pointer to **string** |  | [optional] 
 **DomainUsersRotatedSecretsPathTemplate** | Pointer to **string** |  | [optional] 
 **EnableRdpSra** | Pointer to **bool** |  | [optional] 
 **LocalUsersIgnoreList** | Pointer to **map[string]bool** |  | [optional] 
 **LocalUsersRotatedSecretsPathTemplate** | Pointer to **string** |  | [optional] 
+**OsFilter** | Pointer to **string** |  | [optional] 
 **SshPort** | Pointer to **string** |  | [optional] 
+**TargetsType** | Pointer to **string** |  | [optional] 
 **UserBaseDn** | Pointer to **string** |  | [optional] 
 **UserGroups** | Pointer to **[]string** |  | [optional] 
+**WinrmOverHttp** | Pointer to **bool** |  | [optional] 
+**WinrmPort** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -189,6 +195,56 @@ SetDiscoverLocalUsers sets DiscoverLocalUsers field to given value.
 
 HasDiscoverLocalUsers returns a boolean if a field has been set.
 
+### GetDiscoverServices
+
+`func (o *ActiveDirectoryPayload) GetDiscoverServices() bool`
+
+GetDiscoverServices returns the DiscoverServices field if non-nil, zero value otherwise.
+
+### GetDiscoverServicesOk
+
+`func (o *ActiveDirectoryPayload) GetDiscoverServicesOk() (*bool, bool)`
+
+GetDiscoverServicesOk returns a tuple with the DiscoverServices field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDiscoverServices
+
+`func (o *ActiveDirectoryPayload) SetDiscoverServices(v bool)`
+
+SetDiscoverServices sets DiscoverServices field to given value.
+
+### HasDiscoverServices
+
+`func (o *ActiveDirectoryPayload) HasDiscoverServices() bool`
+
+HasDiscoverServices returns a boolean if a field has been set.
+
+### GetDiscoveryTypes
+
+`func (o *ActiveDirectoryPayload) GetDiscoveryTypes() []string`
+
+GetDiscoveryTypes returns the DiscoveryTypes field if non-nil, zero value otherwise.
+
+### GetDiscoveryTypesOk
+
+`func (o *ActiveDirectoryPayload) GetDiscoveryTypesOk() (*[]string, bool)`
+
+GetDiscoveryTypesOk returns a tuple with the DiscoveryTypes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDiscoveryTypes
+
+`func (o *ActiveDirectoryPayload) SetDiscoveryTypes(v []string)`
+
+SetDiscoveryTypes sets DiscoveryTypes field to given value.
+
+### HasDiscoveryTypes
+
+`func (o *ActiveDirectoryPayload) HasDiscoveryTypes() bool`
+
+HasDiscoveryTypes returns a boolean if a field has been set.
+
 ### GetDomainName
 
 `func (o *ActiveDirectoryPayload) GetDomainName() string`
@@ -339,6 +395,31 @@ SetLocalUsersRotatedSecretsPathTemplate sets LocalUsersRotatedSecretsPathTemplat
 
 HasLocalUsersRotatedSecretsPathTemplate returns a boolean if a field has been set.
 
+### GetOsFilter
+
+`func (o *ActiveDirectoryPayload) GetOsFilter() string`
+
+GetOsFilter returns the OsFilter field if non-nil, zero value otherwise.
+
+### GetOsFilterOk
+
+`func (o *ActiveDirectoryPayload) GetOsFilterOk() (*string, bool)`
+
+GetOsFilterOk returns a tuple with the OsFilter field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOsFilter
+
+`func (o *ActiveDirectoryPayload) SetOsFilter(v string)`
+
+SetOsFilter sets OsFilter field to given value.
+
+### HasOsFilter
+
+`func (o *ActiveDirectoryPayload) HasOsFilter() bool`
+
+HasOsFilter returns a boolean if a field has been set.
+
 ### GetSshPort
 
 `func (o *ActiveDirectoryPayload) GetSshPort() string`
@@ -363,6 +444,31 @@ SetSshPort sets SshPort field to given value.
 `func (o *ActiveDirectoryPayload) HasSshPort() bool`
 
 HasSshPort returns a boolean if a field has been set.
+
+### GetTargetsType
+
+`func (o *ActiveDirectoryPayload) GetTargetsType() string`
+
+GetTargetsType returns the TargetsType field if non-nil, zero value otherwise.
+
+### GetTargetsTypeOk
+
+`func (o *ActiveDirectoryPayload) GetTargetsTypeOk() (*string, bool)`
+
+GetTargetsTypeOk returns a tuple with the TargetsType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetsType
+
+`func (o *ActiveDirectoryPayload) SetTargetsType(v string)`
+
+SetTargetsType sets TargetsType field to given value.
+
+### HasTargetsType
+
+`func (o *ActiveDirectoryPayload) HasTargetsType() bool`
+
+HasTargetsType returns a boolean if a field has been set.
 
 ### GetUserBaseDn
 
@@ -413,6 +519,56 @@ SetUserGroups sets UserGroups field to given value.
 `func (o *ActiveDirectoryPayload) HasUserGroups() bool`
 
 HasUserGroups returns a boolean if a field has been set.
+
+### GetWinrmOverHttp
+
+`func (o *ActiveDirectoryPayload) GetWinrmOverHttp() bool`
+
+GetWinrmOverHttp returns the WinrmOverHttp field if non-nil, zero value otherwise.
+
+### GetWinrmOverHttpOk
+
+`func (o *ActiveDirectoryPayload) GetWinrmOverHttpOk() (*bool, bool)`
+
+GetWinrmOverHttpOk returns a tuple with the WinrmOverHttp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWinrmOverHttp
+
+`func (o *ActiveDirectoryPayload) SetWinrmOverHttp(v bool)`
+
+SetWinrmOverHttp sets WinrmOverHttp field to given value.
+
+### HasWinrmOverHttp
+
+`func (o *ActiveDirectoryPayload) HasWinrmOverHttp() bool`
+
+HasWinrmOverHttp returns a boolean if a field has been set.
+
+### GetWinrmPort
+
+`func (o *ActiveDirectoryPayload) GetWinrmPort() string`
+
+GetWinrmPort returns the WinrmPort field if non-nil, zero value otherwise.
+
+### GetWinrmPortOk
+
+`func (o *ActiveDirectoryPayload) GetWinrmPortOk() (*string, bool)`
+
+GetWinrmPortOk returns a tuple with the WinrmPort field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWinrmPort
+
+`func (o *ActiveDirectoryPayload) SetWinrmPort(v string)`
+
+SetWinrmPort sets WinrmPort field to given value.
+
+### HasWinrmPort
+
+`func (o *ActiveDirectoryPayload) HasWinrmPort() bool`
+
+HasWinrmPort returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

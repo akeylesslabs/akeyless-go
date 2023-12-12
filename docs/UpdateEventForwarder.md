@@ -5,17 +5,21 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AdminName** | Pointer to **string** | Workstation Admin Name | [optional] 
-**EmailTo** | Pointer to **string** | A comma seperated list of email addresses to send event to (relevant only for \\\&quot;email\\\&quot; Event Forwarder) | [optional] 
-**Enable** | Pointer to **string** | Enable | [optional] 
+**AuthType** | Pointer to **string** | The authentication type to use when connecting to ServiceNow (user-pass / jwt) | [optional] [default to "user-pass"]
+**ClientId** | Pointer to **string** | The client ID to use when connecting to ServiceNow with jwt authentication | [optional] 
+**Description** | Pointer to **string** | Description of the object | [optional] [default to "default_comment"]
+**EmailTo** | Pointer to **string** | A comma seperated list of email addresses to send event to (relevant only for \&quot;email\&quot; Event Forwarder) | [optional] 
+**Enable** | Pointer to **string** | Enable/Disable Event Forwarder [true/false] | [optional] [default to "true"]
 **EventSourceLocations** | Pointer to **[]string** | Event sources | [optional] 
 **EventTypes** | Pointer to **[]string** | Event types | [optional] 
 **Host** | Pointer to **string** | Workstation Host | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | EventForwarder name | 
-**NewComment** | Pointer to **string** | New comment about the Event Forwarder | [optional] [default to "default_comment"]
+**NewComment** | Pointer to **string** | Deprecated - use description | [optional] [default to "default_comment"]
 **NewName** | Pointer to **string** | New EventForwarder name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**UserEmail** | Pointer to **string** | The user email to use when connecting to ServiceNow with jwt authentication | [optional] 
 
 ## Methods
 
@@ -60,6 +64,81 @@ SetAdminName sets AdminName field to given value.
 `func (o *UpdateEventForwarder) HasAdminName() bool`
 
 HasAdminName returns a boolean if a field has been set.
+
+### GetAuthType
+
+`func (o *UpdateEventForwarder) GetAuthType() string`
+
+GetAuthType returns the AuthType field if non-nil, zero value otherwise.
+
+### GetAuthTypeOk
+
+`func (o *UpdateEventForwarder) GetAuthTypeOk() (*string, bool)`
+
+GetAuthTypeOk returns a tuple with the AuthType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthType
+
+`func (o *UpdateEventForwarder) SetAuthType(v string)`
+
+SetAuthType sets AuthType field to given value.
+
+### HasAuthType
+
+`func (o *UpdateEventForwarder) HasAuthType() bool`
+
+HasAuthType returns a boolean if a field has been set.
+
+### GetClientId
+
+`func (o *UpdateEventForwarder) GetClientId() string`
+
+GetClientId returns the ClientId field if non-nil, zero value otherwise.
+
+### GetClientIdOk
+
+`func (o *UpdateEventForwarder) GetClientIdOk() (*string, bool)`
+
+GetClientIdOk returns a tuple with the ClientId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientId
+
+`func (o *UpdateEventForwarder) SetClientId(v string)`
+
+SetClientId sets ClientId field to given value.
+
+### HasClientId
+
+`func (o *UpdateEventForwarder) HasClientId() bool`
+
+HasClientId returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *UpdateEventForwarder) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *UpdateEventForwarder) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *UpdateEventForwarder) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *UpdateEventForwarder) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetEmailTo
 
@@ -330,6 +409,31 @@ SetUidToken sets UidToken field to given value.
 `func (o *UpdateEventForwarder) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetUserEmail
+
+`func (o *UpdateEventForwarder) GetUserEmail() string`
+
+GetUserEmail returns the UserEmail field if non-nil, zero value otherwise.
+
+### GetUserEmailOk
+
+`func (o *UpdateEventForwarder) GetUserEmailOk() (*string, bool)`
+
+GetUserEmailOk returns a tuple with the UserEmail field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserEmail
+
+`func (o *UpdateEventForwarder) SetUserEmail(v string)`
+
+SetUserEmail sets UserEmail field to given value.
+
+### HasUserEmail
+
+`func (o *UpdateEventForwarder) HasUserEmail() bool`
+
+HasUserEmail returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

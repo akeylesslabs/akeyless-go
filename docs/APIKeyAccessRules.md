@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Alg** | Pointer to **string** |  | [optional] 
 **Key** | Pointer to **string** | The public key value of the API-key. | [optional] 
+**ModificationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 
 ## Methods
 
@@ -75,6 +76,31 @@ SetKey sets Key field to given value.
 `func (o *APIKeyAccessRules) HasKey() bool`
 
 HasKey returns a boolean if a field has been set.
+
+### GetModificationDate
+
+`func (o *APIKeyAccessRules) GetModificationDate() time.Time`
+
+GetModificationDate returns the ModificationDate field if non-nil, zero value otherwise.
+
+### GetModificationDateOk
+
+`func (o *APIKeyAccessRules) GetModificationDateOk() (*time.Time, bool)`
+
+GetModificationDateOk returns a tuple with the ModificationDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetModificationDate
+
+`func (o *APIKeyAccessRules) SetModificationDate(v time.Time)`
+
+SetModificationDate sets ModificationDate field to given value.
+
+### HasModificationDate
+
+`func (o *APIKeyAccessRules) HasModificationDate() bool`
+
+HasModificationDate returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -4,10 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**SyslogEnableTls** | Pointer to **bool** |  | [optional] 
 **SyslogFormatter** | Pointer to **string** |  | [optional] 
 **SyslogHost** | Pointer to **string** |  | [optional] 
 **SyslogNetwork** | Pointer to **string** |  | [optional] 
 **SyslogTargetTag** | Pointer to **string** |  | [optional] 
+**SyslogTlsCertificate** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -27,6 +29,31 @@ will change when the set of required properties is changed
 NewSyslogLogForwardingConfigWithDefaults instantiates a new SyslogLogForwardingConfig object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetSyslogEnableTls
+
+`func (o *SyslogLogForwardingConfig) GetSyslogEnableTls() bool`
+
+GetSyslogEnableTls returns the SyslogEnableTls field if non-nil, zero value otherwise.
+
+### GetSyslogEnableTlsOk
+
+`func (o *SyslogLogForwardingConfig) GetSyslogEnableTlsOk() (*bool, bool)`
+
+GetSyslogEnableTlsOk returns a tuple with the SyslogEnableTls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSyslogEnableTls
+
+`func (o *SyslogLogForwardingConfig) SetSyslogEnableTls(v bool)`
+
+SetSyslogEnableTls sets SyslogEnableTls field to given value.
+
+### HasSyslogEnableTls
+
+`func (o *SyslogLogForwardingConfig) HasSyslogEnableTls() bool`
+
+HasSyslogEnableTls returns a boolean if a field has been set.
 
 ### GetSyslogFormatter
 
@@ -127,6 +154,31 @@ SetSyslogTargetTag sets SyslogTargetTag field to given value.
 `func (o *SyslogLogForwardingConfig) HasSyslogTargetTag() bool`
 
 HasSyslogTargetTag returns a boolean if a field has been set.
+
+### GetSyslogTlsCertificate
+
+`func (o *SyslogLogForwardingConfig) GetSyslogTlsCertificate() string`
+
+GetSyslogTlsCertificate returns the SyslogTlsCertificate field if non-nil, zero value otherwise.
+
+### GetSyslogTlsCertificateOk
+
+`func (o *SyslogLogForwardingConfig) GetSyslogTlsCertificateOk() (*string, bool)`
+
+GetSyslogTlsCertificateOk returns a tuple with the SyslogTlsCertificate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSyslogTlsCertificate
+
+`func (o *SyslogLogForwardingConfig) SetSyslogTlsCertificate(v string)`
+
+SetSyslogTlsCertificate sets SyslogTlsCertificate field to given value.
+
+### HasSyslogTlsCertificate
+
+`func (o *SyslogLogForwardingConfig) HasSyslogTlsCertificate() bool`
+
+HasSyslogTlsCertificate returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

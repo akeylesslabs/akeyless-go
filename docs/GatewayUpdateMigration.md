@@ -9,9 +9,16 @@ Name | Type | Description | Notes
 **Var1passwordSecretKey** | Pointer to **string** | 1Password user secret key to connect to the API | [optional] 
 **Var1passwordUrl** | Pointer to **string** | 1Password api container url | [optional] 
 **Var1passwordVaults** | Pointer to **[]string** | 1Password list of vault to get the items from | [optional] 
+**AdDiscoverServices** | Pointer to **string** | Enable/Disable discovery of Windows services from each domain server as part of the SSH/Windows Rotated Secrets. Default is false. (Relevant only for Active Directory migration) | [optional] [default to "false"]
+**AdDiscoveryTypes** | Pointer to **[]string** | Set migration discovery types (domain-users, computers, local-users). (Relevant only for Active Directory migration) | [optional] 
+**AdOsFilter** | Pointer to **string** | Filter by Operating System to run the migration, can be used with wildcards, e.g. SRV20* (Relevant only for Active Directory migration) | [optional] 
+**AdSshPort** | Pointer to **string** | Set the SSH Port for further connection to the domain servers. Default is port 22 (Relevant only for Active Directory migration) | [optional] [default to "22"]
+**AdTargetsType** | Pointer to **string** | Set the target type of the domain servers [ssh/windows](Relevant only for Active Directory migration) | [optional] [default to "windows"]
+**AdWinrmOverHttp** | Pointer to **string** | Use WinRM over HTTP, by default runs over HTTPS | [optional] [default to "false"]
+**AdWinrmPort** | Pointer to **string** | Set the WinRM Port for further connection to the domain servers. Default is 5986 (Relevant only for Active Directory migration) | [optional] [default to "5986"]
 **AdAutoRotate** | Pointer to **string** | Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with --ad-rotation-interval and --ad-rotation-hour parameters (Relevant only for Active Directory migration) | [optional] 
 **AdComputerBaseDn** | Pointer to **string** | Distinguished Name of Computer objects (servers) to search in Active Directory e.g.: CN&#x3D;Computers,DC&#x3D;example,DC&#x3D;com (Relevant only for Active Directory migration) | [optional] 
-**AdDiscoverLocalUsers** | Pointer to **string** | Enable/Disable discovery of local users from each domain server and migrate them as SSH Rotated Secrets. Default is false: only domain users will be migrated. Discovery of local users might require further installation of SSH on the servers, based on the supplied computer base DN. This will be implemented automatically as part of the migration process (Relevant only for Active Directory migration) | [optional] 
+**AdDiscoverLocalUsers** | Pointer to **string** | Enable/Disable discovery of local users from each domain server and migrate them as SSH/Windows Rotated Secrets. Default is false: only domain users will be migrated. Discovery of local users might require further installation of SSH on the servers, based on the supplied computer base DN. This will be implemented automatically as part of the migration process (Relevant only for Active Directory migration) Deprecated: use AdDiscoverTypes | [optional] 
 **AdDomainName** | Pointer to **string** | Active Directory Domain Name (Relevant only for Active Directory migration) | [optional] 
 **AdDomainUsersPathTemplate** | Pointer to **string** | Path location template for migrating domain users as Rotated Secrets e.g.: .../DomainUsers/{{USERNAME}} (Relevant only for Active Directory migration) | [optional] 
 **AdLocalUsersIgnore** | Pointer to **string** | Comma-separated list of Local Users which should not be migrated (Relevant only for Active Directory migration) | [optional] 
@@ -20,24 +27,23 @@ Name | Type | Description | Notes
 **AdRotationInterval** | Pointer to **int32** | The number of days to wait between every automatic rotation [1-365] (Relevant only for Active Directory migration) | [optional] 
 **AdSraEnableRdp** | Pointer to **string** | Enable/Disable RDP Secure Remote Access for the migrated local users rotated secrets. Default is false: rotated secrets will not be created with SRA (Relevant only for Active Directory migration) | [optional] 
 **AdTargetName** | Pointer to **string** | Active Directory LDAP Target Name. Server type should be Active Directory (Relevant only for Active Directory migration) | [optional] 
-**AdTargetsPathTemplate** | Pointer to **string** | Path location template for migrating domain servers as SSH Targets e.g.: .../Servers/{{COMPUTER_NAME}} (Relevant only for Active Directory migration) | [optional] 
+**AdTargetsPathTemplate** | Pointer to **string** | Path location template for migrating domain servers as SSH/Windows Targets e.g.: .../Servers/{{COMPUTER_NAME}} (Relevant only for Active Directory migration) | [optional] 
 **AdUserBaseDn** | Pointer to **string** | Distinguished Name of User objects to search in Active Directory, e.g.: CN&#x3D;Users,DC&#x3D;example,DC&#x3D;com (Relevant only for Active Directory migration) | [optional] 
-**AdUserGroups** | Pointer to **string** | Comma-separated list of domain groups from which privileged domain users will be migrated (Relevant only for Active Directory migration) | [optional] 
-**AsSshPort** | Pointer to **string** | Set the SSH Port for further connection to the domain servers. Default is port 22 (Relevant only for Active Directory migration) | [optional] 
+**AdUserGroups** | Pointer to **string** | Comma-separated list of domain groups from which privileged domain users will be migrated. If empty, migrate all users based on the --ad-user-base-dn (Relevant only for Active Directory migration) | [optional] 
 **AwsKey** | Pointer to **string** | AWS Secret Access Key (relevant only for AWS migration) | [optional] 
 **AwsKeyId** | Pointer to **string** | AWS Access Key ID with sufficient permissions to get all secrets, e.g. &#39;arn:aws:secretsmanager:[Region]:[AccountId]:secret:[/path/to/secrets/_*]&#39; (relevant only for AWS migration) | [optional] 
-**AwsRegion** | Pointer to **string** | AWS region of the required Secrets Manager (relevant only for AWS migration) | [optional] 
+**AwsRegion** | Pointer to **string** | AWS region of the required Secrets Manager (relevant only for AWS migration) | [optional] [default to "us-east-2"]
 **AzureClientId** | Pointer to **string** | Azure Key Vault Access client ID, should be Azure AD App with a service principal (relevant only for Azure Key Vault migration) | [optional] 
 **AzureKvName** | Pointer to **string** | Azure Key Vault Name (relevant only for Azure Key Vault migration) | [optional] 
 **AzureSecret** | Pointer to **string** | Azure Key Vault secret (relevant only for Azure Key Vault migration) | [optional] 
 **AzureTenantId** | Pointer to **string** | Azure Key Vault Access tenant ID (relevant only for Azure Key Vault migration) | [optional] 
 **GcpKey** | Pointer to **string** | Base64-encoded GCP Service Account private key text with sufficient permissions to Secrets Manager, Minimum required permission is Secret Manager Secret Accessor, e.g. &#39;roles/secretmanager.secretAccessor&#39; (relevant only for GCP migration) | [optional] 
-**HashiJson** | Pointer to **string** | Import secret key as json value or independent secrets (relevant only for HasiCorp Vault migration) | [optional] 
+**HashiJson** | Pointer to **string** | Import secret key as json value or independent secrets (relevant only for HasiCorp Vault migration) [true/false] | [optional] [default to "true"]
 **HashiNs** | Pointer to **[]string** | HashiCorp Vault Namespaces is a comma-separated list of namespaces which need to be imported into Akeyless Vault. For every provided namespace, all its child namespaces are imported as well, e.g. nmsp/subnmsp1/subnmsp2,nmsp/anothernmsp. By default, import all namespaces (relevant only for HasiCorp Vault migration) | [optional] 
 **HashiToken** | Pointer to **string** | HashiCorp Vault access token with sufficient permissions to preform list &amp; read operations on secrets objects (relevant only for HasiCorp Vault migration) | [optional] 
 **HashiUrl** | Pointer to **string** | HashiCorp Vault API URL, e.g. https://vault-mgr01:8200 (relevant only for HasiCorp Vault migration) | [optional] 
 **Id** | Pointer to **string** | Migration ID (Can be retrieved with gateway-list-migration command) | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **K8sCaCertificate** | Pointer to **[]int32** | For Certificate Authentication method K8s Cluster CA certificate (relevant only for K8s migration with Certificate Authentication method) | [optional] 
 **K8sClientCertificate** | Pointer to **[]int32** | K8s Client certificate with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Certificate Authentication method) | [optional] 
 **K8sClientKey** | Pointer to **[]int32** | K8s Client key (relevant only for K8s migration with Certificate Authentication method) | [optional] 
@@ -50,6 +56,13 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | Migration name | [optional] 
 **NewName** | Pointer to **string** | New migration name | [optional] 
 **ProtectionKey** | Pointer to **string** | The name of the key that protects the classic key value (if empty, the account default key will be used) | [optional] 
+**SiAutoRotate** | Pointer to **string** | Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with --si-rotation-interval and --si-rotation-hour parameters (Relevant only for Server Inventory migration) | [optional] 
+**SiRotationHour** | Pointer to **int32** | The hour of the scheduled rotation in UTC (Relevant only for Server Inventory migration) | [optional] 
+**SiRotationInterval** | Pointer to **int32** | The number of days to wait between every automatic rotation [1-365] (Relevant only for Server Inventory migration) | [optional] 
+**SiSraEnableRdp** | Pointer to **string** | Enable/Disable RDP Secure Remote Access for the migrated local users rotated secrets. Default is false: rotated secrets will not be created with SRA (Relevant only for Server Inventory migration) | [optional] [default to "false"]
+**SiTargetName** | **string** | SSH, Windows or Linked Target Name. (Relevant only for Server Inventory migration) | 
+**SiUsersIgnore** | Pointer to **string** | Comma-separated list of Local Users which should not be migrated (Relevant only for Server Inventory migration) | [optional] 
+**SiUsersPathTemplate** | **string** | Path location template for migrating users as Rotated Secrets e.g.: .../Users/{{COMPUTER_NAME}}/{{USERNAME}} (Relevant only for Server Inventory migration) | 
 **TargetLocation** | **string** | Target location in Akeyless for imported secrets | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -58,7 +71,7 @@ Name | Type | Description | Notes
 
 ### NewGatewayUpdateMigration
 
-`func NewGatewayUpdateMigration(targetLocation string, ) *GatewayUpdateMigration`
+`func NewGatewayUpdateMigration(siTargetName string, siUsersPathTemplate string, targetLocation string, ) *GatewayUpdateMigration`
 
 NewGatewayUpdateMigration instantiates a new GatewayUpdateMigration object
 This constructor will assign default values to properties that have it defined,
@@ -197,6 +210,181 @@ SetVar1passwordVaults sets Var1passwordVaults field to given value.
 `func (o *GatewayUpdateMigration) HasVar1passwordVaults() bool`
 
 HasVar1passwordVaults returns a boolean if a field has been set.
+
+### GetAdDiscoverServices
+
+`func (o *GatewayUpdateMigration) GetAdDiscoverServices() string`
+
+GetAdDiscoverServices returns the AdDiscoverServices field if non-nil, zero value otherwise.
+
+### GetAdDiscoverServicesOk
+
+`func (o *GatewayUpdateMigration) GetAdDiscoverServicesOk() (*string, bool)`
+
+GetAdDiscoverServicesOk returns a tuple with the AdDiscoverServices field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdDiscoverServices
+
+`func (o *GatewayUpdateMigration) SetAdDiscoverServices(v string)`
+
+SetAdDiscoverServices sets AdDiscoverServices field to given value.
+
+### HasAdDiscoverServices
+
+`func (o *GatewayUpdateMigration) HasAdDiscoverServices() bool`
+
+HasAdDiscoverServices returns a boolean if a field has been set.
+
+### GetAdDiscoveryTypes
+
+`func (o *GatewayUpdateMigration) GetAdDiscoveryTypes() []string`
+
+GetAdDiscoveryTypes returns the AdDiscoveryTypes field if non-nil, zero value otherwise.
+
+### GetAdDiscoveryTypesOk
+
+`func (o *GatewayUpdateMigration) GetAdDiscoveryTypesOk() (*[]string, bool)`
+
+GetAdDiscoveryTypesOk returns a tuple with the AdDiscoveryTypes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdDiscoveryTypes
+
+`func (o *GatewayUpdateMigration) SetAdDiscoveryTypes(v []string)`
+
+SetAdDiscoveryTypes sets AdDiscoveryTypes field to given value.
+
+### HasAdDiscoveryTypes
+
+`func (o *GatewayUpdateMigration) HasAdDiscoveryTypes() bool`
+
+HasAdDiscoveryTypes returns a boolean if a field has been set.
+
+### GetAdOsFilter
+
+`func (o *GatewayUpdateMigration) GetAdOsFilter() string`
+
+GetAdOsFilter returns the AdOsFilter field if non-nil, zero value otherwise.
+
+### GetAdOsFilterOk
+
+`func (o *GatewayUpdateMigration) GetAdOsFilterOk() (*string, bool)`
+
+GetAdOsFilterOk returns a tuple with the AdOsFilter field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdOsFilter
+
+`func (o *GatewayUpdateMigration) SetAdOsFilter(v string)`
+
+SetAdOsFilter sets AdOsFilter field to given value.
+
+### HasAdOsFilter
+
+`func (o *GatewayUpdateMigration) HasAdOsFilter() bool`
+
+HasAdOsFilter returns a boolean if a field has been set.
+
+### GetAdSshPort
+
+`func (o *GatewayUpdateMigration) GetAdSshPort() string`
+
+GetAdSshPort returns the AdSshPort field if non-nil, zero value otherwise.
+
+### GetAdSshPortOk
+
+`func (o *GatewayUpdateMigration) GetAdSshPortOk() (*string, bool)`
+
+GetAdSshPortOk returns a tuple with the AdSshPort field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdSshPort
+
+`func (o *GatewayUpdateMigration) SetAdSshPort(v string)`
+
+SetAdSshPort sets AdSshPort field to given value.
+
+### HasAdSshPort
+
+`func (o *GatewayUpdateMigration) HasAdSshPort() bool`
+
+HasAdSshPort returns a boolean if a field has been set.
+
+### GetAdTargetsType
+
+`func (o *GatewayUpdateMigration) GetAdTargetsType() string`
+
+GetAdTargetsType returns the AdTargetsType field if non-nil, zero value otherwise.
+
+### GetAdTargetsTypeOk
+
+`func (o *GatewayUpdateMigration) GetAdTargetsTypeOk() (*string, bool)`
+
+GetAdTargetsTypeOk returns a tuple with the AdTargetsType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdTargetsType
+
+`func (o *GatewayUpdateMigration) SetAdTargetsType(v string)`
+
+SetAdTargetsType sets AdTargetsType field to given value.
+
+### HasAdTargetsType
+
+`func (o *GatewayUpdateMigration) HasAdTargetsType() bool`
+
+HasAdTargetsType returns a boolean if a field has been set.
+
+### GetAdWinrmOverHttp
+
+`func (o *GatewayUpdateMigration) GetAdWinrmOverHttp() string`
+
+GetAdWinrmOverHttp returns the AdWinrmOverHttp field if non-nil, zero value otherwise.
+
+### GetAdWinrmOverHttpOk
+
+`func (o *GatewayUpdateMigration) GetAdWinrmOverHttpOk() (*string, bool)`
+
+GetAdWinrmOverHttpOk returns a tuple with the AdWinrmOverHttp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdWinrmOverHttp
+
+`func (o *GatewayUpdateMigration) SetAdWinrmOverHttp(v string)`
+
+SetAdWinrmOverHttp sets AdWinrmOverHttp field to given value.
+
+### HasAdWinrmOverHttp
+
+`func (o *GatewayUpdateMigration) HasAdWinrmOverHttp() bool`
+
+HasAdWinrmOverHttp returns a boolean if a field has been set.
+
+### GetAdWinrmPort
+
+`func (o *GatewayUpdateMigration) GetAdWinrmPort() string`
+
+GetAdWinrmPort returns the AdWinrmPort field if non-nil, zero value otherwise.
+
+### GetAdWinrmPortOk
+
+`func (o *GatewayUpdateMigration) GetAdWinrmPortOk() (*string, bool)`
+
+GetAdWinrmPortOk returns a tuple with the AdWinrmPort field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdWinrmPort
+
+`func (o *GatewayUpdateMigration) SetAdWinrmPort(v string)`
+
+SetAdWinrmPort sets AdWinrmPort field to given value.
+
+### HasAdWinrmPort
+
+`func (o *GatewayUpdateMigration) HasAdWinrmPort() bool`
+
+HasAdWinrmPort returns a boolean if a field has been set.
 
 ### GetAdAutoRotate
 
@@ -547,31 +735,6 @@ SetAdUserGroups sets AdUserGroups field to given value.
 `func (o *GatewayUpdateMigration) HasAdUserGroups() bool`
 
 HasAdUserGroups returns a boolean if a field has been set.
-
-### GetAsSshPort
-
-`func (o *GatewayUpdateMigration) GetAsSshPort() string`
-
-GetAsSshPort returns the AsSshPort field if non-nil, zero value otherwise.
-
-### GetAsSshPortOk
-
-`func (o *GatewayUpdateMigration) GetAsSshPortOk() (*string, bool)`
-
-GetAsSshPortOk returns a tuple with the AsSshPort field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAsSshPort
-
-`func (o *GatewayUpdateMigration) SetAsSshPort(v string)`
-
-SetAsSshPort sets AsSshPort field to given value.
-
-### HasAsSshPort
-
-`func (o *GatewayUpdateMigration) HasAsSshPort() bool`
-
-HasAsSshPort returns a boolean if a field has been set.
 
 ### GetAwsKey
 
@@ -1222,6 +1385,171 @@ SetProtectionKey sets ProtectionKey field to given value.
 `func (o *GatewayUpdateMigration) HasProtectionKey() bool`
 
 HasProtectionKey returns a boolean if a field has been set.
+
+### GetSiAutoRotate
+
+`func (o *GatewayUpdateMigration) GetSiAutoRotate() string`
+
+GetSiAutoRotate returns the SiAutoRotate field if non-nil, zero value otherwise.
+
+### GetSiAutoRotateOk
+
+`func (o *GatewayUpdateMigration) GetSiAutoRotateOk() (*string, bool)`
+
+GetSiAutoRotateOk returns a tuple with the SiAutoRotate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSiAutoRotate
+
+`func (o *GatewayUpdateMigration) SetSiAutoRotate(v string)`
+
+SetSiAutoRotate sets SiAutoRotate field to given value.
+
+### HasSiAutoRotate
+
+`func (o *GatewayUpdateMigration) HasSiAutoRotate() bool`
+
+HasSiAutoRotate returns a boolean if a field has been set.
+
+### GetSiRotationHour
+
+`func (o *GatewayUpdateMigration) GetSiRotationHour() int32`
+
+GetSiRotationHour returns the SiRotationHour field if non-nil, zero value otherwise.
+
+### GetSiRotationHourOk
+
+`func (o *GatewayUpdateMigration) GetSiRotationHourOk() (*int32, bool)`
+
+GetSiRotationHourOk returns a tuple with the SiRotationHour field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSiRotationHour
+
+`func (o *GatewayUpdateMigration) SetSiRotationHour(v int32)`
+
+SetSiRotationHour sets SiRotationHour field to given value.
+
+### HasSiRotationHour
+
+`func (o *GatewayUpdateMigration) HasSiRotationHour() bool`
+
+HasSiRotationHour returns a boolean if a field has been set.
+
+### GetSiRotationInterval
+
+`func (o *GatewayUpdateMigration) GetSiRotationInterval() int32`
+
+GetSiRotationInterval returns the SiRotationInterval field if non-nil, zero value otherwise.
+
+### GetSiRotationIntervalOk
+
+`func (o *GatewayUpdateMigration) GetSiRotationIntervalOk() (*int32, bool)`
+
+GetSiRotationIntervalOk returns a tuple with the SiRotationInterval field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSiRotationInterval
+
+`func (o *GatewayUpdateMigration) SetSiRotationInterval(v int32)`
+
+SetSiRotationInterval sets SiRotationInterval field to given value.
+
+### HasSiRotationInterval
+
+`func (o *GatewayUpdateMigration) HasSiRotationInterval() bool`
+
+HasSiRotationInterval returns a boolean if a field has been set.
+
+### GetSiSraEnableRdp
+
+`func (o *GatewayUpdateMigration) GetSiSraEnableRdp() string`
+
+GetSiSraEnableRdp returns the SiSraEnableRdp field if non-nil, zero value otherwise.
+
+### GetSiSraEnableRdpOk
+
+`func (o *GatewayUpdateMigration) GetSiSraEnableRdpOk() (*string, bool)`
+
+GetSiSraEnableRdpOk returns a tuple with the SiSraEnableRdp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSiSraEnableRdp
+
+`func (o *GatewayUpdateMigration) SetSiSraEnableRdp(v string)`
+
+SetSiSraEnableRdp sets SiSraEnableRdp field to given value.
+
+### HasSiSraEnableRdp
+
+`func (o *GatewayUpdateMigration) HasSiSraEnableRdp() bool`
+
+HasSiSraEnableRdp returns a boolean if a field has been set.
+
+### GetSiTargetName
+
+`func (o *GatewayUpdateMigration) GetSiTargetName() string`
+
+GetSiTargetName returns the SiTargetName field if non-nil, zero value otherwise.
+
+### GetSiTargetNameOk
+
+`func (o *GatewayUpdateMigration) GetSiTargetNameOk() (*string, bool)`
+
+GetSiTargetNameOk returns a tuple with the SiTargetName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSiTargetName
+
+`func (o *GatewayUpdateMigration) SetSiTargetName(v string)`
+
+SetSiTargetName sets SiTargetName field to given value.
+
+
+### GetSiUsersIgnore
+
+`func (o *GatewayUpdateMigration) GetSiUsersIgnore() string`
+
+GetSiUsersIgnore returns the SiUsersIgnore field if non-nil, zero value otherwise.
+
+### GetSiUsersIgnoreOk
+
+`func (o *GatewayUpdateMigration) GetSiUsersIgnoreOk() (*string, bool)`
+
+GetSiUsersIgnoreOk returns a tuple with the SiUsersIgnore field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSiUsersIgnore
+
+`func (o *GatewayUpdateMigration) SetSiUsersIgnore(v string)`
+
+SetSiUsersIgnore sets SiUsersIgnore field to given value.
+
+### HasSiUsersIgnore
+
+`func (o *GatewayUpdateMigration) HasSiUsersIgnore() bool`
+
+HasSiUsersIgnore returns a boolean if a field has been set.
+
+### GetSiUsersPathTemplate
+
+`func (o *GatewayUpdateMigration) GetSiUsersPathTemplate() string`
+
+GetSiUsersPathTemplate returns the SiUsersPathTemplate field if non-nil, zero value otherwise.
+
+### GetSiUsersPathTemplateOk
+
+`func (o *GatewayUpdateMigration) GetSiUsersPathTemplateOk() (*string, bool)`
+
+GetSiUsersPathTemplateOk returns a tuple with the SiUsersPathTemplate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSiUsersPathTemplate
+
+`func (o *GatewayUpdateMigration) SetSiUsersPathTemplate(v string)`
+
+SetSiUsersPathTemplate sets SiUsersPathTemplate field to given value.
+
 
 ### GetTargetLocation
 

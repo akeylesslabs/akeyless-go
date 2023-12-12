@@ -4,22 +4,25 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**SshCertIssuerHostProvider** | Pointer to **string** |  | [optional] 
 **AllowedUsers** | **string** | Users allowed to fetch the certificate, e.g root,ubuntu | 
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **Extensions** | Pointer to **map[string]string** | Signed certificates with extensions, e.g permit-port-forwarding&#x3D;\\\&quot;\\\&quot; | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**HostProvider** | Pointer to **string** | Host provider type [explicit/target] | [optional] [default to "explicit"]
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Metadata** | Pointer to **string** | Deprecated - use description | [optional] 
 **Name** | **string** | SSH certificate issuer name | 
 **Principals** | Pointer to **string** | Signed certificates with principal, e.g example_role1,example_role2 | [optional] 
-**SecureAccessBastionApi** | Pointer to **string** |  | [optional] 
-**SecureAccessBastionSsh** | Pointer to **string** |  | [optional] 
-**SecureAccessEnable** | Pointer to **string** |  | [optional] 
-**SecureAccessHost** | Pointer to **[]string** |  | [optional] 
-**SecureAccessSshCredsUser** | Pointer to **string** |  | [optional] 
-**SecureAccessUseInternalBastion** | Pointer to **bool** |  | [optional] 
+**SecureAccessBastionApi** | Pointer to **string** | Bastion&#39;s SSH control API endpoint. E.g. https://my.bastion:9900 | [optional] 
+**SecureAccessBastionSsh** | Pointer to **string** | Bastion&#39;s SSH server. E.g. my.bastion:22 | [optional] 
+**SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
+**SecureAccessHost** | Pointer to **[]string** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
+**SecureAccessSshCredsUser** | Pointer to **string** | SSH username to connect to target server, must be in &#39;Allowed Users&#39; list | [optional] 
+**SecureAccessUseInternalBastion** | Pointer to **bool** | Use internal SSH Bastion | [optional] 
 **SignerKeyName** | **string** | A key to sign the certificate with | 
 **Tag** | Pointer to **[]string** | List of the tags attached to this key | [optional] 
+**Target** | Pointer to **[]string** | A list of existing targets to be associated, Relevant only for Secure Remote Access, To specify multiple targets use argument multiple times | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **Ttl** | **int64** | The requested Time To Live for the certificate, in seconds | 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -42,6 +45,31 @@ will change when the set of required properties is changed
 NewCreateSSHCertIssuerWithDefaults instantiates a new CreateSSHCertIssuer object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetSshCertIssuerHostProvider
+
+`func (o *CreateSSHCertIssuer) GetSshCertIssuerHostProvider() string`
+
+GetSshCertIssuerHostProvider returns the SshCertIssuerHostProvider field if non-nil, zero value otherwise.
+
+### GetSshCertIssuerHostProviderOk
+
+`func (o *CreateSSHCertIssuer) GetSshCertIssuerHostProviderOk() (*string, bool)`
+
+GetSshCertIssuerHostProviderOk returns a tuple with the SshCertIssuerHostProvider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSshCertIssuerHostProvider
+
+`func (o *CreateSSHCertIssuer) SetSshCertIssuerHostProvider(v string)`
+
+SetSshCertIssuerHostProvider sets SshCertIssuerHostProvider field to given value.
+
+### HasSshCertIssuerHostProvider
+
+`func (o *CreateSSHCertIssuer) HasSshCertIssuerHostProvider() bool`
+
+HasSshCertIssuerHostProvider returns a boolean if a field has been set.
 
 ### GetAllowedUsers
 
@@ -137,6 +165,31 @@ SetExtensions sets Extensions field to given value.
 `func (o *CreateSSHCertIssuer) HasExtensions() bool`
 
 HasExtensions returns a boolean if a field has been set.
+
+### GetHostProvider
+
+`func (o *CreateSSHCertIssuer) GetHostProvider() string`
+
+GetHostProvider returns the HostProvider field if non-nil, zero value otherwise.
+
+### GetHostProviderOk
+
+`func (o *CreateSSHCertIssuer) GetHostProviderOk() (*string, bool)`
+
+GetHostProviderOk returns a tuple with the HostProvider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHostProvider
+
+`func (o *CreateSSHCertIssuer) SetHostProvider(v string)`
+
+SetHostProvider sets HostProvider field to given value.
+
+### HasHostProvider
+
+`func (o *CreateSSHCertIssuer) HasHostProvider() bool`
+
+HasHostProvider returns a boolean if a field has been set.
 
 ### GetJson
 
@@ -427,6 +480,31 @@ SetTag sets Tag field to given value.
 `func (o *CreateSSHCertIssuer) HasTag() bool`
 
 HasTag returns a boolean if a field has been set.
+
+### GetTarget
+
+`func (o *CreateSSHCertIssuer) GetTarget() []string`
+
+GetTarget returns the Target field if non-nil, zero value otherwise.
+
+### GetTargetOk
+
+`func (o *CreateSSHCertIssuer) GetTargetOk() (*[]string, bool)`
+
+GetTargetOk returns a tuple with the Target field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTarget
+
+`func (o *CreateSSHCertIssuer) SetTarget(v []string)`
+
+SetTarget sets Target field to given value.
+
+### HasTarget
+
+`func (o *CreateSSHCertIssuer) HasTarget() bool`
+
+HasTarget returns a boolean if a field has been set.
 
 ### GetToken
 

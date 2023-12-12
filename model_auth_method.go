@@ -19,13 +19,16 @@ import (
 // AuthMethod struct for AuthMethod
 type AuthMethod struct {
 	AccessDate *time.Time `json:"access_date,omitempty"`
+	AccessDateDisplay *string `json:"access_date_display,omitempty"`
 	AccessInfo *AuthMethodAccessInfo `json:"access_info,omitempty"`
 	AccountId *string `json:"account_id,omitempty"`
+	AssociatedGwIds *[]int64 `json:"associated_gw_ids,omitempty"`
 	AuthMethodAccessId *string `json:"auth_method_access_id,omitempty"`
 	AuthMethodName *string `json:"auth_method_name,omitempty"`
 	AuthMethodRolesAssoc *[]AuthMethodRoleAssociation `json:"auth_method_roles_assoc,omitempty"`
 	ClientPermissions *[]string `json:"client_permissions,omitempty"`
 	CreationDate *time.Time `json:"creation_date,omitempty"`
+	IsApproved *bool `json:"is_approved,omitempty"`
 	ModificationDate *time.Time `json:"modification_date,omitempty"`
 }
 
@@ -76,6 +79,38 @@ func (o *AuthMethod) HasAccessDate() bool {
 // SetAccessDate gets a reference to the given time.Time and assigns it to the AccessDate field.
 func (o *AuthMethod) SetAccessDate(v time.Time) {
 	o.AccessDate = &v
+}
+
+// GetAccessDateDisplay returns the AccessDateDisplay field value if set, zero value otherwise.
+func (o *AuthMethod) GetAccessDateDisplay() string {
+	if o == nil || o.AccessDateDisplay == nil {
+		var ret string
+		return ret
+	}
+	return *o.AccessDateDisplay
+}
+
+// GetAccessDateDisplayOk returns a tuple with the AccessDateDisplay field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethod) GetAccessDateDisplayOk() (*string, bool) {
+	if o == nil || o.AccessDateDisplay == nil {
+		return nil, false
+	}
+	return o.AccessDateDisplay, true
+}
+
+// HasAccessDateDisplay returns a boolean if a field has been set.
+func (o *AuthMethod) HasAccessDateDisplay() bool {
+	if o != nil && o.AccessDateDisplay != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessDateDisplay gets a reference to the given string and assigns it to the AccessDateDisplay field.
+func (o *AuthMethod) SetAccessDateDisplay(v string) {
+	o.AccessDateDisplay = &v
 }
 
 // GetAccessInfo returns the AccessInfo field value if set, zero value otherwise.
@@ -140,6 +175,38 @@ func (o *AuthMethod) HasAccountId() bool {
 // SetAccountId gets a reference to the given string and assigns it to the AccountId field.
 func (o *AuthMethod) SetAccountId(v string) {
 	o.AccountId = &v
+}
+
+// GetAssociatedGwIds returns the AssociatedGwIds field value if set, zero value otherwise.
+func (o *AuthMethod) GetAssociatedGwIds() []int64 {
+	if o == nil || o.AssociatedGwIds == nil {
+		var ret []int64
+		return ret
+	}
+	return *o.AssociatedGwIds
+}
+
+// GetAssociatedGwIdsOk returns a tuple with the AssociatedGwIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethod) GetAssociatedGwIdsOk() (*[]int64, bool) {
+	if o == nil || o.AssociatedGwIds == nil {
+		return nil, false
+	}
+	return o.AssociatedGwIds, true
+}
+
+// HasAssociatedGwIds returns a boolean if a field has been set.
+func (o *AuthMethod) HasAssociatedGwIds() bool {
+	if o != nil && o.AssociatedGwIds != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAssociatedGwIds gets a reference to the given []int64 and assigns it to the AssociatedGwIds field.
+func (o *AuthMethod) SetAssociatedGwIds(v []int64) {
+	o.AssociatedGwIds = &v
 }
 
 // GetAuthMethodAccessId returns the AuthMethodAccessId field value if set, zero value otherwise.
@@ -302,6 +369,38 @@ func (o *AuthMethod) SetCreationDate(v time.Time) {
 	o.CreationDate = &v
 }
 
+// GetIsApproved returns the IsApproved field value if set, zero value otherwise.
+func (o *AuthMethod) GetIsApproved() bool {
+	if o == nil || o.IsApproved == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IsApproved
+}
+
+// GetIsApprovedOk returns a tuple with the IsApproved field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethod) GetIsApprovedOk() (*bool, bool) {
+	if o == nil || o.IsApproved == nil {
+		return nil, false
+	}
+	return o.IsApproved, true
+}
+
+// HasIsApproved returns a boolean if a field has been set.
+func (o *AuthMethod) HasIsApproved() bool {
+	if o != nil && o.IsApproved != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIsApproved gets a reference to the given bool and assigns it to the IsApproved field.
+func (o *AuthMethod) SetIsApproved(v bool) {
+	o.IsApproved = &v
+}
+
 // GetModificationDate returns the ModificationDate field value if set, zero value otherwise.
 func (o *AuthMethod) GetModificationDate() time.Time {
 	if o == nil || o.ModificationDate == nil {
@@ -339,11 +438,17 @@ func (o AuthMethod) MarshalJSON() ([]byte, error) {
 	if o.AccessDate != nil {
 		toSerialize["access_date"] = o.AccessDate
 	}
+	if o.AccessDateDisplay != nil {
+		toSerialize["access_date_display"] = o.AccessDateDisplay
+	}
 	if o.AccessInfo != nil {
 		toSerialize["access_info"] = o.AccessInfo
 	}
 	if o.AccountId != nil {
 		toSerialize["account_id"] = o.AccountId
+	}
+	if o.AssociatedGwIds != nil {
+		toSerialize["associated_gw_ids"] = o.AssociatedGwIds
 	}
 	if o.AuthMethodAccessId != nil {
 		toSerialize["auth_method_access_id"] = o.AuthMethodAccessId
@@ -359,6 +464,9 @@ func (o AuthMethod) MarshalJSON() ([]byte, error) {
 	}
 	if o.CreationDate != nil {
 		toSerialize["creation_date"] = o.CreationDate
+	}
+	if o.IsApproved != nil {
+		toSerialize["is_approved"] = o.IsApproved
 	}
 	if o.ModificationDate != nil {
 		toSerialize["modification_date"] = o.ModificationDate
