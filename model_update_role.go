@@ -21,13 +21,15 @@ type UpdateRole struct {
 	AnalyticsAccess *string `json:"analytics-access,omitempty"`
 	// Allow this role to view audit logs. Currently only 'none', 'own' and 'all' values are supported, allowing associated auth methods to view audit logs produced by the same auth methods.
 	AuditAccess *string `json:"audit-access,omitempty"`
+	// Description of the object
+	Description *string `json:"description,omitempty"`
 	// Allow this role to view gw analytics. Currently only 'none', 'own', 'all' values are supported, allowing associated auth methods to view reports produced by the same auth methods.
 	GwAnalyticsAccess *string `json:"gw-analytics-access,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Role name
 	Name string `json:"name"`
-	// New comment about the role
+	// Deprecated - use description
 	NewComment *string `json:"new-comment,omitempty"`
 	// New Role name
 	NewName *string `json:"new-name,omitempty"`
@@ -37,6 +39,8 @@ type UpdateRole struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// Allow this role to view Usage Report. Currently only 'none' and 'all' values are supported.
+	UsageReportsAccess *string `json:"usage-reports-access,omitempty"`
 }
 
 // NewUpdateRole instantiates a new UpdateRole object
@@ -45,6 +49,10 @@ type UpdateRole struct {
 // will change when the set of required properties is changed
 func NewUpdateRole(name string, ) *UpdateRole {
 	this := UpdateRole{}
+	var description string = "default_comment"
+	this.Description = &description
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	var newComment string = "default_comment"
 	this.NewComment = &newComment
@@ -56,6 +64,10 @@ func NewUpdateRole(name string, ) *UpdateRole {
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateRoleWithDefaults() *UpdateRole {
 	this := UpdateRole{}
+	var description string = "default_comment"
+	this.Description = &description
+	var json bool = false
+	this.Json = &json
 	var newComment string = "default_comment"
 	this.NewComment = &newComment
 	return &this
@@ -123,6 +135,38 @@ func (o *UpdateRole) HasAuditAccess() bool {
 // SetAuditAccess gets a reference to the given string and assigns it to the AuditAccess field.
 func (o *UpdateRole) SetAuditAccess(v string) {
 	o.AuditAccess = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *UpdateRole) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRole) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *UpdateRole) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *UpdateRole) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetGwAnalyticsAccess returns the GwAnalyticsAccess field value if set, zero value otherwise.
@@ -373,6 +417,38 @@ func (o *UpdateRole) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUsageReportsAccess returns the UsageReportsAccess field value if set, zero value otherwise.
+func (o *UpdateRole) GetUsageReportsAccess() string {
+	if o == nil || o.UsageReportsAccess == nil {
+		var ret string
+		return ret
+	}
+	return *o.UsageReportsAccess
+}
+
+// GetUsageReportsAccessOk returns a tuple with the UsageReportsAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRole) GetUsageReportsAccessOk() (*string, bool) {
+	if o == nil || o.UsageReportsAccess == nil {
+		return nil, false
+	}
+	return o.UsageReportsAccess, true
+}
+
+// HasUsageReportsAccess returns a boolean if a field has been set.
+func (o *UpdateRole) HasUsageReportsAccess() bool {
+	if o != nil && o.UsageReportsAccess != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsageReportsAccess gets a reference to the given string and assigns it to the UsageReportsAccess field.
+func (o *UpdateRole) SetUsageReportsAccess(v string) {
+	o.UsageReportsAccess = &v
+}
+
 func (o UpdateRole) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AnalyticsAccess != nil {
@@ -380,6 +456,9 @@ func (o UpdateRole) MarshalJSON() ([]byte, error) {
 	}
 	if o.AuditAccess != nil {
 		toSerialize["audit-access"] = o.AuditAccess
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.GwAnalyticsAccess != nil {
 		toSerialize["gw-analytics-access"] = o.GwAnalyticsAccess
@@ -404,6 +483,9 @@ func (o UpdateRole) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.UsageReportsAccess != nil {
+		toSerialize["usage-reports-access"] = o.UsageReportsAccess
 	}
 	return json.Marshal(toSerialize)
 }

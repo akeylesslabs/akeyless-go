@@ -31,6 +31,8 @@ type KmipListClients struct {
 // will change when the set of required properties is changed
 func NewKmipListClients() *KmipListClients {
 	this := KmipListClients{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -39,6 +41,8 @@ func NewKmipListClients() *KmipListClients {
 // but it doesn't guarantee that properties required by API are set
 func NewKmipListClientsWithDefaults() *KmipListClients {
 	this := KmipListClients{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

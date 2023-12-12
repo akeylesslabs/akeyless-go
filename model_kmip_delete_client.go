@@ -33,6 +33,8 @@ type KmipDeleteClient struct {
 // will change when the set of required properties is changed
 func NewKmipDeleteClient() *KmipDeleteClient {
 	this := KmipDeleteClient{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -41,6 +43,8 @@ func NewKmipDeleteClient() *KmipDeleteClient {
 // but it doesn't guarantee that properties required by API are set
 func NewKmipDeleteClientWithDefaults() *KmipDeleteClient {
 	this := KmipDeleteClient{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

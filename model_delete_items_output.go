@@ -17,6 +17,8 @@ import (
 
 // DeleteItemsOutput struct for DeleteItemsOutput
 type DeleteItemsOutput struct {
+	DeletedItems *[]string `json:"deleted_items,omitempty"`
+	FailedDeletedItems *map[string]string `json:"failed_deleted_items,omitempty"`
 	Path *string `json:"path,omitempty"`
 }
 
@@ -35,6 +37,70 @@ func NewDeleteItemsOutput() *DeleteItemsOutput {
 func NewDeleteItemsOutputWithDefaults() *DeleteItemsOutput {
 	this := DeleteItemsOutput{}
 	return &this
+}
+
+// GetDeletedItems returns the DeletedItems field value if set, zero value otherwise.
+func (o *DeleteItemsOutput) GetDeletedItems() []string {
+	if o == nil || o.DeletedItems == nil {
+		var ret []string
+		return ret
+	}
+	return *o.DeletedItems
+}
+
+// GetDeletedItemsOk returns a tuple with the DeletedItems field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeleteItemsOutput) GetDeletedItemsOk() (*[]string, bool) {
+	if o == nil || o.DeletedItems == nil {
+		return nil, false
+	}
+	return o.DeletedItems, true
+}
+
+// HasDeletedItems returns a boolean if a field has been set.
+func (o *DeleteItemsOutput) HasDeletedItems() bool {
+	if o != nil && o.DeletedItems != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeletedItems gets a reference to the given []string and assigns it to the DeletedItems field.
+func (o *DeleteItemsOutput) SetDeletedItems(v []string) {
+	o.DeletedItems = &v
+}
+
+// GetFailedDeletedItems returns the FailedDeletedItems field value if set, zero value otherwise.
+func (o *DeleteItemsOutput) GetFailedDeletedItems() map[string]string {
+	if o == nil || o.FailedDeletedItems == nil {
+		var ret map[string]string
+		return ret
+	}
+	return *o.FailedDeletedItems
+}
+
+// GetFailedDeletedItemsOk returns a tuple with the FailedDeletedItems field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeleteItemsOutput) GetFailedDeletedItemsOk() (*map[string]string, bool) {
+	if o == nil || o.FailedDeletedItems == nil {
+		return nil, false
+	}
+	return o.FailedDeletedItems, true
+}
+
+// HasFailedDeletedItems returns a boolean if a field has been set.
+func (o *DeleteItemsOutput) HasFailedDeletedItems() bool {
+	if o != nil && o.FailedDeletedItems != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFailedDeletedItems gets a reference to the given map[string]string and assigns it to the FailedDeletedItems field.
+func (o *DeleteItemsOutput) SetFailedDeletedItems(v map[string]string) {
+	o.FailedDeletedItems = &v
 }
 
 // GetPath returns the Path field value if set, zero value otherwise.
@@ -71,6 +137,12 @@ func (o *DeleteItemsOutput) SetPath(v string) {
 
 func (o DeleteItemsOutput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.DeletedItems != nil {
+		toSerialize["deleted_items"] = o.DeletedItems
+	}
+	if o.FailedDeletedItems != nil {
+		toSerialize["failed_deleted_items"] = o.FailedDeletedItems
+	}
 	if o.Path != nil {
 		toSerialize["path"] = o.Path
 	}

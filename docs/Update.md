@@ -4,8 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
-**Version** | Pointer to **string** | Version | [optional] 
+**ArtifactRepository** | Pointer to **string** | Alternative CLI repository url. e.g. https://artifacts.site2.akeyless.io | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**ShowChangelog** | Pointer to **bool** | Show the changelog between the current version and the latest one and exit (update will not be performed) | [optional] 
+**Version** | Pointer to **string** | The CLI version | [optional] [default to "latest"]
 
 ## Methods
 
@@ -25,6 +27,31 @@ will change when the set of required properties is changed
 NewUpdateWithDefaults instantiates a new Update object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetArtifactRepository
+
+`func (o *Update) GetArtifactRepository() string`
+
+GetArtifactRepository returns the ArtifactRepository field if non-nil, zero value otherwise.
+
+### GetArtifactRepositoryOk
+
+`func (o *Update) GetArtifactRepositoryOk() (*string, bool)`
+
+GetArtifactRepositoryOk returns a tuple with the ArtifactRepository field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetArtifactRepository
+
+`func (o *Update) SetArtifactRepository(v string)`
+
+SetArtifactRepository sets ArtifactRepository field to given value.
+
+### HasArtifactRepository
+
+`func (o *Update) HasArtifactRepository() bool`
+
+HasArtifactRepository returns a boolean if a field has been set.
 
 ### GetJson
 
@@ -50,6 +77,31 @@ SetJson sets Json field to given value.
 `func (o *Update) HasJson() bool`
 
 HasJson returns a boolean if a field has been set.
+
+### GetShowChangelog
+
+`func (o *Update) GetShowChangelog() bool`
+
+GetShowChangelog returns the ShowChangelog field if non-nil, zero value otherwise.
+
+### GetShowChangelogOk
+
+`func (o *Update) GetShowChangelogOk() (*bool, bool)`
+
+GetShowChangelogOk returns a tuple with the ShowChangelog field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShowChangelog
+
+`func (o *Update) SetShowChangelog(v bool)`
+
+SetShowChangelog sets ShowChangelog field to given value.
+
+### HasShowChangelog
+
+`func (o *Update) HasShowChangelog() bool`
+
+HasShowChangelog returns a boolean if a field has been set.
 
 ### GetVersion
 

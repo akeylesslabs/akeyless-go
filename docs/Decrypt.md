@@ -8,11 +8,12 @@ Name | Type | Description | Notes
 **DisplayId** | Pointer to **string** | The display id of the key to use in the decryption process | [optional] 
 **EncryptionContext** | Pointer to **map[string]string** | The encryption context. If this was specified in the encrypt command, it must be specified here or the decryption operation will fail | [optional] 
 **ItemId** | Pointer to **int64** | The item id of the key to use in the decryption process | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeyName** | **string** | The name of the key to use in the decryption process | 
 **OutputFormat** | Pointer to **string** | If specified, the output will be formatted accordingly. options: [base64] | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**Version** | Pointer to **int32** | key version (relevant only for classic key) | [optional] 
 
 ## Methods
 
@@ -252,6 +253,31 @@ SetUidToken sets UidToken field to given value.
 `func (o *Decrypt) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetVersion
+
+`func (o *Decrypt) GetVersion() int32`
+
+GetVersion returns the Version field if non-nil, zero value otherwise.
+
+### GetVersionOk
+
+`func (o *Decrypt) GetVersionOk() (*int32, bool)`
+
+GetVersionOk returns a tuple with the Version field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVersion
+
+`func (o *Decrypt) SetVersion(v int32)`
+
+SetVersion sets Version field to given value.
+
+### HasVersion
+
+`func (o *Decrypt) HasVersion() bool`
+
+HasVersion returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

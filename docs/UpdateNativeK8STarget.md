@@ -4,18 +4,23 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Comment** | Pointer to **string** | Comment about the target | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
-**K8sClusterCaCert** | **string** | K8S cluster CA certificate | 
-**K8sClusterEndpoint** | **string** | K8S cluster URL endpoint | 
-**K8sClusterToken** | **string** | K8S cluster Bearer token | 
-**KeepPrevVersion** | Pointer to **string** |  | [optional] 
+**Comment** | Pointer to **string** | Deprecated - use description | [optional] 
+**Description** | Pointer to **string** | Description of the object | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**K8sAuthType** | Pointer to **string** | K8S auth type [token/certificate] | [optional] [default to "token"]
+**K8sClientCertificate** | Pointer to **string** | Content of the k8 client certificate (PEM format) in a Base64 format | [optional] 
+**K8sClientKey** | Pointer to **string** | Content of the k8 client private key (PEM format) in a Base64 format | [optional] 
+**K8sClusterCaCert** | **string** | K8S cluster CA certificate | [default to "dummy_val"]
+**K8sClusterEndpoint** | **string** | K8S cluster URL endpoint | [default to "dummy_val"]
+**K8sClusterToken** | **string** | K8S cluster Bearer token | [default to "dummy_val"]
+**KeepPrevVersion** | Pointer to **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Target name | 
 **NewName** | Pointer to **string** | New target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UpdateVersion** | Pointer to **bool** | Deprecated | [optional] 
+**UseGwServiceAccount** | Pointer to **bool** | Use the GW&#39;s service account | [optional] 
 
 ## Methods
 
@@ -61,6 +66,31 @@ SetComment sets Comment field to given value.
 
 HasComment returns a boolean if a field has been set.
 
+### GetDescription
+
+`func (o *UpdateNativeK8STarget) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *UpdateNativeK8STarget) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *UpdateNativeK8STarget) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *UpdateNativeK8STarget) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
+
 ### GetJson
 
 `func (o *UpdateNativeK8STarget) GetJson() bool`
@@ -85,6 +115,81 @@ SetJson sets Json field to given value.
 `func (o *UpdateNativeK8STarget) HasJson() bool`
 
 HasJson returns a boolean if a field has been set.
+
+### GetK8sAuthType
+
+`func (o *UpdateNativeK8STarget) GetK8sAuthType() string`
+
+GetK8sAuthType returns the K8sAuthType field if non-nil, zero value otherwise.
+
+### GetK8sAuthTypeOk
+
+`func (o *UpdateNativeK8STarget) GetK8sAuthTypeOk() (*string, bool)`
+
+GetK8sAuthTypeOk returns a tuple with the K8sAuthType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sAuthType
+
+`func (o *UpdateNativeK8STarget) SetK8sAuthType(v string)`
+
+SetK8sAuthType sets K8sAuthType field to given value.
+
+### HasK8sAuthType
+
+`func (o *UpdateNativeK8STarget) HasK8sAuthType() bool`
+
+HasK8sAuthType returns a boolean if a field has been set.
+
+### GetK8sClientCertificate
+
+`func (o *UpdateNativeK8STarget) GetK8sClientCertificate() string`
+
+GetK8sClientCertificate returns the K8sClientCertificate field if non-nil, zero value otherwise.
+
+### GetK8sClientCertificateOk
+
+`func (o *UpdateNativeK8STarget) GetK8sClientCertificateOk() (*string, bool)`
+
+GetK8sClientCertificateOk returns a tuple with the K8sClientCertificate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sClientCertificate
+
+`func (o *UpdateNativeK8STarget) SetK8sClientCertificate(v string)`
+
+SetK8sClientCertificate sets K8sClientCertificate field to given value.
+
+### HasK8sClientCertificate
+
+`func (o *UpdateNativeK8STarget) HasK8sClientCertificate() bool`
+
+HasK8sClientCertificate returns a boolean if a field has been set.
+
+### GetK8sClientKey
+
+`func (o *UpdateNativeK8STarget) GetK8sClientKey() string`
+
+GetK8sClientKey returns the K8sClientKey field if non-nil, zero value otherwise.
+
+### GetK8sClientKeyOk
+
+`func (o *UpdateNativeK8STarget) GetK8sClientKeyOk() (*string, bool)`
+
+GetK8sClientKeyOk returns a tuple with the K8sClientKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sClientKey
+
+`func (o *UpdateNativeK8STarget) SetK8sClientKey(v string)`
+
+SetK8sClientKey sets K8sClientKey field to given value.
+
+### HasK8sClientKey
+
+`func (o *UpdateNativeK8STarget) HasK8sClientKey() bool`
+
+HasK8sClientKey returns a boolean if a field has been set.
 
 ### GetK8sClusterCaCert
 
@@ -315,6 +420,31 @@ SetUpdateVersion sets UpdateVersion field to given value.
 `func (o *UpdateNativeK8STarget) HasUpdateVersion() bool`
 
 HasUpdateVersion returns a boolean if a field has been set.
+
+### GetUseGwServiceAccount
+
+`func (o *UpdateNativeK8STarget) GetUseGwServiceAccount() bool`
+
+GetUseGwServiceAccount returns the UseGwServiceAccount field if non-nil, zero value otherwise.
+
+### GetUseGwServiceAccountOk
+
+`func (o *UpdateNativeK8STarget) GetUseGwServiceAccountOk() (*bool, bool)`
+
+GetUseGwServiceAccountOk returns a tuple with the UseGwServiceAccount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseGwServiceAccount
+
+`func (o *UpdateNativeK8STarget) SetUseGwServiceAccount(v bool)`
+
+SetUseGwServiceAccount sets UseGwServiceAccount field to given value.
+
+### HasUseGwServiceAccount
+
+`func (o *UpdateNativeK8STarget) HasUseGwServiceAccount() bool`
+
+HasUseGwServiceAccount returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

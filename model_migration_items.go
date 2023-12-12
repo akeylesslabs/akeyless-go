@@ -21,6 +21,7 @@ type MigrationItems struct {
 	Migrated *int64 `json:"migrated,omitempty"`
 	Skipped *int64 `json:"skipped,omitempty"`
 	Total *int64 `json:"total,omitempty"`
+	Updated *int64 `json:"updated,omitempty"`
 }
 
 // NewMigrationItems instantiates a new MigrationItems object
@@ -168,6 +169,38 @@ func (o *MigrationItems) SetTotal(v int64) {
 	o.Total = &v
 }
 
+// GetUpdated returns the Updated field value if set, zero value otherwise.
+func (o *MigrationItems) GetUpdated() int64 {
+	if o == nil || o.Updated == nil {
+		var ret int64
+		return ret
+	}
+	return *o.Updated
+}
+
+// GetUpdatedOk returns a tuple with the Updated field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MigrationItems) GetUpdatedOk() (*int64, bool) {
+	if o == nil || o.Updated == nil {
+		return nil, false
+	}
+	return o.Updated, true
+}
+
+// HasUpdated returns a boolean if a field has been set.
+func (o *MigrationItems) HasUpdated() bool {
+	if o != nil && o.Updated != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdated gets a reference to the given int64 and assigns it to the Updated field.
+func (o *MigrationItems) SetUpdated(v int64) {
+	o.Updated = &v
+}
+
 func (o MigrationItems) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Failed != nil {
@@ -181,6 +214,9 @@ func (o MigrationItems) MarshalJSON() ([]byte, error) {
 	}
 	if o.Total != nil {
 		toSerialize["total"] = o.Total
+	}
+	if o.Updated != nil {
+		toSerialize["updated"] = o.Updated
 	}
 	return json.Marshal(toSerialize)
 }

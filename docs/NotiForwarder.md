@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AuthType** | Pointer to **string** |  | [optional] 
+**ClientId** | Pointer to **string** | Auth - JWT | [optional] 
 **ClientPermissions** | Pointer to **[]string** |  | [optional] 
 **Comment** | Pointer to **string** |  | [optional] 
 **CreationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
@@ -22,7 +24,8 @@ Name | Type | Description | Notes
 **RunnerType** | Pointer to **string** |  | [optional] 
 **TimespanInSeconds** | Pointer to **int64** |  | [optional] 
 **ToEmails** | Pointer to [**[]EmailEntry**](EmailEntry.md) |  | [optional] 
-**Username** | Pointer to **string** |  | [optional] 
+**UserEmail** | Pointer to **string** |  | [optional] 
+**Username** | Pointer to **string** | Auth - User Password | [optional] 
 **WithCustomerFragment** | Pointer to **bool** |  | [optional] 
 
 ## Methods
@@ -43,6 +46,56 @@ will change when the set of required properties is changed
 NewNotiForwarderWithDefaults instantiates a new NotiForwarder object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAuthType
+
+`func (o *NotiForwarder) GetAuthType() string`
+
+GetAuthType returns the AuthType field if non-nil, zero value otherwise.
+
+### GetAuthTypeOk
+
+`func (o *NotiForwarder) GetAuthTypeOk() (*string, bool)`
+
+GetAuthTypeOk returns a tuple with the AuthType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthType
+
+`func (o *NotiForwarder) SetAuthType(v string)`
+
+SetAuthType sets AuthType field to given value.
+
+### HasAuthType
+
+`func (o *NotiForwarder) HasAuthType() bool`
+
+HasAuthType returns a boolean if a field has been set.
+
+### GetClientId
+
+`func (o *NotiForwarder) GetClientId() string`
+
+GetClientId returns the ClientId field if non-nil, zero value otherwise.
+
+### GetClientIdOk
+
+`func (o *NotiForwarder) GetClientIdOk() (*string, bool)`
+
+GetClientIdOk returns a tuple with the ClientId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientId
+
+`func (o *NotiForwarder) SetClientId(v string)`
+
+SetClientId sets ClientId field to given value.
+
+### HasClientId
+
+`func (o *NotiForwarder) HasClientId() bool`
+
+HasClientId returns a boolean if a field has been set.
 
 ### GetClientPermissions
 
@@ -493,6 +546,31 @@ SetToEmails sets ToEmails field to given value.
 `func (o *NotiForwarder) HasToEmails() bool`
 
 HasToEmails returns a boolean if a field has been set.
+
+### GetUserEmail
+
+`func (o *NotiForwarder) GetUserEmail() string`
+
+GetUserEmail returns the UserEmail field if non-nil, zero value otherwise.
+
+### GetUserEmailOk
+
+`func (o *NotiForwarder) GetUserEmailOk() (*string, bool)`
+
+GetUserEmailOk returns a tuple with the UserEmail field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserEmail
+
+`func (o *NotiForwarder) SetUserEmail(v string)`
+
+SetUserEmail sets UserEmail field to given value.
+
+### HasUserEmail
+
+`func (o *NotiForwarder) HasUserEmail() bool`
+
+HasUserEmail returns a boolean if a field has been set.
 
 ### GetUsername
 

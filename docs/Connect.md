@@ -12,14 +12,16 @@ Name | Type | Description | Notes
 **BastionCtrlSubdomain** | Pointer to **string** | The Bastion API prefix | [optional] 
 **CertIssuerName** | Pointer to **string** | The Akeyless certificate issuer name | [optional] 
 **IdentityFile** | Pointer to **string** | The file from which the identity (private key) for public key authentication is read | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**Justification** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** | The Secret name (for database and AWS producers - producer name) | [optional] 
 **SshCommand** | Pointer to **string** | Path to SSH executable. e.g. /usr/bin/ssh | [optional] 
 **SshExtraArgs** | Pointer to **string** | The Use to add offical SSH arguments (except -i) | [optional] 
-**SshLegacySigningAlg** | Pointer to **bool** | Set this option to output legacy (&#39;ssh-rsa-cert-v01@openssh.com&#39;) signing algorithm name in the ssh certificate. | [optional] 
+**SshLegacySigningAlg** | Pointer to **bool** | Set this option to output legacy (&#39;ssh-rsa-cert-v01@openssh.com&#39;) signing algorithm name in the ssh certificate. | [optional] [default to false]
 **Target** | Pointer to **string** | The target | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**UseSshAgent** | Pointer to **bool** | Enable ssh-agent | [optional] 
 **ViaBastion** | Pointer to **string** | The jump box server | [optional] 
 
 ## Methods
@@ -266,6 +268,31 @@ SetJson sets Json field to given value.
 
 HasJson returns a boolean if a field has been set.
 
+### GetJustification
+
+`func (o *Connect) GetJustification() string`
+
+GetJustification returns the Justification field if non-nil, zero value otherwise.
+
+### GetJustificationOk
+
+`func (o *Connect) GetJustificationOk() (*string, bool)`
+
+GetJustificationOk returns a tuple with the Justification field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJustification
+
+`func (o *Connect) SetJustification(v string)`
+
+SetJustification sets Justification field to given value.
+
+### HasJustification
+
+`func (o *Connect) HasJustification() bool`
+
+HasJustification returns a boolean if a field has been set.
+
 ### GetName
 
 `func (o *Connect) GetName() string`
@@ -440,6 +467,31 @@ SetUidToken sets UidToken field to given value.
 `func (o *Connect) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetUseSshAgent
+
+`func (o *Connect) GetUseSshAgent() bool`
+
+GetUseSshAgent returns the UseSshAgent field if non-nil, zero value otherwise.
+
+### GetUseSshAgentOk
+
+`func (o *Connect) GetUseSshAgentOk() (*bool, bool)`
+
+GetUseSshAgentOk returns a tuple with the UseSshAgent field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseSshAgent
+
+`func (o *Connect) SetUseSshAgent(v bool)`
+
+SetUseSshAgent sets UseSshAgent field to given value.
+
+### HasUseSshAgent
+
+`func (o *Connect) HasUseSshAgent() bool`
+
+HasUseSshAgent returns a boolean if a field has been set.
 
 ### GetViaBastion
 

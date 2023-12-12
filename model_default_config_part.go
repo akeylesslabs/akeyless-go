@@ -17,6 +17,7 @@ import (
 
 // DefaultConfigPart struct for DefaultConfigPart
 type DefaultConfigPart struct {
+	CertificateAccessId *string `json:"certificate_access_id,omitempty"`
 	DefaultProtectionKeyId *int64 `json:"default_protection_key_id,omitempty"`
 	DefaultSecretLocation *string `json:"default_secret_location,omitempty"`
 	OidcAccessId *string `json:"oidc_access_id,omitempty"`
@@ -38,6 +39,38 @@ func NewDefaultConfigPart() *DefaultConfigPart {
 func NewDefaultConfigPartWithDefaults() *DefaultConfigPart {
 	this := DefaultConfigPart{}
 	return &this
+}
+
+// GetCertificateAccessId returns the CertificateAccessId field value if set, zero value otherwise.
+func (o *DefaultConfigPart) GetCertificateAccessId() string {
+	if o == nil || o.CertificateAccessId == nil {
+		var ret string
+		return ret
+	}
+	return *o.CertificateAccessId
+}
+
+// GetCertificateAccessIdOk returns a tuple with the CertificateAccessId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DefaultConfigPart) GetCertificateAccessIdOk() (*string, bool) {
+	if o == nil || o.CertificateAccessId == nil {
+		return nil, false
+	}
+	return o.CertificateAccessId, true
+}
+
+// HasCertificateAccessId returns a boolean if a field has been set.
+func (o *DefaultConfigPart) HasCertificateAccessId() bool {
+	if o != nil && o.CertificateAccessId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificateAccessId gets a reference to the given string and assigns it to the CertificateAccessId field.
+func (o *DefaultConfigPart) SetCertificateAccessId(v string) {
+	o.CertificateAccessId = &v
 }
 
 // GetDefaultProtectionKeyId returns the DefaultProtectionKeyId field value if set, zero value otherwise.
@@ -170,6 +203,9 @@ func (o *DefaultConfigPart) SetSamlAccessId(v string) {
 
 func (o DefaultConfigPart) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.CertificateAccessId != nil {
+		toSerialize["certificate_access_id"] = o.CertificateAccessId
+	}
 	if o.DefaultProtectionKeyId != nil {
 		toSerialize["default_protection_key_id"] = o.DefaultProtectionKeyId
 	}

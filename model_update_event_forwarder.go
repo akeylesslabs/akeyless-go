@@ -19,9 +19,15 @@ import (
 type UpdateEventForwarder struct {
 	// Workstation Admin Name
 	AdminName *string `json:"admin-name,omitempty"`
-	// A comma seperated list of email addresses to send event to (relevant only for \\\"email\\\" Event Forwarder)
+	// The authentication type to use when connecting to ServiceNow (user-pass / jwt)
+	AuthType *string `json:"auth-type,omitempty"`
+	// The client ID to use when connecting to ServiceNow with jwt authentication
+	ClientId *string `json:"client-id,omitempty"`
+	// Description of the object
+	Description *string `json:"description,omitempty"`
+	// A comma seperated list of email addresses to send event to (relevant only for \"email\" Event Forwarder)
 	EmailTo *string `json:"email-to,omitempty"`
-	// Enable
+	// Enable/Disable Event Forwarder [true/false]
 	Enable *string `json:"enable,omitempty"`
 	// Event sources
 	EventSourceLocations *[]string `json:"event-source-locations,omitempty"`
@@ -33,7 +39,7 @@ type UpdateEventForwarder struct {
 	Json *bool `json:"json,omitempty"`
 	// EventForwarder name
 	Name string `json:"name"`
-	// New comment about the Event Forwarder
+	// Deprecated - use description
 	NewComment *string `json:"new-comment,omitempty"`
 	// New EventForwarder name
 	NewName *string `json:"new-name,omitempty"`
@@ -41,6 +47,8 @@ type UpdateEventForwarder struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// The user email to use when connecting to ServiceNow with jwt authentication
+	UserEmail *string `json:"user-email,omitempty"`
 }
 
 // NewUpdateEventForwarder instantiates a new UpdateEventForwarder object
@@ -49,6 +57,14 @@ type UpdateEventForwarder struct {
 // will change when the set of required properties is changed
 func NewUpdateEventForwarder(name string, ) *UpdateEventForwarder {
 	this := UpdateEventForwarder{}
+	var authType string = "user-pass"
+	this.AuthType = &authType
+	var description string = "default_comment"
+	this.Description = &description
+	var enable string = "true"
+	this.Enable = &enable
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	var newComment string = "default_comment"
 	this.NewComment = &newComment
@@ -60,6 +76,14 @@ func NewUpdateEventForwarder(name string, ) *UpdateEventForwarder {
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateEventForwarderWithDefaults() *UpdateEventForwarder {
 	this := UpdateEventForwarder{}
+	var authType string = "user-pass"
+	this.AuthType = &authType
+	var description string = "default_comment"
+	this.Description = &description
+	var enable string = "true"
+	this.Enable = &enable
+	var json bool = false
+	this.Json = &json
 	var newComment string = "default_comment"
 	this.NewComment = &newComment
 	return &this
@@ -95,6 +119,102 @@ func (o *UpdateEventForwarder) HasAdminName() bool {
 // SetAdminName gets a reference to the given string and assigns it to the AdminName field.
 func (o *UpdateEventForwarder) SetAdminName(v string) {
 	o.AdminName = &v
+}
+
+// GetAuthType returns the AuthType field value if set, zero value otherwise.
+func (o *UpdateEventForwarder) GetAuthType() string {
+	if o == nil || o.AuthType == nil {
+		var ret string
+		return ret
+	}
+	return *o.AuthType
+}
+
+// GetAuthTypeOk returns a tuple with the AuthType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateEventForwarder) GetAuthTypeOk() (*string, bool) {
+	if o == nil || o.AuthType == nil {
+		return nil, false
+	}
+	return o.AuthType, true
+}
+
+// HasAuthType returns a boolean if a field has been set.
+func (o *UpdateEventForwarder) HasAuthType() bool {
+	if o != nil && o.AuthType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthType gets a reference to the given string and assigns it to the AuthType field.
+func (o *UpdateEventForwarder) SetAuthType(v string) {
+	o.AuthType = &v
+}
+
+// GetClientId returns the ClientId field value if set, zero value otherwise.
+func (o *UpdateEventForwarder) GetClientId() string {
+	if o == nil || o.ClientId == nil {
+		var ret string
+		return ret
+	}
+	return *o.ClientId
+}
+
+// GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateEventForwarder) GetClientIdOk() (*string, bool) {
+	if o == nil || o.ClientId == nil {
+		return nil, false
+	}
+	return o.ClientId, true
+}
+
+// HasClientId returns a boolean if a field has been set.
+func (o *UpdateEventForwarder) HasClientId() bool {
+	if o != nil && o.ClientId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetClientId gets a reference to the given string and assigns it to the ClientId field.
+func (o *UpdateEventForwarder) SetClientId(v string) {
+	o.ClientId = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *UpdateEventForwarder) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateEventForwarder) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *UpdateEventForwarder) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *UpdateEventForwarder) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetEmailTo returns the EmailTo field value if set, zero value otherwise.
@@ -441,10 +561,51 @@ func (o *UpdateEventForwarder) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUserEmail returns the UserEmail field value if set, zero value otherwise.
+func (o *UpdateEventForwarder) GetUserEmail() string {
+	if o == nil || o.UserEmail == nil {
+		var ret string
+		return ret
+	}
+	return *o.UserEmail
+}
+
+// GetUserEmailOk returns a tuple with the UserEmail field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateEventForwarder) GetUserEmailOk() (*string, bool) {
+	if o == nil || o.UserEmail == nil {
+		return nil, false
+	}
+	return o.UserEmail, true
+}
+
+// HasUserEmail returns a boolean if a field has been set.
+func (o *UpdateEventForwarder) HasUserEmail() bool {
+	if o != nil && o.UserEmail != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserEmail gets a reference to the given string and assigns it to the UserEmail field.
+func (o *UpdateEventForwarder) SetUserEmail(v string) {
+	o.UserEmail = &v
+}
+
 func (o UpdateEventForwarder) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AdminName != nil {
 		toSerialize["admin-name"] = o.AdminName
+	}
+	if o.AuthType != nil {
+		toSerialize["auth-type"] = o.AuthType
+	}
+	if o.ClientId != nil {
+		toSerialize["client-id"] = o.ClientId
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.EmailTo != nil {
 		toSerialize["email-to"] = o.EmailTo
@@ -478,6 +639,9 @@ func (o UpdateEventForwarder) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.UserEmail != nil {
+		toSerialize["user-email"] = o.UserEmail
 	}
 	return json.Marshal(toSerialize)
 }

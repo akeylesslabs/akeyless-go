@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
+**LastMigration** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **NewName** | Pointer to **string** |  | [optional] 
 **Prefix** | Pointer to **string** |  | [optional] 
@@ -55,6 +56,31 @@ SetId sets Id field to given value.
 `func (o *MigrationGeneral) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### GetLastMigration
+
+`func (o *MigrationGeneral) GetLastMigration() string`
+
+GetLastMigration returns the LastMigration field if non-nil, zero value otherwise.
+
+### GetLastMigrationOk
+
+`func (o *MigrationGeneral) GetLastMigrationOk() (*string, bool)`
+
+GetLastMigrationOk returns a tuple with the LastMigration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastMigration
+
+`func (o *MigrationGeneral) SetLastMigration(v string)`
+
+SetLastMigration sets LastMigration field to given value.
+
+### HasLastMigration
+
+`func (o *MigrationGeneral) HasLastMigration() bool`
+
+HasLastMigration returns a boolean if a field has been set.
 
 ### GetName
 

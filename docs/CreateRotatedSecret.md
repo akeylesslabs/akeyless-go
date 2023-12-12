@@ -4,45 +4,48 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ApiId** | Pointer to **string** |  | [optional] 
-**ApiKey** | Pointer to **string** |  | [optional] 
+**ApiId** | Pointer to **string** | API ID to rotate (relevant only for rotator-type&#x3D;api-key) | [optional] 
+**ApiKey** | Pointer to **string** | API key to rotate (relevant only for rotator-type&#x3D;api-key) | [optional] 
 **ApplicationId** | Pointer to **string** | ApplicationId (used in azure) | [optional] 
-**AuthenticationCredentials** | Pointer to **string** |  | [optional] 
-**AutoRotate** | Pointer to **string** | Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation | [optional] 
+**AuthenticationCredentials** | Pointer to **string** | The credentials to connect with use-user-creds/use-target-creds | [optional] [default to "use-user-creds"]
+**AutoRotate** | Pointer to **string** | Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation [true/false] | [optional] 
 **AwsRegion** | Pointer to **string** | Region (used in aws) | [optional] [default to "us-east-2"]
-**CustomPayload** | Pointer to **string** |  | [optional] 
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
+**CustomPayload** | Pointer to **string** | Secret payload to be sent with rotation request (relevant only for rotator-type&#x3D;custom) | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **GcpKey** | Pointer to **string** | Base64-encoded service account private key text | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**GcpServiceAccountEmail** | Pointer to **string** | The email of the gcp service account to rotate | [optional] 
+**GcpServiceAccountKeyId** | Pointer to **string** | The key id of the gcp service account to rotate | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Metadata** | Pointer to **string** | Deprecated - use description | [optional] 
 **Name** | **string** | Secret name | 
-**RotateAfterDisconnect** | Pointer to **string** | Rotate the value of the secret after SRA session ends | [optional] [default to "false"]
-**RotatedPassword** | Pointer to **string** |  | [optional] 
-**RotatedUsername** | Pointer to **string** |  | [optional] 
-**RotationHour** | Pointer to **int32** |  | [optional] 
+**RotateAfterDisconnect** | Pointer to **string** | Rotate the value of the secret after SRA session ends [true/false] | [optional] [default to "false"]
+**RotatedPassword** | Pointer to **string** | rotated-username password (relevant only for rotator-type&#x3D;password) | [optional] 
+**RotatedUsername** | Pointer to **string** | username to be rotated, if selected use-self-creds at rotator-creds-type, this username will try to rotate it&#39;s own password, if use-target-creds is selected, target credentials will be use to rotate the rotated-password (relevant only for rotator-type&#x3D;password) | [optional] 
+**RotationHour** | Pointer to **int32** | The Hour of the rotation in UTC | [optional] 
 **RotationInterval** | Pointer to **string** | The number of days to wait between every automatic key rotation (1-365) | [optional] 
 **RotatorCredsType** | Pointer to **string** |  | [optional] 
-**RotatorCustomCmd** | Pointer to **string** |  | [optional] 
+**RotatorCustomCmd** | Pointer to **string** | Custom rotation command (relevant only for ssh target) | [optional] 
 **RotatorType** | **string** | Rotator Type | 
-**SecureAccessAllowExternalUser** | Pointer to **bool** | Secure Access Allow Providing External User (used in ssh) | [optional] [default to false]
-**SecureAccessAwsAccountId** | Pointer to **string** | Secure Access Account Id (used in aws) | [optional] 
-**SecureAccessAwsNativeCli** | Pointer to **bool** | Secure Access Aws Native Cli (used in aws) | [optional] 
-**SecureAccessBastionIssuer** | Pointer to **string** | Secure Access Bastion Issuer | [optional] 
-**SecureAccessDbName** | Pointer to **string** | Secure Access DB Name (used in data bases) | [optional] 
-**SecureAccessDbSchema** | Pointer to **string** | Secure Access Schema (used in mssql, postgresql) | [optional] 
-**SecureAccessEnable** | Pointer to **string** | Secure Access Enabled | [optional] 
-**SecureAccessHost** | Pointer to **[]string** | Secure Access Host | [optional] 
-**SecureAccessRdpDomain** | Pointer to **string** | Secure Access Domain (used in ssh) | [optional] 
-**SecureAccessRdpUser** | Pointer to **string** | Secure Access Override User (used in ssh) | [optional] 
-**SecureAccessWeb** | Pointer to **bool** | Secure Access Web | [optional] [default to false]
-**SecureAccessWebBrowsing** | Pointer to **bool** | Secure Access Isolated (used in aws, azure) | [optional] [default to false]
-**SecureAccessWebProxy** | Pointer to **bool** | Secure Access Web Proxy (used in aws, azure) | [optional] [default to false]
+**SamePassword** | Pointer to **string** | Rotate same password for each host from the Linked Target (relevant only for Linked Target) | [optional] 
+**SecureAccessAllowExternalUser** | Pointer to **bool** | Allow providing external user for a domain users (relevant only for rdp) | [optional] [default to false]
+**SecureAccessAwsAccountId** | Pointer to **string** | The AWS account id (relevant only for aws) | [optional] 
+**SecureAccessAwsNativeCli** | Pointer to **bool** | The AWS native cli | [optional] 
+**SecureAccessBastionIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] 
+**SecureAccessDbName** | Pointer to **string** | The DB name (relevant only for DB Dynamic-Secret) | [optional] 
+**SecureAccessDbSchema** | Pointer to **string** | The db schema (relevant only for mssql or postgresql) | [optional] 
+**SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
+**SecureAccessHost** | Pointer to **[]string** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
+**SecureAccessRdpDomain** | Pointer to **string** | Required when the Dynamic Secret is used for a domain user (relevant only for RDP Dynamic-Secret) | [optional] 
+**SecureAccessRdpUser** | Pointer to **string** | Override the RDP Domain username (relevant only for rdp) | [optional] 
+**SecureAccessWeb** | Pointer to **bool** | Enable Web Secure Remote Access | [optional] [default to false]
+**SecureAccessWebBrowsing** | Pointer to **bool** | Secure browser via Akeyless Web Access Bastion (relevant only for aws or azure) | [optional] [default to false]
+**SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless Web Access Bastion (relevant only for aws or azure) | [optional] [default to false]
 **SshPassword** | Pointer to **string** | Deprecated: use RotatedPassword | [optional] 
 **SshUsername** | Pointer to **string** | Deprecated: use RotatedUser | [optional] 
 **StorageAccountKeyName** | Pointer to **string** | The name of the storage account key to rotate [key1/key2/kerb1/kerb2] (relevat to azure-storage-account) | [optional] 
-**Tags** | Pointer to **[]string** | List of the tags attached to this secret | [optional] 
+**Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | **string** | Target name | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -317,6 +320,56 @@ SetGcpKey sets GcpKey field to given value.
 `func (o *CreateRotatedSecret) HasGcpKey() bool`
 
 HasGcpKey returns a boolean if a field has been set.
+
+### GetGcpServiceAccountEmail
+
+`func (o *CreateRotatedSecret) GetGcpServiceAccountEmail() string`
+
+GetGcpServiceAccountEmail returns the GcpServiceAccountEmail field if non-nil, zero value otherwise.
+
+### GetGcpServiceAccountEmailOk
+
+`func (o *CreateRotatedSecret) GetGcpServiceAccountEmailOk() (*string, bool)`
+
+GetGcpServiceAccountEmailOk returns a tuple with the GcpServiceAccountEmail field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpServiceAccountEmail
+
+`func (o *CreateRotatedSecret) SetGcpServiceAccountEmail(v string)`
+
+SetGcpServiceAccountEmail sets GcpServiceAccountEmail field to given value.
+
+### HasGcpServiceAccountEmail
+
+`func (o *CreateRotatedSecret) HasGcpServiceAccountEmail() bool`
+
+HasGcpServiceAccountEmail returns a boolean if a field has been set.
+
+### GetGcpServiceAccountKeyId
+
+`func (o *CreateRotatedSecret) GetGcpServiceAccountKeyId() string`
+
+GetGcpServiceAccountKeyId returns the GcpServiceAccountKeyId field if non-nil, zero value otherwise.
+
+### GetGcpServiceAccountKeyIdOk
+
+`func (o *CreateRotatedSecret) GetGcpServiceAccountKeyIdOk() (*string, bool)`
+
+GetGcpServiceAccountKeyIdOk returns a tuple with the GcpServiceAccountKeyId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpServiceAccountKeyId
+
+`func (o *CreateRotatedSecret) SetGcpServiceAccountKeyId(v string)`
+
+SetGcpServiceAccountKeyId sets GcpServiceAccountKeyId field to given value.
+
+### HasGcpServiceAccountKeyId
+
+`func (o *CreateRotatedSecret) HasGcpServiceAccountKeyId() bool`
+
+HasGcpServiceAccountKeyId returns a boolean if a field has been set.
 
 ### GetJson
 
@@ -607,6 +660,31 @@ and a boolean to check if the value has been set.
 
 SetRotatorType sets RotatorType field to given value.
 
+
+### GetSamePassword
+
+`func (o *CreateRotatedSecret) GetSamePassword() string`
+
+GetSamePassword returns the SamePassword field if non-nil, zero value otherwise.
+
+### GetSamePasswordOk
+
+`func (o *CreateRotatedSecret) GetSamePasswordOk() (*string, bool)`
+
+GetSamePasswordOk returns a tuple with the SamePassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSamePassword
+
+`func (o *CreateRotatedSecret) SetSamePassword(v string)`
+
+SetSamePassword sets SamePassword field to given value.
+
+### HasSamePassword
+
+`func (o *CreateRotatedSecret) HasSamePassword() bool`
+
+HasSamePassword returns a boolean if a field has been set.
 
 ### GetSecureAccessAllowExternalUser
 

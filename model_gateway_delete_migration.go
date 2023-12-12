@@ -34,6 +34,8 @@ type GatewayDeleteMigration struct {
 func NewGatewayDeleteMigration(id string, ) *GatewayDeleteMigration {
 	this := GatewayDeleteMigration{}
 	this.Id = id
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -42,6 +44,8 @@ func NewGatewayDeleteMigration(id string, ) *GatewayDeleteMigration {
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayDeleteMigrationWithDefaults() *GatewayDeleteMigration {
 	this := GatewayDeleteMigration{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

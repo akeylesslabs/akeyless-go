@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessTokenManagerId** | Pointer to **string** |  | [optional] 
+**AclRules** | Pointer to **[]string** |  | [optional] 
 **Active** | Pointer to **bool** |  | [optional] 
 **AdminName** | Pointer to **string** |  | [optional] 
 **AdminPwd** | Pointer to **string** |  | [optional] 
@@ -49,7 +50,11 @@ Name | Type | Description | Notes
 **ChefServerUsername** | Pointer to **string** |  | [optional] 
 **ChefSkipSsl** | Pointer to **bool** |  | [optional] 
 **ClientAuthenticationType** | Pointer to **string** |  | [optional] 
+**CloudServiceProvider** | Pointer to **string** |  | [optional] 
+**ConnectionType** | Pointer to **string** |  | [optional] 
 **CreateSyncUrl** | Pointer to **string** |  | [optional] 
+**DbClientId** | Pointer to **string** |  | [optional] 
+**DbClientSecret** | Pointer to **string** |  | [optional] 
 **DbHostName** | Pointer to **string** |  | [optional] 
 **DbIsolationLevel** | Pointer to **string** |  | [optional] 
 **DbMaxIdleConns** | Pointer to **string** |  | [optional] 
@@ -61,6 +66,7 @@ Name | Type | Description | Notes
 **DbPwd** | Pointer to **string** |  | [optional] 
 **DbServerCertificates** | Pointer to **string** | (Optional) DBServerCertificates defines the set of root certificate authorities that clients use when verifying server certificates. If DBServerCertificates is empty, TLS uses the host&#39;s root CA set. | [optional] 
 **DbServerName** | Pointer to **string** | (Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client&#39;s handshake to support virtual hosting unless it is an IP address. | [optional] 
+**DbTenantId** | Pointer to **string** |  | [optional] 
 **DbUserName** | Pointer to **string** |  | [optional] 
 **DeleteProtection** | Pointer to **bool** |  | [optional] 
 **DynamicSecretId** | Pointer to **int64** |  | [optional] 
@@ -83,6 +89,8 @@ Name | Type | Description | Notes
 **GcpRoleBindings** | Pointer to [**map[string][]string**](array.md) |  | [optional] 
 **GcpServiceAccountEmail** | Pointer to **string** | GCPServiceAccountEmail overrides the deprecated field from the target | [optional] 
 **GcpServiceAccountKey** | Pointer to **string** |  | [optional] 
+**GcpServiceAccountKeyBase64** | Pointer to **string** |  | [optional] 
+**GcpServiceAccountKeyId** | Pointer to **string** |  | [optional] 
 **GcpServiceAccountType** | Pointer to **string** |  | [optional] 
 **GcpTmpServiceAccountName** | Pointer to **string** |  | [optional] 
 **GcpTokenLifetime** | Pointer to **string** |  | [optional] 
@@ -114,21 +122,24 @@ Name | Type | Description | Notes
 **Jwks** | Pointer to **string** |  | [optional] 
 **JwksUrl** | Pointer to **string** |  | [optional] 
 **K8sAllowedNamespaces** | Pointer to **string** | comma-separated list of allowed namespaces. Can hold just * which signifies that any namespace is allowed | [optional] 
+**K8sAuthType** | Pointer to **string** |  | [optional] 
 **K8sBearerToken** | Pointer to **string** |  | [optional] 
+**K8sClientCertData** | Pointer to **string** | For K8s Client certificates authentication | [optional] 
+**K8sClientKeyData** | Pointer to **string** |  | [optional] 
 **K8sClusterCaCertificate** | Pointer to **string** |  | [optional] 
 **K8sClusterEndpoint** | Pointer to **string** |  | [optional] 
 **K8sDynamicMode** | Pointer to **bool** | when native k8s is in dynamic mode, user can define allowed namespaces, K8sServiceAccount doesn&#39;t exist from the start and will only be created at time of getting dynamic secret value By default dynamic mode is false and producer behaves like it did before | [optional] 
+**K8sMultipleDocYamlTempDefinition** | Pointer to **[]int32** | Yaml definition for creation of temporary objects. Field that can hold multiple docs from which following will be extracted: ServiceAccount, Role/ClusterRole and RoleBinding/ClusterRoleBinding. If ServiceAccount not specified - it will be generated automatically | [optional] 
 **K8sNamespace** | Pointer to **string** |  | [optional] 
 **K8sRoleName** | Pointer to **string** | Name of the pre-existing Role or ClusterRole to bind a generated service account to. | [optional] 
 **K8sRoleType** | Pointer to **string** |  | [optional] 
 **K8sServiceAccount** | Pointer to **string** |  | [optional] 
-**K8sTempRoleBindingDefinition** | Pointer to **[]int32** | Yaml/Json definition of temporary role binding that will be created and deleted when TTL is due. Must have as subject name of Service Account specified in K8sServiceAccount field | [optional] 
-**K8sTempRoleDefinition** | Pointer to **[]int32** | Yaml/Json definition of temporary role that will be created and deleted when TTL is due | [optional] 
 **LastAdminRotation** | Pointer to **int64** |  | [optional] 
 **LdapAudience** | Pointer to **string** |  | [optional] 
 **LdapBindDn** | Pointer to **string** |  | [optional] 
 **LdapBindPassword** | Pointer to **string** |  | [optional] 
 **LdapCertificate** | Pointer to **string** |  | [optional] 
+**LdapGroupDn** | Pointer to **string** |  | [optional] 
 **LdapTokenExpiration** | Pointer to **string** |  | [optional] 
 **LdapUrl** | Pointer to **string** |  | [optional] 
 **LdapUserAttr** | Pointer to **string** |  | [optional] 
@@ -150,6 +161,7 @@ Name | Type | Description | Notes
 **MssqlCreationStatements** | Pointer to **string** |  | [optional] 
 **MssqlRevocationStatements** | Pointer to **string** |  | [optional] 
 **MysqlCreationStatements** | Pointer to **string** |  | [optional] 
+**MysqlRevocationStatements** | Pointer to **string** |  | [optional] 
 **OracleCreationStatements** | Pointer to **string** |  | [optional] 
 **Password** | Pointer to **string** |  | [optional] 
 **PasswordLength** | Pointer to **int64** |  | [optional] 
@@ -186,6 +198,7 @@ Name | Type | Description | Notes
 **Tags** | Pointer to **[]string** |  | [optional] 
 **TimeoutSeconds** | Pointer to **int64** |  | [optional] 
 **UseGwCloudIdentity** | Pointer to **bool** |  | [optional] 
+**UseGwServiceAccount** | Pointer to **bool** |  | [optional] 
 **UserName** | Pointer to **string** |  | [optional] 
 **UserPassword** | Pointer to **string** |  | [optional] 
 **UserPrincipalName** | Pointer to **string** |  | [optional] 
@@ -201,8 +214,11 @@ Name | Type | Description | Notes
 **VenafiSignUsingAkeylessPki** | Pointer to **bool** |  | [optional] 
 **VenafiSignerKeyName** | Pointer to **string** |  | [optional] 
 **VenafiStorePrivateKey** | Pointer to **bool** |  | [optional] 
-**VenafiTppPassword** | Pointer to **string** |  | [optional] 
-**VenafiTppUsername** | Pointer to **string** |  | [optional] 
+**VenafiTppAccessToken** | Pointer to **string** |  | [optional] 
+**VenafiTppClientId** | Pointer to **string** |  | [optional] 
+**VenafiTppPassword** | Pointer to **string** | Deprecated: VenafiAccessToken and VenafiRefreshToken should be used instead | [optional] 
+**VenafiTppRefreshToken** | Pointer to **string** |  | [optional] 
+**VenafiTppUsername** | Pointer to **string** | Deprecated: VenafiAccessToken and VenafiRefreshToken should be used instead | [optional] 
 **VenafiUseTpp** | Pointer to **bool** |  | [optional] 
 **VenafiZone** | Pointer to **string** |  | [optional] 
 **WarnBeforeUserExpirationMin** | Pointer to **int64** |  | [optional] 
@@ -250,6 +266,31 @@ SetAccessTokenManagerId sets AccessTokenManagerId field to given value.
 `func (o *DSProducerDetails) HasAccessTokenManagerId() bool`
 
 HasAccessTokenManagerId returns a boolean if a field has been set.
+
+### GetAclRules
+
+`func (o *DSProducerDetails) GetAclRules() []string`
+
+GetAclRules returns the AclRules field if non-nil, zero value otherwise.
+
+### GetAclRulesOk
+
+`func (o *DSProducerDetails) GetAclRulesOk() (*[]string, bool)`
+
+GetAclRulesOk returns a tuple with the AclRules field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAclRules
+
+`func (o *DSProducerDetails) SetAclRules(v []string)`
+
+SetAclRules sets AclRules field to given value.
+
+### HasAclRules
+
+`func (o *DSProducerDetails) HasAclRules() bool`
+
+HasAclRules returns a boolean if a field has been set.
 
 ### GetActive
 
@@ -1351,6 +1392,56 @@ SetClientAuthenticationType sets ClientAuthenticationType field to given value.
 
 HasClientAuthenticationType returns a boolean if a field has been set.
 
+### GetCloudServiceProvider
+
+`func (o *DSProducerDetails) GetCloudServiceProvider() string`
+
+GetCloudServiceProvider returns the CloudServiceProvider field if non-nil, zero value otherwise.
+
+### GetCloudServiceProviderOk
+
+`func (o *DSProducerDetails) GetCloudServiceProviderOk() (*string, bool)`
+
+GetCloudServiceProviderOk returns a tuple with the CloudServiceProvider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCloudServiceProvider
+
+`func (o *DSProducerDetails) SetCloudServiceProvider(v string)`
+
+SetCloudServiceProvider sets CloudServiceProvider field to given value.
+
+### HasCloudServiceProvider
+
+`func (o *DSProducerDetails) HasCloudServiceProvider() bool`
+
+HasCloudServiceProvider returns a boolean if a field has been set.
+
+### GetConnectionType
+
+`func (o *DSProducerDetails) GetConnectionType() string`
+
+GetConnectionType returns the ConnectionType field if non-nil, zero value otherwise.
+
+### GetConnectionTypeOk
+
+`func (o *DSProducerDetails) GetConnectionTypeOk() (*string, bool)`
+
+GetConnectionTypeOk returns a tuple with the ConnectionType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConnectionType
+
+`func (o *DSProducerDetails) SetConnectionType(v string)`
+
+SetConnectionType sets ConnectionType field to given value.
+
+### HasConnectionType
+
+`func (o *DSProducerDetails) HasConnectionType() bool`
+
+HasConnectionType returns a boolean if a field has been set.
+
 ### GetCreateSyncUrl
 
 `func (o *DSProducerDetails) GetCreateSyncUrl() string`
@@ -1375,6 +1466,56 @@ SetCreateSyncUrl sets CreateSyncUrl field to given value.
 `func (o *DSProducerDetails) HasCreateSyncUrl() bool`
 
 HasCreateSyncUrl returns a boolean if a field has been set.
+
+### GetDbClientId
+
+`func (o *DSProducerDetails) GetDbClientId() string`
+
+GetDbClientId returns the DbClientId field if non-nil, zero value otherwise.
+
+### GetDbClientIdOk
+
+`func (o *DSProducerDetails) GetDbClientIdOk() (*string, bool)`
+
+GetDbClientIdOk returns a tuple with the DbClientId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDbClientId
+
+`func (o *DSProducerDetails) SetDbClientId(v string)`
+
+SetDbClientId sets DbClientId field to given value.
+
+### HasDbClientId
+
+`func (o *DSProducerDetails) HasDbClientId() bool`
+
+HasDbClientId returns a boolean if a field has been set.
+
+### GetDbClientSecret
+
+`func (o *DSProducerDetails) GetDbClientSecret() string`
+
+GetDbClientSecret returns the DbClientSecret field if non-nil, zero value otherwise.
+
+### GetDbClientSecretOk
+
+`func (o *DSProducerDetails) GetDbClientSecretOk() (*string, bool)`
+
+GetDbClientSecretOk returns a tuple with the DbClientSecret field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDbClientSecret
+
+`func (o *DSProducerDetails) SetDbClientSecret(v string)`
+
+SetDbClientSecret sets DbClientSecret field to given value.
+
+### HasDbClientSecret
+
+`func (o *DSProducerDetails) HasDbClientSecret() bool`
+
+HasDbClientSecret returns a boolean if a field has been set.
 
 ### GetDbHostName
 
@@ -1650,6 +1791,31 @@ SetDbServerName sets DbServerName field to given value.
 `func (o *DSProducerDetails) HasDbServerName() bool`
 
 HasDbServerName returns a boolean if a field has been set.
+
+### GetDbTenantId
+
+`func (o *DSProducerDetails) GetDbTenantId() string`
+
+GetDbTenantId returns the DbTenantId field if non-nil, zero value otherwise.
+
+### GetDbTenantIdOk
+
+`func (o *DSProducerDetails) GetDbTenantIdOk() (*string, bool)`
+
+GetDbTenantIdOk returns a tuple with the DbTenantId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDbTenantId
+
+`func (o *DSProducerDetails) SetDbTenantId(v string)`
+
+SetDbTenantId sets DbTenantId field to given value.
+
+### HasDbTenantId
+
+`func (o *DSProducerDetails) HasDbTenantId() bool`
+
+HasDbTenantId returns a boolean if a field has been set.
 
 ### GetDbUserName
 
@@ -2200,6 +2366,56 @@ SetGcpServiceAccountKey sets GcpServiceAccountKey field to given value.
 `func (o *DSProducerDetails) HasGcpServiceAccountKey() bool`
 
 HasGcpServiceAccountKey returns a boolean if a field has been set.
+
+### GetGcpServiceAccountKeyBase64
+
+`func (o *DSProducerDetails) GetGcpServiceAccountKeyBase64() string`
+
+GetGcpServiceAccountKeyBase64 returns the GcpServiceAccountKeyBase64 field if non-nil, zero value otherwise.
+
+### GetGcpServiceAccountKeyBase64Ok
+
+`func (o *DSProducerDetails) GetGcpServiceAccountKeyBase64Ok() (*string, bool)`
+
+GetGcpServiceAccountKeyBase64Ok returns a tuple with the GcpServiceAccountKeyBase64 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpServiceAccountKeyBase64
+
+`func (o *DSProducerDetails) SetGcpServiceAccountKeyBase64(v string)`
+
+SetGcpServiceAccountKeyBase64 sets GcpServiceAccountKeyBase64 field to given value.
+
+### HasGcpServiceAccountKeyBase64
+
+`func (o *DSProducerDetails) HasGcpServiceAccountKeyBase64() bool`
+
+HasGcpServiceAccountKeyBase64 returns a boolean if a field has been set.
+
+### GetGcpServiceAccountKeyId
+
+`func (o *DSProducerDetails) GetGcpServiceAccountKeyId() string`
+
+GetGcpServiceAccountKeyId returns the GcpServiceAccountKeyId field if non-nil, zero value otherwise.
+
+### GetGcpServiceAccountKeyIdOk
+
+`func (o *DSProducerDetails) GetGcpServiceAccountKeyIdOk() (*string, bool)`
+
+GetGcpServiceAccountKeyIdOk returns a tuple with the GcpServiceAccountKeyId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpServiceAccountKeyId
+
+`func (o *DSProducerDetails) SetGcpServiceAccountKeyId(v string)`
+
+SetGcpServiceAccountKeyId sets GcpServiceAccountKeyId field to given value.
+
+### HasGcpServiceAccountKeyId
+
+`func (o *DSProducerDetails) HasGcpServiceAccountKeyId() bool`
+
+HasGcpServiceAccountKeyId returns a boolean if a field has been set.
 
 ### GetGcpServiceAccountType
 
@@ -2976,6 +3192,31 @@ SetK8sAllowedNamespaces sets K8sAllowedNamespaces field to given value.
 
 HasK8sAllowedNamespaces returns a boolean if a field has been set.
 
+### GetK8sAuthType
+
+`func (o *DSProducerDetails) GetK8sAuthType() string`
+
+GetK8sAuthType returns the K8sAuthType field if non-nil, zero value otherwise.
+
+### GetK8sAuthTypeOk
+
+`func (o *DSProducerDetails) GetK8sAuthTypeOk() (*string, bool)`
+
+GetK8sAuthTypeOk returns a tuple with the K8sAuthType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sAuthType
+
+`func (o *DSProducerDetails) SetK8sAuthType(v string)`
+
+SetK8sAuthType sets K8sAuthType field to given value.
+
+### HasK8sAuthType
+
+`func (o *DSProducerDetails) HasK8sAuthType() bool`
+
+HasK8sAuthType returns a boolean if a field has been set.
+
 ### GetK8sBearerToken
 
 `func (o *DSProducerDetails) GetK8sBearerToken() string`
@@ -3000,6 +3241,56 @@ SetK8sBearerToken sets K8sBearerToken field to given value.
 `func (o *DSProducerDetails) HasK8sBearerToken() bool`
 
 HasK8sBearerToken returns a boolean if a field has been set.
+
+### GetK8sClientCertData
+
+`func (o *DSProducerDetails) GetK8sClientCertData() string`
+
+GetK8sClientCertData returns the K8sClientCertData field if non-nil, zero value otherwise.
+
+### GetK8sClientCertDataOk
+
+`func (o *DSProducerDetails) GetK8sClientCertDataOk() (*string, bool)`
+
+GetK8sClientCertDataOk returns a tuple with the K8sClientCertData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sClientCertData
+
+`func (o *DSProducerDetails) SetK8sClientCertData(v string)`
+
+SetK8sClientCertData sets K8sClientCertData field to given value.
+
+### HasK8sClientCertData
+
+`func (o *DSProducerDetails) HasK8sClientCertData() bool`
+
+HasK8sClientCertData returns a boolean if a field has been set.
+
+### GetK8sClientKeyData
+
+`func (o *DSProducerDetails) GetK8sClientKeyData() string`
+
+GetK8sClientKeyData returns the K8sClientKeyData field if non-nil, zero value otherwise.
+
+### GetK8sClientKeyDataOk
+
+`func (o *DSProducerDetails) GetK8sClientKeyDataOk() (*string, bool)`
+
+GetK8sClientKeyDataOk returns a tuple with the K8sClientKeyData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sClientKeyData
+
+`func (o *DSProducerDetails) SetK8sClientKeyData(v string)`
+
+SetK8sClientKeyData sets K8sClientKeyData field to given value.
+
+### HasK8sClientKeyData
+
+`func (o *DSProducerDetails) HasK8sClientKeyData() bool`
+
+HasK8sClientKeyData returns a boolean if a field has been set.
 
 ### GetK8sClusterCaCertificate
 
@@ -3075,6 +3366,31 @@ SetK8sDynamicMode sets K8sDynamicMode field to given value.
 `func (o *DSProducerDetails) HasK8sDynamicMode() bool`
 
 HasK8sDynamicMode returns a boolean if a field has been set.
+
+### GetK8sMultipleDocYamlTempDefinition
+
+`func (o *DSProducerDetails) GetK8sMultipleDocYamlTempDefinition() []int32`
+
+GetK8sMultipleDocYamlTempDefinition returns the K8sMultipleDocYamlTempDefinition field if non-nil, zero value otherwise.
+
+### GetK8sMultipleDocYamlTempDefinitionOk
+
+`func (o *DSProducerDetails) GetK8sMultipleDocYamlTempDefinitionOk() (*[]int32, bool)`
+
+GetK8sMultipleDocYamlTempDefinitionOk returns a tuple with the K8sMultipleDocYamlTempDefinition field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sMultipleDocYamlTempDefinition
+
+`func (o *DSProducerDetails) SetK8sMultipleDocYamlTempDefinition(v []int32)`
+
+SetK8sMultipleDocYamlTempDefinition sets K8sMultipleDocYamlTempDefinition field to given value.
+
+### HasK8sMultipleDocYamlTempDefinition
+
+`func (o *DSProducerDetails) HasK8sMultipleDocYamlTempDefinition() bool`
+
+HasK8sMultipleDocYamlTempDefinition returns a boolean if a field has been set.
 
 ### GetK8sNamespace
 
@@ -3175,56 +3491,6 @@ SetK8sServiceAccount sets K8sServiceAccount field to given value.
 `func (o *DSProducerDetails) HasK8sServiceAccount() bool`
 
 HasK8sServiceAccount returns a boolean if a field has been set.
-
-### GetK8sTempRoleBindingDefinition
-
-`func (o *DSProducerDetails) GetK8sTempRoleBindingDefinition() []int32`
-
-GetK8sTempRoleBindingDefinition returns the K8sTempRoleBindingDefinition field if non-nil, zero value otherwise.
-
-### GetK8sTempRoleBindingDefinitionOk
-
-`func (o *DSProducerDetails) GetK8sTempRoleBindingDefinitionOk() (*[]int32, bool)`
-
-GetK8sTempRoleBindingDefinitionOk returns a tuple with the K8sTempRoleBindingDefinition field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetK8sTempRoleBindingDefinition
-
-`func (o *DSProducerDetails) SetK8sTempRoleBindingDefinition(v []int32)`
-
-SetK8sTempRoleBindingDefinition sets K8sTempRoleBindingDefinition field to given value.
-
-### HasK8sTempRoleBindingDefinition
-
-`func (o *DSProducerDetails) HasK8sTempRoleBindingDefinition() bool`
-
-HasK8sTempRoleBindingDefinition returns a boolean if a field has been set.
-
-### GetK8sTempRoleDefinition
-
-`func (o *DSProducerDetails) GetK8sTempRoleDefinition() []int32`
-
-GetK8sTempRoleDefinition returns the K8sTempRoleDefinition field if non-nil, zero value otherwise.
-
-### GetK8sTempRoleDefinitionOk
-
-`func (o *DSProducerDetails) GetK8sTempRoleDefinitionOk() (*[]int32, bool)`
-
-GetK8sTempRoleDefinitionOk returns a tuple with the K8sTempRoleDefinition field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetK8sTempRoleDefinition
-
-`func (o *DSProducerDetails) SetK8sTempRoleDefinition(v []int32)`
-
-SetK8sTempRoleDefinition sets K8sTempRoleDefinition field to given value.
-
-### HasK8sTempRoleDefinition
-
-`func (o *DSProducerDetails) HasK8sTempRoleDefinition() bool`
-
-HasK8sTempRoleDefinition returns a boolean if a field has been set.
 
 ### GetLastAdminRotation
 
@@ -3350,6 +3616,31 @@ SetLdapCertificate sets LdapCertificate field to given value.
 `func (o *DSProducerDetails) HasLdapCertificate() bool`
 
 HasLdapCertificate returns a boolean if a field has been set.
+
+### GetLdapGroupDn
+
+`func (o *DSProducerDetails) GetLdapGroupDn() string`
+
+GetLdapGroupDn returns the LdapGroupDn field if non-nil, zero value otherwise.
+
+### GetLdapGroupDnOk
+
+`func (o *DSProducerDetails) GetLdapGroupDnOk() (*string, bool)`
+
+GetLdapGroupDnOk returns a tuple with the LdapGroupDn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLdapGroupDn
+
+`func (o *DSProducerDetails) SetLdapGroupDn(v string)`
+
+SetLdapGroupDn sets LdapGroupDn field to given value.
+
+### HasLdapGroupDn
+
+`func (o *DSProducerDetails) HasLdapGroupDn() bool`
+
+HasLdapGroupDn returns a boolean if a field has been set.
 
 ### GetLdapTokenExpiration
 
@@ -3875,6 +4166,31 @@ SetMysqlCreationStatements sets MysqlCreationStatements field to given value.
 `func (o *DSProducerDetails) HasMysqlCreationStatements() bool`
 
 HasMysqlCreationStatements returns a boolean if a field has been set.
+
+### GetMysqlRevocationStatements
+
+`func (o *DSProducerDetails) GetMysqlRevocationStatements() string`
+
+GetMysqlRevocationStatements returns the MysqlRevocationStatements field if non-nil, zero value otherwise.
+
+### GetMysqlRevocationStatementsOk
+
+`func (o *DSProducerDetails) GetMysqlRevocationStatementsOk() (*string, bool)`
+
+GetMysqlRevocationStatementsOk returns a tuple with the MysqlRevocationStatements field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMysqlRevocationStatements
+
+`func (o *DSProducerDetails) SetMysqlRevocationStatements(v string)`
+
+SetMysqlRevocationStatements sets MysqlRevocationStatements field to given value.
+
+### HasMysqlRevocationStatements
+
+`func (o *DSProducerDetails) HasMysqlRevocationStatements() bool`
+
+HasMysqlRevocationStatements returns a boolean if a field has been set.
 
 ### GetOracleCreationStatements
 
@@ -4776,6 +5092,31 @@ SetUseGwCloudIdentity sets UseGwCloudIdentity field to given value.
 
 HasUseGwCloudIdentity returns a boolean if a field has been set.
 
+### GetUseGwServiceAccount
+
+`func (o *DSProducerDetails) GetUseGwServiceAccount() bool`
+
+GetUseGwServiceAccount returns the UseGwServiceAccount field if non-nil, zero value otherwise.
+
+### GetUseGwServiceAccountOk
+
+`func (o *DSProducerDetails) GetUseGwServiceAccountOk() (*bool, bool)`
+
+GetUseGwServiceAccountOk returns a tuple with the UseGwServiceAccount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseGwServiceAccount
+
+`func (o *DSProducerDetails) SetUseGwServiceAccount(v bool)`
+
+SetUseGwServiceAccount sets UseGwServiceAccount field to given value.
+
+### HasUseGwServiceAccount
+
+`func (o *DSProducerDetails) HasUseGwServiceAccount() bool`
+
+HasUseGwServiceAccount returns a boolean if a field has been set.
+
 ### GetUserName
 
 `func (o *DSProducerDetails) GetUserName() string`
@@ -5151,6 +5492,56 @@ SetVenafiStorePrivateKey sets VenafiStorePrivateKey field to given value.
 
 HasVenafiStorePrivateKey returns a boolean if a field has been set.
 
+### GetVenafiTppAccessToken
+
+`func (o *DSProducerDetails) GetVenafiTppAccessToken() string`
+
+GetVenafiTppAccessToken returns the VenafiTppAccessToken field if non-nil, zero value otherwise.
+
+### GetVenafiTppAccessTokenOk
+
+`func (o *DSProducerDetails) GetVenafiTppAccessTokenOk() (*string, bool)`
+
+GetVenafiTppAccessTokenOk returns a tuple with the VenafiTppAccessToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVenafiTppAccessToken
+
+`func (o *DSProducerDetails) SetVenafiTppAccessToken(v string)`
+
+SetVenafiTppAccessToken sets VenafiTppAccessToken field to given value.
+
+### HasVenafiTppAccessToken
+
+`func (o *DSProducerDetails) HasVenafiTppAccessToken() bool`
+
+HasVenafiTppAccessToken returns a boolean if a field has been set.
+
+### GetVenafiTppClientId
+
+`func (o *DSProducerDetails) GetVenafiTppClientId() string`
+
+GetVenafiTppClientId returns the VenafiTppClientId field if non-nil, zero value otherwise.
+
+### GetVenafiTppClientIdOk
+
+`func (o *DSProducerDetails) GetVenafiTppClientIdOk() (*string, bool)`
+
+GetVenafiTppClientIdOk returns a tuple with the VenafiTppClientId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVenafiTppClientId
+
+`func (o *DSProducerDetails) SetVenafiTppClientId(v string)`
+
+SetVenafiTppClientId sets VenafiTppClientId field to given value.
+
+### HasVenafiTppClientId
+
+`func (o *DSProducerDetails) HasVenafiTppClientId() bool`
+
+HasVenafiTppClientId returns a boolean if a field has been set.
+
 ### GetVenafiTppPassword
 
 `func (o *DSProducerDetails) GetVenafiTppPassword() string`
@@ -5175,6 +5566,31 @@ SetVenafiTppPassword sets VenafiTppPassword field to given value.
 `func (o *DSProducerDetails) HasVenafiTppPassword() bool`
 
 HasVenafiTppPassword returns a boolean if a field has been set.
+
+### GetVenafiTppRefreshToken
+
+`func (o *DSProducerDetails) GetVenafiTppRefreshToken() string`
+
+GetVenafiTppRefreshToken returns the VenafiTppRefreshToken field if non-nil, zero value otherwise.
+
+### GetVenafiTppRefreshTokenOk
+
+`func (o *DSProducerDetails) GetVenafiTppRefreshTokenOk() (*string, bool)`
+
+GetVenafiTppRefreshTokenOk returns a tuple with the VenafiTppRefreshToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVenafiTppRefreshToken
+
+`func (o *DSProducerDetails) SetVenafiTppRefreshToken(v string)`
+
+SetVenafiTppRefreshToken sets VenafiTppRefreshToken field to given value.
+
+### HasVenafiTppRefreshToken
+
+`func (o *DSProducerDetails) HasVenafiTppRefreshToken() bool`
+
+HasVenafiTppRefreshToken returns a boolean if a field has been set.
 
 ### GetVenafiTppUsername
 
