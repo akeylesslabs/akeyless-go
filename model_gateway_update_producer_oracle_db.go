@@ -21,7 +21,7 @@ type GatewayUpdateProducerOracleDb struct {
 	DbServerCertificates *string `json:"db-server-certificates,omitempty"`
 	// (Optional) Server name for certificate verification
 	DbServerName *string `json:"db-server-name,omitempty"`
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -35,6 +35,8 @@ type GatewayUpdateProducerOracleDb struct {
 	OraclePassword *string `json:"oracle-password,omitempty"`
 	// Oracle Port
 	OraclePort *string `json:"oracle-port,omitempty"`
+	// Oracle Revocation statements
+	OracleRevocationStatements *string `json:"oracle-revocation-statements,omitempty"`
 	// Oracle Creation statements
 	OracleScreationStatements *string `json:"oracle-screation-statements,omitempty"`
 	// Oracle DB Name
@@ -43,11 +45,15 @@ type GatewayUpdateProducerOracleDb struct {
 	OracleUsername *string `json:"oracle-username,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
+	// Path to the SSH Certificate Issuer for your Akeyless Bastion
 	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
+	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Target DB servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts)
 	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
+	// Enable Web Secure Remote Access
 	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
-	// List of the tags attached to this secret
+	// Add tags attached to this object
 	Tags *[]string `json:"tags,omitempty"`
 	// Target name
 	TargetName *string `json:"target-name,omitempty"`
@@ -65,11 +71,17 @@ type GatewayUpdateProducerOracleDb struct {
 // will change when the set of required properties is changed
 func NewGatewayUpdateProducerOracleDb(name string, ) *GatewayUpdateProducerOracleDb {
 	this := GatewayUpdateProducerOracleDb{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	var oracleHost string = "127.0.0.1"
 	this.OracleHost = &oracleHost
 	var oraclePort string = "1521"
 	this.OraclePort = &oraclePort
+	var secureAccessEnable string = "false"
+	this.SecureAccessEnable = &secureAccessEnable
+	var secureAccessWeb bool = false
+	this.SecureAccessWeb = &secureAccessWeb
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
@@ -80,10 +92,16 @@ func NewGatewayUpdateProducerOracleDb(name string, ) *GatewayUpdateProducerOracl
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayUpdateProducerOracleDbWithDefaults() *GatewayUpdateProducerOracleDb {
 	this := GatewayUpdateProducerOracleDb{}
+	var json bool = false
+	this.Json = &json
 	var oracleHost string = "127.0.0.1"
 	this.OracleHost = &oracleHost
 	var oraclePort string = "1521"
 	this.OraclePort = &oraclePort
+	var secureAccessEnable string = "false"
+	this.SecureAccessEnable = &secureAccessEnable
+	var secureAccessWeb bool = false
+	this.SecureAccessWeb = &secureAccessWeb
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
@@ -367,6 +385,38 @@ func (o *GatewayUpdateProducerOracleDb) HasOraclePort() bool {
 // SetOraclePort gets a reference to the given string and assigns it to the OraclePort field.
 func (o *GatewayUpdateProducerOracleDb) SetOraclePort(v string) {
 	o.OraclePort = &v
+}
+
+// GetOracleRevocationStatements returns the OracleRevocationStatements field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerOracleDb) GetOracleRevocationStatements() string {
+	if o == nil || o.OracleRevocationStatements == nil {
+		var ret string
+		return ret
+	}
+	return *o.OracleRevocationStatements
+}
+
+// GetOracleRevocationStatementsOk returns a tuple with the OracleRevocationStatements field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerOracleDb) GetOracleRevocationStatementsOk() (*string, bool) {
+	if o == nil || o.OracleRevocationStatements == nil {
+		return nil, false
+	}
+	return o.OracleRevocationStatements, true
+}
+
+// HasOracleRevocationStatements returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerOracleDb) HasOracleRevocationStatements() bool {
+	if o != nil && o.OracleRevocationStatements != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOracleRevocationStatements gets a reference to the given string and assigns it to the OracleRevocationStatements field.
+func (o *GatewayUpdateProducerOracleDb) SetOracleRevocationStatements(v string) {
+	o.OracleRevocationStatements = &v
 }
 
 // GetOracleScreationStatements returns the OracleScreationStatements field value if set, zero value otherwise.
@@ -813,6 +863,9 @@ func (o GatewayUpdateProducerOracleDb) MarshalJSON() ([]byte, error) {
 	}
 	if o.OraclePort != nil {
 		toSerialize["oracle-port"] = o.OraclePort
+	}
+	if o.OracleRevocationStatements != nil {
+		toSerialize["oracle-revocation-statements"] = o.OracleRevocationStatements
 	}
 	if o.OracleScreationStatements != nil {
 		toSerialize["oracle-screation-statements"] = o.OracleScreationStatements

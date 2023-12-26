@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// TargetItemAssociation TargetItemAssociation includes details of an association between a target and an item.
+// TargetItemAssociation TargetItemAssociation includes details of an association between a target and an item. Also, between targets in case of CredentialsLess target or Linked target.
 type TargetItemAssociation struct {
 	AssocId *string `json:"assoc_id,omitempty"`
 	Attributes *map[string]string `json:"attributes,omitempty"`

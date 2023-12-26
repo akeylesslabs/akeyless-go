@@ -39,6 +39,8 @@ type UpdateAuthMethodSAML struct {
 	Name string `json:"name"`
 	// Auth Method new name
 	NewName *string `json:"new-name,omitempty"`
+	// A list of additional sub claims delimiters (relevant only for SAML, OIDC, OAuth2/JWT)
+	SubclaimsDelimiters *[]string `json:"subclaims-delimiters,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -55,6 +57,10 @@ func NewUpdateAuthMethodSAML(name string, uniqueIdentifier string, ) *UpdateAuth
 	this := UpdateAuthMethodSAML{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	this.Name = name
 	this.UniqueIdentifier = uniqueIdentifier
 	return &this
@@ -67,6 +73,10 @@ func NewUpdateAuthMethodSAMLWithDefaults() *UpdateAuthMethodSAML {
 	this := UpdateAuthMethodSAML{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	return &this
 }
 
@@ -414,6 +424,38 @@ func (o *UpdateAuthMethodSAML) SetNewName(v string) {
 	o.NewName = &v
 }
 
+// GetSubclaimsDelimiters returns the SubclaimsDelimiters field value if set, zero value otherwise.
+func (o *UpdateAuthMethodSAML) GetSubclaimsDelimiters() []string {
+	if o == nil || o.SubclaimsDelimiters == nil {
+		var ret []string
+		return ret
+	}
+	return *o.SubclaimsDelimiters
+}
+
+// GetSubclaimsDelimitersOk returns a tuple with the SubclaimsDelimiters field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAuthMethodSAML) GetSubclaimsDelimitersOk() (*[]string, bool) {
+	if o == nil || o.SubclaimsDelimiters == nil {
+		return nil, false
+	}
+	return o.SubclaimsDelimiters, true
+}
+
+// HasSubclaimsDelimiters returns a boolean if a field has been set.
+func (o *UpdateAuthMethodSAML) HasSubclaimsDelimiters() bool {
+	if o != nil && o.SubclaimsDelimiters != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSubclaimsDelimiters gets a reference to the given []string and assigns it to the SubclaimsDelimiters field.
+func (o *UpdateAuthMethodSAML) SetSubclaimsDelimiters(v []string) {
+	o.SubclaimsDelimiters = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *UpdateAuthMethodSAML) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -536,6 +578,9 @@ func (o UpdateAuthMethodSAML) MarshalJSON() ([]byte, error) {
 	}
 	if o.NewName != nil {
 		toSerialize["new-name"] = o.NewName
+	}
+	if o.SubclaimsDelimiters != nil {
+		toSerialize["subclaims-delimiters"] = o.SubclaimsDelimiters
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

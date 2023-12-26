@@ -17,6 +17,14 @@ import (
 
 // GetCertificateValue struct for GetCertificateValue
 type GetCertificateValue struct {
+	// The parent PKI Certificate Issuer's name of the certificate, required when used with display-id and token
+	CertIssuerName *string `json:"cert-issuer-name,omitempty"`
+	// Certificate display ID
+	DisplayId *string `json:"display-id,omitempty"`
+	// Retrieve the Secret value without checking the Gateway's cache [true/false]. This flag is only relevant when using the RestAPI
+	IgnoreCache *string `json:"ignore-cache,omitempty"`
+	// Token for getting the issued certificate
+	IssuanceToken *string `json:"issuance-token,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Certificate name
@@ -35,6 +43,10 @@ type GetCertificateValue struct {
 // will change when the set of required properties is changed
 func NewGetCertificateValue(name string, ) *GetCertificateValue {
 	this := GetCertificateValue{}
+	var ignoreCache string = "false"
+	this.IgnoreCache = &ignoreCache
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -44,7 +56,141 @@ func NewGetCertificateValue(name string, ) *GetCertificateValue {
 // but it doesn't guarantee that properties required by API are set
 func NewGetCertificateValueWithDefaults() *GetCertificateValue {
 	this := GetCertificateValue{}
+	var ignoreCache string = "false"
+	this.IgnoreCache = &ignoreCache
+	var json bool = false
+	this.Json = &json
+	var name string = "dummy_certificate_name"
+	this.Name = name
 	return &this
+}
+
+// GetCertIssuerName returns the CertIssuerName field value if set, zero value otherwise.
+func (o *GetCertificateValue) GetCertIssuerName() string {
+	if o == nil || o.CertIssuerName == nil {
+		var ret string
+		return ret
+	}
+	return *o.CertIssuerName
+}
+
+// GetCertIssuerNameOk returns a tuple with the CertIssuerName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetCertificateValue) GetCertIssuerNameOk() (*string, bool) {
+	if o == nil || o.CertIssuerName == nil {
+		return nil, false
+	}
+	return o.CertIssuerName, true
+}
+
+// HasCertIssuerName returns a boolean if a field has been set.
+func (o *GetCertificateValue) HasCertIssuerName() bool {
+	if o != nil && o.CertIssuerName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCertIssuerName gets a reference to the given string and assigns it to the CertIssuerName field.
+func (o *GetCertificateValue) SetCertIssuerName(v string) {
+	o.CertIssuerName = &v
+}
+
+// GetDisplayId returns the DisplayId field value if set, zero value otherwise.
+func (o *GetCertificateValue) GetDisplayId() string {
+	if o == nil || o.DisplayId == nil {
+		var ret string
+		return ret
+	}
+	return *o.DisplayId
+}
+
+// GetDisplayIdOk returns a tuple with the DisplayId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetCertificateValue) GetDisplayIdOk() (*string, bool) {
+	if o == nil || o.DisplayId == nil {
+		return nil, false
+	}
+	return o.DisplayId, true
+}
+
+// HasDisplayId returns a boolean if a field has been set.
+func (o *GetCertificateValue) HasDisplayId() bool {
+	if o != nil && o.DisplayId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDisplayId gets a reference to the given string and assigns it to the DisplayId field.
+func (o *GetCertificateValue) SetDisplayId(v string) {
+	o.DisplayId = &v
+}
+
+// GetIgnoreCache returns the IgnoreCache field value if set, zero value otherwise.
+func (o *GetCertificateValue) GetIgnoreCache() string {
+	if o == nil || o.IgnoreCache == nil {
+		var ret string
+		return ret
+	}
+	return *o.IgnoreCache
+}
+
+// GetIgnoreCacheOk returns a tuple with the IgnoreCache field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetCertificateValue) GetIgnoreCacheOk() (*string, bool) {
+	if o == nil || o.IgnoreCache == nil {
+		return nil, false
+	}
+	return o.IgnoreCache, true
+}
+
+// HasIgnoreCache returns a boolean if a field has been set.
+func (o *GetCertificateValue) HasIgnoreCache() bool {
+	if o != nil && o.IgnoreCache != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIgnoreCache gets a reference to the given string and assigns it to the IgnoreCache field.
+func (o *GetCertificateValue) SetIgnoreCache(v string) {
+	o.IgnoreCache = &v
+}
+
+// GetIssuanceToken returns the IssuanceToken field value if set, zero value otherwise.
+func (o *GetCertificateValue) GetIssuanceToken() string {
+	if o == nil || o.IssuanceToken == nil {
+		var ret string
+		return ret
+	}
+	return *o.IssuanceToken
+}
+
+// GetIssuanceTokenOk returns a tuple with the IssuanceToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetCertificateValue) GetIssuanceTokenOk() (*string, bool) {
+	if o == nil || o.IssuanceToken == nil {
+		return nil, false
+	}
+	return o.IssuanceToken, true
+}
+
+// HasIssuanceToken returns a boolean if a field has been set.
+func (o *GetCertificateValue) HasIssuanceToken() bool {
+	if o != nil && o.IssuanceToken != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIssuanceToken gets a reference to the given string and assigns it to the IssuanceToken field.
+func (o *GetCertificateValue) SetIssuanceToken(v string) {
+	o.IssuanceToken = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -201,6 +347,18 @@ func (o *GetCertificateValue) SetVersion(v int32) {
 
 func (o GetCertificateValue) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.CertIssuerName != nil {
+		toSerialize["cert-issuer-name"] = o.CertIssuerName
+	}
+	if o.DisplayId != nil {
+		toSerialize["display-id"] = o.DisplayId
+	}
+	if o.IgnoreCache != nil {
+		toSerialize["ignore-cache"] = o.IgnoreCache
+	}
+	if o.IssuanceToken != nil {
+		toSerialize["issuance-token"] = o.IssuanceToken
+	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json
 	}

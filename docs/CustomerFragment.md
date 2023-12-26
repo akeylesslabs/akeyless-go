@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Description** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
+**Name** | Pointer to **string** |  | [optional] 
 **Value** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -76,6 +77,31 @@ SetId sets Id field to given value.
 `func (o *CustomerFragment) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### GetName
+
+`func (o *CustomerFragment) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *CustomerFragment) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *CustomerFragment) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *CustomerFragment) HasName() bool`
+
+HasName returns a boolean if a field has been set.
 
 ### GetValue
 

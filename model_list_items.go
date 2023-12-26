@@ -19,15 +19,24 @@ import (
 type ListItems struct {
 	// for personal password manager
 	Accessibility *string `json:"accessibility,omitempty"`
+	// Filter by item name/username/website or part of it
+	AdvancedFilter *string `json:"advanced-filter,omitempty"`
+	// Retrieve all items using pagination, when disabled retrieving only first 1000 items
+	AutoPagination *string `json:"auto-pagination,omitempty"`
 	// Filter by item name or part of it
 	Filter *string `json:"filter,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
+	// Show only basic information of the items
 	MinimalView *bool `json:"minimal-view,omitempty"`
+	// List only secrets modified after specified date (in unix time)
+	ModifiedAfter *int64 `json:"modified-after,omitempty"`
 	// Next page reference
 	PaginationToken *string `json:"pagination-token,omitempty"`
 	// Path to folder
 	Path *string `json:"path,omitempty"`
+	// Filter by items with SRA functionality enabled
+	SraOnly *bool `json:"sra-only,omitempty"`
 	SubTypes *[]string `json:"sub_types,omitempty"`
 	// Filter by item tag
 	Tag *string `json:"tag,omitempty"`
@@ -47,6 +56,12 @@ func NewListItems() *ListItems {
 	this := ListItems{}
 	var accessibility string = "regular"
 	this.Accessibility = &accessibility
+	var autoPagination string = "enabled"
+	this.AutoPagination = &autoPagination
+	var json bool = false
+	this.Json = &json
+	var sraOnly bool = false
+	this.SraOnly = &sraOnly
 	return &this
 }
 
@@ -57,6 +72,12 @@ func NewListItemsWithDefaults() *ListItems {
 	this := ListItems{}
 	var accessibility string = "regular"
 	this.Accessibility = &accessibility
+	var autoPagination string = "enabled"
+	this.AutoPagination = &autoPagination
+	var json bool = false
+	this.Json = &json
+	var sraOnly bool = false
+	this.SraOnly = &sraOnly
 	return &this
 }
 
@@ -90,6 +111,70 @@ func (o *ListItems) HasAccessibility() bool {
 // SetAccessibility gets a reference to the given string and assigns it to the Accessibility field.
 func (o *ListItems) SetAccessibility(v string) {
 	o.Accessibility = &v
+}
+
+// GetAdvancedFilter returns the AdvancedFilter field value if set, zero value otherwise.
+func (o *ListItems) GetAdvancedFilter() string {
+	if o == nil || o.AdvancedFilter == nil {
+		var ret string
+		return ret
+	}
+	return *o.AdvancedFilter
+}
+
+// GetAdvancedFilterOk returns a tuple with the AdvancedFilter field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListItems) GetAdvancedFilterOk() (*string, bool) {
+	if o == nil || o.AdvancedFilter == nil {
+		return nil, false
+	}
+	return o.AdvancedFilter, true
+}
+
+// HasAdvancedFilter returns a boolean if a field has been set.
+func (o *ListItems) HasAdvancedFilter() bool {
+	if o != nil && o.AdvancedFilter != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdvancedFilter gets a reference to the given string and assigns it to the AdvancedFilter field.
+func (o *ListItems) SetAdvancedFilter(v string) {
+	o.AdvancedFilter = &v
+}
+
+// GetAutoPagination returns the AutoPagination field value if set, zero value otherwise.
+func (o *ListItems) GetAutoPagination() string {
+	if o == nil || o.AutoPagination == nil {
+		var ret string
+		return ret
+	}
+	return *o.AutoPagination
+}
+
+// GetAutoPaginationOk returns a tuple with the AutoPagination field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListItems) GetAutoPaginationOk() (*string, bool) {
+	if o == nil || o.AutoPagination == nil {
+		return nil, false
+	}
+	return o.AutoPagination, true
+}
+
+// HasAutoPagination returns a boolean if a field has been set.
+func (o *ListItems) HasAutoPagination() bool {
+	if o != nil && o.AutoPagination != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoPagination gets a reference to the given string and assigns it to the AutoPagination field.
+func (o *ListItems) SetAutoPagination(v string) {
+	o.AutoPagination = &v
 }
 
 // GetFilter returns the Filter field value if set, zero value otherwise.
@@ -188,6 +273,38 @@ func (o *ListItems) SetMinimalView(v bool) {
 	o.MinimalView = &v
 }
 
+// GetModifiedAfter returns the ModifiedAfter field value if set, zero value otherwise.
+func (o *ListItems) GetModifiedAfter() int64 {
+	if o == nil || o.ModifiedAfter == nil {
+		var ret int64
+		return ret
+	}
+	return *o.ModifiedAfter
+}
+
+// GetModifiedAfterOk returns a tuple with the ModifiedAfter field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListItems) GetModifiedAfterOk() (*int64, bool) {
+	if o == nil || o.ModifiedAfter == nil {
+		return nil, false
+	}
+	return o.ModifiedAfter, true
+}
+
+// HasModifiedAfter returns a boolean if a field has been set.
+func (o *ListItems) HasModifiedAfter() bool {
+	if o != nil && o.ModifiedAfter != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetModifiedAfter gets a reference to the given int64 and assigns it to the ModifiedAfter field.
+func (o *ListItems) SetModifiedAfter(v int64) {
+	o.ModifiedAfter = &v
+}
+
 // GetPaginationToken returns the PaginationToken field value if set, zero value otherwise.
 func (o *ListItems) GetPaginationToken() string {
 	if o == nil || o.PaginationToken == nil {
@@ -250,6 +367,38 @@ func (o *ListItems) HasPath() bool {
 // SetPath gets a reference to the given string and assigns it to the Path field.
 func (o *ListItems) SetPath(v string) {
 	o.Path = &v
+}
+
+// GetSraOnly returns the SraOnly field value if set, zero value otherwise.
+func (o *ListItems) GetSraOnly() bool {
+	if o == nil || o.SraOnly == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SraOnly
+}
+
+// GetSraOnlyOk returns a tuple with the SraOnly field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListItems) GetSraOnlyOk() (*bool, bool) {
+	if o == nil || o.SraOnly == nil {
+		return nil, false
+	}
+	return o.SraOnly, true
+}
+
+// HasSraOnly returns a boolean if a field has been set.
+func (o *ListItems) HasSraOnly() bool {
+	if o != nil && o.SraOnly != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSraOnly gets a reference to the given bool and assigns it to the SraOnly field.
+func (o *ListItems) SetSraOnly(v bool) {
+	o.SraOnly = &v
 }
 
 // GetSubTypes returns the SubTypes field value if set, zero value otherwise.
@@ -417,6 +566,12 @@ func (o ListItems) MarshalJSON() ([]byte, error) {
 	if o.Accessibility != nil {
 		toSerialize["accessibility"] = o.Accessibility
 	}
+	if o.AdvancedFilter != nil {
+		toSerialize["advanced-filter"] = o.AdvancedFilter
+	}
+	if o.AutoPagination != nil {
+		toSerialize["auto-pagination"] = o.AutoPagination
+	}
 	if o.Filter != nil {
 		toSerialize["filter"] = o.Filter
 	}
@@ -426,11 +581,17 @@ func (o ListItems) MarshalJSON() ([]byte, error) {
 	if o.MinimalView != nil {
 		toSerialize["minimal-view"] = o.MinimalView
 	}
+	if o.ModifiedAfter != nil {
+		toSerialize["modified-after"] = o.ModifiedAfter
+	}
 	if o.PaginationToken != nil {
 		toSerialize["pagination-token"] = o.PaginationToken
 	}
 	if o.Path != nil {
 		toSerialize["path"] = o.Path
+	}
+	if o.SraOnly != nil {
+		toSerialize["sra-only"] = o.SraOnly
 	}
 	if o.SubTypes != nil {
 		toSerialize["sub_types"] = o.SubTypes

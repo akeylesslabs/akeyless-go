@@ -6,22 +6,23 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DbServerCertificates** | Pointer to **string** | (Optional) DB server certificates | [optional] 
 **DbServerName** | Pointer to **string** | (Optional) Server name for certificate verification | [optional] 
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Producer name | 
 **NewName** | Pointer to **string** | Producer name | [optional] 
 **OracleHost** | Pointer to **string** | Oracle Host | [optional] [default to "127.0.0.1"]
 **OraclePassword** | Pointer to **string** | Oracle Password | [optional] 
 **OraclePort** | Pointer to **string** | Oracle Port | [optional] [default to "1521"]
+**OracleRevocationStatements** | Pointer to **string** | Oracle Revocation statements | [optional] 
 **OracleScreationStatements** | Pointer to **string** | Oracle Creation statements | [optional] 
 **OracleServiceName** | Pointer to **string** | Oracle DB Name | [optional] 
 **OracleUsername** | Pointer to **string** | Oracle Username | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
-**SecureAccessBastionIssuer** | Pointer to **string** |  | [optional] 
-**SecureAccessEnable** | Pointer to **string** |  | [optional] 
-**SecureAccessHost** | Pointer to **[]string** |  | [optional] 
-**SecureAccessWeb** | Pointer to **bool** |  | [optional] 
-**Tags** | Pointer to **[]string** | List of the tags attached to this secret | [optional] 
+**SecureAccessBastionIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] 
+**SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] [default to "false"]
+**SecureAccessHost** | Pointer to **[]string** | Target DB servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts) | [optional] 
+**SecureAccessWeb** | Pointer to **bool** | Enable Web Secure Remote Access | [optional] [default to false]
+**Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -265,6 +266,31 @@ SetOraclePort sets OraclePort field to given value.
 `func (o *GatewayUpdateProducerOracleDb) HasOraclePort() bool`
 
 HasOraclePort returns a boolean if a field has been set.
+
+### GetOracleRevocationStatements
+
+`func (o *GatewayUpdateProducerOracleDb) GetOracleRevocationStatements() string`
+
+GetOracleRevocationStatements returns the OracleRevocationStatements field if non-nil, zero value otherwise.
+
+### GetOracleRevocationStatementsOk
+
+`func (o *GatewayUpdateProducerOracleDb) GetOracleRevocationStatementsOk() (*string, bool)`
+
+GetOracleRevocationStatementsOk returns a tuple with the OracleRevocationStatements field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOracleRevocationStatements
+
+`func (o *GatewayUpdateProducerOracleDb) SetOracleRevocationStatements(v string)`
+
+SetOracleRevocationStatements sets OracleRevocationStatements field to given value.
+
+### HasOracleRevocationStatements
+
+`func (o *GatewayUpdateProducerOracleDb) HasOracleRevocationStatements() bool`
+
+HasOracleRevocationStatements returns a boolean if a field has been set.
 
 ### GetOracleScreationStatements
 

@@ -27,11 +27,25 @@ type GatewayUpdateMigration struct {
 	Var1passwordUrl *string `json:"1password-url,omitempty"`
 	// 1Password list of vault to get the items from
 	Var1passwordVaults *[]string `json:"1password-vaults,omitempty"`
+	// Enable/Disable discovery of Windows services from each domain server as part of the SSH/Windows Rotated Secrets. Default is false. (Relevant only for Active Directory migration)
+	AdDiscoverServices *string `json:"ad-discover-services,omitempty"`
+	// Set migration discovery types (domain-users, computers, local-users). (Relevant only for Active Directory migration)
+	AdDiscoveryTypes *[]string `json:"ad-discovery-types,omitempty"`
+	// Filter by Operating System to run the migration, can be used with wildcards, e.g. SRV20* (Relevant only for Active Directory migration)
+	AdOsFilter *string `json:"ad-os-filter,omitempty"`
+	// Set the SSH Port for further connection to the domain servers. Default is port 22 (Relevant only for Active Directory migration)
+	AdSshPort *string `json:"ad-ssh-port,omitempty"`
+	// Set the target type of the domain servers [ssh/windows](Relevant only for Active Directory migration)
+	AdTargetsType *string `json:"ad-targets-type,omitempty"`
+	// Use WinRM over HTTP, by default runs over HTTPS
+	AdWinrmOverHttp *string `json:"ad-winrm-over-http,omitempty"`
+	// Set the WinRM Port for further connection to the domain servers. Default is 5986 (Relevant only for Active Directory migration)
+	AdWinrmPort *string `json:"ad-winrm-port,omitempty"`
 	// Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with --ad-rotation-interval and --ad-rotation-hour parameters (Relevant only for Active Directory migration)
 	AdAutoRotate *string `json:"ad_auto_rotate,omitempty"`
 	// Distinguished Name of Computer objects (servers) to search in Active Directory e.g.: CN=Computers,DC=example,DC=com (Relevant only for Active Directory migration)
 	AdComputerBaseDn *string `json:"ad_computer_base_dn,omitempty"`
-	// Enable/Disable discovery of local users from each domain server and migrate them as SSH Rotated Secrets. Default is false: only domain users will be migrated. Discovery of local users might require further installation of SSH on the servers, based on the supplied computer base DN. This will be implemented automatically as part of the migration process (Relevant only for Active Directory migration)
+	// Enable/Disable discovery of local users from each domain server and migrate them as SSH/Windows Rotated Secrets. Default is false: only domain users will be migrated. Discovery of local users might require further installation of SSH on the servers, based on the supplied computer base DN. This will be implemented automatically as part of the migration process (Relevant only for Active Directory migration) Deprecated: use AdDiscoverTypes
 	AdDiscoverLocalUsers *string `json:"ad_discover_local_users,omitempty"`
 	// Active Directory Domain Name (Relevant only for Active Directory migration)
 	AdDomainName *string `json:"ad_domain_name,omitempty"`
@@ -49,14 +63,12 @@ type GatewayUpdateMigration struct {
 	AdSraEnableRdp *string `json:"ad_sra_enable_rdp,omitempty"`
 	// Active Directory LDAP Target Name. Server type should be Active Directory (Relevant only for Active Directory migration)
 	AdTargetName *string `json:"ad_target_name,omitempty"`
-	// Path location template for migrating domain servers as SSH Targets e.g.: .../Servers/{{COMPUTER_NAME}} (Relevant only for Active Directory migration)
+	// Path location template for migrating domain servers as SSH/Windows Targets e.g.: .../Servers/{{COMPUTER_NAME}} (Relevant only for Active Directory migration)
 	AdTargetsPathTemplate *string `json:"ad_targets_path_template,omitempty"`
 	// Distinguished Name of User objects to search in Active Directory, e.g.: CN=Users,DC=example,DC=com (Relevant only for Active Directory migration)
 	AdUserBaseDn *string `json:"ad_user_base_dn,omitempty"`
-	// Comma-separated list of domain groups from which privileged domain users will be migrated (Relevant only for Active Directory migration)
+	// Comma-separated list of domain groups from which privileged domain users will be migrated. If empty, migrate all users based on the --ad-user-base-dn (Relevant only for Active Directory migration)
 	AdUserGroups *string `json:"ad_user_groups,omitempty"`
-	// Set the SSH Port for further connection to the domain servers. Default is port 22 (Relevant only for Active Directory migration)
-	AsSshPort *string `json:"as_ssh_port,omitempty"`
 	// AWS Secret Access Key (relevant only for AWS migration)
 	AwsKey *string `json:"aws-key,omitempty"`
 	// AWS Access Key ID with sufficient permissions to get all secrets, e.g. 'arn:aws:secretsmanager:[Region]:[AccountId]:secret:[/path/to/secrets/_*]' (relevant only for AWS migration)
@@ -73,7 +85,7 @@ type GatewayUpdateMigration struct {
 	AzureTenantId *string `json:"azure-tenant-id,omitempty"`
 	// Base64-encoded GCP Service Account private key text with sufficient permissions to Secrets Manager, Minimum required permission is Secret Manager Secret Accessor, e.g. 'roles/secretmanager.secretAccessor' (relevant only for GCP migration)
 	GcpKey *string `json:"gcp-key,omitempty"`
-	// Import secret key as json value or independent secrets (relevant only for HasiCorp Vault migration)
+	// Import secret key as json value or independent secrets (relevant only for HasiCorp Vault migration) [true/false]
 	HashiJson *string `json:"hashi-json,omitempty"`
 	// HashiCorp Vault Namespaces is a comma-separated list of namespaces which need to be imported into Akeyless Vault. For every provided namespace, all its child namespaces are imported as well, e.g. nmsp/subnmsp1/subnmsp2,nmsp/anothernmsp. By default, import all namespaces (relevant only for HasiCorp Vault migration)
 	HashiNs *[]string `json:"hashi-ns,omitempty"`
@@ -109,6 +121,20 @@ type GatewayUpdateMigration struct {
 	NewName *string `json:"new_name,omitempty"`
 	// The name of the key that protects the classic key value (if empty, the account default key will be used)
 	ProtectionKey *string `json:"protection-key,omitempty"`
+	// Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with --si-rotation-interval and --si-rotation-hour parameters (Relevant only for Server Inventory migration)
+	SiAutoRotate *string `json:"si-auto-rotate,omitempty"`
+	// The hour of the scheduled rotation in UTC (Relevant only for Server Inventory migration)
+	SiRotationHour *int32 `json:"si-rotation-hour,omitempty"`
+	// The number of days to wait between every automatic rotation [1-365] (Relevant only for Server Inventory migration)
+	SiRotationInterval *int32 `json:"si-rotation-interval,omitempty"`
+	// Enable/Disable RDP Secure Remote Access for the migrated local users rotated secrets. Default is false: rotated secrets will not be created with SRA (Relevant only for Server Inventory migration)
+	SiSraEnableRdp *string `json:"si-sra-enable-rdp,omitempty"`
+	// SSH, Windows or Linked Target Name. (Relevant only for Server Inventory migration)
+	SiTargetName string `json:"si-target-name"`
+	// Comma-separated list of Local Users which should not be migrated (Relevant only for Server Inventory migration)
+	SiUsersIgnore *string `json:"si-users-ignore,omitempty"`
+	// Path location template for migrating users as Rotated Secrets e.g.: .../Users/{{COMPUTER_NAME}}/{{USERNAME}} (Relevant only for Server Inventory migration)
+	SiUsersPathTemplate string `json:"si-users-path-template"`
 	// Target location in Akeyless for imported secrets
 	TargetLocation string `json:"target-location"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -121,8 +147,28 @@ type GatewayUpdateMigration struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayUpdateMigration(targetLocation string, ) *GatewayUpdateMigration {
+func NewGatewayUpdateMigration(siTargetName string, siUsersPathTemplate string, targetLocation string, ) *GatewayUpdateMigration {
 	this := GatewayUpdateMigration{}
+	var adDiscoverServices string = "false"
+	this.AdDiscoverServices = &adDiscoverServices
+	var adSshPort string = "22"
+	this.AdSshPort = &adSshPort
+	var adTargetsType string = "windows"
+	this.AdTargetsType = &adTargetsType
+	var adWinrmOverHttp string = "false"
+	this.AdWinrmOverHttp = &adWinrmOverHttp
+	var adWinrmPort string = "5986"
+	this.AdWinrmPort = &adWinrmPort
+	var awsRegion string = "us-east-2"
+	this.AwsRegion = &awsRegion
+	var hashiJson string = "true"
+	this.HashiJson = &hashiJson
+	var json bool = false
+	this.Json = &json
+	var siSraEnableRdp string = "false"
+	this.SiSraEnableRdp = &siSraEnableRdp
+	this.SiTargetName = siTargetName
+	this.SiUsersPathTemplate = siUsersPathTemplate
 	this.TargetLocation = targetLocation
 	return &this
 }
@@ -132,6 +178,24 @@ func NewGatewayUpdateMigration(targetLocation string, ) *GatewayUpdateMigration 
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayUpdateMigrationWithDefaults() *GatewayUpdateMigration {
 	this := GatewayUpdateMigration{}
+	var adDiscoverServices string = "false"
+	this.AdDiscoverServices = &adDiscoverServices
+	var adSshPort string = "22"
+	this.AdSshPort = &adSshPort
+	var adTargetsType string = "windows"
+	this.AdTargetsType = &adTargetsType
+	var adWinrmOverHttp string = "false"
+	this.AdWinrmOverHttp = &adWinrmOverHttp
+	var adWinrmPort string = "5986"
+	this.AdWinrmPort = &adWinrmPort
+	var awsRegion string = "us-east-2"
+	this.AwsRegion = &awsRegion
+	var hashiJson string = "true"
+	this.HashiJson = &hashiJson
+	var json bool = false
+	this.Json = &json
+	var siSraEnableRdp string = "false"
+	this.SiSraEnableRdp = &siSraEnableRdp
 	return &this
 }
 
@@ -293,6 +357,230 @@ func (o *GatewayUpdateMigration) HasVar1passwordVaults() bool {
 // SetVar1passwordVaults gets a reference to the given []string and assigns it to the Var1passwordVaults field.
 func (o *GatewayUpdateMigration) SetVar1passwordVaults(v []string) {
 	o.Var1passwordVaults = &v
+}
+
+// GetAdDiscoverServices returns the AdDiscoverServices field value if set, zero value otherwise.
+func (o *GatewayUpdateMigration) GetAdDiscoverServices() string {
+	if o == nil || o.AdDiscoverServices == nil {
+		var ret string
+		return ret
+	}
+	return *o.AdDiscoverServices
+}
+
+// GetAdDiscoverServicesOk returns a tuple with the AdDiscoverServices field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetAdDiscoverServicesOk() (*string, bool) {
+	if o == nil || o.AdDiscoverServices == nil {
+		return nil, false
+	}
+	return o.AdDiscoverServices, true
+}
+
+// HasAdDiscoverServices returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasAdDiscoverServices() bool {
+	if o != nil && o.AdDiscoverServices != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdDiscoverServices gets a reference to the given string and assigns it to the AdDiscoverServices field.
+func (o *GatewayUpdateMigration) SetAdDiscoverServices(v string) {
+	o.AdDiscoverServices = &v
+}
+
+// GetAdDiscoveryTypes returns the AdDiscoveryTypes field value if set, zero value otherwise.
+func (o *GatewayUpdateMigration) GetAdDiscoveryTypes() []string {
+	if o == nil || o.AdDiscoveryTypes == nil {
+		var ret []string
+		return ret
+	}
+	return *o.AdDiscoveryTypes
+}
+
+// GetAdDiscoveryTypesOk returns a tuple with the AdDiscoveryTypes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetAdDiscoveryTypesOk() (*[]string, bool) {
+	if o == nil || o.AdDiscoveryTypes == nil {
+		return nil, false
+	}
+	return o.AdDiscoveryTypes, true
+}
+
+// HasAdDiscoveryTypes returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasAdDiscoveryTypes() bool {
+	if o != nil && o.AdDiscoveryTypes != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdDiscoveryTypes gets a reference to the given []string and assigns it to the AdDiscoveryTypes field.
+func (o *GatewayUpdateMigration) SetAdDiscoveryTypes(v []string) {
+	o.AdDiscoveryTypes = &v
+}
+
+// GetAdOsFilter returns the AdOsFilter field value if set, zero value otherwise.
+func (o *GatewayUpdateMigration) GetAdOsFilter() string {
+	if o == nil || o.AdOsFilter == nil {
+		var ret string
+		return ret
+	}
+	return *o.AdOsFilter
+}
+
+// GetAdOsFilterOk returns a tuple with the AdOsFilter field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetAdOsFilterOk() (*string, bool) {
+	if o == nil || o.AdOsFilter == nil {
+		return nil, false
+	}
+	return o.AdOsFilter, true
+}
+
+// HasAdOsFilter returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasAdOsFilter() bool {
+	if o != nil && o.AdOsFilter != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdOsFilter gets a reference to the given string and assigns it to the AdOsFilter field.
+func (o *GatewayUpdateMigration) SetAdOsFilter(v string) {
+	o.AdOsFilter = &v
+}
+
+// GetAdSshPort returns the AdSshPort field value if set, zero value otherwise.
+func (o *GatewayUpdateMigration) GetAdSshPort() string {
+	if o == nil || o.AdSshPort == nil {
+		var ret string
+		return ret
+	}
+	return *o.AdSshPort
+}
+
+// GetAdSshPortOk returns a tuple with the AdSshPort field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetAdSshPortOk() (*string, bool) {
+	if o == nil || o.AdSshPort == nil {
+		return nil, false
+	}
+	return o.AdSshPort, true
+}
+
+// HasAdSshPort returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasAdSshPort() bool {
+	if o != nil && o.AdSshPort != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdSshPort gets a reference to the given string and assigns it to the AdSshPort field.
+func (o *GatewayUpdateMigration) SetAdSshPort(v string) {
+	o.AdSshPort = &v
+}
+
+// GetAdTargetsType returns the AdTargetsType field value if set, zero value otherwise.
+func (o *GatewayUpdateMigration) GetAdTargetsType() string {
+	if o == nil || o.AdTargetsType == nil {
+		var ret string
+		return ret
+	}
+	return *o.AdTargetsType
+}
+
+// GetAdTargetsTypeOk returns a tuple with the AdTargetsType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetAdTargetsTypeOk() (*string, bool) {
+	if o == nil || o.AdTargetsType == nil {
+		return nil, false
+	}
+	return o.AdTargetsType, true
+}
+
+// HasAdTargetsType returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasAdTargetsType() bool {
+	if o != nil && o.AdTargetsType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdTargetsType gets a reference to the given string and assigns it to the AdTargetsType field.
+func (o *GatewayUpdateMigration) SetAdTargetsType(v string) {
+	o.AdTargetsType = &v
+}
+
+// GetAdWinrmOverHttp returns the AdWinrmOverHttp field value if set, zero value otherwise.
+func (o *GatewayUpdateMigration) GetAdWinrmOverHttp() string {
+	if o == nil || o.AdWinrmOverHttp == nil {
+		var ret string
+		return ret
+	}
+	return *o.AdWinrmOverHttp
+}
+
+// GetAdWinrmOverHttpOk returns a tuple with the AdWinrmOverHttp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetAdWinrmOverHttpOk() (*string, bool) {
+	if o == nil || o.AdWinrmOverHttp == nil {
+		return nil, false
+	}
+	return o.AdWinrmOverHttp, true
+}
+
+// HasAdWinrmOverHttp returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasAdWinrmOverHttp() bool {
+	if o != nil && o.AdWinrmOverHttp != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdWinrmOverHttp gets a reference to the given string and assigns it to the AdWinrmOverHttp field.
+func (o *GatewayUpdateMigration) SetAdWinrmOverHttp(v string) {
+	o.AdWinrmOverHttp = &v
+}
+
+// GetAdWinrmPort returns the AdWinrmPort field value if set, zero value otherwise.
+func (o *GatewayUpdateMigration) GetAdWinrmPort() string {
+	if o == nil || o.AdWinrmPort == nil {
+		var ret string
+		return ret
+	}
+	return *o.AdWinrmPort
+}
+
+// GetAdWinrmPortOk returns a tuple with the AdWinrmPort field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetAdWinrmPortOk() (*string, bool) {
+	if o == nil || o.AdWinrmPort == nil {
+		return nil, false
+	}
+	return o.AdWinrmPort, true
+}
+
+// HasAdWinrmPort returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasAdWinrmPort() bool {
+	if o != nil && o.AdWinrmPort != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdWinrmPort gets a reference to the given string and assigns it to the AdWinrmPort field.
+func (o *GatewayUpdateMigration) SetAdWinrmPort(v string) {
+	o.AdWinrmPort = &v
 }
 
 // GetAdAutoRotate returns the AdAutoRotate field value if set, zero value otherwise.
@@ -741,38 +1029,6 @@ func (o *GatewayUpdateMigration) HasAdUserGroups() bool {
 // SetAdUserGroups gets a reference to the given string and assigns it to the AdUserGroups field.
 func (o *GatewayUpdateMigration) SetAdUserGroups(v string) {
 	o.AdUserGroups = &v
-}
-
-// GetAsSshPort returns the AsSshPort field value if set, zero value otherwise.
-func (o *GatewayUpdateMigration) GetAsSshPort() string {
-	if o == nil || o.AsSshPort == nil {
-		var ret string
-		return ret
-	}
-	return *o.AsSshPort
-}
-
-// GetAsSshPortOk returns a tuple with the AsSshPort field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayUpdateMigration) GetAsSshPortOk() (*string, bool) {
-	if o == nil || o.AsSshPort == nil {
-		return nil, false
-	}
-	return o.AsSshPort, true
-}
-
-// HasAsSshPort returns a boolean if a field has been set.
-func (o *GatewayUpdateMigration) HasAsSshPort() bool {
-	if o != nil && o.AsSshPort != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAsSshPort gets a reference to the given string and assigns it to the AsSshPort field.
-func (o *GatewayUpdateMigration) SetAsSshPort(v string) {
-	o.AsSshPort = &v
 }
 
 // GetAwsKey returns the AwsKey field value if set, zero value otherwise.
@@ -1607,6 +1863,214 @@ func (o *GatewayUpdateMigration) SetProtectionKey(v string) {
 	o.ProtectionKey = &v
 }
 
+// GetSiAutoRotate returns the SiAutoRotate field value if set, zero value otherwise.
+func (o *GatewayUpdateMigration) GetSiAutoRotate() string {
+	if o == nil || o.SiAutoRotate == nil {
+		var ret string
+		return ret
+	}
+	return *o.SiAutoRotate
+}
+
+// GetSiAutoRotateOk returns a tuple with the SiAutoRotate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetSiAutoRotateOk() (*string, bool) {
+	if o == nil || o.SiAutoRotate == nil {
+		return nil, false
+	}
+	return o.SiAutoRotate, true
+}
+
+// HasSiAutoRotate returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasSiAutoRotate() bool {
+	if o != nil && o.SiAutoRotate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSiAutoRotate gets a reference to the given string and assigns it to the SiAutoRotate field.
+func (o *GatewayUpdateMigration) SetSiAutoRotate(v string) {
+	o.SiAutoRotate = &v
+}
+
+// GetSiRotationHour returns the SiRotationHour field value if set, zero value otherwise.
+func (o *GatewayUpdateMigration) GetSiRotationHour() int32 {
+	if o == nil || o.SiRotationHour == nil {
+		var ret int32
+		return ret
+	}
+	return *o.SiRotationHour
+}
+
+// GetSiRotationHourOk returns a tuple with the SiRotationHour field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetSiRotationHourOk() (*int32, bool) {
+	if o == nil || o.SiRotationHour == nil {
+		return nil, false
+	}
+	return o.SiRotationHour, true
+}
+
+// HasSiRotationHour returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasSiRotationHour() bool {
+	if o != nil && o.SiRotationHour != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSiRotationHour gets a reference to the given int32 and assigns it to the SiRotationHour field.
+func (o *GatewayUpdateMigration) SetSiRotationHour(v int32) {
+	o.SiRotationHour = &v
+}
+
+// GetSiRotationInterval returns the SiRotationInterval field value if set, zero value otherwise.
+func (o *GatewayUpdateMigration) GetSiRotationInterval() int32 {
+	if o == nil || o.SiRotationInterval == nil {
+		var ret int32
+		return ret
+	}
+	return *o.SiRotationInterval
+}
+
+// GetSiRotationIntervalOk returns a tuple with the SiRotationInterval field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetSiRotationIntervalOk() (*int32, bool) {
+	if o == nil || o.SiRotationInterval == nil {
+		return nil, false
+	}
+	return o.SiRotationInterval, true
+}
+
+// HasSiRotationInterval returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasSiRotationInterval() bool {
+	if o != nil && o.SiRotationInterval != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSiRotationInterval gets a reference to the given int32 and assigns it to the SiRotationInterval field.
+func (o *GatewayUpdateMigration) SetSiRotationInterval(v int32) {
+	o.SiRotationInterval = &v
+}
+
+// GetSiSraEnableRdp returns the SiSraEnableRdp field value if set, zero value otherwise.
+func (o *GatewayUpdateMigration) GetSiSraEnableRdp() string {
+	if o == nil || o.SiSraEnableRdp == nil {
+		var ret string
+		return ret
+	}
+	return *o.SiSraEnableRdp
+}
+
+// GetSiSraEnableRdpOk returns a tuple with the SiSraEnableRdp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetSiSraEnableRdpOk() (*string, bool) {
+	if o == nil || o.SiSraEnableRdp == nil {
+		return nil, false
+	}
+	return o.SiSraEnableRdp, true
+}
+
+// HasSiSraEnableRdp returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasSiSraEnableRdp() bool {
+	if o != nil && o.SiSraEnableRdp != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSiSraEnableRdp gets a reference to the given string and assigns it to the SiSraEnableRdp field.
+func (o *GatewayUpdateMigration) SetSiSraEnableRdp(v string) {
+	o.SiSraEnableRdp = &v
+}
+
+// GetSiTargetName returns the SiTargetName field value
+func (o *GatewayUpdateMigration) GetSiTargetName() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.SiTargetName
+}
+
+// GetSiTargetNameOk returns a tuple with the SiTargetName field value
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetSiTargetNameOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.SiTargetName, true
+}
+
+// SetSiTargetName sets field value
+func (o *GatewayUpdateMigration) SetSiTargetName(v string) {
+	o.SiTargetName = v
+}
+
+// GetSiUsersIgnore returns the SiUsersIgnore field value if set, zero value otherwise.
+func (o *GatewayUpdateMigration) GetSiUsersIgnore() string {
+	if o == nil || o.SiUsersIgnore == nil {
+		var ret string
+		return ret
+	}
+	return *o.SiUsersIgnore
+}
+
+// GetSiUsersIgnoreOk returns a tuple with the SiUsersIgnore field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetSiUsersIgnoreOk() (*string, bool) {
+	if o == nil || o.SiUsersIgnore == nil {
+		return nil, false
+	}
+	return o.SiUsersIgnore, true
+}
+
+// HasSiUsersIgnore returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasSiUsersIgnore() bool {
+	if o != nil && o.SiUsersIgnore != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSiUsersIgnore gets a reference to the given string and assigns it to the SiUsersIgnore field.
+func (o *GatewayUpdateMigration) SetSiUsersIgnore(v string) {
+	o.SiUsersIgnore = &v
+}
+
+// GetSiUsersPathTemplate returns the SiUsersPathTemplate field value
+func (o *GatewayUpdateMigration) GetSiUsersPathTemplate() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.SiUsersPathTemplate
+}
+
+// GetSiUsersPathTemplateOk returns a tuple with the SiUsersPathTemplate field value
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetSiUsersPathTemplateOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.SiUsersPathTemplate, true
+}
+
+// SetSiUsersPathTemplate sets field value
+func (o *GatewayUpdateMigration) SetSiUsersPathTemplate(v string) {
+	o.SiUsersPathTemplate = v
+}
+
 // GetTargetLocation returns the TargetLocation field value
 func (o *GatewayUpdateMigration) GetTargetLocation() string {
 	if o == nil  {
@@ -1712,6 +2176,27 @@ func (o GatewayUpdateMigration) MarshalJSON() ([]byte, error) {
 	if o.Var1passwordVaults != nil {
 		toSerialize["1password-vaults"] = o.Var1passwordVaults
 	}
+	if o.AdDiscoverServices != nil {
+		toSerialize["ad-discover-services"] = o.AdDiscoverServices
+	}
+	if o.AdDiscoveryTypes != nil {
+		toSerialize["ad-discovery-types"] = o.AdDiscoveryTypes
+	}
+	if o.AdOsFilter != nil {
+		toSerialize["ad-os-filter"] = o.AdOsFilter
+	}
+	if o.AdSshPort != nil {
+		toSerialize["ad-ssh-port"] = o.AdSshPort
+	}
+	if o.AdTargetsType != nil {
+		toSerialize["ad-targets-type"] = o.AdTargetsType
+	}
+	if o.AdWinrmOverHttp != nil {
+		toSerialize["ad-winrm-over-http"] = o.AdWinrmOverHttp
+	}
+	if o.AdWinrmPort != nil {
+		toSerialize["ad-winrm-port"] = o.AdWinrmPort
+	}
 	if o.AdAutoRotate != nil {
 		toSerialize["ad_auto_rotate"] = o.AdAutoRotate
 	}
@@ -1753,9 +2238,6 @@ func (o GatewayUpdateMigration) MarshalJSON() ([]byte, error) {
 	}
 	if o.AdUserGroups != nil {
 		toSerialize["ad_user_groups"] = o.AdUserGroups
-	}
-	if o.AsSshPort != nil {
-		toSerialize["as_ssh_port"] = o.AsSshPort
 	}
 	if o.AwsKey != nil {
 		toSerialize["aws-key"] = o.AwsKey
@@ -1834,6 +2316,27 @@ func (o GatewayUpdateMigration) MarshalJSON() ([]byte, error) {
 	}
 	if o.ProtectionKey != nil {
 		toSerialize["protection-key"] = o.ProtectionKey
+	}
+	if o.SiAutoRotate != nil {
+		toSerialize["si-auto-rotate"] = o.SiAutoRotate
+	}
+	if o.SiRotationHour != nil {
+		toSerialize["si-rotation-hour"] = o.SiRotationHour
+	}
+	if o.SiRotationInterval != nil {
+		toSerialize["si-rotation-interval"] = o.SiRotationInterval
+	}
+	if o.SiSraEnableRdp != nil {
+		toSerialize["si-sra-enable-rdp"] = o.SiSraEnableRdp
+	}
+	if true {
+		toSerialize["si-target-name"] = o.SiTargetName
+	}
+	if o.SiUsersIgnore != nil {
+		toSerialize["si-users-ignore"] = o.SiUsersIgnore
+	}
+	if true {
+		toSerialize["si-users-path-template"] = o.SiUsersPathTemplate
 	}
 	if true {
 		toSerialize["target-location"] = o.TargetLocation

@@ -17,6 +17,8 @@ import (
 
 // DeleteItems struct for DeleteItems
 type DeleteItems struct {
+	// A list of items to delete, To specify multiple items use argument multiple times
+	Item *[]string `json:"item,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Path to delete the items from
@@ -33,6 +35,8 @@ type DeleteItems struct {
 // will change when the set of required properties is changed
 func NewDeleteItems(path string, ) *DeleteItems {
 	this := DeleteItems{}
+	var json bool = false
+	this.Json = &json
 	this.Path = path
 	return &this
 }
@@ -42,7 +46,43 @@ func NewDeleteItems(path string, ) *DeleteItems {
 // but it doesn't guarantee that properties required by API are set
 func NewDeleteItemsWithDefaults() *DeleteItems {
 	this := DeleteItems{}
+	var json bool = false
+	this.Json = &json
+	var path string = "dummy_path"
+	this.Path = path
 	return &this
+}
+
+// GetItem returns the Item field value if set, zero value otherwise.
+func (o *DeleteItems) GetItem() []string {
+	if o == nil || o.Item == nil {
+		var ret []string
+		return ret
+	}
+	return *o.Item
+}
+
+// GetItemOk returns a tuple with the Item field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeleteItems) GetItemOk() (*[]string, bool) {
+	if o == nil || o.Item == nil {
+		return nil, false
+	}
+	return o.Item, true
+}
+
+// HasItem returns a boolean if a field has been set.
+func (o *DeleteItems) HasItem() bool {
+	if o != nil && o.Item != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetItem gets a reference to the given []string and assigns it to the Item field.
+func (o *DeleteItems) SetItem(v []string) {
+	o.Item = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -167,6 +207,9 @@ func (o *DeleteItems) SetUidToken(v string) {
 
 func (o DeleteItems) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Item != nil {
+		toSerialize["item"] = o.Item
+	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json
 	}

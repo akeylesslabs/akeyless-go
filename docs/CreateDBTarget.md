@@ -4,13 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Comment** | Pointer to **string** | Comment about the target | [optional] 
+**DBDefinedConnectionType** | Pointer to **string** |  | [optional] 
+**AzureClientId** | Pointer to **string** | (Optional) Client id (relevant for \&quot;cloud-service-provider\&quot; only) | [optional] 
+**AzureClientSecret** | Pointer to **string** | (Optional) Client secret (relevant for \&quot;cloud-service-provider\&quot; only) | [optional] 
+**AzureTenantId** | Pointer to **string** | (Optional) Tenant id (relevant for \&quot;cloud-service-provider\&quot; only) | [optional] 
+**CloudServiceProvider** | Pointer to **string** | (Optional) Cloud service provider (currently only supports Azure) | [optional] 
+**Comment** | Pointer to **string** | Deprecated - use description | [optional] 
+**ConnectionType** | **string** | (Optional) Type of connection to mssql database [credentials/cloud-identity] | [default to "credentials"]
 **DbName** | Pointer to **string** |  | [optional] 
 **DbServerCertificates** | Pointer to **string** | (Optional) DB server certificates | [optional] 
 **DbServerName** | Pointer to **string** | (Optional) Server name for certificate verification | [optional] 
 **DbType** | **string** |  | 
+**Description** | Pointer to **string** | Description of the object | [optional] 
 **Host** | Pointer to **string** |  | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **MongodbAtlas** | Pointer to **bool** |  | [optional] 
 **MongodbAtlasApiPrivateKey** | Pointer to **string** | MongoDB Atlas private key | [optional] 
@@ -25,7 +32,7 @@ Name | Type | Description | Notes
 **SnowflakeAccount** | Pointer to **string** |  | [optional] 
 **SnowflakeApiPrivateKey** | Pointer to **string** | RSA Private key (base64 encoded) | [optional] 
 **SnowflakeApiPrivateKeyPassword** | Pointer to **string** | The Private key passphrase | [optional] 
-**Ssl** | Pointer to **bool** | SSL connection mode | [optional] 
+**Ssl** | Pointer to **bool** | Enable/Disable SSL [true/false] | [optional] [default to false]
 **SslCertificate** | Pointer to **string** | SSL connection certificate | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -35,7 +42,7 @@ Name | Type | Description | Notes
 
 ### NewCreateDBTarget
 
-`func NewCreateDBTarget(dbType string, name string, ) *CreateDBTarget`
+`func NewCreateDBTarget(connectionType string, dbType string, name string, ) *CreateDBTarget`
 
 NewCreateDBTarget instantiates a new CreateDBTarget object
 This constructor will assign default values to properties that have it defined,
@@ -49,6 +56,131 @@ will change when the set of required properties is changed
 NewCreateDBTargetWithDefaults instantiates a new CreateDBTarget object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetDBDefinedConnectionType
+
+`func (o *CreateDBTarget) GetDBDefinedConnectionType() string`
+
+GetDBDefinedConnectionType returns the DBDefinedConnectionType field if non-nil, zero value otherwise.
+
+### GetDBDefinedConnectionTypeOk
+
+`func (o *CreateDBTarget) GetDBDefinedConnectionTypeOk() (*string, bool)`
+
+GetDBDefinedConnectionTypeOk returns a tuple with the DBDefinedConnectionType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDBDefinedConnectionType
+
+`func (o *CreateDBTarget) SetDBDefinedConnectionType(v string)`
+
+SetDBDefinedConnectionType sets DBDefinedConnectionType field to given value.
+
+### HasDBDefinedConnectionType
+
+`func (o *CreateDBTarget) HasDBDefinedConnectionType() bool`
+
+HasDBDefinedConnectionType returns a boolean if a field has been set.
+
+### GetAzureClientId
+
+`func (o *CreateDBTarget) GetAzureClientId() string`
+
+GetAzureClientId returns the AzureClientId field if non-nil, zero value otherwise.
+
+### GetAzureClientIdOk
+
+`func (o *CreateDBTarget) GetAzureClientIdOk() (*string, bool)`
+
+GetAzureClientIdOk returns a tuple with the AzureClientId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureClientId
+
+`func (o *CreateDBTarget) SetAzureClientId(v string)`
+
+SetAzureClientId sets AzureClientId field to given value.
+
+### HasAzureClientId
+
+`func (o *CreateDBTarget) HasAzureClientId() bool`
+
+HasAzureClientId returns a boolean if a field has been set.
+
+### GetAzureClientSecret
+
+`func (o *CreateDBTarget) GetAzureClientSecret() string`
+
+GetAzureClientSecret returns the AzureClientSecret field if non-nil, zero value otherwise.
+
+### GetAzureClientSecretOk
+
+`func (o *CreateDBTarget) GetAzureClientSecretOk() (*string, bool)`
+
+GetAzureClientSecretOk returns a tuple with the AzureClientSecret field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureClientSecret
+
+`func (o *CreateDBTarget) SetAzureClientSecret(v string)`
+
+SetAzureClientSecret sets AzureClientSecret field to given value.
+
+### HasAzureClientSecret
+
+`func (o *CreateDBTarget) HasAzureClientSecret() bool`
+
+HasAzureClientSecret returns a boolean if a field has been set.
+
+### GetAzureTenantId
+
+`func (o *CreateDBTarget) GetAzureTenantId() string`
+
+GetAzureTenantId returns the AzureTenantId field if non-nil, zero value otherwise.
+
+### GetAzureTenantIdOk
+
+`func (o *CreateDBTarget) GetAzureTenantIdOk() (*string, bool)`
+
+GetAzureTenantIdOk returns a tuple with the AzureTenantId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureTenantId
+
+`func (o *CreateDBTarget) SetAzureTenantId(v string)`
+
+SetAzureTenantId sets AzureTenantId field to given value.
+
+### HasAzureTenantId
+
+`func (o *CreateDBTarget) HasAzureTenantId() bool`
+
+HasAzureTenantId returns a boolean if a field has been set.
+
+### GetCloudServiceProvider
+
+`func (o *CreateDBTarget) GetCloudServiceProvider() string`
+
+GetCloudServiceProvider returns the CloudServiceProvider field if non-nil, zero value otherwise.
+
+### GetCloudServiceProviderOk
+
+`func (o *CreateDBTarget) GetCloudServiceProviderOk() (*string, bool)`
+
+GetCloudServiceProviderOk returns a tuple with the CloudServiceProvider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCloudServiceProvider
+
+`func (o *CreateDBTarget) SetCloudServiceProvider(v string)`
+
+SetCloudServiceProvider sets CloudServiceProvider field to given value.
+
+### HasCloudServiceProvider
+
+`func (o *CreateDBTarget) HasCloudServiceProvider() bool`
+
+HasCloudServiceProvider returns a boolean if a field has been set.
 
 ### GetComment
 
@@ -74,6 +206,26 @@ SetComment sets Comment field to given value.
 `func (o *CreateDBTarget) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
+
+### GetConnectionType
+
+`func (o *CreateDBTarget) GetConnectionType() string`
+
+GetConnectionType returns the ConnectionType field if non-nil, zero value otherwise.
+
+### GetConnectionTypeOk
+
+`func (o *CreateDBTarget) GetConnectionTypeOk() (*string, bool)`
+
+GetConnectionTypeOk returns a tuple with the ConnectionType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConnectionType
+
+`func (o *CreateDBTarget) SetConnectionType(v string)`
+
+SetConnectionType sets ConnectionType field to given value.
+
 
 ### GetDbName
 
@@ -169,6 +321,31 @@ and a boolean to check if the value has been set.
 
 SetDbType sets DbType field to given value.
 
+
+### GetDescription
+
+`func (o *CreateDBTarget) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *CreateDBTarget) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *CreateDBTarget) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *CreateDBTarget) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetHost
 

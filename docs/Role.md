@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**AccessDateDisplay** | Pointer to **string** |  | [optional] 
 **ClientPermissions** | Pointer to **[]string** |  | [optional] 
 **Comment** | Pointer to **string** |  | [optional] 
 **CreationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
@@ -56,6 +57,31 @@ SetAccessDate sets AccessDate field to given value.
 `func (o *Role) HasAccessDate() bool`
 
 HasAccessDate returns a boolean if a field has been set.
+
+### GetAccessDateDisplay
+
+`func (o *Role) GetAccessDateDisplay() string`
+
+GetAccessDateDisplay returns the AccessDateDisplay field if non-nil, zero value otherwise.
+
+### GetAccessDateDisplayOk
+
+`func (o *Role) GetAccessDateDisplayOk() (*string, bool)`
+
+GetAccessDateDisplayOk returns a tuple with the AccessDateDisplay field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessDateDisplay
+
+`func (o *Role) SetAccessDateDisplay(v string)`
+
+SetAccessDateDisplay sets AccessDateDisplay field to given value.
+
+### HasAccessDateDisplay
+
+`func (o *Role) HasAccessDateDisplay() bool`
+
+HasAccessDateDisplay returns a boolean if a field has been set.
 
 ### GetClientPermissions
 

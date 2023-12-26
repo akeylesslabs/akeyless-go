@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **AccessId** | Pointer to **string** | Akeyless JWT token | [optional] 
 **AdminEmail** | Pointer to **string** | Akeyless JWT token | [optional] 
 **Creds** | Pointer to **string** | Akeyless JWT token | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 
 ## Methods
 

@@ -21,7 +21,7 @@ type CreateTokenizer struct {
 	Alphabet *string `json:"alphabet,omitempty"`
 	// The Decoding output template to use in regexp vaultless tokenization
 	DecodingTemplate *string `json:"decoding-template,omitempty"`
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
@@ -57,6 +57,8 @@ type CreateTokenizer struct {
 // will change when the set of required properties is changed
 func NewCreateTokenizer(name string, templateType string, tokenizerType string, ) *CreateTokenizer {
 	this := CreateTokenizer{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	this.TemplateType = templateType
 	this.TokenizerType = tokenizerType
@@ -68,6 +70,10 @@ func NewCreateTokenizer(name string, templateType string, tokenizerType string, 
 // but it doesn't guarantee that properties required by API are set
 func NewCreateTokenizerWithDefaults() *CreateTokenizer {
 	this := CreateTokenizer{}
+	var json bool = false
+	this.Json = &json
+	var tokenizerType string = "vaultless"
+	this.TokenizerType = tokenizerType
 	return &this
 }
 

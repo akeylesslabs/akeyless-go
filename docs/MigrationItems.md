@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Migrated** | Pointer to **int64** |  | [optional] 
 **Skipped** | Pointer to **int64** |  | [optional] 
 **Total** | Pointer to **int64** |  | [optional] 
+**Updated** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -127,6 +128,31 @@ SetTotal sets Total field to given value.
 `func (o *MigrationItems) HasTotal() bool`
 
 HasTotal returns a boolean if a field has been set.
+
+### GetUpdated
+
+`func (o *MigrationItems) GetUpdated() int64`
+
+GetUpdated returns the Updated field if non-nil, zero value otherwise.
+
+### GetUpdatedOk
+
+`func (o *MigrationItems) GetUpdatedOk() (*int64, bool)`
+
+GetUpdatedOk returns a tuple with the Updated field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdated
+
+`func (o *MigrationItems) SetUpdated(v int64)`
+
+SetUpdated sets Updated field to given value.
+
+### HasUpdated
+
+`func (o *MigrationItems) HasUpdated() bool`
+
+HasUpdated returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
