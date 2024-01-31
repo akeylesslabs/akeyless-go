@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **K8sAuthConfigName** | Pointer to **string** | The K8S Auth config name (relevant only for access-type&#x3D;k8s) | [optional] 
 **KeyData** | Pointer to **string** | Private key data encoded in base64. Used if file was not provided.(relevant only for access-type&#x3D;cert in Curl Context) | [optional] 
+**OciAuthType** | Pointer to **string** | The type of the OCI configuration to use [instance/apikey/resource] (relevant only for access-type&#x3D;oci) | [optional] [default to "apikey"]
+**OciGroupOcid** | Pointer to **[]string** | A list of Oracle Cloud IDs groups (relevant only for access-type&#x3D;oci) | [optional] 
 
 ## Methods
 
@@ -335,6 +337,56 @@ SetKeyData sets KeyData field to given value.
 `func (o *Configure) HasKeyData() bool`
 
 HasKeyData returns a boolean if a field has been set.
+
+### GetOciAuthType
+
+`func (o *Configure) GetOciAuthType() string`
+
+GetOciAuthType returns the OciAuthType field if non-nil, zero value otherwise.
+
+### GetOciAuthTypeOk
+
+`func (o *Configure) GetOciAuthTypeOk() (*string, bool)`
+
+GetOciAuthTypeOk returns a tuple with the OciAuthType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOciAuthType
+
+`func (o *Configure) SetOciAuthType(v string)`
+
+SetOciAuthType sets OciAuthType field to given value.
+
+### HasOciAuthType
+
+`func (o *Configure) HasOciAuthType() bool`
+
+HasOciAuthType returns a boolean if a field has been set.
+
+### GetOciGroupOcid
+
+`func (o *Configure) GetOciGroupOcid() []string`
+
+GetOciGroupOcid returns the OciGroupOcid field if non-nil, zero value otherwise.
+
+### GetOciGroupOcidOk
+
+`func (o *Configure) GetOciGroupOcidOk() (*[]string, bool)`
+
+GetOciGroupOcidOk returns a tuple with the OciGroupOcid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOciGroupOcid
+
+`func (o *Configure) SetOciGroupOcid(v []string)`
+
+SetOciGroupOcid sets OciGroupOcid field to given value.
+
+### HasOciGroupOcid
+
+`func (o *Configure) HasOciGroupOcid() bool`
+
+HasOciGroupOcid returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

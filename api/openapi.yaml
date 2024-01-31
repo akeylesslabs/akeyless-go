@@ -450,6 +450,33 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /create-auth-method-oci:
+    post:
+      operationId: createAuthMethodOCI
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createAuthMethodOCI'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAuthMethodOCIOutput'
+          description: createAuthMethodOCIResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /create-auth-method-oidc:
     post:
       operationId: createAuthMethodOIDC
@@ -6843,6 +6870,33 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /update-auth-method-oci:
+    post:
+      operationId: updateAuthMethodOCI
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateAuthMethodOCI'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/updateAuthMethodOCIOutput'
+          description: updateAuthMethodOCIResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /update-auth-method-oidc:
     post:
       operationId: updateAuthMethodOIDC
@@ -8595,6 +8649,12 @@ components:
           schema:
             $ref: '#/components/schemas/createAuthMethodOAuth2Output'
       description: createAuthMethodOAuth2Response wraps response body.
+    createAuthMethodOCIResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/createAuthMethodOCIOutput'
+      description: createAuthMethodOCIResponse wraps response body.
     createAuthMethodOIDCResponse:
       content:
         application/json:
@@ -10025,6 +10085,12 @@ components:
           schema:
             $ref: '#/components/schemas/updateAuthMethodOAuth2Output'
       description: updateAuthMethodOAuth2Response wraps response body.
+    updateAuthMethodOCIResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/updateAuthMethodOCIOutput'
+      description: updateAuthMethodOCIResponse wraps response body.
     updateAuthMethodOIDCResponse:
       content:
         application/json:
@@ -11834,6 +11900,11 @@ components:
             - bound_subscription_ids
             - bound_subscription_ids
             issuer: issuer
+          oci_access_rules:
+            tenant_ocid: tenant_ocid
+            group_ocids:
+            - group_ocids
+            - group_ocids
           universal_identity_access_rules:
             deny_inheritance: true
             ttl: 1
@@ -12107,6 +12178,11 @@ components:
           - bound_subscription_ids
           - bound_subscription_ids
           issuer: issuer
+        oci_access_rules:
+          tenant_ocid: tenant_ocid
+          group_ocids:
+          - group_ocids
+          - group_ocids
         universal_identity_access_rules:
           deny_inheritance: true
           ttl: 1
@@ -12322,6 +12398,8 @@ components:
           $ref: '#/components/schemas/LDAPAccessRules'
         oauth2_access_rules:
           $ref: '#/components/schemas/OAuth2AccessRules'
+        oci_access_rules:
+          $ref: '#/components/schemas/OCIAccessRules'
         oidc_access_rules:
           $ref: '#/components/schemas/OIDCAccessRules'
         rules_type:
@@ -20540,6 +20618,11 @@ components:
               - bound_subscription_ids
               - bound_subscription_ids
               issuer: issuer
+            oci_access_rules:
+              tenant_ocid: tenant_ocid
+              group_ocids:
+              - group_ocids
+              - group_ocids
             universal_identity_access_rules:
               deny_inheritance: true
               ttl: 1
@@ -20860,6 +20943,11 @@ components:
               - bound_subscription_ids
               - bound_subscription_ids
               issuer: issuer
+            oci_access_rules:
+              tenant_ocid: tenant_ocid
+              group_ocids:
+              - group_ocids
+              - group_ocids
             universal_identity_access_rules:
               deny_inheritance: true
               ttl: 1
@@ -25461,6 +25549,25 @@ components:
           x-go-name: Values
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    OCIAccessRules:
+      description: OCIAccessRules contains access rules specific to Oracle cloud instance
+        / user authentication
+      example:
+        tenant_ocid: tenant_ocid
+        group_ocids:
+        - group_ocids
+        - group_ocids
+      properties:
+        group_ocids:
+          items:
+            type: string
+          type: array
+          x-go-name: GroupOCIDs
+        tenant_ocid:
+          type: string
+          x-go-name: TenantOCID
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     OIDCAccessRules:
       description: |-
         OIDCAccessRules contains access rules specific to Open Id Connect authentication
@@ -29175,6 +29282,18 @@ components:
           description: LDAP username (relevant only for access-type=ldap)
           type: string
           x-go-name: LDAPUsername
+        oci-auth-type:
+          default: apikey
+          description: The type of the OCI configuration to use [instance/apikey/resource]
+            (relevant only for access-type=oci)
+          type: string
+          x-go-name: OCIAuthType
+        oci-group-ocid:
+          description: A list of Oracle Cloud IDs groups (relevant only for access-type=oci)
+          items:
+            type: string
+          type: array
+          x-go-name: OCIGroupOCIDs
         uid_token:
           description: |-
             The universal_identity token (relevant only for
@@ -29257,6 +29376,18 @@ components:
             only for access-type=cert in Curl Context)
           type: string
           x-go-name: KeyData
+        oci-auth-type:
+          default: apikey
+          description: The type of the OCI configuration to use [instance/apikey/resource]
+            (relevant only for access-type=oci)
+          type: string
+          x-go-name: OCIAuthType
+        oci-group-ocid:
+          description: A list of Oracle Cloud IDs groups (relevant only for access-type=oci)
+          items:
+            type: string
+          type: array
+          x-go-name: OCIGroupOCIDs
       title: configure is a command that creates a new Akeyless profile.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
@@ -30538,6 +30669,90 @@ components:
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     createAuthMethodOAuth2Output:
+      example:
+        access_id: access_id
+      properties:
+        access_id:
+          type: string
+          x-go-name: AccessID
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    createAuthMethodOCI:
+      description: |-
+        createAuthMethodOCI is a command that Creates a new Oracle Auth Method
+        that will be used in the account using OCI principle and groups.
+      properties:
+        access-expires:
+          default: 0
+          description: |-
+            Access expiration date in Unix timestamp (select 0 for access without
+            expiry date)
+          format: int64
+          type: integer
+          x-go-name: AccessExpires
+        bound-ips:
+          description: A CIDR whitelist with the IPs that the access is restricted
+            to
+          items:
+            type: string
+          type: array
+          x-go-name: CIDRWhitelist
+        description:
+          description: Auth Method description
+          type: string
+          x-go-name: Description
+        force-sub-claims:
+          description: 'if true: enforce role-association must include sub claims'
+          type: boolean
+          x-go-name: ForceSubClaims
+        group-ocid:
+          description: A list of required groups ocids
+          items:
+            type: string
+          type: array
+          x-go-name: GroupOCIDs
+        gw-bound-ips:
+          description: A CIDR whitelist with the GW IPs that the access is restricted
+            to
+          items:
+            type: string
+          type: array
+          x-go-name: GWCIDRWhitelist
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        jwt-ttl:
+          default: 0
+          description: Jwt TTL
+          format: int64
+          type: integer
+          x-go-name: JwtTtl
+        name:
+          description: Auth Method name
+          type: string
+          x-go-name: AuthMethodName
+        tenant-ocid:
+          description: The Oracle Cloud tenant ID
+          type: string
+          x-go-name: TenantOCID
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      required:
+      - group-ocid
+      - name
+      - tenant-ocid
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    createAuthMethodOCIOutput:
       example:
         access_id: access_id
       properties:
@@ -62985,6 +63200,94 @@ components:
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     updateAuthMethodOAuth2Output:
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    updateAuthMethodOCI:
+      description: |-
+        updateAuthMethodOCI is a command that updates an auth method that
+        will be used in the account using OCI principle and groups.
+      properties:
+        access-expires:
+          default: 0
+          description: |-
+            Access expiration date in Unix timestamp (select 0 for access without
+            expiry date)
+          format: int64
+          type: integer
+          x-go-name: AccessExpires
+        bound-ips:
+          description: A CIDR whitelist with the IPs that the access is restricted
+            to
+          items:
+            type: string
+          type: array
+          x-go-name: CIDRWhitelist
+        description:
+          description: Auth Method description
+          type: string
+          x-go-name: Description
+        force-sub-claims:
+          description: 'if true: enforce role-association must include sub claims'
+          type: boolean
+          x-go-name: ForceSubClaims
+        group-ocid:
+          description: A list of required groups ocids
+          items:
+            type: string
+          type: array
+          x-go-name: GroupOCIDs
+        gw-bound-ips:
+          description: A CIDR whitelist with the GW IPs that the access is restricted
+            to
+          items:
+            type: string
+          type: array
+          x-go-name: GWCIDRWhitelist
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        jwt-ttl:
+          default: 0
+          description: Jwt TTL
+          format: int64
+          type: integer
+          x-go-name: JwtTtl
+        name:
+          description: Auth Method name
+          type: string
+          x-go-name: AuthMethodName
+        new-name:
+          description: Auth Method new name
+          type: string
+          x-go-name: AuthMethodNewName
+        tenant-ocid:
+          description: The Oracle Cloud tenant ID
+          type: string
+          x-go-name: TenantOCID
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      required:
+      - group-ocid
+      - name
+      - tenant-ocid
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    updateAuthMethodOCIOutput:
+      example:
+        access_id: access_id
+      properties:
+        access_id:
+          type: string
+          x-go-name: AccessID
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     updateAuthMethodOIDC:

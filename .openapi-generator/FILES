@@ -81,6 +81,8 @@ docs/CreateAuthMethodLDAP.md
 docs/CreateAuthMethodLDAPOutput.md
 docs/CreateAuthMethodOAuth2.md
 docs/CreateAuthMethodOAuth2Output.md
+docs/CreateAuthMethodOCI.md
+docs/CreateAuthMethodOCIOutput.md
 docs/CreateAuthMethodOIDC.md
 docs/CreateAuthMethodOIDCOutput.md
 docs/CreateAuthMethodOutput.md
@@ -526,6 +528,7 @@ docs/NativeK8sTargetDetails.md
 docs/NotiForwarder.md
 docs/OAuth2AccessRules.md
 docs/OAuth2CustomClaim.md
+docs/OCIAccessRules.md
 docs/OIDCAccessRules.md
 docs/OIDCCustomClaim.md
 docs/ObjectVersionSettingsOutput.md
@@ -647,6 +650,8 @@ docs/UpdateAuthMethodK8SOutput.md
 docs/UpdateAuthMethodLDAP.md
 docs/UpdateAuthMethodLDAPOutput.md
 docs/UpdateAuthMethodOAuth2.md
+docs/UpdateAuthMethodOCI.md
+docs/UpdateAuthMethodOCIOutput.md
 docs/UpdateAuthMethodOIDC.md
 docs/UpdateAuthMethodOutput.md
 docs/UpdateAuthMethodSAML.md
@@ -826,6 +831,8 @@ model_create_auth_method_ldap.go
 model_create_auth_method_ldap_output.go
 model_create_auth_method_o_auth2.go
 model_create_auth_method_o_auth2_output.go
+model_create_auth_method_oci.go
+model_create_auth_method_oci_output.go
 model_create_auth_method_oidc.go
 model_create_auth_method_oidc_output.go
 model_create_auth_method_output.go
@@ -1274,6 +1281,7 @@ model_noti_forwarder.go
 model_o_auth2_access_rules.go
 model_o_auth2_custom_claim.go
 model_object_version_settings_output.go
+model_oci_access_rules.go
 model_oidc_access_rules.go
 model_oidc_client_info.go
 model_oidc_custom_claim.go
@@ -1392,6 +1400,8 @@ model_update_auth_method_k8_s_output.go
 model_update_auth_method_ldap.go
 model_update_auth_method_ldap_output.go
 model_update_auth_method_o_auth2.go
+model_update_auth_method_oci.go
+model_update_auth_method_oci_output.go
 model_update_auth_method_oidc.go
 model_update_auth_method_output.go
 model_update_auth_method_saml.go

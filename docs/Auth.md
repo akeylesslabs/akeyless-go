@@ -22,6 +22,8 @@ Name | Type | Description | Notes
 **KeyData** | Pointer to **string** | Private key data encoded in base64. Used if file was not provided.(relevant only for access-type&#x3D;cert) | [optional] 
 **LdapPassword** | Pointer to **string** | LDAP password (relevant only for access-type&#x3D;ldap) | [optional] 
 **LdapUsername** | Pointer to **string** | LDAP username (relevant only for access-type&#x3D;ldap) | [optional] 
+**OciAuthType** | Pointer to **string** | The type of the OCI configuration to use [instance/apikey/resource] (relevant only for access-type&#x3D;oci) | [optional] [default to "apikey"]
+**OciGroupOcid** | Pointer to **[]string** | A list of Oracle Cloud IDs groups (relevant only for access-type&#x3D;oci) | [optional] 
 **UidToken** | Pointer to **string** | The universal_identity token (relevant only for access-type&#x3D;universal_identity) | [optional] 
 
 ## Methods
@@ -492,6 +494,56 @@ SetLdapUsername sets LdapUsername field to given value.
 `func (o *Auth) HasLdapUsername() bool`
 
 HasLdapUsername returns a boolean if a field has been set.
+
+### GetOciAuthType
+
+`func (o *Auth) GetOciAuthType() string`
+
+GetOciAuthType returns the OciAuthType field if non-nil, zero value otherwise.
+
+### GetOciAuthTypeOk
+
+`func (o *Auth) GetOciAuthTypeOk() (*string, bool)`
+
+GetOciAuthTypeOk returns a tuple with the OciAuthType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOciAuthType
+
+`func (o *Auth) SetOciAuthType(v string)`
+
+SetOciAuthType sets OciAuthType field to given value.
+
+### HasOciAuthType
+
+`func (o *Auth) HasOciAuthType() bool`
+
+HasOciAuthType returns a boolean if a field has been set.
+
+### GetOciGroupOcid
+
+`func (o *Auth) GetOciGroupOcid() []string`
+
+GetOciGroupOcid returns the OciGroupOcid field if non-nil, zero value otherwise.
+
+### GetOciGroupOcidOk
+
+`func (o *Auth) GetOciGroupOcidOk() (*[]string, bool)`
+
+GetOciGroupOcidOk returns a tuple with the OciGroupOcid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOciGroupOcid
+
+`func (o *Auth) SetOciGroupOcid(v []string)`
+
+SetOciGroupOcid sets OciGroupOcid field to given value.
+
+### HasOciGroupOcid
+
+`func (o *Auth) HasOciGroupOcid() bool`
+
+HasOciGroupOcid returns a boolean if a field has been set.
 
 ### GetUidToken
 

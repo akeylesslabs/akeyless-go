@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **K8sAccessRules** | Pointer to [**KubernetesAccessRules**](KubernetesAccessRules.md) |  | [optional] 
 **LdapAccessRules** | Pointer to [**LDAPAccessRules**](LDAPAccessRules.md) |  | [optional] 
 **Oauth2AccessRules** | Pointer to [**OAuth2AccessRules**](OAuth2AccessRules.md) |  | [optional] 
+**OciAccessRules** | Pointer to [**OCIAccessRules**](OCIAccessRules.md) |  | [optional] 
 **OidcAccessRules** | Pointer to [**OIDCAccessRules**](OIDCAccessRules.md) |  | [optional] 
 **RulesType** | Pointer to **string** |  | [optional] 
 **SamlAccessRules** | Pointer to [**SAMLAccessRules**](SAMLAccessRules.md) |  | [optional] 
@@ -444,6 +445,31 @@ SetOauth2AccessRules sets Oauth2AccessRules field to given value.
 `func (o *AuthMethodAccessInfo) HasOauth2AccessRules() bool`
 
 HasOauth2AccessRules returns a boolean if a field has been set.
+
+### GetOciAccessRules
+
+`func (o *AuthMethodAccessInfo) GetOciAccessRules() OCIAccessRules`
+
+GetOciAccessRules returns the OciAccessRules field if non-nil, zero value otherwise.
+
+### GetOciAccessRulesOk
+
+`func (o *AuthMethodAccessInfo) GetOciAccessRulesOk() (*OCIAccessRules, bool)`
+
+GetOciAccessRulesOk returns a tuple with the OciAccessRules field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOciAccessRules
+
+`func (o *AuthMethodAccessInfo) SetOciAccessRules(v OCIAccessRules)`
+
+SetOciAccessRules sets OciAccessRules field to given value.
+
+### HasOciAccessRules
+
+`func (o *AuthMethodAccessInfo) HasOciAccessRules() bool`
+
+HasOciAccessRules returns a boolean if a field has been set.
 
 ### GetOidcAccessRules
 

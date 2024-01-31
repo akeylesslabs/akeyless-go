@@ -41,6 +41,10 @@ type Configure struct {
 	K8sAuthConfigName *string `json:"k8s-auth-config-name,omitempty"`
 	// Private key data encoded in base64. Used if file was not provided.(relevant only for access-type=cert in Curl Context)
 	KeyData *string `json:"key-data,omitempty"`
+	// The type of the OCI configuration to use [instance/apikey/resource] (relevant only for access-type=oci)
+	OciAuthType *string `json:"oci-auth-type,omitempty"`
+	// A list of Oracle Cloud IDs groups (relevant only for access-type=oci)
+	OciGroupOcid *[]string `json:"oci-group-ocid,omitempty"`
 }
 
 // NewConfigure instantiates a new Configure object
@@ -55,6 +59,8 @@ func NewConfigure() *Configure {
 	this.GcpAudience = &gcpAudience
 	var json bool = false
 	this.Json = &json
+	var ociAuthType string = "apikey"
+	this.OciAuthType = &ociAuthType
 	return &this
 }
 
@@ -69,6 +75,8 @@ func NewConfigureWithDefaults() *Configure {
 	this.GcpAudience = &gcpAudience
 	var json bool = false
 	this.Json = &json
+	var ociAuthType string = "apikey"
+	this.OciAuthType = &ociAuthType
 	return &this
 }
 
@@ -456,6 +464,70 @@ func (o *Configure) SetKeyData(v string) {
 	o.KeyData = &v
 }
 
+// GetOciAuthType returns the OciAuthType field value if set, zero value otherwise.
+func (o *Configure) GetOciAuthType() string {
+	if o == nil || o.OciAuthType == nil {
+		var ret string
+		return ret
+	}
+	return *o.OciAuthType
+}
+
+// GetOciAuthTypeOk returns a tuple with the OciAuthType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Configure) GetOciAuthTypeOk() (*string, bool) {
+	if o == nil || o.OciAuthType == nil {
+		return nil, false
+	}
+	return o.OciAuthType, true
+}
+
+// HasOciAuthType returns a boolean if a field has been set.
+func (o *Configure) HasOciAuthType() bool {
+	if o != nil && o.OciAuthType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOciAuthType gets a reference to the given string and assigns it to the OciAuthType field.
+func (o *Configure) SetOciAuthType(v string) {
+	o.OciAuthType = &v
+}
+
+// GetOciGroupOcid returns the OciGroupOcid field value if set, zero value otherwise.
+func (o *Configure) GetOciGroupOcid() []string {
+	if o == nil || o.OciGroupOcid == nil {
+		var ret []string
+		return ret
+	}
+	return *o.OciGroupOcid
+}
+
+// GetOciGroupOcidOk returns a tuple with the OciGroupOcid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Configure) GetOciGroupOcidOk() (*[]string, bool) {
+	if o == nil || o.OciGroupOcid == nil {
+		return nil, false
+	}
+	return o.OciGroupOcid, true
+}
+
+// HasOciGroupOcid returns a boolean if a field has been set.
+func (o *Configure) HasOciGroupOcid() bool {
+	if o != nil && o.OciGroupOcid != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOciGroupOcid gets a reference to the given []string and assigns it to the OciGroupOcid field.
+func (o *Configure) SetOciGroupOcid(v []string) {
+	o.OciGroupOcid = &v
+}
+
 func (o Configure) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccessId != nil {
@@ -493,6 +565,12 @@ func (o Configure) MarshalJSON() ([]byte, error) {
 	}
 	if o.KeyData != nil {
 		toSerialize["key-data"] = o.KeyData
+	}
+	if o.OciAuthType != nil {
+		toSerialize["oci-auth-type"] = o.OciAuthType
+	}
+	if o.OciGroupOcid != nil {
+		toSerialize["oci-group-ocid"] = o.OciGroupOcid
 	}
 	return json.Marshal(toSerialize)
 }

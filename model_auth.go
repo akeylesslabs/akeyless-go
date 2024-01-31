@@ -52,6 +52,10 @@ type Auth struct {
 	LdapPassword *string `json:"ldap_password,omitempty"`
 	// LDAP username (relevant only for access-type=ldap)
 	LdapUsername *string `json:"ldap_username,omitempty"`
+	// The type of the OCI configuration to use [instance/apikey/resource] (relevant only for access-type=oci)
+	OciAuthType *string `json:"oci-auth-type,omitempty"`
+	// A list of Oracle Cloud IDs groups (relevant only for access-type=oci)
+	OciGroupOcid *[]string `json:"oci-group-ocid,omitempty"`
 	// The universal_identity token (relevant only for access-type=universal_identity)
 	UidToken *string `json:"uid_token,omitempty"`
 }
@@ -68,6 +72,8 @@ func NewAuth() *Auth {
 	this.GcpAudience = &gcpAudience
 	var json bool = false
 	this.Json = &json
+	var ociAuthType string = "apikey"
+	this.OciAuthType = &ociAuthType
 	return &this
 }
 
@@ -82,6 +88,8 @@ func NewAuthWithDefaults() *Auth {
 	this.GcpAudience = &gcpAudience
 	var json bool = false
 	this.Json = &json
+	var ociAuthType string = "apikey"
+	this.OciAuthType = &ociAuthType
 	return &this
 }
 
@@ -661,6 +669,70 @@ func (o *Auth) SetLdapUsername(v string) {
 	o.LdapUsername = &v
 }
 
+// GetOciAuthType returns the OciAuthType field value if set, zero value otherwise.
+func (o *Auth) GetOciAuthType() string {
+	if o == nil || o.OciAuthType == nil {
+		var ret string
+		return ret
+	}
+	return *o.OciAuthType
+}
+
+// GetOciAuthTypeOk returns a tuple with the OciAuthType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Auth) GetOciAuthTypeOk() (*string, bool) {
+	if o == nil || o.OciAuthType == nil {
+		return nil, false
+	}
+	return o.OciAuthType, true
+}
+
+// HasOciAuthType returns a boolean if a field has been set.
+func (o *Auth) HasOciAuthType() bool {
+	if o != nil && o.OciAuthType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOciAuthType gets a reference to the given string and assigns it to the OciAuthType field.
+func (o *Auth) SetOciAuthType(v string) {
+	o.OciAuthType = &v
+}
+
+// GetOciGroupOcid returns the OciGroupOcid field value if set, zero value otherwise.
+func (o *Auth) GetOciGroupOcid() []string {
+	if o == nil || o.OciGroupOcid == nil {
+		var ret []string
+		return ret
+	}
+	return *o.OciGroupOcid
+}
+
+// GetOciGroupOcidOk returns a tuple with the OciGroupOcid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Auth) GetOciGroupOcidOk() (*[]string, bool) {
+	if o == nil || o.OciGroupOcid == nil {
+		return nil, false
+	}
+	return o.OciGroupOcid, true
+}
+
+// HasOciGroupOcid returns a boolean if a field has been set.
+func (o *Auth) HasOciGroupOcid() bool {
+	if o != nil && o.OciGroupOcid != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOciGroupOcid gets a reference to the given []string and assigns it to the OciGroupOcid field.
+func (o *Auth) SetOciGroupOcid(v []string) {
+	o.OciGroupOcid = &v
+}
+
 // GetUidToken returns the UidToken field value if set, zero value otherwise.
 func (o *Auth) GetUidToken() string {
 	if o == nil || o.UidToken == nil {
@@ -748,6 +820,12 @@ func (o Auth) MarshalJSON() ([]byte, error) {
 	}
 	if o.LdapUsername != nil {
 		toSerialize["ldap_username"] = o.LdapUsername
+	}
+	if o.OciAuthType != nil {
+		toSerialize["oci-auth-type"] = o.OciAuthType
+	}
+	if o.OciGroupOcid != nil {
+		toSerialize["oci-group-ocid"] = o.OciGroupOcid
 	}
 	if o.UidToken != nil {
 		toSerialize["uid_token"] = o.UidToken

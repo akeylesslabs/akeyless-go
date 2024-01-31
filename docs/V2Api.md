@@ -21,6 +21,7 @@ Method | HTTP request | Description
 [**CreateAuthMethodK8S**](V2Api.md#CreateAuthMethodK8S) | **Post** /create-auth-method-k8s | 
 [**CreateAuthMethodLDAP**](V2Api.md#CreateAuthMethodLDAP) | **Post** /create-auth-method-ldap | 
 [**CreateAuthMethodOAuth2**](V2Api.md#CreateAuthMethodOAuth2) | **Post** /create-auth-method-oauth2 | 
+[**CreateAuthMethodOCI**](V2Api.md#CreateAuthMethodOCI) | **Post** /create-auth-method-oci | 
 [**CreateAuthMethodOIDC**](V2Api.md#CreateAuthMethodOIDC) | **Post** /create-auth-method-oidc | 
 [**CreateAuthMethodSAML**](V2Api.md#CreateAuthMethodSAML) | **Post** /create-auth-method-saml | 
 [**CreateAuthMethodUniversalIdentity**](V2Api.md#CreateAuthMethodUniversalIdentity) | **Post** /create-auth-method-universal-identity | 
@@ -260,6 +261,7 @@ Method | HTTP request | Description
 [**UpdateAuthMethodK8S**](V2Api.md#UpdateAuthMethodK8S) | **Post** /update-auth-method-k8s | 
 [**UpdateAuthMethodLDAP**](V2Api.md#UpdateAuthMethodLDAP) | **Post** /update-auth-method-ldap | 
 [**UpdateAuthMethodOAuth2**](V2Api.md#UpdateAuthMethodOAuth2) | **Post** /update-auth-method-oauth2 | 
+[**UpdateAuthMethodOCI**](V2Api.md#UpdateAuthMethodOCI) | **Post** /update-auth-method-oci | 
 [**UpdateAuthMethodOIDC**](V2Api.md#UpdateAuthMethodOIDC) | **Post** /update-auth-method-oidc | 
 [**UpdateAuthMethodSAML**](V2Api.md#UpdateAuthMethodSAML) | **Post** /update-auth-method-saml | 
 [**UpdateAuthMethodUniversalIdentity**](V2Api.md#UpdateAuthMethodUniversalIdentity) | **Post** /update-auth-method-universal-identity | 
@@ -1392,6 +1394,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateAuthMethodOAuth2Output**](createAuthMethodOAuth2Output.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateAuthMethodOCI
+
+> CreateAuthMethodOCIOutput CreateAuthMethodOCI(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewcreateAuthMethodOCI([]string{"GroupOcid_example"}, "Name_example", "TenantOcid_example") // CreateAuthMethodOCI | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.CreateAuthMethodOCI(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateAuthMethodOCI``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateAuthMethodOCI`: CreateAuthMethodOCIOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateAuthMethodOCI`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateAuthMethodOCIRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateAuthMethodOCI**](CreateAuthMethodOCI.md) |  | 
+
+### Return type
+
+[**CreateAuthMethodOCIOutput**](createAuthMethodOCIOutput.md)
 
 ### Authorization
 
@@ -16670,6 +16736,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 **map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateAuthMethodOCI
+
+> UpdateAuthMethodOCIOutput UpdateAuthMethodOCI(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewupdateAuthMethodOCI([]string{"GroupOcid_example"}, "Name_example", "TenantOcid_example") // UpdateAuthMethodOCI | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdateAuthMethodOCI(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateAuthMethodOCI``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateAuthMethodOCI`: UpdateAuthMethodOCIOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateAuthMethodOCI`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateAuthMethodOCIRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateAuthMethodOCI**](UpdateAuthMethodOCI.md) |  | 
+
+### Return type
+
+[**UpdateAuthMethodOCIOutput**](updateAuthMethodOCIOutput.md)
 
 ### Authorization
 

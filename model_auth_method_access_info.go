@@ -35,6 +35,7 @@ type AuthMethodAccessInfo struct {
 	K8sAccessRules *KubernetesAccessRules `json:"k8s_access_rules,omitempty"`
 	LdapAccessRules *LDAPAccessRules `json:"ldap_access_rules,omitempty"`
 	Oauth2AccessRules *OAuth2AccessRules `json:"oauth2_access_rules,omitempty"`
+	OciAccessRules *OCIAccessRules `json:"oci_access_rules,omitempty"`
 	OidcAccessRules *OIDCAccessRules `json:"oidc_access_rules,omitempty"`
 	RulesType *string `json:"rules_type,omitempty"`
 	SamlAccessRules *SAMLAccessRules `json:"saml_access_rules,omitempty"`
@@ -571,6 +572,38 @@ func (o *AuthMethodAccessInfo) SetOauth2AccessRules(v OAuth2AccessRules) {
 	o.Oauth2AccessRules = &v
 }
 
+// GetOciAccessRules returns the OciAccessRules field value if set, zero value otherwise.
+func (o *AuthMethodAccessInfo) GetOciAccessRules() OCIAccessRules {
+	if o == nil || o.OciAccessRules == nil {
+		var ret OCIAccessRules
+		return ret
+	}
+	return *o.OciAccessRules
+}
+
+// GetOciAccessRulesOk returns a tuple with the OciAccessRules field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodAccessInfo) GetOciAccessRulesOk() (*OCIAccessRules, bool) {
+	if o == nil || o.OciAccessRules == nil {
+		return nil, false
+	}
+	return o.OciAccessRules, true
+}
+
+// HasOciAccessRules returns a boolean if a field has been set.
+func (o *AuthMethodAccessInfo) HasOciAccessRules() bool {
+	if o != nil && o.OciAccessRules != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOciAccessRules gets a reference to the given OCIAccessRules and assigns it to the OciAccessRules field.
+func (o *AuthMethodAccessInfo) SetOciAccessRules(v OCIAccessRules) {
+	o.OciAccessRules = &v
+}
+
 // GetOidcAccessRules returns the OidcAccessRules field value if set, zero value otherwise.
 func (o *AuthMethodAccessInfo) GetOidcAccessRules() OIDCAccessRules {
 	if o == nil || o.OidcAccessRules == nil {
@@ -780,6 +813,9 @@ func (o AuthMethodAccessInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.Oauth2AccessRules != nil {
 		toSerialize["oauth2_access_rules"] = o.Oauth2AccessRules
+	}
+	if o.OciAccessRules != nil {
+		toSerialize["oci_access_rules"] = o.OciAccessRules
 	}
 	if o.OidcAccessRules != nil {
 		toSerialize["oidc_access_rules"] = o.OidcAccessRules
