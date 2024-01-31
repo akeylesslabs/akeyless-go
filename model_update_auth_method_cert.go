@@ -19,6 +19,8 @@ import (
 type UpdateAuthMethodCert struct {
 	// Access expiration date in Unix timestamp (select 0 for access without expiry date)
 	AccessExpires *int64 `json:"access-expires,omitempty"`
+	// Comma separated list of allowed CORS domains to be validated as part of the authentication flow.
+	AllowedCors *string `json:"allowed-cors,omitempty"`
 	// A list of names. At least one must exist in the Common Name. Supports globbing.
 	BoundCommonNames *[]string `json:"bound-common-names,omitempty"`
 	// A list of DNS names. At least one must exist in the SANs. Supports globbing.
@@ -35,6 +37,8 @@ type UpdateAuthMethodCert struct {
 	BoundUriSans *[]string `json:"bound-uri-sans,omitempty"`
 	// The certificate data in base64, if no file was provided
 	CertificateData *string `json:"certificate-data,omitempty"`
+	// Auth Method description
+	Description *string `json:"description,omitempty"`
 	// if true: enforce role-association must include sub claims
 	ForceSubClaims *bool `json:"force-sub-claims,omitempty"`
 	// A CIDR whitelist with the GW IPs that the access is restricted to
@@ -65,6 +69,10 @@ func NewUpdateAuthMethodCert(name string, uniqueIdentifier string, ) *UpdateAuth
 	this := UpdateAuthMethodCert{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	this.Name = name
 	this.UniqueIdentifier = uniqueIdentifier
 	return &this
@@ -77,6 +85,10 @@ func NewUpdateAuthMethodCertWithDefaults() *UpdateAuthMethodCert {
 	this := UpdateAuthMethodCert{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	return &this
 }
 
@@ -110,6 +122,38 @@ func (o *UpdateAuthMethodCert) HasAccessExpires() bool {
 // SetAccessExpires gets a reference to the given int64 and assigns it to the AccessExpires field.
 func (o *UpdateAuthMethodCert) SetAccessExpires(v int64) {
 	o.AccessExpires = &v
+}
+
+// GetAllowedCors returns the AllowedCors field value if set, zero value otherwise.
+func (o *UpdateAuthMethodCert) GetAllowedCors() string {
+	if o == nil || o.AllowedCors == nil {
+		var ret string
+		return ret
+	}
+	return *o.AllowedCors
+}
+
+// GetAllowedCorsOk returns a tuple with the AllowedCors field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAuthMethodCert) GetAllowedCorsOk() (*string, bool) {
+	if o == nil || o.AllowedCors == nil {
+		return nil, false
+	}
+	return o.AllowedCors, true
+}
+
+// HasAllowedCors returns a boolean if a field has been set.
+func (o *UpdateAuthMethodCert) HasAllowedCors() bool {
+	if o != nil && o.AllowedCors != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowedCors gets a reference to the given string and assigns it to the AllowedCors field.
+func (o *UpdateAuthMethodCert) SetAllowedCors(v string) {
+	o.AllowedCors = &v
 }
 
 // GetBoundCommonNames returns the BoundCommonNames field value if set, zero value otherwise.
@@ -366,6 +410,38 @@ func (o *UpdateAuthMethodCert) HasCertificateData() bool {
 // SetCertificateData gets a reference to the given string and assigns it to the CertificateData field.
 func (o *UpdateAuthMethodCert) SetCertificateData(v string) {
 	o.CertificateData = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *UpdateAuthMethodCert) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAuthMethodCert) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *UpdateAuthMethodCert) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *UpdateAuthMethodCert) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetForceSubClaims returns the ForceSubClaims field value if set, zero value otherwise.
@@ -677,6 +753,9 @@ func (o UpdateAuthMethodCert) MarshalJSON() ([]byte, error) {
 	if o.AccessExpires != nil {
 		toSerialize["access-expires"] = o.AccessExpires
 	}
+	if o.AllowedCors != nil {
+		toSerialize["allowed-cors"] = o.AllowedCors
+	}
 	if o.BoundCommonNames != nil {
 		toSerialize["bound-common-names"] = o.BoundCommonNames
 	}
@@ -700,6 +779,9 @@ func (o UpdateAuthMethodCert) MarshalJSON() ([]byte, error) {
 	}
 	if o.CertificateData != nil {
 		toSerialize["certificate-data"] = o.CertificateData
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.ForceSubClaims != nil {
 		toSerialize["force-sub-claims"] = o.ForceSubClaims

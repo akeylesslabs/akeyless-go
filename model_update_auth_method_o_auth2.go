@@ -25,14 +25,20 @@ type UpdateAuthMethodOAuth2 struct {
 	BoundClientIds *[]string `json:"bound-client-ids,omitempty"`
 	// A CIDR whitelist with the IPs that the access is restricted to
 	BoundIps *[]string `json:"bound-ips,omitempty"`
+	// Auth Method description
+	Description *string `json:"description,omitempty"`
 	// if true: enforce role-association must include sub claims
 	ForceSubClaims *bool `json:"force-sub-claims,omitempty"`
+	// Akeyless Gateway URL (Configuration Management port). Relevant only when the jwks-uri is accessible only from the gateway.
+	GatewayUrl *string `json:"gateway-url,omitempty"`
 	// A CIDR whitelist with the GW IPs that the access is restricted to
 	GwBoundIps *[]string `json:"gw-bound-ips,omitempty"`
 	// Issuer URL
 	Issuer *string `json:"issuer,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
+	// The JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. base64 encoded string
+	JwksJsonData *string `json:"jwks-json-data,omitempty"`
 	// The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server.
 	JwksUri string `json:"jwks-uri"`
 	// Jwt TTL
@@ -41,6 +47,8 @@ type UpdateAuthMethodOAuth2 struct {
 	Name string `json:"name"`
 	// Auth Method new name
 	NewName *string `json:"new-name,omitempty"`
+	// A list of additional sub claims delimiters (relevant only for SAML, OIDC, OAuth2/JWT)
+	SubclaimsDelimiters *[]string `json:"subclaims-delimiters,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -57,7 +65,11 @@ func NewUpdateAuthMethodOAuth2(jwksUri string, name string, uniqueIdentifier str
 	this := UpdateAuthMethodOAuth2{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var json bool = false
+	this.Json = &json
 	this.JwksUri = jwksUri
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	this.Name = name
 	this.UniqueIdentifier = uniqueIdentifier
 	return &this
@@ -70,6 +82,12 @@ func NewUpdateAuthMethodOAuth2WithDefaults() *UpdateAuthMethodOAuth2 {
 	this := UpdateAuthMethodOAuth2{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var json bool = false
+	this.Json = &json
+	var jwksUri string = "default_jwks_url"
+	this.JwksUri = jwksUri
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	return &this
 }
 
@@ -201,6 +219,38 @@ func (o *UpdateAuthMethodOAuth2) SetBoundIps(v []string) {
 	o.BoundIps = &v
 }
 
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *UpdateAuthMethodOAuth2) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAuthMethodOAuth2) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *UpdateAuthMethodOAuth2) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *UpdateAuthMethodOAuth2) SetDescription(v string) {
+	o.Description = &v
+}
+
 // GetForceSubClaims returns the ForceSubClaims field value if set, zero value otherwise.
 func (o *UpdateAuthMethodOAuth2) GetForceSubClaims() bool {
 	if o == nil || o.ForceSubClaims == nil {
@@ -231,6 +281,38 @@ func (o *UpdateAuthMethodOAuth2) HasForceSubClaims() bool {
 // SetForceSubClaims gets a reference to the given bool and assigns it to the ForceSubClaims field.
 func (o *UpdateAuthMethodOAuth2) SetForceSubClaims(v bool) {
 	o.ForceSubClaims = &v
+}
+
+// GetGatewayUrl returns the GatewayUrl field value if set, zero value otherwise.
+func (o *UpdateAuthMethodOAuth2) GetGatewayUrl() string {
+	if o == nil || o.GatewayUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.GatewayUrl
+}
+
+// GetGatewayUrlOk returns a tuple with the GatewayUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAuthMethodOAuth2) GetGatewayUrlOk() (*string, bool) {
+	if o == nil || o.GatewayUrl == nil {
+		return nil, false
+	}
+	return o.GatewayUrl, true
+}
+
+// HasGatewayUrl returns a boolean if a field has been set.
+func (o *UpdateAuthMethodOAuth2) HasGatewayUrl() bool {
+	if o != nil && o.GatewayUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGatewayUrl gets a reference to the given string and assigns it to the GatewayUrl field.
+func (o *UpdateAuthMethodOAuth2) SetGatewayUrl(v string) {
+	o.GatewayUrl = &v
 }
 
 // GetGwBoundIps returns the GwBoundIps field value if set, zero value otherwise.
@@ -327,6 +409,38 @@ func (o *UpdateAuthMethodOAuth2) HasJson() bool {
 // SetJson gets a reference to the given bool and assigns it to the Json field.
 func (o *UpdateAuthMethodOAuth2) SetJson(v bool) {
 	o.Json = &v
+}
+
+// GetJwksJsonData returns the JwksJsonData field value if set, zero value otherwise.
+func (o *UpdateAuthMethodOAuth2) GetJwksJsonData() string {
+	if o == nil || o.JwksJsonData == nil {
+		var ret string
+		return ret
+	}
+	return *o.JwksJsonData
+}
+
+// GetJwksJsonDataOk returns a tuple with the JwksJsonData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAuthMethodOAuth2) GetJwksJsonDataOk() (*string, bool) {
+	if o == nil || o.JwksJsonData == nil {
+		return nil, false
+	}
+	return o.JwksJsonData, true
+}
+
+// HasJwksJsonData returns a boolean if a field has been set.
+func (o *UpdateAuthMethodOAuth2) HasJwksJsonData() bool {
+	if o != nil && o.JwksJsonData != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJwksJsonData gets a reference to the given string and assigns it to the JwksJsonData field.
+func (o *UpdateAuthMethodOAuth2) SetJwksJsonData(v string) {
+	o.JwksJsonData = &v
 }
 
 // GetJwksUri returns the JwksUri field value
@@ -441,6 +555,38 @@ func (o *UpdateAuthMethodOAuth2) SetNewName(v string) {
 	o.NewName = &v
 }
 
+// GetSubclaimsDelimiters returns the SubclaimsDelimiters field value if set, zero value otherwise.
+func (o *UpdateAuthMethodOAuth2) GetSubclaimsDelimiters() []string {
+	if o == nil || o.SubclaimsDelimiters == nil {
+		var ret []string
+		return ret
+	}
+	return *o.SubclaimsDelimiters
+}
+
+// GetSubclaimsDelimitersOk returns a tuple with the SubclaimsDelimiters field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAuthMethodOAuth2) GetSubclaimsDelimitersOk() (*[]string, bool) {
+	if o == nil || o.SubclaimsDelimiters == nil {
+		return nil, false
+	}
+	return o.SubclaimsDelimiters, true
+}
+
+// HasSubclaimsDelimiters returns a boolean if a field has been set.
+func (o *UpdateAuthMethodOAuth2) HasSubclaimsDelimiters() bool {
+	if o != nil && o.SubclaimsDelimiters != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSubclaimsDelimiters gets a reference to the given []string and assigns it to the SubclaimsDelimiters field.
+func (o *UpdateAuthMethodOAuth2) SetSubclaimsDelimiters(v []string) {
+	o.SubclaimsDelimiters = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *UpdateAuthMethodOAuth2) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -543,8 +689,14 @@ func (o UpdateAuthMethodOAuth2) MarshalJSON() ([]byte, error) {
 	if o.BoundIps != nil {
 		toSerialize["bound-ips"] = o.BoundIps
 	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
+	}
 	if o.ForceSubClaims != nil {
 		toSerialize["force-sub-claims"] = o.ForceSubClaims
+	}
+	if o.GatewayUrl != nil {
+		toSerialize["gateway-url"] = o.GatewayUrl
 	}
 	if o.GwBoundIps != nil {
 		toSerialize["gw-bound-ips"] = o.GwBoundIps
@@ -554,6 +706,9 @@ func (o UpdateAuthMethodOAuth2) MarshalJSON() ([]byte, error) {
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json
+	}
+	if o.JwksJsonData != nil {
+		toSerialize["jwks-json-data"] = o.JwksJsonData
 	}
 	if true {
 		toSerialize["jwks-uri"] = o.JwksUri
@@ -566,6 +721,9 @@ func (o UpdateAuthMethodOAuth2) MarshalJSON() ([]byte, error) {
 	}
 	if o.NewName != nil {
 		toSerialize["new-name"] = o.NewName
+	}
+	if o.SubclaimsDelimiters != nil {
+		toSerialize["subclaims-delimiters"] = o.SubclaimsDelimiters
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

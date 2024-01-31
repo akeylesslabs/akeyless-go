@@ -18,6 +18,7 @@ import (
 // MigrationGeneral struct for MigrationGeneral
 type MigrationGeneral struct {
 	Id *string `json:"id,omitempty"`
+	LastMigration *string `json:"last_migration,omitempty"`
 	Name *string `json:"name,omitempty"`
 	NewName *string `json:"new_name,omitempty"`
 	Prefix *string `json:"prefix,omitempty"`
@@ -73,6 +74,38 @@ func (o *MigrationGeneral) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *MigrationGeneral) SetId(v string) {
 	o.Id = &v
+}
+
+// GetLastMigration returns the LastMigration field value if set, zero value otherwise.
+func (o *MigrationGeneral) GetLastMigration() string {
+	if o == nil || o.LastMigration == nil {
+		var ret string
+		return ret
+	}
+	return *o.LastMigration
+}
+
+// GetLastMigrationOk returns a tuple with the LastMigration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MigrationGeneral) GetLastMigrationOk() (*string, bool) {
+	if o == nil || o.LastMigration == nil {
+		return nil, false
+	}
+	return o.LastMigration, true
+}
+
+// HasLastMigration returns a boolean if a field has been set.
+func (o *MigrationGeneral) HasLastMigration() bool {
+	if o != nil && o.LastMigration != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastMigration gets a reference to the given string and assigns it to the LastMigration field.
+func (o *MigrationGeneral) SetLastMigration(v string) {
+	o.LastMigration = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -271,6 +304,9 @@ func (o MigrationGeneral) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
+	}
+	if o.LastMigration != nil {
+		toSerialize["last_migration"] = o.LastMigration
 	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name

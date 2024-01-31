@@ -4,8 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**RotateAllServicesBoolean** | Pointer to **bool** |  | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Secret name (Rotated Secret or Custom Dynamic Secret) | 
+**RotateAllServices** | Pointer to **string** | Rotate all associated services | [optional] [default to "false"]
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
@@ -27,6 +29,31 @@ will change when the set of required properties is changed
 NewRotateSecretWithDefaults instantiates a new RotateSecret object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetRotateAllServicesBoolean
+
+`func (o *RotateSecret) GetRotateAllServicesBoolean() bool`
+
+GetRotateAllServicesBoolean returns the RotateAllServicesBoolean field if non-nil, zero value otherwise.
+
+### GetRotateAllServicesBooleanOk
+
+`func (o *RotateSecret) GetRotateAllServicesBooleanOk() (*bool, bool)`
+
+GetRotateAllServicesBooleanOk returns a tuple with the RotateAllServicesBoolean field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotateAllServicesBoolean
+
+`func (o *RotateSecret) SetRotateAllServicesBoolean(v bool)`
+
+SetRotateAllServicesBoolean sets RotateAllServicesBoolean field to given value.
+
+### HasRotateAllServicesBoolean
+
+`func (o *RotateSecret) HasRotateAllServicesBoolean() bool`
+
+HasRotateAllServicesBoolean returns a boolean if a field has been set.
 
 ### GetJson
 
@@ -72,6 +99,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetRotateAllServices
+
+`func (o *RotateSecret) GetRotateAllServices() string`
+
+GetRotateAllServices returns the RotateAllServices field if non-nil, zero value otherwise.
+
+### GetRotateAllServicesOk
+
+`func (o *RotateSecret) GetRotateAllServicesOk() (*string, bool)`
+
+GetRotateAllServicesOk returns a tuple with the RotateAllServices field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotateAllServices
+
+`func (o *RotateSecret) SetRotateAllServices(v string)`
+
+SetRotateAllServices sets RotateAllServices field to given value.
+
+### HasRotateAllServices
+
+`func (o *RotateSecret) HasRotateAllServices() bool`
+
+HasRotateAllServices returns a boolean if a field has been set.
 
 ### GetToken
 

@@ -19,8 +19,6 @@ import (
 type EncryptFile struct {
 	// The display id of the key to use in the encryption process
 	DisplayId *string `json:"display-id,omitempty"`
-	// name-value pair that specifies the encryption context to be used for authenticated encryption. If used here, the same value must be supplied to the decrypt command or decryption will fail
-	EncryptionContext *map[string]string `json:"encryption-context,omitempty"`
 	// Path to the file to be encrypted. If not provided, the content will be taken from stdin
 	In string `json:"in"`
 	// The item id of the key to use in the encryption process
@@ -44,6 +42,8 @@ type EncryptFile struct {
 func NewEncryptFile(in string, keyName string, ) *EncryptFile {
 	this := EncryptFile{}
 	this.In = in
+	var json bool = false
+	this.Json = &json
 	this.KeyName = keyName
 	return &this
 }
@@ -53,6 +53,8 @@ func NewEncryptFile(in string, keyName string, ) *EncryptFile {
 // but it doesn't guarantee that properties required by API are set
 func NewEncryptFileWithDefaults() *EncryptFile {
 	this := EncryptFile{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -86,38 +88,6 @@ func (o *EncryptFile) HasDisplayId() bool {
 // SetDisplayId gets a reference to the given string and assigns it to the DisplayId field.
 func (o *EncryptFile) SetDisplayId(v string) {
 	o.DisplayId = &v
-}
-
-// GetEncryptionContext returns the EncryptionContext field value if set, zero value otherwise.
-func (o *EncryptFile) GetEncryptionContext() map[string]string {
-	if o == nil || o.EncryptionContext == nil {
-		var ret map[string]string
-		return ret
-	}
-	return *o.EncryptionContext
-}
-
-// GetEncryptionContextOk returns a tuple with the EncryptionContext field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *EncryptFile) GetEncryptionContextOk() (*map[string]string, bool) {
-	if o == nil || o.EncryptionContext == nil {
-		return nil, false
-	}
-	return o.EncryptionContext, true
-}
-
-// HasEncryptionContext returns a boolean if a field has been set.
-func (o *EncryptFile) HasEncryptionContext() bool {
-	if o != nil && o.EncryptionContext != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEncryptionContext gets a reference to the given map[string]string and assigns it to the EncryptionContext field.
-func (o *EncryptFile) SetEncryptionContext(v map[string]string) {
-	o.EncryptionContext = &v
 }
 
 // GetIn returns the In field value
@@ -332,9 +302,6 @@ func (o EncryptFile) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DisplayId != nil {
 		toSerialize["display-id"] = o.DisplayId
-	}
-	if o.EncryptionContext != nil {
-		toSerialize["encryption-context"] = o.EncryptionContext
 	}
 	if true {
 		toSerialize["in"] = o.In

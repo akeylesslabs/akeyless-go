@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessExpires** | Pointer to **int64** | Access expiration date in Unix timestamp (select 0 for access without expiry date) | [optional] [default to 0]
+**AllowedCors** | Pointer to **string** | Comma separated list of allowed CORS domains to be validated as part of the authentication flow. | [optional] 
 **BoundCommonNames** | Pointer to **[]string** | A list of names. At least one must exist in the Common Name. Supports globbing. | [optional] 
 **BoundDnsSans** | Pointer to **[]string** | A list of DNS names. At least one must exist in the SANs. Supports globbing. | [optional] 
 **BoundEmailSans** | Pointer to **[]string** | A list of Email Addresses. At least one must exist in the SANs. Supports globbing. | [optional] 
@@ -13,10 +14,11 @@ Name | Type | Description | Notes
 **BoundOrganizationalUnits** | Pointer to **[]string** | A list of Organizational Units names. At least one must exist in the OU field. | [optional] 
 **BoundUriSans** | Pointer to **[]string** | A list of URIs. At least one must exist in the SANs. Supports globbing. | [optional] 
 **CertificateData** | Pointer to **string** | The certificate data in base64, if no file was provided | [optional] 
+**Description** | Pointer to **string** | Auth Method description | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
 **GwBoundIps** | Pointer to **[]string** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
-**JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] [default to 0]
 **Name** | **string** | Auth Method name | 
 **RevokedCertIds** | Pointer to **[]string** | A list of revoked cert ids | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -66,6 +68,31 @@ SetAccessExpires sets AccessExpires field to given value.
 `func (o *CreateAuthMethodCert) HasAccessExpires() bool`
 
 HasAccessExpires returns a boolean if a field has been set.
+
+### GetAllowedCors
+
+`func (o *CreateAuthMethodCert) GetAllowedCors() string`
+
+GetAllowedCors returns the AllowedCors field if non-nil, zero value otherwise.
+
+### GetAllowedCorsOk
+
+`func (o *CreateAuthMethodCert) GetAllowedCorsOk() (*string, bool)`
+
+GetAllowedCorsOk returns a tuple with the AllowedCors field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowedCors
+
+`func (o *CreateAuthMethodCert) SetAllowedCors(v string)`
+
+SetAllowedCors sets AllowedCors field to given value.
+
+### HasAllowedCors
+
+`func (o *CreateAuthMethodCert) HasAllowedCors() bool`
+
+HasAllowedCors returns a boolean if a field has been set.
 
 ### GetBoundCommonNames
 
@@ -266,6 +293,31 @@ SetCertificateData sets CertificateData field to given value.
 `func (o *CreateAuthMethodCert) HasCertificateData() bool`
 
 HasCertificateData returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *CreateAuthMethodCert) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *CreateAuthMethodCert) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *CreateAuthMethodCert) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *CreateAuthMethodCert) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetForceSubClaims
 

@@ -4,16 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ActionAllowed** | Pointer to **bool** |  | [optional] 
 **Allowed** | Pointer to **bool** |  | [optional] 
 **AllowedAccessIds** | Pointer to **[]string** |  | [optional] 
 **ClusterName** | Pointer to **string** |  | [optional] 
 **ClusterUrl** | Pointer to **string** |  | [optional] 
 **CurrentGw** | Pointer to **bool** |  | [optional] 
-**CustomerFragmentIds** | Pointer to **[]string** |  | [optional] 
+**CustomerFragmentIds** | Pointer to **[]string** | Deprecated - use CustomerFragments instead | [optional] 
+**CustomerFragments** | Pointer to [**[]CfInfo**](CfInfo.md) |  | [optional] 
 **DefaultProtectionKeyId** | Pointer to **int64** |  | [optional] 
 **DefaultSecretLocation** | Pointer to **string** |  | [optional] 
 **DisplayName** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **int64** |  | [optional] 
+**ServerlessType** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
 **StatusDescription** | Pointer to **string** |  | [optional] 
 
@@ -35,6 +38,31 @@ will change when the set of required properties is changed
 NewGwClusterIdentityWithDefaults instantiates a new GwClusterIdentity object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetActionAllowed
+
+`func (o *GwClusterIdentity) GetActionAllowed() bool`
+
+GetActionAllowed returns the ActionAllowed field if non-nil, zero value otherwise.
+
+### GetActionAllowedOk
+
+`func (o *GwClusterIdentity) GetActionAllowedOk() (*bool, bool)`
+
+GetActionAllowedOk returns a tuple with the ActionAllowed field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetActionAllowed
+
+`func (o *GwClusterIdentity) SetActionAllowed(v bool)`
+
+SetActionAllowed sets ActionAllowed field to given value.
+
+### HasActionAllowed
+
+`func (o *GwClusterIdentity) HasActionAllowed() bool`
+
+HasActionAllowed returns a boolean if a field has been set.
 
 ### GetAllowed
 
@@ -186,6 +214,31 @@ SetCustomerFragmentIds sets CustomerFragmentIds field to given value.
 
 HasCustomerFragmentIds returns a boolean if a field has been set.
 
+### GetCustomerFragments
+
+`func (o *GwClusterIdentity) GetCustomerFragments() []CfInfo`
+
+GetCustomerFragments returns the CustomerFragments field if non-nil, zero value otherwise.
+
+### GetCustomerFragmentsOk
+
+`func (o *GwClusterIdentity) GetCustomerFragmentsOk() (*[]CfInfo, bool)`
+
+GetCustomerFragmentsOk returns a tuple with the CustomerFragments field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomerFragments
+
+`func (o *GwClusterIdentity) SetCustomerFragments(v []CfInfo)`
+
+SetCustomerFragments sets CustomerFragments field to given value.
+
+### HasCustomerFragments
+
+`func (o *GwClusterIdentity) HasCustomerFragments() bool`
+
+HasCustomerFragments returns a boolean if a field has been set.
+
 ### GetDefaultProtectionKeyId
 
 `func (o *GwClusterIdentity) GetDefaultProtectionKeyId() int64`
@@ -285,6 +338,31 @@ SetId sets Id field to given value.
 `func (o *GwClusterIdentity) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### GetServerlessType
+
+`func (o *GwClusterIdentity) GetServerlessType() string`
+
+GetServerlessType returns the ServerlessType field if non-nil, zero value otherwise.
+
+### GetServerlessTypeOk
+
+`func (o *GwClusterIdentity) GetServerlessTypeOk() (*string, bool)`
+
+GetServerlessTypeOk returns a tuple with the ServerlessType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServerlessType
+
+`func (o *GwClusterIdentity) SetServerlessType(v string)`
+
+SetServerlessType sets ServerlessType field to given value.
+
+### HasServerlessType
+
+`func (o *GwClusterIdentity) HasServerlessType() bool`
+
+HasServerlessType returns a boolean if a field has been set.
 
 ### GetStatus
 

@@ -19,6 +19,7 @@ import (
 type UpdateAssoc struct {
 	// The association id to be updated
 	AssocId string `json:"assoc-id"`
+	// Treat sub claims as case-sensitive [true/false]
 	CaseSensitive *string `json:"case-sensitive,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -37,6 +38,10 @@ type UpdateAssoc struct {
 func NewUpdateAssoc(assocId string, ) *UpdateAssoc {
 	this := UpdateAssoc{}
 	this.AssocId = assocId
+	var caseSensitive string = "true"
+	this.CaseSensitive = &caseSensitive
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -45,6 +50,10 @@ func NewUpdateAssoc(assocId string, ) *UpdateAssoc {
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateAssocWithDefaults() *UpdateAssoc {
 	this := UpdateAssoc{}
+	var caseSensitive string = "true"
+	this.CaseSensitive = &caseSensitive
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

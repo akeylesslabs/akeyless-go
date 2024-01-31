@@ -10,11 +10,12 @@ Name | Type | Description | Notes
 **BoundNamespaces** | Pointer to **[]string** | A list of namespaces that the access is restricted to | [optional] 
 **BoundPodNames** | Pointer to **[]string** | A list of pod names that the access is restricted to | [optional] 
 **BoundSaNames** | Pointer to **[]string** | A list of service account names that the access is restricted to | [optional] 
+**Description** | Pointer to **string** | Auth Method description | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
-**GenKey** | Pointer to **string** | Automatically generate key-pair for K8S configuration. If set to false, a public key needs to be provided | [optional] [default to "true"]
+**GenKey** | Pointer to **string** | Automatically generate key-pair for K8S configuration. If set to false, a public key needs to be provided [true/false] | [optional] [default to "true"]
 **GwBoundIps** | Pointer to **[]string** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
-**JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] [default to 0]
 **Name** | **string** | Auth Method name | 
 **PublicKey** | Pointer to **string** | Base64-encoded or PEM formatted public key data for K8S authentication method is required [RSA2048] | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -188,6 +189,31 @@ SetBoundSaNames sets BoundSaNames field to given value.
 `func (o *CreateAuthMethodK8S) HasBoundSaNames() bool`
 
 HasBoundSaNames returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *CreateAuthMethodK8S) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *CreateAuthMethodK8S) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *CreateAuthMethodK8S) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *CreateAuthMethodK8S) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetForceSubClaims
 

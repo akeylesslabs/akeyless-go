@@ -17,7 +17,9 @@ import (
 
 // KmipCreateClient struct for KmipCreateClient
 type KmipCreateClient struct {
+	// If set to 'true', newly created keys on the client will be set to an 'active' state
 	ActivateKeysOnCreation *string `json:"activate-keys-on-creation,omitempty"`
+	// Client certificate TTL in days
 	CertificateTtl *int64 `json:"certificate-ttl,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -35,6 +37,12 @@ type KmipCreateClient struct {
 // will change when the set of required properties is changed
 func NewKmipCreateClient(name string, ) *KmipCreateClient {
 	this := KmipCreateClient{}
+	var activateKeysOnCreation string = "false"
+	this.ActivateKeysOnCreation = &activateKeysOnCreation
+	var certificateTtl int64 = 90
+	this.CertificateTtl = &certificateTtl
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -44,6 +52,12 @@ func NewKmipCreateClient(name string, ) *KmipCreateClient {
 // but it doesn't guarantee that properties required by API are set
 func NewKmipCreateClientWithDefaults() *KmipCreateClient {
 	this := KmipCreateClient{}
+	var activateKeysOnCreation string = "false"
+	this.ActivateKeysOnCreation = &activateKeysOnCreation
+	var certificateTtl int64 = 90
+	this.CertificateTtl = &certificateTtl
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

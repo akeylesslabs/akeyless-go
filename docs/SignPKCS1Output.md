@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Result** | Pointer to **[]int32** |  | [optional] 
+**Result** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResult
 
-`func (o *SignPKCS1Output) GetResult() []int32`
+`func (o *SignPKCS1Output) GetResult() string`
 
 GetResult returns the Result field if non-nil, zero value otherwise.
 
 ### GetResultOk
 
-`func (o *SignPKCS1Output) GetResultOk() (*[]int32, bool)`
+`func (o *SignPKCS1Output) GetResultOk() (*string, bool)`
 
 GetResultOk returns a tuple with the Result field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResult
 
-`func (o *SignPKCS1Output) SetResult(v []int32)`
+`func (o *SignPKCS1Output) SetResult(v string)`
 
 SetResult sets Result field to given value.
 

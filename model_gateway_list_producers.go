@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// GatewayListProducers gatewayListProducers is a command that returns producer
+// GatewayListProducers gatewayListProducers is a command that returns a list of producers
 type GatewayListProducers struct {
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -31,6 +31,8 @@ type GatewayListProducers struct {
 // will change when the set of required properties is changed
 func NewGatewayListProducers() *GatewayListProducers {
 	this := GatewayListProducers{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -39,6 +41,8 @@ func NewGatewayListProducers() *GatewayListProducers {
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayListProducersWithDefaults() *GatewayListProducers {
 	this := GatewayListProducers{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

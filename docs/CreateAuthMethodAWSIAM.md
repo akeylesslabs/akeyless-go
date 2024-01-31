@@ -13,10 +13,11 @@ Name | Type | Description | Notes
 **BoundRoleName** | Pointer to **[]string** | A list of full role-name that the access is restricted to | [optional] 
 **BoundUserId** | Pointer to **[]string** | A list of full user ids that the access is restricted to | [optional] 
 **BoundUserName** | Pointer to **[]string** | A list of full user-name that the access is restricted to | [optional] 
+**Description** | Pointer to **string** | Auth Method description | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
 **GwBoundIps** | Pointer to **[]string** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
-**JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] [default to 0]
 **Name** | **string** | Auth Method name | 
 **StsUrl** | Pointer to **string** | sts URL | [optional] [default to "https://sts.amazonaws.com"]
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -260,6 +261,31 @@ SetBoundUserName sets BoundUserName field to given value.
 `func (o *CreateAuthMethodAWSIAM) HasBoundUserName() bool`
 
 HasBoundUserName returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *CreateAuthMethodAWSIAM) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *CreateAuthMethodAWSIAM) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *CreateAuthMethodAWSIAM) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *CreateAuthMethodAWSIAM) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetForceSubClaims
 

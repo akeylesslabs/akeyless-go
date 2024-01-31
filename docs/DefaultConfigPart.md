@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CertificateAccessId** | Pointer to **string** |  | [optional] 
 **DefaultProtectionKeyId** | Pointer to **int64** |  | [optional] 
 **DefaultSecretLocation** | Pointer to **string** |  | [optional] 
 **OidcAccessId** | Pointer to **string** |  | [optional] 
@@ -27,6 +28,31 @@ will change when the set of required properties is changed
 NewDefaultConfigPartWithDefaults instantiates a new DefaultConfigPart object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCertificateAccessId
+
+`func (o *DefaultConfigPart) GetCertificateAccessId() string`
+
+GetCertificateAccessId returns the CertificateAccessId field if non-nil, zero value otherwise.
+
+### GetCertificateAccessIdOk
+
+`func (o *DefaultConfigPart) GetCertificateAccessIdOk() (*string, bool)`
+
+GetCertificateAccessIdOk returns a tuple with the CertificateAccessId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificateAccessId
+
+`func (o *DefaultConfigPart) SetCertificateAccessId(v string)`
+
+SetCertificateAccessId sets CertificateAccessId field to given value.
+
+### HasCertificateAccessId
+
+`func (o *DefaultConfigPart) HasCertificateAccessId() bool`
+
+HasCertificateAccessId returns a boolean if a field has been set.
 
 ### GetDefaultProtectionKeyId
 

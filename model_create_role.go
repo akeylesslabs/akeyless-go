@@ -21,8 +21,14 @@ type CreateRole struct {
 	AnalyticsAccess *string `json:"analytics-access,omitempty"`
 	// Allow this role to view audit logs. Currently only 'none', 'own' and 'all' values are supported, allowing associated auth methods to view audit logs produced by the same auth methods.
 	AuditAccess *string `json:"audit-access,omitempty"`
-	// Comment about the role
+	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`
+	// Description of the object
+	Description *string `json:"description,omitempty"`
+	// Allow this role to view Event Center. Currently only 'none', 'own' and 'all' values are supported
+	EventCenterAccess *string `json:"event-center-access,omitempty"`
+	// Allow this role to manage Event Forwarders. Currently only 'none' and 'all' values are supported.
+	EventForwardersAccess *string `json:"event-forwarders-access,omitempty"`
 	// Allow this role to view gw analytics. Currently only 'none', 'own', 'all' values are supported, allowing associated auth methods to view reports produced by the same auth methods.
 	GwAnalyticsAccess *string `json:"gw-analytics-access,omitempty"`
 	// Set output format to JSON
@@ -35,6 +41,8 @@ type CreateRole struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// Allow this role to view Usage Report. Currently only 'none' and 'all' values are supported.
+	UsageReportsAccess *string `json:"usage-reports-access,omitempty"`
 }
 
 // NewCreateRole instantiates a new CreateRole object
@@ -43,6 +51,8 @@ type CreateRole struct {
 // will change when the set of required properties is changed
 func NewCreateRole(name string, ) *CreateRole {
 	this := CreateRole{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -52,6 +62,8 @@ func NewCreateRole(name string, ) *CreateRole {
 // but it doesn't guarantee that properties required by API are set
 func NewCreateRoleWithDefaults() *CreateRole {
 	this := CreateRole{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -149,6 +161,102 @@ func (o *CreateRole) HasComment() bool {
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *CreateRole) SetComment(v string) {
 	o.Comment = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *CreateRole) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRole) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *CreateRole) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *CreateRole) SetDescription(v string) {
+	o.Description = &v
+}
+
+// GetEventCenterAccess returns the EventCenterAccess field value if set, zero value otherwise.
+func (o *CreateRole) GetEventCenterAccess() string {
+	if o == nil || o.EventCenterAccess == nil {
+		var ret string
+		return ret
+	}
+	return *o.EventCenterAccess
+}
+
+// GetEventCenterAccessOk returns a tuple with the EventCenterAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRole) GetEventCenterAccessOk() (*string, bool) {
+	if o == nil || o.EventCenterAccess == nil {
+		return nil, false
+	}
+	return o.EventCenterAccess, true
+}
+
+// HasEventCenterAccess returns a boolean if a field has been set.
+func (o *CreateRole) HasEventCenterAccess() bool {
+	if o != nil && o.EventCenterAccess != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEventCenterAccess gets a reference to the given string and assigns it to the EventCenterAccess field.
+func (o *CreateRole) SetEventCenterAccess(v string) {
+	o.EventCenterAccess = &v
+}
+
+// GetEventForwardersAccess returns the EventForwardersAccess field value if set, zero value otherwise.
+func (o *CreateRole) GetEventForwardersAccess() string {
+	if o == nil || o.EventForwardersAccess == nil {
+		var ret string
+		return ret
+	}
+	return *o.EventForwardersAccess
+}
+
+// GetEventForwardersAccessOk returns a tuple with the EventForwardersAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRole) GetEventForwardersAccessOk() (*string, bool) {
+	if o == nil || o.EventForwardersAccess == nil {
+		return nil, false
+	}
+	return o.EventForwardersAccess, true
+}
+
+// HasEventForwardersAccess returns a boolean if a field has been set.
+func (o *CreateRole) HasEventForwardersAccess() bool {
+	if o != nil && o.EventForwardersAccess != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEventForwardersAccess gets a reference to the given string and assigns it to the EventForwardersAccess field.
+func (o *CreateRole) SetEventForwardersAccess(v string) {
+	o.EventForwardersAccess = &v
 }
 
 // GetGwAnalyticsAccess returns the GwAnalyticsAccess field value if set, zero value otherwise.
@@ -335,6 +443,38 @@ func (o *CreateRole) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUsageReportsAccess returns the UsageReportsAccess field value if set, zero value otherwise.
+func (o *CreateRole) GetUsageReportsAccess() string {
+	if o == nil || o.UsageReportsAccess == nil {
+		var ret string
+		return ret
+	}
+	return *o.UsageReportsAccess
+}
+
+// GetUsageReportsAccessOk returns a tuple with the UsageReportsAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRole) GetUsageReportsAccessOk() (*string, bool) {
+	if o == nil || o.UsageReportsAccess == nil {
+		return nil, false
+	}
+	return o.UsageReportsAccess, true
+}
+
+// HasUsageReportsAccess returns a boolean if a field has been set.
+func (o *CreateRole) HasUsageReportsAccess() bool {
+	if o != nil && o.UsageReportsAccess != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsageReportsAccess gets a reference to the given string and assigns it to the UsageReportsAccess field.
+func (o *CreateRole) SetUsageReportsAccess(v string) {
+	o.UsageReportsAccess = &v
+}
+
 func (o CreateRole) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AnalyticsAccess != nil {
@@ -345,6 +485,15 @@ func (o CreateRole) MarshalJSON() ([]byte, error) {
 	}
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
+	}
+	if o.EventCenterAccess != nil {
+		toSerialize["event-center-access"] = o.EventCenterAccess
+	}
+	if o.EventForwardersAccess != nil {
+		toSerialize["event-forwarders-access"] = o.EventForwardersAccess
 	}
 	if o.GwAnalyticsAccess != nil {
 		toSerialize["gw-analytics-access"] = o.GwAnalyticsAccess
@@ -363,6 +512,9 @@ func (o CreateRole) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.UsageReportsAccess != nil {
+		toSerialize["usage-reports-access"] = o.UsageReportsAccess
 	}
 	return json.Marshal(toSerialize)
 }

@@ -27,7 +27,7 @@ type GatewayCreateProducerCassandra struct {
 	CassandraPort *string `json:"cassandra-port,omitempty"`
 	// Cassandra superuser username
 	CassandraUsername *string `json:"cassandra-username,omitempty"`
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -35,7 +35,11 @@ type GatewayCreateProducerCassandra struct {
 	Name string `json:"name"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
-	// List of the tags attached to this secret
+	// Enable/Disable SSL [true/false]
+	Ssl *bool `json:"ssl,omitempty"`
+	// SSL CA certificate in base64 encoding generated from a trusted Certificate Authority (CA)
+	SslCertificate *string `json:"ssl-certificate,omitempty"`
+	// Add tags attached to this object
 	Tags *[]string `json:"tags,omitempty"`
 	// Target name
 	TargetName *string `json:"target-name,omitempty"`
@@ -55,7 +59,11 @@ func NewGatewayCreateProducerCassandra(name string, ) *GatewayCreateProducerCass
 	this := GatewayCreateProducerCassandra{}
 	var cassandraPort string = "9042"
 	this.CassandraPort = &cassandraPort
+	var json bool = false
+	this.Json = &json
 	this.Name = name
+	var ssl bool = false
+	this.Ssl = &ssl
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
@@ -68,6 +76,10 @@ func NewGatewayCreateProducerCassandraWithDefaults() *GatewayCreateProducerCassa
 	this := GatewayCreateProducerCassandra{}
 	var cassandraPort string = "9042"
 	this.CassandraPort = &cassandraPort
+	var json bool = false
+	this.Json = &json
+	var ssl bool = false
+	this.Ssl = &ssl
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
@@ -353,6 +365,70 @@ func (o *GatewayCreateProducerCassandra) SetProducerEncryptionKeyName(v string) 
 	o.ProducerEncryptionKeyName = &v
 }
 
+// GetSsl returns the Ssl field value if set, zero value otherwise.
+func (o *GatewayCreateProducerCassandra) GetSsl() bool {
+	if o == nil || o.Ssl == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Ssl
+}
+
+// GetSslOk returns a tuple with the Ssl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerCassandra) GetSslOk() (*bool, bool) {
+	if o == nil || o.Ssl == nil {
+		return nil, false
+	}
+	return o.Ssl, true
+}
+
+// HasSsl returns a boolean if a field has been set.
+func (o *GatewayCreateProducerCassandra) HasSsl() bool {
+	if o != nil && o.Ssl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSsl gets a reference to the given bool and assigns it to the Ssl field.
+func (o *GatewayCreateProducerCassandra) SetSsl(v bool) {
+	o.Ssl = &v
+}
+
+// GetSslCertificate returns the SslCertificate field value if set, zero value otherwise.
+func (o *GatewayCreateProducerCassandra) GetSslCertificate() string {
+	if o == nil || o.SslCertificate == nil {
+		var ret string
+		return ret
+	}
+	return *o.SslCertificate
+}
+
+// GetSslCertificateOk returns a tuple with the SslCertificate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerCassandra) GetSslCertificateOk() (*string, bool) {
+	if o == nil || o.SslCertificate == nil {
+		return nil, false
+	}
+	return o.SslCertificate, true
+}
+
+// HasSslCertificate returns a boolean if a field has been set.
+func (o *GatewayCreateProducerCassandra) HasSslCertificate() bool {
+	if o != nil && o.SslCertificate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSslCertificate gets a reference to the given string and assigns it to the SslCertificate field.
+func (o *GatewayCreateProducerCassandra) SetSslCertificate(v string) {
+	o.SslCertificate = &v
+}
+
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *GatewayCreateProducerCassandra) GetTags() []string {
 	if o == nil || o.Tags == nil {
@@ -541,6 +617,12 @@ func (o GatewayCreateProducerCassandra) MarshalJSON() ([]byte, error) {
 	}
 	if o.ProducerEncryptionKeyName != nil {
 		toSerialize["producer-encryption-key-name"] = o.ProducerEncryptionKeyName
+	}
+	if o.Ssl != nil {
+		toSerialize["ssl"] = o.Ssl
+	}
+	if o.SslCertificate != nil {
+		toSerialize["ssl-certificate"] = o.SslCertificate
 	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags

@@ -25,12 +25,20 @@ type UpdateAccountSettings struct {
 	CompanyName *string `json:"company-name,omitempty"`
 	// Country
 	Country *string `json:"country,omitempty"`
-	// Should create version by default
+	// Set the account default key based on the DFC key name. Use \"set-original-akeyless-default-key\" to revert to using the original default key of the account.
+	DefaultKeyName *string `json:"default-key-name,omitempty"`
+	// Set the default ttl in minutes for sharing item number between 60 and 43200
+	DefaultShareLinkTtlMinutes *string `json:"default-share-link-ttl-minutes,omitempty"`
+	// If set to true, new item version will be created on each update [true/false]
 	DefaultVersioning *string `json:"default-versioning,omitempty"`
-	// Enable classic key protection [\"true\"/\"false\"]
+	// Set to update protection with classic keys state [true/false]
 	DpEnableClassicKeyProtection *string `json:"dp-enable-classic-key-protection,omitempty"`
+	// Characters that cannot be used for items/targets/roles/auths/event_forwarder names. Empty string will enforce nothing.
+	InvalidCharacters *string `json:"invalid-characters,omitempty"`
 	// VersionSettingsObjectType defines object types for account version settings
 	ItemType *string `json:"item-type,omitempty"`
+	// Set or unset the default behaviour of items deletion protection [true/false]
+	ItemsDeletionProtection *string `json:"items-deletion-protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Default ttl
@@ -39,9 +47,11 @@ type UpdateAccountSettings struct {
 	JwtTtlMax *int64 `json:"jwt-ttl-max,omitempty"`
 	// Minimum ttl
 	JwtTtlMin *int64 `json:"jwt-ttl-min,omitempty"`
+	// Lock the account's default protection key, if set - users will not be able to use a different protection key, relevant only if default-key-name is configured [true/false]
+	LockDefaultKey *string `json:"lock-default-key,omitempty"`
 	// Max versions
 	MaxVersions *string `json:"max-versions,omitempty"`
-	// For PasswordPolicy use
+	// Password length between 5 - to 50 characters
 	PasswordLength *int64 `json:"password-length,omitempty"`
 	// Phone number
 	Phone *string `json:"phone,omitempty"`
@@ -51,13 +61,19 @@ type UpdateAccountSettings struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// For PasswordPolicy use
+	// Enable event for objects that have not been used or changed [true/false]
+	UsageEventEnable *string `json:"usage-event-enable,omitempty"`
+	// Interval by days for unused objects. Default and minimum interval is 90 days
+	UsageEventInterval *int64 `json:"usage-event-interval,omitempty"`
+	// Usage event is supported for auth method or secrets-and-keys [auth/item]
+	UsageEventObjectType *string `json:"usage-event-object-type,omitempty"`
+	// Password must contain lower case letters [true/false]
 	UseLowerLetters *string `json:"use-lower-letters,omitempty"`
-	// For PasswordPolicy use
+	// Password must contain numbers [true/false]
 	UseNumbers *string `json:"use-numbers,omitempty"`
-	// For PasswordPolicy use
+	// Password must contain special characters [true/false]
 	UseSpecialCharacters *string `json:"use-special-characters,omitempty"`
-	// For PasswordPolicy use
+	// Password must contain capital letters [true/false]
 	UseCapitalLetters *string `json:"use_capital-letters,omitempty"`
 }
 
@@ -67,6 +83,10 @@ type UpdateAccountSettings struct {
 // will change when the set of required properties is changed
 func NewUpdateAccountSettings() *UpdateAccountSettings {
 	this := UpdateAccountSettings{}
+	var invalidCharacters string = "notReceivedInvalidCharacter"
+	this.InvalidCharacters = &invalidCharacters
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -75,6 +95,10 @@ func NewUpdateAccountSettings() *UpdateAccountSettings {
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateAccountSettingsWithDefaults() *UpdateAccountSettings {
 	this := UpdateAccountSettings{}
+	var invalidCharacters string = "notReceivedInvalidCharacter"
+	this.InvalidCharacters = &invalidCharacters
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -206,6 +230,70 @@ func (o *UpdateAccountSettings) SetCountry(v string) {
 	o.Country = &v
 }
 
+// GetDefaultKeyName returns the DefaultKeyName field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetDefaultKeyName() string {
+	if o == nil || o.DefaultKeyName == nil {
+		var ret string
+		return ret
+	}
+	return *o.DefaultKeyName
+}
+
+// GetDefaultKeyNameOk returns a tuple with the DefaultKeyName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetDefaultKeyNameOk() (*string, bool) {
+	if o == nil || o.DefaultKeyName == nil {
+		return nil, false
+	}
+	return o.DefaultKeyName, true
+}
+
+// HasDefaultKeyName returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasDefaultKeyName() bool {
+	if o != nil && o.DefaultKeyName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDefaultKeyName gets a reference to the given string and assigns it to the DefaultKeyName field.
+func (o *UpdateAccountSettings) SetDefaultKeyName(v string) {
+	o.DefaultKeyName = &v
+}
+
+// GetDefaultShareLinkTtlMinutes returns the DefaultShareLinkTtlMinutes field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetDefaultShareLinkTtlMinutes() string {
+	if o == nil || o.DefaultShareLinkTtlMinutes == nil {
+		var ret string
+		return ret
+	}
+	return *o.DefaultShareLinkTtlMinutes
+}
+
+// GetDefaultShareLinkTtlMinutesOk returns a tuple with the DefaultShareLinkTtlMinutes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetDefaultShareLinkTtlMinutesOk() (*string, bool) {
+	if o == nil || o.DefaultShareLinkTtlMinutes == nil {
+		return nil, false
+	}
+	return o.DefaultShareLinkTtlMinutes, true
+}
+
+// HasDefaultShareLinkTtlMinutes returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasDefaultShareLinkTtlMinutes() bool {
+	if o != nil && o.DefaultShareLinkTtlMinutes != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDefaultShareLinkTtlMinutes gets a reference to the given string and assigns it to the DefaultShareLinkTtlMinutes field.
+func (o *UpdateAccountSettings) SetDefaultShareLinkTtlMinutes(v string) {
+	o.DefaultShareLinkTtlMinutes = &v
+}
+
 // GetDefaultVersioning returns the DefaultVersioning field value if set, zero value otherwise.
 func (o *UpdateAccountSettings) GetDefaultVersioning() string {
 	if o == nil || o.DefaultVersioning == nil {
@@ -270,6 +358,38 @@ func (o *UpdateAccountSettings) SetDpEnableClassicKeyProtection(v string) {
 	o.DpEnableClassicKeyProtection = &v
 }
 
+// GetInvalidCharacters returns the InvalidCharacters field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetInvalidCharacters() string {
+	if o == nil || o.InvalidCharacters == nil {
+		var ret string
+		return ret
+	}
+	return *o.InvalidCharacters
+}
+
+// GetInvalidCharactersOk returns a tuple with the InvalidCharacters field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetInvalidCharactersOk() (*string, bool) {
+	if o == nil || o.InvalidCharacters == nil {
+		return nil, false
+	}
+	return o.InvalidCharacters, true
+}
+
+// HasInvalidCharacters returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasInvalidCharacters() bool {
+	if o != nil && o.InvalidCharacters != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInvalidCharacters gets a reference to the given string and assigns it to the InvalidCharacters field.
+func (o *UpdateAccountSettings) SetInvalidCharacters(v string) {
+	o.InvalidCharacters = &v
+}
+
 // GetItemType returns the ItemType field value if set, zero value otherwise.
 func (o *UpdateAccountSettings) GetItemType() string {
 	if o == nil || o.ItemType == nil {
@@ -300,6 +420,38 @@ func (o *UpdateAccountSettings) HasItemType() bool {
 // SetItemType gets a reference to the given string and assigns it to the ItemType field.
 func (o *UpdateAccountSettings) SetItemType(v string) {
 	o.ItemType = &v
+}
+
+// GetItemsDeletionProtection returns the ItemsDeletionProtection field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetItemsDeletionProtection() string {
+	if o == nil || o.ItemsDeletionProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.ItemsDeletionProtection
+}
+
+// GetItemsDeletionProtectionOk returns a tuple with the ItemsDeletionProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetItemsDeletionProtectionOk() (*string, bool) {
+	if o == nil || o.ItemsDeletionProtection == nil {
+		return nil, false
+	}
+	return o.ItemsDeletionProtection, true
+}
+
+// HasItemsDeletionProtection returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasItemsDeletionProtection() bool {
+	if o != nil && o.ItemsDeletionProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetItemsDeletionProtection gets a reference to the given string and assigns it to the ItemsDeletionProtection field.
+func (o *UpdateAccountSettings) SetItemsDeletionProtection(v string) {
+	o.ItemsDeletionProtection = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -428,6 +580,38 @@ func (o *UpdateAccountSettings) HasJwtTtlMin() bool {
 // SetJwtTtlMin gets a reference to the given int64 and assigns it to the JwtTtlMin field.
 func (o *UpdateAccountSettings) SetJwtTtlMin(v int64) {
 	o.JwtTtlMin = &v
+}
+
+// GetLockDefaultKey returns the LockDefaultKey field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetLockDefaultKey() string {
+	if o == nil || o.LockDefaultKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.LockDefaultKey
+}
+
+// GetLockDefaultKeyOk returns a tuple with the LockDefaultKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetLockDefaultKeyOk() (*string, bool) {
+	if o == nil || o.LockDefaultKey == nil {
+		return nil, false
+	}
+	return o.LockDefaultKey, true
+}
+
+// HasLockDefaultKey returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasLockDefaultKey() bool {
+	if o != nil && o.LockDefaultKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLockDefaultKey gets a reference to the given string and assigns it to the LockDefaultKey field.
+func (o *UpdateAccountSettings) SetLockDefaultKey(v string) {
+	o.LockDefaultKey = &v
 }
 
 // GetMaxVersions returns the MaxVersions field value if set, zero value otherwise.
@@ -622,6 +806,102 @@ func (o *UpdateAccountSettings) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUsageEventEnable returns the UsageEventEnable field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetUsageEventEnable() string {
+	if o == nil || o.UsageEventEnable == nil {
+		var ret string
+		return ret
+	}
+	return *o.UsageEventEnable
+}
+
+// GetUsageEventEnableOk returns a tuple with the UsageEventEnable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetUsageEventEnableOk() (*string, bool) {
+	if o == nil || o.UsageEventEnable == nil {
+		return nil, false
+	}
+	return o.UsageEventEnable, true
+}
+
+// HasUsageEventEnable returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasUsageEventEnable() bool {
+	if o != nil && o.UsageEventEnable != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsageEventEnable gets a reference to the given string and assigns it to the UsageEventEnable field.
+func (o *UpdateAccountSettings) SetUsageEventEnable(v string) {
+	o.UsageEventEnable = &v
+}
+
+// GetUsageEventInterval returns the UsageEventInterval field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetUsageEventInterval() int64 {
+	if o == nil || o.UsageEventInterval == nil {
+		var ret int64
+		return ret
+	}
+	return *o.UsageEventInterval
+}
+
+// GetUsageEventIntervalOk returns a tuple with the UsageEventInterval field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetUsageEventIntervalOk() (*int64, bool) {
+	if o == nil || o.UsageEventInterval == nil {
+		return nil, false
+	}
+	return o.UsageEventInterval, true
+}
+
+// HasUsageEventInterval returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasUsageEventInterval() bool {
+	if o != nil && o.UsageEventInterval != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsageEventInterval gets a reference to the given int64 and assigns it to the UsageEventInterval field.
+func (o *UpdateAccountSettings) SetUsageEventInterval(v int64) {
+	o.UsageEventInterval = &v
+}
+
+// GetUsageEventObjectType returns the UsageEventObjectType field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetUsageEventObjectType() string {
+	if o == nil || o.UsageEventObjectType == nil {
+		var ret string
+		return ret
+	}
+	return *o.UsageEventObjectType
+}
+
+// GetUsageEventObjectTypeOk returns a tuple with the UsageEventObjectType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetUsageEventObjectTypeOk() (*string, bool) {
+	if o == nil || o.UsageEventObjectType == nil {
+		return nil, false
+	}
+	return o.UsageEventObjectType, true
+}
+
+// HasUsageEventObjectType returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasUsageEventObjectType() bool {
+	if o != nil && o.UsageEventObjectType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsageEventObjectType gets a reference to the given string and assigns it to the UsageEventObjectType field.
+func (o *UpdateAccountSettings) SetUsageEventObjectType(v string) {
+	o.UsageEventObjectType = &v
+}
+
 // GetUseLowerLetters returns the UseLowerLetters field value if set, zero value otherwise.
 func (o *UpdateAccountSettings) GetUseLowerLetters() string {
 	if o == nil || o.UseLowerLetters == nil {
@@ -764,14 +1044,26 @@ func (o UpdateAccountSettings) MarshalJSON() ([]byte, error) {
 	if o.Country != nil {
 		toSerialize["country"] = o.Country
 	}
+	if o.DefaultKeyName != nil {
+		toSerialize["default-key-name"] = o.DefaultKeyName
+	}
+	if o.DefaultShareLinkTtlMinutes != nil {
+		toSerialize["default-share-link-ttl-minutes"] = o.DefaultShareLinkTtlMinutes
+	}
 	if o.DefaultVersioning != nil {
 		toSerialize["default-versioning"] = o.DefaultVersioning
 	}
 	if o.DpEnableClassicKeyProtection != nil {
 		toSerialize["dp-enable-classic-key-protection"] = o.DpEnableClassicKeyProtection
 	}
+	if o.InvalidCharacters != nil {
+		toSerialize["invalid-characters"] = o.InvalidCharacters
+	}
 	if o.ItemType != nil {
 		toSerialize["item-type"] = o.ItemType
+	}
+	if o.ItemsDeletionProtection != nil {
+		toSerialize["items-deletion-protection"] = o.ItemsDeletionProtection
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json
@@ -784,6 +1076,9 @@ func (o UpdateAccountSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.JwtTtlMin != nil {
 		toSerialize["jwt-ttl-min"] = o.JwtTtlMin
+	}
+	if o.LockDefaultKey != nil {
+		toSerialize["lock-default-key"] = o.LockDefaultKey
 	}
 	if o.MaxVersions != nil {
 		toSerialize["max-versions"] = o.MaxVersions
@@ -802,6 +1097,15 @@ func (o UpdateAccountSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.UsageEventEnable != nil {
+		toSerialize["usage-event-enable"] = o.UsageEventEnable
+	}
+	if o.UsageEventInterval != nil {
+		toSerialize["usage-event-interval"] = o.UsageEventInterval
+	}
+	if o.UsageEventObjectType != nil {
+		toSerialize["usage-event-object-type"] = o.UsageEventObjectType
 	}
 	if o.UseLowerLetters != nil {
 		toSerialize["use-lower-letters"] = o.UseLowerLetters

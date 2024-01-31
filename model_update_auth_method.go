@@ -21,6 +21,8 @@ type UpdateAuthMethod struct {
 	AccessExpires *int64 `json:"access-expires,omitempty"`
 	// A CIDR whitelist with the IPs that the access is restricted to
 	BoundIps *[]string `json:"bound-ips,omitempty"`
+	// Auth Method description
+	Description *string `json:"description,omitempty"`
 	// if true: enforce role-association must include sub claims
 	ForceSubClaims *bool `json:"force-sub-claims,omitempty"`
 	// A CIDR whitelist with the GW IPs that the access is restricted to
@@ -47,6 +49,10 @@ func NewUpdateAuthMethod(name string, ) *UpdateAuthMethod {
 	this := UpdateAuthMethod{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	this.Name = name
 	return &this
 }
@@ -58,6 +64,10 @@ func NewUpdateAuthMethodWithDefaults() *UpdateAuthMethod {
 	this := UpdateAuthMethod{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	return &this
 }
 
@@ -123,6 +133,38 @@ func (o *UpdateAuthMethod) HasBoundIps() bool {
 // SetBoundIps gets a reference to the given []string and assigns it to the BoundIps field.
 func (o *UpdateAuthMethod) SetBoundIps(v []string) {
 	o.BoundIps = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *UpdateAuthMethod) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAuthMethod) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *UpdateAuthMethod) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *UpdateAuthMethod) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetForceSubClaims returns the ForceSubClaims field value if set, zero value otherwise.
@@ -380,6 +422,9 @@ func (o UpdateAuthMethod) MarshalJSON() ([]byte, error) {
 	}
 	if o.BoundIps != nil {
 		toSerialize["bound-ips"] = o.BoundIps
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.ForceSubClaims != nil {
 		toSerialize["force-sub-claims"] = o.ForceSubClaims

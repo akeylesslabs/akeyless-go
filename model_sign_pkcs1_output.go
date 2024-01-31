@@ -17,7 +17,7 @@ import (
 
 // SignPKCS1Output struct for SignPKCS1Output
 type SignPKCS1Output struct {
-	Result *[]int32 `json:"result,omitempty"`
+	Result *string `json:"result,omitempty"`
 }
 
 // NewSignPKCS1Output instantiates a new SignPKCS1Output object
@@ -38,9 +38,9 @@ func NewSignPKCS1OutputWithDefaults() *SignPKCS1Output {
 }
 
 // GetResult returns the Result field value if set, zero value otherwise.
-func (o *SignPKCS1Output) GetResult() []int32 {
+func (o *SignPKCS1Output) GetResult() string {
 	if o == nil || o.Result == nil {
-		var ret []int32
+		var ret string
 		return ret
 	}
 	return *o.Result
@@ -48,7 +48,7 @@ func (o *SignPKCS1Output) GetResult() []int32 {
 
 // GetResultOk returns a tuple with the Result field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SignPKCS1Output) GetResultOk() (*[]int32, bool) {
+func (o *SignPKCS1Output) GetResultOk() (*string, bool) {
 	if o == nil || o.Result == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *SignPKCS1Output) HasResult() bool {
 	return false
 }
 
-// SetResult gets a reference to the given []int32 and assigns it to the Result field.
-func (o *SignPKCS1Output) SetResult(v []int32) {
+// SetResult gets a reference to the given string and assigns it to the Result field.
+func (o *SignPKCS1Output) SetResult(v string) {
 	o.Result = &v
 }
 

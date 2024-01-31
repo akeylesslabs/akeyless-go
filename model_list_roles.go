@@ -35,6 +35,8 @@ type ListRoles struct {
 // will change when the set of required properties is changed
 func NewListRoles() *ListRoles {
 	this := ListRoles{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -43,6 +45,8 @@ func NewListRoles() *ListRoles {
 // but it doesn't guarantee that properties required by API are set
 func NewListRolesWithDefaults() *ListRoles {
 	this := ListRoles{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

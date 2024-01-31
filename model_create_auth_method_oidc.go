@@ -29,6 +29,8 @@ type CreateAuthMethodOIDC struct {
 	ClientId *string `json:"client-id,omitempty"`
 	// Client Secret
 	ClientSecret *string `json:"client-secret,omitempty"`
+	// Auth Method description
+	Description *string `json:"description,omitempty"`
 	// if true: enforce role-association must include sub claims
 	ForceSubClaims *bool `json:"force-sub-claims,omitempty"`
 	// A CIDR whitelist with the GW IPs that the access is restricted to
@@ -45,6 +47,8 @@ type CreateAuthMethodOIDC struct {
 	RequiredScopes *[]string `json:"required-scopes,omitempty"`
 	// RequiredScopesPrefix is a a prefix to add to all required-scopes when requesting them from the oidc server (for example, azures' Application ID URI)
 	RequiredScopesPrefix *string `json:"required-scopes-prefix,omitempty"`
+	// A list of additional sub claims delimiters (relevant only for SAML, OIDC, OAuth2/JWT)
+	SubclaimsDelimiters *[]string `json:"subclaims-delimiters,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -61,6 +65,10 @@ func NewCreateAuthMethodOIDC(name string, uniqueIdentifier string, ) *CreateAuth
 	this := CreateAuthMethodOIDC{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	this.Name = name
 	this.UniqueIdentifier = uniqueIdentifier
 	return &this
@@ -73,6 +81,10 @@ func NewCreateAuthMethodOIDCWithDefaults() *CreateAuthMethodOIDC {
 	this := CreateAuthMethodOIDC{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	return &this
 }
 
@@ -266,6 +278,38 @@ func (o *CreateAuthMethodOIDC) HasClientSecret() bool {
 // SetClientSecret gets a reference to the given string and assigns it to the ClientSecret field.
 func (o *CreateAuthMethodOIDC) SetClientSecret(v string) {
 	o.ClientSecret = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *CreateAuthMethodOIDC) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodOIDC) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *CreateAuthMethodOIDC) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *CreateAuthMethodOIDC) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetForceSubClaims returns the ForceSubClaims field value if set, zero value otherwise.
@@ -516,6 +560,38 @@ func (o *CreateAuthMethodOIDC) SetRequiredScopesPrefix(v string) {
 	o.RequiredScopesPrefix = &v
 }
 
+// GetSubclaimsDelimiters returns the SubclaimsDelimiters field value if set, zero value otherwise.
+func (o *CreateAuthMethodOIDC) GetSubclaimsDelimiters() []string {
+	if o == nil || o.SubclaimsDelimiters == nil {
+		var ret []string
+		return ret
+	}
+	return *o.SubclaimsDelimiters
+}
+
+// GetSubclaimsDelimitersOk returns a tuple with the SubclaimsDelimiters field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodOIDC) GetSubclaimsDelimitersOk() (*[]string, bool) {
+	if o == nil || o.SubclaimsDelimiters == nil {
+		return nil, false
+	}
+	return o.SubclaimsDelimiters, true
+}
+
+// HasSubclaimsDelimiters returns a boolean if a field has been set.
+func (o *CreateAuthMethodOIDC) HasSubclaimsDelimiters() bool {
+	if o != nil && o.SubclaimsDelimiters != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSubclaimsDelimiters gets a reference to the given []string and assigns it to the SubclaimsDelimiters field.
+func (o *CreateAuthMethodOIDC) SetSubclaimsDelimiters(v []string) {
+	o.SubclaimsDelimiters = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *CreateAuthMethodOIDC) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -624,6 +700,9 @@ func (o CreateAuthMethodOIDC) MarshalJSON() ([]byte, error) {
 	if o.ClientSecret != nil {
 		toSerialize["client-secret"] = o.ClientSecret
 	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
+	}
 	if o.ForceSubClaims != nil {
 		toSerialize["force-sub-claims"] = o.ForceSubClaims
 	}
@@ -647,6 +726,9 @@ func (o CreateAuthMethodOIDC) MarshalJSON() ([]byte, error) {
 	}
 	if o.RequiredScopesPrefix != nil {
 		toSerialize["required-scopes-prefix"] = o.RequiredScopesPrefix
+	}
+	if o.SubclaimsDelimiters != nil {
+		toSerialize["subclaims-delimiters"] = o.SubclaimsDelimiters
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

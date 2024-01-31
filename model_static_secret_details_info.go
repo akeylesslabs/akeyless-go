@@ -17,6 +17,7 @@ import (
 
 // StaticSecretDetailsInfo struct for StaticSecretDetailsInfo
 type StaticSecretDetailsInfo struct {
+	NotifyOnChangeEvent *bool `json:"notify_on_change_event,omitempty"`
 	Username *string `json:"username,omitempty"`
 	// deprecated
 	Website *string `json:"website,omitempty"`
@@ -38,6 +39,38 @@ func NewStaticSecretDetailsInfo() *StaticSecretDetailsInfo {
 func NewStaticSecretDetailsInfoWithDefaults() *StaticSecretDetailsInfo {
 	this := StaticSecretDetailsInfo{}
 	return &this
+}
+
+// GetNotifyOnChangeEvent returns the NotifyOnChangeEvent field value if set, zero value otherwise.
+func (o *StaticSecretDetailsInfo) GetNotifyOnChangeEvent() bool {
+	if o == nil || o.NotifyOnChangeEvent == nil {
+		var ret bool
+		return ret
+	}
+	return *o.NotifyOnChangeEvent
+}
+
+// GetNotifyOnChangeEventOk returns a tuple with the NotifyOnChangeEvent field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StaticSecretDetailsInfo) GetNotifyOnChangeEventOk() (*bool, bool) {
+	if o == nil || o.NotifyOnChangeEvent == nil {
+		return nil, false
+	}
+	return o.NotifyOnChangeEvent, true
+}
+
+// HasNotifyOnChangeEvent returns a boolean if a field has been set.
+func (o *StaticSecretDetailsInfo) HasNotifyOnChangeEvent() bool {
+	if o != nil && o.NotifyOnChangeEvent != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNotifyOnChangeEvent gets a reference to the given bool and assigns it to the NotifyOnChangeEvent field.
+func (o *StaticSecretDetailsInfo) SetNotifyOnChangeEvent(v bool) {
+	o.NotifyOnChangeEvent = &v
 }
 
 // GetUsername returns the Username field value if set, zero value otherwise.
@@ -138,6 +171,9 @@ func (o *StaticSecretDetailsInfo) SetWebsites(v []string) {
 
 func (o StaticSecretDetailsInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.NotifyOnChangeEvent != nil {
+		toSerialize["notify_on_change_event"] = o.NotifyOnChangeEvent
+	}
 	if o.Username != nil {
 		toSerialize["username"] = o.Username
 	}

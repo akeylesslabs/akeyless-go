@@ -25,6 +25,8 @@ type UpdateAuthMethodUniversalIdentity struct {
 	DenyInheritance *bool `json:"deny-inheritance,omitempty"`
 	// Deny from the token to rotate
 	DenyRotate *bool `json:"deny-rotate,omitempty"`
+	// Auth Method description
+	Description *string `json:"description,omitempty"`
 	// if true: enforce role-association must include sub claims
 	ForceSubClaims *bool `json:"force-sub-claims,omitempty"`
 	// A CIDR whitelist with the GW IPs that the access is restricted to
@@ -53,6 +55,10 @@ func NewUpdateAuthMethodUniversalIdentity(name string, ) *UpdateAuthMethodUniver
 	this := UpdateAuthMethodUniversalIdentity{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	this.Name = name
 	var ttl int32 = 60
 	this.Ttl = &ttl
@@ -66,6 +72,10 @@ func NewUpdateAuthMethodUniversalIdentityWithDefaults() *UpdateAuthMethodUnivers
 	this := UpdateAuthMethodUniversalIdentity{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	var ttl int32 = 60
 	this.Ttl = &ttl
 	return &this
@@ -197,6 +207,38 @@ func (o *UpdateAuthMethodUniversalIdentity) HasDenyRotate() bool {
 // SetDenyRotate gets a reference to the given bool and assigns it to the DenyRotate field.
 func (o *UpdateAuthMethodUniversalIdentity) SetDenyRotate(v bool) {
 	o.DenyRotate = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *UpdateAuthMethodUniversalIdentity) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAuthMethodUniversalIdentity) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *UpdateAuthMethodUniversalIdentity) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *UpdateAuthMethodUniversalIdentity) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetForceSubClaims returns the ForceSubClaims field value if set, zero value otherwise.
@@ -492,6 +534,9 @@ func (o UpdateAuthMethodUniversalIdentity) MarshalJSON() ([]byte, error) {
 	}
 	if o.DenyRotate != nil {
 		toSerialize["deny-rotate"] = o.DenyRotate
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.ForceSubClaims != nil {
 		toSerialize["force-sub-claims"] = o.ForceSubClaims

@@ -19,7 +19,7 @@ import (
 type UpdateAuthMethodAzureAD struct {
 	// Access expiration date in Unix timestamp (select 0 for access without expiry date)
 	AccessExpires *int64 `json:"access-expires,omitempty"`
-	// The audience in the JWT
+	// Deprecated (Deprecated) The audience in the JWT
 	Audience *string `json:"audience,omitempty"`
 	// A list of group ids that the access is restricted to
 	BoundGroupId *[]string `json:"bound-group-id,omitempty"`
@@ -41,6 +41,8 @@ type UpdateAuthMethodAzureAD struct {
 	BoundSubId *[]string `json:"bound-sub-id,omitempty"`
 	// The Azure tenant id that the access is restricted to
 	BoundTenantId string `json:"bound-tenant-id"`
+	// Auth Method description
+	Description *string `json:"description,omitempty"`
 	// if true: enforce role-association must include sub claims
 	ForceSubClaims *bool `json:"force-sub-claims,omitempty"`
 	// A CIDR whitelist with the GW IPs that the access is restricted to
@@ -76,8 +78,12 @@ func NewUpdateAuthMethodAzureAD(boundTenantId string, name string, ) *UpdateAuth
 	this.BoundTenantId = boundTenantId
 	var issuer string = "https://sts.windows.net/---bound_tenant_id---"
 	this.Issuer = &issuer
+	var json bool = false
+	this.Json = &json
 	var jwksUri string = "https://login.microsoftonline.com/common/discovery/keys"
 	this.JwksUri = &jwksUri
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	this.Name = name
 	return &this
 }
@@ -93,8 +99,12 @@ func NewUpdateAuthMethodAzureADWithDefaults() *UpdateAuthMethodAzureAD {
 	this.Audience = &audience
 	var issuer string = "https://sts.windows.net/---bound_tenant_id---"
 	this.Issuer = &issuer
+	var json bool = false
+	this.Json = &json
 	var jwksUri string = "https://login.microsoftonline.com/common/discovery/keys"
 	this.JwksUri = &jwksUri
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	return &this
 }
 
@@ -474,6 +484,38 @@ func (o *UpdateAuthMethodAzureAD) SetBoundTenantId(v string) {
 	o.BoundTenantId = v
 }
 
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *UpdateAuthMethodAzureAD) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAuthMethodAzureAD) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *UpdateAuthMethodAzureAD) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *UpdateAuthMethodAzureAD) SetDescription(v string) {
+	o.Description = &v
+}
+
 // GetForceSubClaims returns the ForceSubClaims field value if set, zero value otherwise.
 func (o *UpdateAuthMethodAzureAD) GetForceSubClaims() bool {
 	if o == nil || o.ForceSubClaims == nil {
@@ -823,6 +865,9 @@ func (o UpdateAuthMethodAzureAD) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["bound-tenant-id"] = o.BoundTenantId
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.ForceSubClaims != nil {
 		toSerialize["force-sub-claims"] = o.ForceSubClaims

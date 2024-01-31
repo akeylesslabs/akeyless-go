@@ -23,6 +23,8 @@ type GenCustomerFragment struct {
 	Json *bool `json:"json,omitempty"`
 	// Deprecated - use description
 	Metadata *string `json:"metadata,omitempty"`
+	// Customer fragment name
+	Name *string `json:"name,omitempty"`
 }
 
 // NewGenCustomerFragment instantiates a new GenCustomerFragment object
@@ -31,6 +33,8 @@ type GenCustomerFragment struct {
 // will change when the set of required properties is changed
 func NewGenCustomerFragment() *GenCustomerFragment {
 	this := GenCustomerFragment{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -39,6 +43,8 @@ func NewGenCustomerFragment() *GenCustomerFragment {
 // but it doesn't guarantee that properties required by API are set
 func NewGenCustomerFragmentWithDefaults() *GenCustomerFragment {
 	this := GenCustomerFragment{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -138,6 +144,38 @@ func (o *GenCustomerFragment) SetMetadata(v string) {
 	o.Metadata = &v
 }
 
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *GenCustomerFragment) GetName() string {
+	if o == nil || o.Name == nil {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GenCustomerFragment) GetNameOk() (*string, bool) {
+	if o == nil || o.Name == nil {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *GenCustomerFragment) HasName() bool {
+	if o != nil && o.Name != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *GenCustomerFragment) SetName(v string) {
+	o.Name = &v
+}
+
 func (o GenCustomerFragment) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Description != nil {
@@ -148,6 +186,9 @@ func (o GenCustomerFragment) MarshalJSON() ([]byte, error) {
 	}
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata
+	}
+	if o.Name != nil {
+		toSerialize["name"] = o.Name
 	}
 	return json.Marshal(toSerialize)
 }

@@ -35,6 +35,8 @@ type UpdateAuthMethodAWSIAM struct {
 	BoundUserId *[]string `json:"bound-user-id,omitempty"`
 	// A list of full user-name that the access is restricted to
 	BoundUserName *[]string `json:"bound-user-name,omitempty"`
+	// Auth Method description
+	Description *string `json:"description,omitempty"`
 	// if true: enforce role-association must include sub claims
 	ForceSubClaims *bool `json:"force-sub-claims,omitempty"`
 	// A CIDR whitelist with the GW IPs that the access is restricted to
@@ -64,6 +66,10 @@ func NewUpdateAuthMethodAWSIAM(boundAwsAccountId []string, name string, ) *Updat
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
 	this.BoundAwsAccountId = boundAwsAccountId
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	this.Name = name
 	var stsUrl string = "https://sts.amazonaws.com"
 	this.StsUrl = &stsUrl
@@ -77,6 +83,10 @@ func NewUpdateAuthMethodAWSIAMWithDefaults() *UpdateAuthMethodAWSIAM {
 	this := UpdateAuthMethodAWSIAM{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	var stsUrl string = "https://sts.amazonaws.com"
 	this.StsUrl = &stsUrl
 	return &this
@@ -360,6 +370,38 @@ func (o *UpdateAuthMethodAWSIAM) HasBoundUserName() bool {
 // SetBoundUserName gets a reference to the given []string and assigns it to the BoundUserName field.
 func (o *UpdateAuthMethodAWSIAM) SetBoundUserName(v []string) {
 	o.BoundUserName = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *UpdateAuthMethodAWSIAM) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAuthMethodAWSIAM) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *UpdateAuthMethodAWSIAM) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *UpdateAuthMethodAWSIAM) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetForceSubClaims returns the ForceSubClaims field value if set, zero value otherwise.
@@ -670,6 +712,9 @@ func (o UpdateAuthMethodAWSIAM) MarshalJSON() ([]byte, error) {
 	}
 	if o.BoundUserName != nil {
 		toSerialize["bound-user-name"] = o.BoundUserName
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.ForceSubClaims != nil {
 		toSerialize["force-sub-claims"] = o.ForceSubClaims

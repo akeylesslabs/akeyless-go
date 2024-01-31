@@ -48,6 +48,8 @@ type GetPKICertificate struct {
 func NewGetPKICertificate(certIssuerName string, ) *GetPKICertificate {
 	this := GetPKICertificate{}
 	this.CertIssuerName = certIssuerName
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -56,6 +58,8 @@ func NewGetPKICertificate(certIssuerName string, ) *GetPKICertificate {
 // but it doesn't guarantee that properties required by API are set
 func NewGetPKICertificateWithDefaults() *GetPKICertificate {
 	this := GetPKICertificate{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

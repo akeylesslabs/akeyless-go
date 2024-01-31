@@ -35,6 +35,8 @@ type ReverseRBAC struct {
 // will change when the set of required properties is changed
 func NewReverseRBAC(path string, type_ string, ) *ReverseRBAC {
 	this := ReverseRBAC{}
+	var json bool = false
+	this.Json = &json
 	this.Path = path
 	this.Type = type_
 	return &this
@@ -45,6 +47,8 @@ func NewReverseRBAC(path string, type_ string, ) *ReverseRBAC {
 // but it doesn't guarantee that properties required by API are set
 func NewReverseRBACWithDefaults() *ReverseRBAC {
 	this := ReverseRBAC{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

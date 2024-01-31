@@ -6,13 +6,17 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AnalyticsAccess** | Pointer to **string** | Allow this role to view analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods. | [optional] 
 **AuditAccess** | Pointer to **string** | Allow this role to view audit logs. Currently only &#39;none&#39;, &#39;own&#39; and &#39;all&#39; values are supported, allowing associated auth methods to view audit logs produced by the same auth methods. | [optional] 
-**Comment** | Pointer to **string** | Comment about the role | [optional] 
+**Comment** | Pointer to **string** | Deprecated - use description | [optional] 
+**Description** | Pointer to **string** | Description of the object | [optional] 
+**EventCenterAccess** | Pointer to **string** | Allow this role to view Event Center. Currently only &#39;none&#39;, &#39;own&#39; and &#39;all&#39; values are supported | [optional] 
+**EventForwardersAccess** | Pointer to **string** | Allow this role to manage Event Forwarders. Currently only &#39;none&#39; and &#39;all&#39; values are supported. | [optional] 
 **GwAnalyticsAccess** | Pointer to **string** | Allow this role to view gw analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods. | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Role name | 
 **SraReportsAccess** | Pointer to **string** | Allow this role to view SRA Clusters. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported. | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**UsageReportsAccess** | Pointer to **string** | Allow this role to view Usage Report. Currently only &#39;none&#39; and &#39;all&#39; values are supported. | [optional] 
 
 ## Methods
 
@@ -107,6 +111,81 @@ SetComment sets Comment field to given value.
 `func (o *CreateRole) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *CreateRole) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *CreateRole) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *CreateRole) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *CreateRole) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
+
+### GetEventCenterAccess
+
+`func (o *CreateRole) GetEventCenterAccess() string`
+
+GetEventCenterAccess returns the EventCenterAccess field if non-nil, zero value otherwise.
+
+### GetEventCenterAccessOk
+
+`func (o *CreateRole) GetEventCenterAccessOk() (*string, bool)`
+
+GetEventCenterAccessOk returns a tuple with the EventCenterAccess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEventCenterAccess
+
+`func (o *CreateRole) SetEventCenterAccess(v string)`
+
+SetEventCenterAccess sets EventCenterAccess field to given value.
+
+### HasEventCenterAccess
+
+`func (o *CreateRole) HasEventCenterAccess() bool`
+
+HasEventCenterAccess returns a boolean if a field has been set.
+
+### GetEventForwardersAccess
+
+`func (o *CreateRole) GetEventForwardersAccess() string`
+
+GetEventForwardersAccess returns the EventForwardersAccess field if non-nil, zero value otherwise.
+
+### GetEventForwardersAccessOk
+
+`func (o *CreateRole) GetEventForwardersAccessOk() (*string, bool)`
+
+GetEventForwardersAccessOk returns a tuple with the EventForwardersAccess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEventForwardersAccess
+
+`func (o *CreateRole) SetEventForwardersAccess(v string)`
+
+SetEventForwardersAccess sets EventForwardersAccess field to given value.
+
+### HasEventForwardersAccess
+
+`func (o *CreateRole) HasEventForwardersAccess() bool`
+
+HasEventForwardersAccess returns a boolean if a field has been set.
 
 ### GetGwAnalyticsAccess
 
@@ -252,6 +331,31 @@ SetUidToken sets UidToken field to given value.
 `func (o *CreateRole) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetUsageReportsAccess
+
+`func (o *CreateRole) GetUsageReportsAccess() string`
+
+GetUsageReportsAccess returns the UsageReportsAccess field if non-nil, zero value otherwise.
+
+### GetUsageReportsAccessOk
+
+`func (o *CreateRole) GetUsageReportsAccessOk() (*string, bool)`
+
+GetUsageReportsAccessOk returns a tuple with the UsageReportsAccess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsageReportsAccess
+
+`func (o *CreateRole) SetUsageReportsAccess(v string)`
+
+SetUsageReportsAccess sets UsageReportsAccess field to given value.
+
+### HasUsageReportsAccess
+
+`func (o *CreateRole) HasUsageReportsAccess() bool`
+
+HasUsageReportsAccess returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -23,6 +23,8 @@ type Auth struct {
 	AccessKey *string `json:"access-key,omitempty"`
 	// Access Type (access_key/password/saml/ldap/k8s/azure_ad/oidc/aws_iam/universal_identity/jwt/gcp/cert)
 	AccessType *string `json:"access-type,omitempty"`
+	// Account id (relevant only for access-type=password where the email address is associated with more than one account)
+	AccountId *string `json:"account-id,omitempty"`
 	// Email (relevant only for access-type=password)
 	AdminEmail *string `json:"admin-email,omitempty"`
 	// Password (relevant only for access-type=password)
@@ -32,7 +34,7 @@ type Auth struct {
 	// The cloud identity (relevant only for access-type=azure_ad,aws_iam,gcp)
 	CloudId *string `json:"cloud-id,omitempty"`
 	Debug *bool `json:"debug,omitempty"`
-	// Gateway URL for the K8S authenticated (relevant only for access-type=k8s)
+	// Gateway URL for the K8S/OAUTH2 authenticated (relevant only for access-type=k8s/oauth2)
 	GatewayUrl *string `json:"gateway-url,omitempty"`
 	// GCP JWT audience
 	GcpAudience *string `json:"gcp-audience,omitempty"`
@@ -62,6 +64,10 @@ func NewAuth() *Auth {
 	this := Auth{}
 	var accessType string = "access_key"
 	this.AccessType = &accessType
+	var gcpAudience string = "akeyless.io"
+	this.GcpAudience = &gcpAudience
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -72,6 +78,10 @@ func NewAuthWithDefaults() *Auth {
 	this := Auth{}
 	var accessType string = "access_key"
 	this.AccessType = &accessType
+	var gcpAudience string = "akeyless.io"
+	this.GcpAudience = &gcpAudience
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -169,6 +179,38 @@ func (o *Auth) HasAccessType() bool {
 // SetAccessType gets a reference to the given string and assigns it to the AccessType field.
 func (o *Auth) SetAccessType(v string) {
 	o.AccessType = &v
+}
+
+// GetAccountId returns the AccountId field value if set, zero value otherwise.
+func (o *Auth) GetAccountId() string {
+	if o == nil || o.AccountId == nil {
+		var ret string
+		return ret
+	}
+	return *o.AccountId
+}
+
+// GetAccountIdOk returns a tuple with the AccountId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Auth) GetAccountIdOk() (*string, bool) {
+	if o == nil || o.AccountId == nil {
+		return nil, false
+	}
+	return o.AccountId, true
+}
+
+// HasAccountId returns a boolean if a field has been set.
+func (o *Auth) HasAccountId() bool {
+	if o != nil && o.AccountId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAccountId gets a reference to the given string and assigns it to the AccountId field.
+func (o *Auth) SetAccountId(v string) {
+	o.AccountId = &v
 }
 
 // GetAdminEmail returns the AdminEmail field value if set, zero value otherwise.
@@ -661,6 +703,9 @@ func (o Auth) MarshalJSON() ([]byte, error) {
 	}
 	if o.AccessType != nil {
 		toSerialize["access-type"] = o.AccessType
+	}
+	if o.AccountId != nil {
+		toSerialize["account-id"] = o.AccountId
 	}
 	if o.AdminEmail != nil {
 		toSerialize["admin-email"] = o.AdminEmail

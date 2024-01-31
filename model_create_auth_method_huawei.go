@@ -35,6 +35,8 @@ type CreateAuthMethodHuawei struct {
 	BoundUserId *[]string `json:"bound-user-id,omitempty"`
 	// A list of full user-name that the access is restricted to
 	BoundUserName *[]string `json:"bound-user-name,omitempty"`
+	// Auth Method description
+	Description *string `json:"description,omitempty"`
 	// if true: enforce role-association must include sub claims
 	ForceSubClaims *bool `json:"force-sub-claims,omitempty"`
 	// A CIDR whitelist with the GW IPs that the access is restricted to
@@ -61,6 +63,10 @@ func NewCreateAuthMethodHuawei(name string, ) *CreateAuthMethodHuawei {
 	this.AccessExpires = &accessExpires
 	var authUrl string = "https://iam.myhwclouds.com:443/v3"
 	this.AuthUrl = &authUrl
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	this.Name = name
 	return &this
 }
@@ -74,6 +80,10 @@ func NewCreateAuthMethodHuaweiWithDefaults() *CreateAuthMethodHuawei {
 	this.AccessExpires = &accessExpires
 	var authUrl string = "https://iam.myhwclouds.com:443/v3"
 	this.AuthUrl = &authUrl
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	return &this
 }
 
@@ -365,6 +375,38 @@ func (o *CreateAuthMethodHuawei) SetBoundUserName(v []string) {
 	o.BoundUserName = &v
 }
 
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *CreateAuthMethodHuawei) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodHuawei) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *CreateAuthMethodHuawei) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *CreateAuthMethodHuawei) SetDescription(v string) {
+	o.Description = &v
+}
+
 // GetForceSubClaims returns the ForceSubClaims field value if set, zero value otherwise.
 func (o *CreateAuthMethodHuawei) GetForceSubClaims() bool {
 	if o == nil || o.ForceSubClaims == nil {
@@ -609,6 +651,9 @@ func (o CreateAuthMethodHuawei) MarshalJSON() ([]byte, error) {
 	}
 	if o.BoundUserName != nil {
 		toSerialize["bound-user-name"] = o.BoundUserName
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.ForceSubClaims != nil {
 		toSerialize["force-sub-claims"] = o.ForceSubClaims

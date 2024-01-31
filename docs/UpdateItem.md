@@ -4,40 +4,45 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ProviderType** | Pointer to **string** |  | [optional] 
 **Accessibility** | Pointer to **string** | for personal password manager | [optional] [default to "regular"]
 **AddTag** | Pointer to **[]string** | List of the new tags that will be attached to this item | [optional] 
 **CertFileData** | Pointer to **string** | PEM Certificate in a Base64 format. Used for updating RSA keys&#39; certificates. | [optional] 
-**DeleteProtection** | Pointer to **string** |  | [optional] 
+**ChangeEvent** | Pointer to **string** | Trigger an event when a secret value changed [true/false] (Relevant only for Static Secret) | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] [default to "default_metadata"]
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**HostProvider** | Pointer to **string** | Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret | [optional] [default to "explicit"]
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Current item name | 
 **NewMetadata** | Pointer to **string** | Deprecated - use description | [optional] [default to "default_metadata"]
 **NewName** | Pointer to **string** | New item name | [optional] 
 **RmTag** | Pointer to **[]string** | List of the existent tags that will be removed from this item | [optional] 
-**SecureAccessAddHost** | Pointer to **[]string** |  | [optional] 
-**SecureAccessAllowExternalUser** | Pointer to **string** |  | [optional] 
-**SecureAccessAllowPortForwading** | Pointer to **bool** |  | [optional] 
-**SecureAccessAwsAccountId** | Pointer to **string** |  | [optional] 
-**SecureAccessAwsNativeCli** | Pointer to **bool** |  | [optional] 
-**SecureAccessAwsRegion** | Pointer to **string** |  | [optional] 
-**SecureAccessBastionApi** | Pointer to **string** |  | [optional] 
-**SecureAccessBastionIssuer** | Pointer to **string** |  | [optional] 
-**SecureAccessBastionSsh** | Pointer to **string** |  | [optional] 
-**SecureAccessClusterEndpoint** | Pointer to **string** |  | [optional] 
-**SecureAccessDashboardUrl** | Pointer to **string** |  | [optional] 
-**SecureAccessDbName** | Pointer to **string** |  | [optional] 
-**SecureAccessDbSchema** | Pointer to **string** |  | [optional] 
-**SecureAccessEnable** | Pointer to **string** |  | [optional] 
-**SecureAccessHost** | Pointer to **[]string** |  | [optional] 
-**SecureAccessRdpDomain** | Pointer to **string** |  | [optional] 
-**SecureAccessRdpUser** | Pointer to **string** |  | [optional] 
-**SecureAccessRmHost** | Pointer to **[]string** |  | [optional] 
-**SecureAccessSshCreds** | Pointer to **string** |  | [optional] 
-**SecureAccessSshCredsUser** | Pointer to **string** |  | [optional] 
-**SecureAccessUrl** | Pointer to **string** |  | [optional] 
-**SecureAccessUseInternalBastion** | Pointer to **bool** |  | [optional] 
-**SecureAccessWebBrowsing** | Pointer to **bool** |  | [optional] 
-**SecureAccessWebProxy** | Pointer to **bool** |  | [optional] 
+**RotateAfterDisconnect** | Pointer to **string** | Rotate the value of the secret after SRA session ends [true/false] (relevant only for Rotated-secret) | [optional] [default to "false"]
+**SecureAccessAddHost** | Pointer to **[]string** | List of the new hosts that will be attached to SRA servers host | [optional] 
+**SecureAccessAllowExternalUser** | Pointer to **string** | Allow providing external user for a domain users [true/false] | [optional] 
+**SecureAccessAllowPortForwading** | Pointer to **bool** | Enable Port forwarding while using CLI access (relevant only for EKS/GKE/K8s Dynamic-Secret) | [optional] 
+**SecureAccessAwsAccountId** | Pointer to **string** | The AWS account id (relevant only for aws) | [optional] 
+**SecureAccessAwsNativeCli** | Pointer to **bool** | The AWS native cli (relevant only for aws) | [optional] 
+**SecureAccessAwsRegion** | Pointer to **string** | The AWS region (relevant only for aws) | [optional] 
+**SecureAccessBastionApi** | Pointer to **string** | Bastion&#39;s SSH control API endpoint. E.g. https://my.bastion:9900 (relevant only for ssh cert issuer) | [optional] 
+**SecureAccessBastionIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] 
+**SecureAccessBastionSsh** | Pointer to **string** | Bastion&#39;s SSH server. E.g. my.bastion:22 (relevant only for ssh cert issuer) | [optional] 
+**SecureAccessClusterEndpoint** | Pointer to **string** | The K8s cluster endpoint URL (relevant only for EKS/GKE/K8s Dynamic-Secret) | [optional] 
+**SecureAccessDashboardUrl** | Pointer to **string** | The K8s dashboard url (relevant only for k8s) | [optional] 
+**SecureAccessDbName** | Pointer to **string** | The DB name (relevant only for DB Dynamic-Secret) | [optional] 
+**SecureAccessDbSchema** | Pointer to **string** | The DB schema (relevant only for DB Dynamic-Secret) | [optional] 
+**SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
+**SecureAccessHost** | Pointer to **[]string** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
+**SecureAccessRdGatewayServer** | Pointer to **string** | RD Gateway server (relevant only for rdp) | [optional] 
+**SecureAccessRdpDomain** | Pointer to **string** | Required when the Dynamic Secret is used for a domain user (relevant only for RDP Dynamic-Secret) | [optional] 
+**SecureAccessRdpUser** | Pointer to **string** | Override the RDP Domain username | [optional] 
+**SecureAccessRmHost** | Pointer to **[]string** | List of the existent hosts that will be removed from SRA servers host | [optional] 
+**SecureAccessSshCreds** | Pointer to **string** | Secret values contains SSH Credentials, either Private Key or Password [password/private-key] (relevant only for Static-Secret or Rotated-secret) | [optional] 
+**SecureAccessSshCredsUser** | Pointer to **string** | SSH username to connect to target server, must be in &#39;Allowed Users&#39; list (relevant only for ssh cert issuer) | [optional] 
+**SecureAccessUrl** | Pointer to **string** | Destination URL to inject secrets | [optional] 
+**SecureAccessUseInternalBastion** | Pointer to **bool** | Use internal SSH Bastion | [optional] 
+**SecureAccessWebBrowsing** | Pointer to **bool** | Secure browser via Akeyless Web Access Bastion | [optional] [default to false]
+**SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless Web Access Bastion | [optional] [default to false]
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
@@ -59,6 +64,31 @@ will change when the set of required properties is changed
 NewUpdateItemWithDefaults instantiates a new UpdateItem object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetProviderType
+
+`func (o *UpdateItem) GetProviderType() string`
+
+GetProviderType returns the ProviderType field if non-nil, zero value otherwise.
+
+### GetProviderTypeOk
+
+`func (o *UpdateItem) GetProviderTypeOk() (*string, bool)`
+
+GetProviderTypeOk returns a tuple with the ProviderType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProviderType
+
+`func (o *UpdateItem) SetProviderType(v string)`
+
+SetProviderType sets ProviderType field to given value.
+
+### HasProviderType
+
+`func (o *UpdateItem) HasProviderType() bool`
+
+HasProviderType returns a boolean if a field has been set.
 
 ### GetAccessibility
 
@@ -135,6 +165,31 @@ SetCertFileData sets CertFileData field to given value.
 
 HasCertFileData returns a boolean if a field has been set.
 
+### GetChangeEvent
+
+`func (o *UpdateItem) GetChangeEvent() string`
+
+GetChangeEvent returns the ChangeEvent field if non-nil, zero value otherwise.
+
+### GetChangeEventOk
+
+`func (o *UpdateItem) GetChangeEventOk() (*string, bool)`
+
+GetChangeEventOk returns a tuple with the ChangeEvent field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChangeEvent
+
+`func (o *UpdateItem) SetChangeEvent(v string)`
+
+SetChangeEvent sets ChangeEvent field to given value.
+
+### HasChangeEvent
+
+`func (o *UpdateItem) HasChangeEvent() bool`
+
+HasChangeEvent returns a boolean if a field has been set.
+
 ### GetDeleteProtection
 
 `func (o *UpdateItem) GetDeleteProtection() string`
@@ -184,6 +239,31 @@ SetDescription sets Description field to given value.
 `func (o *UpdateItem) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetHostProvider
+
+`func (o *UpdateItem) GetHostProvider() string`
+
+GetHostProvider returns the HostProvider field if non-nil, zero value otherwise.
+
+### GetHostProviderOk
+
+`func (o *UpdateItem) GetHostProviderOk() (*string, bool)`
+
+GetHostProviderOk returns a tuple with the HostProvider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHostProvider
+
+`func (o *UpdateItem) SetHostProvider(v string)`
+
+SetHostProvider sets HostProvider field to given value.
+
+### HasHostProvider
+
+`func (o *UpdateItem) HasHostProvider() bool`
+
+HasHostProvider returns a boolean if a field has been set.
 
 ### GetJson
 
@@ -304,6 +384,31 @@ SetRmTag sets RmTag field to given value.
 `func (o *UpdateItem) HasRmTag() bool`
 
 HasRmTag returns a boolean if a field has been set.
+
+### GetRotateAfterDisconnect
+
+`func (o *UpdateItem) GetRotateAfterDisconnect() string`
+
+GetRotateAfterDisconnect returns the RotateAfterDisconnect field if non-nil, zero value otherwise.
+
+### GetRotateAfterDisconnectOk
+
+`func (o *UpdateItem) GetRotateAfterDisconnectOk() (*string, bool)`
+
+GetRotateAfterDisconnectOk returns a tuple with the RotateAfterDisconnect field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotateAfterDisconnect
+
+`func (o *UpdateItem) SetRotateAfterDisconnect(v string)`
+
+SetRotateAfterDisconnect sets RotateAfterDisconnect field to given value.
+
+### HasRotateAfterDisconnect
+
+`func (o *UpdateItem) HasRotateAfterDisconnect() bool`
+
+HasRotateAfterDisconnect returns a boolean if a field has been set.
 
 ### GetSecureAccessAddHost
 
@@ -679,6 +784,31 @@ SetSecureAccessHost sets SecureAccessHost field to given value.
 `func (o *UpdateItem) HasSecureAccessHost() bool`
 
 HasSecureAccessHost returns a boolean if a field has been set.
+
+### GetSecureAccessRdGatewayServer
+
+`func (o *UpdateItem) GetSecureAccessRdGatewayServer() string`
+
+GetSecureAccessRdGatewayServer returns the SecureAccessRdGatewayServer field if non-nil, zero value otherwise.
+
+### GetSecureAccessRdGatewayServerOk
+
+`func (o *UpdateItem) GetSecureAccessRdGatewayServerOk() (*string, bool)`
+
+GetSecureAccessRdGatewayServerOk returns a tuple with the SecureAccessRdGatewayServer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessRdGatewayServer
+
+`func (o *UpdateItem) SetSecureAccessRdGatewayServer(v string)`
+
+SetSecureAccessRdGatewayServer sets SecureAccessRdGatewayServer field to given value.
+
+### HasSecureAccessRdGatewayServer
+
+`func (o *UpdateItem) HasSecureAccessRdGatewayServer() bool`
+
+HasSecureAccessRdGatewayServer returns a boolean if a field has been set.
 
 ### GetSecureAccessRdpDomain
 

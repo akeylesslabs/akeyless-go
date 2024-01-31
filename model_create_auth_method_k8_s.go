@@ -29,9 +29,11 @@ type CreateAuthMethodK8S struct {
 	BoundPodNames *[]string `json:"bound-pod-names,omitempty"`
 	// A list of service account names that the access is restricted to
 	BoundSaNames *[]string `json:"bound-sa-names,omitempty"`
+	// Auth Method description
+	Description *string `json:"description,omitempty"`
 	// if true: enforce role-association must include sub claims
 	ForceSubClaims *bool `json:"force-sub-claims,omitempty"`
-	// Automatically generate key-pair for K8S configuration. If set to false, a public key needs to be provided
+	// Automatically generate key-pair for K8S configuration. If set to false, a public key needs to be provided [true/false]
 	GenKey *string `json:"gen-key,omitempty"`
 	// A CIDR whitelist with the GW IPs that the access is restricted to
 	GwBoundIps *[]string `json:"gw-bound-ips,omitempty"`
@@ -59,6 +61,10 @@ func NewCreateAuthMethodK8S(name string, ) *CreateAuthMethodK8S {
 	this.AccessExpires = &accessExpires
 	var genKey string = "true"
 	this.GenKey = &genKey
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	this.Name = name
 	return &this
 }
@@ -72,6 +78,10 @@ func NewCreateAuthMethodK8SWithDefaults() *CreateAuthMethodK8S {
 	this.AccessExpires = &accessExpires
 	var genKey string = "true"
 	this.GenKey = &genKey
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	return &this
 }
 
@@ -265,6 +275,38 @@ func (o *CreateAuthMethodK8S) HasBoundSaNames() bool {
 // SetBoundSaNames gets a reference to the given []string and assigns it to the BoundSaNames field.
 func (o *CreateAuthMethodK8S) SetBoundSaNames(v []string) {
 	o.BoundSaNames = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *CreateAuthMethodK8S) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodK8S) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *CreateAuthMethodK8S) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *CreateAuthMethodK8S) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetForceSubClaims returns the ForceSubClaims field value if set, zero value otherwise.
@@ -566,6 +608,9 @@ func (o CreateAuthMethodK8S) MarshalJSON() ([]byte, error) {
 	}
 	if o.BoundSaNames != nil {
 		toSerialize["bound-sa-names"] = o.BoundSaNames
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.ForceSubClaims != nil {
 		toSerialize["force-sub-claims"] = o.ForceSubClaims

@@ -18,10 +18,12 @@ Name | Type | Description | Notes
 **Enable** | Pointer to **bool** |  | [optional] 
 **Endpoint** | Pointer to **string** |  | [optional] 
 **Host** | Pointer to **[]string** |  | [optional] 
+**HostProviderType** | Pointer to **string** |  | [optional] 
 **IsCli** | Pointer to **bool** |  | [optional] 
 **IsWeb** | Pointer to **bool** |  | [optional] 
 **Isolated** | Pointer to **bool** |  | [optional] 
 **Native** | Pointer to **bool** |  | [optional] 
+**RdGatewayServer** | Pointer to **string** |  | [optional] 
 **RdpUser** | Pointer to **string** |  | [optional] 
 **Region** | Pointer to **string** |  | [optional] 
 **RotateAfterDisconnect** | Pointer to **bool** |  | [optional] 
@@ -29,6 +31,8 @@ Name | Type | Description | Notes
 **SshPassword** | Pointer to **bool** |  | [optional] 
 **SshPrivateKey** | Pointer to **bool** |  | [optional] 
 **SshUser** | Pointer to **string** |  | [optional] 
+**TargetHosts** | Pointer to [**[]TargetNameWithHosts**](TargetNameWithHosts.md) |  | [optional] 
+**Targets** | Pointer to **[]string** |  | [optional] 
 **Url** | Pointer to **string** |  | [optional] 
 **UseInternalBastion** | Pointer to **bool** |  | [optional] 
 **WebProxy** | Pointer to **bool** |  | [optional] 
@@ -402,6 +406,31 @@ SetHost sets Host field to given value.
 
 HasHost returns a boolean if a field has been set.
 
+### GetHostProviderType
+
+`func (o *SecureRemoteAccess) GetHostProviderType() string`
+
+GetHostProviderType returns the HostProviderType field if non-nil, zero value otherwise.
+
+### GetHostProviderTypeOk
+
+`func (o *SecureRemoteAccess) GetHostProviderTypeOk() (*string, bool)`
+
+GetHostProviderTypeOk returns a tuple with the HostProviderType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHostProviderType
+
+`func (o *SecureRemoteAccess) SetHostProviderType(v string)`
+
+SetHostProviderType sets HostProviderType field to given value.
+
+### HasHostProviderType
+
+`func (o *SecureRemoteAccess) HasHostProviderType() bool`
+
+HasHostProviderType returns a boolean if a field has been set.
+
 ### GetIsCli
 
 `func (o *SecureRemoteAccess) GetIsCli() bool`
@@ -501,6 +530,31 @@ SetNative sets Native field to given value.
 `func (o *SecureRemoteAccess) HasNative() bool`
 
 HasNative returns a boolean if a field has been set.
+
+### GetRdGatewayServer
+
+`func (o *SecureRemoteAccess) GetRdGatewayServer() string`
+
+GetRdGatewayServer returns the RdGatewayServer field if non-nil, zero value otherwise.
+
+### GetRdGatewayServerOk
+
+`func (o *SecureRemoteAccess) GetRdGatewayServerOk() (*string, bool)`
+
+GetRdGatewayServerOk returns a tuple with the RdGatewayServer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRdGatewayServer
+
+`func (o *SecureRemoteAccess) SetRdGatewayServer(v string)`
+
+SetRdGatewayServer sets RdGatewayServer field to given value.
+
+### HasRdGatewayServer
+
+`func (o *SecureRemoteAccess) HasRdGatewayServer() bool`
+
+HasRdGatewayServer returns a boolean if a field has been set.
 
 ### GetRdpUser
 
@@ -676,6 +730,56 @@ SetSshUser sets SshUser field to given value.
 `func (o *SecureRemoteAccess) HasSshUser() bool`
 
 HasSshUser returns a boolean if a field has been set.
+
+### GetTargetHosts
+
+`func (o *SecureRemoteAccess) GetTargetHosts() []TargetNameWithHosts`
+
+GetTargetHosts returns the TargetHosts field if non-nil, zero value otherwise.
+
+### GetTargetHostsOk
+
+`func (o *SecureRemoteAccess) GetTargetHostsOk() (*[]TargetNameWithHosts, bool)`
+
+GetTargetHostsOk returns a tuple with the TargetHosts field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetHosts
+
+`func (o *SecureRemoteAccess) SetTargetHosts(v []TargetNameWithHosts)`
+
+SetTargetHosts sets TargetHosts field to given value.
+
+### HasTargetHosts
+
+`func (o *SecureRemoteAccess) HasTargetHosts() bool`
+
+HasTargetHosts returns a boolean if a field has been set.
+
+### GetTargets
+
+`func (o *SecureRemoteAccess) GetTargets() []string`
+
+GetTargets returns the Targets field if non-nil, zero value otherwise.
+
+### GetTargetsOk
+
+`func (o *SecureRemoteAccess) GetTargetsOk() (*[]string, bool)`
+
+GetTargetsOk returns a tuple with the Targets field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargets
+
+`func (o *SecureRemoteAccess) SetTargets(v []string)`
+
+SetTargets sets Targets field to given value.
+
+### HasTargets
+
+`func (o *SecureRemoteAccess) HasTargets() bool`
+
+HasTargets returns a boolean if a field has been set.
 
 ### GetUrl
 

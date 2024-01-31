@@ -13,10 +13,11 @@ Name | Type | Description | Notes
 **BoundRoleName** | Pointer to **[]string** | A list of full role-name that the access is restricted to | [optional] 
 **BoundUserId** | Pointer to **[]string** | A list of full user ids that the access is restricted to | [optional] 
 **BoundUserName** | Pointer to **[]string** | A list of full user-name that the access is restricted to | [optional] 
+**Description** | Pointer to **string** | Auth Method description | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
 **GwBoundIps** | Pointer to **[]string** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
-**JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] [default to 0]
 **Name** | **string** | Auth Method name | 
 **NewName** | Pointer to **string** | Auth Method new name | [optional] 
 **StsUrl** | Pointer to **string** | sts URL | [optional] [default to "https://sts.amazonaws.com"]
@@ -261,6 +262,31 @@ SetBoundUserName sets BoundUserName field to given value.
 `func (o *UpdateAuthMethodAWSIAM) HasBoundUserName() bool`
 
 HasBoundUserName returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *UpdateAuthMethodAWSIAM) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *UpdateAuthMethodAWSIAM) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *UpdateAuthMethodAWSIAM) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *UpdateAuthMethodAWSIAM) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetForceSubClaims
 

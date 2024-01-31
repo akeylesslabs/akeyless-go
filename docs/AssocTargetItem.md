@@ -4,17 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DisablePreviousKeyVersion** | Pointer to **bool** | Automatically disable previous key version (required for azure targets) | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**CertificatePath** | Pointer to **string** | A path on the target to store the certificate pem file (relevant only for certificate provisioning) | [optional] 
+**ChainPath** | Pointer to **string** | A path on the target to store the full chain pem file (relevant only for certificate provisioning) | [optional] 
+**DisablePreviousKeyVersion** | Pointer to **bool** | Automatically disable previous key version (required for azure targets) | [optional] [default to false]
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeyOperations** | Pointer to **[]string** | A list of allowed operations for the key (required for azure targets) | [optional] 
 **KeyringName** | Pointer to **string** | Keyring name of the GCP KMS (required for gcp targets) | [optional] 
 **KmsAlgorithm** | Pointer to **string** | Algorithm of the key in GCP KMS (required for gcp targets) | [optional] 
 **LocationId** | Pointer to **string** | Location id of the GCP KMS (required for gcp targets) | [optional] 
-**MultiRegion** | Pointer to **string** | Set to &#39;true&#39; to create a multi region managed key (relevant for aws targets) | [optional] [default to "false"]
+**MultiRegion** | Pointer to **string** | Set to &#39;true&#39; to create a multi-region managed key. (Relevant only for Classic Key AWS targets) | [optional] [default to "false"]
 **Name** | **string** | The item to associate | 
+**PrivateKeyPath** | Pointer to **string** | A path on the target to store the private key (relevant only for certificate provisioning) | [optional] 
 **ProjectId** | Pointer to **string** | Project id of the GCP KMS (required for gcp targets) | [optional] 
 **Purpose** | Pointer to **string** | Purpose of the key in GCP KMS (required for gcp targets) | [optional] 
 **Regions** | Pointer to **[]string** | The list of regions to create a copy of the key in (relevant for aws targets) | [optional] 
+**SraAssociation** | Pointer to **bool** | Is the target to associate is for sra, relevant only for linked target association for ldap rotated secret | [optional] [default to false]
 **TargetName** | **string** | The target to associate | 
 **TenantSecretType** | Pointer to **string** | The tenant secret type [Data/SearchIndex/Analytics] (required for salesforce targets) | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -39,6 +43,56 @@ will change when the set of required properties is changed
 NewAssocTargetItemWithDefaults instantiates a new AssocTargetItem object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCertificatePath
+
+`func (o *AssocTargetItem) GetCertificatePath() string`
+
+GetCertificatePath returns the CertificatePath field if non-nil, zero value otherwise.
+
+### GetCertificatePathOk
+
+`func (o *AssocTargetItem) GetCertificatePathOk() (*string, bool)`
+
+GetCertificatePathOk returns a tuple with the CertificatePath field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificatePath
+
+`func (o *AssocTargetItem) SetCertificatePath(v string)`
+
+SetCertificatePath sets CertificatePath field to given value.
+
+### HasCertificatePath
+
+`func (o *AssocTargetItem) HasCertificatePath() bool`
+
+HasCertificatePath returns a boolean if a field has been set.
+
+### GetChainPath
+
+`func (o *AssocTargetItem) GetChainPath() string`
+
+GetChainPath returns the ChainPath field if non-nil, zero value otherwise.
+
+### GetChainPathOk
+
+`func (o *AssocTargetItem) GetChainPathOk() (*string, bool)`
+
+GetChainPathOk returns a tuple with the ChainPath field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChainPath
+
+`func (o *AssocTargetItem) SetChainPath(v string)`
+
+SetChainPath sets ChainPath field to given value.
+
+### HasChainPath
+
+`func (o *AssocTargetItem) HasChainPath() bool`
+
+HasChainPath returns a boolean if a field has been set.
 
 ### GetDisablePreviousKeyVersion
 
@@ -235,6 +289,31 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
+### GetPrivateKeyPath
+
+`func (o *AssocTargetItem) GetPrivateKeyPath() string`
+
+GetPrivateKeyPath returns the PrivateKeyPath field if non-nil, zero value otherwise.
+
+### GetPrivateKeyPathOk
+
+`func (o *AssocTargetItem) GetPrivateKeyPathOk() (*string, bool)`
+
+GetPrivateKeyPathOk returns a tuple with the PrivateKeyPath field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrivateKeyPath
+
+`func (o *AssocTargetItem) SetPrivateKeyPath(v string)`
+
+SetPrivateKeyPath sets PrivateKeyPath field to given value.
+
+### HasPrivateKeyPath
+
+`func (o *AssocTargetItem) HasPrivateKeyPath() bool`
+
+HasPrivateKeyPath returns a boolean if a field has been set.
+
 ### GetProjectId
 
 `func (o *AssocTargetItem) GetProjectId() string`
@@ -309,6 +388,31 @@ SetRegions sets Regions field to given value.
 `func (o *AssocTargetItem) HasRegions() bool`
 
 HasRegions returns a boolean if a field has been set.
+
+### GetSraAssociation
+
+`func (o *AssocTargetItem) GetSraAssociation() bool`
+
+GetSraAssociation returns the SraAssociation field if non-nil, zero value otherwise.
+
+### GetSraAssociationOk
+
+`func (o *AssocTargetItem) GetSraAssociationOk() (*bool, bool)`
+
+GetSraAssociationOk returns a tuple with the SraAssociation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSraAssociation
+
+`func (o *AssocTargetItem) SetSraAssociation(v bool)`
+
+SetSraAssociation sets SraAssociation field to given value.
+
+### HasSraAssociation
+
+`func (o *AssocTargetItem) HasSraAssociation() bool`
+
+HasSraAssociation returns a boolean if a field has been set.
 
 ### GetTargetName
 

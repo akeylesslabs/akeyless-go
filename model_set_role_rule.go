@@ -25,7 +25,7 @@ type SetRoleRule struct {
 	Path string `json:"path"`
 	// The role name to be updated
 	RoleName string `json:"role-name"`
-	// item-rule, target-rule, role-rule, auth-method-rule, search-rule, reports-rule, gw-reports-rule or sra-reports-rule
+	// item-rule, target-rule, role-rule, auth-method-rule, search-rule, reports-rule, gw-reports-rule or sra-reports-rule, sra-rule
 	RuleType *string `json:"rule-type,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
@@ -42,6 +42,8 @@ type SetRoleRule struct {
 func NewSetRoleRule(capability []string, path string, roleName string, ) *SetRoleRule {
 	this := SetRoleRule{}
 	this.Capability = capability
+	var json bool = false
+	this.Json = &json
 	this.Path = path
 	this.RoleName = roleName
 	var ruleType string = "item-rule"
@@ -54,6 +56,8 @@ func NewSetRoleRule(capability []string, path string, roleName string, ) *SetRol
 // but it doesn't guarantee that properties required by API are set
 func NewSetRoleRuleWithDefaults() *SetRoleRule {
 	this := SetRoleRule{}
+	var json bool = false
+	this.Json = &json
 	var ruleType string = "item-rule"
 	this.RuleType = &ruleType
 	return &this

@@ -18,6 +18,9 @@ import (
 
 // NotiForwarder struct for NotiForwarder
 type NotiForwarder struct {
+	AuthType *string `json:"auth_type,omitempty"`
+	// Auth - JWT
+	ClientId *string `json:"client_id,omitempty"`
 	ClientPermissions *[]string `json:"client_permissions,omitempty"`
 	Comment *string `json:"comment,omitempty"`
 	CreationDate *time.Time `json:"creation_date,omitempty"`
@@ -36,6 +39,8 @@ type NotiForwarder struct {
 	RunnerType *string `json:"runner_type,omitempty"`
 	TimespanInSeconds *int64 `json:"timespan_in_seconds,omitempty"`
 	ToEmails *[]EmailEntry `json:"to_emails,omitempty"`
+	UserEmail *string `json:"user_email,omitempty"`
+	// Auth - User Password
 	Username *string `json:"username,omitempty"`
 	WithCustomerFragment *bool `json:"with_customer_fragment,omitempty"`
 }
@@ -55,6 +60,70 @@ func NewNotiForwarder() *NotiForwarder {
 func NewNotiForwarderWithDefaults() *NotiForwarder {
 	this := NotiForwarder{}
 	return &this
+}
+
+// GetAuthType returns the AuthType field value if set, zero value otherwise.
+func (o *NotiForwarder) GetAuthType() string {
+	if o == nil || o.AuthType == nil {
+		var ret string
+		return ret
+	}
+	return *o.AuthType
+}
+
+// GetAuthTypeOk returns a tuple with the AuthType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotiForwarder) GetAuthTypeOk() (*string, bool) {
+	if o == nil || o.AuthType == nil {
+		return nil, false
+	}
+	return o.AuthType, true
+}
+
+// HasAuthType returns a boolean if a field has been set.
+func (o *NotiForwarder) HasAuthType() bool {
+	if o != nil && o.AuthType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthType gets a reference to the given string and assigns it to the AuthType field.
+func (o *NotiForwarder) SetAuthType(v string) {
+	o.AuthType = &v
+}
+
+// GetClientId returns the ClientId field value if set, zero value otherwise.
+func (o *NotiForwarder) GetClientId() string {
+	if o == nil || o.ClientId == nil {
+		var ret string
+		return ret
+	}
+	return *o.ClientId
+}
+
+// GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotiForwarder) GetClientIdOk() (*string, bool) {
+	if o == nil || o.ClientId == nil {
+		return nil, false
+	}
+	return o.ClientId, true
+}
+
+// HasClientId returns a boolean if a field has been set.
+func (o *NotiForwarder) HasClientId() bool {
+	if o != nil && o.ClientId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetClientId gets a reference to the given string and assigns it to the ClientId field.
+func (o *NotiForwarder) SetClientId(v string) {
+	o.ClientId = &v
 }
 
 // GetClientPermissions returns the ClientPermissions field value if set, zero value otherwise.
@@ -633,6 +702,38 @@ func (o *NotiForwarder) SetToEmails(v []EmailEntry) {
 	o.ToEmails = &v
 }
 
+// GetUserEmail returns the UserEmail field value if set, zero value otherwise.
+func (o *NotiForwarder) GetUserEmail() string {
+	if o == nil || o.UserEmail == nil {
+		var ret string
+		return ret
+	}
+	return *o.UserEmail
+}
+
+// GetUserEmailOk returns a tuple with the UserEmail field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotiForwarder) GetUserEmailOk() (*string, bool) {
+	if o == nil || o.UserEmail == nil {
+		return nil, false
+	}
+	return o.UserEmail, true
+}
+
+// HasUserEmail returns a boolean if a field has been set.
+func (o *NotiForwarder) HasUserEmail() bool {
+	if o != nil && o.UserEmail != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserEmail gets a reference to the given string and assigns it to the UserEmail field.
+func (o *NotiForwarder) SetUserEmail(v string) {
+	o.UserEmail = &v
+}
+
 // GetUsername returns the Username field value if set, zero value otherwise.
 func (o *NotiForwarder) GetUsername() string {
 	if o == nil || o.Username == nil {
@@ -699,6 +800,12 @@ func (o *NotiForwarder) SetWithCustomerFragment(v bool) {
 
 func (o NotiForwarder) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AuthType != nil {
+		toSerialize["auth_type"] = o.AuthType
+	}
+	if o.ClientId != nil {
+		toSerialize["client_id"] = o.ClientId
+	}
 	if o.ClientPermissions != nil {
 		toSerialize["client_permissions"] = o.ClientPermissions
 	}
@@ -752,6 +859,9 @@ func (o NotiForwarder) MarshalJSON() ([]byte, error) {
 	}
 	if o.ToEmails != nil {
 		toSerialize["to_emails"] = o.ToEmails
+	}
+	if o.UserEmail != nil {
+		toSerialize["user_email"] = o.UserEmail
 	}
 	if o.Username != nil {
 		toSerialize["username"] = o.Username

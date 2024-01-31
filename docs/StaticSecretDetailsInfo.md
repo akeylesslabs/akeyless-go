@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**NotifyOnChangeEvent** | Pointer to **bool** |  | [optional] 
 **Username** | Pointer to **string** |  | [optional] 
 **Website** | Pointer to **string** | deprecated | [optional] 
 **Websites** | Pointer to **[]string** |  | [optional] 
@@ -26,6 +27,31 @@ will change when the set of required properties is changed
 NewStaticSecretDetailsInfoWithDefaults instantiates a new StaticSecretDetailsInfo object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetNotifyOnChangeEvent
+
+`func (o *StaticSecretDetailsInfo) GetNotifyOnChangeEvent() bool`
+
+GetNotifyOnChangeEvent returns the NotifyOnChangeEvent field if non-nil, zero value otherwise.
+
+### GetNotifyOnChangeEventOk
+
+`func (o *StaticSecretDetailsInfo) GetNotifyOnChangeEventOk() (*bool, bool)`
+
+GetNotifyOnChangeEventOk returns a tuple with the NotifyOnChangeEvent field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNotifyOnChangeEvent
+
+`func (o *StaticSecretDetailsInfo) SetNotifyOnChangeEvent(v bool)`
+
+SetNotifyOnChangeEvent sets NotifyOnChangeEvent field to given value.
+
+### HasNotifyOnChangeEvent
+
+`func (o *StaticSecretDetailsInfo) HasNotifyOnChangeEvent() bool`
+
+HasNotifyOnChangeEvent returns a boolean if a field has been set.
 
 ### GetUsername
 

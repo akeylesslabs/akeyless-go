@@ -17,14 +17,19 @@ import (
 
 // UpdateSSHCertIssuer struct for UpdateSSHCertIssuer
 type UpdateSSHCertIssuer struct {
+	ProviderType *string `json:"ProviderType,omitempty"`
 	// List of the new tags that will be attached to this item
 	AddTag *[]string `json:"add-tag,omitempty"`
 	// Users allowed to fetch the certificate, e.g root,ubuntu
 	AllowedUsers string `json:"allowed-users"`
+	// Protection from accidental deletion of this item [true/false]
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
 	// Signed certificates with extensions, e.g permit-port-forwarding=\\\"\\\"
 	Extensions *map[string]string `json:"extensions,omitempty"`
+	// Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret
+	HostProvider *string `json:"host-provider,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Deprecated - use description
@@ -37,17 +42,23 @@ type UpdateSSHCertIssuer struct {
 	Principals *string `json:"principals,omitempty"`
 	// List of the existent tags that will be removed from this item
 	RmTag *[]string `json:"rm-tag,omitempty"`
+	// Bastion's SSH control API endpoint. E.g. https://my.bastion:9900
 	SecureAccessBastionApi *string `json:"secure-access-bastion-api,omitempty"`
+	// Bastion's SSH server. E.g. my.bastion:22
 	SecureAccessBastionSsh *string `json:"secure-access-bastion-ssh,omitempty"`
+	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
 	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
+	// SSH username to connect to target server, must be in 'Allowed Users' list
 	SecureAccessSshCredsUser *string `json:"secure-access-ssh-creds-user,omitempty"`
+	// Use internal SSH Bastion
 	SecureAccessUseInternalBastion *bool `json:"secure-access-use-internal-bastion,omitempty"`
 	// A key to sign the certificate with
 	SignerKeyName string `json:"signer-key-name"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
-	// he requested Time To Live for the certificate, in seconds
+	// The requested Time To Live for the certificate, in seconds
 	Ttl int64 `json:"ttl"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
@@ -60,6 +71,10 @@ type UpdateSSHCertIssuer struct {
 func NewUpdateSSHCertIssuer(allowedUsers string, name string, signerKeyName string, ttl int64, ) *UpdateSSHCertIssuer {
 	this := UpdateSSHCertIssuer{}
 	this.AllowedUsers = allowedUsers
+	var hostProvider string = "explicit"
+	this.HostProvider = &hostProvider
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	this.SignerKeyName = signerKeyName
 	this.Ttl = ttl
@@ -71,7 +86,43 @@ func NewUpdateSSHCertIssuer(allowedUsers string, name string, signerKeyName stri
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateSSHCertIssuerWithDefaults() *UpdateSSHCertIssuer {
 	this := UpdateSSHCertIssuer{}
+	var hostProvider string = "explicit"
+	this.HostProvider = &hostProvider
+	var json bool = false
+	this.Json = &json
 	return &this
+}
+
+// GetProviderType returns the ProviderType field value if set, zero value otherwise.
+func (o *UpdateSSHCertIssuer) GetProviderType() string {
+	if o == nil || o.ProviderType == nil {
+		var ret string
+		return ret
+	}
+	return *o.ProviderType
+}
+
+// GetProviderTypeOk returns a tuple with the ProviderType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateSSHCertIssuer) GetProviderTypeOk() (*string, bool) {
+	if o == nil || o.ProviderType == nil {
+		return nil, false
+	}
+	return o.ProviderType, true
+}
+
+// HasProviderType returns a boolean if a field has been set.
+func (o *UpdateSSHCertIssuer) HasProviderType() bool {
+	if o != nil && o.ProviderType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProviderType gets a reference to the given string and assigns it to the ProviderType field.
+func (o *UpdateSSHCertIssuer) SetProviderType(v string) {
+	o.ProviderType = &v
 }
 
 // GetAddTag returns the AddTag field value if set, zero value otherwise.
@@ -128,6 +179,38 @@ func (o *UpdateSSHCertIssuer) GetAllowedUsersOk() (*string, bool) {
 // SetAllowedUsers sets field value
 func (o *UpdateSSHCertIssuer) SetAllowedUsers(v string) {
 	o.AllowedUsers = v
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *UpdateSSHCertIssuer) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateSSHCertIssuer) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *UpdateSSHCertIssuer) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *UpdateSSHCertIssuer) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -192,6 +275,38 @@ func (o *UpdateSSHCertIssuer) HasExtensions() bool {
 // SetExtensions gets a reference to the given map[string]string and assigns it to the Extensions field.
 func (o *UpdateSSHCertIssuer) SetExtensions(v map[string]string) {
 	o.Extensions = &v
+}
+
+// GetHostProvider returns the HostProvider field value if set, zero value otherwise.
+func (o *UpdateSSHCertIssuer) GetHostProvider() string {
+	if o == nil || o.HostProvider == nil {
+		var ret string
+		return ret
+	}
+	return *o.HostProvider
+}
+
+// GetHostProviderOk returns a tuple with the HostProvider field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateSSHCertIssuer) GetHostProviderOk() (*string, bool) {
+	if o == nil || o.HostProvider == nil {
+		return nil, false
+	}
+	return o.HostProvider, true
+}
+
+// HasHostProvider returns a boolean if a field has been set.
+func (o *UpdateSSHCertIssuer) HasHostProvider() bool {
+	if o != nil && o.HostProvider != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHostProvider gets a reference to the given string and assigns it to the HostProvider field.
+func (o *UpdateSSHCertIssuer) SetHostProvider(v string) {
+	o.HostProvider = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -684,17 +799,26 @@ func (o *UpdateSSHCertIssuer) SetUidToken(v string) {
 
 func (o UpdateSSHCertIssuer) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.ProviderType != nil {
+		toSerialize["ProviderType"] = o.ProviderType
+	}
 	if o.AddTag != nil {
 		toSerialize["add-tag"] = o.AddTag
 	}
 	if true {
 		toSerialize["allowed-users"] = o.AllowedUsers
 	}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
+	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
 	}
 	if o.Extensions != nil {
 		toSerialize["extensions"] = o.Extensions
+	}
+	if o.HostProvider != nil {
+		toSerialize["host-provider"] = o.HostProvider
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json

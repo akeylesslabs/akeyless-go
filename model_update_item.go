@@ -17,15 +17,21 @@ import (
 
 // UpdateItem struct for UpdateItem
 type UpdateItem struct {
+	ProviderType *string `json:"ProviderType,omitempty"`
 	// for personal password manager
 	Accessibility *string `json:"accessibility,omitempty"`
 	// List of the new tags that will be attached to this item
 	AddTag *[]string `json:"add-tag,omitempty"`
 	// PEM Certificate in a Base64 format. Used for updating RSA keys' certificates.
 	CertFileData *string `json:"cert-file-data,omitempty"`
+	// Trigger an event when a secret value changed [true/false] (Relevant only for Static Secret)
+	ChangeEvent *string `json:"change-event,omitempty"`
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
+	// Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret
+	HostProvider *string `json:"host-provider,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Current item name
@@ -36,29 +42,57 @@ type UpdateItem struct {
 	NewName *string `json:"new-name,omitempty"`
 	// List of the existent tags that will be removed from this item
 	RmTag *[]string `json:"rm-tag,omitempty"`
+	// Rotate the value of the secret after SRA session ends [true/false] (relevant only for Rotated-secret)
+	RotateAfterDisconnect *string `json:"rotate-after-disconnect,omitempty"`
+	// List of the new hosts that will be attached to SRA servers host
 	SecureAccessAddHost *[]string `json:"secure-access-add-host,omitempty"`
+	// Allow providing external user for a domain users [true/false]
 	SecureAccessAllowExternalUser *string `json:"secure-access-allow-external-user,omitempty"`
+	// Enable Port forwarding while using CLI access (relevant only for EKS/GKE/K8s Dynamic-Secret)
 	SecureAccessAllowPortForwading *bool `json:"secure-access-allow-port-forwading,omitempty"`
+	// The AWS account id (relevant only for aws)
 	SecureAccessAwsAccountId *string `json:"secure-access-aws-account-id,omitempty"`
+	// The AWS native cli (relevant only for aws)
 	SecureAccessAwsNativeCli *bool `json:"secure-access-aws-native-cli,omitempty"`
+	// The AWS region (relevant only for aws)
 	SecureAccessAwsRegion *string `json:"secure-access-aws-region,omitempty"`
+	// Bastion's SSH control API endpoint. E.g. https://my.bastion:9900 (relevant only for ssh cert issuer)
 	SecureAccessBastionApi *string `json:"secure-access-bastion-api,omitempty"`
+	// Path to the SSH Certificate Issuer for your Akeyless Bastion
 	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
+	// Bastion's SSH server. E.g. my.bastion:22 (relevant only for ssh cert issuer)
 	SecureAccessBastionSsh *string `json:"secure-access-bastion-ssh,omitempty"`
+	// The K8s cluster endpoint URL (relevant only for EKS/GKE/K8s Dynamic-Secret)
 	SecureAccessClusterEndpoint *string `json:"secure-access-cluster-endpoint,omitempty"`
+	// The K8s dashboard url (relevant only for k8s)
 	SecureAccessDashboardUrl *string `json:"secure-access-dashboard-url,omitempty"`
+	// The DB name (relevant only for DB Dynamic-Secret)
 	SecureAccessDbName *string `json:"secure-access-db-name,omitempty"`
+	// The DB schema (relevant only for DB Dynamic-Secret)
 	SecureAccessDbSchema *string `json:"secure-access-db-schema,omitempty"`
+	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
 	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
+	// RD Gateway server (relevant only for rdp)
+	SecureAccessRdGatewayServer *string `json:"secure-access-rd-gateway-server,omitempty"`
+	// Required when the Dynamic Secret is used for a domain user (relevant only for RDP Dynamic-Secret)
 	SecureAccessRdpDomain *string `json:"secure-access-rdp-domain,omitempty"`
+	// Override the RDP Domain username
 	SecureAccessRdpUser *string `json:"secure-access-rdp-user,omitempty"`
+	// List of the existent hosts that will be removed from SRA servers host
 	SecureAccessRmHost *[]string `json:"secure-access-rm-host,omitempty"`
+	// Secret values contains SSH Credentials, either Private Key or Password [password/private-key] (relevant only for Static-Secret or Rotated-secret)
 	SecureAccessSshCreds *string `json:"secure-access-ssh-creds,omitempty"`
+	// SSH username to connect to target server, must be in 'Allowed Users' list (relevant only for ssh cert issuer)
 	SecureAccessSshCredsUser *string `json:"secure-access-ssh-creds-user,omitempty"`
+	// Destination URL to inject secrets
 	SecureAccessUrl *string `json:"secure-access-url,omitempty"`
+	// Use internal SSH Bastion
 	SecureAccessUseInternalBastion *bool `json:"secure-access-use-internal-bastion,omitempty"`
+	// Secure browser via Akeyless Web Access Bastion
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
+	// Web-Proxy via Akeyless Web Access Bastion
 	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
@@ -76,9 +110,19 @@ func NewUpdateItem(name string, ) *UpdateItem {
 	this.Accessibility = &accessibility
 	var description string = "default_metadata"
 	this.Description = &description
+	var hostProvider string = "explicit"
+	this.HostProvider = &hostProvider
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	var newMetadata string = "default_metadata"
 	this.NewMetadata = &newMetadata
+	var rotateAfterDisconnect string = "false"
+	this.RotateAfterDisconnect = &rotateAfterDisconnect
+	var secureAccessWebBrowsing bool = false
+	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
+	var secureAccessWebProxy bool = false
+	this.SecureAccessWebProxy = &secureAccessWebProxy
 	return &this
 }
 
@@ -91,9 +135,51 @@ func NewUpdateItemWithDefaults() *UpdateItem {
 	this.Accessibility = &accessibility
 	var description string = "default_metadata"
 	this.Description = &description
+	var hostProvider string = "explicit"
+	this.HostProvider = &hostProvider
+	var json bool = false
+	this.Json = &json
 	var newMetadata string = "default_metadata"
 	this.NewMetadata = &newMetadata
+	var rotateAfterDisconnect string = "false"
+	this.RotateAfterDisconnect = &rotateAfterDisconnect
+	var secureAccessWebBrowsing bool = false
+	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
+	var secureAccessWebProxy bool = false
+	this.SecureAccessWebProxy = &secureAccessWebProxy
 	return &this
+}
+
+// GetProviderType returns the ProviderType field value if set, zero value otherwise.
+func (o *UpdateItem) GetProviderType() string {
+	if o == nil || o.ProviderType == nil {
+		var ret string
+		return ret
+	}
+	return *o.ProviderType
+}
+
+// GetProviderTypeOk returns a tuple with the ProviderType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateItem) GetProviderTypeOk() (*string, bool) {
+	if o == nil || o.ProviderType == nil {
+		return nil, false
+	}
+	return o.ProviderType, true
+}
+
+// HasProviderType returns a boolean if a field has been set.
+func (o *UpdateItem) HasProviderType() bool {
+	if o != nil && o.ProviderType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProviderType gets a reference to the given string and assigns it to the ProviderType field.
+func (o *UpdateItem) SetProviderType(v string) {
+	o.ProviderType = &v
 }
 
 // GetAccessibility returns the Accessibility field value if set, zero value otherwise.
@@ -192,6 +278,38 @@ func (o *UpdateItem) SetCertFileData(v string) {
 	o.CertFileData = &v
 }
 
+// GetChangeEvent returns the ChangeEvent field value if set, zero value otherwise.
+func (o *UpdateItem) GetChangeEvent() string {
+	if o == nil || o.ChangeEvent == nil {
+		var ret string
+		return ret
+	}
+	return *o.ChangeEvent
+}
+
+// GetChangeEventOk returns a tuple with the ChangeEvent field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateItem) GetChangeEventOk() (*string, bool) {
+	if o == nil || o.ChangeEvent == nil {
+		return nil, false
+	}
+	return o.ChangeEvent, true
+}
+
+// HasChangeEvent returns a boolean if a field has been set.
+func (o *UpdateItem) HasChangeEvent() bool {
+	if o != nil && o.ChangeEvent != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetChangeEvent gets a reference to the given string and assigns it to the ChangeEvent field.
+func (o *UpdateItem) SetChangeEvent(v string) {
+	o.ChangeEvent = &v
+}
+
 // GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
 func (o *UpdateItem) GetDeleteProtection() string {
 	if o == nil || o.DeleteProtection == nil {
@@ -254,6 +372,38 @@ func (o *UpdateItem) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *UpdateItem) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetHostProvider returns the HostProvider field value if set, zero value otherwise.
+func (o *UpdateItem) GetHostProvider() string {
+	if o == nil || o.HostProvider == nil {
+		var ret string
+		return ret
+	}
+	return *o.HostProvider
+}
+
+// GetHostProviderOk returns a tuple with the HostProvider field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateItem) GetHostProviderOk() (*string, bool) {
+	if o == nil || o.HostProvider == nil {
+		return nil, false
+	}
+	return o.HostProvider, true
+}
+
+// HasHostProvider returns a boolean if a field has been set.
+func (o *UpdateItem) HasHostProvider() bool {
+	if o != nil && o.HostProvider != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHostProvider gets a reference to the given string and assigns it to the HostProvider field.
+func (o *UpdateItem) SetHostProvider(v string) {
+	o.HostProvider = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -406,6 +556,38 @@ func (o *UpdateItem) HasRmTag() bool {
 // SetRmTag gets a reference to the given []string and assigns it to the RmTag field.
 func (o *UpdateItem) SetRmTag(v []string) {
 	o.RmTag = &v
+}
+
+// GetRotateAfterDisconnect returns the RotateAfterDisconnect field value if set, zero value otherwise.
+func (o *UpdateItem) GetRotateAfterDisconnect() string {
+	if o == nil || o.RotateAfterDisconnect == nil {
+		var ret string
+		return ret
+	}
+	return *o.RotateAfterDisconnect
+}
+
+// GetRotateAfterDisconnectOk returns a tuple with the RotateAfterDisconnect field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateItem) GetRotateAfterDisconnectOk() (*string, bool) {
+	if o == nil || o.RotateAfterDisconnect == nil {
+		return nil, false
+	}
+	return o.RotateAfterDisconnect, true
+}
+
+// HasRotateAfterDisconnect returns a boolean if a field has been set.
+func (o *UpdateItem) HasRotateAfterDisconnect() bool {
+	if o != nil && o.RotateAfterDisconnect != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRotateAfterDisconnect gets a reference to the given string and assigns it to the RotateAfterDisconnect field.
+func (o *UpdateItem) SetRotateAfterDisconnect(v string) {
+	o.RotateAfterDisconnect = &v
 }
 
 // GetSecureAccessAddHost returns the SecureAccessAddHost field value if set, zero value otherwise.
@@ -888,6 +1070,38 @@ func (o *UpdateItem) SetSecureAccessHost(v []string) {
 	o.SecureAccessHost = &v
 }
 
+// GetSecureAccessRdGatewayServer returns the SecureAccessRdGatewayServer field value if set, zero value otherwise.
+func (o *UpdateItem) GetSecureAccessRdGatewayServer() string {
+	if o == nil || o.SecureAccessRdGatewayServer == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessRdGatewayServer
+}
+
+// GetSecureAccessRdGatewayServerOk returns a tuple with the SecureAccessRdGatewayServer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateItem) GetSecureAccessRdGatewayServerOk() (*string, bool) {
+	if o == nil || o.SecureAccessRdGatewayServer == nil {
+		return nil, false
+	}
+	return o.SecureAccessRdGatewayServer, true
+}
+
+// HasSecureAccessRdGatewayServer returns a boolean if a field has been set.
+func (o *UpdateItem) HasSecureAccessRdGatewayServer() bool {
+	if o != nil && o.SecureAccessRdGatewayServer != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessRdGatewayServer gets a reference to the given string and assigns it to the SecureAccessRdGatewayServer field.
+func (o *UpdateItem) SetSecureAccessRdGatewayServer(v string) {
+	o.SecureAccessRdGatewayServer = &v
+}
+
 // GetSecureAccessRdpDomain returns the SecureAccessRdpDomain field value if set, zero value otherwise.
 func (o *UpdateItem) GetSecureAccessRdpDomain() string {
 	if o == nil || o.SecureAccessRdpDomain == nil {
@@ -1242,6 +1456,9 @@ func (o *UpdateItem) SetUidToken(v string) {
 
 func (o UpdateItem) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.ProviderType != nil {
+		toSerialize["ProviderType"] = o.ProviderType
+	}
 	if o.Accessibility != nil {
 		toSerialize["accessibility"] = o.Accessibility
 	}
@@ -1251,11 +1468,17 @@ func (o UpdateItem) MarshalJSON() ([]byte, error) {
 	if o.CertFileData != nil {
 		toSerialize["cert-file-data"] = o.CertFileData
 	}
+	if o.ChangeEvent != nil {
+		toSerialize["change-event"] = o.ChangeEvent
+	}
 	if o.DeleteProtection != nil {
 		toSerialize["delete_protection"] = o.DeleteProtection
 	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
+	}
+	if o.HostProvider != nil {
+		toSerialize["host-provider"] = o.HostProvider
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json
@@ -1271,6 +1494,9 @@ func (o UpdateItem) MarshalJSON() ([]byte, error) {
 	}
 	if o.RmTag != nil {
 		toSerialize["rm-tag"] = o.RmTag
+	}
+	if o.RotateAfterDisconnect != nil {
+		toSerialize["rotate-after-disconnect"] = o.RotateAfterDisconnect
 	}
 	if o.SecureAccessAddHost != nil {
 		toSerialize["secure-access-add-host"] = o.SecureAccessAddHost
@@ -1316,6 +1542,9 @@ func (o UpdateItem) MarshalJSON() ([]byte, error) {
 	}
 	if o.SecureAccessHost != nil {
 		toSerialize["secure-access-host"] = o.SecureAccessHost
+	}
+	if o.SecureAccessRdGatewayServer != nil {
+		toSerialize["secure-access-rd-gateway-server"] = o.SecureAccessRdGatewayServer
 	}
 	if o.SecureAccessRdpDomain != nil {
 		toSerialize["secure-access-rdp-domain"] = o.SecureAccessRdpDomain

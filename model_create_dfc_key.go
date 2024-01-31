@@ -19,12 +19,30 @@ import (
 type CreateDFCKey struct {
 	// DFCKey type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, AES128CBC, AES256CBC, RSA1024, RSA2048, RSA3072, RSA4096]
 	Alg string `json:"alg"`
+	// Common name for the generated certificate. Relevant only for generate-self-signed-certificate.
+	CertificateCommonName *string `json:"certificate-common-name,omitempty"`
+	// Country name for the generated certificate. Relevant only for generate-self-signed-certificate.
+	CertificateCountry *string `json:"certificate-country,omitempty"`
+	// Digest algorithm to be used for the certificate key signing. Currently, we support only \"sha256\" so we hide this option for CLI.
+	CertificateDigestAlgo *string `json:"certificate-digest-algo,omitempty"`
+	// Locality for the generated certificate. Relevant only for generate-self-signed-certificate.
+	CertificateLocality *string `json:"certificate-locality,omitempty"`
+	// Organization name for the generated certificate. Relevant only for generate-self-signed-certificate.
+	CertificateOrganization *string `json:"certificate-organization,omitempty"`
+	// Province name for the generated certificate. Relevant only for generate-self-signed-certificate.
+	CertificateProvince *string `json:"certificate-province,omitempty"`
+	// TTL in days for the generated certificate. Required only for generate-self-signed-certificate.
+	CertificateTtl *int64 `json:"certificate-ttl,omitempty"`
+	// The csr config data in base64 encoding
+	ConfFileData *string `json:"conf-file-data,omitempty"`
 	// The customer fragment ID that will be used to create the DFC key (if empty, the key will be created independently of a customer fragment)
 	CustomerFrgId *string `json:"customer-frg-id,omitempty"`
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
+	// Whether to generate a self signed certificate with the key. If set, --certificate-ttl must be provided.
+	GenerateSelfSignedCertificate *bool `json:"generate-self-signed-certificate,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Deprecated - use description
@@ -48,6 +66,8 @@ type CreateDFCKey struct {
 func NewCreateDFCKey(alg string, name string, ) *CreateDFCKey {
 	this := CreateDFCKey{}
 	this.Alg = alg
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	var splitLevel int64 = 3
 	this.SplitLevel = &splitLevel
@@ -59,6 +79,8 @@ func NewCreateDFCKey(alg string, name string, ) *CreateDFCKey {
 // but it doesn't guarantee that properties required by API are set
 func NewCreateDFCKeyWithDefaults() *CreateDFCKey {
 	this := CreateDFCKey{}
+	var json bool = false
+	this.Json = &json
 	var splitLevel int64 = 3
 	this.SplitLevel = &splitLevel
 	return &this
@@ -86,6 +108,262 @@ func (o *CreateDFCKey) GetAlgOk() (*string, bool) {
 // SetAlg sets field value
 func (o *CreateDFCKey) SetAlg(v string) {
 	o.Alg = v
+}
+
+// GetCertificateCommonName returns the CertificateCommonName field value if set, zero value otherwise.
+func (o *CreateDFCKey) GetCertificateCommonName() string {
+	if o == nil || o.CertificateCommonName == nil {
+		var ret string
+		return ret
+	}
+	return *o.CertificateCommonName
+}
+
+// GetCertificateCommonNameOk returns a tuple with the CertificateCommonName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDFCKey) GetCertificateCommonNameOk() (*string, bool) {
+	if o == nil || o.CertificateCommonName == nil {
+		return nil, false
+	}
+	return o.CertificateCommonName, true
+}
+
+// HasCertificateCommonName returns a boolean if a field has been set.
+func (o *CreateDFCKey) HasCertificateCommonName() bool {
+	if o != nil && o.CertificateCommonName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificateCommonName gets a reference to the given string and assigns it to the CertificateCommonName field.
+func (o *CreateDFCKey) SetCertificateCommonName(v string) {
+	o.CertificateCommonName = &v
+}
+
+// GetCertificateCountry returns the CertificateCountry field value if set, zero value otherwise.
+func (o *CreateDFCKey) GetCertificateCountry() string {
+	if o == nil || o.CertificateCountry == nil {
+		var ret string
+		return ret
+	}
+	return *o.CertificateCountry
+}
+
+// GetCertificateCountryOk returns a tuple with the CertificateCountry field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDFCKey) GetCertificateCountryOk() (*string, bool) {
+	if o == nil || o.CertificateCountry == nil {
+		return nil, false
+	}
+	return o.CertificateCountry, true
+}
+
+// HasCertificateCountry returns a boolean if a field has been set.
+func (o *CreateDFCKey) HasCertificateCountry() bool {
+	if o != nil && o.CertificateCountry != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificateCountry gets a reference to the given string and assigns it to the CertificateCountry field.
+func (o *CreateDFCKey) SetCertificateCountry(v string) {
+	o.CertificateCountry = &v
+}
+
+// GetCertificateDigestAlgo returns the CertificateDigestAlgo field value if set, zero value otherwise.
+func (o *CreateDFCKey) GetCertificateDigestAlgo() string {
+	if o == nil || o.CertificateDigestAlgo == nil {
+		var ret string
+		return ret
+	}
+	return *o.CertificateDigestAlgo
+}
+
+// GetCertificateDigestAlgoOk returns a tuple with the CertificateDigestAlgo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDFCKey) GetCertificateDigestAlgoOk() (*string, bool) {
+	if o == nil || o.CertificateDigestAlgo == nil {
+		return nil, false
+	}
+	return o.CertificateDigestAlgo, true
+}
+
+// HasCertificateDigestAlgo returns a boolean if a field has been set.
+func (o *CreateDFCKey) HasCertificateDigestAlgo() bool {
+	if o != nil && o.CertificateDigestAlgo != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificateDigestAlgo gets a reference to the given string and assigns it to the CertificateDigestAlgo field.
+func (o *CreateDFCKey) SetCertificateDigestAlgo(v string) {
+	o.CertificateDigestAlgo = &v
+}
+
+// GetCertificateLocality returns the CertificateLocality field value if set, zero value otherwise.
+func (o *CreateDFCKey) GetCertificateLocality() string {
+	if o == nil || o.CertificateLocality == nil {
+		var ret string
+		return ret
+	}
+	return *o.CertificateLocality
+}
+
+// GetCertificateLocalityOk returns a tuple with the CertificateLocality field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDFCKey) GetCertificateLocalityOk() (*string, bool) {
+	if o == nil || o.CertificateLocality == nil {
+		return nil, false
+	}
+	return o.CertificateLocality, true
+}
+
+// HasCertificateLocality returns a boolean if a field has been set.
+func (o *CreateDFCKey) HasCertificateLocality() bool {
+	if o != nil && o.CertificateLocality != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificateLocality gets a reference to the given string and assigns it to the CertificateLocality field.
+func (o *CreateDFCKey) SetCertificateLocality(v string) {
+	o.CertificateLocality = &v
+}
+
+// GetCertificateOrganization returns the CertificateOrganization field value if set, zero value otherwise.
+func (o *CreateDFCKey) GetCertificateOrganization() string {
+	if o == nil || o.CertificateOrganization == nil {
+		var ret string
+		return ret
+	}
+	return *o.CertificateOrganization
+}
+
+// GetCertificateOrganizationOk returns a tuple with the CertificateOrganization field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDFCKey) GetCertificateOrganizationOk() (*string, bool) {
+	if o == nil || o.CertificateOrganization == nil {
+		return nil, false
+	}
+	return o.CertificateOrganization, true
+}
+
+// HasCertificateOrganization returns a boolean if a field has been set.
+func (o *CreateDFCKey) HasCertificateOrganization() bool {
+	if o != nil && o.CertificateOrganization != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificateOrganization gets a reference to the given string and assigns it to the CertificateOrganization field.
+func (o *CreateDFCKey) SetCertificateOrganization(v string) {
+	o.CertificateOrganization = &v
+}
+
+// GetCertificateProvince returns the CertificateProvince field value if set, zero value otherwise.
+func (o *CreateDFCKey) GetCertificateProvince() string {
+	if o == nil || o.CertificateProvince == nil {
+		var ret string
+		return ret
+	}
+	return *o.CertificateProvince
+}
+
+// GetCertificateProvinceOk returns a tuple with the CertificateProvince field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDFCKey) GetCertificateProvinceOk() (*string, bool) {
+	if o == nil || o.CertificateProvince == nil {
+		return nil, false
+	}
+	return o.CertificateProvince, true
+}
+
+// HasCertificateProvince returns a boolean if a field has been set.
+func (o *CreateDFCKey) HasCertificateProvince() bool {
+	if o != nil && o.CertificateProvince != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificateProvince gets a reference to the given string and assigns it to the CertificateProvince field.
+func (o *CreateDFCKey) SetCertificateProvince(v string) {
+	o.CertificateProvince = &v
+}
+
+// GetCertificateTtl returns the CertificateTtl field value if set, zero value otherwise.
+func (o *CreateDFCKey) GetCertificateTtl() int64 {
+	if o == nil || o.CertificateTtl == nil {
+		var ret int64
+		return ret
+	}
+	return *o.CertificateTtl
+}
+
+// GetCertificateTtlOk returns a tuple with the CertificateTtl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDFCKey) GetCertificateTtlOk() (*int64, bool) {
+	if o == nil || o.CertificateTtl == nil {
+		return nil, false
+	}
+	return o.CertificateTtl, true
+}
+
+// HasCertificateTtl returns a boolean if a field has been set.
+func (o *CreateDFCKey) HasCertificateTtl() bool {
+	if o != nil && o.CertificateTtl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificateTtl gets a reference to the given int64 and assigns it to the CertificateTtl field.
+func (o *CreateDFCKey) SetCertificateTtl(v int64) {
+	o.CertificateTtl = &v
+}
+
+// GetConfFileData returns the ConfFileData field value if set, zero value otherwise.
+func (o *CreateDFCKey) GetConfFileData() string {
+	if o == nil || o.ConfFileData == nil {
+		var ret string
+		return ret
+	}
+	return *o.ConfFileData
+}
+
+// GetConfFileDataOk returns a tuple with the ConfFileData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDFCKey) GetConfFileDataOk() (*string, bool) {
+	if o == nil || o.ConfFileData == nil {
+		return nil, false
+	}
+	return o.ConfFileData, true
+}
+
+// HasConfFileData returns a boolean if a field has been set.
+func (o *CreateDFCKey) HasConfFileData() bool {
+	if o != nil && o.ConfFileData != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetConfFileData gets a reference to the given string and assigns it to the ConfFileData field.
+func (o *CreateDFCKey) SetConfFileData(v string) {
+	o.ConfFileData = &v
 }
 
 // GetCustomerFrgId returns the CustomerFrgId field value if set, zero value otherwise.
@@ -182,6 +460,38 @@ func (o *CreateDFCKey) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *CreateDFCKey) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetGenerateSelfSignedCertificate returns the GenerateSelfSignedCertificate field value if set, zero value otherwise.
+func (o *CreateDFCKey) GetGenerateSelfSignedCertificate() bool {
+	if o == nil || o.GenerateSelfSignedCertificate == nil {
+		var ret bool
+		return ret
+	}
+	return *o.GenerateSelfSignedCertificate
+}
+
+// GetGenerateSelfSignedCertificateOk returns a tuple with the GenerateSelfSignedCertificate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDFCKey) GetGenerateSelfSignedCertificateOk() (*bool, bool) {
+	if o == nil || o.GenerateSelfSignedCertificate == nil {
+		return nil, false
+	}
+	return o.GenerateSelfSignedCertificate, true
+}
+
+// HasGenerateSelfSignedCertificate returns a boolean if a field has been set.
+func (o *CreateDFCKey) HasGenerateSelfSignedCertificate() bool {
+	if o != nil && o.GenerateSelfSignedCertificate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGenerateSelfSignedCertificate gets a reference to the given bool and assigns it to the GenerateSelfSignedCertificate field.
+func (o *CreateDFCKey) SetGenerateSelfSignedCertificate(v bool) {
+	o.GenerateSelfSignedCertificate = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -405,6 +715,30 @@ func (o CreateDFCKey) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["alg"] = o.Alg
 	}
+	if o.CertificateCommonName != nil {
+		toSerialize["certificate-common-name"] = o.CertificateCommonName
+	}
+	if o.CertificateCountry != nil {
+		toSerialize["certificate-country"] = o.CertificateCountry
+	}
+	if o.CertificateDigestAlgo != nil {
+		toSerialize["certificate-digest-algo"] = o.CertificateDigestAlgo
+	}
+	if o.CertificateLocality != nil {
+		toSerialize["certificate-locality"] = o.CertificateLocality
+	}
+	if o.CertificateOrganization != nil {
+		toSerialize["certificate-organization"] = o.CertificateOrganization
+	}
+	if o.CertificateProvince != nil {
+		toSerialize["certificate-province"] = o.CertificateProvince
+	}
+	if o.CertificateTtl != nil {
+		toSerialize["certificate-ttl"] = o.CertificateTtl
+	}
+	if o.ConfFileData != nil {
+		toSerialize["conf-file-data"] = o.ConfFileData
+	}
 	if o.CustomerFrgId != nil {
 		toSerialize["customer-frg-id"] = o.CustomerFrgId
 	}
@@ -413,6 +747,9 @@ func (o CreateDFCKey) MarshalJSON() ([]byte, error) {
 	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
+	}
+	if o.GenerateSelfSignedCertificate != nil {
+		toSerialize["generate-self-signed-certificate"] = o.GenerateSelfSignedCertificate
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json

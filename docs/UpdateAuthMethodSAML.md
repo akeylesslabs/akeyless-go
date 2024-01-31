@@ -7,14 +7,16 @@ Name | Type | Description | Notes
 **AccessExpires** | Pointer to **int64** | Access expiration date in Unix timestamp (select 0 for access without expiry date) | [optional] [default to 0]
 **AllowedRedirectUri** | Pointer to **[]string** | Allowed redirect URIs after the authentication | [optional] 
 **BoundIps** | Pointer to **[]string** | A CIDR whitelist with the IPs that the access is restricted to | [optional] 
+**Description** | Pointer to **string** | Auth Method description | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
 **GwBoundIps** | Pointer to **[]string** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
 **IdpMetadataUrl** | Pointer to **string** | IDP metadata url | [optional] 
 **IdpMetadataXmlData** | Pointer to **string** | IDP metadata xml data | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
-**JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] [default to 0]
 **Name** | **string** | Auth Method name | 
 **NewName** | Pointer to **string** | Auth Method new name | [optional] 
+**SubclaimsDelimiters** | Pointer to **[]string** | A list of additional sub claims delimiters (relevant only for SAML, OIDC, OAuth2/JWT) | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UniqueIdentifier** | **string** | A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. | 
@@ -112,6 +114,31 @@ SetBoundIps sets BoundIps field to given value.
 `func (o *UpdateAuthMethodSAML) HasBoundIps() bool`
 
 HasBoundIps returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *UpdateAuthMethodSAML) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *UpdateAuthMethodSAML) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *UpdateAuthMethodSAML) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *UpdateAuthMethodSAML) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetForceSubClaims
 
@@ -307,6 +334,31 @@ SetNewName sets NewName field to given value.
 `func (o *UpdateAuthMethodSAML) HasNewName() bool`
 
 HasNewName returns a boolean if a field has been set.
+
+### GetSubclaimsDelimiters
+
+`func (o *UpdateAuthMethodSAML) GetSubclaimsDelimiters() []string`
+
+GetSubclaimsDelimiters returns the SubclaimsDelimiters field if non-nil, zero value otherwise.
+
+### GetSubclaimsDelimitersOk
+
+`func (o *UpdateAuthMethodSAML) GetSubclaimsDelimitersOk() (*[]string, bool)`
+
+GetSubclaimsDelimitersOk returns a tuple with the SubclaimsDelimiters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSubclaimsDelimiters
+
+`func (o *UpdateAuthMethodSAML) SetSubclaimsDelimiters(v []string)`
+
+SetSubclaimsDelimiters sets SubclaimsDelimiters field to given value.
+
+### HasSubclaimsDelimiters
+
+`func (o *UpdateAuthMethodSAML) HasSubclaimsDelimiters() bool`
+
+HasSubclaimsDelimiters returns a boolean if a field has been set.
 
 ### GetToken
 

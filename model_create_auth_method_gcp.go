@@ -33,6 +33,8 @@ type CreateAuthMethodGCP struct {
 	BoundServiceAccounts *[]string `json:"bound-service-accounts,omitempty"`
 	// === Machine authentication section === List of zones that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a zonal group and the group must belong to this zone.
 	BoundZones *[]string `json:"bound-zones,omitempty"`
+	// Auth Method description
+	Description *string `json:"description,omitempty"`
 	// if true: enforce role-association must include sub claims
 	ForceSubClaims *bool `json:"force-sub-claims,omitempty"`
 	// A CIDR whitelist with the GW IPs that the access is restricted to
@@ -62,6 +64,10 @@ func NewCreateAuthMethodGCP(audience string, name string, type_ string, ) *Creat
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
 	this.Audience = audience
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	this.Name = name
 	this.Type = type_
 	return &this
@@ -76,6 +82,10 @@ func NewCreateAuthMethodGCPWithDefaults() *CreateAuthMethodGCP {
 	this.AccessExpires = &accessExpires
 	var audience string = "akeyless.io"
 	this.Audience = audience
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	return &this
 }
 
@@ -325,6 +335,38 @@ func (o *CreateAuthMethodGCP) HasBoundZones() bool {
 // SetBoundZones gets a reference to the given []string and assigns it to the BoundZones field.
 func (o *CreateAuthMethodGCP) SetBoundZones(v []string) {
 	o.BoundZones = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *CreateAuthMethodGCP) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodGCP) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *CreateAuthMethodGCP) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *CreateAuthMethodGCP) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetForceSubClaims returns the ForceSubClaims field value if set, zero value otherwise.
@@ -624,6 +666,9 @@ func (o CreateAuthMethodGCP) MarshalJSON() ([]byte, error) {
 	}
 	if o.BoundZones != nil {
 		toSerialize["bound-zones"] = o.BoundZones
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.ForceSubClaims != nil {
 		toSerialize["force-sub-claims"] = o.ForceSubClaims

@@ -17,22 +17,29 @@ import (
 
 // CreateAWSTarget struct for CreateAWSTarget
 type CreateAWSTarget struct {
-	AccessKey *string `json:"access-key,omitempty"`
-	AccessKeyId *string `json:"access-key-id,omitempty"`
-	// Comment about the target
+	// AWS secret access key
+	AccessKey string `json:"access-key"`
+	// AWS access key ID
+	AccessKeyId string `json:"access-key-id"`
+	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`
+	// Description of the object
+	Description *string `json:"description,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
 	// Target name
 	Name string `json:"name"`
+	// AWS region
 	Region *string `json:"region,omitempty"`
+	// Required only for temporary security credentials retrieved using STS
 	SessionToken *string `json:"session-token,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// Use the GW's Cloud IAM
 	UseGwCloudIdentity *bool `json:"use-gw-cloud-identity,omitempty"`
 }
 
@@ -40,9 +47,15 @@ type CreateAWSTarget struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateAWSTarget(name string, ) *CreateAWSTarget {
+func NewCreateAWSTarget(accessKey string, accessKeyId string, name string, ) *CreateAWSTarget {
 	this := CreateAWSTarget{}
+	this.AccessKey = accessKey
+	this.AccessKeyId = accessKeyId
+	var json bool = false
+	this.Json = &json
 	this.Name = name
+	var region string = "us-east-2"
+	this.Region = &region
 	return &this
 }
 
@@ -51,71 +64,59 @@ func NewCreateAWSTarget(name string, ) *CreateAWSTarget {
 // but it doesn't guarantee that properties required by API are set
 func NewCreateAWSTargetWithDefaults() *CreateAWSTarget {
 	this := CreateAWSTarget{}
+	var json bool = false
+	this.Json = &json
+	var region string = "us-east-2"
+	this.Region = &region
 	return &this
 }
 
-// GetAccessKey returns the AccessKey field value if set, zero value otherwise.
+// GetAccessKey returns the AccessKey field value
 func (o *CreateAWSTarget) GetAccessKey() string {
-	if o == nil || o.AccessKey == nil {
+	if o == nil  {
 		var ret string
 		return ret
 	}
-	return *o.AccessKey
+
+	return o.AccessKey
 }
 
-// GetAccessKeyOk returns a tuple with the AccessKey field value if set, nil otherwise
+// GetAccessKeyOk returns a tuple with the AccessKey field value
 // and a boolean to check if the value has been set.
 func (o *CreateAWSTarget) GetAccessKeyOk() (*string, bool) {
-	if o == nil || o.AccessKey == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.AccessKey, true
+	return &o.AccessKey, true
 }
 
-// HasAccessKey returns a boolean if a field has been set.
-func (o *CreateAWSTarget) HasAccessKey() bool {
-	if o != nil && o.AccessKey != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAccessKey gets a reference to the given string and assigns it to the AccessKey field.
+// SetAccessKey sets field value
 func (o *CreateAWSTarget) SetAccessKey(v string) {
-	o.AccessKey = &v
+	o.AccessKey = v
 }
 
-// GetAccessKeyId returns the AccessKeyId field value if set, zero value otherwise.
+// GetAccessKeyId returns the AccessKeyId field value
 func (o *CreateAWSTarget) GetAccessKeyId() string {
-	if o == nil || o.AccessKeyId == nil {
+	if o == nil  {
 		var ret string
 		return ret
 	}
-	return *o.AccessKeyId
+
+	return o.AccessKeyId
 }
 
-// GetAccessKeyIdOk returns a tuple with the AccessKeyId field value if set, nil otherwise
+// GetAccessKeyIdOk returns a tuple with the AccessKeyId field value
 // and a boolean to check if the value has been set.
 func (o *CreateAWSTarget) GetAccessKeyIdOk() (*string, bool) {
-	if o == nil || o.AccessKeyId == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.AccessKeyId, true
+	return &o.AccessKeyId, true
 }
 
-// HasAccessKeyId returns a boolean if a field has been set.
-func (o *CreateAWSTarget) HasAccessKeyId() bool {
-	if o != nil && o.AccessKeyId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAccessKeyId gets a reference to the given string and assigns it to the AccessKeyId field.
+// SetAccessKeyId sets field value
 func (o *CreateAWSTarget) SetAccessKeyId(v string) {
-	o.AccessKeyId = &v
+	o.AccessKeyId = v
 }
 
 // GetComment returns the Comment field value if set, zero value otherwise.
@@ -148,6 +149,38 @@ func (o *CreateAWSTarget) HasComment() bool {
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *CreateAWSTarget) SetComment(v string) {
 	o.Comment = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *CreateAWSTarget) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAWSTarget) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *CreateAWSTarget) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *CreateAWSTarget) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -400,14 +433,17 @@ func (o *CreateAWSTarget) SetUseGwCloudIdentity(v bool) {
 
 func (o CreateAWSTarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.AccessKey != nil {
+	if true {
 		toSerialize["access-key"] = o.AccessKey
 	}
-	if o.AccessKeyId != nil {
+	if true {
 		toSerialize["access-key-id"] = o.AccessKeyId
 	}
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json

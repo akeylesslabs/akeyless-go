@@ -38,6 +38,8 @@ type SetItemState struct {
 func NewSetItemState(desiredState string, name string, ) *SetItemState {
 	this := SetItemState{}
 	this.DesiredState = desiredState
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	var version int32 = 0
 	this.Version = &version
@@ -49,6 +51,8 @@ func NewSetItemState(desiredState string, name string, ) *SetItemState {
 // but it doesn't guarantee that properties required by API are set
 func NewSetItemStateWithDefaults() *SetItemState {
 	this := SetItemState{}
+	var json bool = false
+	this.Json = &json
 	var version int32 = 0
 	this.Version = &version
 	return &this

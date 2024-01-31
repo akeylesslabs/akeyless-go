@@ -19,6 +19,7 @@ import (
 // Role struct for Role
 type Role struct {
 	AccessDate *time.Time `json:"access_date,omitempty"`
+	AccessDateDisplay *string `json:"access_date_display,omitempty"`
 	ClientPermissions *[]string `json:"client_permissions,omitempty"`
 	Comment *string `json:"comment,omitempty"`
 	CreationDate *time.Time `json:"creation_date,omitempty"`
@@ -75,6 +76,38 @@ func (o *Role) HasAccessDate() bool {
 // SetAccessDate gets a reference to the given time.Time and assigns it to the AccessDate field.
 func (o *Role) SetAccessDate(v time.Time) {
 	o.AccessDate = &v
+}
+
+// GetAccessDateDisplay returns the AccessDateDisplay field value if set, zero value otherwise.
+func (o *Role) GetAccessDateDisplay() string {
+	if o == nil || o.AccessDateDisplay == nil {
+		var ret string
+		return ret
+	}
+	return *o.AccessDateDisplay
+}
+
+// GetAccessDateDisplayOk returns a tuple with the AccessDateDisplay field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Role) GetAccessDateDisplayOk() (*string, bool) {
+	if o == nil || o.AccessDateDisplay == nil {
+		return nil, false
+	}
+	return o.AccessDateDisplay, true
+}
+
+// HasAccessDateDisplay returns a boolean if a field has been set.
+func (o *Role) HasAccessDateDisplay() bool {
+	if o != nil && o.AccessDateDisplay != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessDateDisplay gets a reference to the given string and assigns it to the AccessDateDisplay field.
+func (o *Role) SetAccessDateDisplay(v string) {
+	o.AccessDateDisplay = &v
 }
 
 // GetClientPermissions returns the ClientPermissions field value if set, zero value otherwise.
@@ -305,6 +338,9 @@ func (o Role) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccessDate != nil {
 		toSerialize["access_date"] = o.AccessDate
+	}
+	if o.AccessDateDisplay != nil {
+		toSerialize["access_date_display"] = o.AccessDateDisplay
 	}
 	if o.ClientPermissions != nil {
 		toSerialize["client_permissions"] = o.ClientPermissions

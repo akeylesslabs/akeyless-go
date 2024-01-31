@@ -23,6 +23,8 @@ type CreateAuthMethodSAML struct {
 	AllowedRedirectUri *[]string `json:"allowed-redirect-uri,omitempty"`
 	// A CIDR whitelist with the IPs that the access is restricted to
 	BoundIps *[]string `json:"bound-ips,omitempty"`
+	// Auth Method description
+	Description *string `json:"description,omitempty"`
 	// if true: enforce role-association must include sub claims
 	ForceSubClaims *bool `json:"force-sub-claims,omitempty"`
 	// A CIDR whitelist with the GW IPs that the access is restricted to
@@ -37,6 +39,8 @@ type CreateAuthMethodSAML struct {
 	JwtTtl *int64 `json:"jwt-ttl,omitempty"`
 	// Auth Method name
 	Name string `json:"name"`
+	// A list of additional sub claims delimiters (relevant only for SAML, OIDC, OAuth2/JWT)
+	SubclaimsDelimiters *[]string `json:"subclaims-delimiters,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -53,6 +57,10 @@ func NewCreateAuthMethodSAML(name string, uniqueIdentifier string, ) *CreateAuth
 	this := CreateAuthMethodSAML{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	this.Name = name
 	this.UniqueIdentifier = uniqueIdentifier
 	return &this
@@ -65,6 +73,10 @@ func NewCreateAuthMethodSAMLWithDefaults() *CreateAuthMethodSAML {
 	this := CreateAuthMethodSAML{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var json bool = false
+	this.Json = &json
+	var jwtTtl int64 = 0
+	this.JwtTtl = &jwtTtl
 	return &this
 }
 
@@ -162,6 +174,38 @@ func (o *CreateAuthMethodSAML) HasBoundIps() bool {
 // SetBoundIps gets a reference to the given []string and assigns it to the BoundIps field.
 func (o *CreateAuthMethodSAML) SetBoundIps(v []string) {
 	o.BoundIps = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *CreateAuthMethodSAML) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodSAML) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *CreateAuthMethodSAML) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *CreateAuthMethodSAML) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetForceSubClaims returns the ForceSubClaims field value if set, zero value otherwise.
@@ -380,6 +424,38 @@ func (o *CreateAuthMethodSAML) SetName(v string) {
 	o.Name = v
 }
 
+// GetSubclaimsDelimiters returns the SubclaimsDelimiters field value if set, zero value otherwise.
+func (o *CreateAuthMethodSAML) GetSubclaimsDelimiters() []string {
+	if o == nil || o.SubclaimsDelimiters == nil {
+		var ret []string
+		return ret
+	}
+	return *o.SubclaimsDelimiters
+}
+
+// GetSubclaimsDelimitersOk returns a tuple with the SubclaimsDelimiters field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodSAML) GetSubclaimsDelimitersOk() (*[]string, bool) {
+	if o == nil || o.SubclaimsDelimiters == nil {
+		return nil, false
+	}
+	return o.SubclaimsDelimiters, true
+}
+
+// HasSubclaimsDelimiters returns a boolean if a field has been set.
+func (o *CreateAuthMethodSAML) HasSubclaimsDelimiters() bool {
+	if o != nil && o.SubclaimsDelimiters != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSubclaimsDelimiters gets a reference to the given []string and assigns it to the SubclaimsDelimiters field.
+func (o *CreateAuthMethodSAML) SetSubclaimsDelimiters(v []string) {
+	o.SubclaimsDelimiters = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *CreateAuthMethodSAML) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -479,6 +555,9 @@ func (o CreateAuthMethodSAML) MarshalJSON() ([]byte, error) {
 	if o.BoundIps != nil {
 		toSerialize["bound-ips"] = o.BoundIps
 	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
+	}
 	if o.ForceSubClaims != nil {
 		toSerialize["force-sub-claims"] = o.ForceSubClaims
 	}
@@ -499,6 +578,9 @@ func (o CreateAuthMethodSAML) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.SubclaimsDelimiters != nil {
+		toSerialize["subclaims-delimiters"] = o.SubclaimsDelimiters
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

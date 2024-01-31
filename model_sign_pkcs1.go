@@ -19,6 +19,10 @@ import (
 type SignPKCS1 struct {
 	// The display id of the key to use in the signing process
 	DisplayId *string `json:"display-id,omitempty"`
+	// HashFunction defines the hash function (e.g. sha-256)
+	HashFunction *string `json:"hash-function,omitempty"`
+	// Select default assumed format for the plaintext message. Currently supported options: [base64]
+	InputFormat *string `json:"input-format,omitempty"`
 	// The item id of the key to use in the signing process
 	ItemId *int64 `json:"item-id,omitempty"`
 	// Set output format to JSON
@@ -27,10 +31,14 @@ type SignPKCS1 struct {
 	KeyName *string `json:"key-name,omitempty"`
 	// The message to be signed
 	Message string `json:"message"`
+	// Markes that the message is already hashed
+	Prehashed *bool `json:"prehashed,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// The version of the key to use for signing
+	Version *int32 `json:"version,omitempty"`
 }
 
 // NewSignPKCS1 instantiates a new SignPKCS1 object
@@ -39,6 +47,8 @@ type SignPKCS1 struct {
 // will change when the set of required properties is changed
 func NewSignPKCS1(message string, ) *SignPKCS1 {
 	this := SignPKCS1{}
+	var json bool = false
+	this.Json = &json
 	this.Message = message
 	return &this
 }
@@ -48,6 +58,8 @@ func NewSignPKCS1(message string, ) *SignPKCS1 {
 // but it doesn't guarantee that properties required by API are set
 func NewSignPKCS1WithDefaults() *SignPKCS1 {
 	this := SignPKCS1{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -81,6 +93,70 @@ func (o *SignPKCS1) HasDisplayId() bool {
 // SetDisplayId gets a reference to the given string and assigns it to the DisplayId field.
 func (o *SignPKCS1) SetDisplayId(v string) {
 	o.DisplayId = &v
+}
+
+// GetHashFunction returns the HashFunction field value if set, zero value otherwise.
+func (o *SignPKCS1) GetHashFunction() string {
+	if o == nil || o.HashFunction == nil {
+		var ret string
+		return ret
+	}
+	return *o.HashFunction
+}
+
+// GetHashFunctionOk returns a tuple with the HashFunction field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SignPKCS1) GetHashFunctionOk() (*string, bool) {
+	if o == nil || o.HashFunction == nil {
+		return nil, false
+	}
+	return o.HashFunction, true
+}
+
+// HasHashFunction returns a boolean if a field has been set.
+func (o *SignPKCS1) HasHashFunction() bool {
+	if o != nil && o.HashFunction != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHashFunction gets a reference to the given string and assigns it to the HashFunction field.
+func (o *SignPKCS1) SetHashFunction(v string) {
+	o.HashFunction = &v
+}
+
+// GetInputFormat returns the InputFormat field value if set, zero value otherwise.
+func (o *SignPKCS1) GetInputFormat() string {
+	if o == nil || o.InputFormat == nil {
+		var ret string
+		return ret
+	}
+	return *o.InputFormat
+}
+
+// GetInputFormatOk returns a tuple with the InputFormat field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SignPKCS1) GetInputFormatOk() (*string, bool) {
+	if o == nil || o.InputFormat == nil {
+		return nil, false
+	}
+	return o.InputFormat, true
+}
+
+// HasInputFormat returns a boolean if a field has been set.
+func (o *SignPKCS1) HasInputFormat() bool {
+	if o != nil && o.InputFormat != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInputFormat gets a reference to the given string and assigns it to the InputFormat field.
+func (o *SignPKCS1) SetInputFormat(v string) {
+	o.InputFormat = &v
 }
 
 // GetItemId returns the ItemId field value if set, zero value otherwise.
@@ -203,6 +279,38 @@ func (o *SignPKCS1) SetMessage(v string) {
 	o.Message = v
 }
 
+// GetPrehashed returns the Prehashed field value if set, zero value otherwise.
+func (o *SignPKCS1) GetPrehashed() bool {
+	if o == nil || o.Prehashed == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Prehashed
+}
+
+// GetPrehashedOk returns a tuple with the Prehashed field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SignPKCS1) GetPrehashedOk() (*bool, bool) {
+	if o == nil || o.Prehashed == nil {
+		return nil, false
+	}
+	return o.Prehashed, true
+}
+
+// HasPrehashed returns a boolean if a field has been set.
+func (o *SignPKCS1) HasPrehashed() bool {
+	if o != nil && o.Prehashed != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPrehashed gets a reference to the given bool and assigns it to the Prehashed field.
+func (o *SignPKCS1) SetPrehashed(v bool) {
+	o.Prehashed = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *SignPKCS1) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -267,10 +375,48 @@ func (o *SignPKCS1) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetVersion returns the Version field value if set, zero value otherwise.
+func (o *SignPKCS1) GetVersion() int32 {
+	if o == nil || o.Version == nil {
+		var ret int32
+		return ret
+	}
+	return *o.Version
+}
+
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SignPKCS1) GetVersionOk() (*int32, bool) {
+	if o == nil || o.Version == nil {
+		return nil, false
+	}
+	return o.Version, true
+}
+
+// HasVersion returns a boolean if a field has been set.
+func (o *SignPKCS1) HasVersion() bool {
+	if o != nil && o.Version != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given int32 and assigns it to the Version field.
+func (o *SignPKCS1) SetVersion(v int32) {
+	o.Version = &v
+}
+
 func (o SignPKCS1) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DisplayId != nil {
 		toSerialize["display-id"] = o.DisplayId
+	}
+	if o.HashFunction != nil {
+		toSerialize["hash-function"] = o.HashFunction
+	}
+	if o.InputFormat != nil {
+		toSerialize["input-format"] = o.InputFormat
 	}
 	if o.ItemId != nil {
 		toSerialize["item-id"] = o.ItemId
@@ -284,11 +430,17 @@ func (o SignPKCS1) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["message"] = o.Message
 	}
+	if o.Prehashed != nil {
+		toSerialize["prehashed"] = o.Prehashed
+	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.Version != nil {
+		toSerialize["version"] = o.Version
 	}
 	return json.Marshal(toSerialize)
 }

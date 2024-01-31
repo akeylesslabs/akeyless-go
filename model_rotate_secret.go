@@ -17,10 +17,13 @@ import (
 
 // RotateSecret struct for RotateSecret
 type RotateSecret struct {
+	RotateAllServicesBoolean *bool `json:"RotateAllServicesBoolean,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Secret name (Rotated Secret or Custom Dynamic Secret)
 	Name string `json:"name"`
+	// Rotate all associated services
+	RotateAllServices *string `json:"rotate-all-services,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -33,7 +36,11 @@ type RotateSecret struct {
 // will change when the set of required properties is changed
 func NewRotateSecret(name string, ) *RotateSecret {
 	this := RotateSecret{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
+	var rotateAllServices string = "false"
+	this.RotateAllServices = &rotateAllServices
 	return &this
 }
 
@@ -42,7 +49,43 @@ func NewRotateSecret(name string, ) *RotateSecret {
 // but it doesn't guarantee that properties required by API are set
 func NewRotateSecretWithDefaults() *RotateSecret {
 	this := RotateSecret{}
+	var json bool = false
+	this.Json = &json
+	var rotateAllServices string = "false"
+	this.RotateAllServices = &rotateAllServices
 	return &this
+}
+
+// GetRotateAllServicesBoolean returns the RotateAllServicesBoolean field value if set, zero value otherwise.
+func (o *RotateSecret) GetRotateAllServicesBoolean() bool {
+	if o == nil || o.RotateAllServicesBoolean == nil {
+		var ret bool
+		return ret
+	}
+	return *o.RotateAllServicesBoolean
+}
+
+// GetRotateAllServicesBooleanOk returns a tuple with the RotateAllServicesBoolean field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotateSecret) GetRotateAllServicesBooleanOk() (*bool, bool) {
+	if o == nil || o.RotateAllServicesBoolean == nil {
+		return nil, false
+	}
+	return o.RotateAllServicesBoolean, true
+}
+
+// HasRotateAllServicesBoolean returns a boolean if a field has been set.
+func (o *RotateSecret) HasRotateAllServicesBoolean() bool {
+	if o != nil && o.RotateAllServicesBoolean != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRotateAllServicesBoolean gets a reference to the given bool and assigns it to the RotateAllServicesBoolean field.
+func (o *RotateSecret) SetRotateAllServicesBoolean(v bool) {
+	o.RotateAllServicesBoolean = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -99,6 +142,38 @@ func (o *RotateSecret) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *RotateSecret) SetName(v string) {
 	o.Name = v
+}
+
+// GetRotateAllServices returns the RotateAllServices field value if set, zero value otherwise.
+func (o *RotateSecret) GetRotateAllServices() string {
+	if o == nil || o.RotateAllServices == nil {
+		var ret string
+		return ret
+	}
+	return *o.RotateAllServices
+}
+
+// GetRotateAllServicesOk returns a tuple with the RotateAllServices field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotateSecret) GetRotateAllServicesOk() (*string, bool) {
+	if o == nil || o.RotateAllServices == nil {
+		return nil, false
+	}
+	return o.RotateAllServices, true
+}
+
+// HasRotateAllServices returns a boolean if a field has been set.
+func (o *RotateSecret) HasRotateAllServices() bool {
+	if o != nil && o.RotateAllServices != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRotateAllServices gets a reference to the given string and assigns it to the RotateAllServices field.
+func (o *RotateSecret) SetRotateAllServices(v string) {
+	o.RotateAllServices = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -167,11 +242,17 @@ func (o *RotateSecret) SetUidToken(v string) {
 
 func (o RotateSecret) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.RotateAllServicesBoolean != nil {
+		toSerialize["RotateAllServicesBoolean"] = o.RotateAllServicesBoolean
+	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.RotateAllServices != nil {
+		toSerialize["rotate-all-services"] = o.RotateAllServices
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

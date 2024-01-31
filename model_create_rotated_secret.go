@@ -17,22 +17,33 @@ import (
 
 // CreateRotatedSecret struct for CreateRotatedSecret
 type CreateRotatedSecret struct {
+	ProviderType *string `json:"ProviderType,omitempty"`
+	// API ID to rotate (relevant only for rotator-type=api-key)
 	ApiId *string `json:"api-id,omitempty"`
+	// API key to rotate (relevant only for rotator-type=api-key)
 	ApiKey *string `json:"api-key,omitempty"`
 	// ApplicationId (used in azure)
 	ApplicationId *string `json:"application-id,omitempty"`
+	// The credentials to connect with use-user-creds/use-target-creds
 	AuthenticationCredentials *string `json:"authentication-credentials,omitempty"`
-	// Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation
+	// Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation [true/false]
 	AutoRotate *string `json:"auto-rotate,omitempty"`
 	// Region (used in aws)
 	AwsRegion *string `json:"aws-region,omitempty"`
+	// Secret payload to be sent with rotation request (relevant only for rotator-type=custom)
 	CustomPayload *string `json:"custom-payload,omitempty"`
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
 	// Base64-encoded service account private key text
 	GcpKey *string `json:"gcp-key,omitempty"`
+	// The email of the gcp service account to rotate
+	GcpServiceAccountEmail *string `json:"gcp-service-account-email,omitempty"`
+	// The key id of the gcp service account to rotate
+	GcpServiceAccountKeyId *string `json:"gcp-service-account-key-id,omitempty"`
+	// Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret
+	HostProvider *string `json:"host-provider,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
@@ -41,42 +52,48 @@ type CreateRotatedSecret struct {
 	Metadata *string `json:"metadata,omitempty"`
 	// Secret name
 	Name string `json:"name"`
-	// Rotate the value of the secret after SRA session ends
+	// Rotate the value of the secret after SRA session ends [true/false]
 	RotateAfterDisconnect *string `json:"rotate-after-disconnect,omitempty"`
+	// rotated-username password (relevant only for rotator-type=password)
 	RotatedPassword *string `json:"rotated-password,omitempty"`
+	// username to be rotated, if selected use-self-creds at rotator-creds-type, this username will try to rotate it's own password, if use-target-creds is selected, target credentials will be use to rotate the rotated-password (relevant only for rotator-type=password)
 	RotatedUsername *string `json:"rotated-username,omitempty"`
+	// The Hour of the rotation in UTC. Default rotation-hour is 14:00
 	RotationHour *int32 `json:"rotation-hour,omitempty"`
 	// The number of days to wait between every automatic key rotation (1-365)
 	RotationInterval *string `json:"rotation-interval,omitempty"`
 	RotatorCredsType *string `json:"rotator-creds-type,omitempty"`
+	// Custom rotation command (relevant only for ssh target)
 	RotatorCustomCmd *string `json:"rotator-custom-cmd,omitempty"`
 	// Rotator Type
 	RotatorType string `json:"rotator-type"`
-	// Secure Access Allow Providing External User (used in ssh)
+	// Rotate same password for each host from the Linked Target (relevant only for Linked Target)
+	SamePassword *string `json:"same-password,omitempty"`
+	// Allow providing external user for a domain users (relevant only for rdp)
 	SecureAccessAllowExternalUser *bool `json:"secure-access-allow-external-user,omitempty"`
-	// Secure Access Account Id (used in aws)
+	// The AWS account id (relevant only for aws)
 	SecureAccessAwsAccountId *string `json:"secure-access-aws-account-id,omitempty"`
-	// Secure Access Aws Native Cli (used in aws)
+	// The AWS native cli
 	SecureAccessAwsNativeCli *bool `json:"secure-access-aws-native-cli,omitempty"`
-	// Secure Access Bastion Issuer
+	// Path to the SSH Certificate Issuer for your Akeyless Bastion
 	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
-	// Secure Access DB Name (used in data bases)
+	// The DB name (relevant only for DB Dynamic-Secret)
 	SecureAccessDbName *string `json:"secure-access-db-name,omitempty"`
-	// Secure Access Schema (used in mssql, postgresql)
+	// The db schema (relevant only for mssql or postgresql)
 	SecureAccessDbSchema *string `json:"secure-access-db-schema,omitempty"`
-	// Secure Access Enabled
+	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
-	// Secure Access Host
+	// Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
 	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
-	// Secure Access Domain (used in ssh)
+	// Required when the Dynamic Secret is used for a domain user (relevant only for RDP Dynamic-Secret)
 	SecureAccessRdpDomain *string `json:"secure-access-rdp-domain,omitempty"`
-	// Secure Access Override User (used in ssh)
+	// Override the RDP Domain username (relevant only for rdp)
 	SecureAccessRdpUser *string `json:"secure-access-rdp-user,omitempty"`
-	// Secure Access Web
+	// Enable Web Secure Remote Access
 	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
-	// Secure Access Isolated (used in aws, azure)
+	// Secure browser via Akeyless Web Access Bastion (relevant only for aws or azure)
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
-	// Secure Access Web Proxy (used in aws, azure)
+	// Web-Proxy via Akeyless Web Access Bastion (relevant only for aws or azure)
 	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
 	// Deprecated: use RotatedPassword
 	SshPassword *string `json:"ssh-password,omitempty"`
@@ -84,8 +101,10 @@ type CreateRotatedSecret struct {
 	SshUsername *string `json:"ssh-username,omitempty"`
 	// The name of the storage account key to rotate [key1/key2/kerb1/kerb2] (relevat to azure-storage-account)
 	StorageAccountKeyName *string `json:"storage-account-key-name,omitempty"`
-	// List of the tags attached to this secret
+	// Add tags attached to this object
 	Tags *[]string `json:"tags,omitempty"`
+	// A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer and ldap rotated secret, To specify multiple targets use argument multiple times
+	Target *[]string `json:"target,omitempty"`
 	// Target name
 	TargetName string `json:"target-name"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -104,8 +123,14 @@ type CreateRotatedSecret struct {
 // will change when the set of required properties is changed
 func NewCreateRotatedSecret(name string, rotatorType string, targetName string, ) *CreateRotatedSecret {
 	this := CreateRotatedSecret{}
+	var authenticationCredentials string = "use-user-creds"
+	this.AuthenticationCredentials = &authenticationCredentials
 	var awsRegion string = "us-east-2"
 	this.AwsRegion = &awsRegion
+	var hostProvider string = "explicit"
+	this.HostProvider = &hostProvider
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	var rotateAfterDisconnect string = "false"
 	this.RotateAfterDisconnect = &rotateAfterDisconnect
@@ -127,8 +152,14 @@ func NewCreateRotatedSecret(name string, rotatorType string, targetName string, 
 // but it doesn't guarantee that properties required by API are set
 func NewCreateRotatedSecretWithDefaults() *CreateRotatedSecret {
 	this := CreateRotatedSecret{}
+	var authenticationCredentials string = "use-user-creds"
+	this.AuthenticationCredentials = &authenticationCredentials
 	var awsRegion string = "us-east-2"
 	this.AwsRegion = &awsRegion
+	var hostProvider string = "explicit"
+	this.HostProvider = &hostProvider
+	var json bool = false
+	this.Json = &json
 	var rotateAfterDisconnect string = "false"
 	this.RotateAfterDisconnect = &rotateAfterDisconnect
 	var secureAccessAllowExternalUser bool = false
@@ -140,6 +171,38 @@ func NewCreateRotatedSecretWithDefaults() *CreateRotatedSecret {
 	var secureAccessWebProxy bool = false
 	this.SecureAccessWebProxy = &secureAccessWebProxy
 	return &this
+}
+
+// GetProviderType returns the ProviderType field value if set, zero value otherwise.
+func (o *CreateRotatedSecret) GetProviderType() string {
+	if o == nil || o.ProviderType == nil {
+		var ret string
+		return ret
+	}
+	return *o.ProviderType
+}
+
+// GetProviderTypeOk returns a tuple with the ProviderType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRotatedSecret) GetProviderTypeOk() (*string, bool) {
+	if o == nil || o.ProviderType == nil {
+		return nil, false
+	}
+	return o.ProviderType, true
+}
+
+// HasProviderType returns a boolean if a field has been set.
+func (o *CreateRotatedSecret) HasProviderType() bool {
+	if o != nil && o.ProviderType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProviderType gets a reference to the given string and assigns it to the ProviderType field.
+func (o *CreateRotatedSecret) SetProviderType(v string) {
+	o.ProviderType = &v
 }
 
 // GetApiId returns the ApiId field value if set, zero value otherwise.
@@ -460,6 +523,102 @@ func (o *CreateRotatedSecret) HasGcpKey() bool {
 // SetGcpKey gets a reference to the given string and assigns it to the GcpKey field.
 func (o *CreateRotatedSecret) SetGcpKey(v string) {
 	o.GcpKey = &v
+}
+
+// GetGcpServiceAccountEmail returns the GcpServiceAccountEmail field value if set, zero value otherwise.
+func (o *CreateRotatedSecret) GetGcpServiceAccountEmail() string {
+	if o == nil || o.GcpServiceAccountEmail == nil {
+		var ret string
+		return ret
+	}
+	return *o.GcpServiceAccountEmail
+}
+
+// GetGcpServiceAccountEmailOk returns a tuple with the GcpServiceAccountEmail field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRotatedSecret) GetGcpServiceAccountEmailOk() (*string, bool) {
+	if o == nil || o.GcpServiceAccountEmail == nil {
+		return nil, false
+	}
+	return o.GcpServiceAccountEmail, true
+}
+
+// HasGcpServiceAccountEmail returns a boolean if a field has been set.
+func (o *CreateRotatedSecret) HasGcpServiceAccountEmail() bool {
+	if o != nil && o.GcpServiceAccountEmail != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpServiceAccountEmail gets a reference to the given string and assigns it to the GcpServiceAccountEmail field.
+func (o *CreateRotatedSecret) SetGcpServiceAccountEmail(v string) {
+	o.GcpServiceAccountEmail = &v
+}
+
+// GetGcpServiceAccountKeyId returns the GcpServiceAccountKeyId field value if set, zero value otherwise.
+func (o *CreateRotatedSecret) GetGcpServiceAccountKeyId() string {
+	if o == nil || o.GcpServiceAccountKeyId == nil {
+		var ret string
+		return ret
+	}
+	return *o.GcpServiceAccountKeyId
+}
+
+// GetGcpServiceAccountKeyIdOk returns a tuple with the GcpServiceAccountKeyId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRotatedSecret) GetGcpServiceAccountKeyIdOk() (*string, bool) {
+	if o == nil || o.GcpServiceAccountKeyId == nil {
+		return nil, false
+	}
+	return o.GcpServiceAccountKeyId, true
+}
+
+// HasGcpServiceAccountKeyId returns a boolean if a field has been set.
+func (o *CreateRotatedSecret) HasGcpServiceAccountKeyId() bool {
+	if o != nil && o.GcpServiceAccountKeyId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpServiceAccountKeyId gets a reference to the given string and assigns it to the GcpServiceAccountKeyId field.
+func (o *CreateRotatedSecret) SetGcpServiceAccountKeyId(v string) {
+	o.GcpServiceAccountKeyId = &v
+}
+
+// GetHostProvider returns the HostProvider field value if set, zero value otherwise.
+func (o *CreateRotatedSecret) GetHostProvider() string {
+	if o == nil || o.HostProvider == nil {
+		var ret string
+		return ret
+	}
+	return *o.HostProvider
+}
+
+// GetHostProviderOk returns a tuple with the HostProvider field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRotatedSecret) GetHostProviderOk() (*string, bool) {
+	if o == nil || o.HostProvider == nil {
+		return nil, false
+	}
+	return o.HostProvider, true
+}
+
+// HasHostProvider returns a boolean if a field has been set.
+func (o *CreateRotatedSecret) HasHostProvider() bool {
+	if o != nil && o.HostProvider != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHostProvider gets a reference to the given string and assigns it to the HostProvider field.
+func (o *CreateRotatedSecret) SetHostProvider(v string) {
+	o.HostProvider = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -828,6 +987,38 @@ func (o *CreateRotatedSecret) GetRotatorTypeOk() (*string, bool) {
 // SetRotatorType sets field value
 func (o *CreateRotatedSecret) SetRotatorType(v string) {
 	o.RotatorType = v
+}
+
+// GetSamePassword returns the SamePassword field value if set, zero value otherwise.
+func (o *CreateRotatedSecret) GetSamePassword() string {
+	if o == nil || o.SamePassword == nil {
+		var ret string
+		return ret
+	}
+	return *o.SamePassword
+}
+
+// GetSamePasswordOk returns a tuple with the SamePassword field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRotatedSecret) GetSamePasswordOk() (*string, bool) {
+	if o == nil || o.SamePassword == nil {
+		return nil, false
+	}
+	return o.SamePassword, true
+}
+
+// HasSamePassword returns a boolean if a field has been set.
+func (o *CreateRotatedSecret) HasSamePassword() bool {
+	if o != nil && o.SamePassword != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSamePassword gets a reference to the given string and assigns it to the SamePassword field.
+func (o *CreateRotatedSecret) SetSamePassword(v string) {
+	o.SamePassword = &v
 }
 
 // GetSecureAccessAllowExternalUser returns the SecureAccessAllowExternalUser field value if set, zero value otherwise.
@@ -1374,6 +1565,38 @@ func (o *CreateRotatedSecret) SetTags(v []string) {
 	o.Tags = &v
 }
 
+// GetTarget returns the Target field value if set, zero value otherwise.
+func (o *CreateRotatedSecret) GetTarget() []string {
+	if o == nil || o.Target == nil {
+		var ret []string
+		return ret
+	}
+	return *o.Target
+}
+
+// GetTargetOk returns a tuple with the Target field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRotatedSecret) GetTargetOk() (*[]string, bool) {
+	if o == nil || o.Target == nil {
+		return nil, false
+	}
+	return o.Target, true
+}
+
+// HasTarget returns a boolean if a field has been set.
+func (o *CreateRotatedSecret) HasTarget() bool {
+	if o != nil && o.Target != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTarget gets a reference to the given []string and assigns it to the Target field.
+func (o *CreateRotatedSecret) SetTarget(v []string) {
+	o.Target = &v
+}
+
 // GetTargetName returns the TargetName field value
 func (o *CreateRotatedSecret) GetTargetName() string {
 	if o == nil  {
@@ -1528,6 +1751,9 @@ func (o *CreateRotatedSecret) SetUserDn(v string) {
 
 func (o CreateRotatedSecret) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.ProviderType != nil {
+		toSerialize["ProviderType"] = o.ProviderType
+	}
 	if o.ApiId != nil {
 		toSerialize["api-id"] = o.ApiId
 	}
@@ -1557,6 +1783,15 @@ func (o CreateRotatedSecret) MarshalJSON() ([]byte, error) {
 	}
 	if o.GcpKey != nil {
 		toSerialize["gcp-key"] = o.GcpKey
+	}
+	if o.GcpServiceAccountEmail != nil {
+		toSerialize["gcp-service-account-email"] = o.GcpServiceAccountEmail
+	}
+	if o.GcpServiceAccountKeyId != nil {
+		toSerialize["gcp-service-account-key-id"] = o.GcpServiceAccountKeyId
+	}
+	if o.HostProvider != nil {
+		toSerialize["host-provider"] = o.HostProvider
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json
@@ -1593,6 +1828,9 @@ func (o CreateRotatedSecret) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["rotator-type"] = o.RotatorType
+	}
+	if o.SamePassword != nil {
+		toSerialize["same-password"] = o.SamePassword
 	}
 	if o.SecureAccessAllowExternalUser != nil {
 		toSerialize["secure-access-allow-external-user"] = o.SecureAccessAllowExternalUser
@@ -1644,6 +1882,9 @@ func (o CreateRotatedSecret) MarshalJSON() ([]byte, error) {
 	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags
+	}
+	if o.Target != nil {
+		toSerialize["target"] = o.Target
 	}
 	if true {
 		toSerialize["target-name"] = o.TargetName

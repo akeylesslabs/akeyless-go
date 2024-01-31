@@ -39,6 +39,8 @@ func NewDeleteTarget(name string, ) *DeleteTarget {
 	this := DeleteTarget{}
 	var forceDeletion bool = false
 	this.ForceDeletion = &forceDeletion
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	return &this
 }
@@ -50,6 +52,8 @@ func NewDeleteTargetWithDefaults() *DeleteTarget {
 	this := DeleteTarget{}
 	var forceDeletion bool = false
 	this.ForceDeletion = &forceDeletion
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 

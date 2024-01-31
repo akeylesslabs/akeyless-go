@@ -27,10 +27,14 @@ type DecryptPKCS1 struct {
 	Json *bool `json:"json,omitempty"`
 	// The name of the key to use in the decryption process
 	KeyName string `json:"key-name"`
+	// If specified, the output will be formatted accordingly. options: [base64]
+	OutputFormat *string `json:"output-format,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// key version (relevant only for classic key)
+	Version *int32 `json:"version,omitempty"`
 }
 
 // NewDecryptPKCS1 instantiates a new DecryptPKCS1 object
@@ -40,6 +44,8 @@ type DecryptPKCS1 struct {
 func NewDecryptPKCS1(ciphertext string, keyName string, ) *DecryptPKCS1 {
 	this := DecryptPKCS1{}
 	this.Ciphertext = ciphertext
+	var json bool = false
+	this.Json = &json
 	this.KeyName = keyName
 	return &this
 }
@@ -49,6 +55,8 @@ func NewDecryptPKCS1(ciphertext string, keyName string, ) *DecryptPKCS1 {
 // but it doesn't guarantee that properties required by API are set
 func NewDecryptPKCS1WithDefaults() *DecryptPKCS1 {
 	this := DecryptPKCS1{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -196,6 +204,38 @@ func (o *DecryptPKCS1) SetKeyName(v string) {
 	o.KeyName = v
 }
 
+// GetOutputFormat returns the OutputFormat field value if set, zero value otherwise.
+func (o *DecryptPKCS1) GetOutputFormat() string {
+	if o == nil || o.OutputFormat == nil {
+		var ret string
+		return ret
+	}
+	return *o.OutputFormat
+}
+
+// GetOutputFormatOk returns a tuple with the OutputFormat field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DecryptPKCS1) GetOutputFormatOk() (*string, bool) {
+	if o == nil || o.OutputFormat == nil {
+		return nil, false
+	}
+	return o.OutputFormat, true
+}
+
+// HasOutputFormat returns a boolean if a field has been set.
+func (o *DecryptPKCS1) HasOutputFormat() bool {
+	if o != nil && o.OutputFormat != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOutputFormat gets a reference to the given string and assigns it to the OutputFormat field.
+func (o *DecryptPKCS1) SetOutputFormat(v string) {
+	o.OutputFormat = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *DecryptPKCS1) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -260,6 +300,38 @@ func (o *DecryptPKCS1) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetVersion returns the Version field value if set, zero value otherwise.
+func (o *DecryptPKCS1) GetVersion() int32 {
+	if o == nil || o.Version == nil {
+		var ret int32
+		return ret
+	}
+	return *o.Version
+}
+
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DecryptPKCS1) GetVersionOk() (*int32, bool) {
+	if o == nil || o.Version == nil {
+		return nil, false
+	}
+	return o.Version, true
+}
+
+// HasVersion returns a boolean if a field has been set.
+func (o *DecryptPKCS1) HasVersion() bool {
+	if o != nil && o.Version != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given int32 and assigns it to the Version field.
+func (o *DecryptPKCS1) SetVersion(v int32) {
+	o.Version = &v
+}
+
 func (o DecryptPKCS1) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -277,11 +349,17 @@ func (o DecryptPKCS1) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["key-name"] = o.KeyName
 	}
+	if o.OutputFormat != nil {
+		toSerialize["output-format"] = o.OutputFormat
+	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.Version != nil {
+		toSerialize["version"] = o.Version
 	}
 	return json.Marshal(toSerialize)
 }

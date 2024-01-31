@@ -5,12 +5,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DisplayId** | Pointer to **string** | The display id of the key to use in the signing process | [optional] 
+**HashFunction** | Pointer to **string** | HashFunction defines the hash function (e.g. sha-256) | [optional] 
+**InputFormat** | Pointer to **string** | Select default assumed format for the plaintext message. Currently supported options: [base64] | [optional] 
 **ItemId** | Pointer to **int64** | The item id of the key to use in the signing process | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeyName** | Pointer to **string** | The name of the RSA key to use in the signing process | [optional] 
 **Message** | **string** | The message to be signed | 
+**Prehashed** | Pointer to **bool** | Markes that the message is already hashed | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**Version** | Pointer to **int32** | The version of the key to use for signing | [optional] 
 
 ## Methods
 
@@ -55,6 +59,56 @@ SetDisplayId sets DisplayId field to given value.
 `func (o *SignPKCS1) HasDisplayId() bool`
 
 HasDisplayId returns a boolean if a field has been set.
+
+### GetHashFunction
+
+`func (o *SignPKCS1) GetHashFunction() string`
+
+GetHashFunction returns the HashFunction field if non-nil, zero value otherwise.
+
+### GetHashFunctionOk
+
+`func (o *SignPKCS1) GetHashFunctionOk() (*string, bool)`
+
+GetHashFunctionOk returns a tuple with the HashFunction field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHashFunction
+
+`func (o *SignPKCS1) SetHashFunction(v string)`
+
+SetHashFunction sets HashFunction field to given value.
+
+### HasHashFunction
+
+`func (o *SignPKCS1) HasHashFunction() bool`
+
+HasHashFunction returns a boolean if a field has been set.
+
+### GetInputFormat
+
+`func (o *SignPKCS1) GetInputFormat() string`
+
+GetInputFormat returns the InputFormat field if non-nil, zero value otherwise.
+
+### GetInputFormatOk
+
+`func (o *SignPKCS1) GetInputFormatOk() (*string, bool)`
+
+GetInputFormatOk returns a tuple with the InputFormat field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInputFormat
+
+`func (o *SignPKCS1) SetInputFormat(v string)`
+
+SetInputFormat sets InputFormat field to given value.
+
+### HasInputFormat
+
+`func (o *SignPKCS1) HasInputFormat() bool`
+
+HasInputFormat returns a boolean if a field has been set.
 
 ### GetItemId
 
@@ -151,6 +205,31 @@ and a boolean to check if the value has been set.
 SetMessage sets Message field to given value.
 
 
+### GetPrehashed
+
+`func (o *SignPKCS1) GetPrehashed() bool`
+
+GetPrehashed returns the Prehashed field if non-nil, zero value otherwise.
+
+### GetPrehashedOk
+
+`func (o *SignPKCS1) GetPrehashedOk() (*bool, bool)`
+
+GetPrehashedOk returns a tuple with the Prehashed field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrehashed
+
+`func (o *SignPKCS1) SetPrehashed(v bool)`
+
+SetPrehashed sets Prehashed field to given value.
+
+### HasPrehashed
+
+`func (o *SignPKCS1) HasPrehashed() bool`
+
+HasPrehashed returns a boolean if a field has been set.
+
 ### GetToken
 
 `func (o *SignPKCS1) GetToken() string`
@@ -200,6 +279,31 @@ SetUidToken sets UidToken field to given value.
 `func (o *SignPKCS1) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetVersion
+
+`func (o *SignPKCS1) GetVersion() int32`
+
+GetVersion returns the Version field if non-nil, zero value otherwise.
+
+### GetVersionOk
+
+`func (o *SignPKCS1) GetVersionOk() (*int32, bool)`
+
+GetVersionOk returns a tuple with the Version field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVersion
+
+`func (o *SignPKCS1) SetVersion(v int32)`
+
+SetVersion sets Version field to given value.
+
+### HasVersion
+
+`func (o *SignPKCS1) HasVersion() bool`
+
+HasVersion returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

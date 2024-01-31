@@ -7,11 +7,13 @@ Name | Type | Description | Notes
 **AkeylessUrl** | Pointer to **string** | AkeylessUrl is here for BC only. Gator will still return it if it exists in the configuration, but new clients (&gt;&#x3D;2.34.0) will ignore it and override it with what exists in their local file. It will no longer be sent to Gator for update, so new clusters will only have the default value saved in the DB. | [optional] 
 **ApiTokenTtl** | Pointer to **string** |  | [optional] 
 **DisplayName** | Pointer to **string** |  | [optional] 
+**EnableSniProxy** | Pointer to **bool** |  | [optional] 
 **EnableTls** | Pointer to **bool** |  | [optional] 
 **EnableTlsConfigure** | Pointer to **bool** |  | [optional] 
 **EnableTlsCurl** | Pointer to **bool** |  | [optional] 
 **EnableTlsHvp** | Pointer to **bool** |  | [optional] 
 **GwClusterUrl** | Pointer to **string** |  | [optional] 
+**NotifyOnStatusChange** | Pointer to **bool** |  | [optional] 
 **TcpPort** | Pointer to **string** |  | [optional] 
 **TlsCert** | Pointer to **string** |  | [optional] 
 **TlsKey** | Pointer to **string** |  | [optional] 
@@ -109,6 +111,31 @@ SetDisplayName sets DisplayName field to given value.
 `func (o *GeneralConfigPart) HasDisplayName() bool`
 
 HasDisplayName returns a boolean if a field has been set.
+
+### GetEnableSniProxy
+
+`func (o *GeneralConfigPart) GetEnableSniProxy() bool`
+
+GetEnableSniProxy returns the EnableSniProxy field if non-nil, zero value otherwise.
+
+### GetEnableSniProxyOk
+
+`func (o *GeneralConfigPart) GetEnableSniProxyOk() (*bool, bool)`
+
+GetEnableSniProxyOk returns a tuple with the EnableSniProxy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableSniProxy
+
+`func (o *GeneralConfigPart) SetEnableSniProxy(v bool)`
+
+SetEnableSniProxy sets EnableSniProxy field to given value.
+
+### HasEnableSniProxy
+
+`func (o *GeneralConfigPart) HasEnableSniProxy() bool`
+
+HasEnableSniProxy returns a boolean if a field has been set.
 
 ### GetEnableTls
 
@@ -234,6 +261,31 @@ SetGwClusterUrl sets GwClusterUrl field to given value.
 `func (o *GeneralConfigPart) HasGwClusterUrl() bool`
 
 HasGwClusterUrl returns a boolean if a field has been set.
+
+### GetNotifyOnStatusChange
+
+`func (o *GeneralConfigPart) GetNotifyOnStatusChange() bool`
+
+GetNotifyOnStatusChange returns the NotifyOnStatusChange field if non-nil, zero value otherwise.
+
+### GetNotifyOnStatusChangeOk
+
+`func (o *GeneralConfigPart) GetNotifyOnStatusChangeOk() (*bool, bool)`
+
+GetNotifyOnStatusChangeOk returns a tuple with the NotifyOnStatusChange field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNotifyOnStatusChange
+
+`func (o *GeneralConfigPart) SetNotifyOnStatusChange(v bool)`
+
+SetNotifyOnStatusChange sets NotifyOnStatusChange field to given value.
+
+### HasNotifyOnStatusChange
+
+`func (o *GeneralConfigPart) HasNotifyOnStatusChange() bool`
+
+HasNotifyOnStatusChange returns a boolean if a field has been set.
 
 ### GetTcpPort
 

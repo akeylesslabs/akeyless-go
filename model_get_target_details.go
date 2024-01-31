@@ -37,6 +37,8 @@ type GetTargetDetails struct {
 // will change when the set of required properties is changed
 func NewGetTargetDetails(name string, ) *GetTargetDetails {
 	this := GetTargetDetails{}
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	var showVersions bool = false
 	this.ShowVersions = &showVersions
@@ -48,6 +50,8 @@ func NewGetTargetDetails(name string, ) *GetTargetDetails {
 // but it doesn't guarantee that properties required by API are set
 func NewGetTargetDetailsWithDefaults() *GetTargetDetails {
 	this := GetTargetDetails{}
+	var json bool = false
+	this.Json = &json
 	var showVersions bool = false
 	this.ShowVersions = &showVersions
 	return &this

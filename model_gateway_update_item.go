@@ -19,19 +19,29 @@ import (
 type GatewayUpdateItem struct {
 	// List of the new tags that will be attached to this item
 	AddTag *[]string `json:"add-tag,omitempty"`
+	// API ID to rotate (relevant only for rotator-type=api-key)
 	ApiId *string `json:"api-id,omitempty"`
+	// API key to rotate (relevant only for rotator-type=api-key)
 	ApiKey *string `json:"api-key,omitempty"`
-	// Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation
+	// ApplicationId (used in azure)
+	AppId *string `json:"app-id,omitempty"`
+	// Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation [true/false]
 	AutoRotate *string `json:"auto-rotate,omitempty"`
+	// Secret payload to be sent with rotation request (relevant only for rotator-type=custom)
 	CustomPayload *string `json:"custom-payload,omitempty"`
-	// Protection from accidental deletion of this item
+	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
 	// Base64-encoded service account private key text
 	GcpKey *string `json:"gcp-key,omitempty"`
+	// The email of the gcp service account to rotate
+	GcpServiceAccountEmail *string `json:"gcp-service-account-email,omitempty"`
+	// The key id of the gcp service account to rotate
+	GcpServiceAccountKeyId *string `json:"gcp-service-account-key-id,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
+	// Whether to keep previous version [true/false]. (relevant only for --type=rotated-secret). If not set, use default according to account settings
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
@@ -45,7 +55,9 @@ type GatewayUpdateItem struct {
 	NewVersion *bool `json:"new-version,omitempty"`
 	// List of the existent tags that will be removed from this item
 	RmTag *[]string `json:"rm-tag,omitempty"`
+	// rotated-username password (relevant only for rotator-type=password)
 	RotatedPassword *string `json:"rotated-password,omitempty"`
+	// username to be rotated, if selected \\\"use-self-creds\\\" at rotator-creds-type, this username will try to rotate it's own password, if \\\"use-target-creds\\\" is selected, target credentials will be use to rotate the rotated-password (relevant only for rotator-type=password)
 	RotatedUsername *string `json:"rotated-username,omitempty"`
 	// The Rotation Hour
 	RotationHour *int32 `json:"rotation-hour,omitempty"`
@@ -69,11 +81,15 @@ func NewGatewayUpdateItem(name string, type_ string, ) *GatewayUpdateItem {
 	this := GatewayUpdateItem{}
 	var description string = "default_metadata"
 	this.Description = &description
+	var json bool = false
+	this.Json = &json
 	this.Name = name
 	var newMetadata string = "default_metadata"
 	this.NewMetadata = &newMetadata
 	var rotationHour int32 = 0
 	this.RotationHour = &rotationHour
+	var rotatorCredsType string = "use-self-creds"
+	this.RotatorCredsType = &rotatorCredsType
 	this.Type = type_
 	return &this
 }
@@ -85,10 +101,14 @@ func NewGatewayUpdateItemWithDefaults() *GatewayUpdateItem {
 	this := GatewayUpdateItem{}
 	var description string = "default_metadata"
 	this.Description = &description
+	var json bool = false
+	this.Json = &json
 	var newMetadata string = "default_metadata"
 	this.NewMetadata = &newMetadata
 	var rotationHour int32 = 0
 	this.RotationHour = &rotationHour
+	var rotatorCredsType string = "use-self-creds"
+	this.RotatorCredsType = &rotatorCredsType
 	return &this
 }
 
@@ -186,6 +206,38 @@ func (o *GatewayUpdateItem) HasApiKey() bool {
 // SetApiKey gets a reference to the given string and assigns it to the ApiKey field.
 func (o *GatewayUpdateItem) SetApiKey(v string) {
 	o.ApiKey = &v
+}
+
+// GetAppId returns the AppId field value if set, zero value otherwise.
+func (o *GatewayUpdateItem) GetAppId() string {
+	if o == nil || o.AppId == nil {
+		var ret string
+		return ret
+	}
+	return *o.AppId
+}
+
+// GetAppIdOk returns a tuple with the AppId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateItem) GetAppIdOk() (*string, bool) {
+	if o == nil || o.AppId == nil {
+		return nil, false
+	}
+	return o.AppId, true
+}
+
+// HasAppId returns a boolean if a field has been set.
+func (o *GatewayUpdateItem) HasAppId() bool {
+	if o != nil && o.AppId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAppId gets a reference to the given string and assigns it to the AppId field.
+func (o *GatewayUpdateItem) SetAppId(v string) {
+	o.AppId = &v
 }
 
 // GetAutoRotate returns the AutoRotate field value if set, zero value otherwise.
@@ -346,6 +398,70 @@ func (o *GatewayUpdateItem) HasGcpKey() bool {
 // SetGcpKey gets a reference to the given string and assigns it to the GcpKey field.
 func (o *GatewayUpdateItem) SetGcpKey(v string) {
 	o.GcpKey = &v
+}
+
+// GetGcpServiceAccountEmail returns the GcpServiceAccountEmail field value if set, zero value otherwise.
+func (o *GatewayUpdateItem) GetGcpServiceAccountEmail() string {
+	if o == nil || o.GcpServiceAccountEmail == nil {
+		var ret string
+		return ret
+	}
+	return *o.GcpServiceAccountEmail
+}
+
+// GetGcpServiceAccountEmailOk returns a tuple with the GcpServiceAccountEmail field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateItem) GetGcpServiceAccountEmailOk() (*string, bool) {
+	if o == nil || o.GcpServiceAccountEmail == nil {
+		return nil, false
+	}
+	return o.GcpServiceAccountEmail, true
+}
+
+// HasGcpServiceAccountEmail returns a boolean if a field has been set.
+func (o *GatewayUpdateItem) HasGcpServiceAccountEmail() bool {
+	if o != nil && o.GcpServiceAccountEmail != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpServiceAccountEmail gets a reference to the given string and assigns it to the GcpServiceAccountEmail field.
+func (o *GatewayUpdateItem) SetGcpServiceAccountEmail(v string) {
+	o.GcpServiceAccountEmail = &v
+}
+
+// GetGcpServiceAccountKeyId returns the GcpServiceAccountKeyId field value if set, zero value otherwise.
+func (o *GatewayUpdateItem) GetGcpServiceAccountKeyId() string {
+	if o == nil || o.GcpServiceAccountKeyId == nil {
+		var ret string
+		return ret
+	}
+	return *o.GcpServiceAccountKeyId
+}
+
+// GetGcpServiceAccountKeyIdOk returns a tuple with the GcpServiceAccountKeyId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateItem) GetGcpServiceAccountKeyIdOk() (*string, bool) {
+	if o == nil || o.GcpServiceAccountKeyId == nil {
+		return nil, false
+	}
+	return o.GcpServiceAccountKeyId, true
+}
+
+// HasGcpServiceAccountKeyId returns a boolean if a field has been set.
+func (o *GatewayUpdateItem) HasGcpServiceAccountKeyId() bool {
+	if o != nil && o.GcpServiceAccountKeyId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpServiceAccountKeyId gets a reference to the given string and assigns it to the GcpServiceAccountKeyId field.
+func (o *GatewayUpdateItem) SetGcpServiceAccountKeyId(v string) {
+	o.GcpServiceAccountKeyId = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -855,6 +971,9 @@ func (o GatewayUpdateItem) MarshalJSON() ([]byte, error) {
 	if o.ApiKey != nil {
 		toSerialize["api-key"] = o.ApiKey
 	}
+	if o.AppId != nil {
+		toSerialize["app-id"] = o.AppId
+	}
 	if o.AutoRotate != nil {
 		toSerialize["auto-rotate"] = o.AutoRotate
 	}
@@ -869,6 +988,12 @@ func (o GatewayUpdateItem) MarshalJSON() ([]byte, error) {
 	}
 	if o.GcpKey != nil {
 		toSerialize["gcp-key"] = o.GcpKey
+	}
+	if o.GcpServiceAccountEmail != nil {
+		toSerialize["gcp-service-account-email"] = o.GcpServiceAccountEmail
+	}
+	if o.GcpServiceAccountKeyId != nil {
+		toSerialize["gcp-service-account-key-id"] = o.GcpServiceAccountKeyId
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json

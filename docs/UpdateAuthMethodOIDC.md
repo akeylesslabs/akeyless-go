@@ -10,15 +10,17 @@ Name | Type | Description | Notes
 **BoundIps** | Pointer to **[]string** | A CIDR whitelist with the IPs that the access is restricted to | [optional] 
 **ClientId** | Pointer to **string** | Client ID | [optional] 
 **ClientSecret** | Pointer to **string** | Client Secret | [optional] 
+**Description** | Pointer to **string** | Auth Method description | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
 **GwBoundIps** | Pointer to **[]string** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
 **Issuer** | Pointer to **string** | Issuer URL | [optional] 
-**Json** | Pointer to **bool** | Set output format to JSON | [optional] 
-**JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] [default to 0]
 **Name** | **string** | Auth Method name | 
 **NewName** | Pointer to **string** | Auth Method new name | [optional] 
 **RequiredScopes** | Pointer to **[]string** | RequiredScopes is a list of required scopes that the oidc method will request from the oidc provider and the user must approve | [optional] 
 **RequiredScopesPrefix** | Pointer to **string** | RequiredScopesPrefix is a a prefix to add to all required-scopes when requesting them from the oidc server (for example, azures&#39; Application ID URI) | [optional] 
+**SubclaimsDelimiters** | Pointer to **[]string** | A list of additional sub claims delimiters (relevant only for SAML, OIDC, OAuth2/JWT) | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UniqueIdentifier** | **string** | A unique identifier (ID) value should be configured for OIDC, OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. | 
@@ -191,6 +193,31 @@ SetClientSecret sets ClientSecret field to given value.
 `func (o *UpdateAuthMethodOIDC) HasClientSecret() bool`
 
 HasClientSecret returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *UpdateAuthMethodOIDC) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *UpdateAuthMethodOIDC) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *UpdateAuthMethodOIDC) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *UpdateAuthMethodOIDC) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetForceSubClaims
 
@@ -411,6 +438,31 @@ SetRequiredScopesPrefix sets RequiredScopesPrefix field to given value.
 `func (o *UpdateAuthMethodOIDC) HasRequiredScopesPrefix() bool`
 
 HasRequiredScopesPrefix returns a boolean if a field has been set.
+
+### GetSubclaimsDelimiters
+
+`func (o *UpdateAuthMethodOIDC) GetSubclaimsDelimiters() []string`
+
+GetSubclaimsDelimiters returns the SubclaimsDelimiters field if non-nil, zero value otherwise.
+
+### GetSubclaimsDelimitersOk
+
+`func (o *UpdateAuthMethodOIDC) GetSubclaimsDelimitersOk() (*[]string, bool)`
+
+GetSubclaimsDelimitersOk returns a tuple with the SubclaimsDelimiters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSubclaimsDelimiters
+
+`func (o *UpdateAuthMethodOIDC) SetSubclaimsDelimiters(v []string)`
+
+SetSubclaimsDelimiters sets SubclaimsDelimiters field to given value.
+
+### HasSubclaimsDelimiters
+
+`func (o *UpdateAuthMethodOIDC) HasSubclaimsDelimiters() bool`
+
+HasSubclaimsDelimiters returns a boolean if a field has been set.
 
 ### GetToken
 

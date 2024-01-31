@@ -17,6 +17,10 @@ import (
 
 // AssocTargetItem assocTargetItem is a command that creates an association between target and item.
 type AssocTargetItem struct {
+	// A path on the target to store the certificate pem file (relevant only for certificate provisioning)
+	CertificatePath *string `json:"certificate-path,omitempty"`
+	// A path on the target to store the full chain pem file (relevant only for certificate provisioning)
+	ChainPath *string `json:"chain-path,omitempty"`
 	// Automatically disable previous key version (required for azure targets)
 	DisablePreviousKeyVersion *bool `json:"disable-previous-key-version,omitempty"`
 	// Set output format to JSON
@@ -29,16 +33,20 @@ type AssocTargetItem struct {
 	KmsAlgorithm *string `json:"kms-algorithm,omitempty"`
 	// Location id of the GCP KMS (required for gcp targets)
 	LocationId *string `json:"location-id,omitempty"`
-	// Set to 'true' to create a multi region managed key (relevant for aws targets)
+	// Set to 'true' to create a multi-region managed key. (Relevant only for Classic Key AWS targets)
 	MultiRegion *string `json:"multi-region,omitempty"`
 	// The item to associate
 	Name string `json:"name"`
+	// A path on the target to store the private key (relevant only for certificate provisioning)
+	PrivateKeyPath *string `json:"private-key-path,omitempty"`
 	// Project id of the GCP KMS (required for gcp targets)
 	ProjectId *string `json:"project-id,omitempty"`
 	// Purpose of the key in GCP KMS (required for gcp targets)
 	Purpose *string `json:"purpose,omitempty"`
 	// The list of regions to create a copy of the key in (relevant for aws targets)
 	Regions *[]string `json:"regions,omitempty"`
+	// Is the target to associate is for sra, relevant only for linked target association for ldap rotated secret
+	SraAssociation *bool `json:"sra-association,omitempty"`
 	// The target to associate
 	TargetName string `json:"target-name"`
 	// The tenant secret type [Data/SearchIndex/Analytics] (required for salesforce targets)
@@ -57,9 +65,15 @@ type AssocTargetItem struct {
 // will change when the set of required properties is changed
 func NewAssocTargetItem(name string, targetName string, ) *AssocTargetItem {
 	this := AssocTargetItem{}
+	var disablePreviousKeyVersion bool = false
+	this.DisablePreviousKeyVersion = &disablePreviousKeyVersion
+	var json bool = false
+	this.Json = &json
 	var multiRegion string = "false"
 	this.MultiRegion = &multiRegion
 	this.Name = name
+	var sraAssociation bool = false
+	this.SraAssociation = &sraAssociation
 	this.TargetName = targetName
 	return &this
 }
@@ -69,9 +83,79 @@ func NewAssocTargetItem(name string, targetName string, ) *AssocTargetItem {
 // but it doesn't guarantee that properties required by API are set
 func NewAssocTargetItemWithDefaults() *AssocTargetItem {
 	this := AssocTargetItem{}
+	var disablePreviousKeyVersion bool = false
+	this.DisablePreviousKeyVersion = &disablePreviousKeyVersion
+	var json bool = false
+	this.Json = &json
 	var multiRegion string = "false"
 	this.MultiRegion = &multiRegion
+	var sraAssociation bool = false
+	this.SraAssociation = &sraAssociation
 	return &this
+}
+
+// GetCertificatePath returns the CertificatePath field value if set, zero value otherwise.
+func (o *AssocTargetItem) GetCertificatePath() string {
+	if o == nil || o.CertificatePath == nil {
+		var ret string
+		return ret
+	}
+	return *o.CertificatePath
+}
+
+// GetCertificatePathOk returns a tuple with the CertificatePath field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssocTargetItem) GetCertificatePathOk() (*string, bool) {
+	if o == nil || o.CertificatePath == nil {
+		return nil, false
+	}
+	return o.CertificatePath, true
+}
+
+// HasCertificatePath returns a boolean if a field has been set.
+func (o *AssocTargetItem) HasCertificatePath() bool {
+	if o != nil && o.CertificatePath != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificatePath gets a reference to the given string and assigns it to the CertificatePath field.
+func (o *AssocTargetItem) SetCertificatePath(v string) {
+	o.CertificatePath = &v
+}
+
+// GetChainPath returns the ChainPath field value if set, zero value otherwise.
+func (o *AssocTargetItem) GetChainPath() string {
+	if o == nil || o.ChainPath == nil {
+		var ret string
+		return ret
+	}
+	return *o.ChainPath
+}
+
+// GetChainPathOk returns a tuple with the ChainPath field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssocTargetItem) GetChainPathOk() (*string, bool) {
+	if o == nil || o.ChainPath == nil {
+		return nil, false
+	}
+	return o.ChainPath, true
+}
+
+// HasChainPath returns a boolean if a field has been set.
+func (o *AssocTargetItem) HasChainPath() bool {
+	if o != nil && o.ChainPath != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetChainPath gets a reference to the given string and assigns it to the ChainPath field.
+func (o *AssocTargetItem) SetChainPath(v string) {
+	o.ChainPath = &v
 }
 
 // GetDisablePreviousKeyVersion returns the DisablePreviousKeyVersion field value if set, zero value otherwise.
@@ -322,6 +406,38 @@ func (o *AssocTargetItem) SetName(v string) {
 	o.Name = v
 }
 
+// GetPrivateKeyPath returns the PrivateKeyPath field value if set, zero value otherwise.
+func (o *AssocTargetItem) GetPrivateKeyPath() string {
+	if o == nil || o.PrivateKeyPath == nil {
+		var ret string
+		return ret
+	}
+	return *o.PrivateKeyPath
+}
+
+// GetPrivateKeyPathOk returns a tuple with the PrivateKeyPath field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssocTargetItem) GetPrivateKeyPathOk() (*string, bool) {
+	if o == nil || o.PrivateKeyPath == nil {
+		return nil, false
+	}
+	return o.PrivateKeyPath, true
+}
+
+// HasPrivateKeyPath returns a boolean if a field has been set.
+func (o *AssocTargetItem) HasPrivateKeyPath() bool {
+	if o != nil && o.PrivateKeyPath != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivateKeyPath gets a reference to the given string and assigns it to the PrivateKeyPath field.
+func (o *AssocTargetItem) SetPrivateKeyPath(v string) {
+	o.PrivateKeyPath = &v
+}
+
 // GetProjectId returns the ProjectId field value if set, zero value otherwise.
 func (o *AssocTargetItem) GetProjectId() string {
 	if o == nil || o.ProjectId == nil {
@@ -416,6 +532,38 @@ func (o *AssocTargetItem) HasRegions() bool {
 // SetRegions gets a reference to the given []string and assigns it to the Regions field.
 func (o *AssocTargetItem) SetRegions(v []string) {
 	o.Regions = &v
+}
+
+// GetSraAssociation returns the SraAssociation field value if set, zero value otherwise.
+func (o *AssocTargetItem) GetSraAssociation() bool {
+	if o == nil || o.SraAssociation == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SraAssociation
+}
+
+// GetSraAssociationOk returns a tuple with the SraAssociation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssocTargetItem) GetSraAssociationOk() (*bool, bool) {
+	if o == nil || o.SraAssociation == nil {
+		return nil, false
+	}
+	return o.SraAssociation, true
+}
+
+// HasSraAssociation returns a boolean if a field has been set.
+func (o *AssocTargetItem) HasSraAssociation() bool {
+	if o != nil && o.SraAssociation != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSraAssociation gets a reference to the given bool and assigns it to the SraAssociation field.
+func (o *AssocTargetItem) SetSraAssociation(v bool) {
+	o.SraAssociation = &v
 }
 
 // GetTargetName returns the TargetName field value
@@ -572,6 +720,12 @@ func (o *AssocTargetItem) SetVaultName(v string) {
 
 func (o AssocTargetItem) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.CertificatePath != nil {
+		toSerialize["certificate-path"] = o.CertificatePath
+	}
+	if o.ChainPath != nil {
+		toSerialize["chain-path"] = o.ChainPath
+	}
 	if o.DisablePreviousKeyVersion != nil {
 		toSerialize["disable-previous-key-version"] = o.DisablePreviousKeyVersion
 	}
@@ -596,6 +750,9 @@ func (o AssocTargetItem) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
+	if o.PrivateKeyPath != nil {
+		toSerialize["private-key-path"] = o.PrivateKeyPath
+	}
 	if o.ProjectId != nil {
 		toSerialize["project-id"] = o.ProjectId
 	}
@@ -604,6 +761,9 @@ func (o AssocTargetItem) MarshalJSON() ([]byte, error) {
 	}
 	if o.Regions != nil {
 		toSerialize["regions"] = o.Regions
+	}
+	if o.SraAssociation != nil {
+		toSerialize["sra-association"] = o.SraAssociation
 	}
 	if true {
 		toSerialize["target-name"] = o.TargetName
