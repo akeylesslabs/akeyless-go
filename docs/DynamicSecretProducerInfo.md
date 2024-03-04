@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **ProducerMetadata** | Pointer to **string** |  | [optional] 
 **ProducerStatus** | Pointer to **string** | RotationStatus defines types of rotation Status | [optional] 
 **ProducerType** | Pointer to **string** |  | [optional] 
+**UserTtl** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -231,6 +232,31 @@ SetProducerType sets ProducerType field to given value.
 `func (o *DynamicSecretProducerInfo) HasProducerType() bool`
 
 HasProducerType returns a boolean if a field has been set.
+
+### GetUserTtl
+
+`func (o *DynamicSecretProducerInfo) GetUserTtl() string`
+
+GetUserTtl returns the UserTtl field if non-nil, zero value otherwise.
+
+### GetUserTtlOk
+
+`func (o *DynamicSecretProducerInfo) GetUserTtlOk() (*string, bool)`
+
+GetUserTtlOk returns a tuple with the UserTtl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserTtl
+
+`func (o *DynamicSecretProducerInfo) SetUserTtl(v string)`
+
+SetUserTtl sets UserTtl field to given value.
+
+### HasUserTtl
+
+`func (o *DynamicSecretProducerInfo) HasUserTtl() bool`
+
+HasUserTtl returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

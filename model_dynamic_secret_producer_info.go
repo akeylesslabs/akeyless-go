@@ -28,6 +28,7 @@ type DynamicSecretProducerInfo struct {
 	// RotationStatus defines types of rotation Status
 	ProducerStatus *string `json:"producer_status,omitempty"`
 	ProducerType *string `json:"producer_type,omitempty"`
+	UserTtl *string `json:"user_ttl,omitempty"`
 }
 
 // NewDynamicSecretProducerInfo instantiates a new DynamicSecretProducerInfo object
@@ -303,6 +304,38 @@ func (o *DynamicSecretProducerInfo) SetProducerType(v string) {
 	o.ProducerType = &v
 }
 
+// GetUserTtl returns the UserTtl field value if set, zero value otherwise.
+func (o *DynamicSecretProducerInfo) GetUserTtl() string {
+	if o == nil || o.UserTtl == nil {
+		var ret string
+		return ret
+	}
+	return *o.UserTtl
+}
+
+// GetUserTtlOk returns a tuple with the UserTtl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretProducerInfo) GetUserTtlOk() (*string, bool) {
+	if o == nil || o.UserTtl == nil {
+		return nil, false
+	}
+	return o.UserTtl, true
+}
+
+// HasUserTtl returns a boolean if a field has been set.
+func (o *DynamicSecretProducerInfo) HasUserTtl() bool {
+	if o != nil && o.UserTtl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserTtl gets a reference to the given string and assigns it to the UserTtl field.
+func (o *DynamicSecretProducerInfo) SetUserTtl(v string) {
+	o.UserTtl = &v
+}
+
 func (o DynamicSecretProducerInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.FailureMessage != nil {
@@ -328,6 +361,9 @@ func (o DynamicSecretProducerInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.ProducerType != nil {
 		toSerialize["producer_type"] = o.ProducerType
+	}
+	if o.UserTtl != nil {
+		toSerialize["user_ttl"] = o.UserTtl
 	}
 	return json.Marshal(toSerialize)
 }

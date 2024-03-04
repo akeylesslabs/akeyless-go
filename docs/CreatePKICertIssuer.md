@@ -5,8 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AllowAnyName** | Pointer to **bool** | If set, clients can request certificates for any CN | [optional] 
+**AllowCopyExtFromCsr** | Pointer to **bool** | If set, will allow copying the extra extensions from the csr file (if given) | [optional] 
 **AllowSubdomains** | Pointer to **bool** | If set, clients can request certificates for subdomains and wildcard subdomains of the allowed domains | [optional] 
 **AllowedDomains** | Pointer to **string** | A list of the allowed domains that clients can request to be included in the certificate (in a comma-delimited list) | [optional] 
+**AllowedExtraExtensions** | Pointer to **string** | A json string containing the allowed extra extensions for the pki cert issuer | [optional] 
 **AllowedUriSans** | Pointer to **string** | A list of the allowed URIs that clients can request to be included in the certificate as part of the URI Subject Alternative Names (in a comma-delimited list) | [optional] 
 **CaTarget** | Pointer to **string** | The name of an existing CA target to attach this PKI Certificate Issuer to, required in Public CA mode | [optional] 
 **ClientFlag** | Pointer to **bool** | If set, certificates will be flagged for client auth use | [optional] 
@@ -82,6 +84,31 @@ SetAllowAnyName sets AllowAnyName field to given value.
 
 HasAllowAnyName returns a boolean if a field has been set.
 
+### GetAllowCopyExtFromCsr
+
+`func (o *CreatePKICertIssuer) GetAllowCopyExtFromCsr() bool`
+
+GetAllowCopyExtFromCsr returns the AllowCopyExtFromCsr field if non-nil, zero value otherwise.
+
+### GetAllowCopyExtFromCsrOk
+
+`func (o *CreatePKICertIssuer) GetAllowCopyExtFromCsrOk() (*bool, bool)`
+
+GetAllowCopyExtFromCsrOk returns a tuple with the AllowCopyExtFromCsr field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowCopyExtFromCsr
+
+`func (o *CreatePKICertIssuer) SetAllowCopyExtFromCsr(v bool)`
+
+SetAllowCopyExtFromCsr sets AllowCopyExtFromCsr field to given value.
+
+### HasAllowCopyExtFromCsr
+
+`func (o *CreatePKICertIssuer) HasAllowCopyExtFromCsr() bool`
+
+HasAllowCopyExtFromCsr returns a boolean if a field has been set.
+
 ### GetAllowSubdomains
 
 `func (o *CreatePKICertIssuer) GetAllowSubdomains() bool`
@@ -131,6 +158,31 @@ SetAllowedDomains sets AllowedDomains field to given value.
 `func (o *CreatePKICertIssuer) HasAllowedDomains() bool`
 
 HasAllowedDomains returns a boolean if a field has been set.
+
+### GetAllowedExtraExtensions
+
+`func (o *CreatePKICertIssuer) GetAllowedExtraExtensions() string`
+
+GetAllowedExtraExtensions returns the AllowedExtraExtensions field if non-nil, zero value otherwise.
+
+### GetAllowedExtraExtensionsOk
+
+`func (o *CreatePKICertIssuer) GetAllowedExtraExtensionsOk() (*string, bool)`
+
+GetAllowedExtraExtensionsOk returns a tuple with the AllowedExtraExtensions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowedExtraExtensions
+
+`func (o *CreatePKICertIssuer) SetAllowedExtraExtensions(v string)`
+
+SetAllowedExtraExtensions sets AllowedExtraExtensions field to given value.
+
+### HasAllowedExtraExtensions
+
+`func (o *CreatePKICertIssuer) HasAllowedExtraExtensions() bool`
+
+HasAllowedExtraExtensions returns a boolean if a field has been set.
 
 ### GetAllowedUriSans
 

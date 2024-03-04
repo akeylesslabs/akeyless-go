@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// CreateRotatedSecret struct for CreateRotatedSecret
+// CreateRotatedSecret createRotatedSecret is a command that creates a rotated secret [Deprecated: Use rotated-secret-create commands]
 type CreateRotatedSecret struct {
 	ProviderType *string `json:"ProviderType,omitempty"`
 	// API ID to rotate (relevant only for rotator-type=api-key)
@@ -28,7 +28,7 @@ type CreateRotatedSecret struct {
 	AuthenticationCredentials *string `json:"authentication-credentials,omitempty"`
 	// Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation [true/false]
 	AutoRotate *string `json:"auto-rotate,omitempty"`
-	// Region (used in aws)
+	// Aws Region (relevant only for aws)
 	AwsRegion *string `json:"aws-region,omitempty"`
 	// Secret payload to be sent with rotation request (relevant only for rotator-type=custom)
 	CustomPayload *string `json:"custom-payload,omitempty"`
@@ -42,6 +42,8 @@ type CreateRotatedSecret struct {
 	GcpServiceAccountEmail *string `json:"gcp-service-account-email,omitempty"`
 	// The key id of the gcp service account to rotate
 	GcpServiceAccountKeyId *string `json:"gcp-service-account-key-id,omitempty"`
+	// Create a new access key without deleting the old key from AWS for backup (relevant only for AWS) [true/false]
+	GraceRotation *string `json:"grace-rotation,omitempty"`
 	// Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret
 	HostProvider *string `json:"host-provider,omitempty"`
 	// Set output format to JSON
@@ -52,6 +54,8 @@ type CreateRotatedSecret struct {
 	Metadata *string `json:"metadata,omitempty"`
 	// Secret name
 	Name string `json:"name"`
+	// The length of the password to be generated
+	PasswordLength *string `json:"password-length,omitempty"`
 	// Rotate the value of the secret after SRA session ends [true/false]
 	RotateAfterDisconnect *string `json:"rotate-after-disconnect,omitempty"`
 	// rotated-username password (relevant only for rotator-type=password)
@@ -89,6 +93,8 @@ type CreateRotatedSecret struct {
 	SecureAccessRdpDomain *string `json:"secure-access-rdp-domain,omitempty"`
 	// Override the RDP Domain username (relevant only for rdp)
 	SecureAccessRdpUser *string `json:"secure-access-rdp-user,omitempty"`
+	// Destination URL to inject secrets
+	SecureAccessUrl *string `json:"secure-access-url,omitempty"`
 	// Enable Web Secure Remote Access
 	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
 	// Secure browser via Akeyless Web Access Bastion (relevant only for aws or azure)
@@ -144,6 +150,8 @@ func NewCreateRotatedSecret(name string, rotatorType string, targetName string, 
 	var secureAccessWebProxy bool = false
 	this.SecureAccessWebProxy = &secureAccessWebProxy
 	this.TargetName = targetName
+	var userAttribute string = "cn"
+	this.UserAttribute = &userAttribute
 	return &this
 }
 
@@ -170,6 +178,8 @@ func NewCreateRotatedSecretWithDefaults() *CreateRotatedSecret {
 	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
 	var secureAccessWebProxy bool = false
 	this.SecureAccessWebProxy = &secureAccessWebProxy
+	var userAttribute string = "cn"
+	this.UserAttribute = &userAttribute
 	return &this
 }
 
@@ -589,6 +599,38 @@ func (o *CreateRotatedSecret) SetGcpServiceAccountKeyId(v string) {
 	o.GcpServiceAccountKeyId = &v
 }
 
+// GetGraceRotation returns the GraceRotation field value if set, zero value otherwise.
+func (o *CreateRotatedSecret) GetGraceRotation() string {
+	if o == nil || o.GraceRotation == nil {
+		var ret string
+		return ret
+	}
+	return *o.GraceRotation
+}
+
+// GetGraceRotationOk returns a tuple with the GraceRotation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRotatedSecret) GetGraceRotationOk() (*string, bool) {
+	if o == nil || o.GraceRotation == nil {
+		return nil, false
+	}
+	return o.GraceRotation, true
+}
+
+// HasGraceRotation returns a boolean if a field has been set.
+func (o *CreateRotatedSecret) HasGraceRotation() bool {
+	if o != nil && o.GraceRotation != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGraceRotation gets a reference to the given string and assigns it to the GraceRotation field.
+func (o *CreateRotatedSecret) SetGraceRotation(v string) {
+	o.GraceRotation = &v
+}
+
 // GetHostProvider returns the HostProvider field value if set, zero value otherwise.
 func (o *CreateRotatedSecret) GetHostProvider() string {
 	if o == nil || o.HostProvider == nil {
@@ -739,6 +781,38 @@ func (o *CreateRotatedSecret) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *CreateRotatedSecret) SetName(v string) {
 	o.Name = v
+}
+
+// GetPasswordLength returns the PasswordLength field value if set, zero value otherwise.
+func (o *CreateRotatedSecret) GetPasswordLength() string {
+	if o == nil || o.PasswordLength == nil {
+		var ret string
+		return ret
+	}
+	return *o.PasswordLength
+}
+
+// GetPasswordLengthOk returns a tuple with the PasswordLength field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRotatedSecret) GetPasswordLengthOk() (*string, bool) {
+	if o == nil || o.PasswordLength == nil {
+		return nil, false
+	}
+	return o.PasswordLength, true
+}
+
+// HasPasswordLength returns a boolean if a field has been set.
+func (o *CreateRotatedSecret) HasPasswordLength() bool {
+	if o != nil && o.PasswordLength != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPasswordLength gets a reference to the given string and assigns it to the PasswordLength field.
+func (o *CreateRotatedSecret) SetPasswordLength(v string) {
+	o.PasswordLength = &v
 }
 
 // GetRotateAfterDisconnect returns the RotateAfterDisconnect field value if set, zero value otherwise.
@@ -1341,6 +1415,38 @@ func (o *CreateRotatedSecret) SetSecureAccessRdpUser(v string) {
 	o.SecureAccessRdpUser = &v
 }
 
+// GetSecureAccessUrl returns the SecureAccessUrl field value if set, zero value otherwise.
+func (o *CreateRotatedSecret) GetSecureAccessUrl() string {
+	if o == nil || o.SecureAccessUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessUrl
+}
+
+// GetSecureAccessUrlOk returns a tuple with the SecureAccessUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRotatedSecret) GetSecureAccessUrlOk() (*string, bool) {
+	if o == nil || o.SecureAccessUrl == nil {
+		return nil, false
+	}
+	return o.SecureAccessUrl, true
+}
+
+// HasSecureAccessUrl returns a boolean if a field has been set.
+func (o *CreateRotatedSecret) HasSecureAccessUrl() bool {
+	if o != nil && o.SecureAccessUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessUrl gets a reference to the given string and assigns it to the SecureAccessUrl field.
+func (o *CreateRotatedSecret) SetSecureAccessUrl(v string) {
+	o.SecureAccessUrl = &v
+}
+
 // GetSecureAccessWeb returns the SecureAccessWeb field value if set, zero value otherwise.
 func (o *CreateRotatedSecret) GetSecureAccessWeb() bool {
 	if o == nil || o.SecureAccessWeb == nil {
@@ -1790,6 +1896,9 @@ func (o CreateRotatedSecret) MarshalJSON() ([]byte, error) {
 	if o.GcpServiceAccountKeyId != nil {
 		toSerialize["gcp-service-account-key-id"] = o.GcpServiceAccountKeyId
 	}
+	if o.GraceRotation != nil {
+		toSerialize["grace-rotation"] = o.GraceRotation
+	}
 	if o.HostProvider != nil {
 		toSerialize["host-provider"] = o.HostProvider
 	}
@@ -1804,6 +1913,9 @@ func (o CreateRotatedSecret) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.PasswordLength != nil {
+		toSerialize["password-length"] = o.PasswordLength
 	}
 	if o.RotateAfterDisconnect != nil {
 		toSerialize["rotate-after-disconnect"] = o.RotateAfterDisconnect
@@ -1861,6 +1973,9 @@ func (o CreateRotatedSecret) MarshalJSON() ([]byte, error) {
 	}
 	if o.SecureAccessRdpUser != nil {
 		toSerialize["secure-access-rdp-user"] = o.SecureAccessRdpUser
+	}
+	if o.SecureAccessUrl != nil {
+		toSerialize["secure-access-url"] = o.SecureAccessUrl
 	}
 	if o.SecureAccessWeb != nil {
 		toSerialize["secure-access-web"] = o.SecureAccessWeb

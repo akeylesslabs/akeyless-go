@@ -40,6 +40,7 @@ Method | HTTP request | Description
 [**CreateGithubTarget**](V2Api.md#CreateGithubTarget) | **Post** /create-github-target | 
 [**CreateGlobalSignAtlasTarget**](V2Api.md#CreateGlobalSignAtlasTarget) | **Post** /create-globalsign-atlas-target | 
 [**CreateGlobalSignTarget**](V2Api.md#CreateGlobalSignTarget) | **Post** /create-globalsign-target | 
+[**CreateGodaddyTarget**](V2Api.md#CreateGodaddyTarget) | **Post** /create-godaddy-target | 
 [**CreateGroup**](V2Api.md#CreateGroup) | **Post** /create-group | 
 [**CreateKey**](V2Api.md#CreateKey) | **Post** /create-key | 
 [**CreateLinkedTarget**](V2Api.md#CreateLinkedTarget) | **Post** /create-linked-target | 
@@ -86,6 +87,63 @@ Method | HTTP request | Description
 [**DescribePermissions**](V2Api.md#DescribePermissions) | **Post** /describe-permissions | 
 [**DescribeSubClaims**](V2Api.md#DescribeSubClaims) | **Post** /describe-sub-claims | 
 [**Detokenize**](V2Api.md#Detokenize) | **Post** /detokenize | 
+[**DynamicSecretCreateArtifactory**](V2Api.md#DynamicSecretCreateArtifactory) | **Post** /dynamic-secret-create-artifactory | 
+[**DynamicSecretCreateAws**](V2Api.md#DynamicSecretCreateAws) | **Post** /dynamic-secret-create-aws | 
+[**DynamicSecretCreateAzure**](V2Api.md#DynamicSecretCreateAzure) | **Post** /dynamic-secret-create-azure | 
+[**DynamicSecretCreateCassandra**](V2Api.md#DynamicSecretCreateCassandra) | **Post** /dynamic-secret-create-cassandra | 
+[**DynamicSecretCreateCustom**](V2Api.md#DynamicSecretCreateCustom) | **Post** /dynamic-secret-create-custom | 
+[**DynamicSecretCreateDockerhub**](V2Api.md#DynamicSecretCreateDockerhub) | **Post** /dynamic-secret-create-dockerhub | 
+[**DynamicSecretCreateEks**](V2Api.md#DynamicSecretCreateEks) | **Post** /dynamic-secret-create-eks | 
+[**DynamicSecretCreateGcp**](V2Api.md#DynamicSecretCreateGcp) | **Post** /dynamic-secret-create-gcp | 
+[**DynamicSecretCreateGithub**](V2Api.md#DynamicSecretCreateGithub) | **Post** /dynamic-secret-create-github | 
+[**DynamicSecretCreateGke**](V2Api.md#DynamicSecretCreateGke) | **Post** /dynamic-secret-create-gke | 
+[**DynamicSecretCreateHanaDb**](V2Api.md#DynamicSecretCreateHanaDb) | **Post** /dynamic-secret-create-hanadb | 
+[**DynamicSecretCreateK8s**](V2Api.md#DynamicSecretCreateK8s) | **Post** /dynamic-secret-create-k8s | 
+[**DynamicSecretCreateLdap**](V2Api.md#DynamicSecretCreateLdap) | **Post** /dynamic-secret-create-ldap | 
+[**DynamicSecretCreateMongoDb**](V2Api.md#DynamicSecretCreateMongoDb) | **Post** /dynamic-secret-create-mongo | 
+[**DynamicSecretCreateMsSql**](V2Api.md#DynamicSecretCreateMsSql) | **Post** /dynamic-secret-create-mssql | 
+[**DynamicSecretCreateMySql**](V2Api.md#DynamicSecretCreateMySql) | **Post** /dynamic-secret-create-mysql | 
+[**DynamicSecretCreateOracleDb**](V2Api.md#DynamicSecretCreateOracleDb) | **Post** /dynamic-secret-create-oracle | 
+[**DynamicSecretCreatePing**](V2Api.md#DynamicSecretCreatePing) | **Post** /dynamic-secret-create-ping | 
+[**DynamicSecretCreatePostgreSql**](V2Api.md#DynamicSecretCreatePostgreSql) | **Post** /dynamic-secret-create-postgresql | 
+[**DynamicSecretCreateRabbitMq**](V2Api.md#DynamicSecretCreateRabbitMq) | **Post** /dynamic-secret-create-rabbitmq | 
+[**DynamicSecretCreateRdp**](V2Api.md#DynamicSecretCreateRdp) | **Post** /dynamic-secret-create-rdp | 
+[**DynamicSecretCreateRedis**](V2Api.md#DynamicSecretCreateRedis) | **Post** /dynamic-secret-create-redis | 
+[**DynamicSecretCreateRedshift**](V2Api.md#DynamicSecretCreateRedshift) | **Post** /dynamic-secret-create-redshift | 
+[**DynamicSecretCreateSnowflake**](V2Api.md#DynamicSecretCreateSnowflake) | **Post** /dynamic-secret-create-snowflake | 
+[**DynamicSecretCreateVenafi**](V2Api.md#DynamicSecretCreateVenafi) | **Post** /dynamic-secret-create-venafi | 
+[**DynamicSecretDelete**](V2Api.md#DynamicSecretDelete) | **Post** /dynamic-secret-delete | 
+[**DynamicSecretGet**](V2Api.md#DynamicSecretGet) | **Post** /dynamic-secret-get | 
+[**DynamicSecretGetValue**](V2Api.md#DynamicSecretGetValue) | **Post** /dynamic-secret-get-value | 
+[**DynamicSecretList**](V2Api.md#DynamicSecretList) | **Post** /dynamic-secret-list | 
+[**DynamicSecretTmpCredsDelete**](V2Api.md#DynamicSecretTmpCredsDelete) | **Post** /dynamic-secret-tmp-creds-delete | 
+[**DynamicSecretTmpCredsGet**](V2Api.md#DynamicSecretTmpCredsGet) | **Post** /dynamic-secret-tmp-creds-Get | 
+[**DynamicSecretTmpCredsUpdate**](V2Api.md#DynamicSecretTmpCredsUpdate) | **Post** /dynamic-secret-tmp-creds-update | 
+[**DynamicSecretUpdateArtifactory**](V2Api.md#DynamicSecretUpdateArtifactory) | **Post** /dynamic-secret-update-artifactory | 
+[**DynamicSecretUpdateAws**](V2Api.md#DynamicSecretUpdateAws) | **Post** /dynamic-secret-update-aws | 
+[**DynamicSecretUpdateAzure**](V2Api.md#DynamicSecretUpdateAzure) | **Post** /dynamic-secret-update-azure | 
+[**DynamicSecretUpdateCassandra**](V2Api.md#DynamicSecretUpdateCassandra) | **Post** /dynamic-secret-update-cassandra | 
+[**DynamicSecretUpdateCustom**](V2Api.md#DynamicSecretUpdateCustom) | **Post** /dynamic-secret-update-custom | 
+[**DynamicSecretUpdateDockerhub**](V2Api.md#DynamicSecretUpdateDockerhub) | **Post** /dynamic-secret-update-dockerhub | 
+[**DynamicSecretUpdateEks**](V2Api.md#DynamicSecretUpdateEks) | **Post** /dynamic-secret-update-eks | 
+[**DynamicSecretUpdateGcp**](V2Api.md#DynamicSecretUpdateGcp) | **Post** /dynamic-secret-update-gcp | 
+[**DynamicSecretUpdateGithub**](V2Api.md#DynamicSecretUpdateGithub) | **Post** /dynamic-secret-update-github | 
+[**DynamicSecretUpdateGke**](V2Api.md#DynamicSecretUpdateGke) | **Post** /dynamic-secret-update-gke | 
+[**DynamicSecretUpdateHanaDb**](V2Api.md#DynamicSecretUpdateHanaDb) | **Post** /dynamic-secret-update-hana | 
+[**DynamicSecretUpdateK8s**](V2Api.md#DynamicSecretUpdateK8s) | **Post** /dynamic-secret-update-k8s | 
+[**DynamicSecretUpdateLdap**](V2Api.md#DynamicSecretUpdateLdap) | **Post** /dynamic-secret-update-ldap | 
+[**DynamicSecretUpdateMongoDb**](V2Api.md#DynamicSecretUpdateMongoDb) | **Post** /dynamic-secret-update-mongo | 
+[**DynamicSecretUpdateMsSql**](V2Api.md#DynamicSecretUpdateMsSql) | **Post** /dynamic-secret-update-mssql | 
+[**DynamicSecretUpdateMySql**](V2Api.md#DynamicSecretUpdateMySql) | **Post** /dynamic-secret-update-mysql | 
+[**DynamicSecretUpdateOracleDb**](V2Api.md#DynamicSecretUpdateOracleDb) | **Post** /dynamic-secret-update-oracle | 
+[**DynamicSecretUpdatePing**](V2Api.md#DynamicSecretUpdatePing) | **Post** /dynamic-secret-update-ping | 
+[**DynamicSecretUpdatePostgreSql**](V2Api.md#DynamicSecretUpdatePostgreSql) | **Post** /dynamic-secret-update-postgresql | 
+[**DynamicSecretUpdateRabbitMq**](V2Api.md#DynamicSecretUpdateRabbitMq) | **Post** /dynamic-secret-update-rabbitmq | 
+[**DynamicSecretUpdateRdp**](V2Api.md#DynamicSecretUpdateRdp) | **Post** /dynamic-secret-update-rdp | 
+[**DynamicSecretUpdateRedis**](V2Api.md#DynamicSecretUpdateRedis) | **Post** /dynamic-secret-update-redis | 
+[**DynamicSecretUpdateRedshift**](V2Api.md#DynamicSecretUpdateRedshift) | **Post** /dynamic-secret-update-redshift | 
+[**DynamicSecretUpdateSnowflake**](V2Api.md#DynamicSecretUpdateSnowflake) | **Post** /dynamic-secret-update-snowflake | 
+[**DynamicSecretUpdateVenafi**](V2Api.md#DynamicSecretUpdateVenafi) | **Post** /dynamic-secret-update-venafi | 
 [**Encrypt**](V2Api.md#Encrypt) | **Post** /encrypt | 
 [**EncryptGPG**](V2Api.md#EncryptGPG) | **Post** /encrypt-gpg | 
 [**EncryptWithClassicKey**](V2Api.md#EncryptWithClassicKey) | **Post** /encrypt-with-classic-key | 
@@ -95,6 +153,12 @@ Method | HTTP request | Description
 [**EsmList**](V2Api.md#EsmList) | **Post** /esm-list | 
 [**EsmUpdate**](V2Api.md#EsmUpdate) | **Post** /esm-update | 
 [**EventAction**](V2Api.md#EventAction) | **Post** /event-action | 
+[**EventForwarderCreateEmail**](V2Api.md#EventForwarderCreateEmail) | **Post** /event-forwarder-create-email | 
+[**EventForwarderCreateWebhook**](V2Api.md#EventForwarderCreateWebhook) | **Post** /event-forwarder-create-webhook | 
+[**EventForwarderDelete**](V2Api.md#EventForwarderDelete) | **Post** /event-forwarder-delete | 
+[**EventForwarderGet**](V2Api.md#EventForwarderGet) | **Post** /event-forwarder-get | 
+[**EventForwarderUpdateEmail**](V2Api.md#EventForwarderUpdateEmail) | **Post** /event-forwarder-update-email | 
+[**EventForwarderUpdateWebhook**](V2Api.md#EventForwarderUpdateWebhook) | **Post** /event-forwarder-update-webhook | 
 [**ExportClassicKey**](V2Api.md#ExportClassicKey) | **Post** /export-classic-key | 
 [**GatewayCreateAllowedAccess**](V2Api.md#GatewayCreateAllowedAccess) | **Post** /gateway-create-allowed-access | 
 [**GatewayCreateK8SAuthConfig**](V2Api.md#GatewayCreateK8SAuthConfig) | **Post** /gateway-create-k8s-auth-config | 
@@ -103,7 +167,7 @@ Method | HTTP request | Description
 [**GatewayCreateProducerAws**](V2Api.md#GatewayCreateProducerAws) | **Post** /gateway-create-producer-aws | 
 [**GatewayCreateProducerAzure**](V2Api.md#GatewayCreateProducerAzure) | **Post** /gateway-create-producer-azure | 
 [**GatewayCreateProducerCassandra**](V2Api.md#GatewayCreateProducerCassandra) | **Post** /gateway-create-producer-cassandra | 
-[**GatewayCreateProducerCertificateAutomation**](V2Api.md#GatewayCreateProducerCertificateAutomation) | **Post** /gateway-create-producer-certificate-automation | 
+[**GatewayCreateProducerChef**](V2Api.md#GatewayCreateProducerChef) | **Post** /gateway-create-producer-chef | 
 [**GatewayCreateProducerCustom**](V2Api.md#GatewayCreateProducerCustom) | **Post** /gateway-create-producer-custom | 
 [**GatewayCreateProducerDockerhub**](V2Api.md#GatewayCreateProducerDockerhub) | **Post** /gateway-create-producer-dockerhub | 
 [**GatewayCreateProducerEks**](V2Api.md#GatewayCreateProducerEks) | **Post** /gateway-create-producer-eks | 
@@ -124,6 +188,7 @@ Method | HTTP request | Description
 [**GatewayCreateProducerRedis**](V2Api.md#GatewayCreateProducerRedis) | **Post** /gateway-create-producer-Redis | 
 [**GatewayCreateProducerRedshift**](V2Api.md#GatewayCreateProducerRedshift) | **Post** /gateway-create-producer-redshift | 
 [**GatewayCreateProducerSnowflake**](V2Api.md#GatewayCreateProducerSnowflake) | **Post** /gateway-create-producer-snowflake | 
+[**GatewayCreateProducerVenafi**](V2Api.md#GatewayCreateProducerVenafi) | **Post** /gateway-create-producer-certificate-automation | 
 [**GatewayDeleteAllowedAccess**](V2Api.md#GatewayDeleteAllowedAccess) | **Post** /gateway-delete-allowed-access | 
 [**GatewayDeleteK8SAuthConfig**](V2Api.md#GatewayDeleteK8SAuthConfig) | **Post** /gateway-delete-k8s-auth-config | 
 [**GatewayDeleteMigration**](V2Api.md#GatewayDeleteMigration) | **Post** /gateway-delete-migration | 
@@ -154,7 +219,7 @@ Method | HTTP request | Description
 [**GatewayUpdateProducerAws**](V2Api.md#GatewayUpdateProducerAws) | **Post** /gateway-update-producer-aws | 
 [**GatewayUpdateProducerAzure**](V2Api.md#GatewayUpdateProducerAzure) | **Post** /gateway-update-producer-azure | 
 [**GatewayUpdateProducerCassandra**](V2Api.md#GatewayUpdateProducerCassandra) | **Post** /gateway-update-producer-cassandra | 
-[**GatewayUpdateProducerCertificateAutomation**](V2Api.md#GatewayUpdateProducerCertificateAutomation) | **Post** /gateway-update-producer-certificate-automation | 
+[**GatewayUpdateProducerChef**](V2Api.md#GatewayUpdateProducerChef) | **Post** /gateway-update-producer-chef | 
 [**GatewayUpdateProducerCustom**](V2Api.md#GatewayUpdateProducerCustom) | **Post** /gateway-update-producer-custom | 
 [**GatewayUpdateProducerDockerhub**](V2Api.md#GatewayUpdateProducerDockerhub) | **Post** /gateway-update-producer-dockerhub | 
 [**GatewayUpdateProducerEks**](V2Api.md#GatewayUpdateProducerEks) | **Post** /gateway-update-producer-eks | 
@@ -175,6 +240,7 @@ Method | HTTP request | Description
 [**GatewayUpdateProducerRedis**](V2Api.md#GatewayUpdateProducerRedis) | **Post** /gateway-update-producer-redis | 
 [**GatewayUpdateProducerRedshift**](V2Api.md#GatewayUpdateProducerRedshift) | **Post** /gateway-update-producer-redshift | 
 [**GatewayUpdateProducerSnowflake**](V2Api.md#GatewayUpdateProducerSnowflake) | **Post** /gateway-update-producer-snowflake | 
+[**GatewayUpdateProducerVenafi**](V2Api.md#GatewayUpdateProducerVenafi) | **Post** /gateway-update-producer-certificate-automation | 
 [**GatewayUpdateTlsCert**](V2Api.md#GatewayUpdateTlsCert) | **Post** /gateway-update-tls-cert | 
 [**GatewayUpdateTmpUsers**](V2Api.md#GatewayUpdateTmpUsers) | **Post** /gateway-update-producer-tmp-creds | 
 [**GenerateCsr**](V2Api.md#GenerateCsr) | **Post** /generate-csr | 
@@ -231,6 +297,44 @@ Method | HTTP request | Description
 [**RotateKey**](V2Api.md#RotateKey) | **Post** /rotate-key | 
 [**RotateOidcClientSecret**](V2Api.md#RotateOidcClientSecret) | **Post** /rotate-oidc-client-secret | 
 [**RotateSecret**](V2Api.md#RotateSecret) | **Post** /gateway-rotate-secret | 
+[**RotatedSecretCreateAws**](V2Api.md#RotatedSecretCreateAws) | **Post** /rotated-secret-create-aws | 
+[**RotatedSecretCreateAzure**](V2Api.md#RotatedSecretCreateAzure) | **Post** /rotated-secret-create-azure | 
+[**RotatedSecretCreateCassandra**](V2Api.md#RotatedSecretCreateCassandra) | **Post** /rotated-secret-create-cassandra | 
+[**RotatedSecretCreateCustom**](V2Api.md#RotatedSecretCreateCustom) | **Post** /rotated-secret-create-custom | 
+[**RotatedSecretCreateDockerhub**](V2Api.md#RotatedSecretCreateDockerhub) | **Post** /rotated-secret-create-dockerhub | 
+[**RotatedSecretCreateGcp**](V2Api.md#RotatedSecretCreateGcp) | **Post** /rotated-secret-create-gcp | 
+[**RotatedSecretCreateHanadb**](V2Api.md#RotatedSecretCreateHanadb) | **Post** /rotated-secret-create-hanadb | 
+[**RotatedSecretCreateLdap**](V2Api.md#RotatedSecretCreateLdap) | **Post** /rotated-secret-create-ldap | 
+[**RotatedSecretCreateMongodb**](V2Api.md#RotatedSecretCreateMongodb) | **Post** /rotated-secret-create-mongodb | 
+[**RotatedSecretCreateMssql**](V2Api.md#RotatedSecretCreateMssql) | **Post** /rotated-secret-create-mssql | 
+[**RotatedSecretCreateMysql**](V2Api.md#RotatedSecretCreateMysql) | **Post** /rotated-secret-create-mysql | 
+[**RotatedSecretCreateOracledb**](V2Api.md#RotatedSecretCreateOracledb) | **Post** /rotated-secret-create-oracledb | 
+[**RotatedSecretCreatePostgresql**](V2Api.md#RotatedSecretCreatePostgresql) | **Post** /rotated-secret-create-postgresql | 
+[**RotatedSecretCreateRedis**](V2Api.md#RotatedSecretCreateRedis) | **Post** /rotated-secret-create-redis | 
+[**RotatedSecretCreateRedshift**](V2Api.md#RotatedSecretCreateRedshift) | **Post** /rotated-secret-create-redshift | 
+[**RotatedSecretCreateSnowflake**](V2Api.md#RotatedSecretCreateSnowflake) | **Post** /rotated-secret-create-snowflake | 
+[**RotatedSecretCreateSsh**](V2Api.md#RotatedSecretCreateSsh) | **Post** /rotated-secret-create-ssh | 
+[**RotatedSecretCreateWindows**](V2Api.md#RotatedSecretCreateWindows) | **Post** /rotated-secret-create-windows | 
+[**RotatedSecretGetValue**](V2Api.md#RotatedSecretGetValue) | **Post** /rotated-secret-get-value | 
+[**RotatedSecretList**](V2Api.md#RotatedSecretList) | **Post** /rotated-secret-list | 
+[**RotatedSecretUpdateAws**](V2Api.md#RotatedSecretUpdateAws) | **Post** /rotated-secret-update-aws | 
+[**RotatedSecretUpdateAzure**](V2Api.md#RotatedSecretUpdateAzure) | **Post** /rotated-secret-update-azure | 
+[**RotatedSecretUpdateCassandra**](V2Api.md#RotatedSecretUpdateCassandra) | **Post** /rotated-secret-update-cassandra | 
+[**RotatedSecretUpdateCustom**](V2Api.md#RotatedSecretUpdateCustom) | **Post** /rotated-secret-update-custom | 
+[**RotatedSecretUpdateDockerhub**](V2Api.md#RotatedSecretUpdateDockerhub) | **Post** /rotated-secret-update-dockerhub | 
+[**RotatedSecretUpdateGcp**](V2Api.md#RotatedSecretUpdateGcp) | **Post** /rotated-secret-update-gcp | 
+[**RotatedSecretUpdateHanadb**](V2Api.md#RotatedSecretUpdateHanadb) | **Post** /rotated-secret-update-hanadb | 
+[**RotatedSecretUpdateLdap**](V2Api.md#RotatedSecretUpdateLdap) | **Post** /rotated-secret-update-ldap | 
+[**RotatedSecretUpdateMongodb**](V2Api.md#RotatedSecretUpdateMongodb) | **Post** /rotated-secret-update-mongodb | 
+[**RotatedSecretUpdateMssql**](V2Api.md#RotatedSecretUpdateMssql) | **Post** /rotated-secret-update-mssql | 
+[**RotatedSecretUpdateMysql**](V2Api.md#RotatedSecretUpdateMysql) | **Post** /rotated-secret-update-mysql | 
+[**RotatedSecretUpdateOracledb**](V2Api.md#RotatedSecretUpdateOracledb) | **Post** /rotated-secret-update-oracledb | 
+[**RotatedSecretUpdatePostgresql**](V2Api.md#RotatedSecretUpdatePostgresql) | **Post** /rotated-secret-update-postgresql | 
+[**RotatedSecretUpdateRedis**](V2Api.md#RotatedSecretUpdateRedis) | **Post** /rotated-secret-update-redis | 
+[**RotatedSecretUpdateRedshift**](V2Api.md#RotatedSecretUpdateRedshift) | **Post** /rotated-secret-update-redshift | 
+[**RotatedSecretUpdateSnowflake**](V2Api.md#RotatedSecretUpdateSnowflake) | **Post** /rotated-secret-update-snowflake | 
+[**RotatedSecretUpdateSsh**](V2Api.md#RotatedSecretUpdateSsh) | **Post** /rotated-secret-update-ssh | 
+[**RotatedSecretUpdateWindows**](V2Api.md#RotatedSecretUpdateWindows) | **Post** /rotated-secret-update-windows | 
 [**SetItemState**](V2Api.md#SetItemState) | **Post** /set-item-state | 
 [**SetRoleRule**](V2Api.md#SetRoleRule) | **Post** /set-role-rule | 
 [**ShareItem**](V2Api.md#ShareItem) | **Post** /share-item | 
@@ -278,6 +382,7 @@ Method | HTTP request | Description
 [**UpdateGithubTarget**](V2Api.md#UpdateGithubTarget) | **Post** /update-github-target | 
 [**UpdateGlobalSignAtlasTarget**](V2Api.md#UpdateGlobalSignAtlasTarget) | **Post** /update-globalsign-atlas-target | 
 [**UpdateGlobalSignTarget**](V2Api.md#UpdateGlobalSignTarget) | **Post** /update-globalsign-target | 
+[**UpdateGodaddyTarget**](V2Api.md#UpdateGodaddyTarget) | **Post** /update-godaddy-target | 
 [**UpdateGroup**](V2Api.md#UpdateGroup) | **Post** /update-group | 
 [**UpdateItem**](V2Api.md#UpdateItem) | **Post** /update-item | 
 [**UpdateLdapTarget**](V2Api.md#UpdateLdapTarget) | **Post** /update-ldap-target | 
@@ -468,7 +573,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.Newauth() // Auth | 
+    body := *openapiclient.NewAuth() // Auth | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -2610,6 +2715,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateGlobalSignTargetOutput**](createGlobalSignTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateGodaddyTarget
+
+> CreateGodaddyTargetOutput CreateGodaddyTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewcreateGodaddyTarget("ApiKey_example", "ImapFqdn_example", "ImapPassword_example", "ImapUsername_example", "Name_example", "Secret_example") // CreateGodaddyTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.CreateGodaddyTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateGodaddyTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateGodaddyTarget`: CreateGodaddyTargetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateGodaddyTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateGodaddyTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateGodaddyTarget**](CreateGodaddyTarget.md) |  | 
+
+### Return type
+
+[**CreateGodaddyTargetOutput**](createGodaddyTargetOutput.md)
 
 ### Authorization
 
@@ -5569,6 +5738,3645 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## DynamicSecretCreateArtifactory
+
+> DynamicSecretCreateOutput DynamicSecretCreateArtifactory(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretCreateArtifactory("ArtifactoryTokenAudience_example", "ArtifactoryTokenScope_example", "Name_example") // DynamicSecretCreateArtifactory | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretCreateArtifactory(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretCreateArtifactory``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretCreateArtifactory`: DynamicSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretCreateArtifactory`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretCreateArtifactoryRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretCreateArtifactory**](DynamicSecretCreateArtifactory.md) |  | 
+
+### Return type
+
+[**DynamicSecretCreateOutput**](dynamicSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretCreateAws
+
+> DynamicSecretCreateOutput DynamicSecretCreateAws(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretCreateAws("Name_example") // DynamicSecretCreateAws | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretCreateAws(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretCreateAws``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretCreateAws`: DynamicSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretCreateAws`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretCreateAwsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretCreateAws**](DynamicSecretCreateAws.md) |  | 
+
+### Return type
+
+[**DynamicSecretCreateOutput**](dynamicSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretCreateAzure
+
+> DynamicSecretCreateOutput DynamicSecretCreateAzure(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretCreateAzure("Name_example") // DynamicSecretCreateAzure | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretCreateAzure(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretCreateAzure``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretCreateAzure`: DynamicSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretCreateAzure`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretCreateAzureRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretCreateAzure**](DynamicSecretCreateAzure.md) |  | 
+
+### Return type
+
+[**DynamicSecretCreateOutput**](dynamicSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretCreateCassandra
+
+> DynamicSecretCreateOutput DynamicSecretCreateCassandra(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretCreateCassandra("Name_example") // DynamicSecretCreateCassandra | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretCreateCassandra(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretCreateCassandra``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretCreateCassandra`: DynamicSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretCreateCassandra`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretCreateCassandraRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretCreateCassandra**](DynamicSecretCreateCassandra.md) |  | 
+
+### Return type
+
+[**DynamicSecretCreateOutput**](dynamicSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretCreateCustom
+
+> DynamicSecretCreateOutput DynamicSecretCreateCustom(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretCreateCustom("CreateSyncUrl_example", "Name_example", "RevokeSyncUrl_example") // DynamicSecretCreateCustom |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretCreateCustom(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretCreateCustom``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretCreateCustom`: DynamicSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretCreateCustom`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretCreateCustomRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretCreateCustom**](DynamicSecretCreateCustom.md) |  | 
+
+### Return type
+
+[**DynamicSecretCreateOutput**](dynamicSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretCreateDockerhub
+
+> DynamicSecretCreateOutput DynamicSecretCreateDockerhub(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretCreateDockerhub("Name_example") // DynamicSecretCreateDockerhub | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretCreateDockerhub(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretCreateDockerhub``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretCreateDockerhub`: DynamicSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretCreateDockerhub`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretCreateDockerhubRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretCreateDockerhub**](DynamicSecretCreateDockerhub.md) |  | 
+
+### Return type
+
+[**DynamicSecretCreateOutput**](dynamicSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretCreateEks
+
+> DynamicSecretCreateOutput DynamicSecretCreateEks(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretCreateEks("Name_example") // DynamicSecretCreateEks | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretCreateEks(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretCreateEks``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretCreateEks`: DynamicSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretCreateEks`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretCreateEksRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretCreateEks**](DynamicSecretCreateEks.md) |  | 
+
+### Return type
+
+[**DynamicSecretCreateOutput**](dynamicSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretCreateGcp
+
+> DynamicSecretCreateOutput DynamicSecretCreateGcp(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretCreateGcp("Name_example", "ServiceAccountType_example") // DynamicSecretCreateGcp | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretCreateGcp(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretCreateGcp``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretCreateGcp`: DynamicSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretCreateGcp`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretCreateGcpRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretCreateGcp**](DynamicSecretCreateGcp.md) |  | 
+
+### Return type
+
+[**DynamicSecretCreateOutput**](dynamicSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretCreateGithub
+
+> DynamicSecretCreateOutput DynamicSecretCreateGithub(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretCreateGithub("Name_example") // DynamicSecretCreateGithub | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretCreateGithub(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretCreateGithub``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretCreateGithub`: DynamicSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretCreateGithub`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretCreateGithubRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretCreateGithub**](DynamicSecretCreateGithub.md) |  | 
+
+### Return type
+
+[**DynamicSecretCreateOutput**](dynamicSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretCreateGke
+
+> DynamicSecretCreateOutput DynamicSecretCreateGke(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretCreateGke("Name_example") // DynamicSecretCreateGke | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretCreateGke(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretCreateGke``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretCreateGke`: DynamicSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretCreateGke`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretCreateGkeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretCreateGke**](DynamicSecretCreateGke.md) |  | 
+
+### Return type
+
+[**DynamicSecretCreateOutput**](dynamicSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretCreateHanaDb
+
+> DynamicSecretCreateOutput DynamicSecretCreateHanaDb(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretCreateHanaDb("Name_example") // DynamicSecretCreateHanaDb | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretCreateHanaDb(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretCreateHanaDb``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretCreateHanaDb`: DynamicSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretCreateHanaDb`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretCreateHanaDbRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretCreateHanaDb**](DynamicSecretCreateHanaDb.md) |  | 
+
+### Return type
+
+[**DynamicSecretCreateOutput**](dynamicSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretCreateK8s
+
+> DynamicSecretCreateOutput DynamicSecretCreateK8s(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretCreateK8s("Name_example") // DynamicSecretCreateK8s | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretCreateK8s(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretCreateK8s``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretCreateK8s`: DynamicSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretCreateK8s`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretCreateK8sRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretCreateK8s**](DynamicSecretCreateK8s.md) |  | 
+
+### Return type
+
+[**DynamicSecretCreateOutput**](dynamicSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretCreateLdap
+
+> DynamicSecretCreateOutput DynamicSecretCreateLdap(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretCreateLdap("Name_example") // DynamicSecretCreateLdap | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretCreateLdap(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretCreateLdap``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretCreateLdap`: DynamicSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretCreateLdap`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretCreateLdapRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretCreateLdap**](DynamicSecretCreateLdap.md) |  | 
+
+### Return type
+
+[**DynamicSecretCreateOutput**](dynamicSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretCreateMongoDb
+
+> DynamicSecretCreateOutput DynamicSecretCreateMongoDb(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretCreateMongoDb("Name_example") // DynamicSecretCreateMongoDb | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretCreateMongoDb(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretCreateMongoDb``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretCreateMongoDb`: DynamicSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretCreateMongoDb`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretCreateMongoDbRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretCreateMongoDb**](DynamicSecretCreateMongoDb.md) |  | 
+
+### Return type
+
+[**DynamicSecretCreateOutput**](dynamicSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretCreateMsSql
+
+> DynamicSecretCreateOutput DynamicSecretCreateMsSql(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretCreateMsSql("Name_example") // DynamicSecretCreateMsSql | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretCreateMsSql(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretCreateMsSql``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretCreateMsSql`: DynamicSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretCreateMsSql`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretCreateMsSqlRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretCreateMsSql**](DynamicSecretCreateMsSql.md) |  | 
+
+### Return type
+
+[**DynamicSecretCreateOutput**](dynamicSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretCreateMySql
+
+> DynamicSecretCreateOutput DynamicSecretCreateMySql(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretCreateMySql("Name_example") // DynamicSecretCreateMySql | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretCreateMySql(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretCreateMySql``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretCreateMySql`: DynamicSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretCreateMySql`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretCreateMySqlRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretCreateMySql**](DynamicSecretCreateMySql.md) |  | 
+
+### Return type
+
+[**DynamicSecretCreateOutput**](dynamicSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretCreateOracleDb
+
+> DynamicSecretCreateOutput DynamicSecretCreateOracleDb(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretCreateOracleDb("Name_example") // DynamicSecretCreateOracleDb | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretCreateOracleDb(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretCreateOracleDb``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretCreateOracleDb`: DynamicSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretCreateOracleDb`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretCreateOracleDbRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretCreateOracleDb**](DynamicSecretCreateOracleDb.md) |  | 
+
+### Return type
+
+[**DynamicSecretCreateOutput**](dynamicSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretCreatePing
+
+> DynamicSecretCreateOutput DynamicSecretCreatePing(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretCreatePing("Name_example") // DynamicSecretCreatePing | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretCreatePing(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretCreatePing``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretCreatePing`: DynamicSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretCreatePing`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretCreatePingRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretCreatePing**](DynamicSecretCreatePing.md) |  | 
+
+### Return type
+
+[**DynamicSecretCreateOutput**](dynamicSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretCreatePostgreSql
+
+> DynamicSecretCreateOutput DynamicSecretCreatePostgreSql(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretCreatePostgreSql("Name_example") // DynamicSecretCreatePostgreSql | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretCreatePostgreSql(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretCreatePostgreSql``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretCreatePostgreSql`: DynamicSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretCreatePostgreSql`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretCreatePostgreSqlRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretCreatePostgreSql**](DynamicSecretCreatePostgreSql.md) |  | 
+
+### Return type
+
+[**DynamicSecretCreateOutput**](dynamicSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretCreateRabbitMq
+
+> DynamicSecretCreateOutput DynamicSecretCreateRabbitMq(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretCreateRabbitMq("Name_example") // DynamicSecretCreateRabbitMq | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretCreateRabbitMq(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretCreateRabbitMq``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretCreateRabbitMq`: DynamicSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretCreateRabbitMq`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretCreateRabbitMqRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretCreateRabbitMq**](DynamicSecretCreateRabbitMq.md) |  | 
+
+### Return type
+
+[**DynamicSecretCreateOutput**](dynamicSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretCreateRdp
+
+> DynamicSecretCreateOutput DynamicSecretCreateRdp(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretCreateRdp("Name_example") // DynamicSecretCreateRdp | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretCreateRdp(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretCreateRdp``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretCreateRdp`: DynamicSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretCreateRdp`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretCreateRdpRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretCreateRdp**](DynamicSecretCreateRdp.md) |  | 
+
+### Return type
+
+[**DynamicSecretCreateOutput**](dynamicSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretCreateRedis
+
+> DynamicSecretCreateOutput DynamicSecretCreateRedis(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretCreateRedis("Name_example") // DynamicSecretCreateRedis | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretCreateRedis(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretCreateRedis``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretCreateRedis`: DynamicSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretCreateRedis`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretCreateRedisRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretCreateRedis**](DynamicSecretCreateRedis.md) |  | 
+
+### Return type
+
+[**DynamicSecretCreateOutput**](dynamicSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretCreateRedshift
+
+> DynamicSecretCreateOutput DynamicSecretCreateRedshift(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretCreateRedshift("Name_example") // DynamicSecretCreateRedshift | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretCreateRedshift(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretCreateRedshift``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretCreateRedshift`: DynamicSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretCreateRedshift`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretCreateRedshiftRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretCreateRedshift**](DynamicSecretCreateRedshift.md) |  | 
+
+### Return type
+
+[**DynamicSecretCreateOutput**](dynamicSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretCreateSnowflake
+
+> DynamicSecretCreateOutput DynamicSecretCreateSnowflake(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretCreateSnowflake("Name_example") // DynamicSecretCreateSnowflake | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretCreateSnowflake(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretCreateSnowflake``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretCreateSnowflake`: DynamicSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretCreateSnowflake`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretCreateSnowflakeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretCreateSnowflake**](DynamicSecretCreateSnowflake.md) |  | 
+
+### Return type
+
+[**DynamicSecretCreateOutput**](dynamicSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretCreateVenafi
+
+> DynamicSecretCreateOutput DynamicSecretCreateVenafi(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretCreateVenafi("Name_example") // DynamicSecretCreateVenafi | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretCreateVenafi(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretCreateVenafi``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretCreateVenafi`: DynamicSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretCreateVenafi`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretCreateVenafiRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretCreateVenafi**](DynamicSecretCreateVenafi.md) |  | 
+
+### Return type
+
+[**DynamicSecretCreateOutput**](dynamicSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretDelete
+
+> DynamicSecretDeleteOutput DynamicSecretDelete(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretDelete("Name_example") // DynamicSecretDelete | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretDelete(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretDelete`: DynamicSecretDeleteOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretDelete`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretDeleteRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretDelete**](DynamicSecretDelete.md) |  | 
+
+### Return type
+
+[**DynamicSecretDeleteOutput**](dynamicSecretDeleteOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretGet
+
+> DSProducerDetails DynamicSecretGet(ctx).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretGet(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretGet`: DSProducerDetails
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretGetRequest struct via the builder pattern
+
+
+### Return type
+
+[**DSProducerDetails**](DSProducerDetails.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretGetValue
+
+> map[string]string DynamicSecretGetValue(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretGetValue("Name_example") // DynamicSecretGetValue | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretGetValue(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretGetValue``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretGetValue`: map[string]string
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretGetValue`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretGetValueRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretGetValue**](DynamicSecretGetValue.md) |  | 
+
+### Return type
+
+**map[string]string**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretList
+
+> GetProducersListReplyObj DynamicSecretList(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretList() // DynamicSecretList | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretList(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretList`: GetProducersListReplyObj
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretList**](DynamicSecretList.md) |  | 
+
+### Return type
+
+[**GetProducersListReplyObj**](GetProducersListReplyObj.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretTmpCredsDelete
+
+> DynamicSecretTmpCredsDelete(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretTmpCredsDelete("Name_example", "TmpCredsId_example") // DynamicSecretTmpCredsDelete | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretTmpCredsDelete(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretTmpCredsDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretTmpCredsDeleteRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretTmpCredsDelete**](DynamicSecretTmpCredsDelete.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretTmpCredsGet
+
+> []TmpUserData DynamicSecretTmpCredsGet(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretTmpCredsGet("Name_example") // DynamicSecretTmpCredsGet | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretTmpCredsGet(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretTmpCredsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretTmpCredsGet`: []TmpUserData
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretTmpCredsGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretTmpCredsGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretTmpCredsGet**](DynamicSecretTmpCredsGet.md) |  | 
+
+### Return type
+
+[**[]TmpUserData**](TmpUserData.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretTmpCredsUpdate
+
+> DynamicSecretTmpCredsUpdate(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretTmpCredsUpdate("Host_example", "Name_example", int64(123), "TmpCredsId_example") // DynamicSecretTmpCredsUpdate | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretTmpCredsUpdate(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretTmpCredsUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretTmpCredsUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretTmpCredsUpdate**](DynamicSecretTmpCredsUpdate.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretUpdateArtifactory
+
+> DynamicSecretUpdateOutput DynamicSecretUpdateArtifactory(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretUpdateArtifactory("ArtifactoryTokenAudience_example", "ArtifactoryTokenScope_example", "Name_example") // DynamicSecretUpdateArtifactory | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretUpdateArtifactory(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretUpdateArtifactory``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretUpdateArtifactory`: DynamicSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretUpdateArtifactory`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretUpdateArtifactoryRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretUpdateArtifactory**](DynamicSecretUpdateArtifactory.md) |  | 
+
+### Return type
+
+[**DynamicSecretUpdateOutput**](dynamicSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretUpdateAws
+
+> DynamicSecretUpdateOutput DynamicSecretUpdateAws(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretUpdateAws("Name_example") // DynamicSecretUpdateAws | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretUpdateAws(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretUpdateAws``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretUpdateAws`: DynamicSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretUpdateAws`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretUpdateAwsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretUpdateAws**](DynamicSecretUpdateAws.md) |  | 
+
+### Return type
+
+[**DynamicSecretUpdateOutput**](dynamicSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretUpdateAzure
+
+> DynamicSecretUpdateOutput DynamicSecretUpdateAzure(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretUpdateAzure("Name_example") // DynamicSecretUpdateAzure | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretUpdateAzure(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretUpdateAzure``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretUpdateAzure`: DynamicSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretUpdateAzure`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretUpdateAzureRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretUpdateAzure**](DynamicSecretUpdateAzure.md) |  | 
+
+### Return type
+
+[**DynamicSecretUpdateOutput**](dynamicSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretUpdateCassandra
+
+> DynamicSecretUpdateOutput DynamicSecretUpdateCassandra(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretUpdateCassandra("Name_example") // DynamicSecretUpdateCassandra | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretUpdateCassandra(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretUpdateCassandra``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretUpdateCassandra`: DynamicSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretUpdateCassandra`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretUpdateCassandraRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretUpdateCassandra**](DynamicSecretUpdateCassandra.md) |  | 
+
+### Return type
+
+[**DynamicSecretUpdateOutput**](dynamicSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretUpdateCustom
+
+> DynamicSecretUpdateOutput DynamicSecretUpdateCustom(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretUpdateCustom("CreateSyncUrl_example", "Name_example", "RevokeSyncUrl_example") // DynamicSecretUpdateCustom |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretUpdateCustom(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretUpdateCustom``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretUpdateCustom`: DynamicSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretUpdateCustom`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretUpdateCustomRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretUpdateCustom**](DynamicSecretUpdateCustom.md) |  | 
+
+### Return type
+
+[**DynamicSecretUpdateOutput**](dynamicSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretUpdateDockerhub
+
+> DynamicSecretUpdateOutput DynamicSecretUpdateDockerhub(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretUpdateDockerhub("Name_example") // DynamicSecretUpdateDockerhub | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretUpdateDockerhub(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretUpdateDockerhub``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretUpdateDockerhub`: DynamicSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretUpdateDockerhub`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretUpdateDockerhubRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretUpdateDockerhub**](DynamicSecretUpdateDockerhub.md) |  | 
+
+### Return type
+
+[**DynamicSecretUpdateOutput**](dynamicSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretUpdateEks
+
+> DynamicSecretUpdateOutput DynamicSecretUpdateEks(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretUpdateEks("Name_example") // DynamicSecretUpdateEks | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretUpdateEks(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretUpdateEks``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretUpdateEks`: DynamicSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretUpdateEks`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretUpdateEksRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretUpdateEks**](DynamicSecretUpdateEks.md) |  | 
+
+### Return type
+
+[**DynamicSecretUpdateOutput**](dynamicSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretUpdateGcp
+
+> DynamicSecretUpdateOutput DynamicSecretUpdateGcp(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretUpdateGcp("Name_example", "ServiceAccountType_example") // DynamicSecretUpdateGcp | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretUpdateGcp(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretUpdateGcp``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretUpdateGcp`: DynamicSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretUpdateGcp`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretUpdateGcpRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretUpdateGcp**](DynamicSecretUpdateGcp.md) |  | 
+
+### Return type
+
+[**DynamicSecretUpdateOutput**](dynamicSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretUpdateGithub
+
+> DynamicSecretUpdateOutput DynamicSecretUpdateGithub(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretUpdateGithub("Name_example") // DynamicSecretUpdateGithub | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretUpdateGithub(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretUpdateGithub``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretUpdateGithub`: DynamicSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretUpdateGithub`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretUpdateGithubRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretUpdateGithub**](DynamicSecretUpdateGithub.md) |  | 
+
+### Return type
+
+[**DynamicSecretUpdateOutput**](dynamicSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretUpdateGke
+
+> DynamicSecretUpdateOutput DynamicSecretUpdateGke(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretUpdateGke("Name_example") // DynamicSecretUpdateGke | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretUpdateGke(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretUpdateGke``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretUpdateGke`: DynamicSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretUpdateGke`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretUpdateGkeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretUpdateGke**](DynamicSecretUpdateGke.md) |  | 
+
+### Return type
+
+[**DynamicSecretUpdateOutput**](dynamicSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretUpdateHanaDb
+
+> DynamicSecretUpdateOutput DynamicSecretUpdateHanaDb(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretUpdateHanaDb("Name_example") // DynamicSecretUpdateHanaDb | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretUpdateHanaDb(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretUpdateHanaDb``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretUpdateHanaDb`: DynamicSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretUpdateHanaDb`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretUpdateHanaDbRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretUpdateHanaDb**](DynamicSecretUpdateHanaDb.md) |  | 
+
+### Return type
+
+[**DynamicSecretUpdateOutput**](dynamicSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretUpdateK8s
+
+> DynamicSecretUpdateOutput DynamicSecretUpdateK8s(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretUpdateK8s("Name_example") // DynamicSecretUpdateK8s | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretUpdateK8s(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretUpdateK8s``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretUpdateK8s`: DynamicSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretUpdateK8s`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretUpdateK8sRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretUpdateK8s**](DynamicSecretUpdateK8s.md) |  | 
+
+### Return type
+
+[**DynamicSecretUpdateOutput**](dynamicSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretUpdateLdap
+
+> DynamicSecretUpdateOutput DynamicSecretUpdateLdap(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretUpdateLdap("Name_example") // DynamicSecretUpdateLdap | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretUpdateLdap(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretUpdateLdap``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretUpdateLdap`: DynamicSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretUpdateLdap`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretUpdateLdapRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretUpdateLdap**](DynamicSecretUpdateLdap.md) |  | 
+
+### Return type
+
+[**DynamicSecretUpdateOutput**](dynamicSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretUpdateMongoDb
+
+> DynamicSecretUpdateOutput DynamicSecretUpdateMongoDb(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretUpdateMongoDb("Name_example") // DynamicSecretUpdateMongoDb | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretUpdateMongoDb(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretUpdateMongoDb``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretUpdateMongoDb`: DynamicSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretUpdateMongoDb`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretUpdateMongoDbRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretUpdateMongoDb**](DynamicSecretUpdateMongoDb.md) |  | 
+
+### Return type
+
+[**DynamicSecretUpdateOutput**](dynamicSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretUpdateMsSql
+
+> DynamicSecretUpdateOutput DynamicSecretUpdateMsSql(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretUpdateMsSql("Name_example") // DynamicSecretUpdateMsSql | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretUpdateMsSql(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretUpdateMsSql``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretUpdateMsSql`: DynamicSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretUpdateMsSql`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretUpdateMsSqlRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretUpdateMsSql**](DynamicSecretUpdateMsSql.md) |  | 
+
+### Return type
+
+[**DynamicSecretUpdateOutput**](dynamicSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretUpdateMySql
+
+> DynamicSecretUpdateOutput DynamicSecretUpdateMySql(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretUpdateMySql("Name_example") // DynamicSecretUpdateMySql | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretUpdateMySql(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretUpdateMySql``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretUpdateMySql`: DynamicSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretUpdateMySql`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretUpdateMySqlRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretUpdateMySql**](DynamicSecretUpdateMySql.md) |  | 
+
+### Return type
+
+[**DynamicSecretUpdateOutput**](dynamicSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretUpdateOracleDb
+
+> DynamicSecretUpdateOutput DynamicSecretUpdateOracleDb(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretUpdateOracleDb("Name_example") // DynamicSecretUpdateOracleDb | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretUpdateOracleDb(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretUpdateOracleDb``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretUpdateOracleDb`: DynamicSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretUpdateOracleDb`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretUpdateOracleDbRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretUpdateOracleDb**](DynamicSecretUpdateOracleDb.md) |  | 
+
+### Return type
+
+[**DynamicSecretUpdateOutput**](dynamicSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretUpdatePing
+
+> DynamicSecretUpdateOutput DynamicSecretUpdatePing(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretUpdatePing("Name_example") // DynamicSecretUpdatePing | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretUpdatePing(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretUpdatePing``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretUpdatePing`: DynamicSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretUpdatePing`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretUpdatePingRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretUpdatePing**](DynamicSecretUpdatePing.md) |  | 
+
+### Return type
+
+[**DynamicSecretUpdateOutput**](dynamicSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretUpdatePostgreSql
+
+> DynamicSecretUpdateOutput DynamicSecretUpdatePostgreSql(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretUpdatePostgreSql("Name_example") // DynamicSecretUpdatePostgreSql | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretUpdatePostgreSql(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretUpdatePostgreSql``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretUpdatePostgreSql`: DynamicSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretUpdatePostgreSql`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretUpdatePostgreSqlRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretUpdatePostgreSql**](DynamicSecretUpdatePostgreSql.md) |  | 
+
+### Return type
+
+[**DynamicSecretUpdateOutput**](dynamicSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretUpdateRabbitMq
+
+> DynamicSecretUpdateOutput DynamicSecretUpdateRabbitMq(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretUpdateRabbitMq("Name_example") // DynamicSecretUpdateRabbitMq | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretUpdateRabbitMq(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretUpdateRabbitMq``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretUpdateRabbitMq`: DynamicSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretUpdateRabbitMq`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretUpdateRabbitMqRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretUpdateRabbitMq**](DynamicSecretUpdateRabbitMq.md) |  | 
+
+### Return type
+
+[**DynamicSecretUpdateOutput**](dynamicSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretUpdateRdp
+
+> DynamicSecretUpdateOutput DynamicSecretUpdateRdp(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretUpdateRdp("Name_example") // DynamicSecretUpdateRdp | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretUpdateRdp(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretUpdateRdp``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretUpdateRdp`: DynamicSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretUpdateRdp`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretUpdateRdpRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretUpdateRdp**](DynamicSecretUpdateRdp.md) |  | 
+
+### Return type
+
+[**DynamicSecretUpdateOutput**](dynamicSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretUpdateRedis
+
+> DynamicSecretUpdateOutput DynamicSecretUpdateRedis(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretUpdateRedis("Name_example") // DynamicSecretUpdateRedis | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretUpdateRedis(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretUpdateRedis``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretUpdateRedis`: DynamicSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretUpdateRedis`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretUpdateRedisRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretUpdateRedis**](DynamicSecretUpdateRedis.md) |  | 
+
+### Return type
+
+[**DynamicSecretUpdateOutput**](dynamicSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretUpdateRedshift
+
+> DynamicSecretUpdateOutput DynamicSecretUpdateRedshift(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretUpdateRedshift("Name_example") // DynamicSecretUpdateRedshift | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretUpdateRedshift(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretUpdateRedshift``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretUpdateRedshift`: DynamicSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretUpdateRedshift`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretUpdateRedshiftRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretUpdateRedshift**](DynamicSecretUpdateRedshift.md) |  | 
+
+### Return type
+
+[**DynamicSecretUpdateOutput**](dynamicSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretUpdateSnowflake
+
+> DynamicSecretUpdateOutput DynamicSecretUpdateSnowflake(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretUpdateSnowflake("Name_example") // DynamicSecretUpdateSnowflake | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretUpdateSnowflake(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretUpdateSnowflake``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretUpdateSnowflake`: DynamicSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretUpdateSnowflake`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretUpdateSnowflakeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretUpdateSnowflake**](DynamicSecretUpdateSnowflake.md) |  | 
+
+### Return type
+
+[**DynamicSecretUpdateOutput**](dynamicSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretUpdateVenafi
+
+> DynamicSecretUpdateOutput DynamicSecretUpdateVenafi(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretUpdateVenafi("Name_example") // DynamicSecretUpdateVenafi | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretUpdateVenafi(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretUpdateVenafi``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretUpdateVenafi`: DynamicSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretUpdateVenafi`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretUpdateVenafiRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretUpdateVenafi**](DynamicSecretUpdateVenafi.md) |  | 
+
+### Return type
+
+[**DynamicSecretUpdateOutput**](dynamicSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## Encrypt
 
 > EncryptOutput Encrypt(ctx).Body(body).Execute()
@@ -6145,6 +9953,390 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## EventForwarderCreateEmail
+
+> EventForwarderCreateUpdateOutput EventForwarderCreateEmail(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NeweventForwarderCreateEmail([]string{"GatewaysEventSourceLocations_example"}, "Name_example", "RunnerType_example") // EventForwarderCreateEmail | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.EventForwarderCreateEmail(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.EventForwarderCreateEmail``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventForwarderCreateEmail`: EventForwarderCreateUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.EventForwarderCreateEmail`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEventForwarderCreateEmailRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**EventForwarderCreateEmail**](EventForwarderCreateEmail.md) |  | 
+
+### Return type
+
+[**EventForwarderCreateUpdateOutput**](eventForwarderCreateUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EventForwarderCreateWebhook
+
+> EventForwarderCreateUpdateOutput EventForwarderCreateWebhook(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NeweventForwarderCreateWebhook([]string{"GatewaysEventSourceLocations_example"}, "Name_example", "RunnerType_example") // EventForwarderCreateWebhook | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.EventForwarderCreateWebhook(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.EventForwarderCreateWebhook``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventForwarderCreateWebhook`: EventForwarderCreateUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.EventForwarderCreateWebhook`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEventForwarderCreateWebhookRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**EventForwarderCreateWebhook**](EventForwarderCreateWebhook.md) |  | 
+
+### Return type
+
+[**EventForwarderCreateUpdateOutput**](eventForwarderCreateUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EventForwarderDelete
+
+> EventForwarderDeleteOutput EventForwarderDelete(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NeweventForwarderDelete("Name_example") // EventForwarderDelete | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.EventForwarderDelete(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.EventForwarderDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventForwarderDelete`: EventForwarderDeleteOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.EventForwarderDelete`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEventForwarderDeleteRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**EventForwarderDelete**](EventForwarderDelete.md) |  | 
+
+### Return type
+
+[**EventForwarderDeleteOutput**](eventForwarderDeleteOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EventForwarderGet
+
+> EventForwarderGetOutput EventForwarderGet(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NeweventForwarderGet("Name_example") // EventForwarderGet | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.EventForwarderGet(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.EventForwarderGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventForwarderGet`: EventForwarderGetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.EventForwarderGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEventForwarderGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**EventForwarderGet**](EventForwarderGet.md) |  | 
+
+### Return type
+
+[**EventForwarderGetOutput**](eventForwarderGetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EventForwarderUpdateEmail
+
+> EventForwarderCreateUpdateOutput EventForwarderUpdateEmail(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NeweventForwarderUpdateEmail([]string{"GatewaysEventSourceLocations_example"}, "Name_example") // EventForwarderUpdateEmail | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.EventForwarderUpdateEmail(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.EventForwarderUpdateEmail``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventForwarderUpdateEmail`: EventForwarderCreateUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.EventForwarderUpdateEmail`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEventForwarderUpdateEmailRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**EventForwarderUpdateEmail**](EventForwarderUpdateEmail.md) |  | 
+
+### Return type
+
+[**EventForwarderCreateUpdateOutput**](eventForwarderCreateUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EventForwarderUpdateWebhook
+
+> EventForwarderCreateUpdateOutput EventForwarderUpdateWebhook(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NeweventForwarderUpdateWebhook([]string{"GatewaysEventSourceLocations_example"}, "Name_example") // EventForwarderUpdateWebhook | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.EventForwarderUpdateWebhook(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.EventForwarderUpdateWebhook``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventForwarderUpdateWebhook`: EventForwarderCreateUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.EventForwarderUpdateWebhook`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEventForwarderUpdateWebhookRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**EventForwarderUpdateWebhook**](EventForwarderUpdateWebhook.md) |  | 
+
+### Return type
+
+[**EventForwarderCreateUpdateOutput**](eventForwarderCreateUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ExportClassicKey
 
 > ExportClassicKeyOutput ExportClassicKey(ctx).Body(body).Execute()
@@ -6657,9 +10849,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## GatewayCreateProducerCertificateAutomation
+## GatewayCreateProducerChef
 
-> GatewayCreateProducerCertificateAutomationOutput GatewayCreateProducerCertificateAutomation(ctx).Body(body).Execute()
+> GatewayCreateProducerChefOutput GatewayCreateProducerChef(ctx).Body(body).Execute()
 
 
 
@@ -6676,17 +10868,17 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayCreateProducerCertificateAutomation("Name_example") // GatewayCreateProducerCertificateAutomation | 
+    body := *openapiclient.NewgatewayCreateProducerChef("Name_example") // GatewayCreateProducerChef | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayCreateProducerCertificateAutomation(context.Background()).Body(body).Execute()
+    resp, r, err := api_client.V2Api.GatewayCreateProducerChef(context.Background()).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerCertificateAutomation``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerChef``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GatewayCreateProducerCertificateAutomation`: GatewayCreateProducerCertificateAutomationOutput
-    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayCreateProducerCertificateAutomation`: %v\n", resp)
+    // response from `GatewayCreateProducerChef`: GatewayCreateProducerChefOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayCreateProducerChef`: %v\n", resp)
 }
 ```
 
@@ -6696,16 +10888,16 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGatewayCreateProducerCertificateAutomationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGatewayCreateProducerChefRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**GatewayCreateProducerCertificateAutomation**](GatewayCreateProducerCertificateAutomation.md) |  | 
+ **body** | [**GatewayCreateProducerChef**](GatewayCreateProducerChef.md) |  | 
 
 ### Return type
 
-[**GatewayCreateProducerCertificateAutomationOutput**](gatewayCreateProducerCertificateAutomationOutput.md)
+[**GatewayCreateProducerChefOutput**](gatewayCreateProducerChefOutput.md)
 
 ### Authorization
 
@@ -7986,6 +12178,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GatewayCreateProducerSnowflakeOutput**](gatewayCreateProducerSnowflakeOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayCreateProducerVenafi
+
+> GatewayCreateProducerVenafiOutput GatewayCreateProducerVenafi(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayCreateProducerVenafi("Name_example") // GatewayCreateProducerVenafi | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayCreateProducerVenafi(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayCreateProducerVenafi``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayCreateProducerVenafi`: GatewayCreateProducerVenafiOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayCreateProducerVenafi`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayCreateProducerVenafiRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayCreateProducerVenafi**](GatewayCreateProducerVenafi.md) |  | 
+
+### Return type
+
+[**GatewayCreateProducerVenafiOutput**](gatewayCreateProducerVenafiOutput.md)
 
 ### Authorization
 
@@ -9919,9 +14175,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## GatewayUpdateProducerCertificateAutomation
+## GatewayUpdateProducerChef
 
-> GatewayUpdateProducerCertificateAutomationOutput GatewayUpdateProducerCertificateAutomation(ctx).Body(body).Execute()
+> GatewayUpdateProducerChefOutput GatewayUpdateProducerChef(ctx).Body(body).Execute()
 
 
 
@@ -9938,17 +14194,17 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayUpdateProducerCertificateAutomation("Name_example") // GatewayUpdateProducerCertificateAutomation | 
+    body := *openapiclient.NewgatewayUpdateProducerChef("Name_example") // GatewayUpdateProducerChef | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayUpdateProducerCertificateAutomation(context.Background()).Body(body).Execute()
+    resp, r, err := api_client.V2Api.GatewayUpdateProducerChef(context.Background()).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerCertificateAutomation``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerChef``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GatewayUpdateProducerCertificateAutomation`: GatewayUpdateProducerCertificateAutomationOutput
-    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateProducerCertificateAutomation`: %v\n", resp)
+    // response from `GatewayUpdateProducerChef`: GatewayUpdateProducerChefOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateProducerChef`: %v\n", resp)
 }
 ```
 
@@ -9958,16 +14214,16 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGatewayUpdateProducerCertificateAutomationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGatewayUpdateProducerChefRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**GatewayUpdateProducerCertificateAutomation**](GatewayUpdateProducerCertificateAutomation.md) |  | 
+ **body** | [**GatewayUpdateProducerChef**](GatewayUpdateProducerChef.md) |  | 
 
 ### Return type
 
-[**GatewayUpdateProducerCertificateAutomationOutput**](gatewayUpdateProducerCertificateAutomationOutput.md)
+[**GatewayUpdateProducerChefOutput**](gatewayUpdateProducerChefOutput.md)
 
 ### Authorization
 
@@ -11263,6 +15519,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GatewayUpdateProducerVenafi
+
+> GatewayUpdateProducerVenafiOutput GatewayUpdateProducerVenafi(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateProducerVenafi("Name_example") // GatewayUpdateProducerVenafi | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateProducerVenafi(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateProducerVenafi``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateProducerVenafi`: GatewayUpdateProducerVenafiOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateProducerVenafi`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateProducerVenafiRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerVenafi**](GatewayUpdateProducerVenafi.md) |  | 
+
+### Return type
+
+[**GatewayUpdateProducerVenafiOutput**](gatewayUpdateProducerVenafiOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GatewayUpdateTlsCert
 
 > GatewayUpdateTlsCertOutput GatewayUpdateTlsCert(ctx).Body(body).Execute()
@@ -11346,7 +15666,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewgatewayUpdateTmpUsers("Name_example", int64(123), "TmpCredsId_example") // GatewayUpdateTmpUsers | 
+    body := *openapiclient.NewgatewayUpdateTmpUsers("Host_example", "Name_example", int64(123), "TmpCredsId_example") // GatewayUpdateTmpUsers | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -14409,7 +18729,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewrequestAccess([]string{"Capability_example"}, "Name_example") // RequestAccess | 
+    body := *openapiclient.NewrequestAccess([]string{"Capability_example"}, "Name_example", "Type_example") // RequestAccess | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -14818,6 +19138,2438 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**RotatedSecretOutput**](RotatedSecretOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretCreateAws
+
+> RotatedSecretCreateOutput RotatedSecretCreateAws(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretCreateAws("Name_example", "RotatorType_example", "TargetName_example") // RotatedSecretCreateAws | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretCreateAws(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretCreateAws``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretCreateAws`: RotatedSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretCreateAws`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretCreateAwsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretCreateAws**](RotatedSecretCreateAws.md) |  | 
+
+### Return type
+
+[**RotatedSecretCreateOutput**](rotatedSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretCreateAzure
+
+> RotatedSecretCreateOutput RotatedSecretCreateAzure(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretCreateAzure("Name_example", "RotatorType_example", "TargetName_example") // RotatedSecretCreateAzure | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretCreateAzure(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretCreateAzure``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretCreateAzure`: RotatedSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretCreateAzure`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretCreateAzureRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretCreateAzure**](RotatedSecretCreateAzure.md) |  | 
+
+### Return type
+
+[**RotatedSecretCreateOutput**](rotatedSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretCreateCassandra
+
+> RotatedSecretCreateOutput RotatedSecretCreateCassandra(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretCreateCassandra("Name_example", "RotatorType_example", "TargetName_example") // RotatedSecretCreateCassandra | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretCreateCassandra(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretCreateCassandra``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretCreateCassandra`: RotatedSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretCreateCassandra`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretCreateCassandraRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretCreateCassandra**](RotatedSecretCreateCassandra.md) |  | 
+
+### Return type
+
+[**RotatedSecretCreateOutput**](rotatedSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretCreateCustom
+
+> RotatedSecretCreateOutput RotatedSecretCreateCustom(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretCreateCustom("Name_example", "TargetName_example") // RotatedSecretCreateCustom | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretCreateCustom(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretCreateCustom``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretCreateCustom`: RotatedSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretCreateCustom`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretCreateCustomRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretCreateCustom**](RotatedSecretCreateCustom.md) |  | 
+
+### Return type
+
+[**RotatedSecretCreateOutput**](rotatedSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretCreateDockerhub
+
+> RotatedSecretCreateOutput RotatedSecretCreateDockerhub(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretCreateDockerhub("Name_example", "TargetName_example") // RotatedSecretCreateDockerhub | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretCreateDockerhub(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretCreateDockerhub``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretCreateDockerhub`: RotatedSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretCreateDockerhub`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretCreateDockerhubRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretCreateDockerhub**](RotatedSecretCreateDockerhub.md) |  | 
+
+### Return type
+
+[**RotatedSecretCreateOutput**](rotatedSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretCreateGcp
+
+> RotatedSecretCreateOutput RotatedSecretCreateGcp(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretCreateGcp("Name_example", "RotatorType_example", "TargetName_example") // RotatedSecretCreateGcp | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretCreateGcp(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretCreateGcp``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretCreateGcp`: RotatedSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretCreateGcp`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretCreateGcpRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretCreateGcp**](RotatedSecretCreateGcp.md) |  | 
+
+### Return type
+
+[**RotatedSecretCreateOutput**](rotatedSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretCreateHanadb
+
+> RotatedSecretCreateOutput RotatedSecretCreateHanadb(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretCreateHanadb("Name_example", "RotatorType_example", "TargetName_example") // RotatedSecretCreateHanadb | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretCreateHanadb(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretCreateHanadb``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretCreateHanadb`: RotatedSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretCreateHanadb`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretCreateHanadbRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretCreateHanadb**](RotatedSecretCreateHanadb.md) |  | 
+
+### Return type
+
+[**RotatedSecretCreateOutput**](rotatedSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretCreateLdap
+
+> RotatedSecretCreateOutput RotatedSecretCreateLdap(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretCreateLdap("Name_example", "RotatorType_example", "TargetName_example") // RotatedSecretCreateLdap | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretCreateLdap(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretCreateLdap``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretCreateLdap`: RotatedSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretCreateLdap`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretCreateLdapRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretCreateLdap**](RotatedSecretCreateLdap.md) |  | 
+
+### Return type
+
+[**RotatedSecretCreateOutput**](rotatedSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretCreateMongodb
+
+> RotatedSecretCreateOutput RotatedSecretCreateMongodb(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretCreateMongodb("Name_example", "RotatorType_example", "TargetName_example") // RotatedSecretCreateMongodb | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretCreateMongodb(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretCreateMongodb``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretCreateMongodb`: RotatedSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretCreateMongodb`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretCreateMongodbRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretCreateMongodb**](RotatedSecretCreateMongodb.md) |  | 
+
+### Return type
+
+[**RotatedSecretCreateOutput**](rotatedSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretCreateMssql
+
+> RotatedSecretCreateOutput RotatedSecretCreateMssql(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretCreateMssql("Name_example", "RotatorType_example", "TargetName_example") // RotatedSecretCreateMssql | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretCreateMssql(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretCreateMssql``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretCreateMssql`: RotatedSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretCreateMssql`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretCreateMssqlRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretCreateMssql**](RotatedSecretCreateMssql.md) |  | 
+
+### Return type
+
+[**RotatedSecretCreateOutput**](rotatedSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretCreateMysql
+
+> RotatedSecretCreateOutput RotatedSecretCreateMysql(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretCreateMysql("Name_example", "RotatorType_example", "TargetName_example") // RotatedSecretCreateMysql | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretCreateMysql(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretCreateMysql``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretCreateMysql`: RotatedSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretCreateMysql`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretCreateMysqlRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretCreateMysql**](RotatedSecretCreateMysql.md) |  | 
+
+### Return type
+
+[**RotatedSecretCreateOutput**](rotatedSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretCreateOracledb
+
+> RotatedSecretCreateOutput RotatedSecretCreateOracledb(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretCreateOracledb("Name_example", "RotatorType_example", "TargetName_example") // RotatedSecretCreateOracledb | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretCreateOracledb(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretCreateOracledb``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretCreateOracledb`: RotatedSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretCreateOracledb`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretCreateOracledbRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretCreateOracledb**](RotatedSecretCreateOracledb.md) |  | 
+
+### Return type
+
+[**RotatedSecretCreateOutput**](rotatedSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretCreatePostgresql
+
+> RotatedSecretCreateOutput RotatedSecretCreatePostgresql(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretCreatePostgresql("Name_example", "RotatorType_example", "TargetName_example") // RotatedSecretCreatePostgresql | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretCreatePostgresql(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretCreatePostgresql``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretCreatePostgresql`: RotatedSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretCreatePostgresql`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretCreatePostgresqlRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretCreatePostgresql**](RotatedSecretCreatePostgresql.md) |  | 
+
+### Return type
+
+[**RotatedSecretCreateOutput**](rotatedSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretCreateRedis
+
+> RotatedSecretCreateOutput RotatedSecretCreateRedis(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretCreateRedis("Name_example", "RotatorType_example", "TargetName_example") // RotatedSecretCreateRedis | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretCreateRedis(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretCreateRedis``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretCreateRedis`: RotatedSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretCreateRedis`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretCreateRedisRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretCreateRedis**](RotatedSecretCreateRedis.md) |  | 
+
+### Return type
+
+[**RotatedSecretCreateOutput**](rotatedSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretCreateRedshift
+
+> RotatedSecretCreateOutput RotatedSecretCreateRedshift(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretCreateRedshift("Name_example", "RotatorType_example", "TargetName_example") // RotatedSecretCreateRedshift | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretCreateRedshift(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretCreateRedshift``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretCreateRedshift`: RotatedSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretCreateRedshift`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretCreateRedshiftRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretCreateRedshift**](RotatedSecretCreateRedshift.md) |  | 
+
+### Return type
+
+[**RotatedSecretCreateOutput**](rotatedSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretCreateSnowflake
+
+> RotatedSecretCreateOutput RotatedSecretCreateSnowflake(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretCreateSnowflake("Name_example", "RotatorType_example", "TargetName_example") // RotatedSecretCreateSnowflake | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretCreateSnowflake(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretCreateSnowflake``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretCreateSnowflake`: RotatedSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretCreateSnowflake`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretCreateSnowflakeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretCreateSnowflake**](RotatedSecretCreateSnowflake.md) |  | 
+
+### Return type
+
+[**RotatedSecretCreateOutput**](rotatedSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretCreateSsh
+
+> RotatedSecretCreateOutput RotatedSecretCreateSsh(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretCreateSsh("Name_example", "RotatorType_example", "TargetName_example") // RotatedSecretCreateSsh | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretCreateSsh(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretCreateSsh``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretCreateSsh`: RotatedSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretCreateSsh`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretCreateSshRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretCreateSsh**](RotatedSecretCreateSsh.md) |  | 
+
+### Return type
+
+[**RotatedSecretCreateOutput**](rotatedSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretCreateWindows
+
+> RotatedSecretCreateOutput RotatedSecretCreateWindows(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretCreateWindows("Name_example", "RotatorType_example", "TargetName_example") // RotatedSecretCreateWindows | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretCreateWindows(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretCreateWindows``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretCreateWindows`: RotatedSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretCreateWindows`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretCreateWindowsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretCreateWindows**](RotatedSecretCreateWindows.md) |  | 
+
+### Return type
+
+[**RotatedSecretCreateOutput**](rotatedSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretGetValue
+
+> map[string]string RotatedSecretGetValue(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretGetValue("Name_example") // RotatedSecretGetValue | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretGetValue(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretGetValue``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretGetValue`: map[string]string
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretGetValue`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretGetValueRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretGetValue**](RotatedSecretGetValue.md) |  | 
+
+### Return type
+
+**map[string]string**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretList
+
+> GetProducersListReplyObj RotatedSecretList(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretList() // RotatedSecretList | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretList(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretList`: GetProducersListReplyObj
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretList**](RotatedSecretList.md) |  | 
+
+### Return type
+
+[**GetProducersListReplyObj**](GetProducersListReplyObj.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretUpdateAws
+
+> RotatedSecretUpdateOutput RotatedSecretUpdateAws(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretUpdateAws("Name_example") // RotatedSecretUpdateAws | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretUpdateAws(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretUpdateAws``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretUpdateAws`: RotatedSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretUpdateAws`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretUpdateAwsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretUpdateAws**](RotatedSecretUpdateAws.md) |  | 
+
+### Return type
+
+[**RotatedSecretUpdateOutput**](rotatedSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretUpdateAzure
+
+> RotatedSecretUpdateOutput RotatedSecretUpdateAzure(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretUpdateAzure("Name_example") // RotatedSecretUpdateAzure | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretUpdateAzure(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretUpdateAzure``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretUpdateAzure`: RotatedSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretUpdateAzure`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretUpdateAzureRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretUpdateAzure**](RotatedSecretUpdateAzure.md) |  | 
+
+### Return type
+
+[**RotatedSecretUpdateOutput**](rotatedSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretUpdateCassandra
+
+> RotatedSecretUpdateOutput RotatedSecretUpdateCassandra(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretUpdateCassandra("Name_example") // RotatedSecretUpdateCassandra | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretUpdateCassandra(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretUpdateCassandra``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretUpdateCassandra`: RotatedSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretUpdateCassandra`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretUpdateCassandraRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretUpdateCassandra**](RotatedSecretUpdateCassandra.md) |  | 
+
+### Return type
+
+[**RotatedSecretUpdateOutput**](rotatedSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretUpdateCustom
+
+> RotatedSecretUpdateOutput RotatedSecretUpdateCustom(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretUpdateCustom("Name_example") // RotatedSecretUpdateCustom | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretUpdateCustom(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretUpdateCustom``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretUpdateCustom`: RotatedSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretUpdateCustom`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretUpdateCustomRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretUpdateCustom**](RotatedSecretUpdateCustom.md) |  | 
+
+### Return type
+
+[**RotatedSecretUpdateOutput**](rotatedSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretUpdateDockerhub
+
+> RotatedSecretUpdateOutput RotatedSecretUpdateDockerhub(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretUpdateDockerhub("Name_example") // RotatedSecretUpdateDockerhub | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretUpdateDockerhub(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretUpdateDockerhub``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretUpdateDockerhub`: RotatedSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretUpdateDockerhub`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretUpdateDockerhubRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretUpdateDockerhub**](RotatedSecretUpdateDockerhub.md) |  | 
+
+### Return type
+
+[**RotatedSecretUpdateOutput**](rotatedSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretUpdateGcp
+
+> RotatedSecretUpdateOutput RotatedSecretUpdateGcp(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretUpdateGcp("Name_example", "RotatorType_example") // RotatedSecretUpdateGcp | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretUpdateGcp(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretUpdateGcp``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretUpdateGcp`: RotatedSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretUpdateGcp`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretUpdateGcpRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretUpdateGcp**](RotatedSecretUpdateGcp.md) |  | 
+
+### Return type
+
+[**RotatedSecretUpdateOutput**](rotatedSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretUpdateHanadb
+
+> RotatedSecretUpdateOutput RotatedSecretUpdateHanadb(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretUpdateHanadb("Name_example") // RotatedSecretUpdateHanadb | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretUpdateHanadb(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretUpdateHanadb``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretUpdateHanadb`: RotatedSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretUpdateHanadb`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretUpdateHanadbRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretUpdateHanadb**](RotatedSecretUpdateHanadb.md) |  | 
+
+### Return type
+
+[**RotatedSecretUpdateOutput**](rotatedSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretUpdateLdap
+
+> RotatedSecretUpdateOutput RotatedSecretUpdateLdap(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretUpdateLdap("Name_example") // RotatedSecretUpdateLdap | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretUpdateLdap(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretUpdateLdap``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretUpdateLdap`: RotatedSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretUpdateLdap`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretUpdateLdapRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretUpdateLdap**](RotatedSecretUpdateLdap.md) |  | 
+
+### Return type
+
+[**RotatedSecretUpdateOutput**](rotatedSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretUpdateMongodb
+
+> RotatedSecretUpdateOutput RotatedSecretUpdateMongodb(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretUpdateMongodb("Name_example") // RotatedSecretUpdateMongodb | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretUpdateMongodb(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretUpdateMongodb``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretUpdateMongodb`: RotatedSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretUpdateMongodb`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretUpdateMongodbRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretUpdateMongodb**](RotatedSecretUpdateMongodb.md) |  | 
+
+### Return type
+
+[**RotatedSecretUpdateOutput**](rotatedSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretUpdateMssql
+
+> RotatedSecretUpdateOutput RotatedSecretUpdateMssql(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretUpdateMssql("Name_example") // RotatedSecretUpdateMssql | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretUpdateMssql(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretUpdateMssql``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretUpdateMssql`: RotatedSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretUpdateMssql`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretUpdateMssqlRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretUpdateMssql**](RotatedSecretUpdateMssql.md) |  | 
+
+### Return type
+
+[**RotatedSecretUpdateOutput**](rotatedSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretUpdateMysql
+
+> RotatedSecretUpdateOutput RotatedSecretUpdateMysql(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretUpdateMysql("Name_example") // RotatedSecretUpdateMysql | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretUpdateMysql(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretUpdateMysql``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretUpdateMysql`: RotatedSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretUpdateMysql`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretUpdateMysqlRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretUpdateMysql**](RotatedSecretUpdateMysql.md) |  | 
+
+### Return type
+
+[**RotatedSecretUpdateOutput**](rotatedSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretUpdateOracledb
+
+> RotatedSecretUpdateOutput RotatedSecretUpdateOracledb(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretUpdateOracledb("Name_example") // RotatedSecretUpdateOracledb | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretUpdateOracledb(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretUpdateOracledb``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretUpdateOracledb`: RotatedSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretUpdateOracledb`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretUpdateOracledbRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretUpdateOracledb**](RotatedSecretUpdateOracledb.md) |  | 
+
+### Return type
+
+[**RotatedSecretUpdateOutput**](rotatedSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretUpdatePostgresql
+
+> RotatedSecretUpdateOutput RotatedSecretUpdatePostgresql(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretUpdatePostgresql("Name_example") // RotatedSecretUpdatePostgresql | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretUpdatePostgresql(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretUpdatePostgresql``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretUpdatePostgresql`: RotatedSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretUpdatePostgresql`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretUpdatePostgresqlRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretUpdatePostgresql**](RotatedSecretUpdatePostgresql.md) |  | 
+
+### Return type
+
+[**RotatedSecretUpdateOutput**](rotatedSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretUpdateRedis
+
+> RotatedSecretUpdateOutput RotatedSecretUpdateRedis(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretUpdateRedis("Name_example") // RotatedSecretUpdateRedis | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretUpdateRedis(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretUpdateRedis``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretUpdateRedis`: RotatedSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretUpdateRedis`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretUpdateRedisRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretUpdateRedis**](RotatedSecretUpdateRedis.md) |  | 
+
+### Return type
+
+[**RotatedSecretUpdateOutput**](rotatedSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretUpdateRedshift
+
+> RotatedSecretUpdateOutput RotatedSecretUpdateRedshift(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretUpdateRedshift("Name_example") // RotatedSecretUpdateRedshift | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretUpdateRedshift(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretUpdateRedshift``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretUpdateRedshift`: RotatedSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretUpdateRedshift`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretUpdateRedshiftRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretUpdateRedshift**](RotatedSecretUpdateRedshift.md) |  | 
+
+### Return type
+
+[**RotatedSecretUpdateOutput**](rotatedSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretUpdateSnowflake
+
+> RotatedSecretUpdateOutput RotatedSecretUpdateSnowflake(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretUpdateSnowflake("Name_example") // RotatedSecretUpdateSnowflake | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretUpdateSnowflake(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretUpdateSnowflake``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretUpdateSnowflake`: RotatedSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretUpdateSnowflake`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretUpdateSnowflakeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretUpdateSnowflake**](RotatedSecretUpdateSnowflake.md) |  | 
+
+### Return type
+
+[**RotatedSecretUpdateOutput**](rotatedSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretUpdateSsh
+
+> RotatedSecretUpdateOutput RotatedSecretUpdateSsh(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretUpdateSsh("Name_example", "RotatorType_example") // RotatedSecretUpdateSsh | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretUpdateSsh(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretUpdateSsh``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretUpdateSsh`: RotatedSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretUpdateSsh`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretUpdateSshRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretUpdateSsh**](RotatedSecretUpdateSsh.md) |  | 
+
+### Return type
+
+[**RotatedSecretUpdateOutput**](rotatedSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretUpdateWindows
+
+> RotatedSecretUpdateOutput RotatedSecretUpdateWindows(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewrotatedSecretUpdateWindows("Name_example", "RotatorType_example") // RotatedSecretUpdateWindows | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RotatedSecretUpdateWindows(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretUpdateWindows``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RotatedSecretUpdateWindows`: RotatedSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretUpdateWindows`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretUpdateWindowsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotatedSecretUpdateWindows**](RotatedSecretUpdateWindows.md) |  | 
+
+### Return type
+
+[**RotatedSecretUpdateOutput**](rotatedSecretUpdateOutput.md)
 
 ### Authorization
 
@@ -17824,6 +24576,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**UpdateGlobalSignTargetOutput**](updateGlobalSignTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateGodaddyTarget
+
+> UpdateGodaddyTargetOutput UpdateGodaddyTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewupdateGodaddyTarget("ApiKey_example", "ImapFqdn_example", "ImapPassword_example", "ImapUsername_example", "Name_example", "Secret_example") // UpdateGodaddyTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdateGodaddyTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateGodaddyTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateGodaddyTarget`: UpdateGodaddyTargetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateGodaddyTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateGodaddyTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateGodaddyTarget**](UpdateGodaddyTarget.md) |  | 
+
+### Return type
+
+[**UpdateGodaddyTargetOutput**](updateGodaddyTargetOutput.md)
 
 ### Authorization
 

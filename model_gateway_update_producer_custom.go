@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// GatewayUpdateProducerCustom struct for GatewayUpdateProducerCustom
+// GatewayUpdateProducerCustom gatewayUpdateProducerCustom is a command that updates a custom producer. [Deprecated: Use dynamic-secret-update-custom command]
 type GatewayUpdateProducerCustom struct {
 	// Define rotation interval in days
 	AdminRotationIntervalDays *int64 `json:"admin_rotation_interval_days,omitempty"`
@@ -27,9 +27,9 @@ type GatewayUpdateProducerCustom struct {
 	EnableAdminRotation *bool `json:"enable_admin_rotation,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Producer name
+	// Dynamic secret name
 	Name string `json:"name"`
-	// Producer name
+	// Dynamic secret name
 	NewName *string `json:"new-name,omitempty"`
 	// Secret payload to be sent with each create/revoke webhook request
 	Payload *string `json:"payload,omitempty"`

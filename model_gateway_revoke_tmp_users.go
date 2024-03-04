@@ -15,13 +15,13 @@ import (
 	"encoding/json"
 )
 
-// GatewayRevokeTmpUsers gatewayRevokeTmpUsers is a command that revoke producer tmp user
+// GatewayRevokeTmpUsers gatewayRevokeTmpUsers is a command that revoke producer tmp user [Deprecated: Use dynamic-secret-tmp-creds-delete command]
 type GatewayRevokeTmpUsers struct {
-	// Deprecated: has no effect
+	// Host
 	Host *string `json:"host,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Producer Name
+	// Dynamic secret name
 	Name string `json:"name"`
 	// Revoke All Temp Creds
 	RevokeAll *bool `json:"revoke-all,omitempty"`

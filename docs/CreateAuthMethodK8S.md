@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] [default to 0]
 **Name** | **string** | Auth Method name | 
+**ProductType** | Pointer to **[]string** | Choose the relevant product type for the auth method [sm, sra, pm, dp, ca] | [optional] 
 **PublicKey** | Pointer to **string** | Base64-encoded or PEM formatted public key data for K8S authentication method is required [RSA2048] | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -359,6 +360,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetProductType
+
+`func (o *CreateAuthMethodK8S) GetProductType() []string`
+
+GetProductType returns the ProductType field if non-nil, zero value otherwise.
+
+### GetProductTypeOk
+
+`func (o *CreateAuthMethodK8S) GetProductTypeOk() (*[]string, bool)`
+
+GetProductTypeOk returns a tuple with the ProductType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProductType
+
+`func (o *CreateAuthMethodK8S) SetProductType(v []string)`
+
+SetProductType sets ProductType field to given value.
+
+### HasProductType
+
+`func (o *CreateAuthMethodK8S) HasProductType() bool`
+
+HasProductType returns a boolean if a field has been set.
 
 ### GetPublicKey
 

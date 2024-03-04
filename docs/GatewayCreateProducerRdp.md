@@ -8,7 +8,8 @@ Name | Type | Description | Notes
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **FixedUserOnly** | Pointer to **string** | Allow access using externally (IdP) provided username [true/false] | [optional] [default to "false"]
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** | Producer name | 
+**Name** | **string** | Dynamic secret name | 
+**PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **RdpAdminName** | Pointer to **string** | RDP Admin Name | [optional] 
 **RdpAdminPwd** | Pointer to **string** | RDP Admin password | [optional] 
@@ -166,6 +167,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetPasswordLength
+
+`func (o *GatewayCreateProducerRdp) GetPasswordLength() string`
+
+GetPasswordLength returns the PasswordLength field if non-nil, zero value otherwise.
+
+### GetPasswordLengthOk
+
+`func (o *GatewayCreateProducerRdp) GetPasswordLengthOk() (*string, bool)`
+
+GetPasswordLengthOk returns a tuple with the PasswordLength field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasswordLength
+
+`func (o *GatewayCreateProducerRdp) SetPasswordLength(v string)`
+
+SetPasswordLength sets PasswordLength field to given value.
+
+### HasPasswordLength
+
+`func (o *GatewayCreateProducerRdp) HasPasswordLength() bool`
+
+HasPasswordLength returns a boolean if a field has been set.
 
 ### GetProducerEncryptionKeyName
 

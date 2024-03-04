@@ -15,11 +15,11 @@ import (
 	"encoding/json"
 )
 
-// GatewayStopProducer gatewayStopProducer is a command that stops producer
+// GatewayStopProducer gatewayStopProducer is a command that stops producer [Deprecated: Use set-item-state command]
 type GatewayStopProducer struct {
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Producer name
+	// Dynamic secret name
 	Name string `json:"name"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`

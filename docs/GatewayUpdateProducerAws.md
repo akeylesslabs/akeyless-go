@@ -16,8 +16,8 @@ Name | Type | Description | Notes
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **EnableAdminRotation** | Pointer to **bool** | Automatic admin credentials rotation | [optional] [default to false]
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** | Producer name | 
-**NewName** | Pointer to **string** | Producer name | [optional] 
+**Name** | **string** | Dynamic secret name | 
+**NewName** | Pointer to **string** | Dynamic secret name | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **Region** | Pointer to **string** | Region | [optional] [default to "us-east-2"]
 **SecureAccessAwsAccountId** | Pointer to **string** | The AWS account id | [optional] 

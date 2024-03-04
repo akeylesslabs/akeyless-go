@@ -42,7 +42,7 @@ type UpdateItem struct {
 	NewName *string `json:"new-name,omitempty"`
 	// List of the existent tags that will be removed from this item
 	RmTag *[]string `json:"rm-tag,omitempty"`
-	// Rotate the value of the secret after SRA session ends [true/false] (relevant only for Rotated-secret)
+	// Rotate the value of the secret after SRA session ends [true/false]
 	RotateAfterDisconnect *string `json:"rotate-after-disconnect,omitempty"`
 	// List of the new hosts that will be attached to SRA servers host
 	SecureAccessAddHost *[]string `json:"secure-access-add-host,omitempty"`

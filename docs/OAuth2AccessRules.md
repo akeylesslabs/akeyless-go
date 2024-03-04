@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AuthorizedGwClusterName** | Pointer to **string** | The gateway cluster name that is authorized to access JWKeySetURL | [optional] 
 **BoundClaims** | Pointer to [**[]OAuth2CustomClaim**](OAuth2CustomClaim.md) | The claims that login is restricted to. | [optional] 
 **BoundClientsId** | Pointer to **[]string** | The clients ids that login is restricted to. | [optional] 
+**Certificate** | Pointer to **string** | Certificate to use when calling jwks_uri from the gateway. in PEM format | [optional] 
 **Issuer** | Pointer to **string** | Issuer URL | [optional] 
 **JwksJsonData** | Pointer to **string** | The JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. base64 encoded string | [optional] 
 **JwksUri** | Pointer to **string** | The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. | [optional] 
@@ -131,6 +132,31 @@ SetBoundClientsId sets BoundClientsId field to given value.
 `func (o *OAuth2AccessRules) HasBoundClientsId() bool`
 
 HasBoundClientsId returns a boolean if a field has been set.
+
+### GetCertificate
+
+`func (o *OAuth2AccessRules) GetCertificate() string`
+
+GetCertificate returns the Certificate field if non-nil, zero value otherwise.
+
+### GetCertificateOk
+
+`func (o *OAuth2AccessRules) GetCertificateOk() (*string, bool)`
+
+GetCertificateOk returns a tuple with the Certificate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificate
+
+`func (o *OAuth2AccessRules) SetCertificate(v string)`
+
+SetCertificate sets Certificate field to given value.
+
+### HasCertificate
+
+`func (o *OAuth2AccessRules) HasCertificate() bool`
+
+HasCertificate returns a boolean if a field has been set.
 
 ### GetIssuer
 

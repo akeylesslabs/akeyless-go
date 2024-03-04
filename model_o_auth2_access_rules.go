@@ -25,6 +25,8 @@ type OAuth2AccessRules struct {
 	BoundClaims *[]OAuth2CustomClaim `json:"bound_claims,omitempty"`
 	// The clients ids that login is restricted to.
 	BoundClientsId *[]string `json:"bound_clients_id,omitempty"`
+	// Certificate to use when calling jwks_uri from the gateway. in PEM format
+	Certificate *string `json:"certificate,omitempty"`
 	// Issuer URL
 	Issuer *string `json:"issuer,omitempty"`
 	// The JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. base64 encoded string
@@ -180,6 +182,38 @@ func (o *OAuth2AccessRules) SetBoundClientsId(v []string) {
 	o.BoundClientsId = &v
 }
 
+// GetCertificate returns the Certificate field value if set, zero value otherwise.
+func (o *OAuth2AccessRules) GetCertificate() string {
+	if o == nil || o.Certificate == nil {
+		var ret string
+		return ret
+	}
+	return *o.Certificate
+}
+
+// GetCertificateOk returns a tuple with the Certificate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuth2AccessRules) GetCertificateOk() (*string, bool) {
+	if o == nil || o.Certificate == nil {
+		return nil, false
+	}
+	return o.Certificate, true
+}
+
+// HasCertificate returns a boolean if a field has been set.
+func (o *OAuth2AccessRules) HasCertificate() bool {
+	if o != nil && o.Certificate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificate gets a reference to the given string and assigns it to the Certificate field.
+func (o *OAuth2AccessRules) SetCertificate(v string) {
+	o.Certificate = &v
+}
+
 // GetIssuer returns the Issuer field value if set, zero value otherwise.
 func (o *OAuth2AccessRules) GetIssuer() string {
 	if o == nil || o.Issuer == nil {
@@ -321,6 +355,9 @@ func (o OAuth2AccessRules) MarshalJSON() ([]byte, error) {
 	}
 	if o.BoundClientsId != nil {
 		toSerialize["bound_clients_id"] = o.BoundClientsId
+	}
+	if o.Certificate != nil {
+		toSerialize["certificate"] = o.Certificate
 	}
 	if o.Issuer != nil {
 		toSerialize["issuer"] = o.Issuer

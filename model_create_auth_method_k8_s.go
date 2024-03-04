@@ -43,6 +43,8 @@ type CreateAuthMethodK8S struct {
 	JwtTtl *int64 `json:"jwt-ttl,omitempty"`
 	// Auth Method name
 	Name string `json:"name"`
+	// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca]
+	ProductType *[]string `json:"product-type,omitempty"`
 	// Base64-encoded or PEM formatted public key data for K8S authentication method is required [RSA2048]
 	PublicKey *string `json:"public-key,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -493,6 +495,38 @@ func (o *CreateAuthMethodK8S) SetName(v string) {
 	o.Name = v
 }
 
+// GetProductType returns the ProductType field value if set, zero value otherwise.
+func (o *CreateAuthMethodK8S) GetProductType() []string {
+	if o == nil || o.ProductType == nil {
+		var ret []string
+		return ret
+	}
+	return *o.ProductType
+}
+
+// GetProductTypeOk returns a tuple with the ProductType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodK8S) GetProductTypeOk() (*[]string, bool) {
+	if o == nil || o.ProductType == nil {
+		return nil, false
+	}
+	return o.ProductType, true
+}
+
+// HasProductType returns a boolean if a field has been set.
+func (o *CreateAuthMethodK8S) HasProductType() bool {
+	if o != nil && o.ProductType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProductType gets a reference to the given []string and assigns it to the ProductType field.
+func (o *CreateAuthMethodK8S) SetProductType(v []string) {
+	o.ProductType = &v
+}
+
 // GetPublicKey returns the PublicKey field value if set, zero value otherwise.
 func (o *CreateAuthMethodK8S) GetPublicKey() string {
 	if o == nil || o.PublicKey == nil {
@@ -629,6 +663,9 @@ func (o CreateAuthMethodK8S) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.ProductType != nil {
+		toSerialize["product-type"] = o.ProductType
 	}
 	if o.PublicKey != nil {
 		toSerialize["public-key"] = o.PublicKey

@@ -30,6 +30,7 @@ type TargetTypeDetailsInput struct {
 	GkeTargetDetails *GKETargetDetails `json:"gke_target_details,omitempty"`
 	GlobalsignAtlasTargetDetails *GlobalSignAtlasTargetDetails `json:"globalsign_atlas_target_details,omitempty"`
 	GlobalsignTargetDetails *GlobalSignGCCTargetDetails `json:"globalsign_target_details,omitempty"`
+	GodaddyTargetDetails *GodaddyTargetDetails `json:"godaddy_target_details,omitempty"`
 	LdapTargetDetails *LdapTargetDetails `json:"ldap_target_details,omitempty"`
 	LinkedTargetDetails *LinkedTargetDetails `json:"linked_target_details,omitempty"`
 	MongoDbTargetDetails *MongoDBTargetDetails `json:"mongo_db_target_details,omitempty"`
@@ -477,6 +478,38 @@ func (o *TargetTypeDetailsInput) SetGlobalsignTargetDetails(v GlobalSignGCCTarge
 	o.GlobalsignTargetDetails = &v
 }
 
+// GetGodaddyTargetDetails returns the GodaddyTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetGodaddyTargetDetails() GodaddyTargetDetails {
+	if o == nil || o.GodaddyTargetDetails == nil {
+		var ret GodaddyTargetDetails
+		return ret
+	}
+	return *o.GodaddyTargetDetails
+}
+
+// GetGodaddyTargetDetailsOk returns a tuple with the GodaddyTargetDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetGodaddyTargetDetailsOk() (*GodaddyTargetDetails, bool) {
+	if o == nil || o.GodaddyTargetDetails == nil {
+		return nil, false
+	}
+	return o.GodaddyTargetDetails, true
+}
+
+// HasGodaddyTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasGodaddyTargetDetails() bool {
+	if o != nil && o.GodaddyTargetDetails != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGodaddyTargetDetails gets a reference to the given GodaddyTargetDetails and assigns it to the GodaddyTargetDetails field.
+func (o *TargetTypeDetailsInput) SetGodaddyTargetDetails(v GodaddyTargetDetails) {
+	o.GodaddyTargetDetails = &v
+}
+
 // GetLdapTargetDetails returns the LdapTargetDetails field value if set, zero value otherwise.
 func (o *TargetTypeDetailsInput) GetLdapTargetDetails() LdapTargetDetails {
 	if o == nil || o.LdapTargetDetails == nil {
@@ -901,6 +934,9 @@ func (o TargetTypeDetailsInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.GlobalsignTargetDetails != nil {
 		toSerialize["globalsign_target_details"] = o.GlobalsignTargetDetails
+	}
+	if o.GodaddyTargetDetails != nil {
+		toSerialize["godaddy_target_details"] = o.GodaddyTargetDetails
 	}
 	if o.LdapTargetDetails != nil {
 		toSerialize["ldap_target_details"] = o.LdapTargetDetails

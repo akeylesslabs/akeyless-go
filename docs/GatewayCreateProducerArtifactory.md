@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **BaseUrl** | Pointer to **string** | Base URL | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** | Producer name | 
+**Name** | **string** | Dynamic secret name | 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 

@@ -15,8 +15,9 @@ import (
 	"encoding/json"
 )
 
-// UpdateRotatedSecret updateRotatedSecret is a command that updates rotated secret. [Deprecated: Use gateway-update-item command]
+// UpdateRotatedSecret updateRotatedSecret is a command that updates rotated secret. [Deprecated: Use rotated-secret update commands]
 type UpdateRotatedSecret struct {
+	ProviderType *string `json:"ProviderType,omitempty"`
 	// List of the new tags that will be attached to this item
 	AddTag *[]string `json:"add-tag,omitempty"`
 	// API ID to rotate
@@ -25,7 +26,7 @@ type UpdateRotatedSecret struct {
 	ApiKey *string `json:"api-key,omitempty"`
 	// Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation [true/false]
 	AutoRotate *string `json:"auto-rotate,omitempty"`
-	// Region (used in aws)
+	// Aws Region (relevant only for aws)
 	AwsRegion *string `json:"aws-region,omitempty"`
 	// Secret payload to be sent with rotation request (relevant only for rotator-type=custom)
 	CustomPayload *string `json:"custom-payload,omitempty"`
@@ -33,6 +34,10 @@ type UpdateRotatedSecret struct {
 	Description *string `json:"description,omitempty"`
 	// Base64-encoded service account private key text
 	GcpKey *string `json:"gcp-key,omitempty"`
+	// Create a new access key without deleting the old key from AWS for backup (relevant only for AWS) [true/false]
+	GraceRotation *string `json:"grace-rotation,omitempty"`
+	// Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret
+	HostProvider *string `json:"host-provider,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Whether to keep previous version [true/false]. If not set, use default according to account settings
@@ -85,6 +90,8 @@ type UpdateRotatedSecret struct {
 	SecureAccessRdpDomain *string `json:"secure-access-rdp-domain,omitempty"`
 	// Override the RDP Domain username (relevant only for rdp)
 	SecureAccessRdpUser *string `json:"secure-access-rdp-user,omitempty"`
+	// Destination URL to inject secrets
+	SecureAccessUrl *string `json:"secure-access-url,omitempty"`
 	// Enable Web Secure Remote Access
 	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
 	// Secure browser via Akeyless Web Access Bastion (relevant only for aws or azure)
@@ -101,6 +108,10 @@ type UpdateRotatedSecret struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// LDAP User Attribute, Default value \"cn\"
+	UserAttribute *string `json:"user-attribute,omitempty"`
+	// LDAP User Base DN
+	UserDn *string `json:"user-dn,omitempty"`
 }
 
 // NewUpdateRotatedSecret instantiates a new UpdateRotatedSecret object
@@ -113,6 +124,8 @@ func NewUpdateRotatedSecret(name string, ) *UpdateRotatedSecret {
 	this.AwsRegion = &awsRegion
 	var description string = "default_metadata"
 	this.Description = &description
+	var hostProvider string = "explicit"
+	this.HostProvider = &hostProvider
 	var json bool = false
 	this.Json = &json
 	this.Name = name
@@ -130,6 +143,8 @@ func NewUpdateRotatedSecret(name string, ) *UpdateRotatedSecret {
 	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
 	var secureAccessWebProxy bool = false
 	this.SecureAccessWebProxy = &secureAccessWebProxy
+	var userAttribute string = "cn"
+	this.UserAttribute = &userAttribute
 	return &this
 }
 
@@ -142,6 +157,8 @@ func NewUpdateRotatedSecretWithDefaults() *UpdateRotatedSecret {
 	this.AwsRegion = &awsRegion
 	var description string = "default_metadata"
 	this.Description = &description
+	var hostProvider string = "explicit"
+	this.HostProvider = &hostProvider
 	var json bool = false
 	this.Json = &json
 	var newMetadata string = "default_metadata"
@@ -158,7 +175,41 @@ func NewUpdateRotatedSecretWithDefaults() *UpdateRotatedSecret {
 	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
 	var secureAccessWebProxy bool = false
 	this.SecureAccessWebProxy = &secureAccessWebProxy
+	var userAttribute string = "cn"
+	this.UserAttribute = &userAttribute
 	return &this
+}
+
+// GetProviderType returns the ProviderType field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetProviderType() string {
+	if o == nil || o.ProviderType == nil {
+		var ret string
+		return ret
+	}
+	return *o.ProviderType
+}
+
+// GetProviderTypeOk returns a tuple with the ProviderType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetProviderTypeOk() (*string, bool) {
+	if o == nil || o.ProviderType == nil {
+		return nil, false
+	}
+	return o.ProviderType, true
+}
+
+// HasProviderType returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasProviderType() bool {
+	if o != nil && o.ProviderType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProviderType gets a reference to the given string and assigns it to the ProviderType field.
+func (o *UpdateRotatedSecret) SetProviderType(v string) {
+	o.ProviderType = &v
 }
 
 // GetAddTag returns the AddTag field value if set, zero value otherwise.
@@ -415,6 +466,70 @@ func (o *UpdateRotatedSecret) HasGcpKey() bool {
 // SetGcpKey gets a reference to the given string and assigns it to the GcpKey field.
 func (o *UpdateRotatedSecret) SetGcpKey(v string) {
 	o.GcpKey = &v
+}
+
+// GetGraceRotation returns the GraceRotation field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetGraceRotation() string {
+	if o == nil || o.GraceRotation == nil {
+		var ret string
+		return ret
+	}
+	return *o.GraceRotation
+}
+
+// GetGraceRotationOk returns a tuple with the GraceRotation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetGraceRotationOk() (*string, bool) {
+	if o == nil || o.GraceRotation == nil {
+		return nil, false
+	}
+	return o.GraceRotation, true
+}
+
+// HasGraceRotation returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasGraceRotation() bool {
+	if o != nil && o.GraceRotation != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGraceRotation gets a reference to the given string and assigns it to the GraceRotation field.
+func (o *UpdateRotatedSecret) SetGraceRotation(v string) {
+	o.GraceRotation = &v
+}
+
+// GetHostProvider returns the HostProvider field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetHostProvider() string {
+	if o == nil || o.HostProvider == nil {
+		var ret string
+		return ret
+	}
+	return *o.HostProvider
+}
+
+// GetHostProviderOk returns a tuple with the HostProvider field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetHostProviderOk() (*string, bool) {
+	if o == nil || o.HostProvider == nil {
+		return nil, false
+	}
+	return o.HostProvider, true
+}
+
+// HasHostProvider returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasHostProvider() bool {
+	if o != nil && o.HostProvider != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHostProvider gets a reference to the given string and assigns it to the HostProvider field.
+func (o *UpdateRotatedSecret) SetHostProvider(v string) {
+	o.HostProvider = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -1241,6 +1356,38 @@ func (o *UpdateRotatedSecret) SetSecureAccessRdpUser(v string) {
 	o.SecureAccessRdpUser = &v
 }
 
+// GetSecureAccessUrl returns the SecureAccessUrl field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetSecureAccessUrl() string {
+	if o == nil || o.SecureAccessUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessUrl
+}
+
+// GetSecureAccessUrlOk returns a tuple with the SecureAccessUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetSecureAccessUrlOk() (*string, bool) {
+	if o == nil || o.SecureAccessUrl == nil {
+		return nil, false
+	}
+	return o.SecureAccessUrl, true
+}
+
+// HasSecureAccessUrl returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasSecureAccessUrl() bool {
+	if o != nil && o.SecureAccessUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessUrl gets a reference to the given string and assigns it to the SecureAccessUrl field.
+func (o *UpdateRotatedSecret) SetSecureAccessUrl(v string) {
+	o.SecureAccessUrl = &v
+}
+
 // GetSecureAccessWeb returns the SecureAccessWeb field value if set, zero value otherwise.
 func (o *UpdateRotatedSecret) GetSecureAccessWeb() bool {
 	if o == nil || o.SecureAccessWeb == nil {
@@ -1497,8 +1644,75 @@ func (o *UpdateRotatedSecret) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUserAttribute returns the UserAttribute field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetUserAttribute() string {
+	if o == nil || o.UserAttribute == nil {
+		var ret string
+		return ret
+	}
+	return *o.UserAttribute
+}
+
+// GetUserAttributeOk returns a tuple with the UserAttribute field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetUserAttributeOk() (*string, bool) {
+	if o == nil || o.UserAttribute == nil {
+		return nil, false
+	}
+	return o.UserAttribute, true
+}
+
+// HasUserAttribute returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasUserAttribute() bool {
+	if o != nil && o.UserAttribute != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserAttribute gets a reference to the given string and assigns it to the UserAttribute field.
+func (o *UpdateRotatedSecret) SetUserAttribute(v string) {
+	o.UserAttribute = &v
+}
+
+// GetUserDn returns the UserDn field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetUserDn() string {
+	if o == nil || o.UserDn == nil {
+		var ret string
+		return ret
+	}
+	return *o.UserDn
+}
+
+// GetUserDnOk returns a tuple with the UserDn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetUserDnOk() (*string, bool) {
+	if o == nil || o.UserDn == nil {
+		return nil, false
+	}
+	return o.UserDn, true
+}
+
+// HasUserDn returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasUserDn() bool {
+	if o != nil && o.UserDn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserDn gets a reference to the given string and assigns it to the UserDn field.
+func (o *UpdateRotatedSecret) SetUserDn(v string) {
+	o.UserDn = &v
+}
+
 func (o UpdateRotatedSecret) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.ProviderType != nil {
+		toSerialize["ProviderType"] = o.ProviderType
+	}
 	if o.AddTag != nil {
 		toSerialize["add-tag"] = o.AddTag
 	}
@@ -1522,6 +1736,12 @@ func (o UpdateRotatedSecret) MarshalJSON() ([]byte, error) {
 	}
 	if o.GcpKey != nil {
 		toSerialize["gcp-key"] = o.GcpKey
+	}
+	if o.GraceRotation != nil {
+		toSerialize["grace-rotation"] = o.GraceRotation
+	}
+	if o.HostProvider != nil {
+		toSerialize["host-provider"] = o.HostProvider
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json
@@ -1601,6 +1821,9 @@ func (o UpdateRotatedSecret) MarshalJSON() ([]byte, error) {
 	if o.SecureAccessRdpUser != nil {
 		toSerialize["secure-access-rdp-user"] = o.SecureAccessRdpUser
 	}
+	if o.SecureAccessUrl != nil {
+		toSerialize["secure-access-url"] = o.SecureAccessUrl
+	}
 	if o.SecureAccessWeb != nil {
 		toSerialize["secure-access-web"] = o.SecureAccessWeb
 	}
@@ -1624,6 +1847,12 @@ func (o UpdateRotatedSecret) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.UserAttribute != nil {
+		toSerialize["user-attribute"] = o.UserAttribute
+	}
+	if o.UserDn != nil {
+		toSerialize["user-dn"] = o.UserDn
 	}
 	return json.Marshal(toSerialize)
 }

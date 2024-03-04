@@ -37,6 +37,8 @@ type AuthMethodAccessInfo struct {
 	Oauth2AccessRules *OAuth2AccessRules `json:"oauth2_access_rules,omitempty"`
 	OciAccessRules *OCIAccessRules `json:"oci_access_rules,omitempty"`
 	OidcAccessRules *OIDCAccessRules `json:"oidc_access_rules,omitempty"`
+	// List of product types this auth method will be in use of
+	ProductTypes *[]string `json:"product_types,omitempty"`
 	RulesType *string `json:"rules_type,omitempty"`
 	SamlAccessRules *SAMLAccessRules `json:"saml_access_rules,omitempty"`
 	SubClaimsDelimiters *[]string `json:"sub_claims_delimiters,omitempty"`
@@ -636,6 +638,38 @@ func (o *AuthMethodAccessInfo) SetOidcAccessRules(v OIDCAccessRules) {
 	o.OidcAccessRules = &v
 }
 
+// GetProductTypes returns the ProductTypes field value if set, zero value otherwise.
+func (o *AuthMethodAccessInfo) GetProductTypes() []string {
+	if o == nil || o.ProductTypes == nil {
+		var ret []string
+		return ret
+	}
+	return *o.ProductTypes
+}
+
+// GetProductTypesOk returns a tuple with the ProductTypes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodAccessInfo) GetProductTypesOk() (*[]string, bool) {
+	if o == nil || o.ProductTypes == nil {
+		return nil, false
+	}
+	return o.ProductTypes, true
+}
+
+// HasProductTypes returns a boolean if a field has been set.
+func (o *AuthMethodAccessInfo) HasProductTypes() bool {
+	if o != nil && o.ProductTypes != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProductTypes gets a reference to the given []string and assigns it to the ProductTypes field.
+func (o *AuthMethodAccessInfo) SetProductTypes(v []string) {
+	o.ProductTypes = &v
+}
+
 // GetRulesType returns the RulesType field value if set, zero value otherwise.
 func (o *AuthMethodAccessInfo) GetRulesType() string {
 	if o == nil || o.RulesType == nil {
@@ -819,6 +853,9 @@ func (o AuthMethodAccessInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.OidcAccessRules != nil {
 		toSerialize["oidc_access_rules"] = o.OidcAccessRules
+	}
+	if o.ProductTypes != nil {
+		toSerialize["product_types"] = o.ProductTypes
 	}
 	if o.RulesType != nil {
 		toSerialize["rules_type"] = o.RulesType

@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Comment** | Pointer to **string** | Deprecated - use description | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **Host** | Pointer to **string** | SSH host name | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
@@ -39,31 +38,6 @@ will change when the set of required properties is changed
 NewUpdateSSHTargetWithDefaults instantiates a new UpdateSSHTarget object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetComment
-
-`func (o *UpdateSSHTarget) GetComment() string`
-
-GetComment returns the Comment field if non-nil, zero value otherwise.
-
-### GetCommentOk
-
-`func (o *UpdateSSHTarget) GetCommentOk() (*string, bool)`
-
-GetCommentOk returns a tuple with the Comment field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetComment
-
-`func (o *UpdateSSHTarget) SetComment(v string)`
-
-SetComment sets Comment field to given value.
-
-### HasComment
-
-`func (o *UpdateSSHTarget) HasComment() bool`
-
-HasComment returns a boolean if a field has been set.
 
 ### GetDescription
 

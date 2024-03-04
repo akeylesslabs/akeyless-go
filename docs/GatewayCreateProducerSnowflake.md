@@ -10,7 +10,8 @@ Name | Type | Description | Notes
 **DbName** | Pointer to **string** | Database name | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** | Producer name | 
+**Name** | **string** | Dynamic secret name | 
+**PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
 **PrivateKey** | Pointer to **string** | RSA Private key (base64 encoded) | [optional] 
 **PrivateKeyPassphrase** | Pointer to **string** | The Private key passphrase | [optional] 
 **Role** | Pointer to **string** | User role | [optional] 
@@ -209,6 +210,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetPasswordLength
+
+`func (o *GatewayCreateProducerSnowflake) GetPasswordLength() string`
+
+GetPasswordLength returns the PasswordLength field if non-nil, zero value otherwise.
+
+### GetPasswordLengthOk
+
+`func (o *GatewayCreateProducerSnowflake) GetPasswordLengthOk() (*string, bool)`
+
+GetPasswordLengthOk returns a tuple with the PasswordLength field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasswordLength
+
+`func (o *GatewayCreateProducerSnowflake) SetPasswordLength(v string)`
+
+SetPasswordLength sets PasswordLength field to given value.
+
+### HasPasswordLength
+
+`func (o *GatewayCreateProducerSnowflake) HasPasswordLength() bool`
+
+HasPasswordLength returns a boolean if a field has been set.
 
 ### GetPrivateKey
 

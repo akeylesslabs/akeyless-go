@@ -4,14 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ProviderType** | Pointer to **string** |  | [optional] 
 **AddTag** | Pointer to **[]string** | List of the new tags that will be attached to this item | [optional] 
 **ApiId** | Pointer to **string** | API ID to rotate | [optional] 
 **ApiKey** | Pointer to **string** | API key to rotate | [optional] 
 **AutoRotate** | Pointer to **string** | Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation [true/false] | [optional] 
-**AwsRegion** | Pointer to **string** | Region (used in aws) | [optional] [default to "us-east-2"]
+**AwsRegion** | Pointer to **string** | Aws Region (relevant only for aws) | [optional] [default to "us-east-2"]
 **CustomPayload** | Pointer to **string** | Secret payload to be sent with rotation request (relevant only for rotator-type&#x3D;custom) | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] [default to "default_metadata"]
 **GcpKey** | Pointer to **string** | Base64-encoded service account private key text | [optional] 
+**GraceRotation** | Pointer to **string** | Create a new access key without deleting the old key from AWS for backup (relevant only for AWS) [true/false] | [optional] 
+**HostProvider** | Pointer to **string** | Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret | [optional] [default to "explicit"]
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | Pointer to **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
@@ -38,6 +41,7 @@ Name | Type | Description | Notes
 **SecureAccessHost** | Pointer to **[]string** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
 **SecureAccessRdpDomain** | Pointer to **string** | Required when the Dynamic Secret is used for a domain user (relevant only for RDP Dynamic-Secret) | [optional] 
 **SecureAccessRdpUser** | Pointer to **string** | Override the RDP Domain username (relevant only for rdp) | [optional] 
+**SecureAccessUrl** | Pointer to **string** | Destination URL to inject secrets | [optional] 
 **SecureAccessWeb** | Pointer to **bool** | Enable Web Secure Remote Access | [optional] [default to false]
 **SecureAccessWebBrowsing** | Pointer to **bool** | Secure browser via Akeyless Web Access Bastion (relevant only for aws or azure) | [optional] [default to false]
 **SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless Web Access Bastion (relevant only for aws or azure) | [optional] [default to false]
@@ -46,6 +50,8 @@ Name | Type | Description | Notes
 **StorageAccountKeyName** | Pointer to **string** | The name of the storage account key to rotate [key1/key2/kerb1/kerb2] | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**UserAttribute** | Pointer to **string** | LDAP User Attribute, Default value \&quot;cn\&quot; | [optional] [default to "cn"]
+**UserDn** | Pointer to **string** | LDAP User Base DN | [optional] 
 
 ## Methods
 
@@ -65,6 +71,31 @@ will change when the set of required properties is changed
 NewUpdateRotatedSecretWithDefaults instantiates a new UpdateRotatedSecret object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetProviderType
+
+`func (o *UpdateRotatedSecret) GetProviderType() string`
+
+GetProviderType returns the ProviderType field if non-nil, zero value otherwise.
+
+### GetProviderTypeOk
+
+`func (o *UpdateRotatedSecret) GetProviderTypeOk() (*string, bool)`
+
+GetProviderTypeOk returns a tuple with the ProviderType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProviderType
+
+`func (o *UpdateRotatedSecret) SetProviderType(v string)`
+
+SetProviderType sets ProviderType field to given value.
+
+### HasProviderType
+
+`func (o *UpdateRotatedSecret) HasProviderType() bool`
+
+HasProviderType returns a boolean if a field has been set.
 
 ### GetAddTag
 
@@ -265,6 +296,56 @@ SetGcpKey sets GcpKey field to given value.
 `func (o *UpdateRotatedSecret) HasGcpKey() bool`
 
 HasGcpKey returns a boolean if a field has been set.
+
+### GetGraceRotation
+
+`func (o *UpdateRotatedSecret) GetGraceRotation() string`
+
+GetGraceRotation returns the GraceRotation field if non-nil, zero value otherwise.
+
+### GetGraceRotationOk
+
+`func (o *UpdateRotatedSecret) GetGraceRotationOk() (*string, bool)`
+
+GetGraceRotationOk returns a tuple with the GraceRotation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGraceRotation
+
+`func (o *UpdateRotatedSecret) SetGraceRotation(v string)`
+
+SetGraceRotation sets GraceRotation field to given value.
+
+### HasGraceRotation
+
+`func (o *UpdateRotatedSecret) HasGraceRotation() bool`
+
+HasGraceRotation returns a boolean if a field has been set.
+
+### GetHostProvider
+
+`func (o *UpdateRotatedSecret) GetHostProvider() string`
+
+GetHostProvider returns the HostProvider field if non-nil, zero value otherwise.
+
+### GetHostProviderOk
+
+`func (o *UpdateRotatedSecret) GetHostProviderOk() (*string, bool)`
+
+GetHostProviderOk returns a tuple with the HostProvider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHostProvider
+
+`func (o *UpdateRotatedSecret) SetHostProvider(v string)`
+
+SetHostProvider sets HostProvider field to given value.
+
+### HasHostProvider
+
+`func (o *UpdateRotatedSecret) HasHostProvider() bool`
+
+HasHostProvider returns a boolean if a field has been set.
 
 ### GetJson
 
@@ -911,6 +992,31 @@ SetSecureAccessRdpUser sets SecureAccessRdpUser field to given value.
 
 HasSecureAccessRdpUser returns a boolean if a field has been set.
 
+### GetSecureAccessUrl
+
+`func (o *UpdateRotatedSecret) GetSecureAccessUrl() string`
+
+GetSecureAccessUrl returns the SecureAccessUrl field if non-nil, zero value otherwise.
+
+### GetSecureAccessUrlOk
+
+`func (o *UpdateRotatedSecret) GetSecureAccessUrlOk() (*string, bool)`
+
+GetSecureAccessUrlOk returns a tuple with the SecureAccessUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessUrl
+
+`func (o *UpdateRotatedSecret) SetSecureAccessUrl(v string)`
+
+SetSecureAccessUrl sets SecureAccessUrl field to given value.
+
+### HasSecureAccessUrl
+
+`func (o *UpdateRotatedSecret) HasSecureAccessUrl() bool`
+
+HasSecureAccessUrl returns a boolean if a field has been set.
+
 ### GetSecureAccessWeb
 
 `func (o *UpdateRotatedSecret) GetSecureAccessWeb() bool`
@@ -1110,6 +1216,56 @@ SetUidToken sets UidToken field to given value.
 `func (o *UpdateRotatedSecret) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetUserAttribute
+
+`func (o *UpdateRotatedSecret) GetUserAttribute() string`
+
+GetUserAttribute returns the UserAttribute field if non-nil, zero value otherwise.
+
+### GetUserAttributeOk
+
+`func (o *UpdateRotatedSecret) GetUserAttributeOk() (*string, bool)`
+
+GetUserAttributeOk returns a tuple with the UserAttribute field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserAttribute
+
+`func (o *UpdateRotatedSecret) SetUserAttribute(v string)`
+
+SetUserAttribute sets UserAttribute field to given value.
+
+### HasUserAttribute
+
+`func (o *UpdateRotatedSecret) HasUserAttribute() bool`
+
+HasUserAttribute returns a boolean if a field has been set.
+
+### GetUserDn
+
+`func (o *UpdateRotatedSecret) GetUserDn() string`
+
+GetUserDn returns the UserDn field if non-nil, zero value otherwise.
+
+### GetUserDnOk
+
+`func (o *UpdateRotatedSecret) GetUserDnOk() (*string, bool)`
+
+GetUserDnOk returns a tuple with the UserDn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserDn
+
+`func (o *UpdateRotatedSecret) SetUserDn(v string)`
+
+SetUserDn sets UserDn field to given value.
+
+### HasUserDn
+
+`func (o *UpdateRotatedSecret) HasUserDn() bool`
+
+HasUserDn returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

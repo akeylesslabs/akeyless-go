@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// GatewayUpdateProducerEks gatewayUpdateProducerEks is a command that updates eks producer
+// GatewayUpdateProducerEks gatewayUpdateProducerEks is a command that updates eks producer [Deprecated: Use dynamic-secret-update-eks command]
 type GatewayUpdateProducerEks struct {
 	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
@@ -35,9 +35,9 @@ type GatewayUpdateProducerEks struct {
 	EksSecretAccessKey *string `json:"eks-secret-access-key,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Producer name
+	// Dynamic secret name
 	Name string `json:"name"`
-	// Producer name
+	// Dynamic secret name
 	NewName *string `json:"new-name,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`

@@ -15,11 +15,11 @@ import (
 	"encoding/json"
 )
 
-// GatewayDeleteProducer gatewayDeleteProducer is a command that deletes producer
+// GatewayDeleteProducer gatewayDeleteProducer is a command that deletes producer [Deprecated: Use dynamic-secret-delete command]
 type GatewayDeleteProducer struct {
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Producer name
+	// Dynamic secret name
 	Name string `json:"name"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`

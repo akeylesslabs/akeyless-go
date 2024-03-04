@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **DbServerName** | Pointer to **string** | (Optional) Server name for certificate verification | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** | Producer name | 
+**Name** | **string** | Dynamic secret name | 
 **OracleHost** | Pointer to **string** | Oracle Host | [optional] [default to "127.0.0.1"]
 **OraclePassword** | Pointer to **string** | Oracle Password | [optional] 
 **OraclePort** | Pointer to **string** | Oracle Port | [optional] [default to "1521"]
@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **OracleScreationStatements** | Pointer to **string** | Oracle Creation statements | [optional] 
 **OracleServiceName** | Pointer to **string** | Oracle DB Name | [optional] 
 **OracleUsername** | Pointer to **string** | Oracle Username | [optional] 
+**PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **SecureAccessBastionIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] 
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] [default to "false"]
@@ -340,6 +341,31 @@ SetOracleUsername sets OracleUsername field to given value.
 `func (o *GatewayCreateProducerOracleDb) HasOracleUsername() bool`
 
 HasOracleUsername returns a boolean if a field has been set.
+
+### GetPasswordLength
+
+`func (o *GatewayCreateProducerOracleDb) GetPasswordLength() string`
+
+GetPasswordLength returns the PasswordLength field if non-nil, zero value otherwise.
+
+### GetPasswordLengthOk
+
+`func (o *GatewayCreateProducerOracleDb) GetPasswordLengthOk() (*string, bool)`
+
+GetPasswordLengthOk returns a tuple with the PasswordLength field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasswordLength
+
+`func (o *GatewayCreateProducerOracleDb) SetPasswordLength(v string)`
+
+SetPasswordLength sets PasswordLength field to given value.
+
+### HasPasswordLength
+
+`func (o *GatewayCreateProducerOracleDb) HasPasswordLength() bool`
+
+HasPasswordLength returns a boolean if a field has been set.
 
 ### GetProducerEncryptionKeyName
 

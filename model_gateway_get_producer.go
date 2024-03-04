@@ -15,11 +15,11 @@ import (
 	"encoding/json"
 )
 
-// GatewayGetProducer gatewayGetProducer is a command that returns producer
+// GatewayGetProducer gatewayGetProducer is a command that returns producer [Deprecated: Use dynamic-secret-get command]
 type GatewayGetProducer struct {
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Producer name
+	// Dynamic secret name
 	Name string `json:"name"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`

@@ -15,7 +15,8 @@ Name | Type | Description | Notes
 **MysqlRevocationStatements** | Pointer to **string** | MySQL Revocation statements | [optional] 
 **MysqlScreationStatements** | Pointer to **string** | MySQL Creation statements | [optional] 
 **MysqlUsername** | Pointer to **string** | MySQL Username | [optional] 
-**Name** | **string** | Producer name | 
+**Name** | **string** | Dynamic secret name | 
+**PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **SecureAccessBastionIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] 
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
@@ -342,6 +343,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetPasswordLength
+
+`func (o *GatewayCreateProducerMySQL) GetPasswordLength() string`
+
+GetPasswordLength returns the PasswordLength field if non-nil, zero value otherwise.
+
+### GetPasswordLengthOk
+
+`func (o *GatewayCreateProducerMySQL) GetPasswordLengthOk() (*string, bool)`
+
+GetPasswordLengthOk returns a tuple with the PasswordLength field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasswordLength
+
+`func (o *GatewayCreateProducerMySQL) SetPasswordLength(v string)`
+
+SetPasswordLength sets PasswordLength field to given value.
+
+### HasPasswordLength
+
+`func (o *GatewayCreateProducerMySQL) HasPasswordLength() bool`
+
+HasPasswordLength returns a boolean if a field has been set.
 
 ### GetProducerEncryptionKeyName
 

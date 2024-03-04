@@ -6,8 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** | Producer name | 
-**NewName** | Pointer to **string** | Producer name | [optional] 
+**Name** | **string** | Dynamic secret name | 
+**NewName** | Pointer to **string** | Dynamic secret name | [optional] 
+**PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **RabbitmqAdminPwd** | Pointer to **string** | RabbitMQ Admin password | [optional] 
 **RabbitmqAdminUser** | Pointer to **string** | RabbitMQ Admin User | [optional] 
@@ -141,6 +142,31 @@ SetNewName sets NewName field to given value.
 `func (o *GatewayUpdateProducerRabbitMQ) HasNewName() bool`
 
 HasNewName returns a boolean if a field has been set.
+
+### GetPasswordLength
+
+`func (o *GatewayUpdateProducerRabbitMQ) GetPasswordLength() string`
+
+GetPasswordLength returns the PasswordLength field if non-nil, zero value otherwise.
+
+### GetPasswordLengthOk
+
+`func (o *GatewayUpdateProducerRabbitMQ) GetPasswordLengthOk() (*string, bool)`
+
+GetPasswordLengthOk returns a tuple with the PasswordLength field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasswordLength
+
+`func (o *GatewayUpdateProducerRabbitMQ) SetPasswordLength(v string)`
+
+SetPasswordLength sets PasswordLength field to given value.
+
+### HasPasswordLength
+
+`func (o *GatewayUpdateProducerRabbitMQ) HasPasswordLength() bool`
+
+HasPasswordLength returns a boolean if a field has been set.
 
 ### GetProducerEncryptionKeyName
 

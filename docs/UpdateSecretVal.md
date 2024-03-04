@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Accessibility** | Pointer to **string** | for personal password manager | [optional] [default to "regular"]
 **CustomField** | Pointer to **map[string]string** | For Password Management use, additional fields | [optional] 
+**Format** | Pointer to **string** | Secret format [text/json] (relevant only for type &#39;generic&#39;) | [optional] [default to "text"]
 **InjectUrl** | Pointer to **[]string** | For Password Management use, reflect the website context | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | Pointer to **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
@@ -18,7 +19,7 @@ Name | Type | Description | Notes
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **Username** | Pointer to **string** | For Password Management use | [optional] 
-**Value** | **string** | The secret value (only relevant for type &#39;generic&#39;) | 
+**Value** | **string** | The secret value (relevant only for type &#39;generic&#39;) | 
 
 ## Methods
 
@@ -88,6 +89,31 @@ SetCustomField sets CustomField field to given value.
 `func (o *UpdateSecretVal) HasCustomField() bool`
 
 HasCustomField returns a boolean if a field has been set.
+
+### GetFormat
+
+`func (o *UpdateSecretVal) GetFormat() string`
+
+GetFormat returns the Format field if non-nil, zero value otherwise.
+
+### GetFormatOk
+
+`func (o *UpdateSecretVal) GetFormatOk() (*string, bool)`
+
+GetFormatOk returns a tuple with the Format field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFormat
+
+`func (o *UpdateSecretVal) SetFormat(v string)`
+
+SetFormat sets Format field to given value.
+
+### HasFormat
+
+`func (o *UpdateSecretVal) HasFormat() bool`
+
+HasFormat returns a boolean if a field has been set.
 
 ### GetInjectUrl
 

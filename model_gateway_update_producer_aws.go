@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// GatewayUpdateProducerAws gatewayUpdateProducerAws is a command that Updates aws producer
+// GatewayUpdateProducerAws gatewayUpdateProducerAws is a command that Updates aws producer [Deprecated: Use dynamic-secret-update-aws command]
 type GatewayUpdateProducerAws struct {
 	AccessMode *string `json:"access-mode,omitempty"`
 	// Admin credentials rotation interval (days)
@@ -40,9 +40,9 @@ type GatewayUpdateProducerAws struct {
 	EnableAdminRotation *bool `json:"enable-admin-rotation,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Producer name
+	// Dynamic secret name
 	Name string `json:"name"`
-	// Producer name
+	// Dynamic secret name
 	NewName *string `json:"new-name,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`

@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// GatewayUpdateProducerMSSQL gatewayUpdateProducerMSSQL is a command that updates mssql producer
+// GatewayUpdateProducerMSSQL gatewayUpdateProducerMSSQL is a command that updates mssql producer [Deprecated: Use dynamic-secret-update-mssql command]
 type GatewayUpdateProducerMSSQL struct {
 	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
@@ -35,10 +35,12 @@ type GatewayUpdateProducerMSSQL struct {
 	MssqlRevocationStatements *string `json:"mssql-revocation-statements,omitempty"`
 	// MSSQL Username
 	MssqlUsername *string `json:"mssql-username,omitempty"`
-	// Producer name
+	// Dynamic secret name
 	Name string `json:"name"`
-	// Producer name
+	// Dynamic secret name
 	NewName *string `json:"new-name,omitempty"`
+	// The length of the password to be generated
+	PasswordLength *string `json:"password-length,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
 	// Path to the SSH Certificate Issuer for your Akeyless Bastion
@@ -445,6 +447,38 @@ func (o *GatewayUpdateProducerMSSQL) SetNewName(v string) {
 	o.NewName = &v
 }
 
+// GetPasswordLength returns the PasswordLength field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerMSSQL) GetPasswordLength() string {
+	if o == nil || o.PasswordLength == nil {
+		var ret string
+		return ret
+	}
+	return *o.PasswordLength
+}
+
+// GetPasswordLengthOk returns a tuple with the PasswordLength field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerMSSQL) GetPasswordLengthOk() (*string, bool) {
+	if o == nil || o.PasswordLength == nil {
+		return nil, false
+	}
+	return o.PasswordLength, true
+}
+
+// HasPasswordLength returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerMSSQL) HasPasswordLength() bool {
+	if o != nil && o.PasswordLength != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPasswordLength gets a reference to the given string and assigns it to the PasswordLength field.
+func (o *GatewayUpdateProducerMSSQL) SetPasswordLength(v string) {
+	o.PasswordLength = &v
+}
+
 // GetProducerEncryptionKeyName returns the ProducerEncryptionKeyName field value if set, zero value otherwise.
 func (o *GatewayUpdateProducerMSSQL) GetProducerEncryptionKeyName() string {
 	if o == nil || o.ProducerEncryptionKeyName == nil {
@@ -831,6 +865,9 @@ func (o GatewayUpdateProducerMSSQL) MarshalJSON() ([]byte, error) {
 	}
 	if o.NewName != nil {
 		toSerialize["new-name"] = o.NewName
+	}
+	if o.PasswordLength != nil {
+		toSerialize["password-length"] = o.PasswordLength
 	}
 	if o.ProducerEncryptionKeyName != nil {
 		toSerialize["producer-encryption-key-name"] = o.ProducerEncryptionKeyName

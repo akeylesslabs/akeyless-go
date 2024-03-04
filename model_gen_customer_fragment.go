@@ -19,12 +19,16 @@ import (
 type GenCustomerFragment struct {
 	// Description of the object
 	Description *string `json:"description,omitempty"`
+	// The label of the hsm key to use for customer fragment operations (relevant for hsm_wrapped/hsm_protected customer fragments)
+	HsmKeyLabel *string `json:"hsm-key-label,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Deprecated - use description
 	Metadata *string `json:"metadata,omitempty"`
 	// Customer fragment name
 	Name *string `json:"name,omitempty"`
+	// Customer fragment type [standard/hsm_wrapped/hsm_secured]
+	Type *string `json:"type,omitempty"`
 }
 
 // NewGenCustomerFragment instantiates a new GenCustomerFragment object
@@ -35,6 +39,8 @@ func NewGenCustomerFragment() *GenCustomerFragment {
 	this := GenCustomerFragment{}
 	var json bool = false
 	this.Json = &json
+	var type_ string = "standard"
+	this.Type = &type_
 	return &this
 }
 
@@ -45,6 +51,8 @@ func NewGenCustomerFragmentWithDefaults() *GenCustomerFragment {
 	this := GenCustomerFragment{}
 	var json bool = false
 	this.Json = &json
+	var type_ string = "standard"
+	this.Type = &type_
 	return &this
 }
 
@@ -78,6 +86,38 @@ func (o *GenCustomerFragment) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *GenCustomerFragment) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetHsmKeyLabel returns the HsmKeyLabel field value if set, zero value otherwise.
+func (o *GenCustomerFragment) GetHsmKeyLabel() string {
+	if o == nil || o.HsmKeyLabel == nil {
+		var ret string
+		return ret
+	}
+	return *o.HsmKeyLabel
+}
+
+// GetHsmKeyLabelOk returns a tuple with the HsmKeyLabel field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GenCustomerFragment) GetHsmKeyLabelOk() (*string, bool) {
+	if o == nil || o.HsmKeyLabel == nil {
+		return nil, false
+	}
+	return o.HsmKeyLabel, true
+}
+
+// HasHsmKeyLabel returns a boolean if a field has been set.
+func (o *GenCustomerFragment) HasHsmKeyLabel() bool {
+	if o != nil && o.HsmKeyLabel != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHsmKeyLabel gets a reference to the given string and assigns it to the HsmKeyLabel field.
+func (o *GenCustomerFragment) SetHsmKeyLabel(v string) {
+	o.HsmKeyLabel = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -176,10 +216,45 @@ func (o *GenCustomerFragment) SetName(v string) {
 	o.Name = &v
 }
 
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *GenCustomerFragment) GetType() string {
+	if o == nil || o.Type == nil {
+		var ret string
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GenCustomerFragment) GetTypeOk() (*string, bool) {
+	if o == nil || o.Type == nil {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *GenCustomerFragment) HasType() bool {
+	if o != nil && o.Type != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *GenCustomerFragment) SetType(v string) {
+	o.Type = &v
+}
+
 func (o GenCustomerFragment) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
+	}
+	if o.HsmKeyLabel != nil {
+		toSerialize["hsm-key-label"] = o.HsmKeyLabel
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json
@@ -189,6 +264,9 @@ func (o GenCustomerFragment) MarshalJSON() ([]byte, error) {
 	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
+	}
+	if o.Type != nil {
+		toSerialize["type"] = o.Type
 	}
 	return json.Marshal(toSerialize)
 }

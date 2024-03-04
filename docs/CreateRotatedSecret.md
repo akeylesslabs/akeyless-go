@@ -10,18 +10,20 @@ Name | Type | Description | Notes
 **ApplicationId** | Pointer to **string** | ApplicationId (used in azure) | [optional] 
 **AuthenticationCredentials** | Pointer to **string** | The credentials to connect with use-user-creds/use-target-creds | [optional] [default to "use-user-creds"]
 **AutoRotate** | Pointer to **string** | Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation [true/false] | [optional] 
-**AwsRegion** | Pointer to **string** | Region (used in aws) | [optional] [default to "us-east-2"]
+**AwsRegion** | Pointer to **string** | Aws Region (relevant only for aws) | [optional] [default to "us-east-2"]
 **CustomPayload** | Pointer to **string** | Secret payload to be sent with rotation request (relevant only for rotator-type&#x3D;custom) | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **GcpKey** | Pointer to **string** | Base64-encoded service account private key text | [optional] 
 **GcpServiceAccountEmail** | Pointer to **string** | The email of the gcp service account to rotate | [optional] 
 **GcpServiceAccountKeyId** | Pointer to **string** | The key id of the gcp service account to rotate | [optional] 
+**GraceRotation** | Pointer to **string** | Create a new access key without deleting the old key from AWS for backup (relevant only for AWS) [true/false] | [optional] 
 **HostProvider** | Pointer to **string** | Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret | [optional] [default to "explicit"]
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Metadata** | Pointer to **string** | Deprecated - use description | [optional] 
 **Name** | **string** | Secret name | 
+**PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
 **RotateAfterDisconnect** | Pointer to **string** | Rotate the value of the secret after SRA session ends [true/false] | [optional] [default to "false"]
 **RotatedPassword** | Pointer to **string** | rotated-username password (relevant only for rotator-type&#x3D;password) | [optional] 
 **RotatedUsername** | Pointer to **string** | username to be rotated, if selected use-self-creds at rotator-creds-type, this username will try to rotate it&#39;s own password, if use-target-creds is selected, target credentials will be use to rotate the rotated-password (relevant only for rotator-type&#x3D;password) | [optional] 
@@ -41,6 +43,7 @@ Name | Type | Description | Notes
 **SecureAccessHost** | Pointer to **[]string** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
 **SecureAccessRdpDomain** | Pointer to **string** | Required when the Dynamic Secret is used for a domain user (relevant only for RDP Dynamic-Secret) | [optional] 
 **SecureAccessRdpUser** | Pointer to **string** | Override the RDP Domain username (relevant only for rdp) | [optional] 
+**SecureAccessUrl** | Pointer to **string** | Destination URL to inject secrets | [optional] 
 **SecureAccessWeb** | Pointer to **bool** | Enable Web Secure Remote Access | [optional] [default to false]
 **SecureAccessWebBrowsing** | Pointer to **bool** | Secure browser via Akeyless Web Access Bastion (relevant only for aws or azure) | [optional] [default to false]
 **SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless Web Access Bastion (relevant only for aws or azure) | [optional] [default to false]
@@ -52,7 +55,7 @@ Name | Type | Description | Notes
 **TargetName** | **string** | Target name | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
-**UserAttribute** | Pointer to **string** | LDAP User Attribute, Default value \&quot;cn\&quot; | [optional] 
+**UserAttribute** | Pointer to **string** | LDAP User Attribute, Default value \&quot;cn\&quot; | [optional] [default to "cn"]
 **UserDn** | Pointer to **string** | LDAP User Base DN | [optional] 
 
 ## Methods
@@ -399,6 +402,31 @@ SetGcpServiceAccountKeyId sets GcpServiceAccountKeyId field to given value.
 
 HasGcpServiceAccountKeyId returns a boolean if a field has been set.
 
+### GetGraceRotation
+
+`func (o *CreateRotatedSecret) GetGraceRotation() string`
+
+GetGraceRotation returns the GraceRotation field if non-nil, zero value otherwise.
+
+### GetGraceRotationOk
+
+`func (o *CreateRotatedSecret) GetGraceRotationOk() (*string, bool)`
+
+GetGraceRotationOk returns a tuple with the GraceRotation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGraceRotation
+
+`func (o *CreateRotatedSecret) SetGraceRotation(v string)`
+
+SetGraceRotation sets GraceRotation field to given value.
+
+### HasGraceRotation
+
+`func (o *CreateRotatedSecret) HasGraceRotation() bool`
+
+HasGraceRotation returns a boolean if a field has been set.
+
 ### GetHostProvider
 
 `func (o *CreateRotatedSecret) GetHostProvider() string`
@@ -518,6 +546,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetPasswordLength
+
+`func (o *CreateRotatedSecret) GetPasswordLength() string`
+
+GetPasswordLength returns the PasswordLength field if non-nil, zero value otherwise.
+
+### GetPasswordLengthOk
+
+`func (o *CreateRotatedSecret) GetPasswordLengthOk() (*string, bool)`
+
+GetPasswordLengthOk returns a tuple with the PasswordLength field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasswordLength
+
+`func (o *CreateRotatedSecret) SetPasswordLength(v string)`
+
+SetPasswordLength sets PasswordLength field to given value.
+
+### HasPasswordLength
+
+`func (o *CreateRotatedSecret) HasPasswordLength() bool`
+
+HasPasswordLength returns a boolean if a field has been set.
 
 ### GetRotateAfterDisconnect
 
@@ -988,6 +1041,31 @@ SetSecureAccessRdpUser sets SecureAccessRdpUser field to given value.
 `func (o *CreateRotatedSecret) HasSecureAccessRdpUser() bool`
 
 HasSecureAccessRdpUser returns a boolean if a field has been set.
+
+### GetSecureAccessUrl
+
+`func (o *CreateRotatedSecret) GetSecureAccessUrl() string`
+
+GetSecureAccessUrl returns the SecureAccessUrl field if non-nil, zero value otherwise.
+
+### GetSecureAccessUrlOk
+
+`func (o *CreateRotatedSecret) GetSecureAccessUrlOk() (*string, bool)`
+
+GetSecureAccessUrlOk returns a tuple with the SecureAccessUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessUrl
+
+`func (o *CreateRotatedSecret) SetSecureAccessUrl(v string)`
+
+SetSecureAccessUrl sets SecureAccessUrl field to given value.
+
+### HasSecureAccessUrl
+
+`func (o *CreateRotatedSecret) HasSecureAccessUrl() bool`
+
+HasSecureAccessUrl returns a boolean if a field has been set.
 
 ### GetSecureAccessWeb
 

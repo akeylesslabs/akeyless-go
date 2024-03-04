@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **EnableAdminRotation** | Pointer to **bool** | Should admin credentials be rotated | [optional] [default to false]
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** | Producer name | 
+**Name** | **string** | Dynamic secret name | 
 **Payload** | Pointer to **string** | Secret payload to be sent with each create/revoke webhook request | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **RevokeSyncUrl** | **string** | URL of an endpoint that implements /sync/revoke method, for example https://webhook.example.com/sync/revoke | 

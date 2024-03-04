@@ -15,11 +15,13 @@ import (
 	"encoding/json"
 )
 
-// GatewayUpdateTmpUsers gatewayUpdateTmpUsers is a command that returns gateway configuration
+// GatewayUpdateTmpUsers gatewayUpdateTmpUsers is a command that returns gateway configuration [Deprecated: Use dynamic-secret-tmp-creds-update command]
 type GatewayUpdateTmpUsers struct {
+	// Host
+	Host string `json:"host"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Producer Name
+	// Dynamic secret name
 	Name string `json:"name"`
 	// New TTL in Minutes
 	NewTtlMin int64 `json:"new-ttl-min"`
@@ -35,8 +37,9 @@ type GatewayUpdateTmpUsers struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayUpdateTmpUsers(name string, newTtlMin int64, tmpCredsId string, ) *GatewayUpdateTmpUsers {
+func NewGatewayUpdateTmpUsers(host string, name string, newTtlMin int64, tmpCredsId string, ) *GatewayUpdateTmpUsers {
 	this := GatewayUpdateTmpUsers{}
+	this.Host = host
 	var json bool = false
 	this.Json = &json
 	this.Name = name
@@ -53,6 +56,30 @@ func NewGatewayUpdateTmpUsersWithDefaults() *GatewayUpdateTmpUsers {
 	var json bool = false
 	this.Json = &json
 	return &this
+}
+
+// GetHost returns the Host field value
+func (o *GatewayUpdateTmpUsers) GetHost() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Host
+}
+
+// GetHostOk returns a tuple with the Host field value
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateTmpUsers) GetHostOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Host, true
+}
+
+// SetHost sets field value
+func (o *GatewayUpdateTmpUsers) SetHost(v string) {
+	o.Host = v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -225,6 +252,9 @@ func (o *GatewayUpdateTmpUsers) SetUidToken(v string) {
 
 func (o GatewayUpdateTmpUsers) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["host"] = o.Host
+	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json
 	}

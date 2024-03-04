@@ -37,6 +37,8 @@ type UpdateAuthMethodLDAP struct {
 	Name string `json:"name"`
 	// Auth Method new name
 	NewName *string `json:"new-name,omitempty"`
+	// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca]
+	ProductType *[]string `json:"product-type,omitempty"`
 	// A public key generated for LDAP authentication method on Akeyless in base64 or PEM format [RSA2048]
 	PublicKeyData *string `json:"public-key-data,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -393,6 +395,38 @@ func (o *UpdateAuthMethodLDAP) SetNewName(v string) {
 	o.NewName = &v
 }
 
+// GetProductType returns the ProductType field value if set, zero value otherwise.
+func (o *UpdateAuthMethodLDAP) GetProductType() []string {
+	if o == nil || o.ProductType == nil {
+		var ret []string
+		return ret
+	}
+	return *o.ProductType
+}
+
+// GetProductTypeOk returns a tuple with the ProductType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAuthMethodLDAP) GetProductTypeOk() (*[]string, bool) {
+	if o == nil || o.ProductType == nil {
+		return nil, false
+	}
+	return o.ProductType, true
+}
+
+// HasProductType returns a boolean if a field has been set.
+func (o *UpdateAuthMethodLDAP) HasProductType() bool {
+	if o != nil && o.ProductType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProductType gets a reference to the given []string and assigns it to the ProductType field.
+func (o *UpdateAuthMethodLDAP) SetProductType(v []string) {
+	o.ProductType = &v
+}
+
 // GetPublicKeyData returns the PublicKeyData field value if set, zero value otherwise.
 func (o *UpdateAuthMethodLDAP) GetPublicKeyData() string {
 	if o == nil || o.PublicKeyData == nil {
@@ -552,6 +586,9 @@ func (o UpdateAuthMethodLDAP) MarshalJSON() ([]byte, error) {
 	}
 	if o.NewName != nil {
 		toSerialize["new-name"] = o.NewName
+	}
+	if o.ProductType != nil {
+		toSerialize["product-type"] = o.ProductType
 	}
 	if o.PublicKeyData != nil {
 		toSerialize["public-key-data"] = o.PublicKeyData

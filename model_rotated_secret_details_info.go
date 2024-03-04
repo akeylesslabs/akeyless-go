@@ -18,6 +18,7 @@ import (
 // RotatedSecretDetailsInfo RotatedSecretDetailsInfo The rotated secret rotator info
 type RotatedSecretDetailsInfo struct {
 	DeletePreviousVersionInDays *int32 `json:"delete_previous_version_in_days,omitempty"`
+	GraceRotation *bool `json:"grace_rotation,omitempty"`
 	GwClusterId *int64 `json:"gw_cluster_id,omitempty"`
 	LastRotationError *string `json:"last_rotation_error,omitempty"`
 	NumberOfVersionsToSave *int32 `json:"number_of_versions_to_save,omitempty"`
@@ -79,6 +80,38 @@ func (o *RotatedSecretDetailsInfo) HasDeletePreviousVersionInDays() bool {
 // SetDeletePreviousVersionInDays gets a reference to the given int32 and assigns it to the DeletePreviousVersionInDays field.
 func (o *RotatedSecretDetailsInfo) SetDeletePreviousVersionInDays(v int32) {
 	o.DeletePreviousVersionInDays = &v
+}
+
+// GetGraceRotation returns the GraceRotation field value if set, zero value otherwise.
+func (o *RotatedSecretDetailsInfo) GetGraceRotation() bool {
+	if o == nil || o.GraceRotation == nil {
+		var ret bool
+		return ret
+	}
+	return *o.GraceRotation
+}
+
+// GetGraceRotationOk returns a tuple with the GraceRotation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretDetailsInfo) GetGraceRotationOk() (*bool, bool) {
+	if o == nil || o.GraceRotation == nil {
+		return nil, false
+	}
+	return o.GraceRotation, true
+}
+
+// HasGraceRotation returns a boolean if a field has been set.
+func (o *RotatedSecretDetailsInfo) HasGraceRotation() bool {
+	if o != nil && o.GraceRotation != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGraceRotation gets a reference to the given bool and assigns it to the GraceRotation field.
+func (o *RotatedSecretDetailsInfo) SetGraceRotation(v bool) {
+	o.GraceRotation = &v
 }
 
 // GetGwClusterId returns the GwClusterId field value if set, zero value otherwise.
@@ -437,6 +470,9 @@ func (o RotatedSecretDetailsInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DeletePreviousVersionInDays != nil {
 		toSerialize["delete_previous_version_in_days"] = o.DeletePreviousVersionInDays
+	}
+	if o.GraceRotation != nil {
+		toSerialize["grace_rotation"] = o.GraceRotation
 	}
 	if o.GwClusterId != nil {
 		toSerialize["gw_cluster_id"] = o.GwClusterId

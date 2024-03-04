@@ -121,6 +121,7 @@ type DSProducerDetails struct {
 	GithubInstallationTokenPermissions *map[string]string `json:"github_installation_token_permissions,omitempty"`
 	GithubInstallationTokenRepositories *[]string `json:"github_installation_token_repositories,omitempty"`
 	GithubInstallationTokenRepositoriesIds *[]int64 `json:"github_installation_token_repositories_ids,omitempty"`
+	GithubOrganizationName *string `json:"github_organization_name,omitempty"`
 	GithubRepositoryPath *string `json:"github_repository_path,omitempty"`
 	GkeClusterCaCertificate *string `json:"gke_cluster_ca_certificate,omitempty"`
 	GkeClusterEndpoint *string `json:"gke_cluster_endpoint,omitempty"`
@@ -3442,6 +3443,38 @@ func (o *DSProducerDetails) HasGithubInstallationTokenRepositoriesIds() bool {
 // SetGithubInstallationTokenRepositoriesIds gets a reference to the given []int64 and assigns it to the GithubInstallationTokenRepositoriesIds field.
 func (o *DSProducerDetails) SetGithubInstallationTokenRepositoriesIds(v []int64) {
 	o.GithubInstallationTokenRepositoriesIds = &v
+}
+
+// GetGithubOrganizationName returns the GithubOrganizationName field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGithubOrganizationName() string {
+	if o == nil || o.GithubOrganizationName == nil {
+		var ret string
+		return ret
+	}
+	return *o.GithubOrganizationName
+}
+
+// GetGithubOrganizationNameOk returns a tuple with the GithubOrganizationName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGithubOrganizationNameOk() (*string, bool) {
+	if o == nil || o.GithubOrganizationName == nil {
+		return nil, false
+	}
+	return o.GithubOrganizationName, true
+}
+
+// HasGithubOrganizationName returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGithubOrganizationName() bool {
+	if o != nil && o.GithubOrganizationName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGithubOrganizationName gets a reference to the given string and assigns it to the GithubOrganizationName field.
+func (o *DSProducerDetails) SetGithubOrganizationName(v string) {
+	o.GithubOrganizationName = &v
 }
 
 // GetGithubRepositoryPath returns the GithubRepositoryPath field value if set, zero value otherwise.
@@ -7582,6 +7615,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.GithubInstallationTokenRepositoriesIds != nil {
 		toSerialize["github_installation_token_repositories_ids"] = o.GithubInstallationTokenRepositoriesIds
+	}
+	if o.GithubOrganizationName != nil {
+		toSerialize["github_organization_name"] = o.GithubOrganizationName
 	}
 	if o.GithubRepositoryPath != nil {
 		toSerialize["github_repository_path"] = o.GithubRepositoryPath

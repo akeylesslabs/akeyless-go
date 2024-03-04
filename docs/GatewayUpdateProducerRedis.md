@@ -8,9 +8,10 @@ Name | Type | Description | Notes
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Host** | Pointer to **string** | Redis Host | [optional] [default to "127.0.0.1"]
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** | Producer name | 
-**NewName** | Pointer to **string** | Producer name | [optional] 
+**Name** | **string** | Dynamic secret name | 
+**NewName** | Pointer to **string** | Dynamic secret name | [optional] 
 **Password** | Pointer to **string** | Redis Password | [optional] 
+**PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
 **Port** | Pointer to **string** | Redis Port | [optional] [default to "6379"]
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **Ssl** | Pointer to **bool** | Enable/Disable SSL [true/false] | [optional] [default to false]
@@ -210,6 +211,31 @@ SetPassword sets Password field to given value.
 `func (o *GatewayUpdateProducerRedis) HasPassword() bool`
 
 HasPassword returns a boolean if a field has been set.
+
+### GetPasswordLength
+
+`func (o *GatewayUpdateProducerRedis) GetPasswordLength() string`
+
+GetPasswordLength returns the PasswordLength field if non-nil, zero value otherwise.
+
+### GetPasswordLengthOk
+
+`func (o *GatewayUpdateProducerRedis) GetPasswordLengthOk() (*string, bool)`
+
+GetPasswordLengthOk returns a tuple with the PasswordLength field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasswordLength
+
+`func (o *GatewayUpdateProducerRedis) SetPasswordLength(v string)`
+
+SetPasswordLength sets PasswordLength field to given value.
+
+### HasPasswordLength
+
+`func (o *GatewayUpdateProducerRedis) HasPasswordLength() bool`
+
+HasPasswordLength returns a boolean if a field has been set.
 
 ### GetPort
 

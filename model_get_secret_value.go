@@ -31,7 +31,7 @@ type GetSecretValue struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// Secret version
+	// Secret version, if negative value N is provided the last N versions will return (maximum 20)
 	Version *int32 `json:"version,omitempty"`
 }
 

@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **Oauth2AccessRules** | Pointer to [**OAuth2AccessRules**](OAuth2AccessRules.md) |  | [optional] 
 **OciAccessRules** | Pointer to [**OCIAccessRules**](OCIAccessRules.md) |  | [optional] 
 **OidcAccessRules** | Pointer to [**OIDCAccessRules**](OIDCAccessRules.md) |  | [optional] 
+**ProductTypes** | Pointer to **[]string** | List of product types this auth method will be in use of | [optional] 
 **RulesType** | Pointer to **string** |  | [optional] 
 **SamlAccessRules** | Pointer to [**SAMLAccessRules**](SAMLAccessRules.md) |  | [optional] 
 **SubClaimsDelimiters** | Pointer to **[]string** |  | [optional] 
@@ -495,6 +496,31 @@ SetOidcAccessRules sets OidcAccessRules field to given value.
 `func (o *AuthMethodAccessInfo) HasOidcAccessRules() bool`
 
 HasOidcAccessRules returns a boolean if a field has been set.
+
+### GetProductTypes
+
+`func (o *AuthMethodAccessInfo) GetProductTypes() []string`
+
+GetProductTypes returns the ProductTypes field if non-nil, zero value otherwise.
+
+### GetProductTypesOk
+
+`func (o *AuthMethodAccessInfo) GetProductTypesOk() (*[]string, bool)`
+
+GetProductTypesOk returns a tuple with the ProductTypes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProductTypes
+
+`func (o *AuthMethodAccessInfo) SetProductTypes(v []string)`
+
+SetProductTypes sets ProductTypes field to given value.
+
+### HasProductTypes
+
+`func (o *AuthMethodAccessInfo) HasProductTypes() bool`
+
+HasProductTypes returns a boolean if a field has been set.
 
 ### GetRulesType
 

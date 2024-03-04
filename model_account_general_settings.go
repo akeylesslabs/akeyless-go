@@ -23,6 +23,7 @@ type AccountGeneralSettings struct {
 	AccountDefaultKeyName *string `json:"account_default_key_name,omitempty"`
 	AuthUsageEvent *UsageEventSetting `json:"auth_usage_event,omitempty"`
 	DataProtectionSection *DataProtectionSection `json:"data_protection_section,omitempty"`
+	DynamicSecretMaxTtl *DynamicSecretMaxTtl `json:"dynamic_secret_max_ttl,omitempty"`
 	EnableRequestForAccess *bool `json:"enable_request_for_access,omitempty"`
 	// InvalidCharacters is the invalid characters for items/targets/roles/auths/notifier_forwarder naming convention
 	InvalidCharacters *string `json:"invalid_characters,omitempty"`
@@ -31,6 +32,7 @@ type AccountGeneralSettings struct {
 	LockDefaultKey *bool `json:"lock_default_key,omitempty"`
 	PasswordPolicy *PasswordPolicyInfo `json:"password_policy,omitempty"`
 	ProtectItemsByDefault *bool `json:"protect_items_by_default,omitempty"`
+	RotationSecretMaxInterval *RotationSecretMaxInterval `json:"rotation_secret_max_interval,omitempty"`
 	SharingPolicy *SharingPolicyInfo `json:"sharing_policy,omitempty"`
 }
 
@@ -177,6 +179,38 @@ func (o *AccountGeneralSettings) HasDataProtectionSection() bool {
 // SetDataProtectionSection gets a reference to the given DataProtectionSection and assigns it to the DataProtectionSection field.
 func (o *AccountGeneralSettings) SetDataProtectionSection(v DataProtectionSection) {
 	o.DataProtectionSection = &v
+}
+
+// GetDynamicSecretMaxTtl returns the DynamicSecretMaxTtl field value if set, zero value otherwise.
+func (o *AccountGeneralSettings) GetDynamicSecretMaxTtl() DynamicSecretMaxTtl {
+	if o == nil || o.DynamicSecretMaxTtl == nil {
+		var ret DynamicSecretMaxTtl
+		return ret
+	}
+	return *o.DynamicSecretMaxTtl
+}
+
+// GetDynamicSecretMaxTtlOk returns a tuple with the DynamicSecretMaxTtl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountGeneralSettings) GetDynamicSecretMaxTtlOk() (*DynamicSecretMaxTtl, bool) {
+	if o == nil || o.DynamicSecretMaxTtl == nil {
+		return nil, false
+	}
+	return o.DynamicSecretMaxTtl, true
+}
+
+// HasDynamicSecretMaxTtl returns a boolean if a field has been set.
+func (o *AccountGeneralSettings) HasDynamicSecretMaxTtl() bool {
+	if o != nil && o.DynamicSecretMaxTtl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDynamicSecretMaxTtl gets a reference to the given DynamicSecretMaxTtl and assigns it to the DynamicSecretMaxTtl field.
+func (o *AccountGeneralSettings) SetDynamicSecretMaxTtl(v DynamicSecretMaxTtl) {
+	o.DynamicSecretMaxTtl = &v
 }
 
 // GetEnableRequestForAccess returns the EnableRequestForAccess field value if set, zero value otherwise.
@@ -371,6 +405,38 @@ func (o *AccountGeneralSettings) SetProtectItemsByDefault(v bool) {
 	o.ProtectItemsByDefault = &v
 }
 
+// GetRotationSecretMaxInterval returns the RotationSecretMaxInterval field value if set, zero value otherwise.
+func (o *AccountGeneralSettings) GetRotationSecretMaxInterval() RotationSecretMaxInterval {
+	if o == nil || o.RotationSecretMaxInterval == nil {
+		var ret RotationSecretMaxInterval
+		return ret
+	}
+	return *o.RotationSecretMaxInterval
+}
+
+// GetRotationSecretMaxIntervalOk returns a tuple with the RotationSecretMaxInterval field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountGeneralSettings) GetRotationSecretMaxIntervalOk() (*RotationSecretMaxInterval, bool) {
+	if o == nil || o.RotationSecretMaxInterval == nil {
+		return nil, false
+	}
+	return o.RotationSecretMaxInterval, true
+}
+
+// HasRotationSecretMaxInterval returns a boolean if a field has been set.
+func (o *AccountGeneralSettings) HasRotationSecretMaxInterval() bool {
+	if o != nil && o.RotationSecretMaxInterval != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRotationSecretMaxInterval gets a reference to the given RotationSecretMaxInterval and assigns it to the RotationSecretMaxInterval field.
+func (o *AccountGeneralSettings) SetRotationSecretMaxInterval(v RotationSecretMaxInterval) {
+	o.RotationSecretMaxInterval = &v
+}
+
 // GetSharingPolicy returns the SharingPolicy field value if set, zero value otherwise.
 func (o *AccountGeneralSettings) GetSharingPolicy() SharingPolicyInfo {
 	if o == nil || o.SharingPolicy == nil {
@@ -417,6 +483,9 @@ func (o AccountGeneralSettings) MarshalJSON() ([]byte, error) {
 	if o.DataProtectionSection != nil {
 		toSerialize["data_protection_section"] = o.DataProtectionSection
 	}
+	if o.DynamicSecretMaxTtl != nil {
+		toSerialize["dynamic_secret_max_ttl"] = o.DynamicSecretMaxTtl
+	}
 	if o.EnableRequestForAccess != nil {
 		toSerialize["enable_request_for_access"] = o.EnableRequestForAccess
 	}
@@ -434,6 +503,9 @@ func (o AccountGeneralSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.ProtectItemsByDefault != nil {
 		toSerialize["protect_items_by_default"] = o.ProtectItemsByDefault
+	}
+	if o.RotationSecretMaxInterval != nil {
+		toSerialize["rotation_secret_max_interval"] = o.RotationSecretMaxInterval
 	}
 	if o.SharingPolicy != nil {
 		toSerialize["sharing_policy"] = o.SharingPolicy

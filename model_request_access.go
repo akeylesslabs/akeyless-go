@@ -25,10 +25,12 @@ type RequestAccess struct {
 	Description *string `json:"description,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Item type
+	// Item name
 	Name string `json:"name"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
+	// Item type
+	Type string `json:"type"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
 }
@@ -37,12 +39,13 @@ type RequestAccess struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRequestAccess(capability []string, name string, ) *RequestAccess {
+func NewRequestAccess(capability []string, name string, type_ string, ) *RequestAccess {
 	this := RequestAccess{}
 	this.Capability = capability
 	var json bool = false
 	this.Json = &json
 	this.Name = name
+	this.Type = type_
 	return &this
 }
 
@@ -232,6 +235,30 @@ func (o *RequestAccess) SetToken(v string) {
 	o.Token = &v
 }
 
+// GetType returns the Type field value
+func (o *RequestAccess) GetType() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *RequestAccess) GetTypeOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *RequestAccess) SetType(v string) {
+	o.Type = v
+}
+
 // GetUidToken returns the UidToken field value if set, zero value otherwise.
 func (o *RequestAccess) GetUidToken() string {
 	if o == nil || o.UidToken == nil {
@@ -283,6 +310,9 @@ func (o RequestAccess) MarshalJSON() ([]byte, error) {
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
+	}
+	if true {
+		toSerialize["type"] = o.Type
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken

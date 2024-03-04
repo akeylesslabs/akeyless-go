@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// GatewayCreateProducerCustom struct for GatewayCreateProducerCustom
+// GatewayCreateProducerCustom gatewayCreateProducerCustom is a command that creates a custom producer. [Deprecated: Use dynamic-secret-create-custom command]
 type GatewayCreateProducerCustom struct {
 	// Define rotation interval in days
 	AdminRotationIntervalDays *int64 `json:"admin_rotation_interval_days,omitempty"`
@@ -27,7 +27,7 @@ type GatewayCreateProducerCustom struct {
 	EnableAdminRotation *bool `json:"enable_admin_rotation,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Producer name
+	// Dynamic secret name
 	Name string `json:"name"`
 	// Secret payload to be sent with each create/revoke webhook request
 	Payload *string `json:"payload,omitempty"`

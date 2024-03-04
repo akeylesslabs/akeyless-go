@@ -7,8 +7,9 @@ Name | Type | Description | Notes
 **CreationStatements** | Pointer to **string** | Redshift Creation statements | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** | Producer name | 
-**NewName** | Pointer to **string** | Producer name | [optional] 
+**Name** | **string** | Dynamic secret name | 
+**NewName** | Pointer to **string** | Dynamic secret name | [optional] 
+**PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
 **ProducerEncryptionKey** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **RedshiftDbName** | Pointer to **string** | Redshift DB Name | [optional] 
 **RedshiftHost** | Pointer to **string** | Redshift Host | [optional] [default to "127.0.0.1"]
@@ -162,6 +163,31 @@ SetNewName sets NewName field to given value.
 `func (o *GatewayUpdateProducerRedshift) HasNewName() bool`
 
 HasNewName returns a boolean if a field has been set.
+
+### GetPasswordLength
+
+`func (o *GatewayUpdateProducerRedshift) GetPasswordLength() string`
+
+GetPasswordLength returns the PasswordLength field if non-nil, zero value otherwise.
+
+### GetPasswordLengthOk
+
+`func (o *GatewayUpdateProducerRedshift) GetPasswordLengthOk() (*string, bool)`
+
+GetPasswordLengthOk returns a tuple with the PasswordLength field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasswordLength
+
+`func (o *GatewayUpdateProducerRedshift) SetPasswordLength(v string)`
+
+SetPasswordLength sets PasswordLength field to given value.
+
+### HasPasswordLength
+
+`func (o *GatewayUpdateProducerRedshift) HasPasswordLength() bool`
+
+HasPasswordLength returns a boolean if a field has been set.
 
 ### GetProducerEncryptionKey
 

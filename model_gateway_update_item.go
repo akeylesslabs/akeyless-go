@@ -39,6 +39,8 @@ type GatewayUpdateItem struct {
 	GcpServiceAccountEmail *string `json:"gcp-service-account-email,omitempty"`
 	// The key id of the gcp service account to rotate
 	GcpServiceAccountKeyId *string `json:"gcp-service-account-key-id,omitempty"`
+	// Create a new access key without deleting the old key from AWS for backup (relevant only for AWS) [true/false]
+	GraceRotation *string `json:"grace-rotation,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Whether to keep previous version [true/false]. (relevant only for --type=rotated-secret). If not set, use default according to account settings
@@ -53,6 +55,8 @@ type GatewayUpdateItem struct {
 	NewName *string `json:"new-name,omitempty"`
 	// Deprecated
 	NewVersion *bool `json:"new-version,omitempty"`
+	// The length of the password to be generated
+	PasswordLength *string `json:"password-length,omitempty"`
 	// List of the existent tags that will be removed from this item
 	RmTag *[]string `json:"rm-tag,omitempty"`
 	// rotated-username password (relevant only for rotator-type=password)
@@ -464,6 +468,38 @@ func (o *GatewayUpdateItem) SetGcpServiceAccountKeyId(v string) {
 	o.GcpServiceAccountKeyId = &v
 }
 
+// GetGraceRotation returns the GraceRotation field value if set, zero value otherwise.
+func (o *GatewayUpdateItem) GetGraceRotation() string {
+	if o == nil || o.GraceRotation == nil {
+		var ret string
+		return ret
+	}
+	return *o.GraceRotation
+}
+
+// GetGraceRotationOk returns a tuple with the GraceRotation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateItem) GetGraceRotationOk() (*string, bool) {
+	if o == nil || o.GraceRotation == nil {
+		return nil, false
+	}
+	return o.GraceRotation, true
+}
+
+// HasGraceRotation returns a boolean if a field has been set.
+func (o *GatewayUpdateItem) HasGraceRotation() bool {
+	if o != nil && o.GraceRotation != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGraceRotation gets a reference to the given string and assigns it to the GraceRotation field.
+func (o *GatewayUpdateItem) SetGraceRotation(v string) {
+	o.GraceRotation = &v
+}
+
 // GetJson returns the Json field value if set, zero value otherwise.
 func (o *GatewayUpdateItem) GetJson() bool {
 	if o == nil || o.Json == nil {
@@ -678,6 +714,38 @@ func (o *GatewayUpdateItem) HasNewVersion() bool {
 // SetNewVersion gets a reference to the given bool and assigns it to the NewVersion field.
 func (o *GatewayUpdateItem) SetNewVersion(v bool) {
 	o.NewVersion = &v
+}
+
+// GetPasswordLength returns the PasswordLength field value if set, zero value otherwise.
+func (o *GatewayUpdateItem) GetPasswordLength() string {
+	if o == nil || o.PasswordLength == nil {
+		var ret string
+		return ret
+	}
+	return *o.PasswordLength
+}
+
+// GetPasswordLengthOk returns a tuple with the PasswordLength field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateItem) GetPasswordLengthOk() (*string, bool) {
+	if o == nil || o.PasswordLength == nil {
+		return nil, false
+	}
+	return o.PasswordLength, true
+}
+
+// HasPasswordLength returns a boolean if a field has been set.
+func (o *GatewayUpdateItem) HasPasswordLength() bool {
+	if o != nil && o.PasswordLength != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPasswordLength gets a reference to the given string and assigns it to the PasswordLength field.
+func (o *GatewayUpdateItem) SetPasswordLength(v string) {
+	o.PasswordLength = &v
 }
 
 // GetRmTag returns the RmTag field value if set, zero value otherwise.
@@ -995,6 +1063,9 @@ func (o GatewayUpdateItem) MarshalJSON() ([]byte, error) {
 	if o.GcpServiceAccountKeyId != nil {
 		toSerialize["gcp-service-account-key-id"] = o.GcpServiceAccountKeyId
 	}
+	if o.GraceRotation != nil {
+		toSerialize["grace-rotation"] = o.GraceRotation
+	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json
 	}
@@ -1015,6 +1086,9 @@ func (o GatewayUpdateItem) MarshalJSON() ([]byte, error) {
 	}
 	if o.NewVersion != nil {
 		toSerialize["new-version"] = o.NewVersion
+	}
+	if o.PasswordLength != nil {
+		toSerialize["password-length"] = o.PasswordLength
 	}
 	if o.RmTag != nil {
 		toSerialize["rm-tag"] = o.RmTag

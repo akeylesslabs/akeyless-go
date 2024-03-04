@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// GatewayUpdateProducerSnowflake GatewayUpdateProducerSnowflakeCmd is a command that updates a Snowflake producer
+// GatewayUpdateProducerSnowflake GatewayUpdateProducerSnowflakeCmd is a command that updates a Snowflake producer [Deprecated: Use dynamic-secret-update-snowflake command]
 type GatewayUpdateProducerSnowflake struct {
 	// Account name
 	Account *string `json:"account,omitempty"`
@@ -29,10 +29,12 @@ type GatewayUpdateProducerSnowflake struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Producer name
+	// Dynamic secret name
 	Name string `json:"name"`
-	// Producer name
+	// Dynamic secret name
 	NewName *string `json:"new-name,omitempty"`
+	// The length of the password to be generated
+	PasswordLength *string `json:"password-length,omitempty"`
 	// RSA Private key (base64 encoded)
 	PrivateKey *string `json:"private-key,omitempty"`
 	// The Private key passphrase
@@ -325,6 +327,38 @@ func (o *GatewayUpdateProducerSnowflake) HasNewName() bool {
 // SetNewName gets a reference to the given string and assigns it to the NewName field.
 func (o *GatewayUpdateProducerSnowflake) SetNewName(v string) {
 	o.NewName = &v
+}
+
+// GetPasswordLength returns the PasswordLength field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerSnowflake) GetPasswordLength() string {
+	if o == nil || o.PasswordLength == nil {
+		var ret string
+		return ret
+	}
+	return *o.PasswordLength
+}
+
+// GetPasswordLengthOk returns a tuple with the PasswordLength field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerSnowflake) GetPasswordLengthOk() (*string, bool) {
+	if o == nil || o.PasswordLength == nil {
+		return nil, false
+	}
+	return o.PasswordLength, true
+}
+
+// HasPasswordLength returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerSnowflake) HasPasswordLength() bool {
+	if o != nil && o.PasswordLength != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPasswordLength gets a reference to the given string and assigns it to the PasswordLength field.
+func (o *GatewayUpdateProducerSnowflake) SetPasswordLength(v string) {
+	o.PasswordLength = &v
 }
 
 // GetPrivateKey returns the PrivateKey field value if set, zero value otherwise.
@@ -640,6 +674,9 @@ func (o GatewayUpdateProducerSnowflake) MarshalJSON() ([]byte, error) {
 	}
 	if o.NewName != nil {
 		toSerialize["new-name"] = o.NewName
+	}
+	if o.PasswordLength != nil {
+		toSerialize["password-length"] = o.PasswordLength
 	}
 	if o.PrivateKey != nil {
 		toSerialize["private-key"] = o.PrivateKey

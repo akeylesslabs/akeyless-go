@@ -15,14 +15,16 @@ import (
 	"encoding/json"
 )
 
-// GatewayCreateProducerRabbitMQ gatewayCreateProducerRabbitMQ is a command that creates rabbitmq producer
+// GatewayCreateProducerRabbitMQ gatewayCreateProducerRabbitMQ is a command that creates rabbitmq producer [Deprecated: Use dynamic-secret-create-rabbitmq command]
 type GatewayCreateProducerRabbitMQ struct {
 	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Producer name
+	// Dynamic secret name
 	Name string `json:"name"`
+	// The length of the password to be generated
+	PasswordLength *string `json:"password-length,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
 	// RabbitMQ Admin password
@@ -187,6 +189,38 @@ func (o *GatewayCreateProducerRabbitMQ) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *GatewayCreateProducerRabbitMQ) SetName(v string) {
 	o.Name = v
+}
+
+// GetPasswordLength returns the PasswordLength field value if set, zero value otherwise.
+func (o *GatewayCreateProducerRabbitMQ) GetPasswordLength() string {
+	if o == nil || o.PasswordLength == nil {
+		var ret string
+		return ret
+	}
+	return *o.PasswordLength
+}
+
+// GetPasswordLengthOk returns a tuple with the PasswordLength field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerRabbitMQ) GetPasswordLengthOk() (*string, bool) {
+	if o == nil || o.PasswordLength == nil {
+		return nil, false
+	}
+	return o.PasswordLength, true
+}
+
+// HasPasswordLength returns a boolean if a field has been set.
+func (o *GatewayCreateProducerRabbitMQ) HasPasswordLength() bool {
+	if o != nil && o.PasswordLength != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPasswordLength gets a reference to the given string and assigns it to the PasswordLength field.
+func (o *GatewayCreateProducerRabbitMQ) SetPasswordLength(v string) {
+	o.PasswordLength = &v
 }
 
 // GetProducerEncryptionKeyName returns the ProducerEncryptionKeyName field value if set, zero value otherwise.
@@ -807,6 +841,9 @@ func (o GatewayCreateProducerRabbitMQ) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.PasswordLength != nil {
+		toSerialize["password-length"] = o.PasswordLength
 	}
 	if o.ProducerEncryptionKeyName != nil {
 		toSerialize["producer-encryption-key-name"] = o.ProducerEncryptionKeyName

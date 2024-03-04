@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] [default to 0]
 **Name** | **string** | Auth Method name | 
+**ProductType** | Pointer to **[]string** | Choose the relevant product type for the auth method [sm, sra, pm, dp, ca] | [optional] 
 **PublicKeyData** | Pointer to **string** | A public key generated for LDAP authentication method on Akeyless in base64 or PEM format [RSA2048] | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -256,6 +257,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetProductType
+
+`func (o *CreateAuthMethodLDAP) GetProductType() []string`
+
+GetProductType returns the ProductType field if non-nil, zero value otherwise.
+
+### GetProductTypeOk
+
+`func (o *CreateAuthMethodLDAP) GetProductTypeOk() (*[]string, bool)`
+
+GetProductTypeOk returns a tuple with the ProductType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProductType
+
+`func (o *CreateAuthMethodLDAP) SetProductType(v []string)`
+
+SetProductType sets ProductType field to given value.
+
+### HasProductType
+
+`func (o *CreateAuthMethodLDAP) HasProductType() bool`
+
+HasProductType returns a boolean if a field has been set.
 
 ### GetPublicKeyData
 

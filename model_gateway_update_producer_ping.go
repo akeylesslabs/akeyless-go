@@ -15,15 +15,15 @@ import (
 	"encoding/json"
 )
 
-// GatewayUpdateProducerPing gatewayUpdateProducerPing is a command that updates Ping producer
+// GatewayUpdateProducerPing gatewayUpdateProducerPing is a command that updates Ping producer [Deprecated: Use dynamic-secret-update-ping command]
 type GatewayUpdateProducerPing struct {
 	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Producer name
+	// Dynamic secret name
 	Name string `json:"name"`
-	// Producer New name
+	// Dynamic secret New name
 	NewName *string `json:"new-name,omitempty"`
 	// Ping Federate administrative port
 	PingAdministrativePort *string `json:"ping-administrative-port,omitempty"`

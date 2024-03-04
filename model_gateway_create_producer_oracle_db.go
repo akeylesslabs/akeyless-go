@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// GatewayCreateProducerOracleDb gatewayCreateProducerOracleDb is a command that creates oracle db producer
+// GatewayCreateProducerOracleDb gatewayCreateProducerOracleDb is a command that creates oracle db producer [Deprecated: Use dynamic-secret-create-oracledb command]
 type GatewayCreateProducerOracleDb struct {
 	// (Optional) DB server certificates
 	DbServerCertificates *string `json:"db-server-certificates,omitempty"`
@@ -25,7 +25,7 @@ type GatewayCreateProducerOracleDb struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Producer name
+	// Dynamic secret name
 	Name string `json:"name"`
 	// Oracle Host
 	OracleHost *string `json:"oracle-host,omitempty"`
@@ -41,6 +41,8 @@ type GatewayCreateProducerOracleDb struct {
 	OracleServiceName *string `json:"oracle-service-name,omitempty"`
 	// Oracle Username
 	OracleUsername *string `json:"oracle-username,omitempty"`
+	// The length of the password to be generated
+	PasswordLength *string `json:"password-length,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
 	// Path to the SSH Certificate Issuer for your Akeyless Bastion
@@ -481,6 +483,38 @@ func (o *GatewayCreateProducerOracleDb) SetOracleUsername(v string) {
 	o.OracleUsername = &v
 }
 
+// GetPasswordLength returns the PasswordLength field value if set, zero value otherwise.
+func (o *GatewayCreateProducerOracleDb) GetPasswordLength() string {
+	if o == nil || o.PasswordLength == nil {
+		var ret string
+		return ret
+	}
+	return *o.PasswordLength
+}
+
+// GetPasswordLengthOk returns a tuple with the PasswordLength field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerOracleDb) GetPasswordLengthOk() (*string, bool) {
+	if o == nil || o.PasswordLength == nil {
+		return nil, false
+	}
+	return o.PasswordLength, true
+}
+
+// HasPasswordLength returns a boolean if a field has been set.
+func (o *GatewayCreateProducerOracleDb) HasPasswordLength() bool {
+	if o != nil && o.PasswordLength != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPasswordLength gets a reference to the given string and assigns it to the PasswordLength field.
+func (o *GatewayCreateProducerOracleDb) SetPasswordLength(v string) {
+	o.PasswordLength = &v
+}
+
 // GetProducerEncryptionKeyName returns the ProducerEncryptionKeyName field value if set, zero value otherwise.
 func (o *GatewayCreateProducerOracleDb) GetProducerEncryptionKeyName() string {
 	if o == nil || o.ProducerEncryptionKeyName == nil {
@@ -838,6 +872,9 @@ func (o GatewayCreateProducerOracleDb) MarshalJSON() ([]byte, error) {
 	}
 	if o.OracleUsername != nil {
 		toSerialize["oracle-username"] = o.OracleUsername
+	}
+	if o.PasswordLength != nil {
+		toSerialize["password-length"] = o.PasswordLength
 	}
 	if o.ProducerEncryptionKeyName != nil {
 		toSerialize["producer-encryption-key-name"] = o.ProducerEncryptionKeyName

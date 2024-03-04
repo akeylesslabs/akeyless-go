@@ -42,6 +42,7 @@ type NotiForwarder struct {
 	UserEmail *string `json:"user_email,omitempty"`
 	// Auth - User Password
 	Username *string `json:"username,omitempty"`
+	WebhookNotiForwarderPublicDetails *WebHookNotiForwarderPublicDetails `json:"webhook_noti_forwarder_public_details,omitempty"`
 	WithCustomerFragment *bool `json:"with_customer_fragment,omitempty"`
 }
 
@@ -766,6 +767,38 @@ func (o *NotiForwarder) SetUsername(v string) {
 	o.Username = &v
 }
 
+// GetWebhookNotiForwarderPublicDetails returns the WebhookNotiForwarderPublicDetails field value if set, zero value otherwise.
+func (o *NotiForwarder) GetWebhookNotiForwarderPublicDetails() WebHookNotiForwarderPublicDetails {
+	if o == nil || o.WebhookNotiForwarderPublicDetails == nil {
+		var ret WebHookNotiForwarderPublicDetails
+		return ret
+	}
+	return *o.WebhookNotiForwarderPublicDetails
+}
+
+// GetWebhookNotiForwarderPublicDetailsOk returns a tuple with the WebhookNotiForwarderPublicDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotiForwarder) GetWebhookNotiForwarderPublicDetailsOk() (*WebHookNotiForwarderPublicDetails, bool) {
+	if o == nil || o.WebhookNotiForwarderPublicDetails == nil {
+		return nil, false
+	}
+	return o.WebhookNotiForwarderPublicDetails, true
+}
+
+// HasWebhookNotiForwarderPublicDetails returns a boolean if a field has been set.
+func (o *NotiForwarder) HasWebhookNotiForwarderPublicDetails() bool {
+	if o != nil && o.WebhookNotiForwarderPublicDetails != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetWebhookNotiForwarderPublicDetails gets a reference to the given WebHookNotiForwarderPublicDetails and assigns it to the WebhookNotiForwarderPublicDetails field.
+func (o *NotiForwarder) SetWebhookNotiForwarderPublicDetails(v WebHookNotiForwarderPublicDetails) {
+	o.WebhookNotiForwarderPublicDetails = &v
+}
+
 // GetWithCustomerFragment returns the WithCustomerFragment field value if set, zero value otherwise.
 func (o *NotiForwarder) GetWithCustomerFragment() bool {
 	if o == nil || o.WithCustomerFragment == nil {
@@ -865,6 +898,9 @@ func (o NotiForwarder) MarshalJSON() ([]byte, error) {
 	}
 	if o.Username != nil {
 		toSerialize["username"] = o.Username
+	}
+	if o.WebhookNotiForwarderPublicDetails != nil {
+		toSerialize["webhook_noti_forwarder_public_details"] = o.WebhookNotiForwarderPublicDetails
 	}
 	if o.WithCustomerFragment != nil {
 		toSerialize["with_customer_fragment"] = o.WithCustomerFragment

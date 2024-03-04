@@ -13,8 +13,9 @@ Name | Type | Description | Notes
 **MssqlPort** | Pointer to **string** | MSSQL Port | [optional] [default to "1433"]
 **MssqlRevocationStatements** | Pointer to **string** | MSSQL Revocation statements | [optional] 
 **MssqlUsername** | Pointer to **string** | MSSQL Username | [optional] 
-**Name** | **string** | Producer name | 
-**NewName** | Pointer to **string** | Producer name | [optional] 
+**Name** | **string** | Dynamic secret name | 
+**NewName** | Pointer to **string** | Dynamic secret name | [optional] 
+**PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **SecureAccessBastionIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] 
 **SecureAccessDbSchema** | Pointer to **string** | The DB schema | [optional] 
@@ -315,6 +316,31 @@ SetNewName sets NewName field to given value.
 `func (o *GatewayUpdateProducerMSSQL) HasNewName() bool`
 
 HasNewName returns a boolean if a field has been set.
+
+### GetPasswordLength
+
+`func (o *GatewayUpdateProducerMSSQL) GetPasswordLength() string`
+
+GetPasswordLength returns the PasswordLength field if non-nil, zero value otherwise.
+
+### GetPasswordLengthOk
+
+`func (o *GatewayUpdateProducerMSSQL) GetPasswordLengthOk() (*string, bool)`
+
+GetPasswordLengthOk returns a tuple with the PasswordLength field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasswordLength
+
+`func (o *GatewayUpdateProducerMSSQL) SetPasswordLength(v string)`
+
+SetPasswordLength sets PasswordLength field to given value.
+
+### HasPasswordLength
+
+`func (o *GatewayUpdateProducerMSSQL) HasPasswordLength() bool`
+
+HasPasswordLength returns a boolean if a field has been set.
 
 ### GetProducerEncryptionKeyName
 

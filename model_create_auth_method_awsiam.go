@@ -47,6 +47,8 @@ type CreateAuthMethodAWSIAM struct {
 	JwtTtl *int64 `json:"jwt-ttl,omitempty"`
 	// Auth Method name
 	Name string `json:"name"`
+	// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca]
+	ProductType *[]string `json:"product-type,omitempty"`
 	// sts URL
 	StsUrl *string `json:"sts-url,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -554,6 +556,38 @@ func (o *CreateAuthMethodAWSIAM) SetName(v string) {
 	o.Name = v
 }
 
+// GetProductType returns the ProductType field value if set, zero value otherwise.
+func (o *CreateAuthMethodAWSIAM) GetProductType() []string {
+	if o == nil || o.ProductType == nil {
+		var ret []string
+		return ret
+	}
+	return *o.ProductType
+}
+
+// GetProductTypeOk returns a tuple with the ProductType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodAWSIAM) GetProductTypeOk() (*[]string, bool) {
+	if o == nil || o.ProductType == nil {
+		return nil, false
+	}
+	return o.ProductType, true
+}
+
+// HasProductType returns a boolean if a field has been set.
+func (o *CreateAuthMethodAWSIAM) HasProductType() bool {
+	if o != nil && o.ProductType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProductType gets a reference to the given []string and assigns it to the ProductType field.
+func (o *CreateAuthMethodAWSIAM) SetProductType(v []string) {
+	o.ProductType = &v
+}
+
 // GetStsUrl returns the StsUrl field value if set, zero value otherwise.
 func (o *CreateAuthMethodAWSIAM) GetStsUrl() string {
 	if o == nil || o.StsUrl == nil {
@@ -696,6 +730,9 @@ func (o CreateAuthMethodAWSIAM) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.ProductType != nil {
+		toSerialize["product-type"] = o.ProductType
 	}
 	if o.StsUrl != nil {
 		toSerialize["sts-url"] = o.StsUrl

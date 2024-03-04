@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// GatewayListProducers gatewayListProducers is a command that returns a list of producers
+// GatewayListProducers gatewayListProducers is a command that returns a list of producers [Deprecated: Use dynamic-secret-list command]
 type GatewayListProducers struct {
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`

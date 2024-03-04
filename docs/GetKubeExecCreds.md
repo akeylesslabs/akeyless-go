@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **CommonName** | Pointer to **string** | The common name to be included in the PKI certificate (if CSR is supplied this flag is ignored and the CSR subject CN is taken) | [optional] 
 **CsrDataBase64** | Pointer to **string** | Certificate Signing Request contents encoded in base64 to generate the certificate with | [optional] 
 **ExtendedKeyUsage** | Pointer to **string** | A comma-separated list of extended key usage requests which will be used for certificate issuance. Supported values: &#39;clientauth&#39;, &#39;serverauth&#39;. | [optional] 
+**ExtraExtensions** | Pointer to **string** | A json string that defines the requested extra extensions for the certificate | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeyDataBase64** | Pointer to **string** | PKI key file contents. If this option is used, the certificate will be printed to stdout | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -180,6 +181,31 @@ SetExtendedKeyUsage sets ExtendedKeyUsage field to given value.
 `func (o *GetKubeExecCreds) HasExtendedKeyUsage() bool`
 
 HasExtendedKeyUsage returns a boolean if a field has been set.
+
+### GetExtraExtensions
+
+`func (o *GetKubeExecCreds) GetExtraExtensions() string`
+
+GetExtraExtensions returns the ExtraExtensions field if non-nil, zero value otherwise.
+
+### GetExtraExtensionsOk
+
+`func (o *GetKubeExecCreds) GetExtraExtensionsOk() (*string, bool)`
+
+GetExtraExtensionsOk returns a tuple with the ExtraExtensions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtraExtensions
+
+`func (o *GetKubeExecCreds) SetExtraExtensions(v string)`
+
+SetExtraExtensions sets ExtraExtensions field to given value.
+
+### HasExtraExtensions
+
+`func (o *GetKubeExecCreds) HasExtraExtensions() bool`
+
+HasExtraExtensions returns a boolean if a field has been set.
 
 ### GetJson
 

@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// GatewayListRotatedSecrets gatewayListRotatedSecrets is a command that returns a list of rotated secrets
+// GatewayListRotatedSecrets gatewayListRotatedSecrets is a command that returns a list of rotated secrets. [Deprecated: Use rotated-secret list command]
 type GatewayListRotatedSecrets struct {
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`

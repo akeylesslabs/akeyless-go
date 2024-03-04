@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// GatewayUpdateProducerArtifactory gatewayUpdateProducerArtifactory is a command that updates artifactory producer
+// GatewayUpdateProducerArtifactory gatewayUpdateProducerArtifactory is a command that updates artifactory producer [Deprecated: Use dynamic-secret-update-artifactory command]
 type GatewayUpdateProducerArtifactory struct {
 	// Artifactory Admin Name
 	ArtifactoryAdminName *string `json:"artifactory-admin-name,omitempty"`
@@ -31,9 +31,9 @@ type GatewayUpdateProducerArtifactory struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Producer name
+	// Dynamic secret name
 	Name string `json:"name"`
-	// Producer name
+	// Dynamic secret name
 	NewName *string `json:"new-name,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`

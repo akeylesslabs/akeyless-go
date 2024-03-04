@@ -5,8 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AllowAnyName** | Pointer to **bool** |  | [optional] 
+**AllowCopyExtFromCsr** | Pointer to **bool** |  | [optional] 
 **AllowSubdomains** | Pointer to **bool** |  | [optional] 
 **AllowedDomainsList** | Pointer to **[]string** |  | [optional] 
+**AllowedExtraExtensions** | Pointer to [**map[string][]string**](array.md) |  | [optional] 
 **AllowedUriSans** | Pointer to **[]string** |  | [optional] 
 **BasicConstraintsValidForNonCa** | Pointer to **bool** |  | [optional] 
 **CertificateAuthorityMode** | Pointer to **string** |  | [optional] 
@@ -76,6 +78,31 @@ SetAllowAnyName sets AllowAnyName field to given value.
 
 HasAllowAnyName returns a boolean if a field has been set.
 
+### GetAllowCopyExtFromCsr
+
+`func (o *PKICertificateIssueDetails) GetAllowCopyExtFromCsr() bool`
+
+GetAllowCopyExtFromCsr returns the AllowCopyExtFromCsr field if non-nil, zero value otherwise.
+
+### GetAllowCopyExtFromCsrOk
+
+`func (o *PKICertificateIssueDetails) GetAllowCopyExtFromCsrOk() (*bool, bool)`
+
+GetAllowCopyExtFromCsrOk returns a tuple with the AllowCopyExtFromCsr field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowCopyExtFromCsr
+
+`func (o *PKICertificateIssueDetails) SetAllowCopyExtFromCsr(v bool)`
+
+SetAllowCopyExtFromCsr sets AllowCopyExtFromCsr field to given value.
+
+### HasAllowCopyExtFromCsr
+
+`func (o *PKICertificateIssueDetails) HasAllowCopyExtFromCsr() bool`
+
+HasAllowCopyExtFromCsr returns a boolean if a field has been set.
+
 ### GetAllowSubdomains
 
 `func (o *PKICertificateIssueDetails) GetAllowSubdomains() bool`
@@ -125,6 +152,31 @@ SetAllowedDomainsList sets AllowedDomainsList field to given value.
 `func (o *PKICertificateIssueDetails) HasAllowedDomainsList() bool`
 
 HasAllowedDomainsList returns a boolean if a field has been set.
+
+### GetAllowedExtraExtensions
+
+`func (o *PKICertificateIssueDetails) GetAllowedExtraExtensions() map[string][]string`
+
+GetAllowedExtraExtensions returns the AllowedExtraExtensions field if non-nil, zero value otherwise.
+
+### GetAllowedExtraExtensionsOk
+
+`func (o *PKICertificateIssueDetails) GetAllowedExtraExtensionsOk() (*map[string][]string, bool)`
+
+GetAllowedExtraExtensionsOk returns a tuple with the AllowedExtraExtensions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowedExtraExtensions
+
+`func (o *PKICertificateIssueDetails) SetAllowedExtraExtensions(v map[string][]string)`
+
+SetAllowedExtraExtensions sets AllowedExtraExtensions field to given value.
+
+### HasAllowedExtraExtensions
+
+`func (o *PKICertificateIssueDetails) HasAllowedExtraExtensions() bool`
+
+HasAllowedExtraExtensions returns a boolean if a field has been set.
 
 ### GetAllowedUriSans
 

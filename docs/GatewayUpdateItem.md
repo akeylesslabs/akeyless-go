@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **GcpKey** | Pointer to **string** | Base64-encoded service account private key text | [optional] 
 **GcpServiceAccountEmail** | Pointer to **string** | The email of the gcp service account to rotate | [optional] 
 **GcpServiceAccountKeyId** | Pointer to **string** | The key id of the gcp service account to rotate | [optional] 
+**GraceRotation** | Pointer to **string** | Create a new access key without deleting the old key from AWS for backup (relevant only for AWS) [true/false] | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | Pointer to **string** | Whether to keep previous version [true/false]. (relevant only for --type&#x3D;rotated-secret). If not set, use default according to account settings | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
@@ -22,6 +23,7 @@ Name | Type | Description | Notes
 **NewMetadata** | Pointer to **string** | Deprecated - use description | [optional] [default to "default_metadata"]
 **NewName** | Pointer to **string** | New item name | [optional] 
 **NewVersion** | Pointer to **bool** | Deprecated | [optional] 
+**PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
 **RmTag** | Pointer to **[]string** | List of the existent tags that will be removed from this item | [optional] 
 **RotatedPassword** | Pointer to **string** | rotated-username password (relevant only for rotator-type&#x3D;password) | [optional] 
 **RotatedUsername** | Pointer to **string** | username to be rotated, if selected \\\&quot;use-self-creds\\\&quot; at rotator-creds-type, this username will try to rotate it&#39;s own password, if \\\&quot;use-target-creds\\\&quot; is selected, target credentials will be use to rotate the rotated-password (relevant only for rotator-type&#x3D;password) | [optional] 
@@ -326,6 +328,31 @@ SetGcpServiceAccountKeyId sets GcpServiceAccountKeyId field to given value.
 
 HasGcpServiceAccountKeyId returns a boolean if a field has been set.
 
+### GetGraceRotation
+
+`func (o *GatewayUpdateItem) GetGraceRotation() string`
+
+GetGraceRotation returns the GraceRotation field if non-nil, zero value otherwise.
+
+### GetGraceRotationOk
+
+`func (o *GatewayUpdateItem) GetGraceRotationOk() (*string, bool)`
+
+GetGraceRotationOk returns a tuple with the GraceRotation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGraceRotation
+
+`func (o *GatewayUpdateItem) SetGraceRotation(v string)`
+
+SetGraceRotation sets GraceRotation field to given value.
+
+### HasGraceRotation
+
+`func (o *GatewayUpdateItem) HasGraceRotation() bool`
+
+HasGraceRotation returns a boolean if a field has been set.
+
 ### GetJson
 
 `func (o *GatewayUpdateItem) GetJson() bool`
@@ -495,6 +522,31 @@ SetNewVersion sets NewVersion field to given value.
 `func (o *GatewayUpdateItem) HasNewVersion() bool`
 
 HasNewVersion returns a boolean if a field has been set.
+
+### GetPasswordLength
+
+`func (o *GatewayUpdateItem) GetPasswordLength() string`
+
+GetPasswordLength returns the PasswordLength field if non-nil, zero value otherwise.
+
+### GetPasswordLengthOk
+
+`func (o *GatewayUpdateItem) GetPasswordLengthOk() (*string, bool)`
+
+GetPasswordLengthOk returns a tuple with the PasswordLength field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasswordLength
+
+`func (o *GatewayUpdateItem) SetPasswordLength(v string)`
+
+SetPasswordLength sets PasswordLength field to given value.
+
+### HasPasswordLength
+
+`func (o *GatewayUpdateItem) HasPasswordLength() bool`
+
+HasPasswordLength returns a boolean if a field has been set.
 
 ### GetRmTag
 

@@ -35,6 +35,8 @@ type CreateAuthMethodEmail struct {
 	JwtTtl *int64 `json:"jwt-ttl,omitempty"`
 	// Auth Method name
 	Name string `json:"name"`
+	// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca]
+	ProductType *[]string `json:"product-type,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -344,6 +346,38 @@ func (o *CreateAuthMethodEmail) SetName(v string) {
 	o.Name = v
 }
 
+// GetProductType returns the ProductType field value if set, zero value otherwise.
+func (o *CreateAuthMethodEmail) GetProductType() []string {
+	if o == nil || o.ProductType == nil {
+		var ret []string
+		return ret
+	}
+	return *o.ProductType
+}
+
+// GetProductTypeOk returns a tuple with the ProductType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodEmail) GetProductTypeOk() (*[]string, bool) {
+	if o == nil || o.ProductType == nil {
+		return nil, false
+	}
+	return o.ProductType, true
+}
+
+// HasProductType returns a boolean if a field has been set.
+func (o *CreateAuthMethodEmail) HasProductType() bool {
+	if o != nil && o.ProductType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProductType gets a reference to the given []string and assigns it to the ProductType field.
+func (o *CreateAuthMethodEmail) SetProductType(v []string) {
+	o.ProductType = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *CreateAuthMethodEmail) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -436,6 +470,9 @@ func (o CreateAuthMethodEmail) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.ProductType != nil {
+		toSerialize["product-type"] = o.ProductType
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

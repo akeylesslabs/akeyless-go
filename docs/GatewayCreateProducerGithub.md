@@ -9,9 +9,11 @@ Name | Type | Description | Notes
 **GithubAppPrivateKey** | Pointer to **string** | App private key | [optional] 
 **GithubBaseUrl** | Pointer to **string** | Base URL | [optional] [default to "https://api.github.com/"]
 **InstallationId** | Pointer to **int64** | Github app installation id | [optional] 
-**InstallationRepository** | Pointer to **string** | Repository that the app installation has access to | [optional] 
+**InstallationOrganization** | Pointer to **string** | Optional, instead of installation id, set a GitHub organization name | [optional] 
+**InstallationRepository** | Pointer to **string** | Optional, instead of installation id, set a GitHub repository &#39;&lt;owner&gt;/&lt;repo-name&gt; | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** | Producer name | 
+**Name** | **string** | Dynamic secret name | 
+**Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **TokenPermissions** | Pointer to **[]string** | Optional - installation token&#39;s allowed permissions | [optional] 
@@ -162,6 +164,31 @@ SetInstallationId sets InstallationId field to given value.
 
 HasInstallationId returns a boolean if a field has been set.
 
+### GetInstallationOrganization
+
+`func (o *GatewayCreateProducerGithub) GetInstallationOrganization() string`
+
+GetInstallationOrganization returns the InstallationOrganization field if non-nil, zero value otherwise.
+
+### GetInstallationOrganizationOk
+
+`func (o *GatewayCreateProducerGithub) GetInstallationOrganizationOk() (*string, bool)`
+
+GetInstallationOrganizationOk returns a tuple with the InstallationOrganization field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInstallationOrganization
+
+`func (o *GatewayCreateProducerGithub) SetInstallationOrganization(v string)`
+
+SetInstallationOrganization sets InstallationOrganization field to given value.
+
+### HasInstallationOrganization
+
+`func (o *GatewayCreateProducerGithub) HasInstallationOrganization() bool`
+
+HasInstallationOrganization returns a boolean if a field has been set.
+
 ### GetInstallationRepository
 
 `func (o *GatewayCreateProducerGithub) GetInstallationRepository() string`
@@ -231,6 +258,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetTags
+
+`func (o *GatewayCreateProducerGithub) GetTags() []string`
+
+GetTags returns the Tags field if non-nil, zero value otherwise.
+
+### GetTagsOk
+
+`func (o *GatewayCreateProducerGithub) GetTagsOk() (*[]string, bool)`
+
+GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTags
+
+`func (o *GatewayCreateProducerGithub) SetTags(v []string)`
+
+SetTags sets Tags field to given value.
+
+### HasTags
+
+`func (o *GatewayCreateProducerGithub) HasTags() bool`
+
+HasTags returns a boolean if a field has been set.
 
 ### GetTargetName
 

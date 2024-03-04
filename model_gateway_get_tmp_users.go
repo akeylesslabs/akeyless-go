@@ -15,11 +15,11 @@ import (
 	"encoding/json"
 )
 
-// GatewayGetTmpUsers gatewayGetTmpUsers is a command that returns gateway configuration
+// GatewayGetTmpUsers gatewayGetTmpUsers is a command that returns gateway configuration [Deprecated: Use dynamic-secret-tmp-creds-get command]
 type GatewayGetTmpUsers struct {
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Producer Name
+	// Dynamic secret name
 	Name string `json:"name"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`

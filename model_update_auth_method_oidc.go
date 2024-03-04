@@ -45,6 +45,8 @@ type UpdateAuthMethodOIDC struct {
 	Name string `json:"name"`
 	// Auth Method new name
 	NewName *string `json:"new-name,omitempty"`
+	// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca]
+	ProductType *[]string `json:"product-type,omitempty"`
 	// RequiredScopes is a list of required scopes that the oidc method will request from the oidc provider and the user must approve
 	RequiredScopes *[]string `json:"required-scopes,omitempty"`
 	// RequiredScopesPrefix is a a prefix to add to all required-scopes when requesting them from the oidc server (for example, azures' Application ID URI)
@@ -530,6 +532,38 @@ func (o *UpdateAuthMethodOIDC) SetNewName(v string) {
 	o.NewName = &v
 }
 
+// GetProductType returns the ProductType field value if set, zero value otherwise.
+func (o *UpdateAuthMethodOIDC) GetProductType() []string {
+	if o == nil || o.ProductType == nil {
+		var ret []string
+		return ret
+	}
+	return *o.ProductType
+}
+
+// GetProductTypeOk returns a tuple with the ProductType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAuthMethodOIDC) GetProductTypeOk() (*[]string, bool) {
+	if o == nil || o.ProductType == nil {
+		return nil, false
+	}
+	return o.ProductType, true
+}
+
+// HasProductType returns a boolean if a field has been set.
+func (o *UpdateAuthMethodOIDC) HasProductType() bool {
+	if o != nil && o.ProductType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProductType gets a reference to the given []string and assigns it to the ProductType field.
+func (o *UpdateAuthMethodOIDC) SetProductType(v []string) {
+	o.ProductType = &v
+}
+
 // GetRequiredScopes returns the RequiredScopes field value if set, zero value otherwise.
 func (o *UpdateAuthMethodOIDC) GetRequiredScopes() []string {
 	if o == nil || o.RequiredScopes == nil {
@@ -757,6 +791,9 @@ func (o UpdateAuthMethodOIDC) MarshalJSON() ([]byte, error) {
 	}
 	if o.NewName != nil {
 		toSerialize["new-name"] = o.NewName
+	}
+	if o.ProductType != nil {
+		toSerialize["product-type"] = o.ProductType
 	}
 	if o.RequiredScopes != nil {
 		toSerialize["required-scopes"] = o.RequiredScopes

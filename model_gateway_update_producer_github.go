@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// GatewayUpdateProducerGithub gatewayUpdateProducerGithub is a command that updates github producer
+// GatewayUpdateProducerGithub gatewayUpdateProducerGithub is a command that updates github producer [Deprecated: Use dynamic-secret-update-github command]
 type GatewayUpdateProducerGithub struct {
 	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
@@ -27,14 +27,18 @@ type GatewayUpdateProducerGithub struct {
 	GithubBaseUrl *string `json:"github-base-url,omitempty"`
 	// Github app installation id
 	InstallationId *int64 `json:"installation-id,omitempty"`
-	// Repository that the app installation has access to
+	// Optional, instead of installation id, set a GitHub organization name
+	InstallationOrganization *string `json:"installation-organization,omitempty"`
+	// Optional, instead of installation id, set a GitHub repository '<owner>/<repo-name>
 	InstallationRepository *string `json:"installation-repository,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Producer name
+	// Dynamic secret name
 	Name string `json:"name"`
-	// Producer name
+	// Dynamic secret name
 	NewName *string `json:"new-name,omitempty"`
+	// Add tags attached to this object
+	Tags *[]string `json:"tags,omitempty"`
 	// Target name
 	TargetName *string `json:"target-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -233,6 +237,38 @@ func (o *GatewayUpdateProducerGithub) SetInstallationId(v int64) {
 	o.InstallationId = &v
 }
 
+// GetInstallationOrganization returns the InstallationOrganization field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerGithub) GetInstallationOrganization() string {
+	if o == nil || o.InstallationOrganization == nil {
+		var ret string
+		return ret
+	}
+	return *o.InstallationOrganization
+}
+
+// GetInstallationOrganizationOk returns a tuple with the InstallationOrganization field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerGithub) GetInstallationOrganizationOk() (*string, bool) {
+	if o == nil || o.InstallationOrganization == nil {
+		return nil, false
+	}
+	return o.InstallationOrganization, true
+}
+
+// HasInstallationOrganization returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerGithub) HasInstallationOrganization() bool {
+	if o != nil && o.InstallationOrganization != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInstallationOrganization gets a reference to the given string and assigns it to the InstallationOrganization field.
+func (o *GatewayUpdateProducerGithub) SetInstallationOrganization(v string) {
+	o.InstallationOrganization = &v
+}
+
 // GetInstallationRepository returns the InstallationRepository field value if set, zero value otherwise.
 func (o *GatewayUpdateProducerGithub) GetInstallationRepository() string {
 	if o == nil || o.InstallationRepository == nil {
@@ -351,6 +387,38 @@ func (o *GatewayUpdateProducerGithub) HasNewName() bool {
 // SetNewName gets a reference to the given string and assigns it to the NewName field.
 func (o *GatewayUpdateProducerGithub) SetNewName(v string) {
 	o.NewName = &v
+}
+
+// GetTags returns the Tags field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerGithub) GetTags() []string {
+	if o == nil || o.Tags == nil {
+		var ret []string
+		return ret
+	}
+	return *o.Tags
+}
+
+// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerGithub) GetTagsOk() (*[]string, bool) {
+	if o == nil || o.Tags == nil {
+		return nil, false
+	}
+	return o.Tags, true
+}
+
+// HasTags returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerGithub) HasTags() bool {
+	if o != nil && o.Tags != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTags gets a reference to the given []string and assigns it to the Tags field.
+func (o *GatewayUpdateProducerGithub) SetTags(v []string) {
+	o.Tags = &v
 }
 
 // GetTargetName returns the TargetName field value if set, zero value otherwise.
@@ -530,6 +598,9 @@ func (o GatewayUpdateProducerGithub) MarshalJSON() ([]byte, error) {
 	if o.InstallationId != nil {
 		toSerialize["installation-id"] = o.InstallationId
 	}
+	if o.InstallationOrganization != nil {
+		toSerialize["installation-organization"] = o.InstallationOrganization
+	}
 	if o.InstallationRepository != nil {
 		toSerialize["installation-repository"] = o.InstallationRepository
 	}
@@ -541,6 +612,9 @@ func (o GatewayUpdateProducerGithub) MarshalJSON() ([]byte, error) {
 	}
 	if o.NewName != nil {
 		toSerialize["new-name"] = o.NewName
+	}
+	if o.Tags != nil {
+		toSerialize["tags"] = o.Tags
 	}
 	if o.TargetName != nil {
 		toSerialize["target-name"] = o.TargetName

@@ -18,8 +18,10 @@ import (
 // PKICertificateIssueDetails struct for PKICertificateIssueDetails
 type PKICertificateIssueDetails struct {
 	AllowAnyName *bool `json:"allow_any_name,omitempty"`
+	AllowCopyExtFromCsr *bool `json:"allow_copy_ext_from_csr,omitempty"`
 	AllowSubdomains *bool `json:"allow_subdomains,omitempty"`
 	AllowedDomainsList *[]string `json:"allowed_domains_list,omitempty"`
+	AllowedExtraExtensions *map[string][]string `json:"allowed_extra_extensions,omitempty"`
 	AllowedUriSans *[]string `json:"allowed_uri_sans,omitempty"`
 	BasicConstraintsValidForNonCa *bool `json:"basic_constraints_valid_for_non_ca,omitempty"`
 	CertificateAuthorityMode *string `json:"certificate_authority_mode,omitempty"`
@@ -100,6 +102,38 @@ func (o *PKICertificateIssueDetails) SetAllowAnyName(v bool) {
 	o.AllowAnyName = &v
 }
 
+// GetAllowCopyExtFromCsr returns the AllowCopyExtFromCsr field value if set, zero value otherwise.
+func (o *PKICertificateIssueDetails) GetAllowCopyExtFromCsr() bool {
+	if o == nil || o.AllowCopyExtFromCsr == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AllowCopyExtFromCsr
+}
+
+// GetAllowCopyExtFromCsrOk returns a tuple with the AllowCopyExtFromCsr field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PKICertificateIssueDetails) GetAllowCopyExtFromCsrOk() (*bool, bool) {
+	if o == nil || o.AllowCopyExtFromCsr == nil {
+		return nil, false
+	}
+	return o.AllowCopyExtFromCsr, true
+}
+
+// HasAllowCopyExtFromCsr returns a boolean if a field has been set.
+func (o *PKICertificateIssueDetails) HasAllowCopyExtFromCsr() bool {
+	if o != nil && o.AllowCopyExtFromCsr != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowCopyExtFromCsr gets a reference to the given bool and assigns it to the AllowCopyExtFromCsr field.
+func (o *PKICertificateIssueDetails) SetAllowCopyExtFromCsr(v bool) {
+	o.AllowCopyExtFromCsr = &v
+}
+
 // GetAllowSubdomains returns the AllowSubdomains field value if set, zero value otherwise.
 func (o *PKICertificateIssueDetails) GetAllowSubdomains() bool {
 	if o == nil || o.AllowSubdomains == nil {
@@ -162,6 +196,38 @@ func (o *PKICertificateIssueDetails) HasAllowedDomainsList() bool {
 // SetAllowedDomainsList gets a reference to the given []string and assigns it to the AllowedDomainsList field.
 func (o *PKICertificateIssueDetails) SetAllowedDomainsList(v []string) {
 	o.AllowedDomainsList = &v
+}
+
+// GetAllowedExtraExtensions returns the AllowedExtraExtensions field value if set, zero value otherwise.
+func (o *PKICertificateIssueDetails) GetAllowedExtraExtensions() map[string][]string {
+	if o == nil || o.AllowedExtraExtensions == nil {
+		var ret map[string][]string
+		return ret
+	}
+	return *o.AllowedExtraExtensions
+}
+
+// GetAllowedExtraExtensionsOk returns a tuple with the AllowedExtraExtensions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PKICertificateIssueDetails) GetAllowedExtraExtensionsOk() (*map[string][]string, bool) {
+	if o == nil || o.AllowedExtraExtensions == nil {
+		return nil, false
+	}
+	return o.AllowedExtraExtensions, true
+}
+
+// HasAllowedExtraExtensions returns a boolean if a field has been set.
+func (o *PKICertificateIssueDetails) HasAllowedExtraExtensions() bool {
+	if o != nil && o.AllowedExtraExtensions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowedExtraExtensions gets a reference to the given map[string][]string and assigns it to the AllowedExtraExtensions field.
+func (o *PKICertificateIssueDetails) SetAllowedExtraExtensions(v map[string][]string) {
+	o.AllowedExtraExtensions = &v
 }
 
 // GetAllowedUriSans returns the AllowedUriSans field value if set, zero value otherwise.
@@ -937,11 +1003,17 @@ func (o PKICertificateIssueDetails) MarshalJSON() ([]byte, error) {
 	if o.AllowAnyName != nil {
 		toSerialize["allow_any_name"] = o.AllowAnyName
 	}
+	if o.AllowCopyExtFromCsr != nil {
+		toSerialize["allow_copy_ext_from_csr"] = o.AllowCopyExtFromCsr
+	}
 	if o.AllowSubdomains != nil {
 		toSerialize["allow_subdomains"] = o.AllowSubdomains
 	}
 	if o.AllowedDomainsList != nil {
 		toSerialize["allowed_domains_list"] = o.AllowedDomainsList
+	}
+	if o.AllowedExtraExtensions != nil {
+		toSerialize["allowed_extra_extensions"] = o.AllowedExtraExtensions
 	}
 	if o.AllowedUriSans != nil {
 		toSerialize["allowed_uri_sans"] = o.AllowedUriSans

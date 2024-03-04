@@ -8,12 +8,14 @@ Name | Type | Description | Notes
 **AccountDefaultKeyName** | Pointer to **string** | AccountDefaultKeyName is the name of the DFC key item configured as the default key This is here simply for the response to include the item name in addition to the display ID so the client can properly show this to the user. It will not be saved to the DB, only the AccountDefaultKeyItemID will. | [optional] 
 **AuthUsageEvent** | Pointer to [**UsageEventSetting**](UsageEventSetting.md) |  | [optional] 
 **DataProtectionSection** | Pointer to [**DataProtectionSection**](DataProtectionSection.md) |  | [optional] 
+**DynamicSecretMaxTtl** | Pointer to [**DynamicSecretMaxTtl**](DynamicSecretMaxTtl.md) |  | [optional] 
 **EnableRequestForAccess** | Pointer to **bool** |  | [optional] 
 **InvalidCharacters** | Pointer to **string** | InvalidCharacters is the invalid characters for items/targets/roles/auths/notifier_forwarder naming convention | [optional] 
 **ItemUsageEvent** | Pointer to [**UsageEventSetting**](UsageEventSetting.md) |  | [optional] 
 **LockDefaultKey** | Pointer to **bool** | LockDefaultKey determines whether the configured default key can be updated by end-users on a per-request basis true - all requests use the configured default key false - every request can determine its protection key (default) nil - change nothing (every request can determine its protection key (default)) This parameter is only relevant if AccountDefaultKeyItemID is not empty | [optional] 
 **PasswordPolicy** | Pointer to [**PasswordPolicyInfo**](PasswordPolicyInfo.md) |  | [optional] 
 **ProtectItemsByDefault** | Pointer to **bool** |  | [optional] 
+**RotationSecretMaxInterval** | Pointer to [**RotationSecretMaxInterval**](RotationSecretMaxInterval.md) |  | [optional] 
 **SharingPolicy** | Pointer to [**SharingPolicyInfo**](SharingPolicyInfo.md) |  | [optional] 
 
 ## Methods
@@ -134,6 +136,31 @@ SetDataProtectionSection sets DataProtectionSection field to given value.
 `func (o *AccountGeneralSettings) HasDataProtectionSection() bool`
 
 HasDataProtectionSection returns a boolean if a field has been set.
+
+### GetDynamicSecretMaxTtl
+
+`func (o *AccountGeneralSettings) GetDynamicSecretMaxTtl() DynamicSecretMaxTtl`
+
+GetDynamicSecretMaxTtl returns the DynamicSecretMaxTtl field if non-nil, zero value otherwise.
+
+### GetDynamicSecretMaxTtlOk
+
+`func (o *AccountGeneralSettings) GetDynamicSecretMaxTtlOk() (*DynamicSecretMaxTtl, bool)`
+
+GetDynamicSecretMaxTtlOk returns a tuple with the DynamicSecretMaxTtl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDynamicSecretMaxTtl
+
+`func (o *AccountGeneralSettings) SetDynamicSecretMaxTtl(v DynamicSecretMaxTtl)`
+
+SetDynamicSecretMaxTtl sets DynamicSecretMaxTtl field to given value.
+
+### HasDynamicSecretMaxTtl
+
+`func (o *AccountGeneralSettings) HasDynamicSecretMaxTtl() bool`
+
+HasDynamicSecretMaxTtl returns a boolean if a field has been set.
 
 ### GetEnableRequestForAccess
 
@@ -284,6 +311,31 @@ SetProtectItemsByDefault sets ProtectItemsByDefault field to given value.
 `func (o *AccountGeneralSettings) HasProtectItemsByDefault() bool`
 
 HasProtectItemsByDefault returns a boolean if a field has been set.
+
+### GetRotationSecretMaxInterval
+
+`func (o *AccountGeneralSettings) GetRotationSecretMaxInterval() RotationSecretMaxInterval`
+
+GetRotationSecretMaxInterval returns the RotationSecretMaxInterval field if non-nil, zero value otherwise.
+
+### GetRotationSecretMaxIntervalOk
+
+`func (o *AccountGeneralSettings) GetRotationSecretMaxIntervalOk() (*RotationSecretMaxInterval, bool)`
+
+GetRotationSecretMaxIntervalOk returns a tuple with the RotationSecretMaxInterval field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotationSecretMaxInterval
+
+`func (o *AccountGeneralSettings) SetRotationSecretMaxInterval(v RotationSecretMaxInterval)`
+
+SetRotationSecretMaxInterval sets RotationSecretMaxInterval field to given value.
+
+### HasRotationSecretMaxInterval
+
+`func (o *AccountGeneralSettings) HasRotationSecretMaxInterval() bool`
+
+HasRotationSecretMaxInterval returns a boolean if a field has been set.
 
 ### GetSharingPolicy
 

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DeletePreviousVersionInDays** | Pointer to **int32** |  | [optional] 
+**GraceRotation** | Pointer to **bool** |  | [optional] 
 **GwClusterId** | Pointer to **int64** |  | [optional] 
 **LastRotationError** | Pointer to **string** |  | [optional] 
 **NumberOfVersionsToSave** | Pointer to **int32** |  | [optional] 
@@ -60,6 +61,31 @@ SetDeletePreviousVersionInDays sets DeletePreviousVersionInDays field to given v
 `func (o *RotatedSecretDetailsInfo) HasDeletePreviousVersionInDays() bool`
 
 HasDeletePreviousVersionInDays returns a boolean if a field has been set.
+
+### GetGraceRotation
+
+`func (o *RotatedSecretDetailsInfo) GetGraceRotation() bool`
+
+GetGraceRotation returns the GraceRotation field if non-nil, zero value otherwise.
+
+### GetGraceRotationOk
+
+`func (o *RotatedSecretDetailsInfo) GetGraceRotationOk() (*bool, bool)`
+
+GetGraceRotationOk returns a tuple with the GraceRotation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGraceRotation
+
+`func (o *RotatedSecretDetailsInfo) SetGraceRotation(v bool)`
+
+SetGraceRotation sets GraceRotation field to given value.
+
+### HasGraceRotation
+
+`func (o *RotatedSecretDetailsInfo) HasGraceRotation() bool`
+
+HasGraceRotation returns a boolean if a field has been set.
 
 ### GetGwClusterId
 

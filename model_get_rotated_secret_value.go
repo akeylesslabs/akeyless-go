@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// GetRotatedSecretValue struct for GetRotatedSecretValue
+// GetRotatedSecretValue getRotatedSecretValue is a command that creates a new Akeyless profile. [Deprecated: Use rotated-secret get-value command]
 type GetRotatedSecretValue struct {
 	// Get rotated secret value of specific Host (relevant only for Linked Target)
 	Host *string `json:"host,omitempty"`

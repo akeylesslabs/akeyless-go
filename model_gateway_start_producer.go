@@ -15,11 +15,11 @@ import (
 	"encoding/json"
 )
 
-// GatewayStartProducer gatewayStartProducer is a command that starts producer
+// GatewayStartProducer gatewayStartProducer is a command that starts producer [Deprecated: Use set-item-state command]
 type GatewayStartProducer struct {
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Producer name
+	// Dynamic secret name
 	Name string `json:"name"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`

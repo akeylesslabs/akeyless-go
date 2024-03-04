@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Format** | Pointer to **string** | StaticSecretFormat defines the format of static secret (e.g. Text) | [optional] 
 **NotifyOnChangeEvent** | Pointer to **bool** |  | [optional] 
 **Username** | Pointer to **string** |  | [optional] 
 **Website** | Pointer to **string** | deprecated | [optional] 
@@ -27,6 +28,31 @@ will change when the set of required properties is changed
 NewStaticSecretDetailsInfoWithDefaults instantiates a new StaticSecretDetailsInfo object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetFormat
+
+`func (o *StaticSecretDetailsInfo) GetFormat() string`
+
+GetFormat returns the Format field if non-nil, zero value otherwise.
+
+### GetFormatOk
+
+`func (o *StaticSecretDetailsInfo) GetFormatOk() (*string, bool)`
+
+GetFormatOk returns a tuple with the Format field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFormat
+
+`func (o *StaticSecretDetailsInfo) SetFormat(v string)`
+
+SetFormat sets Format field to given value.
+
+### HasFormat
+
+`func (o *StaticSecretDetailsInfo) HasFormat() bool`
+
+HasFormat returns a boolean if a field has been set.
 
 ### GetNotifyOnChangeEvent
 

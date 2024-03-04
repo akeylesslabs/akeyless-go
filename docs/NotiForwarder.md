@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **ToEmails** | Pointer to [**[]EmailEntry**](EmailEntry.md) |  | [optional] 
 **UserEmail** | Pointer to **string** |  | [optional] 
 **Username** | Pointer to **string** | Auth - User Password | [optional] 
+**WebhookNotiForwarderPublicDetails** | Pointer to [**WebHookNotiForwarderPublicDetails**](WebHookNotiForwarderPublicDetails.md) |  | [optional] 
 **WithCustomerFragment** | Pointer to **bool** |  | [optional] 
 
 ## Methods
@@ -596,6 +597,31 @@ SetUsername sets Username field to given value.
 `func (o *NotiForwarder) HasUsername() bool`
 
 HasUsername returns a boolean if a field has been set.
+
+### GetWebhookNotiForwarderPublicDetails
+
+`func (o *NotiForwarder) GetWebhookNotiForwarderPublicDetails() WebHookNotiForwarderPublicDetails`
+
+GetWebhookNotiForwarderPublicDetails returns the WebhookNotiForwarderPublicDetails field if non-nil, zero value otherwise.
+
+### GetWebhookNotiForwarderPublicDetailsOk
+
+`func (o *NotiForwarder) GetWebhookNotiForwarderPublicDetailsOk() (*WebHookNotiForwarderPublicDetails, bool)`
+
+GetWebhookNotiForwarderPublicDetailsOk returns a tuple with the WebhookNotiForwarderPublicDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWebhookNotiForwarderPublicDetails
+
+`func (o *NotiForwarder) SetWebhookNotiForwarderPublicDetails(v WebHookNotiForwarderPublicDetails)`
+
+SetWebhookNotiForwarderPublicDetails sets WebhookNotiForwarderPublicDetails field to given value.
+
+### HasWebhookNotiForwarderPublicDetails
+
+`func (o *NotiForwarder) HasWebhookNotiForwarderPublicDetails() bool`
+
+HasWebhookNotiForwarderPublicDetails returns a boolean if a field has been set.
 
 ### GetWithCustomerFragment
 

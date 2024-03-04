@@ -4,8 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Host** | **string** | Host | 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** | Producer Name | 
+**Name** | **string** | Dynamic secret name | 
 **NewTtlMin** | **int64** | New TTL in Minutes | 
 **TmpCredsId** | **string** | Tmp Creds ID | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -15,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewGatewayUpdateTmpUsers
 
-`func NewGatewayUpdateTmpUsers(name string, newTtlMin int64, tmpCredsId string, ) *GatewayUpdateTmpUsers`
+`func NewGatewayUpdateTmpUsers(host string, name string, newTtlMin int64, tmpCredsId string, ) *GatewayUpdateTmpUsers`
 
 NewGatewayUpdateTmpUsers instantiates a new GatewayUpdateTmpUsers object
 This constructor will assign default values to properties that have it defined,
@@ -29,6 +30,26 @@ will change when the set of required properties is changed
 NewGatewayUpdateTmpUsersWithDefaults instantiates a new GatewayUpdateTmpUsers object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetHost
+
+`func (o *GatewayUpdateTmpUsers) GetHost() string`
+
+GetHost returns the Host field if non-nil, zero value otherwise.
+
+### GetHostOk
+
+`func (o *GatewayUpdateTmpUsers) GetHostOk() (*string, bool)`
+
+GetHostOk returns a tuple with the Host field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHost
+
+`func (o *GatewayUpdateTmpUsers) SetHost(v string)`
+
+SetHost sets Host field to given value.
+
 
 ### GetJson
 

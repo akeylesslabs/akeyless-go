@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **JwksUri** | Pointer to **string** | The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. | [optional] [default to "https://login.microsoftonline.com/common/discovery/keys"]
 **JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] [default to 0]
 **Name** | **string** | Auth Method name | 
+**ProductType** | Pointer to **[]string** | Choose the relevant product type for the auth method [sm, sra, pm, dp, ca] | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
@@ -535,6 +536,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetProductType
+
+`func (o *CreateAuthMethodAzureAD) GetProductType() []string`
+
+GetProductType returns the ProductType field if non-nil, zero value otherwise.
+
+### GetProductTypeOk
+
+`func (o *CreateAuthMethodAzureAD) GetProductTypeOk() (*[]string, bool)`
+
+GetProductTypeOk returns a tuple with the ProductType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProductType
+
+`func (o *CreateAuthMethodAzureAD) SetProductType(v []string)`
+
+SetProductType sets ProductType field to given value.
+
+### HasProductType
+
+`func (o *CreateAuthMethodAzureAD) HasProductType() bool`
+
+HasProductType returns a boolean if a field has been set.
 
 ### GetToken
 

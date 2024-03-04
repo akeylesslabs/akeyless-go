@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **GkeTargetDetails** | Pointer to [**GKETargetDetails**](GKETargetDetails.md) |  | [optional] 
 **GlobalsignAtlasTargetDetails** | Pointer to [**GlobalSignAtlasTargetDetails**](GlobalSignAtlasTargetDetails.md) |  | [optional] 
 **GlobalsignTargetDetails** | Pointer to [**GlobalSignGCCTargetDetails**](GlobalSignGCCTargetDetails.md) |  | [optional] 
+**GodaddyTargetDetails** | Pointer to [**GodaddyTargetDetails**](GodaddyTargetDetails.md) |  | [optional] 
 **LdapTargetDetails** | Pointer to [**LdapTargetDetails**](LdapTargetDetails.md) |  | [optional] 
 **LinkedTargetDetails** | Pointer to [**LinkedTargetDetails**](LinkedTargetDetails.md) |  | [optional] 
 **MongoDbTargetDetails** | Pointer to [**MongoDBTargetDetails**](MongoDBTargetDetails.md) |  | [optional] 
@@ -373,6 +374,31 @@ SetGlobalsignTargetDetails sets GlobalsignTargetDetails field to given value.
 `func (o *TargetTypeDetailsInput) HasGlobalsignTargetDetails() bool`
 
 HasGlobalsignTargetDetails returns a boolean if a field has been set.
+
+### GetGodaddyTargetDetails
+
+`func (o *TargetTypeDetailsInput) GetGodaddyTargetDetails() GodaddyTargetDetails`
+
+GetGodaddyTargetDetails returns the GodaddyTargetDetails field if non-nil, zero value otherwise.
+
+### GetGodaddyTargetDetailsOk
+
+`func (o *TargetTypeDetailsInput) GetGodaddyTargetDetailsOk() (*GodaddyTargetDetails, bool)`
+
+GetGodaddyTargetDetailsOk returns a tuple with the GodaddyTargetDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGodaddyTargetDetails
+
+`func (o *TargetTypeDetailsInput) SetGodaddyTargetDetails(v GodaddyTargetDetails)`
+
+SetGodaddyTargetDetails sets GodaddyTargetDetails field to given value.
+
+### HasGodaddyTargetDetails
+
+`func (o *TargetTypeDetailsInput) HasGodaddyTargetDetails() bool`
+
+HasGodaddyTargetDetails returns a boolean if a field has been set.
 
 ### GetLdapTargetDetails
 

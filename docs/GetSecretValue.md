@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **PrettyPrint** | Pointer to **bool** | Print the secret value with json-pretty-print (not relevent to SDK) | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
-**Version** | Pointer to **int32** | Secret version | [optional] 
+**Version** | Pointer to **int32** | Secret version, if negative value N is provided the last N versions will return (maximum 20) | [optional] 
 
 ## Methods
 

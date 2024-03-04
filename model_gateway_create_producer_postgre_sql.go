@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// GatewayCreateProducerPostgreSQL gatewayCreateProducerPostgreSQL is a command that creates postgresql producer
+// GatewayCreateProducerPostgreSQL gatewayCreateProducerPostgreSQL is a command that creates postgresql producer [Deprecated: Use dynamic-secret-create-postgresql command]
 type GatewayCreateProducerPostgreSQL struct {
 	// PostgreSQL Creation statements
 	CreationStatements *string `json:"creation-statements,omitempty"`
@@ -23,8 +23,10 @@ type GatewayCreateProducerPostgreSQL struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Producer name
+	// Dynamic secret name
 	Name string `json:"name"`
+	// The length of the password to be generated
+	PasswordLength *string `json:"password-length,omitempty"`
 	// PostgreSQL DB Name
 	PostgresqlDbName *string `json:"postgresql-db-name,omitempty"`
 	// PostgreSQL Host
@@ -223,6 +225,38 @@ func (o *GatewayCreateProducerPostgreSQL) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *GatewayCreateProducerPostgreSQL) SetName(v string) {
 	o.Name = v
+}
+
+// GetPasswordLength returns the PasswordLength field value if set, zero value otherwise.
+func (o *GatewayCreateProducerPostgreSQL) GetPasswordLength() string {
+	if o == nil || o.PasswordLength == nil {
+		var ret string
+		return ret
+	}
+	return *o.PasswordLength
+}
+
+// GetPasswordLengthOk returns a tuple with the PasswordLength field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerPostgreSQL) GetPasswordLengthOk() (*string, bool) {
+	if o == nil || o.PasswordLength == nil {
+		return nil, false
+	}
+	return o.PasswordLength, true
+}
+
+// HasPasswordLength returns a boolean if a field has been set.
+func (o *GatewayCreateProducerPostgreSQL) HasPasswordLength() bool {
+	if o != nil && o.PasswordLength != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPasswordLength gets a reference to the given string and assigns it to the PasswordLength field.
+func (o *GatewayCreateProducerPostgreSQL) SetPasswordLength(v string) {
+	o.PasswordLength = &v
 }
 
 // GetPostgresqlDbName returns the PostgresqlDbName field value if set, zero value otherwise.
@@ -814,6 +848,9 @@ func (o GatewayCreateProducerPostgreSQL) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.PasswordLength != nil {
+		toSerialize["password-length"] = o.PasswordLength
 	}
 	if o.PostgresqlDbName != nil {
 		toSerialize["postgresql-db-name"] = o.PostgresqlDbName

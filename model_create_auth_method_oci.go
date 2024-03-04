@@ -35,6 +35,8 @@ type CreateAuthMethodOCI struct {
 	JwtTtl *int64 `json:"jwt-ttl,omitempty"`
 	// Auth Method name
 	Name string `json:"name"`
+	// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca]
+	ProductType *[]string `json:"product-type,omitempty"`
 	// The Oracle Cloud tenant ID
 	TenantOcid string `json:"tenant-ocid"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -347,6 +349,38 @@ func (o *CreateAuthMethodOCI) SetName(v string) {
 	o.Name = v
 }
 
+// GetProductType returns the ProductType field value if set, zero value otherwise.
+func (o *CreateAuthMethodOCI) GetProductType() []string {
+	if o == nil || o.ProductType == nil {
+		var ret []string
+		return ret
+	}
+	return *o.ProductType
+}
+
+// GetProductTypeOk returns a tuple with the ProductType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodOCI) GetProductTypeOk() (*[]string, bool) {
+	if o == nil || o.ProductType == nil {
+		return nil, false
+	}
+	return o.ProductType, true
+}
+
+// HasProductType returns a boolean if a field has been set.
+func (o *CreateAuthMethodOCI) HasProductType() bool {
+	if o != nil && o.ProductType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProductType gets a reference to the given []string and assigns it to the ProductType field.
+func (o *CreateAuthMethodOCI) SetProductType(v []string) {
+	o.ProductType = &v
+}
+
 // GetTenantOcid returns the TenantOcid field value
 func (o *CreateAuthMethodOCI) GetTenantOcid() string {
 	if o == nil  {
@@ -463,6 +497,9 @@ func (o CreateAuthMethodOCI) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.ProductType != nil {
+		toSerialize["product-type"] = o.ProductType
 	}
 	if true {
 		toSerialize["tenant-ocid"] = o.TenantOcid

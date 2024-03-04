@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// GatewayCreateProducerGke gatewayCreateProducerGke is a command that creates gke producer
+// GatewayCreateProducerGke gatewayCreateProducerGke is a command that creates gke producer [Deprecated: Use dynamic-secret-create-gke command]
 type GatewayCreateProducerGke struct {
 	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
@@ -31,7 +31,7 @@ type GatewayCreateProducerGke struct {
 	GkeServiceAccountEmail *string `json:"gke-service-account-email,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Producer name
+	// Dynamic secret name
 	Name string `json:"name"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`

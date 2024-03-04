@@ -29,6 +29,8 @@ type GetKubeExecCreds struct {
 	CsrDataBase64 *string `json:"csr-data-base64,omitempty"`
 	// A comma-separated list of extended key usage requests which will be used for certificate issuance. Supported values: 'clientauth', 'serverauth'.
 	ExtendedKeyUsage *string `json:"extended-key-usage,omitempty"`
+	// A json string that defines the requested extra extensions for the certificate
+	ExtraExtensions *string `json:"extra-extensions,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// PKI key file contents. If this option is used, the certificate will be printed to stdout
@@ -253,6 +255,38 @@ func (o *GetKubeExecCreds) SetExtendedKeyUsage(v string) {
 	o.ExtendedKeyUsage = &v
 }
 
+// GetExtraExtensions returns the ExtraExtensions field value if set, zero value otherwise.
+func (o *GetKubeExecCreds) GetExtraExtensions() string {
+	if o == nil || o.ExtraExtensions == nil {
+		var ret string
+		return ret
+	}
+	return *o.ExtraExtensions
+}
+
+// GetExtraExtensionsOk returns a tuple with the ExtraExtensions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetKubeExecCreds) GetExtraExtensionsOk() (*string, bool) {
+	if o == nil || o.ExtraExtensions == nil {
+		return nil, false
+	}
+	return o.ExtraExtensions, true
+}
+
+// HasExtraExtensions returns a boolean if a field has been set.
+func (o *GetKubeExecCreds) HasExtraExtensions() bool {
+	if o != nil && o.ExtraExtensions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExtraExtensions gets a reference to the given string and assigns it to the ExtraExtensions field.
+func (o *GetKubeExecCreds) SetExtraExtensions(v string) {
+	o.ExtraExtensions = &v
+}
+
 // GetJson returns the Json field value if set, zero value otherwise.
 func (o *GetKubeExecCreds) GetJson() bool {
 	if o == nil || o.Json == nil {
@@ -464,6 +498,9 @@ func (o GetKubeExecCreds) MarshalJSON() ([]byte, error) {
 	}
 	if o.ExtendedKeyUsage != nil {
 		toSerialize["extended-key-usage"] = o.ExtendedKeyUsage
+	}
+	if o.ExtraExtensions != nil {
+		toSerialize["extra-extensions"] = o.ExtraExtensions
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json

@@ -25,6 +25,10 @@ type CreateAuthMethodOAuth2 struct {
 	BoundClientIds *[]string `json:"bound-client-ids,omitempty"`
 	// A CIDR whitelist with the IPs that the access is restricted to
 	BoundIps *[]string `json:"bound-ips,omitempty"`
+	// CertificateFile Path to a file that contain the certificate in a PEM format.
+	Cert *string `json:"cert,omitempty"`
+	// CertificateFileData PEM Certificate in a Base64 format.
+	CertFileData *string `json:"cert-file-data,omitempty"`
 	// Auth Method description
 	Description *string `json:"description,omitempty"`
 	// if true: enforce role-association must include sub claims
@@ -45,6 +49,8 @@ type CreateAuthMethodOAuth2 struct {
 	JwtTtl *int64 `json:"jwt-ttl,omitempty"`
 	// Auth Method name
 	Name string `json:"name"`
+	// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca]
+	ProductType *[]string `json:"product-type,omitempty"`
 	// A list of additional sub claims delimiters (relevant only for SAML, OIDC, OAuth2/JWT)
 	SubclaimsDelimiters *[]string `json:"subclaims-delimiters,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -215,6 +221,70 @@ func (o *CreateAuthMethodOAuth2) HasBoundIps() bool {
 // SetBoundIps gets a reference to the given []string and assigns it to the BoundIps field.
 func (o *CreateAuthMethodOAuth2) SetBoundIps(v []string) {
 	o.BoundIps = &v
+}
+
+// GetCert returns the Cert field value if set, zero value otherwise.
+func (o *CreateAuthMethodOAuth2) GetCert() string {
+	if o == nil || o.Cert == nil {
+		var ret string
+		return ret
+	}
+	return *o.Cert
+}
+
+// GetCertOk returns a tuple with the Cert field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodOAuth2) GetCertOk() (*string, bool) {
+	if o == nil || o.Cert == nil {
+		return nil, false
+	}
+	return o.Cert, true
+}
+
+// HasCert returns a boolean if a field has been set.
+func (o *CreateAuthMethodOAuth2) HasCert() bool {
+	if o != nil && o.Cert != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCert gets a reference to the given string and assigns it to the Cert field.
+func (o *CreateAuthMethodOAuth2) SetCert(v string) {
+	o.Cert = &v
+}
+
+// GetCertFileData returns the CertFileData field value if set, zero value otherwise.
+func (o *CreateAuthMethodOAuth2) GetCertFileData() string {
+	if o == nil || o.CertFileData == nil {
+		var ret string
+		return ret
+	}
+	return *o.CertFileData
+}
+
+// GetCertFileDataOk returns a tuple with the CertFileData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodOAuth2) GetCertFileDataOk() (*string, bool) {
+	if o == nil || o.CertFileData == nil {
+		return nil, false
+	}
+	return o.CertFileData, true
+}
+
+// HasCertFileData returns a boolean if a field has been set.
+func (o *CreateAuthMethodOAuth2) HasCertFileData() bool {
+	if o != nil && o.CertFileData != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCertFileData gets a reference to the given string and assigns it to the CertFileData field.
+func (o *CreateAuthMethodOAuth2) SetCertFileData(v string) {
+	o.CertFileData = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -521,6 +591,38 @@ func (o *CreateAuthMethodOAuth2) SetName(v string) {
 	o.Name = v
 }
 
+// GetProductType returns the ProductType field value if set, zero value otherwise.
+func (o *CreateAuthMethodOAuth2) GetProductType() []string {
+	if o == nil || o.ProductType == nil {
+		var ret []string
+		return ret
+	}
+	return *o.ProductType
+}
+
+// GetProductTypeOk returns a tuple with the ProductType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodOAuth2) GetProductTypeOk() (*[]string, bool) {
+	if o == nil || o.ProductType == nil {
+		return nil, false
+	}
+	return o.ProductType, true
+}
+
+// HasProductType returns a boolean if a field has been set.
+func (o *CreateAuthMethodOAuth2) HasProductType() bool {
+	if o != nil && o.ProductType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProductType gets a reference to the given []string and assigns it to the ProductType field.
+func (o *CreateAuthMethodOAuth2) SetProductType(v []string) {
+	o.ProductType = &v
+}
+
 // GetSubclaimsDelimiters returns the SubclaimsDelimiters field value if set, zero value otherwise.
 func (o *CreateAuthMethodOAuth2) GetSubclaimsDelimiters() []string {
 	if o == nil || o.SubclaimsDelimiters == nil {
@@ -655,6 +757,12 @@ func (o CreateAuthMethodOAuth2) MarshalJSON() ([]byte, error) {
 	if o.BoundIps != nil {
 		toSerialize["bound-ips"] = o.BoundIps
 	}
+	if o.Cert != nil {
+		toSerialize["cert"] = o.Cert
+	}
+	if o.CertFileData != nil {
+		toSerialize["cert-file-data"] = o.CertFileData
+	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
 	}
@@ -684,6 +792,9 @@ func (o CreateAuthMethodOAuth2) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.ProductType != nil {
+		toSerialize["product-type"] = o.ProductType
 	}
 	if o.SubclaimsDelimiters != nil {
 		toSerialize["subclaims-delimiters"] = o.SubclaimsDelimiters

@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **DefaultShareLinkTtlMinutes** | Pointer to **string** | Set the default ttl in minutes for sharing item number between 60 and 43200 | [optional] 
 **DefaultVersioning** | Pointer to **string** | If set to true, new item version will be created on each update [true/false] | [optional] 
 **DpEnableClassicKeyProtection** | Pointer to **string** | Set to update protection with classic keys state [true/false] | [optional] 
+**DynamicSecretMaxTtl** | Pointer to **int64** | Set the maximum ttl for dynamic secrets | [optional] 
+**DynamicSecretMaxTtlEnable** | Pointer to **string** | Set a maximum ttl for dynamic secrets [true/false] | [optional] 
 **InvalidCharacters** | Pointer to **string** | Characters that cannot be used for items/targets/roles/auths/event_forwarder names. Empty string will enforce nothing. | [optional] [default to "notReceivedInvalidCharacter"]
 **ItemType** | Pointer to **string** | VersionSettingsObjectType defines object types for account version settings | [optional] 
 **ItemsDeletionProtection** | Pointer to **string** | Set or unset the default behaviour of items deletion protection [true/false] | [optional] 
@@ -20,6 +22,8 @@ Name | Type | Description | Notes
 **JwtTtlMax** | Pointer to **int64** | Maximum ttl | [optional] 
 **JwtTtlMin** | Pointer to **int64** | Minimum ttl | [optional] 
 **LockDefaultKey** | Pointer to **string** | Lock the account&#39;s default protection key, if set - users will not be able to use a different protection key, relevant only if default-key-name is configured [true/false] | [optional] 
+**MaxRotationInterval** | Pointer to **int32** | Set the maximum rotation interval for rotated secrets auto rotation settings | [optional] 
+**MaxRotationIntervalEnable** | Pointer to **string** | Set a maximum rotation interval for rotated secrets auto rotation settings [true/false] | [optional] 
 **MaxVersions** | Pointer to **string** | Max versions | [optional] 
 **PasswordLength** | Pointer to **int64** | Password length between 5 - to 50 characters | [optional] 
 **Phone** | Pointer to **string** | Phone number | [optional] 
@@ -253,6 +257,56 @@ SetDpEnableClassicKeyProtection sets DpEnableClassicKeyProtection field to given
 
 HasDpEnableClassicKeyProtection returns a boolean if a field has been set.
 
+### GetDynamicSecretMaxTtl
+
+`func (o *UpdateAccountSettings) GetDynamicSecretMaxTtl() int64`
+
+GetDynamicSecretMaxTtl returns the DynamicSecretMaxTtl field if non-nil, zero value otherwise.
+
+### GetDynamicSecretMaxTtlOk
+
+`func (o *UpdateAccountSettings) GetDynamicSecretMaxTtlOk() (*int64, bool)`
+
+GetDynamicSecretMaxTtlOk returns a tuple with the DynamicSecretMaxTtl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDynamicSecretMaxTtl
+
+`func (o *UpdateAccountSettings) SetDynamicSecretMaxTtl(v int64)`
+
+SetDynamicSecretMaxTtl sets DynamicSecretMaxTtl field to given value.
+
+### HasDynamicSecretMaxTtl
+
+`func (o *UpdateAccountSettings) HasDynamicSecretMaxTtl() bool`
+
+HasDynamicSecretMaxTtl returns a boolean if a field has been set.
+
+### GetDynamicSecretMaxTtlEnable
+
+`func (o *UpdateAccountSettings) GetDynamicSecretMaxTtlEnable() string`
+
+GetDynamicSecretMaxTtlEnable returns the DynamicSecretMaxTtlEnable field if non-nil, zero value otherwise.
+
+### GetDynamicSecretMaxTtlEnableOk
+
+`func (o *UpdateAccountSettings) GetDynamicSecretMaxTtlEnableOk() (*string, bool)`
+
+GetDynamicSecretMaxTtlEnableOk returns a tuple with the DynamicSecretMaxTtlEnable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDynamicSecretMaxTtlEnable
+
+`func (o *UpdateAccountSettings) SetDynamicSecretMaxTtlEnable(v string)`
+
+SetDynamicSecretMaxTtlEnable sets DynamicSecretMaxTtlEnable field to given value.
+
+### HasDynamicSecretMaxTtlEnable
+
+`func (o *UpdateAccountSettings) HasDynamicSecretMaxTtlEnable() bool`
+
+HasDynamicSecretMaxTtlEnable returns a boolean if a field has been set.
+
 ### GetInvalidCharacters
 
 `func (o *UpdateAccountSettings) GetInvalidCharacters() string`
@@ -452,6 +506,56 @@ SetLockDefaultKey sets LockDefaultKey field to given value.
 `func (o *UpdateAccountSettings) HasLockDefaultKey() bool`
 
 HasLockDefaultKey returns a boolean if a field has been set.
+
+### GetMaxRotationInterval
+
+`func (o *UpdateAccountSettings) GetMaxRotationInterval() int32`
+
+GetMaxRotationInterval returns the MaxRotationInterval field if non-nil, zero value otherwise.
+
+### GetMaxRotationIntervalOk
+
+`func (o *UpdateAccountSettings) GetMaxRotationIntervalOk() (*int32, bool)`
+
+GetMaxRotationIntervalOk returns a tuple with the MaxRotationInterval field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaxRotationInterval
+
+`func (o *UpdateAccountSettings) SetMaxRotationInterval(v int32)`
+
+SetMaxRotationInterval sets MaxRotationInterval field to given value.
+
+### HasMaxRotationInterval
+
+`func (o *UpdateAccountSettings) HasMaxRotationInterval() bool`
+
+HasMaxRotationInterval returns a boolean if a field has been set.
+
+### GetMaxRotationIntervalEnable
+
+`func (o *UpdateAccountSettings) GetMaxRotationIntervalEnable() string`
+
+GetMaxRotationIntervalEnable returns the MaxRotationIntervalEnable field if non-nil, zero value otherwise.
+
+### GetMaxRotationIntervalEnableOk
+
+`func (o *UpdateAccountSettings) GetMaxRotationIntervalEnableOk() (*string, bool)`
+
+GetMaxRotationIntervalEnableOk returns a tuple with the MaxRotationIntervalEnable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaxRotationIntervalEnable
+
+`func (o *UpdateAccountSettings) SetMaxRotationIntervalEnable(v string)`
+
+SetMaxRotationIntervalEnable sets MaxRotationIntervalEnable field to given value.
+
+### HasMaxRotationIntervalEnable
+
+`func (o *UpdateAccountSettings) HasMaxRotationIntervalEnable() bool`
+
+HasMaxRotationIntervalEnable returns a boolean if a field has been set.
 
 ### GetMaxVersions
 

@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// GatewayUpdateProducerRedis gatewayUpdateProducerRedis is a command that updates redis producer
+// GatewayUpdateProducerRedis gatewayUpdateProducerRedis is a command that updates redis producer [Deprecated: Use dynamic-secret-update-redis command]
 type GatewayUpdateProducerRedis struct {
 	// A JSON array list of redis ACL rules to attach to the created user. For available rules see the ACL CAT command https://redis.io/commands/acl-cat By default the user will have permissions to read all keys '[\"~*\", \"+@read\"]'
 	AclRules *string `json:"acl-rules,omitempty"`
@@ -25,12 +25,14 @@ type GatewayUpdateProducerRedis struct {
 	Host *string `json:"host,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Producer name
+	// Dynamic secret name
 	Name string `json:"name"`
-	// Producer name
+	// Dynamic secret name
 	NewName *string `json:"new-name,omitempty"`
 	// Redis Password
 	Password *string `json:"password,omitempty"`
+	// The length of the password to be generated
+	PasswordLength *string `json:"password-length,omitempty"`
 	// Redis Port
 	Port *string `json:"port,omitempty"`
 	// Dynamic producer encryption key
@@ -305,6 +307,38 @@ func (o *GatewayUpdateProducerRedis) HasPassword() bool {
 // SetPassword gets a reference to the given string and assigns it to the Password field.
 func (o *GatewayUpdateProducerRedis) SetPassword(v string) {
 	o.Password = &v
+}
+
+// GetPasswordLength returns the PasswordLength field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerRedis) GetPasswordLength() string {
+	if o == nil || o.PasswordLength == nil {
+		var ret string
+		return ret
+	}
+	return *o.PasswordLength
+}
+
+// GetPasswordLengthOk returns a tuple with the PasswordLength field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerRedis) GetPasswordLengthOk() (*string, bool) {
+	if o == nil || o.PasswordLength == nil {
+		return nil, false
+	}
+	return o.PasswordLength, true
+}
+
+// HasPasswordLength returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerRedis) HasPasswordLength() bool {
+	if o != nil && o.PasswordLength != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPasswordLength gets a reference to the given string and assigns it to the PasswordLength field.
+func (o *GatewayUpdateProducerRedis) SetPasswordLength(v string) {
+	o.PasswordLength = &v
 }
 
 // GetPort returns the Port field value if set, zero value otherwise.
@@ -649,6 +683,9 @@ func (o GatewayUpdateProducerRedis) MarshalJSON() ([]byte, error) {
 	}
 	if o.Password != nil {
 		toSerialize["password"] = o.Password
+	}
+	if o.PasswordLength != nil {
+		toSerialize["password-length"] = o.PasswordLength
 	}
 	if o.Port != nil {
 		toSerialize["port"] = o.Port

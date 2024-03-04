@@ -21,6 +21,8 @@ type UpdateSecretVal struct {
 	Accessibility *string `json:"accessibility,omitempty"`
 	// For Password Management use, additional fields
 	CustomField *map[string]string `json:"custom-field,omitempty"`
+	// Secret format [text/json] (relevant only for type 'generic')
+	Format *string `json:"format,omitempty"`
 	// For Password Management use, reflect the website context
 	InjectUrl *[]string `json:"inject-url,omitempty"`
 	// Set output format to JSON
@@ -45,7 +47,7 @@ type UpdateSecretVal struct {
 	UidToken *string `json:"uid-token,omitempty"`
 	// For Password Management use
 	Username *string `json:"username,omitempty"`
-	// The secret value (only relevant for type 'generic')
+	// The secret value (relevant only for type 'generic')
 	Value string `json:"value"`
 }
 
@@ -57,6 +59,8 @@ func NewUpdateSecretVal(name string, value string, ) *UpdateSecretVal {
 	this := UpdateSecretVal{}
 	var accessibility string = "regular"
 	this.Accessibility = &accessibility
+	var format string = "text"
+	this.Format = &format
 	var json bool = false
 	this.Json = &json
 	this.Name = name
@@ -71,6 +75,8 @@ func NewUpdateSecretValWithDefaults() *UpdateSecretVal {
 	this := UpdateSecretVal{}
 	var accessibility string = "regular"
 	this.Accessibility = &accessibility
+	var format string = "text"
+	this.Format = &format
 	var json bool = false
 	this.Json = &json
 	return &this
@@ -138,6 +144,38 @@ func (o *UpdateSecretVal) HasCustomField() bool {
 // SetCustomField gets a reference to the given map[string]string and assigns it to the CustomField field.
 func (o *UpdateSecretVal) SetCustomField(v map[string]string) {
 	o.CustomField = &v
+}
+
+// GetFormat returns the Format field value if set, zero value otherwise.
+func (o *UpdateSecretVal) GetFormat() string {
+	if o == nil || o.Format == nil {
+		var ret string
+		return ret
+	}
+	return *o.Format
+}
+
+// GetFormatOk returns a tuple with the Format field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateSecretVal) GetFormatOk() (*string, bool) {
+	if o == nil || o.Format == nil {
+		return nil, false
+	}
+	return o.Format, true
+}
+
+// HasFormat returns a boolean if a field has been set.
+func (o *UpdateSecretVal) HasFormat() bool {
+	if o != nil && o.Format != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFormat gets a reference to the given string and assigns it to the Format field.
+func (o *UpdateSecretVal) SetFormat(v string) {
+	o.Format = &v
 }
 
 // GetInjectUrl returns the InjectUrl field value if set, zero value otherwise.
@@ -547,6 +585,9 @@ func (o UpdateSecretVal) MarshalJSON() ([]byte, error) {
 	}
 	if o.CustomField != nil {
 		toSerialize["custom-field"] = o.CustomField
+	}
+	if o.Format != nil {
+		toSerialize["format"] = o.Format
 	}
 	if o.InjectUrl != nil {
 		toSerialize["inject-url"] = o.InjectUrl

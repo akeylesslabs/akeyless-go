@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// GatewayUpdateProducerRedshift gatewayUpdateProducerRedshift is a command that updates redshift producer
+// GatewayUpdateProducerRedshift gatewayUpdateProducerRedshift is a command that updates redshift producer [Deprecated: Use dynamic-secret-update-redshift command]
 type GatewayUpdateProducerRedshift struct {
 	// Redshift Creation statements
 	CreationStatements *string `json:"creation-statements,omitempty"`
@@ -23,10 +23,12 @@ type GatewayUpdateProducerRedshift struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Producer name
+	// Dynamic secret name
 	Name string `json:"name"`
-	// Producer name
+	// Dynamic secret name
 	NewName *string `json:"new-name,omitempty"`
+	// The length of the password to be generated
+	PasswordLength *string `json:"password-length,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKey *string `json:"producer-encryption-key,omitempty"`
 	// Redshift DB Name
@@ -245,6 +247,38 @@ func (o *GatewayUpdateProducerRedshift) HasNewName() bool {
 // SetNewName gets a reference to the given string and assigns it to the NewName field.
 func (o *GatewayUpdateProducerRedshift) SetNewName(v string) {
 	o.NewName = &v
+}
+
+// GetPasswordLength returns the PasswordLength field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerRedshift) GetPasswordLength() string {
+	if o == nil || o.PasswordLength == nil {
+		var ret string
+		return ret
+	}
+	return *o.PasswordLength
+}
+
+// GetPasswordLengthOk returns a tuple with the PasswordLength field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerRedshift) GetPasswordLengthOk() (*string, bool) {
+	if o == nil || o.PasswordLength == nil {
+		return nil, false
+	}
+	return o.PasswordLength, true
+}
+
+// HasPasswordLength returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerRedshift) HasPasswordLength() bool {
+	if o != nil && o.PasswordLength != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPasswordLength gets a reference to the given string and assigns it to the PasswordLength field.
+func (o *GatewayUpdateProducerRedshift) SetPasswordLength(v string) {
+	o.PasswordLength = &v
 }
 
 // GetProducerEncryptionKey returns the ProducerEncryptionKey field value if set, zero value otherwise.
@@ -711,6 +745,9 @@ func (o GatewayUpdateProducerRedshift) MarshalJSON() ([]byte, error) {
 	}
 	if o.NewName != nil {
 		toSerialize["new-name"] = o.NewName
+	}
+	if o.PasswordLength != nil {
+		toSerialize["password-length"] = o.PasswordLength
 	}
 	if o.ProducerEncryptionKey != nil {
 		toSerialize["producer-encryption-key"] = o.ProducerEncryptionKey

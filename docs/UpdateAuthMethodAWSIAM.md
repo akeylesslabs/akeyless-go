@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] [default to 0]
 **Name** | **string** | Auth Method name | 
 **NewName** | Pointer to **string** | Auth Method new name | [optional] 
+**ProductType** | Pointer to **[]string** | Choose the relevant product type for the auth method [sm, sra, pm, dp, ca] | [optional] 
 **StsUrl** | Pointer to **string** | sts URL | [optional] [default to "https://sts.amazonaws.com"]
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -432,6 +433,31 @@ SetNewName sets NewName field to given value.
 `func (o *UpdateAuthMethodAWSIAM) HasNewName() bool`
 
 HasNewName returns a boolean if a field has been set.
+
+### GetProductType
+
+`func (o *UpdateAuthMethodAWSIAM) GetProductType() []string`
+
+GetProductType returns the ProductType field if non-nil, zero value otherwise.
+
+### GetProductTypeOk
+
+`func (o *UpdateAuthMethodAWSIAM) GetProductTypeOk() (*[]string, bool)`
+
+GetProductTypeOk returns a tuple with the ProductType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProductType
+
+`func (o *UpdateAuthMethodAWSIAM) SetProductType(v []string)`
+
+SetProductType sets ProductType field to given value.
+
+### HasProductType
+
+`func (o *UpdateAuthMethodAWSIAM) HasProductType() bool`
+
+HasProductType returns a boolean if a field has been set.
 
 ### GetStsUrl
 

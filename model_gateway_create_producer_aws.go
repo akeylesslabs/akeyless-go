@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// GatewayCreateProducerAws gatewayCreateProducerAws is a command that creates aws producer
+// GatewayCreateProducerAws gatewayCreateProducerAws is a command that creates aws producer [Deprecated: Use dynamic-secret-create-aws command]
 type GatewayCreateProducerAws struct {
 	AccessMode *string `json:"access-mode,omitempty"`
 	// Admin credentials rotation interval (days)
@@ -40,7 +40,7 @@ type GatewayCreateProducerAws struct {
 	EnableAdminRotation *bool `json:"enable-admin-rotation,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Producer name
+	// Dynamic secret name
 	Name string `json:"name"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`

@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// GatewayCreateProducerArtifactory gatewayCreateProducerArtifactory is a command that creates artifactory producer
+// GatewayCreateProducerArtifactory gatewayCreateProducerArtifactory is a command that creates artifactory producer [Deprecated: Use dynamic-secret-create-artifactory command]
 type GatewayCreateProducerArtifactory struct {
 	// Artifactory Admin Name
 	ArtifactoryAdminName *string `json:"artifactory-admin-name,omitempty"`
@@ -31,7 +31,7 @@ type GatewayCreateProducerArtifactory struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Producer name
+	// Dynamic secret name
 	Name string `json:"name"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`

@@ -33,6 +33,10 @@ type UpdateAccountSettings struct {
 	DefaultVersioning *string `json:"default-versioning,omitempty"`
 	// Set to update protection with classic keys state [true/false]
 	DpEnableClassicKeyProtection *string `json:"dp-enable-classic-key-protection,omitempty"`
+	// Set the maximum ttl for dynamic secrets
+	DynamicSecretMaxTtl *int64 `json:"dynamic-secret-max-ttl,omitempty"`
+	// Set a maximum ttl for dynamic secrets [true/false]
+	DynamicSecretMaxTtlEnable *string `json:"dynamic-secret-max-ttl-enable,omitempty"`
 	// Characters that cannot be used for items/targets/roles/auths/event_forwarder names. Empty string will enforce nothing.
 	InvalidCharacters *string `json:"invalid-characters,omitempty"`
 	// VersionSettingsObjectType defines object types for account version settings
@@ -49,6 +53,10 @@ type UpdateAccountSettings struct {
 	JwtTtlMin *int64 `json:"jwt-ttl-min,omitempty"`
 	// Lock the account's default protection key, if set - users will not be able to use a different protection key, relevant only if default-key-name is configured [true/false]
 	LockDefaultKey *string `json:"lock-default-key,omitempty"`
+	// Set the maximum rotation interval for rotated secrets auto rotation settings
+	MaxRotationInterval *int32 `json:"max-rotation-interval,omitempty"`
+	// Set a maximum rotation interval for rotated secrets auto rotation settings [true/false]
+	MaxRotationIntervalEnable *string `json:"max-rotation-interval-enable,omitempty"`
 	// Max versions
 	MaxVersions *string `json:"max-versions,omitempty"`
 	// Password length between 5 - to 50 characters
@@ -358,6 +366,70 @@ func (o *UpdateAccountSettings) SetDpEnableClassicKeyProtection(v string) {
 	o.DpEnableClassicKeyProtection = &v
 }
 
+// GetDynamicSecretMaxTtl returns the DynamicSecretMaxTtl field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetDynamicSecretMaxTtl() int64 {
+	if o == nil || o.DynamicSecretMaxTtl == nil {
+		var ret int64
+		return ret
+	}
+	return *o.DynamicSecretMaxTtl
+}
+
+// GetDynamicSecretMaxTtlOk returns a tuple with the DynamicSecretMaxTtl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetDynamicSecretMaxTtlOk() (*int64, bool) {
+	if o == nil || o.DynamicSecretMaxTtl == nil {
+		return nil, false
+	}
+	return o.DynamicSecretMaxTtl, true
+}
+
+// HasDynamicSecretMaxTtl returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasDynamicSecretMaxTtl() bool {
+	if o != nil && o.DynamicSecretMaxTtl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDynamicSecretMaxTtl gets a reference to the given int64 and assigns it to the DynamicSecretMaxTtl field.
+func (o *UpdateAccountSettings) SetDynamicSecretMaxTtl(v int64) {
+	o.DynamicSecretMaxTtl = &v
+}
+
+// GetDynamicSecretMaxTtlEnable returns the DynamicSecretMaxTtlEnable field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetDynamicSecretMaxTtlEnable() string {
+	if o == nil || o.DynamicSecretMaxTtlEnable == nil {
+		var ret string
+		return ret
+	}
+	return *o.DynamicSecretMaxTtlEnable
+}
+
+// GetDynamicSecretMaxTtlEnableOk returns a tuple with the DynamicSecretMaxTtlEnable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetDynamicSecretMaxTtlEnableOk() (*string, bool) {
+	if o == nil || o.DynamicSecretMaxTtlEnable == nil {
+		return nil, false
+	}
+	return o.DynamicSecretMaxTtlEnable, true
+}
+
+// HasDynamicSecretMaxTtlEnable returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasDynamicSecretMaxTtlEnable() bool {
+	if o != nil && o.DynamicSecretMaxTtlEnable != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDynamicSecretMaxTtlEnable gets a reference to the given string and assigns it to the DynamicSecretMaxTtlEnable field.
+func (o *UpdateAccountSettings) SetDynamicSecretMaxTtlEnable(v string) {
+	o.DynamicSecretMaxTtlEnable = &v
+}
+
 // GetInvalidCharacters returns the InvalidCharacters field value if set, zero value otherwise.
 func (o *UpdateAccountSettings) GetInvalidCharacters() string {
 	if o == nil || o.InvalidCharacters == nil {
@@ -612,6 +684,70 @@ func (o *UpdateAccountSettings) HasLockDefaultKey() bool {
 // SetLockDefaultKey gets a reference to the given string and assigns it to the LockDefaultKey field.
 func (o *UpdateAccountSettings) SetLockDefaultKey(v string) {
 	o.LockDefaultKey = &v
+}
+
+// GetMaxRotationInterval returns the MaxRotationInterval field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetMaxRotationInterval() int32 {
+	if o == nil || o.MaxRotationInterval == nil {
+		var ret int32
+		return ret
+	}
+	return *o.MaxRotationInterval
+}
+
+// GetMaxRotationIntervalOk returns a tuple with the MaxRotationInterval field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetMaxRotationIntervalOk() (*int32, bool) {
+	if o == nil || o.MaxRotationInterval == nil {
+		return nil, false
+	}
+	return o.MaxRotationInterval, true
+}
+
+// HasMaxRotationInterval returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasMaxRotationInterval() bool {
+	if o != nil && o.MaxRotationInterval != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxRotationInterval gets a reference to the given int32 and assigns it to the MaxRotationInterval field.
+func (o *UpdateAccountSettings) SetMaxRotationInterval(v int32) {
+	o.MaxRotationInterval = &v
+}
+
+// GetMaxRotationIntervalEnable returns the MaxRotationIntervalEnable field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetMaxRotationIntervalEnable() string {
+	if o == nil || o.MaxRotationIntervalEnable == nil {
+		var ret string
+		return ret
+	}
+	return *o.MaxRotationIntervalEnable
+}
+
+// GetMaxRotationIntervalEnableOk returns a tuple with the MaxRotationIntervalEnable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetMaxRotationIntervalEnableOk() (*string, bool) {
+	if o == nil || o.MaxRotationIntervalEnable == nil {
+		return nil, false
+	}
+	return o.MaxRotationIntervalEnable, true
+}
+
+// HasMaxRotationIntervalEnable returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasMaxRotationIntervalEnable() bool {
+	if o != nil && o.MaxRotationIntervalEnable != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxRotationIntervalEnable gets a reference to the given string and assigns it to the MaxRotationIntervalEnable field.
+func (o *UpdateAccountSettings) SetMaxRotationIntervalEnable(v string) {
+	o.MaxRotationIntervalEnable = &v
 }
 
 // GetMaxVersions returns the MaxVersions field value if set, zero value otherwise.
@@ -1056,6 +1192,12 @@ func (o UpdateAccountSettings) MarshalJSON() ([]byte, error) {
 	if o.DpEnableClassicKeyProtection != nil {
 		toSerialize["dp-enable-classic-key-protection"] = o.DpEnableClassicKeyProtection
 	}
+	if o.DynamicSecretMaxTtl != nil {
+		toSerialize["dynamic-secret-max-ttl"] = o.DynamicSecretMaxTtl
+	}
+	if o.DynamicSecretMaxTtlEnable != nil {
+		toSerialize["dynamic-secret-max-ttl-enable"] = o.DynamicSecretMaxTtlEnable
+	}
 	if o.InvalidCharacters != nil {
 		toSerialize["invalid-characters"] = o.InvalidCharacters
 	}
@@ -1079,6 +1221,12 @@ func (o UpdateAccountSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.LockDefaultKey != nil {
 		toSerialize["lock-default-key"] = o.LockDefaultKey
+	}
+	if o.MaxRotationInterval != nil {
+		toSerialize["max-rotation-interval"] = o.MaxRotationInterval
+	}
+	if o.MaxRotationIntervalEnable != nil {
+		toSerialize["max-rotation-interval-enable"] = o.MaxRotationIntervalEnable
 	}
 	if o.MaxVersions != nil {
 		toSerialize["max-versions"] = o.MaxVersions

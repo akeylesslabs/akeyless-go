@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// GatewayCreateProducerRedshift gatewayCreateProducerRedshift is a command that creates redshift producer
+// GatewayCreateProducerRedshift gatewayCreateProducerRedshift is a command that creates redshift producer [Deprecated: Use dynamic-secret-create-redshift command]
 type GatewayCreateProducerRedshift struct {
 	// Redshift Creation statements
 	CreationStatements *string `json:"creation-statements,omitempty"`
@@ -23,8 +23,10 @@ type GatewayCreateProducerRedshift struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Producer name
+	// Dynamic secret name
 	Name string `json:"name"`
+	// The length of the password to be generated
+	PasswordLength *string `json:"password-length,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKey *string `json:"producer-encryption-key,omitempty"`
 	// Redshift DB Name
@@ -211,6 +213,38 @@ func (o *GatewayCreateProducerRedshift) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *GatewayCreateProducerRedshift) SetName(v string) {
 	o.Name = v
+}
+
+// GetPasswordLength returns the PasswordLength field value if set, zero value otherwise.
+func (o *GatewayCreateProducerRedshift) GetPasswordLength() string {
+	if o == nil || o.PasswordLength == nil {
+		var ret string
+		return ret
+	}
+	return *o.PasswordLength
+}
+
+// GetPasswordLengthOk returns a tuple with the PasswordLength field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerRedshift) GetPasswordLengthOk() (*string, bool) {
+	if o == nil || o.PasswordLength == nil {
+		return nil, false
+	}
+	return o.PasswordLength, true
+}
+
+// HasPasswordLength returns a boolean if a field has been set.
+func (o *GatewayCreateProducerRedshift) HasPasswordLength() bool {
+	if o != nil && o.PasswordLength != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPasswordLength gets a reference to the given string and assigns it to the PasswordLength field.
+func (o *GatewayCreateProducerRedshift) SetPasswordLength(v string) {
+	o.PasswordLength = &v
 }
 
 // GetProducerEncryptionKey returns the ProducerEncryptionKey field value if set, zero value otherwise.
@@ -674,6 +708,9 @@ func (o GatewayCreateProducerRedshift) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.PasswordLength != nil {
+		toSerialize["password-length"] = o.PasswordLength
 	}
 	if o.ProducerEncryptionKey != nil {
 		toSerialize["producer-encryption-key"] = o.ProducerEncryptionKey

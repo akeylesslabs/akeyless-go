@@ -27,6 +27,8 @@ type CreateSecret struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
+	// Secret format [text/json] (relevant only for type 'generic')
+	Format *string `json:"format,omitempty"`
 	// For Password Management use, reflect the website context
 	InjectUrl *[]string `json:"inject-url,omitempty"`
 	// Set output format to JSON
@@ -69,7 +71,7 @@ type CreateSecret struct {
 	UidToken *string `json:"uid-token,omitempty"`
 	// For Password Management use
 	Username *string `json:"username,omitempty"`
-	// The secret value (only relevant for type 'generic')
+	// The secret value (relevant only for type 'generic')
 	Value string `json:"value"`
 }
 
@@ -81,6 +83,8 @@ func NewCreateSecret(name string, value string, ) *CreateSecret {
 	this := CreateSecret{}
 	var accessibility string = "regular"
 	this.Accessibility = &accessibility
+	var format string = "text"
+	this.Format = &format
 	var json bool = false
 	this.Json = &json
 	this.Name = name
@@ -101,6 +105,8 @@ func NewCreateSecretWithDefaults() *CreateSecret {
 	this := CreateSecret{}
 	var accessibility string = "regular"
 	this.Accessibility = &accessibility
+	var format string = "text"
+	this.Format = &format
 	var json bool = false
 	this.Json = &json
 	var secureAccessWebBrowsing bool = false
@@ -270,6 +276,38 @@ func (o *CreateSecret) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *CreateSecret) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetFormat returns the Format field value if set, zero value otherwise.
+func (o *CreateSecret) GetFormat() string {
+	if o == nil || o.Format == nil {
+		var ret string
+		return ret
+	}
+	return *o.Format
+}
+
+// GetFormatOk returns a tuple with the Format field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSecret) GetFormatOk() (*string, bool) {
+	if o == nil || o.Format == nil {
+		return nil, false
+	}
+	return o.Format, true
+}
+
+// HasFormat returns a boolean if a field has been set.
+func (o *CreateSecret) HasFormat() bool {
+	if o != nil && o.Format != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFormat gets a reference to the given string and assigns it to the Format field.
+func (o *CreateSecret) SetFormat(v string) {
+	o.Format = &v
 }
 
 // GetInjectUrl returns the InjectUrl field value if set, zero value otherwise.
@@ -976,6 +1014,9 @@ func (o CreateSecret) MarshalJSON() ([]byte, error) {
 	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
+	}
+	if o.Format != nil {
+		toSerialize["format"] = o.Format
 	}
 	if o.InjectUrl != nil {
 		toSerialize["inject-url"] = o.InjectUrl

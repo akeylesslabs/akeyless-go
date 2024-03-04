@@ -17,6 +17,8 @@ import (
 
 // StaticSecretDetailsInfo struct for StaticSecretDetailsInfo
 type StaticSecretDetailsInfo struct {
+	// StaticSecretFormat defines the format of static secret (e.g. Text)
+	Format *string `json:"format,omitempty"`
 	NotifyOnChangeEvent *bool `json:"notify_on_change_event,omitempty"`
 	Username *string `json:"username,omitempty"`
 	// deprecated
@@ -39,6 +41,38 @@ func NewStaticSecretDetailsInfo() *StaticSecretDetailsInfo {
 func NewStaticSecretDetailsInfoWithDefaults() *StaticSecretDetailsInfo {
 	this := StaticSecretDetailsInfo{}
 	return &this
+}
+
+// GetFormat returns the Format field value if set, zero value otherwise.
+func (o *StaticSecretDetailsInfo) GetFormat() string {
+	if o == nil || o.Format == nil {
+		var ret string
+		return ret
+	}
+	return *o.Format
+}
+
+// GetFormatOk returns a tuple with the Format field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StaticSecretDetailsInfo) GetFormatOk() (*string, bool) {
+	if o == nil || o.Format == nil {
+		return nil, false
+	}
+	return o.Format, true
+}
+
+// HasFormat returns a boolean if a field has been set.
+func (o *StaticSecretDetailsInfo) HasFormat() bool {
+	if o != nil && o.Format != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFormat gets a reference to the given string and assigns it to the Format field.
+func (o *StaticSecretDetailsInfo) SetFormat(v string) {
+	o.Format = &v
 }
 
 // GetNotifyOnChangeEvent returns the NotifyOnChangeEvent field value if set, zero value otherwise.
@@ -171,6 +205,9 @@ func (o *StaticSecretDetailsInfo) SetWebsites(v []string) {
 
 func (o StaticSecretDetailsInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Format != nil {
+		toSerialize["format"] = o.Format
+	}
 	if o.NotifyOnChangeEvent != nil {
 		toSerialize["notify_on_change_event"] = o.NotifyOnChangeEvent
 	}

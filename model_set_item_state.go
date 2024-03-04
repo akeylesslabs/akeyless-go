@@ -27,7 +27,7 @@ type SetItemState struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// The specific version you want to update: 0=item level state (default)
+	// The specific version you want to update: 0=item level state (default) (relevant only for keys)
 	Version *int32 `json:"version,omitempty"`
 }
 

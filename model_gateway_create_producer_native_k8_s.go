@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// GatewayCreateProducerNativeK8S gatewayCreateProducerNativeK8S is a command that creates k8s producer
+// GatewayCreateProducerNativeK8S gatewayCreateProducerNativeK8S is a command that creates k8s producer [Deprecated: Use dynamic-secret-create-k8s command]
 type GatewayCreateProducerNativeK8S struct {
 	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
@@ -41,7 +41,7 @@ type GatewayCreateProducerNativeK8S struct {
 	K8sServiceAccount *string `json:"k8s-service-account,omitempty"`
 	// K8S ServiceAccount type [fixed, dynamic].
 	K8sServiceAccountType *string `json:"k8s-service-account-type,omitempty"`
-	// Producer name
+	// Dynamic secret name
 	Name string `json:"name"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`

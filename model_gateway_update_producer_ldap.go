@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// GatewayUpdateProducerLdap gatewayUpdateProducerLdap is a command that updates ldap producer
+// GatewayUpdateProducerLdap gatewayUpdateProducerLdap is a command that updates ldap producer [Deprecated: Use dynamic-secret-update-ldap command]
 type GatewayUpdateProducerLdap struct {
 	// Bind DN
 	BindDn *string `json:"bind-dn,omitempty"`
@@ -33,10 +33,12 @@ type GatewayUpdateProducerLdap struct {
 	LdapCaCert *string `json:"ldap-ca-cert,omitempty"`
 	// LDAP Server URL
 	LdapUrl *string `json:"ldap-url,omitempty"`
-	// Producer name
+	// Dynamic secret name
 	Name string `json:"name"`
-	// Producer name
+	// Dynamic secret name
 	NewName *string `json:"new-name,omitempty"`
+	// The length of the password to be generated
+	PasswordLength *string `json:"password-length,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
 	// Add tags attached to this object
@@ -399,6 +401,38 @@ func (o *GatewayUpdateProducerLdap) SetNewName(v string) {
 	o.NewName = &v
 }
 
+// GetPasswordLength returns the PasswordLength field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerLdap) GetPasswordLength() string {
+	if o == nil || o.PasswordLength == nil {
+		var ret string
+		return ret
+	}
+	return *o.PasswordLength
+}
+
+// GetPasswordLengthOk returns a tuple with the PasswordLength field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerLdap) GetPasswordLengthOk() (*string, bool) {
+	if o == nil || o.PasswordLength == nil {
+		return nil, false
+	}
+	return o.PasswordLength, true
+}
+
+// HasPasswordLength returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerLdap) HasPasswordLength() bool {
+	if o != nil && o.PasswordLength != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPasswordLength gets a reference to the given string and assigns it to the PasswordLength field.
+func (o *GatewayUpdateProducerLdap) SetPasswordLength(v string) {
+	o.PasswordLength = &v
+}
+
 // GetProducerEncryptionKeyName returns the ProducerEncryptionKeyName field value if set, zero value otherwise.
 func (o *GatewayUpdateProducerLdap) GetProducerEncryptionKeyName() string {
 	if o == nil || o.ProducerEncryptionKeyName == nil {
@@ -718,6 +752,9 @@ func (o GatewayUpdateProducerLdap) MarshalJSON() ([]byte, error) {
 	}
 	if o.NewName != nil {
 		toSerialize["new-name"] = o.NewName
+	}
+	if o.PasswordLength != nil {
+		toSerialize["password-length"] = o.PasswordLength
 	}
 	if o.ProducerEncryptionKeyName != nil {
 		toSerialize["producer-encryption-key-name"] = o.ProducerEncryptionKeyName

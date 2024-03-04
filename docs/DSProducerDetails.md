@@ -103,6 +103,7 @@ Name | Type | Description | Notes
 **GithubInstallationTokenPermissions** | Pointer to **map[string]string** |  | [optional] 
 **GithubInstallationTokenRepositories** | Pointer to **[]string** |  | [optional] 
 **GithubInstallationTokenRepositoriesIds** | Pointer to **[]int64** |  | [optional] 
+**GithubOrganizationName** | Pointer to **string** |  | [optional] 
 **GithubRepositoryPath** | Pointer to **string** |  | [optional] 
 **GkeClusterCaCertificate** | Pointer to **string** |  | [optional] 
 **GkeClusterEndpoint** | Pointer to **string** |  | [optional] 
@@ -2717,6 +2718,31 @@ SetGithubInstallationTokenRepositoriesIds sets GithubInstallationTokenRepositori
 `func (o *DSProducerDetails) HasGithubInstallationTokenRepositoriesIds() bool`
 
 HasGithubInstallationTokenRepositoriesIds returns a boolean if a field has been set.
+
+### GetGithubOrganizationName
+
+`func (o *DSProducerDetails) GetGithubOrganizationName() string`
+
+GetGithubOrganizationName returns the GithubOrganizationName field if non-nil, zero value otherwise.
+
+### GetGithubOrganizationNameOk
+
+`func (o *DSProducerDetails) GetGithubOrganizationNameOk() (*string, bool)`
+
+GetGithubOrganizationNameOk returns a tuple with the GithubOrganizationName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGithubOrganizationName
+
+`func (o *DSProducerDetails) SetGithubOrganizationName(v string)`
+
+SetGithubOrganizationName sets GithubOrganizationName field to given value.
+
+### HasGithubOrganizationName
+
+`func (o *DSProducerDetails) HasGithubOrganizationName() bool`
+
+HasGithubOrganizationName returns a boolean if a field has been set.
 
 ### GetGithubRepositoryPath
 

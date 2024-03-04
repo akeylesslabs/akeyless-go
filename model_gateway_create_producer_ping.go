@@ -15,13 +15,13 @@ import (
 	"encoding/json"
 )
 
-// GatewayCreateProducerPing gatewayCreateProducerPing is a command that creates ping producer
+// GatewayCreateProducerPing gatewayCreateProducerPing is a command that creates ping producer [Deprecated: Use dynamic-secret-create-ping command]
 type GatewayCreateProducerPing struct {
 	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Producer name
+	// Dynamic secret name
 	Name string `json:"name"`
 	// Ping Federate administrative port
 	PingAdministrativePort *string `json:"ping-administrative-port,omitempty"`

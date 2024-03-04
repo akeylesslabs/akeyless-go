@@ -21,10 +21,14 @@ type UpdatePKICertIssuer struct {
 	AddTag *[]string `json:"add-tag,omitempty"`
 	// If set, clients can request certificates for any CN
 	AllowAnyName *bool `json:"allow-any-name,omitempty"`
+	// If set, will allow copying the extra extensions from the csr file (if given)
+	AllowCopyExtFromCsr *bool `json:"allow-copy-ext-from-csr,omitempty"`
 	// If set, clients can request certificates for subdomains and wildcard subdomains of the allowed domains
 	AllowSubdomains *bool `json:"allow-subdomains,omitempty"`
 	// A list of the allowed domains that clients can request to be included in the certificate (in a comma-delimited list)
 	AllowedDomains *string `json:"allowed-domains,omitempty"`
+	// A json string containing the allowed extra extensions for the pki cert issuer
+	AllowedExtraExtensions *string `json:"allowed-extra-extensions,omitempty"`
 	// A list of the allowed URIs that clients can request to be included in the certificate as part of the URI Subject Alternative Names (in a comma-delimited list)
 	AllowedUriSans *string `json:"allowed-uri-sans,omitempty"`
 	// If set, certificates will be flagged for client auth use
@@ -181,6 +185,38 @@ func (o *UpdatePKICertIssuer) SetAllowAnyName(v bool) {
 	o.AllowAnyName = &v
 }
 
+// GetAllowCopyExtFromCsr returns the AllowCopyExtFromCsr field value if set, zero value otherwise.
+func (o *UpdatePKICertIssuer) GetAllowCopyExtFromCsr() bool {
+	if o == nil || o.AllowCopyExtFromCsr == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AllowCopyExtFromCsr
+}
+
+// GetAllowCopyExtFromCsrOk returns a tuple with the AllowCopyExtFromCsr field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdatePKICertIssuer) GetAllowCopyExtFromCsrOk() (*bool, bool) {
+	if o == nil || o.AllowCopyExtFromCsr == nil {
+		return nil, false
+	}
+	return o.AllowCopyExtFromCsr, true
+}
+
+// HasAllowCopyExtFromCsr returns a boolean if a field has been set.
+func (o *UpdatePKICertIssuer) HasAllowCopyExtFromCsr() bool {
+	if o != nil && o.AllowCopyExtFromCsr != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowCopyExtFromCsr gets a reference to the given bool and assigns it to the AllowCopyExtFromCsr field.
+func (o *UpdatePKICertIssuer) SetAllowCopyExtFromCsr(v bool) {
+	o.AllowCopyExtFromCsr = &v
+}
+
 // GetAllowSubdomains returns the AllowSubdomains field value if set, zero value otherwise.
 func (o *UpdatePKICertIssuer) GetAllowSubdomains() bool {
 	if o == nil || o.AllowSubdomains == nil {
@@ -243,6 +279,38 @@ func (o *UpdatePKICertIssuer) HasAllowedDomains() bool {
 // SetAllowedDomains gets a reference to the given string and assigns it to the AllowedDomains field.
 func (o *UpdatePKICertIssuer) SetAllowedDomains(v string) {
 	o.AllowedDomains = &v
+}
+
+// GetAllowedExtraExtensions returns the AllowedExtraExtensions field value if set, zero value otherwise.
+func (o *UpdatePKICertIssuer) GetAllowedExtraExtensions() string {
+	if o == nil || o.AllowedExtraExtensions == nil {
+		var ret string
+		return ret
+	}
+	return *o.AllowedExtraExtensions
+}
+
+// GetAllowedExtraExtensionsOk returns a tuple with the AllowedExtraExtensions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdatePKICertIssuer) GetAllowedExtraExtensionsOk() (*string, bool) {
+	if o == nil || o.AllowedExtraExtensions == nil {
+		return nil, false
+	}
+	return o.AllowedExtraExtensions, true
+}
+
+// HasAllowedExtraExtensions returns a boolean if a field has been set.
+func (o *UpdatePKICertIssuer) HasAllowedExtraExtensions() bool {
+	if o != nil && o.AllowedExtraExtensions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowedExtraExtensions gets a reference to the given string and assigns it to the AllowedExtraExtensions field.
+func (o *UpdatePKICertIssuer) SetAllowedExtraExtensions(v string) {
+	o.AllowedExtraExtensions = &v
 }
 
 // GetAllowedUriSans returns the AllowedUriSans field value if set, zero value otherwise.
@@ -1189,11 +1257,17 @@ func (o UpdatePKICertIssuer) MarshalJSON() ([]byte, error) {
 	if o.AllowAnyName != nil {
 		toSerialize["allow-any-name"] = o.AllowAnyName
 	}
+	if o.AllowCopyExtFromCsr != nil {
+		toSerialize["allow-copy-ext-from-csr"] = o.AllowCopyExtFromCsr
+	}
 	if o.AllowSubdomains != nil {
 		toSerialize["allow-subdomains"] = o.AllowSubdomains
 	}
 	if o.AllowedDomains != nil {
 		toSerialize["allowed-domains"] = o.AllowedDomains
+	}
+	if o.AllowedExtraExtensions != nil {
+		toSerialize["allowed-extra-extensions"] = o.AllowedExtraExtensions
 	}
 	if o.AllowedUriSans != nil {
 		toSerialize["allowed-uri-sans"] = o.AllowedUriSans

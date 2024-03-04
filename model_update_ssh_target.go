@@ -17,8 +17,6 @@ import (
 
 // UpdateSSHTarget struct for UpdateSSHTarget
 type UpdateSSHTarget struct {
-	// Deprecated - use description
-	Comment *string `json:"comment,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
 	// SSH host name
@@ -75,38 +73,6 @@ func NewUpdateSSHTargetWithDefaults() *UpdateSSHTarget {
 	var port string = "22"
 	this.Port = &port
 	return &this
-}
-
-// GetComment returns the Comment field value if set, zero value otherwise.
-func (o *UpdateSSHTarget) GetComment() string {
-	if o == nil || o.Comment == nil {
-		var ret string
-		return ret
-	}
-	return *o.Comment
-}
-
-// GetCommentOk returns a tuple with the Comment field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UpdateSSHTarget) GetCommentOk() (*string, bool) {
-	if o == nil || o.Comment == nil {
-		return nil, false
-	}
-	return o.Comment, true
-}
-
-// HasComment returns a boolean if a field has been set.
-func (o *UpdateSSHTarget) HasComment() bool {
-	if o != nil && o.Comment != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetComment gets a reference to the given string and assigns it to the Comment field.
-func (o *UpdateSSHTarget) SetComment(v string) {
-	o.Comment = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -583,9 +549,6 @@ func (o *UpdateSSHTarget) SetUpdateVersion(v bool) {
 
 func (o UpdateSSHTarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Comment != nil {
-		toSerialize["comment"] = o.Comment
-	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
 	}
