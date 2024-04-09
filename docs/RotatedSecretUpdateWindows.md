@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | Pointer to **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
+**MaxVersions** | Pointer to **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Name** | **string** | Rotated secret name | 
 **NewName** | Pointer to **string** | New item name | [optional] 
 **PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
@@ -26,7 +27,7 @@ Name | Type | Description | Notes
 **SecureAccessAllowExternalUser** | Pointer to **bool** | Allow providing external user for a domain users | [optional] [default to false]
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
 **SecureAccessHost** | Pointer to **[]string** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
-**SecureAccessRdpDomain** | Pointer to **string** | Required when the Dynamic Secret is used for a domain user | [optional] 
+**SecureAccessRdpDomain** | Pointer to **string** | Default domain name server. i.e. microsoft.com | [optional] 
 **SecureAccessRdpUser** | Pointer to **string** | Override the RDP Domain username | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -249,6 +250,31 @@ SetKey sets Key field to given value.
 `func (o *RotatedSecretUpdateWindows) HasKey() bool`
 
 HasKey returns a boolean if a field has been set.
+
+### GetMaxVersions
+
+`func (o *RotatedSecretUpdateWindows) GetMaxVersions() string`
+
+GetMaxVersions returns the MaxVersions field if non-nil, zero value otherwise.
+
+### GetMaxVersionsOk
+
+`func (o *RotatedSecretUpdateWindows) GetMaxVersionsOk() (*string, bool)`
+
+GetMaxVersionsOk returns a tuple with the MaxVersions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaxVersions
+
+`func (o *RotatedSecretUpdateWindows) SetMaxVersions(v string)`
+
+SetMaxVersions sets MaxVersions field to given value.
+
+### HasMaxVersions
+
+`func (o *RotatedSecretUpdateWindows) HasMaxVersions() bool`
+
+HasMaxVersions returns a boolean if a field has been set.
 
 ### GetName
 

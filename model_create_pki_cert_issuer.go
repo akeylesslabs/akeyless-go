@@ -37,6 +37,10 @@ type CreatePKICertIssuer struct {
 	CodeSigningFlag *bool `json:"code-signing-flag,omitempty"`
 	// A comma-separated list of countries that will be set in the issued certificate
 	Country *string `json:"country,omitempty"`
+	// Set this to allow the issuer will expose a CRL endpoint in the Gateway
+	CreatePrivateCrl *bool `json:"create-private-crl,omitempty"`
+	// Set this to allow the cert issuer will expose a public CRL endpoint
+	CreatePublicCrl *bool `json:"create-public-crl,omitempty"`
 	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
@@ -45,7 +49,7 @@ type CreatePKICertIssuer struct {
 	DestinationPath *string `json:"destination-path,omitempty"`
 	// How many days before the expiration of the certificate would you like to be notified.
 	ExpirationEventIn *[]string `json:"expiration-event-in,omitempty"`
-	// The GW cluster URL to issue the certificate from, required in Public CA mode
+	// The GW cluster URL to issue the certificate from, required in Public CA mode or to allow CRLs on private CA
 	GwClusterUrl *string `json:"gw-cluster-url,omitempty"`
 	// If set, the basic constraints extension will be added to certificate
 	IsCa *bool `json:"is-ca,omitempty"`
@@ -437,6 +441,70 @@ func (o *CreatePKICertIssuer) HasCountry() bool {
 // SetCountry gets a reference to the given string and assigns it to the Country field.
 func (o *CreatePKICertIssuer) SetCountry(v string) {
 	o.Country = &v
+}
+
+// GetCreatePrivateCrl returns the CreatePrivateCrl field value if set, zero value otherwise.
+func (o *CreatePKICertIssuer) GetCreatePrivateCrl() bool {
+	if o == nil || o.CreatePrivateCrl == nil {
+		var ret bool
+		return ret
+	}
+	return *o.CreatePrivateCrl
+}
+
+// GetCreatePrivateCrlOk returns a tuple with the CreatePrivateCrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreatePKICertIssuer) GetCreatePrivateCrlOk() (*bool, bool) {
+	if o == nil || o.CreatePrivateCrl == nil {
+		return nil, false
+	}
+	return o.CreatePrivateCrl, true
+}
+
+// HasCreatePrivateCrl returns a boolean if a field has been set.
+func (o *CreatePKICertIssuer) HasCreatePrivateCrl() bool {
+	if o != nil && o.CreatePrivateCrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatePrivateCrl gets a reference to the given bool and assigns it to the CreatePrivateCrl field.
+func (o *CreatePKICertIssuer) SetCreatePrivateCrl(v bool) {
+	o.CreatePrivateCrl = &v
+}
+
+// GetCreatePublicCrl returns the CreatePublicCrl field value if set, zero value otherwise.
+func (o *CreatePKICertIssuer) GetCreatePublicCrl() bool {
+	if o == nil || o.CreatePublicCrl == nil {
+		var ret bool
+		return ret
+	}
+	return *o.CreatePublicCrl
+}
+
+// GetCreatePublicCrlOk returns a tuple with the CreatePublicCrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreatePKICertIssuer) GetCreatePublicCrlOk() (*bool, bool) {
+	if o == nil || o.CreatePublicCrl == nil {
+		return nil, false
+	}
+	return o.CreatePublicCrl, true
+}
+
+// HasCreatePublicCrl returns a boolean if a field has been set.
+func (o *CreatePKICertIssuer) HasCreatePublicCrl() bool {
+	if o != nil && o.CreatePublicCrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatePublicCrl gets a reference to the given bool and assigns it to the CreatePublicCrl field.
+func (o *CreatePKICertIssuer) SetCreatePublicCrl(v bool) {
+	o.CreatePublicCrl = &v
 }
 
 // GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
@@ -1246,6 +1314,12 @@ func (o CreatePKICertIssuer) MarshalJSON() ([]byte, error) {
 	}
 	if o.Country != nil {
 		toSerialize["country"] = o.Country
+	}
+	if o.CreatePrivateCrl != nil {
+		toSerialize["create-private-crl"] = o.CreatePrivateCrl
+	}
+	if o.CreatePublicCrl != nil {
+		toSerialize["create-public-crl"] = o.CreatePublicCrl
 	}
 	if o.DeleteProtection != nil {
 		toSerialize["delete_protection"] = o.DeleteProtection

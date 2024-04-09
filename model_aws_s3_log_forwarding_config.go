@@ -19,7 +19,10 @@ import (
 type AwsS3LogForwardingConfig struct {
 	AwsAccessId *string `json:"aws_access_id,omitempty"`
 	AwsAccessKey *string `json:"aws_access_key,omitempty"`
+	AwsAuthType *string `json:"aws_auth_type,omitempty"`
 	AwsRegion *string `json:"aws_region,omitempty"`
+	AwsRoleArn *string `json:"aws_role_arn,omitempty"`
+	// deprecated
 	AwsUseGatewayCloudIdentity *bool `json:"aws_use_gateway_cloud_identity,omitempty"`
 	BucketName *string `json:"bucket_name,omitempty"`
 	LogFolder *string `json:"log_folder,omitempty"`
@@ -106,6 +109,38 @@ func (o *AwsS3LogForwardingConfig) SetAwsAccessKey(v string) {
 	o.AwsAccessKey = &v
 }
 
+// GetAwsAuthType returns the AwsAuthType field value if set, zero value otherwise.
+func (o *AwsS3LogForwardingConfig) GetAwsAuthType() string {
+	if o == nil || o.AwsAuthType == nil {
+		var ret string
+		return ret
+	}
+	return *o.AwsAuthType
+}
+
+// GetAwsAuthTypeOk returns a tuple with the AwsAuthType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AwsS3LogForwardingConfig) GetAwsAuthTypeOk() (*string, bool) {
+	if o == nil || o.AwsAuthType == nil {
+		return nil, false
+	}
+	return o.AwsAuthType, true
+}
+
+// HasAwsAuthType returns a boolean if a field has been set.
+func (o *AwsS3LogForwardingConfig) HasAwsAuthType() bool {
+	if o != nil && o.AwsAuthType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsAuthType gets a reference to the given string and assigns it to the AwsAuthType field.
+func (o *AwsS3LogForwardingConfig) SetAwsAuthType(v string) {
+	o.AwsAuthType = &v
+}
+
 // GetAwsRegion returns the AwsRegion field value if set, zero value otherwise.
 func (o *AwsS3LogForwardingConfig) GetAwsRegion() string {
 	if o == nil || o.AwsRegion == nil {
@@ -136,6 +171,38 @@ func (o *AwsS3LogForwardingConfig) HasAwsRegion() bool {
 // SetAwsRegion gets a reference to the given string and assigns it to the AwsRegion field.
 func (o *AwsS3LogForwardingConfig) SetAwsRegion(v string) {
 	o.AwsRegion = &v
+}
+
+// GetAwsRoleArn returns the AwsRoleArn field value if set, zero value otherwise.
+func (o *AwsS3LogForwardingConfig) GetAwsRoleArn() string {
+	if o == nil || o.AwsRoleArn == nil {
+		var ret string
+		return ret
+	}
+	return *o.AwsRoleArn
+}
+
+// GetAwsRoleArnOk returns a tuple with the AwsRoleArn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AwsS3LogForwardingConfig) GetAwsRoleArnOk() (*string, bool) {
+	if o == nil || o.AwsRoleArn == nil {
+		return nil, false
+	}
+	return o.AwsRoleArn, true
+}
+
+// HasAwsRoleArn returns a boolean if a field has been set.
+func (o *AwsS3LogForwardingConfig) HasAwsRoleArn() bool {
+	if o != nil && o.AwsRoleArn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsRoleArn gets a reference to the given string and assigns it to the AwsRoleArn field.
+func (o *AwsS3LogForwardingConfig) SetAwsRoleArn(v string) {
+	o.AwsRoleArn = &v
 }
 
 // GetAwsUseGatewayCloudIdentity returns the AwsUseGatewayCloudIdentity field value if set, zero value otherwise.
@@ -242,8 +309,14 @@ func (o AwsS3LogForwardingConfig) MarshalJSON() ([]byte, error) {
 	if o.AwsAccessKey != nil {
 		toSerialize["aws_access_key"] = o.AwsAccessKey
 	}
+	if o.AwsAuthType != nil {
+		toSerialize["aws_auth_type"] = o.AwsAuthType
+	}
 	if o.AwsRegion != nil {
 		toSerialize["aws_region"] = o.AwsRegion
+	}
+	if o.AwsRoleArn != nil {
+		toSerialize["aws_role_arn"] = o.AwsRoleArn
 	}
 	if o.AwsUseGatewayCloudIdentity != nil {
 		toSerialize["aws_use_gateway_cloud_identity"] = o.AwsUseGatewayCloudIdentity

@@ -29,7 +29,7 @@ type UpdateAccountSettings struct {
 	DefaultKeyName *string `json:"default-key-name,omitempty"`
 	// Set the default ttl in minutes for sharing item number between 60 and 43200
 	DefaultShareLinkTtlMinutes *string `json:"default-share-link-ttl-minutes,omitempty"`
-	// If set to true, new item version will be created on each update [true/false]
+	// If set to true, new versions is enabled by default
 	DefaultVersioning *string `json:"default-versioning,omitempty"`
 	// Set to update protection with classic keys state [true/false]
 	DpEnableClassicKeyProtection *string `json:"dp-enable-classic-key-protection,omitempty"`
@@ -37,6 +37,8 @@ type UpdateAccountSettings struct {
 	DynamicSecretMaxTtl *int64 `json:"dynamic-secret-max-ttl,omitempty"`
 	// Set a maximum ttl for dynamic secrets [true/false]
 	DynamicSecretMaxTtlEnable *string `json:"dynamic-secret-max-ttl-enable,omitempty"`
+	// If set to true, new version will be created on update
+	ForceNewVersions *string `json:"force-new-versions,omitempty"`
 	// Characters that cannot be used for items/targets/roles/auths/event_forwarder names. Empty string will enforce nothing.
 	InvalidCharacters *string `json:"invalid-characters,omitempty"`
 	// VersionSettingsObjectType defines object types for account version settings
@@ -428,6 +430,38 @@ func (o *UpdateAccountSettings) HasDynamicSecretMaxTtlEnable() bool {
 // SetDynamicSecretMaxTtlEnable gets a reference to the given string and assigns it to the DynamicSecretMaxTtlEnable field.
 func (o *UpdateAccountSettings) SetDynamicSecretMaxTtlEnable(v string) {
 	o.DynamicSecretMaxTtlEnable = &v
+}
+
+// GetForceNewVersions returns the ForceNewVersions field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetForceNewVersions() string {
+	if o == nil || o.ForceNewVersions == nil {
+		var ret string
+		return ret
+	}
+	return *o.ForceNewVersions
+}
+
+// GetForceNewVersionsOk returns a tuple with the ForceNewVersions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetForceNewVersionsOk() (*string, bool) {
+	if o == nil || o.ForceNewVersions == nil {
+		return nil, false
+	}
+	return o.ForceNewVersions, true
+}
+
+// HasForceNewVersions returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasForceNewVersions() bool {
+	if o != nil && o.ForceNewVersions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetForceNewVersions gets a reference to the given string and assigns it to the ForceNewVersions field.
+func (o *UpdateAccountSettings) SetForceNewVersions(v string) {
+	o.ForceNewVersions = &v
 }
 
 // GetInvalidCharacters returns the InvalidCharacters field value if set, zero value otherwise.
@@ -1197,6 +1231,9 @@ func (o UpdateAccountSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.DynamicSecretMaxTtlEnable != nil {
 		toSerialize["dynamic-secret-max-ttl-enable"] = o.DynamicSecretMaxTtlEnable
+	}
+	if o.ForceNewVersions != nil {
+		toSerialize["force-new-versions"] = o.ForceNewVersions
 	}
 	if o.InvalidCharacters != nil {
 		toSerialize["invalid-characters"] = o.InvalidCharacters

@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **HostProvider** | Pointer to **string** | Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret | [optional] [default to "explicit"]
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
+**MaxVersions** | Pointer to **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Name** | **string** | Rotated secret name | 
 **PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
 **RotateAfterDisconnect** | Pointer to **string** | Rotate the value of the secret after SRA session ends [true/false] | [optional] [default to "false"]
@@ -22,9 +23,11 @@ Name | Type | Description | Notes
 **RotatorType** | **string** | The rotator type. options: [target/ldap] | 
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
 **SecureAccessHost** | Pointer to **[]string** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
-**SecureAccessRdpDomain** | Pointer to **string** | Required when the Dynamic Secret is used for a domain user | [optional] 
+**SecureAccessRdpDomain** | Pointer to **string** | Default domain name server. i.e. microsoft.com | [optional] 
 **SecureAccessUrl** | Pointer to **string** | Destination URL to inject secrets | [optional] 
 **SecureAccessWeb** | Pointer to **bool** | Enable Web Secure Remote Access | [optional] [default to false]
+**SecureAccessWebBrowsing** | Pointer to **bool** | Secure browser via Akeyless Web Access Bastion | [optional] [default to false]
+**SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless Web Access Bastion | [optional] [default to false]
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **Target** | Pointer to **[]string** | A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer and ldap rotated secret, To specify multiple targets use argument multiple times | [optional] 
 **TargetName** | **string** | Target name | 
@@ -251,6 +254,31 @@ SetKey sets Key field to given value.
 `func (o *RotatedSecretCreateLdap) HasKey() bool`
 
 HasKey returns a boolean if a field has been set.
+
+### GetMaxVersions
+
+`func (o *RotatedSecretCreateLdap) GetMaxVersions() string`
+
+GetMaxVersions returns the MaxVersions field if non-nil, zero value otherwise.
+
+### GetMaxVersionsOk
+
+`func (o *RotatedSecretCreateLdap) GetMaxVersionsOk() (*string, bool)`
+
+GetMaxVersionsOk returns a tuple with the MaxVersions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaxVersions
+
+`func (o *RotatedSecretCreateLdap) SetMaxVersions(v string)`
+
+SetMaxVersions sets MaxVersions field to given value.
+
+### HasMaxVersions
+
+`func (o *RotatedSecretCreateLdap) HasMaxVersions() bool`
+
+HasMaxVersions returns a boolean if a field has been set.
 
 ### GetName
 
@@ -566,6 +594,56 @@ SetSecureAccessWeb sets SecureAccessWeb field to given value.
 `func (o *RotatedSecretCreateLdap) HasSecureAccessWeb() bool`
 
 HasSecureAccessWeb returns a boolean if a field has been set.
+
+### GetSecureAccessWebBrowsing
+
+`func (o *RotatedSecretCreateLdap) GetSecureAccessWebBrowsing() bool`
+
+GetSecureAccessWebBrowsing returns the SecureAccessWebBrowsing field if non-nil, zero value otherwise.
+
+### GetSecureAccessWebBrowsingOk
+
+`func (o *RotatedSecretCreateLdap) GetSecureAccessWebBrowsingOk() (*bool, bool)`
+
+GetSecureAccessWebBrowsingOk returns a tuple with the SecureAccessWebBrowsing field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessWebBrowsing
+
+`func (o *RotatedSecretCreateLdap) SetSecureAccessWebBrowsing(v bool)`
+
+SetSecureAccessWebBrowsing sets SecureAccessWebBrowsing field to given value.
+
+### HasSecureAccessWebBrowsing
+
+`func (o *RotatedSecretCreateLdap) HasSecureAccessWebBrowsing() bool`
+
+HasSecureAccessWebBrowsing returns a boolean if a field has been set.
+
+### GetSecureAccessWebProxy
+
+`func (o *RotatedSecretCreateLdap) GetSecureAccessWebProxy() bool`
+
+GetSecureAccessWebProxy returns the SecureAccessWebProxy field if non-nil, zero value otherwise.
+
+### GetSecureAccessWebProxyOk
+
+`func (o *RotatedSecretCreateLdap) GetSecureAccessWebProxyOk() (*bool, bool)`
+
+GetSecureAccessWebProxyOk returns a tuple with the SecureAccessWebProxy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessWebProxy
+
+`func (o *RotatedSecretCreateLdap) SetSecureAccessWebProxy(v bool)`
+
+SetSecureAccessWebProxy sets SecureAccessWebProxy field to given value.
+
+### HasSecureAccessWebProxy
+
+`func (o *RotatedSecretCreateLdap) HasSecureAccessWebProxy() bool`
+
+HasSecureAccessWebProxy returns a boolean if a field has been set.
 
 ### GetTags
 

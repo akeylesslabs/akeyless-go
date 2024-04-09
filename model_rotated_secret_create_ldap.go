@@ -32,6 +32,8 @@ type RotatedSecretCreateLdap struct {
 	Json *bool `json:"json,omitempty"`
 	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
+	// Set the maximum number of versions, limited by the account settings defaults.
+	MaxVersions *string `json:"max-versions,omitempty"`
 	// Rotated secret name
 	Name string `json:"name"`
 	// The length of the password to be generated
@@ -52,12 +54,16 @@ type RotatedSecretCreateLdap struct {
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
 	// Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
 	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
-	// Required when the Dynamic Secret is used for a domain user
+	// Default domain name server. i.e. microsoft.com
 	SecureAccessRdpDomain *string `json:"secure-access-rdp-domain,omitempty"`
 	// Destination URL to inject secrets
 	SecureAccessUrl *string `json:"secure-access-url,omitempty"`
 	// Enable Web Secure Remote Access
 	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
+	// Secure browser via Akeyless Web Access Bastion
+	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
+	// Web-Proxy via Akeyless Web Access Bastion
+	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
 	// Add tags attached to this object
 	Tags *[]string `json:"tags,omitempty"`
 	// A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer and ldap rotated secret, To specify multiple targets use argument multiple times
@@ -92,6 +98,10 @@ func NewRotatedSecretCreateLdap(name string, rotatorType string, targetName stri
 	this.RotatorType = rotatorType
 	var secureAccessWeb bool = false
 	this.SecureAccessWeb = &secureAccessWeb
+	var secureAccessWebBrowsing bool = false
+	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
+	var secureAccessWebProxy bool = false
+	this.SecureAccessWebProxy = &secureAccessWebProxy
 	this.TargetName = targetName
 	var userAttribute string = "cn"
 	this.UserAttribute = &userAttribute
@@ -113,6 +123,10 @@ func NewRotatedSecretCreateLdapWithDefaults() *RotatedSecretCreateLdap {
 	this.RotateAfterDisconnect = &rotateAfterDisconnect
 	var secureAccessWeb bool = false
 	this.SecureAccessWeb = &secureAccessWeb
+	var secureAccessWebBrowsing bool = false
+	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
+	var secureAccessWebProxy bool = false
+	this.SecureAccessWebProxy = &secureAccessWebProxy
 	var userAttribute string = "cn"
 	this.UserAttribute = &userAttribute
 	return &this
@@ -372,6 +386,38 @@ func (o *RotatedSecretCreateLdap) HasKey() bool {
 // SetKey gets a reference to the given string and assigns it to the Key field.
 func (o *RotatedSecretCreateLdap) SetKey(v string) {
 	o.Key = &v
+}
+
+// GetMaxVersions returns the MaxVersions field value if set, zero value otherwise.
+func (o *RotatedSecretCreateLdap) GetMaxVersions() string {
+	if o == nil || o.MaxVersions == nil {
+		var ret string
+		return ret
+	}
+	return *o.MaxVersions
+}
+
+// GetMaxVersionsOk returns a tuple with the MaxVersions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateLdap) GetMaxVersionsOk() (*string, bool) {
+	if o == nil || o.MaxVersions == nil {
+		return nil, false
+	}
+	return o.MaxVersions, true
+}
+
+// HasMaxVersions returns a boolean if a field has been set.
+func (o *RotatedSecretCreateLdap) HasMaxVersions() bool {
+	if o != nil && o.MaxVersions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxVersions gets a reference to the given string and assigns it to the MaxVersions field.
+func (o *RotatedSecretCreateLdap) SetMaxVersions(v string) {
+	o.MaxVersions = &v
 }
 
 // GetName returns the Name field value
@@ -774,6 +820,70 @@ func (o *RotatedSecretCreateLdap) SetSecureAccessWeb(v bool) {
 	o.SecureAccessWeb = &v
 }
 
+// GetSecureAccessWebBrowsing returns the SecureAccessWebBrowsing field value if set, zero value otherwise.
+func (o *RotatedSecretCreateLdap) GetSecureAccessWebBrowsing() bool {
+	if o == nil || o.SecureAccessWebBrowsing == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessWebBrowsing
+}
+
+// GetSecureAccessWebBrowsingOk returns a tuple with the SecureAccessWebBrowsing field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateLdap) GetSecureAccessWebBrowsingOk() (*bool, bool) {
+	if o == nil || o.SecureAccessWebBrowsing == nil {
+		return nil, false
+	}
+	return o.SecureAccessWebBrowsing, true
+}
+
+// HasSecureAccessWebBrowsing returns a boolean if a field has been set.
+func (o *RotatedSecretCreateLdap) HasSecureAccessWebBrowsing() bool {
+	if o != nil && o.SecureAccessWebBrowsing != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessWebBrowsing gets a reference to the given bool and assigns it to the SecureAccessWebBrowsing field.
+func (o *RotatedSecretCreateLdap) SetSecureAccessWebBrowsing(v bool) {
+	o.SecureAccessWebBrowsing = &v
+}
+
+// GetSecureAccessWebProxy returns the SecureAccessWebProxy field value if set, zero value otherwise.
+func (o *RotatedSecretCreateLdap) GetSecureAccessWebProxy() bool {
+	if o == nil || o.SecureAccessWebProxy == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessWebProxy
+}
+
+// GetSecureAccessWebProxyOk returns a tuple with the SecureAccessWebProxy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateLdap) GetSecureAccessWebProxyOk() (*bool, bool) {
+	if o == nil || o.SecureAccessWebProxy == nil {
+		return nil, false
+	}
+	return o.SecureAccessWebProxy, true
+}
+
+// HasSecureAccessWebProxy returns a boolean if a field has been set.
+func (o *RotatedSecretCreateLdap) HasSecureAccessWebProxy() bool {
+	if o != nil && o.SecureAccessWebProxy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessWebProxy gets a reference to the given bool and assigns it to the SecureAccessWebProxy field.
+func (o *RotatedSecretCreateLdap) SetSecureAccessWebProxy(v bool) {
+	o.SecureAccessWebProxy = &v
+}
+
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *RotatedSecretCreateLdap) GetTags() []string {
 	if o == nil || o.Tags == nil {
@@ -1016,6 +1126,9 @@ func (o RotatedSecretCreateLdap) MarshalJSON() ([]byte, error) {
 	if o.Key != nil {
 		toSerialize["key"] = o.Key
 	}
+	if o.MaxVersions != nil {
+		toSerialize["max-versions"] = o.MaxVersions
+	}
 	if true {
 		toSerialize["name"] = o.Name
 	}
@@ -1054,6 +1167,12 @@ func (o RotatedSecretCreateLdap) MarshalJSON() ([]byte, error) {
 	}
 	if o.SecureAccessWeb != nil {
 		toSerialize["secure-access-web"] = o.SecureAccessWeb
+	}
+	if o.SecureAccessWebBrowsing != nil {
+		toSerialize["secure-access-web-browsing"] = o.SecureAccessWebBrowsing
+	}
+	if o.SecureAccessWebProxy != nil {
+		toSerialize["secure-access-web-proxy"] = o.SecureAccessWebProxy
 	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Description** | Pointer to **string** | Description of the object | [optional] [default to "default_comment"]
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**MaxVersions** | Pointer to **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Name** | **string** | Target name | 
 **NewComment** | Pointer to **string** | Deprecated - use description | [optional] [default to "default_comment"]
 **NewName** | Pointer to **string** | New Target name | [optional] 
@@ -80,6 +81,31 @@ SetJson sets Json field to given value.
 `func (o *UpdateTarget) HasJson() bool`
 
 HasJson returns a boolean if a field has been set.
+
+### GetMaxVersions
+
+`func (o *UpdateTarget) GetMaxVersions() string`
+
+GetMaxVersions returns the MaxVersions field if non-nil, zero value otherwise.
+
+### GetMaxVersionsOk
+
+`func (o *UpdateTarget) GetMaxVersionsOk() (*string, bool)`
+
+GetMaxVersionsOk returns a tuple with the MaxVersions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaxVersions
+
+`func (o *UpdateTarget) SetMaxVersions(v string)`
+
+SetMaxVersions sets MaxVersions field to given value.
+
+### HasMaxVersions
+
+`func (o *UpdateTarget) HasMaxVersions() bool`
+
+HasMaxVersions returns a boolean if a field has been set.
 
 ### GetName
 

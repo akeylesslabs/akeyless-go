@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Computers** | Pointer to **int64** |  | [optional] 
 **DurationTime** | Pointer to **string** |  | [optional] 
 **Error** | Pointer to **string** |  | [optional] 
 **LastStatusMessage** | Pointer to **string** |  | [optional] 
@@ -37,6 +38,31 @@ will change when the set of required properties is changed
 NewMigrationStatusReplyObjWithDefaults instantiates a new MigrationStatusReplyObj object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetComputers
+
+`func (o *MigrationStatusReplyObj) GetComputers() int64`
+
+GetComputers returns the Computers field if non-nil, zero value otherwise.
+
+### GetComputersOk
+
+`func (o *MigrationStatusReplyObj) GetComputersOk() (*int64, bool)`
+
+GetComputersOk returns a tuple with the Computers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetComputers
+
+`func (o *MigrationStatusReplyObj) SetComputers(v int64)`
+
+SetComputers sets Computers field to given value.
+
+### HasComputers
+
+`func (o *MigrationStatusReplyObj) HasComputers() bool`
+
+HasComputers returns a boolean if a field has been set.
 
 ### GetDurationTime
 

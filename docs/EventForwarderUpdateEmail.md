@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **Key** | Pointer to **string** | The name of a key that used to encrypt the EventForwarder secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | EventForwarder name | 
 **NewName** | Pointer to **string** | New EventForwarder name | [optional] 
+**OverrideUrl** | Pointer to **string** | Override Akeyless default URL with your Gateway url (port 18888) | [optional] 
 **TargetsEventSourceLocations** | Pointer to **[]string** | Targets Event sources | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -328,6 +329,31 @@ SetNewName sets NewName field to given value.
 `func (o *EventForwarderUpdateEmail) HasNewName() bool`
 
 HasNewName returns a boolean if a field has been set.
+
+### GetOverrideUrl
+
+`func (o *EventForwarderUpdateEmail) GetOverrideUrl() string`
+
+GetOverrideUrl returns the OverrideUrl field if non-nil, zero value otherwise.
+
+### GetOverrideUrlOk
+
+`func (o *EventForwarderUpdateEmail) GetOverrideUrlOk() (*string, bool)`
+
+GetOverrideUrlOk returns a tuple with the OverrideUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOverrideUrl
+
+`func (o *EventForwarderUpdateEmail) SetOverrideUrl(v string)`
+
+SetOverrideUrl sets OverrideUrl field to given value.
+
+### HasOverrideUrl
+
+`func (o *EventForwarderUpdateEmail) HasOverrideUrl() bool`
+
+HasOverrideUrl returns a boolean if a field has been set.
 
 ### GetTargetsEventSourceLocations
 

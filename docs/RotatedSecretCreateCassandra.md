@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
+**MaxVersions** | Pointer to **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Name** | **string** | Rotated secret name | 
 **PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
 **RotatedPassword** | Pointer to **string** | rotated-username password (relevant only for rotator-type&#x3D;password) | [optional] 
@@ -190,6 +191,31 @@ SetKey sets Key field to given value.
 `func (o *RotatedSecretCreateCassandra) HasKey() bool`
 
 HasKey returns a boolean if a field has been set.
+
+### GetMaxVersions
+
+`func (o *RotatedSecretCreateCassandra) GetMaxVersions() string`
+
+GetMaxVersions returns the MaxVersions field if non-nil, zero value otherwise.
+
+### GetMaxVersionsOk
+
+`func (o *RotatedSecretCreateCassandra) GetMaxVersionsOk() (*string, bool)`
+
+GetMaxVersionsOk returns a tuple with the MaxVersions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaxVersions
+
+`func (o *RotatedSecretCreateCassandra) SetMaxVersions(v string)`
+
+SetMaxVersions sets MaxVersions field to given value.
+
+### HasMaxVersions
+
+`func (o *RotatedSecretCreateCassandra) HasMaxVersions() bool`
+
+HasMaxVersions returns a boolean if a field has been set.
 
 ### GetName
 

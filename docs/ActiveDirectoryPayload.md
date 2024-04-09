@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **LocalUsersRotatedSecretsPathTemplate** | Pointer to **string** |  | [optional] 
 **OsFilter** | Pointer to **string** |  | [optional] 
 **SshPort** | Pointer to **string** |  | [optional] 
+**TargetFormat** | Pointer to **string** |  | [optional] 
 **TargetsType** | Pointer to **string** |  | [optional] 
 **UserBaseDn** | Pointer to **string** |  | [optional] 
 **UserGroups** | Pointer to **[]string** |  | [optional] 
@@ -444,6 +445,31 @@ SetSshPort sets SshPort field to given value.
 `func (o *ActiveDirectoryPayload) HasSshPort() bool`
 
 HasSshPort returns a boolean if a field has been set.
+
+### GetTargetFormat
+
+`func (o *ActiveDirectoryPayload) GetTargetFormat() string`
+
+GetTargetFormat returns the TargetFormat field if non-nil, zero value otherwise.
+
+### GetTargetFormatOk
+
+`func (o *ActiveDirectoryPayload) GetTargetFormatOk() (*string, bool)`
+
+GetTargetFormatOk returns a tuple with the TargetFormat field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetFormat
+
+`func (o *ActiveDirectoryPayload) SetTargetFormat(v string)`
+
+SetTargetFormat sets TargetFormat field to given value.
+
+### HasTargetFormat
+
+`func (o *ActiveDirectoryPayload) HasTargetFormat() bool`
+
+HasTargetFormat returns a boolean if a field has been set.
 
 ### GetTargetsType
 

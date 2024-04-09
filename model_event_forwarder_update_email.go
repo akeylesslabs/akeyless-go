@@ -41,6 +41,8 @@ type EventForwarderUpdateEmail struct {
 	Name string `json:"name"`
 	// New EventForwarder name
 	NewName *string `json:"new-name,omitempty"`
+	// Override Akeyless default URL with your Gateway url (port 18888)
+	OverrideUrl *string `json:"override-url,omitempty"`
 	// Targets Event sources
 	TargetsEventSourceLocations *[]string `json:"targets-event-source-locations,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -444,6 +446,38 @@ func (o *EventForwarderUpdateEmail) SetNewName(v string) {
 	o.NewName = &v
 }
 
+// GetOverrideUrl returns the OverrideUrl field value if set, zero value otherwise.
+func (o *EventForwarderUpdateEmail) GetOverrideUrl() string {
+	if o == nil || o.OverrideUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.OverrideUrl
+}
+
+// GetOverrideUrlOk returns a tuple with the OverrideUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventForwarderUpdateEmail) GetOverrideUrlOk() (*string, bool) {
+	if o == nil || o.OverrideUrl == nil {
+		return nil, false
+	}
+	return o.OverrideUrl, true
+}
+
+// HasOverrideUrl returns a boolean if a field has been set.
+func (o *EventForwarderUpdateEmail) HasOverrideUrl() bool {
+	if o != nil && o.OverrideUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOverrideUrl gets a reference to the given string and assigns it to the OverrideUrl field.
+func (o *EventForwarderUpdateEmail) SetOverrideUrl(v string) {
+	o.OverrideUrl = &v
+}
+
 // GetTargetsEventSourceLocations returns the TargetsEventSourceLocations field value if set, zero value otherwise.
 func (o *EventForwarderUpdateEmail) GetTargetsEventSourceLocations() []string {
 	if o == nil || o.TargetsEventSourceLocations == nil {
@@ -577,6 +611,9 @@ func (o EventForwarderUpdateEmail) MarshalJSON() ([]byte, error) {
 	}
 	if o.NewName != nil {
 		toSerialize["new-name"] = o.NewName
+	}
+	if o.OverrideUrl != nil {
+		toSerialize["override-url"] = o.OverrideUrl
 	}
 	if o.TargetsEventSourceLocations != nil {
 		toSerialize["targets-event-source-locations"] = o.TargetsEventSourceLocations

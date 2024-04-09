@@ -35,16 +35,30 @@ type RotatedSecretCreateAzure struct {
 	Json *bool `json:"json,omitempty"`
 	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
+	// Set the maximum number of versions, limited by the account settings defaults.
+	MaxVersions *string `json:"max-versions,omitempty"`
 	// Rotated secret name
 	Name string `json:"name"`
 	// The length of the password to be generated
 	PasswordLength *string `json:"password-length,omitempty"`
+	// Rotate the value of the secret after SRA session ends [true/false]
+	RotateAfterDisconnect *string `json:"rotate-after-disconnect,omitempty"`
 	// The Hour of the rotation in UTC
 	RotationHour *int32 `json:"rotation-hour,omitempty"`
 	// The number of days to wait between every automatic key rotation (1-365)
 	RotationInterval *string `json:"rotation-interval,omitempty"`
-	// The rotator type. options: [target/api-key/azure-storage-account]
+	// The rotator type. options: [target/password/api-key/azure-storage-account]
 	RotatorType string `json:"rotator-type"`
+	// Enable/Disable secure remote access [true/false]
+	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Destination URL to inject secrets
+	SecureAccessUrl *string `json:"secure-access-url,omitempty"`
+	// Enable Web Secure Remote Access
+	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
+	// Secure browser via Akeyless Web Access Bastion
+	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
+	// Web-Proxy via Akeyless Web Access Bastion
+	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
 	// The name of the storage account key to rotate [key1/key2/kerb1/kerb2] (relevat to azure-storage-account)
 	StorageAccountKeyName *string `json:"storage-account-key-name,omitempty"`
 	// Add tags attached to this object
@@ -55,6 +69,8 @@ type RotatedSecretCreateAzure struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// The user principal name to rotate his password (relevant only for rotator-type=password)
+	Username *string `json:"username,omitempty"`
 }
 
 // NewRotatedSecretCreateAzure instantiates a new RotatedSecretCreateAzure object
@@ -68,7 +84,15 @@ func NewRotatedSecretCreateAzure(name string, rotatorType string, targetName str
 	var json bool = false
 	this.Json = &json
 	this.Name = name
+	var rotateAfterDisconnect string = "false"
+	this.RotateAfterDisconnect = &rotateAfterDisconnect
 	this.RotatorType = rotatorType
+	var secureAccessWeb bool = false
+	this.SecureAccessWeb = &secureAccessWeb
+	var secureAccessWebBrowsing bool = false
+	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
+	var secureAccessWebProxy bool = false
+	this.SecureAccessWebProxy = &secureAccessWebProxy
 	this.TargetName = targetName
 	return &this
 }
@@ -82,6 +106,14 @@ func NewRotatedSecretCreateAzureWithDefaults() *RotatedSecretCreateAzure {
 	this.AuthenticationCredentials = &authenticationCredentials
 	var json bool = false
 	this.Json = &json
+	var rotateAfterDisconnect string = "false"
+	this.RotateAfterDisconnect = &rotateAfterDisconnect
+	var secureAccessWeb bool = false
+	this.SecureAccessWeb = &secureAccessWeb
+	var secureAccessWebBrowsing bool = false
+	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
+	var secureAccessWebProxy bool = false
+	this.SecureAccessWebProxy = &secureAccessWebProxy
 	return &this
 }
 
@@ -373,6 +405,38 @@ func (o *RotatedSecretCreateAzure) SetKey(v string) {
 	o.Key = &v
 }
 
+// GetMaxVersions returns the MaxVersions field value if set, zero value otherwise.
+func (o *RotatedSecretCreateAzure) GetMaxVersions() string {
+	if o == nil || o.MaxVersions == nil {
+		var ret string
+		return ret
+	}
+	return *o.MaxVersions
+}
+
+// GetMaxVersionsOk returns a tuple with the MaxVersions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateAzure) GetMaxVersionsOk() (*string, bool) {
+	if o == nil || o.MaxVersions == nil {
+		return nil, false
+	}
+	return o.MaxVersions, true
+}
+
+// HasMaxVersions returns a boolean if a field has been set.
+func (o *RotatedSecretCreateAzure) HasMaxVersions() bool {
+	if o != nil && o.MaxVersions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxVersions gets a reference to the given string and assigns it to the MaxVersions field.
+func (o *RotatedSecretCreateAzure) SetMaxVersions(v string) {
+	o.MaxVersions = &v
+}
+
 // GetName returns the Name field value
 func (o *RotatedSecretCreateAzure) GetName() string {
 	if o == nil  {
@@ -427,6 +491,38 @@ func (o *RotatedSecretCreateAzure) HasPasswordLength() bool {
 // SetPasswordLength gets a reference to the given string and assigns it to the PasswordLength field.
 func (o *RotatedSecretCreateAzure) SetPasswordLength(v string) {
 	o.PasswordLength = &v
+}
+
+// GetRotateAfterDisconnect returns the RotateAfterDisconnect field value if set, zero value otherwise.
+func (o *RotatedSecretCreateAzure) GetRotateAfterDisconnect() string {
+	if o == nil || o.RotateAfterDisconnect == nil {
+		var ret string
+		return ret
+	}
+	return *o.RotateAfterDisconnect
+}
+
+// GetRotateAfterDisconnectOk returns a tuple with the RotateAfterDisconnect field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateAzure) GetRotateAfterDisconnectOk() (*string, bool) {
+	if o == nil || o.RotateAfterDisconnect == nil {
+		return nil, false
+	}
+	return o.RotateAfterDisconnect, true
+}
+
+// HasRotateAfterDisconnect returns a boolean if a field has been set.
+func (o *RotatedSecretCreateAzure) HasRotateAfterDisconnect() bool {
+	if o != nil && o.RotateAfterDisconnect != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRotateAfterDisconnect gets a reference to the given string and assigns it to the RotateAfterDisconnect field.
+func (o *RotatedSecretCreateAzure) SetRotateAfterDisconnect(v string) {
+	o.RotateAfterDisconnect = &v
 }
 
 // GetRotationHour returns the RotationHour field value if set, zero value otherwise.
@@ -515,6 +611,166 @@ func (o *RotatedSecretCreateAzure) GetRotatorTypeOk() (*string, bool) {
 // SetRotatorType sets field value
 func (o *RotatedSecretCreateAzure) SetRotatorType(v string) {
 	o.RotatorType = v
+}
+
+// GetSecureAccessEnable returns the SecureAccessEnable field value if set, zero value otherwise.
+func (o *RotatedSecretCreateAzure) GetSecureAccessEnable() string {
+	if o == nil || o.SecureAccessEnable == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessEnable
+}
+
+// GetSecureAccessEnableOk returns a tuple with the SecureAccessEnable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateAzure) GetSecureAccessEnableOk() (*string, bool) {
+	if o == nil || o.SecureAccessEnable == nil {
+		return nil, false
+	}
+	return o.SecureAccessEnable, true
+}
+
+// HasSecureAccessEnable returns a boolean if a field has been set.
+func (o *RotatedSecretCreateAzure) HasSecureAccessEnable() bool {
+	if o != nil && o.SecureAccessEnable != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessEnable gets a reference to the given string and assigns it to the SecureAccessEnable field.
+func (o *RotatedSecretCreateAzure) SetSecureAccessEnable(v string) {
+	o.SecureAccessEnable = &v
+}
+
+// GetSecureAccessUrl returns the SecureAccessUrl field value if set, zero value otherwise.
+func (o *RotatedSecretCreateAzure) GetSecureAccessUrl() string {
+	if o == nil || o.SecureAccessUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessUrl
+}
+
+// GetSecureAccessUrlOk returns a tuple with the SecureAccessUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateAzure) GetSecureAccessUrlOk() (*string, bool) {
+	if o == nil || o.SecureAccessUrl == nil {
+		return nil, false
+	}
+	return o.SecureAccessUrl, true
+}
+
+// HasSecureAccessUrl returns a boolean if a field has been set.
+func (o *RotatedSecretCreateAzure) HasSecureAccessUrl() bool {
+	if o != nil && o.SecureAccessUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessUrl gets a reference to the given string and assigns it to the SecureAccessUrl field.
+func (o *RotatedSecretCreateAzure) SetSecureAccessUrl(v string) {
+	o.SecureAccessUrl = &v
+}
+
+// GetSecureAccessWeb returns the SecureAccessWeb field value if set, zero value otherwise.
+func (o *RotatedSecretCreateAzure) GetSecureAccessWeb() bool {
+	if o == nil || o.SecureAccessWeb == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessWeb
+}
+
+// GetSecureAccessWebOk returns a tuple with the SecureAccessWeb field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateAzure) GetSecureAccessWebOk() (*bool, bool) {
+	if o == nil || o.SecureAccessWeb == nil {
+		return nil, false
+	}
+	return o.SecureAccessWeb, true
+}
+
+// HasSecureAccessWeb returns a boolean if a field has been set.
+func (o *RotatedSecretCreateAzure) HasSecureAccessWeb() bool {
+	if o != nil && o.SecureAccessWeb != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessWeb gets a reference to the given bool and assigns it to the SecureAccessWeb field.
+func (o *RotatedSecretCreateAzure) SetSecureAccessWeb(v bool) {
+	o.SecureAccessWeb = &v
+}
+
+// GetSecureAccessWebBrowsing returns the SecureAccessWebBrowsing field value if set, zero value otherwise.
+func (o *RotatedSecretCreateAzure) GetSecureAccessWebBrowsing() bool {
+	if o == nil || o.SecureAccessWebBrowsing == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessWebBrowsing
+}
+
+// GetSecureAccessWebBrowsingOk returns a tuple with the SecureAccessWebBrowsing field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateAzure) GetSecureAccessWebBrowsingOk() (*bool, bool) {
+	if o == nil || o.SecureAccessWebBrowsing == nil {
+		return nil, false
+	}
+	return o.SecureAccessWebBrowsing, true
+}
+
+// HasSecureAccessWebBrowsing returns a boolean if a field has been set.
+func (o *RotatedSecretCreateAzure) HasSecureAccessWebBrowsing() bool {
+	if o != nil && o.SecureAccessWebBrowsing != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessWebBrowsing gets a reference to the given bool and assigns it to the SecureAccessWebBrowsing field.
+func (o *RotatedSecretCreateAzure) SetSecureAccessWebBrowsing(v bool) {
+	o.SecureAccessWebBrowsing = &v
+}
+
+// GetSecureAccessWebProxy returns the SecureAccessWebProxy field value if set, zero value otherwise.
+func (o *RotatedSecretCreateAzure) GetSecureAccessWebProxy() bool {
+	if o == nil || o.SecureAccessWebProxy == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessWebProxy
+}
+
+// GetSecureAccessWebProxyOk returns a tuple with the SecureAccessWebProxy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateAzure) GetSecureAccessWebProxyOk() (*bool, bool) {
+	if o == nil || o.SecureAccessWebProxy == nil {
+		return nil, false
+	}
+	return o.SecureAccessWebProxy, true
+}
+
+// HasSecureAccessWebProxy returns a boolean if a field has been set.
+func (o *RotatedSecretCreateAzure) HasSecureAccessWebProxy() bool {
+	if o != nil && o.SecureAccessWebProxy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessWebProxy gets a reference to the given bool and assigns it to the SecureAccessWebProxy field.
+func (o *RotatedSecretCreateAzure) SetSecureAccessWebProxy(v bool) {
+	o.SecureAccessWebProxy = &v
 }
 
 // GetStorageAccountKeyName returns the StorageAccountKeyName field value if set, zero value otherwise.
@@ -669,6 +925,38 @@ func (o *RotatedSecretCreateAzure) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *RotatedSecretCreateAzure) GetUsername() string {
+	if o == nil || o.Username == nil {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateAzure) GetUsernameOk() (*string, bool) {
+	if o == nil || o.Username == nil {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *RotatedSecretCreateAzure) HasUsername() bool {
+	if o != nil && o.Username != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *RotatedSecretCreateAzure) SetUsername(v string) {
+	o.Username = &v
+}
+
 func (o RotatedSecretCreateAzure) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ApiId != nil {
@@ -698,11 +986,17 @@ func (o RotatedSecretCreateAzure) MarshalJSON() ([]byte, error) {
 	if o.Key != nil {
 		toSerialize["key"] = o.Key
 	}
+	if o.MaxVersions != nil {
+		toSerialize["max-versions"] = o.MaxVersions
+	}
 	if true {
 		toSerialize["name"] = o.Name
 	}
 	if o.PasswordLength != nil {
 		toSerialize["password-length"] = o.PasswordLength
+	}
+	if o.RotateAfterDisconnect != nil {
+		toSerialize["rotate-after-disconnect"] = o.RotateAfterDisconnect
 	}
 	if o.RotationHour != nil {
 		toSerialize["rotation-hour"] = o.RotationHour
@@ -712,6 +1006,21 @@ func (o RotatedSecretCreateAzure) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["rotator-type"] = o.RotatorType
+	}
+	if o.SecureAccessEnable != nil {
+		toSerialize["secure-access-enable"] = o.SecureAccessEnable
+	}
+	if o.SecureAccessUrl != nil {
+		toSerialize["secure-access-url"] = o.SecureAccessUrl
+	}
+	if o.SecureAccessWeb != nil {
+		toSerialize["secure-access-web"] = o.SecureAccessWeb
+	}
+	if o.SecureAccessWebBrowsing != nil {
+		toSerialize["secure-access-web-browsing"] = o.SecureAccessWebBrowsing
+	}
+	if o.SecureAccessWebProxy != nil {
+		toSerialize["secure-access-web-proxy"] = o.SecureAccessWebProxy
 	}
 	if o.StorageAccountKeyName != nil {
 		toSerialize["storage-account-key-name"] = o.StorageAccountKeyName
@@ -727,6 +1036,9 @@ func (o RotatedSecretCreateAzure) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.Username != nil {
+		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

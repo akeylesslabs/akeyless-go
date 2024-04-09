@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// GatewayCreateProducerAzure gatewayCreateProducerAzure is a command that creates azure producer [Deprecated: Use dynamic-secret-create-azure command]
+// GatewayCreateProducerAzure gatewayCreateProducerAzure is a command that creates azure dynamic secret [Deprecated: Use dynamic-secret-create-azure command]
 type GatewayCreateProducerAzure struct {
 	// Azure App Object Id
 	AppObjId *string `json:"app-obj-id,omitempty"`
@@ -37,7 +37,7 @@ type GatewayCreateProducerAzure struct {
 	Name string `json:"name"`
 	// The length of the password to be generated
 	PasswordLength *string `json:"password-length,omitempty"`
-	// Dynamic producer encryption key
+	// Dynamic secret encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
 	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`

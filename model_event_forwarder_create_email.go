@@ -37,6 +37,8 @@ type EventForwarderCreateEmail struct {
 	Key *string `json:"key,omitempty"`
 	// EventForwarder name
 	Name string `json:"name"`
+	// Override Akeyless default URL with your Gateway url (port 18888)
+	OverrideUrl *string `json:"override-url,omitempty"`
 	RunnerType string `json:"runner-type"`
 	// Targets Event sources
 	TargetsEventSourceLocations *[]string `json:"targets-event-source-locations,omitempty"`
@@ -374,6 +376,38 @@ func (o *EventForwarderCreateEmail) SetName(v string) {
 	o.Name = v
 }
 
+// GetOverrideUrl returns the OverrideUrl field value if set, zero value otherwise.
+func (o *EventForwarderCreateEmail) GetOverrideUrl() string {
+	if o == nil || o.OverrideUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.OverrideUrl
+}
+
+// GetOverrideUrlOk returns a tuple with the OverrideUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventForwarderCreateEmail) GetOverrideUrlOk() (*string, bool) {
+	if o == nil || o.OverrideUrl == nil {
+		return nil, false
+	}
+	return o.OverrideUrl, true
+}
+
+// HasOverrideUrl returns a boolean if a field has been set.
+func (o *EventForwarderCreateEmail) HasOverrideUrl() bool {
+	if o != nil && o.OverrideUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOverrideUrl gets a reference to the given string and assigns it to the OverrideUrl field.
+func (o *EventForwarderCreateEmail) SetOverrideUrl(v string) {
+	o.OverrideUrl = &v
+}
+
 // GetRunnerType returns the RunnerType field value
 func (o *EventForwarderCreateEmail) GetRunnerType() string {
 	if o == nil  {
@@ -525,6 +559,9 @@ func (o EventForwarderCreateEmail) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.OverrideUrl != nil {
+		toSerialize["override-url"] = o.OverrideUrl
 	}
 	if true {
 		toSerialize["runner-type"] = o.RunnerType

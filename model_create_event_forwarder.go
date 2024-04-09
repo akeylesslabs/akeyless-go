@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// CreateEventForwarder struct for CreateEventForwarder
+// CreateEventForwarder createEventForwarder is a command that creates a new event forwarder [Deprecated - please use event-forwarder-create-* command]
 type CreateEventForwarder struct {
 	// Workstation Admin Name
 	AdminName *string `json:"admin-name,omitempty"`

@@ -34,6 +34,7 @@ type ActiveDirectoryPayload struct {
 	LocalUsersRotatedSecretsPathTemplate *string `json:"local_users_rotated_secrets_path_template,omitempty"`
 	OsFilter *string `json:"os_filter,omitempty"`
 	SshPort *string `json:"ssh_port,omitempty"`
+	TargetFormat *string `json:"target_format,omitempty"`
 	TargetsType *string `json:"targets_type,omitempty"`
 	UserBaseDn *string `json:"user_base_dn,omitempty"`
 	UserGroups *[]string `json:"user_groups,omitempty"`
@@ -570,6 +571,38 @@ func (o *ActiveDirectoryPayload) SetSshPort(v string) {
 	o.SshPort = &v
 }
 
+// GetTargetFormat returns the TargetFormat field value if set, zero value otherwise.
+func (o *ActiveDirectoryPayload) GetTargetFormat() string {
+	if o == nil || o.TargetFormat == nil {
+		var ret string
+		return ret
+	}
+	return *o.TargetFormat
+}
+
+// GetTargetFormatOk returns a tuple with the TargetFormat field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ActiveDirectoryPayload) GetTargetFormatOk() (*string, bool) {
+	if o == nil || o.TargetFormat == nil {
+		return nil, false
+	}
+	return o.TargetFormat, true
+}
+
+// HasTargetFormat returns a boolean if a field has been set.
+func (o *ActiveDirectoryPayload) HasTargetFormat() bool {
+	if o != nil && o.TargetFormat != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetFormat gets a reference to the given string and assigns it to the TargetFormat field.
+func (o *ActiveDirectoryPayload) SetTargetFormat(v string) {
+	o.TargetFormat = &v
+}
+
 // GetTargetsType returns the TargetsType field value if set, zero value otherwise.
 func (o *ActiveDirectoryPayload) GetTargetsType() string {
 	if o == nil || o.TargetsType == nil {
@@ -779,6 +812,9 @@ func (o ActiveDirectoryPayload) MarshalJSON() ([]byte, error) {
 	}
 	if o.SshPort != nil {
 		toSerialize["ssh_port"] = o.SshPort
+	}
+	if o.TargetFormat != nil {
+		toSerialize["target_format"] = o.TargetFormat
 	}
 	if o.TargetsType != nil {
 		toSerialize["targets_type"] = o.TargetsType

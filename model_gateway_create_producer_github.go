@@ -25,11 +25,11 @@ type GatewayCreateProducerGithub struct {
 	GithubAppPrivateKey *string `json:"github-app-private-key,omitempty"`
 	// Base URL
 	GithubBaseUrl *string `json:"github-base-url,omitempty"`
-	// Github app installation id
+	// GitHub application installation id
 	InstallationId *int64 `json:"installation-id,omitempty"`
-	// Optional, instead of installation id, set a GitHub organization name
+	// Optional, mutually exclusive with installation id, GitHub organization name
 	InstallationOrganization *string `json:"installation-organization,omitempty"`
-	// Optional, instead of installation id, set a GitHub repository '<owner>/<repo-name>
+	// Optional, mutually exclusive with installation id, GitHub repository '<owner>/<repo-name>'
 	InstallationRepository *string `json:"installation-repository,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`

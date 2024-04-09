@@ -53,6 +53,7 @@ type DSProducerDetails struct {
 	AzureUserPortalAccess *bool `json:"azure_user_portal_access,omitempty"`
 	AzureUserProgrammaticAccess *bool `json:"azure_user_programmatic_access,omitempty"`
 	AzureUserRolesTemplateId *string `json:"azure_user_roles_template_id,omitempty"`
+	AzureUsername *string `json:"azure_username,omitempty"`
 	CassandraCreationStatements *string `json:"cassandra_creation_statements,omitempty"`
 	ChefOrganizations *string `json:"chef_organizations,omitempty"`
 	ChefServerAccessMode *string `json:"chef_server_access_mode,omitempty"`
@@ -1427,6 +1428,38 @@ func (o *DSProducerDetails) HasAzureUserRolesTemplateId() bool {
 // SetAzureUserRolesTemplateId gets a reference to the given string and assigns it to the AzureUserRolesTemplateId field.
 func (o *DSProducerDetails) SetAzureUserRolesTemplateId(v string) {
 	o.AzureUserRolesTemplateId = &v
+}
+
+// GetAzureUsername returns the AzureUsername field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetAzureUsername() string {
+	if o == nil || o.AzureUsername == nil {
+		var ret string
+		return ret
+	}
+	return *o.AzureUsername
+}
+
+// GetAzureUsernameOk returns a tuple with the AzureUsername field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetAzureUsernameOk() (*string, bool) {
+	if o == nil || o.AzureUsername == nil {
+		return nil, false
+	}
+	return o.AzureUsername, true
+}
+
+// HasAzureUsername returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasAzureUsername() bool {
+	if o != nil && o.AzureUsername != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureUsername gets a reference to the given string and assigns it to the AzureUsername field.
+func (o *DSProducerDetails) SetAzureUsername(v string) {
+	o.AzureUsername = &v
 }
 
 // GetCassandraCreationStatements returns the CassandraCreationStatements field value if set, zero value otherwise.
@@ -7426,6 +7459,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.AzureUserRolesTemplateId != nil {
 		toSerialize["azure_user_roles_template_id"] = o.AzureUserRolesTemplateId
+	}
+	if o.AzureUsername != nil {
+		toSerialize["azure_username"] = o.AzureUsername
 	}
 	if o.CassandraCreationStatements != nil {
 		toSerialize["cassandra_creation_statements"] = o.CassandraCreationStatements

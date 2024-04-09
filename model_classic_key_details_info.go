@@ -20,6 +20,7 @@ type ClassicKeyDetailsInfo struct {
 	ClassicKeyAttributes *map[string][]string `json:"classic_key_attributes,omitempty"`
 	ClassicKeyId *string `json:"classic_key_id,omitempty"`
 	GwClusterId *int64 `json:"gw_cluster_id,omitempty"`
+	HasCertificate *bool `json:"has_certificate,omitempty"`
 	IsProvidedByUser *bool `json:"is_provided_by_user,omitempty"`
 	IsUnexportable *bool `json:"is_unexportable,omitempty"`
 	// ItemState defines the different states an Item can be in
@@ -143,6 +144,38 @@ func (o *ClassicKeyDetailsInfo) HasGwClusterId() bool {
 // SetGwClusterId gets a reference to the given int64 and assigns it to the GwClusterId field.
 func (o *ClassicKeyDetailsInfo) SetGwClusterId(v int64) {
 	o.GwClusterId = &v
+}
+
+// GetHasCertificate returns the HasCertificate field value if set, zero value otherwise.
+func (o *ClassicKeyDetailsInfo) GetHasCertificate() bool {
+	if o == nil || o.HasCertificate == nil {
+		var ret bool
+		return ret
+	}
+	return *o.HasCertificate
+}
+
+// GetHasCertificateOk returns a tuple with the HasCertificate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClassicKeyDetailsInfo) GetHasCertificateOk() (*bool, bool) {
+	if o == nil || o.HasCertificate == nil {
+		return nil, false
+	}
+	return o.HasCertificate, true
+}
+
+// HasHasCertificate returns a boolean if a field has been set.
+func (o *ClassicKeyDetailsInfo) HasHasCertificate() bool {
+	if o != nil && o.HasCertificate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHasCertificate gets a reference to the given bool and assigns it to the HasCertificate field.
+func (o *ClassicKeyDetailsInfo) SetHasCertificate(v bool) {
+	o.HasCertificate = &v
 }
 
 // GetIsProvidedByUser returns the IsProvidedByUser field value if set, zero value otherwise.
@@ -443,6 +476,9 @@ func (o ClassicKeyDetailsInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.GwClusterId != nil {
 		toSerialize["gw_cluster_id"] = o.GwClusterId
+	}
+	if o.HasCertificate != nil {
+		toSerialize["has_certificate"] = o.HasCertificate
 	}
 	if o.IsProvidedByUser != nil {
 		toSerialize["is_provided_by_user"] = o.IsProvidedByUser

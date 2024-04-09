@@ -40,6 +40,7 @@ Name | Type | Description | Notes
 **AzureUserPortalAccess** | Pointer to **bool** |  | [optional] 
 **AzureUserProgrammaticAccess** | Pointer to **bool** |  | [optional] 
 **AzureUserRolesTemplateId** | Pointer to **string** |  | [optional] 
+**AzureUsername** | Pointer to **string** |  | [optional] 
 **CassandraCreationStatements** | Pointer to **string** |  | [optional] 
 **ChefOrganizations** | Pointer to **string** |  | [optional] 
 **ChefServerAccessMode** | Pointer to **string** |  | [optional] 
@@ -1143,6 +1144,31 @@ SetAzureUserRolesTemplateId sets AzureUserRolesTemplateId field to given value.
 `func (o *DSProducerDetails) HasAzureUserRolesTemplateId() bool`
 
 HasAzureUserRolesTemplateId returns a boolean if a field has been set.
+
+### GetAzureUsername
+
+`func (o *DSProducerDetails) GetAzureUsername() string`
+
+GetAzureUsername returns the AzureUsername field if non-nil, zero value otherwise.
+
+### GetAzureUsernameOk
+
+`func (o *DSProducerDetails) GetAzureUsernameOk() (*string, bool)`
+
+GetAzureUsernameOk returns a tuple with the AzureUsername field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureUsername
+
+`func (o *DSProducerDetails) SetAzureUsername(v string)`
+
+SetAzureUsername sets AzureUsername field to given value.
+
+### HasAzureUsername
+
+`func (o *DSProducerDetails) HasAzureUsername() bool`
+
+HasAzureUsername returns a boolean if a field has been set.
 
 ### GetCassandraCreationStatements
 

@@ -29,6 +29,8 @@ type CreateGlobalSignAtlasTarget struct {
 	Json *bool `json:"json,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
+	// Set the maximum number of versions, limited by the account settings defaults.
+	MaxVersions *string `json:"max-versions,omitempty"`
 	// Mutual TLS Certificate contents of the GlobalSign Atlas account encoded in base64, either mtls-cert-file-path or mtls-cert-data-base64 must be supplied
 	MtlsCertDataBase64 *string `json:"mtls-cert-data-base64,omitempty"`
 	// Mutual TLS Key contents of the GlobalSign Atlas account encoded in base64, either mtls-key-file-path or mtls-data-base64 must be supplied
@@ -247,6 +249,38 @@ func (o *CreateGlobalSignAtlasTarget) SetKey(v string) {
 	o.Key = &v
 }
 
+// GetMaxVersions returns the MaxVersions field value if set, zero value otherwise.
+func (o *CreateGlobalSignAtlasTarget) GetMaxVersions() string {
+	if o == nil || o.MaxVersions == nil {
+		var ret string
+		return ret
+	}
+	return *o.MaxVersions
+}
+
+// GetMaxVersionsOk returns a tuple with the MaxVersions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateGlobalSignAtlasTarget) GetMaxVersionsOk() (*string, bool) {
+	if o == nil || o.MaxVersions == nil {
+		return nil, false
+	}
+	return o.MaxVersions, true
+}
+
+// HasMaxVersions returns a boolean if a field has been set.
+func (o *CreateGlobalSignAtlasTarget) HasMaxVersions() bool {
+	if o != nil && o.MaxVersions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxVersions gets a reference to the given string and assigns it to the MaxVersions field.
+func (o *CreateGlobalSignAtlasTarget) SetMaxVersions(v string) {
+	o.MaxVersions = &v
+}
+
 // GetMtlsCertDataBase64 returns the MtlsCertDataBase64 field value if set, zero value otherwise.
 func (o *CreateGlobalSignAtlasTarget) GetMtlsCertDataBase64() string {
 	if o == nil || o.MtlsCertDataBase64 == nil {
@@ -450,6 +484,9 @@ func (o CreateGlobalSignAtlasTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.Key != nil {
 		toSerialize["key"] = o.Key
+	}
+	if o.MaxVersions != nil {
+		toSerialize["max-versions"] = o.MaxVersions
 	}
 	if o.MtlsCertDataBase64 != nil {
 		toSerialize["mtls-cert-data-base64"] = o.MtlsCertDataBase64

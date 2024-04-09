@@ -154,10 +154,14 @@ Method | HTTP request | Description
 [**EsmUpdate**](V2Api.md#EsmUpdate) | **Post** /esm-update | 
 [**EventAction**](V2Api.md#EventAction) | **Post** /event-action | 
 [**EventForwarderCreateEmail**](V2Api.md#EventForwarderCreateEmail) | **Post** /event-forwarder-create-email | 
+[**EventForwarderCreateServiceNow**](V2Api.md#EventForwarderCreateServiceNow) | **Post** /event-forwarder-create-servicenow | 
+[**EventForwarderCreateSlack**](V2Api.md#EventForwarderCreateSlack) | **Post** /event-forwarder-create-slack | 
 [**EventForwarderCreateWebhook**](V2Api.md#EventForwarderCreateWebhook) | **Post** /event-forwarder-create-webhook | 
 [**EventForwarderDelete**](V2Api.md#EventForwarderDelete) | **Post** /event-forwarder-delete | 
 [**EventForwarderGet**](V2Api.md#EventForwarderGet) | **Post** /event-forwarder-get | 
 [**EventForwarderUpdateEmail**](V2Api.md#EventForwarderUpdateEmail) | **Post** /event-forwarder-update-email | 
+[**EventForwarderUpdateServiceNow**](V2Api.md#EventForwarderUpdateServiceNow) | **Post** /event-forwarder-update-servicenow | 
+[**EventForwarderUpdateSlack**](V2Api.md#EventForwarderUpdateSlack) | **Post** /event-forwarder-update-slack | 
 [**EventForwarderUpdateWebhook**](V2Api.md#EventForwarderUpdateWebhook) | **Post** /event-forwarder-update-webhook | 
 [**ExportClassicKey**](V2Api.md#ExportClassicKey) | **Post** /export-classic-key | 
 [**GatewayCreateAllowedAccess**](V2Api.md#GatewayCreateAllowedAccess) | **Post** /gateway-create-allowed-access | 
@@ -246,6 +250,7 @@ Method | HTTP request | Description
 [**GenerateCsr**](V2Api.md#GenerateCsr) | **Post** /generate-csr | 
 [**GetAccountLogo**](V2Api.md#GetAccountLogo) | **Post** /get-account-logo | 
 [**GetAccountSettings**](V2Api.md#GetAccountSettings) | **Post** /get-account-settings | 
+[**GetAnalyticsData**](V2Api.md#GetAnalyticsData) | **Post** /get-analytics-data | 
 [**GetAuthMethod**](V2Api.md#GetAuthMethod) | **Post** /get-auth-method | 
 [**GetCertificateValue**](V2Api.md#GetCertificateValue) | **Post** /get-certificate-value | 
 [**GetDynamicSecretValue**](V2Api.md#GetDynamicSecretValue) | **Post** /get-dynamic-secret-value | 
@@ -292,6 +297,7 @@ Method | HTTP request | Description
 [**RenewCertificate**](V2Api.md#RenewCertificate) | **Post** /renew-certificate | 
 [**RequestAccess**](V2Api.md#RequestAccess) | **Post** /request-access | 
 [**ReverseRBAC**](V2Api.md#ReverseRBAC) | **Post** /reverse-rbac | 
+[**RevokeCertificate**](V2Api.md#RevokeCertificate) | **Post** /revoke-certificate | 
 [**RevokeCreds**](V2Api.md#RevokeCreds) | **Post** /revoke-creds | 
 [**RollbackSecret**](V2Api.md#RollbackSecret) | **Post** /rollback-secret | 
 [**RotateKey**](V2Api.md#RotateKey) | **Post** /rotate-key | 
@@ -10017,6 +10023,134 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## EventForwarderCreateServiceNow
+
+> EventForwarderCreateUpdateOutput EventForwarderCreateServiceNow(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NeweventForwarderCreateServiceNow([]string{"GatewaysEventSourceLocations_example"}, "Name_example", "RunnerType_example") // EventForwarderCreateServiceNow | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.EventForwarderCreateServiceNow(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.EventForwarderCreateServiceNow``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventForwarderCreateServiceNow`: EventForwarderCreateUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.EventForwarderCreateServiceNow`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEventForwarderCreateServiceNowRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**EventForwarderCreateServiceNow**](EventForwarderCreateServiceNow.md) |  | 
+
+### Return type
+
+[**EventForwarderCreateUpdateOutput**](eventForwarderCreateUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EventForwarderCreateSlack
+
+> EventForwarderCreateUpdateOutput EventForwarderCreateSlack(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NeweventForwarderCreateSlack([]string{"GatewaysEventSourceLocations_example"}, "Name_example", "RunnerType_example", "Url_example") // EventForwarderCreateSlack | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.EventForwarderCreateSlack(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.EventForwarderCreateSlack``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventForwarderCreateSlack`: EventForwarderCreateUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.EventForwarderCreateSlack`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEventForwarderCreateSlackRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**EventForwarderCreateSlack**](EventForwarderCreateSlack.md) |  | 
+
+### Return type
+
+[**EventForwarderCreateUpdateOutput**](eventForwarderCreateUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## EventForwarderCreateWebhook
 
 > EventForwarderCreateUpdateOutput EventForwarderCreateWebhook(ctx).Body(body).Execute()
@@ -10254,6 +10388,134 @@ Other parameters are passed through a pointer to a apiEventForwarderUpdateEmailR
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**EventForwarderUpdateEmail**](EventForwarderUpdateEmail.md) |  | 
+
+### Return type
+
+[**EventForwarderCreateUpdateOutput**](eventForwarderCreateUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EventForwarderUpdateServiceNow
+
+> EventForwarderCreateUpdateOutput EventForwarderUpdateServiceNow(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NeweventForwarderUpdateServiceNow([]string{"GatewaysEventSourceLocations_example"}, "Name_example") // EventForwarderUpdateServiceNow | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.EventForwarderUpdateServiceNow(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.EventForwarderUpdateServiceNow``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventForwarderUpdateServiceNow`: EventForwarderCreateUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.EventForwarderUpdateServiceNow`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEventForwarderUpdateServiceNowRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**EventForwarderUpdateServiceNow**](EventForwarderUpdateServiceNow.md) |  | 
+
+### Return type
+
+[**EventForwarderCreateUpdateOutput**](eventForwarderCreateUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EventForwarderUpdateSlack
+
+> EventForwarderCreateUpdateOutput EventForwarderUpdateSlack(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NeweventForwarderUpdateSlack([]string{"GatewaysEventSourceLocations_example"}, "Name_example", "Url_example") // EventForwarderUpdateSlack | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.EventForwarderUpdateSlack(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.EventForwarderUpdateSlack``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventForwarderUpdateSlack`: EventForwarderCreateUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.EventForwarderUpdateSlack`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEventForwarderUpdateSlackRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**EventForwarderUpdateSlack**](EventForwarderUpdateSlack.md) |  | 
 
 ### Return type
 
@@ -15896,6 +16158,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GetAnalyticsData
+
+> AllAnalyticsData GetAnalyticsData(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgetAnalyticsData() // GetAnalyticsData | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GetAnalyticsData(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GetAnalyticsData``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetAnalyticsData`: AllAnalyticsData
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GetAnalyticsData`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAnalyticsDataRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GetAnalyticsData**](GetAnalyticsData.md) |  | 
+
+### Return type
+
+[**AllAnalyticsData**](AllAnalyticsData.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetAuthMethod
 
 > AuthMethod GetAuthMethod(ctx).Body(body).Execute()
@@ -18823,6 +19149,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ReverseRBACOutput**](ReverseRBACOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RevokeCertificate
+
+> map[string]interface{} RevokeCertificate(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewRevokeCertificate() // RevokeCertificate | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.RevokeCertificate(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RevokeCertificate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RevokeCertificate`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.RevokeCertificate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRevokeCertificateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RevokeCertificate**](RevokeCertificate.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
 
 ### Authorization
 

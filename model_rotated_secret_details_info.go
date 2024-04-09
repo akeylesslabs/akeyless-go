@@ -21,6 +21,7 @@ type RotatedSecretDetailsInfo struct {
 	GraceRotation *bool `json:"grace_rotation,omitempty"`
 	GwClusterId *int64 `json:"gw_cluster_id,omitempty"`
 	LastRotationError *string `json:"last_rotation_error,omitempty"`
+	MaxVersions *int64 `json:"max_versions,omitempty"`
 	NumberOfVersionsToSave *int32 `json:"number_of_versions_to_save,omitempty"`
 	RotationHour *int32 `json:"rotation_hour,omitempty"`
 	RotationIntervalMin *bool `json:"rotation_interval_min,omitempty"`
@@ -176,6 +177,38 @@ func (o *RotatedSecretDetailsInfo) HasLastRotationError() bool {
 // SetLastRotationError gets a reference to the given string and assigns it to the LastRotationError field.
 func (o *RotatedSecretDetailsInfo) SetLastRotationError(v string) {
 	o.LastRotationError = &v
+}
+
+// GetMaxVersions returns the MaxVersions field value if set, zero value otherwise.
+func (o *RotatedSecretDetailsInfo) GetMaxVersions() int64 {
+	if o == nil || o.MaxVersions == nil {
+		var ret int64
+		return ret
+	}
+	return *o.MaxVersions
+}
+
+// GetMaxVersionsOk returns a tuple with the MaxVersions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretDetailsInfo) GetMaxVersionsOk() (*int64, bool) {
+	if o == nil || o.MaxVersions == nil {
+		return nil, false
+	}
+	return o.MaxVersions, true
+}
+
+// HasMaxVersions returns a boolean if a field has been set.
+func (o *RotatedSecretDetailsInfo) HasMaxVersions() bool {
+	if o != nil && o.MaxVersions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxVersions gets a reference to the given int64 and assigns it to the MaxVersions field.
+func (o *RotatedSecretDetailsInfo) SetMaxVersions(v int64) {
+	o.MaxVersions = &v
 }
 
 // GetNumberOfVersionsToSave returns the NumberOfVersionsToSave field value if set, zero value otherwise.
@@ -479,6 +512,9 @@ func (o RotatedSecretDetailsInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.LastRotationError != nil {
 		toSerialize["last_rotation_error"] = o.LastRotationError
+	}
+	if o.MaxVersions != nil {
+		toSerialize["max_versions"] = o.MaxVersions
 	}
 	if o.NumberOfVersionsToSave != nil {
 		toSerialize["number_of_versions_to_save"] = o.NumberOfVersionsToSave

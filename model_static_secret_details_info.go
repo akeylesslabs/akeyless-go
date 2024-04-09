@@ -19,6 +19,7 @@ import (
 type StaticSecretDetailsInfo struct {
 	// StaticSecretFormat defines the format of static secret (e.g. Text)
 	Format *string `json:"format,omitempty"`
+	MaxVersions *int64 `json:"max_versions,omitempty"`
 	NotifyOnChangeEvent *bool `json:"notify_on_change_event,omitempty"`
 	Username *string `json:"username,omitempty"`
 	// deprecated
@@ -73,6 +74,38 @@ func (o *StaticSecretDetailsInfo) HasFormat() bool {
 // SetFormat gets a reference to the given string and assigns it to the Format field.
 func (o *StaticSecretDetailsInfo) SetFormat(v string) {
 	o.Format = &v
+}
+
+// GetMaxVersions returns the MaxVersions field value if set, zero value otherwise.
+func (o *StaticSecretDetailsInfo) GetMaxVersions() int64 {
+	if o == nil || o.MaxVersions == nil {
+		var ret int64
+		return ret
+	}
+	return *o.MaxVersions
+}
+
+// GetMaxVersionsOk returns a tuple with the MaxVersions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StaticSecretDetailsInfo) GetMaxVersionsOk() (*int64, bool) {
+	if o == nil || o.MaxVersions == nil {
+		return nil, false
+	}
+	return o.MaxVersions, true
+}
+
+// HasMaxVersions returns a boolean if a field has been set.
+func (o *StaticSecretDetailsInfo) HasMaxVersions() bool {
+	if o != nil && o.MaxVersions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxVersions gets a reference to the given int64 and assigns it to the MaxVersions field.
+func (o *StaticSecretDetailsInfo) SetMaxVersions(v int64) {
+	o.MaxVersions = &v
 }
 
 // GetNotifyOnChangeEvent returns the NotifyOnChangeEvent field value if set, zero value otherwise.
@@ -207,6 +240,9 @@ func (o StaticSecretDetailsInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Format != nil {
 		toSerialize["format"] = o.Format
+	}
+	if o.MaxVersions != nil {
+		toSerialize["max_versions"] = o.MaxVersions
 	}
 	if o.NotifyOnChangeEvent != nil {
 		toSerialize["notify_on_change_event"] = o.NotifyOnChangeEvent

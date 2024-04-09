@@ -31,6 +31,8 @@ type CreateArtifactoryTarget struct {
 	Json *bool `json:"json,omitempty"`
 	// The name of a key used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
+	// Set the maximum number of versions, limited by the account settings defaults.
+	MaxVersions *string `json:"max-versions,omitempty"`
 	// Target name
 	Name string `json:"name"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -264,6 +266,38 @@ func (o *CreateArtifactoryTarget) SetKey(v string) {
 	o.Key = &v
 }
 
+// GetMaxVersions returns the MaxVersions field value if set, zero value otherwise.
+func (o *CreateArtifactoryTarget) GetMaxVersions() string {
+	if o == nil || o.MaxVersions == nil {
+		var ret string
+		return ret
+	}
+	return *o.MaxVersions
+}
+
+// GetMaxVersionsOk returns a tuple with the MaxVersions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateArtifactoryTarget) GetMaxVersionsOk() (*string, bool) {
+	if o == nil || o.MaxVersions == nil {
+		return nil, false
+	}
+	return o.MaxVersions, true
+}
+
+// HasMaxVersions returns a boolean if a field has been set.
+func (o *CreateArtifactoryTarget) HasMaxVersions() bool {
+	if o != nil && o.MaxVersions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxVersions gets a reference to the given string and assigns it to the MaxVersions field.
+func (o *CreateArtifactoryTarget) SetMaxVersions(v string) {
+	o.MaxVersions = &v
+}
+
 // GetName returns the Name field value
 func (o *CreateArtifactoryTarget) GetName() string {
 	if o == nil  {
@@ -374,6 +408,9 @@ func (o CreateArtifactoryTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.Key != nil {
 		toSerialize["key"] = o.Key
+	}
+	if o.MaxVersions != nil {
+		toSerialize["max-versions"] = o.MaxVersions
 	}
 	if true {
 		toSerialize["name"] = o.Name

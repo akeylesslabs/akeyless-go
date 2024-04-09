@@ -28,11 +28,14 @@ type PKICertificateIssueDetails struct {
 	ClientFlag *bool `json:"client_flag,omitempty"`
 	CodeSigningFlag *bool `json:"code_signing_flag,omitempty"`
 	Country *[]string `json:"country,omitempty"`
+	CreatePrivateCrl *bool `json:"create_private_crl,omitempty"`
+	CreatePublicCrl *bool `json:"create_public_crl,omitempty"`
 	// DestinationPath is the destination to save generated certificates
 	DestinationPath *string `json:"destination_path,omitempty"`
 	EnforceHostnames *bool `json:"enforce_hostnames,omitempty"`
 	// ExpirationNotification holds a list of expiration notices that should be sent in case a certificate is about to expire, this value is being propagated to the Certificate resources that are created
 	ExpirationEvents *[]CertificateExpirationEvent `json:"expiration_events,omitempty"`
+	GwClusterId *int64 `json:"gw_cluster_id,omitempty"`
 	// GWClusterURL is required when CAMode is \"public\" and it defines the cluster URL the PKI should be issued from. The GW cluster must have permissions to read associated target's details
 	GwClusterUrl *string `json:"gw_cluster_url,omitempty"`
 	IsCa *bool `json:"is_ca,omitempty"`
@@ -422,6 +425,70 @@ func (o *PKICertificateIssueDetails) SetCountry(v []string) {
 	o.Country = &v
 }
 
+// GetCreatePrivateCrl returns the CreatePrivateCrl field value if set, zero value otherwise.
+func (o *PKICertificateIssueDetails) GetCreatePrivateCrl() bool {
+	if o == nil || o.CreatePrivateCrl == nil {
+		var ret bool
+		return ret
+	}
+	return *o.CreatePrivateCrl
+}
+
+// GetCreatePrivateCrlOk returns a tuple with the CreatePrivateCrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PKICertificateIssueDetails) GetCreatePrivateCrlOk() (*bool, bool) {
+	if o == nil || o.CreatePrivateCrl == nil {
+		return nil, false
+	}
+	return o.CreatePrivateCrl, true
+}
+
+// HasCreatePrivateCrl returns a boolean if a field has been set.
+func (o *PKICertificateIssueDetails) HasCreatePrivateCrl() bool {
+	if o != nil && o.CreatePrivateCrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatePrivateCrl gets a reference to the given bool and assigns it to the CreatePrivateCrl field.
+func (o *PKICertificateIssueDetails) SetCreatePrivateCrl(v bool) {
+	o.CreatePrivateCrl = &v
+}
+
+// GetCreatePublicCrl returns the CreatePublicCrl field value if set, zero value otherwise.
+func (o *PKICertificateIssueDetails) GetCreatePublicCrl() bool {
+	if o == nil || o.CreatePublicCrl == nil {
+		var ret bool
+		return ret
+	}
+	return *o.CreatePublicCrl
+}
+
+// GetCreatePublicCrlOk returns a tuple with the CreatePublicCrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PKICertificateIssueDetails) GetCreatePublicCrlOk() (*bool, bool) {
+	if o == nil || o.CreatePublicCrl == nil {
+		return nil, false
+	}
+	return o.CreatePublicCrl, true
+}
+
+// HasCreatePublicCrl returns a boolean if a field has been set.
+func (o *PKICertificateIssueDetails) HasCreatePublicCrl() bool {
+	if o != nil && o.CreatePublicCrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatePublicCrl gets a reference to the given bool and assigns it to the CreatePublicCrl field.
+func (o *PKICertificateIssueDetails) SetCreatePublicCrl(v bool) {
+	o.CreatePublicCrl = &v
+}
+
 // GetDestinationPath returns the DestinationPath field value if set, zero value otherwise.
 func (o *PKICertificateIssueDetails) GetDestinationPath() string {
 	if o == nil || o.DestinationPath == nil {
@@ -516,6 +583,38 @@ func (o *PKICertificateIssueDetails) HasExpirationEvents() bool {
 // SetExpirationEvents gets a reference to the given []CertificateExpirationEvent and assigns it to the ExpirationEvents field.
 func (o *PKICertificateIssueDetails) SetExpirationEvents(v []CertificateExpirationEvent) {
 	o.ExpirationEvents = &v
+}
+
+// GetGwClusterId returns the GwClusterId field value if set, zero value otherwise.
+func (o *PKICertificateIssueDetails) GetGwClusterId() int64 {
+	if o == nil || o.GwClusterId == nil {
+		var ret int64
+		return ret
+	}
+	return *o.GwClusterId
+}
+
+// GetGwClusterIdOk returns a tuple with the GwClusterId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PKICertificateIssueDetails) GetGwClusterIdOk() (*int64, bool) {
+	if o == nil || o.GwClusterId == nil {
+		return nil, false
+	}
+	return o.GwClusterId, true
+}
+
+// HasGwClusterId returns a boolean if a field has been set.
+func (o *PKICertificateIssueDetails) HasGwClusterId() bool {
+	if o != nil && o.GwClusterId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGwClusterId gets a reference to the given int64 and assigns it to the GwClusterId field.
+func (o *PKICertificateIssueDetails) SetGwClusterId(v int64) {
+	o.GwClusterId = &v
 }
 
 // GetGwClusterUrl returns the GwClusterUrl field value if set, zero value otherwise.
@@ -1033,6 +1132,12 @@ func (o PKICertificateIssueDetails) MarshalJSON() ([]byte, error) {
 	if o.Country != nil {
 		toSerialize["country"] = o.Country
 	}
+	if o.CreatePrivateCrl != nil {
+		toSerialize["create_private_crl"] = o.CreatePrivateCrl
+	}
+	if o.CreatePublicCrl != nil {
+		toSerialize["create_public_crl"] = o.CreatePublicCrl
+	}
 	if o.DestinationPath != nil {
 		toSerialize["destination_path"] = o.DestinationPath
 	}
@@ -1041,6 +1146,9 @@ func (o PKICertificateIssueDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.ExpirationEvents != nil {
 		toSerialize["expiration_events"] = o.ExpirationEvents
+	}
+	if o.GwClusterId != nil {
+		toSerialize["gw_cluster_id"] = o.GwClusterId
 	}
 	if o.GwClusterUrl != nil {
 		toSerialize["gw_cluster_url"] = o.GwClusterUrl

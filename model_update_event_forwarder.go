@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// UpdateEventForwarder struct for UpdateEventForwarder
+// UpdateEventForwarder updateEventForwarder is a command that updates an event forwarder [Deprecated - please use event-forwarder-update-* command]
 type UpdateEventForwarder struct {
 	// Workstation Admin Name
 	AdminName *string `json:"admin-name,omitempty"`

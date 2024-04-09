@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **LocationId** | Pointer to **string** | Location id of the GCP KMS (required for gcp targets) | [optional] 
 **MultiRegion** | Pointer to **string** | Set to &#39;true&#39; to create a multi-region managed key. (Relevant only for Classic Key AWS targets) | [optional] [default to "false"]
 **Name** | **string** | The item to associate | 
+**PostProvisionCommand** | Pointer to **string** | A custom command to run on the remote target after successful provisioning (relevant only for certificate provisioning) | [optional] 
 **PrivateKeyPath** | Pointer to **string** | A path on the target to store the private key (relevant only for certificate provisioning) | [optional] 
 **ProjectId** | Pointer to **string** | Project id of the GCP KMS (required for gcp targets) | [optional] 
 **Purpose** | Pointer to **string** | Purpose of the key in GCP KMS (required for gcp targets) | [optional] 
@@ -288,6 +289,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetPostProvisionCommand
+
+`func (o *AssocTargetItem) GetPostProvisionCommand() string`
+
+GetPostProvisionCommand returns the PostProvisionCommand field if non-nil, zero value otherwise.
+
+### GetPostProvisionCommandOk
+
+`func (o *AssocTargetItem) GetPostProvisionCommandOk() (*string, bool)`
+
+GetPostProvisionCommandOk returns a tuple with the PostProvisionCommand field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPostProvisionCommand
+
+`func (o *AssocTargetItem) SetPostProvisionCommand(v string)`
+
+SetPostProvisionCommand sets PostProvisionCommand field to given value.
+
+### HasPostProvisionCommand
+
+`func (o *AssocTargetItem) HasPostProvisionCommand() bool`
+
+HasPostProvisionCommand returns a boolean if a field has been set.
 
 ### GetPrivateKeyPath
 

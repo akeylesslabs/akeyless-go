@@ -19,9 +19,11 @@ Name | Type | Description | Notes
 **NotiForwarderName** | Pointer to **string** |  | [optional] 
 **NotiForwarderType** | Pointer to **string** |  | [optional] 
 **NotiForwarderVersions** | Pointer to [**[]ItemVersion**](ItemVersion.md) |  | [optional] 
+**OverrideUrl** | Pointer to **string** |  | [optional] 
 **Paths** | Pointer to **[]string** |  | [optional] 
 **ProtectionKey** | Pointer to **string** |  | [optional] 
 **RunnerType** | Pointer to **string** |  | [optional] 
+**SlackNotiForwarderPublicDetails** | Pointer to **map[string]interface{}** |  | [optional] 
 **TimespanInSeconds** | Pointer to **int64** |  | [optional] 
 **ToEmails** | Pointer to [**[]EmailEntry**](EmailEntry.md) |  | [optional] 
 **UserEmail** | Pointer to **string** |  | [optional] 
@@ -423,6 +425,31 @@ SetNotiForwarderVersions sets NotiForwarderVersions field to given value.
 
 HasNotiForwarderVersions returns a boolean if a field has been set.
 
+### GetOverrideUrl
+
+`func (o *NotiForwarder) GetOverrideUrl() string`
+
+GetOverrideUrl returns the OverrideUrl field if non-nil, zero value otherwise.
+
+### GetOverrideUrlOk
+
+`func (o *NotiForwarder) GetOverrideUrlOk() (*string, bool)`
+
+GetOverrideUrlOk returns a tuple with the OverrideUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOverrideUrl
+
+`func (o *NotiForwarder) SetOverrideUrl(v string)`
+
+SetOverrideUrl sets OverrideUrl field to given value.
+
+### HasOverrideUrl
+
+`func (o *NotiForwarder) HasOverrideUrl() bool`
+
+HasOverrideUrl returns a boolean if a field has been set.
+
 ### GetPaths
 
 `func (o *NotiForwarder) GetPaths() []string`
@@ -497,6 +524,31 @@ SetRunnerType sets RunnerType field to given value.
 `func (o *NotiForwarder) HasRunnerType() bool`
 
 HasRunnerType returns a boolean if a field has been set.
+
+### GetSlackNotiForwarderPublicDetails
+
+`func (o *NotiForwarder) GetSlackNotiForwarderPublicDetails() map[string]interface{}`
+
+GetSlackNotiForwarderPublicDetails returns the SlackNotiForwarderPublicDetails field if non-nil, zero value otherwise.
+
+### GetSlackNotiForwarderPublicDetailsOk
+
+`func (o *NotiForwarder) GetSlackNotiForwarderPublicDetailsOk() (*map[string]interface{}, bool)`
+
+GetSlackNotiForwarderPublicDetailsOk returns a tuple with the SlackNotiForwarderPublicDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSlackNotiForwarderPublicDetails
+
+`func (o *NotiForwarder) SetSlackNotiForwarderPublicDetails(v map[string]interface{})`
+
+SetSlackNotiForwarderPublicDetails sets SlackNotiForwarderPublicDetails field to given value.
+
+### HasSlackNotiForwarderPublicDetails
+
+`func (o *NotiForwarder) HasSlackNotiForwarderPublicDetails() bool`
+
+HasSlackNotiForwarderPublicDetails returns a boolean if a field has been set.
 
 ### GetTimespanInSeconds
 

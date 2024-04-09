@@ -23,6 +23,7 @@ type AzureTargetDetails struct {
 	AzureResourceName *string `json:"azure_resource_name,omitempty"`
 	AzureSubscriptionId *string `json:"azure_subscription_id,omitempty"`
 	AzureTenantId *string `json:"azure_tenant_id,omitempty"`
+	AzureUsername *string `json:"azure_username,omitempty"`
 	UseGwCloudIdentity *bool `json:"use_gw_cloud_identity,omitempty"`
 }
 
@@ -235,6 +236,38 @@ func (o *AzureTargetDetails) SetAzureTenantId(v string) {
 	o.AzureTenantId = &v
 }
 
+// GetAzureUsername returns the AzureUsername field value if set, zero value otherwise.
+func (o *AzureTargetDetails) GetAzureUsername() string {
+	if o == nil || o.AzureUsername == nil {
+		var ret string
+		return ret
+	}
+	return *o.AzureUsername
+}
+
+// GetAzureUsernameOk returns a tuple with the AzureUsername field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AzureTargetDetails) GetAzureUsernameOk() (*string, bool) {
+	if o == nil || o.AzureUsername == nil {
+		return nil, false
+	}
+	return o.AzureUsername, true
+}
+
+// HasAzureUsername returns a boolean if a field has been set.
+func (o *AzureTargetDetails) HasAzureUsername() bool {
+	if o != nil && o.AzureUsername != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureUsername gets a reference to the given string and assigns it to the AzureUsername field.
+func (o *AzureTargetDetails) SetAzureUsername(v string) {
+	o.AzureUsername = &v
+}
+
 // GetUseGwCloudIdentity returns the UseGwCloudIdentity field value if set, zero value otherwise.
 func (o *AzureTargetDetails) GetUseGwCloudIdentity() bool {
 	if o == nil || o.UseGwCloudIdentity == nil {
@@ -286,6 +319,9 @@ func (o AzureTargetDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.AzureTenantId != nil {
 		toSerialize["azure_tenant_id"] = o.AzureTenantId
+	}
+	if o.AzureUsername != nil {
+		toSerialize["azure_username"] = o.AzureUsername
 	}
 	if o.UseGwCloudIdentity != nil {
 		toSerialize["use_gw_cloud_identity"] = o.UseGwCloudIdentity

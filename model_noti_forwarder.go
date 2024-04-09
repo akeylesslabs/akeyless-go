@@ -34,9 +34,11 @@ type NotiForwarder struct {
 	NotiForwarderName *string `json:"noti_forwarder_name,omitempty"`
 	NotiForwarderType *string `json:"noti_forwarder_type,omitempty"`
 	NotiForwarderVersions *[]ItemVersion `json:"noti_forwarder_versions,omitempty"`
+	OverrideUrl *string `json:"override_url,omitempty"`
 	Paths *[]string `json:"paths,omitempty"`
 	ProtectionKey *string `json:"protection_key,omitempty"`
 	RunnerType *string `json:"runner_type,omitempty"`
+	SlackNotiForwarderPublicDetails *map[string]interface{} `json:"slack_noti_forwarder_public_details,omitempty"`
 	TimespanInSeconds *int64 `json:"timespan_in_seconds,omitempty"`
 	ToEmails *[]EmailEntry `json:"to_emails,omitempty"`
 	UserEmail *string `json:"user_email,omitempty"`
@@ -543,6 +545,38 @@ func (o *NotiForwarder) SetNotiForwarderVersions(v []ItemVersion) {
 	o.NotiForwarderVersions = &v
 }
 
+// GetOverrideUrl returns the OverrideUrl field value if set, zero value otherwise.
+func (o *NotiForwarder) GetOverrideUrl() string {
+	if o == nil || o.OverrideUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.OverrideUrl
+}
+
+// GetOverrideUrlOk returns a tuple with the OverrideUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotiForwarder) GetOverrideUrlOk() (*string, bool) {
+	if o == nil || o.OverrideUrl == nil {
+		return nil, false
+	}
+	return o.OverrideUrl, true
+}
+
+// HasOverrideUrl returns a boolean if a field has been set.
+func (o *NotiForwarder) HasOverrideUrl() bool {
+	if o != nil && o.OverrideUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOverrideUrl gets a reference to the given string and assigns it to the OverrideUrl field.
+func (o *NotiForwarder) SetOverrideUrl(v string) {
+	o.OverrideUrl = &v
+}
+
 // GetPaths returns the Paths field value if set, zero value otherwise.
 func (o *NotiForwarder) GetPaths() []string {
 	if o == nil || o.Paths == nil {
@@ -637,6 +671,38 @@ func (o *NotiForwarder) HasRunnerType() bool {
 // SetRunnerType gets a reference to the given string and assigns it to the RunnerType field.
 func (o *NotiForwarder) SetRunnerType(v string) {
 	o.RunnerType = &v
+}
+
+// GetSlackNotiForwarderPublicDetails returns the SlackNotiForwarderPublicDetails field value if set, zero value otherwise.
+func (o *NotiForwarder) GetSlackNotiForwarderPublicDetails() map[string]interface{} {
+	if o == nil || o.SlackNotiForwarderPublicDetails == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.SlackNotiForwarderPublicDetails
+}
+
+// GetSlackNotiForwarderPublicDetailsOk returns a tuple with the SlackNotiForwarderPublicDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotiForwarder) GetSlackNotiForwarderPublicDetailsOk() (*map[string]interface{}, bool) {
+	if o == nil || o.SlackNotiForwarderPublicDetails == nil {
+		return nil, false
+	}
+	return o.SlackNotiForwarderPublicDetails, true
+}
+
+// HasSlackNotiForwarderPublicDetails returns a boolean if a field has been set.
+func (o *NotiForwarder) HasSlackNotiForwarderPublicDetails() bool {
+	if o != nil && o.SlackNotiForwarderPublicDetails != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSlackNotiForwarderPublicDetails gets a reference to the given map[string]interface{} and assigns it to the SlackNotiForwarderPublicDetails field.
+func (o *NotiForwarder) SetSlackNotiForwarderPublicDetails(v map[string]interface{}) {
+	o.SlackNotiForwarderPublicDetails = &v
 }
 
 // GetTimespanInSeconds returns the TimespanInSeconds field value if set, zero value otherwise.
@@ -878,6 +944,9 @@ func (o NotiForwarder) MarshalJSON() ([]byte, error) {
 	if o.NotiForwarderVersions != nil {
 		toSerialize["noti_forwarder_versions"] = o.NotiForwarderVersions
 	}
+	if o.OverrideUrl != nil {
+		toSerialize["override_url"] = o.OverrideUrl
+	}
 	if o.Paths != nil {
 		toSerialize["paths"] = o.Paths
 	}
@@ -886,6 +955,9 @@ func (o NotiForwarder) MarshalJSON() ([]byte, error) {
 	}
 	if o.RunnerType != nil {
 		toSerialize["runner_type"] = o.RunnerType
+	}
+	if o.SlackNotiForwarderPublicDetails != nil {
+		toSerialize["slack_noti_forwarder_public_details"] = o.SlackNotiForwarderPublicDetails
 	}
 	if o.TimespanInSeconds != nil {
 		toSerialize["timespan_in_seconds"] = o.TimespanInSeconds

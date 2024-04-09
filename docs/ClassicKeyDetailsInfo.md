@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **ClassicKeyAttributes** | Pointer to [**map[string][]string**](array.md) |  | [optional] 
 **ClassicKeyId** | Pointer to **string** |  | [optional] 
 **GwClusterId** | Pointer to **int64** |  | [optional] 
+**HasCertificate** | Pointer to **bool** |  | [optional] 
 **IsProvidedByUser** | Pointer to **bool** |  | [optional] 
 **IsUnexportable** | Pointer to **bool** |  | [optional] 
 **KeyState** | Pointer to **string** | ItemState defines the different states an Item can be in | [optional] 
@@ -110,6 +111,31 @@ SetGwClusterId sets GwClusterId field to given value.
 `func (o *ClassicKeyDetailsInfo) HasGwClusterId() bool`
 
 HasGwClusterId returns a boolean if a field has been set.
+
+### GetHasCertificate
+
+`func (o *ClassicKeyDetailsInfo) GetHasCertificate() bool`
+
+GetHasCertificate returns the HasCertificate field if non-nil, zero value otherwise.
+
+### GetHasCertificateOk
+
+`func (o *ClassicKeyDetailsInfo) GetHasCertificateOk() (*bool, bool)`
+
+GetHasCertificateOk returns a tuple with the HasCertificate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHasCertificate
+
+`func (o *ClassicKeyDetailsInfo) SetHasCertificate(v bool)`
+
+SetHasCertificate sets HasCertificate field to given value.
+
+### HasHasCertificate
+
+`func (o *ClassicKeyDetailsInfo) HasHasCertificate() bool`
+
+HasHasCertificate returns a boolean if a field has been set.
 
 ### GetIsProvidedByUser
 

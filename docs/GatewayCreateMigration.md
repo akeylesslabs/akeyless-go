@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **AdDiscoveryTypes** | Pointer to **[]string** | Set migration discovery types (domain-users, computers, local-users). (Relevant only for Active Directory migration) | [optional] 
 **AdOsFilter** | Pointer to **string** | Filter by Operating System to run the migration, can be used with wildcards, e.g. SRV20* (Relevant only for Active Directory migration) | [optional] 
 **AdSshPort** | Pointer to **string** | Set the SSH Port for further connection to the domain servers. Default is port 22 (Relevant only for Active Directory migration) | [optional] [default to "22"]
+**AdTargetFormat** | Pointer to **string** | Relevant only for ad-discovery-types&#x3D;computers. For linked, all computers will be migrated into a linked target(s). if set with regular, the migration will create a target for each computer. | [optional] [default to "linked"]
 **AdTargetsType** | Pointer to **string** | Set the target type of the domain servers [ssh/windows](Relevant only for Active Directory migration) | [optional] [default to "windows"]
 **AdWinrmOverHttp** | Pointer to **string** | Use WinRM over HTTP, by default runs over HTTPS | [optional] [default to "false"]
 **AdWinrmPort** | Pointer to **string** | Set the WinRM Port for further connection to the domain servers. Default is 5986 (Relevant only for Active Directory migration) | [optional] [default to "5986"]
@@ -310,6 +311,31 @@ SetAdSshPort sets AdSshPort field to given value.
 `func (o *GatewayCreateMigration) HasAdSshPort() bool`
 
 HasAdSshPort returns a boolean if a field has been set.
+
+### GetAdTargetFormat
+
+`func (o *GatewayCreateMigration) GetAdTargetFormat() string`
+
+GetAdTargetFormat returns the AdTargetFormat field if non-nil, zero value otherwise.
+
+### GetAdTargetFormatOk
+
+`func (o *GatewayCreateMigration) GetAdTargetFormatOk() (*string, bool)`
+
+GetAdTargetFormatOk returns a tuple with the AdTargetFormat field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdTargetFormat
+
+`func (o *GatewayCreateMigration) SetAdTargetFormat(v string)`
+
+SetAdTargetFormat sets AdTargetFormat field to given value.
+
+### HasAdTargetFormat
+
+`func (o *GatewayCreateMigration) HasAdTargetFormat() bool`
+
+HasAdTargetFormat returns a boolean if a field has been set.
 
 ### GetAdTargetsType
 

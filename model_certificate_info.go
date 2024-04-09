@@ -21,6 +21,7 @@ type CertificateInfo struct {
 	ExtKeyUsage *[]int64 `json:"ExtKeyUsage,omitempty"`
 	// KeyUsage represents the set of actions that are valid for a given key. It's a bitmap of the KeyUsage* constants.
 	KeyUsage *int64 `json:"KeyUsage,omitempty"`
+	CrlDistributionPoints *[]string `json:"crl_distribution_points,omitempty"`
 	DnsNames *[]string `json:"dns_names,omitempty"`
 	EmailAddresses *[]string `json:"email_addresses,omitempty"`
 	Extensions *[]Extension `json:"extensions,omitempty"`
@@ -123,6 +124,38 @@ func (o *CertificateInfo) HasKeyUsage() bool {
 // SetKeyUsage gets a reference to the given int64 and assigns it to the KeyUsage field.
 func (o *CertificateInfo) SetKeyUsage(v int64) {
 	o.KeyUsage = &v
+}
+
+// GetCrlDistributionPoints returns the CrlDistributionPoints field value if set, zero value otherwise.
+func (o *CertificateInfo) GetCrlDistributionPoints() []string {
+	if o == nil || o.CrlDistributionPoints == nil {
+		var ret []string
+		return ret
+	}
+	return *o.CrlDistributionPoints
+}
+
+// GetCrlDistributionPointsOk returns a tuple with the CrlDistributionPoints field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CertificateInfo) GetCrlDistributionPointsOk() (*[]string, bool) {
+	if o == nil || o.CrlDistributionPoints == nil {
+		return nil, false
+	}
+	return o.CrlDistributionPoints, true
+}
+
+// HasCrlDistributionPoints returns a boolean if a field has been set.
+func (o *CertificateInfo) HasCrlDistributionPoints() bool {
+	if o != nil && o.CrlDistributionPoints != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCrlDistributionPoints gets a reference to the given []string and assigns it to the CrlDistributionPoints field.
+func (o *CertificateInfo) SetCrlDistributionPoints(v []string) {
+	o.CrlDistributionPoints = &v
 }
 
 // GetDnsNames returns the DnsNames field value if set, zero value otherwise.
@@ -804,6 +837,9 @@ func (o CertificateInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.KeyUsage != nil {
 		toSerialize["KeyUsage"] = o.KeyUsage
+	}
+	if o.CrlDistributionPoints != nil {
+		toSerialize["crl_distribution_points"] = o.CrlDistributionPoints
 	}
 	if o.DnsNames != nil {
 		toSerialize["dns_names"] = o.DnsNames

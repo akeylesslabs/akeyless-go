@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | Pointer to **string** | The name of a key that used to encrypt the EventForwarder secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | EventForwarder name | 
+**OverrideUrl** | Pointer to **string** | Override Akeyless default URL with your Gateway url (port 18888) | [optional] 
 **RunnerType** | **string** |  | 
 **TargetsEventSourceLocations** | Pointer to **[]string** | Targets Event sources | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -277,6 +278,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetOverrideUrl
+
+`func (o *EventForwarderCreateEmail) GetOverrideUrl() string`
+
+GetOverrideUrl returns the OverrideUrl field if non-nil, zero value otherwise.
+
+### GetOverrideUrlOk
+
+`func (o *EventForwarderCreateEmail) GetOverrideUrlOk() (*string, bool)`
+
+GetOverrideUrlOk returns a tuple with the OverrideUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOverrideUrl
+
+`func (o *EventForwarderCreateEmail) SetOverrideUrl(v string)`
+
+SetOverrideUrl sets OverrideUrl field to given value.
+
+### HasOverrideUrl
+
+`func (o *EventForwarderCreateEmail) HasOverrideUrl() bool`
+
+HasOverrideUrl returns a boolean if a field has been set.
 
 ### GetRunnerType
 

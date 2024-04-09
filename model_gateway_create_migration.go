@@ -35,6 +35,8 @@ type GatewayCreateMigration struct {
 	AdOsFilter *string `json:"ad-os-filter,omitempty"`
 	// Set the SSH Port for further connection to the domain servers. Default is port 22 (Relevant only for Active Directory migration)
 	AdSshPort *string `json:"ad-ssh-port,omitempty"`
+	// Relevant only for ad-discovery-types=computers. For linked, all computers will be migrated into a linked target(s). if set with regular, the migration will create a target for each computer.
+	AdTargetFormat *string `json:"ad-target-format,omitempty"`
 	// Set the target type of the domain servers [ssh/windows](Relevant only for Active Directory migration)
 	AdTargetsType *string `json:"ad-targets-type,omitempty"`
 	// Use WinRM over HTTP, by default runs over HTTPS
@@ -153,6 +155,8 @@ func NewGatewayCreateMigration(name string, siTargetName string, siUsersPathTemp
 	this.AdDiscoverServices = &adDiscoverServices
 	var adSshPort string = "22"
 	this.AdSshPort = &adSshPort
+	var adTargetFormat string = "linked"
+	this.AdTargetFormat = &adTargetFormat
 	var adTargetsType string = "windows"
 	this.AdTargetsType = &adTargetsType
 	var adWinrmOverHttp string = "false"
@@ -183,6 +187,8 @@ func NewGatewayCreateMigrationWithDefaults() *GatewayCreateMigration {
 	this.AdDiscoverServices = &adDiscoverServices
 	var adSshPort string = "22"
 	this.AdSshPort = &adSshPort
+	var adTargetFormat string = "linked"
+	this.AdTargetFormat = &adTargetFormat
 	var adTargetsType string = "windows"
 	this.AdTargetsType = &adTargetsType
 	var adWinrmOverHttp string = "false"
@@ -486,6 +492,38 @@ func (o *GatewayCreateMigration) HasAdSshPort() bool {
 // SetAdSshPort gets a reference to the given string and assigns it to the AdSshPort field.
 func (o *GatewayCreateMigration) SetAdSshPort(v string) {
 	o.AdSshPort = &v
+}
+
+// GetAdTargetFormat returns the AdTargetFormat field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetAdTargetFormat() string {
+	if o == nil || o.AdTargetFormat == nil {
+		var ret string
+		return ret
+	}
+	return *o.AdTargetFormat
+}
+
+// GetAdTargetFormatOk returns a tuple with the AdTargetFormat field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetAdTargetFormatOk() (*string, bool) {
+	if o == nil || o.AdTargetFormat == nil {
+		return nil, false
+	}
+	return o.AdTargetFormat, true
+}
+
+// HasAdTargetFormat returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasAdTargetFormat() bool {
+	if o != nil && o.AdTargetFormat != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdTargetFormat gets a reference to the given string and assigns it to the AdTargetFormat field.
+func (o *GatewayCreateMigration) SetAdTargetFormat(v string) {
+	o.AdTargetFormat = &v
 }
 
 // GetAdTargetsType returns the AdTargetsType field value if set, zero value otherwise.
@@ -2180,6 +2218,9 @@ func (o GatewayCreateMigration) MarshalJSON() ([]byte, error) {
 	}
 	if o.AdSshPort != nil {
 		toSerialize["ad-ssh-port"] = o.AdSshPort
+	}
+	if o.AdTargetFormat != nil {
+		toSerialize["ad-target-format"] = o.AdTargetFormat
 	}
 	if o.AdTargetsType != nil {
 		toSerialize["ad-targets-type"] = o.AdTargetsType

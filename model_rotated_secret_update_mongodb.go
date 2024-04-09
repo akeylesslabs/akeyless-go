@@ -33,6 +33,8 @@ type RotatedSecretUpdateMongodb struct {
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
+	// Set the maximum number of versions, limited by the account settings defaults.
+	MaxVersions *string `json:"max-versions,omitempty"`
 	// Rotated secret name
 	Name string `json:"name"`
 	// New item name
@@ -359,6 +361,38 @@ func (o *RotatedSecretUpdateMongodb) HasKey() bool {
 // SetKey gets a reference to the given string and assigns it to the Key field.
 func (o *RotatedSecretUpdateMongodb) SetKey(v string) {
 	o.Key = &v
+}
+
+// GetMaxVersions returns the MaxVersions field value if set, zero value otherwise.
+func (o *RotatedSecretUpdateMongodb) GetMaxVersions() string {
+	if o == nil || o.MaxVersions == nil {
+		var ret string
+		return ret
+	}
+	return *o.MaxVersions
+}
+
+// GetMaxVersionsOk returns a tuple with the MaxVersions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretUpdateMongodb) GetMaxVersionsOk() (*string, bool) {
+	if o == nil || o.MaxVersions == nil {
+		return nil, false
+	}
+	return o.MaxVersions, true
+}
+
+// HasMaxVersions returns a boolean if a field has been set.
+func (o *RotatedSecretUpdateMongodb) HasMaxVersions() bool {
+	if o != nil && o.MaxVersions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxVersions gets a reference to the given string and assigns it to the MaxVersions field.
+func (o *RotatedSecretUpdateMongodb) SetMaxVersions(v string) {
+	o.MaxVersions = &v
 }
 
 // GetName returns the Name field value
@@ -890,6 +924,9 @@ func (o RotatedSecretUpdateMongodb) MarshalJSON() ([]byte, error) {
 	}
 	if o.Key != nil {
 		toSerialize["key"] = o.Key
+	}
+	if o.MaxVersions != nil {
+		toSerialize["max-versions"] = o.MaxVersions
 	}
 	if true {
 		toSerialize["name"] = o.Name

@@ -19,6 +19,7 @@ docs/ActiveDirectoryPayload.md
 docs/AddGatewayAllowedAccessId.md
 docs/AdminsConfigPart.md
 docs/AkeylessGatewayConfig.md
+docs/AllAnalyticsData.md
 docs/AllowedAccess.md
 docs/AllowedAccessOld.md
 docs/ArtifactoryTargetDetails.md
@@ -41,6 +42,7 @@ docs/BastionsList.md
 docs/CFConfigPart.md
 docs/CacheConfigPart.md
 docs/CertAccessRules.md
+docs/CertificateAnalyticAggregation.md
 docs/CertificateChainInfo.md
 docs/CertificateExpirationEvent.md
 docs/CertificateInfo.md
@@ -53,6 +55,8 @@ docs/ClassicKeyDetailsInfo.md
 docs/ClassicKeyStatusInfo.md
 docs/ClassicKeyTargetInfo.md
 docs/ClientData.md
+docs/ClientUsageInfo.md
+docs/ClientsUsageReport.md
 docs/ConfigChange.md
 docs/ConfigHash.md
 docs/Configure.md
@@ -304,6 +308,8 @@ docs/EsmUpdate.md
 docs/EsmUpdateSecretOutput.md
 docs/EventAction.md
 docs/EventForwarderCreateEmail.md
+docs/EventForwarderCreateServiceNow.md
+docs/EventForwarderCreateSlack.md
 docs/EventForwarderCreateUpdateOutput.md
 docs/EventForwarderCreateWebhook.md
 docs/EventForwarderDelete.md
@@ -311,6 +317,8 @@ docs/EventForwarderDeleteOutput.md
 docs/EventForwarderGet.md
 docs/EventForwarderGetOutput.md
 docs/EventForwarderUpdateEmail.md
+docs/EventForwarderUpdateServiceNow.md
+docs/EventForwarderUpdateSlack.md
 docs/EventForwarderUpdateWebhook.md
 docs/ExportClassicKey.md
 docs/ExportClassicKeyOutput.md
@@ -485,6 +493,7 @@ docs/GenerateCsr.md
 docs/GenerateCsrOutput.md
 docs/GetAccountSettings.md
 docs/GetAccountSettingsCommandOutput.md
+docs/GetAnalyticsData.md
 docs/GetAuthMethod.md
 docs/GetCertificateValue.md
 docs/GetCertificateValueOutput.md
@@ -528,6 +537,7 @@ docs/ImportPasswordsOutput.md
 docs/ImporterInfo.md
 docs/Item.md
 docs/ItemGeneralInfo.md
+docs/ItemSraStatus.md
 docs/ItemTargetAssociation.md
 docs/ItemVersion.md
 docs/JSONError.md
@@ -631,6 +641,7 @@ docs/RequiredActivity.md
 docs/ReverseRBAC.md
 docs/ReverseRBACClient.md
 docs/ReverseRBACOutput.md
+docs/RevokeCertificate.md
 docs/RevokeCreds.md
 docs/Role.md
 docs/RoleAssociationDetails.md
@@ -843,6 +854,7 @@ docs/UpdateZeroSSLTargetOutput.md
 docs/UploadPKCS12.md
 docs/UploadRSA.md
 docs/UsageEventSetting.md
+docs/UsageReportSummary.md
 docs/UscCreate.md
 docs/UscCreateSecretOutput.md
 docs/UscDelete.md
@@ -885,6 +897,7 @@ model_active_directory_payload.go
 model_add_gateway_allowed_access_id.go
 model_admins_config_part.go
 model_akeyless_gateway_config.go
+model_all_analytics_data.go
 model_allowed_access.go
 model_allowed_access_old.go
 model_api_key_access_rules.go
@@ -911,6 +924,7 @@ model_bastion_list_entry.go
 model_bastions_list.go
 model_cache_config_part.go
 model_cert_access_rules.go
+model_certificate_analytic_aggregation.go
 model_certificate_chain_info.go
 model_certificate_expiration_event.go
 model_certificate_info.go
@@ -924,6 +938,8 @@ model_classic_key_details_info.go
 model_classic_key_status_info.go
 model_classic_key_target_info.go
 model_client_data.go
+model_client_usage_info.go
+model_clients_usage_report.go
 model_config_change.go
 model_config_hash.go
 model_configure.go
@@ -1175,6 +1191,8 @@ model_esm_update.go
 model_esm_update_secret_output.go
 model_event_action.go
 model_event_forwarder_create_email.go
+model_event_forwarder_create_service_now.go
+model_event_forwarder_create_slack.go
 model_event_forwarder_create_update_output.go
 model_event_forwarder_create_webhook.go
 model_event_forwarder_delete.go
@@ -1182,6 +1200,8 @@ model_event_forwarder_delete_output.go
 model_event_forwarder_get.go
 model_event_forwarder_get_output.go
 model_event_forwarder_update_email.go
+model_event_forwarder_update_service_now.go
+model_event_forwarder_update_slack.go
 model_event_forwarder_update_webhook.go
 model_export_classic_key.go
 model_export_classic_key_output.go
@@ -1355,6 +1375,7 @@ model_generate_csr.go
 model_generate_csr_output.go
 model_get_account_settings.go
 model_get_account_settings_command_output.go
+model_get_analytics_data.go
 model_get_auth_method.go
 model_get_certificate_value.go
 model_get_certificate_value_output.go
@@ -1399,6 +1420,7 @@ model_import_passwords_output.go
 model_importer_info.go
 model_item.go
 model_item_general_info.go
+model_item_sra_status.go
 model_item_target_association.go
 model_item_version.go
 model_json_error.go
@@ -1502,6 +1524,7 @@ model_required_activity.go
 model_reverse_rbac.go
 model_reverse_rbac_client.go
 model_reverse_rbac_output.go
+model_revoke_certificate.go
 model_revoke_creds.go
 model_role.go
 model_role_association_details.go
@@ -1714,6 +1737,7 @@ model_update_zero_ssl_target_output.go
 model_upload_pkcs12.go
 model_upload_rsa.go
 model_usage_event_setting.go
+model_usage_report_summary.go
 model_usc_create.go
 model_usc_create_secret_output.go
 model_usc_delete.go

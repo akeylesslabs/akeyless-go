@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | Description of the object | [optional] [default to "default_metadata"]
 **HostProvider** | Pointer to **string** | Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret | [optional] [default to "explicit"]
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**MaxVersions** | Pointer to **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Name** | **string** | Current item name | 
 **NewMetadata** | Pointer to **string** | Deprecated - use description | [optional] [default to "default_metadata"]
 **NewName** | Pointer to **string** | New item name | [optional] 
@@ -289,6 +290,31 @@ SetJson sets Json field to given value.
 `func (o *UpdateItem) HasJson() bool`
 
 HasJson returns a boolean if a field has been set.
+
+### GetMaxVersions
+
+`func (o *UpdateItem) GetMaxVersions() string`
+
+GetMaxVersions returns the MaxVersions field if non-nil, zero value otherwise.
+
+### GetMaxVersionsOk
+
+`func (o *UpdateItem) GetMaxVersionsOk() (*string, bool)`
+
+GetMaxVersionsOk returns a tuple with the MaxVersions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaxVersions
+
+`func (o *UpdateItem) SetMaxVersions(v string)`
+
+SetMaxVersions sets MaxVersions field to given value.
+
+### HasMaxVersions
+
+`func (o *UpdateItem) HasMaxVersions() bool`
+
+HasMaxVersions returns a boolean if a field has been set.
 
 ### GetName
 

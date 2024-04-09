@@ -10,10 +10,11 @@ Name | Type | Description | Notes
 **Country** | Pointer to **string** | Country | [optional] 
 **DefaultKeyName** | Pointer to **string** | Set the account default key based on the DFC key name. Use \&quot;set-original-akeyless-default-key\&quot; to revert to using the original default key of the account. | [optional] 
 **DefaultShareLinkTtlMinutes** | Pointer to **string** | Set the default ttl in minutes for sharing item number between 60 and 43200 | [optional] 
-**DefaultVersioning** | Pointer to **string** | If set to true, new item version will be created on each update [true/false] | [optional] 
+**DefaultVersioning** | Pointer to **string** | If set to true, new versions is enabled by default | [optional] 
 **DpEnableClassicKeyProtection** | Pointer to **string** | Set to update protection with classic keys state [true/false] | [optional] 
 **DynamicSecretMaxTtl** | Pointer to **int64** | Set the maximum ttl for dynamic secrets | [optional] 
 **DynamicSecretMaxTtlEnable** | Pointer to **string** | Set a maximum ttl for dynamic secrets [true/false] | [optional] 
+**ForceNewVersions** | Pointer to **string** | If set to true, new version will be created on update | [optional] 
 **InvalidCharacters** | Pointer to **string** | Characters that cannot be used for items/targets/roles/auths/event_forwarder names. Empty string will enforce nothing. | [optional] [default to "notReceivedInvalidCharacter"]
 **ItemType** | Pointer to **string** | VersionSettingsObjectType defines object types for account version settings | [optional] 
 **ItemsDeletionProtection** | Pointer to **string** | Set or unset the default behaviour of items deletion protection [true/false] | [optional] 
@@ -306,6 +307,31 @@ SetDynamicSecretMaxTtlEnable sets DynamicSecretMaxTtlEnable field to given value
 `func (o *UpdateAccountSettings) HasDynamicSecretMaxTtlEnable() bool`
 
 HasDynamicSecretMaxTtlEnable returns a boolean if a field has been set.
+
+### GetForceNewVersions
+
+`func (o *UpdateAccountSettings) GetForceNewVersions() string`
+
+GetForceNewVersions returns the ForceNewVersions field if non-nil, zero value otherwise.
+
+### GetForceNewVersionsOk
+
+`func (o *UpdateAccountSettings) GetForceNewVersionsOk() (*string, bool)`
+
+GetForceNewVersionsOk returns a tuple with the ForceNewVersions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetForceNewVersions
+
+`func (o *UpdateAccountSettings) SetForceNewVersions(v string)`
+
+SetForceNewVersions sets ForceNewVersions field to given value.
+
+### HasForceNewVersions
+
+`func (o *UpdateAccountSettings) HasForceNewVersions() bool`
+
+HasForceNewVersions returns a boolean if a field has been set.
 
 ### GetInvalidCharacters
 

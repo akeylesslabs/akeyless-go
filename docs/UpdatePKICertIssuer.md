@@ -14,11 +14,13 @@ Name | Type | Description | Notes
 **ClientFlag** | Pointer to **bool** | If set, certificates will be flagged for client auth use | [optional] 
 **CodeSigningFlag** | Pointer to **bool** | If set, certificates will be flagged for code signing use | [optional] 
 **Country** | Pointer to **string** | A comma-separated list of countries that will be set in the issued certificate | [optional] 
+**CreatePrivateCrl** | Pointer to **bool** | Set this to allow the issuer will expose a CRL endpoint in the Gateway | [optional] 
+**CreatePublicCrl** | Pointer to **bool** | Set this to allow the cert issuer will expose a public CRL endpoint | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **DestinationPath** | Pointer to **string** | A path in which to save generated certificates | [optional] 
 **ExpirationEventIn** | Pointer to **[]string** | How many days before the expiration of the certificate would you like to be notified. | [optional] 
-**GwClusterUrl** | Pointer to **string** | The GW cluster URL to issue the certificate from, required in Public CA mode | [optional] 
+**GwClusterUrl** | Pointer to **string** | The GW cluster URL to issue the certificate from, required in Public CA mode or to allow CRLs on private CA | [optional] 
 **IsCa** | Pointer to **bool** | If set, the basic constraints extension will be added to certificate | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeyUsage** | Pointer to **string** | key-usage | [optional] [default to "DigitalSignature,KeyAgreement,KeyEncipherment"]
@@ -309,6 +311,56 @@ SetCountry sets Country field to given value.
 `func (o *UpdatePKICertIssuer) HasCountry() bool`
 
 HasCountry returns a boolean if a field has been set.
+
+### GetCreatePrivateCrl
+
+`func (o *UpdatePKICertIssuer) GetCreatePrivateCrl() bool`
+
+GetCreatePrivateCrl returns the CreatePrivateCrl field if non-nil, zero value otherwise.
+
+### GetCreatePrivateCrlOk
+
+`func (o *UpdatePKICertIssuer) GetCreatePrivateCrlOk() (*bool, bool)`
+
+GetCreatePrivateCrlOk returns a tuple with the CreatePrivateCrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatePrivateCrl
+
+`func (o *UpdatePKICertIssuer) SetCreatePrivateCrl(v bool)`
+
+SetCreatePrivateCrl sets CreatePrivateCrl field to given value.
+
+### HasCreatePrivateCrl
+
+`func (o *UpdatePKICertIssuer) HasCreatePrivateCrl() bool`
+
+HasCreatePrivateCrl returns a boolean if a field has been set.
+
+### GetCreatePublicCrl
+
+`func (o *UpdatePKICertIssuer) GetCreatePublicCrl() bool`
+
+GetCreatePublicCrl returns the CreatePublicCrl field if non-nil, zero value otherwise.
+
+### GetCreatePublicCrlOk
+
+`func (o *UpdatePKICertIssuer) GetCreatePublicCrlOk() (*bool, bool)`
+
+GetCreatePublicCrlOk returns a tuple with the CreatePublicCrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatePublicCrl
+
+`func (o *UpdatePKICertIssuer) SetCreatePublicCrl(v bool)`
+
+SetCreatePublicCrl sets CreatePublicCrl field to given value.
+
+### HasCreatePublicCrl
+
+`func (o *UpdatePKICertIssuer) HasCreatePublicCrl() bool`
+
+HasCreatePublicCrl returns a boolean if a field has been set.
 
 ### GetDeleteProtection
 

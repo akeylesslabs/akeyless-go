@@ -19,6 +19,7 @@ import (
 type CacheConfigPart struct {
 	CacheEnable *bool `json:"cache_enable,omitempty"`
 	CacheTtl *string `json:"cache_ttl,omitempty"`
+	NewProactiveCacheEnable *bool `json:"new_proactive_cache_enable,omitempty"`
 	ProactiveCacheDumpInterval *string `json:"proactive_cache_dump_interval,omitempty"`
 	ProactiveCacheEnable *bool `json:"proactive_cache_enable,omitempty"`
 	ProactiveCacheMinimumFetchingTime *string `json:"proactive_cache_minimum_fetching_time,omitempty"`
@@ -103,6 +104,38 @@ func (o *CacheConfigPart) HasCacheTtl() bool {
 // SetCacheTtl gets a reference to the given string and assigns it to the CacheTtl field.
 func (o *CacheConfigPart) SetCacheTtl(v string) {
 	o.CacheTtl = &v
+}
+
+// GetNewProactiveCacheEnable returns the NewProactiveCacheEnable field value if set, zero value otherwise.
+func (o *CacheConfigPart) GetNewProactiveCacheEnable() bool {
+	if o == nil || o.NewProactiveCacheEnable == nil {
+		var ret bool
+		return ret
+	}
+	return *o.NewProactiveCacheEnable
+}
+
+// GetNewProactiveCacheEnableOk returns a tuple with the NewProactiveCacheEnable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CacheConfigPart) GetNewProactiveCacheEnableOk() (*bool, bool) {
+	if o == nil || o.NewProactiveCacheEnable == nil {
+		return nil, false
+	}
+	return o.NewProactiveCacheEnable, true
+}
+
+// HasNewProactiveCacheEnable returns a boolean if a field has been set.
+func (o *CacheConfigPart) HasNewProactiveCacheEnable() bool {
+	if o != nil && o.NewProactiveCacheEnable != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNewProactiveCacheEnable gets a reference to the given bool and assigns it to the NewProactiveCacheEnable field.
+func (o *CacheConfigPart) SetNewProactiveCacheEnable(v bool) {
+	o.NewProactiveCacheEnable = &v
 }
 
 // GetProactiveCacheDumpInterval returns the ProactiveCacheDumpInterval field value if set, zero value otherwise.
@@ -208,6 +241,9 @@ func (o CacheConfigPart) MarshalJSON() ([]byte, error) {
 	}
 	if o.CacheTtl != nil {
 		toSerialize["cache_ttl"] = o.CacheTtl
+	}
+	if o.NewProactiveCacheEnable != nil {
+		toSerialize["new_proactive_cache_enable"] = o.NewProactiveCacheEnable
 	}
 	if o.ProactiveCacheDumpInterval != nil {
 		toSerialize["proactive_cache_dump_interval"] = o.ProactiveCacheDumpInterval

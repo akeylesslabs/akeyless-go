@@ -6,8 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AwsAccessId** | Pointer to **string** |  | [optional] 
 **AwsAccessKey** | Pointer to **string** |  | [optional] 
+**AwsAuthType** | Pointer to **string** |  | [optional] 
 **AwsRegion** | Pointer to **string** |  | [optional] 
-**AwsUseGatewayCloudIdentity** | Pointer to **bool** |  | [optional] 
+**AwsRoleArn** | Pointer to **string** |  | [optional] 
+**AwsUseGatewayCloudIdentity** | Pointer to **bool** | deprecated | [optional] 
 **BucketName** | Pointer to **string** |  | [optional] 
 **LogFolder** | Pointer to **string** |  | [optional] 
 
@@ -80,6 +82,31 @@ SetAwsAccessKey sets AwsAccessKey field to given value.
 
 HasAwsAccessKey returns a boolean if a field has been set.
 
+### GetAwsAuthType
+
+`func (o *AwsS3LogForwardingConfig) GetAwsAuthType() string`
+
+GetAwsAuthType returns the AwsAuthType field if non-nil, zero value otherwise.
+
+### GetAwsAuthTypeOk
+
+`func (o *AwsS3LogForwardingConfig) GetAwsAuthTypeOk() (*string, bool)`
+
+GetAwsAuthTypeOk returns a tuple with the AwsAuthType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsAuthType
+
+`func (o *AwsS3LogForwardingConfig) SetAwsAuthType(v string)`
+
+SetAwsAuthType sets AwsAuthType field to given value.
+
+### HasAwsAuthType
+
+`func (o *AwsS3LogForwardingConfig) HasAwsAuthType() bool`
+
+HasAwsAuthType returns a boolean if a field has been set.
+
 ### GetAwsRegion
 
 `func (o *AwsS3LogForwardingConfig) GetAwsRegion() string`
@@ -104,6 +131,31 @@ SetAwsRegion sets AwsRegion field to given value.
 `func (o *AwsS3LogForwardingConfig) HasAwsRegion() bool`
 
 HasAwsRegion returns a boolean if a field has been set.
+
+### GetAwsRoleArn
+
+`func (o *AwsS3LogForwardingConfig) GetAwsRoleArn() string`
+
+GetAwsRoleArn returns the AwsRoleArn field if non-nil, zero value otherwise.
+
+### GetAwsRoleArnOk
+
+`func (o *AwsS3LogForwardingConfig) GetAwsRoleArnOk() (*string, bool)`
+
+GetAwsRoleArnOk returns a tuple with the AwsRoleArn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsRoleArn
+
+`func (o *AwsS3LogForwardingConfig) SetAwsRoleArn(v string)`
+
+SetAwsRoleArn sets AwsRoleArn field to given value.
+
+### HasAwsRoleArn
+
+`func (o *AwsS3LogForwardingConfig) HasAwsRoleArn() bool`
+
+HasAwsRoleArn returns a boolean if a field has been set.
 
 ### GetAwsUseGatewayCloudIdentity
 

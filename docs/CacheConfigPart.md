@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CacheEnable** | Pointer to **bool** |  | [optional] 
 **CacheTtl** | Pointer to **string** |  | [optional] 
+**NewProactiveCacheEnable** | Pointer to **bool** |  | [optional] 
 **ProactiveCacheDumpInterval** | Pointer to **string** |  | [optional] 
 **ProactiveCacheEnable** | Pointer to **bool** |  | [optional] 
 **ProactiveCacheMinimumFetchingTime** | Pointer to **string** |  | [optional] 
@@ -78,6 +79,31 @@ SetCacheTtl sets CacheTtl field to given value.
 `func (o *CacheConfigPart) HasCacheTtl() bool`
 
 HasCacheTtl returns a boolean if a field has been set.
+
+### GetNewProactiveCacheEnable
+
+`func (o *CacheConfigPart) GetNewProactiveCacheEnable() bool`
+
+GetNewProactiveCacheEnable returns the NewProactiveCacheEnable field if non-nil, zero value otherwise.
+
+### GetNewProactiveCacheEnableOk
+
+`func (o *CacheConfigPart) GetNewProactiveCacheEnableOk() (*bool, bool)`
+
+GetNewProactiveCacheEnableOk returns a tuple with the NewProactiveCacheEnable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNewProactiveCacheEnable
+
+`func (o *CacheConfigPart) SetNewProactiveCacheEnable(v bool)`
+
+SetNewProactiveCacheEnable sets NewProactiveCacheEnable field to given value.
+
+### HasNewProactiveCacheEnable
+
+`func (o *CacheConfigPart) HasNewProactiveCacheEnable() bool`
+
+HasNewProactiveCacheEnable returns a boolean if a field has been set.
 
 ### GetProactiveCacheDumpInterval
 

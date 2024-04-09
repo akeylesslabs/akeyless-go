@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **AzureResourceName** | Pointer to **string** |  | [optional] 
 **AzureSubscriptionId** | Pointer to **string** |  | [optional] 
 **AzureTenantId** | Pointer to **string** |  | [optional] 
+**AzureUsername** | Pointer to **string** |  | [optional] 
 **UseGwCloudIdentity** | Pointer to **bool** |  | [optional] 
 
 ## Methods
@@ -180,6 +181,31 @@ SetAzureTenantId sets AzureTenantId field to given value.
 `func (o *AzureTargetDetails) HasAzureTenantId() bool`
 
 HasAzureTenantId returns a boolean if a field has been set.
+
+### GetAzureUsername
+
+`func (o *AzureTargetDetails) GetAzureUsername() string`
+
+GetAzureUsername returns the AzureUsername field if non-nil, zero value otherwise.
+
+### GetAzureUsernameOk
+
+`func (o *AzureTargetDetails) GetAzureUsernameOk() (*string, bool)`
+
+GetAzureUsernameOk returns a tuple with the AzureUsername field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureUsername
+
+`func (o *AzureTargetDetails) SetAzureUsername(v string)`
+
+SetAzureUsername sets AzureUsername field to given value.
+
+### HasAzureUsername
+
+`func (o *AzureTargetDetails) HasAzureUsername() bool`
+
+HasAzureUsername returns a boolean if a field has been set.
 
 ### GetUseGwCloudIdentity
 

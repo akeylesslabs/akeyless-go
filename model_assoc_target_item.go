@@ -37,6 +37,8 @@ type AssocTargetItem struct {
 	MultiRegion *string `json:"multi-region,omitempty"`
 	// The item to associate
 	Name string `json:"name"`
+	// A custom command to run on the remote target after successful provisioning (relevant only for certificate provisioning)
+	PostProvisionCommand *string `json:"post-provision-command,omitempty"`
 	// A path on the target to store the private key (relevant only for certificate provisioning)
 	PrivateKeyPath *string `json:"private-key-path,omitempty"`
 	// Project id of the GCP KMS (required for gcp targets)
@@ -406,6 +408,38 @@ func (o *AssocTargetItem) SetName(v string) {
 	o.Name = v
 }
 
+// GetPostProvisionCommand returns the PostProvisionCommand field value if set, zero value otherwise.
+func (o *AssocTargetItem) GetPostProvisionCommand() string {
+	if o == nil || o.PostProvisionCommand == nil {
+		var ret string
+		return ret
+	}
+	return *o.PostProvisionCommand
+}
+
+// GetPostProvisionCommandOk returns a tuple with the PostProvisionCommand field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssocTargetItem) GetPostProvisionCommandOk() (*string, bool) {
+	if o == nil || o.PostProvisionCommand == nil {
+		return nil, false
+	}
+	return o.PostProvisionCommand, true
+}
+
+// HasPostProvisionCommand returns a boolean if a field has been set.
+func (o *AssocTargetItem) HasPostProvisionCommand() bool {
+	if o != nil && o.PostProvisionCommand != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPostProvisionCommand gets a reference to the given string and assigns it to the PostProvisionCommand field.
+func (o *AssocTargetItem) SetPostProvisionCommand(v string) {
+	o.PostProvisionCommand = &v
+}
+
 // GetPrivateKeyPath returns the PrivateKeyPath field value if set, zero value otherwise.
 func (o *AssocTargetItem) GetPrivateKeyPath() string {
 	if o == nil || o.PrivateKeyPath == nil {
@@ -749,6 +783,9 @@ func (o AssocTargetItem) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.PostProvisionCommand != nil {
+		toSerialize["post-provision-command"] = o.PostProvisionCommand
 	}
 	if o.PrivateKeyPath != nil {
 		toSerialize["private-key-path"] = o.PrivateKeyPath

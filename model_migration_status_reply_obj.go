@@ -17,6 +17,7 @@ import (
 
 // MigrationStatusReplyObj struct for MigrationStatusReplyObj
 type MigrationStatusReplyObj struct {
+	Computers *int64 `json:"computers,omitempty"`
 	DurationTime *string `json:"duration_time,omitempty"`
 	Error *string `json:"error,omitempty"`
 	LastStatusMessage *string `json:"last_status_message,omitempty"`
@@ -48,6 +49,38 @@ func NewMigrationStatusReplyObj() *MigrationStatusReplyObj {
 func NewMigrationStatusReplyObjWithDefaults() *MigrationStatusReplyObj {
 	this := MigrationStatusReplyObj{}
 	return &this
+}
+
+// GetComputers returns the Computers field value if set, zero value otherwise.
+func (o *MigrationStatusReplyObj) GetComputers() int64 {
+	if o == nil || o.Computers == nil {
+		var ret int64
+		return ret
+	}
+	return *o.Computers
+}
+
+// GetComputersOk returns a tuple with the Computers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MigrationStatusReplyObj) GetComputersOk() (*int64, bool) {
+	if o == nil || o.Computers == nil {
+		return nil, false
+	}
+	return o.Computers, true
+}
+
+// HasComputers returns a boolean if a field has been set.
+func (o *MigrationStatusReplyObj) HasComputers() bool {
+	if o != nil && o.Computers != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetComputers gets a reference to the given int64 and assigns it to the Computers field.
+func (o *MigrationStatusReplyObj) SetComputers(v int64) {
+	o.Computers = &v
 }
 
 // GetDurationTime returns the DurationTime field value if set, zero value otherwise.
@@ -500,6 +533,9 @@ func (o *MigrationStatusReplyObj) SetTargets(v MigrationItems) {
 
 func (o MigrationStatusReplyObj) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Computers != nil {
+		toSerialize["computers"] = o.Computers
+	}
 	if o.DurationTime != nil {
 		toSerialize["duration_time"] = o.DurationTime
 	}

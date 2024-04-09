@@ -15,9 +15,12 @@ Name | Type | Description | Notes
 **ClientFlag** | Pointer to **bool** |  | [optional] 
 **CodeSigningFlag** | Pointer to **bool** |  | [optional] 
 **Country** | Pointer to **[]string** |  | [optional] 
+**CreatePrivateCrl** | Pointer to **bool** |  | [optional] 
+**CreatePublicCrl** | Pointer to **bool** |  | [optional] 
 **DestinationPath** | Pointer to **string** | DestinationPath is the destination to save generated certificates | [optional] 
 **EnforceHostnames** | Pointer to **bool** |  | [optional] 
 **ExpirationEvents** | Pointer to [**[]CertificateExpirationEvent**](CertificateExpirationEvent.md) | ExpirationNotification holds a list of expiration notices that should be sent in case a certificate is about to expire, this value is being propagated to the Certificate resources that are created | [optional] 
+**GwClusterId** | Pointer to **int64** |  | [optional] 
 **GwClusterUrl** | Pointer to **string** | GWClusterURL is required when CAMode is \&quot;public\&quot; and it defines the cluster URL the PKI should be issued from. The GW cluster must have permissions to read associated target&#39;s details | [optional] 
 **IsCa** | Pointer to **bool** |  | [optional] 
 **KeyBits** | Pointer to **int64** |  | [optional] 
@@ -328,6 +331,56 @@ SetCountry sets Country field to given value.
 
 HasCountry returns a boolean if a field has been set.
 
+### GetCreatePrivateCrl
+
+`func (o *PKICertificateIssueDetails) GetCreatePrivateCrl() bool`
+
+GetCreatePrivateCrl returns the CreatePrivateCrl field if non-nil, zero value otherwise.
+
+### GetCreatePrivateCrlOk
+
+`func (o *PKICertificateIssueDetails) GetCreatePrivateCrlOk() (*bool, bool)`
+
+GetCreatePrivateCrlOk returns a tuple with the CreatePrivateCrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatePrivateCrl
+
+`func (o *PKICertificateIssueDetails) SetCreatePrivateCrl(v bool)`
+
+SetCreatePrivateCrl sets CreatePrivateCrl field to given value.
+
+### HasCreatePrivateCrl
+
+`func (o *PKICertificateIssueDetails) HasCreatePrivateCrl() bool`
+
+HasCreatePrivateCrl returns a boolean if a field has been set.
+
+### GetCreatePublicCrl
+
+`func (o *PKICertificateIssueDetails) GetCreatePublicCrl() bool`
+
+GetCreatePublicCrl returns the CreatePublicCrl field if non-nil, zero value otherwise.
+
+### GetCreatePublicCrlOk
+
+`func (o *PKICertificateIssueDetails) GetCreatePublicCrlOk() (*bool, bool)`
+
+GetCreatePublicCrlOk returns a tuple with the CreatePublicCrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatePublicCrl
+
+`func (o *PKICertificateIssueDetails) SetCreatePublicCrl(v bool)`
+
+SetCreatePublicCrl sets CreatePublicCrl field to given value.
+
+### HasCreatePublicCrl
+
+`func (o *PKICertificateIssueDetails) HasCreatePublicCrl() bool`
+
+HasCreatePublicCrl returns a boolean if a field has been set.
+
 ### GetDestinationPath
 
 `func (o *PKICertificateIssueDetails) GetDestinationPath() string`
@@ -402,6 +455,31 @@ SetExpirationEvents sets ExpirationEvents field to given value.
 `func (o *PKICertificateIssueDetails) HasExpirationEvents() bool`
 
 HasExpirationEvents returns a boolean if a field has been set.
+
+### GetGwClusterId
+
+`func (o *PKICertificateIssueDetails) GetGwClusterId() int64`
+
+GetGwClusterId returns the GwClusterId field if non-nil, zero value otherwise.
+
+### GetGwClusterIdOk
+
+`func (o *PKICertificateIssueDetails) GetGwClusterIdOk() (*int64, bool)`
+
+GetGwClusterIdOk returns a tuple with the GwClusterId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGwClusterId
+
+`func (o *PKICertificateIssueDetails) SetGwClusterId(v int64)`
+
+SetGwClusterId sets GwClusterId field to given value.
+
+### HasGwClusterId
+
+`func (o *PKICertificateIssueDetails) HasGwClusterId() bool`
+
+HasGwClusterId returns a boolean if a field has been set.
 
 ### GetGwClusterUrl
 

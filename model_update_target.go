@@ -21,6 +21,8 @@ type UpdateTarget struct {
 	Description *string `json:"description,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
+	// Set the maximum number of versions, limited by the account settings defaults.
+	MaxVersions *string `json:"max-versions,omitempty"`
 	// Target name
 	Name string `json:"name"`
 	// Deprecated - use description
@@ -125,6 +127,38 @@ func (o *UpdateTarget) HasJson() bool {
 // SetJson gets a reference to the given bool and assigns it to the Json field.
 func (o *UpdateTarget) SetJson(v bool) {
 	o.Json = &v
+}
+
+// GetMaxVersions returns the MaxVersions field value if set, zero value otherwise.
+func (o *UpdateTarget) GetMaxVersions() string {
+	if o == nil || o.MaxVersions == nil {
+		var ret string
+		return ret
+	}
+	return *o.MaxVersions
+}
+
+// GetMaxVersionsOk returns a tuple with the MaxVersions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateTarget) GetMaxVersionsOk() (*string, bool) {
+	if o == nil || o.MaxVersions == nil {
+		return nil, false
+	}
+	return o.MaxVersions, true
+}
+
+// HasMaxVersions returns a boolean if a field has been set.
+func (o *UpdateTarget) HasMaxVersions() bool {
+	if o != nil && o.MaxVersions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxVersions gets a reference to the given string and assigns it to the MaxVersions field.
+func (o *UpdateTarget) SetMaxVersions(v string) {
+	o.MaxVersions = &v
 }
 
 // GetName returns the Name field value
@@ -286,6 +320,9 @@ func (o UpdateTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json
+	}
+	if o.MaxVersions != nil {
+		toSerialize["max-versions"] = o.MaxVersions
 	}
 	if true {
 		toSerialize["name"] = o.Name

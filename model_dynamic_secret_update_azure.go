@@ -41,7 +41,7 @@ type DynamicSecretUpdateAzure struct {
 	NewName *string `json:"new-name,omitempty"`
 	// The length of the password to be generated
 	PasswordLength *string `json:"password-length,omitempty"`
-	// Dynamic producer encryption key
+	// Dynamic secret encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
 	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`

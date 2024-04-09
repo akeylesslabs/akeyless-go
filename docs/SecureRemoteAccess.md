@@ -31,6 +31,7 @@ Name | Type | Description | Notes
 **SshPassword** | Pointer to **bool** |  | [optional] 
 **SshPrivateKey** | Pointer to **bool** |  | [optional] 
 **SshUser** | Pointer to **string** |  | [optional] 
+**Status** | Pointer to [**ItemSraStatus**](ItemSraStatus.md) |  | [optional] 
 **TargetHosts** | Pointer to [**[]TargetNameWithHosts**](TargetNameWithHosts.md) |  | [optional] 
 **Targets** | Pointer to **[]string** |  | [optional] 
 **Url** | Pointer to **string** |  | [optional] 
@@ -730,6 +731,31 @@ SetSshUser sets SshUser field to given value.
 `func (o *SecureRemoteAccess) HasSshUser() bool`
 
 HasSshUser returns a boolean if a field has been set.
+
+### GetStatus
+
+`func (o *SecureRemoteAccess) GetStatus() ItemSraStatus`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *SecureRemoteAccess) GetStatusOk() (*ItemSraStatus, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *SecureRemoteAccess) SetStatus(v ItemSraStatus)`
+
+SetStatus sets Status field to given value.
+
+### HasStatus
+
+`func (o *SecureRemoteAccess) HasStatus() bool`
+
+HasStatus returns a boolean if a field has been set.
 
 ### GetTargetHosts
 

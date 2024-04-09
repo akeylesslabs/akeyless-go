@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DefaultVersioning** | Pointer to **bool** |  | [optional] 
+**ForceNewVersions** | Pointer to **bool** |  | [optional] 
 **Items** | Pointer to [**[]ObjectVersionSettingsOutput**](ObjectVersionSettingsOutput.md) |  | [optional] 
 
 ## Methods
@@ -50,6 +51,31 @@ SetDefaultVersioning sets DefaultVersioning field to given value.
 `func (o *AccountObjectVersionSettingsOutput) HasDefaultVersioning() bool`
 
 HasDefaultVersioning returns a boolean if a field has been set.
+
+### GetForceNewVersions
+
+`func (o *AccountObjectVersionSettingsOutput) GetForceNewVersions() bool`
+
+GetForceNewVersions returns the ForceNewVersions field if non-nil, zero value otherwise.
+
+### GetForceNewVersionsOk
+
+`func (o *AccountObjectVersionSettingsOutput) GetForceNewVersionsOk() (*bool, bool)`
+
+GetForceNewVersionsOk returns a tuple with the ForceNewVersions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetForceNewVersions
+
+`func (o *AccountObjectVersionSettingsOutput) SetForceNewVersions(v bool)`
+
+SetForceNewVersions sets ForceNewVersions field to given value.
+
+### HasForceNewVersions
+
+`func (o *AccountObjectVersionSettingsOutput) HasForceNewVersions() bool`
+
+HasForceNewVersions returns a boolean if a field has been set.
 
 ### GetItems
 

@@ -8,9 +8,9 @@ Name | Type | Description | Notes
 **GithubAppId** | Pointer to **int64** | Github app id | [optional] 
 **GithubAppPrivateKey** | Pointer to **string** | App private key | [optional] 
 **GithubBaseUrl** | Pointer to **string** | Base URL | [optional] [default to "https://api.github.com/"]
-**InstallationId** | Pointer to **int64** | Github app installation id | [optional] 
-**InstallationOrganization** | Pointer to **string** | Optional, instead of installation id, set a GitHub organization name | [optional] 
-**InstallationRepository** | Pointer to **string** | Optional, instead of installation id, set a GitHub repository &#39;&lt;owner&gt;/&lt;repo-name&gt; | [optional] 
+**InstallationId** | Pointer to **int64** | GitHub application installation id | [optional] 
+**InstallationOrganization** | Pointer to **string** | Optional, mutually exclusive with installation id, GitHub organization name | [optional] 
+**InstallationRepository** | Pointer to **string** | Optional, mutually exclusive with installation id, GitHub repository &#39;&lt;owner&gt;/&lt;repo-name&gt;&#39; | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
 **NewName** | Pointer to **string** | Dynamic secret name | [optional] 

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ExtKeyUsage** | Pointer to **[]int64** |  | [optional] 
 **KeyUsage** | Pointer to **int64** | KeyUsage represents the set of actions that are valid for a given key. It&#39;s a bitmap of the KeyUsage* constants. | [optional] 
+**CrlDistributionPoints** | Pointer to **[]string** |  | [optional] 
 **DnsNames** | Pointer to **[]string** |  | [optional] 
 **EmailAddresses** | Pointer to **[]string** |  | [optional] 
 **Extensions** | Pointer to [**[]Extension**](Extension.md) |  | [optional] 
@@ -96,6 +97,31 @@ SetKeyUsage sets KeyUsage field to given value.
 `func (o *CertificateInfo) HasKeyUsage() bool`
 
 HasKeyUsage returns a boolean if a field has been set.
+
+### GetCrlDistributionPoints
+
+`func (o *CertificateInfo) GetCrlDistributionPoints() []string`
+
+GetCrlDistributionPoints returns the CrlDistributionPoints field if non-nil, zero value otherwise.
+
+### GetCrlDistributionPointsOk
+
+`func (o *CertificateInfo) GetCrlDistributionPointsOk() (*[]string, bool)`
+
+GetCrlDistributionPointsOk returns a tuple with the CrlDistributionPoints field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCrlDistributionPoints
+
+`func (o *CertificateInfo) SetCrlDistributionPoints(v []string)`
+
+SetCrlDistributionPoints sets CrlDistributionPoints field to given value.
+
+### HasCrlDistributionPoints
+
+`func (o *CertificateInfo) HasCrlDistributionPoints() bool`
+
+HasCrlDistributionPoints returns a boolean if a field has been set.
 
 ### GetDnsNames
 

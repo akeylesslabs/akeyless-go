@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Format** | Pointer to **string** | StaticSecretFormat defines the format of static secret (e.g. Text) | [optional] 
+**MaxVersions** | Pointer to **int64** |  | [optional] 
 **NotifyOnChangeEvent** | Pointer to **bool** |  | [optional] 
 **Username** | Pointer to **string** |  | [optional] 
 **Website** | Pointer to **string** | deprecated | [optional] 
@@ -53,6 +54,31 @@ SetFormat sets Format field to given value.
 `func (o *StaticSecretDetailsInfo) HasFormat() bool`
 
 HasFormat returns a boolean if a field has been set.
+
+### GetMaxVersions
+
+`func (o *StaticSecretDetailsInfo) GetMaxVersions() int64`
+
+GetMaxVersions returns the MaxVersions field if non-nil, zero value otherwise.
+
+### GetMaxVersionsOk
+
+`func (o *StaticSecretDetailsInfo) GetMaxVersionsOk() (*int64, bool)`
+
+GetMaxVersionsOk returns a tuple with the MaxVersions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaxVersions
+
+`func (o *StaticSecretDetailsInfo) SetMaxVersions(v int64)`
+
+SetMaxVersions sets MaxVersions field to given value.
+
+### HasMaxVersions
+
+`func (o *StaticSecretDetailsInfo) HasMaxVersions() bool`
+
+HasMaxVersions returns a boolean if a field has been set.
 
 ### GetNotifyOnChangeEvent
 

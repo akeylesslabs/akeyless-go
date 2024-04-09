@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **GraceRotation** | Pointer to **bool** |  | [optional] 
 **GwClusterId** | Pointer to **int64** |  | [optional] 
 **LastRotationError** | Pointer to **string** |  | [optional] 
+**MaxVersions** | Pointer to **int64** |  | [optional] 
 **NumberOfVersionsToSave** | Pointer to **int32** |  | [optional] 
 **RotationHour** | Pointer to **int32** |  | [optional] 
 **RotationIntervalMin** | Pointer to **bool** |  | [optional] 
@@ -136,6 +137,31 @@ SetLastRotationError sets LastRotationError field to given value.
 `func (o *RotatedSecretDetailsInfo) HasLastRotationError() bool`
 
 HasLastRotationError returns a boolean if a field has been set.
+
+### GetMaxVersions
+
+`func (o *RotatedSecretDetailsInfo) GetMaxVersions() int64`
+
+GetMaxVersions returns the MaxVersions field if non-nil, zero value otherwise.
+
+### GetMaxVersionsOk
+
+`func (o *RotatedSecretDetailsInfo) GetMaxVersionsOk() (*int64, bool)`
+
+GetMaxVersionsOk returns a tuple with the MaxVersions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaxVersions
+
+`func (o *RotatedSecretDetailsInfo) SetMaxVersions(v int64)`
+
+SetMaxVersions sets MaxVersions field to given value.
+
+### HasMaxVersions
+
+`func (o *RotatedSecretDetailsInfo) HasMaxVersions() bool`
+
+HasMaxVersions returns a boolean if a field has been set.
 
 ### GetNumberOfVersionsToSave
 
