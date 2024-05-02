@@ -24,6 +24,7 @@ type NativeK8sTargetDetails struct {
 	K8sClientKeyData *string `json:"k8s_client_key_data,omitempty"`
 	K8sClusterCaCertificate *string `json:"k8s_cluster_ca_certificate,omitempty"`
 	K8sClusterEndpoint *string `json:"k8s_cluster_endpoint,omitempty"`
+	K8sClusterName *string `json:"k8s_cluster_name,omitempty"`
 	UseGwServiceAccount *bool `json:"use_gw_service_account,omitempty"`
 }
 
@@ -236,6 +237,38 @@ func (o *NativeK8sTargetDetails) SetK8sClusterEndpoint(v string) {
 	o.K8sClusterEndpoint = &v
 }
 
+// GetK8sClusterName returns the K8sClusterName field value if set, zero value otherwise.
+func (o *NativeK8sTargetDetails) GetK8sClusterName() string {
+	if o == nil || o.K8sClusterName == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sClusterName
+}
+
+// GetK8sClusterNameOk returns a tuple with the K8sClusterName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NativeK8sTargetDetails) GetK8sClusterNameOk() (*string, bool) {
+	if o == nil || o.K8sClusterName == nil {
+		return nil, false
+	}
+	return o.K8sClusterName, true
+}
+
+// HasK8sClusterName returns a boolean if a field has been set.
+func (o *NativeK8sTargetDetails) HasK8sClusterName() bool {
+	if o != nil && o.K8sClusterName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sClusterName gets a reference to the given string and assigns it to the K8sClusterName field.
+func (o *NativeK8sTargetDetails) SetK8sClusterName(v string) {
+	o.K8sClusterName = &v
+}
+
 // GetUseGwServiceAccount returns the UseGwServiceAccount field value if set, zero value otherwise.
 func (o *NativeK8sTargetDetails) GetUseGwServiceAccount() bool {
 	if o == nil || o.UseGwServiceAccount == nil {
@@ -287,6 +320,9 @@ func (o NativeK8sTargetDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.K8sClusterEndpoint != nil {
 		toSerialize["k8s_cluster_endpoint"] = o.K8sClusterEndpoint
+	}
+	if o.K8sClusterName != nil {
+		toSerialize["k8s_cluster_name"] = o.K8sClusterName
 	}
 	if o.UseGwServiceAccount != nil {
 		toSerialize["use_gw_service_account"] = o.UseGwServiceAccount

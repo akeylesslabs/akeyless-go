@@ -230,6 +230,7 @@ docs/DynamicSecretCreateEks.md
 docs/DynamicSecretCreateGcp.md
 docs/DynamicSecretCreateGithub.md
 docs/DynamicSecretCreateGke.md
+docs/DynamicSecretCreateGoogleWorkspace.md
 docs/DynamicSecretCreateHanaDb.md
 docs/DynamicSecretCreateK8s.md
 docs/DynamicSecretCreateLdap.md
@@ -267,6 +268,7 @@ docs/DynamicSecretUpdateEks.md
 docs/DynamicSecretUpdateGcp.md
 docs/DynamicSecretUpdateGithub.md
 docs/DynamicSecretUpdateGke.md
+docs/DynamicSecretUpdateGoogleWorkspace.md
 docs/DynamicSecretUpdateHanaDb.md
 docs/DynamicSecretUpdateK8s.md
 docs/DynamicSecretUpdateLdap.md
@@ -355,6 +357,7 @@ docs/GatewayCreateProducerGithub.md
 docs/GatewayCreateProducerGithubOutput.md
 docs/GatewayCreateProducerGke.md
 docs/GatewayCreateProducerGkeOutput.md
+docs/GatewayCreateProducerGoogleWorkspaceOutput.md
 docs/GatewayCreateProducerHanaDb.md
 docs/GatewayCreateProducerHanaDbOutput.md
 docs/GatewayCreateProducerLdap.md
@@ -415,6 +418,8 @@ docs/GatewayMigrationGetOutput.md
 docs/GatewayMigrationListOutput.md
 docs/GatewayMigrationSyncOutput.md
 docs/GatewayMigrationUpdateOutput.md
+docs/GatewayPartialUpdateK8SAuthConfig.md
+docs/GatewayPartialUpdateK8SAuthConfigOutput.md
 docs/GatewayRevokeTmpUsers.md
 docs/GatewayStartProducer.md
 docs/GatewayStartProducerOutput.md
@@ -1113,6 +1118,7 @@ model_dynamic_secret_create_eks.go
 model_dynamic_secret_create_gcp.go
 model_dynamic_secret_create_github.go
 model_dynamic_secret_create_gke.go
+model_dynamic_secret_create_google_workspace.go
 model_dynamic_secret_create_hana_db.go
 model_dynamic_secret_create_k8s.go
 model_dynamic_secret_create_ldap.go
@@ -1150,6 +1156,7 @@ model_dynamic_secret_update_eks.go
 model_dynamic_secret_update_gcp.go
 model_dynamic_secret_update_github.go
 model_dynamic_secret_update_gke.go
+model_dynamic_secret_update_google_workspace.go
 model_dynamic_secret_update_hana_db.go
 model_dynamic_secret_update_k8s.go
 model_dynamic_secret_update_ldap.go
@@ -1234,6 +1241,7 @@ model_gateway_create_producer_github.go
 model_gateway_create_producer_github_output.go
 model_gateway_create_producer_gke.go
 model_gateway_create_producer_gke_output.go
+model_gateway_create_producer_google_workspace_output.go
 model_gateway_create_producer_hana_db.go
 model_gateway_create_producer_hana_db_output.go
 model_gateway_create_producer_ldap.go
@@ -1294,6 +1302,8 @@ model_gateway_migration_get_output.go
 model_gateway_migration_list_output.go
 model_gateway_migration_sync_output.go
 model_gateway_migration_update_output.go
+model_gateway_partial_update_k8_s_auth_config.go
+model_gateway_partial_update_k8_s_auth_config_output.go
 model_gateway_revoke_tmp_users.go
 model_gateway_start_producer.go
 model_gateway_start_producer_output.go

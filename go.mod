@@ -1,4 +1,4 @@
-module github.com/akeylesslabs/akeyless-go/v3
+module github.com/akeylesslabs/akeyless-go/v4
 
 
 go 1.13

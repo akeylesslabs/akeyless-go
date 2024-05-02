@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **AzureClientSecret** | Pointer to **string** | (Optional) Client secret (relevant for \&quot;cloud-service-provider\&quot; only) | [optional] 
 **AzureTenantId** | Pointer to **string** | (Optional) Tenant id (relevant for \&quot;cloud-service-provider\&quot; only) | [optional] 
 **CloudServiceProvider** | Pointer to **string** | (Optional) Cloud service provider (currently only supports Azure) | [optional] 
+**ClusterMode** | Pointer to **bool** | Cluster Mode | [optional] 
 **Comment** | Pointer to **string** | Deprecated - use description | [optional] 
 **ConnectionType** | **string** | (Optional) Type of connection to mssql database [credentials/cloud-identity] | [default to "credentials"]
 **DbName** | Pointer to **string** |  | [optional] 
@@ -185,6 +186,31 @@ SetCloudServiceProvider sets CloudServiceProvider field to given value.
 `func (o *UpdateDBTarget) HasCloudServiceProvider() bool`
 
 HasCloudServiceProvider returns a boolean if a field has been set.
+
+### GetClusterMode
+
+`func (o *UpdateDBTarget) GetClusterMode() bool`
+
+GetClusterMode returns the ClusterMode field if non-nil, zero value otherwise.
+
+### GetClusterModeOk
+
+`func (o *UpdateDBTarget) GetClusterModeOk() (*bool, bool)`
+
+GetClusterModeOk returns a tuple with the ClusterMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClusterMode
+
+`func (o *UpdateDBTarget) SetClusterMode(v bool)`
+
+SetClusterMode sets ClusterMode field to given value.
+
+### HasClusterMode
+
+`func (o *UpdateDBTarget) HasClusterMode() bool`
+
+HasClusterMode returns a boolean if a field has been set.
 
 ### GetComment
 

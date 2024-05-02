@@ -19,7 +19,9 @@ import (
 type ValidateTokenOutput struct {
 	Expiration *string `json:"expiration,omitempty"`
 	IsValid *bool `json:"is_valid,omitempty"`
+	LastRotate *string `json:"last_rotate,omitempty"`
 	Reason *string `json:"reason,omitempty"`
+	Ttl *int32 `json:"ttl,omitempty"`
 }
 
 // NewValidateTokenOutput instantiates a new ValidateTokenOutput object
@@ -103,6 +105,38 @@ func (o *ValidateTokenOutput) SetIsValid(v bool) {
 	o.IsValid = &v
 }
 
+// GetLastRotate returns the LastRotate field value if set, zero value otherwise.
+func (o *ValidateTokenOutput) GetLastRotate() string {
+	if o == nil || o.LastRotate == nil {
+		var ret string
+		return ret
+	}
+	return *o.LastRotate
+}
+
+// GetLastRotateOk returns a tuple with the LastRotate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ValidateTokenOutput) GetLastRotateOk() (*string, bool) {
+	if o == nil || o.LastRotate == nil {
+		return nil, false
+	}
+	return o.LastRotate, true
+}
+
+// HasLastRotate returns a boolean if a field has been set.
+func (o *ValidateTokenOutput) HasLastRotate() bool {
+	if o != nil && o.LastRotate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastRotate gets a reference to the given string and assigns it to the LastRotate field.
+func (o *ValidateTokenOutput) SetLastRotate(v string) {
+	o.LastRotate = &v
+}
+
 // GetReason returns the Reason field value if set, zero value otherwise.
 func (o *ValidateTokenOutput) GetReason() string {
 	if o == nil || o.Reason == nil {
@@ -135,6 +169,38 @@ func (o *ValidateTokenOutput) SetReason(v string) {
 	o.Reason = &v
 }
 
+// GetTtl returns the Ttl field value if set, zero value otherwise.
+func (o *ValidateTokenOutput) GetTtl() int32 {
+	if o == nil || o.Ttl == nil {
+		var ret int32
+		return ret
+	}
+	return *o.Ttl
+}
+
+// GetTtlOk returns a tuple with the Ttl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ValidateTokenOutput) GetTtlOk() (*int32, bool) {
+	if o == nil || o.Ttl == nil {
+		return nil, false
+	}
+	return o.Ttl, true
+}
+
+// HasTtl returns a boolean if a field has been set.
+func (o *ValidateTokenOutput) HasTtl() bool {
+	if o != nil && o.Ttl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTtl gets a reference to the given int32 and assigns it to the Ttl field.
+func (o *ValidateTokenOutput) SetTtl(v int32) {
+	o.Ttl = &v
+}
+
 func (o ValidateTokenOutput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Expiration != nil {
@@ -143,8 +209,14 @@ func (o ValidateTokenOutput) MarshalJSON() ([]byte, error) {
 	if o.IsValid != nil {
 		toSerialize["is_valid"] = o.IsValid
 	}
+	if o.LastRotate != nil {
+		toSerialize["last_rotate"] = o.LastRotate
+	}
 	if o.Reason != nil {
 		toSerialize["reason"] = o.Reason
+	}
+	if o.Ttl != nil {
+		toSerialize["ttl"] = o.Ttl
 	}
 	return json.Marshal(toSerialize)
 }

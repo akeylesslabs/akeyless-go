@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 **SshPassword** | Pointer to **bool** |  | [optional] 
 **SshPrivateKey** | Pointer to **bool** |  | [optional] 
 **SshUser** | Pointer to **string** |  | [optional] 
-**Status** | Pointer to [**ItemSraStatus**](ItemSraStatus.md) |  | [optional] 
+**StatusInfo** | Pointer to [**ItemSraStatus**](ItemSraStatus.md) |  | [optional] 
 **TargetHosts** | Pointer to [**[]TargetNameWithHosts**](TargetNameWithHosts.md) |  | [optional] 
 **Targets** | Pointer to **[]string** |  | [optional] 
 **Url** | Pointer to **string** |  | [optional] 
@@ -732,30 +732,30 @@ SetSshUser sets SshUser field to given value.
 
 HasSshUser returns a boolean if a field has been set.
 
-### GetStatus
+### GetStatusInfo
 
-`func (o *SecureRemoteAccess) GetStatus() ItemSraStatus`
+`func (o *SecureRemoteAccess) GetStatusInfo() ItemSraStatus`
 
-GetStatus returns the Status field if non-nil, zero value otherwise.
+GetStatusInfo returns the StatusInfo field if non-nil, zero value otherwise.
 
-### GetStatusOk
+### GetStatusInfoOk
 
-`func (o *SecureRemoteAccess) GetStatusOk() (*ItemSraStatus, bool)`
+`func (o *SecureRemoteAccess) GetStatusInfoOk() (*ItemSraStatus, bool)`
 
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+GetStatusInfoOk returns a tuple with the StatusInfo field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetStatus
+### SetStatusInfo
 
-`func (o *SecureRemoteAccess) SetStatus(v ItemSraStatus)`
+`func (o *SecureRemoteAccess) SetStatusInfo(v ItemSraStatus)`
 
-SetStatus sets Status field to given value.
+SetStatusInfo sets StatusInfo field to given value.
 
-### HasStatus
+### HasStatusInfo
 
-`func (o *SecureRemoteAccess) HasStatus() bool`
+`func (o *SecureRemoteAccess) HasStatusInfo() bool`
 
-HasStatus returns a boolean if a field has been set.
+HasStatusInfo returns a boolean if a field has been set.
 
 ### GetTargetHosts
 

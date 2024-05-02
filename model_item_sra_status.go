@@ -18,12 +18,9 @@ import (
 
 // ItemSraStatus struct for ItemSraStatus
 type ItemSraStatus struct {
-	BastionAccessId *string `json:"bastion_access_id,omitempty"`
-	BastionClusterName *string `json:"bastion_cluster_name,omitempty"`
-	BastionInstanceId *string `json:"bastion_instance_id,omitempty"`
-	IsInUsed *bool `json:"is_in_used,omitempty"`
-	SessionId *string `json:"session_id,omitempty"`
-	Time *time.Time `json:"time,omitempty"`
+	CountInfo *map[string]map[string]int64 `json:"count_info,omitempty"`
+	IsInUse *bool `json:"is_in_use,omitempty"`
+	LastUsedItem *time.Time `json:"last_used_item,omitempty"`
 }
 
 // NewItemSraStatus instantiates a new ItemSraStatus object
@@ -43,217 +40,112 @@ func NewItemSraStatusWithDefaults() *ItemSraStatus {
 	return &this
 }
 
-// GetBastionAccessId returns the BastionAccessId field value if set, zero value otherwise.
-func (o *ItemSraStatus) GetBastionAccessId() string {
-	if o == nil || o.BastionAccessId == nil {
-		var ret string
+// GetCountInfo returns the CountInfo field value if set, zero value otherwise.
+func (o *ItemSraStatus) GetCountInfo() map[string]map[string]int64 {
+	if o == nil || o.CountInfo == nil {
+		var ret map[string]map[string]int64
 		return ret
 	}
-	return *o.BastionAccessId
+	return *o.CountInfo
 }
 
-// GetBastionAccessIdOk returns a tuple with the BastionAccessId field value if set, nil otherwise
+// GetCountInfoOk returns a tuple with the CountInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ItemSraStatus) GetBastionAccessIdOk() (*string, bool) {
-	if o == nil || o.BastionAccessId == nil {
+func (o *ItemSraStatus) GetCountInfoOk() (*map[string]map[string]int64, bool) {
+	if o == nil || o.CountInfo == nil {
 		return nil, false
 	}
-	return o.BastionAccessId, true
+	return o.CountInfo, true
 }
 
-// HasBastionAccessId returns a boolean if a field has been set.
-func (o *ItemSraStatus) HasBastionAccessId() bool {
-	if o != nil && o.BastionAccessId != nil {
+// HasCountInfo returns a boolean if a field has been set.
+func (o *ItemSraStatus) HasCountInfo() bool {
+	if o != nil && o.CountInfo != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetBastionAccessId gets a reference to the given string and assigns it to the BastionAccessId field.
-func (o *ItemSraStatus) SetBastionAccessId(v string) {
-	o.BastionAccessId = &v
+// SetCountInfo gets a reference to the given map[string]map[string]int64 and assigns it to the CountInfo field.
+func (o *ItemSraStatus) SetCountInfo(v map[string]map[string]int64) {
+	o.CountInfo = &v
 }
 
-// GetBastionClusterName returns the BastionClusterName field value if set, zero value otherwise.
-func (o *ItemSraStatus) GetBastionClusterName() string {
-	if o == nil || o.BastionClusterName == nil {
-		var ret string
-		return ret
-	}
-	return *o.BastionClusterName
-}
-
-// GetBastionClusterNameOk returns a tuple with the BastionClusterName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ItemSraStatus) GetBastionClusterNameOk() (*string, bool) {
-	if o == nil || o.BastionClusterName == nil {
-		return nil, false
-	}
-	return o.BastionClusterName, true
-}
-
-// HasBastionClusterName returns a boolean if a field has been set.
-func (o *ItemSraStatus) HasBastionClusterName() bool {
-	if o != nil && o.BastionClusterName != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBastionClusterName gets a reference to the given string and assigns it to the BastionClusterName field.
-func (o *ItemSraStatus) SetBastionClusterName(v string) {
-	o.BastionClusterName = &v
-}
-
-// GetBastionInstanceId returns the BastionInstanceId field value if set, zero value otherwise.
-func (o *ItemSraStatus) GetBastionInstanceId() string {
-	if o == nil || o.BastionInstanceId == nil {
-		var ret string
-		return ret
-	}
-	return *o.BastionInstanceId
-}
-
-// GetBastionInstanceIdOk returns a tuple with the BastionInstanceId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ItemSraStatus) GetBastionInstanceIdOk() (*string, bool) {
-	if o == nil || o.BastionInstanceId == nil {
-		return nil, false
-	}
-	return o.BastionInstanceId, true
-}
-
-// HasBastionInstanceId returns a boolean if a field has been set.
-func (o *ItemSraStatus) HasBastionInstanceId() bool {
-	if o != nil && o.BastionInstanceId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBastionInstanceId gets a reference to the given string and assigns it to the BastionInstanceId field.
-func (o *ItemSraStatus) SetBastionInstanceId(v string) {
-	o.BastionInstanceId = &v
-}
-
-// GetIsInUsed returns the IsInUsed field value if set, zero value otherwise.
-func (o *ItemSraStatus) GetIsInUsed() bool {
-	if o == nil || o.IsInUsed == nil {
+// GetIsInUse returns the IsInUse field value if set, zero value otherwise.
+func (o *ItemSraStatus) GetIsInUse() bool {
+	if o == nil || o.IsInUse == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsInUsed
+	return *o.IsInUse
 }
 
-// GetIsInUsedOk returns a tuple with the IsInUsed field value if set, nil otherwise
+// GetIsInUseOk returns a tuple with the IsInUse field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ItemSraStatus) GetIsInUsedOk() (*bool, bool) {
-	if o == nil || o.IsInUsed == nil {
+func (o *ItemSraStatus) GetIsInUseOk() (*bool, bool) {
+	if o == nil || o.IsInUse == nil {
 		return nil, false
 	}
-	return o.IsInUsed, true
+	return o.IsInUse, true
 }
 
-// HasIsInUsed returns a boolean if a field has been set.
-func (o *ItemSraStatus) HasIsInUsed() bool {
-	if o != nil && o.IsInUsed != nil {
+// HasIsInUse returns a boolean if a field has been set.
+func (o *ItemSraStatus) HasIsInUse() bool {
+	if o != nil && o.IsInUse != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetIsInUsed gets a reference to the given bool and assigns it to the IsInUsed field.
-func (o *ItemSraStatus) SetIsInUsed(v bool) {
-	o.IsInUsed = &v
+// SetIsInUse gets a reference to the given bool and assigns it to the IsInUse field.
+func (o *ItemSraStatus) SetIsInUse(v bool) {
+	o.IsInUse = &v
 }
 
-// GetSessionId returns the SessionId field value if set, zero value otherwise.
-func (o *ItemSraStatus) GetSessionId() string {
-	if o == nil || o.SessionId == nil {
-		var ret string
-		return ret
-	}
-	return *o.SessionId
-}
-
-// GetSessionIdOk returns a tuple with the SessionId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ItemSraStatus) GetSessionIdOk() (*string, bool) {
-	if o == nil || o.SessionId == nil {
-		return nil, false
-	}
-	return o.SessionId, true
-}
-
-// HasSessionId returns a boolean if a field has been set.
-func (o *ItemSraStatus) HasSessionId() bool {
-	if o != nil && o.SessionId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSessionId gets a reference to the given string and assigns it to the SessionId field.
-func (o *ItemSraStatus) SetSessionId(v string) {
-	o.SessionId = &v
-}
-
-// GetTime returns the Time field value if set, zero value otherwise.
-func (o *ItemSraStatus) GetTime() time.Time {
-	if o == nil || o.Time == nil {
+// GetLastUsedItem returns the LastUsedItem field value if set, zero value otherwise.
+func (o *ItemSraStatus) GetLastUsedItem() time.Time {
+	if o == nil || o.LastUsedItem == nil {
 		var ret time.Time
 		return ret
 	}
-	return *o.Time
+	return *o.LastUsedItem
 }
 
-// GetTimeOk returns a tuple with the Time field value if set, nil otherwise
+// GetLastUsedItemOk returns a tuple with the LastUsedItem field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ItemSraStatus) GetTimeOk() (*time.Time, bool) {
-	if o == nil || o.Time == nil {
+func (o *ItemSraStatus) GetLastUsedItemOk() (*time.Time, bool) {
+	if o == nil || o.LastUsedItem == nil {
 		return nil, false
 	}
-	return o.Time, true
+	return o.LastUsedItem, true
 }
 
-// HasTime returns a boolean if a field has been set.
-func (o *ItemSraStatus) HasTime() bool {
-	if o != nil && o.Time != nil {
+// HasLastUsedItem returns a boolean if a field has been set.
+func (o *ItemSraStatus) HasLastUsedItem() bool {
+	if o != nil && o.LastUsedItem != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetTime gets a reference to the given time.Time and assigns it to the Time field.
-func (o *ItemSraStatus) SetTime(v time.Time) {
-	o.Time = &v
+// SetLastUsedItem gets a reference to the given time.Time and assigns it to the LastUsedItem field.
+func (o *ItemSraStatus) SetLastUsedItem(v time.Time) {
+	o.LastUsedItem = &v
 }
 
 func (o ItemSraStatus) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.BastionAccessId != nil {
-		toSerialize["bastion_access_id"] = o.BastionAccessId
+	if o.CountInfo != nil {
+		toSerialize["count_info"] = o.CountInfo
 	}
-	if o.BastionClusterName != nil {
-		toSerialize["bastion_cluster_name"] = o.BastionClusterName
+	if o.IsInUse != nil {
+		toSerialize["is_in_use"] = o.IsInUse
 	}
-	if o.BastionInstanceId != nil {
-		toSerialize["bastion_instance_id"] = o.BastionInstanceId
-	}
-	if o.IsInUsed != nil {
-		toSerialize["is_in_used"] = o.IsInUsed
-	}
-	if o.SessionId != nil {
-		toSerialize["session_id"] = o.SessionId
-	}
-	if o.Time != nil {
-		toSerialize["time"] = o.Time
+	if o.LastUsedItem != nil {
+		toSerialize["last_used_item"] = o.LastUsedItem
 	}
 	return json.Marshal(toSerialize)
 }

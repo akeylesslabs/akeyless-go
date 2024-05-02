@@ -29,6 +29,8 @@ type DynamicSecretUpdateK8s struct {
 	K8sClusterCaCert *string `json:"k8s-cluster-ca-cert,omitempty"`
 	// K8S cluster URL endpoint
 	K8sClusterEndpoint *string `json:"k8s-cluster-endpoint,omitempty"`
+	// K8S cluster name
+	K8sClusterName *string `json:"k8s-cluster-name,omitempty"`
 	// K8S cluster Bearer token
 	K8sClusterToken *string `json:"k8s-cluster-token,omitempty"`
 	// K8S Namespace where the ServiceAccount exists.
@@ -307,6 +309,38 @@ func (o *DynamicSecretUpdateK8s) HasK8sClusterEndpoint() bool {
 // SetK8sClusterEndpoint gets a reference to the given string and assigns it to the K8sClusterEndpoint field.
 func (o *DynamicSecretUpdateK8s) SetK8sClusterEndpoint(v string) {
 	o.K8sClusterEndpoint = &v
+}
+
+// GetK8sClusterName returns the K8sClusterName field value if set, zero value otherwise.
+func (o *DynamicSecretUpdateK8s) GetK8sClusterName() string {
+	if o == nil || o.K8sClusterName == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sClusterName
+}
+
+// GetK8sClusterNameOk returns a tuple with the K8sClusterName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretUpdateK8s) GetK8sClusterNameOk() (*string, bool) {
+	if o == nil || o.K8sClusterName == nil {
+		return nil, false
+	}
+	return o.K8sClusterName, true
+}
+
+// HasK8sClusterName returns a boolean if a field has been set.
+func (o *DynamicSecretUpdateK8s) HasK8sClusterName() bool {
+	if o != nil && o.K8sClusterName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sClusterName gets a reference to the given string and assigns it to the K8sClusterName field.
+func (o *DynamicSecretUpdateK8s) SetK8sClusterName(v string) {
+	o.K8sClusterName = &v
 }
 
 // GetK8sClusterToken returns the K8sClusterToken field value if set, zero value otherwise.
@@ -1088,6 +1122,9 @@ func (o DynamicSecretUpdateK8s) MarshalJSON() ([]byte, error) {
 	}
 	if o.K8sClusterEndpoint != nil {
 		toSerialize["k8s-cluster-endpoint"] = o.K8sClusterEndpoint
+	}
+	if o.K8sClusterName != nil {
+		toSerialize["k8s-cluster-name"] = o.K8sClusterName
 	}
 	if o.K8sClusterToken != nil {
 		toSerialize["k8s-cluster-token"] = o.K8sClusterToken

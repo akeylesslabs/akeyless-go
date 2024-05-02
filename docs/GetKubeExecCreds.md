@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeyDataBase64** | Pointer to **string** | PKI key file contents. If this option is used, the certificate will be printed to stdout | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
-**Ttl** | Pointer to **int64** | Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL) | [optional] 
+**Ttl** | Pointer to **string** | Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UriSans** | Pointer to **string** | The URI Subject Alternative Names to be included in the PKI certificate (in a comma-separated list) (if CSR is supplied this flag is ignored and any URI.* names are taken from it) | [optional] 
 
@@ -284,20 +284,20 @@ HasToken returns a boolean if a field has been set.
 
 ### GetTtl
 
-`func (o *GetKubeExecCreds) GetTtl() int64`
+`func (o *GetKubeExecCreds) GetTtl() string`
 
 GetTtl returns the Ttl field if non-nil, zero value otherwise.
 
 ### GetTtlOk
 
-`func (o *GetKubeExecCreds) GetTtlOk() (*int64, bool)`
+`func (o *GetKubeExecCreds) GetTtlOk() (*string, bool)`
 
 GetTtlOk returns a tuple with the Ttl field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTtl
 
-`func (o *GetKubeExecCreds) SetTtl(v int64)`
+`func (o *GetKubeExecCreds) SetTtl(v string)`
 
 SetTtl sets Ttl field to given value.
 

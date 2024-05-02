@@ -39,14 +39,14 @@ Name | Type | Description | Notes
 **StreetAddress** | Pointer to **string** | A comma-separated list of street addresses that will be set in the issued certificate | [optional] 
 **Tag** | Pointer to **[]string** | List of the tags attached to this key | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
-**Ttl** | **int64** | The maximum requested Time To Live for issued certificates, in seconds. In case of Public CA, this is based on the CA target&#39;s supported maximum TTLs | 
+**Ttl** | **string** | The maximum requested Time To Live for issued certificates, in seconds. In case of Public CA, this is based on the CA target&#39;s supported maximum TTLs | 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
 ## Methods
 
 ### NewCreatePKICertIssuer
 
-`func NewCreatePKICertIssuer(name string, signerKeyName string, ttl int64, ) *CreatePKICertIssuer`
+`func NewCreatePKICertIssuer(name string, signerKeyName string, ttl string, ) *CreatePKICertIssuer`
 
 NewCreatePKICertIssuer instantiates a new CreatePKICertIssuer object
 This constructor will assign default values to properties that have it defined,
@@ -928,20 +928,20 @@ HasToken returns a boolean if a field has been set.
 
 ### GetTtl
 
-`func (o *CreatePKICertIssuer) GetTtl() int64`
+`func (o *CreatePKICertIssuer) GetTtl() string`
 
 GetTtl returns the Ttl field if non-nil, zero value otherwise.
 
 ### GetTtlOk
 
-`func (o *CreatePKICertIssuer) GetTtlOk() (*int64, bool)`
+`func (o *CreatePKICertIssuer) GetTtlOk() (*string, bool)`
 
 GetTtlOk returns a tuple with the Ttl field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTtl
 
-`func (o *CreatePKICertIssuer) SetTtl(v int64)`
+`func (o *CreatePKICertIssuer) SetTtl(v string)`
 
 SetTtl sets Ttl field to given value.
 

@@ -97,6 +97,7 @@ Method | HTTP request | Description
 [**DynamicSecretCreateGcp**](V2Api.md#DynamicSecretCreateGcp) | **Post** /dynamic-secret-create-gcp | 
 [**DynamicSecretCreateGithub**](V2Api.md#DynamicSecretCreateGithub) | **Post** /dynamic-secret-create-github | 
 [**DynamicSecretCreateGke**](V2Api.md#DynamicSecretCreateGke) | **Post** /dynamic-secret-create-gke | 
+[**DynamicSecretCreateGoogleWorkspace**](V2Api.md#DynamicSecretCreateGoogleWorkspace) | **Post** /dynamic-secret-create-google-workspace | 
 [**DynamicSecretCreateHanaDb**](V2Api.md#DynamicSecretCreateHanaDb) | **Post** /dynamic-secret-create-hanadb | 
 [**DynamicSecretCreateK8s**](V2Api.md#DynamicSecretCreateK8s) | **Post** /dynamic-secret-create-k8s | 
 [**DynamicSecretCreateLdap**](V2Api.md#DynamicSecretCreateLdap) | **Post** /dynamic-secret-create-ldap | 
@@ -129,6 +130,7 @@ Method | HTTP request | Description
 [**DynamicSecretUpdateGcp**](V2Api.md#DynamicSecretUpdateGcp) | **Post** /dynamic-secret-update-gcp | 
 [**DynamicSecretUpdateGithub**](V2Api.md#DynamicSecretUpdateGithub) | **Post** /dynamic-secret-update-github | 
 [**DynamicSecretUpdateGke**](V2Api.md#DynamicSecretUpdateGke) | **Post** /dynamic-secret-update-gke | 
+[**DynamicSecretUpdateGoogleWorkspace**](V2Api.md#DynamicSecretUpdateGoogleWorkspace) | **Post** /dynamic-secret-update-google-workspace | 
 [**DynamicSecretUpdateHanaDb**](V2Api.md#DynamicSecretUpdateHanaDb) | **Post** /dynamic-secret-update-hana | 
 [**DynamicSecretUpdateK8s**](V2Api.md#DynamicSecretUpdateK8s) | **Post** /dynamic-secret-update-k8s | 
 [**DynamicSecretUpdateLdap**](V2Api.md#DynamicSecretUpdateLdap) | **Post** /dynamic-secret-update-ldap | 
@@ -3139,7 +3141,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewCreatePKICertIssuer("Name_example", "SignerKeyName_example", int64(123)) // CreatePKICertIssuer | 
+    body := *openapiclient.NewCreatePKICertIssuer("Name_example", "SignerKeyName_example", "Ttl_example") // CreatePKICertIssuer | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -6384,6 +6386,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## DynamicSecretCreateGoogleWorkspace
+
+> DynamicSecretCreateOutput DynamicSecretCreateGoogleWorkspace(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretCreateGoogleWorkspace("AccessMode_example", "AdminName_example", "Name_example") // DynamicSecretCreateGoogleWorkspace | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretCreateGoogleWorkspace(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretCreateGoogleWorkspace``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretCreateGoogleWorkspace`: DynamicSecretCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretCreateGoogleWorkspace`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretCreateGoogleWorkspaceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretCreateGoogleWorkspace**](DynamicSecretCreateGoogleWorkspace.md) |  | 
+
+### Return type
+
+[**DynamicSecretCreateOutput**](dynamicSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## DynamicSecretCreateHanaDb
 
 > DynamicSecretCreateOutput DynamicSecretCreateHanaDb(ctx).Body(body).Execute()
@@ -7410,7 +7476,7 @@ No authorization required
 
 ## DynamicSecretGet
 
-> DSProducerDetails DynamicSecretGet(ctx).Execute()
+> DSProducerDetails DynamicSecretGet(ctx).Body(body).Execute()
 
 
 
@@ -7427,10 +7493,11 @@ import (
 )
 
 func main() {
+    body := *openapiclient.NewdynamicSecretGet("Name_example") // DynamicSecretGet | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.DynamicSecretGet(context.Background()).Execute()
+    resp, r, err := api_client.V2Api.DynamicSecretGet(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -7442,12 +7509,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiDynamicSecretGetRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretGet**](DynamicSecretGet.md) |  | 
 
 ### Return type
 
@@ -7459,7 +7530,7 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -8404,6 +8475,70 @@ Other parameters are passed through a pointer to a apiDynamicSecretUpdateGkeRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**DynamicSecretUpdateGke**](DynamicSecretUpdateGke.md) |  | 
+
+### Return type
+
+[**DynamicSecretUpdateOutput**](dynamicSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretUpdateGoogleWorkspace
+
+> DynamicSecretUpdateOutput DynamicSecretUpdateGoogleWorkspace(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdynamicSecretUpdateGoogleWorkspace("AccessMode_example", "AdminName_example", "Name_example") // DynamicSecretUpdateGoogleWorkspace | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DynamicSecretUpdateGoogleWorkspace(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretUpdateGoogleWorkspace``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DynamicSecretUpdateGoogleWorkspace`: DynamicSecretUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretUpdateGoogleWorkspace`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretUpdateGoogleWorkspaceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DynamicSecretUpdateGoogleWorkspace**](DynamicSecretUpdateGoogleWorkspace.md) |  | 
 
 ### Return type
 
@@ -13015,7 +13150,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GatewayGetK8SAuthConfigOutput**](gatewayGetK8SAuthConfigOutput.md)
+[**GatewayGetK8SAuthConfigOutput**](GatewayGetK8SAuthConfigOutput.md)
 
 ### Authorization
 
@@ -16352,7 +16487,7 @@ No authorization required
 
 ## GetDynamicSecretValue
 
-> map[string]string GetDynamicSecretValue(ctx).Body(body).Execute()
+> map[string]interface{} GetDynamicSecretValue(ctx).Body(body).Execute()
 
 
 
@@ -16378,7 +16513,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GetDynamicSecretValue``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetDynamicSecretValue`: map[string]string
+    // response from `GetDynamicSecretValue`: map[string]interface{}
     fmt.Fprintf(os.Stdout, "Response from `V2Api.GetDynamicSecretValue`: %v\n", resp)
 }
 ```
@@ -16398,7 +16533,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]string**
+**map[string]interface{}**
 
 ### Authorization
 
@@ -16992,7 +17127,7 @@ No authorization required
 
 ## GetSecretValue
 
-> map[string]string GetSecretValue(ctx).Body(body).Execute()
+> map[string]interface{} GetSecretValue(ctx).Body(body).Execute()
 
 
 
@@ -17018,7 +17153,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GetSecretValue``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetSecretValue`: map[string]string
+    // response from `GetSecretValue`: map[string]interface{}
     fmt.Fprintf(os.Stdout, "Response from `V2Api.GetSecretValue`: %v\n", resp)
 }
 ```
@@ -17038,7 +17173,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]string**
+**map[string]interface{}**
 
 ### Authorization
 
@@ -20697,7 +20832,7 @@ No authorization required
 
 ## RotatedSecretGetValue
 
-> map[string]string RotatedSecretGetValue(ctx).Body(body).Execute()
+> map[string]map[string]interface{} RotatedSecretGetValue(ctx).Body(body).Execute()
 
 
 
@@ -20723,7 +20858,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretGetValue``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `RotatedSecretGetValue`: map[string]string
+    // response from `RotatedSecretGetValue`: map[string]map[string]interface{}
     fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretGetValue`: %v\n", resp)
 }
 ```
@@ -20743,7 +20878,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]string**
+**map[string]map[string]interface{}**
 
 ### Authorization
 
@@ -25512,7 +25647,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewUpdatePKICertIssuer("Name_example", "SignerKeyName_example", int64(123)) // UpdatePKICertIssuer | 
+    body := *openapiclient.NewUpdatePKICertIssuer("Name_example", "SignerKeyName_example", "Ttl_example") // UpdatePKICertIssuer | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -27136,7 +27271,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ValidateTokenOutput**](validateTokenOutput.md)
+[**ValidateTokenOutput**](ValidateTokenOutput.md)
 
 ### Authorization
 

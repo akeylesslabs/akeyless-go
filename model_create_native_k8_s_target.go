@@ -33,6 +33,8 @@ type CreateNativeK8STarget struct {
 	K8sClusterCaCert string `json:"k8s-cluster-ca-cert"`
 	// K8S cluster URL endpoint
 	K8sClusterEndpoint string `json:"k8s-cluster-endpoint"`
+	// K8S cluster name
+	K8sClusterName *string `json:"k8s-cluster-name,omitempty"`
 	// K8S cluster Bearer token
 	K8sClusterToken string `json:"k8s-cluster-token"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
@@ -324,6 +326,38 @@ func (o *CreateNativeK8STarget) SetK8sClusterEndpoint(v string) {
 	o.K8sClusterEndpoint = v
 }
 
+// GetK8sClusterName returns the K8sClusterName field value if set, zero value otherwise.
+func (o *CreateNativeK8STarget) GetK8sClusterName() string {
+	if o == nil || o.K8sClusterName == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sClusterName
+}
+
+// GetK8sClusterNameOk returns a tuple with the K8sClusterName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateNativeK8STarget) GetK8sClusterNameOk() (*string, bool) {
+	if o == nil || o.K8sClusterName == nil {
+		return nil, false
+	}
+	return o.K8sClusterName, true
+}
+
+// HasK8sClusterName returns a boolean if a field has been set.
+func (o *CreateNativeK8STarget) HasK8sClusterName() bool {
+	if o != nil && o.K8sClusterName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sClusterName gets a reference to the given string and assigns it to the K8sClusterName field.
+func (o *CreateNativeK8STarget) SetK8sClusterName(v string) {
+	o.K8sClusterName = &v
+}
+
 // GetK8sClusterToken returns the K8sClusterToken field value
 func (o *CreateNativeK8STarget) GetK8sClusterToken() string {
 	if o == nil  {
@@ -557,6 +591,9 @@ func (o CreateNativeK8STarget) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["k8s-cluster-endpoint"] = o.K8sClusterEndpoint
+	}
+	if o.K8sClusterName != nil {
+		toSerialize["k8s-cluster-name"] = o.K8sClusterName
 	}
 	if true {
 		toSerialize["k8s-cluster-token"] = o.K8sClusterToken

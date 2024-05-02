@@ -4,12 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BastionAccessId** | Pointer to **string** |  | [optional] 
-**BastionClusterName** | Pointer to **string** |  | [optional] 
-**BastionInstanceId** | Pointer to **string** |  | [optional] 
-**IsInUsed** | Pointer to **bool** |  | [optional] 
-**SessionId** | Pointer to **string** |  | [optional] 
-**Time** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**CountInfo** | Pointer to [**map[string]map[string]int64**](map.md) |  | [optional] 
+**IsInUse** | Pointer to **bool** |  | [optional] 
+**LastUsedItem** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 
 ## Methods
 
@@ -30,155 +27,80 @@ NewItemSraStatusWithDefaults instantiates a new ItemSraStatus object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetBastionAccessId
+### GetCountInfo
 
-`func (o *ItemSraStatus) GetBastionAccessId() string`
+`func (o *ItemSraStatus) GetCountInfo() map[string]map[string]int64`
 
-GetBastionAccessId returns the BastionAccessId field if non-nil, zero value otherwise.
+GetCountInfo returns the CountInfo field if non-nil, zero value otherwise.
 
-### GetBastionAccessIdOk
+### GetCountInfoOk
 
-`func (o *ItemSraStatus) GetBastionAccessIdOk() (*string, bool)`
+`func (o *ItemSraStatus) GetCountInfoOk() (*map[string]map[string]int64, bool)`
 
-GetBastionAccessIdOk returns a tuple with the BastionAccessId field if it's non-nil, zero value otherwise
+GetCountInfoOk returns a tuple with the CountInfo field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBastionAccessId
+### SetCountInfo
 
-`func (o *ItemSraStatus) SetBastionAccessId(v string)`
+`func (o *ItemSraStatus) SetCountInfo(v map[string]map[string]int64)`
 
-SetBastionAccessId sets BastionAccessId field to given value.
+SetCountInfo sets CountInfo field to given value.
 
-### HasBastionAccessId
+### HasCountInfo
 
-`func (o *ItemSraStatus) HasBastionAccessId() bool`
+`func (o *ItemSraStatus) HasCountInfo() bool`
 
-HasBastionAccessId returns a boolean if a field has been set.
+HasCountInfo returns a boolean if a field has been set.
 
-### GetBastionClusterName
+### GetIsInUse
 
-`func (o *ItemSraStatus) GetBastionClusterName() string`
+`func (o *ItemSraStatus) GetIsInUse() bool`
 
-GetBastionClusterName returns the BastionClusterName field if non-nil, zero value otherwise.
+GetIsInUse returns the IsInUse field if non-nil, zero value otherwise.
 
-### GetBastionClusterNameOk
+### GetIsInUseOk
 
-`func (o *ItemSraStatus) GetBastionClusterNameOk() (*string, bool)`
+`func (o *ItemSraStatus) GetIsInUseOk() (*bool, bool)`
 
-GetBastionClusterNameOk returns a tuple with the BastionClusterName field if it's non-nil, zero value otherwise
+GetIsInUseOk returns a tuple with the IsInUse field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBastionClusterName
+### SetIsInUse
 
-`func (o *ItemSraStatus) SetBastionClusterName(v string)`
+`func (o *ItemSraStatus) SetIsInUse(v bool)`
 
-SetBastionClusterName sets BastionClusterName field to given value.
+SetIsInUse sets IsInUse field to given value.
 
-### HasBastionClusterName
+### HasIsInUse
 
-`func (o *ItemSraStatus) HasBastionClusterName() bool`
+`func (o *ItemSraStatus) HasIsInUse() bool`
 
-HasBastionClusterName returns a boolean if a field has been set.
+HasIsInUse returns a boolean if a field has been set.
 
-### GetBastionInstanceId
+### GetLastUsedItem
 
-`func (o *ItemSraStatus) GetBastionInstanceId() string`
+`func (o *ItemSraStatus) GetLastUsedItem() time.Time`
 
-GetBastionInstanceId returns the BastionInstanceId field if non-nil, zero value otherwise.
+GetLastUsedItem returns the LastUsedItem field if non-nil, zero value otherwise.
 
-### GetBastionInstanceIdOk
+### GetLastUsedItemOk
 
-`func (o *ItemSraStatus) GetBastionInstanceIdOk() (*string, bool)`
+`func (o *ItemSraStatus) GetLastUsedItemOk() (*time.Time, bool)`
 
-GetBastionInstanceIdOk returns a tuple with the BastionInstanceId field if it's non-nil, zero value otherwise
+GetLastUsedItemOk returns a tuple with the LastUsedItem field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBastionInstanceId
+### SetLastUsedItem
 
-`func (o *ItemSraStatus) SetBastionInstanceId(v string)`
+`func (o *ItemSraStatus) SetLastUsedItem(v time.Time)`
 
-SetBastionInstanceId sets BastionInstanceId field to given value.
+SetLastUsedItem sets LastUsedItem field to given value.
 
-### HasBastionInstanceId
+### HasLastUsedItem
 
-`func (o *ItemSraStatus) HasBastionInstanceId() bool`
+`func (o *ItemSraStatus) HasLastUsedItem() bool`
 
-HasBastionInstanceId returns a boolean if a field has been set.
-
-### GetIsInUsed
-
-`func (o *ItemSraStatus) GetIsInUsed() bool`
-
-GetIsInUsed returns the IsInUsed field if non-nil, zero value otherwise.
-
-### GetIsInUsedOk
-
-`func (o *ItemSraStatus) GetIsInUsedOk() (*bool, bool)`
-
-GetIsInUsedOk returns a tuple with the IsInUsed field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIsInUsed
-
-`func (o *ItemSraStatus) SetIsInUsed(v bool)`
-
-SetIsInUsed sets IsInUsed field to given value.
-
-### HasIsInUsed
-
-`func (o *ItemSraStatus) HasIsInUsed() bool`
-
-HasIsInUsed returns a boolean if a field has been set.
-
-### GetSessionId
-
-`func (o *ItemSraStatus) GetSessionId() string`
-
-GetSessionId returns the SessionId field if non-nil, zero value otherwise.
-
-### GetSessionIdOk
-
-`func (o *ItemSraStatus) GetSessionIdOk() (*string, bool)`
-
-GetSessionIdOk returns a tuple with the SessionId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSessionId
-
-`func (o *ItemSraStatus) SetSessionId(v string)`
-
-SetSessionId sets SessionId field to given value.
-
-### HasSessionId
-
-`func (o *ItemSraStatus) HasSessionId() bool`
-
-HasSessionId returns a boolean if a field has been set.
-
-### GetTime
-
-`func (o *ItemSraStatus) GetTime() time.Time`
-
-GetTime returns the Time field if non-nil, zero value otherwise.
-
-### GetTimeOk
-
-`func (o *ItemSraStatus) GetTimeOk() (*time.Time, bool)`
-
-GetTimeOk returns a tuple with the Time field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTime
-
-`func (o *ItemSraStatus) SetTime(v time.Time)`
-
-SetTime sets Time field to given value.
-
-### HasTime
-
-`func (o *ItemSraStatus) HasTime() bool`
-
-HasTime returns a boolean if a field has been set.
+HasLastUsedItem returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

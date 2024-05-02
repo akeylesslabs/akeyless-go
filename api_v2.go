@@ -10924,6 +10924,123 @@ func (a *V2ApiService) DynamicSecretCreateGkeExecute(r ApiDynamicSecretCreateGke
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiDynamicSecretCreateGoogleWorkspaceRequest struct {
+	ctx _context.Context
+	ApiService *V2ApiService
+	body *DynamicSecretCreateGoogleWorkspace
+}
+
+func (r ApiDynamicSecretCreateGoogleWorkspaceRequest) Body(body DynamicSecretCreateGoogleWorkspace) ApiDynamicSecretCreateGoogleWorkspaceRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiDynamicSecretCreateGoogleWorkspaceRequest) Execute() (DynamicSecretCreateOutput, *_nethttp.Response, error) {
+	return r.ApiService.DynamicSecretCreateGoogleWorkspaceExecute(r)
+}
+
+/*
+ * DynamicSecretCreateGoogleWorkspace Method for DynamicSecretCreateGoogleWorkspace
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @return ApiDynamicSecretCreateGoogleWorkspaceRequest
+ */
+func (a *V2ApiService) DynamicSecretCreateGoogleWorkspace(ctx _context.Context) ApiDynamicSecretCreateGoogleWorkspaceRequest {
+	return ApiDynamicSecretCreateGoogleWorkspaceRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return DynamicSecretCreateOutput
+ */
+func (a *V2ApiService) DynamicSecretCreateGoogleWorkspaceExecute(r ApiDynamicSecretCreateGoogleWorkspaceRequest) (DynamicSecretCreateOutput, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  DynamicSecretCreateOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.DynamicSecretCreateGoogleWorkspace")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/dynamic-secret-create-google-workspace"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiDynamicSecretCreateHanaDbRequest struct {
 	ctx _context.Context
 	ApiService *V2ApiService
@@ -12799,8 +12916,13 @@ func (a *V2ApiService) DynamicSecretDeleteExecute(r ApiDynamicSecretDeleteReques
 type ApiDynamicSecretGetRequest struct {
 	ctx _context.Context
 	ApiService *V2ApiService
+	body *DynamicSecretGet
 }
 
+func (r ApiDynamicSecretGetRequest) Body(body DynamicSecretGet) ApiDynamicSecretGetRequest {
+	r.body = &body
+	return r
+}
 
 func (r ApiDynamicSecretGetRequest) Execute() (DSProducerDetails, *_nethttp.Response, error) {
 	return r.ApiService.DynamicSecretGetExecute(r)
@@ -12842,9 +12964,12 @@ func (a *V2ApiService) DynamicSecretGetExecute(r ApiDynamicSecretGetRequest) (DS
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -12860,6 +12985,8 @@ func (a *V2ApiService) DynamicSecretGetExecute(r ApiDynamicSecretGetRequest) (DS
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -14563,6 +14690,123 @@ func (a *V2ApiService) DynamicSecretUpdateGkeExecute(r ApiDynamicSecretUpdateGke
 	}
 
 	localVarPath := localBasePath + "/dynamic-secret-update-gke"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiDynamicSecretUpdateGoogleWorkspaceRequest struct {
+	ctx _context.Context
+	ApiService *V2ApiService
+	body *DynamicSecretUpdateGoogleWorkspace
+}
+
+func (r ApiDynamicSecretUpdateGoogleWorkspaceRequest) Body(body DynamicSecretUpdateGoogleWorkspace) ApiDynamicSecretUpdateGoogleWorkspaceRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiDynamicSecretUpdateGoogleWorkspaceRequest) Execute() (DynamicSecretUpdateOutput, *_nethttp.Response, error) {
+	return r.ApiService.DynamicSecretUpdateGoogleWorkspaceExecute(r)
+}
+
+/*
+ * DynamicSecretUpdateGoogleWorkspace Method for DynamicSecretUpdateGoogleWorkspace
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @return ApiDynamicSecretUpdateGoogleWorkspaceRequest
+ */
+func (a *V2ApiService) DynamicSecretUpdateGoogleWorkspace(ctx _context.Context) ApiDynamicSecretUpdateGoogleWorkspaceRequest {
+	return ApiDynamicSecretUpdateGoogleWorkspaceRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return DynamicSecretUpdateOutput
+ */
+func (a *V2ApiService) DynamicSecretUpdateGoogleWorkspaceExecute(r ApiDynamicSecretUpdateGoogleWorkspaceRequest) (DynamicSecretUpdateOutput, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  DynamicSecretUpdateOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.DynamicSecretUpdateGoogleWorkspace")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/dynamic-secret-update-google-workspace"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -29111,7 +29355,7 @@ func (r ApiGetDynamicSecretValueRequest) Body(body GetDynamicSecretValue) ApiGet
 	return r
 }
 
-func (r ApiGetDynamicSecretValueRequest) Execute() (map[string]string, *_nethttp.Response, error) {
+func (r ApiGetDynamicSecretValueRequest) Execute() (map[string]interface{}, *_nethttp.Response, error) {
 	return r.ApiService.GetDynamicSecretValueExecute(r)
 }
 
@@ -29129,16 +29373,16 @@ func (a *V2ApiService) GetDynamicSecretValue(ctx _context.Context) ApiGetDynamic
 
 /*
  * Execute executes the request
- * @return map[string]string
+ * @return map[string]interface{}
  */
-func (a *V2ApiService) GetDynamicSecretValueExecute(r ApiGetDynamicSecretValueRequest) (map[string]string, *_nethttp.Response, error) {
+func (a *V2ApiService) GetDynamicSecretValueExecute(r ApiGetDynamicSecretValueRequest) (map[string]interface{}, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  map[string]string
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.GetDynamicSecretValue")
@@ -30281,7 +30525,7 @@ func (r ApiGetSecretValueRequest) Body(body GetSecretValue) ApiGetSecretValueReq
 	return r
 }
 
-func (r ApiGetSecretValueRequest) Execute() (map[string]string, *_nethttp.Response, error) {
+func (r ApiGetSecretValueRequest) Execute() (map[string]interface{}, *_nethttp.Response, error) {
 	return r.ApiService.GetSecretValueExecute(r)
 }
 
@@ -30299,16 +30543,16 @@ func (a *V2ApiService) GetSecretValue(ctx _context.Context) ApiGetSecretValueReq
 
 /*
  * Execute executes the request
- * @return map[string]string
+ * @return map[string]interface{}
  */
-func (a *V2ApiService) GetSecretValueExecute(r ApiGetSecretValueRequest) (map[string]string, *_nethttp.Response, error) {
+func (a *V2ApiService) GetSecretValueExecute(r ApiGetSecretValueRequest) (map[string]interface{}, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  map[string]string
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.GetSecretValue")
@@ -37004,7 +37248,7 @@ func (r ApiRotatedSecretGetValueRequest) Body(body RotatedSecretGetValue) ApiRot
 	return r
 }
 
-func (r ApiRotatedSecretGetValueRequest) Execute() (map[string]string, *_nethttp.Response, error) {
+func (r ApiRotatedSecretGetValueRequest) Execute() (map[string]map[string]interface{}, *_nethttp.Response, error) {
 	return r.ApiService.RotatedSecretGetValueExecute(r)
 }
 
@@ -37022,16 +37266,16 @@ func (a *V2ApiService) RotatedSecretGetValue(ctx _context.Context) ApiRotatedSec
 
 /*
  * Execute executes the request
- * @return map[string]string
+ * @return map[string]map[string]interface{}
  */
-func (a *V2ApiService) RotatedSecretGetValueExecute(r ApiRotatedSecretGetValueRequest) (map[string]string, *_nethttp.Response, error) {
+func (a *V2ApiService) RotatedSecretGetValueExecute(r ApiRotatedSecretGetValueRequest) (map[string]map[string]interface{}, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  map[string]string
+		localVarReturnValue  map[string]map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.RotatedSecretGetValue")

@@ -88,7 +88,7 @@ type CreatePKICertIssuer struct {
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The maximum requested Time To Live for issued certificates, in seconds. In case of Public CA, this is based on the CA target's supported maximum TTLs
-	Ttl int64 `json:"ttl"`
+	Ttl string `json:"ttl"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
 }
@@ -97,7 +97,7 @@ type CreatePKICertIssuer struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreatePKICertIssuer(name string, signerKeyName string, ttl int64, ) *CreatePKICertIssuer {
+func NewCreatePKICertIssuer(name string, signerKeyName string, ttl string, ) *CreatePKICertIssuer {
 	this := CreatePKICertIssuer{}
 	var json bool = false
 	this.Json = &json
@@ -1228,9 +1228,9 @@ func (o *CreatePKICertIssuer) SetToken(v string) {
 }
 
 // GetTtl returns the Ttl field value
-func (o *CreatePKICertIssuer) GetTtl() int64 {
+func (o *CreatePKICertIssuer) GetTtl() string {
 	if o == nil  {
-		var ret int64
+		var ret string
 		return ret
 	}
 
@@ -1239,7 +1239,7 @@ func (o *CreatePKICertIssuer) GetTtl() int64 {
 
 // GetTtlOk returns a tuple with the Ttl field value
 // and a boolean to check if the value has been set.
-func (o *CreatePKICertIssuer) GetTtlOk() (*int64, bool) {
+func (o *CreatePKICertIssuer) GetTtlOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -1247,7 +1247,7 @@ func (o *CreatePKICertIssuer) GetTtlOk() (*int64, bool) {
 }
 
 // SetTtl sets field value
-func (o *CreatePKICertIssuer) SetTtl(v int64) {
+func (o *CreatePKICertIssuer) SetTtl(v string) {
 	o.Ttl = v
 }
 

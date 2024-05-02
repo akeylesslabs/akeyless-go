@@ -44,7 +44,7 @@ type SecureRemoteAccess struct {
 	SshPassword *bool `json:"ssh_password,omitempty"`
 	SshPrivateKey *bool `json:"ssh_private_key,omitempty"`
 	SshUser *string `json:"ssh_user,omitempty"`
-	Status *ItemSraStatus `json:"status,omitempty"`
+	StatusInfo *ItemSraStatus `json:"status_info,omitempty"`
 	TargetHosts *[]TargetNameWithHosts `json:"target_hosts,omitempty"`
 	Targets *[]string `json:"targets,omitempty"`
 	Url *string `json:"url,omitempty"`
@@ -933,36 +933,36 @@ func (o *SecureRemoteAccess) SetSshUser(v string) {
 	o.SshUser = &v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
-func (o *SecureRemoteAccess) GetStatus() ItemSraStatus {
-	if o == nil || o.Status == nil {
+// GetStatusInfo returns the StatusInfo field value if set, zero value otherwise.
+func (o *SecureRemoteAccess) GetStatusInfo() ItemSraStatus {
+	if o == nil || o.StatusInfo == nil {
 		var ret ItemSraStatus
 		return ret
 	}
-	return *o.Status
+	return *o.StatusInfo
 }
 
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// GetStatusInfoOk returns a tuple with the StatusInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SecureRemoteAccess) GetStatusOk() (*ItemSraStatus, bool) {
-	if o == nil || o.Status == nil {
+func (o *SecureRemoteAccess) GetStatusInfoOk() (*ItemSraStatus, bool) {
+	if o == nil || o.StatusInfo == nil {
 		return nil, false
 	}
-	return o.Status, true
+	return o.StatusInfo, true
 }
 
-// HasStatus returns a boolean if a field has been set.
-func (o *SecureRemoteAccess) HasStatus() bool {
-	if o != nil && o.Status != nil {
+// HasStatusInfo returns a boolean if a field has been set.
+func (o *SecureRemoteAccess) HasStatusInfo() bool {
+	if o != nil && o.StatusInfo != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetStatus gets a reference to the given ItemSraStatus and assigns it to the Status field.
-func (o *SecureRemoteAccess) SetStatus(v ItemSraStatus) {
-	o.Status = &v
+// SetStatusInfo gets a reference to the given ItemSraStatus and assigns it to the StatusInfo field.
+func (o *SecureRemoteAccess) SetStatusInfo(v ItemSraStatus) {
+	o.StatusInfo = &v
 }
 
 // GetTargetHosts returns the TargetHosts field value if set, zero value otherwise.
@@ -1208,8 +1208,8 @@ func (o SecureRemoteAccess) MarshalJSON() ([]byte, error) {
 	if o.SshUser != nil {
 		toSerialize["ssh_user"] = o.SshUser
 	}
-	if o.Status != nil {
-		toSerialize["status"] = o.Status
+	if o.StatusInfo != nil {
+		toSerialize["status_info"] = o.StatusInfo
 	}
 	if o.TargetHosts != nil {
 		toSerialize["target_hosts"] = o.TargetHosts

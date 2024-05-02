@@ -26,6 +26,8 @@ type UpdateDBTarget struct {
 	AzureTenantId *string `json:"azure-tenant-id,omitempty"`
 	// (Optional) Cloud service provider (currently only supports Azure)
 	CloudServiceProvider *string `json:"cloud-service-provider,omitempty"`
+	// Cluster Mode
+	ClusterMode *bool `json:"cluster-mode,omitempty"`
 	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`
 	// (Optional) Type of connection to mssql database [credentials/cloud-identity]
@@ -271,6 +273,38 @@ func (o *UpdateDBTarget) HasCloudServiceProvider() bool {
 // SetCloudServiceProvider gets a reference to the given string and assigns it to the CloudServiceProvider field.
 func (o *UpdateDBTarget) SetCloudServiceProvider(v string) {
 	o.CloudServiceProvider = &v
+}
+
+// GetClusterMode returns the ClusterMode field value if set, zero value otherwise.
+func (o *UpdateDBTarget) GetClusterMode() bool {
+	if o == nil || o.ClusterMode == nil {
+		var ret bool
+		return ret
+	}
+	return *o.ClusterMode
+}
+
+// GetClusterModeOk returns a tuple with the ClusterMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateDBTarget) GetClusterModeOk() (*bool, bool) {
+	if o == nil || o.ClusterMode == nil {
+		return nil, false
+	}
+	return o.ClusterMode, true
+}
+
+// HasClusterMode returns a boolean if a field has been set.
+func (o *UpdateDBTarget) HasClusterMode() bool {
+	if o != nil && o.ClusterMode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetClusterMode gets a reference to the given bool and assigns it to the ClusterMode field.
+func (o *UpdateDBTarget) SetClusterMode(v bool) {
+	o.ClusterMode = &v
 }
 
 // GetComment returns the Comment field value if set, zero value otherwise.
@@ -1289,6 +1323,9 @@ func (o UpdateDBTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.CloudServiceProvider != nil {
 		toSerialize["cloud-service-provider"] = o.CloudServiceProvider
+	}
+	if o.ClusterMode != nil {
+		toSerialize["cluster-mode"] = o.ClusterMode
 	}
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment

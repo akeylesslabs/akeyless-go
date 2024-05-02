@@ -65,6 +65,7 @@ type DSProducerDetails struct {
 	ChefSkipSsl *bool `json:"chef_skip_ssl,omitempty"`
 	ClientAuthenticationType *string `json:"client_authentication_type,omitempty"`
 	CloudServiceProvider *string `json:"cloud_service_provider,omitempty"`
+	ClusterMode *bool `json:"cluster_mode,omitempty"`
 	ConnectionType *string `json:"connection_type,omitempty"`
 	CreateSyncUrl *string `json:"create_sync_url,omitempty"`
 	DbClientId *string `json:"db_client_id,omitempty"`
@@ -129,6 +130,12 @@ type DSProducerDetails struct {
 	GkeClusterName *string `json:"gke_cluster_name,omitempty"`
 	GkeServiceAccountKey *string `json:"gke_service_account_key,omitempty"`
 	GkeServiceAccountName *string `json:"gke_service_account_name,omitempty"`
+	GoogleWorkspaceAccessMode *string `json:"google_workspace_access_mode,omitempty"`
+	GoogleWorkspaceAdminName *string `json:"google_workspace_admin_name,omitempty"`
+	GoogleWorkspaceGroupName *string `json:"google_workspace_group_name,omitempty"`
+	GoogleWorkspaceGroupRole *string `json:"google_workspace_group_role,omitempty"`
+	GoogleWorkspaceRoleName *string `json:"google_workspace_role_name,omitempty"`
+	GoogleWorkspaceRoleScope *string `json:"google_workspace_role_scope,omitempty"`
 	GrantTypes *[]string `json:"grant_types,omitempty"`
 	Groups *string `json:"groups,omitempty"`
 	HanadbCreationStatements *string `json:"hanadb_creation_statements,omitempty"`
@@ -151,6 +158,7 @@ type DSProducerDetails struct {
 	K8sClientKeyData *string `json:"k8s_client_key_data,omitempty"`
 	K8sClusterCaCertificate *string `json:"k8s_cluster_ca_certificate,omitempty"`
 	K8sClusterEndpoint *string `json:"k8s_cluster_endpoint,omitempty"`
+	K8sClusterName *string `json:"k8s_cluster_name,omitempty"`
 	// when native k8s is in dynamic mode, user can define allowed namespaces, K8sServiceAccount doesn't exist from the start and will only be created at time of getting dynamic secret value By default dynamic mode is false and producer behaves like it did before
 	K8sDynamicMode *bool `json:"k8s_dynamic_mode,omitempty"`
 	// Yaml definition for creation of temporary objects. Field that can hold multiple docs from which following will be extracted: ServiceAccount, Role/ClusterRole and RoleBinding/ClusterRoleBinding. If ServiceAccount not specified - it will be generated automatically
@@ -1812,6 +1820,38 @@ func (o *DSProducerDetails) HasCloudServiceProvider() bool {
 // SetCloudServiceProvider gets a reference to the given string and assigns it to the CloudServiceProvider field.
 func (o *DSProducerDetails) SetCloudServiceProvider(v string) {
 	o.CloudServiceProvider = &v
+}
+
+// GetClusterMode returns the ClusterMode field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetClusterMode() bool {
+	if o == nil || o.ClusterMode == nil {
+		var ret bool
+		return ret
+	}
+	return *o.ClusterMode
+}
+
+// GetClusterModeOk returns a tuple with the ClusterMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetClusterModeOk() (*bool, bool) {
+	if o == nil || o.ClusterMode == nil {
+		return nil, false
+	}
+	return o.ClusterMode, true
+}
+
+// HasClusterMode returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasClusterMode() bool {
+	if o != nil && o.ClusterMode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetClusterMode gets a reference to the given bool and assigns it to the ClusterMode field.
+func (o *DSProducerDetails) SetClusterMode(v bool) {
+	o.ClusterMode = &v
 }
 
 // GetConnectionType returns the ConnectionType field value if set, zero value otherwise.
@@ -3702,6 +3742,198 @@ func (o *DSProducerDetails) SetGkeServiceAccountName(v string) {
 	o.GkeServiceAccountName = &v
 }
 
+// GetGoogleWorkspaceAccessMode returns the GoogleWorkspaceAccessMode field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGoogleWorkspaceAccessMode() string {
+	if o == nil || o.GoogleWorkspaceAccessMode == nil {
+		var ret string
+		return ret
+	}
+	return *o.GoogleWorkspaceAccessMode
+}
+
+// GetGoogleWorkspaceAccessModeOk returns a tuple with the GoogleWorkspaceAccessMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGoogleWorkspaceAccessModeOk() (*string, bool) {
+	if o == nil || o.GoogleWorkspaceAccessMode == nil {
+		return nil, false
+	}
+	return o.GoogleWorkspaceAccessMode, true
+}
+
+// HasGoogleWorkspaceAccessMode returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGoogleWorkspaceAccessMode() bool {
+	if o != nil && o.GoogleWorkspaceAccessMode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGoogleWorkspaceAccessMode gets a reference to the given string and assigns it to the GoogleWorkspaceAccessMode field.
+func (o *DSProducerDetails) SetGoogleWorkspaceAccessMode(v string) {
+	o.GoogleWorkspaceAccessMode = &v
+}
+
+// GetGoogleWorkspaceAdminName returns the GoogleWorkspaceAdminName field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGoogleWorkspaceAdminName() string {
+	if o == nil || o.GoogleWorkspaceAdminName == nil {
+		var ret string
+		return ret
+	}
+	return *o.GoogleWorkspaceAdminName
+}
+
+// GetGoogleWorkspaceAdminNameOk returns a tuple with the GoogleWorkspaceAdminName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGoogleWorkspaceAdminNameOk() (*string, bool) {
+	if o == nil || o.GoogleWorkspaceAdminName == nil {
+		return nil, false
+	}
+	return o.GoogleWorkspaceAdminName, true
+}
+
+// HasGoogleWorkspaceAdminName returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGoogleWorkspaceAdminName() bool {
+	if o != nil && o.GoogleWorkspaceAdminName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGoogleWorkspaceAdminName gets a reference to the given string and assigns it to the GoogleWorkspaceAdminName field.
+func (o *DSProducerDetails) SetGoogleWorkspaceAdminName(v string) {
+	o.GoogleWorkspaceAdminName = &v
+}
+
+// GetGoogleWorkspaceGroupName returns the GoogleWorkspaceGroupName field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGoogleWorkspaceGroupName() string {
+	if o == nil || o.GoogleWorkspaceGroupName == nil {
+		var ret string
+		return ret
+	}
+	return *o.GoogleWorkspaceGroupName
+}
+
+// GetGoogleWorkspaceGroupNameOk returns a tuple with the GoogleWorkspaceGroupName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGoogleWorkspaceGroupNameOk() (*string, bool) {
+	if o == nil || o.GoogleWorkspaceGroupName == nil {
+		return nil, false
+	}
+	return o.GoogleWorkspaceGroupName, true
+}
+
+// HasGoogleWorkspaceGroupName returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGoogleWorkspaceGroupName() bool {
+	if o != nil && o.GoogleWorkspaceGroupName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGoogleWorkspaceGroupName gets a reference to the given string and assigns it to the GoogleWorkspaceGroupName field.
+func (o *DSProducerDetails) SetGoogleWorkspaceGroupName(v string) {
+	o.GoogleWorkspaceGroupName = &v
+}
+
+// GetGoogleWorkspaceGroupRole returns the GoogleWorkspaceGroupRole field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGoogleWorkspaceGroupRole() string {
+	if o == nil || o.GoogleWorkspaceGroupRole == nil {
+		var ret string
+		return ret
+	}
+	return *o.GoogleWorkspaceGroupRole
+}
+
+// GetGoogleWorkspaceGroupRoleOk returns a tuple with the GoogleWorkspaceGroupRole field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGoogleWorkspaceGroupRoleOk() (*string, bool) {
+	if o == nil || o.GoogleWorkspaceGroupRole == nil {
+		return nil, false
+	}
+	return o.GoogleWorkspaceGroupRole, true
+}
+
+// HasGoogleWorkspaceGroupRole returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGoogleWorkspaceGroupRole() bool {
+	if o != nil && o.GoogleWorkspaceGroupRole != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGoogleWorkspaceGroupRole gets a reference to the given string and assigns it to the GoogleWorkspaceGroupRole field.
+func (o *DSProducerDetails) SetGoogleWorkspaceGroupRole(v string) {
+	o.GoogleWorkspaceGroupRole = &v
+}
+
+// GetGoogleWorkspaceRoleName returns the GoogleWorkspaceRoleName field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGoogleWorkspaceRoleName() string {
+	if o == nil || o.GoogleWorkspaceRoleName == nil {
+		var ret string
+		return ret
+	}
+	return *o.GoogleWorkspaceRoleName
+}
+
+// GetGoogleWorkspaceRoleNameOk returns a tuple with the GoogleWorkspaceRoleName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGoogleWorkspaceRoleNameOk() (*string, bool) {
+	if o == nil || o.GoogleWorkspaceRoleName == nil {
+		return nil, false
+	}
+	return o.GoogleWorkspaceRoleName, true
+}
+
+// HasGoogleWorkspaceRoleName returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGoogleWorkspaceRoleName() bool {
+	if o != nil && o.GoogleWorkspaceRoleName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGoogleWorkspaceRoleName gets a reference to the given string and assigns it to the GoogleWorkspaceRoleName field.
+func (o *DSProducerDetails) SetGoogleWorkspaceRoleName(v string) {
+	o.GoogleWorkspaceRoleName = &v
+}
+
+// GetGoogleWorkspaceRoleScope returns the GoogleWorkspaceRoleScope field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGoogleWorkspaceRoleScope() string {
+	if o == nil || o.GoogleWorkspaceRoleScope == nil {
+		var ret string
+		return ret
+	}
+	return *o.GoogleWorkspaceRoleScope
+}
+
+// GetGoogleWorkspaceRoleScopeOk returns a tuple with the GoogleWorkspaceRoleScope field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGoogleWorkspaceRoleScopeOk() (*string, bool) {
+	if o == nil || o.GoogleWorkspaceRoleScope == nil {
+		return nil, false
+	}
+	return o.GoogleWorkspaceRoleScope, true
+}
+
+// HasGoogleWorkspaceRoleScope returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGoogleWorkspaceRoleScope() bool {
+	if o != nil && o.GoogleWorkspaceRoleScope != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGoogleWorkspaceRoleScope gets a reference to the given string and assigns it to the GoogleWorkspaceRoleScope field.
+func (o *DSProducerDetails) SetGoogleWorkspaceRoleScope(v string) {
+	o.GoogleWorkspaceRoleScope = &v
+}
+
 // GetGrantTypes returns the GrantTypes field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetGrantTypes() []string {
 	if o == nil || o.GrantTypes == nil {
@@ -4308,6 +4540,38 @@ func (o *DSProducerDetails) HasK8sClusterEndpoint() bool {
 // SetK8sClusterEndpoint gets a reference to the given string and assigns it to the K8sClusterEndpoint field.
 func (o *DSProducerDetails) SetK8sClusterEndpoint(v string) {
 	o.K8sClusterEndpoint = &v
+}
+
+// GetK8sClusterName returns the K8sClusterName field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetK8sClusterName() string {
+	if o == nil || o.K8sClusterName == nil {
+		var ret string
+		return ret
+	}
+	return *o.K8sClusterName
+}
+
+// GetK8sClusterNameOk returns a tuple with the K8sClusterName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetK8sClusterNameOk() (*string, bool) {
+	if o == nil || o.K8sClusterName == nil {
+		return nil, false
+	}
+	return o.K8sClusterName, true
+}
+
+// HasK8sClusterName returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasK8sClusterName() bool {
+	if o != nil && o.K8sClusterName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sClusterName gets a reference to the given string and assigns it to the K8sClusterName field.
+func (o *DSProducerDetails) SetK8sClusterName(v string) {
+	o.K8sClusterName = &v
 }
 
 // GetK8sDynamicMode returns the K8sDynamicMode field value if set, zero value otherwise.
@@ -7496,6 +7760,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	if o.CloudServiceProvider != nil {
 		toSerialize["cloud_service_provider"] = o.CloudServiceProvider
 	}
+	if o.ClusterMode != nil {
+		toSerialize["cluster_mode"] = o.ClusterMode
+	}
 	if o.ConnectionType != nil {
 		toSerialize["connection_type"] = o.ConnectionType
 	}
@@ -7673,6 +7940,24 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	if o.GkeServiceAccountName != nil {
 		toSerialize["gke_service_account_name"] = o.GkeServiceAccountName
 	}
+	if o.GoogleWorkspaceAccessMode != nil {
+		toSerialize["google_workspace_access_mode"] = o.GoogleWorkspaceAccessMode
+	}
+	if o.GoogleWorkspaceAdminName != nil {
+		toSerialize["google_workspace_admin_name"] = o.GoogleWorkspaceAdminName
+	}
+	if o.GoogleWorkspaceGroupName != nil {
+		toSerialize["google_workspace_group_name"] = o.GoogleWorkspaceGroupName
+	}
+	if o.GoogleWorkspaceGroupRole != nil {
+		toSerialize["google_workspace_group_role"] = o.GoogleWorkspaceGroupRole
+	}
+	if o.GoogleWorkspaceRoleName != nil {
+		toSerialize["google_workspace_role_name"] = o.GoogleWorkspaceRoleName
+	}
+	if o.GoogleWorkspaceRoleScope != nil {
+		toSerialize["google_workspace_role_scope"] = o.GoogleWorkspaceRoleScope
+	}
 	if o.GrantTypes != nil {
 		toSerialize["grant_types"] = o.GrantTypes
 	}
@@ -7729,6 +8014,9 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.K8sClusterEndpoint != nil {
 		toSerialize["k8s_cluster_endpoint"] = o.K8sClusterEndpoint
+	}
+	if o.K8sClusterName != nil {
+		toSerialize["k8s_cluster_name"] = o.K8sClusterName
 	}
 	if o.K8sDynamicMode != nil {
 		toSerialize["k8s_dynamic_mode"] = o.K8sDynamicMode

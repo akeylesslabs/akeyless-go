@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **K8sAllowedNamespaces** | Pointer to **string** | Comma-separated list of allowed K8S namespaces for the generated ServiceAccount (relevant only for k8s-service-account-type&#x3D;dynamic) | [optional] 
 **K8sClusterCaCert** | Pointer to **string** | K8S cluster CA certificate | [optional] 
 **K8sClusterEndpoint** | Pointer to **string** | K8S cluster URL endpoint | [optional] 
+**K8sClusterName** | Pointer to **string** | K8S cluster name | [optional] 
 **K8sClusterToken** | Pointer to **string** | K8S cluster Bearer token | [optional] 
 **K8sNamespace** | Pointer to **string** | K8S Namespace where the ServiceAccount exists. | [optional] 
 **K8sPredefinedRoleName** | Pointer to **string** | The pre-existing Role or ClusterRole name to bind the generated ServiceAccount to (relevant only for k8s-service-account-type&#x3D;dynamic) | [optional] 
@@ -176,6 +177,31 @@ SetK8sClusterEndpoint sets K8sClusterEndpoint field to given value.
 `func (o *GatewayCreateProducerNativeK8S) HasK8sClusterEndpoint() bool`
 
 HasK8sClusterEndpoint returns a boolean if a field has been set.
+
+### GetK8sClusterName
+
+`func (o *GatewayCreateProducerNativeK8S) GetK8sClusterName() string`
+
+GetK8sClusterName returns the K8sClusterName field if non-nil, zero value otherwise.
+
+### GetK8sClusterNameOk
+
+`func (o *GatewayCreateProducerNativeK8S) GetK8sClusterNameOk() (*string, bool)`
+
+GetK8sClusterNameOk returns a tuple with the K8sClusterName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sClusterName
+
+`func (o *GatewayCreateProducerNativeK8S) SetK8sClusterName(v string)`
+
+SetK8sClusterName sets K8sClusterName field to given value.
+
+### HasK8sClusterName
+
+`func (o *GatewayCreateProducerNativeK8S) HasK8sClusterName() bool`
+
+HasK8sClusterName returns a boolean if a field has been set.
 
 ### GetK8sClusterToken
 

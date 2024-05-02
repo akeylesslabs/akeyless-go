@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CloudServiceProvider** | Pointer to **string** |  | [optional] 
+**ClusterMode** | Pointer to **bool** |  | [optional] 
 **ConnectionType** | Pointer to **string** |  | [optional] 
 **DbClientId** | Pointer to **string** |  | [optional] 
 **DbClientSecret** | Pointer to **string** |  | [optional] 
@@ -65,6 +66,31 @@ SetCloudServiceProvider sets CloudServiceProvider field to given value.
 `func (o *DbTargetDetails) HasCloudServiceProvider() bool`
 
 HasCloudServiceProvider returns a boolean if a field has been set.
+
+### GetClusterMode
+
+`func (o *DbTargetDetails) GetClusterMode() bool`
+
+GetClusterMode returns the ClusterMode field if non-nil, zero value otherwise.
+
+### GetClusterModeOk
+
+`func (o *DbTargetDetails) GetClusterModeOk() (*bool, bool)`
+
+GetClusterModeOk returns a tuple with the ClusterMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClusterMode
+
+`func (o *DbTargetDetails) SetClusterMode(v bool)`
+
+SetClusterMode sets ClusterMode field to given value.
+
+### HasClusterMode
+
+`func (o *DbTargetDetails) HasClusterMode() bool`
+
+HasClusterMode returns a boolean if a field has been set.
 
 ### GetConnectionType
 

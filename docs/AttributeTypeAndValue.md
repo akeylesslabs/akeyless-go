@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | Pointer to **[]int64** |  | [optional] 
-**Value** | Pointer to **map[string]interface{}** |  | [optional] 
+**Value** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasType returns a boolean if a field has been set.
 
 ### GetValue
 
-`func (o *AttributeTypeAndValue) GetValue() map[string]interface{}`
+`func (o *AttributeTypeAndValue) GetValue() string`
 
 GetValue returns the Value field if non-nil, zero value otherwise.
 
 ### GetValueOk
 
-`func (o *AttributeTypeAndValue) GetValueOk() (*map[string]interface{}, bool)`
+`func (o *AttributeTypeAndValue) GetValueOk() (*string, bool)`
 
 GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValue
 
-`func (o *AttributeTypeAndValue) SetValue(v map[string]interface{})`
+`func (o *AttributeTypeAndValue) SetValue(v string)`
 
 SetValue sets Value field to given value.
 

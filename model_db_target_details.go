@@ -18,6 +18,7 @@ import (
 // DbTargetDetails DbTargetDetails
 type DbTargetDetails struct {
 	CloudServiceProvider *string `json:"cloud_service_provider,omitempty"`
+	ClusterMode *bool `json:"cluster_mode,omitempty"`
 	ConnectionType *string `json:"connection_type,omitempty"`
 	DbClientId *string `json:"db_client_id,omitempty"`
 	DbClientSecret *string `json:"db_client_secret,omitempty"`
@@ -88,6 +89,38 @@ func (o *DbTargetDetails) HasCloudServiceProvider() bool {
 // SetCloudServiceProvider gets a reference to the given string and assigns it to the CloudServiceProvider field.
 func (o *DbTargetDetails) SetCloudServiceProvider(v string) {
 	o.CloudServiceProvider = &v
+}
+
+// GetClusterMode returns the ClusterMode field value if set, zero value otherwise.
+func (o *DbTargetDetails) GetClusterMode() bool {
+	if o == nil || o.ClusterMode == nil {
+		var ret bool
+		return ret
+	}
+	return *o.ClusterMode
+}
+
+// GetClusterModeOk returns a tuple with the ClusterMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DbTargetDetails) GetClusterModeOk() (*bool, bool) {
+	if o == nil || o.ClusterMode == nil {
+		return nil, false
+	}
+	return o.ClusterMode, true
+}
+
+// HasClusterMode returns a boolean if a field has been set.
+func (o *DbTargetDetails) HasClusterMode() bool {
+	if o != nil && o.ClusterMode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetClusterMode gets a reference to the given bool and assigns it to the ClusterMode field.
+func (o *DbTargetDetails) SetClusterMode(v bool) {
+	o.ClusterMode = &v
 }
 
 // GetConnectionType returns the ConnectionType field value if set, zero value otherwise.
@@ -606,6 +639,9 @@ func (o DbTargetDetails) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.CloudServiceProvider != nil {
 		toSerialize["cloud_service_provider"] = o.CloudServiceProvider
+	}
+	if o.ClusterMode != nil {
+		toSerialize["cluster_mode"] = o.ClusterMode
 	}
 	if o.ConnectionType != nil {
 		toSerialize["connection_type"] = o.ConnectionType

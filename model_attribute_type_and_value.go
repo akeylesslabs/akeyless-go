@@ -18,7 +18,7 @@ import (
 // AttributeTypeAndValue AttributeTypeAndValue mirrors the ASN.1 structure of the same name in RFC 5280, Section 4.1.2.4.
 type AttributeTypeAndValue struct {
 	Type *[]int64 `json:"Type,omitempty"`
-	Value *map[string]interface{} `json:"Value,omitempty"`
+	Value *string `json:"Value,omitempty"`
 }
 
 // NewAttributeTypeAndValue instantiates a new AttributeTypeAndValue object
@@ -71,9 +71,9 @@ func (o *AttributeTypeAndValue) SetType(v []int64) {
 }
 
 // GetValue returns the Value field value if set, zero value otherwise.
-func (o *AttributeTypeAndValue) GetValue() map[string]interface{} {
+func (o *AttributeTypeAndValue) GetValue() string {
 	if o == nil || o.Value == nil {
-		var ret map[string]interface{}
+		var ret string
 		return ret
 	}
 	return *o.Value
@@ -81,7 +81,7 @@ func (o *AttributeTypeAndValue) GetValue() map[string]interface{} {
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AttributeTypeAndValue) GetValueOk() (*map[string]interface{}, bool) {
+func (o *AttributeTypeAndValue) GetValueOk() (*string, bool) {
 	if o == nil || o.Value == nil {
 		return nil, false
 	}
@@ -97,8 +97,8 @@ func (o *AttributeTypeAndValue) HasValue() bool {
 	return false
 }
 
-// SetValue gets a reference to the given map[string]interface{} and assigns it to the Value field.
-func (o *AttributeTypeAndValue) SetValue(v map[string]interface{}) {
+// SetValue gets a reference to the given string and assigns it to the Value field.
+func (o *AttributeTypeAndValue) SetValue(v string) {
 	o.Value = &v
 }
 

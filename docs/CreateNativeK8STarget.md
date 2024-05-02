@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **K8sClientKey** | Pointer to **string** | Content of the k8 client private key (PEM format) in a Base64 format | [optional] 
 **K8sClusterCaCert** | **string** | K8S cluster CA certificate | [default to "dummy_val"]
 **K8sClusterEndpoint** | **string** | K8S cluster URL endpoint | [default to "dummy_val"]
+**K8sClusterName** | Pointer to **string** | K8S cluster name | [optional] 
 **K8sClusterToken** | **string** | K8S cluster Bearer token | [default to "dummy_val"]
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **MaxVersions** | Pointer to **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
@@ -228,6 +229,31 @@ and a boolean to check if the value has been set.
 
 SetK8sClusterEndpoint sets K8sClusterEndpoint field to given value.
 
+
+### GetK8sClusterName
+
+`func (o *CreateNativeK8STarget) GetK8sClusterName() string`
+
+GetK8sClusterName returns the K8sClusterName field if non-nil, zero value otherwise.
+
+### GetK8sClusterNameOk
+
+`func (o *CreateNativeK8STarget) GetK8sClusterNameOk() (*string, bool)`
+
+GetK8sClusterNameOk returns a tuple with the K8sClusterName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sClusterName
+
+`func (o *CreateNativeK8STarget) SetK8sClusterName(v string)`
+
+SetK8sClusterName sets K8sClusterName field to given value.
+
+### HasK8sClusterName
+
+`func (o *CreateNativeK8STarget) HasK8sClusterName() bool`
+
+HasK8sClusterName returns a boolean if a field has been set.
 
 ### GetK8sClusterToken
 

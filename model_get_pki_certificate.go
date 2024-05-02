@@ -36,7 +36,7 @@ type GetPKICertificate struct {
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL)
-	Ttl *int64 `json:"ttl,omitempty"`
+	Ttl *string `json:"ttl,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
 	// The URI Subject Alternative Names to be included in the PKI certificate (in a comma-separated list) (if CSR is supplied this flag is ignored and any URI.* names are taken from it)
@@ -346,9 +346,9 @@ func (o *GetPKICertificate) SetToken(v string) {
 }
 
 // GetTtl returns the Ttl field value if set, zero value otherwise.
-func (o *GetPKICertificate) GetTtl() int64 {
+func (o *GetPKICertificate) GetTtl() string {
 	if o == nil || o.Ttl == nil {
-		var ret int64
+		var ret string
 		return ret
 	}
 	return *o.Ttl
@@ -356,7 +356,7 @@ func (o *GetPKICertificate) GetTtl() int64 {
 
 // GetTtlOk returns a tuple with the Ttl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetPKICertificate) GetTtlOk() (*int64, bool) {
+func (o *GetPKICertificate) GetTtlOk() (*string, bool) {
 	if o == nil || o.Ttl == nil {
 		return nil, false
 	}
@@ -372,8 +372,8 @@ func (o *GetPKICertificate) HasTtl() bool {
 	return false
 }
 
-// SetTtl gets a reference to the given int64 and assigns it to the Ttl field.
-func (o *GetPKICertificate) SetTtl(v int64) {
+// SetTtl gets a reference to the given string and assigns it to the Ttl field.
+func (o *GetPKICertificate) SetTtl(v string) {
 	o.Ttl = &v
 }
 

@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// DynamicSecretGet DynamicSecretGet is a command that returns dynamic secret details
+// DynamicSecretGet dynamicSecretGet is a command that returns dynamic secret details
 type DynamicSecretGet struct {
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`

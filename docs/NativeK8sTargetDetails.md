@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **K8sClientKeyData** | Pointer to **string** |  | [optional] 
 **K8sClusterCaCertificate** | Pointer to **string** |  | [optional] 
 **K8sClusterEndpoint** | Pointer to **string** |  | [optional] 
+**K8sClusterName** | Pointer to **string** |  | [optional] 
 **UseGwServiceAccount** | Pointer to **bool** |  | [optional] 
 
 ## Methods
@@ -180,6 +181,31 @@ SetK8sClusterEndpoint sets K8sClusterEndpoint field to given value.
 `func (o *NativeK8sTargetDetails) HasK8sClusterEndpoint() bool`
 
 HasK8sClusterEndpoint returns a boolean if a field has been set.
+
+### GetK8sClusterName
+
+`func (o *NativeK8sTargetDetails) GetK8sClusterName() string`
+
+GetK8sClusterName returns the K8sClusterName field if non-nil, zero value otherwise.
+
+### GetK8sClusterNameOk
+
+`func (o *NativeK8sTargetDetails) GetK8sClusterNameOk() (*string, bool)`
+
+GetK8sClusterNameOk returns a tuple with the K8sClusterName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sClusterName
+
+`func (o *NativeK8sTargetDetails) SetK8sClusterName(v string)`
+
+SetK8sClusterName sets K8sClusterName field to given value.
+
+### HasK8sClusterName
+
+`func (o *NativeK8sTargetDetails) HasK8sClusterName() bool`
+
+HasK8sClusterName returns a boolean if a field has been set.
 
 ### GetUseGwServiceAccount
 
