@@ -36,7 +36,7 @@ type UpdateRotatedSecret struct {
 	GcpKey *string `json:"gcp-key,omitempty"`
 	// Create a new access key without deleting the old key from AWS for backup (relevant only for AWS) [true/false]
 	GraceRotation *string `json:"grace-rotation,omitempty"`
-	// Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret
+	// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret
 	HostProvider *string `json:"host-provider,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -124,8 +124,6 @@ func NewUpdateRotatedSecret(name string, ) *UpdateRotatedSecret {
 	this.AwsRegion = &awsRegion
 	var description string = "default_metadata"
 	this.Description = &description
-	var hostProvider string = "explicit"
-	this.HostProvider = &hostProvider
 	var json bool = false
 	this.Json = &json
 	this.Name = name
@@ -157,8 +155,6 @@ func NewUpdateRotatedSecretWithDefaults() *UpdateRotatedSecret {
 	this.AwsRegion = &awsRegion
 	var description string = "default_metadata"
 	this.Description = &description
-	var hostProvider string = "explicit"
-	this.HostProvider = &hostProvider
 	var json bool = false
 	this.Json = &json
 	var newMetadata string = "default_metadata"

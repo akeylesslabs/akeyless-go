@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CertDisplayId** | Pointer to **string** |  | [optional] 
+**CertItemId** | Pointer to **int64** |  | [optional] 
 **Data** | Pointer to **string** |  | [optional] 
 **ParentCert** | Pointer to **string** |  | [optional] 
 **Path** | Pointer to **string** |  | [optional] 
@@ -53,6 +54,31 @@ SetCertDisplayId sets CertDisplayId field to given value.
 `func (o *GetPKICertificateOutput) HasCertDisplayId() bool`
 
 HasCertDisplayId returns a boolean if a field has been set.
+
+### GetCertItemId
+
+`func (o *GetPKICertificateOutput) GetCertItemId() int64`
+
+GetCertItemId returns the CertItemId field if non-nil, zero value otherwise.
+
+### GetCertItemIdOk
+
+`func (o *GetPKICertificateOutput) GetCertItemIdOk() (*int64, bool)`
+
+GetCertItemIdOk returns a tuple with the CertItemId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertItemId
+
+`func (o *GetPKICertificateOutput) SetCertItemId(v int64)`
+
+SetCertItemId sets CertItemId field to given value.
+
+### HasCertItemId
+
+`func (o *GetPKICertificateOutput) HasCertItemId() bool`
+
+HasCertItemId returns a boolean if a field has been set.
 
 ### GetData
 

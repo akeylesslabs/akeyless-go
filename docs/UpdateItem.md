@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **ChangeEvent** | Pointer to **string** | Trigger an event when a secret value changed [true/false] (Relevant only for Static Secret) | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] [default to "default_metadata"]
-**HostProvider** | Pointer to **string** | Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret | [optional] [default to "explicit"]
+**HostProvider** | Pointer to **string** | Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **MaxVersions** | Pointer to **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Name** | **string** | Current item name | 

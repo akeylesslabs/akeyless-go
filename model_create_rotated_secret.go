@@ -44,7 +44,7 @@ type CreateRotatedSecret struct {
 	GcpServiceAccountKeyId *string `json:"gcp-service-account-key-id,omitempty"`
 	// Create a new access key without deleting the old key from AWS for backup (relevant only for AWS) [true/false]
 	GraceRotation *string `json:"grace-rotation,omitempty"`
-	// Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret
+	// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret
 	HostProvider *string `json:"host-provider,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -109,7 +109,7 @@ type CreateRotatedSecret struct {
 	StorageAccountKeyName *string `json:"storage-account-key-name,omitempty"`
 	// Add tags attached to this object
 	Tags *[]string `json:"tags,omitempty"`
-	// A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer and ldap rotated secret, To specify multiple targets use argument multiple times
+	// A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times
 	Target *[]string `json:"target,omitempty"`
 	// Target name
 	TargetName string `json:"target-name"`
@@ -133,8 +133,6 @@ func NewCreateRotatedSecret(name string, rotatorType string, targetName string, 
 	this.AuthenticationCredentials = &authenticationCredentials
 	var awsRegion string = "us-east-2"
 	this.AwsRegion = &awsRegion
-	var hostProvider string = "explicit"
-	this.HostProvider = &hostProvider
 	var json bool = false
 	this.Json = &json
 	this.Name = name
@@ -164,8 +162,6 @@ func NewCreateRotatedSecretWithDefaults() *CreateRotatedSecret {
 	this.AuthenticationCredentials = &authenticationCredentials
 	var awsRegion string = "us-east-2"
 	this.AwsRegion = &awsRegion
-	var hostProvider string = "explicit"
-	this.HostProvider = &hostProvider
 	var json bool = false
 	this.Json = &json
 	var rotateAfterDisconnect string = "false"

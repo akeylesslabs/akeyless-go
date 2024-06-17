@@ -28,7 +28,7 @@ type UpdateSSHCertIssuer struct {
 	Description *string `json:"description,omitempty"`
 	// Signed certificates with extensions, e.g permit-port-forwarding=\\\"\\\"
 	Extensions *map[string]string `json:"extensions,omitempty"`
-	// Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret
+	// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret
 	HostProvider *string `json:"host-provider,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -71,8 +71,6 @@ type UpdateSSHCertIssuer struct {
 func NewUpdateSSHCertIssuer(allowedUsers string, name string, signerKeyName string, ttl int64, ) *UpdateSSHCertIssuer {
 	this := UpdateSSHCertIssuer{}
 	this.AllowedUsers = allowedUsers
-	var hostProvider string = "explicit"
-	this.HostProvider = &hostProvider
 	var json bool = false
 	this.Json = &json
 	this.Name = name
@@ -86,8 +84,6 @@ func NewUpdateSSHCertIssuer(allowedUsers string, name string, signerKeyName stri
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateSSHCertIssuerWithDefaults() *UpdateSSHCertIssuer {
 	this := UpdateSSHCertIssuer{}
-	var hostProvider string = "explicit"
-	this.HostProvider = &hostProvider
 	var json bool = false
 	this.Json = &json
 	return &this

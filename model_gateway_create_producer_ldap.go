@@ -17,6 +17,7 @@ import (
 
 // GatewayCreateProducerLdap gatewayCreateProducerLdap is a command that creates ldap producer [Deprecated: Use dynamic-secret-create-ldap command]
 type GatewayCreateProducerLdap struct {
+	ProviderType *string `json:"ProviderType,omitempty"`
 	// Bind DN
 	BindDn *string `json:"bind-dn,omitempty"`
 	// Bind DN Password
@@ -27,6 +28,8 @@ type GatewayCreateProducerLdap struct {
 	ExternalUsername *string `json:"external-username,omitempty"`
 	// Group DN which the temporary user should be added
 	GroupDn *string `json:"group-dn,omitempty"`
+	// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret
+	HostProvider *string `json:"host-provider,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// CA Certificate File Content
@@ -39,8 +42,18 @@ type GatewayCreateProducerLdap struct {
 	PasswordLength *string `json:"password-length,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
+	// Enable/Disable secure remote access [true/false]
+	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
+	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
+	// RD Gateway server
+	SecureAccessRdGatewayServer *string `json:"secure-access-rd-gateway-server,omitempty"`
+	// Required when the Dynamic Secret is used for a domain user
+	SecureAccessRdpDomain *string `json:"secure-access-rdp-domain,omitempty"`
 	// Add tags attached to this object
 	Tags *[]string `json:"tags,omitempty"`
+	// A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times
+	Target *[]string `json:"target,omitempty"`
 	// Target name
 	TargetName *string `json:"target-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -85,6 +98,38 @@ func NewGatewayCreateProducerLdapWithDefaults() *GatewayCreateProducerLdap {
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
+}
+
+// GetProviderType returns the ProviderType field value if set, zero value otherwise.
+func (o *GatewayCreateProducerLdap) GetProviderType() string {
+	if o == nil || o.ProviderType == nil {
+		var ret string
+		return ret
+	}
+	return *o.ProviderType
+}
+
+// GetProviderTypeOk returns a tuple with the ProviderType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerLdap) GetProviderTypeOk() (*string, bool) {
+	if o == nil || o.ProviderType == nil {
+		return nil, false
+	}
+	return o.ProviderType, true
+}
+
+// HasProviderType returns a boolean if a field has been set.
+func (o *GatewayCreateProducerLdap) HasProviderType() bool {
+	if o != nil && o.ProviderType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProviderType gets a reference to the given string and assigns it to the ProviderType field.
+func (o *GatewayCreateProducerLdap) SetProviderType(v string) {
+	o.ProviderType = &v
 }
 
 // GetBindDn returns the BindDn field value if set, zero value otherwise.
@@ -245,6 +290,38 @@ func (o *GatewayCreateProducerLdap) HasGroupDn() bool {
 // SetGroupDn gets a reference to the given string and assigns it to the GroupDn field.
 func (o *GatewayCreateProducerLdap) SetGroupDn(v string) {
 	o.GroupDn = &v
+}
+
+// GetHostProvider returns the HostProvider field value if set, zero value otherwise.
+func (o *GatewayCreateProducerLdap) GetHostProvider() string {
+	if o == nil || o.HostProvider == nil {
+		var ret string
+		return ret
+	}
+	return *o.HostProvider
+}
+
+// GetHostProviderOk returns a tuple with the HostProvider field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerLdap) GetHostProviderOk() (*string, bool) {
+	if o == nil || o.HostProvider == nil {
+		return nil, false
+	}
+	return o.HostProvider, true
+}
+
+// HasHostProvider returns a boolean if a field has been set.
+func (o *GatewayCreateProducerLdap) HasHostProvider() bool {
+	if o != nil && o.HostProvider != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHostProvider gets a reference to the given string and assigns it to the HostProvider field.
+func (o *GatewayCreateProducerLdap) SetHostProvider(v string) {
+	o.HostProvider = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -431,6 +508,134 @@ func (o *GatewayCreateProducerLdap) SetProducerEncryptionKeyName(v string) {
 	o.ProducerEncryptionKeyName = &v
 }
 
+// GetSecureAccessEnable returns the SecureAccessEnable field value if set, zero value otherwise.
+func (o *GatewayCreateProducerLdap) GetSecureAccessEnable() string {
+	if o == nil || o.SecureAccessEnable == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessEnable
+}
+
+// GetSecureAccessEnableOk returns a tuple with the SecureAccessEnable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerLdap) GetSecureAccessEnableOk() (*string, bool) {
+	if o == nil || o.SecureAccessEnable == nil {
+		return nil, false
+	}
+	return o.SecureAccessEnable, true
+}
+
+// HasSecureAccessEnable returns a boolean if a field has been set.
+func (o *GatewayCreateProducerLdap) HasSecureAccessEnable() bool {
+	if o != nil && o.SecureAccessEnable != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessEnable gets a reference to the given string and assigns it to the SecureAccessEnable field.
+func (o *GatewayCreateProducerLdap) SetSecureAccessEnable(v string) {
+	o.SecureAccessEnable = &v
+}
+
+// GetSecureAccessHost returns the SecureAccessHost field value if set, zero value otherwise.
+func (o *GatewayCreateProducerLdap) GetSecureAccessHost() []string {
+	if o == nil || o.SecureAccessHost == nil {
+		var ret []string
+		return ret
+	}
+	return *o.SecureAccessHost
+}
+
+// GetSecureAccessHostOk returns a tuple with the SecureAccessHost field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerLdap) GetSecureAccessHostOk() (*[]string, bool) {
+	if o == nil || o.SecureAccessHost == nil {
+		return nil, false
+	}
+	return o.SecureAccessHost, true
+}
+
+// HasSecureAccessHost returns a boolean if a field has been set.
+func (o *GatewayCreateProducerLdap) HasSecureAccessHost() bool {
+	if o != nil && o.SecureAccessHost != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessHost gets a reference to the given []string and assigns it to the SecureAccessHost field.
+func (o *GatewayCreateProducerLdap) SetSecureAccessHost(v []string) {
+	o.SecureAccessHost = &v
+}
+
+// GetSecureAccessRdGatewayServer returns the SecureAccessRdGatewayServer field value if set, zero value otherwise.
+func (o *GatewayCreateProducerLdap) GetSecureAccessRdGatewayServer() string {
+	if o == nil || o.SecureAccessRdGatewayServer == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessRdGatewayServer
+}
+
+// GetSecureAccessRdGatewayServerOk returns a tuple with the SecureAccessRdGatewayServer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerLdap) GetSecureAccessRdGatewayServerOk() (*string, bool) {
+	if o == nil || o.SecureAccessRdGatewayServer == nil {
+		return nil, false
+	}
+	return o.SecureAccessRdGatewayServer, true
+}
+
+// HasSecureAccessRdGatewayServer returns a boolean if a field has been set.
+func (o *GatewayCreateProducerLdap) HasSecureAccessRdGatewayServer() bool {
+	if o != nil && o.SecureAccessRdGatewayServer != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessRdGatewayServer gets a reference to the given string and assigns it to the SecureAccessRdGatewayServer field.
+func (o *GatewayCreateProducerLdap) SetSecureAccessRdGatewayServer(v string) {
+	o.SecureAccessRdGatewayServer = &v
+}
+
+// GetSecureAccessRdpDomain returns the SecureAccessRdpDomain field value if set, zero value otherwise.
+func (o *GatewayCreateProducerLdap) GetSecureAccessRdpDomain() string {
+	if o == nil || o.SecureAccessRdpDomain == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessRdpDomain
+}
+
+// GetSecureAccessRdpDomainOk returns a tuple with the SecureAccessRdpDomain field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerLdap) GetSecureAccessRdpDomainOk() (*string, bool) {
+	if o == nil || o.SecureAccessRdpDomain == nil {
+		return nil, false
+	}
+	return o.SecureAccessRdpDomain, true
+}
+
+// HasSecureAccessRdpDomain returns a boolean if a field has been set.
+func (o *GatewayCreateProducerLdap) HasSecureAccessRdpDomain() bool {
+	if o != nil && o.SecureAccessRdpDomain != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessRdpDomain gets a reference to the given string and assigns it to the SecureAccessRdpDomain field.
+func (o *GatewayCreateProducerLdap) SetSecureAccessRdpDomain(v string) {
+	o.SecureAccessRdpDomain = &v
+}
+
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *GatewayCreateProducerLdap) GetTags() []string {
 	if o == nil || o.Tags == nil {
@@ -461,6 +666,38 @@ func (o *GatewayCreateProducerLdap) HasTags() bool {
 // SetTags gets a reference to the given []string and assigns it to the Tags field.
 func (o *GatewayCreateProducerLdap) SetTags(v []string) {
 	o.Tags = &v
+}
+
+// GetTarget returns the Target field value if set, zero value otherwise.
+func (o *GatewayCreateProducerLdap) GetTarget() []string {
+	if o == nil || o.Target == nil {
+		var ret []string
+		return ret
+	}
+	return *o.Target
+}
+
+// GetTargetOk returns a tuple with the Target field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerLdap) GetTargetOk() (*[]string, bool) {
+	if o == nil || o.Target == nil {
+		return nil, false
+	}
+	return o.Target, true
+}
+
+// HasTarget returns a boolean if a field has been set.
+func (o *GatewayCreateProducerLdap) HasTarget() bool {
+	if o != nil && o.Target != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTarget gets a reference to the given []string and assigns it to the Target field.
+func (o *GatewayCreateProducerLdap) SetTarget(v []string) {
+	o.Target = &v
 }
 
 // GetTargetName returns the TargetName field value if set, zero value otherwise.
@@ -689,6 +926,9 @@ func (o *GatewayCreateProducerLdap) SetUserTtl(v string) {
 
 func (o GatewayCreateProducerLdap) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.ProviderType != nil {
+		toSerialize["ProviderType"] = o.ProviderType
+	}
 	if o.BindDn != nil {
 		toSerialize["bind-dn"] = o.BindDn
 	}
@@ -703,6 +943,9 @@ func (o GatewayCreateProducerLdap) MarshalJSON() ([]byte, error) {
 	}
 	if o.GroupDn != nil {
 		toSerialize["group-dn"] = o.GroupDn
+	}
+	if o.HostProvider != nil {
+		toSerialize["host-provider"] = o.HostProvider
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json
@@ -722,8 +965,23 @@ func (o GatewayCreateProducerLdap) MarshalJSON() ([]byte, error) {
 	if o.ProducerEncryptionKeyName != nil {
 		toSerialize["producer-encryption-key-name"] = o.ProducerEncryptionKeyName
 	}
+	if o.SecureAccessEnable != nil {
+		toSerialize["secure-access-enable"] = o.SecureAccessEnable
+	}
+	if o.SecureAccessHost != nil {
+		toSerialize["secure-access-host"] = o.SecureAccessHost
+	}
+	if o.SecureAccessRdGatewayServer != nil {
+		toSerialize["secure-access-rd-gateway-server"] = o.SecureAccessRdGatewayServer
+	}
+	if o.SecureAccessRdpDomain != nil {
+		toSerialize["secure-access-rdp-domain"] = o.SecureAccessRdpDomain
+	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags
+	}
+	if o.Target != nil {
+		toSerialize["target"] = o.Target
 	}
 	if o.TargetName != nil {
 		toSerialize["target-name"] = o.TargetName

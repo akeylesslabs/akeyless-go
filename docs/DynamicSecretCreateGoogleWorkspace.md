@@ -5,19 +5,19 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessMode** | **string** |  | 
-**AdminName** | **string** | Admin user email | 
+**AdminEmail** | **string** | Admin user email | 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **GcpKey** | Pointer to **string** | Base64-encoded service account private key text | [optional] 
-**GroupName** | Pointer to **string** | A group email, relevant only for group access-mode | [optional] 
-**GroupRoleType** | Pointer to **string** |  | [optional] 
+**GroupEmail** | Pointer to **string** | A group email, relevant only for group access-mode | [optional] 
+**GroupRole** | Pointer to **string** |  | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **RoleName** | Pointer to **string** | Name of the admin role to assign to the user, relevant only for role access-mode | [optional] 
 **RoleScope** | Pointer to **string** |  | [optional] 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
-**TargetName** | Pointer to **string** | Name of existing target to use in producer creation | [optional] 
+**TargetName** | Pointer to **string** | Name of existing target to use in dynamic secret creation | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserTtl** | Pointer to **string** | User TTL | [optional] [default to "60m"]
@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewDynamicSecretCreateGoogleWorkspace
 
-`func NewDynamicSecretCreateGoogleWorkspace(accessMode string, adminName string, name string, ) *DynamicSecretCreateGoogleWorkspace`
+`func NewDynamicSecretCreateGoogleWorkspace(accessMode string, adminEmail string, name string, ) *DynamicSecretCreateGoogleWorkspace`
 
 NewDynamicSecretCreateGoogleWorkspace instantiates a new DynamicSecretCreateGoogleWorkspace object
 This constructor will assign default values to properties that have it defined,
@@ -61,24 +61,24 @@ and a boolean to check if the value has been set.
 SetAccessMode sets AccessMode field to given value.
 
 
-### GetAdminName
+### GetAdminEmail
 
-`func (o *DynamicSecretCreateGoogleWorkspace) GetAdminName() string`
+`func (o *DynamicSecretCreateGoogleWorkspace) GetAdminEmail() string`
 
-GetAdminName returns the AdminName field if non-nil, zero value otherwise.
+GetAdminEmail returns the AdminEmail field if non-nil, zero value otherwise.
 
-### GetAdminNameOk
+### GetAdminEmailOk
 
-`func (o *DynamicSecretCreateGoogleWorkspace) GetAdminNameOk() (*string, bool)`
+`func (o *DynamicSecretCreateGoogleWorkspace) GetAdminEmailOk() (*string, bool)`
 
-GetAdminNameOk returns a tuple with the AdminName field if it's non-nil, zero value otherwise
+GetAdminEmailOk returns a tuple with the AdminEmail field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAdminName
+### SetAdminEmail
 
-`func (o *DynamicSecretCreateGoogleWorkspace) SetAdminName(v string)`
+`func (o *DynamicSecretCreateGoogleWorkspace) SetAdminEmail(v string)`
 
-SetAdminName sets AdminName field to given value.
+SetAdminEmail sets AdminEmail field to given value.
 
 
 ### GetDeleteProtection
@@ -156,55 +156,55 @@ SetGcpKey sets GcpKey field to given value.
 
 HasGcpKey returns a boolean if a field has been set.
 
-### GetGroupName
+### GetGroupEmail
 
-`func (o *DynamicSecretCreateGoogleWorkspace) GetGroupName() string`
+`func (o *DynamicSecretCreateGoogleWorkspace) GetGroupEmail() string`
 
-GetGroupName returns the GroupName field if non-nil, zero value otherwise.
+GetGroupEmail returns the GroupEmail field if non-nil, zero value otherwise.
 
-### GetGroupNameOk
+### GetGroupEmailOk
 
-`func (o *DynamicSecretCreateGoogleWorkspace) GetGroupNameOk() (*string, bool)`
+`func (o *DynamicSecretCreateGoogleWorkspace) GetGroupEmailOk() (*string, bool)`
 
-GetGroupNameOk returns a tuple with the GroupName field if it's non-nil, zero value otherwise
+GetGroupEmailOk returns a tuple with the GroupEmail field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetGroupName
+### SetGroupEmail
 
-`func (o *DynamicSecretCreateGoogleWorkspace) SetGroupName(v string)`
+`func (o *DynamicSecretCreateGoogleWorkspace) SetGroupEmail(v string)`
 
-SetGroupName sets GroupName field to given value.
+SetGroupEmail sets GroupEmail field to given value.
 
-### HasGroupName
+### HasGroupEmail
 
-`func (o *DynamicSecretCreateGoogleWorkspace) HasGroupName() bool`
+`func (o *DynamicSecretCreateGoogleWorkspace) HasGroupEmail() bool`
 
-HasGroupName returns a boolean if a field has been set.
+HasGroupEmail returns a boolean if a field has been set.
 
-### GetGroupRoleType
+### GetGroupRole
 
-`func (o *DynamicSecretCreateGoogleWorkspace) GetGroupRoleType() string`
+`func (o *DynamicSecretCreateGoogleWorkspace) GetGroupRole() string`
 
-GetGroupRoleType returns the GroupRoleType field if non-nil, zero value otherwise.
+GetGroupRole returns the GroupRole field if non-nil, zero value otherwise.
 
-### GetGroupRoleTypeOk
+### GetGroupRoleOk
 
-`func (o *DynamicSecretCreateGoogleWorkspace) GetGroupRoleTypeOk() (*string, bool)`
+`func (o *DynamicSecretCreateGoogleWorkspace) GetGroupRoleOk() (*string, bool)`
 
-GetGroupRoleTypeOk returns a tuple with the GroupRoleType field if it's non-nil, zero value otherwise
+GetGroupRoleOk returns a tuple with the GroupRole field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetGroupRoleType
+### SetGroupRole
 
-`func (o *DynamicSecretCreateGoogleWorkspace) SetGroupRoleType(v string)`
+`func (o *DynamicSecretCreateGoogleWorkspace) SetGroupRole(v string)`
 
-SetGroupRoleType sets GroupRoleType field to given value.
+SetGroupRole sets GroupRole field to given value.
 
-### HasGroupRoleType
+### HasGroupRole
 
-`func (o *DynamicSecretCreateGoogleWorkspace) HasGroupRoleType() bool`
+`func (o *DynamicSecretCreateGoogleWorkspace) HasGroupRole() bool`
 
-HasGroupRoleType returns a boolean if a field has been set.
+HasGroupRole returns a boolean if a field has been set.
 
 ### GetJson
 

@@ -19,7 +19,9 @@ import (
 type UscGet struct {
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// The secret id (or name, for AWS, Azure or K8s targets) to get from the Universal Secrets Connector
+	// The namespace (relevant for Hashi vault target)
+	Namespace *string `json:"namespace,omitempty"`
+	// The secret id (or name, for AWS, Azure, K8s or Hashi vault targets) to get from the Universal Secrets Connector
 	SecretId string `json:"secret-id"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
@@ -27,6 +29,8 @@ type UscGet struct {
 	UidToken *string `json:"uid-token,omitempty"`
 	// Name of the Universal Secrets Connector item
 	UscName string `json:"usc-name"`
+	// The version id (if not specified, will retrieve the last version)
+	VersionId *string `json:"version-id,omitempty"`
 }
 
 // NewUscGet instantiates a new UscGet object
@@ -82,6 +86,38 @@ func (o *UscGet) HasJson() bool {
 // SetJson gets a reference to the given bool and assigns it to the Json field.
 func (o *UscGet) SetJson(v bool) {
 	o.Json = &v
+}
+
+// GetNamespace returns the Namespace field value if set, zero value otherwise.
+func (o *UscGet) GetNamespace() string {
+	if o == nil || o.Namespace == nil {
+		var ret string
+		return ret
+	}
+	return *o.Namespace
+}
+
+// GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscGet) GetNamespaceOk() (*string, bool) {
+	if o == nil || o.Namespace == nil {
+		return nil, false
+	}
+	return o.Namespace, true
+}
+
+// HasNamespace returns a boolean if a field has been set.
+func (o *UscGet) HasNamespace() bool {
+	if o != nil && o.Namespace != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNamespace gets a reference to the given string and assigns it to the Namespace field.
+func (o *UscGet) SetNamespace(v string) {
+	o.Namespace = &v
 }
 
 // GetSecretId returns the SecretId field value
@@ -196,10 +232,45 @@ func (o *UscGet) SetUscName(v string) {
 	o.UscName = v
 }
 
+// GetVersionId returns the VersionId field value if set, zero value otherwise.
+func (o *UscGet) GetVersionId() string {
+	if o == nil || o.VersionId == nil {
+		var ret string
+		return ret
+	}
+	return *o.VersionId
+}
+
+// GetVersionIdOk returns a tuple with the VersionId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscGet) GetVersionIdOk() (*string, bool) {
+	if o == nil || o.VersionId == nil {
+		return nil, false
+	}
+	return o.VersionId, true
+}
+
+// HasVersionId returns a boolean if a field has been set.
+func (o *UscGet) HasVersionId() bool {
+	if o != nil && o.VersionId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVersionId gets a reference to the given string and assigns it to the VersionId field.
+func (o *UscGet) SetVersionId(v string) {
+	o.VersionId = &v
+}
+
 func (o UscGet) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json
+	}
+	if o.Namespace != nil {
+		toSerialize["namespace"] = o.Namespace
 	}
 	if true {
 		toSerialize["secret-id"] = o.SecretId
@@ -212,6 +283,9 @@ func (o UscGet) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["usc-name"] = o.UscName
+	}
+	if o.VersionId != nil {
+		toSerialize["version-id"] = o.VersionId
 	}
 	return json.Marshal(toSerialize)
 }

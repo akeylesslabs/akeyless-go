@@ -19,7 +19,7 @@ import (
 type DynamicSecretUpdateGoogleWorkspace struct {
 	AccessMode string `json:"access-mode"`
 	// Admin user email
-	AdminName string `json:"admin-name"`
+	AdminEmail string `json:"admin-email"`
 	// Protection from accidental deletion of this item [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
@@ -27,8 +27,8 @@ type DynamicSecretUpdateGoogleWorkspace struct {
 	// Base64-encoded service account private key text
 	GcpKey *string `json:"gcp-key,omitempty"`
 	// A group email, relevant only for group access-mode
-	GroupName *string `json:"group-name,omitempty"`
-	GroupRoleType *string `json:"group-role-type,omitempty"`
+	GroupEmail *string `json:"group-email,omitempty"`
+	GroupRole *string `json:"group-role,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Dynamic secret name
@@ -42,7 +42,7 @@ type DynamicSecretUpdateGoogleWorkspace struct {
 	RoleScope *string `json:"role-scope,omitempty"`
 	// Add tags attached to this object
 	Tags *[]string `json:"tags,omitempty"`
-	// Name of existing target to use in producer creation
+	// Name of existing target to use in dynamic secret creation
 	TargetName *string `json:"target-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
@@ -56,10 +56,10 @@ type DynamicSecretUpdateGoogleWorkspace struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDynamicSecretUpdateGoogleWorkspace(accessMode string, adminName string, name string, ) *DynamicSecretUpdateGoogleWorkspace {
+func NewDynamicSecretUpdateGoogleWorkspace(accessMode string, adminEmail string, name string, ) *DynamicSecretUpdateGoogleWorkspace {
 	this := DynamicSecretUpdateGoogleWorkspace{}
 	this.AccessMode = accessMode
-	this.AdminName = adminName
+	this.AdminEmail = adminEmail
 	var json bool = false
 	this.Json = &json
 	this.Name = name
@@ -104,28 +104,28 @@ func (o *DynamicSecretUpdateGoogleWorkspace) SetAccessMode(v string) {
 	o.AccessMode = v
 }
 
-// GetAdminName returns the AdminName field value
-func (o *DynamicSecretUpdateGoogleWorkspace) GetAdminName() string {
+// GetAdminEmail returns the AdminEmail field value
+func (o *DynamicSecretUpdateGoogleWorkspace) GetAdminEmail() string {
 	if o == nil  {
 		var ret string
 		return ret
 	}
 
-	return o.AdminName
+	return o.AdminEmail
 }
 
-// GetAdminNameOk returns a tuple with the AdminName field value
+// GetAdminEmailOk returns a tuple with the AdminEmail field value
 // and a boolean to check if the value has been set.
-func (o *DynamicSecretUpdateGoogleWorkspace) GetAdminNameOk() (*string, bool) {
+func (o *DynamicSecretUpdateGoogleWorkspace) GetAdminEmailOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.AdminName, true
+	return &o.AdminEmail, true
 }
 
-// SetAdminName sets field value
-func (o *DynamicSecretUpdateGoogleWorkspace) SetAdminName(v string) {
-	o.AdminName = v
+// SetAdminEmail sets field value
+func (o *DynamicSecretUpdateGoogleWorkspace) SetAdminEmail(v string) {
+	o.AdminEmail = v
 }
 
 // GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
@@ -224,68 +224,68 @@ func (o *DynamicSecretUpdateGoogleWorkspace) SetGcpKey(v string) {
 	o.GcpKey = &v
 }
 
-// GetGroupName returns the GroupName field value if set, zero value otherwise.
-func (o *DynamicSecretUpdateGoogleWorkspace) GetGroupName() string {
-	if o == nil || o.GroupName == nil {
+// GetGroupEmail returns the GroupEmail field value if set, zero value otherwise.
+func (o *DynamicSecretUpdateGoogleWorkspace) GetGroupEmail() string {
+	if o == nil || o.GroupEmail == nil {
 		var ret string
 		return ret
 	}
-	return *o.GroupName
+	return *o.GroupEmail
 }
 
-// GetGroupNameOk returns a tuple with the GroupName field value if set, nil otherwise
+// GetGroupEmailOk returns a tuple with the GroupEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DynamicSecretUpdateGoogleWorkspace) GetGroupNameOk() (*string, bool) {
-	if o == nil || o.GroupName == nil {
+func (o *DynamicSecretUpdateGoogleWorkspace) GetGroupEmailOk() (*string, bool) {
+	if o == nil || o.GroupEmail == nil {
 		return nil, false
 	}
-	return o.GroupName, true
+	return o.GroupEmail, true
 }
 
-// HasGroupName returns a boolean if a field has been set.
-func (o *DynamicSecretUpdateGoogleWorkspace) HasGroupName() bool {
-	if o != nil && o.GroupName != nil {
+// HasGroupEmail returns a boolean if a field has been set.
+func (o *DynamicSecretUpdateGoogleWorkspace) HasGroupEmail() bool {
+	if o != nil && o.GroupEmail != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetGroupName gets a reference to the given string and assigns it to the GroupName field.
-func (o *DynamicSecretUpdateGoogleWorkspace) SetGroupName(v string) {
-	o.GroupName = &v
+// SetGroupEmail gets a reference to the given string and assigns it to the GroupEmail field.
+func (o *DynamicSecretUpdateGoogleWorkspace) SetGroupEmail(v string) {
+	o.GroupEmail = &v
 }
 
-// GetGroupRoleType returns the GroupRoleType field value if set, zero value otherwise.
-func (o *DynamicSecretUpdateGoogleWorkspace) GetGroupRoleType() string {
-	if o == nil || o.GroupRoleType == nil {
+// GetGroupRole returns the GroupRole field value if set, zero value otherwise.
+func (o *DynamicSecretUpdateGoogleWorkspace) GetGroupRole() string {
+	if o == nil || o.GroupRole == nil {
 		var ret string
 		return ret
 	}
-	return *o.GroupRoleType
+	return *o.GroupRole
 }
 
-// GetGroupRoleTypeOk returns a tuple with the GroupRoleType field value if set, nil otherwise
+// GetGroupRoleOk returns a tuple with the GroupRole field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DynamicSecretUpdateGoogleWorkspace) GetGroupRoleTypeOk() (*string, bool) {
-	if o == nil || o.GroupRoleType == nil {
+func (o *DynamicSecretUpdateGoogleWorkspace) GetGroupRoleOk() (*string, bool) {
+	if o == nil || o.GroupRole == nil {
 		return nil, false
 	}
-	return o.GroupRoleType, true
+	return o.GroupRole, true
 }
 
-// HasGroupRoleType returns a boolean if a field has been set.
-func (o *DynamicSecretUpdateGoogleWorkspace) HasGroupRoleType() bool {
-	if o != nil && o.GroupRoleType != nil {
+// HasGroupRole returns a boolean if a field has been set.
+func (o *DynamicSecretUpdateGoogleWorkspace) HasGroupRole() bool {
+	if o != nil && o.GroupRole != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetGroupRoleType gets a reference to the given string and assigns it to the GroupRoleType field.
-func (o *DynamicSecretUpdateGoogleWorkspace) SetGroupRoleType(v string) {
-	o.GroupRoleType = &v
+// SetGroupRole gets a reference to the given string and assigns it to the GroupRole field.
+func (o *DynamicSecretUpdateGoogleWorkspace) SetGroupRole(v string) {
+	o.GroupRole = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -638,7 +638,7 @@ func (o DynamicSecretUpdateGoogleWorkspace) MarshalJSON() ([]byte, error) {
 		toSerialize["access-mode"] = o.AccessMode
 	}
 	if true {
-		toSerialize["admin-name"] = o.AdminName
+		toSerialize["admin-email"] = o.AdminEmail
 	}
 	if o.DeleteProtection != nil {
 		toSerialize["delete_protection"] = o.DeleteProtection
@@ -649,11 +649,11 @@ func (o DynamicSecretUpdateGoogleWorkspace) MarshalJSON() ([]byte, error) {
 	if o.GcpKey != nil {
 		toSerialize["gcp-key"] = o.GcpKey
 	}
-	if o.GroupName != nil {
-		toSerialize["group-name"] = o.GroupName
+	if o.GroupEmail != nil {
+		toSerialize["group-email"] = o.GroupEmail
 	}
-	if o.GroupRoleType != nil {
-		toSerialize["group-role-type"] = o.GroupRoleType
+	if o.GroupRole != nil {
+		toSerialize["group-role"] = o.GroupRole
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json

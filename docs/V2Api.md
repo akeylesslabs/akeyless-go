@@ -42,6 +42,7 @@ Method | HTTP request | Description
 [**CreateGlobalSignTarget**](V2Api.md#CreateGlobalSignTarget) | **Post** /create-globalsign-target | 
 [**CreateGodaddyTarget**](V2Api.md#CreateGodaddyTarget) | **Post** /create-godaddy-target | 
 [**CreateGroup**](V2Api.md#CreateGroup) | **Post** /create-group | 
+[**CreateHashiVaultTarget**](V2Api.md#CreateHashiVaultTarget) | **Post** /create-hashi-vault-target | 
 [**CreateKey**](V2Api.md#CreateKey) | **Post** /create-key | 
 [**CreateLinkedTarget**](V2Api.md#CreateLinkedTarget) | **Post** /create-linked-target | 
 [**CreateNativeK8STarget**](V2Api.md#CreateNativeK8STarget) | **Post** /create-k8s-target | 
@@ -201,12 +202,16 @@ Method | HTTP request | Description
 [**GatewayDeleteProducer**](V2Api.md#GatewayDeleteProducer) | **Post** /gateway-delete-producer | 
 [**GatewayDownloadCustomerFragments**](V2Api.md#GatewayDownloadCustomerFragments) | **Post** /gateway-download-customer-fragments | 
 [**GatewayGetAllowedAccess**](V2Api.md#GatewayGetAllowedAccess) | **Post** /gateway-get-allowed-access | 
+[**GatewayGetCache**](V2Api.md#GatewayGetCache) | **Post** /gateway-get-cache | 
 [**GatewayGetConfig**](V2Api.md#GatewayGetConfig) | **Post** /gateway-get-config | 
+[**GatewayGetDefaults**](V2Api.md#GatewayGetDefaults) | **Post** /gateway-get-defaults | 
 [**GatewayGetK8SAuthConfig**](V2Api.md#GatewayGetK8SAuthConfig) | **Post** /gateway-get-k8s-auth-config | 
 [**GatewayGetLdapAuthConfig**](V2Api.md#GatewayGetLdapAuthConfig) | **Post** /gateway-get-ldap-auth-config | 
+[**GatewayGetLogForwarding**](V2Api.md#GatewayGetLogForwarding) | **Post** /gateway-get-log-forwarding | 
 [**GatewayGetMigration**](V2Api.md#GatewayGetMigration) | **Post** /gateway-get-migration | 
 [**GatewayGetProducer**](V2Api.md#GatewayGetProducer) | **Post** /gateway-get-producer | 
 [**GatewayGetTmpUsers**](V2Api.md#GatewayGetTmpUsers) | **Post** /gateway-get-producer-tmp-creds | 
+[**GatewayListCustomerFragments**](V2Api.md#GatewayListCustomerFragments) | **Post** /gateway-list-customer-fragments | 
 [**GatewayListMigration**](V2Api.md#GatewayListMigration) | **Post** /gateway-list-migration | 
 [**GatewayListProducers**](V2Api.md#GatewayListProducers) | **Post** /gateway-list-producers | 
 [**GatewayListRotatedSecrets**](V2Api.md#GatewayListRotatedSecrets) | **Post** /gateway-list-rotated-secrets | 
@@ -217,9 +222,22 @@ Method | HTTP request | Description
 [**GatewayStopProducer**](V2Api.md#GatewayStopProducer) | **Post** /gateway-stop-producer | 
 [**GatewaySyncMigration**](V2Api.md#GatewaySyncMigration) | **Post** /gateway-sync-migration | 
 [**GatewayUpdateAllowedAccess**](V2Api.md#GatewayUpdateAllowedAccess) | **Post** /gateway-update-allowed-access | 
+[**GatewayUpdateCache**](V2Api.md#GatewayUpdateCache) | **Post** /gateway-update-cache | 
+[**GatewayUpdateDefaults**](V2Api.md#GatewayUpdateDefaults) | **Post** /gateway-update-defaults | 
 [**GatewayUpdateItem**](V2Api.md#GatewayUpdateItem) | **Post** /gateway-update-item | 
 [**GatewayUpdateK8SAuthConfig**](V2Api.md#GatewayUpdateK8SAuthConfig) | **Post** /gateway-update-k8s-auth-config | 
 [**GatewayUpdateLdapAuthConfig**](V2Api.md#GatewayUpdateLdapAuthConfig) | **Post** /gateway-update-ldap-auth-config | 
+[**GatewayUpdateLogForwardingAwsS3**](V2Api.md#GatewayUpdateLogForwardingAwsS3) | **Post** /gateway-update-log-forwarding-aws-s3 | 
+[**GatewayUpdateLogForwardingAzureAnalytics**](V2Api.md#GatewayUpdateLogForwardingAzureAnalytics) | **Post** /gateway-update-log-forwarding-azure-analytics | 
+[**GatewayUpdateLogForwardingDatadog**](V2Api.md#GatewayUpdateLogForwardingDatadog) | **Post** /gateway-update-log-forwarding-datadog | 
+[**GatewayUpdateLogForwardingElasticsearch**](V2Api.md#GatewayUpdateLogForwardingElasticsearch) | **Post** /gateway-update-log-forwarding-elasticsearch | 
+[**GatewayUpdateLogForwardingGoogleChronicle**](V2Api.md#GatewayUpdateLogForwardingGoogleChronicle) | **Post** /gateway-update-log-forwarding-google-chronicle | 
+[**GatewayUpdateLogForwardingLogstash**](V2Api.md#GatewayUpdateLogForwardingLogstash) | **Post** /gateway-update-log-forwarding-logstash | 
+[**GatewayUpdateLogForwardingLogzIo**](V2Api.md#GatewayUpdateLogForwardingLogzIo) | **Post** /gateway-update-log-forwarding-logz-io | 
+[**GatewayUpdateLogForwardingSplunk**](V2Api.md#GatewayUpdateLogForwardingSplunk) | **Post** /gateway-update-log-forwarding-splunk | 
+[**GatewayUpdateLogForwardingStdout**](V2Api.md#GatewayUpdateLogForwardingStdout) | **Post** /gateway-update-log-forwarding-stdout | 
+[**GatewayUpdateLogForwardingSumologic**](V2Api.md#GatewayUpdateLogForwardingSumologic) | **Post** /gateway-update-log-forwarding-sumologic | 
+[**GatewayUpdateLogForwardingSyslog**](V2Api.md#GatewayUpdateLogForwardingSyslog) | **Post** /gateway-update-log-forwarding-syslog | 
 [**GatewayUpdateMigration**](V2Api.md#GatewayUpdateMigration) | **Post** /gateway-update-migration | 
 [**GatewayUpdateProducerArtifactory**](V2Api.md#GatewayUpdateProducerArtifactory) | **Post** /gateway-update-producer-artifactory | 
 [**GatewayUpdateProducerAws**](V2Api.md#GatewayUpdateProducerAws) | **Post** /gateway-update-producer-aws | 
@@ -392,6 +410,7 @@ Method | HTTP request | Description
 [**UpdateGlobalSignTarget**](V2Api.md#UpdateGlobalSignTarget) | **Post** /update-globalsign-target | 
 [**UpdateGodaddyTarget**](V2Api.md#UpdateGodaddyTarget) | **Post** /update-godaddy-target | 
 [**UpdateGroup**](V2Api.md#UpdateGroup) | **Post** /update-group | 
+[**UpdateHashiVaultTarget**](V2Api.md#UpdateHashiVaultTarget) | **Post** /update-hashi-vault-target | 
 [**UpdateItem**](V2Api.md#UpdateItem) | **Post** /update-item | 
 [**UpdateLdapTarget**](V2Api.md#UpdateLdapTarget) | **Post** /update-ldap-target | 
 [**UpdateLdapTargetDetails**](V2Api.md#UpdateLdapTargetDetails) | **Post** /update-ldap-target-details | 
@@ -2851,6 +2870,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateGroupOutput**](CreateGroupOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateHashiVaultTarget
+
+> CreateHashiVaultTargetOutput CreateHashiVaultTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewcreateHashiVaultTarget("Name_example") // CreateHashiVaultTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.CreateHashiVaultTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateHashiVaultTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateHashiVaultTarget`: CreateHashiVaultTargetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateHashiVaultTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateHashiVaultTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateHashiVaultTarget**](CreateHashiVaultTarget.md) |  | 
+
+### Return type
+
+[**CreateHashiVaultTargetOutput**](createHashiVaultTargetOutput.md)
 
 ### Authorization
 
@@ -6405,7 +6488,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewdynamicSecretCreateGoogleWorkspace("AccessMode_example", "AdminName_example", "Name_example") // DynamicSecretCreateGoogleWorkspace | 
+    body := *openapiclient.NewdynamicSecretCreateGoogleWorkspace("AccessMode_example", "AdminEmail_example", "Name_example") // DynamicSecretCreateGoogleWorkspace | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -8513,7 +8596,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewdynamicSecretUpdateGoogleWorkspace("AccessMode_example", "AdminName_example", "Name_example") // DynamicSecretUpdateGoogleWorkspace | 
+    body := *openapiclient.NewdynamicSecretUpdateGoogleWorkspace("AccessMode_example", "AdminEmail_example", "Name_example") // DynamicSecretUpdateGoogleWorkspace | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -13038,6 +13121,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GatewayGetCache
+
+> CacheConfigPart GatewayGetCache(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayGetCache() // GatewayGetCache | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayGetCache(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayGetCache``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayGetCache`: CacheConfigPart
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayGetCache`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayGetCacheRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayGetCache**](GatewayGetCache.md) |  | 
+
+### Return type
+
+[**CacheConfigPart**](CacheConfigPart.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GatewayGetConfig
 
 > AkeylessGatewayConfig GatewayGetConfig(ctx).Body(body).Execute()
@@ -13087,6 +13234,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AkeylessGatewayConfig**](AkeylessGatewayConfig.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayGetDefaults
+
+> GatewayGetDefaultsOutput GatewayGetDefaults(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayGetDefaults() // GatewayGetDefaults | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayGetDefaults(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayGetDefaults``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayGetDefaults`: GatewayGetDefaultsOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayGetDefaults`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayGetDefaultsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayGetDefaults**](GatewayGetDefaults.md) |  | 
+
+### Return type
+
+[**GatewayGetDefaultsOutput**](GatewayGetDefaultsOutput.md)
 
 ### Authorization
 
@@ -13215,6 +13426,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GatewayGetLdapAuthConfigOutput**](gatewayGetLdapAuthConfigOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayGetLogForwarding
+
+> LogForwardingConfigPart GatewayGetLogForwarding(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayGetLogForwarding() // GatewayGetLogForwarding | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayGetLogForwarding(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayGetLogForwarding``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayGetLogForwarding`: LogForwardingConfigPart
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayGetLogForwarding`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayGetLogForwardingRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayGetLogForwarding**](GatewayGetLogForwarding.md) |  | 
+
+### Return type
+
+[**LogForwardingConfigPart**](LogForwardingConfigPart.md)
 
 ### Authorization
 
@@ -13407,6 +13682,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]TmpUserData**](TmpUserData.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayListCustomerFragments
+
+> map[string]map[string]interface{} GatewayListCustomerFragments(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayListCustomerFragments() // GatewayListCustomerFragments | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayListCustomerFragments(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayListCustomerFragments``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayListCustomerFragments`: map[string]map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayListCustomerFragments`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayListCustomerFragmentsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayListCustomerFragments**](GatewayListCustomerFragments.md) |  | 
+
+### Return type
+
+**map[string]map[string]interface{}**
 
 ### Authorization
 
@@ -14060,6 +14399,134 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GatewayUpdateCache
+
+> GatewayUpdateOutput GatewayUpdateCache(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateCache() // GatewayUpdateCache | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateCache(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateCache``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateCache`: GatewayUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateCache`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateCacheRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateCache**](GatewayUpdateCache.md) |  | 
+
+### Return type
+
+[**GatewayUpdateOutput**](gatewayUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateDefaults
+
+> GatewayUpdateOutput GatewayUpdateDefaults(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateDefaults() // GatewayUpdateDefaults | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateDefaults(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateDefaults``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateDefaults`: GatewayUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateDefaults`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateDefaultsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateDefaults**](GatewayUpdateDefaults.md) |  | 
+
+### Return type
+
+[**GatewayUpdateOutput**](gatewayUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GatewayUpdateItem
 
 > GatewayUpdateItemOutput GatewayUpdateItem(ctx).Body(body).Execute()
@@ -14237,6 +14704,710 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GatewayUpdateLdapAuthConfigOutput**](GatewayUpdateLdapAuthConfigOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateLogForwardingAwsS3
+
+> GatewayUpdateLogForwardingOutput GatewayUpdateLogForwardingAwsS3(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateLogForwardingAwsS3() // GatewayUpdateLogForwardingAwsS3 | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateLogForwardingAwsS3(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateLogForwardingAwsS3``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateLogForwardingAwsS3`: GatewayUpdateLogForwardingOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateLogForwardingAwsS3`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateLogForwardingAwsS3Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateLogForwardingAwsS3**](GatewayUpdateLogForwardingAwsS3.md) |  | 
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](gatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateLogForwardingAzureAnalytics
+
+> GatewayUpdateLogForwardingOutput GatewayUpdateLogForwardingAzureAnalytics(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateLogForwardingAzureAnalytics() // GatewayUpdateLogForwardingAzureAnalytics | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateLogForwardingAzureAnalytics(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateLogForwardingAzureAnalytics``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateLogForwardingAzureAnalytics`: GatewayUpdateLogForwardingOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateLogForwardingAzureAnalytics`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateLogForwardingAzureAnalyticsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateLogForwardingAzureAnalytics**](GatewayUpdateLogForwardingAzureAnalytics.md) |  | 
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](gatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateLogForwardingDatadog
+
+> GatewayUpdateLogForwardingOutput GatewayUpdateLogForwardingDatadog(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateLogForwardingDatadog() // GatewayUpdateLogForwardingDatadog | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateLogForwardingDatadog(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateLogForwardingDatadog``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateLogForwardingDatadog`: GatewayUpdateLogForwardingOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateLogForwardingDatadog`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateLogForwardingDatadogRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateLogForwardingDatadog**](GatewayUpdateLogForwardingDatadog.md) |  | 
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](gatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateLogForwardingElasticsearch
+
+> GatewayUpdateLogForwardingOutput GatewayUpdateLogForwardingElasticsearch(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateLogForwardingElasticsearch() // GatewayUpdateLogForwardingElasticsearch | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateLogForwardingElasticsearch(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateLogForwardingElasticsearch``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateLogForwardingElasticsearch`: GatewayUpdateLogForwardingOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateLogForwardingElasticsearch`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateLogForwardingElasticsearchRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateLogForwardingElasticsearch**](GatewayUpdateLogForwardingElasticsearch.md) |  | 
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](gatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateLogForwardingGoogleChronicle
+
+> GatewayUpdateLogForwardingOutput GatewayUpdateLogForwardingGoogleChronicle(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateLogForwardingGoogleChronicle() // GatewayUpdateLogForwardingGoogleChronicle | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateLogForwardingGoogleChronicle(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateLogForwardingGoogleChronicle``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateLogForwardingGoogleChronicle`: GatewayUpdateLogForwardingOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateLogForwardingGoogleChronicle`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateLogForwardingGoogleChronicleRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateLogForwardingGoogleChronicle**](GatewayUpdateLogForwardingGoogleChronicle.md) |  | 
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](gatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateLogForwardingLogstash
+
+> GatewayUpdateLogForwardingOutput GatewayUpdateLogForwardingLogstash(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateLogForwardingLogstash() // GatewayUpdateLogForwardingLogstash | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateLogForwardingLogstash(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateLogForwardingLogstash``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateLogForwardingLogstash`: GatewayUpdateLogForwardingOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateLogForwardingLogstash`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateLogForwardingLogstashRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateLogForwardingLogstash**](GatewayUpdateLogForwardingLogstash.md) |  | 
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](gatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateLogForwardingLogzIo
+
+> GatewayUpdateLogForwardingOutput GatewayUpdateLogForwardingLogzIo(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateLogForwardingLogzIo() // GatewayUpdateLogForwardingLogzIo | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateLogForwardingLogzIo(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateLogForwardingLogzIo``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateLogForwardingLogzIo`: GatewayUpdateLogForwardingOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateLogForwardingLogzIo`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateLogForwardingLogzIoRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateLogForwardingLogzIo**](GatewayUpdateLogForwardingLogzIo.md) |  | 
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](gatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateLogForwardingSplunk
+
+> GatewayUpdateLogForwardingOutput GatewayUpdateLogForwardingSplunk(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateLogForwardingSplunk() // GatewayUpdateLogForwardingSplunk | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateLogForwardingSplunk(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateLogForwardingSplunk``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateLogForwardingSplunk`: GatewayUpdateLogForwardingOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateLogForwardingSplunk`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateLogForwardingSplunkRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateLogForwardingSplunk**](GatewayUpdateLogForwardingSplunk.md) |  | 
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](gatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateLogForwardingStdout
+
+> GatewayUpdateLogForwardingOutput GatewayUpdateLogForwardingStdout(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateLogForwardingStdout() // GatewayUpdateLogForwardingStdout | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateLogForwardingStdout(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateLogForwardingStdout``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateLogForwardingStdout`: GatewayUpdateLogForwardingOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateLogForwardingStdout`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateLogForwardingStdoutRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateLogForwardingStdout**](GatewayUpdateLogForwardingStdout.md) |  | 
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](gatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateLogForwardingSumologic
+
+> GatewayUpdateLogForwardingOutput GatewayUpdateLogForwardingSumologic(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateLogForwardingSumologic() // GatewayUpdateLogForwardingSumologic | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateLogForwardingSumologic(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateLogForwardingSumologic``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateLogForwardingSumologic`: GatewayUpdateLogForwardingOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateLogForwardingSumologic`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateLogForwardingSumologicRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateLogForwardingSumologic**](GatewayUpdateLogForwardingSumologic.md) |  | 
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](gatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateLogForwardingSyslog
+
+> GatewayUpdateLogForwardingOutput GatewayUpdateLogForwardingSyslog(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateLogForwardingSyslog() // GatewayUpdateLogForwardingSyslog | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateLogForwardingSyslog(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateLogForwardingSyslog``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateLogForwardingSyslog`: GatewayUpdateLogForwardingOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateLogForwardingSyslog`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateLogForwardingSyslogRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateLogForwardingSyslog**](GatewayUpdateLogForwardingSyslog.md) |  | 
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](gatewayUpdateLogForwardingOutput.md)
 
 ### Authorization
 
@@ -25229,6 +26400,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**UpdateGroupOutput**](UpdateGroupOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateHashiVaultTarget
+
+> UpdateHashiVaultTargetOutput UpdateHashiVaultTarget(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewupdateHashiVaultTarget("Name_example") // UpdateHashiVaultTarget | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.UpdateHashiVaultTarget(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateHashiVaultTarget``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateHashiVaultTarget`: UpdateHashiVaultTargetOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateHashiVaultTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateHashiVaultTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateHashiVaultTarget**](UpdateHashiVaultTarget.md) |  | 
+
+### Return type
+
+[**UpdateHashiVaultTargetOutput**](updateHashiVaultTargetOutput.md)
 
 ### Authorization
 

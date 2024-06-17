@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **DpEnableClassicKeyProtection** | Pointer to **string** | Set to update protection with classic keys state [true/false] | [optional] 
 **DynamicSecretMaxTtl** | Pointer to **int64** | Set the maximum ttl for dynamic secrets | [optional] 
 **DynamicSecretMaxTtlEnable** | Pointer to **string** | Set a maximum ttl for dynamic secrets [true/false] | [optional] 
+**EnableItemSharing** | Pointer to **string** | Enable sharing items [true/false] | [optional] 
 **ForceNewVersions** | Pointer to **string** | If set to true, new version will be created on update | [optional] 
 **InvalidCharacters** | Pointer to **string** | Characters that cannot be used for items/targets/roles/auths/event_forwarder names. Empty string will enforce nothing. | [optional] [default to "notReceivedInvalidCharacter"]
 **ItemType** | Pointer to **string** | VersionSettingsObjectType defines object types for account version settings | [optional] 
@@ -307,6 +308,31 @@ SetDynamicSecretMaxTtlEnable sets DynamicSecretMaxTtlEnable field to given value
 `func (o *UpdateAccountSettings) HasDynamicSecretMaxTtlEnable() bool`
 
 HasDynamicSecretMaxTtlEnable returns a boolean if a field has been set.
+
+### GetEnableItemSharing
+
+`func (o *UpdateAccountSettings) GetEnableItemSharing() string`
+
+GetEnableItemSharing returns the EnableItemSharing field if non-nil, zero value otherwise.
+
+### GetEnableItemSharingOk
+
+`func (o *UpdateAccountSettings) GetEnableItemSharingOk() (*string, bool)`
+
+GetEnableItemSharingOk returns a tuple with the EnableItemSharing field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableItemSharing
+
+`func (o *UpdateAccountSettings) SetEnableItemSharing(v string)`
+
+SetEnableItemSharing sets EnableItemSharing field to given value.
+
+### HasEnableItemSharing
+
+`func (o *UpdateAccountSettings) HasEnableItemSharing() bool`
+
+HasEnableItemSharing returns a boolean if a field has been set.
 
 ### GetForceNewVersions
 

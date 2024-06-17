@@ -43,6 +43,8 @@ type AssocTargetItem struct {
 	PrivateKeyPath *string `json:"private-key-path,omitempty"`
 	// Project id of the GCP KMS (required for gcp targets)
 	ProjectId *string `json:"project-id,omitempty"`
+	// Protection level of the key [software/hardware] (relevant for gcp targets)
+	ProtectionLevel *string `json:"protection-level,omitempty"`
 	// Purpose of the key in GCP KMS (required for gcp targets)
 	Purpose *string `json:"purpose,omitempty"`
 	// The list of regions to create a copy of the key in (relevant for aws targets)
@@ -74,6 +76,8 @@ func NewAssocTargetItem(name string, targetName string, ) *AssocTargetItem {
 	var multiRegion string = "false"
 	this.MultiRegion = &multiRegion
 	this.Name = name
+	var protectionLevel string = "software"
+	this.ProtectionLevel = &protectionLevel
 	var sraAssociation bool = false
 	this.SraAssociation = &sraAssociation
 	this.TargetName = targetName
@@ -91,6 +95,8 @@ func NewAssocTargetItemWithDefaults() *AssocTargetItem {
 	this.Json = &json
 	var multiRegion string = "false"
 	this.MultiRegion = &multiRegion
+	var protectionLevel string = "software"
+	this.ProtectionLevel = &protectionLevel
 	var sraAssociation bool = false
 	this.SraAssociation = &sraAssociation
 	return &this
@@ -504,6 +510,38 @@ func (o *AssocTargetItem) SetProjectId(v string) {
 	o.ProjectId = &v
 }
 
+// GetProtectionLevel returns the ProtectionLevel field value if set, zero value otherwise.
+func (o *AssocTargetItem) GetProtectionLevel() string {
+	if o == nil || o.ProtectionLevel == nil {
+		var ret string
+		return ret
+	}
+	return *o.ProtectionLevel
+}
+
+// GetProtectionLevelOk returns a tuple with the ProtectionLevel field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssocTargetItem) GetProtectionLevelOk() (*string, bool) {
+	if o == nil || o.ProtectionLevel == nil {
+		return nil, false
+	}
+	return o.ProtectionLevel, true
+}
+
+// HasProtectionLevel returns a boolean if a field has been set.
+func (o *AssocTargetItem) HasProtectionLevel() bool {
+	if o != nil && o.ProtectionLevel != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProtectionLevel gets a reference to the given string and assigns it to the ProtectionLevel field.
+func (o *AssocTargetItem) SetProtectionLevel(v string) {
+	o.ProtectionLevel = &v
+}
+
 // GetPurpose returns the Purpose field value if set, zero value otherwise.
 func (o *AssocTargetItem) GetPurpose() string {
 	if o == nil || o.Purpose == nil {
@@ -792,6 +830,9 @@ func (o AssocTargetItem) MarshalJSON() ([]byte, error) {
 	}
 	if o.ProjectId != nil {
 		toSerialize["project-id"] = o.ProjectId
+	}
+	if o.ProtectionLevel != nil {
+		toSerialize["protection-level"] = o.ProtectionLevel
 	}
 	if o.Purpose != nil {
 		toSerialize["purpose"] = o.Purpose

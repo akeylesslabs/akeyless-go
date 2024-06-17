@@ -23,6 +23,8 @@ type UscCreate struct {
 	Description *string `json:"description,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
+	// The namespace (relevant for Hashi vault target)
+	Namespace *string `json:"namespace,omitempty"`
 	// Name for the new universal secrets
 	SecretName string `json:"secret-name"`
 	// Tags for the universal secrets
@@ -155,6 +157,38 @@ func (o *UscCreate) HasJson() bool {
 // SetJson gets a reference to the given bool and assigns it to the Json field.
 func (o *UscCreate) SetJson(v bool) {
 	o.Json = &v
+}
+
+// GetNamespace returns the Namespace field value if set, zero value otherwise.
+func (o *UscCreate) GetNamespace() string {
+	if o == nil || o.Namespace == nil {
+		var ret string
+		return ret
+	}
+	return *o.Namespace
+}
+
+// GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscCreate) GetNamespaceOk() (*string, bool) {
+	if o == nil || o.Namespace == nil {
+		return nil, false
+	}
+	return o.Namespace, true
+}
+
+// HasNamespace returns a boolean if a field has been set.
+func (o *UscCreate) HasNamespace() bool {
+	if o != nil && o.Namespace != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNamespace gets a reference to the given string and assigns it to the Namespace field.
+func (o *UscCreate) SetNamespace(v string) {
+	o.Namespace = &v
 }
 
 // GetSecretName returns the SecretName field value
@@ -335,6 +369,9 @@ func (o UscCreate) MarshalJSON() ([]byte, error) {
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json
+	}
+	if o.Namespace != nil {
+		toSerialize["namespace"] = o.Namespace
 	}
 	if true {
 		toSerialize["secret-name"] = o.SecretName

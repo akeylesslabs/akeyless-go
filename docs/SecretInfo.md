@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **Status** | Pointer to **bool** |  | [optional] 
 **Tags** | Pointer to **map[string]string** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
+**Version** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -283,6 +284,31 @@ SetType sets Type field to given value.
 `func (o *SecretInfo) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### GetVersion
+
+`func (o *SecretInfo) GetVersion() int64`
+
+GetVersion returns the Version field if non-nil, zero value otherwise.
+
+### GetVersionOk
+
+`func (o *SecretInfo) GetVersionOk() (*int64, bool)`
+
+GetVersionOk returns a tuple with the Version field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVersion
+
+`func (o *SecretInfo) SetVersion(v int64)`
+
+SetVersion sets Version field to given value.
+
+### HasVersion
+
+`func (o *SecretInfo) HasVersion() bool`
+
+HasVersion returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

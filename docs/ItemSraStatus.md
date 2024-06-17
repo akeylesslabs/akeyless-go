@@ -4,7 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CountByHostInfo** | Pointer to **map[string]int64** |  | [optional] 
 **CountInfo** | Pointer to [**map[string]map[string]int64**](map.md) |  | [optional] 
+**HostsInUse** | Pointer to **[]string** |  | [optional] 
 **IsInUse** | Pointer to **bool** |  | [optional] 
 **LastUsedItem** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 
@@ -26,6 +28,31 @@ will change when the set of required properties is changed
 NewItemSraStatusWithDefaults instantiates a new ItemSraStatus object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCountByHostInfo
+
+`func (o *ItemSraStatus) GetCountByHostInfo() map[string]int64`
+
+GetCountByHostInfo returns the CountByHostInfo field if non-nil, zero value otherwise.
+
+### GetCountByHostInfoOk
+
+`func (o *ItemSraStatus) GetCountByHostInfoOk() (*map[string]int64, bool)`
+
+GetCountByHostInfoOk returns a tuple with the CountByHostInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCountByHostInfo
+
+`func (o *ItemSraStatus) SetCountByHostInfo(v map[string]int64)`
+
+SetCountByHostInfo sets CountByHostInfo field to given value.
+
+### HasCountByHostInfo
+
+`func (o *ItemSraStatus) HasCountByHostInfo() bool`
+
+HasCountByHostInfo returns a boolean if a field has been set.
 
 ### GetCountInfo
 
@@ -51,6 +78,31 @@ SetCountInfo sets CountInfo field to given value.
 `func (o *ItemSraStatus) HasCountInfo() bool`
 
 HasCountInfo returns a boolean if a field has been set.
+
+### GetHostsInUse
+
+`func (o *ItemSraStatus) GetHostsInUse() []string`
+
+GetHostsInUse returns the HostsInUse field if non-nil, zero value otherwise.
+
+### GetHostsInUseOk
+
+`func (o *ItemSraStatus) GetHostsInUseOk() (*[]string, bool)`
+
+GetHostsInUseOk returns a tuple with the HostsInUse field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHostsInUse
+
+`func (o *ItemSraStatus) SetHostsInUse(v []string)`
+
+SetHostsInUse sets HostsInUse field to given value.
+
+### HasHostsInUse
+
+`func (o *ItemSraStatus) HasHostsInUse() bool`
+
+HasHostsInUse returns a boolean if a field has been set.
 
 ### GetIsInUse
 

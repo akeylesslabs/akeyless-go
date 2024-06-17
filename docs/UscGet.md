@@ -5,10 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
-**SecretId** | **string** | The secret id (or name, for AWS, Azure or K8s targets) to get from the Universal Secrets Connector | 
+**Namespace** | Pointer to **string** | The namespace (relevant for Hashi vault target) | [optional] 
+**SecretId** | **string** | The secret id (or name, for AWS, Azure, K8s or Hashi vault targets) to get from the Universal Secrets Connector | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UscName** | **string** | Name of the Universal Secrets Connector item | 
+**VersionId** | Pointer to **string** | The version id (if not specified, will retrieve the last version) | [optional] 
 
 ## Methods
 
@@ -53,6 +55,31 @@ SetJson sets Json field to given value.
 `func (o *UscGet) HasJson() bool`
 
 HasJson returns a boolean if a field has been set.
+
+### GetNamespace
+
+`func (o *UscGet) GetNamespace() string`
+
+GetNamespace returns the Namespace field if non-nil, zero value otherwise.
+
+### GetNamespaceOk
+
+`func (o *UscGet) GetNamespaceOk() (*string, bool)`
+
+GetNamespaceOk returns a tuple with the Namespace field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNamespace
+
+`func (o *UscGet) SetNamespace(v string)`
+
+SetNamespace sets Namespace field to given value.
+
+### HasNamespace
+
+`func (o *UscGet) HasNamespace() bool`
+
+HasNamespace returns a boolean if a field has been set.
 
 ### GetSecretId
 
@@ -143,6 +170,31 @@ and a boolean to check if the value has been set.
 
 SetUscName sets UscName field to given value.
 
+
+### GetVersionId
+
+`func (o *UscGet) GetVersionId() string`
+
+GetVersionId returns the VersionId field if non-nil, zero value otherwise.
+
+### GetVersionIdOk
+
+`func (o *UscGet) GetVersionIdOk() (*string, bool)`
+
+GetVersionIdOk returns a tuple with the VersionId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVersionId
+
+`func (o *UscGet) SetVersionId(v string)`
+
+SetVersionId sets VersionId field to given value.
+
+### HasVersionId
+
+`func (o *UscGet) HasVersionId() bool`
+
+HasVersionId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

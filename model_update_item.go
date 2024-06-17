@@ -30,7 +30,7 @@ type UpdateItem struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
-	// Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret
+	// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret
 	HostProvider *string `json:"host-provider,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -112,8 +112,6 @@ func NewUpdateItem(name string, ) *UpdateItem {
 	this.Accessibility = &accessibility
 	var description string = "default_metadata"
 	this.Description = &description
-	var hostProvider string = "explicit"
-	this.HostProvider = &hostProvider
 	var json bool = false
 	this.Json = &json
 	this.Name = name
@@ -137,8 +135,6 @@ func NewUpdateItemWithDefaults() *UpdateItem {
 	this.Accessibility = &accessibility
 	var description string = "default_metadata"
 	this.Description = &description
-	var hostProvider string = "explicit"
-	this.HostProvider = &hostProvider
 	var json bool = false
 	this.Json = &json
 	var newMetadata string = "default_metadata"

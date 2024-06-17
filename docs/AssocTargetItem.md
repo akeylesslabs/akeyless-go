@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **PostProvisionCommand** | Pointer to **string** | A custom command to run on the remote target after successful provisioning (relevant only for certificate provisioning) | [optional] 
 **PrivateKeyPath** | Pointer to **string** | A path on the target to store the private key (relevant only for certificate provisioning) | [optional] 
 **ProjectId** | Pointer to **string** | Project id of the GCP KMS (required for gcp targets) | [optional] 
+**ProtectionLevel** | Pointer to **string** | Protection level of the key [software/hardware] (relevant for gcp targets) | [optional] [default to "software"]
 **Purpose** | Pointer to **string** | Purpose of the key in GCP KMS (required for gcp targets) | [optional] 
 **Regions** | Pointer to **[]string** | The list of regions to create a copy of the key in (relevant for aws targets) | [optional] 
 **SraAssociation** | Pointer to **bool** | Is the target to associate is for sra, relevant only for linked target association for ldap rotated secret | [optional] [default to false]
@@ -364,6 +365,31 @@ SetProjectId sets ProjectId field to given value.
 `func (o *AssocTargetItem) HasProjectId() bool`
 
 HasProjectId returns a boolean if a field has been set.
+
+### GetProtectionLevel
+
+`func (o *AssocTargetItem) GetProtectionLevel() string`
+
+GetProtectionLevel returns the ProtectionLevel field if non-nil, zero value otherwise.
+
+### GetProtectionLevelOk
+
+`func (o *AssocTargetItem) GetProtectionLevelOk() (*string, bool)`
+
+GetProtectionLevelOk returns a tuple with the ProtectionLevel field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProtectionLevel
+
+`func (o *AssocTargetItem) SetProtectionLevel(v string)`
+
+SetProtectionLevel sets ProtectionLevel field to given value.
+
+### HasProtectionLevel
+
+`func (o *AssocTargetItem) HasProtectionLevel() bool`
+
+HasProtectionLevel returns a boolean if a field has been set.
 
 ### GetPurpose
 

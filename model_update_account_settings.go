@@ -37,6 +37,8 @@ type UpdateAccountSettings struct {
 	DynamicSecretMaxTtl *int64 `json:"dynamic-secret-max-ttl,omitempty"`
 	// Set a maximum ttl for dynamic secrets [true/false]
 	DynamicSecretMaxTtlEnable *string `json:"dynamic-secret-max-ttl-enable,omitempty"`
+	// Enable sharing items [true/false]
+	EnableItemSharing *string `json:"enable-item-sharing,omitempty"`
 	// If set to true, new version will be created on update
 	ForceNewVersions *string `json:"force-new-versions,omitempty"`
 	// Characters that cannot be used for items/targets/roles/auths/event_forwarder names. Empty string will enforce nothing.
@@ -430,6 +432,38 @@ func (o *UpdateAccountSettings) HasDynamicSecretMaxTtlEnable() bool {
 // SetDynamicSecretMaxTtlEnable gets a reference to the given string and assigns it to the DynamicSecretMaxTtlEnable field.
 func (o *UpdateAccountSettings) SetDynamicSecretMaxTtlEnable(v string) {
 	o.DynamicSecretMaxTtlEnable = &v
+}
+
+// GetEnableItemSharing returns the EnableItemSharing field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetEnableItemSharing() string {
+	if o == nil || o.EnableItemSharing == nil {
+		var ret string
+		return ret
+	}
+	return *o.EnableItemSharing
+}
+
+// GetEnableItemSharingOk returns a tuple with the EnableItemSharing field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetEnableItemSharingOk() (*string, bool) {
+	if o == nil || o.EnableItemSharing == nil {
+		return nil, false
+	}
+	return o.EnableItemSharing, true
+}
+
+// HasEnableItemSharing returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasEnableItemSharing() bool {
+	if o != nil && o.EnableItemSharing != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableItemSharing gets a reference to the given string and assigns it to the EnableItemSharing field.
+func (o *UpdateAccountSettings) SetEnableItemSharing(v string) {
+	o.EnableItemSharing = &v
 }
 
 // GetForceNewVersions returns the ForceNewVersions field value if set, zero value otherwise.
@@ -1231,6 +1265,9 @@ func (o UpdateAccountSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.DynamicSecretMaxTtlEnable != nil {
 		toSerialize["dynamic-secret-max-ttl-enable"] = o.DynamicSecretMaxTtlEnable
+	}
+	if o.EnableItemSharing != nil {
+		toSerialize["enable-item-sharing"] = o.EnableItemSharing
 	}
 	if o.ForceNewVersions != nil {
 		toSerialize["force-new-versions"] = o.ForceNewVersions

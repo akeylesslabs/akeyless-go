@@ -4,11 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ProviderType** | Pointer to **string** |  | [optional] 
 **BindDn** | Pointer to **string** | Bind DN | [optional] 
 **BindDnPassword** | Pointer to **string** | Bind DN Password | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **ExternalUsername** | Pointer to **string** | Externally provided username [true/false] | [optional] [default to "false"]
 **GroupDn** | Pointer to **string** | Group DN which the temporary user should be added | [optional] 
+**HostProvider** | Pointer to **string** | Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **LdapCaCert** | Pointer to **string** | CA Certificate File Content | [optional] 
 **LdapUrl** | Pointer to **string** | LDAP Server URL | [optional] 
@@ -16,7 +18,12 @@ Name | Type | Description | Notes
 **NewName** | Pointer to **string** | Dynamic secret name | [optional] 
 **PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
+**SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
+**SecureAccessHost** | Pointer to **[]string** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
+**SecureAccessRdGatewayServer** | Pointer to **string** | RD Gateway server | [optional] 
+**SecureAccessRdpDomain** | Pointer to **string** | Required when the Dynamic Secret is used for a domain user | [optional] 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
+**Target** | Pointer to **[]string** | A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **TokenExpiration** | Pointer to **string** | Token expiration | [optional] 
@@ -43,6 +50,31 @@ will change when the set of required properties is changed
 NewGatewayUpdateProducerLdapWithDefaults instantiates a new GatewayUpdateProducerLdap object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetProviderType
+
+`func (o *GatewayUpdateProducerLdap) GetProviderType() string`
+
+GetProviderType returns the ProviderType field if non-nil, zero value otherwise.
+
+### GetProviderTypeOk
+
+`func (o *GatewayUpdateProducerLdap) GetProviderTypeOk() (*string, bool)`
+
+GetProviderTypeOk returns a tuple with the ProviderType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProviderType
+
+`func (o *GatewayUpdateProducerLdap) SetProviderType(v string)`
+
+SetProviderType sets ProviderType field to given value.
+
+### HasProviderType
+
+`func (o *GatewayUpdateProducerLdap) HasProviderType() bool`
+
+HasProviderType returns a boolean if a field has been set.
 
 ### GetBindDn
 
@@ -168,6 +200,31 @@ SetGroupDn sets GroupDn field to given value.
 `func (o *GatewayUpdateProducerLdap) HasGroupDn() bool`
 
 HasGroupDn returns a boolean if a field has been set.
+
+### GetHostProvider
+
+`func (o *GatewayUpdateProducerLdap) GetHostProvider() string`
+
+GetHostProvider returns the HostProvider field if non-nil, zero value otherwise.
+
+### GetHostProviderOk
+
+`func (o *GatewayUpdateProducerLdap) GetHostProviderOk() (*string, bool)`
+
+GetHostProviderOk returns a tuple with the HostProvider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHostProvider
+
+`func (o *GatewayUpdateProducerLdap) SetHostProvider(v string)`
+
+SetHostProvider sets HostProvider field to given value.
+
+### HasHostProvider
+
+`func (o *GatewayUpdateProducerLdap) HasHostProvider() bool`
+
+HasHostProvider returns a boolean if a field has been set.
 
 ### GetJson
 
@@ -339,6 +396,106 @@ SetProducerEncryptionKeyName sets ProducerEncryptionKeyName field to given value
 
 HasProducerEncryptionKeyName returns a boolean if a field has been set.
 
+### GetSecureAccessEnable
+
+`func (o *GatewayUpdateProducerLdap) GetSecureAccessEnable() string`
+
+GetSecureAccessEnable returns the SecureAccessEnable field if non-nil, zero value otherwise.
+
+### GetSecureAccessEnableOk
+
+`func (o *GatewayUpdateProducerLdap) GetSecureAccessEnableOk() (*string, bool)`
+
+GetSecureAccessEnableOk returns a tuple with the SecureAccessEnable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessEnable
+
+`func (o *GatewayUpdateProducerLdap) SetSecureAccessEnable(v string)`
+
+SetSecureAccessEnable sets SecureAccessEnable field to given value.
+
+### HasSecureAccessEnable
+
+`func (o *GatewayUpdateProducerLdap) HasSecureAccessEnable() bool`
+
+HasSecureAccessEnable returns a boolean if a field has been set.
+
+### GetSecureAccessHost
+
+`func (o *GatewayUpdateProducerLdap) GetSecureAccessHost() []string`
+
+GetSecureAccessHost returns the SecureAccessHost field if non-nil, zero value otherwise.
+
+### GetSecureAccessHostOk
+
+`func (o *GatewayUpdateProducerLdap) GetSecureAccessHostOk() (*[]string, bool)`
+
+GetSecureAccessHostOk returns a tuple with the SecureAccessHost field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessHost
+
+`func (o *GatewayUpdateProducerLdap) SetSecureAccessHost(v []string)`
+
+SetSecureAccessHost sets SecureAccessHost field to given value.
+
+### HasSecureAccessHost
+
+`func (o *GatewayUpdateProducerLdap) HasSecureAccessHost() bool`
+
+HasSecureAccessHost returns a boolean if a field has been set.
+
+### GetSecureAccessRdGatewayServer
+
+`func (o *GatewayUpdateProducerLdap) GetSecureAccessRdGatewayServer() string`
+
+GetSecureAccessRdGatewayServer returns the SecureAccessRdGatewayServer field if non-nil, zero value otherwise.
+
+### GetSecureAccessRdGatewayServerOk
+
+`func (o *GatewayUpdateProducerLdap) GetSecureAccessRdGatewayServerOk() (*string, bool)`
+
+GetSecureAccessRdGatewayServerOk returns a tuple with the SecureAccessRdGatewayServer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessRdGatewayServer
+
+`func (o *GatewayUpdateProducerLdap) SetSecureAccessRdGatewayServer(v string)`
+
+SetSecureAccessRdGatewayServer sets SecureAccessRdGatewayServer field to given value.
+
+### HasSecureAccessRdGatewayServer
+
+`func (o *GatewayUpdateProducerLdap) HasSecureAccessRdGatewayServer() bool`
+
+HasSecureAccessRdGatewayServer returns a boolean if a field has been set.
+
+### GetSecureAccessRdpDomain
+
+`func (o *GatewayUpdateProducerLdap) GetSecureAccessRdpDomain() string`
+
+GetSecureAccessRdpDomain returns the SecureAccessRdpDomain field if non-nil, zero value otherwise.
+
+### GetSecureAccessRdpDomainOk
+
+`func (o *GatewayUpdateProducerLdap) GetSecureAccessRdpDomainOk() (*string, bool)`
+
+GetSecureAccessRdpDomainOk returns a tuple with the SecureAccessRdpDomain field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessRdpDomain
+
+`func (o *GatewayUpdateProducerLdap) SetSecureAccessRdpDomain(v string)`
+
+SetSecureAccessRdpDomain sets SecureAccessRdpDomain field to given value.
+
+### HasSecureAccessRdpDomain
+
+`func (o *GatewayUpdateProducerLdap) HasSecureAccessRdpDomain() bool`
+
+HasSecureAccessRdpDomain returns a boolean if a field has been set.
+
 ### GetTags
 
 `func (o *GatewayUpdateProducerLdap) GetTags() []string`
@@ -363,6 +520,31 @@ SetTags sets Tags field to given value.
 `func (o *GatewayUpdateProducerLdap) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
+
+### GetTarget
+
+`func (o *GatewayUpdateProducerLdap) GetTarget() []string`
+
+GetTarget returns the Target field if non-nil, zero value otherwise.
+
+### GetTargetOk
+
+`func (o *GatewayUpdateProducerLdap) GetTargetOk() (*[]string, bool)`
+
+GetTargetOk returns a tuple with the Target field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTarget
+
+`func (o *GatewayUpdateProducerLdap) SetTarget(v []string)`
+
+SetTarget sets Target field to given value.
+
+### HasTarget
+
+`func (o *GatewayUpdateProducerLdap) HasTarget() bool`
+
+HasTarget returns a boolean if a field has been set.
 
 ### GetTargetName
 

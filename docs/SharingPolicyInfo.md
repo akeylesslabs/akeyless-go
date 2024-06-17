@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DefaultShareLinkTtl** | Pointer to **int64** |  | [optional] 
+**Enable** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -49,6 +50,31 @@ SetDefaultShareLinkTtl sets DefaultShareLinkTtl field to given value.
 `func (o *SharingPolicyInfo) HasDefaultShareLinkTtl() bool`
 
 HasDefaultShareLinkTtl returns a boolean if a field has been set.
+
+### GetEnable
+
+`func (o *SharingPolicyInfo) GetEnable() bool`
+
+GetEnable returns the Enable field if non-nil, zero value otherwise.
+
+### GetEnableOk
+
+`func (o *SharingPolicyInfo) GetEnableOk() (*bool, bool)`
+
+GetEnableOk returns a tuple with the Enable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnable
+
+`func (o *SharingPolicyInfo) SetEnable(v bool)`
+
+SetEnable sets Enable field to given value.
+
+### HasEnable
+
+`func (o *SharingPolicyInfo) HasEnable() bool`
+
+HasEnable returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

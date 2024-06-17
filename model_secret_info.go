@@ -28,6 +28,7 @@ type SecretInfo struct {
 	Status *bool `json:"status,omitempty"`
 	Tags *map[string]string `json:"tags,omitempty"`
 	Type *string `json:"type,omitempty"`
+	Version *int64 `json:"version,omitempty"`
 }
 
 // NewSecretInfo instantiates a new SecretInfo object
@@ -367,6 +368,38 @@ func (o *SecretInfo) SetType(v string) {
 	o.Type = &v
 }
 
+// GetVersion returns the Version field value if set, zero value otherwise.
+func (o *SecretInfo) GetVersion() int64 {
+	if o == nil || o.Version == nil {
+		var ret int64
+		return ret
+	}
+	return *o.Version
+}
+
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SecretInfo) GetVersionOk() (*int64, bool) {
+	if o == nil || o.Version == nil {
+		return nil, false
+	}
+	return o.Version, true
+}
+
+// HasVersion returns a boolean if a field has been set.
+func (o *SecretInfo) HasVersion() bool {
+	if o != nil && o.Version != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given int64 and assigns it to the Version field.
+func (o *SecretInfo) SetVersion(v int64) {
+	o.Version = &v
+}
+
 func (o SecretInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Created != nil {
@@ -398,6 +431,9 @@ func (o SecretInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.Type != nil {
 		toSerialize["type"] = o.Type
+	}
+	if o.Version != nil {
+		toSerialize["version"] = o.Version
 	}
 	return json.Marshal(toSerialize)
 }

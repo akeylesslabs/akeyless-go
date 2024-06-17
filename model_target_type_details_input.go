@@ -31,6 +31,7 @@ type TargetTypeDetailsInput struct {
 	GlobalsignAtlasTargetDetails *GlobalSignAtlasTargetDetails `json:"globalsign_atlas_target_details,omitempty"`
 	GlobalsignTargetDetails *GlobalSignGCCTargetDetails `json:"globalsign_target_details,omitempty"`
 	GodaddyTargetDetails *GodaddyTargetDetails `json:"godaddy_target_details,omitempty"`
+	HashiVaultTargetDetails *HashiVaultTargetDetails `json:"hashi_vault_target_details,omitempty"`
 	LdapTargetDetails *LdapTargetDetails `json:"ldap_target_details,omitempty"`
 	LinkedTargetDetails *LinkedTargetDetails `json:"linked_target_details,omitempty"`
 	MongoDbTargetDetails *MongoDBTargetDetails `json:"mongo_db_target_details,omitempty"`
@@ -510,6 +511,38 @@ func (o *TargetTypeDetailsInput) SetGodaddyTargetDetails(v GodaddyTargetDetails)
 	o.GodaddyTargetDetails = &v
 }
 
+// GetHashiVaultTargetDetails returns the HashiVaultTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetHashiVaultTargetDetails() HashiVaultTargetDetails {
+	if o == nil || o.HashiVaultTargetDetails == nil {
+		var ret HashiVaultTargetDetails
+		return ret
+	}
+	return *o.HashiVaultTargetDetails
+}
+
+// GetHashiVaultTargetDetailsOk returns a tuple with the HashiVaultTargetDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetHashiVaultTargetDetailsOk() (*HashiVaultTargetDetails, bool) {
+	if o == nil || o.HashiVaultTargetDetails == nil {
+		return nil, false
+	}
+	return o.HashiVaultTargetDetails, true
+}
+
+// HasHashiVaultTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasHashiVaultTargetDetails() bool {
+	if o != nil && o.HashiVaultTargetDetails != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHashiVaultTargetDetails gets a reference to the given HashiVaultTargetDetails and assigns it to the HashiVaultTargetDetails field.
+func (o *TargetTypeDetailsInput) SetHashiVaultTargetDetails(v HashiVaultTargetDetails) {
+	o.HashiVaultTargetDetails = &v
+}
+
 // GetLdapTargetDetails returns the LdapTargetDetails field value if set, zero value otherwise.
 func (o *TargetTypeDetailsInput) GetLdapTargetDetails() LdapTargetDetails {
 	if o == nil || o.LdapTargetDetails == nil {
@@ -937,6 +970,9 @@ func (o TargetTypeDetailsInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.GodaddyTargetDetails != nil {
 		toSerialize["godaddy_target_details"] = o.GodaddyTargetDetails
+	}
+	if o.HashiVaultTargetDetails != nil {
+		toSerialize["hashi_vault_target_details"] = o.HashiVaultTargetDetails
 	}
 	if o.LdapTargetDetails != nil {
 		toSerialize["ldap_target_details"] = o.LdapTargetDetails

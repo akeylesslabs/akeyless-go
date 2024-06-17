@@ -18,7 +18,9 @@ import (
 
 // ItemSraStatus struct for ItemSraStatus
 type ItemSraStatus struct {
+	CountByHostInfo *map[string]int64 `json:"count_by_host_info,omitempty"`
 	CountInfo *map[string]map[string]int64 `json:"count_info,omitempty"`
+	HostsInUse *[]string `json:"hosts_in_use,omitempty"`
 	IsInUse *bool `json:"is_in_use,omitempty"`
 	LastUsedItem *time.Time `json:"last_used_item,omitempty"`
 }
@@ -38,6 +40,38 @@ func NewItemSraStatus() *ItemSraStatus {
 func NewItemSraStatusWithDefaults() *ItemSraStatus {
 	this := ItemSraStatus{}
 	return &this
+}
+
+// GetCountByHostInfo returns the CountByHostInfo field value if set, zero value otherwise.
+func (o *ItemSraStatus) GetCountByHostInfo() map[string]int64 {
+	if o == nil || o.CountByHostInfo == nil {
+		var ret map[string]int64
+		return ret
+	}
+	return *o.CountByHostInfo
+}
+
+// GetCountByHostInfoOk returns a tuple with the CountByHostInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ItemSraStatus) GetCountByHostInfoOk() (*map[string]int64, bool) {
+	if o == nil || o.CountByHostInfo == nil {
+		return nil, false
+	}
+	return o.CountByHostInfo, true
+}
+
+// HasCountByHostInfo returns a boolean if a field has been set.
+func (o *ItemSraStatus) HasCountByHostInfo() bool {
+	if o != nil && o.CountByHostInfo != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCountByHostInfo gets a reference to the given map[string]int64 and assigns it to the CountByHostInfo field.
+func (o *ItemSraStatus) SetCountByHostInfo(v map[string]int64) {
+	o.CountByHostInfo = &v
 }
 
 // GetCountInfo returns the CountInfo field value if set, zero value otherwise.
@@ -70,6 +104,38 @@ func (o *ItemSraStatus) HasCountInfo() bool {
 // SetCountInfo gets a reference to the given map[string]map[string]int64 and assigns it to the CountInfo field.
 func (o *ItemSraStatus) SetCountInfo(v map[string]map[string]int64) {
 	o.CountInfo = &v
+}
+
+// GetHostsInUse returns the HostsInUse field value if set, zero value otherwise.
+func (o *ItemSraStatus) GetHostsInUse() []string {
+	if o == nil || o.HostsInUse == nil {
+		var ret []string
+		return ret
+	}
+	return *o.HostsInUse
+}
+
+// GetHostsInUseOk returns a tuple with the HostsInUse field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ItemSraStatus) GetHostsInUseOk() (*[]string, bool) {
+	if o == nil || o.HostsInUse == nil {
+		return nil, false
+	}
+	return o.HostsInUse, true
+}
+
+// HasHostsInUse returns a boolean if a field has been set.
+func (o *ItemSraStatus) HasHostsInUse() bool {
+	if o != nil && o.HostsInUse != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHostsInUse gets a reference to the given []string and assigns it to the HostsInUse field.
+func (o *ItemSraStatus) SetHostsInUse(v []string) {
+	o.HostsInUse = &v
 }
 
 // GetIsInUse returns the IsInUse field value if set, zero value otherwise.
@@ -138,8 +204,14 @@ func (o *ItemSraStatus) SetLastUsedItem(v time.Time) {
 
 func (o ItemSraStatus) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.CountByHostInfo != nil {
+		toSerialize["count_by_host_info"] = o.CountByHostInfo
+	}
 	if o.CountInfo != nil {
 		toSerialize["count_info"] = o.CountInfo
+	}
+	if o.HostsInUse != nil {
+		toSerialize["hosts_in_use"] = o.HostsInUse
 	}
 	if o.IsInUse != nil {
 		toSerialize["is_in_use"] = o.IsInUse

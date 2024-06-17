@@ -7,7 +7,8 @@ Name | Type | Description | Notes
 **BinaryValue** | Pointer to **bool** | Use this option if the universal secrets value is a base64 encoded binary | [optional] 
 **Description** | Pointer to **string** | Description of the universal secrets | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
-**SecretId** | **string** | The universal secrets id (or name, for AWS, Azure or K8s targets) to update | 
+**Namespace** | Pointer to **string** | The namespace (relevant for Hashi vault target) | [optional] 
+**SecretId** | **string** | The universal secrets id (or name, for AWS, Azure, K8s or Hashi vault targets) to update | 
 **Tags** | Pointer to **map[string]string** | Tags for the universal secrets | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -107,6 +108,31 @@ SetJson sets Json field to given value.
 `func (o *UscUpdate) HasJson() bool`
 
 HasJson returns a boolean if a field has been set.
+
+### GetNamespace
+
+`func (o *UscUpdate) GetNamespace() string`
+
+GetNamespace returns the Namespace field if non-nil, zero value otherwise.
+
+### GetNamespaceOk
+
+`func (o *UscUpdate) GetNamespaceOk() (*string, bool)`
+
+GetNamespaceOk returns a tuple with the Namespace field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNamespace
+
+`func (o *UscUpdate) SetNamespace(v string)`
+
+SetNamespace sets Namespace field to given value.
+
+### HasNamespace
+
+`func (o *UscUpdate) HasNamespace() bool`
+
+HasNamespace returns a boolean if a field has been set.
 
 ### GetSecretId
 

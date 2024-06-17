@@ -5,7 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
-**SecretId** | **string** | The universal secrets id (or name, for AWS, Azure or K8s targets) to delete | 
+**Namespace** | Pointer to **string** | The namespace (relevant for Hashi vault target) | [optional] 
+**SecretId** | **string** | The universal secrets id (or name, for AWS, Azure, K8s or Hashi vault targets) to delete | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UscName** | **string** | Name of the Universal Secrets Connector item | 
@@ -53,6 +54,31 @@ SetJson sets Json field to given value.
 `func (o *UscDelete) HasJson() bool`
 
 HasJson returns a boolean if a field has been set.
+
+### GetNamespace
+
+`func (o *UscDelete) GetNamespace() string`
+
+GetNamespace returns the Namespace field if non-nil, zero value otherwise.
+
+### GetNamespaceOk
+
+`func (o *UscDelete) GetNamespaceOk() (*string, bool)`
+
+GetNamespaceOk returns a tuple with the Namespace field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNamespace
+
+`func (o *UscDelete) SetNamespace(v string)`
+
+SetNamespace sets Namespace field to given value.
+
+### HasNamespace
+
+`func (o *UscDelete) HasNamespace() bool`
+
+HasNamespace returns a boolean if a field has been set.
 
 ### GetSecretId
 

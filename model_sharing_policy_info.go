@@ -18,6 +18,7 @@ import (
 // SharingPolicyInfo struct for SharingPolicyInfo
 type SharingPolicyInfo struct {
 	DefaultShareLinkTtl *int64 `json:"default_share_link_ttl,omitempty"`
+	Enable *bool `json:"enable,omitempty"`
 }
 
 // NewSharingPolicyInfo instantiates a new SharingPolicyInfo object
@@ -69,10 +70,45 @@ func (o *SharingPolicyInfo) SetDefaultShareLinkTtl(v int64) {
 	o.DefaultShareLinkTtl = &v
 }
 
+// GetEnable returns the Enable field value if set, zero value otherwise.
+func (o *SharingPolicyInfo) GetEnable() bool {
+	if o == nil || o.Enable == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Enable
+}
+
+// GetEnableOk returns a tuple with the Enable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SharingPolicyInfo) GetEnableOk() (*bool, bool) {
+	if o == nil || o.Enable == nil {
+		return nil, false
+	}
+	return o.Enable, true
+}
+
+// HasEnable returns a boolean if a field has been set.
+func (o *SharingPolicyInfo) HasEnable() bool {
+	if o != nil && o.Enable != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEnable gets a reference to the given bool and assigns it to the Enable field.
+func (o *SharingPolicyInfo) SetEnable(v bool) {
+	o.Enable = &v
+}
+
 func (o SharingPolicyInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DefaultShareLinkTtl != nil {
 		toSerialize["default_share_link_ttl"] = o.DefaultShareLinkTtl
+	}
+	if o.Enable != nil {
+		toSerialize["enable"] = o.Enable
 	}
 	return json.Marshal(toSerialize)
 }

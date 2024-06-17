@@ -18,6 +18,7 @@ import (
 // GetPKICertificateOutput struct for GetPKICertificateOutput
 type GetPKICertificateOutput struct {
 	CertDisplayId *string `json:"cert_display_id,omitempty"`
+	CertItemId *int64 `json:"cert_item_id,omitempty"`
 	Data *string `json:"data,omitempty"`
 	ParentCert *string `json:"parent_cert,omitempty"`
 	Path *string `json:"path,omitempty"`
@@ -71,6 +72,38 @@ func (o *GetPKICertificateOutput) HasCertDisplayId() bool {
 // SetCertDisplayId gets a reference to the given string and assigns it to the CertDisplayId field.
 func (o *GetPKICertificateOutput) SetCertDisplayId(v string) {
 	o.CertDisplayId = &v
+}
+
+// GetCertItemId returns the CertItemId field value if set, zero value otherwise.
+func (o *GetPKICertificateOutput) GetCertItemId() int64 {
+	if o == nil || o.CertItemId == nil {
+		var ret int64
+		return ret
+	}
+	return *o.CertItemId
+}
+
+// GetCertItemIdOk returns a tuple with the CertItemId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetPKICertificateOutput) GetCertItemIdOk() (*int64, bool) {
+	if o == nil || o.CertItemId == nil {
+		return nil, false
+	}
+	return o.CertItemId, true
+}
+
+// HasCertItemId returns a boolean if a field has been set.
+func (o *GetPKICertificateOutput) HasCertItemId() bool {
+	if o != nil && o.CertItemId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCertItemId gets a reference to the given int64 and assigns it to the CertItemId field.
+func (o *GetPKICertificateOutput) SetCertItemId(v int64) {
+	o.CertItemId = &v
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
@@ -205,6 +238,9 @@ func (o GetPKICertificateOutput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.CertDisplayId != nil {
 		toSerialize["cert_display_id"] = o.CertDisplayId
+	}
+	if o.CertItemId != nil {
+		toSerialize["cert_item_id"] = o.CertItemId
 	}
 	if o.Data != nil {
 		toSerialize["data"] = o.Data

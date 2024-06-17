@@ -26,7 +26,7 @@ type CreateSSHCertIssuer struct {
 	Description *string `json:"description,omitempty"`
 	// Signed certificates with extensions, e.g permit-port-forwarding=\\\"\\\"
 	Extensions *map[string]string `json:"extensions,omitempty"`
-	// Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret
+	// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret
 	HostProvider *string `json:"host-provider,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -52,7 +52,7 @@ type CreateSSHCertIssuer struct {
 	SignerKeyName string `json:"signer-key-name"`
 	// List of the tags attached to this key
 	Tag *[]string `json:"tag,omitempty"`
-	// A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer and ldap rotated secret, To specify multiple targets use argument multiple times
+	// A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times
 	Target *[]string `json:"target,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
@@ -69,8 +69,6 @@ type CreateSSHCertIssuer struct {
 func NewCreateSSHCertIssuer(allowedUsers string, name string, signerKeyName string, ttl int64, ) *CreateSSHCertIssuer {
 	this := CreateSSHCertIssuer{}
 	this.AllowedUsers = allowedUsers
-	var hostProvider string = "explicit"
-	this.HostProvider = &hostProvider
 	var json bool = false
 	this.Json = &json
 	this.Name = name
@@ -84,8 +82,6 @@ func NewCreateSSHCertIssuer(allowedUsers string, name string, signerKeyName stri
 // but it doesn't guarantee that properties required by API are set
 func NewCreateSSHCertIssuerWithDefaults() *CreateSSHCertIssuer {
 	this := CreateSSHCertIssuer{}
-	var hostProvider string = "explicit"
-	this.HostProvider = &hostProvider
 	var json bool = false
 	this.Json = &json
 	return &this

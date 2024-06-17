@@ -34,6 +34,8 @@ type DecryptFile struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// key version (relevant only for classic key)
+	Version *int32 `json:"version,omitempty"`
 }
 
 // NewDecryptFile instantiates a new DecryptFile object
@@ -331,6 +333,38 @@ func (o *DecryptFile) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetVersion returns the Version field value if set, zero value otherwise.
+func (o *DecryptFile) GetVersion() int32 {
+	if o == nil || o.Version == nil {
+		var ret int32
+		return ret
+	}
+	return *o.Version
+}
+
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DecryptFile) GetVersionOk() (*int32, bool) {
+	if o == nil || o.Version == nil {
+		return nil, false
+	}
+	return o.Version, true
+}
+
+// HasVersion returns a boolean if a field has been set.
+func (o *DecryptFile) HasVersion() bool {
+	if o != nil && o.Version != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given int32 and assigns it to the Version field.
+func (o *DecryptFile) SetVersion(v int32) {
+	o.Version = &v
+}
+
 func (o DecryptFile) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.CyphertextHeader != nil {
@@ -359,6 +393,9 @@ func (o DecryptFile) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.Version != nil {
+		toSerialize["version"] = o.Version
 	}
 	return json.Marshal(toSerialize)
 }

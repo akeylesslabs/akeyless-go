@@ -23,7 +23,9 @@ type UscUpdate struct {
 	Description *string `json:"description,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// The universal secrets id (or name, for AWS, Azure or K8s targets) to update
+	// The namespace (relevant for Hashi vault target)
+	Namespace *string `json:"namespace,omitempty"`
+	// The universal secrets id (or name, for AWS, Azure, K8s or Hashi vault targets) to update
 	SecretId string `json:"secret-id"`
 	// Tags for the universal secrets
 	Tags *map[string]string `json:"tags,omitempty"`
@@ -155,6 +157,38 @@ func (o *UscUpdate) HasJson() bool {
 // SetJson gets a reference to the given bool and assigns it to the Json field.
 func (o *UscUpdate) SetJson(v bool) {
 	o.Json = &v
+}
+
+// GetNamespace returns the Namespace field value if set, zero value otherwise.
+func (o *UscUpdate) GetNamespace() string {
+	if o == nil || o.Namespace == nil {
+		var ret string
+		return ret
+	}
+	return *o.Namespace
+}
+
+// GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscUpdate) GetNamespaceOk() (*string, bool) {
+	if o == nil || o.Namespace == nil {
+		return nil, false
+	}
+	return o.Namespace, true
+}
+
+// HasNamespace returns a boolean if a field has been set.
+func (o *UscUpdate) HasNamespace() bool {
+	if o != nil && o.Namespace != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNamespace gets a reference to the given string and assigns it to the Namespace field.
+func (o *UscUpdate) SetNamespace(v string) {
+	o.Namespace = &v
 }
 
 // GetSecretId returns the SecretId field value
@@ -335,6 +369,9 @@ func (o UscUpdate) MarshalJSON() ([]byte, error) {
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json
+	}
+	if o.Namespace != nil {
+		toSerialize["namespace"] = o.Namespace
 	}
 	if true {
 		toSerialize["secret-id"] = o.SecretId

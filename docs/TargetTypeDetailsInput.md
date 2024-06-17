@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **GlobalsignAtlasTargetDetails** | Pointer to [**GlobalSignAtlasTargetDetails**](GlobalSignAtlasTargetDetails.md) |  | [optional] 
 **GlobalsignTargetDetails** | Pointer to [**GlobalSignGCCTargetDetails**](GlobalSignGCCTargetDetails.md) |  | [optional] 
 **GodaddyTargetDetails** | Pointer to [**GodaddyTargetDetails**](GodaddyTargetDetails.md) |  | [optional] 
+**HashiVaultTargetDetails** | Pointer to [**HashiVaultTargetDetails**](HashiVaultTargetDetails.md) |  | [optional] 
 **LdapTargetDetails** | Pointer to [**LdapTargetDetails**](LdapTargetDetails.md) |  | [optional] 
 **LinkedTargetDetails** | Pointer to [**LinkedTargetDetails**](LinkedTargetDetails.md) |  | [optional] 
 **MongoDbTargetDetails** | Pointer to [**MongoDBTargetDetails**](MongoDBTargetDetails.md) |  | [optional] 
@@ -399,6 +400,31 @@ SetGodaddyTargetDetails sets GodaddyTargetDetails field to given value.
 `func (o *TargetTypeDetailsInput) HasGodaddyTargetDetails() bool`
 
 HasGodaddyTargetDetails returns a boolean if a field has been set.
+
+### GetHashiVaultTargetDetails
+
+`func (o *TargetTypeDetailsInput) GetHashiVaultTargetDetails() HashiVaultTargetDetails`
+
+GetHashiVaultTargetDetails returns the HashiVaultTargetDetails field if non-nil, zero value otherwise.
+
+### GetHashiVaultTargetDetailsOk
+
+`func (o *TargetTypeDetailsInput) GetHashiVaultTargetDetailsOk() (*HashiVaultTargetDetails, bool)`
+
+GetHashiVaultTargetDetailsOk returns a tuple with the HashiVaultTargetDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHashiVaultTargetDetails
+
+`func (o *TargetTypeDetailsInput) SetHashiVaultTargetDetails(v HashiVaultTargetDetails)`
+
+SetHashiVaultTargetDetails sets HashiVaultTargetDetails field to given value.
+
+### HasHashiVaultTargetDetails
+
+`func (o *TargetTypeDetailsInput) HasHashiVaultTargetDetails() bool`
+
+HasHashiVaultTargetDetails returns a boolean if a field has been set.
 
 ### GetLdapTargetDetails
 

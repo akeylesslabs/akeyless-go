@@ -28,7 +28,7 @@ type RotatedSecretUpdateLdap struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
-	// Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret
+	// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret
 	HostProvider *string `json:"host-provider,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -70,7 +70,7 @@ type RotatedSecretUpdateLdap struct {
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
 	// Web-Proxy via Akeyless Web Access Bastion
 	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
-	// A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer and ldap rotated secret, To specify multiple targets use argument multiple times
+	// A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times
 	Target *[]string `json:"target,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
@@ -92,8 +92,6 @@ func NewRotatedSecretUpdateLdap(name string, ) *RotatedSecretUpdateLdap {
 	this.AuthenticationCredentials = &authenticationCredentials
 	var description string = "default_metadata"
 	this.Description = &description
-	var hostProvider string = "explicit"
-	this.HostProvider = &hostProvider
 	var json bool = false
 	this.Json = &json
 	this.Name = name
@@ -119,8 +117,6 @@ func NewRotatedSecretUpdateLdapWithDefaults() *RotatedSecretUpdateLdap {
 	this.AuthenticationCredentials = &authenticationCredentials
 	var description string = "default_metadata"
 	this.Description = &description
-	var hostProvider string = "explicit"
-	this.HostProvider = &hostProvider
 	var json bool = false
 	this.Json = &json
 	var rotateAfterDisconnect string = "false"
