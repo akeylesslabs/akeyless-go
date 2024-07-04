@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// CreateGithubTarget struct for CreateGithubTarget
+// CreateGithubTarget createGithubTarget is a command that creates a new target. [Deprecated: Use target-create-github command]
 type CreateGithubTarget struct {
 	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`

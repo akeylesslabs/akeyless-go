@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Address** | Pointer to **string** | Address | [optional] 
+**BoundIps** | Pointer to **[]string** | A default list of comma-separated CIDR block that are allowed to authenticate. | [optional] 
 **City** | Pointer to **string** | City | [optional] 
 **CompanyName** | Pointer to **string** | Company name | [optional] 
 **Country** | Pointer to **string** | Country | [optional] 
@@ -16,6 +17,7 @@ Name | Type | Description | Notes
 **DynamicSecretMaxTtlEnable** | Pointer to **string** | Set a maximum ttl for dynamic secrets [true/false] | [optional] 
 **EnableItemSharing** | Pointer to **string** | Enable sharing items [true/false] | [optional] 
 **ForceNewVersions** | Pointer to **string** | If set to true, new version will be created on update | [optional] 
+**GwBoundIps** | Pointer to **[]string** | A default list of comma-separated CIDR block that acts as a trusted Gateway entity. | [optional] 
 **InvalidCharacters** | Pointer to **string** | Characters that cannot be used for items/targets/roles/auths/event_forwarder names. Empty string will enforce nothing. | [optional] [default to "notReceivedInvalidCharacter"]
 **ItemType** | Pointer to **string** | VersionSettingsObjectType defines object types for account version settings | [optional] 
 **ItemsDeletionProtection** | Pointer to **string** | Set or unset the default behaviour of items deletion protection [true/false] | [optional] 
@@ -23,7 +25,9 @@ Name | Type | Description | Notes
 **JwtTtlDefault** | Pointer to **int64** | Default ttl | [optional] 
 **JwtTtlMax** | Pointer to **int64** | Maximum ttl | [optional] 
 **JwtTtlMin** | Pointer to **int64** | Minimum ttl | [optional] 
+**LockBoundIps** | Pointer to **string** | Lock bound-ips setting globally in the account. | [optional] 
 **LockDefaultKey** | Pointer to **string** | Lock the account&#39;s default protection key, if set - users will not be able to use a different protection key, relevant only if default-key-name is configured [true/false] | [optional] 
+**LockGwBoundIps** | Pointer to **string** | Lock gw-bound-ips setting in the account. | [optional] 
 **MaxRotationInterval** | Pointer to **int32** | Set the maximum rotation interval for rotated secrets auto rotation settings | [optional] 
 **MaxRotationIntervalEnable** | Pointer to **string** | Set a maximum rotation interval for rotated secrets auto rotation settings [true/false] | [optional] 
 **MaxVersions** | Pointer to **string** | Max versions | [optional] 
@@ -83,6 +87,31 @@ SetAddress sets Address field to given value.
 `func (o *UpdateAccountSettings) HasAddress() bool`
 
 HasAddress returns a boolean if a field has been set.
+
+### GetBoundIps
+
+`func (o *UpdateAccountSettings) GetBoundIps() []string`
+
+GetBoundIps returns the BoundIps field if non-nil, zero value otherwise.
+
+### GetBoundIpsOk
+
+`func (o *UpdateAccountSettings) GetBoundIpsOk() (*[]string, bool)`
+
+GetBoundIpsOk returns a tuple with the BoundIps field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBoundIps
+
+`func (o *UpdateAccountSettings) SetBoundIps(v []string)`
+
+SetBoundIps sets BoundIps field to given value.
+
+### HasBoundIps
+
+`func (o *UpdateAccountSettings) HasBoundIps() bool`
+
+HasBoundIps returns a boolean if a field has been set.
 
 ### GetCity
 
@@ -359,6 +388,31 @@ SetForceNewVersions sets ForceNewVersions field to given value.
 
 HasForceNewVersions returns a boolean if a field has been set.
 
+### GetGwBoundIps
+
+`func (o *UpdateAccountSettings) GetGwBoundIps() []string`
+
+GetGwBoundIps returns the GwBoundIps field if non-nil, zero value otherwise.
+
+### GetGwBoundIpsOk
+
+`func (o *UpdateAccountSettings) GetGwBoundIpsOk() (*[]string, bool)`
+
+GetGwBoundIpsOk returns a tuple with the GwBoundIps field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGwBoundIps
+
+`func (o *UpdateAccountSettings) SetGwBoundIps(v []string)`
+
+SetGwBoundIps sets GwBoundIps field to given value.
+
+### HasGwBoundIps
+
+`func (o *UpdateAccountSettings) HasGwBoundIps() bool`
+
+HasGwBoundIps returns a boolean if a field has been set.
+
 ### GetInvalidCharacters
 
 `func (o *UpdateAccountSettings) GetInvalidCharacters() string`
@@ -534,6 +588,31 @@ SetJwtTtlMin sets JwtTtlMin field to given value.
 
 HasJwtTtlMin returns a boolean if a field has been set.
 
+### GetLockBoundIps
+
+`func (o *UpdateAccountSettings) GetLockBoundIps() string`
+
+GetLockBoundIps returns the LockBoundIps field if non-nil, zero value otherwise.
+
+### GetLockBoundIpsOk
+
+`func (o *UpdateAccountSettings) GetLockBoundIpsOk() (*string, bool)`
+
+GetLockBoundIpsOk returns a tuple with the LockBoundIps field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLockBoundIps
+
+`func (o *UpdateAccountSettings) SetLockBoundIps(v string)`
+
+SetLockBoundIps sets LockBoundIps field to given value.
+
+### HasLockBoundIps
+
+`func (o *UpdateAccountSettings) HasLockBoundIps() bool`
+
+HasLockBoundIps returns a boolean if a field has been set.
+
 ### GetLockDefaultKey
 
 `func (o *UpdateAccountSettings) GetLockDefaultKey() string`
@@ -558,6 +637,31 @@ SetLockDefaultKey sets LockDefaultKey field to given value.
 `func (o *UpdateAccountSettings) HasLockDefaultKey() bool`
 
 HasLockDefaultKey returns a boolean if a field has been set.
+
+### GetLockGwBoundIps
+
+`func (o *UpdateAccountSettings) GetLockGwBoundIps() string`
+
+GetLockGwBoundIps returns the LockGwBoundIps field if non-nil, zero value otherwise.
+
+### GetLockGwBoundIpsOk
+
+`func (o *UpdateAccountSettings) GetLockGwBoundIpsOk() (*string, bool)`
+
+GetLockGwBoundIpsOk returns a tuple with the LockGwBoundIps field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLockGwBoundIps
+
+`func (o *UpdateAccountSettings) SetLockGwBoundIps(v string)`
+
+SetLockGwBoundIps sets LockGwBoundIps field to given value.
+
+### HasLockGwBoundIps
+
+`func (o *UpdateAccountSettings) HasLockGwBoundIps() bool`
+
+HasLockGwBoundIps returns a boolean if a field has been set.
 
 ### GetMaxRotationInterval
 

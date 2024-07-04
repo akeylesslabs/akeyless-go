@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// CreateLdapTarget struct for CreateLdapTarget
+// CreateLdapTarget createldapTarget is a command that creates a new target. [Deprecated: Use target-create-ldap command]
 type CreateLdapTarget struct {
 	// Bind DN
 	BindDn string `json:"bind-dn"`

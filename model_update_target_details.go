@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// UpdateTargetDetails struct for UpdateTargetDetails
+// UpdateTargetDetails updateTargetDetails is a command that updates an existing target. [Deprecated]
 type UpdateTargetDetails struct {
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`

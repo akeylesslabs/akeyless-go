@@ -44,7 +44,6 @@ type K8SAuth struct {
 	// K8STokenReviewerJWT is the bearer for clusterApiTypeK8s, used during TokenReview API call
 	K8sTokenReviewerJwt *string `json:"k8s_token_reviewer_jwt,omitempty"`
 	Name *string `json:"name,omitempty"`
-	ProtectionKey *string `json:"protection_key,omitempty"`
 	// RancherApiKey the bear token for clusterApiTypeRancher
 	RancherApiKey *string `json:"rancher_api_key,omitempty"`
 	// RancherClusterId cluster id as define in rancher (in case of clusterApiTypeRancher)
@@ -550,38 +549,6 @@ func (o *K8SAuth) SetName(v string) {
 	o.Name = &v
 }
 
-// GetProtectionKey returns the ProtectionKey field value if set, zero value otherwise.
-func (o *K8SAuth) GetProtectionKey() string {
-	if o == nil || o.ProtectionKey == nil {
-		var ret string
-		return ret
-	}
-	return *o.ProtectionKey
-}
-
-// GetProtectionKeyOk returns a tuple with the ProtectionKey field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *K8SAuth) GetProtectionKeyOk() (*string, bool) {
-	if o == nil || o.ProtectionKey == nil {
-		return nil, false
-	}
-	return o.ProtectionKey, true
-}
-
-// HasProtectionKey returns a boolean if a field has been set.
-func (o *K8SAuth) HasProtectionKey() bool {
-	if o != nil && o.ProtectionKey != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetProtectionKey gets a reference to the given string and assigns it to the ProtectionKey field.
-func (o *K8SAuth) SetProtectionKey(v string) {
-	o.ProtectionKey = &v
-}
-
 // GetRancherApiKey returns the RancherApiKey field value if set, zero value otherwise.
 func (o *K8SAuth) GetRancherApiKey() string {
 	if o == nil || o.RancherApiKey == nil {
@@ -724,9 +691,6 @@ func (o K8SAuth) MarshalJSON() ([]byte, error) {
 	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
-	}
-	if o.ProtectionKey != nil {
-		toSerialize["protection_key"] = o.ProtectionKey
 	}
 	if o.RancherApiKey != nil {
 		toSerialize["rancher_api_key"] = o.RancherApiKey

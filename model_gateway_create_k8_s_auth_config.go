@@ -21,8 +21,6 @@ type GatewayCreateK8SAuthConfig struct {
 	AccessId string `json:"access-id"`
 	// Cluster access type. options: [native_k8s, rancher]
 	ClusterApiType *string `json:"cluster-api-type,omitempty"`
-	// Config encryption key
-	ConfigEncryptionKeyName *string `json:"config-encryption-key-name,omitempty"`
 	// Disable issuer validation [true/false]
 	DisableIssuerValidation *string `json:"disable-issuer-validation,omitempty"`
 	// Set output format to JSON
@@ -154,38 +152,6 @@ func (o *GatewayCreateK8SAuthConfig) HasClusterApiType() bool {
 // SetClusterApiType gets a reference to the given string and assigns it to the ClusterApiType field.
 func (o *GatewayCreateK8SAuthConfig) SetClusterApiType(v string) {
 	o.ClusterApiType = &v
-}
-
-// GetConfigEncryptionKeyName returns the ConfigEncryptionKeyName field value if set, zero value otherwise.
-func (o *GatewayCreateK8SAuthConfig) GetConfigEncryptionKeyName() string {
-	if o == nil || o.ConfigEncryptionKeyName == nil {
-		var ret string
-		return ret
-	}
-	return *o.ConfigEncryptionKeyName
-}
-
-// GetConfigEncryptionKeyNameOk returns a tuple with the ConfigEncryptionKeyName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateK8SAuthConfig) GetConfigEncryptionKeyNameOk() (*string, bool) {
-	if o == nil || o.ConfigEncryptionKeyName == nil {
-		return nil, false
-	}
-	return o.ConfigEncryptionKeyName, true
-}
-
-// HasConfigEncryptionKeyName returns a boolean if a field has been set.
-func (o *GatewayCreateK8SAuthConfig) HasConfigEncryptionKeyName() bool {
-	if o != nil && o.ConfigEncryptionKeyName != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetConfigEncryptionKeyName gets a reference to the given string and assigns it to the ConfigEncryptionKeyName field.
-func (o *GatewayCreateK8SAuthConfig) SetConfigEncryptionKeyName(v string) {
-	o.ConfigEncryptionKeyName = &v
 }
 
 // GetDisableIssuerValidation returns the DisableIssuerValidation field value if set, zero value otherwise.
@@ -715,9 +681,6 @@ func (o GatewayCreateK8SAuthConfig) MarshalJSON() ([]byte, error) {
 	}
 	if o.ClusterApiType != nil {
 		toSerialize["cluster-api-type"] = o.ClusterApiType
-	}
-	if o.ConfigEncryptionKeyName != nil {
-		toSerialize["config-encryption-key-name"] = o.ConfigEncryptionKeyName
 	}
 	if o.DisableIssuerValidation != nil {
 		toSerialize["disable-issuer-validation"] = o.DisableIssuerValidation

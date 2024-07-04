@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccountDefaultKeyItemId** | Pointer to **int64** | AccountDefaultKeyItemID is the item ID of the DFC key item configured as the default protection key | [optional] 
 **AccountDefaultKeyName** | Pointer to **string** | AccountDefaultKeyName is the name of the DFC key item configured as the default key This is here simply for the response to include the item name in addition to the display ID so the client can properly show this to the user. It will not be saved to the DB, only the AccountDefaultKeyItemID will. | [optional] 
+**AllowedClientsIps** | Pointer to [**AllowedIpSettings**](AllowedIpSettings.md) |  | [optional] 
+**AllowedGatewaysIps** | Pointer to [**AllowedIpSettings**](AllowedIpSettings.md) |  | [optional] 
 **AuthUsageEvent** | Pointer to [**UsageEventSetting**](UsageEventSetting.md) |  | [optional] 
 **DataProtectionSection** | Pointer to [**DataProtectionSection**](DataProtectionSection.md) |  | [optional] 
 **DynamicSecretMaxTtl** | Pointer to [**DynamicSecretMaxTtl**](DynamicSecretMaxTtl.md) |  | [optional] 
@@ -86,6 +88,56 @@ SetAccountDefaultKeyName sets AccountDefaultKeyName field to given value.
 `func (o *AccountGeneralSettings) HasAccountDefaultKeyName() bool`
 
 HasAccountDefaultKeyName returns a boolean if a field has been set.
+
+### GetAllowedClientsIps
+
+`func (o *AccountGeneralSettings) GetAllowedClientsIps() AllowedIpSettings`
+
+GetAllowedClientsIps returns the AllowedClientsIps field if non-nil, zero value otherwise.
+
+### GetAllowedClientsIpsOk
+
+`func (o *AccountGeneralSettings) GetAllowedClientsIpsOk() (*AllowedIpSettings, bool)`
+
+GetAllowedClientsIpsOk returns a tuple with the AllowedClientsIps field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowedClientsIps
+
+`func (o *AccountGeneralSettings) SetAllowedClientsIps(v AllowedIpSettings)`
+
+SetAllowedClientsIps sets AllowedClientsIps field to given value.
+
+### HasAllowedClientsIps
+
+`func (o *AccountGeneralSettings) HasAllowedClientsIps() bool`
+
+HasAllowedClientsIps returns a boolean if a field has been set.
+
+### GetAllowedGatewaysIps
+
+`func (o *AccountGeneralSettings) GetAllowedGatewaysIps() AllowedIpSettings`
+
+GetAllowedGatewaysIps returns the AllowedGatewaysIps field if non-nil, zero value otherwise.
+
+### GetAllowedGatewaysIpsOk
+
+`func (o *AccountGeneralSettings) GetAllowedGatewaysIpsOk() (*AllowedIpSettings, bool)`
+
+GetAllowedGatewaysIpsOk returns a tuple with the AllowedGatewaysIps field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowedGatewaysIps
+
+`func (o *AccountGeneralSettings) SetAllowedGatewaysIps(v AllowedIpSettings)`
+
+SetAllowedGatewaysIps sets AllowedGatewaysIps field to given value.
+
+### HasAllowedGatewaysIps
+
+`func (o *AccountGeneralSettings) HasAllowedGatewaysIps() bool`
+
+HasAllowedGatewaysIps returns a boolean if a field has been set.
 
 ### GetAuthUsageEvent
 

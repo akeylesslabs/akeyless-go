@@ -82,6 +82,8 @@ type UpdateRotatedSecret struct {
 	SecureAccessDbName *string `json:"secure-access-db-name,omitempty"`
 	// The db schema (relevant only for mssql or postgresql)
 	SecureAccessDbSchema *string `json:"secure-access-db-schema,omitempty"`
+	// Enable this flag to prevent simultaneous use of the same secret
+	SecureAccessDisableConcurrentConnections *bool `json:"secure-access-disable-concurrent-connections,omitempty"`
 	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
 	// Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
@@ -1224,6 +1226,38 @@ func (o *UpdateRotatedSecret) SetSecureAccessDbSchema(v string) {
 	o.SecureAccessDbSchema = &v
 }
 
+// GetSecureAccessDisableConcurrentConnections returns the SecureAccessDisableConcurrentConnections field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetSecureAccessDisableConcurrentConnections() bool {
+	if o == nil || o.SecureAccessDisableConcurrentConnections == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessDisableConcurrentConnections
+}
+
+// GetSecureAccessDisableConcurrentConnectionsOk returns a tuple with the SecureAccessDisableConcurrentConnections field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetSecureAccessDisableConcurrentConnectionsOk() (*bool, bool) {
+	if o == nil || o.SecureAccessDisableConcurrentConnections == nil {
+		return nil, false
+	}
+	return o.SecureAccessDisableConcurrentConnections, true
+}
+
+// HasSecureAccessDisableConcurrentConnections returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasSecureAccessDisableConcurrentConnections() bool {
+	if o != nil && o.SecureAccessDisableConcurrentConnections != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessDisableConcurrentConnections gets a reference to the given bool and assigns it to the SecureAccessDisableConcurrentConnections field.
+func (o *UpdateRotatedSecret) SetSecureAccessDisableConcurrentConnections(v bool) {
+	o.SecureAccessDisableConcurrentConnections = &v
+}
+
 // GetSecureAccessEnable returns the SecureAccessEnable field value if set, zero value otherwise.
 func (o *UpdateRotatedSecret) GetSecureAccessEnable() string {
 	if o == nil || o.SecureAccessEnable == nil {
@@ -1804,6 +1838,9 @@ func (o UpdateRotatedSecret) MarshalJSON() ([]byte, error) {
 	}
 	if o.SecureAccessDbSchema != nil {
 		toSerialize["secure-access-db-schema"] = o.SecureAccessDbSchema
+	}
+	if o.SecureAccessDisableConcurrentConnections != nil {
+		toSerialize["secure-access-disable-concurrent-connections"] = o.SecureAccessDisableConcurrentConnections
 	}
 	if o.SecureAccessEnable != nil {
 		toSerialize["secure-access-enable"] = o.SecureAccessEnable

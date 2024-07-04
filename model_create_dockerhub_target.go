@@ -15,15 +15,15 @@ import (
 	"encoding/json"
 )
 
-// CreateDockerhubTarget struct for CreateDockerhubTarget
+// CreateDockerhubTarget createDockerhubTarget is a command that creates a new target. [Deprecated: Use target-create-dockerhub command]
 type CreateDockerhubTarget struct {
 	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
-	// DockerhubPassword is either the user's password to manage the repository
+	// Password for docker repository
 	DockerhubPassword *string `json:"dockerhub-password,omitempty"`
-	// DockerhubUsername is the name of the user in dockerhub
+	// Username for docker repository
 	DockerhubUsername *string `json:"dockerhub-username,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`

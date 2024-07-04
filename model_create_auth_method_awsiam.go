@@ -15,10 +15,12 @@ import (
 	"encoding/json"
 )
 
-// CreateAuthMethodAWSIAM createAuthMethodAWSIAM is a command that creates a new Auth Method that will be able to authenticate using AWS IAM credentials.
+// CreateAuthMethodAWSIAM createAuthMethodAWSIAM is a command that creates a new Auth Method that will be able to authenticate using AWS IAM credentials. [Deprecated: Use auth-method-create-aws-iam command]
 type CreateAuthMethodAWSIAM struct {
 	// Access expiration date in Unix timestamp (select 0 for access without expiry date)
 	AccessExpires *int64 `json:"access-expires,omitempty"`
+	// Subclaims to include in audit logs, e.g \"--audit-logs-claims email --audit-logs-claims username\"
+	AuditLogsClaims *[]string `json:"audit-logs-claims,omitempty"`
 	// A list of full arns that the access is restricted to
 	BoundArn *[]string `json:"bound-arn,omitempty"`
 	// A list of AWS account-IDs that the access is restricted to
@@ -122,6 +124,38 @@ func (o *CreateAuthMethodAWSIAM) HasAccessExpires() bool {
 // SetAccessExpires gets a reference to the given int64 and assigns it to the AccessExpires field.
 func (o *CreateAuthMethodAWSIAM) SetAccessExpires(v int64) {
 	o.AccessExpires = &v
+}
+
+// GetAuditLogsClaims returns the AuditLogsClaims field value if set, zero value otherwise.
+func (o *CreateAuthMethodAWSIAM) GetAuditLogsClaims() []string {
+	if o == nil || o.AuditLogsClaims == nil {
+		var ret []string
+		return ret
+	}
+	return *o.AuditLogsClaims
+}
+
+// GetAuditLogsClaimsOk returns a tuple with the AuditLogsClaims field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodAWSIAM) GetAuditLogsClaimsOk() (*[]string, bool) {
+	if o == nil || o.AuditLogsClaims == nil {
+		return nil, false
+	}
+	return o.AuditLogsClaims, true
+}
+
+// HasAuditLogsClaims returns a boolean if a field has been set.
+func (o *CreateAuthMethodAWSIAM) HasAuditLogsClaims() bool {
+	if o != nil && o.AuditLogsClaims != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAuditLogsClaims gets a reference to the given []string and assigns it to the AuditLogsClaims field.
+func (o *CreateAuthMethodAWSIAM) SetAuditLogsClaims(v []string) {
+	o.AuditLogsClaims = &v
 }
 
 // GetBoundArn returns the BoundArn field value if set, zero value otherwise.
@@ -688,6 +722,9 @@ func (o CreateAuthMethodAWSIAM) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccessExpires != nil {
 		toSerialize["access-expires"] = o.AccessExpires
+	}
+	if o.AuditLogsClaims != nil {
+		toSerialize["audit-logs-claims"] = o.AuditLogsClaims
 	}
 	if o.BoundArn != nil {
 		toSerialize["bound-arn"] = o.BoundArn

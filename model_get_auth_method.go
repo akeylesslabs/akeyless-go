@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// GetAuthMethod struct for GetAuthMethod
+// GetAuthMethod getAuthMethod is a command that returns information about the auth method. [Deprecated: Use auth-method-get command]
 type GetAuthMethod struct {
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`

@@ -17,10 +17,12 @@ import (
 
 // DecryptGPG struct for DecryptGPG
 type DecryptGPG struct {
-	// Ciphertext to be decrypted in base64 encoded format
+	// Ciphertext to be decrypted
 	Ciphertext string `json:"ciphertext"`
 	// The display id of the key to use in the decryption process
 	DisplayId *string `json:"display-id,omitempty"`
+	// Select default assumed format for the ciphertext. Currently supported options: [base64,raw]
+	InputFormat *string `json:"input-format,omitempty"`
 	// The item id of the key to use in the decryption process
 	ItemId *int64 `json:"item-id,omitempty"`
 	// Set output format to JSON
@@ -44,6 +46,8 @@ type DecryptGPG struct {
 func NewDecryptGPG(ciphertext string, keyName string, ) *DecryptGPG {
 	this := DecryptGPG{}
 	this.Ciphertext = ciphertext
+	var inputFormat string = "base64"
+	this.InputFormat = &inputFormat
 	var json bool = false
 	this.Json = &json
 	this.KeyName = keyName
@@ -55,6 +59,8 @@ func NewDecryptGPG(ciphertext string, keyName string, ) *DecryptGPG {
 // but it doesn't guarantee that properties required by API are set
 func NewDecryptGPGWithDefaults() *DecryptGPG {
 	this := DecryptGPG{}
+	var inputFormat string = "base64"
+	this.InputFormat = &inputFormat
 	var json bool = false
 	this.Json = &json
 	return &this
@@ -114,6 +120,38 @@ func (o *DecryptGPG) HasDisplayId() bool {
 // SetDisplayId gets a reference to the given string and assigns it to the DisplayId field.
 func (o *DecryptGPG) SetDisplayId(v string) {
 	o.DisplayId = &v
+}
+
+// GetInputFormat returns the InputFormat field value if set, zero value otherwise.
+func (o *DecryptGPG) GetInputFormat() string {
+	if o == nil || o.InputFormat == nil {
+		var ret string
+		return ret
+	}
+	return *o.InputFormat
+}
+
+// GetInputFormatOk returns a tuple with the InputFormat field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DecryptGPG) GetInputFormatOk() (*string, bool) {
+	if o == nil || o.InputFormat == nil {
+		return nil, false
+	}
+	return o.InputFormat, true
+}
+
+// HasInputFormat returns a boolean if a field has been set.
+func (o *DecryptGPG) HasInputFormat() bool {
+	if o != nil && o.InputFormat != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInputFormat gets a reference to the given string and assigns it to the InputFormat field.
+func (o *DecryptGPG) SetInputFormat(v string) {
+	o.InputFormat = &v
 }
 
 // GetItemId returns the ItemId field value if set, zero value otherwise.
@@ -339,6 +377,9 @@ func (o DecryptGPG) MarshalJSON() ([]byte, error) {
 	}
 	if o.DisplayId != nil {
 		toSerialize["display-id"] = o.DisplayId
+	}
+	if o.InputFormat != nil {
+		toSerialize["input-format"] = o.InputFormat
 	}
 	if o.ItemId != nil {
 		toSerialize["item-id"] = o.ItemId

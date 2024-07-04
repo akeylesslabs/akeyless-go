@@ -15,12 +15,14 @@ import (
 	"encoding/json"
 )
 
-// CreateAuthMethodCert createAuthMethodCert is a command that creates a new auth method that will be able to authenticate using a client certificae
+// CreateAuthMethodCert createAuthMethodCert is a command that creates a new auth method that will be able to authenticate using a client certificate. [Deprecated: Use auth-method-create-cert command]
 type CreateAuthMethodCert struct {
 	// Access expiration date in Unix timestamp (select 0 for access without expiry date)
 	AccessExpires *int64 `json:"access-expires,omitempty"`
 	// Comma separated list of allowed CORS domains to be validated as part of the authentication flow.
 	AllowedCors *string `json:"allowed-cors,omitempty"`
+	// Subclaims to include in audit logs, e.g \"--audit-logs-claims email --audit-logs-claims username\"
+	AuditLogsClaims *[]string `json:"audit-logs-claims,omitempty"`
 	// A list of names. At least one must exist in the Common Name. Supports globbing.
 	BoundCommonNames *[]string `json:"bound-common-names,omitempty"`
 	// A list of DNS names. At least one must exist in the SANs. Supports globbing.
@@ -154,6 +156,38 @@ func (o *CreateAuthMethodCert) HasAllowedCors() bool {
 // SetAllowedCors gets a reference to the given string and assigns it to the AllowedCors field.
 func (o *CreateAuthMethodCert) SetAllowedCors(v string) {
 	o.AllowedCors = &v
+}
+
+// GetAuditLogsClaims returns the AuditLogsClaims field value if set, zero value otherwise.
+func (o *CreateAuthMethodCert) GetAuditLogsClaims() []string {
+	if o == nil || o.AuditLogsClaims == nil {
+		var ret []string
+		return ret
+	}
+	return *o.AuditLogsClaims
+}
+
+// GetAuditLogsClaimsOk returns a tuple with the AuditLogsClaims field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodCert) GetAuditLogsClaimsOk() (*[]string, bool) {
+	if o == nil || o.AuditLogsClaims == nil {
+		return nil, false
+	}
+	return o.AuditLogsClaims, true
+}
+
+// HasAuditLogsClaims returns a boolean if a field has been set.
+func (o *CreateAuthMethodCert) HasAuditLogsClaims() bool {
+	if o != nil && o.AuditLogsClaims != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAuditLogsClaims gets a reference to the given []string and assigns it to the AuditLogsClaims field.
+func (o *CreateAuthMethodCert) SetAuditLogsClaims(v []string) {
+	o.AuditLogsClaims = &v
 }
 
 // GetBoundCommonNames returns the BoundCommonNames field value if set, zero value otherwise.
@@ -755,6 +789,9 @@ func (o CreateAuthMethodCert) MarshalJSON() ([]byte, error) {
 	}
 	if o.AllowedCors != nil {
 		toSerialize["allowed-cors"] = o.AllowedCors
+	}
+	if o.AuditLogsClaims != nil {
+		toSerialize["audit-logs-claims"] = o.AuditLogsClaims
 	}
 	if o.BoundCommonNames != nil {
 		toSerialize["bound-common-names"] = o.BoundCommonNames

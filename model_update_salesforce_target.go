@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// UpdateSalesforceTarget struct for UpdateSalesforceTarget
+// UpdateSalesforceTarget updateSalesforceTarget is a command that updates a new target. [Deprecated: Use target-update-salesforce command]
 type UpdateSalesforceTarget struct {
 	// Base64 encoded PEM of the connected app private key (relevant for JWT auth only)
 	AppPrivateKeyData *string `json:"app-private-key-data,omitempty"`

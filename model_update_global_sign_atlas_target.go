@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// UpdateGlobalSignAtlasTarget struct for UpdateGlobalSignAtlasTarget
+// UpdateGlobalSignAtlasTarget updateGlobalSignAtlasTarget is a command that updates an existing target. [Deprecated: Use target-update-globalsign-atlas command]
 type UpdateGlobalSignAtlasTarget struct {
 	// API Key of the GlobalSign Atlas account
 	ApiKey string `json:"api-key"`

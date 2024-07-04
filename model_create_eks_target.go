@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// CreateEKSTarget struct for CreateEKSTarget
+// CreateEKSTarget createEKSTarget is a command that creates a new target. [Deprecated: Use target-create-eks command]
 type CreateEKSTarget struct {
 	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`

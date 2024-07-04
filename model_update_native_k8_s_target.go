@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// UpdateNativeK8STarget struct for UpdateNativeK8STarget
+// UpdateNativeK8STarget updateNativeK8STarget is a command that updates an existing target. [Deprecated: Use target-update-k8s command]
 type UpdateNativeK8STarget struct {
 	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`

@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **EksTargetDetails** | Pointer to [**EKSTargetDetails**](EKSTargetDetails.md) |  | [optional] 
 **GcpTargetDetails** | Pointer to [**GcpTargetDetails**](GcpTargetDetails.md) |  | [optional] 
 **GithubTargetDetails** | Pointer to [**GithubTargetDetails**](GithubTargetDetails.md) |  | [optional] 
+**GitlabTargetDetails** | Pointer to [**GitlabTargetDetails**](GitlabTargetDetails.md) |  | [optional] 
 **GkeTargetDetails** | Pointer to [**GKETargetDetails**](GKETargetDetails.md) |  | [optional] 
 **GlobalsignAtlasTargetDetails** | Pointer to [**GlobalSignAtlasTargetDetails**](GlobalSignAtlasTargetDetails.md) |  | [optional] 
 **GlobalsignTargetDetails** | Pointer to [**GlobalSignGCCTargetDetails**](GlobalSignGCCTargetDetails.md) |  | [optional] 
@@ -300,6 +301,31 @@ SetGithubTargetDetails sets GithubTargetDetails field to given value.
 `func (o *TargetTypeDetailsInput) HasGithubTargetDetails() bool`
 
 HasGithubTargetDetails returns a boolean if a field has been set.
+
+### GetGitlabTargetDetails
+
+`func (o *TargetTypeDetailsInput) GetGitlabTargetDetails() GitlabTargetDetails`
+
+GetGitlabTargetDetails returns the GitlabTargetDetails field if non-nil, zero value otherwise.
+
+### GetGitlabTargetDetailsOk
+
+`func (o *TargetTypeDetailsInput) GetGitlabTargetDetailsOk() (*GitlabTargetDetails, bool)`
+
+GetGitlabTargetDetailsOk returns a tuple with the GitlabTargetDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGitlabTargetDetails
+
+`func (o *TargetTypeDetailsInput) SetGitlabTargetDetails(v GitlabTargetDetails)`
+
+SetGitlabTargetDetails sets GitlabTargetDetails field to given value.
+
+### HasGitlabTargetDetails
+
+`func (o *TargetTypeDetailsInput) HasGitlabTargetDetails() bool`
+
+HasGitlabTargetDetails returns a boolean if a field has been set.
 
 ### GetGkeTargetDetails
 

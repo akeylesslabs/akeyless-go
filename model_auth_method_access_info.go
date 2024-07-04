@@ -21,6 +21,7 @@ type AuthMethodAccessInfo struct {
 	// for accounts where AccessId holds encrypted email this field will hold generated AccessId, for accounts based on regular AccessId it will be equal to accessId itself
 	AccessIdAlias *string `json:"access_id_alias,omitempty"`
 	ApiKeyAccessRules *APIKeyAccessRules `json:"api_key_access_rules,omitempty"`
+	AuditLogsClaims *[]string `json:"audit_logs_claims,omitempty"`
 	AwsIamAccessRules *AWSIAMAccessRules `json:"aws_iam_access_rules,omitempty"`
 	AzureAdAccessRules *AzureADAccessRules `json:"azure_ad_access_rules,omitempty"`
 	CertAccessRules *CertAccessRules `json:"cert_access_rules,omitempty"`
@@ -156,6 +157,38 @@ func (o *AuthMethodAccessInfo) HasApiKeyAccessRules() bool {
 // SetApiKeyAccessRules gets a reference to the given APIKeyAccessRules and assigns it to the ApiKeyAccessRules field.
 func (o *AuthMethodAccessInfo) SetApiKeyAccessRules(v APIKeyAccessRules) {
 	o.ApiKeyAccessRules = &v
+}
+
+// GetAuditLogsClaims returns the AuditLogsClaims field value if set, zero value otherwise.
+func (o *AuthMethodAccessInfo) GetAuditLogsClaims() []string {
+	if o == nil || o.AuditLogsClaims == nil {
+		var ret []string
+		return ret
+	}
+	return *o.AuditLogsClaims
+}
+
+// GetAuditLogsClaimsOk returns a tuple with the AuditLogsClaims field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodAccessInfo) GetAuditLogsClaimsOk() (*[]string, bool) {
+	if o == nil || o.AuditLogsClaims == nil {
+		return nil, false
+	}
+	return o.AuditLogsClaims, true
+}
+
+// HasAuditLogsClaims returns a boolean if a field has been set.
+func (o *AuthMethodAccessInfo) HasAuditLogsClaims() bool {
+	if o != nil && o.AuditLogsClaims != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAuditLogsClaims gets a reference to the given []string and assigns it to the AuditLogsClaims field.
+func (o *AuthMethodAccessInfo) SetAuditLogsClaims(v []string) {
+	o.AuditLogsClaims = &v
 }
 
 // GetAwsIamAccessRules returns the AwsIamAccessRules field value if set, zero value otherwise.
@@ -808,6 +841,9 @@ func (o AuthMethodAccessInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.ApiKeyAccessRules != nil {
 		toSerialize["api_key_access_rules"] = o.ApiKeyAccessRules
+	}
+	if o.AuditLogsClaims != nil {
+		toSerialize["audit_logs_claims"] = o.AuditLogsClaims
 	}
 	if o.AwsIamAccessRules != nil {
 		toSerialize["aws_iam_access_rules"] = o.AwsIamAccessRules

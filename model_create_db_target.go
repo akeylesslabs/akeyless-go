@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// CreateDBTarget struct for CreateDBTarget
+// CreateDBTarget createDBTarget is a command that creates a new target. [Deprecated: Use target-create-db command]
 type CreateDBTarget struct {
 	DBDefinedConnectionType *string `json:"DBDefinedConnectionType,omitempty"`
 	// (Optional) Client id (relevant for \"cloud-service-provider\" only)

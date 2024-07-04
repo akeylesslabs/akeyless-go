@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// CreateGKETarget struct for CreateGKETarget
+// CreateGKETarget createGKETarget is a command that creates a new target. [Deprecated: Use target-create-gke command]
 type CreateGKETarget struct {
 	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`

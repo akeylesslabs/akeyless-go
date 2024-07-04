@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessExpires** | Pointer to **int64** | Access expiration date in Unix timestamp (select 0 for access without expiry date) | [optional] [default to 0]
+**AuditLogsClaims** | Pointer to **[]string** | Subclaims to include in audit logs, e.g \&quot;--audit-logs-claims email --audit-logs-claims username\&quot; | [optional] 
 **BoundIps** | Pointer to **[]string** | A CIDR whitelist with the IPs that the access is restricted to | [optional] 
 **DenyInheritance** | Pointer to **bool** | Deny from root to create children | [optional] 
 **DenyRotate** | Pointer to **bool** | Deny from the token to rotate | [optional] 
@@ -63,6 +64,31 @@ SetAccessExpires sets AccessExpires field to given value.
 `func (o *UpdateAuthMethodUniversalIdentity) HasAccessExpires() bool`
 
 HasAccessExpires returns a boolean if a field has been set.
+
+### GetAuditLogsClaims
+
+`func (o *UpdateAuthMethodUniversalIdentity) GetAuditLogsClaims() []string`
+
+GetAuditLogsClaims returns the AuditLogsClaims field if non-nil, zero value otherwise.
+
+### GetAuditLogsClaimsOk
+
+`func (o *UpdateAuthMethodUniversalIdentity) GetAuditLogsClaimsOk() (*[]string, bool)`
+
+GetAuditLogsClaimsOk returns a tuple with the AuditLogsClaims field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuditLogsClaims
+
+`func (o *UpdateAuthMethodUniversalIdentity) SetAuditLogsClaims(v []string)`
+
+SetAuditLogsClaims sets AuditLogsClaims field to given value.
+
+### HasAuditLogsClaims
+
+`func (o *UpdateAuthMethodUniversalIdentity) HasAuditLogsClaims() bool`
+
+HasAuditLogsClaims returns a boolean if a field has been set.
 
 ### GetBoundIps
 

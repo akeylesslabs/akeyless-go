@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessExpires** | Pointer to **int64** | Access expiration date in Unix timestamp (select 0 for access without expiry date) | [optional] [default to 0]
 **Audience** | Pointer to **string** | The audience in the JWT | [optional] 
+**AuditLogsClaims** | Pointer to **[]string** | Subclaims to include in audit logs, e.g \&quot;--audit-logs-claims email --audit-logs-claims username\&quot; | [optional] 
 **BoundClientIds** | Pointer to **[]string** | The clients ids that the access is restricted to | [optional] 
 **BoundIps** | Pointer to **[]string** | A CIDR whitelist with the IPs that the access is restricted to | [optional] 
 **Cert** | Pointer to **string** | CertificateFile Path to a file that contain the certificate in a PEM format. | [optional] 
@@ -95,6 +96,31 @@ SetAudience sets Audience field to given value.
 `func (o *UpdateAuthMethodOAuth2) HasAudience() bool`
 
 HasAudience returns a boolean if a field has been set.
+
+### GetAuditLogsClaims
+
+`func (o *UpdateAuthMethodOAuth2) GetAuditLogsClaims() []string`
+
+GetAuditLogsClaims returns the AuditLogsClaims field if non-nil, zero value otherwise.
+
+### GetAuditLogsClaimsOk
+
+`func (o *UpdateAuthMethodOAuth2) GetAuditLogsClaimsOk() (*[]string, bool)`
+
+GetAuditLogsClaimsOk returns a tuple with the AuditLogsClaims field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuditLogsClaims
+
+`func (o *UpdateAuthMethodOAuth2) SetAuditLogsClaims(v []string)`
+
+SetAuditLogsClaims sets AuditLogsClaims field to given value.
+
+### HasAuditLogsClaims
+
+`func (o *UpdateAuthMethodOAuth2) HasAuditLogsClaims() bool`
+
+HasAuditLogsClaims returns a boolean if a field has been set.
 
 ### GetBoundClientIds
 

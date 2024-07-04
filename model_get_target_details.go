@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// GetTargetDetails struct for GetTargetDetails
+// GetTargetDetails getTargetDetails is a command that returns target details. [Deprecated: Use target-get-details command]
 type GetTargetDetails struct {
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`

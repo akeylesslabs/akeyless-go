@@ -19,6 +19,8 @@ import (
 type UpdateAccountSettings struct {
 	// Address
 	Address *string `json:"address,omitempty"`
+	// A default list of comma-separated CIDR block that are allowed to authenticate.
+	BoundIps *[]string `json:"bound-ips,omitempty"`
 	// City
 	City *string `json:"city,omitempty"`
 	// Company name
@@ -41,6 +43,8 @@ type UpdateAccountSettings struct {
 	EnableItemSharing *string `json:"enable-item-sharing,omitempty"`
 	// If set to true, new version will be created on update
 	ForceNewVersions *string `json:"force-new-versions,omitempty"`
+	// A default list of comma-separated CIDR block that acts as a trusted Gateway entity.
+	GwBoundIps *[]string `json:"gw-bound-ips,omitempty"`
 	// Characters that cannot be used for items/targets/roles/auths/event_forwarder names. Empty string will enforce nothing.
 	InvalidCharacters *string `json:"invalid-characters,omitempty"`
 	// VersionSettingsObjectType defines object types for account version settings
@@ -55,8 +59,12 @@ type UpdateAccountSettings struct {
 	JwtTtlMax *int64 `json:"jwt-ttl-max,omitempty"`
 	// Minimum ttl
 	JwtTtlMin *int64 `json:"jwt-ttl-min,omitempty"`
+	// Lock bound-ips setting globally in the account.
+	LockBoundIps *string `json:"lock-bound-ips,omitempty"`
 	// Lock the account's default protection key, if set - users will not be able to use a different protection key, relevant only if default-key-name is configured [true/false]
 	LockDefaultKey *string `json:"lock-default-key,omitempty"`
+	// Lock gw-bound-ips setting in the account.
+	LockGwBoundIps *string `json:"lock-gw-bound-ips,omitempty"`
 	// Set the maximum rotation interval for rotated secrets auto rotation settings
 	MaxRotationInterval *int32 `json:"max-rotation-interval,omitempty"`
 	// Set a maximum rotation interval for rotated secrets auto rotation settings [true/false]
@@ -144,6 +152,38 @@ func (o *UpdateAccountSettings) HasAddress() bool {
 // SetAddress gets a reference to the given string and assigns it to the Address field.
 func (o *UpdateAccountSettings) SetAddress(v string) {
 	o.Address = &v
+}
+
+// GetBoundIps returns the BoundIps field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetBoundIps() []string {
+	if o == nil || o.BoundIps == nil {
+		var ret []string
+		return ret
+	}
+	return *o.BoundIps
+}
+
+// GetBoundIpsOk returns a tuple with the BoundIps field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetBoundIpsOk() (*[]string, bool) {
+	if o == nil || o.BoundIps == nil {
+		return nil, false
+	}
+	return o.BoundIps, true
+}
+
+// HasBoundIps returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasBoundIps() bool {
+	if o != nil && o.BoundIps != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBoundIps gets a reference to the given []string and assigns it to the BoundIps field.
+func (o *UpdateAccountSettings) SetBoundIps(v []string) {
+	o.BoundIps = &v
 }
 
 // GetCity returns the City field value if set, zero value otherwise.
@@ -498,6 +538,38 @@ func (o *UpdateAccountSettings) SetForceNewVersions(v string) {
 	o.ForceNewVersions = &v
 }
 
+// GetGwBoundIps returns the GwBoundIps field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetGwBoundIps() []string {
+	if o == nil || o.GwBoundIps == nil {
+		var ret []string
+		return ret
+	}
+	return *o.GwBoundIps
+}
+
+// GetGwBoundIpsOk returns a tuple with the GwBoundIps field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetGwBoundIpsOk() (*[]string, bool) {
+	if o == nil || o.GwBoundIps == nil {
+		return nil, false
+	}
+	return o.GwBoundIps, true
+}
+
+// HasGwBoundIps returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasGwBoundIps() bool {
+	if o != nil && o.GwBoundIps != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGwBoundIps gets a reference to the given []string and assigns it to the GwBoundIps field.
+func (o *UpdateAccountSettings) SetGwBoundIps(v []string) {
+	o.GwBoundIps = &v
+}
+
 // GetInvalidCharacters returns the InvalidCharacters field value if set, zero value otherwise.
 func (o *UpdateAccountSettings) GetInvalidCharacters() string {
 	if o == nil || o.InvalidCharacters == nil {
@@ -722,6 +794,38 @@ func (o *UpdateAccountSettings) SetJwtTtlMin(v int64) {
 	o.JwtTtlMin = &v
 }
 
+// GetLockBoundIps returns the LockBoundIps field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetLockBoundIps() string {
+	if o == nil || o.LockBoundIps == nil {
+		var ret string
+		return ret
+	}
+	return *o.LockBoundIps
+}
+
+// GetLockBoundIpsOk returns a tuple with the LockBoundIps field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetLockBoundIpsOk() (*string, bool) {
+	if o == nil || o.LockBoundIps == nil {
+		return nil, false
+	}
+	return o.LockBoundIps, true
+}
+
+// HasLockBoundIps returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasLockBoundIps() bool {
+	if o != nil && o.LockBoundIps != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLockBoundIps gets a reference to the given string and assigns it to the LockBoundIps field.
+func (o *UpdateAccountSettings) SetLockBoundIps(v string) {
+	o.LockBoundIps = &v
+}
+
 // GetLockDefaultKey returns the LockDefaultKey field value if set, zero value otherwise.
 func (o *UpdateAccountSettings) GetLockDefaultKey() string {
 	if o == nil || o.LockDefaultKey == nil {
@@ -752,6 +856,38 @@ func (o *UpdateAccountSettings) HasLockDefaultKey() bool {
 // SetLockDefaultKey gets a reference to the given string and assigns it to the LockDefaultKey field.
 func (o *UpdateAccountSettings) SetLockDefaultKey(v string) {
 	o.LockDefaultKey = &v
+}
+
+// GetLockGwBoundIps returns the LockGwBoundIps field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetLockGwBoundIps() string {
+	if o == nil || o.LockGwBoundIps == nil {
+		var ret string
+		return ret
+	}
+	return *o.LockGwBoundIps
+}
+
+// GetLockGwBoundIpsOk returns a tuple with the LockGwBoundIps field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetLockGwBoundIpsOk() (*string, bool) {
+	if o == nil || o.LockGwBoundIps == nil {
+		return nil, false
+	}
+	return o.LockGwBoundIps, true
+}
+
+// HasLockGwBoundIps returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasLockGwBoundIps() bool {
+	if o != nil && o.LockGwBoundIps != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLockGwBoundIps gets a reference to the given string and assigns it to the LockGwBoundIps field.
+func (o *UpdateAccountSettings) SetLockGwBoundIps(v string) {
+	o.LockGwBoundIps = &v
 }
 
 // GetMaxRotationInterval returns the MaxRotationInterval field value if set, zero value otherwise.
@@ -1239,6 +1375,9 @@ func (o UpdateAccountSettings) MarshalJSON() ([]byte, error) {
 	if o.Address != nil {
 		toSerialize["address"] = o.Address
 	}
+	if o.BoundIps != nil {
+		toSerialize["bound-ips"] = o.BoundIps
+	}
 	if o.City != nil {
 		toSerialize["city"] = o.City
 	}
@@ -1272,6 +1411,9 @@ func (o UpdateAccountSettings) MarshalJSON() ([]byte, error) {
 	if o.ForceNewVersions != nil {
 		toSerialize["force-new-versions"] = o.ForceNewVersions
 	}
+	if o.GwBoundIps != nil {
+		toSerialize["gw-bound-ips"] = o.GwBoundIps
+	}
 	if o.InvalidCharacters != nil {
 		toSerialize["invalid-characters"] = o.InvalidCharacters
 	}
@@ -1293,8 +1435,14 @@ func (o UpdateAccountSettings) MarshalJSON() ([]byte, error) {
 	if o.JwtTtlMin != nil {
 		toSerialize["jwt-ttl-min"] = o.JwtTtlMin
 	}
+	if o.LockBoundIps != nil {
+		toSerialize["lock-bound-ips"] = o.LockBoundIps
+	}
 	if o.LockDefaultKey != nil {
 		toSerialize["lock-default-key"] = o.LockDefaultKey
+	}
+	if o.LockGwBoundIps != nil {
+		toSerialize["lock-gw-bound-ips"] = o.LockGwBoundIps
 	}
 	if o.MaxRotationInterval != nil {
 		toSerialize["max-rotation-interval"] = o.MaxRotationInterval

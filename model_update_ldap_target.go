@@ -15,10 +15,12 @@ import (
 	"encoding/json"
 )
 
-// UpdateLdapTarget struct for UpdateLdapTarget
+// UpdateLdapTarget updateLdapTarget is a command that updates an existing target. [Deprecated: Use target-update-ldap command]
 type UpdateLdapTarget struct {
-	BindDn *string `json:"bind-dn,omitempty"`
-	BindDnPassword *string `json:"bind-dn-password,omitempty"`
+	// Bind DN
+	BindDn string `json:"bind-dn"`
+	// Bind DN Password
+	BindDnPassword string `json:"bind-dn-password"`
 	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`
 	// Description of the object
@@ -29,8 +31,10 @@ type UpdateLdapTarget struct {
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
+	// CA Certificate File Content
 	LdapCaCert *string `json:"ldap-ca-cert,omitempty"`
-	LdapUrl *string `json:"ldap-url,omitempty"`
+	// LDAP Server URL
+	LdapUrl string `json:"ldap-url"`
 	// Set the maximum number of versions, limited by the account settings defaults.
 	MaxVersions *string `json:"max-versions,omitempty"`
 	// Target name
@@ -41,6 +45,7 @@ type UpdateLdapTarget struct {
 	ServerType *string `json:"server-type,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
+	// Token expiration
 	TokenExpiration *string `json:"token-expiration,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
@@ -52,10 +57,13 @@ type UpdateLdapTarget struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateLdapTarget(name string, ) *UpdateLdapTarget {
+func NewUpdateLdapTarget(bindDn string, bindDnPassword string, ldapUrl string, name string, ) *UpdateLdapTarget {
 	this := UpdateLdapTarget{}
+	this.BindDn = bindDn
+	this.BindDnPassword = bindDnPassword
 	var json bool = false
 	this.Json = &json
+	this.LdapUrl = ldapUrl
 	this.Name = name
 	return &this
 }
@@ -70,68 +78,52 @@ func NewUpdateLdapTargetWithDefaults() *UpdateLdapTarget {
 	return &this
 }
 
-// GetBindDn returns the BindDn field value if set, zero value otherwise.
+// GetBindDn returns the BindDn field value
 func (o *UpdateLdapTarget) GetBindDn() string {
-	if o == nil || o.BindDn == nil {
+	if o == nil  {
 		var ret string
 		return ret
 	}
-	return *o.BindDn
+
+	return o.BindDn
 }
 
-// GetBindDnOk returns a tuple with the BindDn field value if set, nil otherwise
+// GetBindDnOk returns a tuple with the BindDn field value
 // and a boolean to check if the value has been set.
 func (o *UpdateLdapTarget) GetBindDnOk() (*string, bool) {
-	if o == nil || o.BindDn == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.BindDn, true
+	return &o.BindDn, true
 }
 
-// HasBindDn returns a boolean if a field has been set.
-func (o *UpdateLdapTarget) HasBindDn() bool {
-	if o != nil && o.BindDn != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBindDn gets a reference to the given string and assigns it to the BindDn field.
+// SetBindDn sets field value
 func (o *UpdateLdapTarget) SetBindDn(v string) {
-	o.BindDn = &v
+	o.BindDn = v
 }
 
-// GetBindDnPassword returns the BindDnPassword field value if set, zero value otherwise.
+// GetBindDnPassword returns the BindDnPassword field value
 func (o *UpdateLdapTarget) GetBindDnPassword() string {
-	if o == nil || o.BindDnPassword == nil {
+	if o == nil  {
 		var ret string
 		return ret
 	}
-	return *o.BindDnPassword
+
+	return o.BindDnPassword
 }
 
-// GetBindDnPasswordOk returns a tuple with the BindDnPassword field value if set, nil otherwise
+// GetBindDnPasswordOk returns a tuple with the BindDnPassword field value
 // and a boolean to check if the value has been set.
 func (o *UpdateLdapTarget) GetBindDnPasswordOk() (*string, bool) {
-	if o == nil || o.BindDnPassword == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.BindDnPassword, true
+	return &o.BindDnPassword, true
 }
 
-// HasBindDnPassword returns a boolean if a field has been set.
-func (o *UpdateLdapTarget) HasBindDnPassword() bool {
-	if o != nil && o.BindDnPassword != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBindDnPassword gets a reference to the given string and assigns it to the BindDnPassword field.
+// SetBindDnPassword sets field value
 func (o *UpdateLdapTarget) SetBindDnPassword(v string) {
-	o.BindDnPassword = &v
+	o.BindDnPassword = v
 }
 
 // GetComment returns the Comment field value if set, zero value otherwise.
@@ -326,36 +318,28 @@ func (o *UpdateLdapTarget) SetLdapCaCert(v string) {
 	o.LdapCaCert = &v
 }
 
-// GetLdapUrl returns the LdapUrl field value if set, zero value otherwise.
+// GetLdapUrl returns the LdapUrl field value
 func (o *UpdateLdapTarget) GetLdapUrl() string {
-	if o == nil || o.LdapUrl == nil {
+	if o == nil  {
 		var ret string
 		return ret
 	}
-	return *o.LdapUrl
+
+	return o.LdapUrl
 }
 
-// GetLdapUrlOk returns a tuple with the LdapUrl field value if set, nil otherwise
+// GetLdapUrlOk returns a tuple with the LdapUrl field value
 // and a boolean to check if the value has been set.
 func (o *UpdateLdapTarget) GetLdapUrlOk() (*string, bool) {
-	if o == nil || o.LdapUrl == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.LdapUrl, true
+	return &o.LdapUrl, true
 }
 
-// HasLdapUrl returns a boolean if a field has been set.
-func (o *UpdateLdapTarget) HasLdapUrl() bool {
-	if o != nil && o.LdapUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLdapUrl gets a reference to the given string and assigns it to the LdapUrl field.
+// SetLdapUrl sets field value
 func (o *UpdateLdapTarget) SetLdapUrl(v string) {
-	o.LdapUrl = &v
+	o.LdapUrl = v
 }
 
 // GetMaxVersions returns the MaxVersions field value if set, zero value otherwise.
@@ -608,10 +592,10 @@ func (o *UpdateLdapTarget) SetUpdateVersion(v bool) {
 
 func (o UpdateLdapTarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.BindDn != nil {
+	if true {
 		toSerialize["bind-dn"] = o.BindDn
 	}
-	if o.BindDnPassword != nil {
+	if true {
 		toSerialize["bind-dn-password"] = o.BindDnPassword
 	}
 	if o.Comment != nil {
@@ -632,7 +616,7 @@ func (o UpdateLdapTarget) MarshalJSON() ([]byte, error) {
 	if o.LdapCaCert != nil {
 		toSerialize["ldap-ca-cert"] = o.LdapCaCert
 	}
-	if o.LdapUrl != nil {
+	if true {
 		toSerialize["ldap-url"] = o.LdapUrl
 	}
 	if o.MaxVersions != nil {

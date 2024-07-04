@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// DeleteAuthMethod struct for DeleteAuthMethod
+// DeleteAuthMethod deleteAuthMethod is a command that deletes the auth method. [Deprecated: Use auth-method-delete command]
 type DeleteAuthMethod struct {
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`

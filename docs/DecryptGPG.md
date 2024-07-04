@@ -4,8 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ciphertext** | **string** | Ciphertext to be decrypted in base64 encoded format | 
+**Ciphertext** | **string** | Ciphertext to be decrypted | 
 **DisplayId** | Pointer to **string** | The display id of the key to use in the decryption process | [optional] 
+**InputFormat** | Pointer to **string** | Select default assumed format for the ciphertext. Currently supported options: [base64,raw] | [optional] [default to "base64"]
 **ItemId** | Pointer to **int64** | The item id of the key to use in the decryption process | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeyName** | **string** | The name of the key to use in the decryption process | 
@@ -77,6 +78,31 @@ SetDisplayId sets DisplayId field to given value.
 `func (o *DecryptGPG) HasDisplayId() bool`
 
 HasDisplayId returns a boolean if a field has been set.
+
+### GetInputFormat
+
+`func (o *DecryptGPG) GetInputFormat() string`
+
+GetInputFormat returns the InputFormat field if non-nil, zero value otherwise.
+
+### GetInputFormatOk
+
+`func (o *DecryptGPG) GetInputFormatOk() (*string, bool)`
+
+GetInputFormatOk returns a tuple with the InputFormat field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInputFormat
+
+`func (o *DecryptGPG) SetInputFormat(v string)`
+
+SetInputFormat sets InputFormat field to given value.
+
+### HasInputFormat
+
+`func (o *DecryptGPG) HasInputFormat() bool`
+
+HasInputFormat returns a boolean if a field has been set.
 
 ### GetItemId
 

@@ -19,7 +19,6 @@ Name | Type | Description | Notes
 **K8sPubKeysPem** | Pointer to **[]string** | K8SPublicKeysPEM is the list of public key in PEM format | [optional] 
 **K8sTokenReviewerJwt** | Pointer to **string** | K8STokenReviewerJWT is the bearer for clusterApiTypeK8s, used during TokenReview API call | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**ProtectionKey** | Pointer to **string** |  | [optional] 
 **RancherApiKey** | Pointer to **string** | RancherApiKey the bear token for clusterApiTypeRancher | [optional] 
 **RancherClusterId** | Pointer to **string** | RancherClusterId cluster id as define in rancher (in case of clusterApiTypeRancher) | [optional] 
 **UseLocalCaJwt** | Pointer to **bool** | UseLocalCAJwt is an optional parameter to set defaulting to using the local service account when running in a Kubernetes pod | [optional] 
@@ -417,31 +416,6 @@ SetName sets Name field to given value.
 `func (o *K8SAuth) HasName() bool`
 
 HasName returns a boolean if a field has been set.
-
-### GetProtectionKey
-
-`func (o *K8SAuth) GetProtectionKey() string`
-
-GetProtectionKey returns the ProtectionKey field if non-nil, zero value otherwise.
-
-### GetProtectionKeyOk
-
-`func (o *K8SAuth) GetProtectionKeyOk() (*string, bool)`
-
-GetProtectionKeyOk returns a tuple with the ProtectionKey field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProtectionKey
-
-`func (o *K8SAuth) SetProtectionKey(v string)`
-
-SetProtectionKey sets ProtectionKey field to given value.
-
-### HasProtectionKey
-
-`func (o *K8SAuth) HasProtectionKey() bool`
-
-HasProtectionKey returns a boolean if a field has been set.
 
 ### GetRancherApiKey
 

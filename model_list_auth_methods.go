@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// ListAuthMethods listAuthMethods is a command that returns a list of all auth methods in the account.
+// ListAuthMethods listAuthMethods is a command that returns a list of all auth methods in the account. [Deprecated: Use auth-method-list command]
 type ListAuthMethods struct {
 	// Filter by auth method name or part of it
 	Filter *string `json:"filter,omitempty"`

@@ -24,6 +24,8 @@ type SecureRemoteAccess struct {
 	BastionIssuer *string `json:"bastion_issuer,omitempty"`
 	BastionIssuerId *int64 `json:"bastion_issuer_id,omitempty"`
 	BastionSsh *string `json:"bastion_ssh,omitempty"`
+	BlockConcurrentConnections *bool `json:"block_concurrent_connections,omitempty"`
+	BlockConcurrentConnectionsLevel *string `json:"block_concurrent_connections_level,omitempty"`
 	Category *string `json:"category,omitempty"`
 	DashboardUrl *string `json:"dashboard_url,omitempty"`
 	DbName *string `json:"db_name,omitempty"`
@@ -291,6 +293,70 @@ func (o *SecureRemoteAccess) HasBastionSsh() bool {
 // SetBastionSsh gets a reference to the given string and assigns it to the BastionSsh field.
 func (o *SecureRemoteAccess) SetBastionSsh(v string) {
 	o.BastionSsh = &v
+}
+
+// GetBlockConcurrentConnections returns the BlockConcurrentConnections field value if set, zero value otherwise.
+func (o *SecureRemoteAccess) GetBlockConcurrentConnections() bool {
+	if o == nil || o.BlockConcurrentConnections == nil {
+		var ret bool
+		return ret
+	}
+	return *o.BlockConcurrentConnections
+}
+
+// GetBlockConcurrentConnectionsOk returns a tuple with the BlockConcurrentConnections field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SecureRemoteAccess) GetBlockConcurrentConnectionsOk() (*bool, bool) {
+	if o == nil || o.BlockConcurrentConnections == nil {
+		return nil, false
+	}
+	return o.BlockConcurrentConnections, true
+}
+
+// HasBlockConcurrentConnections returns a boolean if a field has been set.
+func (o *SecureRemoteAccess) HasBlockConcurrentConnections() bool {
+	if o != nil && o.BlockConcurrentConnections != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBlockConcurrentConnections gets a reference to the given bool and assigns it to the BlockConcurrentConnections field.
+func (o *SecureRemoteAccess) SetBlockConcurrentConnections(v bool) {
+	o.BlockConcurrentConnections = &v
+}
+
+// GetBlockConcurrentConnectionsLevel returns the BlockConcurrentConnectionsLevel field value if set, zero value otherwise.
+func (o *SecureRemoteAccess) GetBlockConcurrentConnectionsLevel() string {
+	if o == nil || o.BlockConcurrentConnectionsLevel == nil {
+		var ret string
+		return ret
+	}
+	return *o.BlockConcurrentConnectionsLevel
+}
+
+// GetBlockConcurrentConnectionsLevelOk returns a tuple with the BlockConcurrentConnectionsLevel field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SecureRemoteAccess) GetBlockConcurrentConnectionsLevelOk() (*string, bool) {
+	if o == nil || o.BlockConcurrentConnectionsLevel == nil {
+		return nil, false
+	}
+	return o.BlockConcurrentConnectionsLevel, true
+}
+
+// HasBlockConcurrentConnectionsLevel returns a boolean if a field has been set.
+func (o *SecureRemoteAccess) HasBlockConcurrentConnectionsLevel() bool {
+	if o != nil && o.BlockConcurrentConnectionsLevel != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBlockConcurrentConnectionsLevel gets a reference to the given string and assigns it to the BlockConcurrentConnectionsLevel field.
+func (o *SecureRemoteAccess) SetBlockConcurrentConnectionsLevel(v string) {
+	o.BlockConcurrentConnectionsLevel = &v
 }
 
 // GetCategory returns the Category field value if set, zero value otherwise.
@@ -1147,6 +1213,12 @@ func (o SecureRemoteAccess) MarshalJSON() ([]byte, error) {
 	}
 	if o.BastionSsh != nil {
 		toSerialize["bastion_ssh"] = o.BastionSsh
+	}
+	if o.BlockConcurrentConnections != nil {
+		toSerialize["block_concurrent_connections"] = o.BlockConcurrentConnections
+	}
+	if o.BlockConcurrentConnectionsLevel != nil {
+		toSerialize["block_concurrent_connections_level"] = o.BlockConcurrentConnectionsLevel
 	}
 	if o.Category != nil {
 		toSerialize["category"] = o.Category

@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// CreateGodaddyTarget struct for CreateGodaddyTarget
+// CreateGodaddyTarget createGodaddyTarget is a command that creates a new target. [Deprecated: Use target-create-godaddy command]
 type CreateGodaddyTarget struct {
 	// Key of the api credentials to the Godaddy account
 	ApiKey string `json:"api-key"`

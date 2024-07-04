@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// CreateGlobalSignAtlasTarget struct for CreateGlobalSignAtlasTarget
+// CreateGlobalSignAtlasTarget createGlobalSignAtlasTarget is a command that creates a new target. [Deprecated: Use target-create-globalsign-atlas command]
 type CreateGlobalSignAtlasTarget struct {
 	// API Key of the GlobalSign Atlas account
 	ApiKey string `json:"api-key"`

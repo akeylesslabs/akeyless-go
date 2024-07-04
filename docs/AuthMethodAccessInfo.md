@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **AccessExpires** | Pointer to **int64** |  | [optional] 
 **AccessIdAlias** | Pointer to **string** | for accounts where AccessId holds encrypted email this field will hold generated AccessId, for accounts based on regular AccessId it will be equal to accessId itself | [optional] 
 **ApiKeyAccessRules** | Pointer to [**APIKeyAccessRules**](APIKeyAccessRules.md) |  | [optional] 
+**AuditLogsClaims** | Pointer to **[]string** |  | [optional] 
 **AwsIamAccessRules** | Pointer to [**AWSIAMAccessRules**](AWSIAMAccessRules.md) |  | [optional] 
 **AzureAdAccessRules** | Pointer to [**AzureADAccessRules**](AzureADAccessRules.md) |  | [optional] 
 **CertAccessRules** | Pointer to [**CertAccessRules**](CertAccessRules.md) |  | [optional] 
@@ -121,6 +122,31 @@ SetApiKeyAccessRules sets ApiKeyAccessRules field to given value.
 `func (o *AuthMethodAccessInfo) HasApiKeyAccessRules() bool`
 
 HasApiKeyAccessRules returns a boolean if a field has been set.
+
+### GetAuditLogsClaims
+
+`func (o *AuthMethodAccessInfo) GetAuditLogsClaims() []string`
+
+GetAuditLogsClaims returns the AuditLogsClaims field if non-nil, zero value otherwise.
+
+### GetAuditLogsClaimsOk
+
+`func (o *AuthMethodAccessInfo) GetAuditLogsClaimsOk() (*[]string, bool)`
+
+GetAuditLogsClaimsOk returns a tuple with the AuditLogsClaims field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuditLogsClaims
+
+`func (o *AuthMethodAccessInfo) SetAuditLogsClaims(v []string)`
+
+SetAuditLogsClaims sets AuditLogsClaims field to given value.
+
+### HasAuditLogsClaims
+
+`func (o *AuthMethodAccessInfo) HasAuditLogsClaims() bool`
+
+HasAuditLogsClaims returns a boolean if a field has been set.
 
 ### GetAwsIamAccessRules
 

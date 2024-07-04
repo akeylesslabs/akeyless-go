@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// UpdateGithubTarget struct for UpdateGithubTarget
+// UpdateGithubTarget updateGithubTarget is a command that updates a new target. [Deprecated: Use target-update-github command]
 type UpdateGithubTarget struct {
 	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`

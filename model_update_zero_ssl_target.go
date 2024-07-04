@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// UpdateZeroSSLTarget struct for UpdateZeroSSLTarget
+// UpdateZeroSSLTarget updateZeroSSLTarget is a command that updates an existing target. [Deprecated: Use target-update-zerossl command]
 type UpdateZeroSSLTarget struct {
 	// API Key of the ZeroSSLTarget account
 	ApiKey string `json:"api-key"`

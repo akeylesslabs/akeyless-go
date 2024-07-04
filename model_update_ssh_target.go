@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// UpdateSSHTarget struct for UpdateSSHTarget
+// UpdateSSHTarget updateSSHTarget is a command that updates an existing target. [Deprecated: Use target-update-ssh command]
 type UpdateSSHTarget struct {
 	// Description of the object
 	Description *string `json:"description,omitempty"`

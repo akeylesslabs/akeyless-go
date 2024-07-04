@@ -34,6 +34,8 @@ type GenerateCsr struct {
 	Dep *string `json:"dep,omitempty"`
 	// A comma-separated list of email addresses alternative names
 	EmailAddresses *string `json:"email-addresses,omitempty"`
+	// The flag to indicate if the private key should be exported
+	ExportPrivateKey *bool `json:"export-private-key,omitempty"`
 	// Generate a new classic key for the csr
 	GenerateKey *bool `json:"generate-key,omitempty"`
 	// A comma-separated list of ip addresses alternative names
@@ -65,6 +67,8 @@ type GenerateCsr struct {
 func NewGenerateCsr(commonName string, keyType string, name string, ) *GenerateCsr {
 	this := GenerateCsr{}
 	this.CommonName = commonName
+	var exportPrivateKey bool = false
+	this.ExportPrivateKey = &exportPrivateKey
 	var json bool = false
 	this.Json = &json
 	this.KeyType = keyType
@@ -79,6 +83,8 @@ func NewGenerateCsr(commonName string, keyType string, name string, ) *GenerateC
 // but it doesn't guarantee that properties required by API are set
 func NewGenerateCsrWithDefaults() *GenerateCsr {
 	this := GenerateCsr{}
+	var exportPrivateKey bool = false
+	this.ExportPrivateKey = &exportPrivateKey
 	var json bool = false
 	this.Json = &json
 	var keyType string = "classic-key"
@@ -366,6 +372,38 @@ func (o *GenerateCsr) HasEmailAddresses() bool {
 // SetEmailAddresses gets a reference to the given string and assigns it to the EmailAddresses field.
 func (o *GenerateCsr) SetEmailAddresses(v string) {
 	o.EmailAddresses = &v
+}
+
+// GetExportPrivateKey returns the ExportPrivateKey field value if set, zero value otherwise.
+func (o *GenerateCsr) GetExportPrivateKey() bool {
+	if o == nil || o.ExportPrivateKey == nil {
+		var ret bool
+		return ret
+	}
+	return *o.ExportPrivateKey
+}
+
+// GetExportPrivateKeyOk returns a tuple with the ExportPrivateKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GenerateCsr) GetExportPrivateKeyOk() (*bool, bool) {
+	if o == nil || o.ExportPrivateKey == nil {
+		return nil, false
+	}
+	return o.ExportPrivateKey, true
+}
+
+// HasExportPrivateKey returns a boolean if a field has been set.
+func (o *GenerateCsr) HasExportPrivateKey() bool {
+	if o != nil && o.ExportPrivateKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExportPrivateKey gets a reference to the given bool and assigns it to the ExportPrivateKey field.
+func (o *GenerateCsr) SetExportPrivateKey(v bool) {
+	o.ExportPrivateKey = &v
 }
 
 // GetGenerateKey returns the GenerateKey field value if set, zero value otherwise.
@@ -732,6 +770,9 @@ func (o GenerateCsr) MarshalJSON() ([]byte, error) {
 	}
 	if o.EmailAddresses != nil {
 		toSerialize["email-addresses"] = o.EmailAddresses
+	}
+	if o.ExportPrivateKey != nil {
+		toSerialize["export-private-key"] = o.ExportPrivateKey
 	}
 	if o.GenerateKey != nil {
 		toSerialize["generate-key"] = o.GenerateKey

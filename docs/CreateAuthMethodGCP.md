@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessExpires** | Pointer to **int64** | Access expiration date in Unix timestamp (select 0 for access without expiry date) | [optional] [default to 0]
 **Audience** | **string** | The audience to verify in the JWT received by the client | [default to "akeyless.io"]
+**AuditLogsClaims** | Pointer to **[]string** | Subclaims to include in audit logs, e.g \&quot;--audit-logs-claims email --audit-logs-claims username\&quot; | [optional] 
 **BoundIps** | Pointer to **[]string** | A CIDR whitelist with the IPs that the access is restricted to | [optional] 
 **BoundLabels** | Pointer to **[]string** | A comma-separated list of GCP labels formatted as \&quot;key:value\&quot; strings that must be set on authorized GCE instances. TODO: Because GCP labels are not currently ACL&#39;d .... | [optional] 
 **BoundProjects** | Pointer to **[]string** | &#x3D;&#x3D;&#x3D; Human and Machine authentication section &#x3D;&#x3D;&#x3D; Array of GCP project IDs. Only entities belonging to any of the provided projects can authenticate. | [optional] 
@@ -87,6 +88,31 @@ and a boolean to check if the value has been set.
 
 SetAudience sets Audience field to given value.
 
+
+### GetAuditLogsClaims
+
+`func (o *CreateAuthMethodGCP) GetAuditLogsClaims() []string`
+
+GetAuditLogsClaims returns the AuditLogsClaims field if non-nil, zero value otherwise.
+
+### GetAuditLogsClaimsOk
+
+`func (o *CreateAuthMethodGCP) GetAuditLogsClaimsOk() (*[]string, bool)`
+
+GetAuditLogsClaimsOk returns a tuple with the AuditLogsClaims field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuditLogsClaims
+
+`func (o *CreateAuthMethodGCP) SetAuditLogsClaims(v []string)`
+
+SetAuditLogsClaims sets AuditLogsClaims field to given value.
+
+### HasAuditLogsClaims
+
+`func (o *CreateAuthMethodGCP) HasAuditLogsClaims() bool`
+
+HasAuditLogsClaims returns a boolean if a field has been set.
 
 ### GetBoundIps
 

@@ -107,6 +107,14 @@ Name | Type | Description | Notes
 **GithubInstallationTokenRepositoriesIds** | Pointer to **[]int64** |  | [optional] 
 **GithubOrganizationName** | Pointer to **string** |  | [optional] 
 **GithubRepositoryPath** | Pointer to **string** |  | [optional] 
+**GitlabAccessToken** | Pointer to **string** |  | [optional] 
+**GitlabAccessType** | Pointer to **string** |  | [optional] 
+**GitlabCertificate** | Pointer to **string** |  | [optional] 
+**GitlabGroupName** | Pointer to **string** |  | [optional] 
+**GitlabProjectName** | Pointer to **string** |  | [optional] 
+**GitlabRole** | Pointer to **string** |  | [optional] 
+**GitlabTokenScope** | Pointer to **[]string** |  | [optional] 
+**GitlabUrl** | Pointer to **string** |  | [optional] 
 **GkeClusterCaCertificate** | Pointer to **string** |  | [optional] 
 **GkeClusterEndpoint** | Pointer to **string** |  | [optional] 
 **GkeClusterName** | Pointer to **string** |  | [optional] 
@@ -2827,6 +2835,206 @@ SetGithubRepositoryPath sets GithubRepositoryPath field to given value.
 `func (o *DSProducerDetails) HasGithubRepositoryPath() bool`
 
 HasGithubRepositoryPath returns a boolean if a field has been set.
+
+### GetGitlabAccessToken
+
+`func (o *DSProducerDetails) GetGitlabAccessToken() string`
+
+GetGitlabAccessToken returns the GitlabAccessToken field if non-nil, zero value otherwise.
+
+### GetGitlabAccessTokenOk
+
+`func (o *DSProducerDetails) GetGitlabAccessTokenOk() (*string, bool)`
+
+GetGitlabAccessTokenOk returns a tuple with the GitlabAccessToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGitlabAccessToken
+
+`func (o *DSProducerDetails) SetGitlabAccessToken(v string)`
+
+SetGitlabAccessToken sets GitlabAccessToken field to given value.
+
+### HasGitlabAccessToken
+
+`func (o *DSProducerDetails) HasGitlabAccessToken() bool`
+
+HasGitlabAccessToken returns a boolean if a field has been set.
+
+### GetGitlabAccessType
+
+`func (o *DSProducerDetails) GetGitlabAccessType() string`
+
+GetGitlabAccessType returns the GitlabAccessType field if non-nil, zero value otherwise.
+
+### GetGitlabAccessTypeOk
+
+`func (o *DSProducerDetails) GetGitlabAccessTypeOk() (*string, bool)`
+
+GetGitlabAccessTypeOk returns a tuple with the GitlabAccessType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGitlabAccessType
+
+`func (o *DSProducerDetails) SetGitlabAccessType(v string)`
+
+SetGitlabAccessType sets GitlabAccessType field to given value.
+
+### HasGitlabAccessType
+
+`func (o *DSProducerDetails) HasGitlabAccessType() bool`
+
+HasGitlabAccessType returns a boolean if a field has been set.
+
+### GetGitlabCertificate
+
+`func (o *DSProducerDetails) GetGitlabCertificate() string`
+
+GetGitlabCertificate returns the GitlabCertificate field if non-nil, zero value otherwise.
+
+### GetGitlabCertificateOk
+
+`func (o *DSProducerDetails) GetGitlabCertificateOk() (*string, bool)`
+
+GetGitlabCertificateOk returns a tuple with the GitlabCertificate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGitlabCertificate
+
+`func (o *DSProducerDetails) SetGitlabCertificate(v string)`
+
+SetGitlabCertificate sets GitlabCertificate field to given value.
+
+### HasGitlabCertificate
+
+`func (o *DSProducerDetails) HasGitlabCertificate() bool`
+
+HasGitlabCertificate returns a boolean if a field has been set.
+
+### GetGitlabGroupName
+
+`func (o *DSProducerDetails) GetGitlabGroupName() string`
+
+GetGitlabGroupName returns the GitlabGroupName field if non-nil, zero value otherwise.
+
+### GetGitlabGroupNameOk
+
+`func (o *DSProducerDetails) GetGitlabGroupNameOk() (*string, bool)`
+
+GetGitlabGroupNameOk returns a tuple with the GitlabGroupName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGitlabGroupName
+
+`func (o *DSProducerDetails) SetGitlabGroupName(v string)`
+
+SetGitlabGroupName sets GitlabGroupName field to given value.
+
+### HasGitlabGroupName
+
+`func (o *DSProducerDetails) HasGitlabGroupName() bool`
+
+HasGitlabGroupName returns a boolean if a field has been set.
+
+### GetGitlabProjectName
+
+`func (o *DSProducerDetails) GetGitlabProjectName() string`
+
+GetGitlabProjectName returns the GitlabProjectName field if non-nil, zero value otherwise.
+
+### GetGitlabProjectNameOk
+
+`func (o *DSProducerDetails) GetGitlabProjectNameOk() (*string, bool)`
+
+GetGitlabProjectNameOk returns a tuple with the GitlabProjectName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGitlabProjectName
+
+`func (o *DSProducerDetails) SetGitlabProjectName(v string)`
+
+SetGitlabProjectName sets GitlabProjectName field to given value.
+
+### HasGitlabProjectName
+
+`func (o *DSProducerDetails) HasGitlabProjectName() bool`
+
+HasGitlabProjectName returns a boolean if a field has been set.
+
+### GetGitlabRole
+
+`func (o *DSProducerDetails) GetGitlabRole() string`
+
+GetGitlabRole returns the GitlabRole field if non-nil, zero value otherwise.
+
+### GetGitlabRoleOk
+
+`func (o *DSProducerDetails) GetGitlabRoleOk() (*string, bool)`
+
+GetGitlabRoleOk returns a tuple with the GitlabRole field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGitlabRole
+
+`func (o *DSProducerDetails) SetGitlabRole(v string)`
+
+SetGitlabRole sets GitlabRole field to given value.
+
+### HasGitlabRole
+
+`func (o *DSProducerDetails) HasGitlabRole() bool`
+
+HasGitlabRole returns a boolean if a field has been set.
+
+### GetGitlabTokenScope
+
+`func (o *DSProducerDetails) GetGitlabTokenScope() []string`
+
+GetGitlabTokenScope returns the GitlabTokenScope field if non-nil, zero value otherwise.
+
+### GetGitlabTokenScopeOk
+
+`func (o *DSProducerDetails) GetGitlabTokenScopeOk() (*[]string, bool)`
+
+GetGitlabTokenScopeOk returns a tuple with the GitlabTokenScope field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGitlabTokenScope
+
+`func (o *DSProducerDetails) SetGitlabTokenScope(v []string)`
+
+SetGitlabTokenScope sets GitlabTokenScope field to given value.
+
+### HasGitlabTokenScope
+
+`func (o *DSProducerDetails) HasGitlabTokenScope() bool`
+
+HasGitlabTokenScope returns a boolean if a field has been set.
+
+### GetGitlabUrl
+
+`func (o *DSProducerDetails) GetGitlabUrl() string`
+
+GetGitlabUrl returns the GitlabUrl field if non-nil, zero value otherwise.
+
+### GetGitlabUrlOk
+
+`func (o *DSProducerDetails) GetGitlabUrlOk() (*string, bool)`
+
+GetGitlabUrlOk returns a tuple with the GitlabUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGitlabUrl
+
+`func (o *DSProducerDetails) SetGitlabUrl(v string)`
+
+SetGitlabUrl sets GitlabUrl field to given value.
+
+### HasGitlabUrl
+
+`func (o *DSProducerDetails) HasGitlabUrl() bool`
+
+HasGitlabUrl returns a boolean if a field has been set.
 
 ### GetGkeClusterCaCertificate
 

@@ -19,6 +19,7 @@ import (
 type ExportClassicKeyOutput struct {
 	CertificatePem *string `json:"certificatePem,omitempty"`
 	Key *string `json:"key,omitempty"`
+	Ssh *string `json:"ssh,omitempty"`
 }
 
 // NewExportClassicKeyOutput instantiates a new ExportClassicKeyOutput object
@@ -102,6 +103,38 @@ func (o *ExportClassicKeyOutput) SetKey(v string) {
 	o.Key = &v
 }
 
+// GetSsh returns the Ssh field value if set, zero value otherwise.
+func (o *ExportClassicKeyOutput) GetSsh() string {
+	if o == nil || o.Ssh == nil {
+		var ret string
+		return ret
+	}
+	return *o.Ssh
+}
+
+// GetSshOk returns a tuple with the Ssh field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ExportClassicKeyOutput) GetSshOk() (*string, bool) {
+	if o == nil || o.Ssh == nil {
+		return nil, false
+	}
+	return o.Ssh, true
+}
+
+// HasSsh returns a boolean if a field has been set.
+func (o *ExportClassicKeyOutput) HasSsh() bool {
+	if o != nil && o.Ssh != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSsh gets a reference to the given string and assigns it to the Ssh field.
+func (o *ExportClassicKeyOutput) SetSsh(v string) {
+	o.Ssh = &v
+}
+
 func (o ExportClassicKeyOutput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.CertificatePem != nil {
@@ -109,6 +142,9 @@ func (o ExportClassicKeyOutput) MarshalJSON() ([]byte, error) {
 	}
 	if o.Key != nil {
 		toSerialize["key"] = o.Key
+	}
+	if o.Ssh != nil {
+		toSerialize["ssh"] = o.Ssh
 	}
 	return json.Marshal(toSerialize)
 }

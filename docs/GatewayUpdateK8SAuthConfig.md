@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessId** | **string** | The access ID of the Kubernetes auth method | 
 **ClusterApiType** | Pointer to **string** | Cluster access type. options: [native_k8s, rancher] | [optional] [default to "native_k8s"]
-**ConfigEncryptionKeyName** | Pointer to **string** | Config encryption key | [optional] 
 **DisableIssuerValidation** | Pointer to **string** | Disable issuer validation [true/false] | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **K8sAuthType** | Pointer to **string** | K8S auth type [token/certificate]. (relevant for \&quot;native_k8s\&quot; only) | [optional] [default to "token"]
@@ -89,31 +88,6 @@ SetClusterApiType sets ClusterApiType field to given value.
 `func (o *GatewayUpdateK8SAuthConfig) HasClusterApiType() bool`
 
 HasClusterApiType returns a boolean if a field has been set.
-
-### GetConfigEncryptionKeyName
-
-`func (o *GatewayUpdateK8SAuthConfig) GetConfigEncryptionKeyName() string`
-
-GetConfigEncryptionKeyName returns the ConfigEncryptionKeyName field if non-nil, zero value otherwise.
-
-### GetConfigEncryptionKeyNameOk
-
-`func (o *GatewayUpdateK8SAuthConfig) GetConfigEncryptionKeyNameOk() (*string, bool)`
-
-GetConfigEncryptionKeyNameOk returns a tuple with the ConfigEncryptionKeyName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetConfigEncryptionKeyName
-
-`func (o *GatewayUpdateK8SAuthConfig) SetConfigEncryptionKeyName(v string)`
-
-SetConfigEncryptionKeyName sets ConfigEncryptionKeyName field to given value.
-
-### HasConfigEncryptionKeyName
-
-`func (o *GatewayUpdateK8SAuthConfig) HasConfigEncryptionKeyName() bool`
-
-HasConfigEncryptionKeyName returns a boolean if a field has been set.
 
 ### GetDisableIssuerValidation
 

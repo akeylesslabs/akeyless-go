@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// CreateAWSTarget struct for CreateAWSTarget
+// CreateAWSTarget createAWSTarget is a command that creates a new target. [Deprecated: Use target-create-aws command]
 type CreateAWSTarget struct {
 	// AWS secret access key
 	AccessKey string `json:"access-key"`

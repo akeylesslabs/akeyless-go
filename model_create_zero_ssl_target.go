@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// CreateZeroSSLTarget struct for CreateZeroSSLTarget
+// CreateZeroSSLTarget createZeroSSLTarget is a command that creates a new target. [Deprecated: Use target-create-zerossl command]
 type CreateZeroSSLTarget struct {
 	// API Key of the ZeroSSLTarget account
 	ApiKey string `json:"api-key"`

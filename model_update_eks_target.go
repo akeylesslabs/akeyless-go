@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// UpdateEKSTarget struct for UpdateEKSTarget
+// UpdateEKSTarget updateEKSTarget is a command that updates an existing target. [Deprecated: Use target-update-eks command]
 type UpdateEKSTarget struct {
 	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`

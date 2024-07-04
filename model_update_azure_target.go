@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// UpdateAzureTarget struct for UpdateAzureTarget
+// UpdateAzureTarget updateAzureTarget is a command that updates an existing target. [Deprecated: Use target-update-azure command]
 type UpdateAzureTarget struct {
 	ClientId *string `json:"client-id,omitempty"`
 	ClientSecret *string `json:"client-secret,omitempty"`

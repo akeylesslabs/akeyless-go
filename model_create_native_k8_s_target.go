@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// CreateNativeK8STarget struct for CreateNativeK8STarget
+// CreateNativeK8STarget createNativeK8STarget is a command that creates a new target. [Deprecated: Use target-create-k8s command]
 type CreateNativeK8STarget struct {
 	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`

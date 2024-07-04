@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// CreateRabbitMQTarget struct for CreateRabbitMQTarget
+// CreateRabbitMQTarget createRabbitMQTarget is a command that creates a new target. [Deprecated: Use target-create-rabbitmq command]
 type CreateRabbitMQTarget struct {
 	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`

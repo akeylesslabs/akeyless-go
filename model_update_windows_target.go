@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// UpdateWindowsTarget struct for UpdateWindowsTarget
+// UpdateWindowsTarget updateWindowsTarget is a command that updates an existing windows target. [Deprecated: Use target-update-windows command]
 type UpdateWindowsTarget struct {
 	// SSL CA certificate in base64 encoding generated from a trusted Certificate Authority (CA)
 	Certificate *string `json:"certificate,omitempty"`

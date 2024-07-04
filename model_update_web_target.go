@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// UpdateWebTarget struct for UpdateWebTarget
+// UpdateWebTarget updateWebTarget is a command that updates an existing target. [Deprecated: Use target-update-web command]
 type UpdateWebTarget struct {
 	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`

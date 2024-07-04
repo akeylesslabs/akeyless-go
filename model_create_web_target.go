@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// CreateWebTarget struct for CreateWebTarget
+// CreateWebTarget createWebTarget is a command that creates a new target. [Deprecated: Use target-create-web command]
 type CreateWebTarget struct {
 	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`

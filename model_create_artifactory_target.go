@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// CreateArtifactoryTarget struct for CreateArtifactoryTarget
+// CreateArtifactoryTarget createArtifactoryTarget is a command that creates a new target. [Deprecated: Use target-create-artifactory command]
 type CreateArtifactoryTarget struct {
 	// Artifactory Admin Name
 	ArtifactoryAdminName string `json:"artifactory-admin-name"`

@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **UseDefaultIdentityBool** | Pointer to **bool** |  | [optional] 
 **AccessId** | Pointer to **string** | The access ID of the Kubernetes auth method | [optional] 
-**ConfigEncryptionKeyName** | Pointer to **string** | Config encryption key | [optional] 
 **DisableIssuerValidation** | Pointer to **string** | Disable issuer validation [true/false] | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **K8sAuthType** | Pointer to **string** | K8S auth type [token/certificate]. (relevant for \&quot;native_k8s\&quot; only) | [optional] [default to "token"]
@@ -94,31 +93,6 @@ SetAccessId sets AccessId field to given value.
 `func (o *GatewayPartialUpdateK8SAuthConfig) HasAccessId() bool`
 
 HasAccessId returns a boolean if a field has been set.
-
-### GetConfigEncryptionKeyName
-
-`func (o *GatewayPartialUpdateK8SAuthConfig) GetConfigEncryptionKeyName() string`
-
-GetConfigEncryptionKeyName returns the ConfigEncryptionKeyName field if non-nil, zero value otherwise.
-
-### GetConfigEncryptionKeyNameOk
-
-`func (o *GatewayPartialUpdateK8SAuthConfig) GetConfigEncryptionKeyNameOk() (*string, bool)`
-
-GetConfigEncryptionKeyNameOk returns a tuple with the ConfigEncryptionKeyName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetConfigEncryptionKeyName
-
-`func (o *GatewayPartialUpdateK8SAuthConfig) SetConfigEncryptionKeyName(v string)`
-
-SetConfigEncryptionKeyName sets ConfigEncryptionKeyName field to given value.
-
-### HasConfigEncryptionKeyName
-
-`func (o *GatewayPartialUpdateK8SAuthConfig) HasConfigEncryptionKeyName() bool`
-
-HasConfigEncryptionKeyName returns a boolean if a field has been set.
 
 ### GetDisableIssuerValidation
 

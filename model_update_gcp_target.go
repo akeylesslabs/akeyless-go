@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// UpdateGcpTarget struct for UpdateGcpTarget
+// UpdateGcpTarget updateGcpTarget is a command that updates an existing target. [Deprecated: Use target-update-gcp command]
 type UpdateGcpTarget struct {
 	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`

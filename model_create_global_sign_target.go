@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// CreateGlobalSignTarget struct for CreateGlobalSignTarget
+// CreateGlobalSignTarget createGlobalSignTarget is a command that creates a new target. [Deprecated: Use target-create-globalsign command]
 type CreateGlobalSignTarget struct {
 	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`

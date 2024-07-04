@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// UpdateGlobalSignTarget struct for UpdateGlobalSignTarget
+// UpdateGlobalSignTarget updateGlobalSignTarget is a command that updates an existing target. [Deprecated: Use target-update-globalsign command]
 type UpdateGlobalSignTarget struct {
 	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`

@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// UpdateRabbitMQTarget struct for UpdateRabbitMQTarget
+// UpdateRabbitMQTarget updateRabbitMQTarget is a command that updates a new target. [Deprecated: Use target-update-rabbitmq command]
 type UpdateRabbitMQTarget struct {
 	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`

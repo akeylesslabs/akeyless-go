@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// UpdateDBTarget struct for UpdateDBTarget
+// UpdateDBTarget updateDBTarget is a command that updates an existing target. [Deprecated: Use target-update-db command]
 type UpdateDBTarget struct {
 	DBDefinedConnectionType *string `json:"DBDefinedConnectionType,omitempty"`
 	// (Optional) Client id (relevant for \"cloud-service-provider\" only)

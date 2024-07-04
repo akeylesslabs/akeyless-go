@@ -21,6 +21,8 @@ type AccountGeneralSettings struct {
 	AccountDefaultKeyItemId *int64 `json:"account_default_key_item_id,omitempty"`
 	// AccountDefaultKeyName is the name of the DFC key item configured as the default key This is here simply for the response to include the item name in addition to the display ID so the client can properly show this to the user. It will not be saved to the DB, only the AccountDefaultKeyItemID will.
 	AccountDefaultKeyName *string `json:"account_default_key_name,omitempty"`
+	AllowedClientsIps *AllowedIpSettings `json:"allowed_clients_ips,omitempty"`
+	AllowedGatewaysIps *AllowedIpSettings `json:"allowed_gateways_ips,omitempty"`
 	AuthUsageEvent *UsageEventSetting `json:"auth_usage_event,omitempty"`
 	DataProtectionSection *DataProtectionSection `json:"data_protection_section,omitempty"`
 	DynamicSecretMaxTtl *DynamicSecretMaxTtl `json:"dynamic_secret_max_ttl,omitempty"`
@@ -115,6 +117,70 @@ func (o *AccountGeneralSettings) HasAccountDefaultKeyName() bool {
 // SetAccountDefaultKeyName gets a reference to the given string and assigns it to the AccountDefaultKeyName field.
 func (o *AccountGeneralSettings) SetAccountDefaultKeyName(v string) {
 	o.AccountDefaultKeyName = &v
+}
+
+// GetAllowedClientsIps returns the AllowedClientsIps field value if set, zero value otherwise.
+func (o *AccountGeneralSettings) GetAllowedClientsIps() AllowedIpSettings {
+	if o == nil || o.AllowedClientsIps == nil {
+		var ret AllowedIpSettings
+		return ret
+	}
+	return *o.AllowedClientsIps
+}
+
+// GetAllowedClientsIpsOk returns a tuple with the AllowedClientsIps field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountGeneralSettings) GetAllowedClientsIpsOk() (*AllowedIpSettings, bool) {
+	if o == nil || o.AllowedClientsIps == nil {
+		return nil, false
+	}
+	return o.AllowedClientsIps, true
+}
+
+// HasAllowedClientsIps returns a boolean if a field has been set.
+func (o *AccountGeneralSettings) HasAllowedClientsIps() bool {
+	if o != nil && o.AllowedClientsIps != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowedClientsIps gets a reference to the given AllowedIpSettings and assigns it to the AllowedClientsIps field.
+func (o *AccountGeneralSettings) SetAllowedClientsIps(v AllowedIpSettings) {
+	o.AllowedClientsIps = &v
+}
+
+// GetAllowedGatewaysIps returns the AllowedGatewaysIps field value if set, zero value otherwise.
+func (o *AccountGeneralSettings) GetAllowedGatewaysIps() AllowedIpSettings {
+	if o == nil || o.AllowedGatewaysIps == nil {
+		var ret AllowedIpSettings
+		return ret
+	}
+	return *o.AllowedGatewaysIps
+}
+
+// GetAllowedGatewaysIpsOk returns a tuple with the AllowedGatewaysIps field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountGeneralSettings) GetAllowedGatewaysIpsOk() (*AllowedIpSettings, bool) {
+	if o == nil || o.AllowedGatewaysIps == nil {
+		return nil, false
+	}
+	return o.AllowedGatewaysIps, true
+}
+
+// HasAllowedGatewaysIps returns a boolean if a field has been set.
+func (o *AccountGeneralSettings) HasAllowedGatewaysIps() bool {
+	if o != nil && o.AllowedGatewaysIps != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowedGatewaysIps gets a reference to the given AllowedIpSettings and assigns it to the AllowedGatewaysIps field.
+func (o *AccountGeneralSettings) SetAllowedGatewaysIps(v AllowedIpSettings) {
+	o.AllowedGatewaysIps = &v
 }
 
 // GetAuthUsageEvent returns the AuthUsageEvent field value if set, zero value otherwise.
@@ -476,6 +542,12 @@ func (o AccountGeneralSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.AccountDefaultKeyName != nil {
 		toSerialize["account_default_key_name"] = o.AccountDefaultKeyName
+	}
+	if o.AllowedClientsIps != nil {
+		toSerialize["allowed_clients_ips"] = o.AllowedClientsIps
+	}
+	if o.AllowedGatewaysIps != nil {
+		toSerialize["allowed_gateways_ips"] = o.AllowedGatewaysIps
 	}
 	if o.AuthUsageEvent != nil {
 		toSerialize["auth_usage_event"] = o.AuthUsageEvent

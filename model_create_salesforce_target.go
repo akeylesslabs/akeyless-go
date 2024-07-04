@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// CreateSalesforceTarget struct for CreateSalesforceTarget
+// CreateSalesforceTarget createSalesforceTarget is a command that creates a new target. [Deprecated: Use target-create-salesforce command]
 type CreateSalesforceTarget struct {
 	// Base64 encoded PEM of the connected app private key (relevant for JWT auth only)
 	AppPrivateKeyData *string `json:"app-private-key-data,omitempty"`

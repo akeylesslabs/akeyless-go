@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// CreateSSHTarget struct for CreateSSHTarget
+// CreateSSHTarget createSSHTarget is a command that creates a new target. [Deprecated: Use target-create-ssh command]
 type CreateSSHTarget struct {
 	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`

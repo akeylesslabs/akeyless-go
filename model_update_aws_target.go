@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// UpdateAWSTarget struct for UpdateAWSTarget
+// UpdateAWSTarget updateAWSTarget is a command that updates a new target. [Deprecated: Use target-update-aws command]
 type UpdateAWSTarget struct {
 	// AWS secret access key
 	AccessKey string `json:"access-key"`

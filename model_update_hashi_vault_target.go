@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// UpdateHashiVaultTarget struct for UpdateHashiVaultTarget
+// UpdateHashiVaultTarget updateHashiVaultTarget is a command that updates an existing target. [Deprecated: Use target-update-hashi-vault command]
 type UpdateHashiVaultTarget struct {
 	// Description of the object
 	Description *string `json:"description,omitempty"`

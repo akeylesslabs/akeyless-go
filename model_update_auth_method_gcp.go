@@ -15,12 +15,14 @@ import (
 	"encoding/json"
 )
 
-// UpdateAuthMethodGCP updateAuthMethodGCP is a command that updates a new auth method that will be able to authenticate using GCP IAM Service Account credentials or GCE instance credentials.
+// UpdateAuthMethodGCP updateAuthMethodGCP is a command that updates a new auth method that will be able to authenticate using GCP IAM Service Account credentials or GCE instance credentials. [Deprecated: Use auth-method-update-gcp command]
 type UpdateAuthMethodGCP struct {
 	// Access expiration date in Unix timestamp (select 0 for access without expiry date)
 	AccessExpires *int64 `json:"access-expires,omitempty"`
 	// The audience to verify in the JWT received by the client
 	Audience string `json:"audience"`
+	// Subclaims to include in audit logs, e.g \"--audit-logs-claims email --audit-logs-claims username\"
+	AuditLogsClaims *[]string `json:"audit-logs-claims,omitempty"`
 	// A CIDR whitelist with the IPs that the access is restricted to
 	BoundIps *[]string `json:"bound-ips,omitempty"`
 	// A comma-separated list of GCP labels formatted as \"key:value\" strings that must be set on authorized GCE instances. TODO: Because GCP labels are not currently ACL'd ....
@@ -147,6 +149,38 @@ func (o *UpdateAuthMethodGCP) GetAudienceOk() (*string, bool) {
 // SetAudience sets field value
 func (o *UpdateAuthMethodGCP) SetAudience(v string) {
 	o.Audience = v
+}
+
+// GetAuditLogsClaims returns the AuditLogsClaims field value if set, zero value otherwise.
+func (o *UpdateAuthMethodGCP) GetAuditLogsClaims() []string {
+	if o == nil || o.AuditLogsClaims == nil {
+		var ret []string
+		return ret
+	}
+	return *o.AuditLogsClaims
+}
+
+// GetAuditLogsClaimsOk returns a tuple with the AuditLogsClaims field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAuthMethodGCP) GetAuditLogsClaimsOk() (*[]string, bool) {
+	if o == nil || o.AuditLogsClaims == nil {
+		return nil, false
+	}
+	return o.AuditLogsClaims, true
+}
+
+// HasAuditLogsClaims returns a boolean if a field has been set.
+func (o *UpdateAuthMethodGCP) HasAuditLogsClaims() bool {
+	if o != nil && o.AuditLogsClaims != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAuditLogsClaims gets a reference to the given []string and assigns it to the AuditLogsClaims field.
+func (o *UpdateAuthMethodGCP) SetAuditLogsClaims(v []string) {
+	o.AuditLogsClaims = &v
 }
 
 // GetBoundIps returns the BoundIps field value if set, zero value otherwise.
@@ -716,6 +750,9 @@ func (o UpdateAuthMethodGCP) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["audience"] = o.Audience
+	}
+	if o.AuditLogsClaims != nil {
+		toSerialize["audit-logs-claims"] = o.AuditLogsClaims
 	}
 	if o.BoundIps != nil {
 		toSerialize["bound-ips"] = o.BoundIps

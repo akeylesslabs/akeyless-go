@@ -15,13 +15,15 @@ import (
 	"encoding/json"
 )
 
-// UpdateDockerhubTarget struct for UpdateDockerhubTarget
+// UpdateDockerhubTarget updateDockerhubTarget is a command that updates a new target. [Deprecated: Use target-update-dockerhub command]
 type UpdateDockerhubTarget struct {
 	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
+	// Password for docker repository
 	DockerhubPassword *string `json:"dockerhub-password,omitempty"`
+	// Username for docker repository
 	DockerhubUsername *string `json:"dockerhub-username,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`

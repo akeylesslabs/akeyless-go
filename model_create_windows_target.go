@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// CreateWindowsTarget struct for CreateWindowsTarget
+// CreateWindowsTarget createWindowsTarget is a command that creates a new windows target. [Deprecated: Use target-create-windows command]
 type CreateWindowsTarget struct {
 	// SSL CA certificate in base64 encoding generated from a trusted Certificate Authority (CA)
 	Certificate *string `json:"certificate,omitempty"`

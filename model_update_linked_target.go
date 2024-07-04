@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// UpdateLinkedTarget struct for UpdateLinkedTarget
+// UpdateLinkedTarget updateLinkedTarget is a command that updates an existing target. [Deprecated: Use target-update-linked command]
 type UpdateLinkedTarget struct {
 	// A comma seperated list of new server hosts and server descriptions joined by semicolon ';' that will be added to the Linked Target hosts.
 	AddHosts *string `json:"add-hosts,omitempty"`

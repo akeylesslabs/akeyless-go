@@ -15,10 +15,12 @@ import (
 	"encoding/json"
 )
 
-// CreateAuthMethodUniversalIdentity createAuthMethodUniversalIdentity is a command that creates a new auth method that will be able to authenticate using Akeyless Universal Identity.
+// CreateAuthMethodUniversalIdentity createAuthMethodUniversalIdentity is a command that creates a new auth method that will be able to authenticate using Akeyless Universal Identity. [Deprecated: Use auth-method-create-universal-identity command]
 type CreateAuthMethodUniversalIdentity struct {
 	// Access expiration date in Unix timestamp (select 0 for access without expiry date)
 	AccessExpires *int64 `json:"access-expires,omitempty"`
+	// Subclaims to include in audit logs, e.g \"--audit-logs-claims email --audit-logs-claims username\"
+	AuditLogsClaims *[]string `json:"audit-logs-claims,omitempty"`
 	// A CIDR whitelist with the IPs that the access is restricted to
 	BoundIps *[]string `json:"bound-ips,omitempty"`
 	// Deny from root to create children
@@ -111,6 +113,38 @@ func (o *CreateAuthMethodUniversalIdentity) HasAccessExpires() bool {
 // SetAccessExpires gets a reference to the given int64 and assigns it to the AccessExpires field.
 func (o *CreateAuthMethodUniversalIdentity) SetAccessExpires(v int64) {
 	o.AccessExpires = &v
+}
+
+// GetAuditLogsClaims returns the AuditLogsClaims field value if set, zero value otherwise.
+func (o *CreateAuthMethodUniversalIdentity) GetAuditLogsClaims() []string {
+	if o == nil || o.AuditLogsClaims == nil {
+		var ret []string
+		return ret
+	}
+	return *o.AuditLogsClaims
+}
+
+// GetAuditLogsClaimsOk returns a tuple with the AuditLogsClaims field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodUniversalIdentity) GetAuditLogsClaimsOk() (*[]string, bool) {
+	if o == nil || o.AuditLogsClaims == nil {
+		return nil, false
+	}
+	return o.AuditLogsClaims, true
+}
+
+// HasAuditLogsClaims returns a boolean if a field has been set.
+func (o *CreateAuthMethodUniversalIdentity) HasAuditLogsClaims() bool {
+	if o != nil && o.AuditLogsClaims != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAuditLogsClaims gets a reference to the given []string and assigns it to the AuditLogsClaims field.
+func (o *CreateAuthMethodUniversalIdentity) SetAuditLogsClaims(v []string) {
+	o.AuditLogsClaims = &v
 }
 
 // GetBoundIps returns the BoundIps field value if set, zero value otherwise.
@@ -525,6 +559,9 @@ func (o CreateAuthMethodUniversalIdentity) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccessExpires != nil {
 		toSerialize["access-expires"] = o.AccessExpires
+	}
+	if o.AuditLogsClaims != nil {
+		toSerialize["audit-logs-claims"] = o.AuditLogsClaims
 	}
 	if o.BoundIps != nil {
 		toSerialize["bound-ips"] = o.BoundIps

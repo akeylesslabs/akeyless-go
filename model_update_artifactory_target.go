@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// UpdateArtifactoryTarget struct for UpdateArtifactoryTarget
+// UpdateArtifactoryTarget updateArtifactoryTarget is a command that updates a new target. [Deprecated: Use target-update-artifactory command]
 type UpdateArtifactoryTarget struct {
 	// Artifactory Admin Name
 	ArtifactoryAdminName string `json:"artifactory-admin-name"`

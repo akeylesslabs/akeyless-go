@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// UpdateGodaddyTarget struct for UpdateGodaddyTarget
+// UpdateGodaddyTarget updateGodaddyTarget is a command that updates an existing target. [Deprecated: Use target-update-godaddy command]
 type UpdateGodaddyTarget struct {
 	// Key of the api credentials to the Godaddy account
 	ApiKey string `json:"api-key"`

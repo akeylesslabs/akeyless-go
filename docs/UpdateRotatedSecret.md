@@ -37,6 +37,7 @@ Name | Type | Description | Notes
 **SecureAccessBastionIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] 
 **SecureAccessDbName** | Pointer to **string** | The DB name (relevant only for DB Dynamic-Secret) | [optional] 
 **SecureAccessDbSchema** | Pointer to **string** | The db schema (relevant only for mssql or postgresql) | [optional] 
+**SecureAccessDisableConcurrentConnections** | Pointer to **bool** | Enable this flag to prevent simultaneous use of the same secret | [optional] 
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
 **SecureAccessHost** | Pointer to **[]string** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
 **SecureAccessRdpDomain** | Pointer to **string** | Required when the Dynamic Secret is used for a domain user (relevant only for RDP Dynamic-Secret) | [optional] 
@@ -891,6 +892,31 @@ SetSecureAccessDbSchema sets SecureAccessDbSchema field to given value.
 `func (o *UpdateRotatedSecret) HasSecureAccessDbSchema() bool`
 
 HasSecureAccessDbSchema returns a boolean if a field has been set.
+
+### GetSecureAccessDisableConcurrentConnections
+
+`func (o *UpdateRotatedSecret) GetSecureAccessDisableConcurrentConnections() bool`
+
+GetSecureAccessDisableConcurrentConnections returns the SecureAccessDisableConcurrentConnections field if non-nil, zero value otherwise.
+
+### GetSecureAccessDisableConcurrentConnectionsOk
+
+`func (o *UpdateRotatedSecret) GetSecureAccessDisableConcurrentConnectionsOk() (*bool, bool)`
+
+GetSecureAccessDisableConcurrentConnectionsOk returns a tuple with the SecureAccessDisableConcurrentConnections field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessDisableConcurrentConnections
+
+`func (o *UpdateRotatedSecret) SetSecureAccessDisableConcurrentConnections(v bool)`
+
+SetSecureAccessDisableConcurrentConnections sets SecureAccessDisableConcurrentConnections field to given value.
+
+### HasSecureAccessDisableConcurrentConnections
+
+`func (o *UpdateRotatedSecret) HasSecureAccessDisableConcurrentConnections() bool`
+
+HasSecureAccessDisableConcurrentConnections returns a boolean if a field has been set.
 
 ### GetSecureAccessEnable
 

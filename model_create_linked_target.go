@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// CreateLinkedTarget struct for CreateLinkedTarget
+// CreateLinkedTarget createLinkedTarget is a command that creates a new Linked Target which can inherit credentials from existing Targets. [Deprecated: Use target-create-linked command]
 type CreateLinkedTarget struct {
 	// Description of the object
 	Description *string `json:"description,omitempty"`

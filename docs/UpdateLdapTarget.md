@@ -4,21 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BindDn** | Pointer to **string** |  | [optional] 
-**BindDnPassword** | Pointer to **string** |  | [optional] 
+**BindDn** | **string** | Bind DN | 
+**BindDnPassword** | **string** | Bind DN Password | 
 **Comment** | Pointer to **string** | Deprecated - use description | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | Pointer to **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
-**LdapCaCert** | Pointer to **string** |  | [optional] 
-**LdapUrl** | Pointer to **string** |  | [optional] 
+**LdapCaCert** | Pointer to **string** | CA Certificate File Content | [optional] 
+**LdapUrl** | **string** | LDAP Server URL | 
 **MaxVersions** | Pointer to **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Name** | **string** | Target name | 
 **NewName** | Pointer to **string** | New target name | [optional] 
 **ServerType** | Pointer to **string** | Set Ldap server type, Options:[OpenLDAP, ActiveDirectory] | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
-**TokenExpiration** | Pointer to **string** |  | [optional] 
+**TokenExpiration** | Pointer to **string** | Token expiration | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UpdateVersion** | Pointer to **bool** | Deprecated | [optional] 
 
@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewUpdateLdapTarget
 
-`func NewUpdateLdapTarget(name string, ) *UpdateLdapTarget`
+`func NewUpdateLdapTarget(bindDn string, bindDnPassword string, ldapUrl string, name string, ) *UpdateLdapTarget`
 
 NewUpdateLdapTarget instantiates a new UpdateLdapTarget object
 This constructor will assign default values to properties that have it defined,
@@ -60,11 +60,6 @@ and a boolean to check if the value has been set.
 
 SetBindDn sets BindDn field to given value.
 
-### HasBindDn
-
-`func (o *UpdateLdapTarget) HasBindDn() bool`
-
-HasBindDn returns a boolean if a field has been set.
 
 ### GetBindDnPassword
 
@@ -85,11 +80,6 @@ and a boolean to check if the value has been set.
 
 SetBindDnPassword sets BindDnPassword field to given value.
 
-### HasBindDnPassword
-
-`func (o *UpdateLdapTarget) HasBindDnPassword() bool`
-
-HasBindDnPassword returns a boolean if a field has been set.
 
 ### GetComment
 
@@ -260,11 +250,6 @@ and a boolean to check if the value has been set.
 
 SetLdapUrl sets LdapUrl field to given value.
 
-### HasLdapUrl
-
-`func (o *UpdateLdapTarget) HasLdapUrl() bool`
-
-HasLdapUrl returns a boolean if a field has been set.
 
 ### GetMaxVersions
 

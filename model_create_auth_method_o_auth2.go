@@ -15,12 +15,14 @@ import (
 	"encoding/json"
 )
 
-// CreateAuthMethodOAuth2 createAuthMethodOAuth2 is a command that creates a new auth method that will be able to authenticate using Oauth2.
+// CreateAuthMethodOAuth2 createAuthMethodOAuth2 is a command that creates a new auth method that will be able to authenticate using Oauth2. [Deprecated: Use auth-method-create-oauth2 command]
 type CreateAuthMethodOAuth2 struct {
 	// Access expiration date in Unix timestamp (select 0 for access without expiry date)
 	AccessExpires *int64 `json:"access-expires,omitempty"`
 	// The audience in the JWT
 	Audience *string `json:"audience,omitempty"`
+	// Subclaims to include in audit logs, e.g \"--audit-logs-claims email --audit-logs-claims username\"
+	AuditLogsClaims *[]string `json:"audit-logs-claims,omitempty"`
 	// The clients ids that the access is restricted to
 	BoundClientIds *[]string `json:"bound-client-ids,omitempty"`
 	// A CIDR whitelist with the IPs that the access is restricted to
@@ -157,6 +159,38 @@ func (o *CreateAuthMethodOAuth2) HasAudience() bool {
 // SetAudience gets a reference to the given string and assigns it to the Audience field.
 func (o *CreateAuthMethodOAuth2) SetAudience(v string) {
 	o.Audience = &v
+}
+
+// GetAuditLogsClaims returns the AuditLogsClaims field value if set, zero value otherwise.
+func (o *CreateAuthMethodOAuth2) GetAuditLogsClaims() []string {
+	if o == nil || o.AuditLogsClaims == nil {
+		var ret []string
+		return ret
+	}
+	return *o.AuditLogsClaims
+}
+
+// GetAuditLogsClaimsOk returns a tuple with the AuditLogsClaims field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodOAuth2) GetAuditLogsClaimsOk() (*[]string, bool) {
+	if o == nil || o.AuditLogsClaims == nil {
+		return nil, false
+	}
+	return o.AuditLogsClaims, true
+}
+
+// HasAuditLogsClaims returns a boolean if a field has been set.
+func (o *CreateAuthMethodOAuth2) HasAuditLogsClaims() bool {
+	if o != nil && o.AuditLogsClaims != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAuditLogsClaims gets a reference to the given []string and assigns it to the AuditLogsClaims field.
+func (o *CreateAuthMethodOAuth2) SetAuditLogsClaims(v []string) {
+	o.AuditLogsClaims = &v
 }
 
 // GetBoundClientIds returns the BoundClientIds field value if set, zero value otherwise.
@@ -750,6 +784,9 @@ func (o CreateAuthMethodOAuth2) MarshalJSON() ([]byte, error) {
 	}
 	if o.Audience != nil {
 		toSerialize["audience"] = o.Audience
+	}
+	if o.AuditLogsClaims != nil {
+		toSerialize["audit-logs-claims"] = o.AuditLogsClaims
 	}
 	if o.BoundClientIds != nil {
 		toSerialize["bound-client-ids"] = o.BoundClientIds

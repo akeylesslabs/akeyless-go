@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// UpdatePingTarget struct for UpdatePingTarget
+// UpdatePingTarget updatePingTarget is a command that updates an existing target. [Deprecated: Use target-update-ping command]
 type UpdatePingTarget struct {
 	// Ping Federate administrative port
 	AdministrativePort *string `json:"administrative-port,omitempty"`

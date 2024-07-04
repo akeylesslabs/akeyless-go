@@ -27,6 +27,7 @@ type TargetTypeDetailsInput struct {
 	EksTargetDetails *EKSTargetDetails `json:"eks_target_details,omitempty"`
 	GcpTargetDetails *GcpTargetDetails `json:"gcp_target_details,omitempty"`
 	GithubTargetDetails *GithubTargetDetails `json:"github_target_details,omitempty"`
+	GitlabTargetDetails *GitlabTargetDetails `json:"gitlab_target_details,omitempty"`
 	GkeTargetDetails *GKETargetDetails `json:"gke_target_details,omitempty"`
 	GlobalsignAtlasTargetDetails *GlobalSignAtlasTargetDetails `json:"globalsign_atlas_target_details,omitempty"`
 	GlobalsignTargetDetails *GlobalSignGCCTargetDetails `json:"globalsign_target_details,omitempty"`
@@ -381,6 +382,38 @@ func (o *TargetTypeDetailsInput) HasGithubTargetDetails() bool {
 // SetGithubTargetDetails gets a reference to the given GithubTargetDetails and assigns it to the GithubTargetDetails field.
 func (o *TargetTypeDetailsInput) SetGithubTargetDetails(v GithubTargetDetails) {
 	o.GithubTargetDetails = &v
+}
+
+// GetGitlabTargetDetails returns the GitlabTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetGitlabTargetDetails() GitlabTargetDetails {
+	if o == nil || o.GitlabTargetDetails == nil {
+		var ret GitlabTargetDetails
+		return ret
+	}
+	return *o.GitlabTargetDetails
+}
+
+// GetGitlabTargetDetailsOk returns a tuple with the GitlabTargetDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetGitlabTargetDetailsOk() (*GitlabTargetDetails, bool) {
+	if o == nil || o.GitlabTargetDetails == nil {
+		return nil, false
+	}
+	return o.GitlabTargetDetails, true
+}
+
+// HasGitlabTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasGitlabTargetDetails() bool {
+	if o != nil && o.GitlabTargetDetails != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGitlabTargetDetails gets a reference to the given GitlabTargetDetails and assigns it to the GitlabTargetDetails field.
+func (o *TargetTypeDetailsInput) SetGitlabTargetDetails(v GitlabTargetDetails) {
+	o.GitlabTargetDetails = &v
 }
 
 // GetGkeTargetDetails returns the GkeTargetDetails field value if set, zero value otherwise.
@@ -958,6 +991,9 @@ func (o TargetTypeDetailsInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.GithubTargetDetails != nil {
 		toSerialize["github_target_details"] = o.GithubTargetDetails
+	}
+	if o.GitlabTargetDetails != nil {
+		toSerialize["gitlab_target_details"] = o.GitlabTargetDetails
 	}
 	if o.GkeTargetDetails != nil {
 		toSerialize["gke_target_details"] = o.GkeTargetDetails

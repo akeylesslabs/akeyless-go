@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// DeleteTarget struct for DeleteTarget
+// DeleteTarget deleteTarget is a command that deletes a target. [Deprecated: Use target-delete command]
 type DeleteTarget struct {
 	// Enforce deletion
 	ForceDeletion *bool `json:"force-deletion,omitempty"`

@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **BastionIssuer** | Pointer to **string** |  | [optional] 
 **BastionIssuerId** | Pointer to **int64** |  | [optional] 
 **BastionSsh** | Pointer to **string** |  | [optional] 
+**BlockConcurrentConnections** | Pointer to **bool** |  | [optional] 
+**BlockConcurrentConnectionsLevel** | Pointer to **string** |  | [optional] 
 **Category** | Pointer to **string** |  | [optional] 
 **DashboardUrl** | Pointer to **string** |  | [optional] 
 **DbName** | Pointer to **string** |  | [optional] 
@@ -231,6 +233,56 @@ SetBastionSsh sets BastionSsh field to given value.
 `func (o *SecureRemoteAccess) HasBastionSsh() bool`
 
 HasBastionSsh returns a boolean if a field has been set.
+
+### GetBlockConcurrentConnections
+
+`func (o *SecureRemoteAccess) GetBlockConcurrentConnections() bool`
+
+GetBlockConcurrentConnections returns the BlockConcurrentConnections field if non-nil, zero value otherwise.
+
+### GetBlockConcurrentConnectionsOk
+
+`func (o *SecureRemoteAccess) GetBlockConcurrentConnectionsOk() (*bool, bool)`
+
+GetBlockConcurrentConnectionsOk returns a tuple with the BlockConcurrentConnections field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBlockConcurrentConnections
+
+`func (o *SecureRemoteAccess) SetBlockConcurrentConnections(v bool)`
+
+SetBlockConcurrentConnections sets BlockConcurrentConnections field to given value.
+
+### HasBlockConcurrentConnections
+
+`func (o *SecureRemoteAccess) HasBlockConcurrentConnections() bool`
+
+HasBlockConcurrentConnections returns a boolean if a field has been set.
+
+### GetBlockConcurrentConnectionsLevel
+
+`func (o *SecureRemoteAccess) GetBlockConcurrentConnectionsLevel() string`
+
+GetBlockConcurrentConnectionsLevel returns the BlockConcurrentConnectionsLevel field if non-nil, zero value otherwise.
+
+### GetBlockConcurrentConnectionsLevelOk
+
+`func (o *SecureRemoteAccess) GetBlockConcurrentConnectionsLevelOk() (*string, bool)`
+
+GetBlockConcurrentConnectionsLevelOk returns a tuple with the BlockConcurrentConnectionsLevel field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBlockConcurrentConnectionsLevel
+
+`func (o *SecureRemoteAccess) SetBlockConcurrentConnectionsLevel(v string)`
+
+SetBlockConcurrentConnectionsLevel sets BlockConcurrentConnectionsLevel field to given value.
+
+### HasBlockConcurrentConnectionsLevel
+
+`func (o *SecureRemoteAccess) HasBlockConcurrentConnectionsLevel() bool`
+
+HasBlockConcurrentConnectionsLevel returns a boolean if a field has been set.
 
 ### GetCategory
 

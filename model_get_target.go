@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// GetTarget struct for GetTarget
+// GetTarget getTarget is a command that returns target. [Deprecated: Use target-get command]
 type GetTarget struct {
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`

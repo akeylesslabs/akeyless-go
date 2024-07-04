@@ -1,0 +1,285 @@
+# TargetCreateGithub
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Description** | Pointer to **string** | Description of the object | [optional] 
+**GithubAppId** | Pointer to **int64** | Github app id | [optional] 
+**GithubAppPrivateKey** | Pointer to **string** | App private key | [optional] 
+**GithubBaseUrl** | Pointer to **string** | Base URL | [optional] [default to "https://api.github.com/"]
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
+**MaxVersions** | Pointer to **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
+**Name** | **string** | Target name | 
+**Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
+**UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+
+## Methods
+
+### NewTargetCreateGithub
+
+`func NewTargetCreateGithub(name string, ) *TargetCreateGithub`
+
+NewTargetCreateGithub instantiates a new TargetCreateGithub object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewTargetCreateGithubWithDefaults
+
+`func NewTargetCreateGithubWithDefaults() *TargetCreateGithub`
+
+NewTargetCreateGithubWithDefaults instantiates a new TargetCreateGithub object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetDescription
+
+`func (o *TargetCreateGithub) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *TargetCreateGithub) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *TargetCreateGithub) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *TargetCreateGithub) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
+
+### GetGithubAppId
+
+`func (o *TargetCreateGithub) GetGithubAppId() int64`
+
+GetGithubAppId returns the GithubAppId field if non-nil, zero value otherwise.
+
+### GetGithubAppIdOk
+
+`func (o *TargetCreateGithub) GetGithubAppIdOk() (*int64, bool)`
+
+GetGithubAppIdOk returns a tuple with the GithubAppId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGithubAppId
+
+`func (o *TargetCreateGithub) SetGithubAppId(v int64)`
+
+SetGithubAppId sets GithubAppId field to given value.
+
+### HasGithubAppId
+
+`func (o *TargetCreateGithub) HasGithubAppId() bool`
+
+HasGithubAppId returns a boolean if a field has been set.
+
+### GetGithubAppPrivateKey
+
+`func (o *TargetCreateGithub) GetGithubAppPrivateKey() string`
+
+GetGithubAppPrivateKey returns the GithubAppPrivateKey field if non-nil, zero value otherwise.
+
+### GetGithubAppPrivateKeyOk
+
+`func (o *TargetCreateGithub) GetGithubAppPrivateKeyOk() (*string, bool)`
+
+GetGithubAppPrivateKeyOk returns a tuple with the GithubAppPrivateKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGithubAppPrivateKey
+
+`func (o *TargetCreateGithub) SetGithubAppPrivateKey(v string)`
+
+SetGithubAppPrivateKey sets GithubAppPrivateKey field to given value.
+
+### HasGithubAppPrivateKey
+
+`func (o *TargetCreateGithub) HasGithubAppPrivateKey() bool`
+
+HasGithubAppPrivateKey returns a boolean if a field has been set.
+
+### GetGithubBaseUrl
+
+`func (o *TargetCreateGithub) GetGithubBaseUrl() string`
+
+GetGithubBaseUrl returns the GithubBaseUrl field if non-nil, zero value otherwise.
+
+### GetGithubBaseUrlOk
+
+`func (o *TargetCreateGithub) GetGithubBaseUrlOk() (*string, bool)`
+
+GetGithubBaseUrlOk returns a tuple with the GithubBaseUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGithubBaseUrl
+
+`func (o *TargetCreateGithub) SetGithubBaseUrl(v string)`
+
+SetGithubBaseUrl sets GithubBaseUrl field to given value.
+
+### HasGithubBaseUrl
+
+`func (o *TargetCreateGithub) HasGithubBaseUrl() bool`
+
+HasGithubBaseUrl returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *TargetCreateGithub) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *TargetCreateGithub) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *TargetCreateGithub) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *TargetCreateGithub) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
+
+### GetKey
+
+`func (o *TargetCreateGithub) GetKey() string`
+
+GetKey returns the Key field if non-nil, zero value otherwise.
+
+### GetKeyOk
+
+`func (o *TargetCreateGithub) GetKeyOk() (*string, bool)`
+
+GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKey
+
+`func (o *TargetCreateGithub) SetKey(v string)`
+
+SetKey sets Key field to given value.
+
+### HasKey
+
+`func (o *TargetCreateGithub) HasKey() bool`
+
+HasKey returns a boolean if a field has been set.
+
+### GetMaxVersions
+
+`func (o *TargetCreateGithub) GetMaxVersions() string`
+
+GetMaxVersions returns the MaxVersions field if non-nil, zero value otherwise.
+
+### GetMaxVersionsOk
+
+`func (o *TargetCreateGithub) GetMaxVersionsOk() (*string, bool)`
+
+GetMaxVersionsOk returns a tuple with the MaxVersions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaxVersions
+
+`func (o *TargetCreateGithub) SetMaxVersions(v string)`
+
+SetMaxVersions sets MaxVersions field to given value.
+
+### HasMaxVersions
+
+`func (o *TargetCreateGithub) HasMaxVersions() bool`
+
+HasMaxVersions returns a boolean if a field has been set.
+
+### GetName
+
+`func (o *TargetCreateGithub) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *TargetCreateGithub) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *TargetCreateGithub) SetName(v string)`
+
+SetName sets Name field to given value.
+
+
+### GetToken
+
+`func (o *TargetCreateGithub) GetToken() string`
+
+GetToken returns the Token field if non-nil, zero value otherwise.
+
+### GetTokenOk
+
+`func (o *TargetCreateGithub) GetTokenOk() (*string, bool)`
+
+GetTokenOk returns a tuple with the Token field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetToken
+
+`func (o *TargetCreateGithub) SetToken(v string)`
+
+SetToken sets Token field to given value.
+
+### HasToken
+
+`func (o *TargetCreateGithub) HasToken() bool`
+
+HasToken returns a boolean if a field has been set.
+
+### GetUidToken
+
+`func (o *TargetCreateGithub) GetUidToken() string`
+
+GetUidToken returns the UidToken field if non-nil, zero value otherwise.
+
+### GetUidTokenOk
+
+`func (o *TargetCreateGithub) GetUidTokenOk() (*string, bool)`
+
+GetUidTokenOk returns a tuple with the UidToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUidToken
+
+`func (o *TargetCreateGithub) SetUidToken(v string)`
+
+SetUidToken sets UidToken field to given value.
+
+### HasUidToken
+
+`func (o *TargetCreateGithub) HasUidToken() bool`
+
+HasUidToken returns a boolean if a field has been set.
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

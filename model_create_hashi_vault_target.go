@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// CreateHashiVaultTarget struct for CreateHashiVaultTarget
+// CreateHashiVaultTarget createHashiVaultTarget is a command that creates a new hashi-vault target. [Deprecated: Use target-create-hashi-vault command]
 type CreateHashiVaultTarget struct {
 	// Description of the object
 	Description *string `json:"description,omitempty"`

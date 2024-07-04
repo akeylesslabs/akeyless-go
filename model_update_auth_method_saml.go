@@ -15,12 +15,14 @@ import (
 	"encoding/json"
 )
 
-// UpdateAuthMethodSAML updateAuthMethodSAML is a command that updates a new auth method that will be available to authenticate using SAML.
+// UpdateAuthMethodSAML updateAuthMethodSAML is a command that updates a new auth method that will be available to authenticate using SAML. [Deprecated: Use auth-method-update-saml command]
 type UpdateAuthMethodSAML struct {
 	// Access expiration date in Unix timestamp (select 0 for access without expiry date)
 	AccessExpires *int64 `json:"access-expires,omitempty"`
 	// Allowed redirect URIs after the authentication
 	AllowedRedirectUri *[]string `json:"allowed-redirect-uri,omitempty"`
+	// Subclaims to include in audit logs, e.g \"--audit-logs-claims email --audit-logs-claims username\"
+	AuditLogsClaims *[]string `json:"audit-logs-claims,omitempty"`
 	// A CIDR whitelist with the IPs that the access is restricted to
 	BoundIps *[]string `json:"bound-ips,omitempty"`
 	// Auth Method description
@@ -146,6 +148,38 @@ func (o *UpdateAuthMethodSAML) HasAllowedRedirectUri() bool {
 // SetAllowedRedirectUri gets a reference to the given []string and assigns it to the AllowedRedirectUri field.
 func (o *UpdateAuthMethodSAML) SetAllowedRedirectUri(v []string) {
 	o.AllowedRedirectUri = &v
+}
+
+// GetAuditLogsClaims returns the AuditLogsClaims field value if set, zero value otherwise.
+func (o *UpdateAuthMethodSAML) GetAuditLogsClaims() []string {
+	if o == nil || o.AuditLogsClaims == nil {
+		var ret []string
+		return ret
+	}
+	return *o.AuditLogsClaims
+}
+
+// GetAuditLogsClaimsOk returns a tuple with the AuditLogsClaims field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAuthMethodSAML) GetAuditLogsClaimsOk() (*[]string, bool) {
+	if o == nil || o.AuditLogsClaims == nil {
+		return nil, false
+	}
+	return o.AuditLogsClaims, true
+}
+
+// HasAuditLogsClaims returns a boolean if a field has been set.
+func (o *UpdateAuthMethodSAML) HasAuditLogsClaims() bool {
+	if o != nil && o.AuditLogsClaims != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAuditLogsClaims gets a reference to the given []string and assigns it to the AuditLogsClaims field.
+func (o *UpdateAuthMethodSAML) SetAuditLogsClaims(v []string) {
+	o.AuditLogsClaims = &v
 }
 
 // GetBoundIps returns the BoundIps field value if set, zero value otherwise.
@@ -619,6 +653,9 @@ func (o UpdateAuthMethodSAML) MarshalJSON() ([]byte, error) {
 	}
 	if o.AllowedRedirectUri != nil {
 		toSerialize["allowed-redirect-uri"] = o.AllowedRedirectUri
+	}
+	if o.AuditLogsClaims != nil {
+		toSerialize["audit-logs-claims"] = o.AuditLogsClaims
 	}
 	if o.BoundIps != nil {
 		toSerialize["bound-ips"] = o.BoundIps

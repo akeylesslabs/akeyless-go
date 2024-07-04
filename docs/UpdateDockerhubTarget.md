@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Comment** | Pointer to **string** | Deprecated - use description | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
-**DockerhubPassword** | Pointer to **string** |  | [optional] 
-**DockerhubUsername** | Pointer to **string** |  | [optional] 
+**DockerhubPassword** | Pointer to **string** | Password for docker repository | [optional] 
+**DockerhubUsername** | Pointer to **string** | Username for docker repository | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | Pointer to **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 

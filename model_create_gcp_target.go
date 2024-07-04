@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// CreateGcpTarget struct for CreateGcpTarget
+// CreateGcpTarget createGcpTarget is a command that creates a new target. [Deprecated: Use target-create-gcp command]
 type CreateGcpTarget struct {
 	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`

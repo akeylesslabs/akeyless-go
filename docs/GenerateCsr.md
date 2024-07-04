@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Critical** | Pointer to **bool** | Add critical to the key usage extension (will be false if not added) | [optional] 
 **Dep** | Pointer to **string** | The department to be included in the CSR certificate | [optional] 
 **EmailAddresses** | Pointer to **string** | A comma-separated list of email addresses alternative names | [optional] 
+**ExportPrivateKey** | Pointer to **bool** | The flag to indicate if the private key should be exported | [optional] [default to false]
 **GenerateKey** | Pointer to **bool** | Generate a new classic key for the csr | [optional] 
 **IpAddresses** | Pointer to **string** | A comma-separated list of ip addresses alternative names | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
@@ -263,6 +264,31 @@ SetEmailAddresses sets EmailAddresses field to given value.
 `func (o *GenerateCsr) HasEmailAddresses() bool`
 
 HasEmailAddresses returns a boolean if a field has been set.
+
+### GetExportPrivateKey
+
+`func (o *GenerateCsr) GetExportPrivateKey() bool`
+
+GetExportPrivateKey returns the ExportPrivateKey field if non-nil, zero value otherwise.
+
+### GetExportPrivateKeyOk
+
+`func (o *GenerateCsr) GetExportPrivateKeyOk() (*bool, bool)`
+
+GetExportPrivateKeyOk returns a tuple with the ExportPrivateKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExportPrivateKey
+
+`func (o *GenerateCsr) SetExportPrivateKey(v bool)`
+
+SetExportPrivateKey sets ExportPrivateKey field to given value.
+
+### HasExportPrivateKey
+
+`func (o *GenerateCsr) HasExportPrivateKey() bool`
+
+HasExportPrivateKey returns a boolean if a field has been set.
 
 ### GetGenerateKey
 

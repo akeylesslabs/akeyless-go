@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// UpdateGKETarget struct for UpdateGKETarget
+// UpdateGKETarget updateGKETarget is a command that updates an existing target. [Deprecated: Use target-update-gke command]
 type UpdateGKETarget struct {
 	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`

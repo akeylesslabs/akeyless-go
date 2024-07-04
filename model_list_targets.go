@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// ListTargets struct for ListTargets
+// ListTargets listTargets is a command that returns a list of targets. [Deprecated: Use target-list command]
 type ListTargets struct {
 	// Filter by auth method name or part of it
 	Filter *string `json:"filter,omitempty"`

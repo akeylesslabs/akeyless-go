@@ -20,8 +20,6 @@ type GatewayPartialUpdateK8SAuthConfig struct {
 	UseDefaultIdentityBool *bool `json:"UseDefaultIdentityBool,omitempty"`
 	// The access ID of the Kubernetes auth method
 	AccessId *string `json:"access-id,omitempty"`
-	// Config encryption key
-	ConfigEncryptionKeyName *string `json:"config-encryption-key-name,omitempty"`
 	// Disable issuer validation [true/false]
 	DisableIssuerValidation *string `json:"disable-issuer-validation,omitempty"`
 	// Set output format to JSON
@@ -147,38 +145,6 @@ func (o *GatewayPartialUpdateK8SAuthConfig) HasAccessId() bool {
 // SetAccessId gets a reference to the given string and assigns it to the AccessId field.
 func (o *GatewayPartialUpdateK8SAuthConfig) SetAccessId(v string) {
 	o.AccessId = &v
-}
-
-// GetConfigEncryptionKeyName returns the ConfigEncryptionKeyName field value if set, zero value otherwise.
-func (o *GatewayPartialUpdateK8SAuthConfig) GetConfigEncryptionKeyName() string {
-	if o == nil || o.ConfigEncryptionKeyName == nil {
-		var ret string
-		return ret
-	}
-	return *o.ConfigEncryptionKeyName
-}
-
-// GetConfigEncryptionKeyNameOk returns a tuple with the ConfigEncryptionKeyName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayPartialUpdateK8SAuthConfig) GetConfigEncryptionKeyNameOk() (*string, bool) {
-	if o == nil || o.ConfigEncryptionKeyName == nil {
-		return nil, false
-	}
-	return o.ConfigEncryptionKeyName, true
-}
-
-// HasConfigEncryptionKeyName returns a boolean if a field has been set.
-func (o *GatewayPartialUpdateK8SAuthConfig) HasConfigEncryptionKeyName() bool {
-	if o != nil && o.ConfigEncryptionKeyName != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetConfigEncryptionKeyName gets a reference to the given string and assigns it to the ConfigEncryptionKeyName field.
-func (o *GatewayPartialUpdateK8SAuthConfig) SetConfigEncryptionKeyName(v string) {
-	o.ConfigEncryptionKeyName = &v
 }
 
 // GetDisableIssuerValidation returns the DisableIssuerValidation field value if set, zero value otherwise.
@@ -764,9 +730,6 @@ func (o GatewayPartialUpdateK8SAuthConfig) MarshalJSON() ([]byte, error) {
 	}
 	if o.AccessId != nil {
 		toSerialize["access-id"] = o.AccessId
-	}
-	if o.ConfigEncryptionKeyName != nil {
-		toSerialize["config-encryption-key-name"] = o.ConfigEncryptionKeyName
 	}
 	if o.DisableIssuerValidation != nil {
 		toSerialize["disable-issuer-validation"] = o.DisableIssuerValidation

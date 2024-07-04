@@ -125,6 +125,14 @@ type DSProducerDetails struct {
 	GithubInstallationTokenRepositoriesIds *[]int64 `json:"github_installation_token_repositories_ids,omitempty"`
 	GithubOrganizationName *string `json:"github_organization_name,omitempty"`
 	GithubRepositoryPath *string `json:"github_repository_path,omitempty"`
+	GitlabAccessToken *string `json:"gitlab_access_token,omitempty"`
+	GitlabAccessType *string `json:"gitlab_access_type,omitempty"`
+	GitlabCertificate *string `json:"gitlab_certificate,omitempty"`
+	GitlabGroupName *string `json:"gitlab_group_name,omitempty"`
+	GitlabProjectName *string `json:"gitlab_project_name,omitempty"`
+	GitlabRole *string `json:"gitlab_role,omitempty"`
+	GitlabTokenScope *[]string `json:"gitlab_token_scope,omitempty"`
+	GitlabUrl *string `json:"gitlab_url,omitempty"`
 	GkeClusterCaCertificate *string `json:"gke_cluster_ca_certificate,omitempty"`
 	GkeClusterEndpoint *string `json:"gke_cluster_endpoint,omitempty"`
 	GkeClusterName *string `json:"gke_cluster_name,omitempty"`
@@ -3580,6 +3588,262 @@ func (o *DSProducerDetails) HasGithubRepositoryPath() bool {
 // SetGithubRepositoryPath gets a reference to the given string and assigns it to the GithubRepositoryPath field.
 func (o *DSProducerDetails) SetGithubRepositoryPath(v string) {
 	o.GithubRepositoryPath = &v
+}
+
+// GetGitlabAccessToken returns the GitlabAccessToken field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGitlabAccessToken() string {
+	if o == nil || o.GitlabAccessToken == nil {
+		var ret string
+		return ret
+	}
+	return *o.GitlabAccessToken
+}
+
+// GetGitlabAccessTokenOk returns a tuple with the GitlabAccessToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGitlabAccessTokenOk() (*string, bool) {
+	if o == nil || o.GitlabAccessToken == nil {
+		return nil, false
+	}
+	return o.GitlabAccessToken, true
+}
+
+// HasGitlabAccessToken returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGitlabAccessToken() bool {
+	if o != nil && o.GitlabAccessToken != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGitlabAccessToken gets a reference to the given string and assigns it to the GitlabAccessToken field.
+func (o *DSProducerDetails) SetGitlabAccessToken(v string) {
+	o.GitlabAccessToken = &v
+}
+
+// GetGitlabAccessType returns the GitlabAccessType field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGitlabAccessType() string {
+	if o == nil || o.GitlabAccessType == nil {
+		var ret string
+		return ret
+	}
+	return *o.GitlabAccessType
+}
+
+// GetGitlabAccessTypeOk returns a tuple with the GitlabAccessType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGitlabAccessTypeOk() (*string, bool) {
+	if o == nil || o.GitlabAccessType == nil {
+		return nil, false
+	}
+	return o.GitlabAccessType, true
+}
+
+// HasGitlabAccessType returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGitlabAccessType() bool {
+	if o != nil && o.GitlabAccessType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGitlabAccessType gets a reference to the given string and assigns it to the GitlabAccessType field.
+func (o *DSProducerDetails) SetGitlabAccessType(v string) {
+	o.GitlabAccessType = &v
+}
+
+// GetGitlabCertificate returns the GitlabCertificate field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGitlabCertificate() string {
+	if o == nil || o.GitlabCertificate == nil {
+		var ret string
+		return ret
+	}
+	return *o.GitlabCertificate
+}
+
+// GetGitlabCertificateOk returns a tuple with the GitlabCertificate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGitlabCertificateOk() (*string, bool) {
+	if o == nil || o.GitlabCertificate == nil {
+		return nil, false
+	}
+	return o.GitlabCertificate, true
+}
+
+// HasGitlabCertificate returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGitlabCertificate() bool {
+	if o != nil && o.GitlabCertificate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGitlabCertificate gets a reference to the given string and assigns it to the GitlabCertificate field.
+func (o *DSProducerDetails) SetGitlabCertificate(v string) {
+	o.GitlabCertificate = &v
+}
+
+// GetGitlabGroupName returns the GitlabGroupName field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGitlabGroupName() string {
+	if o == nil || o.GitlabGroupName == nil {
+		var ret string
+		return ret
+	}
+	return *o.GitlabGroupName
+}
+
+// GetGitlabGroupNameOk returns a tuple with the GitlabGroupName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGitlabGroupNameOk() (*string, bool) {
+	if o == nil || o.GitlabGroupName == nil {
+		return nil, false
+	}
+	return o.GitlabGroupName, true
+}
+
+// HasGitlabGroupName returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGitlabGroupName() bool {
+	if o != nil && o.GitlabGroupName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGitlabGroupName gets a reference to the given string and assigns it to the GitlabGroupName field.
+func (o *DSProducerDetails) SetGitlabGroupName(v string) {
+	o.GitlabGroupName = &v
+}
+
+// GetGitlabProjectName returns the GitlabProjectName field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGitlabProjectName() string {
+	if o == nil || o.GitlabProjectName == nil {
+		var ret string
+		return ret
+	}
+	return *o.GitlabProjectName
+}
+
+// GetGitlabProjectNameOk returns a tuple with the GitlabProjectName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGitlabProjectNameOk() (*string, bool) {
+	if o == nil || o.GitlabProjectName == nil {
+		return nil, false
+	}
+	return o.GitlabProjectName, true
+}
+
+// HasGitlabProjectName returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGitlabProjectName() bool {
+	if o != nil && o.GitlabProjectName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGitlabProjectName gets a reference to the given string and assigns it to the GitlabProjectName field.
+func (o *DSProducerDetails) SetGitlabProjectName(v string) {
+	o.GitlabProjectName = &v
+}
+
+// GetGitlabRole returns the GitlabRole field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGitlabRole() string {
+	if o == nil || o.GitlabRole == nil {
+		var ret string
+		return ret
+	}
+	return *o.GitlabRole
+}
+
+// GetGitlabRoleOk returns a tuple with the GitlabRole field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGitlabRoleOk() (*string, bool) {
+	if o == nil || o.GitlabRole == nil {
+		return nil, false
+	}
+	return o.GitlabRole, true
+}
+
+// HasGitlabRole returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGitlabRole() bool {
+	if o != nil && o.GitlabRole != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGitlabRole gets a reference to the given string and assigns it to the GitlabRole field.
+func (o *DSProducerDetails) SetGitlabRole(v string) {
+	o.GitlabRole = &v
+}
+
+// GetGitlabTokenScope returns the GitlabTokenScope field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGitlabTokenScope() []string {
+	if o == nil || o.GitlabTokenScope == nil {
+		var ret []string
+		return ret
+	}
+	return *o.GitlabTokenScope
+}
+
+// GetGitlabTokenScopeOk returns a tuple with the GitlabTokenScope field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGitlabTokenScopeOk() (*[]string, bool) {
+	if o == nil || o.GitlabTokenScope == nil {
+		return nil, false
+	}
+	return o.GitlabTokenScope, true
+}
+
+// HasGitlabTokenScope returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGitlabTokenScope() bool {
+	if o != nil && o.GitlabTokenScope != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGitlabTokenScope gets a reference to the given []string and assigns it to the GitlabTokenScope field.
+func (o *DSProducerDetails) SetGitlabTokenScope(v []string) {
+	o.GitlabTokenScope = &v
+}
+
+// GetGitlabUrl returns the GitlabUrl field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGitlabUrl() string {
+	if o == nil || o.GitlabUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.GitlabUrl
+}
+
+// GetGitlabUrlOk returns a tuple with the GitlabUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGitlabUrlOk() (*string, bool) {
+	if o == nil || o.GitlabUrl == nil {
+		return nil, false
+	}
+	return o.GitlabUrl, true
+}
+
+// HasGitlabUrl returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGitlabUrl() bool {
+	if o != nil && o.GitlabUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGitlabUrl gets a reference to the given string and assigns it to the GitlabUrl field.
+func (o *DSProducerDetails) SetGitlabUrl(v string) {
+	o.GitlabUrl = &v
 }
 
 // GetGkeClusterCaCertificate returns the GkeClusterCaCertificate field value if set, zero value otherwise.
@@ -7924,6 +8188,30 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.GithubRepositoryPath != nil {
 		toSerialize["github_repository_path"] = o.GithubRepositoryPath
+	}
+	if o.GitlabAccessToken != nil {
+		toSerialize["gitlab_access_token"] = o.GitlabAccessToken
+	}
+	if o.GitlabAccessType != nil {
+		toSerialize["gitlab_access_type"] = o.GitlabAccessType
+	}
+	if o.GitlabCertificate != nil {
+		toSerialize["gitlab_certificate"] = o.GitlabCertificate
+	}
+	if o.GitlabGroupName != nil {
+		toSerialize["gitlab_group_name"] = o.GitlabGroupName
+	}
+	if o.GitlabProjectName != nil {
+		toSerialize["gitlab_project_name"] = o.GitlabProjectName
+	}
+	if o.GitlabRole != nil {
+		toSerialize["gitlab_role"] = o.GitlabRole
+	}
+	if o.GitlabTokenScope != nil {
+		toSerialize["gitlab_token_scope"] = o.GitlabTokenScope
+	}
+	if o.GitlabUrl != nil {
+		toSerialize["gitlab_url"] = o.GitlabUrl
 	}
 	if o.GkeClusterCaCertificate != nil {
 		toSerialize["gke_cluster_ca_certificate"] = o.GkeClusterCaCertificate
