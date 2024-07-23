@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **GithubAppId** | Pointer to **int64** | Github app id | [optional] 
 **GithubAppPrivateKey** | Pointer to **string** | App private key | [optional] 
 **GithubBaseUrl** | Pointer to **string** | Base URL | [optional] [default to "https://api.github.com/"]

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **AwsUserGroups** | Pointer to **string** | AWS User groups | [optional] 
 **AwsUserPolicies** | Pointer to **string** | AWS User policies | [optional] 
 **AwsUserProgrammaticAccess** | Pointer to **bool** | Enable AWS User programmatic access | [optional] [default to true]
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **EnableAdminRotation** | Pointer to **bool** | Automatic admin credentials rotation | [optional] [default to false]
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
@@ -28,9 +28,11 @@ Name | Type | Description | Notes
 **SecureAccessWeb** | Pointer to **bool** | Enable Web Secure Remote Access | [optional] [default to true]
 **SecureAccessWebBrowsing** | Pointer to **bool** | Secure browser via Akeyless Web Access Bastion | [optional] [default to false]
 **SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless Web Access Bastion | [optional] [default to false]
+**SessionTags** | Pointer to **string** | String of Key value session tags comma separated, relevant only for Assumed Role | [optional] 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
+**TransitiveTagKeys** | Pointer to **string** | String of transitive tag keys space separated, relevant only for Assumed Role | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserTtl** | Pointer to **string** | User TTL | [optional] [default to "60m"]
 
@@ -648,6 +650,31 @@ SetSecureAccessWebProxy sets SecureAccessWebProxy field to given value.
 
 HasSecureAccessWebProxy returns a boolean if a field has been set.
 
+### GetSessionTags
+
+`func (o *GatewayUpdateProducerAws) GetSessionTags() string`
+
+GetSessionTags returns the SessionTags field if non-nil, zero value otherwise.
+
+### GetSessionTagsOk
+
+`func (o *GatewayUpdateProducerAws) GetSessionTagsOk() (*string, bool)`
+
+GetSessionTagsOk returns a tuple with the SessionTags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSessionTags
+
+`func (o *GatewayUpdateProducerAws) SetSessionTags(v string)`
+
+SetSessionTags sets SessionTags field to given value.
+
+### HasSessionTags
+
+`func (o *GatewayUpdateProducerAws) HasSessionTags() bool`
+
+HasSessionTags returns a boolean if a field has been set.
+
 ### GetTags
 
 `func (o *GatewayUpdateProducerAws) GetTags() []string`
@@ -722,6 +749,31 @@ SetToken sets Token field to given value.
 `func (o *GatewayUpdateProducerAws) HasToken() bool`
 
 HasToken returns a boolean if a field has been set.
+
+### GetTransitiveTagKeys
+
+`func (o *GatewayUpdateProducerAws) GetTransitiveTagKeys() string`
+
+GetTransitiveTagKeys returns the TransitiveTagKeys field if non-nil, zero value otherwise.
+
+### GetTransitiveTagKeysOk
+
+`func (o *GatewayUpdateProducerAws) GetTransitiveTagKeysOk() (*string, bool)`
+
+GetTransitiveTagKeysOk returns a tuple with the TransitiveTagKeys field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTransitiveTagKeys
+
+`func (o *GatewayUpdateProducerAws) SetTransitiveTagKeys(v string)`
+
+SetTransitiveTagKeys sets TransitiveTagKeys field to given value.
+
+### HasTransitiveTagKeys
+
+`func (o *GatewayUpdateProducerAws) HasTransitiveTagKeys() bool`
+
+HasTransitiveTagKeys returns a boolean if a field has been set.
 
 ### GetUidToken
 

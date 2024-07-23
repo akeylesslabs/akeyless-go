@@ -25,7 +25,7 @@ type GatewayUpdateProducerAzure struct {
 	AzureClientSecret *string `json:"azure-client-secret,omitempty"`
 	// Azure Tenant ID
 	AzureTenantId *string `json:"azure-tenant-id,omitempty"`
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// FixedUserClaimKeyname
 	FixedUserClaimKeyname *string `json:"fixed-user-claim-keyname,omitempty"`

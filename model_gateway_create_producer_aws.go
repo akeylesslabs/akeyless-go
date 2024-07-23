@@ -34,7 +34,7 @@ type GatewayCreateProducerAws struct {
 	AwsUserPolicies *string `json:"aws-user-policies,omitempty"`
 	// Enable AWS User programmatic access
 	AwsUserProgrammaticAccess *bool `json:"aws-user-programmatic-access,omitempty"`
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Automatic admin credentials rotation
 	EnableAdminRotation *bool `json:"enable-admin-rotation,omitempty"`
@@ -62,12 +62,16 @@ type GatewayCreateProducerAws struct {
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
 	// Web-Proxy via Akeyless Web Access Bastion
 	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
+	// String of Key value session tags comma separated, relevant only for Assumed Role
+	SessionTags *string `json:"session-tags,omitempty"`
 	// Add tags attached to this object
 	Tags *[]string `json:"tags,omitempty"`
 	// Target name
 	TargetName *string `json:"target-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
+	// String of transitive tag keys space separated, relevant only for Assumed Role
+	TransitiveTagKeys *string `json:"transitive-tag-keys,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
 	// User TTL
@@ -860,6 +864,38 @@ func (o *GatewayCreateProducerAws) SetSecureAccessWebProxy(v bool) {
 	o.SecureAccessWebProxy = &v
 }
 
+// GetSessionTags returns the SessionTags field value if set, zero value otherwise.
+func (o *GatewayCreateProducerAws) GetSessionTags() string {
+	if o == nil || o.SessionTags == nil {
+		var ret string
+		return ret
+	}
+	return *o.SessionTags
+}
+
+// GetSessionTagsOk returns a tuple with the SessionTags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerAws) GetSessionTagsOk() (*string, bool) {
+	if o == nil || o.SessionTags == nil {
+		return nil, false
+	}
+	return o.SessionTags, true
+}
+
+// HasSessionTags returns a boolean if a field has been set.
+func (o *GatewayCreateProducerAws) HasSessionTags() bool {
+	if o != nil && o.SessionTags != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSessionTags gets a reference to the given string and assigns it to the SessionTags field.
+func (o *GatewayCreateProducerAws) SetSessionTags(v string) {
+	o.SessionTags = &v
+}
+
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *GatewayCreateProducerAws) GetTags() []string {
 	if o == nil || o.Tags == nil {
@@ -954,6 +990,38 @@ func (o *GatewayCreateProducerAws) HasToken() bool {
 // SetToken gets a reference to the given string and assigns it to the Token field.
 func (o *GatewayCreateProducerAws) SetToken(v string) {
 	o.Token = &v
+}
+
+// GetTransitiveTagKeys returns the TransitiveTagKeys field value if set, zero value otherwise.
+func (o *GatewayCreateProducerAws) GetTransitiveTagKeys() string {
+	if o == nil || o.TransitiveTagKeys == nil {
+		var ret string
+		return ret
+	}
+	return *o.TransitiveTagKeys
+}
+
+// GetTransitiveTagKeysOk returns a tuple with the TransitiveTagKeys field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerAws) GetTransitiveTagKeysOk() (*string, bool) {
+	if o == nil || o.TransitiveTagKeys == nil {
+		return nil, false
+	}
+	return o.TransitiveTagKeys, true
+}
+
+// HasTransitiveTagKeys returns a boolean if a field has been set.
+func (o *GatewayCreateProducerAws) HasTransitiveTagKeys() bool {
+	if o != nil && o.TransitiveTagKeys != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTransitiveTagKeys gets a reference to the given string and assigns it to the TransitiveTagKeys field.
+func (o *GatewayCreateProducerAws) SetTransitiveTagKeys(v string) {
+	o.TransitiveTagKeys = &v
 }
 
 // GetUidToken returns the UidToken field value if set, zero value otherwise.
@@ -1091,6 +1159,9 @@ func (o GatewayCreateProducerAws) MarshalJSON() ([]byte, error) {
 	if o.SecureAccessWebProxy != nil {
 		toSerialize["secure-access-web-proxy"] = o.SecureAccessWebProxy
 	}
+	if o.SessionTags != nil {
+		toSerialize["session-tags"] = o.SessionTags
+	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags
 	}
@@ -1099,6 +1170,9 @@ func (o GatewayCreateProducerAws) MarshalJSON() ([]byte, error) {
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
+	}
+	if o.TransitiveTagKeys != nil {
+		toSerialize["transitive-tag-keys"] = o.TransitiveTagKeys
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken

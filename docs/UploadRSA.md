@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Alg** | **string** | Key type. options: [RSA1024, RSA2048, RSA3072, RSA4096] | 
 **CertFileData** | Pointer to **string** | Certificate in a PEM format. | [optional] 
 **CustomerFrgId** | Pointer to **string** | The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment) | [optional] 
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Metadata** | Pointer to **string** | Deprecated - use description | [optional] 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **K8sAllowedNamespaces** | Pointer to **string** | Comma-separated list of allowed K8S namespaces for the generated ServiceAccount (relevant only for k8s-service-account-type&#x3D;dynamic) | [optional] 
 **K8sClusterCaCert** | Pointer to **string** | K8S cluster CA certificate | [optional] 

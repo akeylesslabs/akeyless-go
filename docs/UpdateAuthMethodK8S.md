@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **BoundNamespaces** | Pointer to **[]string** | A list of namespaces that the access is restricted to | [optional] 
 **BoundPodNames** | Pointer to **[]string** | A list of pod names that the access is restricted to | [optional] 
 **BoundSaNames** | Pointer to **[]string** | A list of service account names that the access is restricted to | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Auth Method description | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
 **GenKey** | Pointer to **string** | Automatically generate key-pair for K8S configuration. If set to false, a public key needs to be provided [true/false] | [optional] 
@@ -217,6 +218,31 @@ SetBoundSaNames sets BoundSaNames field to given value.
 `func (o *UpdateAuthMethodK8S) HasBoundSaNames() bool`
 
 HasBoundSaNames returns a boolean if a field has been set.
+
+### GetDeleteProtection
+
+`func (o *UpdateAuthMethodK8S) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *UpdateAuthMethodK8S) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *UpdateAuthMethodK8S) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *UpdateAuthMethodK8S) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetDescription
 

@@ -21,7 +21,7 @@ type RotatedSecretCreateMongodb struct {
 	AuthenticationCredentials *string `json:"authentication-credentials,omitempty"`
 	// Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation [true/false]
 	AutoRotate *string `json:"auto-rotate,omitempty"`
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`

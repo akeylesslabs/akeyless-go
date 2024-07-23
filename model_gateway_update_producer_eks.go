@@ -17,7 +17,7 @@ import (
 
 // GatewayUpdateProducerEks gatewayUpdateProducerEks is a command that updates eks producer [Deprecated: Use dynamic-secret-update-eks command]
 type GatewayUpdateProducerEks struct {
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Access Key ID
 	EksAccessKeyId *string `json:"eks-access-key-id,omitempty"`

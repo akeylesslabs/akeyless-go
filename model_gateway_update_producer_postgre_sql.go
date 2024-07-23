@@ -19,7 +19,7 @@ import (
 type GatewayUpdateProducerPostgreSQL struct {
 	// PostgreSQL Creation statements
 	CreationStatements *string `json:"creation-statements,omitempty"`
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`

@@ -21,7 +21,7 @@ type CreateTokenizer struct {
 	Alphabet *string `json:"alphabet,omitempty"`
 	// The Decoding output template to use in regexp vaultless tokenization
 	DecodingTemplate *string `json:"decoding-template,omitempty"`
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`

@@ -19,7 +19,7 @@ import (
 type GatewayCreateProducerRedis struct {
 	// A JSON array list of redis ACL rules to attach to the created user. For available rules see the ACL CAT command https://redis.io/commands/acl-cat By default the user will have permissions to read all keys '[\"~*\", \"+@read\"]'
 	AclRules *string `json:"acl-rules,omitempty"`
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Redis Host
 	Host *string `json:"host,omitempty"`

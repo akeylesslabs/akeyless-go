@@ -35,7 +35,9 @@ type DSProducerDetails struct {
 	AwsRegion *string `json:"aws_region,omitempty"`
 	AwsRoleArns *string `json:"aws_role_arns,omitempty"`
 	AwsSecretAccessKey *string `json:"aws_secret_access_key,omitempty"`
+	AwsSessionTags *string `json:"aws_session_tags,omitempty"`
 	AwsSessionToken *string `json:"aws_session_token,omitempty"`
+	AwsTransitiveTagKeys *string `json:"aws_transitive_tag_keys,omitempty"`
 	AwsUserConsoleAccess *bool `json:"aws_user_console_access,omitempty"`
 	AwsUserGroups *string `json:"aws_user_groups,omitempty"`
 	AwsUserPolicies *string `json:"aws_user_policies,omitempty"`
@@ -870,6 +872,38 @@ func (o *DSProducerDetails) SetAwsSecretAccessKey(v string) {
 	o.AwsSecretAccessKey = &v
 }
 
+// GetAwsSessionTags returns the AwsSessionTags field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetAwsSessionTags() string {
+	if o == nil || o.AwsSessionTags == nil {
+		var ret string
+		return ret
+	}
+	return *o.AwsSessionTags
+}
+
+// GetAwsSessionTagsOk returns a tuple with the AwsSessionTags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetAwsSessionTagsOk() (*string, bool) {
+	if o == nil || o.AwsSessionTags == nil {
+		return nil, false
+	}
+	return o.AwsSessionTags, true
+}
+
+// HasAwsSessionTags returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasAwsSessionTags() bool {
+	if o != nil && o.AwsSessionTags != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsSessionTags gets a reference to the given string and assigns it to the AwsSessionTags field.
+func (o *DSProducerDetails) SetAwsSessionTags(v string) {
+	o.AwsSessionTags = &v
+}
+
 // GetAwsSessionToken returns the AwsSessionToken field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetAwsSessionToken() string {
 	if o == nil || o.AwsSessionToken == nil {
@@ -900,6 +934,38 @@ func (o *DSProducerDetails) HasAwsSessionToken() bool {
 // SetAwsSessionToken gets a reference to the given string and assigns it to the AwsSessionToken field.
 func (o *DSProducerDetails) SetAwsSessionToken(v string) {
 	o.AwsSessionToken = &v
+}
+
+// GetAwsTransitiveTagKeys returns the AwsTransitiveTagKeys field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetAwsTransitiveTagKeys() string {
+	if o == nil || o.AwsTransitiveTagKeys == nil {
+		var ret string
+		return ret
+	}
+	return *o.AwsTransitiveTagKeys
+}
+
+// GetAwsTransitiveTagKeysOk returns a tuple with the AwsTransitiveTagKeys field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetAwsTransitiveTagKeysOk() (*string, bool) {
+	if o == nil || o.AwsTransitiveTagKeys == nil {
+		return nil, false
+	}
+	return o.AwsTransitiveTagKeys, true
+}
+
+// HasAwsTransitiveTagKeys returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasAwsTransitiveTagKeys() bool {
+	if o != nil && o.AwsTransitiveTagKeys != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsTransitiveTagKeys gets a reference to the given string and assigns it to the AwsTransitiveTagKeys field.
+func (o *DSProducerDetails) SetAwsTransitiveTagKeys(v string) {
+	o.AwsTransitiveTagKeys = &v
 }
 
 // GetAwsUserConsoleAccess returns the AwsUserConsoleAccess field value if set, zero value otherwise.
@@ -7934,8 +8000,14 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 	if o.AwsSecretAccessKey != nil {
 		toSerialize["aws_secret_access_key"] = o.AwsSecretAccessKey
 	}
+	if o.AwsSessionTags != nil {
+		toSerialize["aws_session_tags"] = o.AwsSessionTags
+	}
 	if o.AwsSessionToken != nil {
 		toSerialize["aws_session_token"] = o.AwsSessionToken
+	}
+	if o.AwsTransitiveTagKeys != nil {
+		toSerialize["aws_transitive_tag_keys"] = o.AwsTransitiveTagKeys
 	}
 	if o.AwsUserConsoleAccess != nil {
 		toSerialize["aws_user_console_access"] = o.AwsUserConsoleAccess

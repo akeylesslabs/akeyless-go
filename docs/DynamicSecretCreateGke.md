@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **GkeAccountKey** | Pointer to **string** | GKE Service Account key file path | [optional] 
 **GkeClusterCert** | Pointer to **string** | GKE cluster CA certificate | [optional] 

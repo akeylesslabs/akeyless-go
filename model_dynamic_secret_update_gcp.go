@@ -17,7 +17,7 @@ import (
 
 // DynamicSecretUpdateGcp dynamicSecretUpdateGcp is a command that updates a GCP dynamic secret
 type DynamicSecretUpdateGcp struct {
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`

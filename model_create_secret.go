@@ -23,7 +23,7 @@ type CreateSecret struct {
 	ChangeEvent *string `json:"change-event,omitempty"`
 	// For Password Management use, additional fields
 	CustomField *map[string]string `json:"custom-field,omitempty"`
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`

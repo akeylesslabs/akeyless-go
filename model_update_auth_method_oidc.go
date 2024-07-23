@@ -31,6 +31,8 @@ type UpdateAuthMethodOIDC struct {
 	ClientId *string `json:"client-id,omitempty"`
 	// Client Secret
 	ClientSecret *string `json:"client-secret,omitempty"`
+	// Protection from accidental deletion of this object [true/false]
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Auth Method description
 	Description *string `json:"description,omitempty"`
 	// if true: enforce role-association must include sub claims
@@ -316,6 +318,38 @@ func (o *UpdateAuthMethodOIDC) HasClientSecret() bool {
 // SetClientSecret gets a reference to the given string and assigns it to the ClientSecret field.
 func (o *UpdateAuthMethodOIDC) SetClientSecret(v string) {
 	o.ClientSecret = &v
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *UpdateAuthMethodOIDC) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAuthMethodOIDC) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *UpdateAuthMethodOIDC) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *UpdateAuthMethodOIDC) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -804,6 +838,9 @@ func (o UpdateAuthMethodOIDC) MarshalJSON() ([]byte, error) {
 	}
 	if o.ClientSecret != nil {
 		toSerialize["client-secret"] = o.ClientSecret
+	}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
 	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description

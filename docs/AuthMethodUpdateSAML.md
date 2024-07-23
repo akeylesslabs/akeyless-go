@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AllowedRedirectUri** | Pointer to **[]string** | Allowed redirect URIs after the authentication | [optional] 
 **AuditLogsClaims** | Pointer to **[]string** | Subclaims to include in audit logs, e.g \&quot;--audit-logs-claims email --audit-logs-claims username\&quot; | [optional] 
 **BoundIps** | Pointer to **[]string** | A CIDR whitelist with the IPs that the access is restricted to | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Auth Method description | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
 **GwBoundIps** | Pointer to **[]string** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
@@ -141,6 +142,31 @@ SetBoundIps sets BoundIps field to given value.
 `func (o *AuthMethodUpdateSAML) HasBoundIps() bool`
 
 HasBoundIps returns a boolean if a field has been set.
+
+### GetDeleteProtection
+
+`func (o *AuthMethodUpdateSAML) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *AuthMethodUpdateSAML) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *AuthMethodUpdateSAML) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *AuthMethodUpdateSAML) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetDescription
 

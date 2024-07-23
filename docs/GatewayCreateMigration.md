@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Var1passwordSecretKey** | Pointer to **string** | 1Password user secret key to connect to the API | [optional] 
 **Var1passwordUrl** | Pointer to **string** | 1Password api container url | [optional] 
 **Var1passwordVaults** | Pointer to **[]string** | 1Password list of vault to get the items from | [optional] 
+**ServiceAccountKeyDecoded** | Pointer to **string** |  | [optional] 
 **AdDiscoverServices** | Pointer to **string** | Enable/Disable discovery of Windows services from each domain server as part of the SSH/Windows Rotated Secrets. Default is false. (Relevant only for Active Directory migration) | [optional] [default to "false"]
 **AdDiscoveryTypes** | Pointer to **[]string** | Set migration discovery types (domain-users, computers, local-users). (Relevant only for Active Directory migration) | [optional] 
 **AdOsFilter** | Pointer to **string** | Filter by Operating System to run the migration, can be used with wildcards, e.g. SRV20* (Relevant only for Active Directory migration) | [optional] 
@@ -211,6 +212,31 @@ SetVar1passwordVaults sets Var1passwordVaults field to given value.
 `func (o *GatewayCreateMigration) HasVar1passwordVaults() bool`
 
 HasVar1passwordVaults returns a boolean if a field has been set.
+
+### GetServiceAccountKeyDecoded
+
+`func (o *GatewayCreateMigration) GetServiceAccountKeyDecoded() string`
+
+GetServiceAccountKeyDecoded returns the ServiceAccountKeyDecoded field if non-nil, zero value otherwise.
+
+### GetServiceAccountKeyDecodedOk
+
+`func (o *GatewayCreateMigration) GetServiceAccountKeyDecodedOk() (*string, bool)`
+
+GetServiceAccountKeyDecodedOk returns a tuple with the ServiceAccountKeyDecoded field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServiceAccountKeyDecoded
+
+`func (o *GatewayCreateMigration) SetServiceAccountKeyDecoded(v string)`
+
+SetServiceAccountKeyDecoded sets ServiceAccountKeyDecoded field to given value.
+
+### HasServiceAccountKeyDecoded
+
+`func (o *GatewayCreateMigration) HasServiceAccountKeyDecoded() bool`
+
+HasServiceAccountKeyDecoded returns a boolean if a field has been set.
 
 ### GetAdDiscoverServices
 

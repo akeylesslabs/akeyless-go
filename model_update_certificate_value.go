@@ -21,7 +21,7 @@ type UpdateCertificateValue struct {
 	AddTag *[]string `json:"add-tag,omitempty"`
 	// Content of the certificate in a Base64 format.
 	CertificateData *string `json:"certificate-data,omitempty"`
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`

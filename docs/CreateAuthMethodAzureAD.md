@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **BoundSpid** | Pointer to **[]string** | A list of service principal IDs that the access is restricted to | [optional] 
 **BoundSubId** | Pointer to **[]string** | A list of subscription ids that the access is restricted to | [optional] 
 **BoundTenantId** | **string** | The Azure tenant id that the access is restricted to | 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Auth Method description | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
 **GwBoundIps** | Pointer to **[]string** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
@@ -367,6 +368,31 @@ and a boolean to check if the value has been set.
 
 SetBoundTenantId sets BoundTenantId field to given value.
 
+
+### GetDeleteProtection
+
+`func (o *CreateAuthMethodAzureAD) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *CreateAuthMethodAzureAD) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *CreateAuthMethodAzureAD) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *CreateAuthMethodAzureAD) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetDescription
 

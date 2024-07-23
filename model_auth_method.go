@@ -28,6 +28,7 @@ type AuthMethod struct {
 	AuthMethodRolesAssoc *[]AuthMethodRoleAssociation `json:"auth_method_roles_assoc,omitempty"`
 	ClientPermissions *[]string `json:"client_permissions,omitempty"`
 	CreationDate *time.Time `json:"creation_date,omitempty"`
+	DeleteProtection *bool `json:"delete_protection,omitempty"`
 	Description *string `json:"description,omitempty"`
 	IsApproved *bool `json:"is_approved,omitempty"`
 	ModificationDate *time.Time `json:"modification_date,omitempty"`
@@ -370,6 +371,38 @@ func (o *AuthMethod) SetCreationDate(v time.Time) {
 	o.CreationDate = &v
 }
 
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *AuthMethod) GetDeleteProtection() bool {
+	if o == nil || o.DeleteProtection == nil {
+		var ret bool
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethod) GetDeleteProtectionOk() (*bool, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *AuthMethod) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given bool and assigns it to the DeleteProtection field.
+func (o *AuthMethod) SetDeleteProtection(v bool) {
+	o.DeleteProtection = &v
+}
+
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *AuthMethod) GetDescription() string {
 	if o == nil || o.Description == nil {
@@ -497,6 +530,9 @@ func (o AuthMethod) MarshalJSON() ([]byte, error) {
 	}
 	if o.CreationDate != nil {
 		toSerialize["creation_date"] = o.CreationDate
+	}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
 	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description

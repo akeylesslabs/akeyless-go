@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **BoundRoleName** | Pointer to **[]string** | A list of full role-name that the access is restricted to | [optional] 
 **BoundUserId** | Pointer to **[]string** | A list of full user ids that the access is restricted to | [optional] 
 **BoundUserName** | Pointer to **[]string** | A list of full user-name that the access is restricted to | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Auth Method description | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
 **GwBoundIps** | Pointer to **[]string** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
@@ -289,6 +290,31 @@ SetBoundUserName sets BoundUserName field to given value.
 `func (o *UpdateAuthMethodAWSIAM) HasBoundUserName() bool`
 
 HasBoundUserName returns a boolean if a field has been set.
+
+### GetDeleteProtection
+
+`func (o *UpdateAuthMethodAWSIAM) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *UpdateAuthMethodAWSIAM) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *UpdateAuthMethodAWSIAM) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *UpdateAuthMethodAWSIAM) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetDescription
 

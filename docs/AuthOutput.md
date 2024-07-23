@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CompleteAuthLink** | Pointer to **string** |  | [optional] 
 **Creds** | Pointer to [**SystemAccessCredentialsReplyObj**](SystemAccessCredentialsReplyObj.md) |  | [optional] 
 **Token** | Pointer to **string** |  | [optional] 
 
@@ -25,6 +26,31 @@ will change when the set of required properties is changed
 NewAuthOutputWithDefaults instantiates a new AuthOutput object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCompleteAuthLink
+
+`func (o *AuthOutput) GetCompleteAuthLink() string`
+
+GetCompleteAuthLink returns the CompleteAuthLink field if non-nil, zero value otherwise.
+
+### GetCompleteAuthLinkOk
+
+`func (o *AuthOutput) GetCompleteAuthLinkOk() (*string, bool)`
+
+GetCompleteAuthLinkOk returns a tuple with the CompleteAuthLink field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCompleteAuthLink
+
+`func (o *AuthOutput) SetCompleteAuthLink(v string)`
+
+SetCompleteAuthLink sets CompleteAuthLink field to given value.
+
+### HasCompleteAuthLink
+
+`func (o *AuthOutput) HasCompleteAuthLink() bool`
+
+HasCompleteAuthLink returns a boolean if a field has been set.
 
 ### GetCreds
 

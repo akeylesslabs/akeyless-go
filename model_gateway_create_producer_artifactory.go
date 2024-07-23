@@ -27,7 +27,7 @@ type GatewayCreateProducerArtifactory struct {
 	ArtifactoryTokenScope string `json:"artifactory-token-scope"`
 	// Base URL
 	BaseUrl *string `json:"base-url,omitempty"`
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`

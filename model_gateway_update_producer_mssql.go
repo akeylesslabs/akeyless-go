@@ -17,7 +17,7 @@ import (
 
 // GatewayUpdateProducerMSSQL gatewayUpdateProducerMSSQL is a command that updates mssql producer [Deprecated: Use dynamic-secret-update-mssql command]
 type GatewayUpdateProducerMSSQL struct {
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`

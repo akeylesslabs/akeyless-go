@@ -17,7 +17,7 @@ import (
 
 // GatewayCreateProducerNativeK8S gatewayCreateProducerNativeK8S is a command that creates k8s producer [Deprecated: Use dynamic-secret-create-k8s command]
 type GatewayCreateProducerNativeK8S struct {
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`

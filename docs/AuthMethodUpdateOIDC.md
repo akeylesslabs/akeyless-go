@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **BoundIps** | Pointer to **[]string** | A CIDR whitelist with the IPs that the access is restricted to | [optional] 
 **ClientId** | Pointer to **string** | Client ID | [optional] 
 **ClientSecret** | Pointer to **string** | Client Secret | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Auth Method description | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
 **GwBoundIps** | Pointer to **[]string** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
@@ -220,6 +221,31 @@ SetClientSecret sets ClientSecret field to given value.
 `func (o *AuthMethodUpdateOIDC) HasClientSecret() bool`
 
 HasClientSecret returns a boolean if a field has been set.
+
+### GetDeleteProtection
+
+`func (o *AuthMethodUpdateOIDC) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *AuthMethodUpdateOIDC) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *AuthMethodUpdateOIDC) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *AuthMethodUpdateOIDC) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetDescription
 

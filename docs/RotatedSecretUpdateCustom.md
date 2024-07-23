@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **AuthenticationCredentials** | Pointer to **string** | The credentials to connect with use-user-creds/use-target-creds | [optional] [default to "use-user-creds"]
 **AutoRotate** | Pointer to **string** | Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation [true/false] | [optional] 
 **CustomPayload** | Pointer to **string** | Secret payload to be sent with rotation request | [optional] 
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] [default to "default_metadata"]
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | Pointer to **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
@@ -32,6 +32,7 @@ Name | Type | Description | Notes
 **SecureAccessWeb** | Pointer to **bool** | Enable Web Secure Remote Access | [optional] [default to false]
 **SecureAccessWebBrowsing** | Pointer to **bool** | Secure browser via Akeyless Web Access Bastion | [optional] [default to false]
 **SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless Web Access Bastion | [optional] [default to false]
+**TimeoutSec** | Pointer to **int64** | Maximum allowed time in seconds for the custom rotator to return the results | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
@@ -748,6 +749,31 @@ SetSecureAccessWebProxy sets SecureAccessWebProxy field to given value.
 `func (o *RotatedSecretUpdateCustom) HasSecureAccessWebProxy() bool`
 
 HasSecureAccessWebProxy returns a boolean if a field has been set.
+
+### GetTimeoutSec
+
+`func (o *RotatedSecretUpdateCustom) GetTimeoutSec() int64`
+
+GetTimeoutSec returns the TimeoutSec field if non-nil, zero value otherwise.
+
+### GetTimeoutSecOk
+
+`func (o *RotatedSecretUpdateCustom) GetTimeoutSecOk() (*int64, bool)`
+
+GetTimeoutSecOk returns a tuple with the TimeoutSec field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTimeoutSec
+
+`func (o *RotatedSecretUpdateCustom) SetTimeoutSec(v int64)`
+
+SetTimeoutSec sets TimeoutSec field to given value.
+
+### HasTimeoutSec
+
+`func (o *RotatedSecretUpdateCustom) HasTimeoutSec() bool`
+
+HasTimeoutSec returns a boolean if a field has been set.
 
 ### GetToken
 

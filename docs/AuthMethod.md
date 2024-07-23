@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **AuthMethodRolesAssoc** | Pointer to [**[]AuthMethodRoleAssociation**](AuthMethodRoleAssociation.md) |  | [optional] 
 **ClientPermissions** | Pointer to **[]string** |  | [optional] 
 **CreationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**DeleteProtection** | Pointer to **bool** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **IsApproved** | Pointer to **bool** |  | [optional] 
 **ModificationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
@@ -286,6 +287,31 @@ SetCreationDate sets CreationDate field to given value.
 `func (o *AuthMethod) HasCreationDate() bool`
 
 HasCreationDate returns a boolean if a field has been set.
+
+### GetDeleteProtection
+
+`func (o *AuthMethod) GetDeleteProtection() bool`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *AuthMethod) GetDeleteProtectionOk() (*bool, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *AuthMethod) SetDeleteProtection(v bool)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *AuthMethod) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetDescription
 

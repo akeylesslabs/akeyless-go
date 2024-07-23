@@ -27,7 +27,7 @@ type DynamicSecretUpdateCassandra struct {
 	CassandraPort *string `json:"cassandra-port,omitempty"`
 	// Cassandra superuser username
 	CassandraUsername *string `json:"cassandra-username,omitempty"`
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`

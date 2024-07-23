@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **MssqlCreateStatements** | Pointer to **string** | MSSQL Creation statements | [optional] 
 **MssqlDbname** | Pointer to **string** | MSSQL Name | [optional] 

@@ -21,7 +21,7 @@ type GatewayCreateProducerCustom struct {
 	AdminRotationIntervalDays *int64 `json:"admin_rotation_interval_days,omitempty"`
 	// URL of an endpoint that implements /sync/create method, for example https://webhook.example.com/sync/create
 	CreateSyncUrl string `json:"create-sync-url"`
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Should admin credentials be rotated
 	EnableAdminRotation *bool `json:"enable_admin_rotation,omitempty"`

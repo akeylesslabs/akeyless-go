@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **AllowedUrlsPerInstance** | Pointer to [**map[string][]string**](array.md) |  | [optional] 
 **ClusterName** | Pointer to **string** |  | [optional] 
 **DisplayName** | Pointer to **string** |  | [optional] 
+**HasGatewayIdentity** | Pointer to **bool** |  | [optional] 
 **LastReport** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 
 ## Methods
@@ -180,6 +181,31 @@ SetDisplayName sets DisplayName field to given value.
 `func (o *BastionListEntry) HasDisplayName() bool`
 
 HasDisplayName returns a boolean if a field has been set.
+
+### GetHasGatewayIdentity
+
+`func (o *BastionListEntry) GetHasGatewayIdentity() bool`
+
+GetHasGatewayIdentity returns the HasGatewayIdentity field if non-nil, zero value otherwise.
+
+### GetHasGatewayIdentityOk
+
+`func (o *BastionListEntry) GetHasGatewayIdentityOk() (*bool, bool)`
+
+GetHasGatewayIdentityOk returns a tuple with the HasGatewayIdentity field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHasGatewayIdentity
+
+`func (o *BastionListEntry) SetHasGatewayIdentity(v bool)`
+
+SetHasGatewayIdentity sets HasGatewayIdentity field to given value.
+
+### HasHasGatewayIdentity
+
+`func (o *BastionListEntry) HasHasGatewayIdentity() bool`
+
+HasHasGatewayIdentity returns a boolean if a field has been set.
 
 ### GetLastReport
 

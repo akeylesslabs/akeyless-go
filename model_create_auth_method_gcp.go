@@ -35,6 +35,8 @@ type CreateAuthMethodGCP struct {
 	BoundServiceAccounts *[]string `json:"bound-service-accounts,omitempty"`
 	// === Machine authentication section === List of zones that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a zonal group and the group must belong to this zone.
 	BoundZones *[]string `json:"bound-zones,omitempty"`
+	// Protection from accidental deletion of this object [true/false]
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Auth Method description
 	Description *string `json:"description,omitempty"`
 	// if true: enforce role-association must include sub claims
@@ -371,6 +373,38 @@ func (o *CreateAuthMethodGCP) HasBoundZones() bool {
 // SetBoundZones gets a reference to the given []string and assigns it to the BoundZones field.
 func (o *CreateAuthMethodGCP) SetBoundZones(v []string) {
 	o.BoundZones = &v
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *CreateAuthMethodGCP) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodGCP) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *CreateAuthMethodGCP) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *CreateAuthMethodGCP) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -737,6 +771,9 @@ func (o CreateAuthMethodGCP) MarshalJSON() ([]byte, error) {
 	}
 	if o.BoundZones != nil {
 		toSerialize["bound-zones"] = o.BoundZones
+	}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
 	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description

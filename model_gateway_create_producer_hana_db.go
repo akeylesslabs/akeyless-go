@@ -17,7 +17,7 @@ import (
 
 // GatewayCreateProducerHanaDb gatewayCreateProducerHanaDb is a command that creates hanadb producer [Deprecated: Use dynamic-secret-create-hanadb command]
 type GatewayCreateProducerHanaDb struct {
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// HanaDb Name
 	HanaDbname *string `json:"hana-dbname,omitempty"`

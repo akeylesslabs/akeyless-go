@@ -17,7 +17,7 @@ import (
 
 // GatewayUpdateProducerNativeK8S gatewayUpdateProducerNativeK8S is a command that updates k8s producer [Deprecated: Use dynamic-secret-update-k8s command]
 type GatewayUpdateProducerNativeK8S struct {
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`

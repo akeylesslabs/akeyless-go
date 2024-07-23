@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **AddTag** | Pointer to **[]string** | List of the new tags that will be attached to this item | [optional] 
 **CertFileData** | Pointer to **string** | PEM Certificate in a Base64 format. Used for updating RSA keys&#39; certificates. | [optional] 
 **ChangeEvent** | Pointer to **string** | Trigger an event when a secret value changed [true/false] (Relevant only for Static Secret) | [optional] 
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] [default to "default_metadata"]
 **HostProvider** | Pointer to **string** | Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]

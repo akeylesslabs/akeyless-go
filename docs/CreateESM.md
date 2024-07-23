@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AzureKvName** | Pointer to **string** | Azure Key Vault name (Relevant only for Azure targets) | [optional] 
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the External Secrets Manager | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **K8sNamespace** | Pointer to **string** | K8s namespace (Relevant to Kubernetes targets) | [optional] 

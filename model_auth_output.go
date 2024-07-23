@@ -17,6 +17,7 @@ import (
 
 // AuthOutput struct for AuthOutput
 type AuthOutput struct {
+	CompleteAuthLink *string `json:"complete_auth_link,omitempty"`
 	Creds *SystemAccessCredentialsReplyObj `json:"creds,omitempty"`
 	Token *string `json:"token,omitempty"`
 }
@@ -36,6 +37,38 @@ func NewAuthOutput() *AuthOutput {
 func NewAuthOutputWithDefaults() *AuthOutput {
 	this := AuthOutput{}
 	return &this
+}
+
+// GetCompleteAuthLink returns the CompleteAuthLink field value if set, zero value otherwise.
+func (o *AuthOutput) GetCompleteAuthLink() string {
+	if o == nil || o.CompleteAuthLink == nil {
+		var ret string
+		return ret
+	}
+	return *o.CompleteAuthLink
+}
+
+// GetCompleteAuthLinkOk returns a tuple with the CompleteAuthLink field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthOutput) GetCompleteAuthLinkOk() (*string, bool) {
+	if o == nil || o.CompleteAuthLink == nil {
+		return nil, false
+	}
+	return o.CompleteAuthLink, true
+}
+
+// HasCompleteAuthLink returns a boolean if a field has been set.
+func (o *AuthOutput) HasCompleteAuthLink() bool {
+	if o != nil && o.CompleteAuthLink != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCompleteAuthLink gets a reference to the given string and assigns it to the CompleteAuthLink field.
+func (o *AuthOutput) SetCompleteAuthLink(v string) {
+	o.CompleteAuthLink = &v
 }
 
 // GetCreds returns the Creds field value if set, zero value otherwise.
@@ -104,6 +137,9 @@ func (o *AuthOutput) SetToken(v string) {
 
 func (o AuthOutput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.CompleteAuthLink != nil {
+		toSerialize["complete_auth_link"] = o.CompleteAuthLink
+	}
 	if o.Creds != nil {
 		toSerialize["creds"] = o.Creds
 	}

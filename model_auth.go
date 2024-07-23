@@ -34,7 +34,7 @@ type Auth struct {
 	// The cloud identity (relevant only for access-type=azure_ad,aws_iam,gcp)
 	CloudId *string `json:"cloud-id,omitempty"`
 	Debug *bool `json:"debug,omitempty"`
-	// Gateway URL for the K8S/OAUTH2 authenticated (relevant only for access-type=k8s/oauth2)
+	// Gateway URL relevant only for access-type=k8s/oauth2/saml/oidc
 	GatewayUrl *string `json:"gateway-url,omitempty"`
 	// GCP JWT audience
 	GcpAudience *string `json:"gcp-audience,omitempty"`
@@ -58,6 +58,8 @@ type Auth struct {
 	OciGroupOcid *[]string `json:"oci-group-ocid,omitempty"`
 	// The universal_identity token (relevant only for access-type=universal_identity)
 	UidToken *string `json:"uid_token,omitempty"`
+	// Returns a link to complete the authentication remotely (relevant only for access-type=saml/oidc)
+	UseRemoteBrowser *bool `json:"use-remote-browser,omitempty"`
 }
 
 // NewAuth instantiates a new Auth object
@@ -765,6 +767,38 @@ func (o *Auth) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUseRemoteBrowser returns the UseRemoteBrowser field value if set, zero value otherwise.
+func (o *Auth) GetUseRemoteBrowser() bool {
+	if o == nil || o.UseRemoteBrowser == nil {
+		var ret bool
+		return ret
+	}
+	return *o.UseRemoteBrowser
+}
+
+// GetUseRemoteBrowserOk returns a tuple with the UseRemoteBrowser field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Auth) GetUseRemoteBrowserOk() (*bool, bool) {
+	if o == nil || o.UseRemoteBrowser == nil {
+		return nil, false
+	}
+	return o.UseRemoteBrowser, true
+}
+
+// HasUseRemoteBrowser returns a boolean if a field has been set.
+func (o *Auth) HasUseRemoteBrowser() bool {
+	if o != nil && o.UseRemoteBrowser != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUseRemoteBrowser gets a reference to the given bool and assigns it to the UseRemoteBrowser field.
+func (o *Auth) SetUseRemoteBrowser(v bool) {
+	o.UseRemoteBrowser = &v
+}
+
 func (o Auth) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccessId != nil {
@@ -829,6 +863,9 @@ func (o Auth) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid_token"] = o.UidToken
+	}
+	if o.UseRemoteBrowser != nil {
+		toSerialize["use-remote-browser"] = o.UseRemoteBrowser
 	}
 	return json.Marshal(toSerialize)
 }

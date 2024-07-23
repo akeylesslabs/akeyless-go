@@ -23,6 +23,8 @@ type CreateRole struct {
 	AuditAccess *string `json:"audit-access,omitempty"`
 	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`
+	// Protection from accidental deletion of this object [true/false]
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
 	// Allow this role to view Event Center. Currently only 'none', 'own' and 'all' values are supported
@@ -161,6 +163,38 @@ func (o *CreateRole) HasComment() bool {
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *CreateRole) SetComment(v string) {
 	o.Comment = &v
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *CreateRole) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRole) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *CreateRole) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *CreateRole) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -485,6 +519,9 @@ func (o CreateRole) MarshalJSON() ([]byte, error) {
 	}
 	if o.Comment != nil {
 		toSerialize["comment"] = o.Comment
+	}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
 	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description

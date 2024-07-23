@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **ApplicationId** | Pointer to **string** | Id of the azure app that hold the serect to be rotated (relevant only for rotator-type&#x3D;api-key &amp; authentication-credentials&#x3D;use-target-creds) | [optional] 
 **AuthenticationCredentials** | Pointer to **string** | The credentials to connect with use-user-creds/use-target-creds | [optional] [default to "use-user-creds"]
 **AutoRotate** | Pointer to **string** | Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation [true/false] | [optional] 
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] [default to "default_metadata"]
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | Pointer to **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **RotateAfterDisconnect** | Pointer to **string** | Rotate the value of the secret after SRA session ends [true/false] | [optional] [default to "false"]
 **RotationHour** | Pointer to **int32** | The Hour of the rotation in UTC | [optional] 
 **RotationInterval** | Pointer to **string** | The number of days to wait between every automatic key rotation (1-365) | [optional] 
+**SecureAccessDisableConcurrentConnections** | Pointer to **bool** | Enable this flag to prevent simultaneous use of the same secret | [optional] 
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
 **SecureAccessUrl** | Pointer to **string** | Destination URL to inject secrets | [optional] 
 **SecureAccessWeb** | Pointer to **bool** | Enable Web Secure Remote Access | [optional] [default to false]
@@ -521,6 +522,31 @@ SetRotationInterval sets RotationInterval field to given value.
 `func (o *RotatedSecretUpdateAzure) HasRotationInterval() bool`
 
 HasRotationInterval returns a boolean if a field has been set.
+
+### GetSecureAccessDisableConcurrentConnections
+
+`func (o *RotatedSecretUpdateAzure) GetSecureAccessDisableConcurrentConnections() bool`
+
+GetSecureAccessDisableConcurrentConnections returns the SecureAccessDisableConcurrentConnections field if non-nil, zero value otherwise.
+
+### GetSecureAccessDisableConcurrentConnectionsOk
+
+`func (o *RotatedSecretUpdateAzure) GetSecureAccessDisableConcurrentConnectionsOk() (*bool, bool)`
+
+GetSecureAccessDisableConcurrentConnectionsOk returns a tuple with the SecureAccessDisableConcurrentConnections field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessDisableConcurrentConnections
+
+`func (o *RotatedSecretUpdateAzure) SetSecureAccessDisableConcurrentConnections(v bool)`
+
+SetSecureAccessDisableConcurrentConnections sets SecureAccessDisableConcurrentConnections field to given value.
+
+### HasSecureAccessDisableConcurrentConnections
+
+`func (o *RotatedSecretUpdateAzure) HasSecureAccessDisableConcurrentConnections() bool`
+
+HasSecureAccessDisableConcurrentConnections returns a boolean if a field has been set.
 
 ### GetSecureAccessEnable
 

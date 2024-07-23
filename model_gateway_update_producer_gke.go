@@ -17,7 +17,7 @@ import (
 
 // GatewayUpdateProducerGke gatewayUpdateProducerGke is a command that updates gke producer [Deprecated: Use dynamic-secret-update-gke command]
 type GatewayUpdateProducerGke struct {
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// GKE Service Account key file path
 	GkeAccountKey *string `json:"gke-account-key,omitempty"`

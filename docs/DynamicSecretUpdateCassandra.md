@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **CassandraPassword** | Pointer to **string** | Cassandra superuser password | [optional] 
 **CassandraPort** | Pointer to **string** | Cassandra port | [optional] [default to "9042"]
 **CassandraUsername** | Pointer to **string** | Cassandra superuser username | [optional] 
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 

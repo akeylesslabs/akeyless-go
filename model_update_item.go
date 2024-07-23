@@ -26,7 +26,7 @@ type UpdateItem struct {
 	CertFileData *string `json:"cert-file-data,omitempty"`
 	// Trigger an event when a secret value changed [true/false] (Relevant only for Static Secret)
 	ChangeEvent *string `json:"change-event,omitempty"`
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`

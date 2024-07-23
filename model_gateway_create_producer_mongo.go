@@ -17,7 +17,7 @@ import (
 
 // GatewayCreateProducerMongo gatewayCreateProducerMongo is a command that creates either mongodb  producer or mongodb atlas producer [Deprecated: Use dynamic-secret-create-mongodb command]
 type GatewayCreateProducerMongo struct {
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`

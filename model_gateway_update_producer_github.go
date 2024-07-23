@@ -17,7 +17,7 @@ import (
 
 // GatewayUpdateProducerGithub gatewayUpdateProducerGithub is a command that updates github producer [Deprecated: Use dynamic-secret-update-github command]
 type GatewayUpdateProducerGithub struct {
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Github app id
 	GithubAppId *int64 `json:"github-app-id,omitempty"`

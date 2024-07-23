@@ -24,6 +24,7 @@ type BastionListEntry struct {
 	AllowedUrlsPerInstance *map[string][]string `json:"allowed_urls_per_instance,omitempty"`
 	ClusterName *string `json:"cluster_name,omitempty"`
 	DisplayName *string `json:"display_name,omitempty"`
+	HasGatewayIdentity *bool `json:"has_gateway_identity,omitempty"`
 	LastReport *time.Time `json:"last_report,omitempty"`
 }
 
@@ -236,6 +237,38 @@ func (o *BastionListEntry) SetDisplayName(v string) {
 	o.DisplayName = &v
 }
 
+// GetHasGatewayIdentity returns the HasGatewayIdentity field value if set, zero value otherwise.
+func (o *BastionListEntry) GetHasGatewayIdentity() bool {
+	if o == nil || o.HasGatewayIdentity == nil {
+		var ret bool
+		return ret
+	}
+	return *o.HasGatewayIdentity
+}
+
+// GetHasGatewayIdentityOk returns a tuple with the HasGatewayIdentity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BastionListEntry) GetHasGatewayIdentityOk() (*bool, bool) {
+	if o == nil || o.HasGatewayIdentity == nil {
+		return nil, false
+	}
+	return o.HasGatewayIdentity, true
+}
+
+// HasHasGatewayIdentity returns a boolean if a field has been set.
+func (o *BastionListEntry) HasHasGatewayIdentity() bool {
+	if o != nil && o.HasGatewayIdentity != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHasGatewayIdentity gets a reference to the given bool and assigns it to the HasGatewayIdentity field.
+func (o *BastionListEntry) SetHasGatewayIdentity(v bool) {
+	o.HasGatewayIdentity = &v
+}
+
 // GetLastReport returns the LastReport field value if set, zero value otherwise.
 func (o *BastionListEntry) GetLastReport() time.Time {
 	if o == nil || o.LastReport == nil {
@@ -287,6 +320,9 @@ func (o BastionListEntry) MarshalJSON() ([]byte, error) {
 	}
 	if o.DisplayName != nil {
 		toSerialize["display_name"] = o.DisplayName
+	}
+	if o.HasGatewayIdentity != nil {
+		toSerialize["has_gateway_identity"] = o.HasGatewayIdentity
 	}
 	if o.LastReport != nil {
 		toSerialize["last_report"] = o.LastReport

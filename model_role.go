@@ -23,6 +23,7 @@ type Role struct {
 	ClientPermissions *[]string `json:"client_permissions,omitempty"`
 	Comment *string `json:"comment,omitempty"`
 	CreationDate *time.Time `json:"creation_date,omitempty"`
+	DeleteProtection *bool `json:"delete_protection,omitempty"`
 	ModificationDate *time.Time `json:"modification_date,omitempty"`
 	RoleAuthMethodsAssoc *[]RoleAuthMethodAssociation `json:"role_auth_methods_assoc,omitempty"`
 	RoleName *string `json:"role_name,omitempty"`
@@ -206,6 +207,38 @@ func (o *Role) SetCreationDate(v time.Time) {
 	o.CreationDate = &v
 }
 
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *Role) GetDeleteProtection() bool {
+	if o == nil || o.DeleteProtection == nil {
+		var ret bool
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Role) GetDeleteProtectionOk() (*bool, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *Role) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given bool and assigns it to the DeleteProtection field.
+func (o *Role) SetDeleteProtection(v bool) {
+	o.DeleteProtection = &v
+}
+
 // GetModificationDate returns the ModificationDate field value if set, zero value otherwise.
 func (o *Role) GetModificationDate() time.Time {
 	if o == nil || o.ModificationDate == nil {
@@ -350,6 +383,9 @@ func (o Role) MarshalJSON() ([]byte, error) {
 	}
 	if o.CreationDate != nil {
 		toSerialize["creation_date"] = o.CreationDate
+	}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
 	}
 	if o.ModificationDate != nil {
 		toSerialize["modification_date"] = o.ModificationDate

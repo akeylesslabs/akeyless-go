@@ -23,6 +23,8 @@ type AuthMethodCreateEmail struct {
 	AuditLogsClaims *[]string `json:"audit-logs-claims,omitempty"`
 	// A CIDR whitelist with the IPs that the access is restricted to
 	BoundIps *[]string `json:"bound-ips,omitempty"`
+	// Protection from accidental deletion of this object [true/false]
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Auth Method description
 	Description *string `json:"description,omitempty"`
 	// An email address to be invited to have access
@@ -170,6 +172,38 @@ func (o *AuthMethodCreateEmail) HasBoundIps() bool {
 // SetBoundIps gets a reference to the given []string and assigns it to the BoundIps field.
 func (o *AuthMethodCreateEmail) SetBoundIps(v []string) {
 	o.BoundIps = &v
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *AuthMethodCreateEmail) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodCreateEmail) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *AuthMethodCreateEmail) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *AuthMethodCreateEmail) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -486,6 +520,9 @@ func (o AuthMethodCreateEmail) MarshalJSON() ([]byte, error) {
 	}
 	if o.BoundIps != nil {
 		toSerialize["bound-ips"] = o.BoundIps
+	}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
 	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description

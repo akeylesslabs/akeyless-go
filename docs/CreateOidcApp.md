@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Accessibility** | Pointer to **string** | for personal password manager | [optional] [default to "regular"]
 **Audience** | Pointer to **string** | A comma separated list of allowed audiences | [optional] 
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | Pointer to **string** | The name of a key that used to encrypt the OIDC application (if empty, the account default protectionKey key will be used) | [optional] 

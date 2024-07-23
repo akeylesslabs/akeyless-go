@@ -23,7 +23,7 @@ type UploadRSA struct {
 	CertFileData *string `json:"cert-file-data,omitempty"`
 	// The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment)
 	CustomerFrgId *string `json:"customer-frg-id,omitempty"`
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`

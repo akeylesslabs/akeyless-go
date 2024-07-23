@@ -17,7 +17,7 @@ import (
 
 // GatewayCreateProducerRabbitMQ gatewayCreateProducerRabbitMQ is a command that creates rabbitmq producer [Deprecated: Use dynamic-secret-create-rabbitmq command]
 type GatewayCreateProducerRabbitMQ struct {
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`

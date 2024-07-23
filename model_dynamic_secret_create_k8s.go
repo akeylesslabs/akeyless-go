@@ -17,7 +17,7 @@ import (
 
 // DynamicSecretCreateK8s dynamicSecretCreateK8s is a command that creates k8s dynamic secret
 type DynamicSecretCreateK8s struct {
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`

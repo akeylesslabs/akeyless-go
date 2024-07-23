@@ -22,7 +22,9 @@ Name | Type | Description | Notes
 **AwsRegion** | Pointer to **string** |  | [optional] 
 **AwsRoleArns** | Pointer to **string** |  | [optional] 
 **AwsSecretAccessKey** | Pointer to **string** |  | [optional] 
+**AwsSessionTags** | Pointer to **string** |  | [optional] 
 **AwsSessionToken** | Pointer to **string** |  | [optional] 
+**AwsTransitiveTagKeys** | Pointer to **string** |  | [optional] 
 **AwsUserConsoleAccess** | Pointer to **bool** |  | [optional] 
 **AwsUserGroups** | Pointer to **string** |  | [optional] 
 **AwsUserPolicies** | Pointer to **string** |  | [optional] 
@@ -711,6 +713,31 @@ SetAwsSecretAccessKey sets AwsSecretAccessKey field to given value.
 
 HasAwsSecretAccessKey returns a boolean if a field has been set.
 
+### GetAwsSessionTags
+
+`func (o *DSProducerDetails) GetAwsSessionTags() string`
+
+GetAwsSessionTags returns the AwsSessionTags field if non-nil, zero value otherwise.
+
+### GetAwsSessionTagsOk
+
+`func (o *DSProducerDetails) GetAwsSessionTagsOk() (*string, bool)`
+
+GetAwsSessionTagsOk returns a tuple with the AwsSessionTags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsSessionTags
+
+`func (o *DSProducerDetails) SetAwsSessionTags(v string)`
+
+SetAwsSessionTags sets AwsSessionTags field to given value.
+
+### HasAwsSessionTags
+
+`func (o *DSProducerDetails) HasAwsSessionTags() bool`
+
+HasAwsSessionTags returns a boolean if a field has been set.
+
 ### GetAwsSessionToken
 
 `func (o *DSProducerDetails) GetAwsSessionToken() string`
@@ -735,6 +762,31 @@ SetAwsSessionToken sets AwsSessionToken field to given value.
 `func (o *DSProducerDetails) HasAwsSessionToken() bool`
 
 HasAwsSessionToken returns a boolean if a field has been set.
+
+### GetAwsTransitiveTagKeys
+
+`func (o *DSProducerDetails) GetAwsTransitiveTagKeys() string`
+
+GetAwsTransitiveTagKeys returns the AwsTransitiveTagKeys field if non-nil, zero value otherwise.
+
+### GetAwsTransitiveTagKeysOk
+
+`func (o *DSProducerDetails) GetAwsTransitiveTagKeysOk() (*string, bool)`
+
+GetAwsTransitiveTagKeysOk returns a tuple with the AwsTransitiveTagKeys field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsTransitiveTagKeys
+
+`func (o *DSProducerDetails) SetAwsTransitiveTagKeys(v string)`
+
+SetAwsTransitiveTagKeys sets AwsTransitiveTagKeys field to given value.
+
+### HasAwsTransitiveTagKeys
+
+`func (o *DSProducerDetails) HasAwsTransitiveTagKeys() bool`
+
+HasAwsTransitiveTagKeys returns a boolean if a field has been set.
 
 ### GetAwsUserConsoleAccess
 

@@ -17,6 +17,8 @@ import (
 
 // RenewCertificate struct for RenewCertificate
 type RenewCertificate struct {
+	// The name of the PKI certificate issuer
+	CertIssuerName *string `json:"cert-issuer-name,omitempty"`
 	// Generate a new key as part of the certificate renewal
 	GenerateKey *bool `json:"generate-key,omitempty"`
 	// Certificate item id
@@ -50,6 +52,38 @@ func NewRenewCertificateWithDefaults() *RenewCertificate {
 	var json bool = false
 	this.Json = &json
 	return &this
+}
+
+// GetCertIssuerName returns the CertIssuerName field value if set, zero value otherwise.
+func (o *RenewCertificate) GetCertIssuerName() string {
+	if o == nil || o.CertIssuerName == nil {
+		var ret string
+		return ret
+	}
+	return *o.CertIssuerName
+}
+
+// GetCertIssuerNameOk returns a tuple with the CertIssuerName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RenewCertificate) GetCertIssuerNameOk() (*string, bool) {
+	if o == nil || o.CertIssuerName == nil {
+		return nil, false
+	}
+	return o.CertIssuerName, true
+}
+
+// HasCertIssuerName returns a boolean if a field has been set.
+func (o *RenewCertificate) HasCertIssuerName() bool {
+	if o != nil && o.CertIssuerName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCertIssuerName gets a reference to the given string and assigns it to the CertIssuerName field.
+func (o *RenewCertificate) SetCertIssuerName(v string) {
+	o.CertIssuerName = &v
 }
 
 // GetGenerateKey returns the GenerateKey field value if set, zero value otherwise.
@@ -246,6 +280,9 @@ func (o *RenewCertificate) SetUidToken(v string) {
 
 func (o RenewCertificate) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.CertIssuerName != nil {
+		toSerialize["cert-issuer-name"] = o.CertIssuerName
+	}
 	if o.GenerateKey != nil {
 		toSerialize["generate-key"] = o.GenerateKey
 	}

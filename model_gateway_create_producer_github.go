@@ -17,7 +17,7 @@ import (
 
 // GatewayCreateProducerGithub gatewayCreateProducerGithub is a command that creates github producer [Deprecated: Use dynamic-secret-create-github command]
 type GatewayCreateProducerGithub struct {
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Github app id
 	GithubAppId *int64 `json:"github-app-id,omitempty"`

@@ -17,7 +17,7 @@ import (
 
 // GatewayCreateProducerGcp gatewayCreateProducerGcp is a command that creates a GCP producer [Deprecated: Use dynamic-secret-create-gcp command]
 type GatewayCreateProducerGcp struct {
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	GcpCredType *string `json:"gcp-cred-type,omitempty"`
 	// Base64-encoded service account private key text

@@ -21,7 +21,7 @@ type GatewayCreateProducerMySQL struct {
 	DbServerCertificates *string `json:"db-server-certificates,omitempty"`
 	// (Optional) Server name for certificate verification
 	DbServerName *string `json:"db-server-name,omitempty"`
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`

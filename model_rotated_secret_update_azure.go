@@ -29,7 +29,7 @@ type RotatedSecretUpdateAzure struct {
 	AuthenticationCredentials *string `json:"authentication-credentials,omitempty"`
 	// Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation [true/false]
 	AutoRotate *string `json:"auto-rotate,omitempty"`
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
@@ -55,6 +55,8 @@ type RotatedSecretUpdateAzure struct {
 	RotationHour *int32 `json:"rotation-hour,omitempty"`
 	// The number of days to wait between every automatic key rotation (1-365)
 	RotationInterval *string `json:"rotation-interval,omitempty"`
+	// Enable this flag to prevent simultaneous use of the same secret
+	SecureAccessDisableConcurrentConnections *bool `json:"secure-access-disable-concurrent-connections,omitempty"`
 	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
 	// Destination URL to inject secrets
@@ -721,6 +723,38 @@ func (o *RotatedSecretUpdateAzure) SetRotationInterval(v string) {
 	o.RotationInterval = &v
 }
 
+// GetSecureAccessDisableConcurrentConnections returns the SecureAccessDisableConcurrentConnections field value if set, zero value otherwise.
+func (o *RotatedSecretUpdateAzure) GetSecureAccessDisableConcurrentConnections() bool {
+	if o == nil || o.SecureAccessDisableConcurrentConnections == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessDisableConcurrentConnections
+}
+
+// GetSecureAccessDisableConcurrentConnectionsOk returns a tuple with the SecureAccessDisableConcurrentConnections field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretUpdateAzure) GetSecureAccessDisableConcurrentConnectionsOk() (*bool, bool) {
+	if o == nil || o.SecureAccessDisableConcurrentConnections == nil {
+		return nil, false
+	}
+	return o.SecureAccessDisableConcurrentConnections, true
+}
+
+// HasSecureAccessDisableConcurrentConnections returns a boolean if a field has been set.
+func (o *RotatedSecretUpdateAzure) HasSecureAccessDisableConcurrentConnections() bool {
+	if o != nil && o.SecureAccessDisableConcurrentConnections != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessDisableConcurrentConnections gets a reference to the given bool and assigns it to the SecureAccessDisableConcurrentConnections field.
+func (o *RotatedSecretUpdateAzure) SetSecureAccessDisableConcurrentConnections(v bool) {
+	o.SecureAccessDisableConcurrentConnections = &v
+}
+
 // GetSecureAccessEnable returns the SecureAccessEnable field value if set, zero value otherwise.
 func (o *RotatedSecretUpdateAzure) GetSecureAccessEnable() string {
 	if o == nil || o.SecureAccessEnable == nil {
@@ -1067,6 +1101,9 @@ func (o RotatedSecretUpdateAzure) MarshalJSON() ([]byte, error) {
 	}
 	if o.RotationInterval != nil {
 		toSerialize["rotation-interval"] = o.RotationInterval
+	}
+	if o.SecureAccessDisableConcurrentConnections != nil {
+		toSerialize["secure-access-disable-concurrent-connections"] = o.SecureAccessDisableConcurrentConnections
 	}
 	if o.SecureAccessEnable != nil {
 		toSerialize["secure-access-enable"] = o.SecureAccessEnable

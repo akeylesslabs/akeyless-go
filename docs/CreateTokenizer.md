@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Alphabet** | Pointer to **string** | Alphabet to use in regexp vaultless tokenization | [optional] 
 **DecodingTemplate** | Pointer to **string** | The Decoding output template to use in regexp vaultless tokenization | [optional] 
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **EncodingTemplate** | Pointer to **string** | The Encoding output template to use in regexp vaultless tokenization | [optional] 
 **EncryptionKeyName** | Pointer to **string** | AES key name to use in vaultless tokenization | [optional] 

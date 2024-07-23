@@ -32,6 +32,7 @@ type RotatedSecretDetailsInfo struct {
 	RotatorType *string `json:"rotator_type,omitempty"`
 	SamePassword *bool `json:"same_password,omitempty"`
 	ServicesDetails *[]WindowsService `json:"services_details,omitempty"`
+	TimeoutSeconds *int64 `json:"timeout_seconds,omitempty"`
 }
 
 // NewRotatedSecretDetailsInfo instantiates a new RotatedSecretDetailsInfo object
@@ -499,6 +500,38 @@ func (o *RotatedSecretDetailsInfo) SetServicesDetails(v []WindowsService) {
 	o.ServicesDetails = &v
 }
 
+// GetTimeoutSeconds returns the TimeoutSeconds field value if set, zero value otherwise.
+func (o *RotatedSecretDetailsInfo) GetTimeoutSeconds() int64 {
+	if o == nil || o.TimeoutSeconds == nil {
+		var ret int64
+		return ret
+	}
+	return *o.TimeoutSeconds
+}
+
+// GetTimeoutSecondsOk returns a tuple with the TimeoutSeconds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretDetailsInfo) GetTimeoutSecondsOk() (*int64, bool) {
+	if o == nil || o.TimeoutSeconds == nil {
+		return nil, false
+	}
+	return o.TimeoutSeconds, true
+}
+
+// HasTimeoutSeconds returns a boolean if a field has been set.
+func (o *RotatedSecretDetailsInfo) HasTimeoutSeconds() bool {
+	if o != nil && o.TimeoutSeconds != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTimeoutSeconds gets a reference to the given int64 and assigns it to the TimeoutSeconds field.
+func (o *RotatedSecretDetailsInfo) SetTimeoutSeconds(v int64) {
+	o.TimeoutSeconds = &v
+}
+
 func (o RotatedSecretDetailsInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DeletePreviousVersionInDays != nil {
@@ -542,6 +575,9 @@ func (o RotatedSecretDetailsInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.ServicesDetails != nil {
 		toSerialize["services_details"] = o.ServicesDetails
+	}
+	if o.TimeoutSeconds != nil {
+		toSerialize["timeout_seconds"] = o.TimeoutSeconds
 	}
 	return json.Marshal(toSerialize)
 }

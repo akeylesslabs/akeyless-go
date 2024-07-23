@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **BoundIps** | Pointer to **[]string** | A CIDR whitelist with the IPs that the access is restricted to | [optional] 
 **Cert** | Pointer to **string** | CertificateFile Path to a file that contain the certificate in a PEM format. | [optional] 
 **CertFileData** | Pointer to **string** | CertificateFileData PEM Certificate in a Base64 format. | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Auth Method description | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
 **GatewayUrl** | Pointer to **string** | Akeyless Gateway URL (Configuration Management port). Relevant only when the jwks-uri is accessible only from the gateway. | [optional] 
@@ -221,6 +222,31 @@ SetCertFileData sets CertFileData field to given value.
 `func (o *UpdateAuthMethodOAuth2) HasCertFileData() bool`
 
 HasCertFileData returns a boolean if a field has been set.
+
+### GetDeleteProtection
+
+`func (o *UpdateAuthMethodOAuth2) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *UpdateAuthMethodOAuth2) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *UpdateAuthMethodOAuth2) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *UpdateAuthMethodOAuth2) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetDescription
 

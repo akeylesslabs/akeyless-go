@@ -17,7 +17,7 @@ import (
 
 // GatewayUpdateProducerGcp gatewayUpdateProducerGcp is a command that updates a GCP producer [Deprecated: Use dynamic-secret-update-gcp command]
 type GatewayUpdateProducerGcp struct {
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	GcpCredType *string `json:"gcp-cred-type,omitempty"`
 	// Base64-encoded service account private key text

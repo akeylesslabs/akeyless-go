@@ -27,7 +27,7 @@ type RotatedSecretCreateAws struct {
 	AutoRotate *string `json:"auto-rotate,omitempty"`
 	// Aws Region
 	AwsRegion *string `json:"aws-region,omitempty"`
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`

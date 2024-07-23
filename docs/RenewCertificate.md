@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CertIssuerName** | Pointer to **string** | The name of the PKI certificate issuer | [optional] 
 **GenerateKey** | Pointer to **bool** | Generate a new key as part of the certificate renewal | [optional] 
 **ItemId** | Pointer to **int64** | Certificate item id | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
@@ -29,6 +30,31 @@ will change when the set of required properties is changed
 NewRenewCertificateWithDefaults instantiates a new RenewCertificate object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCertIssuerName
+
+`func (o *RenewCertificate) GetCertIssuerName() string`
+
+GetCertIssuerName returns the CertIssuerName field if non-nil, zero value otherwise.
+
+### GetCertIssuerNameOk
+
+`func (o *RenewCertificate) GetCertIssuerNameOk() (*string, bool)`
+
+GetCertIssuerNameOk returns a tuple with the CertIssuerName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertIssuerName
+
+`func (o *RenewCertificate) SetCertIssuerName(v string)`
+
+SetCertIssuerName sets CertIssuerName field to given value.
+
+### HasCertIssuerName
+
+`func (o *RenewCertificate) HasCertIssuerName() bool`
+
+HasCertIssuerName returns a boolean if a field has been set.
 
 ### GetGenerateKey
 

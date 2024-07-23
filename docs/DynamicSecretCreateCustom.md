@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AdminRotationIntervalDays** | Pointer to **int64** | Define rotation interval in days | [optional] 
 **CreateSyncUrl** | **string** | URL of an endpoint that implements /sync/create method, for example https://webhook.example.com/sync/create | 
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **EnableAdminRotation** | Pointer to **bool** | Should admin credentials be rotated | [optional] [default to false]
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]

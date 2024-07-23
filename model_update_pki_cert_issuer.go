@@ -41,7 +41,7 @@ type UpdatePKICertIssuer struct {
 	CreatePrivateCrl *bool `json:"create-private-crl,omitempty"`
 	// Set this to allow the cert issuer will expose a public CRL endpoint
 	CreatePublicCrl *bool `json:"create-public-crl,omitempty"`
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`

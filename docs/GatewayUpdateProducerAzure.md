@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **AzureClientId** | Pointer to **string** | Azure Client ID | [optional] 
 **AzureClientSecret** | Pointer to **string** | Azure Client Secret | [optional] 
 **AzureTenantId** | Pointer to **string** | Azure Tenant ID | [optional] 
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **FixedUserClaimKeyname** | Pointer to **string** | FixedUserClaimKeyname | [optional] [default to "false"]
 **FixedUserOnly** | Pointer to **bool** | Fixed user | [optional] [default to false]
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]

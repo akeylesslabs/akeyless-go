@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **AppId** | Pointer to **string** | ApplicationId (used in azure) | [optional] 
 **AutoRotate** | Pointer to **string** | Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation [true/false] | [optional] 
 **CustomPayload** | Pointer to **string** | Secret payload to be sent with rotation request (relevant only for rotator-type&#x3D;custom) | [optional] 
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] [default to "default_metadata"]
 **GcpKey** | Pointer to **string** | Base64-encoded service account private key text | [optional] 
 **GcpServiceAccountEmail** | Pointer to **string** | The email of the gcp service account to rotate | [optional] 

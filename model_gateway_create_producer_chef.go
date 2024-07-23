@@ -25,7 +25,7 @@ type GatewayCreateProducerChef struct {
 	ChefServerUrl *string `json:"chef-server-url,omitempty"`
 	// Server username
 	ChefServerUsername *string `json:"chef-server-username,omitempty"`
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`

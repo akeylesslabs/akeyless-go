@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **ArtifactoryTokenAudience** | **string** | Token Audience | 
 **ArtifactoryTokenScope** | **string** | Token Scope | 
 **BaseUrl** | Pointer to **string** | Base URL | [optional] 
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
 **NewName** | Pointer to **string** | Dynamic secret name | [optional] 

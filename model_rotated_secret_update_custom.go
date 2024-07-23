@@ -25,7 +25,7 @@ type RotatedSecretUpdateCustom struct {
 	AutoRotate *string `json:"auto-rotate,omitempty"`
 	// Secret payload to be sent with rotation request
 	CustomPayload *string `json:"custom-payload,omitempty"`
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
@@ -73,6 +73,8 @@ type RotatedSecretUpdateCustom struct {
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
 	// Web-Proxy via Akeyless Web Access Bastion
 	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
+	// Maximum allowed time in seconds for the custom rotator to return the results
+	TimeoutSec *int64 `json:"timeout-sec,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -1017,6 +1019,38 @@ func (o *RotatedSecretUpdateCustom) SetSecureAccessWebProxy(v bool) {
 	o.SecureAccessWebProxy = &v
 }
 
+// GetTimeoutSec returns the TimeoutSec field value if set, zero value otherwise.
+func (o *RotatedSecretUpdateCustom) GetTimeoutSec() int64 {
+	if o == nil || o.TimeoutSec == nil {
+		var ret int64
+		return ret
+	}
+	return *o.TimeoutSec
+}
+
+// GetTimeoutSecOk returns a tuple with the TimeoutSec field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretUpdateCustom) GetTimeoutSecOk() (*int64, bool) {
+	if o == nil || o.TimeoutSec == nil {
+		return nil, false
+	}
+	return o.TimeoutSec, true
+}
+
+// HasTimeoutSec returns a boolean if a field has been set.
+func (o *RotatedSecretUpdateCustom) HasTimeoutSec() bool {
+	if o != nil && o.TimeoutSec != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTimeoutSec gets a reference to the given int64 and assigns it to the TimeoutSec field.
+func (o *RotatedSecretUpdateCustom) SetTimeoutSec(v int64) {
+	o.TimeoutSec = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *RotatedSecretUpdateCustom) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -1166,6 +1200,9 @@ func (o RotatedSecretUpdateCustom) MarshalJSON() ([]byte, error) {
 	}
 	if o.SecureAccessWebProxy != nil {
 		toSerialize["secure-access-web-proxy"] = o.SecureAccessWebProxy
+	}
+	if o.TimeoutSec != nil {
+		toSerialize["timeout-sec"] = o.TimeoutSec
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **RotatorType** | Pointer to **string** |  | [optional] 
 **SamePassword** | Pointer to **bool** |  | [optional] 
 **ServicesDetails** | Pointer to [**[]WindowsService**](WindowsService.md) |  | [optional] 
+**TimeoutSeconds** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -387,6 +388,31 @@ SetServicesDetails sets ServicesDetails field to given value.
 `func (o *RotatedSecretDetailsInfo) HasServicesDetails() bool`
 
 HasServicesDetails returns a boolean if a field has been set.
+
+### GetTimeoutSeconds
+
+`func (o *RotatedSecretDetailsInfo) GetTimeoutSeconds() int64`
+
+GetTimeoutSeconds returns the TimeoutSeconds field if non-nil, zero value otherwise.
+
+### GetTimeoutSecondsOk
+
+`func (o *RotatedSecretDetailsInfo) GetTimeoutSecondsOk() (*int64, bool)`
+
+GetTimeoutSecondsOk returns a tuple with the TimeoutSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTimeoutSeconds
+
+`func (o *RotatedSecretDetailsInfo) SetTimeoutSeconds(v int64)`
+
+SetTimeoutSeconds sets TimeoutSeconds field to given value.
+
+### HasTimeoutSeconds
+
+`func (o *RotatedSecretDetailsInfo) HasTimeoutSeconds() bool`
+
+HasTimeoutSeconds returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

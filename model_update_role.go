@@ -21,6 +21,8 @@ type UpdateRole struct {
 	AnalyticsAccess *string `json:"analytics-access,omitempty"`
 	// Allow this role to view audit logs. Currently only 'none', 'own' and 'all' values are supported, allowing associated auth methods to view audit logs produced by the same auth methods.
 	AuditAccess *string `json:"audit-access,omitempty"`
+	// Protection from accidental deletion of this object [true/false]
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
 	// Allow this role to view Event Center. Currently only 'none', 'own' and 'all' values are supported
@@ -139,6 +141,38 @@ func (o *UpdateRole) HasAuditAccess() bool {
 // SetAuditAccess gets a reference to the given string and assigns it to the AuditAccess field.
 func (o *UpdateRole) SetAuditAccess(v string) {
 	o.AuditAccess = &v
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *UpdateRole) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRole) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *UpdateRole) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *UpdateRole) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -524,6 +558,9 @@ func (o UpdateRole) MarshalJSON() ([]byte, error) {
 	}
 	if o.AuditAccess != nil {
 		toSerialize["audit-access"] = o.AuditAccess
+	}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
 	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description

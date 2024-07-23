@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **AccountPassword** | Pointer to **string** | Database Password | [optional] 
 **AccountUsername** | Pointer to **string** | Database Username | [optional] 
 **DbName** | Pointer to **string** | Database name | [optional] 
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 

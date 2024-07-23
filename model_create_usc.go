@@ -19,7 +19,7 @@ import (
 type CreateUSC struct {
 	// Azure Key Vault name (Relevant only for Azure targets)
 	AzureKvName *string `json:"azure-kv-name,omitempty"`
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the Universal Secrets Connector
 	Description *string `json:"description,omitempty"`

@@ -17,7 +17,7 @@ import (
 
 // DynamicSecretUpdateMongoDb dynamicSecretUpdateMongoDb is a command that updates either mongodb  dynamic secret or mongodb atlas dynamic secret
 type DynamicSecretUpdateMongoDb struct {
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`

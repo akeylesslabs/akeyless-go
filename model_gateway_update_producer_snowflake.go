@@ -25,7 +25,7 @@ type GatewayUpdateProducerSnowflake struct {
 	AccountUsername *string `json:"account-username,omitempty"`
 	// Database name
 	DbName *string `json:"db-name,omitempty"`
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`

@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Endpoint** | Pointer to **string** |  | [optional] 
 **EventTypes** | Pointer to **[]string** |  | [optional] 
 **GatewayClusterId** | Pointer to **int64** |  | [optional] 
+**IncludeError** | Pointer to **bool** |  | [optional] 
 **IsEnabled** | Pointer to **bool** |  | [optional] 
 **LastVersion** | Pointer to **int32** |  | [optional] 
 **ModificationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
@@ -249,6 +250,31 @@ SetGatewayClusterId sets GatewayClusterId field to given value.
 `func (o *NotiForwarder) HasGatewayClusterId() bool`
 
 HasGatewayClusterId returns a boolean if a field has been set.
+
+### GetIncludeError
+
+`func (o *NotiForwarder) GetIncludeError() bool`
+
+GetIncludeError returns the IncludeError field if non-nil, zero value otherwise.
+
+### GetIncludeErrorOk
+
+`func (o *NotiForwarder) GetIncludeErrorOk() (*bool, bool)`
+
+GetIncludeErrorOk returns a tuple with the IncludeError field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIncludeError
+
+`func (o *NotiForwarder) SetIncludeError(v bool)`
+
+SetIncludeError sets IncludeError field to given value.
+
+### HasIncludeError
+
+`func (o *NotiForwarder) HasIncludeError() bool`
+
+HasIncludeError returns a boolean if a field has been set.
 
 ### GetIsEnabled
 

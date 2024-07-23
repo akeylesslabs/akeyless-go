@@ -27,6 +27,7 @@ type NotiForwarder struct {
 	Endpoint *string `json:"endpoint,omitempty"`
 	EventTypes *[]string `json:"event_types,omitempty"`
 	GatewayClusterId *int64 `json:"gateway_cluster_id,omitempty"`
+	IncludeError *bool `json:"include_error,omitempty"`
 	IsEnabled *bool `json:"is_enabled,omitempty"`
 	LastVersion *int32 `json:"last_version,omitempty"`
 	ModificationDate *time.Time `json:"modification_date,omitempty"`
@@ -319,6 +320,38 @@ func (o *NotiForwarder) HasGatewayClusterId() bool {
 // SetGatewayClusterId gets a reference to the given int64 and assigns it to the GatewayClusterId field.
 func (o *NotiForwarder) SetGatewayClusterId(v int64) {
 	o.GatewayClusterId = &v
+}
+
+// GetIncludeError returns the IncludeError field value if set, zero value otherwise.
+func (o *NotiForwarder) GetIncludeError() bool {
+	if o == nil || o.IncludeError == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IncludeError
+}
+
+// GetIncludeErrorOk returns a tuple with the IncludeError field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotiForwarder) GetIncludeErrorOk() (*bool, bool) {
+	if o == nil || o.IncludeError == nil {
+		return nil, false
+	}
+	return o.IncludeError, true
+}
+
+// HasIncludeError returns a boolean if a field has been set.
+func (o *NotiForwarder) HasIncludeError() bool {
+	if o != nil && o.IncludeError != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIncludeError gets a reference to the given bool and assigns it to the IncludeError field.
+func (o *NotiForwarder) SetIncludeError(v bool) {
+	o.IncludeError = &v
 }
 
 // GetIsEnabled returns the IsEnabled field value if set, zero value otherwise.
@@ -922,6 +955,9 @@ func (o NotiForwarder) MarshalJSON() ([]byte, error) {
 	}
 	if o.GatewayClusterId != nil {
 		toSerialize["gateway_cluster_id"] = o.GatewayClusterId
+	}
+	if o.IncludeError != nil {
+		toSerialize["include_error"] = o.IncludeError
 	}
 	if o.IsEnabled != nil {
 		toSerialize["is_enabled"] = o.IsEnabled

@@ -17,7 +17,7 @@ import (
 
 // GatewayUpdateProducerHanaDb gatewayUpdateProducerHanaDb is a command that updates hanadb producer [Deprecated: Use dynamic-secret-update-hanadb command]
 type GatewayUpdateProducerHanaDb struct {
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// HanaDb Name
 	HanaDbname *string `json:"hana-dbname,omitempty"`

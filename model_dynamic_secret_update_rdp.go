@@ -19,7 +19,7 @@ import (
 type DynamicSecretUpdateRdp struct {
 	// AllowUserExtendSession
 	AllowUserExtendSession *int64 `json:"allow-user-extend-session,omitempty"`
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`

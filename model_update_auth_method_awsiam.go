@@ -37,6 +37,8 @@ type UpdateAuthMethodAWSIAM struct {
 	BoundUserId *[]string `json:"bound-user-id,omitempty"`
 	// A list of full user-name that the access is restricted to
 	BoundUserName *[]string `json:"bound-user-name,omitempty"`
+	// Protection from accidental deletion of this object [true/false]
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Auth Method description
 	Description *string `json:"description,omitempty"`
 	// if true: enforce role-association must include sub claims
@@ -406,6 +408,38 @@ func (o *UpdateAuthMethodAWSIAM) HasBoundUserName() bool {
 // SetBoundUserName gets a reference to the given []string and assigns it to the BoundUserName field.
 func (o *UpdateAuthMethodAWSIAM) SetBoundUserName(v []string) {
 	o.BoundUserName = &v
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *UpdateAuthMethodAWSIAM) GetDeleteProtection() string {
+	if o == nil || o.DeleteProtection == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAuthMethodAWSIAM) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || o.DeleteProtection == nil {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *UpdateAuthMethodAWSIAM) HasDeleteProtection() bool {
+	if o != nil && o.DeleteProtection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *UpdateAuthMethodAWSIAM) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -783,6 +817,9 @@ func (o UpdateAuthMethodAWSIAM) MarshalJSON() ([]byte, error) {
 	}
 	if o.BoundUserName != nil {
 		toSerialize["bound-user-name"] = o.BoundUserName
+	}
+	if o.DeleteProtection != nil {
+		toSerialize["delete_protection"] = o.DeleteProtection
 	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description

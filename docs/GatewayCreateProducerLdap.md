@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **ProviderType** | Pointer to **string** |  | [optional] 
 **BindDn** | Pointer to **string** | Bind DN | [optional] 
 **BindDnPassword** | Pointer to **string** | Bind DN Password | [optional] 
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **ExternalUsername** | Pointer to **string** | Externally provided username [true/false] | [optional] [default to "false"]
 **GroupDn** | Pointer to **string** | Group DN which the temporary user should be added | [optional] 
 **HostProvider** | Pointer to **string** | Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret | [optional] 

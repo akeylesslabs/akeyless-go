@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Accessibility** | Pointer to **string** | for personal password manager | [optional] [default to "regular"]
 **ChangeEvent** | Pointer to **string** | Trigger an event when a secret value changed [true/false] (Relevant only for Static Secret) | [optional] 
 **CustomField** | Pointer to **map[string]string** | For Password Management use, additional fields | [optional] 
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **Format** | Pointer to **string** | Secret format [text/json] (relevant only for type &#39;generic&#39;) | [optional] [default to "text"]
 **InjectUrl** | Pointer to **[]string** | For Password Management use, reflect the website context | [optional] 

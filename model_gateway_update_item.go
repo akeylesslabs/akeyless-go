@@ -29,7 +29,7 @@ type GatewayUpdateItem struct {
 	AutoRotate *string `json:"auto-rotate,omitempty"`
 	// Secret payload to be sent with rotation request (relevant only for rotator-type=custom)
 	CustomPayload *string `json:"custom-payload,omitempty"`
-	// Protection from accidental deletion of this item [true/false]
+	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`

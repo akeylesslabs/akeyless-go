@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **CertificateProvince** | Pointer to **string** | Province name for the generated certificate. Relevant only for generate-self-signed-certificate. | [optional] 
 **CertificateTtl** | Pointer to **int64** | TTL in days for the generated certificate. Required only for generate-self-signed-certificate. | [optional] 
 **ConfFileData** | Pointer to **string** | The csr config data in base64 encoding | [optional] 
-**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **GenerateSelfSignedCertificate** | Pointer to **bool** | Whether to generate a self signed certificate with the key. If set, --certificate-ttl must be provided. | [optional] 
 **GpgAlg** | Pointer to **string** | gpg alg: Relevant only if GPG key type selected; options: [RSA1024, RSA2048, RSA3072, RSA4096, Ed25519] | [optional] 

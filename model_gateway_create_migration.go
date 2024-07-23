@@ -27,6 +27,7 @@ type GatewayCreateMigration struct {
 	Var1passwordUrl *string `json:"1password-url,omitempty"`
 	// 1Password list of vault to get the items from
 	Var1passwordVaults *[]string `json:"1password-vaults,omitempty"`
+	ServiceAccountKeyDecoded *string `json:"ServiceAccountKeyDecoded,omitempty"`
 	// Enable/Disable discovery of Windows services from each domain server as part of the SSH/Windows Rotated Secrets. Default is false. (Relevant only for Active Directory migration)
 	AdDiscoverServices *string `json:"ad-discover-services,omitempty"`
 	// Set migration discovery types (domain-users, computers, local-users). (Relevant only for Active Directory migration)
@@ -364,6 +365,38 @@ func (o *GatewayCreateMigration) HasVar1passwordVaults() bool {
 // SetVar1passwordVaults gets a reference to the given []string and assigns it to the Var1passwordVaults field.
 func (o *GatewayCreateMigration) SetVar1passwordVaults(v []string) {
 	o.Var1passwordVaults = &v
+}
+
+// GetServiceAccountKeyDecoded returns the ServiceAccountKeyDecoded field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetServiceAccountKeyDecoded() string {
+	if o == nil || o.ServiceAccountKeyDecoded == nil {
+		var ret string
+		return ret
+	}
+	return *o.ServiceAccountKeyDecoded
+}
+
+// GetServiceAccountKeyDecodedOk returns a tuple with the ServiceAccountKeyDecoded field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetServiceAccountKeyDecodedOk() (*string, bool) {
+	if o == nil || o.ServiceAccountKeyDecoded == nil {
+		return nil, false
+	}
+	return o.ServiceAccountKeyDecoded, true
+}
+
+// HasServiceAccountKeyDecoded returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasServiceAccountKeyDecoded() bool {
+	if o != nil && o.ServiceAccountKeyDecoded != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetServiceAccountKeyDecoded gets a reference to the given string and assigns it to the ServiceAccountKeyDecoded field.
+func (o *GatewayCreateMigration) SetServiceAccountKeyDecoded(v string) {
+	o.ServiceAccountKeyDecoded = &v
 }
 
 // GetAdDiscoverServices returns the AdDiscoverServices field value if set, zero value otherwise.
@@ -2206,6 +2239,9 @@ func (o GatewayCreateMigration) MarshalJSON() ([]byte, error) {
 	}
 	if o.Var1passwordVaults != nil {
 		toSerialize["1password-vaults"] = o.Var1passwordVaults
+	}
+	if o.ServiceAccountKeyDecoded != nil {
+		toSerialize["ServiceAccountKeyDecoded"] = o.ServiceAccountKeyDecoded
 	}
 	if o.AdDiscoverServices != nil {
 		toSerialize["ad-discover-services"] = o.AdDiscoverServices
