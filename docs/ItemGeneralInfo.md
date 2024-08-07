@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CertIssueDetails** | Pointer to [**CertificateIssueInfo**](CertificateIssueInfo.md) |  | [optional] 
 **CertificateChainInfo** | Pointer to [**CertificateChainInfo**](CertificateChainInfo.md) |  | [optional] 
+**CertificateFormat** | Pointer to **string** |  | [optional] 
 **CertificatesTemplateInfo** | Pointer to [**CertificateTemplateInfo**](CertificateTemplateInfo.md) |  | [optional] 
 **ClassicKeyDetails** | Pointer to [**ClassicKeyDetailsInfo**](ClassicKeyDetailsInfo.md) |  | [optional] 
 **ClusterGwUrl** | Pointer to **string** |  | [optional] 
@@ -87,6 +88,31 @@ SetCertificateChainInfo sets CertificateChainInfo field to given value.
 `func (o *ItemGeneralInfo) HasCertificateChainInfo() bool`
 
 HasCertificateChainInfo returns a boolean if a field has been set.
+
+### GetCertificateFormat
+
+`func (o *ItemGeneralInfo) GetCertificateFormat() string`
+
+GetCertificateFormat returns the CertificateFormat field if non-nil, zero value otherwise.
+
+### GetCertificateFormatOk
+
+`func (o *ItemGeneralInfo) GetCertificateFormatOk() (*string, bool)`
+
+GetCertificateFormatOk returns a tuple with the CertificateFormat field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificateFormat
+
+`func (o *ItemGeneralInfo) SetCertificateFormat(v string)`
+
+SetCertificateFormat sets CertificateFormat field to given value.
+
+### HasCertificateFormat
+
+`func (o *ItemGeneralInfo) HasCertificateFormat() bool`
+
+HasCertificateFormat returns a boolean if a field has been set.
 
 ### GetCertificatesTemplateInfo
 

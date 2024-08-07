@@ -2450,6 +2450,33 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /decrypt-batch:
+    post:
+      operationId: decryptBatch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchEncryptionRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/decryptOutput'
+          description: decryptResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /decrypt-gpg:
     post:
       operationId: decryptGPG
@@ -4734,6 +4761,33 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/encrypt'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/encryptOutput'
+          description: encryptResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /encrypt-batch:
+    post:
+      operationId: encryptBatch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchEncryptionRequest'
         required: true
       responses:
         "200":
@@ -14938,6 +14992,12 @@ components:
           schema:
             $ref: '#/components/schemas/createLdapTargetOutput'
       description: createldapTargetResponse wraps response body.
+    decryptBatchResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/decryptBatchOutput'
+      description: decryptBatchResponse wraps response body.
     decryptFileResponse:
       content:
         application/json:
@@ -15458,6 +15518,12 @@ components:
           schema:
             $ref: '#/components/schemas/dynamicSecretUpdateOutput'
       description: dynamicSecretUpdateVenafiResponse wraps response body.
+    encryptBatchResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/encryptBatchOutput'
+      description: encryptBatchResponse wraps response body.
     encryptFileResponse:
       content:
         application/json:
@@ -20257,6 +20323,52 @@ components:
           x-go-name: Clusters
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    BatchEncryptionRequest:
+      items:
+        $ref: '#/components/schemas/BatchEncryptionRequestLine'
+      type: array
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    BatchEncryptionRequestLine:
+      example:
+        item_version: 6
+        data: data
+        item_id: 0
+        context:
+          key: context
+      properties:
+        context:
+          additionalProperties:
+            type: string
+          type: object
+          x-go-name: EncContext
+        data:
+          type: string
+          x-go-name: DataBase64
+        item_id:
+          format: int64
+          type: integer
+          x-go-name: ItemId
+        item_version:
+          format: int32
+          type: integer
+          x-go-name: ItemVersion
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    BatchEncryptionResponse:
+      items:
+        $ref: '#/components/schemas/BatchEncryptionResponseLine'
+      type: array
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    BatchEncryptionResponseLine:
+      properties:
+        data:
+          type: string
+          x-go-name: DataBase64
+        error:
+          type: string
+          x-go-name: Error
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     CAMode:
       type: string
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
@@ -20686,6 +20798,9 @@ components:
           type: integer
           x-go-name: SecondsBefore
       type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    CertificateFormat:
+      type: string
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     CertificateInfo:
       example:
@@ -21497,6 +21612,7 @@ components:
     Connect:
       description: Connect is a command that performs secure remote access
       example:
+        BastionGatewayUrl: BastionGatewayUrl
         cert-issuer-name: cert-issuer-name
         ssh-legacy-signing-alg: false
         ssh-command: ssh-command
@@ -21517,6 +21633,11 @@ components:
         RcFileOverride: RcFileOverride
         justification: justification
       properties:
+        BastionGatewayUrl:
+          description: |-
+            todo - enable when gw-sra unification is done
+            The Gateway URL (configuration management) address, e.g. http://localhost:8000
+          type: string
         Helper:
           type: object
           x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
@@ -21607,6 +21728,7 @@ components:
       description: CreateClassicKey is a command that creates classic key
       example:
         protection-key-name: protection-key-name
+        certificate-format: certificate-format
         metadata: metadata
         certificate-digest-algo: certificate-digest-algo
         certificate-locality: certificate-locality
@@ -21655,6 +21777,9 @@ components:
             Currently, we support only "sha256" so we hide this option for CLI.
           type: string
           x-go-name: CertificateDigestAlgo
+        certificate-format:
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
         certificate-locality:
           description: Locality for the generated certificate. Relevant only for generate-self-signed-certificate.
           type: string
@@ -26612,6 +26737,7 @@ components:
                 pattern: pattern
                 alphabet: alphabet
           cluster_gw_url: cluster_gw_url
+          certificate_format: certificate_format
           display_metadata: display_metadata
           dynamic_secret_producer_details:
             k8s_allowed_namespaces: k8s_allowed_namespaces
@@ -27335,6 +27461,7 @@ components:
               pattern: pattern
               alphabet: alphabet
         cluster_gw_url: cluster_gw_url
+        certificate_format: certificate_format
         display_metadata: display_metadata
         dynamic_secret_producer_details:
           k8s_allowed_namespaces: k8s_allowed_namespaces
@@ -27430,6 +27557,9 @@ components:
           $ref: '#/components/schemas/CertificateIssueInfo'
         certificate_chain_info:
           $ref: '#/components/schemas/CertificateChainInfo'
+        certificate_format:
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
         certificates_template_info:
           $ref: '#/components/schemas/CertificateTemplateInfo'
         classic_key_details:
@@ -29921,6 +30051,7 @@ components:
                   pattern: pattern
                   alphabet: alphabet
             cluster_gw_url: cluster_gw_url
+            certificate_format: certificate_format
             display_metadata: display_metadata
             dynamic_secret_producer_details:
               k8s_allowed_namespaces: k8s_allowed_namespaces
@@ -30681,6 +30812,7 @@ components:
                   pattern: pattern
                   alphabet: alphabet
             cluster_gw_url: cluster_gw_url
+            certificate_format: certificate_format
             display_metadata: display_metadata
             dynamic_secret_producer_details:
               k8s_allowed_namespaces: k8s_allowed_namespaces
@@ -31463,6 +31595,7 @@ components:
                   pattern: pattern
                   alphabet: alphabet
             cluster_gw_url: cluster_gw_url
+            certificate_format: certificate_format
             display_metadata: display_metadata
             dynamic_secret_producer_details:
               k8s_allowed_namespaces: k8s_allowed_namespaces
@@ -32223,6 +32356,7 @@ components:
                   pattern: pattern
                   alphabet: alphabet
             cluster_gw_url: cluster_gw_url
+            certificate_format: certificate_format
             display_metadata: display_metadata
             dynamic_secret_producer_details:
               k8s_allowed_namespaces: k8s_allowed_namespaces
@@ -43531,6 +43665,9 @@ components:
             Currently, we support only "sha256" so we hide this option for CLI.
           type: string
           x-go-name: CertificateDigestAlgo
+        certificate-format:
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
         certificate-locality:
           description: Locality for the generated certificate. Relevant only for generate-self-signed-certificate.
           type: string
@@ -46430,6 +46567,8 @@ components:
       - key-name
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    decryptBatchOutput:
+      $ref: '#/components/schemas/BatchEncryptionResponse'
     decryptFile:
       properties:
         cyphertext-header:
@@ -47253,6 +47392,11 @@ components:
             (url, etc)
           type: boolean
           x-go-name: WithBastionDetails
+        der-certificate-format:
+          default: false
+          description: The certificate will be displayed in DER format
+          type: boolean
+          x-go-name: DerCertificateFormat
         display-id:
           description: The display id of the item
           type: string
@@ -54426,6 +54570,8 @@ components:
         an AES key.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    encryptBatchOutput:
+      $ref: '#/components/schemas/BatchEncryptionResponse'
     encryptFile:
       properties:
         display-id:
@@ -99576,6 +99722,9 @@ components:
           description: Certificate in a PEM format.
           type: string
           x-go-name: CertFileData
+        certificate-format:
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
         customer-frg-id:
           description: |-
             The customer fragment ID that will be used to split the key (if empty,

@@ -17,6 +17,8 @@ import (
 
 // Connect Connect is a command that performs secure remote access
 type Connect struct {
+	// todo - enable when gw-sra unification is done The Gateway URL (configuration management) address, e.g. http://localhost:8000
+	BastionGatewayUrl *string `json:"BastionGatewayUrl,omitempty"`
 	Helper *map[string]interface{} `json:"Helper,omitempty"`
 	// used to override .akeyless-connect.rc in tests
 	RcFileOverride *string `json:"RcFileOverride,omitempty"`
@@ -86,6 +88,38 @@ func NewConnectWithDefaults() *Connect {
 	var sshLegacySigningAlg bool = false
 	this.SshLegacySigningAlg = &sshLegacySigningAlg
 	return &this
+}
+
+// GetBastionGatewayUrl returns the BastionGatewayUrl field value if set, zero value otherwise.
+func (o *Connect) GetBastionGatewayUrl() string {
+	if o == nil || o.BastionGatewayUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.BastionGatewayUrl
+}
+
+// GetBastionGatewayUrlOk returns a tuple with the BastionGatewayUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Connect) GetBastionGatewayUrlOk() (*string, bool) {
+	if o == nil || o.BastionGatewayUrl == nil {
+		return nil, false
+	}
+	return o.BastionGatewayUrl, true
+}
+
+// HasBastionGatewayUrl returns a boolean if a field has been set.
+func (o *Connect) HasBastionGatewayUrl() bool {
+	if o != nil && o.BastionGatewayUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBastionGatewayUrl gets a reference to the given string and assigns it to the BastionGatewayUrl field.
+func (o *Connect) SetBastionGatewayUrl(v string) {
+	o.BastionGatewayUrl = &v
 }
 
 // GetHelper returns the Helper field value if set, zero value otherwise.
@@ -698,6 +732,9 @@ func (o *Connect) SetViaBastion(v string) {
 
 func (o Connect) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.BastionGatewayUrl != nil {
+		toSerialize["BastionGatewayUrl"] = o.BastionGatewayUrl
+	}
 	if o.Helper != nil {
 		toSerialize["Helper"] = o.Helper
 	}

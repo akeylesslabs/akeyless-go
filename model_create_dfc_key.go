@@ -25,6 +25,7 @@ type CreateDFCKey struct {
 	CertificateCountry *string `json:"certificate-country,omitempty"`
 	// Digest algorithm to be used for the certificate key signing. Currently, we support only \"sha256\" so we hide this option for CLI.
 	CertificateDigestAlgo *string `json:"certificate-digest-algo,omitempty"`
+	CertificateFormat *string `json:"certificate-format,omitempty"`
 	// Locality for the generated certificate. Relevant only for generate-self-signed-certificate.
 	CertificateLocality *string `json:"certificate-locality,omitempty"`
 	// Organization name for the generated certificate. Relevant only for generate-self-signed-certificate.
@@ -204,6 +205,38 @@ func (o *CreateDFCKey) HasCertificateDigestAlgo() bool {
 // SetCertificateDigestAlgo gets a reference to the given string and assigns it to the CertificateDigestAlgo field.
 func (o *CreateDFCKey) SetCertificateDigestAlgo(v string) {
 	o.CertificateDigestAlgo = &v
+}
+
+// GetCertificateFormat returns the CertificateFormat field value if set, zero value otherwise.
+func (o *CreateDFCKey) GetCertificateFormat() string {
+	if o == nil || o.CertificateFormat == nil {
+		var ret string
+		return ret
+	}
+	return *o.CertificateFormat
+}
+
+// GetCertificateFormatOk returns a tuple with the CertificateFormat field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDFCKey) GetCertificateFormatOk() (*string, bool) {
+	if o == nil || o.CertificateFormat == nil {
+		return nil, false
+	}
+	return o.CertificateFormat, true
+}
+
+// HasCertificateFormat returns a boolean if a field has been set.
+func (o *CreateDFCKey) HasCertificateFormat() bool {
+	if o != nil && o.CertificateFormat != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificateFormat gets a reference to the given string and assigns it to the CertificateFormat field.
+func (o *CreateDFCKey) SetCertificateFormat(v string) {
+	o.CertificateFormat = &v
 }
 
 // GetCertificateLocality returns the CertificateLocality field value if set, zero value otherwise.
@@ -723,6 +756,9 @@ func (o CreateDFCKey) MarshalJSON() ([]byte, error) {
 	}
 	if o.CertificateDigestAlgo != nil {
 		toSerialize["certificate-digest-algo"] = o.CertificateDigestAlgo
+	}
+	if o.CertificateFormat != nil {
+		toSerialize["certificate-format"] = o.CertificateFormat
 	}
 	if o.CertificateLocality != nil {
 		toSerialize["certificate-locality"] = o.CertificateLocality

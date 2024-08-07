@@ -21,6 +21,7 @@ type UploadRSA struct {
 	Alg string `json:"alg"`
 	// Certificate in a PEM format.
 	CertFileData *string `json:"cert-file-data,omitempty"`
+	CertificateFormat *string `json:"certificate-format,omitempty"`
 	// The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment)
 	CustomerFrgId *string `json:"customer-frg-id,omitempty"`
 	// Protection from accidental deletion of this object [true/false]
@@ -132,6 +133,38 @@ func (o *UploadRSA) HasCertFileData() bool {
 // SetCertFileData gets a reference to the given string and assigns it to the CertFileData field.
 func (o *UploadRSA) SetCertFileData(v string) {
 	o.CertFileData = &v
+}
+
+// GetCertificateFormat returns the CertificateFormat field value if set, zero value otherwise.
+func (o *UploadRSA) GetCertificateFormat() string {
+	if o == nil || o.CertificateFormat == nil {
+		var ret string
+		return ret
+	}
+	return *o.CertificateFormat
+}
+
+// GetCertificateFormatOk returns a tuple with the CertificateFormat field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UploadRSA) GetCertificateFormatOk() (*string, bool) {
+	if o == nil || o.CertificateFormat == nil {
+		return nil, false
+	}
+	return o.CertificateFormat, true
+}
+
+// HasCertificateFormat returns a boolean if a field has been set.
+func (o *UploadRSA) HasCertificateFormat() bool {
+	if o != nil && o.CertificateFormat != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificateFormat gets a reference to the given string and assigns it to the CertificateFormat field.
+func (o *UploadRSA) SetCertificateFormat(v string) {
+	o.CertificateFormat = &v
 }
 
 // GetCustomerFrgId returns the CustomerFrgId field value if set, zero value otherwise.
@@ -517,6 +550,9 @@ func (o UploadRSA) MarshalJSON() ([]byte, error) {
 	}
 	if o.CertFileData != nil {
 		toSerialize["cert-file-data"] = o.CertFileData
+	}
+	if o.CertificateFormat != nil {
+		toSerialize["certificate-format"] = o.CertificateFormat
 	}
 	if o.CustomerFrgId != nil {
 		toSerialize["customer-frg-id"] = o.CustomerFrgId

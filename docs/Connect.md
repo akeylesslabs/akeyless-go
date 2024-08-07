@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**BastionGatewayUrl** | Pointer to **string** | todo - enable when gw-sra unification is done The Gateway URL (configuration management) address, e.g. http://localhost:8000 | [optional] 
 **Helper** | Pointer to **map[string]interface{}** |  | [optional] 
 **RcFileOverride** | Pointer to **string** | used to override .akeyless-connect.rc in tests | [optional] 
 **BastionCtrlPath** | Pointer to **string** | The Bastion API path | [optional] 
@@ -42,6 +43,31 @@ will change when the set of required properties is changed
 NewConnectWithDefaults instantiates a new Connect object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetBastionGatewayUrl
+
+`func (o *Connect) GetBastionGatewayUrl() string`
+
+GetBastionGatewayUrl returns the BastionGatewayUrl field if non-nil, zero value otherwise.
+
+### GetBastionGatewayUrlOk
+
+`func (o *Connect) GetBastionGatewayUrlOk() (*string, bool)`
+
+GetBastionGatewayUrlOk returns a tuple with the BastionGatewayUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBastionGatewayUrl
+
+`func (o *Connect) SetBastionGatewayUrl(v string)`
+
+SetBastionGatewayUrl sets BastionGatewayUrl field to given value.
+
+### HasBastionGatewayUrl
+
+`func (o *Connect) HasBastionGatewayUrl() bool`
+
+HasBastionGatewayUrl returns a boolean if a field has been set.
 
 ### GetHelper
 

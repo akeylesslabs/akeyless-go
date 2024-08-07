@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Accessibility** | Pointer to **string** | for personal password manager | [optional] [default to "regular"]
 **BastionDetails** | Pointer to **bool** | Indicate if the item should return with ztb cluster details (url, etc) | [optional] [default to false]
+**DerCertificateFormat** | Pointer to **bool** | The certificate will be displayed in DER format | [optional] [default to false]
 **DisplayId** | Pointer to **string** | The display id of the item | [optional] 
 **GatewayDetails** | Pointer to **bool** | Indicate if the item should return with clusters details (url, etc) | [optional] [default to false]
 **ItemId** | Pointer to **int64** | Item id of the item | [optional] 
@@ -84,6 +85,31 @@ SetBastionDetails sets BastionDetails field to given value.
 `func (o *DescribeItem) HasBastionDetails() bool`
 
 HasBastionDetails returns a boolean if a field has been set.
+
+### GetDerCertificateFormat
+
+`func (o *DescribeItem) GetDerCertificateFormat() bool`
+
+GetDerCertificateFormat returns the DerCertificateFormat field if non-nil, zero value otherwise.
+
+### GetDerCertificateFormatOk
+
+`func (o *DescribeItem) GetDerCertificateFormatOk() (*bool, bool)`
+
+GetDerCertificateFormatOk returns a tuple with the DerCertificateFormat field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDerCertificateFormat
+
+`func (o *DescribeItem) SetDerCertificateFormat(v bool)`
+
+SetDerCertificateFormat sets DerCertificateFormat field to given value.
+
+### HasDerCertificateFormat
+
+`func (o *DescribeItem) HasDerCertificateFormat() bool`
+
+HasDerCertificateFormat returns a boolean if a field has been set.
 
 ### GetDisplayId
 

@@ -94,6 +94,7 @@ Method | HTTP request | Description
 [**CreateZeroSSLTarget**](V2Api.md#CreateZeroSSLTarget) | **Post** /create-zerossl-target | 
 [**CreateldapTarget**](V2Api.md#CreateldapTarget) | **Post** /create-ldap-target | 
 [**Decrypt**](V2Api.md#Decrypt) | **Post** /decrypt | 
+[**DecryptBatch**](V2Api.md#DecryptBatch) | **Post** /decrypt-batch | 
 [**DecryptGPG**](V2Api.md#DecryptGPG) | **Post** /decrypt-gpg | 
 [**DecryptPKCS1**](V2Api.md#DecryptPKCS1) | **Post** /decrypt-pkcs1 | 
 [**DecryptWithClassicKey**](V2Api.md#DecryptWithClassicKey) | **Post** /decrypt-with-classic-key | 
@@ -180,6 +181,7 @@ Method | HTTP request | Description
 [**DynamicSecretUpdateSnowflake**](V2Api.md#DynamicSecretUpdateSnowflake) | **Post** /dynamic-secret-update-snowflake | 
 [**DynamicSecretUpdateVenafi**](V2Api.md#DynamicSecretUpdateVenafi) | **Post** /dynamic-secret-update-venafi | 
 [**Encrypt**](V2Api.md#Encrypt) | **Post** /encrypt | 
+[**EncryptBatch**](V2Api.md#EncryptBatch) | **Post** /encrypt-batch | 
 [**EncryptGPG**](V2Api.md#EncryptGPG) | **Post** /encrypt-gpg | 
 [**EncryptWithClassicKey**](V2Api.md#EncryptWithClassicKey) | **Post** /encrypt-with-classic-key | 
 [**EsmCreate**](V2Api.md#EsmCreate) | **Post** /esm-create | 
@@ -6298,6 +6300,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## DecryptBatch
+
+> DecryptOutput DecryptBatch(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := []openapiclient.BatchEncryptionRequestLine{*openapiclient.NewBatchEncryptionRequestLine()} // []BatchEncryptionRequestLine | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DecryptBatch(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DecryptBatch``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DecryptBatch`: DecryptOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DecryptBatch`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDecryptBatchRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**[]BatchEncryptionRequestLine**](BatchEncryptionRequestLine.md) |  | 
+
+### Return type
+
+[**DecryptOutput**](decryptOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## DecryptGPG
 
 > DecryptGPGOutput DecryptGPG(ctx).Body(body).Execute()
@@ -11779,6 +11845,70 @@ Other parameters are passed through a pointer to a apiEncryptRequest struct via 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Encrypt**](Encrypt.md) |  | 
+
+### Return type
+
+[**EncryptOutput**](encryptOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EncryptBatch
+
+> EncryptOutput EncryptBatch(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := []openapiclient.BatchEncryptionRequestLine{*openapiclient.NewBatchEncryptionRequestLine()} // []BatchEncryptionRequestLine | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.EncryptBatch(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.EncryptBatch``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EncryptBatch`: EncryptOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.EncryptBatch`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEncryptBatchRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**[]BatchEncryptionRequestLine**](BatchEncryptionRequestLine.md) |  | 
 
 ### Return type
 

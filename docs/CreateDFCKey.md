@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **CertificateCommonName** | Pointer to **string** | Common name for the generated certificate. Relevant only for generate-self-signed-certificate. | [optional] 
 **CertificateCountry** | Pointer to **string** | Country name for the generated certificate. Relevant only for generate-self-signed-certificate. | [optional] 
 **CertificateDigestAlgo** | Pointer to **string** | Digest algorithm to be used for the certificate key signing. Currently, we support only \&quot;sha256\&quot; so we hide this option for CLI. | [optional] 
+**CertificateFormat** | Pointer to **string** |  | [optional] 
 **CertificateLocality** | Pointer to **string** | Locality for the generated certificate. Relevant only for generate-self-signed-certificate. | [optional] 
 **CertificateOrganization** | Pointer to **string** | Organization name for the generated certificate. Relevant only for generate-self-signed-certificate. | [optional] 
 **CertificateProvince** | Pointer to **string** | Province name for the generated certificate. Relevant only for generate-self-signed-certificate. | [optional] 
@@ -138,6 +139,31 @@ SetCertificateDigestAlgo sets CertificateDigestAlgo field to given value.
 `func (o *CreateDFCKey) HasCertificateDigestAlgo() bool`
 
 HasCertificateDigestAlgo returns a boolean if a field has been set.
+
+### GetCertificateFormat
+
+`func (o *CreateDFCKey) GetCertificateFormat() string`
+
+GetCertificateFormat returns the CertificateFormat field if non-nil, zero value otherwise.
+
+### GetCertificateFormatOk
+
+`func (o *CreateDFCKey) GetCertificateFormatOk() (*string, bool)`
+
+GetCertificateFormatOk returns a tuple with the CertificateFormat field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificateFormat
+
+`func (o *CreateDFCKey) SetCertificateFormat(v string)`
+
+SetCertificateFormat sets CertificateFormat field to given value.
+
+### HasCertificateFormat
+
+`func (o *CreateDFCKey) HasCertificateFormat() bool`
+
+HasCertificateFormat returns a boolean if a field has been set.
 
 ### GetCertificateLocality
 

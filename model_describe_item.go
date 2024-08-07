@@ -21,6 +21,8 @@ type DescribeItem struct {
 	Accessibility *string `json:"accessibility,omitempty"`
 	// Indicate if the item should return with ztb cluster details (url, etc)
 	BastionDetails *bool `json:"bastion-details,omitempty"`
+	// The certificate will be displayed in DER format
+	DerCertificateFormat *bool `json:"der-certificate-format,omitempty"`
 	// The display id of the item
 	DisplayId *string `json:"display-id,omitempty"`
 	// Indicate if the item should return with clusters details (url, etc)
@@ -51,6 +53,8 @@ func NewDescribeItem(name string, ) *DescribeItem {
 	this.Accessibility = &accessibility
 	var bastionDetails bool = false
 	this.BastionDetails = &bastionDetails
+	var derCertificateFormat bool = false
+	this.DerCertificateFormat = &derCertificateFormat
 	var gatewayDetails bool = false
 	this.GatewayDetails = &gatewayDetails
 	var json bool = false
@@ -72,6 +76,8 @@ func NewDescribeItemWithDefaults() *DescribeItem {
 	this.Accessibility = &accessibility
 	var bastionDetails bool = false
 	this.BastionDetails = &bastionDetails
+	var derCertificateFormat bool = false
+	this.DerCertificateFormat = &derCertificateFormat
 	var gatewayDetails bool = false
 	this.GatewayDetails = &gatewayDetails
 	var json bool = false
@@ -145,6 +151,38 @@ func (o *DescribeItem) HasBastionDetails() bool {
 // SetBastionDetails gets a reference to the given bool and assigns it to the BastionDetails field.
 func (o *DescribeItem) SetBastionDetails(v bool) {
 	o.BastionDetails = &v
+}
+
+// GetDerCertificateFormat returns the DerCertificateFormat field value if set, zero value otherwise.
+func (o *DescribeItem) GetDerCertificateFormat() bool {
+	if o == nil || o.DerCertificateFormat == nil {
+		var ret bool
+		return ret
+	}
+	return *o.DerCertificateFormat
+}
+
+// GetDerCertificateFormatOk returns a tuple with the DerCertificateFormat field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DescribeItem) GetDerCertificateFormatOk() (*bool, bool) {
+	if o == nil || o.DerCertificateFormat == nil {
+		return nil, false
+	}
+	return o.DerCertificateFormat, true
+}
+
+// HasDerCertificateFormat returns a boolean if a field has been set.
+func (o *DescribeItem) HasDerCertificateFormat() bool {
+	if o != nil && o.DerCertificateFormat != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDerCertificateFormat gets a reference to the given bool and assigns it to the DerCertificateFormat field.
+func (o *DescribeItem) SetDerCertificateFormat(v bool) {
+	o.DerCertificateFormat = &v
 }
 
 // GetDisplayId returns the DisplayId field value if set, zero value otherwise.
@@ -434,6 +472,9 @@ func (o DescribeItem) MarshalJSON() ([]byte, error) {
 	}
 	if o.BastionDetails != nil {
 		toSerialize["bastion-details"] = o.BastionDetails
+	}
+	if o.DerCertificateFormat != nil {
+		toSerialize["der-certificate-format"] = o.DerCertificateFormat
 	}
 	if o.DisplayId != nil {
 		toSerialize["display-id"] = o.DisplayId

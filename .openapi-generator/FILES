@@ -72,6 +72,8 @@ docs/AzurePayload.md
 docs/AzureTargetDetails.md
 docs/BastionListEntry.md
 docs/BastionsList.md
+docs/BatchEncryptionRequestLine.md
+docs/BatchEncryptionResponseLine.md
 docs/CFConfigPart.md
 docs/CacheConfigPart.md
 docs/CertAccessRules.md
@@ -1079,6 +1081,8 @@ model_azure_payload.go
 model_azure_target_details.go
 model_bastion_list_entry.go
 model_bastions_list.go
+model_batch_encryption_request_line.go
+model_batch_encryption_response_line.go
 model_cache_config_part.go
 model_cert_access_rules.go
 model_certificate_analytic_aggregation.go

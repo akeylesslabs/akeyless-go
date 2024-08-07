@@ -19,6 +19,7 @@ import (
 type ItemGeneralInfo struct {
 	CertIssueDetails *CertificateIssueInfo `json:"cert_issue_details,omitempty"`
 	CertificateChainInfo *CertificateChainInfo `json:"certificate_chain_info,omitempty"`
+	CertificateFormat *string `json:"certificate_format,omitempty"`
 	CertificatesTemplateInfo *CertificateTemplateInfo `json:"certificates_template_info,omitempty"`
 	ClassicKeyDetails *ClassicKeyDetailsInfo `json:"classic_key_details,omitempty"`
 	ClusterGwUrl *string `json:"cluster_gw_url,omitempty"`
@@ -112,6 +113,38 @@ func (o *ItemGeneralInfo) HasCertificateChainInfo() bool {
 // SetCertificateChainInfo gets a reference to the given CertificateChainInfo and assigns it to the CertificateChainInfo field.
 func (o *ItemGeneralInfo) SetCertificateChainInfo(v CertificateChainInfo) {
 	o.CertificateChainInfo = &v
+}
+
+// GetCertificateFormat returns the CertificateFormat field value if set, zero value otherwise.
+func (o *ItemGeneralInfo) GetCertificateFormat() string {
+	if o == nil || o.CertificateFormat == nil {
+		var ret string
+		return ret
+	}
+	return *o.CertificateFormat
+}
+
+// GetCertificateFormatOk returns a tuple with the CertificateFormat field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ItemGeneralInfo) GetCertificateFormatOk() (*string, bool) {
+	if o == nil || o.CertificateFormat == nil {
+		return nil, false
+	}
+	return o.CertificateFormat, true
+}
+
+// HasCertificateFormat returns a boolean if a field has been set.
+func (o *ItemGeneralInfo) HasCertificateFormat() bool {
+	if o != nil && o.CertificateFormat != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificateFormat gets a reference to the given string and assigns it to the CertificateFormat field.
+func (o *ItemGeneralInfo) SetCertificateFormat(v string) {
+	o.CertificateFormat = &v
 }
 
 // GetCertificatesTemplateInfo returns the CertificatesTemplateInfo field value if set, zero value otherwise.
@@ -505,6 +538,9 @@ func (o ItemGeneralInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.CertificateChainInfo != nil {
 		toSerialize["certificate_chain_info"] = o.CertificateChainInfo
+	}
+	if o.CertificateFormat != nil {
+		toSerialize["certificate_format"] = o.CertificateFormat
 	}
 	if o.CertificatesTemplateInfo != nil {
 		toSerialize["certificates_template_info"] = o.CertificatesTemplateInfo

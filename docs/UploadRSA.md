@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Alg** | **string** | Key type. options: [RSA1024, RSA2048, RSA3072, RSA4096] | 
 **CertFileData** | Pointer to **string** | Certificate in a PEM format. | [optional] 
+**CertificateFormat** | Pointer to **string** |  | [optional] 
 **CustomerFrgId** | Pointer to **string** | The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment) | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
@@ -82,6 +83,31 @@ SetCertFileData sets CertFileData field to given value.
 `func (o *UploadRSA) HasCertFileData() bool`
 
 HasCertFileData returns a boolean if a field has been set.
+
+### GetCertificateFormat
+
+`func (o *UploadRSA) GetCertificateFormat() string`
+
+GetCertificateFormat returns the CertificateFormat field if non-nil, zero value otherwise.
+
+### GetCertificateFormatOk
+
+`func (o *UploadRSA) GetCertificateFormatOk() (*string, bool)`
+
+GetCertificateFormatOk returns a tuple with the CertificateFormat field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificateFormat
+
+`func (o *UploadRSA) SetCertificateFormat(v string)`
+
+SetCertificateFormat sets CertificateFormat field to given value.
+
+### HasCertificateFormat
+
+`func (o *UploadRSA) HasCertificateFormat() bool`
+
+HasCertificateFormat returns a boolean if a field has been set.
 
 ### GetCustomerFrgId
 
