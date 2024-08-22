@@ -27,7 +27,7 @@ type CreateSecret struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
-	// Secret format [text/json] (relevant only for type 'generic')
+	// Secret format [text/json/key-value] (relevant only for type 'generic')
 	Format *string `json:"format,omitempty"`
 	// For Password Management use, reflect the website context
 	InjectUrl *[]string `json:"inject-url,omitempty"`

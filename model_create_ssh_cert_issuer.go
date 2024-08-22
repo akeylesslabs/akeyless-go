@@ -42,6 +42,8 @@ type CreateSSHCertIssuer struct {
 	SecureAccessBastionSsh *string `json:"secure-access-bastion-ssh,omitempty"`
 	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Enable this flag to enforce connections only to the hosts listed in --secure-access-host
+	SecureAccessEnforceHostsRestriction *bool `json:"secure-access-enforce-hosts-restriction,omitempty"`
 	// Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
 	SecureAccessHost *[]string `json:"secure-access-host,omitempty"`
 	// SSH username to connect to target server, must be in 'Allowed Users' list
@@ -487,6 +489,38 @@ func (o *CreateSSHCertIssuer) SetSecureAccessEnable(v string) {
 	o.SecureAccessEnable = &v
 }
 
+// GetSecureAccessEnforceHostsRestriction returns the SecureAccessEnforceHostsRestriction field value if set, zero value otherwise.
+func (o *CreateSSHCertIssuer) GetSecureAccessEnforceHostsRestriction() bool {
+	if o == nil || o.SecureAccessEnforceHostsRestriction == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessEnforceHostsRestriction
+}
+
+// GetSecureAccessEnforceHostsRestrictionOk returns a tuple with the SecureAccessEnforceHostsRestriction field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSSHCertIssuer) GetSecureAccessEnforceHostsRestrictionOk() (*bool, bool) {
+	if o == nil || o.SecureAccessEnforceHostsRestriction == nil {
+		return nil, false
+	}
+	return o.SecureAccessEnforceHostsRestriction, true
+}
+
+// HasSecureAccessEnforceHostsRestriction returns a boolean if a field has been set.
+func (o *CreateSSHCertIssuer) HasSecureAccessEnforceHostsRestriction() bool {
+	if o != nil && o.SecureAccessEnforceHostsRestriction != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessEnforceHostsRestriction gets a reference to the given bool and assigns it to the SecureAccessEnforceHostsRestriction field.
+func (o *CreateSSHCertIssuer) SetSecureAccessEnforceHostsRestriction(v bool) {
+	o.SecureAccessEnforceHostsRestriction = &v
+}
+
 // GetSecureAccessHost returns the SecureAccessHost field value if set, zero value otherwise.
 func (o *CreateSSHCertIssuer) GetSecureAccessHost() []string {
 	if o == nil || o.SecureAccessHost == nil {
@@ -799,6 +833,9 @@ func (o CreateSSHCertIssuer) MarshalJSON() ([]byte, error) {
 	}
 	if o.SecureAccessEnable != nil {
 		toSerialize["secure-access-enable"] = o.SecureAccessEnable
+	}
+	if o.SecureAccessEnforceHostsRestriction != nil {
+		toSerialize["secure-access-enforce-hosts-restriction"] = o.SecureAccessEnforceHostsRestriction
 	}
 	if o.SecureAccessHost != nil {
 		toSerialize["secure-access-host"] = o.SecureAccessHost

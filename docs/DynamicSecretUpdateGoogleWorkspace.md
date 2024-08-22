@@ -17,6 +17,11 @@ Name | Type | Description | Notes
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **RoleName** | Pointer to **string** | Name of the admin role to assign to the user, relevant only for role access-mode | [optional] 
 **RoleScope** | Pointer to **string** |  | [optional] 
+**SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
+**SecureAccessUrl** | Pointer to **string** | Destination URL to inject secrets | [optional] 
+**SecureAccessWeb** | Pointer to **bool** | Enable Web Secure Remote Access | [optional] [default to true]
+**SecureAccessWebBrowsing** | Pointer to **bool** | Secure browser via Akeyless Web Access Bastion | [optional] [default to false]
+**SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless Web Access Bastion | [optional] [default to false]
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | Pointer to **string** | Name of existing target to use in dynamic secret creation | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -351,6 +356,131 @@ SetRoleScope sets RoleScope field to given value.
 `func (o *DynamicSecretUpdateGoogleWorkspace) HasRoleScope() bool`
 
 HasRoleScope returns a boolean if a field has been set.
+
+### GetSecureAccessEnable
+
+`func (o *DynamicSecretUpdateGoogleWorkspace) GetSecureAccessEnable() string`
+
+GetSecureAccessEnable returns the SecureAccessEnable field if non-nil, zero value otherwise.
+
+### GetSecureAccessEnableOk
+
+`func (o *DynamicSecretUpdateGoogleWorkspace) GetSecureAccessEnableOk() (*string, bool)`
+
+GetSecureAccessEnableOk returns a tuple with the SecureAccessEnable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessEnable
+
+`func (o *DynamicSecretUpdateGoogleWorkspace) SetSecureAccessEnable(v string)`
+
+SetSecureAccessEnable sets SecureAccessEnable field to given value.
+
+### HasSecureAccessEnable
+
+`func (o *DynamicSecretUpdateGoogleWorkspace) HasSecureAccessEnable() bool`
+
+HasSecureAccessEnable returns a boolean if a field has been set.
+
+### GetSecureAccessUrl
+
+`func (o *DynamicSecretUpdateGoogleWorkspace) GetSecureAccessUrl() string`
+
+GetSecureAccessUrl returns the SecureAccessUrl field if non-nil, zero value otherwise.
+
+### GetSecureAccessUrlOk
+
+`func (o *DynamicSecretUpdateGoogleWorkspace) GetSecureAccessUrlOk() (*string, bool)`
+
+GetSecureAccessUrlOk returns a tuple with the SecureAccessUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessUrl
+
+`func (o *DynamicSecretUpdateGoogleWorkspace) SetSecureAccessUrl(v string)`
+
+SetSecureAccessUrl sets SecureAccessUrl field to given value.
+
+### HasSecureAccessUrl
+
+`func (o *DynamicSecretUpdateGoogleWorkspace) HasSecureAccessUrl() bool`
+
+HasSecureAccessUrl returns a boolean if a field has been set.
+
+### GetSecureAccessWeb
+
+`func (o *DynamicSecretUpdateGoogleWorkspace) GetSecureAccessWeb() bool`
+
+GetSecureAccessWeb returns the SecureAccessWeb field if non-nil, zero value otherwise.
+
+### GetSecureAccessWebOk
+
+`func (o *DynamicSecretUpdateGoogleWorkspace) GetSecureAccessWebOk() (*bool, bool)`
+
+GetSecureAccessWebOk returns a tuple with the SecureAccessWeb field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessWeb
+
+`func (o *DynamicSecretUpdateGoogleWorkspace) SetSecureAccessWeb(v bool)`
+
+SetSecureAccessWeb sets SecureAccessWeb field to given value.
+
+### HasSecureAccessWeb
+
+`func (o *DynamicSecretUpdateGoogleWorkspace) HasSecureAccessWeb() bool`
+
+HasSecureAccessWeb returns a boolean if a field has been set.
+
+### GetSecureAccessWebBrowsing
+
+`func (o *DynamicSecretUpdateGoogleWorkspace) GetSecureAccessWebBrowsing() bool`
+
+GetSecureAccessWebBrowsing returns the SecureAccessWebBrowsing field if non-nil, zero value otherwise.
+
+### GetSecureAccessWebBrowsingOk
+
+`func (o *DynamicSecretUpdateGoogleWorkspace) GetSecureAccessWebBrowsingOk() (*bool, bool)`
+
+GetSecureAccessWebBrowsingOk returns a tuple with the SecureAccessWebBrowsing field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessWebBrowsing
+
+`func (o *DynamicSecretUpdateGoogleWorkspace) SetSecureAccessWebBrowsing(v bool)`
+
+SetSecureAccessWebBrowsing sets SecureAccessWebBrowsing field to given value.
+
+### HasSecureAccessWebBrowsing
+
+`func (o *DynamicSecretUpdateGoogleWorkspace) HasSecureAccessWebBrowsing() bool`
+
+HasSecureAccessWebBrowsing returns a boolean if a field has been set.
+
+### GetSecureAccessWebProxy
+
+`func (o *DynamicSecretUpdateGoogleWorkspace) GetSecureAccessWebProxy() bool`
+
+GetSecureAccessWebProxy returns the SecureAccessWebProxy field if non-nil, zero value otherwise.
+
+### GetSecureAccessWebProxyOk
+
+`func (o *DynamicSecretUpdateGoogleWorkspace) GetSecureAccessWebProxyOk() (*bool, bool)`
+
+GetSecureAccessWebProxyOk returns a tuple with the SecureAccessWebProxy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessWebProxy
+
+`func (o *DynamicSecretUpdateGoogleWorkspace) SetSecureAccessWebProxy(v bool)`
+
+SetSecureAccessWebProxy sets SecureAccessWebProxy field to given value.
+
+### HasSecureAccessWebProxy
+
+`func (o *DynamicSecretUpdateGoogleWorkspace) HasSecureAccessWebProxy() bool`
+
+HasSecureAccessWebProxy returns a boolean if a field has been set.
 
 ### GetTags
 

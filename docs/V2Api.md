@@ -4,11 +4,12 @@ All URIs are relative to *https://api.akeyless.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**AliasDetails**](V2Api.md#AliasDetails) | **Get** /alias-details | 
 [**AssocRoleAuthMethod**](V2Api.md#AssocRoleAuthMethod) | **Post** /assoc-role-am | 
 [**AssocTargetItem**](V2Api.md#AssocTargetItem) | **Post** /assoc-target-item | 
 [**Auth**](V2Api.md#Auth) | **Post** /auth | 
 [**AuthMethodCreateApiKey**](V2Api.md#AuthMethodCreateApiKey) | **Post** /auth-method-create-api-key | 
-[**AuthMethodCreateAwsIam**](V2Api.md#AuthMethodCreateAwsIam) | **Post** /auth-method-create-aws | 
+[**AuthMethodCreateAwsIam**](V2Api.md#AuthMethodCreateAwsIam) | **Post** /auth-method-create-aws-iam | 
 [**AuthMethodCreateAzureAD**](V2Api.md#AuthMethodCreateAzureAD) | **Post** /auth-method-create-azure-ad | 
 [**AuthMethodCreateCert**](V2Api.md#AuthMethodCreateCert) | **Post** /auth-method-create-cert | 
 [**AuthMethodCreateEmail**](V2Api.md#AuthMethodCreateEmail) | **Post** /auth-method-create-email | 
@@ -119,6 +120,7 @@ Method | HTTP request | Description
 [**DescribePermissions**](V2Api.md#DescribePermissions) | **Post** /describe-permissions | 
 [**DescribeSubClaims**](V2Api.md#DescribeSubClaims) | **Post** /describe-sub-claims | 
 [**Detokenize**](V2Api.md#Detokenize) | **Post** /detokenize | 
+[**DetokenizeBatch**](V2Api.md#DetokenizeBatch) | **Post** /detokenize-batch | 
 [**DynamicSecretCreateArtifactory**](V2Api.md#DynamicSecretCreateArtifactory) | **Post** /dynamic-secret-create-artifactory | 
 [**DynamicSecretCreateAws**](V2Api.md#DynamicSecretCreateAws) | **Post** /dynamic-secret-create-aws | 
 [**DynamicSecretCreateAzure**](V2Api.md#DynamicSecretCreateAzure) | **Post** /dynamic-secret-create-azure | 
@@ -426,6 +428,7 @@ Method | HTTP request | Description
 [**TargetCreatePing**](V2Api.md#TargetCreatePing) | **Post** /target-create-ping | 
 [**TargetCreateRabbitMq**](V2Api.md#TargetCreateRabbitMq) | **Post** /target-create-rabbitmq | 
 [**TargetCreateSalesforce**](V2Api.md#TargetCreateSalesforce) | **Post** /target-create-salesforce | 
+[**TargetCreateSectigo**](V2Api.md#TargetCreateSectigo) | **Post** /target-create-sectigo | 
 [**TargetCreateSsh**](V2Api.md#TargetCreateSsh) | **Post** /target-create-ssh | 
 [**TargetCreateWeb**](V2Api.md#TargetCreateWeb) | **Post** /target-create-web | 
 [**TargetCreateWindows**](V2Api.md#TargetCreateWindows) | **Post** /target-create-windows | 
@@ -454,11 +457,13 @@ Method | HTTP request | Description
 [**TargetUpdatePing**](V2Api.md#TargetUpdatePing) | **Post** /target-update-ping | 
 [**TargetUpdateRabbitMq**](V2Api.md#TargetUpdateRabbitMq) | **Post** /target-update-rabbitmq | 
 [**TargetUpdateSalesforce**](V2Api.md#TargetUpdateSalesforce) | **Post** /target-update-salesforce | 
+[**TargetUpdateSectigo**](V2Api.md#TargetUpdateSectigo) | **Post** /target-update-sectigo | 
 [**TargetUpdateSsh**](V2Api.md#TargetUpdateSsh) | **Post** /target-update-ssh | 
 [**TargetUpdateWeb**](V2Api.md#TargetUpdateWeb) | **Post** /target-update-web | 
 [**TargetUpdateWindows**](V2Api.md#TargetUpdateWindows) | **Post** /target-update-windows | 
 [**TargetUpdateZeroSSL**](V2Api.md#TargetUpdateZeroSSL) | **Post** /target-update-zerossl | 
 [**Tokenize**](V2Api.md#Tokenize) | **Post** /tokenize | 
+[**TokenizeBatch**](V2Api.md#TokenizeBatch) | **Post** /tokenize-batch | 
 [**UidCreateChildToken**](V2Api.md#UidCreateChildToken) | **Post** /uid-create-child-token | 
 [**UidGenerateToken**](V2Api.md#UidGenerateToken) | **Post** /uid-generate-token | 
 [**UidListChildren**](V2Api.md#UidListChildren) | **Post** /uid-list-children | 
@@ -538,6 +543,70 @@ Method | HTTP request | Description
 [**VerifyPKICertWithClassicKey**](V2Api.md#VerifyPKICertWithClassicKey) | **Post** /verify-pki-cert-with-classic-key | 
 [**VerifyRsaSsaPss**](V2Api.md#VerifyRsaSsaPss) | **Post** /verify-rsassa-pss | 
 
+
+
+## AliasDetails
+
+> map[string]interface{} AliasDetails(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewaliasDetails("AccountAlias_example", "AuthMethodName_example") // AliasDetails | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.AliasDetails(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.AliasDetails``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AliasDetails`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.AliasDetails`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAliasDetailsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**AliasDetails**](AliasDetails.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## AssocRoleAuthMethod
@@ -7881,6 +7950,70 @@ Other parameters are passed through a pointer to a apiDetokenizeRequest struct v
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Detokenize**](Detokenize.md) |  | 
+
+### Return type
+
+[**DetokenizeOutput**](detokenizeOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DetokenizeBatch
+
+> DetokenizeOutput DetokenizeBatch(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := []openapiclient.BatchTokenizationRequestLine{*openapiclient.NewBatchTokenizationRequestLine()} // []BatchTokenizationRequestLine | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DetokenizeBatch(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DetokenizeBatch``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DetokenizeBatch`: DetokenizeOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DetokenizeBatch`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDetokenizeBatchRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**[]BatchTokenizationRequestLine**](BatchTokenizationRequestLine.md) |  | 
 
 ### Return type
 
@@ -27526,6 +27659,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## TargetCreateSectigo
+
+> TargetCreateOutput TargetCreateSectigo(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewtargetCreateSectigo(int64(123), "CustomerUri_example", "ExternalRequester_example", "Name_example", int64(123), "Password_example", "Username_example") // TargetCreateSectigo | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.TargetCreateSectigo(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetCreateSectigo``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `TargetCreateSectigo`: TargetCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetCreateSectigo`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetCreateSectigoRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**TargetCreateSectigo**](TargetCreateSectigo.md) |  | 
+
+### Return type
+
+[**TargetCreateOutput**](targetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## TargetCreateSsh
 
 > TargetCreateOutput TargetCreateSsh(ctx).Body(body).Execute()
@@ -29318,6 +29515,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## TargetUpdateSectigo
+
+> TargetUpdateOutput TargetUpdateSectigo(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewtargetUpdateSectigo(int64(123), "CustomerUri_example", "ExternalRequester_example", "Name_example", int64(123), "Password_example", "Username_example") // TargetUpdateSectigo | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.TargetUpdateSectigo(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetUpdateSectigo``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `TargetUpdateSectigo`: TargetUpdateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetUpdateSectigo`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetUpdateSectigoRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**TargetUpdateSectigo**](TargetUpdateSectigo.md) |  | 
+
+### Return type
+
+[**TargetUpdateOutput**](targetUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## TargetUpdateSsh
 
 > TargetUpdateOutput TargetUpdateSsh(ctx).Body(body).Execute()
@@ -29619,6 +29880,70 @@ Other parameters are passed through a pointer to a apiTokenizeRequest struct via
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Tokenize**](Tokenize.md) |  | 
+
+### Return type
+
+[**TokenizeOutput**](tokenizeOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## TokenizeBatch
+
+> TokenizeOutput TokenizeBatch(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := []openapiclient.BatchTokenizationRequestLine{*openapiclient.NewBatchTokenizationRequestLine()} // []BatchTokenizationRequestLine | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.TokenizeBatch(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TokenizeBatch``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `TokenizeBatch`: TokenizeOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.TokenizeBatch`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTokenizeBatchRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**[]BatchTokenizationRequestLine**](BatchTokenizationRequestLine.md) |  | 
 
 ### Return type
 

@@ -41,6 +41,8 @@ type GatewayCreateProducerAzure struct {
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
 	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Destination URL to inject secrets
+	SecureAccessUrl *string `json:"secure-access-url,omitempty"`
 	// Enable Web Secure Remote Access
 	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
 	// Secure browser via Akeyless Web Access Bastion
@@ -499,6 +501,38 @@ func (o *GatewayCreateProducerAzure) SetSecureAccessEnable(v string) {
 	o.SecureAccessEnable = &v
 }
 
+// GetSecureAccessUrl returns the SecureAccessUrl field value if set, zero value otherwise.
+func (o *GatewayCreateProducerAzure) GetSecureAccessUrl() string {
+	if o == nil || o.SecureAccessUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessUrl
+}
+
+// GetSecureAccessUrlOk returns a tuple with the SecureAccessUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerAzure) GetSecureAccessUrlOk() (*string, bool) {
+	if o == nil || o.SecureAccessUrl == nil {
+		return nil, false
+	}
+	return o.SecureAccessUrl, true
+}
+
+// HasSecureAccessUrl returns a boolean if a field has been set.
+func (o *GatewayCreateProducerAzure) HasSecureAccessUrl() bool {
+	if o != nil && o.SecureAccessUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessUrl gets a reference to the given string and assigns it to the SecureAccessUrl field.
+func (o *GatewayCreateProducerAzure) SetSecureAccessUrl(v string) {
+	o.SecureAccessUrl = &v
+}
+
 // GetSecureAccessWeb returns the SecureAccessWeb field value if set, zero value otherwise.
 func (o *GatewayCreateProducerAzure) GetSecureAccessWeb() bool {
 	if o == nil || o.SecureAccessWeb == nil {
@@ -952,6 +986,9 @@ func (o GatewayCreateProducerAzure) MarshalJSON() ([]byte, error) {
 	}
 	if o.SecureAccessEnable != nil {
 		toSerialize["secure-access-enable"] = o.SecureAccessEnable
+	}
+	if o.SecureAccessUrl != nil {
+		toSerialize["secure-access-url"] = o.SecureAccessUrl
 	}
 	if o.SecureAccessWeb != nil {
 		toSerialize["secure-access-web"] = o.SecureAccessWeb

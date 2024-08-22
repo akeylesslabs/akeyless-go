@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **EventTypes** | Pointer to **[]string** | List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, certificate-provisioning-success, certificate-provisioning-failure, auth-method-pending-expiration, auth-method-expired, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure, uid-rotation-failure, apply-justification, email-auth-method-approved, usage, rotation-usage, gateway-inactive, static-secret-updated] | [optional] 
 **Every** | Pointer to **string** | Rate of periodic runner repetition in hours | [optional] 
 **GatewaysEventSourceLocations** | **[]string** | Event sources | 
+**IncludeError** | Pointer to **string** | Set this option to include event errors details [true\\false] | [optional] 
 **ItemsEventSourceLocations** | Pointer to **[]string** | Items Event sources | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | Pointer to **string** | The name of a key that used to encrypt the EventForwarder secret value (if empty, the account default protectionKey key will be used) | [optional] 
@@ -183,6 +184,31 @@ and a boolean to check if the value has been set.
 
 SetGatewaysEventSourceLocations sets GatewaysEventSourceLocations field to given value.
 
+
+### GetIncludeError
+
+`func (o *EventForwarderCreateEmail) GetIncludeError() string`
+
+GetIncludeError returns the IncludeError field if non-nil, zero value otherwise.
+
+### GetIncludeErrorOk
+
+`func (o *EventForwarderCreateEmail) GetIncludeErrorOk() (*string, bool)`
+
+GetIncludeErrorOk returns a tuple with the IncludeError field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIncludeError
+
+`func (o *EventForwarderCreateEmail) SetIncludeError(v string)`
+
+SetIncludeError sets IncludeError field to given value.
+
+### HasIncludeError
+
+`func (o *EventForwarderCreateEmail) HasIncludeError() bool`
+
+HasIncludeError returns a boolean if a field has been set.
 
 ### GetItemsEventSourceLocations
 

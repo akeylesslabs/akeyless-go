@@ -40,6 +40,7 @@ type TargetTypeDetailsInput struct {
 	PingTargetDetails *PingTargetDetails `json:"ping_target_details,omitempty"`
 	RabbitMqTargetDetails *RabbitMQTargetDetails `json:"rabbit_mq_target_details,omitempty"`
 	SalesforceTargetDetails *SalesforceTargetDetails `json:"salesforce_target_details,omitempty"`
+	SectigoTargetDetails *SectigoTargetDetails `json:"sectigo_target_details,omitempty"`
 	SshTargetDetails *SSHTargetDetails `json:"ssh_target_details,omitempty"`
 	VenafiTargetDetails *VenafiTargetDetails `json:"venafi_target_details,omitempty"`
 	WebTargetDetails *WebTargetDetails `json:"web_target_details,omitempty"`
@@ -800,6 +801,38 @@ func (o *TargetTypeDetailsInput) SetSalesforceTargetDetails(v SalesforceTargetDe
 	o.SalesforceTargetDetails = &v
 }
 
+// GetSectigoTargetDetails returns the SectigoTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetSectigoTargetDetails() SectigoTargetDetails {
+	if o == nil || o.SectigoTargetDetails == nil {
+		var ret SectigoTargetDetails
+		return ret
+	}
+	return *o.SectigoTargetDetails
+}
+
+// GetSectigoTargetDetailsOk returns a tuple with the SectigoTargetDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetSectigoTargetDetailsOk() (*SectigoTargetDetails, bool) {
+	if o == nil || o.SectigoTargetDetails == nil {
+		return nil, false
+	}
+	return o.SectigoTargetDetails, true
+}
+
+// HasSectigoTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasSectigoTargetDetails() bool {
+	if o != nil && o.SectigoTargetDetails != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSectigoTargetDetails gets a reference to the given SectigoTargetDetails and assigns it to the SectigoTargetDetails field.
+func (o *TargetTypeDetailsInput) SetSectigoTargetDetails(v SectigoTargetDetails) {
+	o.SectigoTargetDetails = &v
+}
+
 // GetSshTargetDetails returns the SshTargetDetails field value if set, zero value otherwise.
 func (o *TargetTypeDetailsInput) GetSshTargetDetails() SSHTargetDetails {
 	if o == nil || o.SshTargetDetails == nil {
@@ -1030,6 +1063,9 @@ func (o TargetTypeDetailsInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.SalesforceTargetDetails != nil {
 		toSerialize["salesforce_target_details"] = o.SalesforceTargetDetails
+	}
+	if o.SectigoTargetDetails != nil {
+		toSerialize["sectigo_target_details"] = o.SectigoTargetDetails
 	}
 	if o.SshTargetDetails != nil {
 		toSerialize["ssh_target_details"] = o.SshTargetDetails

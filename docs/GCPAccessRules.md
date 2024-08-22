@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **BoundZones** | Pointer to **[]string** | &#x3D;&#x3D;&#x3D; Machine authentication section &#x3D;&#x3D;&#x3D; List of zones that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a zonal group and the group must belong to this zone. | [optional] 
 **ServiceAccount** | Pointer to **string** | ServiceAccount holds the credentials file contents to be used by Akeyless to validate IAM (Human) and GCE (Machine) logins against GCP base64 encoded string | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
+**UniqueIdentifier** | Pointer to **string** | A unique identifier to distinguish different users | [optional] 
 
 ## Methods
 
@@ -231,6 +232,31 @@ SetType sets Type field to given value.
 `func (o *GCPAccessRules) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### GetUniqueIdentifier
+
+`func (o *GCPAccessRules) GetUniqueIdentifier() string`
+
+GetUniqueIdentifier returns the UniqueIdentifier field if non-nil, zero value otherwise.
+
+### GetUniqueIdentifierOk
+
+`func (o *GCPAccessRules) GetUniqueIdentifierOk() (*string, bool)`
+
+GetUniqueIdentifierOk returns a tuple with the UniqueIdentifier field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUniqueIdentifier
+
+`func (o *GCPAccessRules) SetUniqueIdentifier(v string)`
+
+SetUniqueIdentifier sets UniqueIdentifier field to given value.
+
+### HasUniqueIdentifier
+
+`func (o *GCPAccessRules) HasUniqueIdentifier() bool`
+
+HasUniqueIdentifier returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -67,6 +67,8 @@ type CreateAuthMethodAzureAD struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// A unique identifier (ID) value which is a \"sub claim\" name that contains details uniquely identifying that resource. This \"sub claim\" is used to distinguish between different identities.
+	UniqueIdentifier *string `json:"unique-identifier,omitempty"`
 }
 
 // NewCreateAuthMethodAzureAD instantiates a new CreateAuthMethodAzureAD object
@@ -896,6 +898,38 @@ func (o *CreateAuthMethodAzureAD) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUniqueIdentifier returns the UniqueIdentifier field value if set, zero value otherwise.
+func (o *CreateAuthMethodAzureAD) GetUniqueIdentifier() string {
+	if o == nil || o.UniqueIdentifier == nil {
+		var ret string
+		return ret
+	}
+	return *o.UniqueIdentifier
+}
+
+// GetUniqueIdentifierOk returns a tuple with the UniqueIdentifier field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodAzureAD) GetUniqueIdentifierOk() (*string, bool) {
+	if o == nil || o.UniqueIdentifier == nil {
+		return nil, false
+	}
+	return o.UniqueIdentifier, true
+}
+
+// HasUniqueIdentifier returns a boolean if a field has been set.
+func (o *CreateAuthMethodAzureAD) HasUniqueIdentifier() bool {
+	if o != nil && o.UniqueIdentifier != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUniqueIdentifier gets a reference to the given string and assigns it to the UniqueIdentifier field.
+func (o *CreateAuthMethodAzureAD) SetUniqueIdentifier(v string) {
+	o.UniqueIdentifier = &v
+}
+
 func (o CreateAuthMethodAzureAD) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccessExpires != nil {
@@ -972,6 +1006,9 @@ func (o CreateAuthMethodAzureAD) MarshalJSON() ([]byte, error) {
 	}
 	if o.UidToken != nil {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if o.UniqueIdentifier != nil {
+		toSerialize["unique-identifier"] = o.UniqueIdentifier
 	}
 	return json.Marshal(toSerialize)
 }

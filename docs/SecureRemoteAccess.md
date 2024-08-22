@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **Domain** | Pointer to **string** |  | [optional] 
 **Enable** | Pointer to **bool** |  | [optional] 
 **Endpoint** | Pointer to **string** |  | [optional] 
+**EnforceHostsRestriction** | Pointer to **bool** |  | [optional] 
 **Host** | Pointer to **[]string** |  | [optional] 
 **HostProviderType** | Pointer to **string** |  | [optional] 
 **IsCli** | Pointer to **bool** |  | [optional] 
@@ -433,6 +434,31 @@ SetEndpoint sets Endpoint field to given value.
 `func (o *SecureRemoteAccess) HasEndpoint() bool`
 
 HasEndpoint returns a boolean if a field has been set.
+
+### GetEnforceHostsRestriction
+
+`func (o *SecureRemoteAccess) GetEnforceHostsRestriction() bool`
+
+GetEnforceHostsRestriction returns the EnforceHostsRestriction field if non-nil, zero value otherwise.
+
+### GetEnforceHostsRestrictionOk
+
+`func (o *SecureRemoteAccess) GetEnforceHostsRestrictionOk() (*bool, bool)`
+
+GetEnforceHostsRestrictionOk returns a tuple with the EnforceHostsRestriction field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnforceHostsRestriction
+
+`func (o *SecureRemoteAccess) SetEnforceHostsRestriction(v bool)`
+
+SetEnforceHostsRestriction sets EnforceHostsRestriction field to given value.
+
+### HasEnforceHostsRestriction
+
+`func (o *SecureRemoteAccess) HasEnforceHostsRestriction() bool`
+
+HasEnforceHostsRestriction returns a boolean if a field has been set.
 
 ### GetHost
 

@@ -21,7 +21,7 @@ type UpdateSecretVal struct {
 	Accessibility *string `json:"accessibility,omitempty"`
 	// For Password Management use, additional fields
 	CustomField *map[string]string `json:"custom-field,omitempty"`
-	// Secret format [text/json] (relevant only for type 'generic')
+	// Secret format [text/json/key-value] (relevant only for type 'generic')
 	Format *string `json:"format,omitempty"`
 	// For Password Management use, reflect the website context
 	InjectUrl *[]string `json:"inject-url,omitempty"`

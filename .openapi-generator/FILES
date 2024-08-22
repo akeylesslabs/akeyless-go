@@ -19,6 +19,8 @@ docs/ActiveDirectoryPayload.md
 docs/AddGatewayAllowedAccessId.md
 docs/AdminsConfigPart.md
 docs/AkeylessGatewayConfig.md
+docs/AliasDetails.md
+docs/AliasDetailsOutput.md
 docs/AllAnalyticsData.md
 docs/AllowedAccess.md
 docs/AllowedAccessOld.md
@@ -74,6 +76,8 @@ docs/BastionListEntry.md
 docs/BastionsList.md
 docs/BatchEncryptionRequestLine.md
 docs/BatchEncryptionResponseLine.md
+docs/BatchTokenizationRequestLine.md
+docs/BatchTokenizationResponseLine.md
 docs/CFConfigPart.md
 docs/CacheConfigPart.md
 docs/CertAccessRules.md
@@ -774,6 +778,7 @@ docs/SSHCertificateIssueDetails.md
 docs/SSHTargetDetails.md
 docs/SalesforceTargetDetails.md
 docs/SecretInfo.md
+docs/SectigoTargetDetails.md
 docs/SecureRemoteAccess.md
 docs/ServerInventoryMigration.md
 docs/ServerInventoryPayload.md
@@ -827,6 +832,7 @@ docs/TargetCreateOutput.md
 docs/TargetCreatePing.md
 docs/TargetCreateRabbitMq.md
 docs/TargetCreateSalesforce.md
+docs/TargetCreateSectigo.md
 docs/TargetCreateSsh.md
 docs/TargetCreateWeb.md
 docs/TargetCreateWindows.md
@@ -860,6 +866,7 @@ docs/TargetUpdateOutput.md
 docs/TargetUpdatePing.md
 docs/TargetUpdateRabbitMq.md
 docs/TargetUpdateSalesforce.md
+docs/TargetUpdateSectigo.md
 docs/TargetUpdateSsh.md
 docs/TargetUpdateWeb.md
 docs/TargetUpdateWindows.md
@@ -1023,6 +1030,8 @@ model_active_directory_payload.go
 model_add_gateway_allowed_access_id.go
 model_admins_config_part.go
 model_akeyless_gateway_config.go
+model_alias_details.go
+model_alias_details_output.go
 model_all_analytics_data.go
 model_allowed_access.go
 model_allowed_access_old.go
@@ -1083,6 +1092,8 @@ model_bastion_list_entry.go
 model_bastions_list.go
 model_batch_encryption_request_line.go
 model_batch_encryption_response_line.go
+model_batch_tokenization_request_line.go
+model_batch_tokenization_response_line.go
 model_cache_config_part.go
 model_cert_access_rules.go
 model_certificate_analytic_aggregation.go
@@ -1781,6 +1792,7 @@ model_salesforce_target_details.go
 model_saml_access_rules.go
 model_saml_attribute.go
 model_secret_info.go
+model_sectigo_target_details.go
 model_secure_remote_access.go
 model_server_inventory_migration.go
 model_server_inventory_payload.go
@@ -1836,6 +1848,7 @@ model_target_create_output.go
 model_target_create_ping.go
 model_target_create_rabbit_mq.go
 model_target_create_salesforce.go
+model_target_create_sectigo.go
 model_target_create_ssh.go
 model_target_create_web.go
 model_target_create_windows_.go
@@ -1869,6 +1882,7 @@ model_target_update_output.go
 model_target_update_ping.go
 model_target_update_rabbit_mq.go
 model_target_update_salesforce.go
+model_target_update_sectigo.go
 model_target_update_ssh.go
 model_target_update_web.go
 model_target_update_windows_.go

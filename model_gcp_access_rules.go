@@ -32,6 +32,8 @@ type GCPAccessRules struct {
 	// ServiceAccount holds the credentials file contents to be used by Akeyless to validate IAM (Human) and GCE (Machine) logins against GCP base64 encoded string
 	ServiceAccount *string `json:"service_account,omitempty"`
 	Type *string `json:"type,omitempty"`
+	// A unique identifier to distinguish different users
+	UniqueIdentifier *string `json:"unique_identifier,omitempty"`
 }
 
 // NewGCPAccessRules instantiates a new GCPAccessRules object
@@ -311,6 +313,38 @@ func (o *GCPAccessRules) SetType(v string) {
 	o.Type = &v
 }
 
+// GetUniqueIdentifier returns the UniqueIdentifier field value if set, zero value otherwise.
+func (o *GCPAccessRules) GetUniqueIdentifier() string {
+	if o == nil || o.UniqueIdentifier == nil {
+		var ret string
+		return ret
+	}
+	return *o.UniqueIdentifier
+}
+
+// GetUniqueIdentifierOk returns a tuple with the UniqueIdentifier field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GCPAccessRules) GetUniqueIdentifierOk() (*string, bool) {
+	if o == nil || o.UniqueIdentifier == nil {
+		return nil, false
+	}
+	return o.UniqueIdentifier, true
+}
+
+// HasUniqueIdentifier returns a boolean if a field has been set.
+func (o *GCPAccessRules) HasUniqueIdentifier() bool {
+	if o != nil && o.UniqueIdentifier != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUniqueIdentifier gets a reference to the given string and assigns it to the UniqueIdentifier field.
+func (o *GCPAccessRules) SetUniqueIdentifier(v string) {
+	o.UniqueIdentifier = &v
+}
+
 func (o GCPAccessRules) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Audience != nil {
@@ -336,6 +370,9 @@ func (o GCPAccessRules) MarshalJSON() ([]byte, error) {
 	}
 	if o.Type != nil {
 		toSerialize["type"] = o.Type
+	}
+	if o.UniqueIdentifier != nil {
+		toSerialize["unique_identifier"] = o.UniqueIdentifier
 	}
 	return json.Marshal(toSerialize)
 }

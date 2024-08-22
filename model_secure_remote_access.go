@@ -32,6 +32,7 @@ type SecureRemoteAccess struct {
 	Domain *string `json:"domain,omitempty"`
 	Enable *bool `json:"enable,omitempty"`
 	Endpoint *string `json:"endpoint,omitempty"`
+	EnforceHostsRestriction *bool `json:"enforce_hosts_restriction,omitempty"`
 	Host *[]string `json:"host,omitempty"`
 	HostProviderType *string `json:"host_provider_type,omitempty"`
 	IsCli *bool `json:"is_cli,omitempty"`
@@ -549,6 +550,38 @@ func (o *SecureRemoteAccess) HasEndpoint() bool {
 // SetEndpoint gets a reference to the given string and assigns it to the Endpoint field.
 func (o *SecureRemoteAccess) SetEndpoint(v string) {
 	o.Endpoint = &v
+}
+
+// GetEnforceHostsRestriction returns the EnforceHostsRestriction field value if set, zero value otherwise.
+func (o *SecureRemoteAccess) GetEnforceHostsRestriction() bool {
+	if o == nil || o.EnforceHostsRestriction == nil {
+		var ret bool
+		return ret
+	}
+	return *o.EnforceHostsRestriction
+}
+
+// GetEnforceHostsRestrictionOk returns a tuple with the EnforceHostsRestriction field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SecureRemoteAccess) GetEnforceHostsRestrictionOk() (*bool, bool) {
+	if o == nil || o.EnforceHostsRestriction == nil {
+		return nil, false
+	}
+	return o.EnforceHostsRestriction, true
+}
+
+// HasEnforceHostsRestriction returns a boolean if a field has been set.
+func (o *SecureRemoteAccess) HasEnforceHostsRestriction() bool {
+	if o != nil && o.EnforceHostsRestriction != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEnforceHostsRestriction gets a reference to the given bool and assigns it to the EnforceHostsRestriction field.
+func (o *SecureRemoteAccess) SetEnforceHostsRestriction(v bool) {
+	o.EnforceHostsRestriction = &v
 }
 
 // GetHost returns the Host field value if set, zero value otherwise.
@@ -1237,6 +1270,9 @@ func (o SecureRemoteAccess) MarshalJSON() ([]byte, error) {
 	}
 	if o.Endpoint != nil {
 		toSerialize["endpoint"] = o.Endpoint
+	}
+	if o.EnforceHostsRestriction != nil {
+		toSerialize["enforce_hosts_restriction"] = o.EnforceHostsRestriction
 	}
 	if o.Host != nil {
 		toSerialize["host"] = o.Host

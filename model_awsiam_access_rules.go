@@ -29,6 +29,8 @@ type AWSIAMAccessRules struct {
 	RoleName *[]string `json:"role_name,omitempty"`
 	// The sts URL.
 	StsEndpoint *string `json:"sts_endpoint,omitempty"`
+	// A unique identifier to distinguish different users
+	UniqueIdentifier *string `json:"unique_identifier,omitempty"`
 	// The list of user ids that the login is restricted to.
 	UserId *[]string `json:"user_id,omitempty"`
 	// The list of user names that the login is restricted to.
@@ -244,6 +246,38 @@ func (o *AWSIAMAccessRules) SetStsEndpoint(v string) {
 	o.StsEndpoint = &v
 }
 
+// GetUniqueIdentifier returns the UniqueIdentifier field value if set, zero value otherwise.
+func (o *AWSIAMAccessRules) GetUniqueIdentifier() string {
+	if o == nil || o.UniqueIdentifier == nil {
+		var ret string
+		return ret
+	}
+	return *o.UniqueIdentifier
+}
+
+// GetUniqueIdentifierOk returns a tuple with the UniqueIdentifier field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AWSIAMAccessRules) GetUniqueIdentifierOk() (*string, bool) {
+	if o == nil || o.UniqueIdentifier == nil {
+		return nil, false
+	}
+	return o.UniqueIdentifier, true
+}
+
+// HasUniqueIdentifier returns a boolean if a field has been set.
+func (o *AWSIAMAccessRules) HasUniqueIdentifier() bool {
+	if o != nil && o.UniqueIdentifier != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUniqueIdentifier gets a reference to the given string and assigns it to the UniqueIdentifier field.
+func (o *AWSIAMAccessRules) SetUniqueIdentifier(v string) {
+	o.UniqueIdentifier = &v
+}
+
 // GetUserId returns the UserId field value if set, zero value otherwise.
 func (o *AWSIAMAccessRules) GetUserId() []string {
 	if o == nil || o.UserId == nil {
@@ -327,6 +361,9 @@ func (o AWSIAMAccessRules) MarshalJSON() ([]byte, error) {
 	}
 	if o.StsEndpoint != nil {
 		toSerialize["sts_endpoint"] = o.StsEndpoint
+	}
+	if o.UniqueIdentifier != nil {
+		toSerialize["unique_identifier"] = o.UniqueIdentifier
 	}
 	if o.UserId != nil {
 		toSerialize["user_id"] = o.UserId

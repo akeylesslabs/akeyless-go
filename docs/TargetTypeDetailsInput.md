@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **PingTargetDetails** | Pointer to [**PingTargetDetails**](PingTargetDetails.md) |  | [optional] 
 **RabbitMqTargetDetails** | Pointer to [**RabbitMQTargetDetails**](RabbitMQTargetDetails.md) |  | [optional] 
 **SalesforceTargetDetails** | Pointer to [**SalesforceTargetDetails**](SalesforceTargetDetails.md) |  | [optional] 
+**SectigoTargetDetails** | Pointer to [**SectigoTargetDetails**](SectigoTargetDetails.md) |  | [optional] 
 **SshTargetDetails** | Pointer to [**SSHTargetDetails**](SSHTargetDetails.md) |  | [optional] 
 **VenafiTargetDetails** | Pointer to [**VenafiTargetDetails**](VenafiTargetDetails.md) |  | [optional] 
 **WebTargetDetails** | Pointer to [**WebTargetDetails**](WebTargetDetails.md) |  | [optional] 
@@ -626,6 +627,31 @@ SetSalesforceTargetDetails sets SalesforceTargetDetails field to given value.
 `func (o *TargetTypeDetailsInput) HasSalesforceTargetDetails() bool`
 
 HasSalesforceTargetDetails returns a boolean if a field has been set.
+
+### GetSectigoTargetDetails
+
+`func (o *TargetTypeDetailsInput) GetSectigoTargetDetails() SectigoTargetDetails`
+
+GetSectigoTargetDetails returns the SectigoTargetDetails field if non-nil, zero value otherwise.
+
+### GetSectigoTargetDetailsOk
+
+`func (o *TargetTypeDetailsInput) GetSectigoTargetDetailsOk() (*SectigoTargetDetails, bool)`
+
+GetSectigoTargetDetailsOk returns a tuple with the SectigoTargetDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSectigoTargetDetails
+
+`func (o *TargetTypeDetailsInput) SetSectigoTargetDetails(v SectigoTargetDetails)`
+
+SetSectigoTargetDetails sets SectigoTargetDetails field to given value.
+
+### HasSectigoTargetDetails
+
+`func (o *TargetTypeDetailsInput) HasSectigoTargetDetails() bool`
+
+HasSectigoTargetDetails returns a boolean if a field has been set.
 
 ### GetSshTargetDetails
 

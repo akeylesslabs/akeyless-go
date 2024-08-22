@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Accessibility** | Pointer to **string** | for personal password manager | [optional] [default to "regular"]
 **CustomField** | Pointer to **map[string]string** | For Password Management use, additional fields | [optional] 
-**Format** | Pointer to **string** | Secret format [text/json] (relevant only for type &#39;generic&#39;) | [optional] [default to "text"]
+**Format** | Pointer to **string** | Secret format [text/json/key-value] (relevant only for type &#39;generic&#39;) | [optional] [default to "text"]
 **InjectUrl** | Pointer to **[]string** | For Password Management use, reflect the website context | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | Pointer to **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 

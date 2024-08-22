@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Assigners** | Pointer to [**[]RuleAssigner**](RuleAssigner.md) |  | [optional] 
 **Capabilities** | Pointer to **[]string** | The approved/denied capabilities in the path | [optional] 
+**Cb** | Pointer to **int32** |  | [optional] 
 **IsLimitAccess** | Pointer to **bool** | flag that indicate that this rule is allowed to be access RemainingAccess of times. | [optional] 
 **NumberOfAccessUsed** | Pointer to **int64** |  | [optional] 
 **NumberOfAllowedAccess** | Pointer to **int64** |  | [optional] 
@@ -82,6 +83,31 @@ SetCapabilities sets Capabilities field to given value.
 `func (o *PathRule) HasCapabilities() bool`
 
 HasCapabilities returns a boolean if a field has been set.
+
+### GetCb
+
+`func (o *PathRule) GetCb() int32`
+
+GetCb returns the Cb field if non-nil, zero value otherwise.
+
+### GetCbOk
+
+`func (o *PathRule) GetCbOk() (*int32, bool)`
+
+GetCbOk returns a tuple with the Cb field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCb
+
+`func (o *PathRule) SetCb(v int32)`
+
+SetCb sets Cb field to given value.
+
+### HasCb
+
+`func (o *PathRule) HasCb() bool`
+
+HasCb returns a boolean if a field has been set.
 
 ### GetIsLimitAccess
 

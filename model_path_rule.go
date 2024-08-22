@@ -20,6 +20,7 @@ type PathRule struct {
 	Assigners *[]RuleAssigner `json:"assigners,omitempty"`
 	// The approved/denied capabilities in the path
 	Capabilities *[]string `json:"capabilities,omitempty"`
+	Cb *int32 `json:"cb,omitempty"`
 	// flag that indicate that this rule is allowed to be access RemainingAccess of times.
 	IsLimitAccess *bool `json:"is_limit_access,omitempty"`
 	NumberOfAccessUsed *int64 `json:"number_of_access_used,omitempty"`
@@ -110,6 +111,38 @@ func (o *PathRule) HasCapabilities() bool {
 // SetCapabilities gets a reference to the given []string and assigns it to the Capabilities field.
 func (o *PathRule) SetCapabilities(v []string) {
 	o.Capabilities = &v
+}
+
+// GetCb returns the Cb field value if set, zero value otherwise.
+func (o *PathRule) GetCb() int32 {
+	if o == nil || o.Cb == nil {
+		var ret int32
+		return ret
+	}
+	return *o.Cb
+}
+
+// GetCbOk returns a tuple with the Cb field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PathRule) GetCbOk() (*int32, bool) {
+	if o == nil || o.Cb == nil {
+		return nil, false
+	}
+	return o.Cb, true
+}
+
+// HasCb returns a boolean if a field has been set.
+func (o *PathRule) HasCb() bool {
+	if o != nil && o.Cb != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCb gets a reference to the given int32 and assigns it to the Cb field.
+func (o *PathRule) SetCb(v int32) {
+	o.Cb = &v
 }
 
 // GetIsLimitAccess returns the IsLimitAccess field value if set, zero value otherwise.
@@ -343,6 +376,9 @@ func (o PathRule) MarshalJSON() ([]byte, error) {
 	}
 	if o.Capabilities != nil {
 		toSerialize["capabilities"] = o.Capabilities
+	}
+	if o.Cb != nil {
+		toSerialize["cb"] = o.Cb
 	}
 	if o.IsLimitAccess != nil {
 		toSerialize["is_limit_access"] = o.IsLimitAccess

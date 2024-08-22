@@ -29,6 +29,8 @@ type EventForwarderUpdateEmail struct {
 	EventTypes *[]string `json:"event-types,omitempty"`
 	// Event sources
 	GatewaysEventSourceLocations []string `json:"gateways-event-source-locations"`
+	// Set this option to include event errors details [true\\false]
+	IncludeError *string `json:"include-error,omitempty"`
 	// Items Event sources
 	ItemsEventSourceLocations *[]string `json:"items-event-source-locations,omitempty"`
 	// Set output format to JSON
@@ -260,6 +262,38 @@ func (o *EventForwarderUpdateEmail) GetGatewaysEventSourceLocationsOk() (*[]stri
 // SetGatewaysEventSourceLocations sets field value
 func (o *EventForwarderUpdateEmail) SetGatewaysEventSourceLocations(v []string) {
 	o.GatewaysEventSourceLocations = v
+}
+
+// GetIncludeError returns the IncludeError field value if set, zero value otherwise.
+func (o *EventForwarderUpdateEmail) GetIncludeError() string {
+	if o == nil || o.IncludeError == nil {
+		var ret string
+		return ret
+	}
+	return *o.IncludeError
+}
+
+// GetIncludeErrorOk returns a tuple with the IncludeError field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventForwarderUpdateEmail) GetIncludeErrorOk() (*string, bool) {
+	if o == nil || o.IncludeError == nil {
+		return nil, false
+	}
+	return o.IncludeError, true
+}
+
+// HasIncludeError returns a boolean if a field has been set.
+func (o *EventForwarderUpdateEmail) HasIncludeError() bool {
+	if o != nil && o.IncludeError != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIncludeError gets a reference to the given string and assigns it to the IncludeError field.
+func (o *EventForwarderUpdateEmail) SetIncludeError(v string) {
+	o.IncludeError = &v
 }
 
 // GetItemsEventSourceLocations returns the ItemsEventSourceLocations field value if set, zero value otherwise.
@@ -593,6 +627,9 @@ func (o EventForwarderUpdateEmail) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["gateways-event-source-locations"] = o.GatewaysEventSourceLocations
+	}
+	if o.IncludeError != nil {
+		toSerialize["include-error"] = o.IncludeError
 	}
 	if o.ItemsEventSourceLocations != nil {
 		toSerialize["items-event-source-locations"] = o.ItemsEventSourceLocations

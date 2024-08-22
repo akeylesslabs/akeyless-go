@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **RoleId** | Pointer to **[]string** | The list of role ids that the login is restricted to. | [optional] 
 **RoleName** | Pointer to **[]string** | The list of role names that the login is restricted to. | [optional] 
 **StsEndpoint** | Pointer to **string** | The sts URL. | [optional] 
+**UniqueIdentifier** | Pointer to **string** | A unique identifier to distinguish different users | [optional] 
 **UserId** | Pointer to **[]string** | The list of user ids that the login is restricted to. | [optional] 
 **UserName** | Pointer to **[]string** | The list of user names that the login is restricted to. | [optional] 
 
@@ -181,6 +182,31 @@ SetStsEndpoint sets StsEndpoint field to given value.
 `func (o *AWSIAMAccessRules) HasStsEndpoint() bool`
 
 HasStsEndpoint returns a boolean if a field has been set.
+
+### GetUniqueIdentifier
+
+`func (o *AWSIAMAccessRules) GetUniqueIdentifier() string`
+
+GetUniqueIdentifier returns the UniqueIdentifier field if non-nil, zero value otherwise.
+
+### GetUniqueIdentifierOk
+
+`func (o *AWSIAMAccessRules) GetUniqueIdentifierOk() (*string, bool)`
+
+GetUniqueIdentifierOk returns a tuple with the UniqueIdentifier field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUniqueIdentifier
+
+`func (o *AWSIAMAccessRules) SetUniqueIdentifier(v string)`
+
+SetUniqueIdentifier sets UniqueIdentifier field to given value.
+
+### HasUniqueIdentifier
+
+`func (o *AWSIAMAccessRules) HasUniqueIdentifier() bool`
+
+HasUniqueIdentifier returns a boolean if a field has been set.
 
 ### GetUserId
 
