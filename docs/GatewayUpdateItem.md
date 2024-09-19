@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **RmTag** | Pointer to **[]string** | List of the existent tags that will be removed from this item | [optional] 
 **RotatedPassword** | Pointer to **string** | rotated-username password (relevant only for rotator-type&#x3D;password) | [optional] 
 **RotatedUsername** | Pointer to **string** | username to be rotated, if selected \\\&quot;use-self-creds\\\&quot; at rotator-creds-type, this username will try to rotate it&#39;s own password, if \\\&quot;use-target-creds\\\&quot; is selected, target credentials will be use to rotate the rotated-password (relevant only for rotator-type&#x3D;password) | [optional] 
+**RotationEventIn** | Pointer to **[]string** | How many days before the rotation of the item would you like to be notified | [optional] 
 **RotationHour** | Pointer to **int32** | The Rotation Hour | [optional] [default to 0]
 **RotationInterval** | Pointer to **string** | The number of days to wait between every automatic key rotation (1-365) | [optional] 
 **RotatorCredsType** | Pointer to **string** | The rotation credentials type | [optional] [default to "use-self-creds"]
@@ -622,6 +623,31 @@ SetRotatedUsername sets RotatedUsername field to given value.
 `func (o *GatewayUpdateItem) HasRotatedUsername() bool`
 
 HasRotatedUsername returns a boolean if a field has been set.
+
+### GetRotationEventIn
+
+`func (o *GatewayUpdateItem) GetRotationEventIn() []string`
+
+GetRotationEventIn returns the RotationEventIn field if non-nil, zero value otherwise.
+
+### GetRotationEventInOk
+
+`func (o *GatewayUpdateItem) GetRotationEventInOk() (*[]string, bool)`
+
+GetRotationEventInOk returns a tuple with the RotationEventIn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotationEventIn
+
+`func (o *GatewayUpdateItem) SetRotationEventIn(v []string)`
+
+SetRotationEventIn sets RotationEventIn field to given value.
+
+### HasRotationEventIn
+
+`func (o *GatewayUpdateItem) HasRotationEventIn() bool`
+
+HasRotationEventIn returns a boolean if a field has been set.
 
 ### GetRotationHour
 

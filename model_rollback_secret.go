@@ -17,6 +17,8 @@ import (
 
 // RollbackSecret struct for RollbackSecret
 type RollbackSecret struct {
+	// for personal password manager
+	Accessibility *string `json:"accessibility,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Secret name
@@ -35,6 +37,8 @@ type RollbackSecret struct {
 // will change when the set of required properties is changed
 func NewRollbackSecret(name string, oldVersion int32, ) *RollbackSecret {
 	this := RollbackSecret{}
+	var accessibility string = "regular"
+	this.Accessibility = &accessibility
 	var json bool = false
 	this.Json = &json
 	this.Name = name
@@ -47,9 +51,43 @@ func NewRollbackSecret(name string, oldVersion int32, ) *RollbackSecret {
 // but it doesn't guarantee that properties required by API are set
 func NewRollbackSecretWithDefaults() *RollbackSecret {
 	this := RollbackSecret{}
+	var accessibility string = "regular"
+	this.Accessibility = &accessibility
 	var json bool = false
 	this.Json = &json
 	return &this
+}
+
+// GetAccessibility returns the Accessibility field value if set, zero value otherwise.
+func (o *RollbackSecret) GetAccessibility() string {
+	if o == nil || o.Accessibility == nil {
+		var ret string
+		return ret
+	}
+	return *o.Accessibility
+}
+
+// GetAccessibilityOk returns a tuple with the Accessibility field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RollbackSecret) GetAccessibilityOk() (*string, bool) {
+	if o == nil || o.Accessibility == nil {
+		return nil, false
+	}
+	return o.Accessibility, true
+}
+
+// HasAccessibility returns a boolean if a field has been set.
+func (o *RollbackSecret) HasAccessibility() bool {
+	if o != nil && o.Accessibility != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessibility gets a reference to the given string and assigns it to the Accessibility field.
+func (o *RollbackSecret) SetAccessibility(v string) {
+	o.Accessibility = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -198,6 +236,9 @@ func (o *RollbackSecret) SetUidToken(v string) {
 
 func (o RollbackSecret) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Accessibility != nil {
+		toSerialize["accessibility"] = o.Accessibility
+	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json
 	}

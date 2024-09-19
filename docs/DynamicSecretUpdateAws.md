@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **EnableAdminRotation** | Pointer to **bool** | Automatic admin credentials rotation | [optional] [default to false]
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
-**NewName** | Pointer to **string** | Dynamic secret new name | [optional] 
+**NewName** | Pointer to **string** | Dynamic secret name | [optional] 
 **PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **Region** | Pointer to **string** | Region | [optional] [default to "us-east-2"]

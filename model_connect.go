@@ -17,8 +17,6 @@ import (
 
 // Connect Connect is a command that performs secure remote access
 type Connect struct {
-	// todo - enable when gw-sra unification is done The Gateway URL (configuration management) address, e.g. http://localhost:8000
-	BastionGatewayUrl *string `json:"BastionGatewayUrl,omitempty"`
 	Helper *map[string]interface{} `json:"Helper,omitempty"`
 	// used to override .akeyless-connect.rc in tests
 	RcFileOverride *string `json:"RcFileOverride,omitempty"`
@@ -32,6 +30,8 @@ type Connect struct {
 	BastionCtrlSubdomain *string `json:"bastion-ctrl-subdomain,omitempty"`
 	// The Akeyless certificate issuer name
 	CertIssuerName *string `json:"cert-issuer-name,omitempty"`
+	// The Gateway URL (configuration management) address, e.g. http://localhost:8000
+	GatewayUrl *string `json:"gateway-url,omitempty"`
 	// The file from which the identity (private key) for public key authentication is read
 	IdentityFile *string `json:"identity-file,omitempty"`
 	// Set output format to JSON
@@ -88,38 +88,6 @@ func NewConnectWithDefaults() *Connect {
 	var sshLegacySigningAlg bool = false
 	this.SshLegacySigningAlg = &sshLegacySigningAlg
 	return &this
-}
-
-// GetBastionGatewayUrl returns the BastionGatewayUrl field value if set, zero value otherwise.
-func (o *Connect) GetBastionGatewayUrl() string {
-	if o == nil || o.BastionGatewayUrl == nil {
-		var ret string
-		return ret
-	}
-	return *o.BastionGatewayUrl
-}
-
-// GetBastionGatewayUrlOk returns a tuple with the BastionGatewayUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Connect) GetBastionGatewayUrlOk() (*string, bool) {
-	if o == nil || o.BastionGatewayUrl == nil {
-		return nil, false
-	}
-	return o.BastionGatewayUrl, true
-}
-
-// HasBastionGatewayUrl returns a boolean if a field has been set.
-func (o *Connect) HasBastionGatewayUrl() bool {
-	if o != nil && o.BastionGatewayUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBastionGatewayUrl gets a reference to the given string and assigns it to the BastionGatewayUrl field.
-func (o *Connect) SetBastionGatewayUrl(v string) {
-	o.BastionGatewayUrl = &v
 }
 
 // GetHelper returns the Helper field value if set, zero value otherwise.
@@ -344,6 +312,38 @@ func (o *Connect) HasCertIssuerName() bool {
 // SetCertIssuerName gets a reference to the given string and assigns it to the CertIssuerName field.
 func (o *Connect) SetCertIssuerName(v string) {
 	o.CertIssuerName = &v
+}
+
+// GetGatewayUrl returns the GatewayUrl field value if set, zero value otherwise.
+func (o *Connect) GetGatewayUrl() string {
+	if o == nil || o.GatewayUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.GatewayUrl
+}
+
+// GetGatewayUrlOk returns a tuple with the GatewayUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Connect) GetGatewayUrlOk() (*string, bool) {
+	if o == nil || o.GatewayUrl == nil {
+		return nil, false
+	}
+	return o.GatewayUrl, true
+}
+
+// HasGatewayUrl returns a boolean if a field has been set.
+func (o *Connect) HasGatewayUrl() bool {
+	if o != nil && o.GatewayUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGatewayUrl gets a reference to the given string and assigns it to the GatewayUrl field.
+func (o *Connect) SetGatewayUrl(v string) {
+	o.GatewayUrl = &v
 }
 
 // GetIdentityFile returns the IdentityFile field value if set, zero value otherwise.
@@ -732,9 +732,6 @@ func (o *Connect) SetViaBastion(v string) {
 
 func (o Connect) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.BastionGatewayUrl != nil {
-		toSerialize["BastionGatewayUrl"] = o.BastionGatewayUrl
-	}
 	if o.Helper != nil {
 		toSerialize["Helper"] = o.Helper
 	}
@@ -755,6 +752,9 @@ func (o Connect) MarshalJSON() ([]byte, error) {
 	}
 	if o.CertIssuerName != nil {
 		toSerialize["cert-issuer-name"] = o.CertIssuerName
+	}
+	if o.GatewayUrl != nil {
+		toSerialize["gateway-url"] = o.GatewayUrl
 	}
 	if o.IdentityFile != nil {
 		toSerialize["identity-file"] = o.IdentityFile

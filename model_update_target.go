@@ -27,7 +27,7 @@ type UpdateTarget struct {
 	Name string `json:"name"`
 	// Deprecated - use description
 	NewComment *string `json:"new-comment,omitempty"`
-	// New Target name
+	// New target name
 	NewName *string `json:"new-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`

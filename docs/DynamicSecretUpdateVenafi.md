@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **EnableAdminRotation** | Pointer to **bool** | Automatic admin credentials rotation | [optional] [default to false]
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
-**NewName** | Pointer to **string** | Dynamic secret new name | [optional] 
+**NewName** | Pointer to **string** | Dynamic secret name | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **RootFirstInChain** | Pointer to **bool** | Root first in chain | [optional] 
 **SignUsingAkeylessPki** | Pointer to **bool** | Use Akeyless PKI issuer or Venafi issuer | [optional] 

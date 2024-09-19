@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BastionGatewayUrl** | Pointer to **string** | todo - enable when gw-sra unification is done The Gateway URL (configuration management) address, e.g. http://localhost:8000 | [optional] 
 **Helper** | Pointer to **map[string]interface{}** |  | [optional] 
 **RcFileOverride** | Pointer to **string** | used to override .akeyless-connect.rc in tests | [optional] 
 **BastionCtrlPath** | Pointer to **string** | The Bastion API path | [optional] 
@@ -12,6 +11,7 @@ Name | Type | Description | Notes
 **BastionCtrlProto** | Pointer to **string** | The Bastion API protocol | [optional] [default to "http"]
 **BastionCtrlSubdomain** | Pointer to **string** | The Bastion API prefix | [optional] 
 **CertIssuerName** | Pointer to **string** | The Akeyless certificate issuer name | [optional] 
+**GatewayUrl** | Pointer to **string** | The Gateway URL (configuration management) address, e.g. http://localhost:8000 | [optional] 
 **IdentityFile** | Pointer to **string** | The file from which the identity (private key) for public key authentication is read | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Justification** | Pointer to **string** |  | [optional] 
@@ -43,31 +43,6 @@ will change when the set of required properties is changed
 NewConnectWithDefaults instantiates a new Connect object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetBastionGatewayUrl
-
-`func (o *Connect) GetBastionGatewayUrl() string`
-
-GetBastionGatewayUrl returns the BastionGatewayUrl field if non-nil, zero value otherwise.
-
-### GetBastionGatewayUrlOk
-
-`func (o *Connect) GetBastionGatewayUrlOk() (*string, bool)`
-
-GetBastionGatewayUrlOk returns a tuple with the BastionGatewayUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBastionGatewayUrl
-
-`func (o *Connect) SetBastionGatewayUrl(v string)`
-
-SetBastionGatewayUrl sets BastionGatewayUrl field to given value.
-
-### HasBastionGatewayUrl
-
-`func (o *Connect) HasBastionGatewayUrl() bool`
-
-HasBastionGatewayUrl returns a boolean if a field has been set.
 
 ### GetHelper
 
@@ -243,6 +218,31 @@ SetCertIssuerName sets CertIssuerName field to given value.
 `func (o *Connect) HasCertIssuerName() bool`
 
 HasCertIssuerName returns a boolean if a field has been set.
+
+### GetGatewayUrl
+
+`func (o *Connect) GetGatewayUrl() string`
+
+GetGatewayUrl returns the GatewayUrl field if non-nil, zero value otherwise.
+
+### GetGatewayUrlOk
+
+`func (o *Connect) GetGatewayUrlOk() (*string, bool)`
+
+GetGatewayUrlOk returns a tuple with the GatewayUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGatewayUrl
+
+`func (o *Connect) SetGatewayUrl(v string)`
+
+SetGatewayUrl sets GatewayUrl field to given value.
+
+### HasGatewayUrl
+
+`func (o *Connect) HasGatewayUrl() bool`
+
+HasGatewayUrl returns a boolean if a field has been set.
 
 ### GetIdentityFile
 

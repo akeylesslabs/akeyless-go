@@ -30,6 +30,8 @@ type UpdateItem struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
+	// How many days before the expiration of the certificate would you like to be notified.
+	ExpirationEventIn *[]string `json:"expiration-event-in,omitempty"`
 	// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret
 	HostProvider *string `json:"host-provider,omitempty"`
 	// Set output format to JSON
@@ -370,6 +372,38 @@ func (o *UpdateItem) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *UpdateItem) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetExpirationEventIn returns the ExpirationEventIn field value if set, zero value otherwise.
+func (o *UpdateItem) GetExpirationEventIn() []string {
+	if o == nil || o.ExpirationEventIn == nil {
+		var ret []string
+		return ret
+	}
+	return *o.ExpirationEventIn
+}
+
+// GetExpirationEventInOk returns a tuple with the ExpirationEventIn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateItem) GetExpirationEventInOk() (*[]string, bool) {
+	if o == nil || o.ExpirationEventIn == nil {
+		return nil, false
+	}
+	return o.ExpirationEventIn, true
+}
+
+// HasExpirationEventIn returns a boolean if a field has been set.
+func (o *UpdateItem) HasExpirationEventIn() bool {
+	if o != nil && o.ExpirationEventIn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExpirationEventIn gets a reference to the given []string and assigns it to the ExpirationEventIn field.
+func (o *UpdateItem) SetExpirationEventIn(v []string) {
+	o.ExpirationEventIn = &v
 }
 
 // GetHostProvider returns the HostProvider field value if set, zero value otherwise.
@@ -1506,6 +1540,9 @@ func (o UpdateItem) MarshalJSON() ([]byte, error) {
 	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
+	}
+	if o.ExpirationEventIn != nil {
+		toSerialize["expiration-event-in"] = o.ExpirationEventIn
 	}
 	if o.HostProvider != nil {
 		toSerialize["host-provider"] = o.HostProvider

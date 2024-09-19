@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **MaxVersions** | Pointer to **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Name** | **string** | Rotated secret name | 
 **PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
+**RotationEventIn** | Pointer to **[]string** | How many days before the rotation of the item would you like to be notified | [optional] 
 **RotationHour** | Pointer to **int32** | The Hour of the rotation in UTC | [optional] 
 **RotationInterval** | Pointer to **string** | The number of days to wait between every automatic key rotation (1-365) | [optional] 
 **RotatorType** | **string** | The rotator type. options: [target/service-account-rotator] | 
@@ -337,6 +338,31 @@ SetPasswordLength sets PasswordLength field to given value.
 `func (o *RotatedSecretCreateGcp) HasPasswordLength() bool`
 
 HasPasswordLength returns a boolean if a field has been set.
+
+### GetRotationEventIn
+
+`func (o *RotatedSecretCreateGcp) GetRotationEventIn() []string`
+
+GetRotationEventIn returns the RotationEventIn field if non-nil, zero value otherwise.
+
+### GetRotationEventInOk
+
+`func (o *RotatedSecretCreateGcp) GetRotationEventInOk() (*[]string, bool)`
+
+GetRotationEventInOk returns a tuple with the RotationEventIn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotationEventIn
+
+`func (o *RotatedSecretCreateGcp) SetRotationEventIn(v []string)`
+
+SetRotationEventIn sets RotationEventIn field to given value.
+
+### HasRotationEventIn
+
+`func (o *RotatedSecretCreateGcp) HasRotationEventIn() bool`
+
+HasRotationEventIn returns a boolean if a field has been set.
 
 ### GetRotationHour
 

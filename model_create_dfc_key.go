@@ -19,6 +19,8 @@ import (
 type CreateDFCKey struct {
 	// DFCKey type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, AES128CBC, AES256CBC, RSA1024, RSA2048, RSA3072, RSA4096]
 	Alg string `json:"alg"`
+	// Whether to automatically rotate every rotation_interval days, or disable existing automatic rotation [true/false]
+	AutoRotate *string `json:"auto-rotate,omitempty"`
 	// Common name for the generated certificate. Relevant only for generate-self-signed-certificate.
 	CertificateCommonName *string `json:"certificate-common-name,omitempty"`
 	// Country name for the generated certificate. Relevant only for generate-self-signed-certificate.
@@ -42,6 +44,8 @@ type CreateDFCKey struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
+	// How many days before the expiration of the certificate would you like to be notified.
+	ExpirationEventIn *[]string `json:"expiration-event-in,omitempty"`
 	// Whether to generate a self signed certificate with the key. If set, --certificate-ttl must be provided.
 	GenerateSelfSignedCertificate *bool `json:"generate-self-signed-certificate,omitempty"`
 	// Set output format to JSON
@@ -50,6 +54,10 @@ type CreateDFCKey struct {
 	Metadata *string `json:"metadata,omitempty"`
 	// DFCKey name
 	Name string `json:"name"`
+	// How many days before the rotation of the item would you like to be notified
+	RotationEventIn *[]string `json:"rotation-event-in,omitempty"`
+	// The number of days to wait between every automatic rotation (7-365)
+	RotationInterval *string `json:"rotation-interval,omitempty"`
 	// The number of fragments that the item will be split into (not includes customer fragment)
 	SplitLevel *int64 `json:"split-level,omitempty"`
 	// List of the tags attached to this DFC key
@@ -109,6 +117,38 @@ func (o *CreateDFCKey) GetAlgOk() (*string, bool) {
 // SetAlg sets field value
 func (o *CreateDFCKey) SetAlg(v string) {
 	o.Alg = v
+}
+
+// GetAutoRotate returns the AutoRotate field value if set, zero value otherwise.
+func (o *CreateDFCKey) GetAutoRotate() string {
+	if o == nil || o.AutoRotate == nil {
+		var ret string
+		return ret
+	}
+	return *o.AutoRotate
+}
+
+// GetAutoRotateOk returns a tuple with the AutoRotate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDFCKey) GetAutoRotateOk() (*string, bool) {
+	if o == nil || o.AutoRotate == nil {
+		return nil, false
+	}
+	return o.AutoRotate, true
+}
+
+// HasAutoRotate returns a boolean if a field has been set.
+func (o *CreateDFCKey) HasAutoRotate() bool {
+	if o != nil && o.AutoRotate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoRotate gets a reference to the given string and assigns it to the AutoRotate field.
+func (o *CreateDFCKey) SetAutoRotate(v string) {
+	o.AutoRotate = &v
 }
 
 // GetCertificateCommonName returns the CertificateCommonName field value if set, zero value otherwise.
@@ -495,6 +535,38 @@ func (o *CreateDFCKey) SetDescription(v string) {
 	o.Description = &v
 }
 
+// GetExpirationEventIn returns the ExpirationEventIn field value if set, zero value otherwise.
+func (o *CreateDFCKey) GetExpirationEventIn() []string {
+	if o == nil || o.ExpirationEventIn == nil {
+		var ret []string
+		return ret
+	}
+	return *o.ExpirationEventIn
+}
+
+// GetExpirationEventInOk returns a tuple with the ExpirationEventIn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDFCKey) GetExpirationEventInOk() (*[]string, bool) {
+	if o == nil || o.ExpirationEventIn == nil {
+		return nil, false
+	}
+	return o.ExpirationEventIn, true
+}
+
+// HasExpirationEventIn returns a boolean if a field has been set.
+func (o *CreateDFCKey) HasExpirationEventIn() bool {
+	if o != nil && o.ExpirationEventIn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExpirationEventIn gets a reference to the given []string and assigns it to the ExpirationEventIn field.
+func (o *CreateDFCKey) SetExpirationEventIn(v []string) {
+	o.ExpirationEventIn = &v
+}
+
 // GetGenerateSelfSignedCertificate returns the GenerateSelfSignedCertificate field value if set, zero value otherwise.
 func (o *CreateDFCKey) GetGenerateSelfSignedCertificate() bool {
 	if o == nil || o.GenerateSelfSignedCertificate == nil {
@@ -613,6 +685,70 @@ func (o *CreateDFCKey) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *CreateDFCKey) SetName(v string) {
 	o.Name = v
+}
+
+// GetRotationEventIn returns the RotationEventIn field value if set, zero value otherwise.
+func (o *CreateDFCKey) GetRotationEventIn() []string {
+	if o == nil || o.RotationEventIn == nil {
+		var ret []string
+		return ret
+	}
+	return *o.RotationEventIn
+}
+
+// GetRotationEventInOk returns a tuple with the RotationEventIn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDFCKey) GetRotationEventInOk() (*[]string, bool) {
+	if o == nil || o.RotationEventIn == nil {
+		return nil, false
+	}
+	return o.RotationEventIn, true
+}
+
+// HasRotationEventIn returns a boolean if a field has been set.
+func (o *CreateDFCKey) HasRotationEventIn() bool {
+	if o != nil && o.RotationEventIn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRotationEventIn gets a reference to the given []string and assigns it to the RotationEventIn field.
+func (o *CreateDFCKey) SetRotationEventIn(v []string) {
+	o.RotationEventIn = &v
+}
+
+// GetRotationInterval returns the RotationInterval field value if set, zero value otherwise.
+func (o *CreateDFCKey) GetRotationInterval() string {
+	if o == nil || o.RotationInterval == nil {
+		var ret string
+		return ret
+	}
+	return *o.RotationInterval
+}
+
+// GetRotationIntervalOk returns a tuple with the RotationInterval field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDFCKey) GetRotationIntervalOk() (*string, bool) {
+	if o == nil || o.RotationInterval == nil {
+		return nil, false
+	}
+	return o.RotationInterval, true
+}
+
+// HasRotationInterval returns a boolean if a field has been set.
+func (o *CreateDFCKey) HasRotationInterval() bool {
+	if o != nil && o.RotationInterval != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRotationInterval gets a reference to the given string and assigns it to the RotationInterval field.
+func (o *CreateDFCKey) SetRotationInterval(v string) {
+	o.RotationInterval = &v
 }
 
 // GetSplitLevel returns the SplitLevel field value if set, zero value otherwise.
@@ -748,6 +884,9 @@ func (o CreateDFCKey) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["alg"] = o.Alg
 	}
+	if o.AutoRotate != nil {
+		toSerialize["auto-rotate"] = o.AutoRotate
+	}
 	if o.CertificateCommonName != nil {
 		toSerialize["certificate-common-name"] = o.CertificateCommonName
 	}
@@ -784,6 +923,9 @@ func (o CreateDFCKey) MarshalJSON() ([]byte, error) {
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
 	}
+	if o.ExpirationEventIn != nil {
+		toSerialize["expiration-event-in"] = o.ExpirationEventIn
+	}
 	if o.GenerateSelfSignedCertificate != nil {
 		toSerialize["generate-self-signed-certificate"] = o.GenerateSelfSignedCertificate
 	}
@@ -795,6 +937,12 @@ func (o CreateDFCKey) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.RotationEventIn != nil {
+		toSerialize["rotation-event-in"] = o.RotationEventIn
+	}
+	if o.RotationInterval != nil {
+		toSerialize["rotation-interval"] = o.RotationInterval
 	}
 	if o.SplitLevel != nil {
 		toSerialize["split-level"] = o.SplitLevel

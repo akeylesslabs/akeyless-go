@@ -44,6 +44,8 @@ type RotatedSecretCreateLdap struct {
 	RotatedPassword *string `json:"rotated-password,omitempty"`
 	// username to be rotated, if selected use-self-creds at rotator-creds-type, this username will try to rotate it's own password, if use-target-creds is selected, target credentials will be use to rotate the rotated-password (relevant only for rotator-type=ldap)
 	RotatedUsername *string `json:"rotated-username,omitempty"`
+	// How many days before the rotation of the item would you like to be notified
+	RotationEventIn *[]string `json:"rotation-event-in,omitempty"`
 	// The Hour of the rotation in UTC
 	RotationHour *int32 `json:"rotation-hour,omitempty"`
 	// The number of days to wait between every automatic key rotation (1-365)
@@ -566,6 +568,38 @@ func (o *RotatedSecretCreateLdap) HasRotatedUsername() bool {
 // SetRotatedUsername gets a reference to the given string and assigns it to the RotatedUsername field.
 func (o *RotatedSecretCreateLdap) SetRotatedUsername(v string) {
 	o.RotatedUsername = &v
+}
+
+// GetRotationEventIn returns the RotationEventIn field value if set, zero value otherwise.
+func (o *RotatedSecretCreateLdap) GetRotationEventIn() []string {
+	if o == nil || o.RotationEventIn == nil {
+		var ret []string
+		return ret
+	}
+	return *o.RotationEventIn
+}
+
+// GetRotationEventInOk returns a tuple with the RotationEventIn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateLdap) GetRotationEventInOk() (*[]string, bool) {
+	if o == nil || o.RotationEventIn == nil {
+		return nil, false
+	}
+	return o.RotationEventIn, true
+}
+
+// HasRotationEventIn returns a boolean if a field has been set.
+func (o *RotatedSecretCreateLdap) HasRotationEventIn() bool {
+	if o != nil && o.RotationEventIn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRotationEventIn gets a reference to the given []string and assigns it to the RotationEventIn field.
+func (o *RotatedSecretCreateLdap) SetRotationEventIn(v []string) {
+	o.RotationEventIn = &v
 }
 
 // GetRotationHour returns the RotationHour field value if set, zero value otherwise.
@@ -1139,6 +1173,9 @@ func (o RotatedSecretCreateLdap) MarshalJSON() ([]byte, error) {
 	}
 	if o.RotatedUsername != nil {
 		toSerialize["rotated-username"] = o.RotatedUsername
+	}
+	if o.RotationEventIn != nil {
+		toSerialize["rotation-event-in"] = o.RotationEventIn
 	}
 	if o.RotationHour != nil {
 		toSerialize["rotation-hour"] = o.RotationHour

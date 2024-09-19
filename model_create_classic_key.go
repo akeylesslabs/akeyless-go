@@ -19,6 +19,8 @@ import (
 type CreateClassicKey struct {
 	// Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384, GPG]
 	Alg string `json:"alg"`
+	// Whether to automatically rotate every rotation_interval days, or disable existing automatic rotation [true/false]
+	AutoRotate *string `json:"auto-rotate,omitempty"`
 	// Certificate in a PEM format.
 	CertFileData *string `json:"cert-file-data,omitempty"`
 	// Common name for the generated certificate. Relevant only for generate-self-signed-certificate.
@@ -42,6 +44,8 @@ type CreateClassicKey struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
+	// How many days before the expiration of the certificate would you like to be notified.
+	ExpirationEventIn *[]string `json:"expiration-event-in,omitempty"`
 	// Whether to generate a self signed certificate with the key. If set, --certificate-ttl must be provided.
 	GenerateSelfSignedCertificate *bool `json:"generate-self-signed-certificate,omitempty"`
 	// gpg alg: Relevant only if GPG key type selected; options: [RSA1024, RSA2048, RSA3072, RSA4096, Ed25519]
@@ -56,6 +60,10 @@ type CreateClassicKey struct {
 	Name string `json:"name"`
 	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
 	ProtectionKeyName *string `json:"protection-key-name,omitempty"`
+	// How many days before the rotation of the item would you like to be notified
+	RotationEventIn *[]string `json:"rotation-event-in,omitempty"`
+	// The number of days to wait between every automatic rotation (1-365)
+	RotationInterval *string `json:"rotation-interval,omitempty"`
 	// Add tags attached to this object
 	Tags *[]string `json:"tags,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -109,6 +117,38 @@ func (o *CreateClassicKey) GetAlgOk() (*string, bool) {
 // SetAlg sets field value
 func (o *CreateClassicKey) SetAlg(v string) {
 	o.Alg = v
+}
+
+// GetAutoRotate returns the AutoRotate field value if set, zero value otherwise.
+func (o *CreateClassicKey) GetAutoRotate() string {
+	if o == nil || o.AutoRotate == nil {
+		var ret string
+		return ret
+	}
+	return *o.AutoRotate
+}
+
+// GetAutoRotateOk returns a tuple with the AutoRotate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateClassicKey) GetAutoRotateOk() (*string, bool) {
+	if o == nil || o.AutoRotate == nil {
+		return nil, false
+	}
+	return o.AutoRotate, true
+}
+
+// HasAutoRotate returns a boolean if a field has been set.
+func (o *CreateClassicKey) HasAutoRotate() bool {
+	if o != nil && o.AutoRotate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoRotate gets a reference to the given string and assigns it to the AutoRotate field.
+func (o *CreateClassicKey) SetAutoRotate(v string) {
+	o.AutoRotate = &v
 }
 
 // GetCertFileData returns the CertFileData field value if set, zero value otherwise.
@@ -495,6 +535,38 @@ func (o *CreateClassicKey) SetDescription(v string) {
 	o.Description = &v
 }
 
+// GetExpirationEventIn returns the ExpirationEventIn field value if set, zero value otherwise.
+func (o *CreateClassicKey) GetExpirationEventIn() []string {
+	if o == nil || o.ExpirationEventIn == nil {
+		var ret []string
+		return ret
+	}
+	return *o.ExpirationEventIn
+}
+
+// GetExpirationEventInOk returns a tuple with the ExpirationEventIn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateClassicKey) GetExpirationEventInOk() (*[]string, bool) {
+	if o == nil || o.ExpirationEventIn == nil {
+		return nil, false
+	}
+	return o.ExpirationEventIn, true
+}
+
+// HasExpirationEventIn returns a boolean if a field has been set.
+func (o *CreateClassicKey) HasExpirationEventIn() bool {
+	if o != nil && o.ExpirationEventIn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExpirationEventIn gets a reference to the given []string and assigns it to the ExpirationEventIn field.
+func (o *CreateClassicKey) SetExpirationEventIn(v []string) {
+	o.ExpirationEventIn = &v
+}
+
 // GetGenerateSelfSignedCertificate returns the GenerateSelfSignedCertificate field value if set, zero value otherwise.
 func (o *CreateClassicKey) GetGenerateSelfSignedCertificate() bool {
 	if o == nil || o.GenerateSelfSignedCertificate == nil {
@@ -711,6 +783,70 @@ func (o *CreateClassicKey) SetProtectionKeyName(v string) {
 	o.ProtectionKeyName = &v
 }
 
+// GetRotationEventIn returns the RotationEventIn field value if set, zero value otherwise.
+func (o *CreateClassicKey) GetRotationEventIn() []string {
+	if o == nil || o.RotationEventIn == nil {
+		var ret []string
+		return ret
+	}
+	return *o.RotationEventIn
+}
+
+// GetRotationEventInOk returns a tuple with the RotationEventIn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateClassicKey) GetRotationEventInOk() (*[]string, bool) {
+	if o == nil || o.RotationEventIn == nil {
+		return nil, false
+	}
+	return o.RotationEventIn, true
+}
+
+// HasRotationEventIn returns a boolean if a field has been set.
+func (o *CreateClassicKey) HasRotationEventIn() bool {
+	if o != nil && o.RotationEventIn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRotationEventIn gets a reference to the given []string and assigns it to the RotationEventIn field.
+func (o *CreateClassicKey) SetRotationEventIn(v []string) {
+	o.RotationEventIn = &v
+}
+
+// GetRotationInterval returns the RotationInterval field value if set, zero value otherwise.
+func (o *CreateClassicKey) GetRotationInterval() string {
+	if o == nil || o.RotationInterval == nil {
+		var ret string
+		return ret
+	}
+	return *o.RotationInterval
+}
+
+// GetRotationIntervalOk returns a tuple with the RotationInterval field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateClassicKey) GetRotationIntervalOk() (*string, bool) {
+	if o == nil || o.RotationInterval == nil {
+		return nil, false
+	}
+	return o.RotationInterval, true
+}
+
+// HasRotationInterval returns a boolean if a field has been set.
+func (o *CreateClassicKey) HasRotationInterval() bool {
+	if o != nil && o.RotationInterval != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRotationInterval gets a reference to the given string and assigns it to the RotationInterval field.
+func (o *CreateClassicKey) SetRotationInterval(v string) {
+	o.RotationInterval = &v
+}
+
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *CreateClassicKey) GetTags() []string {
 	if o == nil || o.Tags == nil {
@@ -812,6 +948,9 @@ func (o CreateClassicKey) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["alg"] = o.Alg
 	}
+	if o.AutoRotate != nil {
+		toSerialize["auto-rotate"] = o.AutoRotate
+	}
 	if o.CertFileData != nil {
 		toSerialize["cert-file-data"] = o.CertFileData
 	}
@@ -848,6 +987,9 @@ func (o CreateClassicKey) MarshalJSON() ([]byte, error) {
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
 	}
+	if o.ExpirationEventIn != nil {
+		toSerialize["expiration-event-in"] = o.ExpirationEventIn
+	}
 	if o.GenerateSelfSignedCertificate != nil {
 		toSerialize["generate-self-signed-certificate"] = o.GenerateSelfSignedCertificate
 	}
@@ -868,6 +1010,12 @@ func (o CreateClassicKey) MarshalJSON() ([]byte, error) {
 	}
 	if o.ProtectionKeyName != nil {
 		toSerialize["protection-key-name"] = o.ProtectionKeyName
+	}
+	if o.RotationEventIn != nil {
+		toSerialize["rotation-event-in"] = o.RotationEventIn
+	}
+	if o.RotationInterval != nil {
+		toSerialize["rotation-interval"] = o.RotationInterval
 	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags

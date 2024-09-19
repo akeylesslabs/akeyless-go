@@ -53,6 +53,8 @@ type RotatedSecretUpdateAws struct {
 	RmTag *[]string `json:"rm-tag,omitempty"`
 	// Rotate the value of the secret after SRA session ends [true/false]
 	RotateAfterDisconnect *string `json:"rotate-after-disconnect,omitempty"`
+	// How many days before the rotation of the item would you like to be notified
+	RotationEventIn *[]string `json:"rotation-event-in,omitempty"`
 	// The Hour of the rotation in UTC
 	RotationHour *int32 `json:"rotation-hour,omitempty"`
 	// The number of days to wait between every automatic key rotation (1-365)
@@ -677,6 +679,38 @@ func (o *RotatedSecretUpdateAws) SetRotateAfterDisconnect(v string) {
 	o.RotateAfterDisconnect = &v
 }
 
+// GetRotationEventIn returns the RotationEventIn field value if set, zero value otherwise.
+func (o *RotatedSecretUpdateAws) GetRotationEventIn() []string {
+	if o == nil || o.RotationEventIn == nil {
+		var ret []string
+		return ret
+	}
+	return *o.RotationEventIn
+}
+
+// GetRotationEventInOk returns a tuple with the RotationEventIn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretUpdateAws) GetRotationEventInOk() (*[]string, bool) {
+	if o == nil || o.RotationEventIn == nil {
+		return nil, false
+	}
+	return o.RotationEventIn, true
+}
+
+// HasRotationEventIn returns a boolean if a field has been set.
+func (o *RotatedSecretUpdateAws) HasRotationEventIn() bool {
+	if o != nil && o.RotationEventIn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRotationEventIn gets a reference to the given []string and assigns it to the RotationEventIn field.
+func (o *RotatedSecretUpdateAws) SetRotationEventIn(v []string) {
+	o.RotationEventIn = &v
+}
+
 // GetRotationHour returns the RotationHour field value if set, zero value otherwise.
 func (o *RotatedSecretUpdateAws) GetRotationHour() int32 {
 	if o == nil || o.RotationHour == nil {
@@ -988,6 +1022,9 @@ func (o RotatedSecretUpdateAws) MarshalJSON() ([]byte, error) {
 	}
 	if o.RotateAfterDisconnect != nil {
 		toSerialize["rotate-after-disconnect"] = o.RotateAfterDisconnect
+	}
+	if o.RotationEventIn != nil {
+		toSerialize["rotation-event-in"] = o.RotationEventIn
 	}
 	if o.RotationHour != nil {
 		toSerialize["rotation-hour"] = o.RotationHour

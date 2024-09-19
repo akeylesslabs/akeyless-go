@@ -25,7 +25,7 @@ type DynamicSecretUpdatePing struct {
 	Json *bool `json:"json,omitempty"`
 	// Dynamic secret name
 	Name string `json:"name"`
-	// Dynamic secret new name
+	// Dynamic secret name
 	NewName *string `json:"new-name,omitempty"`
 	// Ping Federate administrative port
 	PingAdministrativePort *string `json:"ping-administrative-port,omitempty"`

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Alg** | **string** | Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384, GPG] | 
+**AutoRotate** | Pointer to **string** | Whether to automatically rotate every rotation_interval days, or disable existing automatic rotation [true/false] | [optional] 
 **CertFileData** | Pointer to **string** | Certificate in a PEM format. | [optional] 
 **CertificateCommonName** | Pointer to **string** | Common name for the generated certificate. Relevant only for generate-self-signed-certificate. | [optional] 
 **CertificateCountry** | Pointer to **string** | Country name for the generated certificate. Relevant only for generate-self-signed-certificate. | [optional] 
@@ -17,6 +18,7 @@ Name | Type | Description | Notes
 **ConfFileData** | Pointer to **string** | The csr config data in base64 encoding | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
+**ExpirationEventIn** | Pointer to **[]string** | How many days before the expiration of the certificate would you like to be notified. | [optional] 
 **GenerateSelfSignedCertificate** | Pointer to **bool** | Whether to generate a self signed certificate with the key. If set, --certificate-ttl must be provided. | [optional] 
 **GpgAlg** | Pointer to **string** | gpg alg: Relevant only if GPG key type selected; options: [RSA1024, RSA2048, RSA3072, RSA4096, Ed25519] | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
@@ -24,6 +26,8 @@ Name | Type | Description | Notes
 **Metadata** | Pointer to **string** | Deprecated - use description | [optional] 
 **Name** | **string** | ClassicKey name | 
 **ProtectionKeyName** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
+**RotationEventIn** | Pointer to **[]string** | How many days before the rotation of the item would you like to be notified | [optional] 
+**RotationInterval** | Pointer to **string** | The number of days to wait between every automatic rotation (1-365) | [optional] 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -66,6 +70,31 @@ and a boolean to check if the value has been set.
 
 SetAlg sets Alg field to given value.
 
+
+### GetAutoRotate
+
+`func (o *CreateClassicKey) GetAutoRotate() string`
+
+GetAutoRotate returns the AutoRotate field if non-nil, zero value otherwise.
+
+### GetAutoRotateOk
+
+`func (o *CreateClassicKey) GetAutoRotateOk() (*string, bool)`
+
+GetAutoRotateOk returns a tuple with the AutoRotate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutoRotate
+
+`func (o *CreateClassicKey) SetAutoRotate(v string)`
+
+SetAutoRotate sets AutoRotate field to given value.
+
+### HasAutoRotate
+
+`func (o *CreateClassicKey) HasAutoRotate() bool`
+
+HasAutoRotate returns a boolean if a field has been set.
 
 ### GetCertFileData
 
@@ -367,6 +396,31 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### GetExpirationEventIn
+
+`func (o *CreateClassicKey) GetExpirationEventIn() []string`
+
+GetExpirationEventIn returns the ExpirationEventIn field if non-nil, zero value otherwise.
+
+### GetExpirationEventInOk
+
+`func (o *CreateClassicKey) GetExpirationEventInOk() (*[]string, bool)`
+
+GetExpirationEventInOk returns a tuple with the ExpirationEventIn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpirationEventIn
+
+`func (o *CreateClassicKey) SetExpirationEventIn(v []string)`
+
+SetExpirationEventIn sets ExpirationEventIn field to given value.
+
+### HasExpirationEventIn
+
+`func (o *CreateClassicKey) HasExpirationEventIn() bool`
+
+HasExpirationEventIn returns a boolean if a field has been set.
+
 ### GetGenerateSelfSignedCertificate
 
 `func (o *CreateClassicKey) GetGenerateSelfSignedCertificate() bool`
@@ -536,6 +590,56 @@ SetProtectionKeyName sets ProtectionKeyName field to given value.
 `func (o *CreateClassicKey) HasProtectionKeyName() bool`
 
 HasProtectionKeyName returns a boolean if a field has been set.
+
+### GetRotationEventIn
+
+`func (o *CreateClassicKey) GetRotationEventIn() []string`
+
+GetRotationEventIn returns the RotationEventIn field if non-nil, zero value otherwise.
+
+### GetRotationEventInOk
+
+`func (o *CreateClassicKey) GetRotationEventInOk() (*[]string, bool)`
+
+GetRotationEventInOk returns a tuple with the RotationEventIn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotationEventIn
+
+`func (o *CreateClassicKey) SetRotationEventIn(v []string)`
+
+SetRotationEventIn sets RotationEventIn field to given value.
+
+### HasRotationEventIn
+
+`func (o *CreateClassicKey) HasRotationEventIn() bool`
+
+HasRotationEventIn returns a boolean if a field has been set.
+
+### GetRotationInterval
+
+`func (o *CreateClassicKey) GetRotationInterval() string`
+
+GetRotationInterval returns the RotationInterval field if non-nil, zero value otherwise.
+
+### GetRotationIntervalOk
+
+`func (o *CreateClassicKey) GetRotationIntervalOk() (*string, bool)`
+
+GetRotationIntervalOk returns a tuple with the RotationInterval field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotationInterval
+
+`func (o *CreateClassicKey) SetRotationInterval(v string)`
+
+SetRotationInterval sets RotationInterval field to given value.
+
+### HasRotationInterval
+
+`func (o *CreateClassicKey) HasRotationInterval() bool`
+
+HasRotationInterval returns a boolean if a field has been set.
 
 ### GetTags
 

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **MaxVersions** | Pointer to **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Name** | **string** | Target name | 
 **NewComment** | Pointer to **string** | Deprecated - use description | [optional] [default to "default_comment"]
-**NewName** | Pointer to **string** | New Target name | [optional] 
+**NewName** | Pointer to **string** | New target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 

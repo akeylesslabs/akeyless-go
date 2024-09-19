@@ -25,7 +25,9 @@ type ItemGeneralInfo struct {
 	ClusterGwUrl *string `json:"cluster_gw_url,omitempty"`
 	DisplayMetadata *string `json:"display_metadata,omitempty"`
 	DynamicSecretProducerDetails *DynamicSecretProducerInfo `json:"dynamic_secret_producer_details,omitempty"`
+	ExpirationEvents *[]CertificateExpirationEvent `json:"expiration_events,omitempty"`
 	ImporterInfo *ImporterInfo `json:"importer_info,omitempty"`
+	NextRotationEvents *[]NextAutoRotationEvent `json:"next_rotation_events,omitempty"`
 	OidcClientInfo *OidcClientInfo `json:"oidc_client_info,omitempty"`
 	PasswordPolicy *PasswordPolicyInfo `json:"password_policy,omitempty"`
 	RotatedSecretDetails *RotatedSecretDetailsInfo `json:"rotated_secret_details,omitempty"`
@@ -307,6 +309,38 @@ func (o *ItemGeneralInfo) SetDynamicSecretProducerDetails(v DynamicSecretProduce
 	o.DynamicSecretProducerDetails = &v
 }
 
+// GetExpirationEvents returns the ExpirationEvents field value if set, zero value otherwise.
+func (o *ItemGeneralInfo) GetExpirationEvents() []CertificateExpirationEvent {
+	if o == nil || o.ExpirationEvents == nil {
+		var ret []CertificateExpirationEvent
+		return ret
+	}
+	return *o.ExpirationEvents
+}
+
+// GetExpirationEventsOk returns a tuple with the ExpirationEvents field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ItemGeneralInfo) GetExpirationEventsOk() (*[]CertificateExpirationEvent, bool) {
+	if o == nil || o.ExpirationEvents == nil {
+		return nil, false
+	}
+	return o.ExpirationEvents, true
+}
+
+// HasExpirationEvents returns a boolean if a field has been set.
+func (o *ItemGeneralInfo) HasExpirationEvents() bool {
+	if o != nil && o.ExpirationEvents != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExpirationEvents gets a reference to the given []CertificateExpirationEvent and assigns it to the ExpirationEvents field.
+func (o *ItemGeneralInfo) SetExpirationEvents(v []CertificateExpirationEvent) {
+	o.ExpirationEvents = &v
+}
+
 // GetImporterInfo returns the ImporterInfo field value if set, zero value otherwise.
 func (o *ItemGeneralInfo) GetImporterInfo() ImporterInfo {
 	if o == nil || o.ImporterInfo == nil {
@@ -337,6 +371,38 @@ func (o *ItemGeneralInfo) HasImporterInfo() bool {
 // SetImporterInfo gets a reference to the given ImporterInfo and assigns it to the ImporterInfo field.
 func (o *ItemGeneralInfo) SetImporterInfo(v ImporterInfo) {
 	o.ImporterInfo = &v
+}
+
+// GetNextRotationEvents returns the NextRotationEvents field value if set, zero value otherwise.
+func (o *ItemGeneralInfo) GetNextRotationEvents() []NextAutoRotationEvent {
+	if o == nil || o.NextRotationEvents == nil {
+		var ret []NextAutoRotationEvent
+		return ret
+	}
+	return *o.NextRotationEvents
+}
+
+// GetNextRotationEventsOk returns a tuple with the NextRotationEvents field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ItemGeneralInfo) GetNextRotationEventsOk() (*[]NextAutoRotationEvent, bool) {
+	if o == nil || o.NextRotationEvents == nil {
+		return nil, false
+	}
+	return o.NextRotationEvents, true
+}
+
+// HasNextRotationEvents returns a boolean if a field has been set.
+func (o *ItemGeneralInfo) HasNextRotationEvents() bool {
+	if o != nil && o.NextRotationEvents != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNextRotationEvents gets a reference to the given []NextAutoRotationEvent and assigns it to the NextRotationEvents field.
+func (o *ItemGeneralInfo) SetNextRotationEvents(v []NextAutoRotationEvent) {
+	o.NextRotationEvents = &v
 }
 
 // GetOidcClientInfo returns the OidcClientInfo field value if set, zero value otherwise.
@@ -557,8 +623,14 @@ func (o ItemGeneralInfo) MarshalJSON() ([]byte, error) {
 	if o.DynamicSecretProducerDetails != nil {
 		toSerialize["dynamic_secret_producer_details"] = o.DynamicSecretProducerDetails
 	}
+	if o.ExpirationEvents != nil {
+		toSerialize["expiration_events"] = o.ExpirationEvents
+	}
 	if o.ImporterInfo != nil {
 		toSerialize["importer_info"] = o.ImporterInfo
+	}
+	if o.NextRotationEvents != nil {
+		toSerialize["next_rotation_events"] = o.NextRotationEvents
 	}
 	if o.OidcClientInfo != nil {
 		toSerialize["oidc_client_info"] = o.OidcClientInfo

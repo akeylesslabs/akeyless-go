@@ -41,6 +41,8 @@ type UpdateAccountSettings struct {
 	DynamicSecretMaxTtlEnable *string `json:"dynamic-secret-max-ttl-enable,omitempty"`
 	// Enable sharing items [true/false]
 	EnableItemSharing *string `json:"enable-item-sharing,omitempty"`
+	// Enable password expiration policy [true/false]
+	EnablePasswordExpiration *string `json:"enable-password-expiration,omitempty"`
 	// If set to true, new version will be created on update
 	ForceNewVersions *string `json:"force-new-versions,omitempty"`
 	// A default list of comma-separated CIDR block that acts as a trusted Gateway entity.
@@ -71,6 +73,10 @@ type UpdateAccountSettings struct {
 	MaxRotationIntervalEnable *string `json:"max-rotation-interval-enable,omitempty"`
 	// Max versions
 	MaxVersions *string `json:"max-versions,omitempty"`
+	// Specifies the number of days that a password is valid before it must be changed. A default value of 90 days is used.
+	PasswordExpirationDays *string `json:"password-expiration-days,omitempty"`
+	// Specifies the number of days before a user receives notification that their password will expire. A default value of 14 days is used.
+	PasswordExpirationNotificationDays *string `json:"password-expiration-notification-days,omitempty"`
 	// Password length between 5 - to 50 characters
 	PasswordLength *int64 `json:"password-length,omitempty"`
 	// Phone number
@@ -504,6 +510,38 @@ func (o *UpdateAccountSettings) HasEnableItemSharing() bool {
 // SetEnableItemSharing gets a reference to the given string and assigns it to the EnableItemSharing field.
 func (o *UpdateAccountSettings) SetEnableItemSharing(v string) {
 	o.EnableItemSharing = &v
+}
+
+// GetEnablePasswordExpiration returns the EnablePasswordExpiration field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetEnablePasswordExpiration() string {
+	if o == nil || o.EnablePasswordExpiration == nil {
+		var ret string
+		return ret
+	}
+	return *o.EnablePasswordExpiration
+}
+
+// GetEnablePasswordExpirationOk returns a tuple with the EnablePasswordExpiration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetEnablePasswordExpirationOk() (*string, bool) {
+	if o == nil || o.EnablePasswordExpiration == nil {
+		return nil, false
+	}
+	return o.EnablePasswordExpiration, true
+}
+
+// HasEnablePasswordExpiration returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasEnablePasswordExpiration() bool {
+	if o != nil && o.EnablePasswordExpiration != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEnablePasswordExpiration gets a reference to the given string and assigns it to the EnablePasswordExpiration field.
+func (o *UpdateAccountSettings) SetEnablePasswordExpiration(v string) {
+	o.EnablePasswordExpiration = &v
 }
 
 // GetForceNewVersions returns the ForceNewVersions field value if set, zero value otherwise.
@@ -986,6 +1024,70 @@ func (o *UpdateAccountSettings) SetMaxVersions(v string) {
 	o.MaxVersions = &v
 }
 
+// GetPasswordExpirationDays returns the PasswordExpirationDays field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetPasswordExpirationDays() string {
+	if o == nil || o.PasswordExpirationDays == nil {
+		var ret string
+		return ret
+	}
+	return *o.PasswordExpirationDays
+}
+
+// GetPasswordExpirationDaysOk returns a tuple with the PasswordExpirationDays field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetPasswordExpirationDaysOk() (*string, bool) {
+	if o == nil || o.PasswordExpirationDays == nil {
+		return nil, false
+	}
+	return o.PasswordExpirationDays, true
+}
+
+// HasPasswordExpirationDays returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasPasswordExpirationDays() bool {
+	if o != nil && o.PasswordExpirationDays != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPasswordExpirationDays gets a reference to the given string and assigns it to the PasswordExpirationDays field.
+func (o *UpdateAccountSettings) SetPasswordExpirationDays(v string) {
+	o.PasswordExpirationDays = &v
+}
+
+// GetPasswordExpirationNotificationDays returns the PasswordExpirationNotificationDays field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetPasswordExpirationNotificationDays() string {
+	if o == nil || o.PasswordExpirationNotificationDays == nil {
+		var ret string
+		return ret
+	}
+	return *o.PasswordExpirationNotificationDays
+}
+
+// GetPasswordExpirationNotificationDaysOk returns a tuple with the PasswordExpirationNotificationDays field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetPasswordExpirationNotificationDaysOk() (*string, bool) {
+	if o == nil || o.PasswordExpirationNotificationDays == nil {
+		return nil, false
+	}
+	return o.PasswordExpirationNotificationDays, true
+}
+
+// HasPasswordExpirationNotificationDays returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasPasswordExpirationNotificationDays() bool {
+	if o != nil && o.PasswordExpirationNotificationDays != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPasswordExpirationNotificationDays gets a reference to the given string and assigns it to the PasswordExpirationNotificationDays field.
+func (o *UpdateAccountSettings) SetPasswordExpirationNotificationDays(v string) {
+	o.PasswordExpirationNotificationDays = &v
+}
+
 // GetPasswordLength returns the PasswordLength field value if set, zero value otherwise.
 func (o *UpdateAccountSettings) GetPasswordLength() int64 {
 	if o == nil || o.PasswordLength == nil {
@@ -1408,6 +1510,9 @@ func (o UpdateAccountSettings) MarshalJSON() ([]byte, error) {
 	if o.EnableItemSharing != nil {
 		toSerialize["enable-item-sharing"] = o.EnableItemSharing
 	}
+	if o.EnablePasswordExpiration != nil {
+		toSerialize["enable-password-expiration"] = o.EnablePasswordExpiration
+	}
 	if o.ForceNewVersions != nil {
 		toSerialize["force-new-versions"] = o.ForceNewVersions
 	}
@@ -1452,6 +1557,12 @@ func (o UpdateAccountSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.MaxVersions != nil {
 		toSerialize["max-versions"] = o.MaxVersions
+	}
+	if o.PasswordExpirationDays != nil {
+		toSerialize["password-expiration-days"] = o.PasswordExpirationDays
+	}
+	if o.PasswordExpirationNotificationDays != nil {
+		toSerialize["password-expiration-notification-days"] = o.PasswordExpirationNotificationDays
 	}
 	if o.PasswordLength != nil {
 		toSerialize["password-length"] = o.PasswordLength

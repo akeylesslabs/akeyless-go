@@ -32,6 +32,7 @@ type AccountGeneralSettings struct {
 	ItemUsageEvent *UsageEventSetting `json:"item_usage_event,omitempty"`
 	// LockDefaultKey determines whether the configured default key can be updated by end-users on a per-request basis true - all requests use the configured default key false - every request can determine its protection key (default) nil - change nothing (every request can determine its protection key (default)) This parameter is only relevant if AccountDefaultKeyItemID is not empty
 	LockDefaultKey *bool `json:"lock_default_key,omitempty"`
+	PasswordExpirationInfo *PasswordExpirationInfo `json:"password_expiration_info,omitempty"`
 	PasswordPolicy *PasswordPolicyInfo `json:"password_policy,omitempty"`
 	ProtectItemsByDefault *bool `json:"protect_items_by_default,omitempty"`
 	RotationSecretMaxInterval *RotationSecretMaxInterval `json:"rotation_secret_max_interval,omitempty"`
@@ -407,6 +408,38 @@ func (o *AccountGeneralSettings) SetLockDefaultKey(v bool) {
 	o.LockDefaultKey = &v
 }
 
+// GetPasswordExpirationInfo returns the PasswordExpirationInfo field value if set, zero value otherwise.
+func (o *AccountGeneralSettings) GetPasswordExpirationInfo() PasswordExpirationInfo {
+	if o == nil || o.PasswordExpirationInfo == nil {
+		var ret PasswordExpirationInfo
+		return ret
+	}
+	return *o.PasswordExpirationInfo
+}
+
+// GetPasswordExpirationInfoOk returns a tuple with the PasswordExpirationInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountGeneralSettings) GetPasswordExpirationInfoOk() (*PasswordExpirationInfo, bool) {
+	if o == nil || o.PasswordExpirationInfo == nil {
+		return nil, false
+	}
+	return o.PasswordExpirationInfo, true
+}
+
+// HasPasswordExpirationInfo returns a boolean if a field has been set.
+func (o *AccountGeneralSettings) HasPasswordExpirationInfo() bool {
+	if o != nil && o.PasswordExpirationInfo != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPasswordExpirationInfo gets a reference to the given PasswordExpirationInfo and assigns it to the PasswordExpirationInfo field.
+func (o *AccountGeneralSettings) SetPasswordExpirationInfo(v PasswordExpirationInfo) {
+	o.PasswordExpirationInfo = &v
+}
+
 // GetPasswordPolicy returns the PasswordPolicy field value if set, zero value otherwise.
 func (o *AccountGeneralSettings) GetPasswordPolicy() PasswordPolicyInfo {
 	if o == nil || o.PasswordPolicy == nil {
@@ -569,6 +602,9 @@ func (o AccountGeneralSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.LockDefaultKey != nil {
 		toSerialize["lock_default_key"] = o.LockDefaultKey
+	}
+	if o.PasswordExpirationInfo != nil {
+		toSerialize["password_expiration_info"] = o.PasswordExpirationInfo
 	}
 	if o.PasswordPolicy != nil {
 		toSerialize["password_policy"] = o.PasswordPolicy

@@ -47,7 +47,7 @@ type DynamicSecretUpdateK8s struct {
 	K8sServiceAccountType *string `json:"k8s-service-account-type,omitempty"`
 	// Dynamic secret name
 	Name string `json:"name"`
-	// Dynamic secret new name
+	// Dynamic secret name
 	NewName *string `json:"new-name,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`

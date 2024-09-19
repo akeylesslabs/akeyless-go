@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **MssqlRevocationStatements** | Pointer to **string** | MSSQL Revocation statements | [optional] 
 **MssqlUsername** | Pointer to **string** | MSSQL Username | [optional] 
 **Name** | **string** | Dynamic secret name | 
-**NewName** | Pointer to **string** | Dynamic secret new name | [optional] 
+**NewName** | Pointer to **string** | Dynamic secret name | [optional] 
 **PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **SecureAccessBastionIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] 

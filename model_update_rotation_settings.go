@@ -23,6 +23,8 @@ type UpdateRotationSettings struct {
 	Json *bool `json:"json,omitempty"`
 	// Key name
 	Name string `json:"name"`
+	// How many days before the rotation of the item would you like to be notified
+	RotationEventIn *[]string `json:"rotation-event-in,omitempty"`
 	// The number of days to wait between every automatic key rotation (7-365)
 	RotationInterval *int64 `json:"rotation-interval,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -134,6 +136,38 @@ func (o *UpdateRotationSettings) SetName(v string) {
 	o.Name = v
 }
 
+// GetRotationEventIn returns the RotationEventIn field value if set, zero value otherwise.
+func (o *UpdateRotationSettings) GetRotationEventIn() []string {
+	if o == nil || o.RotationEventIn == nil {
+		var ret []string
+		return ret
+	}
+	return *o.RotationEventIn
+}
+
+// GetRotationEventInOk returns a tuple with the RotationEventIn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotationSettings) GetRotationEventInOk() (*[]string, bool) {
+	if o == nil || o.RotationEventIn == nil {
+		return nil, false
+	}
+	return o.RotationEventIn, true
+}
+
+// HasRotationEventIn returns a boolean if a field has been set.
+func (o *UpdateRotationSettings) HasRotationEventIn() bool {
+	if o != nil && o.RotationEventIn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRotationEventIn gets a reference to the given []string and assigns it to the RotationEventIn field.
+func (o *UpdateRotationSettings) SetRotationEventIn(v []string) {
+	o.RotationEventIn = &v
+}
+
 // GetRotationInterval returns the RotationInterval field value if set, zero value otherwise.
 func (o *UpdateRotationSettings) GetRotationInterval() int64 {
 	if o == nil || o.RotationInterval == nil {
@@ -240,6 +274,9 @@ func (o UpdateRotationSettings) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.RotationEventIn != nil {
+		toSerialize["rotation-event-in"] = o.RotationEventIn
 	}
 	if o.RotationInterval != nil {
 		toSerialize["rotation-interval"] = o.RotationInterval

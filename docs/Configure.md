@@ -12,10 +12,14 @@ Name | Type | Description | Notes
 **AdminPassword** | Pointer to **string** | Password (relevant only for access-type&#x3D;password) | [optional] 
 **AzureAdObjectId** | Pointer to **string** | Azure Active Directory ObjectId (relevant only for access-type&#x3D;azure_ad) | [optional] 
 **CertData** | Pointer to **string** | Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type&#x3D;cert in Curl Context) | [optional] 
+**CertIssuerName** | Pointer to **string** | Certificate Issuer Name | [optional] 
+**CertUsername** | Pointer to **string** | The username to sign in the SSH certificate (use a comma-separated list for more than one username) | [optional] 
+**DefaultLocationPrefix** | Pointer to **string** | Default path prefix for name of items, targets and auth methods | [optional] 
 **GcpAudience** | Pointer to **string** | GCP JWT audience | [optional] [default to "akeyless.io"]
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **K8sAuthConfigName** | Pointer to **string** | The K8S Auth config name (relevant only for access-type&#x3D;k8s) | [optional] 
 **KeyData** | Pointer to **string** | Private key data encoded in base64. Used if file was not provided.(relevant only for access-type&#x3D;cert in Curl Context) | [optional] 
+**LegacySigningAlgName** | Pointer to **bool** | Set this option to output legacy (&#39;ssh-rsa-cert-v01@openssh.com&#39;) signing algorithm name in the certificate. | [optional] 
 **OciAuthType** | Pointer to **string** | The type of the OCI configuration to use [instance/apikey/resource] (relevant only for access-type&#x3D;oci) | [optional] [default to "apikey"]
 **OciGroupOcid** | Pointer to **[]string** | A list of Oracle Cloud IDs groups (relevant only for access-type&#x3D;oci) | [optional] 
 
@@ -238,6 +242,81 @@ SetCertData sets CertData field to given value.
 
 HasCertData returns a boolean if a field has been set.
 
+### GetCertIssuerName
+
+`func (o *Configure) GetCertIssuerName() string`
+
+GetCertIssuerName returns the CertIssuerName field if non-nil, zero value otherwise.
+
+### GetCertIssuerNameOk
+
+`func (o *Configure) GetCertIssuerNameOk() (*string, bool)`
+
+GetCertIssuerNameOk returns a tuple with the CertIssuerName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertIssuerName
+
+`func (o *Configure) SetCertIssuerName(v string)`
+
+SetCertIssuerName sets CertIssuerName field to given value.
+
+### HasCertIssuerName
+
+`func (o *Configure) HasCertIssuerName() bool`
+
+HasCertIssuerName returns a boolean if a field has been set.
+
+### GetCertUsername
+
+`func (o *Configure) GetCertUsername() string`
+
+GetCertUsername returns the CertUsername field if non-nil, zero value otherwise.
+
+### GetCertUsernameOk
+
+`func (o *Configure) GetCertUsernameOk() (*string, bool)`
+
+GetCertUsernameOk returns a tuple with the CertUsername field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertUsername
+
+`func (o *Configure) SetCertUsername(v string)`
+
+SetCertUsername sets CertUsername field to given value.
+
+### HasCertUsername
+
+`func (o *Configure) HasCertUsername() bool`
+
+HasCertUsername returns a boolean if a field has been set.
+
+### GetDefaultLocationPrefix
+
+`func (o *Configure) GetDefaultLocationPrefix() string`
+
+GetDefaultLocationPrefix returns the DefaultLocationPrefix field if non-nil, zero value otherwise.
+
+### GetDefaultLocationPrefixOk
+
+`func (o *Configure) GetDefaultLocationPrefixOk() (*string, bool)`
+
+GetDefaultLocationPrefixOk returns a tuple with the DefaultLocationPrefix field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefaultLocationPrefix
+
+`func (o *Configure) SetDefaultLocationPrefix(v string)`
+
+SetDefaultLocationPrefix sets DefaultLocationPrefix field to given value.
+
+### HasDefaultLocationPrefix
+
+`func (o *Configure) HasDefaultLocationPrefix() bool`
+
+HasDefaultLocationPrefix returns a boolean if a field has been set.
+
 ### GetGcpAudience
 
 `func (o *Configure) GetGcpAudience() string`
@@ -337,6 +416,31 @@ SetKeyData sets KeyData field to given value.
 `func (o *Configure) HasKeyData() bool`
 
 HasKeyData returns a boolean if a field has been set.
+
+### GetLegacySigningAlgName
+
+`func (o *Configure) GetLegacySigningAlgName() bool`
+
+GetLegacySigningAlgName returns the LegacySigningAlgName field if non-nil, zero value otherwise.
+
+### GetLegacySigningAlgNameOk
+
+`func (o *Configure) GetLegacySigningAlgNameOk() (*bool, bool)`
+
+GetLegacySigningAlgNameOk returns a tuple with the LegacySigningAlgName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLegacySigningAlgName
+
+`func (o *Configure) SetLegacySigningAlgName(v bool)`
+
+SetLegacySigningAlgName sets LegacySigningAlgName field to given value.
+
+### HasLegacySigningAlgName
+
+`func (o *Configure) HasLegacySigningAlgName() bool`
+
+HasLegacySigningAlgName returns a boolean if a field has been set.
 
 ### GetOciAuthType
 

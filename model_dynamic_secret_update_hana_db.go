@@ -39,7 +39,7 @@ type DynamicSecretUpdateHanaDb struct {
 	Json *bool `json:"json,omitempty"`
 	// Dynamic secret name
 	Name string `json:"name"`
-	// Dynamic secret new name
+	// Dynamic secret name
 	NewName *string `json:"new-name,omitempty"`
 	// The length of the password to be generated
 	PasswordLength *string `json:"password-length,omitempty"`

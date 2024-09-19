@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **DynamicSecretMaxTtl** | Pointer to **int64** | Set the maximum ttl for dynamic secrets | [optional] 
 **DynamicSecretMaxTtlEnable** | Pointer to **string** | Set a maximum ttl for dynamic secrets [true/false] | [optional] 
 **EnableItemSharing** | Pointer to **string** | Enable sharing items [true/false] | [optional] 
+**EnablePasswordExpiration** | Pointer to **string** | Enable password expiration policy [true/false] | [optional] 
 **ForceNewVersions** | Pointer to **string** | If set to true, new version will be created on update | [optional] 
 **GwBoundIps** | Pointer to **[]string** | A default list of comma-separated CIDR block that acts as a trusted Gateway entity. | [optional] 
 **InvalidCharacters** | Pointer to **string** | Characters that cannot be used for items/targets/roles/auths/event_forwarder names. Empty string will enforce nothing. | [optional] [default to "notReceivedInvalidCharacter"]
@@ -31,6 +32,8 @@ Name | Type | Description | Notes
 **MaxRotationInterval** | Pointer to **int32** | Set the maximum rotation interval for rotated secrets auto rotation settings | [optional] 
 **MaxRotationIntervalEnable** | Pointer to **string** | Set a maximum rotation interval for rotated secrets auto rotation settings [true/false] | [optional] 
 **MaxVersions** | Pointer to **string** | Max versions | [optional] 
+**PasswordExpirationDays** | Pointer to **string** | Specifies the number of days that a password is valid before it must be changed. A default value of 90 days is used. | [optional] 
+**PasswordExpirationNotificationDays** | Pointer to **string** | Specifies the number of days before a user receives notification that their password will expire. A default value of 14 days is used. | [optional] 
 **PasswordLength** | Pointer to **int64** | Password length between 5 - to 50 characters | [optional] 
 **Phone** | Pointer to **string** | Phone number | [optional] 
 **PostalCode** | Pointer to **string** | Postal code | [optional] 
@@ -362,6 +365,31 @@ SetEnableItemSharing sets EnableItemSharing field to given value.
 `func (o *UpdateAccountSettings) HasEnableItemSharing() bool`
 
 HasEnableItemSharing returns a boolean if a field has been set.
+
+### GetEnablePasswordExpiration
+
+`func (o *UpdateAccountSettings) GetEnablePasswordExpiration() string`
+
+GetEnablePasswordExpiration returns the EnablePasswordExpiration field if non-nil, zero value otherwise.
+
+### GetEnablePasswordExpirationOk
+
+`func (o *UpdateAccountSettings) GetEnablePasswordExpirationOk() (*string, bool)`
+
+GetEnablePasswordExpirationOk returns a tuple with the EnablePasswordExpiration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnablePasswordExpiration
+
+`func (o *UpdateAccountSettings) SetEnablePasswordExpiration(v string)`
+
+SetEnablePasswordExpiration sets EnablePasswordExpiration field to given value.
+
+### HasEnablePasswordExpiration
+
+`func (o *UpdateAccountSettings) HasEnablePasswordExpiration() bool`
+
+HasEnablePasswordExpiration returns a boolean if a field has been set.
 
 ### GetForceNewVersions
 
@@ -737,6 +765,56 @@ SetMaxVersions sets MaxVersions field to given value.
 `func (o *UpdateAccountSettings) HasMaxVersions() bool`
 
 HasMaxVersions returns a boolean if a field has been set.
+
+### GetPasswordExpirationDays
+
+`func (o *UpdateAccountSettings) GetPasswordExpirationDays() string`
+
+GetPasswordExpirationDays returns the PasswordExpirationDays field if non-nil, zero value otherwise.
+
+### GetPasswordExpirationDaysOk
+
+`func (o *UpdateAccountSettings) GetPasswordExpirationDaysOk() (*string, bool)`
+
+GetPasswordExpirationDaysOk returns a tuple with the PasswordExpirationDays field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasswordExpirationDays
+
+`func (o *UpdateAccountSettings) SetPasswordExpirationDays(v string)`
+
+SetPasswordExpirationDays sets PasswordExpirationDays field to given value.
+
+### HasPasswordExpirationDays
+
+`func (o *UpdateAccountSettings) HasPasswordExpirationDays() bool`
+
+HasPasswordExpirationDays returns a boolean if a field has been set.
+
+### GetPasswordExpirationNotificationDays
+
+`func (o *UpdateAccountSettings) GetPasswordExpirationNotificationDays() string`
+
+GetPasswordExpirationNotificationDays returns the PasswordExpirationNotificationDays field if non-nil, zero value otherwise.
+
+### GetPasswordExpirationNotificationDaysOk
+
+`func (o *UpdateAccountSettings) GetPasswordExpirationNotificationDaysOk() (*string, bool)`
+
+GetPasswordExpirationNotificationDaysOk returns a tuple with the PasswordExpirationNotificationDays field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasswordExpirationNotificationDays
+
+`func (o *UpdateAccountSettings) SetPasswordExpirationNotificationDays(v string)`
+
+SetPasswordExpirationNotificationDays sets PasswordExpirationNotificationDays field to given value.
+
+### HasPasswordExpirationNotificationDays
+
+`func (o *UpdateAccountSettings) HasPasswordExpirationNotificationDays() bool`
+
+HasPasswordExpirationNotificationDays returns a boolean if a field has been set.
 
 ### GetPasswordLength
 

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **AutoRotate** | **bool** | Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation | 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Key name | 
+**RotationEventIn** | Pointer to **[]string** | How many days before the rotation of the item would you like to be notified | [optional] 
 **RotationInterval** | Pointer to **int64** | The number of days to wait between every automatic key rotation (7-365) | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -94,6 +95,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetRotationEventIn
+
+`func (o *UpdateRotationSettings) GetRotationEventIn() []string`
+
+GetRotationEventIn returns the RotationEventIn field if non-nil, zero value otherwise.
+
+### GetRotationEventInOk
+
+`func (o *UpdateRotationSettings) GetRotationEventInOk() (*[]string, bool)`
+
+GetRotationEventInOk returns a tuple with the RotationEventIn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotationEventIn
+
+`func (o *UpdateRotationSettings) SetRotationEventIn(v []string)`
+
+SetRotationEventIn sets RotationEventIn field to given value.
+
+### HasRotationEventIn
+
+`func (o *UpdateRotationSettings) HasRotationEventIn() bool`
+
+HasRotationEventIn returns a boolean if a field has been set.
 
 ### GetRotationInterval
 

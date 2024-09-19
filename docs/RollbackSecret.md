@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Accessibility** | Pointer to **string** | for personal password manager | [optional] [default to "regular"]
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Secret name | 
 **OldVersion** | **int32** | Old secret version to rollback to | 
@@ -28,6 +29,31 @@ will change when the set of required properties is changed
 NewRollbackSecretWithDefaults instantiates a new RollbackSecret object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAccessibility
+
+`func (o *RollbackSecret) GetAccessibility() string`
+
+GetAccessibility returns the Accessibility field if non-nil, zero value otherwise.
+
+### GetAccessibilityOk
+
+`func (o *RollbackSecret) GetAccessibilityOk() (*string, bool)`
+
+GetAccessibilityOk returns a tuple with the Accessibility field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessibility
+
+`func (o *RollbackSecret) SetAccessibility(v string)`
+
+SetAccessibility sets Accessibility field to given value.
+
+### HasAccessibility
+
+`func (o *RollbackSecret) HasAccessibility() bool`
+
+HasAccessibility returns a boolean if a field has been set.
 
 ### GetJson
 

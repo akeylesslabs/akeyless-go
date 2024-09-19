@@ -13,6 +13,7 @@ package akeyless
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // EmailPassAccessRules struct for EmailPassAccessRules
@@ -24,6 +25,8 @@ type EmailPassAccessRules struct {
 	EncEmailWithSharedKey *string `json:"enc_email_with_shared_key,omitempty"`
 	// The password value
 	HashPass *string `json:"hash_pass,omitempty"`
+	// The last password change date
+	LastResetPassword *time.Time `json:"last_reset_password,omitempty"`
 }
 
 // NewEmailPassAccessRules instantiates a new EmailPassAccessRules object
@@ -171,6 +174,38 @@ func (o *EmailPassAccessRules) SetHashPass(v string) {
 	o.HashPass = &v
 }
 
+// GetLastResetPassword returns the LastResetPassword field value if set, zero value otherwise.
+func (o *EmailPassAccessRules) GetLastResetPassword() time.Time {
+	if o == nil || o.LastResetPassword == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.LastResetPassword
+}
+
+// GetLastResetPasswordOk returns a tuple with the LastResetPassword field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EmailPassAccessRules) GetLastResetPasswordOk() (*time.Time, bool) {
+	if o == nil || o.LastResetPassword == nil {
+		return nil, false
+	}
+	return o.LastResetPassword, true
+}
+
+// HasLastResetPassword returns a boolean if a field has been set.
+func (o *EmailPassAccessRules) HasLastResetPassword() bool {
+	if o != nil && o.LastResetPassword != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastResetPassword gets a reference to the given time.Time and assigns it to the LastResetPassword field.
+func (o *EmailPassAccessRules) SetLastResetPassword(v time.Time) {
+	o.LastResetPassword = &v
+}
+
 func (o EmailPassAccessRules) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Alg != nil {
@@ -184,6 +219,9 @@ func (o EmailPassAccessRules) MarshalJSON() ([]byte, error) {
 	}
 	if o.HashPass != nil {
 		toSerialize["hash_pass"] = o.HashPass
+	}
+	if o.LastResetPassword != nil {
+		toSerialize["last_reset_password"] = o.LastResetPassword
 	}
 	return json.Marshal(toSerialize)
 }

@@ -4,7 +4,7 @@ All URIs are relative to *https://api.akeyless.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AliasDetails**](V2Api.md#AliasDetails) | **Get** /alias-details | 
+[**AliasDetails**](V2Api.md#AliasDetails) | **Post** /alias-details | 
 [**AssocRoleAuthMethod**](V2Api.md#AssocRoleAuthMethod) | **Post** /assoc-role-am | 
 [**AssocTargetItem**](V2Api.md#AssocTargetItem) | **Post** /assoc-target-item | 
 [**Auth**](V2Api.md#Auth) | **Post** /auth | 
@@ -246,6 +246,7 @@ Method | HTTP request | Description
 [**GatewayGetLogForwarding**](V2Api.md#GatewayGetLogForwarding) | **Post** /gateway-get-log-forwarding | 
 [**GatewayGetMigration**](V2Api.md#GatewayGetMigration) | **Post** /gateway-get-migration | 
 [**GatewayGetProducer**](V2Api.md#GatewayGetProducer) | **Post** /gateway-get-producer | 
+[**GatewayGetRemoteAccess**](V2Api.md#GatewayGetRemoteAccess) | **Post** /gateway-get-remote-access | 
 [**GatewayGetTmpUsers**](V2Api.md#GatewayGetTmpUsers) | **Post** /gateway-get-producer-tmp-creds | 
 [**GatewayListCustomerFragments**](V2Api.md#GatewayListCustomerFragments) | **Post** /gateway-list-customer-fragments | 
 [**GatewayListMigration**](V2Api.md#GatewayListMigration) | **Post** /gateway-list-migration | 
@@ -301,6 +302,8 @@ Method | HTTP request | Description
 [**GatewayUpdateProducerRedshift**](V2Api.md#GatewayUpdateProducerRedshift) | **Post** /gateway-update-producer-redshift | 
 [**GatewayUpdateProducerSnowflake**](V2Api.md#GatewayUpdateProducerSnowflake) | **Post** /gateway-update-producer-snowflake | 
 [**GatewayUpdateProducerVenafi**](V2Api.md#GatewayUpdateProducerVenafi) | **Post** /gateway-update-producer-certificate-automation | 
+[**GatewayUpdateRemoteAccess**](V2Api.md#GatewayUpdateRemoteAccess) | **Post** /gateway-update-remote-access | 
+[**GatewayUpdateRemoteAccessRdpRecordings**](V2Api.md#GatewayUpdateRemoteAccessRdpRecordings) | **Post** /gateway-update-remote-access-rdp-recording | 
 [**GatewayUpdateTlsCert**](V2Api.md#GatewayUpdateTlsCert) | **Post** /gateway-update-tls-cert | 
 [**GatewayUpdateTmpUsers**](V2Api.md#GatewayUpdateTmpUsers) | **Post** /gateway-update-producer-tmp-creds | 
 [**GenerateCsr**](V2Api.md#GenerateCsr) | **Post** /generate-csr | 
@@ -323,6 +326,17 @@ Method | HTTP request | Description
 [**GetTags**](V2Api.md#GetTags) | **Post** /get-tags | 
 [**GetTarget**](V2Api.md#GetTarget) | **Post** /get-target | 
 [**GetTargetDetails**](V2Api.md#GetTargetDetails) | **Post** /get-target-details | 
+[**GwUpdateRemoteAccessSessionLogsAwsS3**](V2Api.md#GwUpdateRemoteAccessSessionLogsAwsS3) | **Post** /gateway-update-remote-access-session-forwarding-aws-s3 | 
+[**GwUpdateRemoteAccessSessionLogsAzureAnalytics**](V2Api.md#GwUpdateRemoteAccessSessionLogsAzureAnalytics) | **Post** /gateway-update-remote-access-session-forwarding-azure-analytics | 
+[**GwUpdateRemoteAccessSessionLogsDatadog**](V2Api.md#GwUpdateRemoteAccessSessionLogsDatadog) | **Post** /gateway-update-remote-access-session-forwarding-datadog | 
+[**GwUpdateRemoteAccessSessionLogsElasticsearch**](V2Api.md#GwUpdateRemoteAccessSessionLogsElasticsearch) | **Post** /gateway-update-remote-access-session-forwarding-elasticsearch | 
+[**GwUpdateRemoteAccessSessionLogsGoogleChronicle**](V2Api.md#GwUpdateRemoteAccessSessionLogsGoogleChronicle) | **Post** /gateway-update-remote-access-session-forwarding-google-chronicle | 
+[**GwUpdateRemoteAccessSessionLogsLogstash**](V2Api.md#GwUpdateRemoteAccessSessionLogsLogstash) | **Post** /gateway-update-remote-access-session-forwarding-logstash | 
+[**GwUpdateRemoteAccessSessionLogsLogzIo**](V2Api.md#GwUpdateRemoteAccessSessionLogsLogzIo) | **Post** /gateway-update-remote-access-session-forwarding-logz-io | 
+[**GwUpdateRemoteAccessSessionLogsSplunk**](V2Api.md#GwUpdateRemoteAccessSessionLogsSplunk) | **Post** /gateway-update-remote-access-session-forwarding-splunk | 
+[**GwUpdateRemoteAccessSessionLogsStdout**](V2Api.md#GwUpdateRemoteAccessSessionLogsStdout) | **Post** /gateway-update-remote-access-session-forwarding-stdout | 
+[**GwUpdateRemoteAccessSessionLogsSumologic**](V2Api.md#GwUpdateRemoteAccessSessionLogsSumologic) | **Post** /gateway-update-remote-access-session-forwarding-sumologic | 
+[**GwUpdateRemoteAccessSessionLogsSyslog**](V2Api.md#GwUpdateRemoteAccessSessionLogsSyslog) | **Post** /gateway-update-remote-access-session-forwarding-syslog | 
 [**Hmac**](V2Api.md#Hmac) | **Post** /hmac | 
 [**ImportPasswords**](V2Api.md#ImportPasswords) | **Post** /import-passwords | 
 [**KmipClientDeleteRule**](V2Api.md#KmipClientDeleteRule) | **Post** /kmip-client-delete-rule | 
@@ -16029,6 +16043,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GatewayGetRemoteAccess
+
+> BastionConfigReplyObj GatewayGetRemoteAccess(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayGetRemoteAccess() // GatewayGetRemoteAccess | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayGetRemoteAccess(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayGetRemoteAccess``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayGetRemoteAccess`: BastionConfigReplyObj
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayGetRemoteAccess`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayGetRemoteAccessRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayGetRemoteAccess**](GatewayGetRemoteAccess.md) |  | 
+
+### Return type
+
+[**BastionConfigReplyObj**](BastionConfigReplyObj.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GatewayGetTmpUsers
 
 > []TmpUserData GatewayGetTmpUsers(ctx).Body(body).Execute()
@@ -19547,6 +19625,129 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GatewayUpdateRemoteAccess
+
+> map[string]interface{} GatewayUpdateRemoteAccess(ctx).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateRemoteAccess(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateRemoteAccess``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateRemoteAccess`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateRemoteAccess`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateRemoteAccessRequest struct via the builder pattern
+
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateRemoteAccessRdpRecordings
+
+> map[string]interface{} GatewayUpdateRemoteAccessRdpRecordings(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgatewayUpdateRemoteAccessRdpRecordings() // GatewayUpdateRemoteAccessRdpRecordings | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GatewayUpdateRemoteAccessRdpRecordings(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateRemoteAccessRdpRecordings``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GatewayUpdateRemoteAccessRdpRecordings`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateRemoteAccessRdpRecordings`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateRemoteAccessRdpRecordingsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateRemoteAccessRdpRecordings**](GatewayUpdateRemoteAccessRdpRecordings.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GatewayUpdateTlsCert
 
 > GatewayUpdateTlsCertOutput GatewayUpdateTlsCert(ctx).Body(body).Execute()
@@ -20933,6 +21134,710 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GetTargetDetailsOutput**](GetTargetDetailsOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GwUpdateRemoteAccessSessionLogsAwsS3
+
+> GatewayUpdateLogForwardingOutput GwUpdateRemoteAccessSessionLogsAwsS3(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgwUpdateRemoteAccessSessionLogsAwsS3() // GwUpdateRemoteAccessSessionLogsAwsS3 | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GwUpdateRemoteAccessSessionLogsAwsS3(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GwUpdateRemoteAccessSessionLogsAwsS3``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GwUpdateRemoteAccessSessionLogsAwsS3`: GatewayUpdateLogForwardingOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GwUpdateRemoteAccessSessionLogsAwsS3`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGwUpdateRemoteAccessSessionLogsAwsS3Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GwUpdateRemoteAccessSessionLogsAwsS3**](GwUpdateRemoteAccessSessionLogsAwsS3.md) |  | 
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](gatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GwUpdateRemoteAccessSessionLogsAzureAnalytics
+
+> GatewayUpdateLogForwardingOutput GwUpdateRemoteAccessSessionLogsAzureAnalytics(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgwUpdateRemoteAccessSessionLogsAzureAnalytics() // GwUpdateRemoteAccessSessionLogsAzureAnalytics | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GwUpdateRemoteAccessSessionLogsAzureAnalytics(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GwUpdateRemoteAccessSessionLogsAzureAnalytics``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GwUpdateRemoteAccessSessionLogsAzureAnalytics`: GatewayUpdateLogForwardingOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GwUpdateRemoteAccessSessionLogsAzureAnalytics`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGwUpdateRemoteAccessSessionLogsAzureAnalyticsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GwUpdateRemoteAccessSessionLogsAzureAnalytics**](GwUpdateRemoteAccessSessionLogsAzureAnalytics.md) |  | 
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](gatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GwUpdateRemoteAccessSessionLogsDatadog
+
+> GatewayUpdateLogForwardingOutput GwUpdateRemoteAccessSessionLogsDatadog(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgwUpdateRemoteAccessSessionLogsDatadog() // GwUpdateRemoteAccessSessionLogsDatadog | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GwUpdateRemoteAccessSessionLogsDatadog(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GwUpdateRemoteAccessSessionLogsDatadog``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GwUpdateRemoteAccessSessionLogsDatadog`: GatewayUpdateLogForwardingOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GwUpdateRemoteAccessSessionLogsDatadog`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGwUpdateRemoteAccessSessionLogsDatadogRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GwUpdateRemoteAccessSessionLogsDatadog**](GwUpdateRemoteAccessSessionLogsDatadog.md) |  | 
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](gatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GwUpdateRemoteAccessSessionLogsElasticsearch
+
+> GatewayUpdateLogForwardingOutput GwUpdateRemoteAccessSessionLogsElasticsearch(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgwUpdateRemoteAccessSessionLogsElasticsearch() // GwUpdateRemoteAccessSessionLogsElasticsearch | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GwUpdateRemoteAccessSessionLogsElasticsearch(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GwUpdateRemoteAccessSessionLogsElasticsearch``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GwUpdateRemoteAccessSessionLogsElasticsearch`: GatewayUpdateLogForwardingOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GwUpdateRemoteAccessSessionLogsElasticsearch`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGwUpdateRemoteAccessSessionLogsElasticsearchRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GwUpdateRemoteAccessSessionLogsElasticsearch**](GwUpdateRemoteAccessSessionLogsElasticsearch.md) |  | 
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](gatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GwUpdateRemoteAccessSessionLogsGoogleChronicle
+
+> GatewayUpdateLogForwardingOutput GwUpdateRemoteAccessSessionLogsGoogleChronicle(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgwUpdateRemoteAccessSessionLogsGoogleChronicle() // GwUpdateRemoteAccessSessionLogsGoogleChronicle | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GwUpdateRemoteAccessSessionLogsGoogleChronicle(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GwUpdateRemoteAccessSessionLogsGoogleChronicle``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GwUpdateRemoteAccessSessionLogsGoogleChronicle`: GatewayUpdateLogForwardingOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GwUpdateRemoteAccessSessionLogsGoogleChronicle`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGwUpdateRemoteAccessSessionLogsGoogleChronicleRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GwUpdateRemoteAccessSessionLogsGoogleChronicle**](GwUpdateRemoteAccessSessionLogsGoogleChronicle.md) |  | 
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](gatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GwUpdateRemoteAccessSessionLogsLogstash
+
+> GatewayUpdateLogForwardingOutput GwUpdateRemoteAccessSessionLogsLogstash(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgwUpdateRemoteAccessSessionLogsLogstash() // GwUpdateRemoteAccessSessionLogsLogstash | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GwUpdateRemoteAccessSessionLogsLogstash(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GwUpdateRemoteAccessSessionLogsLogstash``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GwUpdateRemoteAccessSessionLogsLogstash`: GatewayUpdateLogForwardingOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GwUpdateRemoteAccessSessionLogsLogstash`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGwUpdateRemoteAccessSessionLogsLogstashRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GwUpdateRemoteAccessSessionLogsLogstash**](GwUpdateRemoteAccessSessionLogsLogstash.md) |  | 
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](gatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GwUpdateRemoteAccessSessionLogsLogzIo
+
+> GatewayUpdateLogForwardingOutput GwUpdateRemoteAccessSessionLogsLogzIo(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgwUpdateRemoteAccessSessionLogsLogzIo() // GwUpdateRemoteAccessSessionLogsLogzIo | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GwUpdateRemoteAccessSessionLogsLogzIo(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GwUpdateRemoteAccessSessionLogsLogzIo``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GwUpdateRemoteAccessSessionLogsLogzIo`: GatewayUpdateLogForwardingOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GwUpdateRemoteAccessSessionLogsLogzIo`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGwUpdateRemoteAccessSessionLogsLogzIoRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GwUpdateRemoteAccessSessionLogsLogzIo**](GwUpdateRemoteAccessSessionLogsLogzIo.md) |  | 
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](gatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GwUpdateRemoteAccessSessionLogsSplunk
+
+> GatewayUpdateLogForwardingOutput GwUpdateRemoteAccessSessionLogsSplunk(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgwUpdateRemoteAccessSessionLogsSplunk() // GwUpdateRemoteAccessSessionLogsSplunk | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GwUpdateRemoteAccessSessionLogsSplunk(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GwUpdateRemoteAccessSessionLogsSplunk``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GwUpdateRemoteAccessSessionLogsSplunk`: GatewayUpdateLogForwardingOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GwUpdateRemoteAccessSessionLogsSplunk`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGwUpdateRemoteAccessSessionLogsSplunkRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GwUpdateRemoteAccessSessionLogsSplunk**](GwUpdateRemoteAccessSessionLogsSplunk.md) |  | 
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](gatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GwUpdateRemoteAccessSessionLogsStdout
+
+> GatewayUpdateLogForwardingOutput GwUpdateRemoteAccessSessionLogsStdout(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgwUpdateRemoteAccessSessionLogsStdout() // GwUpdateRemoteAccessSessionLogsStdout | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GwUpdateRemoteAccessSessionLogsStdout(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GwUpdateRemoteAccessSessionLogsStdout``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GwUpdateRemoteAccessSessionLogsStdout`: GatewayUpdateLogForwardingOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GwUpdateRemoteAccessSessionLogsStdout`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGwUpdateRemoteAccessSessionLogsStdoutRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GwUpdateRemoteAccessSessionLogsStdout**](GwUpdateRemoteAccessSessionLogsStdout.md) |  | 
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](gatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GwUpdateRemoteAccessSessionLogsSumologic
+
+> GatewayUpdateLogForwardingOutput GwUpdateRemoteAccessSessionLogsSumologic(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgwUpdateRemoteAccessSessionLogsSumologic() // GwUpdateRemoteAccessSessionLogsSumologic | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GwUpdateRemoteAccessSessionLogsSumologic(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GwUpdateRemoteAccessSessionLogsSumologic``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GwUpdateRemoteAccessSessionLogsSumologic`: GatewayUpdateLogForwardingOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GwUpdateRemoteAccessSessionLogsSumologic`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGwUpdateRemoteAccessSessionLogsSumologicRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GwUpdateRemoteAccessSessionLogsSumologic**](GwUpdateRemoteAccessSessionLogsSumologic.md) |  | 
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](gatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GwUpdateRemoteAccessSessionLogsSyslog
+
+> GatewayUpdateLogForwardingOutput GwUpdateRemoteAccessSessionLogsSyslog(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgwUpdateRemoteAccessSessionLogsSyslog() // GwUpdateRemoteAccessSessionLogsSyslog | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GwUpdateRemoteAccessSessionLogsSyslog(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GwUpdateRemoteAccessSessionLogsSyslog``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GwUpdateRemoteAccessSessionLogsSyslog`: GatewayUpdateLogForwardingOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GwUpdateRemoteAccessSessionLogsSyslog`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGwUpdateRemoteAccessSessionLogsSyslogRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GwUpdateRemoteAccessSessionLogsSyslog**](GwUpdateRemoteAccessSessionLogsSyslog.md) |  | 
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](gatewayUpdateLogForwardingOutput.md)
 
 ### Authorization
 

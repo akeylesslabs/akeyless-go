@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **InvalidCharacters** | Pointer to **string** | InvalidCharacters is the invalid characters for items/targets/roles/auths/notifier_forwarder naming convention | [optional] 
 **ItemUsageEvent** | Pointer to [**UsageEventSetting**](UsageEventSetting.md) |  | [optional] 
 **LockDefaultKey** | Pointer to **bool** | LockDefaultKey determines whether the configured default key can be updated by end-users on a per-request basis true - all requests use the configured default key false - every request can determine its protection key (default) nil - change nothing (every request can determine its protection key (default)) This parameter is only relevant if AccountDefaultKeyItemID is not empty | [optional] 
+**PasswordExpirationInfo** | Pointer to [**PasswordExpirationInfo**](PasswordExpirationInfo.md) |  | [optional] 
 **PasswordPolicy** | Pointer to [**PasswordPolicyInfo**](PasswordPolicyInfo.md) |  | [optional] 
 **ProtectItemsByDefault** | Pointer to **bool** |  | [optional] 
 **RotationSecretMaxInterval** | Pointer to [**RotationSecretMaxInterval**](RotationSecretMaxInterval.md) |  | [optional] 
@@ -313,6 +314,31 @@ SetLockDefaultKey sets LockDefaultKey field to given value.
 `func (o *AccountGeneralSettings) HasLockDefaultKey() bool`
 
 HasLockDefaultKey returns a boolean if a field has been set.
+
+### GetPasswordExpirationInfo
+
+`func (o *AccountGeneralSettings) GetPasswordExpirationInfo() PasswordExpirationInfo`
+
+GetPasswordExpirationInfo returns the PasswordExpirationInfo field if non-nil, zero value otherwise.
+
+### GetPasswordExpirationInfoOk
+
+`func (o *AccountGeneralSettings) GetPasswordExpirationInfoOk() (*PasswordExpirationInfo, bool)`
+
+GetPasswordExpirationInfoOk returns a tuple with the PasswordExpirationInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasswordExpirationInfo
+
+`func (o *AccountGeneralSettings) SetPasswordExpirationInfo(v PasswordExpirationInfo)`
+
+SetPasswordExpirationInfo sets PasswordExpirationInfo field to given value.
+
+### HasPasswordExpirationInfo
+
+`func (o *AccountGeneralSettings) HasPasswordExpirationInfo() bool`
+
+HasPasswordExpirationInfo returns a boolean if a field has been set.
 
 ### GetPasswordPolicy
 

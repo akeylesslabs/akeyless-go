@@ -12,7 +12,9 @@ Name | Type | Description | Notes
 **ClusterGwUrl** | Pointer to **string** |  | [optional] 
 **DisplayMetadata** | Pointer to **string** |  | [optional] 
 **DynamicSecretProducerDetails** | Pointer to [**DynamicSecretProducerInfo**](DynamicSecretProducerInfo.md) |  | [optional] 
+**ExpirationEvents** | Pointer to [**[]CertificateExpirationEvent**](CertificateExpirationEvent.md) |  | [optional] 
 **ImporterInfo** | Pointer to [**ImporterInfo**](ImporterInfo.md) |  | [optional] 
+**NextRotationEvents** | Pointer to [**[]NextAutoRotationEvent**](NextAutoRotationEvent.md) |  | [optional] 
 **OidcClientInfo** | Pointer to [**OidcClientInfo**](OidcClientInfo.md) |  | [optional] 
 **PasswordPolicy** | Pointer to [**PasswordPolicyInfo**](PasswordPolicyInfo.md) |  | [optional] 
 **RotatedSecretDetails** | Pointer to [**RotatedSecretDetailsInfo**](RotatedSecretDetailsInfo.md) |  | [optional] 
@@ -239,6 +241,31 @@ SetDynamicSecretProducerDetails sets DynamicSecretProducerDetails field to given
 
 HasDynamicSecretProducerDetails returns a boolean if a field has been set.
 
+### GetExpirationEvents
+
+`func (o *ItemGeneralInfo) GetExpirationEvents() []CertificateExpirationEvent`
+
+GetExpirationEvents returns the ExpirationEvents field if non-nil, zero value otherwise.
+
+### GetExpirationEventsOk
+
+`func (o *ItemGeneralInfo) GetExpirationEventsOk() (*[]CertificateExpirationEvent, bool)`
+
+GetExpirationEventsOk returns a tuple with the ExpirationEvents field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpirationEvents
+
+`func (o *ItemGeneralInfo) SetExpirationEvents(v []CertificateExpirationEvent)`
+
+SetExpirationEvents sets ExpirationEvents field to given value.
+
+### HasExpirationEvents
+
+`func (o *ItemGeneralInfo) HasExpirationEvents() bool`
+
+HasExpirationEvents returns a boolean if a field has been set.
+
 ### GetImporterInfo
 
 `func (o *ItemGeneralInfo) GetImporterInfo() ImporterInfo`
@@ -263,6 +290,31 @@ SetImporterInfo sets ImporterInfo field to given value.
 `func (o *ItemGeneralInfo) HasImporterInfo() bool`
 
 HasImporterInfo returns a boolean if a field has been set.
+
+### GetNextRotationEvents
+
+`func (o *ItemGeneralInfo) GetNextRotationEvents() []NextAutoRotationEvent`
+
+GetNextRotationEvents returns the NextRotationEvents field if non-nil, zero value otherwise.
+
+### GetNextRotationEventsOk
+
+`func (o *ItemGeneralInfo) GetNextRotationEventsOk() (*[]NextAutoRotationEvent, bool)`
+
+GetNextRotationEventsOk returns a tuple with the NextRotationEvents field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNextRotationEvents
+
+`func (o *ItemGeneralInfo) SetNextRotationEvents(v []NextAutoRotationEvent)`
+
+SetNextRotationEvents sets NextRotationEvents field to given value.
+
+### HasNextRotationEvents
+
+`func (o *ItemGeneralInfo) HasNextRotationEvents() bool`
+
+HasNextRotationEvents returns a boolean if a field has been set.
 
 ### GetOidcClientInfo
 

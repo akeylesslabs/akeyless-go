@@ -33,6 +33,12 @@ type Configure struct {
 	AzureAdObjectId *string `json:"azure_ad_object_id,omitempty"`
 	// Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type=cert in Curl Context)
 	CertData *string `json:"cert-data,omitempty"`
+	// Certificate Issuer Name
+	CertIssuerName *string `json:"cert-issuer-name,omitempty"`
+	// The username to sign in the SSH certificate (use a comma-separated list for more than one username)
+	CertUsername *string `json:"cert-username,omitempty"`
+	// Default path prefix for name of items, targets and auth methods
+	DefaultLocationPrefix *string `json:"default-location-prefix,omitempty"`
 	// GCP JWT audience
 	GcpAudience *string `json:"gcp-audience,omitempty"`
 	// Set output format to JSON
@@ -41,6 +47,8 @@ type Configure struct {
 	K8sAuthConfigName *string `json:"k8s-auth-config-name,omitempty"`
 	// Private key data encoded in base64. Used if file was not provided.(relevant only for access-type=cert in Curl Context)
 	KeyData *string `json:"key-data,omitempty"`
+	// Set this option to output legacy ('ssh-rsa-cert-v01@openssh.com') signing algorithm name in the certificate.
+	LegacySigningAlgName *bool `json:"legacy-signing-alg-name,omitempty"`
 	// The type of the OCI configuration to use [instance/apikey/resource] (relevant only for access-type=oci)
 	OciAuthType *string `json:"oci-auth-type,omitempty"`
 	// A list of Oracle Cloud IDs groups (relevant only for access-type=oci)
@@ -336,6 +344,102 @@ func (o *Configure) SetCertData(v string) {
 	o.CertData = &v
 }
 
+// GetCertIssuerName returns the CertIssuerName field value if set, zero value otherwise.
+func (o *Configure) GetCertIssuerName() string {
+	if o == nil || o.CertIssuerName == nil {
+		var ret string
+		return ret
+	}
+	return *o.CertIssuerName
+}
+
+// GetCertIssuerNameOk returns a tuple with the CertIssuerName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Configure) GetCertIssuerNameOk() (*string, bool) {
+	if o == nil || o.CertIssuerName == nil {
+		return nil, false
+	}
+	return o.CertIssuerName, true
+}
+
+// HasCertIssuerName returns a boolean if a field has been set.
+func (o *Configure) HasCertIssuerName() bool {
+	if o != nil && o.CertIssuerName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCertIssuerName gets a reference to the given string and assigns it to the CertIssuerName field.
+func (o *Configure) SetCertIssuerName(v string) {
+	o.CertIssuerName = &v
+}
+
+// GetCertUsername returns the CertUsername field value if set, zero value otherwise.
+func (o *Configure) GetCertUsername() string {
+	if o == nil || o.CertUsername == nil {
+		var ret string
+		return ret
+	}
+	return *o.CertUsername
+}
+
+// GetCertUsernameOk returns a tuple with the CertUsername field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Configure) GetCertUsernameOk() (*string, bool) {
+	if o == nil || o.CertUsername == nil {
+		return nil, false
+	}
+	return o.CertUsername, true
+}
+
+// HasCertUsername returns a boolean if a field has been set.
+func (o *Configure) HasCertUsername() bool {
+	if o != nil && o.CertUsername != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCertUsername gets a reference to the given string and assigns it to the CertUsername field.
+func (o *Configure) SetCertUsername(v string) {
+	o.CertUsername = &v
+}
+
+// GetDefaultLocationPrefix returns the DefaultLocationPrefix field value if set, zero value otherwise.
+func (o *Configure) GetDefaultLocationPrefix() string {
+	if o == nil || o.DefaultLocationPrefix == nil {
+		var ret string
+		return ret
+	}
+	return *o.DefaultLocationPrefix
+}
+
+// GetDefaultLocationPrefixOk returns a tuple with the DefaultLocationPrefix field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Configure) GetDefaultLocationPrefixOk() (*string, bool) {
+	if o == nil || o.DefaultLocationPrefix == nil {
+		return nil, false
+	}
+	return o.DefaultLocationPrefix, true
+}
+
+// HasDefaultLocationPrefix returns a boolean if a field has been set.
+func (o *Configure) HasDefaultLocationPrefix() bool {
+	if o != nil && o.DefaultLocationPrefix != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDefaultLocationPrefix gets a reference to the given string and assigns it to the DefaultLocationPrefix field.
+func (o *Configure) SetDefaultLocationPrefix(v string) {
+	o.DefaultLocationPrefix = &v
+}
+
 // GetGcpAudience returns the GcpAudience field value if set, zero value otherwise.
 func (o *Configure) GetGcpAudience() string {
 	if o == nil || o.GcpAudience == nil {
@@ -464,6 +568,38 @@ func (o *Configure) SetKeyData(v string) {
 	o.KeyData = &v
 }
 
+// GetLegacySigningAlgName returns the LegacySigningAlgName field value if set, zero value otherwise.
+func (o *Configure) GetLegacySigningAlgName() bool {
+	if o == nil || o.LegacySigningAlgName == nil {
+		var ret bool
+		return ret
+	}
+	return *o.LegacySigningAlgName
+}
+
+// GetLegacySigningAlgNameOk returns a tuple with the LegacySigningAlgName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Configure) GetLegacySigningAlgNameOk() (*bool, bool) {
+	if o == nil || o.LegacySigningAlgName == nil {
+		return nil, false
+	}
+	return o.LegacySigningAlgName, true
+}
+
+// HasLegacySigningAlgName returns a boolean if a field has been set.
+func (o *Configure) HasLegacySigningAlgName() bool {
+	if o != nil && o.LegacySigningAlgName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLegacySigningAlgName gets a reference to the given bool and assigns it to the LegacySigningAlgName field.
+func (o *Configure) SetLegacySigningAlgName(v bool) {
+	o.LegacySigningAlgName = &v
+}
+
 // GetOciAuthType returns the OciAuthType field value if set, zero value otherwise.
 func (o *Configure) GetOciAuthType() string {
 	if o == nil || o.OciAuthType == nil {
@@ -554,6 +690,15 @@ func (o Configure) MarshalJSON() ([]byte, error) {
 	if o.CertData != nil {
 		toSerialize["cert-data"] = o.CertData
 	}
+	if o.CertIssuerName != nil {
+		toSerialize["cert-issuer-name"] = o.CertIssuerName
+	}
+	if o.CertUsername != nil {
+		toSerialize["cert-username"] = o.CertUsername
+	}
+	if o.DefaultLocationPrefix != nil {
+		toSerialize["default-location-prefix"] = o.DefaultLocationPrefix
+	}
 	if o.GcpAudience != nil {
 		toSerialize["gcp-audience"] = o.GcpAudience
 	}
@@ -565,6 +710,9 @@ func (o Configure) MarshalJSON() ([]byte, error) {
 	}
 	if o.KeyData != nil {
 		toSerialize["key-data"] = o.KeyData
+	}
+	if o.LegacySigningAlgName != nil {
+		toSerialize["legacy-signing-alg-name"] = o.LegacySigningAlgName
 	}
 	if o.OciAuthType != nil {
 		toSerialize["oci-auth-type"] = o.OciAuthType

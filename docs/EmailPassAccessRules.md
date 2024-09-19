@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Email** | Pointer to **string** | The Email value | [optional] 
 **EncEmailWithSharedKey** | Pointer to **string** | EncEmailWithSharedKey is the email of this auth method, encrypted with the shared auth/uam key (for use in uam) | [optional] 
 **HashPass** | Pointer to **string** | The password value | [optional] 
+**LastResetPassword** | Pointer to [**time.Time**](time.Time.md) | The last password change date | [optional] 
 
 ## Methods
 
@@ -127,6 +128,31 @@ SetHashPass sets HashPass field to given value.
 `func (o *EmailPassAccessRules) HasHashPass() bool`
 
 HasHashPass returns a boolean if a field has been set.
+
+### GetLastResetPassword
+
+`func (o *EmailPassAccessRules) GetLastResetPassword() time.Time`
+
+GetLastResetPassword returns the LastResetPassword field if non-nil, zero value otherwise.
+
+### GetLastResetPasswordOk
+
+`func (o *EmailPassAccessRules) GetLastResetPasswordOk() (*time.Time, bool)`
+
+GetLastResetPasswordOk returns a tuple with the LastResetPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastResetPassword
+
+`func (o *EmailPassAccessRules) SetLastResetPassword(v time.Time)`
+
+SetLastResetPassword sets LastResetPassword field to given value.
+
+### HasLastResetPassword
+
+`func (o *EmailPassAccessRules) HasLastResetPassword() bool`
+
+HasLastResetPassword returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

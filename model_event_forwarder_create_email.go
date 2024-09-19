@@ -23,13 +23,13 @@ type EventForwarderCreateEmail struct {
 	Description *string `json:"description,omitempty"`
 	// A comma seperated list of email addresses to send event to
 	EmailTo *string `json:"email-to,omitempty"`
-	// List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, certificate-provisioning-success, certificate-provisioning-failure, auth-method-pending-expiration, auth-method-expired, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure, uid-rotation-failure, apply-justification, email-auth-method-approved, usage, rotation-usage, gateway-inactive, static-secret-updated]
+	// List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, certificate-provisioning-success, certificate-provisioning-failure, auth-method-pending-expiration, auth-method-expired, next-automatic-rotation, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure, uid-rotation-failure, apply-justification, email-auth-method-approved, usage, rotation-usage, gateway-inactive, static-secret-updated]
 	EventTypes *[]string `json:"event-types,omitempty"`
 	// Rate of periodic runner repetition in hours
 	Every *string `json:"every,omitempty"`
 	// Event sources
 	GatewaysEventSourceLocations []string `json:"gateways-event-source-locations"`
-	// Set this option to include event errors details [true\\false]
+	// Set this option to include event errors details [true/false]
 	IncludeError *string `json:"include-error,omitempty"`
 	// Items Event sources
 	ItemsEventSourceLocations *[]string `json:"items-event-source-locations,omitempty"`

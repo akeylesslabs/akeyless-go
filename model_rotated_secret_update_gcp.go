@@ -49,6 +49,8 @@ type RotatedSecretUpdateGcp struct {
 	PasswordLength *string `json:"password-length,omitempty"`
 	// List of the existent tags that will be removed from this item
 	RmTag *[]string `json:"rm-tag,omitempty"`
+	// How many days before the rotation of the item would you like to be notified
+	RotationEventIn *[]string `json:"rotation-event-in,omitempty"`
 	// The Hour of the rotation in UTC
 	RotationHour *int32 `json:"rotation-hour,omitempty"`
 	// The number of days to wait between every automatic key rotation (1-365)
@@ -596,6 +598,38 @@ func (o *RotatedSecretUpdateGcp) SetRmTag(v []string) {
 	o.RmTag = &v
 }
 
+// GetRotationEventIn returns the RotationEventIn field value if set, zero value otherwise.
+func (o *RotatedSecretUpdateGcp) GetRotationEventIn() []string {
+	if o == nil || o.RotationEventIn == nil {
+		var ret []string
+		return ret
+	}
+	return *o.RotationEventIn
+}
+
+// GetRotationEventInOk returns a tuple with the RotationEventIn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretUpdateGcp) GetRotationEventInOk() (*[]string, bool) {
+	if o == nil || o.RotationEventIn == nil {
+		return nil, false
+	}
+	return o.RotationEventIn, true
+}
+
+// HasRotationEventIn returns a boolean if a field has been set.
+func (o *RotatedSecretUpdateGcp) HasRotationEventIn() bool {
+	if o != nil && o.RotationEventIn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRotationEventIn gets a reference to the given []string and assigns it to the RotationEventIn field.
+func (o *RotatedSecretUpdateGcp) SetRotationEventIn(v []string) {
+	o.RotationEventIn = &v
+}
+
 // GetRotationHour returns the RotationHour field value if set, zero value otherwise.
 func (o *RotatedSecretUpdateGcp) GetRotationHour() int32 {
 	if o == nil || o.RotationHour == nil {
@@ -797,6 +831,9 @@ func (o RotatedSecretUpdateGcp) MarshalJSON() ([]byte, error) {
 	}
 	if o.RmTag != nil {
 		toSerialize["rm-tag"] = o.RmTag
+	}
+	if o.RotationEventIn != nil {
+		toSerialize["rotation-event-in"] = o.RotationEventIn
 	}
 	if o.RotationHour != nil {
 		toSerialize["rotation-hour"] = o.RotationHour

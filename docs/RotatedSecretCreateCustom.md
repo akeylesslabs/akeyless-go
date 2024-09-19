@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Rotated secret name | 
 **PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
 **RotateAfterDisconnect** | Pointer to **string** | Rotate the value of the secret after SRA session ends [true/false] | [optional] [default to "false"]
+**RotationEventIn** | Pointer to **[]string** | How many days before the rotation of the item would you like to be notified | [optional] 
 **RotationHour** | Pointer to **int32** | The Hour of the rotation in UTC | [optional] 
 **RotationInterval** | Pointer to **string** | The number of days to wait between every automatic key rotation (1-365) | [optional] 
 **SecureAccessAllowExternalUser** | Pointer to **bool** | Allow providing external user for a domain users | [optional] [default to false]
@@ -322,6 +323,31 @@ SetRotateAfterDisconnect sets RotateAfterDisconnect field to given value.
 `func (o *RotatedSecretCreateCustom) HasRotateAfterDisconnect() bool`
 
 HasRotateAfterDisconnect returns a boolean if a field has been set.
+
+### GetRotationEventIn
+
+`func (o *RotatedSecretCreateCustom) GetRotationEventIn() []string`
+
+GetRotationEventIn returns the RotationEventIn field if non-nil, zero value otherwise.
+
+### GetRotationEventInOk
+
+`func (o *RotatedSecretCreateCustom) GetRotationEventInOk() (*[]string, bool)`
+
+GetRotationEventInOk returns a tuple with the RotationEventIn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotationEventIn
+
+`func (o *RotatedSecretCreateCustom) SetRotationEventIn(v []string)`
+
+SetRotationEventIn sets RotationEventIn field to given value.
+
+### HasRotationEventIn
+
+`func (o *RotatedSecretCreateCustom) HasRotationEventIn() bool`
+
+HasRotationEventIn returns a boolean if a field has been set.
 
 ### GetRotationHour
 
