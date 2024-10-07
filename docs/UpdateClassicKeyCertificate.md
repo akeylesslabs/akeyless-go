@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CertFileData** | Pointer to **string** | PEM Certificate in a Base64 format. Used for updating RSA keys&#39; certificates. | [optional] 
+**CertificateFormat** | Pointer to **string** |  | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | ClassicKey name | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -53,6 +54,31 @@ SetCertFileData sets CertFileData field to given value.
 `func (o *UpdateClassicKeyCertificate) HasCertFileData() bool`
 
 HasCertFileData returns a boolean if a field has been set.
+
+### GetCertificateFormat
+
+`func (o *UpdateClassicKeyCertificate) GetCertificateFormat() string`
+
+GetCertificateFormat returns the CertificateFormat field if non-nil, zero value otherwise.
+
+### GetCertificateFormatOk
+
+`func (o *UpdateClassicKeyCertificate) GetCertificateFormatOk() (*string, bool)`
+
+GetCertificateFormatOk returns a tuple with the CertificateFormat field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificateFormat
+
+`func (o *UpdateClassicKeyCertificate) SetCertificateFormat(v string)`
+
+SetCertificateFormat sets CertificateFormat field to given value.
+
+### HasCertificateFormat
+
+`func (o *UpdateClassicKeyCertificate) HasCertificateFormat() bool`
+
+HasCertificateFormat returns a boolean if a field has been set.
 
 ### GetJson
 

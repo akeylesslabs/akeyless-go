@@ -41,15 +41,19 @@ type UpdatePKICertIssuer struct {
 	CreatePrivateCrl *bool `json:"create-private-crl,omitempty"`
 	// Set this to allow the cert issuer will expose a public CRL endpoint
 	CreatePublicCrl *bool `json:"create-public-crl,omitempty"`
+	// Mark key usage as critical [true/false]
+	CriticalKeyUsage *string `json:"critical-key-usage,omitempty"`
 	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
 	// A path in which to save generated certificates
 	DestinationPath *string `json:"destination-path,omitempty"`
+	// If set, the cert issuer will support the acme protocol
+	EnableAcme *bool `json:"enable-acme,omitempty"`
 	// How many days before the expiration of the certificate would you like to be notified.
 	ExpirationEventIn *[]string `json:"expiration-event-in,omitempty"`
-	// The GW cluster URL to issue the certificate from, required in Public CA mode or to allow CRLs on private CA
+	// The GW cluster URL to issue the certificate from. Required in Public CA mode, to allow CRLs on private CA, or to enable ACME
 	GwClusterUrl *string `json:"gw-cluster-url,omitempty"`
 	// If set, the basic constraints extension will be added to certificate
 	IsCa *bool `json:"is-ca,omitempty"`
@@ -101,6 +105,8 @@ type UpdatePKICertIssuer struct {
 // will change when the set of required properties is changed
 func NewUpdatePKICertIssuer(name string, signerKeyName string, ttl string, ) *UpdatePKICertIssuer {
 	this := UpdatePKICertIssuer{}
+	var criticalKeyUsage string = "true"
+	this.CriticalKeyUsage = &criticalKeyUsage
 	var json bool = false
 	this.Json = &json
 	var keyUsage string = "DigitalSignature,KeyAgreement,KeyEncipherment"
@@ -116,6 +122,8 @@ func NewUpdatePKICertIssuer(name string, signerKeyName string, ttl string, ) *Up
 // but it doesn't guarantee that properties required by API are set
 func NewUpdatePKICertIssuerWithDefaults() *UpdatePKICertIssuer {
 	this := UpdatePKICertIssuer{}
+	var criticalKeyUsage string = "true"
+	this.CriticalKeyUsage = &criticalKeyUsage
 	var json bool = false
 	this.Json = &json
 	var keyUsage string = "DigitalSignature,KeyAgreement,KeyEncipherment"
@@ -509,6 +517,38 @@ func (o *UpdatePKICertIssuer) SetCreatePublicCrl(v bool) {
 	o.CreatePublicCrl = &v
 }
 
+// GetCriticalKeyUsage returns the CriticalKeyUsage field value if set, zero value otherwise.
+func (o *UpdatePKICertIssuer) GetCriticalKeyUsage() string {
+	if o == nil || o.CriticalKeyUsage == nil {
+		var ret string
+		return ret
+	}
+	return *o.CriticalKeyUsage
+}
+
+// GetCriticalKeyUsageOk returns a tuple with the CriticalKeyUsage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdatePKICertIssuer) GetCriticalKeyUsageOk() (*string, bool) {
+	if o == nil || o.CriticalKeyUsage == nil {
+		return nil, false
+	}
+	return o.CriticalKeyUsage, true
+}
+
+// HasCriticalKeyUsage returns a boolean if a field has been set.
+func (o *UpdatePKICertIssuer) HasCriticalKeyUsage() bool {
+	if o != nil && o.CriticalKeyUsage != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCriticalKeyUsage gets a reference to the given string and assigns it to the CriticalKeyUsage field.
+func (o *UpdatePKICertIssuer) SetCriticalKeyUsage(v string) {
+	o.CriticalKeyUsage = &v
+}
+
 // GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
 func (o *UpdatePKICertIssuer) GetDeleteProtection() string {
 	if o == nil || o.DeleteProtection == nil {
@@ -603,6 +643,38 @@ func (o *UpdatePKICertIssuer) HasDestinationPath() bool {
 // SetDestinationPath gets a reference to the given string and assigns it to the DestinationPath field.
 func (o *UpdatePKICertIssuer) SetDestinationPath(v string) {
 	o.DestinationPath = &v
+}
+
+// GetEnableAcme returns the EnableAcme field value if set, zero value otherwise.
+func (o *UpdatePKICertIssuer) GetEnableAcme() bool {
+	if o == nil || o.EnableAcme == nil {
+		var ret bool
+		return ret
+	}
+	return *o.EnableAcme
+}
+
+// GetEnableAcmeOk returns a tuple with the EnableAcme field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdatePKICertIssuer) GetEnableAcmeOk() (*bool, bool) {
+	if o == nil || o.EnableAcme == nil {
+		return nil, false
+	}
+	return o.EnableAcme, true
+}
+
+// HasEnableAcme returns a boolean if a field has been set.
+func (o *UpdatePKICertIssuer) HasEnableAcme() bool {
+	if o != nil && o.EnableAcme != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableAcme gets a reference to the given bool and assigns it to the EnableAcme field.
+func (o *UpdatePKICertIssuer) SetEnableAcme(v bool) {
+	o.EnableAcme = &v
 }
 
 // GetExpirationEventIn returns the ExpirationEventIn field value if set, zero value otherwise.
@@ -1355,6 +1427,9 @@ func (o UpdatePKICertIssuer) MarshalJSON() ([]byte, error) {
 	if o.CreatePublicCrl != nil {
 		toSerialize["create-public-crl"] = o.CreatePublicCrl
 	}
+	if o.CriticalKeyUsage != nil {
+		toSerialize["critical-key-usage"] = o.CriticalKeyUsage
+	}
 	if o.DeleteProtection != nil {
 		toSerialize["delete_protection"] = o.DeleteProtection
 	}
@@ -1363,6 +1438,9 @@ func (o UpdatePKICertIssuer) MarshalJSON() ([]byte, error) {
 	}
 	if o.DestinationPath != nil {
 		toSerialize["destination-path"] = o.DestinationPath
+	}
+	if o.EnableAcme != nil {
+		toSerialize["enable-acme"] = o.EnableAcme
 	}
 	if o.ExpirationEventIn != nil {
 		toSerialize["expiration-event-in"] = o.ExpirationEventIn

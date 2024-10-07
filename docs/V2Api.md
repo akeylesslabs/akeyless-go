@@ -37,6 +37,7 @@ Method | HTTP request | Description
 [**AuthMethodUpdateOauth2**](V2Api.md#AuthMethodUpdateOauth2) | **Post** /auth-method-update-oauth2 | 
 [**AuthMethodUpdateSAML**](V2Api.md#AuthMethodUpdateSAML) | **Post** /auth-method-update-saml | 
 [**AuthMethodUpdateUniversalIdentity**](V2Api.md#AuthMethodUpdateUniversalIdentity) | **Post** /auth-method-update-universal-identity | 
+[**ChangeAdminAccountPassword**](V2Api.md#ChangeAdminAccountPassword) | **Post** /change-admin-account-password | 
 [**Configure**](V2Api.md#Configure) | **Post** /configure | 
 [**Connect**](V2Api.md#Connect) | **Post** /connect | 
 [**CreateAWSTarget**](V2Api.md#CreateAWSTarget) | **Post** /create-aws-target | 
@@ -94,6 +95,7 @@ Method | HTTP request | Description
 [**CreateWindowsTarget**](V2Api.md#CreateWindowsTarget) | **Post** /create-windows-target | 
 [**CreateZeroSSLTarget**](V2Api.md#CreateZeroSSLTarget) | **Post** /create-zerossl-target | 
 [**CreateldapTarget**](V2Api.md#CreateldapTarget) | **Post** /create-ldap-target | 
+[**DeactivateAcmeAccount**](V2Api.md#DeactivateAcmeAccount) | **Post** /deactivate-acme-account | 
 [**Decrypt**](V2Api.md#Decrypt) | **Post** /decrypt | 
 [**DecryptBatch**](V2Api.md#DecryptBatch) | **Post** /decrypt-batch | 
 [**DecryptGPG**](V2Api.md#DecryptGPG) | **Post** /decrypt-gpg | 
@@ -306,6 +308,7 @@ Method | HTTP request | Description
 [**GatewayUpdateRemoteAccessRdpRecordings**](V2Api.md#GatewayUpdateRemoteAccessRdpRecordings) | **Post** /gateway-update-remote-access-rdp-recording | 
 [**GatewayUpdateTlsCert**](V2Api.md#GatewayUpdateTlsCert) | **Post** /gateway-update-tls-cert | 
 [**GatewayUpdateTmpUsers**](V2Api.md#GatewayUpdateTmpUsers) | **Post** /gateway-update-producer-tmp-creds | 
+[**GenerateAcmeEab**](V2Api.md#GenerateAcmeEab) | **Post** /generate-acme-eab | 
 [**GenerateCsr**](V2Api.md#GenerateCsr) | **Post** /generate-csr | 
 [**GetAccountLogo**](V2Api.md#GetAccountLogo) | **Post** /get-account-logo | 
 [**GetAccountSettings**](V2Api.md#GetAccountSettings) | **Post** /get-account-settings | 
@@ -352,6 +355,7 @@ Method | HTTP request | Description
 [**KmipRenewServerCertificate**](V2Api.md#KmipRenewServerCertificate) | **Post** /kmip-renew-environment | 
 [**KmipServerSetup**](V2Api.md#KmipServerSetup) | **Post** /kmip-create-environment | 
 [**KmipSetServerState**](V2Api.md#KmipSetServerState) | **Post** /kmip-set-environment-state | 
+[**ListAcmeAccounts**](V2Api.md#ListAcmeAccounts) | **Post** /list-acme-accounts | 
 [**ListAuthMethods**](V2Api.md#ListAuthMethods) | **Post** /list-auth-methods | 
 [**ListGateways**](V2Api.md#ListGateways) | **Post** /list-gateways | 
 [**ListGroups**](V2Api.md#ListGroups) | **Post** /list-group | 
@@ -2656,6 +2660,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AuthMethodUpdateOutput**](authMethodUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ChangeAdminAccountPassword
+
+> map[string]interface{} ChangeAdminAccountPassword(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewchangeAdminAccountPassword("CurrentPassword_example", "NewPassword_example") // ChangeAdminAccountPassword | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.ChangeAdminAccountPassword(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.ChangeAdminAccountPassword``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ChangeAdminAccountPassword`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.ChangeAdminAccountPassword`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiChangeAdminAccountPasswordRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**ChangeAdminAccountPassword**](ChangeAdminAccountPassword.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
 
 ### Authorization
 
@@ -6304,6 +6372,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateLdapTargetOutput**](createLdapTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeactivateAcmeAccount
+
+> map[string]interface{} DeactivateAcmeAccount(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewdeactivateAcmeAccount("AcmeAccountId_example", "CertIssuerName_example") // DeactivateAcmeAccount | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.DeactivateAcmeAccount(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DeactivateAcmeAccount``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeactivateAcmeAccount`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.DeactivateAcmeAccount`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeactivateAcmeAccountRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DeactivateAcmeAccount**](DeactivateAcmeAccount.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
 
 ### Authorization
 
@@ -19874,6 +20006,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GenerateAcmeEab
+
+> GenerateAcmeEabOutput GenerateAcmeEab(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewgenerateAcmeEab("CertIssuerName_example") // GenerateAcmeEab | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.GenerateAcmeEab(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GenerateAcmeEab``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GenerateAcmeEab`: GenerateAcmeEabOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.GenerateAcmeEab`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGenerateAcmeEabRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GenerateAcmeEab**](GenerateAcmeEab.md) |  | 
+
+### Return type
+
+[**GenerateAcmeEabOutput**](GenerateAcmeEabOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GenerateCsr
 
 > GenerateCsrOutput GenerateCsr(ctx).Body(body).Execute()
@@ -22798,6 +22994,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**KmipSetServerStateOutput**](kmipSetServerStateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListAcmeAccounts
+
+> ListAcmeAccountsOutput ListAcmeAccounts(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewlistAcmeAccounts("CertIssuerName_example") // ListAcmeAccounts | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.ListAcmeAccounts(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.ListAcmeAccounts``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListAcmeAccounts`: ListAcmeAccountsOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.ListAcmeAccounts`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListAcmeAccountsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**ListAcmeAccounts**](ListAcmeAccounts.md) |  | 
+
+### Return type
+
+[**ListAcmeAccountsOutput**](ListAcmeAccountsOutput.md)
 
 ### Authorization
 

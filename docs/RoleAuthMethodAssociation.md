@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AuthMethodAccessId** | Pointer to **string** |  | [optional] 
 **AuthMethodName** | Pointer to **string** |  | [optional] 
 **AuthMethodSubClaims** | Pointer to [**map[string][]string**](array.md) |  | [optional] 
+**IsSubclaimsWithOperator** | Pointer to **bool** |  | [optional] 
 **SubClaimsCaseSensitive** | Pointer to **bool** |  | [optional] 
 
 ## Methods
@@ -128,6 +129,31 @@ SetAuthMethodSubClaims sets AuthMethodSubClaims field to given value.
 `func (o *RoleAuthMethodAssociation) HasAuthMethodSubClaims() bool`
 
 HasAuthMethodSubClaims returns a boolean if a field has been set.
+
+### GetIsSubclaimsWithOperator
+
+`func (o *RoleAuthMethodAssociation) GetIsSubclaimsWithOperator() bool`
+
+GetIsSubclaimsWithOperator returns the IsSubclaimsWithOperator field if non-nil, zero value otherwise.
+
+### GetIsSubclaimsWithOperatorOk
+
+`func (o *RoleAuthMethodAssociation) GetIsSubclaimsWithOperatorOk() (*bool, bool)`
+
+GetIsSubclaimsWithOperatorOk returns a tuple with the IsSubclaimsWithOperator field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsSubclaimsWithOperator
+
+`func (o *RoleAuthMethodAssociation) SetIsSubclaimsWithOperator(v bool)`
+
+SetIsSubclaimsWithOperator sets IsSubclaimsWithOperator field to given value.
+
+### HasIsSubclaimsWithOperator
+
+`func (o *RoleAuthMethodAssociation) HasIsSubclaimsWithOperator() bool`
+
+HasIsSubclaimsWithOperator returns a boolean if a field has been set.
 
 ### GetSubClaimsCaseSensitive
 

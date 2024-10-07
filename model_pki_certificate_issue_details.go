@@ -17,6 +17,7 @@ import (
 
 // PKICertificateIssueDetails struct for PKICertificateIssueDetails
 type PKICertificateIssueDetails struct {
+	AcmeEnabled *bool `json:"acme_enabled,omitempty"`
 	AllowAnyName *bool `json:"allow_any_name,omitempty"`
 	AllowCopyExtFromCsr *bool `json:"allow_copy_ext_from_csr,omitempty"`
 	AllowSubdomains *bool `json:"allow_subdomains,omitempty"`
@@ -43,6 +44,7 @@ type PKICertificateIssueDetails struct {
 	KeyType *string `json:"key_type,omitempty"`
 	KeyUsageList *[]string `json:"key_usage_list,omitempty"`
 	Locality *[]string `json:"locality,omitempty"`
+	NonCriticalKeyUsage *bool `json:"non_critical_key_usage,omitempty"`
 	// A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years.
 	NotBeforeDuration *int64 `json:"not_before_duration,omitempty"`
 	OrganizationList *[]string `json:"organization_list,omitempty"`
@@ -71,6 +73,38 @@ func NewPKICertificateIssueDetails() *PKICertificateIssueDetails {
 func NewPKICertificateIssueDetailsWithDefaults() *PKICertificateIssueDetails {
 	this := PKICertificateIssueDetails{}
 	return &this
+}
+
+// GetAcmeEnabled returns the AcmeEnabled field value if set, zero value otherwise.
+func (o *PKICertificateIssueDetails) GetAcmeEnabled() bool {
+	if o == nil || o.AcmeEnabled == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AcmeEnabled
+}
+
+// GetAcmeEnabledOk returns a tuple with the AcmeEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PKICertificateIssueDetails) GetAcmeEnabledOk() (*bool, bool) {
+	if o == nil || o.AcmeEnabled == nil {
+		return nil, false
+	}
+	return o.AcmeEnabled, true
+}
+
+// HasAcmeEnabled returns a boolean if a field has been set.
+func (o *PKICertificateIssueDetails) HasAcmeEnabled() bool {
+	if o != nil && o.AcmeEnabled != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAcmeEnabled gets a reference to the given bool and assigns it to the AcmeEnabled field.
+func (o *PKICertificateIssueDetails) SetAcmeEnabled(v bool) {
+	o.AcmeEnabled = &v
 }
 
 // GetAllowAnyName returns the AllowAnyName field value if set, zero value otherwise.
@@ -809,6 +843,38 @@ func (o *PKICertificateIssueDetails) SetLocality(v []string) {
 	o.Locality = &v
 }
 
+// GetNonCriticalKeyUsage returns the NonCriticalKeyUsage field value if set, zero value otherwise.
+func (o *PKICertificateIssueDetails) GetNonCriticalKeyUsage() bool {
+	if o == nil || o.NonCriticalKeyUsage == nil {
+		var ret bool
+		return ret
+	}
+	return *o.NonCriticalKeyUsage
+}
+
+// GetNonCriticalKeyUsageOk returns a tuple with the NonCriticalKeyUsage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PKICertificateIssueDetails) GetNonCriticalKeyUsageOk() (*bool, bool) {
+	if o == nil || o.NonCriticalKeyUsage == nil {
+		return nil, false
+	}
+	return o.NonCriticalKeyUsage, true
+}
+
+// HasNonCriticalKeyUsage returns a boolean if a field has been set.
+func (o *PKICertificateIssueDetails) HasNonCriticalKeyUsage() bool {
+	if o != nil && o.NonCriticalKeyUsage != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNonCriticalKeyUsage gets a reference to the given bool and assigns it to the NonCriticalKeyUsage field.
+func (o *PKICertificateIssueDetails) SetNonCriticalKeyUsage(v bool) {
+	o.NonCriticalKeyUsage = &v
+}
+
 // GetNotBeforeDuration returns the NotBeforeDuration field value if set, zero value otherwise.
 func (o *PKICertificateIssueDetails) GetNotBeforeDuration() int64 {
 	if o == nil || o.NotBeforeDuration == nil {
@@ -1099,6 +1165,9 @@ func (o *PKICertificateIssueDetails) SetStreetAddress(v []string) {
 
 func (o PKICertificateIssueDetails) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AcmeEnabled != nil {
+		toSerialize["acme_enabled"] = o.AcmeEnabled
+	}
 	if o.AllowAnyName != nil {
 		toSerialize["allow_any_name"] = o.AllowAnyName
 	}
@@ -1167,6 +1236,9 @@ func (o PKICertificateIssueDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.Locality != nil {
 		toSerialize["locality"] = o.Locality
+	}
+	if o.NonCriticalKeyUsage != nil {
+		toSerialize["non_critical_key_usage"] = o.NonCriticalKeyUsage
 	}
 	if o.NotBeforeDuration != nil {
 		toSerialize["not_before_duration"] = o.NotBeforeDuration

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Accessibility** | Pointer to **string** | for personal password manager | [optional] [default to "regular"]
 **AddTag** | Pointer to **[]string** | List of the new tags that will be attached to this item | [optional] 
 **CertFileData** | Pointer to **string** | PEM Certificate in a Base64 format. Used for updating RSA keys&#39; certificates. | [optional] 
+**CertificateFormat** | Pointer to **string** |  | [optional] 
 **ChangeEvent** | Pointer to **string** | Trigger an event when a secret value changed [true/false] (Relevant only for Static Secret) | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] [default to "default_metadata"]
@@ -166,6 +167,31 @@ SetCertFileData sets CertFileData field to given value.
 `func (o *UpdateItem) HasCertFileData() bool`
 
 HasCertFileData returns a boolean if a field has been set.
+
+### GetCertificateFormat
+
+`func (o *UpdateItem) GetCertificateFormat() string`
+
+GetCertificateFormat returns the CertificateFormat field if non-nil, zero value otherwise.
+
+### GetCertificateFormatOk
+
+`func (o *UpdateItem) GetCertificateFormatOk() (*string, bool)`
+
+GetCertificateFormatOk returns a tuple with the CertificateFormat field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificateFormat
+
+`func (o *UpdateItem) SetCertificateFormat(v string)`
+
+SetCertificateFormat sets CertificateFormat field to given value.
+
+### HasCertificateFormat
+
+`func (o *UpdateItem) HasCertificateFormat() bool`
+
+HasCertificateFormat returns a boolean if a field has been set.
 
 ### GetChangeEvent
 

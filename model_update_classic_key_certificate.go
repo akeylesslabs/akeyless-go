@@ -19,6 +19,7 @@ import (
 type UpdateClassicKeyCertificate struct {
 	// PEM Certificate in a Base64 format. Used for updating RSA keys' certificates.
 	CertFileData *string `json:"cert-file-data,omitempty"`
+	CertificateFormat *string `json:"certificate-format,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// ClassicKey name
@@ -81,6 +82,38 @@ func (o *UpdateClassicKeyCertificate) HasCertFileData() bool {
 // SetCertFileData gets a reference to the given string and assigns it to the CertFileData field.
 func (o *UpdateClassicKeyCertificate) SetCertFileData(v string) {
 	o.CertFileData = &v
+}
+
+// GetCertificateFormat returns the CertificateFormat field value if set, zero value otherwise.
+func (o *UpdateClassicKeyCertificate) GetCertificateFormat() string {
+	if o == nil || o.CertificateFormat == nil {
+		var ret string
+		return ret
+	}
+	return *o.CertificateFormat
+}
+
+// GetCertificateFormatOk returns a tuple with the CertificateFormat field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateClassicKeyCertificate) GetCertificateFormatOk() (*string, bool) {
+	if o == nil || o.CertificateFormat == nil {
+		return nil, false
+	}
+	return o.CertificateFormat, true
+}
+
+// HasCertificateFormat returns a boolean if a field has been set.
+func (o *UpdateClassicKeyCertificate) HasCertificateFormat() bool {
+	if o != nil && o.CertificateFormat != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificateFormat gets a reference to the given string and assigns it to the CertificateFormat field.
+func (o *UpdateClassicKeyCertificate) SetCertificateFormat(v string) {
+	o.CertificateFormat = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -207,6 +240,9 @@ func (o UpdateClassicKeyCertificate) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.CertFileData != nil {
 		toSerialize["cert-file-data"] = o.CertFileData
+	}
+	if o.CertificateFormat != nil {
+		toSerialize["certificate-format"] = o.CertificateFormat
 	}
 	if o.Json != nil {
 		toSerialize["json"] = o.Json

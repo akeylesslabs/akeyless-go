@@ -21,6 +21,7 @@ type AuthMethodRoleAssociation struct {
 	AssocId *string `json:"assoc_id,omitempty"`
 	AuthMethodSubClaims *map[string][]string `json:"auth_method_sub_claims,omitempty"`
 	IsSubClaimsCaseSensitive *bool `json:"is_sub_claims_case_sensitive,omitempty"`
+	IsSubclaimsWithOperator *bool `json:"is_subclaims_with_operator,omitempty"`
 	RoleName *string `json:"role_name,omitempty"`
 	Rules *Rules `json:"rules,omitempty"`
 }
@@ -170,6 +171,38 @@ func (o *AuthMethodRoleAssociation) SetIsSubClaimsCaseSensitive(v bool) {
 	o.IsSubClaimsCaseSensitive = &v
 }
 
+// GetIsSubclaimsWithOperator returns the IsSubclaimsWithOperator field value if set, zero value otherwise.
+func (o *AuthMethodRoleAssociation) GetIsSubclaimsWithOperator() bool {
+	if o == nil || o.IsSubclaimsWithOperator == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IsSubclaimsWithOperator
+}
+
+// GetIsSubclaimsWithOperatorOk returns a tuple with the IsSubclaimsWithOperator field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodRoleAssociation) GetIsSubclaimsWithOperatorOk() (*bool, bool) {
+	if o == nil || o.IsSubclaimsWithOperator == nil {
+		return nil, false
+	}
+	return o.IsSubclaimsWithOperator, true
+}
+
+// HasIsSubclaimsWithOperator returns a boolean if a field has been set.
+func (o *AuthMethodRoleAssociation) HasIsSubclaimsWithOperator() bool {
+	if o != nil && o.IsSubclaimsWithOperator != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIsSubclaimsWithOperator gets a reference to the given bool and assigns it to the IsSubclaimsWithOperator field.
+func (o *AuthMethodRoleAssociation) SetIsSubclaimsWithOperator(v bool) {
+	o.IsSubclaimsWithOperator = &v
+}
+
 // GetRoleName returns the RoleName field value if set, zero value otherwise.
 func (o *AuthMethodRoleAssociation) GetRoleName() string {
 	if o == nil || o.RoleName == nil {
@@ -247,6 +280,9 @@ func (o AuthMethodRoleAssociation) MarshalJSON() ([]byte, error) {
 	}
 	if o.IsSubClaimsCaseSensitive != nil {
 		toSerialize["is_sub_claims_case_sensitive"] = o.IsSubClaimsCaseSensitive
+	}
+	if o.IsSubclaimsWithOperator != nil {
+		toSerialize["is_subclaims_with_operator"] = o.IsSubclaimsWithOperator
 	}
 	if o.RoleName != nil {
 		toSerialize["role_name"] = o.RoleName

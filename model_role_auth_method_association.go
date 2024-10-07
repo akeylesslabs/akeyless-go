@@ -21,6 +21,7 @@ type RoleAuthMethodAssociation struct {
 	AuthMethodAccessId *string `json:"auth_method_access_id,omitempty"`
 	AuthMethodName *string `json:"auth_method_name,omitempty"`
 	AuthMethodSubClaims *map[string][]string `json:"auth_method_sub_claims,omitempty"`
+	IsSubclaimsWithOperator *bool `json:"is_subclaims_with_operator,omitempty"`
 	SubClaimsCaseSensitive *bool `json:"sub_claims_case_sensitive,omitempty"`
 }
 
@@ -169,6 +170,38 @@ func (o *RoleAuthMethodAssociation) SetAuthMethodSubClaims(v map[string][]string
 	o.AuthMethodSubClaims = &v
 }
 
+// GetIsSubclaimsWithOperator returns the IsSubclaimsWithOperator field value if set, zero value otherwise.
+func (o *RoleAuthMethodAssociation) GetIsSubclaimsWithOperator() bool {
+	if o == nil || o.IsSubclaimsWithOperator == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IsSubclaimsWithOperator
+}
+
+// GetIsSubclaimsWithOperatorOk returns a tuple with the IsSubclaimsWithOperator field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RoleAuthMethodAssociation) GetIsSubclaimsWithOperatorOk() (*bool, bool) {
+	if o == nil || o.IsSubclaimsWithOperator == nil {
+		return nil, false
+	}
+	return o.IsSubclaimsWithOperator, true
+}
+
+// HasIsSubclaimsWithOperator returns a boolean if a field has been set.
+func (o *RoleAuthMethodAssociation) HasIsSubclaimsWithOperator() bool {
+	if o != nil && o.IsSubclaimsWithOperator != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIsSubclaimsWithOperator gets a reference to the given bool and assigns it to the IsSubclaimsWithOperator field.
+func (o *RoleAuthMethodAssociation) SetIsSubclaimsWithOperator(v bool) {
+	o.IsSubclaimsWithOperator = &v
+}
+
 // GetSubClaimsCaseSensitive returns the SubClaimsCaseSensitive field value if set, zero value otherwise.
 func (o *RoleAuthMethodAssociation) GetSubClaimsCaseSensitive() bool {
 	if o == nil || o.SubClaimsCaseSensitive == nil {
@@ -214,6 +247,9 @@ func (o RoleAuthMethodAssociation) MarshalJSON() ([]byte, error) {
 	}
 	if o.AuthMethodSubClaims != nil {
 		toSerialize["auth_method_sub_claims"] = o.AuthMethodSubClaims
+	}
+	if o.IsSubclaimsWithOperator != nil {
+		toSerialize["is_subclaims_with_operator"] = o.IsSubclaimsWithOperator
 	}
 	if o.SubClaimsCaseSensitive != nil {
 		toSerialize["sub_claims_case_sensitive"] = o.SubClaimsCaseSensitive

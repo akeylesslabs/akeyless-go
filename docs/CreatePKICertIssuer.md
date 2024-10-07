@@ -16,11 +16,13 @@ Name | Type | Description | Notes
 **Country** | Pointer to **string** | A comma-separated list of countries that will be set in the issued certificate | [optional] 
 **CreatePrivateCrl** | Pointer to **bool** | Set this to allow the issuer will expose a CRL endpoint in the Gateway | [optional] 
 **CreatePublicCrl** | Pointer to **bool** | Set this to allow the cert issuer will expose a public CRL endpoint | [optional] 
+**CriticalKeyUsage** | Pointer to **string** | Mark key usage as critical [true/false] | [optional] [default to "true"]
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **DestinationPath** | Pointer to **string** | A path in which to save generated certificates | [optional] 
+**EnableAcme** | Pointer to **bool** | If set, the cert issuer will support the acme protocol | [optional] 
 **ExpirationEventIn** | Pointer to **[]string** | How many days before the expiration of the certificate would you like to be notified. | [optional] 
-**GwClusterUrl** | Pointer to **string** | The GW cluster URL to issue the certificate from, required in Public CA mode or to allow CRLs on private CA | [optional] 
+**GwClusterUrl** | Pointer to **string** | The GW cluster URL to issue the certificate from. Required in Public CA mode, to allow CRLs on private CA, or to enable ACME | [optional] 
 **IsCa** | Pointer to **bool** | If set, the basic constraints extension will be added to certificate | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeyUsage** | Pointer to **string** | key-usage | [optional] [default to "DigitalSignature,KeyAgreement,KeyEncipherment"]
@@ -361,6 +363,31 @@ SetCreatePublicCrl sets CreatePublicCrl field to given value.
 
 HasCreatePublicCrl returns a boolean if a field has been set.
 
+### GetCriticalKeyUsage
+
+`func (o *CreatePKICertIssuer) GetCriticalKeyUsage() string`
+
+GetCriticalKeyUsage returns the CriticalKeyUsage field if non-nil, zero value otherwise.
+
+### GetCriticalKeyUsageOk
+
+`func (o *CreatePKICertIssuer) GetCriticalKeyUsageOk() (*string, bool)`
+
+GetCriticalKeyUsageOk returns a tuple with the CriticalKeyUsage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCriticalKeyUsage
+
+`func (o *CreatePKICertIssuer) SetCriticalKeyUsage(v string)`
+
+SetCriticalKeyUsage sets CriticalKeyUsage field to given value.
+
+### HasCriticalKeyUsage
+
+`func (o *CreatePKICertIssuer) HasCriticalKeyUsage() bool`
+
+HasCriticalKeyUsage returns a boolean if a field has been set.
+
 ### GetDeleteProtection
 
 `func (o *CreatePKICertIssuer) GetDeleteProtection() string`
@@ -435,6 +462,31 @@ SetDestinationPath sets DestinationPath field to given value.
 `func (o *CreatePKICertIssuer) HasDestinationPath() bool`
 
 HasDestinationPath returns a boolean if a field has been set.
+
+### GetEnableAcme
+
+`func (o *CreatePKICertIssuer) GetEnableAcme() bool`
+
+GetEnableAcme returns the EnableAcme field if non-nil, zero value otherwise.
+
+### GetEnableAcmeOk
+
+`func (o *CreatePKICertIssuer) GetEnableAcmeOk() (*bool, bool)`
+
+GetEnableAcmeOk returns a tuple with the EnableAcme field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableAcme
+
+`func (o *CreatePKICertIssuer) SetEnableAcme(v bool)`
+
+SetEnableAcme sets EnableAcme field to given value.
+
+### HasEnableAcme
+
+`func (o *CreatePKICertIssuer) HasEnableAcme() bool`
+
+HasEnableAcme returns a boolean if a field has been set.
 
 ### GetExpirationEventIn
 

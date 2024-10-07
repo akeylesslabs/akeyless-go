@@ -910,6 +910,33 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /change-admin-account-password:
+    post:
+      operationId: changeAdminAccountPassword
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/changeAdminAccountPassword'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: changeAdminAccountPasswordResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /configure:
     post:
       operationId: configure
@@ -2439,6 +2466,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/createZeroSSLTargetOutput'
           description: createZeroSSLTargetResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /deactivate-acme-account:
+    post:
+      operationId: deactivateAcmeAccount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/deactivateAcmeAccount'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeactivateAcmeAccountOutput'
+          description: deactivateAcmeAccountResponse wraps response body.
         default:
           content:
             application/json:
@@ -8498,6 +8552,33 @@ paths:
       tags:
       - v2
       x-codegen-request-body-name: body
+  /generate-acme-eab:
+    post:
+      operationId: generateAcmeEab
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/generateAcmeEab'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenerateAcmeEabOutput'
+          description: generateAcmeEabResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
   /generate-csr:
     post:
       operationId: generateCsr
@@ -9404,6 +9485,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/kmipSetServerStateOutput'
           description: kmipSetServerStateResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+      x-codegen-request-body-name: body
+  /list-acme-accounts:
+    post:
+      operationId: listAcmeAccounts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/listAcmeAccounts'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListAcmeAccountsOutput'
+          description: listAcmeAccountsResponse wraps response body.
         default:
           content:
             application/json:
@@ -15505,6 +15613,12 @@ components:
           schema:
             $ref: '#/components/schemas/createLdapTargetOutput'
       description: createldapTargetResponse wraps response body.
+    deactivateAcmeAccountResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DeactivateAcmeAccountOutput'
+      description: deactivateAcmeAccountResponse wraps response body.
     decryptBatchResponse:
       content:
         application/json:
@@ -16733,6 +16847,12 @@ components:
           schema:
             $ref: '#/components/schemas/CustomerFragmentsConfigJson'
       description: genCustomerFragmentResponse wraps response body.
+    generateAcmeEabResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GenerateAcmeEabOutput'
+      description: generateAcmeEabResponse wraps response body.
     generateCsrResponse:
       content:
         application/json:
@@ -16953,6 +17073,12 @@ components:
           schema:
             $ref: '#/components/schemas/kmipSetServerStateOutput'
       description: kmipSetServerStateResponse wraps response body.
+    listAcmeAccountsResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListAcmeAccountsOutput'
+      description: listAcmeAccountsResponse wraps response body.
     listAuthMethodsResponse:
       content:
         application/json:
@@ -17043,6 +17169,12 @@ components:
           schema:
             $ref: '#/components/schemas/ResetAuthMethodAccessKeyOutput'
       description: resetAccessKeyResponse wraps response body.
+    resetAccountAccessKeyResponse:
+      content:
+        application/json:
+          schema:
+            type: object
+      description: changeAdminAccountPasswordResponse wraps response body.
     reverseRBACResponse:
       content:
         application/json:
@@ -18512,6 +18644,27 @@ components:
           x-go-name: ObjectSettings
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    AcmeAccount:
+      description: |-
+        AcmeAccount is copied without the jwk as it seems
+        like it has issues with sdk
+      example:
+        account_id: account_id
+        key_digest: key_digest
+        status: status
+      properties:
+        account_id:
+          description: AccountId is the ACME account id, not Akeyless account id
+          type: string
+          x-go-name: AccountId
+        key_digest:
+          type: string
+          x-go-name: KeyDigest
+        status:
+          type: string
+          x-go-name: Status
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     ActiveDirectoryMigration:
       example:
         general:
@@ -19812,6 +19965,7 @@ components:
               ttl: 3
               cb: 5
             admin: true
+          is_subclaims_with_operator: true
           auth_method_sub_claims:
             key:
             - auth_method_sub_claims
@@ -19857,6 +20011,7 @@ components:
               ttl: 3
               cb: 5
             admin: true
+          is_subclaims_with_operator: true
           auth_method_sub_claims:
             key:
             - auth_method_sub_claims
@@ -20523,6 +20678,7 @@ components:
             ttl: 3
             cb: 5
           admin: true
+        is_subclaims_with_operator: true
         auth_method_sub_claims:
           key:
           - auth_method_sub_claims
@@ -20546,6 +20702,9 @@ components:
         is_sub_claims_case_sensitive:
           type: boolean
           x-go-name: IsSubClaimsCaseSensitive
+        is_subclaims_with_operator:
+          type: boolean
+          x-go-name: IsSubclaimsWithOperator
         role_name:
           type: string
           x-go-name: RoleName
@@ -21869,6 +22028,7 @@ components:
           - street_address
           - street_address
           allow_subdomains: true
+          non_critical_key_usage: true
           key_type: key_type
           organization_unit_list:
           - organization_unit_list
@@ -21885,6 +22045,7 @@ components:
             key:
             - allowed_extra_extensions
             - allowed_extra_extensions
+          acme_enabled: true
           allowed_domains_list:
           - allowed_domains_list
           - allowed_domains_list
@@ -22888,6 +23049,7 @@ components:
         country: country
         allowed-extra-extensions: allowed-extra-extensions
         metadata: metadata
+        enable-acme: true
         description: description
         organizational-units: organizational-units
         uid-token: uid-token
@@ -22908,6 +23070,7 @@ components:
         is-ca: true
         create-private-crl: true
         ca-target: ca-target
+        critical-key-usage: "true"
         protect-certificates: true
         code-signing-flag: true
         locality: locality
@@ -22987,6 +23150,11 @@ components:
             endpoint
           type: boolean
           x-go-name: CreatePublicCrl
+        critical-key-usage:
+          default: "true"
+          description: Mark key usage as critical [true/false]
+          type: string
+          x-go-name: CriticalKeyUsage
         delete_protection:
           description: Protection from accidental deletion of this object [true/false]
           type: string
@@ -22999,6 +23167,10 @@ components:
           description: A path in which to save generated certificates
           type: string
           x-go-name: DestinationPath
+        enable-acme:
+          description: If set, the cert issuer will support the acme protocol
+          type: boolean
+          x-go-name: EnableAcme
         expiration-event-in:
           description: How many days before the expiration of the certificate would
             you like to be notified.
@@ -23007,8 +23179,8 @@ components:
           type: array
           x-go-name: ExpirationEventsInDays
         gw-cluster-url:
-          description: The GW cluster URL to issue the certificate from, required
-            in Public CA mode or to allow CRLs on private CA
+          description: The GW cluster URL to issue the certificate from. Required
+            in Public CA mode, to allow CRLs on private CA, or to enable ACME
           type: string
           x-go-name: GWClusterURL
         is-ca:
@@ -24571,6 +24743,9 @@ components:
           x-go-name: SSLConnectionMode
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    DeactivateAcmeAccountOutput:
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     DefaultConfigPart:
       example:
         saml_access_id: saml_access_id
@@ -25870,6 +26045,24 @@ components:
           x-go-name: TLSKey
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    GenerateAcmeEabOutput:
+      example:
+        mac_key: mac_key
+        expires_at: 2000-01-23T04:56:07.000+00:00
+        kid: kid
+      properties:
+        expires_at:
+          format: date-time
+          type: string
+          x-go-name: ExpiresAt
+        kid:
+          type: string
+          x-go-name: Kid
+        mac_key:
+          type: string
+          x-go-name: MacKey
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     GetAccountSettingsCommandOutput:
       example:
         secure_remote_access:
@@ -26006,6 +26199,7 @@ components:
         modification_date: 2000-01-23T04:56:07.000+00:00
         description: description
         creation_date: 2000-01-23T04:56:07.000+00:00
+        is_subclaims_with_operator: true
         group_alias: group_alias
       properties:
         account_id:
@@ -26027,6 +26221,9 @@ components:
         group_name:
           type: string
           x-go-name: GroupName
+        is_subclaims_with_operator:
+          type: boolean
+          x-go-name: IsSubclaimsWithOperator
         modification_date:
           format: date-time
           type: string
@@ -26076,7 +26273,8 @@ components:
         extended-key-usage:
           description: 'A comma-separated list of extended key usage requests which
             will be used for certificate issuance. Supported values: ''clientauth'',
-            ''serverauth''.'
+            ''serverauth''. If critical is present the extension will be marked as
+            critical'
           type: string
           x-go-name: ExtKeyUsage
         extra-extensions:
@@ -26709,6 +26907,7 @@ components:
         modification_date: 2000-01-23T04:56:07.000+00:00
         description: description
         creation_date: 2000-01-23T04:56:07.000+00:00
+        is_subclaims_with_operator: true
         group_alias: group_alias
       properties:
         account_id:
@@ -26730,6 +26929,9 @@ components:
         group_name:
           type: string
           x-go-name: GroupName
+        is_subclaims_with_operator:
+          type: boolean
+          x-go-name: IsSubclaimsWithOperator
         modification_date:
           format: date-time
           type: string
@@ -27117,6 +27319,7 @@ components:
             - street_address
             - street_address
             allow_subdomains: true
+            non_critical_key_usage: true
             key_type: key_type
             organization_unit_list:
             - organization_unit_list
@@ -27133,6 +27336,7 @@ components:
               key:
               - allowed_extra_extensions
               - allowed_extra_extensions
+            acme_enabled: true
             allowed_domains_list:
             - allowed_domains_list
             - allowed_domains_list
@@ -27676,6 +27880,7 @@ components:
               - street_address
               - street_address
               allow_subdomains: true
+              non_critical_key_usage: true
               key_type: key_type
               organization_unit_list:
               - organization_unit_list
@@ -27692,6 +27897,7 @@ components:
                 key:
                 - allowed_extra_extensions
                 - allowed_extra_extensions
+              acme_enabled: true
               allowed_domains_list:
               - allowed_domains_list
               - allowed_domains_list
@@ -28407,6 +28613,7 @@ components:
             - street_address
             - street_address
             allow_subdomains: true
+            non_critical_key_usage: true
             key_type: key_type
             organization_unit_list:
             - organization_unit_list
@@ -28423,6 +28630,7 @@ components:
               key:
               - allowed_extra_extensions
               - allowed_extra_extensions
+            acme_enabled: true
             allowed_domains_list:
             - allowed_domains_list
             - allowed_domains_list
@@ -29623,6 +29831,23 @@ components:
           x-go-name: Hosts
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    ListAcmeAccountsOutput:
+      example:
+        accounts:
+        - account_id: account_id
+          key_digest: key_digest
+          status: status
+        - account_id: account_id
+          key_digest: key_digest
+          status: status
+      properties:
+        accounts:
+          items:
+            $ref: '#/components/schemas/AcmeAccount'
+          type: array
+          x-go-name: Accounts
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     ListAuthMethodsOutput:
       example:
         next_page: next_page
@@ -29669,6 +29894,7 @@ components:
                 ttl: 3
                 cb: 5
               admin: true
+            is_subclaims_with_operator: true
             auth_method_sub_claims:
               key:
               - auth_method_sub_claims
@@ -29714,6 +29940,7 @@ components:
                 ttl: 3
                 cb: 5
               admin: true
+            is_subclaims_with_operator: true
             auth_method_sub_claims:
               key:
               - auth_method_sub_claims
@@ -30010,6 +30237,7 @@ components:
                 ttl: 3
                 cb: 5
               admin: true
+            is_subclaims_with_operator: true
             auth_method_sub_claims:
               key:
               - auth_method_sub_claims
@@ -30055,6 +30283,7 @@ components:
                 ttl: 3
                 cb: 5
               admin: true
+            is_subclaims_with_operator: true
             auth_method_sub_claims:
               key:
               - auth_method_sub_claims
@@ -30344,6 +30573,7 @@ components:
           modification_date: 2000-01-23T04:56:07.000+00:00
           description: description
           creation_date: 2000-01-23T04:56:07.000+00:00
+          is_subclaims_with_operator: true
           group_alias: group_alias
         - account_id: account_id
           user_assignments:
@@ -30364,6 +30594,7 @@ components:
           modification_date: 2000-01-23T04:56:07.000+00:00
           description: description
           creation_date: 2000-01-23T04:56:07.000+00:00
+          is_subclaims_with_operator: true
           group_alias: group_alias
       properties:
         groups:
@@ -30483,6 +30714,7 @@ components:
               - street_address
               - street_address
               allow_subdomains: true
+              non_critical_key_usage: true
               key_type: key_type
               organization_unit_list:
               - organization_unit_list
@@ -30499,6 +30731,7 @@ components:
                 key:
                 - allowed_extra_extensions
                 - allowed_extra_extensions
+              acme_enabled: true
               allowed_domains_list:
               - allowed_domains_list
               - allowed_domains_list
@@ -31042,6 +31275,7 @@ components:
                 - street_address
                 - street_address
                 allow_subdomains: true
+                non_critical_key_usage: true
                 key_type: key_type
                 organization_unit_list:
                 - organization_unit_list
@@ -31058,6 +31292,7 @@ components:
                   key:
                   - allowed_extra_extensions
                   - allowed_extra_extensions
+                acme_enabled: true
                 allowed_domains_list:
                 - allowed_domains_list
                 - allowed_domains_list
@@ -31251,6 +31486,7 @@ components:
               - street_address
               - street_address
               allow_subdomains: true
+              non_critical_key_usage: true
               key_type: key_type
               organization_unit_list:
               - organization_unit_list
@@ -31267,6 +31503,7 @@ components:
                 key:
                 - allowed_extra_extensions
                 - allowed_extra_extensions
+              acme_enabled: true
               allowed_domains_list:
               - allowed_domains_list
               - allowed_domains_list
@@ -31810,6 +32047,7 @@ components:
                 - street_address
                 - street_address
                 allow_subdomains: true
+                non_critical_key_usage: true
                 key_type: key_type
                 organization_unit_list:
                 - organization_unit_list
@@ -31826,6 +32064,7 @@ components:
                   key:
                   - allowed_extra_extensions
                   - allowed_extra_extensions
+                acme_enabled: true
                 allowed_domains_list:
                 - allowed_domains_list
                 - allowed_domains_list
@@ -32041,6 +32280,7 @@ components:
               - street_address
               - street_address
               allow_subdomains: true
+              non_critical_key_usage: true
               key_type: key_type
               organization_unit_list:
               - organization_unit_list
@@ -32057,6 +32297,7 @@ components:
                 key:
                 - allowed_extra_extensions
                 - allowed_extra_extensions
+              acme_enabled: true
               allowed_domains_list:
               - allowed_domains_list
               - allowed_domains_list
@@ -32600,6 +32841,7 @@ components:
                 - street_address
                 - street_address
                 allow_subdomains: true
+                non_critical_key_usage: true
                 key_type: key_type
                 organization_unit_list:
                 - organization_unit_list
@@ -32616,6 +32858,7 @@ components:
                   key:
                   - allowed_extra_extensions
                   - allowed_extra_extensions
+                acme_enabled: true
                 allowed_domains_list:
                 - allowed_domains_list
                 - allowed_domains_list
@@ -32809,6 +33052,7 @@ components:
               - street_address
               - street_address
               allow_subdomains: true
+              non_critical_key_usage: true
               key_type: key_type
               organization_unit_list:
               - organization_unit_list
@@ -32825,6 +33069,7 @@ components:
                 key:
                 - allowed_extra_extensions
                 - allowed_extra_extensions
+              acme_enabled: true
               allowed_domains_list:
               - allowed_domains_list
               - allowed_domains_list
@@ -33368,6 +33613,7 @@ components:
                 - street_address
                 - street_address
                 allow_subdomains: true
+                non_critical_key_usage: true
                 key_type: key_type
                 organization_unit_list:
                 - organization_unit_list
@@ -33384,6 +33630,7 @@ components:
                   key:
                   - allowed_extra_extensions
                   - allowed_extra_extensions
+                acme_enabled: true
                 allowed_domains_list:
                 - allowed_domains_list
                 - allowed_domains_list
@@ -33500,6 +33747,7 @@ components:
           - client_permissions
           role_auth_methods_assoc:
           - assoc_id: assoc_id
+            is_subclaims_with_operator: true
             auth_method_name: auth_method_name
             auth_method_sub_claims:
               key:
@@ -33508,6 +33756,7 @@ components:
             auth_method_access_id: auth_method_access_id
             sub_claims_case_sensitive: true
           - assoc_id: assoc_id
+            is_subclaims_with_operator: true
             auth_method_name: auth_method_name
             auth_method_sub_claims:
               key:
@@ -33562,6 +33811,7 @@ components:
           - client_permissions
           role_auth_methods_assoc:
           - assoc_id: assoc_id
+            is_subclaims_with_operator: true
             auth_method_name: auth_method_name
             auth_method_sub_claims:
               key:
@@ -33570,6 +33820,7 @@ components:
             auth_method_access_id: auth_method_access_id
             sub_claims_case_sensitive: true
           - assoc_id: assoc_id
+            is_subclaims_with_operator: true
             auth_method_name: auth_method_name
             auth_method_sub_claims:
               key:
@@ -35301,6 +35552,7 @@ components:
         - street_address
         - street_address
         allow_subdomains: true
+        non_critical_key_usage: true
         key_type: key_type
         organization_unit_list:
         - organization_unit_list
@@ -35317,6 +35569,7 @@ components:
           key:
           - allowed_extra_extensions
           - allowed_extra_extensions
+        acme_enabled: true
         allowed_domains_list:
         - allowed_domains_list
         - allowed_domains_list
@@ -35348,6 +35601,9 @@ components:
         - postal_code
         client_flag: true
       properties:
+        acme_enabled:
+          type: boolean
+          x-go-name: AcmeEnabled
         allow_any_name:
           type: boolean
           x-go-name: AllowAnyName
@@ -35442,6 +35698,9 @@ components:
             type: string
           type: array
           x-go-name: Locality
+        non_critical_key_usage:
+          type: boolean
+          x-go-name: NonCriticalKeyUsage
         not_before_duration:
           description: |-
             A Duration represents the elapsed time between two instants
@@ -35911,6 +36170,7 @@ components:
               ttl: 3
               cb: 5
             admin: true
+          is_subclaims_with_operator: true
           auth_method_sub_claims:
             key:
             - auth_method_sub_claims
@@ -35956,6 +36216,7 @@ components:
               ttl: 3
               cb: 5
             admin: true
+          is_subclaims_with_operator: true
           auth_method_sub_claims:
             key:
             - auth_method_sub_claims
@@ -36019,6 +36280,7 @@ components:
                   ttl: 3
                   cb: 5
                 admin: true
+              is_subclaims_with_operator: true
               auth_method_sub_claims:
                 key:
                 - auth_method_sub_claims
@@ -36064,6 +36326,7 @@ components:
                   ttl: 3
                   cb: 5
                 admin: true
+              is_subclaims_with_operator: true
               auth_method_sub_claims:
                 key:
                 - auth_method_sub_claims
@@ -36136,6 +36399,7 @@ components:
         - client_permissions
         role_auth_methods_assoc:
         - assoc_id: assoc_id
+          is_subclaims_with_operator: true
           auth_method_name: auth_method_name
           auth_method_sub_claims:
             key:
@@ -36144,6 +36408,7 @@ components:
           auth_method_access_id: auth_method_access_id
           sub_claims_case_sensitive: true
         - assoc_id: assoc_id
+          is_subclaims_with_operator: true
           auth_method_name: auth_method_name
           auth_method_sub_claims:
             key:
@@ -36238,6 +36503,7 @@ components:
       example:
         role_name: role_name
         assoc_id: assoc_id
+        is_subclaims_with_operator: true
         auth_method_name: auth_method_name
         auth_method_sub_claims:
           key:
@@ -36258,6 +36524,9 @@ components:
             type: array
           type: object
           x-go-name: AuthMethodSubClaims
+        is_subclaims_with_operator:
+          type: boolean
+          x-go-name: IsSubclaimsWithOperator
         role_name:
           type: string
           x-go-name: RoleName
@@ -36272,6 +36541,7 @@ components:
         and an auth method.
       example:
         assoc_id: assoc_id
+        is_subclaims_with_operator: true
         auth_method_name: auth_method_name
         auth_method_sub_claims:
           key:
@@ -36296,6 +36566,9 @@ components:
             type: array
           type: object
           x-go-name: AuthMethodSubClaims
+        is_subclaims_with_operator:
+          type: boolean
+          x-go-name: IsSubclaimsWithOperator
         sub_claims_case_sensitive:
           type: boolean
           x-go-name: IsSubClaimsCaseSensitive
@@ -38280,6 +38553,7 @@ components:
       description: UpdateClassicKeyCertificate is a command that updates the certificate
         for a classic key
       example:
+        certificate-format: certificate-format
         name: name
         json: false
         cert-file-data: cert-file-data
@@ -38291,6 +38565,9 @@ components:
             certificates.
           type: string
           x-go-name: CertFileData
+        certificate-format:
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
         json:
           default: false
           description: Set output format to JSON
@@ -38345,6 +38622,7 @@ components:
         country: country
         allowed-extra-extensions: allowed-extra-extensions
         metadata: metadata
+        enable-acme: true
         description: description
         organizational-units: organizational-units
         new-name: new-name
@@ -38368,6 +38646,7 @@ components:
         signer-key-name: dummy_signer_key
         is-ca: true
         create-private-crl: true
+        critical-key-usage: "true"
         protect-certificates: true
         code-signing-flag: true
         locality: locality
@@ -38448,6 +38727,11 @@ components:
             endpoint
           type: boolean
           x-go-name: CreatePublicCrl
+        critical-key-usage:
+          default: "true"
+          description: Mark key usage as critical [true/false]
+          type: string
+          x-go-name: CriticalKeyUsage
         delete_protection:
           description: Protection from accidental deletion of this object [true/false]
           type: string
@@ -38460,6 +38744,10 @@ components:
           description: A path in which to save generated certificates
           type: string
           x-go-name: DestinationPath
+        enable-acme:
+          description: If set, the cert issuer will support the acme protocol
+          type: boolean
+          x-go-name: EnableAcme
         expiration-event-in:
           description: How many days before the expiration of the certificate would
             you like to be notified.
@@ -38468,8 +38756,8 @@ components:
           type: array
           x-go-name: ExpirationEventsInDays
         gw-cluster-url:
-          description: The GW cluster URL to issue the certificate from, required
-            in Public CA mode or to allow CRLs on private CA
+          description: The GW cluster URL to issue the certificate from. Required
+            in Public CA mode, to allow CRLs on private CA, or to enable ACME
           type: string
           x-go-name: GWClusterURL
         is-ca:
@@ -42609,6 +42897,37 @@ components:
           x-go-name: UIDToken
       required:
       - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    changeAdminAccountPassword:
+      properties:
+        current-password:
+          description: Current password
+          type: string
+          x-go-name: CurrentPassword
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        new-password:
+          description: New password
+          type: string
+          x-go-name: NewPassword
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      required:
+      - current-password
+      - new-password
+      title: changeAdminAccountPassword is a command that changes an admin account's
+        password key.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     clientData:
@@ -47929,6 +48248,41 @@ components:
           format: int64
           type: integer
           x-go-name: TargetID
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    deactivateAcmeAccount:
+      description: deactivateAcmeAccount is a command that Deactivates \ Deletes an
+        acme external account
+      properties:
+        acme-account-id:
+          description: The acme account id to deactivate
+          type: string
+          x-go-name: AcmeAccountId
+        cert-issuer-name:
+          description: The name of the PKI certificate issuer
+          type: string
+          x-go-name: CertIssuerName
+        delete-account:
+          description: Delete the account
+          type: boolean
+          x-go-name: DeleteAccount
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      required:
+      - acme-account-id
+      - cert-issuer-name
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     decrypt:
@@ -84721,6 +85075,32 @@ components:
       title: genCustomerFragment is a command that generates customer fragment.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    generateAcmeEab:
+      properties:
+        cert-issuer-name:
+          description: The name of the PKI certificate issuer
+          type: string
+          x-go-name: CertIssuerName
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      required:
+      - cert-issuer-name
+      title: generateAcmeEab is a command that generates a an external account binding
+        for a cert issuer.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     generateCsr:
       properties:
         alg:
@@ -85157,7 +85537,8 @@ components:
         extended-key-usage:
           description: 'A comma-separated list of extended key usage requests which
             will be used for certificate issuance. Supported values: ''clientauth'',
-            ''serverauth''.'
+            ''serverauth''. If critical is present the extension will be marked as
+            critical'
           type: string
           x-go-name: ExtKeyUsage
         extra-extensions:
@@ -86715,6 +87096,32 @@ components:
         is_active:
           type: boolean
           x-go-name: IsActive
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    listAcmeAccounts:
+      description: listAcmeAccounts is a command lists acme external accounts for
+        a cert issuer
+      properties:
+        cert-issuer-name:
+          description: The name of the PKI certificate issuer
+          type: string
+          x-go-name: CertIssuerName
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: The universal identity token, Required only for universal_identity
+            authentication
+          type: string
+          x-go-name: UIDToken
+      required:
+      - cert-issuer-name
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     listAuthMethods:
@@ -100266,6 +100673,9 @@ components:
             certificates.
           type: string
           x-go-name: CertFileData
+        certificate-format:
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
         change-event:
           description: Trigger an event when a secret value changed [true/false] (Relevant
             only for Static Secret)

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AcmeEnabled** | Pointer to **bool** |  | [optional] 
 **AllowAnyName** | Pointer to **bool** |  | [optional] 
 **AllowCopyExtFromCsr** | Pointer to **bool** |  | [optional] 
 **AllowSubdomains** | Pointer to **bool** |  | [optional] 
@@ -27,6 +28,7 @@ Name | Type | Description | Notes
 **KeyType** | Pointer to **string** |  | [optional] 
 **KeyUsageList** | Pointer to **[]string** |  | [optional] 
 **Locality** | Pointer to **[]string** |  | [optional] 
+**NonCriticalKeyUsage** | Pointer to **bool** |  | [optional] 
 **NotBeforeDuration** | Pointer to **int64** | A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years. | [optional] 
 **OrganizationList** | Pointer to **[]string** |  | [optional] 
 **OrganizationUnitList** | Pointer to **[]string** |  | [optional] 
@@ -55,6 +57,31 @@ will change when the set of required properties is changed
 NewPKICertificateIssueDetailsWithDefaults instantiates a new PKICertificateIssueDetails object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAcmeEnabled
+
+`func (o *PKICertificateIssueDetails) GetAcmeEnabled() bool`
+
+GetAcmeEnabled returns the AcmeEnabled field if non-nil, zero value otherwise.
+
+### GetAcmeEnabledOk
+
+`func (o *PKICertificateIssueDetails) GetAcmeEnabledOk() (*bool, bool)`
+
+GetAcmeEnabledOk returns a tuple with the AcmeEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAcmeEnabled
+
+`func (o *PKICertificateIssueDetails) SetAcmeEnabled(v bool)`
+
+SetAcmeEnabled sets AcmeEnabled field to given value.
+
+### HasAcmeEnabled
+
+`func (o *PKICertificateIssueDetails) HasAcmeEnabled() bool`
+
+HasAcmeEnabled returns a boolean if a field has been set.
 
 ### GetAllowAnyName
 
@@ -630,6 +657,31 @@ SetLocality sets Locality field to given value.
 `func (o *PKICertificateIssueDetails) HasLocality() bool`
 
 HasLocality returns a boolean if a field has been set.
+
+### GetNonCriticalKeyUsage
+
+`func (o *PKICertificateIssueDetails) GetNonCriticalKeyUsage() bool`
+
+GetNonCriticalKeyUsage returns the NonCriticalKeyUsage field if non-nil, zero value otherwise.
+
+### GetNonCriticalKeyUsageOk
+
+`func (o *PKICertificateIssueDetails) GetNonCriticalKeyUsageOk() (*bool, bool)`
+
+GetNonCriticalKeyUsageOk returns a tuple with the NonCriticalKeyUsage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNonCriticalKeyUsage
+
+`func (o *PKICertificateIssueDetails) SetNonCriticalKeyUsage(v bool)`
+
+SetNonCriticalKeyUsage sets NonCriticalKeyUsage field to given value.
+
+### HasNonCriticalKeyUsage
+
+`func (o *PKICertificateIssueDetails) HasNonCriticalKeyUsage() bool`
+
+HasNonCriticalKeyUsage returns a boolean if a field has been set.
 
 ### GetNotBeforeDuration
 

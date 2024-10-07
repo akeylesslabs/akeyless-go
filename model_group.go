@@ -24,6 +24,7 @@ type Group struct {
 	GroupAlias *string `json:"group_alias,omitempty"`
 	GroupId *string `json:"group_id,omitempty"`
 	GroupName *string `json:"group_name,omitempty"`
+	IsSubclaimsWithOperator *bool `json:"is_subclaims_with_operator,omitempty"`
 	ModificationDate *time.Time `json:"modification_date,omitempty"`
 	UserAssignments *[]AccessPermissionAssignment `json:"user_assignments,omitempty"`
 }
@@ -237,6 +238,38 @@ func (o *Group) SetGroupName(v string) {
 	o.GroupName = &v
 }
 
+// GetIsSubclaimsWithOperator returns the IsSubclaimsWithOperator field value if set, zero value otherwise.
+func (o *Group) GetIsSubclaimsWithOperator() bool {
+	if o == nil || o.IsSubclaimsWithOperator == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IsSubclaimsWithOperator
+}
+
+// GetIsSubclaimsWithOperatorOk returns a tuple with the IsSubclaimsWithOperator field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Group) GetIsSubclaimsWithOperatorOk() (*bool, bool) {
+	if o == nil || o.IsSubclaimsWithOperator == nil {
+		return nil, false
+	}
+	return o.IsSubclaimsWithOperator, true
+}
+
+// HasIsSubclaimsWithOperator returns a boolean if a field has been set.
+func (o *Group) HasIsSubclaimsWithOperator() bool {
+	if o != nil && o.IsSubclaimsWithOperator != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIsSubclaimsWithOperator gets a reference to the given bool and assigns it to the IsSubclaimsWithOperator field.
+func (o *Group) SetIsSubclaimsWithOperator(v bool) {
+	o.IsSubclaimsWithOperator = &v
+}
+
 // GetModificationDate returns the ModificationDate field value if set, zero value otherwise.
 func (o *Group) GetModificationDate() time.Time {
 	if o == nil || o.ModificationDate == nil {
@@ -320,6 +353,9 @@ func (o Group) MarshalJSON() ([]byte, error) {
 	}
 	if o.GroupName != nil {
 		toSerialize["group_name"] = o.GroupName
+	}
+	if o.IsSubclaimsWithOperator != nil {
+		toSerialize["is_subclaims_with_operator"] = o.IsSubclaimsWithOperator
 	}
 	if o.ModificationDate != nil {
 		toSerialize["modification_date"] = o.ModificationDate

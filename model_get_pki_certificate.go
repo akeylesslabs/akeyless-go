@@ -25,7 +25,7 @@ type GetPKICertificate struct {
 	CommonName *string `json:"common-name,omitempty"`
 	// Certificate Signing Request contents encoded in base64 to generate the certificate with
 	CsrDataBase64 *string `json:"csr-data-base64,omitempty"`
-	// A comma-separated list of extended key usage requests which will be used for certificate issuance. Supported values: 'clientauth', 'serverauth'.
+	// A comma-separated list of extended key usage requests which will be used for certificate issuance. Supported values: 'clientauth', 'serverauth'. If critical is present the extension will be marked as critical
 	ExtendedKeyUsage *string `json:"extended-key-usage,omitempty"`
 	// A json string that defines the requested extra extensions for the certificate
 	ExtraExtensions *string `json:"extra-extensions,omitempty"`

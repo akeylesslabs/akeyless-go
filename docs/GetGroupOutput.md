@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **GroupAlias** | Pointer to **string** |  | [optional] 
 **GroupId** | Pointer to **string** |  | [optional] 
 **GroupName** | Pointer to **string** |  | [optional] 
+**IsSubclaimsWithOperator** | Pointer to **bool** |  | [optional] 
 **ModificationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **UserAssignments** | Pointer to [**[]AccessPermissionAssignment**](AccessPermissionAssignment.md) |  | [optional] 
 
@@ -181,6 +182,31 @@ SetGroupName sets GroupName field to given value.
 `func (o *GetGroupOutput) HasGroupName() bool`
 
 HasGroupName returns a boolean if a field has been set.
+
+### GetIsSubclaimsWithOperator
+
+`func (o *GetGroupOutput) GetIsSubclaimsWithOperator() bool`
+
+GetIsSubclaimsWithOperator returns the IsSubclaimsWithOperator field if non-nil, zero value otherwise.
+
+### GetIsSubclaimsWithOperatorOk
+
+`func (o *GetGroupOutput) GetIsSubclaimsWithOperatorOk() (*bool, bool)`
+
+GetIsSubclaimsWithOperatorOk returns a tuple with the IsSubclaimsWithOperator field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsSubclaimsWithOperator
+
+`func (o *GetGroupOutput) SetIsSubclaimsWithOperator(v bool)`
+
+SetIsSubclaimsWithOperator sets IsSubclaimsWithOperator field to given value.
+
+### HasIsSubclaimsWithOperator
+
+`func (o *GetGroupOutput) HasIsSubclaimsWithOperator() bool`
+
+HasIsSubclaimsWithOperator returns a boolean if a field has been set.
 
 ### GetModificationDate
 

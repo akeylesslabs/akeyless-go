@@ -14,6 +14,7 @@ docs/AccessOrGroupPermissionAssignment.md
 docs/AccessPermissionAssignment.md
 docs/AccountGeneralSettings.md
 docs/AccountObjectVersionSettingsOutput.md
+docs/AcmeAccount.md
 docs/ActiveDirectoryMigration.md
 docs/ActiveDirectoryPayload.md
 docs/AddGatewayAllowedAccessId.md
@@ -93,6 +94,7 @@ docs/CertificateIssueInfo.md
 docs/CertificateTemplateInfo.md
 docs/CertificateVersionInfo.md
 docs/CfInfo.md
+docs/ChangeAdminAccountPassword.md
 docs/ChefTargetDetails.md
 docs/ClassicKeyDetailsInfo.md
 docs/ClassicKeyStatusInfo.md
@@ -223,6 +225,7 @@ docs/DSProducerDetails.md
 docs/DataProtectionSection.md
 docs/DatadogForwardingConfig.md
 docs/DbTargetDetails.md
+docs/DeactivateAcmeAccount.md
 docs/Decrypt.md
 docs/DecryptFile.md
 docs/DecryptFileOutput.md
@@ -566,6 +569,8 @@ docs/GatewaysListResponse.md
 docs/GcpTargetDetails.md
 docs/GenCustomerFragment.md
 docs/GeneralConfigPart.md
+docs/GenerateAcmeEab.md
+docs/GenerateAcmeEabOutput.md
 docs/GenerateCsr.md
 docs/GenerateCsrOutput.md
 docs/GetAccountSettings.md
@@ -671,6 +676,8 @@ docs/LdapTargetDetails.md
 docs/LeadershipConfigPart.md
 docs/LinkedDetails.md
 docs/LinkedTargetDetails.md
+docs/ListAcmeAccounts.md
+docs/ListAcmeAccountsOutput.md
 docs/ListAuthMethods.md
 docs/ListAuthMethodsOutput.md
 docs/ListGateways.md
@@ -1052,6 +1059,7 @@ model_access_or_group_permission_assignment.go
 model_access_permission_assignment.go
 model_account_general_settings.go
 model_account_object_version_settings_output.go
+model_acme_account.go
 model_active_directory_migration.go
 model_active_directory_payload.go
 model_add_gateway_allowed_access_id.go
@@ -1136,6 +1144,7 @@ model_certificate_template_info.go
 model_certificate_version_info.go
 model_cf_config_part.go
 model_cf_info.go
+model_change_admin_account_password.go
 model_chef_target_details.go
 model_classic_key_details_info.go
 model_classic_key_status_info.go
@@ -1265,6 +1274,7 @@ model_customer_full_address.go
 model_data_protection_section.go
 model_datadog_forwarding_config.go
 model_db_target_details.go
+model_deactivate_acme_account.go
 model_decrypt.go
 model_decrypt_file.go
 model_decrypt_file_output.go
@@ -1608,6 +1618,8 @@ model_gcp_secrets_migration.go
 model_gcp_target_details.go
 model_gen_customer_fragment.go
 model_general_config_part.go
+model_generate_acme_eab.go
+model_generate_acme_eab_output.go
 model_generate_csr.go
 model_generate_csr_output.go
 model_get_account_settings.go
@@ -1714,6 +1726,8 @@ model_ldap_target_details.go
 model_leadership_config_part.go
 model_linked_details.go
 model_linked_target_details.go
+model_list_acme_accounts.go
+model_list_acme_accounts_output.go
 model_list_auth_methods.go
 model_list_auth_methods_output.go
 model_list_gateways.go
