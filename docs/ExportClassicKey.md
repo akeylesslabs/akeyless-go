@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Accessibility** | Pointer to **string** | for personal password manager | [optional] [default to "regular"]
 **ExportPublicKey** | Pointer to **bool** | Use this option to output only public key | [optional] [default to false]
 **IgnoreCache** | Pointer to **string** | Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI | [optional] [default to "false"]
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
@@ -30,6 +31,31 @@ will change when the set of required properties is changed
 NewExportClassicKeyWithDefaults instantiates a new ExportClassicKey object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAccessibility
+
+`func (o *ExportClassicKey) GetAccessibility() string`
+
+GetAccessibility returns the Accessibility field if non-nil, zero value otherwise.
+
+### GetAccessibilityOk
+
+`func (o *ExportClassicKey) GetAccessibilityOk() (*string, bool)`
+
+GetAccessibilityOk returns a tuple with the Accessibility field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessibility
+
+`func (o *ExportClassicKey) SetAccessibility(v string)`
+
+SetAccessibility sets Accessibility field to given value.
+
+### HasAccessibility
+
+`func (o *ExportClassicKey) HasAccessibility() bool`
+
+HasAccessibility returns a boolean if a field has been set.
 
 ### GetExportPublicKey
 

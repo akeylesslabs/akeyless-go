@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CacheEnable** | Pointer to **bool** |  | [optional] 
+**CacheEncryptionKey** | Pointer to **string** |  | [optional] 
 **CacheTtl** | Pointer to **string** |  | [optional] 
 **NewProactiveCacheEnable** | Pointer to **bool** |  | [optional] 
 **ProactiveCacheDumpInterval** | Pointer to **string** |  | [optional] 
@@ -54,6 +55,31 @@ SetCacheEnable sets CacheEnable field to given value.
 `func (o *CacheConfigPart) HasCacheEnable() bool`
 
 HasCacheEnable returns a boolean if a field has been set.
+
+### GetCacheEncryptionKey
+
+`func (o *CacheConfigPart) GetCacheEncryptionKey() string`
+
+GetCacheEncryptionKey returns the CacheEncryptionKey field if non-nil, zero value otherwise.
+
+### GetCacheEncryptionKeyOk
+
+`func (o *CacheConfigPart) GetCacheEncryptionKeyOk() (*string, bool)`
+
+GetCacheEncryptionKeyOk returns a tuple with the CacheEncryptionKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCacheEncryptionKey
+
+`func (o *CacheConfigPart) SetCacheEncryptionKey(v string)`
+
+SetCacheEncryptionKey sets CacheEncryptionKey field to given value.
+
+### HasCacheEncryptionKey
+
+`func (o *CacheConfigPart) HasCacheEncryptionKey() bool`
+
+HasCacheEncryptionKey returns a boolean if a field has been set.
 
 ### GetCacheTtl
 

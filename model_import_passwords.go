@@ -19,7 +19,7 @@ import (
 type ImportPasswords struct {
 	// for personal password manager
 	Accessibility *string `json:"accessibility,omitempty"`
-	// Password format type [LastPass/Chrome/Firefox]
+	// Password format type [LastPass/Chrome/Firefox/1password/keeper/bitwarden/dashlane]
 	Format *string `json:"format,omitempty"`
 	// File path
 	ImportPath string `json:"import-path"`

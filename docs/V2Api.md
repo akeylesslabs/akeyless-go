@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**AuthMethodCreateEmail**](V2Api.md#AuthMethodCreateEmail) | **Post** /auth-method-create-email | 
 [**AuthMethodCreateGcp**](V2Api.md#AuthMethodCreateGcp) | **Post** /auth-method-create-gcp | 
 [**AuthMethodCreateK8s**](V2Api.md#AuthMethodCreateK8s) | **Post** /auth-method-create-k8s | 
+[**AuthMethodCreateKerberos**](V2Api.md#AuthMethodCreateKerberos) | **Post** /auth-method-create-kerberos | 
 [**AuthMethodCreateLdap**](V2Api.md#AuthMethodCreateLdap) | **Post** /auth-method-create-ldap | 
 [**AuthMethodCreateOCI**](V2Api.md#AuthMethodCreateOCI) | **Post** /auth-method-create-oci | 
 [**AuthMethodCreateOIDC**](V2Api.md#AuthMethodCreateOIDC) | **Post** /auth-method-create-oidc | 
@@ -31,6 +32,7 @@ Method | HTTP request | Description
 [**AuthMethodUpdateEmail**](V2Api.md#AuthMethodUpdateEmail) | **Post** /auth-method-update-email | 
 [**AuthMethodUpdateGcp**](V2Api.md#AuthMethodUpdateGcp) | **Post** /auth-method-update-gcp | 
 [**AuthMethodUpdateK8s**](V2Api.md#AuthMethodUpdateK8s) | **Post** /auth-method-update-k8s | 
+[**AuthMethodUpdateKerberos**](V2Api.md#AuthMethodUpdateKerberos) | **Post** /auth-method-update-kerberos | 
 [**AuthMethodUpdateLdap**](V2Api.md#AuthMethodUpdateLdap) | **Post** /auth-method-update-ldap | 
 [**AuthMethodUpdateOCI**](V2Api.md#AuthMethodUpdateOCI) | **Post** /auth-method-update-oci | 
 [**AuthMethodUpdateOIDC**](V2Api.md#AuthMethodUpdateOIDC) | **Post** /auth-method-update-oidc | 
@@ -80,6 +82,7 @@ Method | HTTP request | Description
 [**CreateNativeK8STarget**](V2Api.md#CreateNativeK8STarget) | **Post** /create-k8s-target | 
 [**CreateOidcApp**](V2Api.md#CreateOidcApp) | **Post** /create-oidc-app | 
 [**CreatePKICertIssuer**](V2Api.md#CreatePKICertIssuer) | **Post** /create-pki-cert-issuer | 
+[**CreatePasskey**](V2Api.md#CreatePasskey) | **Post** /create-passkey | 
 [**CreatePingTarget**](V2Api.md#CreatePingTarget) | **Post** /create-ping-target | 
 [**CreateRabbitMQTarget**](V2Api.md#CreateRabbitMQTarget) | **Post** /create-rabbitmq-target | 
 [**CreateRole**](V2Api.md#CreateRole) | **Post** /create-role | 
@@ -355,6 +358,7 @@ Method | HTTP request | Description
 [**KmipRenewServerCertificate**](V2Api.md#KmipRenewServerCertificate) | **Post** /kmip-renew-environment | 
 [**KmipServerSetup**](V2Api.md#KmipServerSetup) | **Post** /kmip-create-environment | 
 [**KmipSetServerState**](V2Api.md#KmipSetServerState) | **Post** /kmip-set-environment-state | 
+[**KubeconfigGenerate**](V2Api.md#KubeconfigGenerate) | **Post** /kubeconfig-generate | 
 [**ListAcmeAccounts**](V2Api.md#ListAcmeAccounts) | **Post** /list-acme-accounts | 
 [**ListAuthMethods**](V2Api.md#ListAuthMethods) | **Post** /list-auth-methods | 
 [**ListGateways**](V2Api.md#ListGateways) | **Post** /list-gateways | 
@@ -362,6 +366,7 @@ Method | HTTP request | Description
 [**ListItems**](V2Api.md#ListItems) | **Post** /list-items | 
 [**ListRoles**](V2Api.md#ListRoles) | **Post** /list-roles | 
 [**ListSRABastions**](V2Api.md#ListSRABastions) | **Post** /list-sra-bastions | 
+[**ListSRASessions**](V2Api.md#ListSRASessions) | **Post** /list-sra-sessions | 
 [**ListSharedItems**](V2Api.md#ListSharedItems) | **Post** /list-shared-items | 
 [**ListTargets**](V2Api.md#ListTargets) | **Post** /list-targets | 
 [**MoveObjects**](V2Api.md#MoveObjects) | **Post** /move-objects | 
@@ -370,6 +375,7 @@ Method | HTTP request | Description
 [**RefreshKey**](V2Api.md#RefreshKey) | **Post** /refresh-key | 
 [**RenewCertificate**](V2Api.md#RenewCertificate) | **Post** /renew-certificate | 
 [**RequestAccess**](V2Api.md#RequestAccess) | **Post** /request-access | 
+[**ResetAccessKey**](V2Api.md#ResetAccessKey) | **Post** /reset-access-key | 
 [**ReverseRBAC**](V2Api.md#ReverseRBAC) | **Post** /reverse-rbac | 
 [**RevokeCertificate**](V2Api.md#RevokeCertificate) | **Post** /revoke-certificate | 
 [**RevokeCreds**](V2Api.md#RevokeCreds) | **Post** /revoke-creds | 
@@ -1248,6 +1254,70 @@ Other parameters are passed through a pointer to a apiAuthMethodCreateK8sRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**AuthMethodCreateK8s**](AuthMethodCreateK8s.md) |  | 
+
+### Return type
+
+[**AuthMethodCreateOutput**](authMethodCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthMethodCreateKerberos
+
+> AuthMethodCreateOutput AuthMethodCreateKerberos(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewauthMethodCreateKerberos("Name_example") // AuthMethodCreateKerberos | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.AuthMethodCreateKerberos(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.AuthMethodCreateKerberos``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthMethodCreateKerberos`: AuthMethodCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.AuthMethodCreateKerberos`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthMethodCreateKerberosRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**AuthMethodCreateKerberos**](AuthMethodCreateKerberos.md) |  | 
 
 ### Return type
 
@@ -2276,6 +2346,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AuthMethodUpdateOutput**](authMethodUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthMethodUpdateKerberos
+
+> AuthMethodCreateOutput AuthMethodUpdateKerberos(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewauthMethodUpdateKerberos("Name_example") // AuthMethodUpdateKerberos | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.AuthMethodUpdateKerberos(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.AuthMethodUpdateKerberos``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthMethodUpdateKerberos`: AuthMethodCreateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.AuthMethodUpdateKerberos`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthMethodUpdateKerberosRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**AuthMethodUpdateKerberos**](AuthMethodUpdateKerberos.md) |  | 
+
+### Return type
+
+[**AuthMethodCreateOutput**](authMethodCreateOutput.md)
 
 ### Authorization
 
@@ -5412,6 +5546,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreatePKICertIssuerOutput**](createPKICertIssuerOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreatePasskey
+
+> CreatePasskeyOutput CreatePasskey(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewCreatePasskey("Alg_example", "Name_example") // CreatePasskey | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.CreatePasskey(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreatePasskey``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreatePasskey`: CreatePasskeyOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.CreatePasskey`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreatePasskeyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreatePasskey**](CreatePasskey.md) |  | 
+
+### Return type
+
+[**CreatePasskeyOutput**](CreatePasskeyOutput.md)
 
 ### Authorization
 
@@ -19759,7 +19957,7 @@ No authorization required
 
 ## GatewayUpdateRemoteAccess
 
-> map[string]interface{} GatewayUpdateRemoteAccess(ctx).Execute()
+> map[string]interface{} GatewayUpdateRemoteAccess(ctx).Body(body).Execute()
 
 
 
@@ -19776,10 +19974,11 @@ import (
 )
 
 func main() {
+    body := *openapiclient.NewgatewayUpdateRemoteAccess() // GatewayUpdateRemoteAccess | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.V2Api.GatewayUpdateRemoteAccess(context.Background()).Execute()
+    resp, r, err := api_client.V2Api.GatewayUpdateRemoteAccess(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateRemoteAccess``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -19791,12 +19990,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGatewayUpdateRemoteAccessRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateRemoteAccess**](GatewayUpdateRemoteAccess.md) |  | 
 
 ### Return type
 
@@ -19808,7 +20011,7 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -23009,6 +23212,65 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## KubeconfigGenerate
+
+> KubeconfigGenerateOutput KubeconfigGenerate(ctx).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.KubeconfigGenerate(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.KubeconfigGenerate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `KubeconfigGenerate`: KubeconfigGenerateOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.KubeconfigGenerate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiKubeconfigGenerateRequest struct via the builder pattern
+
+
+### Return type
+
+[**KubeconfigGenerateOutput**](KubeconfigGenerateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ListAcmeAccounts
 
 > ListAcmeAccountsOutput ListAcmeAccounts(ctx).Body(body).Execute()
@@ -23442,6 +23704,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**BastionsList**](BastionsList.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListSRASessions
+
+> ListSraSessionsOutput ListSRASessions(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewlistSRASessions() // ListSRASessions | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.ListSRASessions(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.ListSRASessions``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListSRASessions`: ListSraSessionsOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.ListSRASessions`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListSRASessionsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**ListSRASessions**](ListSRASessions.md) |  | 
+
+### Return type
+
+[**ListSraSessionsOutput**](ListSraSessionsOutput.md)
 
 ### Authorization
 
@@ -23952,6 +24278,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**RequestAccessOutput**](requestAccessOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ResetAccessKey
+
+> ResetAuthMethodAccessKeyOutput ResetAccessKey(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewresetAccessKey("Name_example") // ResetAccessKey | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.V2Api.ResetAccessKey(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `V2Api.ResetAccessKey``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ResetAccessKey`: ResetAuthMethodAccessKeyOutput
+    fmt.Fprintf(os.Stdout, "Response from `V2Api.ResetAccessKey`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiResetAccessKeyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**ResetAccessKey**](ResetAccessKey.md) |  | 
+
+### Return type
+
+[**ResetAuthMethodAccessKeyOutput**](ResetAuthMethodAccessKeyOutput.md)
 
 ### Authorization
 

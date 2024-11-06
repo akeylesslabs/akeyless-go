@@ -17,6 +17,8 @@ import (
 
 // ExportClassicKey ExportClassicKey is a command that returns the classic key material
 type ExportClassicKey struct {
+	// for personal password manager
+	Accessibility *string `json:"accessibility,omitempty"`
 	// Use this option to output only public key
 	ExportPublicKey *bool `json:"export-public-key,omitempty"`
 	// Retrieve the Secret value without checking the Gateway's cache [true/false]. This flag is only relevant when using the RestAPI
@@ -39,6 +41,8 @@ type ExportClassicKey struct {
 // will change when the set of required properties is changed
 func NewExportClassicKey(name string, ) *ExportClassicKey {
 	this := ExportClassicKey{}
+	var accessibility string = "regular"
+	this.Accessibility = &accessibility
 	var exportPublicKey bool = false
 	this.ExportPublicKey = &exportPublicKey
 	var ignoreCache string = "false"
@@ -54,6 +58,8 @@ func NewExportClassicKey(name string, ) *ExportClassicKey {
 // but it doesn't guarantee that properties required by API are set
 func NewExportClassicKeyWithDefaults() *ExportClassicKey {
 	this := ExportClassicKey{}
+	var accessibility string = "regular"
+	this.Accessibility = &accessibility
 	var exportPublicKey bool = false
 	this.ExportPublicKey = &exportPublicKey
 	var ignoreCache string = "false"
@@ -61,6 +67,38 @@ func NewExportClassicKeyWithDefaults() *ExportClassicKey {
 	var json bool = false
 	this.Json = &json
 	return &this
+}
+
+// GetAccessibility returns the Accessibility field value if set, zero value otherwise.
+func (o *ExportClassicKey) GetAccessibility() string {
+	if o == nil || o.Accessibility == nil {
+		var ret string
+		return ret
+	}
+	return *o.Accessibility
+}
+
+// GetAccessibilityOk returns a tuple with the Accessibility field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ExportClassicKey) GetAccessibilityOk() (*string, bool) {
+	if o == nil || o.Accessibility == nil {
+		return nil, false
+	}
+	return o.Accessibility, true
+}
+
+// HasAccessibility returns a boolean if a field has been set.
+func (o *ExportClassicKey) HasAccessibility() bool {
+	if o != nil && o.Accessibility != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessibility gets a reference to the given string and assigns it to the Accessibility field.
+func (o *ExportClassicKey) SetAccessibility(v string) {
+	o.Accessibility = &v
 }
 
 // GetExportPublicKey returns the ExportPublicKey field value if set, zero value otherwise.
@@ -281,6 +319,9 @@ func (o *ExportClassicKey) SetVersion(v int32) {
 
 func (o ExportClassicKey) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Accessibility != nil {
+		toSerialize["accessibility"] = o.Accessibility
+	}
 	if o.ExportPublicKey != nil {
 		toSerialize["export-public-key"] = o.ExportPublicKey
 	}

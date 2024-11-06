@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **AllowedDomainsList** | Pointer to **[]string** |  | [optional] 
 **AllowedExtraExtensions** | Pointer to [**map[string][]string**](array.md) |  | [optional] 
 **AllowedUriSans** | Pointer to **[]string** |  | [optional] 
+**AutoRenewCertificate** | Pointer to **bool** |  | [optional] 
 **BasicConstraintsValidForNonCa** | Pointer to **bool** |  | [optional] 
 **CertificateAuthorityMode** | Pointer to **string** |  | [optional] 
 **ClientFlag** | Pointer to **bool** |  | [optional] 
@@ -35,6 +36,7 @@ Name | Type | Description | Notes
 **PostalCode** | Pointer to **[]string** |  | [optional] 
 **ProtectGeneratedCertificates** | Pointer to **bool** | ProtectGeneratedCertificates dictates whether the created certificates should be protected from deletion | [optional] 
 **Province** | Pointer to **[]string** |  | [optional] 
+**RenewBeforeExpirationInDays** | Pointer to **int64** |  | [optional] 
 **RequireCn** | Pointer to **bool** |  | [optional] 
 **ServerFlag** | Pointer to **bool** |  | [optional] 
 **StreetAddress** | Pointer to **[]string** |  | [optional] 
@@ -232,6 +234,31 @@ SetAllowedUriSans sets AllowedUriSans field to given value.
 `func (o *PKICertificateIssueDetails) HasAllowedUriSans() bool`
 
 HasAllowedUriSans returns a boolean if a field has been set.
+
+### GetAutoRenewCertificate
+
+`func (o *PKICertificateIssueDetails) GetAutoRenewCertificate() bool`
+
+GetAutoRenewCertificate returns the AutoRenewCertificate field if non-nil, zero value otherwise.
+
+### GetAutoRenewCertificateOk
+
+`func (o *PKICertificateIssueDetails) GetAutoRenewCertificateOk() (*bool, bool)`
+
+GetAutoRenewCertificateOk returns a tuple with the AutoRenewCertificate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutoRenewCertificate
+
+`func (o *PKICertificateIssueDetails) SetAutoRenewCertificate(v bool)`
+
+SetAutoRenewCertificate sets AutoRenewCertificate field to given value.
+
+### HasAutoRenewCertificate
+
+`func (o *PKICertificateIssueDetails) HasAutoRenewCertificate() bool`
+
+HasAutoRenewCertificate returns a boolean if a field has been set.
 
 ### GetBasicConstraintsValidForNonCa
 
@@ -832,6 +859,31 @@ SetProvince sets Province field to given value.
 `func (o *PKICertificateIssueDetails) HasProvince() bool`
 
 HasProvince returns a boolean if a field has been set.
+
+### GetRenewBeforeExpirationInDays
+
+`func (o *PKICertificateIssueDetails) GetRenewBeforeExpirationInDays() int64`
+
+GetRenewBeforeExpirationInDays returns the RenewBeforeExpirationInDays field if non-nil, zero value otherwise.
+
+### GetRenewBeforeExpirationInDaysOk
+
+`func (o *PKICertificateIssueDetails) GetRenewBeforeExpirationInDaysOk() (*int64, bool)`
+
+GetRenewBeforeExpirationInDaysOk returns a tuple with the RenewBeforeExpirationInDays field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRenewBeforeExpirationInDays
+
+`func (o *PKICertificateIssueDetails) SetRenewBeforeExpirationInDays(v int64)`
+
+SetRenewBeforeExpirationInDays sets RenewBeforeExpirationInDays field to given value.
+
+### HasRenewBeforeExpirationInDays
+
+`func (o *PKICertificateIssueDetails) HasRenewBeforeExpirationInDays() bool`
+
+HasRenewBeforeExpirationInDays returns a boolean if a field has been set.
 
 ### GetRequireCn
 

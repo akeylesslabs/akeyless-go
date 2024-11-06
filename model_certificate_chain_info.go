@@ -17,6 +17,7 @@ import (
 
 // CertificateChainInfo struct for CertificateChainInfo
 type CertificateChainInfo struct {
+	AutoRenewCertificate *bool `json:"auto_renew_certificate,omitempty"`
 	CertificateChain *[]CertificateInfo `json:"certificate_chain,omitempty"`
 	CertificateFormat *string `json:"certificate_format,omitempty"`
 	CertificateHasPrivateKey *bool `json:"certificate_has_private_key,omitempty"`
@@ -25,7 +26,9 @@ type CertificateChainInfo struct {
 	CertificateIssuerName *string `json:"certificate_issuer_name,omitempty"`
 	CertificatePem *string `json:"certificate_pem,omitempty"`
 	CertificateStatus *string `json:"certificate_status,omitempty"`
+	ErrorMessage *string `json:"error_message,omitempty"`
 	ExpirationEvents *[]CertificateExpirationEvent `json:"expiration_events,omitempty"`
+	RenewBeforeExpirationInDays *int64 `json:"renew_before_expiration_in_days,omitempty"`
 }
 
 // NewCertificateChainInfo instantiates a new CertificateChainInfo object
@@ -43,6 +46,38 @@ func NewCertificateChainInfo() *CertificateChainInfo {
 func NewCertificateChainInfoWithDefaults() *CertificateChainInfo {
 	this := CertificateChainInfo{}
 	return &this
+}
+
+// GetAutoRenewCertificate returns the AutoRenewCertificate field value if set, zero value otherwise.
+func (o *CertificateChainInfo) GetAutoRenewCertificate() bool {
+	if o == nil || o.AutoRenewCertificate == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AutoRenewCertificate
+}
+
+// GetAutoRenewCertificateOk returns a tuple with the AutoRenewCertificate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CertificateChainInfo) GetAutoRenewCertificateOk() (*bool, bool) {
+	if o == nil || o.AutoRenewCertificate == nil {
+		return nil, false
+	}
+	return o.AutoRenewCertificate, true
+}
+
+// HasAutoRenewCertificate returns a boolean if a field has been set.
+func (o *CertificateChainInfo) HasAutoRenewCertificate() bool {
+	if o != nil && o.AutoRenewCertificate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoRenewCertificate gets a reference to the given bool and assigns it to the AutoRenewCertificate field.
+func (o *CertificateChainInfo) SetAutoRenewCertificate(v bool) {
+	o.AutoRenewCertificate = &v
 }
 
 // GetCertificateChain returns the CertificateChain field value if set, zero value otherwise.
@@ -301,6 +336,38 @@ func (o *CertificateChainInfo) SetCertificateStatus(v string) {
 	o.CertificateStatus = &v
 }
 
+// GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise.
+func (o *CertificateChainInfo) GetErrorMessage() string {
+	if o == nil || o.ErrorMessage == nil {
+		var ret string
+		return ret
+	}
+	return *o.ErrorMessage
+}
+
+// GetErrorMessageOk returns a tuple with the ErrorMessage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CertificateChainInfo) GetErrorMessageOk() (*string, bool) {
+	if o == nil || o.ErrorMessage == nil {
+		return nil, false
+	}
+	return o.ErrorMessage, true
+}
+
+// HasErrorMessage returns a boolean if a field has been set.
+func (o *CertificateChainInfo) HasErrorMessage() bool {
+	if o != nil && o.ErrorMessage != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetErrorMessage gets a reference to the given string and assigns it to the ErrorMessage field.
+func (o *CertificateChainInfo) SetErrorMessage(v string) {
+	o.ErrorMessage = &v
+}
+
 // GetExpirationEvents returns the ExpirationEvents field value if set, zero value otherwise.
 func (o *CertificateChainInfo) GetExpirationEvents() []CertificateExpirationEvent {
 	if o == nil || o.ExpirationEvents == nil {
@@ -333,8 +400,43 @@ func (o *CertificateChainInfo) SetExpirationEvents(v []CertificateExpirationEven
 	o.ExpirationEvents = &v
 }
 
+// GetRenewBeforeExpirationInDays returns the RenewBeforeExpirationInDays field value if set, zero value otherwise.
+func (o *CertificateChainInfo) GetRenewBeforeExpirationInDays() int64 {
+	if o == nil || o.RenewBeforeExpirationInDays == nil {
+		var ret int64
+		return ret
+	}
+	return *o.RenewBeforeExpirationInDays
+}
+
+// GetRenewBeforeExpirationInDaysOk returns a tuple with the RenewBeforeExpirationInDays field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CertificateChainInfo) GetRenewBeforeExpirationInDaysOk() (*int64, bool) {
+	if o == nil || o.RenewBeforeExpirationInDays == nil {
+		return nil, false
+	}
+	return o.RenewBeforeExpirationInDays, true
+}
+
+// HasRenewBeforeExpirationInDays returns a boolean if a field has been set.
+func (o *CertificateChainInfo) HasRenewBeforeExpirationInDays() bool {
+	if o != nil && o.RenewBeforeExpirationInDays != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRenewBeforeExpirationInDays gets a reference to the given int64 and assigns it to the RenewBeforeExpirationInDays field.
+func (o *CertificateChainInfo) SetRenewBeforeExpirationInDays(v int64) {
+	o.RenewBeforeExpirationInDays = &v
+}
+
 func (o CertificateChainInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AutoRenewCertificate != nil {
+		toSerialize["auto_renew_certificate"] = o.AutoRenewCertificate
+	}
 	if o.CertificateChain != nil {
 		toSerialize["certificate_chain"] = o.CertificateChain
 	}
@@ -359,8 +461,14 @@ func (o CertificateChainInfo) MarshalJSON() ([]byte, error) {
 	if o.CertificateStatus != nil {
 		toSerialize["certificate_status"] = o.CertificateStatus
 	}
+	if o.ErrorMessage != nil {
+		toSerialize["error_message"] = o.ErrorMessage
+	}
 	if o.ExpirationEvents != nil {
 		toSerialize["expiration_events"] = o.ExpirationEvents
+	}
+	if o.RenewBeforeExpirationInDays != nil {
+		toSerialize["renew_before_expiration_in_days"] = o.RenewBeforeExpirationInDays
 	}
 	return json.Marshal(toSerialize)
 }

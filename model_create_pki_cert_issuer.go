@@ -29,6 +29,8 @@ type CreatePKICertIssuer struct {
 	AllowedExtraExtensions *string `json:"allowed-extra-extensions,omitempty"`
 	// A list of the allowed URIs that clients can request to be included in the certificate as part of the URI Subject Alternative Names (in a comma-delimited list)
 	AllowedUriSans *string `json:"allowed-uri-sans,omitempty"`
+	// Automatically renew certificates before expiration
+	AutoRenew *bool `json:"auto-renew,omitempty"`
 	// The name of an existing CA target to attach this PKI Certificate Issuer to, required in Public CA mode
 	CaTarget *string `json:"ca-target,omitempty"`
 	// If set, certificates will be flagged for client auth use
@@ -81,6 +83,8 @@ type CreatePKICertIssuer struct {
 	ProtectCertificates *bool `json:"protect-certificates,omitempty"`
 	// A comma-separated list of provinces that will be set in the issued certificate
 	Province *string `json:"province,omitempty"`
+	// Number of days before expiration to renew certificates
+	ScheduledRenew *int64 `json:"scheduled-renew,omitempty"`
 	// If set, certificates will be flagged for server auth use
 	ServerFlag *bool `json:"server-flag,omitempty"`
 	// A key to sign the certificate with, required in Private CA mode
@@ -321,6 +325,38 @@ func (o *CreatePKICertIssuer) HasAllowedUriSans() bool {
 // SetAllowedUriSans gets a reference to the given string and assigns it to the AllowedUriSans field.
 func (o *CreatePKICertIssuer) SetAllowedUriSans(v string) {
 	o.AllowedUriSans = &v
+}
+
+// GetAutoRenew returns the AutoRenew field value if set, zero value otherwise.
+func (o *CreatePKICertIssuer) GetAutoRenew() bool {
+	if o == nil || o.AutoRenew == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AutoRenew
+}
+
+// GetAutoRenewOk returns a tuple with the AutoRenew field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreatePKICertIssuer) GetAutoRenewOk() (*bool, bool) {
+	if o == nil || o.AutoRenew == nil {
+		return nil, false
+	}
+	return o.AutoRenew, true
+}
+
+// HasAutoRenew returns a boolean if a field has been set.
+func (o *CreatePKICertIssuer) HasAutoRenew() bool {
+	if o != nil && o.AutoRenew != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoRenew gets a reference to the given bool and assigns it to the AutoRenew field.
+func (o *CreatePKICertIssuer) SetAutoRenew(v bool) {
+	o.AutoRenew = &v
 }
 
 // GetCaTarget returns the CaTarget field value if set, zero value otherwise.
@@ -1147,6 +1183,38 @@ func (o *CreatePKICertIssuer) SetProvince(v string) {
 	o.Province = &v
 }
 
+// GetScheduledRenew returns the ScheduledRenew field value if set, zero value otherwise.
+func (o *CreatePKICertIssuer) GetScheduledRenew() int64 {
+	if o == nil || o.ScheduledRenew == nil {
+		var ret int64
+		return ret
+	}
+	return *o.ScheduledRenew
+}
+
+// GetScheduledRenewOk returns a tuple with the ScheduledRenew field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreatePKICertIssuer) GetScheduledRenewOk() (*int64, bool) {
+	if o == nil || o.ScheduledRenew == nil {
+		return nil, false
+	}
+	return o.ScheduledRenew, true
+}
+
+// HasScheduledRenew returns a boolean if a field has been set.
+func (o *CreatePKICertIssuer) HasScheduledRenew() bool {
+	if o != nil && o.ScheduledRenew != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetScheduledRenew gets a reference to the given int64 and assigns it to the ScheduledRenew field.
+func (o *CreatePKICertIssuer) SetScheduledRenew(v int64) {
+	o.ScheduledRenew = &v
+}
+
 // GetServerFlag returns the ServerFlag field value if set, zero value otherwise.
 func (o *CreatePKICertIssuer) GetServerFlag() bool {
 	if o == nil || o.ServerFlag == nil {
@@ -1375,6 +1443,9 @@ func (o CreatePKICertIssuer) MarshalJSON() ([]byte, error) {
 	if o.AllowedUriSans != nil {
 		toSerialize["allowed-uri-sans"] = o.AllowedUriSans
 	}
+	if o.AutoRenew != nil {
+		toSerialize["auto-renew"] = o.AutoRenew
+	}
 	if o.CaTarget != nil {
 		toSerialize["ca-target"] = o.CaTarget
 	}
@@ -1452,6 +1523,9 @@ func (o CreatePKICertIssuer) MarshalJSON() ([]byte, error) {
 	}
 	if o.Province != nil {
 		toSerialize["province"] = o.Province
+	}
+	if o.ScheduledRenew != nil {
+		toSerialize["scheduled-renew"] = o.ScheduledRenew
 	}
 	if o.ServerFlag != nil {
 		toSerialize["server-flag"] = o.ServerFlag

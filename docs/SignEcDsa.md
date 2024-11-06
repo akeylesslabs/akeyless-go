@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Accessibility** | Pointer to **string** | for personal password manager | [optional] [default to "regular"]
 **DisplayId** | Pointer to **string** | The display id of the EC key to use for the signing process | [optional] 
 **ItemId** | Pointer to **int64** | The item id of the EC key to use for the signing process | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
@@ -32,6 +33,31 @@ will change when the set of required properties is changed
 NewSignEcDsaWithDefaults instantiates a new SignEcDsa object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAccessibility
+
+`func (o *SignEcDsa) GetAccessibility() string`
+
+GetAccessibility returns the Accessibility field if non-nil, zero value otherwise.
+
+### GetAccessibilityOk
+
+`func (o *SignEcDsa) GetAccessibilityOk() (*string, bool)`
+
+GetAccessibilityOk returns a tuple with the Accessibility field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessibility
+
+`func (o *SignEcDsa) SetAccessibility(v string)`
+
+SetAccessibility sets Accessibility field to given value.
+
+### HasAccessibility
+
+`func (o *SignEcDsa) HasAccessibility() bool`
+
+HasAccessibility returns a boolean if a field has been set.
 
 ### GetDisplayId
 

@@ -21,13 +21,13 @@ type EventForwarderCreateWebhook struct {
 	AuthMethodsEventSourceLocations *[]string `json:"auth-methods-event-source-locations,omitempty"`
 	// Base64 encoded Token string for authentication type Token
 	AuthToken *string `json:"auth-token,omitempty"`
-	// The Webhook authentication type [user-pass, token, certificate]
+	// The Webhook authentication type [user-pass, bearer-token, certificate]
 	AuthType *string `json:"auth-type,omitempty"`
 	// Base64 encoded PEM certificate, relevant for certificate auth-type
 	ClientCertData *string `json:"client-cert-data,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
-	// List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, certificate-provisioning-success, certificate-provisioning-failure, auth-method-pending-expiration, auth-method-expired, next-automatic-rotation, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure, uid-rotation-failure, apply-justification, email-auth-method-approved, usage, rotation-usage, gateway-inactive, static-secret-updated]
+	// List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, certificate-provisioning-success, certificate-provisioning-failure, auth-method-pending-expiration, auth-method-expired, next-automatic-rotation, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure, uid-rotation-failure, apply-justification, email-auth-method-approved, usage, rotation-usage, gateway-inactive, static-secret-updated, rate-limiting, usage-report]
 	EventTypes *[]string `json:"event-types,omitempty"`
 	// Rate of periodic runner repetition in hours
 	Every *string `json:"every,omitempty"`

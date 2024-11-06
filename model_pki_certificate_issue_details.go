@@ -24,6 +24,7 @@ type PKICertificateIssueDetails struct {
 	AllowedDomainsList *[]string `json:"allowed_domains_list,omitempty"`
 	AllowedExtraExtensions *map[string][]string `json:"allowed_extra_extensions,omitempty"`
 	AllowedUriSans *[]string `json:"allowed_uri_sans,omitempty"`
+	AutoRenewCertificate *bool `json:"auto_renew_certificate,omitempty"`
 	BasicConstraintsValidForNonCa *bool `json:"basic_constraints_valid_for_non_ca,omitempty"`
 	CertificateAuthorityMode *string `json:"certificate_authority_mode,omitempty"`
 	ClientFlag *bool `json:"client_flag,omitempty"`
@@ -53,6 +54,7 @@ type PKICertificateIssueDetails struct {
 	// ProtectGeneratedCertificates dictates whether the created certificates should be protected from deletion
 	ProtectGeneratedCertificates *bool `json:"protect_generated_certificates,omitempty"`
 	Province *[]string `json:"province,omitempty"`
+	RenewBeforeExpirationInDays *int64 `json:"renew_before_expiration_in_days,omitempty"`
 	RequireCn *bool `json:"require_cn,omitempty"`
 	ServerFlag *bool `json:"server_flag,omitempty"`
 	StreetAddress *[]string `json:"street_address,omitempty"`
@@ -297,6 +299,38 @@ func (o *PKICertificateIssueDetails) HasAllowedUriSans() bool {
 // SetAllowedUriSans gets a reference to the given []string and assigns it to the AllowedUriSans field.
 func (o *PKICertificateIssueDetails) SetAllowedUriSans(v []string) {
 	o.AllowedUriSans = &v
+}
+
+// GetAutoRenewCertificate returns the AutoRenewCertificate field value if set, zero value otherwise.
+func (o *PKICertificateIssueDetails) GetAutoRenewCertificate() bool {
+	if o == nil || o.AutoRenewCertificate == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AutoRenewCertificate
+}
+
+// GetAutoRenewCertificateOk returns a tuple with the AutoRenewCertificate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PKICertificateIssueDetails) GetAutoRenewCertificateOk() (*bool, bool) {
+	if o == nil || o.AutoRenewCertificate == nil {
+		return nil, false
+	}
+	return o.AutoRenewCertificate, true
+}
+
+// HasAutoRenewCertificate returns a boolean if a field has been set.
+func (o *PKICertificateIssueDetails) HasAutoRenewCertificate() bool {
+	if o != nil && o.AutoRenewCertificate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoRenewCertificate gets a reference to the given bool and assigns it to the AutoRenewCertificate field.
+func (o *PKICertificateIssueDetails) SetAutoRenewCertificate(v bool) {
+	o.AutoRenewCertificate = &v
 }
 
 // GetBasicConstraintsValidForNonCa returns the BasicConstraintsValidForNonCa field value if set, zero value otherwise.
@@ -1067,6 +1101,38 @@ func (o *PKICertificateIssueDetails) SetProvince(v []string) {
 	o.Province = &v
 }
 
+// GetRenewBeforeExpirationInDays returns the RenewBeforeExpirationInDays field value if set, zero value otherwise.
+func (o *PKICertificateIssueDetails) GetRenewBeforeExpirationInDays() int64 {
+	if o == nil || o.RenewBeforeExpirationInDays == nil {
+		var ret int64
+		return ret
+	}
+	return *o.RenewBeforeExpirationInDays
+}
+
+// GetRenewBeforeExpirationInDaysOk returns a tuple with the RenewBeforeExpirationInDays field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PKICertificateIssueDetails) GetRenewBeforeExpirationInDaysOk() (*int64, bool) {
+	if o == nil || o.RenewBeforeExpirationInDays == nil {
+		return nil, false
+	}
+	return o.RenewBeforeExpirationInDays, true
+}
+
+// HasRenewBeforeExpirationInDays returns a boolean if a field has been set.
+func (o *PKICertificateIssueDetails) HasRenewBeforeExpirationInDays() bool {
+	if o != nil && o.RenewBeforeExpirationInDays != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRenewBeforeExpirationInDays gets a reference to the given int64 and assigns it to the RenewBeforeExpirationInDays field.
+func (o *PKICertificateIssueDetails) SetRenewBeforeExpirationInDays(v int64) {
+	o.RenewBeforeExpirationInDays = &v
+}
+
 // GetRequireCn returns the RequireCn field value if set, zero value otherwise.
 func (o *PKICertificateIssueDetails) GetRequireCn() bool {
 	if o == nil || o.RequireCn == nil {
@@ -1186,6 +1252,9 @@ func (o PKICertificateIssueDetails) MarshalJSON() ([]byte, error) {
 	if o.AllowedUriSans != nil {
 		toSerialize["allowed_uri_sans"] = o.AllowedUriSans
 	}
+	if o.AutoRenewCertificate != nil {
+		toSerialize["auto_renew_certificate"] = o.AutoRenewCertificate
+	}
 	if o.BasicConstraintsValidForNonCa != nil {
 		toSerialize["basic_constraints_valid_for_non_ca"] = o.BasicConstraintsValidForNonCa
 	}
@@ -1257,6 +1326,9 @@ func (o PKICertificateIssueDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.Province != nil {
 		toSerialize["province"] = o.Province
+	}
+	if o.RenewBeforeExpirationInDays != nil {
+		toSerialize["renew_before_expiration_in_days"] = o.RenewBeforeExpirationInDays
 	}
 	if o.RequireCn != nil {
 		toSerialize["require_cn"] = o.RequireCn

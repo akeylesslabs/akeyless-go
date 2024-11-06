@@ -18,6 +18,7 @@ import (
 // CacheConfigPart struct for CacheConfigPart
 type CacheConfigPart struct {
 	CacheEnable *bool `json:"cache_enable,omitempty"`
+	CacheEncryptionKey *string `json:"cache_encryption_key,omitempty"`
 	CacheTtl *string `json:"cache_ttl,omitempty"`
 	NewProactiveCacheEnable *bool `json:"new_proactive_cache_enable,omitempty"`
 	ProactiveCacheDumpInterval *string `json:"proactive_cache_dump_interval,omitempty"`
@@ -72,6 +73,38 @@ func (o *CacheConfigPart) HasCacheEnable() bool {
 // SetCacheEnable gets a reference to the given bool and assigns it to the CacheEnable field.
 func (o *CacheConfigPart) SetCacheEnable(v bool) {
 	o.CacheEnable = &v
+}
+
+// GetCacheEncryptionKey returns the CacheEncryptionKey field value if set, zero value otherwise.
+func (o *CacheConfigPart) GetCacheEncryptionKey() string {
+	if o == nil || o.CacheEncryptionKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.CacheEncryptionKey
+}
+
+// GetCacheEncryptionKeyOk returns a tuple with the CacheEncryptionKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CacheConfigPart) GetCacheEncryptionKeyOk() (*string, bool) {
+	if o == nil || o.CacheEncryptionKey == nil {
+		return nil, false
+	}
+	return o.CacheEncryptionKey, true
+}
+
+// HasCacheEncryptionKey returns a boolean if a field has been set.
+func (o *CacheConfigPart) HasCacheEncryptionKey() bool {
+	if o != nil && o.CacheEncryptionKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCacheEncryptionKey gets a reference to the given string and assigns it to the CacheEncryptionKey field.
+func (o *CacheConfigPart) SetCacheEncryptionKey(v string) {
+	o.CacheEncryptionKey = &v
 }
 
 // GetCacheTtl returns the CacheTtl field value if set, zero value otherwise.
@@ -238,6 +271,9 @@ func (o CacheConfigPart) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.CacheEnable != nil {
 		toSerialize["cache_enable"] = o.CacheEnable
+	}
+	if o.CacheEncryptionKey != nil {
+		toSerialize["cache_encryption_key"] = o.CacheEncryptionKey
 	}
 	if o.CacheTtl != nil {
 		toSerialize["cache_ttl"] = o.CacheTtl

@@ -23,6 +23,7 @@ type AkeylessGatewayConfig struct {
 	ConfigProtectionKeyName *string `json:"config_protection_key_name,omitempty"`
 	General *GeneralConfigPart `json:"general,omitempty"`
 	K8sAuths *K8SAuthsConfigPart `json:"k8s_auths,omitempty"`
+	Kerberos *KerberosConfigPart `json:"kerberos,omitempty"`
 	KmipClients *KMIPConfigPart `json:"kmip_clients,omitempty"`
 	Ldap *LdapConfigPart `json:"ldap,omitempty"`
 	Leadership *LeadershipConfigPart `json:"leadership,omitempty"`
@@ -242,6 +243,38 @@ func (o *AkeylessGatewayConfig) HasK8sAuths() bool {
 // SetK8sAuths gets a reference to the given K8SAuthsConfigPart and assigns it to the K8sAuths field.
 func (o *AkeylessGatewayConfig) SetK8sAuths(v K8SAuthsConfigPart) {
 	o.K8sAuths = &v
+}
+
+// GetKerberos returns the Kerberos field value if set, zero value otherwise.
+func (o *AkeylessGatewayConfig) GetKerberos() KerberosConfigPart {
+	if o == nil || o.Kerberos == nil {
+		var ret KerberosConfigPart
+		return ret
+	}
+	return *o.Kerberos
+}
+
+// GetKerberosOk returns a tuple with the Kerberos field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AkeylessGatewayConfig) GetKerberosOk() (*KerberosConfigPart, bool) {
+	if o == nil || o.Kerberos == nil {
+		return nil, false
+	}
+	return o.Kerberos, true
+}
+
+// HasKerberos returns a boolean if a field has been set.
+func (o *AkeylessGatewayConfig) HasKerberos() bool {
+	if o != nil && o.Kerberos != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetKerberos gets a reference to the given KerberosConfigPart and assigns it to the Kerberos field.
+func (o *AkeylessGatewayConfig) SetKerberos(v KerberosConfigPart) {
+	o.Kerberos = &v
 }
 
 // GetKmipClients returns the KmipClients field value if set, zero value otherwise.
@@ -583,6 +616,9 @@ func (o AkeylessGatewayConfig) MarshalJSON() ([]byte, error) {
 	}
 	if o.K8sAuths != nil {
 		toSerialize["k8s_auths"] = o.K8sAuths
+	}
+	if o.Kerberos != nil {
+		toSerialize["kerberos"] = o.Kerberos
 	}
 	if o.KmipClients != nil {
 		toSerialize["kmip_clients"] = o.KmipClients

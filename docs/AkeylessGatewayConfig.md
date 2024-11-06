@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **ConfigProtectionKeyName** | Pointer to **string** |  | [optional] 
 **General** | Pointer to [**GeneralConfigPart**](GeneralConfigPart.md) |  | [optional] 
 **K8sAuths** | Pointer to [**K8SAuthsConfigPart**](K8SAuthsConfigPart.md) |  | [optional] 
+**Kerberos** | Pointer to [**KerberosConfigPart**](KerberosConfigPart.md) |  | [optional] 
 **KmipClients** | Pointer to [**KMIPConfigPart**](KMIPConfigPart.md) |  | [optional] 
 **Ldap** | Pointer to [**LdapConfigPart**](LdapConfigPart.md) |  | [optional] 
 **Leadership** | Pointer to [**LeadershipConfigPart**](LeadershipConfigPart.md) |  | [optional] 
@@ -189,6 +190,31 @@ SetK8sAuths sets K8sAuths field to given value.
 `func (o *AkeylessGatewayConfig) HasK8sAuths() bool`
 
 HasK8sAuths returns a boolean if a field has been set.
+
+### GetKerberos
+
+`func (o *AkeylessGatewayConfig) GetKerberos() KerberosConfigPart`
+
+GetKerberos returns the Kerberos field if non-nil, zero value otherwise.
+
+### GetKerberosOk
+
+`func (o *AkeylessGatewayConfig) GetKerberosOk() (*KerberosConfigPart, bool)`
+
+GetKerberosOk returns a tuple with the Kerberos field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKerberos
+
+`func (o *AkeylessGatewayConfig) SetKerberos(v KerberosConfigPart)`
+
+SetKerberos sets Kerberos field to given value.
+
+### HasKerberos
+
+`func (o *AkeylessGatewayConfig) HasKerberos() bool`
+
+HasKerberos returns a boolean if a field has been set.
 
 ### GetKmipClients
 

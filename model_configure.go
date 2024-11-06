@@ -39,14 +39,24 @@ type Configure struct {
 	CertUsername *string `json:"cert-username,omitempty"`
 	// Default path prefix for name of items, targets and auth methods
 	DefaultLocationPrefix *string `json:"default-location-prefix,omitempty"`
+	// Disable the FAST negotiation in the Kerberos authentication method
+	DisablePafxfast *string `json:"disable-pafxfast,omitempty"`
+	// The service principal name of the gateway as registered in LDAP (i.e., HTTP/gateway)
+	GatewaySpn *string `json:"gateway-spn,omitempty"`
 	// GCP JWT audience
 	GcpAudience *string `json:"gcp-audience,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// The K8S Auth config name (relevant only for access-type=k8s)
 	K8sAuthConfigName *string `json:"k8s-auth-config-name,omitempty"`
+	// TThe username for the entry within the keytab to authenticate via Kerberos
+	KerberosUsername *string `json:"kerberos-username,omitempty"`
 	// Private key data encoded in base64. Used if file was not provided.(relevant only for access-type=cert in Curl Context)
 	KeyData *string `json:"key-data,omitempty"`
+	// Base64-encoded content of a valid keytab file, containing the service account's entry.
+	KeytabData *string `json:"keytab-data,omitempty"`
+	// Base64-encoded content of a valid krb5.conf file, specifying the settings and parameters required for Kerberos authentication.
+	Krb5ConfData *string `json:"krb5-conf-data,omitempty"`
 	// Set this option to output legacy ('ssh-rsa-cert-v01@openssh.com') signing algorithm name in the certificate.
 	LegacySigningAlgName *bool `json:"legacy-signing-alg-name,omitempty"`
 	// The type of the OCI configuration to use [instance/apikey/resource] (relevant only for access-type=oci)
@@ -440,6 +450,70 @@ func (o *Configure) SetDefaultLocationPrefix(v string) {
 	o.DefaultLocationPrefix = &v
 }
 
+// GetDisablePafxfast returns the DisablePafxfast field value if set, zero value otherwise.
+func (o *Configure) GetDisablePafxfast() string {
+	if o == nil || o.DisablePafxfast == nil {
+		var ret string
+		return ret
+	}
+	return *o.DisablePafxfast
+}
+
+// GetDisablePafxfastOk returns a tuple with the DisablePafxfast field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Configure) GetDisablePafxfastOk() (*string, bool) {
+	if o == nil || o.DisablePafxfast == nil {
+		return nil, false
+	}
+	return o.DisablePafxfast, true
+}
+
+// HasDisablePafxfast returns a boolean if a field has been set.
+func (o *Configure) HasDisablePafxfast() bool {
+	if o != nil && o.DisablePafxfast != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDisablePafxfast gets a reference to the given string and assigns it to the DisablePafxfast field.
+func (o *Configure) SetDisablePafxfast(v string) {
+	o.DisablePafxfast = &v
+}
+
+// GetGatewaySpn returns the GatewaySpn field value if set, zero value otherwise.
+func (o *Configure) GetGatewaySpn() string {
+	if o == nil || o.GatewaySpn == nil {
+		var ret string
+		return ret
+	}
+	return *o.GatewaySpn
+}
+
+// GetGatewaySpnOk returns a tuple with the GatewaySpn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Configure) GetGatewaySpnOk() (*string, bool) {
+	if o == nil || o.GatewaySpn == nil {
+		return nil, false
+	}
+	return o.GatewaySpn, true
+}
+
+// HasGatewaySpn returns a boolean if a field has been set.
+func (o *Configure) HasGatewaySpn() bool {
+	if o != nil && o.GatewaySpn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGatewaySpn gets a reference to the given string and assigns it to the GatewaySpn field.
+func (o *Configure) SetGatewaySpn(v string) {
+	o.GatewaySpn = &v
+}
+
 // GetGcpAudience returns the GcpAudience field value if set, zero value otherwise.
 func (o *Configure) GetGcpAudience() string {
 	if o == nil || o.GcpAudience == nil {
@@ -536,6 +610,38 @@ func (o *Configure) SetK8sAuthConfigName(v string) {
 	o.K8sAuthConfigName = &v
 }
 
+// GetKerberosUsername returns the KerberosUsername field value if set, zero value otherwise.
+func (o *Configure) GetKerberosUsername() string {
+	if o == nil || o.KerberosUsername == nil {
+		var ret string
+		return ret
+	}
+	return *o.KerberosUsername
+}
+
+// GetKerberosUsernameOk returns a tuple with the KerberosUsername field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Configure) GetKerberosUsernameOk() (*string, bool) {
+	if o == nil || o.KerberosUsername == nil {
+		return nil, false
+	}
+	return o.KerberosUsername, true
+}
+
+// HasKerberosUsername returns a boolean if a field has been set.
+func (o *Configure) HasKerberosUsername() bool {
+	if o != nil && o.KerberosUsername != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetKerberosUsername gets a reference to the given string and assigns it to the KerberosUsername field.
+func (o *Configure) SetKerberosUsername(v string) {
+	o.KerberosUsername = &v
+}
+
 // GetKeyData returns the KeyData field value if set, zero value otherwise.
 func (o *Configure) GetKeyData() string {
 	if o == nil || o.KeyData == nil {
@@ -566,6 +672,70 @@ func (o *Configure) HasKeyData() bool {
 // SetKeyData gets a reference to the given string and assigns it to the KeyData field.
 func (o *Configure) SetKeyData(v string) {
 	o.KeyData = &v
+}
+
+// GetKeytabData returns the KeytabData field value if set, zero value otherwise.
+func (o *Configure) GetKeytabData() string {
+	if o == nil || o.KeytabData == nil {
+		var ret string
+		return ret
+	}
+	return *o.KeytabData
+}
+
+// GetKeytabDataOk returns a tuple with the KeytabData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Configure) GetKeytabDataOk() (*string, bool) {
+	if o == nil || o.KeytabData == nil {
+		return nil, false
+	}
+	return o.KeytabData, true
+}
+
+// HasKeytabData returns a boolean if a field has been set.
+func (o *Configure) HasKeytabData() bool {
+	if o != nil && o.KeytabData != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetKeytabData gets a reference to the given string and assigns it to the KeytabData field.
+func (o *Configure) SetKeytabData(v string) {
+	o.KeytabData = &v
+}
+
+// GetKrb5ConfData returns the Krb5ConfData field value if set, zero value otherwise.
+func (o *Configure) GetKrb5ConfData() string {
+	if o == nil || o.Krb5ConfData == nil {
+		var ret string
+		return ret
+	}
+	return *o.Krb5ConfData
+}
+
+// GetKrb5ConfDataOk returns a tuple with the Krb5ConfData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Configure) GetKrb5ConfDataOk() (*string, bool) {
+	if o == nil || o.Krb5ConfData == nil {
+		return nil, false
+	}
+	return o.Krb5ConfData, true
+}
+
+// HasKrb5ConfData returns a boolean if a field has been set.
+func (o *Configure) HasKrb5ConfData() bool {
+	if o != nil && o.Krb5ConfData != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetKrb5ConfData gets a reference to the given string and assigns it to the Krb5ConfData field.
+func (o *Configure) SetKrb5ConfData(v string) {
+	o.Krb5ConfData = &v
 }
 
 // GetLegacySigningAlgName returns the LegacySigningAlgName field value if set, zero value otherwise.
@@ -699,6 +869,12 @@ func (o Configure) MarshalJSON() ([]byte, error) {
 	if o.DefaultLocationPrefix != nil {
 		toSerialize["default-location-prefix"] = o.DefaultLocationPrefix
 	}
+	if o.DisablePafxfast != nil {
+		toSerialize["disable-pafxfast"] = o.DisablePafxfast
+	}
+	if o.GatewaySpn != nil {
+		toSerialize["gateway-spn"] = o.GatewaySpn
+	}
 	if o.GcpAudience != nil {
 		toSerialize["gcp-audience"] = o.GcpAudience
 	}
@@ -708,8 +884,17 @@ func (o Configure) MarshalJSON() ([]byte, error) {
 	if o.K8sAuthConfigName != nil {
 		toSerialize["k8s-auth-config-name"] = o.K8sAuthConfigName
 	}
+	if o.KerberosUsername != nil {
+		toSerialize["kerberos-username"] = o.KerberosUsername
+	}
 	if o.KeyData != nil {
 		toSerialize["key-data"] = o.KeyData
+	}
+	if o.KeytabData != nil {
+		toSerialize["keytab-data"] = o.KeytabData
+	}
+	if o.Krb5ConfData != nil {
+		toSerialize["krb5-conf-data"] = o.Krb5ConfData
 	}
 	if o.LegacySigningAlgName != nil {
 		toSerialize["legacy-signing-alg-name"] = o.LegacySigningAlgName

@@ -34,6 +34,7 @@ type AuthMethodAccessInfo struct {
 	HuaweiAccessRules *HuaweiAccessRules `json:"huawei_access_rules,omitempty"`
 	JwtTtl *int64 `json:"jwt_ttl,omitempty"`
 	K8sAccessRules *KubernetesAccessRules `json:"k8s_access_rules,omitempty"`
+	KerberosAccessRules *KerberosAccessRules `json:"kerberos_access_rules,omitempty"`
 	LdapAccessRules *LDAPAccessRules `json:"ldap_access_rules,omitempty"`
 	Oauth2AccessRules *OAuth2AccessRules `json:"oauth2_access_rules,omitempty"`
 	OciAccessRules *OCIAccessRules `json:"oci_access_rules,omitempty"`
@@ -543,6 +544,38 @@ func (o *AuthMethodAccessInfo) SetK8sAccessRules(v KubernetesAccessRules) {
 	o.K8sAccessRules = &v
 }
 
+// GetKerberosAccessRules returns the KerberosAccessRules field value if set, zero value otherwise.
+func (o *AuthMethodAccessInfo) GetKerberosAccessRules() KerberosAccessRules {
+	if o == nil || o.KerberosAccessRules == nil {
+		var ret KerberosAccessRules
+		return ret
+	}
+	return *o.KerberosAccessRules
+}
+
+// GetKerberosAccessRulesOk returns a tuple with the KerberosAccessRules field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodAccessInfo) GetKerberosAccessRulesOk() (*KerberosAccessRules, bool) {
+	if o == nil || o.KerberosAccessRules == nil {
+		return nil, false
+	}
+	return o.KerberosAccessRules, true
+}
+
+// HasKerberosAccessRules returns a boolean if a field has been set.
+func (o *AuthMethodAccessInfo) HasKerberosAccessRules() bool {
+	if o != nil && o.KerberosAccessRules != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetKerberosAccessRules gets a reference to the given KerberosAccessRules and assigns it to the KerberosAccessRules field.
+func (o *AuthMethodAccessInfo) SetKerberosAccessRules(v KerberosAccessRules) {
+	o.KerberosAccessRules = &v
+}
+
 // GetLdapAccessRules returns the LdapAccessRules field value if set, zero value otherwise.
 func (o *AuthMethodAccessInfo) GetLdapAccessRules() LDAPAccessRules {
 	if o == nil || o.LdapAccessRules == nil {
@@ -877,6 +910,9 @@ func (o AuthMethodAccessInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.K8sAccessRules != nil {
 		toSerialize["k8s_access_rules"] = o.K8sAccessRules
+	}
+	if o.KerberosAccessRules != nil {
+		toSerialize["kerberos_access_rules"] = o.KerberosAccessRules
 	}
 	if o.LdapAccessRules != nil {
 		toSerialize["ldap_access_rules"] = o.LdapAccessRules

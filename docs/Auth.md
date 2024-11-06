@@ -13,13 +13,18 @@ Name | Type | Description | Notes
 **CertData** | Pointer to **string** | Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type&#x3D;cert) | [optional] 
 **CloudId** | Pointer to **string** | The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam,gcp) | [optional] 
 **Debug** | Pointer to **bool** |  | [optional] 
+**DisablePafxfast** | Pointer to **string** | Disable the FAST negotiation in the Kerberos authentication method | [optional] 
+**GatewaySpn** | Pointer to **string** | The service principal name of the gateway as registered in LDAP (i.e., HTTP/gateway) | [optional] 
 **GatewayUrl** | Pointer to **string** | Gateway URL relevant only for access-type&#x3D;k8s/oauth2/saml/oidc | [optional] 
 **GcpAudience** | Pointer to **string** | GCP JWT audience | [optional] [default to "akeyless.io"]
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Jwt** | Pointer to **string** | The Json Web Token (relevant only for access-type&#x3D;jwt/oidc) | [optional] 
 **K8sAuthConfigName** | Pointer to **string** | The K8S Auth config name (relevant only for access-type&#x3D;k8s) | [optional] 
 **K8sServiceAccountToken** | Pointer to **string** | The K8S service account token. (relevant only for access-type&#x3D;k8s) | [optional] 
+**KerberosUsername** | Pointer to **string** | TThe username for the entry within the keytab to authenticate via Kerberos | [optional] 
 **KeyData** | Pointer to **string** | Private key data encoded in base64. Used if file was not provided.(relevant only for access-type&#x3D;cert) | [optional] 
+**KeytabData** | Pointer to **string** | Base64-encoded content of a valid keytab file, containing the service account&#39;s entry. | [optional] 
+**Krb5ConfData** | Pointer to **string** | Base64-encoded content of a valid krb5.conf file, specifying the settings and parameters required for Kerberos authentication. | [optional] 
 **LdapPassword** | Pointer to **string** | LDAP password (relevant only for access-type&#x3D;ldap) | [optional] 
 **LdapUsername** | Pointer to **string** | LDAP username (relevant only for access-type&#x3D;ldap) | [optional] 
 **OciAuthType** | Pointer to **string** | The type of the OCI configuration to use [instance/apikey/resource] (relevant only for access-type&#x3D;oci) | [optional] [default to "apikey"]
@@ -271,6 +276,56 @@ SetDebug sets Debug field to given value.
 
 HasDebug returns a boolean if a field has been set.
 
+### GetDisablePafxfast
+
+`func (o *Auth) GetDisablePafxfast() string`
+
+GetDisablePafxfast returns the DisablePafxfast field if non-nil, zero value otherwise.
+
+### GetDisablePafxfastOk
+
+`func (o *Auth) GetDisablePafxfastOk() (*string, bool)`
+
+GetDisablePafxfastOk returns a tuple with the DisablePafxfast field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisablePafxfast
+
+`func (o *Auth) SetDisablePafxfast(v string)`
+
+SetDisablePafxfast sets DisablePafxfast field to given value.
+
+### HasDisablePafxfast
+
+`func (o *Auth) HasDisablePafxfast() bool`
+
+HasDisablePafxfast returns a boolean if a field has been set.
+
+### GetGatewaySpn
+
+`func (o *Auth) GetGatewaySpn() string`
+
+GetGatewaySpn returns the GatewaySpn field if non-nil, zero value otherwise.
+
+### GetGatewaySpnOk
+
+`func (o *Auth) GetGatewaySpnOk() (*string, bool)`
+
+GetGatewaySpnOk returns a tuple with the GatewaySpn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGatewaySpn
+
+`func (o *Auth) SetGatewaySpn(v string)`
+
+SetGatewaySpn sets GatewaySpn field to given value.
+
+### HasGatewaySpn
+
+`func (o *Auth) HasGatewaySpn() bool`
+
+HasGatewaySpn returns a boolean if a field has been set.
+
 ### GetGatewayUrl
 
 `func (o *Auth) GetGatewayUrl() string`
@@ -421,6 +476,31 @@ SetK8sServiceAccountToken sets K8sServiceAccountToken field to given value.
 
 HasK8sServiceAccountToken returns a boolean if a field has been set.
 
+### GetKerberosUsername
+
+`func (o *Auth) GetKerberosUsername() string`
+
+GetKerberosUsername returns the KerberosUsername field if non-nil, zero value otherwise.
+
+### GetKerberosUsernameOk
+
+`func (o *Auth) GetKerberosUsernameOk() (*string, bool)`
+
+GetKerberosUsernameOk returns a tuple with the KerberosUsername field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKerberosUsername
+
+`func (o *Auth) SetKerberosUsername(v string)`
+
+SetKerberosUsername sets KerberosUsername field to given value.
+
+### HasKerberosUsername
+
+`func (o *Auth) HasKerberosUsername() bool`
+
+HasKerberosUsername returns a boolean if a field has been set.
+
 ### GetKeyData
 
 `func (o *Auth) GetKeyData() string`
@@ -445,6 +525,56 @@ SetKeyData sets KeyData field to given value.
 `func (o *Auth) HasKeyData() bool`
 
 HasKeyData returns a boolean if a field has been set.
+
+### GetKeytabData
+
+`func (o *Auth) GetKeytabData() string`
+
+GetKeytabData returns the KeytabData field if non-nil, zero value otherwise.
+
+### GetKeytabDataOk
+
+`func (o *Auth) GetKeytabDataOk() (*string, bool)`
+
+GetKeytabDataOk returns a tuple with the KeytabData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKeytabData
+
+`func (o *Auth) SetKeytabData(v string)`
+
+SetKeytabData sets KeytabData field to given value.
+
+### HasKeytabData
+
+`func (o *Auth) HasKeytabData() bool`
+
+HasKeytabData returns a boolean if a field has been set.
+
+### GetKrb5ConfData
+
+`func (o *Auth) GetKrb5ConfData() string`
+
+GetKrb5ConfData returns the Krb5ConfData field if non-nil, zero value otherwise.
+
+### GetKrb5ConfDataOk
+
+`func (o *Auth) GetKrb5ConfDataOk() (*string, bool)`
+
+GetKrb5ConfDataOk returns a tuple with the Krb5ConfData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKrb5ConfData
+
+`func (o *Auth) SetKrb5ConfData(v string)`
+
+SetKrb5ConfData sets Krb5ConfData field to given value.
+
+### HasKrb5ConfData
+
+`func (o *Auth) HasKrb5ConfData() bool`
+
+HasKrb5ConfData returns a boolean if a field has been set.
 
 ### GetLdapPassword
 

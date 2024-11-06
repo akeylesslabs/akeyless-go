@@ -31,6 +31,8 @@ type UpdatePKICertIssuer struct {
 	AllowedExtraExtensions *string `json:"allowed-extra-extensions,omitempty"`
 	// A list of the allowed URIs that clients can request to be included in the certificate as part of the URI Subject Alternative Names (in a comma-delimited list)
 	AllowedUriSans *string `json:"allowed-uri-sans,omitempty"`
+	// Automatically renew certificates before expiration
+	AutoRenew *bool `json:"auto-renew,omitempty"`
 	// If set, certificates will be flagged for client auth use
 	ClientFlag *bool `json:"client-flag,omitempty"`
 	// If set, certificates will be flagged for code signing use
@@ -85,6 +87,8 @@ type UpdatePKICertIssuer struct {
 	Province *string `json:"province,omitempty"`
 	// List of the existent tags that will be removed from this item
 	RmTag *[]string `json:"rm-tag,omitempty"`
+	// Number of days before expiration to renew certificates
+	ScheduledRenew *int64 `json:"scheduled-renew,omitempty"`
 	// If set, certificates will be flagged for server auth use
 	ServerFlag *bool `json:"server-flag,omitempty"`
 	// A key to sign the certificate with, required in Private CA mode
@@ -355,6 +359,38 @@ func (o *UpdatePKICertIssuer) HasAllowedUriSans() bool {
 // SetAllowedUriSans gets a reference to the given string and assigns it to the AllowedUriSans field.
 func (o *UpdatePKICertIssuer) SetAllowedUriSans(v string) {
 	o.AllowedUriSans = &v
+}
+
+// GetAutoRenew returns the AutoRenew field value if set, zero value otherwise.
+func (o *UpdatePKICertIssuer) GetAutoRenew() bool {
+	if o == nil || o.AutoRenew == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AutoRenew
+}
+
+// GetAutoRenewOk returns a tuple with the AutoRenew field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdatePKICertIssuer) GetAutoRenewOk() (*bool, bool) {
+	if o == nil || o.AutoRenew == nil {
+		return nil, false
+	}
+	return o.AutoRenew, true
+}
+
+// HasAutoRenew returns a boolean if a field has been set.
+func (o *UpdatePKICertIssuer) HasAutoRenew() bool {
+	if o != nil && o.AutoRenew != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoRenew gets a reference to the given bool and assigns it to the AutoRenew field.
+func (o *UpdatePKICertIssuer) SetAutoRenew(v bool) {
+	o.AutoRenew = &v
 }
 
 // GetClientFlag returns the ClientFlag field value if set, zero value otherwise.
@@ -1213,6 +1249,38 @@ func (o *UpdatePKICertIssuer) SetRmTag(v []string) {
 	o.RmTag = &v
 }
 
+// GetScheduledRenew returns the ScheduledRenew field value if set, zero value otherwise.
+func (o *UpdatePKICertIssuer) GetScheduledRenew() int64 {
+	if o == nil || o.ScheduledRenew == nil {
+		var ret int64
+		return ret
+	}
+	return *o.ScheduledRenew
+}
+
+// GetScheduledRenewOk returns a tuple with the ScheduledRenew field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdatePKICertIssuer) GetScheduledRenewOk() (*int64, bool) {
+	if o == nil || o.ScheduledRenew == nil {
+		return nil, false
+	}
+	return o.ScheduledRenew, true
+}
+
+// HasScheduledRenew returns a boolean if a field has been set.
+func (o *UpdatePKICertIssuer) HasScheduledRenew() bool {
+	if o != nil && o.ScheduledRenew != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetScheduledRenew gets a reference to the given int64 and assigns it to the ScheduledRenew field.
+func (o *UpdatePKICertIssuer) SetScheduledRenew(v int64) {
+	o.ScheduledRenew = &v
+}
+
 // GetServerFlag returns the ServerFlag field value if set, zero value otherwise.
 func (o *UpdatePKICertIssuer) GetServerFlag() bool {
 	if o == nil || o.ServerFlag == nil {
@@ -1412,6 +1480,9 @@ func (o UpdatePKICertIssuer) MarshalJSON() ([]byte, error) {
 	if o.AllowedUriSans != nil {
 		toSerialize["allowed-uri-sans"] = o.AllowedUriSans
 	}
+	if o.AutoRenew != nil {
+		toSerialize["auto-renew"] = o.AutoRenew
+	}
 	if o.ClientFlag != nil {
 		toSerialize["client-flag"] = o.ClientFlag
 	}
@@ -1492,6 +1563,9 @@ func (o UpdatePKICertIssuer) MarshalJSON() ([]byte, error) {
 	}
 	if o.RmTag != nil {
 		toSerialize["rm-tag"] = o.RmTag
+	}
+	if o.ScheduledRenew != nil {
+		toSerialize["scheduled-renew"] = o.ScheduledRenew
 	}
 	if o.ServerFlag != nil {
 		toSerialize["server-flag"] = o.ServerFlag

@@ -17,6 +17,8 @@ import (
 
 // SignEcDsa signEcDsa Calculates the signature of a given message using ECDSA and a sha hash algorithm matching the key size
 type SignEcDsa struct {
+	// for personal password manager
+	Accessibility *string `json:"accessibility,omitempty"`
 	// The display id of the EC key to use for the signing process
 	DisplayId *string `json:"display-id,omitempty"`
 	// The item id of the EC key to use for the signing process
@@ -43,6 +45,8 @@ type SignEcDsa struct {
 // will change when the set of required properties is changed
 func NewSignEcDsa(message string, ) *SignEcDsa {
 	this := SignEcDsa{}
+	var accessibility string = "regular"
+	this.Accessibility = &accessibility
 	var json bool = false
 	this.Json = &json
 	this.Message = message
@@ -54,9 +58,43 @@ func NewSignEcDsa(message string, ) *SignEcDsa {
 // but it doesn't guarantee that properties required by API are set
 func NewSignEcDsaWithDefaults() *SignEcDsa {
 	this := SignEcDsa{}
+	var accessibility string = "regular"
+	this.Accessibility = &accessibility
 	var json bool = false
 	this.Json = &json
 	return &this
+}
+
+// GetAccessibility returns the Accessibility field value if set, zero value otherwise.
+func (o *SignEcDsa) GetAccessibility() string {
+	if o == nil || o.Accessibility == nil {
+		var ret string
+		return ret
+	}
+	return *o.Accessibility
+}
+
+// GetAccessibilityOk returns a tuple with the Accessibility field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SignEcDsa) GetAccessibilityOk() (*string, bool) {
+	if o == nil || o.Accessibility == nil {
+		return nil, false
+	}
+	return o.Accessibility, true
+}
+
+// HasAccessibility returns a boolean if a field has been set.
+func (o *SignEcDsa) HasAccessibility() bool {
+	if o != nil && o.Accessibility != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessibility gets a reference to the given string and assigns it to the Accessibility field.
+func (o *SignEcDsa) SetAccessibility(v string) {
+	o.Accessibility = &v
 }
 
 // GetDisplayId returns the DisplayId field value if set, zero value otherwise.
@@ -341,6 +379,9 @@ func (o *SignEcDsa) SetVersion(v int32) {
 
 func (o SignEcDsa) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Accessibility != nil {
+		toSerialize["accessibility"] = o.Accessibility
+	}
 	if o.DisplayId != nil {
 		toSerialize["display-id"] = o.DisplayId
 	}

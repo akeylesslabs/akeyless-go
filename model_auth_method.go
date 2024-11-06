@@ -24,6 +24,7 @@ type AuthMethod struct {
 	AccountId *string `json:"account_id,omitempty"`
 	AssociatedGwIds *[]int64 `json:"associated_gw_ids,omitempty"`
 	AuthMethodAccessId *string `json:"auth_method_access_id,omitempty"`
+	AuthMethodAdditionalData *AuthMethodAdditionalData `json:"auth_method_additional_data,omitempty"`
 	AuthMethodName *string `json:"auth_method_name,omitempty"`
 	AuthMethodRolesAssoc *[]AuthMethodRoleAssociation `json:"auth_method_roles_assoc,omitempty"`
 	ClientPermissions *[]string `json:"client_permissions,omitempty"`
@@ -241,6 +242,38 @@ func (o *AuthMethod) HasAuthMethodAccessId() bool {
 // SetAuthMethodAccessId gets a reference to the given string and assigns it to the AuthMethodAccessId field.
 func (o *AuthMethod) SetAuthMethodAccessId(v string) {
 	o.AuthMethodAccessId = &v
+}
+
+// GetAuthMethodAdditionalData returns the AuthMethodAdditionalData field value if set, zero value otherwise.
+func (o *AuthMethod) GetAuthMethodAdditionalData() AuthMethodAdditionalData {
+	if o == nil || o.AuthMethodAdditionalData == nil {
+		var ret AuthMethodAdditionalData
+		return ret
+	}
+	return *o.AuthMethodAdditionalData
+}
+
+// GetAuthMethodAdditionalDataOk returns a tuple with the AuthMethodAdditionalData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethod) GetAuthMethodAdditionalDataOk() (*AuthMethodAdditionalData, bool) {
+	if o == nil || o.AuthMethodAdditionalData == nil {
+		return nil, false
+	}
+	return o.AuthMethodAdditionalData, true
+}
+
+// HasAuthMethodAdditionalData returns a boolean if a field has been set.
+func (o *AuthMethod) HasAuthMethodAdditionalData() bool {
+	if o != nil && o.AuthMethodAdditionalData != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthMethodAdditionalData gets a reference to the given AuthMethodAdditionalData and assigns it to the AuthMethodAdditionalData field.
+func (o *AuthMethod) SetAuthMethodAdditionalData(v AuthMethodAdditionalData) {
+	o.AuthMethodAdditionalData = &v
 }
 
 // GetAuthMethodName returns the AuthMethodName field value if set, zero value otherwise.
@@ -518,6 +551,9 @@ func (o AuthMethod) MarshalJSON() ([]byte, error) {
 	}
 	if o.AuthMethodAccessId != nil {
 		toSerialize["auth_method_access_id"] = o.AuthMethodAccessId
+	}
+	if o.AuthMethodAdditionalData != nil {
+		toSerialize["auth_method_additional_data"] = o.AuthMethodAdditionalData
 	}
 	if o.AuthMethodName != nil {
 		toSerialize["auth_method_name"] = o.AuthMethodName

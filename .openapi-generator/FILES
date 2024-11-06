@@ -33,6 +33,7 @@ docs/AttributeTypeAndValue.md
 docs/Auth.md
 docs/AuthMethod.md
 docs/AuthMethodAccessInfo.md
+docs/AuthMethodAdditionalData.md
 docs/AuthMethodCreateApiKey.md
 docs/AuthMethodCreateAwsIam.md
 docs/AuthMethodCreateAzureAD.md
@@ -40,6 +41,7 @@ docs/AuthMethodCreateCert.md
 docs/AuthMethodCreateEmail.md
 docs/AuthMethodCreateGcp.md
 docs/AuthMethodCreateK8s.md
+docs/AuthMethodCreateKerberos.md
 docs/AuthMethodCreateLdap.md
 docs/AuthMethodCreateOCI.md
 docs/AuthMethodCreateOIDC.md
@@ -59,6 +61,7 @@ docs/AuthMethodUpdateCert.md
 docs/AuthMethodUpdateEmail.md
 docs/AuthMethodUpdateGcp.md
 docs/AuthMethodUpdateK8s.md
+docs/AuthMethodUpdateKerberos.md
 docs/AuthMethodUpdateLdap.md
 docs/AuthMethodUpdateOCI.md
 docs/AuthMethodUpdateOIDC.md
@@ -188,6 +191,8 @@ docs/CreateOidcApp.md
 docs/CreateOidcAppOutput.md
 docs/CreatePKICertIssuer.md
 docs/CreatePKICertIssuerOutput.md
+docs/CreatePasskey.md
+docs/CreatePasskeyOutput.md
 docs/CreatePingTarget.md
 docs/CreatePingTargetOutput.md
 docs/CreateRabbitMQTarget.md
@@ -648,6 +653,9 @@ docs/KMIPClientUpdateResponse.md
 docs/KMIPConfigPart.md
 docs/KMIPEnvironmentCreateResponse.md
 docs/KMIPServer.md
+docs/KerberosAccessRules.md
+docs/KerberosAuthMethodInfo.md
+docs/KerberosConfigPart.md
 docs/KmipClientDeleteRule.md
 docs/KmipClientSetRule.md
 docs/KmipCreateClient.md
@@ -667,6 +675,15 @@ docs/KmipRenewServerCertificateOutput.md
 docs/KmipServerSetup.md
 docs/KmipSetServerState.md
 docs/KmipSetServerStateOutput.md
+docs/KubeConfigValue.md
+docs/KubeconfigCluster.md
+docs/KubeconfigContext.md
+docs/KubeconfigExec.md
+docs/KubeconfigGenerateOutput.md
+docs/KubeconfigNamedCluster.md
+docs/KubeconfigNamedContext.md
+docs/KubeconfigUser.md
+docs/KubeconfigUserExec.md
 docs/KubernetesAccessRules.md
 docs/LDAPAccessRules.md
 docs/LastConfigChange.md
@@ -689,7 +706,9 @@ docs/ListItemsOutput.md
 docs/ListRoles.md
 docs/ListRolesOutput.md
 docs/ListSRABastions.md
+docs/ListSRASessions.md
 docs/ListSharedItems.md
+docs/ListSraSessionsOutput.md
 docs/ListTargets.md
 docs/ListTargetsOutput.md
 docs/LogForwardingConfigPart.md
@@ -832,6 +851,7 @@ docs/SignRsaSsaPssOutput.md
 docs/SmInfo.md
 docs/SplunkLogForwardingConfig.md
 docs/SraInfo.md
+docs/SraSessionEntryOut.md
 docs/SshBastionConf.md
 docs/SshBastionSessionTermination.md
 docs/StaticCredsAuth.md
@@ -1079,6 +1099,7 @@ model_attribute_type_and_value.go
 model_auth.go
 model_auth_method.go
 model_auth_method_access_info.go
+model_auth_method_additional_data.go
 model_auth_method_create_api_key.go
 model_auth_method_create_aws_iam.go
 model_auth_method_create_azure_ad.go
@@ -1086,6 +1107,7 @@ model_auth_method_create_cert.go
 model_auth_method_create_email.go
 model_auth_method_create_gcp.go
 model_auth_method_create_k8s.go
+model_auth_method_create_kerberos.go
 model_auth_method_create_ldap.go
 model_auth_method_create_oauth2.go
 model_auth_method_create_oci.go
@@ -1105,6 +1127,7 @@ model_auth_method_update_cert.go
 model_auth_method_update_email.go
 model_auth_method_update_gcp.go
 model_auth_method_update_k8s.go
+model_auth_method_update_kerberos.go
 model_auth_method_update_ldap.go
 model_auth_method_update_oauth2.go
 model_auth_method_update_oci.go
@@ -1236,6 +1259,8 @@ model_create_native_k8_s_target.go
 model_create_native_k8_s_target_output.go
 model_create_oidc_app.go
 model_create_oidc_app_output.go
+model_create_passkey.go
+model_create_passkey_output.go
 model_create_ping_target.go
 model_create_ping_target_output.go
 model_create_pki_cert_issuer.go
@@ -1691,6 +1716,9 @@ model_k8_s_auths_config_last_change.go
 model_k8_s_auths_config_part.go
 model_k8_s_migration.go
 model_k8_s_payload.go
+model_kerberos_access_rules.go
+model_kerberos_auth_method_info.go
+model_kerberos_config_part.go
 model_kmip_client.go
 model_kmip_client_delete_rule.go
 model_kmip_client_get_response.go
@@ -1717,6 +1745,15 @@ model_kmip_server.go
 model_kmip_server_setup.go
 model_kmip_set_server_state.go
 model_kmip_set_server_state_output.go
+model_kube_config_value.go
+model_kubeconfig_cluster.go
+model_kubeconfig_context.go
+model_kubeconfig_exec.go
+model_kubeconfig_generate_output.go
+model_kubeconfig_named_cluster.go
+model_kubeconfig_named_context.go
+model_kubeconfig_user.go
+model_kubeconfig_user_exec.go
 model_kubernetes_access_rules.go
 model_last_config_change.go
 model_last_status_info.go
@@ -1740,6 +1777,8 @@ model_list_roles.go
 model_list_roles_output.go
 model_list_shared_items.go
 model_list_sra_bastions.go
+model_list_sra_sessions.go
+model_list_sra_sessions_output.go
 model_list_targets.go
 model_list_targets_output.go
 model_log_forwarding_config_part.go
@@ -1880,6 +1919,7 @@ model_sign_rsa_ssa_pss_output.go
 model_sm_info.go
 model_splunk_log_forwarding_config.go
 model_sra_info.go
+model_sra_session_entry_out.go
 model_ssh_bastion_conf.go
 model_ssh_bastion_session_termination.go
 model_ssh_certificate_issue_details.go

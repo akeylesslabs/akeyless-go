@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClassicKeyAttributes** | Pointer to [**map[string][]string**](array.md) |  | [optional] 
 **ClassicKeyId** | Pointer to **string** |  | [optional] 
+**CredentialId** | Pointer to **string** |  | [optional] 
 **GwClusterId** | Pointer to **int64** |  | [optional] 
 **HasCertificate** | Pointer to **bool** |  | [optional] 
 **IsProvidedByUser** | Pointer to **bool** |  | [optional] 
@@ -17,6 +18,8 @@ Name | Type | Description | Notes
 **TargetAliasHelper** | Pointer to **string** |  | [optional] 
 **TargetTypes** | Pointer to **[]string** |  | [optional] 
 **Targets** | Pointer to [**[]ClassicKeyTargetInfo**](ClassicKeyTargetInfo.md) |  | [optional] 
+**Username** | Pointer to **string** |  | [optional] 
+**Websites** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -86,6 +89,31 @@ SetClassicKeyId sets ClassicKeyId field to given value.
 `func (o *ClassicKeyDetailsInfo) HasClassicKeyId() bool`
 
 HasClassicKeyId returns a boolean if a field has been set.
+
+### GetCredentialId
+
+`func (o *ClassicKeyDetailsInfo) GetCredentialId() string`
+
+GetCredentialId returns the CredentialId field if non-nil, zero value otherwise.
+
+### GetCredentialIdOk
+
+`func (o *ClassicKeyDetailsInfo) GetCredentialIdOk() (*string, bool)`
+
+GetCredentialIdOk returns a tuple with the CredentialId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCredentialId
+
+`func (o *ClassicKeyDetailsInfo) SetCredentialId(v string)`
+
+SetCredentialId sets CredentialId field to given value.
+
+### HasCredentialId
+
+`func (o *ClassicKeyDetailsInfo) HasCredentialId() bool`
+
+HasCredentialId returns a boolean if a field has been set.
 
 ### GetGwClusterId
 
@@ -361,6 +389,56 @@ SetTargets sets Targets field to given value.
 `func (o *ClassicKeyDetailsInfo) HasTargets() bool`
 
 HasTargets returns a boolean if a field has been set.
+
+### GetUsername
+
+`func (o *ClassicKeyDetailsInfo) GetUsername() string`
+
+GetUsername returns the Username field if non-nil, zero value otherwise.
+
+### GetUsernameOk
+
+`func (o *ClassicKeyDetailsInfo) GetUsernameOk() (*string, bool)`
+
+GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsername
+
+`func (o *ClassicKeyDetailsInfo) SetUsername(v string)`
+
+SetUsername sets Username field to given value.
+
+### HasUsername
+
+`func (o *ClassicKeyDetailsInfo) HasUsername() bool`
+
+HasUsername returns a boolean if a field has been set.
+
+### GetWebsites
+
+`func (o *ClassicKeyDetailsInfo) GetWebsites() []string`
+
+GetWebsites returns the Websites field if non-nil, zero value otherwise.
+
+### GetWebsitesOk
+
+`func (o *ClassicKeyDetailsInfo) GetWebsitesOk() (*[]string, bool)`
+
+GetWebsitesOk returns a tuple with the Websites field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWebsites
+
+`func (o *ClassicKeyDetailsInfo) SetWebsites(v []string)`
+
+SetWebsites sets Websites field to given value.
+
+### HasWebsites
+
+`func (o *ClassicKeyDetailsInfo) HasWebsites() bool`
+
+HasWebsites returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

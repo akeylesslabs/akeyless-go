@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AutoRenewCertificate** | Pointer to **bool** |  | [optional] 
 **CertificateChain** | Pointer to [**[]CertificateInfo**](CertificateInfo.md) |  | [optional] 
 **CertificateFormat** | Pointer to **string** |  | [optional] 
 **CertificateHasPrivateKey** | Pointer to **bool** |  | [optional] 
@@ -12,7 +13,9 @@ Name | Type | Description | Notes
 **CertificateIssuerName** | Pointer to **string** |  | [optional] 
 **CertificatePem** | Pointer to **string** |  | [optional] 
 **CertificateStatus** | Pointer to **string** |  | [optional] 
+**ErrorMessage** | Pointer to **string** |  | [optional] 
 **ExpirationEvents** | Pointer to [**[]CertificateExpirationEvent**](CertificateExpirationEvent.md) |  | [optional] 
+**RenewBeforeExpirationInDays** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -32,6 +35,31 @@ will change when the set of required properties is changed
 NewCertificateChainInfoWithDefaults instantiates a new CertificateChainInfo object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAutoRenewCertificate
+
+`func (o *CertificateChainInfo) GetAutoRenewCertificate() bool`
+
+GetAutoRenewCertificate returns the AutoRenewCertificate field if non-nil, zero value otherwise.
+
+### GetAutoRenewCertificateOk
+
+`func (o *CertificateChainInfo) GetAutoRenewCertificateOk() (*bool, bool)`
+
+GetAutoRenewCertificateOk returns a tuple with the AutoRenewCertificate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutoRenewCertificate
+
+`func (o *CertificateChainInfo) SetAutoRenewCertificate(v bool)`
+
+SetAutoRenewCertificate sets AutoRenewCertificate field to given value.
+
+### HasAutoRenewCertificate
+
+`func (o *CertificateChainInfo) HasAutoRenewCertificate() bool`
+
+HasAutoRenewCertificate returns a boolean if a field has been set.
 
 ### GetCertificateChain
 
@@ -233,6 +261,31 @@ SetCertificateStatus sets CertificateStatus field to given value.
 
 HasCertificateStatus returns a boolean if a field has been set.
 
+### GetErrorMessage
+
+`func (o *CertificateChainInfo) GetErrorMessage() string`
+
+GetErrorMessage returns the ErrorMessage field if non-nil, zero value otherwise.
+
+### GetErrorMessageOk
+
+`func (o *CertificateChainInfo) GetErrorMessageOk() (*string, bool)`
+
+GetErrorMessageOk returns a tuple with the ErrorMessage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetErrorMessage
+
+`func (o *CertificateChainInfo) SetErrorMessage(v string)`
+
+SetErrorMessage sets ErrorMessage field to given value.
+
+### HasErrorMessage
+
+`func (o *CertificateChainInfo) HasErrorMessage() bool`
+
+HasErrorMessage returns a boolean if a field has been set.
+
 ### GetExpirationEvents
 
 `func (o *CertificateChainInfo) GetExpirationEvents() []CertificateExpirationEvent`
@@ -257,6 +310,31 @@ SetExpirationEvents sets ExpirationEvents field to given value.
 `func (o *CertificateChainInfo) HasExpirationEvents() bool`
 
 HasExpirationEvents returns a boolean if a field has been set.
+
+### GetRenewBeforeExpirationInDays
+
+`func (o *CertificateChainInfo) GetRenewBeforeExpirationInDays() int64`
+
+GetRenewBeforeExpirationInDays returns the RenewBeforeExpirationInDays field if non-nil, zero value otherwise.
+
+### GetRenewBeforeExpirationInDaysOk
+
+`func (o *CertificateChainInfo) GetRenewBeforeExpirationInDaysOk() (*int64, bool)`
+
+GetRenewBeforeExpirationInDaysOk returns a tuple with the RenewBeforeExpirationInDays field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRenewBeforeExpirationInDays
+
+`func (o *CertificateChainInfo) SetRenewBeforeExpirationInDays(v int64)`
+
+SetRenewBeforeExpirationInDays sets RenewBeforeExpirationInDays field to given value.
+
+### HasRenewBeforeExpirationInDays
+
+`func (o *CertificateChainInfo) HasRenewBeforeExpirationInDays() bool`
+
+HasRenewBeforeExpirationInDays returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

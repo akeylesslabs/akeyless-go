@@ -19,6 +19,7 @@ import (
 type ClassicKeyDetailsInfo struct {
 	ClassicKeyAttributes *map[string][]string `json:"classic_key_attributes,omitempty"`
 	ClassicKeyId *string `json:"classic_key_id,omitempty"`
+	CredentialId *string `json:"credential_id,omitempty"`
 	GwClusterId *int64 `json:"gw_cluster_id,omitempty"`
 	HasCertificate *bool `json:"has_certificate,omitempty"`
 	IsProvidedByUser *bool `json:"is_provided_by_user,omitempty"`
@@ -31,6 +32,8 @@ type ClassicKeyDetailsInfo struct {
 	TargetAliasHelper *string `json:"target_alias_helper,omitempty"`
 	TargetTypes *[]string `json:"target_types,omitempty"`
 	Targets *[]ClassicKeyTargetInfo `json:"targets,omitempty"`
+	Username *string `json:"username,omitempty"`
+	Websites *[]string `json:"websites,omitempty"`
 }
 
 // NewClassicKeyDetailsInfo instantiates a new ClassicKeyDetailsInfo object
@@ -112,6 +115,38 @@ func (o *ClassicKeyDetailsInfo) HasClassicKeyId() bool {
 // SetClassicKeyId gets a reference to the given string and assigns it to the ClassicKeyId field.
 func (o *ClassicKeyDetailsInfo) SetClassicKeyId(v string) {
 	o.ClassicKeyId = &v
+}
+
+// GetCredentialId returns the CredentialId field value if set, zero value otherwise.
+func (o *ClassicKeyDetailsInfo) GetCredentialId() string {
+	if o == nil || o.CredentialId == nil {
+		var ret string
+		return ret
+	}
+	return *o.CredentialId
+}
+
+// GetCredentialIdOk returns a tuple with the CredentialId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClassicKeyDetailsInfo) GetCredentialIdOk() (*string, bool) {
+	if o == nil || o.CredentialId == nil {
+		return nil, false
+	}
+	return o.CredentialId, true
+}
+
+// HasCredentialId returns a boolean if a field has been set.
+func (o *ClassicKeyDetailsInfo) HasCredentialId() bool {
+	if o != nil && o.CredentialId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCredentialId gets a reference to the given string and assigns it to the CredentialId field.
+func (o *ClassicKeyDetailsInfo) SetCredentialId(v string) {
+	o.CredentialId = &v
 }
 
 // GetGwClusterId returns the GwClusterId field value if set, zero value otherwise.
@@ -466,6 +501,70 @@ func (o *ClassicKeyDetailsInfo) SetTargets(v []ClassicKeyTargetInfo) {
 	o.Targets = &v
 }
 
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *ClassicKeyDetailsInfo) GetUsername() string {
+	if o == nil || o.Username == nil {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClassicKeyDetailsInfo) GetUsernameOk() (*string, bool) {
+	if o == nil || o.Username == nil {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *ClassicKeyDetailsInfo) HasUsername() bool {
+	if o != nil && o.Username != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *ClassicKeyDetailsInfo) SetUsername(v string) {
+	o.Username = &v
+}
+
+// GetWebsites returns the Websites field value if set, zero value otherwise.
+func (o *ClassicKeyDetailsInfo) GetWebsites() []string {
+	if o == nil || o.Websites == nil {
+		var ret []string
+		return ret
+	}
+	return *o.Websites
+}
+
+// GetWebsitesOk returns a tuple with the Websites field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClassicKeyDetailsInfo) GetWebsitesOk() (*[]string, bool) {
+	if o == nil || o.Websites == nil {
+		return nil, false
+	}
+	return o.Websites, true
+}
+
+// HasWebsites returns a boolean if a field has been set.
+func (o *ClassicKeyDetailsInfo) HasWebsites() bool {
+	if o != nil && o.Websites != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetWebsites gets a reference to the given []string and assigns it to the Websites field.
+func (o *ClassicKeyDetailsInfo) SetWebsites(v []string) {
+	o.Websites = &v
+}
+
 func (o ClassicKeyDetailsInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ClassicKeyAttributes != nil {
@@ -473,6 +572,9 @@ func (o ClassicKeyDetailsInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.ClassicKeyId != nil {
 		toSerialize["classic_key_id"] = o.ClassicKeyId
+	}
+	if o.CredentialId != nil {
+		toSerialize["credential_id"] = o.CredentialId
 	}
 	if o.GwClusterId != nil {
 		toSerialize["gw_cluster_id"] = o.GwClusterId
@@ -506,6 +608,12 @@ func (o ClassicKeyDetailsInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.Targets != nil {
 		toSerialize["targets"] = o.Targets
+	}
+	if o.Username != nil {
+		toSerialize["username"] = o.Username
+	}
+	if o.Websites != nil {
+		toSerialize["websites"] = o.Websites
 	}
 	return json.Marshal(toSerialize)
 }

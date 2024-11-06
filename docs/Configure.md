@@ -15,10 +15,15 @@ Name | Type | Description | Notes
 **CertIssuerName** | Pointer to **string** | Certificate Issuer Name | [optional] 
 **CertUsername** | Pointer to **string** | The username to sign in the SSH certificate (use a comma-separated list for more than one username) | [optional] 
 **DefaultLocationPrefix** | Pointer to **string** | Default path prefix for name of items, targets and auth methods | [optional] 
+**DisablePafxfast** | Pointer to **string** | Disable the FAST negotiation in the Kerberos authentication method | [optional] 
+**GatewaySpn** | Pointer to **string** | The service principal name of the gateway as registered in LDAP (i.e., HTTP/gateway) | [optional] 
 **GcpAudience** | Pointer to **string** | GCP JWT audience | [optional] [default to "akeyless.io"]
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **K8sAuthConfigName** | Pointer to **string** | The K8S Auth config name (relevant only for access-type&#x3D;k8s) | [optional] 
+**KerberosUsername** | Pointer to **string** | TThe username for the entry within the keytab to authenticate via Kerberos | [optional] 
 **KeyData** | Pointer to **string** | Private key data encoded in base64. Used if file was not provided.(relevant only for access-type&#x3D;cert in Curl Context) | [optional] 
+**KeytabData** | Pointer to **string** | Base64-encoded content of a valid keytab file, containing the service account&#39;s entry. | [optional] 
+**Krb5ConfData** | Pointer to **string** | Base64-encoded content of a valid krb5.conf file, specifying the settings and parameters required for Kerberos authentication. | [optional] 
 **LegacySigningAlgName** | Pointer to **bool** | Set this option to output legacy (&#39;ssh-rsa-cert-v01@openssh.com&#39;) signing algorithm name in the certificate. | [optional] 
 **OciAuthType** | Pointer to **string** | The type of the OCI configuration to use [instance/apikey/resource] (relevant only for access-type&#x3D;oci) | [optional] [default to "apikey"]
 **OciGroupOcid** | Pointer to **[]string** | A list of Oracle Cloud IDs groups (relevant only for access-type&#x3D;oci) | [optional] 
@@ -317,6 +322,56 @@ SetDefaultLocationPrefix sets DefaultLocationPrefix field to given value.
 
 HasDefaultLocationPrefix returns a boolean if a field has been set.
 
+### GetDisablePafxfast
+
+`func (o *Configure) GetDisablePafxfast() string`
+
+GetDisablePafxfast returns the DisablePafxfast field if non-nil, zero value otherwise.
+
+### GetDisablePafxfastOk
+
+`func (o *Configure) GetDisablePafxfastOk() (*string, bool)`
+
+GetDisablePafxfastOk returns a tuple with the DisablePafxfast field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisablePafxfast
+
+`func (o *Configure) SetDisablePafxfast(v string)`
+
+SetDisablePafxfast sets DisablePafxfast field to given value.
+
+### HasDisablePafxfast
+
+`func (o *Configure) HasDisablePafxfast() bool`
+
+HasDisablePafxfast returns a boolean if a field has been set.
+
+### GetGatewaySpn
+
+`func (o *Configure) GetGatewaySpn() string`
+
+GetGatewaySpn returns the GatewaySpn field if non-nil, zero value otherwise.
+
+### GetGatewaySpnOk
+
+`func (o *Configure) GetGatewaySpnOk() (*string, bool)`
+
+GetGatewaySpnOk returns a tuple with the GatewaySpn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGatewaySpn
+
+`func (o *Configure) SetGatewaySpn(v string)`
+
+SetGatewaySpn sets GatewaySpn field to given value.
+
+### HasGatewaySpn
+
+`func (o *Configure) HasGatewaySpn() bool`
+
+HasGatewaySpn returns a boolean if a field has been set.
+
 ### GetGcpAudience
 
 `func (o *Configure) GetGcpAudience() string`
@@ -392,6 +447,31 @@ SetK8sAuthConfigName sets K8sAuthConfigName field to given value.
 
 HasK8sAuthConfigName returns a boolean if a field has been set.
 
+### GetKerberosUsername
+
+`func (o *Configure) GetKerberosUsername() string`
+
+GetKerberosUsername returns the KerberosUsername field if non-nil, zero value otherwise.
+
+### GetKerberosUsernameOk
+
+`func (o *Configure) GetKerberosUsernameOk() (*string, bool)`
+
+GetKerberosUsernameOk returns a tuple with the KerberosUsername field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKerberosUsername
+
+`func (o *Configure) SetKerberosUsername(v string)`
+
+SetKerberosUsername sets KerberosUsername field to given value.
+
+### HasKerberosUsername
+
+`func (o *Configure) HasKerberosUsername() bool`
+
+HasKerberosUsername returns a boolean if a field has been set.
+
 ### GetKeyData
 
 `func (o *Configure) GetKeyData() string`
@@ -416,6 +496,56 @@ SetKeyData sets KeyData field to given value.
 `func (o *Configure) HasKeyData() bool`
 
 HasKeyData returns a boolean if a field has been set.
+
+### GetKeytabData
+
+`func (o *Configure) GetKeytabData() string`
+
+GetKeytabData returns the KeytabData field if non-nil, zero value otherwise.
+
+### GetKeytabDataOk
+
+`func (o *Configure) GetKeytabDataOk() (*string, bool)`
+
+GetKeytabDataOk returns a tuple with the KeytabData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKeytabData
+
+`func (o *Configure) SetKeytabData(v string)`
+
+SetKeytabData sets KeytabData field to given value.
+
+### HasKeytabData
+
+`func (o *Configure) HasKeytabData() bool`
+
+HasKeytabData returns a boolean if a field has been set.
+
+### GetKrb5ConfData
+
+`func (o *Configure) GetKrb5ConfData() string`
+
+GetKrb5ConfData returns the Krb5ConfData field if non-nil, zero value otherwise.
+
+### GetKrb5ConfDataOk
+
+`func (o *Configure) GetKrb5ConfDataOk() (*string, bool)`
+
+GetKrb5ConfDataOk returns a tuple with the Krb5ConfData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKrb5ConfData
+
+`func (o *Configure) SetKrb5ConfData(v string)`
+
+SetKrb5ConfData sets Krb5ConfData field to given value.
+
+### HasKrb5ConfData
+
+`func (o *Configure) HasKrb5ConfData() bool`
+
+HasKrb5ConfData returns a boolean if a field has been set.
 
 ### GetLegacySigningAlgName
 

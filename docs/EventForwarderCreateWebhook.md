@@ -6,10 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AuthMethodsEventSourceLocations** | Pointer to **[]string** | Auth Method Event sources | [optional] 
 **AuthToken** | Pointer to **string** | Base64 encoded Token string for authentication type Token | [optional] 
-**AuthType** | Pointer to **string** | The Webhook authentication type [user-pass, token, certificate] | [optional] [default to "user-pass"]
+**AuthType** | Pointer to **string** | The Webhook authentication type [user-pass, bearer-token, certificate] | [optional] [default to "user-pass"]
 **ClientCertData** | Pointer to **string** | Base64 encoded PEM certificate, relevant for certificate auth-type | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
-**EventTypes** | Pointer to **[]string** | List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, certificate-provisioning-success, certificate-provisioning-failure, auth-method-pending-expiration, auth-method-expired, next-automatic-rotation, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure, uid-rotation-failure, apply-justification, email-auth-method-approved, usage, rotation-usage, gateway-inactive, static-secret-updated] | [optional] 
+**EventTypes** | Pointer to **[]string** | List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, certificate-provisioning-success, certificate-provisioning-failure, auth-method-pending-expiration, auth-method-expired, next-automatic-rotation, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure, uid-rotation-failure, apply-justification, email-auth-method-approved, usage, rotation-usage, gateway-inactive, static-secret-updated, rate-limiting, usage-report] | [optional] 
 **Every** | Pointer to **string** | Rate of periodic runner repetition in hours | [optional] 
 **GatewaysEventSourceLocations** | **[]string** | Event sources | 
 **ItemsEventSourceLocations** | Pointer to **[]string** | Items Event sources | [optional] 

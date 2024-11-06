@@ -34,6 +34,10 @@ type Auth struct {
 	// The cloud identity (relevant only for access-type=azure_ad,aws_iam,gcp)
 	CloudId *string `json:"cloud-id,omitempty"`
 	Debug *bool `json:"debug,omitempty"`
+	// Disable the FAST negotiation in the Kerberos authentication method
+	DisablePafxfast *string `json:"disable-pafxfast,omitempty"`
+	// The service principal name of the gateway as registered in LDAP (i.e., HTTP/gateway)
+	GatewaySpn *string `json:"gateway-spn,omitempty"`
 	// Gateway URL relevant only for access-type=k8s/oauth2/saml/oidc
 	GatewayUrl *string `json:"gateway-url,omitempty"`
 	// GCP JWT audience
@@ -46,8 +50,14 @@ type Auth struct {
 	K8sAuthConfigName *string `json:"k8s-auth-config-name,omitempty"`
 	// The K8S service account token. (relevant only for access-type=k8s)
 	K8sServiceAccountToken *string `json:"k8s-service-account-token,omitempty"`
+	// TThe username for the entry within the keytab to authenticate via Kerberos
+	KerberosUsername *string `json:"kerberos-username,omitempty"`
 	// Private key data encoded in base64. Used if file was not provided.(relevant only for access-type=cert)
 	KeyData *string `json:"key-data,omitempty"`
+	// Base64-encoded content of a valid keytab file, containing the service account's entry.
+	KeytabData *string `json:"keytab-data,omitempty"`
+	// Base64-encoded content of a valid krb5.conf file, specifying the settings and parameters required for Kerberos authentication.
+	Krb5ConfData *string `json:"krb5-conf-data,omitempty"`
 	// LDAP password (relevant only for access-type=ldap)
 	LdapPassword *string `json:"ldap_password,omitempty"`
 	// LDAP username (relevant only for access-type=ldap)
@@ -383,6 +393,70 @@ func (o *Auth) SetDebug(v bool) {
 	o.Debug = &v
 }
 
+// GetDisablePafxfast returns the DisablePafxfast field value if set, zero value otherwise.
+func (o *Auth) GetDisablePafxfast() string {
+	if o == nil || o.DisablePafxfast == nil {
+		var ret string
+		return ret
+	}
+	return *o.DisablePafxfast
+}
+
+// GetDisablePafxfastOk returns a tuple with the DisablePafxfast field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Auth) GetDisablePafxfastOk() (*string, bool) {
+	if o == nil || o.DisablePafxfast == nil {
+		return nil, false
+	}
+	return o.DisablePafxfast, true
+}
+
+// HasDisablePafxfast returns a boolean if a field has been set.
+func (o *Auth) HasDisablePafxfast() bool {
+	if o != nil && o.DisablePafxfast != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDisablePafxfast gets a reference to the given string and assigns it to the DisablePafxfast field.
+func (o *Auth) SetDisablePafxfast(v string) {
+	o.DisablePafxfast = &v
+}
+
+// GetGatewaySpn returns the GatewaySpn field value if set, zero value otherwise.
+func (o *Auth) GetGatewaySpn() string {
+	if o == nil || o.GatewaySpn == nil {
+		var ret string
+		return ret
+	}
+	return *o.GatewaySpn
+}
+
+// GetGatewaySpnOk returns a tuple with the GatewaySpn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Auth) GetGatewaySpnOk() (*string, bool) {
+	if o == nil || o.GatewaySpn == nil {
+		return nil, false
+	}
+	return o.GatewaySpn, true
+}
+
+// HasGatewaySpn returns a boolean if a field has been set.
+func (o *Auth) HasGatewaySpn() bool {
+	if o != nil && o.GatewaySpn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGatewaySpn gets a reference to the given string and assigns it to the GatewaySpn field.
+func (o *Auth) SetGatewaySpn(v string) {
+	o.GatewaySpn = &v
+}
+
 // GetGatewayUrl returns the GatewayUrl field value if set, zero value otherwise.
 func (o *Auth) GetGatewayUrl() string {
 	if o == nil || o.GatewayUrl == nil {
@@ -575,6 +649,38 @@ func (o *Auth) SetK8sServiceAccountToken(v string) {
 	o.K8sServiceAccountToken = &v
 }
 
+// GetKerberosUsername returns the KerberosUsername field value if set, zero value otherwise.
+func (o *Auth) GetKerberosUsername() string {
+	if o == nil || o.KerberosUsername == nil {
+		var ret string
+		return ret
+	}
+	return *o.KerberosUsername
+}
+
+// GetKerberosUsernameOk returns a tuple with the KerberosUsername field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Auth) GetKerberosUsernameOk() (*string, bool) {
+	if o == nil || o.KerberosUsername == nil {
+		return nil, false
+	}
+	return o.KerberosUsername, true
+}
+
+// HasKerberosUsername returns a boolean if a field has been set.
+func (o *Auth) HasKerberosUsername() bool {
+	if o != nil && o.KerberosUsername != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetKerberosUsername gets a reference to the given string and assigns it to the KerberosUsername field.
+func (o *Auth) SetKerberosUsername(v string) {
+	o.KerberosUsername = &v
+}
+
 // GetKeyData returns the KeyData field value if set, zero value otherwise.
 func (o *Auth) GetKeyData() string {
 	if o == nil || o.KeyData == nil {
@@ -605,6 +711,70 @@ func (o *Auth) HasKeyData() bool {
 // SetKeyData gets a reference to the given string and assigns it to the KeyData field.
 func (o *Auth) SetKeyData(v string) {
 	o.KeyData = &v
+}
+
+// GetKeytabData returns the KeytabData field value if set, zero value otherwise.
+func (o *Auth) GetKeytabData() string {
+	if o == nil || o.KeytabData == nil {
+		var ret string
+		return ret
+	}
+	return *o.KeytabData
+}
+
+// GetKeytabDataOk returns a tuple with the KeytabData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Auth) GetKeytabDataOk() (*string, bool) {
+	if o == nil || o.KeytabData == nil {
+		return nil, false
+	}
+	return o.KeytabData, true
+}
+
+// HasKeytabData returns a boolean if a field has been set.
+func (o *Auth) HasKeytabData() bool {
+	if o != nil && o.KeytabData != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetKeytabData gets a reference to the given string and assigns it to the KeytabData field.
+func (o *Auth) SetKeytabData(v string) {
+	o.KeytabData = &v
+}
+
+// GetKrb5ConfData returns the Krb5ConfData field value if set, zero value otherwise.
+func (o *Auth) GetKrb5ConfData() string {
+	if o == nil || o.Krb5ConfData == nil {
+		var ret string
+		return ret
+	}
+	return *o.Krb5ConfData
+}
+
+// GetKrb5ConfDataOk returns a tuple with the Krb5ConfData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Auth) GetKrb5ConfDataOk() (*string, bool) {
+	if o == nil || o.Krb5ConfData == nil {
+		return nil, false
+	}
+	return o.Krb5ConfData, true
+}
+
+// HasKrb5ConfData returns a boolean if a field has been set.
+func (o *Auth) HasKrb5ConfData() bool {
+	if o != nil && o.Krb5ConfData != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetKrb5ConfData gets a reference to the given string and assigns it to the Krb5ConfData field.
+func (o *Auth) SetKrb5ConfData(v string) {
+	o.Krb5ConfData = &v
 }
 
 // GetLdapPassword returns the LdapPassword field value if set, zero value otherwise.
@@ -828,6 +998,12 @@ func (o Auth) MarshalJSON() ([]byte, error) {
 	if o.Debug != nil {
 		toSerialize["debug"] = o.Debug
 	}
+	if o.DisablePafxfast != nil {
+		toSerialize["disable-pafxfast"] = o.DisablePafxfast
+	}
+	if o.GatewaySpn != nil {
+		toSerialize["gateway-spn"] = o.GatewaySpn
+	}
 	if o.GatewayUrl != nil {
 		toSerialize["gateway-url"] = o.GatewayUrl
 	}
@@ -846,8 +1022,17 @@ func (o Auth) MarshalJSON() ([]byte, error) {
 	if o.K8sServiceAccountToken != nil {
 		toSerialize["k8s-service-account-token"] = o.K8sServiceAccountToken
 	}
+	if o.KerberosUsername != nil {
+		toSerialize["kerberos-username"] = o.KerberosUsername
+	}
 	if o.KeyData != nil {
 		toSerialize["key-data"] = o.KeyData
+	}
+	if o.KeytabData != nil {
+		toSerialize["keytab-data"] = o.KeytabData
+	}
+	if o.Krb5ConfData != nil {
+		toSerialize["krb5-conf-data"] = o.Krb5ConfData
 	}
 	if o.LdapPassword != nil {
 		toSerialize["ldap_password"] = o.LdapPassword

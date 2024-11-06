@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **AccountId** | Pointer to **string** |  | [optional] 
 **AssociatedGwIds** | Pointer to **[]int64** |  | [optional] 
 **AuthMethodAccessId** | Pointer to **string** |  | [optional] 
+**AuthMethodAdditionalData** | Pointer to [**AuthMethodAdditionalData**](AuthMethodAdditionalData.md) |  | [optional] 
 **AuthMethodName** | Pointer to **string** |  | [optional] 
 **AuthMethodRolesAssoc** | Pointer to [**[]AuthMethodRoleAssociation**](AuthMethodRoleAssociation.md) |  | [optional] 
 **ClientPermissions** | Pointer to **[]string** |  | [optional] 
@@ -187,6 +188,31 @@ SetAuthMethodAccessId sets AuthMethodAccessId field to given value.
 `func (o *AuthMethod) HasAuthMethodAccessId() bool`
 
 HasAuthMethodAccessId returns a boolean if a field has been set.
+
+### GetAuthMethodAdditionalData
+
+`func (o *AuthMethod) GetAuthMethodAdditionalData() AuthMethodAdditionalData`
+
+GetAuthMethodAdditionalData returns the AuthMethodAdditionalData field if non-nil, zero value otherwise.
+
+### GetAuthMethodAdditionalDataOk
+
+`func (o *AuthMethod) GetAuthMethodAdditionalDataOk() (*AuthMethodAdditionalData, bool)`
+
+GetAuthMethodAdditionalDataOk returns a tuple with the AuthMethodAdditionalData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthMethodAdditionalData
+
+`func (o *AuthMethod) SetAuthMethodAdditionalData(v AuthMethodAdditionalData)`
+
+SetAuthMethodAdditionalData sets AuthMethodAdditionalData field to given value.
+
+### HasAuthMethodAdditionalData
+
+`func (o *AuthMethod) HasAuthMethodAdditionalData() bool`
+
+HasAuthMethodAdditionalData returns a boolean if a field has been set.
 
 ### GetAuthMethodName
 

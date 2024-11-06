@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **HuaweiAccessRules** | Pointer to [**HuaweiAccessRules**](HuaweiAccessRules.md) |  | [optional] 
 **JwtTtl** | Pointer to **int64** |  | [optional] 
 **K8sAccessRules** | Pointer to [**KubernetesAccessRules**](KubernetesAccessRules.md) |  | [optional] 
+**KerberosAccessRules** | Pointer to [**KerberosAccessRules**](KerberosAccessRules.md) |  | [optional] 
 **LdapAccessRules** | Pointer to [**LDAPAccessRules**](LDAPAccessRules.md) |  | [optional] 
 **Oauth2AccessRules** | Pointer to [**OAuth2AccessRules**](OAuth2AccessRules.md) |  | [optional] 
 **OciAccessRules** | Pointer to [**OCIAccessRules**](OCIAccessRules.md) |  | [optional] 
@@ -422,6 +423,31 @@ SetK8sAccessRules sets K8sAccessRules field to given value.
 `func (o *AuthMethodAccessInfo) HasK8sAccessRules() bool`
 
 HasK8sAccessRules returns a boolean if a field has been set.
+
+### GetKerberosAccessRules
+
+`func (o *AuthMethodAccessInfo) GetKerberosAccessRules() KerberosAccessRules`
+
+GetKerberosAccessRules returns the KerberosAccessRules field if non-nil, zero value otherwise.
+
+### GetKerberosAccessRulesOk
+
+`func (o *AuthMethodAccessInfo) GetKerberosAccessRulesOk() (*KerberosAccessRules, bool)`
+
+GetKerberosAccessRulesOk returns a tuple with the KerberosAccessRules field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKerberosAccessRules
+
+`func (o *AuthMethodAccessInfo) SetKerberosAccessRules(v KerberosAccessRules)`
+
+SetKerberosAccessRules sets KerberosAccessRules field to given value.
+
+### HasKerberosAccessRules
+
+`func (o *AuthMethodAccessInfo) HasKerberosAccessRules() bool`
+
+HasKerberosAccessRules returns a boolean if a field has been set.
 
 ### GetLdapAccessRules
 

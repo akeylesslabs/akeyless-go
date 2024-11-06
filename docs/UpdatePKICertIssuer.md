@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **AllowedDomains** | Pointer to **string** | A list of the allowed domains that clients can request to be included in the certificate (in a comma-delimited list) | [optional] 
 **AllowedExtraExtensions** | Pointer to **string** | A json string containing the allowed extra extensions for the pki cert issuer | [optional] 
 **AllowedUriSans** | Pointer to **string** | A list of the allowed URIs that clients can request to be included in the certificate as part of the URI Subject Alternative Names (in a comma-delimited list) | [optional] 
+**AutoRenew** | Pointer to **bool** | Automatically renew certificates before expiration | [optional] 
 **ClientFlag** | Pointer to **bool** | If set, certificates will be flagged for client auth use | [optional] 
 **CodeSigningFlag** | Pointer to **bool** | If set, certificates will be flagged for code signing use | [optional] 
 **Country** | Pointer to **string** | A comma-separated list of countries that will be set in the issued certificate | [optional] 
@@ -38,6 +39,7 @@ Name | Type | Description | Notes
 **ProtectCertificates** | Pointer to **bool** | Whether to protect generated certificates from deletion | [optional] 
 **Province** | Pointer to **string** | A comma-separated list of provinces that will be set in the issued certificate | [optional] 
 **RmTag** | Pointer to **[]string** | List of the existent tags that will be removed from this item | [optional] 
+**ScheduledRenew** | Pointer to **int64** | Number of days before expiration to renew certificates | [optional] 
 **ServerFlag** | Pointer to **bool** | If set, certificates will be flagged for server auth use | [optional] 
 **SignerKeyName** | **string** | A key to sign the certificate with, required in Private CA mode | [default to "dummy_signer_key"]
 **StreetAddress** | Pointer to **string** | A comma-separated list of street addresses that will be set in the issued certificate | [optional] 
@@ -238,6 +240,31 @@ SetAllowedUriSans sets AllowedUriSans field to given value.
 `func (o *UpdatePKICertIssuer) HasAllowedUriSans() bool`
 
 HasAllowedUriSans returns a boolean if a field has been set.
+
+### GetAutoRenew
+
+`func (o *UpdatePKICertIssuer) GetAutoRenew() bool`
+
+GetAutoRenew returns the AutoRenew field if non-nil, zero value otherwise.
+
+### GetAutoRenewOk
+
+`func (o *UpdatePKICertIssuer) GetAutoRenewOk() (*bool, bool)`
+
+GetAutoRenewOk returns a tuple with the AutoRenew field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutoRenew
+
+`func (o *UpdatePKICertIssuer) SetAutoRenew(v bool)`
+
+SetAutoRenew sets AutoRenew field to given value.
+
+### HasAutoRenew
+
+`func (o *UpdatePKICertIssuer) HasAutoRenew() bool`
+
+HasAutoRenew returns a boolean if a field has been set.
 
 ### GetClientFlag
 
@@ -908,6 +935,31 @@ SetRmTag sets RmTag field to given value.
 `func (o *UpdatePKICertIssuer) HasRmTag() bool`
 
 HasRmTag returns a boolean if a field has been set.
+
+### GetScheduledRenew
+
+`func (o *UpdatePKICertIssuer) GetScheduledRenew() int64`
+
+GetScheduledRenew returns the ScheduledRenew field if non-nil, zero value otherwise.
+
+### GetScheduledRenewOk
+
+`func (o *UpdatePKICertIssuer) GetScheduledRenewOk() (*int64, bool)`
+
+GetScheduledRenewOk returns a tuple with the ScheduledRenew field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScheduledRenew
+
+`func (o *UpdatePKICertIssuer) SetScheduledRenew(v int64)`
+
+SetScheduledRenew sets ScheduledRenew field to given value.
+
+### HasScheduledRenew
+
+`func (o *UpdatePKICertIssuer) HasScheduledRenew() bool`
+
+HasScheduledRenew returns a boolean if a field has been set.
 
 ### GetServerFlag
 
